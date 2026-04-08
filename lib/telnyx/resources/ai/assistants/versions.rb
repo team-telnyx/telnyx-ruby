@@ -71,7 +71,7 @@ module Telnyx
           #
           # @param name [String] Body param
           #
-          # @param observability_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::ObservabilitySettings] Body param
+          # @param observability_settings [Telnyx::Models::AI::ObservabilityReq] Body param
           #
           # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
           #

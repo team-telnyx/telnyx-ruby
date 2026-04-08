@@ -43,8 +43,7 @@ module Telnyx
               messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
               model: String,
               name: String,
-              observability_settings:
-                Telnyx::AI::Assistants::UpdateAssistant::ObservabilitySettings::OrHash,
+              observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
               tool_ids: T::Array[String],

@@ -1,0 +1,58 @@
+module Telnyx
+  module Models
+    module AI
+      type observability =
+        {
+          host: String,
+          public_key_ref: String,
+          secret_key_ref: String,
+          status: Telnyx::Models::AI::Observability::status
+        }
+
+      class Observability < Telnyx::Internal::Type::BaseModel
+        attr_reader host: String?
+
+        def host=: (String) -> String
+
+        attr_reader public_key_ref: String?
+
+        def public_key_ref=: (String) -> String
+
+        attr_reader secret_key_ref: String?
+
+        def secret_key_ref=: (String) -> String
+
+        attr_reader status: Telnyx::Models::AI::Observability::status?
+
+        def status=: (
+          Telnyx::Models::AI::Observability::status
+        ) -> Telnyx::Models::AI::Observability::status
+
+        def initialize: (
+          ?host: String,
+          ?public_key_ref: String,
+          ?secret_key_ref: String,
+          ?status: Telnyx::Models::AI::Observability::status
+        ) -> void
+
+        def to_hash: -> {
+          host: String,
+          public_key_ref: String,
+          secret_key_ref: String,
+          status: Telnyx::Models::AI::Observability::status
+        }
+
+        type status = :enabled | :disabled
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          ENABLED: :enabled
+          DISABLED: :disabled
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::Observability::status]
+        end
+      end
+    end
+  end
+end

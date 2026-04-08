@@ -1,10 +1,10 @@
 module Telnyx
   module Models
     module Enterprises
-      type reputation_create_response =
+      type reputation_enable_response =
         { data: Telnyx::Enterprises::EnterpriseReputationPublic }
 
-      class ReputationCreateResponse < Telnyx::Internal::Type::BaseModel
+      class ReputationEnableResponse < Telnyx::Internal::Type::BaseModel
         attr_reader data: Telnyx::Enterprises::EnterpriseReputationPublic?
 
         def data=: (

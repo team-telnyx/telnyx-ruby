@@ -24,7 +24,7 @@ module Telnyx
             ?messaging_settings: Telnyx::AI::MessagingSettings,
             ?model: String,
             ?name: String,
-            ?observability_settings: Telnyx::AI::Assistants::UpdateAssistant::ObservabilitySettings,
+            ?observability_settings: Telnyx::AI::ObservabilityReq,
             ?privacy_settings: Telnyx::AI::PrivacySettings,
             ?telephony_settings: Telnyx::AI::TelephonySettings,
             ?tool_ids: ::Array[String],
