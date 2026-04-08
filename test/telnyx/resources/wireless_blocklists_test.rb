@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
   def test_update
     skip("Mock server tests are disabled")
 
-    response = @telnyx.wireless_blocklists.update
+    response = @telnyx.wireless_blocklists.update("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
     assert_pattern do
       response => Telnyx::Models::WirelessBlocklistUpdateResponse

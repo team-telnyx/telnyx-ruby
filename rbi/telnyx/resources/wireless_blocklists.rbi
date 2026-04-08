@@ -41,17 +41,17 @@ module Telnyx
       # Update a Wireless Blocklist.
       sig do
         params(
+          id: String,
           name: String,
-          type: Telnyx::WirelessBlocklistUpdateParams::Type::OrSymbol,
           values: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::WirelessBlocklistUpdateResponse)
       end
       def update(
+        # Identifies the wireless blocklist.
+        id,
         # The name of the Wireless Blocklist.
         name: nil,
-        # The type of wireless blocklist.
-        type: nil,
         # Values to block. The values here depend on the `type` of Wireless Blocklist.
         values: nil,
         request_options: {}
