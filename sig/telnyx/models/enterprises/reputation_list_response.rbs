@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module Enterprises
+      type reputation_list_response =
+        { data: Telnyx::Enterprises::EnterpriseReputationPublic }
+
+      class ReputationListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Enterprises::EnterpriseReputationPublic?
+
+        def data=: (
+          Telnyx::Enterprises::EnterpriseReputationPublic
+        ) -> Telnyx::Enterprises::EnterpriseReputationPublic
+
+        def initialize: (
+          ?data: Telnyx::Enterprises::EnterpriseReputationPublic
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Enterprises::EnterpriseReputationPublic
+        }
+      end
+    end
+  end
+end

@@ -11,47 +11,6 @@ module Telnyx
         sig { returns(Telnyx::Resources::Enterprises::Reputation::Numbers) }
         attr_reader :numbers
 
-        # Retrieve the current Number Reputation settings for an enterprise.
-        #
-        # Returns the enrollment status (`pending`, `approved`, `rejected`, `deleted`),
-        # check frequency, and any rejection reasons.
-        #
-        # Returns `404` if reputation has not been enabled for this enterprise.
-        sig do
-          params(
-            enterprise_id: String,
-            request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Enterprises::ReputationRetrieveResponse)
-        end
-        def retrieve(
-          # Unique identifier of the enterprise (UUID)
-          enterprise_id,
-          request_options: {}
-        )
-        end
-
-        # Disable Number Reputation for an enterprise.
-        #
-        # This will:
-        #
-        # - Delete the reputation settings record
-        # - Log the deletion for audit purposes
-        # - Stop all future automated reputation checks
-        #
-        # **Note:** Can only be performed on `approved` reputation settings.
-        sig do
-          params(
-            enterprise_id: String,
-            request_options: Telnyx::RequestOptions::OrHash
-          ).void
-        end
-        def disable(
-          # Unique identifier of the enterprise (UUID)
-          enterprise_id,
-          request_options: {}
-        )
-        end
-
         # Enable Number Reputation service for an enterprise.
         #
         # **Requirements:**
@@ -82,11 +41,11 @@ module Telnyx
             enterprise_id: String,
             loa_document_id: String,
             check_frequency:
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol,
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Enterprises::ReputationEnableResponse)
+          ).returns(Telnyx::Models::Enterprises::ReputationCreateResponse)
         end
-        def enable(
+        def create(
           # Unique identifier of the enterprise (UUID)
           enterprise_id,
           # ID of the signed Letter of Authorization (LOA) document uploaded to the document
@@ -94,6 +53,47 @@ module Telnyx
           loa_document_id:,
           # Frequency for automatically refreshing reputation data
           check_frequency: nil,
+          request_options: {}
+        )
+        end
+
+        # Retrieve the current Number Reputation settings for an enterprise.
+        #
+        # Returns the enrollment status (`pending`, `approved`, `rejected`, `deleted`),
+        # check frequency, and any rejection reasons.
+        #
+        # Returns `404` if reputation has not been enabled for this enterprise.
+        sig do
+          params(
+            enterprise_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Enterprises::ReputationListResponse)
+        end
+        def list(
+          # Unique identifier of the enterprise (UUID)
+          enterprise_id,
+          request_options: {}
+        )
+        end
+
+        # Disable Number Reputation for an enterprise.
+        #
+        # This will:
+        #
+        # - Delete the reputation settings record
+        # - Log the deletion for audit purposes
+        # - Stop all future automated reputation checks
+        #
+        # **Note:** Can only be performed on `approved` reputation settings.
+        sig do
+          params(
+            enterprise_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).void
+        end
+        def delete_all(
+          # Unique identifier of the enterprise (UUID)
+          enterprise_id,
           request_options: {}
         )
         end

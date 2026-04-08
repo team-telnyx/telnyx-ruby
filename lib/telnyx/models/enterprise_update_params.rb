@@ -156,7 +156,7 @@ module Telnyx
         NUMBER_OF_EMPLOYEES_201_500 = :"201-500"
         NUMBER_OF_EMPLOYEES_501_2000 = :"501-2000"
         NUMBER_OF_EMPLOYEES_2001_10000 = :"2001-10000"
-        NUMBER_OF_EMPLOYEES_10001_PLUS = :"10001+"
+        NUMBER_OF_EMPLOYEES_10001 = :"10001+"
 
         # @!method self.values
         #   @return [Array<Symbol>]
