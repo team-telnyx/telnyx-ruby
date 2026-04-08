@@ -1869,6 +1869,12 @@ module Telnyx
   VoiceCloneCreateFromUploadParams =
     Telnyx::Models::VoiceCloneCreateFromUploadParams
 
+  VoiceCloneCreateFromDesignParams =
+    Telnyx::Models::VoiceCloneCreateFromDesignParams
+
+  VoiceCloneCreateFromDesignResponse =
+    Telnyx::Models::VoiceCloneCreateFromDesignResponse
+
   VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
 
   VoiceCloneData = Telnyx::Models::VoiceCloneData
