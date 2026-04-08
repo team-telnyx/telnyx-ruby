@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Enterprises
-      # @see Telnyx::Resources::Enterprises::Reputation#delete_all
-      class ReputationDeleteAllParams < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Enterprises::Reputation#disable
+      class ReputationDisableParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 

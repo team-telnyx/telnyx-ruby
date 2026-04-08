@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Enterprises
-      # @see Telnyx::Resources::Enterprises::Reputation#list
-      class ReputationListParams < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Enterprises::Reputation#retrieve
+      class ReputationRetrieveParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 

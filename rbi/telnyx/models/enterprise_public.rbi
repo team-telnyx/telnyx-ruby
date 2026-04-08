@@ -314,7 +314,7 @@ module Telnyx
             :"2001-10000",
             Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
           )
-        NUMBER_OF_EMPLOYEES_10001 =
+        NUMBER_OF_EMPLOYEES_10001_PLUS =
           T.let(
             :"10001+",
             Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol

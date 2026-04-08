@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Enterprises
-      # @see Telnyx::Resources::Enterprises::Reputation#create
-      class ReputationCreateParams < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Enterprises::Reputation#enable
+      class ReputationEnableParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
@@ -23,18 +23,18 @@ module Telnyx
         # @!attribute check_frequency
         #   Frequency for automatically refreshing reputation data
         #
-        #   @return [Symbol, Telnyx::Models::Enterprises::ReputationCreateParams::CheckFrequency, nil]
-        optional :check_frequency, enum: -> { Telnyx::Enterprises::ReputationCreateParams::CheckFrequency }
+        #   @return [Symbol, Telnyx::Models::Enterprises::ReputationEnableParams::CheckFrequency, nil]
+        optional :check_frequency, enum: -> { Telnyx::Enterprises::ReputationEnableParams::CheckFrequency }
 
         # @!method initialize(enterprise_id:, loa_document_id:, check_frequency: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::Enterprises::ReputationCreateParams} for more details.
+        #   {Telnyx::Models::Enterprises::ReputationEnableParams} for more details.
         #
         #   @param enterprise_id [String]
         #
         #   @param loa_document_id [String] ID of the signed Letter of Authorization (LOA) document uploaded to the document
         #
-        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationCreateParams::CheckFrequency] Frequency for automatically refreshing reputation data
+        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationEnableParams::CheckFrequency] Frequency for automatically refreshing reputation data
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
