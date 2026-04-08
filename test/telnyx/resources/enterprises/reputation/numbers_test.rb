@@ -3,27 +3,6 @@
 require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Test::ResourceTest
-  def test_create_required_params
-    skip("Mock server tests are disabled")
-
-    response =
-      @telnyx.enterprises.reputation.numbers.create(
-        "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
-        phone_numbers: ["+16035551234"]
-      )
-
-    assert_pattern do
-      response => Telnyx::Models::Enterprises::Reputation::NumberCreateResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data]) | nil,
-        meta: Telnyx::MetaInfo | nil
-      }
-    end
-  end
-
   def test_retrieve_required_params
     skip("Mock server tests are disabled")
 
@@ -72,11 +51,32 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
     end
   end
 
-  def test_delete_required_params
+  def test_associate_required_params
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.enterprises.reputation.numbers.delete(
+      @telnyx.enterprises.reputation.numbers.associate(
+        "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
+        phone_numbers: ["+16035551234"]
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]) | nil,
+        meta: Telnyx::MetaInfo | nil
+      }
+    end
+  end
+
+  def test_disassociate_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.enterprises.reputation.numbers.disassociate(
         "+16035551234",
         enterprise_id: "6a09cdc3-8948-47f0-aa62-74ac943d6c58"
       )
