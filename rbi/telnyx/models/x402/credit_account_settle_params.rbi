@@ -22,10 +22,10 @@ module Telnyx
         # Base64-encoded signed payment authorization (x402 PaymentPayload). Can
         # alternatively be provided via the PAYMENT-SIGNATURE header.
         sig { returns(T.nilable(String)) }
-        attr_reader :payment_signature
+        attr_reader :body_payment_signature
 
-        sig { params(payment_signature: String).void }
-        attr_writer :payment_signature
+        sig { params(body_payment_signature: String).void }
+        attr_writer :body_payment_signature
 
         sig { returns(T.nilable(String)) }
         attr_reader :header_payment_signature
@@ -36,7 +36,7 @@ module Telnyx
         sig do
           params(
             id: String,
-            payment_signature: String,
+            body_payment_signature: String,
             header_payment_signature: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -46,7 +46,7 @@ module Telnyx
           id:,
           # Base64-encoded signed payment authorization (x402 PaymentPayload). Can
           # alternatively be provided via the PAYMENT-SIGNATURE header.
-          payment_signature: nil,
+          body_payment_signature: nil,
           header_payment_signature: nil,
           request_options: {}
         )
@@ -56,7 +56,7 @@ module Telnyx
           override.returns(
             {
               id: String,
-              payment_signature: String,
+              body_payment_signature: String,
               header_payment_signature: String,
               request_options: Telnyx::RequestOptions
             }

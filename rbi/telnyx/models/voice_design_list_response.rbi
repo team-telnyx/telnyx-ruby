@@ -143,9 +143,19 @@ module Telnyx
             :telnyx,
             Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
           )
+        TELNYX_2 =
+          T.let(
+            :Telnyx,
+            Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+          )
         MINIMAX =
           T.let(
             :minimax,
+            Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
+          )
+        MINIMAX_2 =
+          T.let(
+            :Minimax,
             Telnyx::Models::VoiceDesignListResponse::Provider::TaggedSymbol
           )
 

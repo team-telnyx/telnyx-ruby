@@ -22,6 +22,7 @@ module Telnyx
             machine_detection_speech_end_threshold: Integer,
             machine_detection_speech_threshold: Integer,
             machine_detection_timeout: Integer,
+            media_encryption: Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption,
             preferred_codecs: String,
             record: bool,
             recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels,
@@ -123,6 +124,12 @@ module Telnyx
           attr_reader machine_detection_timeout: Integer?
 
           def machine_detection_timeout=: (Integer) -> Integer
+
+          attr_reader media_encryption: Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption?
+
+          def media_encryption=: (
+            Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption
+          ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption
 
           attr_reader preferred_codecs: String?
 
@@ -253,6 +260,7 @@ module Telnyx
             ?machine_detection_speech_end_threshold: Integer,
             ?machine_detection_speech_threshold: Integer,
             ?machine_detection_timeout: Integer,
+            ?media_encryption: Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption,
             ?preferred_codecs: String,
             ?record: bool,
             ?recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels,
@@ -298,6 +306,7 @@ module Telnyx
             machine_detection_speech_end_threshold: Integer,
             machine_detection_speech_threshold: Integer,
             machine_detection_timeout: Integer,
+            media_encryption: Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption,
             preferred_codecs: String,
             record: bool,
             recording_channels: Telnyx::Models::Texml::Accounts::CallCallsParams::recording_channels,
@@ -368,6 +377,18 @@ module Telnyx
             DETECT_MESSAGE_END: :DetectMessageEnd
 
             def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::machine_detection]
+          end
+
+          type media_encryption = :disabled | :SRTP | :DTLS
+
+          module MediaEncryption
+            extend Telnyx::Internal::Type::Enum
+
+            DISABLED: :disabled
+            SRTP: :SRTP
+            DTLS: :DTLS
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::media_encryption]
           end
 
           type recording_channels = :mono | :dual

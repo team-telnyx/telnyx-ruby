@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::ReputationPhoneNumberWithReputationData | nil
+        data: Telnyx::Models::Reputation::NumberRetrieveResponse::Data | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::ReputationPhoneNumberWithReputationData
+      row => Telnyx::Models::Reputation::NumberListResponse
     end
 
     assert_pattern do
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
         created_at: Time | nil,
         enterprise_id: String | nil,
         phone_number: String | nil,
-        reputation_data: Telnyx::ReputationData | nil,
+        reputation_data: Telnyx::Models::Reputation::NumberListResponse::ReputationData | nil,
         updated_at: Time | nil
       }
     end

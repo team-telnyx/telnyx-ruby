@@ -25,7 +25,7 @@ module Telnyx
         ?page_size: Integer,
         ?sort: Telnyx::Models::VoiceCloneListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceCloneData]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VoiceCloneListResponse]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

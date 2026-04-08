@@ -60,13 +60,15 @@ module Telnyx
         updated_at: Time
       }
 
-      type provider = :telnyx | :minimax
+      type provider = :telnyx | :minimax | :Telnyx | :Minimax
 
       module Provider
         extend Telnyx::Internal::Type::Enum
 
         TELNYX: :telnyx
+        TELNYX_2: :Telnyx
         MINIMAX: :minimax
+        MINIMAX_2: :Minimax
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceDesignListResponse::provider]
       end

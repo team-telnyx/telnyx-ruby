@@ -1,0 +1,444 @@
+module Telnyx
+  module Models
+    type texml_initiate_ai_call_params =
+      {
+        connection_id: String,
+        ai_assistant_id: String,
+        from: String,
+        to: String,
+        ai_assistant_dynamic_variables: ::Hash[Symbol, String],
+        ai_assistant_version: String,
+        async_amd: bool,
+        async_amd_status_callback: String,
+        async_amd_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::async_amd_status_callback_method,
+        caller_id: String,
+        conversation_callback: String,
+        conversation_callback_method: Telnyx::Models::TexmlInitiateAICallParams::conversation_callback_method,
+        conversation_callbacks: ::Array[String],
+        custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
+        detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
+        machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        machine_detection_silence_timeout: Integer,
+        machine_detection_speech_end_threshold: Integer,
+        machine_detection_speech_threshold: Integer,
+        machine_detection_timeout: Integer,
+        passports: String,
+        preferred_codecs: String,
+        record: bool,
+        recording_channels: Telnyx::Models::TexmlInitiateAICallParams::recording_channels,
+        recording_status_callback: String,
+        recording_status_callback_event: String,
+        recording_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::recording_status_callback_method,
+        recording_timeout: Integer,
+        recording_track: Telnyx::Models::TexmlInitiateAICallParams::recording_track,
+        send_recording_url: bool,
+        sip_auth_password: String,
+        sip_auth_username: String,
+        sip_region: Telnyx::Models::TexmlInitiateAICallParams::sip_region,
+        status_callback: String,
+        status_callback_event: String,
+        status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::status_callback_method,
+        status_callbacks: ::Array[String],
+        time_limit: Integer,
+        timeout_seconds: Integer,
+        trim: Telnyx::Models::TexmlInitiateAICallParams::trim
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TexmlInitiateAICallParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor connection_id: String
+
+      attr_accessor ai_assistant_id: String
+
+      attr_accessor from: String
+
+      attr_accessor to: String
+
+      attr_reader ai_assistant_dynamic_variables: ::Hash[Symbol, String]?
+
+      def ai_assistant_dynamic_variables=: (
+        ::Hash[Symbol, String]
+      ) -> ::Hash[Symbol, String]
+
+      attr_reader ai_assistant_version: String?
+
+      def ai_assistant_version=: (String) -> String
+
+      attr_reader async_amd: bool?
+
+      def async_amd=: (bool) -> bool
+
+      attr_reader async_amd_status_callback: String?
+
+      def async_amd_status_callback=: (String) -> String
+
+      attr_reader async_amd_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::async_amd_status_callback_method?
+
+      def async_amd_status_callback_method=: (
+        Telnyx::Models::TexmlInitiateAICallParams::async_amd_status_callback_method
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::async_amd_status_callback_method
+
+      attr_reader caller_id: String?
+
+      def caller_id=: (String) -> String
+
+      attr_reader conversation_callback: String?
+
+      def conversation_callback=: (String) -> String
+
+      attr_reader conversation_callback_method: Telnyx::Models::TexmlInitiateAICallParams::conversation_callback_method?
+
+      def conversation_callback_method=: (
+        Telnyx::Models::TexmlInitiateAICallParams::conversation_callback_method
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::conversation_callback_method
+
+      attr_reader conversation_callbacks: ::Array[String]?
+
+      def conversation_callbacks=: (::Array[String]) -> ::Array[String]
+
+      attr_reader custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader]?
+
+      def custom_headers=: (
+        ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader]
+      ) -> ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader]
+
+      attr_reader detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode?
+
+      def detection_mode=: (
+        Telnyx::Models::TexmlInitiateAICallParams::detection_mode
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::detection_mode
+
+      attr_reader machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection?
+
+      def machine_detection=: (
+        Telnyx::Models::TexmlInitiateAICallParams::machine_detection
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::machine_detection
+
+      attr_reader machine_detection_silence_timeout: Integer?
+
+      def machine_detection_silence_timeout=: (Integer) -> Integer
+
+      attr_reader machine_detection_speech_end_threshold: Integer?
+
+      def machine_detection_speech_end_threshold=: (Integer) -> Integer
+
+      attr_reader machine_detection_speech_threshold: Integer?
+
+      def machine_detection_speech_threshold=: (Integer) -> Integer
+
+      attr_reader machine_detection_timeout: Integer?
+
+      def machine_detection_timeout=: (Integer) -> Integer
+
+      attr_reader passports: String?
+
+      def passports=: (String) -> String
+
+      attr_reader preferred_codecs: String?
+
+      def preferred_codecs=: (String) -> String
+
+      attr_reader record: bool?
+
+      def record=: (bool) -> bool
+
+      attr_reader recording_channels: Telnyx::Models::TexmlInitiateAICallParams::recording_channels?
+
+      def recording_channels=: (
+        Telnyx::Models::TexmlInitiateAICallParams::recording_channels
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::recording_channels
+
+      attr_reader recording_status_callback: String?
+
+      def recording_status_callback=: (String) -> String
+
+      attr_reader recording_status_callback_event: String?
+
+      def recording_status_callback_event=: (String) -> String
+
+      attr_reader recording_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::recording_status_callback_method?
+
+      def recording_status_callback_method=: (
+        Telnyx::Models::TexmlInitiateAICallParams::recording_status_callback_method
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::recording_status_callback_method
+
+      attr_reader recording_timeout: Integer?
+
+      def recording_timeout=: (Integer) -> Integer
+
+      attr_reader recording_track: Telnyx::Models::TexmlInitiateAICallParams::recording_track?
+
+      def recording_track=: (
+        Telnyx::Models::TexmlInitiateAICallParams::recording_track
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::recording_track
+
+      attr_reader send_recording_url: bool?
+
+      def send_recording_url=: (bool) -> bool
+
+      attr_reader sip_auth_password: String?
+
+      def sip_auth_password=: (String) -> String
+
+      attr_reader sip_auth_username: String?
+
+      def sip_auth_username=: (String) -> String
+
+      attr_reader sip_region: Telnyx::Models::TexmlInitiateAICallParams::sip_region?
+
+      def sip_region=: (
+        Telnyx::Models::TexmlInitiateAICallParams::sip_region
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::sip_region
+
+      attr_reader status_callback: String?
+
+      def status_callback=: (String) -> String
+
+      attr_reader status_callback_event: String?
+
+      def status_callback_event=: (String) -> String
+
+      attr_reader status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::status_callback_method?
+
+      def status_callback_method=: (
+        Telnyx::Models::TexmlInitiateAICallParams::status_callback_method
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::status_callback_method
+
+      attr_reader status_callbacks: ::Array[String]?
+
+      def status_callbacks=: (::Array[String]) -> ::Array[String]
+
+      attr_reader time_limit: Integer?
+
+      def time_limit=: (Integer) -> Integer
+
+      attr_reader timeout_seconds: Integer?
+
+      def timeout_seconds=: (Integer) -> Integer
+
+      attr_reader trim: Telnyx::Models::TexmlInitiateAICallParams::trim?
+
+      def trim=: (
+        Telnyx::Models::TexmlInitiateAICallParams::trim
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::trim
+
+      def initialize: (
+        connection_id: String,
+        ai_assistant_id: String,
+        from: String,
+        to: String,
+        ?ai_assistant_dynamic_variables: ::Hash[Symbol, String],
+        ?ai_assistant_version: String,
+        ?async_amd: bool,
+        ?async_amd_status_callback: String,
+        ?async_amd_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::async_amd_status_callback_method,
+        ?caller_id: String,
+        ?conversation_callback: String,
+        ?conversation_callback_method: Telnyx::Models::TexmlInitiateAICallParams::conversation_callback_method,
+        ?conversation_callbacks: ::Array[String],
+        ?custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
+        ?detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
+        ?machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        ?machine_detection_silence_timeout: Integer,
+        ?machine_detection_speech_end_threshold: Integer,
+        ?machine_detection_speech_threshold: Integer,
+        ?machine_detection_timeout: Integer,
+        ?passports: String,
+        ?preferred_codecs: String,
+        ?record: bool,
+        ?recording_channels: Telnyx::Models::TexmlInitiateAICallParams::recording_channels,
+        ?recording_status_callback: String,
+        ?recording_status_callback_event: String,
+        ?recording_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::recording_status_callback_method,
+        ?recording_timeout: Integer,
+        ?recording_track: Telnyx::Models::TexmlInitiateAICallParams::recording_track,
+        ?send_recording_url: bool,
+        ?sip_auth_password: String,
+        ?sip_auth_username: String,
+        ?sip_region: Telnyx::Models::TexmlInitiateAICallParams::sip_region,
+        ?status_callback: String,
+        ?status_callback_event: String,
+        ?status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::status_callback_method,
+        ?status_callbacks: ::Array[String],
+        ?time_limit: Integer,
+        ?timeout_seconds: Integer,
+        ?trim: Telnyx::Models::TexmlInitiateAICallParams::trim,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        connection_id: String,
+        ai_assistant_id: String,
+        from: String,
+        to: String,
+        ai_assistant_dynamic_variables: ::Hash[Symbol, String],
+        ai_assistant_version: String,
+        async_amd: bool,
+        async_amd_status_callback: String,
+        async_amd_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::async_amd_status_callback_method,
+        caller_id: String,
+        conversation_callback: String,
+        conversation_callback_method: Telnyx::Models::TexmlInitiateAICallParams::conversation_callback_method,
+        conversation_callbacks: ::Array[String],
+        custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
+        detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
+        machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        machine_detection_silence_timeout: Integer,
+        machine_detection_speech_end_threshold: Integer,
+        machine_detection_speech_threshold: Integer,
+        machine_detection_timeout: Integer,
+        passports: String,
+        preferred_codecs: String,
+        record: bool,
+        recording_channels: Telnyx::Models::TexmlInitiateAICallParams::recording_channels,
+        recording_status_callback: String,
+        recording_status_callback_event: String,
+        recording_status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::recording_status_callback_method,
+        recording_timeout: Integer,
+        recording_track: Telnyx::Models::TexmlInitiateAICallParams::recording_track,
+        send_recording_url: bool,
+        sip_auth_password: String,
+        sip_auth_username: String,
+        sip_region: Telnyx::Models::TexmlInitiateAICallParams::sip_region,
+        status_callback: String,
+        status_callback_event: String,
+        status_callback_method: Telnyx::Models::TexmlInitiateAICallParams::status_callback_method,
+        status_callbacks: ::Array[String],
+        time_limit: Integer,
+        timeout_seconds: Integer,
+        trim: Telnyx::Models::TexmlInitiateAICallParams::trim,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type async_amd_status_callback_method = :GET | :POST
+
+      module AsyncAmdStatusCallbackMethod
+        extend Telnyx::Internal::Type::Enum
+
+        GET: :GET
+        POST: :POST
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::async_amd_status_callback_method]
+      end
+
+      type conversation_callback_method = :GET | :POST
+
+      module ConversationCallbackMethod
+        extend Telnyx::Internal::Type::Enum
+
+        GET: :GET
+        POST: :POST
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::conversation_callback_method]
+      end
+
+      type custom_header = { name: String, value: String }
+
+      class CustomHeader < Telnyx::Internal::Type::BaseModel
+        attr_accessor name: String
+
+        attr_accessor value: String
+
+        def initialize: (name: String, value: String) -> void
+
+        def to_hash: -> { name: String, value: String }
+      end
+
+      type detection_mode = :Premium | :Regular
+
+      module DetectionMode
+        extend Telnyx::Internal::Type::Enum
+
+        PREMIUM: :Premium
+        REGULAR: :Regular
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::detection_mode]
+      end
+
+      type machine_detection = :Enable | :Disable | :DetectMessageEnd
+
+      module MachineDetection
+        extend Telnyx::Internal::Type::Enum
+
+        ENABLE: :Enable
+        DISABLE: :Disable
+        DETECT_MESSAGE_END: :DetectMessageEnd
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::machine_detection]
+      end
+
+      type recording_channels = :mono | :dual
+
+      module RecordingChannels
+        extend Telnyx::Internal::Type::Enum
+
+        MONO: :mono
+        DUAL: :dual
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::recording_channels]
+      end
+
+      type recording_status_callback_method = :GET | :POST
+
+      module RecordingStatusCallbackMethod
+        extend Telnyx::Internal::Type::Enum
+
+        GET: :GET
+        POST: :POST
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::recording_status_callback_method]
+      end
+
+      type recording_track = :inbound | :outbound | :both
+
+      module RecordingTrack
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND: :inbound
+        OUTBOUND: :outbound
+        BOTH: :both
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::recording_track]
+      end
+
+      type sip_region = :US | :Europe | :Canada | :Australia | :"Middle East"
+
+      module SipRegion
+        extend Telnyx::Internal::Type::Enum
+
+        US: :US
+        EUROPE: :Europe
+        CANADA: :Canada
+        AUSTRALIA: :Australia
+        MIDDLE_EAST: :"Middle East"
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::sip_region]
+      end
+
+      type status_callback_method = :GET | :POST
+
+      module StatusCallbackMethod
+        extend Telnyx::Internal::Type::Enum
+
+        GET: :GET
+        POST: :POST
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::status_callback_method]
+      end
+
+      type trim = :"trim-silence" | :"do-not-trim"
+
+      module Trim
+        extend Telnyx::Internal::Type::Enum
+
+        TRIM_SILENCE: :"trim-silence"
+        DO_NOT_TRIM: :"do-not-trim"
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::trim]
+      end
+    end
+  end
+end

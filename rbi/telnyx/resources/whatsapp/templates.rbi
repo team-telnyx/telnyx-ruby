@@ -13,11 +13,11 @@ module Telnyx
             components:
               T::Array[
                 T.any(
-                  Telnyx::Whatsapp::TemplateCreateParams::Component::Header::OrHash,
-                  Telnyx::Whatsapp::TemplateCreateParams::Component::Body::OrHash,
-                  Telnyx::Whatsapp::TemplateCreateParams::Component::Footer::OrHash,
-                  Telnyx::Whatsapp::TemplateCreateParams::Component::Buttons::OrHash,
-                  Telnyx::Whatsapp::TemplateCreateParams::Component::Carousel::OrHash
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateHeaderComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateBodyComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateFooterComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateButtonsComponent::OrHash,
+                  Telnyx::Whatsapp::TemplateCreateParams::Component::WhatsappTemplateCarouselComponent::OrHash
                 )
               ],
             language: String,

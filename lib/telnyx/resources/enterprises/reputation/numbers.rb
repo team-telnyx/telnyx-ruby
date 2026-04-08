@@ -7,44 +7,6 @@ module Telnyx
         # Associate phone numbers with an enterprise for reputation monitoring and
         # retrieve reputation scores
         class Numbers
-          # Associate one or more phone numbers with an enterprise for Number Reputation
-          # monitoring.
-          #
-          # **Validations:**
-          #
-          # - Phone numbers must be in E.164 format (e.g., `+16035551234`)
-          # - Phone numbers must be in-service and belong to your account (verified via
-          #   Warehouse)
-          # - Phone numbers must be US local numbers
-          # - Phone numbers cannot already be associated with any enterprise
-          #
-          # **Note:** This operation is atomic — if any number fails validation, the entire
-          # request fails.
-          #
-          # **Maximum:** 100 phone numbers per request.
-          #
-          # @overload create(enterprise_id, phone_numbers:, request_options: {})
-          #
-          # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
-          #
-          # @param phone_numbers [Array<String>] List of phone numbers to associate for reputation monitoring (max 100)
-          #
-          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-          #
-          # @return [Telnyx::Models::Enterprises::Reputation::NumberCreateResponse]
-          #
-          # @see Telnyx::Models::Enterprises::Reputation::NumberCreateParams
-          def create(enterprise_id, params)
-            parsed, options = Telnyx::Enterprises::Reputation::NumberCreateParams.dump_request(params)
-            @client.request(
-              method: :post,
-              path: ["enterprises/%1$s/reputation/numbers", enterprise_id],
-              body: parsed,
-              model: Telnyx::Models::Enterprises::Reputation::NumberCreateResponse,
-              options: options
-            )
-          end
-
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Enterprises::Reputation::NumberRetrieveParams} for more
           # details.
@@ -115,7 +77,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ReputationPhoneNumberWithReputationData>]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Enterprises::Reputation::NumberListResponse>]
           #
           # @see Telnyx::Models::Enterprises::Reputation::NumberListParams
           def list(enterprise_id, params = {})
@@ -126,7 +88,45 @@ module Telnyx
               path: ["enterprises/%1$s/reputation/numbers", enterprise_id],
               query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
-              model: Telnyx::ReputationPhoneNumberWithReputationData,
+              model: Telnyx::Models::Enterprises::Reputation::NumberListResponse,
+              options: options
+            )
+          end
+
+          # Associate one or more phone numbers with an enterprise for Number Reputation
+          # monitoring.
+          #
+          # **Validations:**
+          #
+          # - Phone numbers must be in E.164 format (e.g., `+16035551234`)
+          # - Phone numbers must be in-service and belong to your account (verified via
+          #   Warehouse)
+          # - Phone numbers must be US local numbers
+          # - Phone numbers cannot already be associated with any enterprise
+          #
+          # **Note:** This operation is atomic — if any number fails validation, the entire
+          # request fails.
+          #
+          # **Maximum:** 100 phone numbers per request.
+          #
+          # @overload associate(enterprise_id, phone_numbers:, request_options: {})
+          #
+          # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
+          #
+          # @param phone_numbers [Array<String>] List of phone numbers to associate for reputation monitoring (max 100)
+          #
+          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse]
+          #
+          # @see Telnyx::Models::Enterprises::Reputation::NumberAssociateParams
+          def associate(enterprise_id, params)
+            parsed, options = Telnyx::Enterprises::Reputation::NumberAssociateParams.dump_request(params)
+            @client.request(
+              method: :post,
+              path: ["enterprises/%1$s/reputation/numbers", enterprise_id],
+              body: parsed,
+              model: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse,
               options: options
             )
           end
@@ -136,7 +136,7 @@ module Telnyx
           # The number will no longer be tracked and reputation data will no longer be
           # refreshed.
           #
-          # @overload delete(phone_number, enterprise_id:, request_options: {})
+          # @overload disassociate(phone_number, enterprise_id:, request_options: {})
           #
           # @param phone_number [String] Phone number in E.164 format
           #
@@ -146,9 +146,9 @@ module Telnyx
           #
           # @return [nil]
           #
-          # @see Telnyx::Models::Enterprises::Reputation::NumberDeleteParams
-          def delete(phone_number, params)
-            parsed, options = Telnyx::Enterprises::Reputation::NumberDeleteParams.dump_request(params)
+          # @see Telnyx::Models::Enterprises::Reputation::NumberDisassociateParams
+          def disassociate(phone_number, params)
+            parsed, options = Telnyx::Enterprises::Reputation::NumberDisassociateParams.dump_request(params)
             enterprise_id =
               parsed.delete(:enterprise_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")

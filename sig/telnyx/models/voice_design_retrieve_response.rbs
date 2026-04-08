@@ -1,15 +1,146 @@
 module Telnyx
   module Models
-    type voice_design_retrieve_response = { data: Telnyx::VoiceDesignData }
+    type voice_design_retrieve_response =
+      { data: Telnyx::Models::VoiceDesignRetrieveResponse::Data }
 
     class VoiceDesignRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::VoiceDesignData?
+      attr_reader data: Telnyx::Models::VoiceDesignRetrieveResponse::Data?
 
-      def data=: (Telnyx::VoiceDesignData) -> Telnyx::VoiceDesignData
+      def data=: (
+        Telnyx::Models::VoiceDesignRetrieveResponse::Data
+      ) -> Telnyx::Models::VoiceDesignRetrieveResponse::Data
 
-      def initialize: (?data: Telnyx::VoiceDesignData) -> void
+      def initialize: (
+        ?data: Telnyx::Models::VoiceDesignRetrieveResponse::Data
+      ) -> void
 
-      def to_hash: -> { data: Telnyx::VoiceDesignData }
+      def to_hash: -> {
+        data: Telnyx::Models::VoiceDesignRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          created_at: Time,
+          name: String,
+          prompt: String,
+          provider: Telnyx::Models::VoiceDesignRetrieveResponse::Data::provider?,
+          provider_supported_models: ::Array[String],
+          provider_voice_id: String?,
+          record_type: Telnyx::Models::VoiceDesignRetrieveResponse::Data::record_type,
+          text: String,
+          updated_at: Time,
+          version: Integer,
+          version_created_at: Time,
+          voice_sample_size: Integer
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader prompt: String?
+
+        def prompt=: (String) -> String
+
+        attr_accessor provider: Telnyx::Models::VoiceDesignRetrieveResponse::Data::provider?
+
+        attr_reader provider_supported_models: ::Array[String]?
+
+        def provider_supported_models=: (::Array[String]) -> ::Array[String]
+
+        attr_accessor provider_voice_id: String?
+
+        attr_reader record_type: Telnyx::Models::VoiceDesignRetrieveResponse::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::VoiceDesignRetrieveResponse::Data::record_type
+        ) -> Telnyx::Models::VoiceDesignRetrieveResponse::Data::record_type
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader version: Integer?
+
+        def version=: (Integer) -> Integer
+
+        attr_reader version_created_at: Time?
+
+        def version_created_at=: (Time) -> Time
+
+        attr_reader voice_sample_size: Integer?
+
+        def voice_sample_size=: (Integer) -> Integer
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?name: String,
+          ?prompt: String,
+          ?provider: Telnyx::Models::VoiceDesignRetrieveResponse::Data::provider?,
+          ?provider_supported_models: ::Array[String],
+          ?provider_voice_id: String?,
+          ?record_type: Telnyx::Models::VoiceDesignRetrieveResponse::Data::record_type,
+          ?text: String,
+          ?updated_at: Time,
+          ?version: Integer,
+          ?version_created_at: Time,
+          ?voice_sample_size: Integer
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          name: String,
+          prompt: String,
+          provider: Telnyx::Models::VoiceDesignRetrieveResponse::Data::provider?,
+          provider_supported_models: ::Array[String],
+          provider_voice_id: String?,
+          record_type: Telnyx::Models::VoiceDesignRetrieveResponse::Data::record_type,
+          text: String,
+          updated_at: Time,
+          version: Integer,
+          version_created_at: Time,
+          voice_sample_size: Integer
+        }
+
+        type provider = :telnyx | :minimax | :Telnyx | :Minimax
+
+        module Provider
+          extend Telnyx::Internal::Type::Enum
+
+          TELNYX: :telnyx
+          TELNYX_2: :Telnyx
+          MINIMAX: :minimax
+          MINIMAX_2: :Minimax
+
+          def self?.values: -> ::Array[Telnyx::Models::VoiceDesignRetrieveResponse::Data::provider]
+        end
+
+        type record_type = :voice_design
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          VOICE_DESIGN: :voice_design
+
+          def self?.values: -> ::Array[Telnyx::Models::VoiceDesignRetrieveResponse::Data::record_type]
+        end
+      end
     end
   end
 end

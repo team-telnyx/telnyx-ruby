@@ -9,13 +9,13 @@ module Telnyx
 
       # @!attribute billing_address
       #
-      #   @return [Telnyx::Models::BillingAddress]
-      required :billing_address, -> { Telnyx::BillingAddress }
+      #   @return [Telnyx::Models::EnterpriseCreateParams::BillingAddress]
+      required :billing_address, -> { Telnyx::EnterpriseCreateParams::BillingAddress }
 
       # @!attribute billing_contact
       #
-      #   @return [Telnyx::Models::BillingContact]
-      required :billing_contact, -> { Telnyx::BillingContact }
+      #   @return [Telnyx::Models::EnterpriseCreateParams::BillingContact]
+      required :billing_contact, -> { Telnyx::EnterpriseCreateParams::BillingContact }
 
       # @!attribute country_code
       #   Country code. Currently only 'US' is accepted.
@@ -64,8 +64,8 @@ module Telnyx
       #   Organization contact information. Note: the response returns this object with
       #   the phone field as 'phone' (not 'phone_number').
       #
-      #   @return [Telnyx::Models::OrganizationContact]
-      required :organization_contact, -> { Telnyx::OrganizationContact }
+      #   @return [Telnyx::Models::EnterpriseCreateParams::OrganizationContact]
+      required :organization_contact, -> { Telnyx::EnterpriseCreateParams::OrganizationContact }
 
       # @!attribute organization_legal_type
       #   Legal structure type
@@ -75,8 +75,9 @@ module Telnyx
 
       # @!attribute organization_physical_address
       #
-      #   @return [Telnyx::Models::PhysicalAddress]
-      required :organization_physical_address, -> { Telnyx::PhysicalAddress }
+      #   @return [Telnyx::Models::EnterpriseCreateParams::OrganizationPhysicalAddress]
+      required :organization_physical_address,
+               -> { Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress }
 
       # @!attribute organization_type
       #   Type of organization
@@ -130,9 +131,9 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::EnterpriseCreateParams} for more details.
       #
-      #   @param billing_address [Telnyx::Models::BillingAddress]
+      #   @param billing_address [Telnyx::Models::EnterpriseCreateParams::BillingAddress]
       #
-      #   @param billing_contact [Telnyx::Models::BillingContact]
+      #   @param billing_contact [Telnyx::Models::EnterpriseCreateParams::BillingContact]
       #
       #   @param country_code [String] Country code. Currently only 'US' is accepted.
       #
@@ -146,11 +147,11 @@ module Telnyx
       #
       #   @param number_of_employees [Symbol, Telnyx::Models::EnterpriseCreateParams::NumberOfEmployees] Employee count range
       #
-      #   @param organization_contact [Telnyx::Models::OrganizationContact] Organization contact information. Note: the response returns this object with th
+      #   @param organization_contact [Telnyx::Models::EnterpriseCreateParams::OrganizationContact] Organization contact information. Note: the response returns this object with th
       #
       #   @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType] Legal structure type
       #
-      #   @param organization_physical_address [Telnyx::Models::PhysicalAddress]
+      #   @param organization_physical_address [Telnyx::Models::EnterpriseCreateParams::OrganizationPhysicalAddress]
       #
       #   @param organization_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType] Type of organization
       #
@@ -170,6 +171,92 @@ module Telnyx
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
+      class BillingAddress < Telnyx::Internal::Type::BaseModel
+        # @!attribute administrative_area
+        #   State or province
+        #
+        #   @return [String]
+        required :administrative_area, String
+
+        # @!attribute city
+        #   City name
+        #
+        #   @return [String]
+        required :city, String
+
+        # @!attribute country
+        #   Country name (e.g., United States)
+        #
+        #   @return [String]
+        required :country, String
+
+        # @!attribute postal_code
+        #   ZIP or postal code
+        #
+        #   @return [String]
+        required :postal_code, String
+
+        # @!attribute street_address
+        #   Street address
+        #
+        #   @return [String]
+        required :street_address, String
+
+        # @!attribute extended_address
+        #   Additional address line (suite, apt, etc.)
+        #
+        #   @return [String, nil]
+        optional :extended_address, String, nil?: true
+
+        # @!method initialize(administrative_area:, city:, country:, postal_code:, street_address:, extended_address: nil)
+        #   @param administrative_area [String] State or province
+        #
+        #   @param city [String] City name
+        #
+        #   @param country [String] Country name (e.g., United States)
+        #
+        #   @param postal_code [String] ZIP or postal code
+        #
+        #   @param street_address [String] Street address
+        #
+        #   @param extended_address [String, nil] Additional address line (suite, apt, etc.)
+      end
+
+      class BillingContact < Telnyx::Internal::Type::BaseModel
+        # @!attribute email
+        #   Contact's email address
+        #
+        #   @return [String]
+        required :email, String
+
+        # @!attribute first_name
+        #   Contact's first name
+        #
+        #   @return [String]
+        required :first_name, String
+
+        # @!attribute last_name
+        #   Contact's last name
+        #
+        #   @return [String]
+        required :last_name, String
+
+        # @!attribute phone_number
+        #   Contact's phone number (10-15 digits)
+        #
+        #   @return [String]
+        required :phone_number, String
+
+        # @!method initialize(email:, first_name:, last_name:, phone_number:)
+        #   @param email [String] Contact's email address
+        #
+        #   @param first_name [String] Contact's first name
+        #
+        #   @param last_name [String] Contact's last name
+        #
+        #   @param phone_number [String] Contact's phone number (10-15 digits)
+      end
+
       # Employee count range
       module NumberOfEmployees
         extend Telnyx::Internal::Type::Enum
@@ -180,10 +267,56 @@ module Telnyx
         NUMBER_OF_EMPLOYEES_201_500 = :"201-500"
         NUMBER_OF_EMPLOYEES_501_2000 = :"501-2000"
         NUMBER_OF_EMPLOYEES_2001_10000 = :"2001-10000"
-        NUMBER_OF_EMPLOYEES_10001_PLUS = :"10001+"
+        NUMBER_OF_EMPLOYEES_10001 = :"10001+"
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class OrganizationContact < Telnyx::Internal::Type::BaseModel
+        # @!attribute email
+        #   Contact's email address
+        #
+        #   @return [String]
+        required :email, String
+
+        # @!attribute first_name
+        #   Contact's first name
+        #
+        #   @return [String]
+        required :first_name, String
+
+        # @!attribute job_title
+        #   Contact's job title (required)
+        #
+        #   @return [String]
+        required :job_title, String
+
+        # @!attribute last_name
+        #   Contact's last name
+        #
+        #   @return [String]
+        required :last_name, String
+
+        # @!attribute phone
+        #   Contact's phone number in E.164 format
+        #
+        #   @return [String]
+        required :phone, String
+
+        # @!method initialize(email:, first_name:, job_title:, last_name:, phone:)
+        #   Organization contact information. Note: the response returns this object with
+        #   the phone field as 'phone' (not 'phone_number').
+        #
+        #   @param email [String] Contact's email address
+        #
+        #   @param first_name [String] Contact's first name
+        #
+        #   @param job_title [String] Contact's job title (required)
+        #
+        #   @param last_name [String] Contact's last name
+        #
+        #   @param phone [String] Contact's phone number in E.164 format
       end
 
       # Legal structure type
@@ -198,6 +331,57 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class OrganizationPhysicalAddress < Telnyx::Internal::Type::BaseModel
+        # @!attribute administrative_area
+        #   State or province
+        #
+        #   @return [String]
+        required :administrative_area, String
+
+        # @!attribute city
+        #   City name
+        #
+        #   @return [String]
+        required :city, String
+
+        # @!attribute country
+        #   Country name (e.g., United States)
+        #
+        #   @return [String]
+        required :country, String
+
+        # @!attribute postal_code
+        #   ZIP or postal code
+        #
+        #   @return [String]
+        required :postal_code, String
+
+        # @!attribute street_address
+        #   Street address
+        #
+        #   @return [String]
+        required :street_address, String
+
+        # @!attribute extended_address
+        #   Additional address line (suite, apt, etc.)
+        #
+        #   @return [String, nil]
+        optional :extended_address, String, nil?: true
+
+        # @!method initialize(administrative_area:, city:, country:, postal_code:, street_address:, extended_address: nil)
+        #   @param administrative_area [String] State or province
+        #
+        #   @param city [String] City name
+        #
+        #   @param country [String] Country name (e.g., United States)
+        #
+        #   @param postal_code [String] ZIP or postal code
+        #
+        #   @param street_address [String] Street address
+        #
+        #   @param extended_address [String, nil] Additional address line (suite, apt, etc.)
       end
 
       # Type of organization
