@@ -4,13 +4,13 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        # @see Telnyx::Resources::Enterprises::Reputation::Numbers#create
-        class NumberCreateResponse < Telnyx::Internal::Type::BaseModel
+        # @see Telnyx::Resources::Enterprises::Reputation::Numbers#associate
+        class NumberAssociateResponse < Telnyx::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Array<Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data>, nil]
+          #   @return [Array<Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data>, nil]
           optional :data,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data] }
 
           # @!attribute meta
           #
@@ -18,7 +18,7 @@ module Telnyx
           optional :meta, -> { Telnyx::MetaInfo }
 
           # @!method initialize(data: nil, meta: nil)
-          #   @param data [Array<Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data>]
+          #   @param data [Array<Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data>]
           #   @param meta [Telnyx::Models::MetaInfo]
 
           class Data < Telnyx::Internal::Type::BaseModel
