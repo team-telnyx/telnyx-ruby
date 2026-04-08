@@ -653,6 +653,12 @@ module Telnyx
     # @return [Telnyx::Resources::TermsOfService]
     attr_reader :terms_of_service
 
+    # Manage pronunciation dictionaries for text-to-speech synthesis. Dictionaries
+    # contain alias items (text replacement) and phoneme items (IPA pronunciation
+    # notation) that control how specific words are spoken.
+    # @return [Telnyx::Resources::PronunciationDicts]
+    attr_reader :pronunciation_dicts
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -910,6 +916,7 @@ module Telnyx
       @enterprises = Telnyx::Resources::Enterprises.new(client: self)
       @reputation = Telnyx::Resources::Reputation.new(client: self)
       @terms_of_service = Telnyx::Resources::TermsOfService.new(client: self)
+      @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
     end
   end
 end

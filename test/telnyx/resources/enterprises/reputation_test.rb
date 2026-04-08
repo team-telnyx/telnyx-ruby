@@ -3,49 +3,49 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::ResourceTest
-  def test_retrieve
-    skip("Mock server tests are disabled")
-
-    response = @telnyx.enterprises.reputation.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
-
-    assert_pattern do
-      response => Telnyx::Models::Enterprises::ReputationRetrieveResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
-      }
-    end
-  end
-
-  def test_disable
-    skip("Mock server tests are disabled")
-
-    response = @telnyx.enterprises.reputation.disable("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
-
-    assert_pattern do
-      response => nil
-    end
-  end
-
-  def test_enable_required_params
+  def test_create_required_params
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.enterprises.reputation.enable(
+      @telnyx.enterprises.reputation.create(
         "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
         loa_document_id: "doc_01HXYZ1234ABCDEF"
       )
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::ReputationEnableResponse
+      response => Telnyx::Models::Enterprises::ReputationCreateResponse
     end
 
     assert_pattern do
       response => {
         data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
       }
+    end
+  end
+
+  def test_list
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.enterprises.reputation.list("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+
+    assert_pattern do
+      response => Telnyx::Models::Enterprises::ReputationListResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
+      }
+    end
+  end
+
+  def test_delete_all
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.enterprises.reputation.delete_all("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+
+    assert_pattern do
+      response => nil
     end
   end
 

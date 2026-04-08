@@ -1,0 +1,33 @@
+module Telnyx
+  module Resources
+    class PronunciationDicts
+      def create: (
+        items: ::Array[Telnyx::Models::PronunciationDictCreateParams::item],
+        name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PronunciationDictCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PronunciationDictRetrieveResponse
+
+      def update: (
+        String id,
+        ?items: ::Array[Telnyx::Models::PronunciationDictUpdateParams::item],
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::PronunciationDictUpdateResponse
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PronunciationDictListResponse]
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

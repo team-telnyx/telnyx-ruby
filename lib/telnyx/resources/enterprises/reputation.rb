@@ -11,61 +11,8 @@ module Telnyx
         # @return [Telnyx::Resources::Enterprises::Reputation::Numbers]
         attr_reader :numbers
 
-        # Retrieve the current Number Reputation settings for an enterprise.
-        #
-        # Returns the enrollment status (`pending`, `approved`, `rejected`, `deleted`),
-        # check frequency, and any rejection reasons.
-        #
-        # Returns `404` if reputation has not been enabled for this enterprise.
-        #
-        # @overload retrieve(enterprise_id, request_options: {})
-        #
-        # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
-        #
-        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-        #
-        # @return [Telnyx::Models::Enterprises::ReputationRetrieveResponse]
-        #
-        # @see Telnyx::Models::Enterprises::ReputationRetrieveParams
-        def retrieve(enterprise_id, params = {})
-          @client.request(
-            method: :get,
-            path: ["enterprises/%1$s/reputation", enterprise_id],
-            model: Telnyx::Models::Enterprises::ReputationRetrieveResponse,
-            options: params[:request_options]
-          )
-        end
-
-        # Disable Number Reputation for an enterprise.
-        #
-        # This will:
-        #
-        # - Delete the reputation settings record
-        # - Log the deletion for audit purposes
-        # - Stop all future automated reputation checks
-        #
-        # **Note:** Can only be performed on `approved` reputation settings.
-        #
-        # @overload disable(enterprise_id, request_options: {})
-        #
-        # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
-        #
-        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-        #
-        # @return [nil]
-        #
-        # @see Telnyx::Models::Enterprises::ReputationDisableParams
-        def disable(enterprise_id, params = {})
-          @client.request(
-            method: :delete,
-            path: ["enterprises/%1$s/reputation", enterprise_id],
-            model: NilClass,
-            options: params[:request_options]
-          )
-        end
-
         # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::Enterprises::ReputationEnableParams} for more details.
+        # {Telnyx::Models::Enterprises::ReputationCreateParams} for more details.
         #
         # Enable Number Reputation service for an enterprise.
         #
@@ -93,27 +40,80 @@ module Telnyx
         # - `monthly` — Once per month
         # - `never` — Manual refresh only
         #
-        # @overload enable(enterprise_id, loa_document_id:, check_frequency: nil, request_options: {})
+        # @overload create(enterprise_id, loa_document_id:, check_frequency: nil, request_options: {})
         #
         # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
         #
         # @param loa_document_id [String] ID of the signed Letter of Authorization (LOA) document uploaded to the document
         #
-        # @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationEnableParams::CheckFrequency] Frequency for automatically refreshing reputation data
+        # @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationCreateParams::CheckFrequency] Frequency for automatically refreshing reputation data
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Enterprises::ReputationEnableResponse]
+        # @return [Telnyx::Models::Enterprises::ReputationCreateResponse]
         #
-        # @see Telnyx::Models::Enterprises::ReputationEnableParams
-        def enable(enterprise_id, params)
-          parsed, options = Telnyx::Enterprises::ReputationEnableParams.dump_request(params)
+        # @see Telnyx::Models::Enterprises::ReputationCreateParams
+        def create(enterprise_id, params)
+          parsed, options = Telnyx::Enterprises::ReputationCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["enterprises/%1$s/reputation", enterprise_id],
             body: parsed,
-            model: Telnyx::Models::Enterprises::ReputationEnableResponse,
+            model: Telnyx::Models::Enterprises::ReputationCreateResponse,
             options: options
+          )
+        end
+
+        # Retrieve the current Number Reputation settings for an enterprise.
+        #
+        # Returns the enrollment status (`pending`, `approved`, `rejected`, `deleted`),
+        # check frequency, and any rejection reasons.
+        #
+        # Returns `404` if reputation has not been enabled for this enterprise.
+        #
+        # @overload list(enterprise_id, request_options: {})
+        #
+        # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Enterprises::ReputationListResponse]
+        #
+        # @see Telnyx::Models::Enterprises::ReputationListParams
+        def list(enterprise_id, params = {})
+          @client.request(
+            method: :get,
+            path: ["enterprises/%1$s/reputation", enterprise_id],
+            model: Telnyx::Models::Enterprises::ReputationListResponse,
+            options: params[:request_options]
+          )
+        end
+
+        # Disable Number Reputation for an enterprise.
+        #
+        # This will:
+        #
+        # - Delete the reputation settings record
+        # - Log the deletion for audit purposes
+        # - Stop all future automated reputation checks
+        #
+        # **Note:** Can only be performed on `approved` reputation settings.
+        #
+        # @overload delete_all(enterprise_id, request_options: {})
+        #
+        # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [nil]
+        #
+        # @see Telnyx::Models::Enterprises::ReputationDeleteAllParams
+        def delete_all(enterprise_id, params = {})
+          @client.request(
+            method: :delete,
+            path: ["enterprises/%1$s/reputation", enterprise_id],
+            model: NilClass,
+            options: params[:request_options]
           )
         end
 

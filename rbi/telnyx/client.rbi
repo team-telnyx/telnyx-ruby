@@ -648,6 +648,12 @@ module Telnyx
     sig { returns(Telnyx::Resources::TermsOfService) }
     attr_reader :terms_of_service
 
+    # Manage pronunciation dictionaries for text-to-speech synthesis. Dictionaries
+    # contain alias items (text replacement) and phoneme items (IPA pronunciation
+    # notation) that control how specific words are spoken.
+    sig { returns(Telnyx::Resources::PronunciationDicts) }
+    attr_reader :pronunciation_dicts
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
