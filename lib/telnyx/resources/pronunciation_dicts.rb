@@ -30,7 +30,7 @@ module Telnyx
       #
       # @overload create(items:, name:, request_options: {})
       #
-      # @param items [Array<Telnyx::Models::PronunciationDictCreateParams::Item::Alias, Telnyx::Models::PronunciationDictCreateParams::Item::Phoneme>] List of pronunciation items (alias or phoneme type). At least one item is requir
+      # @param items [Array<Telnyx::Models::PronunciationDictAliasItem, Telnyx::Models::PronunciationDictPhonemeItem>] List of pronunciation items (alias or phoneme type). At least one item is requir
       #
       # @param name [String] Human-readable name. Must be unique within the organization.
       #
@@ -78,7 +78,7 @@ module Telnyx
       #
       # @param id [String] The UUID of the pronunciation dictionary.
       #
-      # @param items [Array<Telnyx::Models::PronunciationDictUpdateParams::Item::Alias, Telnyx::Models::PronunciationDictUpdateParams::Item::Phoneme>] Updated list of pronunciation items (alias or phoneme type).
+      # @param items [Array<Telnyx::Models::PronunciationDictAliasItem, Telnyx::Models::PronunciationDictPhonemeItem>] Updated list of pronunciation items (alias or phoneme type).
       #
       # @param name [String] Updated dictionary name.
       #
@@ -109,7 +109,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PronunciationDictListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PronunciationDictData>]
       #
       # @see Telnyx::Models::PronunciationDictListParams
       def list(params = {})
@@ -120,7 +120,7 @@ module Telnyx
           path: "pronunciation_dicts",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::PronunciationDictListResponse,
+          model: Telnyx::PronunciationDictData,
           options: options
         )
       end

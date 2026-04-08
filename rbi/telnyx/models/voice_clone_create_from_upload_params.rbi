@@ -19,21 +19,21 @@ module Telnyx
       sig do
         returns(
           T.any(
-            Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone,
-            Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone,
-            Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone
+            Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone,
+            Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone,
+            Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone
           )
         )
       end
-      attr_accessor :body
+      attr_accessor :params
 
       sig do
         params(
-          body:
+          params:
             T.any(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::OrHash
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -41,7 +41,7 @@ module Telnyx
       def self.new(
         # Multipart form data for creating a voice clone from a direct audio upload.
         # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
-        body:,
+        params:,
         request_options: {}
       )
       end
@@ -49,11 +49,11 @@ module Telnyx
       sig do
         override.returns(
           {
-            body:
+            params:
               T.any(
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone
               ),
             request_options: Telnyx::RequestOptions
           }
@@ -64,15 +64,15 @@ module Telnyx
 
       # Multipart form data for creating a voice clone from a direct audio upload.
       # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
-      module Body
+      module Params
         extend Telnyx::Internal::Type::Union
 
         Variants =
           T.type_alias do
             T.any(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone,
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone,
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone,
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone,
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone
             )
           end
 
@@ -80,7 +80,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -94,7 +94,7 @@ module Telnyx
           # Gender of the voice clone.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender::OrSymbol
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender::OrSymbol
             )
           end
           attr_accessor :gender
@@ -110,7 +110,7 @@ module Telnyx
           # Voice synthesis provider. Must be `telnyx`.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Provider::OrSymbol
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::OrSymbol
             )
           end
           attr_accessor :provider
@@ -126,7 +126,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::ModelID::OrSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::ModelID::OrSymbol
               )
             )
           end
@@ -144,15 +144,15 @@ module Telnyx
             params(
               audio_file: Telnyx::Internal::FileInput,
               gender:
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender::OrSymbol,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender::OrSymbol,
               language: String,
               name: String,
               provider:
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Provider::OrSymbol,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::OrSymbol,
               label: String,
               model_id:
                 T.nilable(
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::ModelID::OrSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::ModelID::OrSymbol
                 ),
               ref_text: String
             ).returns(T.attached_class)
@@ -184,15 +184,15 @@ module Telnyx
               {
                 audio_file: Telnyx::Internal::FileInput,
                 gender:
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender::OrSymbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender::OrSymbol,
                 language: String,
                 name: String,
                 provider:
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Provider::OrSymbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::OrSymbol,
                 label: String,
                 model_id:
                   T.nilable(
-                    Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::ModelID::OrSymbol
+                    Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::ModelID::OrSymbol
                   ),
                 ref_text: String
               }
@@ -209,7 +209,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -217,23 +217,23 @@ module Telnyx
             MALE =
               T.let(
                 :male,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender::TaggedSymbol
               )
             FEMALE =
               T.let(
                 :female,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender::TaggedSymbol
               )
             NEUTRAL =
               T.let(
                 :neutral,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Gender::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Gender::TaggedSymbol
                 ]
               )
             end
@@ -249,7 +249,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Provider
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -257,18 +257,18 @@ module Telnyx
             TELNYX =
               T.let(
                 :telnyx,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::TaggedSymbol
               )
             TELNYX_2 =
               T.let(
                 :Telnyx,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::Provider::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::TaggedSymbol
                 ]
               )
             end
@@ -284,7 +284,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::ModelID
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::ModelID
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -292,13 +292,13 @@ module Telnyx
             QWEN3_TTS =
               T.let(
                 :Qwen3TTS,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::ModelID::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::ModelID::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::ModelID::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::ModelID::TaggedSymbol
                 ]
               )
             end
@@ -311,7 +311,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -325,7 +325,7 @@ module Telnyx
           # Gender of the voice clone.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender::OrSymbol
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender::OrSymbol
             )
           end
           attr_accessor :gender
@@ -337,7 +337,7 @@ module Telnyx
           # TTS model identifier. Must be `Ultra`.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::ModelID::OrSymbol
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::ModelID::OrSymbol
             )
           end
           attr_accessor :model_id
@@ -349,7 +349,7 @@ module Telnyx
           # Voice synthesis provider. Must be `telnyx`.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Provider::OrSymbol
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::OrSymbol
             )
           end
           attr_accessor :provider
@@ -373,13 +373,13 @@ module Telnyx
             params(
               audio_file: Telnyx::Internal::FileInput,
               gender:
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender::OrSymbol,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender::OrSymbol,
               language: String,
               model_id:
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::ModelID::OrSymbol,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::ModelID::OrSymbol,
               name: String,
               provider:
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Provider::OrSymbol,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::OrSymbol,
               label: String,
               ref_text: String
             ).returns(T.attached_class)
@@ -411,13 +411,13 @@ module Telnyx
               {
                 audio_file: Telnyx::Internal::FileInput,
                 gender:
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender::OrSymbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender::OrSymbol,
                 language: String,
                 model_id:
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::ModelID::OrSymbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::ModelID::OrSymbol,
                 name: String,
                 provider:
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Provider::OrSymbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::OrSymbol,
                 label: String,
                 ref_text: String
               }
@@ -434,7 +434,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -442,23 +442,23 @@ module Telnyx
             MALE =
               T.let(
                 :male,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender::TaggedSymbol
               )
             FEMALE =
               T.let(
                 :female,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender::TaggedSymbol
               )
             NEUTRAL =
               T.let(
                 :neutral,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Gender::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Gender::TaggedSymbol
                 ]
               )
             end
@@ -474,7 +474,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::ModelID
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::ModelID
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -482,13 +482,13 @@ module Telnyx
             ULTRA =
               T.let(
                 :Ultra,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::ModelID::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::ModelID::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::ModelID::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::ModelID::TaggedSymbol
                 ]
               )
             end
@@ -504,7 +504,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Provider
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -512,18 +512,18 @@ module Telnyx
             TELNYX =
               T.let(
                 :telnyx,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::TaggedSymbol
               )
             TELNYX_2 =
               T.let(
                 :Telnyx,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::Provider::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::TaggedSymbol
                 ]
               )
             end
@@ -536,7 +536,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -550,7 +550,7 @@ module Telnyx
           # Gender of the voice clone.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender::OrSymbol
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender::OrSymbol
             )
           end
           attr_accessor :gender
@@ -566,7 +566,7 @@ module Telnyx
           # Voice synthesis provider. Must be `minimax`.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Provider::OrSymbol
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::OrSymbol
             )
           end
           attr_accessor :provider
@@ -582,7 +582,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::ModelID::OrSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::ModelID::OrSymbol
               )
             )
           end
@@ -600,15 +600,15 @@ module Telnyx
             params(
               audio_file: Telnyx::Internal::FileInput,
               gender:
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender::OrSymbol,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender::OrSymbol,
               language: String,
               name: String,
               provider:
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Provider::OrSymbol,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::OrSymbol,
               label: String,
               model_id:
                 T.nilable(
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::ModelID::OrSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::ModelID::OrSymbol
                 ),
               ref_text: String
             ).returns(T.attached_class)
@@ -640,15 +640,15 @@ module Telnyx
               {
                 audio_file: Telnyx::Internal::FileInput,
                 gender:
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender::OrSymbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender::OrSymbol,
                 language: String,
                 name: String,
                 provider:
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Provider::OrSymbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::OrSymbol,
                 label: String,
                 model_id:
                   T.nilable(
-                    Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::ModelID::OrSymbol
+                    Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::ModelID::OrSymbol
                   ),
                 ref_text: String
               }
@@ -665,7 +665,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -673,23 +673,23 @@ module Telnyx
             MALE =
               T.let(
                 :male,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender::TaggedSymbol
               )
             FEMALE =
               T.let(
                 :female,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender::TaggedSymbol
               )
             NEUTRAL =
               T.let(
                 :neutral,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Gender::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Gender::TaggedSymbol
                 ]
               )
             end
@@ -705,7 +705,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Provider
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -713,18 +713,18 @@ module Telnyx
             MINIMAX =
               T.let(
                 :minimax,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::TaggedSymbol
               )
             MINIMAX_2 =
               T.let(
                 :Minimax,
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::Provider::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::TaggedSymbol
                 ]
               )
             end
@@ -740,7 +740,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::ModelID
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::ModelID
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -748,13 +748,13 @@ module Telnyx
             SPEECH_2_8_TURBO =
               T.let(
                 :"speech-2.8-turbo",
-                Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::ModelID::TaggedSymbol
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::ModelID::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::ModelID::TaggedSymbol
+                  Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::ModelID::TaggedSymbol
                 ]
               )
             end
@@ -765,7 +765,7 @@ module Telnyx
 
         sig do
           override.returns(
-            T::Array[Telnyx::VoiceCloneCreateFromUploadParams::Body::Variants]
+            T::Array[Telnyx::VoiceCloneCreateFromUploadParams::Params::Variants]
           )
         end
         def self.variants

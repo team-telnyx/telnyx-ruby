@@ -29,8 +29,8 @@ module Telnyx
           items:
             T::Array[
               T.any(
-                Telnyx::PronunciationDictCreateParams::Item::Alias::OrHash,
-                Telnyx::PronunciationDictCreateParams::Item::Phoneme::OrHash
+                Telnyx::PronunciationDictAliasItem::OrHash,
+                Telnyx::PronunciationDictPhonemeItem::OrHash
               )
             ],
           name: String,
@@ -70,8 +70,8 @@ module Telnyx
           items:
             T::Array[
               T.any(
-                Telnyx::PronunciationDictUpdateParams::Item::Alias::OrHash,
-                Telnyx::PronunciationDictUpdateParams::Item::Phoneme::OrHash
+                Telnyx::PronunciationDictAliasItem::OrHash,
+                Telnyx::PronunciationDictPhonemeItem::OrHash
               )
             ],
           name: String,
@@ -97,9 +97,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::PronunciationDictListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::PronunciationDictData]
         )
       end
       def list(

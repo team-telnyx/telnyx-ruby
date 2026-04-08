@@ -23,7 +23,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PronunciationDictListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PronunciationDictData]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
