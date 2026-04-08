@@ -53,6 +53,7 @@ module Telnyx
           park_after_unbridge: String,
           preferred_codecs: String,
           prevent_double_bridge: T::Boolean,
+          privacy: Telnyx::CallDialParams::Privacy::OrSymbol,
           record: Telnyx::CallDialParams::Record::OrSymbol,
           record_channels: Telnyx::CallDialParams::RecordChannels::OrSymbol,
           record_custom_file_name: String,
@@ -177,6 +178,10 @@ module Telnyx
         # Prevents bridging and hangs up the call if the target is already bridged.
         # Disabled by default.
         prevent_double_bridge: nil,
+        # Indicates the privacy level to be used for the call. When set to `id`, caller ID
+        # information (name and number) will be hidden from the called party. When set to
+        # `none` or omitted, caller ID will be shown normally.
+        privacy: nil,
         # Start recording automatically after an event. Disabled by default.
         record: nil,
         # Defines which channel should be recorded ('single' or 'dual') when `record` is

@@ -26,6 +26,7 @@ module Telnyx
         ?park_after_unbridge: String,
         ?preferred_codecs: String,
         ?prevent_double_bridge: bool,
+        ?privacy: Telnyx::Models::CallDialParams::privacy,
         ?record: Telnyx::Models::CallDialParams::record,
         ?record_channels: Telnyx::Models::CallDialParams::record_channels,
         ?record_custom_file_name: String,

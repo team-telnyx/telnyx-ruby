@@ -24,6 +24,7 @@ module Telnyx
         park_after_unbridge: String,
         preferred_codecs: String,
         prevent_double_bridge: bool,
+        privacy: Telnyx::Models::CallDialParams::privacy,
         record: Telnyx::Models::CallDialParams::record,
         record_channels: Telnyx::Models::CallDialParams::record_channels,
         record_custom_file_name: String,
@@ -156,6 +157,12 @@ module Telnyx
       attr_reader prevent_double_bridge: bool?
 
       def prevent_double_bridge=: (bool) -> bool
+
+      attr_reader privacy: Telnyx::Models::CallDialParams::privacy?
+
+      def privacy=: (
+        Telnyx::Models::CallDialParams::privacy
+      ) -> Telnyx::Models::CallDialParams::privacy
 
       attr_reader record: Telnyx::Models::CallDialParams::record?
 
@@ -344,6 +351,7 @@ module Telnyx
         ?park_after_unbridge: String,
         ?preferred_codecs: String,
         ?prevent_double_bridge: bool,
+        ?privacy: Telnyx::Models::CallDialParams::privacy,
         ?record: Telnyx::Models::CallDialParams::record,
         ?record_channels: Telnyx::Models::CallDialParams::record_channels,
         ?record_custom_file_name: String,
@@ -402,6 +410,7 @@ module Telnyx
         park_after_unbridge: String,
         preferred_codecs: String,
         prevent_double_bridge: bool,
+        privacy: Telnyx::Models::CallDialParams::privacy,
         record: Telnyx::Models::CallDialParams::record,
         record_channels: Telnyx::Models::CallDialParams::record_channels,
         record_custom_file_name: String,
@@ -700,6 +709,17 @@ module Telnyx
         DTLS: :DTLS
 
         def self?.values: -> ::Array[Telnyx::Models::CallDialParams::media_encryption]
+      end
+
+      type privacy = :id | :none
+
+      module Privacy
+        extend Telnyx::Internal::Type::Enum
+
+        ID: :id
+        NONE: :none
+
+        def self?.values: -> ::Array[Telnyx::Models::CallDialParams::privacy]
       end
 
       type record = :"record-from-answer"
