@@ -1,5 +1,29 @@
 # Changelog
 
+## 5.70.0 (2026-04-08)
+
+Full Changelog: [v5.69.0...v5.70.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.69.0...v5.70.0)
+
+### Features
+
+* TELAPPS-5707: Add privacy parameter to Call Control dial and transfer ([d366c32](https://github.com/team-telnyx/telnyx-ruby/commit/d366c32c5d00373f8bbdfc60eb2100bdd31d63d3))
+
+
+### Bug Fixes
+
+* multipart encoding for file arrays ([39e2f28](https://github.com/team-telnyx/telnyx-ruby/commit/39e2f28bebb8c82c4baf25eccbc369719bf2db9a))
+
+
+### Reverts
+
+* revert stainless.yml changes from 9c5e8d8 ([d689c9d](https://github.com/team-telnyx/telnyx-ruby/commit/d689c9dee43bc62106808be66328c1e9d91f5376))
+* revert stainless.yml changes from pronunciation dictionaries commit ([8b34c3b](https://github.com/team-telnyx/telnyx-ruby/commit/8b34c3b821f8a0418c7faa1c7f63ecd1d2565cbf))
+
+
+### Documentation
+
+* update voice clone schemas to match Ultra/model_id implementation ([cce4793](https://github.com/team-telnyx/telnyx-ruby/commit/cce4793cbdf1990e6ce83d9bcc674bc45a20e0fa))
+
 ## 5.69.0 (2026-04-08)
 
 Full Changelog: [v5.68.2...v5.69.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.68.2...v5.69.0)
