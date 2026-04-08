@@ -1,0 +1,218 @@
+module Telnyx
+  module Models
+    type enterprise_public =
+      {
+        id: String,
+        billing_address: Telnyx::BillingAddress,
+        billing_contact: Telnyx::BillingContact,
+        corporate_registration_number: String?,
+        country_code: String,
+        created_at: Time,
+        customer_reference: String?,
+        doing_business_as: String,
+        dun_bradstreet_number: String?,
+        fein: String?,
+        industry: String?,
+        legal_name: String,
+        number_of_employees: Telnyx::Models::EnterprisePublic::number_of_employees?,
+        organization_contact: Telnyx::OrganizationContact,
+        organization_legal_type: Telnyx::Models::EnterprisePublic::organization_legal_type?,
+        organization_physical_address: Telnyx::PhysicalAddress,
+        organization_type: Telnyx::Models::EnterprisePublic::organization_type,
+        primary_business_domain_sic_code: String?,
+        professional_license_number: String?,
+        role_type: Telnyx::Models::EnterprisePublic::role_type,
+        updated_at: Time,
+        website: String?
+      }
+
+    class EnterprisePublic < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader billing_address: Telnyx::BillingAddress?
+
+      def billing_address=: (Telnyx::BillingAddress) -> Telnyx::BillingAddress
+
+      attr_reader billing_contact: Telnyx::BillingContact?
+
+      def billing_contact=: (Telnyx::BillingContact) -> Telnyx::BillingContact
+
+      attr_accessor corporate_registration_number: String?
+
+      attr_reader country_code: String?
+
+      def country_code=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_accessor customer_reference: String?
+
+      attr_reader doing_business_as: String?
+
+      def doing_business_as=: (String) -> String
+
+      attr_accessor dun_bradstreet_number: String?
+
+      attr_accessor fein: String?
+
+      attr_accessor industry: String?
+
+      attr_reader legal_name: String?
+
+      def legal_name=: (String) -> String
+
+      attr_accessor number_of_employees: Telnyx::Models::EnterprisePublic::number_of_employees?
+
+      attr_reader organization_contact: Telnyx::OrganizationContact?
+
+      def organization_contact=: (
+        Telnyx::OrganizationContact
+      ) -> Telnyx::OrganizationContact
+
+      attr_accessor organization_legal_type: Telnyx::Models::EnterprisePublic::organization_legal_type?
+
+      attr_reader organization_physical_address: Telnyx::PhysicalAddress?
+
+      def organization_physical_address=: (
+        Telnyx::PhysicalAddress
+      ) -> Telnyx::PhysicalAddress
+
+      attr_reader organization_type: Telnyx::Models::EnterprisePublic::organization_type?
+
+      def organization_type=: (
+        Telnyx::Models::EnterprisePublic::organization_type
+      ) -> Telnyx::Models::EnterprisePublic::organization_type
+
+      attr_accessor primary_business_domain_sic_code: String?
+
+      attr_accessor professional_license_number: String?
+
+      attr_reader role_type: Telnyx::Models::EnterprisePublic::role_type?
+
+      def role_type=: (
+        Telnyx::Models::EnterprisePublic::role_type
+      ) -> Telnyx::Models::EnterprisePublic::role_type
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_accessor website: String?
+
+      def initialize: (
+        ?id: String,
+        ?billing_address: Telnyx::BillingAddress,
+        ?billing_contact: Telnyx::BillingContact,
+        ?corporate_registration_number: String?,
+        ?country_code: String,
+        ?created_at: Time,
+        ?customer_reference: String?,
+        ?doing_business_as: String,
+        ?dun_bradstreet_number: String?,
+        ?fein: String?,
+        ?industry: String?,
+        ?legal_name: String,
+        ?number_of_employees: Telnyx::Models::EnterprisePublic::number_of_employees?,
+        ?organization_contact: Telnyx::OrganizationContact,
+        ?organization_legal_type: Telnyx::Models::EnterprisePublic::organization_legal_type?,
+        ?organization_physical_address: Telnyx::PhysicalAddress,
+        ?organization_type: Telnyx::Models::EnterprisePublic::organization_type,
+        ?primary_business_domain_sic_code: String?,
+        ?professional_license_number: String?,
+        ?role_type: Telnyx::Models::EnterprisePublic::role_type,
+        ?updated_at: Time,
+        ?website: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        billing_address: Telnyx::BillingAddress,
+        billing_contact: Telnyx::BillingContact,
+        corporate_registration_number: String?,
+        country_code: String,
+        created_at: Time,
+        customer_reference: String?,
+        doing_business_as: String,
+        dun_bradstreet_number: String?,
+        fein: String?,
+        industry: String?,
+        legal_name: String,
+        number_of_employees: Telnyx::Models::EnterprisePublic::number_of_employees?,
+        organization_contact: Telnyx::OrganizationContact,
+        organization_legal_type: Telnyx::Models::EnterprisePublic::organization_legal_type?,
+        organization_physical_address: Telnyx::PhysicalAddress,
+        organization_type: Telnyx::Models::EnterprisePublic::organization_type,
+        primary_business_domain_sic_code: String?,
+        professional_license_number: String?,
+        role_type: Telnyx::Models::EnterprisePublic::role_type,
+        updated_at: Time,
+        website: String?
+      }
+
+      type number_of_employees =
+        :"1-10"
+        | :"11-50"
+        | :"51-200"
+        | :"201-500"
+        | :"501-2000"
+        | :"2001-10000"
+        | :"10001+"
+
+      module NumberOfEmployees
+        extend Telnyx::Internal::Type::Enum
+
+        NUMBER_OF_EMPLOYEES_1_10: :"1-10"
+        NUMBER_OF_EMPLOYEES_11_50: :"11-50"
+        NUMBER_OF_EMPLOYEES_51_200: :"51-200"
+        NUMBER_OF_EMPLOYEES_201_500: :"201-500"
+        NUMBER_OF_EMPLOYEES_501_2000: :"501-2000"
+        NUMBER_OF_EMPLOYEES_2001_10000: :"2001-10000"
+        NUMBER_OF_EMPLOYEES_10001_PLUS: :"10001+"
+
+        def self?.values: -> ::Array[Telnyx::Models::EnterprisePublic::number_of_employees]
+      end
+
+      type organization_legal_type =
+        :corporation | :llc | :partnership | :nonprofit | :other
+
+      module OrganizationLegalType
+        extend Telnyx::Internal::Type::Enum
+
+        CORPORATION: :corporation
+        LLC: :llc
+        PARTNERSHIP: :partnership
+        NONPROFIT: :nonprofit
+        OTHER: :other
+
+        def self?.values: -> ::Array[Telnyx::Models::EnterprisePublic::organization_legal_type]
+      end
+
+      type organization_type = :commercial | :government | :non_profit
+
+      module OrganizationType
+        extend Telnyx::Internal::Type::Enum
+
+        COMMERCIAL: :commercial
+        GOVERNMENT: :government
+        NON_PROFIT: :non_profit
+
+        def self?.values: -> ::Array[Telnyx::Models::EnterprisePublic::organization_type]
+      end
+
+      type role_type = :enterprise | :bpo
+
+      module RoleType
+        extend Telnyx::Internal::Type::Enum
+
+        ENTERPRISE: :enterprise
+        BPO: :bpo
+
+        def self?.values: -> ::Array[Telnyx::Models::EnterprisePublic::role_type]
+      end
+    end
+  end
+end

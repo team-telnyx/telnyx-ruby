@@ -131,6 +131,10 @@ module Telnyx
 
   BalanceRetrieveParams = Telnyx::Models::BalanceRetrieveParams
 
+  BillingAddress = Telnyx::Models::BillingAddress
+
+  BillingContact = Telnyx::Models::BillingContact
+
   BillingGroup = Telnyx::Models::BillingGroup
 
   BillingGroupCreateParams = Telnyx::Models::BillingGroupCreateParams
@@ -552,6 +556,8 @@ module Telnyx
 
   EnterpriseListParams = Telnyx::Models::EnterpriseListParams
 
+  EnterprisePublic = Telnyx::Models::EnterprisePublic
+
   EnterpriseRetrieveParams = Telnyx::Models::EnterpriseRetrieveParams
 
   Enterprises = Telnyx::Models::Enterprises
@@ -898,6 +904,8 @@ module Telnyx
 
   Metadata = Telnyx::Models::Metadata
 
+  MetaInfo = Telnyx::Models::MetaInfo
+
   MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
 
   MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
@@ -1080,6 +1088,8 @@ module Telnyx
 
   OperatorConnect = Telnyx::Models::OperatorConnect
 
+  OrganizationContact = Telnyx::Models::OrganizationContact
+
   Organizations = Telnyx::Models::Organizations
 
   OtaUpdateListParams = Telnyx::Models::OtaUpdateListParams
@@ -1142,6 +1152,8 @@ module Telnyx
   PhoneNumberUpdateParams = Telnyx::Models::PhoneNumberUpdateParams
 
   PhoneNumberWithMessagingSettings = Telnyx::Models::PhoneNumberWithMessagingSettings
+
+  PhysicalAddress = Telnyx::Models::PhysicalAddress
 
   PortabilityCheckRunParams = Telnyx::Models::PortabilityCheckRunParams
 
@@ -1306,6 +1318,10 @@ module Telnyx
   Reports = Telnyx::Models::Reports
 
   Reputation = Telnyx::Models::Reputation
+
+  ReputationData = Telnyx::Models::ReputationData
+
+  ReputationPhoneNumberWithReputationData = Telnyx::Models::ReputationPhoneNumberWithReputationData
 
   RequirementGroup = Telnyx::Models::RequirementGroup
 
@@ -1548,6 +1564,8 @@ module Telnyx
 
   TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
 
+  TrafficPolicyProfile = Telnyx::Models::TrafficPolicyProfile
+
   TrafficPolicyProfileCreateParams = Telnyx::Models::TrafficPolicyProfileCreateParams
 
   TrafficPolicyProfileDeleteParams = Telnyx::Models::TrafficPolicyProfileDeleteParams
@@ -1663,6 +1681,8 @@ module Telnyx
 
   VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
 
+  VoiceCloneData = Telnyx::Models::VoiceCloneData
+
   VoiceCloneDeleteParams = Telnyx::Models::VoiceCloneDeleteParams
 
   VoiceCloneDownloadSampleParams = Telnyx::Models::VoiceCloneDownloadSampleParams
@@ -1672,6 +1692,8 @@ module Telnyx
   VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
 
   VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
+
+  VoiceDesignData = Telnyx::Models::VoiceDesignData
 
   VoiceDesignDeleteParams = Telnyx::Models::VoiceDesignDeleteParams
 

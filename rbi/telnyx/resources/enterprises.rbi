@@ -21,10 +21,8 @@ module Telnyx
       # `organization_physical_address`, `billing_address`
       sig do
         params(
-          billing_address:
-            Telnyx::EnterpriseCreateParams::BillingAddress::OrHash,
-          billing_contact:
-            Telnyx::EnterpriseCreateParams::BillingContact::OrHash,
+          billing_address: Telnyx::BillingAddress::OrHash,
+          billing_contact: Telnyx::BillingContact::OrHash,
           country_code: String,
           doing_business_as: String,
           fein: String,
@@ -32,12 +30,10 @@ module Telnyx
           legal_name: String,
           number_of_employees:
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::OrSymbol,
-          organization_contact:
-            Telnyx::EnterpriseCreateParams::OrganizationContact::OrHash,
+          organization_contact: Telnyx::OrganizationContact::OrHash,
           organization_legal_type:
             Telnyx::EnterpriseCreateParams::OrganizationLegalType::OrSymbol,
-          organization_physical_address:
-            Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress::OrHash,
+          organization_physical_address: Telnyx::PhysicalAddress::OrHash,
           organization_type:
             Telnyx::EnterpriseCreateParams::OrganizationType::OrSymbol,
           website: String,
@@ -117,10 +113,8 @@ module Telnyx
       sig do
         params(
           enterprise_id: String,
-          billing_address:
-            Telnyx::EnterpriseUpdateParams::BillingAddress::OrHash,
-          billing_contact:
-            Telnyx::EnterpriseUpdateParams::BillingContact::OrHash,
+          billing_address: Telnyx::BillingAddress::OrHash,
+          billing_contact: Telnyx::BillingContact::OrHash,
           corporate_registration_number: String,
           customer_reference: String,
           doing_business_as: String,
@@ -130,12 +124,10 @@ module Telnyx
           legal_name: String,
           number_of_employees:
             Telnyx::EnterpriseUpdateParams::NumberOfEmployees::OrSymbol,
-          organization_contact:
-            Telnyx::EnterpriseUpdateParams::OrganizationContact::OrHash,
+          organization_contact: Telnyx::OrganizationContact::OrHash,
           organization_legal_type:
             Telnyx::EnterpriseUpdateParams::OrganizationLegalType::OrSymbol,
-          organization_physical_address:
-            Telnyx::EnterpriseUpdateParams::OrganizationPhysicalAddress::OrHash,
+          organization_physical_address: Telnyx::PhysicalAddress::OrHash,
           primary_business_domain_sic_code: String,
           professional_license_number: String,
           website: String,
@@ -187,9 +179,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::EnterpriseListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::EnterprisePublic]
         )
       end
       def list(

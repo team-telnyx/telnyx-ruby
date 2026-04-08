@@ -14,25 +14,25 @@ module Telnyx
         #   @return [String]
         required :id, String
 
-        # @!attribute body_payment_signature
+        # @!attribute payment_signature
         #   Base64-encoded signed payment authorization (x402 PaymentPayload). Can
         #   alternatively be provided via the PAYMENT-SIGNATURE header.
         #
         #   @return [String, nil]
-        optional :body_payment_signature, String, api_name: :payment_signature
+        optional :payment_signature, String
 
         # @!attribute header_payment_signature
         #
         #   @return [String, nil]
         optional :header_payment_signature, String
 
-        # @!method initialize(id:, body_payment_signature: nil, header_payment_signature: nil, request_options: {})
+        # @!method initialize(id:, payment_signature: nil, header_payment_signature: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::X402::CreditAccountSettleParams} for more details.
         #
         #   @param id [String] The quote ID to settle.
         #
-        #   @param body_payment_signature [String] Base64-encoded signed payment authorization (x402 PaymentPayload). Can alternati
+        #   @param payment_signature [String] Base64-encoded signed payment authorization (x402 PaymentPayload). Can alternati
         #
         #   @param header_payment_signature [String]
         #

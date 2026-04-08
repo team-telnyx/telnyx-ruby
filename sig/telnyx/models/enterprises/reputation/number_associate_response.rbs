@@ -5,7 +5,7 @@ module Telnyx
         type number_associate_response =
           {
             data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
-            meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
+            meta: Telnyx::MetaInfo
           }
 
         class NumberAssociateResponse < Telnyx::Internal::Type::BaseModel
@@ -15,20 +15,18 @@ module Telnyx
             ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]
           ) -> ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]
 
-          attr_reader meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta?
+          attr_reader meta: Telnyx::MetaInfo?
 
-          def meta=: (
-            Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
-          ) -> Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
+          def meta=: (Telnyx::MetaInfo) -> Telnyx::MetaInfo
 
           def initialize: (
             ?data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
-            ?meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
+            ?meta: Telnyx::MetaInfo
           ) -> void
 
           def to_hash: -> {
             data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
-            meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
+            meta: Telnyx::MetaInfo
           }
 
           type data =
@@ -75,46 +73,6 @@ module Telnyx
               enterprise_id: String,
               phone_number: String,
               updated_at: Time
-            }
-          end
-
-          type meta =
-            {
-              page_number: Integer,
-              page_size: Integer,
-              total_pages: Integer,
-              total_results: Integer
-            }
-
-          class Meta < Telnyx::Internal::Type::BaseModel
-            attr_reader page_number: Integer?
-
-            def page_number=: (Integer) -> Integer
-
-            attr_reader page_size: Integer?
-
-            def page_size=: (Integer) -> Integer
-
-            attr_reader total_pages: Integer?
-
-            def total_pages=: (Integer) -> Integer
-
-            attr_reader total_results: Integer?
-
-            def total_results=: (Integer) -> Integer
-
-            def initialize: (
-              ?page_number: Integer,
-              ?page_size: Integer,
-              ?total_pages: Integer,
-              ?total_results: Integer
-            ) -> void
-
-            def to_hash: -> {
-              page_number: Integer,
-              page_size: Integer,
-              total_pages: Integer,
-              total_results: Integer
             }
           end
         end

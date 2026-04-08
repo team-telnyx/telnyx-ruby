@@ -11,26 +11,16 @@ module Telnyx
           T.any(Telnyx::EnterpriseCreateParams, Telnyx::Internal::AnyHash)
         end
 
-      sig { returns(Telnyx::EnterpriseCreateParams::BillingAddress) }
+      sig { returns(Telnyx::BillingAddress) }
       attr_reader :billing_address
 
-      sig do
-        params(
-          billing_address:
-            Telnyx::EnterpriseCreateParams::BillingAddress::OrHash
-        ).void
-      end
+      sig { params(billing_address: Telnyx::BillingAddress::OrHash).void }
       attr_writer :billing_address
 
-      sig { returns(Telnyx::EnterpriseCreateParams::BillingContact) }
+      sig { returns(Telnyx::BillingContact) }
       attr_reader :billing_contact
 
-      sig do
-        params(
-          billing_contact:
-            Telnyx::EnterpriseCreateParams::BillingContact::OrHash
-        ).void
-      end
+      sig { params(billing_contact: Telnyx::BillingContact::OrHash).void }
       attr_writer :billing_contact
 
       # Country code. Currently only 'US' is accepted.
@@ -68,14 +58,11 @@ module Telnyx
 
       # Organization contact information. Note: the response returns this object with
       # the phone field as 'phone' (not 'phone_number').
-      sig { returns(Telnyx::EnterpriseCreateParams::OrganizationContact) }
+      sig { returns(Telnyx::OrganizationContact) }
       attr_reader :organization_contact
 
       sig do
-        params(
-          organization_contact:
-            Telnyx::EnterpriseCreateParams::OrganizationContact::OrHash
-        ).void
+        params(organization_contact: Telnyx::OrganizationContact::OrHash).void
       end
       attr_writer :organization_contact
 
@@ -85,15 +72,12 @@ module Telnyx
       end
       attr_accessor :organization_legal_type
 
-      sig do
-        returns(Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress)
-      end
+      sig { returns(Telnyx::PhysicalAddress) }
       attr_reader :organization_physical_address
 
       sig do
         params(
-          organization_physical_address:
-            Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress::OrHash
+          organization_physical_address: Telnyx::PhysicalAddress::OrHash
         ).void
       end
       attr_writer :organization_physical_address
@@ -158,10 +142,8 @@ module Telnyx
 
       sig do
         params(
-          billing_address:
-            Telnyx::EnterpriseCreateParams::BillingAddress::OrHash,
-          billing_contact:
-            Telnyx::EnterpriseCreateParams::BillingContact::OrHash,
+          billing_address: Telnyx::BillingAddress::OrHash,
+          billing_contact: Telnyx::BillingContact::OrHash,
           country_code: String,
           doing_business_as: String,
           fein: String,
@@ -169,12 +151,10 @@ module Telnyx
           legal_name: String,
           number_of_employees:
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::OrSymbol,
-          organization_contact:
-            Telnyx::EnterpriseCreateParams::OrganizationContact::OrHash,
+          organization_contact: Telnyx::OrganizationContact::OrHash,
           organization_legal_type:
             Telnyx::EnterpriseCreateParams::OrganizationLegalType::OrSymbol,
-          organization_physical_address:
-            Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress::OrHash,
+          organization_physical_address: Telnyx::PhysicalAddress::OrHash,
           organization_type:
             Telnyx::EnterpriseCreateParams::OrganizationType::OrSymbol,
           website: String,
@@ -238,8 +218,8 @@ module Telnyx
       sig do
         override.returns(
           {
-            billing_address: Telnyx::EnterpriseCreateParams::BillingAddress,
-            billing_contact: Telnyx::EnterpriseCreateParams::BillingContact,
+            billing_address: Telnyx::BillingAddress,
+            billing_contact: Telnyx::BillingContact,
             country_code: String,
             doing_business_as: String,
             fein: String,
@@ -247,12 +227,10 @@ module Telnyx
             legal_name: String,
             number_of_employees:
               Telnyx::EnterpriseCreateParams::NumberOfEmployees::OrSymbol,
-            organization_contact:
-              Telnyx::EnterpriseCreateParams::OrganizationContact,
+            organization_contact: Telnyx::OrganizationContact,
             organization_legal_type:
               Telnyx::EnterpriseCreateParams::OrganizationLegalType::OrSymbol,
-            organization_physical_address:
-              Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress,
+            organization_physical_address: Telnyx::PhysicalAddress,
             organization_type:
               Telnyx::EnterpriseCreateParams::OrganizationType::OrSymbol,
             website: String,
@@ -267,140 +245,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      class BillingAddress < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::EnterpriseCreateParams::BillingAddress,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # State or province
-        sig { returns(String) }
-        attr_accessor :administrative_area
-
-        # City name
-        sig { returns(String) }
-        attr_accessor :city
-
-        # Country name (e.g., United States)
-        sig { returns(String) }
-        attr_accessor :country
-
-        # ZIP or postal code
-        sig { returns(String) }
-        attr_accessor :postal_code
-
-        # Street address
-        sig { returns(String) }
-        attr_accessor :street_address
-
-        # Additional address line (suite, apt, etc.)
-        sig { returns(T.nilable(String)) }
-        attr_accessor :extended_address
-
-        sig do
-          params(
-            administrative_area: String,
-            city: String,
-            country: String,
-            postal_code: String,
-            street_address: String,
-            extended_address: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # State or province
-          administrative_area:,
-          # City name
-          city:,
-          # Country name (e.g., United States)
-          country:,
-          # ZIP or postal code
-          postal_code:,
-          # Street address
-          street_address:,
-          # Additional address line (suite, apt, etc.)
-          extended_address: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              administrative_area: String,
-              city: String,
-              country: String,
-              postal_code: String,
-              street_address: String,
-              extended_address: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class BillingContact < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::EnterpriseCreateParams::BillingContact,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Contact's email address
-        sig { returns(String) }
-        attr_accessor :email
-
-        # Contact's first name
-        sig { returns(String) }
-        attr_accessor :first_name
-
-        # Contact's last name
-        sig { returns(String) }
-        attr_accessor :last_name
-
-        # Contact's phone number (10-15 digits)
-        sig { returns(String) }
-        attr_accessor :phone_number
-
-        sig do
-          params(
-            email: String,
-            first_name: String,
-            last_name: String,
-            phone_number: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Contact's email address
-          email:,
-          # Contact's first name
-          first_name:,
-          # Contact's last name
-          last_name:,
-          # Contact's phone number (10-15 digits)
-          phone_number:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              email: String,
-              first_name: String,
-              last_name: String,
-              phone_number: String
-            }
-          )
-        end
-        def to_hash
-        end
       end
 
       # Employee count range
@@ -443,7 +287,7 @@ module Telnyx
             :"2001-10000",
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::TaggedSymbol
           )
-        NUMBER_OF_EMPLOYEES_10001 =
+        NUMBER_OF_EMPLOYEES_10001_PLUS =
           T.let(
             :"10001+",
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::TaggedSymbol
@@ -457,75 +301,6 @@ module Telnyx
           )
         end
         def self.values
-        end
-      end
-
-      class OrganizationContact < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::EnterpriseCreateParams::OrganizationContact,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Contact's email address
-        sig { returns(String) }
-        attr_accessor :email
-
-        # Contact's first name
-        sig { returns(String) }
-        attr_accessor :first_name
-
-        # Contact's job title (required)
-        sig { returns(String) }
-        attr_accessor :job_title
-
-        # Contact's last name
-        sig { returns(String) }
-        attr_accessor :last_name
-
-        # Contact's phone number in E.164 format
-        sig { returns(String) }
-        attr_accessor :phone
-
-        # Organization contact information. Note: the response returns this object with
-        # the phone field as 'phone' (not 'phone_number').
-        sig do
-          params(
-            email: String,
-            first_name: String,
-            job_title: String,
-            last_name: String,
-            phone: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Contact's email address
-          email:,
-          # Contact's first name
-          first_name:,
-          # Contact's job title (required)
-          job_title:,
-          # Contact's last name
-          last_name:,
-          # Contact's phone number in E.164 format
-          phone:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              email: String,
-              first_name: String,
-              job_title: String,
-              last_name: String,
-              phone: String
-            }
-          )
-        end
-        def to_hash
         end
       end
 
@@ -573,81 +348,6 @@ module Telnyx
           )
         end
         def self.values
-        end
-      end
-
-      class OrganizationPhysicalAddress < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::EnterpriseCreateParams::OrganizationPhysicalAddress,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # State or province
-        sig { returns(String) }
-        attr_accessor :administrative_area
-
-        # City name
-        sig { returns(String) }
-        attr_accessor :city
-
-        # Country name (e.g., United States)
-        sig { returns(String) }
-        attr_accessor :country
-
-        # ZIP or postal code
-        sig { returns(String) }
-        attr_accessor :postal_code
-
-        # Street address
-        sig { returns(String) }
-        attr_accessor :street_address
-
-        # Additional address line (suite, apt, etc.)
-        sig { returns(T.nilable(String)) }
-        attr_accessor :extended_address
-
-        sig do
-          params(
-            administrative_area: String,
-            city: String,
-            country: String,
-            postal_code: String,
-            street_address: String,
-            extended_address: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # State or province
-          administrative_area:,
-          # City name
-          city:,
-          # Country name (e.g., United States)
-          country:,
-          # ZIP or postal code
-          postal_code:,
-          # Street address
-          street_address:,
-          # Additional address line (suite, apt, etc.)
-          extended_address: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              administrative_area: String,
-              city: String,
-              country: String,
-              postal_code: String,
-              street_address: String,
-              extended_address: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
         end
       end
 
