@@ -19,6 +19,7 @@ module Telnyx
           mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
           park_after_unbridge: String,
           preferred_codecs: String,
+          privacy: Telnyx::Models::Calls::ActionTransferParams::privacy,
           record: Telnyx::Models::Calls::ActionTransferParams::record,
           record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
           record_custom_file_name: String,
@@ -117,6 +118,12 @@ module Telnyx
         attr_reader preferred_codecs: String?
 
         def preferred_codecs=: (String) -> String
+
+        attr_reader privacy: Telnyx::Models::Calls::ActionTransferParams::privacy?
+
+        def privacy=: (
+          Telnyx::Models::Calls::ActionTransferParams::privacy
+        ) -> Telnyx::Models::Calls::ActionTransferParams::privacy
 
         attr_reader record: Telnyx::Models::Calls::ActionTransferParams::record?
 
@@ -247,6 +254,7 @@ module Telnyx
           ?mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
           ?park_after_unbridge: String,
           ?preferred_codecs: String,
+          ?privacy: Telnyx::Models::Calls::ActionTransferParams::privacy,
           ?record: Telnyx::Models::Calls::ActionTransferParams::record,
           ?record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
           ?record_custom_file_name: String,
@@ -289,6 +297,7 @@ module Telnyx
           mute_dtmf: Telnyx::Models::Calls::ActionTransferParams::mute_dtmf,
           park_after_unbridge: String,
           preferred_codecs: String,
+          privacy: Telnyx::Models::Calls::ActionTransferParams::privacy,
           record: Telnyx::Models::Calls::ActionTransferParams::record,
           record_channels: Telnyx::Models::Calls::ActionTransferParams::record_channels,
           record_custom_file_name: String,
@@ -440,6 +449,17 @@ module Telnyx
           OPPOSITE: :opposite
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::mute_dtmf]
+        end
+
+        type privacy = :id | :none
+
+        module Privacy
+          extend Telnyx::Internal::Type::Enum
+
+          ID: :id
+          NONE: :none
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::privacy]
         end
 
         type record = :"record-from-answer"

@@ -1963,6 +1963,7 @@ module Telnyx
             mute_dtmf: Telnyx::Calls::ActionTransferParams::MuteDtmf::OrSymbol,
             park_after_unbridge: String,
             preferred_codecs: String,
+            privacy: Telnyx::Calls::ActionTransferParams::Privacy::OrSymbol,
             record: Telnyx::Calls::ActionTransferParams::Record::OrSymbol,
             record_channels:
               Telnyx::Calls::ActionTransferParams::RecordChannels::OrSymbol,
@@ -2058,6 +2059,10 @@ module Telnyx
           # call. The codecs supported are `G722`, `PCMU`, `PCMA`, `G729`, `OPUS`, `VP8`,
           # `H264`, `AMR-WB`.
           preferred_codecs: nil,
+          # Indicates the privacy level to be used for the call. When set to `id`, caller ID
+          # information (name and number) will be hidden from the called party. When set to
+          # `none` or omitted, caller ID will be shown normally.
+          privacy: nil,
           # Start recording automatically after an event. Disabled by default.
           record: nil,
           # Defines which channel should be recorded ('single' or 'dual') when `record` is
