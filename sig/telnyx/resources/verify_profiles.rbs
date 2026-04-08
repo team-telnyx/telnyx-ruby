@@ -10,6 +10,7 @@ module Telnyx
         ?sms: Telnyx::VerifyProfileCreateParams::SMS,
         ?webhook_failover_url: String,
         ?webhook_url: String,
+        ?whatsapp: Telnyx::VerifyProfileCreateParams::Whatsapp,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::VerifyProfileData
 
@@ -28,6 +29,7 @@ module Telnyx
         ?sms: Telnyx::VerifyProfileUpdateParams::SMS,
         ?webhook_failover_url: String,
         ?webhook_url: String,
+        ?whatsapp: Telnyx::VerifyProfileUpdateParams::Whatsapp,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::VerifyProfileData
 

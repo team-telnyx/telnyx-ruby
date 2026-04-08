@@ -7,17 +7,16 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
       # @!attribute name
       #   The name of the Wireless Blocklist.
       #
       #   @return [String, nil]
       optional :name, String
-
-      # @!attribute type
-      #   The type of wireless blocklist.
-      #
-      #   @return [Symbol, Telnyx::Models::WirelessBlocklistUpdateParams::Type, nil]
-      optional :type, enum: -> { Telnyx::WirelessBlocklistUpdateParams::Type }
 
       # @!attribute values
       #   Values to block. The values here depend on the `type` of Wireless Blocklist.
@@ -25,26 +24,14 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :values, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(name: nil, type: nil, values: nil, request_options: {})
-      #   @param name [String] The name of the Wireless Blocklist.
+      # @!method initialize(id:, name: nil, values: nil, request_options: {})
+      #   @param id [String]
       #
-      #   @param type [Symbol, Telnyx::Models::WirelessBlocklistUpdateParams::Type] The type of wireless blocklist.
+      #   @param name [String] The name of the Wireless Blocklist.
       #
       #   @param values [Array<String>] Values to block. The values here depend on the `type` of Wireless Blocklist.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-      # The type of wireless blocklist.
-      module Type
-        extend Telnyx::Internal::Type::Enum
-
-        COUNTRY = :country
-        MCC = :mcc
-        PLMN = :plmn
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
     end
   end
 end

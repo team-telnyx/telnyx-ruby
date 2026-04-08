@@ -60,6 +60,16 @@ module Telnyx
       sig { params(webhook_url: String).void }
       attr_writer :webhook_url
 
+      sig { returns(T.nilable(Telnyx::VerifyProfileCreateParams::Whatsapp)) }
+      attr_reader :whatsapp
+
+      sig do
+        params(
+          whatsapp: Telnyx::VerifyProfileCreateParams::Whatsapp::OrHash
+        ).void
+      end
+      attr_writer :whatsapp
+
       sig do
         params(
           name: String,
@@ -70,6 +80,7 @@ module Telnyx
           sms: Telnyx::VerifyProfileCreateParams::SMS::OrHash,
           webhook_failover_url: String,
           webhook_url: String,
+          whatsapp: Telnyx::VerifyProfileCreateParams::Whatsapp::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -82,6 +93,7 @@ module Telnyx
         sms: nil,
         webhook_failover_url: nil,
         webhook_url: nil,
+        whatsapp: nil,
         request_options: {}
       )
       end
@@ -97,6 +109,7 @@ module Telnyx
             sms: Telnyx::VerifyProfileCreateParams::SMS,
             webhook_failover_url: String,
             webhook_url: String,
+            whatsapp: Telnyx::VerifyProfileCreateParams::Whatsapp,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -471,6 +484,78 @@ module Telnyx
               code_length: Integer,
               default_verification_timeout_secs: Integer,
               messaging_template_id: String,
+              whitelisted_destinations: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+
+      class Whatsapp < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::VerifyProfileCreateParams::Whatsapp,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The name that identifies the application requesting 2fa in the verification
+        # message.
+        sig { returns(T.nilable(String)) }
+        attr_reader :app_name
+
+        sig { params(app_name: String).void }
+        attr_writer :app_name
+
+        # For every request that is initiated via this Verify profile, this sets the
+        # number of seconds before a verification request code expires. Once the
+        # verification request expires, the user cannot use the code to verify their
+        # identity.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :default_verification_timeout_secs
+
+        sig { params(default_verification_timeout_secs: Integer).void }
+        attr_writer :default_verification_timeout_secs
+
+        # Enabled country destinations to send verification codes. The elements in the
+        # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
+        # destinations will be allowed.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :whitelisted_destinations
+
+        sig { params(whitelisted_destinations: T::Array[String]).void }
+        attr_writer :whitelisted_destinations
+
+        sig do
+          params(
+            app_name: String,
+            default_verification_timeout_secs: Integer,
+            whitelisted_destinations: T::Array[String]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The name that identifies the application requesting 2fa in the verification
+          # message.
+          app_name: nil,
+          # For every request that is initiated via this Verify profile, this sets the
+          # number of seconds before a verification request code expires. Once the
+          # verification request expires, the user cannot use the code to verify their
+          # identity.
+          default_verification_timeout_secs: nil,
+          # Enabled country destinations to send verification codes. The elements in the
+          # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
+          # destinations will be allowed.
+          whitelisted_destinations: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              app_name: String,
+              default_verification_timeout_secs: Integer,
               whitelisted_destinations: T::Array[String]
             }
           )

@@ -43,6 +43,8 @@ module Telnyx
               messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
               model: String,
               name: String,
+              observability_settings:
+                Telnyx::AI::Assistants::UpdateAssistant::ObservabilitySettings::OrHash,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
               tool_ids: T::Array[String],
@@ -109,6 +111,8 @@ module Telnyx
             model: nil,
             # Body param
             name: nil,
+            # Body param
+            observability_settings: nil,
             # Body param
             privacy_settings: nil,
             # Body param

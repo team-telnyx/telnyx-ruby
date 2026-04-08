@@ -1183,6 +1183,16 @@ module Telnyx
 
   class PrivateWirelessGatewayStatus = Telnyx::Models::PrivateWirelessGatewayStatus
 
+  class PronunciationDictCreateParams = Telnyx::Models::PronunciationDictCreateParams
+
+  class PronunciationDictDeleteParams = Telnyx::Models::PronunciationDictDeleteParams
+
+  class PronunciationDictListParams = Telnyx::Models::PronunciationDictListParams
+
+  class PronunciationDictRetrieveParams = Telnyx::Models::PronunciationDictRetrieveParams
+
+  class PronunciationDictUpdateParams = Telnyx::Models::PronunciationDictUpdateParams
+
   class PublicInternetGatewayCreateParams = Telnyx::Models::PublicInternetGatewayCreateParams
 
   class PublicInternetGatewayDeleteParams = Telnyx::Models::PublicInternetGatewayDeleteParams
@@ -1497,6 +1507,8 @@ module Telnyx
 
   class TexmlApplicationUpdateParams = Telnyx::Models::TexmlApplicationUpdateParams
 
+  class TexmlInitiateAICallParams = Telnyx::Models::TexmlInitiateAICallParams
+
   class TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
 
   class TextToSpeechGenerateParams = Telnyx::Models::TextToSpeechGenerateParams
@@ -1564,6 +1576,8 @@ module Telnyx
   class VerificationTriggerFlashcallParams = Telnyx::Models::VerificationTriggerFlashcallParams
 
   class VerificationTriggerSMSParams = Telnyx::Models::VerificationTriggerSMSParams
+
+  class VerificationTriggerWhatsappVerificationParams = Telnyx::Models::VerificationTriggerWhatsappVerificationParams
 
   class VerifiedNumber = Telnyx::Models::VerifiedNumber
 

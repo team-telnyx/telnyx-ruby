@@ -78,4 +78,24 @@ class Telnyx::Test::Resources::VerificationsTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_trigger_whatsapp_verification_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.verifications.trigger_whatsapp_verification(
+        phone_number: "+13035551234",
+        verify_profile_id: "12ade33a-21c0-473b-b055-b3c836e1c292"
+      )
+
+    assert_pattern do
+      response => Telnyx::CreateVerificationResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Verification
+      }
+    end
+  end
 end

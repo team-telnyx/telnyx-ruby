@@ -1368,6 +1368,17 @@ module Telnyx
 
   PrivateWirelessGatewayStatus = Telnyx::Models::PrivateWirelessGatewayStatus
 
+  PronunciationDictCreateParams = Telnyx::Models::PronunciationDictCreateParams
+
+  PronunciationDictDeleteParams = Telnyx::Models::PronunciationDictDeleteParams
+
+  PronunciationDictListParams = Telnyx::Models::PronunciationDictListParams
+
+  PronunciationDictRetrieveParams =
+    Telnyx::Models::PronunciationDictRetrieveParams
+
+  PronunciationDictUpdateParams = Telnyx::Models::PronunciationDictUpdateParams
+
   PublicInternetGatewayCreateParams =
     Telnyx::Models::PublicInternetGatewayCreateParams
 
@@ -1716,6 +1727,8 @@ module Telnyx
 
   TexmlApplicationUpdateParams = Telnyx::Models::TexmlApplicationUpdateParams
 
+  TexmlInitiateAICallParams = Telnyx::Models::TexmlInitiateAICallParams
+
   TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
 
   TextToSpeechGenerateParams = Telnyx::Models::TextToSpeechGenerateParams
@@ -1791,6 +1804,9 @@ module Telnyx
 
   VerificationTriggerSMSParams = Telnyx::Models::VerificationTriggerSMSParams
 
+  VerificationTriggerWhatsappVerificationParams =
+    Telnyx::Models::VerificationTriggerWhatsappVerificationParams
+
   VerifiedNumber = Telnyx::Models::VerifiedNumber
 
   VerifiedNumberCreateParams = Telnyx::Models::VerifiedNumberCreateParams
@@ -1850,21 +1866,16 @@ module Telnyx
   VirtualCrossConnectUpdateParams =
     Telnyx::Models::VirtualCrossConnectUpdateParams
 
+  VoiceCloneCreateFromUploadParams =
+    Telnyx::Models::VoiceCloneCreateFromUploadParams
+
   VoiceCloneCreateFromDesignParams =
     Telnyx::Models::VoiceCloneCreateFromDesignParams
 
   VoiceCloneCreateFromDesignResponse =
     Telnyx::Models::VoiceCloneCreateFromDesignResponse
 
-  VoiceCloneCreateFromUploadParams =
-    Telnyx::Models::VoiceCloneCreateFromUploadParams
-
-  VoiceCloneCreateFromUploadResponse =
-    Telnyx::Models::VoiceCloneCreateFromUploadResponse
-
   VoiceCloneCreateParams = Telnyx::Models::VoiceCloneCreateParams
-
-  VoiceCloneCreateResponse = Telnyx::Models::VoiceCloneCreateResponse
 
   VoiceCloneData = Telnyx::Models::VoiceCloneData
 
@@ -1876,8 +1887,6 @@ module Telnyx
   VoiceCloneListParams = Telnyx::Models::VoiceCloneListParams
 
   VoiceCloneUpdateParams = Telnyx::Models::VoiceCloneUpdateParams
-
-  VoiceCloneUpdateResponse = Telnyx::Models::VoiceCloneUpdateResponse
 
   VoiceDesignCreateParams = Telnyx::Models::VoiceDesignCreateParams
 

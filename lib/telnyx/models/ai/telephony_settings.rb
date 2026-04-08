@@ -146,6 +146,13 @@ module Telnyx
           #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Channels, nil]
           optional :channels, enum: -> { Telnyx::AI::TelephonySettings::RecordingSettings::Channels }
 
+          # @!attribute enabled
+          #   Whether call recording is enabled. When set to false, calls will not be recorded
+          #   regardless of other recording configuration.
+          #
+          #   @return [Boolean, nil]
+          optional :enabled, Telnyx::Internal::Type::Boolean
+
           # @!attribute file_format
           #   The format of the recording file.
           #
@@ -154,10 +161,15 @@ module Telnyx
                    enum: -> { Telnyx::AI::TelephonySettings::RecordingSettings::Format },
                    api_name: :format
 
-          # @!method initialize(channels: nil, file_format: nil)
+          # @!method initialize(channels: nil, enabled: nil, file_format: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::TelephonySettings::RecordingSettings} for more details.
+          #
           #   Configuration for call recording format and channel settings.
           #
           #   @param channels [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Channels] The number of channels for the recording. 'single' for mono, 'dual' for stereo.
+          #
+          #   @param enabled [Boolean] Whether call recording is enabled. When set to false, calls will not be recorded
           #
           #   @param file_format [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Format] The format of the recording file.
 

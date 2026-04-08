@@ -112,6 +112,21 @@ module Telnyx
         sig { params(name: String).void }
         attr_writer :name
 
+        sig do
+          returns(
+            T.nilable(Telnyx::AI::AssistantUpdateParams::ObservabilitySettings)
+          )
+        end
+        attr_reader :observability_settings
+
+        sig do
+          params(
+            observability_settings:
+              Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::OrHash
+          ).void
+        end
+        attr_writer :observability_settings
+
         sig { returns(T.nilable(Telnyx::AI::PrivacySettings)) }
         attr_reader :privacy_settings
 
@@ -222,6 +237,8 @@ module Telnyx
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             name: String,
+            observability_settings:
+              Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
@@ -281,6 +298,7 @@ module Telnyx
           # to see all of your available models,
           model: nil,
           name: nil,
+          observability_settings: nil,
           privacy_settings: nil,
           # Indicates whether the assistant should be promoted to the main version. Defaults
           # to true.
@@ -313,6 +331,8 @@ module Telnyx
               messaging_settings: Telnyx::AI::MessagingSettings,
               model: String,
               name: String,
+              observability_settings:
+                Telnyx::AI::AssistantUpdateParams::ObservabilitySettings,
               privacy_settings: Telnyx::AI::PrivacySettings,
               promote_to_main: T::Boolean,
               telephony_settings: Telnyx::AI::TelephonySettings,
@@ -340,6 +360,116 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        class ObservabilitySettings < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantUpdateParams::ObservabilitySettings,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :host
+
+          sig { params(host: String).void }
+          attr_writer :host
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :public_key_ref
+
+          sig { params(public_key_ref: String).void }
+          attr_writer :public_key_ref
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :secret_key_ref
+
+          sig { params(secret_key_ref: String).void }
+          attr_writer :secret_key_ref
+
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status::OrSymbol
+              )
+            )
+          end
+          attr_reader :status
+
+          sig do
+            params(
+              status:
+                Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status::OrSymbol
+            ).void
+          end
+          attr_writer :status
+
+          sig do
+            params(
+              host: String,
+              public_key_ref: String,
+              secret_key_ref: String,
+              status:
+                Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            host: nil,
+            public_key_ref: nil,
+            secret_key_ref: nil,
+            status: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                host: String,
+                public_key_ref: String,
+                secret_key_ref: String,
+                status:
+                  Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ENABLED =
+              T.let(
+                :enabled,
+                Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status::TaggedSymbol
+              )
+            DISABLED =
+              T.let(
+                :disabled,
+                Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::Status::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
       end
     end

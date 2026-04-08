@@ -5,7 +5,8 @@ module Telnyx
         {
           text: String,
           duration: Float,
-          segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+          segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment],
+          words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
         }
 
       class AudioTranscribeResponse < Telnyx::Internal::Type::BaseModel
@@ -21,16 +22,24 @@ module Telnyx
           ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
         ) -> ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
 
+        attr_reader words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]?
+
+        def words=: (
+          ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
+        ) -> ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
+
         def initialize: (
           text: String,
           ?duration: Float,
-          ?segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+          ?segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment],
+          ?words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
         ) -> void
 
         def to_hash: -> {
           text: String,
           duration: Float,
-          segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
+          segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment],
+          words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
         }
 
         type segment = { id: Float, end_: Float, start: Float, text: String }
@@ -52,6 +61,47 @@ module Telnyx
           ) -> void
 
           def to_hash: -> { id: Float, end_: Float, start: Float, text: String }
+        end
+
+        type word =
+          {
+            end_: Float,
+            start: Float,
+            word: String,
+            confidence: Float,
+            speaker: Integer
+          }
+
+        class Word < Telnyx::Internal::Type::BaseModel
+          attr_accessor end_: Float
+
+          attr_accessor start: Float
+
+          attr_accessor word: String
+
+          attr_reader confidence: Float?
+
+          def confidence=: (Float) -> Float
+
+          attr_reader speaker: Integer?
+
+          def speaker=: (Integer) -> Integer
+
+          def initialize: (
+            end_: Float,
+            start: Float,
+            word: String,
+            ?confidence: Float,
+            ?speaker: Integer
+          ) -> void
+
+          def to_hash: -> {
+            end_: Float,
+            start: Float,
+            word: String,
+            confidence: Float,
+            speaker: Integer
+          }
         end
       end
     end

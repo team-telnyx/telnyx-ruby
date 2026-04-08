@@ -14,8 +14,8 @@ module Telnyx
       ) -> Telnyx::Models::WirelessBlocklistRetrieveResponse
 
       def update: (
+        String id,
         ?name: String,
-        ?type: Telnyx::Models::WirelessBlocklistUpdateParams::type_,
         ?values: ::Array[String],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::WirelessBlocklistUpdateResponse

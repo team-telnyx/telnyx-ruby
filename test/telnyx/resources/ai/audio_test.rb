@@ -16,7 +16,8 @@ class Telnyx::Test::Resources::AI::AudioTest < Telnyx::Test::ResourceTest
       response => {
         text: String,
         duration: Float | nil,
-        segments: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::AudioTranscribeResponse::Segment]) | nil
+        segments: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::AudioTranscribeResponse::Segment]) | nil,
+        words: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::AudioTranscribeResponse::Word]) | nil
       }
     end
   end

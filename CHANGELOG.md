@@ -1,5 +1,40 @@
 # Changelog
 
+## 5.69.0 (2026-04-08)
+
+Full Changelog: [v5.68.2...v5.69.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.68.2...v5.69.0)
+
+### Features
+
+* Add ai_calls endpoint documentation to OpenAPI spec ([c8acb50](https://github.com/team-telnyx/telnyx-ruby/commit/c8acb50e7e89bba2f6314fe1ad3a81547a172f63))
+* add enabled boolean to recording_settings [AI-2178] ([8f21b10](https://github.com/team-telnyx/telnyx-ruby/commit/8f21b10753325c2792b0aabecd97633c51b410a0))
+* Add oneOf constraint for Url/Texml mutual exclusivity in InitiateCallRequest ([5cd6954](https://github.com/team-telnyx/telnyx-ruby/commit/5cd6954637cf297313fb31668c82424e959ecb27))
+* AI-2180: Add message_template to SendMessageTool schema ([6dcb74b](https://github.com/team-telnyx/telnyx-ruby/commit/6dcb74b30bc33245d83809f5f5e05a3a27ca13aa))
+* **api:** manual updates ([4933749](https://github.com/team-telnyx/telnyx-ruby/commit/4933749dbde30b5ad5ec3d3914d49cf071367662))
+* **api:** Merge pull request [#39](https://github.com/team-telnyx/telnyx-ruby/issues/39) from stainless-sdks/revert-a988c49-stainless-changes ([2286831](https://github.com/team-telnyx/telnyx-ruby/commit/2286831469bf7527df9b5caa6d57f788744e66b2))
+* Assistants: add observability ([88c203f](https://github.com/team-telnyx/telnyx-ruby/commit/88c203faad93be1670c56ed331dfc6816b562ed9))
+* CW-3815 fix PATCH /wirelss_blocklists/{id} endpoint ([4cf00e9](https://github.com/team-telnyx/telnyx-ruby/commit/4cf00e94bb333207285db020723792bddf3c6b2d))
+* MSG-6666: Add template and text properties to WhatsApp send message schema ([7dac0d6](https://github.com/team-telnyx/telnyx-ruby/commit/7dac0d6aca0d853ec56309dd3fdca67a204f3446))
+* MSG-6673: Add WhatsApp verification endpoint and profile settings ([00f25ab](https://github.com/team-telnyx/telnyx-ruby/commit/00f25abe49dca4f75852119df52da915567bd459))
+* TELAPPS-5689: Pronunciation dictionaries API docs ([716d0a0](https://github.com/team-telnyx/telnyx-ruby/commit/716d0a0d2d7973b998902932f7b9d0965acc8ee9))
+
+
+### Bug Fixes
+
+* add missing VoiceCloneCreateFromDesignParams and VoiceCloneCreateFromDesignResponse constant aliases ([1cef321](https://github.com/team-telnyx/telnyx-ruby/commit/1cef3216c8b5a0ac54db0f919df8ac305f154e86))
+* align path encoding with RFC 3986 section 3.3 ([cb36e56](https://github.com/team-telnyx/telnyx-ruby/commit/cb36e56e938d6fd5498f860d29c788644bb4d753))
+* variable name typo ([49b527d](https://github.com/team-telnyx/telnyx-ruby/commit/49b527df7eed567656f1d149cb4c9af3d9b29693))
+
+
+### Reverts
+
+* restore stainless.yml SDK generation fixes ([2286831](https://github.com/team-telnyx/telnyx-ruby/commit/2286831469bf7527df9b5caa6d57f788744e66b2))
+
+
+### Chores
+
+* remove legacy GEM_HOST_API_KEY check (now using OIDC) ([b20bdd2](https://github.com/team-telnyx/telnyx-ruby/commit/b20bdd2ac232901e0e0106575afa8c470b5feb9b))
+
 ## 5.68.2 (2026-03-31)
 
 Full Changelog: [v5.68.1...v5.68.2](https://github.com/team-telnyx/telnyx-ruby/compare/v5.68.1...v5.68.2)

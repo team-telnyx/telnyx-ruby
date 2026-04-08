@@ -15,6 +15,7 @@ module Telnyx
           sms: Telnyx::VerifyProfileCreateParams::SMS::OrHash,
           webhook_failover_url: String,
           webhook_url: String,
+          whatsapp: Telnyx::VerifyProfileCreateParams::Whatsapp::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::VerifyProfileData)
       end
@@ -27,6 +28,7 @@ module Telnyx
         sms: nil,
         webhook_failover_url: nil,
         webhook_url: nil,
+        whatsapp: nil,
         request_options: {}
       )
       end
@@ -57,6 +59,7 @@ module Telnyx
           sms: Telnyx::VerifyProfileUpdateParams::SMS::OrHash,
           webhook_failover_url: String,
           webhook_url: String,
+          whatsapp: Telnyx::VerifyProfileUpdateParams::Whatsapp::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::VerifyProfileData)
       end
@@ -71,6 +74,7 @@ module Telnyx
         sms: nil,
         webhook_failover_url: nil,
         webhook_url: nil,
+        whatsapp: nil,
         request_options: {}
       )
       end

@@ -73,12 +73,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.texml.accounts.calls.calls(
-        "account_sid",
-        application_sid: "example-app-sid",
-        from: "+13120001234",
-        to: "+13121230000"
-      )
+      @telnyx.texml.accounts.calls.calls("account_sid", body: {Url: "https://www.example.com/texml.xml"})
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::CallCallsResponse

@@ -10,7 +10,8 @@ module Telnyx
         rcs: Telnyx::VerifyProfileUpdateParams::Rcs,
         sms: Telnyx::VerifyProfileUpdateParams::SMS,
         webhook_failover_url: String,
-        webhook_url: String
+        webhook_url: String,
+        whatsapp: Telnyx::VerifyProfileUpdateParams::Whatsapp
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -60,6 +61,12 @@ module Telnyx
 
       def webhook_url=: (String) -> String
 
+      attr_reader whatsapp: Telnyx::VerifyProfileUpdateParams::Whatsapp?
+
+      def whatsapp=: (
+        Telnyx::VerifyProfileUpdateParams::Whatsapp
+      ) -> Telnyx::VerifyProfileUpdateParams::Whatsapp
+
       def initialize: (
         verify_profile_id: String,
         ?call: Telnyx::VerifyProfileUpdateParams::Call,
@@ -70,6 +77,7 @@ module Telnyx
         ?sms: Telnyx::VerifyProfileUpdateParams::SMS,
         ?webhook_failover_url: String,
         ?webhook_url: String,
+        ?whatsapp: Telnyx::VerifyProfileUpdateParams::Whatsapp,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -83,6 +91,7 @@ module Telnyx
         sms: Telnyx::VerifyProfileUpdateParams::SMS,
         webhook_failover_url: String,
         webhook_url: String,
+        whatsapp: Telnyx::VerifyProfileUpdateParams::Whatsapp,
         request_options: Telnyx::RequestOptions
       }
 
@@ -268,6 +277,39 @@ module Telnyx
           code_length: Integer,
           default_verification_timeout_secs: Integer,
           messaging_template_id: String,
+          whitelisted_destinations: ::Array[String]
+        }
+      end
+
+      type whatsapp =
+        {
+          app_name: String,
+          default_verification_timeout_secs: Integer,
+          whitelisted_destinations: ::Array[String]
+        }
+
+      class Whatsapp < Telnyx::Internal::Type::BaseModel
+        attr_reader app_name: String?
+
+        def app_name=: (String) -> String
+
+        attr_reader default_verification_timeout_secs: Integer?
+
+        def default_verification_timeout_secs=: (Integer) -> Integer
+
+        attr_reader whitelisted_destinations: ::Array[String]?
+
+        def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?app_name: String,
+          ?default_verification_timeout_secs: Integer,
+          ?whitelisted_destinations: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          app_name: String,
+          default_verification_timeout_secs: Integer,
           whitelisted_destinations: ::Array[String]
         }
       end

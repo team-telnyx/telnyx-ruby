@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type texml_initiate_ai_call_response =
+      { call_sid: String, from: String, status: String, to: String }
+
+    class TexmlInitiateAICallResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader call_sid: String?
+
+      def call_sid=: (String) -> String
+
+      attr_reader from: String?
+
+      def from=: (String) -> String
+
+      attr_reader status: String?
+
+      def status=: (String) -> String
+
+      attr_reader to: String?
+
+      def to=: (String) -> String
+
+      def initialize: (
+        ?call_sid: String,
+        ?from: String,
+        ?status: String,
+        ?to: String
+      ) -> void
+
+      def to_hash: -> {
+        call_sid: String,
+        from: String,
+        status: String,
+        to: String
+      }
+    end
+  end
+end

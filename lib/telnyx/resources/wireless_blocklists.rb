@@ -52,11 +52,11 @@ module Telnyx
 
       # Update a Wireless Blocklist.
       #
-      # @overload update(name: nil, type: nil, values: nil, request_options: {})
+      # @overload update(id, name: nil, values: nil, request_options: {})
+      #
+      # @param id [String] Identifies the wireless blocklist.
       #
       # @param name [String] The name of the Wireless Blocklist.
-      #
-      # @param type [Symbol, Telnyx::Models::WirelessBlocklistUpdateParams::Type] The type of wireless blocklist.
       #
       # @param values [Array<String>] Values to block. The values here depend on the `type` of Wireless Blocklist.
       #
@@ -65,11 +65,11 @@ module Telnyx
       # @return [Telnyx::Models::WirelessBlocklistUpdateResponse]
       #
       # @see Telnyx::Models::WirelessBlocklistUpdateParams
-      def update(params = {})
+      def update(id, params = {})
         parsed, options = Telnyx::WirelessBlocklistUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: "wireless_blocklists",
+          path: ["wireless_blocklists/%1$s", id],
           body: parsed,
           model: Telnyx::Models::WirelessBlocklistUpdateResponse,
           options: options
