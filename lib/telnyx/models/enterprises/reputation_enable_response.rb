@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Enterprises
-      # @see Telnyx::Resources::Enterprises::Reputation#list
-      class ReputationListResponse < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Enterprises::Reputation#enable
+      class ReputationEnableResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Telnyx::Models::Enterprises::EnterpriseReputationPublic, nil]

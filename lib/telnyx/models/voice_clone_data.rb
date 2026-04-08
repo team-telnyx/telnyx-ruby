@@ -35,6 +35,12 @@ module Telnyx
       #   @return [String, nil]
       optional :language, String, nil?: true
 
+      # @!attribute model_id
+      #   TTS model identifier for the voice clone.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceCloneData::ModelID, nil]
+      optional :model_id, enum: -> { Telnyx::VoiceCloneData::ModelID }
+
       # @!attribute name
       #   Name of the voice clone.
       #
@@ -54,8 +60,8 @@ module Telnyx
       optional :provider_supported_models, Telnyx::Internal::Type::ArrayOf[String]
 
       # @!attribute provider_voice_id
-      #   Provider-specific voice identifier used for TTS synthesis. For Telnyx clones
-      #   this equals the clone ID; for Minimax it is the Minimax-assigned voice ID.
+      #   Provider-specific voice identifier used for TTS synthesis. May differ from the
+      #   clone UUID depending on the provider and model.
       #
       #   @return [String, nil]
       optional :provider_voice_id, String, nil?: true
@@ -78,13 +84,20 @@ module Telnyx
       #   @return [Integer, nil]
       optional :source_voice_design_version, Integer, nil?: true
 
+      # @!attribute status
+      #   Clone status. pending for Ultra clones while on-prem import is in progress,
+      #   active once ready, failed if verification timed out, expired if not kept alive.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceCloneData::Status, nil]
+      optional :status, enum: -> { Telnyx::VoiceCloneData::Status }
+
       # @!attribute updated_at
       #   Timestamp when the voice clone was last updated.
       #
       #   @return [Time, nil]
       optional :updated_at, Time
 
-      # @!method initialize(id: nil, created_at: nil, gender: nil, label: nil, language: nil, name: nil, provider: nil, provider_supported_models: nil, provider_voice_id: nil, record_type: nil, source_voice_design_id: nil, source_voice_design_version: nil, updated_at: nil)
+      # @!method initialize(id: nil, created_at: nil, gender: nil, label: nil, language: nil, model_id: nil, name: nil, provider: nil, provider_supported_models: nil, provider_voice_id: nil, record_type: nil, source_voice_design_id: nil, source_voice_design_version: nil, status: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::VoiceCloneData} for more details.
       #
@@ -100,19 +113,23 @@ module Telnyx
       #
       #   @param language [String, nil] ISO 639-1 language code of the voice clone.
       #
+      #   @param model_id [Symbol, Telnyx::Models::VoiceCloneData::ModelID] TTS model identifier for the voice clone.
+      #
       #   @param name [String] Name of the voice clone.
       #
       #   @param provider [Symbol, Telnyx::Models::VoiceCloneData::Provider] Voice synthesis provider used for this clone.
       #
       #   @param provider_supported_models [Array<String>] List of TTS model identifiers supported by this clone's provider.
       #
-      #   @param provider_voice_id [String, nil] Provider-specific voice identifier used for TTS synthesis. For Telnyx clones thi
+      #   @param provider_voice_id [String, nil] Provider-specific voice identifier used for TTS synthesis. May differ from the c
       #
       #   @param record_type [Symbol, Telnyx::Models::VoiceCloneData::RecordType] Identifies the resource type.
       #
       #   @param source_voice_design_id [String, nil] UUID of the source voice design. `null` for upload-based clones.
       #
       #   @param source_voice_design_version [Integer, nil] Version of the source voice design used. `null` for upload-based clones.
+      #
+      #   @param status [Symbol, Telnyx::Models::VoiceCloneData::Status] Clone status. pending for Ultra clones while on-prem import is in progress, acti
       #
       #   @param updated_at [Time] Timestamp when the voice clone was last updated.
 
@@ -125,6 +142,20 @@ module Telnyx
         MALE = :male
         FEMALE = :female
         NEUTRAL = :neutral
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # TTS model identifier for the voice clone.
+      #
+      # @see Telnyx::Models::VoiceCloneData#model_id
+      module ModelID
+        extend Telnyx::Internal::Type::Enum
+
+        QWEN3_TTS = :Qwen3TTS
+        ULTRA = :Ultra
+        SPEECH_2_8_TURBO = :"speech-2.8-turbo"
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -150,6 +181,22 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         VOICE_CLONE = :voice_clone
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Clone status. pending for Ultra clones while on-prem import is in progress,
+      # active once ready, failed if verification timed out, expired if not kept alive.
+      #
+      # @see Telnyx::Models::VoiceCloneData#status
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        ACTIVE = :active
+        PENDING = :pending
+        FAILED = :failed
+        EXPIRED = :expired
 
         # @!method self.values
         #   @return [Array<Symbol>]

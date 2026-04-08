@@ -224,6 +224,15 @@ module Telnyx
       sig { params(prevent_double_bridge: T::Boolean).void }
       attr_writer :prevent_double_bridge
 
+      # Indicates the privacy level to be used for the call. When set to `id`, caller ID
+      # information (name and number) will be hidden from the called party. When set to
+      # `none` or omitted, caller ID will be shown normally.
+      sig { returns(T.nilable(Telnyx::CallDialParams::Privacy::OrSymbol)) }
+      attr_reader :privacy
+
+      sig { params(privacy: Telnyx::CallDialParams::Privacy::OrSymbol).void }
+      attr_writer :privacy
+
       # Start recording automatically after an event. Disabled by default.
       sig { returns(T.nilable(Telnyx::CallDialParams::Record::OrSymbol)) }
       attr_reader :record
@@ -570,6 +579,7 @@ module Telnyx
           park_after_unbridge: String,
           preferred_codecs: String,
           prevent_double_bridge: T::Boolean,
+          privacy: Telnyx::CallDialParams::Privacy::OrSymbol,
           record: Telnyx::CallDialParams::Record::OrSymbol,
           record_channels: Telnyx::CallDialParams::RecordChannels::OrSymbol,
           record_custom_file_name: String,
@@ -694,6 +704,10 @@ module Telnyx
         # Prevents bridging and hangs up the call if the target is already bridged.
         # Disabled by default.
         prevent_double_bridge: nil,
+        # Indicates the privacy level to be used for the call. When set to `id`, caller ID
+        # information (name and number) will be hidden from the called party. When set to
+        # `none` or omitted, caller ID will be shown normally.
+        privacy: nil,
         # Start recording automatically after an event. Disabled by default.
         record: nil,
         # Defines which channel should be recorded ('single' or 'dual') when `record` is
@@ -818,6 +832,7 @@ module Telnyx
             park_after_unbridge: String,
             preferred_codecs: String,
             prevent_double_bridge: T::Boolean,
+            privacy: Telnyx::CallDialParams::Privacy::OrSymbol,
             record: Telnyx::CallDialParams::Record::OrSymbol,
             record_channels: Telnyx::CallDialParams::RecordChannels::OrSymbol,
             record_custom_file_name: String,
@@ -1473,6 +1488,28 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::CallDialParams::MediaEncryption::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Indicates the privacy level to be used for the call. When set to `id`, caller ID
+      # information (name and number) will be hidden from the called party. When set to
+      # `none` or omitted, caller ID will be shown normally.
+      module Privacy
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::CallDialParams::Privacy) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ID = T.let(:id, Telnyx::CallDialParams::Privacy::TaggedSymbol)
+        NONE = T.let(:none, Telnyx::CallDialParams::Privacy::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::CallDialParams::Privacy::TaggedSymbol]
           )
         end
         def self.values

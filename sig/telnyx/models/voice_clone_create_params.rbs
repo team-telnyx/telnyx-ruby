@@ -1,72 +1,157 @@
 module Telnyx
   module Models
     type voice_clone_create_params =
-      {
-        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
-        language: String,
-        name: String,
-        voice_design_id: String,
-        provider: Telnyx::Models::VoiceCloneCreateParams::provider
-      }
+      { body: Telnyx::Models::VoiceCloneCreateParams::body }
       & Telnyx::Internal::Type::request_parameters
 
     class VoiceCloneCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor gender: Telnyx::Models::VoiceCloneCreateParams::gender
-
-      attr_accessor language: String
-
-      attr_accessor name: String
-
-      attr_accessor voice_design_id: String
-
-      attr_reader provider: Telnyx::Models::VoiceCloneCreateParams::provider?
-
-      def provider=: (
-        Telnyx::Models::VoiceCloneCreateParams::provider
-      ) -> Telnyx::Models::VoiceCloneCreateParams::provider
+      attr_accessor body: Telnyx::Models::VoiceCloneCreateParams::body
 
       def initialize: (
-        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
-        language: String,
-        name: String,
-        voice_design_id: String,
-        ?provider: Telnyx::Models::VoiceCloneCreateParams::provider,
+        body: Telnyx::Models::VoiceCloneCreateParams::body,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
-        language: String,
-        name: String,
-        voice_design_id: String,
-        provider: Telnyx::Models::VoiceCloneCreateParams::provider,
+        body: Telnyx::Models::VoiceCloneCreateParams::body,
         request_options: Telnyx::RequestOptions
       }
 
-      type gender = :male | :female | :neutral
+      type body =
+        Telnyx::VoiceCloneCreateParams::Body::TelnyxDesignClone
+        | Telnyx::VoiceCloneCreateParams::Body::MinimaxDesignClone
 
-      module Gender
-        extend Telnyx::Internal::Type::Enum
+      module Body
+        extend Telnyx::Internal::Type::Union
 
-        MALE: :male
-        FEMALE: :female
-        NEUTRAL: :neutral
+        type telnyx_design_clone =
+          {
+            gender: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::gender,
+            language: String,
+            name: String,
+            voice_design_id: String,
+            provider: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::provider
+          }
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::gender]
-      end
+        class TelnyxDesignClone < Telnyx::Internal::Type::BaseModel
+          attr_accessor gender: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::gender
 
-      type provider = :telnyx | :minimax
+          attr_accessor language: String
 
-      module Provider
-        extend Telnyx::Internal::Type::Enum
+          attr_accessor name: String
 
-        TELNYX: :telnyx
-        MINIMAX: :minimax
+          attr_accessor voice_design_id: String
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::provider]
+          attr_reader provider: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::provider?
+
+          def provider=: (
+            Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::provider
+          ) -> Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::provider
+
+          def initialize: (
+            gender: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::gender,
+            language: String,
+            name: String,
+            voice_design_id: String,
+            ?provider: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::provider
+          ) -> void
+
+          def to_hash: -> {
+            gender: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::gender,
+            language: String,
+            name: String,
+            voice_design_id: String,
+            provider: Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::provider
+          }
+
+          type gender = :male | :female | :neutral
+
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            MALE: :male
+            FEMALE: :female
+            NEUTRAL: :neutral
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::gender]
+          end
+
+          type provider = :telnyx | :Telnyx
+
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX: :telnyx
+            TELNYX_2: :Telnyx
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone::provider]
+          end
+        end
+
+        type minimax_design_clone =
+          {
+            gender: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::provider,
+            voice_design_id: String
+          }
+
+        class MinimaxDesignClone < Telnyx::Internal::Type::BaseModel
+          attr_accessor gender: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::gender
+
+          attr_accessor language: String
+
+          attr_accessor name: String
+
+          attr_accessor provider: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::provider
+
+          attr_accessor voice_design_id: String
+
+          def initialize: (
+            gender: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::provider,
+            voice_design_id: String
+          ) -> void
+
+          def to_hash: -> {
+            gender: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::provider,
+            voice_design_id: String
+          }
+
+          type gender = :male | :female | :neutral
+
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            MALE: :male
+            FEMALE: :female
+            NEUTRAL: :neutral
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::gender]
+          end
+
+          type provider = :minimax | :Minimax
+
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            MINIMAX: :minimax
+            MINIMAX_2: :Minimax
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone::provider]
+          end
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::body]
       end
     end
   end

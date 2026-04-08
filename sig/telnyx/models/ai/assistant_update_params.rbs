@@ -15,7 +15,7 @@ module Telnyx
           messaging_settings: Telnyx::AI::MessagingSettings,
           model: String,
           name: String,
-          observability_settings: Telnyx::AI::AssistantUpdateParams::ObservabilitySettings,
+          observability_settings: Telnyx::AI::ObservabilityReq,
           privacy_settings: Telnyx::AI::PrivacySettings,
           promote_to_main: bool,
           telephony_settings: Telnyx::AI::TelephonySettings,
@@ -83,11 +83,11 @@ module Telnyx
 
         def name=: (String) -> String
 
-        attr_reader observability_settings: Telnyx::AI::AssistantUpdateParams::ObservabilitySettings?
+        attr_reader observability_settings: Telnyx::AI::ObservabilityReq?
 
         def observability_settings=: (
-          Telnyx::AI::AssistantUpdateParams::ObservabilitySettings
-        ) -> Telnyx::AI::AssistantUpdateParams::ObservabilitySettings
+          Telnyx::AI::ObservabilityReq
+        ) -> Telnyx::AI::ObservabilityReq
 
         attr_reader privacy_settings: Telnyx::AI::PrivacySettings?
 
@@ -146,7 +146,7 @@ module Telnyx
           ?messaging_settings: Telnyx::AI::MessagingSettings,
           ?model: String,
           ?name: String,
-          ?observability_settings: Telnyx::AI::AssistantUpdateParams::ObservabilitySettings,
+          ?observability_settings: Telnyx::AI::ObservabilityReq,
           ?privacy_settings: Telnyx::AI::PrivacySettings,
           ?promote_to_main: bool,
           ?telephony_settings: Telnyx::AI::TelephonySettings,
@@ -171,7 +171,7 @@ module Telnyx
           messaging_settings: Telnyx::AI::MessagingSettings,
           model: String,
           name: String,
-          observability_settings: Telnyx::AI::AssistantUpdateParams::ObservabilitySettings,
+          observability_settings: Telnyx::AI::ObservabilityReq,
           privacy_settings: Telnyx::AI::PrivacySettings,
           promote_to_main: bool,
           telephony_settings: Telnyx::AI::TelephonySettings,
@@ -182,59 +182,6 @@ module Telnyx
           widget_settings: Telnyx::AI::WidgetSettings,
           request_options: Telnyx::RequestOptions
         }
-
-        type observability_settings =
-          {
-            host: String,
-            public_key_ref: String,
-            secret_key_ref: String,
-            status: Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::status
-          }
-
-        class ObservabilitySettings < Telnyx::Internal::Type::BaseModel
-          attr_reader host: String?
-
-          def host=: (String) -> String
-
-          attr_reader public_key_ref: String?
-
-          def public_key_ref=: (String) -> String
-
-          attr_reader secret_key_ref: String?
-
-          def secret_key_ref=: (String) -> String
-
-          attr_reader status: Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::status?
-
-          def status=: (
-            Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::status
-          ) -> Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::status
-
-          def initialize: (
-            ?host: String,
-            ?public_key_ref: String,
-            ?secret_key_ref: String,
-            ?status: Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::status
-          ) -> void
-
-          def to_hash: -> {
-            host: String,
-            public_key_ref: String,
-            secret_key_ref: String,
-            status: Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::status
-          }
-
-          type status = :enabled | :disabled
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            ENABLED: :enabled
-            DISABLED: :disabled
-
-            def self?.values: -> ::Array[Telnyx::Models::AI::AssistantUpdateParams::ObservabilitySettings::status]
-          end
-        end
       end
     end
   end

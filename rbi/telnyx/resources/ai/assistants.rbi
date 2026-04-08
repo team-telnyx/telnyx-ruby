@@ -43,8 +43,7 @@ module Telnyx
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             llm_api_key_ref: String,
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
-            observability_settings:
-              Telnyx::AI::AssistantCreateParams::ObservabilitySettings::OrHash,
+            observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tool_ids: T::Array[String],
@@ -153,8 +152,7 @@ module Telnyx
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             name: String,
-            observability_settings:
-              Telnyx::AI::AssistantUpdateParams::ObservabilitySettings::OrHash,
+            observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,

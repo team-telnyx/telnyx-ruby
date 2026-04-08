@@ -1,15 +1,15 @@
 module Telnyx
   module Models
     module Enterprises
-      type reputation_create_params =
+      type reputation_enable_params =
         {
           enterprise_id: String,
           loa_document_id: String,
-          check_frequency: Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency
+          check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency
         }
         & Telnyx::Internal::Type::request_parameters
 
-      class ReputationCreateParams < Telnyx::Internal::Type::BaseModel
+      class ReputationEnableParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
@@ -17,23 +17,23 @@ module Telnyx
 
         attr_accessor loa_document_id: String
 
-        attr_reader check_frequency: Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency?
+        attr_reader check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency?
 
         def check_frequency=: (
-          Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency
-        ) -> Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency
+          Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency
+        ) -> Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency
 
         def initialize: (
           enterprise_id: String,
           loa_document_id: String,
-          ?check_frequency: Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency,
+          ?check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           enterprise_id: String,
           loa_document_id: String,
-          check_frequency: Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency,
+          check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency,
           request_options: Telnyx::RequestOptions
         }
 
@@ -50,7 +50,7 @@ module Telnyx
           MONTHLY: :monthly
           NEVER: :never
 
-          def self?.values: -> ::Array[Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency]
+          def self?.values: -> ::Array[Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency]
         end
       end
     end

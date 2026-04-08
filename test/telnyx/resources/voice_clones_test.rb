@@ -8,10 +8,13 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     response =
       @telnyx.voice_clones.create(
-        gender: :male,
-        language: "en",
-        name: "clone-narrator",
-        voice_design_id: "550e8400-e29b-41d4-a716-446655440000"
+        body: {
+          gender: :male,
+          language: "en",
+          name: "clone-narrator",
+          voice_design_id: "550e8400-e29b-41d4-a716-446655440000",
+          provider: :telnyx
+        }
       )
 
     assert_pattern do
@@ -64,6 +67,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
         gender: Telnyx::VoiceCloneData::Gender | nil,
         label: String | nil,
         language: String | nil,
+        model_id: Telnyx::VoiceCloneData::ModelID | nil,
         name: String | nil,
         provider: Telnyx::VoiceCloneData::Provider | nil,
         provider_supported_models: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
@@ -71,6 +75,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
         record_type: Telnyx::VoiceCloneData::RecordType | nil,
         source_voice_design_id: String | nil,
         source_voice_design_version: Integer | nil,
+        status: Telnyx::VoiceCloneData::Status | nil,
         updated_at: Time | nil
       }
     end
@@ -91,9 +96,13 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     response =
       @telnyx.voice_clones.create_from_upload(
-        audio_file: StringIO.new("Example data"),
-        language: "lkf-Lz1vLbBu-9uDh-9AHaOS2D-Cbf",
-        name: "name"
+        body: {
+          audio_file: StringIO.new("Example data"),
+          gender: :male,
+          language: "lkf-Lz1vLbBu-9uDh-9AHaOS2D-Cbf",
+          name: "name",
+          provider: :telnyx
+        }
       )
 
     assert_pattern do
