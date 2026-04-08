@@ -99,97 +99,14 @@ module Telnyx
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::Texml::Accounts::CallCallsParams} for more details.
-          #
           # Initiate an outbound TeXML call. Telnyx will request TeXML from the XML Request
           # URL configured for the connection in the Mission Control Portal.
           #
-          # @overload calls(account_sid, application_sid:, from:, to:, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout_seconds: nil, trim: nil, url: nil, url_method: nil, request_options: {})
+          # @overload calls(account_sid, body:, request_options: {})
           #
           # @param account_sid [String] The id of the account the resource belongs to.
           #
-          # @param application_sid [String] The ID of the TeXML Application.
-          #
-          # @param from [String] The phone number of the party that initiated the call. Phone numbers are formatt
-          #
-          # @param to [String] The phone number of the called party. Phone numbers are formatted with a `+` and
-          #
-          # @param async_amd [Boolean] Select whether to perform answering machine detection in the background. By defa
-          #
-          # @param async_amd_status_callback [String] URL destination for Telnyx to send AMD callback events to for the call.
-          #
-          # @param async_amd_status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::AsyncAmdStatusCallbackMethod] HTTP request type used for `AsyncAmdStatusCallback`. The default value is inheri
-          #
-          # @param caller_id [String] To be used as the caller id name (SIP From Display Name) presented to the destin
-          #
-          # @param cancel_playback_on_detect_message_end [Boolean] Whether to cancel ongoing playback on `greeting ended` detection. Defaults to `t
-          #
-          # @param cancel_playback_on_machine_detection [Boolean] Whether to cancel ongoing playback on `machine` detection. Defaults to `true`.
-          #
-          # @param custom_headers [Array<Telnyx::Models::Texml::Accounts::CallCallsParams::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
-          #
-          # @param detection_mode [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::DetectionMode] Allows you to chose between Premium and Standard detections.
-          #
-          # @param fallback_url [String] A failover URL for which Telnyx will retrieve the TeXML call instructions if the
-          #
-          # @param machine_detection [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::MachineDetection] Enables Answering Machine Detection.
-          #
-          # @param machine_detection_silence_timeout [Integer] If initial silence duration is greater than this value, consider it a machine. I
-          #
-          # @param machine_detection_speech_end_threshold [Integer] Silence duration threshold after a greeting message or voice for it be considere
-          #
-          # @param machine_detection_speech_threshold [Integer] Maximum threshold of a human greeting. If greeting longer than this value, consi
-          #
-          # @param machine_detection_timeout [Integer] Maximum timeout threshold in milliseconds for overall detection.
-          #
-          # @param media_encryption [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::MediaEncryption] Defines whether media should be encrypted on the call. When set to `SRTP`, the c
-          #
-          # @param preferred_codecs [String] The list of comma-separated codecs to be offered on a call.
-          #
-          # @param record [Boolean] Whether to record the entire participant's call leg. Defaults to `false`.
-          #
-          # @param recording_channels [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::RecordingChannels] The number of channels in the final recording. Defaults to `mono`.
-          #
-          # @param recording_status_callback [String] The URL the recording callbacks will be sent to.
-          #
-          # @param recording_status_callback_event [String] The changes to the recording's state that should generate a call to `RecoridngSt
-          #
-          # @param recording_status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::RecordingStatusCallbackMethod] HTTP request type used for `RecordingStatusCallback`. Defaults to `POST`.
-          #
-          # @param recording_timeout [Integer] The number of seconds that Telnyx will wait for the recording to be stopped if s
-          #
-          # @param recording_track [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::RecordingTrack] The audio track to record for the call. The default is `both`.
-          #
-          # @param send_recording_url [Boolean] Whether to send RecordingUrl in webhooks.
-          #
-          # @param sip_auth_password [String] The password to use for SIP authentication.
-          #
-          # @param sip_auth_username [String] The username to use for SIP authentication.
-          #
-          # @param sip_region [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::SipRegion] Defines the SIP region to be used for the call.
-          #
-          # @param status_callback [String] URL destination for Telnyx to send status callback events to for the call.
-          #
-          # @param status_callback_event [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::StatusCallbackEvent] The call events for which Telnyx should send a webhook. Multiple events can be d
-          #
-          # @param status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::StatusCallbackMethod] HTTP request type used for `StatusCallback`.
-          #
-          # @param supervise_call_sid [String] The call control ID of the existing call to supervise. When provided, the create
-          #
-          # @param supervising_role [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::SupervisingRole] The supervising role for the new leg. Determines the audio behavior: barge (hear
-          #
-          # @param texml [String] TeXML to be used as instructions for the call. If provided, the call will execut
-          #
-          # @param time_limit [Integer] The maximum duration of the call in seconds. The minimum value is 30 and the max
-          #
-          # @param timeout_seconds [Integer] The number of seconds to wait for the called party to answer the call before the
-          #
-          # @param trim [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Trim] Whether to trim any leading and trailing silence from the recording. Defaults to
-          #
-          # @param url [String] The URL from which Telnyx will retrieve the TeXML call instructions.
-          #
-          # @param url_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::URLMethod] HTTP request type used for `Url`. The default value is inherited from TeXML Appl
+          # @param body [Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault]
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -201,7 +118,7 @@ module Telnyx
             @client.request(
               method: :post,
               path: ["texml/Accounts/%1$s/Calls", account_sid],
-              body: parsed,
+              body: parsed[:body],
               model: Telnyx::Models::Texml::Accounts::CallCallsResponse,
               options: options
             )
