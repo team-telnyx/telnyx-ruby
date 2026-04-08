@@ -102,11 +102,11 @@ module Telnyx
           # Initiate an outbound TeXML call. Telnyx will request TeXML from the XML Request
           # URL configured for the connection in the Mission Control Portal.
           #
-          # @overload calls(account_sid, body:, request_options: {})
+          # @overload calls(account_sid, params:, request_options: {})
           #
           # @param account_sid [String] The id of the account the resource belongs to.
           #
-          # @param body [Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault]
+          # @param params [Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault]
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -118,7 +118,7 @@ module Telnyx
             @client.request(
               method: :post,
               path: ["texml/Accounts/%1$s/Calls", account_sid],
-              body: parsed[:body],
+              body: parsed[:params],
               model: Telnyx::Models::Texml::Accounts::CallCallsResponse,
               options: options
             )

@@ -22,38 +22,38 @@ module Telnyx
           sig do
             returns(
               T.any(
-                Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL,
-                Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml,
-                Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault
+                Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL,
+                Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml,
+                Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault
               )
             )
           end
-          attr_accessor :body
+          attr_accessor :params
 
           sig do
             params(
               account_sid: String,
-              body:
+              params:
                 T.any(
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::OrHash,
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::OrHash,
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::OrHash
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::OrHash
                 ),
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(account_sid:, body:, request_options: {})
+          def self.new(account_sid:, params:, request_options: {})
           end
 
           sig do
             override.returns(
               {
                 account_sid: String,
-                body:
+                params:
                   T.any(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault
                   ),
                 request_options: Telnyx::RequestOptions
               }
@@ -62,15 +62,15 @@ module Telnyx
           def to_hash
           end
 
-          module Body
+          module Params
             extend Telnyx::Internal::Type::Union
 
             Variants =
               T.type_alias do
                 T.any(
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL,
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml,
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault
                 )
               end
 
@@ -78,7 +78,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -114,7 +114,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -123,7 +123,7 @@ module Telnyx
               sig do
                 params(
                   async_amd_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :async_amd_status_callback_method
@@ -163,7 +163,7 @@ module Telnyx
                 returns(
                   T.nilable(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::CustomHeader
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader
                     ]
                   )
                 )
@@ -174,7 +174,7 @@ module Telnyx
                 params(
                   custom_headers:
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::CustomHeader::OrHash
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader::OrHash
                     ]
                 ).void
               end
@@ -184,7 +184,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::OrSymbol
                   )
                 )
               end
@@ -193,7 +193,7 @@ module Telnyx
               sig do
                 params(
                   detection_mode:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::OrSymbol
                 ).void
               end
               attr_writer :detection_mode
@@ -218,7 +218,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::OrSymbol
                   )
                 )
               end
@@ -227,7 +227,7 @@ module Telnyx
               sig do
                 params(
                   machine_detection:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::OrSymbol
                 ).void
               end
               attr_writer :machine_detection
@@ -272,7 +272,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::OrSymbol
                   )
                 )
               end
@@ -281,7 +281,7 @@ module Telnyx
               sig do
                 params(
                   media_encryption:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::OrSymbol
                 ).void
               end
               attr_writer :media_encryption
@@ -304,7 +304,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels::OrSymbol
                   )
                 )
               end
@@ -313,7 +313,7 @@ module Telnyx
               sig do
                 params(
                   recording_channels:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels::OrSymbol
                 ).void
               end
               attr_writer :recording_channels
@@ -338,7 +338,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -347,7 +347,7 @@ module Telnyx
               sig do
                 params(
                   recording_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :recording_status_callback_method
@@ -366,7 +366,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::OrSymbol
                   )
                 )
               end
@@ -375,7 +375,7 @@ module Telnyx
               sig do
                 params(
                   recording_track:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::OrSymbol
                 ).void
               end
               attr_writer :recording_track
@@ -405,7 +405,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::OrSymbol
                   )
                 )
               end
@@ -414,7 +414,7 @@ module Telnyx
               sig do
                 params(
                   sip_region:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::OrSymbol
                 ).void
               end
               attr_writer :sip_region
@@ -431,7 +431,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::OrSymbol
                   )
                 )
               end
@@ -440,7 +440,7 @@ module Telnyx
               sig do
                 params(
                   status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::OrSymbol
                 ).void
               end
               attr_writer :status_callback_event
@@ -449,7 +449,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -458,7 +458,7 @@ module Telnyx
               sig do
                 params(
                   status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :status_callback_method
@@ -478,7 +478,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::OrSymbol
                   )
                 )
               end
@@ -487,16 +487,13 @@ module Telnyx
               sig do
                 params(
                   supervising_role:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::OrSymbol
                 ).void
               end
               attr_writer :supervising_role
 
-              sig { returns(T.nilable(T.anything)) }
-              attr_reader :texml
-
-              sig { params(texml: T.anything).void }
-              attr_writer :texml
+              sig { returns(T.nilable(String)) }
+              attr_accessor :texml
 
               # The maximum duration of the call in seconds. The minimum value is 30 and the
               # maximum value is 14400 (4 hours). Default is 14400 seconds.
@@ -528,7 +525,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim::OrSymbol
                   )
                 )
               end
@@ -537,7 +534,7 @@ module Telnyx
               sig do
                 params(
                   trim:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim::OrSymbol
                 ).void
               end
               attr_writer :trim
@@ -547,7 +544,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod::OrSymbol
                   )
                 )
               end
@@ -556,7 +553,7 @@ module Telnyx
               sig do
                 params(
                   url_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod::OrSymbol
                 ).void
               end
               attr_writer :url_method
@@ -568,58 +565,58 @@ module Telnyx
                   async_amd: T::Boolean,
                   async_amd_status_callback: String,
                   async_amd_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol,
                   caller_id: String,
                   cancel_playback_on_detect_message_end: T::Boolean,
                   cancel_playback_on_machine_detection: T::Boolean,
                   custom_headers:
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::CustomHeader::OrHash
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader::OrHash
                     ],
                   detection_mode:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::OrSymbol,
                   fallback_url: String,
                   from: String,
                   machine_detection:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::OrSymbol,
                   machine_detection_silence_timeout: Integer,
                   machine_detection_speech_end_threshold: Integer,
                   machine_detection_speech_threshold: Integer,
                   machine_detection_timeout: Integer,
                   media_encryption:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::OrSymbol,
                   preferred_codecs: String,
                   record: T::Boolean,
                   recording_channels:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels::OrSymbol,
                   recording_status_callback: String,
                   recording_status_callback_event: String,
                   recording_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod::OrSymbol,
                   recording_timeout: Integer,
                   recording_track:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::OrSymbol,
                   send_recording_url: T::Boolean,
                   sip_auth_password: String,
                   sip_auth_username: String,
                   sip_region:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::OrSymbol,
                   status_callback: String,
                   status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::OrSymbol,
                   status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod::OrSymbol,
                   supervise_call_sid: String,
                   supervising_role:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::OrSymbol,
-                  texml: T.anything,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::OrSymbol,
+                  texml: T.nilable(String),
                   time_limit: Integer,
                   timeout: Integer,
                   to: String,
                   trim:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim::OrSymbol,
                   url_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -746,58 +743,58 @@ module Telnyx
                     async_amd: T::Boolean,
                     async_amd_status_callback: String,
                     async_amd_status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod::OrSymbol,
                     caller_id: String,
                     cancel_playback_on_detect_message_end: T::Boolean,
                     cancel_playback_on_machine_detection: T::Boolean,
                     custom_headers:
                       T::Array[
-                        Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::CustomHeader
+                        Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader
                       ],
                     detection_mode:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::OrSymbol,
                     fallback_url: String,
                     from: String,
                     machine_detection:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::OrSymbol,
                     machine_detection_silence_timeout: Integer,
                     machine_detection_speech_end_threshold: Integer,
                     machine_detection_speech_threshold: Integer,
                     machine_detection_timeout: Integer,
                     media_encryption:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::OrSymbol,
                     preferred_codecs: String,
                     record: T::Boolean,
                     recording_channels:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels::OrSymbol,
                     recording_status_callback: String,
                     recording_status_callback_event: String,
                     recording_status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod::OrSymbol,
                     recording_timeout: Integer,
                     recording_track:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::OrSymbol,
                     send_recording_url: T::Boolean,
                     sip_auth_password: String,
                     sip_auth_username: String,
                     sip_region:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::OrSymbol,
                     status_callback: String,
                     status_callback_event:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::OrSymbol,
                     status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod::OrSymbol,
                     supervise_call_sid: String,
                     supervising_role:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::OrSymbol,
-                    texml: T.anything,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::OrSymbol,
+                    texml: T.nilable(String),
                     time_limit: Integer,
                     timeout: Integer,
                     to: String,
                     trim:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim::OrSymbol,
                     url_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod::OrSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod::OrSymbol
                   }
                 )
               end
@@ -813,7 +810,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -821,18 +818,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::AsyncAmdStatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -844,7 +841,7 @@ module Telnyx
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::CustomHeader,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader,
                       Telnyx::Internal::AnyHash
                     )
                   end
@@ -881,7 +878,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -889,18 +886,18 @@ module Telnyx
                 PREMIUM =
                   T.let(
                     :Premium,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::TaggedSymbol
                   )
                 REGULAR =
                   T.let(
                     :Regular,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::DetectionMode::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::TaggedSymbol
                     ]
                   )
                 end
@@ -916,7 +913,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -924,23 +921,23 @@ module Telnyx
                 ENABLE =
                   T.let(
                     :Enable,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::TaggedSymbol
                   )
                 DISABLE =
                   T.let(
                     :Disable,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::TaggedSymbol
                   )
                 DETECT_MESSAGE_END =
                   T.let(
                     :DetectMessageEnd,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::TaggedSymbol
                     ]
                   )
                 end
@@ -959,7 +956,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -967,23 +964,23 @@ module Telnyx
                 DISABLED =
                   T.let(
                     :disabled,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::TaggedSymbol
                   )
                 SRTP =
                   T.let(
                     :SRTP,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::TaggedSymbol
                   )
                 DTLS =
                   T.let(
                     :DTLS,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MediaEncryption::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MediaEncryption::TaggedSymbol
                     ]
                   )
                 end
@@ -999,7 +996,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1007,18 +1004,18 @@ module Telnyx
                 MONO =
                   T.let(
                     :mono,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels::TaggedSymbol
                   )
                 DUAL =
                   T.let(
                     :dual,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingChannels::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingChannels::TaggedSymbol
                     ]
                   )
                 end
@@ -1034,7 +1031,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1042,18 +1039,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingStatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingStatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -1069,7 +1066,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1077,23 +1074,23 @@ module Telnyx
                 INBOUND =
                   T.let(
                     :inbound,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::TaggedSymbol
                   )
                 OUTBOUND =
                   T.let(
                     :outbound,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::TaggedSymbol
                   )
                 BOTH =
                   T.let(
                     :both,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::RecordingTrack::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::RecordingTrack::TaggedSymbol
                     ]
                   )
                 end
@@ -1109,7 +1106,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1117,33 +1114,33 @@ module Telnyx
                 US =
                   T.let(
                     :US,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::TaggedSymbol
                   )
                 EUROPE =
                   T.let(
                     :Europe,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::TaggedSymbol
                   )
                 CANADA =
                   T.let(
                     :Canada,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::TaggedSymbol
                   )
                 AUSTRALIA =
                   T.let(
                     :Australia,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::TaggedSymbol
                   )
                 MIDDLE_EAST =
                   T.let(
                     :"Middle East",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SipRegion::TaggedSymbol
                     ]
                   )
                 end
@@ -1160,7 +1157,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1168,28 +1165,28 @@ module Telnyx
                 INITIATED =
                   T.let(
                     :initiated,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::TaggedSymbol
                   )
                 RINGING =
                   T.let(
                     :ringing,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::TaggedSymbol
                   )
                 ANSWERED =
                   T.let(
                     :answered,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::TaggedSymbol
                   )
                 COMPLETED =
                   T.let(
                     :completed,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackEvent::TaggedSymbol
                     ]
                   )
                 end
@@ -1205,7 +1202,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1213,18 +1210,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::StatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -1242,7 +1239,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1250,23 +1247,23 @@ module Telnyx
                 BARGE =
                   T.let(
                     :barge,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::TaggedSymbol
                   )
                 WHISPER =
                   T.let(
                     :whisper,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::TaggedSymbol
                   )
                 MONITOR =
                   T.let(
                     :monitor,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SupervisingRole::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::SupervisingRole::TaggedSymbol
                     ]
                   )
                 end
@@ -1283,7 +1280,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1291,18 +1288,18 @@ module Telnyx
                 TRIM_SILENCE =
                   T.let(
                     :"trim-silence",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim::TaggedSymbol
                   )
                 DO_NOT_TRIM =
                   T.let(
                     :"do-not-trim",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::Trim::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::Trim::TaggedSymbol
                     ]
                   )
                 end
@@ -1319,7 +1316,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1327,18 +1324,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -1351,7 +1348,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -1388,7 +1385,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -1397,7 +1394,7 @@ module Telnyx
               sig do
                 params(
                   async_amd_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :async_amd_status_callback_method
@@ -1437,7 +1434,7 @@ module Telnyx
                 returns(
                   T.nilable(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::CustomHeader
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader
                     ]
                   )
                 )
@@ -1448,7 +1445,7 @@ module Telnyx
                 params(
                   custom_headers:
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::CustomHeader::OrHash
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader::OrHash
                     ]
                 ).void
               end
@@ -1458,7 +1455,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::OrSymbol
                   )
                 )
               end
@@ -1467,7 +1464,7 @@ module Telnyx
               sig do
                 params(
                   detection_mode:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::OrSymbol
                 ).void
               end
               attr_writer :detection_mode
@@ -1492,7 +1489,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::OrSymbol
                   )
                 )
               end
@@ -1501,7 +1498,7 @@ module Telnyx
               sig do
                 params(
                   machine_detection:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::OrSymbol
                 ).void
               end
               attr_writer :machine_detection
@@ -1546,7 +1543,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::OrSymbol
                   )
                 )
               end
@@ -1555,7 +1552,7 @@ module Telnyx
               sig do
                 params(
                   media_encryption:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::OrSymbol
                 ).void
               end
               attr_writer :media_encryption
@@ -1578,7 +1575,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels::OrSymbol
                   )
                 )
               end
@@ -1587,7 +1584,7 @@ module Telnyx
               sig do
                 params(
                   recording_channels:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels::OrSymbol
                 ).void
               end
               attr_writer :recording_channels
@@ -1612,7 +1609,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -1621,7 +1618,7 @@ module Telnyx
               sig do
                 params(
                   recording_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :recording_status_callback_method
@@ -1640,7 +1637,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::OrSymbol
                   )
                 )
               end
@@ -1649,7 +1646,7 @@ module Telnyx
               sig do
                 params(
                   recording_track:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::OrSymbol
                 ).void
               end
               attr_writer :recording_track
@@ -1679,7 +1676,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::OrSymbol
                   )
                 )
               end
@@ -1688,7 +1685,7 @@ module Telnyx
               sig do
                 params(
                   sip_region:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::OrSymbol
                 ).void
               end
               attr_writer :sip_region
@@ -1705,7 +1702,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::OrSymbol
                   )
                 )
               end
@@ -1714,7 +1711,7 @@ module Telnyx
               sig do
                 params(
                   status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::OrSymbol
                 ).void
               end
               attr_writer :status_callback_event
@@ -1723,7 +1720,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -1732,7 +1729,7 @@ module Telnyx
               sig do
                 params(
                   status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :status_callback_method
@@ -1752,7 +1749,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::OrSymbol
                   )
                 )
               end
@@ -1761,7 +1758,7 @@ module Telnyx
               sig do
                 params(
                   supervising_role:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::OrSymbol
                 ).void
               end
               attr_writer :supervising_role
@@ -1796,7 +1793,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim::OrSymbol
                   )
                 )
               end
@@ -1805,23 +1802,20 @@ module Telnyx
               sig do
                 params(
                   trim:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim::OrSymbol
                 ).void
               end
               attr_writer :trim
 
-              sig { returns(T.nilable(T.anything)) }
-              attr_reader :url
-
-              sig { params(url: T.anything).void }
-              attr_writer :url
+              sig { returns(T.nilable(String)) }
+              attr_accessor :url
 
               # HTTP request type used for `Url`. The default value is inherited from TeXML
               # Application setting.
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod::OrSymbol
                   )
                 )
               end
@@ -1830,7 +1824,7 @@ module Telnyx
               sig do
                 params(
                   url_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod::OrSymbol
                 ).void
               end
               attr_writer :url_method
@@ -1842,58 +1836,58 @@ module Telnyx
                   async_amd: T::Boolean,
                   async_amd_status_callback: String,
                   async_amd_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol,
                   caller_id: String,
                   cancel_playback_on_detect_message_end: T::Boolean,
                   cancel_playback_on_machine_detection: T::Boolean,
                   custom_headers:
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::CustomHeader::OrHash
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader::OrHash
                     ],
                   detection_mode:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::OrSymbol,
                   fallback_url: String,
                   from: String,
                   machine_detection:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::OrSymbol,
                   machine_detection_silence_timeout: Integer,
                   machine_detection_speech_end_threshold: Integer,
                   machine_detection_speech_threshold: Integer,
                   machine_detection_timeout: Integer,
                   media_encryption:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::OrSymbol,
                   preferred_codecs: String,
                   record: T::Boolean,
                   recording_channels:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels::OrSymbol,
                   recording_status_callback: String,
                   recording_status_callback_event: String,
                   recording_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod::OrSymbol,
                   recording_timeout: Integer,
                   recording_track:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::OrSymbol,
                   send_recording_url: T::Boolean,
                   sip_auth_password: String,
                   sip_auth_username: String,
                   sip_region:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::OrSymbol,
                   status_callback: String,
                   status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::OrSymbol,
                   status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod::OrSymbol,
                   supervise_call_sid: String,
                   supervising_role:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::OrSymbol,
                   time_limit: Integer,
                   timeout: Integer,
                   to: String,
                   trim:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim::OrSymbol,
-                  url: T.anything,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim::OrSymbol,
+                  url: T.nilable(String),
                   url_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -2021,58 +2015,58 @@ module Telnyx
                     async_amd: T::Boolean,
                     async_amd_status_callback: String,
                     async_amd_status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod::OrSymbol,
                     caller_id: String,
                     cancel_playback_on_detect_message_end: T::Boolean,
                     cancel_playback_on_machine_detection: T::Boolean,
                     custom_headers:
                       T::Array[
-                        Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::CustomHeader
+                        Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader
                       ],
                     detection_mode:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::OrSymbol,
                     fallback_url: String,
                     from: String,
                     machine_detection:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::OrSymbol,
                     machine_detection_silence_timeout: Integer,
                     machine_detection_speech_end_threshold: Integer,
                     machine_detection_speech_threshold: Integer,
                     machine_detection_timeout: Integer,
                     media_encryption:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::OrSymbol,
                     preferred_codecs: String,
                     record: T::Boolean,
                     recording_channels:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels::OrSymbol,
                     recording_status_callback: String,
                     recording_status_callback_event: String,
                     recording_status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod::OrSymbol,
                     recording_timeout: Integer,
                     recording_track:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::OrSymbol,
                     send_recording_url: T::Boolean,
                     sip_auth_password: String,
                     sip_auth_username: String,
                     sip_region:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::OrSymbol,
                     status_callback: String,
                     status_callback_event:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::OrSymbol,
                     status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod::OrSymbol,
                     supervise_call_sid: String,
                     supervising_role:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::OrSymbol,
                     time_limit: Integer,
                     timeout: Integer,
                     to: String,
                     trim:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim::OrSymbol,
-                    url: T.anything,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim::OrSymbol,
+                    url: T.nilable(String),
                     url_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod::OrSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod::OrSymbol
                   }
                 )
               end
@@ -2088,7 +2082,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2096,18 +2090,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::AsyncAmdStatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -2119,7 +2113,7 @@ module Telnyx
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::CustomHeader,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader,
                       Telnyx::Internal::AnyHash
                     )
                   end
@@ -2156,7 +2150,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2164,18 +2158,18 @@ module Telnyx
                 PREMIUM =
                   T.let(
                     :Premium,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::TaggedSymbol
                   )
                 REGULAR =
                   T.let(
                     :Regular,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::DetectionMode::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::TaggedSymbol
                     ]
                   )
                 end
@@ -2191,7 +2185,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2199,23 +2193,23 @@ module Telnyx
                 ENABLE =
                   T.let(
                     :Enable,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::TaggedSymbol
                   )
                 DISABLE =
                   T.let(
                     :Disable,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::TaggedSymbol
                   )
                 DETECT_MESSAGE_END =
                   T.let(
                     :DetectMessageEnd,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::TaggedSymbol
                     ]
                   )
                 end
@@ -2234,7 +2228,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2242,23 +2236,23 @@ module Telnyx
                 DISABLED =
                   T.let(
                     :disabled,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::TaggedSymbol
                   )
                 SRTP =
                   T.let(
                     :SRTP,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::TaggedSymbol
                   )
                 DTLS =
                   T.let(
                     :DTLS,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MediaEncryption::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MediaEncryption::TaggedSymbol
                     ]
                   )
                 end
@@ -2274,7 +2268,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2282,18 +2276,18 @@ module Telnyx
                 MONO =
                   T.let(
                     :mono,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels::TaggedSymbol
                   )
                 DUAL =
                   T.let(
                     :dual,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingChannels::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingChannels::TaggedSymbol
                     ]
                   )
                 end
@@ -2309,7 +2303,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2317,18 +2311,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingStatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingStatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -2344,7 +2338,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2352,23 +2346,23 @@ module Telnyx
                 INBOUND =
                   T.let(
                     :inbound,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::TaggedSymbol
                   )
                 OUTBOUND =
                   T.let(
                     :outbound,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::TaggedSymbol
                   )
                 BOTH =
                   T.let(
                     :both,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::RecordingTrack::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::RecordingTrack::TaggedSymbol
                     ]
                   )
                 end
@@ -2384,7 +2378,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2392,33 +2386,33 @@ module Telnyx
                 US =
                   T.let(
                     :US,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::TaggedSymbol
                   )
                 EUROPE =
                   T.let(
                     :Europe,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::TaggedSymbol
                   )
                 CANADA =
                   T.let(
                     :Canada,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::TaggedSymbol
                   )
                 AUSTRALIA =
                   T.let(
                     :Australia,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::TaggedSymbol
                   )
                 MIDDLE_EAST =
                   T.let(
                     :"Middle East",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SipRegion::TaggedSymbol
                     ]
                   )
                 end
@@ -2435,7 +2429,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2443,28 +2437,28 @@ module Telnyx
                 INITIATED =
                   T.let(
                     :initiated,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::TaggedSymbol
                   )
                 RINGING =
                   T.let(
                     :ringing,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::TaggedSymbol
                   )
                 ANSWERED =
                   T.let(
                     :answered,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::TaggedSymbol
                   )
                 COMPLETED =
                   T.let(
                     :completed,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackEvent::TaggedSymbol
                     ]
                   )
                 end
@@ -2480,7 +2474,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2488,18 +2482,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::StatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -2517,7 +2511,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2525,23 +2519,23 @@ module Telnyx
                 BARGE =
                   T.let(
                     :barge,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::TaggedSymbol
                   )
                 WHISPER =
                   T.let(
                     :whisper,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::TaggedSymbol
                   )
                 MONITOR =
                   T.let(
                     :monitor,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SupervisingRole::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::SupervisingRole::TaggedSymbol
                     ]
                   )
                 end
@@ -2558,7 +2552,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2566,18 +2560,18 @@ module Telnyx
                 TRIM_SILENCE =
                   T.let(
                     :"trim-silence",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim::TaggedSymbol
                   )
                 DO_NOT_TRIM =
                   T.let(
                     :"do-not-trim",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::Trim::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::Trim::TaggedSymbol
                     ]
                   )
                 end
@@ -2594,7 +2588,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2602,18 +2596,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -2626,7 +2620,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -2658,7 +2652,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -2667,7 +2661,7 @@ module Telnyx
               sig do
                 params(
                   async_amd_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :async_amd_status_callback_method
@@ -2707,7 +2701,7 @@ module Telnyx
                 returns(
                   T.nilable(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::CustomHeader
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader
                     ]
                   )
                 )
@@ -2718,7 +2712,7 @@ module Telnyx
                 params(
                   custom_headers:
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::CustomHeader::OrHash
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader::OrHash
                     ]
                 ).void
               end
@@ -2728,7 +2722,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::OrSymbol
                   )
                 )
               end
@@ -2737,7 +2731,7 @@ module Telnyx
               sig do
                 params(
                   detection_mode:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::OrSymbol
                 ).void
               end
               attr_writer :detection_mode
@@ -2762,7 +2756,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::OrSymbol
                   )
                 )
               end
@@ -2771,7 +2765,7 @@ module Telnyx
               sig do
                 params(
                   machine_detection:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::OrSymbol
                 ).void
               end
               attr_writer :machine_detection
@@ -2816,7 +2810,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::OrSymbol
                   )
                 )
               end
@@ -2825,7 +2819,7 @@ module Telnyx
               sig do
                 params(
                   media_encryption:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::OrSymbol
                 ).void
               end
               attr_writer :media_encryption
@@ -2848,7 +2842,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels::OrSymbol
                   )
                 )
               end
@@ -2857,7 +2851,7 @@ module Telnyx
               sig do
                 params(
                   recording_channels:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels::OrSymbol
                 ).void
               end
               attr_writer :recording_channels
@@ -2882,7 +2876,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -2891,7 +2885,7 @@ module Telnyx
               sig do
                 params(
                   recording_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :recording_status_callback_method
@@ -2910,7 +2904,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::OrSymbol
                   )
                 )
               end
@@ -2919,7 +2913,7 @@ module Telnyx
               sig do
                 params(
                   recording_track:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::OrSymbol
                 ).void
               end
               attr_writer :recording_track
@@ -2949,7 +2943,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::OrSymbol
                   )
                 )
               end
@@ -2958,7 +2952,7 @@ module Telnyx
               sig do
                 params(
                   sip_region:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::OrSymbol
                 ).void
               end
               attr_writer :sip_region
@@ -2975,7 +2969,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::OrSymbol
                   )
                 )
               end
@@ -2984,7 +2978,7 @@ module Telnyx
               sig do
                 params(
                   status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::OrSymbol
                 ).void
               end
               attr_writer :status_callback_event
@@ -2993,7 +2987,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod::OrSymbol
                   )
                 )
               end
@@ -3002,7 +2996,7 @@ module Telnyx
               sig do
                 params(
                   status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod::OrSymbol
                 ).void
               end
               attr_writer :status_callback_method
@@ -3022,7 +3016,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::OrSymbol
                   )
                 )
               end
@@ -3031,16 +3025,13 @@ module Telnyx
               sig do
                 params(
                   supervising_role:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::OrSymbol
                 ).void
               end
               attr_writer :supervising_role
 
-              sig { returns(T.nilable(T.anything)) }
-              attr_reader :texml
-
-              sig { params(texml: T.anything).void }
-              attr_writer :texml
+              sig { returns(T.nilable(String)) }
+              attr_accessor :texml
 
               # The maximum duration of the call in seconds. The minimum value is 30 and the
               # maximum value is 14400 (4 hours). Default is 14400 seconds.
@@ -3072,7 +3063,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim::OrSymbol
                   )
                 )
               end
@@ -3081,23 +3072,20 @@ module Telnyx
               sig do
                 params(
                   trim:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim::OrSymbol
                 ).void
               end
               attr_writer :trim
 
-              sig { returns(T.nilable(T.anything)) }
-              attr_reader :url
-
-              sig { params(url: T.anything).void }
-              attr_writer :url
+              sig { returns(T.nilable(String)) }
+              attr_accessor :url
 
               # HTTP request type used for `Url`. The default value is inherited from TeXML
               # Application setting.
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod::OrSymbol
                   )
                 )
               end
@@ -3106,7 +3094,7 @@ module Telnyx
               sig do
                 params(
                   url_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod::OrSymbol
                 ).void
               end
               attr_writer :url_method
@@ -3117,59 +3105,59 @@ module Telnyx
                   async_amd: T::Boolean,
                   async_amd_status_callback: String,
                   async_amd_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol,
                   caller_id: String,
                   cancel_playback_on_detect_message_end: T::Boolean,
                   cancel_playback_on_machine_detection: T::Boolean,
                   custom_headers:
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::CustomHeader::OrHash
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader::OrHash
                     ],
                   detection_mode:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::OrSymbol,
                   fallback_url: String,
                   from: String,
                   machine_detection:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::OrSymbol,
                   machine_detection_silence_timeout: Integer,
                   machine_detection_speech_end_threshold: Integer,
                   machine_detection_speech_threshold: Integer,
                   machine_detection_timeout: Integer,
                   media_encryption:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::OrSymbol,
                   preferred_codecs: String,
                   record: T::Boolean,
                   recording_channels:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels::OrSymbol,
                   recording_status_callback: String,
                   recording_status_callback_event: String,
                   recording_status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol,
                   recording_timeout: Integer,
                   recording_track:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::OrSymbol,
                   send_recording_url: T::Boolean,
                   sip_auth_password: String,
                   sip_auth_username: String,
                   sip_region:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::OrSymbol,
                   status_callback: String,
                   status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::OrSymbol,
                   status_callback_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod::OrSymbol,
                   supervise_call_sid: String,
                   supervising_role:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::OrSymbol,
-                  texml: T.anything,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::OrSymbol,
+                  texml: T.nilable(String),
                   time_limit: Integer,
                   timeout: Integer,
                   to: String,
                   trim:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim::OrSymbol,
-                  url: T.anything,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim::OrSymbol,
+                  url: T.nilable(String),
                   url_method:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod::OrSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -3294,59 +3282,59 @@ module Telnyx
                     async_amd: T::Boolean,
                     async_amd_status_callback: String,
                     async_amd_status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod::OrSymbol,
                     caller_id: String,
                     cancel_playback_on_detect_message_end: T::Boolean,
                     cancel_playback_on_machine_detection: T::Boolean,
                     custom_headers:
                       T::Array[
-                        Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::CustomHeader
+                        Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader
                       ],
                     detection_mode:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::OrSymbol,
                     fallback_url: String,
                     from: String,
                     machine_detection:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::OrSymbol,
                     machine_detection_silence_timeout: Integer,
                     machine_detection_speech_end_threshold: Integer,
                     machine_detection_speech_threshold: Integer,
                     machine_detection_timeout: Integer,
                     media_encryption:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::OrSymbol,
                     preferred_codecs: String,
                     record: T::Boolean,
                     recording_channels:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels::OrSymbol,
                     recording_status_callback: String,
                     recording_status_callback_event: String,
                     recording_status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod::OrSymbol,
                     recording_timeout: Integer,
                     recording_track:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::OrSymbol,
                     send_recording_url: T::Boolean,
                     sip_auth_password: String,
                     sip_auth_username: String,
                     sip_region:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::OrSymbol,
                     status_callback: String,
                     status_callback_event:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::OrSymbol,
                     status_callback_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod::OrSymbol,
                     supervise_call_sid: String,
                     supervising_role:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::OrSymbol,
-                    texml: T.anything,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::OrSymbol,
+                    texml: T.nilable(String),
                     time_limit: Integer,
                     timeout: Integer,
                     to: String,
                     trim:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim::OrSymbol,
-                    url: T.anything,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim::OrSymbol,
+                    url: T.nilable(String),
                     url_method:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod::OrSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod::OrSymbol
                   }
                 )
               end
@@ -3362,7 +3350,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3370,18 +3358,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::AsyncAmdStatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::AsyncAmdStatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -3393,7 +3381,7 @@ module Telnyx
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::CustomHeader,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader,
                       Telnyx::Internal::AnyHash
                     )
                   end
@@ -3430,7 +3418,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3438,18 +3426,18 @@ module Telnyx
                 PREMIUM =
                   T.let(
                     :Premium,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::TaggedSymbol
                   )
                 REGULAR =
                   T.let(
                     :Regular,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::DetectionMode::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::TaggedSymbol
                     ]
                   )
                 end
@@ -3465,7 +3453,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3473,23 +3461,23 @@ module Telnyx
                 ENABLE =
                   T.let(
                     :Enable,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::TaggedSymbol
                   )
                 DISABLE =
                   T.let(
                     :Disable,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::TaggedSymbol
                   )
                 DETECT_MESSAGE_END =
                   T.let(
                     :DetectMessageEnd,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::TaggedSymbol
                     ]
                   )
                 end
@@ -3508,7 +3496,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3516,23 +3504,23 @@ module Telnyx
                 DISABLED =
                   T.let(
                     :disabled,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::TaggedSymbol
                   )
                 SRTP =
                   T.let(
                     :SRTP,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::TaggedSymbol
                   )
                 DTLS =
                   T.let(
                     :DTLS,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MediaEncryption::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MediaEncryption::TaggedSymbol
                     ]
                   )
                 end
@@ -3548,7 +3536,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3556,18 +3544,18 @@ module Telnyx
                 MONO =
                   T.let(
                     :mono,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels::TaggedSymbol
                   )
                 DUAL =
                   T.let(
                     :dual,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingChannels::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingChannels::TaggedSymbol
                     ]
                   )
                 end
@@ -3583,7 +3571,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3591,18 +3579,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingStatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingStatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -3618,7 +3606,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3626,23 +3614,23 @@ module Telnyx
                 INBOUND =
                   T.let(
                     :inbound,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::TaggedSymbol
                   )
                 OUTBOUND =
                   T.let(
                     :outbound,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::TaggedSymbol
                   )
                 BOTH =
                   T.let(
                     :both,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::RecordingTrack::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::RecordingTrack::TaggedSymbol
                     ]
                   )
                 end
@@ -3658,7 +3646,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3666,33 +3654,33 @@ module Telnyx
                 US =
                   T.let(
                     :US,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::TaggedSymbol
                   )
                 EUROPE =
                   T.let(
                     :Europe,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::TaggedSymbol
                   )
                 CANADA =
                   T.let(
                     :Canada,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::TaggedSymbol
                   )
                 AUSTRALIA =
                   T.let(
                     :Australia,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::TaggedSymbol
                   )
                 MIDDLE_EAST =
                   T.let(
                     :"Middle East",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SipRegion::TaggedSymbol
                     ]
                   )
                 end
@@ -3709,7 +3697,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3717,28 +3705,28 @@ module Telnyx
                 INITIATED =
                   T.let(
                     :initiated,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
                   )
                 RINGING =
                   T.let(
                     :ringing,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
                   )
                 ANSWERED =
                   T.let(
                     :answered,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
                   )
                 COMPLETED =
                   T.let(
                     :completed,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
                     ]
                   )
                 end
@@ -3754,7 +3742,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3762,18 +3750,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::StatusCallbackMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -3791,7 +3779,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3799,23 +3787,23 @@ module Telnyx
                 BARGE =
                   T.let(
                     :barge,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::TaggedSymbol
                   )
                 WHISPER =
                   T.let(
                     :whisper,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::TaggedSymbol
                   )
                 MONITOR =
                   T.let(
                     :monitor,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SupervisingRole::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::SupervisingRole::TaggedSymbol
                     ]
                   )
                 end
@@ -3832,7 +3820,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3840,18 +3828,18 @@ module Telnyx
                 TRIM_SILENCE =
                   T.let(
                     :"trim-silence",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim::TaggedSymbol
                   )
                 DO_NOT_TRIM =
                   T.let(
                     :"do-not-trim",
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::Trim::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::Trim::TaggedSymbol
                     ]
                   )
                 end
@@ -3868,7 +3856,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3876,18 +3864,18 @@ module Telnyx
                 GET =
                   T.let(
                     :GET,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod::TaggedSymbol
                   )
                 POST =
                   T.let(
                     :POST,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod::TaggedSymbol
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::URLMethod::TaggedSymbol
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::URLMethod::TaggedSymbol
                     ]
                   )
                 end
@@ -3899,7 +3887,7 @@ module Telnyx
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::Variants
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::Variants
                 ]
               )
             end

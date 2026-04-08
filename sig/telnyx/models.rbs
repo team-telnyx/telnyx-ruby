@@ -1183,11 +1183,17 @@ module Telnyx
 
   class PrivateWirelessGatewayStatus = Telnyx::Models::PrivateWirelessGatewayStatus
 
+  class PronunciationDictAliasItem = Telnyx::Models::PronunciationDictAliasItem
+
   class PronunciationDictCreateParams = Telnyx::Models::PronunciationDictCreateParams
+
+  class PronunciationDictData = Telnyx::Models::PronunciationDictData
 
   class PronunciationDictDeleteParams = Telnyx::Models::PronunciationDictDeleteParams
 
   class PronunciationDictListParams = Telnyx::Models::PronunciationDictListParams
+
+  class PronunciationDictPhonemeItem = Telnyx::Models::PronunciationDictPhonemeItem
 
   class PronunciationDictRetrieveParams = Telnyx::Models::PronunciationDictRetrieveParams
 

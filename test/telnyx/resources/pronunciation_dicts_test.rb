@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::PronunciationDictsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::PronunciationDictCreateResponse::Data | nil
+        data: Telnyx::PronunciationDictData | nil
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::PronunciationDictsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::PronunciationDictRetrieveResponse::Data | nil
+        data: Telnyx::PronunciationDictData | nil
       }
     end
   end
@@ -50,7 +50,7 @@ class Telnyx::Test::Resources::PronunciationDictsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::PronunciationDictUpdateResponse::Data | nil
+        data: Telnyx::PronunciationDictData | nil
       }
     end
   end
@@ -68,16 +68,16 @@ class Telnyx::Test::Resources::PronunciationDictsTest < Telnyx::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::PronunciationDictListResponse
+      row => Telnyx::PronunciationDictData
     end
 
     assert_pattern do
       row => {
         id: String | nil,
         created_at: Time | nil,
-        items: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::Models::PronunciationDictListResponse::Item]) | nil,
+        items: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::PronunciationDictData::Item]) | nil,
         name: String | nil,
-        record_type: Telnyx::Models::PronunciationDictListResponse::RecordType | nil,
+        record_type: Telnyx::PronunciationDictData::RecordType | nil,
         updated_at: Time | nil,
         version: Integer | nil
       }

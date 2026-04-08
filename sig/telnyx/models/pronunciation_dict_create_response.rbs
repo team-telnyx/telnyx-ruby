@@ -1,167 +1,18 @@
 module Telnyx
   module Models
     type pronunciation_dict_create_response =
-      { data: Telnyx::Models::PronunciationDictCreateResponse::Data }
+      { data: Telnyx::PronunciationDictData }
 
     class PronunciationDictCreateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::PronunciationDictCreateResponse::Data?
+      attr_reader data: Telnyx::PronunciationDictData?
 
       def data=: (
-        Telnyx::Models::PronunciationDictCreateResponse::Data
-      ) -> Telnyx::Models::PronunciationDictCreateResponse::Data
+        Telnyx::PronunciationDictData
+      ) -> Telnyx::PronunciationDictData
 
-      def initialize: (
-        ?data: Telnyx::Models::PronunciationDictCreateResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::PronunciationDictData) -> void
 
-      def to_hash: -> {
-        data: Telnyx::Models::PronunciationDictCreateResponse::Data
-      }
-
-      type data =
-        {
-          id: String,
-          created_at: Time,
-          items: ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::item],
-          name: String,
-          record_type: Telnyx::Models::PronunciationDictCreateResponse::Data::record_type,
-          updated_at: Time,
-          version: Integer
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader created_at: Time?
-
-        def created_at=: (Time) -> Time
-
-        attr_reader items: ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::item]?
-
-        def items=: (
-          ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::item]
-        ) -> ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::item]
-
-        attr_reader name: String?
-
-        def name=: (String) -> String
-
-        attr_reader record_type: Telnyx::Models::PronunciationDictCreateResponse::Data::record_type?
-
-        def record_type=: (
-          Telnyx::Models::PronunciationDictCreateResponse::Data::record_type
-        ) -> Telnyx::Models::PronunciationDictCreateResponse::Data::record_type
-
-        attr_reader updated_at: Time?
-
-        def updated_at=: (Time) -> Time
-
-        attr_reader version: Integer?
-
-        def version=: (Integer) -> Integer
-
-        def initialize: (
-          ?id: String,
-          ?created_at: Time,
-          ?items: ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::item],
-          ?name: String,
-          ?record_type: Telnyx::Models::PronunciationDictCreateResponse::Data::record_type,
-          ?updated_at: Time,
-          ?version: Integer
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          created_at: Time,
-          items: ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::item],
-          name: String,
-          record_type: Telnyx::Models::PronunciationDictCreateResponse::Data::record_type,
-          updated_at: Time,
-          version: Integer
-        }
-
-        type item =
-          Telnyx::Models::PronunciationDictCreateResponse::Data::Item::Alias
-          | Telnyx::Models::PronunciationDictCreateResponse::Data::Item::Phoneme
-
-        module Item
-          extend Telnyx::Internal::Type::Union
-
-          type alias_ = { alias_: String, text: String, type: :alias }
-
-          class Alias < Telnyx::Internal::Type::BaseModel
-            attr_accessor alias_: String
-
-            attr_accessor text: String
-
-            attr_accessor type: :alias
-
-            def initialize: (
-              alias_: String,
-              text: String,
-              ?type: :alias
-            ) -> void
-
-            def to_hash: -> { alias_: String, text: String, type: :alias }
-          end
-
-          type phoneme =
-            {
-              alphabet: Telnyx::Models::PronunciationDictCreateResponse::Data::Item::Phoneme::alphabet,
-              phoneme: String,
-              text: String,
-              type: :phoneme
-            }
-
-          class Phoneme < Telnyx::Internal::Type::BaseModel
-            attr_accessor alphabet: Telnyx::Models::PronunciationDictCreateResponse::Data::Item::Phoneme::alphabet
-
-            attr_accessor phoneme: String
-
-            attr_accessor text: String
-
-            attr_accessor type: :phoneme
-
-            def initialize: (
-              alphabet: Telnyx::Models::PronunciationDictCreateResponse::Data::Item::Phoneme::alphabet,
-              phoneme: String,
-              text: String,
-              ?type: :phoneme
-            ) -> void
-
-            def to_hash: -> {
-              alphabet: Telnyx::Models::PronunciationDictCreateResponse::Data::Item::Phoneme::alphabet,
-              phoneme: String,
-              text: String,
-              type: :phoneme
-            }
-
-            type alphabet = :ipa
-
-            module Alphabet
-              extend Telnyx::Internal::Type::Enum
-
-              IPA: :ipa
-
-              def self?.values: -> ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::Item::Phoneme::alphabet]
-            end
-          end
-
-          def self?.variants: -> ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::item]
-        end
-
-        type record_type = :pronunciation_dict
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          PRONUNCIATION_DICT: :pronunciation_dict
-
-          def self?.values: -> ::Array[Telnyx::Models::PronunciationDictCreateResponse::Data::record_type]
-        end
-      end
+      def to_hash: -> { data: Telnyx::PronunciationDictData }
     end
   end
 end

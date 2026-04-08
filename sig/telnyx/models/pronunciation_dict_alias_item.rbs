@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    type pronunciation_dict_alias_item =
+      {
+        alias_: String,
+        text: String,
+        type: Telnyx::Models::PronunciationDictAliasItem::type_
+      }
+
+    class PronunciationDictAliasItem < Telnyx::Internal::Type::BaseModel
+      attr_accessor alias_: String
+
+      attr_accessor text: String
+
+      attr_accessor type: Telnyx::Models::PronunciationDictAliasItem::type_
+
+      def initialize: (
+        alias_: String,
+        text: String,
+        type: Telnyx::Models::PronunciationDictAliasItem::type_
+      ) -> void
+
+      def to_hash: -> {
+        alias_: String,
+        text: String,
+        type: Telnyx::Models::PronunciationDictAliasItem::type_
+      }
+
+      type type_ = :alias
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        ALIAS: :alias
+
+        def self?.values: -> ::Array[Telnyx::Models::PronunciationDictAliasItem::type_]
+      end
+    end
+  end
+end

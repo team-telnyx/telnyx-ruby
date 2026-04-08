@@ -95,11 +95,11 @@ module Telnyx
           sig do
             params(
               account_sid: String,
-              body:
+              params:
                 T.any(
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::OrHash,
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::OrHash,
-                  Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::OrHash
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::OrHash
                 ),
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::Texml::Accounts::CallCallsResponse)
@@ -107,7 +107,7 @@ module Telnyx
           def calls(
             # The id of the account the resource belongs to.
             account_sid,
-            body:,
+            params:,
             request_options: {}
           )
           end
