@@ -9,25 +9,17 @@ module Telnyx
       # design. The clone can then be used for text-to-speech synthesis.
       sig do
         params(
-          gender: Telnyx::VoiceCloneCreateParams::Gender::OrSymbol,
-          language: String,
-          name: String,
-          voice_design_id: String,
-          provider: Telnyx::VoiceCloneCreateParams::Provider::OrSymbol,
+          body:
+            T.any(
+              Telnyx::VoiceCloneCreateParams::Body::TelnyxDesignClone::OrHash,
+              Telnyx::VoiceCloneCreateParams::Body::MinimaxDesignClone::OrHash
+            ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VoiceCloneCreateResponse)
       end
       def create(
-        # Gender of the voice clone.
-        gender:,
-        # ISO 639-1 language code for the clone (e.g. `en`, `fr`, `de`).
-        language:,
-        # Name for the voice clone.
-        name:,
-        # UUID of the source voice design to clone.
-        voice_design_id:,
-        # Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
-        provider: nil,
+        # Request body for creating a voice clone from an existing voice design.
+        body:,
         request_options: {}
       )
       end
@@ -97,38 +89,22 @@ module Telnyx
 
       # Creates a new voice clone by uploading an audio file directly. Supported
       # formats: WAV, MP3, FLAC, OGG, M4A. For best results, provide 5–10 seconds of
-      # clear speech. Maximum file size: 2MB.
+      # clear speech. Maximum file size: 5MB for Telnyx, 20MB for Minimax.
       sig do
         params(
-          audio_file: Telnyx::Internal::FileInput,
-          language: String,
-          name: String,
-          gender: Telnyx::VoiceCloneCreateFromUploadParams::Gender::OrSymbol,
-          label: String,
-          provider:
-            Telnyx::VoiceCloneCreateFromUploadParams::Provider::OrSymbol,
-          ref_text: String,
+          body:
+            T.any(
+              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::OrHash
+            ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VoiceCloneCreateFromUploadResponse)
       end
       def create_from_upload(
-        # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
-        # For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-        # size: 5MB for Telnyx, 20MB for Minimax.
-        audio_file:,
-        # ISO 639-1 language code (e.g. `en`, `fr`) or `auto` for automatic detection.
-        language:,
-        # Name for the voice clone.
-        name:,
-        # Gender of the voice clone.
-        gender: nil,
-        # Optional custom label describing the voice style. If omitted, falls back to the
-        # source design's prompt text.
-        label: nil,
-        # Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
-        provider: nil,
-        # Optional transcript of the audio file. Providing this improves clone quality.
-        ref_text: nil,
+        # Multipart form data for creating a voice clone from a direct audio upload.
+        # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
+        body:,
         request_options: {}
       )
       end

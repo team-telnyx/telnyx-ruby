@@ -287,7 +287,7 @@ module Telnyx
             :"2001-10000",
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::TaggedSymbol
           )
-        NUMBER_OF_EMPLOYEES_10001_PLUS =
+        NUMBER_OF_EMPLOYEES_10001 =
           T.let(
             :"10001+",
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::TaggedSymbol

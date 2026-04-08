@@ -7,6 +7,7 @@ module Telnyx
         gender: Telnyx::Models::VoiceCloneData::gender?,
         label: String?,
         language: String?,
+        model_id: Telnyx::Models::VoiceCloneData::model_id,
         name: String,
         provider: Telnyx::Models::VoiceCloneData::provider,
         provider_supported_models: ::Array[String],
@@ -14,6 +15,7 @@ module Telnyx
         record_type: Telnyx::Models::VoiceCloneData::record_type,
         source_voice_design_id: String?,
         source_voice_design_version: Integer?,
+        status: Telnyx::Models::VoiceCloneData::status,
         updated_at: Time
       }
 
@@ -31,6 +33,12 @@ module Telnyx
       attr_accessor label: String?
 
       attr_accessor language: String?
+
+      attr_reader model_id: Telnyx::Models::VoiceCloneData::model_id?
+
+      def model_id=: (
+        Telnyx::Models::VoiceCloneData::model_id
+      ) -> Telnyx::Models::VoiceCloneData::model_id
 
       attr_reader name: String?
 
@@ -58,6 +66,12 @@ module Telnyx
 
       attr_accessor source_voice_design_version: Integer?
 
+      attr_reader status: Telnyx::Models::VoiceCloneData::status?
+
+      def status=: (
+        Telnyx::Models::VoiceCloneData::status
+      ) -> Telnyx::Models::VoiceCloneData::status
+
       attr_reader updated_at: Time?
 
       def updated_at=: (Time) -> Time
@@ -68,6 +82,7 @@ module Telnyx
         ?gender: Telnyx::Models::VoiceCloneData::gender?,
         ?label: String?,
         ?language: String?,
+        ?model_id: Telnyx::Models::VoiceCloneData::model_id,
         ?name: String,
         ?provider: Telnyx::Models::VoiceCloneData::provider,
         ?provider_supported_models: ::Array[String],
@@ -75,6 +90,7 @@ module Telnyx
         ?record_type: Telnyx::Models::VoiceCloneData::record_type,
         ?source_voice_design_id: String?,
         ?source_voice_design_version: Integer?,
+        ?status: Telnyx::Models::VoiceCloneData::status,
         ?updated_at: Time
       ) -> void
 
@@ -84,6 +100,7 @@ module Telnyx
         gender: Telnyx::Models::VoiceCloneData::gender?,
         label: String?,
         language: String?,
+        model_id: Telnyx::Models::VoiceCloneData::model_id,
         name: String,
         provider: Telnyx::Models::VoiceCloneData::provider,
         provider_supported_models: ::Array[String],
@@ -91,6 +108,7 @@ module Telnyx
         record_type: Telnyx::Models::VoiceCloneData::record_type,
         source_voice_design_id: String?,
         source_voice_design_version: Integer?,
+        status: Telnyx::Models::VoiceCloneData::status,
         updated_at: Time
       }
 
@@ -104,6 +122,18 @@ module Telnyx
         NEUTRAL: :neutral
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::gender]
+      end
+
+      type model_id = :Qwen3TTS | :Ultra | :"speech-2.8-turbo"
+
+      module ModelID
+        extend Telnyx::Internal::Type::Enum
+
+        QWEN3_TTS: :Qwen3TTS
+        ULTRA: :Ultra
+        SPEECH_2_8_TURBO: :"speech-2.8-turbo"
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::model_id]
       end
 
       type provider = :telnyx | :minimax
@@ -125,6 +155,19 @@ module Telnyx
         VOICE_CLONE: :voice_clone
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::record_type]
+      end
+
+      type status = :active | :pending | :failed | :expired
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        ACTIVE: :active
+        PENDING: :pending
+        FAILED: :failed
+        EXPIRED: :expired
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::status]
       end
     end
   end

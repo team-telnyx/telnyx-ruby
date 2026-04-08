@@ -3,14 +3,14 @@
 module Telnyx
   module Models
     module Enterprises
-      class ReputationRetrieveParams < Telnyx::Internal::Type::BaseModel
+      class ReputationDeleteAllParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Enterprises::ReputationRetrieveParams,
+              Telnyx::Enterprises::ReputationDeleteAllParams,
               Telnyx::Internal::AnyHash
             )
           end

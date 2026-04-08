@@ -3,6 +3,12 @@ module Telnyx
     class Enterprises
       class Reputation
         class Numbers
+          def create: (
+            String enterprise_id,
+            phone_numbers: ::Array[String],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Enterprises::Reputation::NumberCreateResponse
+
           def retrieve: (
             String phone_number,
             enterprise_id: String,
@@ -18,13 +24,7 @@ module Telnyx
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ReputationPhoneNumberWithReputationData]
 
-          def associate: (
-            String enterprise_id,
-            phone_numbers: ::Array[String],
-            ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse
-
-          def disassociate: (
+          def delete: (
             String phone_number,
             enterprise_id: String,
             ?request_options: Telnyx::request_opts

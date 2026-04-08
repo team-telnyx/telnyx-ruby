@@ -4,22 +4,22 @@ module Telnyx
       class Reputation
         attr_reader numbers: Telnyx::Resources::Enterprises::Reputation::Numbers
 
-        def retrieve: (
+        def create: (
+          String enterprise_id,
+          loa_document_id: String,
+          ?check_frequency: Telnyx::Models::Enterprises::ReputationCreateParams::check_frequency,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Enterprises::ReputationCreateResponse
+
+        def list: (
           String enterprise_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Enterprises::ReputationRetrieveResponse
+        ) -> Telnyx::Models::Enterprises::ReputationListResponse
 
-        def disable: (
+        def delete_all: (
           String enterprise_id,
           ?request_options: Telnyx::request_opts
         ) -> nil
-
-        def enable: (
-          String enterprise_id,
-          loa_document_id: String,
-          ?check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency,
-          ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Enterprises::ReputationEnableResponse
 
         def update_frequency: (
           String enterprise_id,

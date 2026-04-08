@@ -4,8 +4,8 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        # @see Telnyx::Resources::Enterprises::Reputation::Numbers#associate
-        class NumberAssociateParams < Telnyx::Internal::Type::BaseModel
+        # @see Telnyx::Resources::Enterprises::Reputation::Numbers#create
+        class NumberCreateParams < Telnyx::Internal::Type::BaseModel
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
