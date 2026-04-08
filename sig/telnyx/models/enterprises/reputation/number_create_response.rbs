@@ -2,30 +2,30 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        type number_associate_response =
+        type number_create_response =
           {
-            data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
+            data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data],
             meta: Telnyx::MetaInfo
           }
 
-        class NumberAssociateResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]?
+        class NumberCreateResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data]?
 
           def data=: (
-            ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]
-          ) -> ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]
+            ::Array[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data]
+          ) -> ::Array[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data]
 
           attr_reader meta: Telnyx::MetaInfo?
 
           def meta=: (Telnyx::MetaInfo) -> Telnyx::MetaInfo
 
           def initialize: (
-            ?data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
+            ?data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data],
             ?meta: Telnyx::MetaInfo
           ) -> void
 
           def to_hash: -> {
-            data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
+            data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data],
             meta: Telnyx::MetaInfo
           }
 

@@ -35,6 +35,13 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :language
 
+      # TTS model identifier for the voice clone.
+      sig { returns(T.nilable(Telnyx::VoiceCloneData::ModelID::TaggedSymbol)) }
+      attr_reader :model_id
+
+      sig { params(model_id: Telnyx::VoiceCloneData::ModelID::OrSymbol).void }
+      attr_writer :model_id
+
       # Name of the voice clone.
       sig { returns(T.nilable(String)) }
       attr_reader :name
@@ -56,8 +63,8 @@ module Telnyx
       sig { params(provider_supported_models: T::Array[String]).void }
       attr_writer :provider_supported_models
 
-      # Provider-specific voice identifier used for TTS synthesis. For Telnyx clones
-      # this equals the clone ID; for Minimax it is the Minimax-assigned voice ID.
+      # Provider-specific voice identifier used for TTS synthesis. May differ from the
+      # clone UUID depending on the provider and model.
       sig { returns(T.nilable(String)) }
       attr_accessor :provider_voice_id
 
@@ -80,6 +87,14 @@ module Telnyx
       sig { returns(T.nilable(Integer)) }
       attr_accessor :source_voice_design_version
 
+      # Clone status. pending for Ultra clones while on-prem import is in progress,
+      # active once ready, failed if verification timed out, expired if not kept alive.
+      sig { returns(T.nilable(Telnyx::VoiceCloneData::Status::TaggedSymbol)) }
+      attr_reader :status
+
+      sig { params(status: Telnyx::VoiceCloneData::Status::OrSymbol).void }
+      attr_writer :status
+
       # Timestamp when the voice clone was last updated.
       sig { returns(T.nilable(Time)) }
       attr_reader :updated_at
@@ -95,6 +110,7 @@ module Telnyx
           gender: T.nilable(Telnyx::VoiceCloneData::Gender::OrSymbol),
           label: T.nilable(String),
           language: T.nilable(String),
+          model_id: Telnyx::VoiceCloneData::ModelID::OrSymbol,
           name: String,
           provider: Telnyx::VoiceCloneData::Provider::OrSymbol,
           provider_supported_models: T::Array[String],
@@ -102,6 +118,7 @@ module Telnyx
           record_type: Telnyx::VoiceCloneData::RecordType::OrSymbol,
           source_voice_design_id: T.nilable(String),
           source_voice_design_version: T.nilable(Integer),
+          status: Telnyx::VoiceCloneData::Status::OrSymbol,
           updated_at: Time
         ).returns(T.attached_class)
       end
@@ -117,14 +134,16 @@ module Telnyx
         label: nil,
         # ISO 639-1 language code of the voice clone.
         language: nil,
+        # TTS model identifier for the voice clone.
+        model_id: nil,
         # Name of the voice clone.
         name: nil,
         # Voice synthesis provider used for this clone.
         provider: nil,
         # List of TTS model identifiers supported by this clone's provider.
         provider_supported_models: nil,
-        # Provider-specific voice identifier used for TTS synthesis. For Telnyx clones
-        # this equals the clone ID; for Minimax it is the Minimax-assigned voice ID.
+        # Provider-specific voice identifier used for TTS synthesis. May differ from the
+        # clone UUID depending on the provider and model.
         provider_voice_id: nil,
         # Identifies the resource type.
         record_type: nil,
@@ -132,6 +151,9 @@ module Telnyx
         source_voice_design_id: nil,
         # Version of the source voice design used. `null` for upload-based clones.
         source_voice_design_version: nil,
+        # Clone status. pending for Ultra clones while on-prem import is in progress,
+        # active once ready, failed if verification timed out, expired if not kept alive.
+        status: nil,
         # Timestamp when the voice clone was last updated.
         updated_at: nil
       )
@@ -145,6 +167,7 @@ module Telnyx
             gender: T.nilable(Telnyx::VoiceCloneData::Gender::TaggedSymbol),
             label: T.nilable(String),
             language: T.nilable(String),
+            model_id: Telnyx::VoiceCloneData::ModelID::TaggedSymbol,
             name: String,
             provider: Telnyx::VoiceCloneData::Provider::TaggedSymbol,
             provider_supported_models: T::Array[String],
@@ -152,6 +175,7 @@ module Telnyx
             record_type: Telnyx::VoiceCloneData::RecordType::TaggedSymbol,
             source_voice_design_id: T.nilable(String),
             source_voice_design_version: T.nilable(Integer),
+            status: Telnyx::VoiceCloneData::Status::TaggedSymbol,
             updated_at: Time
           }
         )
@@ -174,6 +198,32 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::VoiceCloneData::Gender::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # TTS model identifier for the voice clone.
+      module ModelID
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::VoiceCloneData::ModelID) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        QWEN3_TTS =
+          T.let(:Qwen3TTS, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
+        ULTRA = T.let(:Ultra, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
+        SPEECH_2_8_TURBO =
+          T.let(
+            :"speech-2.8-turbo",
+            Telnyx::VoiceCloneData::ModelID::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::VoiceCloneData::ModelID::TaggedSymbol]
           )
         end
         def self.values
@@ -215,6 +265,29 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::VoiceCloneData::RecordType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Clone status. pending for Ultra clones while on-prem import is in progress,
+      # active once ready, failed if verification timed out, expired if not kept alive.
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::VoiceCloneData::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ACTIVE = T.let(:active, Telnyx::VoiceCloneData::Status::TaggedSymbol)
+        PENDING = T.let(:pending, Telnyx::VoiceCloneData::Status::TaggedSymbol)
+        FAILED = T.let(:failed, Telnyx::VoiceCloneData::Status::TaggedSymbol)
+        EXPIRED = T.let(:expired, Telnyx::VoiceCloneData::Status::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::VoiceCloneData::Status::TaggedSymbol]
           )
         end
         def self.values

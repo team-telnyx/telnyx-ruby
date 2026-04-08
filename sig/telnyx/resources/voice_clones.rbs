@@ -2,11 +2,7 @@ module Telnyx
   module Resources
     class VoiceClones
       def create: (
-        gender: Telnyx::Models::VoiceCloneCreateParams::gender,
-        language: String,
-        name: String,
-        voice_design_id: String,
-        ?provider: Telnyx::Models::VoiceCloneCreateParams::provider,
+        body: Telnyx::Models::VoiceCloneCreateParams::body,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VoiceCloneCreateResponse
 
@@ -30,13 +26,7 @@ module Telnyx
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
       def create_from_upload: (
-        audio_file: Telnyx::Internal::file_input,
-        language: String,
-        name: String,
-        ?gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
-        ?label: String,
-        ?provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
-        ?ref_text: String,
+        body: Telnyx::Models::VoiceCloneCreateFromUploadParams::body,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VoiceCloneCreateFromUploadResponse
 

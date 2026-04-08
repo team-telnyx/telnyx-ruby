@@ -3,11 +3,11 @@
 module Telnyx
   module Models
     module Enterprises
-      class ReputationRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      class ReputationListResponse < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::Enterprises::ReputationRetrieveResponse,
+              Telnyx::Models::Enterprises::ReputationListResponse,
               Telnyx::Internal::AnyHash
             )
           end

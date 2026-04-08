@@ -1,90 +1,301 @@
 module Telnyx
   module Models
     type voice_clone_create_from_upload_params =
-      {
-        audio_file: Telnyx::Internal::file_input,
-        language: String,
-        name: String,
-        gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
-        label: String,
-        provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
-        ref_text: String
-      }
+      { body: Telnyx::Models::VoiceCloneCreateFromUploadParams::body }
       & Telnyx::Internal::Type::request_parameters
 
     class VoiceCloneCreateFromUploadParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor audio_file: Telnyx::Internal::file_input
-
-      attr_accessor language: String
-
-      attr_accessor name: String
-
-      attr_reader gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender?
-
-      def gender=: (
-        Telnyx::Models::VoiceCloneCreateFromUploadParams::gender
-      ) -> Telnyx::Models::VoiceCloneCreateFromUploadParams::gender
-
-      attr_reader label: String?
-
-      def label=: (String) -> String
-
-      attr_reader provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider?
-
-      def provider=: (
-        Telnyx::Models::VoiceCloneCreateFromUploadParams::provider
-      ) -> Telnyx::Models::VoiceCloneCreateFromUploadParams::provider
-
-      attr_reader ref_text: String?
-
-      def ref_text=: (String) -> String
+      attr_accessor body: Telnyx::Models::VoiceCloneCreateFromUploadParams::body
 
       def initialize: (
-        audio_file: Telnyx::Internal::file_input,
-        language: String,
-        name: String,
-        ?gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
-        ?label: String,
-        ?provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
-        ?ref_text: String,
+        body: Telnyx::Models::VoiceCloneCreateFromUploadParams::body,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        audio_file: Telnyx::Internal::file_input,
-        language: String,
-        name: String,
-        gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::gender,
-        label: String,
-        provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::provider,
-        ref_text: String,
+        body: Telnyx::Models::VoiceCloneCreateFromUploadParams::body,
         request_options: Telnyx::RequestOptions
       }
 
-      type gender = :male | :female | :neutral
+      type body =
+        Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone
+        | Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone
+        | Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone
 
-      module Gender
-        extend Telnyx::Internal::Type::Enum
+      module Body
+        extend Telnyx::Internal::Type::Union
 
-        MALE: :male
-        FEMALE: :female
-        NEUTRAL: :neutral
+        type telnyx_qwen3_tts_clone =
+          {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::provider,
+            label: String,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::model_id?,
+            ref_text: String
+          }
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::gender]
-      end
+        class TelnyxQwen3TtsClone < Telnyx::Internal::Type::BaseModel
+          attr_accessor audio_file: Telnyx::Internal::file_input
 
-      type provider = :telnyx | :minimax
+          attr_accessor gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::gender
 
-      module Provider
-        extend Telnyx::Internal::Type::Enum
+          attr_accessor language: String
 
-        TELNYX: :telnyx
-        MINIMAX: :minimax
+          attr_accessor name: String
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::provider]
+          attr_accessor provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::provider
+
+          attr_reader label: String?
+
+          def label=: (String) -> String
+
+          attr_accessor model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::model_id?
+
+          attr_reader ref_text: String?
+
+          def ref_text=: (String) -> String
+
+          def initialize: (
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::provider,
+            ?label: String,
+            ?model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::model_id?,
+            ?ref_text: String
+          ) -> void
+
+          def to_hash: -> {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::provider,
+            label: String,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::model_id?,
+            ref_text: String
+          }
+
+          type gender = :male | :female | :neutral
+
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            MALE: :male
+            FEMALE: :female
+            NEUTRAL: :neutral
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::gender]
+          end
+
+          type provider = :telnyx | :Telnyx
+
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX: :telnyx
+            TELNYX_2: :Telnyx
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::provider]
+          end
+
+          type model_id = :Qwen3TTS
+
+          module ModelID
+            extend Telnyx::Internal::Type::Enum
+
+            QWEN3_TTS: :Qwen3TTS
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::model_id]
+          end
+        end
+
+        type telnyx_ultra_clone =
+          {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::gender,
+            language: String,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::model_id,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::provider,
+            label: String,
+            ref_text: String
+          }
+
+        class TelnyxUltraClone < Telnyx::Internal::Type::BaseModel
+          attr_accessor audio_file: Telnyx::Internal::file_input
+
+          attr_accessor gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::gender
+
+          attr_accessor language: String
+
+          attr_accessor model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::model_id
+
+          attr_accessor name: String
+
+          attr_accessor provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::provider
+
+          attr_reader label: String?
+
+          def label=: (String) -> String
+
+          attr_reader ref_text: String?
+
+          def ref_text=: (String) -> String
+
+          def initialize: (
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::gender,
+            language: String,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::model_id,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::provider,
+            ?label: String,
+            ?ref_text: String
+          ) -> void
+
+          def to_hash: -> {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::gender,
+            language: String,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::model_id,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::provider,
+            label: String,
+            ref_text: String
+          }
+
+          type gender = :male | :female | :neutral
+
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            MALE: :male
+            FEMALE: :female
+            NEUTRAL: :neutral
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::gender]
+          end
+
+          type model_id = :Ultra
+
+          module ModelID
+            extend Telnyx::Internal::Type::Enum
+
+            ULTRA: :Ultra
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::model_id]
+          end
+
+          type provider = :telnyx | :Telnyx
+
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX: :telnyx
+            TELNYX_2: :Telnyx
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::provider]
+          end
+        end
+
+        type minimax_clone =
+          {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::provider,
+            label: String,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::model_id?,
+            ref_text: String
+          }
+
+        class MinimaxClone < Telnyx::Internal::Type::BaseModel
+          attr_accessor audio_file: Telnyx::Internal::file_input
+
+          attr_accessor gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::gender
+
+          attr_accessor language: String
+
+          attr_accessor name: String
+
+          attr_accessor provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::provider
+
+          attr_reader label: String?
+
+          def label=: (String) -> String
+
+          attr_accessor model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::model_id?
+
+          attr_reader ref_text: String?
+
+          def ref_text=: (String) -> String
+
+          def initialize: (
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::provider,
+            ?label: String,
+            ?model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::model_id?,
+            ?ref_text: String
+          ) -> void
+
+          def to_hash: -> {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::gender,
+            language: String,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::provider,
+            label: String,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::model_id?,
+            ref_text: String
+          }
+
+          type gender = :male | :female | :neutral
+
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            MALE: :male
+            FEMALE: :female
+            NEUTRAL: :neutral
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::gender]
+          end
+
+          type provider = :minimax | :Minimax
+
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            MINIMAX: :minimax
+            MINIMAX_2: :Minimax
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::provider]
+          end
+
+          type model_id = :"speech-2.8-turbo"
+
+          module ModelID
+            extend Telnyx::Internal::Type::Enum
+
+            SPEECH_2_8_TURBO: :"speech-2.8-turbo"
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::model_id]
+          end
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::body]
       end
     end
   end

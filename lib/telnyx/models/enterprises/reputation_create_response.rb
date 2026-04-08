@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module Enterprises
-      # @see Telnyx::Resources::Enterprises::Reputation#retrieve
-      class ReputationRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::Enterprises::Reputation#create
+      class ReputationCreateResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #
         #   @return [Telnyx::Models::Enterprises::EnterpriseReputationPublic, nil]

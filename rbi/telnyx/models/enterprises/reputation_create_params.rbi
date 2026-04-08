@@ -3,14 +3,14 @@
 module Telnyx
   module Models
     module Enterprises
-      class ReputationEnableParams < Telnyx::Internal::Type::BaseModel
+      class ReputationCreateParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Enterprises::ReputationEnableParams,
+              Telnyx::Enterprises::ReputationCreateParams,
               Telnyx::Internal::AnyHash
             )
           end
@@ -27,7 +27,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::OrSymbol
             )
           )
         end
@@ -36,7 +36,7 @@ module Telnyx
         sig do
           params(
             check_frequency:
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::OrSymbol
           ).void
         end
         attr_writer :check_frequency
@@ -46,7 +46,7 @@ module Telnyx
             enterprise_id: String,
             loa_document_id: String,
             check_frequency:
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol,
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -67,7 +67,7 @@ module Telnyx
               enterprise_id: String,
               loa_document_id: String,
               check_frequency:
-                Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol,
+                Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -83,7 +83,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Symbol,
-                Telnyx::Enterprises::ReputationEnableParams::CheckFrequency
+                Telnyx::Enterprises::ReputationCreateParams::CheckFrequency
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -91,38 +91,38 @@ module Telnyx
           BUSINESS_DAILY =
             T.let(
               :business_daily,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::TaggedSymbol
             )
           DAILY =
             T.let(
               :daily,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::TaggedSymbol
             )
           WEEKLY =
             T.let(
               :weekly,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::TaggedSymbol
             )
           BIWEEKLY =
             T.let(
               :biweekly,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::TaggedSymbol
             )
           MONTHLY =
             T.let(
               :monthly,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::TaggedSymbol
             )
           NEVER =
             T.let(
               :never,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
+              Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
+                Telnyx::Enterprises::ReputationCreateParams::CheckFrequency::TaggedSymbol
               ]
             )
           end

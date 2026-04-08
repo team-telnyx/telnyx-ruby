@@ -4,11 +4,11 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        class NumberAssociateResponse < Telnyx::Internal::Type::BaseModel
+        class NumberCreateResponse < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse,
+                Telnyx::Models::Enterprises::Reputation::NumberCreateResponse,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -17,7 +17,7 @@ module Telnyx
             returns(
               T.nilable(
                 T::Array[
-                  Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data
+                  Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data
                 ]
               )
             )
@@ -28,7 +28,7 @@ module Telnyx
             params(
               data:
                 T::Array[
-                  Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data::OrHash
+                  Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data::OrHash
                 ]
             ).void
           end
@@ -44,7 +44,7 @@ module Telnyx
             params(
               data:
                 T::Array[
-                  Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data::OrHash
+                  Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data::OrHash
                 ],
               meta: Telnyx::MetaInfo::OrHash
             ).returns(T.attached_class)
@@ -57,7 +57,7 @@ module Telnyx
               {
                 data:
                   T::Array[
-                    Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data
+                    Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data
                   ],
                 meta: Telnyx::MetaInfo
               }
@@ -70,7 +70,7 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data,
+                  Telnyx::Models::Enterprises::Reputation::NumberCreateResponse::Data,
                   Telnyx::Internal::AnyHash
                 )
               end
