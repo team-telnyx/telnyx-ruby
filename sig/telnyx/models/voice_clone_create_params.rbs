@@ -79,13 +79,13 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone::gender]
           end
 
-          type provider = :telnyx | :Telnyx
+          type provider = :telnyx | :minimax
 
           module Provider
             extend Telnyx::Internal::Type::Enum
 
             TELNYX: :telnyx
-            TELNYX_2: :Telnyx
+            MINIMAX: :minimax
 
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone::provider]
           end
@@ -139,13 +139,13 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone::gender]
           end
 
-          type provider = :minimax | :Minimax
+          type provider = :telnyx | :minimax
 
           module Provider
             extend Telnyx::Internal::Type::Enum
 
+            TELNYX: :telnyx
             MINIMAX: :minimax
-            MINIMAX_2: :Minimax
 
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone::provider]
           end
