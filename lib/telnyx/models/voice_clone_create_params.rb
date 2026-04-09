@@ -100,7 +100,7 @@ module Telnyx
             extend Telnyx::Internal::Type::Enum
 
             TELNYX = :telnyx
-            TELNYX_2 = :Telnyx
+            MINIMAX = :minimax
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -171,8 +171,8 @@ module Telnyx
           module Provider
             extend Telnyx::Internal::Type::Enum
 
+            TELNYX = :telnyx
             MINIMAX = :minimax
-            MINIMAX_2 = :Minimax
 
             # @!method self.values
             #   @return [Array<Symbol>]
