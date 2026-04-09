@@ -215,9 +215,9 @@ module Telnyx
                 :telnyx,
                 Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::TaggedSymbol
               )
-            MINIMAX =
+            TELNYX_2 =
               T.let(
-                :minimax,
+                :Telnyx,
                 Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::TaggedSymbol
               )
 
@@ -365,14 +365,14 @@ module Telnyx
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            TELNYX =
-              T.let(
-                :telnyx,
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::TaggedSymbol
-              )
             MINIMAX =
               T.let(
                 :minimax,
+                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::TaggedSymbol
+              )
+            MINIMAX_2 =
+              T.let(
+                :Minimax,
                 Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::TaggedSymbol
               )
 

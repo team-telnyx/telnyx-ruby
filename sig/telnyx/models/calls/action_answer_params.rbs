@@ -4,6 +4,7 @@ module Telnyx
       type action_answer_params =
         {
           call_control_id: String,
+          assistant: Telnyx::Calls::ActionAnswerParams::Assistant,
           billing_group_id: String,
           client_state: String,
           command_id: String,
@@ -41,6 +42,12 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor call_control_id: String
+
+        attr_reader assistant: Telnyx::Calls::ActionAnswerParams::Assistant?
+
+        def assistant=: (
+          Telnyx::Calls::ActionAnswerParams::Assistant
+        ) -> Telnyx::Calls::ActionAnswerParams::Assistant
 
         attr_reader billing_group_id: String?
 
@@ -196,6 +203,7 @@ module Telnyx
 
         def initialize: (
           call_control_id: String,
+          ?assistant: Telnyx::Calls::ActionAnswerParams::Assistant,
           ?billing_group_id: String,
           ?client_state: String,
           ?command_id: String,
@@ -230,6 +238,7 @@ module Telnyx
 
         def to_hash: -> {
           call_control_id: String,
+          assistant: Telnyx::Calls::ActionAnswerParams::Assistant,
           billing_group_id: String,
           client_state: String,
           command_id: String,
@@ -261,6 +270,272 @@ module Telnyx
           webhook_urls_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_urls_method,
           request_options: Telnyx::RequestOptions
         }
+
+        type assistant =
+          {
+            id: String,
+            dynamic_variables: ::Hash[Symbol, Telnyx::Models::Calls::ActionAnswerParams::Assistant::dynamic_variable],
+            external_llm: top,
+            fallback_config: top,
+            greeting: String,
+            instructions: String,
+            llm_api_key_ref: String,
+            mcp_servers: ::Array[top],
+            model: String,
+            name: String,
+            observability_settings: top,
+            openai_api_key_ref: String,
+            tools: ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::tool]
+          }
+
+        class Assistant < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_reader dynamic_variables: ::Hash[Symbol, Telnyx::Models::Calls::ActionAnswerParams::Assistant::dynamic_variable]?
+
+          def dynamic_variables=: (
+            ::Hash[Symbol, Telnyx::Models::Calls::ActionAnswerParams::Assistant::dynamic_variable]
+          ) -> ::Hash[Symbol, Telnyx::Models::Calls::ActionAnswerParams::Assistant::dynamic_variable]
+
+          attr_reader external_llm: top?
+
+          def external_llm=: (top) -> top
+
+          attr_reader fallback_config: top?
+
+          def fallback_config=: (top) -> top
+
+          attr_reader greeting: String?
+
+          def greeting=: (String) -> String
+
+          attr_reader instructions: String?
+
+          def instructions=: (String) -> String
+
+          attr_reader llm_api_key_ref: String?
+
+          def llm_api_key_ref=: (String) -> String
+
+          attr_reader mcp_servers: ::Array[top]?
+
+          def mcp_servers=: (::Array[top]) -> ::Array[top]
+
+          attr_reader model: String?
+
+          def model=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader observability_settings: top?
+
+          def observability_settings=: (top) -> top
+
+          attr_reader openai_api_key_ref: String?
+
+          def openai_api_key_ref=: (String) -> String
+
+          attr_reader tools: ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::tool]?
+
+          def tools=: (
+            ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::tool]
+          ) -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::tool]
+
+          def initialize: (
+            id: String,
+            ?dynamic_variables: ::Hash[Symbol, Telnyx::Models::Calls::ActionAnswerParams::Assistant::dynamic_variable],
+            ?external_llm: top,
+            ?fallback_config: top,
+            ?greeting: String,
+            ?instructions: String,
+            ?llm_api_key_ref: String,
+            ?mcp_servers: ::Array[top],
+            ?model: String,
+            ?name: String,
+            ?observability_settings: top,
+            ?openai_api_key_ref: String,
+            ?tools: ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::tool]
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            dynamic_variables: ::Hash[Symbol, Telnyx::Models::Calls::ActionAnswerParams::Assistant::dynamic_variable],
+            external_llm: top,
+            fallback_config: top,
+            greeting: String,
+            instructions: String,
+            llm_api_key_ref: String,
+            mcp_servers: ::Array[top],
+            model: String,
+            name: String,
+            observability_settings: top,
+            openai_api_key_ref: String,
+            tools: ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::tool]
+          }
+
+          type dynamic_variable = String | Float | bool
+
+          module DynamicVariable
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::dynamic_variable]
+          end
+
+          type tool =
+            Telnyx::Calls::ActionAnswerParams::Assistant::Tool::BookAppointment
+            | Telnyx::Calls::ActionAnswerParams::Assistant::Tool::CheckAvailability
+            | Telnyx::AI::WebhookTool
+            | Telnyx::AI::HangupTool
+            | Telnyx::AI::TransferTool
+            | Telnyx::Calls::ActionAnswerParams::Assistant::Tool::Retrieval
+
+          module Tool
+            extend Telnyx::Internal::Type::Union
+
+            type book_appointment =
+              {
+                book_appointment: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::BookAppointment::BookAppointment,
+                type: :book_appointment
+              }
+
+            class BookAppointment < Telnyx::Internal::Type::BaseModel
+              attr_accessor book_appointment: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::BookAppointment::BookAppointment
+
+              attr_accessor type: :book_appointment
+
+              def initialize: (
+                book_appointment: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::BookAppointment::BookAppointment,
+                ?type: :book_appointment
+              ) -> void
+
+              def to_hash: -> {
+                book_appointment: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::BookAppointment::BookAppointment,
+                type: :book_appointment
+              }
+
+              type book_appointment =
+                {
+                  api_key_ref: String,
+                  event_type_id: Integer,
+                  attendee_name: String,
+                  attendee_timezone: String
+                }
+
+              class BookAppointment < Telnyx::Internal::Type::BaseModel
+                attr_accessor api_key_ref: String
+
+                attr_accessor event_type_id: Integer
+
+                attr_reader attendee_name: String?
+
+                def attendee_name=: (String) -> String
+
+                attr_reader attendee_timezone: String?
+
+                def attendee_timezone=: (String) -> String
+
+                def initialize: (
+                  api_key_ref: String,
+                  event_type_id: Integer,
+                  ?attendee_name: String,
+                  ?attendee_timezone: String
+                ) -> void
+
+                def to_hash: -> {
+                  api_key_ref: String,
+                  event_type_id: Integer,
+                  attendee_name: String,
+                  attendee_timezone: String
+                }
+              end
+            end
+
+            type check_availability =
+              {
+                check_availability: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::CheckAvailability::CheckAvailability,
+                type: :check_availability
+              }
+
+            class CheckAvailability < Telnyx::Internal::Type::BaseModel
+              attr_accessor check_availability: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::CheckAvailability::CheckAvailability
+
+              attr_accessor type: :check_availability
+
+              def initialize: (
+                check_availability: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::CheckAvailability::CheckAvailability,
+                ?type: :check_availability
+              ) -> void
+
+              def to_hash: -> {
+                check_availability: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::CheckAvailability::CheckAvailability,
+                type: :check_availability
+              }
+
+              type check_availability =
+                { api_key_ref: String, event_type_id: Integer }
+
+              class CheckAvailability < Telnyx::Internal::Type::BaseModel
+                attr_accessor api_key_ref: String
+
+                attr_accessor event_type_id: Integer
+
+                def initialize: (
+                  api_key_ref: String,
+                  event_type_id: Integer
+                ) -> void
+
+                def to_hash: -> { api_key_ref: String, event_type_id: Integer }
+              end
+            end
+
+            type retrieval =
+              {
+                retrieval: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::Retrieval::Retrieval,
+                type: :retrieval
+              }
+
+            class Retrieval < Telnyx::Internal::Type::BaseModel
+              attr_accessor retrieval: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::Retrieval::Retrieval
+
+              attr_accessor type: :retrieval
+
+              def initialize: (
+                retrieval: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::Retrieval::Retrieval,
+                ?type: :retrieval
+              ) -> void
+
+              def to_hash: -> {
+                retrieval: Telnyx::Calls::ActionAnswerParams::Assistant::Tool::Retrieval::Retrieval,
+                type: :retrieval
+              }
+
+              type retrieval =
+                { bucket_ids: ::Array[String], max_num_results: Integer }
+
+              class Retrieval < Telnyx::Internal::Type::BaseModel
+                attr_accessor bucket_ids: ::Array[String]
+
+                attr_reader max_num_results: Integer?
+
+                def max_num_results=: (Integer) -> Integer
+
+                def initialize: (
+                  bucket_ids: ::Array[String],
+                  ?max_num_results: Integer
+                ) -> void
+
+                def to_hash: -> {
+                  bucket_ids: ::Array[String],
+                  max_num_results: Integer
+                }
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::Assistant::tool]
+          end
+        end
 
         type preferred_codecs = :"G722,PCMU,PCMA,G729,OPUS,VP8,H264"
 

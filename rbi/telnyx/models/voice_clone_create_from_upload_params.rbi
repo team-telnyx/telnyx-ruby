@@ -259,9 +259,9 @@ module Telnyx
                 :telnyx,
                 Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::TaggedSymbol
               )
-            MINIMAX =
+            TELNYX_2 =
               T.let(
-                :minimax,
+                :Telnyx,
                 Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::Provider::TaggedSymbol
               )
 
@@ -514,9 +514,9 @@ module Telnyx
                 :telnyx,
                 Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::TaggedSymbol
               )
-            MINIMAX =
+            TELNYX_2 =
               T.let(
-                :minimax,
+                :Telnyx,
                 Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::Provider::TaggedSymbol
               )
 
@@ -710,14 +710,14 @@ module Telnyx
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            TELNYX =
-              T.let(
-                :telnyx,
-                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::TaggedSymbol
-              )
             MINIMAX =
               T.let(
                 :minimax,
+                Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::TaggedSymbol
+              )
+            MINIMAX_2 =
+              T.let(
+                :Minimax,
                 Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::Provider::TaggedSymbol
               )
 
