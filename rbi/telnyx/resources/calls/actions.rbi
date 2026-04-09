@@ -53,6 +53,7 @@ module Telnyx
         sig do
           params(
             call_control_id: String,
+            assistant: Telnyx::Calls::ActionAnswerParams::Assistant::OrHash,
             billing_group_id: String,
             client_state: String,
             command_id: String,
@@ -104,6 +105,10 @@ module Telnyx
         def answer(
           # Unique identifier and token for controlling the call
           call_control_id,
+          # AI Assistant configuration. All fields except `id` are optional — the
+          # assistant's stored configuration will be used as fallback for any omitted
+          # fields.
+          assistant: nil,
           # Use this field to set the Billing Group ID for the call. Must be a valid and
           # existing Billing Group ID.
           billing_group_id: nil,
@@ -1183,7 +1188,9 @@ module Telnyx
         def start_ai_assistant(
           # Unique identifier and token for controlling the call
           call_control_id,
-          # AI Assistant configuration
+          # AI Assistant configuration. All fields except `id` are optional — the
+          # assistant's stored configuration will be used as fallback for any omitted
+          # fields.
           assistant: nil,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
