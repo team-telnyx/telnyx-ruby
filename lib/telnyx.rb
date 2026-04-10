@@ -2703,3 +2703,6 @@ require_relative "telnyx/resources/wireless_blocklists"
 require_relative "telnyx/resources/wireless_blocklist_values"
 require_relative "telnyx/resources/x402"
 require_relative "telnyx/resources/x402/credit_account"
+
+# Custom lib requires (preserved across codegen)
+require_relative "telnyx/lib/webhooks_ed25519"

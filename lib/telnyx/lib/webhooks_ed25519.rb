@@ -13,7 +13,7 @@ module Telnyx
     # Usage:
     #
     #   require "telnyx"
-    #   require "telnyx/lib/webhooks_ed25519"
+    #   # ED25519 verification is now loaded by default — no extra require needed
     #
     #   client = Telnyx::Client.new(
     #     api_key: ENV["TELNYX_API_KEY"],
