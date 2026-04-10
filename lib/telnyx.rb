@@ -2302,6 +2302,8 @@ require_relative "telnyx/models/whatsapp/phone_numbers/calling_setting_retrieve_
 require_relative "telnyx/models/whatsapp/phone_numbers/calling_setting_update_params"
 require_relative "telnyx/models/whatsapp/phone_numbers/calling_setting_update_response"
 require_relative "telnyx/models/whatsapp/phone_numbers/profile/photo_delete_params"
+require_relative "telnyx/models/whatsapp/phone_numbers/profile/photo_retrieve_params"
+require_relative "telnyx/models/whatsapp/phone_numbers/profile/photo_retrieve_response"
 require_relative "telnyx/models/whatsapp/phone_numbers/profile/photo_upload_params"
 require_relative "telnyx/models/whatsapp/phone_numbers/profile/photo_upload_response"
 require_relative "telnyx/models/whatsapp/phone_numbers/profile_retrieve_params"

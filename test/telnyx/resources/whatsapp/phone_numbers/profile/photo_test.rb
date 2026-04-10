@@ -3,6 +3,22 @@
 require_relative "../../../../test_helper"
 
 class Telnyx::Test::Resources::Whatsapp::PhoneNumbers::Profile::PhotoTest < Telnyx::Test::ResourceTest
+  def test_retrieve
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.whatsapp.phone_numbers.profile.photo.retrieve("phone_number")
+
+    assert_pattern do
+      response => Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoRetrieveResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoRetrieveResponse::Data | nil
+      }
+    end
+  end
+
   def test_delete
     skip("Mock server tests are disabled")
 

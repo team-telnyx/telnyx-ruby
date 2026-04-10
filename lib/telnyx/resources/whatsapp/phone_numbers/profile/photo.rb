@@ -7,6 +7,26 @@ module Telnyx
         class Profile
           # Manage Whatsapp phone numbers
           class Photo
+            # Get Whatsapp profile photo
+            #
+            # @overload retrieve(phone_number, request_options: {})
+            #
+            # @param phone_number [String] Phone number (E.164 format)
+            #
+            # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+            #
+            # @return [Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoRetrieveResponse]
+            #
+            # @see Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoRetrieveParams
+            def retrieve(phone_number, params = {})
+              @client.request(
+                method: :get,
+                path: ["v2/whatsapp/phone_numbers/%1$s/profile/photo", phone_number],
+                model: Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoRetrieveResponse,
+                options: params[:request_options]
+              )
+            end
+
             # Delete Whatsapp profile photo
             #
             # @overload delete(phone_number, request_options: {})
