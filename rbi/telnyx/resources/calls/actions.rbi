@@ -53,7 +53,7 @@ module Telnyx
         sig do
           params(
             call_control_id: String,
-            assistant: Telnyx::Calls::ActionAnswerParams::Assistant::OrHash,
+            assistant: Telnyx::CallAssistantRequest::OrHash,
             billing_group_id: String,
             client_state: String,
             command_id: String,
@@ -1150,8 +1150,7 @@ module Telnyx
         sig do
           params(
             call_control_id: String,
-            assistant:
-              Telnyx::Calls::ActionStartAIAssistantParams::Assistant::OrHash,
+            assistant: Telnyx::CallAssistantRequest::OrHash,
             client_state: String,
             command_id: String,
             greeting: String,

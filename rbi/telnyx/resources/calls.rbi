@@ -36,7 +36,7 @@ module Telnyx
             Telnyx::CallDialParams::AnsweringMachineDetection::OrSymbol,
           answering_machine_detection_config:
             Telnyx::CallDialParams::AnsweringMachineDetectionConfig::OrHash,
-          assistant: Telnyx::CallDialParams::Assistant::OrHash,
+          assistant: Telnyx::CallAssistantRequest::OrHash,
           audio_url: String,
           billing_group_id: String,
           bridge_intent: T::Boolean,

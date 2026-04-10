@@ -107,6 +107,10 @@ module Telnyx
 
   class BillingGroupUpdateParams = Telnyx::Models::BillingGroupUpdateParams
 
+  class BookAppointmentTool = Telnyx::Models::BookAppointmentTool
+
+  class BookAppointmentToolParams = Telnyx::Models::BookAppointmentToolParams
+
   class BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
 
   class BulkSimCardActionListParams = Telnyx::Models::BulkSimCardActionListParams
@@ -131,6 +135,8 @@ module Telnyx
 
   class CallAnsweredWebhookEvent = Telnyx::Models::CallAnsweredWebhookEvent
 
+  class CallAssistantRequest = Telnyx::Models::CallAssistantRequest
+
   class CallBridged = Telnyx::Models::CallBridged
 
   class CallBridgedWebhookEvent = Telnyx::Models::CallBridgedWebhookEvent
@@ -150,6 +156,10 @@ module Telnyx
   class CallControlApplicationRetrieveParams = Telnyx::Models::CallControlApplicationRetrieveParams
 
   class CallControlApplicationUpdateParams = Telnyx::Models::CallControlApplicationUpdateParams
+
+  class CallControlBucketIDs = Telnyx::Models::CallControlBucketIDs
+
+  class CallControlRetrievalTool = Telnyx::Models::CallControlRetrievalTool
 
   class CallConversationEnded = Telnyx::Models::CallConversationEnded
 
@@ -290,6 +300,10 @@ module Telnyx
   class ChargesBreakdownRetrieveParams = Telnyx::Models::ChargesBreakdownRetrieveParams
 
   class ChargesSummaryRetrieveParams = Telnyx::Models::ChargesSummaryRetrieveParams
+
+  class CheckAvailabilityTool = Telnyx::Models::CheckAvailabilityTool
+
+  class CheckAvailabilityToolParams = Telnyx::Models::CheckAvailabilityToolParams
 
   module CloudflareSyncStatus = Telnyx::Models::CloudflareSyncStatus
 

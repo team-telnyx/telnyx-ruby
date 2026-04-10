@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    type call_control_retrieval_tool =
+      {
+        retrieval: Telnyx::CallControlBucketIDs,
+        type: Telnyx::Models::CallControlRetrievalTool::type_
+      }
+
+    class CallControlRetrievalTool < Telnyx::Internal::Type::BaseModel
+      attr_accessor retrieval: Telnyx::CallControlBucketIDs
+
+      attr_accessor type: Telnyx::Models::CallControlRetrievalTool::type_
+
+      def initialize: (
+        retrieval: Telnyx::CallControlBucketIDs,
+        type: Telnyx::Models::CallControlRetrievalTool::type_
+      ) -> void
+
+      def to_hash: -> {
+        retrieval: Telnyx::CallControlBucketIDs,
+        type: Telnyx::Models::CallControlRetrievalTool::type_
+      }
+
+      type type_ = :retrieval
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        RETRIEVAL: :retrieval
+
+        def self?.values: -> ::Array[Telnyx::Models::CallControlRetrievalTool::type_]
+      end
+    end
+  end
+end

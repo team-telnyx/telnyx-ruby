@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    type book_appointment_tool_params =
+      {
+        api_key_ref: String,
+        event_type_id: Integer,
+        attendee_name: String,
+        attendee_timezone: String
+      }
+
+    class BookAppointmentToolParams < Telnyx::Internal::Type::BaseModel
+      attr_accessor api_key_ref: String
+
+      attr_accessor event_type_id: Integer
+
+      attr_reader attendee_name: String?
+
+      def attendee_name=: (String) -> String
+
+      attr_reader attendee_timezone: String?
+
+      def attendee_timezone=: (String) -> String
+
+      def initialize: (
+        api_key_ref: String,
+        event_type_id: Integer,
+        ?attendee_name: String,
+        ?attendee_timezone: String
+      ) -> void
+
+      def to_hash: -> {
+        api_key_ref: String,
+        event_type_id: Integer,
+        attendee_name: String,
+        attendee_timezone: String
+      }
+    end
+  end
+end

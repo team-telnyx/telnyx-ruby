@@ -1,0 +1,132 @@
+module Telnyx
+  module Models
+    type call_assistant_request =
+      {
+        id: String,
+        dynamic_variables: ::Hash[Symbol, Telnyx::Models::CallAssistantRequest::dynamic_variable],
+        external_llm: ::Hash[Symbol, top],
+        fallback_config: ::Hash[Symbol, top],
+        greeting: String,
+        instructions: String,
+        llm_api_key_ref: String,
+        mcp_servers: ::Array[::Hash[Symbol, top]],
+        model: String,
+        name: String,
+        observability_settings: ::Hash[Symbol, top],
+        openai_api_key_ref: String,
+        tools: ::Array[Telnyx::Models::CallAssistantRequest::tool]
+      }
+
+    class CallAssistantRequest < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_reader dynamic_variables: ::Hash[Symbol, Telnyx::Models::CallAssistantRequest::dynamic_variable]?
+
+      def dynamic_variables=: (
+        ::Hash[Symbol, Telnyx::Models::CallAssistantRequest::dynamic_variable]
+      ) -> ::Hash[Symbol, Telnyx::Models::CallAssistantRequest::dynamic_variable]
+
+      attr_reader external_llm: ::Hash[Symbol, top]?
+
+      def external_llm=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader fallback_config: ::Hash[Symbol, top]?
+
+      def fallback_config=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader greeting: String?
+
+      def greeting=: (String) -> String
+
+      attr_reader instructions: String?
+
+      def instructions=: (String) -> String
+
+      attr_reader llm_api_key_ref: String?
+
+      def llm_api_key_ref=: (String) -> String
+
+      attr_reader mcp_servers: ::Array[::Hash[Symbol, top]]?
+
+      def mcp_servers=: (
+        ::Array[::Hash[Symbol, top]]
+      ) -> ::Array[::Hash[Symbol, top]]
+
+      attr_reader model: String?
+
+      def model=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader observability_settings: ::Hash[Symbol, top]?
+
+      def observability_settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader openai_api_key_ref: String?
+
+      def openai_api_key_ref=: (String) -> String
+
+      attr_reader tools: ::Array[Telnyx::Models::CallAssistantRequest::tool]?
+
+      def tools=: (
+        ::Array[Telnyx::Models::CallAssistantRequest::tool]
+      ) -> ::Array[Telnyx::Models::CallAssistantRequest::tool]
+
+      def initialize: (
+        id: String,
+        ?dynamic_variables: ::Hash[Symbol, Telnyx::Models::CallAssistantRequest::dynamic_variable],
+        ?external_llm: ::Hash[Symbol, top],
+        ?fallback_config: ::Hash[Symbol, top],
+        ?greeting: String,
+        ?instructions: String,
+        ?llm_api_key_ref: String,
+        ?mcp_servers: ::Array[::Hash[Symbol, top]],
+        ?model: String,
+        ?name: String,
+        ?observability_settings: ::Hash[Symbol, top],
+        ?openai_api_key_ref: String,
+        ?tools: ::Array[Telnyx::Models::CallAssistantRequest::tool]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        dynamic_variables: ::Hash[Symbol, Telnyx::Models::CallAssistantRequest::dynamic_variable],
+        external_llm: ::Hash[Symbol, top],
+        fallback_config: ::Hash[Symbol, top],
+        greeting: String,
+        instructions: String,
+        llm_api_key_ref: String,
+        mcp_servers: ::Array[::Hash[Symbol, top]],
+        model: String,
+        name: String,
+        observability_settings: ::Hash[Symbol, top],
+        openai_api_key_ref: String,
+        tools: ::Array[Telnyx::Models::CallAssistantRequest::tool]
+      }
+
+      type dynamic_variable = String | Float | bool
+
+      module DynamicVariable
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::CallAssistantRequest::dynamic_variable]
+      end
+
+      type tool =
+        Telnyx::BookAppointmentTool
+        | Telnyx::CheckAvailabilityTool
+        | Telnyx::AI::WebhookTool
+        | Telnyx::AI::HangupTool
+        | Telnyx::AI::TransferTool
+        | Telnyx::CallControlRetrievalTool
+
+      module Tool
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::CallAssistantRequest::tool]
+      end
+    end
+  end
+end
