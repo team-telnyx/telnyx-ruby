@@ -55,7 +55,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param assistant [Telnyx::Models::Calls::ActionAnswerParams::Assistant] AI Assistant configuration. All fields except `id` are optional — the assistant'
+        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
         #
         # @param billing_group_id [String] Use this field to set the Billing Group ID for the call. Must be a valid and exi
         #
@@ -886,7 +886,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param assistant [Telnyx::Models::Calls::ActionStartAIAssistantParams::Assistant] AI Assistant configuration. All fields except `id` are optional — the assistant'
+        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
         #
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #

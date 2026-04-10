@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    type book_appointment_tool =
+      {
+        book_appointment: Telnyx::BookAppointmentToolParams,
+        type: Telnyx::Models::BookAppointmentTool::type_
+      }
+
+    class BookAppointmentTool < Telnyx::Internal::Type::BaseModel
+      attr_accessor book_appointment: Telnyx::BookAppointmentToolParams
+
+      attr_accessor type: Telnyx::Models::BookAppointmentTool::type_
+
+      def initialize: (
+        book_appointment: Telnyx::BookAppointmentToolParams,
+        type: Telnyx::Models::BookAppointmentTool::type_
+      ) -> void
+
+      def to_hash: -> {
+        book_appointment: Telnyx::BookAppointmentToolParams,
+        type: Telnyx::Models::BookAppointmentTool::type_
+      }
+
+      type type_ = :book_appointment
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        BOOK_APPOINTMENT: :book_appointment
+
+        def self?.values: -> ::Array[Telnyx::Models::BookAppointmentTool::type_]
+      end
+    end
+  end
+end

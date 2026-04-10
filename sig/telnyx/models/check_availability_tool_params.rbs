@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type check_availability_tool_params =
+      { api_key_ref: String, event_type_id: Integer }
+
+    class CheckAvailabilityToolParams < Telnyx::Internal::Type::BaseModel
+      attr_accessor api_key_ref: String
+
+      attr_accessor event_type_id: Integer
+
+      def initialize: (api_key_ref: String, event_type_id: Integer) -> void
+
+      def to_hash: -> { api_key_ref: String, event_type_id: Integer }
+    end
+  end
+end

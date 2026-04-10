@@ -12,7 +12,7 @@ module Telnyx
 
         def answer: (
           String call_control_id,
-          ?assistant: Telnyx::Calls::ActionAnswerParams::Assistant,
+          ?assistant: Telnyx::CallAssistantRequest,
           ?billing_group_id: String,
           ?client_state: String,
           ?command_id: String,
@@ -251,7 +251,7 @@ module Telnyx
 
         def start_ai_assistant: (
           String call_control_id,
-          ?assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          ?assistant: Telnyx::CallAssistantRequest,
           ?client_state: String,
           ?command_id: String,
           ?greeting: String,

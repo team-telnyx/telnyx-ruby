@@ -9,7 +9,7 @@ module Telnyx
         to: Telnyx::Models::CallDialParams::to,
         ?answering_machine_detection: Telnyx::Models::CallDialParams::answering_machine_detection,
         ?answering_machine_detection_config: Telnyx::CallDialParams::AnsweringMachineDetectionConfig,
-        ?assistant: Telnyx::CallDialParams::Assistant,
+        ?assistant: Telnyx::CallAssistantRequest,
         ?audio_url: String,
         ?billing_group_id: String,
         ?bridge_intent: bool,

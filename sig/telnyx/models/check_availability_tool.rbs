@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    type check_availability_tool =
+      {
+        check_availability: Telnyx::CheckAvailabilityToolParams,
+        type: Telnyx::Models::CheckAvailabilityTool::type_
+      }
+
+    class CheckAvailabilityTool < Telnyx::Internal::Type::BaseModel
+      attr_accessor check_availability: Telnyx::CheckAvailabilityToolParams
+
+      attr_accessor type: Telnyx::Models::CheckAvailabilityTool::type_
+
+      def initialize: (
+        check_availability: Telnyx::CheckAvailabilityToolParams,
+        type: Telnyx::Models::CheckAvailabilityTool::type_
+      ) -> void
+
+      def to_hash: -> {
+        check_availability: Telnyx::CheckAvailabilityToolParams,
+        type: Telnyx::Models::CheckAvailabilityTool::type_
+      }
+
+      type type_ = :check_availability
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        CHECK_AVAILABILITY: :check_availability
+
+        def self?.values: -> ::Array[Telnyx::Models::CheckAvailabilityTool::type_]
+      end
+    end
+  end
+end
