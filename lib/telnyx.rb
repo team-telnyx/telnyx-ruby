@@ -2704,5 +2704,6 @@ require_relative "telnyx/resources/wireless_blocklist_values"
 require_relative "telnyx/resources/x402"
 require_relative "telnyx/resources/x402/credit_account"
 
-# Custom lib requires (preserved across codegen)
-require_relative "telnyx/lib/webhooks_ed25519"
+# Custom lib entry point — preserved across codegen.
+# If this line is lost after a Stainless codegen run, it must be re-added.
+require_relative "telnyx/lib"
