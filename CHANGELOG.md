@@ -1,5 +1,31 @@
 # Changelog
 
+## 5.71.0 (2026-04-11)
+
+Full Changelog: [v5.70.0...v5.71.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.70.0...v5.71.0)
+
+### Features
+
+* add shared CallAssistantRequest schema for call-control assistant object ([67a2157](https://github.com/team-telnyx/telnyx-ruby/commit/67a2157455d5a6e5138f89e54479977f108605a7))
+* **api:** manual updates ([0000b53](https://github.com/team-telnyx/telnyx-ruby/commit/0000b5378d0f1dfeb46f1b5670933819fa935d5a))
+* **api:** Merge pull request [#46](https://github.com/team-telnyx/telnyx-ruby/issues/46) from stainless-sdks/FixModelRecommendation ([4b3ea59](https://github.com/team-telnyx/telnyx-ruby/commit/4b3ea599a86f9279f139cbb7868da79079685846))
+* MSG-6846: add GET /profile/photo docs for whatsapp API ([d06a131](https://github.com/team-telnyx/telnyx-ruby/commit/d06a131d943549a7a744a3968e116480d986fc8e))
+
+
+### Bug Fixes
+
+* correct Provider constant reference in VoiceCloneCreateFromDesignParams RBI/RBS ([6c66dd2](https://github.com/team-telnyx/telnyx-ruby/commit/6c66dd2ebf03c26eeeadadb0a93f5828134d0492))
+
+
+### Reverts
+
+* restore stainless.yml to pre-6a6df5b state ([d7e3266](https://github.com/team-telnyx/telnyx-ruby/commit/d7e3266c5593d4163184b2cdcff260aa281843d7))
+
+
+### Documentation
+
+* improve examples ([ecc0d15](https://github.com/team-telnyx/telnyx-ruby/commit/ecc0d1599570e1bbeb73c2db47b05a3a9c0e7a00))
+
 ## 5.70.0 (2026-04-08)
 
 Full Changelog: [v5.69.0...v5.70.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.69.0...v5.70.0)
