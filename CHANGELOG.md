@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.72.0 (2026-04-11)
+
+Full Changelog: [v5.71.0...v5.72.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.71.0...v5.72.0)
+
+### Features
+
+* **lib:** make ED25519 the default webhook verification ([c281219](https://github.com/team-telnyx/telnyx-ruby/commit/c2812192677e731ddf6b6702590f7e55d2f3ef68))
+
+
+### Bug Fixes
+
+* **lib:** move ED25519 auto-require to lib.rb entry point to survive codegen ([7f38f2c](https://github.com/team-telnyx/telnyx-ruby/commit/7f38f2cf33fb3c8391ce7d8f86c88513d7edc907))
+* **lib:** update webhook tests for ED25519 default unwrap ([30ac4c7](https://github.com/team-telnyx/telnyx-ruby/commit/30ac4c7d1fc66732ba5dc55824d3876b4dd120f0))
+
 ## 5.71.0 (2026-04-11)
 
 Full Changelog: [v5.70.0...v5.71.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.70.0...v5.71.0)
