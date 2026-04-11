@@ -147,6 +147,10 @@ module Telnyx
 
   BillingGroupUpdateParams = Telnyx::Models::BillingGroupUpdateParams
 
+  BookAppointmentTool = Telnyx::Models::BookAppointmentTool
+
+  BookAppointmentToolParams = Telnyx::Models::BookAppointmentToolParams
+
   BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
 
   BulkSimCardActionListParams = Telnyx::Models::BulkSimCardActionListParams
@@ -172,6 +176,8 @@ module Telnyx
 
   CallAnsweredWebhookEvent = Telnyx::Models::CallAnsweredWebhookEvent
 
+  CallAssistantRequest = Telnyx::Models::CallAssistantRequest
+
   CallBridged = Telnyx::Models::CallBridged
 
   CallBridgedWebhookEvent = Telnyx::Models::CallBridgedWebhookEvent
@@ -191,6 +197,10 @@ module Telnyx
   CallControlApplicationRetrieveParams = Telnyx::Models::CallControlApplicationRetrieveParams
 
   CallControlApplicationUpdateParams = Telnyx::Models::CallControlApplicationUpdateParams
+
+  CallControlBucketIDs = Telnyx::Models::CallControlBucketIDs
+
+  CallControlRetrievalTool = Telnyx::Models::CallControlRetrievalTool
 
   CallConversationEnded = Telnyx::Models::CallConversationEnded
 
@@ -333,6 +343,10 @@ module Telnyx
   ChargesBreakdownRetrieveParams = Telnyx::Models::ChargesBreakdownRetrieveParams
 
   ChargesSummaryRetrieveParams = Telnyx::Models::ChargesSummaryRetrieveParams
+
+  CheckAvailabilityTool = Telnyx::Models::CheckAvailabilityTool
+
+  CheckAvailabilityToolParams = Telnyx::Models::CheckAvailabilityToolParams
 
   CloudflareSyncStatus = Telnyx::Models::CloudflareSyncStatus
 
@@ -1239,11 +1253,17 @@ module Telnyx
 
   PrivateWirelessGatewayStatus = Telnyx::Models::PrivateWirelessGatewayStatus
 
+  PronunciationDictAliasItem = Telnyx::Models::PronunciationDictAliasItem
+
   PronunciationDictCreateParams = Telnyx::Models::PronunciationDictCreateParams
+
+  PronunciationDictData = Telnyx::Models::PronunciationDictData
 
   PronunciationDictDeleteParams = Telnyx::Models::PronunciationDictDeleteParams
 
   PronunciationDictListParams = Telnyx::Models::PronunciationDictListParams
+
+  PronunciationDictPhonemeItem = Telnyx::Models::PronunciationDictPhonemeItem
 
   PronunciationDictRetrieveParams = Telnyx::Models::PronunciationDictRetrieveParams
 

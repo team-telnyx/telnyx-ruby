@@ -4,6 +4,7 @@ module Telnyx
       type action_answer_params =
         {
           call_control_id: String,
+          assistant: Telnyx::CallAssistantRequest,
           billing_group_id: String,
           client_state: String,
           command_id: String,
@@ -41,6 +42,12 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor call_control_id: String
+
+        attr_reader assistant: Telnyx::CallAssistantRequest?
+
+        def assistant=: (
+          Telnyx::CallAssistantRequest
+        ) -> Telnyx::CallAssistantRequest
 
         attr_reader billing_group_id: String?
 
@@ -196,6 +203,7 @@ module Telnyx
 
         def initialize: (
           call_control_id: String,
+          ?assistant: Telnyx::CallAssistantRequest,
           ?billing_group_id: String,
           ?client_state: String,
           ?command_id: String,
@@ -230,6 +238,7 @@ module Telnyx
 
         def to_hash: -> {
           call_control_id: String,
+          assistant: Telnyx::CallAssistantRequest,
           billing_group_id: String,
           client_state: String,
           command_id: String,

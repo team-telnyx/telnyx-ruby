@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    type pronunciation_dict_phoneme_item =
+      {
+        alphabet: Telnyx::Models::PronunciationDictPhonemeItem::alphabet,
+        phoneme: String,
+        text: String,
+        type: Telnyx::Models::PronunciationDictPhonemeItem::type_
+      }
+
+    class PronunciationDictPhonemeItem < Telnyx::Internal::Type::BaseModel
+      attr_accessor alphabet: Telnyx::Models::PronunciationDictPhonemeItem::alphabet
+
+      attr_accessor phoneme: String
+
+      attr_accessor text: String
+
+      attr_accessor type: Telnyx::Models::PronunciationDictPhonemeItem::type_
+
+      def initialize: (
+        alphabet: Telnyx::Models::PronunciationDictPhonemeItem::alphabet,
+        phoneme: String,
+        text: String,
+        type: Telnyx::Models::PronunciationDictPhonemeItem::type_
+      ) -> void
+
+      def to_hash: -> {
+        alphabet: Telnyx::Models::PronunciationDictPhonemeItem::alphabet,
+        phoneme: String,
+        text: String,
+        type: Telnyx::Models::PronunciationDictPhonemeItem::type_
+      }
+
+      type alphabet = :ipa
+
+      module Alphabet
+        extend Telnyx::Internal::Type::Enum
+
+        IPA: :ipa
+
+        def self?.values: -> ::Array[Telnyx::Models::PronunciationDictPhonemeItem::alphabet]
+      end
+
+      type type_ = :phoneme
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        PHONEME: :phoneme
+
+        def self?.values: -> ::Array[Telnyx::Models::PronunciationDictPhonemeItem::type_]
+      end
+    end
+  end
+end

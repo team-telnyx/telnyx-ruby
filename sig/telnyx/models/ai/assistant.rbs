@@ -43,154 +43,15 @@ module Telnyx
         }
 
         type tool =
-          Telnyx::AI::Assistant::Tool::BookAppointment
-          | Telnyx::AI::Assistant::Tool::CheckAvailability
+          Telnyx::BookAppointmentTool
+          | Telnyx::CheckAvailabilityTool
           | Telnyx::AI::WebhookTool
           | Telnyx::AI::HangupTool
           | Telnyx::AI::TransferTool
-          | Telnyx::AI::Assistant::Tool::Retrieval
+          | Telnyx::CallControlRetrievalTool
 
         module Tool
           extend Telnyx::Internal::Type::Union
-
-          type book_appointment =
-            {
-              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
-              type: :book_appointment
-            }
-
-          class BookAppointment < Telnyx::Internal::Type::BaseModel
-            attr_accessor book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment
-
-            attr_accessor type: :book_appointment
-
-            def initialize: (
-              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
-              ?type: :book_appointment
-            ) -> void
-
-            def to_hash: -> {
-              book_appointment: Telnyx::AI::Assistant::Tool::BookAppointment::BookAppointment,
-              type: :book_appointment
-            }
-
-            type book_appointment =
-              {
-                api_key_ref: String,
-                event_type_id: Integer,
-                attendee_name: String,
-                attendee_timezone: String
-              }
-
-            class BookAppointment < Telnyx::Internal::Type::BaseModel
-              attr_accessor api_key_ref: String
-
-              attr_accessor event_type_id: Integer
-
-              attr_reader attendee_name: String?
-
-              def attendee_name=: (String) -> String
-
-              attr_reader attendee_timezone: String?
-
-              def attendee_timezone=: (String) -> String
-
-              def initialize: (
-                api_key_ref: String,
-                event_type_id: Integer,
-                ?attendee_name: String,
-                ?attendee_timezone: String
-              ) -> void
-
-              def to_hash: -> {
-                api_key_ref: String,
-                event_type_id: Integer,
-                attendee_name: String,
-                attendee_timezone: String
-              }
-            end
-          end
-
-          type check_availability =
-            {
-              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
-              type: :check_availability
-            }
-
-          class CheckAvailability < Telnyx::Internal::Type::BaseModel
-            attr_accessor check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability
-
-            attr_accessor type: :check_availability
-
-            def initialize: (
-              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
-              ?type: :check_availability
-            ) -> void
-
-            def to_hash: -> {
-              check_availability: Telnyx::AI::Assistant::Tool::CheckAvailability::CheckAvailability,
-              type: :check_availability
-            }
-
-            type check_availability =
-              { api_key_ref: String, event_type_id: Integer }
-
-            class CheckAvailability < Telnyx::Internal::Type::BaseModel
-              attr_accessor api_key_ref: String
-
-              attr_accessor event_type_id: Integer
-
-              def initialize: (
-                api_key_ref: String,
-                event_type_id: Integer
-              ) -> void
-
-              def to_hash: -> { api_key_ref: String, event_type_id: Integer }
-            end
-          end
-
-          type retrieval =
-            {
-              retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
-              type: :retrieval
-            }
-
-          class Retrieval < Telnyx::Internal::Type::BaseModel
-            attr_accessor retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval
-
-            attr_accessor type: :retrieval
-
-            def initialize: (
-              retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
-              ?type: :retrieval
-            ) -> void
-
-            def to_hash: -> {
-              retrieval: Telnyx::AI::Assistant::Tool::Retrieval::Retrieval,
-              type: :retrieval
-            }
-
-            type retrieval =
-              { bucket_ids: ::Array[String], max_num_results: Integer }
-
-            class Retrieval < Telnyx::Internal::Type::BaseModel
-              attr_accessor bucket_ids: ::Array[String]
-
-              attr_reader max_num_results: Integer?
-
-              def max_num_results=: (Integer) -> Integer
-
-              def initialize: (
-                bucket_ids: ::Array[String],
-                ?max_num_results: Integer
-              ) -> void
-
-              def to_hash: -> {
-                bucket_ids: ::Array[String],
-                max_num_results: Integer
-              }
-            end
-          end
 
           def self?.variants: -> ::Array[Telnyx::Models::AI::Assistant::tool]
         end

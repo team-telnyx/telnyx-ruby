@@ -8,9 +8,9 @@ module Telnyx
       # Creates a new voice clone by capturing the voice identity of an existing voice
       # design. The clone can then be used for text-to-speech synthesis.
       #
-      # @overload create(body:, request_options: {})
+      # @overload create(params:, request_options: {})
       #
-      # @param body [Telnyx::Models::VoiceCloneCreateParams::Body::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::Body::MinimaxDesignClone] Request body for creating a voice clone from an existing voice design.
+      # @param params [Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone] Request body for creating a voice clone from an existing voice design.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -22,7 +22,7 @@ module Telnyx
         @client.request(
           method: :post,
           path: "voice_clones",
-          body: parsed[:body],
+          body: parsed[:params],
           model: Telnyx::Models::VoiceCloneCreateResponse,
           options: options
         )
@@ -120,9 +120,9 @@ module Telnyx
       # formats: WAV, MP3, FLAC, OGG, M4A. For best results, provide 5–10 seconds of
       # clear speech. Maximum file size: 5MB for Telnyx, 20MB for Minimax.
       #
-      # @overload create_from_upload(body:, request_options: {})
+      # @overload create_from_upload(upload_params:, request_options: {})
       #
-      # @param body [Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::Body::MinimaxClone] Multipart form data for creating a voice clone from a direct audio upload. Maxim
+      # @param upload_params [Telnyx::Models::VoiceCloneCreateFromUploadParams::UploadParams::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::UploadParams::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::UploadParams::MinimaxClone] Multipart form data for creating a voice clone from a direct audio upload. Maxim
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -135,7 +135,7 @@ module Telnyx
           method: :post,
           path: "voice_clones/from_upload",
           headers: {"content-type" => "multipart/form-data"},
-          body: parsed[:body],
+          body: parsed[:upload_params],
           model: Telnyx::Models::VoiceCloneCreateFromUploadResponse,
           options: options
         )

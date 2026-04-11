@@ -58,6 +58,14 @@ module Telnyx
       optional :answering_machine_detection_config,
                -> { Telnyx::CallDialParams::AnsweringMachineDetectionConfig }
 
+      # @!attribute assistant
+      #   AI Assistant configuration. All fields except `id` are optional — the
+      #   assistant's stored configuration will be used as fallback for any omitted
+      #   fields.
+      #
+      #   @return [Telnyx::Models::CallAssistantRequest, nil]
+      optional :assistant, -> { Telnyx::CallAssistantRequest }
+
       # @!attribute audio_url
       #   The URL of a file to be played back to the callee when the call is answered. The
       #   URL can point to either a WAV or MP3 file. media_name and audio_url cannot be
@@ -407,7 +415,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallDialParams::WebhookURLMethod, nil]
       optional :webhook_url_method, enum: -> { Telnyx::CallDialParams::WebhookURLMethod }
 
-      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, prevent_double_bridge: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
+      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, assistant: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, prevent_double_bridge: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_url: nil, webhook_url_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallDialParams} for more details.
       #
@@ -420,6 +428,8 @@ module Telnyx
       #   @param answering_machine_detection [Symbol, Telnyx::Models::CallDialParams::AnsweringMachineDetection] Enables Answering Machine Detection. Telnyx offers Premium and Standard detectio
       #
       #   @param answering_machine_detection_config [Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig] Optional configuration parameters to modify 'answering_machine_detection' perfor
+      #
+      #   @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
       #
       #   @param audio_url [String] The URL of a file to be played back to the callee when the call is answered. The
       #

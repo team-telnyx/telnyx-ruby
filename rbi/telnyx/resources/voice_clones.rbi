@@ -9,17 +9,17 @@ module Telnyx
       # design. The clone can then be used for text-to-speech synthesis.
       sig do
         params(
-          body:
+          params:
             T.any(
-              Telnyx::VoiceCloneCreateParams::Body::TelnyxDesignClone::OrHash,
-              Telnyx::VoiceCloneCreateParams::Body::MinimaxDesignClone::OrHash
+              Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::OrHash,
+              Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VoiceCloneCreateResponse)
       end
       def create(
         # Request body for creating a voice clone from an existing voice design.
-        body:,
+        params:,
         request_options: {}
       )
       end
@@ -92,11 +92,11 @@ module Telnyx
       # clear speech. Maximum file size: 5MB for Telnyx, 20MB for Minimax.
       sig do
         params(
-          body:
+          upload_params:
             T.any(
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxQwen3TtsClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::TelnyxUltraClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::Body::MinimaxClone::OrHash
+              Telnyx::VoiceCloneCreateFromUploadParams::UploadParams::TelnyxQwen3TtsClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::UploadParams::TelnyxUltraClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::UploadParams::MinimaxClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VoiceCloneCreateFromUploadResponse)
@@ -104,7 +104,7 @@ module Telnyx
       def create_from_upload(
         # Multipart form data for creating a voice clone from a direct audio upload.
         # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
-        body:,
+        upload_params:,
         request_options: {}
       )
       end

@@ -8,7 +8,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     response =
       @telnyx.voice_clones.create(
-        body: {
+        params: {
           gender: :male,
           language: "en",
           name: "clone-narrator",
@@ -96,7 +96,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     response =
       @telnyx.voice_clones.create_from_upload(
-        body: {
+        upload_params: {
           audio_file: StringIO.new("Example data"),
           gender: :male,
           language: "lkf-Lz1vLbBu-9uDh-9AHaOS2D-Cbf",

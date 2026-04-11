@@ -39,67 +39,11 @@ module Telnyx
       }
 
       type item =
-        Telnyx::PronunciationDictUpdateParams::Item::Alias
-        | Telnyx::PronunciationDictUpdateParams::Item::Phoneme
+        Telnyx::PronunciationDictAliasItem
+        | Telnyx::PronunciationDictPhonemeItem
 
       module Item
         extend Telnyx::Internal::Type::Union
-
-        type alias_ = { alias_: String, text: String, type: :alias }
-
-        class Alias < Telnyx::Internal::Type::BaseModel
-          attr_accessor alias_: String
-
-          attr_accessor text: String
-
-          attr_accessor type: :alias
-
-          def initialize: (alias_: String, text: String, ?type: :alias) -> void
-
-          def to_hash: -> { alias_: String, text: String, type: :alias }
-        end
-
-        type phoneme =
-          {
-            alphabet: Telnyx::Models::PronunciationDictUpdateParams::Item::Phoneme::alphabet,
-            phoneme: String,
-            text: String,
-            type: :phoneme
-          }
-
-        class Phoneme < Telnyx::Internal::Type::BaseModel
-          attr_accessor alphabet: Telnyx::Models::PronunciationDictUpdateParams::Item::Phoneme::alphabet
-
-          attr_accessor phoneme: String
-
-          attr_accessor text: String
-
-          attr_accessor type: :phoneme
-
-          def initialize: (
-            alphabet: Telnyx::Models::PronunciationDictUpdateParams::Item::Phoneme::alphabet,
-            phoneme: String,
-            text: String,
-            ?type: :phoneme
-          ) -> void
-
-          def to_hash: -> {
-            alphabet: Telnyx::Models::PronunciationDictUpdateParams::Item::Phoneme::alphabet,
-            phoneme: String,
-            text: String,
-            type: :phoneme
-          }
-
-          type alphabet = :ipa
-
-          module Alphabet
-            extend Telnyx::Internal::Type::Enum
-
-            IPA: :ipa
-
-            def self?.values: -> ::Array[Telnyx::Models::PronunciationDictUpdateParams::Item::Phoneme::alphabet]
-          end
-        end
 
         def self?.variants: -> ::Array[Telnyx::Models::PronunciationDictUpdateParams::item]
       end

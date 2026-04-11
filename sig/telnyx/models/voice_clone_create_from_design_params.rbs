@@ -6,7 +6,7 @@ module Telnyx
         language: String,
         name: String,
         voice_design_id: String,
-        provider: Telnyx::Models::VoiceCloneCreateParams::provider
+        provider: Telnyx::Models::VoiceCloneCreateFromDesignParams::provider
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -22,18 +22,18 @@ module Telnyx
 
       attr_accessor voice_design_id: String
 
-      attr_reader provider: Telnyx::Models::VoiceCloneCreateParams::provider?
+      attr_reader provider: Telnyx::Models::VoiceCloneCreateFromDesignParams::provider?
 
       def provider=: (
-        Telnyx::Models::VoiceCloneCreateParams::provider
-      ) -> Telnyx::Models::VoiceCloneCreateParams::provider
+        Telnyx::Models::VoiceCloneCreateFromDesignParams::provider
+      ) -> Telnyx::Models::VoiceCloneCreateFromDesignParams::provider
 
       def initialize: (
         gender: Telnyx::Models::VoiceCloneCreateFromDesignParams::gender,
         language: String,
         name: String,
         voice_design_id: String,
-        ?provider: Telnyx::Models::VoiceCloneCreateParams::provider,
+        ?provider: Telnyx::Models::VoiceCloneCreateFromDesignParams::provider,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -42,7 +42,7 @@ module Telnyx
         language: String,
         name: String,
         voice_design_id: String,
-        provider: Telnyx::Models::VoiceCloneCreateParams::provider,
+        provider: Telnyx::Models::VoiceCloneCreateFromDesignParams::provider,
         request_options: Telnyx::RequestOptions
       }
 
@@ -68,7 +68,7 @@ module Telnyx
         MINIMAX: :minimax
         MINIMAX_2: :Minimax
 
-        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateParams::provider]
+        def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromDesignParams::provider]
       end
     end
   end

@@ -1,0 +1,88 @@
+module Telnyx
+  module Models
+    type pronunciation_dict_data =
+      {
+        id: String,
+        created_at: Time,
+        items: ::Array[Telnyx::Models::PronunciationDictData::item],
+        name: String,
+        record_type: Telnyx::Models::PronunciationDictData::record_type,
+        updated_at: Time,
+        version: Integer
+      }
+
+    class PronunciationDictData < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader items: ::Array[Telnyx::Models::PronunciationDictData::item]?
+
+      def items=: (
+        ::Array[Telnyx::Models::PronunciationDictData::item]
+      ) -> ::Array[Telnyx::Models::PronunciationDictData::item]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::PronunciationDictData::record_type?
+
+      def record_type=: (
+        Telnyx::Models::PronunciationDictData::record_type
+      ) -> Telnyx::Models::PronunciationDictData::record_type
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader version: Integer?
+
+      def version=: (Integer) -> Integer
+
+      def initialize: (
+        ?id: String,
+        ?created_at: Time,
+        ?items: ::Array[Telnyx::Models::PronunciationDictData::item],
+        ?name: String,
+        ?record_type: Telnyx::Models::PronunciationDictData::record_type,
+        ?updated_at: Time,
+        ?version: Integer
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        items: ::Array[Telnyx::Models::PronunciationDictData::item],
+        name: String,
+        record_type: Telnyx::Models::PronunciationDictData::record_type,
+        updated_at: Time,
+        version: Integer
+      }
+
+      type item =
+        Telnyx::PronunciationDictAliasItem
+        | Telnyx::PronunciationDictPhonemeItem
+
+      module Item
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::PronunciationDictData::item]
+      end
+
+      type record_type = :pronunciation_dict
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        PRONUNCIATION_DICT: :pronunciation_dict
+
+        def self?.values: -> ::Array[Telnyx::Models::PronunciationDictData::record_type]
+      end
+    end
+  end
+end

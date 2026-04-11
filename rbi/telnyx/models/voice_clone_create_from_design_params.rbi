@@ -34,13 +34,13 @@ module Telnyx
 
       # Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
       sig do
-        returns(T.nilable(Telnyx::VoiceCloneCreateParams::Provider::OrSymbol))
+        returns(T.nilable(Telnyx::VoiceCloneCreateFromDesignParams::Provider::OrSymbol))
       end
       attr_reader :provider
 
       sig do
         params(
-          provider: Telnyx::VoiceCloneCreateParams::Provider::OrSymbol
+          provider: Telnyx::VoiceCloneCreateFromDesignParams::Provider::OrSymbol
         ).void
       end
       attr_writer :provider
@@ -51,7 +51,7 @@ module Telnyx
           language: String,
           name: String,
           voice_design_id: String,
-          provider: Telnyx::VoiceCloneCreateParams::Provider::OrSymbol,
+          provider: Telnyx::VoiceCloneCreateFromDesignParams::Provider::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -77,7 +77,7 @@ module Telnyx
             language: String,
             name: String,
             voice_design_id: String,
-            provider: Telnyx::VoiceCloneCreateParams::Provider::OrSymbol,
+            provider: Telnyx::VoiceCloneCreateFromDesignParams::Provider::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -128,28 +128,28 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Telnyx::VoiceCloneCreateParams::Provider)
+            T.all(Symbol, Telnyx::VoiceCloneCreateFromDesignParams::Provider)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         TELNYX =
-          T.let(:telnyx, Telnyx::VoiceCloneCreateParams::Provider::TaggedSymbol)
+          T.let(:telnyx, Telnyx::VoiceCloneCreateFromDesignParams::Provider::TaggedSymbol)
         TELNYX_2 =
-          T.let(:Telnyx, Telnyx::VoiceCloneCreateParams::Provider::TaggedSymbol)
+          T.let(:Telnyx, Telnyx::VoiceCloneCreateFromDesignParams::Provider::TaggedSymbol)
         MINIMAX =
           T.let(
             :minimax,
-            Telnyx::VoiceCloneCreateParams::Provider::TaggedSymbol
+            Telnyx::VoiceCloneCreateFromDesignParams::Provider::TaggedSymbol
           )
         MINIMAX_2 =
           T.let(
             :Minimax,
-            Telnyx::VoiceCloneCreateParams::Provider::TaggedSymbol
+            Telnyx::VoiceCloneCreateFromDesignParams::Provider::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Telnyx::VoiceCloneCreateParams::Provider::TaggedSymbol]
+            T::Array[Telnyx::VoiceCloneCreateFromDesignParams::Provider::TaggedSymbol]
           )
         end
         def self.values

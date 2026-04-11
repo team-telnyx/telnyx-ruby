@@ -14,10 +14,12 @@ module Telnyx
         required :call_control_id, String
 
         # @!attribute assistant
-        #   AI Assistant configuration
+        #   AI Assistant configuration. All fields except `id` are optional — the
+        #   assistant's stored configuration will be used as fallback for any omitted
+        #   fields.
         #
-        #   @return [Telnyx::Models::Calls::ActionStartAIAssistantParams::Assistant, nil]
-        optional :assistant, -> { Telnyx::Calls::ActionStartAIAssistantParams::Assistant }
+        #   @return [Telnyx::Models::CallAssistantRequest, nil]
+        optional :assistant, -> { Telnyx::CallAssistantRequest }
 
         # @!attribute client_state
         #   Use this field to add state to every subsequent webhook. It must be a valid
@@ -119,7 +121,7 @@ module Telnyx
         #
         #   @param call_control_id [String]
         #
-        #   @param assistant [Telnyx::Models::Calls::ActionStartAIAssistantParams::Assistant] AI Assistant configuration
+        #   @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
@@ -142,41 +144,6 @@ module Telnyx
         #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        class Assistant < Telnyx::Internal::Type::BaseModel
-          # @!attribute id
-          #   The identifier of the AI assistant to use
-          #
-          #   @return [String, nil]
-          optional :id, String
-
-          # @!attribute instructions
-          #   The system instructions that the voice assistant uses during the start assistant
-          #   command. This will overwrite the instructions set in the assistant
-          #   configuration.
-          #
-          #   @return [String, nil]
-          optional :instructions, String
-
-          # @!attribute openai_api_key_ref
-          #   Reference to the OpenAI API key. Required only when using OpenAI models
-          #
-          #   @return [String, nil]
-          optional :openai_api_key_ref, String
-
-          # @!method initialize(id: nil, instructions: nil, openai_api_key_ref: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::Calls::ActionStartAIAssistantParams::Assistant} for more
-          #   details.
-          #
-          #   AI Assistant configuration
-          #
-          #   @param id [String] The identifier of the AI assistant to use
-          #
-          #   @param instructions [String] The system instructions that the voice assistant uses during the start assistant
-          #
-          #   @param openai_api_key_ref [String] Reference to the OpenAI API key. Required only when using OpenAI models
-        end
 
         # Messages sent by an end user
         module MessageHistory

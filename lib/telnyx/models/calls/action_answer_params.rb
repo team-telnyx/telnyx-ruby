@@ -13,6 +13,14 @@ module Telnyx
         #   @return [String]
         required :call_control_id, String
 
+        # @!attribute assistant
+        #   AI Assistant configuration. All fields except `id` are optional — the
+        #   assistant's stored configuration will be used as fallback for any omitted
+        #   fields.
+        #
+        #   @return [Telnyx::Models::CallAssistantRequest, nil]
+        optional :assistant, -> { Telnyx::CallAssistantRequest }
+
         # @!attribute billing_group_id
         #   Use this field to set the Billing Group ID for the call. Must be a valid and
         #   existing Billing Group ID.
@@ -210,11 +218,13 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLsMethod, nil]
         optional :webhook_urls_method, enum: -> { Telnyx::Calls::ActionAnswerParams::WebhookURLsMethod }
 
-        # @!method initialize(call_control_id:, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @!method initialize(call_control_id:, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionAnswerParams} for more details.
         #
         #   @param call_control_id [String]
+        #
+        #   @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
         #
         #   @param billing_group_id [String] Use this field to set the Billing Group ID for the call. Must be a valid and exi
         #

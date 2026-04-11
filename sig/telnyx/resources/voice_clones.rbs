@@ -2,7 +2,7 @@ module Telnyx
   module Resources
     class VoiceClones
       def create: (
-        body: Telnyx::Models::VoiceCloneCreateParams::body,
+        params: Telnyx::Models::VoiceCloneCreateParams::params,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VoiceCloneCreateResponse
 
@@ -26,7 +26,7 @@ module Telnyx
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
       def create_from_upload: (
-        body: Telnyx::Models::VoiceCloneCreateFromUploadParams::body,
+        upload_params: Telnyx::Models::VoiceCloneCreateFromUploadParams::upload_params,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::VoiceCloneCreateFromUploadResponse
 

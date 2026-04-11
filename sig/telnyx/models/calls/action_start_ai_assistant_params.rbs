@@ -4,7 +4,7 @@ module Telnyx
       type action_start_ai_assistant_params =
         {
           call_control_id: String,
-          assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          assistant: Telnyx::CallAssistantRequest,
           client_state: String,
           command_id: String,
           greeting: String,
@@ -24,11 +24,11 @@ module Telnyx
 
         attr_accessor call_control_id: String
 
-        attr_reader assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant?
+        attr_reader assistant: Telnyx::CallAssistantRequest?
 
         def assistant=: (
-          Telnyx::Calls::ActionStartAIAssistantParams::Assistant
-        ) -> Telnyx::Calls::ActionStartAIAssistantParams::Assistant
+          Telnyx::CallAssistantRequest
+        ) -> Telnyx::CallAssistantRequest
 
         attr_reader client_state: String?
 
@@ -82,7 +82,7 @@ module Telnyx
 
         def initialize: (
           call_control_id: String,
-          ?assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          ?assistant: Telnyx::CallAssistantRequest,
           ?client_state: String,
           ?command_id: String,
           ?greeting: String,
@@ -98,7 +98,7 @@ module Telnyx
 
         def to_hash: -> {
           call_control_id: String,
-          assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+          assistant: Telnyx::CallAssistantRequest,
           client_state: String,
           command_id: String,
           greeting: String,
@@ -111,35 +111,6 @@ module Telnyx
           voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
           request_options: Telnyx::RequestOptions
         }
-
-        type assistant =
-          { id: String, instructions: String, openai_api_key_ref: String }
-
-        class Assistant < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader instructions: String?
-
-          def instructions=: (String) -> String
-
-          attr_reader openai_api_key_ref: String?
-
-          def openai_api_key_ref=: (String) -> String
-
-          def initialize: (
-            ?id: String,
-            ?instructions: String,
-            ?openai_api_key_ref: String
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            instructions: String,
-            openai_api_key_ref: String
-          }
-        end
 
         type message_history =
           Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User

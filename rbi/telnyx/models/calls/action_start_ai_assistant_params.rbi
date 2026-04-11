@@ -18,20 +18,13 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :call_control_id
 
-        # AI Assistant configuration
-        sig do
-          returns(
-            T.nilable(Telnyx::Calls::ActionStartAIAssistantParams::Assistant)
-          )
-        end
+        # AI Assistant configuration. All fields except `id` are optional — the
+        # assistant's stored configuration will be used as fallback for any omitted
+        # fields.
+        sig { returns(T.nilable(Telnyx::CallAssistantRequest)) }
         attr_reader :assistant
 
-        sig do
-          params(
-            assistant:
-              Telnyx::Calls::ActionStartAIAssistantParams::Assistant::OrHash
-          ).void
-        end
+        sig { params(assistant: Telnyx::CallAssistantRequest::OrHash).void }
         attr_writer :assistant
 
         # Use this field to add state to every subsequent webhook. It must be a valid
@@ -210,8 +203,7 @@ module Telnyx
         sig do
           params(
             call_control_id: String,
-            assistant:
-              Telnyx::Calls::ActionStartAIAssistantParams::Assistant::OrHash,
+            assistant: Telnyx::CallAssistantRequest::OrHash,
             client_state: String,
             command_id: String,
             greeting: String,
@@ -247,7 +239,9 @@ module Telnyx
         end
         def self.new(
           call_control_id:,
-          # AI Assistant configuration
+          # AI Assistant configuration. All fields except `id` are optional — the
+          # assistant's stored configuration will be used as fallback for any omitted
+          # fields.
           assistant: nil,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
@@ -309,7 +303,7 @@ module Telnyx
           override.returns(
             {
               call_control_id: String,
-              assistant: Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
+              assistant: Telnyx::CallAssistantRequest,
               client_state: String,
               command_id: String,
               greeting: String,
@@ -345,67 +339,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        class Assistant < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Calls::ActionStartAIAssistantParams::Assistant,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The identifier of the AI assistant to use
-          sig { returns(T.nilable(String)) }
-          attr_reader :id
-
-          sig { params(id: String).void }
-          attr_writer :id
-
-          # The system instructions that the voice assistant uses during the start assistant
-          # command. This will overwrite the instructions set in the assistant
-          # configuration.
-          sig { returns(T.nilable(String)) }
-          attr_reader :instructions
-
-          sig { params(instructions: String).void }
-          attr_writer :instructions
-
-          # Reference to the OpenAI API key. Required only when using OpenAI models
-          sig { returns(T.nilable(String)) }
-          attr_reader :openai_api_key_ref
-
-          sig { params(openai_api_key_ref: String).void }
-          attr_writer :openai_api_key_ref
-
-          # AI Assistant configuration
-          sig do
-            params(
-              id: String,
-              instructions: String,
-              openai_api_key_ref: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The identifier of the AI assistant to use
-            id: nil,
-            # The system instructions that the voice assistant uses during the start assistant
-            # command. This will overwrite the instructions set in the assistant
-            # configuration.
-            instructions: nil,
-            # Reference to the OpenAI API key. Required only when using OpenAI models
-            openai_api_key_ref: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              { id: String, instructions: String, openai_api_key_ref: String }
-            )
-          end
-          def to_hash
-          end
         end
 
         # Messages sent by an end user

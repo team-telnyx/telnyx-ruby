@@ -4,6 +4,11 @@ module Telnyx
       class PhoneNumbers
         class Profile
           class Photo
+            def retrieve: (
+              String phone_number,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::Whatsapp::PhoneNumbers::Profile::PhotoRetrieveResponse
+
             def delete: (
               String phone_number,
               ?request_options: Telnyx::request_opts

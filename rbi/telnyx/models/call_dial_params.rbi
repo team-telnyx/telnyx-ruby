@@ -75,6 +75,15 @@ module Telnyx
       end
       attr_writer :answering_machine_detection_config
 
+      # AI Assistant configuration. All fields except `id` are optional — the
+      # assistant's stored configuration will be used as fallback for any omitted
+      # fields.
+      sig { returns(T.nilable(Telnyx::CallAssistantRequest)) }
+      attr_reader :assistant
+
+      sig { params(assistant: Telnyx::CallAssistantRequest::OrHash).void }
+      attr_writer :assistant
+
       # The URL of a file to be played back to the callee when the call is answered. The
       # URL can point to either a WAV or MP3 file. media_name and audio_url cannot be
       # used together in one request.
@@ -562,6 +571,7 @@ module Telnyx
             Telnyx::CallDialParams::AnsweringMachineDetection::OrSymbol,
           answering_machine_detection_config:
             Telnyx::CallDialParams::AnsweringMachineDetectionConfig::OrHash,
+          assistant: Telnyx::CallAssistantRequest::OrHash,
           audio_url: String,
           billing_group_id: String,
           bridge_intent: T::Boolean,
@@ -652,6 +662,10 @@ module Telnyx
         # Optional configuration parameters to modify 'answering_machine_detection'
         # performance.
         answering_machine_detection_config: nil,
+        # AI Assistant configuration. All fields except `id` are optional — the
+        # assistant's stored configuration will be used as fallback for any omitted
+        # fields.
+        assistant: nil,
         # The URL of a file to be played back to the callee when the call is answered. The
         # URL can point to either a WAV or MP3 file. media_name and audio_url cannot be
         # used together in one request.
@@ -815,6 +829,7 @@ module Telnyx
               Telnyx::CallDialParams::AnsweringMachineDetection::OrSymbol,
             answering_machine_detection_config:
               Telnyx::CallDialParams::AnsweringMachineDetectionConfig,
+            assistant: Telnyx::CallAssistantRequest,
             audio_url: String,
             billing_group_id: String,
             bridge_intent: T::Boolean,

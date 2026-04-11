@@ -15,6 +15,15 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :call_control_id
 
+        # AI Assistant configuration. All fields except `id` are optional — the
+        # assistant's stored configuration will be used as fallback for any omitted
+        # fields.
+        sig { returns(T.nilable(Telnyx::CallAssistantRequest)) }
+        attr_reader :assistant
+
+        sig { params(assistant: Telnyx::CallAssistantRequest::OrHash).void }
+        attr_writer :assistant
+
         # Use this field to set the Billing Group ID for the call. Must be a valid and
         # existing Billing Group ID.
         sig { returns(T.nilable(String)) }
@@ -372,6 +381,7 @@ module Telnyx
         sig do
           params(
             call_control_id: String,
+            assistant: Telnyx::CallAssistantRequest::OrHash,
             billing_group_id: String,
             client_state: String,
             command_id: String,
@@ -422,6 +432,10 @@ module Telnyx
         end
         def self.new(
           call_control_id:,
+          # AI Assistant configuration. All fields except `id` are optional — the
+          # assistant's stored configuration will be used as fallback for any omitted
+          # fields.
+          assistant: nil,
           # Use this field to set the Billing Group ID for the call. Must be a valid and
           # existing Billing Group ID.
           billing_group_id: nil,
@@ -510,6 +524,7 @@ module Telnyx
           override.returns(
             {
               call_control_id: String,
+              assistant: Telnyx::CallAssistantRequest,
               billing_group_id: String,
               client_state: String,
               command_id: String,
