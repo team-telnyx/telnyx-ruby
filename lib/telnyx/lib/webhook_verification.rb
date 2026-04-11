@@ -150,7 +150,20 @@ module Telnyx
         # The raw 32-byte key needs to be wrapped in X.509 SubjectPublicKeyInfo format
         # ED25519 OID: 1.3.101.112 = 06 03 2b 65 70
         # X.509 SPKI header for ED25519: 30 2a 30 05 06 03 2b 65 70 03 21 00
-        ed25519_spki_header = [0x30, 0x2a, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x03, 0x21, 0x00].pack("C*")
+        ed25519_spki_header = [
+          0x30,
+          0x2a,
+          0x30,
+          0x05,
+          0x06,
+          0x03,
+          0x2b,
+          0x65,
+          0x70,
+          0x03,
+          0x21,
+          0x00
+        ].pack("C*")
         der_key = ed25519_spki_header + public_key_bytes
 
         begin

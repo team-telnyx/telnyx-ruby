@@ -3,48 +3,61 @@
 require_relative "webhook_verification"
 require_relative "webhook_verification_error"
 
-module Telnyx
-  module Resources
-    # Extends the generated Webhooks class with ED25519 signature verification.
-    #
-    # This reopens the Webhooks class to include the WebhookVerification module,
-    # which adds ED25519 signature verification matching Python, Node, Go, and Java SDKs.
-    #
-    # Usage:
-    #
-    #   require "telnyx"
-    #   require "telnyx/lib/webhooks_ed25519"
-    #
-    #   client = Telnyx::Client.new(
-    #     api_key: ENV["TELNYX_API_KEY"],
-    #     public_key: ENV["TELNYX_PUBLIC_KEY"]  # Base64 from Mission Control
-    #   )
-    #
-    #   # Verify signature only (raises WebhookVerificationError on failure)
-    #   client.webhooks.verify!(payload, headers)
-    #
-    #   # Verify and parse (ED25519 verification, then parse)
-    #   event = client.webhooks.unwrap(payload, headers: headers)
-    #
-    class Webhooks
-      include Telnyx::Lib::WebhookVerification
-
-      # Override unwrap to use ED25519 verification instead of StandardWebhooks.
+# Only apply the ED25519 override if the generated Webhooks class exists.
+# This file is loaded after lib/telnyx/resources/webhooks.rb in the gem
+# load order (see lib/telnyx.rb), so the class should always be defined.
+if defined?(Telnyx::Resources::Webhooks)
+  module Telnyx
+    module Resources
+      # Extends the generated Webhooks class with ED25519 signature verification.
       #
-      # @param payload [String] The raw webhook payload as a string
-      # @param headers [Hash{String=>String}] The raw HTTP headers
-      # @param key [String, nil] Optional public key override (base64-encoded ED25519)
+      # This reopens the Webhooks class to include the WebhookVerification module,
+      # which adds ED25519 signature verification matching Python, Node, Go, and Java SDKs.
       #
-      # @return [Telnyx::Models::UnwrapWebhookEvent]
-      # @raise [Telnyx::Errors::WebhookVerificationError] If verification fails
-      def unwrap(payload, headers:, key: nil)
-        # Use ED25519 verification
-        do_verify_signature(payload, headers, key || @client.public_key)
+      # Usage:
+      #
+      #   require "telnyx"
+      #   # ED25519 verification is now loaded by default — no extra require needed
+      #
+      #   client = Telnyx::Client.new(
+      #     api_key: ENV["TELNYX_API_KEY"],
+      #     public_key: ENV["TELNYX_PUBLIC_KEY"]  # Base64 from Mission Control
+      #   )
+      #
+      #   # Verify signature only (raises WebhookVerificationError on failure)
+      #   client.webhooks.verify!(payload, headers)
+      #
+      #   # Verify and parse (ED25519 verification, then parse)
+      #   event = client.webhooks.unwrap(payload, headers: headers)
+      #
+      class Webhooks
+        include Telnyx::Lib::WebhookVerification
 
-        # Parse the payload
-        parsed = JSON.parse(payload, symbolize_names: true)
-        Telnyx::Internal::Type::Converter.coerce(Telnyx::Models::UnwrapWebhookEvent, parsed)
+        # Override unwrap to use ED25519 verification instead of StandardWebhooks.
+        #
+        # @param payload [String] The raw webhook payload as a string
+        # @param headers [Hash{String=>String}] The raw HTTP headers
+        # @param key [String, nil] Optional public key override (base64-encoded ED25519)
+        #
+        # @return [Telnyx::Models::UnwrapWebhookEvent]
+        # @raise [Telnyx::Errors::WebhookVerificationError] If verification fails
+        def unwrap(payload, headers:, key: nil)
+          # Use ED25519 verification
+          do_verify_signature(payload, headers, key || @client.public_key)
+
+          # Parse the payload
+          parsed = JSON.parse(payload, symbolize_names: true)
+          Telnyx::Internal::Type::Converter.coerce(Telnyx::Models::UnwrapWebhookEvent, parsed)
+        end
       end
     end
   end
+else
+  # If the generated Webhooks class isn't loaded yet, the ED25519 override
+  # can't be applied. This shouldn't happen in normal gem usage since
+  # lib/telnyx.rb loads resources before lib/. If you see this warning,
+  # ensure lib/telnyx.rb requires lib/telnyx/lib after the resources.
+  warn "[telnyx] ED25519 webhook verification not loaded: " \
+       "Telnyx::Resources::Webhooks is not defined. " \
+       "Check that lib/telnyx.rb loads resources before lib/telnyx/lib."
 end
