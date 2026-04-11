@@ -34,8 +34,8 @@ module Telnyx
       # @!attribute provider
       #   Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
       #
-      #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::Provider, nil]
-      optional :provider, enum: -> { Telnyx::VoiceCloneCreateParams::Provider }
+      #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignParams::Provider, nil]
+      optional :provider, enum: -> { Telnyx::VoiceCloneCreateFromDesignParams::Provider }
 
       # @!method initialize(gender:, language:, name:, voice_design_id:, provider: nil, request_options: {})
       #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::Gender] Gender of the voice clone.
@@ -46,7 +46,7 @@ module Telnyx
       #
       #   @param voice_design_id [String] UUID of the source voice design to clone.
       #
-      #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateParams::Provider] Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
+      #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateFromDesignParams::Provider] Voice synthesis provider. Case-insensitive. Defaults to `telnyx`.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
