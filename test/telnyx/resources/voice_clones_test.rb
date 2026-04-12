@@ -94,16 +94,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
   def test_create_from_upload_required_params
     skip("Mock server tests are disabled")
 
-    response =
-      @telnyx.voice_clones.create_from_upload(
-        upload_params: {
-          audio_file: StringIO.new("Example data"),
-          gender: :male,
-          language: "lkf-Lz1vLbBu-9uDh-9AHaOS2D-Cbf",
-          name: "name",
-          provider: :telnyx
-        }
-      )
+    response = @telnyx.voice_clones.create_from_upload(upload_params: {})
 
     assert_pattern do
       response => Telnyx::Models::VoiceCloneCreateFromUploadResponse

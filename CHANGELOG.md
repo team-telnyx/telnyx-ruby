@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.72.1 (2026-04-12)
+
+Full Changelog: [v5.72.0...v5.72.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.72.0...v5.72.1)
+
+### Bug Fixes
+
+* set additionalProperties=false on VoiceCloneUploadRequest to prevent codegen errors ([fed6f0b](https://github.com/team-telnyx/telnyx-ruby/commit/fed6f0b5d6d256f56f8a87c37e5058bdc7ebdc81))
+
 ## 5.72.0 (2026-04-11)
 
 Full Changelog: [v5.71.0...v5.72.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.71.0...v5.72.0)
