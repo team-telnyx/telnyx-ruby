@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.74.0 (2026-04-13)
+
+Full Changelog: [v5.73.0...v5.74.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.73.0...v5.74.0)
+
+### Features
+
+* [TDA-6425] Fix session analysis API spec: relaxed date_time, remove status & completed_at ([1c2276b](https://github.com/team-telnyx/telnyx-ruby/commit/1c2276b72104e961911861e73d991cdaf264fe6f))
+
 ## 5.73.0 (2026-04-13)
 
 Full Changelog: [v5.72.1...v5.73.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.72.1...v5.73.0)
