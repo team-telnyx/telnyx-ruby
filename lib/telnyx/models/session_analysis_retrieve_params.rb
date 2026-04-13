@@ -18,7 +18,9 @@ module Telnyx
       required :event_id, String
 
       # @!attribute date_time
-      #   ISO 8601 timestamp to narrow index selection for faster lookups.
+      #   ISO 8601 timestamp or date to narrow index selection for faster lookups. Accepts
+      #   full datetime (e.g., 2026-03-17T10:00:00Z) or date-only format (e.g.,
+      #   2026-03-17).
       #
       #   @return [Time, nil]
       optional :date_time, Time
@@ -42,11 +44,14 @@ module Telnyx
       optional :max_depth, Integer
 
       # @!method initialize(record_type:, event_id:, date_time: nil, expand: nil, include_children: nil, max_depth: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::SessionAnalysisRetrieveParams} for more details.
+      #
       #   @param record_type [String]
       #
       #   @param event_id [String]
       #
-      #   @param date_time [Time] ISO 8601 timestamp to narrow index selection for faster lookups.
+      #   @param date_time [Time] ISO 8601 timestamp or date to narrow index selection for faster lookups. Accepts
       #
       #   @param expand [Symbol, Telnyx::Models::SessionAnalysisRetrieveParams::Expand] Controls what data to expand on each event node.
       #
