@@ -9,12 +9,6 @@ module Telnyx
       #   @return [Telnyx::Models::SessionAnalysisRetrieveResponse::Cost]
       required :cost, -> { Telnyx::Models::SessionAnalysisRetrieveResponse::Cost }
 
-      # @!attribute created_at
-      #   When the session started.
-      #
-      #   @return [Time]
-      required :created_at, Time
-
       # @!attribute meta
       #
       #   @return [Telnyx::Models::SessionAnalysisRetrieveResponse::Meta]
@@ -31,32 +25,14 @@ module Telnyx
       #   @return [String]
       required :session_id, String
 
-      # @!attribute status
-      #   Analysis status (e.g. "completed").
-      #
-      #   @return [String]
-      required :status, String
-
-      # @!attribute completed_at
-      #   When the session completed.
-      #
-      #   @return [Time, nil]
-      optional :completed_at, Time, nil?: true
-
-      # @!method initialize(cost:, created_at:, meta:, root:, session_id:, status:, completed_at: nil)
+      # @!method initialize(cost:, meta:, root:, session_id:)
       #   @param cost [Telnyx::Models::SessionAnalysisRetrieveResponse::Cost]
-      #
-      #   @param created_at [Time] When the session started.
       #
       #   @param meta [Telnyx::Models::SessionAnalysisRetrieveResponse::Meta]
       #
       #   @param root [Telnyx::Models::EventNode]
       #
       #   @param session_id [String] Identifier for the analyzed session.
-      #
-      #   @param status [String] Analysis status (e.g. "completed").
-      #
-      #   @param completed_at [Time, nil] When the session completed.
 
       # @see Telnyx::Models::SessionAnalysisRetrieveResponse#cost
       class Cost < Telnyx::Internal::Type::BaseModel

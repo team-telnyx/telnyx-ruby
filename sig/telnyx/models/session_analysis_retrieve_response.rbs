@@ -3,18 +3,13 @@ module Telnyx
     type session_analysis_retrieve_response =
       {
         cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
-        created_at: Time,
         meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
         root: Telnyx::EventNode,
-        session_id: String,
-        status: String,
-        completed_at: Time?
+        session_id: String
       }
 
     class SessionAnalysisRetrieveResponse < Telnyx::Internal::Type::BaseModel
       attr_accessor cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost
-
-      attr_accessor created_at: Time
 
       attr_accessor meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta
 
@@ -22,28 +17,18 @@ module Telnyx
 
       attr_accessor session_id: String
 
-      attr_accessor status: String
-
-      attr_accessor completed_at: Time?
-
       def initialize: (
         cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
-        created_at: Time,
         meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
         root: Telnyx::EventNode,
-        session_id: String,
-        status: String,
-        ?completed_at: Time?
+        session_id: String
       ) -> void
 
       def to_hash: -> {
         cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
-        created_at: Time,
         meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
         root: Telnyx::EventNode,
-        session_id: String,
-        status: String,
-        completed_at: Time?
+        session_id: String
       }
 
       type cost = { currency: String, total: String }

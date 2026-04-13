@@ -92,11 +92,21 @@ module Telnyx
       # clear speech. Maximum file size: 5MB for Telnyx, 20MB for Minimax.
       sig do
         params(
-          upload_params: T.anything,
+          params:
+            T.any(
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::OrHash
+            ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::VoiceCloneCreateFromUploadResponse)
       end
-      def create_from_upload(upload_params:, request_options: {})
+      def create_from_upload(
+        # Multipart form data for creating a voice clone from a direct audio upload.
+        # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
+        params:,
+        request_options: {}
+      )
       end
 
       # Downloads the WAV audio sample that was used to create the voice clone.

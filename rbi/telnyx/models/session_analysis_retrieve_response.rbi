@@ -21,10 +21,6 @@ module Telnyx
       end
       attr_writer :cost
 
-      # When the session started.
-      sig { returns(Time) }
-      attr_accessor :created_at
-
       sig { returns(Telnyx::Models::SessionAnalysisRetrieveResponse::Meta) }
       attr_reader :meta
 
@@ -45,37 +41,20 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :session_id
 
-      # Analysis status (e.g. "completed").
-      sig { returns(String) }
-      attr_accessor :status
-
-      # When the session completed.
-      sig { returns(T.nilable(Time)) }
-      attr_accessor :completed_at
-
       sig do
         params(
           cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost::OrHash,
-          created_at: Time,
           meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta::OrHash,
           root: Telnyx::EventNode::OrHash,
-          session_id: String,
-          status: String,
-          completed_at: T.nilable(Time)
+          session_id: String
         ).returns(T.attached_class)
       end
       def self.new(
         cost:,
-        # When the session started.
-        created_at:,
         meta:,
         root:,
         # Identifier for the analyzed session.
-        session_id:,
-        # Analysis status (e.g. "completed").
-        status:,
-        # When the session completed.
-        completed_at: nil
+        session_id:
       )
       end
 
@@ -83,12 +62,9 @@ module Telnyx
         override.returns(
           {
             cost: Telnyx::Models::SessionAnalysisRetrieveResponse::Cost,
-            created_at: Time,
             meta: Telnyx::Models::SessionAnalysisRetrieveResponse::Meta,
             root: Telnyx::EventNode,
-            session_id: String,
-            status: String,
-            completed_at: T.nilable(Time)
+            session_id: String
           }
         )
       end

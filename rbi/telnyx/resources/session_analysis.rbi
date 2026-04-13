@@ -26,7 +26,9 @@ module Telnyx
         event_id,
         # Path param: The record type identifier.
         record_type:,
-        # Query param: ISO 8601 timestamp to narrow index selection for faster lookups.
+        # Query param: ISO 8601 timestamp or date to narrow index selection for faster
+        # lookups. Accepts full datetime (e.g., 2026-03-17T10:00:00Z) or date-only format
+        # (e.g., 2026-03-17).
         date_time: nil,
         # Query param: Controls what data to expand on each event node.
         expand: nil,

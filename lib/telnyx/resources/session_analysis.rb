@@ -8,6 +8,9 @@ module Telnyx
       # @return [Telnyx::Resources::SessionAnalysis::Metadata]
       attr_reader :metadata
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::SessionAnalysisRetrieveParams} for more details.
+      #
       # Retrieves a full session analysis tree for a given event, including costs, child
       # events, and product linkages.
       #
@@ -17,7 +20,7 @@ module Telnyx
       #
       # @param record_type [String] Path param: The record type identifier.
       #
-      # @param date_time [Time] Query param: ISO 8601 timestamp to narrow index selection for faster lookups.
+      # @param date_time [Time] Query param: ISO 8601 timestamp or date to narrow index selection for faster loo
       #
       # @param expand [Symbol, Telnyx::Models::SessionAnalysisRetrieveParams::Expand] Query param: Controls what data to expand on each event node.
       #
