@@ -24,7 +24,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "telnyx", "~> 5.72.1"
+gem "telnyx", "~> 5.73.0"
 ```
 
 <!-- x-release-please-end -->
