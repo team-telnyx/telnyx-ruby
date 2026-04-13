@@ -90,9 +90,17 @@ module Telnyx
           transcription: T::Boolean,
           transcription_config:
             Telnyx::Calls::TranscriptionStartRequest::OrHash,
+          webhook_retries_policies:
+            T::Hash[
+              Symbol,
+              Telnyx::CallDialParams::WebhookRetriesPolicy::OrHash
+            ],
           webhook_url: String,
           webhook_url_method:
             Telnyx::CallDialParams::WebhookURLMethod::OrSymbol,
+          webhook_urls: T::Hash[Symbol, String],
+          webhook_urls_method:
+            Telnyx::CallDialParams::WebhookURLsMethod::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::CallDialResponse)
       end
@@ -275,11 +283,22 @@ module Telnyx
         # Enable transcription upon call answer. The default value is false.
         transcription: nil,
         transcription_config: nil,
+        # A map of event types to retry policies. Each retry policy contains an array of
+        # `retries_ms` specifying the delays between retry attempts in milliseconds.
+        # Maximum 5 retries, total delay cannot exceed 60 seconds.
+        webhook_retries_policies: nil,
         # Use this field to override the URL for which Telnyx will send subsequent
         # webhooks to for this call.
         webhook_url: nil,
         # HTTP request type used for `webhook_url`.
         webhook_url_method: nil,
+        # A map of event types to webhook URLs. When an event of the specified type
+        # occurs, the webhook URL associated with that event type will be called instead
+        # of the default webhook URL. Events not mapped here will use the default webhook
+        # URL.
+        webhook_urls: nil,
+        # HTTP request method to invoke `webhook_urls`.
+        webhook_urls_method: nil,
         request_options: {}
       )
       end
