@@ -20,7 +20,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :event_id
 
-      # ISO 8601 timestamp to narrow index selection for faster lookups.
+      # ISO 8601 timestamp or date to narrow index selection for faster lookups. Accepts
+      # full datetime (e.g., 2026-03-17T10:00:00Z) or date-only format (e.g.,
+      # 2026-03-17).
       sig { returns(T.nilable(Time)) }
       attr_reader :date_time
 
@@ -70,7 +72,9 @@ module Telnyx
       def self.new(
         record_type:,
         event_id:,
-        # ISO 8601 timestamp to narrow index selection for faster lookups.
+        # ISO 8601 timestamp or date to narrow index selection for faster lookups. Accepts
+        # full datetime (e.g., 2026-03-17T10:00:00Z) or date-only format (e.g.,
+        # 2026-03-17).
         date_time: nil,
         # Controls what data to expand on each event node.
         expand: nil,

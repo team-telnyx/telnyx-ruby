@@ -113,13 +113,17 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::VoiceCloneCreateFromUploadParams} for more details.
+      #
       # Creates a new voice clone by uploading an audio file directly. Supported
       # formats: WAV, MP3, FLAC, OGG, M4A. For best results, provide 5–10 seconds of
       # clear speech. Maximum file size: 5MB for Telnyx, 20MB for Minimax.
       #
-      # @overload create_from_upload(upload_params:, request_options: {})
+      # @overload create_from_upload(params:, request_options: {})
       #
-      # @param upload_params [Object]
+      # @param params [Telnyx::Models::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::Params::MinimaxClone] Multipart form data for creating a voice clone from a direct audio upload. Maxim
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::VoiceCloneCreateFromUploadResponse]
@@ -131,7 +135,7 @@ module Telnyx
           method: :post,
           path: "voice_clones/from_upload",
           headers: {"content-type" => "multipart/form-data"},
-          body: parsed[:upload_params],
+          body: parsed[:params],
           model: Telnyx::Models::VoiceCloneCreateFromUploadResponse,
           options: options
         )
