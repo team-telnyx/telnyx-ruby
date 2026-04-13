@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.73.0 (2026-04-13)
+
+Full Changelog: [v5.72.1...v5.73.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.72.1...v5.73.0)
+
+### Features
+
+* Add webhook_urls, webhook_urls_method, webhook_retries_policies to Dial endpoint ([c513a2b](https://github.com/team-telnyx/telnyx-ruby/commit/c513a2bac4f4a731fb819f1aa18bce276fa12dec))
+
 ## 5.72.1 (2026-04-12)
 
 Full Changelog: [v5.72.0...v5.72.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.72.0...v5.72.1)

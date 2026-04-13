@@ -58,8 +58,11 @@ module Telnyx
         ?timeout_secs: Integer,
         ?transcription: bool,
         ?transcription_config: Telnyx::Calls::TranscriptionStartRequest,
+        ?webhook_retries_policies: ::Hash[Symbol, Telnyx::CallDialParams::WebhookRetriesPolicy],
         ?webhook_url: String,
         ?webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method,
+        ?webhook_urls: ::Hash[Symbol, String],
+        ?webhook_urls_method: Telnyx::Models::CallDialParams::webhook_urls_method,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::CallDialResponse
 
