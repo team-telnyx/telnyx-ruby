@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.75.0 (2026-04-14)
+
+Full Changelog: [v5.74.0...v5.75.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.74.0...v5.75.0)
+
+### Features
+
+* TELAPPS-5712: Add deepfake detection to call-control API spec ([863bcf0](https://github.com/team-telnyx/telnyx-ruby/commit/863bcf0aad7fcd68104bf602598c32d267c61be5))
+
 ## 5.74.0 (2026-04-13)
 
 Full Changelog: [v5.73.0...v5.74.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.73.0...v5.74.0)
