@@ -16,6 +16,7 @@ module Telnyx
         command_id: String,
         conference_config: Telnyx::CallDialParams::ConferenceConfig,
         custom_headers: ::Array[Telnyx::CustomSipHeader],
+        deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         dialogflow_config: Telnyx::DialogflowConfig,
         enable_dialogflow: bool,
         from_display_name: String,
@@ -127,6 +128,12 @@ module Telnyx
       def custom_headers=: (
         ::Array[Telnyx::CustomSipHeader]
       ) -> ::Array[Telnyx::CustomSipHeader]
+
+      attr_reader deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection?
+
+      def deepfake_detection=: (
+        Telnyx::CallDialParams::DeepfakeDetection
+      ) -> Telnyx::CallDialParams::DeepfakeDetection
 
       attr_reader dialogflow_config: Telnyx::DialogflowConfig?
 
@@ -369,6 +376,7 @@ module Telnyx
         ?command_id: String,
         ?conference_config: Telnyx::CallDialParams::ConferenceConfig,
         ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+        ?deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         ?dialogflow_config: Telnyx::DialogflowConfig,
         ?enable_dialogflow: bool,
         ?from_display_name: String,
@@ -432,6 +440,7 @@ module Telnyx
         command_id: String,
         conference_config: Telnyx::CallDialParams::ConferenceConfig,
         custom_headers: ::Array[Telnyx::CustomSipHeader],
+        deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         dialogflow_config: Telnyx::DialogflowConfig,
         enable_dialogflow: bool,
         from_display_name: String,
@@ -731,6 +740,33 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::CallDialParams::ConferenceConfig::supervisor_role]
         end
+      end
+
+      type deepfake_detection =
+        { enabled: bool, rtp_timeout: Integer, timeout: Integer }
+
+      class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+        attr_accessor enabled: bool
+
+        attr_reader rtp_timeout: Integer?
+
+        def rtp_timeout=: (Integer) -> Integer
+
+        attr_reader timeout: Integer?
+
+        def timeout=: (Integer) -> Integer
+
+        def initialize: (
+          enabled: bool,
+          ?rtp_timeout: Integer,
+          ?timeout: Integer
+        ) -> void
+
+        def to_hash: -> {
+          enabled: bool,
+          rtp_timeout: Integer,
+          timeout: Integer
+        }
       end
 
       type media_encryption = :disabled | :SRTP | :DTLS

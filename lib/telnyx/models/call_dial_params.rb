@@ -122,6 +122,15 @@ module Telnyx
       #   @return [Array<Telnyx::Models::CustomSipHeader>, nil]
       optional :custom_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CustomSipHeader] }
 
+      # @!attribute deepfake_detection
+      #   Enables deepfake detection on the call. When enabled, audio from the remote
+      #   party is streamed to a detection service that analyzes whether the voice is
+      #   AI-generated. Results are delivered via the `call.deepfake_detection.result`
+      #   webhook.
+      #
+      #   @return [Telnyx::Models::CallDialParams::DeepfakeDetection, nil]
+      optional :deepfake_detection, -> { Telnyx::CallDialParams::DeepfakeDetection }
+
       # @!attribute dialogflow_config
       #
       #   @return [Telnyx::Models::DialogflowConfig, nil]
@@ -439,7 +448,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallDialParams::WebhookURLsMethod, nil]
       optional :webhook_urls_method, enum: -> { Telnyx::CallDialParams::WebhookURLsMethod }
 
-      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, assistant: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, prevent_double_bridge: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, assistant: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, custom_headers: nil, deepfake_detection: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, prevent_double_bridge: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallDialParams} for more details.
       #
@@ -470,6 +479,8 @@ module Telnyx
       #   @param conference_config [Telnyx::Models::CallDialParams::ConferenceConfig] Optional configuration parameters to dial new participant into a conference.
       #
       #   @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP INVITE.
+      #
+      #   @param deepfake_detection [Telnyx::Models::CallDialParams::DeepfakeDetection] Enables deepfake detection on the call. When enabled, audio from the remote part
       #
       #   @param dialogflow_config [Telnyx::Models::DialogflowConfig]
       #
@@ -884,6 +895,42 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+        # @!attribute enabled
+        #   Whether deepfake detection is enabled.
+        #
+        #   @return [Boolean]
+        required :enabled, Telnyx::Internal::Type::Boolean
+
+        # @!attribute rtp_timeout
+        #   Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+        #   received within this window, detection stops with an error.
+        #
+        #   @return [Integer, nil]
+        optional :rtp_timeout, Integer
+
+        # @!attribute timeout
+        #   Maximum time in seconds to wait for a detection result before timing out.
+        #
+        #   @return [Integer, nil]
+        optional :timeout, Integer
+
+        # @!method initialize(enabled:, rtp_timeout: nil, timeout: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::CallDialParams::DeepfakeDetection} for more details.
+        #
+        #   Enables deepfake detection on the call. When enabled, audio from the remote
+        #   party is streamed to a detection service that analyzes whether the voice is
+        #   AI-generated. Results are delivered via the `call.deepfake_detection.result`
+        #   webhook.
+        #
+        #   @param enabled [Boolean] Whether deepfake detection is enabled.
+        #
+        #   @param rtp_timeout [Integer] Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+        #
+        #   @param timeout [Integer] Maximum time in seconds to wait for a detection result before timing out.
       end
 
       # Defines whether media should be encrypted on the call.
