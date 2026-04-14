@@ -9,6 +9,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           custom_headers: ::Array[Telnyx::CustomSipHeader],
+          deepfake_detection: Telnyx::Calls::ActionAnswerParams::DeepfakeDetection,
           preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
           record: Telnyx::Models::Calls::ActionAnswerParams::record,
           record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,
@@ -66,6 +67,12 @@ module Telnyx
         def custom_headers=: (
           ::Array[Telnyx::CustomSipHeader]
         ) -> ::Array[Telnyx::CustomSipHeader]
+
+        attr_reader deepfake_detection: Telnyx::Calls::ActionAnswerParams::DeepfakeDetection?
+
+        def deepfake_detection=: (
+          Telnyx::Calls::ActionAnswerParams::DeepfakeDetection
+        ) -> Telnyx::Calls::ActionAnswerParams::DeepfakeDetection
 
         attr_reader preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs?
 
@@ -208,6 +215,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?deepfake_detection: Telnyx::Calls::ActionAnswerParams::DeepfakeDetection,
           ?preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
           ?record: Telnyx::Models::Calls::ActionAnswerParams::record,
           ?record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,
@@ -243,6 +251,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           custom_headers: ::Array[Telnyx::CustomSipHeader],
+          deepfake_detection: Telnyx::Calls::ActionAnswerParams::DeepfakeDetection,
           preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
           record: Telnyx::Models::Calls::ActionAnswerParams::record,
           record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,
@@ -270,6 +279,33 @@ module Telnyx
           webhook_urls_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_urls_method,
           request_options: Telnyx::RequestOptions
         }
+
+        type deepfake_detection =
+          { enabled: bool, rtp_timeout: Integer, timeout: Integer }
+
+        class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+          attr_accessor enabled: bool
+
+          attr_reader rtp_timeout: Integer?
+
+          def rtp_timeout=: (Integer) -> Integer
+
+          attr_reader timeout: Integer?
+
+          def timeout=: (Integer) -> Integer
+
+          def initialize: (
+            enabled: bool,
+            ?rtp_timeout: Integer,
+            ?timeout: Integer
+          ) -> void
+
+          def to_hash: -> {
+            enabled: bool,
+            rtp_timeout: Integer,
+            timeout: Integer
+          }
+        end
 
         type preferred_codecs = :"G722,PCMU,PCMA,G729,OPUS,VP8,H264"
 

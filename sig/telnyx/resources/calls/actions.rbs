@@ -17,6 +17,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?deepfake_detection: Telnyx::Calls::ActionAnswerParams::DeepfakeDetection,
           ?preferred_codecs: Telnyx::Models::Calls::ActionAnswerParams::preferred_codecs,
           ?record: Telnyx::Models::Calls::ActionAnswerParams::record,
           ?record_channels: Telnyx::Models::Calls::ActionAnswerParams::record_channels,

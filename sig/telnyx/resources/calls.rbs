@@ -18,6 +18,7 @@ module Telnyx
         ?command_id: String,
         ?conference_config: Telnyx::CallDialParams::ConferenceConfig,
         ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+        ?deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         ?dialogflow_config: Telnyx::DialogflowConfig,
         ?enable_dialogflow: bool,
         ?from_display_name: String,

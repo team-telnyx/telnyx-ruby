@@ -16,6 +16,8 @@ module Telnyx
             Telnyx::CallConversationEndedWebhookEvent,
             Telnyx::CallConversationInsightsGeneratedWebhookEvent,
             Telnyx::CallCostWebhookEvent,
+            Telnyx::CallDeepfakeDetectionErrorWebhookEvent,
+            Telnyx::CallDeepfakeDetectionResultWebhookEvent,
             Telnyx::CallDtmfReceivedWebhookEvent,
             Telnyx::CallEnqueuedWebhookEvent,
             Telnyx::CallForkStartedWebhookEvent,

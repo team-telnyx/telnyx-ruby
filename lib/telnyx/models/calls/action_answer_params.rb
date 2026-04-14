@@ -48,6 +48,15 @@ module Telnyx
         #   @return [Array<Telnyx::Models::CustomSipHeader>, nil]
         optional :custom_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CustomSipHeader] }
 
+        # @!attribute deepfake_detection
+        #   Enables deepfake detection on the call. When enabled, audio from the remote
+        #   party is streamed to a detection service that analyzes whether the voice is
+        #   AI-generated. Results are delivered via the `call.deepfake_detection.result`
+        #   webhook.
+        #
+        #   @return [Telnyx::Models::Calls::ActionAnswerParams::DeepfakeDetection, nil]
+        optional :deepfake_detection, -> { Telnyx::Calls::ActionAnswerParams::DeepfakeDetection }
+
         # @!attribute preferred_codecs
         #   The list of comma-separated codecs in a preferred order for the forked media to
         #   be received.
@@ -218,7 +227,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLsMethod, nil]
         optional :webhook_urls_method, enum: -> { Telnyx::Calls::ActionAnswerParams::WebhookURLsMethod }
 
-        # @!method initialize(call_control_id:, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @!method initialize(call_control_id:, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, deepfake_detection: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionAnswerParams} for more details.
         #
@@ -233,6 +242,8 @@ module Telnyx
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         #   @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP INVITE response.
+        #
+        #   @param deepfake_detection [Telnyx::Models::Calls::ActionAnswerParams::DeepfakeDetection] Enables deepfake detection on the call. When enabled, audio from the remote part
         #
         #   @param preferred_codecs [Symbol, Telnyx::Models::Calls::ActionAnswerParams::PreferredCodecs] The list of comma-separated codecs in a preferred order for the forked media to
         #
@@ -286,6 +297,42 @@ module Telnyx
         #   @param webhook_urls_method [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLsMethod] HTTP request method to invoke `webhook_urls`.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+        class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+          # @!attribute enabled
+          #   Whether deepfake detection is enabled.
+          #
+          #   @return [Boolean]
+          required :enabled, Telnyx::Internal::Type::Boolean
+
+          # @!attribute rtp_timeout
+          #   Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+          #   received within this window, detection stops with an error.
+          #
+          #   @return [Integer, nil]
+          optional :rtp_timeout, Integer
+
+          # @!attribute timeout
+          #   Maximum time in seconds to wait for a detection result before timing out.
+          #
+          #   @return [Integer, nil]
+          optional :timeout, Integer
+
+          # @!method initialize(enabled:, rtp_timeout: nil, timeout: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::Calls::ActionAnswerParams::DeepfakeDetection} for more details.
+          #
+          #   Enables deepfake detection on the call. When enabled, audio from the remote
+          #   party is streamed to a detection service that analyzes whether the voice is
+          #   AI-generated. Results are delivered via the `call.deepfake_detection.result`
+          #   webhook.
+          #
+          #   @param enabled [Boolean] Whether deepfake detection is enabled.
+          #
+          #   @param rtp_timeout [Integer] Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+          #
+          #   @param timeout [Integer] Maximum time in seconds to wait for a detection result before timing out.
+        end
 
         # The list of comma-separated codecs in a preferred order for the forked media to
         # be received.

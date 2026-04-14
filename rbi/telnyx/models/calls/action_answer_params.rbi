@@ -57,6 +57,25 @@ module Telnyx
         end
         attr_writer :custom_headers
 
+        # Enables deepfake detection on the call. When enabled, audio from the remote
+        # party is streamed to a detection service that analyzes whether the voice is
+        # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+        # webhook.
+        sig do
+          returns(
+            T.nilable(Telnyx::Calls::ActionAnswerParams::DeepfakeDetection)
+          )
+        end
+        attr_reader :deepfake_detection
+
+        sig do
+          params(
+            deepfake_detection:
+              Telnyx::Calls::ActionAnswerParams::DeepfakeDetection::OrHash
+          ).void
+        end
+        attr_writer :deepfake_detection
+
         # The list of comma-separated codecs in a preferred order for the forked media to
         # be received.
         sig do
@@ -386,6 +405,8 @@ module Telnyx
             client_state: String,
             command_id: String,
             custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
+            deepfake_detection:
+              Telnyx::Calls::ActionAnswerParams::DeepfakeDetection::OrHash,
             preferred_codecs:
               Telnyx::Calls::ActionAnswerParams::PreferredCodecs::OrSymbol,
             record: Telnyx::Calls::ActionAnswerParams::Record::OrSymbol,
@@ -447,6 +468,11 @@ module Telnyx
           command_id: nil,
           # Custom headers to be added to the SIP INVITE response.
           custom_headers: nil,
+          # Enables deepfake detection on the call. When enabled, audio from the remote
+          # party is streamed to a detection service that analyzes whether the voice is
+          # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+          # webhook.
+          deepfake_detection: nil,
           # The list of comma-separated codecs in a preferred order for the forked media to
           # be received.
           preferred_codecs: nil,
@@ -529,6 +555,8 @@ module Telnyx
               client_state: String,
               command_id: String,
               custom_headers: T::Array[Telnyx::CustomSipHeader],
+              deepfake_detection:
+                Telnyx::Calls::ActionAnswerParams::DeepfakeDetection,
               preferred_codecs:
                 Telnyx::Calls::ActionAnswerParams::PreferredCodecs::OrSymbol,
               record: Telnyx::Calls::ActionAnswerParams::Record::OrSymbol,
@@ -574,6 +602,65 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Calls::ActionAnswerParams::DeepfakeDetection,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Whether deepfake detection is enabled.
+          sig { returns(T::Boolean) }
+          attr_accessor :enabled
+
+          # Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+          # received within this window, detection stops with an error.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :rtp_timeout
+
+          sig { params(rtp_timeout: Integer).void }
+          attr_writer :rtp_timeout
+
+          # Maximum time in seconds to wait for a detection result before timing out.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :timeout
+
+          sig { params(timeout: Integer).void }
+          attr_writer :timeout
+
+          # Enables deepfake detection on the call. When enabled, audio from the remote
+          # party is streamed to a detection service that analyzes whether the voice is
+          # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+          # webhook.
+          sig do
+            params(
+              enabled: T::Boolean,
+              rtp_timeout: Integer,
+              timeout: Integer
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Whether deepfake detection is enabled.
+            enabled:,
+            # Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+            # received within this window, detection stops with an error.
+            rtp_timeout: nil,
+            # Maximum time in seconds to wait for a detection result before timing out.
+            timeout: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { enabled: T::Boolean, rtp_timeout: Integer, timeout: Integer }
+            )
+          end
+          def to_hash
+          end
         end
 
         # The list of comma-separated codecs in a preferred order for the forked media to
