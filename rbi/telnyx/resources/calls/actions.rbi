@@ -45,6 +45,9 @@ module Telnyx
         # **Expected Webhooks:**
         #
         # - `call.answered`
+        # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
+        # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
+        #   error occurred
         # - `streaming.started`, `streaming.stopped` or `streaming.failed` if `stream_url`
         #   was set
         #
@@ -58,6 +61,8 @@ module Telnyx
             client_state: String,
             command_id: String,
             custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
+            deepfake_detection:
+              Telnyx::Calls::ActionAnswerParams::DeepfakeDetection::OrHash,
             preferred_codecs:
               Telnyx::Calls::ActionAnswerParams::PreferredCodecs::OrSymbol,
             record: Telnyx::Calls::ActionAnswerParams::Record::OrSymbol,
@@ -120,6 +125,11 @@ module Telnyx
           command_id: nil,
           # Custom headers to be added to the SIP INVITE response.
           custom_headers: nil,
+          # Enables deepfake detection on the call. When enabled, audio from the remote
+          # party is streamed to a detection service that analyzes whether the voice is
+          # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+          # webhook.
+          deepfake_detection: nil,
           # The list of comma-separated codecs in a preferred order for the forked media to
           # be received.
           preferred_codecs: nil,

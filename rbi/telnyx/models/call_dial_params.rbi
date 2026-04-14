@@ -154,6 +154,20 @@ module Telnyx
       end
       attr_writer :custom_headers
 
+      # Enables deepfake detection on the call. When enabled, audio from the remote
+      # party is streamed to a detection service that analyzes whether the voice is
+      # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+      # webhook.
+      sig { returns(T.nilable(Telnyx::CallDialParams::DeepfakeDetection)) }
+      attr_reader :deepfake_detection
+
+      sig do
+        params(
+          deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection::OrHash
+        ).void
+      end
+      attr_writer :deepfake_detection
+
       sig { returns(T.nilable(Telnyx::DialogflowConfig)) }
       attr_reader :dialogflow_config
 
@@ -627,6 +641,7 @@ module Telnyx
           command_id: String,
           conference_config: Telnyx::CallDialParams::ConferenceConfig::OrHash,
           custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
+          deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection::OrHash,
           dialogflow_config: Telnyx::DialogflowConfig::OrHash,
           enable_dialogflow: T::Boolean,
           from_display_name: String,
@@ -745,6 +760,11 @@ module Telnyx
         conference_config: nil,
         # Custom headers to be added to the SIP INVITE.
         custom_headers: nil,
+        # Enables deepfake detection on the call. When enabled, audio from the remote
+        # party is streamed to a detection service that analyzes whether the voice is
+        # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+        # webhook.
+        deepfake_detection: nil,
         dialogflow_config: nil,
         # Enables Dialogflow for the current call. The default value is false.
         enable_dialogflow: nil,
@@ -904,6 +924,7 @@ module Telnyx
             command_id: String,
             conference_config: Telnyx::CallDialParams::ConferenceConfig,
             custom_headers: T::Array[Telnyx::CustomSipHeader],
+            deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
             dialogflow_config: Telnyx::DialogflowConfig,
             enable_dialogflow: T::Boolean,
             from_display_name: String,
@@ -1548,6 +1569,65 @@ module Telnyx
           end
           def self.values
           end
+        end
+      end
+
+      class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::CallDialParams::DeepfakeDetection,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # Whether deepfake detection is enabled.
+        sig { returns(T::Boolean) }
+        attr_accessor :enabled
+
+        # Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+        # received within this window, detection stops with an error.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :rtp_timeout
+
+        sig { params(rtp_timeout: Integer).void }
+        attr_writer :rtp_timeout
+
+        # Maximum time in seconds to wait for a detection result before timing out.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :timeout
+
+        sig { params(timeout: Integer).void }
+        attr_writer :timeout
+
+        # Enables deepfake detection on the call. When enabled, audio from the remote
+        # party is streamed to a detection service that analyzes whether the voice is
+        # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+        # webhook.
+        sig do
+          params(
+            enabled: T::Boolean,
+            rtp_timeout: Integer,
+            timeout: Integer
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Whether deepfake detection is enabled.
+          enabled:,
+          # Maximum time in seconds to wait for RTP audio before timing out. If no audio is
+          # received within this window, detection stops with an error.
+          rtp_timeout: nil,
+          # Maximum time in seconds to wait for a detection result before timing out.
+          timeout: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            { enabled: T::Boolean, rtp_timeout: Integer, timeout: Integer }
+          )
+        end
+        def to_hash
         end
       end
 

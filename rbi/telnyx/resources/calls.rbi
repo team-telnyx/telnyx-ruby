@@ -22,6 +22,9 @@ module Telnyx
       #   `answering_machine_detection=premium` was requested
       # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
       #   was requested and a beep was detected
+      # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
+      # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
+      #   error occurred
       # - `streaming.started`, `streaming.stopped` or `streaming.failed` if `stream_url`
       #   was set
       #
@@ -45,6 +48,7 @@ module Telnyx
           command_id: String,
           conference_config: Telnyx::CallDialParams::ConferenceConfig::OrHash,
           custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
+          deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection::OrHash,
           dialogflow_config: Telnyx::DialogflowConfig::OrHash,
           enable_dialogflow: T::Boolean,
           from_display_name: String,
@@ -163,6 +167,11 @@ module Telnyx
         conference_config: nil,
         # Custom headers to be added to the SIP INVITE.
         custom_headers: nil,
+        # Enables deepfake detection on the call. When enabled, audio from the remote
+        # party is streamed to a detection service that analyzes whether the voice is
+        # AI-generated. Results are delivered via the `call.deepfake_detection.result`
+        # webhook.
+        deepfake_detection: nil,
         dialogflow_config: nil,
         # Enables Dialogflow for the current call. The default value is false.
         enable_dialogflow: nil,

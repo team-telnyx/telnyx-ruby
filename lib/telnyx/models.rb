@@ -213,6 +213,10 @@ module Telnyx
 
   CallCostWebhookEvent = Telnyx::Models::CallCostWebhookEvent
 
+  CallDeepfakeDetectionErrorWebhookEvent = Telnyx::Models::CallDeepfakeDetectionErrorWebhookEvent
+
+  CallDeepfakeDetectionResultWebhookEvent = Telnyx::Models::CallDeepfakeDetectionResultWebhookEvent
+
   CallDialParams = Telnyx::Models::CallDialParams
 
   CallDtmfReceived = Telnyx::Models::CallDtmfReceived

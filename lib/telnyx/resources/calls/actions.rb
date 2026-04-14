@@ -45,13 +45,16 @@ module Telnyx
         # **Expected Webhooks:**
         #
         # - `call.answered`
+        # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
+        # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
+        #   error occurred
         # - `streaming.started`, `streaming.stopped` or `streaming.failed` if `stream_url`
         #   was set
         #
         # When the `record` parameter is set to `record-from-answer`, the response will
         # include a `recording_id` field.
         #
-        # @overload answer(call_control_id, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @overload answer(call_control_id, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, deepfake_detection: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -64,6 +67,8 @@ module Telnyx
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         # @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP INVITE response.
+        #
+        # @param deepfake_detection [Telnyx::Models::Calls::ActionAnswerParams::DeepfakeDetection] Enables deepfake detection on the call. When enabled, audio from the remote part
         #
         # @param preferred_codecs [Symbol, Telnyx::Models::Calls::ActionAnswerParams::PreferredCodecs] The list of comma-separated codecs in a preferred order for the forked media to
         #
