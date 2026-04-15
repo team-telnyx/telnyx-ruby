@@ -177,7 +177,9 @@ module Telnyx
 
         # Enabled country destinations to send verification codes. The elements in the
         # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-        # destinations will be allowed.
+        # destinations will be allowed. **Conditionally required:** this field must be
+        # provided when your organization is configured to require explicit whitelisted
+        # destinations; otherwise it is optional.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :whitelisted_destinations
 
@@ -208,7 +210,9 @@ module Telnyx
           messaging_template_id: nil,
           # Enabled country destinations to send verification codes. The elements in the
           # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-          # destinations will be allowed.
+          # destinations will be allowed. **Conditionally required:** this field must be
+          # provided when your organization is configured to require explicit whitelisted
+          # destinations; otherwise it is optional.
           whitelisted_destinations: nil
         )
         end
@@ -326,7 +330,9 @@ module Telnyx
 
         # Enabled country destinations to send verification codes. The elements in the
         # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-        # destinations will be allowed.
+        # destinations will be allowed. **Conditionally required:** this field must be
+        # provided when your organization is configured to require explicit whitelisted
+        # destinations; otherwise it is optional.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :whitelisted_destinations
 
@@ -360,7 +366,9 @@ module Telnyx
           sms_fallback: nil,
           # Enabled country destinations to send verification codes. The elements in the
           # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-          # destinations will be allowed.
+          # destinations will be allowed. **Conditionally required:** this field must be
+          # provided when your organization is configured to require explicit whitelisted
+          # destinations; otherwise it is optional.
           whitelisted_destinations: nil
         )
         end
@@ -449,7 +457,9 @@ module Telnyx
 
         # Enabled country destinations to send verification codes. The elements in the
         # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-        # destinations will be allowed.
+        # destinations will be allowed. **Conditionally required:** this field must be
+        # provided when your organization is configured to require explicit whitelisted
+        # destinations; otherwise it is optional.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :whitelisted_destinations
 
@@ -484,7 +494,9 @@ module Telnyx
           messaging_template_id: nil,
           # Enabled country destinations to send verification codes. The elements in the
           # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-          # destinations will be allowed.
+          # destinations will be allowed. **Conditionally required:** this field must be
+          # provided when your organization is configured to require explicit whitelisted
+          # destinations; otherwise it is optional.
           whitelisted_destinations: nil
         )
         end
