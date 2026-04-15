@@ -132,7 +132,7 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT: :"current_billing_period_consumed_data.amount"
-        MINUS_CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT: :"-current_billing_period_consumed_data.amount"
+        DESC_CURRENT_BILLING_PERIOD_CONSUMED_DATA_AMOUNT: :"-current_billing_period_consumed_data.amount"
 
         def self?.values: -> ::Array[Telnyx::Models::SimCardListParams::sort]
       end

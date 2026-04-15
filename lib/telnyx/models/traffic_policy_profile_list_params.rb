@@ -72,9 +72,9 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         SERVICE = :service
-        MINUS_SERVICE = :"-service"
+        DESC_SERVICE = :"-service"
         TYPE = :type
-        MINUS_TYPE = :"-type"
+        DESC_TYPE = :"-type"
 
         # @!method self.values
         #   @return [Array<Symbol>]
