@@ -123,7 +123,9 @@ module Telnyx
         # @!attribute whitelisted_destinations
         #   Enabled country destinations to send verification codes. The elements in the
         #   list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-        #   destinations will be allowed.
+        #   destinations will be allowed. **Conditionally required:** this field must be
+        #   provided when your organization is configured to require explicit whitelisted
+        #   destinations; otherwise it is optional.
         #
         #   @return [Array<String>, nil]
         optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
@@ -209,7 +211,9 @@ module Telnyx
         # @!attribute whitelisted_destinations
         #   Enabled country destinations to send verification codes. The elements in the
         #   list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-        #   destinations will be allowed.
+        #   destinations will be allowed. **Conditionally required:** this field must be
+        #   provided when your organization is configured to require explicit whitelisted
+        #   destinations; otherwise it is optional.
         #
         #   @return [Array<String>, nil]
         optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
@@ -283,7 +287,9 @@ module Telnyx
         # @!attribute whitelisted_destinations
         #   Enabled country destinations to send verification codes. The elements in the
         #   list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-        #   destinations will be allowed.
+        #   destinations will be allowed. **Conditionally required:** this field must be
+        #   provided when your organization is configured to require explicit whitelisted
+        #   destinations; otherwise it is optional.
         #
         #   @return [Array<String>, nil]
         optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
