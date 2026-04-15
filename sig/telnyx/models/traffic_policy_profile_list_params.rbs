@@ -74,9 +74,9 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         SERVICE: :service
-        MINUS_SERVICE: :"-service"
+        DESC_SERVICE: :"-service"
         TYPE: :type
-        MINUS_TYPE: :"-type"
+        DESC_TYPE: :"-type"
 
         def self?.values: -> ::Array[Telnyx::Models::TrafficPolicyProfileListParams::sort]
       end

@@ -165,7 +165,7 @@ module Telnyx
             :service,
             Telnyx::TrafficPolicyProfileListParams::Sort::TaggedSymbol
           )
-        MINUS_SERVICE =
+        DESC_SERVICE =
           T.let(
             :"-service",
             Telnyx::TrafficPolicyProfileListParams::Sort::TaggedSymbol
@@ -175,7 +175,7 @@ module Telnyx
             :type,
             Telnyx::TrafficPolicyProfileListParams::Sort::TaggedSymbol
           )
-        MINUS_TYPE =
+        DESC_TYPE =
           T.let(
             :"-type",
             Telnyx::TrafficPolicyProfileListParams::Sort::TaggedSymbol

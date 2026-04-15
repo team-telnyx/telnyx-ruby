@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.76.0 (2026-04-15)
+
+Full Changelog: [v5.75.0...v5.76.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.75.0...v5.76.0)
+
+### Features
+
+* MSG-6868: document whitelisted_destinations as conditionally required ([9eaa65e](https://github.com/team-telnyx/telnyx-ruby/commit/9eaa65e4b48ee96132d94227b4cae9519c82b8dc))
+
 ## 5.75.0 (2026-04-14)
 
 Full Changelog: [v5.74.0...v5.75.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.74.0...v5.75.0)
