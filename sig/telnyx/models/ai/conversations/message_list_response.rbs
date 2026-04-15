@@ -4,128 +4,106 @@ module Telnyx
       module Conversations
         type message_list_response =
           {
-            data: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data],
-            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+            role: Telnyx::Models::AI::Conversations::MessageListResponse::role,
+            text: String,
+            created_at: Time,
+            sent_at: Time,
+            tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall]
           }
 
         class MessageListResponse < Telnyx::Internal::Type::BaseModel
-          attr_accessor data: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data]
+          attr_accessor role: Telnyx::Models::AI::Conversations::MessageListResponse::role
 
-          attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          attr_accessor text: String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader sent_at: Time?
+
+          def sent_at=: (Time) -> Time
+
+          attr_reader tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall]?
+
+          def tool_calls=: (
+            ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall]
+          ) -> ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall]
 
           def initialize: (
-            data: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data],
-            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+            role: Telnyx::Models::AI::Conversations::MessageListResponse::role,
+            text: String,
+            ?created_at: Time,
+            ?sent_at: Time,
+            ?tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall]
           ) -> void
 
           def to_hash: -> {
-            data: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data],
-            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+            role: Telnyx::Models::AI::Conversations::MessageListResponse::role,
+            text: String,
+            created_at: Time,
+            sent_at: Time,
+            tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall]
           }
 
-          type data =
+          type role = :user | :assistant | :tool
+
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            USER: :user
+            ASSISTANT: :assistant
+            TOOL: :tool
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::role]
+          end
+
+          type tool_call =
             {
-              role: Telnyx::Models::AI::Conversations::MessageListResponse::Data::role,
-              text: String,
-              created_at: Time,
-              sent_at: Time,
-              tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall]
+              id: String,
+              function: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::Function,
+              type: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::type_
             }
 
-          class Data < Telnyx::Internal::Type::BaseModel
-            attr_accessor role: Telnyx::Models::AI::Conversations::MessageListResponse::Data::role
+          class ToolCall < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
 
-            attr_accessor text: String
+            attr_accessor function: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::Function
 
-            attr_reader created_at: Time?
-
-            def created_at=: (Time) -> Time
-
-            attr_reader sent_at: Time?
-
-            def sent_at=: (Time) -> Time
-
-            attr_reader tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall]?
-
-            def tool_calls=: (
-              ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall]
-            ) -> ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall]
+            attr_accessor type: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::type_
 
             def initialize: (
-              role: Telnyx::Models::AI::Conversations::MessageListResponse::Data::role,
-              text: String,
-              ?created_at: Time,
-              ?sent_at: Time,
-              ?tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall]
+              id: String,
+              function: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::Function,
+              type: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::type_
             ) -> void
 
             def to_hash: -> {
-              role: Telnyx::Models::AI::Conversations::MessageListResponse::Data::role,
-              text: String,
-              created_at: Time,
-              sent_at: Time,
-              tool_calls: ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall]
+              id: String,
+              function: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::Function,
+              type: Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::type_
             }
 
-            type role = :user | :assistant | :tool
+            type function = { arguments: String, name: String }
 
-            module Role
-              extend Telnyx::Internal::Type::Enum
+            class Function < Telnyx::Internal::Type::BaseModel
+              attr_accessor arguments: String
 
-              USER: :user
-              ASSISTANT: :assistant
-              TOOL: :tool
+              attr_accessor name: String
 
-              def self?.values: -> ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::role]
+              def initialize: (arguments: String, name: String) -> void
+
+              def to_hash: -> { arguments: String, name: String }
             end
 
-            type tool_call =
-              {
-                id: String,
-                function: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::Function,
-                type: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::type_
-              }
+            type type_ = :function
 
-            class ToolCall < Telnyx::Internal::Type::BaseModel
-              attr_accessor id: String
+            module Type
+              extend Telnyx::Internal::Type::Enum
 
-              attr_accessor function: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::Function
+              FUNCTION: :function
 
-              attr_accessor type: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::type_
-
-              def initialize: (
-                id: String,
-                function: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::Function,
-                type: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::type_
-              ) -> void
-
-              def to_hash: -> {
-                id: String,
-                function: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::Function,
-                type: Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::type_
-              }
-
-              type function = { arguments: String, name: String }
-
-              class Function < Telnyx::Internal::Type::BaseModel
-                attr_accessor arguments: String
-
-                attr_accessor name: String
-
-                def initialize: (arguments: String, name: String) -> void
-
-                def to_hash: -> { arguments: String, name: String }
-              end
-
-              type type_ = :function
-
-              module Type
-                extend Telnyx::Internal::Type::Enum
-
-                FUNCTION: :function
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::Data::ToolCall::type_]
-              end
+              def self?.values: -> ::Array[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall::type_]
             end
           end
         end
