@@ -14,8 +14,25 @@ module Telnyx
           #   @return [String]
           required :conversation_id, String
 
-          # @!method initialize(conversation_id:, request_options: {})
+          # @!attribute page_number
+          #   The page number to retrieve.
+          #
+          #   @return [Integer, nil]
+          optional :page_number, Integer
+
+          # @!attribute page_size
+          #   The number of messages to return per page.
+          #
+          #   @return [Integer, nil]
+          optional :page_size, Integer
+
+          # @!method initialize(conversation_id:, page_number: nil, page_size: nil, request_options: {})
           #   @param conversation_id [String]
+          #
+          #   @param page_number [Integer] The page number to retrieve.
+          #
+          #   @param page_size [Integer] The number of messages to return per page.
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

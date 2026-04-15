@@ -5,8 +5,10 @@ module Telnyx
         class Messages
           def list: (
             String conversation_id,
+            ?page_number: Integer,
+            ?page_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Conversations::MessageListResponse
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Conversations::MessageListResponse]
 
           def initialize: (client: Telnyx::Client) -> void
         end

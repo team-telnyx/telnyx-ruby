@@ -11,10 +11,23 @@ module Telnyx
           sig do
             params(
               conversation_id: String,
+              page_number: Integer,
+              page_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Conversations::MessageListResponse)
+            ).returns(
+              Telnyx::Internal::DefaultFlatPagination[
+                Telnyx::Models::AI::Conversations::MessageListResponse
+              ]
+            )
           end
-          def list(conversation_id, request_options: {})
+          def list(
+            conversation_id,
+            # The page number to retrieve.
+            page_number: nil,
+            # The number of messages to return per page.
+            page_size: nil,
+            request_options: {}
+          )
           end
 
           # @api private
