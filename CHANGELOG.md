@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.77.0 (2026-04-17)
+
+Full Changelog: [v5.76.0...v5.77.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.76.0...v5.77.0)
+
+### Features
+
+* TELAPPS Provide description what params can be used for premium amd ([86f672e](https://github.com/team-telnyx/telnyx-ruby/commit/86f672e62e347c27623d2e9ae9d588208e19d4b8))
+
+
+### Documentation
+
+* add pagination params to conversation messages endpoint ([6a87bac](https://github.com/team-telnyx/telnyx-ruby/commit/6a87bac178ee42635b530efef5e7aef6a48047f9))
+
 ## 5.76.0 (2026-04-15)
 
 Full Changelog: [v5.75.0...v5.76.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.75.0...v5.76.0)
