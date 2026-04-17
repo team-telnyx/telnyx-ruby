@@ -9,6 +9,7 @@ module Telnyx
           recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
           supports_unauthenticated_web_calls: bool,
           time_limit_secs: Integer,
+          user_idle_reply_secs: Integer,
           user_idle_timeout_secs: Integer,
           voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection
         }
@@ -44,6 +45,10 @@ module Telnyx
 
         def time_limit_secs=: (Integer) -> Integer
 
+        attr_reader user_idle_reply_secs: Integer?
+
+        def user_idle_reply_secs=: (Integer) -> Integer
+
         attr_reader user_idle_timeout_secs: Integer?
 
         def user_idle_timeout_secs=: (Integer) -> Integer
@@ -61,6 +66,7 @@ module Telnyx
           ?recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
           ?supports_unauthenticated_web_calls: bool,
           ?time_limit_secs: Integer,
+          ?user_idle_reply_secs: Integer,
           ?user_idle_timeout_secs: Integer,
           ?voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection
         ) -> void
@@ -72,6 +78,7 @@ module Telnyx
           recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
           supports_unauthenticated_web_calls: bool,
           time_limit_secs: Integer,
+          user_idle_reply_secs: Integer,
           user_idle_timeout_secs: Integer,
           voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection
         }
