@@ -84,6 +84,15 @@ module Telnyx
         sig { params(time_limit_secs: Integer).void }
         attr_writer :time_limit_secs
 
+        # Duration in seconds of end user silence before the assistant checks in on the
+        # user. When this limit is reached the assistant will prompt the user to respond.
+        # This is distinct from user_idle_timeout_secs which stops the assistant entirely.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :user_idle_reply_secs
+
+        sig { params(user_idle_reply_secs: Integer).void }
+        attr_writer :user_idle_reply_secs
+
         # Maximum duration in seconds of end user silence on the call. When this limit is
         # reached the assistant will be stopped. This limit does not apply to portions of
         # a call without an active assistant (for instance, a call transferred to a human
@@ -124,6 +133,7 @@ module Telnyx
               Telnyx::AI::TelephonySettings::RecordingSettings::OrHash,
             supports_unauthenticated_web_calls: T::Boolean,
             time_limit_secs: Integer,
+            user_idle_reply_secs: Integer,
             user_idle_timeout_secs: Integer,
             voicemail_detection:
               Telnyx::AI::TelephonySettings::VoicemailDetection::OrHash
@@ -150,6 +160,10 @@ module Telnyx
           # apply to portions of a call without an active assistant (for instance, a call
           # transferred to a human representative).
           time_limit_secs: nil,
+          # Duration in seconds of end user silence before the assistant checks in on the
+          # user. When this limit is reached the assistant will prompt the user to respond.
+          # This is distinct from user_idle_timeout_secs which stops the assistant entirely.
+          user_idle_reply_secs: nil,
           # Maximum duration in seconds of end user silence on the call. When this limit is
           # reached the assistant will be stopped. This limit does not apply to portions of
           # a call without an active assistant (for instance, a call transferred to a human
@@ -177,6 +191,7 @@ module Telnyx
                 Telnyx::AI::TelephonySettings::RecordingSettings,
               supports_unauthenticated_web_calls: T::Boolean,
               time_limit_secs: Integer,
+              user_idle_reply_secs: Integer,
               user_idle_timeout_secs: Integer,
               voicemail_detection:
                 Telnyx::AI::TelephonySettings::VoicemailDetection
