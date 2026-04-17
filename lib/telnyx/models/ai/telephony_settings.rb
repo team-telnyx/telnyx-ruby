@@ -48,6 +48,14 @@ module Telnyx
         #   @return [Integer, nil]
         optional :time_limit_secs, Integer
 
+        # @!attribute user_idle_reply_secs
+        #   Duration in seconds of end user silence before the assistant checks in on the
+        #   user. When this limit is reached the assistant will prompt the user to respond.
+        #   This is distinct from user_idle_timeout_secs which stops the assistant entirely.
+        #
+        #   @return [Integer, nil]
+        optional :user_idle_reply_secs, Integer
+
         # @!attribute user_idle_timeout_secs
         #   Maximum duration in seconds of end user silence on the call. When this limit is
         #   reached the assistant will be stopped. This limit does not apply to portions of
@@ -68,7 +76,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
 
-        # @!method initialize(default_texml_app_id: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
+        # @!method initialize(default_texml_app_id: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelephonySettings} for more details.
         #
@@ -83,6 +91,8 @@ module Telnyx
         #   @param supports_unauthenticated_web_calls [Boolean] When enabled, allows users to interact with your AI assistant directly from your
         #
         #   @param time_limit_secs [Integer] Maximum duration in seconds for the AI assistant to participate on the call. Whe
+        #
+        #   @param user_idle_reply_secs [Integer] Duration in seconds of end user silence before the assistant checks in on the us
         #
         #   @param user_idle_timeout_secs [Integer] Maximum duration in seconds of end user silence on the call. When this limit is
         #
