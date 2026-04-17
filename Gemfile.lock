@@ -198,7 +198,7 @@ GEM
       event_emitter
       mutex_m
       websocket
-    yard (0.9.37)
+    yard (0.9.42)
     yard-sorbet (0.9.0)
       sorbet-runtime
       yard
@@ -208,7 +208,6 @@ PLATFORMS
   aarch64-linux-gnu
   aarch64-linux-musl
   arm64-darwin
-  ruby
   universal-darwin
   x86_64-darwin
   x86_64-linux-gnu
