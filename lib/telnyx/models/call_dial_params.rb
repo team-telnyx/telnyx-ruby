@@ -52,7 +52,9 @@ module Telnyx
 
       # @!attribute answering_machine_detection_config
       #   Optional configuration parameters to modify 'answering_machine_detection'
-      #   performance.
+      #   performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
+      #   parameters are applicable when `premium` is selected as
+      #   answering_machine_detection.
       #
       #   @return [Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig, nil]
       optional :answering_machine_detection_config,
@@ -693,7 +695,9 @@ module Telnyx
         #   details.
         #
         #   Optional configuration parameters to modify 'answering_machine_detection'
-        #   performance.
+        #   performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
+        #   parameters are applicable when `premium` is selected as
+        #   answering_machine_detection.
         #
         #   @param after_greeting_silence_millis [Integer] Silence duration threshold after a greeting message or voice for it be considere
         #
