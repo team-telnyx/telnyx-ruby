@@ -2031,7 +2031,9 @@ module Telnyx
           # receive 'call.machine.greeting.ended' if a beep is detected.
           answering_machine_detection: nil,
           # Optional configuration parameters to modify 'answering_machine_detection'
-          # performance.
+          # performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
+          # parameters are applicable when `premium` is selected as
+          # answering_machine_detection.
           answering_machine_detection_config: nil,
           # The URL of a file to be played back when the transfer destination answers before
           # bridging the call. The URL can point to either a WAV or MP3 file. media_name and

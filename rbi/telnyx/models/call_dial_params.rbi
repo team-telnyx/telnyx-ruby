@@ -59,7 +59,9 @@ module Telnyx
       attr_writer :answering_machine_detection
 
       # Optional configuration parameters to modify 'answering_machine_detection'
-      # performance.
+      # performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
+      # parameters are applicable when `premium` is selected as
+      # answering_machine_detection.
       sig do
         returns(
           T.nilable(Telnyx::CallDialParams::AnsweringMachineDetectionConfig)
@@ -730,7 +732,9 @@ module Telnyx
         # receive `call.machine.greeting.ended` if a beep is detected.
         answering_machine_detection: nil,
         # Optional configuration parameters to modify 'answering_machine_detection'
-        # performance.
+        # performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
+        # parameters are applicable when `premium` is selected as
+        # answering_machine_detection.
         answering_machine_detection_config: nil,
         # AI Assistant configuration. All fields except `id` are optional — the
         # assistant's stored configuration will be used as fallback for any omitted
@@ -1155,7 +1159,9 @@ module Telnyx
         attr_writer :total_analysis_time_millis
 
         # Optional configuration parameters to modify 'answering_machine_detection'
-        # performance.
+        # performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
+        # parameters are applicable when `premium` is selected as
+        # answering_machine_detection.
         sig do
           params(
             after_greeting_silence_millis: Integer,
