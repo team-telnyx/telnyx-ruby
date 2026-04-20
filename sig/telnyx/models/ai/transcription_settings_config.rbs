@@ -6,6 +6,7 @@ module Telnyx
           eager_eot_threshold: Float,
           eot_threshold: Float,
           eot_timeout_ms: Integer,
+          keyterm: String,
           numerals: bool,
           smart_format: bool
         }
@@ -23,6 +24,10 @@ module Telnyx
 
         def eot_timeout_ms=: (Integer) -> Integer
 
+        attr_reader keyterm: String?
+
+        def keyterm=: (String) -> String
+
         attr_reader numerals: bool?
 
         def numerals=: (bool) -> bool
@@ -35,6 +40,7 @@ module Telnyx
           ?eager_eot_threshold: Float,
           ?eot_threshold: Float,
           ?eot_timeout_ms: Integer,
+          ?keyterm: String,
           ?numerals: bool,
           ?smart_format: bool
         ) -> void
@@ -43,6 +49,7 @@ module Telnyx
           eager_eot_threshold: Float,
           eot_threshold: Float,
           eot_timeout_ms: Integer,
+          keyterm: String,
           numerals: bool,
           smart_format: bool
         }

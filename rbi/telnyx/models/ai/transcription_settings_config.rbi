@@ -37,6 +37,15 @@ module Telnyx
         sig { params(eot_timeout_ms: Integer).void }
         attr_writer :eot_timeout_ms
 
+        # Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
+        # key terms to boost for recognition during transcription. Helps improve accuracy
+        # for domain-specific terminology, proper nouns, or uncommon words.
+        sig { returns(T.nilable(String)) }
+        attr_reader :keyterm
+
+        sig { params(keyterm: String).void }
+        attr_writer :keyterm
+
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :numerals
 
@@ -54,6 +63,7 @@ module Telnyx
             eager_eot_threshold: Float,
             eot_threshold: Float,
             eot_timeout_ms: Integer,
+            keyterm: String,
             numerals: T::Boolean,
             smart_format: T::Boolean
           ).returns(T.attached_class)
@@ -69,6 +79,10 @@ module Telnyx
           # Available only for deepgram/flux. Maximum milliseconds of silence before forcing
           # an end of turn, regardless of confidence.
           eot_timeout_ms: nil,
+          # Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
+          # key terms to boost for recognition during transcription. Helps improve accuracy
+          # for domain-specific terminology, proper nouns, or uncommon words.
+          keyterm: nil,
           numerals: nil,
           smart_format: nil
         )
@@ -80,6 +94,7 @@ module Telnyx
               eager_eot_threshold: Float,
               eot_threshold: Float,
               eot_timeout_ms: Integer,
+              keyterm: String,
               numerals: T::Boolean,
               smart_format: T::Boolean
             }
