@@ -26,6 +26,14 @@ module Telnyx
         #   @return [Integer, nil]
         optional :eot_timeout_ms, Integer
 
+        # @!attribute keyterm
+        #   Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
+        #   key terms to boost for recognition during transcription. Helps improve accuracy
+        #   for domain-specific terminology, proper nouns, or uncommon words.
+        #
+        #   @return [String, nil]
+        optional :keyterm, String
+
         # @!attribute numerals
         #
         #   @return [Boolean, nil]
@@ -36,7 +44,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :smart_format, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(eager_eot_threshold: nil, eot_threshold: nil, eot_timeout_ms: nil, numerals: nil, smart_format: nil)
+        # @!method initialize(eager_eot_threshold: nil, eot_threshold: nil, eot_timeout_ms: nil, keyterm: nil, numerals: nil, smart_format: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TranscriptionSettingsConfig} for more details.
         #
@@ -45,6 +53,8 @@ module Telnyx
         #   @param eot_threshold [Float] Available only for deepgram/flux. Confidence required to trigger an end of turn.
         #
         #   @param eot_timeout_ms [Integer] Available only for deepgram/flux. Maximum milliseconds of silence before forcing
+        #
+        #   @param keyterm [String] Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
         #
         #   @param numerals [Boolean]
         #

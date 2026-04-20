@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.79.0 (2026-04-20)
+
+Full Changelog: [v5.78.0...v5.79.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.78.0...v5.79.0)
+
+### Features
+
+* Add keyterm field to TranscriptionSettingsConfig ([6fc5280](https://github.com/team-telnyx/telnyx-ruby/commit/6fc528067e46ac46e06d8bddf756c9c5f621e3fb))
+
 ## 5.78.0 (2026-04-17)
 
 Full Changelog: [v5.77.0...v5.78.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.77.0...v5.78.0)
