@@ -15,6 +15,7 @@ module Telnyx
           llm_api_key_ref: String,
           messaging_settings: Telnyx::AI::MessagingSettings,
           observability_settings: Telnyx::AI::ObservabilityReq,
+          post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           telephony_settings: Telnyx::AI::TelephonySettings,
           tool_ids: ::Array[String],
@@ -79,6 +80,12 @@ module Telnyx
           Telnyx::AI::ObservabilityReq
         ) -> Telnyx::AI::ObservabilityReq
 
+        attr_reader post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings?
+
+        def post_conversation_settings=: (
+          Telnyx::AI::AssistantCreateParams::PostConversationSettings
+        ) -> Telnyx::AI::AssistantCreateParams::PostConversationSettings
+
         attr_reader privacy_settings: Telnyx::AI::PrivacySettings?
 
         def privacy_settings=: (
@@ -132,6 +139,7 @@ module Telnyx
           ?llm_api_key_ref: String,
           ?messaging_settings: Telnyx::AI::MessagingSettings,
           ?observability_settings: Telnyx::AI::ObservabilityReq,
+          ?post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings,
           ?privacy_settings: Telnyx::AI::PrivacySettings,
           ?telephony_settings: Telnyx::AI::TelephonySettings,
           ?tool_ids: ::Array[String],
@@ -155,6 +163,7 @@ module Telnyx
           llm_api_key_ref: String,
           messaging_settings: Telnyx::AI::MessagingSettings,
           observability_settings: Telnyx::AI::ObservabilityReq,
+          post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           telephony_settings: Telnyx::AI::TelephonySettings,
           tool_ids: ::Array[String],
@@ -164,6 +173,18 @@ module Telnyx
           widget_settings: Telnyx::AI::WidgetSettings,
           request_options: Telnyx::RequestOptions
         }
+
+        type post_conversation_settings = { enabled: bool }
+
+        class PostConversationSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader enabled: bool?
+
+          def enabled=: (bool) -> bool
+
+          def initialize: (?enabled: bool) -> void
+
+          def to_hash: -> { enabled: bool }
+        end
       end
     end
   end
