@@ -34,7 +34,7 @@ module Telnyx
         #
         # Create a new AI Assistant.
         #
-        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, observability_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
@@ -59,6 +59,8 @@ module Telnyx
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
+        #
+        # @param post_conversation_settings [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -121,7 +123,7 @@ module Telnyx
         #
         # Update an AI Assistant's attributes.
         #
-        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String]
         #
@@ -148,6 +150,8 @@ module Telnyx
         # @param name [String]
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
+        #
+        # @param post_conversation_settings [Telnyx::Models::AI::AssistantUpdateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #

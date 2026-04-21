@@ -43,7 +43,7 @@ module Telnyx
           # Updates the configuration of a specific assistant version. Can not update main
           # version
           #
-          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
           #
           # @param version_id [String] Path param
           #
@@ -72,6 +72,8 @@ module Telnyx
           # @param name [String] Body param
           #
           # @param observability_settings [Telnyx::Models::AI::ObservabilityReq] Body param
+          #
+          # @param post_conversation_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::PostConversationSettings] Body param: Configuration for post-conversation processing. When enabled, the as
           #
           # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
           #

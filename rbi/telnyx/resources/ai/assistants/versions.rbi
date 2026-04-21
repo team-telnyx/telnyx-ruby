@@ -44,6 +44,8 @@ module Telnyx
               model: String,
               name: String,
               observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
+              post_conversation_settings:
+                Telnyx::AI::Assistants::UpdateAssistant::PostConversationSettings::OrHash,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
               tool_ids: T::Array[String],
@@ -112,6 +114,13 @@ module Telnyx
             name: nil,
             # Body param
             observability_settings: nil,
+            # Body param: Configuration for post-conversation processing. When enabled, the
+            # assistant receives one additional LLM turn after the conversation ends, allowing
+            # it to execute tool calls such as logging to a CRM or sending a summary. The
+            # assistant can execute multiple parallel or sequential tools during this phase.
+            # Telephony-control tools (e.g. hangup, transfer) are unavailable
+            # post-conversation. Beta feature.
+            post_conversation_settings: nil,
             # Body param
             privacy_settings: nil,
             # Body param

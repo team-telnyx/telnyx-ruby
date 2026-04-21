@@ -89,6 +89,17 @@ module Telnyx
         #   @return [Telnyx::Models::AI::ObservabilityReq, nil]
         optional :observability_settings, -> { Telnyx::AI::ObservabilityReq }
 
+        # @!attribute post_conversation_settings
+        #   Configuration for post-conversation processing. When enabled, the assistant
+        #   receives one additional LLM turn after the conversation ends, allowing it to
+        #   execute tool calls such as logging to a CRM or sending a summary. The assistant
+        #   can execute multiple parallel or sequential tools during this phase.
+        #   Telephony-control tools (e.g. hangup, transfer) are unavailable
+        #   post-conversation. Beta feature.
+        #
+        #   @return [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings, nil]
+        optional :post_conversation_settings, -> { Telnyx::AI::AssistantCreateParams::PostConversationSettings }
+
         # @!attribute privacy_settings
         #
         #   @return [Telnyx::Models::AI::PrivacySettings, nil]
@@ -127,7 +138,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::WidgetSettings, nil]
         optional :widget_settings, -> { Telnyx::AI::WidgetSettings }
 
-        # @!method initialize(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, observability_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @!method initialize(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::AssistantCreateParams} for more details.
         #
@@ -155,6 +166,8 @@ module Telnyx
         #
         #   @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
+        #   @param post_conversation_settings [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
+        #
         #   @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
         #   @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
@@ -170,6 +183,30 @@ module Telnyx
         #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+        class PostConversationSettings < Telnyx::Internal::Type::BaseModel
+          # @!attribute enabled
+          #   Whether post-conversation processing is enabled. When true, the assistant will
+          #   be invoked after the conversation ends to perform any final tool calls. Defaults
+          #   to false.
+          #
+          #   @return [Boolean, nil]
+          optional :enabled, Telnyx::Internal::Type::Boolean
+
+          # @!method initialize(enabled: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings} for more
+          #   details.
+          #
+          #   Configuration for post-conversation processing. When enabled, the assistant
+          #   receives one additional LLM turn after the conversation ends, allowing it to
+          #   execute tool calls such as logging to a CRM or sending a summary. The assistant
+          #   can execute multiple parallel or sequential tools during this phase.
+          #   Telephony-control tools (e.g. hangup, transfer) are unavailable
+          #   post-conversation. Beta feature.
+          #
+          #   @param enabled [Boolean] Whether post-conversation processing is enabled. When true, the assistant will b
+        end
       end
     end
   end

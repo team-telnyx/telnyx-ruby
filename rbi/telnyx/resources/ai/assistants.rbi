@@ -44,6 +44,8 @@ module Telnyx
             llm_api_key_ref: String,
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
+            post_conversation_settings:
+              Telnyx::AI::AssistantCreateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tool_ids: T::Array[String],
@@ -102,6 +104,13 @@ module Telnyx
           llm_api_key_ref: nil,
           messaging_settings: nil,
           observability_settings: nil,
+          # Configuration for post-conversation processing. When enabled, the assistant
+          # receives one additional LLM turn after the conversation ends, allowing it to
+          # execute tool calls such as logging to a CRM or sending a summary. The assistant
+          # can execute multiple parallel or sequential tools during this phase.
+          # Telephony-control tools (e.g. hangup, transfer) are unavailable
+          # post-conversation. Beta feature.
+          post_conversation_settings: nil,
           privacy_settings: nil,
           telephony_settings: nil,
           tool_ids: nil,
@@ -153,6 +162,8 @@ module Telnyx
             model: String,
             name: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
+            post_conversation_settings:
+              Telnyx::AI::AssistantUpdateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
@@ -213,6 +224,13 @@ module Telnyx
           model: nil,
           name: nil,
           observability_settings: nil,
+          # Configuration for post-conversation processing. When enabled, the assistant
+          # receives one additional LLM turn after the conversation ends, allowing it to
+          # execute tool calls such as logging to a CRM or sending a summary. The assistant
+          # can execute multiple parallel or sequential tools during this phase.
+          # Telephony-control tools (e.g. hangup, transfer) are unavailable
+          # post-conversation. Beta feature.
+          post_conversation_settings: nil,
           privacy_settings: nil,
           # Indicates whether the assistant should be promoted to the main version. Defaults
           # to true.
