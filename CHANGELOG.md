@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.80.0 (2026-04-21)
+
+Full Changelog: [v5.79.0...v5.80.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.79.0...v5.80.0)
+
+### Features
+
+* Add post_conversation_settings to AI Assistants API spec ([075e1d6](https://github.com/team-telnyx/telnyx-ruby/commit/075e1d62209c0f6f56d4f6baa5e02018bdc46215))
+
 ## 5.79.0 (2026-04-20)
 
 Full Changelog: [v5.78.0...v5.79.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.78.0...v5.79.0)
