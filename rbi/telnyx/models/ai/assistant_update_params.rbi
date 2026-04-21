@@ -122,6 +122,29 @@ module Telnyx
         end
         attr_writer :observability_settings
 
+        # Configuration for post-conversation processing. When enabled, the assistant
+        # receives one additional LLM turn after the conversation ends, allowing it to
+        # execute tool calls such as logging to a CRM or sending a summary. The assistant
+        # can execute multiple parallel or sequential tools during this phase.
+        # Telephony-control tools (e.g. hangup, transfer) are unavailable
+        # post-conversation. Beta feature.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::AI::AssistantUpdateParams::PostConversationSettings
+            )
+          )
+        end
+        attr_reader :post_conversation_settings
+
+        sig do
+          params(
+            post_conversation_settings:
+              Telnyx::AI::AssistantUpdateParams::PostConversationSettings::OrHash
+          ).void
+        end
+        attr_writer :post_conversation_settings
+
         sig { returns(T.nilable(Telnyx::AI::PrivacySettings)) }
         attr_reader :privacy_settings
 
@@ -233,6 +256,8 @@ module Telnyx
             model: String,
             name: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
+            post_conversation_settings:
+              Telnyx::AI::AssistantUpdateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
@@ -293,6 +318,13 @@ module Telnyx
           model: nil,
           name: nil,
           observability_settings: nil,
+          # Configuration for post-conversation processing. When enabled, the assistant
+          # receives one additional LLM turn after the conversation ends, allowing it to
+          # execute tool calls such as logging to a CRM or sending a summary. The assistant
+          # can execute multiple parallel or sequential tools during this phase.
+          # Telephony-control tools (e.g. hangup, transfer) are unavailable
+          # post-conversation. Beta feature.
+          post_conversation_settings: nil,
           privacy_settings: nil,
           # Indicates whether the assistant should be promoted to the main version. Defaults
           # to true.
@@ -326,6 +358,8 @@ module Telnyx
               model: String,
               name: String,
               observability_settings: Telnyx::AI::ObservabilityReq,
+              post_conversation_settings:
+                Telnyx::AI::AssistantUpdateParams::PostConversationSettings,
               privacy_settings: Telnyx::AI::PrivacySettings,
               promote_to_main: T::Boolean,
               telephony_settings: Telnyx::AI::TelephonySettings,
@@ -353,6 +387,44 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        class PostConversationSettings < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantUpdateParams::PostConversationSettings,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Whether post-conversation processing is enabled. When true, the assistant will
+          # be invoked after the conversation ends to perform any final tool calls. Defaults
+          # to false.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :enabled
+
+          sig { params(enabled: T::Boolean).void }
+          attr_writer :enabled
+
+          # Configuration for post-conversation processing. When enabled, the assistant
+          # receives one additional LLM turn after the conversation ends, allowing it to
+          # execute tool calls such as logging to a CRM or sending a summary. The assistant
+          # can execute multiple parallel or sequential tools during this phase.
+          # Telephony-control tools (e.g. hangup, transfer) are unavailable
+          # post-conversation. Beta feature.
+          sig { params(enabled: T::Boolean).returns(T.attached_class) }
+          def self.new(
+            # Whether post-conversation processing is enabled. When true, the assistant will
+            # be invoked after the conversation ends to perform any final tool calls. Defaults
+            # to false.
+            enabled: nil
+          )
+          end
+
+          sig { override.returns({ enabled: T::Boolean }) }
+          def to_hash
+          end
         end
       end
     end
