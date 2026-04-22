@@ -80,7 +80,8 @@ class Telnyx::Test::Resources::VerifyProfilesTest < Telnyx::Test::ResourceTest
         sms: Telnyx::VerifyProfile::SMS | nil,
         updated_at: String | nil,
         webhook_failover_url: String | nil,
-        webhook_url: String | nil
+        webhook_url: String | nil,
+        whatsapp: Telnyx::VerifyProfile::Whatsapp | nil
       }
     end
   end

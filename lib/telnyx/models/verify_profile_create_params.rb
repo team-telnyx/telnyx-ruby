@@ -282,13 +282,6 @@ module Telnyx
       end
 
       class Whatsapp < Telnyx::Internal::Type::BaseModel
-        # @!attribute app_name
-        #   The name that identifies the application requesting 2fa in the verification
-        #   message.
-        #
-        #   @return [String, nil]
-        optional :app_name, String
-
         # @!attribute default_verification_timeout_secs
         #   For every request that is initiated via this Verify profile, this sets the
         #   number of seconds before a verification request code expires. Once the
@@ -297,6 +290,24 @@ module Telnyx
         #
         #   @return [Integer, nil]
         optional :default_verification_timeout_secs, Integer
+
+        # @!attribute sender_phone_number
+        #   Phone number registered on the customer WABA to send OTPs from
+        #
+        #   @return [String, nil]
+        optional :sender_phone_number, String, nil?: true
+
+        # @!attribute template_id
+        #   Customer pre-approved authentication template name registered on Meta
+        #
+        #   @return [String, nil]
+        optional :template_id, String, nil?: true
+
+        # @!attribute waba_id
+        #   Customer Meta WABA ID for Bring-Your-Own-WABA sending
+        #
+        #   @return [String, nil]
+        optional :waba_id, String, nil?: true
 
         # @!attribute whitelisted_destinations
         #   Enabled country destinations to send verification codes. The elements in the
@@ -308,13 +319,17 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(app_name: nil, default_verification_timeout_secs: nil, whitelisted_destinations: nil)
+        # @!method initialize(default_verification_timeout_secs: nil, sender_phone_number: nil, template_id: nil, waba_id: nil, whitelisted_destinations: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::VerifyProfileCreateParams::Whatsapp} for more details.
         #
-        #   @param app_name [String] The name that identifies the application requesting 2fa in the verification mess
-        #
         #   @param default_verification_timeout_secs [Integer] For every request that is initiated via this Verify profile, this sets the numbe
+        #
+        #   @param sender_phone_number [String, nil] Phone number registered on the customer WABA to send OTPs from
+        #
+        #   @param template_id [String, nil] Customer pre-approved authentication template name registered on Meta
+        #
+        #   @param waba_id [String, nil] Customer Meta WABA ID for Bring-Your-Own-WABA sending
         #
         #   @param whitelisted_destinations [Array<String>] Enabled country destinations to send verification codes. The elements in the lis
       end

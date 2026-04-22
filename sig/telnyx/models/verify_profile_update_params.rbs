@@ -283,33 +283,41 @@ module Telnyx
 
       type whatsapp =
         {
-          app_name: String,
           default_verification_timeout_secs: Integer,
+          sender_phone_number: String?,
+          template_id: String?,
+          waba_id: String?,
           whitelisted_destinations: ::Array[String]
         }
 
       class Whatsapp < Telnyx::Internal::Type::BaseModel
-        attr_reader app_name: String?
-
-        def app_name=: (String) -> String
-
         attr_reader default_verification_timeout_secs: Integer?
 
         def default_verification_timeout_secs=: (Integer) -> Integer
+
+        attr_accessor sender_phone_number: String?
+
+        attr_accessor template_id: String?
+
+        attr_accessor waba_id: String?
 
         attr_reader whitelisted_destinations: ::Array[String]?
 
         def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
 
         def initialize: (
-          ?app_name: String,
           ?default_verification_timeout_secs: Integer,
+          ?sender_phone_number: String?,
+          ?template_id: String?,
+          ?waba_id: String?,
           ?whitelisted_destinations: ::Array[String]
         ) -> void
 
         def to_hash: -> {
-          app_name: String,
           default_verification_timeout_secs: Integer,
+          sender_phone_number: String?,
+          template_id: String?,
+          waba_id: String?,
           whitelisted_destinations: ::Array[String]
         }
       end
