@@ -65,7 +65,12 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(id: nil, call: nil, created_at: nil, flashcall: nil, language: nil, name: nil, rcs: nil, record_type: nil, sms: nil, updated_at: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!attribute whatsapp
+      #
+      #   @return [Telnyx::Models::VerifyProfile::Whatsapp, nil]
+      optional :whatsapp, -> { Telnyx::VerifyProfile::Whatsapp }
+
+      # @!method initialize(id: nil, call: nil, created_at: nil, flashcall: nil, language: nil, name: nil, rcs: nil, record_type: nil, sms: nil, updated_at: nil, webhook_failover_url: nil, webhook_url: nil, whatsapp: nil)
       #   @param id [String]
       #
       #   @param call [Telnyx::Models::VerifyProfile::Call]
@@ -89,6 +94,8 @@ module Telnyx
       #   @param webhook_failover_url [String]
       #
       #   @param webhook_url [String]
+      #
+      #   @param whatsapp [Telnyx::Models::VerifyProfile::Whatsapp]
 
       # @see Telnyx::Models::VerifyProfile#call
       class Call < Telnyx::Internal::Type::BaseModel
@@ -307,6 +314,85 @@ module Telnyx
         #   @param default_verification_timeout_secs [Integer] For every request that is initiated via this Verify profile, this sets the numbe
         #
         #   @param messaging_template_id [String] The message template identifier selected from /verify_profiles/templates
+        #
+        #   @param whitelisted_destinations [Array<String>] Enabled country destinations to send verification codes. The elements in the lis
+      end
+
+      # @see Telnyx::Models::VerifyProfile#whatsapp
+      class Whatsapp < Telnyx::Internal::Type::BaseModel
+        # @!attribute app_name
+        #   The name that identifies the application requesting 2fa in the verification
+        #   message.
+        #
+        #   @return [String, nil]
+        optional :app_name, String
+
+        # @!attribute code_length
+        #   The length of the verify code to generate.
+        #
+        #   @return [Integer, nil]
+        optional :code_length, Integer
+
+        # @!attribute default_verification_timeout_secs
+        #   For every request that is initiated via this Verify profile, this sets the
+        #   number of seconds before a verification request code expires. Once the
+        #   verification request expires, the user cannot use the code to verify their
+        #   identity.
+        #
+        #   @return [Integer, nil]
+        optional :default_verification_timeout_secs, Integer
+
+        # @!attribute messaging_template_id
+        #   The message template identifier selected from /verify_profiles/templates
+        #
+        #   @return [String, nil]
+        optional :messaging_template_id, String
+
+        # @!attribute sender_phone_number
+        #   Phone number registered on the customer WABA to send OTPs from
+        #
+        #   @return [String, nil]
+        optional :sender_phone_number, String, nil?: true
+
+        # @!attribute template_id
+        #   Customer pre-approved authentication template name registered on Meta
+        #
+        #   @return [String, nil]
+        optional :template_id, String, nil?: true
+
+        # @!attribute waba_id
+        #   Customer Meta WABA ID for Bring-Your-Own-WABA sending
+        #
+        #   @return [String, nil]
+        optional :waba_id, String, nil?: true
+
+        # @!attribute whitelisted_destinations
+        #   Enabled country destinations to send verification codes. The elements in the
+        #   list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
+        #   destinations will be allowed. **Conditionally required:** this field must be
+        #   provided when your organization is configured to require explicit whitelisted
+        #   destinations; otherwise it is optional.
+        #
+        #   @return [Array<String>, nil]
+        optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(app_name: nil, code_length: nil, default_verification_timeout_secs: nil, messaging_template_id: nil, sender_phone_number: nil, template_id: nil, waba_id: nil, whitelisted_destinations: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::VerifyProfile::Whatsapp} for more details.
+        #
+        #   @param app_name [String] The name that identifies the application requesting 2fa in the verification mess
+        #
+        #   @param code_length [Integer] The length of the verify code to generate.
+        #
+        #   @param default_verification_timeout_secs [Integer] For every request that is initiated via this Verify profile, this sets the numbe
+        #
+        #   @param messaging_template_id [String] The message template identifier selected from /verify_profiles/templates
+        #
+        #   @param sender_phone_number [String, nil] Phone number registered on the customer WABA to send OTPs from
+        #
+        #   @param template_id [String, nil] Customer pre-approved authentication template name registered on Meta
+        #
+        #   @param waba_id [String, nil] Customer Meta WABA ID for Bring-Your-Own-WABA sending
         #
         #   @param whitelisted_destinations [Array<String>] Enabled country destinations to send verification codes. The elements in the lis
       end
