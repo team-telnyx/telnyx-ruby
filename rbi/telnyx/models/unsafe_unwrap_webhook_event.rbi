@@ -67,6 +67,7 @@ module Telnyx
             Telnyx::FaxMediaProcessed,
             Telnyx::FaxQueued,
             Telnyx::FaxSendingStarted,
+            Telnyx::HostedNumberOrderEventWebhookEvent,
             Telnyx::InboundMessageWebhookEvent,
             Telnyx::NumberOrderStatusUpdate,
             Telnyx::ReplacedLinkClickWebhookEvent,
