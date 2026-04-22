@@ -526,14 +526,6 @@ module Telnyx
             )
           end
 
-        # The name that identifies the application requesting 2fa in the verification
-        # message.
-        sig { returns(T.nilable(String)) }
-        attr_reader :app_name
-
-        sig { params(app_name: String).void }
-        attr_writer :app_name
-
         # For every request that is initiated via this Verify profile, this sets the
         # number of seconds before a verification request code expires. Once the
         # verification request expires, the user cannot use the code to verify their
@@ -543,6 +535,18 @@ module Telnyx
 
         sig { params(default_verification_timeout_secs: Integer).void }
         attr_writer :default_verification_timeout_secs
+
+        # Phone number registered on the customer WABA to send OTPs from
+        sig { returns(T.nilable(String)) }
+        attr_accessor :sender_phone_number
+
+        # Customer pre-approved authentication template name registered on Meta
+        sig { returns(T.nilable(String)) }
+        attr_accessor :template_id
+
+        # Customer Meta WABA ID for Bring-Your-Own-WABA sending
+        sig { returns(T.nilable(String)) }
+        attr_accessor :waba_id
 
         # Enabled country destinations to send verification codes. The elements in the
         # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
@@ -557,20 +561,25 @@ module Telnyx
 
         sig do
           params(
-            app_name: String,
             default_verification_timeout_secs: Integer,
+            sender_phone_number: T.nilable(String),
+            template_id: T.nilable(String),
+            waba_id: T.nilable(String),
             whitelisted_destinations: T::Array[String]
           ).returns(T.attached_class)
         end
         def self.new(
-          # The name that identifies the application requesting 2fa in the verification
-          # message.
-          app_name: nil,
           # For every request that is initiated via this Verify profile, this sets the
           # number of seconds before a verification request code expires. Once the
           # verification request expires, the user cannot use the code to verify their
           # identity.
           default_verification_timeout_secs: nil,
+          # Phone number registered on the customer WABA to send OTPs from
+          sender_phone_number: nil,
+          # Customer pre-approved authentication template name registered on Meta
+          template_id: nil,
+          # Customer Meta WABA ID for Bring-Your-Own-WABA sending
+          waba_id: nil,
           # Enabled country destinations to send verification codes. The elements in the
           # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
           # destinations will be allowed. **Conditionally required:** this field must be
@@ -583,8 +592,10 @@ module Telnyx
         sig do
           override.returns(
             {
-              app_name: String,
               default_verification_timeout_secs: Integer,
+              sender_phone_number: T.nilable(String),
+              template_id: T.nilable(String),
+              waba_id: T.nilable(String),
               whitelisted_destinations: T::Array[String]
             }
           )

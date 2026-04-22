@@ -83,6 +83,12 @@ module Telnyx
       sig { params(webhook_url: String).void }
       attr_writer :webhook_url
 
+      sig { returns(T.nilable(Telnyx::VerifyProfile::Whatsapp)) }
+      attr_reader :whatsapp
+
+      sig { params(whatsapp: Telnyx::VerifyProfile::Whatsapp::OrHash).void }
+      attr_writer :whatsapp
+
       sig do
         params(
           id: String,
@@ -96,7 +102,8 @@ module Telnyx
           sms: Telnyx::VerifyProfile::SMS::OrHash,
           updated_at: String,
           webhook_failover_url: String,
-          webhook_url: String
+          webhook_url: String,
+          whatsapp: Telnyx::VerifyProfile::Whatsapp::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -112,7 +119,8 @@ module Telnyx
         sms: nil,
         updated_at: nil,
         webhook_failover_url: nil,
-        webhook_url: nil
+        webhook_url: nil,
+        whatsapp: nil
       )
       end
 
@@ -130,7 +138,8 @@ module Telnyx
             sms: Telnyx::VerifyProfile::SMS,
             updated_at: String,
             webhook_failover_url: String,
-            webhook_url: String
+            webhook_url: String,
+            whatsapp: Telnyx::VerifyProfile::Whatsapp
           }
         )
       end
@@ -509,6 +518,125 @@ module Telnyx
               code_length: Integer,
               default_verification_timeout_secs: Integer,
               messaging_template_id: String,
+              whitelisted_destinations: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+
+      class Whatsapp < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::VerifyProfile::Whatsapp, Telnyx::Internal::AnyHash)
+          end
+
+        # The name that identifies the application requesting 2fa in the verification
+        # message.
+        sig { returns(T.nilable(String)) }
+        attr_reader :app_name
+
+        sig { params(app_name: String).void }
+        attr_writer :app_name
+
+        # The length of the verify code to generate.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :code_length
+
+        sig { params(code_length: Integer).void }
+        attr_writer :code_length
+
+        # For every request that is initiated via this Verify profile, this sets the
+        # number of seconds before a verification request code expires. Once the
+        # verification request expires, the user cannot use the code to verify their
+        # identity.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :default_verification_timeout_secs
+
+        sig { params(default_verification_timeout_secs: Integer).void }
+        attr_writer :default_verification_timeout_secs
+
+        # The message template identifier selected from /verify_profiles/templates
+        sig { returns(T.nilable(String)) }
+        attr_reader :messaging_template_id
+
+        sig { params(messaging_template_id: String).void }
+        attr_writer :messaging_template_id
+
+        # Phone number registered on the customer WABA to send OTPs from
+        sig { returns(T.nilable(String)) }
+        attr_accessor :sender_phone_number
+
+        # Customer pre-approved authentication template name registered on Meta
+        sig { returns(T.nilable(String)) }
+        attr_accessor :template_id
+
+        # Customer Meta WABA ID for Bring-Your-Own-WABA sending
+        sig { returns(T.nilable(String)) }
+        attr_accessor :waba_id
+
+        # Enabled country destinations to send verification codes. The elements in the
+        # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
+        # destinations will be allowed. **Conditionally required:** this field must be
+        # provided when your organization is configured to require explicit whitelisted
+        # destinations; otherwise it is optional.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :whitelisted_destinations
+
+        sig { params(whitelisted_destinations: T::Array[String]).void }
+        attr_writer :whitelisted_destinations
+
+        sig do
+          params(
+            app_name: String,
+            code_length: Integer,
+            default_verification_timeout_secs: Integer,
+            messaging_template_id: String,
+            sender_phone_number: T.nilable(String),
+            template_id: T.nilable(String),
+            waba_id: T.nilable(String),
+            whitelisted_destinations: T::Array[String]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The name that identifies the application requesting 2fa in the verification
+          # message.
+          app_name: nil,
+          # The length of the verify code to generate.
+          code_length: nil,
+          # For every request that is initiated via this Verify profile, this sets the
+          # number of seconds before a verification request code expires. Once the
+          # verification request expires, the user cannot use the code to verify their
+          # identity.
+          default_verification_timeout_secs: nil,
+          # The message template identifier selected from /verify_profiles/templates
+          messaging_template_id: nil,
+          # Phone number registered on the customer WABA to send OTPs from
+          sender_phone_number: nil,
+          # Customer pre-approved authentication template name registered on Meta
+          template_id: nil,
+          # Customer Meta WABA ID for Bring-Your-Own-WABA sending
+          waba_id: nil,
+          # Enabled country destinations to send verification codes. The elements in the
+          # list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
+          # destinations will be allowed. **Conditionally required:** this field must be
+          # provided when your organization is configured to require explicit whitelisted
+          # destinations; otherwise it is optional.
+          whitelisted_destinations: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              app_name: String,
+              code_length: Integer,
+              default_verification_timeout_secs: Integer,
+              messaging_template_id: String,
+              sender_phone_number: T.nilable(String),
+              template_id: T.nilable(String),
+              waba_id: T.nilable(String),
               whitelisted_destinations: T::Array[String]
             }
           )

@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.81.0 (2026-04-22)
+
+Full Changelog: [v5.80.0...v5.81.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.80.0...v5.81.0)
+
+### Features
+
+* MSG-6841: add missing whatsapp api docs ([be4e44d](https://github.com/team-telnyx/telnyx-ruby/commit/be4e44d5fa6813033cc2c93ba6ef5b3483d86717))
+
 ## 5.80.0 (2026-04-21)
 
 Full Changelog: [v5.79.0...v5.80.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.79.0...v5.80.0)
