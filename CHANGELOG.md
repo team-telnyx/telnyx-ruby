@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.82.0 (2026-04-22)
+
+Full Changelog: [v5.81.0...v5.82.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.81.0...v5.82.0)
+
+### Features
+
+* MSG-6857: ([3064039](https://github.com/team-telnyx/telnyx-ruby/commit/30640396eb21360151f93dc6d84a4ba9730a7bfe))
+
 ## 5.81.0 (2026-04-22)
 
 Full Changelog: [v5.80.0...v5.81.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.80.0...v5.81.0)
