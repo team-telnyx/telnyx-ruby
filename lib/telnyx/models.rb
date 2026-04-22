@@ -708,6 +708,8 @@ module Telnyx
 
   HostedNumber = Telnyx::Models::HostedNumber
 
+  HostedNumberOrderEventWebhookEvent = Telnyx::Models::HostedNumberOrderEventWebhookEvent
+
   HTTP = Telnyx::Models::HTTP
 
   InboundChannelListParams = Telnyx::Models::InboundChannelListParams

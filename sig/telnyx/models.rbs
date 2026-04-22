@@ -661,6 +661,8 @@ module Telnyx
 
   class HostedNumber = Telnyx::Models::HostedNumber
 
+  class HostedNumberOrderEventWebhookEvent = Telnyx::Models::HostedNumberOrderEventWebhookEvent
+
   class HTTP = Telnyx::Models::HTTP
 
   class InboundChannelListParams = Telnyx::Models::InboundChannelListParams

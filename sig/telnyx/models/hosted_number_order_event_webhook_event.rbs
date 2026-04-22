@@ -1,0 +1,281 @@
+module Telnyx
+  module Models
+    type hosted_number_order_event_webhook_event =
+      { data: Telnyx::HostedNumberOrderEventWebhookEvent::Data }
+
+    class HostedNumberOrderEventWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::HostedNumberOrderEventWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::HostedNumberOrderEventWebhookEvent::Data
+      ) -> Telnyx::HostedNumberOrderEventWebhookEvent::Data
+
+      def initialize: (
+        ?data: Telnyx::HostedNumberOrderEventWebhookEvent::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::HostedNumberOrderEventWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload
+        ) -> Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::record_type
+        }
+
+        type event_type =
+          :"messaging_hosted_numbers_orders.created"
+          | :"messaging_hosted_numbers_orders.updated"
+          | :"messaging_hosted_numbers_orders.deleted"
+          | :"messaging_hosted_numbers_orders.internal_transfer_detected"
+          | :"messaging_hosted_numbers_orders.internal_transfer_approval_requested"
+          | :"messaging_hosted_numbers_orders.internal_transfer_approved"
+          | :"messaging_hosted_numbers_orders.internal_transfer_rejected"
+          | :"messaging_hosted_numbers_orders.internal_transfer_auto_approved"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          MESSAGING_HOSTED_NUMBERS_ORDERS_CREATED: :"messaging_hosted_numbers_orders.created"
+          MESSAGING_HOSTED_NUMBERS_ORDERS_UPDATED: :"messaging_hosted_numbers_orders.updated"
+          MESSAGING_HOSTED_NUMBERS_ORDERS_DELETED: :"messaging_hosted_numbers_orders.deleted"
+          MESSAGING_HOSTED_NUMBERS_ORDERS_INTERNAL_TRANSFER_DETECTED: :"messaging_hosted_numbers_orders.internal_transfer_detected"
+          MESSAGING_HOSTED_NUMBERS_ORDERS_INTERNAL_TRANSFER_APPROVAL_REQUESTED: :"messaging_hosted_numbers_orders.internal_transfer_approval_requested"
+          MESSAGING_HOSTED_NUMBERS_ORDERS_INTERNAL_TRANSFER_APPROVED: :"messaging_hosted_numbers_orders.internal_transfer_approved"
+          MESSAGING_HOSTED_NUMBERS_ORDERS_INTERNAL_TRANSFER_REJECTED: :"messaging_hosted_numbers_orders.internal_transfer_rejected"
+          MESSAGING_HOSTED_NUMBERS_ORDERS_INTERNAL_TRANSFER_AUTO_APPROVED: :"messaging_hosted_numbers_orders.internal_transfer_auto_approved"
+
+          def self?.values: -> ::Array[Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            approval_deadline: Integer?,
+            decision: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::decision,
+            numbers: ::Array[Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload::Number],
+            order_id: String,
+            order_status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::order_status,
+            profile_id: String,
+            user_id: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor approval_deadline: Integer?
+
+          attr_reader decision: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::decision?
+
+          def decision=: (
+            Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::decision
+          ) -> Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::decision
+
+          attr_reader numbers: ::Array[Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload::Number]?
+
+          def numbers=: (
+            ::Array[Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload::Number]
+          ) -> ::Array[Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload::Number]
+
+          attr_reader order_id: String?
+
+          def order_id=: (String) -> String
+
+          attr_reader order_status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::order_status?
+
+          def order_status=: (
+            Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::order_status
+          ) -> Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::order_status
+
+          attr_reader profile_id: String?
+
+          def profile_id=: (String) -> String
+
+          attr_reader user_id: String?
+
+          def user_id=: (String) -> String
+
+          def initialize: (
+            ?approval_deadline: Integer?,
+            ?decision: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::decision,
+            ?numbers: ::Array[Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload::Number],
+            ?order_id: String,
+            ?order_status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::order_status,
+            ?profile_id: String,
+            ?user_id: String
+          ) -> void
+
+          def to_hash: -> {
+            approval_deadline: Integer?,
+            decision: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::decision,
+            numbers: ::Array[Telnyx::HostedNumberOrderEventWebhookEvent::Data::Payload::Number],
+            order_id: String,
+            order_status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::order_status,
+            profile_id: String,
+            user_id: String
+          }
+
+          type decision = :pending | :approved | :rejected
+
+          module Decision
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            APPROVED: :approved
+            REJECTED: :rejected
+
+            def self?.values: -> ::Array[Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::decision]
+          end
+
+          type number =
+            {
+              status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::Number::status,
+              value: String
+            }
+
+          class Number < Telnyx::Internal::Type::BaseModel
+            attr_reader status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::Number::status?
+
+            def status=: (
+              Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::Number::status
+            ) -> Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::Number::status
+
+            attr_reader value: String?
+
+            def value=: (String) -> String
+
+            def initialize: (
+              ?status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::Number::status,
+              ?value: String
+            ) -> void
+
+            def to_hash: -> {
+              status: Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::Number::status,
+              value: String
+            }
+
+            type status =
+              :deleted
+              | :failed
+              | :failed_activation
+              | :failed_carrier_rejected
+              | :failed_ineligible_carrier
+              | :failed_number_already_hosted
+              | :failed_number_not_found
+              | :failed_ownership_verification
+              | :failed_timeout
+              | :ownership_successful
+              | :pending
+              | :provisioning
+              | :successful
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              DELETED: :deleted
+              FAILED: :failed
+              FAILED_ACTIVATION: :failed_activation
+              FAILED_CARRIER_REJECTED: :failed_carrier_rejected
+              FAILED_INELIGIBLE_CARRIER: :failed_ineligible_carrier
+              FAILED_NUMBER_ALREADY_HOSTED: :failed_number_already_hosted
+              FAILED_NUMBER_NOT_FOUND: :failed_number_not_found
+              FAILED_OWNERSHIP_VERIFICATION: :failed_ownership_verification
+              FAILED_TIMEOUT: :failed_timeout
+              OWNERSHIP_SUCCESSFUL: :ownership_successful
+              PENDING: :pending
+              PROVISIONING: :provisioning
+              SUCCESSFUL: :successful
+
+              def self?.values: -> ::Array[Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::Number::status]
+            end
+          end
+
+          type order_status =
+            :pending
+            | :provisioning
+            | :successful
+            | :failed
+            | :deleted
+            | :carrier_rejected
+            | :compliance_review_failed
+            | :incomplete_documentation
+            | :incorrect_billing_information
+            | :ineligible_carrier
+            | :loa_file_invalid
+            | :loa_file_successful
+
+          module OrderStatus
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            PROVISIONING: :provisioning
+            SUCCESSFUL: :successful
+            FAILED: :failed
+            DELETED: :deleted
+            CARRIER_REJECTED: :carrier_rejected
+            COMPLIANCE_REVIEW_FAILED: :compliance_review_failed
+            INCOMPLETE_DOCUMENTATION: :incomplete_documentation
+            INCORRECT_BILLING_INFORMATION: :incorrect_billing_information
+            INELIGIBLE_CARRIER: :ineligible_carrier
+            LOA_FILE_INVALID: :loa_file_invalid
+            LOA_FILE_SUCCESSFUL: :loa_file_successful
+
+            def self?.values: -> ::Array[Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::Payload::order_status]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::HostedNumberOrderEventWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end
