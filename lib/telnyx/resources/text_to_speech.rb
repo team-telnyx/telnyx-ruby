@@ -20,13 +20,13 @@ module Telnyx
       # with provider-specific parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
-      # `resemble`.
+      # `resemble`, `xai`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
       # configure these features.
       #
-      # @overload generate(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
+      # @overload generate(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #
       # @param aws [::Telnyx::Models::TextToSpeechGenerateParams::Aws] AWS Polly provider-specific parameters.
       #
@@ -57,6 +57,8 @@ module Telnyx
       # @param voice [String] Voice identifier in the format `provider.model_id.voice_id` or `provider.voice_i
       #
       # @param voice_settings [Hash{Symbol=>Object}] Provider-specific voice settings. Contents vary by provider — see provider-speci
+      #
+      # @param xai [::Telnyx::Models::TextToSpeechGenerateParams::Xai] xAI provider-specific parameters.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

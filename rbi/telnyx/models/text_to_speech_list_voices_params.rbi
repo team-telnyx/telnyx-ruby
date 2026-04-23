@@ -106,6 +106,11 @@ module Telnyx
             :resemble,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
+        XAI =
+          T.let(
+            :xai,
+            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
+          )
 
         sig do
           override.returns(

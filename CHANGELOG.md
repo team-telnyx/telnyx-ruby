@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.83.0 (2026-04-23)
+
+Full Changelog: [v5.82.0...v5.83.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.82.0...v5.83.0)
+
+### Features
+
+* Add xAI provider to standalone STT and TTS specs ([f46ab80](https://github.com/team-telnyx/telnyx-ruby/commit/f46ab80c6f17a19e1c7aa4120b7690e671d6bb77))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([9f0d291](https://github.com/team-telnyx/telnyx-ruby/commit/9f0d291b8ef718abf05007a0c36402540a320fcd))
+
 ## 5.82.0 (2026-04-22)
 
 Full Changelog: [v5.81.0...v5.82.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.81.0...v5.82.0)
