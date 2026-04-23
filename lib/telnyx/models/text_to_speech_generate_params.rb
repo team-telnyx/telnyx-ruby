@@ -106,7 +106,13 @@ module Telnyx
       #   @return [Hash{Symbol=>Object}, nil]
       optional :voice_settings, ::Telnyx::Internal::Type::HashOf[::Telnyx::Internal::Type::Unknown]
 
-      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, request_options: {})
+      # @!attribute xai
+      #   xAI provider-specific parameters.
+      #
+      #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Xai, nil]
+      optional :xai, -> { ::Telnyx::TextToSpeechGenerateParams::Xai }
+
+      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {::Telnyx::Models::TextToSpeechGenerateParams} for more details.
       #
@@ -139,6 +145,8 @@ module Telnyx
       #   @param voice [String] Voice identifier in the format `provider.model_id.voice_id` or `provider.voice_i
       #
       #   @param voice_settings [Hash{Symbol=>Object}] Provider-specific voice settings. Contents vary by provider — see provider-speci
+      #
+      #   @param xai [::Telnyx::Models::TextToSpeechGenerateParams::Xai] xAI provider-specific parameters.
       #
       #   @param request_options [::Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -379,6 +387,7 @@ module Telnyx
         MINIMAX = :minimax
         RIME = :rime
         RESEMBLE = :resemble
+        XAI = :xai
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -537,6 +546,92 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class Xai < ::Telnyx::Internal::Type::BaseModel
+        # @!attribute voice_id
+        #   xAI voice identifier.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Xai::VoiceID]
+        required :voice_id, enum: -> { ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID }
+
+        # @!attribute language
+        #   Language code, or `auto` to detect.
+        #
+        #   @return [String, nil]
+        optional :language, String
+
+        # @!attribute output_format
+        #   Audio output format.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Xai::OutputFormat, nil]
+        optional :output_format, enum: -> { ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat }
+
+        # @!attribute sample_rate
+        #   Audio sample rate in Hz.
+        #
+        #   @return [Integer, ::Telnyx::Models::TextToSpeechGenerateParams::Xai::SampleRate, nil]
+        optional :sample_rate, enum: -> { ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate }
+
+        # @!method initialize(voice_id:, language: nil, output_format: nil, sample_rate: nil)
+        #   xAI provider-specific parameters.
+        #
+        #   @param voice_id [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Xai::VoiceID] xAI voice identifier.
+        #
+        #   @param language [String] Language code, or `auto` to detect.
+        #
+        #   @param output_format [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Xai::OutputFormat] Audio output format.
+        #
+        #   @param sample_rate [Integer, ::Telnyx::Models::TextToSpeechGenerateParams::Xai::SampleRate] Audio sample rate in Hz.
+
+        # xAI voice identifier.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateParams::Xai#voice_id
+        module VoiceID
+          extend ::Telnyx::Internal::Type::Enum
+
+          EVE = :eve
+          ARA = :ara
+          REX = :rex
+          SAL = :sal
+          LEO = :leo
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Audio output format.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateParams::Xai#output_format
+        module OutputFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          MP3 = :mp3
+          WAV = :wav
+          PCM = :pcm
+          MULAW = :mulaw
+          ALAW = :alaw
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Audio sample rate in Hz.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateParams::Xai#sample_rate
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          SAMPLE_RATE_8000 = 8000
+          SAMPLE_RATE_16000 = 16_000
+          SAMPLE_RATE_22050 = 22_050
+          SAMPLE_RATE_24000 = 24_000
+          SAMPLE_RATE_44100 = 44_100
+          SAMPLE_RATE_48000 = 48_000
+
+          # @!method self.values
+          #   @return [Array<Integer>]
+        end
       end
     end
   end

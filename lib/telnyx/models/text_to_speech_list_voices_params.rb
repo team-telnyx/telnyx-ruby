@@ -37,6 +37,7 @@ module Telnyx
         MINIMAX = :minimax
         RIME = :rime
         RESEMBLE = :resemble
+        XAI = :xai
 
         # @!method self.values
         #   @return [Array<Symbol>]
