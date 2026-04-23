@@ -17,6 +17,7 @@ module Telnyx
         ?text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
         ?voice: String,
         ?voice_settings: ::Hash[Symbol, top],
+        ?xai: ::Telnyx::TextToSpeechGenerateParams::Xai,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::TextToSpeechGenerateResponse
 

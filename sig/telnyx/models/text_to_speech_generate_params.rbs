@@ -16,7 +16,8 @@ module Telnyx
         text: String,
         text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
         voice: String,
-        voice_settings: ::Hash[Symbol, top]
+        voice_settings: ::Hash[Symbol, top],
+        xai: ::Telnyx::TextToSpeechGenerateParams::Xai
       }
       & ::Telnyx::Internal::Type::request_parameters
 
@@ -104,6 +105,12 @@ module Telnyx
 
       def voice_settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
+      attr_reader xai: ::Telnyx::TextToSpeechGenerateParams::Xai?
+
+      def xai=: (
+        ::Telnyx::TextToSpeechGenerateParams::Xai
+      ) -> ::Telnyx::TextToSpeechGenerateParams::Xai
+
       def initialize: (
         ?aws: ::Telnyx::TextToSpeechGenerateParams::Aws,
         ?azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
@@ -120,6 +127,7 @@ module Telnyx
         ?text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
         ?voice: String,
         ?voice_settings: ::Hash[Symbol, top],
+        ?xai: ::Telnyx::TextToSpeechGenerateParams::Xai,
         ?request_options: ::Telnyx::request_opts
       ) -> void
 
@@ -139,6 +147,7 @@ module Telnyx
         text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
         voice: String,
         voice_settings: ::Hash[Symbol, top],
+        xai: ::Telnyx::TextToSpeechGenerateParams::Xai,
         request_options: ::Telnyx::RequestOptions
       }
 
@@ -375,7 +384,14 @@ module Telnyx
       end
 
       type provider =
-        :aws | :telnyx | :azure | :elevenlabs | :minimax | :rime | :resemble
+        :aws
+        | :telnyx
+        | :azure
+        | :elevenlabs
+        | :minimax
+        | :rime
+        | :resemble
+        | :xai
 
       module Provider
         extend ::Telnyx::Internal::Type::Enum
@@ -387,6 +403,7 @@ module Telnyx
         MINIMAX: :minimax
         RIME: :rime
         RESEMBLE: :resemble
+        XAI: :xai
 
         def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::provider]
       end
@@ -542,6 +559,91 @@ module Telnyx
         SSML: :ssml
 
         def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::text_type]
+      end
+
+      type xai =
+        {
+          voice_id: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::voice_id,
+          language: String,
+          output_format: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::output_format,
+          sample_rate: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate
+        }
+
+      class Xai < ::Telnyx::Internal::Type::BaseModel
+        attr_accessor voice_id: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::voice_id
+
+        attr_reader language: String?
+
+        def language=: (String) -> String
+
+        attr_reader output_format: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::output_format?
+
+        def output_format=: (
+          ::Telnyx::Models::TextToSpeechGenerateParams::Xai::output_format
+        ) -> ::Telnyx::Models::TextToSpeechGenerateParams::Xai::output_format
+
+        attr_reader sample_rate: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate?
+
+        def sample_rate=: (
+          ::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate
+        ) -> ::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate
+
+        def initialize: (
+          voice_id: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::voice_id,
+          ?language: String,
+          ?output_format: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::output_format,
+          ?sample_rate: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate
+        ) -> void
+
+        def to_hash: -> {
+          voice_id: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::voice_id,
+          language: String,
+          output_format: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::output_format,
+          sample_rate: ::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate
+        }
+
+        type voice_id = :eve | :ara | :rex | :sal | :leo
+
+        module VoiceID
+          extend ::Telnyx::Internal::Type::Enum
+
+          EVE: :eve
+          ARA: :ara
+          REX: :rex
+          SAL: :sal
+          LEO: :leo
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::Xai::voice_id]
+        end
+
+        type output_format = :mp3 | :wav | :pcm | :mulaw | :alaw
+
+        module OutputFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          MP3: :mp3
+          WAV: :wav
+          PCM: :pcm
+          MULAW: :mulaw
+          ALAW: :alaw
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::Xai::output_format]
+        end
+
+        type sample_rate = 8000 | 16000 | 22050 | 24000 | 44100 | 48000
+
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          SAMPLE_RATE_8000: 8000
+          SAMPLE_RATE_16000: 16000
+          SAMPLE_RATE_22050: 22050
+          SAMPLE_RATE_24000: 24000
+          SAMPLE_RATE_44100: 44100
+          SAMPLE_RATE_48000: 48000
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate]
+        end
       end
     end
   end

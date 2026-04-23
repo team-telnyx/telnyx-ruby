@@ -17,7 +17,7 @@ module Telnyx
       # with provider-specific parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
-      # `resemble`.
+      # `resemble`, `xai`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
@@ -40,6 +40,7 @@ module Telnyx
           text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
           voice: String,
           voice_settings: T::Hash[Symbol, T.anything],
+          xai: ::Telnyx::TextToSpeechGenerateParams::Xai::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::TextToSpeechGenerateResponse)
       end
@@ -83,6 +84,8 @@ module Telnyx
         # Provider-specific voice settings. Contents vary by provider — see
         # provider-specific parameter objects below.
         voice_settings: nil,
+        # xAI provider-specific parameters.
+        xai: nil,
         request_options: {}
       )
       end

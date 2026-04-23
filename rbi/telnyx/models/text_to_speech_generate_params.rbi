@@ -177,6 +177,15 @@ module Telnyx
       sig { params(voice_settings: T::Hash[Symbol, T.anything]).void }
       attr_writer :voice_settings
 
+      # xAI provider-specific parameters.
+      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Xai)) }
+      attr_reader :xai
+
+      sig do
+        params(xai: ::Telnyx::TextToSpeechGenerateParams::Xai::OrHash).void
+      end
+      attr_writer :xai
+
       sig do
         params(
           aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
@@ -195,6 +204,7 @@ module Telnyx
           text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
           voice: String,
           voice_settings: T::Hash[Symbol, T.anything],
+          xai: ::Telnyx::TextToSpeechGenerateParams::Xai::OrHash,
           request_options: ::Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -238,6 +248,8 @@ module Telnyx
         # Provider-specific voice settings. Contents vary by provider — see
         # provider-specific parameter objects below.
         voice_settings: nil,
+        # xAI provider-specific parameters.
+        xai: nil,
         request_options: {}
       )
       end
@@ -261,6 +273,7 @@ module Telnyx
             text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
             voice: String,
             voice_settings: T::Hash[Symbol, T.anything],
+            xai: ::Telnyx::TextToSpeechGenerateParams::Xai,
             request_options: ::Telnyx::RequestOptions
           }
         )
@@ -782,6 +795,11 @@ module Telnyx
             :resemble,
             ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
           )
+        XAI =
+          T.let(
+            :xai,
+            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+          )
 
         sig do
           override.returns(
@@ -1128,6 +1146,257 @@ module Telnyx
           )
         end
         def self.values
+        end
+      end
+
+      class Xai < ::Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              ::Telnyx::TextToSpeechGenerateParams::Xai,
+              ::Telnyx::Internal::AnyHash
+            )
+          end
+
+        # xAI voice identifier.
+        sig do
+          returns(::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::OrSymbol)
+        end
+        attr_accessor :voice_id
+
+        # Language code, or `auto` to detect.
+        sig { returns(T.nilable(String)) }
+        attr_reader :language
+
+        sig { params(language: String).void }
+        attr_writer :language
+
+        # Audio output format.
+        sig do
+          returns(
+            T.nilable(
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol
+            )
+          )
+        end
+        attr_reader :output_format
+
+        sig do
+          params(
+            output_format:
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol
+          ).void
+        end
+        attr_writer :output_format
+
+        # Audio sample rate in Hz.
+        sig do
+          returns(
+            T.nilable(
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+            )
+          )
+        end
+        attr_reader :sample_rate
+
+        sig do
+          params(
+            sample_rate:
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+          ).void
+        end
+        attr_writer :sample_rate
+
+        # xAI provider-specific parameters.
+        sig do
+          params(
+            voice_id:
+              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::OrSymbol,
+            language: String,
+            output_format:
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol,
+            sample_rate:
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # xAI voice identifier.
+          voice_id:,
+          # Language code, or `auto` to detect.
+          language: nil,
+          # Audio output format.
+          output_format: nil,
+          # Audio sample rate in Hz.
+          sample_rate: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              voice_id:
+                ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::OrSymbol,
+              language: String,
+              output_format:
+                ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol,
+              sample_rate:
+                ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # xAI voice identifier.
+        module VoiceID
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          EVE =
+            T.let(
+              :eve,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+            )
+          ARA =
+            T.let(
+              :ara,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+            )
+          REX =
+            T.let(
+              :rex,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+            )
+          SAL =
+            T.let(
+              :sal,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+            )
+          LEO =
+            T.let(
+              :leo,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Audio output format.
+        module OutputFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          MP3 =
+            T.let(
+              :mp3,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+            )
+          WAV =
+            T.let(
+              :wav,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+            )
+          PCM =
+            T.let(
+              :pcm,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+            )
+          MULAW =
+            T.let(
+              :mulaw,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+            )
+          ALAW =
+            T.let(
+              :alaw,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Audio sample rate in Hz.
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedInteger =
+            T.type_alias do
+              T.all(
+                Integer,
+                ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate
+              )
+            end
+          OrInteger = T.type_alias { Integer }
+
+          SAMPLE_RATE_8000 =
+            T.let(
+              8000,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_16000 =
+            T.let(
+              16_000,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_22050 =
+            T.let(
+              22_050,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_24000 =
+            T.let(
+              24_000,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_44100 =
+            T.let(
+              44_100,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_48000 =
+            T.let(
+              48_000,
+              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end
