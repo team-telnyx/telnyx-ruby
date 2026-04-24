@@ -19,6 +19,7 @@ module Telnyx
       | Telnyx::CallForkStoppedWebhookEvent
       | Telnyx::CallGatherEndedWebhookEvent
       | Telnyx::CallHangupWebhookEvent
+      | Telnyx::CallHoldWebhookEvent
       | Telnyx::CallInitiatedWebhookEvent
       | Telnyx::CallLeftQueueWebhookEvent
       | Telnyx::CallMachineDetectionEndedWebhookEvent
@@ -41,6 +42,7 @@ module Telnyx
       | Telnyx::CallStreamingFailedWebhookEvent
       | Telnyx::CallStreamingStartedWebhookEvent
       | Telnyx::CallStreamingStoppedWebhookEvent
+      | Telnyx::CallUnholdWebhookEvent
       | Telnyx::CampaignStatusUpdate
       | Telnyx::ConferenceCreatedWebhookEvent
       | Telnyx::ConferenceEndedWebhookEvent
@@ -88,6 +90,7 @@ module Telnyx
       | Telnyx::CallForkStoppedWebhookEvent
       | Telnyx::CallGatherEndedWebhookEvent
       | Telnyx::CallHangupWebhookEvent
+      | Telnyx::CallHoldWebhookEvent
       | Telnyx::CallInitiatedWebhookEvent
       | Telnyx::CallLeftQueueWebhookEvent
       | Telnyx::CallMachineDetectionEndedWebhookEvent
@@ -110,6 +113,7 @@ module Telnyx
       | Telnyx::CallStreamingFailedWebhookEvent
       | Telnyx::CallStreamingStartedWebhookEvent
       | Telnyx::CallStreamingStoppedWebhookEvent
+      | Telnyx::CallUnholdWebhookEvent
       | Telnyx::CampaignStatusUpdate
       | Telnyx::ConferenceCreatedWebhookEvent
       | Telnyx::ConferenceEndedWebhookEvent
