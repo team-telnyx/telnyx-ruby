@@ -15,7 +15,11 @@ module Telnyx
         # key as an integration secret under the `api_key_ref` field. See
         # [integration secrets documentation](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
         # for details. For Telnyx voices, use `Telnyx.<model_id>.<voice_id>` (e.g.
-        # Telnyx.KokoroTTS.af_heart)
+        # Telnyx.KokoroTTS.af_heart). The voice portion of the identifier supports
+        # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+        # using mustache syntax (e.g. `Telnyx.Ultra.{{voice_id}}`). The variable is
+        # resolved at call time from your dynamic variables webhook, allowing you to
+        # select the voice dynamically per call.
         sig { returns(String) }
         attr_accessor :voice
 
@@ -153,7 +157,11 @@ module Telnyx
           # key as an integration secret under the `api_key_ref` field. See
           # [integration secrets documentation](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
           # for details. For Telnyx voices, use `Telnyx.<model_id>.<voice_id>` (e.g.
-          # Telnyx.KokoroTTS.af_heart)
+          # Telnyx.KokoroTTS.af_heart). The voice portion of the identifier supports
+          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # using mustache syntax (e.g. `Telnyx.Ultra.{{voice_id}}`). The variable is
+          # resolved at call time from your dynamic variables webhook, allowing you to
+          # select the voice dynamically per call.
           voice:,
           # The `identifier` for an integration secret
           # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)

@@ -203,6 +203,8 @@ module Telnyx
 
   class CallHangupWebhookEvent = Telnyx::Models::CallHangupWebhookEvent
 
+  class CallHoldWebhookEvent = Telnyx::Models::CallHoldWebhookEvent
+
   class CallInitiated = Telnyx::Models::CallInitiated
 
   class CallInitiatedWebhookEvent = Telnyx::Models::CallInitiatedWebhookEvent
@@ -294,6 +296,8 @@ module Telnyx
   class CallStreamingStopped = Telnyx::Models::CallStreamingStopped
 
   class CallStreamingStoppedWebhookEvent = Telnyx::Models::CallStreamingStoppedWebhookEvent
+
+  class CallUnholdWebhookEvent = Telnyx::Models::CallUnholdWebhookEvent
 
   class CampaignStatusUpdate = Telnyx::Models::CampaignStatusUpdate
 

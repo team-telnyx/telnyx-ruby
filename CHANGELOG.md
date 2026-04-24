@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.84.0 (2026-04-24)
+
+Full Changelog: [v5.83.0...v5.84.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.83.0...v5.84.0)
+
+### Features
+
+* Add call.hold and call.unhold webhook event documentation ([7dbc6b0](https://github.com/team-telnyx/telnyx-ruby/commit/7dbc6b099b5193a72a0faadbbfc6cd7e87ea34eb))
+
+
+### Documentation
+
+* document dynamic variable support for voice_settings.voice ([b72a45a](https://github.com/team-telnyx/telnyx-ruby/commit/b72a45a9d7eb19fbbe2138f6dd1cf623256066aa))
+
 ## 5.83.0 (2026-04-23)
 
 Full Changelog: [v5.82.0...v5.83.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.82.0...v5.83.0)
