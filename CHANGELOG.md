@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.85.0 (2026-04-27)
+
+Full Changelog: [v5.84.0...v5.85.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.84.0...v5.85.0)
+
+### Features
+
+* support setting headers via env ([2a11578](https://github.com/team-telnyx/telnyx-ruby/commit/2a115784f4f9d877a679db44a49a5c6ce05ac0f4))
+
 ## 5.84.0 (2026-04-24)
 
 Full Changelog: [v5.83.0...v5.84.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.83.0...v5.84.0)
