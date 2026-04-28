@@ -17,6 +17,18 @@ module Telnyx
       #   @return [Telnyx::Models::VerifyProfileCreateParams::Call, nil]
       optional :call, -> { Telnyx::VerifyProfileCreateParams::Call }
 
+      # @!attribute daily_spend_limit
+      #   The maximum daily spend allowed on this verify profile, in USD.
+      #
+      #   @return [Float, nil]
+      optional :daily_spend_limit, Float
+
+      # @!attribute daily_spend_limit_enabled
+      #   Whether the daily spend limit is enforced for this verify profile.
+      #
+      #   @return [Boolean, nil]
+      optional :daily_spend_limit_enabled, Telnyx::Internal::Type::Boolean
+
       # @!attribute flashcall
       #
       #   @return [Telnyx::Models::VerifyProfileCreateParams::Flashcall, nil]
@@ -26,11 +38,6 @@ module Telnyx
       #
       #   @return [String, nil]
       optional :language, String
-
-      # @!attribute rcs
-      #
-      #   @return [Telnyx::Models::VerifyProfileCreateParams::Rcs, nil]
-      optional :rcs, -> { Telnyx::VerifyProfileCreateParams::Rcs }
 
       # @!attribute sms
       #
@@ -52,16 +59,27 @@ module Telnyx
       #   @return [Telnyx::Models::VerifyProfileCreateParams::Whatsapp, nil]
       optional :whatsapp, -> { Telnyx::VerifyProfileCreateParams::Whatsapp }
 
-      # @!method initialize(name:, call: nil, flashcall: nil, language: nil, rcs: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, whatsapp: nil, request_options: {})
+      # @!method initialize(name:, call: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, flashcall: nil, language: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, whatsapp: nil, request_options: {})
       #   @param name [String]
+      #
       #   @param call [Telnyx::Models::VerifyProfileCreateParams::Call]
+      #
+      #   @param daily_spend_limit [Float] The maximum daily spend allowed on this verify profile, in USD.
+      #
+      #   @param daily_spend_limit_enabled [Boolean] Whether the daily spend limit is enforced for this verify profile.
+      #
       #   @param flashcall [Telnyx::Models::VerifyProfileCreateParams::Flashcall]
+      #
       #   @param language [String]
-      #   @param rcs [Telnyx::Models::VerifyProfileCreateParams::Rcs]
+      #
       #   @param sms [Telnyx::Models::VerifyProfileCreateParams::SMS]
+      #
       #   @param webhook_failover_url [String]
+      #
       #   @param webhook_url [String]
+      #
       #   @param whatsapp [Telnyx::Models::VerifyProfileCreateParams::Whatsapp]
+      #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
       class Call < Telnyx::Internal::Type::BaseModel
@@ -152,68 +170,6 @@ module Telnyx
         #   @param app_name [String] The name that identifies the application requesting 2fa in the verification mess
         #
         #   @param default_verification_timeout_secs [Integer] For every request that is initiated via this Verify profile, this sets the numbe
-        #
-        #   @param whitelisted_destinations [Array<String>] Enabled country destinations to send verification codes. The elements in the lis
-      end
-
-      class Rcs < Telnyx::Internal::Type::BaseModel
-        # @!attribute app_name
-        #   The name that identifies the application requesting 2fa in the verification
-        #   message.
-        #
-        #   @return [String, nil]
-        optional :app_name, String
-
-        # @!attribute code_length
-        #   The length of the verify code to generate.
-        #
-        #   @return [Integer, nil]
-        optional :code_length, Integer
-
-        # @!attribute default_verification_timeout_secs
-        #   For every request that is initiated via this Verify profile, this sets the
-        #   number of seconds before a verification request code expires. Once the
-        #   verification request expires, the user cannot use the code to verify their
-        #   identity.
-        #
-        #   @return [Integer, nil]
-        optional :default_verification_timeout_secs, Integer
-
-        # @!attribute messaging_template_id
-        #   The message template identifier selected from /verify_profiles/templates
-        #
-        #   @return [String, nil]
-        optional :messaging_template_id, String
-
-        # @!attribute sms_fallback
-        #   Enable SMS fallback when RCS delivery fails.
-        #
-        #   @return [Boolean, nil]
-        optional :sms_fallback, Telnyx::Internal::Type::Boolean
-
-        # @!attribute whitelisted_destinations
-        #   Enabled country destinations to send verification codes. The elements in the
-        #   list must be valid ISO 3166-1 alpha-2 country codes. If set to `["*"]`, all
-        #   destinations will be allowed. **Conditionally required:** this field must be
-        #   provided when your organization is configured to require explicit whitelisted
-        #   destinations; otherwise it is optional.
-        #
-        #   @return [Array<String>, nil]
-        optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
-
-        # @!method initialize(app_name: nil, code_length: nil, default_verification_timeout_secs: nil, messaging_template_id: nil, sms_fallback: nil, whitelisted_destinations: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::VerifyProfileCreateParams::Rcs} for more details.
-        #
-        #   @param app_name [String] The name that identifies the application requesting 2fa in the verification mess
-        #
-        #   @param code_length [Integer] The length of the verify code to generate.
-        #
-        #   @param default_verification_timeout_secs [Integer] For every request that is initiated via this Verify profile, this sets the numbe
-        #
-        #   @param messaging_template_id [String] The message template identifier selected from /verify_profiles/templates
-        #
-        #   @param sms_fallback [Boolean] Enable SMS fallback when RCS delivery fails.
         #
         #   @param whitelisted_destinations [Array<String>] Enabled country destinations to send verification codes. The elements in the lis
       end
