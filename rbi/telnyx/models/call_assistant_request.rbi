@@ -344,11 +344,11 @@ module Telnyx
         sig { params(certificate_ref: String).void }
         attr_writer :certificate_ref
 
-        # When enabled, Telnyx forwards conversation metadata and dynamic variables to the
-        # external LLM endpoint. Defaults to false. The external endpoint receives the
-        # standard chat completions payload with top-level `metadata` and
-        # `dynamic_variables` objects when values are available. For example:
-        # `{"metadata":{"conversation_id":"conv_123","assistant_id":"assistant_456","call_control_id":"v3:abc123","telnyx_conversation_channel":"phone_call"},"dynamic_variables":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+        # When enabled, Telnyx forwards the assistant's dynamic variables to the external
+        # LLM endpoint. Defaults to false. The chat completion request includes a
+        # top-level `extra_metadata` object when dynamic variables are available. For
+        # example:
+        # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :forward_metadata
 
@@ -397,11 +397,11 @@ module Telnyx
           # Integration secret identifier for the client certificate used with certificate
           # authentication.
           certificate_ref: nil,
-          # When enabled, Telnyx forwards conversation metadata and dynamic variables to the
-          # external LLM endpoint. Defaults to false. The external endpoint receives the
-          # standard chat completions payload with top-level `metadata` and
-          # `dynamic_variables` objects when values are available. For example:
-          # `{"metadata":{"conversation_id":"conv_123","assistant_id":"assistant_456","call_control_id":"v3:abc123","telnyx_conversation_channel":"phone_call"},"dynamic_variables":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+          # When enabled, Telnyx forwards the assistant's dynamic variables to the external
+          # LLM endpoint. Defaults to false. The chat completion request includes a
+          # top-level `extra_metadata` object when dynamic variables are available. For
+          # example:
+          # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
           forward_metadata: nil,
           # Integration secret identifier for the external LLM API key.
           llm_api_key_ref: nil,
@@ -580,11 +580,11 @@ module Telnyx
           sig { params(certificate_ref: String).void }
           attr_writer :certificate_ref
 
-          # When enabled, Telnyx forwards conversation metadata and dynamic variables to the
-          # external LLM endpoint. Defaults to false. The external endpoint receives the
-          # standard chat completions payload with top-level `metadata` and
-          # `dynamic_variables` objects when values are available. For example:
-          # `{"metadata":{"conversation_id":"conv_123","assistant_id":"assistant_456","call_control_id":"v3:abc123","telnyx_conversation_channel":"phone_call"},"dynamic_variables":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+          # When enabled, Telnyx forwards the assistant's dynamic variables to the external
+          # LLM endpoint. Defaults to false. The chat completion request includes a
+          # top-level `extra_metadata` object when dynamic variables are available. For
+          # example:
+          # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :forward_metadata
 
@@ -633,11 +633,11 @@ module Telnyx
             # Integration secret identifier for the client certificate used with certificate
             # authentication.
             certificate_ref: nil,
-            # When enabled, Telnyx forwards conversation metadata and dynamic variables to the
-            # external LLM endpoint. Defaults to false. The external endpoint receives the
-            # standard chat completions payload with top-level `metadata` and
-            # `dynamic_variables` objects when values are available. For example:
-            # `{"metadata":{"conversation_id":"conv_123","assistant_id":"assistant_456","call_control_id":"v3:abc123","telnyx_conversation_channel":"phone_call"},"dynamic_variables":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+            # When enabled, Telnyx forwards the assistant's dynamic variables to the external
+            # LLM endpoint. Defaults to false. The chat completion request includes a
+            # top-level `extra_metadata` object when dynamic variables are available. For
+            # example:
+            # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
             forward_metadata: nil,
             # Integration secret identifier for the external LLM API key.
             llm_api_key_ref: nil,
