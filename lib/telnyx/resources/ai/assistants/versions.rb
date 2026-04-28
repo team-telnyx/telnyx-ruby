@@ -43,7 +43,7 @@ module Telnyx
           # Updates the configuration of a specific assistant version. Can not update main
           # version
           #
-          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
           #
           # @param version_id [String] Path param
           #
@@ -56,6 +56,10 @@ module Telnyx
           # @param dynamic_variables_webhook_url [String] Body param: If the dynamic_variables_webhook_url is set for the assistant, we wi
           #
           # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param
+          #
+          # @param external_llm [Telnyx::Models::AI::Assistants::UpdateAssistant::ExternalLlm] Body param
+          #
+          # @param fallback_config [Telnyx::Models::AI::Assistants::UpdateAssistant::FallbackConfig] Body param
           #
           # @param greeting [String] Body param: Text that the assistant will use to start the conversation. This may
           #
