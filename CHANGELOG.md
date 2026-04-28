@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.86.0 (2026-04-28)
+
+Full Changelog: [v5.85.0...v5.86.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.85.0...v5.86.0)
+
+### Features
+
+* Fix CreateVerifyProfileRequest to match messaging-2fa schema ([e64fe7b](https://github.com/team-telnyx/telnyx-ruby/commit/e64fe7bc0d090d86080445a4dbe149a216a09895))
+* Update assistant transcription settings spec ([172cab5](https://github.com/team-telnyx/telnyx-ruby/commit/172cab549f428deb1fe9432bf91a1fa7fa9a9956))
+
 ## 5.85.0 (2026-04-27)
 
 Full Changelog: [v5.84.0...v5.85.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.84.0...v5.85.0)

@@ -9,9 +9,10 @@ module Telnyx
         params(
           name: String,
           call: Telnyx::VerifyProfileCreateParams::Call::OrHash,
+          daily_spend_limit: Float,
+          daily_spend_limit_enabled: T::Boolean,
           flashcall: Telnyx::VerifyProfileCreateParams::Flashcall::OrHash,
           language: String,
-          rcs: Telnyx::VerifyProfileCreateParams::Rcs::OrHash,
           sms: Telnyx::VerifyProfileCreateParams::SMS::OrHash,
           webhook_failover_url: String,
           webhook_url: String,
@@ -22,9 +23,12 @@ module Telnyx
       def create(
         name:,
         call: nil,
+        # The maximum daily spend allowed on this verify profile, in USD.
+        daily_spend_limit: nil,
+        # Whether the daily spend limit is enforced for this verify profile.
+        daily_spend_limit_enabled: nil,
         flashcall: nil,
         language: nil,
-        rcs: nil,
         sms: nil,
         webhook_failover_url: nil,
         webhook_url: nil,
@@ -52,10 +56,10 @@ module Telnyx
         params(
           verify_profile_id: String,
           call: Telnyx::VerifyProfileUpdateParams::Call::OrHash,
-          flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall::OrHash,
+          daily_spend_limit: Float,
+          daily_spend_limit_enabled: T::Boolean,
           language: String,
           name: String,
-          rcs: Telnyx::VerifyProfileUpdateParams::Rcs::OrHash,
           sms: Telnyx::VerifyProfileUpdateParams::SMS::OrHash,
           webhook_failover_url: String,
           webhook_url: String,
@@ -67,10 +71,12 @@ module Telnyx
         # The identifier of the Verify profile to update.
         verify_profile_id,
         call: nil,
-        flashcall: nil,
+        # The maximum daily spend allowed on this verify profile, in USD.
+        daily_spend_limit: nil,
+        # Whether the daily spend limit is enforced for this verify profile.
+        daily_spend_limit_enabled: nil,
         language: nil,
         name: nil,
-        rcs: nil,
         sms: nil,
         webhook_failover_url: nil,
         webhook_url: nil,
