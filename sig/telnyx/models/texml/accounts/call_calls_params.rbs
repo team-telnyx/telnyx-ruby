@@ -48,6 +48,9 @@ module Telnyx
                 cancel_playback_on_detect_message_end: bool,
                 cancel_playback_on_machine_detection: bool,
                 custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader],
+                deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection,
+                deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method,
+                deepfake_detection_callback_url: String,
                 detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::detection_mode,
                 fallback_url: String,
                 from: String,
@@ -120,6 +123,22 @@ module Telnyx
               def custom_headers=: (
                 ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader]
               ) -> ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader]
+
+              attr_reader deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection?
+
+              def deepfake_detection=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection
+
+              attr_reader deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method?
+
+              def deepfake_detection_callback_method=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method
+
+              attr_reader deepfake_detection_callback_url: String?
+
+              def deepfake_detection_callback_url=: (String) -> String
 
               attr_reader detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::detection_mode?
 
@@ -281,6 +300,9 @@ module Telnyx
                 ?cancel_playback_on_detect_message_end: bool,
                 ?cancel_playback_on_machine_detection: bool,
                 ?custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader],
+                ?deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection,
+                ?deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method,
+                ?deepfake_detection_callback_url: String,
                 ?detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::detection_mode,
                 ?fallback_url: String,
                 ?from: String,
@@ -325,6 +347,9 @@ module Telnyx
                 cancel_playback_on_detect_message_end: bool,
                 cancel_playback_on_machine_detection: bool,
                 custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader],
+                deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection,
+                deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method,
+                deepfake_detection_callback_url: String,
                 detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::detection_mode,
                 fallback_url: String,
                 from: String,
@@ -380,6 +405,27 @@ module Telnyx
                 def initialize: (name: String, value: String) -> void
 
                 def to_hash: -> { name: String, value: String }
+              end
+
+              type deepfake_detection = :Enable
+
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                ENABLE: :Enable
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection]
+              end
+
+              type deepfake_detection_callback_method = :GET | :POST
+
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                GET: :GET
+                POST: :POST
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method]
               end
 
               type detection_mode = :Premium | :Regular
@@ -537,6 +583,9 @@ module Telnyx
                 cancel_playback_on_detect_message_end: bool,
                 cancel_playback_on_machine_detection: bool,
                 custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader],
+                deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection,
+                deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method,
+                deepfake_detection_callback_url: String,
                 detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::detection_mode,
                 fallback_url: String,
                 from: String,
@@ -609,6 +658,22 @@ module Telnyx
               def custom_headers=: (
                 ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader]
               ) -> ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader]
+
+              attr_reader deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection?
+
+              def deepfake_detection=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection
+
+              attr_reader deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method?
+
+              def deepfake_detection_callback_method=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method
+
+              attr_reader deepfake_detection_callback_url: String?
+
+              def deepfake_detection_callback_url=: (String) -> String
 
               attr_reader detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::detection_mode?
 
@@ -770,6 +835,9 @@ module Telnyx
                 ?cancel_playback_on_detect_message_end: bool,
                 ?cancel_playback_on_machine_detection: bool,
                 ?custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader],
+                ?deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection,
+                ?deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method,
+                ?deepfake_detection_callback_url: String,
                 ?detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::detection_mode,
                 ?fallback_url: String,
                 ?from: String,
@@ -814,6 +882,9 @@ module Telnyx
                 cancel_playback_on_detect_message_end: bool,
                 cancel_playback_on_machine_detection: bool,
                 custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader],
+                deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection,
+                deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method,
+                deepfake_detection_callback_url: String,
                 detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::detection_mode,
                 fallback_url: String,
                 from: String,
@@ -869,6 +940,27 @@ module Telnyx
                 def initialize: (name: String, value: String) -> void
 
                 def to_hash: -> { name: String, value: String }
+              end
+
+              type deepfake_detection = :Enable
+
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                ENABLE: :Enable
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection]
+              end
+
+              type deepfake_detection_callback_method = :GET | :POST
+
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                GET: :GET
+                POST: :POST
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method]
               end
 
               type detection_mode = :Premium | :Regular
@@ -1025,6 +1117,9 @@ module Telnyx
                 cancel_playback_on_detect_message_end: bool,
                 cancel_playback_on_machine_detection: bool,
                 custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader],
+                deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection,
+                deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method,
+                deepfake_detection_callback_url: String,
                 detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::detection_mode,
                 fallback_url: String,
                 from: String,
@@ -1096,6 +1191,22 @@ module Telnyx
               def custom_headers=: (
                 ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader]
               ) -> ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader]
+
+              attr_reader deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection?
+
+              def deepfake_detection=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection
+
+              attr_reader deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method?
+
+              def deepfake_detection_callback_method=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method
+
+              attr_reader deepfake_detection_callback_url: String?
+
+              def deepfake_detection_callback_url=: (String) -> String
 
               attr_reader detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::detection_mode?
 
@@ -1258,6 +1369,9 @@ module Telnyx
                 ?cancel_playback_on_detect_message_end: bool,
                 ?cancel_playback_on_machine_detection: bool,
                 ?custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader],
+                ?deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection,
+                ?deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method,
+                ?deepfake_detection_callback_url: String,
                 ?detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::detection_mode,
                 ?fallback_url: String,
                 ?from: String,
@@ -1302,6 +1416,9 @@ module Telnyx
                 cancel_playback_on_detect_message_end: bool,
                 cancel_playback_on_machine_detection: bool,
                 custom_headers: ::Array[Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader],
+                deepfake_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection,
+                deepfake_detection_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method,
+                deepfake_detection_callback_url: String,
                 detection_mode: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::detection_mode,
                 fallback_url: String,
                 from: String,
@@ -1358,6 +1475,27 @@ module Telnyx
                 def initialize: (name: String, value: String) -> void
 
                 def to_hash: -> { name: String, value: String }
+              end
+
+              type deepfake_detection = :Enable
+
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                ENABLE: :Enable
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection]
+              end
+
+              type deepfake_detection_callback_method = :GET | :POST
+
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                GET: :GET
+                POST: :POST
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method]
               end
 
               type detection_mode = :Premium | :Regular
