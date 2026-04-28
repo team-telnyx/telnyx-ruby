@@ -4,10 +4,10 @@ module Telnyx
       {
         verify_profile_id: String,
         call: Telnyx::VerifyProfileUpdateParams::Call,
-        flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall,
+        daily_spend_limit: Float,
+        daily_spend_limit_enabled: bool,
         language: String,
         name: String,
-        rcs: Telnyx::VerifyProfileUpdateParams::Rcs,
         sms: Telnyx::VerifyProfileUpdateParams::SMS,
         webhook_failover_url: String,
         webhook_url: String,
@@ -27,11 +27,13 @@ module Telnyx
         Telnyx::VerifyProfileUpdateParams::Call
       ) -> Telnyx::VerifyProfileUpdateParams::Call
 
-      attr_reader flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall?
+      attr_reader daily_spend_limit: Float?
 
-      def flashcall=: (
-        Telnyx::VerifyProfileUpdateParams::Flashcall
-      ) -> Telnyx::VerifyProfileUpdateParams::Flashcall
+      def daily_spend_limit=: (Float) -> Float
+
+      attr_reader daily_spend_limit_enabled: bool?
+
+      def daily_spend_limit_enabled=: (bool) -> bool
 
       attr_reader language: String?
 
@@ -40,12 +42,6 @@ module Telnyx
       attr_reader name: String?
 
       def name=: (String) -> String
-
-      attr_reader rcs: Telnyx::VerifyProfileUpdateParams::Rcs?
-
-      def rcs=: (
-        Telnyx::VerifyProfileUpdateParams::Rcs
-      ) -> Telnyx::VerifyProfileUpdateParams::Rcs
 
       attr_reader sms: Telnyx::VerifyProfileUpdateParams::SMS?
 
@@ -70,10 +66,10 @@ module Telnyx
       def initialize: (
         verify_profile_id: String,
         ?call: Telnyx::VerifyProfileUpdateParams::Call,
-        ?flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall,
+        ?daily_spend_limit: Float,
+        ?daily_spend_limit_enabled: bool,
         ?language: String,
         ?name: String,
-        ?rcs: Telnyx::VerifyProfileUpdateParams::Rcs,
         ?sms: Telnyx::VerifyProfileUpdateParams::SMS,
         ?webhook_failover_url: String,
         ?webhook_url: String,
@@ -84,10 +80,10 @@ module Telnyx
       def to_hash: -> {
         verify_profile_id: String,
         call: Telnyx::VerifyProfileUpdateParams::Call,
-        flashcall: Telnyx::VerifyProfileUpdateParams::Flashcall,
+        daily_spend_limit: Float,
+        daily_spend_limit_enabled: bool,
         language: String,
         name: String,
-        rcs: Telnyx::VerifyProfileUpdateParams::Rcs,
         sms: Telnyx::VerifyProfileUpdateParams::SMS,
         webhook_failover_url: String,
         webhook_url: String,
@@ -138,93 +134,6 @@ module Telnyx
           code_length: Integer,
           default_verification_timeout_secs: Integer,
           messaging_template_id: String,
-          whitelisted_destinations: ::Array[String]
-        }
-      end
-
-      type flashcall =
-        {
-          app_name: String,
-          default_verification_timeout_secs: Integer,
-          whitelisted_destinations: ::Array[String]
-        }
-
-      class Flashcall < Telnyx::Internal::Type::BaseModel
-        attr_reader app_name: String?
-
-        def app_name=: (String) -> String
-
-        attr_reader default_verification_timeout_secs: Integer?
-
-        def default_verification_timeout_secs=: (Integer) -> Integer
-
-        attr_reader whitelisted_destinations: ::Array[String]?
-
-        def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
-
-        def initialize: (
-          ?app_name: String,
-          ?default_verification_timeout_secs: Integer,
-          ?whitelisted_destinations: ::Array[String]
-        ) -> void
-
-        def to_hash: -> {
-          app_name: String,
-          default_verification_timeout_secs: Integer,
-          whitelisted_destinations: ::Array[String]
-        }
-      end
-
-      type rcs =
-        {
-          app_name: String,
-          code_length: Integer,
-          default_verification_timeout_secs: Integer,
-          messaging_template_id: String,
-          sms_fallback: bool,
-          whitelisted_destinations: ::Array[String]
-        }
-
-      class Rcs < Telnyx::Internal::Type::BaseModel
-        attr_reader app_name: String?
-
-        def app_name=: (String) -> String
-
-        attr_reader code_length: Integer?
-
-        def code_length=: (Integer) -> Integer
-
-        attr_reader default_verification_timeout_secs: Integer?
-
-        def default_verification_timeout_secs=: (Integer) -> Integer
-
-        attr_reader messaging_template_id: String?
-
-        def messaging_template_id=: (String) -> String
-
-        attr_reader sms_fallback: bool?
-
-        def sms_fallback=: (bool) -> bool
-
-        attr_reader whitelisted_destinations: ::Array[String]?
-
-        def whitelisted_destinations=: (::Array[String]) -> ::Array[String]
-
-        def initialize: (
-          ?app_name: String,
-          ?code_length: Integer,
-          ?default_verification_timeout_secs: Integer,
-          ?messaging_template_id: String,
-          ?sms_fallback: bool,
-          ?whitelisted_destinations: ::Array[String]
-        ) -> void
-
-        def to_hash: -> {
-          app_name: String,
-          code_length: Integer,
-          default_verification_timeout_secs: Integer,
-          messaging_template_id: String,
-          sms_fallback: bool,
           whitelisted_destinations: ::Array[String]
         }
       end
