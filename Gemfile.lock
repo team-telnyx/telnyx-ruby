@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    telnyx (5.87.0)
+    telnyx (5.88.0)
       cgi
       connection_pool
       standardwebhooks
