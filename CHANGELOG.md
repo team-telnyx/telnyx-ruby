@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.88.0 (2026-04-28)
+
+Full Changelog: [v5.87.0...v5.88.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.87.0...v5.88.0)
+
+### Features
+
+* Add assistant external LLM forward metadata to OpenAPI ([58c32ab](https://github.com/team-telnyx/telnyx-ruby/commit/58c32aba3db29793440c757429d534912896c093))
+* Document Flux transcription language hints ([f40f787](https://github.com/team-telnyx/telnyx-ruby/commit/f40f787e4d012fc2c1bf785ca5b7d42348893bc0))
+
 ## 5.87.0 (2026-04-28)
 
 Full Changelog: [v5.86.0...v5.87.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.86.0...v5.87.0)

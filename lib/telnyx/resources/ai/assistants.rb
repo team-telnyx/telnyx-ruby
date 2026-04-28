@@ -34,7 +34,7 @@ module Telnyx
         #
         # Create a new AI Assistant.
         #
-        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
@@ -49,6 +49,10 @@ module Telnyx
         # @param dynamic_variables_webhook_url [String] If the dynamic_variables_webhook_url is set for the assistant, we will send a re
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
+        #
+        # @param external_llm [Telnyx::Models::AI::AssistantCreateParams::ExternalLlm]
+        #
+        # @param fallback_config [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
@@ -123,7 +127,7 @@ module Telnyx
         #
         # Update an AI Assistant's attributes.
         #
-        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String]
         #
@@ -134,6 +138,10 @@ module Telnyx
         # @param dynamic_variables_webhook_url [String] If the dynamic_variables_webhook_url is set for the assistant, we will send a re
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
+        #
+        # @param external_llm [Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm]
+        #
+        # @param fallback_config [Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
