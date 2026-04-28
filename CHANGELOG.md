@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.89.0 (2026-04-28)
+
+Full Changelog: [v5.88.0...v5.89.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.88.0...v5.89.0)
+
+### Features
+
+* Correct external LLM forwarded metadata docs ([c9b69a1](https://github.com/team-telnyx/telnyx-ruby/commit/c9b69a1078a5c7c21caa37286c967692081c8aa8))
+
 ## 5.88.0 (2026-04-28)
 
 Full Changelog: [v5.87.0...v5.88.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.87.0...v5.88.0)
