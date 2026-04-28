@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type transcription_settings =
         {
+          api_key_ref: String,
           language: String,
           model: Telnyx::Models::AI::TranscriptionSettings::model,
           region: String,
@@ -10,6 +11,10 @@ module Telnyx
         }
 
       class TranscriptionSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader api_key_ref: String?
+
+        def api_key_ref=: (String) -> String
+
         attr_reader language: String?
 
         def language=: (String) -> String
@@ -31,6 +36,7 @@ module Telnyx
         ) -> Telnyx::AI::TranscriptionSettingsConfig
 
         def initialize: (
+          ?api_key_ref: String,
           ?language: String,
           ?model: Telnyx::Models::AI::TranscriptionSettings::model,
           ?region: String,
@@ -38,6 +44,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          api_key_ref: String,
           language: String,
           model: Telnyx::Models::AI::TranscriptionSettings::model,
           region: String,
@@ -49,6 +56,8 @@ module Telnyx
           | :"deepgram/nova-3"
           | :"deepgram/nova-2"
           | :"azure/fast"
+          | :"assemblyai/universal-streaming"
+          | :"xai/grok-stt"
           | :"distil-whisper/distil-large-v2"
           | :"openai/whisper-large-v3-turbo"
 
@@ -59,6 +68,8 @@ module Telnyx
           DEEPGRAM_NOVA_3: :"deepgram/nova-3"
           DEEPGRAM_NOVA_2: :"deepgram/nova-2"
           AZURE_FAST: :"azure/fast"
+          ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
+          XAI_GROK_STT: :"xai/grok-stt"
           DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
 
