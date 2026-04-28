@@ -107,6 +107,35 @@ module Telnyx
                        },
                        api_name: :CustomHeaders
 
+              # @!attribute deepfake_detection
+              #   Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              #   remote party is analyzed to determine whether the voice is AI-generated. Results
+              #   are delivered asynchronously via a callback.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection, nil]
+              optional :deepfake_detection,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection
+                       },
+                       api_name: :DeepfakeDetection
+
+              # @!attribute deepfake_detection_callback_method
+              #   HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod, nil]
+              optional :deepfake_detection_callback_method,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod
+                       },
+                       api_name: :DeepfakeDetectionCallbackMethod
+
+              # @!attribute deepfake_detection_callback_url
+              #   URL destination for Telnyx to send deepfake detection callback events to for the
+              #   call.
+              #
+              #   @return [String, nil]
+              optional :deepfake_detection_callback_url, String, api_name: :DeepfakeDetectionCallbackUrl
+
               # @!attribute detection_mode
               #   Allows you to chose between Premium and Standard detections.
               #
@@ -364,7 +393,7 @@ module Telnyx
                        enum: -> { Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::URLMethod },
                        api_name: :UrlMethod
 
-              # @!method initialize(url:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url_method: nil)
+              # @!method initialize(url:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL} for more
               #   details.
@@ -386,6 +415,12 @@ module Telnyx
               #   @param cancel_playback_on_machine_detection [Boolean] Whether to cancel ongoing playback on `machine` detection. Defaults to `true`.
               #
               #   @param custom_headers [Array<Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
+              #
+              #   @param deepfake_detection [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection] Enables Deepfake Detection on the dialed call. When enabled, audio from the remo
+              #
+              #   @param deepfake_detection_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod] HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              #   @param deepfake_detection_callback_url [String] URL destination for Telnyx to send deepfake detection callback events to for the
               #
               #   @param detection_mode [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode] Allows you to chose between Premium and Standard detections.
               #
@@ -482,6 +517,33 @@ module Telnyx
                 #   @param name [String] The name of the custom header
                 #
                 #   @param value [String] The value of the custom header
+              end
+
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL#deepfake_detection
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                ENABLE = :Enable
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL#deepfake_detection_callback_method
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                GET = :GET
+                POST = :POST
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # Allows you to chose between Premium and Standard detections.
@@ -732,6 +794,35 @@ module Telnyx
                          Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader]
                        },
                        api_name: :CustomHeaders
+
+              # @!attribute deepfake_detection
+              #   Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              #   remote party is analyzed to determine whether the voice is AI-generated. Results
+              #   are delivered asynchronously via a callback.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection, nil]
+              optional :deepfake_detection,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection
+                       },
+                       api_name: :DeepfakeDetection
+
+              # @!attribute deepfake_detection_callback_method
+              #   HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod, nil]
+              optional :deepfake_detection_callback_method,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod
+                       },
+                       api_name: :DeepfakeDetectionCallbackMethod
+
+              # @!attribute deepfake_detection_callback_url
+              #   URL destination for Telnyx to send deepfake detection callback events to for the
+              #   call.
+              #
+              #   @return [String, nil]
+              optional :deepfake_detection_callback_url, String, api_name: :DeepfakeDetectionCallbackUrl
 
               # @!attribute detection_mode
               #   Allows you to chose between Premium and Standard detections.
@@ -994,7 +1085,7 @@ module Telnyx
                        enum: -> { Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::URLMethod },
                        api_name: :UrlMethod
 
-              # @!method initialize(texml:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
+              # @!method initialize(texml:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml} for more
               #   details.
@@ -1016,6 +1107,12 @@ module Telnyx
               #   @param cancel_playback_on_machine_detection [Boolean] Whether to cancel ongoing playback on `machine` detection. Defaults to `true`.
               #
               #   @param custom_headers [Array<Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
+              #
+              #   @param deepfake_detection [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection] Enables Deepfake Detection on the dialed call. When enabled, audio from the remo
+              #
+              #   @param deepfake_detection_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod] HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              #   @param deepfake_detection_callback_url [String] URL destination for Telnyx to send deepfake detection callback events to for the
               #
               #   @param detection_mode [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode] Allows you to chose between Premium and Standard detections.
               #
@@ -1112,6 +1209,33 @@ module Telnyx
                 #   @param name [String] The name of the custom header
                 #
                 #   @param value [String] The value of the custom header
+              end
+
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml#deepfake_detection
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                ENABLE = :Enable
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml#deepfake_detection_callback_method
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                GET = :GET
+                POST = :POST
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # Allows you to chose between Premium and Standard detections.
@@ -1355,6 +1479,35 @@ module Telnyx
                          Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader]
                        },
                        api_name: :CustomHeaders
+
+              # @!attribute deepfake_detection
+              #   Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              #   remote party is analyzed to determine whether the voice is AI-generated. Results
+              #   are delivered asynchronously via a callback.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection, nil]
+              optional :deepfake_detection,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection
+                       },
+                       api_name: :DeepfakeDetection
+
+              # @!attribute deepfake_detection_callback_method
+              #   HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod, nil]
+              optional :deepfake_detection_callback_method,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod
+                       },
+                       api_name: :DeepfakeDetectionCallbackMethod
+
+              # @!attribute deepfake_detection_callback_url
+              #   URL destination for Telnyx to send deepfake detection callback events to for the
+              #   call.
+              #
+              #   @return [String, nil]
+              optional :deepfake_detection_callback_url, String, api_name: :DeepfakeDetectionCallbackUrl
 
               # @!attribute detection_mode
               #   Allows you to chose between Premium and Standard detections.
@@ -1628,7 +1781,7 @@ module Telnyx
                        },
                        api_name: :UrlMethod
 
-              # @!method initialize(application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
+              # @!method initialize(application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault}
               #   for more details.
@@ -1648,6 +1801,12 @@ module Telnyx
               #   @param cancel_playback_on_machine_detection [Boolean] Whether to cancel ongoing playback on `machine` detection. Defaults to `true`.
               #
               #   @param custom_headers [Array<Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
+              #
+              #   @param deepfake_detection [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection] Enables Deepfake Detection on the dialed call. When enabled, audio from the remo
+              #
+              #   @param deepfake_detection_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod] HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              #   @param deepfake_detection_callback_url [String] URL destination for Telnyx to send deepfake detection callback events to for the
               #
               #   @param detection_mode [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode] Allows you to chose between Premium and Standard detections.
               #
@@ -1746,6 +1905,33 @@ module Telnyx
                 #   @param name [String] The name of the custom header
                 #
                 #   @param value [String] The value of the custom header
+              end
+
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault#deepfake_detection
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                ENABLE = :Enable
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault#deepfake_detection_callback_method
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                GET = :GET
+                POST = :POST
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # Allows you to chose between Premium and Standard detections.

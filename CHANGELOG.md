@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.87.0 (2026-04-28)
+
+Full Changelog: [v5.86.0...v5.87.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.86.0...v5.87.0)
+
+### Features
+
+* TELAPPS-5725: Add deepfake detection params to call-scripting API docs ([f2d8e6c](https://github.com/team-telnyx/telnyx-ruby/commit/f2d8e6cff7100ae63512bb6d26f354d680fcc428))
+
 ## 5.86.0 (2026-04-28)
 
 Full Changelog: [v5.85.0...v5.86.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.85.0...v5.86.0)
