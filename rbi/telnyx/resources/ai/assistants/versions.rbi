@@ -36,6 +36,10 @@ module Telnyx
               dynamic_variables: T::Hash[Symbol, T.anything],
               dynamic_variables_webhook_url: String,
               enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
+              external_llm:
+                Telnyx::AI::Assistants::UpdateAssistant::ExternalLlm::OrHash,
+              fallback_config:
+                Telnyx::AI::Assistants::UpdateAssistant::FallbackConfig::OrHash,
               greeting: String,
               insight_settings: Telnyx::AI::InsightSettings::OrHash,
               instructions: String,
@@ -86,6 +90,10 @@ module Telnyx
             dynamic_variables_webhook_url: nil,
             # Body param
             enabled_features: nil,
+            # Body param
+            external_llm: nil,
+            # Body param
+            fallback_config: nil,
             # Body param: Text that the assistant will use to start the conversation. This may
             # be templated with
             # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).

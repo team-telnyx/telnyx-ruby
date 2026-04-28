@@ -24,14 +24,14 @@ module Telnyx
       # @!attribute external_llm
       #   External LLM configuration for bringing your own LLM endpoint.
       #
-      #   @return [Hash{Symbol=>Object}, nil]
-      optional :external_llm, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      #   @return [Telnyx::Models::CallAssistantRequest::ExternalLlm, nil]
+      optional :external_llm, -> { Telnyx::CallAssistantRequest::ExternalLlm }
 
       # @!attribute fallback_config
       #   Fallback LLM configuration used when the primary LLM provider is unavailable.
       #
-      #   @return [Hash{Symbol=>Object}, nil]
-      optional :fallback_config, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      #   @return [Telnyx::Models::CallAssistantRequest::FallbackConfig, nil]
+      optional :fallback_config, -> { Telnyx::CallAssistantRequest::FallbackConfig }
 
       # @!attribute greeting
       #   Initial greeting text spoken when the assistant starts. Can be plain text for
@@ -116,9 +116,9 @@ module Telnyx
       #
       #   @param dynamic_variables [Hash{Symbol=>String, Float, Boolean}] Map of dynamic variables and their default values. Dynamic variables can be refe
       #
-      #   @param external_llm [Hash{Symbol=>Object}] External LLM configuration for bringing your own LLM endpoint.
+      #   @param external_llm [Telnyx::Models::CallAssistantRequest::ExternalLlm] External LLM configuration for bringing your own LLM endpoint.
       #
-      #   @param fallback_config [Hash{Symbol=>Object}] Fallback LLM configuration used when the primary LLM provider is unavailable.
+      #   @param fallback_config [Telnyx::Models::CallAssistantRequest::FallbackConfig] Fallback LLM configuration used when the primary LLM provider is unavailable.
       #
       #   @param greeting [String] Initial greeting text spoken when the assistant starts. Can be plain text for an
       #
@@ -149,6 +149,209 @@ module Telnyx
 
         # @!method self.variants
         #   @return [Array(String, Float, Boolean)]
+      end
+
+      # @see Telnyx::Models::CallAssistantRequest#external_llm
+      class ExternalLlm < Telnyx::Internal::Type::BaseModel
+        # @!attribute authentication_method
+        #   Authentication method used when connecting to the external LLM endpoint.
+        #
+        #   @return [Symbol, Telnyx::Models::CallAssistantRequest::ExternalLlm::AuthenticationMethod, nil]
+        optional :authentication_method,
+                 enum: -> { Telnyx::CallAssistantRequest::ExternalLlm::AuthenticationMethod }
+
+        # @!attribute base_url
+        #   Base URL for the external LLM endpoint.
+        #
+        #   @return [String, nil]
+        optional :base_url, String
+
+        # @!attribute certificate_ref
+        #   Integration secret identifier for the client certificate used with certificate
+        #   authentication.
+        #
+        #   @return [String, nil]
+        optional :certificate_ref, String
+
+        # @!attribute forward_metadata
+        #   When enabled, Telnyx forwards conversation metadata and dynamic variables to the
+        #   external LLM endpoint. Defaults to false. The external endpoint receives the
+        #   standard chat completions payload with top-level `metadata` and
+        #   `dynamic_variables` objects when values are available. For example:
+        #   `{"metadata":{"conversation_id":"conv_123","assistant_id":"assistant_456","call_control_id":"v3:abc123","telnyx_conversation_channel":"phone_call"},"dynamic_variables":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+        #
+        #   @return [Boolean, nil]
+        optional :forward_metadata, Telnyx::Internal::Type::Boolean
+
+        # @!attribute llm_api_key_ref
+        #   Integration secret identifier for the external LLM API key.
+        #
+        #   @return [String, nil]
+        optional :llm_api_key_ref, String
+
+        # @!attribute model
+        #   Model identifier to use with the external LLM endpoint.
+        #
+        #   @return [String, nil]
+        optional :model, String
+
+        # @!attribute token_retrieval_url
+        #   URL used to retrieve an access token when certificate authentication is enabled.
+        #
+        #   @return [String, nil]
+        optional :token_retrieval_url, String
+
+        # @!method initialize(authentication_method: nil, base_url: nil, certificate_ref: nil, forward_metadata: nil, llm_api_key_ref: nil, model: nil, token_retrieval_url: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::CallAssistantRequest::ExternalLlm} for more details.
+        #
+        #   External LLM configuration for bringing your own LLM endpoint.
+        #
+        #   @param authentication_method [Symbol, Telnyx::Models::CallAssistantRequest::ExternalLlm::AuthenticationMethod] Authentication method used when connecting to the external LLM endpoint.
+        #
+        #   @param base_url [String] Base URL for the external LLM endpoint.
+        #
+        #   @param certificate_ref [String] Integration secret identifier for the client certificate used with certificate a
+        #
+        #   @param forward_metadata [Boolean] When enabled, Telnyx forwards conversation metadata and dynamic variables to the
+        #
+        #   @param llm_api_key_ref [String] Integration secret identifier for the external LLM API key.
+        #
+        #   @param model [String] Model identifier to use with the external LLM endpoint.
+        #
+        #   @param token_retrieval_url [String] URL used to retrieve an access token when certificate authentication is enabled.
+
+        # Authentication method used when connecting to the external LLM endpoint.
+        #
+        # @see Telnyx::Models::CallAssistantRequest::ExternalLlm#authentication_method
+        module AuthenticationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          TOKEN = :token
+          CERTIFICATE = :certificate
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
+
+      # @see Telnyx::Models::CallAssistantRequest#fallback_config
+      class FallbackConfig < Telnyx::Internal::Type::BaseModel
+        # @!attribute external_llm
+        #   External LLM fallback configuration.
+        #
+        #   @return [Telnyx::Models::CallAssistantRequest::FallbackConfig::ExternalLlm, nil]
+        optional :external_llm, -> { Telnyx::CallAssistantRequest::FallbackConfig::ExternalLlm }
+
+        # @!attribute llm_api_key_ref
+        #   Integration secret identifier for the fallback model API key.
+        #
+        #   @return [String, nil]
+        optional :llm_api_key_ref, String
+
+        # @!attribute model
+        #   Fallback Telnyx-hosted model to use when the primary LLM provider is
+        #   unavailable.
+        #
+        #   @return [String, nil]
+        optional :model, String
+
+        # @!method initialize(external_llm: nil, llm_api_key_ref: nil, model: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::CallAssistantRequest::FallbackConfig} for more details.
+        #
+        #   Fallback LLM configuration used when the primary LLM provider is unavailable.
+        #
+        #   @param external_llm [Telnyx::Models::CallAssistantRequest::FallbackConfig::ExternalLlm] External LLM fallback configuration.
+        #
+        #   @param llm_api_key_ref [String] Integration secret identifier for the fallback model API key.
+        #
+        #   @param model [String] Fallback Telnyx-hosted model to use when the primary LLM provider is unavailable
+
+        # @see Telnyx::Models::CallAssistantRequest::FallbackConfig#external_llm
+        class ExternalLlm < Telnyx::Internal::Type::BaseModel
+          # @!attribute authentication_method
+          #   Authentication method used when connecting to the external LLM endpoint.
+          #
+          #   @return [Symbol, Telnyx::Models::CallAssistantRequest::FallbackConfig::ExternalLlm::AuthenticationMethod, nil]
+          optional :authentication_method,
+                   enum: -> { Telnyx::CallAssistantRequest::FallbackConfig::ExternalLlm::AuthenticationMethod }
+
+          # @!attribute base_url
+          #   Base URL for the external LLM endpoint.
+          #
+          #   @return [String, nil]
+          optional :base_url, String
+
+          # @!attribute certificate_ref
+          #   Integration secret identifier for the client certificate used with certificate
+          #   authentication.
+          #
+          #   @return [String, nil]
+          optional :certificate_ref, String
+
+          # @!attribute forward_metadata
+          #   When enabled, Telnyx forwards conversation metadata and dynamic variables to the
+          #   external LLM endpoint. Defaults to false. The external endpoint receives the
+          #   standard chat completions payload with top-level `metadata` and
+          #   `dynamic_variables` objects when values are available. For example:
+          #   `{"metadata":{"conversation_id":"conv_123","assistant_id":"assistant_456","call_control_id":"v3:abc123","telnyx_conversation_channel":"phone_call"},"dynamic_variables":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+          #
+          #   @return [Boolean, nil]
+          optional :forward_metadata, Telnyx::Internal::Type::Boolean
+
+          # @!attribute llm_api_key_ref
+          #   Integration secret identifier for the external LLM API key.
+          #
+          #   @return [String, nil]
+          optional :llm_api_key_ref, String
+
+          # @!attribute model
+          #   Model identifier to use with the external LLM endpoint.
+          #
+          #   @return [String, nil]
+          optional :model, String
+
+          # @!attribute token_retrieval_url
+          #   URL used to retrieve an access token when certificate authentication is enabled.
+          #
+          #   @return [String, nil]
+          optional :token_retrieval_url, String
+
+          # @!method initialize(authentication_method: nil, base_url: nil, certificate_ref: nil, forward_metadata: nil, llm_api_key_ref: nil, model: nil, token_retrieval_url: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::CallAssistantRequest::FallbackConfig::ExternalLlm} for more
+          #   details.
+          #
+          #   External LLM fallback configuration.
+          #
+          #   @param authentication_method [Symbol, Telnyx::Models::CallAssistantRequest::FallbackConfig::ExternalLlm::AuthenticationMethod] Authentication method used when connecting to the external LLM endpoint.
+          #
+          #   @param base_url [String] Base URL for the external LLM endpoint.
+          #
+          #   @param certificate_ref [String] Integration secret identifier for the client certificate used with certificate a
+          #
+          #   @param forward_metadata [Boolean] When enabled, Telnyx forwards conversation metadata and dynamic variables to the
+          #
+          #   @param llm_api_key_ref [String] Integration secret identifier for the external LLM API key.
+          #
+          #   @param model [String] Model identifier to use with the external LLM endpoint.
+          #
+          #   @param token_retrieval_url [String] URL used to retrieve an access token when certificate authentication is enabled.
+
+          # Authentication method used when connecting to the external LLM endpoint.
+          #
+          # @see Telnyx::Models::CallAssistantRequest::FallbackConfig::ExternalLlm#authentication_method
+          module AuthenticationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            TOKEN = :token
+            CERTIFICATE = :certificate
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
 
       module Tool
