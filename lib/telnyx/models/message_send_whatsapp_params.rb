@@ -24,6 +24,12 @@ module Telnyx
       #   @return [Telnyx::Models::WhatsappMessageContent]
       required :whatsapp_message, -> { Telnyx::WhatsappMessageContent }
 
+      # @!attribute messaging_profile_id
+      #   Messaging profile ID - required if the 'from' number is not SMS-enabled
+      #
+      #   @return [String, nil]
+      optional :messaging_profile_id, String
+
       # @!attribute type
       #   Message type - must be set to "WHATSAPP"
       #
@@ -36,12 +42,14 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(from:, to:, whatsapp_message:, type: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(from:, to:, whatsapp_message:, messaging_profile_id: nil, type: nil, webhook_url: nil, request_options: {})
       #   @param from [String] Phone number in +E.164 format associated with Whatsapp account
       #
       #   @param to [String] Phone number in +E.164 format
       #
       #   @param whatsapp_message [Telnyx::Models::WhatsappMessageContent]
+      #
+      #   @param messaging_profile_id [String] Messaging profile ID - required if the 'from' number is not SMS-enabled
       #
       #   @param type [Symbol, Telnyx::Models::MessageSendWhatsappParams::Type] Message type - must be set to "WHATSAPP"
       #

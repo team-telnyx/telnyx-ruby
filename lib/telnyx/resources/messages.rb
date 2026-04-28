@@ -353,13 +353,15 @@ module Telnyx
 
       # Send a Whatsapp message
       #
-      # @overload send_whatsapp(from:, to:, whatsapp_message:, type: nil, webhook_url: nil, request_options: {})
+      # @overload send_whatsapp(from:, to:, whatsapp_message:, messaging_profile_id: nil, type: nil, webhook_url: nil, request_options: {})
       #
       # @param from [String] Phone number in +E.164 format associated with Whatsapp account
       #
       # @param to [String] Phone number in +E.164 format
       #
       # @param whatsapp_message [Telnyx::Models::WhatsappMessageContent]
+      #
+      # @param messaging_profile_id [String] Messaging profile ID - required if the 'from' number is not SMS-enabled
       #
       # @param type [Symbol, Telnyx::Models::MessageSendWhatsappParams::Type] Message type - must be set to "WHATSAPP"
       #

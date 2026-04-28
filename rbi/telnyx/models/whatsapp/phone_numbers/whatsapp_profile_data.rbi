@@ -69,6 +69,12 @@ module Telnyx
           attr_writer :phone_number_id
 
           sig { returns(T.nilable(String)) }
+          attr_reader :profile_id
+
+          sig { params(profile_id: String).void }
+          attr_writer :profile_id
+
+          sig { returns(T.nilable(String)) }
           attr_reader :profile_photo_url
 
           sig { params(profile_photo_url: String).void }
@@ -103,6 +109,7 @@ module Telnyx
               display_name: String,
               email: String,
               phone_number_id: String,
+              profile_id: String,
               profile_photo_url: String,
               record_type: String,
               updated_at: Time,
@@ -120,6 +127,7 @@ module Telnyx
             email: nil,
             # Whatsapp phone number ID
             phone_number_id: nil,
+            profile_id: nil,
             profile_photo_url: nil,
             record_type: nil,
             updated_at: nil,
@@ -139,6 +147,7 @@ module Telnyx
                 display_name: String,
                 email: String,
                 phone_number_id: String,
+                profile_id: String,
                 profile_photo_url: String,
                 record_type: String,
                 updated_at: Time,

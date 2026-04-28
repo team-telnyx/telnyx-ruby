@@ -18,6 +18,7 @@ module Telnyx
             ?description: String,
             ?display_name: String,
             ?email: String,
+            ?profile_id: String,
             ?website: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::Whatsapp::PhoneNumbers::ProfileUpdateResponse
