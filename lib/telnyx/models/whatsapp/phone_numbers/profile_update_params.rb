@@ -44,20 +44,36 @@ module Telnyx
           #   @return [String, nil]
           optional :email, String
 
+          # @!attribute profile_id
+          #   Messaging profile ID for inbound messages
+          #
+          #   @return [String, nil]
+          optional :profile_id, String
+
           # @!attribute website
           #
           #   @return [String, nil]
           optional :website, String
 
-          # @!method initialize(phone_number:, about: nil, address: nil, category: nil, description: nil, display_name: nil, email: nil, website: nil, request_options: {})
+          # @!method initialize(phone_number:, about: nil, address: nil, category: nil, description: nil, display_name: nil, email: nil, profile_id: nil, website: nil, request_options: {})
           #   @param phone_number [String]
+          #
           #   @param about [String]
+          #
           #   @param address [String]
+          #
           #   @param category [String]
+          #
           #   @param description [String]
+          #
           #   @param display_name [String]
+          #
           #   @param email [String]
+          #
+          #   @param profile_id [String] Messaging profile ID for inbound messages
+          #
           #   @param website [String]
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

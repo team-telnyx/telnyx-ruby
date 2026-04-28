@@ -32,7 +32,7 @@ module Telnyx
 
           # Update phone number business profile
           #
-          # @overload update(phone_number, about: nil, address: nil, category: nil, description: nil, display_name: nil, email: nil, website: nil, request_options: {})
+          # @overload update(phone_number, about: nil, address: nil, category: nil, description: nil, display_name: nil, email: nil, profile_id: nil, website: nil, request_options: {})
           #
           # @param phone_number [String] Phone number (E.164 format)
           #
@@ -47,6 +47,8 @@ module Telnyx
           # @param display_name [String]
           #
           # @param email [String]
+          #
+          # @param profile_id [String] Messaging profile ID for inbound messages
           #
           # @param website [String]
           #

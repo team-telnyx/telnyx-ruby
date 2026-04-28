@@ -51,6 +51,11 @@ module Telnyx
           #   @return [String, nil]
           optional :phone_number_id, String
 
+          # @!attribute profile_id
+          #
+          #   @return [String, nil]
+          optional :profile_id, String
+
           # @!attribute profile_photo_url
           #
           #   @return [String, nil]
@@ -71,7 +76,7 @@ module Telnyx
           #   @return [String, nil]
           optional :website, String
 
-          # @!method initialize(id: nil, about: nil, address: nil, category: nil, created_at: nil, description: nil, display_name: nil, email: nil, phone_number_id: nil, profile_photo_url: nil, record_type: nil, updated_at: nil, website: nil)
+          # @!method initialize(id: nil, about: nil, address: nil, category: nil, created_at: nil, description: nil, display_name: nil, email: nil, phone_number_id: nil, profile_id: nil, profile_photo_url: nil, record_type: nil, updated_at: nil, website: nil)
           #   @param id [String]
           #
           #   @param about [String]
@@ -89,6 +94,8 @@ module Telnyx
           #   @param email [String]
           #
           #   @param phone_number_id [String] Whatsapp phone number ID
+          #
+          #   @param profile_id [String]
           #
           #   @param profile_photo_url [String]
           #
