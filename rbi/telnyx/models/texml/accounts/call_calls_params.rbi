@@ -180,6 +180,52 @@ module Telnyx
               end
               attr_writer :custom_headers
 
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection::OrSymbol
+                  )
+                )
+              end
+              attr_reader :deepfake_detection
+
+              sig do
+                params(
+                  deepfake_detection:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection::OrSymbol
+                ).void
+              end
+              attr_writer :deepfake_detection
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod::OrSymbol
+                  )
+                )
+              end
+              attr_reader :deepfake_detection_callback_method
+
+              sig do
+                params(
+                  deepfake_detection_callback_method:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod::OrSymbol
+                ).void
+              end
+              attr_writer :deepfake_detection_callback_method
+
+              # URL destination for Telnyx to send deepfake detection callback events to for the
+              # call.
+              sig { returns(T.nilable(String)) }
+              attr_reader :deepfake_detection_callback_url
+
+              sig { params(deepfake_detection_callback_url: String).void }
+              attr_writer :deepfake_detection_callback_url
+
               # Allows you to chose between Premium and Standard detections.
               sig do
                 returns(
@@ -573,6 +619,11 @@ module Telnyx
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader::OrHash
                     ],
+                  deepfake_detection:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection::OrSymbol,
+                  deepfake_detection_callback_method:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod::OrSymbol,
+                  deepfake_detection_callback_url: String,
                   detection_mode:
                     Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::OrSymbol,
                   fallback_url: String,
@@ -645,6 +696,15 @@ module Telnyx
                 # Custom HTTP headers to be sent with the call. Each header should be an object
                 # with 'name' and 'value' properties.
                 custom_headers: nil,
+                # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+                # remote party is analyzed to determine whether the voice is AI-generated. Results
+                # are delivered asynchronously via a callback.
+                deepfake_detection: nil,
+                # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+                deepfake_detection_callback_method: nil,
+                # URL destination for Telnyx to send deepfake detection callback events to for the
+                # call.
+                deepfake_detection_callback_url: nil,
                 # Allows you to chose between Premium and Standard detections.
                 detection_mode: nil,
                 # A failover URL for which Telnyx will retrieve the TeXML call instructions if the
@@ -751,6 +811,11 @@ module Telnyx
                       T::Array[
                         Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::CustomHeader
                       ],
+                    deepfake_detection:
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection::OrSymbol,
+                    deepfake_detection_callback_method:
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod::OrSymbol,
+                    deepfake_detection_callback_url: String,
                     detection_mode:
                       Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::OrSymbol,
                     fallback_url: String,
@@ -867,6 +932,73 @@ module Telnyx
 
                 sig { override.returns({ name: String, value: String }) }
                 def to_hash
+                end
+              end
+
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                ENABLE =
+                  T.let(
+                    :Enable,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetection::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                GET =
+                  T.let(
+                    :GET,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                  )
+                POST =
+                  T.let(
+                    :POST,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
                 end
               end
 
@@ -1451,6 +1583,52 @@ module Telnyx
               end
               attr_writer :custom_headers
 
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection::OrSymbol
+                  )
+                )
+              end
+              attr_reader :deepfake_detection
+
+              sig do
+                params(
+                  deepfake_detection:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection::OrSymbol
+                ).void
+              end
+              attr_writer :deepfake_detection
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod::OrSymbol
+                  )
+                )
+              end
+              attr_reader :deepfake_detection_callback_method
+
+              sig do
+                params(
+                  deepfake_detection_callback_method:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod::OrSymbol
+                ).void
+              end
+              attr_writer :deepfake_detection_callback_method
+
+              # URL destination for Telnyx to send deepfake detection callback events to for the
+              # call.
+              sig { returns(T.nilable(String)) }
+              attr_reader :deepfake_detection_callback_url
+
+              sig { params(deepfake_detection_callback_url: String).void }
+              attr_writer :deepfake_detection_callback_url
+
               # Allows you to chose between Premium and Standard detections.
               sig do
                 returns(
@@ -1844,6 +2022,11 @@ module Telnyx
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader::OrHash
                     ],
+                  deepfake_detection:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection::OrSymbol,
+                  deepfake_detection_callback_method:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod::OrSymbol,
+                  deepfake_detection_callback_url: String,
                   detection_mode:
                     Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::OrSymbol,
                   fallback_url: String,
@@ -1917,6 +2100,15 @@ module Telnyx
                 # Custom HTTP headers to be sent with the call. Each header should be an object
                 # with 'name' and 'value' properties.
                 custom_headers: nil,
+                # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+                # remote party is analyzed to determine whether the voice is AI-generated. Results
+                # are delivered asynchronously via a callback.
+                deepfake_detection: nil,
+                # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+                deepfake_detection_callback_method: nil,
+                # URL destination for Telnyx to send deepfake detection callback events to for the
+                # call.
+                deepfake_detection_callback_url: nil,
                 # Allows you to chose between Premium and Standard detections.
                 detection_mode: nil,
                 # A failover URL for which Telnyx will retrieve the TeXML call instructions if the
@@ -2023,6 +2215,11 @@ module Telnyx
                       T::Array[
                         Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::CustomHeader
                       ],
+                    deepfake_detection:
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection::OrSymbol,
+                    deepfake_detection_callback_method:
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod::OrSymbol,
+                    deepfake_detection_callback_url: String,
                     detection_mode:
                       Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::OrSymbol,
                     fallback_url: String,
@@ -2139,6 +2336,73 @@ module Telnyx
 
                 sig { override.returns({ name: String, value: String }) }
                 def to_hash
+                end
+              end
+
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                ENABLE =
+                  T.let(
+                    :Enable,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetection::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                GET =
+                  T.let(
+                    :GET,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                  )
+                POST =
+                  T.let(
+                    :POST,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
                 end
               end
 
@@ -2718,6 +2982,52 @@ module Telnyx
               end
               attr_writer :custom_headers
 
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection::OrSymbol
+                  )
+                )
+              end
+              attr_reader :deepfake_detection
+
+              sig do
+                params(
+                  deepfake_detection:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection::OrSymbol
+                ).void
+              end
+              attr_writer :deepfake_detection
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod::OrSymbol
+                  )
+                )
+              end
+              attr_reader :deepfake_detection_callback_method
+
+              sig do
+                params(
+                  deepfake_detection_callback_method:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod::OrSymbol
+                ).void
+              end
+              attr_writer :deepfake_detection_callback_method
+
+              # URL destination for Telnyx to send deepfake detection callback events to for the
+              # call.
+              sig { returns(T.nilable(String)) }
+              attr_reader :deepfake_detection_callback_url
+
+              sig { params(deepfake_detection_callback_url: String).void }
+              attr_writer :deepfake_detection_callback_url
+
               # Allows you to chose between Premium and Standard detections.
               sig do
                 returns(
@@ -3113,6 +3423,11 @@ module Telnyx
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader::OrHash
                     ],
+                  deepfake_detection:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection::OrSymbol,
+                  deepfake_detection_callback_method:
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod::OrSymbol,
+                  deepfake_detection_callback_url: String,
                   detection_mode:
                     Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::OrSymbol,
                   fallback_url: String,
@@ -3184,6 +3499,15 @@ module Telnyx
                 # Custom HTTP headers to be sent with the call. Each header should be an object
                 # with 'name' and 'value' properties.
                 custom_headers: nil,
+                # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+                # remote party is analyzed to determine whether the voice is AI-generated. Results
+                # are delivered asynchronously via a callback.
+                deepfake_detection: nil,
+                # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+                deepfake_detection_callback_method: nil,
+                # URL destination for Telnyx to send deepfake detection callback events to for the
+                # call.
+                deepfake_detection_callback_url: nil,
                 # Allows you to chose between Premium and Standard detections.
                 detection_mode: nil,
                 # A failover URL for which Telnyx will retrieve the TeXML call instructions if the
@@ -3290,6 +3614,11 @@ module Telnyx
                       T::Array[
                         Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::CustomHeader
                       ],
+                    deepfake_detection:
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection::OrSymbol,
+                    deepfake_detection_callback_method:
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod::OrSymbol,
+                    deepfake_detection_callback_url: String,
                     detection_mode:
                       Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::OrSymbol,
                     fallback_url: String,
@@ -3407,6 +3736,73 @@ module Telnyx
 
                 sig { override.returns({ name: String, value: String }) }
                 def to_hash
+                end
+              end
+
+              # Enables Deepfake Detection on the dialed call. When enabled, audio from the
+              # remote party is analyzed to determine whether the voice is AI-generated. Results
+              # are delivered asynchronously via a callback.
+              module DeepfakeDetection
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                ENABLE =
+                  T.let(
+                    :Enable,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetection::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # HTTP request type used for `DeepfakeDetectionCallbackUrl`.
+              module DeepfakeDetectionCallbackMethod
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                GET =
+                  T.let(
+                    :GET,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                  )
+                POST =
+                  T.let(
+                    :POST,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DeepfakeDetectionCallbackMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
                 end
               end
 
