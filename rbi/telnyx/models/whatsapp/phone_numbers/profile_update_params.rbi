@@ -55,6 +55,13 @@ module Telnyx
           sig { params(email: String).void }
           attr_writer :email
 
+          # Messaging profile ID for inbound messages
+          sig { returns(T.nilable(String)) }
+          attr_reader :profile_id
+
+          sig { params(profile_id: String).void }
+          attr_writer :profile_id
+
           sig { returns(T.nilable(String)) }
           attr_reader :website
 
@@ -70,6 +77,7 @@ module Telnyx
               description: String,
               display_name: String,
               email: String,
+              profile_id: String,
               website: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
@@ -82,6 +90,8 @@ module Telnyx
             description: nil,
             display_name: nil,
             email: nil,
+            # Messaging profile ID for inbound messages
+            profile_id: nil,
             website: nil,
             request_options: {}
           )
@@ -97,6 +107,7 @@ module Telnyx
                 description: String,
                 display_name: String,
                 email: String,
+                profile_id: String,
                 website: String,
                 request_options: Telnyx::RequestOptions
               }

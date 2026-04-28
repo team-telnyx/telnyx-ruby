@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    telnyx (5.89.0)
+    telnyx (5.90.0)
       cgi
       connection_pool
       websocket-client-simple (~> 0.8)

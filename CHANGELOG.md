@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.90.0 (2026-04-28)
+
+Full Changelog: [v5.89.0...v5.90.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.89.0...v5.90.0)
+
+### Features
+
+* ENGDESK-51445: added profile ID fields to Whatsapp messages ([d29a4f1](https://github.com/team-telnyx/telnyx-ruby/commit/d29a4f1063b8c4db96c46a1215a7f3cb5d4e1aab))
+
 ## 5.89.0 (2026-04-28)
 
 Full Changelog: [v5.88.0...v5.89.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.88.0...v5.89.0)

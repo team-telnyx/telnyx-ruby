@@ -11,6 +11,7 @@ module Telnyx
             description: String,
             display_name: String,
             email: String,
+            profile_id: String,
             website: String
           }
           & Telnyx::Internal::Type::request_parameters
@@ -45,6 +46,10 @@ module Telnyx
 
           def email=: (String) -> String
 
+          attr_reader profile_id: String?
+
+          def profile_id=: (String) -> String
+
           attr_reader website: String?
 
           def website=: (String) -> String
@@ -57,6 +62,7 @@ module Telnyx
             ?description: String,
             ?display_name: String,
             ?email: String,
+            ?profile_id: String,
             ?website: String,
             ?request_options: Telnyx::request_opts
           ) -> void
@@ -69,6 +75,7 @@ module Telnyx
             description: String,
             display_name: String,
             email: String,
+            profile_id: String,
             website: String,
             request_options: Telnyx::RequestOptions
           }

@@ -27,6 +27,13 @@ module Telnyx
       end
       attr_writer :whatsapp_message
 
+      # Messaging profile ID - required if the 'from' number is not SMS-enabled
+      sig { returns(T.nilable(String)) }
+      attr_reader :messaging_profile_id
+
+      sig { params(messaging_profile_id: String).void }
+      attr_writer :messaging_profile_id
+
       # Message type - must be set to "WHATSAPP"
       sig do
         returns(T.nilable(Telnyx::MessageSendWhatsappParams::Type::OrSymbol))
@@ -50,6 +57,7 @@ module Telnyx
           from: String,
           to: String,
           whatsapp_message: Telnyx::WhatsappMessageContent::OrHash,
+          messaging_profile_id: String,
           type: Telnyx::MessageSendWhatsappParams::Type::OrSymbol,
           webhook_url: String,
           request_options: Telnyx::RequestOptions::OrHash
@@ -61,6 +69,8 @@ module Telnyx
         # Phone number in +E.164 format
         to:,
         whatsapp_message:,
+        # Messaging profile ID - required if the 'from' number is not SMS-enabled
+        messaging_profile_id: nil,
         # Message type - must be set to "WHATSAPP"
         type: nil,
         # The URL where webhooks related to this message will be sent.
@@ -75,6 +85,7 @@ module Telnyx
             from: String,
             to: String,
             whatsapp_message: Telnyx::WhatsappMessageContent,
+            messaging_profile_id: String,
             type: Telnyx::MessageSendWhatsappParams::Type::OrSymbol,
             webhook_url: String,
             request_options: Telnyx::RequestOptions
