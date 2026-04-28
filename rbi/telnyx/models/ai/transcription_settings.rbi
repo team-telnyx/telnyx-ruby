@@ -9,7 +9,15 @@ module Telnyx
             T.any(Telnyx::AI::TranscriptionSettings, Telnyx::Internal::AnyHash)
           end
 
-        # The language of the audio to be transcribed. If not set, of if set to `auto`,
+        # Integration secret identifier for the transcription provider API key. Currently
+        # used for Azure transcription regions that require a customer-provided API key.
+        sig { returns(T.nilable(String)) }
+        attr_reader :api_key_ref
+
+        sig { params(api_key_ref: String).void }
+        attr_writer :api_key_ref
+
+        # The language of the audio to be transcribed. If not set, or if set to `auto`,
         # the model will automatically detect the language.
         sig { returns(T.nilable(String)) }
         attr_reader :language
@@ -17,12 +25,16 @@ module Telnyx
         sig { params(language: String).void }
         attr_writer :language
 
-        # The speech to text model to be used by the voice assistant. All the deepgram
-        # models are run on-premise.
+        # The speech to text model to be used by the voice assistant. All Deepgram models
+        # are run on-premise.
         #
         # - `deepgram/flux` is optimized for turn-taking but is English-only.
-        # - `deepgram/nova-3` is multi-lingual with automatic language detection but
-        #   slightly higher latency.
+        # - `deepgram/nova-3` is multilingual with automatic language detection.
+        # - `deepgram/nova-2` is Deepgram's previous-generation multilingual model.
+        # - `azure/fast` is a multilingual Azure transcription model.
+        # - `assemblyai/universal-streaming` is a multilingual streaming model with
+        #   configurable turn detection.
+        # - `xai/grok-stt` is a multilingual Grok STT model.
         sig do
           returns(T.nilable(Telnyx::AI::TranscriptionSettings::Model::OrSymbol))
         end
@@ -34,7 +46,7 @@ module Telnyx
         attr_writer :model
 
         # Region on third party cloud providers (currently Azure) if using one of their
-        # models
+        # models. Some regions require `api_key_ref`.
         sig { returns(T.nilable(String)) }
         attr_reader :region
 
@@ -51,6 +63,7 @@ module Telnyx
 
         sig do
           params(
+            api_key_ref: String,
             language: String,
             model: Telnyx::AI::TranscriptionSettings::Model::OrSymbol,
             region: String,
@@ -58,18 +71,25 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # The language of the audio to be transcribed. If not set, of if set to `auto`,
+          # Integration secret identifier for the transcription provider API key. Currently
+          # used for Azure transcription regions that require a customer-provided API key.
+          api_key_ref: nil,
+          # The language of the audio to be transcribed. If not set, or if set to `auto`,
           # the model will automatically detect the language.
           language: nil,
-          # The speech to text model to be used by the voice assistant. All the deepgram
-          # models are run on-premise.
+          # The speech to text model to be used by the voice assistant. All Deepgram models
+          # are run on-premise.
           #
           # - `deepgram/flux` is optimized for turn-taking but is English-only.
-          # - `deepgram/nova-3` is multi-lingual with automatic language detection but
-          #   slightly higher latency.
+          # - `deepgram/nova-3` is multilingual with automatic language detection.
+          # - `deepgram/nova-2` is Deepgram's previous-generation multilingual model.
+          # - `azure/fast` is a multilingual Azure transcription model.
+          # - `assemblyai/universal-streaming` is a multilingual streaming model with
+          #   configurable turn detection.
+          # - `xai/grok-stt` is a multilingual Grok STT model.
           model: nil,
           # Region on third party cloud providers (currently Azure) if using one of their
-          # models
+          # models. Some regions require `api_key_ref`.
           region: nil,
           settings: nil
         )
@@ -78,6 +98,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              api_key_ref: String,
               language: String,
               model: Telnyx::AI::TranscriptionSettings::Model::OrSymbol,
               region: String,
@@ -88,12 +109,16 @@ module Telnyx
         def to_hash
         end
 
-        # The speech to text model to be used by the voice assistant. All the deepgram
-        # models are run on-premise.
+        # The speech to text model to be used by the voice assistant. All Deepgram models
+        # are run on-premise.
         #
         # - `deepgram/flux` is optimized for turn-taking but is English-only.
-        # - `deepgram/nova-3` is multi-lingual with automatic language detection but
-        #   slightly higher latency.
+        # - `deepgram/nova-3` is multilingual with automatic language detection.
+        # - `deepgram/nova-2` is Deepgram's previous-generation multilingual model.
+        # - `azure/fast` is a multilingual Azure transcription model.
+        # - `assemblyai/universal-streaming` is a multilingual streaming model with
+        #   configurable turn detection.
+        # - `xai/grok-stt` is a multilingual Grok STT model.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -121,6 +146,16 @@ module Telnyx
           AZURE_FAST =
             T.let(
               :"azure/fast",
+              Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
+            )
+          ASSEMBLYAI_UNIVERSAL_STREAMING =
+            T.let(
+              :"assemblyai/universal-streaming",
+              Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
+            )
+          XAI_GROK_STT =
+            T.let(
+              :"xai/grok-stt",
               Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
             )
           DISTIL_WHISPER_DISTIL_LARGE_V2 =
