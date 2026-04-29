@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.92.0 (2026-04-29)
+
+Full Changelog: [v5.91.0...v5.92.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.91.0...v5.92.0)
+
+### Features
+
+* Add xAI and AssemblyAI transcription engines to call-control API docs ([a730f6f](https://github.com/team-telnyx/telnyx-ruby/commit/a730f6f98c70d1d6ba3581c0e0b87f47df44ea1a))
+
 ## 5.91.0 (2026-04-29)
 
 Full Changelog: [v5.90.0...v5.91.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.90.0...v5.91.0)
