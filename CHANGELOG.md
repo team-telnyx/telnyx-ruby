@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.93.0 (2026-04-29)
+
+Full Changelog: [v5.92.0...v5.93.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.92.0...v5.93.0)
+
+### Features
+
+* Document assistant CRUD fields ([10e9601](https://github.com/team-telnyx/telnyx-ruby/commit/10e9601fe87a10dd015d455f23b81156e5a05612))
+
 ## 5.92.0 (2026-04-29)
 
 Full Changelog: [v5.91.0...v5.92.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.91.0...v5.92.0)
