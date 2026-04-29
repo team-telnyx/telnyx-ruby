@@ -50,9 +50,9 @@ module Telnyx
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
-        # @param external_llm [Telnyx::Models::AI::AssistantCreateParams::ExternalLlm]
+        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
         #
-        # @param fallback_config [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig]
+        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
@@ -64,7 +64,7 @@ module Telnyx
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
-        # @param post_conversation_settings [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
+        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -139,9 +139,9 @@ module Telnyx
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
-        # @param external_llm [Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm]
+        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
         #
-        # @param fallback_config [Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig]
+        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
@@ -159,7 +159,7 @@ module Telnyx
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
-        # @param post_conversation_settings [Telnyx::Models::AI::AssistantUpdateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
+        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #

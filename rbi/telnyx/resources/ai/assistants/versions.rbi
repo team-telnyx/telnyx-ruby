@@ -36,10 +36,8 @@ module Telnyx
               dynamic_variables: T::Hash[Symbol, T.anything],
               dynamic_variables_webhook_url: String,
               enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-              external_llm:
-                Telnyx::AI::Assistants::UpdateAssistant::ExternalLlm::OrHash,
-              fallback_config:
-                Telnyx::AI::Assistants::UpdateAssistant::FallbackConfig::OrHash,
+              external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
+              fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
               greeting: String,
               insight_settings: Telnyx::AI::InsightSettings::OrHash,
               instructions: String,
@@ -49,7 +47,7 @@ module Telnyx
               name: String,
               observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
               post_conversation_settings:
-                Telnyx::AI::Assistants::UpdateAssistant::PostConversationSettings::OrHash,
+                Telnyx::AI::PostConversationSettingsReq::OrHash,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
               tool_ids: T::Array[String],
