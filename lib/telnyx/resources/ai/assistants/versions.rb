@@ -43,7 +43,7 @@ module Telnyx
           # Updates the configuration of a specific assistant version. Can not update main
           # version
           #
-          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+          # @overload update(version_id, assistant_id:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
           #
           # @param version_id [String] Path param
           #
@@ -53,7 +53,9 @@ module Telnyx
           #
           # @param dynamic_variables [Hash{Symbol=>Object}] Body param: Map of dynamic variables and their default values
           #
-          # @param dynamic_variables_webhook_url [String] Body param: If the dynamic_variables_webhook_url is set for the assistant, we wi
+          # @param dynamic_variables_webhook_timeout_ms [Integer] Body param: Timeout in milliseconds for the dynamic variables webhook. Must be b
+          #
+          # @param dynamic_variables_webhook_url [String] Body param: If `dynamic_variables_webhook_url` is set, Telnyx sends a POST reque
           #
           # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param
           #
@@ -67,11 +69,17 @@ module Telnyx
           #
           # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
           #
-          # @param llm_api_key_ref [String] Body param: This is only needed when using third-party inference providers. The
+          # @param integrations [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::Integration>] Body param: Connected integrations attached to the assistant. The catalog of ava
+          #
+          # @param interruption_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::InterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
+          #
+          # @param llm_api_key_ref [String] Body param: This is only needed when using third-party inference providers selec
+          #
+          # @param mcp_servers [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::McpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
           #
           # @param messaging_settings [Telnyx::Models::AI::MessagingSettings] Body param
           #
-          # @param model [String] Body param: ID of the model to use. You can use the [Get models API](https://dev
+          # @param model [String] Body param: ID of the model to use when `external_llm` is not set. You can use t
           #
           # @param name [String] Body param
           #
@@ -81,13 +89,17 @@ module Telnyx
           #
           # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
           #
+          # @param tags [Array<String>] Body param: Tags associated with the assistant. Tags can also be managed with th
+          #
           # @param telephony_settings [Telnyx::Models::AI::TelephonySettings] Body param
           #
-          # @param tool_ids [Array<String>] Body param
+          # @param tool_ids [Array<String>] Body param: IDs of shared tools to attach to the assistant. New integrations sho
           #
-          # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] Body param: The tools that the assistant can use. These may be templated with [d
+          # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] Body param: Deprecated for new integrations. Inline tool definitions available t
           #
           # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
+          #
+          # @param version_name [String] Body param: Human-readable name for the assistant version.
           #
           # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
           #

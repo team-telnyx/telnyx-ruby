@@ -8,6 +8,7 @@ module Telnyx
           {
             description: String,
             dynamic_variables: ::Hash[Symbol, top],
+            dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
             external_llm: Telnyx::AI::Assistants::UpdateAssistant::ExternalLlm,
@@ -15,17 +16,22 @@ module Telnyx
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings,
             instructions: String,
+            integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration],
+            interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings,
             llm_api_key_ref: String,
+            mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer],
             messaging_settings: Telnyx::AI::MessagingSettings,
             model: String,
             name: String,
             observability_settings: Telnyx::AI::ObservabilityReq,
             post_conversation_settings: Telnyx::AI::Assistants::UpdateAssistant::PostConversationSettings,
             privacy_settings: Telnyx::AI::PrivacySettings,
+            tags: ::Array[String],
             telephony_settings: Telnyx::AI::TelephonySettings,
             tool_ids: ::Array[String],
             tools: ::Array[Telnyx::Models::AI::assistant_tool],
             transcription: Telnyx::AI::TranscriptionSettings,
+            version_name: String,
             voice_settings: Telnyx::AI::VoiceSettings,
             widget_settings: Telnyx::AI::WidgetSettings
           }
@@ -38,6 +44,10 @@ module Telnyx
           attr_reader dynamic_variables: ::Hash[Symbol, top]?
 
           def dynamic_variables=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader dynamic_variables_webhook_timeout_ms: Integer?
+
+          def dynamic_variables_webhook_timeout_ms=: (Integer) -> Integer
 
           attr_reader dynamic_variables_webhook_url: String?
 
@@ -75,9 +85,27 @@ module Telnyx
 
           def instructions=: (String) -> String
 
+          attr_reader integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration]?
+
+          def integrations=: (
+            ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration]
+          ) -> ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration]
+
+          attr_reader interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings?
+
+          def interruption_settings=: (
+            Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings
+          ) -> Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings
+
           attr_reader llm_api_key_ref: String?
 
           def llm_api_key_ref=: (String) -> String
+
+          attr_reader mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer]?
+
+          def mcp_servers=: (
+            ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer]
+          ) -> ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer]
 
           attr_reader messaging_settings: Telnyx::AI::MessagingSettings?
 
@@ -111,6 +139,10 @@ module Telnyx
             Telnyx::AI::PrivacySettings
           ) -> Telnyx::AI::PrivacySettings
 
+          attr_reader tags: ::Array[String]?
+
+          def tags=: (::Array[String]) -> ::Array[String]
+
           attr_reader telephony_settings: Telnyx::AI::TelephonySettings?
 
           def telephony_settings=: (
@@ -133,6 +165,10 @@ module Telnyx
             Telnyx::AI::TranscriptionSettings
           ) -> Telnyx::AI::TranscriptionSettings
 
+          attr_reader version_name: String?
+
+          def version_name=: (String) -> String
+
           attr_reader voice_settings: Telnyx::AI::VoiceSettings?
 
           def voice_settings=: (
@@ -148,6 +184,7 @@ module Telnyx
           def initialize: (
             ?description: String,
             ?dynamic_variables: ::Hash[Symbol, top],
+            ?dynamic_variables_webhook_timeout_ms: Integer,
             ?dynamic_variables_webhook_url: String,
             ?enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
             ?external_llm: Telnyx::AI::Assistants::UpdateAssistant::ExternalLlm,
@@ -155,17 +192,22 @@ module Telnyx
             ?greeting: String,
             ?insight_settings: Telnyx::AI::InsightSettings,
             ?instructions: String,
+            ?integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration],
+            ?interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings,
             ?llm_api_key_ref: String,
+            ?mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer],
             ?messaging_settings: Telnyx::AI::MessagingSettings,
             ?model: String,
             ?name: String,
             ?observability_settings: Telnyx::AI::ObservabilityReq,
             ?post_conversation_settings: Telnyx::AI::Assistants::UpdateAssistant::PostConversationSettings,
             ?privacy_settings: Telnyx::AI::PrivacySettings,
+            ?tags: ::Array[String],
             ?telephony_settings: Telnyx::AI::TelephonySettings,
             ?tool_ids: ::Array[String],
             ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
             ?transcription: Telnyx::AI::TranscriptionSettings,
+            ?version_name: String,
             ?voice_settings: Telnyx::AI::VoiceSettings,
             ?widget_settings: Telnyx::AI::WidgetSettings
           ) -> void
@@ -173,6 +215,7 @@ module Telnyx
           def to_hash: -> {
             description: String,
             dynamic_variables: ::Hash[Symbol, top],
+            dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
             external_llm: Telnyx::AI::Assistants::UpdateAssistant::ExternalLlm,
@@ -180,17 +223,22 @@ module Telnyx
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings,
             instructions: String,
+            integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration],
+            interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings,
             llm_api_key_ref: String,
+            mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer],
             messaging_settings: Telnyx::AI::MessagingSettings,
             model: String,
             name: String,
             observability_settings: Telnyx::AI::ObservabilityReq,
             post_conversation_settings: Telnyx::AI::Assistants::UpdateAssistant::PostConversationSettings,
             privacy_settings: Telnyx::AI::PrivacySettings,
+            tags: ::Array[String],
             telephony_settings: Telnyx::AI::TelephonySettings,
             tool_ids: ::Array[String],
             tools: ::Array[Telnyx::Models::AI::assistant_tool],
             transcription: Telnyx::AI::TranscriptionSettings,
+            version_name: String,
             voice_settings: Telnyx::AI::VoiceSettings,
             widget_settings: Telnyx::AI::WidgetSettings
           }
@@ -368,6 +416,133 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::UpdateAssistant::FallbackConfig::ExternalLlm::authentication_method]
               end
             end
+          end
+
+          type integration =
+            { integration_id: String, allowed_list: ::Array[String] }
+
+          class Integration < Telnyx::Internal::Type::BaseModel
+            attr_accessor integration_id: String
+
+            attr_reader allowed_list: ::Array[String]?
+
+            def allowed_list=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              integration_id: String,
+              ?allowed_list: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              integration_id: String,
+              allowed_list: ::Array[String]
+            }
+          end
+
+          type interruption_settings =
+            {
+              enable: bool,
+              start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
+            }
+
+          class InterruptionSettings < Telnyx::Internal::Type::BaseModel
+            attr_reader enable: bool?
+
+            def enable=: (bool) -> bool
+
+            attr_reader start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan?
+
+            def start_speaking_plan=: (
+              Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
+            ) -> Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
+
+            def initialize: (
+              ?enable: bool,
+              ?start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
+            ) -> void
+
+            def to_hash: -> {
+              enable: bool,
+              start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
+            }
+
+            type start_speaking_plan =
+              {
+                transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
+                wait_seconds: Float
+              }
+
+            class StartSpeakingPlan < Telnyx::Internal::Type::BaseModel
+              attr_reader transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan?
+
+              def transcription_endpointing_plan=: (
+                Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
+              ) -> Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
+
+              attr_reader wait_seconds: Float?
+
+              def wait_seconds=: (Float) -> Float
+
+              def initialize: (
+                ?transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
+                ?wait_seconds: Float
+              ) -> void
+
+              def to_hash: -> {
+                transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
+                wait_seconds: Float
+              }
+
+              type transcription_endpointing_plan =
+                {
+                  on_no_punctuation_seconds: Float,
+                  on_number_seconds: Float,
+                  on_punctuation_seconds: Float
+                }
+
+              class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
+                attr_reader on_no_punctuation_seconds: Float?
+
+                def on_no_punctuation_seconds=: (Float) -> Float
+
+                attr_reader on_number_seconds: Float?
+
+                def on_number_seconds=: (Float) -> Float
+
+                attr_reader on_punctuation_seconds: Float?
+
+                def on_punctuation_seconds=: (Float) -> Float
+
+                def initialize: (
+                  ?on_no_punctuation_seconds: Float,
+                  ?on_number_seconds: Float,
+                  ?on_punctuation_seconds: Float
+                ) -> void
+
+                def to_hash: -> {
+                  on_no_punctuation_seconds: Float,
+                  on_number_seconds: Float,
+                  on_punctuation_seconds: Float
+                }
+              end
+            end
+          end
+
+          type mcp_server = { id: String, allowed_tools: ::Array[String] }
+
+          class McpServer < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader allowed_tools: ::Array[String]?
+
+            def allowed_tools=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              id: String,
+              ?allowed_tools: ::Array[String]
+            ) -> void
+
+            def to_hash: -> { id: String, allowed_tools: ::Array[String] }
           end
 
           type post_conversation_settings = { enabled: bool }

@@ -17,12 +17,6 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :instructions
 
-        # ID of the model to use. You can use the
-        # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
-        # to see all of your available models,
-        sig { returns(String) }
-        attr_accessor :model
-
         sig { returns(String) }
         attr_accessor :name
 
@@ -39,10 +33,24 @@ module Telnyx
         sig { params(dynamic_variables: T::Hash[Symbol, T.anything]).void }
         attr_writer :dynamic_variables
 
-        # If the dynamic_variables_webhook_url is set for the assistant, we will send a
-        # request at the start of the conversation. See our
-        # [guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
-        # for more information.
+        # Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
+        # 10000 ms. If the webhook does not respond within this timeout, the call proceeds
+        # with default values. See the
+        # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :dynamic_variables_webhook_timeout_ms
+
+        sig { params(dynamic_variables_webhook_timeout_ms: Integer).void }
+        attr_writer :dynamic_variables_webhook_timeout_ms
+
+        # If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this
+        # URL at the start of the conversation to resolve dynamic variables. **Gotcha:**
+        # the webhook response must wrap variables under a top-level `dynamic_variables`
+        # object, e.g. `{"dynamic_variables": {"customer_name": "Jane"}}`. Returning a
+        # flat object will be ignored and variables will fall back to their defaults. See
+        # the
+        # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+        # for the full request/response format and timeout behavior.
         sig { returns(T.nilable(String)) }
         attr_reader :dynamic_variables_webhook_url
 
@@ -106,16 +114,74 @@ module Telnyx
         end
         attr_writer :insight_settings
 
-        # This is only needed when using third-party inference providers. The `identifier`
-        # for an integration secret
+        # Connected integrations attached to the assistant. The catalog of available
+        # integrations is at `/ai/integrations`; the user's connected integrations are at
+        # `/ai/integrations/connections`. Each item references a catalog integration by
+        # `integration_id`.
+        sig do
+          returns(
+            T.nilable(T::Array[Telnyx::AI::AssistantCreateParams::Integration])
+          )
+        end
+        attr_reader :integrations
+
+        sig do
+          params(
+            integrations:
+              T::Array[Telnyx::AI::AssistantCreateParams::Integration::OrHash]
+          ).void
+        end
+        attr_writer :integrations
+
+        # Settings for interruptions and how the assistant decides the user has finished
+        # speaking. These timings are most relevant when using non turn-taking
+        # transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
+        # behavior is controlled by the transcription end-of-turn settings under
+        # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+        # `eager_eot_threshold`).
+        sig do
+          returns(
+            T.nilable(Telnyx::AI::AssistantCreateParams::InterruptionSettings)
+          )
+        end
+        attr_reader :interruption_settings
+
+        sig do
+          params(
+            interruption_settings:
+              Telnyx::AI::AssistantCreateParams::InterruptionSettings::OrHash
+          ).void
+        end
+        attr_writer :interruption_settings
+
+        # This is only needed when using third-party inference providers selected by
+        # `model`. The `identifier` for an integration secret
         # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
-        # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
-        # work with this integration.
+        # that refers to your LLM provider's API key. For bring-your-own endpoint
+        # authentication, use `external_llm.llm_api_key_ref` instead. Warning: Free plans
+        # are unlikely to work with this integration.
         sig { returns(T.nilable(String)) }
         attr_reader :llm_api_key_ref
 
         sig { params(llm_api_key_ref: String).void }
         attr_writer :llm_api_key_ref
+
+        # MCP servers attached to the assistant. Create MCP servers with
+        # `/ai/mcp_servers`, then reference them by `id` here.
+        sig do
+          returns(
+            T.nilable(T::Array[Telnyx::AI::AssistantCreateParams::McpServer])
+          )
+        end
+        attr_reader :mcp_servers
+
+        sig do
+          params(
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantCreateParams::McpServer::OrHash]
+          ).void
+        end
+        attr_writer :mcp_servers
 
         sig { returns(T.nilable(Telnyx::AI::MessagingSettings)) }
         attr_reader :messaging_settings
@@ -124,6 +190,17 @@ module Telnyx
           params(messaging_settings: Telnyx::AI::MessagingSettings::OrHash).void
         end
         attr_writer :messaging_settings
+
+        # ID of the model to use when `external_llm` is not set. You can use the
+        # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
+        # to see available models. If `external_llm` is provided, the assistant uses
+        # `external_llm` instead of this field. If neither `model` nor `external_llm` is
+        # provided, Telnyx applies the default model.
+        sig { returns(T.nilable(String)) }
+        attr_reader :model
+
+        sig { params(model: String).void }
+        attr_writer :model
 
         sig { returns(T.nilable(Telnyx::AI::ObservabilityReq)) }
         attr_reader :observability_settings
@@ -166,6 +243,14 @@ module Telnyx
         end
         attr_writer :privacy_settings
 
+        # Tags associated with the assistant. Tags can also be managed with the assistant
+        # tag endpoints.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :tags
+
+        sig { params(tags: T::Array[String]).void }
+        attr_writer :tags
+
         sig { returns(T.nilable(Telnyx::AI::TelephonySettings)) }
         attr_reader :telephony_settings
 
@@ -174,14 +259,17 @@ module Telnyx
         end
         attr_writer :telephony_settings
 
+        # IDs of shared tools to attach to the assistant. New integrations should prefer
+        # `tool_ids` over inline `tools`.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :tool_ids
 
         sig { params(tool_ids: T::Array[String]).void }
         attr_writer :tool_ids
 
-        # The tools that the assistant can use. These may be templated with
-        # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+        # Deprecated for new integrations. Inline tool definitions available to the
+        # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
+        # endpoints.
         sig do
           returns(
             T.nilable(
@@ -249,10 +337,10 @@ module Telnyx
         sig do
           params(
             instructions: String,
-            model: String,
             name: String,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
+            dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
             external_llm:
@@ -261,12 +349,20 @@ module Telnyx
               Telnyx::AI::AssistantCreateParams::FallbackConfig::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
+            integrations:
+              T::Array[Telnyx::AI::AssistantCreateParams::Integration::OrHash],
+            interruption_settings:
+              Telnyx::AI::AssistantCreateParams::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantCreateParams::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
+            model: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
               Telnyx::AI::AssistantCreateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
+            tags: T::Array[String],
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tool_ids: T::Array[String],
             tools:
@@ -294,18 +390,23 @@ module Telnyx
           # System instructions for the assistant. These may be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           instructions:,
-          # ID of the model to use. You can use the
-          # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
-          # to see all of your available models,
-          model:,
           name:,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
-          # If the dynamic_variables_webhook_url is set for the assistant, we will send a
-          # request at the start of the conversation. See our
-          # [guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
-          # for more information.
+          # Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
+          # 10000 ms. If the webhook does not respond within this timeout, the call proceeds
+          # with default values. See the
+          # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
+          dynamic_variables_webhook_timeout_ms: nil,
+          # If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this
+          # URL at the start of the conversation to resolve dynamic variables. **Gotcha:**
+          # the webhook response must wrap variables under a top-level `dynamic_variables`
+          # object, e.g. `{"dynamic_variables": {"customer_name": "Jane"}}`. Returning a
+          # flat object will be ignored and variables will fall back to their defaults. See
+          # the
+          # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # for the full request/response format and timeout behavior.
           dynamic_variables_webhook_url: nil,
           enabled_features: nil,
           external_llm: nil,
@@ -318,13 +419,35 @@ module Telnyx
           # have the assistant generate the greeting based on the system instructions.
           greeting: nil,
           insight_settings: nil,
-          # This is only needed when using third-party inference providers. The `identifier`
-          # for an integration secret
+          # Connected integrations attached to the assistant. The catalog of available
+          # integrations is at `/ai/integrations`; the user's connected integrations are at
+          # `/ai/integrations/connections`. Each item references a catalog integration by
+          # `integration_id`.
+          integrations: nil,
+          # Settings for interruptions and how the assistant decides the user has finished
+          # speaking. These timings are most relevant when using non turn-taking
+          # transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
+          # behavior is controlled by the transcription end-of-turn settings under
+          # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+          # `eager_eot_threshold`).
+          interruption_settings: nil,
+          # This is only needed when using third-party inference providers selected by
+          # `model`. The `identifier` for an integration secret
           # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
-          # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
-          # work with this integration.
+          # that refers to your LLM provider's API key. For bring-your-own endpoint
+          # authentication, use `external_llm.llm_api_key_ref` instead. Warning: Free plans
+          # are unlikely to work with this integration.
           llm_api_key_ref: nil,
+          # MCP servers attached to the assistant. Create MCP servers with
+          # `/ai/mcp_servers`, then reference them by `id` here.
+          mcp_servers: nil,
           messaging_settings: nil,
+          # ID of the model to use when `external_llm` is not set. You can use the
+          # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
+          # to see available models. If `external_llm` is provided, the assistant uses
+          # `external_llm` instead of this field. If neither `model` nor `external_llm` is
+          # provided, Telnyx applies the default model.
+          model: nil,
           observability_settings: nil,
           # Configuration for post-conversation processing. When enabled, the assistant
           # receives one additional LLM turn after the conversation ends, allowing it to
@@ -334,10 +457,16 @@ module Telnyx
           # post-conversation. Beta feature.
           post_conversation_settings: nil,
           privacy_settings: nil,
+          # Tags associated with the assistant. Tags can also be managed with the assistant
+          # tag endpoints.
+          tags: nil,
           telephony_settings: nil,
+          # IDs of shared tools to attach to the assistant. New integrations should prefer
+          # `tool_ids` over inline `tools`.
           tool_ids: nil,
-          # The tools that the assistant can use. These may be templated with
-          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # Deprecated for new integrations. Inline tool definitions available to the
+          # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
+          # endpoints.
           tools: nil,
           transcription: nil,
           voice_settings: nil,
@@ -351,10 +480,10 @@ module Telnyx
           override.returns(
             {
               instructions: String,
-              model: String,
               name: String,
               description: String,
               dynamic_variables: T::Hash[Symbol, T.anything],
+              dynamic_variables_webhook_timeout_ms: Integer,
               dynamic_variables_webhook_url: String,
               enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
               external_llm: Telnyx::AI::AssistantCreateParams::ExternalLlm,
@@ -362,12 +491,20 @@ module Telnyx
                 Telnyx::AI::AssistantCreateParams::FallbackConfig,
               greeting: String,
               insight_settings: Telnyx::AI::InsightSettings,
+              integrations:
+                T::Array[Telnyx::AI::AssistantCreateParams::Integration],
+              interruption_settings:
+                Telnyx::AI::AssistantCreateParams::InterruptionSettings,
               llm_api_key_ref: String,
+              mcp_servers:
+                T::Array[Telnyx::AI::AssistantCreateParams::McpServer],
               messaging_settings: Telnyx::AI::MessagingSettings,
+              model: String,
               observability_settings: Telnyx::AI::ObservabilityReq,
               post_conversation_settings:
                 Telnyx::AI::AssistantCreateParams::PostConversationSettings,
               privacy_settings: Telnyx::AI::PrivacySettings,
+              tags: T::Array[String],
               telephony_settings: Telnyx::AI::TelephonySettings,
               tool_ids: T::Array[String],
               tools:
@@ -438,11 +575,13 @@ module Telnyx
           sig { params(certificate_ref: String).void }
           attr_writer :certificate_ref
 
-          # When enabled, Telnyx forwards the assistant's dynamic variables to the external
-          # LLM endpoint. Defaults to false. The chat completion request includes a
-          # top-level `extra_metadata` object when dynamic variables are available. For
-          # example:
-          # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+          # When `true`, Telnyx forwards the assistant's dynamic variables to the external
+          # LLM endpoint as a top-level `extra_metadata` object on the chat completion
+          # request body. Defaults to `false`. Example payload sent to the external
+          # endpoint:
+          # `{"extra_metadata": {"customer_name": "Jane", "account_id": "acct_789", "telnyx_agent_target": "+13125550100", "telnyx_end_user_target": "+13125550123"}}`.
+          # Distinct from OpenAI's native `metadata` field, which has its own size and type
+          # limits.
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :forward_metadata
 
@@ -485,11 +624,13 @@ module Telnyx
             # Integration secret identifier for the client certificate used with certificate
             # authentication.
             certificate_ref: nil,
-            # When enabled, Telnyx forwards the assistant's dynamic variables to the external
-            # LLM endpoint. Defaults to false. The chat completion request includes a
-            # top-level `extra_metadata` object when dynamic variables are available. For
-            # example:
-            # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+            # When `true`, Telnyx forwards the assistant's dynamic variables to the external
+            # LLM endpoint as a top-level `extra_metadata` object on the chat completion
+            # request body. Defaults to `false`. Example payload sent to the external
+            # endpoint:
+            # `{"extra_metadata": {"customer_name": "Jane", "account_id": "acct_789", "telnyx_agent_target": "+13125550100", "telnyx_end_user_target": "+13125550123"}}`.
+            # Distinct from OpenAI's native `metadata` field, which has its own size and type
+            # limits.
             forward_metadata: nil,
             # Integration secret identifier for the external LLM API key.
             llm_api_key_ref: nil,
@@ -666,11 +807,13 @@ module Telnyx
             sig { params(certificate_ref: String).void }
             attr_writer :certificate_ref
 
-            # When enabled, Telnyx forwards the assistant's dynamic variables to the external
-            # LLM endpoint. Defaults to false. The chat completion request includes a
-            # top-level `extra_metadata` object when dynamic variables are available. For
-            # example:
-            # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+            # When `true`, Telnyx forwards the assistant's dynamic variables to the external
+            # LLM endpoint as a top-level `extra_metadata` object on the chat completion
+            # request body. Defaults to `false`. Example payload sent to the external
+            # endpoint:
+            # `{"extra_metadata": {"customer_name": "Jane", "account_id": "acct_789", "telnyx_agent_target": "+13125550100", "telnyx_end_user_target": "+13125550123"}}`.
+            # Distinct from OpenAI's native `metadata` field, which has its own size and type
+            # limits.
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :forward_metadata
 
@@ -713,11 +856,13 @@ module Telnyx
               # Integration secret identifier for the client certificate used with certificate
               # authentication.
               certificate_ref: nil,
-              # When enabled, Telnyx forwards the assistant's dynamic variables to the external
-              # LLM endpoint. Defaults to false. The chat completion request includes a
-              # top-level `extra_metadata` object when dynamic variables are available. For
-              # example:
-              # `{"extra_metadata":{"customer_name":"Jane","account_id":"acct_789","telnyx_agent_target":"+13125550100","telnyx_end_user_target":"+13125550123"}}`.
+              # When `true`, Telnyx forwards the assistant's dynamic variables to the external
+              # LLM endpoint as a top-level `extra_metadata` object on the chat completion
+              # request body. Defaults to `false`. Example payload sent to the external
+              # endpoint:
+              # `{"extra_metadata": {"customer_name": "Jane", "account_id": "acct_789", "telnyx_agent_target": "+13125550100", "telnyx_end_user_target": "+13125550123"}}`.
+              # Distinct from OpenAI's native `metadata` field, which has its own size and type
+              # limits.
               forward_metadata: nil,
               # Integration secret identifier for the external LLM API key.
               llm_api_key_ref: nil,
@@ -777,6 +922,319 @@ module Telnyx
               def self.values
               end
             end
+          end
+        end
+
+        class Integration < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantCreateParams::Integration,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Catalog integration ID to attach. This is the `id` from the integrations catalog
+          # at `/ai/integrations` (the same value also appears as `integration_id` on
+          # entries returned by `/ai/integrations/connections`). It is **not** the
+          # connection-level `id` from `/ai/integrations/connections`.
+          sig { returns(String) }
+          attr_accessor :integration_id
+
+          # Optional per-assistant allowlist of integration tool names. When omitted or
+          # empty, all tools allowed by the connected integration are available to the
+          # assistant.
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :allowed_list
+
+          sig { params(allowed_list: T::Array[String]).void }
+          attr_writer :allowed_list
+
+          # Reference to a connected integration attached to an assistant. Discover
+          # available integrations with `/ai/integrations` and connected integrations with
+          # `/ai/integrations/connections`.
+          sig do
+            params(
+              integration_id: String,
+              allowed_list: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Catalog integration ID to attach. This is the `id` from the integrations catalog
+            # at `/ai/integrations` (the same value also appears as `integration_id` on
+            # entries returned by `/ai/integrations/connections`). It is **not** the
+            # connection-level `id` from `/ai/integrations/connections`.
+            integration_id:,
+            # Optional per-assistant allowlist of integration tool names. When omitted or
+            # empty, all tools allowed by the connected integration are available to the
+            # assistant.
+            allowed_list: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { integration_id: String, allowed_list: T::Array[String] }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class InterruptionSettings < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantCreateParams::InterruptionSettings,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Whether users can interrupt the assistant while it is speaking.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :enable
+
+          sig { params(enable: T::Boolean).void }
+          attr_writer :enable
+
+          # Controls when the assistant starts speaking after the user stops. These
+          # thresholds primarily apply to non turn-taking transcription models. For
+          # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+          # transcription end-of-turn settings under `transcription.settings` instead.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan
+              )
+            )
+          end
+          attr_reader :start_speaking_plan
+
+          sig do
+            params(
+              start_speaking_plan:
+                Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::OrHash
+            ).void
+          end
+          attr_writer :start_speaking_plan
+
+          # Settings for interruptions and how the assistant decides the user has finished
+          # speaking. These timings are most relevant when using non turn-taking
+          # transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
+          # behavior is controlled by the transcription end-of-turn settings under
+          # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+          # `eager_eot_threshold`).
+          sig do
+            params(
+              enable: T::Boolean,
+              start_speaking_plan:
+                Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Whether users can interrupt the assistant while it is speaking.
+            enable: nil,
+            # Controls when the assistant starts speaking after the user stops. These
+            # thresholds primarily apply to non turn-taking transcription models. For
+            # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+            # transcription end-of-turn settings under `transcription.settings` instead.
+            start_speaking_plan: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                enable: T::Boolean,
+                start_speaking_plan:
+                  Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class StartSpeakingPlan < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Endpointing thresholds used to decide when the user has finished speaking.
+            # Applies to non turn-taking transcription models. For `deepgram/flux`, use
+            # `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+            # `eager_eot_threshold`.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
+                )
+              )
+            end
+            attr_reader :transcription_endpointing_plan
+
+            sig do
+              params(
+                transcription_endpointing_plan:
+                  Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan::OrHash
+              ).void
+            end
+            attr_writer :transcription_endpointing_plan
+
+            # Minimum seconds to wait before the assistant starts speaking.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :wait_seconds
+
+            sig { params(wait_seconds: Float).void }
+            attr_writer :wait_seconds
+
+            # Controls when the assistant starts speaking after the user stops. These
+            # thresholds primarily apply to non turn-taking transcription models. For
+            # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+            # transcription end-of-turn settings under `transcription.settings` instead.
+            sig do
+              params(
+                transcription_endpointing_plan:
+                  Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan::OrHash,
+                wait_seconds: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Endpointing thresholds used to decide when the user has finished speaking.
+              # Applies to non turn-taking transcription models. For `deepgram/flux`, use
+              # `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+              # `eager_eot_threshold`.
+              transcription_endpointing_plan: nil,
+              # Minimum seconds to wait before the assistant starts speaking.
+              wait_seconds: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  transcription_endpointing_plan:
+                    Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
+                  wait_seconds: Float
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # Seconds to wait after the transcript ends without punctuation.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :on_no_punctuation_seconds
+
+              sig { params(on_no_punctuation_seconds: Float).void }
+              attr_writer :on_no_punctuation_seconds
+
+              # Seconds to wait after the transcript ends with a number.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :on_number_seconds
+
+              sig { params(on_number_seconds: Float).void }
+              attr_writer :on_number_seconds
+
+              # Seconds to wait after the transcript ends with punctuation.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :on_punctuation_seconds
+
+              sig { params(on_punctuation_seconds: Float).void }
+              attr_writer :on_punctuation_seconds
+
+              # Endpointing thresholds used to decide when the user has finished speaking.
+              # Applies to non turn-taking transcription models. For `deepgram/flux`, use
+              # `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+              # `eager_eot_threshold`.
+              sig do
+                params(
+                  on_no_punctuation_seconds: Float,
+                  on_number_seconds: Float,
+                  on_punctuation_seconds: Float
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Seconds to wait after the transcript ends without punctuation.
+                on_no_punctuation_seconds: nil,
+                # Seconds to wait after the transcript ends with a number.
+                on_number_seconds: nil,
+                # Seconds to wait after the transcript ends with punctuation.
+                on_punctuation_seconds: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    on_no_punctuation_seconds: Float,
+                    on_number_seconds: Float,
+                    on_punctuation_seconds: Float
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+          end
+        end
+
+        class McpServer < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantCreateParams::McpServer,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # ID of the MCP server to attach. This must be the `id` of an MCP server returned
+          # by the `/ai/mcp_servers` endpoints.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
+          # uses the MCP server's configured `allowed_tools`.
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :allowed_tools
+
+          sig { params(allowed_tools: T::Array[String]).void }
+          attr_writer :allowed_tools
+
+          # Reference to an MCP server attached to an assistant. Create and manage MCP
+          # servers with the `/ai/mcp_servers` endpoints, then attach them to assistants by
+          # ID.
+          sig do
+            params(id: String, allowed_tools: T::Array[String]).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # ID of the MCP server to attach. This must be the `id` of an MCP server returned
+            # by the `/ai/mcp_servers` endpoints.
+            id:,
+            # Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
+            # uses the MCP server's configured `allowed_tools`.
+            allowed_tools: nil
+          )
+          end
+
+          sig do
+            override.returns({ id: String, allowed_tools: T::Array[String] })
+          end
+          def to_hash
           end
         end
 
