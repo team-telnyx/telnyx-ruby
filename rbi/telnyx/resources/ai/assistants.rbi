@@ -33,10 +33,10 @@ module Telnyx
         sig do
           params(
             instructions: String,
-            model: String,
             name: String,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
+            dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
             external_llm:
@@ -45,12 +45,20 @@ module Telnyx
               Telnyx::AI::AssistantCreateParams::FallbackConfig::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
+            integrations:
+              T::Array[Telnyx::AI::AssistantCreateParams::Integration::OrHash],
+            interruption_settings:
+              Telnyx::AI::AssistantCreateParams::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantCreateParams::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
+            model: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
               Telnyx::AI::AssistantCreateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
+            tags: T::Array[String],
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tool_ids: T::Array[String],
             tools:
@@ -78,18 +86,23 @@ module Telnyx
           # System instructions for the assistant. These may be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           instructions:,
-          # ID of the model to use. You can use the
-          # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
-          # to see all of your available models,
-          model:,
           name:,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
-          # If the dynamic_variables_webhook_url is set for the assistant, we will send a
-          # request at the start of the conversation. See our
-          # [guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
-          # for more information.
+          # Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
+          # 10000 ms. If the webhook does not respond within this timeout, the call proceeds
+          # with default values. See the
+          # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
+          dynamic_variables_webhook_timeout_ms: nil,
+          # If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this
+          # URL at the start of the conversation to resolve dynamic variables. **Gotcha:**
+          # the webhook response must wrap variables under a top-level `dynamic_variables`
+          # object, e.g. `{"dynamic_variables": {"customer_name": "Jane"}}`. Returning a
+          # flat object will be ignored and variables will fall back to their defaults. See
+          # the
+          # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # for the full request/response format and timeout behavior.
           dynamic_variables_webhook_url: nil,
           enabled_features: nil,
           external_llm: nil,
@@ -102,13 +115,35 @@ module Telnyx
           # have the assistant generate the greeting based on the system instructions.
           greeting: nil,
           insight_settings: nil,
-          # This is only needed when using third-party inference providers. The `identifier`
-          # for an integration secret
+          # Connected integrations attached to the assistant. The catalog of available
+          # integrations is at `/ai/integrations`; the user's connected integrations are at
+          # `/ai/integrations/connections`. Each item references a catalog integration by
+          # `integration_id`.
+          integrations: nil,
+          # Settings for interruptions and how the assistant decides the user has finished
+          # speaking. These timings are most relevant when using non turn-taking
+          # transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
+          # behavior is controlled by the transcription end-of-turn settings under
+          # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+          # `eager_eot_threshold`).
+          interruption_settings: nil,
+          # This is only needed when using third-party inference providers selected by
+          # `model`. The `identifier` for an integration secret
           # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
-          # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
-          # work with this integration.
+          # that refers to your LLM provider's API key. For bring-your-own endpoint
+          # authentication, use `external_llm.llm_api_key_ref` instead. Warning: Free plans
+          # are unlikely to work with this integration.
           llm_api_key_ref: nil,
+          # MCP servers attached to the assistant. Create MCP servers with
+          # `/ai/mcp_servers`, then reference them by `id` here.
+          mcp_servers: nil,
           messaging_settings: nil,
+          # ID of the model to use when `external_llm` is not set. You can use the
+          # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
+          # to see available models. If `external_llm` is provided, the assistant uses
+          # `external_llm` instead of this field. If neither `model` nor `external_llm` is
+          # provided, Telnyx applies the default model.
+          model: nil,
           observability_settings: nil,
           # Configuration for post-conversation processing. When enabled, the assistant
           # receives one additional LLM turn after the conversation ends, allowing it to
@@ -118,10 +153,16 @@ module Telnyx
           # post-conversation. Beta feature.
           post_conversation_settings: nil,
           privacy_settings: nil,
+          # Tags associated with the assistant. Tags can also be managed with the assistant
+          # tag endpoints.
+          tags: nil,
           telephony_settings: nil,
+          # IDs of shared tools to attach to the assistant. New integrations should prefer
+          # `tool_ids` over inline `tools`.
           tool_ids: nil,
-          # The tools that the assistant can use. These may be templated with
-          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # Deprecated for new integrations. Inline tool definitions available to the
+          # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
+          # endpoints.
           tools: nil,
           transcription: nil,
           voice_settings: nil,
@@ -158,6 +199,7 @@ module Telnyx
             assistant_id: String,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
+            dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
             external_llm:
@@ -167,7 +209,13 @@ module Telnyx
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             instructions: String,
+            integrations:
+              T::Array[Telnyx::AI::AssistantUpdateParams::Integration::OrHash],
+            interruption_settings:
+              Telnyx::AI::AssistantUpdateParams::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantUpdateParams::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             name: String,
@@ -176,6 +224,7 @@ module Telnyx
               Telnyx::AI::AssistantUpdateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
+            tags: T::Array[String],
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tool_ids: T::Array[String],
             tools:
@@ -194,6 +243,7 @@ module Telnyx
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
+            version_name: String,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
@@ -204,10 +254,19 @@ module Telnyx
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
-          # If the dynamic_variables_webhook_url is set for the assistant, we will send a
-          # request at the start of the conversation. See our
-          # [guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
-          # for more information.
+          # Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
+          # 10000 ms. If the webhook does not respond within this timeout, the call proceeds
+          # with default values. See the
+          # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
+          dynamic_variables_webhook_timeout_ms: nil,
+          # If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this
+          # URL at the start of the conversation to resolve dynamic variables. **Gotcha:**
+          # the webhook response must wrap variables under a top-level `dynamic_variables`
+          # object, e.g. `{"dynamic_variables": {"customer_name": "Jane"}}`. Returning a
+          # flat object will be ignored and variables will fall back to their defaults. See
+          # the
+          # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # for the full request/response format and timeout behavior.
           dynamic_variables_webhook_url: nil,
           enabled_features: nil,
           external_llm: nil,
@@ -223,16 +282,34 @@ module Telnyx
           # System instructions for the assistant. These may be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           instructions: nil,
-          # This is only needed when using third-party inference providers. The `identifier`
-          # for an integration secret
+          # Connected integrations attached to the assistant. The catalog of available
+          # integrations is at `/ai/integrations`; the user's connected integrations are at
+          # `/ai/integrations/connections`. Each item references a catalog integration by
+          # `integration_id`.
+          integrations: nil,
+          # Settings for interruptions and how the assistant decides the user has finished
+          # speaking. These timings are most relevant when using non turn-taking
+          # transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
+          # behavior is controlled by the transcription end-of-turn settings under
+          # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+          # `eager_eot_threshold`).
+          interruption_settings: nil,
+          # This is only needed when using third-party inference providers selected by
+          # `model`. The `identifier` for an integration secret
           # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
-          # that refers to your LLM provider's API key. Warning: Free plans are unlikely to
-          # work with this integration.
+          # that refers to your LLM provider's API key. For bring-your-own endpoint
+          # authentication, use `external_llm.llm_api_key_ref` instead. Warning: Free plans
+          # are unlikely to work with this integration.
           llm_api_key_ref: nil,
+          # MCP servers attached to the assistant. Create MCP servers with
+          # `/ai/mcp_servers`, then reference them by `id` here.
+          mcp_servers: nil,
           messaging_settings: nil,
-          # ID of the model to use. You can use the
+          # ID of the model to use when `external_llm` is not set. You can use the
           # [Get models API](https://developers.telnyx.com/api-reference/chat/get-available-models)
-          # to see all of your available models,
+          # to see available models. If `external_llm` is provided, the assistant uses
+          # `external_llm` instead of this field. If neither `model` nor `external_llm` is
+          # provided, Telnyx applies the default model.
           model: nil,
           name: nil,
           observability_settings: nil,
@@ -247,12 +324,20 @@ module Telnyx
           # Indicates whether the assistant should be promoted to the main version. Defaults
           # to true.
           promote_to_main: nil,
+          # Tags associated with the assistant. Tags can also be managed with the assistant
+          # tag endpoints.
+          tags: nil,
           telephony_settings: nil,
+          # IDs of shared tools to attach to the assistant. New integrations should prefer
+          # `tool_ids` over inline `tools`.
           tool_ids: nil,
-          # The tools that the assistant can use. These may be templated with
-          # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
+          # Deprecated for new integrations. Inline tool definitions available to the
+          # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
+          # endpoints.
           tools: nil,
           transcription: nil,
+          # Human-readable name for the assistant version.
+          version_name: nil,
           voice_settings: nil,
           # Configuration settings for the assistant's web widget.
           widget_settings: nil,

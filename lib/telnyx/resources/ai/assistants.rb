@@ -34,11 +34,9 @@ module Telnyx
         #
         # Create a new AI Assistant.
         #
-        # @overload create(instructions:, model:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, llm_api_key_ref: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload create(instructions:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
-        #
-        # @param model [String] ID of the model to use. You can use the [Get models API](https://developers.teln
         #
         # @param name [String]
         #
@@ -46,7 +44,9 @@ module Telnyx
         #
         # @param dynamic_variables [Hash{Symbol=>Object}] Map of dynamic variables and their default values
         #
-        # @param dynamic_variables_webhook_url [String] If the dynamic_variables_webhook_url is set for the assistant, we will send a re
+        # @param dynamic_variables_webhook_timeout_ms [Integer] Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
+        #
+        # @param dynamic_variables_webhook_url [String] If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this U
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
@@ -58,9 +58,17 @@ module Telnyx
         #
         # @param insight_settings [Telnyx::Models::AI::InsightSettings]
         #
-        # @param llm_api_key_ref [String] This is only needed when using third-party inference providers. The `identifier`
+        # @param integrations [Array<Telnyx::Models::AI::AssistantCreateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
+        #
+        # @param interruption_settings [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        #
+        # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
+        #
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantCreateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
+        #
+        # @param model [String] ID of the model to use when `external_llm` is not set. You can use the [Get mode
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
@@ -68,11 +76,13 @@ module Telnyx
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
+        # @param tags [Array<String>] Tags associated with the assistant. Tags can also be managed with the assistant
+        #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tool_ids [Array<String>]
+        # @param tool_ids [Array<String>] IDs of shared tools to attach to the assistant. New integrations should prefer `
         #
-        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] Deprecated for new integrations. Inline tool definitions available to the assist
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #
@@ -127,7 +137,7 @@ module Telnyx
         #
         # Update an AI Assistant's attributes.
         #
-        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, llm_api_key_ref: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String]
         #
@@ -135,7 +145,9 @@ module Telnyx
         #
         # @param dynamic_variables [Hash{Symbol=>Object}] Map of dynamic variables and their default values
         #
-        # @param dynamic_variables_webhook_url [String] If the dynamic_variables_webhook_url is set for the assistant, we will send a re
+        # @param dynamic_variables_webhook_timeout_ms [Integer] Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
+        #
+        # @param dynamic_variables_webhook_url [String] If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this U
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
@@ -149,11 +161,17 @@ module Telnyx
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
-        # @param llm_api_key_ref [String] This is only needed when using third-party inference providers. The `identifier`
+        # @param integrations [Array<Telnyx::Models::AI::AssistantUpdateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
+        #
+        # @param interruption_settings [Telnyx::Models::AI::AssistantUpdateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        #
+        # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
+        #
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantUpdateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
-        # @param model [String] ID of the model to use. You can use the [Get models API](https://developers.teln
+        # @param model [String] ID of the model to use when `external_llm` is not set. You can use the [Get mode
         #
         # @param name [String]
         #
@@ -165,13 +183,17 @@ module Telnyx
         #
         # @param promote_to_main [Boolean] Indicates whether the assistant should be promoted to the main version. Defaults
         #
+        # @param tags [Array<String>] Tags associated with the assistant. Tags can also be managed with the assistant
+        #
         # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        # @param tool_ids [Array<String>]
+        # @param tool_ids [Array<String>] IDs of shared tools to attach to the assistant. New integrations should prefer `
         #
-        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] The tools that the assistant can use. These may be templated with [dynamic varia
+        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn>] Deprecated for new integrations. Inline tool definitions available to the assist
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
+        #
+        # @param version_name [String] Human-readable name for the assistant version.
         #
         # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
         #
