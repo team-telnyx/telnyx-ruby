@@ -39,17 +39,15 @@ module Telnyx
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-            external_llm:
-              Telnyx::AI::AssistantCreateParams::ExternalLlm::OrHash,
-            fallback_config:
-              Telnyx::AI::AssistantCreateParams::FallbackConfig::OrHash,
+            external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
+            fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             llm_api_key_ref: String,
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
-              Telnyx::AI::AssistantCreateParams::PostConversationSettings::OrHash,
+              Telnyx::AI::PostConversationSettingsReq::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
             tool_ids: T::Array[String],
@@ -160,10 +158,8 @@ module Telnyx
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-            external_llm:
-              Telnyx::AI::AssistantUpdateParams::ExternalLlm::OrHash,
-            fallback_config:
-              Telnyx::AI::AssistantUpdateParams::FallbackConfig::OrHash,
+            external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
+            fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             instructions: String,
@@ -173,7 +169,7 @@ module Telnyx
             name: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
-              Telnyx::AI::AssistantUpdateParams::PostConversationSettings::OrHash,
+              Telnyx::AI::PostConversationSettingsReq::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
