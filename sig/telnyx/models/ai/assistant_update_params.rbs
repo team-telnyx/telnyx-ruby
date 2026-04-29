@@ -8,8 +8,8 @@ module Telnyx
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_url: String,
           enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
-          external_llm: Telnyx::AI::ExternalLlmReq,
-          fallback_config: Telnyx::AI::FallbackConfigReq,
+          external_llm: Telnyx::AI::AssistantUpdateParams::ExternalLlm,
+          fallback_config: Telnyx::AI::AssistantUpdateParams::FallbackConfig,
           greeting: String,
           insight_settings: Telnyx::AI::InsightSettings,
           instructions: String,
@@ -18,7 +18,7 @@ module Telnyx
           model: String,
           name: String,
           observability_settings: Telnyx::AI::ObservabilityReq,
-          post_conversation_settings: Telnyx::AI::PostConversationSettingsReq,
+          post_conversation_settings: Telnyx::AI::AssistantUpdateParams::PostConversationSettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           promote_to_main: bool,
           telephony_settings: Telnyx::AI::TelephonySettings,
@@ -54,17 +54,17 @@ module Telnyx
           ::Array[Telnyx::Models::AI::enabled_features]
         ) -> ::Array[Telnyx::Models::AI::enabled_features]
 
-        attr_reader external_llm: Telnyx::AI::ExternalLlmReq?
+        attr_reader external_llm: Telnyx::AI::AssistantUpdateParams::ExternalLlm?
 
         def external_llm=: (
-          Telnyx::AI::ExternalLlmReq
-        ) -> Telnyx::AI::ExternalLlmReq
+          Telnyx::AI::AssistantUpdateParams::ExternalLlm
+        ) -> Telnyx::AI::AssistantUpdateParams::ExternalLlm
 
-        attr_reader fallback_config: Telnyx::AI::FallbackConfigReq?
+        attr_reader fallback_config: Telnyx::AI::AssistantUpdateParams::FallbackConfig?
 
         def fallback_config=: (
-          Telnyx::AI::FallbackConfigReq
-        ) -> Telnyx::AI::FallbackConfigReq
+          Telnyx::AI::AssistantUpdateParams::FallbackConfig
+        ) -> Telnyx::AI::AssistantUpdateParams::FallbackConfig
 
         attr_reader greeting: String?
 
@@ -104,11 +104,11 @@ module Telnyx
           Telnyx::AI::ObservabilityReq
         ) -> Telnyx::AI::ObservabilityReq
 
-        attr_reader post_conversation_settings: Telnyx::AI::PostConversationSettingsReq?
+        attr_reader post_conversation_settings: Telnyx::AI::AssistantUpdateParams::PostConversationSettings?
 
         def post_conversation_settings=: (
-          Telnyx::AI::PostConversationSettingsReq
-        ) -> Telnyx::AI::PostConversationSettingsReq
+          Telnyx::AI::AssistantUpdateParams::PostConversationSettings
+        ) -> Telnyx::AI::AssistantUpdateParams::PostConversationSettings
 
         attr_reader privacy_settings: Telnyx::AI::PrivacySettings?
 
@@ -160,8 +160,8 @@ module Telnyx
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_url: String,
           ?enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
-          ?external_llm: Telnyx::AI::ExternalLlmReq,
-          ?fallback_config: Telnyx::AI::FallbackConfigReq,
+          ?external_llm: Telnyx::AI::AssistantUpdateParams::ExternalLlm,
+          ?fallback_config: Telnyx::AI::AssistantUpdateParams::FallbackConfig,
           ?greeting: String,
           ?insight_settings: Telnyx::AI::InsightSettings,
           ?instructions: String,
@@ -170,7 +170,7 @@ module Telnyx
           ?model: String,
           ?name: String,
           ?observability_settings: Telnyx::AI::ObservabilityReq,
-          ?post_conversation_settings: Telnyx::AI::PostConversationSettingsReq,
+          ?post_conversation_settings: Telnyx::AI::AssistantUpdateParams::PostConversationSettings,
           ?privacy_settings: Telnyx::AI::PrivacySettings,
           ?promote_to_main: bool,
           ?telephony_settings: Telnyx::AI::TelephonySettings,
@@ -188,8 +188,8 @@ module Telnyx
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_url: String,
           enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
-          external_llm: Telnyx::AI::ExternalLlmReq,
-          fallback_config: Telnyx::AI::FallbackConfigReq,
+          external_llm: Telnyx::AI::AssistantUpdateParams::ExternalLlm,
+          fallback_config: Telnyx::AI::AssistantUpdateParams::FallbackConfig,
           greeting: String,
           insight_settings: Telnyx::AI::InsightSettings,
           instructions: String,
@@ -198,7 +198,7 @@ module Telnyx
           model: String,
           name: String,
           observability_settings: Telnyx::AI::ObservabilityReq,
-          post_conversation_settings: Telnyx::AI::PostConversationSettingsReq,
+          post_conversation_settings: Telnyx::AI::AssistantUpdateParams::PostConversationSettings,
           privacy_settings: Telnyx::AI::PrivacySettings,
           promote_to_main: bool,
           telephony_settings: Telnyx::AI::TelephonySettings,
@@ -209,6 +209,193 @@ module Telnyx
           widget_settings: Telnyx::AI::WidgetSettings,
           request_options: Telnyx::RequestOptions
         }
+
+        type external_llm =
+          {
+            base_url: String,
+            model: String,
+            authentication_method: Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm::authentication_method,
+            certificate_ref: String,
+            forward_metadata: bool,
+            llm_api_key_ref: String,
+            token_retrieval_url: String
+          }
+
+        class ExternalLlm < Telnyx::Internal::Type::BaseModel
+          attr_accessor base_url: String
+
+          attr_accessor model: String
+
+          attr_reader authentication_method: Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm::authentication_method?
+
+          def authentication_method=: (
+            Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm::authentication_method
+          ) -> Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm::authentication_method
+
+          attr_reader certificate_ref: String?
+
+          def certificate_ref=: (String) -> String
+
+          attr_reader forward_metadata: bool?
+
+          def forward_metadata=: (bool) -> bool
+
+          attr_reader llm_api_key_ref: String?
+
+          def llm_api_key_ref=: (String) -> String
+
+          attr_reader token_retrieval_url: String?
+
+          def token_retrieval_url=: (String) -> String
+
+          def initialize: (
+            base_url: String,
+            model: String,
+            ?authentication_method: Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm::authentication_method,
+            ?certificate_ref: String,
+            ?forward_metadata: bool,
+            ?llm_api_key_ref: String,
+            ?token_retrieval_url: String
+          ) -> void
+
+          def to_hash: -> {
+            base_url: String,
+            model: String,
+            authentication_method: Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm::authentication_method,
+            certificate_ref: String,
+            forward_metadata: bool,
+            llm_api_key_ref: String,
+            token_retrieval_url: String
+          }
+
+          type authentication_method = :token | :certificate
+
+          module AuthenticationMethod
+            extend Telnyx::Internal::Type::Enum
+
+            TOKEN: :token
+            CERTIFICATE: :certificate
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm::authentication_method]
+          end
+        end
+
+        type fallback_config =
+          {
+            external_llm: Telnyx::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm,
+            llm_api_key_ref: String,
+            model: String
+          }
+
+        class FallbackConfig < Telnyx::Internal::Type::BaseModel
+          attr_reader external_llm: Telnyx::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm?
+
+          def external_llm=: (
+            Telnyx::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm
+          ) -> Telnyx::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm
+
+          attr_reader llm_api_key_ref: String?
+
+          def llm_api_key_ref=: (String) -> String
+
+          attr_reader model: String?
+
+          def model=: (String) -> String
+
+          def initialize: (
+            ?external_llm: Telnyx::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm,
+            ?llm_api_key_ref: String,
+            ?model: String
+          ) -> void
+
+          def to_hash: -> {
+            external_llm: Telnyx::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm,
+            llm_api_key_ref: String,
+            model: String
+          }
+
+          type external_llm =
+            {
+              base_url: String,
+              model: String,
+              authentication_method: Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm::authentication_method,
+              certificate_ref: String,
+              forward_metadata: bool,
+              llm_api_key_ref: String,
+              token_retrieval_url: String
+            }
+
+          class ExternalLlm < Telnyx::Internal::Type::BaseModel
+            attr_accessor base_url: String
+
+            attr_accessor model: String
+
+            attr_reader authentication_method: Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm::authentication_method?
+
+            def authentication_method=: (
+              Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm::authentication_method
+            ) -> Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm::authentication_method
+
+            attr_reader certificate_ref: String?
+
+            def certificate_ref=: (String) -> String
+
+            attr_reader forward_metadata: bool?
+
+            def forward_metadata=: (bool) -> bool
+
+            attr_reader llm_api_key_ref: String?
+
+            def llm_api_key_ref=: (String) -> String
+
+            attr_reader token_retrieval_url: String?
+
+            def token_retrieval_url=: (String) -> String
+
+            def initialize: (
+              base_url: String,
+              model: String,
+              ?authentication_method: Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm::authentication_method,
+              ?certificate_ref: String,
+              ?forward_metadata: bool,
+              ?llm_api_key_ref: String,
+              ?token_retrieval_url: String
+            ) -> void
+
+            def to_hash: -> {
+              base_url: String,
+              model: String,
+              authentication_method: Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm::authentication_method,
+              certificate_ref: String,
+              forward_metadata: bool,
+              llm_api_key_ref: String,
+              token_retrieval_url: String
+            }
+
+            type authentication_method = :token | :certificate
+
+            module AuthenticationMethod
+              extend Telnyx::Internal::Type::Enum
+
+              TOKEN: :token
+              CERTIFICATE: :certificate
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig::ExternalLlm::authentication_method]
+            end
+          end
+        end
+
+        type post_conversation_settings = { enabled: bool }
+
+        class PostConversationSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader enabled: bool?
+
+          def enabled=: (bool) -> bool
+
+          def initialize: (?enabled: bool) -> void
+
+          def to_hash: -> { enabled: bool }
+        end
       end
     end
   end
