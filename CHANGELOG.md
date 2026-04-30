@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.96.0 (2026-04-30)
+
+Full Changelog: [v5.95.0...v5.96.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.95.0...v5.96.0)
+
+### Features
+
+* Revert "fix: stainless ([#2371](https://github.com/team-telnyx/telnyx-ruby/issues/2371))" ([01464e7](https://github.com/team-telnyx/telnyx-ruby/commit/01464e7709c1bbbac01940dbdd486b56ec1caaa4))
+
 ## 5.95.0 (2026-04-30)
 
 Full Changelog: [v5.94.0...v5.95.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.94.0...v5.95.0)
