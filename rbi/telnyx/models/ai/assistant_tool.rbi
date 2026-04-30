@@ -1084,6 +1084,10 @@ module Telnyx
                 )
               end
 
+            # Number or SIP URI placing the call.
+            sig { returns(String) }
+            attr_accessor :from
+
             # Custom headers to be added to the SIP INVITE for the invite command.
             sig do
               returns(
@@ -1105,13 +1109,6 @@ module Telnyx
               ).void
             end
             attr_writer :custom_headers
-
-            # Number or SIP URI placing the call.
-            sig { returns(T.nilable(String)) }
-            attr_reader :from
-
-            sig { params(from: String).void }
-            attr_writer :from
 
             # The different possible targets of the invite. The assistant will be able to
             # choose one of the targets to invite to the call. This can also be a dynamic
@@ -1149,11 +1146,11 @@ module Telnyx
 
             sig do
               params(
+                from: String,
                 custom_headers:
                   T::Array[
                     Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader::OrHash
                   ],
-                from: String,
                 targets:
                   T.nilable(
                     Telnyx::AI::AssistantTool::Invite::Invite::Targets::Variants
@@ -1163,10 +1160,10 @@ module Telnyx
               ).returns(T.attached_class)
             end
             def self.new(
+              # Number or SIP URI placing the call.
+              from:,
               # Custom headers to be added to the SIP INVITE for the invite command.
               custom_headers: nil,
-              # Number or SIP URI placing the call.
-              from: nil,
               # The different possible targets of the invite. The assistant will be able to
               # choose one of the targets to invite to the call. This can also be a dynamic
               # variable string like `{{ targets }}` where `targets` is returned by the dynamic
@@ -1183,11 +1180,11 @@ module Telnyx
             sig do
               override.returns(
                 {
+                  from: String,
                   custom_headers:
                     T::Array[
                       Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader
                     ],
-                  from: String,
                   targets:
                     T.nilable(
                       Telnyx::AI::AssistantTool::Invite::Invite::Targets::Variants
