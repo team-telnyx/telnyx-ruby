@@ -111,7 +111,7 @@ module Telnyx
           type transfer =
             {
               from: String,
-              targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
+              targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets,
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               voicemail_detection: Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
               warm_message_delay_ms: Integer?,
@@ -121,7 +121,7 @@ module Telnyx
           class Transfer < Telnyx::Internal::Type::BaseModel
             attr_accessor from: String
 
-            attr_accessor targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target]
+            attr_accessor targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets
 
             attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader]?
 
@@ -143,7 +143,7 @@ module Telnyx
 
             def initialize: (
               from: String,
-              targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
+              targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets,
               ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               ?voicemail_detection: Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
               ?warm_message_delay_ms: Integer?,
@@ -152,27 +152,37 @@ module Telnyx
 
             def to_hash: -> {
               from: String,
-              targets: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target],
+              targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets,
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               voicemail_detection: Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
               warm_message_delay_ms: Integer?,
               warm_transfer_instructions: String
             }
 
-            type target = { name: String, to: String }
+            type targets =
+              ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0]
+              | String
 
-            class Target < Telnyx::Internal::Type::BaseModel
-              attr_reader name: String?
+            module Targets
+              extend Telnyx::Internal::Type::Union
 
-              def name=: (String) -> String
+              type union_member0 = { to: String, name: String }
 
-              attr_reader to: String?
+              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+                attr_accessor to: String
 
-              def to=: (String) -> String
+                attr_reader name: String?
 
-              def initialize: (?name: String, ?to: String) -> void
+                def name=: (String) -> String
 
-              def to_hash: -> { name: String, to: String }
+                def initialize: (to: String, ?name: String) -> void
+
+                def to_hash: -> { to: String, name: String }
+              end
+
+              def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets]
+
+              UnionMember0Array: Telnyx::Internal::Type::Converter
             end
 
             type custom_header = { name: String, value: String }
@@ -437,6 +447,7 @@ module Telnyx
             {
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader],
               from: String,
+              targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?,
               voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
             }
 
@@ -451,6 +462,8 @@ module Telnyx
 
             def from=: (String) -> String
 
+            attr_accessor targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?
+
             attr_reader voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection?
 
             def voicemail_detection=: (
@@ -460,12 +473,14 @@ module Telnyx
             def initialize: (
               ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader],
               ?from: String,
+              ?targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?,
               ?voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
             ) -> void
 
             def to_hash: -> {
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader],
               from: String,
+              targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?,
               voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
             }
 
@@ -483,6 +498,32 @@ module Telnyx
               def initialize: (?name: String, ?value: String) -> void
 
               def to_hash: -> { name: String, value: String }
+            end
+
+            type targets =
+              ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0]
+              | String
+
+            module Targets
+              extend Telnyx::Internal::Type::Union
+
+              type union_member0 = { to: String, name: String }
+
+              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+                attr_accessor to: String
+
+                attr_reader name: String?
+
+                def name=: (String) -> String
+
+                def initialize: (to: String, ?name: String) -> void
+
+                def to_hash: -> { to: String, name: String }
+              end
+
+              def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets]
+
+              UnionMember0Array: Telnyx::Internal::Type::Converter
             end
 
             type voicemail_detection =

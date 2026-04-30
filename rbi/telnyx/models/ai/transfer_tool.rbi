@@ -54,22 +54,25 @@ module Telnyx
           attr_accessor :from
 
           # The different possible targets of the transfer. The assistant will be able to
-          # choose one of the targets to transfer the call to.
-          sig { returns(T::Array[Telnyx::AI::TransferTool::Transfer::Target]) }
+          # choose one of the targets to transfer the call to. This can also be a dynamic
+          # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+          # variables webhook and resolves to an array of target objects at runtime.
+          sig { returns(Telnyx::AI::TransferTool::Transfer::Targets::Variants) }
           attr_accessor :targets
 
           sig do
             params(
               from: String,
-              targets:
-                T::Array[Telnyx::AI::TransferTool::Transfer::Target::OrHash]
+              targets: Telnyx::AI::TransferTool::Transfer::Targets::Variants
             ).returns(T.attached_class)
           end
           def self.new(
             # Number or SIP URI placing the call.
             from:,
             # The different possible targets of the transfer. The assistant will be able to
-            # choose one of the targets to transfer the call to.
+            # choose one of the targets to transfer the call to. This can also be a dynamic
+            # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+            # variables webhook and resolves to an array of target objects at runtime.
             targets:
           )
           end
@@ -78,48 +81,79 @@ module Telnyx
             override.returns(
               {
                 from: String,
-                targets: T::Array[Telnyx::AI::TransferTool::Transfer::Target]
+                targets: Telnyx::AI::TransferTool::Transfer::Targets::Variants
               }
             )
           end
           def to_hash
           end
 
-          class Target < Telnyx::Internal::Type::BaseModel
-            OrHash =
+          # The different possible targets of the transfer. The assistant will be able to
+          # choose one of the targets to transfer the call to. This can also be a dynamic
+          # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+          # variables webhook and resolves to an array of target objects at runtime.
+          module Targets
+            extend Telnyx::Internal::Type::Union
+
+            Variants =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::TransferTool::Transfer::Target,
-                  Telnyx::Internal::AnyHash
+                  T::Array[
+                    Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0
+                  ],
+                  String
                 )
               end
 
-            # The name of the target.
-            sig { returns(T.nilable(String)) }
-            attr_reader :name
+            class UnionMember0 < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
 
-            sig { params(name: String).void }
-            attr_writer :name
-
-            # The destination number or SIP URI of the call.
-            sig { returns(T.nilable(String)) }
-            attr_reader :to
-
-            sig { params(to: String).void }
-            attr_writer :to
-
-            sig { params(name: String, to: String).returns(T.attached_class) }
-            def self.new(
-              # The name of the target.
-              name: nil,
               # The destination number or SIP URI of the call.
-              to: nil
-            )
+              sig { returns(String) }
+              attr_accessor :to
+
+              # The name of the target.
+              sig { returns(T.nilable(String)) }
+              attr_reader :name
+
+              sig { params(name: String).void }
+              attr_writer :name
+
+              sig { params(to: String, name: String).returns(T.attached_class) }
+              def self.new(
+                # The destination number or SIP URI of the call.
+                to:,
+                # The name of the target.
+                name: nil
+              )
+              end
+
+              sig { override.returns({ to: String, name: String }) }
+              def to_hash
+              end
             end
 
-            sig { override.returns({ name: String, to: String }) }
-            def to_hash
+            sig do
+              override.returns(
+                T::Array[Telnyx::AI::TransferTool::Transfer::Targets::Variants]
+              )
             end
+            def self.variants
+            end
+
+            UnionMember0Array =
+              T.let(
+                Telnyx::Internal::Type::ArrayOf[
+                  Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0
+                ],
+                Telnyx::Internal::Type::Converter
+              )
           end
         end
 
