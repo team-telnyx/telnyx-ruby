@@ -1042,34 +1042,32 @@ module Telnyx
               )
             end
 
-          sig { returns(Telnyx::AI::AssistantTool::Invite::InviteConfig) }
-          attr_reader :invite_config
+          sig { returns(Telnyx::AI::AssistantTool::Invite::Invite) }
+          attr_reader :invite
 
           sig do
             params(
-              invite_config:
-                Telnyx::AI::AssistantTool::Invite::InviteConfig::OrHash
+              invite: Telnyx::AI::AssistantTool::Invite::Invite::OrHash
             ).void
           end
-          attr_writer :invite_config
+          attr_writer :invite
 
           sig { returns(Symbol) }
           attr_accessor :type
 
           sig do
             params(
-              invite_config:
-                Telnyx::AI::AssistantTool::Invite::InviteConfig::OrHash,
+              invite: Telnyx::AI::AssistantTool::Invite::Invite::OrHash,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(invite_config:, type: :invite)
+          def self.new(invite:, type: :invite)
           end
 
           sig do
             override.returns(
               {
-                invite_config: Telnyx::AI::AssistantTool::Invite::InviteConfig,
+                invite: Telnyx::AI::AssistantTool::Invite::Invite,
                 type: Symbol
               }
             )
@@ -1077,11 +1075,11 @@ module Telnyx
           def to_hash
           end
 
-          class InviteConfig < Telnyx::Internal::Type::BaseModel
+          class Invite < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::AssistantTool::Invite::InviteConfig,
+                  Telnyx::AI::AssistantTool::Invite::Invite,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -1091,7 +1089,7 @@ module Telnyx
               returns(
                 T.nilable(
                   T::Array[
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader
                   ]
                 )
               )
@@ -1102,7 +1100,7 @@ module Telnyx
               params(
                 custom_headers:
                   T::Array[
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader::OrHash
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader::OrHash
                   ]
               ).void
             end
@@ -1124,7 +1122,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                  Telnyx::AI::AssistantTool::Invite::Invite::Targets::Variants
                 )
               )
             end
@@ -1135,7 +1133,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
+                  Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
                 )
               )
             end
@@ -1144,7 +1142,7 @@ module Telnyx
             sig do
               params(
                 voicemail_detection:
-                  Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OrHash
+                  Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OrHash
               ).void
             end
             attr_writer :voicemail_detection
@@ -1153,15 +1151,15 @@ module Telnyx
               params(
                 custom_headers:
                   T::Array[
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader::OrHash
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader::OrHash
                   ],
                 from: String,
                 targets:
                   T.nilable(
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                    Telnyx::AI::AssistantTool::Invite::Invite::Targets::Variants
                   ),
                 voicemail_detection:
-                  Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OrHash
+                  Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -1187,15 +1185,15 @@ module Telnyx
                 {
                   custom_headers:
                     T::Array[
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader
+                      Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader
                     ],
                   from: String,
                   targets:
                     T.nilable(
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                      Telnyx::AI::AssistantTool::Invite::Invite::Targets::Variants
                     ),
                   voicemail_detection:
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
                 }
               )
             end
@@ -1206,7 +1204,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader,
+                    Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -1258,7 +1256,7 @@ module Telnyx
                 T.type_alias do
                   T.any(
                     T::Array[
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0
+                      Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0
                     ],
                     String
                   )
@@ -1268,7 +1266,7 @@ module Telnyx
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0,
+                      Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0,
                       Telnyx::Internal::AnyHash
                     )
                   end
@@ -1303,7 +1301,7 @@ module Telnyx
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                    Telnyx::AI::AssistantTool::Invite::Invite::Targets::Variants
                   ]
                 )
               end
@@ -1313,7 +1311,7 @@ module Telnyx
               UnionMember0Array =
                 T.let(
                   Telnyx::Internal::Type::ArrayOf[
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0
+                    Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0
                   ],
                   Telnyx::Internal::Type::Converter
                 )
@@ -1323,7 +1321,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection,
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -1333,7 +1331,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode::OrSymbol
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol
                   )
                 )
               end
@@ -1342,7 +1340,7 @@ module Telnyx
               sig do
                 params(
                   detection_mode:
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode::OrSymbol
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol
                 ).void
               end
               attr_writer :detection_mode
@@ -1351,7 +1349,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
                   )
                 )
               end
@@ -1360,7 +1358,7 @@ module Telnyx
               sig do
                 params(
                   on_voicemail_detected:
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::OrHash
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::OrHash
                 ).void
               end
               attr_writer :on_voicemail_detected
@@ -1370,9 +1368,9 @@ module Telnyx
               sig do
                 params(
                   detection_mode:
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode::OrSymbol,
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol,
                   on_voicemail_detected:
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::OrHash
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::OrHash
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1388,9 +1386,9 @@ module Telnyx
                 override.returns(
                   {
                     detection_mode:
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode::OrSymbol,
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::OrSymbol,
                     on_voicemail_detected:
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
                   }
                 )
               end
@@ -1406,7 +1404,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1414,18 +1412,18 @@ module Telnyx
                 DISABLED =
                   T.let(
                     :disabled,
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode::TaggedSymbol
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::TaggedSymbol
                   )
                 PREMIUM =
                   T.let(
                     :premium,
-                    Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode::TaggedSymbol
+                    Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::DetectionMode::TaggedSymbol
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::DetectionMode::TaggedSymbol
                     ]
                   )
                 end
@@ -1437,7 +1435,7 @@ module Telnyx
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected,
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected,
                       Telnyx::Internal::AnyHash
                     )
                   end
@@ -1446,7 +1444,7 @@ module Telnyx
                 sig do
                   returns(
                     T.nilable(
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
                     )
                   )
                 end
@@ -1455,7 +1453,7 @@ module Telnyx
                 sig do
                   params(
                     action:
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
                   ).void
                 end
                 attr_writer :action
@@ -1464,7 +1462,7 @@ module Telnyx
                 sig do
                   params(
                     action:
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(
@@ -1477,7 +1475,7 @@ module Telnyx
                   override.returns(
                     {
                       action:
-                        Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
+                        Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::OrSymbol
                     }
                   )
                 end
@@ -1492,7 +1490,7 @@ module Telnyx
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action
+                        Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1500,13 +1498,13 @@ module Telnyx
                   STOP_INVITE =
                     T.let(
                       :stop_invite,
-                      Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                      Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
+                        Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::Action::TaggedSymbol
                       ]
                     )
                   end
