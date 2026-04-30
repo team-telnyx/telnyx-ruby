@@ -423,65 +423,62 @@ module Telnyx
         end
 
         type invite =
-          {
-            invite_config: Telnyx::AI::AssistantTool::Invite::InviteConfig,
-            type: :invite
-          }
+          { invite: Telnyx::AI::AssistantTool::Invite::Invite, type: :invite }
 
         class Invite < Telnyx::Internal::Type::BaseModel
-          attr_accessor invite_config: Telnyx::AI::AssistantTool::Invite::InviteConfig
+          attr_accessor invite: Telnyx::AI::AssistantTool::Invite::Invite
 
           attr_accessor type: :invite
 
           def initialize: (
-            invite_config: Telnyx::AI::AssistantTool::Invite::InviteConfig,
+            invite: Telnyx::AI::AssistantTool::Invite::Invite,
             ?type: :invite
           ) -> void
 
           def to_hash: -> {
-            invite_config: Telnyx::AI::AssistantTool::Invite::InviteConfig,
+            invite: Telnyx::AI::AssistantTool::Invite::Invite,
             type: :invite
           }
 
-          type invite_config =
+          type invite =
             {
-              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader],
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
               from: String,
-              targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?,
-              voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
+              targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?,
+              voicemail_detection: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
             }
 
-          class InviteConfig < Telnyx::Internal::Type::BaseModel
-            attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader]?
+          class Invite < Telnyx::Internal::Type::BaseModel
+            attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader]?
 
             def custom_headers=: (
-              ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader]
-            ) -> ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader]
+              ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader]
+            ) -> ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader]
 
             attr_reader from: String?
 
             def from=: (String) -> String
 
-            attr_accessor targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?
+            attr_accessor targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?
 
-            attr_reader voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection?
+            attr_reader voicemail_detection: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection?
 
             def voicemail_detection=: (
-              Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
-            ) -> Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
+              Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
+            ) -> Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
 
             def initialize: (
-              ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader],
+              ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
               ?from: String,
-              ?targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?,
-              ?voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
+              ?targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?,
+              ?voicemail_detection: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
             ) -> void
 
             def to_hash: -> {
-              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader],
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
               from: String,
-              targets: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets?,
-              voicemail_detection: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
+              targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?,
+              voicemail_detection: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
             }
 
             type custom_header = { name: String, value: String }
@@ -501,7 +498,7 @@ module Telnyx
             end
 
             type targets =
-              ::Array[Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0]
+              ::Array[Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0]
               | String
 
             module Targets
@@ -521,38 +518,38 @@ module Telnyx
                 def to_hash: -> { to: String, name: String }
               end
 
-              def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::targets]
+              def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::Invite::targets]
 
               UnionMember0Array: Telnyx::Internal::Type::Converter
             end
 
             type voicemail_detection =
               {
-                detection_mode: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::detection_mode,
-                on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected
+                detection_mode: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::detection_mode,
+                on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
               }
 
             class VoicemailDetection < Telnyx::Internal::Type::BaseModel
-              attr_reader detection_mode: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::detection_mode?
+              attr_reader detection_mode: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::detection_mode?
 
               def detection_mode=: (
-                Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::detection_mode
-              ) -> Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::detection_mode
+                Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::detection_mode
+              ) -> Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::detection_mode
 
-              attr_reader on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected?
+              attr_reader on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected?
 
               def on_voicemail_detected=: (
-                Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected
-              ) -> Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected
+                Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
+              ) -> Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
 
               def initialize: (
-                ?detection_mode: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::detection_mode,
-                ?on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected
+                ?detection_mode: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::detection_mode,
+                ?on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
               ) -> void
 
               def to_hash: -> {
-                detection_mode: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::detection_mode,
-                on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected
+                detection_mode: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::detection_mode,
+                on_voicemail_detected: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected
               }
 
               type detection_mode = :disabled | :premium
@@ -563,27 +560,27 @@ module Telnyx
                 DISABLED: :disabled
                 PREMIUM: :premium
 
-                def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::detection_mode]
+                def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::detection_mode]
               end
 
               type on_voicemail_detected =
                 {
-                  action: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::action
+                  action: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::action
                 }
 
               class OnVoicemailDetected < Telnyx::Internal::Type::BaseModel
-                attr_reader action: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::action?
+                attr_reader action: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::action?
 
                 def action=: (
-                  Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::action
-                ) -> Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::action
+                  Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::action
+                ) -> Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::action
 
                 def initialize: (
-                  ?action: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::action
+                  ?action: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::action
                 ) -> void
 
                 def to_hash: -> {
-                  action: Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::action
+                  action: Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::action
                 }
 
                 type action = :stop_invite
@@ -593,7 +590,7 @@ module Telnyx
 
                   STOP_INVITE: :stop_invite
 
-                  def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OnVoicemailDetected::action]
+                  def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection::OnVoicemailDetected::action]
                 end
               end
             end
