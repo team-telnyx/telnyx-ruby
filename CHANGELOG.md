@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.95.0 (2026-04-30)
+
+Full Changelog: [v5.94.0...v5.95.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.94.0...v5.95.0)
+
+### Features
+
+* AI-2183: Document dynamic variable support for transcription keyterm ([823e5bd](https://github.com/team-telnyx/telnyx-ruby/commit/823e5bdaa3679a150e76631e79841514215a5847))
+
 ## 5.94.0 (2026-04-30)
 
 Full Changelog: [v5.93.0...v5.94.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.93.0...v5.94.0)
