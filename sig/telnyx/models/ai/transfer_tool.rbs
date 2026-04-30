@@ -25,38 +25,48 @@ module Telnyx
         type transfer =
           {
             from: String,
-            targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+            targets: Telnyx::Models::AI::TransferTool::Transfer::targets
           }
 
         class Transfer < Telnyx::Internal::Type::BaseModel
           attr_accessor from: String
 
-          attr_accessor targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+          attr_accessor targets: Telnyx::Models::AI::TransferTool::Transfer::targets
 
           def initialize: (
             from: String,
-            targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+            targets: Telnyx::Models::AI::TransferTool::Transfer::targets
           ) -> void
 
           def to_hash: -> {
             from: String,
-            targets: ::Array[Telnyx::AI::TransferTool::Transfer::Target]
+            targets: Telnyx::Models::AI::TransferTool::Transfer::targets
           }
 
-          type target = { name: String, to: String }
+          type targets =
+            ::Array[Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0]
+            | String
 
-          class Target < Telnyx::Internal::Type::BaseModel
-            attr_reader name: String?
+          module Targets
+            extend Telnyx::Internal::Type::Union
 
-            def name=: (String) -> String
+            type union_member0 = { to: String, name: String }
 
-            attr_reader to: String?
+            class UnionMember0 < Telnyx::Internal::Type::BaseModel
+              attr_accessor to: String
 
-            def to=: (String) -> String
+              attr_reader name: String?
 
-            def initialize: (?name: String, ?to: String) -> void
+              def name=: (String) -> String
 
-            def to_hash: -> { name: String, to: String }
+              def initialize: (to: String, ?name: String) -> void
+
+              def to_hash: -> { to: String, name: String }
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::TransferTool::Transfer::targets]
+
+            UnionMember0Array: Telnyx::Internal::Type::Converter
           end
         end
 
