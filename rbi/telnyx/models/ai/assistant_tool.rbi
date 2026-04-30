@@ -273,10 +273,12 @@ module Telnyx
             attr_accessor :from
 
             # The different possible targets of the transfer. The assistant will be able to
-            # choose one of the targets to transfer the call to.
+            # choose one of the targets to transfer the call to. This can also be a dynamic
+            # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+            # variables webhook and resolves to an array of target objects at runtime.
             sig do
               returns(
-                T::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Target]
+                Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::Variants
               )
             end
             attr_accessor :targets
@@ -342,9 +344,7 @@ module Telnyx
               params(
                 from: String,
                 targets:
-                  T::Array[
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::Target::OrHash
-                  ],
+                  Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::Variants,
                 custom_headers:
                   T::Array[
                     Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader::OrHash
@@ -359,7 +359,9 @@ module Telnyx
               # Number or SIP URI placing the call.
               from:,
               # The different possible targets of the transfer. The assistant will be able to
-              # choose one of the targets to transfer the call to.
+              # choose one of the targets to transfer the call to. This can also be a dynamic
+              # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+              # variables webhook and resolves to an array of target objects at runtime.
               targets:,
               # Custom headers to be added to the SIP INVITE for the transfer command.
               custom_headers: nil,
@@ -383,9 +385,7 @@ module Telnyx
                 {
                   from: String,
                   targets:
-                    T::Array[
-                      Telnyx::AI::AssistantTool::Transfer::Transfer::Target
-                    ],
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::Variants,
                   custom_headers:
                     T::Array[
                       Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader
@@ -400,41 +400,76 @@ module Telnyx
             def to_hash
             end
 
-            class Target < Telnyx::Internal::Type::BaseModel
-              OrHash =
+            # The different possible targets of the transfer. The assistant will be able to
+            # choose one of the targets to transfer the call to. This can also be a dynamic
+            # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+            # variables webhook and resolves to an array of target objects at runtime.
+            module Targets
+              extend Telnyx::Internal::Type::Union
+
+              Variants =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::Target,
-                    Telnyx::Internal::AnyHash
+                    T::Array[
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0
+                    ],
+                    String
                   )
                 end
 
-              # The name of the target.
-              sig { returns(T.nilable(String)) }
-              attr_reader :name
+              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0,
+                      Telnyx::Internal::AnyHash
+                    )
+                  end
 
-              sig { params(name: String).void }
-              attr_writer :name
-
-              # The destination number or SIP URI of the call.
-              sig { returns(T.nilable(String)) }
-              attr_reader :to
-
-              sig { params(to: String).void }
-              attr_writer :to
-
-              sig { params(name: String, to: String).returns(T.attached_class) }
-              def self.new(
-                # The name of the target.
-                name: nil,
                 # The destination number or SIP URI of the call.
-                to: nil
-              )
+                sig { returns(String) }
+                attr_accessor :to
+
+                # The name of the target.
+                sig { returns(T.nilable(String)) }
+                attr_reader :name
+
+                sig { params(name: String).void }
+                attr_writer :name
+
+                sig do
+                  params(to: String, name: String).returns(T.attached_class)
+                end
+                def self.new(
+                  # The destination number or SIP URI of the call.
+                  to:,
+                  # The name of the target.
+                  name: nil
+                )
+                end
+
+                sig { override.returns({ to: String, name: String }) }
+                def to_hash
+                end
               end
 
-              sig { override.returns({ name: String, to: String }) }
-              def to_hash
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::Variants
+                  ]
+                )
               end
+              def self.variants
+              end
+
+              UnionMember0Array =
+                T.let(
+                  Telnyx::Internal::Type::ArrayOf[
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0
+                  ],
+                  Telnyx::Internal::Type::Converter
+                )
             end
 
             class CustomHeader < Telnyx::Internal::Type::BaseModel
@@ -1080,6 +1115,21 @@ module Telnyx
             sig { params(from: String).void }
             attr_writer :from
 
+            # The different possible targets of the invite. The assistant will be able to
+            # choose one of the targets to invite to the call. This can also be a dynamic
+            # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+            # variables webhook and resolves to an array of target objects at runtime. If
+            # omitted or null, the invite tool can still be configured and targets may be
+            # supplied dynamically at runtime.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                )
+              )
+            end
+            attr_accessor :targets
+
             # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             # invited call.
             sig do
@@ -1106,6 +1156,10 @@ module Telnyx
                     Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader::OrHash
                   ],
                 from: String,
+                targets:
+                  T.nilable(
+                    Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                  ),
                 voicemail_detection:
                   Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection::OrHash
               ).returns(T.attached_class)
@@ -1115,6 +1169,13 @@ module Telnyx
               custom_headers: nil,
               # Number or SIP URI placing the call.
               from: nil,
+              # The different possible targets of the invite. The assistant will be able to
+              # choose one of the targets to invite to the call. This can also be a dynamic
+              # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+              # variables webhook and resolves to an array of target objects at runtime. If
+              # omitted or null, the invite tool can still be configured and targets may be
+              # supplied dynamically at runtime.
+              targets: nil,
               # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
               # invited call.
               voicemail_detection: nil
@@ -1129,6 +1190,10 @@ module Telnyx
                       Telnyx::AI::AssistantTool::Invite::InviteConfig::CustomHeader
                     ],
                   from: String,
+                  targets:
+                    T.nilable(
+                      Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                    ),
                   voicemail_detection:
                     Telnyx::AI::AssistantTool::Invite::InviteConfig::VoicemailDetection
                 }
@@ -1178,6 +1243,80 @@ module Telnyx
               sig { override.returns({ name: String, value: String }) }
               def to_hash
               end
+            end
+
+            # The different possible targets of the invite. The assistant will be able to
+            # choose one of the targets to invite to the call. This can also be a dynamic
+            # variable string like `{{ targets }}` where `targets` is returned by the dynamic
+            # variables webhook and resolves to an array of target objects at runtime. If
+            # omitted or null, the invite tool can still be configured and targets may be
+            # supplied dynamically at runtime.
+            module Targets
+              extend Telnyx::Internal::Type::Union
+
+              Variants =
+                T.type_alias do
+                  T.any(
+                    T::Array[
+                      Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0
+                    ],
+                    String
+                  )
+                end
+
+              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0,
+                      Telnyx::Internal::AnyHash
+                    )
+                  end
+
+                # The destination number or SIP URI of the call.
+                sig { returns(String) }
+                attr_accessor :to
+
+                # The name of the target.
+                sig { returns(T.nilable(String)) }
+                attr_reader :name
+
+                sig { params(name: String).void }
+                attr_writer :name
+
+                sig do
+                  params(to: String, name: String).returns(T.attached_class)
+                end
+                def self.new(
+                  # The destination number or SIP URI of the call.
+                  to:,
+                  # The name of the target.
+                  name: nil
+                )
+                end
+
+                sig { override.returns({ to: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
+
+              UnionMember0Array =
+                T.let(
+                  Telnyx::Internal::Type::ArrayOf[
+                    Telnyx::AI::AssistantTool::Invite::InviteConfig::Targets::UnionMember0
+                  ],
+                  Telnyx::Internal::Type::Converter
+                )
             end
 
             class VoicemailDetection < Telnyx::Internal::Type::BaseModel
