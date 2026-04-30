@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.94.0 (2026-04-30)
+
+Full Changelog: [v5.93.0...v5.94.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.93.0...v5.94.0)
+
+### Features
+
+* Assistant tool targets master ([b06b562](https://github.com/team-telnyx/telnyx-ruby/commit/b06b562ff66c80a5afd7f0c82a2aa42241f7811c))
+
 ## 5.93.0 (2026-04-29)
 
 Full Changelog: [v5.92.0...v5.93.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.92.0...v5.93.0)
