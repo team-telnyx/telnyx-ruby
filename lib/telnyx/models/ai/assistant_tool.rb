@@ -524,18 +524,18 @@ module Telnyx
 
           # @see Telnyx::Models::AI::AssistantTool::Invite#invite
           class Invite < Telnyx::Internal::Type::BaseModel
+            # @!attribute from
+            #   Number or SIP URI placing the call.
+            #
+            #   @return [String]
+            required :from, String
+
             # @!attribute custom_headers
             #   Custom headers to be added to the SIP INVITE for the invite command.
             #
             #   @return [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::CustomHeader>, nil]
             optional :custom_headers,
                      -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader] }
-
-            # @!attribute from
-            #   Number or SIP URI placing the call.
-            #
-            #   @return [String, nil]
-            optional :from, String
 
             # @!attribute targets
             #   The different possible targets of the invite. The assistant will be able to
@@ -555,13 +555,13 @@ module Telnyx
             #   @return [Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection, nil]
             optional :voicemail_detection, -> { Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection }
 
-            # @!method initialize(custom_headers: nil, from: nil, targets: nil, voicemail_detection: nil)
+            # @!method initialize(from:, custom_headers: nil, targets: nil, voicemail_detection: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::AI::AssistantTool::Invite::Invite} for more details.
             #
-            #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::CustomHeader>] Custom headers to be added to the SIP INVITE for the invite command.
-            #
             #   @param from [String] Number or SIP URI placing the call.
+            #
+            #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::CustomHeader>] Custom headers to be added to the SIP INVITE for the invite command.
             #
             #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::UnionMember0>, String, nil] The different possible targets of the invite. The assistant will be able to choo
             #
