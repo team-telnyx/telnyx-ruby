@@ -442,22 +442,20 @@ module Telnyx
 
           type invite =
             {
-              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
               from: String,
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
               targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?,
               voicemail_detection: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
             }
 
           class Invite < Telnyx::Internal::Type::BaseModel
+            attr_accessor from: String
+
             attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader]?
 
             def custom_headers=: (
               ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader]
             ) -> ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader]
-
-            attr_reader from: String?
-
-            def from=: (String) -> String
 
             attr_accessor targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?
 
@@ -468,15 +466,15 @@ module Telnyx
             ) -> Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
 
             def initialize: (
+              from: String,
               ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
-              ?from: String,
               ?targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?,
               ?voicemail_detection: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
             ) -> void
 
             def to_hash: -> {
-              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
               from: String,
+              custom_headers: ::Array[Telnyx::AI::AssistantTool::Invite::Invite::CustomHeader],
               targets: Telnyx::Models::AI::AssistantTool::Invite::Invite::targets?,
               voicemail_detection: Telnyx::AI::AssistantTool::Invite::Invite::VoicemailDetection
             }

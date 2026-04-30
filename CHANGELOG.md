@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.97.0 (2026-04-30)
+
+Full Changelog: [v5.96.0...v5.97.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.96.0...v5.97.0)
+
+### Features
+
+* Mark 'from' as required on InviteToolConfig ([06c644e](https://github.com/team-telnyx/telnyx-ruby/commit/06c644e84739914db5e7db6dedae0caddf4377fc))
+
 ## 5.96.0 (2026-04-30)
 
 Full Changelog: [v5.95.0...v5.96.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.95.0...v5.96.0)
