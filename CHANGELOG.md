@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.98.0 (2026-05-03)
+
+Full Changelog: [v5.97.0...v5.98.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.97.0...v5.98.0)
+
+### Features
+
+* Update observability ([99e3f4b](https://github.com/team-telnyx/telnyx-ruby/commit/99e3f4b3a421178714aa3f17dae81e306034aba6))
+
 ## 5.97.0 (2026-04-30)
 
 Full Changelog: [v5.96.0...v5.97.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.96.0...v5.97.0)
