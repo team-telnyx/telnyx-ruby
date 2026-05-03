@@ -4,6 +4,10 @@ module Telnyx
       type observability_req =
         {
           host: String,
+          prompt_label: String,
+          prompt_name: String,
+          prompt_sync: Telnyx::Models::AI::ObservabilityReq::prompt_sync,
+          prompt_version: Integer,
           public_key_ref: String,
           secret_key_ref: String,
           status: Telnyx::Models::AI::ObservabilityReq::status
@@ -13,6 +17,24 @@ module Telnyx
         attr_reader host: String?
 
         def host=: (String) -> String
+
+        attr_reader prompt_label: String?
+
+        def prompt_label=: (String) -> String
+
+        attr_reader prompt_name: String?
+
+        def prompt_name=: (String) -> String
+
+        attr_reader prompt_sync: Telnyx::Models::AI::ObservabilityReq::prompt_sync?
+
+        def prompt_sync=: (
+          Telnyx::Models::AI::ObservabilityReq::prompt_sync
+        ) -> Telnyx::Models::AI::ObservabilityReq::prompt_sync
+
+        attr_reader prompt_version: Integer?
+
+        def prompt_version=: (Integer) -> Integer
 
         attr_reader public_key_ref: String?
 
@@ -30,6 +52,10 @@ module Telnyx
 
         def initialize: (
           ?host: String,
+          ?prompt_label: String,
+          ?prompt_name: String,
+          ?prompt_sync: Telnyx::Models::AI::ObservabilityReq::prompt_sync,
+          ?prompt_version: Integer,
           ?public_key_ref: String,
           ?secret_key_ref: String,
           ?status: Telnyx::Models::AI::ObservabilityReq::status
@@ -37,10 +63,25 @@ module Telnyx
 
         def to_hash: -> {
           host: String,
+          prompt_label: String,
+          prompt_name: String,
+          prompt_sync: Telnyx::Models::AI::ObservabilityReq::prompt_sync,
+          prompt_version: Integer,
           public_key_ref: String,
           secret_key_ref: String,
           status: Telnyx::Models::AI::ObservabilityReq::status
         }
+
+        type prompt_sync = :enabled | :disabled
+
+        module PromptSync
+          extend Telnyx::Internal::Type::Enum
+
+          ENABLED: :enabled
+          DISABLED: :disabled
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ObservabilityReq::prompt_sync]
+        end
 
         type status = :enabled | :disabled
 
