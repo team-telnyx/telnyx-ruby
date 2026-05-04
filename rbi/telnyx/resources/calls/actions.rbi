@@ -450,7 +450,8 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash
+                Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -526,6 +527,8 @@ module Telnyx
           # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
           # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
           #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
+          #   `ara`, `rex`, `sal`, `leo`.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -658,7 +661,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -707,6 +711,8 @@ module Telnyx
           #   `voice_settings` to configure precision, sample_rate, and format.
           # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
           #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
+          #   `ara`, `rex`, `sal`, `leo`.
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -1068,7 +1074,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1117,6 +1124,8 @@ module Telnyx
           #   `voice_settings` to configure precision, sample_rate, and format.
           # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
           #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
+          #   `ara`, `rex`, `sal`, `leo`.
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -1190,7 +1199,8 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash
+                Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1251,6 +1261,8 @@ module Telnyx
           # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
           # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
           #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
+          #   `ara`, `rex`, `sal`, `leo`.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,

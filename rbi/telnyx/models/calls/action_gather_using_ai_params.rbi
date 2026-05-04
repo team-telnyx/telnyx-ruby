@@ -175,6 +175,8 @@ module Telnyx
         # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
         # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
         #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+        # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
+        #   `ara`, `rex`, `sal`, `leo`.
         sig { returns(T.nilable(String)) }
         attr_reader :voice
 
@@ -191,7 +193,8 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings,
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
-                Telnyx::ResembleVoiceSettings
+                Telnyx::ResembleVoiceSettings,
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai
               )
             )
           )
@@ -207,7 +210,8 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash
+                Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
               )
           ).void
         end
@@ -240,7 +244,8 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash
+                Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -315,6 +320,8 @@ module Telnyx
           # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
           # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
           #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
+          #   `ara`, `rex`, `sal`, `leo`.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -350,7 +357,8 @@ module Telnyx
                   Telnyx::Calls::AwsVoiceSettings,
                   Telnyx::AzureVoiceSettings,
                   Telnyx::RimeVoiceSettings,
-                  Telnyx::ResembleVoiceSettings
+                  Telnyx::ResembleVoiceSettings,
+                  Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -468,9 +476,46 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings,
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
-                Telnyx::ResembleVoiceSettings
+                Telnyx::ResembleVoiceSettings,
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai
               )
             end
+
+          class Xai < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Voice settings provider type
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # Language code, or `auto` to detect automatically.
+            sig { returns(T.nilable(String)) }
+            attr_reader :language
+
+            sig { params(language: String).void }
+            attr_writer :language
+
+            sig do
+              params(language: String, type: Symbol).returns(T.attached_class)
+            end
+            def self.new(
+              # Language code, or `auto` to detect automatically.
+              language: nil,
+              # Voice settings provider type
+              type: :xai
+            )
+            end
+
+            sig { override.returns({ type: Symbol, language: String }) }
+            def to_hash
+            end
+          end
 
           sig do
             override.returns(
