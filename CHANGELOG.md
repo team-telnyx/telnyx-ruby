@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.99.0 (2026-05-04)
+
+Full Changelog: [v5.98.0...v5.99.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.98.0...v5.99.0)
+
+### Features
+
+* Add xAI and missing voice providers to Call Control API ([ac7bf88](https://github.com/team-telnyx/telnyx-ruby/commit/ac7bf888359b90cfc3d8cdcbf60fbbf80d0f2bf6))
+
 ## 5.98.0 (2026-05-03)
 
 Full Changelog: [v5.97.0...v5.98.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.97.0...v5.98.0)

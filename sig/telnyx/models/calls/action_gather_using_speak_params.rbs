@@ -237,6 +237,7 @@ module Telnyx
           | Telnyx::RimeVoiceSettings
           | Telnyx::ResembleVoiceSettings
           | Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld
+          | Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
@@ -249,6 +250,20 @@ module Telnyx
             def initialize: (?type: :inworld) -> void
 
             def to_hash: -> { type: :inworld }
+          end
+
+          type xai = { type: :xai, language: String }
+
+          class Xai < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :xai
+
+            attr_reader language: String?
+
+            def language=: (String) -> String
+
+            def initialize: (?language: String, ?type: :xai) -> void
+
+            def to_hash: -> { type: :xai, language: String }
           end
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionGatherUsingSpeakParams::voice_settings]

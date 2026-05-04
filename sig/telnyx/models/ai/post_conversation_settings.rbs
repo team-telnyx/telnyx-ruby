@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type post_conversation_settings = { enabled: bool }
+
+      class PostConversationSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader enabled: bool?
+
+        def enabled=: (bool) -> bool
+
+        def initialize: (?enabled: bool) -> void
+
+        def to_hash: -> { enabled: bool }
+      end
+    end
+  end
+end
