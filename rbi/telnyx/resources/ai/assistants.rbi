@@ -39,10 +39,8 @@ module Telnyx
             dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-            external_llm:
-              Telnyx::AI::AssistantCreateParams::ExternalLlm::OrHash,
-            fallback_config:
-              Telnyx::AI::AssistantCreateParams::FallbackConfig::OrHash,
+            external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
+            fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             integrations:
@@ -56,7 +54,7 @@ module Telnyx
             model: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
-              Telnyx::AI::AssistantCreateParams::PostConversationSettings::OrHash,
+              Telnyx::AI::PostConversationSettingsReq::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             tags: T::Array[String],
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
@@ -202,10 +200,8 @@ module Telnyx
             dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-            external_llm:
-              Telnyx::AI::AssistantUpdateParams::ExternalLlm::OrHash,
-            fallback_config:
-              Telnyx::AI::AssistantUpdateParams::FallbackConfig::OrHash,
+            external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
+            fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             instructions: String,
@@ -221,7 +217,7 @@ module Telnyx
             name: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
-              Telnyx::AI::AssistantUpdateParams::PostConversationSettings::OrHash,
+              Telnyx::AI::PostConversationSettingsReq::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             tags: T::Array[String],

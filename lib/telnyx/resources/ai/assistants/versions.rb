@@ -59,9 +59,9 @@ module Telnyx
           #
           # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param
           #
-          # @param external_llm [Telnyx::Models::AI::Assistants::UpdateAssistant::ExternalLlm] Body param
+          # @param external_llm [Telnyx::Models::AI::ExternalLlmReq] Body param
           #
-          # @param fallback_config [Telnyx::Models::AI::Assistants::UpdateAssistant::FallbackConfig] Body param
+          # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq] Body param
           #
           # @param greeting [String] Body param: Text that the assistant will use to start the conversation. This may
           #
@@ -85,7 +85,7 @@ module Telnyx
           #
           # @param observability_settings [Telnyx::Models::AI::ObservabilityReq] Body param
           #
-          # @param post_conversation_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::PostConversationSettings] Body param: Configuration for post-conversation processing. When enabled, the as
+          # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Body param: Configuration for post-conversation processing. When enabled, the as
           #
           # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
           #
