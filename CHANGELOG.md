@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.100.0 (2026-05-06)
+
+Full Changelog: [v5.99.0...v5.100.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.99.0...v5.100.0)
+
+### Features
+
+* Ai-assistants: support pattern in canary deploy ([4dafaec](https://github.com/team-telnyx/telnyx-ruby/commit/4dafaeca303f3ac584fad93b4729e69298e64610))
+
+
+### Documentation
+
+* add UAC connection OpenAPI docs ([3f543c6](https://github.com/team-telnyx/telnyx-ruby/commit/3f543c6f2131a0964676c1427e7e3885f91527d5))
+
 ## 5.99.0 (2026-05-04)
 
 Full Changelog: [v5.98.0...v5.99.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.98.0...v5.99.0)

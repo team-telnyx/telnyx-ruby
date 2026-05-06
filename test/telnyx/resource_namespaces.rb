@@ -297,6 +297,9 @@ module Telnyx
       module Transcriptions
       end
 
+      module UacConnections
+      end
+
       module UsageReports
       end
 

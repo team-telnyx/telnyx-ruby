@@ -1,0 +1,741 @@
+module Telnyx
+  module Models
+    type uac_connection_create_response =
+      { data: Telnyx::Models::UacConnectionCreateResponse::Data }
+
+    class UacConnectionCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::UacConnectionCreateResponse::Data?
+
+      def data=: (
+        Telnyx::Models::UacConnectionCreateResponse::Data
+      ) -> Telnyx::Models::UacConnectionCreateResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::UacConnectionCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::UacConnectionCreateResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          active: bool,
+          anchorsite_override: Telnyx::Models::anchorsite_override,
+          android_push_credential_id: String?,
+          authentication: Telnyx::Models::UacConnectionCreateResponse::Data::authentication,
+          call_cost_in_webhooks: bool,
+          connection_name: String,
+          created_at: String,
+          default_on_hold_comfort_noise_enabled: bool,
+          dtmf_type: Telnyx::Models::dtmf_type,
+          encode_contact_header_enabled: bool,
+          encrypted_media: Telnyx::Models::encrypted_media?,
+          external_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings,
+          fqdn: String,
+          fqdn_outbound_authentication: Telnyx::Models::UacConnectionCreateResponse::Data::fqdn_outbound_authentication,
+          fqdns: ::Array[Telnyx::Fqdn],
+          inbound: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound,
+          internal_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::InternalUacSettings,
+          ios_push_credential_id: String?,
+          jitter_buffer: Telnyx::ConnectionJitterBuffer,
+          noise_suppression: Telnyx::Models::UacConnectionCreateResponse::Data::noise_suppression,
+          noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+          :onnet_t38_passthrough_enabled => bool,
+          outbound: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound,
+          password: String,
+          record_type: String,
+          registration_status: String?,
+          registration_status_updated_at: String?,
+          rtcp_settings: Telnyx::ConnectionRtcpSettings,
+          sip_uri_calling_preference: Telnyx::Models::UacConnectionCreateResponse::Data::sip_uri_calling_preference,
+          tags: ::Array[String],
+          updated_at: String,
+          user_name: String,
+          webhook_api_version: Telnyx::Models::UacConnectionCreateResponse::Data::webhook_api_version,
+          webhook_event_failover_url: String?,
+          webhook_event_url: String,
+          webhook_timeout_secs: Integer?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader active: bool?
+
+        def active=: (bool) -> bool
+
+        attr_reader anchorsite_override: Telnyx::Models::anchorsite_override?
+
+        def anchorsite_override=: (
+          Telnyx::Models::anchorsite_override
+        ) -> Telnyx::Models::anchorsite_override
+
+        attr_accessor android_push_credential_id: String?
+
+        attr_reader authentication: Telnyx::Models::UacConnectionCreateResponse::Data::authentication?
+
+        def authentication=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::authentication
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::authentication
+
+        attr_reader call_cost_in_webhooks: bool?
+
+        def call_cost_in_webhooks=: (bool) -> bool
+
+        attr_reader connection_name: String?
+
+        def connection_name=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader default_on_hold_comfort_noise_enabled: bool?
+
+        def default_on_hold_comfort_noise_enabled=: (bool) -> bool
+
+        attr_reader dtmf_type: Telnyx::Models::dtmf_type?
+
+        def dtmf_type=: (Telnyx::Models::dtmf_type) -> Telnyx::Models::dtmf_type
+
+        attr_reader encode_contact_header_enabled: bool?
+
+        def encode_contact_header_enabled=: (bool) -> bool
+
+        attr_accessor encrypted_media: Telnyx::Models::encrypted_media?
+
+        attr_reader external_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings?
+
+        def external_uac_settings=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings
+
+        attr_reader fqdn: String?
+
+        def fqdn=: (String) -> String
+
+        attr_reader fqdn_outbound_authentication: Telnyx::Models::UacConnectionCreateResponse::Data::fqdn_outbound_authentication?
+
+        def fqdn_outbound_authentication=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::fqdn_outbound_authentication
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::fqdn_outbound_authentication
+
+        attr_reader fqdns: ::Array[Telnyx::Fqdn]?
+
+        def fqdns=: (::Array[Telnyx::Fqdn]) -> ::Array[Telnyx::Fqdn]
+
+        attr_reader inbound: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound?
+
+        def inbound=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::Inbound
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Inbound
+
+        attr_reader internal_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::InternalUacSettings?
+
+        def internal_uac_settings=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::InternalUacSettings
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::InternalUacSettings
+
+        attr_accessor ios_push_credential_id: String?
+
+        attr_reader jitter_buffer: Telnyx::ConnectionJitterBuffer?
+
+        def jitter_buffer=: (
+          Telnyx::ConnectionJitterBuffer
+        ) -> Telnyx::ConnectionJitterBuffer
+
+        attr_reader noise_suppression: Telnyx::Models::UacConnectionCreateResponse::Data::noise_suppression?
+
+        def noise_suppression=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::noise_suppression
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::noise_suppression
+
+        attr_reader noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails?
+
+        def noise_suppression_details=: (
+          Telnyx::ConnectionNoiseSuppressionDetails
+        ) -> Telnyx::ConnectionNoiseSuppressionDetails
+
+        attr_reader onnet_t38_passthrough_enabled: bool?
+
+        def onnet_t38_passthrough_enabled=: (bool) -> bool
+
+        attr_reader outbound: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound?
+
+        def outbound=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::Outbound
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Outbound
+
+        attr_reader password: String?
+
+        def password=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_accessor registration_status: String?
+
+        attr_accessor registration_status_updated_at: String?
+
+        attr_reader rtcp_settings: Telnyx::ConnectionRtcpSettings?
+
+        def rtcp_settings=: (
+          Telnyx::ConnectionRtcpSettings
+        ) -> Telnyx::ConnectionRtcpSettings
+
+        attr_reader sip_uri_calling_preference: Telnyx::Models::UacConnectionCreateResponse::Data::sip_uri_calling_preference?
+
+        def sip_uri_calling_preference=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::sip_uri_calling_preference
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::sip_uri_calling_preference
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        attr_reader user_name: String?
+
+        def user_name=: (String) -> String
+
+        attr_reader webhook_api_version: Telnyx::Models::UacConnectionCreateResponse::Data::webhook_api_version?
+
+        def webhook_api_version=: (
+          Telnyx::Models::UacConnectionCreateResponse::Data::webhook_api_version
+        ) -> Telnyx::Models::UacConnectionCreateResponse::Data::webhook_api_version
+
+        attr_accessor webhook_event_failover_url: String?
+
+        attr_reader webhook_event_url: String?
+
+        def webhook_event_url=: (String) -> String
+
+        attr_accessor webhook_timeout_secs: Integer?
+
+        def initialize: (
+          ?id: String,
+          ?active: bool,
+          ?anchorsite_override: Telnyx::Models::anchorsite_override,
+          ?android_push_credential_id: String?,
+          ?authentication: Telnyx::Models::UacConnectionCreateResponse::Data::authentication,
+          ?call_cost_in_webhooks: bool,
+          ?connection_name: String,
+          ?created_at: String,
+          ?default_on_hold_comfort_noise_enabled: bool,
+          ?dtmf_type: Telnyx::Models::dtmf_type,
+          ?encode_contact_header_enabled: bool,
+          ?encrypted_media: Telnyx::Models::encrypted_media?,
+          ?external_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings,
+          ?fqdn: String,
+          ?fqdn_outbound_authentication: Telnyx::Models::UacConnectionCreateResponse::Data::fqdn_outbound_authentication,
+          ?fqdns: ::Array[Telnyx::Fqdn],
+          ?inbound: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound,
+          ?internal_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::InternalUacSettings,
+          ?ios_push_credential_id: String?,
+          ?jitter_buffer: Telnyx::ConnectionJitterBuffer,
+          ?noise_suppression: Telnyx::Models::UacConnectionCreateResponse::Data::noise_suppression,
+          ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+          ?onnet_t38_passthrough_enabled: bool,
+          ?outbound: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound,
+          ?password: String,
+          ?record_type: String,
+          ?registration_status: String?,
+          ?registration_status_updated_at: String?,
+          ?rtcp_settings: Telnyx::ConnectionRtcpSettings,
+          ?sip_uri_calling_preference: Telnyx::Models::UacConnectionCreateResponse::Data::sip_uri_calling_preference,
+          ?tags: ::Array[String],
+          ?updated_at: String,
+          ?user_name: String,
+          ?webhook_api_version: Telnyx::Models::UacConnectionCreateResponse::Data::webhook_api_version,
+          ?webhook_event_failover_url: String?,
+          ?webhook_event_url: String,
+          ?webhook_timeout_secs: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          active: bool,
+          anchorsite_override: Telnyx::Models::anchorsite_override,
+          android_push_credential_id: String?,
+          authentication: Telnyx::Models::UacConnectionCreateResponse::Data::authentication,
+          call_cost_in_webhooks: bool,
+          connection_name: String,
+          created_at: String,
+          default_on_hold_comfort_noise_enabled: bool,
+          dtmf_type: Telnyx::Models::dtmf_type,
+          encode_contact_header_enabled: bool,
+          encrypted_media: Telnyx::Models::encrypted_media?,
+          external_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings,
+          fqdn: String,
+          fqdn_outbound_authentication: Telnyx::Models::UacConnectionCreateResponse::Data::fqdn_outbound_authentication,
+          fqdns: ::Array[Telnyx::Fqdn],
+          inbound: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound,
+          internal_uac_settings: Telnyx::Models::UacConnectionCreateResponse::Data::InternalUacSettings,
+          ios_push_credential_id: String?,
+          jitter_buffer: Telnyx::ConnectionJitterBuffer,
+          noise_suppression: Telnyx::Models::UacConnectionCreateResponse::Data::noise_suppression,
+          noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
+          :onnet_t38_passthrough_enabled => bool,
+          outbound: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound,
+          password: String,
+          record_type: String,
+          registration_status: String?,
+          registration_status_updated_at: String?,
+          rtcp_settings: Telnyx::ConnectionRtcpSettings,
+          sip_uri_calling_preference: Telnyx::Models::UacConnectionCreateResponse::Data::sip_uri_calling_preference,
+          tags: ::Array[String],
+          updated_at: String,
+          user_name: String,
+          webhook_api_version: Telnyx::Models::UacConnectionCreateResponse::Data::webhook_api_version,
+          webhook_event_failover_url: String?,
+          webhook_event_url: String,
+          webhook_timeout_secs: Integer?
+        }
+
+        type authentication = :"uac-authentication"
+
+        module Authentication
+          extend Telnyx::Internal::Type::Enum
+
+          UAC_AUTHENTICATION: :"uac-authentication"
+
+          def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::authentication]
+        end
+
+        type external_uac_settings =
+          {
+            auth_username: String?,
+            expiration_sec: Integer?,
+            from_user: String?,
+            outbound_proxy: String?,
+            password: String,
+            proxy: String,
+            transport: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings::transport?,
+            username: String
+          }
+
+        class ExternalUacSettings < Telnyx::Internal::Type::BaseModel
+          attr_accessor auth_username: String?
+
+          attr_accessor expiration_sec: Integer?
+
+          attr_accessor from_user: String?
+
+          attr_accessor outbound_proxy: String?
+
+          attr_reader password: String?
+
+          def password=: (String) -> String
+
+          attr_reader proxy: String?
+
+          def proxy=: (String) -> String
+
+          attr_accessor transport: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings::transport?
+
+          attr_reader username: String?
+
+          def username=: (String) -> String
+
+          def initialize: (
+            ?auth_username: String?,
+            ?expiration_sec: Integer?,
+            ?from_user: String?,
+            ?outbound_proxy: String?,
+            ?password: String,
+            ?proxy: String,
+            ?transport: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings::transport?,
+            ?username: String
+          ) -> void
+
+          def to_hash: -> {
+            auth_username: String?,
+            expiration_sec: Integer?,
+            from_user: String?,
+            outbound_proxy: String?,
+            password: String,
+            proxy: String,
+            transport: Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings::transport?,
+            username: String
+          }
+
+          type transport = :UDP | :TLS | :TCP
+
+          module Transport
+            extend Telnyx::Internal::Type::Enum
+
+            UDP: :UDP
+            TLS: :TLS
+            TCP: :TCP
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::ExternalUacSettings::transport]
+          end
+        end
+
+        type fqdn_outbound_authentication = :"credential-authentication"
+
+        module FqdnOutboundAuthentication
+          extend Telnyx::Internal::Type::Enum
+
+          CREDENTIAL_AUTHENTICATION: :"credential-authentication"
+
+          def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::fqdn_outbound_authentication]
+        end
+
+        type inbound =
+          {
+            ani_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::ani_number_format,
+            channel_limit: Integer,
+            codecs: ::Array[String],
+            default_routing_method: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::default_routing_method,
+            dnis_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::dnis_number_format,
+            generate_ringback_tone: bool,
+            isup_headers_enabled: bool,
+            prack_enabled: bool,
+            shaken_stir_enabled: bool,
+            simultaneous_ringing: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::simultaneous_ringing,
+            sip_compact_headers_enabled: bool,
+            sip_subdomain: String,
+            sip_subdomain_receive_settings: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::sip_subdomain_receive_settings,
+            :timeout_1xx_secs => Integer,
+            :timeout_2xx_secs => Integer
+          }
+
+        class Inbound < Telnyx::Internal::Type::BaseModel
+          attr_reader ani_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::ani_number_format?
+
+          def ani_number_format=: (
+            Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::ani_number_format
+          ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::ani_number_format
+
+          attr_reader channel_limit: Integer?
+
+          def channel_limit=: (Integer) -> Integer
+
+          attr_reader codecs: ::Array[String]?
+
+          def codecs=: (::Array[String]) -> ::Array[String]
+
+          attr_reader default_routing_method: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::default_routing_method?
+
+          def default_routing_method=: (
+            Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::default_routing_method
+          ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::default_routing_method
+
+          attr_reader dnis_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::dnis_number_format?
+
+          def dnis_number_format=: (
+            Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::dnis_number_format
+          ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::dnis_number_format
+
+          attr_reader generate_ringback_tone: bool?
+
+          def generate_ringback_tone=: (bool) -> bool
+
+          attr_reader isup_headers_enabled: bool?
+
+          def isup_headers_enabled=: (bool) -> bool
+
+          attr_reader prack_enabled: bool?
+
+          def prack_enabled=: (bool) -> bool
+
+          attr_reader shaken_stir_enabled: bool?
+
+          def shaken_stir_enabled=: (bool) -> bool
+
+          attr_reader simultaneous_ringing: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::simultaneous_ringing?
+
+          def simultaneous_ringing=: (
+            Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::simultaneous_ringing
+          ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::simultaneous_ringing
+
+          attr_reader sip_compact_headers_enabled: bool?
+
+          def sip_compact_headers_enabled=: (bool) -> bool
+
+          attr_reader sip_subdomain: String?
+
+          def sip_subdomain=: (String) -> String
+
+          attr_reader sip_subdomain_receive_settings: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::sip_subdomain_receive_settings?
+
+          def sip_subdomain_receive_settings=: (
+            Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::sip_subdomain_receive_settings
+          ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::sip_subdomain_receive_settings
+
+          attr_reader timeout_1xx_secs: Integer?
+
+          def timeout_1xx_secs=: (Integer) -> Integer
+
+          attr_reader timeout_2xx_secs: Integer?
+
+          def timeout_2xx_secs=: (Integer) -> Integer
+
+          def initialize: (
+            ?ani_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::ani_number_format,
+            ?channel_limit: Integer,
+            ?codecs: ::Array[String],
+            ?default_routing_method: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::default_routing_method,
+            ?dnis_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::dnis_number_format,
+            ?generate_ringback_tone: bool,
+            ?isup_headers_enabled: bool,
+            ?prack_enabled: bool,
+            ?shaken_stir_enabled: bool,
+            ?simultaneous_ringing: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::simultaneous_ringing,
+            ?sip_compact_headers_enabled: bool,
+            ?sip_subdomain: String,
+            ?sip_subdomain_receive_settings: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::sip_subdomain_receive_settings,
+            ?timeout_1xx_secs: Integer,
+            ?timeout_2xx_secs: Integer
+          ) -> void
+
+          def to_hash: -> {
+            ani_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::ani_number_format,
+            channel_limit: Integer,
+            codecs: ::Array[String],
+            default_routing_method: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::default_routing_method,
+            dnis_number_format: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::dnis_number_format,
+            generate_ringback_tone: bool,
+            isup_headers_enabled: bool,
+            prack_enabled: bool,
+            shaken_stir_enabled: bool,
+            simultaneous_ringing: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::simultaneous_ringing,
+            sip_compact_headers_enabled: bool,
+            sip_subdomain: String,
+            sip_subdomain_receive_settings: Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::sip_subdomain_receive_settings,
+            :timeout_1xx_secs => Integer,
+            :timeout_2xx_secs => Integer
+          }
+
+          type ani_number_format =
+            :"+E.164" | :"E.164" | :"+E.164-national" | :"E.164-national"
+
+          module AniNumberFormat
+            extend Telnyx::Internal::Type::Enum
+
+            PLUS_E_164: :"+E.164"
+            E_164: :"E.164"
+            PLUS_E_164_NATIONAL: :"+E.164-national"
+            E_164_NATIONAL: :"E.164-national"
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::ani_number_format]
+          end
+
+          type default_routing_method = :sequential | :"round-robin"
+
+          module DefaultRoutingMethod
+            extend Telnyx::Internal::Type::Enum
+
+            SEQUENTIAL: :sequential
+            ROUND_ROBIN: :"round-robin"
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::default_routing_method]
+          end
+
+          type dnis_number_format = :"+e164" | :e164 | :national | :sip_username
+
+          module DnisNumberFormat
+            extend Telnyx::Internal::Type::Enum
+
+            PLUS_E164: :"+e164"
+            E164: :e164
+            NATIONAL: :national
+            SIP_USERNAME: :sip_username
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::dnis_number_format]
+          end
+
+          type simultaneous_ringing = :disabled | :enabled
+
+          module SimultaneousRinging
+            extend Telnyx::Internal::Type::Enum
+
+            DISABLED: :disabled
+            ENABLED: :enabled
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::simultaneous_ringing]
+          end
+
+          type sip_subdomain_receive_settings =
+            :only_my_connections | :from_anyone
+
+          module SipSubdomainReceiveSettings
+            extend Telnyx::Internal::Type::Enum
+
+            ONLY_MY_CONNECTIONS: :only_my_connections
+            FROM_ANYONE: :from_anyone
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::Inbound::sip_subdomain_receive_settings]
+          end
+        end
+
+        type internal_uac_settings = { destination_uri: String }
+
+        class InternalUacSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader destination_uri: String?
+
+          def destination_uri=: (String) -> String
+
+          def initialize: (?destination_uri: String) -> void
+
+          def to_hash: -> { destination_uri: String }
+        end
+
+        type noise_suppression = :inbound | :outbound | :both | :disabled
+
+        module NoiseSuppression
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+          BOTH: :both
+          DISABLED: :disabled
+
+          def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::noise_suppression]
+        end
+
+        type outbound =
+          {
+            ani_override: String,
+            ani_override_type: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::ani_override_type,
+            call_parking_enabled: bool?,
+            channel_limit: Integer,
+            generate_ringback_tone: bool,
+            instant_ringback_enabled: bool,
+            localization: String,
+            outbound_voice_profile_id: String,
+            :t38_reinvite_source => Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::t38_reinvite_source
+          }
+
+        class Outbound < Telnyx::Internal::Type::BaseModel
+          attr_reader ani_override: String?
+
+          def ani_override=: (String) -> String
+
+          attr_reader ani_override_type: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::ani_override_type?
+
+          def ani_override_type=: (
+            Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::ani_override_type
+          ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::ani_override_type
+
+          attr_accessor call_parking_enabled: bool?
+
+          attr_reader channel_limit: Integer?
+
+          def channel_limit=: (Integer) -> Integer
+
+          attr_reader generate_ringback_tone: bool?
+
+          def generate_ringback_tone=: (bool) -> bool
+
+          attr_reader instant_ringback_enabled: bool?
+
+          def instant_ringback_enabled=: (bool) -> bool
+
+          attr_reader localization: String?
+
+          def localization=: (String) -> String
+
+          attr_reader outbound_voice_profile_id: String?
+
+          def outbound_voice_profile_id=: (String) -> String
+
+          attr_reader t38_reinvite_source: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::t38_reinvite_source?
+
+          def t38_reinvite_source=: (
+            Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::t38_reinvite_source
+          ) -> Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::t38_reinvite_source
+
+          def initialize: (
+            ?ani_override: String,
+            ?ani_override_type: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::ani_override_type,
+            ?call_parking_enabled: bool?,
+            ?channel_limit: Integer,
+            ?generate_ringback_tone: bool,
+            ?instant_ringback_enabled: bool,
+            ?localization: String,
+            ?outbound_voice_profile_id: String,
+            ?t38_reinvite_source: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::t38_reinvite_source
+          ) -> void
+
+          def to_hash: -> {
+            ani_override: String,
+            ani_override_type: Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::ani_override_type,
+            call_parking_enabled: bool?,
+            channel_limit: Integer,
+            generate_ringback_tone: bool,
+            instant_ringback_enabled: bool,
+            localization: String,
+            outbound_voice_profile_id: String,
+            :t38_reinvite_source => Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::t38_reinvite_source
+          }
+
+          type ani_override_type = :always | :normal | :emergency
+
+          module AniOverrideType
+            extend Telnyx::Internal::Type::Enum
+
+            ALWAYS: :always
+            NORMAL: :normal
+            EMERGENCY: :emergency
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::ani_override_type]
+          end
+
+          type t38_reinvite_source =
+            :telnyx
+            | :customer
+            | :disabled
+            | :passthru
+            | :"caller-passthru"
+            | :"callee-passthru"
+
+          module T38ReinviteSource
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX: :telnyx
+            CUSTOMER: :customer
+            DISABLED: :disabled
+            PASSTHRU: :passthru
+            CALLER_PASSTHRU: :"caller-passthru"
+            CALLEE_PASSTHRU: :"callee-passthru"
+
+            def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::Outbound::t38_reinvite_source]
+          end
+        end
+
+        type sip_uri_calling_preference = :disabled | :unrestricted | :internal
+
+        module SipUriCallingPreference
+          extend Telnyx::Internal::Type::Enum
+
+          DISABLED: :disabled
+          UNRESTRICTED: :unrestricted
+          INTERNAL: :internal
+
+          def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::sip_uri_calling_preference]
+        end
+
+        type webhook_api_version = :"1" | :"2"
+
+        module WebhookAPIVersion
+          extend Telnyx::Internal::Type::Enum
+
+          V1: :"1"
+          V2: :"2"
+
+          def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateResponse::Data::webhook_api_version]
+        end
+      end
+    end
+  end
+end
