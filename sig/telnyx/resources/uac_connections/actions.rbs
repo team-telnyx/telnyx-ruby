@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class UacConnections
+      class Actions
+        def check_registration_status: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

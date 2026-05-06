@@ -1626,6 +1626,18 @@ module Telnyx
 
   TransportProtocol = Telnyx::Models::TransportProtocol
 
+  UacConnectionCreateParams = Telnyx::Models::UacConnectionCreateParams
+
+  UacConnectionDeleteParams = Telnyx::Models::UacConnectionDeleteParams
+
+  UacConnectionListParams = Telnyx::Models::UacConnectionListParams
+
+  UacConnectionRetrieveParams = Telnyx::Models::UacConnectionRetrieveParams
+
+  UacConnections = Telnyx::Models::UacConnections
+
+  UacConnectionUpdateParams = Telnyx::Models::UacConnectionUpdateParams
+
   UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
 
   UnwrapWebhookEvent = Telnyx::Models::UnwrapWebhookEvent
