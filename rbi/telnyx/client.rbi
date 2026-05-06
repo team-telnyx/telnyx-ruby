@@ -654,6 +654,10 @@ module Telnyx
     sig { returns(Telnyx::Resources::PronunciationDicts) }
     attr_reader :pronunciation_dicts
 
+    # UAC connection operations
+    sig { returns(Telnyx::Resources::UacConnections) }
+    attr_reader :uac_connections
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

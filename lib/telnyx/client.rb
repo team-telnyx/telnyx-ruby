@@ -659,6 +659,10 @@ module Telnyx
     # @return [Telnyx::Resources::PronunciationDicts]
     attr_reader :pronunciation_dicts
 
+    # UAC connection operations
+    # @return [Telnyx::Resources::UacConnections]
+    attr_reader :uac_connections
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -931,6 +935,7 @@ module Telnyx
       @reputation = Telnyx::Resources::Reputation.new(client: self)
       @terms_of_service = Telnyx::Resources::TermsOfService.new(client: self)
       @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
+      @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
     end
   end
 end
