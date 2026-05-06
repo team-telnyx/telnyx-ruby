@@ -3,14 +3,10 @@
 require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::AI::Assistants::CanaryDeploysTest < Telnyx::Test::ResourceTest
-  def test_create_required_params
+  def test_create
     skip("Mock server tests are disabled")
 
-    response =
-      @telnyx.ai.assistants.canary_deploys.create(
-        "assistant_id",
-        versions: [{percentage: 1, version_id: "version_id"}]
-      )
+    response = @telnyx.ai.assistants.canary_deploys.create("assistant_id")
 
     assert_pattern do
       response => Telnyx::AI::Assistants::CanaryDeployResponse
@@ -20,8 +16,8 @@ class Telnyx::Test::Resources::AI::Assistants::CanaryDeploysTest < Telnyx::Test:
       response => {
         assistant_id: String,
         created_at: Time,
-        updated_at: Time,
-        versions: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::VersionConfig])
+        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::CanaryDeployResponse::Rule]),
+        updated_at: Time
       }
     end
   end
@@ -39,20 +35,16 @@ class Telnyx::Test::Resources::AI::Assistants::CanaryDeploysTest < Telnyx::Test:
       response => {
         assistant_id: String,
         created_at: Time,
-        updated_at: Time,
-        versions: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::VersionConfig])
+        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::CanaryDeployResponse::Rule]),
+        updated_at: Time
       }
     end
   end
 
-  def test_update_required_params
+  def test_update
     skip("Mock server tests are disabled")
 
-    response =
-      @telnyx.ai.assistants.canary_deploys.update(
-        "assistant_id",
-        versions: [{percentage: 1, version_id: "version_id"}]
-      )
+    response = @telnyx.ai.assistants.canary_deploys.update("assistant_id")
 
     assert_pattern do
       response => Telnyx::AI::Assistants::CanaryDeployResponse
@@ -62,8 +54,8 @@ class Telnyx::Test::Resources::AI::Assistants::CanaryDeploysTest < Telnyx::Test:
       response => {
         assistant_id: String,
         created_at: Time,
-        updated_at: Time,
-        versions: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::VersionConfig])
+        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::CanaryDeployResponse::Rule]),
+        updated_at: Time
       }
     end
   end
