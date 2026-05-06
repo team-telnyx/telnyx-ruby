@@ -3,18 +3,127 @@ module Telnyx
     module AI
       module Assistants
         type canary_deploy =
-          { versions: ::Array[Telnyx::AI::Assistants::VersionConfig] }
+          { rules: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule] }
 
         class CanaryDeploy < Telnyx::Internal::Type::BaseModel
-          attr_accessor versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+          attr_reader rules: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule]?
+
+          def rules=: (
+            ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule]
+          ) -> ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule]
 
           def initialize: (
-            versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+            ?rules: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule]
           ) -> void
 
           def to_hash: -> {
-            versions: ::Array[Telnyx::AI::Assistants::VersionConfig]
+            rules: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule]
           }
+
+          type rule =
+            {
+              serve: Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve,
+              match: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Match]
+            }
+
+          class Rule < Telnyx::Internal::Type::BaseModel
+            attr_accessor serve: Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve
+
+            attr_reader match: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Match]?
+
+            def match=: (
+              ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Match]
+            ) -> ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Match]
+
+            def initialize: (
+              serve: Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve,
+              ?match: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Match]
+            ) -> void
+
+            def to_hash: -> {
+              serve: Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve,
+              match: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Match]
+            }
+
+            type serve =
+              {
+                rollout: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve::Rollout],
+                version_id: String
+              }
+
+            class Serve < Telnyx::Internal::Type::BaseModel
+              attr_reader rollout: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve::Rollout]?
+
+              def rollout=: (
+                ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve::Rollout]
+              ) -> ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve::Rollout]
+
+              attr_reader version_id: String?
+
+              def version_id=: (String) -> String
+
+              def initialize: (
+                ?rollout: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve::Rollout],
+                ?version_id: String
+              ) -> void
+
+              def to_hash: -> {
+                rollout: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::Serve::Rollout],
+                version_id: String
+              }
+
+              type rollout = { version_id: String, weight: Float }
+
+              class Rollout < Telnyx::Internal::Type::BaseModel
+                attr_accessor version_id: String
+
+                attr_accessor weight: Float
+
+                def initialize: (version_id: String, weight: Float) -> void
+
+                def to_hash: -> { version_id: String, weight: Float }
+              end
+            end
+
+            type match =
+              {
+                attribute: String,
+                operator: Telnyx::Models::AI::Assistants::CanaryDeploy::Rule::Match::operator,
+                values: ::Array[String]
+              }
+
+            class Match < Telnyx::Internal::Type::BaseModel
+              attr_accessor attribute: String
+
+              attr_accessor operator: Telnyx::Models::AI::Assistants::CanaryDeploy::Rule::Match::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                attribute: String,
+                operator: Telnyx::Models::AI::Assistants::CanaryDeploy::Rule::Match::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                attribute: String,
+                operator: Telnyx::Models::AI::Assistants::CanaryDeploy::Rule::Match::operator,
+                values: ::Array[String]
+              }
+
+              type operator = :in | :not_in | :starts_with
+
+              module Operator
+                extend Telnyx::Internal::Type::Enum
+
+                IN: :in
+                NOT_IN: :not_in
+                STARTS_WITH: :starts_with
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::CanaryDeploy::Rule::Match::operator]
+              end
+            end
+          end
         end
       end
     end

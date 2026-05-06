@@ -11,18 +11,16 @@ module Telnyx
           # Creates a new canary deploy configuration with multiple version IDs and their
           # traffic percentages for A/B testing or gradual rollouts of assistant versions.
           #
-          # @overload create(assistant_id, versions:, request_options: {})
+          # @overload create(assistant_id, rules: nil, request_options: {})
           #
           # @param assistant_id [String]
-          #
-          # @param versions [Array<Telnyx::Models::AI::Assistants::VersionConfig>] List of version configurations
-          #
+          # @param rules [Array<Telnyx::Models::AI::Assistants::CanaryDeploy::Rule>]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::CanaryDeployResponse]
           #
           # @see Telnyx::Models::AI::Assistants::CanaryDeployCreateParams
-          def create(assistant_id, params)
+          def create(assistant_id, params = {})
             parsed, options = Telnyx::AI::Assistants::CanaryDeployCreateParams.dump_request(params)
             @client.request(
               method: :post,
@@ -61,18 +59,16 @@ module Telnyx
           # percentages. All old versions and percentages are replaces by new ones from this
           # request.
           #
-          # @overload update(assistant_id, versions:, request_options: {})
+          # @overload update(assistant_id, rules: nil, request_options: {})
           #
           # @param assistant_id [String]
-          #
-          # @param versions [Array<Telnyx::Models::AI::Assistants::VersionConfig>] List of version configurations
-          #
+          # @param rules [Array<Telnyx::Models::AI::Assistants::CanaryDeploy::Rule>]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::CanaryDeployResponse]
           #
           # @see Telnyx::Models::AI::Assistants::CanaryDeployUpdateParams
-          def update(assistant_id, params)
+          def update(assistant_id, params = {})
             parsed, options = Telnyx::AI::Assistants::CanaryDeployUpdateParams.dump_request(params)
             @client.request(
               method: :put,

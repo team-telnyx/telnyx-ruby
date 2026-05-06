@@ -13,16 +13,12 @@ module Telnyx
           sig do
             params(
               assistant_id: String,
-              versions: T::Array[Telnyx::AI::Assistants::VersionConfig::OrHash],
+              rules:
+                T::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::OrHash],
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::CanaryDeployResponse)
           end
-          def create(
-            assistant_id,
-            # List of version configurations
-            versions:,
-            request_options: {}
-          )
+          def create(assistant_id, rules: nil, request_options: {})
           end
 
           # Endpoint to get a canary deploy configuration for an assistant.
@@ -46,16 +42,12 @@ module Telnyx
           sig do
             params(
               assistant_id: String,
-              versions: T::Array[Telnyx::AI::Assistants::VersionConfig::OrHash],
+              rules:
+                T::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::OrHash],
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::CanaryDeployResponse)
           end
-          def update(
-            assistant_id,
-            # List of version configurations
-            versions:,
-            request_options: {}
-          )
+          def update(assistant_id, rules: nil, request_options: {})
           end
 
           # Endpoint to delete a canary deploy configuration for an assistant.
