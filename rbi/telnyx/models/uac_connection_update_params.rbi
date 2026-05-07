@@ -82,11 +82,18 @@ module Telnyx
 
       # External SIP peer settings used by Telnyx when registering to your PBX and
       # routing outbound calls.
-      sig { returns(T.nilable(Telnyx::UacExternalSettings)) }
+      sig do
+        returns(
+          T.nilable(Telnyx::UacConnectionUpdateParams::ExternalUacSettings)
+        )
+      end
       attr_reader :external_uac_settings
 
       sig do
-        params(external_uac_settings: Telnyx::UacExternalSettings::OrHash).void
+        params(
+          external_uac_settings:
+            Telnyx::UacConnectionUpdateParams::ExternalUacSettings::OrHash
+        ).void
       end
       attr_writer :external_uac_settings
 
@@ -102,11 +109,18 @@ module Telnyx
       attr_writer :inbound
 
       # Internal Telnyx-side settings for a UAC connection.
-      sig { returns(T.nilable(Telnyx::UacInternalSettings)) }
+      sig do
+        returns(
+          T.nilable(Telnyx::UacConnectionUpdateParams::InternalUacSettings)
+        )
+      end
       attr_reader :internal_uac_settings
 
       sig do
-        params(internal_uac_settings: Telnyx::UacInternalSettings::OrHash).void
+        params(
+          internal_uac_settings:
+            Telnyx::UacConnectionUpdateParams::InternalUacSettings::OrHash
+        ).void
       end
       attr_writer :internal_uac_settings
 
@@ -170,10 +184,14 @@ module Telnyx
       sig { params(onnet_t38_passthrough_enabled: T::Boolean).void }
       attr_writer :onnet_t38_passthrough_enabled
 
-      sig { returns(T.nilable(Telnyx::UacOutbound)) }
+      sig { returns(T.nilable(Telnyx::UacConnectionUpdateParams::Outbound)) }
       attr_reader :outbound
 
-      sig { params(outbound: Telnyx::UacOutbound::OrHash).void }
+      sig do
+        params(
+          outbound: Telnyx::UacConnectionUpdateParams::Outbound::OrHash
+        ).void
+      end
       attr_writer :outbound
 
       # The password to be used as part of the credentials. Must be 8 to 128 characters
@@ -274,9 +292,11 @@ module Telnyx
           dtmf_type: Telnyx::DtmfType::OrSymbol,
           encode_contact_header_enabled: T::Boolean,
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
-          external_uac_settings: Telnyx::UacExternalSettings::OrHash,
+          external_uac_settings:
+            Telnyx::UacConnectionUpdateParams::ExternalUacSettings::OrHash,
           inbound: Telnyx::UacConnectionUpdateParams::Inbound::OrHash,
-          internal_uac_settings: Telnyx::UacInternalSettings::OrHash,
+          internal_uac_settings:
+            Telnyx::UacConnectionUpdateParams::InternalUacSettings::OrHash,
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           noise_suppression:
@@ -284,7 +304,7 @@ module Telnyx
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
-          outbound: Telnyx::UacOutbound::OrHash,
+          outbound: Telnyx::UacConnectionUpdateParams::Outbound::OrHash,
           password: String,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
           sip_uri_calling_preference:
@@ -400,9 +420,11 @@ module Telnyx
             dtmf_type: Telnyx::DtmfType::OrSymbol,
             encode_contact_header_enabled: T::Boolean,
             encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
-            external_uac_settings: Telnyx::UacExternalSettings,
+            external_uac_settings:
+              Telnyx::UacConnectionUpdateParams::ExternalUacSettings,
             inbound: Telnyx::UacConnectionUpdateParams::Inbound,
-            internal_uac_settings: Telnyx::UacInternalSettings,
+            internal_uac_settings:
+              Telnyx::UacConnectionUpdateParams::InternalUacSettings,
             ios_push_credential_id: T.nilable(String),
             jitter_buffer: Telnyx::ConnectionJitterBuffer,
             noise_suppression:
@@ -410,7 +432,7 @@ module Telnyx
             noise_suppression_details:
               Telnyx::ConnectionNoiseSuppressionDetails,
             onnet_t38_passthrough_enabled: T::Boolean,
-            outbound: Telnyx::UacOutbound,
+            outbound: Telnyx::UacConnectionUpdateParams::Outbound,
             password: String,
             rtcp_settings: Telnyx::ConnectionRtcpSettings,
             sip_uri_calling_preference:
@@ -427,6 +449,177 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class ExternalUacSettings < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::UacConnectionUpdateParams::ExternalUacSettings,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The authentication username used in SIP digest authentication. If not set, the
+        # Username value will be used.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :auth_username
+
+        # The registration interval, in seconds, indicating how often the system refreshes
+        # the SIP registration with the external SIP peer.
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :expiration_sec
+
+        # The user portion of the SIP From header used in outbound requests. This controls
+        # the caller identity presented to the external SIP peer.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :from_user
+
+        # An optional SIP proxy used to route outbound requests before reaching the
+        # external SIP peer.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :outbound_proxy
+
+        # The SIP password used for digest authentication with the external SIP peer.
+        sig { returns(T.nilable(String)) }
+        attr_reader :password
+
+        sig { params(password: String).void }
+        attr_writer :password
+
+        # The SIP proxy address of the external SIP peer used for registrations and
+        # outbound call routing.
+        sig { returns(T.nilable(String)) }
+        attr_reader :proxy
+
+        sig { params(proxy: String).void }
+        attr_writer :proxy
+
+        # The transport protocol used for SIP signaling when communicating with the
+        # external SIP peer. One of UDP, TLS, or TCP.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport::OrSymbol
+            )
+          )
+        end
+        attr_accessor :transport
+
+        # The SIP username used to authenticate with the external SIP peer for
+        # registrations and outbound calls. Must start with a letter or number and contain
+        # only letters, numbers, hyphens, and underscores.
+        sig { returns(T.nilable(String)) }
+        attr_reader :username
+
+        sig { params(username: String).void }
+        attr_writer :username
+
+        # External SIP peer settings used by Telnyx when registering to your PBX and
+        # routing outbound calls.
+        sig do
+          params(
+            auth_username: T.nilable(String),
+            expiration_sec: T.nilable(Integer),
+            from_user: T.nilable(String),
+            outbound_proxy: T.nilable(String),
+            password: String,
+            proxy: String,
+            transport:
+              T.nilable(
+                Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport::OrSymbol
+              ),
+            username: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The authentication username used in SIP digest authentication. If not set, the
+          # Username value will be used.
+          auth_username: nil,
+          # The registration interval, in seconds, indicating how often the system refreshes
+          # the SIP registration with the external SIP peer.
+          expiration_sec: nil,
+          # The user portion of the SIP From header used in outbound requests. This controls
+          # the caller identity presented to the external SIP peer.
+          from_user: nil,
+          # An optional SIP proxy used to route outbound requests before reaching the
+          # external SIP peer.
+          outbound_proxy: nil,
+          # The SIP password used for digest authentication with the external SIP peer.
+          password: nil,
+          # The SIP proxy address of the external SIP peer used for registrations and
+          # outbound call routing.
+          proxy: nil,
+          # The transport protocol used for SIP signaling when communicating with the
+          # external SIP peer. One of UDP, TLS, or TCP.
+          transport: nil,
+          # The SIP username used to authenticate with the external SIP peer for
+          # registrations and outbound calls. Must start with a letter or number and contain
+          # only letters, numbers, hyphens, and underscores.
+          username: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              auth_username: T.nilable(String),
+              expiration_sec: T.nilable(Integer),
+              from_user: T.nilable(String),
+              outbound_proxy: T.nilable(String),
+              password: String,
+              proxy: String,
+              transport:
+                T.nilable(
+                  Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport::OrSymbol
+                ),
+              username: String
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The transport protocol used for SIP signaling when communicating with the
+        # external SIP peer. One of UDP, TLS, or TCP.
+        module Transport
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          UDP =
+            T.let(
+              :UDP,
+              Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport::TaggedSymbol
+            )
+          TLS =
+            T.let(
+              :TLS,
+              Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport::TaggedSymbol
+            )
+          TCP =
+            T.let(
+              :TCP,
+              Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
       class Inbound < Telnyx::Internal::Type::BaseModel
@@ -834,6 +1027,43 @@ module Telnyx
         end
       end
 
+      class InternalUacSettings < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::UacConnectionUpdateParams::InternalUacSettings,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # The SIP URI that Telnyx will call when handling an inbound request from the
+        # external peer. Do not include a `sip:` prefix. The value must be in the format
+        # `userinfo@[subdomain.]sip.telnyx.com` or
+        # `userinfo@[subdomain.]sipdev.telnyx.com`; the userinfo portion may contain only
+        # letters, digits, hyphens, and underscores.
+        sig { returns(T.nilable(String)) }
+        attr_reader :destination_uri
+
+        sig { params(destination_uri: String).void }
+        attr_writer :destination_uri
+
+        # Internal Telnyx-side settings for a UAC connection.
+        sig { params(destination_uri: String).returns(T.attached_class) }
+        def self.new(
+          # The SIP URI that Telnyx will call when handling an inbound request from the
+          # external peer. Do not include a `sip:` prefix. The value must be in the format
+          # `userinfo@[subdomain.]sip.telnyx.com` or
+          # `userinfo@[subdomain.]sipdev.telnyx.com`; the userinfo portion may contain only
+          # letters, digits, hyphens, and underscores.
+          destination_uri: nil
+        )
+        end
+
+        sig { override.returns({ destination_uri: String }) }
+        def to_hash
+        end
+      end
+
       # Controls when noise suppression is applied to calls. When set to 'inbound',
       # noise suppression is applied to incoming audio. When set to 'outbound', it's
       # applied to outgoing audio. When set to 'both', it's applied in both directions.
@@ -876,6 +1106,280 @@ module Telnyx
           )
         end
         def self.values
+        end
+      end
+
+      class Outbound < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::UacConnectionUpdateParams::Outbound,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # Set a phone number as the ani_override value to override caller id number on
+        # outbound calls.
+        sig { returns(T.nilable(String)) }
+        attr_reader :ani_override
+
+        sig { params(ani_override: String).void }
+        attr_writer :ani_override
+
+        # Specifies when we apply your ani_override setting. Only applies when
+        # ani_override is not blank.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::OrSymbol
+            )
+          )
+        end
+        attr_reader :ani_override_type
+
+        sig do
+          params(
+            ani_override_type:
+              Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::OrSymbol
+          ).void
+        end
+        attr_writer :ani_override_type
+
+        # Forces all SIP calls originated on this connection to be "parked" instead of
+        # "bridged" to the destination specified on the URI. Parked calls will return
+        # ringback to the caller and will await for a Call Control command to define which
+        # action will be taken next.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :call_parking_enabled
+
+        # When set, this will limit the total number of outbound calls to phone numbers
+        # associated with this connection.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :channel_limit
+
+        sig { params(channel_limit: Integer).void }
+        attr_writer :channel_limit
+
+        # Generate ringback tone through 183 session progress message with early media.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :generate_ringback_tone
+
+        sig { params(generate_ringback_tone: T::Boolean).void }
+        attr_writer :generate_ringback_tone
+
+        # When set, ringback will not wait for indication before sending ringback tone to
+        # calling party.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :instant_ringback_enabled
+
+        sig { params(instant_ringback_enabled: T::Boolean).void }
+        attr_writer :instant_ringback_enabled
+
+        # A 2-character country code specifying the country whose national dialing rules
+        # should be used. For example, if set to `US` then any US number can be dialed
+        # without preprending +1 to the number. When left blank, Telnyx will try US and GB
+        # dialing rules, in that order, by default.
+        sig { returns(T.nilable(String)) }
+        attr_reader :localization
+
+        sig { params(localization: String).void }
+        attr_writer :localization
+
+        # Identifies the associated outbound voice profile.
+        sig { returns(T.nilable(String)) }
+        attr_reader :outbound_voice_profile_id
+
+        sig { params(outbound_voice_profile_id: String).void }
+        attr_writer :outbound_voice_profile_id
+
+        # This setting only affects connections with Fax-type Outbound Voice Profiles. The
+        # setting dictates whether or not Telnyx sends a t.38 reinvite.<br/><br/> By
+        # default, Telnyx will send the re-invite. If set to `customer`, the caller is
+        # expected to send the t.38 reinvite.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::OrSymbol
+            )
+          )
+        end
+        attr_reader :t38_reinvite_source
+
+        sig do
+          params(
+            t38_reinvite_source:
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::OrSymbol
+          ).void
+        end
+        attr_writer :t38_reinvite_source
+
+        sig do
+          params(
+            ani_override: String,
+            ani_override_type:
+              Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::OrSymbol,
+            call_parking_enabled: T.nilable(T::Boolean),
+            channel_limit: Integer,
+            generate_ringback_tone: T::Boolean,
+            instant_ringback_enabled: T::Boolean,
+            localization: String,
+            outbound_voice_profile_id: String,
+            t38_reinvite_source:
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Set a phone number as the ani_override value to override caller id number on
+          # outbound calls.
+          ani_override: nil,
+          # Specifies when we apply your ani_override setting. Only applies when
+          # ani_override is not blank.
+          ani_override_type: nil,
+          # Forces all SIP calls originated on this connection to be "parked" instead of
+          # "bridged" to the destination specified on the URI. Parked calls will return
+          # ringback to the caller and will await for a Call Control command to define which
+          # action will be taken next.
+          call_parking_enabled: nil,
+          # When set, this will limit the total number of outbound calls to phone numbers
+          # associated with this connection.
+          channel_limit: nil,
+          # Generate ringback tone through 183 session progress message with early media.
+          generate_ringback_tone: nil,
+          # When set, ringback will not wait for indication before sending ringback tone to
+          # calling party.
+          instant_ringback_enabled: nil,
+          # A 2-character country code specifying the country whose national dialing rules
+          # should be used. For example, if set to `US` then any US number can be dialed
+          # without preprending +1 to the number. When left blank, Telnyx will try US and GB
+          # dialing rules, in that order, by default.
+          localization: nil,
+          # Identifies the associated outbound voice profile.
+          outbound_voice_profile_id: nil,
+          # This setting only affects connections with Fax-type Outbound Voice Profiles. The
+          # setting dictates whether or not Telnyx sends a t.38 reinvite.<br/><br/> By
+          # default, Telnyx will send the re-invite. If set to `customer`, the caller is
+          # expected to send the t.38 reinvite.
+          t38_reinvite_source: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              ani_override: String,
+              ani_override_type:
+                Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::OrSymbol,
+              call_parking_enabled: T.nilable(T::Boolean),
+              channel_limit: Integer,
+              generate_ringback_tone: T::Boolean,
+              instant_ringback_enabled: T::Boolean,
+              localization: String,
+              outbound_voice_profile_id: String,
+              t38_reinvite_source:
+                Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::OrSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # Specifies when we apply your ani_override setting. Only applies when
+        # ani_override is not blank.
+        module AniOverrideType
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ALWAYS =
+            T.let(
+              :always,
+              Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::TaggedSymbol
+            )
+          NORMAL =
+            T.let(
+              :normal,
+              Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::TaggedSymbol
+            )
+          EMERGENCY =
+            T.let(
+              :emergency,
+              Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # This setting only affects connections with Fax-type Outbound Voice Profiles. The
+        # setting dictates whether or not Telnyx sends a t.38 reinvite.<br/><br/> By
+        # default, Telnyx will send the re-invite. If set to `customer`, the caller is
+        # expected to send the t.38 reinvite.
+        module T38ReinviteSource
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          TELNYX =
+            T.let(
+              :telnyx,
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::TaggedSymbol
+            )
+          CUSTOMER =
+            T.let(
+              :customer,
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::TaggedSymbol
+            )
+          DISABLED =
+            T.let(
+              :disabled,
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::TaggedSymbol
+            )
+          PASSTHRU =
+            T.let(
+              :passthru,
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::TaggedSymbol
+            )
+          CALLER_PASSTHRU =
+            T.let(
+              :"caller-passthru",
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::TaggedSymbol
+            )
+          CALLEE_PASSTHRU =
+            T.let(
+              :"callee-passthru",
+              Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 

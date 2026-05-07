@@ -13,7 +13,8 @@ module Telnyx
           sig do
             params(
               assistant_id: String,
-              rules: T::Array[Telnyx::AI::Assistants::RuleInput::OrHash],
+              rules:
+                T::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::OrHash],
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::CanaryDeployResponse)
           end
@@ -41,7 +42,8 @@ module Telnyx
           sig do
             params(
               assistant_id: String,
-              rules: T::Array[Telnyx::AI::Assistants::RuleInput::OrHash],
+              rules:
+                T::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule::OrHash],
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::CanaryDeployResponse)
           end
