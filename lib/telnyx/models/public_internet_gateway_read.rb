@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::PublicInternetGateways#list
-    class PublicInternetGatewayListResponse < Telnyx::Internal::Type::BaseModel
+    class PublicInternetGatewayRead < Telnyx::Internal::Type::BaseModel
       # @!attribute name
       #   A user specified name for the interface.
       #

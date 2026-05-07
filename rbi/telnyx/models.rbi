@@ -1423,6 +1423,8 @@ module Telnyx
   PublicInternetGatewayListParams =
     Telnyx::Models::PublicInternetGatewayListParams
 
+  PublicInternetGatewayRead = Telnyx::Models::PublicInternetGatewayRead
+
   PublicInternetGatewayRetrieveParams =
     Telnyx::Models::PublicInternetGatewayRetrieveParams
 
@@ -1906,6 +1908,8 @@ module Telnyx
 
   VideoRegion = Telnyx::Models::VideoRegion
 
+  VirtualCrossConnectCombined = Telnyx::Models::VirtualCrossConnectCombined
+
   VirtualCrossConnectCreateParams =
     Telnyx::Models::VirtualCrossConnectCreateParams
 
@@ -2011,6 +2015,8 @@ module Telnyx
     Telnyx::Models::WireguardInterfaceDeleteParams
 
   WireguardInterfaceListParams = Telnyx::Models::WireguardInterfaceListParams
+
+  WireguardInterfaceRead = Telnyx::Models::WireguardInterfaceRead
 
   WireguardInterfaceRetrieveParams =
     Telnyx::Models::WireguardInterfaceRetrieveParams

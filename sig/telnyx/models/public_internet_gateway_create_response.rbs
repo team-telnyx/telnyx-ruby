@@ -1,99 +1,18 @@
 module Telnyx
   module Models
     type public_internet_gateway_create_response =
-      { data: Telnyx::Models::PublicInternetGatewayCreateResponse::Data }
+      { data: Telnyx::PublicInternetGatewayRead }
 
     class PublicInternetGatewayCreateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::PublicInternetGatewayCreateResponse::Data?
+      attr_reader data: Telnyx::PublicInternetGatewayRead?
 
       def data=: (
-        Telnyx::Models::PublicInternetGatewayCreateResponse::Data
-      ) -> Telnyx::Models::PublicInternetGatewayCreateResponse::Data
+        Telnyx::PublicInternetGatewayRead
+      ) -> Telnyx::PublicInternetGatewayRead
 
-      def initialize: (
-        ?data: Telnyx::Models::PublicInternetGatewayCreateResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::PublicInternetGatewayRead) -> void
 
-      def to_hash: -> {
-        data: Telnyx::Models::PublicInternetGatewayCreateResponse::Data
-      }
-
-      type data =
-        {
-          id: String,
-          created_at: String,
-          name: String,
-          network_id: String,
-          public_ip: String,
-          record_type: String,
-          region_code: String,
-          status: Telnyx::Models::interface_status,
-          updated_at: String
-        }
-
-      class Data < Telnyx::Internal::Type::BaseModel
-        attr_reader name: String?
-
-        def name=: (String) -> String
-
-        attr_reader network_id: String?
-
-        def network_id=: (String) -> String
-
-        attr_reader region_code: String?
-
-        def region_code=: (String) -> String
-
-        attr_reader id: String?
-
-        def id=: (String) -> String
-
-        attr_reader created_at: String?
-
-        def created_at=: (String) -> String
-
-        attr_reader public_ip: String?
-
-        def public_ip=: (String) -> String
-
-        attr_reader record_type: String?
-
-        def record_type=: (String) -> String
-
-        attr_reader status: Telnyx::Models::interface_status?
-
-        def status=: (
-          Telnyx::Models::interface_status
-        ) -> Telnyx::Models::interface_status
-
-        attr_reader updated_at: String?
-
-        def updated_at=: (String) -> String
-
-        def initialize: (
-          ?id: String,
-          ?created_at: String,
-          ?name: String,
-          ?network_id: String,
-          ?public_ip: String,
-          ?record_type: String,
-          ?region_code: String,
-          ?status: Telnyx::Models::interface_status,
-          ?updated_at: String
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          created_at: String,
-          name: String,
-          network_id: String,
-          public_ip: String,
-          record_type: String,
-          region_code: String,
-          status: Telnyx::Models::interface_status,
-          updated_at: String
-        }
-      end
+      def to_hash: -> { data: Telnyx::PublicInternetGatewayRead }
     end
   end
 end

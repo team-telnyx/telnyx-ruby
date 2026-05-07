@@ -1,11 +1,11 @@
 module Telnyx
   module Models
-    type virtual_cross_connect_list_response =
+    type virtual_cross_connect_combined =
       {
         id: String,
         bandwidth_mbps: Float,
         bgp_asn: Float,
-        cloud_provider: Telnyx::Models::VirtualCrossConnectListResponse::cloud_provider,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCombined::cloud_provider,
         cloud_provider_region: String,
         created_at: String,
         name: String,
@@ -17,13 +17,13 @@ module Telnyx
         primary_routing_announcement: bool,
         primary_telnyx_ip: String,
         record_type: String,
-        region: Telnyx::Models::VirtualCrossConnectListResponse::Region,
+        region: Telnyx::VirtualCrossConnectCombined::Region,
         region_code: String,
         status: Telnyx::Models::interface_status,
         updated_at: String
       }
 
-    class VirtualCrossConnectListResponse < Telnyx::Internal::Type::BaseModel
+    class VirtualCrossConnectCombined < Telnyx::Internal::Type::BaseModel
       attr_reader bandwidth_mbps: Float?
 
       def bandwidth_mbps=: (Float) -> Float
@@ -32,11 +32,11 @@ module Telnyx
 
       def bgp_asn=: (Float) -> Float
 
-      attr_reader cloud_provider: Telnyx::Models::VirtualCrossConnectListResponse::cloud_provider?
+      attr_reader cloud_provider: Telnyx::Models::VirtualCrossConnectCombined::cloud_provider?
 
       def cloud_provider=: (
-        Telnyx::Models::VirtualCrossConnectListResponse::cloud_provider
-      ) -> Telnyx::Models::VirtualCrossConnectListResponse::cloud_provider
+        Telnyx::Models::VirtualCrossConnectCombined::cloud_provider
+      ) -> Telnyx::Models::VirtualCrossConnectCombined::cloud_provider
 
       attr_reader cloud_provider_region: String?
 
@@ -74,11 +74,11 @@ module Telnyx
 
       def primary_telnyx_ip=: (String) -> String
 
-      attr_reader region: Telnyx::Models::VirtualCrossConnectListResponse::Region?
+      attr_reader region: Telnyx::VirtualCrossConnectCombined::Region?
 
       def region=: (
-        Telnyx::Models::VirtualCrossConnectListResponse::Region
-      ) -> Telnyx::Models::VirtualCrossConnectListResponse::Region
+        Telnyx::VirtualCrossConnectCombined::Region
+      ) -> Telnyx::VirtualCrossConnectCombined::Region
 
       attr_reader region_code: String?
 
@@ -110,7 +110,7 @@ module Telnyx
         ?id: String,
         ?bandwidth_mbps: Float,
         ?bgp_asn: Float,
-        ?cloud_provider: Telnyx::Models::VirtualCrossConnectListResponse::cloud_provider,
+        ?cloud_provider: Telnyx::Models::VirtualCrossConnectCombined::cloud_provider,
         ?cloud_provider_region: String,
         ?created_at: String,
         ?name: String,
@@ -122,7 +122,7 @@ module Telnyx
         ?primary_routing_announcement: bool,
         ?primary_telnyx_ip: String,
         ?record_type: String,
-        ?region: Telnyx::Models::VirtualCrossConnectListResponse::Region,
+        ?region: Telnyx::VirtualCrossConnectCombined::Region,
         ?region_code: String,
         ?status: Telnyx::Models::interface_status,
         ?updated_at: String
@@ -132,7 +132,7 @@ module Telnyx
         id: String,
         bandwidth_mbps: Float,
         bgp_asn: Float,
-        cloud_provider: Telnyx::Models::VirtualCrossConnectListResponse::cloud_provider,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCombined::cloud_provider,
         cloud_provider_region: String,
         created_at: String,
         name: String,
@@ -144,7 +144,7 @@ module Telnyx
         primary_routing_announcement: bool,
         primary_telnyx_ip: String,
         record_type: String,
-        region: Telnyx::Models::VirtualCrossConnectListResponse::Region,
+        region: Telnyx::VirtualCrossConnectCombined::Region,
         region_code: String,
         status: Telnyx::Models::interface_status,
         updated_at: String
@@ -159,7 +159,7 @@ module Telnyx
         AZURE: :azure
         GCE: :gce
 
-        def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectListResponse::cloud_provider]
+        def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectCombined::cloud_provider]
       end
 
       type region = { code: String, name: String, record_type: String }

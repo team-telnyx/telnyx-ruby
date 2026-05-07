@@ -2,13 +2,10 @@
 
 module Telnyx
   module Models
-    class WireguardInterfaceListResponse < Telnyx::Internal::Type::BaseModel
+    class WireguardInterfaceRead < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::Models::WireguardInterfaceListResponse,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::WireguardInterfaceRead, Telnyx::Internal::AnyHash)
         end
 
       # Enable SIP traffic forwarding over VPN interface.
@@ -32,17 +29,11 @@ module Telnyx
       sig { params(network_id: String).void }
       attr_writer :network_id
 
-      sig do
-        returns(
-          T.nilable(Telnyx::Models::WireguardInterfaceListResponse::Region)
-        )
-      end
+      sig { returns(T.nilable(Telnyx::WireguardInterfaceRead::Region)) }
       attr_reader :region
 
       sig do
-        params(
-          region: Telnyx::Models::WireguardInterfaceListResponse::Region::OrHash
-        ).void
+        params(region: Telnyx::WireguardInterfaceRead::Region::OrHash).void
       end
       attr_writer :region
 
@@ -112,8 +103,7 @@ module Telnyx
           network_id: String,
           public_key: String,
           record_type: String,
-          region:
-            Telnyx::Models::WireguardInterfaceListResponse::Region::OrHash,
+          region: Telnyx::WireguardInterfaceRead::Region::OrHash,
           region_code: String,
           status: Telnyx::InterfaceStatus::OrSymbol,
           updated_at: String
@@ -157,7 +147,7 @@ module Telnyx
             network_id: String,
             public_key: String,
             record_type: String,
-            region: Telnyx::Models::WireguardInterfaceListResponse::Region,
+            region: Telnyx::WireguardInterfaceRead::Region,
             region_code: String,
             status: Telnyx::InterfaceStatus::TaggedSymbol,
             updated_at: String
@@ -171,7 +161,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::WireguardInterfaceListResponse::Region,
+              Telnyx::WireguardInterfaceRead::Region,
               Telnyx::Internal::AnyHash
             )
           end
