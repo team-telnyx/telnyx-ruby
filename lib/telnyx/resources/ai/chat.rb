@@ -5,14 +5,17 @@ module Telnyx
     class AI
       # Generate text with LLMs
       class Chat
+        # @deprecated
+        #
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::ChatCreateCompletionParams} for more details.
         #
-        # Chat with a language model. This endpoint is consistent with the
+        # **Deprecated**: Use `POST /v2/ai/openai/chat/completions` instead. Chat with a
+        # language model. This endpoint is consistent with the
         # [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat)
         # and may be used with the OpenAI JS or Python SDK.
         #
-        # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
+        # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, seed: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
         #
         # @param messages [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Message>] A list of the previous chat messages for context.
         #
@@ -47,6 +50,10 @@ module Telnyx
         # @param presence_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
         #
         # @param response_format [Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
+        #
+        # @param seed [Integer] If specified, the system will make a best effort to sample deterministically, su
+        #
+        # @param stop [String, Array<String>] Up to 4 sequences where the API will stop generating further tokens. The returne
         #
         # @param stream [Boolean] Whether or not to stream data-only server-sent events as they become available.
         #

@@ -20,6 +20,8 @@ module Telnyx
           n: Float,
           presence_penalty: Float,
           response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+          seed: Integer,
+          stop: Telnyx::Models::AI::ChatCreateCompletionParams::stop,
           stream: bool,
           temperature: Float,
           tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice,
@@ -102,6 +104,16 @@ module Telnyx
           Telnyx::AI::ChatCreateCompletionParams::ResponseFormat
         ) -> Telnyx::AI::ChatCreateCompletionParams::ResponseFormat
 
+        attr_reader seed: Integer?
+
+        def seed=: (Integer) -> Integer
+
+        attr_reader stop: Telnyx::Models::AI::ChatCreateCompletionParams::stop?
+
+        def stop=: (
+          Telnyx::Models::AI::ChatCreateCompletionParams::stop
+        ) -> Telnyx::Models::AI::ChatCreateCompletionParams::stop
+
         attr_reader stream: bool?
 
         def stream=: (bool) -> bool
@@ -152,6 +164,8 @@ module Telnyx
           ?n: Float,
           ?presence_penalty: Float,
           ?response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+          ?seed: Integer,
+          ?stop: Telnyx::Models::AI::ChatCreateCompletionParams::stop,
           ?stream: bool,
           ?temperature: Float,
           ?tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice,
@@ -180,6 +194,8 @@ module Telnyx
           n: Float,
           presence_penalty: Float,
           response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+          seed: Integer,
+          stop: Telnyx::Models::AI::ChatCreateCompletionParams::stop,
           stream: bool,
           temperature: Float,
           tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice,
@@ -305,6 +321,16 @@ module Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat::type_]
           end
+        end
+
+        type stop = String | ::Array[String]
+
+        module Stop
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ChatCreateCompletionParams::stop]
+
+          StringArray: Telnyx::Internal::Type::Converter
         end
 
         type tool_choice = :none | :auto | :required
