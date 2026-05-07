@@ -1357,32 +1357,32 @@ module Telnyx
             end
           OrInteger = T.type_alias { Integer }
 
-          SAMPLE_RATE_8000 =
+          RATE_8000 =
             T.let(
               8000,
               ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
             )
-          SAMPLE_RATE_16000 =
+          RATE_16000 =
             T.let(
               16_000,
               ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
             )
-          SAMPLE_RATE_22050 =
+          RATE_22050 =
             T.let(
               22_050,
               ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
             )
-          SAMPLE_RATE_24000 =
+          RATE_24000 =
             T.let(
               24_000,
               ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
             )
-          SAMPLE_RATE_44100 =
+          RATE_44100 =
             T.let(
               44_100,
               ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
             )
-          SAMPLE_RATE_48000 =
+          RATE_48000 =
             T.let(
               48_000,
               ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger

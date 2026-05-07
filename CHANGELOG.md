@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.102.1 (2026-05-07)
+
+Full Changelog: [v5.102.0...v5.102.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.102.0...v5.102.1)
+
+### Bug Fixes
+
+* revert stainless.yml changes from ad4f13c ([2d5c581](https://github.com/team-telnyx/telnyx-ruby/commit/2d5c581e38bf1f25f71cf97221ba07f36f0fee47))
+
+
+### Documentation
+
+* update gather_using_ai transcription models ([d0c29ae](https://github.com/team-telnyx/telnyx-ruby/commit/d0c29ae46b2976f37a57c42d93526adbbd7bbf0f))
+
 ## 5.102.0 (2026-05-07)
 
 Full Changelog: [v5.101.0...v5.102.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.101.0...v5.102.0)
