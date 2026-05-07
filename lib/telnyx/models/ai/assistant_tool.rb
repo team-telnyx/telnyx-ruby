@@ -144,7 +144,7 @@ module Telnyx
             #   variable string like `{{ targets }}` where `targets` is returned by the dynamic
             #   variables webhook and resolves to an array of target objects at runtime.
             #
-            #   @return [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String]
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0>, String]
             required :targets, union: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::Targets }
 
             # @!attribute custom_headers
@@ -184,7 +184,7 @@ module Telnyx
             #
             #   @param from [String] Number or SIP URI placing the call.
             #
-            #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String] The different possible targets of the transfer. The assistant will be able to ch
+            #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0>, String] The different possible targets of the transfer. The assistant will be able to ch
             #
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
             #
@@ -203,12 +203,12 @@ module Telnyx
             module Targets
               extend Telnyx::Internal::Type::Union
 
-              variant -> { Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsListArray }
+              variant -> { Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0Array }
 
               # A dynamic variable string like `{{ targets }}` where `targets` is returned by the dynamic variables webhook and resolves to an array of target objects at runtime.
               variant String
 
-              class TargetsList < Telnyx::Internal::Type::BaseModel
+              class UnionMember0 < Telnyx::Internal::Type::BaseModel
                 # @!attribute to
                 #   The destination number or SIP URI of the call.
                 #
@@ -228,12 +228,12 @@ module Telnyx
               end
 
               # @!method self.variants
-              #   @return [Array(Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String)]
+              #   @return [Array(Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0>, String)]
 
               # @type [Telnyx::Internal::Type::Converter]
-              TargetsListArray =
+              UnionMember0Array =
                 Telnyx::Internal::Type::ArrayOf[-> {
-                  Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList
+                  Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0
                 }]
             end
 
@@ -545,7 +545,7 @@ module Telnyx
             #   omitted or null, the invite tool can still be configured and targets may be
             #   supplied dynamically at runtime.
             #
-            #   @return [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::TargetsList>, String, nil]
+            #   @return [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::UnionMember0>, String, nil]
             optional :targets, union: -> { Telnyx::AI::AssistantTool::Invite::Invite::Targets }, nil?: true
 
             # @!attribute voicemail_detection
@@ -563,7 +563,7 @@ module Telnyx
             #
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::CustomHeader>] Custom headers to be added to the SIP INVITE for the invite command.
             #
-            #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::TargetsList>, String, nil] The different possible targets of the invite. The assistant will be able to choo
+            #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::UnionMember0>, String, nil] The different possible targets of the invite. The assistant will be able to choo
             #
             #   @param voicemail_detection [Telnyx::Models::AI::AssistantTool::Invite::Invite::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on the
 
@@ -603,12 +603,12 @@ module Telnyx
             module Targets
               extend Telnyx::Internal::Type::Union
 
-              variant -> { Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::TargetsListArray }
+              variant -> { Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::UnionMember0Array }
 
               # A dynamic variable string like `{{ targets }}` where `targets` is returned by the dynamic variables webhook and resolves to an array of target objects at runtime.
               variant String
 
-              class TargetsList < Telnyx::Internal::Type::BaseModel
+              class UnionMember0 < Telnyx::Internal::Type::BaseModel
                 # @!attribute to
                 #   The destination number or SIP URI of the call.
                 #
@@ -628,12 +628,12 @@ module Telnyx
               end
 
               # @!method self.variants
-              #   @return [Array(Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::TargetsList>, String)]
+              #   @return [Array(Array<Telnyx::Models::AI::AssistantTool::Invite::Invite::Targets::UnionMember0>, String)]
 
               # @type [Telnyx::Internal::Type::Converter]
-              TargetsListArray =
+              UnionMember0Array =
                 Telnyx::Internal::Type::ArrayOf[-> {
-                  Telnyx::AI::AssistantTool::Invite::Invite::Targets::TargetsList
+                  Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0
                 }]
             end
 
