@@ -11,7 +11,7 @@ module Telnyx
           #
           # Create a scheduled event for an assistant
           #
-          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, text: nil, request_options: {})
+          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
           #
           # @param assistant_id [String]
           #
@@ -26,6 +26,10 @@ module Telnyx
           # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
           #
           # @param dynamic_variables [Hash{Symbol=>String}] A map of dynamic variable names to values. These variables can be referenced in
+          #
+          # @param max_retries_client_errors [Integer] Configure number of retries on client errors: busy, no-answer, failed, canceled
+          #
+          # @param retry_interval_secs [Integer]
           #
           # @param text [String] Required for sms scheduled events. The text to be sent to the end user.
           #

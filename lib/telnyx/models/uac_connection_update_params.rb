@@ -77,8 +77,8 @@ module Telnyx
       #   External SIP peer settings used by Telnyx when registering to your PBX and
       #   routing outbound calls.
       #
-      #   @return [Telnyx::Models::UacExternalSettings, nil]
-      optional :external_uac_settings, -> { Telnyx::UacExternalSettings }
+      #   @return [Telnyx::Models::UacConnectionUpdateParams::ExternalUacSettings, nil]
+      optional :external_uac_settings, -> { Telnyx::UacConnectionUpdateParams::ExternalUacSettings }
 
       # @!attribute inbound
       #   Inbound settings that can be supplied when creating or updating a UAC
@@ -91,8 +91,8 @@ module Telnyx
       # @!attribute internal_uac_settings
       #   Internal Telnyx-side settings for a UAC connection.
       #
-      #   @return [Telnyx::Models::UacInternalSettings, nil]
-      optional :internal_uac_settings, -> { Telnyx::UacInternalSettings }
+      #   @return [Telnyx::Models::UacConnectionUpdateParams::InternalUacSettings, nil]
+      optional :internal_uac_settings, -> { Telnyx::UacConnectionUpdateParams::InternalUacSettings }
 
       # @!attribute ios_push_credential_id
       #   The uuid of the push credential for Ios
@@ -138,8 +138,8 @@ module Telnyx
 
       # @!attribute outbound
       #
-      #   @return [Telnyx::Models::UacOutbound, nil]
-      optional :outbound, -> { Telnyx::UacOutbound }
+      #   @return [Telnyx::Models::UacConnectionUpdateParams::Outbound, nil]
+      optional :outbound, -> { Telnyx::UacConnectionUpdateParams::Outbound }
 
       # @!attribute password
       #   The password to be used as part of the credentials. Must be 8 to 128 characters
@@ -227,11 +227,11 @@ module Telnyx
       #
       #   @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
       #
-      #   @param external_uac_settings [Telnyx::Models::UacExternalSettings] External SIP peer settings used by Telnyx when registering to your PBX and routi
+      #   @param external_uac_settings [Telnyx::Models::UacConnectionUpdateParams::ExternalUacSettings] External SIP peer settings used by Telnyx when registering to your PBX and routi
       #
       #   @param inbound [Telnyx::Models::UacConnectionUpdateParams::Inbound] Inbound settings that can be supplied when creating or updating a UAC connection
       #
-      #   @param internal_uac_settings [Telnyx::Models::UacInternalSettings] Internal Telnyx-side settings for a UAC connection.
+      #   @param internal_uac_settings [Telnyx::Models::UacConnectionUpdateParams::InternalUacSettings] Internal Telnyx-side settings for a UAC connection.
       #
       #   @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
@@ -243,7 +243,7 @@ module Telnyx
       #
       #   @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
-      #   @param outbound [Telnyx::Models::UacOutbound]
+      #   @param outbound [Telnyx::Models::UacConnectionUpdateParams::Outbound]
       #
       #   @param password [String] The password to be used as part of the credentials. Must be 8 to 128 characters
       #
@@ -264,6 +264,105 @@ module Telnyx
       #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+      class ExternalUacSettings < Telnyx::Internal::Type::BaseModel
+        # @!attribute auth_username
+        #   The authentication username used in SIP digest authentication. If not set, the
+        #   Username value will be used.
+        #
+        #   @return [String, nil]
+        optional :auth_username, String, nil?: true
+
+        # @!attribute expiration_sec
+        #   The registration interval, in seconds, indicating how often the system refreshes
+        #   the SIP registration with the external SIP peer.
+        #
+        #   @return [Integer, nil]
+        optional :expiration_sec, Integer, nil?: true
+
+        # @!attribute from_user
+        #   The user portion of the SIP From header used in outbound requests. This controls
+        #   the caller identity presented to the external SIP peer.
+        #
+        #   @return [String, nil]
+        optional :from_user, String, nil?: true
+
+        # @!attribute outbound_proxy
+        #   An optional SIP proxy used to route outbound requests before reaching the
+        #   external SIP peer.
+        #
+        #   @return [String, nil]
+        optional :outbound_proxy, String, nil?: true
+
+        # @!attribute password
+        #   The SIP password used for digest authentication with the external SIP peer.
+        #
+        #   @return [String, nil]
+        optional :password, String
+
+        # @!attribute proxy
+        #   The SIP proxy address of the external SIP peer used for registrations and
+        #   outbound call routing.
+        #
+        #   @return [String, nil]
+        optional :proxy, String
+
+        # @!attribute transport
+        #   The transport protocol used for SIP signaling when communicating with the
+        #   external SIP peer. One of UDP, TLS, or TCP.
+        #
+        #   @return [Symbol, Telnyx::Models::UacConnectionUpdateParams::ExternalUacSettings::Transport, nil]
+        optional :transport,
+                 enum: -> { Telnyx::UacConnectionUpdateParams::ExternalUacSettings::Transport },
+                 nil?: true
+
+        # @!attribute username
+        #   The SIP username used to authenticate with the external SIP peer for
+        #   registrations and outbound calls. Must start with a letter or number and contain
+        #   only letters, numbers, hyphens, and underscores.
+        #
+        #   @return [String, nil]
+        optional :username, String
+
+        # @!method initialize(auth_username: nil, expiration_sec: nil, from_user: nil, outbound_proxy: nil, password: nil, proxy: nil, transport: nil, username: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::UacConnectionUpdateParams::ExternalUacSettings} for more
+        #   details.
+        #
+        #   External SIP peer settings used by Telnyx when registering to your PBX and
+        #   routing outbound calls.
+        #
+        #   @param auth_username [String, nil] The authentication username used in SIP digest authentication. If not set, the U
+        #
+        #   @param expiration_sec [Integer, nil] The registration interval, in seconds, indicating how often the system refreshes
+        #
+        #   @param from_user [String, nil] The user portion of the SIP From header used in outbound requests. This controls
+        #
+        #   @param outbound_proxy [String, nil] An optional SIP proxy used to route outbound requests before reaching the extern
+        #
+        #   @param password [String] The SIP password used for digest authentication with the external SIP peer.
+        #
+        #   @param proxy [String] The SIP proxy address of the external SIP peer used for registrations and outbou
+        #
+        #   @param transport [Symbol, Telnyx::Models::UacConnectionUpdateParams::ExternalUacSettings::Transport, nil] The transport protocol used for SIP signaling when communicating with the extern
+        #
+        #   @param username [String] The SIP username used to authenticate with the external SIP peer for registratio
+
+        # The transport protocol used for SIP signaling when communicating with the
+        # external SIP peer. One of UDP, TLS, or TCP.
+        #
+        # @see Telnyx::Models::UacConnectionUpdateParams::ExternalUacSettings#transport
+        module Transport
+          extend Telnyx::Internal::Type::Enum
+
+          UDP = :UDP
+          TLS = :TLS
+          TCP = :TCP
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
 
       class Inbound < Telnyx::Internal::Type::BaseModel
         # @!attribute ani_number_format
@@ -447,6 +546,27 @@ module Telnyx
         end
       end
 
+      class InternalUacSettings < Telnyx::Internal::Type::BaseModel
+        # @!attribute destination_uri
+        #   The SIP URI that Telnyx will call when handling an inbound request from the
+        #   external peer. Do not include a `sip:` prefix. The value must be in the format
+        #   `userinfo@[subdomain.]sip.telnyx.com` or
+        #   `userinfo@[subdomain.]sipdev.telnyx.com`; the userinfo portion may contain only
+        #   letters, digits, hyphens, and underscores.
+        #
+        #   @return [String, nil]
+        optional :destination_uri, String
+
+        # @!method initialize(destination_uri: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::UacConnectionUpdateParams::InternalUacSettings} for more
+        #   details.
+        #
+        #   Internal Telnyx-side settings for a UAC connection.
+        #
+        #   @param destination_uri [String] The SIP URI that Telnyx will call when handling an inbound request from the exte
+      end
+
       # Controls when noise suppression is applied to calls. When set to 'inbound',
       # noise suppression is applied to incoming audio. When set to 'outbound', it's
       # applied to outgoing audio. When set to 'both', it's applied in both directions.
@@ -461,6 +581,132 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class Outbound < Telnyx::Internal::Type::BaseModel
+        # @!attribute ani_override
+        #   Set a phone number as the ani_override value to override caller id number on
+        #   outbound calls.
+        #
+        #   @return [String, nil]
+        optional :ani_override, String
+
+        # @!attribute ani_override_type
+        #   Specifies when we apply your ani_override setting. Only applies when
+        #   ani_override is not blank.
+        #
+        #   @return [Symbol, Telnyx::Models::UacConnectionUpdateParams::Outbound::AniOverrideType, nil]
+        optional :ani_override_type, enum: -> { Telnyx::UacConnectionUpdateParams::Outbound::AniOverrideType }
+
+        # @!attribute call_parking_enabled
+        #   Forces all SIP calls originated on this connection to be "parked" instead of
+        #   "bridged" to the destination specified on the URI. Parked calls will return
+        #   ringback to the caller and will await for a Call Control command to define which
+        #   action will be taken next.
+        #
+        #   @return [Boolean, nil]
+        optional :call_parking_enabled, Telnyx::Internal::Type::Boolean, nil?: true
+
+        # @!attribute channel_limit
+        #   When set, this will limit the total number of outbound calls to phone numbers
+        #   associated with this connection.
+        #
+        #   @return [Integer, nil]
+        optional :channel_limit, Integer
+
+        # @!attribute generate_ringback_tone
+        #   Generate ringback tone through 183 session progress message with early media.
+        #
+        #   @return [Boolean, nil]
+        optional :generate_ringback_tone, Telnyx::Internal::Type::Boolean
+
+        # @!attribute instant_ringback_enabled
+        #   When set, ringback will not wait for indication before sending ringback tone to
+        #   calling party.
+        #
+        #   @return [Boolean, nil]
+        optional :instant_ringback_enabled, Telnyx::Internal::Type::Boolean
+
+        # @!attribute localization
+        #   A 2-character country code specifying the country whose national dialing rules
+        #   should be used. For example, if set to `US` then any US number can be dialed
+        #   without preprending +1 to the number. When left blank, Telnyx will try US and GB
+        #   dialing rules, in that order, by default.
+        #
+        #   @return [String, nil]
+        optional :localization, String
+
+        # @!attribute outbound_voice_profile_id
+        #   Identifies the associated outbound voice profile.
+        #
+        #   @return [String, nil]
+        optional :outbound_voice_profile_id, String
+
+        # @!attribute t38_reinvite_source
+        #   This setting only affects connections with Fax-type Outbound Voice Profiles. The
+        #   setting dictates whether or not Telnyx sends a t.38 reinvite.<br/><br/> By
+        #   default, Telnyx will send the re-invite. If set to `customer`, the caller is
+        #   expected to send the t.38 reinvite.
+        #
+        #   @return [Symbol, Telnyx::Models::UacConnectionUpdateParams::Outbound::T38ReinviteSource, nil]
+        optional :t38_reinvite_source, enum: -> { Telnyx::UacConnectionUpdateParams::Outbound::T38ReinviteSource }
+
+        # @!method initialize(ani_override: nil, ani_override_type: nil, call_parking_enabled: nil, channel_limit: nil, generate_ringback_tone: nil, instant_ringback_enabled: nil, localization: nil, outbound_voice_profile_id: nil, t38_reinvite_source: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::UacConnectionUpdateParams::Outbound} for more details.
+        #
+        #   @param ani_override [String] Set a phone number as the ani_override value to override caller id number on out
+        #
+        #   @param ani_override_type [Symbol, Telnyx::Models::UacConnectionUpdateParams::Outbound::AniOverrideType] Specifies when we apply your ani_override setting. Only applies when ani_overrid
+        #
+        #   @param call_parking_enabled [Boolean, nil] Forces all SIP calls originated on this connection to be "parked" instead of "br
+        #
+        #   @param channel_limit [Integer] When set, this will limit the total number of outbound calls to phone numbers as
+        #
+        #   @param generate_ringback_tone [Boolean] Generate ringback tone through 183 session progress message with early media.
+        #
+        #   @param instant_ringback_enabled [Boolean] When set, ringback will not wait for indication before sending ringback tone to
+        #
+        #   @param localization [String] A 2-character country code specifying the country whose national dialing rules s
+        #
+        #   @param outbound_voice_profile_id [String] Identifies the associated outbound voice profile.
+        #
+        #   @param t38_reinvite_source [Symbol, Telnyx::Models::UacConnectionUpdateParams::Outbound::T38ReinviteSource] This setting only affects connections with Fax-type Outbound Voice Profiles. The
+
+        # Specifies when we apply your ani_override setting. Only applies when
+        # ani_override is not blank.
+        #
+        # @see Telnyx::Models::UacConnectionUpdateParams::Outbound#ani_override_type
+        module AniOverrideType
+          extend Telnyx::Internal::Type::Enum
+
+          ALWAYS = :always
+          NORMAL = :normal
+          EMERGENCY = :emergency
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # This setting only affects connections with Fax-type Outbound Voice Profiles. The
+        # setting dictates whether or not Telnyx sends a t.38 reinvite.<br/><br/> By
+        # default, Telnyx will send the re-invite. If set to `customer`, the caller is
+        # expected to send the t.38 reinvite.
+        #
+        # @see Telnyx::Models::UacConnectionUpdateParams::Outbound#t38_reinvite_source
+        module T38ReinviteSource
+          extend Telnyx::Internal::Type::Enum
+
+          TELNYX = :telnyx
+          CUSTOMER = :customer
+          DISABLED = :disabled
+          PASSTHRU = :passthru
+          CALLER_PASSTHRU = :"caller-passthru"
+          CALLEE_PASSTHRU = :"callee-passthru"
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       # This feature enables inbound SIP URI calls to your Credential Auth Connection.

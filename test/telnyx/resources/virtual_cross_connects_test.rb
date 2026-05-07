@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::VirtualCrossConnectCombined | nil
+        data: Telnyx::Models::VirtualCrossConnectCreateResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::VirtualCrossConnectCombined | nil
+        data: Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::VirtualCrossConnectCombined | nil
+        data: Telnyx::Models::VirtualCrossConnectUpdateResponse::Data | nil
       }
     end
   end
@@ -64,31 +64,7 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::VirtualCrossConnectCombined
-    end
-
-    assert_pattern do
-      row => {
-        id: String | nil,
-        bandwidth_mbps: Float | nil,
-        bgp_asn: Float | nil,
-        cloud_provider: Telnyx::VirtualCrossConnectCombined::CloudProvider | nil,
-        cloud_provider_region: String | nil,
-        created_at: String | nil,
-        name: String | nil,
-        network_id: String | nil,
-        primary_bgp_key: String | nil,
-        primary_cloud_account_id: String | nil,
-        primary_cloud_ip: String | nil,
-        primary_enabled: Telnyx::Internal::Type::Boolean | nil,
-        primary_routing_announcement: Telnyx::Internal::Type::Boolean | nil,
-        primary_telnyx_ip: String | nil,
-        record_type: String | nil,
-        region: Telnyx::VirtualCrossConnectCombined::Region | nil,
-        region_code: String | nil,
-        status: Telnyx::InterfaceStatus | nil,
-        updated_at: String | nil
-      }
+      row => Telnyx::Models::VirtualCrossConnectListResponse
     end
   end
 
@@ -103,7 +79,7 @@ class Telnyx::Test::Resources::VirtualCrossConnectsTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::VirtualCrossConnectCombined | nil
+        data: Telnyx::Models::VirtualCrossConnectDeleteResponse::Data | nil
       }
     end
   end
