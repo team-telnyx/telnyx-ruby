@@ -99,17 +99,17 @@ module Telnyx
               T.type_alias do
                 T.any(
                   T::Array[
-                    Telnyx::AI::TransferTool::Transfer::Targets::TargetsList
+                    Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0
                   ],
                   String
                 )
               end
 
-            class TargetsList < Telnyx::Internal::Type::BaseModel
+            class UnionMember0 < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::TransferTool::Transfer::Targets::TargetsList,
+                    Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -147,10 +147,10 @@ module Telnyx
             def self.variants
             end
 
-            TargetsListArray =
+            UnionMember0Array =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
-                  Telnyx::AI::TransferTool::Transfer::Targets::TargetsList
+                  Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0
                 ],
                 Telnyx::Internal::Type::Converter
               )

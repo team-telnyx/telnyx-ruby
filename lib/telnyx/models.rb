@@ -964,8 +964,6 @@ module Telnyx
 
   MobileVoiceConnectionUpdateParams = Telnyx::Models::MobileVoiceConnectionUpdateParams
 
-  ModelMetadata = Telnyx::Models::ModelMetadata
-
   MonthDetail = Telnyx::Models::MonthDetail
 
   NetappsLocation = Telnyx::Models::NetappsLocation
@@ -1628,8 +1626,6 @@ module Telnyx
 
   TransportProtocol = Telnyx::Models::TransportProtocol
 
-  UacConnection = Telnyx::Models::UacConnection
-
   UacConnectionCreateParams = Telnyx::Models::UacConnectionCreateParams
 
   UacConnectionDeleteParams = Telnyx::Models::UacConnectionDeleteParams
@@ -1641,14 +1637,6 @@ module Telnyx
   UacConnections = Telnyx::Models::UacConnections
 
   UacConnectionUpdateParams = Telnyx::Models::UacConnectionUpdateParams
-
-  UacExternalSettings = Telnyx::Models::UacExternalSettings
-
-  UacInbound = Telnyx::Models::UacInbound
-
-  UacInternalSettings = Telnyx::Models::UacInternalSettings
-
-  UacOutbound = Telnyx::Models::UacOutbound
 
   UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
 
@@ -1852,6 +1840,4 @@ module Telnyx
   WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 
   X402 = Telnyx::Models::X402
-
-  XaiVoiceSettings = Telnyx::Models::XaiVoiceSettings
 end
