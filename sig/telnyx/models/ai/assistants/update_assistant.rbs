@@ -16,10 +16,10 @@ module Telnyx
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings,
             instructions: String,
-            integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration],
-            interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings,
+            integrations: ::Array[Telnyx::AI::AssistantIntegration],
+            interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings,
             llm_api_key_ref: String,
-            mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer],
+            mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer],
             messaging_settings: Telnyx::AI::MessagingSettings,
             model: String,
             name: String,
@@ -85,27 +85,27 @@ module Telnyx
 
           def instructions=: (String) -> String
 
-          attr_reader integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration]?
+          attr_reader integrations: ::Array[Telnyx::AI::AssistantIntegration]?
 
           def integrations=: (
-            ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration]
-          ) -> ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration]
+            ::Array[Telnyx::AI::AssistantIntegration]
+          ) -> ::Array[Telnyx::AI::AssistantIntegration]
 
-          attr_reader interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings?
+          attr_reader interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings?
 
           def interruption_settings=: (
-            Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings
-          ) -> Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings
+            Telnyx::AI::InferenceEmbeddingInterruptionSettings
+          ) -> Telnyx::AI::InferenceEmbeddingInterruptionSettings
 
           attr_reader llm_api_key_ref: String?
 
           def llm_api_key_ref=: (String) -> String
 
-          attr_reader mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer]?
+          attr_reader mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer]?
 
           def mcp_servers=: (
-            ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer]
-          ) -> ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer]
+            ::Array[Telnyx::AI::AssistantMcpServer]
+          ) -> ::Array[Telnyx::AI::AssistantMcpServer]
 
           attr_reader messaging_settings: Telnyx::AI::MessagingSettings?
 
@@ -192,10 +192,10 @@ module Telnyx
             ?greeting: String,
             ?insight_settings: Telnyx::AI::InsightSettings,
             ?instructions: String,
-            ?integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration],
-            ?interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings,
+            ?integrations: ::Array[Telnyx::AI::AssistantIntegration],
+            ?interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings,
             ?llm_api_key_ref: String,
-            ?mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer],
+            ?mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer],
             ?messaging_settings: Telnyx::AI::MessagingSettings,
             ?model: String,
             ?name: String,
@@ -223,10 +223,10 @@ module Telnyx
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings,
             instructions: String,
-            integrations: ::Array[Telnyx::AI::Assistants::UpdateAssistant::Integration],
-            interruption_settings: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings,
+            integrations: ::Array[Telnyx::AI::AssistantIntegration],
+            interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings,
             llm_api_key_ref: String,
-            mcp_servers: ::Array[Telnyx::AI::Assistants::UpdateAssistant::McpServer],
+            mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer],
             messaging_settings: Telnyx::AI::MessagingSettings,
             model: String,
             name: String,
@@ -242,133 +242,6 @@ module Telnyx
             voice_settings: Telnyx::AI::VoiceSettings,
             widget_settings: Telnyx::AI::WidgetSettings
           }
-
-          type integration =
-            { integration_id: String, allowed_list: ::Array[String] }
-
-          class Integration < Telnyx::Internal::Type::BaseModel
-            attr_accessor integration_id: String
-
-            attr_reader allowed_list: ::Array[String]?
-
-            def allowed_list=: (::Array[String]) -> ::Array[String]
-
-            def initialize: (
-              integration_id: String,
-              ?allowed_list: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              integration_id: String,
-              allowed_list: ::Array[String]
-            }
-          end
-
-          type interruption_settings =
-            {
-              enable: bool,
-              start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
-            }
-
-          class InterruptionSettings < Telnyx::Internal::Type::BaseModel
-            attr_reader enable: bool?
-
-            def enable=: (bool) -> bool
-
-            attr_reader start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan?
-
-            def start_speaking_plan=: (
-              Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
-            ) -> Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
-
-            def initialize: (
-              ?enable: bool,
-              ?start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
-            ) -> void
-
-            def to_hash: -> {
-              enable: bool,
-              start_speaking_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan
-            }
-
-            type start_speaking_plan =
-              {
-                transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
-                wait_seconds: Float
-              }
-
-            class StartSpeakingPlan < Telnyx::Internal::Type::BaseModel
-              attr_reader transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan?
-
-              def transcription_endpointing_plan=: (
-                Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
-              ) -> Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
-
-              attr_reader wait_seconds: Float?
-
-              def wait_seconds=: (Float) -> Float
-
-              def initialize: (
-                ?transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
-                ?wait_seconds: Float
-              ) -> void
-
-              def to_hash: -> {
-                transcription_endpointing_plan: Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
-                wait_seconds: Float
-              }
-
-              type transcription_endpointing_plan =
-                {
-                  on_no_punctuation_seconds: Float,
-                  on_number_seconds: Float,
-                  on_punctuation_seconds: Float
-                }
-
-              class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
-                attr_reader on_no_punctuation_seconds: Float?
-
-                def on_no_punctuation_seconds=: (Float) -> Float
-
-                attr_reader on_number_seconds: Float?
-
-                def on_number_seconds=: (Float) -> Float
-
-                attr_reader on_punctuation_seconds: Float?
-
-                def on_punctuation_seconds=: (Float) -> Float
-
-                def initialize: (
-                  ?on_no_punctuation_seconds: Float,
-                  ?on_number_seconds: Float,
-                  ?on_punctuation_seconds: Float
-                ) -> void
-
-                def to_hash: -> {
-                  on_no_punctuation_seconds: Float,
-                  on_number_seconds: Float,
-                  on_punctuation_seconds: Float
-                }
-              end
-            end
-          end
-
-          type mcp_server = { id: String, allowed_tools: ::Array[String] }
-
-          class McpServer < Telnyx::Internal::Type::BaseModel
-            attr_accessor id: String
-
-            attr_reader allowed_tools: ::Array[String]?
-
-            def allowed_tools=: (::Array[String]) -> ::Array[String]
-
-            def initialize: (
-              id: String,
-              ?allowed_tools: ::Array[String]
-            ) -> void
-
-            def to_hash: -> { id: String, allowed_tools: ::Array[String] }
-          end
         end
       end
     end
