@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.103.1 (2026-05-07)
+
+Full Changelog: [v5.103.0...v5.103.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.103.0...v5.103.1)
+
+### Bug Fixes
+
+* update UAC internal settings URI examples ([07542f9](https://github.com/team-telnyx/telnyx-ruby/commit/07542f9b0d6330a9d76652d110e7f5ccefc4830c))
+
+
+### Reverts
+
+* restore stainless.yml from before 964956c ([dc4498d](https://github.com/team-telnyx/telnyx-ruby/commit/dc4498ddf4139f473022ff6c252075ab07d4d976))
+
 ## 5.103.0 (2026-05-07)
 
 Full Changelog: [v5.102.1...v5.103.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.102.1...v5.103.0)
