@@ -20,6 +20,8 @@ module Telnyx
           ?n: Float,
           ?presence_penalty: Float,
           ?response_format: Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+          ?seed: Integer,
+          ?stop: Telnyx::Models::AI::ChatCreateCompletionParams::stop,
           ?stream: bool,
           ?temperature: Float,
           ?tool_choice: Telnyx::Models::AI::ChatCreateCompletionParams::tool_choice,

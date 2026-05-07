@@ -5,7 +5,8 @@ module Telnyx
     class AI
       # Generate text with LLMs
       class Chat
-        # Chat with a language model. This endpoint is consistent with the
+        # **Deprecated**: Use `POST /v2/ai/openai/chat/completions` instead. Chat with a
+        # language model. This endpoint is consistent with the
         # [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat)
         # and may be used with the OpenAI JS or Python SDK.
         sig do
@@ -29,6 +30,8 @@ module Telnyx
             presence_penalty: Float,
             response_format:
               Telnyx::AI::ChatCreateCompletionParams::ResponseFormat::OrHash,
+            seed: Integer,
+            stop: Telnyx::AI::ChatCreateCompletionParams::Stop::Variants,
             stream: T::Boolean,
             temperature: Float,
             tool_choice:
@@ -95,6 +98,13 @@ module Telnyx
           # Use this is you want to guarantee a JSON output without defining a schema. For
           # control over the schema, use `guided_json`.
           response_format: nil,
+          # If specified, the system will make a best effort to sample deterministically,
+          # such that repeated requests with the same `seed` and parameters should return
+          # the same result.
+          seed: nil,
+          # Up to 4 sequences where the API will stop generating further tokens. The
+          # returned text will not contain the stop sequence.
+          stop: nil,
           # Whether or not to stream data-only server-sent events as they become available.
           stream: nil,
           # Adjusts the "creativity" of the model. Lower values make the model more

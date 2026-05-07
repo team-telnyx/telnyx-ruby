@@ -4,6 +4,12 @@ module Telnyx
       class OpenAI
         attr_reader embeddings: Telnyx::Resources::AI::OpenAI::Embeddings
 
+        attr_reader chat: Telnyx::Resources::AI::OpenAI::Chat
+
+        def list_models: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::OpenAIListModelsResponse
+
         def initialize: (client: Telnyx::Client) -> void
       end
     end

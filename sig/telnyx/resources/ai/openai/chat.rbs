@@ -1,0 +1,41 @@
+module Telnyx
+  module Resources
+    class AI
+      class OpenAI
+        class Chat
+          def create_completion: (
+            messages: ::Array[Telnyx::AI::OpenAI::ChatCreateCompletionParams::Message],
+            ?api_key_ref: String,
+            ?best_of: Integer,
+            ?early_stopping: bool,
+            ?enable_thinking: bool,
+            ?frequency_penalty: Float,
+            ?guided_choice: ::Array[String],
+            ?guided_json: ::Hash[Symbol, top],
+            ?guided_regex: String,
+            ?length_penalty: Float,
+            ?logprobs: bool,
+            ?max_tokens: Integer,
+            ?min_p: Float,
+            ?model: String,
+            ?n: Float,
+            ?presence_penalty: Float,
+            ?response_format: Telnyx::AI::OpenAI::ChatCreateCompletionParams::ResponseFormat,
+            ?seed: Integer,
+            ?stop: Telnyx::Models::AI::OpenAI::ChatCreateCompletionParams::stop,
+            ?stream: bool,
+            ?temperature: Float,
+            ?tool_choice: Telnyx::Models::AI::OpenAI::ChatCreateCompletionParams::tool_choice,
+            ?tools: ::Array[Telnyx::Models::AI::OpenAI::ChatCreateCompletionParams::tool],
+            ?top_logprobs: Integer,
+            ?top_p: Float,
+            ?use_beam_search: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::OpenAI::chat_create_completion_response
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

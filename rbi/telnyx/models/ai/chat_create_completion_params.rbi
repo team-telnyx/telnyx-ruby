@@ -156,6 +156,31 @@ module Telnyx
         end
         attr_writer :response_format
 
+        # If specified, the system will make a best effort to sample deterministically,
+        # such that repeated requests with the same `seed` and parameters should return
+        # the same result.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :seed
+
+        sig { params(seed: Integer).void }
+        attr_writer :seed
+
+        # Up to 4 sequences where the API will stop generating further tokens. The
+        # returned text will not contain the stop sequence.
+        sig do
+          returns(
+            T.nilable(Telnyx::AI::ChatCreateCompletionParams::Stop::Variants)
+          )
+        end
+        attr_reader :stop
+
+        sig do
+          params(
+            stop: Telnyx::AI::ChatCreateCompletionParams::Stop::Variants
+          ).void
+        end
+        attr_writer :stop
+
         # Whether or not to stream data-only server-sent events as they become available.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :stream
@@ -268,6 +293,8 @@ module Telnyx
             presence_penalty: Float,
             response_format:
               Telnyx::AI::ChatCreateCompletionParams::ResponseFormat::OrHash,
+            seed: Integer,
+            stop: Telnyx::AI::ChatCreateCompletionParams::Stop::Variants,
             stream: T::Boolean,
             temperature: Float,
             tool_choice:
@@ -334,6 +361,13 @@ module Telnyx
           # Use this is you want to guarantee a JSON output without defining a schema. For
           # control over the schema, use `guided_json`.
           response_format: nil,
+          # If specified, the system will make a best effort to sample deterministically,
+          # such that repeated requests with the same `seed` and parameters should return
+          # the same result.
+          seed: nil,
+          # Up to 4 sequences where the API will stop generating further tokens. The
+          # returned text will not contain the stop sequence.
+          stop: nil,
           # Whether or not to stream data-only server-sent events as they become available.
           stream: nil,
           # Adjusts the "creativity" of the model. Lower values make the model more
@@ -384,6 +418,8 @@ module Telnyx
               presence_penalty: Float,
               response_format:
                 Telnyx::AI::ChatCreateCompletionParams::ResponseFormat,
+              seed: Integer,
+              stop: Telnyx::AI::ChatCreateCompletionParams::Stop::Variants,
               stream: T::Boolean,
               temperature: Float,
               tool_choice:
@@ -687,6 +723,28 @@ module Telnyx
             def self.values
             end
           end
+        end
+
+        # Up to 4 sequences where the API will stop generating further tokens. The
+        # returned text will not contain the stop sequence.
+        module Stop
+          extend Telnyx::Internal::Type::Union
+
+          Variants = T.type_alias { T.any(String, T::Array[String]) }
+
+          sig do
+            override.returns(
+              T::Array[Telnyx::AI::ChatCreateCompletionParams::Stop::Variants]
+            )
+          end
+          def self.variants
+          end
+
+          StringArray =
+            T.let(
+              Telnyx::Internal::Type::ArrayOf[String],
+              Telnyx::Internal::Type::Converter
+            )
         end
 
         module ToolChoice
