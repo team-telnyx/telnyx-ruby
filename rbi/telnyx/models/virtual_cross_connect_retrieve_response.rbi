@@ -43,7 +43,7 @@ module Telnyx
       def to_hash
       end
 
-      class Data < Telnyx::Models::Record
+      class Data < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
@@ -52,12 +52,353 @@ module Telnyx
             )
           end
 
-        sig { returns(T.attached_class) }
-        def self.new
+        # The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
+        # Connect.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :bandwidth_mbps
+
+        sig { params(bandwidth_mbps: Float).void }
+        attr_writer :bandwidth_mbps
+
+        # The Border Gateway Protocol (BGP) Autonomous System Number (ASN).
+        sig { returns(T.nilable(Float)) }
+        attr_reader :bgp_asn
+
+        sig { params(bgp_asn: Float).void }
+        attr_writer :bgp_asn
+
+        # The Virtual Private Cloud with which you would like to establish a cross
+        # connect.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :cloud_provider
+
+        sig do
+          params(
+            cloud_provider:
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::OrSymbol
+          ).void
+        end
+        attr_writer :cloud_provider
+
+        # The region where your Virtual Private Cloud hosts are located.
+        sig { returns(T.nilable(String)) }
+        attr_reader :cloud_provider_region
+
+        sig { params(cloud_provider_region: String).void }
+        attr_writer :cloud_provider_region
+
+        # A user specified name for the interface.
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
+
+        # The id of the network associated with the interface.
+        sig { returns(T.nilable(String)) }
+        attr_reader :network_id
+
+        sig { params(network_id: String).void }
+        attr_writer :network_id
+
+        # The authentication key for BGP peer configuration.
+        sig { returns(T.nilable(String)) }
+        attr_reader :primary_bgp_key
+
+        sig { params(primary_bgp_key: String).void }
+        attr_writer :primary_bgp_key
+
+        # The identifier for your Virtual Private Cloud.
+        sig { returns(T.nilable(String)) }
+        attr_reader :primary_cloud_account_id
+
+        sig { params(primary_cloud_account_id: String).void }
+        attr_writer :primary_cloud_account_id
+
+        # The IP address assigned for your side of the Virtual Cross Connect.
+        sig { returns(T.nilable(String)) }
+        attr_reader :primary_cloud_ip
+
+        sig { params(primary_cloud_ip: String).void }
+        attr_writer :primary_cloud_ip
+
+        # Indicates whether the primary circuit is enabled.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :primary_enabled
+
+        sig { params(primary_enabled: T::Boolean).void }
+        attr_writer :primary_enabled
+
+        # Whether
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :primary_routing_announcement
+
+        sig { params(primary_routing_announcement: T::Boolean).void }
+        attr_writer :primary_routing_announcement
+
+        # The IP address assigned to the Telnyx side of the Virtual Cross Connect.
+        sig { returns(T.nilable(String)) }
+        attr_reader :primary_telnyx_ip
+
+        sig { params(primary_telnyx_ip: String).void }
+        attr_writer :primary_telnyx_ip
+
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::Region
+            )
+          )
+        end
+        attr_reader :region
+
+        sig do
+          params(
+            region:
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::Region::OrHash
+          ).void
+        end
+        attr_writer :region
+
+        # The region interface is deployed to.
+        sig { returns(T.nilable(String)) }
+        attr_reader :region_code
+
+        sig { params(region_code: String).void }
+        attr_writer :region_code
+
+        # Identifies the resource.
+        sig { returns(T.nilable(String)) }
+        attr_reader :id
+
+        sig { params(id: String).void }
+        attr_writer :id
+
+        # ISO 8601 formatted date-time indicating when the resource was created.
+        sig { returns(T.nilable(String)) }
+        attr_reader :created_at
+
+        sig { params(created_at: String).void }
+        attr_writer :created_at
+
+        # Identifies the type of the resource.
+        sig { returns(T.nilable(String)) }
+        attr_reader :record_type
+
+        sig { params(record_type: String).void }
+        attr_writer :record_type
+
+        # The current status of the interface deployment.
+        sig { returns(T.nilable(Telnyx::InterfaceStatus::TaggedSymbol)) }
+        attr_reader :status
+
+        sig { params(status: Telnyx::InterfaceStatus::OrSymbol).void }
+        attr_writer :status
+
+        # ISO 8601 formatted date-time indicating when the resource was updated.
+        sig { returns(T.nilable(String)) }
+        attr_reader :updated_at
+
+        sig { params(updated_at: String).void }
+        attr_writer :updated_at
+
+        sig do
+          params(
+            id: String,
+            bandwidth_mbps: Float,
+            bgp_asn: Float,
+            cloud_provider:
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::OrSymbol,
+            cloud_provider_region: String,
+            created_at: String,
+            name: String,
+            network_id: String,
+            primary_bgp_key: String,
+            primary_cloud_account_id: String,
+            primary_cloud_ip: String,
+            primary_enabled: T::Boolean,
+            primary_routing_announcement: T::Boolean,
+            primary_telnyx_ip: String,
+            record_type: String,
+            region:
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::Region::OrHash,
+            region_code: String,
+            status: Telnyx::InterfaceStatus::OrSymbol,
+            updated_at: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Identifies the resource.
+          id: nil,
+          # The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
+          # Connect.
+          bandwidth_mbps: nil,
+          # The Border Gateway Protocol (BGP) Autonomous System Number (ASN).
+          bgp_asn: nil,
+          # The Virtual Private Cloud with which you would like to establish a cross
+          # connect.
+          cloud_provider: nil,
+          # The region where your Virtual Private Cloud hosts are located.
+          cloud_provider_region: nil,
+          # ISO 8601 formatted date-time indicating when the resource was created.
+          created_at: nil,
+          # A user specified name for the interface.
+          name: nil,
+          # The id of the network associated with the interface.
+          network_id: nil,
+          # The authentication key for BGP peer configuration.
+          primary_bgp_key: nil,
+          # The identifier for your Virtual Private Cloud.
+          primary_cloud_account_id: nil,
+          # The IP address assigned for your side of the Virtual Cross Connect.
+          primary_cloud_ip: nil,
+          # Indicates whether the primary circuit is enabled.
+          primary_enabled: nil,
+          # Whether
+          primary_routing_announcement: nil,
+          # The IP address assigned to the Telnyx side of the Virtual Cross Connect.
+          primary_telnyx_ip: nil,
+          # Identifies the type of the resource.
+          record_type: nil,
+          region: nil,
+          # The region interface is deployed to.
+          region_code: nil,
+          # The current status of the interface deployment.
+          status: nil,
+          # ISO 8601 formatted date-time indicating when the resource was updated.
+          updated_at: nil
+        )
         end
 
-        sig { override.returns({}) }
+        sig do
+          override.returns(
+            {
+              id: String,
+              bandwidth_mbps: Float,
+              bgp_asn: Float,
+              cloud_provider:
+                Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::TaggedSymbol,
+              cloud_provider_region: String,
+              created_at: String,
+              name: String,
+              network_id: String,
+              primary_bgp_key: String,
+              primary_cloud_account_id: String,
+              primary_cloud_ip: String,
+              primary_enabled: T::Boolean,
+              primary_routing_announcement: T::Boolean,
+              primary_telnyx_ip: String,
+              record_type: String,
+              region:
+                Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::Region,
+              region_code: String,
+              status: Telnyx::InterfaceStatus::TaggedSymbol,
+              updated_at: String
+            }
+          )
+        end
         def to_hash
+        end
+
+        # The Virtual Private Cloud with which you would like to establish a cross
+        # connect.
+        module CloudProvider
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AWS =
+            T.let(
+              :aws,
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::TaggedSymbol
+            )
+          AZURE =
+            T.let(
+              :azure,
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::TaggedSymbol
+            )
+          GCE =
+            T.let(
+              :gce,
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::CloudProvider::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class Region < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::Region,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Region code of the interface.
+          sig { returns(T.nilable(String)) }
+          attr_reader :code
+
+          sig { params(code: String).void }
+          attr_writer :code
+
+          # Region name of the interface.
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
+          # Identifies the type of the resource.
+          sig { returns(T.nilable(String)) }
+          attr_reader :record_type
+
+          sig { params(record_type: String).void }
+          attr_writer :record_type
+
+          sig do
+            params(code: String, name: String, record_type: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Region code of the interface.
+            code: nil,
+            # Region name of the interface.
+            name: nil,
+            # Identifies the type of the resource.
+            record_type: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { code: String, name: String, record_type: String }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

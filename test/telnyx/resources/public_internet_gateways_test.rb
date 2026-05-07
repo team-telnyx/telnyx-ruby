@@ -50,6 +50,20 @@ class Telnyx::Test::Resources::PublicInternetGatewaysTest < Telnyx::Test::Resour
     assert_pattern do
       row => Telnyx::Models::PublicInternetGatewayListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        name: String | nil,
+        network_id: String | nil,
+        public_ip: String | nil,
+        record_type: String | nil,
+        region_code: String | nil,
+        status: Telnyx::InterfaceStatus | nil,
+        updated_at: String | nil
+      }
+    end
   end
 
   def test_delete

@@ -50,6 +50,23 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
     assert_pattern do
       row => Telnyx::Models::WireguardInterfaceListResponse
     end
+
+    assert_pattern do
+      row => {
+        id: String | nil,
+        created_at: String | nil,
+        enable_sip_trunking: Telnyx::Internal::Type::Boolean | nil,
+        endpoint: String | nil,
+        name: String | nil,
+        network_id: String | nil,
+        public_key: String | nil,
+        record_type: String | nil,
+        region: Telnyx::Models::WireguardInterfaceListResponse::Region | nil,
+        region_code: String | nil,
+        status: Telnyx::InterfaceStatus | nil,
+        updated_at: String | nil
+      }
+    end
   end
 
   def test_delete
