@@ -11,6 +11,8 @@ module Telnyx
             telnyx_end_user_target: String,
             ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
             ?dynamic_variables: ::Hash[Symbol, String],
+            ?max_retries_client_errors: Integer,
+            ?retry_interval_secs: Integer,
             ?text: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::AI::Assistants::scheduled_event_response

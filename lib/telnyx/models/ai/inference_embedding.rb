@@ -112,8 +112,9 @@ module Telnyx
         #   `/ai/integrations/connections`. Each item references a catalog integration by
         #   `integration_id`.
         #
-        #   @return [Array<Telnyx::Models::AI::AssistantIntegration>, nil]
-        optional :integrations, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantIntegration] }
+        #   @return [Array<Telnyx::Models::AI::InferenceEmbedding::Integration>, nil]
+        optional :integrations,
+                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbedding::Integration] }
 
         # @!attribute interruption_settings
         #   Settings for interruptions and how the assistant decides the user has finished
@@ -123,8 +124,8 @@ module Telnyx
         #   `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
         #   `eager_eot_threshold`).
         #
-        #   @return [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings, nil]
-        optional :interruption_settings, -> { Telnyx::AI::InferenceEmbeddingInterruptionSettings }
+        #   @return [Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings, nil]
+        optional :interruption_settings, -> { Telnyx::AI::InferenceEmbedding::InterruptionSettings }
 
         # @!attribute llm_api_key_ref
         #   This is only needed when using third-party inference providers selected by
@@ -141,8 +142,8 @@ module Telnyx
         #   MCP servers attached to the assistant. Create MCP servers with
         #   `/ai/mcp_servers`, then reference them by `id` here.
         #
-        #   @return [Array<Telnyx::Models::AI::AssistantMcpServer>, nil]
-        optional :mcp_servers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantMcpServer] }
+        #   @return [Array<Telnyx::Models::AI::InferenceEmbedding::McpServer>, nil]
+        optional :mcp_servers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbedding::McpServer] }
 
         # @!attribute messaging_settings
         #
@@ -265,13 +266,13 @@ module Telnyx
         #
         #   @param insight_settings [Telnyx::Models::AI::InsightSettings]
         #
-        #   @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        #   @param integrations [Array<Telnyx::Models::AI::InferenceEmbedding::Integration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        #   @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        #   @param interruption_settings [Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         #   @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        #   @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        #   @param mcp_servers [Array<Telnyx::Models::AI::InferenceEmbedding::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         #   @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
@@ -300,6 +301,165 @@ module Telnyx
         #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
         #
         #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
+
+        class Integration < Telnyx::Internal::Type::BaseModel
+          # @!attribute integration_id
+          #   Catalog integration ID to attach. This is the `id` from the integrations catalog
+          #   at `/ai/integrations` (the same value also appears as `integration_id` on
+          #   entries returned by `/ai/integrations/connections`). It is **not** the
+          #   connection-level `id` from `/ai/integrations/connections`.
+          #
+          #   @return [String]
+          required :integration_id, String
+
+          # @!attribute allowed_list
+          #   Optional per-assistant allowlist of integration tool names. When omitted or
+          #   empty, all tools allowed by the connected integration are available to the
+          #   assistant.
+          #
+          #   @return [Array<String>, nil]
+          optional :allowed_list, Telnyx::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(integration_id:, allowed_list: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::InferenceEmbedding::Integration} for more details.
+          #
+          #   Reference to a connected integration attached to an assistant. Discover
+          #   available integrations with `/ai/integrations` and connected integrations with
+          #   `/ai/integrations/connections`.
+          #
+          #   @param integration_id [String] Catalog integration ID to attach. This is the `id` from the integrations catalog
+          #
+          #   @param allowed_list [Array<String>] Optional per-assistant allowlist of integration tool names. When omitted or empt
+        end
+
+        # @see Telnyx::Models::AI::InferenceEmbedding#interruption_settings
+        class InterruptionSettings < Telnyx::Internal::Type::BaseModel
+          # @!attribute enable
+          #   Whether users can interrupt the assistant while it is speaking.
+          #
+          #   @return [Boolean, nil]
+          optional :enable, Telnyx::Internal::Type::Boolean
+
+          # @!attribute start_speaking_plan
+          #   Controls when the assistant starts speaking after the user stops. These
+          #   thresholds primarily apply to non turn-taking transcription models. For
+          #   turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+          #   transcription end-of-turn settings under `transcription.settings` instead.
+          #
+          #   @return [Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan, nil]
+          optional :start_speaking_plan,
+                   -> { Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan }
+
+          # @!method initialize(enable: nil, start_speaking_plan: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings} for more details.
+          #
+          #   Settings for interruptions and how the assistant decides the user has finished
+          #   speaking. These timings are most relevant when using non turn-taking
+          #   transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
+          #   behavior is controlled by the transcription end-of-turn settings under
+          #   `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+          #   `eager_eot_threshold`).
+          #
+          #   @param enable [Boolean] Whether users can interrupt the assistant while it is speaking.
+          #
+          #   @param start_speaking_plan [Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan] Controls when the assistant starts speaking after the user stops. These threshol
+
+          # @see Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings#start_speaking_plan
+          class StartSpeakingPlan < Telnyx::Internal::Type::BaseModel
+            # @!attribute transcription_endpointing_plan
+            #   Endpointing thresholds used to decide when the user has finished speaking.
+            #   Applies to non turn-taking transcription models. For `deepgram/flux`, use
+            #   `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+            #   `eager_eot_threshold`.
+            #
+            #   @return [Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan, nil]
+            optional :transcription_endpointing_plan,
+                     -> { Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan }
+
+            # @!attribute wait_seconds
+            #   Minimum seconds to wait before the assistant starts speaking.
+            #
+            #   @return [Float, nil]
+            optional :wait_seconds, Float
+
+            # @!method initialize(transcription_endpointing_plan: nil, wait_seconds: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan}
+            #   for more details.
+            #
+            #   Controls when the assistant starts speaking after the user stops. These
+            #   thresholds primarily apply to non turn-taking transcription models. For
+            #   turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+            #   transcription end-of-turn settings under `transcription.settings` instead.
+            #
+            #   @param transcription_endpointing_plan [Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan] Endpointing thresholds used to decide when the user has finished speaking. Appli
+            #
+            #   @param wait_seconds [Float] Minimum seconds to wait before the assistant starts speaking.
+
+            # @see Telnyx::Models::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan#transcription_endpointing_plan
+            class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
+              # @!attribute on_no_punctuation_seconds
+              #   Seconds to wait after the transcript ends without punctuation.
+              #
+              #   @return [Float, nil]
+              optional :on_no_punctuation_seconds, Float
+
+              # @!attribute on_number_seconds
+              #   Seconds to wait after the transcript ends with a number.
+              #
+              #   @return [Float, nil]
+              optional :on_number_seconds, Float
+
+              # @!attribute on_punctuation_seconds
+              #   Seconds to wait after the transcript ends with punctuation.
+              #
+              #   @return [Float, nil]
+              optional :on_punctuation_seconds, Float
+
+              # @!method initialize(on_no_punctuation_seconds: nil, on_number_seconds: nil, on_punctuation_seconds: nil)
+              #   Endpointing thresholds used to decide when the user has finished speaking.
+              #   Applies to non turn-taking transcription models. For `deepgram/flux`, use
+              #   `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+              #   `eager_eot_threshold`.
+              #
+              #   @param on_no_punctuation_seconds [Float] Seconds to wait after the transcript ends without punctuation.
+              #
+              #   @param on_number_seconds [Float] Seconds to wait after the transcript ends with a number.
+              #
+              #   @param on_punctuation_seconds [Float] Seconds to wait after the transcript ends with punctuation.
+            end
+          end
+        end
+
+        class McpServer < Telnyx::Internal::Type::BaseModel
+          # @!attribute id
+          #   ID of the MCP server to attach. This must be the `id` of an MCP server returned
+          #   by the `/ai/mcp_servers` endpoints.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute allowed_tools
+          #   Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
+          #   uses the MCP server's configured `allowed_tools`.
+          #
+          #   @return [Array<String>, nil]
+          optional :allowed_tools, Telnyx::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(id:, allowed_tools: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::InferenceEmbedding::McpServer} for more details.
+          #
+          #   Reference to an MCP server attached to an assistant. Create and manage MCP
+          #   servers with the `/ai/mcp_servers` endpoints, then attach them to assistants by
+          #   ID.
+          #
+          #   @param id [String] ID of the MCP server to attach. This must be the `id` of an MCP server returned
+          #
+          #   @param allowed_tools [Array<String>] Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
+        end
       end
     end
   end

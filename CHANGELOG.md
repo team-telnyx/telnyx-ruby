@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.103.0 (2026-05-07)
+
+Full Changelog: [v5.102.1...v5.103.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.102.1...v5.103.0)
+
+### Features
+
+* Add Speechmatics provider to standalone STT spec ([ca94503](https://github.com/team-telnyx/telnyx-ruby/commit/ca945036fb52cf72d6cbcdf3a683b77e56aacdf3))
+* Ai-assistant: update scheduled events api ([5567900](https://github.com/team-telnyx/telnyx-ruby/commit/5567900fe1aed9caa1d74188807ef9ec3e15459c))
+* **api:** manual updates ([0261568](https://github.com/team-telnyx/telnyx-ruby/commit/02615682257dfa6d243127d9e1eae6938268a8eb))
+* **api:** manual updates ([044e221](https://github.com/team-telnyx/telnyx-ruby/commit/044e22120a5676d514af5442d913064fc5fa9789))
+
+
+### Reverts
+
+* restore stainless.yml from before 9853597 ([89c9cfd](https://github.com/team-telnyx/telnyx-ruby/commit/89c9cfdd1ea3879f32247bf59822e38eb870b9cd))
+
 ## 5.102.1 (2026-05-07)
 
 Full Changelog: [v5.102.0...v5.102.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.102.0...v5.102.1)

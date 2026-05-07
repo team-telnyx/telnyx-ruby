@@ -16,7 +16,7 @@ class Telnyx::Test::Resources::AI::Assistants::CanaryDeploysTest < Telnyx::Test:
       response => {
         assistant_id: String,
         created_at: Time,
-        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::RuleOutput]),
+        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::CanaryDeployResponse::Rule]),
         updated_at: Time
       }
     end
@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::AI::Assistants::CanaryDeploysTest < Telnyx::Test:
       response => {
         assistant_id: String,
         created_at: Time,
-        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::RuleOutput]),
+        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::CanaryDeployResponse::Rule]),
         updated_at: Time
       }
     end
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::AI::Assistants::CanaryDeploysTest < Telnyx::Test:
       response => {
         assistant_id: String,
         created_at: Time,
-        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::RuleOutput]),
+        rules: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::CanaryDeployResponse::Rule]),
         updated_at: Time
       }
     end
