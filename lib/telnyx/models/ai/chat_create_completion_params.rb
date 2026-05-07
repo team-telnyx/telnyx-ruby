@@ -125,6 +125,21 @@ module Telnyx
         #   @return [Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat, nil]
         optional :response_format, -> { Telnyx::AI::ChatCreateCompletionParams::ResponseFormat }
 
+        # @!attribute seed
+        #   If specified, the system will make a best effort to sample deterministically,
+        #   such that repeated requests with the same `seed` and parameters should return
+        #   the same result.
+        #
+        #   @return [Integer, nil]
+        optional :seed, Integer
+
+        # @!attribute stop
+        #   Up to 4 sequences where the API will stop generating further tokens. The
+        #   returned text will not contain the stop sequence.
+        #
+        #   @return [String, Array<String>, nil]
+        optional :stop, union: -> { Telnyx::AI::ChatCreateCompletionParams::Stop }
+
         # @!attribute stream
         #   Whether or not to stream data-only server-sent events as they become available.
         #
@@ -178,7 +193,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :use_beam_search, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
+        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, seed: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ChatCreateCompletionParams} for more details.
         #
@@ -215,6 +230,10 @@ module Telnyx
         #   @param presence_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
         #
         #   @param response_format [Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
+        #
+        #   @param seed [Integer] If specified, the system will make a best effort to sample deterministically, su
+        #
+        #   @param stop [String, Array<String>] Up to 4 sequences where the API will stop generating further tokens. The returne
         #
         #   @param stream [Boolean] Whether or not to stream data-only server-sent events as they become available.
         #
@@ -335,6 +354,22 @@ module Telnyx
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+        end
+
+        # Up to 4 sequences where the API will stop generating further tokens. The
+        # returned text will not contain the stop sequence.
+        module Stop
+          extend Telnyx::Internal::Type::Union
+
+          variant String
+
+          variant -> { Telnyx::Models::AI::ChatCreateCompletionParams::Stop::StringArray }
+
+          # @!method self.variants
+          #   @return [Array(String, Array<String>)]
+
+          # @type [Telnyx::Internal::Type::Converter]
+          StringArray = Telnyx::Internal::Type::ArrayOf[String]
         end
 
         module ToolChoice
