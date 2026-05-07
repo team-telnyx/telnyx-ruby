@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::VirtualCrossConnects#list
-    class VirtualCrossConnectListResponse < Telnyx::Internal::Type::BaseModel
+    class VirtualCrossConnectCombined < Telnyx::Internal::Type::BaseModel
       # @!attribute bandwidth_mbps
       #   The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
       #   Connect.
@@ -21,8 +21,8 @@ module Telnyx
       #   The Virtual Private Cloud with which you would like to establish a cross
       #   connect.
       #
-      #   @return [Symbol, Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider, nil]
-      optional :cloud_provider, enum: -> { Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider }
+      #   @return [Symbol, Telnyx::Models::VirtualCrossConnectCombined::CloudProvider, nil]
+      optional :cloud_provider, enum: -> { Telnyx::VirtualCrossConnectCombined::CloudProvider }
 
       # @!attribute cloud_provider_region
       #   The region where your Virtual Private Cloud hosts are located.
@@ -80,8 +80,8 @@ module Telnyx
 
       # @!attribute region
       #
-      #   @return [Telnyx::Models::VirtualCrossConnectListResponse::Region, nil]
-      optional :region, -> { Telnyx::Models::VirtualCrossConnectListResponse::Region }
+      #   @return [Telnyx::Models::VirtualCrossConnectCombined::Region, nil]
+      optional :region, -> { Telnyx::VirtualCrossConnectCombined::Region }
 
       # @!attribute region_code
       #   The region interface is deployed to.
@@ -123,7 +123,7 @@ module Telnyx
 
       # @!method initialize(id: nil, bandwidth_mbps: nil, bgp_asn: nil, cloud_provider: nil, cloud_provider_region: nil, created_at: nil, name: nil, network_id: nil, primary_bgp_key: nil, primary_cloud_account_id: nil, primary_cloud_ip: nil, primary_enabled: nil, primary_routing_announcement: nil, primary_telnyx_ip: nil, record_type: nil, region: nil, region_code: nil, status: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::VirtualCrossConnectListResponse} for more details.
+      #   {Telnyx::Models::VirtualCrossConnectCombined} for more details.
       #
       #   @param id [String] Identifies the resource.
       #
@@ -131,7 +131,7 @@ module Telnyx
       #
       #   @param bgp_asn [Float] The Border Gateway Protocol (BGP) Autonomous System Number (ASN).
       #
-      #   @param cloud_provider [Symbol, Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider] The Virtual Private Cloud with which you would like to establish a cross connect
+      #   @param cloud_provider [Symbol, Telnyx::Models::VirtualCrossConnectCombined::CloudProvider] The Virtual Private Cloud with which you would like to establish a cross connect
       #
       #   @param cloud_provider_region [String] The region where your Virtual Private Cloud hosts are located.
       #
@@ -155,7 +155,7 @@ module Telnyx
       #
       #   @param record_type [String] Identifies the type of the resource.
       #
-      #   @param region [Telnyx::Models::VirtualCrossConnectListResponse::Region]
+      #   @param region [Telnyx::Models::VirtualCrossConnectCombined::Region]
       #
       #   @param region_code [String] The region interface is deployed to.
       #
@@ -166,7 +166,7 @@ module Telnyx
       # The Virtual Private Cloud with which you would like to establish a cross
       # connect.
       #
-      # @see Telnyx::Models::VirtualCrossConnectListResponse#cloud_provider
+      # @see Telnyx::Models::VirtualCrossConnectCombined#cloud_provider
       module CloudProvider
         extend Telnyx::Internal::Type::Enum
 
@@ -178,7 +178,7 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # @see Telnyx::Models::VirtualCrossConnectListResponse#region
+      # @see Telnyx::Models::VirtualCrossConnectCombined#region
       class Region < Telnyx::Internal::Type::BaseModel
         # @!attribute code
         #   Region code of the interface.

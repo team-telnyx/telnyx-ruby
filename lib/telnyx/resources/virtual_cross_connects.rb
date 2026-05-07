@@ -140,7 +140,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VirtualCrossConnectListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VirtualCrossConnectCombined>]
       #
       # @see Telnyx::Models::VirtualCrossConnectListParams
       def list(params = {})
@@ -151,7 +151,7 @@ module Telnyx
           path: "virtual_cross_connects",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::VirtualCrossConnectListResponse,
+          model: Telnyx::VirtualCrossConnectCombined,
           options: options
         )
       end

@@ -47,7 +47,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::PublicInternetGatewayListResponse
+            Telnyx::PublicInternetGatewayRead
           ]
         )
       end

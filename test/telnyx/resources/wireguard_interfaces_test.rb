@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WireguardInterfaceCreateResponse::Data | nil
+        data: Telnyx::WireguardInterfaceRead | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WireguardInterfaceRetrieveResponse::Data | nil
+        data: Telnyx::WireguardInterfaceRead | nil
       }
     end
   end
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::WireguardInterfaceListResponse
+      row => Telnyx::WireguardInterfaceRead
     end
 
     assert_pattern do
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
         network_id: String | nil,
         public_key: String | nil,
         record_type: String | nil,
-        region: Telnyx::Models::WireguardInterfaceListResponse::Region | nil,
+        region: Telnyx::WireguardInterfaceRead::Region | nil,
         region_code: String | nil,
         status: Telnyx::InterfaceStatus | nil,
         updated_at: String | nil
@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::WireguardInterfacesTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WireguardInterfaceDeleteResponse::Data | nil
+        data: Telnyx::WireguardInterfaceRead | nil
       }
     end
   end

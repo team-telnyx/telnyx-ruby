@@ -2,13 +2,10 @@
 
 module Telnyx
   module Models
-    class PublicInternetGatewayListResponse < Telnyx::Internal::Type::BaseModel
+    class PublicInternetGatewayRead < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::Models::PublicInternetGatewayListResponse,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::PublicInternetGatewayRead, Telnyx::Internal::AnyHash)
         end
 
       # A user specified name for the interface.

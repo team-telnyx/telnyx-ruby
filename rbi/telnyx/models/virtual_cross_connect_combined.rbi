@@ -2,13 +2,10 @@
 
 module Telnyx
   module Models
-    class VirtualCrossConnectListResponse < Telnyx::Internal::Type::BaseModel
+    class VirtualCrossConnectCombined < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::Models::VirtualCrossConnectListResponse,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::VirtualCrossConnectCombined, Telnyx::Internal::AnyHash)
         end
 
       # The desired throughput in Megabits per Second (Mbps) for your Virtual Cross
@@ -31,7 +28,7 @@ module Telnyx
       sig do
         returns(
           T.nilable(
-            Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::TaggedSymbol
+            Telnyx::VirtualCrossConnectCombined::CloudProvider::TaggedSymbol
           )
         )
       end
@@ -40,7 +37,7 @@ module Telnyx
       sig do
         params(
           cloud_provider:
-            Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::OrSymbol
+            Telnyx::VirtualCrossConnectCombined::CloudProvider::OrSymbol
         ).void
       end
       attr_writer :cloud_provider
@@ -108,18 +105,11 @@ module Telnyx
       sig { params(primary_telnyx_ip: String).void }
       attr_writer :primary_telnyx_ip
 
-      sig do
-        returns(
-          T.nilable(Telnyx::Models::VirtualCrossConnectListResponse::Region)
-        )
-      end
+      sig { returns(T.nilable(Telnyx::VirtualCrossConnectCombined::Region)) }
       attr_reader :region
 
       sig do
-        params(
-          region:
-            Telnyx::Models::VirtualCrossConnectListResponse::Region::OrHash
-        ).void
+        params(region: Telnyx::VirtualCrossConnectCombined::Region::OrHash).void
       end
       attr_writer :region
 
@@ -171,7 +161,7 @@ module Telnyx
           bandwidth_mbps: Float,
           bgp_asn: Float,
           cloud_provider:
-            Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::OrSymbol,
+            Telnyx::VirtualCrossConnectCombined::CloudProvider::OrSymbol,
           cloud_provider_region: String,
           created_at: String,
           name: String,
@@ -183,8 +173,7 @@ module Telnyx
           primary_routing_announcement: T::Boolean,
           primary_telnyx_ip: String,
           record_type: String,
-          region:
-            Telnyx::Models::VirtualCrossConnectListResponse::Region::OrHash,
+          region: Telnyx::VirtualCrossConnectCombined::Region::OrHash,
           region_code: String,
           status: Telnyx::InterfaceStatus::OrSymbol,
           updated_at: String
@@ -240,7 +229,7 @@ module Telnyx
             bandwidth_mbps: Float,
             bgp_asn: Float,
             cloud_provider:
-              Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::TaggedSymbol,
+              Telnyx::VirtualCrossConnectCombined::CloudProvider::TaggedSymbol,
             cloud_provider_region: String,
             created_at: String,
             name: String,
@@ -252,7 +241,7 @@ module Telnyx
             primary_routing_announcement: T::Boolean,
             primary_telnyx_ip: String,
             record_type: String,
-            region: Telnyx::Models::VirtualCrossConnectListResponse::Region,
+            region: Telnyx::VirtualCrossConnectCombined::Region,
             region_code: String,
             status: Telnyx::InterfaceStatus::TaggedSymbol,
             updated_at: String
@@ -269,33 +258,30 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(
-              Symbol,
-              Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider
-            )
+            T.all(Symbol, Telnyx::VirtualCrossConnectCombined::CloudProvider)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AWS =
           T.let(
             :aws,
-            Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::TaggedSymbol
+            Telnyx::VirtualCrossConnectCombined::CloudProvider::TaggedSymbol
           )
         AZURE =
           T.let(
             :azure,
-            Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::TaggedSymbol
+            Telnyx::VirtualCrossConnectCombined::CloudProvider::TaggedSymbol
           )
         GCE =
           T.let(
             :gce,
-            Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::TaggedSymbol
+            Telnyx::VirtualCrossConnectCombined::CloudProvider::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Telnyx::Models::VirtualCrossConnectListResponse::CloudProvider::TaggedSymbol
+              Telnyx::VirtualCrossConnectCombined::CloudProvider::TaggedSymbol
             ]
           )
         end
@@ -307,7 +293,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::VirtualCrossConnectListResponse::Region,
+              Telnyx::VirtualCrossConnectCombined::Region,
               Telnyx::Internal::AnyHash
             )
           end

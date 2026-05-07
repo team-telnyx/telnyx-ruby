@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::WireguardInterfaces#list
-    class WireguardInterfaceListResponse < Telnyx::Internal::Type::BaseModel
+    class WireguardInterfaceRead < Telnyx::Internal::Type::BaseModel
       # @!attribute enable_sip_trunking
       #   Enable SIP traffic forwarding over VPN interface.
       #
@@ -24,8 +24,8 @@ module Telnyx
 
       # @!attribute region
       #
-      #   @return [Telnyx::Models::WireguardInterfaceListResponse::Region, nil]
-      optional :region, -> { Telnyx::Models::WireguardInterfaceListResponse::Region }
+      #   @return [Telnyx::Models::WireguardInterfaceRead::Region, nil]
+      optional :region, -> { Telnyx::WireguardInterfaceRead::Region }
 
       # @!attribute region_code
       #   The region interface is deployed to.
@@ -94,7 +94,7 @@ module Telnyx
       #
       #   @param record_type [String] Identifies the type of the resource.
       #
-      #   @param region [Telnyx::Models::WireguardInterfaceListResponse::Region]
+      #   @param region [Telnyx::Models::WireguardInterfaceRead::Region]
       #
       #   @param region_code [String] The region interface is deployed to.
       #
@@ -102,7 +102,7 @@ module Telnyx
       #
       #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
 
-      # @see Telnyx::Models::WireguardInterfaceListResponse#region
+      # @see Telnyx::Models::WireguardInterfaceRead#region
       class Region < Telnyx::Internal::Type::BaseModel
         # @!attribute code
         #   Region code of the interface.
