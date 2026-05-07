@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type rule_output =
+          {
+            serve: Telnyx::AI::Assistants::Serve,
+            match: ::Array[Telnyx::AI::Assistants::Clause]
+          }
+
+        class RuleOutput < Telnyx::Internal::Type::BaseModel
+          attr_accessor serve: Telnyx::AI::Assistants::Serve
+
+          attr_reader match: ::Array[Telnyx::AI::Assistants::Clause]?
+
+          def match=: (
+            ::Array[Telnyx::AI::Assistants::Clause]
+          ) -> ::Array[Telnyx::AI::Assistants::Clause]
+
+          def initialize: (
+            serve: Telnyx::AI::Assistants::Serve,
+            ?match: ::Array[Telnyx::AI::Assistants::Clause]
+          ) -> void
+
+          def to_hash: -> {
+            serve: Telnyx::AI::Assistants::Serve,
+            match: ::Array[Telnyx::AI::Assistants::Clause]
+          }
+        end
+      end
+    end
+  end
+end
