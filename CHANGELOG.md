@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.102.0 (2026-05-07)
+
+Full Changelog: [v5.101.0...v5.102.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.101.0...v5.102.0)
+
+### Features
+
+* MSG-9000: document duplicate-vetting rejection on order brand external vetting ([8322fc0](https://github.com/team-telnyx/telnyx-ruby/commit/8322fc0a1681b8fd59897138082a176b1847d65b))
+
 ## 5.101.0 (2026-05-07)
 
 Full Changelog: [v5.100.0...v5.101.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.100.0...v5.101.0)
