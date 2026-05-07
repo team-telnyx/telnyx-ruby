@@ -69,13 +69,13 @@ module Telnyx
           #
           # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
           #
-          # @param integrations [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::Integration>] Body param: Connected integrations attached to the assistant. The catalog of ava
+          # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Body param: Connected integrations attached to the assistant. The catalog of ava
           #
-          # @param interruption_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::InterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
+          # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
           #
           # @param llm_api_key_ref [String] Body param: This is only needed when using third-party inference providers selec
           #
-          # @param mcp_servers [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::McpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
+          # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
           #
           # @param messaging_settings [Telnyx::Models::AI::MessagingSettings] Body param
           #

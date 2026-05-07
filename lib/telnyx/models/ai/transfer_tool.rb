@@ -32,7 +32,7 @@ module Telnyx
           #   variable string like `{{ targets }}` where `targets` is returned by the dynamic
           #   variables webhook and resolves to an array of target objects at runtime.
           #
-          #   @return [Array<Telnyx::Models::AI::TransferTool::Transfer::Targets::UnionMember0>, String]
+          #   @return [Array<Telnyx::Models::AI::TransferTool::Transfer::Targets::TargetsList>, String]
           required :targets, union: -> { Telnyx::AI::TransferTool::Transfer::Targets }
 
           # @!method initialize(from:, targets:)
@@ -41,7 +41,7 @@ module Telnyx
           #
           #   @param from [String] Number or SIP URI placing the call.
           #
-          #   @param targets [Array<Telnyx::Models::AI::TransferTool::Transfer::Targets::UnionMember0>, String] The different possible targets of the transfer. The assistant will be able to ch
+          #   @param targets [Array<Telnyx::Models::AI::TransferTool::Transfer::Targets::TargetsList>, String] The different possible targets of the transfer. The assistant will be able to ch
 
           # The different possible targets of the transfer. The assistant will be able to
           # choose one of the targets to transfer the call to. This can also be a dynamic
@@ -52,12 +52,12 @@ module Telnyx
           module Targets
             extend Telnyx::Internal::Type::Union
 
-            variant -> { Telnyx::Models::AI::TransferTool::Transfer::Targets::UnionMember0Array }
+            variant -> { Telnyx::Models::AI::TransferTool::Transfer::Targets::TargetsListArray }
 
             # A dynamic variable string like `{{ targets }}` where `targets` is returned by the dynamic variables webhook and resolves to an array of target objects at runtime.
             variant String
 
-            class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            class TargetsList < Telnyx::Internal::Type::BaseModel
               # @!attribute to
               #   The destination number or SIP URI of the call.
               #
@@ -77,13 +77,11 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(Array<Telnyx::Models::AI::TransferTool::Transfer::Targets::UnionMember0>, String)]
+            #   @return [Array(Array<Telnyx::Models::AI::TransferTool::Transfer::Targets::TargetsList>, String)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember0Array =
-              Telnyx::Internal::Type::ArrayOf[-> {
-                Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0
-              }]
+            TargetsListArray =
+              Telnyx::Internal::Type::ArrayOf[-> { Telnyx::AI::TransferTool::Transfer::Targets::TargetsList }]
           end
         end
 
