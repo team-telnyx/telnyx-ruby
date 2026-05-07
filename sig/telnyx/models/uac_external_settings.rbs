@@ -1,0 +1,73 @@
+module Telnyx
+  module Models
+    type uac_external_settings =
+      {
+        auth_username: String?,
+        expiration_sec: Integer?,
+        from_user: String?,
+        outbound_proxy: String?,
+        password: String,
+        proxy: String,
+        transport: Telnyx::Models::UacExternalSettings::transport?,
+        username: String
+      }
+
+    class UacExternalSettings < Telnyx::Internal::Type::BaseModel
+      attr_accessor auth_username: String?
+
+      attr_accessor expiration_sec: Integer?
+
+      attr_accessor from_user: String?
+
+      attr_accessor outbound_proxy: String?
+
+      attr_reader password: String?
+
+      def password=: (String) -> String
+
+      attr_reader proxy: String?
+
+      def proxy=: (String) -> String
+
+      attr_accessor transport: Telnyx::Models::UacExternalSettings::transport?
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        ?auth_username: String?,
+        ?expiration_sec: Integer?,
+        ?from_user: String?,
+        ?outbound_proxy: String?,
+        ?password: String,
+        ?proxy: String,
+        ?transport: Telnyx::Models::UacExternalSettings::transport?,
+        ?username: String
+      ) -> void
+
+      def to_hash: -> {
+        auth_username: String?,
+        expiration_sec: Integer?,
+        from_user: String?,
+        outbound_proxy: String?,
+        password: String,
+        proxy: String,
+        transport: Telnyx::Models::UacExternalSettings::transport?,
+        username: String
+      }
+
+      type transport = :UDP | :TLS | :TCP
+
+      module Transport
+        extend Telnyx::Internal::Type::Enum
+
+        UDP: :UDP
+        TLS: :TLS
+        TCP: :TCP
+
+        def self?.values: -> ::Array[Telnyx::Models::UacExternalSettings::transport]
+      end
+    end
+  end
+end

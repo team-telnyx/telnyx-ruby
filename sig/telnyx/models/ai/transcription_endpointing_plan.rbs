@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module AI
+      type transcription_endpointing_plan =
+        {
+          on_no_punctuation_seconds: Float,
+          on_number_seconds: Float,
+          on_punctuation_seconds: Float
+        }
+
+      class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
+        attr_reader on_no_punctuation_seconds: Float?
+
+        def on_no_punctuation_seconds=: (Float) -> Float
+
+        attr_reader on_number_seconds: Float?
+
+        def on_number_seconds=: (Float) -> Float
+
+        attr_reader on_punctuation_seconds: Float?
+
+        def on_punctuation_seconds=: (Float) -> Float
+
+        def initialize: (
+          ?on_no_punctuation_seconds: Float,
+          ?on_number_seconds: Float,
+          ?on_punctuation_seconds: Float
+        ) -> void
+
+        def to_hash: -> {
+          on_no_punctuation_seconds: Float,
+          on_number_seconds: Float,
+          on_punctuation_seconds: Float
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type model_metadata =
+      { id: String, created: Integer, owned_by: String, object: String }
+
+    class ModelMetadata < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created: Integer
+
+      attr_accessor owned_by: String
+
+      attr_reader object: String?
+
+      def object=: (String) -> String
+
+      def initialize: (
+        id: String,
+        created: Integer,
+        owned_by: String,
+        ?object: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created: Integer,
+        owned_by: String,
+        object: String
+      }
+    end
+  end
+end
