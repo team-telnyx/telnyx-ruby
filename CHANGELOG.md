@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.101.0 (2026-05-07)
+
+Full Changelog: [v5.100.0...v5.101.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.100.0...v5.101.0)
+
+### Features
+
+* inference: expose chat completions and models under /ai/openai ([4711564](https://github.com/team-telnyx/telnyx-ruby/commit/47115648db8895fabe3913e086b23705c8a1851a))
+
 ## 5.100.0 (2026-05-06)
 
 Full Changelog: [v5.99.0...v5.100.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.99.0...v5.100.0)
