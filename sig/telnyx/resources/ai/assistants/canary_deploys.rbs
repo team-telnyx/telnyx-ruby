@@ -5,7 +5,7 @@ module Telnyx
         class CanaryDeploys
           def create: (
             String assistant_id,
-            ?rules: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule],
+            ?rules: ::Array[Telnyx::AI::Assistants::RuleInput],
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::Assistants::CanaryDeployResponse
 
@@ -16,7 +16,7 @@ module Telnyx
 
           def update: (
             String assistant_id,
-            ?rules: ::Array[Telnyx::AI::Assistants::CanaryDeploy::Rule],
+            ?rules: ::Array[Telnyx::AI::Assistants::RuleInput],
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::Assistants::CanaryDeployResponse
 

@@ -23,11 +23,9 @@ module Telnyx
           dtmf_type: Telnyx::DtmfType::OrSymbol,
           encode_contact_header_enabled: T::Boolean,
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
-          external_uac_settings:
-            Telnyx::UacConnectionCreateParams::ExternalUacSettings::OrHash,
+          external_uac_settings: Telnyx::UacExternalSettings::OrHash,
           inbound: Telnyx::UacConnectionCreateParams::Inbound::OrHash,
-          internal_uac_settings:
-            Telnyx::UacConnectionCreateParams::InternalUacSettings::OrHash,
+          internal_uac_settings: Telnyx::UacInternalSettings::OrHash,
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           noise_suppression:
@@ -35,7 +33,7 @@ module Telnyx
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
-          outbound: Telnyx::UacConnectionCreateParams::Outbound::OrHash,
+          outbound: Telnyx::UacOutbound::OrHash,
           password: String,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
           sip_uri_calling_preference:
@@ -166,11 +164,9 @@ module Telnyx
           dtmf_type: Telnyx::DtmfType::OrSymbol,
           encode_contact_header_enabled: T::Boolean,
           encrypted_media: T.nilable(Telnyx::EncryptedMedia::OrSymbol),
-          external_uac_settings:
-            Telnyx::UacConnectionUpdateParams::ExternalUacSettings::OrHash,
+          external_uac_settings: Telnyx::UacExternalSettings::OrHash,
           inbound: Telnyx::UacConnectionUpdateParams::Inbound::OrHash,
-          internal_uac_settings:
-            Telnyx::UacConnectionUpdateParams::InternalUacSettings::OrHash,
+          internal_uac_settings: Telnyx::UacInternalSettings::OrHash,
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           noise_suppression:
@@ -178,7 +174,7 @@ module Telnyx
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
-          outbound: Telnyx::UacConnectionUpdateParams::Outbound::OrHash,
+          outbound: Telnyx::UacOutbound::OrHash,
           password: String,
           rtcp_settings: Telnyx::ConnectionRtcpSettings::OrHash,
           sip_uri_calling_preference:
@@ -294,9 +290,7 @@ module Telnyx
           sort: Telnyx::UacConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::UacConnectionListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::UacConnection]
         )
       end
       def list(

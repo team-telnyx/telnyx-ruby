@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type uac_internal_settings = { destination_uri: String }
+
+    class UacInternalSettings < Telnyx::Internal::Type::BaseModel
+      attr_reader destination_uri: String?
+
+      def destination_uri=: (String) -> String
+
+      def initialize: (?destination_uri: String) -> void
+
+      def to_hash: -> { destination_uri: String }
+    end
+  end
+end
