@@ -6,8 +6,8 @@ module Telnyx
       # @!attribute destination_uri
       #   The SIP URI that Telnyx will call when handling an inbound request from the
       #   external peer. Do not include a `sip:` prefix. The value must be in the format
-      #   `userinfo@[subdomain.]sip.telnyx.com` or
-      #   `userinfo@[subdomain.]sipdev.telnyx.com`; the userinfo portion may contain only
+      #   `userinfo@<subdomain.>sip.telnyx.com` or
+      #   `userinfo@<subdomain.>sipdev.telnyx.com`; the userinfo portion may contain only
       #   letters, digits, hyphens, and underscores.
       #
       #   @return [String, nil]
