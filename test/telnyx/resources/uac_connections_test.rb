@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::UacConnection | nil
+        data: Telnyx::Models::UacConnectionCreateResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::UacConnection | nil
+        data: Telnyx::Models::UacConnectionRetrieveResponse::Data | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::UacConnection | nil
+        data: Telnyx::Models::UacConnectionUpdateResponse::Data | nil
       }
     end
   end
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::UacConnection
+      row => Telnyx::Models::UacConnectionListResponse
     end
 
     assert_pattern do
@@ -73,7 +73,7 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
         active: Telnyx::Internal::Type::Boolean | nil,
         anchorsite_override: Telnyx::AnchorsiteOverride | nil,
         android_push_credential_id: String | nil,
-        authentication: Telnyx::UacConnection::Authentication | nil,
+        authentication: Telnyx::Models::UacConnectionListResponse::Authentication | nil,
         call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
         connection_name: String | nil,
         created_at: String | nil,
@@ -81,28 +81,28 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
         dtmf_type: Telnyx::DtmfType | nil,
         encode_contact_header_enabled: Telnyx::Internal::Type::Boolean | nil,
         encrypted_media: Telnyx::EncryptedMedia | nil,
-        external_uac_settings: Telnyx::UacExternalSettings | nil,
+        external_uac_settings: Telnyx::Models::UacConnectionListResponse::ExternalUacSettings | nil,
         fqdn: String | nil,
-        fqdn_outbound_authentication: Telnyx::UacConnection::FqdnOutboundAuthentication | nil,
+        fqdn_outbound_authentication: Telnyx::Models::UacConnectionListResponse::FqdnOutboundAuthentication | nil,
         fqdns: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Fqdn]) | nil,
-        inbound: Telnyx::UacInbound | nil,
-        internal_uac_settings: Telnyx::UacInternalSettings | nil,
+        inbound: Telnyx::Models::UacConnectionListResponse::Inbound | nil,
+        internal_uac_settings: Telnyx::Models::UacConnectionListResponse::InternalUacSettings | nil,
         ios_push_credential_id: String | nil,
         jitter_buffer: Telnyx::ConnectionJitterBuffer | nil,
-        noise_suppression: Telnyx::UacConnection::NoiseSuppression | nil,
+        noise_suppression: Telnyx::Models::UacConnectionListResponse::NoiseSuppression | nil,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails | nil,
         onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
-        outbound: Telnyx::UacOutbound | nil,
+        outbound: Telnyx::Models::UacConnectionListResponse::Outbound | nil,
         password: String | nil,
         record_type: String | nil,
         registration_status: String | nil,
         registration_status_updated_at: String | nil,
         rtcp_settings: Telnyx::ConnectionRtcpSettings | nil,
-        sip_uri_calling_preference: Telnyx::UacConnection::SipUriCallingPreference | nil,
+        sip_uri_calling_preference: Telnyx::Models::UacConnectionListResponse::SipUriCallingPreference | nil,
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         updated_at: String | nil,
         user_name: String | nil,
-        webhook_api_version: Telnyx::UacConnection::WebhookAPIVersion | nil,
+        webhook_api_version: Telnyx::Models::UacConnectionListResponse::WebhookAPIVersion | nil,
         webhook_event_failover_url: String | nil,
         webhook_event_url: String | nil,
         webhook_timeout_secs: Integer | nil
@@ -121,7 +121,7 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::UacConnection | nil
+        data: Telnyx::Models::UacConnectionDeleteResponse::Data | nil
       }
     end
   end

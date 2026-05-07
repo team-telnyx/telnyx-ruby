@@ -36,11 +36,11 @@ module Telnyx
       #
       # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
       #
-      # @param external_uac_settings [Telnyx::Models::UacExternalSettings] External SIP peer settings used by Telnyx when registering to your PBX and routi
+      # @param external_uac_settings [Telnyx::Models::UacConnectionCreateParams::ExternalUacSettings] External SIP peer settings used by Telnyx when registering to your PBX and routi
       #
       # @param inbound [Telnyx::Models::UacConnectionCreateParams::Inbound] Inbound settings that can be supplied when creating or updating a UAC connection
       #
-      # @param internal_uac_settings [Telnyx::Models::UacInternalSettings] Internal Telnyx-side settings for a UAC connection.
+      # @param internal_uac_settings [Telnyx::Models::UacConnectionCreateParams::InternalUacSettings] Internal Telnyx-side settings for a UAC connection.
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
@@ -52,7 +52,7 @@ module Telnyx
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
-      # @param outbound [Telnyx::Models::UacOutbound]
+      # @param outbound [Telnyx::Models::UacConnectionCreateParams::Outbound]
       #
       # @param password [String] The password to be used as part of the credentials. Must be 8 to 128 characters
       #
@@ -135,11 +135,11 @@ module Telnyx
       #
       # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
       #
-      # @param external_uac_settings [Telnyx::Models::UacExternalSettings] External SIP peer settings used by Telnyx when registering to your PBX and routi
+      # @param external_uac_settings [Telnyx::Models::UacConnectionUpdateParams::ExternalUacSettings] External SIP peer settings used by Telnyx when registering to your PBX and routi
       #
       # @param inbound [Telnyx::Models::UacConnectionUpdateParams::Inbound] Inbound settings that can be supplied when creating or updating a UAC connection
       #
-      # @param internal_uac_settings [Telnyx::Models::UacInternalSettings] Internal Telnyx-side settings for a UAC connection.
+      # @param internal_uac_settings [Telnyx::Models::UacConnectionUpdateParams::InternalUacSettings] Internal Telnyx-side settings for a UAC connection.
       #
       # @param ios_push_credential_id [String, nil] The uuid of the push credential for Ios
       #
@@ -151,7 +151,7 @@ module Telnyx
       #
       # @param onnet_t38_passthrough_enabled [Boolean] Enable on-net T38 if you prefer the sender and receiver negotiating T38 directly
       #
-      # @param outbound [Telnyx::Models::UacOutbound]
+      # @param outbound [Telnyx::Models::UacConnectionUpdateParams::Outbound]
       #
       # @param password [String] The password to be used as part of the credentials. Must be 8 to 128 characters
       #
@@ -208,7 +208,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::UacConnection>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::UacConnectionListResponse>]
       #
       # @see Telnyx::Models::UacConnectionListParams
       def list(params = {})
@@ -219,7 +219,7 @@ module Telnyx
           path: "uac_connections",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::UacConnection,
+          model: Telnyx::Models::UacConnectionListResponse,
           options: options
         )
       end
