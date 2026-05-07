@@ -154,7 +154,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::VirtualCrossConnectCombined
+            Telnyx::Models::VirtualCrossConnectListResponse
           ]
         )
       end

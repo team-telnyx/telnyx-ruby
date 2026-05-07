@@ -69,6 +69,20 @@ module Telnyx
           sig { params(dynamic_variables: T::Hash[Symbol, String]).void }
           attr_writer :dynamic_variables
 
+          # Configure number of retries on client errors: busy, no-answer, failed, canceled
+          # (caller hung up before the callee answered)
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :max_retries_client_errors
+
+          sig { params(max_retries_client_errors: Integer).void }
+          attr_writer :max_retries_client_errors
+
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :retry_interval_secs
+
+          sig { params(retry_interval_secs: Integer).void }
+          attr_writer :retry_interval_secs
+
           # Required for sms scheduled events. The text to be sent to the end user.
           sig { returns(T.nilable(String)) }
           attr_reader :text
@@ -90,6 +104,8 @@ module Telnyx
                   Telnyx::AI::Assistants::ScheduledEventCreateParams::ConversationMetadata::Variants
                 ],
               dynamic_variables: T::Hash[Symbol, String],
+              max_retries_client_errors: Integer,
+              retry_interval_secs: Integer,
               text: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
@@ -109,6 +125,10 @@ module Telnyx
             # A map of dynamic variable names to values. These variables can be referenced in
             # the assistant's instructions and messages using {{variable_name}} syntax.
             dynamic_variables: nil,
+            # Configure number of retries on client errors: busy, no-answer, failed, canceled
+            # (caller hung up before the callee answered)
+            max_retries_client_errors: nil,
+            retry_interval_secs: nil,
             # Required for sms scheduled events. The text to be sent to the end user.
             text: nil,
             request_options: {}
@@ -130,6 +150,8 @@ module Telnyx
                     Telnyx::AI::Assistants::ScheduledEventCreateParams::ConversationMetadata::Variants
                   ],
                 dynamic_variables: T::Hash[Symbol, String],
+                max_retries_client_errors: Integer,
+                retry_interval_secs: Integer,
                 text: String,
                 request_options: Telnyx::RequestOptions
               }

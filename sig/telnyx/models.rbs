@@ -911,8 +911,6 @@ module Telnyx
 
   class MobileVoiceConnectionUpdateParams = Telnyx::Models::MobileVoiceConnectionUpdateParams
 
-  class ModelMetadata = Telnyx::Models::ModelMetadata
-
   class MonthDetail = Telnyx::Models::MonthDetail
 
   class NetappsLocation = Telnyx::Models::NetappsLocation
@@ -1230,8 +1228,6 @@ module Telnyx
   class PublicInternetGatewayDeleteParams = Telnyx::Models::PublicInternetGatewayDeleteParams
 
   class PublicInternetGatewayListParams = Telnyx::Models::PublicInternetGatewayListParams
-
-  class PublicInternetGatewayRead = Telnyx::Models::PublicInternetGatewayRead
 
   class PublicInternetGatewayRetrieveParams = Telnyx::Models::PublicInternetGatewayRetrieveParams
 
@@ -1573,8 +1569,6 @@ module Telnyx
 
   module TransportProtocol = Telnyx::Models::TransportProtocol
 
-  class UacConnection = Telnyx::Models::UacConnection
-
   class UacConnectionCreateParams = Telnyx::Models::UacConnectionCreateParams
 
   class UacConnectionDeleteParams = Telnyx::Models::UacConnectionDeleteParams
@@ -1586,14 +1580,6 @@ module Telnyx
   module UacConnections = Telnyx::Models::UacConnections
 
   class UacConnectionUpdateParams = Telnyx::Models::UacConnectionUpdateParams
-
-  class UacExternalSettings = Telnyx::Models::UacExternalSettings
-
-  class UacInbound = Telnyx::Models::UacInbound
-
-  class UacInternalSettings = Telnyx::Models::UacInternalSettings
-
-  class UacOutbound = Telnyx::Models::UacOutbound
 
   module UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
 
@@ -1672,8 +1658,6 @@ module Telnyx
   class VerifyProfileUpdateTemplateParams = Telnyx::Models::VerifyProfileUpdateTemplateParams
 
   class VideoRegion = Telnyx::Models::VideoRegion
-
-  class VirtualCrossConnectCombined = Telnyx::Models::VirtualCrossConnectCombined
 
   class VirtualCrossConnectCreateParams = Telnyx::Models::VirtualCrossConnectCreateParams
 
@@ -1759,8 +1743,6 @@ module Telnyx
 
   class WireguardInterfaceListParams = Telnyx::Models::WireguardInterfaceListParams
 
-  class WireguardInterfaceRead = Telnyx::Models::WireguardInterfaceRead
-
   class WireguardInterfaceRetrieveParams = Telnyx::Models::WireguardInterfaceRetrieveParams
 
   class WireguardPeerCreateParams = Telnyx::Models::WireguardPeerCreateParams
@@ -1798,6 +1780,4 @@ module Telnyx
   class WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 
   module X402 = Telnyx::Models::X402
-
-  class XaiVoiceSettings = Telnyx::Models::XaiVoiceSettings
 end

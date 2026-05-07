@@ -52,13 +52,25 @@ module Telnyx
           #   @return [Hash{Symbol=>String}, nil]
           optional :dynamic_variables, Telnyx::Internal::Type::HashOf[String]
 
+          # @!attribute max_retries_client_errors
+          #   Configure number of retries on client errors: busy, no-answer, failed, canceled
+          #   (caller hung up before the callee answered)
+          #
+          #   @return [Integer, nil]
+          optional :max_retries_client_errors, Integer
+
+          # @!attribute retry_interval_secs
+          #
+          #   @return [Integer, nil]
+          optional :retry_interval_secs, Integer
+
           # @!attribute text
           #   Required for sms scheduled events. The text to be sent to the end user.
           #
           #   @return [String, nil]
           optional :text, String
 
-          # @!method initialize(assistant_id:, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, text: nil, request_options: {})
+          # @!method initialize(assistant_id:, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Assistants::ScheduledEventCreateParams} for more details.
           #
@@ -75,6 +87,10 @@ module Telnyx
           #   @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
           #
           #   @param dynamic_variables [Hash{Symbol=>String}] A map of dynamic variable names to values. These variables can be referenced in
+          #
+          #   @param max_retries_client_errors [Integer] Configure number of retries on client errors: busy, no-answer, failed, canceled
+          #
+          #   @param retry_interval_secs [Integer]
           #
           #   @param text [String] Required for sms scheduled events. The text to be sent to the end user.
           #
