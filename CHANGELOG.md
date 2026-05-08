@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.104.0 (2026-05-08)
+
+Full Changelog: [v5.103.1...v5.104.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.103.1...v5.104.0)
+
+### Features
+
+* AI-2289 add disable greeting interruption OpenAPI fields ([fcfa59d](https://github.com/team-telnyx/telnyx-ruby/commit/fcfa59d6de2187835003320ff333b0eef128e154))
+
 ## 5.103.1 (2026-05-07)
 
 Full Changelog: [v5.103.0...v5.103.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.103.0...v5.103.1)

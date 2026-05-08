@@ -12,6 +12,13 @@ module Telnyx
             )
           end
 
+        # When true, disables user interruptions while the assistant greeting is playing.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :disable_greeting_interruption
+
+        sig { params(disable_greeting_interruption: T::Boolean).void }
+        attr_writer :disable_greeting_interruption
+
         # Whether users can interrupt the assistant while it is speaking.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :enable
@@ -41,11 +48,14 @@ module Telnyx
         # `eager_eot_threshold`).
         sig do
           params(
+            disable_greeting_interruption: T::Boolean,
             enable: T::Boolean,
             start_speaking_plan: Telnyx::AI::StartSpeakingPlan::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          # When true, disables user interruptions while the assistant greeting is playing.
+          disable_greeting_interruption: nil,
           # Whether users can interrupt the assistant while it is speaking.
           enable: nil,
           # Controls when the assistant starts speaking after the user stops. These
@@ -59,6 +69,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              disable_greeting_interruption: T::Boolean,
               enable: T::Boolean,
               start_speaking_plan: Telnyx::AI::StartSpeakingPlan
             }
