@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.106.0 (2026-05-08)
+
+Full Changelog: [v5.105.0...v5.106.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.105.0...v5.106.0)
+
+### Features
+
+* AI-2294: document /ai/openai/models response and refresh LLM examples ([fe820e3](https://github.com/team-telnyx/telnyx-ruby/commit/fe820e34daed754d06fb23d9667442e154fe51c9))
+
 ## 5.105.0 (2026-05-08)
 
 Full Changelog: [v5.104.0...v5.105.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.104.0...v5.105.0)
