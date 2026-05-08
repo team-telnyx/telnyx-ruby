@@ -604,7 +604,10 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.calls.actions.transfer("call_control_id", to: "+18005550100 or sip:username@sip.telnyx.com")
+      @telnyx.calls.actions.transfer(
+        "call_control_id",
+        to: "+18005550100 or sip:username@sip.telnyx.com;secure=srtp"
+      )
 
     assert_pattern do
       response => Telnyx::Models::Calls::ActionTransferResponse

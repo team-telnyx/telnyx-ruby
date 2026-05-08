@@ -10,7 +10,7 @@ class Telnyx::Test::Resources::CallsTest < Telnyx::Test::ResourceTest
       @telnyx.calls.dial(
         connection_id: "7267xxxxxxxxxxxxxx",
         from: "+18005550101",
-        to: "+18005550100 or sip:username@sip.telnyx.com"
+        to: "+18005550100 or sip:username@sip.telnyx.com;secure=srtp"
       )
 
     assert_pattern do

@@ -22,7 +22,11 @@ module Telnyx
       attr_accessor :from
 
       # The DID or SIP URI to dial out to. Multiple DID or SIP URIs can be provided
-      # using an array of strings
+      # using an array of strings. For SIP URI destinations, append `;secure=true` or
+      # `;secure=srtp` to enable SRTP media encryption for that endpoint, or
+      # `;secure=dtls` to enable DTLS media encryption for that endpoint. If
+      # `media_encryption` is set to `SRTP` or `DTLS`, it takes precedence over any
+      # per-endpoint `secure` URI parameter.
       sig { returns(Telnyx::CallDialParams::To::Variants) }
       attr_accessor :to
 
@@ -201,7 +205,11 @@ module Telnyx
       sig { params(link_to: String).void }
       attr_writer :link_to
 
-      # Defines whether media should be encrypted on the call.
+      # Defines whether media should be encrypted on the call. For SIP URI destinations,
+      # media encryption can also be requested per endpoint with the `secure` URI
+      # parameter: `;secure=true` or `;secure=srtp` enables SRTP, and `;secure=dtls`
+      # enables DTLS. This parameter, when set to `SRTP` or `DTLS`, takes precedence
+      # over the per-endpoint `secure` value.
       sig do
         returns(T.nilable(Telnyx::CallDialParams::MediaEncryption::OrSymbol))
       end
@@ -711,7 +719,11 @@ module Telnyx
         # number). The number should be in +E164 format.
         from:,
         # The DID or SIP URI to dial out to. Multiple DID or SIP URIs can be provided
-        # using an array of strings
+        # using an array of strings. For SIP URI destinations, append `;secure=true` or
+        # `;secure=srtp` to enable SRTP media encryption for that endpoint, or
+        # `;secure=dtls` to enable DTLS media encryption for that endpoint. If
+        # `media_encryption` is set to `SRTP` or `DTLS`, it takes precedence over any
+        # per-endpoint `secure` URI parameter.
         to:,
         # Enables Answering Machine Detection. Telnyx offers Premium and Standard
         # detections. With Premium detection, when a call is answered, Telnyx runs
@@ -780,7 +792,11 @@ module Telnyx
         from_display_name: nil,
         # Use another call's control id for sharing the same call session id
         link_to: nil,
-        # Defines whether media should be encrypted on the call.
+        # Defines whether media should be encrypted on the call. For SIP URI destinations,
+        # media encryption can also be requested per endpoint with the `secure` URI
+        # parameter: `;secure=true` or `;secure=srtp` enables SRTP, and `;secure=dtls`
+        # enables DTLS. This parameter, when set to `SRTP` or `DTLS`, takes precedence
+        # over the per-endpoint `secure` value.
         media_encryption: nil,
         # The media_name of a file to be played back to the callee when the call is
         # answered. The media_name must point to a file previously uploaded to
@@ -990,7 +1006,11 @@ module Telnyx
       end
 
       # The DID or SIP URI to dial out to. Multiple DID or SIP URIs can be provided
-      # using an array of strings
+      # using an array of strings. For SIP URI destinations, append `;secure=true` or
+      # `;secure=srtp` to enable SRTP media encryption for that endpoint, or
+      # `;secure=dtls` to enable DTLS media encryption for that endpoint. If
+      # `media_encryption` is set to `SRTP` or `DTLS`, it takes precedence over any
+      # per-endpoint `secure` URI parameter.
       module To
         extend Telnyx::Internal::Type::Union
 
@@ -1637,7 +1657,11 @@ module Telnyx
         end
       end
 
-      # Defines whether media should be encrypted on the call.
+      # Defines whether media should be encrypted on the call. For SIP URI destinations,
+      # media encryption can also be requested per endpoint with the `secure` URI
+      # parameter: `;secure=true` or `;secure=srtp` enables SRTP, and `;secure=dtls`
+      # enables DTLS. This parameter, when set to `SRTP` or `DTLS`, takes precedence
+      # over the per-endpoint `secure` value.
       module MediaEncryption
         extend Telnyx::Internal::Type::Enum
 
