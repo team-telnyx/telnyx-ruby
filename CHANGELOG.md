@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.105.0 (2026-05-08)
+
+Full Changelog: [v5.104.0...v5.105.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.104.0...v5.105.0)
+
+### Features
+
+* Document per-endpoint media encryption for call control ([3423cf7](https://github.com/team-telnyx/telnyx-ruby/commit/3423cf75cd3f3102fced8d3e69c794159211f0b1))
+
 ## 5.104.0 (2026-05-08)
 
 Full Changelog: [v5.103.1...v5.104.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.103.1...v5.104.0)

@@ -75,7 +75,7 @@ module Telnyx
       #
       # @param link_to [String] Use another call's control id for sharing the same call session id
       #
-      # @param media_encryption [Symbol, Telnyx::Models::CallDialParams::MediaEncryption] Defines whether media should be encrypted on the call.
+      # @param media_encryption [Symbol, Telnyx::Models::CallDialParams::MediaEncryption] Defines whether media should be encrypted on the call. For SIP URI destinations,
       #
       # @param media_name [String] The media_name of a file to be played back to the callee when the call is answer
       #
