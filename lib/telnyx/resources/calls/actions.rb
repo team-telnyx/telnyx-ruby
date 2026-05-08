@@ -1625,7 +1625,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param to [String] The DID or SIP URI to dial out to.
+        # @param to [String] The DID or SIP URI to dial out to. For SIP URI destinations, append `;secure=tru
         #
         # @param answering_machine_detection [Symbol, Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetection] Enables Answering Machine Detection. When a call is answered, Telnyx runs real-t
         #
@@ -1645,7 +1645,7 @@ module Telnyx
         #
         # @param from_display_name [String] The `from_display_name` string to be used as the caller id name (SIP From Displa
         #
-        # @param media_encryption [Symbol, Telnyx::Models::Calls::ActionTransferParams::MediaEncryption] Defines whether media should be encrypted on the new call leg.
+        # @param media_encryption [Symbol, Telnyx::Models::Calls::ActionTransferParams::MediaEncryption] Defines whether media should be encrypted on the new call leg. For SIP URI desti
         #
         # @param media_name [String] The media_name of a file to be played back when the transfer destination answers
         #

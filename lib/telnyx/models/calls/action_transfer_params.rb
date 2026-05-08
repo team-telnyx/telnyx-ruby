@@ -14,7 +14,11 @@ module Telnyx
         required :call_control_id, String
 
         # @!attribute to
-        #   The DID or SIP URI to dial out to.
+        #   The DID or SIP URI to dial out to. For SIP URI destinations, append
+        #   `;secure=true` or `;secure=srtp` to enable SRTP media encryption for that
+        #   endpoint, or `;secure=dtls` to enable DTLS media encryption for that endpoint.
+        #   If `media_encryption` is set to `SRTP` or `DTLS`, it takes precedence over any
+        #   per-endpoint `secure` URI parameter.
         #
         #   @return [String]
         required :to, String
@@ -95,7 +99,11 @@ module Telnyx
         optional :from_display_name, String
 
         # @!attribute media_encryption
-        #   Defines whether media should be encrypted on the new call leg.
+        #   Defines whether media should be encrypted on the new call leg. For SIP URI
+        #   destinations, media encryption can also be requested per endpoint with the
+        #   `secure` URI parameter: `;secure=true` or `;secure=srtp` enables SRTP, and
+        #   `;secure=dtls` enables DTLS. This parameter, when set to `SRTP` or `DTLS`, takes
+        #   precedence over the per-endpoint `secure` value.
         #
         #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::MediaEncryption, nil]
         optional :media_encryption, enum: -> { Telnyx::Calls::ActionTransferParams::MediaEncryption }
@@ -306,7 +314,7 @@ module Telnyx
         #
         #   @param call_control_id [String]
         #
-        #   @param to [String] The DID or SIP URI to dial out to.
+        #   @param to [String] The DID or SIP URI to dial out to. For SIP URI destinations, append `;secure=tru
         #
         #   @param answering_machine_detection [Symbol, Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetection] Enables Answering Machine Detection. When a call is answered, Telnyx runs real-t
         #
@@ -326,7 +334,7 @@ module Telnyx
         #
         #   @param from_display_name [String] The `from_display_name` string to be used as the caller id name (SIP From Displa
         #
-        #   @param media_encryption [Symbol, Telnyx::Models::Calls::ActionTransferParams::MediaEncryption] Defines whether media should be encrypted on the new call leg.
+        #   @param media_encryption [Symbol, Telnyx::Models::Calls::ActionTransferParams::MediaEncryption] Defines whether media should be encrypted on the new call leg. For SIP URI desti
         #
         #   @param media_name [String] The media_name of a file to be played back when the transfer destination answers
         #
@@ -501,7 +509,11 @@ module Telnyx
           #   @param total_analysis_time_millis [Integer] Maximum timeout threshold for overall detection.
         end
 
-        # Defines whether media should be encrypted on the new call leg.
+        # Defines whether media should be encrypted on the new call leg. For SIP URI
+        # destinations, media encryption can also be requested per endpoint with the
+        # `secure` URI parameter: `;secure=true` or `;secure=srtp` enables SRTP, and
+        # `;secure=dtls` enables DTLS. This parameter, when set to `SRTP` or `DTLS`, takes
+        # precedence over the per-endpoint `secure` value.
         module MediaEncryption
           extend Telnyx::Internal::Type::Enum
 
