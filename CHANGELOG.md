@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.107.0 (2026-05-11)
+
+Full Changelog: [v5.106.0...v5.107.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.106.0...v5.107.0)
+
+### Features
+
+* Responses endpoint ([a65d524](https://github.com/team-telnyx/telnyx-ruby/commit/a65d524c30c758a87dadc4009ec1e999e439590f))
+
 ## 5.106.0 (2026-05-08)
 
 Full Changelog: [v5.105.0...v5.106.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.105.0...v5.106.0)
