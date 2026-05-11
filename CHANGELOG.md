@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.110.0 (2026-05-11)
+
+Full Changelog: [v5.109.0...v5.110.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.109.0...v5.110.0)
+
+### Features
+
+* Document OpenAI responses conversation flow ([6f06f24](https://github.com/team-telnyx/telnyx-ruby/commit/6f06f243b406719fcf17b1b3339b6f74b54854fb))
+
 ## 5.109.0 (2026-05-11)
 
 Full Changelog: [v5.108.0...v5.109.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.108.0...v5.109.0)
