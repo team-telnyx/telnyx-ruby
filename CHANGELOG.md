@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.109.0 (2026-05-11)
+
+Full Changelog: [v5.108.0...v5.109.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.108.0...v5.109.0)
+
+### Features
+
+* AI-2312: document currency and unit in /models pricing schema ([b430e37](https://github.com/team-telnyx/telnyx-ruby/commit/b430e37b18b56c45ff7ac926e92b569c96800110))
+
 ## 5.108.0 (2026-05-11)
 
 Full Changelog: [v5.107.0...v5.108.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.107.0...v5.108.0)
