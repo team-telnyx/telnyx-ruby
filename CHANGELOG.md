@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.108.0 (2026-05-11)
+
+Full Changelog: [v5.107.0...v5.108.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.107.0...v5.108.0)
+
+### Features
+
+* Clean up OpenAI responses API docs ([6070668](https://github.com/team-telnyx/telnyx-ruby/commit/6070668c896482ef9c510f7f6c9f94da3556757b))
+* Fix OpenAI chat API reference links ([19300e6](https://github.com/team-telnyx/telnyx-ruby/commit/19300e65a7a6c3df2eb744828217479fd76a89f5))
+
 ## 5.107.0 (2026-05-11)
 
 Full Changelog: [v5.106.0...v5.107.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.106.0...v5.107.0)
