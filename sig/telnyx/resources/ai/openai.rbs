@@ -6,6 +6,11 @@ module Telnyx
 
         attr_reader chat: Telnyx::Resources::AI::OpenAI::Chat
 
+        def create_response: (
+          body: ::Hash[Symbol, top],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::openai_create_response_response
+
         def list_models: (
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::OpenAIListModelsResponse
