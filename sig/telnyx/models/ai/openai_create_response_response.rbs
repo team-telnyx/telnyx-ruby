@@ -1,0 +1,9 @@
+module Telnyx
+  module Models
+    module AI
+      type openai_create_response_response = ::Hash[Symbol, top]
+
+      OpenAICreateResponseResponse: Telnyx::Internal::Type::Converter
+    end
+  end
+end

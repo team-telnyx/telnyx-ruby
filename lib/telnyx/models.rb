@@ -83,6 +83,8 @@ module Telnyx
 
   AI = Telnyx::Models::AI
 
+  AICreateResponseParams = Telnyx::Models::AICreateResponseParams
+
   AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
 
   AISummarizeParams = Telnyx::Models::AISummarizeParams

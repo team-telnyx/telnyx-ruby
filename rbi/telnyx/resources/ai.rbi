@@ -46,6 +46,20 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Tools) }
       attr_reader :tools
 
+      # Chat with a language model. This endpoint is consistent with the
+      # [OpenAI Chat Completions API](https://developers.openai.com/api/reference/resources/responses)
+      # and may be used with the OpenAI JS or Python SDK. Response id parameter is not
+      # supported at the moment. Use 'conversation' parameter to leverage persistent
+      # conversations feature.
+      sig do
+        params(
+          body: T::Hash[Symbol, T.anything],
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(T::Hash[Symbol, T.anything])
+      end
+      def create_response(body:, request_options: {})
+      end
+
       # **Deprecated**: Use `GET /v2/ai/openai/models` instead.
       #
       # Returns the same `ModelsResponse` payload as the OpenAI-compatible endpoint —
