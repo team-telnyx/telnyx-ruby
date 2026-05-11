@@ -112,9 +112,11 @@ module Telnyx
       optional :parameters_str, String, nil?: true
 
       # @!attribute pricing
-      #   Mapping of token kind to price in USD per 1M tokens, as a string. Typical keys
-      #   are `input` and `output`; embedding models expose `embedding`. Empty object when
-      #   pricing is not yet published for the model.
+      #   Mapping of token kind to price, as strings to preserve precision. Typical keys
+      #   are `prompt`, `cached_prompt`, and `completion`. When pricing is available the
+      #   block also includes `currency` (ISO 4217 code matching the account's configured
+      #   billing currency) and `unit` (the denomination the prices are quoted in,
+      #   currently always `1M_tokens` for token-priced models).
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :pricing, Telnyx::Internal::Type::HashOf[String]
@@ -182,7 +184,7 @@ module Telnyx
       #
       #   @param parameters_str [String, nil] Human-readable parameter count, e.g. `1.0T`, `753.9B`, `8B`.
       #
-      #   @param pricing [Hash{Symbol=>String}] Mapping of token kind to price in USD per 1M tokens, as a string. Typical keys a
+      #   @param pricing [Hash{Symbol=>String}] Mapping of token kind to price, as strings to preserve precision. Typical keys a
       #
       #   @param recommended_for_assistants [Boolean] Whether Telnyx currently recommends this model as the LLM powering a Telnyx AI A
       #

@@ -91,9 +91,11 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :parameters_str
 
-      # Mapping of token kind to price in USD per 1M tokens, as a string. Typical keys
-      # are `input` and `output`; embedding models expose `embedding`. Empty object when
-      # pricing is not yet published for the model.
+      # Mapping of token kind to price, as strings to preserve precision. Typical keys
+      # are `prompt`, `cached_prompt`, and `completion`. When pricing is available the
+      # block also includes `currency` (ISO 4217 code matching the account's configured
+      # billing currency) and `unit` (the denomination the prices are quoted in,
+      # currently always `1M_tokens` for token-priced models).
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :pricing
 
@@ -198,9 +200,11 @@ module Telnyx
         object: nil,
         # Human-readable parameter count, e.g. `1.0T`, `753.9B`, `8B`.
         parameters_str: nil,
-        # Mapping of token kind to price in USD per 1M tokens, as a string. Typical keys
-        # are `input` and `output`; embedding models expose `embedding`. Empty object when
-        # pricing is not yet published for the model.
+        # Mapping of token kind to price, as strings to preserve precision. Typical keys
+        # are `prompt`, `cached_prompt`, and `completion`. When pricing is available the
+        # block also includes `currency` (ISO 4217 code matching the account's configured
+        # billing currency) and `unit` (the denomination the prices are quoted in,
+        # currently always `1M_tokens` for token-priced models).
         pricing: nil,
         # Whether Telnyx currently recommends this model as the LLM powering a Telnyx AI
         # Assistant.
