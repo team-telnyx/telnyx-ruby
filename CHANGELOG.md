@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.111.0 (2026-05-13)
+
+Full Changelog: [v5.110.1...v5.111.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.110.1...v5.111.0)
+
+### Features
+
+* Document AI call status callback overrides ([2458580](https://github.com/team-telnyx/telnyx-ruby/commit/2458580b9c24eb6dcaae8753720cf00f1891abc8))
+
 ## 5.110.1 (2026-05-13)
 
 Full Changelog: [v5.110.0...v5.110.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.110.0...v5.110.1)
