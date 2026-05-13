@@ -87,14 +87,15 @@ module Telnyx
       sig { params(caller_id: String).void }
       attr_writer :caller_id
 
-      # URL destination for Telnyx to send conversation callback events to.
+      # URL destination for Telnyx to send AI conversation callback events for this
+      # call. Events include `conversation_created` and `conversation_ended`.
       sig { returns(T.nilable(String)) }
       attr_reader :conversation_callback
 
       sig { params(conversation_callback: String).void }
       attr_writer :conversation_callback
 
-      # HTTP request type used for `ConversationCallback`.
+      # HTTP request type used for `ConversationCallback` and `ConversationCallbacks`.
       sig do
         returns(
           T.nilable(
@@ -112,7 +113,8 @@ module Telnyx
       end
       attr_writer :conversation_callback_method
 
-      # An array of URL destinations for conversation callback events.
+      # Array of URL destinations for AI conversation callback events for this call.
+      # Events include `conversation_created` and `conversation_ended`.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :conversation_callbacks
 
@@ -335,23 +337,29 @@ module Telnyx
       end
       attr_writer :sip_region
 
-      # URL destination for Telnyx to send status callback events to for the call.
+      # URL destination for Telnyx to send status callback events for this AI call. When
+      # provided, this per-call value overrides the status callback URL configured on
+      # the TeXML application/connection.
       sig { returns(T.nilable(String)) }
       attr_reader :status_callback
 
       sig { params(status_callback: String).void }
       attr_writer :status_callback
 
-      # The call events for which Telnyx should send a webhook. Multiple events can be
-      # defined when separated by a space. Valid values: initiated, ringing, answered,
-      # completed.
+      # The status callback events for which Telnyx should send a webhook for this AI
+      # call. Multiple events can be defined when separated by a space. Valid values:
+      # initiated, ringing, answered, completed, no-answer, busy, canceled, failed,
+      # analyzed. When provided, this per-call value overrides the status callback
+      # events configured on the TeXML application/connection.
       sig { returns(T.nilable(String)) }
       attr_reader :status_callback_event
 
       sig { params(status_callback_event: String).void }
       attr_writer :status_callback_event
 
-      # HTTP request type used for `StatusCallback`.
+      # HTTP request type used for `StatusCallback` and `StatusCallbacks` for this AI
+      # call. When provided, this per-call value overrides the status callback method
+      # configured on the TeXML application/connection.
       sig do
         returns(
           T.nilable(
@@ -369,8 +377,9 @@ module Telnyx
       end
       attr_writer :status_callback_method
 
-      # An array of URL destinations for Telnyx to send status callback events to for
-      # the call.
+      # Array of URL destinations for Telnyx to send status callback events for this AI
+      # call. When provided, these per-call values override the status callback URL
+      # configured on the TeXML application/connection.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :status_callbacks
 
@@ -486,11 +495,13 @@ module Telnyx
         # containing only letters, numbers, spaces, and `-_~!.+` special characters. If
         # omitted, the display name will be the same as the number in the `From` field.
         caller_id: nil,
-        # URL destination for Telnyx to send conversation callback events to.
+        # URL destination for Telnyx to send AI conversation callback events for this
+        # call. Events include `conversation_created` and `conversation_ended`.
         conversation_callback: nil,
-        # HTTP request type used for `ConversationCallback`.
+        # HTTP request type used for `ConversationCallback` and `ConversationCallbacks`.
         conversation_callback_method: nil,
-        # An array of URL destinations for conversation callback events.
+        # Array of URL destinations for AI conversation callback events for this call.
+        # Events include `conversation_created` and `conversation_ended`.
         conversation_callbacks: nil,
         # Custom HTTP headers to be sent with the call. Each header should be an object
         # with 'name' and 'value' properties.
@@ -540,16 +551,23 @@ module Telnyx
         sip_auth_username: nil,
         # Defines the SIP region to be used for the call.
         sip_region: nil,
-        # URL destination for Telnyx to send status callback events to for the call.
+        # URL destination for Telnyx to send status callback events for this AI call. When
+        # provided, this per-call value overrides the status callback URL configured on
+        # the TeXML application/connection.
         status_callback: nil,
-        # The call events for which Telnyx should send a webhook. Multiple events can be
-        # defined when separated by a space. Valid values: initiated, ringing, answered,
-        # completed.
+        # The status callback events for which Telnyx should send a webhook for this AI
+        # call. Multiple events can be defined when separated by a space. Valid values:
+        # initiated, ringing, answered, completed, no-answer, busy, canceled, failed,
+        # analyzed. When provided, this per-call value overrides the status callback
+        # events configured on the TeXML application/connection.
         status_callback_event: nil,
-        # HTTP request type used for `StatusCallback`.
+        # HTTP request type used for `StatusCallback` and `StatusCallbacks` for this AI
+        # call. When provided, this per-call value overrides the status callback method
+        # configured on the TeXML application/connection.
         status_callback_method: nil,
-        # An array of URL destinations for Telnyx to send status callback events to for
-        # the call.
+        # Array of URL destinations for Telnyx to send status callback events for this AI
+        # call. When provided, these per-call values override the status callback URL
+        # configured on the TeXML application/connection.
         status_callbacks: nil,
         # The maximum duration of the call in seconds. The minimum value is 30 and the
         # maximum value is 14400 (4 hours). Default is 14400 seconds.
@@ -659,7 +677,7 @@ module Telnyx
         end
       end
 
-      # HTTP request type used for `ConversationCallback`.
+      # HTTP request type used for `ConversationCallback` and `ConversationCallbacks`.
       module ConversationCallbackMethod
         extend Telnyx::Internal::Type::Enum
 
@@ -940,7 +958,9 @@ module Telnyx
         end
       end
 
-      # HTTP request type used for `StatusCallback`.
+      # HTTP request type used for `StatusCallback` and `StatusCallbacks` for this AI
+      # call. When provided, this per-call value overrides the status callback method
+      # configured on the TeXML application/connection.
       module StatusCallbackMethod
         extend Telnyx::Internal::Type::Enum
 
