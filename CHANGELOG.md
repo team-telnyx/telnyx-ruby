@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.110.1 (2026-05-13)
+
+Full Changelog: [v5.110.0...v5.110.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.110.0...v5.110.1)
+
+### Bug Fixes
+
+* **client:** elide content type header on requests without body ([0bdbd7a](https://github.com/team-telnyx/telnyx-ruby/commit/0bdbd7a9cdc50d6d33c22c051a044d436f1b823c))
+
 ## 5.110.0 (2026-05-11)
 
 Full Changelog: [v5.109.0...v5.110.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.109.0...v5.110.0)
