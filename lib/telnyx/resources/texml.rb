@@ -16,6 +16,17 @@ module Telnyx
       # client state, and calls the dial API. The Twiml, Texml, and Url parameters are
       # not allowed and will result in a 422 error.
       #
+      # **Expected callback events:**
+      #
+      # Status callbacks: `initiated`, `ringing`, `answered`, one terminal status
+      # (`completed`, `no-answer`, `busy`, `canceled`, or `failed`), then `analyzed`
+      # after post-call processing completes.
+      #
+      # Conversation callbacks: `conversation_created` and `conversation_ended`.
+      #
+      # Recording, AMD, transcription, and deepfake detection callbacks are only sent
+      # when those features are enabled.
+      #
       # @overload initiate_ai_call(connection_id, ai_assistant_id:, from:, to:, ai_assistant_dynamic_variables: nil, ai_assistant_version: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, conversation_callback: nil, conversation_callback_method: nil, conversation_callbacks: nil, custom_headers: nil, detection_mode: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, passports: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, status_callbacks: nil, time_limit: nil, timeout_seconds: nil, trim: nil, request_options: {})
       #
       # @param connection_id [String] The ID of the TeXML connection to use for the call.
@@ -38,11 +49,11 @@ module Telnyx
       #
       # @param caller_id [String] To be used as the caller id name (SIP From Display Name) presented to the destin
       #
-      # @param conversation_callback [String] URL destination for Telnyx to send conversation callback events to.
+      # @param conversation_callback [String] URL destination for Telnyx to send AI conversation callback events for this call
       #
-      # @param conversation_callback_method [Symbol, Telnyx::Models::TexmlInitiateAICallParams::ConversationCallbackMethod] HTTP request type used for `ConversationCallback`.
+      # @param conversation_callback_method [Symbol, Telnyx::Models::TexmlInitiateAICallParams::ConversationCallbackMethod] HTTP request type used for `ConversationCallback` and `ConversationCallbacks`.
       #
-      # @param conversation_callbacks [Array<String>] An array of URL destinations for conversation callback events.
+      # @param conversation_callbacks [Array<String>] Array of URL destinations for AI conversation callback events for this call. Eve
       #
       # @param custom_headers [Array<Telnyx::Models::TexmlInitiateAICallParams::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
       #
@@ -84,13 +95,13 @@ module Telnyx
       #
       # @param sip_region [Symbol, Telnyx::Models::TexmlInitiateAICallParams::SipRegion] Defines the SIP region to be used for the call.
       #
-      # @param status_callback [String] URL destination for Telnyx to send status callback events to for the call.
+      # @param status_callback [String] URL destination for Telnyx to send status callback events for this AI call. When
       #
-      # @param status_callback_event [String] The call events for which Telnyx should send a webhook. Multiple events can be d
+      # @param status_callback_event [String] The status callback events for which Telnyx should send a webhook for this AI ca
       #
-      # @param status_callback_method [Symbol, Telnyx::Models::TexmlInitiateAICallParams::StatusCallbackMethod] HTTP request type used for `StatusCallback`.
+      # @param status_callback_method [Symbol, Telnyx::Models::TexmlInitiateAICallParams::StatusCallbackMethod] HTTP request type used for `StatusCallback` and `StatusCallbacks` for this AI ca
       #
-      # @param status_callbacks [Array<String>] An array of URL destinations for Telnyx to send status callback events to for th
+      # @param status_callbacks [Array<String>] Array of URL destinations for Telnyx to send status callback events for this AI
       #
       # @param time_limit [Integer] The maximum duration of the call in seconds. The minimum value is 30 and the max
       #

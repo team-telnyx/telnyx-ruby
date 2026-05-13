@@ -12,6 +12,17 @@ module Telnyx
       # an internal TeXML with an AI Assistant configuration, encodes instructions into
       # client state, and calls the dial API. The Twiml, Texml, and Url parameters are
       # not allowed and will result in a 422 error.
+      #
+      # **Expected callback events:**
+      #
+      # Status callbacks: `initiated`, `ringing`, `answered`, one terminal status
+      # (`completed`, `no-answer`, `busy`, `canceled`, or `failed`), then `analyzed`
+      # after post-call processing completes.
+      #
+      # Conversation callbacks: `conversation_created` and `conversation_ended`.
+      #
+      # Recording, AMD, transcription, and deepfake detection callbacks are only sent
+      # when those features are enabled.
       sig do
         params(
           connection_id: String,
@@ -93,11 +104,13 @@ module Telnyx
         # containing only letters, numbers, spaces, and `-_~!.+` special characters. If
         # omitted, the display name will be the same as the number in the `From` field.
         caller_id: nil,
-        # URL destination for Telnyx to send conversation callback events to.
+        # URL destination for Telnyx to send AI conversation callback events for this
+        # call. Events include `conversation_created` and `conversation_ended`.
         conversation_callback: nil,
-        # HTTP request type used for `ConversationCallback`.
+        # HTTP request type used for `ConversationCallback` and `ConversationCallbacks`.
         conversation_callback_method: nil,
-        # An array of URL destinations for conversation callback events.
+        # Array of URL destinations for AI conversation callback events for this call.
+        # Events include `conversation_created` and `conversation_ended`.
         conversation_callbacks: nil,
         # Custom HTTP headers to be sent with the call. Each header should be an object
         # with 'name' and 'value' properties.
@@ -147,16 +160,23 @@ module Telnyx
         sip_auth_username: nil,
         # Defines the SIP region to be used for the call.
         sip_region: nil,
-        # URL destination for Telnyx to send status callback events to for the call.
+        # URL destination for Telnyx to send status callback events for this AI call. When
+        # provided, this per-call value overrides the status callback URL configured on
+        # the TeXML application/connection.
         status_callback: nil,
-        # The call events for which Telnyx should send a webhook. Multiple events can be
-        # defined when separated by a space. Valid values: initiated, ringing, answered,
-        # completed.
+        # The status callback events for which Telnyx should send a webhook for this AI
+        # call. Multiple events can be defined when separated by a space. Valid values:
+        # initiated, ringing, answered, completed, no-answer, busy, canceled, failed,
+        # analyzed. When provided, this per-call value overrides the status callback
+        # events configured on the TeXML application/connection.
         status_callback_event: nil,
-        # HTTP request type used for `StatusCallback`.
+        # HTTP request type used for `StatusCallback` and `StatusCallbacks` for this AI
+        # call. When provided, this per-call value overrides the status callback method
+        # configured on the TeXML application/connection.
         status_callback_method: nil,
-        # An array of URL destinations for Telnyx to send status callback events to for
-        # the call.
+        # Array of URL destinations for Telnyx to send status callback events for this AI
+        # call. When provided, these per-call values override the status callback URL
+        # configured on the TeXML application/connection.
         status_callbacks: nil,
         # The maximum duration of the call in seconds. The minimum value is 30 and the
         # maximum value is 14400 (4 hours). Default is 14400 seconds.
