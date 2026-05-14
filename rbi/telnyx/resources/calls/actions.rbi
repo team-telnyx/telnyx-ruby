@@ -451,7 +451,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -662,7 +662,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -1075,7 +1075,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1200,7 +1200,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1237,6 +1237,130 @@ module Telnyx
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
           # ignore this field.
           transcription: nil,
+          # The voice to be used by the voice assistant. Currently we support ElevenLabs,
+          # Telnyx and AWS voices.
+          #
+          # **Supported Providers:**
+          #
+          # - **AWS:** Use `AWS.Polly.<VoiceId>` (e.g., `AWS.Polly.Joanna`). For neural
+          #   voices, which provide more realistic, human-like speech, append `-Neural` to
+          #   the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
+          #   [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
+          #   for compatibility.
+          # - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
+          #   Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
+          #   Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
+          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
+          # - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
+          #   `ElevenLabs.BaseModel.John`). The `ModelId` part is optional. To use
+          #   ElevenLabs, you must provide your ElevenLabs API key as an integration secret
+          #   under `"voice_settings": {"api_key_ref": "<secret_id>"}`. See
+          #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
+          #   for details. Check
+          #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
+          # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
+          # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
+          #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
+          #   `ara`, `rex`, `sal`, `leo`.
+          voice: nil,
+          # The settings associated with the voice selected
+          voice_settings: nil,
+          request_options: {}
+        )
+        end
+
+        # Start a Conversation Relay session on an active call. Conversation Relay
+        # connects the call audio to your WebSocket so your application can exchange
+        # realtime messages with the caller while Telnyx handles speech recognition and
+        # text-to-speech. Only one AI Assistant or Conversation Relay session can be
+        # active on a call at a time.
+        #
+        # **Expected Webhooks:**
+        #
+        # - `conversation_relay.disconnected`
+        sig do
+          params(
+            call_control_id: String,
+            conversation_relay_url: String,
+            assistant:
+              Telnyx::Calls::ActionStartConversationRelayParams::Assistant::OrHash,
+            client_state: String,
+            command_id: String,
+            conversation_relay_dtmf_detection: T::Boolean,
+            greeting: String,
+            interruption_settings:
+              Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings::OrHash,
+            language: String,
+            languages:
+              T::Array[
+                Telnyx::Calls::ActionStartConversationRelayParams::Language::OrHash
+              ],
+            participants:
+              T::Array[
+                Telnyx::Calls::ActionStartConversationRelayParams::Participant::OrHash
+              ],
+            send_message_history_updates: T::Boolean,
+            transcription:
+              Telnyx::Calls::ActionStartConversationRelayParams::Transcription::OrHash,
+            transcription_language: String,
+            tts_language: String,
+            user_response_timeout_ms: Integer,
+            voice: String,
+            voice_settings:
+              T.any(
+                Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
+                Telnyx::Calls::TelnyxVoiceSettings::OrHash,
+                Telnyx::Calls::AwsVoiceSettings::OrHash,
+                Telnyx::AzureVoiceSettings::OrHash,
+                Telnyx::RimeVoiceSettings::OrHash,
+                Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai::OrHash
+              ),
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Calls::ActionStartConversationRelayResponse)
+        end
+        def start_conversation_relay(
+          # Unique identifier and token for controlling the call
+          call_control_id,
+          # WebSocket URL for your Conversation Relay server. Must start with `ws://` or
+          # `wss://`.
+          conversation_relay_url:,
+          # Custom parameters for the Conversation Relay session. Pass key-value data as
+          # `assistant.dynamic_variables` to make it available to the relay session.
+          assistant: nil,
+          # Use this field to add state to subsequent webhooks. It must be a valid Base-64
+          # encoded string.
+          client_state: nil,
+          # Use this field to avoid duplicate commands. Telnyx will ignore any command with
+          # the same `command_id` for the same `call_control_id`.
+          command_id: nil,
+          # Enable DTMF detection for the relay session.
+          conversation_relay_dtmf_detection: nil,
+          # Text played when the relay session starts.
+          greeting: nil,
+          # Settings for handling caller interruptions during Conversation Relay speech.
+          interruption_settings: nil,
+          # Default language for the relay session. This value is used for both
+          # text-to-speech and speech recognition unless `tts_language` or
+          # `transcription_language` are provided.
+          language: nil,
+          # Language-specific TTS and transcription settings. Use this when the relay
+          # session needs per-language provider, voice, or speech model configuration.
+          languages: nil,
+          # Participants to add to the conversation.
+          participants: nil,
+          # When true, sends message history update webhooks.
+          send_message_history_updates: nil,
+          # Speech-to-text settings for Conversation Relay.
+          transcription: nil,
+          # Language to use for speech recognition. Overrides `language` for transcription
+          # when provided.
+          transcription_language: nil,
+          # Language to use for text-to-speech. Overrides `language` for TTS when provided.
+          tts_language: nil,
+          # Time in milliseconds to wait for caller input before timing out.
+          user_response_timeout_ms: nil,
           # The voice to be used by the voice assistant. Currently we support ElevenLabs,
           # Telnyx and AWS voices.
           #
@@ -1662,8 +1786,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -1708,6 +1832,28 @@ module Telnyx
           call_control_id,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
+          client_state: nil,
+          # Use this field to avoid duplicate commands. Telnyx will ignore any command with
+          # the same `command_id` for the same `call_control_id`.
+          command_id: nil,
+          request_options: {}
+        )
+        end
+
+        # Stop the active Conversation Relay session on a call.
+        sig do
+          params(
+            call_control_id: String,
+            client_state: String,
+            command_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Calls::ActionStopConversationRelayResponse)
+        end
+        def stop_conversation_relay(
+          # Unique identifier and token for controlling the call
+          call_control_id,
+          # Use this field to add state to subsequent webhooks. It must be a valid Base-64
+          # encoded string.
           client_state: nil,
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.

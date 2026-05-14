@@ -43,11 +43,13 @@ module Telnyx
             fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
-            integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
+            integrations:
+              T::Array[Telnyx::AI::AssistantCreateParams::Integration::OrHash],
             interruption_settings:
-              Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
+              Telnyx::AI::AssistantCreateParams::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
-            mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantCreateParams::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
@@ -203,11 +205,13 @@ module Telnyx
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             instructions: String,
-            integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
+            integrations:
+              T::Array[Telnyx::AI::AssistantUpdateParams::Integration::OrHash],
             interruption_settings:
-              Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
+              Telnyx::AI::AssistantUpdateParams::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
-            mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantUpdateParams::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             name: String,

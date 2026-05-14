@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.112.0 (2026-05-14)
+
+Full Changelog: [v5.111.0...v5.112.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.111.0...v5.112.0)
+
+### Features
+
+* Document Conversation Relay ([dc8eb44](https://github.com/team-telnyx/telnyx-ruby/commit/dc8eb44a33fec593d3a651cbe2553ded97e0e602))
+
 ## 5.111.0 (2026-05-13)
 
 Full Changelog: [v5.110.1...v5.111.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.110.1...v5.111.0)

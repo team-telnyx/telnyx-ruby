@@ -635,12 +635,12 @@ module Telnyx
         module SampleRate
           extend ::Telnyx::Internal::Type::Enum
 
-          RATE_8000: 8000
-          RATE_16000: 16000
-          RATE_22050: 22050
-          RATE_24000: 24000
-          RATE_44100: 44100
-          RATE_48000: 48000
+          SAMPLE_RATE_8000: 8000
+          SAMPLE_RATE_16000: 16000
+          SAMPLE_RATE_22050: 22050
+          SAMPLE_RATE_24000: 24000
+          SAMPLE_RATE_44100: 44100
+          SAMPLE_RATE_48000: 48000
 
           def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateParams::Xai::sample_rate]
         end
