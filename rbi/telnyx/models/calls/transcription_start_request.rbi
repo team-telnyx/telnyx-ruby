@@ -54,8 +54,9 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig,
                 Telnyx::Calls::TranscriptionEngineAzureConfig,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI,
+                Telnyx::Calls::TranscriptionEngineXaiConfig,
+                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
@@ -73,8 +74,9 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
+                Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -104,8 +106,9 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
+                Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -144,8 +147,9 @@ module Telnyx
                   Telnyx::Calls::TranscriptionEngineGoogleConfig,
                   Telnyx::Calls::TranscriptionEngineTelnyxConfig,
                   Telnyx::Calls::TranscriptionEngineAzureConfig,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI,
+                  Telnyx::Calls::TranscriptionEngineXaiConfig,
+                  Telnyx::Calls::TranscriptionEngineAssemblyaiConfig,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
                   Telnyx::Calls::TranscriptionEngineAConfig,
                   Telnyx::Calls::TranscriptionEngineBConfig,
                   Telnyx::Calls::DeepgramNova2Config,
@@ -202,6 +206,11 @@ module Telnyx
               :AssemblyAI,
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
             )
+          SPEECHMATICS =
+            T.let(
+              :Speechmatics,
+              Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
+            )
           A =
             T.let(
               :A,
@@ -233,8 +242,9 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig,
                 Telnyx::Calls::TranscriptionEngineAzureConfig,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI,
+                Telnyx::Calls::TranscriptionEngineXaiConfig,
+                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
@@ -242,11 +252,11 @@ module Telnyx
               )
             end
 
-          class XAI < Telnyx::Internal::Type::BaseModel
+          class Speechmatics < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -263,7 +273,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::OrSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol
                 )
               )
             end
@@ -272,16 +282,16 @@ module Telnyx
             sig do
               params(
                 language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::OrSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol
               ).void
             end
             attr_writer :language
 
-            # Engine identifier for xAI transcription service
+            # Engine identifier for Speechmatics transcription service
             sig do
               returns(
                 T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionEngine::OrSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol
                 )
               )
             end
@@ -290,7 +300,7 @@ module Telnyx
             sig do
               params(
                 transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionEngine::OrSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol
               ).void
             end
             attr_writer :transcription_engine
@@ -299,7 +309,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionModel::OrSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
                 )
               )
             end
@@ -308,7 +318,7 @@ module Telnyx
             sig do
               params(
                 transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionModel::OrSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
               ).void
             end
             attr_writer :transcription_model
@@ -317,11 +327,11 @@ module Telnyx
               params(
                 interim_results: T::Boolean,
                 language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::OrSymbol,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol,
                 transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionEngine::OrSymbol,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol,
                 transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionModel::OrSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -330,7 +340,7 @@ module Telnyx
               interim_results: nil,
               # Language to use for speech recognition
               language: nil,
-              # Engine identifier for xAI transcription service
+              # Engine identifier for Speechmatics transcription service
               transcription_engine: nil,
               # The model to use for transcription.
               transcription_model: nil
@@ -342,11 +352,11 @@ module Telnyx
                 {
                   interim_results: T::Boolean,
                   language:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::OrSymbol,
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol,
                   transcription_engine:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionEngine::OrSymbol,
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol,
                   transcription_model:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionModel::OrSymbol
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
                 }
               )
             end
@@ -361,141 +371,101 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              AR =
-                T.let(
-                  :ar,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
-              CS =
-                T.let(
-                  :cs,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
-              DA =
-                T.let(
-                  :da,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
-              DE =
-                T.let(
-                  :de,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
               EN =
                 T.let(
                   :en,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              ES =
+              BA =
                 T.let(
-                  :es,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :ba,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              FA =
+              EU =
                 T.let(
-                  :fa,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :eu,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              FIL =
+              GL =
                 T.let(
-                  :fil,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :gl,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              FR =
+              GA =
                 T.let(
-                  :fr,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :ga,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              HI =
+              MT =
                 T.let(
-                  :hi,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :mt,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              ID =
+              MN =
                 T.let(
-                  :id,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :mn,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              IT =
+              SW =
                 T.let(
-                  :it,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :sw,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              JA =
+              UG =
                 T.let(
-                  :ja,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :ug,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              KO =
+              CY =
                 T.let(
-                  :ko,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :cy,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              MK =
+              AR_EN =
                 T.let(
-                  :mk,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :ar_en,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              MS =
+              CMN_EN =
                 T.let(
-                  :ms,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :cmn_en,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              NL =
+              EN_MS =
                 T.let(
-                  :nl,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :en_ms,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              PL =
+              EN_TA =
                 T.let(
-                  :pl,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :en_ta,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              PT =
+              TL =
                 T.let(
-                  :pt,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :tl,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              RO =
+              ES_BILINGUAL_EN =
                 T.let(
-                  :ro,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :"es-bilingual-en",
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
-              RU =
+              CMN_EN_MS_TA =
                 T.let(
-                  :ru,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
-              SV =
-                T.let(
-                  :sv,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
-              TH =
-                T.let(
-                  :th,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
-              TR =
-                T.let(
-                  :tr,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
-                )
-              VI =
-                T.let(
-                  :vi,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                  :cmn_en_ms_ta,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::Language::TaggedSymbol
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
                   ]
                 )
               end
@@ -503,7 +473,7 @@ module Telnyx
               end
             end
 
-            # Engine identifier for xAI transcription service
+            # Engine identifier for Speechmatics transcription service
             module TranscriptionEngine
               extend Telnyx::Internal::Type::Enum
 
@@ -511,21 +481,21 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionEngine
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              X_AI =
+              SPEECHMATICS =
                 T.let(
-                  :xAI,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionEngine::TaggedSymbol
+                  :Speechmatics,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionEngine::TaggedSymbol
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::TaggedSymbol
                   ]
                 )
               end
@@ -541,169 +511,21 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionModel
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              XAI_GROK_STT =
+              SPEECHMATICS_STANDARD =
                 T.let(
-                  :"xai/grok-stt",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionModel::TaggedSymbol
+                  :"speechmatics/standard",
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::TranscriptionModel::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
-
-          class AssemblyAI < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Whether to send also interim results. If set to false, only final results will
-            # be sent.
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :interim_results
-
-            sig { params(interim_results: T::Boolean).void }
-            attr_writer :interim_results
-
-            # Engine identifier for AssemblyAI transcription service
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionEngine::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_engine
-
-            sig do
-              params(
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionEngine::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_engine
-
-            # The model to use for transcription.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionModel::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_model
-
-            sig do
-              params(
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionModel::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_model
-
-            sig do
-              params(
-                interim_results: T::Boolean,
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionEngine::OrSymbol,
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionModel::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # Whether to send also interim results. If set to false, only final results will
-              # be sent.
-              interim_results: nil,
-              # Engine identifier for AssemblyAI transcription service
-              transcription_engine: nil,
-              # The model to use for transcription.
-              transcription_model: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  interim_results: T::Boolean,
-                  transcription_engine:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionEngine::OrSymbol,
-                  transcription_model:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionModel::OrSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # Engine identifier for AssemblyAI transcription service
-            module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionEngine
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              ASSEMBLY_AI =
-                T.let(
-                  :AssemblyAI,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionEngine::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionEngine::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            # The model to use for transcription.
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionModel
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              ASSEMBLYAI_UNIVERSAL_STREAMING =
-                T.let(
-                  :"assemblyai/universal-streaming",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionModel::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::TranscriptionModel::TaggedSymbol
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::TaggedSymbol
                   ]
                 )
               end

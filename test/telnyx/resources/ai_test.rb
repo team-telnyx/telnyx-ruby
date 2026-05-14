@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AIRetrieveModelsResponse::Data]),
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ModelMetadata]),
         object: String | nil
       }
     end
