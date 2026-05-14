@@ -6,16 +6,11 @@ module Telnyx
     class VirtualCrossConnectUpdateResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::VirtualCrossConnectUpdateResponse::Data, nil]
-      optional :data, -> { Telnyx::Models::VirtualCrossConnectUpdateResponse::Data }
+      #   @return [Telnyx::Models::VirtualCrossConnectCombined, nil]
+      optional :data, -> { Telnyx::VirtualCrossConnectCombined }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::VirtualCrossConnectUpdateResponse::Data]
-
-      # @see Telnyx::Models::VirtualCrossConnectUpdateResponse#data
-      class Data < Telnyx::Models::Record
-        # @!method initialize
-      end
+      #   @param data [Telnyx::Models::VirtualCrossConnectCombined]
     end
   end
 end

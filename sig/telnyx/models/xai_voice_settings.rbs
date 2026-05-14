@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    type xai_voice_settings =
+      { type: Telnyx::Models::XaiVoiceSettings::type_, language: String }
+
+    class XaiVoiceSettings < Telnyx::Internal::Type::BaseModel
+      attr_accessor type: Telnyx::Models::XaiVoiceSettings::type_
+
+      attr_reader language: String?
+
+      def language=: (String) -> String
+
+      def initialize: (
+        type: Telnyx::Models::XaiVoiceSettings::type_,
+        ?language: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Telnyx::Models::XaiVoiceSettings::type_,
+        language: String
+      }
+
+      type type_ = :xai
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        XAI: :xai
+
+        def self?.values: -> ::Array[Telnyx::Models::XaiVoiceSettings::type_]
+      end
+    end
+  end
+end

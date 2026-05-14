@@ -52,7 +52,15 @@ module Telnyx
         }
 
         type transcription_engine =
-          :Google | :Telnyx | :Deepgram | :Azure | :xAI | :AssemblyAI | :A | :B
+          :Google
+          | :Telnyx
+          | :Deepgram
+          | :Azure
+          | :xAI
+          | :AssemblyAI
+          | :Speechmatics
+          | :A
+          | :B
 
         module TranscriptionEngine
           extend Telnyx::Internal::Type::Enum
@@ -63,6 +71,7 @@ module Telnyx
           AZURE: :Azure
           X_AI: :xAI
           ASSEMBLY_AI: :AssemblyAI
+          SPEECHMATICS: :Speechmatics
           A: :A
           B: :B
 
@@ -73,8 +82,9 @@ module Telnyx
           Telnyx::Calls::TranscriptionEngineGoogleConfig
           | Telnyx::Calls::TranscriptionEngineTelnyxConfig
           | Telnyx::Calls::TranscriptionEngineAzureConfig
-          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI
-          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI
+          | Telnyx::Calls::TranscriptionEngineXaiConfig
+          | Telnyx::Calls::TranscriptionEngineAssemblyaiConfig
+          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics
           | Telnyx::Calls::TranscriptionEngineAConfig
           | Telnyx::Calls::TranscriptionEngineBConfig
           | Telnyx::Calls::DeepgramNova2Config
@@ -83,185 +93,112 @@ module Telnyx
         module TranscriptionEngineConfig
           extend Telnyx::Internal::Type::Union
 
-          type xai =
+          type speechmatics =
             {
               interim_results: bool,
-              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::language,
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_engine,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_model
+              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::language,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_model
             }
 
-          class XAI < Telnyx::Internal::Type::BaseModel
+          class Speechmatics < Telnyx::Internal::Type::BaseModel
             attr_reader interim_results: bool?
 
             def interim_results=: (bool) -> bool
 
-            attr_reader language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::language?
+            attr_reader language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::language?
 
             def language=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::language
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::language
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::language
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::language
 
-            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_engine?
+            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_engine?
 
             def transcription_engine=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_engine
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_engine
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_engine
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_engine
 
-            attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_model?
+            attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_model?
 
             def transcription_model=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_model
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_model
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_model
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_model
 
             def initialize: (
               ?interim_results: bool,
-              ?language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::language,
-              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_engine,
-              ?transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_model
+              ?language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::language,
+              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_engine,
+              ?transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_model
             ) -> void
 
             def to_hash: -> {
               interim_results: bool,
-              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::language,
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_engine,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_model
+              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::language,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_model
             }
 
             type language =
-              :ar
-              | :cs
-              | :da
-              | :de
-              | :en
-              | :es
-              | :fa
-              | :fil
-              | :fr
-              | :hi
-              | :id
-              | :it
-              | :ja
-              | :ko
-              | :mk
-              | :ms
-              | :nl
-              | :pl
-              | :pt
-              | :ro
-              | :ru
-              | :sv
-              | :th
-              | :tr
-              | :vi
+              :en
+              | :ba
+              | :eu
+              | :gl
+              | :ga
+              | :mt
+              | :mn
+              | :sw
+              | :ug
+              | :cy
+              | :ar_en
+              | :cmn_en
+              | :en_ms
+              | :en_ta
+              | :tl
+              | :"es-bilingual-en"
+              | :cmn_en_ms_ta
 
             module Language
               extend Telnyx::Internal::Type::Enum
 
-              AR: :ar
-              CS: :cs
-              DA: :da
-              DE: :de
               EN: :en
-              ES: :es
-              FA: :fa
-              FIL: :fil
-              FR: :fr
-              HI: :hi
-              ID: :id
-              IT: :it
-              JA: :ja
-              KO: :ko
-              MK: :mk
-              MS: :ms
-              NL: :nl
-              PL: :pl
-              PT: :pt
-              RO: :ro
-              RU: :ru
-              SV: :sv
-              TH: :th
-              TR: :tr
-              VI: :vi
+              BA: :ba
+              EU: :eu
+              GL: :gl
+              GA: :ga
+              MT: :mt
+              MN: :mn
+              SW: :sw
+              UG: :ug
+              CY: :cy
+              AR_EN: :ar_en
+              CMN_EN: :cmn_en
+              EN_MS: :en_ms
+              EN_TA: :en_ta
+              TL: :tl
+              ES_BILINGUAL_EN: :"es-bilingual-en"
+              CMN_EN_MS_TA: :cmn_en_ms_ta
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::language]
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::language]
             end
 
-            type transcription_engine = :xAI
+            type transcription_engine = :Speechmatics
 
             module TranscriptionEngine
               extend Telnyx::Internal::Type::Enum
 
-              X_AI: :xAI
+              SPEECHMATICS: :Speechmatics
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_engine]
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_engine]
             end
 
-            type transcription_model = :"xai/grok-stt"
+            type transcription_model = :"speechmatics/standard"
 
             module TranscriptionModel
               extend Telnyx::Internal::Type::Enum
 
-              XAI_GROK_STT: :"xai/grok-stt"
+              SPEECHMATICS_STANDARD: :"speechmatics/standard"
 
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::transcription_model]
-            end
-          end
-
-          type assembly_ai =
-            {
-              interim_results: bool,
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_engine,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_model
-            }
-
-          class AssemblyAI < Telnyx::Internal::Type::BaseModel
-            attr_reader interim_results: bool?
-
-            def interim_results=: (bool) -> bool
-
-            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_engine?
-
-            def transcription_engine=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_engine
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_engine
-
-            attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_model?
-
-            def transcription_model=: (
-              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_model
-            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_model
-
-            def initialize: (
-              ?interim_results: bool,
-              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_engine,
-              ?transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_model
-            ) -> void
-
-            def to_hash: -> {
-              interim_results: bool,
-              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_engine,
-              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_model
-            }
-
-            type transcription_engine = :AssemblyAI
-
-            module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
-
-              ASSEMBLY_AI: :AssemblyAI
-
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_engine]
-            end
-
-            type transcription_model = :"assemblyai/universal-streaming"
-
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
-
-              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::transcription_model]
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::transcription_model]
             end
           end
 
