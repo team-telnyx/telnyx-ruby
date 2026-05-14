@@ -229,6 +229,11 @@ module Telnyx
         sig { params(llm_model: String).void }
         attr_writer :llm_model
 
+        # Reason the conversation ended. For Conversation Relay, `customer_disconnect`
+        # indicates that the customer WebSocket disconnected.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :reason
+
         # The speech-to-text model used in the conversation.
         sig { returns(T.nilable(String)) }
         attr_reader :stt_model
@@ -278,6 +283,7 @@ module Telnyx
             duration_sec: Integer,
             from: String,
             llm_model: String,
+            reason: T.nilable(String),
             stt_model: String,
             to: String,
             tts_model_id: String,
@@ -308,6 +314,9 @@ module Telnyx
           from: nil,
           # The large language model used during the conversation.
           llm_model: nil,
+          # Reason the conversation ended. For Conversation Relay, `customer_disconnect`
+          # indicates that the customer WebSocket disconnected.
+          reason: nil,
           # The speech-to-text model used in the conversation.
           stt_model: nil,
           # The callee's number or SIP address.
@@ -336,6 +345,7 @@ module Telnyx
               duration_sec: Integer,
               from: String,
               llm_model: String,
+              reason: T.nilable(String),
               stt_model: String,
               to: String,
               tts_model_id: String,
