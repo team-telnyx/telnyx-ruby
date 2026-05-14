@@ -1062,8 +1062,6 @@ module Telnyx
   MobileVoiceConnectionUpdateParams =
     Telnyx::Models::MobileVoiceConnectionUpdateParams
 
-  ModelMetadata = Telnyx::Models::ModelMetadata
-
   MonthDetail = Telnyx::Models::MonthDetail
 
   NetappsLocation = Telnyx::Models::NetappsLocation
@@ -1424,8 +1422,6 @@ module Telnyx
 
   PublicInternetGatewayListParams =
     Telnyx::Models::PublicInternetGatewayListParams
-
-  PublicInternetGatewayRead = Telnyx::Models::PublicInternetGatewayRead
 
   PublicInternetGatewayRetrieveParams =
     Telnyx::Models::PublicInternetGatewayRetrieveParams
@@ -1804,8 +1800,6 @@ module Telnyx
 
   TransportProtocol = Telnyx::Models::TransportProtocol
 
-  UacConnection = Telnyx::Models::UacConnection
-
   UacConnectionCreateParams = Telnyx::Models::UacConnectionCreateParams
 
   UacConnectionDeleteParams = Telnyx::Models::UacConnectionDeleteParams
@@ -1817,14 +1811,6 @@ module Telnyx
   UacConnections = Telnyx::Models::UacConnections
 
   UacConnectionUpdateParams = Telnyx::Models::UacConnectionUpdateParams
-
-  UacExternalSettings = Telnyx::Models::UacExternalSettings
-
-  UacInbound = Telnyx::Models::UacInbound
-
-  UacInternalSettings = Telnyx::Models::UacInternalSettings
-
-  UacOutbound = Telnyx::Models::UacOutbound
 
   UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
 
@@ -1909,8 +1895,6 @@ module Telnyx
     Telnyx::Models::VerifyProfileUpdateTemplateParams
 
   VideoRegion = Telnyx::Models::VideoRegion
-
-  VirtualCrossConnectCombined = Telnyx::Models::VirtualCrossConnectCombined
 
   VirtualCrossConnectCreateParams =
     Telnyx::Models::VirtualCrossConnectCreateParams
@@ -2018,8 +2002,6 @@ module Telnyx
 
   WireguardInterfaceListParams = Telnyx::Models::WireguardInterfaceListParams
 
-  WireguardInterfaceRead = Telnyx::Models::WireguardInterfaceRead
-
   WireguardInterfaceRetrieveParams =
     Telnyx::Models::WireguardInterfaceRetrieveParams
 
@@ -2061,6 +2043,4 @@ module Telnyx
   WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 
   X402 = Telnyx::Models::X402
-
-  XaiVoiceSettings = Telnyx::Models::XaiVoiceSettings
 end

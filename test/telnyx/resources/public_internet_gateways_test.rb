@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::PublicInternetGatewaysTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::PublicInternetGatewayRead | nil
+        data: Telnyx::Models::PublicInternetGatewayCreateResponse::Data | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::PublicInternetGatewaysTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::PublicInternetGatewayRead | nil
+        data: Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data | nil
       }
     end
   end
@@ -48,21 +48,7 @@ class Telnyx::Test::Resources::PublicInternetGatewaysTest < Telnyx::Test::Resour
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::PublicInternetGatewayRead
-    end
-
-    assert_pattern do
-      row => {
-        id: String | nil,
-        created_at: String | nil,
-        name: String | nil,
-        network_id: String | nil,
-        public_ip: String | nil,
-        record_type: String | nil,
-        region_code: String | nil,
-        status: Telnyx::InterfaceStatus | nil,
-        updated_at: String | nil
-      }
+      row => Telnyx::Models::PublicInternetGatewayListResponse
     end
   end
 
@@ -77,7 +63,7 @@ class Telnyx::Test::Resources::PublicInternetGatewaysTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::PublicInternetGatewayRead | nil
+        data: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data | nil
       }
     end
   end
