@@ -82,6 +82,7 @@ module Telnyx
           duration_sec: Integer,
           from: String,
           llm_model: String,
+          reason: String?,
           stt_model: String,
           to: String,
           tts_model_id: String,
@@ -136,6 +137,8 @@ module Telnyx
 
         def llm_model=: (String) -> String
 
+        attr_accessor reason: String?
+
         attr_reader stt_model: String?
 
         def stt_model=: (String) -> String
@@ -168,6 +171,7 @@ module Telnyx
           ?duration_sec: Integer,
           ?from: String,
           ?llm_model: String,
+          ?reason: String?,
           ?stt_model: String,
           ?to: String,
           ?tts_model_id: String,
@@ -187,6 +191,7 @@ module Telnyx
           duration_sec: Integer,
           from: String,
           llm_model: String,
+          reason: String?,
           stt_model: String,
           to: String,
           tts_model_id: String,

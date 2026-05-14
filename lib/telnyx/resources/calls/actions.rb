@@ -941,7 +941,9 @@ module Telnyx
         #
         # **Expected Webhooks:**
         #
-        # - `conversation_relay.disconnected`
+        # - `call.conversation.ended` - Sent when the Conversation Relay session ends. If
+        #   the customer WebSocket disconnects, the webhook payload `reason` is
+        #   `customer_disconnect`.
         #
         # @overload start_conversation_relay(call_control_id, conversation_relay_url:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, participants: nil, send_message_history_updates: nil, transcription: nil, transcription_language: nil, tts_language: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
         #
