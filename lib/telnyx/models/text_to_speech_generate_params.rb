@@ -622,12 +622,12 @@ module Telnyx
         module SampleRate
           extend ::Telnyx::Internal::Type::Enum
 
-          RATE_8000 = 8000
-          RATE_16000 = 16_000
-          RATE_22050 = 22_050
-          RATE_24000 = 24_000
-          RATE_44100 = 44_100
-          RATE_48000 = 48_000
+          SAMPLE_RATE_8000 = 8000
+          SAMPLE_RATE_16000 = 16_000
+          SAMPLE_RATE_22050 = 22_050
+          SAMPLE_RATE_24000 = 24_000
+          SAMPLE_RATE_44100 = 44_100
+          SAMPLE_RATE_48000 = 48_000
 
           # @!method self.values
           #   @return [Array<Integer>]

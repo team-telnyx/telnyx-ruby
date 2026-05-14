@@ -347,7 +347,7 @@ module Telnyx
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -480,7 +480,7 @@ module Telnyx
         #
         # @param valid_digits [String] A list of all digits accepted as valid.
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -860,7 +860,7 @@ module Telnyx
         #
         # @param target_legs [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs] Specifies which legs of the call should receive the spoken audio.
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Xai] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -912,7 +912,7 @@ module Telnyx
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -926,6 +926,73 @@ module Telnyx
             path: ["calls/%1$s/actions/ai_assistant_start", call_control_id],
             body: parsed,
             model: Telnyx::Models::Calls::ActionStartAIAssistantResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Calls::ActionStartConversationRelayParams} for more details.
+        #
+        # Start a Conversation Relay session on an active call. Conversation Relay
+        # connects the call audio to your WebSocket so your application can exchange
+        # realtime messages with the caller while Telnyx handles speech recognition and
+        # text-to-speech. Only one AI Assistant or Conversation Relay session can be
+        # active on a call at a time.
+        #
+        # **Expected Webhooks:**
+        #
+        # - `conversation_relay.disconnected`
+        #
+        # @overload start_conversation_relay(call_control_id, conversation_relay_url:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, participants: nil, send_message_history_updates: nil, transcription: nil, transcription_language: nil, tts_language: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param conversation_relay_url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
+        #
+        # @param assistant [Telnyx::Models::Calls::ActionStartConversationRelayParams::Assistant] Custom parameters for the Conversation Relay session. Pass key-value data as `as
+        #
+        # @param client_state [String] Use this field to add state to subsequent webhooks. It must be a valid Base-64 e
+        #
+        # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param conversation_relay_dtmf_detection [Boolean] Enable DTMF detection for the relay session.
+        #
+        # @param greeting [String] Text played when the relay session starts.
+        #
+        # @param interruption_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings] Settings for handling caller interruptions during Conversation Relay speech.
+        #
+        # @param language [String] Default language for the relay session. This value is used for both text-to-spee
+        #
+        # @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>] Language-specific TTS and transcription settings. Use this when the relay sessio
+        #
+        # @param participants [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant>] Participants to add to the conversation.
+        #
+        # @param send_message_history_updates [Boolean] When true, sends message history update webhooks.
+        #
+        # @param transcription [Telnyx::Models::Calls::ActionStartConversationRelayParams::Transcription] Speech-to-text settings for Conversation Relay.
+        #
+        # @param transcription_language [String] Language to use for speech recognition. Overrides `language` for transcription w
+        #
+        # @param tts_language [String] Language to use for text-to-speech. Overrides `language` for TTS when provided.
+        #
+        # @param user_response_timeout_ms [Integer] Time in milliseconds to wait for caller input before timing out.
+        #
+        # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
+        #
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai] The settings associated with the voice selected
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Calls::ActionStartConversationRelayResponse]
+        #
+        # @see Telnyx::Models::Calls::ActionStartConversationRelayParams
+        def start_conversation_relay(call_control_id, params)
+          parsed, options = Telnyx::Calls::ActionStartConversationRelayParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["calls/%1$s/actions/conversation_relay_start", call_control_id],
+            body: parsed,
+            model: Telnyx::Models::Calls::ActionStartConversationRelayResponse,
             options: options
           )
         end
@@ -1256,7 +1323,7 @@ module Telnyx
         #
         # @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
+        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
         #
         # @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
         #
@@ -1301,6 +1368,35 @@ module Telnyx
             path: ["calls/%1$s/actions/ai_assistant_stop", call_control_id],
             body: parsed,
             model: Telnyx::Models::Calls::ActionStopAIAssistantResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Calls::ActionStopConversationRelayParams} for more details.
+        #
+        # Stop the active Conversation Relay session on a call.
+        #
+        # @overload stop_conversation_relay(call_control_id, client_state: nil, command_id: nil, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param client_state [String] Use this field to add state to subsequent webhooks. It must be a valid Base-64 e
+        #
+        # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Calls::ActionStopConversationRelayResponse]
+        #
+        # @see Telnyx::Models::Calls::ActionStopConversationRelayParams
+        def stop_conversation_relay(call_control_id, params = {})
+          parsed, options = Telnyx::Calls::ActionStopConversationRelayParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["calls/%1$s/actions/conversation_relay_stop", call_control_id],
+            body: parsed,
+            model: Telnyx::Models::Calls::ActionStopConversationRelayResponse,
             options: options
           )
         end

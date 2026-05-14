@@ -42,11 +42,17 @@ module Telnyx
               greeting: String,
               insight_settings: Telnyx::AI::InsightSettings::OrHash,
               instructions: String,
-              integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
+              integrations:
+                T::Array[
+                  Telnyx::AI::Assistants::UpdateAssistant::Integration::OrHash
+                ],
               interruption_settings:
-                Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
+                Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::OrHash,
               llm_api_key_ref: String,
-              mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
+              mcp_servers:
+                T::Array[
+                  Telnyx::AI::Assistants::UpdateAssistant::McpServer::OrHash
+                ],
               messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
               model: String,
               name: String,

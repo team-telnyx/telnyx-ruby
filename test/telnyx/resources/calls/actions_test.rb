@@ -328,6 +328,26 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_start_conversation_relay_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.calls.actions.start_conversation_relay(
+        "call_control_id",
+        conversation_relay_url: "wss://example.com/conversation-relay"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Calls::ActionStartConversationRelayResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Calls::ActionStartConversationRelayResponse::Data | nil
+      }
+    end
+  end
+
   def test_start_forking
     skip("Mock server tests are disabled")
 
@@ -447,6 +467,22 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => Telnyx::Models::Calls::ActionStopAIAssistantResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Calls::CallControlCommandResult | nil
+      }
+    end
+  end
+
+  def test_stop_conversation_relay
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.calls.actions.stop_conversation_relay("call_control_id")
+
+    assert_pattern do
+      response => Telnyx::Models::Calls::ActionStopConversationRelayResponse
     end
 
     assert_pattern do

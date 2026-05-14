@@ -68,7 +68,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardInterfaceRead>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardInterfaceListResponse>]
       #
       # @see Telnyx::Models::WireguardInterfaceListParams
       def list(params = {})
@@ -79,7 +79,7 @@ module Telnyx
           path: "wireguard_interfaces",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::WireguardInterfaceRead,
+          model: Telnyx::Models::WireguardInterfaceListResponse,
           options: options
         )
       end

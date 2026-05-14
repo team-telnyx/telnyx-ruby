@@ -18,7 +18,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PublicInternetGatewayRead]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PublicInternetGatewayListResponse]
 
       def delete: (
         String id,
