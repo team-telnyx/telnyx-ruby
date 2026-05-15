@@ -49,15 +49,17 @@ module Telnyx
 
       # @!attribute media_name
       #   The media_name used for the fax's media. Must point to a file previously
-      #   uploaded to api.telnyx.com/v2/media by the same user/organization. media_name
-      #   and media_url/contents can't be submitted together.
+      #   uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
+      #   formats: PDF, TIFF, JPEG, PNG, DOC, DOCX, RTF, and TXT. media_name and
+      #   media_url/contents can't be submitted together.
       #
       #   @return [String, nil]
       optional :media_name, String
 
       # @!attribute media_url
-      #   The URL (or list of URLs) to the PDF used for the fax's media. media_url and
-      #   media_name/contents can't be submitted together.
+      #   The URL (or list of URLs) to the fax document. Supported formats: PDF, TIFF,
+      #   JPEG, PNG, DOC, DOCX, RTF, and TXT. media_url and media_name/contents can't be
+      #   submitted together.
       #
       #   @return [String, nil]
       optional :media_url, String
@@ -147,7 +149,7 @@ module Telnyx
       #
       #   @param media_name [String] The media_name used for the fax's media. Must point to a file previously uploade
       #
-      #   @param media_url [String] The URL (or list of URLs) to the PDF used for the fax's media. media_url and med
+      #   @param media_url [String] The URL (or list of URLs) to the fax document. Supported formats: PDF, TIFF, JPE
       #
       #   @param preview_url [String] If `store_preview` was set to `true`, this is a link to temporary location. Link
       #

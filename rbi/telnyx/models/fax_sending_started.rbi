@@ -222,8 +222,9 @@ module Telnyx
           attr_writer :from
 
           # The media_name used for the fax's media. Must point to a file previously
-          # uploaded to api.telnyx.com/v2/media by the same user/organization. media_name
-          # and media_url/contents can't be submitted together.
+          # uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
+          # formats: PDF, TIFF, JPEG, PNG, DOC, DOCX, RTF, and TXT. media_name and
+          # media_url/contents can't be submitted together.
           sig { returns(T.nilable(String)) }
           attr_reader :media_name
 
@@ -297,8 +298,9 @@ module Telnyx
             # The phone number, in E.164 format, the fax will be sent from.
             from: nil,
             # The media_name used for the fax's media. Must point to a file previously
-            # uploaded to api.telnyx.com/v2/media by the same user/organization. media_name
-            # and media_url/contents can't be submitted together.
+            # uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
+            # formats: PDF, TIFF, JPEG, PNG, DOC, DOCX, RTF, and TXT. media_name and
+            # media_url/contents can't be submitted together.
             media_name: nil,
             # The original URL to the PDF used for the fax's media. If media_name was
             # supplied, this is omitted
