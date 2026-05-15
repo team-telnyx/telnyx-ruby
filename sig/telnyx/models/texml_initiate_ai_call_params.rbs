@@ -18,6 +18,7 @@ module Telnyx
         custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
         detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
         machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        machine_detection_prompt_end_timeout: Integer,
         machine_detection_silence_timeout: Integer,
         machine_detection_speech_end_threshold: Integer,
         machine_detection_speech_threshold: Integer,
@@ -116,6 +117,10 @@ module Telnyx
       def machine_detection=: (
         Telnyx::Models::TexmlInitiateAICallParams::machine_detection
       ) -> Telnyx::Models::TexmlInitiateAICallParams::machine_detection
+
+      attr_reader machine_detection_prompt_end_timeout: Integer?
+
+      def machine_detection_prompt_end_timeout=: (Integer) -> Integer
 
       attr_reader machine_detection_silence_timeout: Integer?
 
@@ -242,6 +247,7 @@ module Telnyx
         ?custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
         ?detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
         ?machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        ?machine_detection_prompt_end_timeout: Integer,
         ?machine_detection_silence_timeout: Integer,
         ?machine_detection_speech_end_threshold: Integer,
         ?machine_detection_speech_threshold: Integer,
@@ -286,6 +292,7 @@ module Telnyx
         custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
         detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
         machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        machine_detection_prompt_end_timeout: Integer,
         machine_detection_silence_timeout: Integer,
         machine_detection_speech_end_threshold: Integer,
         machine_detection_speech_threshold: Integer,
@@ -347,13 +354,14 @@ module Telnyx
         def to_hash: -> { name: String, value: String }
       end
 
-      type detection_mode = :Premium | :Regular
+      type detection_mode = :Premium | :Regular | :PremiumCallScreening
 
       module DetectionMode
         extend Telnyx::Internal::Type::Enum
 
         PREMIUM: :Premium
         REGULAR: :Regular
+        PREMIUM_CALL_SCREENING: :PremiumCallScreening
 
         def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::detection_mode]
       end

@@ -226,7 +226,9 @@ module Telnyx
               sig { params(deepfake_detection_callback_url: String).void }
               attr_writer :deepfake_detection_callback_url
 
-              # Allows you to chose between Premium and Standard detections.
+              # Allows you to choose between Regular, Premium, and PremiumCallScreening
+              # detections. See
+              # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
               sig do
                 returns(
                   T.nilable(
@@ -277,6 +279,14 @@ module Telnyx
                 ).void
               end
               attr_writer :machine_detection
+
+              # Silence duration threshold after a call screening prompt before ending prompt
+              # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
+              sig { returns(T.nilable(Integer)) }
+              attr_reader :machine_detection_prompt_end_timeout
+
+              sig { params(machine_detection_prompt_end_timeout: Integer).void }
+              attr_writer :machine_detection_prompt_end_timeout
 
               # If initial silence duration is greater than this value, consider it a machine.
               # Ignored when `premium` detection is used.
@@ -630,6 +640,7 @@ module Telnyx
                   from: String,
                   machine_detection:
                     Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::OrSymbol,
+                  machine_detection_prompt_end_timeout: Integer,
                   machine_detection_silence_timeout: Integer,
                   machine_detection_speech_end_threshold: Integer,
                   machine_detection_speech_threshold: Integer,
@@ -705,7 +716,9 @@ module Telnyx
                 # URL destination for Telnyx to send deepfake detection callback events to for the
                 # call.
                 deepfake_detection_callback_url: nil,
-                # Allows you to chose between Premium and Standard detections.
+                # Allows you to choose between Regular, Premium, and PremiumCallScreening
+                # detections. See
+                # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
                 detection_mode: nil,
                 # A failover URL for which Telnyx will retrieve the TeXML call instructions if the
                 # `Url` is not responding.
@@ -715,6 +728,9 @@ module Telnyx
                 from: nil,
                 # Enables Answering Machine Detection.
                 machine_detection: nil,
+                # Silence duration threshold after a call screening prompt before ending prompt
+                # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
+                machine_detection_prompt_end_timeout: nil,
                 # If initial silence duration is greater than this value, consider it a machine.
                 # Ignored when `premium` detection is used.
                 machine_detection_silence_timeout: nil,
@@ -822,6 +838,7 @@ module Telnyx
                     from: String,
                     machine_detection:
                       Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::MachineDetection::OrSymbol,
+                    machine_detection_prompt_end_timeout: Integer,
                     machine_detection_silence_timeout: Integer,
                     machine_detection_speech_end_threshold: Integer,
                     machine_detection_speech_threshold: Integer,
@@ -1002,7 +1019,9 @@ module Telnyx
                 end
               end
 
-              # Allows you to chose between Premium and Standard detections.
+              # Allows you to choose between Regular, Premium, and PremiumCallScreening
+              # detections. See
+              # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
@@ -1023,6 +1042,11 @@ module Telnyx
                 REGULAR =
                   T.let(
                     :Regular,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::TaggedSymbol
+                  )
+                PREMIUM_CALL_SCREENING =
+                  T.let(
+                    :PremiumCallScreening,
                     Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::DetectionMode::TaggedSymbol
                   )
 
@@ -1629,7 +1653,9 @@ module Telnyx
               sig { params(deepfake_detection_callback_url: String).void }
               attr_writer :deepfake_detection_callback_url
 
-              # Allows you to chose between Premium and Standard detections.
+              # Allows you to choose between Regular, Premium, and PremiumCallScreening
+              # detections. See
+              # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
               sig do
                 returns(
                   T.nilable(
@@ -1680,6 +1706,14 @@ module Telnyx
                 ).void
               end
               attr_writer :machine_detection
+
+              # Silence duration threshold after a call screening prompt before ending prompt
+              # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
+              sig { returns(T.nilable(Integer)) }
+              attr_reader :machine_detection_prompt_end_timeout
+
+              sig { params(machine_detection_prompt_end_timeout: Integer).void }
+              attr_writer :machine_detection_prompt_end_timeout
 
               # If initial silence duration is greater than this value, consider it a machine.
               # Ignored when `premium` detection is used.
@@ -2033,6 +2067,7 @@ module Telnyx
                   from: String,
                   machine_detection:
                     Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::OrSymbol,
+                  machine_detection_prompt_end_timeout: Integer,
                   machine_detection_silence_timeout: Integer,
                   machine_detection_speech_end_threshold: Integer,
                   machine_detection_speech_threshold: Integer,
@@ -2109,7 +2144,9 @@ module Telnyx
                 # URL destination for Telnyx to send deepfake detection callback events to for the
                 # call.
                 deepfake_detection_callback_url: nil,
-                # Allows you to chose between Premium and Standard detections.
+                # Allows you to choose between Regular, Premium, and PremiumCallScreening
+                # detections. See
+                # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
                 detection_mode: nil,
                 # A failover URL for which Telnyx will retrieve the TeXML call instructions if the
                 # `Url` is not responding.
@@ -2119,6 +2156,9 @@ module Telnyx
                 from: nil,
                 # Enables Answering Machine Detection.
                 machine_detection: nil,
+                # Silence duration threshold after a call screening prompt before ending prompt
+                # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
+                machine_detection_prompt_end_timeout: nil,
                 # If initial silence duration is greater than this value, consider it a machine.
                 # Ignored when `premium` detection is used.
                 machine_detection_silence_timeout: nil,
@@ -2226,6 +2266,7 @@ module Telnyx
                     from: String,
                     machine_detection:
                       Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::MachineDetection::OrSymbol,
+                    machine_detection_prompt_end_timeout: Integer,
                     machine_detection_silence_timeout: Integer,
                     machine_detection_speech_end_threshold: Integer,
                     machine_detection_speech_threshold: Integer,
@@ -2406,7 +2447,9 @@ module Telnyx
                 end
               end
 
-              # Allows you to chose between Premium and Standard detections.
+              # Allows you to choose between Regular, Premium, and PremiumCallScreening
+              # detections. See
+              # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
@@ -2427,6 +2470,11 @@ module Telnyx
                 REGULAR =
                   T.let(
                     :Regular,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::TaggedSymbol
+                  )
+                PREMIUM_CALL_SCREENING =
+                  T.let(
+                    :PremiumCallScreening,
                     Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::DetectionMode::TaggedSymbol
                   )
 
@@ -3028,7 +3076,9 @@ module Telnyx
               sig { params(deepfake_detection_callback_url: String).void }
               attr_writer :deepfake_detection_callback_url
 
-              # Allows you to chose between Premium and Standard detections.
+              # Allows you to choose between Regular, Premium, and PremiumCallScreening
+              # detections. See
+              # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
               sig do
                 returns(
                   T.nilable(
@@ -3079,6 +3129,14 @@ module Telnyx
                 ).void
               end
               attr_writer :machine_detection
+
+              # Silence duration threshold after a call screening prompt before ending prompt
+              # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
+              sig { returns(T.nilable(Integer)) }
+              attr_reader :machine_detection_prompt_end_timeout
+
+              sig { params(machine_detection_prompt_end_timeout: Integer).void }
+              attr_writer :machine_detection_prompt_end_timeout
 
               # If initial silence duration is greater than this value, consider it a machine.
               # Ignored when `premium` detection is used.
@@ -3434,6 +3492,7 @@ module Telnyx
                   from: String,
                   machine_detection:
                     Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::OrSymbol,
+                  machine_detection_prompt_end_timeout: Integer,
                   machine_detection_silence_timeout: Integer,
                   machine_detection_speech_end_threshold: Integer,
                   machine_detection_speech_threshold: Integer,
@@ -3508,7 +3567,9 @@ module Telnyx
                 # URL destination for Telnyx to send deepfake detection callback events to for the
                 # call.
                 deepfake_detection_callback_url: nil,
-                # Allows you to chose between Premium and Standard detections.
+                # Allows you to choose between Regular, Premium, and PremiumCallScreening
+                # detections. See
+                # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
                 detection_mode: nil,
                 # A failover URL for which Telnyx will retrieve the TeXML call instructions if the
                 # `Url` is not responding.
@@ -3518,6 +3579,9 @@ module Telnyx
                 from: nil,
                 # Enables Answering Machine Detection.
                 machine_detection: nil,
+                # Silence duration threshold after a call screening prompt before ending prompt
+                # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
+                machine_detection_prompt_end_timeout: nil,
                 # If initial silence duration is greater than this value, consider it a machine.
                 # Ignored when `premium` detection is used.
                 machine_detection_silence_timeout: nil,
@@ -3625,6 +3689,7 @@ module Telnyx
                     from: String,
                     machine_detection:
                       Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::MachineDetection::OrSymbol,
+                    machine_detection_prompt_end_timeout: Integer,
                     machine_detection_silence_timeout: Integer,
                     machine_detection_speech_end_threshold: Integer,
                     machine_detection_speech_threshold: Integer,
@@ -3806,7 +3871,9 @@ module Telnyx
                 end
               end
 
-              # Allows you to chose between Premium and Standard detections.
+              # Allows you to choose between Regular, Premium, and PremiumCallScreening
+              # detections. See
+              # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
@@ -3827,6 +3894,11 @@ module Telnyx
                 REGULAR =
                   T.let(
                     :Regular,
+                    Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::TaggedSymbol
+                  )
+                PREMIUM_CALL_SCREENING =
+                  T.let(
+                    :PremiumCallScreening,
                     Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::DetectionMode::TaggedSymbol
                   )
 

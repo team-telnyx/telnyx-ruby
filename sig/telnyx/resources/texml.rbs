@@ -20,6 +20,7 @@ module Telnyx
         ?custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
         ?detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
         ?machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        ?machine_detection_prompt_end_timeout: Integer,
         ?machine_detection_silence_timeout: Integer,
         ?machine_detection_speech_end_threshold: Integer,
         ?machine_detection_speech_threshold: Integer,
