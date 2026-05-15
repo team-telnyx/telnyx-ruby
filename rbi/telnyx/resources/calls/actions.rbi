@@ -1787,7 +1787,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
+                Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,

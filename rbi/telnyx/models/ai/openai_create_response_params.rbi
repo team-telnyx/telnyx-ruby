@@ -26,10 +26,10 @@ module Telnyx
         attr_writer :conversation
 
         # The input items for this turn, using the OpenAI Responses API input format.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :input
 
-        sig { params(input: T.anything).void }
+        sig { params(input: T::Hash[Symbol, T.anything]).void }
         attr_writer :input
 
         # Optional system/developer instructions for the model. When used with a persisted
@@ -60,7 +60,7 @@ module Telnyx
         sig do
           params(
             conversation: String,
-            input: T.anything,
+            input: T::Hash[Symbol, T.anything],
             instructions: String,
             model: String,
             stream: T::Boolean,
@@ -93,7 +93,7 @@ module Telnyx
           override.returns(
             {
               conversation: String,
-              input: T.anything,
+              input: T::Hash[Symbol, T.anything],
               instructions: String,
               model: String,
               stream: T::Boolean,

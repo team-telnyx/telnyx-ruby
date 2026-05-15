@@ -27,6 +27,8 @@ module Telnyx
           module Params
             extend Telnyx::Internal::Type::Union
 
+            discriminator :Url
+
             variant -> { Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL }
 
             variant -> { Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml }

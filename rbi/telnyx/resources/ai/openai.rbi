@@ -42,7 +42,7 @@ module Telnyx
         sig do
           params(
             conversation: String,
-            input: T.anything,
+            input: T::Hash[Symbol, T.anything],
             instructions: String,
             model: String,
             stream: T::Boolean,
