@@ -110,7 +110,9 @@ module Telnyx
                api_name: :CustomHeaders
 
       # @!attribute detection_mode
-      #   Allows you to choose between Premium and Standard detections.
+      #   Allows you to choose between Regular, Premium, and PremiumCallScreening
+      #   detections. See
+      #   https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
       #
       #   @return [Symbol, Telnyx::Models::TexmlInitiateAICallParams::DetectionMode, nil]
       optional :detection_mode,
@@ -124,6 +126,13 @@ module Telnyx
       optional :machine_detection,
                enum: -> { Telnyx::TexmlInitiateAICallParams::MachineDetection },
                api_name: :MachineDetection
+
+      # @!attribute machine_detection_prompt_end_timeout
+      #   Silence duration threshold after a call screening prompt before ending prompt
+      #   detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
+      #
+      #   @return [Integer, nil]
+      optional :machine_detection_prompt_end_timeout, Integer, api_name: :MachineDetectionPromptEndTimeout
 
       # @!attribute machine_detection_silence_timeout
       #   If initial silence duration is greater than this value, consider it a machine.
@@ -298,7 +307,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::TexmlInitiateAICallParams::Trim, nil]
       optional :trim, enum: -> { Telnyx::TexmlInitiateAICallParams::Trim }, api_name: :Trim
 
-      # @!method initialize(connection_id:, ai_assistant_id:, from:, to:, ai_assistant_dynamic_variables: nil, ai_assistant_version: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, conversation_callback: nil, conversation_callback_method: nil, conversation_callbacks: nil, custom_headers: nil, detection_mode: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, passports: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, status_callbacks: nil, time_limit: nil, timeout_seconds: nil, trim: nil, request_options: {})
+      # @!method initialize(connection_id:, ai_assistant_id:, from:, to:, ai_assistant_dynamic_variables: nil, ai_assistant_version: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, conversation_callback: nil, conversation_callback_method: nil, conversation_callbacks: nil, custom_headers: nil, detection_mode: nil, machine_detection: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, passports: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, status_callbacks: nil, time_limit: nil, timeout_seconds: nil, trim: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::TexmlInitiateAICallParams} for more details.
       #
@@ -330,9 +339,11 @@ module Telnyx
       #
       #   @param custom_headers [Array<Telnyx::Models::TexmlInitiateAICallParams::CustomHeader>] Custom HTTP headers to be sent with the call. Each header should be an object wi
       #
-      #   @param detection_mode [Symbol, Telnyx::Models::TexmlInitiateAICallParams::DetectionMode] Allows you to choose between Premium and Standard detections.
+      #   @param detection_mode [Symbol, Telnyx::Models::TexmlInitiateAICallParams::DetectionMode] Allows you to choose between Regular, Premium, and PremiumCallScreening detectio
       #
       #   @param machine_detection [Symbol, Telnyx::Models::TexmlInitiateAICallParams::MachineDetection] Enables Answering Machine Detection.
+      #
+      #   @param machine_detection_prompt_end_timeout [Integer] Silence duration threshold after a call screening prompt before ending prompt de
       #
       #   @param machine_detection_silence_timeout [Integer] If initial silence duration is greater than this value, consider it a machine. I
       #
@@ -425,12 +436,15 @@ module Telnyx
         #   @param value [String] The value of the custom header
       end
 
-      # Allows you to choose between Premium and Standard detections.
+      # Allows you to choose between Regular, Premium, and PremiumCallScreening
+      # detections. See
+      # https://developers.telnyx.com/docs/voice/programmable-voice/answering-machine-detection
       module DetectionMode
         extend Telnyx::Internal::Type::Enum
 
         PREMIUM = :Premium
         REGULAR = :Regular
+        PREMIUM_CALL_SCREENING = :PremiumCallScreening
 
         # @!method self.values
         #   @return [Array<Symbol>]
