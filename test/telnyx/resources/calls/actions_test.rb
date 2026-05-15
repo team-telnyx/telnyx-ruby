@@ -328,14 +328,10 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
     end
   end
 
-  def test_start_conversation_relay_required_params
+  def test_start_conversation_relay
     skip("Mock server tests are disabled")
 
-    response =
-      @telnyx.calls.actions.start_conversation_relay(
-        "call_control_id",
-        conversation_relay_url: "wss://example.com/conversation-relay"
-      )
+    response = @telnyx.calls.actions.start_conversation_relay("call_control_id")
 
     assert_pattern do
       response => Telnyx::Models::Calls::ActionStartConversationRelayResponse
