@@ -8,7 +8,7 @@ module Telnyx
 
         def create_response: (
           ?conversation: String,
-          ?input: top,
+          ?input: ::Hash[Symbol, top],
           ?instructions: String,
           ?model: String,
           ?stream: bool,

@@ -47,7 +47,7 @@ module Telnyx
         #
         # @param conversation [String] Optional Telnyx Conversation ID from `POST /ai/conversations`. When provided, Te
         #
-        # @param input [Object] The input items for this turn, using the OpenAI Responses API input format.
+        # @param input [Hash{Symbol=>Object}] The input items for this turn, using the OpenAI Responses API input format.
         #
         # @param instructions [String] Optional system/developer instructions for the model. When used with a persisted
         #
