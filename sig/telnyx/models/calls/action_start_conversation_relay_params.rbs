@@ -4,21 +4,19 @@ module Telnyx
       type action_start_conversation_relay_params =
         {
           call_control_id: String,
-          conversation_relay_url: String,
           assistant: Telnyx::Calls::ActionStartConversationRelayParams::Assistant,
           client_state: String,
           command_id: String,
           conversation_relay_dtmf_detection: bool,
+          conversation_relay_settings: Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings,
+          conversation_relay_url: String,
           greeting: String,
           interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings,
           language: String,
           languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language],
-          participants: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Participant],
-          send_message_history_updates: bool,
           transcription: Telnyx::Calls::ActionStartConversationRelayParams::Transcription,
           transcription_language: String,
           tts_language: String,
-          user_response_timeout_ms: Integer,
           voice: String,
           voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::voice_settings
         }
@@ -29,8 +27,6 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor call_control_id: String
-
-        attr_accessor conversation_relay_url: String
 
         attr_reader assistant: Telnyx::Calls::ActionStartConversationRelayParams::Assistant?
 
@@ -49,6 +45,16 @@ module Telnyx
         attr_reader conversation_relay_dtmf_detection: bool?
 
         def conversation_relay_dtmf_detection=: (bool) -> bool
+
+        attr_reader conversation_relay_settings: Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings?
+
+        def conversation_relay_settings=: (
+          Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings
+        ) -> Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings
+
+        attr_reader conversation_relay_url: String?
+
+        def conversation_relay_url=: (String) -> String
 
         attr_reader greeting: String?
 
@@ -70,16 +76,6 @@ module Telnyx
           ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language]
         ) -> ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language]
 
-        attr_reader participants: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Participant]?
-
-        def participants=: (
-          ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Participant]
-        ) -> ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Participant]
-
-        attr_reader send_message_history_updates: bool?
-
-        def send_message_history_updates=: (bool) -> bool
-
         attr_reader transcription: Telnyx::Calls::ActionStartConversationRelayParams::Transcription?
 
         def transcription=: (
@@ -94,10 +90,6 @@ module Telnyx
 
         def tts_language=: (String) -> String
 
-        attr_reader user_response_timeout_ms: Integer?
-
-        def user_response_timeout_ms=: (Integer) -> Integer
-
         attr_reader voice: String?
 
         def voice=: (String) -> String
@@ -110,21 +102,19 @@ module Telnyx
 
         def initialize: (
           call_control_id: String,
-          conversation_relay_url: String,
           ?assistant: Telnyx::Calls::ActionStartConversationRelayParams::Assistant,
           ?client_state: String,
           ?command_id: String,
           ?conversation_relay_dtmf_detection: bool,
+          ?conversation_relay_settings: Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings,
+          ?conversation_relay_url: String,
           ?greeting: String,
           ?interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings,
           ?language: String,
           ?languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language],
-          ?participants: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Participant],
-          ?send_message_history_updates: bool,
           ?transcription: Telnyx::Calls::ActionStartConversationRelayParams::Transcription,
           ?transcription_language: String,
           ?tts_language: String,
-          ?user_response_timeout_ms: Integer,
           ?voice: String,
           ?voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::voice_settings,
           ?request_options: Telnyx::request_opts
@@ -132,21 +122,19 @@ module Telnyx
 
         def to_hash: -> {
           call_control_id: String,
-          conversation_relay_url: String,
           assistant: Telnyx::Calls::ActionStartConversationRelayParams::Assistant,
           client_state: String,
           command_id: String,
           conversation_relay_dtmf_detection: bool,
+          conversation_relay_settings: Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings,
+          conversation_relay_url: String,
           greeting: String,
           interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings,
           language: String,
           languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language],
-          participants: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Participant],
-          send_message_history_updates: bool,
           transcription: Telnyx::Calls::ActionStartConversationRelayParams::Transcription,
           transcription_language: String,
           tts_language: String,
-          user_response_timeout_ms: Integer,
           voice: String,
           voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::voice_settings,
           request_options: Telnyx::RequestOptions
@@ -164,6 +152,130 @@ module Telnyx
           def initialize: (?dynamic_variables: ::Hash[Symbol, String]) -> void
 
           def to_hash: -> { dynamic_variables: ::Hash[Symbol, String] }
+        end
+
+        type conversation_relay_settings =
+          {
+            url: String,
+            dtmf_detection: bool,
+            interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible,
+            interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting,
+            languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
+          }
+
+        class ConversationRelaySettings < Telnyx::Internal::Type::BaseModel
+          attr_accessor url: String
+
+          attr_reader dtmf_detection: bool?
+
+          def dtmf_detection=: (bool) -> bool
+
+          attr_reader interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible?
+
+          def interruptible=: (
+            Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible
+          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible
+
+          attr_reader interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting?
+
+          def interruptible_greeting=: (
+            Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting
+          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting
+
+          attr_reader languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]?
+
+          def languages=: (
+            ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
+          ) -> ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
+
+          def initialize: (
+            url: String,
+            ?dtmf_detection: bool,
+            ?interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible,
+            ?interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting,
+            ?languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
+          ) -> void
+
+          def to_hash: -> {
+            url: String,
+            dtmf_detection: bool,
+            interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible,
+            interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting,
+            languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
+          }
+
+          type interruptible = :none | :any | :speech | :dtmf
+
+          module Interruptible
+            extend Telnyx::Internal::Type::Enum
+
+            NONE: :none
+            ANY: :any
+            SPEECH: :speech
+            DTMF: :dtmf
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible]
+          end
+
+          type interruptible_greeting = :none | :any | :speech | :dtmf
+
+          module InterruptibleGreeting
+            extend Telnyx::Internal::Type::Enum
+
+            NONE: :none
+            ANY: :any
+            SPEECH: :speech
+            DTMF: :dtmf
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting]
+          end
+
+          type language =
+            {
+              code: String,
+              speech_model: String,
+              transcription_provider: String,
+              tts_provider: String,
+              voice: String
+            }
+
+          class Language < Telnyx::Internal::Type::BaseModel
+            attr_reader code: String?
+
+            def code=: (String) -> String
+
+            attr_reader speech_model: String?
+
+            def speech_model=: (String) -> String
+
+            attr_reader transcription_provider: String?
+
+            def transcription_provider=: (String) -> String
+
+            attr_reader tts_provider: String?
+
+            def tts_provider=: (String) -> String
+
+            attr_reader voice: String?
+
+            def voice=: (String) -> String
+
+            def initialize: (
+              ?code: String,
+              ?speech_model: String,
+              ?transcription_provider: String,
+              ?tts_provider: String,
+              ?voice: String
+            ) -> void
+
+            def to_hash: -> {
+              code: String,
+              speech_model: String,
+              transcription_provider: String,
+              tts_provider: String,
+              voice: String
+            }
+          end
         end
 
         type interruption_settings =
@@ -296,65 +408,6 @@ module Telnyx
             tts_provider: String,
             voice: String
           }
-        end
-
-        type participant =
-          {
-            id: String,
-            role: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::role,
-            name: String,
-            on_hangup: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::on_hangup
-          }
-
-        class Participant < Telnyx::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_accessor role: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::role
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader on_hangup: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::on_hangup?
-
-          def on_hangup=: (
-            Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::on_hangup
-          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::on_hangup
-
-          def initialize: (
-            id: String,
-            role: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::role,
-            ?name: String,
-            ?on_hangup: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::on_hangup
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            role: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::role,
-            name: String,
-            on_hangup: Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::on_hangup
-          }
-
-          type role = :user
-
-          module Role
-            extend Telnyx::Internal::Type::Enum
-
-            USER: :user
-
-            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::role]
-          end
-
-          type on_hangup = :continue_conversation | :end_conversation
-
-          module OnHangup
-            extend Telnyx::Internal::Type::Enum
-
-            CONTINUE_CONVERSATION: :continue_conversation
-            END_CONVERSATION: :end_conversation
-
-            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::on_hangup]
-          end
         end
 
         type transcription =

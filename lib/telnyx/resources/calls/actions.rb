@@ -945,11 +945,9 @@ module Telnyx
         #   the customer WebSocket disconnects, the webhook payload `reason` is
         #   `customer_disconnect`.
         #
-        # @overload start_conversation_relay(call_control_id, conversation_relay_url:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, participants: nil, send_message_history_updates: nil, transcription: nil, transcription_language: nil, tts_language: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @overload start_conversation_relay(call_control_id, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, conversation_relay_settings: nil, conversation_relay_url: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, transcription: nil, transcription_language: nil, tts_language: nil, voice: nil, voice_settings: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
-        #
-        # @param conversation_relay_url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
         #
         # @param assistant [Telnyx::Models::Calls::ActionStartConversationRelayParams::Assistant] Custom parameters for the Conversation Relay session. Pass key-value data as `as
         #
@@ -959,6 +957,10 @@ module Telnyx
         #
         # @param conversation_relay_dtmf_detection [Boolean] Enable DTMF detection for the relay session.
         #
+        # @param conversation_relay_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings] Conversation Relay connection settings. This object is used by TeXML Call Script
+        #
+        # @param conversation_relay_url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
+        #
         # @param greeting [String] Text played when the relay session starts.
         #
         # @param interruption_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings] Settings for handling caller interruptions during Conversation Relay speech.
@@ -967,17 +969,11 @@ module Telnyx
         #
         # @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>] Language-specific TTS and transcription settings. Use this when the relay sessio
         #
-        # @param participants [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant>] Participants to add to the conversation.
-        #
-        # @param send_message_history_updates [Boolean] When true, sends message history update webhooks.
-        #
         # @param transcription [Telnyx::Models::Calls::ActionStartConversationRelayParams::Transcription] Speech-to-text settings for Conversation Relay.
         #
         # @param transcription_language [String] Language to use for speech recognition. Overrides `language` for transcription w
         #
         # @param tts_language [String] Language to use for text-to-speech. Overrides `language` for TTS when provided.
-        #
-        # @param user_response_timeout_ms [Integer] Time in milliseconds to wait for caller input before timing out.
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
@@ -988,7 +984,7 @@ module Telnyx
         # @return [Telnyx::Models::Calls::ActionStartConversationRelayResponse]
         #
         # @see Telnyx::Models::Calls::ActionStartConversationRelayParams
-        def start_conversation_relay(call_control_id, params)
+        def start_conversation_relay(call_control_id, params = {})
           parsed, options = Telnyx::Calls::ActionStartConversationRelayParams.dump_request(params)
           @client.request(
             method: :post,

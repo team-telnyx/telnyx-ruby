@@ -268,21 +268,19 @@ module Telnyx
 
         def start_conversation_relay: (
           String call_control_id,
-          conversation_relay_url: String,
           ?assistant: Telnyx::Calls::ActionStartConversationRelayParams::Assistant,
           ?client_state: String,
           ?command_id: String,
           ?conversation_relay_dtmf_detection: bool,
+          ?conversation_relay_settings: Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings,
+          ?conversation_relay_url: String,
           ?greeting: String,
           ?interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings,
           ?language: String,
           ?languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language],
-          ?participants: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Participant],
-          ?send_message_history_updates: bool,
           ?transcription: Telnyx::Calls::ActionStartConversationRelayParams::Transcription,
           ?transcription_language: String,
           ?tts_language: String,
-          ?user_response_timeout_ms: Integer,
           ?voice: String,
           ?voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::voice_settings,
           ?request_options: Telnyx::request_opts
