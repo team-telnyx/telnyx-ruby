@@ -56,16 +56,18 @@ module Telnyx
       attr_writer :from_display_name
 
       # The media_name used for the fax's media. Must point to a file previously
-      # uploaded to api.telnyx.com/v2/media by the same user/organization. media_name
-      # and media_url/contents can't be submitted together.
+      # uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
+      # formats: PDF, TIFF, JPEG, PNG, DOC, DOCX, RTF, and TXT. media_name and
+      # media_url/contents can't be submitted together.
       sig { returns(T.nilable(String)) }
       attr_reader :media_name
 
       sig { params(media_name: String).void }
       attr_writer :media_name
 
-      # The URL (or list of URLs) to the PDF used for the fax's media. media_url and
-      # media_name/contents can't be submitted together.
+      # The URL (or list of URLs) to the fax document. Supported formats: PDF, TIFF,
+      # JPEG, PNG, DOC, DOCX, RTF, and TXT. media_url and media_name/contents can't be
+      # submitted together.
       sig { returns(T.nilable(String)) }
       attr_reader :media_url
 
@@ -187,11 +189,13 @@ module Telnyx
         # destination (`to` number).
         from_display_name: nil,
         # The media_name used for the fax's media. Must point to a file previously
-        # uploaded to api.telnyx.com/v2/media by the same user/organization. media_name
-        # and media_url/contents can't be submitted together.
+        # uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
+        # formats: PDF, TIFF, JPEG, PNG, DOC, DOCX, RTF, and TXT. media_name and
+        # media_url/contents can't be submitted together.
         media_name: nil,
-        # The URL (or list of URLs) to the PDF used for the fax's media. media_url and
-        # media_name/contents can't be submitted together.
+        # The URL (or list of URLs) to the fax document. Supported formats: PDF, TIFF,
+        # JPEG, PNG, DOC, DOCX, RTF, and TXT. media_url and media_name/contents can't be
+        # submitted together.
         media_url: nil,
         # If `store_preview` was set to `true`, this is a link to temporary location. Link
         # expires after 10 minutes.

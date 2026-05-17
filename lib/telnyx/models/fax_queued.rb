@@ -107,8 +107,9 @@ module Telnyx
 
           # @!attribute media_name
           #   The media_name used for the fax's media. Must point to a file previously
-          #   uploaded to api.telnyx.com/v2/media by the same user/organization. media_name
-          #   and media_url/contents can't be submitted together.
+          #   uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
+          #   formats: PDF, TIFF, JPEG, PNG, DOC, DOCX, RTF, and TXT. media_name and
+          #   media_url/contents can't be submitted together.
           #
           #   @return [String, nil]
           optional :media_name, String

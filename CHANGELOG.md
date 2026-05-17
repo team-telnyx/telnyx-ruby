@@ -1,5 +1,22 @@
 # Changelog
 
+## 5.113.0 (2026-05-17)
+
+Full Changelog: [v5.112.0...v5.113.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.112.0...v5.113.0)
+
+### Features
+
+* Add Speechmatics transcription engine to Call Control API ([a2e9a35](https://github.com/team-telnyx/telnyx-ruby/commit/a2e9a3538bbb3c20ddbaf29cf7685c45a2dd12d0))
+* **api:** manual updates ([c04bcfc](https://github.com/team-telnyx/telnyx-ruby/commit/c04bcfcbe3536a42b8c29907f4fda054f864dea9))
+* Document PremiumCallScreening detection mode ([59e5cc4](https://github.com/team-telnyx/telnyx-ruby/commit/59e5cc49d695e85b9dd52b594ba312fd46103146))
+* Fix Conversation Relay expected webhook ([9207e59](https://github.com/team-telnyx/telnyx-ruby/commit/9207e59b39287b242995b437c2cde1f8dbaf7eb6))
+* Update Conversation Relay start parameters ([8b3d719](https://github.com/team-telnyx/telnyx-ruby/commit/8b3d71908a08b7773e80143521dd1bb8a7001872))
+
+
+### Documentation
+
+* add supported file formats to Send Fax endpoint ([b81adb8](https://github.com/team-telnyx/telnyx-ruby/commit/b81adb8bdf3c3b461e9149064347cfa222ab8c11))
+
 ## 5.112.0 (2026-05-14)
 
 Full Changelog: [v5.111.0...v5.112.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.111.0...v5.112.0)

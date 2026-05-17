@@ -55,6 +55,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::machine_detection,
+                machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
@@ -159,6 +160,10 @@ module Telnyx
               def machine_detection=: (
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::machine_detection
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::machine_detection
+
+              attr_reader machine_detection_prompt_end_timeout: Integer?
+
+              def machine_detection_prompt_end_timeout=: (Integer) -> Integer
 
               attr_reader machine_detection_silence_timeout: Integer?
 
@@ -307,6 +312,7 @@ module Telnyx
                 ?fallback_url: String,
                 ?from: String,
                 ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::machine_detection,
+                ?machine_detection_prompt_end_timeout: Integer,
                 ?machine_detection_silence_timeout: Integer,
                 ?machine_detection_speech_end_threshold: Integer,
                 ?machine_detection_speech_threshold: Integer,
@@ -354,6 +360,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::machine_detection,
+                machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
@@ -428,13 +435,14 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::deepfake_detection_callback_method]
               end
 
-              type detection_mode = :Premium | :Regular
+              type detection_mode = :Premium | :Regular | :PremiumCallScreening
 
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
                 PREMIUM: :Premium
                 REGULAR: :Regular
+                PREMIUM_CALL_SCREENING: :PremiumCallScreening
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL::detection_mode]
               end
@@ -590,6 +598,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::machine_detection,
+                machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
@@ -694,6 +703,10 @@ module Telnyx
               def machine_detection=: (
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::machine_detection
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::machine_detection
+
+              attr_reader machine_detection_prompt_end_timeout: Integer?
+
+              def machine_detection_prompt_end_timeout=: (Integer) -> Integer
 
               attr_reader machine_detection_silence_timeout: Integer?
 
@@ -842,6 +855,7 @@ module Telnyx
                 ?fallback_url: String,
                 ?from: String,
                 ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::machine_detection,
+                ?machine_detection_prompt_end_timeout: Integer,
                 ?machine_detection_silence_timeout: Integer,
                 ?machine_detection_speech_end_threshold: Integer,
                 ?machine_detection_speech_threshold: Integer,
@@ -889,6 +903,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::machine_detection,
+                machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
@@ -963,13 +978,14 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::deepfake_detection_callback_method]
               end
 
-              type detection_mode = :Premium | :Regular
+              type detection_mode = :Premium | :Regular | :PremiumCallScreening
 
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
                 PREMIUM: :Premium
                 REGULAR: :Regular
+                PREMIUM_CALL_SCREENING: :PremiumCallScreening
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml::detection_mode]
               end
@@ -1124,6 +1140,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::machine_detection,
+                machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
@@ -1227,6 +1244,10 @@ module Telnyx
               def machine_detection=: (
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::machine_detection
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::machine_detection
+
+              attr_reader machine_detection_prompt_end_timeout: Integer?
+
+              def machine_detection_prompt_end_timeout=: (Integer) -> Integer
 
               attr_reader machine_detection_silence_timeout: Integer?
 
@@ -1376,6 +1397,7 @@ module Telnyx
                 ?fallback_url: String,
                 ?from: String,
                 ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::machine_detection,
+                ?machine_detection_prompt_end_timeout: Integer,
                 ?machine_detection_silence_timeout: Integer,
                 ?machine_detection_speech_end_threshold: Integer,
                 ?machine_detection_speech_threshold: Integer,
@@ -1423,6 +1445,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::machine_detection,
+                machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
@@ -1498,13 +1521,14 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::deepfake_detection_callback_method]
               end
 
-              type detection_mode = :Premium | :Regular
+              type detection_mode = :Premium | :Regular | :PremiumCallScreening
 
               module DetectionMode
                 extend Telnyx::Internal::Type::Enum
 
                 PREMIUM: :Premium
                 REGULAR: :Regular
+                PREMIUM_CALL_SCREENING: :PremiumCallScreening
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::detection_mode]
               end

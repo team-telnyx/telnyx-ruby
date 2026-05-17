@@ -451,7 +451,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -662,7 +662,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -1075,7 +1075,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1200,7 +1200,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1278,16 +1278,20 @@ module Telnyx
         #
         # **Expected Webhooks:**
         #
-        # - `conversation_relay.disconnected`
+        # - `call.conversation.ended` - Sent when the Conversation Relay session ends. If
+        #   the customer WebSocket disconnects, the webhook payload `reason` is
+        #   `customer_disconnect`.
         sig do
           params(
             call_control_id: String,
-            conversation_relay_url: String,
             assistant:
               Telnyx::Calls::ActionStartConversationRelayParams::Assistant::OrHash,
             client_state: String,
             command_id: String,
             conversation_relay_dtmf_detection: T::Boolean,
+            conversation_relay_settings:
+              Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::OrHash,
+            conversation_relay_url: String,
             greeting: String,
             interruption_settings:
               Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings::OrHash,
@@ -1296,16 +1300,10 @@ module Telnyx
               T::Array[
                 Telnyx::Calls::ActionStartConversationRelayParams::Language::OrHash
               ],
-            participants:
-              T::Array[
-                Telnyx::Calls::ActionStartConversationRelayParams::Participant::OrHash
-              ],
-            send_message_history_updates: T::Boolean,
             transcription:
               Telnyx::Calls::ActionStartConversationRelayParams::Transcription::OrHash,
             transcription_language: String,
             tts_language: String,
-            user_response_timeout_ms: Integer,
             voice: String,
             voice_settings:
               T.any(
@@ -1315,7 +1313,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartConversationRelayResponse)
@@ -1323,9 +1321,6 @@ module Telnyx
         def start_conversation_relay(
           # Unique identifier and token for controlling the call
           call_control_id,
-          # WebSocket URL for your Conversation Relay server. Must start with `ws://` or
-          # `wss://`.
-          conversation_relay_url:,
           # Custom parameters for the Conversation Relay session. Pass key-value data as
           # `assistant.dynamic_variables` to make it available to the relay session.
           assistant: nil,
@@ -1337,6 +1332,16 @@ module Telnyx
           command_id: nil,
           # Enable DTMF detection for the relay session.
           conversation_relay_dtmf_detection: nil,
+          # Conversation Relay connection settings. This object is used by TeXML Call
+          # Scripting's `<ConversationRelay>` verb. The `interruptible` and
+          # `interruptible_greeting` fields are shorthand for
+          # `interruption_settings.interruptible` and
+          # `interruption_settings.interruptible_greeting`; use top-level
+          # `interruption_settings` for the full interruption settings shape.
+          conversation_relay_settings: nil,
+          # WebSocket URL for your Conversation Relay server. Must start with `ws://` or
+          # `wss://`.
+          conversation_relay_url: nil,
           # Text played when the relay session starts.
           greeting: nil,
           # Settings for handling caller interruptions during Conversation Relay speech.
@@ -1348,10 +1353,6 @@ module Telnyx
           # Language-specific TTS and transcription settings. Use this when the relay
           # session needs per-language provider, voice, or speech model configuration.
           languages: nil,
-          # Participants to add to the conversation.
-          participants: nil,
-          # When true, sends message history update webhooks.
-          send_message_history_updates: nil,
           # Speech-to-text settings for Conversation Relay.
           transcription: nil,
           # Language to use for speech recognition. Overrides `language` for transcription
@@ -1359,8 +1360,6 @@ module Telnyx
           transcription_language: nil,
           # Language to use for text-to-speech. Overrides `language` for TTS when provided.
           tts_language: nil,
-          # Time in milliseconds to wait for caller input before timing out.
-          user_response_timeout_ms: nil,
           # The voice to be used by the voice assistant. Currently we support ElevenLabs,
           # Telnyx and AWS voices.
           #
@@ -1786,8 +1785,9 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
+                Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,

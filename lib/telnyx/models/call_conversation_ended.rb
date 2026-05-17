@@ -131,6 +131,13 @@ module Telnyx
         #   @return [String, nil]
         optional :llm_model, String
 
+        # @!attribute reason
+        #   Reason the conversation ended. For Conversation Relay, `customer_disconnect`
+        #   indicates that the customer WebSocket disconnected.
+        #
+        #   @return [String, nil]
+        optional :reason, String, nil?: true
+
         # @!attribute stt_model
         #   The speech-to-text model used in the conversation.
         #
@@ -161,7 +168,10 @@ module Telnyx
         #   @return [String, nil]
         optional :tts_voice_id, String
 
-        # @!method initialize(assistant_id: nil, call_control_id: nil, call_leg_id: nil, call_session_id: nil, calling_party_type: nil, client_state: nil, connection_id: nil, conversation_id: nil, duration_sec: nil, from: nil, llm_model: nil, stt_model: nil, to: nil, tts_model_id: nil, tts_provider: nil, tts_voice_id: nil)
+        # @!method initialize(assistant_id: nil, call_control_id: nil, call_leg_id: nil, call_session_id: nil, calling_party_type: nil, client_state: nil, connection_id: nil, conversation_id: nil, duration_sec: nil, from: nil, llm_model: nil, reason: nil, stt_model: nil, to: nil, tts_model_id: nil, tts_provider: nil, tts_voice_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::CallConversationEnded::Payload} for more details.
+        #
         #   @param assistant_id [String] Unique identifier of the assistant involved in the call.
         #
         #   @param call_control_id [String] Call ID used to issue commands via Call Control API.
@@ -183,6 +193,8 @@ module Telnyx
         #   @param from [String] The caller's number or identifier.
         #
         #   @param llm_model [String] The large language model used during the conversation.
+        #
+        #   @param reason [String, nil] Reason the conversation ended. For Conversation Relay, `customer_disconnect` ind
         #
         #   @param stt_model [String] The speech-to-text model used in the conversation.
         #

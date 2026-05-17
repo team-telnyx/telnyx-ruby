@@ -13,13 +13,6 @@ module Telnyx
         #   @return [String]
         required :call_control_id, String
 
-        # @!attribute conversation_relay_url
-        #   WebSocket URL for your Conversation Relay server. Must start with `ws://` or
-        #   `wss://`.
-        #
-        #   @return [String]
-        required :conversation_relay_url, String
-
         # @!attribute assistant
         #   Custom parameters for the Conversation Relay session. Pass key-value data as
         #   `assistant.dynamic_variables` to make it available to the relay session.
@@ -46,6 +39,25 @@ module Telnyx
         #
         #   @return [Boolean, nil]
         optional :conversation_relay_dtmf_detection, Telnyx::Internal::Type::Boolean
+
+        # @!attribute conversation_relay_settings
+        #   Conversation Relay connection settings. This object is used by TeXML Call
+        #   Scripting's `<ConversationRelay>` verb. The `interruptible` and
+        #   `interruptible_greeting` fields are shorthand for
+        #   `interruption_settings.interruptible` and
+        #   `interruption_settings.interruptible_greeting`; use top-level
+        #   `interruption_settings` for the full interruption settings shape.
+        #
+        #   @return [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings, nil]
+        optional :conversation_relay_settings,
+                 -> { Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings }
+
+        # @!attribute conversation_relay_url
+        #   WebSocket URL for your Conversation Relay server. Must start with `ws://` or
+        #   `wss://`.
+        #
+        #   @return [String, nil]
+        optional :conversation_relay_url, String
 
         # @!attribute greeting
         #   Text played when the relay session starts.
@@ -76,19 +88,6 @@ module Telnyx
         optional :languages,
                  -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::ActionStartConversationRelayParams::Language] }
 
-        # @!attribute participants
-        #   Participants to add to the conversation.
-        #
-        #   @return [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant>, nil]
-        optional :participants,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::ActionStartConversationRelayParams::Participant] }
-
-        # @!attribute send_message_history_updates
-        #   When true, sends message history update webhooks.
-        #
-        #   @return [Boolean, nil]
-        optional :send_message_history_updates, Telnyx::Internal::Type::Boolean
-
         # @!attribute transcription
         #   Speech-to-text settings for Conversation Relay.
         #
@@ -107,12 +106,6 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :tts_language, String
-
-        # @!attribute user_response_timeout_ms
-        #   Time in milliseconds to wait for caller input before timing out.
-        #
-        #   @return [Integer, nil]
-        optional :user_response_timeout_ms, Integer
 
         # @!attribute voice
         #   The voice to be used by the voice assistant. Currently we support ElevenLabs,
@@ -148,16 +141,14 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings }
 
-        # @!method initialize(call_control_id:, conversation_relay_url:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, participants: nil, send_message_history_updates: nil, transcription: nil, transcription_language: nil, tts_language: nil, user_response_timeout_ms: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, conversation_relay_settings: nil, conversation_relay_url: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, transcription: nil, transcription_language: nil, tts_language: nil, voice: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartConversationRelayParams} for more details.
         #
         #   @param call_control_id [String]
-        #
-        #   @param conversation_relay_url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
         #
         #   @param assistant [Telnyx::Models::Calls::ActionStartConversationRelayParams::Assistant] Custom parameters for the Conversation Relay session. Pass key-value data as `as
         #
@@ -167,6 +158,10 @@ module Telnyx
         #
         #   @param conversation_relay_dtmf_detection [Boolean] Enable DTMF detection for the relay session.
         #
+        #   @param conversation_relay_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings] Conversation Relay connection settings. This object is used by TeXML Call Script
+        #
+        #   @param conversation_relay_url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
+        #
         #   @param greeting [String] Text played when the relay session starts.
         #
         #   @param interruption_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings] Settings for handling caller interruptions during Conversation Relay speech.
@@ -175,21 +170,15 @@ module Telnyx
         #
         #   @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>] Language-specific TTS and transcription settings. Use this when the relay sessio
         #
-        #   @param participants [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant>] Participants to add to the conversation.
-        #
-        #   @param send_message_history_updates [Boolean] When true, sends message history update webhooks.
-        #
         #   @param transcription [Telnyx::Models::Calls::ActionStartConversationRelayParams::Transcription] Speech-to-text settings for Conversation Relay.
         #
         #   @param transcription_language [String] Language to use for speech recognition. Overrides `language` for transcription w
         #
         #   @param tts_language [String] Language to use for text-to-speech. Overrides `language` for TTS when provided.
         #
-        #   @param user_response_timeout_ms [Integer] Time in milliseconds to wait for caller input before timing out.
-        #
         #   @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -205,6 +194,147 @@ module Telnyx
           #   `assistant.dynamic_variables` to make it available to the relay session.
           #
           #   @param dynamic_variables [Hash{Symbol=>String}] Custom key-value parameters forwarded to the Conversation Relay session.
+        end
+
+        class ConversationRelaySettings < Telnyx::Internal::Type::BaseModel
+          # @!attribute url
+          #   WebSocket URL for your Conversation Relay server. Must start with `ws://` or
+          #   `wss://`.
+          #
+          #   @return [String]
+          required :url, String
+
+          # @!attribute dtmf_detection
+          #   Whether to enable DTMF detection during the relay session.
+          #
+          #   @return [Boolean, nil]
+          optional :dtmf_detection, Telnyx::Internal::Type::Boolean
+
+          # @!attribute interruptible
+          #   Controls when caller input can interrupt assistant speech. `any` allows speech
+          #   or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+          #   only; `dtmf` allows DTMF only.
+          #
+          #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Interruptible, nil]
+          optional :interruptible,
+                   enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Interruptible }
+
+          # @!attribute interruptible_greeting
+          #   Controls when caller input can interrupt assistant speech. `any` allows speech
+          #   or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+          #   only; `dtmf` allows DTMF only.
+          #
+          #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::InterruptibleGreeting, nil]
+          optional :interruptible_greeting,
+                   enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::InterruptibleGreeting }
+
+          # @!attribute languages
+          #   Language-specific TTS and transcription settings.
+          #
+          #   @return [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language>, nil]
+          optional :languages,
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language] }
+
+          # @!method initialize(url:, dtmf_detection: nil, interruptible: nil, interruptible_greeting: nil, languages: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings}
+          #   for more details.
+          #
+          #   Conversation Relay connection settings. This object is used by TeXML Call
+          #   Scripting's `<ConversationRelay>` verb. The `interruptible` and
+          #   `interruptible_greeting` fields are shorthand for
+          #   `interruption_settings.interruptible` and
+          #   `interruption_settings.interruptible_greeting`; use top-level
+          #   `interruption_settings` for the full interruption settings shape.
+          #
+          #   @param url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
+          #
+          #   @param dtmf_detection [Boolean] Whether to enable DTMF detection during the relay session.
+          #
+          #   @param interruptible [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Interruptible] Controls when caller input can interrupt assistant speech. `any` allows speech o
+          #
+          #   @param interruptible_greeting [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::InterruptibleGreeting] Controls when caller input can interrupt assistant speech. `any` allows speech o
+          #
+          #   @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language>] Language-specific TTS and transcription settings.
+
+          # Controls when caller input can interrupt assistant speech. `any` allows speech
+          # or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+          # only; `dtmf` allows DTMF only.
+          #
+          # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings#interruptible
+          module Interruptible
+            extend Telnyx::Internal::Type::Enum
+
+            NONE = :none
+            ANY = :any
+            SPEECH = :speech
+            DTMF = :dtmf
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Controls when caller input can interrupt assistant speech. `any` allows speech
+          # or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+          # only; `dtmf` allows DTMF only.
+          #
+          # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings#interruptible_greeting
+          module InterruptibleGreeting
+            extend Telnyx::Internal::Type::Enum
+
+            NONE = :none
+            ANY = :any
+            SPEECH = :speech
+            DTMF = :dtmf
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          class Language < Telnyx::Internal::Type::BaseModel
+            # @!attribute code
+            #   BCP 47 language code.
+            #
+            #   @return [String, nil]
+            optional :code, String
+
+            # @!attribute speech_model
+            #   Speech recognition model for this language.
+            #
+            #   @return [String, nil]
+            optional :speech_model, String
+
+            # @!attribute transcription_provider
+            #   Speech-to-text provider for this language.
+            #
+            #   @return [String, nil]
+            optional :transcription_provider, String
+
+            # @!attribute tts_provider
+            #   Text-to-speech provider for this language.
+            #
+            #   @return [String, nil]
+            optional :tts_provider, String
+
+            # @!attribute voice
+            #   Voice identifier for this language.
+            #
+            #   @return [String, nil]
+            optional :voice, String
+
+            # @!method initialize(code: nil, speech_model: nil, transcription_provider: nil, tts_provider: nil, voice: nil)
+            #   Language-specific speech and transcription settings for Conversation Relay.
+            #
+            #   @param code [String] BCP 47 language code.
+            #
+            #   @param speech_model [String] Speech recognition model for this language.
+            #
+            #   @param transcription_provider [String] Speech-to-text provider for this language.
+            #
+            #   @param tts_provider [String] Text-to-speech provider for this language.
+            #
+            #   @param voice [String] Voice identifier for this language.
+          end
         end
 
         class InterruptionSettings < Telnyx::Internal::Type::BaseModel
@@ -354,66 +484,6 @@ module Telnyx
           #   @param voice [String] Voice identifier for this language.
         end
 
-        class Participant < Telnyx::Internal::Type::BaseModel
-          # @!attribute id
-          #   The call_control_id of the participant to add to the conversation.
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!attribute role
-          #   The role of the participant in the conversation.
-          #
-          #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::Role]
-          required :role, enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::Participant::Role }
-
-          # @!attribute name
-          #   Display name for the participant.
-          #
-          #   @return [String, nil]
-          optional :name, String
-
-          # @!attribute on_hangup
-          #   Determines what happens to the conversation when this participant hangs up.
-          #
-          #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::OnHangup, nil]
-          optional :on_hangup, enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::Participant::OnHangup }
-
-          # @!method initialize(id:, role:, name: nil, on_hangup: nil)
-          #   @param id [String] The call_control_id of the participant to add to the conversation.
-          #
-          #   @param role [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::Role] The role of the participant in the conversation.
-          #
-          #   @param name [String] Display name for the participant.
-          #
-          #   @param on_hangup [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant::OnHangup] Determines what happens to the conversation when this participant hangs up.
-
-          # The role of the participant in the conversation.
-          #
-          # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant#role
-          module Role
-            extend Telnyx::Internal::Type::Enum
-
-            USER = :user
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
-          # Determines what happens to the conversation when this participant hangs up.
-          #
-          # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::Participant#on_hangup
-          module OnHangup
-            extend Telnyx::Internal::Type::Enum
-
-            CONTINUE_CONVERSATION = :continue_conversation
-            END_CONVERSATION = :end_conversation
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
-
         class Transcription < Telnyx::Internal::Type::BaseModel
           # @!attribute language
           #   Transcription language.
@@ -461,29 +531,10 @@ module Telnyx
 
           variant :resemble, -> { Telnyx::ResembleVoiceSettings }
 
-          variant :xai, -> { Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai }
-
-          class Xai < Telnyx::Internal::Type::BaseModel
-            # @!attribute type
-            #   Voice settings provider type
-            #
-            #   @return [Symbol, :xai]
-            required :type, const: :xai
-
-            # @!attribute language
-            #   Language code, or `auto` to detect automatically.
-            #
-            #   @return [String, nil]
-            optional :language, String
-
-            # @!method initialize(language: nil, type: :xai)
-            #   @param language [String] Language code, or `auto` to detect automatically.
-            #
-            #   @param type [Symbol, :xai] Voice settings provider type
-          end
+          variant :xai, -> { Telnyx::XaiVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings)]
         end
       end
     end
