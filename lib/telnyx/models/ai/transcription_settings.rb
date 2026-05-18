@@ -16,7 +16,9 @@ module Telnyx
         #   supported models will automatically detect the language. For `deepgram/flux`,
         #   supported values are: `auto` (Telnyx language detection controls the language
         #   hint), `multi` (no language hint), and language-specific hints `en`, `es`, `fr`,
-        #   `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`.
+        #   `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For `soniox/stt-rt-v4`, `auto`
+        #   omits the language hint and lets Soniox auto-detect; ISO 639-1 codes (e.g. `en`,
+        #   `es`) bias detection toward that language.
         #
         #   @return [String, nil]
         optional :language, String
@@ -32,6 +34,8 @@ module Telnyx
         #   - `assemblyai/universal-streaming` is a multilingual streaming model with
         #     configurable turn detection.
         #   - `xai/grok-stt` is a multilingual Grok STT model.
+        #   - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
+        #     detection and configurable endpointing.
         #
         #   @return [Symbol, Telnyx::Models::AI::TranscriptionSettings::Model, nil]
         optional :model, enum: -> { Telnyx::AI::TranscriptionSettings::Model }
@@ -72,6 +76,8 @@ module Telnyx
         # - `assemblyai/universal-streaming` is a multilingual streaming model with
         #   configurable turn detection.
         # - `xai/grok-stt` is a multilingual Grok STT model.
+        # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
+        #   detection and configurable endpointing.
         #
         # @see Telnyx::Models::AI::TranscriptionSettings#model
         module Model
@@ -83,6 +89,7 @@ module Telnyx
           AZURE_FAST = :"azure/fast"
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"
+          SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
           DISTIL_WHISPER_DISTIL_LARGE_V2 = :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO = :"openai/whisper-large-v3-turbo"
 
