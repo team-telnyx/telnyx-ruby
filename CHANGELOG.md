@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.115.0 (2026-05-18)
+
+Full Changelog: [v5.114.0...v5.115.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.114.0...v5.115.0)
+
+### Features
+
+* Telapps 101 soniox spec ([5b09c00](https://github.com/team-telnyx/telnyx-ruby/commit/5b09c000fbe70851549f0a7ed4783da22f91632f))
+
 ## 5.114.0 (2026-05-18)
 
 Full Changelog: [v5.113.0...v5.114.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.113.0...v5.114.0)
