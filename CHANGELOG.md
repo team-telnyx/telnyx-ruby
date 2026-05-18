@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.114.0 (2026-05-18)
+
+Full Changelog: [v5.113.0...v5.114.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.113.0...v5.114.0)
+
+### Features
+
+* Add assistant background audio volume to OpenAPI spec ([36ed5d6](https://github.com/team-telnyx/telnyx-ruby/commit/36ed5d6bd0a9830cee19fd80e4fd6acadc74f8f2))
+
 ## 5.113.0 (2026-05-17)
 
 Full Changelog: [v5.112.0...v5.113.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.112.0...v5.113.0)
