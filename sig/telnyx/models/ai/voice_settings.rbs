@@ -98,7 +98,8 @@ module Telnyx
           type predefined_media =
             {
               type: :predefined_media,
-              value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::value
+              value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::value,
+              volume: Float
             }
 
           class PredefinedMedia < Telnyx::Internal::Type::BaseModel
@@ -106,14 +107,20 @@ module Telnyx
 
             attr_accessor value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::value
 
+            attr_reader volume: Float?
+
+            def volume=: (Float) -> Float
+
             def initialize: (
               value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::value,
+              ?volume: Float,
               ?type: :predefined_media
             ) -> void
 
             def to_hash: -> {
               type: :predefined_media,
-              value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::value
+              value: Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::value,
+              volume: Float
             }
 
             type value = :silence | :office

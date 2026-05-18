@@ -153,8 +153,21 @@ module Telnyx
             #   @return [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value]
             required :value, enum: -> { Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value }
 
-            # @!method initialize(value:, type: :predefined_media)
+            # @!attribute volume
+            #   Volume level for the predefined background audio. Supports values from 0.1 to
+            #   1.0 in 0.1 increments.
+            #
+            #   @return [Float, nil]
+            optional :volume, Float
+
+            # @!method initialize(value:, volume: nil, type: :predefined_media)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia} for more
+            #   details.
+            #
             #   @param value [Symbol, Telnyx::Models::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value] The predefined media to use. `silence` disables background audio.
+            #
+            #   @param volume [Float] Volume level for the predefined background audio. Supports values from 0.1 to 1.
             #
             #   @param type [Symbol, :predefined_media] Select from predefined media options.
 
