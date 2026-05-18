@@ -21,7 +21,9 @@ module Telnyx
         # supported models will automatically detect the language. For `deepgram/flux`,
         # supported values are: `auto` (Telnyx language detection controls the language
         # hint), `multi` (no language hint), and language-specific hints `en`, `es`, `fr`,
-        # `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`.
+        # `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For `soniox/stt-rt-v4`, `auto`
+        # omits the language hint and lets Soniox auto-detect; ISO 639-1 codes (e.g. `en`,
+        # `es`) bias detection toward that language.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -38,6 +40,8 @@ module Telnyx
         # - `assemblyai/universal-streaming` is a multilingual streaming model with
         #   configurable turn detection.
         # - `xai/grok-stt` is a multilingual Grok STT model.
+        # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
+        #   detection and configurable endpointing.
         sig do
           returns(T.nilable(Telnyx::AI::TranscriptionSettings::Model::OrSymbol))
         end
@@ -81,7 +85,9 @@ module Telnyx
           # supported models will automatically detect the language. For `deepgram/flux`,
           # supported values are: `auto` (Telnyx language detection controls the language
           # hint), `multi` (no language hint), and language-specific hints `en`, `es`, `fr`,
-          # `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`.
+          # `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For `soniox/stt-rt-v4`, `auto`
+          # omits the language hint and lets Soniox auto-detect; ISO 639-1 codes (e.g. `en`,
+          # `es`) bias detection toward that language.
           language: nil,
           # The speech to text model to be used by the voice assistant. All Deepgram models
           # are run on-premise.
@@ -93,6 +99,8 @@ module Telnyx
           # - `assemblyai/universal-streaming` is a multilingual streaming model with
           #   configurable turn detection.
           # - `xai/grok-stt` is a multilingual Grok STT model.
+          # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
+          #   detection and configurable endpointing.
           model: nil,
           # Region on third party cloud providers (currently Azure) if using one of their
           # models. Some regions require `api_key_ref`.
@@ -125,6 +133,8 @@ module Telnyx
         # - `assemblyai/universal-streaming` is a multilingual streaming model with
         #   configurable turn detection.
         # - `xai/grok-stt` is a multilingual Grok STT model.
+        # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
+        #   detection and configurable endpointing.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -162,6 +172,11 @@ module Telnyx
           XAI_GROK_STT =
             T.let(
               :"xai/grok-stt",
+              Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
+            )
+          SONIOX_STT_RT_V4 =
+            T.let(
+              :"soniox/stt-rt-v4",
               Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
             )
           DISTIL_WHISPER_DISTIL_LARGE_V2 =

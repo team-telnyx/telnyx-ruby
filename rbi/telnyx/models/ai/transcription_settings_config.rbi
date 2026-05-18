@@ -21,6 +21,14 @@ module Telnyx
         sig { params(eager_eot_threshold: Float).void }
         attr_writer :eager_eot_threshold
 
+        # Available only for soniox/stt-rt-v4. When true, Soniox emits end-of-utterance
+        # events at the cadence configured by `max_endpoint_delay_ms`.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :enable_endpoint_detection
+
+        sig { params(enable_endpoint_detection: T::Boolean).void }
+        attr_writer :enable_endpoint_detection
+
         # Available only for assemblyai/universal-streaming. Confidence level required to
         # trigger an end of turn. Higher values require more certainty before ending a
         # turn.
@@ -46,6 +54,14 @@ module Telnyx
         sig { params(eot_timeout_ms: Integer).void }
         attr_writer :eot_timeout_ms
 
+        # Available only for soniox/stt-rt-v4. When true, Soniox streams interim
+        # (non-final) results in addition to finalized transcripts.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :interim_results
+
+        sig { params(interim_results: T::Boolean).void }
+        attr_writer :interim_results
+
         # Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
         # key terms to boost for recognition during transcription. Helps improve accuracy
         # for domain-specific terminology, proper nouns, or uncommon words. This field may
@@ -58,6 +74,15 @@ module Telnyx
 
         sig { params(keyterm: String).void }
         attr_writer :keyterm
+
+        # Available only for soniox/stt-rt-v4. Maximum silence (in milliseconds) before
+        # Soniox emits an end-of-utterance event. Only honored when
+        # `enable_endpoint_detection` is true.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :max_endpoint_delay_ms
+
+        sig { params(max_endpoint_delay_ms: Integer).void }
+        attr_writer :max_endpoint_delay_ms
 
         # Available only for assemblyai/universal-streaming. Maximum duration of silence
         # in milliseconds before forcing an end of turn.
@@ -91,10 +116,13 @@ module Telnyx
         sig do
           params(
             eager_eot_threshold: Float,
+            enable_endpoint_detection: T::Boolean,
             end_of_turn_confidence_threshold: Float,
             eot_threshold: Float,
             eot_timeout_ms: Integer,
+            interim_results: T::Boolean,
             keyterm: String,
+            max_endpoint_delay_ms: Integer,
             max_turn_silence: Integer,
             min_turn_silence: Integer,
             numerals: T::Boolean,
@@ -106,6 +134,9 @@ module Telnyx
           # detection. Must be lower than or equal to eot_threshold. Setting this equal to
           # eot_threshold effectively disables eager end of turn.
           eager_eot_threshold: nil,
+          # Available only for soniox/stt-rt-v4. When true, Soniox emits end-of-utterance
+          # events at the cadence configured by `max_endpoint_delay_ms`.
+          enable_endpoint_detection: nil,
           # Available only for assemblyai/universal-streaming. Confidence level required to
           # trigger an end of turn. Higher values require more certainty before ending a
           # turn.
@@ -116,6 +147,9 @@ module Telnyx
           # Available only for deepgram/flux. Maximum milliseconds of silence before forcing
           # an end of turn, regardless of confidence.
           eot_timeout_ms: nil,
+          # Available only for soniox/stt-rt-v4. When true, Soniox streams interim
+          # (non-final) results in addition to finalized transcripts.
+          interim_results: nil,
           # Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
           # key terms to boost for recognition during transcription. Helps improve accuracy
           # for domain-specific terminology, proper nouns, or uncommon words. This field may
@@ -124,6 +158,10 @@ module Telnyx
           # using mustache syntax (e.g. `Telnyx,{{customer_name}},VoIP`). Variables are
           # resolved at call time before the value is sent to the speech-to-text engine.
           keyterm: nil,
+          # Available only for soniox/stt-rt-v4. Maximum silence (in milliseconds) before
+          # Soniox emits an end-of-utterance event. Only honored when
+          # `enable_endpoint_detection` is true.
+          max_endpoint_delay_ms: nil,
           # Available only for assemblyai/universal-streaming. Maximum duration of silence
           # in milliseconds before forcing an end of turn.
           max_turn_silence: nil,
@@ -140,10 +178,13 @@ module Telnyx
           override.returns(
             {
               eager_eot_threshold: Float,
+              enable_endpoint_detection: T::Boolean,
               end_of_turn_confidence_threshold: Float,
               eot_threshold: Float,
               eot_timeout_ms: Integer,
+              interim_results: T::Boolean,
               keyterm: String,
+              max_endpoint_delay_ms: Integer,
               max_turn_silence: Integer,
               min_turn_silence: Integer,
               numerals: T::Boolean,

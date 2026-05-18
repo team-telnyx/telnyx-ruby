@@ -14,7 +14,9 @@ module Telnyx
         # meaningful values depend on the selected transcription `model`. For
         # `deepgram/flux`, supported values are: `auto` (Telnyx language detection
         # controls the language hint), `multi` (no language hint), and language-specific
-        # hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`.
+        # hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For
+        # `soniox/stt-rt-v4`, `auto` omits the language hint and lets Soniox auto-detect;
+        # ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -30,6 +32,8 @@ module Telnyx
         #   transcription.
         # - `assemblyai/universal-streaming` for live streaming transcription.
         # - `xai/grok-stt` for live streaming transcription.
+        # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
+        #   automatic language detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -67,7 +71,9 @@ module Telnyx
           # meaningful values depend on the selected transcription `model`. For
           # `deepgram/flux`, supported values are: `auto` (Telnyx language detection
           # controls the language hint), `multi` (no language hint), and language-specific
-          # hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`.
+          # hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For
+          # `soniox/stt-rt-v4`, `auto` omits the language hint and lets Soniox auto-detect;
+          # ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language.
           language: nil,
           # The speech to text model to be used by the voice assistant. Supported models
           # include:
@@ -78,6 +84,8 @@ module Telnyx
           #   transcription.
           # - `assemblyai/universal-streaming` for live streaming transcription.
           # - `xai/grok-stt` for live streaming transcription.
+          # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
+          #   automatic language detection.
           # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
           #   unsupported regions require `api_key_ref`.
           # - `google/latest_long` for non-streaming multilingual transcription.
@@ -109,6 +117,8 @@ module Telnyx
         #   transcription.
         # - `assemblyai/universal-streaming` for live streaming transcription.
         # - `xai/grok-stt` for live streaming transcription.
+        # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
+        #   automatic language detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -163,6 +173,11 @@ module Telnyx
           XAI_GROK_STT =
             T.let(
               :"xai/grok-stt",
+              Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
+            )
+          SONIOX_STT_RT_V4 =
+            T.let(
+              :"soniox/stt-rt-v4",
               Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
             )
           AZURE_FAST =
