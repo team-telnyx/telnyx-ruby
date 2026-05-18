@@ -7,13 +7,13 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!attribute params
+      # @!attribute body
       #
       #   @return [Hash{Symbol=>Object}]
-      required :params, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      required :body, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-      # @!method initialize(params:, request_options: {})
-      #   @param params [Hash{Symbol=>Object}]
+      # @!method initialize(body:, request_options: {})
+      #   @param body [Hash{Symbol=>Object}]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

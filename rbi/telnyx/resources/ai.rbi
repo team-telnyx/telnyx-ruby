@@ -54,11 +54,11 @@ module Telnyx
       # Conversation ID to leverage persistent conversations.
       sig do
         params(
-          params: T::Hash[Symbol, T.anything],
+          body: T::Hash[Symbol, T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T::Hash[Symbol, T.anything])
       end
-      def create_response(params:, request_options: {})
+      def create_response(body:, request_options: {})
       end
 
       # **Deprecated**: Use `GET /v2/ai/openai/models` instead.

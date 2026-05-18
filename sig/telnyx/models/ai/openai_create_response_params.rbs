@@ -4,7 +4,7 @@ module Telnyx
       type openai_create_response_params =
         {
           conversation: String,
-          input: ::Hash[Symbol, top],
+          input: top,
           instructions: String,
           model: String,
           stream: bool
@@ -19,9 +19,9 @@ module Telnyx
 
         def conversation=: (String) -> String
 
-        attr_reader input: ::Hash[Symbol, top]?
+        attr_reader input: top?
 
-        def input=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+        def input=: (top) -> top
 
         attr_reader instructions: String?
 
@@ -37,7 +37,7 @@ module Telnyx
 
         def initialize: (
           ?conversation: String,
-          ?input: ::Hash[Symbol, top],
+          ?input: top,
           ?instructions: String,
           ?model: String,
           ?stream: bool,
@@ -46,7 +46,7 @@ module Telnyx
 
         def to_hash: -> {
           conversation: String,
-          input: ::Hash[Symbol, top],
+          input: top,
           instructions: String,
           model: String,
           stream: bool,

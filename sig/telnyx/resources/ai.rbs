@@ -26,7 +26,7 @@ module Telnyx
       attr_reader tools: Telnyx::Resources::AI::Tools
 
       def create_response: (
-        params: ::Hash[Symbol, top],
+        body: ::Hash[Symbol, top],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::ai_create_response_response
 

@@ -58,6 +58,7 @@ module Telnyx
           | :"azure/fast"
           | :"assemblyai/universal-streaming"
           | :"xai/grok-stt"
+          | :"soniox/stt-rt-v4"
           | :"distil-whisper/distil-large-v2"
           | :"openai/whisper-large-v3-turbo"
 
@@ -70,6 +71,7 @@ module Telnyx
           AZURE_FAST: :"azure/fast"
           ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
           XAI_GROK_STT: :"xai/grok-stt"
+          SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
           DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
 
