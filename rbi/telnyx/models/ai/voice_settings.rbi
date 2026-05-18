@@ -266,16 +266,28 @@ module Telnyx
             end
             attr_accessor :value
 
+            # Volume level for the predefined background audio. Supports values from 0.1 to
+            # 1.0 in 0.1 increments.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :volume
+
+            sig { params(volume: Float).void }
+            attr_writer :volume
+
             sig do
               params(
                 value:
                   Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::OrSymbol,
+                volume: Float,
                 type: Symbol
               ).returns(T.attached_class)
             end
             def self.new(
               # The predefined media to use. `silence` disables background audio.
               value:,
+              # Volume level for the predefined background audio. Supports values from 0.1 to
+              # 1.0 in 0.1 increments.
+              volume: nil,
               # Select from predefined media options.
               type: :predefined_media
             )
@@ -286,7 +298,8 @@ module Telnyx
                 {
                   type: Symbol,
                   value:
-                    Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::OrSymbol
+                    Telnyx::AI::VoiceSettings::BackgroundAudio::PredefinedMedia::Value::OrSymbol,
+                  volume: Float
                 }
               )
             end
