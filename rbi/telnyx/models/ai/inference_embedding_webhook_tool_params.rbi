@@ -116,6 +116,15 @@ module Telnyx
           sig { params(async: T::Boolean).void }
           attr_writer :async
 
+          # Maximum time in milliseconds that the conversation worker waits for an async
+          # webhook response before returning "Submitted" to the LLM. If unset, the platform
+          # default (currently 300ms) is used.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :async_timeout_ms
+
+          sig { params(async_timeout_ms: Integer).void }
+          attr_writer :async_timeout_ms
+
           # The body parameters the webhook tool accepts, described as a JSON Schema object.
           # These parameters will be passed to the webhook as the body of the request. See
           # the [JSON Schema reference](https://json-schema.org/understanding-json-schema)
@@ -259,6 +268,7 @@ module Telnyx
               name: String,
               url: String,
               async: T::Boolean,
+              async_timeout_ms: Integer,
               body_parameters:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters::OrHash,
               headers:
@@ -291,6 +301,10 @@ module Telnyx
             # If async, the assistant will move forward without waiting for your server to
             # respond.
             async: nil,
+            # Maximum time in milliseconds that the conversation worker waits for an async
+            # webhook response before returning "Submitted" to the LLM. If unset, the platform
+            # default (currently 300ms) is used.
+            async_timeout_ms: nil,
             # The body parameters the webhook tool accepts, described as a JSON Schema object.
             # These parameters will be passed to the webhook as the body of the request. See
             # the [JSON Schema reference](https://json-schema.org/understanding-json-schema)
@@ -329,6 +343,7 @@ module Telnyx
                 name: String,
                 url: String,
                 async: T::Boolean,
+                async_timeout_ms: Integer,
                 body_parameters:
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
                 headers:
