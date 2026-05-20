@@ -58,6 +58,14 @@ module Telnyx
           #   @return [Boolean, nil]
           optional :async, Telnyx::Internal::Type::Boolean
 
+          # @!attribute async_timeout_ms
+          #   Maximum time in milliseconds that the conversation worker waits for an async
+          #   webhook response before returning "Submitted" to the LLM. If unset, the platform
+          #   default (currently 300ms) is used.
+          #
+          #   @return [Integer, nil]
+          optional :async_timeout_ms, Integer
+
           # @!attribute body_parameters
           #   The body parameters the webhook tool accepts, described as a JSON Schema object.
           #   These parameters will be passed to the webhook as the body of the request. See
@@ -119,7 +127,7 @@ module Telnyx
           #   @return [Integer, nil]
           optional :timeout_ms, Integer
 
-          # @!method initialize(description:, name:, url:, async: nil, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
+          # @!method initialize(description:, name:, url:, async: nil, async_timeout_ms: nil, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook} for more
           #   details.
@@ -131,6 +139,8 @@ module Telnyx
           #   @param url [String] The URL of the external tool to be called. This URL is going to be used by the a
           #
           #   @param async [Boolean] If async, the assistant will move forward without waiting for your server to res
+          #
+          #   @param async_timeout_ms [Integer] Maximum time in milliseconds that the conversation worker waits for an async web
           #
           #   @param body_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters] The body parameters the webhook tool accepts, described as a JSON Schema object.
           #

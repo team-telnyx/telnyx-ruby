@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.116.0 (2026-05-20)
+
+Full Changelog: [v5.115.0...v5.116.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.115.0...v5.116.0)
+
+### Features
+
+* TELAPPS-483: Add async webhook timeout to OpenAPI ([e82bcb2](https://github.com/team-telnyx/telnyx-ruby/commit/e82bcb2de3a53f0666ab785010b5e5e031794cb4))
+
 ## 5.115.0 (2026-05-18)
 
 Full Changelog: [v5.114.0...v5.115.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.114.0...v5.115.0)
