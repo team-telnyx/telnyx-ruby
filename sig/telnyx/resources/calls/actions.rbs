@@ -491,6 +491,7 @@ module Telnyx
           ?record_timeout_secs: Integer,
           ?record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           ?record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          ?send_digits_on_answer: String,
           ?sip_auth_password: String,
           ?sip_auth_username: String,
           ?sip_headers: ::Array[Telnyx::SipHeader],
