@@ -1,0 +1,71 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type user_data_retrieve_response =
+        { data: Telnyx::Models::Whatsapp::UserDataRetrieveResponse::Data }
+
+      class UserDataRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Whatsapp::UserDataRetrieveResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Whatsapp::UserDataRetrieveResponse::Data
+        ) -> Telnyx::Models::Whatsapp::UserDataRetrieveResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Whatsapp::UserDataRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Whatsapp::UserDataRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            created_at: Time,
+            record_type: String,
+            updated_at: Time,
+            webhook_failover_url: String,
+            webhook_url: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          attr_reader webhook_failover_url: String?
+
+          def webhook_failover_url=: (String) -> String
+
+          attr_reader webhook_url: String?
+
+          def webhook_url=: (String) -> String
+
+          def initialize: (
+            ?created_at: Time,
+            ?record_type: String,
+            ?updated_at: Time,
+            ?webhook_failover_url: String,
+            ?webhook_url: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: Time,
+            record_type: String,
+            updated_at: Time,
+            webhook_failover_url: String,
+            webhook_url: String
+          }
+        end
+      end
+    end
+  end
+end
