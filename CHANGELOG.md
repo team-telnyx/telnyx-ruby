@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.118.0 (2026-05-22)
+
+Full Changelog: [v5.117.0...v5.118.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.117.0...v5.118.0)
+
+### Features
+
+* MSG-919: documentation for Whatsapp user data ([3683252](https://github.com/team-telnyx/telnyx-ruby/commit/36832521020009060f02d05e0fcb48b9c01cebfb))
+
 ## 5.117.0 (2026-05-22)
 
 Full Changelog: [v5.116.0...v5.117.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.116.0...v5.117.0)

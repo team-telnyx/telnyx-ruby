@@ -15,6 +15,10 @@ module Telnyx
       sig { returns(Telnyx::Resources::Whatsapp::PhoneNumbers) }
       attr_reader :phone_numbers
 
+      # Manage Whatsapp business accounts
+      sig { returns(Telnyx::Resources::Whatsapp::UserData) }
+      attr_reader :user_data
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)
