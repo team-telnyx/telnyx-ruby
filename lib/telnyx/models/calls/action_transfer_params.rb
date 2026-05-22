@@ -18,7 +18,11 @@ module Telnyx
         #   `;secure=true` or `;secure=srtp` to enable SRTP media encryption for that
         #   endpoint, or `;secure=dtls` to enable DTLS media encryption for that endpoint.
         #   If `media_encryption` is set to `SRTP` or `DTLS`, it takes precedence over any
-        #   per-endpoint `secure` URI parameter.
+        #   per-endpoint `secure` URI parameter. You may also append a comma followed by
+        #   DTMF digits (e.g. `+18004247767,200`) to play those digits as DTMF once the
+        #   transfer destination answers — equivalent to setting `send_digits_on_answer`
+        #   separately. If both are present, the explicit `send_digits_on_answer` parameter
+        #   takes precedence.
         #
         #   @return [String]
         required :to, String
@@ -207,6 +211,18 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordTrim, nil]
         optional :record_trim, enum: -> { Telnyx::Calls::ActionTransferParams::RecordTrim }
 
+        # @!attribute send_digits_on_answer
+        #   DTMF digits to send automatically after the transfer destination answers. Useful
+        #   for reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once
+        #   the called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause),
+        #   `W` (1s pause), `*`, `#`. Maximum 64 characters. When omitted, no automatic DTMF
+        #   is sent. May also be supplied inline by appending `,<digits>` to `to` (e.g.
+        #   `to=+18004247767,200`); if both forms are present, this explicit field takes
+        #   precedence.
+        #
+        #   @return [String, nil]
+        optional :send_digits_on_answer, String
+
         # @!attribute sip_auth_password
         #   SIP Authentication password used for SIP challenges.
         #
@@ -308,7 +324,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLsMethod, nil]
         optional :webhook_urls_method, enum: -> { Telnyx::Calls::ActionTransferParams::WebhookURLsMethod }
 
-        # @!method initialize(call_control_id:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @!method initialize(call_control_id:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionTransferParams} for more details.
         #
@@ -361,6 +377,8 @@ module Telnyx
         #   @param record_track [Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordTrack] The audio track to be recorded. Can be either `both`, `inbound` or `outbound`. I
         #
         #   @param record_trim [Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordTrim] When set to `trim-silence`, silence will be removed from the beginning and end o
+        #
+        #   @param send_digits_on_answer [String] DTMF digits to send automatically after the transfer destination answers. Useful
         #
         #   @param sip_auth_password [String] SIP Authentication password used for SIP challenges.
         #
