@@ -15,6 +15,10 @@ module Telnyx
       # @return [Telnyx::Resources::Whatsapp::PhoneNumbers]
       attr_reader :phone_numbers
 
+      # Manage Whatsapp business accounts
+      # @return [Telnyx::Resources::Whatsapp::UserData]
+      attr_reader :user_data
+
       # @api private
       #
       # @param client [Telnyx::Client]
@@ -23,6 +27,7 @@ module Telnyx
         @business_accounts = Telnyx::Resources::Whatsapp::BusinessAccounts.new(client: client)
         @templates = Telnyx::Resources::Whatsapp::Templates.new(client: client)
         @phone_numbers = Telnyx::Resources::Whatsapp::PhoneNumbers.new(client: client)
+        @user_data = Telnyx::Resources::Whatsapp::UserData.new(client: client)
       end
     end
   end
