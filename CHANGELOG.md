@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.117.0 (2026-05-22)
+
+Full Changelog: [v5.116.0...v5.117.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.116.0...v5.117.0)
+
+### Features
+
+* TELAPPS-72: document send_digits_on_answer on Dial + Transfer ([f7ae042](https://github.com/team-telnyx/telnyx-ruby/commit/f7ae042cef4897a4dfda4853817d81fe510675ee))
+
 ## 5.116.0 (2026-05-20)
 
 Full Changelog: [v5.115.0...v5.116.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.115.0...v5.116.0)
