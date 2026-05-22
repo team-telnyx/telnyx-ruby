@@ -28,6 +28,7 @@ module Telnyx
           record_timeout_secs: Integer,
           record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          send_digits_on_answer: String,
           sip_auth_password: String,
           sip_auth_username: String,
           sip_headers: ::Array[Telnyx::SipHeader],
@@ -167,6 +168,10 @@ module Telnyx
           Telnyx::Models::Calls::ActionTransferParams::record_trim
         ) -> Telnyx::Models::Calls::ActionTransferParams::record_trim
 
+        attr_reader send_digits_on_answer: String?
+
+        def send_digits_on_answer=: (String) -> String
+
         attr_reader sip_auth_password: String?
 
         def sip_auth_password=: (String) -> String
@@ -263,6 +268,7 @@ module Telnyx
           ?record_timeout_secs: Integer,
           ?record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           ?record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          ?send_digits_on_answer: String,
           ?sip_auth_password: String,
           ?sip_auth_username: String,
           ?sip_headers: ::Array[Telnyx::SipHeader],
@@ -306,6 +312,7 @@ module Telnyx
           record_timeout_secs: Integer,
           record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          send_digits_on_answer: String,
           sip_auth_password: String,
           sip_auth_username: String,
           sip_headers: ::Array[Telnyx::SipHeader],
