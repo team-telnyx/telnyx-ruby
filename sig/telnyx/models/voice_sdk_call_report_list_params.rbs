@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    type voice_sdk_call_report_list_params =
+      {
+        page_number: Integer,
+        page_size: Integer,
+        sort: Telnyx::Models::VoiceSDKCallReportListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class VoiceSDKCallReportListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader sort: Telnyx::Models::VoiceSDKCallReportListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::VoiceSDKCallReportListParams::sort
+      ) -> Telnyx::Models::VoiceSDKCallReportListParams::sort
+
+      def initialize: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::VoiceSDKCallReportListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        page_number: Integer,
+        page_size: Integer,
+        sort: Telnyx::Models::VoiceSDKCallReportListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type sort = :asc | :desc | :created_at | :"-created_at"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        ASC: :asc
+        DESC: :desc
+        CREATED_AT: :created_at
+        CREATED_AT_DESC: :"-created_at"
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceSDKCallReportListParams::sort]
+      end
+    end
+  end
+end

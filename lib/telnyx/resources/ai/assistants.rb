@@ -58,13 +58,13 @@ module Telnyx
         #
         # @param insight_settings [Telnyx::Models::AI::InsightSettings]
         #
-        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        # @param integrations [Array<Telnyx::Models::AI::AssistantCreateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        # @param interruption_settings [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantCreateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
@@ -161,13 +161,13 @@ module Telnyx
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
-        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        # @param integrations [Array<Telnyx::Models::AI::AssistantUpdateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        # @param interruption_settings [Telnyx::Models::AI::AssistantUpdateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantUpdateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #

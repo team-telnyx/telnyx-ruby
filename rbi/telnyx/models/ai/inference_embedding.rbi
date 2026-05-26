@@ -124,12 +124,17 @@ module Telnyx
         # integrations is at `/ai/integrations`; the user's connected integrations are at
         # `/ai/integrations/connections`. Each item references a catalog integration by
         # `integration_id`.
-        sig { returns(T.nilable(T::Array[Telnyx::AI::AssistantIntegration])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Telnyx::AI::InferenceEmbedding::Integration])
+          )
+        end
         attr_reader :integrations
 
         sig do
           params(
-            integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash]
+            integrations:
+              T::Array[Telnyx::AI::InferenceEmbedding::Integration::OrHash]
           ).void
         end
         attr_writer :integrations
@@ -141,14 +146,16 @@ module Telnyx
         # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
         # `eager_eot_threshold`).
         sig do
-          returns(T.nilable(Telnyx::AI::InferenceEmbeddingInterruptionSettings))
+          returns(
+            T.nilable(Telnyx::AI::InferenceEmbedding::InterruptionSettings)
+          )
         end
         attr_reader :interruption_settings
 
         sig do
           params(
             interruption_settings:
-              Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash
+              Telnyx::AI::InferenceEmbedding::InterruptionSettings::OrHash
           ).void
         end
         attr_writer :interruption_settings
@@ -167,12 +174,17 @@ module Telnyx
 
         # MCP servers attached to the assistant. Create MCP servers with
         # `/ai/mcp_servers`, then reference them by `id` here.
-        sig { returns(T.nilable(T::Array[Telnyx::AI::AssistantMcpServer])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Telnyx::AI::InferenceEmbedding::McpServer])
+          )
+        end
         attr_reader :mcp_servers
 
         sig do
           params(
-            mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash]
+            mcp_servers:
+              T::Array[Telnyx::AI::InferenceEmbedding::McpServer::OrHash]
           ).void
         end
         attr_writer :mcp_servers
@@ -330,11 +342,13 @@ module Telnyx
             greeting: String,
             import_metadata: Telnyx::AI::ImportMetadata::OrHash,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
-            integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
+            integrations:
+              T::Array[Telnyx::AI::InferenceEmbedding::Integration::OrHash],
             interruption_settings:
-              Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
+              Telnyx::AI::InferenceEmbedding::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
-            mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
+            mcp_servers:
+              T::Array[Telnyx::AI::InferenceEmbedding::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             observability_settings: Telnyx::AI::Observability::OrHash,
             post_conversation_settings:
@@ -483,11 +497,12 @@ module Telnyx
               greeting: String,
               import_metadata: Telnyx::AI::ImportMetadata,
               insight_settings: Telnyx::AI::InsightSettings,
-              integrations: T::Array[Telnyx::AI::AssistantIntegration],
+              integrations:
+                T::Array[Telnyx::AI::InferenceEmbedding::Integration],
               interruption_settings:
-                Telnyx::AI::InferenceEmbeddingInterruptionSettings,
+                Telnyx::AI::InferenceEmbedding::InterruptionSettings,
               llm_api_key_ref: String,
-              mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer],
+              mcp_servers: T::Array[Telnyx::AI::InferenceEmbedding::McpServer],
               messaging_settings: Telnyx::AI::MessagingSettings,
               observability_settings: Telnyx::AI::Observability,
               post_conversation_settings: Telnyx::AI::PostConversationSettings,
@@ -506,6 +521,330 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        class Integration < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::InferenceEmbedding::Integration,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Catalog integration ID to attach. This is the `id` from the integrations catalog
+          # at `/ai/integrations` (the same value also appears as `integration_id` on
+          # entries returned by `/ai/integrations/connections`). It is **not** the
+          # connection-level `id` from `/ai/integrations/connections`.
+          sig { returns(String) }
+          attr_accessor :integration_id
+
+          # Optional per-assistant allowlist of integration tool names. When omitted or
+          # empty, all tools allowed by the connected integration are available to the
+          # assistant.
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :allowed_list
+
+          sig { params(allowed_list: T::Array[String]).void }
+          attr_writer :allowed_list
+
+          # Reference to a connected integration attached to an assistant. Discover
+          # available integrations with `/ai/integrations` and connected integrations with
+          # `/ai/integrations/connections`.
+          sig do
+            params(
+              integration_id: String,
+              allowed_list: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Catalog integration ID to attach. This is the `id` from the integrations catalog
+            # at `/ai/integrations` (the same value also appears as `integration_id` on
+            # entries returned by `/ai/integrations/connections`). It is **not** the
+            # connection-level `id` from `/ai/integrations/connections`.
+            integration_id:,
+            # Optional per-assistant allowlist of integration tool names. When omitted or
+            # empty, all tools allowed by the connected integration are available to the
+            # assistant.
+            allowed_list: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { integration_id: String, allowed_list: T::Array[String] }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class InterruptionSettings < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::InferenceEmbedding::InterruptionSettings,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # When true, disables user interruptions while the assistant greeting is playing.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :disable_greeting_interruption
+
+          sig { params(disable_greeting_interruption: T::Boolean).void }
+          attr_writer :disable_greeting_interruption
+
+          # Whether users can interrupt the assistant while it is speaking.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :enable
+
+          sig { params(enable: T::Boolean).void }
+          attr_writer :enable
+
+          # Controls when the assistant starts speaking after the user stops. These
+          # thresholds primarily apply to non turn-taking transcription models. For
+          # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+          # transcription end-of-turn settings under `transcription.settings` instead.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan
+              )
+            )
+          end
+          attr_reader :start_speaking_plan
+
+          sig do
+            params(
+              start_speaking_plan:
+                Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::OrHash
+            ).void
+          end
+          attr_writer :start_speaking_plan
+
+          # Settings for interruptions and how the assistant decides the user has finished
+          # speaking. These timings are most relevant when using non turn-taking
+          # transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
+          # behavior is controlled by the transcription end-of-turn settings under
+          # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+          # `eager_eot_threshold`).
+          sig do
+            params(
+              disable_greeting_interruption: T::Boolean,
+              enable: T::Boolean,
+              start_speaking_plan:
+                Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # When true, disables user interruptions while the assistant greeting is playing.
+            disable_greeting_interruption: nil,
+            # Whether users can interrupt the assistant while it is speaking.
+            enable: nil,
+            # Controls when the assistant starts speaking after the user stops. These
+            # thresholds primarily apply to non turn-taking transcription models. For
+            # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+            # transcription end-of-turn settings under `transcription.settings` instead.
+            start_speaking_plan: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                disable_greeting_interruption: T::Boolean,
+                enable: T::Boolean,
+                start_speaking_plan:
+                  Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class StartSpeakingPlan < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Endpointing thresholds used to decide when the user has finished speaking.
+            # Applies to non turn-taking transcription models. For `deepgram/flux`, use
+            # `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+            # `eager_eot_threshold`.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
+                )
+              )
+            end
+            attr_reader :transcription_endpointing_plan
+
+            sig do
+              params(
+                transcription_endpointing_plan:
+                  Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan::OrHash
+              ).void
+            end
+            attr_writer :transcription_endpointing_plan
+
+            # Minimum seconds to wait before the assistant starts speaking.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :wait_seconds
+
+            sig { params(wait_seconds: Float).void }
+            attr_writer :wait_seconds
+
+            # Controls when the assistant starts speaking after the user stops. These
+            # thresholds primarily apply to non turn-taking transcription models. For
+            # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
+            # transcription end-of-turn settings under `transcription.settings` instead.
+            sig do
+              params(
+                transcription_endpointing_plan:
+                  Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan::OrHash,
+                wait_seconds: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Endpointing thresholds used to decide when the user has finished speaking.
+              # Applies to non turn-taking transcription models. For `deepgram/flux`, use
+              # `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+              # `eager_eot_threshold`.
+              transcription_endpointing_plan: nil,
+              # Minimum seconds to wait before the assistant starts speaking.
+              wait_seconds: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  transcription_endpointing_plan:
+                    Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
+                  wait_seconds: Float
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::InferenceEmbedding::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # Seconds to wait after the transcript ends without punctuation.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :on_no_punctuation_seconds
+
+              sig { params(on_no_punctuation_seconds: Float).void }
+              attr_writer :on_no_punctuation_seconds
+
+              # Seconds to wait after the transcript ends with a number.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :on_number_seconds
+
+              sig { params(on_number_seconds: Float).void }
+              attr_writer :on_number_seconds
+
+              # Seconds to wait after the transcript ends with punctuation.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :on_punctuation_seconds
+
+              sig { params(on_punctuation_seconds: Float).void }
+              attr_writer :on_punctuation_seconds
+
+              # Endpointing thresholds used to decide when the user has finished speaking.
+              # Applies to non turn-taking transcription models. For `deepgram/flux`, use
+              # `transcription.settings.eot_threshold` / `eot_timeout_ms` /
+              # `eager_eot_threshold`.
+              sig do
+                params(
+                  on_no_punctuation_seconds: Float,
+                  on_number_seconds: Float,
+                  on_punctuation_seconds: Float
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Seconds to wait after the transcript ends without punctuation.
+                on_no_punctuation_seconds: nil,
+                # Seconds to wait after the transcript ends with a number.
+                on_number_seconds: nil,
+                # Seconds to wait after the transcript ends with punctuation.
+                on_punctuation_seconds: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    on_no_punctuation_seconds: Float,
+                    on_number_seconds: Float,
+                    on_punctuation_seconds: Float
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+          end
+        end
+
+        class McpServer < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::InferenceEmbedding::McpServer,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # ID of the MCP server to attach. This must be the `id` of an MCP server returned
+          # by the `/ai/mcp_servers` endpoints.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
+          # uses the MCP server's configured `allowed_tools`.
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :allowed_tools
+
+          sig { params(allowed_tools: T::Array[String]).void }
+          attr_writer :allowed_tools
+
+          # Reference to an MCP server attached to an assistant. Create and manage MCP
+          # servers with the `/ai/mcp_servers` endpoints, then attach them to assistants by
+          # ID.
+          sig do
+            params(id: String, allowed_tools: T::Array[String]).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # ID of the MCP server to attach. This must be the `id` of an MCP server returned
+            # by the `/ai/mcp_servers` endpoints.
+            id:,
+            # Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
+            # uses the MCP server's configured `allowed_tools`.
+            allowed_tools: nil
+          )
+          end
+
+          sig do
+            override.returns({ id: String, allowed_tools: T::Array[String] })
+          end
+          def to_hash
+          end
         end
       end
     end
