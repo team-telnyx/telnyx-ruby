@@ -171,7 +171,15 @@ module Telnyx
                    enum: -> { Telnyx::AI::TelephonySettings::RecordingSettings::Format },
                    api_name: :format
 
-          # @!method initialize(channels: nil, enabled: nil, file_format: nil)
+          # @!attribute stop_on_conversation_end
+          #   When enabled, the call recording will stop when the conversation ends (for
+          #   example, when the assistant hangs up or the call is transferred). When disabled,
+          #   recording continues until the call itself ends.
+          #
+          #   @return [Boolean, nil]
+          optional :stop_on_conversation_end, Telnyx::Internal::Type::Boolean
+
+          # @!method initialize(channels: nil, enabled: nil, file_format: nil, stop_on_conversation_end: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::TelephonySettings::RecordingSettings} for more details.
           #
@@ -182,6 +190,8 @@ module Telnyx
           #   @param enabled [Boolean] Whether call recording is enabled. When set to false, calls will not be recorded
           #
           #   @param file_format [Symbol, Telnyx::Models::AI::TelephonySettings::RecordingSettings::Format] The format of the recording file.
+          #
+          #   @param stop_on_conversation_end [Boolean] When enabled, the call recording will stop when the conversation ends (for examp
 
           # The number of channels for the recording. 'single' for mono, 'dual' for stereo.
           #

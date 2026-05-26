@@ -41,6 +41,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
         from: Telnyx::Models::MessageCancelScheduledResponse::From | nil,
         media: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessageCancelScheduledResponse::Media]) | nil,
         messaging_profile_id: String | nil,
+        num_chars: Integer | nil,
         organization_id: String | nil,
         parts: Integer | nil,
         received_at: Time | nil,
