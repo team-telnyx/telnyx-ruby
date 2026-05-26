@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.119.0 (2026-05-26)
+
+Full Changelog: [v5.118.0...v5.119.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.118.0...v5.119.0)
+
+### Features
+
+* TELAPPS-523: document stop_on_conversation_end on assistant recording_settings ([f4731b7](https://github.com/team-telnyx/telnyx-ruby/commit/f4731b7ed76a54314a06c738fe2f3f10f3b5a9ac))
+
 ## 5.118.0 (2026-05-22)
 
 Full Changelog: [v5.117.0...v5.118.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.117.0...v5.118.0)

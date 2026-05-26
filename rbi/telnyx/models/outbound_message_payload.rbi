@@ -105,6 +105,13 @@ module Telnyx
       sig { params(messaging_profile_id: String).void }
       attr_writer :messaging_profile_id
 
+      # The number of characters in the message text
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :num_chars
+
+      sig { params(num_chars: Integer).void }
+      attr_writer :num_chars
+
       # The id of the organization the messaging profile belongs to.
       sig { returns(T.nilable(String)) }
       attr_reader :organization_id
@@ -242,6 +249,7 @@ module Telnyx
           from: Telnyx::OutboundMessagePayload::From::OrHash,
           media: T::Array[Telnyx::OutboundMessagePayload::Media::OrHash],
           messaging_profile_id: String,
+          num_chars: Integer,
           organization_id: String,
           parts: Integer,
           received_at: Time,
@@ -283,6 +291,8 @@ module Telnyx
         media: nil,
         # Unique identifier for a messaging profile.
         messaging_profile_id: nil,
+        # The number of characters in the message text
+        num_chars: nil,
         # The id of the organization the messaging profile belongs to.
         organization_id: nil,
         # Number of parts into which the message's body must be split.
@@ -346,6 +356,7 @@ module Telnyx
             from: Telnyx::OutboundMessagePayload::From,
             media: T::Array[Telnyx::OutboundMessagePayload::Media],
             messaging_profile_id: String,
+            num_chars: Integer,
             organization_id: String,
             parts: Integer,
             received_at: Time,
