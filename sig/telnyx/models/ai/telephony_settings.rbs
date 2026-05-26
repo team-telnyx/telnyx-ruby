@@ -137,7 +137,8 @@ module Telnyx
           {
             channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
             enabled: bool,
-            file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+            file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_,
+            stop_on_conversation_end: bool
           }
 
         class RecordingSettings < Telnyx::Internal::Type::BaseModel
@@ -157,16 +158,22 @@ module Telnyx
             Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
           ) -> Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
 
+          attr_reader stop_on_conversation_end: bool?
+
+          def stop_on_conversation_end=: (bool) -> bool
+
           def initialize: (
             ?channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
             ?enabled: bool,
-            ?file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+            ?file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_,
+            ?stop_on_conversation_end: bool
           ) -> void
 
           def to_hash: -> {
             channels: Telnyx::Models::AI::TelephonySettings::RecordingSettings::channels,
             enabled: bool,
-            file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_
+            file_format: Telnyx::Models::AI::TelephonySettings::RecordingSettings::format_,
+            stop_on_conversation_end: bool
           }
 
           type channels = :single | :dual

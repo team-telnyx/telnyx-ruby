@@ -13,6 +13,7 @@ module Telnyx
         from: Telnyx::OutboundMessagePayload::From,
         media: ::Array[Telnyx::OutboundMessagePayload::Media],
         messaging_profile_id: String,
+        num_chars: Integer,
         organization_id: String,
         parts: Integer,
         received_at: Time,
@@ -81,6 +82,10 @@ module Telnyx
       attr_reader messaging_profile_id: String?
 
       def messaging_profile_id=: (String) -> String
+
+      attr_reader num_chars: Integer?
+
+      def num_chars=: (Integer) -> Integer
 
       attr_reader organization_id: String?
 
@@ -156,6 +161,7 @@ module Telnyx
         ?from: Telnyx::OutboundMessagePayload::From,
         ?media: ::Array[Telnyx::OutboundMessagePayload::Media],
         ?messaging_profile_id: String,
+        ?num_chars: Integer,
         ?organization_id: String,
         ?parts: Integer,
         ?received_at: Time,
@@ -188,6 +194,7 @@ module Telnyx
         from: Telnyx::OutboundMessagePayload::From,
         media: ::Array[Telnyx::OutboundMessagePayload::Media],
         messaging_profile_id: String,
+        num_chars: Integer,
         organization_id: String,
         parts: Integer,
         received_at: Time,

@@ -386,6 +386,15 @@ module Telnyx
           end
           attr_writer :file_format
 
+          # When enabled, the call recording will stop when the conversation ends (for
+          # example, when the assistant hangs up or the call is transferred). When disabled,
+          # recording continues until the call itself ends.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :stop_on_conversation_end
+
+          sig { params(stop_on_conversation_end: T::Boolean).void }
+          attr_writer :stop_on_conversation_end
+
           # Configuration for call recording format and channel settings.
           sig do
             params(
@@ -393,7 +402,8 @@ module Telnyx
                 Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
               enabled: T::Boolean,
               file_format:
-                Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
+                Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol,
+              stop_on_conversation_end: T::Boolean
             ).returns(T.attached_class)
           end
           def self.new(
@@ -403,7 +413,11 @@ module Telnyx
             # regardless of other recording configuration.
             enabled: nil,
             # The format of the recording file.
-            file_format: nil
+            file_format: nil,
+            # When enabled, the call recording will stop when the conversation ends (for
+            # example, when the assistant hangs up or the call is transferred). When disabled,
+            # recording continues until the call itself ends.
+            stop_on_conversation_end: nil
           )
           end
 
@@ -414,7 +428,8 @@ module Telnyx
                   Telnyx::AI::TelephonySettings::RecordingSettings::Channels::OrSymbol,
                 enabled: T::Boolean,
                 file_format:
-                  Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol
+                  Telnyx::AI::TelephonySettings::RecordingSettings::Format::OrSymbol,
+                stop_on_conversation_end: T::Boolean
               }
             )
           end
