@@ -44,15 +44,15 @@ module Telnyx
           }
 
           type targets =
-            ::Array[Telnyx::AI::TransferTool::Transfer::Targets::TargetsList]
+            ::Array[Telnyx::AI::TransferTool::Transfer::Targets::UnionMember0]
             | String
 
           module Targets
             extend Telnyx::Internal::Type::Union
 
-            type targets_list = { to: String, name: String }
+            type union_member0 = { to: String, name: String }
 
-            class TargetsList < Telnyx::Internal::Type::BaseModel
+            class UnionMember0 < Telnyx::Internal::Type::BaseModel
               attr_accessor to: String
 
               attr_reader name: String?
@@ -66,7 +66,7 @@ module Telnyx
 
             def self?.variants: -> ::Array[Telnyx::Models::AI::TransferTool::Transfer::targets]
 
-            TargetsListArray: Telnyx::Internal::Type::Converter
+            UnionMember0Array: Telnyx::Internal::Type::Converter
           end
         end
 

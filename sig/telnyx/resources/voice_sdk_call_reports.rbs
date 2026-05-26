@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class VoiceSDKCallReports
+      def retrieve: (
+        String call_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::voice_sdk_call_report_retrieve_response
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::VoiceSDKCallReportListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VoiceSDKCallReportListResponse]
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

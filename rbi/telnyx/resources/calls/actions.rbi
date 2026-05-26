@@ -451,7 +451,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -662,7 +662,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -1075,7 +1075,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1200,7 +1200,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1313,7 +1313,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartConversationRelayResponse)
@@ -1785,8 +1785,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
-                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,

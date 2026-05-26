@@ -58,7 +58,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T::Hash[Symbol, T.anything])
       end
-      def create_response(body:, request_options: {})
+      def create_response_deprecated(body:, request_options: {})
       end
 
       # **Deprecated**: Use `GET /v2/ai/openai/models` instead.

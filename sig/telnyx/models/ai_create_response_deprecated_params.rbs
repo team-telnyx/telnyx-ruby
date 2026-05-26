@@ -1,0 +1,23 @@
+module Telnyx
+  module Models
+    type ai_create_response_deprecated_params =
+      { body: ::Hash[Symbol, top] } & Telnyx::Internal::Type::request_parameters
+
+    class AICreateResponseDeprecatedParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor body: ::Hash[Symbol, top]
+
+      def initialize: (
+        body: ::Hash[Symbol, top],
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        body: ::Hash[Symbol, top],
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

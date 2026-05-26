@@ -3,10 +3,10 @@
 require_relative "../test_helper"
 
 class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
-  def test_create_response_required_params
+  def test_create_response_deprecated_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.create_response(body: {model: "bar", input: "bar"})
+    response = @telnyx.ai.create_response_deprecated(body: {model: "bar", input: "bar"})
 
     assert_pattern do
       response => ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown])
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ModelMetadata]),
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AIRetrieveModelsResponse::Data]),
         object: String | nil
       }
     end

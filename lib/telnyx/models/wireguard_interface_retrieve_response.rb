@@ -6,11 +6,16 @@ module Telnyx
     class WireguardInterfaceRetrieveResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::WireguardInterfaceRead, nil]
-      optional :data, -> { Telnyx::WireguardInterfaceRead }
+      #   @return [Telnyx::Models::WireguardInterfaceRetrieveResponse::Data, nil]
+      optional :data, -> { Telnyx::Models::WireguardInterfaceRetrieveResponse::Data }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::WireguardInterfaceRead]
+      #   @param data [Telnyx::Models::WireguardInterfaceRetrieveResponse::Data]
+
+      # @see Telnyx::Models::WireguardInterfaceRetrieveResponse#data
+      class Data < Telnyx::Models::Record
+        # @!method initialize
+      end
     end
   end
 end
