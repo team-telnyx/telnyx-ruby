@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.122.0 (2026-05-27)
+
+Full Changelog: [v5.121.0...v5.122.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.121.0...v5.122.0)
+
+### Features
+
+* TELAPPS-406: document GET /speech-to-text/providers endpoint ([2b1544b](https://github.com/team-telnyx/telnyx-ruby/commit/2b1544b0e7b637a02ad10c5e91d856e48a1bffce))
+
 ## 5.121.0 (2026-05-27)
 
 Full Changelog: [v5.120.0...v5.121.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.120.0...v5.121.0)
