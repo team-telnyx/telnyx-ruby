@@ -1,0 +1,79 @@
+module Telnyx
+  module Models
+    type speech_to_text_list_providers_params =
+      {
+        provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
+        service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SpeechToTextListProvidersParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader provider: Telnyx::Models::SpeechToTextListProvidersParams::provider?
+
+      def provider=: (
+        Telnyx::Models::SpeechToTextListProvidersParams::provider
+      ) -> Telnyx::Models::SpeechToTextListProvidersParams::provider
+
+      attr_reader service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type?
+
+      def service_type=: (
+        Telnyx::Models::SpeechToTextListProvidersParams::service_type
+      ) -> Telnyx::Models::SpeechToTextListProvidersParams::service_type
+
+      def initialize: (
+        ?provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
+        ?service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
+        service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type provider =
+        :deepgram
+        | :speechmatics
+        | :assemblyai
+        | :xai
+        | :soniox
+        | :azure
+        | :openai
+        | :google
+        | :telnyx
+
+      module Provider
+        extend Telnyx::Internal::Type::Enum
+
+        DEEPGRAM: :deepgram
+        SPEECHMATICS: :speechmatics
+        ASSEMBLYAI: :assemblyai
+        XAI: :xai
+        SONIOX: :soniox
+        AZURE: :azure
+        OPENAI: :openai
+        GOOGLE: :google
+        TELNYX: :telnyx
+
+        def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersParams::provider]
+      end
+
+      type service_type =
+        :streaming | :file_transcription | :in_call_transcription
+
+      module ServiceType
+        extend Telnyx::Internal::Type::Enum
+
+        STREAMING: :streaming
+        FILE_TRANSCRIPTION: :file_transcription
+        IN_CALL_TRANSCRIPTION: :in_call_transcription
+
+        def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersParams::service_type]
+      end
+    end
+  end
+end

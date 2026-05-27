@@ -658,6 +658,10 @@ module Telnyx
     sig { returns(Telnyx::Resources::UacConnections) }
     attr_reader :uac_connections
 
+    # Discover available speech-to-text providers, models, and supported languages.
+    sig { returns(Telnyx::Resources::SpeechToText) }
+    attr_reader :speech_to_text
+
     # Retrieve raw Voice SDK call report stats payloads for WebRTC call
     # troubleshooting.
     sig { returns(Telnyx::Resources::VoiceSDKCallReports) }
