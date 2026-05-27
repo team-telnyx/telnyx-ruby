@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.121.0 (2026-05-27)
+
+Full Changelog: [v5.120.0...v5.121.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.120.0...v5.121.0)
+
+### Features
+
+* TELAPPS-5698 document conversation relay API shape ([5593ce0](https://github.com/team-telnyx/telnyx-ruby/commit/5593ce08483bd6b4e333cc52f1f90b6fc9db3402))
+
 ## 5.120.0 (2026-05-27)
 
 Full Changelog: [v5.119.0...v5.120.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.119.0...v5.120.0)

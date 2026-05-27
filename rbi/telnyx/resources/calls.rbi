@@ -48,6 +48,8 @@ module Telnyx
           client_state: String,
           command_id: String,
           conference_config: Telnyx::CallDialParams::ConferenceConfig::OrHash,
+          conversation_relay_config:
+            Telnyx::CallDialParams::ConversationRelayConfig::OrHash,
           custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
           deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection::OrHash,
           dialogflow_config: Telnyx::DialogflowConfig::OrHash,
@@ -178,6 +180,13 @@ module Telnyx
         command_id: nil,
         # Optional configuration parameters to dial new participant into a conference.
         conference_config: nil,
+        # Starts a Conversation Relay session automatically when the answered/dialed call
+        # is answered. This embedded shape is supported on `answer` and `dial`. It uses
+        # public field names (`url`, `dtmf_detection`, `greeting`, `voice`, `language`,
+        # etc.) and maps them to the underlying Conversation Relay action. `client_state`,
+        # `tts_language`, and `transcription_language` inside this object are ignored; use
+        # the parent command's `client_state` and `command_id` fields instead.
+        conversation_relay_config: nil,
         # Custom headers to be added to the SIP INVITE.
         custom_headers: nil,
         # Enables deepfake detection on the call. When enabled, audio from the remote
