@@ -55,7 +55,7 @@ module Telnyx
         # When the `record` parameter is set to `record-from-answer`, the response will
         # include a `recording_id` field.
         #
-        # @overload answer(call_control_id, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, custom_headers: nil, deepfake_detection: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @overload answer(call_control_id, assistant: nil, billing_group_id: nil, client_state: nil, command_id: nil, conversation_relay_config: nil, custom_headers: nil, deepfake_detection: nil, preferred_codecs: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_silence_when_idle: nil, sip_headers: nil, sound_modifications: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_track: nil, stream_url: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -66,6 +66,8 @@ module Telnyx
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
+        #
+        # @param conversation_relay_config [Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig] Starts a Conversation Relay session automatically when the answered/dialed call
         #
         # @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP INVITE response.
         #
@@ -945,7 +947,7 @@ module Telnyx
         #   the customer WebSocket disconnects, the webhook payload `reason` is
         #   `customer_disconnect`.
         #
-        # @overload start_conversation_relay(call_control_id, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, conversation_relay_settings: nil, conversation_relay_url: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, transcription: nil, transcription_language: nil, tts_language: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @overload start_conversation_relay(call_control_id, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, conversation_relay_settings: nil, conversation_relay_url: nil, custom_parameters: nil, dtmf_detection: nil, greeting: nil, interruptible: nil, interruptible_greeting: nil, interruption_settings: nil, language: nil, languages: nil, provider: nil, structured_provider: nil, transcription: nil, transcription_engine: nil, transcription_engine_config: nil, tts_provider: nil, url: nil, voice: nil, voice_settings: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -957,27 +959,43 @@ module Telnyx
         #
         # @param conversation_relay_dtmf_detection [Boolean] Enable DTMF detection for the relay session.
         #
-        # @param conversation_relay_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings] Conversation Relay connection settings. This object is used by TeXML Call Script
+        # @param conversation_relay_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings] Conversation Relay connection settings. This object can provide `url`, `dtmf_det
         #
         # @param conversation_relay_url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
         #
+        # @param custom_parameters [Hash{Symbol=>Object}] Custom key-value parameters forwarded to the relay session as `assistant.dynamic
+        #
+        # @param dtmf_detection [Boolean] Public alias for `conversation_relay_dtmf_detection`. If both are present, this
+        #
         # @param greeting [String] Text played when the relay session starts.
+        #
+        # @param interruptible [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Interruptible] Controls when caller input can interrupt assistant speech. `any` allows speech o
+        #
+        # @param interruptible_greeting [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptibleGreeting] Controls when caller input can interrupt assistant speech. `any` allows speech o
         #
         # @param interruption_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings] Settings for handling caller interruptions during Conversation Relay speech.
         #
         # @param language [String] Default language for the relay session. This value is used for both text-to-spee
         #
-        # @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>] Language-specific TTS and transcription settings. Use this when the relay sessio
+        # @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>] Per-language TTS and transcription settings.
         #
-        # @param transcription [Telnyx::Models::Calls::ActionStartConversationRelayParams::Transcription] Speech-to-text settings for Conversation Relay.
+        # @param provider [String] Structured voice provider. Must be supplied together with `structured_provider`.
         #
-        # @param transcription_language [String] Language to use for speech recognition. Overrides `language` for transcription w
+        # @param structured_provider [Hash{Symbol=>Object}] Provider-specific structured voice settings. Must be supplied together with `pro
         #
-        # @param tts_language [String] Language to use for text-to-speech. Overrides `language` for TTS when provided.
+        # @param transcription [Hash{Symbol=>Object}] Not supported for Conversation Relay start requests. Use `transcription_engine`
+        #
+        # @param transcription_engine [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
+        #
+        # @param transcription_engine_config [Hash{Symbol=>Object}] Engine-specific transcription settings for Conversation Relay. This accepts the
+        #
+        # @param tts_provider [String] Text-to-speech provider. If omitted, Telnyx derives it from `voice` or `provider
+        #
+        # @param url [String] Public alias for `conversation_relay_url`. Must start with `ws://` or `wss://`.
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

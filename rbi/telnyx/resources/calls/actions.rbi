@@ -61,6 +61,8 @@ module Telnyx
             billing_group_id: String,
             client_state: String,
             command_id: String,
+            conversation_relay_config:
+              Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::OrHash,
             custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
             deepfake_detection:
               Telnyx::Calls::ActionAnswerParams::DeepfakeDetection::OrHash,
@@ -124,6 +126,13 @@ module Telnyx
           # Use this field to avoid duplicate commands. Telnyx will ignore any command with
           # the same `command_id` for the same `call_control_id`.
           command_id: nil,
+          # Starts a Conversation Relay session automatically when the answered/dialed call
+          # is answered. This embedded shape is supported on `answer` and `dial`. It uses
+          # public field names (`url`, `dtmf_detection`, `greeting`, `voice`, `language`,
+          # etc.) and maps them to the underlying Conversation Relay action. `client_state`,
+          # `tts_language`, and `transcription_language` inside this object are ignored; use
+          # the parent command's `client_state` and `command_id` fields instead.
+          conversation_relay_config: nil,
           # Custom headers to be added to the SIP INVITE response.
           custom_headers: nil,
           # Enables deepfake detection on the call. When enabled, audio from the remote
@@ -1292,7 +1301,13 @@ module Telnyx
             conversation_relay_settings:
               Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::OrHash,
             conversation_relay_url: String,
+            custom_parameters: T::Hash[Symbol, T.anything],
+            dtmf_detection: T::Boolean,
             greeting: String,
+            interruptible:
+              Telnyx::Calls::ActionStartConversationRelayParams::Interruptible::OrSymbol,
+            interruptible_greeting:
+              Telnyx::Calls::ActionStartConversationRelayParams::InterruptibleGreeting::OrSymbol,
             interruption_settings:
               Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings::OrHash,
             language: String,
@@ -1300,19 +1315,25 @@ module Telnyx
               T::Array[
                 Telnyx::Calls::ActionStartConversationRelayParams::Language::OrHash
               ],
-            transcription:
-              Telnyx::Calls::ActionStartConversationRelayParams::Transcription::OrHash,
-            transcription_language: String,
-            tts_language: String,
+            provider: String,
+            structured_provider: T::Hash[Symbol, T.anything],
+            transcription: T::Hash[Symbol, T.anything],
+            transcription_engine:
+              Telnyx::Calls::ActionStartConversationRelayParams::TranscriptionEngine::OrSymbol,
+            transcription_engine_config: T::Hash[Symbol, T.anything],
+            tts_provider: String,
+            url: String,
             voice: String,
             voice_settings:
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
+                Telnyx::MinimaxVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
+                Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
@@ -1332,34 +1353,62 @@ module Telnyx
           command_id: nil,
           # Enable DTMF detection for the relay session.
           conversation_relay_dtmf_detection: nil,
-          # Conversation Relay connection settings. This object is used by TeXML Call
-          # Scripting's `<ConversationRelay>` verb. The `interruptible` and
-          # `interruptible_greeting` fields are shorthand for
-          # `interruption_settings.interruptible` and
-          # `interruption_settings.interruptible_greeting`; use top-level
-          # `interruption_settings` for the full interruption settings shape.
+          # Conversation Relay connection settings. This object can provide `url`,
+          # `dtmf_detection`, `interruptible`, `interruptible_greeting`, and `languages`.
+          # Top-level aliases override nested values when both are present.
           conversation_relay_settings: nil,
           # WebSocket URL for your Conversation Relay server. Must start with `ws://` or
           # `wss://`.
           conversation_relay_url: nil,
+          # Custom key-value parameters forwarded to the relay session as
+          # `assistant.dynamic_variables`. If `assistant.dynamic_variables` is also present,
+          # these values are merged in.
+          custom_parameters: nil,
+          # Public alias for `conversation_relay_dtmf_detection`. If both are present, this
+          # value wins.
+          dtmf_detection: nil,
           # Text played when the relay session starts.
           greeting: nil,
+          # Controls when caller input can interrupt assistant speech. `any` allows speech
+          # or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+          # only; `dtmf` allows DTMF only.
+          interruptible: nil,
+          # Controls when caller input can interrupt assistant speech. `any` allows speech
+          # or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+          # only; `dtmf` allows DTMF only.
+          interruptible_greeting: nil,
           # Settings for handling caller interruptions during Conversation Relay speech.
           interruption_settings: nil,
           # Default language for the relay session. This value is used for both
-          # text-to-speech and speech recognition unless `tts_language` or
-          # `transcription_language` are provided.
+          # text-to-speech and speech recognition.
           language: nil,
-          # Language-specific TTS and transcription settings. Use this when the relay
-          # session needs per-language provider, voice, or speech model configuration.
+          # Per-language TTS and transcription settings.
           languages: nil,
-          # Speech-to-text settings for Conversation Relay.
+          # Structured voice provider. Must be supplied together with `structured_provider`.
+          provider: nil,
+          # Provider-specific structured voice settings. Must be supplied together with
+          # `provider`; Telnyx sends the value as the nested provider configuration for
+          # Conversation Relay.
+          structured_provider: nil,
+          # Not supported for Conversation Relay start requests. Use `transcription_engine`
+          # and `transcription_engine_config` instead.
           transcription: nil,
-          # Language to use for speech recognition. Overrides `language` for transcription
-          # when provided.
-          transcription_language: nil,
-          # Language to use for text-to-speech. Overrides `language` for TTS when provided.
-          tts_language: nil,
+          # Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+          # `Telnyx` are supported for backward compatibility. For Conversation Relay, use
+          # this field with `transcription_engine_config`; the `transcription` object is not
+          # supported.
+          transcription_engine: nil,
+          # Engine-specific transcription settings for Conversation Relay. This accepts the
+          # same provider-specific options used by the Call Transcription Start command,
+          # such as `transcription_model`, without requiring the engine discriminator to be
+          # repeated inside this object.
+          transcription_engine_config: nil,
+          # Text-to-speech provider. If omitted, Telnyx derives it from `voice` or
+          # `provider`.
+          tts_provider: nil,
+          # Public alias for `conversation_relay_url`. Must start with `ws://` or `wss://`.
+          # If both are present, this value wins.
+          url: nil,
           # The voice to be used by the voice assistant. Currently we support ElevenLabs,
           # Telnyx and AWS voices.
           #
