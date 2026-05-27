@@ -658,6 +658,11 @@ module Telnyx
     sig { returns(Telnyx::Resources::UacConnections) }
     attr_reader :uac_connections
 
+    # Retrieve raw Voice SDK call report stats payloads for WebRTC call
+    # troubleshooting.
+    sig { returns(Telnyx::Resources::VoiceSDKCallReports) }
+    attr_reader :voice_sdk_call_reports
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

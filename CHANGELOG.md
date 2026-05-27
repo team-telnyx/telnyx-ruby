@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.120.0 (2026-05-27)
+
+Full Changelog: [v5.119.0...v5.120.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.119.0...v5.120.0)
+
+### Features
+
+* TELAPPS-531: document Rime ArcanaV3 and Coda voice models ([c8a9586](https://github.com/team-telnyx/telnyx-ruby/commit/c8a9586fc5b5692dc63cdc1aea10e9791da41438))
+
+
+### Documentation
+
+* add voice sdk debug call report spec ([bceac1a](https://github.com/team-telnyx/telnyx-ruby/commit/bceac1a1fbb0aeaf687d2b31b56013c8d08077d6))
+
 ## 5.119.0 (2026-05-26)
 
 Full Changelog: [v5.118.0...v5.119.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.118.0...v5.119.0)

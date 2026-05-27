@@ -1719,6 +1719,10 @@ module Telnyx
 
   class VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
 
+  class VoiceSDKCallReportListParams = Telnyx::Models::VoiceSDKCallReportListParams
+
+  class VoiceSDKCallReportRetrieveParams = Telnyx::Models::VoiceSDKCallReportRetrieveParams
+
   module WebhookAPIVersion = Telnyx::Models::WebhookAPIVersion
 
   class WebhookDeliveryListParams = Telnyx::Models::WebhookDeliveryListParams
