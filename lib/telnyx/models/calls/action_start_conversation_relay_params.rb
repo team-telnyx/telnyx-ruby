@@ -41,12 +41,9 @@ module Telnyx
         optional :conversation_relay_dtmf_detection, Telnyx::Internal::Type::Boolean
 
         # @!attribute conversation_relay_settings
-        #   Conversation Relay connection settings. This object is used by TeXML Call
-        #   Scripting's `<ConversationRelay>` verb. The `interruptible` and
-        #   `interruptible_greeting` fields are shorthand for
-        #   `interruption_settings.interruptible` and
-        #   `interruption_settings.interruptible_greeting`; use top-level
-        #   `interruption_settings` for the full interruption settings shape.
+        #   Conversation Relay connection settings. This object can provide `url`,
+        #   `dtmf_detection`, `interruptible`, `interruptible_greeting`, and `languages`.
+        #   Top-level aliases override nested values when both are present.
         #
         #   @return [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings, nil]
         optional :conversation_relay_settings,
@@ -59,11 +56,43 @@ module Telnyx
         #   @return [String, nil]
         optional :conversation_relay_url, String
 
+        # @!attribute custom_parameters
+        #   Custom key-value parameters forwarded to the relay session as
+        #   `assistant.dynamic_variables`. If `assistant.dynamic_variables` is also present,
+        #   these values are merged in.
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :custom_parameters, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+        # @!attribute dtmf_detection
+        #   Public alias for `conversation_relay_dtmf_detection`. If both are present, this
+        #   value wins.
+        #
+        #   @return [Boolean, nil]
+        optional :dtmf_detection, Telnyx::Internal::Type::Boolean
+
         # @!attribute greeting
         #   Text played when the relay session starts.
         #
         #   @return [String, nil]
         optional :greeting, String
+
+        # @!attribute interruptible
+        #   Controls when caller input can interrupt assistant speech. `any` allows speech
+        #   or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+        #   only; `dtmf` allows DTMF only.
+        #
+        #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Interruptible, nil]
+        optional :interruptible, enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::Interruptible }
+
+        # @!attribute interruptible_greeting
+        #   Controls when caller input can interrupt assistant speech. `any` allows speech
+        #   or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+        #   only; `dtmf` allows DTMF only.
+        #
+        #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptibleGreeting, nil]
+        optional :interruptible_greeting,
+                 enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::InterruptibleGreeting }
 
         # @!attribute interruption_settings
         #   Settings for handling caller interruptions during Conversation Relay speech.
@@ -74,38 +103,73 @@ module Telnyx
 
         # @!attribute language
         #   Default language for the relay session. This value is used for both
-        #   text-to-speech and speech recognition unless `tts_language` or
-        #   `transcription_language` are provided.
+        #   text-to-speech and speech recognition.
         #
         #   @return [String, nil]
         optional :language, String
 
         # @!attribute languages
-        #   Language-specific TTS and transcription settings. Use this when the relay
-        #   session needs per-language provider, voice, or speech model configuration.
+        #   Per-language TTS and transcription settings.
         #
         #   @return [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>, nil]
         optional :languages,
                  -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::ActionStartConversationRelayParams::Language] }
 
+        # @!attribute provider
+        #   Structured voice provider. Must be supplied together with `structured_provider`.
+        #
+        #   @return [String, nil]
+        optional :provider, String
+
+        # @!attribute structured_provider
+        #   Provider-specific structured voice settings. Must be supplied together with
+        #   `provider`; Telnyx sends the value as the nested provider configuration for
+        #   Conversation Relay.
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :structured_provider, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
         # @!attribute transcription
-        #   Speech-to-text settings for Conversation Relay.
+        #   @deprecated
         #
-        #   @return [Telnyx::Models::Calls::ActionStartConversationRelayParams::Transcription, nil]
-        optional :transcription, -> { Telnyx::Calls::ActionStartConversationRelayParams::Transcription }
+        #   Not supported for Conversation Relay start requests. Use `transcription_engine`
+        #   and `transcription_engine_config` instead.
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :transcription, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-        # @!attribute transcription_language
-        #   Language to use for speech recognition. Overrides `language` for transcription
-        #   when provided.
+        # @!attribute transcription_engine
+        #   Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+        #   `Telnyx` are supported for backward compatibility. For Conversation Relay, use
+        #   this field with `transcription_engine_config`; the `transcription` object is not
+        #   supported.
+        #
+        #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::TranscriptionEngine, nil]
+        optional :transcription_engine,
+                 enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::TranscriptionEngine }
+
+        # @!attribute transcription_engine_config
+        #   Engine-specific transcription settings for Conversation Relay. This accepts the
+        #   same provider-specific options used by the Call Transcription Start command,
+        #   such as `transcription_model`, without requiring the engine discriminator to be
+        #   repeated inside this object.
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :transcription_engine_config, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+        # @!attribute tts_provider
+        #   Text-to-speech provider. If omitted, Telnyx derives it from `voice` or
+        #   `provider`.
         #
         #   @return [String, nil]
-        optional :transcription_language, String
+        optional :tts_provider, String
 
-        # @!attribute tts_language
-        #   Language to use for text-to-speech. Overrides `language` for TTS when provided.
+        # @!attribute url
+        #   Public alias for `conversation_relay_url`. Must start with `ws://` or `wss://`.
+        #   If both are present, this value wins.
         #
         #   @return [String, nil]
-        optional :tts_language, String
+        optional :url, String
 
         # @!attribute voice
         #   The voice to be used by the voice assistant. Currently we support ElevenLabs,
@@ -141,10 +205,10 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings }
 
-        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, conversation_relay_settings: nil, conversation_relay_url: nil, greeting: nil, interruption_settings: nil, language: nil, languages: nil, transcription: nil, transcription_language: nil, tts_language: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, conversation_relay_dtmf_detection: nil, conversation_relay_settings: nil, conversation_relay_url: nil, custom_parameters: nil, dtmf_detection: nil, greeting: nil, interruptible: nil, interruptible_greeting: nil, interruption_settings: nil, language: nil, languages: nil, provider: nil, structured_provider: nil, transcription: nil, transcription_engine: nil, transcription_engine_config: nil, tts_provider: nil, url: nil, voice: nil, voice_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartConversationRelayParams} for more details.
         #
@@ -158,27 +222,43 @@ module Telnyx
         #
         #   @param conversation_relay_dtmf_detection [Boolean] Enable DTMF detection for the relay session.
         #
-        #   @param conversation_relay_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings] Conversation Relay connection settings. This object is used by TeXML Call Script
+        #   @param conversation_relay_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings] Conversation Relay connection settings. This object can provide `url`, `dtmf_det
         #
         #   @param conversation_relay_url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
         #
+        #   @param custom_parameters [Hash{Symbol=>Object}] Custom key-value parameters forwarded to the relay session as `assistant.dynamic
+        #
+        #   @param dtmf_detection [Boolean] Public alias for `conversation_relay_dtmf_detection`. If both are present, this
+        #
         #   @param greeting [String] Text played when the relay session starts.
+        #
+        #   @param interruptible [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Interruptible] Controls when caller input can interrupt assistant speech. `any` allows speech o
+        #
+        #   @param interruptible_greeting [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptibleGreeting] Controls when caller input can interrupt assistant speech. `any` allows speech o
         #
         #   @param interruption_settings [Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings] Settings for handling caller interruptions during Conversation Relay speech.
         #
         #   @param language [String] Default language for the relay session. This value is used for both text-to-spee
         #
-        #   @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>] Language-specific TTS and transcription settings. Use this when the relay sessio
+        #   @param languages [Array<Telnyx::Models::Calls::ActionStartConversationRelayParams::Language>] Per-language TTS and transcription settings.
         #
-        #   @param transcription [Telnyx::Models::Calls::ActionStartConversationRelayParams::Transcription] Speech-to-text settings for Conversation Relay.
+        #   @param provider [String] Structured voice provider. Must be supplied together with `structured_provider`.
         #
-        #   @param transcription_language [String] Language to use for speech recognition. Overrides `language` for transcription w
+        #   @param structured_provider [Hash{Symbol=>Object}] Provider-specific structured voice settings. Must be supplied together with `pro
         #
-        #   @param tts_language [String] Language to use for text-to-speech. Overrides `language` for TTS when provided.
+        #   @param transcription [Hash{Symbol=>Object}] Not supported for Conversation Relay start requests. Use `transcription_engine`
+        #
+        #   @param transcription_engine [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
+        #
+        #   @param transcription_engine_config [Hash{Symbol=>Object}] Engine-specific transcription settings for Conversation Relay. This accepts the
+        #
+        #   @param tts_provider [String] Text-to-speech provider. If omitted, Telnyx derives it from `voice` or `provider
+        #
+        #   @param url [String] Public alias for `conversation_relay_url`. Must start with `ws://` or `wss://`.
         #
         #   @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -240,12 +320,9 @@ module Telnyx
           #   {Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings}
           #   for more details.
           #
-          #   Conversation Relay connection settings. This object is used by TeXML Call
-          #   Scripting's `<ConversationRelay>` verb. The `interruptible` and
-          #   `interruptible_greeting` fields are shorthand for
-          #   `interruption_settings.interruptible` and
-          #   `interruption_settings.interruptible_greeting`; use top-level
-          #   `interruption_settings` for the full interruption settings shape.
+          #   Conversation Relay connection settings. This object can provide `url`,
+          #   `dtmf_detection`, `interruptible`, `interruptible_greeting`, and `languages`.
+          #   Top-level aliases override nested values when both are present.
           #
           #   @param url [String] WebSocket URL for your Conversation Relay server. Must start with `ws://` or `ws
           #
@@ -292,26 +369,49 @@ module Telnyx
           end
 
           class Language < Telnyx::Internal::Type::BaseModel
-            # @!attribute code
-            #   BCP 47 language code.
+            # @!attribute language
+            #   BCP 47 language tag for this language configuration.
             #
-            #   @return [String, nil]
-            optional :code, String
+            #   @return [String]
+            required :language, String
 
             # @!attribute speech_model
-            #   Speech recognition model for this language.
+            #   Conversation Relay speech model. Prefer
+            #   `transcription_engine_config.transcription_model` when configuring
+            #   speech-to-text.
             #
             #   @return [String, nil]
             optional :speech_model, String
 
+            # @!attribute transcription_engine
+            #   Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+            #   `Telnyx` are supported for backward compatibility. When provided in a
+            #   Conversation Relay language entry, Telnyx derives `transcription_provider` and
+            #   `speech_model` for that language.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::TranscriptionEngine, nil]
+            optional :transcription_engine,
+                     enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::TranscriptionEngine }
+
+            # @!attribute transcription_engine_config
+            #   Engine-specific transcription settings for Conversation Relay. This accepts the
+            #   same provider-specific options used by the Call Transcription Start command,
+            #   such as `transcription_model`, without requiring the engine discriminator to be
+            #   repeated inside this object.
+            #
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :transcription_engine_config, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
             # @!attribute transcription_provider
-            #   Speech-to-text provider for this language.
+            #   Conversation Relay transcription provider name. Prefer `transcription_engine`
+            #   when configuring speech-to-text.
             #
             #   @return [String, nil]
             optional :transcription_provider, String
 
             # @!attribute tts_provider
-            #   Text-to-speech provider for this language.
+            #   Text-to-speech provider for this language. If omitted and `voice` is provided,
+            #   Telnyx derives the provider from the voice identifier.
             #
             #   @return [String, nil]
             optional :tts_provider, String
@@ -322,19 +422,132 @@ module Telnyx
             #   @return [String, nil]
             optional :voice, String
 
-            # @!method initialize(code: nil, speech_model: nil, transcription_provider: nil, tts_provider: nil, voice: nil)
-            #   Language-specific speech and transcription settings for Conversation Relay.
+            # @!attribute voice_settings
+            #   The settings associated with the voice selected
             #
-            #   @param code [String] BCP 47 language code.
+            #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings, nil]
+            optional :voice_settings,
+                     union: -> { Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings }
+
+            # @!method initialize(language:, speech_model: nil, transcription_engine: nil, transcription_engine_config: nil, transcription_provider: nil, tts_provider: nil, voice: nil, voice_settings: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language}
+            #   for more details.
             #
-            #   @param speech_model [String] Speech recognition model for this language.
+            #   Language-specific TTS and transcription settings for Conversation Relay.
             #
-            #   @param transcription_provider [String] Speech-to-text provider for this language.
+            #   @param language [String] BCP 47 language tag for this language configuration.
             #
-            #   @param tts_provider [String] Text-to-speech provider for this language.
+            #   @param speech_model [String] Conversation Relay speech model. Prefer `transcription_engine_config.transcripti
+            #
+            #   @param transcription_engine [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
+            #
+            #   @param transcription_engine_config [Hash{Symbol=>Object}] Engine-specific transcription settings for Conversation Relay. This accepts the
+            #
+            #   @param transcription_provider [String] Conversation Relay transcription provider name. Prefer `transcription_engine` wh
+            #
+            #   @param tts_provider [String] Text-to-speech provider for this language. If omitted and `voice` is provided, T
             #
             #   @param voice [String] Voice identifier for this language.
+            #
+            #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+
+            # Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+            # `Telnyx` are supported for backward compatibility. When provided in a
+            # Conversation Relay language entry, Telnyx derives `transcription_provider` and
+            # `speech_model` for that language.
+            #
+            # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language#transcription_engine
+            module TranscriptionEngine
+              extend Telnyx::Internal::Type::Enum
+
+              GOOGLE = :Google
+              TELNYX = :Telnyx
+              DEEPGRAM = :Deepgram
+              AZURE = :Azure
+              X_AI = :xAI
+              ASSEMBLY_AI = :AssemblyAI
+              SPEECHMATICS = :Speechmatics
+              SONIOX = :Soniox
+              A = :A
+              B = :B
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The settings associated with the voice selected
+            #
+            # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language#voice_settings
+            module VoiceSettings
+              extend Telnyx::Internal::Type::Union
+
+              discriminator :type
+
+              variant :elevenlabs, -> { Telnyx::Calls::ElevenLabsVoiceSettings }
+
+              variant :telnyx, -> { Telnyx::Calls::TelnyxVoiceSettings }
+
+              variant :aws, -> { Telnyx::Calls::AwsVoiceSettings }
+
+              variant :minimax, -> { Telnyx::MinimaxVoiceSettings }
+
+              variant :azure, -> { Telnyx::AzureVoiceSettings }
+
+              variant :rime, -> { Telnyx::RimeVoiceSettings }
+
+              variant :resemble, -> { Telnyx::ResembleVoiceSettings }
+
+              variant :inworld,
+                      -> { Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld }
+
+              variant :xai, -> { Telnyx::XaiVoiceSettings }
+
+              class Inworld < Telnyx::Internal::Type::BaseModel
+                # @!attribute type
+                #   Voice settings provider type
+                #
+                #   @return [Symbol, :inworld]
+                required :type, const: :inworld
+
+                # @!method initialize(type: :inworld)
+                #   @param type [Symbol, :inworld] Voice settings provider type
+              end
+
+              # @!method self.variants
+              #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings)]
+            end
           end
+        end
+
+        # Controls when caller input can interrupt assistant speech. `any` allows speech
+        # or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+        # only; `dtmf` allows DTMF only.
+        module Interruptible
+          extend Telnyx::Internal::Type::Enum
+
+          NONE = :none
+          ANY = :any
+          SPEECH = :speech
+          DTMF = :dtmf
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Controls when caller input can interrupt assistant speech. `any` allows speech
+        # or DTMF interruptions; `none` disables interruptions; `speech` allows speech
+        # only; `dtmf` allows DTMF only.
+        module InterruptibleGreeting
+          extend Telnyx::Internal::Type::Enum
+
+          NONE = :none
+          ANY = :any
+          SPEECH = :speech
+          DTMF = :dtmf
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         class InterruptionSettings < Telnyx::Internal::Type::BaseModel
@@ -440,26 +653,49 @@ module Telnyx
         end
 
         class Language < Telnyx::Internal::Type::BaseModel
-          # @!attribute code
-          #   BCP 47 language code.
+          # @!attribute language
+          #   BCP 47 language tag for this language configuration.
           #
-          #   @return [String, nil]
-          optional :code, String
+          #   @return [String]
+          required :language, String
 
           # @!attribute speech_model
-          #   Speech recognition model for this language.
+          #   Conversation Relay speech model. Prefer
+          #   `transcription_engine_config.transcription_model` when configuring
+          #   speech-to-text.
           #
           #   @return [String, nil]
           optional :speech_model, String
 
+          # @!attribute transcription_engine
+          #   Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+          #   `Telnyx` are supported for backward compatibility. When provided in a
+          #   Conversation Relay language entry, Telnyx derives `transcription_provider` and
+          #   `speech_model` for that language.
+          #
+          #   @return [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::TranscriptionEngine, nil]
+          optional :transcription_engine,
+                   enum: -> { Telnyx::Calls::ActionStartConversationRelayParams::Language::TranscriptionEngine }
+
+          # @!attribute transcription_engine_config
+          #   Engine-specific transcription settings for Conversation Relay. This accepts the
+          #   same provider-specific options used by the Call Transcription Start command,
+          #   such as `transcription_model`, without requiring the engine discriminator to be
+          #   repeated inside this object.
+          #
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :transcription_engine_config, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
           # @!attribute transcription_provider
-          #   Speech-to-text provider for this language.
+          #   Conversation Relay transcription provider name. Prefer `transcription_engine`
+          #   when configuring speech-to-text.
           #
           #   @return [String, nil]
           optional :transcription_provider, String
 
           # @!attribute tts_provider
-          #   Text-to-speech provider for this language.
+          #   Text-to-speech provider for this language. If omitted and `voice` is provided,
+          #   Telnyx derives the provider from the voice identifier.
           #
           #   @return [String, nil]
           optional :tts_provider, String
@@ -470,47 +706,123 @@ module Telnyx
           #   @return [String, nil]
           optional :voice, String
 
-          # @!method initialize(code: nil, speech_model: nil, transcription_provider: nil, tts_provider: nil, voice: nil)
-          #   Language-specific speech and transcription settings for Conversation Relay.
+          # @!attribute voice_settings
+          #   The settings associated with the voice selected
           #
-          #   @param code [String] BCP 47 language code.
+          #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings, nil]
+          optional :voice_settings,
+                   union: -> { Telnyx::Calls::ActionStartConversationRelayParams::Language::VoiceSettings }
+
+          # @!method initialize(language:, speech_model: nil, transcription_engine: nil, transcription_engine_config: nil, transcription_provider: nil, tts_provider: nil, voice: nil, voice_settings: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::Calls::ActionStartConversationRelayParams::Language} for more
+          #   details.
           #
-          #   @param speech_model [String] Speech recognition model for this language.
+          #   Language-specific TTS and transcription settings for Conversation Relay.
           #
-          #   @param transcription_provider [String] Speech-to-text provider for this language.
+          #   @param language [String] BCP 47 language tag for this language configuration.
           #
-          #   @param tts_provider [String] Text-to-speech provider for this language.
+          #   @param speech_model [String] Conversation Relay speech model. Prefer `transcription_engine_config.transcripti
+          #
+          #   @param transcription_engine [Symbol, Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
+          #
+          #   @param transcription_engine_config [Hash{Symbol=>Object}] Engine-specific transcription settings for Conversation Relay. This accepts the
+          #
+          #   @param transcription_provider [String] Conversation Relay transcription provider name. Prefer `transcription_engine` wh
+          #
+          #   @param tts_provider [String] Text-to-speech provider for this language. If omitted and `voice` is provided, T
           #
           #   @param voice [String] Voice identifier for this language.
+          #
+          #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+
+          # Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+          # `Telnyx` are supported for backward compatibility. When provided in a
+          # Conversation Relay language entry, Telnyx derives `transcription_provider` and
+          # `speech_model` for that language.
+          #
+          # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::Language#transcription_engine
+          module TranscriptionEngine
+            extend Telnyx::Internal::Type::Enum
+
+            GOOGLE = :Google
+            TELNYX = :Telnyx
+            DEEPGRAM = :Deepgram
+            AZURE = :Azure
+            X_AI = :xAI
+            ASSEMBLY_AI = :AssemblyAI
+            SPEECHMATICS = :Speechmatics
+            SONIOX = :Soniox
+            A = :A
+            B = :B
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The settings associated with the voice selected
+          #
+          # @see Telnyx::Models::Calls::ActionStartConversationRelayParams::Language#voice_settings
+          module VoiceSettings
+            extend Telnyx::Internal::Type::Union
+
+            discriminator :type
+
+            variant :elevenlabs, -> { Telnyx::Calls::ElevenLabsVoiceSettings }
+
+            variant :telnyx, -> { Telnyx::Calls::TelnyxVoiceSettings }
+
+            variant :aws, -> { Telnyx::Calls::AwsVoiceSettings }
+
+            variant :minimax, -> { Telnyx::MinimaxVoiceSettings }
+
+            variant :azure, -> { Telnyx::AzureVoiceSettings }
+
+            variant :rime, -> { Telnyx::RimeVoiceSettings }
+
+            variant :resemble, -> { Telnyx::ResembleVoiceSettings }
+
+            variant :inworld,
+                    -> { Telnyx::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld }
+
+            variant :xai, -> { Telnyx::XaiVoiceSettings }
+
+            class Inworld < Telnyx::Internal::Type::BaseModel
+              # @!attribute type
+              #   Voice settings provider type
+              #
+              #   @return [Symbol, :inworld]
+              required :type, const: :inworld
+
+              # @!method initialize(type: :inworld)
+              #   @param type [Symbol, :inworld] Voice settings provider type
+            end
+
+            # @!method self.variants
+            #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings)]
+          end
         end
 
-        class Transcription < Telnyx::Internal::Type::BaseModel
-          # @!attribute language
-          #   Transcription language.
-          #
-          #   @return [String, nil]
-          optional :language, String
+        # Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
+        # `Telnyx` are supported for backward compatibility. For Conversation Relay, use
+        # this field with `transcription_engine_config`; the `transcription` object is not
+        # supported.
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
 
-          # @!attribute model
-          #   Transcription model to use.
-          #
-          #   @return [String, nil]
-          optional :model, String
+          GOOGLE = :Google
+          TELNYX = :Telnyx
+          DEEPGRAM = :Deepgram
+          AZURE = :Azure
+          X_AI = :xAI
+          ASSEMBLY_AI = :AssemblyAI
+          SPEECHMATICS = :Speechmatics
+          SONIOX = :Soniox
+          A = :A
+          B = :B
 
-          # @!attribute provider
-          #   Transcription provider to use.
-          #
-          #   @return [String, nil]
-          optional :provider, String
-
-          # @!method initialize(language: nil, model: nil, provider: nil)
-          #   Speech-to-text settings for Conversation Relay.
-          #
-          #   @param language [String] Transcription language.
-          #
-          #   @param model [String] Transcription model to use.
-          #
-          #   @param provider [String] Transcription provider to use.
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # The settings associated with the voice selected
@@ -525,16 +837,31 @@ module Telnyx
 
           variant :aws, -> { Telnyx::Calls::AwsVoiceSettings }
 
+          variant :minimax, -> { Telnyx::MinimaxVoiceSettings }
+
           variant :azure, -> { Telnyx::AzureVoiceSettings }
 
           variant :rime, -> { Telnyx::RimeVoiceSettings }
 
           variant :resemble, -> { Telnyx::ResembleVoiceSettings }
 
+          variant :inworld, -> { Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld }
+
           variant :xai, -> { Telnyx::XaiVoiceSettings }
 
+          class Inworld < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Voice settings provider type
+            #
+            #   @return [Symbol, :inworld]
+            required :type, const: :inworld
+
+            # @!method initialize(type: :inworld)
+            #   @param type [Symbol, :inworld] Voice settings provider type
+          end
+
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings)]
         end
       end
     end
