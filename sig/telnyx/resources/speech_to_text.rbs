@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class SpeechToText
+      def list_providers: (
+        ?provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
+        ?service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SpeechToTextListProvidersResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

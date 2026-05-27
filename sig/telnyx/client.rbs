@@ -344,6 +344,8 @@ module Telnyx
 
     attr_reader uac_connections: Telnyx::Resources::UacConnections
 
+    attr_reader speech_to_text: Telnyx::Resources::SpeechToText
+
     attr_reader voice_sdk_call_reports: Telnyx::Resources::VoiceSDKCallReports
 
     private def auth_headers: -> ::Hash[String, String]
