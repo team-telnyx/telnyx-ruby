@@ -14,7 +14,7 @@ module Telnyx
           # @overload create(assistant_id, rules: nil, request_options: {})
           #
           # @param assistant_id [String]
-          # @param rules [Array<Telnyx::Models::AI::Assistants::CanaryDeploy::Rule>]
+          # @param rules [Array<Telnyx::Models::AI::Assistants::RuleInput>]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::CanaryDeployResponse]
@@ -62,7 +62,7 @@ module Telnyx
           # @overload update(assistant_id, rules: nil, request_options: {})
           #
           # @param assistant_id [String]
-          # @param rules [Array<Telnyx::Models::AI::Assistants::CanaryDeploy::Rule>]
+          # @param rules [Array<Telnyx::Models::AI::Assistants::RuleInput>]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::CanaryDeployResponse]

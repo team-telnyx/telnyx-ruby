@@ -1,0 +1,142 @@
+module Telnyx
+  module Models
+    type model_metadata =
+      {
+        id: String,
+        context_length: Integer,
+        created: Time,
+        languages: ::Array[String],
+        license: String,
+        organization: String,
+        owned_by: String,
+        parameters: Integer,
+        tier: Telnyx::Models::ModelMetadata::tier,
+        base_model: String?,
+        description: String?,
+        is_fine_tunable: bool,
+        is_vision_supported: bool,
+        max_completion_tokens: Integer?,
+        object: String,
+        parameters_str: String?,
+        pricing: ::Hash[Symbol, String],
+        recommended_for_assistants: bool,
+        regions: ::Array[String],
+        task: String
+      }
+
+    class ModelMetadata < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor context_length: Integer
+
+      attr_accessor created: Time
+
+      attr_accessor languages: ::Array[String]
+
+      attr_accessor license: String
+
+      attr_accessor organization: String
+
+      attr_accessor owned_by: String
+
+      attr_accessor parameters: Integer
+
+      attr_accessor tier: Telnyx::Models::ModelMetadata::tier
+
+      attr_accessor base_model: String?
+
+      attr_accessor description: String?
+
+      attr_reader is_fine_tunable: bool?
+
+      def is_fine_tunable=: (bool) -> bool
+
+      attr_reader is_vision_supported: bool?
+
+      def is_vision_supported=: (bool) -> bool
+
+      attr_accessor max_completion_tokens: Integer?
+
+      attr_reader object: String?
+
+      def object=: (String) -> String
+
+      attr_accessor parameters_str: String?
+
+      attr_reader pricing: ::Hash[Symbol, String]?
+
+      def pricing=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      attr_reader recommended_for_assistants: bool?
+
+      def recommended_for_assistants=: (bool) -> bool
+
+      attr_reader regions: ::Array[String]?
+
+      def regions=: (::Array[String]) -> ::Array[String]
+
+      attr_reader task: String?
+
+      def task=: (String) -> String
+
+      def initialize: (
+        id: String,
+        context_length: Integer,
+        created: Time,
+        languages: ::Array[String],
+        license: String,
+        organization: String,
+        owned_by: String,
+        parameters: Integer,
+        tier: Telnyx::Models::ModelMetadata::tier,
+        ?base_model: String?,
+        ?description: String?,
+        ?is_fine_tunable: bool,
+        ?is_vision_supported: bool,
+        ?max_completion_tokens: Integer?,
+        ?object: String,
+        ?parameters_str: String?,
+        ?pricing: ::Hash[Symbol, String],
+        ?recommended_for_assistants: bool,
+        ?regions: ::Array[String],
+        ?task: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        context_length: Integer,
+        created: Time,
+        languages: ::Array[String],
+        license: String,
+        organization: String,
+        owned_by: String,
+        parameters: Integer,
+        tier: Telnyx::Models::ModelMetadata::tier,
+        base_model: String?,
+        description: String?,
+        is_fine_tunable: bool,
+        is_vision_supported: bool,
+        max_completion_tokens: Integer?,
+        object: String,
+        parameters_str: String?,
+        pricing: ::Hash[Symbol, String],
+        recommended_for_assistants: bool,
+        regions: ::Array[String],
+        task: String
+      }
+
+      type tier = :small | :medium | :large | :unlisted
+
+      module Tier
+        extend Telnyx::Internal::Type::Enum
+
+        SMALL: :small
+        MEDIUM: :medium
+        LARGE: :large
+        UNLISTED: :unlisted
+
+        def self?.values: -> ::Array[Telnyx::Models::ModelMetadata::tier]
+      end
+    end
+  end
+end
