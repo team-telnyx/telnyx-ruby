@@ -663,9 +663,6 @@ module Telnyx
     # @return [Telnyx::Resources::UacConnections]
     attr_reader :uac_connections
 
-    # @return [Telnyx::Resources::VoiceSDKCallReport]
-    attr_reader :voice_sdk_call_report
-
     # Retrieve raw Voice SDK call report stats payloads for WebRTC call
     # troubleshooting.
     # @return [Telnyx::Resources::VoiceSDKCallReports]
@@ -944,7 +941,6 @@ module Telnyx
       @terms_of_service = Telnyx::Resources::TermsOfService.new(client: self)
       @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
       @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
-      @voice_sdk_call_report = Telnyx::Resources::VoiceSDKCallReport.new(client: self)
       @voice_sdk_call_reports = Telnyx::Resources::VoiceSDKCallReports.new(client: self)
     end
   end

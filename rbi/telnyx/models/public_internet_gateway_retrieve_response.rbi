@@ -11,54 +11,22 @@ module Telnyx
           )
         end
 
-      sig do
-        returns(
-          T.nilable(Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data)
-        )
-      end
+      sig { returns(T.nilable(Telnyx::PublicInternetGatewayRead)) }
       attr_reader :data
 
-      sig do
-        params(
-          data:
-            Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data::OrHash
-        ).void
-      end
+      sig { params(data: Telnyx::PublicInternetGatewayRead::OrHash).void }
       attr_writer :data
 
       sig do
-        params(
-          data:
-            Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data::OrHash
-        ).returns(T.attached_class)
+        params(data: Telnyx::PublicInternetGatewayRead::OrHash).returns(
+          T.attached_class
+        )
       end
       def self.new(data: nil)
       end
 
-      sig do
-        override.returns(
-          { data: Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data }
-        )
-      end
+      sig { override.returns({ data: Telnyx::PublicInternetGatewayRead }) }
       def to_hash
-      end
-
-      class Data < Telnyx::Models::Record
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::Models::PublicInternetGatewayRetrieveResponse::Data,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T.attached_class) }
-        def self.new
-        end
-
-        sig { override.returns({}) }
-        def to_hash
-        end
       end
     end
   end

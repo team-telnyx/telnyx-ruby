@@ -55,16 +55,16 @@ module Telnyx
       # supported at the moment. Use the `conversation` parameter with a Telnyx
       # Conversation ID to leverage persistent conversations.
       #
-      # @overload create_response_deprecated(body:, request_options: {})
+      # @overload create_response(body:, request_options: {})
       #
       # @param body [Hash{Symbol=>Object}]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Hash{Symbol=>Object}]
       #
-      # @see Telnyx::Models::AICreateResponseDeprecatedParams
-      def create_response_deprecated(params)
-        parsed, options = Telnyx::AICreateResponseDeprecatedParams.dump_request(params)
+      # @see Telnyx::Models::AICreateResponseParams
+      def create_response(params)
+        parsed, options = Telnyx::AICreateResponseParams.dump_request(params)
         @client.request(
           method: :post,
           path: "ai/responses",

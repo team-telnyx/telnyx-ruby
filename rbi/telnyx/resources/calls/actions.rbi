@@ -451,7 +451,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -662,7 +662,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -704,8 +704,8 @@ module Telnyx
           #   `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Use `voice_settings`
           #   to configure speed, volume, pitch, and language_boost.
           # - **Rime:** Use `Rime.<model_id>.<voice_id>` (e.g., `Rime.Arcana.cove`).
-          #   Supported model_ids: `Arcana`, `Mist`. Use `voice_settings` to configure
-          #   voice_speed.
+          #   Supported model_ids: `Arcana`, `Mist`, `ArcanaV3`, `Coda`. Use
+          #   `voice_settings` to configure voice_speed.
           # - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
           #   `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
           #   `voice_settings` to configure precision, sample_rate, and format.
@@ -1075,7 +1075,7 @@ module Telnyx
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1117,8 +1117,8 @@ module Telnyx
           #   `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Use `voice_settings`
           #   to configure speed, volume, pitch, and language_boost.
           # - **Rime:** Use `Rime.<model_id>.<voice_id>` (e.g., `Rime.Arcana.cove`).
-          #   Supported model_ids: `Arcana`, `Mist`. Use `voice_settings` to configure
-          #   voice_speed.
+          #   Supported model_ids: `Arcana`, `Mist`, `ArcanaV3`, `Coda`. Use
+          #   `voice_settings` to configure voice_speed.
           # - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
           #   `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
           #   `voice_settings` to configure precision, sample_rate, and format.
@@ -1200,7 +1200,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1313,7 +1313,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartConversationRelayResponse)
@@ -1785,8 +1785,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
+                Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
