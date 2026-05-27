@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    type speech_to_text_list_providers_response =
+      {
+        data: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data],
+        meta: Telnyx::Models::SpeechToTextListProvidersResponse::Meta
+      }
+
+    class SpeechToTextListProvidersResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data]
+
+      attr_accessor meta: Telnyx::Models::SpeechToTextListProvidersResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data],
+        meta: Telnyx::Models::SpeechToTextListProvidersResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data],
+        meta: Telnyx::Models::SpeechToTextListProvidersResponse::Meta
+      }
+
+      type data =
+        {
+          languages: ::Array[String],
+          model: String,
+          provider: String,
+          service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::service_type]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor languages: ::Array[String]
+
+        attr_accessor model: String
+
+        attr_accessor provider: String
+
+        attr_accessor service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::service_type]
+
+        def initialize: (
+          languages: ::Array[String],
+          model: String,
+          provider: String,
+          service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::service_type]
+        ) -> void
+
+        def to_hash: -> {
+          languages: ::Array[String],
+          model: String,
+          provider: String,
+          service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::service_type]
+        }
+
+        type service_type =
+          :streaming | :file_transcription | :in_call_transcription
+
+        module ServiceType
+          extend Telnyx::Internal::Type::Enum
+
+          STREAMING: :streaming
+          FILE_TRANSCRIPTION: :file_transcription
+          IN_CALL_TRANSCRIPTION: :in_call_transcription
+
+          def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::service_type]
+        end
+      end
+
+      type meta = { total: Integer }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor total: Integer
+
+        def initialize: (total: Integer) -> void
+
+        def to_hash: -> { total: Integer }
+      end
+    end
+  end
+end
