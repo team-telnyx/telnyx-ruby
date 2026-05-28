@@ -56,8 +56,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineAzureConfig,
                 Telnyx::Calls::TranscriptionEngineXaiConfig,
                 Telnyx::Calls::TranscriptionEngineAssemblyaiConfig,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox,
+                Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig,
+                Telnyx::Calls::TranscriptionEngineSonioxConfig,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
@@ -77,8 +77,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::OrHash,
+                Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -110,8 +110,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::OrHash,
+                Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -152,8 +152,8 @@ module Telnyx
                   Telnyx::Calls::TranscriptionEngineAzureConfig,
                   Telnyx::Calls::TranscriptionEngineXaiConfig,
                   Telnyx::Calls::TranscriptionEngineAssemblyaiConfig,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox,
+                  Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig,
+                  Telnyx::Calls::TranscriptionEngineSonioxConfig,
                   Telnyx::Calls::TranscriptionEngineAConfig,
                   Telnyx::Calls::TranscriptionEngineBConfig,
                   Telnyx::Calls::DeepgramNova2Config,
@@ -253,437 +253,14 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineAzureConfig,
                 Telnyx::Calls::TranscriptionEngineXaiConfig,
                 Telnyx::Calls::TranscriptionEngineAssemblyaiConfig,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox,
+                Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig,
+                Telnyx::Calls::TranscriptionEngineSonioxConfig,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
                 Telnyx::Calls::DeepgramNova3Config
               )
             end
-
-          class Speechmatics < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Whether to send also interim results. If set to false, only final results will
-            # be sent.
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :interim_results
-
-            sig { params(interim_results: T::Boolean).void }
-            attr_writer :interim_results
-
-            # Language to use for speech recognition
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol
-                )
-              )
-            end
-            attr_reader :language
-
-            sig do
-              params(
-                language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol
-              ).void
-            end
-            attr_writer :language
-
-            # Engine identifier for Speechmatics transcription service
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_engine
-
-            sig do
-              params(
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_engine
-
-            # The model to use for transcription.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_model
-
-            sig do
-              params(
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_model
-
-            sig do
-              params(
-                interim_results: T::Boolean,
-                language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol,
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol,
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # Whether to send also interim results. If set to false, only final results will
-              # be sent.
-              interim_results: nil,
-              # Language to use for speech recognition
-              language: nil,
-              # Engine identifier for Speechmatics transcription service
-              transcription_engine: nil,
-              # The model to use for transcription.
-              transcription_model: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  interim_results: T::Boolean,
-                  language:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::OrSymbol,
-                  transcription_engine:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::OrSymbol,
-                  transcription_model:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::OrSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # Language to use for speech recognition
-            module Language
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              EN =
-                T.let(
-                  :en,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              BA =
-                T.let(
-                  :ba,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              EU =
-                T.let(
-                  :eu,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              GL =
-                T.let(
-                  :gl,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              GA =
-                T.let(
-                  :ga,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              MT =
-                T.let(
-                  :mt,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              MN =
-                T.let(
-                  :mn,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              SW =
-                T.let(
-                  :sw,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              UG =
-                T.let(
-                  :ug,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              CY =
-                T.let(
-                  :cy,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              AR_EN =
-                T.let(
-                  :ar_en,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              CMN_EN =
-                T.let(
-                  :cmn_en,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              EN_MS =
-                T.let(
-                  :en_ms,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              EN_TA =
-                T.let(
-                  :en_ta,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              TL =
-                T.let(
-                  :tl,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              ES_BILINGUAL_EN =
-                T.let(
-                  :"es-bilingual-en",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-              CMN_EN_MS_TA =
-                T.let(
-                  :cmn_en_ms_ta,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            # Engine identifier for Speechmatics transcription service
-            module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              SPEECHMATICS =
-                T.let(
-                  :Speechmatics,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            # The model to use for transcription.
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              SPEECHMATICS_STANDARD =
-                T.let(
-                  :"speechmatics/standard",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
-
-          class Soniox < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Engine identifier for Soniox transcription service
-            sig { returns(Symbol) }
-            attr_accessor :transcription_engine
-
-            # When true, Soniox emits end-of-utterance events at the cadence configured by
-            # `max_endpoint_delay_ms`.
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :enable_endpoint_detection
-
-            sig { params(enable_endpoint_detection: T::Boolean).void }
-            attr_writer :enable_endpoint_detection
-
-            # Whether to send also interim results. If set to false, only final results will
-            # be sent.
-            sig { returns(T.nilable(T::Boolean)) }
-            attr_reader :interim_results
-
-            sig { params(interim_results: T::Boolean).void }
-            attr_writer :interim_results
-
-            # ISO 639-1 language hint (e.g. `en`, `es`), or `auto` to omit the hint and let
-            # Soniox auto-detect supported languages multilingually.
-            sig { returns(T.nilable(String)) }
-            attr_reader :language
-
-            sig { params(language: String).void }
-            attr_writer :language
-
-            # Maximum silence (in milliseconds) before Soniox emits an end-of-utterance event.
-            # Only honored when `enable_endpoint_detection` is true. Range: 500-3000 ms.
-            sig { returns(T.nilable(Integer)) }
-            attr_reader :max_endpoint_delay_ms
-
-            sig { params(max_endpoint_delay_ms: Integer).void }
-            attr_writer :max_endpoint_delay_ms
-
-            # The model to use for transcription.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_model
-
-            sig do
-              params(
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_model
-
-            sig do
-              params(
-                enable_endpoint_detection: T::Boolean,
-                interim_results: T::Boolean,
-                language: String,
-                max_endpoint_delay_ms: Integer,
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel::OrSymbol,
-                transcription_engine: Symbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # When true, Soniox emits end-of-utterance events at the cadence configured by
-              # `max_endpoint_delay_ms`.
-              enable_endpoint_detection: nil,
-              # Whether to send also interim results. If set to false, only final results will
-              # be sent.
-              interim_results: nil,
-              # ISO 639-1 language hint (e.g. `en`, `es`), or `auto` to omit the hint and let
-              # Soniox auto-detect supported languages multilingually.
-              language: nil,
-              # Maximum silence (in milliseconds) before Soniox emits an end-of-utterance event.
-              # Only honored when `enable_endpoint_detection` is true. Range: 500-3000 ms.
-              max_endpoint_delay_ms: nil,
-              # The model to use for transcription.
-              transcription_model: nil,
-              # Engine identifier for Soniox transcription service
-              transcription_engine: :Soniox
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  transcription_engine: Symbol,
-                  enable_endpoint_detection: T::Boolean,
-                  interim_results: T::Boolean,
-                  language: String,
-                  max_endpoint_delay_ms: Integer,
-                  transcription_model:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel::OrSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # The model to use for transcription.
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              SONIOX_STT_RT_V4 =
-                T.let(
-                  :"soniox/stt-rt-v4",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
 
           sig do
             override.returns(
