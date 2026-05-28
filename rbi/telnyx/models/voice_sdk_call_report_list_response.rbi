@@ -58,9 +58,7 @@ module Telnyx
         params(
           logs:
             T.any(
-              T::Array[
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::OrHash
-              ],
+              T::Array[Telnyx::VoiceSDKCallReportLogEntry::OrHash],
               Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::OrHash
             )
         ).void
@@ -192,9 +190,7 @@ module Telnyx
           flush_reason: T::Hash[Symbol, T.anything],
           logs:
             T.any(
-              T::Array[
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::OrHash
-              ],
+              T::Array[Telnyx::VoiceSDKCallReportLogEntry::OrHash],
               Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::OrHash
             ),
           organization_id: String,
@@ -309,142 +305,10 @@ module Telnyx
         Variants =
           T.type_alias do
             T.any(
-              T::Array[
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0
-              ],
+              T::Array[Telnyx::VoiceSDKCallReportLogEntry],
               Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries
             )
           end
-
-        class UnionMember0 < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # Raw structured context attached to the log entry.
-          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-          attr_reader :context
-
-          sig { params(context: T::Hash[Symbol, T.anything]).void }
-          attr_writer :context
-
-          # Log level emitted by the SDK.
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::TaggedSymbol
-              )
-            )
-          end
-          attr_reader :level
-
-          sig do
-            params(
-              level:
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::OrSymbol
-            ).void
-          end
-          attr_writer :level
-
-          # Log message.
-          sig { returns(T.nilable(String)) }
-          attr_reader :message
-
-          sig { params(message: String).void }
-          attr_writer :message
-
-          # Time when the log entry was emitted.
-          sig { returns(T.nilable(Time)) }
-          attr_reader :timestamp
-
-          sig { params(timestamp: Time).void }
-          attr_writer :timestamp
-
-          # A raw Voice SDK log entry. Additional SDK-specific fields may be present.
-          sig do
-            params(
-              context: T::Hash[Symbol, T.anything],
-              level:
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::OrSymbol,
-              message: String,
-              timestamp: Time
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Raw structured context attached to the log entry.
-            context: nil,
-            # Log level emitted by the SDK.
-            level: nil,
-            # Log message.
-            message: nil,
-            # Time when the log entry was emitted.
-            timestamp: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                context: T::Hash[Symbol, T.anything],
-                level:
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::TaggedSymbol,
-                message: String,
-                timestamp: Time
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # Log level emitted by the SDK.
-          module Level
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            DEBUG =
-              T.let(
-                :debug,
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::TaggedSymbol
-              )
-            INFO =
-              T.let(
-                :info,
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::TaggedSymbol
-              )
-            WARN =
-              T.let(
-                :warn,
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::TaggedSymbol
-              )
-            ERROR =
-              T.let(
-                :error,
-                Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-        end
 
         class Entries < Telnyx::Internal::Type::BaseModel
           OrHash =
@@ -457,22 +321,13 @@ module Telnyx
 
           # Raw log entries when the SDK groups logs under an entries field.
           sig do
-            returns(
-              T.nilable(
-                T::Array[
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry
-                ]
-              )
-            )
+            returns(T.nilable(T::Array[Telnyx::VoiceSDKCallReportLogEntry]))
           end
           attr_reader :entries
 
           sig do
             params(
-              entries:
-                T::Array[
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::OrHash
-                ]
+              entries: T::Array[Telnyx::VoiceSDKCallReportLogEntry::OrHash]
             ).void
           end
           attr_writer :entries
@@ -481,10 +336,7 @@ module Telnyx
           # field.
           sig do
             params(
-              entries:
-                T::Array[
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::OrHash
-                ]
+              entries: T::Array[Telnyx::VoiceSDKCallReportLogEntry::OrHash]
             ).returns(T.attached_class)
           end
           def self.new(
@@ -495,145 +347,10 @@ module Telnyx
 
           sig do
             override.returns(
-              {
-                entries:
-                  T::Array[
-                    Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry
-                  ]
-              }
+              { entries: T::Array[Telnyx::VoiceSDKCallReportLogEntry] }
             )
           end
           def to_hash
-          end
-
-          class Entry < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Raw structured context attached to the log entry.
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-            attr_reader :context
-
-            sig { params(context: T::Hash[Symbol, T.anything]).void }
-            attr_writer :context
-
-            # Log level emitted by the SDK.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::TaggedSymbol
-                )
-              )
-            end
-            attr_reader :level
-
-            sig do
-              params(
-                level:
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::OrSymbol
-              ).void
-            end
-            attr_writer :level
-
-            # Log message.
-            sig { returns(T.nilable(String)) }
-            attr_reader :message
-
-            sig { params(message: String).void }
-            attr_writer :message
-
-            # Time when the log entry was emitted.
-            sig { returns(T.nilable(Time)) }
-            attr_reader :timestamp
-
-            sig { params(timestamp: Time).void }
-            attr_writer :timestamp
-
-            # A raw Voice SDK log entry. Additional SDK-specific fields may be present.
-            sig do
-              params(
-                context: T::Hash[Symbol, T.anything],
-                level:
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::OrSymbol,
-                message: String,
-                timestamp: Time
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # Raw structured context attached to the log entry.
-              context: nil,
-              # Log level emitted by the SDK.
-              level: nil,
-              # Log message.
-              message: nil,
-              # Time when the log entry was emitted.
-              timestamp: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  context: T::Hash[Symbol, T.anything],
-                  level:
-                    Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::TaggedSymbol,
-                  message: String,
-                  timestamp: Time
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # Log level emitted by the SDK.
-            module Level
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              DEBUG =
-                T.let(
-                  :debug,
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::TaggedSymbol
-                )
-              INFO =
-                T.let(
-                  :info,
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::TaggedSymbol
-                )
-              WARN =
-                T.let(
-                  :warn,
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::TaggedSymbol
-                )
-              ERROR =
-                T.let(
-                  :error,
-                  Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
           end
         end
 
@@ -647,11 +364,9 @@ module Telnyx
         def self.variants
         end
 
-        UnionMember0Array =
+        VoiceSDKCallReportLogEntryArray =
           T.let(
-            Telnyx::Internal::Type::ArrayOf[
-              Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0
-            ],
+            Telnyx::Internal::Type::ArrayOf[Telnyx::VoiceSDKCallReportLogEntry],
             Telnyx::Internal::Type::Converter
           )
       end
