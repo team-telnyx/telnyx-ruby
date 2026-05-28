@@ -232,6 +232,8 @@ module Telnyx
 
     attr_reader reports: Telnyx::Resources::Reports
 
+    attr_reader speech_to_text: Telnyx::Resources::SpeechToText
+
     attr_reader requirement_groups: Telnyx::Resources::RequirementGroups
 
     attr_reader requirement_types: Telnyx::Resources::RequirementTypes
@@ -343,8 +345,6 @@ module Telnyx
     attr_reader pronunciation_dicts: Telnyx::Resources::PronunciationDicts
 
     attr_reader uac_connections: Telnyx::Resources::UacConnections
-
-    attr_reader speech_to_text: Telnyx::Resources::SpeechToText
 
     attr_reader voice_sdk_call_reports: Telnyx::Resources::VoiceSDKCallReports
 

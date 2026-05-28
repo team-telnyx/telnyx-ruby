@@ -2,33 +2,37 @@
 
 module Telnyx
   module Models
-    class TextToSpeechGenerateParams < ::Telnyx::Internal::Type::BaseModel
+    class TextToSpeechCreateSpeechParams < ::Telnyx::Internal::Type::BaseModel
       extend ::Telnyx::Internal::Type::RequestParameters::Converter
       include ::Telnyx::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
           T.any(
-            ::Telnyx::TextToSpeechGenerateParams,
+            ::Telnyx::TextToSpeechCreateSpeechParams,
             ::Telnyx::Internal::AnyHash
           )
         end
 
       # AWS Polly provider-specific parameters.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Aws)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Aws)) }
       attr_reader :aws
 
       sig do
-        params(aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash).void
+        params(aws: ::Telnyx::TextToSpeechCreateSpeechParams::Aws::OrHash).void
       end
       attr_writer :aws
 
       # Azure Cognitive Services provider-specific parameters.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Azure)) }
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Azure))
+      end
       attr_reader :azure
 
       sig do
-        params(azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash).void
+        params(
+          azure: ::Telnyx::TextToSpeechCreateSpeechParams::Azure::OrHash
+        ).void
       end
       attr_writer :azure
 
@@ -41,13 +45,14 @@ module Telnyx
 
       # ElevenLabs provider-specific parameters.
       sig do
-        returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Elevenlabs))
+        returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Elevenlabs))
       end
       attr_reader :elevenlabs
 
       sig do
         params(
-          elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash
+          elevenlabs:
+            ::Telnyx::TextToSpeechCreateSpeechParams::Elevenlabs::OrHash
         ).void
       end
       attr_writer :elevenlabs
@@ -60,12 +65,14 @@ module Telnyx
       attr_writer :language
 
       # Minimax provider-specific parameters.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Minimax)) }
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Minimax))
+      end
       attr_reader :minimax
 
       sig do
         params(
-          minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash
+          minimax: ::Telnyx::TextToSpeechCreateSpeechParams::Minimax::OrHash
         ).void
       end
       attr_writer :minimax
@@ -74,7 +81,9 @@ module Telnyx
       # `base64_output` returns base64-encoded audio in JSON.
       sig do
         returns(
-          T.nilable(::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol)
+          T.nilable(
+            ::Telnyx::TextToSpeechCreateSpeechParams::OutputType::OrSymbol
+          )
         )
       end
       attr_reader :output_type
@@ -82,7 +91,7 @@ module Telnyx
       sig do
         params(
           output_type:
-            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::OutputType::OrSymbol
         ).void
       end
       attr_writer :output_type
@@ -90,47 +99,55 @@ module Telnyx
       # TTS provider. Required unless `voice` is provided.
       sig do
         returns(
-          T.nilable(::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol)
+          T.nilable(
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::OrSymbol
+          )
         )
       end
       attr_reader :provider
 
       sig do
         params(
-          provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol
+          provider: ::Telnyx::TextToSpeechCreateSpeechParams::Provider::OrSymbol
         ).void
       end
       attr_writer :provider
 
       # Resemble AI provider-specific parameters.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Resemble)) }
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Resemble))
+      end
       attr_reader :resemble
 
       sig do
         params(
-          resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble::OrHash
+          resemble: ::Telnyx::TextToSpeechCreateSpeechParams::Resemble::OrHash
         ).void
       end
       attr_writer :resemble
 
       # Rime provider-specific parameters.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Rime)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Rime)) }
       attr_reader :rime
 
       sig do
-        params(rime: ::Telnyx::TextToSpeechGenerateParams::Rime::OrHash).void
+        params(
+          rime: ::Telnyx::TextToSpeechCreateSpeechParams::Rime::OrHash
+        ).void
       end
       attr_writer :rime
 
       # Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
       # `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
       # `volume`, and `emotion`.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Telnyx)) }
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Telnyx))
+      end
       attr_reader :telnyx
 
       sig do
         params(
-          telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx::OrHash
+          telnyx: ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::OrHash
         ).void
       end
       attr_writer :telnyx
@@ -145,14 +162,17 @@ module Telnyx
       # Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       sig do
         returns(
-          T.nilable(::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol)
+          T.nilable(
+            ::Telnyx::TextToSpeechCreateSpeechParams::TextType::OrSymbol
+          )
         )
       end
       attr_reader :text_type
 
       sig do
         params(
-          text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol
+          text_type:
+            ::Telnyx::TextToSpeechCreateSpeechParams::TextType::OrSymbol
         ).void
       end
       attr_writer :text_type
@@ -178,33 +198,36 @@ module Telnyx
       attr_writer :voice_settings
 
       # xAI provider-specific parameters.
-      sig { returns(T.nilable(::Telnyx::TextToSpeechGenerateParams::Xai)) }
+      sig { returns(T.nilable(::Telnyx::TextToSpeechCreateSpeechParams::Xai)) }
       attr_reader :xai
 
       sig do
-        params(xai: ::Telnyx::TextToSpeechGenerateParams::Xai::OrHash).void
+        params(xai: ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OrHash).void
       end
       attr_writer :xai
 
       sig do
         params(
-          aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
-          azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
+          aws: ::Telnyx::TextToSpeechCreateSpeechParams::Aws::OrHash,
+          azure: ::Telnyx::TextToSpeechCreateSpeechParams::Azure::OrHash,
           disable_cache: T::Boolean,
-          elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
+          elevenlabs:
+            ::Telnyx::TextToSpeechCreateSpeechParams::Elevenlabs::OrHash,
           language: String,
-          minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
+          minimax: ::Telnyx::TextToSpeechCreateSpeechParams::Minimax::OrHash,
           output_type:
-            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
-          provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
-          resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble::OrHash,
-          rime: ::Telnyx::TextToSpeechGenerateParams::Rime::OrHash,
-          telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx::OrHash,
+            ::Telnyx::TextToSpeechCreateSpeechParams::OutputType::OrSymbol,
+          provider:
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::OrSymbol,
+          resemble: ::Telnyx::TextToSpeechCreateSpeechParams::Resemble::OrHash,
+          rime: ::Telnyx::TextToSpeechCreateSpeechParams::Rime::OrHash,
+          telnyx: ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::OrHash,
           text: String,
-          text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
+          text_type:
+            ::Telnyx::TextToSpeechCreateSpeechParams::TextType::OrSymbol,
           voice: String,
           voice_settings: T::Hash[Symbol, T.anything],
-          xai: ::Telnyx::TextToSpeechGenerateParams::Xai::OrHash,
+          xai: ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OrHash,
           request_options: ::Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -257,23 +280,25 @@ module Telnyx
       sig do
         override.returns(
           {
-            aws: ::Telnyx::TextToSpeechGenerateParams::Aws,
-            azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
+            aws: ::Telnyx::TextToSpeechCreateSpeechParams::Aws,
+            azure: ::Telnyx::TextToSpeechCreateSpeechParams::Azure,
             disable_cache: T::Boolean,
-            elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+            elevenlabs: ::Telnyx::TextToSpeechCreateSpeechParams::Elevenlabs,
             language: String,
-            minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
+            minimax: ::Telnyx::TextToSpeechCreateSpeechParams::Minimax,
             output_type:
-              ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
-            provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
-            resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble,
-            rime: ::Telnyx::TextToSpeechGenerateParams::Rime,
-            telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
+              ::Telnyx::TextToSpeechCreateSpeechParams::OutputType::OrSymbol,
+            provider:
+              ::Telnyx::TextToSpeechCreateSpeechParams::Provider::OrSymbol,
+            resemble: ::Telnyx::TextToSpeechCreateSpeechParams::Resemble,
+            rime: ::Telnyx::TextToSpeechCreateSpeechParams::Rime,
+            telnyx: ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx,
             text: String,
-            text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
+            text_type:
+              ::Telnyx::TextToSpeechCreateSpeechParams::TextType::OrSymbol,
             voice: String,
             voice_settings: T::Hash[Symbol, T.anything],
-            xai: ::Telnyx::TextToSpeechGenerateParams::Xai,
+            xai: ::Telnyx::TextToSpeechCreateSpeechParams::Xai,
             request_options: ::Telnyx::RequestOptions
           }
         )
@@ -285,7 +310,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Aws,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Aws,
               ::Telnyx::Internal::AnyHash
             )
           end
@@ -322,7 +347,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType::OrSymbol
             )
           )
         end
@@ -331,7 +356,7 @@ module Telnyx
         sig do
           params(
             text_type:
-              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType::OrSymbol
           ).void
         end
         attr_writer :text_type
@@ -344,7 +369,7 @@ module Telnyx
             output_format: String,
             sample_rate: String,
             text_type:
-              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -369,7 +394,7 @@ module Telnyx
               output_format: String,
               sample_rate: String,
               text_type:
-                ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::OrSymbol
+                ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType::OrSymbol
             }
           )
         end
@@ -382,25 +407,28 @@ module Telnyx
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::Aws::TextType)
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           TEXT =
             T.let(
               :text,
-              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType::TaggedSymbol
             )
           SSML =
             T.let(
               :ssml,
-              ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                ::Telnyx::TextToSpeechGenerateParams::Aws::TextType::TaggedSymbol
+                ::Telnyx::TextToSpeechCreateSpeechParams::Aws::TextType::TaggedSymbol
               ]
             )
           end
@@ -413,7 +441,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Azure,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Azure,
               ::Telnyx::Internal::AnyHash
             )
           end
@@ -471,7 +499,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType::OrSymbol
             )
           )
         end
@@ -480,7 +508,7 @@ module Telnyx
         sig do
           params(
             text_type:
-              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType::OrSymbol
           ).void
         end
         attr_writer :text_type
@@ -496,7 +524,7 @@ module Telnyx
             output_format: String,
             region: String,
             text_type:
-              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -530,7 +558,7 @@ module Telnyx
               output_format: String,
               region: String,
               text_type:
-                ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::OrSymbol
+                ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType::OrSymbol
             }
           )
         end
@@ -545,7 +573,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Symbol,
-                ::Telnyx::TextToSpeechGenerateParams::Azure::TextType
+                ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -553,18 +581,18 @@ module Telnyx
           TEXT =
             T.let(
               :text,
-              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType::TaggedSymbol
             )
           SSML =
             T.let(
               :ssml,
-              ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                ::Telnyx::TextToSpeechGenerateParams::Azure::TextType::TaggedSymbol
+                ::Telnyx::TextToSpeechCreateSpeechParams::Azure::TextType::TaggedSymbol
               ]
             )
           end
@@ -577,7 +605,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Elevenlabs,
               ::Telnyx::Internal::AnyHash
             )
           end
@@ -638,7 +666,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Minimax,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Minimax,
               ::Telnyx::Internal::AnyHash
             )
           end
@@ -724,25 +752,25 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::OutputType)
+            T.all(Symbol, ::Telnyx::TextToSpeechCreateSpeechParams::OutputType)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BINARY_OUTPUT =
           T.let(
             :binary_output,
-            ::Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::OutputType::TaggedSymbol
           )
         BASE64_OUTPUT =
           T.let(
             :base64_output,
-            ::Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::OutputType::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              ::Telnyx::TextToSpeechGenerateParams::OutputType::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::OutputType::TaggedSymbol
             ]
           )
         end
@@ -756,55 +784,55 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::Provider)
+            T.all(Symbol, ::Telnyx::TextToSpeechCreateSpeechParams::Provider)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AWS =
           T.let(
             :aws,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
         TELNYX =
           T.let(
             :telnyx,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
         AZURE =
           T.let(
             :azure,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
         ELEVENLABS =
           T.let(
             :elevenlabs,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
         MINIMAX =
           T.let(
             :minimax,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
         RIME =
           T.let(
             :rime,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
         RESEMBLE =
           T.let(
             :resemble,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
         XAI =
           T.let(
             :xai,
-            ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              ::Telnyx::TextToSpeechGenerateParams::Provider::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Provider::TaggedSymbol
             ]
           )
         end
@@ -816,7 +844,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Resemble,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Resemble,
               ::Telnyx::Internal::AnyHash
             )
           end
@@ -888,7 +916,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Rime,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Rime,
               ::Telnyx::Internal::AnyHash
             )
           end
@@ -949,7 +977,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx,
               ::Telnyx::Internal::AnyHash
             )
           end
@@ -959,7 +987,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::OrSymbol
             )
           )
         end
@@ -968,7 +996,7 @@ module Telnyx
         sig do
           params(
             emotion:
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::OrSymbol
           ).void
         end
         attr_writer :emotion
@@ -1014,7 +1042,7 @@ module Telnyx
         sig do
           params(
             emotion:
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::OrSymbol,
             response_format: String,
             sampling_rate: Integer,
             temperature: Float,
@@ -1043,7 +1071,7 @@ module Telnyx
           override.returns(
             {
               emotion:
-                ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::OrSymbol,
+                ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::OrSymbol,
               response_format: String,
               sampling_rate: Integer,
               temperature: Float,
@@ -1064,7 +1092,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Symbol,
-                ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion
+                ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1072,43 +1100,43 @@ module Telnyx
           NEUTRAL =
             T.let(
               :neutral,
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
             )
           HAPPY =
             T.let(
               :happy,
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
             )
           SAD =
             T.let(
               :sad,
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
             )
           ANGRY =
             T.let(
               :angry,
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
             )
           FEARFUL =
             T.let(
               :fearful,
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
             )
           DISGUSTED =
             T.let(
               :disgusted,
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
             )
           SURPRISED =
             T.let(
               :surprised,
-              ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                ::Telnyx::TextToSpeechGenerateParams::Telnyx::Emotion::TaggedSymbol
+                ::Telnyx::TextToSpeechCreateSpeechParams::Telnyx::Emotion::TaggedSymbol
               ]
             )
           end
@@ -1123,25 +1151,25 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::TextType)
+            T.all(Symbol, ::Telnyx::TextToSpeechCreateSpeechParams::TextType)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         TEXT =
           T.let(
             :text,
-            ::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::TextType::TaggedSymbol
           )
         SSML =
           T.let(
             :ssml,
-            ::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
+            ::Telnyx::TextToSpeechCreateSpeechParams::TextType::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              ::Telnyx::TextToSpeechGenerateParams::TextType::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::TextType::TaggedSymbol
             ]
           )
         end
@@ -1153,14 +1181,16 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              ::Telnyx::TextToSpeechGenerateParams::Xai,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai,
               ::Telnyx::Internal::AnyHash
             )
           end
 
         # xAI voice identifier.
         sig do
-          returns(::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::OrSymbol)
+          returns(
+            ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::OrSymbol
+          )
         end
         attr_accessor :voice_id
 
@@ -1175,7 +1205,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::OrSymbol
             )
           )
         end
@@ -1184,7 +1214,7 @@ module Telnyx
         sig do
           params(
             output_format:
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::OrSymbol
           ).void
         end
         attr_writer :output_format
@@ -1193,7 +1223,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::OrInteger
             )
           )
         end
@@ -1202,7 +1232,7 @@ module Telnyx
         sig do
           params(
             sample_rate:
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::OrInteger
           ).void
         end
         attr_writer :sample_rate
@@ -1211,12 +1241,12 @@ module Telnyx
         sig do
           params(
             voice_id:
-              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::OrSymbol,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::OrSymbol,
             language: String,
             output_format:
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol,
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::OrSymbol,
             sample_rate:
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::OrInteger
           ).returns(T.attached_class)
         end
         def self.new(
@@ -1235,12 +1265,12 @@ module Telnyx
           override.returns(
             {
               voice_id:
-                ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::OrSymbol,
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::OrSymbol,
               language: String,
               output_format:
-                ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::OrSymbol,
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::OrSymbol,
               sample_rate:
-                ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::OrInteger
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::OrInteger
             }
           )
         end
@@ -1253,40 +1283,43 @@ module Telnyx
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID)
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           EVE =
             T.let(
               :eve,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::TaggedSymbol
             )
           ARA =
             T.let(
               :ara,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::TaggedSymbol
             )
           REX =
             T.let(
               :rex,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::TaggedSymbol
             )
           SAL =
             T.let(
               :sal,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::TaggedSymbol
             )
           LEO =
             T.let(
               :leo,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                ::Telnyx::TextToSpeechGenerateParams::Xai::VoiceID::TaggedSymbol
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::VoiceID::TaggedSymbol
               ]
             )
           end
@@ -1302,7 +1335,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Symbol,
-                ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1310,33 +1343,33 @@ module Telnyx
           MP3 =
             T.let(
               :mp3,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::TaggedSymbol
             )
           WAV =
             T.let(
               :wav,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::TaggedSymbol
             )
           PCM =
             T.let(
               :pcm,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::TaggedSymbol
             )
           MULAW =
             T.let(
               :mulaw,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::TaggedSymbol
             )
           ALAW =
             T.let(
               :alaw,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                ::Telnyx::TextToSpeechGenerateParams::Xai::OutputFormat::TaggedSymbol
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::OutputFormat::TaggedSymbol
               ]
             )
           end
@@ -1352,7 +1385,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Integer,
-                ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate
               )
             end
           OrInteger = T.type_alias { Integer }
@@ -1360,38 +1393,38 @@ module Telnyx
           RATE_8000 =
             T.let(
               8000,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::TaggedInteger
             )
           RATE_16000 =
             T.let(
               16_000,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::TaggedInteger
             )
           RATE_22050 =
             T.let(
               22_050,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::TaggedInteger
             )
           RATE_24000 =
             T.let(
               24_000,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::TaggedInteger
             )
           RATE_44100 =
             T.let(
               44_100,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::TaggedInteger
             )
           RATE_48000 =
             T.let(
               48_000,
-              ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+              ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::TaggedInteger
             )
 
           sig do
             override.returns(
               T::Array[
-                ::Telnyx::TextToSpeechGenerateParams::Xai::SampleRate::TaggedInteger
+                ::Telnyx::TextToSpeechCreateSpeechParams::Xai::SampleRate::TaggedInteger
               ]
             )
           end

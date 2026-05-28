@@ -55,9 +55,9 @@ module Telnyx
       # supported at the moment. Use the `conversation` parameter with a Telnyx
       # Conversation ID to leverage persistent conversations.
       #
-      # @overload create_response(body:, request_options: {})
+      # @overload create_response(input:, request_options: {})
       #
-      # @param body [Hash{Symbol=>Object}]
+      # @param input [Hash{Symbol=>Object}]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Hash{Symbol=>Object}]
@@ -68,7 +68,7 @@ module Telnyx
         @client.request(
           method: :post,
           path: "ai/responses",
-          body: parsed[:body],
+          body: parsed[:input],
           model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
           options: options
         )

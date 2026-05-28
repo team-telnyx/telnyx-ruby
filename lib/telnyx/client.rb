@@ -443,6 +443,10 @@ module Telnyx
     # @return [Telnyx::Resources::Reports]
     attr_reader :reports
 
+    # Discover available speech-to-text providers, models, and supported languages.
+    # @return [Telnyx::Resources::SpeechToText]
+    attr_reader :speech_to_text
+
     # Requirement Groups
     # @return [Telnyx::Resources::RequirementGroups]
     attr_reader :requirement_groups
@@ -662,10 +666,6 @@ module Telnyx
     # UAC connection operations
     # @return [Telnyx::Resources::UacConnections]
     attr_reader :uac_connections
-
-    # Discover available speech-to-text providers, models, and supported languages.
-    # @return [Telnyx::Resources::SpeechToText]
-    attr_reader :speech_to_text
 
     # Retrieve raw Voice SDK call report stats payloads for WebRTC call
     # troubleshooting.
@@ -889,6 +889,7 @@ module Telnyx
       @regions = Telnyx::Resources::Regions.new(client: self)
       @regulatory_requirements = Telnyx::Resources::RegulatoryRequirements.new(client: self)
       @reports = Telnyx::Resources::Reports.new(client: self)
+      @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
       @requirement_groups = Telnyx::Resources::RequirementGroups.new(client: self)
       @requirement_types = Telnyx::Resources::RequirementTypes.new(client: self)
       @requirements = Telnyx::Resources::Requirements.new(client: self)
@@ -945,7 +946,6 @@ module Telnyx
       @terms_of_service = Telnyx::Resources::TermsOfService.new(client: self)
       @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
       @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
-      @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
       @voice_sdk_call_reports = Telnyx::Resources::VoiceSDKCallReports.new(client: self)
     end
   end
