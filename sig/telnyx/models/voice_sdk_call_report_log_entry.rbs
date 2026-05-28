@@ -1,0 +1,58 @@
+module Telnyx
+  module Models
+    type voice_sdk_call_report_log_entry =
+      {
+        context: ::Hash[Symbol, top],
+        level: Telnyx::Models::VoiceSDKCallReportLogEntry::level,
+        message: String,
+        timestamp: Time
+      }
+
+    class VoiceSDKCallReportLogEntry < Telnyx::Internal::Type::BaseModel
+      attr_reader context: ::Hash[Symbol, top]?
+
+      def context=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader level: Telnyx::Models::VoiceSDKCallReportLogEntry::level?
+
+      def level=: (
+        Telnyx::Models::VoiceSDKCallReportLogEntry::level
+      ) -> Telnyx::Models::VoiceSDKCallReportLogEntry::level
+
+      attr_reader message: String?
+
+      def message=: (String) -> String
+
+      attr_reader timestamp: Time?
+
+      def timestamp=: (Time) -> Time
+
+      def initialize: (
+        ?context: ::Hash[Symbol, top],
+        ?level: Telnyx::Models::VoiceSDKCallReportLogEntry::level,
+        ?message: String,
+        ?timestamp: Time
+      ) -> void
+
+      def to_hash: -> {
+        context: ::Hash[Symbol, top],
+        level: Telnyx::Models::VoiceSDKCallReportLogEntry::level,
+        message: String,
+        timestamp: Time
+      }
+
+      type level = :debug | :info | :warn | :error
+
+      module Level
+        extend Telnyx::Internal::Type::Enum
+
+        DEBUG: :debug
+        INFO: :info
+        WARN: :warn
+        ERROR: :error
+
+        def self?.values: -> ::Array[Telnyx::Models::VoiceSDKCallReportLogEntry::level]
+      end
+    end
+  end
+end

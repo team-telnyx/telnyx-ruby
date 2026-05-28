@@ -1,0 +1,88 @@
+module Telnyx
+  module Models
+    type conversation_relay_interruption_settings =
+      {
+        enable: bool,
+        interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible,
+        interruptible_greeting: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible_greeting,
+        welcome_greeting_interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::welcome_greeting_interruptible
+      }
+
+    class ConversationRelayInterruptionSettings < Telnyx::Internal::Type::BaseModel
+      attr_reader enable: bool?
+
+      def enable=: (bool) -> bool
+
+      attr_reader interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible?
+
+      def interruptible=: (
+        Telnyx::Models::ConversationRelayInterruptionSettings::interruptible
+      ) -> Telnyx::Models::ConversationRelayInterruptionSettings::interruptible
+
+      attr_reader interruptible_greeting: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible_greeting?
+
+      def interruptible_greeting=: (
+        Telnyx::Models::ConversationRelayInterruptionSettings::interruptible_greeting
+      ) -> Telnyx::Models::ConversationRelayInterruptionSettings::interruptible_greeting
+
+      attr_reader welcome_greeting_interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::welcome_greeting_interruptible?
+
+      def welcome_greeting_interruptible=: (
+        Telnyx::Models::ConversationRelayInterruptionSettings::welcome_greeting_interruptible
+      ) -> Telnyx::Models::ConversationRelayInterruptionSettings::welcome_greeting_interruptible
+
+      def initialize: (
+        ?enable: bool,
+        ?interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible,
+        ?interruptible_greeting: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible_greeting,
+        ?welcome_greeting_interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::welcome_greeting_interruptible
+      ) -> void
+
+      def to_hash: -> {
+        enable: bool,
+        interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible,
+        interruptible_greeting: Telnyx::Models::ConversationRelayInterruptionSettings::interruptible_greeting,
+        welcome_greeting_interruptible: Telnyx::Models::ConversationRelayInterruptionSettings::welcome_greeting_interruptible
+      }
+
+      type interruptible = :none | :any | :speech | :dtmf
+
+      module Interruptible
+        extend Telnyx::Internal::Type::Enum
+
+        NONE: :none
+        ANY: :any
+        SPEECH: :speech
+        DTMF: :dtmf
+
+        def self?.values: -> ::Array[Telnyx::Models::ConversationRelayInterruptionSettings::interruptible]
+      end
+
+      type interruptible_greeting = :none | :any | :speech | :dtmf
+
+      module InterruptibleGreeting
+        extend Telnyx::Internal::Type::Enum
+
+        NONE: :none
+        ANY: :any
+        SPEECH: :speech
+        DTMF: :dtmf
+
+        def self?.values: -> ::Array[Telnyx::Models::ConversationRelayInterruptionSettings::interruptible_greeting]
+      end
+
+      type welcome_greeting_interruptible = :none | :any | :speech | :dtmf
+
+      module WelcomeGreetingInterruptible
+        extend Telnyx::Internal::Type::Enum
+
+        NONE: :none
+        ANY: :any
+        SPEECH: :speech
+        DTMF: :dtmf
+
+        def self?.values: -> ::Array[Telnyx::Models::ConversationRelayInterruptionSettings::welcome_greeting_interruptible]
+      end
+    end
+  end
+end
