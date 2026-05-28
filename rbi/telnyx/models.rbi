@@ -481,6 +481,11 @@ module Telnyx
 
   ConsumedData = Telnyx::Models::ConsumedData
 
+  ConversationRelayInterruptionSettings =
+    Telnyx::Models::ConversationRelayInterruptionSettings
+
+  ConversationRelayLanguage = Telnyx::Models::ConversationRelayLanguage
+
   CostInformation = Telnyx::Models::CostInformation
 
   CountryCoverageAPI = Telnyx::Models::CountryCoverageAPI
@@ -821,6 +826,8 @@ module Telnyx
   InvoiceListParams = Telnyx::Models::InvoiceListParams
 
   InvoiceRetrieveParams = Telnyx::Models::InvoiceRetrieveParams
+
+  InworldVoiceSettings = Telnyx::Models::InworldVoiceSettings
 
   IP = Telnyx::Models::IP
 
@@ -1973,6 +1980,8 @@ module Telnyx
   VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
 
   VoiceSDKCallReportListParams = Telnyx::Models::VoiceSDKCallReportListParams
+
+  VoiceSDKCallReportLogEntry = Telnyx::Models::VoiceSDKCallReportLogEntry
 
   VoiceSDKCallReportRetrieveParams =
     Telnyx::Models::VoiceSDKCallReportRetrieveParams
