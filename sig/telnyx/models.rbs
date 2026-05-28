@@ -1483,6 +1483,8 @@ module Telnyx
 
   class SpeechToTextListProvidersParams = Telnyx::Models::SpeechToTextListProvidersParams
 
+  class SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
+
   module Storage = Telnyx::Models::Storage
 
   class StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
@@ -1555,7 +1557,9 @@ module Telnyx
 
   class TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
 
-  class TextToSpeechGenerateParams = Telnyx::Models::TextToSpeechGenerateParams
+  class TextToSpeechCreateSpeechParams = Telnyx::Models::TextToSpeechCreateSpeechParams
+
+  class TextToSpeechGenerateSpeechParams = Telnyx::Models::TextToSpeechGenerateSpeechParams
 
   class TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 

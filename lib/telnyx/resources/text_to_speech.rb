@@ -5,7 +5,7 @@ module Telnyx
     # Text to speech streaming command operations
     class TextToSpeech
       # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::TextToSpeechGenerateParams} for more details.
+      # {Telnyx::Models::TextToSpeechCreateSpeechParams} for more details.
       #
       # Generate synthesized speech audio from text input. Returns audio in the
       # requested format (binary audio stream, base64-encoded JSON, or an audio URL for
@@ -26,52 +26,112 @@ module Telnyx
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
       # configure these features.
       #
-      # @overload generate(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @overload create_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #
-      # @param aws [::Telnyx::Models::TextToSpeechGenerateParams::Aws] AWS Polly provider-specific parameters.
+      # @param aws [::Telnyx::Models::TextToSpeechCreateSpeechParams::Aws] AWS Polly provider-specific parameters.
       #
-      # @param azure [::Telnyx::Models::TextToSpeechGenerateParams::Azure] Azure Cognitive Services provider-specific parameters.
+      # @param azure [::Telnyx::Models::TextToSpeechCreateSpeechParams::Azure] Azure Cognitive Services provider-specific parameters.
       #
       # @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
-      # @param elevenlabs [::Telnyx::Models::TextToSpeechGenerateParams::Elevenlabs] ElevenLabs provider-specific parameters.
+      # @param elevenlabs [::Telnyx::Models::TextToSpeechCreateSpeechParams::Elevenlabs] ElevenLabs provider-specific parameters.
       #
       # @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
-      # @param minimax [::Telnyx::Models::TextToSpeechGenerateParams::Minimax] Minimax provider-specific parameters.
+      # @param minimax [::Telnyx::Models::TextToSpeechCreateSpeechParams::Minimax] Minimax provider-specific parameters.
       #
-      # @param output_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::OutputType] Determines the response format. `binary_output` returns raw audio bytes, `base64
+      # @param output_type [Symbol, ::Telnyx::Models::TextToSpeechCreateSpeechParams::OutputType] Determines the response format. `binary_output` returns raw audio bytes, `base64
       #
-      # @param provider [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Provider] TTS provider. Required unless `voice` is provided.
+      # @param provider [Symbol, ::Telnyx::Models::TextToSpeechCreateSpeechParams::Provider] TTS provider. Required unless `voice` is provided.
       #
-      # @param resemble [::Telnyx::Models::TextToSpeechGenerateParams::Resemble] Resemble AI provider-specific parameters.
+      # @param resemble [::Telnyx::Models::TextToSpeechCreateSpeechParams::Resemble] Resemble AI provider-specific parameters.
       #
-      # @param rime [::Telnyx::Models::TextToSpeechGenerateParams::Rime] Rime provider-specific parameters.
+      # @param rime [::Telnyx::Models::TextToSpeechCreateSpeechParams::Rime] Rime provider-specific parameters.
       #
-      # @param telnyx [::Telnyx::Models::TextToSpeechGenerateParams::Telnyx] Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for `Na
+      # @param telnyx [::Telnyx::Models::TextToSpeechCreateSpeechParams::Telnyx] Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for `Na
       #
       # @param text [String] The text to convert to speech.
       #
-      # @param text_type [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::TextType] Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
+      # @param text_type [Symbol, ::Telnyx::Models::TextToSpeechCreateSpeechParams::TextType] Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
       #
       # @param voice [String] Voice identifier in the format `provider.model_id.voice_id` or `provider.voice_i
       #
       # @param voice_settings [Hash{Symbol=>Object}] Provider-specific voice settings. Contents vary by provider — see provider-speci
       #
-      # @param xai [::Telnyx::Models::TextToSpeechGenerateParams::Xai] xAI provider-specific parameters.
+      # @param xai [::Telnyx::Models::TextToSpeechCreateSpeechParams::Xai] xAI provider-specific parameters.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::TextToSpeechGenerateResponse]
+      # @return [Telnyx::Models::TextToSpeechCreateSpeechResponse]
       #
-      # @see Telnyx::Models::TextToSpeechGenerateParams
-      def generate(params = {})
-        parsed, options = Telnyx::TextToSpeechGenerateParams.dump_request(params)
+      # @see Telnyx::Models::TextToSpeechCreateSpeechParams
+      def create_speech(params = {})
+        parsed, options = Telnyx::TextToSpeechCreateSpeechParams.dump_request(params)
         @client.request(
           method: :post,
           path: "text-to-speech/speech",
           body: parsed,
-          model: Telnyx::Models::TextToSpeechGenerateResponse,
+          model: Telnyx::Models::TextToSpeechCreateSpeechResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::TextToSpeechGenerateSpeechParams} for more details.
+      #
+      # Open a WebSocket connection to stream text and receive synthesized audio in real
+      # time. Authentication is provided via the standard
+      # `Authorization: Bearer <API_KEY>` header. Send JSON frames with text to
+      # synthesize; receive JSON frames containing base64-encoded audio chunks.
+      #
+      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `rime`,
+      # `resemble`, `elevenlabs`, `xai`.
+      #
+      # **Connection flow:**
+      #
+      # 1. Open WebSocket with query parameters specifying provider, voice, and model.
+      # 2. Send an initial handshake message `{"text": " "}` (single space) with
+      #    optional `voice_settings` to initialize the session.
+      # 3. Send text messages as `{"text": "Hello world"}`.
+      # 4. Receive audio chunks as JSON frames with base64-encoded audio.
+      # 5. A final frame with `isFinal: true` indicates the end of audio for the current
+      #    text.
+      #
+      # To interrupt and restart synthesis mid-stream, send `{"force": true}` — the
+      # current worker is stopped and a new one is started.
+      #
+      # **Note:** The Telnyx `Ultra` model is not available over WebSocket. Use the HTTP
+      # POST `/text-to-speech/speech` endpoint instead.
+      #
+      # @overload generate_speech(audio_format: nil, disable_cache: nil, model_id: nil, provider: nil, socket_id: nil, voice: nil, voice_id: nil, request_options: {})
+      #
+      # @param audio_format [Symbol, Telnyx::Models::TextToSpeechGenerateSpeechParams::AudioFormat] Audio output format override. Supported for Telnyx models. `pcm` and `wav` are a
+      #
+      # @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
+      #
+      # @param model_id [String] Model identifier for the chosen provider. Examples: `Natural`, `NaturalHD`, `Ult
+      #
+      # @param provider [Symbol, Telnyx::Models::TextToSpeechGenerateSpeechParams::Provider] TTS provider. Defaults to `telnyx` if not specified. Ignored when `voice` is pro
+      #
+      # @param socket_id [String] Client-provided socket identifier for tracking. If not provided, one is generate
+      #
+      # @param voice [String] Voice identifier in the format `provider.model_id.voice_id` or `provider.voice_i
+      #
+      # @param voice_id [String] Voice identifier for the chosen provider.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [nil]
+      #
+      # @see Telnyx::Models::TextToSpeechGenerateSpeechParams
+      def generate_speech(params = {})
+        parsed, options = Telnyx::TextToSpeechGenerateSpeechParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: "text-to-speech/speech",
+          query: query,
+          model: NilClass,
           options: options
         )
       end

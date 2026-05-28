@@ -2,8 +2,8 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::TextToSpeech#generate
-    class TextToSpeechGenerateResponse < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::TextToSpeech#create_speech
+    class TextToSpeechCreateSpeechResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute base64_audio
       #   Base64-encoded audio data.
       #
