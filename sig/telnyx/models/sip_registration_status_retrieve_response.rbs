@@ -1,0 +1,176 @@
+module Telnyx
+  module Models
+    type sip_registration_status_retrieve_response =
+      {
+        connection_id: String,
+        connection_name: String,
+        external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings,
+        internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings,
+        last_registration_response: String,
+        pair_state: String,
+        registered: bool,
+        user_id: String,
+        username: String
+      }
+
+    class SipRegistrationStatusRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader connection_name: String?
+
+      def connection_name=: (String) -> String
+
+      attr_reader external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings?
+
+      def external_uac_settings=: (
+        Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings
+      ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings
+
+      attr_reader internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings?
+
+      def internal_uac_settings=: (
+        Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings
+      ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings
+
+      attr_reader last_registration_response: String?
+
+      def last_registration_response=: (String) -> String
+
+      attr_reader pair_state: String?
+
+      def pair_state=: (String) -> String
+
+      attr_reader registered: bool?
+
+      def registered=: (bool) -> bool
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
+      def initialize: (
+        ?connection_id: String,
+        ?connection_name: String,
+        ?external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings,
+        ?internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings,
+        ?last_registration_response: String,
+        ?pair_state: String,
+        ?registered: bool,
+        ?user_id: String,
+        ?username: String
+      ) -> void
+
+      def to_hash: -> {
+        connection_id: String,
+        connection_name: String,
+        external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings,
+        internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings,
+        last_registration_response: String,
+        pair_state: String,
+        registered: bool,
+        user_id: String,
+        username: String
+      }
+
+      type external_uac_settings =
+        {
+          auth_username: String,
+          expiration_sec: Integer,
+          from_user: String,
+          outbound_proxy: String,
+          password: String,
+          proxy: String,
+          transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport,
+          username: String
+        }
+
+      class ExternalUacSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader auth_username: String?
+
+        def auth_username=: (String) -> String
+
+        attr_reader expiration_sec: Integer?
+
+        def expiration_sec=: (Integer) -> Integer
+
+        attr_reader from_user: String?
+
+        def from_user=: (String) -> String
+
+        attr_reader outbound_proxy: String?
+
+        def outbound_proxy=: (String) -> String
+
+        attr_reader password: String?
+
+        def password=: (String) -> String
+
+        attr_reader proxy: String?
+
+        def proxy=: (String) -> String
+
+        attr_reader transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport?
+
+        def transport=: (
+          Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport
+        ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport
+
+        attr_reader username: String?
+
+        def username=: (String) -> String
+
+        def initialize: (
+          ?auth_username: String,
+          ?expiration_sec: Integer,
+          ?from_user: String,
+          ?outbound_proxy: String,
+          ?password: String,
+          ?proxy: String,
+          ?transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport,
+          ?username: String
+        ) -> void
+
+        def to_hash: -> {
+          auth_username: String,
+          expiration_sec: Integer,
+          from_user: String,
+          outbound_proxy: String,
+          password: String,
+          proxy: String,
+          transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport,
+          username: String
+        }
+
+        type transport = :TCP | :UDP | :TLS
+
+        module Transport
+          extend Telnyx::Internal::Type::Enum
+
+          TCP: :TCP
+          UDP: :UDP
+          TLS: :TLS
+
+          def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport]
+        end
+      end
+
+      type internal_uac_settings = { destination_uri: String }
+
+      class InternalUacSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader destination_uri: String?
+
+        def destination_uri=: (String) -> String
+
+        def initialize: (?destination_uri: String) -> void
+
+        def to_hash: -> { destination_uri: String }
+      end
+    end
+  end
+end

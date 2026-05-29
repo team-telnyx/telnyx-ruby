@@ -1535,6 +1535,8 @@ module Telnyx
 
   SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
 
+  SipRegistrationStatusRetrieveParams = Telnyx::Models::SipRegistrationStatusRetrieveParams
+
   SoundModifications = Telnyx::Models::SoundModifications
 
   SpeechToTextListProvidersParams = Telnyx::Models::SpeechToTextListProvidersParams

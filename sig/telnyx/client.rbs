@@ -348,6 +348,8 @@ module Telnyx
 
     attr_reader voice_sdk_call_reports: Telnyx::Resources::VoiceSDKCallReports
 
+    attr_reader sip_registration_status: Telnyx::Resources::SipRegistrationStatus
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]
