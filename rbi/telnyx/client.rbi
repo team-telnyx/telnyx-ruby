@@ -667,6 +667,10 @@ module Telnyx
     sig { returns(Telnyx::Resources::VoiceSDKCallReports) }
     attr_reader :voice_sdk_call_reports
 
+    # Look up SIP registration status across credential types
+    sig { returns(Telnyx::Resources::SipRegistrationStatus) }
+    attr_reader :sip_registration_status
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

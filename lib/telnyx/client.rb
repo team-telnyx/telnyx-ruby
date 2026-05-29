@@ -672,6 +672,10 @@ module Telnyx
     # @return [Telnyx::Resources::VoiceSDKCallReports]
     attr_reader :voice_sdk_call_reports
 
+    # Look up SIP registration status across credential types
+    # @return [Telnyx::Resources::SipRegistrationStatus]
+    attr_reader :sip_registration_status
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -947,6 +951,7 @@ module Telnyx
       @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
       @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
       @voice_sdk_call_reports = Telnyx::Resources::VoiceSDKCallReports.new(client: self)
+      @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
     end
   end
 end
