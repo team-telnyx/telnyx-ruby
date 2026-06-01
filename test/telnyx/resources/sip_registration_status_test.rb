@@ -19,8 +19,12 @@ class Telnyx::Test::Resources::SipRegistrationStatusTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
+        b2bua_external: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+        b2bua_internal: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         connection_id: String | nil,
         connection_name: String | nil,
+        credential_type: Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType | nil,
+        external_state: String | nil,
         external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings | nil,
         internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings | nil,
         last_registration_response: String | nil,

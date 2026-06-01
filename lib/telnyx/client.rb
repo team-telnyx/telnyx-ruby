@@ -672,7 +672,7 @@ module Telnyx
     # @return [Telnyx::Resources::VoiceSDKCallReports]
     attr_reader :voice_sdk_call_reports
 
-    # Look up SIP registration status across credential types
+    # Look up the live SIP registration status of a UAC connection.
     # @return [Telnyx::Resources::SipRegistrationStatus]
     attr_reader :sip_registration_status
 
