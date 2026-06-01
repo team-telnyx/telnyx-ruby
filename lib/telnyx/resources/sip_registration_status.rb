@@ -2,17 +2,20 @@
 
 module Telnyx
   module Resources
-    # Look up SIP registration status across credential types
+    # Look up the live SIP registration status of a UAC connection.
     class SipRegistrationStatus
-      # Returns the live SIP registration state of a connection or credential. Supports
-      # UAC third-party credentials, telephony credentials, and SIP credential
-      # connections.
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::SipRegistrationStatusRetrieveParams} for more details.
+      #
+      # Returns the live SIP registration state of a UAC connection: whether it is
+      # currently registered, when it last registered, and the last response Telnyx
+      # received from the registrar. Only `uac_external_credential` is supported today.
       #
       # @overload retrieve(connection_id:, credential_type:, user_id:, request_options: {})
       #
-      # @param connection_id [String] Identifier of the connection or credential to look up.
+      # @param connection_id [String] Identifier of the UAC connection to look up.
       #
-      # @param credential_type [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType] The kind of credential to look up.
+      # @param credential_type [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType] The kind of credential to look up. Only `uac_external_credential` is supported t
       #
       # @param user_id [String] Owner of the connection. Used to authorize the lookup.
       #

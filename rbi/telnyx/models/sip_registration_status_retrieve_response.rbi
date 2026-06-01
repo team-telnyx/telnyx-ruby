@@ -11,7 +11,21 @@ module Telnyx
           )
         end
 
-      # Identifier of the resource.
+      # Raw external-side registration block reported by the registrar.
+      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+      attr_reader :b2bua_external
+
+      sig { params(b2bua_external: T::Hash[Symbol, T.anything]).void }
+      attr_writer :b2bua_external
+
+      # Raw internal-side block reported by the registrar.
+      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+      attr_reader :b2bua_internal
+
+      sig { params(b2bua_internal: T::Hash[Symbol, T.anything]).void }
+      attr_writer :b2bua_internal
+
+      # Identifier of the UAC connection.
       sig { returns(T.nilable(String)) }
       attr_reader :connection_id
 
@@ -24,6 +38,31 @@ module Telnyx
 
       sig { params(connection_name: String).void }
       attr_writer :connection_name
+
+      # The credential type that was looked up.
+      sig do
+        returns(
+          T.nilable(
+            Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::TaggedSymbol
+          )
+        )
+      end
+      attr_reader :credential_type
+
+      sig do
+        params(
+          credential_type:
+            Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::OrSymbol
+        ).void
+      end
+      attr_writer :credential_type
+
+      # Registration state on the external (UAC / PBX) side, e.g. REGED.
+      sig { returns(T.nilable(String)) }
+      attr_reader :external_state
+
+      sig { params(external_state: String).void }
+      attr_writer :external_state
 
       # Outward-facing SIP settings used for registration. Password is redacted.
       sig do
@@ -82,7 +121,7 @@ module Telnyx
       sig { params(registered: T::Boolean).void }
       attr_writer :registered
 
-      # Owner of the resource.
+      # Owner of the connection.
       sig { returns(T.nilable(String)) }
       attr_reader :user_id
 
@@ -98,8 +137,13 @@ module Telnyx
 
       sig do
         params(
+          b2bua_external: T::Hash[Symbol, T.anything],
+          b2bua_internal: T::Hash[Symbol, T.anything],
           connection_id: String,
           connection_name: String,
+          credential_type:
+            Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::OrSymbol,
+          external_state: String,
           external_uac_settings:
             Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::OrHash,
           internal_uac_settings:
@@ -112,10 +156,18 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # Identifier of the resource.
+        # Raw external-side registration block reported by the registrar.
+        b2bua_external: nil,
+        # Raw internal-side block reported by the registrar.
+        b2bua_internal: nil,
+        # Identifier of the UAC connection.
         connection_id: nil,
         # Human-readable connection name.
         connection_name: nil,
+        # The credential type that was looked up.
+        credential_type: nil,
+        # Registration state on the external (UAC / PBX) side, e.g. REGED.
+        external_state: nil,
         # Outward-facing SIP settings used for registration. Password is redacted.
         external_uac_settings: nil,
         # Internal routing target the connection delivers calls to.
@@ -126,7 +178,7 @@ module Telnyx
         pair_state: nil,
         # True if the endpoint is currently registered.
         registered: nil,
-        # Owner of the resource.
+        # Owner of the connection.
         user_id: nil,
         # SIP username used for the registration.
         username: nil
@@ -136,8 +188,13 @@ module Telnyx
       sig do
         override.returns(
           {
+            b2bua_external: T::Hash[Symbol, T.anything],
+            b2bua_internal: T::Hash[Symbol, T.anything],
             connection_id: String,
             connection_name: String,
+            credential_type:
+              Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::TaggedSymbol,
+            external_state: String,
             external_uac_settings:
               Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings,
             internal_uac_settings:
@@ -151,6 +208,36 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # The credential type that was looked up.
+      module CredentialType
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        UAC_EXTERNAL_CREDENTIAL =
+          T.let(
+            :uac_external_credential,
+            Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class ExternalUacSettings < Telnyx::Internal::Type::BaseModel
@@ -186,6 +273,7 @@ module Telnyx
         sig { params(outbound_proxy: String).void }
         attr_writer :outbound_proxy
 
+        # Always redacted.
         sig { returns(T.nilable(String)) }
         attr_reader :password
 
@@ -240,6 +328,7 @@ module Telnyx
           expiration_sec: nil,
           from_user: nil,
           outbound_proxy: nil,
+          # Always redacted.
           password: nil,
           proxy: nil,
           transport: nil,

@@ -14,11 +14,12 @@ module Telnyx
           )
         end
 
-      # Identifier of the connection or credential to look up.
+      # Identifier of the UAC connection to look up.
       sig { returns(String) }
       attr_accessor :connection_id
 
-      # The kind of credential to look up.
+      # The kind of credential to look up. Only `uac_external_credential` is supported
+      # today.
       sig do
         returns(
           Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol
@@ -40,9 +41,10 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # Identifier of the connection or credential to look up.
+        # Identifier of the UAC connection to look up.
         connection_id:,
-        # The kind of credential to look up.
+        # The kind of credential to look up. Only `uac_external_credential` is supported
+        # today.
         credential_type:,
         # Owner of the connection. Used to authorize the lookup.
         user_id:,
@@ -64,7 +66,8 @@ module Telnyx
       def to_hash
       end
 
-      # The kind of credential to look up.
+      # The kind of credential to look up. Only `uac_external_credential` is supported
+      # today.
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
@@ -80,16 +83,6 @@ module Telnyx
         UAC_EXTERNAL_CREDENTIAL =
           T.let(
             :uac_external_credential,
-            Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::TaggedSymbol
-          )
-        TELEPHONY_CREDENTIAL =
-          T.let(
-            :telephony_credential,
-            Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::TaggedSymbol
-          )
-        SIP_CREDENTIAL_CONNECTION =
-          T.let(
-            :sip_credential_connection,
             Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::TaggedSymbol
           )
 

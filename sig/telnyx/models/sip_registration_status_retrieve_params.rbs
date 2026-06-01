@@ -32,17 +32,12 @@ module Telnyx
         request_options: Telnyx::RequestOptions
       }
 
-      type credential_type =
-        :uac_external_credential
-        | :telephony_credential
-        | :sip_credential_connection
+      type credential_type = :uac_external_credential
 
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
         UAC_EXTERNAL_CREDENTIAL: :uac_external_credential
-        TELEPHONY_CREDENTIAL: :telephony_credential
-        SIP_CREDENTIAL_CONNECTION: :sip_credential_connection
 
         def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type]
       end

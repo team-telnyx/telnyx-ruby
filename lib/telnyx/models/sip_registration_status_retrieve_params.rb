@@ -8,13 +8,14 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute connection_id
-      #   Identifier of the connection or credential to look up.
+      #   Identifier of the UAC connection to look up.
       #
       #   @return [String]
       required :connection_id, String
 
       # @!attribute credential_type
-      #   The kind of credential to look up.
+      #   The kind of credential to look up. Only `uac_external_credential` is supported
+      #   today.
       #
       #   @return [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType]
       required :credential_type, enum: -> { Telnyx::SipRegistrationStatusRetrieveParams::CredentialType }
@@ -26,21 +27,23 @@ module Telnyx
       required :user_id, String
 
       # @!method initialize(connection_id:, credential_type:, user_id:, request_options: {})
-      #   @param connection_id [String] Identifier of the connection or credential to look up.
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::SipRegistrationStatusRetrieveParams} for more details.
       #
-      #   @param credential_type [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType] The kind of credential to look up.
+      #   @param connection_id [String] Identifier of the UAC connection to look up.
+      #
+      #   @param credential_type [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType] The kind of credential to look up. Only `uac_external_credential` is supported t
       #
       #   @param user_id [String] Owner of the connection. Used to authorize the lookup.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      # The kind of credential to look up.
+      # The kind of credential to look up. Only `uac_external_credential` is supported
+      # today.
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
         UAC_EXTERNAL_CREDENTIAL = :uac_external_credential
-        TELEPHONY_CREDENTIAL = :telephony_credential
-        SIP_CREDENTIAL_CONNECTION = :sip_credential_connection
 
         # @!method self.values
         #   @return [Array<Symbol>]
