@@ -4,18 +4,6 @@ module Telnyx
   module Models
     # @see Telnyx::Resources::SipRegistrationStatus#retrieve
     class SipRegistrationStatusRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      # @!attribute b2bua_external
-      #   Raw external-side registration block reported by the registrar.
-      #
-      #   @return [Hash{Symbol=>Object}, nil]
-      optional :b2bua_external, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
-
-      # @!attribute b2bua_internal
-      #   Raw internal-side block reported by the registrar.
-      #
-      #   @return [Hash{Symbol=>Object}, nil]
-      optional :b2bua_internal, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
-
       # @!attribute connection_id
       #   Identifier of the UAC connection.
       #
@@ -35,25 +23,11 @@ module Telnyx
       optional :credential_type,
                enum: -> { Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType }
 
-      # @!attribute external_state
-      #   Registration state on the external (UAC / PBX) side, e.g. REGED.
+      # @!attribute credential_username
+      #   SIP username used for the registration.
       #
       #   @return [String, nil]
-      optional :external_state, String
-
-      # @!attribute external_uac_settings
-      #   Outward-facing SIP settings used for registration. Password is redacted.
-      #
-      #   @return [Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings, nil]
-      optional :external_uac_settings,
-               -> { Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings }
-
-      # @!attribute internal_uac_settings
-      #   Internal routing target the connection delivers calls to.
-      #
-      #   @return [Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings, nil]
-      optional :internal_uac_settings,
-               -> { Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings }
+      optional :credential_username, String
 
       # @!attribute last_registration_response
       #   SIP response from the last registration attempt.
@@ -61,56 +35,42 @@ module Telnyx
       #   @return [String, nil]
       optional :last_registration_response, String
 
-      # @!attribute pair_state
-      #   Internal pairing state, e.g. ACTIVE or INACTIVE.
-      #
-      #   @return [String, nil]
-      optional :pair_state, String
-
       # @!attribute registered
       #   True if the endpoint is currently registered.
       #
       #   @return [Boolean, nil]
       optional :registered, Telnyx::Internal::Type::Boolean
 
-      # @!attribute user_id
-      #   Owner of the connection.
+      # @!attribute sip_registration_details
+      #   Detailed registration information reported by the registrar.
       #
-      #   @return [String, nil]
-      optional :user_id, String
+      #   @return [Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails, nil]
+      optional :sip_registration_details,
+               -> { Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails }
 
-      # @!attribute username
-      #   SIP username used for the registration.
+      # @!attribute sip_registration_status
+      #   Human-readable registration status derived from the registrar state.
       #
-      #   @return [String, nil]
-      optional :username, String
+      #   @return [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationStatus, nil]
+      optional :sip_registration_status,
+               enum: -> { Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationStatus }
 
-      # @!method initialize(b2bua_external: nil, b2bua_internal: nil, connection_id: nil, connection_name: nil, credential_type: nil, external_state: nil, external_uac_settings: nil, internal_uac_settings: nil, last_registration_response: nil, pair_state: nil, registered: nil, user_id: nil, username: nil)
-      #   @param b2bua_external [Hash{Symbol=>Object}] Raw external-side registration block reported by the registrar.
-      #
-      #   @param b2bua_internal [Hash{Symbol=>Object}] Raw internal-side block reported by the registrar.
-      #
+      # @!method initialize(connection_id: nil, connection_name: nil, credential_type: nil, credential_username: nil, last_registration_response: nil, registered: nil, sip_registration_details: nil, sip_registration_status: nil)
       #   @param connection_id [String] Identifier of the UAC connection.
       #
       #   @param connection_name [String] Human-readable connection name.
       #
       #   @param credential_type [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType] The credential type that was looked up.
       #
-      #   @param external_state [String] Registration state on the external (UAC / PBX) side, e.g. REGED.
-      #
-      #   @param external_uac_settings [Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings] Outward-facing SIP settings used for registration. Password is redacted.
-      #
-      #   @param internal_uac_settings [Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings] Internal routing target the connection delivers calls to.
+      #   @param credential_username [String] SIP username used for the registration.
       #
       #   @param last_registration_response [String] SIP response from the last registration attempt.
       #
-      #   @param pair_state [String] Internal pairing state, e.g. ACTIVE or INACTIVE.
-      #
       #   @param registered [Boolean] True if the endpoint is currently registered.
       #
-      #   @param user_id [String] Owner of the connection.
+      #   @param sip_registration_details [Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails] Detailed registration information reported by the registrar.
       #
-      #   @param username [String] SIP username used for the registration.
+      #   @param sip_registration_status [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationStatus] Human-readable registration status derived from the registrar state.
 
       # The credential type that was looked up.
       #
@@ -124,93 +84,76 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # @see Telnyx::Models::SipRegistrationStatusRetrieveResponse#external_uac_settings
-      class ExternalUacSettings < Telnyx::Internal::Type::BaseModel
-        # @!attribute auth_username
-        #
-        #   @return [String, nil]
-        optional :auth_username, String
-
-        # @!attribute expiration_sec
+      # @see Telnyx::Models::SipRegistrationStatusRetrieveResponse#sip_registration_details
+      class SipRegistrationDetails < Telnyx::Internal::Type::BaseModel
+        # @!attribute auth_retries
+        #   Number of authentication retries on the last attempt.
         #
         #   @return [Integer, nil]
-        optional :expiration_sec, Integer
+        optional :auth_retries, Integer
 
-        # @!attribute from_user
+        # @!attribute expires
+        #   Unix timestamp when the current registration expires.
+        #
+        #   @return [Integer, nil]
+        optional :expires, Integer
+
+        # @!attribute failures
+        #   Count of consecutive registration failures.
+        #
+        #   @return [Integer, nil]
+        optional :failures, Integer
+
+        # @!attribute next_action_at
+        #   Unix timestamp of the next scheduled registration action.
+        #
+        #   @return [Integer, nil]
+        optional :next_action_at, Integer
+
+        # @!attribute sip_uri_user_host
+        #   SIP URI user@host of the registered contact.
         #
         #   @return [String, nil]
-        optional :from_user, String
+        optional :sip_uri_user_host, String, api_name: :sipUriUserHost
 
-        # @!attribute outbound_proxy
+        # @!attribute uptime
+        #   Registration uptime reported by the registrar.
         #
-        #   @return [String, nil]
-        optional :outbound_proxy, String
+        #   @return [Integer, nil]
+        optional :uptime, Integer
 
-        # @!attribute password
-        #   Always redacted.
+        # @!method initialize(auth_retries: nil, expires: nil, failures: nil, next_action_at: nil, sip_uri_user_host: nil, uptime: nil)
+        #   Detailed registration information reported by the registrar.
         #
-        #   @return [String, nil]
-        optional :password, String
-
-        # @!attribute proxy
+        #   @param auth_retries [Integer] Number of authentication retries on the last attempt.
         #
-        #   @return [String, nil]
-        optional :proxy, String
-
-        # @!attribute transport
+        #   @param expires [Integer] Unix timestamp when the current registration expires.
         #
-        #   @return [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::Transport, nil]
-        optional :transport,
-                 enum: -> { Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::Transport }
-
-        # @!attribute username
+        #   @param failures [Integer] Count of consecutive registration failures.
         #
-        #   @return [String, nil]
-        optional :username, String
-
-        # @!method initialize(auth_username: nil, expiration_sec: nil, from_user: nil, outbound_proxy: nil, password: nil, proxy: nil, transport: nil, username: nil)
-        #   Outward-facing SIP settings used for registration. Password is redacted.
+        #   @param next_action_at [Integer] Unix timestamp of the next scheduled registration action.
         #
-        #   @param auth_username [String]
+        #   @param sip_uri_user_host [String] SIP URI user@host of the registered contact.
         #
-        #   @param expiration_sec [Integer]
-        #
-        #   @param from_user [String]
-        #
-        #   @param outbound_proxy [String]
-        #
-        #   @param password [String] Always redacted.
-        #
-        #   @param proxy [String]
-        #
-        #   @param transport [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::Transport]
-        #
-        #   @param username [String]
-
-        # @see Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings#transport
-        module Transport
-          extend Telnyx::Internal::Type::Enum
-
-          TCP = :TCP
-          UDP = :UDP
-          TLS = :TLS
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        #   @param uptime [Integer] Registration uptime reported by the registrar.
       end
 
-      # @see Telnyx::Models::SipRegistrationStatusRetrieveResponse#internal_uac_settings
-      class InternalUacSettings < Telnyx::Internal::Type::BaseModel
-        # @!attribute destination_uri
-        #
-        #   @return [String, nil]
-        optional :destination_uri, String
+      # Human-readable registration status derived from the registrar state.
+      #
+      # @see Telnyx::Models::SipRegistrationStatusRetrieveResponse#sip_registration_status
+      module SipRegistrationStatus
+        extend Telnyx::Internal::Type::Enum
 
-        # @!method initialize(destination_uri: nil)
-        #   Internal routing target the connection delivers calls to.
-        #
-        #   @param destination_uri [String]
+        UNREGISTERING = :unregistering
+        CONNECTION_DISABLED = :connection_disabled
+        STANDBY = :standby
+        FAILED = :failed
+        TRYING = :trying
+        REGISTERED = :registered
+        UNKNOWN = :unknown
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end
