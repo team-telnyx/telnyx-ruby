@@ -27,16 +27,11 @@ module Telnyx
       end
       attr_accessor :credential_type
 
-      # Owner of the connection. Used to authorize the lookup.
-      sig { returns(String) }
-      attr_accessor :user_id
-
       sig do
         params(
           connection_id: String,
           credential_type:
             Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol,
-          user_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -46,8 +41,6 @@ module Telnyx
         # The kind of credential to look up. Only `uac_external_credential` is supported
         # today.
         credential_type:,
-        # Owner of the connection. Used to authorize the lookup.
-        user_id:,
         request_options: {}
       )
       end
@@ -58,7 +51,6 @@ module Telnyx
             connection_id: String,
             credential_type:
               Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol,
-            user_id: String,
             request_options: Telnyx::RequestOptions
           }
         )

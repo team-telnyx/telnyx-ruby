@@ -11,13 +11,11 @@ module Telnyx
       # currently registered, when it last registered, and the last response Telnyx
       # received from the registrar. Only `uac_external_credential` is supported today.
       #
-      # @overload retrieve(connection_id:, credential_type:, user_id:, request_options: {})
+      # @overload retrieve(connection_id:, credential_type:, request_options: {})
       #
       # @param connection_id [String] Identifier of the UAC connection to look up.
       #
       # @param credential_type [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType] The kind of credential to look up. Only `uac_external_credential` is supported t
-      #
-      # @param user_id [String] Owner of the connection. Used to authorize the lookup.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

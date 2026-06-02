@@ -3,8 +3,7 @@ module Telnyx
     type sip_registration_status_retrieve_params =
       {
         connection_id: String,
-        credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
-        user_id: String
+        credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -16,19 +15,15 @@ module Telnyx
 
       attr_accessor credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type
 
-      attr_accessor user_id: String
-
       def initialize: (
         connection_id: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
-        user_id: String,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         connection_id: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
-        user_id: String,
         request_options: Telnyx::RequestOptions
       }
 
