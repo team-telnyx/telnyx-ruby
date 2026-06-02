@@ -114,7 +114,7 @@ module Telnyx
         #   SIP URI user@host of the registered contact.
         #
         #   @return [String, nil]
-        optional :sip_uri_user_host, String, api_name: :sipUriUserHost
+        optional :sip_uri_user_host, String
 
         # @!attribute uptime
         #   Registration uptime reported by the registrar.
