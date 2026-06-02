@@ -9,8 +9,7 @@ class Telnyx::Test::Resources::SipRegistrationStatusTest < Telnyx::Test::Resourc
     response =
       @telnyx.sip_registration_status.retrieve(
         connection_id: "connection_id",
-        credential_type: :uac_external_credential,
-        user_id: "user_id"
+        credential_type: :uac_external_credential
       )
 
     assert_pattern do

@@ -12,7 +12,6 @@ module Telnyx
           connection_id: String,
           credential_type:
             Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol,
-          user_id: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::SipRegistrationStatusRetrieveResponse)
       end
@@ -22,8 +21,6 @@ module Telnyx
         # The kind of credential to look up. Only `uac_external_credential` is supported
         # today.
         credential_type:,
-        # Owner of the connection. Used to authorize the lookup.
-        user_id:,
         request_options: {}
       )
       end

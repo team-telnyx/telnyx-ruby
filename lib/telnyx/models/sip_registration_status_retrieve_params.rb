@@ -20,21 +20,13 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType]
       required :credential_type, enum: -> { Telnyx::SipRegistrationStatusRetrieveParams::CredentialType }
 
-      # @!attribute user_id
-      #   Owner of the connection. Used to authorize the lookup.
-      #
-      #   @return [String]
-      required :user_id, String
-
-      # @!method initialize(connection_id:, credential_type:, user_id:, request_options: {})
+      # @!method initialize(connection_id:, credential_type:, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SipRegistrationStatusRetrieveParams} for more details.
       #
       #   @param connection_id [String] Identifier of the UAC connection to look up.
       #
       #   @param credential_type [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType] The kind of credential to look up. Only `uac_external_credential` is supported t
-      #
-      #   @param user_id [String] Owner of the connection. Used to authorize the lookup.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
