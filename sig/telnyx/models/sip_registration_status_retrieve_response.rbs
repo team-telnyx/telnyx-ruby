@@ -2,30 +2,17 @@ module Telnyx
   module Models
     type sip_registration_status_retrieve_response =
       {
-        :b2bua_external => ::Hash[Symbol, top],
-        :b2bua_internal => ::Hash[Symbol, top],
         connection_id: String,
         connection_name: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type,
-        external_state: String,
-        external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings,
-        internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings,
+        credential_username: String,
         last_registration_response: String,
-        pair_state: String,
         registered: bool,
-        user_id: String,
-        username: String
+        sip_registration_details: Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails,
+        sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
       }
 
     class SipRegistrationStatusRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader b2bua_external: ::Hash[Symbol, top]?
-
-      def b2bua_external=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-      attr_reader b2bua_internal: ::Hash[Symbol, top]?
-
-      def b2bua_internal=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
       attr_reader connection_id: String?
 
       def connection_id=: (String) -> String
@@ -40,72 +27,50 @@ module Telnyx
         Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type
       ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type
 
-      attr_reader external_state: String?
+      attr_reader credential_username: String?
 
-      def external_state=: (String) -> String
-
-      attr_reader external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings?
-
-      def external_uac_settings=: (
-        Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings
-      ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings
-
-      attr_reader internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings?
-
-      def internal_uac_settings=: (
-        Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings
-      ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings
+      def credential_username=: (String) -> String
 
       attr_reader last_registration_response: String?
 
       def last_registration_response=: (String) -> String
 
-      attr_reader pair_state: String?
-
-      def pair_state=: (String) -> String
-
       attr_reader registered: bool?
 
       def registered=: (bool) -> bool
 
-      attr_reader user_id: String?
+      attr_reader sip_registration_details: Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails?
 
-      def user_id=: (String) -> String
+      def sip_registration_details=: (
+        Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails
+      ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails
 
-      attr_reader username: String?
+      attr_reader sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status?
 
-      def username=: (String) -> String
+      def sip_registration_status=: (
+        Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
+      ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
 
       def initialize: (
-        ?b2bua_external: ::Hash[Symbol, top],
-        ?b2bua_internal: ::Hash[Symbol, top],
         ?connection_id: String,
         ?connection_name: String,
         ?credential_type: Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type,
-        ?external_state: String,
-        ?external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings,
-        ?internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings,
+        ?credential_username: String,
         ?last_registration_response: String,
-        ?pair_state: String,
         ?registered: bool,
-        ?user_id: String,
-        ?username: String
+        ?sip_registration_details: Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails,
+        ?sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
       ) -> void
 
       def to_hash: -> {
-        :b2bua_external => ::Hash[Symbol, top],
-        :b2bua_internal => ::Hash[Symbol, top],
         connection_id: String,
         connection_name: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type,
-        external_state: String,
-        external_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings,
-        internal_uac_settings: Telnyx::Models::SipRegistrationStatusRetrieveResponse::InternalUacSettings,
+        credential_username: String,
         last_registration_response: String,
-        pair_state: String,
         registered: bool,
-        user_id: String,
-        username: String
+        sip_registration_details: Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails,
+        sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
       }
 
       type credential_type = :uac_external_credential
@@ -118,98 +83,81 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type]
       end
 
-      type external_uac_settings =
+      type sip_registration_details =
         {
-          auth_username: String,
-          expiration_sec: Integer,
-          from_user: String,
-          outbound_proxy: String,
-          password: String,
-          proxy: String,
-          transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport,
-          username: String
+          auth_retries: Integer,
+          expires: Integer,
+          failures: Integer,
+          next_action_at: Integer,
+          sip_uri_user_host: String,
+          uptime: Integer
         }
 
-      class ExternalUacSettings < Telnyx::Internal::Type::BaseModel
-        attr_reader auth_username: String?
+      class SipRegistrationDetails < Telnyx::Internal::Type::BaseModel
+        attr_reader auth_retries: Integer?
 
-        def auth_username=: (String) -> String
+        def auth_retries=: (Integer) -> Integer
 
-        attr_reader expiration_sec: Integer?
+        attr_reader expires: Integer?
 
-        def expiration_sec=: (Integer) -> Integer
+        def expires=: (Integer) -> Integer
 
-        attr_reader from_user: String?
+        attr_reader failures: Integer?
 
-        def from_user=: (String) -> String
+        def failures=: (Integer) -> Integer
 
-        attr_reader outbound_proxy: String?
+        attr_reader next_action_at: Integer?
 
-        def outbound_proxy=: (String) -> String
+        def next_action_at=: (Integer) -> Integer
 
-        attr_reader password: String?
+        attr_reader sip_uri_user_host: String?
 
-        def password=: (String) -> String
+        def sip_uri_user_host=: (String) -> String
 
-        attr_reader proxy: String?
+        attr_reader uptime: Integer?
 
-        def proxy=: (String) -> String
-
-        attr_reader transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport?
-
-        def transport=: (
-          Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport
-        ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport
-
-        attr_reader username: String?
-
-        def username=: (String) -> String
+        def uptime=: (Integer) -> Integer
 
         def initialize: (
-          ?auth_username: String,
-          ?expiration_sec: Integer,
-          ?from_user: String,
-          ?outbound_proxy: String,
-          ?password: String,
-          ?proxy: String,
-          ?transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport,
-          ?username: String
+          ?auth_retries: Integer,
+          ?expires: Integer,
+          ?failures: Integer,
+          ?next_action_at: Integer,
+          ?sip_uri_user_host: String,
+          ?uptime: Integer
         ) -> void
 
         def to_hash: -> {
-          auth_username: String,
-          expiration_sec: Integer,
-          from_user: String,
-          outbound_proxy: String,
-          password: String,
-          proxy: String,
-          transport: Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport,
-          username: String
+          auth_retries: Integer,
+          expires: Integer,
+          failures: Integer,
+          next_action_at: Integer,
+          sip_uri_user_host: String,
+          uptime: Integer
         }
-
-        type transport = :TCP | :UDP | :TLS
-
-        module Transport
-          extend Telnyx::Internal::Type::Enum
-
-          TCP: :TCP
-          UDP: :UDP
-          TLS: :TLS
-
-          def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveResponse::ExternalUacSettings::transport]
-        end
       end
 
-      type internal_uac_settings = { destination_uri: String }
+      type sip_registration_status =
+        :unregistering
+        | :connection_disabled
+        | :standby
+        | :failed
+        | :trying
+        | :registered
+        | :unknown
 
-      class InternalUacSettings < Telnyx::Internal::Type::BaseModel
-        attr_reader destination_uri: String?
+      module SipRegistrationStatus
+        extend Telnyx::Internal::Type::Enum
 
-        def destination_uri=: (String) -> String
+        UNREGISTERING: :unregistering
+        CONNECTION_DISABLED: :connection_disabled
+        STANDBY: :standby
+        FAILED: :failed
+        TRYING: :trying
+        REGISTERED: :registered
+        UNKNOWN: :unknown
 
-        def initialize: (?destination_uri: String) -> void
-
-        def to_hash: -> { destination_uri: String }
+        def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status]
       end
     end
   end
