@@ -667,7 +667,7 @@ module Telnyx
     sig { returns(Telnyx::Resources::VoiceSDKCallReports) }
     attr_reader :voice_sdk_call_reports
 
-    # Look up the live SIP registration status of a UAC connection.
+    # UAC connection operations
     sig { returns(Telnyx::Resources::SipRegistrationStatus) }
     attr_reader :sip_registration_status
 

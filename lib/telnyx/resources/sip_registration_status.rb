@@ -2,7 +2,7 @@
 
 module Telnyx
   module Resources
-    # Look up the live SIP registration status of a UAC connection.
+    # UAC connection operations
     class SipRegistrationStatus
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::SipRegistrationStatusRetrieveParams} for more details.
