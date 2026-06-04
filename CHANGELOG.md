@@ -1,5 +1,24 @@
 # Changelog
 
+## 5.124.0 (2026-06-04)
+
+Full Changelog: [v5.123.0...v5.124.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.123.0...v5.124.0)
+
+### Features
+
+* **api:** manual updates ([8a6d7da](https://github.com/team-telnyx/telnyx-ruby/commit/8a6d7da280923953edbf3f59553ea5e3ab3300af))
+* **sip-registration-status:** add OpenAPI spec for /v2/sip_registration_status ([6a07de1](https://github.com/team-telnyx/telnyx-ruby/commit/6a07de1a99552710eb4ab30d5fdb3b9f12d653aa))
+* **sip-registration-status:** finalize phase 1 response shape with status mapping ([c9433e4](https://github.com/team-telnyx/telnyx-ruby/commit/c9433e423bd4c90677069dc9a019a84e99f0f444))
+
+
+### Bug Fixes
+
+* **inference:** extract recursive expression AST into named Expression schema ([37755b1](https://github.com/team-telnyx/telnyx-ruby/commit/37755b18df1cd3e3858ecc4a67441abfa794aebd))
+* **sip-registration-status:** drop user_id query param ([fecc595](https://github.com/team-telnyx/telnyx-ruby/commit/fecc5953771e3de33217bb28f30b735bf43846e7))
+* **sip-registration-status:** move operation under UAC Connections tag ([f010abf](https://github.com/team-telnyx/telnyx-ruby/commit/f010abf9eaca5a30aced508fa934766854f9633f))
+* **sip-registration-status:** rename detail field to sip_uri_user_host ([5ea1011](https://github.com/team-telnyx/telnyx-ruby/commit/5ea101126e293d5ef1d6947b442f4c99f702c1dd))
+* **sip-registration-status:** scope to phase 1 uac_third-party_credential ([099473f](https://github.com/team-telnyx/telnyx-ruby/commit/099473fe568954594c0dcb2caa047b4dc206c10d))
+
 ## 5.123.0 (2026-05-28)
 
 Full Changelog: [v5.122.0...v5.123.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.122.0...v5.123.0)
