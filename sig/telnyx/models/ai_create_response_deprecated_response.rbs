@@ -1,0 +1,7 @@
+module Telnyx
+  module Models
+    type ai_create_response_deprecated_response = ::Hash[Symbol, top]
+
+    AICreateResponseDeprecatedResponse: Telnyx::Internal::Type::Converter
+  end
+end

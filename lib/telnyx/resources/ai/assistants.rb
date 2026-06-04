@@ -34,11 +34,13 @@ module Telnyx
         #
         # Create a new AI Assistant.
         #
-        # @overload create(instructions:, name:, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload create(instructions:, name:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
         # @param name [String]
+        #
+        # @param conversation_flow [Telnyx::Models::AI::AssistantCreateParams::ConversationFlow] Conversation flow as supplied by API clients (create / update).
         #
         # @param description [String]
         #
@@ -137,9 +139,11 @@ module Telnyx
         #
         # Update an AI Assistant's attributes.
         #
-        # @overload update(assistant_id, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload update(assistant_id, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String]
+        #
+        # @param conversation_flow [Telnyx::Models::AI::AssistantUpdateParams::ConversationFlow] Conversation flow as supplied by API clients (create / update).
         #
         # @param description [String]
         #

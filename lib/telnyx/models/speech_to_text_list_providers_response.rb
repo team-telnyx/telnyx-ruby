@@ -22,13 +22,6 @@ module Telnyx
       #   @param meta [Telnyx::Models::SpeechToTextListProvidersResponse::Meta]
 
       class Data < Telnyx::Internal::Type::BaseModel
-        # @!attribute languages
-        #   Languages this (provider, model) accepts, in the provider's native code format.
-        #   `auto` indicates the provider performs language detection.
-        #
-        #   @return [Array<String>]
-        required :languages, Telnyx::Internal::Type::ArrayOf[String]
-
         # @!attribute model
         #   Provider-scoped model name.
         #
@@ -42,36 +35,75 @@ module Telnyx
         required :provider, String
 
         # @!attribute service_types
-        #   Service surfaces this (provider, model) supports.
+        #   Service surfaces this (provider, model) supports. When the request filters by
+        #   `service_type`, only the matching nested entry is returned for each matching
+        #   model.
         #
-        #   @return [Array<Symbol, Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType>]
+        #   @return [Array<Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType>]
         required :service_types,
-                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType] }
+                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType] }
 
-        # @!method initialize(languages:, model:, provider:, service_types:)
+        # @!method initialize(model:, provider:, service_types:)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::SpeechToTextListProvidersResponse::Data} for more details.
         #
-        #   A (provider, model) tuple along with its supported service types and languages.
-        #
-        #   @param languages [Array<String>] Languages this (provider, model) accepts, in the provider's native code format.
+        #   A (provider, model) tuple along with the service surfaces it supports. Each
+        #   entry in `service_types` describes one surface and the languages accepted on it.
         #
         #   @param model [String] Provider-scoped model name.
         #
         #   @param provider [String] STT provider name.
         #
-        #   @param service_types [Array<Symbol, Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType>] Service surfaces this (provider, model) supports.
+        #   @param service_types [Array<Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType>] Service surfaces this (provider, model) supports. When the request filters by `s
 
-        # Service surface a model is available on.
-        module ServiceType
-          extend Telnyx::Internal::Type::Enum
+        class ServiceType < Telnyx::Internal::Type::BaseModel
+          # @!attribute languages
+          #   Languages accepted on this service surface, in the provider's native code
+          #   format. `auto` indicates the provider performs language detection.
+          #
+          #   @return [Array<String>]
+          required :languages, Telnyx::Internal::Type::ArrayOf[String]
 
-          STREAMING = :streaming
-          FILE_TRANSCRIPTION = :file_transcription
-          IN_CALL_TRANSCRIPTION = :in_call_transcription
+          # @!attribute type
+          #   Service surface a model is available on. `ai_assistant` is the STT surface
+          #   configured via Call Control voice-assistant transcription; it covers both
+          #   live-streaming and non-streaming/batch models (matching the
+          #   `TranscriptionConfig.model` enum on `call-control` voice assistants).
+          #
+          #   @return [Symbol, Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type]
+          required :type, enum: -> { Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type }
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          # @!method initialize(languages:, type:)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType} for more
+          #   details.
+          #
+          #   A supported service surface for a given (provider, model), along with the
+          #   language codes accepted on that surface. Language support can differ per surface
+          #   — for example, a model may accept a narrower language set for streaming than for
+          #   file transcription.
+          #
+          #   @param languages [Array<String>] Languages accepted on this service surface, in the provider's native code format
+          #
+          #   @param type [Symbol, Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type] Service surface a model is available on. `ai_assistant` is the STT surface confi
+
+          # Service surface a model is available on. `ai_assistant` is the STT surface
+          # configured via Call Control voice-assistant transcription; it covers both
+          # live-streaming and non-streaming/batch models (matching the
+          # `TranscriptionConfig.model` enum on `call-control` voice assistants).
+          #
+          # @see Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType#type
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            STREAMING = :streaming
+            FILE_BASED = :file_based
+            IN_CALL = :in_call
+            AI_ASSISTANT = :ai_assistant
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
 

@@ -34,6 +34,8 @@ module Telnyx
           params(
             instructions: String,
             name: String,
+            conversation_flow:
+              Telnyx::AI::AssistantCreateParams::ConversationFlow::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_timeout_ms: Integer,
@@ -83,6 +85,12 @@ module Telnyx
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           instructions:,
           name:,
+          # Conversation flow as supplied by API clients (create / update).
+          #
+          # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
+          # unique node/edge IDs, that `start_node_id` references a real node, and that
+          # every edge's endpoints reference real nodes.
+          conversation_flow: nil,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
@@ -193,6 +201,8 @@ module Telnyx
         sig do
           params(
             assistant_id: String,
+            conversation_flow:
+              Telnyx::AI::AssistantUpdateParams::ConversationFlow::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_timeout_ms: Integer,
@@ -243,6 +253,12 @@ module Telnyx
         end
         def update(
           assistant_id,
+          # Conversation flow as supplied by API clients (create / update).
+          #
+          # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
+          # unique node/edge IDs, that `start_node_id` references a real node, and that
+          # every edge's endpoints reference real nodes.
+          conversation_flow: nil,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,

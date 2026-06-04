@@ -62,15 +62,15 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersParams::provider]
       end
 
-      type service_type =
-        :streaming | :file_transcription | :in_call_transcription
+      type service_type = :streaming | :file_based | :in_call | :ai_assistant
 
       module ServiceType
         extend Telnyx::Internal::Type::Enum
 
         STREAMING: :streaming
-        FILE_TRANSCRIPTION: :file_transcription
-        IN_CALL_TRANSCRIPTION: :in_call_transcription
+        FILE_BASED: :file_based
+        IN_CALL: :in_call
+        AI_ASSISTANT: :ai_assistant
 
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersParams::service_type]
       end

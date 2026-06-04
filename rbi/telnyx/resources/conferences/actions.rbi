@@ -534,7 +534,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash

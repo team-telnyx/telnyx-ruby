@@ -113,6 +113,7 @@ module Telnyx
       sig do
         params(
           messaging_profile_id: String,
+          ai_assistant_id: T.nilable(String),
           alpha_sender: T.nilable(String),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
@@ -137,6 +138,8 @@ module Telnyx
       def update(
         # The id of the messaging profile to retrieve
         messaging_profile_id,
+        # The ID of the AI assistant associated with this messaging profile.
+        ai_assistant_id: nil,
         # The alphanumeric sender ID to use when sending to destinations that require an
         # alphanumeric sender ID.
         alpha_sender: nil,
