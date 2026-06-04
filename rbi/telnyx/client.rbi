@@ -658,6 +658,10 @@ module Telnyx
     sig { returns(Telnyx::Resources::UacConnections) }
     attr_reader :uac_connections
 
+    # UAC connection operations
+    sig { returns(Telnyx::Resources::SipRegistrationStatus) }
+    attr_reader :sip_registration_status
+
     # Discover available speech-to-text providers, models, and supported languages.
     sig { returns(Telnyx::Resources::SpeechToText) }
     attr_reader :speech_to_text

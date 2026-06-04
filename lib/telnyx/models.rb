@@ -83,7 +83,7 @@ module Telnyx
 
   AI = Telnyx::Models::AI
 
-  AICreateResponseParams = Telnyx::Models::AICreateResponseParams
+  AICreateResponseDeprecatedParams = Telnyx::Models::AICreateResponseDeprecatedParams
 
   AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
 
@@ -461,10 +461,6 @@ module Telnyx
 
   ConsumedData = Telnyx::Models::ConsumedData
 
-  ConversationRelayInterruptionSettings = Telnyx::Models::ConversationRelayInterruptionSettings
-
-  ConversationRelayLanguage = Telnyx::Models::ConversationRelayLanguage
-
   CostInformation = Telnyx::Models::CostInformation
 
   CountryCoverageAPI = Telnyx::Models::CountryCoverageAPI
@@ -759,8 +755,6 @@ module Telnyx
   InvoiceListParams = Telnyx::Models::InvoiceListParams
 
   InvoiceRetrieveParams = Telnyx::Models::InvoiceRetrieveParams
-
-  InworldVoiceSettings = Telnyx::Models::InworldVoiceSettings
 
   IP = Telnyx::Models::IP
 
@@ -1535,6 +1529,8 @@ module Telnyx
 
   SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
 
+  SipRegistrationStatusRetrieveParams = Telnyx::Models::SipRegistrationStatusRetrieveParams
+
   SoundModifications = Telnyx::Models::SoundModifications
 
   SpeechToTextListProvidersParams = Telnyx::Models::SpeechToTextListProvidersParams
@@ -1786,8 +1782,6 @@ module Telnyx
   VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
 
   VoiceSDKCallReportListParams = Telnyx::Models::VoiceSDKCallReportListParams
-
-  VoiceSDKCallReportLogEntry = Telnyx::Models::VoiceSDKCallReportLogEntry
 
   VoiceSDKCallReportRetrieveParams = Telnyx::Models::VoiceSDKCallReportRetrieveParams
 

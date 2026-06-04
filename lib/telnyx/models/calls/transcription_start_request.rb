@@ -27,7 +27,7 @@ module Telnyx
 
         # @!attribute transcription_engine_config
         #
-        #   @return [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config, nil]
+        #   @return [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config, nil]
         optional :transcription_engine_config,
                  union: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig }
 
@@ -49,7 +49,7 @@ module Telnyx
         #
         #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        #   @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
+        #   @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
         #
         #   @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
 
@@ -91,9 +91,10 @@ module Telnyx
 
           variant :AssemblyAI, -> { Telnyx::Calls::TranscriptionEngineAssemblyaiConfig }
 
-          variant :Speechmatics, -> { Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig }
+          variant :Speechmatics,
+                  -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics }
 
-          variant :Soniox, -> { Telnyx::Calls::TranscriptionEngineSonioxConfig }
+          variant :Soniox, -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox }
 
           variant :A, -> { Telnyx::Calls::TranscriptionEngineAConfig }
 
@@ -103,8 +104,175 @@ module Telnyx
 
           variant :"deepgram/nova-3", -> { Telnyx::Calls::DeepgramNova3Config }
 
+          class Speechmatics < Telnyx::Internal::Type::BaseModel
+            # @!attribute interim_results
+            #   Whether to send also interim results. If set to false, only final results will
+            #   be sent.
+            #
+            #   @return [Boolean, nil]
+            optional :interim_results, Telnyx::Internal::Type::Boolean
+
+            # @!attribute language
+            #   Language to use for speech recognition
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language, nil]
+            optional :language,
+                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language }
+
+            # @!attribute transcription_engine
+            #   Engine identifier for Speechmatics transcription service
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine, nil]
+            optional :transcription_engine,
+                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine }
+
+            # @!attribute transcription_model
+            #   The model to use for transcription.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel, nil]
+            optional :transcription_model,
+                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel }
+
+            # @!method initialize(interim_results: nil, language: nil, transcription_engine: nil, transcription_model: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics}
+            #   for more details.
+            #
+            #   @param interim_results [Boolean] Whether to send also interim results. If set to false, only final results will b
+            #
+            #   @param language [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::Language] Language to use for speech recognition
+            #
+            #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionEngine] Engine identifier for Speechmatics transcription service
+            #
+            #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::TranscriptionModel] The model to use for transcription.
+
+            # Language to use for speech recognition
+            #
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics#language
+            module Language
+              extend Telnyx::Internal::Type::Enum
+
+              EN = :en
+              BA = :ba
+              EU = :eu
+              GL = :gl
+              GA = :ga
+              MT = :mt
+              MN = :mn
+              SW = :sw
+              UG = :ug
+              CY = :cy
+              AR_EN = :ar_en
+              CMN_EN = :cmn_en
+              EN_MS = :en_ms
+              EN_TA = :en_ta
+              TL = :tl
+              ES_BILINGUAL_EN = :"es-bilingual-en"
+              CMN_EN_MS_TA = :cmn_en_ms_ta
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Engine identifier for Speechmatics transcription service
+            #
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics#transcription_engine
+            module TranscriptionEngine
+              extend Telnyx::Internal::Type::Enum
+
+              SPEECHMATICS = :Speechmatics
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The model to use for transcription.
+            #
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics#transcription_model
+            module TranscriptionModel
+              extend Telnyx::Internal::Type::Enum
+
+              SPEECHMATICS_STANDARD = :"speechmatics/standard"
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          class Soniox < Telnyx::Internal::Type::BaseModel
+            # @!attribute transcription_engine
+            #   Engine identifier for Soniox transcription service
+            #
+            #   @return [Symbol, :Soniox]
+            required :transcription_engine, const: :Soniox
+
+            # @!attribute enable_endpoint_detection
+            #   When true, Soniox emits end-of-utterance events at the cadence configured by
+            #   `max_endpoint_delay_ms`.
+            #
+            #   @return [Boolean, nil]
+            optional :enable_endpoint_detection, Telnyx::Internal::Type::Boolean
+
+            # @!attribute interim_results
+            #   Whether to send also interim results. If set to false, only final results will
+            #   be sent.
+            #
+            #   @return [Boolean, nil]
+            optional :interim_results, Telnyx::Internal::Type::Boolean
+
+            # @!attribute language
+            #   ISO 639-1 language hint (e.g. `en`, `es`), or `auto` to omit the hint and let
+            #   Soniox auto-detect supported languages multilingually.
+            #
+            #   @return [String, nil]
+            optional :language, String
+
+            # @!attribute max_endpoint_delay_ms
+            #   Maximum silence (in milliseconds) before Soniox emits an end-of-utterance event.
+            #   Only honored when `enable_endpoint_detection` is true. Range: 500-3000 ms.
+            #
+            #   @return [Integer, nil]
+            optional :max_endpoint_delay_ms, Integer
+
+            # @!attribute transcription_model
+            #   The model to use for transcription.
+            #
+            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel, nil]
+            optional :transcription_model,
+                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel }
+
+            # @!method initialize(enable_endpoint_detection: nil, interim_results: nil, language: nil, max_endpoint_delay_ms: nil, transcription_model: nil, transcription_engine: :Soniox)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox}
+            #   for more details.
+            #
+            #   @param enable_endpoint_detection [Boolean] When true, Soniox emits end-of-utterance events at the cadence configured by `ma
+            #
+            #   @param interim_results [Boolean] Whether to send also interim results. If set to false, only final results will b
+            #
+            #   @param language [String] ISO 639-1 language hint (e.g. `en`, `es`), or `auto` to omit the hint and let So
+            #
+            #   @param max_endpoint_delay_ms [Integer] Maximum silence (in milliseconds) before Soniox emits an end-of-utterance event.
+            #
+            #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel] The model to use for transcription.
+            #
+            #   @param transcription_engine [Symbol, :Soniox] Engine identifier for Soniox transcription service
+
+            # The model to use for transcription.
+            #
+            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox#transcription_model
+            module TranscriptionModel
+              extend Telnyx::Internal::Type::Enum
+
+              SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config)]
+          #   @return [Array(Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config)]
         end
       end
     end

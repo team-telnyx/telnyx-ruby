@@ -663,6 +663,10 @@ module Telnyx
     # @return [Telnyx::Resources::UacConnections]
     attr_reader :uac_connections
 
+    # UAC connection operations
+    # @return [Telnyx::Resources::SipRegistrationStatus]
+    attr_reader :sip_registration_status
+
     # Discover available speech-to-text providers, models, and supported languages.
     # @return [Telnyx::Resources::SpeechToText]
     attr_reader :speech_to_text
@@ -945,6 +949,7 @@ module Telnyx
       @terms_of_service = Telnyx::Resources::TermsOfService.new(client: self)
       @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
       @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
+      @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
       @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
       @voice_sdk_call_reports = Telnyx::Resources::VoiceSDKCallReports.new(client: self)
     end

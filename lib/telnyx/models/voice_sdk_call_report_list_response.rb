@@ -38,7 +38,7 @@ module Telnyx
       #   responses commonly return an array of log entries, but object-shaped log
       #   payloads are also allowed for compatibility.
       #
-      #   @return [Array<Telnyx::Models::VoiceSDKCallReportLogEntry>, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries, nil]
+      #   @return [Array<Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0>, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries, nil]
       optional :logs, union: -> { Telnyx::Models::VoiceSDKCallReportListResponse::Logs }
 
       # @!attribute organization_id
@@ -144,7 +144,7 @@ module Telnyx
       #
       #   @param flush_reason [Hash{Symbol=>Object}] Reason the SDK flushed this stats report segment, for example an intermediate so
       #
-      #   @param logs [Array<Telnyx::Models::VoiceSDKCallReportLogEntry>, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries] Raw logs payload emitted by the Voice SDK and stored without normalization. Live
+      #   @param logs [Array<Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0>, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries] Raw logs payload emitted by the Voice SDK and stored without normalization. Live
       #
       #   @param organization_id [String] Organization associated with the stored call report when provided by the Voice S
       #
@@ -181,31 +181,136 @@ module Telnyx
         extend Telnyx::Internal::Type::Union
 
         # Raw log entries emitted by the Voice SDK.
-        variant -> { Telnyx::Models::VoiceSDKCallReportListResponse::Logs::VoiceSDKCallReportLogEntryArray }
+        variant -> { Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0Array }
 
         # Raw logs object emitted by the Voice SDK when logs are grouped under an entries field.
         variant -> { Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries }
+
+        class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          # @!attribute context
+          #   Raw structured context attached to the log entry.
+          #
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :context, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+          # @!attribute level
+          #   Log level emitted by the SDK.
+          #
+          #   @return [Symbol, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level, nil]
+          optional :level, enum: -> { Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level }
+
+          # @!attribute message
+          #   Log message.
+          #
+          #   @return [String, nil]
+          optional :message, String
+
+          # @!attribute timestamp
+          #   Time when the log entry was emitted.
+          #
+          #   @return [Time, nil]
+          optional :timestamp, Time
+
+          # @!method initialize(context: nil, level: nil, message: nil, timestamp: nil)
+          #   A raw Voice SDK log entry. Additional SDK-specific fields may be present.
+          #
+          #   @param context [Hash{Symbol=>Object}] Raw structured context attached to the log entry.
+          #
+          #   @param level [Symbol, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0::Level] Log level emitted by the SDK.
+          #
+          #   @param message [String] Log message.
+          #
+          #   @param timestamp [Time] Time when the log entry was emitted.
+
+          # Log level emitted by the SDK.
+          #
+          # @see Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0#level
+          module Level
+            extend Telnyx::Internal::Type::Enum
+
+            DEBUG = :debug
+            INFO = :info
+            WARN = :warn
+            ERROR = :error
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
 
         class Entries < Telnyx::Internal::Type::BaseModel
           # @!attribute entries
           #   Raw log entries when the SDK groups logs under an entries field.
           #
-          #   @return [Array<Telnyx::Models::VoiceSDKCallReportLogEntry>, nil]
-          optional :entries, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::VoiceSDKCallReportLogEntry] }
+          #   @return [Array<Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry>, nil]
+          optional :entries,
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry] }
 
           # @!method initialize(entries: nil)
           #   Raw logs object emitted by the Voice SDK when logs are grouped under an entries
           #   field.
           #
-          #   @param entries [Array<Telnyx::Models::VoiceSDKCallReportLogEntry>] Raw log entries when the SDK groups logs under an entries field.
+          #   @param entries [Array<Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry>] Raw log entries when the SDK groups logs under an entries field.
+
+          class Entry < Telnyx::Internal::Type::BaseModel
+            # @!attribute context
+            #   Raw structured context attached to the log entry.
+            #
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :context, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+            # @!attribute level
+            #   Log level emitted by the SDK.
+            #
+            #   @return [Symbol, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level, nil]
+            optional :level, enum: -> { Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level }
+
+            # @!attribute message
+            #   Log message.
+            #
+            #   @return [String, nil]
+            optional :message, String
+
+            # @!attribute timestamp
+            #   Time when the log entry was emitted.
+            #
+            #   @return [Time, nil]
+            optional :timestamp, Time
+
+            # @!method initialize(context: nil, level: nil, message: nil, timestamp: nil)
+            #   A raw Voice SDK log entry. Additional SDK-specific fields may be present.
+            #
+            #   @param context [Hash{Symbol=>Object}] Raw structured context attached to the log entry.
+            #
+            #   @param level [Symbol, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry::Level] Log level emitted by the SDK.
+            #
+            #   @param message [String] Log message.
+            #
+            #   @param timestamp [Time] Time when the log entry was emitted.
+
+            # Log level emitted by the SDK.
+            #
+            # @see Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries::Entry#level
+            module Level
+              extend Telnyx::Internal::Type::Enum
+
+              DEBUG = :debug
+              INFO = :info
+              WARN = :warn
+              ERROR = :error
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
 
         # @!method self.variants
-        #   @return [Array(Array<Telnyx::Models::VoiceSDKCallReportLogEntry>, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries)]
+        #   @return [Array(Array<Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0>, Telnyx::Models::VoiceSDKCallReportListResponse::Logs::Entries)]
 
         # @type [Telnyx::Internal::Type::Converter]
-        VoiceSDKCallReportLogEntryArray =
-          Telnyx::Internal::Type::ArrayOf[-> { Telnyx::VoiceSDKCallReportLogEntry }]
+        UnionMember0Array =
+          Telnyx::Internal::Type::ArrayOf[-> { Telnyx::Models::VoiceSDKCallReportListResponse::Logs::UnionMember0 }]
       end
 
       # Raw stats payload emitted by the Voice SDK and stored without normalization. The

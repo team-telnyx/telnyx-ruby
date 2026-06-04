@@ -1,9 +1,9 @@
 module Telnyx
   module Models
-    type ai_create_response_params =
+    type ai_create_response_deprecated_params =
       { body: ::Hash[Symbol, top] } & Telnyx::Internal::Type::request_parameters
 
-    class AICreateResponseParams < Telnyx::Internal::Type::BaseModel
+    class AICreateResponseDeprecatedParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 

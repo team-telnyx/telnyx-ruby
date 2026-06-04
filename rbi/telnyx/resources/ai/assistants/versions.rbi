@@ -32,6 +32,8 @@ module Telnyx
             params(
               version_id: String,
               assistant_id: String,
+              conversation_flow:
+                Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::OrHash,
               description: String,
               dynamic_variables: T::Hash[Symbol, T.anything],
               dynamic_variables_webhook_timeout_ms: Integer,
@@ -84,6 +86,12 @@ module Telnyx
             version_id,
             # Path param
             assistant_id:,
+            # Body param: Conversation flow as supplied by API clients (create / update).
+            #
+            # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
+            # unique node/edge IDs, that `start_node_id` references a real node, and that
+            # every edge's endpoints reference real nodes.
+            conversation_flow: nil,
             # Body param
             description: nil,
             # Body param: Map of dynamic variables and their default values

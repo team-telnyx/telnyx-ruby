@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class SipRegistrationStatus
+      def retrieve: (
+        connection_id: String,
+        credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

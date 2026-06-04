@@ -11,10 +11,11 @@ module Telnyx
       #
       # - `streaming` — standalone WebSocket transcription via
       #   `/speech-to-text/transcription`.
-      # - `file_transcription` — file-based transcription via
-      #   `/ai/audio/transcriptions`.
-      # - `in_call_transcription` — live call transcription via Call Control
-      #   `transcription_start`.
+      # - `file_based` — file-based transcription via `/ai/audio/transcriptions`.
+      # - `in_call` — live call transcription via Call Control `transcription_start`.
+      # - `ai_assistant` — STT configured on a Call Control AI Assistant via
+      #   voice-assistant `TranscriptionConfig` (covers both live-streaming and
+      #   non-streaming/batch models).
       #
       # Use this endpoint to discover which (provider, model) combinations are available
       # for the surface you need, and which language codes each accepts. `auto` in a
@@ -34,7 +35,12 @@ module Telnyx
         # models currently registered for any service type will return an empty `data`
         # array rather than an error.
         provider: nil,
-        # Filter to entries that support the given service type.
+        # Filter to entries that support the given service type. For backward
+        # compatibility with the values that briefly shipped before the product-aligned
+        # rename, the legacy aliases `file_transcription`, `in_call_transcription`, and
+        # `ai_assistant_transcription` are silently accepted and normalized to
+        # `file_based`, `in_call`, and `ai_assistant` respectively. The response always
+        # emits the canonical (post-rename) values.
         service_type: nil,
         request_options: {}
       )

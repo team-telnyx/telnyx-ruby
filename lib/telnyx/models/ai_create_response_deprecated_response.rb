@@ -3,6 +3,6 @@
 module Telnyx
   module Models
     # @type [Telnyx::Internal::Type::Converter]
-    AICreateResponseResponse = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+    AICreateResponseDeprecatedResponse = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
   end
 end

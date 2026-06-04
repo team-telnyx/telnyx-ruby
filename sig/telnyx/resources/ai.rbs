@@ -25,10 +25,10 @@ module Telnyx
 
       attr_reader tools: Telnyx::Resources::AI::Tools
 
-      def create_response: (
+      def create_response_deprecated: (
         body: ::Hash[Symbol, top],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ai_create_response_response
+      ) -> Telnyx::Models::ai_create_response_deprecated_response
 
       def retrieve_models: (
         ?request_options: Telnyx::request_opts

@@ -2,8 +2,8 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::AI#create_response
-    class AICreateResponseParams < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::AI#create_response_deprecated
+    class AICreateResponseDeprecatedParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 

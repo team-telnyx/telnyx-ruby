@@ -17,6 +17,7 @@ module Telnyx
         def create: (
           instructions: String,
           name: String,
+          ?conversation_flow: Telnyx::AI::AssistantCreateParams::ConversationFlow,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_timeout_ms: Integer,
@@ -56,6 +57,7 @@ module Telnyx
 
         def update: (
           String assistant_id,
+          ?conversation_flow: Telnyx::AI::AssistantUpdateParams::ConversationFlow,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_timeout_ms: Integer,
