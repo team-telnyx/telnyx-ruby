@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.125.0 (2026-06-04)
+
+Full Changelog: [v5.124.0...v5.125.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.124.0...v5.125.0)
+
+### Features
+
+* **inference:** expose description on transfer tool params ([a2d8c5d](https://github.com/team-telnyx/telnyx-ruby/commit/a2d8c5d52b468045bb173b4a77f629ec3c24ede6))
+
 ## 5.124.0 (2026-06-04)
 
 Full Changelog: [v5.123.0...v5.124.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.123.0...v5.124.0)
