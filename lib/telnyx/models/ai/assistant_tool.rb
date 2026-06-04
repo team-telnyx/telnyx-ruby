@@ -154,6 +154,16 @@ module Telnyx
             optional :custom_headers,
                      -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader] }
 
+            # @!attribute description
+            #   A description of the transfer tool. By default, Telnyx generates this
+            #   automatically based on the configured targets. Typically only set when importing
+            #   an assistant from another provider that allowed a custom description; in that
+            #   case the provided value is preserved. Most users should leave this empty and let
+            #   Telnyx manage it.
+            #
+            #   @return [String, nil]
+            optional :description, String
+
             # @!attribute voicemail_detection
             #   Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             #   transferred call. Allows the assistant to detect when a voicemail system answers
@@ -178,7 +188,7 @@ module Telnyx
             #   @return [String, nil]
             optional :warm_transfer_instructions, String
 
-            # @!method initialize(from:, targets:, custom_headers: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_instructions: nil)
+            # @!method initialize(from:, targets:, custom_headers: nil, description: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_instructions: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer} for more details.
             #
@@ -187,6 +197,8 @@ module Telnyx
             #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String] The different possible targets of the transfer. The assistant will be able to ch
             #
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
+            #
+            #   @param description [String] A description of the transfer tool. By default, Telnyx generates this automatica
             #
             #   @param voicemail_detection [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             #

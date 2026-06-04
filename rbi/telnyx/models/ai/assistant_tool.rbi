@@ -305,6 +305,17 @@ module Telnyx
             end
             attr_writer :custom_headers
 
+            # A description of the transfer tool. By default, Telnyx generates this
+            # automatically based on the configured targets. Typically only set when importing
+            # an assistant from another provider that allowed a custom description; in that
+            # case the provided value is preserved. Most users should leave this empty and let
+            # Telnyx manage it.
+            sig { returns(T.nilable(String)) }
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
+
             # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             # transferred call. Allows the assistant to detect when a voicemail system answers
             # the transferred call and take appropriate action.
@@ -349,6 +360,7 @@ module Telnyx
                   T::Array[
                     Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader::OrHash
                   ],
+                description: String,
                 voicemail_detection:
                   Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OrHash,
                 warm_message_delay_ms: T.nilable(Integer),
@@ -365,6 +377,12 @@ module Telnyx
               targets:,
               # Custom headers to be added to the SIP INVITE for the transfer command.
               custom_headers: nil,
+              # A description of the transfer tool. By default, Telnyx generates this
+              # automatically based on the configured targets. Typically only set when importing
+              # an assistant from another provider that allowed a custom description; in that
+              # case the provided value is preserved. Most users should leave this empty and let
+              # Telnyx manage it.
+              description: nil,
               # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
               # transferred call. Allows the assistant to detect when a voicemail system answers
               # the transferred call and take appropriate action.
@@ -390,6 +408,7 @@ module Telnyx
                     T::Array[
                       Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader
                     ],
+                  description: String,
                   voicemail_detection:
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
                   warm_message_delay_ms: T.nilable(Integer),
