@@ -3,6 +3,7 @@ module Telnyx
     type messaging_profile_update_params =
       {
         messaging_profile_id: String,
+        ai_assistant_id: String?,
         alpha_sender: String?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
@@ -27,6 +28,8 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       attr_accessor messaging_profile_id: String
+
+      attr_accessor ai_assistant_id: String?
 
       attr_accessor alpha_sender: String?
 
@@ -86,6 +89,7 @@ module Telnyx
 
       def initialize: (
         messaging_profile_id: String,
+        ?ai_assistant_id: String?,
         ?alpha_sender: String?,
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
@@ -107,6 +111,7 @@ module Telnyx
 
       def to_hash: -> {
         messaging_profile_id: String,
+        ai_assistant_id: String?,
         alpha_sender: String?,
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,

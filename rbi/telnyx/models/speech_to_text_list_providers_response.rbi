@@ -62,11 +62,6 @@ module Telnyx
             )
           end
 
-        # Languages this (provider, model) accepts, in the provider's native code format.
-        # `auto` indicates the provider performs language detection.
-        sig { returns(T::Array[String]) }
-        attr_accessor :languages
-
         # Provider-scoped model name.
         sig { returns(String) }
         attr_accessor :model
@@ -75,37 +70,38 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :provider
 
-        # Service surfaces this (provider, model) supports.
+        # Service surfaces this (provider, model) supports. When the request filters by
+        # `service_type`, only the matching nested entry is returned for each matching
+        # model.
         sig do
           returns(
             T::Array[
-              Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::TaggedSymbol
+              Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType
             ]
           )
         end
         attr_accessor :service_types
 
-        # A (provider, model) tuple along with its supported service types and languages.
+        # A (provider, model) tuple along with the service surfaces it supports. Each
+        # entry in `service_types` describes one surface and the languages accepted on it.
         sig do
           params(
-            languages: T::Array[String],
             model: String,
             provider: String,
             service_types:
               T::Array[
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::OrSymbol
+                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::OrHash
               ]
           ).returns(T.attached_class)
         end
         def self.new(
-          # Languages this (provider, model) accepts, in the provider's native code format.
-          # `auto` indicates the provider performs language detection.
-          languages:,
           # Provider-scoped model name.
           model:,
           # STT provider name.
           provider:,
-          # Service surfaces this (provider, model) supports.
+          # Service surfaces this (provider, model) supports. When the request filters by
+          # `service_type`, only the matching nested entry is returned for each matching
+          # model.
           service_types:
         )
         end
@@ -113,12 +109,11 @@ module Telnyx
         sig do
           override.returns(
             {
-              languages: T::Array[String],
               model: String,
               provider: String,
               service_types:
                 T::Array[
-                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::TaggedSymbol
+                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType
                 ]
             }
           )
@@ -126,43 +121,112 @@ module Telnyx
         def to_hash
         end
 
-        # Service surface a model is available on.
-        module ServiceType
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
+        class ServiceType < Telnyx::Internal::Type::BaseModel
+          OrHash =
             T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType
+              T.any(
+                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType,
+                Telnyx::Internal::AnyHash
               )
             end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          STREAMING =
-            T.let(
-              :streaming,
-              Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::TaggedSymbol
+          # Languages accepted on this service surface, in the provider's native code
+          # format. `auto` indicates the provider performs language detection.
+          sig { returns(T::Array[String]) }
+          attr_accessor :languages
+
+          # Service surface a model is available on. `ai_assistant` is the STT surface
+          # configured via Call Control voice-assistant transcription; it covers both
+          # live-streaming and non-streaming/batch models (matching the
+          # `TranscriptionConfig.model` enum on `call-control` voice assistants).
+          sig do
+            returns(
+              Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
             )
-          FILE_TRANSCRIPTION =
-            T.let(
-              :file_transcription,
-              Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::TaggedSymbol
-            )
-          IN_CALL_TRANSCRIPTION =
-            T.let(
-              :in_call_transcription,
-              Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::TaggedSymbol
-            )
+          end
+          attr_accessor :type
+
+          # A supported service surface for a given (provider, model), along with the
+          # language codes accepted on that surface. Language support can differ per surface
+          # — for example, a model may accept a narrower language set for streaming than for
+          # file transcription.
+          sig do
+            params(
+              languages: T::Array[String],
+              type:
+                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Languages accepted on this service surface, in the provider's native code
+            # format. `auto` indicates the provider performs language detection.
+            languages:,
+            # Service surface a model is available on. `ai_assistant` is the STT surface
+            # configured via Call Control voice-assistant transcription; it covers both
+            # live-streaming and non-streaming/batch models (matching the
+            # `TranscriptionConfig.model` enum on `call-control` voice assistants).
+            type:
+          )
+          end
 
           sig do
             override.returns(
-              T::Array[
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::TaggedSymbol
-              ]
+              {
+                languages: T::Array[String],
+                type:
+                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
+              }
             )
           end
-          def self.values
+          def to_hash
+          end
+
+          # Service surface a model is available on. `ai_assistant` is the STT surface
+          # configured via Call Control voice-assistant transcription; it covers both
+          # live-streaming and non-streaming/batch models (matching the
+          # `TranscriptionConfig.model` enum on `call-control` voice assistants).
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            STREAMING =
+              T.let(
+                :streaming,
+                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
+              )
+            FILE_BASED =
+              T.let(
+                :file_based,
+                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
+              )
+            IN_CALL =
+              T.let(
+                :in_call,
+                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
+              )
+            AI_ASSISTANT =
+              T.let(
+                :ai_assistant,
+                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

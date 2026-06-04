@@ -438,10 +438,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::Reports) }
     attr_reader :reports
 
-    # Discover available speech-to-text providers, models, and supported languages.
-    sig { returns(Telnyx::Resources::SpeechToText) }
-    attr_reader :speech_to_text
-
     # Requirement Groups
     sig { returns(Telnyx::Resources::RequirementGroups) }
     attr_reader :requirement_groups
@@ -662,14 +658,18 @@ module Telnyx
     sig { returns(Telnyx::Resources::UacConnections) }
     attr_reader :uac_connections
 
+    # UAC connection operations
+    sig { returns(Telnyx::Resources::SipRegistrationStatus) }
+    attr_reader :sip_registration_status
+
+    # Discover available speech-to-text providers, models, and supported languages.
+    sig { returns(Telnyx::Resources::SpeechToText) }
+    attr_reader :speech_to_text
+
     # Retrieve raw Voice SDK call report stats payloads for WebRTC call
     # troubleshooting.
     sig { returns(Telnyx::Resources::VoiceSDKCallReports) }
     attr_reader :voice_sdk_call_reports
-
-    # UAC connection operations
-    sig { returns(Telnyx::Resources::SipRegistrationStatus) }
-    attr_reader :sip_registration_status
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

@@ -14,6 +14,10 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :messaging_profile_id
 
+      # The ID of the AI assistant associated with this messaging profile.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :ai_assistant_id
+
       # The alphanumeric sender ID to use when sending to destinations that require an
       # alphanumeric sender ID.
       sig { returns(T.nilable(String)) }
@@ -160,6 +164,7 @@ module Telnyx
       sig do
         params(
           messaging_profile_id: String,
+          ai_assistant_id: T.nilable(String),
           alpha_sender: T.nilable(String),
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
@@ -183,6 +188,8 @@ module Telnyx
       end
       def self.new(
         messaging_profile_id:,
+        # The ID of the AI assistant associated with this messaging profile.
+        ai_assistant_id: nil,
         # The alphanumeric sender ID to use when sending to destinations that require an
         # alphanumeric sender ID.
         alpha_sender: nil,
@@ -243,6 +250,7 @@ module Telnyx
         override.returns(
           {
             messaging_profile_id: String,
+            ai_assistant_id: T.nilable(String),
             alpha_sender: T.nilable(String),
             daily_spend_limit: String,
             daily_spend_limit_enabled: T::Boolean,

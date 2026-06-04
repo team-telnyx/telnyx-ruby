@@ -1,8 +1,8 @@
 module Telnyx
   module Models
-    type text_to_speech_create_speech_response = { :base64_audio => String }
+    type text_to_speech_generate_response = { :base64_audio => String }
 
-    class TextToSpeechCreateSpeechResponse < Telnyx::Internal::Type::BaseModel
+    class TextToSpeechGenerateResponse < Telnyx::Internal::Type::BaseModel
       attr_reader base64_audio: String?
 
       def base64_audio=: (String) -> String

@@ -83,7 +83,7 @@ module Telnyx
 
   AI = Telnyx::Models::AI
 
-  AICreateResponseParams = Telnyx::Models::AICreateResponseParams
+  AICreateResponseDeprecatedParams = Telnyx::Models::AICreateResponseDeprecatedParams
 
   AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
 
@@ -461,10 +461,6 @@ module Telnyx
 
   ConsumedData = Telnyx::Models::ConsumedData
 
-  ConversationRelayInterruptionSettings = Telnyx::Models::ConversationRelayInterruptionSettings
-
-  ConversationRelayLanguage = Telnyx::Models::ConversationRelayLanguage
-
   CostInformation = Telnyx::Models::CostInformation
 
   CountryCoverageAPI = Telnyx::Models::CountryCoverageAPI
@@ -759,8 +755,6 @@ module Telnyx
   InvoiceListParams = Telnyx::Models::InvoiceListParams
 
   InvoiceRetrieveParams = Telnyx::Models::InvoiceRetrieveParams
-
-  InworldVoiceSettings = Telnyx::Models::InworldVoiceSettings
 
   IP = Telnyx::Models::IP
 
@@ -1541,8 +1535,6 @@ module Telnyx
 
   SpeechToTextListProvidersParams = Telnyx::Models::SpeechToTextListProvidersParams
 
-  SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
-
   Storage = Telnyx::Models::Storage
 
   StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
@@ -1616,9 +1608,7 @@ module Telnyx
 
   TexmlSecretsParams = Telnyx::Models::TexmlSecretsParams
 
-  TextToSpeechCreateSpeechParams = Telnyx::Models::TextToSpeechCreateSpeechParams
-
-  TextToSpeechGenerateSpeechParams = Telnyx::Models::TextToSpeechGenerateSpeechParams
+  TextToSpeechGenerateParams = Telnyx::Models::TextToSpeechGenerateParams
 
   TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 
@@ -1792,8 +1782,6 @@ module Telnyx
   VoiceDesignRetrieveParams = Telnyx::Models::VoiceDesignRetrieveParams
 
   VoiceSDKCallReportListParams = Telnyx::Models::VoiceSDKCallReportListParams
-
-  VoiceSDKCallReportLogEntry = Telnyx::Models::VoiceSDKCallReportLogEntry
 
   VoiceSDKCallReportRetrieveParams = Telnyx::Models::VoiceSDKCallReportRetrieveParams
 

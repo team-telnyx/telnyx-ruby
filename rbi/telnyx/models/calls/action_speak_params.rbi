@@ -177,7 +177,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::InworldVoiceSettings,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld,
                 Telnyx::XaiVoiceSettings
               )
             )
@@ -196,7 +196,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
               )
           ).void
@@ -227,7 +227,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
@@ -339,7 +339,7 @@ module Telnyx
                   Telnyx::AzureVoiceSettings,
                   Telnyx::RimeVoiceSettings,
                   Telnyx::ResembleVoiceSettings,
-                  Telnyx::InworldVoiceSettings,
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld,
                   Telnyx::XaiVoiceSettings
                 ),
               request_options: Telnyx::RequestOptions
@@ -632,10 +632,35 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::InworldVoiceSettings,
+                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld,
                 Telnyx::XaiVoiceSettings
               )
             end
+
+          class Inworld < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Voice settings provider type
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig { params(type: Symbol).returns(T.attached_class) }
+            def self.new(
+              # Voice settings provider type
+              type: :inworld
+            )
+            end
+
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
+          end
 
           sig do
             override.returns(

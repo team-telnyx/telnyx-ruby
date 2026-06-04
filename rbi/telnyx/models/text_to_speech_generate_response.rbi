@@ -2,11 +2,11 @@
 
 module Telnyx
   module Models
-    class TextToSpeechCreateSpeechResponse < Telnyx::Internal::Type::BaseModel
+    class TextToSpeechGenerateResponse < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            Telnyx::Models::TextToSpeechCreateSpeechResponse,
+            Telnyx::Models::TextToSpeechGenerateResponse,
             Telnyx::Internal::AnyHash
           )
         end
