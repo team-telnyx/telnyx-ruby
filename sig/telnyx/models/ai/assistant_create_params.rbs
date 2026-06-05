@@ -277,6 +277,7 @@ module Telnyx
           type node =
             Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt
             | Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Tool
+            | Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Speak
 
           module Node
             extend Telnyx::Internal::Type::Union
@@ -507,6 +508,75 @@ module Telnyx
               end
             end
 
+            type speak =
+              {
+                id: String,
+                message: String,
+                name: String,
+                position: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Speak::Position,
+                type: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Speak::type_
+              }
+
+            class Speak < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor message: String
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              attr_reader position: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Speak::Position?
+
+              def position=: (
+                Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Speak::Position
+              ) -> Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Speak::Position
+
+              attr_reader type: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Speak::type_?
+
+              def type=: (
+                Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Speak::type_
+              ) -> Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Speak::type_
+
+              def initialize: (
+                id: String,
+                message: String,
+                ?name: String,
+                ?position: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Speak::Position,
+                ?type: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Speak::type_
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                message: String,
+                name: String,
+                position: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Speak::Position,
+                type: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Speak::type_
+              }
+
+              type position = { x: Float, y_: Float }
+
+              class Position < Telnyx::Internal::Type::BaseModel
+                attr_accessor x: Float
+
+                attr_accessor y_: Float
+
+                def initialize: (x: Float, y_: Float) -> void
+
+                def to_hash: -> { x: Float, y_: Float }
+              end
+
+              type type_ = :speak
+
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                SPEAK: :speak
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Speak::type_]
+              end
+            end
+
             def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::node]
           end
 
@@ -544,6 +614,7 @@ module Telnyx
             type condition =
               Telnyx::AI::AssistantCreateParams::ConversationFlow::Edge::Condition::Llm
               | Telnyx::AI::AssistantCreateParams::ConversationFlow::Edge::Condition::Expression
+              | Telnyx::AI::AssistantCreateParams::ConversationFlow::Edge::Condition::Default
 
             module Condition
               extend Telnyx::Internal::Type::Union
@@ -651,6 +722,16 @@ module Telnyx
 
                   def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Edge::Condition::Expression::expression]
                 end
+              end
+
+              type default = { type: :default }
+
+              class Default < Telnyx::Internal::Type::BaseModel
+                attr_accessor type: :default
+
+                def initialize: (?type: :default) -> void
+
+                def to_hash: -> { type: :default }
               end
 
               def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Edge::condition]

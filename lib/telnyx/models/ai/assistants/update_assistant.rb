@@ -282,7 +282,7 @@ module Telnyx
             #   All nodes in the flow. Must contain `start_node_id`. Each node is a prompt node
             #   (`type: prompt`) or a tool node (`type: tool`).
             #
-            #   @return [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool>]
+            #   @return [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak>]
             required :nodes,
                      -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node] }
 
@@ -310,7 +310,7 @@ module Telnyx
             #   unique node/edge IDs, that `start_node_id` references a real node, and that
             #   every edge's endpoints reference real nodes.
             #
-            #   @param nodes [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool>] All nodes in the flow. Must contain `start_node_id`. Each node is a prompt node
+            #   @param nodes [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak>] All nodes in the flow. Must contain `start_node_id`. Each node is a prompt node
             #
             #   @param start_node_id [String] ID of the node where the conversation begins.
             #
@@ -338,6 +338,14 @@ module Telnyx
               # (arguments filled from matching dynamic variables by name), then routes
               # on the result via outgoing `tool_result` edges.
               variant :tool, -> { Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool }
+
+              # A standalone scripted-message step in a flow, as supplied by clients.
+              #
+              # Unlike a prompt node, a speak node has no instructions or model — it isn't
+              # an LLM turn. Reaching it delivers `message` to the user verbatim (with
+              # `{{variable}}` interpolation), then routes via outgoing `llm` /
+              # `expression` edges.
+              variant :speak, -> { Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak }
 
               class Prompt < Telnyx::Internal::Type::BaseModel
                 # @!attribute id
@@ -641,8 +649,106 @@ module Telnyx
                 end
               end
 
+              class Speak < Telnyx::Internal::Type::BaseModel
+                # @!attribute id
+                #   Caller-supplied unique identifier for this node within the flow.
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute message
+                #   Message delivered to the user verbatim when the flow reaches this node. No LLM
+                #   turn — the text is spoken/sent exactly as written. `{{variable}}` placeholders
+                #   are interpolated from the conversation's dynamic variables; an unresolved
+                #   placeholder renders as an empty string. After delivering, the flow routes via
+                #   the node's outgoing `llm` / `expression` edges (commonly a single unconditional
+                #   edge).
+                #
+                #   @return [String]
+                required :message, String
+
+                # @!attribute name
+                #   Optional human-readable label, displayed in authoring UIs.
+                #
+                #   @return [String, nil]
+                optional :name, String
+
+                # @!attribute position
+                #   Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+                #   by the runtime; round-trips so frontends can persist graph layout across
+                #   reloads.
+                #
+                #   @return [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position, nil]
+                optional :position,
+                         -> { Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position }
+
+                # @!attribute type
+                #   Node kind discriminator. Always `speak` for a speak node.
+                #
+                #   @return [Symbol, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type, nil]
+                optional :type, enum: -> { Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type }
+
+                # @!method initialize(id:, message:, name: nil, position: nil, type: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak}
+                #   for more details.
+                #
+                #   A standalone scripted-message step in a flow, as supplied by clients.
+                #
+                #   Unlike a prompt node, a speak node has no instructions or model — it isn't an
+                #   LLM turn. Reaching it delivers `message` to the user verbatim (with
+                #   `{{variable}}` interpolation), then routes via outgoing `llm` / `expression`
+                #   edges.
+                #
+                #   @param id [String] Caller-supplied unique identifier for this node within the flow.
+                #
+                #   @param message [String] Message delivered to the user verbatim when the flow reaches this node. No LLM t
+                #
+                #   @param name [String] Optional human-readable label, displayed in authoring UIs.
+                #
+                #   @param position [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position] Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+                #
+                #   @param type [Symbol, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type] Node kind discriminator. Always `speak` for a speak node.
+
+                # @see Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak#position
+                class Position < Telnyx::Internal::Type::BaseModel
+                  # @!attribute x
+                  #   Horizontal coordinate in the authoring canvas.
+                  #
+                  #   @return [Float]
+                  required :x, Float
+
+                  # @!attribute y_
+                  #   Vertical coordinate in the authoring canvas.
+                  #
+                  #   @return [Float]
+                  required :y_, Float, api_name: :y
+
+                  # @!method initialize(x:, y_:)
+                  #   Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+                  #   by the runtime; round-trips so frontends can persist graph layout across
+                  #   reloads.
+                  #
+                  #   @param x [Float] Horizontal coordinate in the authoring canvas.
+                  #
+                  #   @param y_ [Float] Vertical coordinate in the authoring canvas.
+                end
+
+                # Node kind discriminator. Always `speak` for a speak node.
+                #
+                # @see Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak#type
+                module Type
+                  extend Telnyx::Internal::Type::Enum
+
+                  SPEAK = :speak
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
               # @!method self.variants
-              #   @return [Array(Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool)]
+              #   @return [Array(Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak)]
             end
 
             class Edge < Telnyx::Internal::Type::BaseModel
@@ -656,7 +762,7 @@ module Telnyx
               #   Condition that gates the transition. Discriminated by `type`: `llm`,
               #   `expression`.
               #
-              #   @return [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression]
+              #   @return [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default]
               required :condition,
                        union: -> { Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition }
 
@@ -687,7 +793,7 @@ module Telnyx
               #
               #   @param id [String] Caller-supplied unique identifier for this edge within the flow.
               #
-              #   @param condition [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression] Condition that gates the transition. Discriminated by `type`: `llm`, `expression
+              #   @param condition [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default] Condition that gates the transition. Discriminated by `type`: `llm`, `expression
               #
               #   @param start_node_id [String] ID of the node this edge transitions away from.
               #
@@ -716,6 +822,18 @@ module Telnyx
                 # a clean function of known variables — it's cheaper and predictable.
                 variant :expression,
                         -> { Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression }
+
+                # Fallback edge condition: fires only when no other edge's condition is true.
+                #
+                # Evaluated after every conditioned (`llm` / `expression`) edge regardless
+                # of declaration order, so it routes the flow whenever none of the node's
+                # other outgoing edges match. Valid **only** on edges leaving a `tool` or
+                # `speak` node, where the deterministic step auto-advances and must always
+                # have somewhere to go. A tool/speak node with any outgoing edge is required
+                # to carry exactly one `default` edge so it never dead-ends; a tool/speak
+                # node with no outgoing edges is a valid terminal step. Carries no parameters.
+                variant :default,
+                        -> { Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default }
 
                 class Llm < Telnyx::Internal::Type::BaseModel
                   # @!attribute prompt
@@ -892,8 +1010,28 @@ module Telnyx
                   end
                 end
 
+                class Default < Telnyx::Internal::Type::BaseModel
+                  # @!attribute type
+                  #
+                  #   @return [Symbol, :default]
+                  required :type, const: :default
+
+                  # @!method initialize(type: :default)
+                  #   Fallback edge condition: fires only when no other edge's condition is true.
+                  #
+                  #   Evaluated after every conditioned (`llm` / `expression`) edge regardless of
+                  #   declaration order, so it routes the flow whenever none of the node's other
+                  #   outgoing edges match. Valid **only** on edges leaving a `tool` or `speak` node,
+                  #   where the deterministic step auto-advances and must always have somewhere to go.
+                  #   A tool/speak node with any outgoing edge is required to carry exactly one
+                  #   `default` edge so it never dead-ends; a tool/speak node with no outgoing edges
+                  #   is a valid terminal step. Carries no parameters.
+                  #
+                  #   @param type [Symbol, :default]
+                end
+
                 # @!method self.variants
-                #   @return [Array(Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression)]
+                #   @return [Array(Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression, Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default)]
               end
 
               # Destination of the transition. Discriminated by `type`: `node` (jump to another

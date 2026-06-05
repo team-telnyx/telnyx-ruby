@@ -572,7 +572,8 @@ module Telnyx
                 T::Array[
                   T.any(
                     Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt,
-                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool
+                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool,
+                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak
                   )
                 ]
               )
@@ -616,7 +617,8 @@ module Telnyx
                   T::Array[
                     T.any(
                       Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt::OrHash,
-                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool::OrHash
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool::OrHash,
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::OrHash
                     )
                   ],
                 start_node_id: String,
@@ -644,7 +646,8 @@ module Telnyx
                     T::Array[
                       T.any(
                         Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt,
-                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool,
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak
                       )
                     ],
                   start_node_id: String,
@@ -669,7 +672,8 @@ module Telnyx
                 T.type_alias do
                   T.any(
                     Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Prompt,
-                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool
+                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Tool,
+                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak
                   )
                 end
 
@@ -1264,6 +1268,192 @@ module Telnyx
                 end
               end
 
+              class Speak < Telnyx::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak,
+                      Telnyx::Internal::AnyHash
+                    )
+                  end
+
+                # Caller-supplied unique identifier for this node within the flow.
+                sig { returns(String) }
+                attr_accessor :id
+
+                # Message delivered to the user verbatim when the flow reaches this node. No LLM
+                # turn — the text is spoken/sent exactly as written. `{{variable}}` placeholders
+                # are interpolated from the conversation's dynamic variables; an unresolved
+                # placeholder renders as an empty string. After delivering, the flow routes via
+                # the node's outgoing `llm` / `expression` edges (commonly a single unconditional
+                # edge).
+                sig { returns(String) }
+                attr_accessor :message
+
+                # Optional human-readable label, displayed in authoring UIs.
+                sig { returns(T.nilable(String)) }
+                attr_reader :name
+
+                sig { params(name: String).void }
+                attr_writer :name
+
+                # Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+                # by the runtime; round-trips so frontends can persist graph layout across
+                # reloads.
+                sig do
+                  returns(
+                    T.nilable(
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position
+                    )
+                  )
+                end
+                attr_reader :position
+
+                sig do
+                  params(
+                    position:
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position::OrHash
+                  ).void
+                end
+                attr_writer :position
+
+                # Node kind discriminator. Always `speak` for a speak node.
+                sig do
+                  returns(
+                    T.nilable(
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type::OrSymbol
+                    )
+                  )
+                end
+                attr_reader :type
+
+                sig do
+                  params(
+                    type:
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type::OrSymbol
+                  ).void
+                end
+                attr_writer :type
+
+                # A standalone scripted-message step in a flow, as supplied by clients.
+                #
+                # Unlike a prompt node, a speak node has no instructions or model — it isn't an
+                # LLM turn. Reaching it delivers `message` to the user verbatim (with
+                # `{{variable}}` interpolation), then routes via outgoing `llm` / `expression`
+                # edges.
+                sig do
+                  params(
+                    id: String,
+                    message: String,
+                    name: String,
+                    position:
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position::OrHash,
+                    type:
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Caller-supplied unique identifier for this node within the flow.
+                  id:,
+                  # Message delivered to the user verbatim when the flow reaches this node. No LLM
+                  # turn — the text is spoken/sent exactly as written. `{{variable}}` placeholders
+                  # are interpolated from the conversation's dynamic variables; an unresolved
+                  # placeholder renders as an empty string. After delivering, the flow routes via
+                  # the node's outgoing `llm` / `expression` edges (commonly a single unconditional
+                  # edge).
+                  message:,
+                  # Optional human-readable label, displayed in authoring UIs.
+                  name: nil,
+                  # Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+                  # by the runtime; round-trips so frontends can persist graph layout across
+                  # reloads.
+                  position: nil,
+                  # Node kind discriminator. Always `speak` for a speak node.
+                  type: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      message: String,
+                      name: String,
+                      position:
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position,
+                      type:
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                class Position < Telnyx::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Position,
+                        Telnyx::Internal::AnyHash
+                      )
+                    end
+
+                  # Horizontal coordinate in the authoring canvas.
+                  sig { returns(Float) }
+                  attr_accessor :x
+
+                  # Vertical coordinate in the authoring canvas.
+                  sig { returns(Float) }
+                  attr_accessor :y_
+
+                  # Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+                  # by the runtime; round-trips so frontends can persist graph layout across
+                  # reloads.
+                  sig { params(x: Float, y_: Float).returns(T.attached_class) }
+                  def self.new(
+                    # Horizontal coordinate in the authoring canvas.
+                    x:,
+                    # Vertical coordinate in the authoring canvas.
+                    y_:
+                  )
+                  end
+
+                  sig { override.returns({ x: Float, y_: Float }) }
+                  def to_hash
+                  end
+                end
+
+                # Node kind discriminator. Always `speak` for a speak node.
+                module Type
+                  extend Telnyx::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  SPEAK =
+                    T.let(
+                      :speak,
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Node::Speak::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
               sig do
                 override.returns(
                   T::Array[
@@ -1294,7 +1484,8 @@ module Telnyx
                 returns(
                   T.any(
                     Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm,
-                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression
+                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression,
+                    Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default
                   )
                 )
               end
@@ -1328,7 +1519,8 @@ module Telnyx
                   condition:
                     T.any(
                       Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm::OrHash,
-                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression::OrHash
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression::OrHash,
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default::OrHash
                     ),
                   start_node_id: String,
                   target:
@@ -1359,7 +1551,8 @@ module Telnyx
                     condition:
                       T.any(
                         Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm,
-                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression,
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default
                       ),
                     start_node_id: String,
                     target:
@@ -1382,7 +1575,8 @@ module Telnyx
                   T.type_alias do
                     T.any(
                       Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Llm,
-                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Expression,
+                      Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default
                     )
                   end
 
@@ -1676,6 +1870,36 @@ module Telnyx
                     end
                     def self.variants
                     end
+                  end
+                end
+
+                class Default < Telnyx::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        Telnyx::AI::Assistants::UpdateAssistant::ConversationFlow::Edge::Condition::Default,
+                        Telnyx::Internal::AnyHash
+                      )
+                    end
+
+                  sig { returns(Symbol) }
+                  attr_accessor :type
+
+                  # Fallback edge condition: fires only when no other edge's condition is true.
+                  #
+                  # Evaluated after every conditioned (`llm` / `expression`) edge regardless of
+                  # declaration order, so it routes the flow whenever none of the node's other
+                  # outgoing edges match. Valid **only** on edges leaving a `tool` or `speak` node,
+                  # where the deterministic step auto-advances and must always have somewhere to go.
+                  # A tool/speak node with any outgoing edge is required to carry exactly one
+                  # `default` edge so it never dead-ends; a tool/speak node with no outgoing edges
+                  # is a valid terminal step. Carries no parameters.
+                  sig { params(type: Symbol).returns(T.attached_class) }
+                  def self.new(type: :default)
+                  end
+
+                  sig { override.returns({ type: Symbol }) }
+                  def to_hash
                   end
                 end
 
