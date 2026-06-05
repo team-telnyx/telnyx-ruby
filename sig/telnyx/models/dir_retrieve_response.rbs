@@ -1,0 +1,294 @@
+module Telnyx
+  module Models
+    type dir_retrieve_response =
+      { data: Telnyx::Models::DirRetrieveResponse::Data }
+
+    class DirRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::DirRetrieveResponse::Data
+
+      def initialize: (data: Telnyx::Models::DirRetrieveResponse::Data) -> void
+
+      def to_hash: -> { data: Telnyx::Models::DirRetrieveResponse::Data }
+
+      type data =
+        {
+          id: String,
+          authorizer_email: String?,
+          authorizer_name: String?,
+          call_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::CallReason],
+          certify_brand_is_accurate: bool,
+          certify_ip_ownership: bool,
+          certify_no_shaft_content: bool,
+          created_at: Time,
+          display_name: String,
+          documents: ::Array[Telnyx::Models::DirRetrieveResponse::Data::Document]?,
+          enterprise_id: String,
+          expiring_at: Time?,
+          logo_url: String?,
+          rejected_at: Time?,
+          rejection_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::RejectionReason]?,
+          reselling: bool,
+          status: Telnyx::Models::DirRetrieveResponse::Data::status,
+          submitted_at: Time?,
+          updated_at: Time,
+          verified_at: Time?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor authorizer_email: String?
+
+        attr_accessor authorizer_name: String?
+
+        attr_reader call_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::CallReason]?
+
+        def call_reasons=: (
+          ::Array[Telnyx::Models::DirRetrieveResponse::Data::CallReason]
+        ) -> ::Array[Telnyx::Models::DirRetrieveResponse::Data::CallReason]
+
+        attr_reader certify_brand_is_accurate: bool?
+
+        def certify_brand_is_accurate=: (bool) -> bool
+
+        attr_reader certify_ip_ownership: bool?
+
+        def certify_ip_ownership=: (bool) -> bool
+
+        attr_reader certify_no_shaft_content: bool?
+
+        def certify_no_shaft_content=: (bool) -> bool
+
+        attr_reader display_name: String?
+
+        def display_name=: (String) -> String
+
+        attr_accessor documents: ::Array[Telnyx::Models::DirRetrieveResponse::Data::Document]?
+
+        attr_reader enterprise_id: String?
+
+        def enterprise_id=: (String) -> String
+
+        attr_accessor logo_url: String?
+
+        attr_accessor rejection_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::RejectionReason]?
+
+        attr_reader reselling: bool?
+
+        def reselling=: (bool) -> bool
+
+        attr_reader status: Telnyx::Models::DirRetrieveResponse::Data::status?
+
+        def status=: (
+          Telnyx::Models::DirRetrieveResponse::Data::status
+        ) -> Telnyx::Models::DirRetrieveResponse::Data::status
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_accessor expiring_at: Time?
+
+        attr_accessor rejected_at: Time?
+
+        attr_accessor submitted_at: Time?
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_accessor verified_at: Time?
+
+        def initialize: (
+          ?id: String,
+          ?authorizer_email: String?,
+          ?authorizer_name: String?,
+          ?call_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::CallReason],
+          ?certify_brand_is_accurate: bool,
+          ?certify_ip_ownership: bool,
+          ?certify_no_shaft_content: bool,
+          ?created_at: Time,
+          ?display_name: String,
+          ?documents: ::Array[Telnyx::Models::DirRetrieveResponse::Data::Document]?,
+          ?enterprise_id: String,
+          ?expiring_at: Time?,
+          ?logo_url: String?,
+          ?rejected_at: Time?,
+          ?rejection_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::RejectionReason]?,
+          ?reselling: bool,
+          ?status: Telnyx::Models::DirRetrieveResponse::Data::status,
+          ?submitted_at: Time?,
+          ?updated_at: Time,
+          ?verified_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          authorizer_email: String?,
+          authorizer_name: String?,
+          call_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::CallReason],
+          certify_brand_is_accurate: bool,
+          certify_ip_ownership: bool,
+          certify_no_shaft_content: bool,
+          created_at: Time,
+          display_name: String,
+          documents: ::Array[Telnyx::Models::DirRetrieveResponse::Data::Document]?,
+          enterprise_id: String,
+          expiring_at: Time?,
+          logo_url: String?,
+          rejected_at: Time?,
+          rejection_reasons: ::Array[Telnyx::Models::DirRetrieveResponse::Data::RejectionReason]?,
+          reselling: bool,
+          status: Telnyx::Models::DirRetrieveResponse::Data::status,
+          submitted_at: Time?,
+          updated_at: Time,
+          verified_at: Time?
+        }
+
+        type call_reason = { created_at: Time, reason: String }
+
+        class CallReason < Telnyx::Internal::Type::BaseModel
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          def initialize: (?created_at: Time, ?reason: String) -> void
+
+          def to_hash: -> { created_at: Time, reason: String }
+        end
+
+        type document =
+          {
+            document_id: String,
+            document_type: Telnyx::Models::DirRetrieveResponse::Data::Document::document_type,
+            description: String
+          }
+
+        class Document < Telnyx::Internal::Type::BaseModel
+          attr_accessor document_id: String
+
+          attr_accessor document_type: Telnyx::Models::DirRetrieveResponse::Data::Document::document_type
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          def initialize: (
+            document_id: String,
+            document_type: Telnyx::Models::DirRetrieveResponse::Data::Document::document_type,
+            ?description: String
+          ) -> void
+
+          def to_hash: -> {
+            document_id: String,
+            document_type: Telnyx::Models::DirRetrieveResponse::Data::Document::document_type,
+            description: String
+          }
+
+          type document_type =
+            :letter_of_authorization
+            | :business_registration
+            | :articles_of_incorporation
+            | :tax_document
+            | :ein_letter
+            | :trademark_registration
+            | :website_ownership
+            | :business_license
+            | :professional_license
+            | :government_id
+            | :utility_bill
+            | :bank_statement
+            | :other
+
+          module DocumentType
+            extend Telnyx::Internal::Type::Enum
+
+            LETTER_OF_AUTHORIZATION: :letter_of_authorization
+            BUSINESS_REGISTRATION: :business_registration
+            ARTICLES_OF_INCORPORATION: :articles_of_incorporation
+            TAX_DOCUMENT: :tax_document
+            EIN_LETTER: :ein_letter
+            TRADEMARK_REGISTRATION: :trademark_registration
+            WEBSITE_OWNERSHIP: :website_ownership
+            BUSINESS_LICENSE: :business_license
+            PROFESSIONAL_LICENSE: :professional_license
+            GOVERNMENT_ID: :government_id
+            UTILITY_BILL: :utility_bill
+            BANK_STATEMENT: :bank_statement
+            OTHER: :other
+
+            def self?.values: -> ::Array[Telnyx::Models::DirRetrieveResponse::Data::Document::document_type]
+          end
+        end
+
+        type rejection_reason =
+          { code: String, detail: String, message: String?, title: String }
+
+        class RejectionReason < Telnyx::Internal::Type::BaseModel
+          attr_reader code: String?
+
+          def code=: (String) -> String
+
+          attr_reader detail: String?
+
+          def detail=: (String) -> String
+
+          attr_accessor message: String?
+
+          attr_reader title: String?
+
+          def title=: (String) -> String
+
+          def initialize: (
+            ?code: String,
+            ?detail: String,
+            ?message: String?,
+            ?title: String
+          ) -> void
+
+          def to_hash: -> {
+            code: String,
+            detail: String,
+            message: String?,
+            title: String
+          }
+        end
+
+        type status =
+          :draft
+          | :submitted
+          | :in_review
+          | :verified
+          | :rejected
+          | :unsuccessful
+          | :suspended
+          | :expired
+          | :infringement_claimed
+          | :permanently_rejected
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          DRAFT: :draft
+          SUBMITTED: :submitted
+          IN_REVIEW: :in_review
+          VERIFIED: :verified
+          REJECTED: :rejected
+          UNSUCCESSFUL: :unsuccessful
+          SUSPENDED: :suspended
+          EXPIRED: :expired
+          INFRINGEMENT_CLAIMED: :infringement_claimed
+          PERMANENTLY_REJECTED: :permanently_rejected
+
+          def self?.values: -> ::Array[Telnyx::Models::DirRetrieveResponse::Data::status]
+        end
+      end
+    end
+  end
+end

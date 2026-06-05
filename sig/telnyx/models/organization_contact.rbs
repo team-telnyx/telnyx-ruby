@@ -6,7 +6,7 @@ module Telnyx
         first_name: String,
         job_title: String,
         last_name: String,
-        phone: String
+        phone_number: String
       }
 
     class OrganizationContact < Telnyx::Internal::Type::BaseModel
@@ -18,14 +18,14 @@ module Telnyx
 
       attr_accessor last_name: String
 
-      attr_accessor phone: String
+      attr_accessor phone_number: String
 
       def initialize: (
         email: String,
         first_name: String,
         job_title: String,
         last_name: String,
-        phone: String
+        phone_number: String
       ) -> void
 
       def to_hash: -> {
@@ -33,7 +33,7 @@ module Telnyx
         first_name: String,
         job_title: String,
         last_name: String,
-        phone: String
+        phone_number: String
       }
     end
   end

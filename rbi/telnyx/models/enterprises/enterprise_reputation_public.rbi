@@ -14,7 +14,8 @@ module Telnyx
             )
           end
 
-        # Frequency for refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         sig do
           returns(
             T.nilable(
@@ -32,29 +33,40 @@ module Telnyx
         end
         attr_writer :check_frequency
 
-        # When the reputation settings were created
-        sig { returns(T.nilable(Time)) }
-        attr_reader :created_at
-
-        sig { params(created_at: Time).void }
-        attr_writer :created_at
-
-        # ID of the associated enterprise
         sig { returns(T.nilable(String)) }
         attr_reader :enterprise_id
 
         sig { params(enterprise_id: String).void }
         attr_writer :enterprise_id
 
-        # ID of the signed LOA document
+        # Id of the signed LOA document.
         sig { returns(T.nilable(String)) }
         attr_accessor :loa_document_id
 
-        # Reasons for rejection (present when status is rejected)
+        # Customer-facing Letter-of-Authorization verification state. `approved` is
+        # required (alongside reputation status) before phone numbers can be added.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :loa_status
+
+        sig do
+          params(
+            loa_status:
+              Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::OrSymbol
+          ).void
+        end
+        attr_writer :loa_status
+
+        # Populated when `status` is `rejected`.
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :rejection_reasons
 
-        # Current enrollment status
+        # Lifecycle status of the enterprise's Phone Number Reputation activation.
         sig do
           returns(
             T.nilable(
@@ -72,7 +84,12 @@ module Telnyx
         end
         attr_writer :status
 
-        # When the reputation settings were last updated
+        sig { returns(T.nilable(Time)) }
+        attr_reader :created_at
+
+        sig { params(created_at: Time).void }
+        attr_writer :created_at
+
         sig { returns(T.nilable(Time)) }
         attr_reader :updated_at
 
@@ -86,6 +103,8 @@ module Telnyx
             created_at: Time,
             enterprise_id: String,
             loa_document_id: T.nilable(String),
+            loa_status:
+              Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::OrSymbol,
             rejection_reasons: T.nilable(T::Array[String]),
             status:
               Telnyx::Enterprises::EnterpriseReputationPublic::Status::OrSymbol,
@@ -93,19 +112,20 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Frequency for refreshing reputation data
+          # How often Telnyx refreshes the stored reputation data for this enterprise's
+          # registered numbers.
           check_frequency: nil,
-          # When the reputation settings were created
           created_at: nil,
-          # ID of the associated enterprise
           enterprise_id: nil,
-          # ID of the signed LOA document
+          # Id of the signed LOA document.
           loa_document_id: nil,
-          # Reasons for rejection (present when status is rejected)
+          # Customer-facing Letter-of-Authorization verification state. `approved` is
+          # required (alongside reputation status) before phone numbers can be added.
+          loa_status: nil,
+          # Populated when `status` is `rejected`.
           rejection_reasons: nil,
-          # Current enrollment status
+          # Lifecycle status of the enterprise's Phone Number Reputation activation.
           status: nil,
-          # When the reputation settings were last updated
           updated_at: nil
         )
         end
@@ -118,6 +138,8 @@ module Telnyx
               created_at: Time,
               enterprise_id: String,
               loa_document_id: T.nilable(String),
+              loa_status:
+                Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::TaggedSymbol,
               rejection_reasons: T.nilable(T::Array[String]),
               status:
                 Telnyx::Enterprises::EnterpriseReputationPublic::Status::TaggedSymbol,
@@ -128,7 +150,8 @@ module Telnyx
         def to_hash
         end
 
-        # Frequency for refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         module CheckFrequency
           extend Telnyx::Internal::Type::Enum
 
@@ -183,7 +206,48 @@ module Telnyx
           end
         end
 
-        # Current enrollment status
+        # Customer-facing Letter-of-Authorization verification state. `approved` is
+        # required (alongside reputation status) before phone numbers can be added.
+        module LoaStatus
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PENDING =
+            T.let(
+              :pending,
+              Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::TaggedSymbol
+            )
+          APPROVED =
+            T.let(
+              :approved,
+              Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::TaggedSymbol
+            )
+          REJECTED =
+            T.let(
+              :rejected,
+              Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Lifecycle status of the enterprise's Phone Number Reputation activation.
         module Status
           extend Telnyx::Internal::Type::Enum
 
@@ -206,14 +270,14 @@ module Telnyx
               :approved,
               Telnyx::Enterprises::EnterpriseReputationPublic::Status::TaggedSymbol
             )
-          REJECTED =
-            T.let(
-              :rejected,
-              Telnyx::Enterprises::EnterpriseReputationPublic::Status::TaggedSymbol
-            )
           DELETED =
             T.let(
               :deleted,
+              Telnyx::Enterprises::EnterpriseReputationPublic::Status::TaggedSymbol
+            )
+          REJECTED =
+            T.let(
+              :rejected,
               Telnyx::Enterprises::EnterpriseReputationPublic::Status::TaggedSymbol
             )
 

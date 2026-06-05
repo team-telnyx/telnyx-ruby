@@ -11,22 +11,54 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::VirtualCrossConnectCombined)) }
+      sig do
+        returns(
+          T.nilable(Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data)
+        )
+      end
       attr_reader :data
 
-      sig { params(data: Telnyx::VirtualCrossConnectCombined::OrHash).void }
+      sig do
+        params(
+          data:
+            Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::OrHash
+        ).void
+      end
       attr_writer :data
 
       sig do
-        params(data: Telnyx::VirtualCrossConnectCombined::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          data:
+            Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(data: nil)
       end
 
-      sig { override.returns({ data: Telnyx::VirtualCrossConnectCombined }) }
+      sig do
+        override.returns(
+          { data: Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data }
+        )
+      end
       def to_hash
+      end
+
+      class Data < Telnyx::Models::Record
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        sig { returns(T.attached_class) }
+        def self.new
+        end
+
+        sig { override.returns({}) }
+        def to_hash
+        end
       end
     end
   end

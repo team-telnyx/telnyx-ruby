@@ -8,19 +8,16 @@ module Telnyx
           T.any(Telnyx::BillingContact, Telnyx::Internal::AnyHash)
         end
 
-      # Contact's email address
       sig { returns(String) }
       attr_accessor :email
 
-      # Contact's first name
       sig { returns(String) }
       attr_accessor :first_name
 
-      # Contact's last name
       sig { returns(String) }
       attr_accessor :last_name
 
-      # Contact's phone number (10-15 digits)
+      # E.164 format with leading `+`.
       sig { returns(String) }
       attr_accessor :phone_number
 
@@ -33,13 +30,10 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # Contact's email address
         email:,
-        # Contact's first name
         first_name:,
-        # Contact's last name
         last_name:,
-        # Contact's phone number (10-15 digits)
+        # E.164 format with leading `+`.
         phone_number:
       )
       end

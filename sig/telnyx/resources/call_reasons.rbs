@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class CallReasons
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::CallReasonListResponse]
+
+      def validate: (
+        body: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CallReasonValidateResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

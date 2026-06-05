@@ -2,66 +2,74 @@
 
 module Telnyx
   module Resources
-    # Enterprise management for Branded Calling and Number Reputation services
+    # Manage the legal-entity record that owns your DIRs and phone numbers.
     class Enterprises
-      # Manage Number Reputation enrollment and check frequency settings for an
-      # enterprise
+      # Phone-number reputation monitoring (spam-score lookup and tracking).
       # @return [Telnyx::Resources::Enterprises::Reputation]
       attr_reader :reputation
+
+      # A Display Identity Record (DIR) is the verified calling identity (display name,
+      # logo, call reasons) shown to recipients on outbound calls.
+      # @return [Telnyx::Resources::Enterprises::Dir]
+      attr_reader :dir
+
+      # @return [Telnyx::Resources::Enterprises::Usage]
+      attr_reader :usage
 
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::EnterpriseCreateParams} for more details.
       #
-      # Create a new enterprise for Branded Calling / Number Reputation services.
+      # Create the legal entity that owns your Number Reputation registrations.
       #
-      # Registers the enterprise in the Branded Calling / Number Reputation services,
-      # enabling it to create Display Identity Records (DIRs) or enroll in Number
-      # Reputation monitoring.
+      # The response carries a server-assigned `id` you will use for every subsequent
+      # call. After creating an enterprise and agreeing to the Number Reputation Terms
+      # of Service (`POST /terms_of_service/number_reputation/agree`), enable reputation
+      # monitoring via `POST /enterprises/{enterprise_id}/reputation`.
       #
-      # **Required Fields:** `legal_name`, `doing_business_as`, `organization_type`,
-      # `country_code`, `website`, `fein`, `industry`, `number_of_employees`,
-      # `organization_legal_type`, `organization_contact`, `billing_contact`,
-      # `organization_physical_address`, `billing_address`
+      # An enterprise is shared across Telnyx products; if you also use Branded Calling,
+      # the same enterprise is reused.
       #
-      # @overload create(billing_address:, billing_contact:, country_code:, doing_business_as:, fein:, industry:, legal_name:, number_of_employees:, organization_contact:, organization_legal_type:, organization_physical_address:, organization_type:, website:, corporate_registration_number: nil, customer_reference: nil, dun_bradstreet_number: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, role_type: nil, request_options: {})
+      # @overload create(billing_address:, billing_contact:, country_code:, doing_business_as:, fein:, industry:, jurisdiction_of_incorporation:, legal_name:, number_of_employees:, organization_contact:, organization_legal_type:, organization_physical_address:, organization_type:, website:, corporate_registration_number: nil, customer_reference: nil, dun_bradstreet_number: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, role_type: nil, request_options: {})
       #
       # @param billing_address [Telnyx::Models::BillingAddress]
       #
       # @param billing_contact [Telnyx::Models::BillingContact]
       #
-      # @param country_code [String] Country code. Currently only 'US' is accepted.
+      # @param country_code [String] ISO 3166-1 alpha-2 country code. Currently `US` and `CA` are supported.
       #
-      # @param doing_business_as [String] Primary business name / DBA name
+      # @param doing_business_as [String]
       #
-      # @param fein [String] Federal Employer Identification Number. Format: XX-XXXXXXX or 9-digit number (mi
+      # @param fein [String] US Federal Employer Identification Number (`NN-NNNNNNN`) or Canadian equivalent.
       #
-      # @param industry [String] Industry classification. Case-insensitive. Accepted values: accounting, finance,
+      # @param industry [Symbol, Telnyx::Models::EnterpriseCreateParams::Industry] Industry classification.
       #
-      # @param legal_name [String] Legal name of the enterprise
+      # @param jurisdiction_of_incorporation [String]
       #
-      # @param number_of_employees [Symbol, Telnyx::Models::EnterpriseCreateParams::NumberOfEmployees] Employee count range
+      # @param legal_name [String] Legal name of the enterprise.
       #
-      # @param organization_contact [Telnyx::Models::OrganizationContact] Organization contact information. Note: the response returns this object with th
+      # @param number_of_employees [Symbol, Telnyx::Models::EnterpriseCreateParams::NumberOfEmployees] Approximate headcount range. Used for vetting heuristics; pick the bucket that c
       #
-      # @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType] Legal structure type
+      # @param organization_contact [Telnyx::Models::OrganizationContact]
+      #
+      # @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType] Legal-entity form. Pick the form that matches your incorporation documents:
       #
       # @param organization_physical_address [Telnyx::Models::PhysicalAddress]
       #
-      # @param organization_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType] Type of organization
+      # @param organization_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType] Organization category for vetting purposes:
       #
-      # @param website [String] Enterprise website URL. Accepts any string — no URL format validation enforced.
+      # @param website [String]
       #
-      # @param corporate_registration_number [String] Corporate registration number (optional)
+      # @param corporate_registration_number [String, nil] Optional corporate-registration / company-number identifier.
       #
-      # @param customer_reference [String] Optional customer reference identifier for your own tracking
+      # @param customer_reference [String] Optional free-form string the caller can attach for their own bookkeeping. Telny
       #
-      # @param dun_bradstreet_number [String] D-U-N-S Number (optional)
+      # @param dun_bradstreet_number [String, nil] Optional D-U-N-S Number.
       #
-      # @param primary_business_domain_sic_code [String] SIC Code (optional)
+      # @param primary_business_domain_sic_code [String, nil] Optional SIC code for the primary line of business.
       #
-      # @param professional_license_number [String] Professional license number (optional)
+      # @param professional_license_number [String, nil] Optional professional-license number for regulated industries.
       #
-      # @param role_type [Symbol, Telnyx::Models::EnterpriseCreateParams::RoleType] Role type in Branded Calling / Number Reputation services
+      # @param role_type [Symbol, Telnyx::Models::EnterpriseCreateParams::RoleType] `enterprise` for an organization registering its own DIRs; `bpo` for a Business
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -79,11 +87,12 @@ module Telnyx
         )
       end
 
-      # Retrieve details of a specific enterprise by ID.
+      # Retrieve a single enterprise by id. Returns `404` if the id does not exist or
+      # does not belong to your account.
       #
       # @overload retrieve(enterprise_id, request_options: {})
       #
-      # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
+      # @param enterprise_id [String] The enterprise id. Lowercase UUID.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -99,47 +108,49 @@ module Telnyx
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::EnterpriseUpdateParams} for more details.
+      # Replace the enterprise's mutable fields. Only mutable fields may be sent.
+      # Server-assigned and immutable fields (`id`, `record_type`, `created_at`,
+      # `updated_at`, status fields, `organization_type`, `country_code`, `role_type`)
+      # cannot be changed: including any of them in the body is rejected with
+      # `400 Bad Request` (`Field 'X' is not allowed in this request`).
       #
-      # Update enterprise information. All fields are optional — only the provided
-      # fields will be updated.
+      # @overload update(enterprise_id, billing_address: nil, billing_contact: nil, corporate_registration_number: nil, customer_reference: nil, doing_business_as: nil, dun_bradstreet_number: nil, fein: nil, industry: nil, jurisdiction_of_incorporation: nil, legal_name: nil, number_of_employees: nil, organization_contact: nil, organization_legal_type: nil, organization_physical_address: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, website: nil, request_options: {})
       #
-      # @overload update(enterprise_id, billing_address: nil, billing_contact: nil, corporate_registration_number: nil, customer_reference: nil, doing_business_as: nil, dun_bradstreet_number: nil, fein: nil, industry: nil, legal_name: nil, number_of_employees: nil, organization_contact: nil, organization_legal_type: nil, organization_physical_address: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, website: nil, request_options: {})
-      #
-      # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
+      # @param enterprise_id [String] The enterprise id. Lowercase UUID.
       #
       # @param billing_address [Telnyx::Models::BillingAddress]
       #
       # @param billing_contact [Telnyx::Models::BillingContact]
       #
-      # @param corporate_registration_number [String] Corporate registration number
+      # @param corporate_registration_number [String, nil]
       #
-      # @param customer_reference [String] Customer reference identifier
+      # @param customer_reference [String]
       #
-      # @param doing_business_as [String] DBA name
+      # @param doing_business_as [String]
       #
-      # @param dun_bradstreet_number [String] D-U-N-S Number
+      # @param dun_bradstreet_number [String, nil]
       #
-      # @param fein [String] Federal Employer Identification Number. Format: XX-XXXXXXX or XXXXXXXXX
+      # @param fein [String]
       #
-      # @param industry [String] Industry classification
+      # @param industry [Symbol, Telnyx::Models::EnterpriseUpdateParams::Industry]
       #
-      # @param legal_name [String] Legal name of the enterprise
+      # @param jurisdiction_of_incorporation [String] Updated state/province/country of incorporation. Optional on update.
       #
-      # @param number_of_employees [Symbol, Telnyx::Models::EnterpriseUpdateParams::NumberOfEmployees] Employee count range
+      # @param legal_name [String] Legal name of the enterprise.
       #
-      # @param organization_contact [Telnyx::Models::OrganizationContact] Organization contact information. Note: the response returns this object with th
+      # @param number_of_employees [String]
       #
-      # @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseUpdateParams::OrganizationLegalType] Legal structure type
+      # @param organization_contact [Telnyx::Models::OrganizationContact]
+      #
+      # @param organization_legal_type [String]
       #
       # @param organization_physical_address [Telnyx::Models::PhysicalAddress]
       #
-      # @param primary_business_domain_sic_code [String] SIC Code
+      # @param primary_business_domain_sic_code [String, nil]
       #
-      # @param professional_license_number [String] Professional license number
+      # @param professional_license_number [String, nil]
       #
-      # @param website [String] Company website URL
+      # @param website [String]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -157,15 +168,19 @@ module Telnyx
         )
       end
 
-      # Retrieve a paginated list of enterprises associated with your account.
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::EnterpriseListParams} for more details.
+      #
+      # Return the enterprises you own, paginated. The default page size is 20; the
+      # maximum is 250.
       #
       # @overload list(legal_name: nil, page_number: nil, page_size: nil, request_options: {})
       #
-      # @param legal_name [String] Filter by legal name (partial match)
+      # @param legal_name [String] Filter by legal name (partial match).
       #
-      # @param page_number [Integer] Page number (1-indexed)
+      # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
       #
-      # @param page_size [Integer] Number of items per page
+      # @param page_size [Integer] Items per page. Default 10. Maximum 250; values above are clamped to 250.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -185,11 +200,14 @@ module Telnyx
         )
       end
 
-      # Delete an enterprise and all associated resources. This action is irreversible.
+      # Delete an enterprise. Fails with `400` if the enterprise still has dependent
+      # resources (e.g. active reputation settings or registered numbers); remove those
+      # first. Returns `404` if the enterprise does not exist or does not belong to your
+      # account.
       #
       # @overload delete(enterprise_id, request_options: {})
       #
-      # @param enterprise_id [String] Unique identifier of the enterprise (UUID)
+      # @param enterprise_id [String] The enterprise id. Lowercase UUID.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -205,12 +223,53 @@ module Telnyx
         )
       end
 
+      # Branded Calling is a paid product that must be activated on each enterprise.
+      # Activation is idempotent:
+      #
+      # - First call: marks the enterprise as activated and begins onboarding it with
+      #   the Branded Calling platform asynchronously. Returns `200` with
+      #   `branded_calling_enabled: true`.
+      # - Re-call after success: no-op, returns the same enterprise body.
+      # - Re-call after a prior failure: re-queues onboarding, returns `200`.
+      #
+      # Prerequisite: the calling user must have agreed to the Branded Calling Terms of
+      # Service (`POST /terms_of_service/branded_calling/agree`). Without that, this
+      # endpoint returns `403 terms_of_service_not_accepted`.
+      #
+      # Failure modes:
+      #
+      # - `403` — Branded Calling Terms of Service not accepted.
+      # - `404` — enterprise does not exist or does not belong to your account.
+      #
+      # **Pricing:** This is a billable action. See https://telnyx.com/pricing/numbers
+      # for current pricing.
+      #
+      # @overload activate_branded_calling(enterprise_id, request_options: {})
+      #
+      # @param enterprise_id [String] The enterprise id. Lowercase UUID.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::EnterpriseActivateBrandedCallingResponse]
+      #
+      # @see Telnyx::Models::EnterpriseActivateBrandedCallingParams
+      def activate_branded_calling(enterprise_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["enterprises/%1$s/branded_calling", enterprise_id],
+          model: Telnyx::Models::EnterpriseActivateBrandedCallingResponse,
+          options: params[:request_options]
+        )
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]
       def initialize(client:)
         @client = client
         @reputation = Telnyx::Resources::Enterprises::Reputation.new(client: client)
+        @dir = Telnyx::Resources::Enterprises::Dir.new(client: client)
+        @usage = Telnyx::Resources::Enterprises::Usage.new(client: client)
       end
     end
   end

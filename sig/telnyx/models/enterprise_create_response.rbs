@@ -3,11 +3,9 @@ module Telnyx
     type enterprise_create_response = { data: Telnyx::EnterprisePublic }
 
     class EnterpriseCreateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::EnterprisePublic?
+      attr_accessor data: Telnyx::EnterprisePublic
 
-      def data=: (Telnyx::EnterprisePublic) -> Telnyx::EnterprisePublic
-
-      def initialize: (?data: Telnyx::EnterprisePublic) -> void
+      def initialize: (data: Telnyx::EnterprisePublic) -> void
 
       def to_hash: -> { data: Telnyx::EnterprisePublic }
     end

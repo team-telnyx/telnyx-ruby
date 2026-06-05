@@ -11,21 +11,21 @@ module Telnyx
           T.any(Telnyx::EnterpriseListParams, Telnyx::Internal::AnyHash)
         end
 
-      # Filter by legal name (partial match)
+      # Filter by legal name (partial match).
       sig { returns(T.nilable(String)) }
       attr_reader :legal_name
 
       sig { params(legal_name: String).void }
       attr_writer :legal_name
 
-      # Page number (1-indexed)
+      # 1-based page number. Out-of-range values return an empty page with correct meta.
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
 
       sig { params(page_number: Integer).void }
       attr_writer :page_number
 
-      # Number of items per page
+      # Items per page. Default 10. Maximum 250; values above are clamped to 250.
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_size
 
@@ -41,11 +41,11 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # Filter by legal name (partial match)
+        # Filter by legal name (partial match).
         legal_name: nil,
-        # Page number (1-indexed)
+        # 1-based page number. Out-of-range values return an empty page with correct meta.
         page_number: nil,
-        # Number of items per page
+        # Items per page. Default 10. Maximum 250; values above are clamped to 250.
         page_size: nil,
         request_options: {}
       )

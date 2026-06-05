@@ -5,19 +5,20 @@ module Telnyx
         enterprise_id: String,
         billing_address: Telnyx::BillingAddress,
         billing_contact: Telnyx::BillingContact,
-        corporate_registration_number: String,
+        corporate_registration_number: String?,
         customer_reference: String,
         doing_business_as: String,
-        dun_bradstreet_number: String,
+        dun_bradstreet_number: String?,
         fein: String,
-        industry: String,
+        industry: Telnyx::Models::EnterpriseUpdateParams::industry,
+        jurisdiction_of_incorporation: String,
         legal_name: String,
-        number_of_employees: Telnyx::Models::EnterpriseUpdateParams::number_of_employees,
+        number_of_employees: String,
         organization_contact: Telnyx::OrganizationContact,
-        organization_legal_type: Telnyx::Models::EnterpriseUpdateParams::organization_legal_type,
+        organization_legal_type: String,
         organization_physical_address: Telnyx::PhysicalAddress,
-        primary_business_domain_sic_code: String,
-        professional_license_number: String,
+        primary_business_domain_sic_code: String?,
+        professional_license_number: String?,
         website: String
       }
       & Telnyx::Internal::Type::request_parameters
@@ -36,9 +37,7 @@ module Telnyx
 
       def billing_contact=: (Telnyx::BillingContact) -> Telnyx::BillingContact
 
-      attr_reader corporate_registration_number: String?
-
-      def corporate_registration_number=: (String) -> String
+      attr_accessor corporate_registration_number: String?
 
       attr_reader customer_reference: String?
 
@@ -48,27 +47,29 @@ module Telnyx
 
       def doing_business_as=: (String) -> String
 
-      attr_reader dun_bradstreet_number: String?
-
-      def dun_bradstreet_number=: (String) -> String
+      attr_accessor dun_bradstreet_number: String?
 
       attr_reader fein: String?
 
       def fein=: (String) -> String
 
-      attr_reader industry: String?
+      attr_reader industry: Telnyx::Models::EnterpriseUpdateParams::industry?
 
-      def industry=: (String) -> String
+      def industry=: (
+        Telnyx::Models::EnterpriseUpdateParams::industry
+      ) -> Telnyx::Models::EnterpriseUpdateParams::industry
+
+      attr_reader jurisdiction_of_incorporation: String?
+
+      def jurisdiction_of_incorporation=: (String) -> String
 
       attr_reader legal_name: String?
 
       def legal_name=: (String) -> String
 
-      attr_reader number_of_employees: Telnyx::Models::EnterpriseUpdateParams::number_of_employees?
+      attr_reader number_of_employees: String?
 
-      def number_of_employees=: (
-        Telnyx::Models::EnterpriseUpdateParams::number_of_employees
-      ) -> Telnyx::Models::EnterpriseUpdateParams::number_of_employees
+      def number_of_employees=: (String) -> String
 
       attr_reader organization_contact: Telnyx::OrganizationContact?
 
@@ -76,11 +77,9 @@ module Telnyx
         Telnyx::OrganizationContact
       ) -> Telnyx::OrganizationContact
 
-      attr_reader organization_legal_type: Telnyx::Models::EnterpriseUpdateParams::organization_legal_type?
+      attr_reader organization_legal_type: String?
 
-      def organization_legal_type=: (
-        Telnyx::Models::EnterpriseUpdateParams::organization_legal_type
-      ) -> Telnyx::Models::EnterpriseUpdateParams::organization_legal_type
+      def organization_legal_type=: (String) -> String
 
       attr_reader organization_physical_address: Telnyx::PhysicalAddress?
 
@@ -88,13 +87,9 @@ module Telnyx
         Telnyx::PhysicalAddress
       ) -> Telnyx::PhysicalAddress
 
-      attr_reader primary_business_domain_sic_code: String?
+      attr_accessor primary_business_domain_sic_code: String?
 
-      def primary_business_domain_sic_code=: (String) -> String
-
-      attr_reader professional_license_number: String?
-
-      def professional_license_number=: (String) -> String
+      attr_accessor professional_license_number: String?
 
       attr_reader website: String?
 
@@ -104,19 +99,20 @@ module Telnyx
         enterprise_id: String,
         ?billing_address: Telnyx::BillingAddress,
         ?billing_contact: Telnyx::BillingContact,
-        ?corporate_registration_number: String,
+        ?corporate_registration_number: String?,
         ?customer_reference: String,
         ?doing_business_as: String,
-        ?dun_bradstreet_number: String,
+        ?dun_bradstreet_number: String?,
         ?fein: String,
-        ?industry: String,
+        ?industry: Telnyx::Models::EnterpriseUpdateParams::industry,
+        ?jurisdiction_of_incorporation: String,
         ?legal_name: String,
-        ?number_of_employees: Telnyx::Models::EnterpriseUpdateParams::number_of_employees,
+        ?number_of_employees: String,
         ?organization_contact: Telnyx::OrganizationContact,
-        ?organization_legal_type: Telnyx::Models::EnterpriseUpdateParams::organization_legal_type,
+        ?organization_legal_type: String,
         ?organization_physical_address: Telnyx::PhysicalAddress,
-        ?primary_business_domain_sic_code: String,
-        ?professional_license_number: String,
+        ?primary_business_domain_sic_code: String?,
+        ?professional_license_number: String?,
         ?website: String,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -125,59 +121,117 @@ module Telnyx
         enterprise_id: String,
         billing_address: Telnyx::BillingAddress,
         billing_contact: Telnyx::BillingContact,
-        corporate_registration_number: String,
+        corporate_registration_number: String?,
         customer_reference: String,
         doing_business_as: String,
-        dun_bradstreet_number: String,
+        dun_bradstreet_number: String?,
         fein: String,
-        industry: String,
+        industry: Telnyx::Models::EnterpriseUpdateParams::industry,
+        jurisdiction_of_incorporation: String,
         legal_name: String,
-        number_of_employees: Telnyx::Models::EnterpriseUpdateParams::number_of_employees,
+        number_of_employees: String,
         organization_contact: Telnyx::OrganizationContact,
-        organization_legal_type: Telnyx::Models::EnterpriseUpdateParams::organization_legal_type,
+        organization_legal_type: String,
         organization_physical_address: Telnyx::PhysicalAddress,
-        primary_business_domain_sic_code: String,
-        professional_license_number: String,
+        primary_business_domain_sic_code: String?,
+        professional_license_number: String?,
         website: String,
         request_options: Telnyx::RequestOptions
       }
 
-      type number_of_employees =
-        :"1-10"
-        | :"11-50"
-        | :"51-200"
-        | :"201-500"
-        | :"501-2000"
-        | :"2001-10000"
-        | :"10001+"
+      type industry =
+        :accounting
+        | :finance
+        | :billing
+        | :collections
+        | :business
+        | :charity
+        | :nonprofit
+        | :communications
+        | :telecom
+        | :"customer service"
+        | :support
+        | :delivery
+        | :shipping
+        | :logistics
+        | :education
+        | :financial
+        | :banking
+        | :government
+        | :public
+        | :healthcare
+        | :health
+        | :pharmacy
+        | :medical
+        | :insurance
+        | :legal
+        | :law
+        | :notifications
+        | :scheduling
+        | :"real estate"
+        | :property
+        | :retail
+        | :ecommerce
+        | :sales
+        | :marketing
+        | :software
+        | :technology
+        | :tech
+        | :media
+        | :surveys
+        | :"market research"
+        | :travel
+        | :hospitality
+        | :hotel
 
-      module NumberOfEmployees
+      module Industry
         extend Telnyx::Internal::Type::Enum
 
-        NUMBER_OF_EMPLOYEES_1_10: :"1-10"
-        NUMBER_OF_EMPLOYEES_11_50: :"11-50"
-        NUMBER_OF_EMPLOYEES_51_200: :"51-200"
-        NUMBER_OF_EMPLOYEES_201_500: :"201-500"
-        NUMBER_OF_EMPLOYEES_501_2000: :"501-2000"
-        NUMBER_OF_EMPLOYEES_2001_10000: :"2001-10000"
-        NUMBER_OF_EMPLOYEES_10001_PLUS: :"10001+"
-
-        def self?.values: -> ::Array[Telnyx::Models::EnterpriseUpdateParams::number_of_employees]
-      end
-
-      type organization_legal_type =
-        :corporation | :llc | :partnership | :nonprofit | :other
-
-      module OrganizationLegalType
-        extend Telnyx::Internal::Type::Enum
-
-        CORPORATION: :corporation
-        LLC: :llc
-        PARTNERSHIP: :partnership
+        ACCOUNTING: :accounting
+        FINANCE: :finance
+        BILLING: :billing
+        COLLECTIONS: :collections
+        BUSINESS: :business
+        CHARITY: :charity
         NONPROFIT: :nonprofit
-        OTHER: :other
+        COMMUNICATIONS: :communications
+        TELECOM: :telecom
+        CUSTOMER_SERVICE: :"customer service"
+        SUPPORT: :support
+        DELIVERY: :delivery
+        SHIPPING: :shipping
+        LOGISTICS: :logistics
+        EDUCATION: :education
+        FINANCIAL: :financial
+        BANKING: :banking
+        GOVERNMENT: :government
+        PUBLIC: :public
+        HEALTHCARE: :healthcare
+        HEALTH: :health
+        PHARMACY: :pharmacy
+        MEDICAL: :medical
+        INSURANCE: :insurance
+        LEGAL: :legal
+        LAW: :law
+        NOTIFICATIONS: :notifications
+        SCHEDULING: :scheduling
+        REAL_ESTATE: :"real estate"
+        PROPERTY: :property
+        RETAIL: :retail
+        ECOMMERCE: :ecommerce
+        SALES: :sales
+        MARKETING: :marketing
+        SOFTWARE: :software
+        TECHNOLOGY: :technology
+        TECH: :tech
+        MEDIA: :media
+        SURVEYS: :surveys
+        MARKET_RESEARCH: :"market research"
+        TRAVEL: :travel
+        HOSPITALITY: :hospitality
+        HOTEL: :hotel
 
-        def self?.values: -> ::Array[Telnyx::Models::EnterpriseUpdateParams::organization_legal_type]
+        def self?.values: -> ::Array[Telnyx::Models::EnterpriseUpdateParams::industry]
       end
     end
   end

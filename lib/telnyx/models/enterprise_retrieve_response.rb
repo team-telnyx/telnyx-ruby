@@ -6,10 +6,10 @@ module Telnyx
     class EnterpriseRetrieveResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::EnterprisePublic, nil]
-      optional :data, -> { Telnyx::EnterprisePublic }
+      #   @return [Telnyx::Models::EnterprisePublic]
+      required :data, -> { Telnyx::EnterprisePublic }
 
-      # @!method initialize(data: nil)
+      # @!method initialize(data:)
       #   @param data [Telnyx::Models::EnterprisePublic]
     end
   end

@@ -14,20 +14,25 @@ module Telnyx
         required :enterprise_id, String
 
         # @!attribute check_frequency
-        #   New frequency for refreshing reputation data
+        #   How often Telnyx refreshes the stored reputation data for this enterprise's
+        #   registered numbers.
         #
         #   @return [Symbol, Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency]
         required :check_frequency,
                  enum: -> { Telnyx::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency }
 
         # @!method initialize(enterprise_id:, check_frequency:, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams} for more details.
+        #
         #   @param enterprise_id [String]
         #
-        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency] New frequency for refreshing reputation data
+        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-        # New frequency for refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         module CheckFrequency
           extend Telnyx::Internal::Type::Enum
 

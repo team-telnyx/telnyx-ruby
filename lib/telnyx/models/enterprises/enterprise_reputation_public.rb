@@ -5,63 +5,76 @@ module Telnyx
     module Enterprises
       class EnterpriseReputationPublic < Telnyx::Internal::Type::BaseModel
         # @!attribute check_frequency
-        #   Frequency for refreshing reputation data
+        #   How often Telnyx refreshes the stored reputation data for this enterprise's
+        #   registered numbers.
         #
         #   @return [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::CheckFrequency, nil]
         optional :check_frequency, enum: -> { Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency }
 
-        # @!attribute created_at
-        #   When the reputation settings were created
-        #
-        #   @return [Time, nil]
-        optional :created_at, Time
-
         # @!attribute enterprise_id
-        #   ID of the associated enterprise
         #
         #   @return [String, nil]
         optional :enterprise_id, String
 
         # @!attribute loa_document_id
-        #   ID of the signed LOA document
+        #   Id of the signed LOA document.
         #
         #   @return [String, nil]
         optional :loa_document_id, String, nil?: true
 
+        # @!attribute loa_status
+        #   Customer-facing Letter-of-Authorization verification state. `approved` is
+        #   required (alongside reputation status) before phone numbers can be added.
+        #
+        #   @return [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::LoaStatus, nil]
+        optional :loa_status, enum: -> { Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus }
+
         # @!attribute rejection_reasons
-        #   Reasons for rejection (present when status is rejected)
+        #   Populated when `status` is `rejected`.
         #
         #   @return [Array<String>, nil]
         optional :rejection_reasons, Telnyx::Internal::Type::ArrayOf[String], nil?: true
 
         # @!attribute status
-        #   Current enrollment status
+        #   Lifecycle status of the enterprise's Phone Number Reputation activation.
         #
         #   @return [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::Status, nil]
         optional :status, enum: -> { Telnyx::Enterprises::EnterpriseReputationPublic::Status }
 
-        # @!attribute updated_at
-        #   When the reputation settings were last updated
-        #
-        #   @return [Time, nil]
-        optional :updated_at, Time
+        response_only do
+          # @!attribute created_at
+          #
+          #   @return [Time, nil]
+          optional :created_at, Time
 
-        # @!method initialize(check_frequency: nil, created_at: nil, enterprise_id: nil, loa_document_id: nil, rejection_reasons: nil, status: nil, updated_at: nil)
-        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::CheckFrequency] Frequency for refreshing reputation data
-        #
-        #   @param created_at [Time] When the reputation settings were created
-        #
-        #   @param enterprise_id [String] ID of the associated enterprise
-        #
-        #   @param loa_document_id [String, nil] ID of the signed LOA document
-        #
-        #   @param rejection_reasons [Array<String>, nil] Reasons for rejection (present when status is rejected)
-        #
-        #   @param status [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::Status] Current enrollment status
-        #
-        #   @param updated_at [Time] When the reputation settings were last updated
+          # @!attribute updated_at
+          #
+          #   @return [Time, nil]
+          optional :updated_at, Time
+        end
 
-        # Frequency for refreshing reputation data
+        # @!method initialize(check_frequency: nil, created_at: nil, enterprise_id: nil, loa_document_id: nil, loa_status: nil, rejection_reasons: nil, status: nil, updated_at: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::Enterprises::EnterpriseReputationPublic} for more details.
+        #
+        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::CheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
+        #
+        #   @param created_at [Time]
+        #
+        #   @param enterprise_id [String]
+        #
+        #   @param loa_document_id [String, nil] Id of the signed LOA document.
+        #
+        #   @param loa_status [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::LoaStatus] Customer-facing Letter-of-Authorization verification state. `approved` is requir
+        #
+        #   @param rejection_reasons [Array<String>, nil] Populated when `status` is `rejected`.
+        #
+        #   @param status [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::Status] Lifecycle status of the enterprise's Phone Number Reputation activation.
+        #
+        #   @param updated_at [Time]
+
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         #
         # @see Telnyx::Models::Enterprises::EnterpriseReputationPublic#check_frequency
         module CheckFrequency
@@ -78,7 +91,22 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # Current enrollment status
+        # Customer-facing Letter-of-Authorization verification state. `approved` is
+        # required (alongside reputation status) before phone numbers can be added.
+        #
+        # @see Telnyx::Models::Enterprises::EnterpriseReputationPublic#loa_status
+        module LoaStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING = :pending
+          APPROVED = :approved
+          REJECTED = :rejected
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Lifecycle status of the enterprise's Phone Number Reputation activation.
         #
         # @see Telnyx::Models::Enterprises::EnterpriseReputationPublic#status
         module Status
@@ -86,8 +114,8 @@ module Telnyx
 
           PENDING = :pending
           APPROVED = :approved
-          REJECTED = :rejected
           DELETED = :deleted
+          REJECTED = :rejected
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.enterprises.reputation.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+    response = @telnyx.enterprises.reputation.retrieve("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
       response => Telnyx::Models::Enterprises::ReputationRetrieveResponse
@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
+        data: Telnyx::Enterprises::EnterpriseReputationPublic
       }
     end
   end
@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
   def test_disable
     skip("Mock server tests are disabled")
 
-    response = @telnyx.enterprises.reputation.disable("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+    response = @telnyx.enterprises.reputation.disable("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
       response => nil
@@ -34,8 +34,8 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     response =
       @telnyx.enterprises.reputation.enable(
-        "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
-        loa_document_id: "doc_01HXYZ1234ABCDEF"
+        "4a6192a4-573d-446d-b3ce-aff9117272a6",
+        loa_document_id: "2a7e8337-e803-4057-a4ae-26c40eb0bc6c"
       )
 
     assert_pattern do
@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
+        data: Telnyx::Enterprises::EnterpriseReputationPublic
       }
     end
   end
@@ -54,8 +54,8 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     response =
       @telnyx.enterprises.reputation.update_frequency(
-        "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
-        check_frequency: :business_daily
+        "4a6192a4-573d-446d-b3ce-aff9117272a6",
+        check_frequency: :weekly
       )
 
     assert_pattern do
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::EnterpriseReputationPublic | nil
+        data: Telnyx::Enterprises::EnterpriseReputationPublic
       }
     end
   end

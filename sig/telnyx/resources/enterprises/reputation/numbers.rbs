@@ -16,7 +16,7 @@ module Telnyx
             ?page_size: Integer,
             ?phone_number: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::ReputationPhoneNumberWithReputationData]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::Reputation::NumberListResponse]
 
           def associate: (
             String enterprise_id,
@@ -29,6 +29,12 @@ module Telnyx
             enterprise_id: String,
             ?request_options: Telnyx::request_opts
           ) -> nil
+
+          def refresh: (
+            String enterprise_id,
+            phone_numbers: ::Array[String],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Enterprises::Reputation::NumberRefreshResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

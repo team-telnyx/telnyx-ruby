@@ -3,14 +3,18 @@
 module Telnyx
   module Resources
     class TermsOfService
-      # Terms of Service agreement endpoints
+      # Accept and review the Branded Calling and Phone Number Reputation terms of
+      # service.
       class NumberReputation
-        # Accept the Terms of Service for the Number Reputation product. Must be called
-        # before using Number Reputation endpoints.
+        # Records the authenticated user's agreement to the current Phone Number
+        # Reputation ToS. No body required. Idempotent.
         #
-        # Returns `400` with error code `10015` if the user has already agreed to the
-        # current ToS version.
-        sig { params(request_options: Telnyx::RequestOptions::OrHash).void }
+        # Prerequisite for using any of the `/v2/.../reputation/*` endpoints.
+        sig do
+          params(request_options: Telnyx::RequestOptions::OrHash).returns(
+            Telnyx::Models::TermsOfService::NumberReputationAgreeResponse
+          )
+        end
         def agree(request_options: {})
         end
 

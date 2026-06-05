@@ -4,27 +4,11 @@ module Telnyx
   module Resources
     class Enterprises
       class Reputation
-        # Associate phone numbers with an enterprise for reputation monitoring and
-        # retrieve reputation scores
+        # Phone-number reputation monitoring (spam-score lookup and tracking).
         class Numbers
-          # Get detailed reputation data for a specific phone number associated with an
-          # enterprise.
-          #
-          # **Query Parameters:**
-          #
-          # - `fresh` (default: `false`): When `true`, fetches fresh reputation data (incurs
-          #   API cost). When `false`, returns cached data. If no cached data exists, fresh
-          #   data is automatically fetched.
-          #
-          # **Returns:**
-          #
-          # - `spam_risk`: Overall spam risk level (`low`, `medium`, `high`)
-          # - `spam_category`: Spam category classification
-          # - `maturity_score`: Maturity metric (0–100)
-          # - `connection_score`: Connection quality metric (0–100)
-          # - `engagement_score`: Engagement metric (0–100)
-          # - `sentiment_score`: Sentiment metric (0–100)
-          # - `last_refreshed_at`: Timestamp of last data refresh
+          # Retrieve one registered number with its latest reputation snapshot. The
+          # `phone_number` path parameter is in E.164 format and must be URL-encoded (e.g.
+          # `%2B19493253498`).
           sig do
             params(
               phone_number: String,
@@ -36,22 +20,21 @@ module Telnyx
             )
           end
           def retrieve(
-            # Path param: Phone number in E.164 format
+            # Path param: Phone number in E.164 format (`+1NPANXXXXXX` for US/CA). The leading
+            # `+` MUST be URL-encoded as `%2B` (e.g. `%2B19493253498`).
             phone_number,
-            # Path param: Unique identifier of the enterprise (UUID)
+            # Path param: The enterprise id. Lowercase UUID.
             enterprise_id:,
             # Query param: When true, fetches fresh reputation data (incurs API cost). When
-            # false, returns cached data.
+            # false (default), returns cached data.
             fresh: nil,
             request_options: {}
           )
           end
 
-          # List all phone numbers associated with an enterprise for Number Reputation
-          # monitoring.
-          #
-          # Returns phone numbers with their cached reputation data (if available). Supports
-          # pagination and filtering by phone number.
+          # Paginated list of phone numbers registered for reputation monitoring under this
+          # enterprise. The response includes the latest reputation snapshot per number
+          # where one has been collected.
           sig do
             params(
               enterprise_id: String,
@@ -61,38 +44,32 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
               Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::ReputationPhoneNumberWithReputationData
+                Telnyx::Models::Enterprises::Reputation::NumberListResponse
               ]
             )
           end
           def list(
-            # Unique identifier of the enterprise (UUID)
+            # The enterprise id. Lowercase UUID.
             enterprise_id,
-            # Page number (1-indexed)
+            # 1-based page number. Out-of-range values return an empty page with correct meta.
             page_number: nil,
-            # Number of items per page
+            # Items per page. Default 10. Maximum 250; values above are clamped to 250.
             page_size: nil,
-            # Filter by specific phone number (E.164 format)
+            # Filter by specific phone number (E.164 format).
             phone_number: nil,
             request_options: {}
           )
           end
 
-          # Associate one or more phone numbers with an enterprise for Number Reputation
-          # monitoring.
+          # Add up to 100 phone numbers to reputation monitoring on this enterprise. Each
+          # must be in E.164 format (`+1NPANXXXXXX` for US/CA) and belong to your Telnyx
+          # phone-number inventory.
           #
-          # **Validations:**
+          # **Prerequisite**: reputation must already be enabled on this enterprise (see
+          # `POST .../reputation`).
           #
-          # - Phone numbers must be in E.164 format (e.g., `+16035551234`)
-          # - Phone numbers must be in-service and belong to your account (verified via
-          #   Warehouse)
-          # - Phone numbers must be US local numbers
-          # - Phone numbers cannot already be associated with any enterprise
-          #
-          # **Note:** This operation is atomic — if any number fails validation, the entire
-          # request fails.
-          #
-          # **Maximum:** 100 phone numbers per request.
+          # **Pricing:** This is a billable action. See https://telnyx.com/pricing/numbers
+          # for current pricing.
           sig do
             params(
               enterprise_id: String,
@@ -103,18 +80,16 @@ module Telnyx
             )
           end
           def associate(
-            # Unique identifier of the enterprise (UUID)
+            # The enterprise id. Lowercase UUID.
             enterprise_id,
-            # List of phone numbers to associate for reputation monitoring (max 100)
+            # 1–100 phone numbers in E.164 format with a leading `+`.
             phone_numbers:,
             request_options: {}
           )
           end
 
-          # Remove a phone number from Number Reputation monitoring for an enterprise.
-          #
-          # The number will no longer be tracked and reputation data will no longer be
-          # refreshed.
+          # Stop tracking the reputation of this phone number. The number itself remains in
+          # your inventory; only the reputation registration is removed.
           sig do
             params(
               phone_number: String,
@@ -123,10 +98,37 @@ module Telnyx
             ).void
           end
           def disassociate(
-            # Phone number in E.164 format
+            # Phone number in E.164 format (`+1NPANXXXXXX` for US/CA). The leading `+` MUST be
+            # URL-encoded as `%2B` (e.g. `%2B19493253498`).
             phone_number,
-            # Unique identifier of the enterprise (UUID)
+            # The enterprise id. Lowercase UUID.
             enterprise_id:,
+            request_options: {}
+          )
+          end
+
+          # Immediately refresh the stored reputation data for the listed numbers. This is
+          # in addition to the periodic refresh determined by `check_frequency`. Up to 100
+          # numbers per call. The response carries the kicked-off jobs; the actual refresh
+          # runs asynchronously.
+          #
+          # **Pricing:** Forcing a refresh performs live reputation lookups, which are
+          # billable. See https://telnyx.com/pricing/numbers for current pricing.
+          sig do
+            params(
+              enterprise_id: String,
+              phone_numbers: T::Array[String],
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(
+              Telnyx::Models::Enterprises::Reputation::NumberRefreshResponse
+            )
+          end
+          def refresh(
+            # The enterprise id. Lowercase UUID.
+            enterprise_id,
+            # Phone numbers to refresh reputation data for. 1–100 numbers per request, each in
+            # E.164 format. Reputation refreshes are subject to per-enterprise rate limits.
+            phone_numbers:,
             request_options: {}
           )
           end

@@ -23,65 +23,61 @@ module Telnyx
       optional :billing_contact, -> { Telnyx::BillingContact }
 
       # @!attribute corporate_registration_number
-      #   Corporate registration number
       #
       #   @return [String, nil]
-      optional :corporate_registration_number, String
+      optional :corporate_registration_number, String, nil?: true
 
       # @!attribute customer_reference
-      #   Customer reference identifier
       #
       #   @return [String, nil]
       optional :customer_reference, String
 
       # @!attribute doing_business_as
-      #   DBA name
       #
       #   @return [String, nil]
       optional :doing_business_as, String
 
       # @!attribute dun_bradstreet_number
-      #   D-U-N-S Number
       #
       #   @return [String, nil]
-      optional :dun_bradstreet_number, String
+      optional :dun_bradstreet_number, String, nil?: true
 
       # @!attribute fein
-      #   Federal Employer Identification Number. Format: XX-XXXXXXX or XXXXXXXXX
       #
       #   @return [String, nil]
       optional :fein, String
 
       # @!attribute industry
-      #   Industry classification
+      #
+      #   @return [Symbol, Telnyx::Models::EnterpriseUpdateParams::Industry, nil]
+      optional :industry, enum: -> { Telnyx::EnterpriseUpdateParams::Industry }
+
+      # @!attribute jurisdiction_of_incorporation
+      #   Updated state/province/country of incorporation. Optional on update.
       #
       #   @return [String, nil]
-      optional :industry, String
+      optional :jurisdiction_of_incorporation, String
 
       # @!attribute legal_name
-      #   Legal name of the enterprise
+      #   Legal name of the enterprise.
       #
       #   @return [String, nil]
       optional :legal_name, String
 
       # @!attribute number_of_employees
-      #   Employee count range
       #
-      #   @return [Symbol, Telnyx::Models::EnterpriseUpdateParams::NumberOfEmployees, nil]
-      optional :number_of_employees, enum: -> { Telnyx::EnterpriseUpdateParams::NumberOfEmployees }
+      #   @return [String, nil]
+      optional :number_of_employees, String
 
       # @!attribute organization_contact
-      #   Organization contact information. Note: the response returns this object with
-      #   the phone field as 'phone' (not 'phone_number').
       #
       #   @return [Telnyx::Models::OrganizationContact, nil]
       optional :organization_contact, -> { Telnyx::OrganizationContact }
 
       # @!attribute organization_legal_type
-      #   Legal structure type
       #
-      #   @return [Symbol, Telnyx::Models::EnterpriseUpdateParams::OrganizationLegalType, nil]
-      optional :organization_legal_type, enum: -> { Telnyx::EnterpriseUpdateParams::OrganizationLegalType }
+      #   @return [String, nil]
+      optional :organization_legal_type, String
 
       # @!attribute organization_physical_address
       #
@@ -89,88 +85,105 @@ module Telnyx
       optional :organization_physical_address, -> { Telnyx::PhysicalAddress }
 
       # @!attribute primary_business_domain_sic_code
-      #   SIC Code
       #
       #   @return [String, nil]
-      optional :primary_business_domain_sic_code, String
+      optional :primary_business_domain_sic_code, String, nil?: true
 
       # @!attribute professional_license_number
-      #   Professional license number
       #
       #   @return [String, nil]
-      optional :professional_license_number, String
+      optional :professional_license_number, String, nil?: true
 
       # @!attribute website
-      #   Company website URL
       #
       #   @return [String, nil]
       optional :website, String
 
-      # @!method initialize(enterprise_id:, billing_address: nil, billing_contact: nil, corporate_registration_number: nil, customer_reference: nil, doing_business_as: nil, dun_bradstreet_number: nil, fein: nil, industry: nil, legal_name: nil, number_of_employees: nil, organization_contact: nil, organization_legal_type: nil, organization_physical_address: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, website: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::EnterpriseUpdateParams} for more details.
-      #
+      # @!method initialize(enterprise_id:, billing_address: nil, billing_contact: nil, corporate_registration_number: nil, customer_reference: nil, doing_business_as: nil, dun_bradstreet_number: nil, fein: nil, industry: nil, jurisdiction_of_incorporation: nil, legal_name: nil, number_of_employees: nil, organization_contact: nil, organization_legal_type: nil, organization_physical_address: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, website: nil, request_options: {})
       #   @param enterprise_id [String]
       #
       #   @param billing_address [Telnyx::Models::BillingAddress]
       #
       #   @param billing_contact [Telnyx::Models::BillingContact]
       #
-      #   @param corporate_registration_number [String] Corporate registration number
+      #   @param corporate_registration_number [String, nil]
       #
-      #   @param customer_reference [String] Customer reference identifier
+      #   @param customer_reference [String]
       #
-      #   @param doing_business_as [String] DBA name
+      #   @param doing_business_as [String]
       #
-      #   @param dun_bradstreet_number [String] D-U-N-S Number
+      #   @param dun_bradstreet_number [String, nil]
       #
-      #   @param fein [String] Federal Employer Identification Number. Format: XX-XXXXXXX or XXXXXXXXX
+      #   @param fein [String]
       #
-      #   @param industry [String] Industry classification
+      #   @param industry [Symbol, Telnyx::Models::EnterpriseUpdateParams::Industry]
       #
-      #   @param legal_name [String] Legal name of the enterprise
+      #   @param jurisdiction_of_incorporation [String] Updated state/province/country of incorporation. Optional on update.
       #
-      #   @param number_of_employees [Symbol, Telnyx::Models::EnterpriseUpdateParams::NumberOfEmployees] Employee count range
+      #   @param legal_name [String] Legal name of the enterprise.
       #
-      #   @param organization_contact [Telnyx::Models::OrganizationContact] Organization contact information. Note: the response returns this object with th
+      #   @param number_of_employees [String]
       #
-      #   @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseUpdateParams::OrganizationLegalType] Legal structure type
+      #   @param organization_contact [Telnyx::Models::OrganizationContact]
+      #
+      #   @param organization_legal_type [String]
       #
       #   @param organization_physical_address [Telnyx::Models::PhysicalAddress]
       #
-      #   @param primary_business_domain_sic_code [String] SIC Code
+      #   @param primary_business_domain_sic_code [String, nil]
       #
-      #   @param professional_license_number [String] Professional license number
+      #   @param professional_license_number [String, nil]
       #
-      #   @param website [String] Company website URL
+      #   @param website [String]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      # Employee count range
-      module NumberOfEmployees
+      module Industry
         extend Telnyx::Internal::Type::Enum
 
-        NUMBER_OF_EMPLOYEES_1_10 = :"1-10"
-        NUMBER_OF_EMPLOYEES_11_50 = :"11-50"
-        NUMBER_OF_EMPLOYEES_51_200 = :"51-200"
-        NUMBER_OF_EMPLOYEES_201_500 = :"201-500"
-        NUMBER_OF_EMPLOYEES_501_2000 = :"501-2000"
-        NUMBER_OF_EMPLOYEES_2001_10000 = :"2001-10000"
-        NUMBER_OF_EMPLOYEES_10001_PLUS = :"10001+"
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # Legal structure type
-      module OrganizationLegalType
-        extend Telnyx::Internal::Type::Enum
-
-        CORPORATION = :corporation
-        LLC = :llc
-        PARTNERSHIP = :partnership
+        ACCOUNTING = :accounting
+        FINANCE = :finance
+        BILLING = :billing
+        COLLECTIONS = :collections
+        BUSINESS = :business
+        CHARITY = :charity
         NONPROFIT = :nonprofit
-        OTHER = :other
+        COMMUNICATIONS = :communications
+        TELECOM = :telecom
+        CUSTOMER_SERVICE = :"customer service"
+        SUPPORT = :support
+        DELIVERY = :delivery
+        SHIPPING = :shipping
+        LOGISTICS = :logistics
+        EDUCATION = :education
+        FINANCIAL = :financial
+        BANKING = :banking
+        GOVERNMENT = :government
+        PUBLIC = :public
+        HEALTHCARE = :healthcare
+        HEALTH = :health
+        PHARMACY = :pharmacy
+        MEDICAL = :medical
+        INSURANCE = :insurance
+        LEGAL = :legal
+        LAW = :law
+        NOTIFICATIONS = :notifications
+        SCHEDULING = :scheduling
+        REAL_ESTATE = :"real estate"
+        PROPERTY = :property
+        RETAIL = :retail
+        ECOMMERCE = :ecommerce
+        SALES = :sales
+        MARKETING = :marketing
+        SOFTWARE = :software
+        TECHNOLOGY = :technology
+        TECH = :tech
+        MEDIA = :media
+        SURVEYS = :surveys
+        MARKET_RESEARCH = :"market research"
+        TRAVEL = :travel
+        HOSPITALITY = :hospitality
+        HOTEL = :hotel
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -8,8 +8,8 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
 
     response =
       @telnyx.enterprises.reputation.numbers.retrieve(
-        "+16035551234",
-        enterprise_id: "6a09cdc3-8948-47f0-aa62-74ac943d6c58"
+        "+19493253498",
+        enterprise_id: "4a6192a4-573d-446d-b3ce-aff9117272a6"
       )
 
     assert_pattern do
@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        data: Telnyx::ReputationPhoneNumberWithReputationData | nil
+        data: Telnyx::Models::Enterprises::Reputation::NumberRetrieveResponse::Data
       }
     end
   end
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
   def test_list
     skip("Mock server tests are disabled")
 
-    response = @telnyx.enterprises.reputation.numbers.list("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+    response = @telnyx.enterprises.reputation.numbers.list("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
       response => Telnyx::Internal::DefaultFlatPagination
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::ReputationPhoneNumberWithReputationData
+      row => Telnyx::Models::Enterprises::Reputation::NumberListResponse
     end
 
     assert_pattern do
@@ -56,8 +56,8 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
 
     response =
       @telnyx.enterprises.reputation.numbers.associate(
-        "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
-        phone_numbers: ["+16035551234"]
+        "4a6192a4-573d-446d-b3ce-aff9117272a6",
+        phone_numbers: ["+19493253498", "+12134445566"]
       )
 
     assert_pattern do
@@ -66,8 +66,8 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]) | nil,
-        meta: Telnyx::MetaInfo | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]),
+        meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
       }
     end
   end
@@ -77,12 +77,32 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
 
     response =
       @telnyx.enterprises.reputation.numbers.disassociate(
-        "+16035551234",
-        enterprise_id: "6a09cdc3-8948-47f0-aa62-74ac943d6c58"
+        "+19493253498",
+        enterprise_id: "4a6192a4-573d-446d-b3ce-aff9117272a6"
       )
 
     assert_pattern do
       response => nil
+    end
+  end
+
+  def test_refresh_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.enterprises.reputation.numbers.refresh(
+        "4a6192a4-573d-446d-b3ce-aff9117272a6",
+        phone_numbers: ["+19493253498"]
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Enterprises::Reputation::NumberRefreshResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Enterprises::Reputation::NumberRefreshResponse::Data
+      }
     end
   end
 end

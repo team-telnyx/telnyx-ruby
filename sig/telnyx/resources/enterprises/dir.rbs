@@ -1,0 +1,43 @@
+module Telnyx
+  module Resources
+    class Enterprises
+      class Dir
+        attr_reader comments: Telnyx::Resources::Enterprises::Dir::Comments
+
+        attr_reader phone_number_batches: Telnyx::Resources::Enterprises::Dir::PhoneNumberBatches
+
+        attr_reader phone_numbers: Telnyx::Resources::Enterprises::Dir::PhoneNumbers
+
+        def create: (
+          String enterprise_id,
+          authorizer_email: String,
+          authorizer_name: String,
+          certify_brand_is_accurate: Telnyx::Models::Enterprises::DirCreateParams::certify_brand_is_accurate,
+          certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership,
+          certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
+          display_name: String,
+          ?call_reasons: ::Array[String],
+          ?documents: ::Array[Telnyx::Enterprises::DirCreateParams::Document],
+          ?logo_url: String,
+          ?reselling: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Enterprises::DirCreateResponse
+
+        def list: (
+          String enterprise_id,
+          ?filter_expiring_at_gte: Time,
+          ?filter_expiring_at_lte: Time,
+          ?filter_expiring_within_days: Integer,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?search: String,
+          ?sort: Telnyx::Models::Enterprises::DirListParams::sort,
+          ?status: Telnyx::Models::Enterprises::DirListParams::status,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::DirListResponse]
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

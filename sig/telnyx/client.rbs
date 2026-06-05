@@ -342,6 +342,12 @@ module Telnyx
 
     attr_reader pronunciation_dicts: Telnyx::Resources::PronunciationDicts
 
+    attr_reader call_reasons: Telnyx::Resources::CallReasons
+
+    attr_reader dir: Telnyx::Resources::Dir
+
+    attr_reader infringement_claims: Telnyx::Resources::InfringementClaims
+
     attr_reader uac_connections: Telnyx::Resources::UacConnections
 
     attr_reader sip_registration_status: Telnyx::Resources::SipRegistrationStatus

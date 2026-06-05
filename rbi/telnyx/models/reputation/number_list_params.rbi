@@ -15,21 +15,21 @@ module Telnyx
             )
           end
 
-        # Page number (1-indexed)
+        # 1-based page number. Out-of-range values return an empty page with correct meta.
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_number
 
         sig { params(page_number: Integer).void }
         attr_writer :page_number
 
-        # Number of items per page
+        # Items per page. Maximum 250; values above are clamped to 250.
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_size
 
         sig { params(page_size: Integer).void }
         attr_writer :page_size
 
-        # Filter by specific phone number (E.164 format)
+        # Filter by specific phone number (E.164 format).
         sig { returns(T.nilable(String)) }
         attr_reader :phone_number
 
@@ -45,11 +45,11 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Page number (1-indexed)
+          # 1-based page number. Out-of-range values return an empty page with correct meta.
           page_number: nil,
-          # Number of items per page
+          # Items per page. Maximum 250; values above are clamped to 250.
           page_size: nil,
-          # Filter by specific phone number (E.164 format)
+          # Filter by specific phone number (E.164 format).
           phone_number: nil,
           request_options: {}
         )
