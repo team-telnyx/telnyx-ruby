@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.126.0 (2026-06-05)
+
+Full Changelog: [v5.125.0...v5.126.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.125.0...v5.126.0)
+
+### Features
+
+* Conversation flow update ([4f9dd27](https://github.com/team-telnyx/telnyx-ruby/commit/4f9dd27ac620fef2f1d080f4ba1bdce028ce70c5))
+
 ## 5.125.0 (2026-06-04)
 
 Full Changelog: [v5.124.0...v5.125.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.124.0...v5.125.0)
