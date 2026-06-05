@@ -314,7 +314,7 @@ module Telnyx
           # @!attribute nodes
           #   All nodes in the flow.
           #
-          #   @return [Array<Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool>]
+          #   @return [Array<Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak>]
           required :nodes,
                    -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::InferenceEmbedding::ConversationFlow::Node] }
 
@@ -334,7 +334,7 @@ module Telnyx
           # @!method initialize(nodes:, start_node_id:, edges: nil)
           #   Conversation flow as returned by the API.
           #
-          #   @param nodes [Array<Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool>] All nodes in the flow.
+          #   @param nodes [Array<Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak>] All nodes in the flow.
           #
           #   @param start_node_id [String] ID of the node where the conversation begins.
           #
@@ -351,6 +351,9 @@ module Telnyx
 
             # A standalone tool step in a conversation flow, as returned by the API.
             variant :tool, -> { Telnyx::AI::InferenceEmbedding::ConversationFlow::Node::Tool }
+
+            # A standalone scripted-message step in a flow, as returned by the API.
+            variant :speak, -> { Telnyx::AI::InferenceEmbedding::ConversationFlow::Node::Speak }
 
             class Prompt < Telnyx::Internal::Type::BaseModel
               # @!attribute id
@@ -663,8 +666,100 @@ module Telnyx
               end
             end
 
+            class Speak < Telnyx::Internal::Type::BaseModel
+              # @!attribute id
+              #   Caller-supplied unique identifier for this node within the flow.
+              #
+              #   @return [String]
+              required :id, String
+
+              # @!attribute message
+              #   Message delivered to the user verbatim when the flow reaches this node. No LLM
+              #   turn — the text is spoken/sent exactly as written. `{{variable}}` placeholders
+              #   are interpolated from the conversation's dynamic variables; an unresolved
+              #   placeholder renders as an empty string. After delivering, the flow routes via
+              #   the node's outgoing `llm` / `expression` edges (commonly a single unconditional
+              #   edge).
+              #
+              #   @return [String]
+              required :message, String
+
+              # @!attribute name
+              #   Optional human-readable label, displayed in authoring UIs.
+              #
+              #   @return [String, nil]
+              optional :name, String
+
+              # @!attribute position
+              #   Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+              #   by the runtime; round-trips so frontends can persist graph layout across
+              #   reloads.
+              #
+              #   @return [Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::Position, nil]
+              optional :position, -> { Telnyx::AI::InferenceEmbedding::ConversationFlow::Node::Speak::Position }
+
+              # @!attribute type
+              #   Node kind discriminator. Always `speak` for a speak node.
+              #
+              #   @return [Symbol, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::Type, nil]
+              optional :type, enum: -> { Telnyx::AI::InferenceEmbedding::ConversationFlow::Node::Speak::Type }
+
+              # @!method initialize(id:, message:, name: nil, position: nil, type: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak} for more
+              #   details.
+              #
+              #   A standalone scripted-message step in a flow, as returned by the API.
+              #
+              #   @param id [String] Caller-supplied unique identifier for this node within the flow.
+              #
+              #   @param message [String] Message delivered to the user verbatim when the flow reaches this node. No LLM t
+              #
+              #   @param name [String] Optional human-readable label, displayed in authoring UIs.
+              #
+              #   @param position [Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::Position] Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+              #
+              #   @param type [Symbol, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::Type] Node kind discriminator. Always `speak` for a speak node.
+
+              # @see Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak#position
+              class Position < Telnyx::Internal::Type::BaseModel
+                # @!attribute x
+                #   Horizontal coordinate in the authoring canvas.
+                #
+                #   @return [Float]
+                required :x, Float
+
+                # @!attribute y_
+                #   Vertical coordinate in the authoring canvas.
+                #
+                #   @return [Float]
+                required :y_, Float, api_name: :y
+
+                # @!method initialize(x:, y_:)
+                #   Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
+                #   by the runtime; round-trips so frontends can persist graph layout across
+                #   reloads.
+                #
+                #   @param x [Float] Horizontal coordinate in the authoring canvas.
+                #
+                #   @param y_ [Float] Vertical coordinate in the authoring canvas.
+              end
+
+              # Node kind discriminator. Always `speak` for a speak node.
+              #
+              # @see Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak#type
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                SPEAK = :speak
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
             # @!method self.variants
-            #   @return [Array(Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool)]
+            #   @return [Array(Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak)]
           end
 
           class Edge < Telnyx::Internal::Type::BaseModel
@@ -678,7 +773,7 @@ module Telnyx
             #   Condition that gates the transition. Discriminated by `type`: `llm`,
             #   `expression`.
             #
-            #   @return [Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Expression]
+            #   @return [Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Expression, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Default]
             required :condition, union: -> { Telnyx::AI::InferenceEmbedding::ConversationFlow::Edge::Condition }
 
             # @!attribute start_node_id
@@ -708,7 +803,7 @@ module Telnyx
             #
             #   @param id [String] Caller-supplied unique identifier for this edge within the flow.
             #
-            #   @param condition [Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Expression] Condition that gates the transition. Discriminated by `type`: `llm`, `expression
+            #   @param condition [Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Expression, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Default] Condition that gates the transition. Discriminated by `type`: `llm`, `expression
             #
             #   @param start_node_id [String] ID of the node this edge transitions away from.
             #
@@ -736,6 +831,17 @@ module Telnyx
               # evaluate to a boolean. Prefer this over `LLMCondition` when the rule is
               # a clean function of known variables — it's cheaper and predictable.
               variant :expression, -> { Telnyx::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Expression }
+
+              # Fallback edge condition: fires only when no other edge's condition is true.
+              #
+              # Evaluated after every conditioned (`llm` / `expression`) edge regardless
+              # of declaration order, so it routes the flow whenever none of the node's
+              # other outgoing edges match. Valid **only** on edges leaving a `tool` or
+              # `speak` node, where the deterministic step auto-advances and must always
+              # have somewhere to go. A tool/speak node with any outgoing edge is required
+              # to carry exactly one `default` edge so it never dead-ends; a tool/speak
+              # node with no outgoing edges is a valid terminal step. Carries no parameters.
+              variant :default, -> { Telnyx::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Default }
 
               class Llm < Telnyx::Internal::Type::BaseModel
                 # @!attribute prompt
@@ -912,8 +1018,28 @@ module Telnyx
                 end
               end
 
+              class Default < Telnyx::Internal::Type::BaseModel
+                # @!attribute type
+                #
+                #   @return [Symbol, :default]
+                required :type, const: :default
+
+                # @!method initialize(type: :default)
+                #   Fallback edge condition: fires only when no other edge's condition is true.
+                #
+                #   Evaluated after every conditioned (`llm` / `expression`) edge regardless of
+                #   declaration order, so it routes the flow whenever none of the node's other
+                #   outgoing edges match. Valid **only** on edges leaving a `tool` or `speak` node,
+                #   where the deterministic step auto-advances and must always have somewhere to go.
+                #   A tool/speak node with any outgoing edge is required to carry exactly one
+                #   `default` edge so it never dead-ends; a tool/speak node with no outgoing edges
+                #   is a valid terminal step. Carries no parameters.
+                #
+                #   @param type [Symbol, :default]
+              end
+
               # @!method self.variants
-              #   @return [Array(Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Expression)]
+              #   @return [Array(Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Llm, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Expression, Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Edge::Condition::Default)]
             end
 
             # Destination of the transition. Discriminated by `type`: `node` (jump to another
