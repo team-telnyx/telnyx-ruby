@@ -1,0 +1,175 @@
+module Telnyx
+  module Models
+    type dir_update_infringement_params =
+      {
+        dir_id: String,
+        certify_brand_is_accurate: Telnyx::Models::DirUpdateInfringementParams::certify_brand_is_accurate,
+        certify_ip_ownership: Telnyx::Models::DirUpdateInfringementParams::certify_ip_ownership,
+        certify_no_infringement: Telnyx::Models::DirUpdateInfringementParams::certify_no_infringement,
+        certify_no_shaft_content: Telnyx::Models::DirUpdateInfringementParams::certify_no_shaft_content,
+        infringement_resolution_notes: String,
+        call_reasons: ::Array[String]?,
+        display_name: String?,
+        documents: ::Array[Telnyx::DirUpdateInfringementParams::Document]?,
+        logo_url: String?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class DirUpdateInfringementParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor dir_id: String
+
+      attr_accessor certify_brand_is_accurate: Telnyx::Models::DirUpdateInfringementParams::certify_brand_is_accurate
+
+      attr_accessor certify_ip_ownership: Telnyx::Models::DirUpdateInfringementParams::certify_ip_ownership
+
+      attr_accessor certify_no_infringement: Telnyx::Models::DirUpdateInfringementParams::certify_no_infringement
+
+      attr_accessor certify_no_shaft_content: Telnyx::Models::DirUpdateInfringementParams::certify_no_shaft_content
+
+      attr_accessor infringement_resolution_notes: String
+
+      attr_accessor call_reasons: ::Array[String]?
+
+      attr_accessor display_name: String?
+
+      attr_accessor documents: ::Array[Telnyx::DirUpdateInfringementParams::Document]?
+
+      attr_accessor logo_url: String?
+
+      def initialize: (
+        dir_id: String,
+        certify_brand_is_accurate: Telnyx::Models::DirUpdateInfringementParams::certify_brand_is_accurate,
+        certify_ip_ownership: Telnyx::Models::DirUpdateInfringementParams::certify_ip_ownership,
+        certify_no_infringement: Telnyx::Models::DirUpdateInfringementParams::certify_no_infringement,
+        certify_no_shaft_content: Telnyx::Models::DirUpdateInfringementParams::certify_no_shaft_content,
+        infringement_resolution_notes: String,
+        ?call_reasons: ::Array[String]?,
+        ?display_name: String?,
+        ?documents: ::Array[Telnyx::DirUpdateInfringementParams::Document]?,
+        ?logo_url: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        dir_id: String,
+        certify_brand_is_accurate: Telnyx::Models::DirUpdateInfringementParams::certify_brand_is_accurate,
+        certify_ip_ownership: Telnyx::Models::DirUpdateInfringementParams::certify_ip_ownership,
+        certify_no_infringement: Telnyx::Models::DirUpdateInfringementParams::certify_no_infringement,
+        certify_no_shaft_content: Telnyx::Models::DirUpdateInfringementParams::certify_no_shaft_content,
+        infringement_resolution_notes: String,
+        call_reasons: ::Array[String]?,
+        display_name: String?,
+        documents: ::Array[Telnyx::DirUpdateInfringementParams::Document]?,
+        logo_url: String?,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type certify_brand_is_accurate = true
+
+      module CertifyBrandIsAccurate
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Telnyx::Models::DirUpdateInfringementParams::certify_brand_is_accurate]
+      end
+
+      type certify_ip_ownership = true
+
+      module CertifyIPOwnership
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Telnyx::Models::DirUpdateInfringementParams::certify_ip_ownership]
+      end
+
+      type certify_no_infringement = true
+
+      module CertifyNoInfringement
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Telnyx::Models::DirUpdateInfringementParams::certify_no_infringement]
+      end
+
+      type certify_no_shaft_content = true
+
+      module CertifyNoShaftContent
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Telnyx::Models::DirUpdateInfringementParams::certify_no_shaft_content]
+      end
+
+      type document =
+        {
+          document_id: String,
+          document_type: Telnyx::Models::DirUpdateInfringementParams::Document::document_type,
+          description: String
+        }
+
+      class Document < Telnyx::Internal::Type::BaseModel
+        attr_accessor document_id: String
+
+        attr_accessor document_type: Telnyx::Models::DirUpdateInfringementParams::Document::document_type
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        def initialize: (
+          document_id: String,
+          document_type: Telnyx::Models::DirUpdateInfringementParams::Document::document_type,
+          ?description: String
+        ) -> void
+
+        def to_hash: -> {
+          document_id: String,
+          document_type: Telnyx::Models::DirUpdateInfringementParams::Document::document_type,
+          description: String
+        }
+
+        type document_type =
+          :letter_of_authorization
+          | :business_registration
+          | :articles_of_incorporation
+          | :tax_document
+          | :ein_letter
+          | :trademark_registration
+          | :website_ownership
+          | :business_license
+          | :professional_license
+          | :government_id
+          | :utility_bill
+          | :bank_statement
+          | :other
+
+        module DocumentType
+          extend Telnyx::Internal::Type::Enum
+
+          LETTER_OF_AUTHORIZATION: :letter_of_authorization
+          BUSINESS_REGISTRATION: :business_registration
+          ARTICLES_OF_INCORPORATION: :articles_of_incorporation
+          TAX_DOCUMENT: :tax_document
+          EIN_LETTER: :ein_letter
+          TRADEMARK_REGISTRATION: :trademark_registration
+          WEBSITE_OWNERSHIP: :website_ownership
+          BUSINESS_LICENSE: :business_license
+          PROFESSIONAL_LICENSE: :professional_license
+          GOVERNMENT_ID: :government_id
+          UTILITY_BILL: :utility_bill
+          BANK_STATEMENT: :bank_statement
+          OTHER: :other
+
+          def self?.values: -> ::Array[Telnyx::Models::DirUpdateInfringementParams::Document::document_type]
+        end
+      end
+    end
+  end
+end

@@ -5,14 +5,10 @@ module Telnyx
         { data: Telnyx::Enterprises::EnterpriseReputationPublic }
 
       class ReputationEnableResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: Telnyx::Enterprises::EnterpriseReputationPublic?
-
-        def data=: (
-          Telnyx::Enterprises::EnterpriseReputationPublic
-        ) -> Telnyx::Enterprises::EnterpriseReputationPublic
+        attr_accessor data: Telnyx::Enterprises::EnterpriseReputationPublic
 
         def initialize: (
-          ?data: Telnyx::Enterprises::EnterpriseReputationPublic
+          data: Telnyx::Enterprises::EnterpriseReputationPublic
         ) -> void
 
         def to_hash: -> {

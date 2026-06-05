@@ -15,7 +15,7 @@ module Telnyx
           required :enterprise_id, String
 
           # @!attribute phone_numbers
-          #   List of phone numbers to associate for reputation monitoring (max 100)
+          #   1–100 phone numbers in E.164 format with a leading `+`.
           #
           #   @return [Array<String>]
           required :phone_numbers, Telnyx::Internal::Type::ArrayOf[String]
@@ -23,7 +23,7 @@ module Telnyx
           # @!method initialize(enterprise_id:, phone_numbers:, request_options: {})
           #   @param enterprise_id [String]
           #
-          #   @param phone_numbers [Array<String>] List of phone numbers to associate for reputation monitoring (max 100)
+          #   @param phone_numbers [Array<String>] 1–100 phone numbers in E.164 format with a leading `+`.
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end

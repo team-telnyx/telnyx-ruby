@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class Enterprises
+      class Reputation
+        class Loa
+          def update: (
+            String enterprise_id,
+            loa_document_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Enterprises::Reputation::LoaUpdateResponse
+
+          def render: (
+            String enterprise_id,
+            ?agent: Telnyx::Enterprises::Reputation::LoaRenderParams::Agent,
+            ?signature: Telnyx::Enterprises::Reputation::LoaRenderParams::Signature,
+            ?request_options: Telnyx::request_opts
+          ) -> StringIO
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

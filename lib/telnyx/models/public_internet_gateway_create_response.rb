@@ -6,11 +6,16 @@ module Telnyx
     class PublicInternetGatewayCreateResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::PublicInternetGatewayRead, nil]
-      optional :data, -> { Telnyx::PublicInternetGatewayRead }
+      #   @return [Telnyx::Models::PublicInternetGatewayCreateResponse::Data, nil]
+      optional :data, -> { Telnyx::Models::PublicInternetGatewayCreateResponse::Data }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::PublicInternetGatewayRead]
+      #   @param data [Telnyx::Models::PublicInternetGatewayCreateResponse::Data]
+
+      # @see Telnyx::Models::PublicInternetGatewayCreateResponse#data
+      class Data < Telnyx::Models::Record
+        # @!method initialize
+      end
     end
   end
 end

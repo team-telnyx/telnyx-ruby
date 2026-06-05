@@ -9,41 +9,42 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
     response =
       @telnyx.enterprises.create(
         billing_address: {
-          administrative_area: "Illinois",
+          administrative_area: "IL",
           city: "Chicago",
-          country: "United States",
+          country: "US",
           postal_code: "60601",
-          street_address: "123 Main St"
+          street_address: "100 Main St"
         },
         billing_contact: {
-          email: "billing@acme.com",
-          first_name: "John",
-          last_name: "Doe",
-          phone_number: "15551234568"
+          email: "billing@run065.example.com",
+          first_name: "Alex",
+          last_name: "Bill",
+          phone_number: "+13125550001"
         },
         country_code: "US",
-        doing_business_as: "Acme",
+        doing_business_as: "Run 065 Debug",
         fein: "12-3456789",
-        industry: "technology",
-        legal_name: "Acme Corp Inc.",
+        industry: :technology,
+        jurisdiction_of_incorporation: "Delaware",
+        legal_name: "Run 065 Debug Co",
         number_of_employees: :"51-200",
         organization_contact: {
-          email: "jane.smith@acme.com",
-          first_name: "Jane",
-          job_title: "VP of Engineering",
-          last_name: "Smith",
-          phone: "+16035551234"
+          email: "org@run065.example.com",
+          first_name: "Sam",
+          job_title: "Compliance Lead",
+          last_name: "Org",
+          phone_number: "+13125550000"
         },
-        organization_legal_type: :corporation,
+        organization_legal_type: :llc,
         organization_physical_address: {
-          administrative_area: "Illinois",
+          administrative_area: "IL",
           city: "Chicago",
-          country: "United States",
+          country: "US",
           postal_code: "60601",
-          street_address: "123 Main St"
+          street_address: "100 Main St"
         },
         organization_type: :commercial,
-        website: "https://acme.com"
+        website: "https://run065.example.com"
       )
 
     assert_pattern do
@@ -52,7 +53,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::EnterprisePublic | nil
+        data: Telnyx::EnterprisePublic
       }
     end
   end
@@ -60,7 +61,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.enterprises.retrieve("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+    response = @telnyx.enterprises.retrieve("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
       response => Telnyx::Models::EnterpriseRetrieveResponse
@@ -68,7 +69,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::EnterprisePublic | nil
+        data: Telnyx::EnterprisePublic
       }
     end
   end
@@ -76,7 +77,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
   def test_update
     skip("Mock server tests are disabled")
 
-    response = @telnyx.enterprises.update("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+    response = @telnyx.enterprises.update("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
       response => Telnyx::Models::EnterpriseUpdateResponse
@@ -84,7 +85,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::EnterprisePublic | nil
+        data: Telnyx::EnterprisePublic
       }
     end
   end
@@ -110,6 +111,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
         id: String | nil,
         billing_address: Telnyx::BillingAddress | nil,
         billing_contact: Telnyx::BillingContact | nil,
+        branded_calling_enabled: Telnyx::Internal::Type::Boolean | nil,
         corporate_registration_number: String | nil,
         country_code: String | nil,
         created_at: Time | nil,
@@ -118,15 +120,17 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
         dun_bradstreet_number: String | nil,
         fein: String | nil,
         industry: String | nil,
+        jurisdiction_of_incorporation: String | nil,
         legal_name: String | nil,
-        number_of_employees: Telnyx::EnterprisePublic::NumberOfEmployees | nil,
+        number_of_employees: String | nil,
+        number_reputation_enabled: Telnyx::Internal::Type::Boolean | nil,
         organization_contact: Telnyx::OrganizationContact | nil,
-        organization_legal_type: Telnyx::EnterprisePublic::OrganizationLegalType | nil,
+        organization_legal_type: String | nil,
         organization_physical_address: Telnyx::PhysicalAddress | nil,
-        organization_type: Telnyx::EnterprisePublic::OrganizationType | nil,
+        organization_type: String | nil,
         primary_business_domain_sic_code: String | nil,
         professional_license_number: String | nil,
-        role_type: Telnyx::EnterprisePublic::RoleType | nil,
+        role_type: String | nil,
         updated_at: Time | nil,
         website: String | nil
       }
@@ -136,10 +140,26 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
   def test_delete
     skip("Mock server tests are disabled")
 
-    response = @telnyx.enterprises.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+    response = @telnyx.enterprises.delete("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
       response => nil
+    end
+  end
+
+  def test_activate_branded_calling
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.enterprises.activate_branded_calling("4a6192a4-573d-446d-b3ce-aff9117272a6")
+
+    assert_pattern do
+      response => Telnyx::Models::EnterpriseActivateBrandedCallingResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::EnterprisePublic
+      }
     end
   end
 end

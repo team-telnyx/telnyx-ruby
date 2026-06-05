@@ -3,13 +3,18 @@ module Telnyx
     class Enterprises
       attr_reader reputation: Telnyx::Resources::Enterprises::Reputation
 
+      attr_reader dir: Telnyx::Resources::Enterprises::Dir
+
+      attr_reader usage: Telnyx::Resources::Enterprises::Usage
+
       def create: (
         billing_address: Telnyx::BillingAddress,
         billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
         fein: String,
-        industry: String,
+        industry: Telnyx::Models::EnterpriseCreateParams::industry,
+        jurisdiction_of_incorporation: String,
         legal_name: String,
         number_of_employees: Telnyx::Models::EnterpriseCreateParams::number_of_employees,
         organization_contact: Telnyx::OrganizationContact,
@@ -17,11 +22,11 @@ module Telnyx
         organization_physical_address: Telnyx::PhysicalAddress,
         organization_type: Telnyx::Models::EnterpriseCreateParams::organization_type,
         website: String,
-        ?corporate_registration_number: String,
+        ?corporate_registration_number: String?,
         ?customer_reference: String,
-        ?dun_bradstreet_number: String,
-        ?primary_business_domain_sic_code: String,
-        ?professional_license_number: String,
+        ?dun_bradstreet_number: String?,
+        ?primary_business_domain_sic_code: String?,
+        ?professional_license_number: String?,
         ?role_type: Telnyx::Models::EnterpriseCreateParams::role_type,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::EnterpriseCreateResponse
@@ -35,19 +40,20 @@ module Telnyx
         String enterprise_id,
         ?billing_address: Telnyx::BillingAddress,
         ?billing_contact: Telnyx::BillingContact,
-        ?corporate_registration_number: String,
+        ?corporate_registration_number: String?,
         ?customer_reference: String,
         ?doing_business_as: String,
-        ?dun_bradstreet_number: String,
+        ?dun_bradstreet_number: String?,
         ?fein: String,
-        ?industry: String,
+        ?industry: Telnyx::Models::EnterpriseUpdateParams::industry,
+        ?jurisdiction_of_incorporation: String,
         ?legal_name: String,
-        ?number_of_employees: Telnyx::Models::EnterpriseUpdateParams::number_of_employees,
+        ?number_of_employees: String,
         ?organization_contact: Telnyx::OrganizationContact,
-        ?organization_legal_type: Telnyx::Models::EnterpriseUpdateParams::organization_legal_type,
+        ?organization_legal_type: String,
         ?organization_physical_address: Telnyx::PhysicalAddress,
-        ?primary_business_domain_sic_code: String,
-        ?professional_license_number: String,
+        ?primary_business_domain_sic_code: String?,
+        ?professional_license_number: String?,
         ?website: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::EnterpriseUpdateResponse
@@ -63,6 +69,11 @@ module Telnyx
         String enterprise_id,
         ?request_options: Telnyx::request_opts
       ) -> nil
+
+      def activate_branded_calling: (
+        String enterprise_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EnterpriseActivateBrandedCallingResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

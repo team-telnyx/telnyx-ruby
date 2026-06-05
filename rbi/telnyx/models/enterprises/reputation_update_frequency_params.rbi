@@ -18,7 +18,8 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :enterprise_id
 
-        # New frequency for refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         sig do
           returns(
             Telnyx::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency::OrSymbol
@@ -36,7 +37,8 @@ module Telnyx
         end
         def self.new(
           enterprise_id:,
-          # New frequency for refreshing reputation data
+          # How often Telnyx refreshes the stored reputation data for this enterprise's
+          # registered numbers.
           check_frequency:,
           request_options: {}
         )
@@ -55,7 +57,8 @@ module Telnyx
         def to_hash
         end
 
-        # New frequency for refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         module CheckFrequency
           extend Telnyx::Internal::Type::Enum
 

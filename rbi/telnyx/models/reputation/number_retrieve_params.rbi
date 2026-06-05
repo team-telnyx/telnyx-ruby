@@ -18,8 +18,8 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :phone_number
 
-        # When true, fetches fresh reputation data (incurs API cost). When false, returns
-        # cached data.
+        # When true, fetches fresh reputation data (incurs API cost). When false
+        # (default), returns cached data.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :fresh
 
@@ -35,8 +35,8 @@ module Telnyx
         end
         def self.new(
           phone_number:,
-          # When true, fetches fresh reputation data (incurs API cost). When false, returns
-          # cached data.
+          # When true, fetches fresh reputation data (incurs API cost). When false
+          # (default), returns cached data.
           fresh: nil,
           request_options: {}
         )

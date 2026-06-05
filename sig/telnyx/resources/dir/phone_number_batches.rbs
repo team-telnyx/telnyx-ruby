@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class Dir
+      class PhoneNumberBatches
+        def retrieve: (
+          String batch_id,
+          dir_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::PhoneNumberBatchRetrieveResponse
+
+        def list: (
+          String dir_id,
+          ?filter_status: Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Dir::PhoneNumberBatchListResponse]
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

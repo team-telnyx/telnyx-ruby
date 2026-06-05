@@ -8,13 +8,6 @@ module Telnyx
           T.any(Telnyx::EnterprisePublic, Telnyx::Internal::AnyHash)
         end
 
-      # Unique identifier of the enterprise
-      sig { returns(T.nilable(String)) }
-      attr_reader :id
-
-      sig { params(id: String).void }
-      attr_writer :id
-
       sig { returns(T.nilable(Telnyx::BillingAddress)) }
       attr_reader :billing_address
 
@@ -27,64 +20,78 @@ module Telnyx
       sig { params(billing_contact: Telnyx::BillingContact::OrHash).void }
       attr_writer :billing_contact
 
-      # Corporate registration number
+      # True once Branded Calling has been activated on this enterprise (see
+      # `POST /enterprises/{id}/branded_calling`).
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :branded_calling_enabled
+
+      sig { params(branded_calling_enabled: T::Boolean).void }
+      attr_writer :branded_calling_enabled
+
+      # Optional corporate-registration / company-number identifier.
       sig { returns(T.nilable(String)) }
       attr_accessor :corporate_registration_number
 
-      # ISO 3166-1 alpha-2 country code
       sig { returns(T.nilable(String)) }
       attr_reader :country_code
 
       sig { params(country_code: String).void }
       attr_writer :country_code
 
-      # When the enterprise was created
-      sig { returns(T.nilable(Time)) }
-      attr_reader :created_at
-
-      sig { params(created_at: Time).void }
-      attr_writer :created_at
-
-      # Customer reference identifier
       sig { returns(T.nilable(String)) }
-      attr_accessor :customer_reference
+      attr_reader :customer_reference
 
-      # DBA name
+      sig { params(customer_reference: String).void }
+      attr_writer :customer_reference
+
       sig { returns(T.nilable(String)) }
       attr_reader :doing_business_as
 
       sig { params(doing_business_as: String).void }
       attr_writer :doing_business_as
 
-      # D-U-N-S Number
+      # Optional D-U-N-S Number issued by Dun & Bradstreet.
       sig { returns(T.nilable(String)) }
       attr_accessor :dun_bradstreet_number
 
-      # Federal Employer Identification Number
       sig { returns(T.nilable(String)) }
-      attr_accessor :fein
+      attr_reader :fein
 
-      # Industry classification
+      sig { params(fein: String).void }
+      attr_writer :fein
+
       sig { returns(T.nilable(String)) }
-      attr_accessor :industry
+      attr_reader :industry
 
-      # Legal name of the enterprise
+      sig { params(industry: String).void }
+      attr_writer :industry
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :jurisdiction_of_incorporation
+
+      sig { params(jurisdiction_of_incorporation: String).void }
+      attr_writer :jurisdiction_of_incorporation
+
       sig { returns(T.nilable(String)) }
       attr_reader :legal_name
 
       sig { params(legal_name: String).void }
       attr_writer :legal_name
 
-      # Employee count range
-      sig do
-        returns(
-          T.nilable(Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol)
-        )
-      end
-      attr_accessor :number_of_employees
+      sig { returns(T.nilable(String)) }
+      attr_reader :number_of_employees
 
-      # Organization contact information. Note: the response returns this object with
-      # the phone field as 'phone' (not 'phone_number').
+      sig { params(number_of_employees: String).void }
+      attr_writer :number_of_employees
+
+      # True once Phone Number Reputation has been enabled on this enterprise (see
+      # `POST /enterprises/{id}/reputation`).
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :number_reputation_enabled
+
+      sig { params(number_reputation_enabled: T::Boolean).void }
+      attr_writer :number_reputation_enabled
+
       sig { returns(T.nilable(Telnyx::OrganizationContact)) }
       attr_reader :organization_contact
 
@@ -93,15 +100,11 @@ module Telnyx
       end
       attr_writer :organization_contact
 
-      # Legal structure type
-      sig do
-        returns(
-          T.nilable(
-            Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-          )
-        )
-      end
-      attr_accessor :organization_legal_type
+      sig { returns(T.nilable(String)) }
+      attr_reader :organization_legal_type
+
+      sig { params(organization_legal_type: String).void }
+      attr_writer :organization_legal_type
 
       sig { returns(T.nilable(Telnyx::PhysicalAddress)) }
       attr_reader :organization_physical_address
@@ -113,125 +116,112 @@ module Telnyx
       end
       attr_writer :organization_physical_address
 
-      # Type of organization
-      sig do
-        returns(
-          T.nilable(Telnyx::EnterprisePublic::OrganizationType::TaggedSymbol)
-        )
-      end
+      sig { returns(T.nilable(String)) }
       attr_reader :organization_type
 
-      sig do
-        params(
-          organization_type:
-            Telnyx::EnterprisePublic::OrganizationType::OrSymbol
-        ).void
-      end
+      sig { params(organization_type: String).void }
       attr_writer :organization_type
 
-      # SIC Code
+      # Optional SIC code for the primary line of business.
       sig { returns(T.nilable(String)) }
       attr_accessor :primary_business_domain_sic_code
 
-      # Professional license number
+      # Optional professional-license number for regulated industries.
       sig { returns(T.nilable(String)) }
       attr_accessor :professional_license_number
 
-      # Role type in Branded Calling / Number Reputation services
-      sig do
-        returns(T.nilable(Telnyx::EnterprisePublic::RoleType::TaggedSymbol))
-      end
+      sig { returns(T.nilable(String)) }
       attr_reader :role_type
 
-      sig do
-        params(role_type: Telnyx::EnterprisePublic::RoleType::OrSymbol).void
-      end
+      sig { params(role_type: String).void }
       attr_writer :role_type
 
-      # When the enterprise was last updated
+      sig { returns(T.nilable(String)) }
+      attr_reader :website
+
+      sig { params(website: String).void }
+      attr_writer :website
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :id
+
+      sig { params(id: String).void }
+      attr_writer :id
+
+      sig { returns(T.nilable(Time)) }
+      attr_reader :created_at
+
+      sig { params(created_at: Time).void }
+      attr_writer :created_at
+
       sig { returns(T.nilable(Time)) }
       attr_reader :updated_at
 
       sig { params(updated_at: Time).void }
       attr_writer :updated_at
 
-      # Company website URL
-      sig { returns(T.nilable(String)) }
-      attr_accessor :website
-
       sig do
         params(
           id: String,
           billing_address: Telnyx::BillingAddress::OrHash,
           billing_contact: Telnyx::BillingContact::OrHash,
+          branded_calling_enabled: T::Boolean,
           corporate_registration_number: T.nilable(String),
           country_code: String,
           created_at: Time,
-          customer_reference: T.nilable(String),
+          customer_reference: String,
           doing_business_as: String,
           dun_bradstreet_number: T.nilable(String),
-          fein: T.nilable(String),
-          industry: T.nilable(String),
+          fein: String,
+          industry: String,
+          jurisdiction_of_incorporation: String,
           legal_name: String,
-          number_of_employees:
-            T.nilable(Telnyx::EnterprisePublic::NumberOfEmployees::OrSymbol),
+          number_of_employees: String,
+          number_reputation_enabled: T::Boolean,
           organization_contact: Telnyx::OrganizationContact::OrHash,
-          organization_legal_type:
-            T.nilable(
-              Telnyx::EnterprisePublic::OrganizationLegalType::OrSymbol
-            ),
+          organization_legal_type: String,
           organization_physical_address: Telnyx::PhysicalAddress::OrHash,
-          organization_type:
-            Telnyx::EnterprisePublic::OrganizationType::OrSymbol,
+          organization_type: String,
           primary_business_domain_sic_code: T.nilable(String),
           professional_license_number: T.nilable(String),
-          role_type: Telnyx::EnterprisePublic::RoleType::OrSymbol,
+          role_type: String,
           updated_at: Time,
-          website: T.nilable(String)
+          website: String
         ).returns(T.attached_class)
       end
       def self.new(
-        # Unique identifier of the enterprise
         id: nil,
         billing_address: nil,
         billing_contact: nil,
-        # Corporate registration number
+        # True once Branded Calling has been activated on this enterprise (see
+        # `POST /enterprises/{id}/branded_calling`).
+        branded_calling_enabled: nil,
+        # Optional corporate-registration / company-number identifier.
         corporate_registration_number: nil,
-        # ISO 3166-1 alpha-2 country code
         country_code: nil,
-        # When the enterprise was created
         created_at: nil,
-        # Customer reference identifier
         customer_reference: nil,
-        # DBA name
         doing_business_as: nil,
-        # D-U-N-S Number
+        # Optional D-U-N-S Number issued by Dun & Bradstreet.
         dun_bradstreet_number: nil,
-        # Federal Employer Identification Number
         fein: nil,
-        # Industry classification
         industry: nil,
-        # Legal name of the enterprise
+        jurisdiction_of_incorporation: nil,
         legal_name: nil,
-        # Employee count range
         number_of_employees: nil,
-        # Organization contact information. Note: the response returns this object with
-        # the phone field as 'phone' (not 'phone_number').
+        # True once Phone Number Reputation has been enabled on this enterprise (see
+        # `POST /enterprises/{id}/reputation`).
+        number_reputation_enabled: nil,
         organization_contact: nil,
-        # Legal structure type
         organization_legal_type: nil,
         organization_physical_address: nil,
-        # Type of organization
         organization_type: nil,
-        # SIC Code
+        # Optional SIC code for the primary line of business.
         primary_business_domain_sic_code: nil,
-        # Professional license number
+        # Optional professional-license number for regulated industries.
         professional_license_number: nil,
-        # Role type in Branded Calling / Number Reputation services
         role_type: nil,
-        # When the enterprise was last updated
         updated_at: nil,
-        # Company website URL
         website: nil
       )
       end
@@ -242,194 +232,32 @@ module Telnyx
             id: String,
             billing_address: Telnyx::BillingAddress,
             billing_contact: Telnyx::BillingContact,
+            branded_calling_enabled: T::Boolean,
             corporate_registration_number: T.nilable(String),
             country_code: String,
             created_at: Time,
-            customer_reference: T.nilable(String),
+            customer_reference: String,
             doing_business_as: String,
             dun_bradstreet_number: T.nilable(String),
-            fein: T.nilable(String),
-            industry: T.nilable(String),
+            fein: String,
+            industry: String,
+            jurisdiction_of_incorporation: String,
             legal_name: String,
-            number_of_employees:
-              T.nilable(
-                Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-              ),
+            number_of_employees: String,
+            number_reputation_enabled: T::Boolean,
             organization_contact: Telnyx::OrganizationContact,
-            organization_legal_type:
-              T.nilable(
-                Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-              ),
+            organization_legal_type: String,
             organization_physical_address: Telnyx::PhysicalAddress,
-            organization_type:
-              Telnyx::EnterprisePublic::OrganizationType::TaggedSymbol,
+            organization_type: String,
             primary_business_domain_sic_code: T.nilable(String),
             professional_license_number: T.nilable(String),
-            role_type: Telnyx::EnterprisePublic::RoleType::TaggedSymbol,
+            role_type: String,
             updated_at: Time,
-            website: T.nilable(String)
+            website: String
           }
         )
       end
       def to_hash
-      end
-
-      # Employee count range
-      module NumberOfEmployees
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::EnterprisePublic::NumberOfEmployees)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        NUMBER_OF_EMPLOYEES_1_10 =
-          T.let(
-            :"1-10",
-            Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-          )
-        NUMBER_OF_EMPLOYEES_11_50 =
-          T.let(
-            :"11-50",
-            Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-          )
-        NUMBER_OF_EMPLOYEES_51_200 =
-          T.let(
-            :"51-200",
-            Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-          )
-        NUMBER_OF_EMPLOYEES_201_500 =
-          T.let(
-            :"201-500",
-            Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-          )
-        NUMBER_OF_EMPLOYEES_501_2000 =
-          T.let(
-            :"501-2000",
-            Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-          )
-        NUMBER_OF_EMPLOYEES_2001_10000 =
-          T.let(
-            :"2001-10000",
-            Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-          )
-        NUMBER_OF_EMPLOYEES_10001_PLUS =
-          T.let(
-            :"10001+",
-            Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Telnyx::EnterprisePublic::NumberOfEmployees::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Legal structure type
-      module OrganizationLegalType
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::EnterprisePublic::OrganizationLegalType)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        CORPORATION =
-          T.let(
-            :corporation,
-            Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-          )
-        LLC =
-          T.let(
-            :llc,
-            Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-          )
-        PARTNERSHIP =
-          T.let(
-            :partnership,
-            Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-          )
-        NONPROFIT =
-          T.let(
-            :nonprofit,
-            Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-          )
-        OTHER =
-          T.let(
-            :other,
-            Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Telnyx::EnterprisePublic::OrganizationLegalType::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Type of organization
-      module OrganizationType
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::EnterprisePublic::OrganizationType)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        COMMERCIAL =
-          T.let(
-            :commercial,
-            Telnyx::EnterprisePublic::OrganizationType::TaggedSymbol
-          )
-        GOVERNMENT =
-          T.let(
-            :government,
-            Telnyx::EnterprisePublic::OrganizationType::TaggedSymbol
-          )
-        NON_PROFIT =
-          T.let(
-            :non_profit,
-            Telnyx::EnterprisePublic::OrganizationType::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Telnyx::EnterprisePublic::OrganizationType::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Role type in Branded Calling / Number Reputation services
-      module RoleType
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Telnyx::EnterprisePublic::RoleType) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ENTERPRISE =
-          T.let(:enterprise, Telnyx::EnterprisePublic::RoleType::TaggedSymbol)
-        BPO = T.let(:bpo, Telnyx::EnterprisePublic::RoleType::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Telnyx::EnterprisePublic::RoleType::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

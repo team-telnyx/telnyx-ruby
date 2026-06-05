@@ -18,12 +18,14 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :enterprise_id
 
-        # ID of the signed Letter of Authorization (LOA) document uploaded to the document
-        # service
+        # Id of the signed Letter of Authorization document, returned by the Telnyx
+        # Documents API after upload (upload via `POST /v2/documents`; see
+        # https://developers.telnyx.com/api/documents).
         sig { returns(String) }
         attr_accessor :loa_document_id
 
-        # Frequency for automatically refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         sig do
           returns(
             T.nilable(
@@ -52,10 +54,12 @@ module Telnyx
         end
         def self.new(
           enterprise_id:,
-          # ID of the signed Letter of Authorization (LOA) document uploaded to the document
-          # service
+          # Id of the signed Letter of Authorization document, returned by the Telnyx
+          # Documents API after upload (upload via `POST /v2/documents`; see
+          # https://developers.telnyx.com/api/documents).
           loa_document_id:,
-          # Frequency for automatically refreshing reputation data
+          # How often Telnyx refreshes the stored reputation data for this enterprise's
+          # registered numbers.
           check_frequency: nil,
           request_options: {}
         )
@@ -75,7 +79,8 @@ module Telnyx
         def to_hash
         end
 
-        # Frequency for automatically refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         module CheckFrequency
           extend Telnyx::Internal::Type::Enum
 

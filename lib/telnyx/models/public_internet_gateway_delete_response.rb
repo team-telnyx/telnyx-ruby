@@ -6,11 +6,16 @@ module Telnyx
     class PublicInternetGatewayDeleteResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::PublicInternetGatewayRead, nil]
-      optional :data, -> { Telnyx::PublicInternetGatewayRead }
+      #   @return [Telnyx::Models::PublicInternetGatewayDeleteResponse::Data, nil]
+      optional :data, -> { Telnyx::Models::PublicInternetGatewayDeleteResponse::Data }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::PublicInternetGatewayRead]
+      #   @param data [Telnyx::Models::PublicInternetGatewayDeleteResponse::Data]
+
+      # @see Telnyx::Models::PublicInternetGatewayDeleteResponse#data
+      class Data < Telnyx::Models::Record
+        # @!method initialize
+      end
     end
   end
 end

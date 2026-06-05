@@ -52,21 +52,21 @@ module Telnyx
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
-        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
+        # @param external_llm [Telnyx::Models::AI::AssistantCreateParams::ExternalLlm]
         #
-        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
+        # @param fallback_config [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
         # @param insight_settings [Telnyx::Models::AI::InsightSettings]
         #
-        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        # @param integrations [Array<Telnyx::Models::AI::AssistantCreateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        # @param interruption_settings [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantCreateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
@@ -74,7 +74,7 @@ module Telnyx
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
-        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
+        # @param post_conversation_settings [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -155,9 +155,9 @@ module Telnyx
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
-        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
+        # @param external_llm [Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm]
         #
-        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
+        # @param fallback_config [Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
@@ -165,13 +165,13 @@ module Telnyx
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
-        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        # @param integrations [Array<Telnyx::Models::AI::AssistantUpdateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        # @param interruption_settings [Telnyx::Models::AI::AssistantUpdateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantUpdateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
@@ -181,7 +181,7 @@ module Telnyx
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
-        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
+        # @param post_conversation_settings [Telnyx::Models::AI::AssistantUpdateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #

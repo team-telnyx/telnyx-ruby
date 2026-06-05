@@ -2,7 +2,9 @@ module Telnyx
   module Resources
     class TermsOfService
       class NumberReputation
-        def agree: (?request_options: Telnyx::request_opts) -> nil
+        def agree: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::TermsOfService::NumberReputationAgreeResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

@@ -14,14 +14,16 @@ module Telnyx
         required :enterprise_id, String
 
         # @!attribute loa_document_id
-        #   ID of the signed Letter of Authorization (LOA) document uploaded to the document
-        #   service
+        #   Id of the signed Letter of Authorization document, returned by the Telnyx
+        #   Documents API after upload (upload via `POST /v2/documents`; see
+        #   https://developers.telnyx.com/api/documents).
         #
         #   @return [String]
         required :loa_document_id, String
 
         # @!attribute check_frequency
-        #   Frequency for automatically refreshing reputation data
+        #   How often Telnyx refreshes the stored reputation data for this enterprise's
+        #   registered numbers.
         #
         #   @return [Symbol, Telnyx::Models::Enterprises::ReputationEnableParams::CheckFrequency, nil]
         optional :check_frequency, enum: -> { Telnyx::Enterprises::ReputationEnableParams::CheckFrequency }
@@ -32,13 +34,14 @@ module Telnyx
         #
         #   @param enterprise_id [String]
         #
-        #   @param loa_document_id [String] ID of the signed Letter of Authorization (LOA) document uploaded to the document
+        #   @param loa_document_id [String] Id of the signed Letter of Authorization document, returned by the Telnyx Docume
         #
-        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationEnableParams::CheckFrequency] Frequency for automatically refreshing reputation data
+        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationEnableParams::CheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-        # Frequency for automatically refreshing reputation data
+        # How often Telnyx refreshes the stored reputation data for this enterprise's
+        # registered numbers.
         module CheckFrequency
           extend Telnyx::Internal::Type::Enum
 

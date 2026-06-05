@@ -12,9 +12,7 @@ module Telnyx
             )
           end
 
-        sig do
-          returns(T.nilable(Telnyx::Enterprises::EnterpriseReputationPublic))
-        end
+        sig { returns(Telnyx::Enterprises::EnterpriseReputationPublic) }
         attr_reader :data
 
         sig do
@@ -29,7 +27,7 @@ module Telnyx
             data: Telnyx::Enterprises::EnterpriseReputationPublic::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(data: nil)
+        def self.new(data:)
         end
 
         sig do

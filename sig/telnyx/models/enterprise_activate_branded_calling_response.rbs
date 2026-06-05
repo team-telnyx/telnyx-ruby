@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type enterprise_activate_branded_calling_response =
+      { data: Telnyx::EnterprisePublic }
+
+    class EnterpriseActivateBrandedCallingResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::EnterprisePublic
+
+      def initialize: (data: Telnyx::EnterprisePublic) -> void
+
+      def to_hash: -> { data: Telnyx::EnterprisePublic }
+    end
+  end
+end

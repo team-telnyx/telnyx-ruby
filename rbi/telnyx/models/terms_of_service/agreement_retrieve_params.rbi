@@ -1,0 +1,40 @@
+# typed: strong
+
+module Telnyx
+  module Models
+    module TermsOfService
+      class AgreementRetrieveParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::TermsOfService::AgreementRetrieveParams,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        sig { returns(String) }
+        attr_accessor :agreement_id
+
+        sig do
+          params(
+            agreement_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(T.attached_class)
+        end
+        def self.new(agreement_id:, request_options: {})
+        end
+
+        sig do
+          override.returns(
+            { agreement_id: String, request_options: Telnyx::RequestOptions }
+          )
+        end
+        def to_hash
+        end
+      end
+    end
+  end
+end
