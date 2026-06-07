@@ -20,6 +20,23 @@ module Telnyx
       sig { returns(Telnyx::Resources::TermsOfService::BrandedCalling) }
       attr_reader :branded_calling
 
+      # Returns the available Terms of Service agreements (product, current version,
+      # terms URL, effective date). Omit `product_type` to return all products; pass it
+      # to scope to one.
+      sig do
+        params(
+          product_type:
+            Telnyx::TermsOfServiceRetrieveInfoParams::ProductType::OrSymbol,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::TermsOfServiceRetrieveInfoResponse)
+      end
+      def retrieve_info(
+        # Optional product filter. Omit to return info for all products.
+        product_type: nil,
+        request_options: {}
+      )
+      end
+
       # Returns whether the authenticated user has agreed to the current Number
       # Reputation Terms of Service. Used during onboarding to decide whether to prompt
       # the user with the ToS dialog before continuing.

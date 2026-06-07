@@ -1610,6 +1610,8 @@ module Telnyx
 
   TermsOfService = Telnyx::Models::TermsOfService
 
+  TermsOfServiceRetrieveInfoParams = Telnyx::Models::TermsOfServiceRetrieveInfoParams
+
   TermsOfServiceStatusParams = Telnyx::Models::TermsOfServiceStatusParams
 
   Texml = Telnyx::Models::Texml

@@ -20,6 +20,31 @@ module Telnyx
       # @return [Telnyx::Resources::TermsOfService::BrandedCalling]
       attr_reader :branded_calling
 
+      # Returns the available Terms of Service agreements (product, current version,
+      # terms URL, effective date). Omit `product_type` to return all products; pass it
+      # to scope to one.
+      #
+      # @overload retrieve_info(product_type: nil, request_options: {})
+      #
+      # @param product_type [Symbol, Telnyx::Models::TermsOfServiceRetrieveInfoParams::ProductType] Optional product filter. Omit to return info for all products.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::TermsOfServiceRetrieveInfoResponse]
+      #
+      # @see Telnyx::Models::TermsOfServiceRetrieveInfoParams
+      def retrieve_info(params = {})
+        parsed, options = Telnyx::TermsOfServiceRetrieveInfoParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: "terms_of_service/info",
+          query: query,
+          model: Telnyx::Models::TermsOfServiceRetrieveInfoResponse,
+          options: options
+        )
+      end
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::TermsOfServiceStatusParams} for more details.
       #
