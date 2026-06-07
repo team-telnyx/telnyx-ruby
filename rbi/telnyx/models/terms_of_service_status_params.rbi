@@ -11,8 +11,7 @@ module Telnyx
           T.any(Telnyx::TermsOfServiceStatusParams, Telnyx::Internal::AnyHash)
         end
 
-      # Which product's ToS to check. Defaults to `branded_calling`; pass
-      # `number_reputation` to check the Number Reputation Terms of Service.
+      # Which product's ToS to check. Defaults to `branded_calling`.
       sig do
         returns(
           T.nilable(Telnyx::TermsOfServiceStatusParams::ProductType::OrSymbol)
@@ -36,8 +35,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # Which product's ToS to check. Defaults to `branded_calling`; pass
-        # `number_reputation` to check the Number Reputation Terms of Service.
+        # Which product's ToS to check. Defaults to `branded_calling`.
         product_type: nil,
         request_options: {}
       )
@@ -55,8 +53,7 @@ module Telnyx
       def to_hash
       end
 
-      # Which product's ToS to check. Defaults to `branded_calling`; pass
-      # `number_reputation` to check the Number Reputation Terms of Service.
+      # Which product's ToS to check. Defaults to `branded_calling`.
       module ProductType
         extend Telnyx::Internal::Type::Enum
 

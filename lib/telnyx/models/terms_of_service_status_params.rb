@@ -8,22 +8,17 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute product_type
-      #   Which product's ToS to check. Defaults to `branded_calling`; pass
-      #   `number_reputation` to check the Number Reputation Terms of Service.
+      #   Which product's ToS to check. Defaults to `branded_calling`.
       #
       #   @return [Symbol, Telnyx::Models::TermsOfServiceStatusParams::ProductType, nil]
       optional :product_type, enum: -> { Telnyx::TermsOfServiceStatusParams::ProductType }
 
       # @!method initialize(product_type: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::TermsOfServiceStatusParams} for more details.
-      #
-      #   @param product_type [Symbol, Telnyx::Models::TermsOfServiceStatusParams::ProductType] Which product's ToS to check. Defaults to `branded_calling`; pass `number_reputa
+      #   @param product_type [Symbol, Telnyx::Models::TermsOfServiceStatusParams::ProductType] Which product's ToS to check. Defaults to `branded_calling`.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      # Which product's ToS to check. Defaults to `branded_calling`; pass
-      # `number_reputation` to check the Number Reputation Terms of Service.
+      # Which product's ToS to check. Defaults to `branded_calling`.
       module ProductType
         extend Telnyx::Internal::Type::Enum
 
