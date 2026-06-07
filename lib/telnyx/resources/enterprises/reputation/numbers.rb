@@ -50,9 +50,13 @@ module Telnyx
           # enterprise. The response includes the latest reputation snapshot per number
           # where one has been collected.
           #
-          # @overload list(enterprise_id, page_number: nil, page_size: nil, phone_number: nil, request_options: {})
+          # @overload list(enterprise_id, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, phone_number: nil, request_options: {})
           #
           # @param enterprise_id [String] The enterprise id. Lowercase UUID.
+          #
+          # @param filter_phone_number_contains [String] Partial match on phone number. Must contain at least 5 digits.
+          #
+          # @param filter_phone_number_eq [String] Exact phone-number match (E.164).
           #
           # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
           #
@@ -71,7 +75,12 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["enterprises/%1$s/reputation/numbers", enterprise_id],
-              query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+              query: query.transform_keys(
+                filter_phone_number_contains: "filter[phone_number][contains]",
+                filter_phone_number_eq: "filter[phone_number][eq]",
+                page_number: "page[number]",
+                page_size: "page[size]"
+              ),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::Models::Enterprises::Reputation::NumberListResponse,
               options: options

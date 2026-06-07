@@ -71,15 +71,23 @@ module Telnyx
       )
       end
 
-      # Convenience endpoint that returns every DIR you own without scoping to a
-      # specific enterprise. Equivalent to calling
-      # `GET /v2/enterprises/{enterprise_id}/dir` for each enterprise and concatenating
-      # the results, but server-side and paginated as a single list.
+      # Returns every DIR (Display Identity Record) you own, across all of your
+      # enterprises, as a single list. Pagination is JSON:API style (`page[number]`,
+      # `page[size]`, max 250). Supports `filter[]` query params:
+      # `filter[enterprise_id]`, `filter[status]`, `filter[display_name][contains]`,
+      # `filter[call_reason][contains]`, plus the renewal-window filters
+      # `filter[expiring_at][gte]` / `filter[expiring_at][lte]`. Sortable by
+      # `created_at`, `updated_at`, `display_name`, `status` (prefix `-` for descending;
+      # default `-created_at`).
       sig do
         params(
           enterprise_id: String,
+          filter_call_reason_contains: String,
+          filter_display_name_contains: String,
+          filter_enterprise_id: String,
           filter_expiring_at_gte: Time,
           filter_expiring_at_lte: Time,
+          filter_status: Telnyx::DirListParams::FilterStatus::OrSymbol,
           page_number: Integer,
           page_size: Integer,
           search: String,
@@ -95,11 +103,19 @@ module Telnyx
       def list(
         # Restrict results to a single enterprise.
         enterprise_id: nil,
+        # Case-insensitive partial match on call reason.
+        filter_call_reason_contains: nil,
+        # Case-insensitive partial match on display name.
+        filter_display_name_contains: nil,
+        # Filter by enterprise ID.
+        filter_enterprise_id: nil,
         # Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp.
         # Pairs with the `[lte]` variant to build renewal-window dashboards.
         filter_expiring_at_gte: nil,
         # Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
         filter_expiring_at_lte: nil,
+        # Filter by DIR status.
+        filter_status: nil,
         # 1-based page number. Out-of-range values return an empty page with correct meta.
         page_number: nil,
         # Items per page. Maximum 250; values above are clamped to 250.

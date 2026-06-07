@@ -13,6 +13,18 @@ module Telnyx
         #   @return [String]
         required :enterprise_id, String
 
+        # @!attribute filter_call_reason_contains
+        #   Case-insensitive partial match on call reason.
+        #
+        #   @return [String, nil]
+        optional :filter_call_reason_contains, String
+
+        # @!attribute filter_display_name_contains
+        #   Case-insensitive partial match on display name.
+        #
+        #   @return [String, nil]
+        optional :filter_display_name_contains, String
+
         # @!attribute filter_expiring_at_gte
         #   Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp.
         #
@@ -33,6 +45,12 @@ module Telnyx
         #
         #   @return [Integer, nil]
         optional :filter_expiring_within_days, Integer
+
+        # @!attribute filter_status
+        #   Filter by DIR status.
+        #
+        #   @return [Symbol, Telnyx::Models::Enterprises::DirListParams::FilterStatus, nil]
+        optional :filter_status, enum: -> { Telnyx::Enterprises::DirListParams::FilterStatus }
 
         # @!attribute page_number
         #   1-based page number. Out-of-range values return an empty page with correct meta.
@@ -66,17 +84,23 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Enterprises::DirListParams::Status, nil]
         optional :status, enum: -> { Telnyx::Enterprises::DirListParams::Status }
 
-        # @!method initialize(enterprise_id:, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_expiring_within_days: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
+        # @!method initialize(enterprise_id:, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_expiring_within_days: nil, filter_status: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Enterprises::DirListParams} for more details.
         #
         #   @param enterprise_id [String]
+        #
+        #   @param filter_call_reason_contains [String] Case-insensitive partial match on call reason.
+        #
+        #   @param filter_display_name_contains [String] Case-insensitive partial match on display name.
         #
         #   @param filter_expiring_at_gte [Time] Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp.
         #
         #   @param filter_expiring_at_lte [Time] Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
         #
         #   @param filter_expiring_within_days [Integer] Convenience: returns DIRs whose `expiring_at` falls within the next N days (1–36
+        #
+        #   @param filter_status [Symbol, Telnyx::Models::Enterprises::DirListParams::FilterStatus] Filter by DIR status.
         #
         #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
@@ -89,6 +113,25 @@ module Telnyx
         #   @param status [Symbol, Telnyx::Models::Enterprises::DirListParams::Status] Filter by DIR status.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+        # Filter by DIR status.
+        module FilterStatus
+          extend Telnyx::Internal::Type::Enum
+
+          DRAFT = :draft
+          SUBMITTED = :submitted
+          IN_REVIEW = :in_review
+          VERIFIED = :verified
+          REJECTED = :rejected
+          UNSUCCESSFUL = :unsuccessful
+          SUSPENDED = :suspended
+          EXPIRED = :expired
+          INFRINGEMENT_CLAIMED = :infringement_claimed
+          PERMANENTLY_REJECTED = :permanently_rejected
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,
         # `submitted_at`, `verified_at`, `expiring_at`. Prefix with `-` for descending.

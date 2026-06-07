@@ -59,6 +59,7 @@ module Telnyx
       ) -> Telnyx::Models::EnterpriseUpdateResponse
 
       def list: (
+        ?filter_legal_name_contains: String,
         ?legal_name: String,
         ?page_number: Integer,
         ?page_size: Integer,

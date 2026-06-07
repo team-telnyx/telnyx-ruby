@@ -185,6 +185,7 @@ module Telnyx
       # maximum is 250.
       sig do
         params(
+          filter_legal_name_contains: String,
           legal_name: String,
           page_number: Integer,
           page_size: Integer,
@@ -194,6 +195,8 @@ module Telnyx
         )
       end
       def list(
+        # Case-insensitive partial match on legal name.
+        filter_legal_name_contains: nil,
         # Filter by legal name (partial match).
         legal_name: nil,
         # 1-based page number. Out-of-range values return an empty page with correct meta.

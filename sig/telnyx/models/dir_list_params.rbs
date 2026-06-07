@@ -3,8 +3,12 @@ module Telnyx
     type dir_list_params =
       {
         enterprise_id: String,
+        filter_call_reason_contains: String,
+        filter_display_name_contains: String,
+        filter_enterprise_id: String,
         filter_expiring_at_gte: Time,
         filter_expiring_at_lte: Time,
+        filter_status: Telnyx::Models::DirListParams::filter_status,
         page_number: Integer,
         page_size: Integer,
         search: String,
@@ -21,6 +25,18 @@ module Telnyx
 
       def enterprise_id=: (String) -> String
 
+      attr_reader filter_call_reason_contains: String?
+
+      def filter_call_reason_contains=: (String) -> String
+
+      attr_reader filter_display_name_contains: String?
+
+      def filter_display_name_contains=: (String) -> String
+
+      attr_reader filter_enterprise_id: String?
+
+      def filter_enterprise_id=: (String) -> String
+
       attr_reader filter_expiring_at_gte: Time?
 
       def filter_expiring_at_gte=: (Time) -> Time
@@ -28,6 +44,12 @@ module Telnyx
       attr_reader filter_expiring_at_lte: Time?
 
       def filter_expiring_at_lte=: (Time) -> Time
+
+      attr_reader filter_status: Telnyx::Models::DirListParams::filter_status?
+
+      def filter_status=: (
+        Telnyx::Models::DirListParams::filter_status
+      ) -> Telnyx::Models::DirListParams::filter_status
 
       attr_reader page_number: Integer?
 
@@ -55,8 +77,12 @@ module Telnyx
 
       def initialize: (
         ?enterprise_id: String,
+        ?filter_call_reason_contains: String,
+        ?filter_display_name_contains: String,
+        ?filter_enterprise_id: String,
         ?filter_expiring_at_gte: Time,
         ?filter_expiring_at_lte: Time,
+        ?filter_status: Telnyx::Models::DirListParams::filter_status,
         ?page_number: Integer,
         ?page_size: Integer,
         ?search: String,
@@ -67,8 +93,12 @@ module Telnyx
 
       def to_hash: -> {
         enterprise_id: String,
+        filter_call_reason_contains: String,
+        filter_display_name_contains: String,
+        filter_enterprise_id: String,
         filter_expiring_at_gte: Time,
         filter_expiring_at_lte: Time,
+        filter_status: Telnyx::Models::DirListParams::filter_status,
         page_number: Integer,
         page_size: Integer,
         search: String,
@@ -76,6 +106,35 @@ module Telnyx
         status: Telnyx::Models::DirListParams::status,
         request_options: Telnyx::RequestOptions
       }
+
+      type filter_status =
+        :draft
+        | :submitted
+        | :in_review
+        | :verified
+        | :rejected
+        | :unsuccessful
+        | :suspended
+        | :expired
+        | :infringement_claimed
+        | :permanently_rejected
+
+      module FilterStatus
+        extend Telnyx::Internal::Type::Enum
+
+        DRAFT: :draft
+        SUBMITTED: :submitted
+        IN_REVIEW: :in_review
+        VERIFIED: :verified
+        REJECTED: :rejected
+        UNSUCCESSFUL: :unsuccessful
+        SUSPENDED: :suspended
+        EXPIRED: :expired
+        INFRINGEMENT_CLAIMED: :infringement_claimed
+        PERMANENTLY_REJECTED: :permanently_rejected
+
+        def self?.values: -> ::Array[Telnyx::Models::DirListParams::filter_status]
+      end
 
       type sort =
         :created_at
