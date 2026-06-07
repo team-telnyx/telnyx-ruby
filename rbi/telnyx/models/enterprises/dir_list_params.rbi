@@ -85,13 +85,6 @@ module Telnyx
         sig { params(page_size: Integer).void }
         attr_writer :page_size
 
-        # Case-insensitive partial match on `display_name`.
-        sig { returns(T.nilable(String)) }
-        attr_reader :search
-
-        sig { params(search: String).void }
-        attr_writer :search
-
         # Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,
         # `submitted_at`, `verified_at`, `expiring_at`. Prefix with `-` for descending.
         # Default `-created_at`.
@@ -105,21 +98,6 @@ module Telnyx
         end
         attr_writer :sort
 
-        # Filter by DIR status.
-        sig do
-          returns(
-            T.nilable(Telnyx::Enterprises::DirListParams::Status::OrSymbol)
-          )
-        end
-        attr_reader :status
-
-        sig do
-          params(
-            status: Telnyx::Enterprises::DirListParams::Status::OrSymbol
-          ).void
-        end
-        attr_writer :status
-
         sig do
           params(
             enterprise_id: String,
@@ -132,9 +110,7 @@ module Telnyx
               Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
-            search: String,
             sort: Telnyx::Enterprises::DirListParams::Sort::OrSymbol,
-            status: Telnyx::Enterprises::DirListParams::Status::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -159,14 +135,10 @@ module Telnyx
           page_number: nil,
           # Items per page. Maximum 250; values above are clamped to 250.
           page_size: nil,
-          # Case-insensitive partial match on `display_name`.
-          search: nil,
           # Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,
           # `submitted_at`, `verified_at`, `expiring_at`. Prefix with `-` for descending.
           # Default `-created_at`.
           sort: nil,
-          # Filter by DIR status.
-          status: nil,
           request_options: {}
         )
         end
@@ -184,9 +156,7 @@ module Telnyx
                 Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
               page_number: Integer,
               page_size: Integer,
-              search: String,
               sort: Telnyx::Enterprises::DirListParams::Sort::OrSymbol,
-              status: Telnyx::Enterprises::DirListParams::Status::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )
@@ -352,76 +322,6 @@ module Telnyx
           sig do
             override.returns(
               T::Array[Telnyx::Enterprises::DirListParams::Sort::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Filter by DIR status.
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::Enterprises::DirListParams::Status)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          DRAFT =
-            T.let(
-              :draft,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          SUBMITTED =
-            T.let(
-              :submitted,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          IN_REVIEW =
-            T.let(
-              :in_review,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          VERIFIED =
-            T.let(
-              :verified,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          REJECTED =
-            T.let(
-              :rejected,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          UNSUCCESSFUL =
-            T.let(
-              :unsuccessful,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          SUSPENDED =
-            T.let(
-              :suspended,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          EXPIRED =
-            T.let(
-              :expired,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          INFRINGEMENT_CLAIMED =
-            T.let(
-              :infringement_claimed,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-          PERMANENTLY_REJECTED =
-            T.let(
-              :permanently_rejected,
-              Telnyx::Enterprises::DirListParams::Status::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[Telnyx::Enterprises::DirListParams::Status::TaggedSymbol]
             )
           end
           def self.values

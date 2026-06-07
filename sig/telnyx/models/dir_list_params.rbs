@@ -2,7 +2,6 @@ module Telnyx
   module Models
     type dir_list_params =
       {
-        enterprise_id: String,
         filter_call_reason_contains: String,
         filter_display_name_contains: String,
         filter_enterprise_id: String,
@@ -11,19 +10,13 @@ module Telnyx
         filter_status: Telnyx::Models::DirListParams::filter_status,
         page_number: Integer,
         page_size: Integer,
-        search: String,
-        sort: Telnyx::Models::DirListParams::sort,
-        status: Telnyx::Models::DirListParams::status
+        sort: Telnyx::Models::DirListParams::sort
       }
       & Telnyx::Internal::Type::request_parameters
 
     class DirListParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
-
-      attr_reader enterprise_id: String?
-
-      def enterprise_id=: (String) -> String
 
       attr_reader filter_call_reason_contains: String?
 
@@ -59,24 +52,13 @@ module Telnyx
 
       def page_size=: (Integer) -> Integer
 
-      attr_reader search: String?
-
-      def search=: (String) -> String
-
       attr_reader sort: Telnyx::Models::DirListParams::sort?
 
       def sort=: (
         Telnyx::Models::DirListParams::sort
       ) -> Telnyx::Models::DirListParams::sort
 
-      attr_reader status: Telnyx::Models::DirListParams::status?
-
-      def status=: (
-        Telnyx::Models::DirListParams::status
-      ) -> Telnyx::Models::DirListParams::status
-
       def initialize: (
-        ?enterprise_id: String,
         ?filter_call_reason_contains: String,
         ?filter_display_name_contains: String,
         ?filter_enterprise_id: String,
@@ -85,14 +67,11 @@ module Telnyx
         ?filter_status: Telnyx::Models::DirListParams::filter_status,
         ?page_number: Integer,
         ?page_size: Integer,
-        ?search: String,
         ?sort: Telnyx::Models::DirListParams::sort,
-        ?status: Telnyx::Models::DirListParams::status,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        enterprise_id: String,
         filter_call_reason_contains: String,
         filter_display_name_contains: String,
         filter_enterprise_id: String,
@@ -101,9 +80,7 @@ module Telnyx
         filter_status: Telnyx::Models::DirListParams::filter_status,
         page_number: Integer,
         page_size: Integer,
-        search: String,
         sort: Telnyx::Models::DirListParams::sort,
-        status: Telnyx::Models::DirListParams::status,
         request_options: Telnyx::RequestOptions
       }
 
@@ -159,35 +136,6 @@ module Telnyx
         STATUS_DESC: :"-status"
 
         def self?.values: -> ::Array[Telnyx::Models::DirListParams::sort]
-      end
-
-      type status =
-        :draft
-        | :submitted
-        | :in_review
-        | :verified
-        | :rejected
-        | :unsuccessful
-        | :suspended
-        | :expired
-        | :infringement_claimed
-        | :permanently_rejected
-
-      module Status
-        extend Telnyx::Internal::Type::Enum
-
-        DRAFT: :draft
-        SUBMITTED: :submitted
-        IN_REVIEW: :in_review
-        VERIFIED: :verified
-        REJECTED: :rejected
-        UNSUCCESSFUL: :unsuccessful
-        SUSPENDED: :suspended
-        EXPIRED: :expired
-        INFRINGEMENT_CLAIMED: :infringement_claimed
-        PERMANENTLY_REJECTED: :permanently_rejected
-
-        def self?.values: -> ::Array[Telnyx::Models::DirListParams::status]
       end
     end
   end

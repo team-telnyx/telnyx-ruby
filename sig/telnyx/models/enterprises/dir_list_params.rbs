@@ -12,9 +12,7 @@ module Telnyx
           filter_status: Telnyx::Models::Enterprises::DirListParams::filter_status,
           page_number: Integer,
           page_size: Integer,
-          search: String,
-          sort: Telnyx::Models::Enterprises::DirListParams::sort,
-          status: Telnyx::Models::Enterprises::DirListParams::status
+          sort: Telnyx::Models::Enterprises::DirListParams::sort
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -58,21 +56,11 @@ module Telnyx
 
         def page_size=: (Integer) -> Integer
 
-        attr_reader search: String?
-
-        def search=: (String) -> String
-
         attr_reader sort: Telnyx::Models::Enterprises::DirListParams::sort?
 
         def sort=: (
           Telnyx::Models::Enterprises::DirListParams::sort
         ) -> Telnyx::Models::Enterprises::DirListParams::sort
-
-        attr_reader status: Telnyx::Models::Enterprises::DirListParams::status?
-
-        def status=: (
-          Telnyx::Models::Enterprises::DirListParams::status
-        ) -> Telnyx::Models::Enterprises::DirListParams::status
 
         def initialize: (
           enterprise_id: String,
@@ -84,9 +72,7 @@ module Telnyx
           ?filter_status: Telnyx::Models::Enterprises::DirListParams::filter_status,
           ?page_number: Integer,
           ?page_size: Integer,
-          ?search: String,
           ?sort: Telnyx::Models::Enterprises::DirListParams::sort,
-          ?status: Telnyx::Models::Enterprises::DirListParams::status,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -100,9 +86,7 @@ module Telnyx
           filter_status: Telnyx::Models::Enterprises::DirListParams::filter_status,
           page_number: Integer,
           page_size: Integer,
-          search: String,
           sort: Telnyx::Models::Enterprises::DirListParams::sort,
-          status: Telnyx::Models::Enterprises::DirListParams::status,
           request_options: Telnyx::RequestOptions
         }
 
@@ -170,35 +154,6 @@ module Telnyx
           MINUS_EXPIRING_AT: :"-expiring_at"
 
           def self?.values: -> ::Array[Telnyx::Models::Enterprises::DirListParams::sort]
-        end
-
-        type status =
-          :draft
-          | :submitted
-          | :in_review
-          | :verified
-          | :rejected
-          | :unsuccessful
-          | :suspended
-          | :expired
-          | :infringement_claimed
-          | :permanently_rejected
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          DRAFT: :draft
-          SUBMITTED: :submitted
-          IN_REVIEW: :in_review
-          VERIFIED: :verified
-          REJECTED: :rejected
-          UNSUCCESSFUL: :unsuccessful
-          SUSPENDED: :suspended
-          EXPIRED: :expired
-          INFRINGEMENT_CLAIMED: :infringement_claimed
-          PERMANENTLY_REJECTED: :permanently_rejected
-
-          def self?.values: -> ::Array[Telnyx::Models::Enterprises::DirListParams::status]
         end
       end
     end

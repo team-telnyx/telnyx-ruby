@@ -33,9 +33,7 @@ module Telnyx
           ?filter_status: Telnyx::Models::Enterprises::DirListParams::filter_status,
           ?page_number: Integer,
           ?page_size: Integer,
-          ?search: String,
           ?sort: Telnyx::Models::Enterprises::DirListParams::sort,
-          ?status: Telnyx::Models::Enterprises::DirListParams::status,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::DirListResponse]
 

@@ -24,7 +24,6 @@ module Telnyx
       ) -> Telnyx::Models::DirUpdateResponse
 
       def list: (
-        ?enterprise_id: String,
         ?filter_call_reason_contains: String,
         ?filter_display_name_contains: String,
         ?filter_enterprise_id: String,
@@ -33,9 +32,7 @@ module Telnyx
         ?filter_status: Telnyx::Models::DirListParams::filter_status,
         ?page_number: Integer,
         ?page_size: Integer,
-        ?search: String,
         ?sort: Telnyx::Models::DirListParams::sort,
-        ?status: Telnyx::Models::DirListParams::status,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::DirListResponse]
 

@@ -14,7 +14,6 @@ module Telnyx
           ?filter_phone_number_eq: String,
           ?page_number: Integer,
           ?page_size: Integer,
-          ?phone_number: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Reputation::NumberListResponse]
 
