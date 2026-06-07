@@ -90,9 +90,7 @@ module Telnyx
       # `created_at`, `updated_at`, `display_name`, `status` (prefix `-` for descending;
       # default `-created_at`).
       #
-      # @overload list(enterprise_id: nil, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_enterprise_id: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_status: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
-      #
-      # @param enterprise_id [String] Restrict results to a single enterprise.
+      # @overload list(filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_enterprise_id: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_status: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
       # @param filter_call_reason_contains [String] Case-insensitive partial match on call reason.
       #
@@ -110,11 +108,7 @@ module Telnyx
       #
       # @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
       #
-      # @param search [String] Case-insensitive partial match on `display_name` or call reason.
-      #
       # @param sort [Symbol, Telnyx::Models::DirListParams::Sort] Sort field. Allowed values: `created_at`, `updated_at`, `display_name`, `status`
-      #
-      # @param status [Symbol, Telnyx::Models::DirListParams::Status] Filter by DIR status.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

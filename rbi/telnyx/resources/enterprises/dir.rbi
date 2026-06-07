@@ -113,9 +113,7 @@ module Telnyx
               Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
-            search: String,
             sort: Telnyx::Enterprises::DirListParams::Sort::OrSymbol,
-            status: Telnyx::Enterprises::DirListParams::Status::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
@@ -145,14 +143,10 @@ module Telnyx
           page_number: nil,
           # Items per page. Maximum 250; values above are clamped to 250.
           page_size: nil,
-          # Case-insensitive partial match on `display_name`.
-          search: nil,
           # Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,
           # `submitted_at`, `verified_at`, `expiring_at`. Prefix with `-` for descending.
           # Default `-created_at`.
           sort: nil,
-          # Filter by DIR status.
-          status: nil,
           request_options: {}
         )
         end

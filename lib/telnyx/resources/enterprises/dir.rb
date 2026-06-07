@@ -97,7 +97,7 @@ module Telnyx
         # `submitted_at`, `verified_at`, `expiring_at` (prefix `-` for descending; default
         # `-created_at`).
         #
-        # @overload list(enterprise_id, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_expiring_within_days: nil, filter_status: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
+        # @overload list(enterprise_id, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_expiring_within_days: nil, filter_status: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #
         # @param enterprise_id [String] The enterprise id. Lowercase UUID.
         #
@@ -117,11 +117,7 @@ module Telnyx
         #
         # @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
-        # @param search [String] Case-insensitive partial match on `display_name`.
-        #
         # @param sort [Symbol, Telnyx::Models::Enterprises::DirListParams::Sort] Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`, `subm
-        #
-        # @param status [Symbol, Telnyx::Models::Enterprises::DirListParams::Status] Filter by DIR status.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -50,7 +50,7 @@ module Telnyx
           # enterprise. The response includes the latest reputation snapshot per number
           # where one has been collected.
           #
-          # @overload list(enterprise_id, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, phone_number: nil, request_options: {})
+          # @overload list(enterprise_id, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, request_options: {})
           #
           # @param enterprise_id [String] The enterprise id. Lowercase UUID.
           #
@@ -61,8 +61,6 @@ module Telnyx
           # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
           #
           # @param page_size [Integer] Items per page. Default 10. Maximum 250; values above are clamped to 250.
-          #
-          # @param phone_number [String] Filter by specific phone number (E.164 format).
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

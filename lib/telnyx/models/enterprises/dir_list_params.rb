@@ -64,12 +64,6 @@ module Telnyx
         #   @return [Integer, nil]
         optional :page_size, Integer
 
-        # @!attribute search
-        #   Case-insensitive partial match on `display_name`.
-        #
-        #   @return [String, nil]
-        optional :search, String
-
         # @!attribute sort
         #   Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,
         #   `submitted_at`, `verified_at`, `expiring_at`. Prefix with `-` for descending.
@@ -78,13 +72,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Enterprises::DirListParams::Sort, nil]
         optional :sort, enum: -> { Telnyx::Enterprises::DirListParams::Sort }
 
-        # @!attribute status
-        #   Filter by DIR status.
-        #
-        #   @return [Symbol, Telnyx::Models::Enterprises::DirListParams::Status, nil]
-        optional :status, enum: -> { Telnyx::Enterprises::DirListParams::Status }
-
-        # @!method initialize(enterprise_id:, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_expiring_within_days: nil, filter_status: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
+        # @!method initialize(enterprise_id:, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_expiring_within_days: nil, filter_status: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Enterprises::DirListParams} for more details.
         #
@@ -106,11 +94,7 @@ module Telnyx
         #
         #   @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
-        #   @param search [String] Case-insensitive partial match on `display_name`.
-        #
         #   @param sort [Symbol, Telnyx::Models::Enterprises::DirListParams::Sort] Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`, `subm
-        #
-        #   @param status [Symbol, Telnyx::Models::Enterprises::DirListParams::Status] Filter by DIR status.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -153,25 +137,6 @@ module Telnyx
           MINUS_VERIFIED_AT = :"-verified_at"
           EXPIRING_AT = :expiring_at
           MINUS_EXPIRING_AT = :"-expiring_at"
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # Filter by DIR status.
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          DRAFT = :draft
-          SUBMITTED = :submitted
-          IN_REVIEW = :in_review
-          VERIFIED = :verified
-          REJECTED = :rejected
-          UNSUCCESSFUL = :unsuccessful
-          SUSPENDED = :suspended
-          EXPIRED = :expired
-          INFRINGEMENT_CLAIMED = :infringement_claimed
-          PERMANENTLY_REJECTED = :permanently_rejected
 
           # @!method self.values
           #   @return [Array<Symbol>]

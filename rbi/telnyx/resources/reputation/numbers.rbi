@@ -35,7 +35,6 @@ module Telnyx
             filter_phone_number_eq: String,
             page_number: Integer,
             page_size: Integer,
-            phone_number: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
@@ -54,8 +53,6 @@ module Telnyx
           page_number: nil,
           # Items per page. Maximum 250; values above are clamped to 250.
           page_size: nil,
-          # Filter by specific phone number (E.164 format).
-          phone_number: nil,
           request_options: {}
         )
         end
