@@ -38,6 +38,8 @@ module Telnyx
           sig do
             params(
               enterprise_id: String,
+              filter_phone_number_contains: String,
+              filter_phone_number_eq: String,
               page_number: Integer,
               page_size: Integer,
               phone_number: String,
@@ -51,6 +53,10 @@ module Telnyx
           def list(
             # The enterprise id. Lowercase UUID.
             enterprise_id,
+            # Partial match on phone number. Must contain at least 5 digits.
+            filter_phone_number_contains: nil,
+            # Exact phone-number match (E.164).
+            filter_phone_number_eq: nil,
             # 1-based page number. Out-of-range values return an empty page with correct meta.
             page_number: nil,
             # Items per page. Default 10. Maximum 250; values above are clamped to 250.

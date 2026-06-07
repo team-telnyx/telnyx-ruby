@@ -11,6 +11,13 @@ module Telnyx
           T.any(Telnyx::EnterpriseListParams, Telnyx::Internal::AnyHash)
         end
 
+      # Case-insensitive partial match on legal name.
+      sig { returns(T.nilable(String)) }
+      attr_reader :filter_legal_name_contains
+
+      sig { params(filter_legal_name_contains: String).void }
+      attr_writer :filter_legal_name_contains
+
       # Filter by legal name (partial match).
       sig { returns(T.nilable(String)) }
       attr_reader :legal_name
@@ -34,6 +41,7 @@ module Telnyx
 
       sig do
         params(
+          filter_legal_name_contains: String,
           legal_name: String,
           page_number: Integer,
           page_size: Integer,
@@ -41,6 +49,8 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        # Case-insensitive partial match on legal name.
+        filter_legal_name_contains: nil,
         # Filter by legal name (partial match).
         legal_name: nil,
         # 1-based page number. Out-of-range values return an empty page with correct meta.
@@ -54,6 +64,7 @@ module Telnyx
       sig do
         override.returns(
           {
+            filter_legal_name_contains: String,
             legal_name: String,
             page_number: Integer,
             page_size: Integer,

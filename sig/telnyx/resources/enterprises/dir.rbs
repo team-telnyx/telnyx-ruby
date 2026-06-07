@@ -25,9 +25,12 @@ module Telnyx
 
         def list: (
           String enterprise_id,
+          ?filter_call_reason_contains: String,
+          ?filter_display_name_contains: String,
           ?filter_expiring_at_gte: Time,
           ?filter_expiring_at_lte: Time,
           ?filter_expiring_within_days: Integer,
+          ?filter_status: Telnyx::Models::Enterprises::DirListParams::filter_status,
           ?page_number: Integer,
           ?page_size: Integer,
           ?search: String,

@@ -178,7 +178,9 @@ module Telnyx
       # Return the enterprises you own, paginated. The default page size is 20; the
       # maximum is 250.
       #
-      # @overload list(legal_name: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter_legal_name_contains: nil, legal_name: nil, page_number: nil, page_size: nil, request_options: {})
+      #
+      # @param filter_legal_name_contains [String] Case-insensitive partial match on legal name.
       #
       # @param legal_name [String] Filter by legal name (partial match).
       #
@@ -197,7 +199,11 @@ module Telnyx
         @client.request(
           method: :get,
           path: "enterprises",
-          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          query: query.transform_keys(
+            filter_legal_name_contains: "filter[legal_name][contains]",
+            page_number: "page[number]",
+            page_size: "page[size]"
+          ),
           page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::EnterprisePublic,
           options: options

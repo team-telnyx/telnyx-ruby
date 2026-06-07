@@ -81,18 +81,30 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::DirListParams} for more details.
       #
-      # Convenience endpoint that returns every DIR you own without scoping to a
-      # specific enterprise. Equivalent to calling
-      # `GET /v2/enterprises/{enterprise_id}/dir` for each enterprise and concatenating
-      # the results, but server-side and paginated as a single list.
+      # Returns every DIR (Display Identity Record) you own, across all of your
+      # enterprises, as a single list. Pagination is JSON:API style (`page[number]`,
+      # `page[size]`, max 250). Supports `filter[]` query params:
+      # `filter[enterprise_id]`, `filter[status]`, `filter[display_name][contains]`,
+      # `filter[call_reason][contains]`, plus the renewal-window filters
+      # `filter[expiring_at][gte]` / `filter[expiring_at][lte]`. Sortable by
+      # `created_at`, `updated_at`, `display_name`, `status` (prefix `-` for descending;
+      # default `-created_at`).
       #
-      # @overload list(enterprise_id: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
+      # @overload list(enterprise_id: nil, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_enterprise_id: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_status: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
       #
       # @param enterprise_id [String] Restrict results to a single enterprise.
+      #
+      # @param filter_call_reason_contains [String] Case-insensitive partial match on call reason.
+      #
+      # @param filter_display_name_contains [String] Case-insensitive partial match on display name.
+      #
+      # @param filter_enterprise_id [String] Filter by enterprise ID.
       #
       # @param filter_expiring_at_gte [Time] Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp. Pai
       #
       # @param filter_expiring_at_lte [Time] Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
+      #
+      # @param filter_status [Symbol, Telnyx::Models::DirListParams::FilterStatus] Filter by DIR status.
       #
       # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
       #
@@ -116,8 +128,12 @@ module Telnyx
           method: :get,
           path: "dir",
           query: query.transform_keys(
+            filter_call_reason_contains: "filter[call_reason][contains]",
+            filter_display_name_contains: "filter[display_name][contains]",
+            filter_enterprise_id: "filter[enterprise_id]",
             filter_expiring_at_gte: "filter[expiring_at][gte]",
             filter_expiring_at_lte: "filter[expiring_at][lte]",
+            filter_status: "filter[status]",
             page_number: "page[number]",
             page_size: "page[size]"
           ),

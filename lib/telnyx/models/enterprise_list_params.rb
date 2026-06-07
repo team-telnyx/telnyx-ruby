@@ -7,6 +7,12 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute filter_legal_name_contains
+      #   Case-insensitive partial match on legal name.
+      #
+      #   @return [String, nil]
+      optional :filter_legal_name_contains, String
+
       # @!attribute legal_name
       #   Filter by legal name (partial match).
       #
@@ -25,9 +31,11 @@ module Telnyx
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!method initialize(legal_name: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(filter_legal_name_contains: nil, legal_name: nil, page_number: nil, page_size: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::EnterpriseListParams} for more details.
+      #
+      #   @param filter_legal_name_contains [String] Case-insensitive partial match on legal name.
       #
       #   @param legal_name [String] Filter by legal name (partial match).
       #

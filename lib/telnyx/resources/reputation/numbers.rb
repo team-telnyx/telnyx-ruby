@@ -41,7 +41,13 @@ module Telnyx
         # that returns numbers across every enterprise you own. Useful when you don't want
         # to look up the enterprise id first.
         #
-        # @overload list(page_number: nil, page_size: nil, phone_number: nil, request_options: {})
+        # @overload list(filter_enterprise_id: nil, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, phone_number: nil, request_options: {})
+        #
+        # @param filter_enterprise_id [String] Filter by enterprise ID.
+        #
+        # @param filter_phone_number_contains [String] Partial match on phone number. Must contain at least 5 digits.
+        #
+        # @param filter_phone_number_eq [String] Exact phone-number match (E.164).
         #
         # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
@@ -60,7 +66,13 @@ module Telnyx
           @client.request(
             method: :get,
             path: "reputation/numbers",
-            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(
+              filter_enterprise_id: "filter[enterprise_id]",
+              filter_phone_number_contains: "filter[phone_number][contains]",
+              filter_phone_number_eq: "filter[phone_number][eq]",
+              page_number: "page[number]",
+              page_size: "page[size]"
+            ),
             page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::Reputation::NumberListResponse,
             options: options

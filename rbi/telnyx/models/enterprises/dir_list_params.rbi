@@ -15,6 +15,20 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :enterprise_id
 
+        # Case-insensitive partial match on call reason.
+        sig { returns(T.nilable(String)) }
+        attr_reader :filter_call_reason_contains
+
+        sig { params(filter_call_reason_contains: String).void }
+        attr_writer :filter_call_reason_contains
+
+        # Case-insensitive partial match on display name.
+        sig { returns(T.nilable(String)) }
+        attr_reader :filter_display_name_contains
+
+        sig { params(filter_display_name_contains: String).void }
+        attr_writer :filter_display_name_contains
+
         # Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp.
         sig { returns(T.nilable(Time)) }
         attr_reader :filter_expiring_at_gte
@@ -38,6 +52,24 @@ module Telnyx
 
         sig { params(filter_expiring_within_days: Integer).void }
         attr_writer :filter_expiring_within_days
+
+        # Filter by DIR status.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol
+            )
+          )
+        end
+        attr_reader :filter_status
+
+        sig do
+          params(
+            filter_status:
+              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol
+          ).void
+        end
+        attr_writer :filter_status
 
         # 1-based page number. Out-of-range values return an empty page with correct meta.
         sig { returns(T.nilable(Integer)) }
@@ -91,9 +123,13 @@ module Telnyx
         sig do
           params(
             enterprise_id: String,
+            filter_call_reason_contains: String,
+            filter_display_name_contains: String,
             filter_expiring_at_gte: Time,
             filter_expiring_at_lte: Time,
             filter_expiring_within_days: Integer,
+            filter_status:
+              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             search: String,
@@ -104,6 +140,10 @@ module Telnyx
         end
         def self.new(
           enterprise_id:,
+          # Case-insensitive partial match on call reason.
+          filter_call_reason_contains: nil,
+          # Case-insensitive partial match on display name.
+          filter_display_name_contains: nil,
           # Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp.
           filter_expiring_at_gte: nil,
           # Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
@@ -113,6 +153,8 @@ module Telnyx
           # `filter[expiring_at][lte]=<now+N>`. Mutually exclusive with the explicit
           # `[gte]`/`[lte]` filters — combining returns 400.
           filter_expiring_within_days: nil,
+          # Filter by DIR status.
+          filter_status: nil,
           # 1-based page number. Out-of-range values return an empty page with correct meta.
           page_number: nil,
           # Items per page. Maximum 250; values above are clamped to 250.
@@ -133,9 +175,13 @@ module Telnyx
           override.returns(
             {
               enterprise_id: String,
+              filter_call_reason_contains: String,
+              filter_display_name_contains: String,
               filter_expiring_at_gte: Time,
               filter_expiring_at_lte: Time,
               filter_expiring_within_days: Integer,
+              filter_status:
+                Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
               page_number: Integer,
               page_size: Integer,
               search: String,
@@ -146,6 +192,78 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        # Filter by DIR status.
+        module FilterStatus
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Enterprises::DirListParams::FilterStatus)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          DRAFT =
+            T.let(
+              :draft,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          SUBMITTED =
+            T.let(
+              :submitted,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          IN_REVIEW =
+            T.let(
+              :in_review,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          VERIFIED =
+            T.let(
+              :verified,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          REJECTED =
+            T.let(
+              :rejected,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          UNSUCCESSFUL =
+            T.let(
+              :unsuccessful,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          SUSPENDED =
+            T.let(
+              :suspended,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          EXPIRED =
+            T.let(
+              :expired,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          INFRINGEMENT_CLAIMED =
+            T.let(
+              :infringement_claimed,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+          PERMANENTLY_REJECTED =
+            T.let(
+              :permanently_rejected,
+              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,

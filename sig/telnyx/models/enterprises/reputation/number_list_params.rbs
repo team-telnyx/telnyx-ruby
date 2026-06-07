@@ -5,6 +5,8 @@ module Telnyx
         type number_list_params =
           {
             enterprise_id: String,
+            filter_phone_number_contains: String,
+            filter_phone_number_eq: String,
             page_number: Integer,
             page_size: Integer,
             phone_number: String
@@ -16,6 +18,14 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           attr_accessor enterprise_id: String
+
+          attr_reader filter_phone_number_contains: String?
+
+          def filter_phone_number_contains=: (String) -> String
+
+          attr_reader filter_phone_number_eq: String?
+
+          def filter_phone_number_eq=: (String) -> String
 
           attr_reader page_number: Integer?
 
@@ -31,6 +41,8 @@ module Telnyx
 
           def initialize: (
             enterprise_id: String,
+            ?filter_phone_number_contains: String,
+            ?filter_phone_number_eq: String,
             ?page_number: Integer,
             ?page_size: Integer,
             ?phone_number: String,
@@ -39,6 +51,8 @@ module Telnyx
 
           def to_hash: -> {
             enterprise_id: String,
+            filter_phone_number_contains: String,
+            filter_phone_number_eq: String,
             page_number: Integer,
             page_size: Integer,
             phone_number: String,

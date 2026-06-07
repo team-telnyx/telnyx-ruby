@@ -93,20 +93,24 @@ module Telnyx
         end
 
         # Return the DIRs (Display Identity Records) belonging to a single enterprise.
-        # Pagination is JSON:API style (`page[number]`, `page[size]`, max 250). Filterable
-        # by `status`. Searchable by case-insensitive partial match on `display_name`
-        # (`search=`). Sortable by any of `created_at`, `updated_at`, `display_name`,
-        # `status`, `submitted_at`, `verified_at`, `expiring_at` (prefix `-` for
-        # descending; default `-created_at`). Supports the renewal-window filters
+        # Pagination is JSON:API style (`page[number]`, `page[size]`, max 250). Supports
+        # `filter[]` query params: `filter[status]`, `filter[display_name][contains]`,
+        # `filter[call_reason][contains]`, plus the renewal-window filters
         # `filter[expiring_at][gte]` / `filter[expiring_at][lte]` and the convenience
         # `filter[expiring_within_days]` (mutually exclusive with the explicit gte/lte
-        # form).
+        # form). Sortable by `created_at`, `updated_at`, `display_name`, `status`,
+        # `submitted_at`, `verified_at`, `expiring_at` (prefix `-` for descending; default
+        # `-created_at`).
         sig do
           params(
             enterprise_id: String,
+            filter_call_reason_contains: String,
+            filter_display_name_contains: String,
             filter_expiring_at_gte: Time,
             filter_expiring_at_lte: Time,
             filter_expiring_within_days: Integer,
+            filter_status:
+              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             search: String,
@@ -122,6 +126,10 @@ module Telnyx
         def list(
           # The enterprise id. Lowercase UUID.
           enterprise_id,
+          # Case-insensitive partial match on call reason.
+          filter_call_reason_contains: nil,
+          # Case-insensitive partial match on display name.
+          filter_display_name_contains: nil,
           # Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp.
           filter_expiring_at_gte: nil,
           # Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
@@ -131,6 +139,8 @@ module Telnyx
           # `filter[expiring_at][lte]=<now+N>`. Mutually exclusive with the explicit
           # `[gte]`/`[lte]` filters — combining returns 400.
           filter_expiring_within_days: nil,
+          # Filter by DIR status.
+          filter_status: nil,
           # 1-based page number. Out-of-range values return an empty page with correct meta.
           page_number: nil,
           # Items per page. Maximum 250; values above are clamped to 250.

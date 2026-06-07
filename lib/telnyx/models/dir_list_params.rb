@@ -13,6 +13,24 @@ module Telnyx
       #   @return [String, nil]
       optional :enterprise_id, String
 
+      # @!attribute filter_call_reason_contains
+      #   Case-insensitive partial match on call reason.
+      #
+      #   @return [String, nil]
+      optional :filter_call_reason_contains, String
+
+      # @!attribute filter_display_name_contains
+      #   Case-insensitive partial match on display name.
+      #
+      #   @return [String, nil]
+      optional :filter_display_name_contains, String
+
+      # @!attribute filter_enterprise_id
+      #   Filter by enterprise ID.
+      #
+      #   @return [String, nil]
+      optional :filter_enterprise_id, String
+
       # @!attribute filter_expiring_at_gte
       #   Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp.
       #   Pairs with the `[lte]` variant to build renewal-window dashboards.
@@ -25,6 +43,12 @@ module Telnyx
       #
       #   @return [Time, nil]
       optional :filter_expiring_at_lte, Time
+
+      # @!attribute filter_status
+      #   Filter by DIR status.
+      #
+      #   @return [Symbol, Telnyx::Models::DirListParams::FilterStatus, nil]
+      optional :filter_status, enum: -> { Telnyx::DirListParams::FilterStatus }
 
       # @!attribute page_number
       #   1-based page number. Out-of-range values return an empty page with correct meta.
@@ -57,15 +81,23 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::DirListParams::Status, nil]
       optional :status, enum: -> { Telnyx::DirListParams::Status }
 
-      # @!method initialize(enterprise_id: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
+      # @!method initialize(enterprise_id: nil, filter_call_reason_contains: nil, filter_display_name_contains: nil, filter_enterprise_id: nil, filter_expiring_at_gte: nil, filter_expiring_at_lte: nil, filter_status: nil, page_number: nil, page_size: nil, search: nil, sort: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::DirListParams} for more details.
       #
       #   @param enterprise_id [String] Restrict results to a single enterprise.
       #
+      #   @param filter_call_reason_contains [String] Case-insensitive partial match on call reason.
+      #
+      #   @param filter_display_name_contains [String] Case-insensitive partial match on display name.
+      #
+      #   @param filter_enterprise_id [String] Filter by enterprise ID.
+      #
       #   @param filter_expiring_at_gte [Time] Return only DIRs whose `expiring_at` is at or after this ISO-8601 timestamp. Pai
       #
       #   @param filter_expiring_at_lte [Time] Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
+      #
+      #   @param filter_status [Symbol, Telnyx::Models::DirListParams::FilterStatus] Filter by DIR status.
       #
       #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
       #
@@ -78,6 +110,25 @@ module Telnyx
       #   @param status [Symbol, Telnyx::Models::DirListParams::Status] Filter by DIR status.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+      # Filter by DIR status.
+      module FilterStatus
+        extend Telnyx::Internal::Type::Enum
+
+        DRAFT = :draft
+        SUBMITTED = :submitted
+        IN_REVIEW = :in_review
+        VERIFIED = :verified
+        REJECTED = :rejected
+        UNSUCCESSFUL = :unsuccessful
+        SUSPENDED = :suspended
+        EXPIRED = :expired
+        INFRINGEMENT_CLAIMED = :infringement_claimed
+        PERMANENTLY_REJECTED = :permanently_rejected
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # Sort field. Allowed values: `created_at`, `updated_at`, `display_name`,
       # `status`. Prefix with `-` for descending. Default `-created_at`.
