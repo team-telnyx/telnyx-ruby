@@ -30,7 +30,8 @@ module Telnyx
       #
       # @overload retrieve(access_ip_address_id, request_options: {})
       #
-      # @param access_ip_address_id [String]
+      # @param access_ip_address_id [String] Unique identifier of the access ip address.
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::AccessIPAddressResponse]
@@ -80,7 +81,8 @@ module Telnyx
       #
       # @overload delete(access_ip_address_id, request_options: {})
       #
-      # @param access_ip_address_id [String]
+      # @param access_ip_address_id [String] Unique identifier of the access ip address.
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::AccessIPAddressResponse]

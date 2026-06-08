@@ -23,6 +23,7 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :run_id
 
+            # Filter results by agent id.
             sig { returns(T.nilable(String)) }
             attr_reader :agent_id
 
@@ -43,12 +44,14 @@ module Telnyx
             sig { params(page_size: Integer).void }
             attr_writer :page_size
 
+            # Filter results by step id.
             sig { returns(T.nilable(String)) }
             attr_reader :step_id
 
             sig { params(step_id: String).void }
             attr_writer :step_id
 
+            # Filter results by type.
             sig { returns(T.nilable(String)) }
             attr_reader :type
 
@@ -70,12 +73,15 @@ module Telnyx
             def self.new(
               mission_id:,
               run_id:,
+              # Filter results by agent id.
               agent_id: nil,
               # Page number (1-based)
               page_number: nil,
               # Number of items per page
               page_size: nil,
+              # Filter results by step id.
               step_id: nil,
+              # Filter results by type.
               type: nil,
               request_options: {}
             )

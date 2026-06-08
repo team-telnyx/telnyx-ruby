@@ -9,6 +9,7 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute brand_id
+        #   Filter results by brand id.
         #
         #   @return [String]
         required :brand_id, String
@@ -37,7 +38,7 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Messaging10dlc::CampaignListParams} for more details.
         #
-        #   @param brand_id [String]
+        #   @param brand_id [String] Filter results by brand id.
         #
         #   @param page [Integer] The 1-indexed page number to get. The default value is `1`.
         #

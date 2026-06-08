@@ -19,6 +19,7 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :assistant_id
 
+          # Filter results by conversation channel.
           sig do
             returns(
               T.nilable(
@@ -36,6 +37,7 @@ module Telnyx
           end
           attr_writer :conversation_channel
 
+          # Start of the date range filter (inclusive, ISO 8601).
           sig { returns(T.nilable(Time)) }
           attr_reader :from_date
 
@@ -54,6 +56,7 @@ module Telnyx
           sig { params(page_size: Integer).void }
           attr_writer :page_size
 
+          # End of the date range filter (inclusive, ISO 8601).
           sig { returns(T.nilable(Time)) }
           attr_reader :to_date
 
@@ -74,10 +77,13 @@ module Telnyx
           end
           def self.new(
             assistant_id:,
+            # Filter results by conversation channel.
             conversation_channel: nil,
+            # Start of the date range filter (inclusive, ISO 8601).
             from_date: nil,
             page_number: nil,
             page_size: nil,
+            # End of the date range filter (inclusive, ISO 8601).
             to_date: nil,
             request_options: {}
           )

@@ -30,7 +30,8 @@ module Telnyx
       #
       # @overload get_enum(endpoint, request_options: {})
       #
-      # @param endpoint [Symbol, Telnyx::Models::Messaging10dlcGetEnumParams::Endpoint]
+      # @param endpoint [Symbol, Telnyx::Models::Messaging10dlcGetEnumParams::Endpoint] Unique identifier of the endpoint.
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Array<String>, Array<Hash{Symbol=>Object}>, Hash{Symbol=>Object}, Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse]

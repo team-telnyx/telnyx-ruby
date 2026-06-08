@@ -213,7 +213,8 @@ module Telnyx
         #
         # @overload retrieve_conversations_insights(conversation_id, request_options: {})
         #
-        # @param conversation_id [String]
+        # @param conversation_id [String] Unique identifier of the conversation.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::ConversationRetrieveConversationsInsightsResponse]

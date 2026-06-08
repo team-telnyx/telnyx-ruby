@@ -18,7 +18,12 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::CanaryDeployResponse)
           end
-          def create(assistant_id, rules: nil, request_options: {})
+          def create(
+            # Unique identifier of the assistant.
+            assistant_id,
+            rules: nil,
+            request_options: {}
+          )
           end
 
           # Endpoint to get a canary deploy configuration for an assistant.
@@ -31,7 +36,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::CanaryDeployResponse)
           end
-          def retrieve(assistant_id, request_options: {})
+          def retrieve(
+            # Unique identifier of the assistant.
+            assistant_id,
+            request_options: {}
+          )
           end
 
           # Endpoint to update a canary deploy configuration for an assistant.
@@ -47,7 +56,12 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::CanaryDeployResponse)
           end
-          def update(assistant_id, rules: nil, request_options: {})
+          def update(
+            # Unique identifier of the assistant.
+            assistant_id,
+            rules: nil,
+            request_options: {}
+          )
           end
 
           # Endpoint to delete a canary deploy configuration for an assistant.
@@ -59,7 +73,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(assistant_id, request_options: {})
+          def delete(
+            # Unique identifier of the assistant.
+            assistant_id,
+            request_options: {}
+          )
           end
 
           # @api private

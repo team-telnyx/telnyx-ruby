@@ -49,8 +49,11 @@ module Telnyx
           )
         end
         def list_phone_number_status(
+          # Unique identifier of the task.
           task_id,
+          # Page number to retrieve (1-based).
           page: nil,
+          # Number of records to return per page.
           records_per_page: nil,
           request_options: {}
         )
@@ -69,8 +72,11 @@ module Telnyx
           )
         end
         def retrieve_phone_number_status(
+          # Unique identifier of the task.
           task_id,
+          # Page number to retrieve (1-based).
           page: nil,
+          # Number of records to return per page.
           records_per_page: nil,
           request_options: {}
         )
@@ -86,7 +92,11 @@ module Telnyx
             Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrieveStatusResponse
           )
         end
-        def retrieve_status(task_id, request_options: {})
+        def retrieve_status(
+          # Unique identifier of the task.
+          task_id,
+          request_options: {}
+        )
         end
 
         # @api private

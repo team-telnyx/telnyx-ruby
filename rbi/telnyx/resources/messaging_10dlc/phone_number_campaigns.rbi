@@ -29,7 +29,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Messaging10dlc::PhoneNumberCampaign)
         end
-        def retrieve(phone_number, request_options: {})
+        def retrieve(
+          # Unique identifier of the phone number.
+          phone_number,
+          request_options: {}
+        )
         end
 
         # Create New Phone Number Campaign
@@ -42,6 +46,7 @@ module Telnyx
           ).returns(Telnyx::Messaging10dlc::PhoneNumberCampaign)
         end
         def update(
+          # Unique identifier of the phone number.
           campaign_phone_number,
           # The ID of the campaign you want to link to the specified phone number.
           campaign_id:,
@@ -72,7 +77,9 @@ module Telnyx
           # filter[telnyx_campaign_id], filter[telnyx_brand_id], filter[tcr_campaign_id],
           # filter[tcr_brand_id]
           filter: nil,
+          # Page number to retrieve (1-based).
           page: nil,
+          # Number of records to return per page.
           records_per_page: nil,
           # Specifies the sort order for results. If not given, results are sorted by
           # createdAt in descending order.
@@ -89,7 +96,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Messaging10dlc::PhoneNumberCampaign)
         end
-        def delete(phone_number, request_options: {})
+        def delete(
+          # Unique identifier of the phone number.
+          phone_number,
+          request_options: {}
+        )
         end
 
         # @api private

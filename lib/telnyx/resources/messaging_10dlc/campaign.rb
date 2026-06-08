@@ -17,7 +17,8 @@ module Telnyx
         #
         # @overload retrieve(campaign_id, request_options: {})
         #
-        # @param campaign_id [String]
+        # @param campaign_id [String] Unique identifier of the campaign.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::TelnyxCampaignCsp]
@@ -40,7 +41,7 @@ module Telnyx
         #
         # @overload update(campaign_id, auto_renewal: nil, help_message: nil, message_flow: nil, reseller_id: nil, sample1: nil, sample2: nil, sample3: nil, sample4: nil, sample5: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
         #
-        # @param campaign_id [String]
+        # @param campaign_id [String] Unique identifier of the campaign.
         #
         # @param auto_renewal [Boolean] Help message of the campaign.
         #
@@ -87,7 +88,7 @@ module Telnyx
         #
         # @overload list(brand_id:, page: nil, records_per_page: nil, sort: nil, request_options: {})
         #
-        # @param brand_id [String]
+        # @param brand_id [String] Filter results by brand id.
         #
         # @param page [Integer] The 1-indexed page number to get. The default value is `1`.
         #
@@ -137,7 +138,8 @@ module Telnyx
         #
         # @overload deactivate(campaign_id, request_options: {})
         #
-        # @param campaign_id [String]
+        # @param campaign_id [String] Unique identifier of the campaign.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::CampaignDeactivateResponse]
@@ -176,7 +178,8 @@ module Telnyx
         #
         # @overload get_operation_status(campaign_id, request_options: {})
         #
-        # @param campaign_id [String]
+        # @param campaign_id [String] Unique identifier of the campaign.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Hash{Symbol=>Object}]

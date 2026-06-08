@@ -87,7 +87,8 @@ module Telnyx
         #
         # @overload retrieve(brand_id, request_options: {})
         #
-        # @param brand_id [String]
+        # @param brand_id [String] Unique identifier of the brand.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::BrandRetrieveResponse]
@@ -109,7 +110,7 @@ module Telnyx
         #
         # @overload update(brand_id, country:, display_name:, email:, entity_type:, vertical:, alt_business_id: nil, alt_business_id_type: nil, business_contact_email: nil, city: nil, company_name: nil, ein: nil, first_name: nil, identity_status: nil, ip_address: nil, is_reseller: nil, last_name: nil, phone: nil, postal_code: nil, state: nil, stock_exchange: nil, stock_symbol: nil, street: nil, webhook_failover_url: nil, webhook_url: nil, website: nil, request_options: {})
         #
-        # @param brand_id [String]
+        # @param brand_id [String] Unique identifier of the brand.
         #
         # @param country [String] ISO2 2 characters country code. Example: US - United States
         #
@@ -186,19 +187,19 @@ module Telnyx
         #
         # @param brand_id [String] Filter results by the Telnyx Brand id
         #
-        # @param country [String]
+        # @param country [String] Filter results by country.
         #
-        # @param display_name [String]
+        # @param display_name [String] Filter results by display name.
         #
-        # @param entity_type [String]
+        # @param entity_type [String] Filter results by entity type.
         #
-        # @param page [Integer]
+        # @param page [Integer] Page number to retrieve (1-based).
         #
         # @param records_per_page [Integer] number of records per page. maximum of 500
         #
         # @param sort [Symbol, Telnyx::Models::Messaging10dlc::BrandListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
         #
-        # @param state [String]
+        # @param state [String] Filter results by state.
         #
         # @param tcr_brand_id [String] Filter results by the TCR Brand id
         #
@@ -232,7 +233,8 @@ module Telnyx
         #
         # @overload delete(brand_id, request_options: {})
         #
-        # @param brand_id [String]
+        # @param brand_id [String] Unique identifier of the brand.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
@@ -263,7 +265,8 @@ module Telnyx
         #
         # @overload get_feedback(brand_id, request_options: {})
         #
-        # @param brand_id [String]
+        # @param brand_id [String] Unique identifier of the brand.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::BrandGetFeedbackResponse]
@@ -318,7 +321,8 @@ module Telnyx
         #
         # @overload resend_2fa_email(brand_id, request_options: {})
         #
-        # @param brand_id [String]
+        # @param brand_id [String] Unique identifier of the brand.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
@@ -370,7 +374,8 @@ module Telnyx
         #
         # @overload revet(brand_id, request_options: {})
         #
-        # @param brand_id [String]
+        # @param brand_id [String] Unique identifier of the brand.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::TelnyxBrand]

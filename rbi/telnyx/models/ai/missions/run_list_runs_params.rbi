@@ -30,6 +30,7 @@ module Telnyx
           sig { params(page_size: Integer).void }
           attr_writer :page_size
 
+          # Filter results by status.
           sig { returns(T.nilable(String)) }
           attr_reader :status
 
@@ -49,6 +50,7 @@ module Telnyx
             page_number: nil,
             # Number of items per page
             page_size: nil,
+            # Filter results by status.
             status: nil,
             request_options: {}
           )

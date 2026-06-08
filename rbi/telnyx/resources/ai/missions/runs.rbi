@@ -23,7 +23,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Missions::RunCreateResponse)
           end
-          def create(mission_id, input: nil, metadata: nil, request_options: {})
+          def create(
+            # Unique identifier of the mission.
+            mission_id,
+            input: nil,
+            metadata: nil,
+            request_options: {}
+          )
           end
 
           # Get details of a specific run
@@ -34,7 +40,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Missions::RunRetrieveResponse)
           end
-          def retrieve(run_id, mission_id:, request_options: {})
+          def retrieve(
+            # Unique identifier of the run.
+            run_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # Update run status and/or result
@@ -51,9 +63,9 @@ module Telnyx
             ).returns(Telnyx::Models::AI::Missions::RunUpdateResponse)
           end
           def update(
-            # Path param
+            # Path param: Unique identifier of the run.
             run_id,
-            # Path param
+            # Path param: Unique identifier of the mission.
             mission_id:,
             # Body param
             error: nil,
@@ -84,11 +96,13 @@ module Telnyx
             )
           end
           def list(
+            # Unique identifier of the mission.
             mission_id,
             # Page number (1-based)
             page_number: nil,
             # Number of items per page
             page_size: nil,
+            # Filter results by status.
             status: nil,
             request_options: {}
           )
@@ -102,7 +116,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Missions::RunCancelRunResponse)
           end
-          def cancel_run(run_id, mission_id:, request_options: {})
+          def cancel_run(
+            # Unique identifier of the run.
+            run_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # List recent runs across all missions
@@ -123,6 +143,7 @@ module Telnyx
             page_number: nil,
             # Number of items per page
             page_size: nil,
+            # Filter results by status.
             status: nil,
             request_options: {}
           )
@@ -136,7 +157,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Missions::RunPauseRunResponse)
           end
-          def pause_run(run_id, mission_id:, request_options: {})
+          def pause_run(
+            # Unique identifier of the run.
+            run_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # Resume a paused run
@@ -147,7 +174,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Missions::RunResumeRunResponse)
           end
-          def resume_run(run_id, mission_id:, request_options: {})
+          def resume_run(
+            # Unique identifier of the run.
+            run_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # @api private

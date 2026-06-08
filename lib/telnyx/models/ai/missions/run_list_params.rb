@@ -27,6 +27,7 @@ module Telnyx
           optional :page_size, Integer
 
           # @!attribute status
+          #   Filter results by status.
           #
           #   @return [String, nil]
           optional :status, String
@@ -38,7 +39,7 @@ module Telnyx
           #
           #   @param page_size [Integer] Number of items per page
           #
-          #   @param status [String]
+          #   @param status [String] Filter results by status.
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end

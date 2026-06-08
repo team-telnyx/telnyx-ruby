@@ -28,6 +28,7 @@ module Telnyx
             ).returns(Telnyx::AI::Assistants::ScheduledEventResponse::Variants)
           end
           def create(
+            # Unique identifier of the assistant.
             assistant_id,
             # The datetime at which the event should be scheduled. Formatted as ISO 8601.
             scheduled_at_fixed_datetime:,
@@ -60,7 +61,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::ScheduledEventResponse::Variants)
           end
-          def retrieve(event_id, assistant_id:, request_options: {})
+          def retrieve(
+            # Unique identifier of the event.
+            event_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # Get scheduled events for an assistant with pagination and filtering
@@ -81,11 +88,15 @@ module Telnyx
             )
           end
           def list(
+            # Unique identifier of the assistant.
             assistant_id,
+            # Filter results by conversation channel.
             conversation_channel: nil,
+            # Start of the date range filter (inclusive, ISO 8601).
             from_date: nil,
             page_number: nil,
             page_size: nil,
+            # End of the date range filter (inclusive, ISO 8601).
             to_date: nil,
             request_options: {}
           )
@@ -100,7 +111,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(event_id, assistant_id:, request_options: {})
+          def delete(
+            # Unique identifier of the event.
+            event_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # @api private

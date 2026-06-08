@@ -17,12 +17,14 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :id
 
+      # Page number to retrieve (1-based).
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
 
       sig { params(page_number: Integer).void }
       attr_writer :page_number
 
+      # Number of items to return per page.
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_size
 
@@ -37,7 +39,14 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(id:, page_number: nil, page_size: nil, request_options: {})
+      def self.new(
+        id:,
+        # Page number to retrieve (1-based).
+        page_number: nil,
+        # Number of items to return per page.
+        page_size: nil,
+        request_options: {}
+      )
       end
 
       sig do

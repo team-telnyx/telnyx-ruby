@@ -9,32 +9,41 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute aggregation_type
+        #   Type of aggregation to apply to the results.
         #
         #   @return [Symbol, Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::AggregationType]
         required :aggregation_type, enum: -> { Telnyx::Reports::MdrUsageReportFetchSyncParams::AggregationType }
 
         # @!attribute end_date
+        #   End of the date range filter (inclusive, ISO 8601).
         #
         #   @return [Time, nil]
         optional :end_date, Time
 
         # @!attribute profiles
+        #   Filter results by profile.
         #
         #   @return [Array<String>, nil]
         optional :profiles, Telnyx::Internal::Type::ArrayOf[String]
 
         # @!attribute start_date
+        #   Start of the date range filter (inclusive, ISO 8601).
         #
         #   @return [Time, nil]
         optional :start_date, Time
 
         # @!method initialize(aggregation_type:, end_date: nil, profiles: nil, start_date: nil, request_options: {})
-        #   @param aggregation_type [Symbol, Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::AggregationType]
-        #   @param end_date [Time]
-        #   @param profiles [Array<String>]
-        #   @param start_date [Time]
+        #   @param aggregation_type [Symbol, Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::AggregationType] Type of aggregation to apply to the results.
+        #
+        #   @param end_date [Time] End of the date range filter (inclusive, ISO 8601).
+        #
+        #   @param profiles [Array<String>] Filter results by profile.
+        #
+        #   @param start_date [Time] Start of the date range filter (inclusive, ISO 8601).
+        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
+        # Type of aggregation to apply to the results.
         module AggregationType
           extend Telnyx::Internal::Type::Enum
 

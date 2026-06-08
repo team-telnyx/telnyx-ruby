@@ -32,7 +32,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::McpServerRetrieveResponse)
         end
-        def retrieve(mcp_server_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the mcp server.
+          mcp_server_id,
+          request_options: {}
+        )
         end
 
         # Update an existing MCP server.
@@ -50,6 +54,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::McpServerUpdateResponse)
         end
         def update(
+          # Unique identifier of the mcp server.
           mcp_server_id,
           id: nil,
           allowed_tools: nil,
@@ -77,9 +82,13 @@ module Telnyx
           )
         end
         def list(
+          # Page number to retrieve (1-based).
           page_number: nil,
+          # Number of items to return per page.
           page_size: nil,
+          # Filter results by type.
           type: nil,
+          # Filter results by url.
           url: nil,
           request_options: {}
         )
@@ -92,7 +101,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).void
         end
-        def delete(mcp_server_id, request_options: {})
+        def delete(
+          # Unique identifier of the mcp server.
+          mcp_server_id,
+          request_options: {}
+        )
         end
 
         # @api private

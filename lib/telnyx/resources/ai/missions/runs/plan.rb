@@ -10,9 +10,9 @@ module Telnyx
             #
             # @overload create(run_id, mission_id:, steps:, request_options: {})
             #
-            # @param run_id [String] Path param
+            # @param run_id [String] Path param: Unique identifier of the run.
             #
-            # @param mission_id [String] Path param
+            # @param mission_id [String] Path param: Unique identifier of the mission.
             #
             # @param steps [Array<Telnyx::Models::AI::Missions::Runs::PlanCreateParams::Step>] Body param
             #
@@ -40,8 +40,10 @@ module Telnyx
             #
             # @overload retrieve(run_id, mission_id:, request_options: {})
             #
-            # @param run_id [String]
-            # @param mission_id [String]
+            # @param run_id [String] Unique identifier of the run.
+            #
+            # @param mission_id [String] Unique identifier of the mission.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [Telnyx::Models::AI::Missions::Runs::PlanRetrieveResponse]
@@ -65,9 +67,9 @@ module Telnyx
             #
             # @overload add_steps_to_plan(run_id, mission_id:, steps:, request_options: {})
             #
-            # @param run_id [String] Path param
+            # @param run_id [String] Path param: Unique identifier of the run.
             #
-            # @param mission_id [String] Path param
+            # @param mission_id [String] Path param: Unique identifier of the mission.
             #
             # @param steps [Array<Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanParams::Step>] Body param
             #
@@ -95,9 +97,12 @@ module Telnyx
             #
             # @overload get_step_details(step_id, mission_id:, run_id:, request_options: {})
             #
-            # @param step_id [String]
-            # @param mission_id [String]
-            # @param run_id [String]
+            # @param step_id [String] Unique identifier of the step.
+            #
+            # @param mission_id [String] Unique identifier of the mission.
+            #
+            # @param run_id [String] Unique identifier of the run.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsResponse]
@@ -125,11 +130,11 @@ module Telnyx
             #
             # @overload update_step(step_id, mission_id:, run_id:, metadata: nil, status: nil, request_options: {})
             #
-            # @param step_id [String] Path param
+            # @param step_id [String] Path param: Unique identifier of the step.
             #
-            # @param mission_id [String] Path param
+            # @param mission_id [String] Path param: Unique identifier of the mission.
             #
-            # @param run_id [String] Path param
+            # @param run_id [String] Path param: Unique identifier of the run.
             #
             # @param metadata [Hash{Symbol=>Object}] Body param
             #

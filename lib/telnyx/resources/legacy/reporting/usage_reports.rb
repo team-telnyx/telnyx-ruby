@@ -23,8 +23,10 @@ module Telnyx
           #
           # @overload retrieve_speech_to_text(end_date: nil, start_date: nil, request_options: {})
           #
-          # @param end_date [Time]
-          # @param start_date [Time]
+          # @param end_date [Time] End of the date range filter (inclusive, ISO 8601).
+          #
+          # @param start_date [Time] Start of the date range filter (inclusive, ISO 8601).
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::Legacy::Reporting::UsageReportRetrieveSpeechToTextResponse]

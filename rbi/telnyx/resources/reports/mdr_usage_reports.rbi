@@ -33,7 +33,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Reports::MdrUsageReportRetrieveResponse)
         end
-        def retrieve(id, request_options: {})
+        def retrieve(
+          # Unique identifier of the resource.
+          id,
+          request_options: {}
+        )
         end
 
         # Fetch all messaging usage reports. Usage reports are aggregated messaging data
@@ -59,7 +63,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Reports::MdrUsageReportDeleteResponse)
         end
-        def delete(id, request_options: {})
+        def delete(
+          # Unique identifier of the resource.
+          id,
+          request_options: {}
+        )
         end
 
         # Generate and fetch messaging usage report synchronously. This endpoint will both
@@ -76,9 +84,13 @@ module Telnyx
           ).returns(Telnyx::Models::Reports::MdrUsageReportFetchSyncResponse)
         end
         def fetch_sync(
+          # Type of aggregation to apply to the results.
           aggregation_type:,
+          # End of the date range filter (inclusive, ISO 8601).
           end_date: nil,
+          # Filter results by profile.
           profiles: nil,
+          # Start of the date range filter (inclusive, ISO 8601).
           start_date: nil,
           request_options: {}
         )

@@ -18,12 +18,14 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :task_id
 
+        # Page number to retrieve (1-based).
         sig { returns(T.nilable(Integer)) }
         attr_reader :page
 
         sig { params(page: Integer).void }
         attr_writer :page
 
+        # Number of records to return per page.
         sig { returns(T.nilable(Integer)) }
         attr_reader :records_per_page
 
@@ -40,7 +42,9 @@ module Telnyx
         end
         def self.new(
           task_id:,
+          # Page number to retrieve (1-based).
           page: nil,
+          # Number of records to return per page.
           records_per_page: nil,
           request_options: {}
         )

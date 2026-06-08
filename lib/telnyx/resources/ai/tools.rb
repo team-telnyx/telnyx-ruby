@@ -37,7 +37,8 @@ module Telnyx
         #
         # @overload retrieve(tool_id, request_options: {})
         #
-        # @param tool_id [String]
+        # @param tool_id [String] Unique identifier of the tool.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::ToolRetrieveResponse]
@@ -56,15 +57,24 @@ module Telnyx
         #
         # @overload update(tool_id, display_name: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
         #
-        # @param tool_id [String]
+        # @param tool_id [String] Unique identifier of the tool.
+        #
         # @param display_name [String]
+        #
         # @param function [Hash{Symbol=>Object}]
+        #
         # @param handoff [Hash{Symbol=>Object}]
+        #
         # @param invite [Hash{Symbol=>Object}]
+        #
         # @param retrieval [Hash{Symbol=>Object}]
+        #
         # @param timeout_ms [Integer]
+        #
         # @param type [String]
+        #
         # @param webhook [Hash{Symbol=>Object}]
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::ToolUpdateResponse]
@@ -85,10 +95,14 @@ module Telnyx
         #
         # @overload list(filter_name: nil, filter_type: nil, page_number: nil, page_size: nil, request_options: {})
         #
-        # @param filter_name [String]
-        # @param filter_type [String]
-        # @param page_number [Integer]
-        # @param page_size [Integer]
+        # @param filter_name [String] Filter results by filter name.
+        #
+        # @param filter_type [String] Filter results by filter type.
+        #
+        # @param page_number [Integer] Page number to retrieve (1-based).
+        #
+        # @param page_size [Integer] Number of items to return per page.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::ToolListResponse>]
@@ -116,7 +130,8 @@ module Telnyx
         #
         # @overload delete(tool_id, request_options: {})
         #
-        # @param tool_id [String]
+        # @param tool_id [String] Unique identifier of the tool.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Object]

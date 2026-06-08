@@ -17,7 +17,13 @@ module Telnyx
               Telnyx::Models::Messaging10dlc::CampaignBuilder::BrandQualifyByUsecaseResponse
             )
           end
-          def qualify_by_usecase(usecase, brand_id:, request_options: {})
+          def qualify_by_usecase(
+            # Unique identifier of the usecase.
+            usecase,
+            # Unique identifier of the brand.
+            brand_id:,
+            request_options: {}
+          )
           end
 
           # @api private

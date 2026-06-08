@@ -112,11 +112,16 @@ module Telnyx
         #
         # @overload retrieve(assistant_id, call_control_id: nil, fetch_dynamic_variables_from_webhook: nil, from: nil, to: nil, request_options: {})
         #
-        # @param assistant_id [String]
-        # @param call_control_id [String]
-        # @param fetch_dynamic_variables_from_webhook [Boolean]
-        # @param from [String]
-        # @param to [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
+        # @param call_control_id [String] Filter results by call control id.
+        #
+        # @param fetch_dynamic_variables_from_webhook [Boolean] Whether to fetch dynamic variables from the configured webhook.
+        #
+        # @param from [String] Start of the filter range.
+        #
+        # @param to [String] End of the filter range.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::InferenceEmbedding]
@@ -141,7 +146,7 @@ module Telnyx
         #
         # @overload update(assistant_id, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
         #
         # @param conversation_flow [Telnyx::Models::AI::AssistantUpdateParams::ConversationFlow] Conversation flow as supplied by API clients (create / update).
         #
@@ -241,7 +246,8 @@ module Telnyx
         #
         # @overload delete(assistant_id, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::AssistantDeleteResponse]
@@ -267,7 +273,7 @@ module Telnyx
         #
         # @overload chat(assistant_id, content:, conversation_id:, name: nil, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
         #
         # @param content [String] The message content sent by the client to the assistant
         #
@@ -295,7 +301,8 @@ module Telnyx
         #
         # @overload clone_(assistant_id, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::InferenceEmbedding]
@@ -314,7 +321,8 @@ module Telnyx
         #
         # @overload get_texml(assistant_id, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [String]
@@ -374,12 +382,18 @@ module Telnyx
         #
         # @overload send_sms(assistant_id, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param from [String]
+        #
         # @param to [String]
+        #
         # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]
+        #
         # @param should_create_conversation [Boolean]
+        #
         # @param text [String]
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::AssistantSendSMSResponse]

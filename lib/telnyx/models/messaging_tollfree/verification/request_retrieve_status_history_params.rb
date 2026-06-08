@@ -15,27 +15,23 @@ module Telnyx
           required :id, String
 
           # @!attribute page_number
+          #   Page number to retrieve (1-based).
           #
           #   @return [Integer]
           required :page_number, Integer
 
           # @!attribute page_size
-          #   Request this many records per page. This value is automatically clamped if the
-          #   provided value is too large.
+          #   Number of items to return per page.
           #
           #   @return [Integer]
           required :page_size, Integer
 
           # @!method initialize(id:, page_number:, page_size:, request_options: {})
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryParams}
-          #   for more details.
-          #
           #   @param id [String]
           #
-          #   @param page_number [Integer]
+          #   @param page_number [Integer] Page number to retrieve (1-based).
           #
-          #   @param page_size [Integer] Request this many records per page. This value is automatically clamped if the p
+          #   @param page_size [Integer] Number of items to return per page.
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end

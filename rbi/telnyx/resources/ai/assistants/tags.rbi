@@ -23,7 +23,12 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Assistants::TagAddResponse)
           end
-          def add(assistant_id, tag:, request_options: {})
+          def add(
+            # Unique identifier of the assistant.
+            assistant_id,
+            tag:,
+            request_options: {}
+          )
           end
 
           # Remove Assistant Tag
@@ -34,7 +39,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Assistants::TagRemoveResponse)
           end
-          def remove(tag, assistant_id:, request_options: {})
+          def remove(
+            # Unique identifier of the tag.
+            tag,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # @api private

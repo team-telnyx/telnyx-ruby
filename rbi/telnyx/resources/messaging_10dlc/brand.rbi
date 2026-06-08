@@ -107,7 +107,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Messaging10dlc::BrandRetrieveResponse)
         end
-        def retrieve(brand_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the brand.
+          brand_id,
+          request_options: {}
+        )
         end
 
         # Update a brand's attributes by `brandId`.
@@ -145,6 +149,7 @@ module Telnyx
           ).returns(Telnyx::Messaging10dlc::TelnyxBrand)
         end
         def update(
+          # Unique identifier of the brand.
           brand_id,
           # ISO2 2 characters country code. Example: US - United States
           country:,
@@ -225,15 +230,20 @@ module Telnyx
         def list(
           # Filter results by the Telnyx Brand id
           brand_id: nil,
+          # Filter results by country.
           country: nil,
+          # Filter results by display name.
           display_name: nil,
+          # Filter results by entity type.
           entity_type: nil,
+          # Page number to retrieve (1-based).
           page: nil,
           # number of records per page. maximum of 500
           records_per_page: nil,
           # Specifies the sort order for results. If not given, results are sorted by
           # createdAt in descending order.
           sort: nil,
+          # Filter results by state.
           state: nil,
           # Filter results by the TCR Brand id
           tcr_brand_id: nil,
@@ -250,7 +260,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).void
         end
-        def delete(brand_id, request_options: {})
+        def delete(
+          # Unique identifier of the brand.
+          brand_id,
+          request_options: {}
+        )
         end
 
         # Get feedback about a brand by ID. This endpoint can be used after creating or
@@ -272,7 +286,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Messaging10dlc::BrandGetFeedbackResponse)
         end
-        def get_feedback(brand_id, request_options: {})
+        def get_feedback(
+          # Unique identifier of the brand.
+          brand_id,
+          request_options: {}
+        )
         end
 
         # Query the status of an SMS OTP (One-Time Password) for Sole Proprietor brand
@@ -312,7 +330,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).void
         end
-        def resend_2fa_email(brand_id, request_options: {})
+        def resend_2fa_email(
+          # Unique identifier of the brand.
+          brand_id,
+          request_options: {}
+        )
         end
 
         # Query the status of an SMS OTP (One-Time Password) for Sole Proprietor brand
@@ -351,7 +373,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Messaging10dlc::TelnyxBrand)
         end
-        def revet(brand_id, request_options: {})
+        def revet(
+          # Unique identifier of the brand.
+          brand_id,
+          request_options: {}
+        )
         end
 
         # Trigger or re-trigger an SMS OTP (One-Time Password) for Sole Proprietor brand

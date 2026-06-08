@@ -21,6 +21,7 @@ module Telnyx
             )
           end
           def list(
+            # Unique identifier of the conversation.
             conversation_id,
             # The page number to retrieve.
             page_number: nil,

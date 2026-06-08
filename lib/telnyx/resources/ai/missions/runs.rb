@@ -18,9 +18,12 @@ module Telnyx
           #
           # @overload create(mission_id, input: nil, metadata: nil, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param input [Hash{Symbol=>Object}]
+          #
           # @param metadata [Hash{Symbol=>Object}]
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Missions::RunCreateResponse]
@@ -41,8 +44,10 @@ module Telnyx
           #
           # @overload retrieve(run_id, mission_id:, request_options: {})
           #
-          # @param run_id [String]
-          # @param mission_id [String]
+          # @param run_id [String] Unique identifier of the run.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Missions::RunRetrieveResponse]
@@ -66,9 +71,9 @@ module Telnyx
           #
           # @overload update(run_id, mission_id:, error: nil, metadata: nil, result_payload: nil, result_summary: nil, status: nil, request_options: {})
           #
-          # @param run_id [String] Path param
+          # @param run_id [String] Path param: Unique identifier of the run.
           #
-          # @param mission_id [String] Path param
+          # @param mission_id [String] Path param: Unique identifier of the mission.
           #
           # @param error [String] Body param
           #
@@ -104,13 +109,13 @@ module Telnyx
           #
           # @overload list(mission_id, page_number: nil, page_size: nil, status: nil, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
           #
           # @param page_number [Integer] Page number (1-based)
           #
           # @param page_size [Integer] Number of items per page
           #
-          # @param status [String]
+          # @param status [String] Filter results by status.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -134,8 +139,10 @@ module Telnyx
           #
           # @overload cancel_run(run_id, mission_id:, request_options: {})
           #
-          # @param run_id [String]
-          # @param mission_id [String]
+          # @param run_id [String] Unique identifier of the run.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Missions::RunCancelRunResponse]
@@ -163,7 +170,7 @@ module Telnyx
           #
           # @param page_size [Integer] Number of items per page
           #
-          # @param status [String]
+          # @param status [String] Filter results by status.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -187,8 +194,10 @@ module Telnyx
           #
           # @overload pause_run(run_id, mission_id:, request_options: {})
           #
-          # @param run_id [String]
-          # @param mission_id [String]
+          # @param run_id [String] Unique identifier of the run.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Missions::RunPauseRunResponse]
@@ -212,8 +221,10 @@ module Telnyx
           #
           # @overload resume_run(run_id, mission_id:, request_options: {})
           #
-          # @param run_id [String]
-          # @param mission_id [String]
+          # @param run_id [String] Unique identifier of the run.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Missions::RunResumeRunResponse]

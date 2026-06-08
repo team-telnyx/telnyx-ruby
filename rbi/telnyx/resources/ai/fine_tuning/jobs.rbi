@@ -37,7 +37,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::FineTuning::FineTuningJob)
           end
-          def retrieve(job_id, request_options: {})
+          def retrieve(
+            # Unique identifier of the job.
+            job_id,
+            request_options: {}
+          )
           end
 
           # Retrieve a list of all fine tuning jobs created by the user.
@@ -56,7 +60,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::FineTuning::FineTuningJob)
           end
-          def cancel(job_id, request_options: {})
+          def cancel(
+            # Unique identifier of the job.
+            job_id,
+            request_options: {}
+          )
           end
 
           # @api private

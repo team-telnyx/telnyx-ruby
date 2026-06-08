@@ -10,7 +10,8 @@ module Telnyx
           #
           # @overload get_cost(usecase:, request_options: {})
           #
-          # @param usecase [String]
+          # @param usecase [String] Filter results by usecase.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::Messaging10dlc::Campaign::UsecaseGetCostResponse]

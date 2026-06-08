@@ -15,6 +15,7 @@ module Telnyx
             )
           end
 
+        # Type of aggregation to apply to the results.
         sig do
           returns(
             Telnyx::Reports::CdrUsageReportFetchSyncParams::AggregationType::OrSymbol
@@ -22,6 +23,7 @@ module Telnyx
         end
         attr_accessor :aggregation_type
 
+        # Filter results by product breakdown.
         sig do
           returns(
             Telnyx::Reports::CdrUsageReportFetchSyncParams::ProductBreakdown::OrSymbol
@@ -29,18 +31,21 @@ module Telnyx
         end
         attr_accessor :product_breakdown
 
+        # Filter results by connection.
         sig { returns(T.nilable(T::Array[Float])) }
         attr_reader :connections
 
         sig { params(connections: T::Array[Float]).void }
         attr_writer :connections
 
+        # End of the date range filter (inclusive, ISO 8601).
         sig { returns(T.nilable(Time)) }
         attr_reader :end_date
 
         sig { params(end_date: Time).void }
         attr_writer :end_date
 
+        # Start of the date range filter (inclusive, ISO 8601).
         sig { returns(T.nilable(Time)) }
         attr_reader :start_date
 
@@ -60,10 +65,15 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # Type of aggregation to apply to the results.
           aggregation_type:,
+          # Filter results by product breakdown.
           product_breakdown:,
+          # Filter results by connection.
           connections: nil,
+          # End of the date range filter (inclusive, ISO 8601).
           end_date: nil,
+          # Start of the date range filter (inclusive, ISO 8601).
           start_date: nil,
           request_options: {}
         )
@@ -86,6 +96,7 @@ module Telnyx
         def to_hash
         end
 
+        # Type of aggregation to apply to the results.
         module AggregationType
           extend Telnyx::Internal::Type::Enum
 
@@ -130,6 +141,7 @@ module Telnyx
           end
         end
 
+        # Filter results by product breakdown.
         module ProductBreakdown
           extend Telnyx::Internal::Type::Enum
 

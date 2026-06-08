@@ -9,11 +9,16 @@ module Telnyx
         #
         # @overload create(profile_id, country_code:, keywords:, op:, resp_text: nil, request_options: {})
         #
-        # @param profile_id [String]
+        # @param profile_id [String] Unique identifier of the profile.
+        #
         # @param country_code [String]
+        #
         # @param keywords [Array<String>]
+        #
         # @param op [Symbol, Telnyx::Models::MessagingProfiles::AutoRespConfigCreate::Op]
+        #
         # @param resp_text [String]
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::MessagingProfiles::AutoRespConfigResponse]
@@ -34,8 +39,10 @@ module Telnyx
         #
         # @overload retrieve(autoresp_cfg_id, profile_id:, request_options: {})
         #
-        # @param autoresp_cfg_id [String]
-        # @param profile_id [String]
+        # @param autoresp_cfg_id [String] Unique identifier of the autoresp cfg.
+        #
+        # @param profile_id [String] Unique identifier of the profile.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::MessagingProfiles::AutoRespConfigResponse]
@@ -59,9 +66,9 @@ module Telnyx
         #
         # @overload update(autoresp_cfg_id, profile_id:, country_code:, keywords:, op:, resp_text: nil, request_options: {})
         #
-        # @param autoresp_cfg_id [String] Path param
+        # @param autoresp_cfg_id [String] Path param: Unique identifier of the autoresp cfg.
         #
-        # @param profile_id [String] Path param
+        # @param profile_id [String] Path param: Unique identifier of the profile.
         #
         # @param country_code [String] Body param
         #
@@ -98,9 +105,9 @@ module Telnyx
         #
         # @overload list(profile_id, country_code: nil, created_at: nil, updated_at: nil, request_options: {})
         #
-        # @param profile_id [String]
+        # @param profile_id [String] Unique identifier of the profile.
         #
-        # @param country_code [String]
+        # @param country_code [String] Filter results by country code.
         #
         # @param created_at [Telnyx::Models::MessagingProfiles::AutorespConfigListParams::CreatedAt] Consolidated created_at parameter (deepObject style). Originally: created_at[gte
         #
@@ -127,8 +134,10 @@ module Telnyx
         #
         # @overload delete(autoresp_cfg_id, profile_id:, request_options: {})
         #
-        # @param autoresp_cfg_id [String]
-        # @param profile_id [String]
+        # @param autoresp_cfg_id [String] Unique identifier of the autoresp cfg.
+        #
+        # @param profile_id [String] Unique identifier of the profile.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [String]

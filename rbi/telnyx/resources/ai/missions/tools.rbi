@@ -12,7 +12,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def create_tool(mission_id, request_options: {})
+          def create_tool(
+            # Unique identifier of the mission.
+            mission_id,
+            request_options: {}
+          )
           end
 
           # Delete a tool from a mission
@@ -23,7 +27,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete_tool(tool_id, mission_id:, request_options: {})
+          def delete_tool(
+            # Unique identifier of the tool.
+            tool_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # Get a specific tool by ID
@@ -34,7 +44,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def get_tool(tool_id, mission_id:, request_options: {})
+          def get_tool(
+            # Unique identifier of the tool.
+            tool_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # List all tools for a mission
@@ -44,7 +60,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def list_tools(mission_id, request_options: {})
+          def list_tools(
+            # Unique identifier of the mission.
+            mission_id,
+            request_options: {}
+          )
           end
 
           # Update a tool definition
@@ -55,7 +75,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def update_tool(tool_id, mission_id:, request_options: {})
+          def update_tool(
+            # Unique identifier of the tool.
+            tool_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # @api private

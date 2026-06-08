@@ -8,7 +8,7 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute id
-      #   WDR uuid
+      #   Filter results by identifier.
       #
       #   @return [String, nil]
       optional :id, String
@@ -20,19 +20,19 @@ module Telnyx
       optional :end_date, String
 
       # @!attribute imsi
-      #   International mobile subscriber identity
+      #   Filter results by imsi.
       #
       #   @return [String, nil]
       optional :imsi, String
 
       # @!attribute mcc
-      #   Mobile country code
+      #   Filter results by mcc.
       #
       #   @return [String, nil]
       optional :mcc, String
 
       # @!attribute mnc
-      #   Mobile network code
+      #   Filter results by mnc.
       #
       #   @return [String, nil]
       optional :mnc, String
@@ -48,32 +48,31 @@ module Telnyx
       optional :page_size, Integer
 
       # @!attribute phone_number
-      #   Phone number
+      #   Filter results by phone number.
       #
       #   @return [String, nil]
       optional :phone_number, String
 
       # @!attribute sim_card_id
-      #   Sim card unique identifier
+      #   Filter results by sim card id.
       #
       #   @return [String, nil]
       optional :sim_card_id, String
 
       # @!attribute sim_group_id
-      #   Sim group unique identifier
+      #   Filter results by sim group id.
       #
       #   @return [String, nil]
       optional :sim_group_id, String
 
       # @!attribute sim_group_name
-      #   Sim group name
+      #   Filter results by sim group name.
       #
       #   @return [String, nil]
       optional :sim_group_name, String
 
       # @!attribute sort
-      #   Field used to order the data. If no field is specified, default value is
-      #   'created_at'
+      #   Field and direction to sort the results by.
       #
       #   @return [Array<String>, nil]
       optional :sort, Telnyx::Internal::Type::ArrayOf[String]
@@ -85,32 +84,29 @@ module Telnyx
       optional :start_date, String
 
       # @!method initialize(id: nil, end_date: nil, imsi: nil, mcc: nil, mnc: nil, page_number: nil, page_size: nil, phone_number: nil, sim_card_id: nil, sim_group_id: nil, sim_group_name: nil, sort: nil, start_date: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::ReportListWdrsParams} for more details.
-      #
-      #   @param id [String] WDR uuid
+      #   @param id [String] Filter results by identifier.
       #
       #   @param end_date [String] End date
       #
-      #   @param imsi [String] International mobile subscriber identity
+      #   @param imsi [String] Filter results by imsi.
       #
-      #   @param mcc [String] Mobile country code
+      #   @param mcc [String] Filter results by mcc.
       #
-      #   @param mnc [String] Mobile network code
+      #   @param mnc [String] Filter results by mnc.
       #
       #   @param page_number [Integer]
       #
       #   @param page_size [Integer]
       #
-      #   @param phone_number [String] Phone number
+      #   @param phone_number [String] Filter results by phone number.
       #
-      #   @param sim_card_id [String] Sim card unique identifier
+      #   @param sim_card_id [String] Filter results by sim card id.
       #
-      #   @param sim_group_id [String] Sim group unique identifier
+      #   @param sim_group_id [String] Filter results by sim group id.
       #
-      #   @param sim_group_name [String] Sim group name
+      #   @param sim_group_name [String] Filter results by sim group name.
       #
-      #   @param sort [Array<String>] Field used to order the data. If no field is specified, default value is 'create
+      #   @param sort [Array<String>] Field and direction to sort the results by.
       #
       #   @param start_date [String] Start date
       #

@@ -78,7 +78,8 @@ module Telnyx
         #
         # @overload retrieve(task_id, request_options: {})
         #
-        # @param task_id [String]
+        # @param task_id [String] Unique identifier of the task.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::EmbeddingRetrieveResponse]

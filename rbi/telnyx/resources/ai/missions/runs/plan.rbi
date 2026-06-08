@@ -19,9 +19,9 @@ module Telnyx
               ).returns(Telnyx::Models::AI::Missions::Runs::PlanCreateResponse)
             end
             def create(
-              # Path param
+              # Path param: Unique identifier of the run.
               run_id,
-              # Path param
+              # Path param: Unique identifier of the mission.
               mission_id:,
               # Body param
               steps:,
@@ -39,7 +39,13 @@ module Telnyx
                 Telnyx::Models::AI::Missions::Runs::PlanRetrieveResponse
               )
             end
-            def retrieve(run_id, mission_id:, request_options: {})
+            def retrieve(
+              # Unique identifier of the run.
+              run_id,
+              # Unique identifier of the mission.
+              mission_id:,
+              request_options: {}
+            )
             end
 
             # Add one or more steps to an existing plan
@@ -57,9 +63,9 @@ module Telnyx
               )
             end
             def add_steps_to_plan(
-              # Path param
+              # Path param: Unique identifier of the run.
               run_id,
-              # Path param
+              # Path param: Unique identifier of the mission.
               mission_id:,
               # Body param
               steps:,
@@ -79,8 +85,11 @@ module Telnyx
               )
             end
             def get_step_details(
+              # Unique identifier of the step.
               step_id,
+              # Unique identifier of the mission.
               mission_id:,
+              # Unique identifier of the run.
               run_id:,
               request_options: {}
             )
@@ -101,11 +110,11 @@ module Telnyx
               )
             end
             def update_step(
-              # Path param
+              # Path param: Unique identifier of the step.
               step_id,
-              # Path param
+              # Path param: Unique identifier of the mission.
               mission_id:,
-              # Path param
+              # Path param: Unique identifier of the run.
               run_id:,
               # Body param
               metadata: nil,

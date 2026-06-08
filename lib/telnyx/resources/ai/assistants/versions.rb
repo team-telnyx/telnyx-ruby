@@ -10,11 +10,11 @@ module Telnyx
           #
           # @overload retrieve(version_id, assistant_id:, include_mcp_servers: nil, request_options: {})
           #
-          # @param version_id [String] Path param
+          # @param version_id [String] Path param: Unique identifier of the version.
           #
-          # @param assistant_id [String] Path param
+          # @param assistant_id [String] Path param: Unique identifier of the assistant.
           #
-          # @param include_mcp_servers [Boolean] Query param
+          # @param include_mcp_servers [Boolean] Query param: Whether to include MCP servers in the response.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -45,9 +45,9 @@ module Telnyx
           #
           # @overload update(version_id, assistant_id:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
           #
-          # @param version_id [String] Path param
+          # @param version_id [String] Path param: Unique identifier of the version.
           #
-          # @param assistant_id [String] Path param
+          # @param assistant_id [String] Path param: Unique identifier of the assistant.
           #
           # @param conversation_flow [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow] Body param: Conversation flow as supplied by API clients (create / update).
           #
@@ -132,7 +132,8 @@ module Telnyx
           #
           # @overload list(assistant_id, request_options: {})
           #
-          # @param assistant_id [String]
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::AssistantsList]
@@ -152,8 +153,10 @@ module Telnyx
           #
           # @overload delete(version_id, assistant_id:, request_options: {})
           #
-          # @param version_id [String]
-          # @param assistant_id [String]
+          # @param version_id [String] Unique identifier of the version.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]
@@ -179,8 +182,10 @@ module Telnyx
           #
           # @overload promote(version_id, assistant_id:, request_options: {})
           #
-          # @param version_id [String]
-          # @param assistant_id [String]
+          # @param version_id [String] Unique identifier of the version.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::InferenceEmbedding]

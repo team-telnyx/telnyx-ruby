@@ -24,19 +24,19 @@ module Telnyx
               )
             end
             def list(
-              # Path param
+              # Path param: Unique identifier of the run.
               run_id,
-              # Path param
+              # Path param: Unique identifier of the mission.
               mission_id:,
-              # Query param
+              # Query param: Filter results by agent id.
               agent_id: nil,
               # Query param: Page number (1-based)
               page_number: nil,
               # Query param: Number of items per page
               page_size: nil,
-              # Query param
+              # Query param: Filter results by step id.
               step_id: nil,
-              # Query param
+              # Query param: Filter results by type.
               type: nil,
               request_options: {}
             )
@@ -54,8 +54,11 @@ module Telnyx
               )
             end
             def get_event_details(
+              # Unique identifier of the event.
               event_id,
+              # Unique identifier of the mission.
               mission_id:,
+              # Unique identifier of the run.
               run_id:,
               request_options: {}
             )
@@ -77,9 +80,9 @@ module Telnyx
               ).returns(Telnyx::Models::AI::Missions::Runs::EventLogResponse)
             end
             def log(
-              # Path param
+              # Path param: Unique identifier of the run.
               run_id,
-              # Path param
+              # Path param: Unique identifier of the mission.
               mission_id:,
               # Body param
               summary:,

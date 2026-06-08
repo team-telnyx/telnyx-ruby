@@ -55,7 +55,11 @@ module Telnyx
       sig do
         params(id: String, request_options: Telnyx::RequestOptions::OrHash).void
       end
-      def delete(id, request_options: {})
+      def delete(
+        # Unique identifier of the resource.
+        id,
+        request_options: {}
+      )
       end
 
       # @api private

@@ -25,6 +25,7 @@ module Telnyx
                 )
               end
               def list(
+                # Name of the suite.
                 suite_name,
                 page_number: nil,
                 page_size: nil,
@@ -47,6 +48,7 @@ module Telnyx
                 )
               end
               def trigger(
+                # Name of the suite.
                 suite_name,
                 # Optional assistant version ID to use for all test runs in this suite. If
                 # provided, the version must exist or a 400 error will be returned. If not

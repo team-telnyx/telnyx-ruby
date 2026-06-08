@@ -148,7 +148,11 @@ module Telnyx
               Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
             )
           end
-          def retrieve(id, request_options: {})
+          def retrieve(
+            # Unique identifier of the resource.
+            id,
+            request_options: {}
+          )
           end
 
           # Update an existing tollfree verification request. This is particularly useful
@@ -204,6 +208,7 @@ module Telnyx
             )
           end
           def update(
+            # Unique identifier of the resource.
             id,
             # Any additional information
             additional_information:,
@@ -306,6 +311,7 @@ module Telnyx
             )
           end
           def list(
+            # Page number to retrieve (1-based).
             page:,
             # Request this many records per page
             #
@@ -313,10 +319,13 @@ module Telnyx
             page_size:,
             # Filter verification requests by business name
             business_name: nil,
+            # End of the date range filter (inclusive, ISO 8601).
             date_end: nil,
+            # Start of the date range filter (inclusive, ISO 8601).
             date_start: nil,
+            # Filter results by phone number.
             phone_number: nil,
-            # Tollfree verification status
+            # Filter results by status.
             status: nil,
             request_options: {}
           )
@@ -335,7 +344,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(id, request_options: {})
+          def delete(
+            # Unique identifier of the resource.
+            id,
+            request_options: {}
+          )
           end
 
           # Get the history of status changes for a verification request.
@@ -353,10 +366,11 @@ module Telnyx
             )
           end
           def retrieve_status_history(
+            # Unique identifier of the resource.
             id,
+            # Page number to retrieve (1-based).
             page_number:,
-            # Request this many records per page. This value is automatically clamped if the
-            # provided value is too large.
+            # Number of items to return per page.
             page_size:,
             request_options: {}
           )

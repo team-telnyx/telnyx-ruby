@@ -20,7 +20,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Messaging10dlc::TelnyxCampaignCsp)
         end
-        def retrieve(campaign_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the campaign.
+          campaign_id,
+          request_options: {}
+        )
         end
 
         # Update a campaign's properties by `campaignId`. **Please note:** only sample
@@ -43,6 +47,7 @@ module Telnyx
           ).returns(Telnyx::Messaging10dlc::TelnyxCampaignCsp)
         end
         def update(
+          # Unique identifier of the campaign.
           campaign_id,
           # Help message of the campaign.
           auto_renewal: nil,
@@ -86,6 +91,7 @@ module Telnyx
           )
         end
         def list(
+          # Filter results by brand id.
           brand_id:,
           # The 1-indexed page number to get. The default value is `1`.
           page: nil,
@@ -120,7 +126,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Messaging10dlc::CampaignDeactivateResponse)
         end
-        def deactivate(campaign_id, request_options: {})
+        def deactivate(
+          # Unique identifier of the campaign.
+          campaign_id,
+          request_options: {}
+        )
         end
 
         # Get the campaign metadata for each MNO it was submitted to.
@@ -146,7 +156,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T::Hash[Symbol, T.anything])
         end
-        def get_operation_status(campaign_id, request_options: {})
+        def get_operation_status(
+          # Unique identifier of the campaign.
+          campaign_id,
+          request_options: {}
+        )
         end
 
         # Get Sharing Status

@@ -47,7 +47,7 @@ module Telnyx
       #
       # @overload contest(claim_id, contest_notes:, documents: nil, request_options: {})
       #
-      # @param claim_id [String]
+      # @param claim_id [String] Unique identifier of the claim.
       #
       # @param contest_notes [String] Customer's response to the claim. 10–2000 characters.
       #

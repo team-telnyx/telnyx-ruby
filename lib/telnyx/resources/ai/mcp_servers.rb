@@ -33,7 +33,8 @@ module Telnyx
         #
         # @overload retrieve(mcp_server_id, request_options: {})
         #
-        # @param mcp_server_id [String]
+        # @param mcp_server_id [String] Unique identifier of the mcp server.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::McpServerRetrieveResponse]
@@ -52,14 +53,22 @@ module Telnyx
         #
         # @overload update(mcp_server_id, id: nil, allowed_tools: nil, api_key_ref: nil, created_at: nil, name: nil, type: nil, url: nil, request_options: {})
         #
-        # @param mcp_server_id [String]
+        # @param mcp_server_id [String] Unique identifier of the mcp server.
+        #
         # @param id [String]
+        #
         # @param allowed_tools [Array<String>, nil]
+        #
         # @param api_key_ref [String, nil]
+        #
         # @param created_at [Time]
+        #
         # @param name [String]
+        #
         # @param type [String]
+        #
         # @param url [String]
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::McpServerUpdateResponse]
@@ -80,10 +89,14 @@ module Telnyx
         #
         # @overload list(page_number: nil, page_size: nil, type: nil, url: nil, request_options: {})
         #
-        # @param page_number [Integer]
-        # @param page_size [Integer]
-        # @param type [String]
-        # @param url [String]
+        # @param page_number [Integer] Page number to retrieve (1-based).
+        #
+        # @param page_size [Integer] Number of items to return per page.
+        #
+        # @param type [String] Filter results by type.
+        #
+        # @param url [String] Filter results by url.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Internal::DefaultFlatPaginationTopLevelArray<Telnyx::Models::AI::McpServerListResponse>]
@@ -106,7 +119,8 @@ module Telnyx
         #
         # @overload delete(mcp_server_id, request_options: {})
         #
-        # @param mcp_server_id [String]
+        # @param mcp_server_id [String] Unique identifier of the mcp server.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]

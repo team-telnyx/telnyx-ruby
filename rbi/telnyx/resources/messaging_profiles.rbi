@@ -250,7 +250,9 @@ module Telnyx
       def list_alphanumeric_sender_ids(
         # The identifier of the messaging profile.
         id,
+        # Page number to retrieve (1-based).
         page_number: nil,
+        # Number of items to return per page.
         page_size: nil,
         request_options: {}
       )

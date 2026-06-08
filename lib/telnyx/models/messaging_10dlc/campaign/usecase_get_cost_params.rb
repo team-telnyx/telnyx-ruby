@@ -10,12 +10,14 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           # @!attribute usecase
+          #   Filter results by usecase.
           #
           #   @return [String]
           required :usecase, String
 
           # @!method initialize(usecase:, request_options: {})
-          #   @param usecase [String]
+          #   @param usecase [String] Filter results by usecase.
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

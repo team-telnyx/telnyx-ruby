@@ -11,8 +11,10 @@ module Telnyx
           #
           # @overload qualify_by_usecase(usecase, brand_id:, request_options: {})
           #
-          # @param usecase [String]
-          # @param brand_id [String]
+          # @param usecase [String] Unique identifier of the usecase.
+          #
+          # @param brand_id [String] Unique identifier of the brand.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::Messaging10dlc::CampaignBuilder::BrandQualifyByUsecaseResponse]

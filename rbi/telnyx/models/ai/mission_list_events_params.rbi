@@ -29,6 +29,7 @@ module Telnyx
         sig { params(page_size: Integer).void }
         attr_writer :page_size
 
+        # Filter results by type.
         sig { returns(T.nilable(String)) }
         attr_reader :type
 
@@ -48,6 +49,7 @@ module Telnyx
           page_number: nil,
           # Number of items per page
           page_size: nil,
+          # Filter results by type.
           type: nil,
           request_options: {}
         )

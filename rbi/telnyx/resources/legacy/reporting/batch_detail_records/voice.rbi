@@ -69,7 +69,11 @@ module Telnyx
                 Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceRetrieveResponse
               )
             end
-            def retrieve(id, request_options: {})
+            def retrieve(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # Retrieves all CDR report requests for the authenticated user
@@ -90,7 +94,11 @@ module Telnyx
                 Telnyx::Models::Legacy::Reporting::BatchDetailRecords::VoiceDeleteResponse
               )
             end
-            def delete(id, request_options: {})
+            def delete(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # Retrieves all available fields that can be used in CDR reports
