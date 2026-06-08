@@ -120,7 +120,7 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["documents/%1$s/download", id],
-          headers: {"accept" => "application/octet-stream"},
+          headers: {"accept" => "*"},
           model: StringIO,
           options: params[:request_options]
         )
