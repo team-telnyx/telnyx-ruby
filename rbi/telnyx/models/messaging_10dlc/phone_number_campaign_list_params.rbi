@@ -35,12 +35,14 @@ module Telnyx
         end
         attr_writer :filter
 
+        # Page number to retrieve (1-based).
         sig { returns(T.nilable(Integer)) }
         attr_reader :page
 
         sig { params(page: Integer).void }
         attr_writer :page
 
+        # Number of records to return per page.
         sig { returns(T.nilable(Integer)) }
         attr_reader :records_per_page
 
@@ -82,7 +84,9 @@ module Telnyx
           # filter[telnyx_campaign_id], filter[telnyx_brand_id], filter[tcr_campaign_id],
           # filter[tcr_brand_id]
           filter: nil,
+          # Page number to retrieve (1-based).
           page: nil,
+          # Number of records to return per page.
           records_per_page: nil,
           # Specifies the sort order for results. If not given, results are sorted by
           # createdAt in descending order.

@@ -11,7 +11,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Messaging10dlc::TelnyxDownstreamCampaign)
         end
-        def retrieve(campaign_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the campaign.
+          campaign_id,
+          request_options: {}
+        )
         end
 
         # Update campaign details by `campaignId`. **Please note:** Only webhook urls are
@@ -25,6 +29,7 @@ module Telnyx
           ).returns(Telnyx::Messaging10dlc::TelnyxDownstreamCampaign)
         end
         def update(
+          # Unique identifier of the campaign.
           campaign_id,
           # Webhook failover to which campaign status updates are sent.
           webhook_failover_url: nil,

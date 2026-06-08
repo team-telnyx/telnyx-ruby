@@ -9,7 +9,8 @@ module Telnyx
           #
           # @overload create_mcp_server(mission_id, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -28,8 +29,10 @@ module Telnyx
           #
           # @overload delete_mcp_server(mcp_server_id, mission_id:, request_options: {})
           #
-          # @param mcp_server_id [String]
-          # @param mission_id [String]
+          # @param mcp_server_id [String] Unique identifier of the mcp server.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]
@@ -53,8 +56,10 @@ module Telnyx
           #
           # @overload get_mcp_server(mcp_server_id, mission_id:, request_options: {})
           #
-          # @param mcp_server_id [String]
-          # @param mission_id [String]
+          # @param mcp_server_id [String] Unique identifier of the mcp server.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -78,7 +83,8 @@ module Telnyx
           #
           # @overload list_mcp_servers(mission_id, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -97,8 +103,10 @@ module Telnyx
           #
           # @overload update_mcp_server(mcp_server_id, mission_id:, request_options: {})
           #
-          # @param mcp_server_id [String]
-          # @param mission_id [String]
+          # @param mcp_server_id [String] Unique identifier of the mcp server.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]

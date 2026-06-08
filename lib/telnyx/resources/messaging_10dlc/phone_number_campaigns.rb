@@ -33,7 +33,8 @@ module Telnyx
         #
         # @overload retrieve(phone_number, request_options: {})
         #
-        # @param phone_number [String]
+        # @param phone_number [String] Unique identifier of the phone number.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::PhoneNumberCampaign]
@@ -52,7 +53,7 @@ module Telnyx
         #
         # @overload update(campaign_phone_number, campaign_id:, phone_number:, request_options: {})
         #
-        # @param campaign_phone_number [String]
+        # @param campaign_phone_number [String] Unique identifier of the phone number.
         #
         # @param campaign_id [String] The ID of the campaign you want to link to the specified phone number.
         #
@@ -84,9 +85,9 @@ module Telnyx
         #
         # @param filter [Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[telnyx_camp
         #
-        # @param page [Integer]
+        # @param page [Integer] Page number to retrieve (1-based).
         #
-        # @param records_per_page [Integer]
+        # @param records_per_page [Integer] Number of records to return per page.
         #
         # @param sort [Symbol, Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
         #
@@ -113,7 +114,8 @@ module Telnyx
         #
         # @overload delete(phone_number, request_options: {})
         #
-        # @param phone_number [String]
+        # @param phone_number [String] Unique identifier of the phone number.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::PhoneNumberCampaign]

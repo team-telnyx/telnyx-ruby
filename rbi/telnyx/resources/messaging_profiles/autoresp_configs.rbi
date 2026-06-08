@@ -17,6 +17,7 @@ module Telnyx
           ).returns(Telnyx::MessagingProfiles::AutoRespConfigResponse)
         end
         def create(
+          # Unique identifier of the profile.
           profile_id,
           country_code:,
           keywords:,
@@ -34,7 +35,13 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::MessagingProfiles::AutoRespConfigResponse)
         end
-        def retrieve(autoresp_cfg_id, profile_id:, request_options: {})
+        def retrieve(
+          # Unique identifier of the autoresp cfg.
+          autoresp_cfg_id,
+          # Unique identifier of the profile.
+          profile_id:,
+          request_options: {}
+        )
         end
 
         # Update Auto-Response Setting
@@ -50,9 +57,9 @@ module Telnyx
           ).returns(Telnyx::MessagingProfiles::AutoRespConfigResponse)
         end
         def update(
-          # Path param
+          # Path param: Unique identifier of the autoresp cfg.
           autoresp_cfg_id,
-          # Path param
+          # Path param: Unique identifier of the profile.
           profile_id:,
           # Body param
           country_code:,
@@ -81,7 +88,9 @@ module Telnyx
           )
         end
         def list(
+          # Unique identifier of the profile.
           profile_id,
+          # Filter results by country code.
           country_code: nil,
           # Consolidated created_at parameter (deepObject style). Originally:
           # created_at[gte], created_at[lte]
@@ -101,7 +110,13 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(String)
         end
-        def delete(autoresp_cfg_id, profile_id:, request_options: {})
+        def delete(
+          # Unique identifier of the autoresp cfg.
+          autoresp_cfg_id,
+          # Unique identifier of the profile.
+          profile_id:,
+          request_options: {}
+        )
         end
 
         # @api private

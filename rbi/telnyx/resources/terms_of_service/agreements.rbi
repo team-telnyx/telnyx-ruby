@@ -14,7 +14,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::TermsOfService::AgreementRetrieveResponse)
         end
-        def retrieve(agreement_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the agreement.
+          agreement_id,
+          request_options: {}
+        )
         end
 
         # Returns the Terms of Service agreements the authenticated user has on file. Each

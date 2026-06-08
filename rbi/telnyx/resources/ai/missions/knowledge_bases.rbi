@@ -12,7 +12,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def create_knowledge_base(mission_id, request_options: {})
+          def create_knowledge_base(
+            # Unique identifier of the mission.
+            mission_id,
+            request_options: {}
+          )
           end
 
           # Delete a knowledge base from a mission
@@ -24,7 +28,9 @@ module Telnyx
             ).void
           end
           def delete_knowledge_base(
+            # Unique identifier of the knowledge base.
             knowledge_base_id,
+            # Unique identifier of the mission.
             mission_id:,
             request_options: {}
           )
@@ -39,7 +45,9 @@ module Telnyx
             ).returns(T.anything)
           end
           def get_knowledge_base(
+            # Unique identifier of the knowledge base.
             knowledge_base_id,
+            # Unique identifier of the mission.
             mission_id:,
             request_options: {}
           )
@@ -52,7 +60,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def list_knowledge_bases(mission_id, request_options: {})
+          def list_knowledge_bases(
+            # Unique identifier of the mission.
+            mission_id,
+            request_options: {}
+          )
           end
 
           # Update a knowledge base definition
@@ -64,7 +76,9 @@ module Telnyx
             ).returns(T.anything)
           end
           def update_knowledge_base(
+            # Unique identifier of the knowledge base.
             knowledge_base_id,
+            # Unique identifier of the mission.
             mission_id:,
             request_options: {}
           )

@@ -10,6 +10,7 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           # @!attribute page
+          #   Page number to retrieve (1-based).
           #
           #   @return [Integer]
           required :page, Integer
@@ -29,22 +30,25 @@ module Telnyx
           optional :business_name, String
 
           # @!attribute date_end
+          #   End of the date range filter (inclusive, ISO 8601).
           #
           #   @return [Time, nil]
           optional :date_end, Time
 
           # @!attribute date_start
+          #   Start of the date range filter (inclusive, ISO 8601).
           #
           #   @return [Time, nil]
           optional :date_start, Time
 
           # @!attribute phone_number
+          #   Filter results by phone number.
           #
           #   @return [String, nil]
           optional :phone_number, String
 
           # @!attribute status
-          #   Tollfree verification status
+          #   Filter results by status.
           #
           #   @return [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus, nil]
           optional :status, enum: -> { Telnyx::MessagingTollfree::Verification::TfVerificationStatus }
@@ -54,19 +58,19 @@ module Telnyx
           #   {Telnyx::Models::MessagingTollfree::Verification::RequestListParams} for more
           #   details.
           #
-          #   @param page [Integer]
+          #   @param page [Integer] Page number to retrieve (1-based).
           #
           #   @param page_size [Integer]
           #
           #   @param business_name [String] Filter verification requests by business name
           #
-          #   @param date_end [Time]
+          #   @param date_end [Time] End of the date range filter (inclusive, ISO 8601).
           #
-          #   @param date_start [Time]
+          #   @param date_start [Time] Start of the date range filter (inclusive, ISO 8601).
           #
-          #   @param phone_number [String]
+          #   @param phone_number [String] Filter results by phone number.
           #
-          #   @param status [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus] Tollfree verification status
+          #   @param status [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus] Filter results by status.
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end

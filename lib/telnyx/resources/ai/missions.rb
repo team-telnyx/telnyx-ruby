@@ -46,7 +46,8 @@ module Telnyx
         #
         # @overload retrieve(mission_id, request_options: {})
         #
-        # @param mission_id [String]
+        # @param mission_id [String] Unique identifier of the mission.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::MissionRetrieveResponse]
@@ -91,7 +92,8 @@ module Telnyx
         #
         # @overload clone_mission(mission_id, request_options: {})
         #
-        # @param mission_id [String]
+        # @param mission_id [String] Unique identifier of the mission.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Object]
@@ -110,7 +112,8 @@ module Telnyx
         #
         # @overload delete_mission(mission_id, request_options: {})
         #
-        # @param mission_id [String]
+        # @param mission_id [String] Unique identifier of the mission.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
@@ -133,7 +136,7 @@ module Telnyx
         #
         # @param page_size [Integer] Number of items per page
         #
-        # @param type [String]
+        # @param type [String] Filter results by type.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -157,13 +160,20 @@ module Telnyx
         #
         # @overload update_mission(mission_id, description: nil, execution_mode: nil, instructions: nil, metadata: nil, model: nil, name: nil, request_options: {})
         #
-        # @param mission_id [String]
+        # @param mission_id [String] Unique identifier of the mission.
+        #
         # @param description [String]
+        #
         # @param execution_mode [Symbol, Telnyx::Models::AI::MissionUpdateMissionParams::ExecutionMode]
+        #
         # @param instructions [String]
+        #
         # @param metadata [Hash{Symbol=>Object}]
+        #
         # @param model [String]
+        #
         # @param name [String]
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::MissionUpdateMissionResponse]

@@ -37,7 +37,11 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::Messaging10dlcGetEnumResponse::Variants)
       end
-      def get_enum(endpoint, request_options: {})
+      def get_enum(
+        # Unique identifier of the endpoint.
+        endpoint,
+        request_options: {}
+      )
       end
 
       # @api private

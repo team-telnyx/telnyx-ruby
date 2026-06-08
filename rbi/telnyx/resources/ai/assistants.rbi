@@ -192,10 +192,15 @@ module Telnyx
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def retrieve(
+          # Unique identifier of the assistant.
           assistant_id,
+          # Filter results by call control id.
           call_control_id: nil,
+          # Whether to fetch dynamic variables from the configured webhook.
           fetch_dynamic_variables_from_webhook: nil,
+          # Start of the filter range.
           from: nil,
+          # End of the filter range.
           to: nil,
           request_options: {}
         )
@@ -260,6 +265,7 @@ module Telnyx
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def update(
+          # Unique identifier of the assistant.
           assistant_id,
           # Conversation flow as supplied by API clients (create / update).
           #
@@ -377,7 +383,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::AssistantDeleteResponse)
         end
-        def delete(assistant_id, request_options: {})
+        def delete(
+          # Unique identifier of the assistant.
+          assistant_id,
+          request_options: {}
+        )
         end
 
         # This endpoint allows a client to send a chat message to a specific AI Assistant.
@@ -398,6 +408,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::AssistantChatResponse)
         end
         def chat(
+          # Unique identifier of the assistant.
           assistant_id,
           # The message content sent by the client to the assistant
           content:,
@@ -416,7 +427,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
-        def clone_(assistant_id, request_options: {})
+        def clone_(
+          # Unique identifier of the assistant.
+          assistant_id,
+          request_options: {}
+        )
         end
 
         # Get an assistant texml by `assistant_id`.
@@ -426,7 +441,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(String)
         end
-        def get_texml(assistant_id, request_options: {})
+        def get_texml(
+          # Unique identifier of the assistant.
+          assistant_id,
+          request_options: {}
+        )
         end
 
         # Import assistants from external providers. Any assistant that has already been
@@ -481,6 +500,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::AssistantSendSMSResponse)
         end
         def send_sms(
+          # Unique identifier of the assistant.
           assistant_id,
           from:,
           to:,

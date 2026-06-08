@@ -45,6 +45,7 @@ module Telnyx
         ).returns(Telnyx::Models::InfringementClaimContestResponse)
       end
       def contest(
+        # Unique identifier of the claim.
         claim_id,
         # Customer's response to the claim. 10–2000 characters.
         contest_notes:,

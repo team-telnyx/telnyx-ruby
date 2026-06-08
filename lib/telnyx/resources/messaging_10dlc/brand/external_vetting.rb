@@ -10,7 +10,8 @@ module Telnyx
           #
           # @overload list(brand_id, request_options: {})
           #
-          # @param brand_id [String]
+          # @param brand_id [String] Unique identifier of the brand.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Array<Telnyx::Models::Messaging10dlc::Brand::ExternalVettingListResponseItem>]
@@ -36,7 +37,7 @@ module Telnyx
           #
           # @overload imports(brand_id, evp_id:, vetting_id:, vetting_token: nil, request_options: {})
           #
-          # @param brand_id [String]
+          # @param brand_id [String] Unique identifier of the brand.
           #
           # @param evp_id [String] External vetting provider ID for the brand.
           #
@@ -68,7 +69,7 @@ module Telnyx
           #
           # @overload order(brand_id, evp_id:, vetting_class:, request_options: {})
           #
-          # @param brand_id [String]
+          # @param brand_id [String] Unique identifier of the brand.
           #
           # @param evp_id [String] External vetting provider ID for the brand.
           #

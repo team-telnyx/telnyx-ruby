@@ -15,7 +15,11 @@ module Telnyx
               Telnyx::Models::Messaging10dlc::Campaign::UsecaseGetCostResponse
             )
           end
-          def get_cost(usecase:, request_options: {})
+          def get_cost(
+            # Filter results by usecase.
+            usecase:,
+            request_options: {}
+          )
           end
 
           # @api private

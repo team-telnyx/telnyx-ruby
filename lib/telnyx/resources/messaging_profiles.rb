@@ -211,9 +211,9 @@ module Telnyx
       #
       # @param id [String] The identifier of the messaging profile.
       #
-      # @param page_number [Integer]
+      # @param page_number [Integer] Page number to retrieve (1-based).
       #
-      # @param page_size [Integer]
+      # @param page_size [Integer] Number of items to return per page.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

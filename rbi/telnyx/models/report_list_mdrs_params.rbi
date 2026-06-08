@@ -11,28 +11,28 @@ module Telnyx
           T.any(Telnyx::ReportListMdrsParams, Telnyx::Internal::AnyHash)
         end
 
-      # Message uuid
+      # Filter results by identifier.
       sig { returns(T.nilable(String)) }
       attr_reader :id
 
       sig { params(id: String).void }
       attr_writer :id
 
-      # Destination number
+      # Filter results by cld.
       sig { returns(T.nilable(String)) }
       attr_reader :cld
 
       sig { params(cld: String).void }
       attr_writer :cld
 
-      # Origination number
+      # Filter results by cli.
       sig { returns(T.nilable(String)) }
       attr_reader :cli
 
       sig { params(cli: String).void }
       attr_writer :cli
 
-      # Direction (inbound or outbound)
+      # Filter results by direction.
       sig do
         returns(T.nilable(Telnyx::ReportListMdrsParams::Direction::OrSymbol))
       end
@@ -52,7 +52,7 @@ module Telnyx
       sig { params(end_date: String).void }
       attr_writer :end_date
 
-      # Type of message
+      # Filter results by message type.
       sig do
         returns(T.nilable(Telnyx::ReportListMdrsParams::MessageType::OrSymbol))
       end
@@ -65,7 +65,7 @@ module Telnyx
       end
       attr_writer :message_type
 
-      # Name of the profile
+      # Filter results by profile.
       sig { returns(T.nilable(String)) }
       attr_reader :profile
 
@@ -79,7 +79,7 @@ module Telnyx
       sig { params(start_date: String).void }
       attr_writer :start_date
 
-      # Message status
+      # Filter results by status.
       sig { returns(T.nilable(Telnyx::ReportListMdrsParams::Status::OrSymbol)) }
       attr_reader :status
 
@@ -103,23 +103,23 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # Message uuid
+        # Filter results by identifier.
         id: nil,
-        # Destination number
+        # Filter results by cld.
         cld: nil,
-        # Origination number
+        # Filter results by cli.
         cli: nil,
-        # Direction (inbound or outbound)
+        # Filter results by direction.
         direction: nil,
         # Pagination end date
         end_date: nil,
-        # Type of message
+        # Filter results by message type.
         message_type: nil,
-        # Name of the profile
+        # Filter results by profile.
         profile: nil,
         # Pagination start date
         start_date: nil,
-        # Message status
+        # Filter results by status.
         status: nil,
         request_options: {}
       )
@@ -144,7 +144,7 @@ module Telnyx
       def to_hash
       end
 
-      # Direction (inbound or outbound)
+      # Filter results by direction.
       module Direction
         extend Telnyx::Internal::Type::Enum
 
@@ -171,7 +171,7 @@ module Telnyx
         end
       end
 
-      # Type of message
+      # Filter results by message type.
       module MessageType
         extend Telnyx::Internal::Type::Enum
 
@@ -195,7 +195,7 @@ module Telnyx
         end
       end
 
-      # Message status
+      # Filter results by status.
       module Status
         extend Telnyx::Internal::Type::Enum
 

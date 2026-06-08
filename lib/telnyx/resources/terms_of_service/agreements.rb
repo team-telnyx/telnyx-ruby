@@ -11,7 +11,8 @@ module Telnyx
         #
         # @overload retrieve(agreement_id, request_options: {})
         #
-        # @param agreement_id [String]
+        # @param agreement_id [String] Unique identifier of the agreement.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::TermsOfService::AgreementRetrieveResponse]

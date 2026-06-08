@@ -15,6 +15,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::ClusterRetrieveResponse)
         end
         def retrieve(
+          # Unique identifier of the task.
           task_id,
           # Whether or not to include subclusters and their nodes in the response.
           show_subclusters: nil,
@@ -47,7 +48,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).void
         end
-        def delete(task_id, request_options: {})
+        def delete(
+          # Unique identifier of the task.
+          task_id,
+          request_options: {}
+        )
         end
 
         # Starts a background task to compute how the data in an
@@ -90,7 +95,13 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(StringIO)
         end
-        def fetch_graph(task_id, cluster_id: nil, request_options: {})
+        def fetch_graph(
+          # Unique identifier of the task.
+          task_id,
+          # Filter results by cluster id.
+          cluster_id: nil,
+          request_options: {}
+        )
         end
 
         # @api private

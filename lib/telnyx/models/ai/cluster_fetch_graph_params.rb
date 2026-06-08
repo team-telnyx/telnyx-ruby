@@ -14,13 +14,16 @@ module Telnyx
         required :task_id, String
 
         # @!attribute cluster_id
+        #   Filter results by cluster id.
         #
         #   @return [Integer, nil]
         optional :cluster_id, Integer
 
         # @!method initialize(task_id:, cluster_id: nil, request_options: {})
         #   @param task_id [String]
-        #   @param cluster_id [Integer]
+        #
+        #   @param cluster_id [Integer] Filter results by cluster id.
+        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

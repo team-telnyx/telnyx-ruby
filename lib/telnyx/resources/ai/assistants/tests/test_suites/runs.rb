@@ -13,7 +13,7 @@ module Telnyx
               #
               # @overload list(suite_name, page_number: nil, page_size: nil, status: nil, test_suite_run_id: nil, request_options: {})
               #
-              # @param suite_name [String]
+              # @param suite_name [String] Name of the suite.
               #
               # @param page_number [Integer]
               #
@@ -49,7 +49,7 @@ module Telnyx
               #
               # @overload trigger(suite_name, destination_version_id: nil, request_options: {})
               #
-              # @param suite_name [String]
+              # @param suite_name [String] Name of the suite.
               #
               # @param destination_version_id [String] Optional assistant version ID to use for all test runs in this suite. If provide
               #

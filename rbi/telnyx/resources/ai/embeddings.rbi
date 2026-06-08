@@ -75,7 +75,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::EmbeddingRetrieveResponse)
         end
-        def retrieve(task_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the task.
+          task_id,
+          request_options: {}
+        )
         end
 
         # Retrieve tasks for the user that are either `queued`, `processing`, `failed`,

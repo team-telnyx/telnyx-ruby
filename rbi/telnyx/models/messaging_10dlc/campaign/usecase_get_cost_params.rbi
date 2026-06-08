@@ -16,6 +16,7 @@ module Telnyx
               )
             end
 
+          # Filter results by usecase.
           sig { returns(String) }
           attr_accessor :usecase
 
@@ -25,7 +26,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(usecase:, request_options: {})
+          def self.new(
+            # Filter results by usecase.
+            usecase:,
+            request_options: {}
+          )
           end
 
           sig do

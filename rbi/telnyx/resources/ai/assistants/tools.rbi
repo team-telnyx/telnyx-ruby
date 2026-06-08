@@ -14,7 +14,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def add(tool_id, assistant_id:, request_options: {})
+          def add(
+            # Unique identifier of the tool.
+            tool_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # Remove Assistant Tool
@@ -25,7 +31,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def remove(tool_id, assistant_id:, request_options: {})
+          def remove(
+            # Unique identifier of the tool.
+            tool_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # Test a webhook tool for an assistant
@@ -39,9 +51,9 @@ module Telnyx
             ).returns(Telnyx::Models::AI::Assistants::ToolTestResponse)
           end
           def test_(
-            # Path param
+            # Path param: Unique identifier of the tool.
             tool_id,
-            # Path param
+            # Path param: Unique identifier of the assistant.
             assistant_id:,
             # Body param: Key-value arguments to use for the webhook test
             arguments: nil,

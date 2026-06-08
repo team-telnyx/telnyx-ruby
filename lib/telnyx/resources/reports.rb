@@ -15,23 +15,23 @@ module Telnyx
       #
       # @overload list_mdrs(id: nil, cld: nil, cli: nil, direction: nil, end_date: nil, message_type: nil, profile: nil, start_date: nil, status: nil, request_options: {})
       #
-      # @param id [String] Message uuid
+      # @param id [String] Filter results by identifier.
       #
-      # @param cld [String] Destination number
+      # @param cld [String] Filter results by cld.
       #
-      # @param cli [String] Origination number
+      # @param cli [String] Filter results by cli.
       #
-      # @param direction [Symbol, Telnyx::Models::ReportListMdrsParams::Direction] Direction (inbound or outbound)
+      # @param direction [Symbol, Telnyx::Models::ReportListMdrsParams::Direction] Filter results by direction.
       #
       # @param end_date [String] Pagination end date
       #
-      # @param message_type [Symbol, Telnyx::Models::ReportListMdrsParams::MessageType] Type of message
+      # @param message_type [Symbol, Telnyx::Models::ReportListMdrsParams::MessageType] Filter results by message type.
       #
-      # @param profile [String] Name of the profile
+      # @param profile [String] Filter results by profile.
       #
       # @param start_date [String] Pagination start date
       #
-      # @param status [Symbol, Telnyx::Models::ReportListMdrsParams::Status] Message status
+      # @param status [Symbol, Telnyx::Models::ReportListMdrsParams::Status] Filter results by status.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -50,36 +50,33 @@ module Telnyx
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::ReportListWdrsParams} for more details.
-      #
       # Fetch all Wdr records
       #
       # @overload list_wdrs(id: nil, end_date: nil, imsi: nil, mcc: nil, mnc: nil, page_number: nil, page_size: nil, phone_number: nil, sim_card_id: nil, sim_group_id: nil, sim_group_name: nil, sort: nil, start_date: nil, request_options: {})
       #
-      # @param id [String] WDR uuid
+      # @param id [String] Filter results by identifier.
       #
       # @param end_date [String] End date
       #
-      # @param imsi [String] International mobile subscriber identity
+      # @param imsi [String] Filter results by imsi.
       #
-      # @param mcc [String] Mobile country code
+      # @param mcc [String] Filter results by mcc.
       #
-      # @param mnc [String] Mobile network code
+      # @param mnc [String] Filter results by mnc.
       #
       # @param page_number [Integer]
       #
       # @param page_size [Integer]
       #
-      # @param phone_number [String] Phone number
+      # @param phone_number [String] Filter results by phone number.
       #
-      # @param sim_card_id [String] Sim card unique identifier
+      # @param sim_card_id [String] Filter results by sim card id.
       #
-      # @param sim_group_id [String] Sim group unique identifier
+      # @param sim_group_id [String] Filter results by sim group id.
       #
-      # @param sim_group_name [String] Sim group name
+      # @param sim_group_name [String] Filter results by sim group name.
       #
-      # @param sort [Array<String>] Field used to order the data. If no field is specified, default value is 'create
+      # @param sort [Array<String>] Field and direction to sort the results by.
       #
       # @param start_date [String] Start date
       #

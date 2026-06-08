@@ -12,24 +12,28 @@ module Telnyx
             T.any(Telnyx::AI::ToolListParams, Telnyx::Internal::AnyHash)
           end
 
+        # Filter results by filter name.
         sig { returns(T.nilable(String)) }
         attr_reader :filter_name
 
         sig { params(filter_name: String).void }
         attr_writer :filter_name
 
+        # Filter results by filter type.
         sig { returns(T.nilable(String)) }
         attr_reader :filter_type
 
         sig { params(filter_type: String).void }
         attr_writer :filter_type
 
+        # Page number to retrieve (1-based).
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_number
 
         sig { params(page_number: Integer).void }
         attr_writer :page_number
 
+        # Number of items to return per page.
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_size
 
@@ -46,9 +50,13 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # Filter results by filter name.
           filter_name: nil,
+          # Filter results by filter type.
           filter_type: nil,
+          # Page number to retrieve (1-based).
           page_number: nil,
+          # Number of items to return per page.
           page_size: nil,
           request_options: {}
         )

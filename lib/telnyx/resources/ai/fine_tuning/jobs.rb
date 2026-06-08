@@ -38,7 +38,8 @@ module Telnyx
           #
           # @overload retrieve(job_id, request_options: {})
           #
-          # @param job_id [String]
+          # @param job_id [String] Unique identifier of the job.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::FineTuning::FineTuningJob]
@@ -75,7 +76,8 @@ module Telnyx
           #
           # @overload cancel(job_id, request_options: {})
           #
-          # @param job_id [String]
+          # @param job_id [String] Unique identifier of the job.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::FineTuning::FineTuningJob]

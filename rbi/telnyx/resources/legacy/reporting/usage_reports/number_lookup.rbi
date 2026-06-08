@@ -42,7 +42,11 @@ module Telnyx
                 Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse
               )
             end
-            def retrieve(id, request_options: {})
+            def retrieve(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # Retrieve a paginated list of telco data usage reports
@@ -61,7 +65,11 @@ module Telnyx
                 request_options: Telnyx::RequestOptions::OrHash
               ).void
             end
-            def delete(id, request_options: {})
+            def delete(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # @api private

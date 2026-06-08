@@ -19,11 +19,11 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :id
 
+          # Page number to retrieve (1-based).
           sig { returns(Integer) }
           attr_accessor :page_number
 
-          # Request this many records per page. This value is automatically clamped if the
-          # provided value is too large.
+          # Number of items to return per page.
           sig { returns(Integer) }
           attr_accessor :page_size
 
@@ -37,9 +37,9 @@ module Telnyx
           end
           def self.new(
             id:,
+            # Page number to retrieve (1-based).
             page_number:,
-            # Request this many records per page. This value is automatically clamped if the
-            # provided value is too large.
+            # Number of items to return per page.
             page_size:,
             request_options: {}
           )

@@ -9,7 +9,8 @@ module Telnyx
           #
           # @overload create_tool(mission_id, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -28,8 +29,10 @@ module Telnyx
           #
           # @overload delete_tool(tool_id, mission_id:, request_options: {})
           #
-          # @param tool_id [String]
-          # @param mission_id [String]
+          # @param tool_id [String] Unique identifier of the tool.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]
@@ -53,8 +56,10 @@ module Telnyx
           #
           # @overload get_tool(tool_id, mission_id:, request_options: {})
           #
-          # @param tool_id [String]
-          # @param mission_id [String]
+          # @param tool_id [String] Unique identifier of the tool.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -78,7 +83,8 @@ module Telnyx
           #
           # @overload list_tools(mission_id, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -97,8 +103,10 @@ module Telnyx
           #
           # @overload update_tool(tool_id, mission_id:, request_options: {})
           #
-          # @param tool_id [String]
-          # @param mission_id [String]
+          # @param tool_id [String] Unique identifier of the tool.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]

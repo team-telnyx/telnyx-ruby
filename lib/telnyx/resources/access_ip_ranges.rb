@@ -61,7 +61,8 @@ module Telnyx
       #
       # @overload delete(access_ip_range_id, request_options: {})
       #
-      # @param access_ip_range_id [String]
+      # @param access_ip_range_id [String] Unique identifier of the access ip range.
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::AccessIPRange]

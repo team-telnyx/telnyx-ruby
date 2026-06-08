@@ -21,10 +21,15 @@ module Telnyx
           ).returns(Telnyx::Models::Reports::CdrUsageReportFetchSyncResponse)
         end
         def fetch_sync(
+          # Type of aggregation to apply to the results.
           aggregation_type:,
+          # Filter results by product breakdown.
           product_breakdown:,
+          # Filter results by connection.
           connections: nil,
+          # End of the date range filter (inclusive, ISO 8601).
           end_date: nil,
+          # Start of the date range filter (inclusive, ISO 8601).
           start_date: nil,
           request_options: {}
         )

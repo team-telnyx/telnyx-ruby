@@ -16,6 +16,7 @@ module Telnyx
               )
             end
 
+          # Page number to retrieve (1-based).
           sig { returns(Integer) }
           attr_accessor :page
 
@@ -32,25 +33,28 @@ module Telnyx
           sig { params(business_name: String).void }
           attr_writer :business_name
 
+          # End of the date range filter (inclusive, ISO 8601).
           sig { returns(T.nilable(Time)) }
           attr_reader :date_end
 
           sig { params(date_end: Time).void }
           attr_writer :date_end
 
+          # Start of the date range filter (inclusive, ISO 8601).
           sig { returns(T.nilable(Time)) }
           attr_reader :date_start
 
           sig { params(date_start: Time).void }
           attr_writer :date_start
 
+          # Filter results by phone number.
           sig { returns(T.nilable(String)) }
           attr_reader :phone_number
 
           sig { params(phone_number: String).void }
           attr_writer :phone_number
 
-          # Tollfree verification status
+          # Filter results by status.
           sig do
             returns(
               T.nilable(
@@ -82,6 +86,7 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            # Page number to retrieve (1-based).
             page:,
             # Request this many records per page
             #
@@ -89,10 +94,13 @@ module Telnyx
             page_size:,
             # Filter verification requests by business name
             business_name: nil,
+            # End of the date range filter (inclusive, ISO 8601).
             date_end: nil,
+            # Start of the date range filter (inclusive, ISO 8601).
             date_start: nil,
+            # Filter results by phone number.
             phone_number: nil,
-            # Tollfree verification status
+            # Filter results by status.
             status: nil,
             request_options: {}
           )

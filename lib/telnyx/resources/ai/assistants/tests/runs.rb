@@ -11,8 +11,10 @@ module Telnyx
             #
             # @overload retrieve(run_id, test_id:, request_options: {})
             #
-            # @param run_id [String]
-            # @param test_id [String]
+            # @param run_id [String] Unique identifier of the run.
+            #
+            # @param test_id [String] Unique identifier of the test.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [Telnyx::Models::AI::Assistants::Tests::TestRunResponse]
@@ -37,7 +39,7 @@ module Telnyx
             #
             # @overload list(test_id, page_number: nil, page_size: nil, status: nil, request_options: {})
             #
-            # @param test_id [String]
+            # @param test_id [String] Unique identifier of the test.
             #
             # @param page_number [Integer]
             #
@@ -70,7 +72,7 @@ module Telnyx
             #
             # @overload trigger(test_id, destination_version_id: nil, request_options: {})
             #
-            # @param test_id [String]
+            # @param test_id [String] Unique identifier of the test.
             #
             # @param destination_version_id [String] Optional assistant version ID to use for this test run. If provided, the version
             #

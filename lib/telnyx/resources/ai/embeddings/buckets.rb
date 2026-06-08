@@ -11,7 +11,8 @@ module Telnyx
           #
           # @overload retrieve(bucket_name, request_options: {})
           #
-          # @param bucket_name [String]
+          # @param bucket_name [String] Name of the bucket.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Embeddings::BucketRetrieveResponse]
@@ -49,7 +50,8 @@ module Telnyx
           #
           # @overload delete(bucket_name, request_options: {})
           #
-          # @param bucket_name [String]
+          # @param bucket_name [String] Name of the bucket.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]

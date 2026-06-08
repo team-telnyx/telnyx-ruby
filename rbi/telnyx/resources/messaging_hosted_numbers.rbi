@@ -72,7 +72,9 @@ module Telnyx
         filter_phone_number: nil,
         # Filter by phone number substring.
         filter_phone_number_contains: nil,
+        # Page number to retrieve (1-based).
         page_number: nil,
+        # Number of items to return per page.
         page_size: nil,
         # Sort by phone number.
         sort_phone_number: nil,

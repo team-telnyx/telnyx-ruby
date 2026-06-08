@@ -21,6 +21,7 @@ module Telnyx
             required :run_id, String
 
             # @!attribute agent_id
+            #   Filter results by agent id.
             #
             #   @return [String, nil]
             optional :agent_id, String
@@ -38,11 +39,13 @@ module Telnyx
             optional :page_size, Integer
 
             # @!attribute step_id
+            #   Filter results by step id.
             #
             #   @return [String, nil]
             optional :step_id, String
 
             # @!attribute type
+            #   Filter results by type.
             #
             #   @return [String, nil]
             optional :type, String
@@ -52,15 +55,15 @@ module Telnyx
             #
             #   @param run_id [String]
             #
-            #   @param agent_id [String]
+            #   @param agent_id [String] Filter results by agent id.
             #
             #   @param page_number [Integer] Page number (1-based)
             #
             #   @param page_size [Integer] Number of items per page
             #
-            #   @param step_id [String]
+            #   @param step_id [String] Filter results by step id.
             #
-            #   @param type [String]
+            #   @param type [String] Filter results by type.
             #
             #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
           end

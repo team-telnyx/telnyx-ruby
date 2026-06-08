@@ -38,7 +38,11 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::AdvancedOrderRetrieveResponse)
       end
-      def retrieve(order_id, request_options: {})
+      def retrieve(
+        # Unique identifier of the order.
+        order_id,
+        request_options: {}
+      )
       end
 
       # List Advanced Orders
@@ -66,6 +70,7 @@ module Telnyx
         ).returns(Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse)
       end
       def update_requirement_group(
+        # Unique identifier of the advanced order.
         advanced_order_id,
         area_code: nil,
         comments: nil,

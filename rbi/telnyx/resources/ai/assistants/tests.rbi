@@ -69,7 +69,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::AssistantTest)
           end
-          def retrieve(test_id, request_options: {})
+          def retrieve(
+            # Unique identifier of the test.
+            test_id,
+            request_options: {}
+          )
           end
 
           # Updates an existing assistant test configuration with new settings
@@ -92,6 +96,7 @@ module Telnyx
             ).returns(Telnyx::AI::Assistants::AssistantTest)
           end
           def update(
+            # Unique identifier of the test.
             test_id,
             # Updated description of the test's purpose and evaluation criteria.
             description: nil,
@@ -149,7 +154,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(test_id, request_options: {})
+          def delete(
+            # Unique identifier of the test.
+            test_id,
+            request_options: {}
+          )
           end
 
           # @api private

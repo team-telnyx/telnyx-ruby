@@ -17,11 +17,13 @@ module Telnyx
         optional :filter, -> { Telnyx::Messaging10dlc::PhoneNumberCampaignListParams::Filter }
 
         # @!attribute page
+        #   Page number to retrieve (1-based).
         #
         #   @return [Integer, nil]
         optional :page, Integer
 
         # @!attribute records_per_page
+        #   Number of records to return per page.
         #
         #   @return [Integer, nil]
         optional :records_per_page, Integer
@@ -40,9 +42,9 @@ module Telnyx
         #
         #   @param filter [Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[telnyx_camp
         #
-        #   @param page [Integer]
+        #   @param page [Integer] Page number to retrieve (1-based).
         #
-        #   @param records_per_page [Integer]
+        #   @param records_per_page [Integer] Number of records to return per page.
         #
         #   @param sort [Symbol, Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
         #

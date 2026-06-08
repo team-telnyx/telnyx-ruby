@@ -9,7 +9,8 @@ module Telnyx
           #
           # @overload create_knowledge_base(mission_id, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -28,8 +29,10 @@ module Telnyx
           #
           # @overload delete_knowledge_base(knowledge_base_id, mission_id:, request_options: {})
           #
-          # @param knowledge_base_id [String]
-          # @param mission_id [String]
+          # @param knowledge_base_id [String] Unique identifier of the knowledge base.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]
@@ -53,8 +56,10 @@ module Telnyx
           #
           # @overload get_knowledge_base(knowledge_base_id, mission_id:, request_options: {})
           #
-          # @param knowledge_base_id [String]
-          # @param mission_id [String]
+          # @param knowledge_base_id [String] Unique identifier of the knowledge base.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -78,7 +83,8 @@ module Telnyx
           #
           # @overload list_knowledge_bases(mission_id, request_options: {})
           #
-          # @param mission_id [String]
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -97,8 +103,10 @@ module Telnyx
           #
           # @overload update_knowledge_base(knowledge_base_id, mission_id:, request_options: {})
           #
-          # @param knowledge_base_id [String]
-          # @param mission_id [String]
+          # @param knowledge_base_id [String] Unique identifier of the knowledge base.
+          #
+          # @param mission_id [String] Unique identifier of the mission.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]

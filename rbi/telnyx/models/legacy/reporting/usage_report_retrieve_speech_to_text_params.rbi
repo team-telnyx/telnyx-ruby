@@ -16,12 +16,14 @@ module Telnyx
               )
             end
 
+          # End of the date range filter (inclusive, ISO 8601).
           sig { returns(T.nilable(Time)) }
           attr_reader :end_date
 
           sig { params(end_date: Time).void }
           attr_writer :end_date
 
+          # Start of the date range filter (inclusive, ISO 8601).
           sig { returns(T.nilable(Time)) }
           attr_reader :start_date
 
@@ -35,7 +37,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(end_date: nil, start_date: nil, request_options: {})
+          def self.new(
+            # End of the date range filter (inclusive, ISO 8601).
+            end_date: nil,
+            # Start of the date range filter (inclusive, ISO 8601).
+            start_date: nil,
+            request_options: {}
+          )
           end
 
           sig do

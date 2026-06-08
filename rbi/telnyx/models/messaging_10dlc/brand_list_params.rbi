@@ -22,24 +22,28 @@ module Telnyx
         sig { params(brand_id: String).void }
         attr_writer :brand_id
 
+        # Filter results by country.
         sig { returns(T.nilable(String)) }
         attr_reader :country
 
         sig { params(country: String).void }
         attr_writer :country
 
+        # Filter results by display name.
         sig { returns(T.nilable(String)) }
         attr_reader :display_name
 
         sig { params(display_name: String).void }
         attr_writer :display_name
 
+        # Filter results by entity type.
         sig { returns(T.nilable(String)) }
         attr_reader :entity_type
 
         sig { params(entity_type: String).void }
         attr_writer :entity_type
 
+        # Page number to retrieve (1-based).
         sig { returns(T.nilable(Integer)) }
         attr_reader :page
 
@@ -69,6 +73,7 @@ module Telnyx
         end
         attr_writer :sort
 
+        # Filter results by state.
         sig { returns(T.nilable(String)) }
         attr_reader :state
 
@@ -99,15 +104,20 @@ module Telnyx
         def self.new(
           # Filter results by the Telnyx Brand id
           brand_id: nil,
+          # Filter results by country.
           country: nil,
+          # Filter results by display name.
           display_name: nil,
+          # Filter results by entity type.
           entity_type: nil,
+          # Page number to retrieve (1-based).
           page: nil,
           # number of records per page. maximum of 500
           records_per_page: nil,
           # Specifies the sort order for results. If not given, results are sorted by
           # createdAt in descending order.
           sort: nil,
+          # Filter results by state.
           state: nil,
           # Filter results by the TCR Brand id
           tcr_brand_id: nil,
