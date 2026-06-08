@@ -48,7 +48,7 @@ module Telnyx
       #
       # @overload validate(body:, request_options: {})
       #
-      # @param body [Array<String>] **Bare JSON array** of candidate call-reason strings (NOT an object — there is n
+      # @param body [Array<String>] **Bare JSON array** of candidate call-reason strings (NOT an object - there is n
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

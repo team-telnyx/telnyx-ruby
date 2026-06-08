@@ -71,7 +71,7 @@ module Telnyx
             #   {Telnyx::Models::Dir::PhoneNumberRemoveResponse::Meta::Error} for more details.
             #
             #   Per-number error returned by the bulk-delete endpoint. Bulk-add does not use
-            #   this shape — it returns a 400 with the canonical envelope grouping numbers by
+            #   this shape - it returns a 400 with the canonical envelope grouping numbers by
             #   failure category.
             #
             #   @param code [Symbol, Telnyx::Models::Dir::PhoneNumberRemoveResponse::Meta::Error::Code] Stable per-number error code. Currently only `not_associated` is emitted, when t

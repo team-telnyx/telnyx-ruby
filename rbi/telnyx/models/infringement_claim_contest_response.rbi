@@ -144,9 +144,9 @@ module Telnyx
         end
         attr_accessor :resolution
 
-        # Lifecycle status. `pending` — newly filed; the DIR is auto-suspended.
-        # `contested` — you have submitted contest evidence; awaiting Telnyx review.
-        # `resolved` — final.
+        # Lifecycle status. `pending` - newly filed; the DIR is auto-suspended.
+        # `contested` - you have submitted contest evidence; awaiting Telnyx review.
+        # `resolved` - final.
         sig do
           returns(
             T.nilable(
@@ -276,9 +276,9 @@ module Telnyx
           resolution: nil,
           resolution_date: nil,
           resolution_notes: nil,
-          # Lifecycle status. `pending` — newly filed; the DIR is auto-suspended.
-          # `contested` — you have submitted contest evidence; awaiting Telnyx review.
-          # `resolved` — final.
+          # Lifecycle status. `pending` - newly filed; the DIR is auto-suspended.
+          # `contested` - you have submitted contest evidence; awaiting Telnyx review.
+          # `resolved` - final.
           status: nil,
           updated_at: nil
         )
@@ -584,18 +584,18 @@ module Telnyx
 
           # DIR lifecycle status.
           #
-          # - `draft` — newly created; editable; not yet submitted.
-          # - `submitted` / `in_review` — Telnyx is reviewing.
-          # - `verified` — approved; phone numbers may be attached.
-          # - `rejected` — Telnyx rejected this submission; `rejection_reasons` is
+          # - `draft` - newly created; editable; not yet submitted.
+          # - `submitted` / `in_review` - Telnyx is reviewing.
+          # - `verified` - approved; phone numbers may be attached.
+          # - `rejected` - Telnyx rejected this submission; `rejection_reasons` is
           #   populated; customer can edit and resubmit.
-          # - `unsuccessful` — system-side error during processing; customer can edit and
+          # - `unsuccessful` - system-side error during processing; customer can edit and
           #   resubmit.
-          # - `suspended` — temporarily disabled (e.g. by an active infringement claim).
-          # - `expired` — verification expired; customer must resubmit.
-          # - `infringement_claimed` — a trademark/impersonation claim is open against this
+          # - `suspended` - temporarily disabled (e.g. by an active infringement claim).
+          # - `expired` - verification expired; customer must resubmit.
+          # - `infringement_claimed` - a trademark/impersonation claim is open against this
           #   DIR.
-          # - `permanently_rejected` — terminal; cannot be resubmitted.
+          # - `permanently_rejected` - terminal; cannot be resubmitted.
           sig do
             returns(
               T.nilable(
@@ -635,18 +635,18 @@ module Telnyx
             enterprise_id: nil,
             # DIR lifecycle status.
             #
-            # - `draft` — newly created; editable; not yet submitted.
-            # - `submitted` / `in_review` — Telnyx is reviewing.
-            # - `verified` — approved; phone numbers may be attached.
-            # - `rejected` — Telnyx rejected this submission; `rejection_reasons` is
+            # - `draft` - newly created; editable; not yet submitted.
+            # - `submitted` / `in_review` - Telnyx is reviewing.
+            # - `verified` - approved; phone numbers may be attached.
+            # - `rejected` - Telnyx rejected this submission; `rejection_reasons` is
             #   populated; customer can edit and resubmit.
-            # - `unsuccessful` — system-side error during processing; customer can edit and
+            # - `unsuccessful` - system-side error during processing; customer can edit and
             #   resubmit.
-            # - `suspended` — temporarily disabled (e.g. by an active infringement claim).
-            # - `expired` — verification expired; customer must resubmit.
-            # - `infringement_claimed` — a trademark/impersonation claim is open against this
+            # - `suspended` - temporarily disabled (e.g. by an active infringement claim).
+            # - `expired` - verification expired; customer must resubmit.
+            # - `infringement_claimed` - a trademark/impersonation claim is open against this
             #   DIR.
-            # - `permanently_rejected` — terminal; cannot be resubmitted.
+            # - `permanently_rejected` - terminal; cannot be resubmitted.
             status: nil
           )
           end
@@ -667,18 +667,18 @@ module Telnyx
 
           # DIR lifecycle status.
           #
-          # - `draft` — newly created; editable; not yet submitted.
-          # - `submitted` / `in_review` — Telnyx is reviewing.
-          # - `verified` — approved; phone numbers may be attached.
-          # - `rejected` — Telnyx rejected this submission; `rejection_reasons` is
+          # - `draft` - newly created; editable; not yet submitted.
+          # - `submitted` / `in_review` - Telnyx is reviewing.
+          # - `verified` - approved; phone numbers may be attached.
+          # - `rejected` - Telnyx rejected this submission; `rejection_reasons` is
           #   populated; customer can edit and resubmit.
-          # - `unsuccessful` — system-side error during processing; customer can edit and
+          # - `unsuccessful` - system-side error during processing; customer can edit and
           #   resubmit.
-          # - `suspended` — temporarily disabled (e.g. by an active infringement claim).
-          # - `expired` — verification expired; customer must resubmit.
-          # - `infringement_claimed` — a trademark/impersonation claim is open against this
+          # - `suspended` - temporarily disabled (e.g. by an active infringement claim).
+          # - `expired` - verification expired; customer must resubmit.
+          # - `infringement_claimed` - a trademark/impersonation claim is open against this
           #   DIR.
-          # - `permanently_rejected` — terminal; cannot be resubmitted.
+          # - `permanently_rejected` - terminal; cannot be resubmitted.
           module Status
             extend Telnyx::Internal::Type::Enum
 
@@ -794,9 +794,9 @@ module Telnyx
           end
         end
 
-        # Lifecycle status. `pending` — newly filed; the DIR is auto-suspended.
-        # `contested` — you have submitted contest evidence; awaiting Telnyx review.
-        # `resolved` — final.
+        # Lifecycle status. `pending` - newly filed; the DIR is auto-suspended.
+        # `contested` - you have submitted contest evidence; awaiting Telnyx review.
+        # `resolved` - final.
         module Status
           extend Telnyx::Internal::Type::Enum
 

@@ -487,6 +487,8 @@ module Telnyx
 
   module Dir = Telnyx::Models::Dir
 
+  class DirCreateLoaParams = Telnyx::Models::DirCreateLoaParams
+
   class DirDeleteParams = Telnyx::Models::DirDeleteParams
 
   class DirListDocumentTypesParams = Telnyx::Models::DirListDocumentTypesParams

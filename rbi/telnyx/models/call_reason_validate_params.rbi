@@ -11,7 +11,7 @@ module Telnyx
           T.any(Telnyx::CallReasonValidateParams, Telnyx::Internal::AnyHash)
         end
 
-      # **Bare JSON array** of candidate call-reason strings (NOT an object — there is
+      # **Bare JSON array** of candidate call-reason strings (NOT an object - there is
       # no top-level `call_reasons` key on this endpoint). 1–10 strings, each ≤64
       # characters.
       sig { returns(T::Array[String]) }
@@ -24,7 +24,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # **Bare JSON array** of candidate call-reason strings (NOT an object — there is
+        # **Bare JSON array** of candidate call-reason strings (NOT an object - there is
         # no top-level `call_reasons` key on this endpoint). 1–10 strings, each ≤64
         # characters.
         body:,

@@ -38,6 +38,14 @@ module Telnyx
 
       def delete: (String dir_id, ?request_options: Telnyx::request_opts) -> nil
 
+      def create_loa: (
+        String dir_id,
+        phone_numbers: ::Array[String],
+        ?agent: Telnyx::DirCreateLoaParams::Agent,
+        ?signature: Telnyx::DirCreateLoaParams::Signature,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
       def list_document_types: (
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::DirListDocumentTypesResponse

@@ -62,7 +62,7 @@ module Telnyx
         attr_writer :version
 
         # A recorded user agreement to a product's Terms of Service. The `user_id` is
-        # intentionally NOT echoed back on this public surface — the caller already knows
+        # intentionally NOT echoed back on this public surface - the caller already knows
         # their own identity.
         sig do
           params(

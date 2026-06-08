@@ -125,7 +125,7 @@ module Telnyx
           end
           attr_writer :entity_type
 
-          # Always `customer` on this endpoint — internal-only comments are filtered out.
+          # Always `customer` on this endpoint - internal-only comments are filtered out.
           sig do
             returns(
               T.nilable(
@@ -173,7 +173,7 @@ module Telnyx
             created_at: nil,
             # Resource the comment is attached to. Always `dir` on this endpoint.
             entity_type: nil,
-            # Always `customer` on this endpoint — internal-only comments are filtered out.
+            # Always `customer` on this endpoint - internal-only comments are filtered out.
             visibility: nil
           )
           end
@@ -326,7 +326,7 @@ module Telnyx
             end
           end
 
-          # Always `customer` on this endpoint — internal-only comments are filtered out.
+          # Always `customer` on this endpoint - internal-only comments are filtered out.
           module Visibility
             extend Telnyx::Internal::Type::Enum
 

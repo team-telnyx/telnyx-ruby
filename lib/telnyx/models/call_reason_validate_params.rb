@@ -8,7 +8,7 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute body
-      #   **Bare JSON array** of candidate call-reason strings (NOT an object — there is
+      #   **Bare JSON array** of candidate call-reason strings (NOT an object - there is
       #   no top-level `call_reasons` key on this endpoint). 1–10 strings, each ≤64
       #   characters.
       #
@@ -19,7 +19,7 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallReasonValidateParams} for more details.
       #
-      #   @param body [Array<String>] **Bare JSON array** of candidate call-reason strings (NOT an object — there is n
+      #   @param body [Array<String>] **Bare JSON array** of candidate call-reason strings (NOT an object - there is n
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

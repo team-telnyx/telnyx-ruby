@@ -42,7 +42,7 @@ module Telnyx
 
       # @!method initialize(connection_score: nil, engagement_score: nil, last_refreshed_at: nil, maturity_score: nil, sentiment_score: nil, spam_category: nil, spam_risk: nil)
       #   Reputation snapshot for a phone number. Each metric is a 0–100 score;
-      #   `spam_risk` is a coarse bucket. Field set may grow over time — read by key.
+      #   `spam_risk` is a coarse bucket. Field set may grow over time - read by key.
       #
       #   @param connection_score [Integer, nil]
       #

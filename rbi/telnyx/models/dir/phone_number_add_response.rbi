@@ -20,7 +20,7 @@ module Telnyx
         attr_accessor :data
 
         # Bulk-add success response (HTTP 201). All numbers in the request were accepted
-        # into a single new batch. Every entry in `data` shares the same `batch_id` — read
+        # into a single new batch. Every entry in `data` shares the same `batch_id` - read
         # it from any element to obtain the batch id for subsequent
         # `GET .../phone_number_batches/{batch_id}` calls. If any number in the request
         # fails (schema-invalid, not in inventory, already attached to another DIR, etc.)
@@ -110,16 +110,16 @@ module Telnyx
 
           # Phone-number lifecycle status.
           #
-          # - `submitted` / `in_review` — Telnyx is reviewing the batch this number belongs
+          # - `submitted` / `in_review` - Telnyx is reviewing the batch this number belongs
           #   to.
-          # - `verified` — approved; the DIR's display identity will be shown on outbound
+          # - `verified` - approved; the DIR's display identity will be shown on outbound
           #   calls from this number.
-          # - `unsuccessful` — Telnyx rejected this submission; the customer may re-add to
+          # - `unsuccessful` - Telnyx rejected this submission; the customer may re-add to
           #   retry.
-          # - `suspended` — temporarily disabled (e.g. by an active infringement claim on
+          # - `suspended` - temporarily disabled (e.g. by an active infringement claim on
           #   the DIR).
-          # - `expired` — verification expired; re-add to renew.
-          # - `permanently_rejected` — terminal; cannot be re-added on this or any other DIR
+          # - `expired` - verification expired; re-add to renew.
+          # - `permanently_rejected` - terminal; cannot be re-added on this or any other DIR
           #   you own.
           sig do
             returns(
@@ -193,16 +193,16 @@ module Telnyx
             rejection_reason: nil,
             # Phone-number lifecycle status.
             #
-            # - `submitted` / `in_review` — Telnyx is reviewing the batch this number belongs
+            # - `submitted` / `in_review` - Telnyx is reviewing the batch this number belongs
             #   to.
-            # - `verified` — approved; the DIR's display identity will be shown on outbound
+            # - `verified` - approved; the DIR's display identity will be shown on outbound
             #   calls from this number.
-            # - `unsuccessful` — Telnyx rejected this submission; the customer may re-add to
+            # - `unsuccessful` - Telnyx rejected this submission; the customer may re-add to
             #   retry.
-            # - `suspended` — temporarily disabled (e.g. by an active infringement claim on
+            # - `suspended` - temporarily disabled (e.g. by an active infringement claim on
             #   the DIR).
-            # - `expired` — verification expired; re-add to renew.
-            # - `permanently_rejected` — terminal; cannot be re-added on this or any other DIR
+            # - `expired` - verification expired; re-add to renew.
+            # - `permanently_rejected` - terminal; cannot be re-added on this or any other DIR
             #   you own.
             status: nil,
             updated_at: nil,
@@ -301,16 +301,16 @@ module Telnyx
 
           # Phone-number lifecycle status.
           #
-          # - `submitted` / `in_review` — Telnyx is reviewing the batch this number belongs
+          # - `submitted` / `in_review` - Telnyx is reviewing the batch this number belongs
           #   to.
-          # - `verified` — approved; the DIR's display identity will be shown on outbound
+          # - `verified` - approved; the DIR's display identity will be shown on outbound
           #   calls from this number.
-          # - `unsuccessful` — Telnyx rejected this submission; the customer may re-add to
+          # - `unsuccessful` - Telnyx rejected this submission; the customer may re-add to
           #   retry.
-          # - `suspended` — temporarily disabled (e.g. by an active infringement claim on
+          # - `suspended` - temporarily disabled (e.g. by an active infringement claim on
           #   the DIR).
-          # - `expired` — verification expired; re-add to renew.
-          # - `permanently_rejected` — terminal; cannot be re-added on this or any other DIR
+          # - `expired` - verification expired; re-add to renew.
+          # - `permanently_rejected` - terminal; cannot be re-added on this or any other DIR
           #   you own.
           module Status
             extend Telnyx::Internal::Type::Enum

@@ -32,7 +32,7 @@ module Telnyx
       attr_accessor :spam_risk
 
       # Reputation snapshot for a phone number. Each metric is a 0–100 score;
-      # `spam_risk` is a coarse bucket. Field set may grow over time — read by key.
+      # `spam_risk` is a coarse bucket. Field set may grow over time - read by key.
       sig do
         params(
           connection_score: T.nilable(Integer),

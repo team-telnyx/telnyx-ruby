@@ -28,9 +28,9 @@ module Telnyx
       #
       # Common failure modes:
       #
-      # - `422` — a required field is missing or malformed (the response
+      # - `422` - a required field is missing or malformed (the response
       #   `errors[].source.pointer` names the field).
-      # - `409` — an enterprise with the same identifying details already exists under
+      # - `409` - an enterprise with the same identifying details already exists under
       #   your account.
       #
       # @overload create(billing_address:, billing_contact:, country_code:, doing_business_as:, fein:, industry:, jurisdiction_of_incorporation:, legal_name:, number_of_employees:, organization_contact:, organization_legal_type:, organization_physical_address:, organization_type:, website:, corporate_registration_number: nil, customer_reference: nil, dun_bradstreet_number: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, role_type: nil, request_options: {})
@@ -214,12 +214,12 @@ module Telnyx
       #
       # Failure modes:
       #
-      # - `400` — the enterprise still has dependent resources in a non-deletable state.
+      # - `400` - the enterprise still has dependent resources in a non-deletable state.
       #   Remove those first; the response `detail` identifies what is blocking the
       #   delete.
-      # - `409` — the enterprise has a dependent resource with an unresolved claim.
+      # - `409` - the enterprise has a dependent resource with an unresolved claim.
       #   Resolve it before deleting.
-      # - `404` — the enterprise does not exist or does not belong to your account.
+      # - `404` - the enterprise does not exist or does not belong to your account.
       #
       # @overload delete(enterprise_id, request_options: {})
       #
@@ -254,8 +254,8 @@ module Telnyx
       #
       # Failure modes:
       #
-      # - `403` — Branded Calling Terms of Service not accepted.
-      # - `404` — enterprise does not exist or does not belong to your account.
+      # - `403` - Branded Calling Terms of Service not accepted.
+      # - `404` - enterprise does not exist or does not belong to your account.
       #
       # **Pricing:** This is a billable action. See https://telnyx.com/pricing/numbers
       # for current pricing.
