@@ -13,6 +13,10 @@ module Telnyx
         sig { returns(Telnyx::Resources::Enterprises::Reputation::Loa) }
         attr_reader :loa
 
+        # Phone-number reputation monitoring (spam-score lookup and tracking).
+        sig { returns(Telnyx::Resources::Enterprises::Reputation::Remediation) }
+        attr_reader :remediation
+
         # Phone Number Reputation tracks how your outbound caller-IDs are perceived (spam
         # risk, engagement, etc.) across the call-screening ecosystem. This endpoint reads
         # the enterprise-level settings: whether the product is enabled, the refresh

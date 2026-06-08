@@ -1,0 +1,36 @@
+module Telnyx
+  module Resources
+    class Enterprises
+      class Reputation
+        class Remediation
+          def create: (
+            String enterprise_id,
+            call_purpose: String,
+            contact_email: String,
+            phone_numbers: ::Array[String],
+            ?webhook_url: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse
+
+          def retrieve: (
+            String remediation_id,
+            enterprise_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Enterprises::Reputation::RemediationRetrieveResponse
+
+          def list: (
+            String enterprise_id,
+            ?filter_created_at_gte: Time,
+            ?filter_created_at_lte: Time,
+            ?filter_status: Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status,
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::Reputation::RemediationListResponse]
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

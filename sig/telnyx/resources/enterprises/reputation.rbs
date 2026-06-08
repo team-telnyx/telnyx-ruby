@@ -6,6 +6,8 @@ module Telnyx
 
         attr_reader loa: Telnyx::Resources::Enterprises::Reputation::Loa
 
+        attr_reader remediation: Telnyx::Resources::Enterprises::Reputation::Remediation
+
         def retrieve: (
           String enterprise_id,
           ?request_options: Telnyx::request_opts
