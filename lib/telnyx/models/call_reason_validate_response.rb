@@ -24,7 +24,7 @@ module Telnyx
 
         # @!attribute non_approved_reasons
         #   Subset of the input that does NOT match the pre-vetted library. The DIR can
-        #   still be submitted with these — they will go through manual review.
+        #   still be submitted with these - they will go through manual review.
         #
         #   @return [Array<String>]
         required :non_approved_reasons, Telnyx::Internal::Type::ArrayOf[String]

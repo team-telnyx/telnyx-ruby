@@ -7,7 +7,7 @@ module Telnyx
       class BrandedCallingAgreeResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #   A recorded user agreement to a product's Terms of Service. The `user_id` is
-        #   intentionally NOT echoed back on this public surface — the caller already knows
+        #   intentionally NOT echoed back on this public surface - the caller already knows
         #   their own identity.
         #
         #   @return [Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data]
@@ -58,7 +58,7 @@ module Telnyx
 
           # @!method initialize(id: nil, agreed_at: nil, created_at: nil, product_type: nil, terms_version: nil, version: nil)
           #   A recorded user agreement to a product's Terms of Service. The `user_id` is
-          #   intentionally NOT echoed back on this public surface — the caller already knows
+          #   intentionally NOT echoed back on this public surface - the caller already knows
           #   their own identity.
           #
           #   @param id [String]

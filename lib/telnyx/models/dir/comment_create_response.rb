@@ -58,7 +58,7 @@ module Telnyx
             optional :entity_type, enum: -> { Telnyx::Models::Dir::CommentCreateResponse::Data::EntityType }
 
             # @!attribute visibility
-            #   Always `customer` on this endpoint — internal-only comments are filtered out.
+            #   Always `customer` on this endpoint - internal-only comments are filtered out.
             #
             #   @return [Symbol, Telnyx::Models::Dir::CommentCreateResponse::Data::Visibility, nil]
             optional :visibility, enum: -> { Telnyx::Models::Dir::CommentCreateResponse::Data::Visibility }
@@ -82,7 +82,7 @@ module Telnyx
           #
           #   @param entity_type [Symbol, Telnyx::Models::Dir::CommentCreateResponse::Data::EntityType] Resource the comment is attached to. Always `dir` on this endpoint.
           #
-          #   @param visibility [Symbol, Telnyx::Models::Dir::CommentCreateResponse::Data::Visibility] Always `customer` on this endpoint — internal-only comments are filtered out.
+          #   @param visibility [Symbol, Telnyx::Models::Dir::CommentCreateResponse::Data::Visibility] Always `customer` on this endpoint - internal-only comments are filtered out.
 
           # Who wrote the comment. `admin` covers the Telnyx vetting team.
           #
@@ -129,7 +129,7 @@ module Telnyx
             #   @return [Array<Symbol>]
           end
 
-          # Always `customer` on this endpoint — internal-only comments are filtered out.
+          # Always `customer` on this endpoint - internal-only comments are filtered out.
           #
           # @see Telnyx::Models::Dir::CommentCreateResponse::Data#visibility
           module Visibility

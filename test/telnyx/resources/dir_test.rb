@@ -87,6 +87,17 @@ class Telnyx::Test::Resources::DirTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_create_loa_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.dir.create_loa("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_numbers: ["+13125550000"])
+
+    assert_pattern do
+      response => StringIO
+    end
+  end
+
   def test_list_document_types
     skip("Mock server tests are disabled")
 

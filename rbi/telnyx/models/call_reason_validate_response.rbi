@@ -53,7 +53,7 @@ module Telnyx
         attr_accessor :all_pre_approved
 
         # Subset of the input that does NOT match the pre-vetted library. The DIR can
-        # still be submitted with these — they will go through manual review.
+        # still be submitted with these - they will go through manual review.
         sig { returns(T::Array[String]) }
         attr_accessor :non_approved_reasons
 
@@ -76,7 +76,7 @@ module Telnyx
           # vetting.
           all_pre_approved:,
           # Subset of the input that does NOT match the pre-vetted library. The DIR can
-          # still be submitted with these — they will go through manual review.
+          # still be submitted with these - they will go through manual review.
           non_approved_reasons:,
           # `true` when at least one supplied reason is in `non_approved_reasons`.
           # Equivalent to `non_approved_reasons.length > 0` and the inverse of

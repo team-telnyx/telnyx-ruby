@@ -34,7 +34,7 @@ module Telnyx
       end
 
       # Edit a DIR. Only DIRs in `draft`, `rejected`, `unsuccessful`, or `suspended` are
-      # editable. PATCH is a pure edit — `status` is never changed by this endpoint. To
+      # editable. PATCH is a pure edit - `status` is never changed by this endpoint. To
       # re-vet after editing, call `POST /v2/dir/{dir_id}/submit` explicitly.
       sig do
         params(
@@ -134,6 +134,42 @@ module Telnyx
       def delete(
         # The DIR id. Lowercase UUID.
         dir_id,
+        request_options: {}
+      )
+      end
+
+      # Generate a pre-filled Letter of Authorization (LOA) PDF for a DIR. Enterprise
+      # identity (legal name, DBA, address, contact, website, tax id) and the DIR
+      # display name are read server-side; the caller supplies the telephone numbers to
+      # authorize, an optional Authorized Agent block, and an optional drawn signature.
+      #
+      # When `signature` is omitted the PDF is returned unsigned so the customer can
+      # sign it externally and upload it via the Documents API. When `signature` is
+      # present the PDF embeds the supplied image, printed name, and signed-at date.
+      #
+      # Returns `application/pdf`.
+      sig do
+        params(
+          dir_id: String,
+          phone_numbers: T::Array[String],
+          agent: Telnyx::DirCreateLoaParams::Agent::OrHash,
+          signature: Telnyx::DirCreateLoaParams::Signature::OrHash,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(StringIO)
+      end
+      def create_loa(
+        # The DIR id.
+        dir_id,
+        # Telephone numbers to authorize on the DIR, in `+E164` format (`+` followed by
+        # 10-15 digits). Max 15 per request.
+        phone_numbers:,
+        # Third-party reseller / partner managing the enterprise's phone numbers. Omit
+        # when the enterprise works directly with Telnyx.
+        agent: nil,
+        # Optional. When provided the rendered PDF embeds the signature image, printed
+        # name, and signed-at date. When absent the PDF is returned unsigned so the
+        # customer can sign externally and upload it via the Documents API.
+        signature: nil,
         request_options: {}
       )
       end

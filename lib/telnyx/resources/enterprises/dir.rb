@@ -39,10 +39,10 @@ module Telnyx
         #
         # **Failure modes**
         #
-        # - `422` — validation error; `errors[].source.pointer` names the offending field.
-        # - `403` — Branded Calling not activated on this enterprise (see
+        # - `422` - validation error; `errors[].source.pointer` names the offending field.
+        # - `403` - Branded Calling not activated on this enterprise (see
         #   `POST /enterprises/{id}/branded_calling`).
-        # - `404` — enterprise does not exist or does not belong to your account.
+        # - `404` - enterprise does not exist or does not belong to your account.
         #
         # @overload create(enterprise_id, authorizer_email:, authorizer_name:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, call_reasons: nil, documents: nil, logo_url: nil, reselling: nil, request_options: {})
         #

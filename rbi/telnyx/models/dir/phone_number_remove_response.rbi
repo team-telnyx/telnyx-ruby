@@ -131,7 +131,7 @@ module Telnyx
             attr_accessor :title
 
             # Per-number error returned by the bulk-delete endpoint. Bulk-add does not use
-            # this shape — it returns a 400 with the canonical envelope grouping numbers by
+            # this shape - it returns a 400 with the canonical envelope grouping numbers by
             # failure category.
             sig do
               params(

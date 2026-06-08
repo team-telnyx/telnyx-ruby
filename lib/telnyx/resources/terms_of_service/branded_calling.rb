@@ -7,7 +7,7 @@ module Telnyx
       # service.
       class BrandedCalling
         # Records the authenticated user's agreement to the current Branded Calling ToS.
-        # No body required. Idempotent — re-calling after agreement is a no-op and returns
+        # No body required. Idempotent - re-calling after agreement is a no-op and returns
         # the existing agreement.
         #
         # This is a prerequisite for activating Branded Calling on any enterprise

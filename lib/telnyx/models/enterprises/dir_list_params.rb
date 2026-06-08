@@ -41,7 +41,7 @@ module Telnyx
         #   Convenience: returns DIRs whose `expiring_at` falls within the next N days
         #   (1–365). Equivalent to setting `filter[expiring_at][gte]=<now>` +
         #   `filter[expiring_at][lte]=<now+N>`. Mutually exclusive with the explicit
-        #   `[gte]`/`[lte]` filters — combining returns 400.
+        #   `[gte]`/`[lte]` filters - combining returns 400.
         #
         #   @return [Integer, nil]
         optional :filter_expiring_within_days, Integer

@@ -43,7 +43,7 @@ module Telnyx
       # {Telnyx::Models::DirUpdateParams} for more details.
       #
       # Edit a DIR. Only DIRs in `draft`, `rejected`, `unsuccessful`, or `suspended` are
-      # editable. PATCH is a pure edit — `status` is never changed by this endpoint. To
+      # editable. PATCH is a pure edit - `status` is never changed by this endpoint. To
       # re-vet after editing, call `POST /v2/dir/{dir_id}/submit` explicitly.
       #
       # @overload update(dir_id, authorizer_email: nil, authorizer_name: nil, call_reasons: nil, display_name: nil, logo_url: nil, reselling: nil, request_options: {})
@@ -156,6 +156,47 @@ module Telnyx
           path: ["dir/%1$s", dir_id],
           model: NilClass,
           options: params[:request_options]
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DirCreateLoaParams} for more details.
+      #
+      # Generate a pre-filled Letter of Authorization (LOA) PDF for a DIR. Enterprise
+      # identity (legal name, DBA, address, contact, website, tax id) and the DIR
+      # display name are read server-side; the caller supplies the telephone numbers to
+      # authorize, an optional Authorized Agent block, and an optional drawn signature.
+      #
+      # When `signature` is omitted the PDF is returned unsigned so the customer can
+      # sign it externally and upload it via the Documents API. When `signature` is
+      # present the PDF embeds the supplied image, printed name, and signed-at date.
+      #
+      # Returns `application/pdf`.
+      #
+      # @overload create_loa(dir_id, phone_numbers:, agent: nil, signature: nil, request_options: {})
+      #
+      # @param dir_id [String] The DIR id.
+      #
+      # @param phone_numbers [Array<String>] Telephone numbers to authorize on the DIR, in `+E164` format (`+` followed by 10
+      #
+      # @param agent [Telnyx::Models::DirCreateLoaParams::Agent] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
+      #
+      # @param signature [Telnyx::Models::DirCreateLoaParams::Signature] Optional. When provided the rendered PDF embeds the signature image, printed nam
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [StringIO]
+      #
+      # @see Telnyx::Models::DirCreateLoaParams
+      def create_loa(dir_id, params)
+        parsed, options = Telnyx::DirCreateLoaParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["dir/%1$s/loa", dir_id],
+          headers: {"accept" => "application/pdf"},
+          body: parsed,
+          model: StringIO,
+          options: options
         )
       end
 

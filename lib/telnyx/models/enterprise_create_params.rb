@@ -66,12 +66,12 @@ module Telnyx
       # @!attribute organization_legal_type
       #   Legal-entity form. Pick the form that matches your incorporation documents:
       #
-      #   - `corporation` — C-corp or S-corp.
-      #   - `llc` — limited liability company.
-      #   - `partnership` — general/limited partnership.
-      #   - `nonprofit` — non-profit corporation, charitable trust, or
+      #   - `corporation` - C-corp or S-corp.
+      #   - `llc` - limited liability company.
+      #   - `partnership` - general/limited partnership.
+      #   - `nonprofit` - non-profit corporation, charitable trust, or
       #     501(c)(3)/equivalent.
-      #   - `other` — anything else (sole proprietorships, government bodies, DBAs, etc.).
+      #   - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
       #     You may be asked for additional documents during vetting.
       #
       #   @return [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType]
@@ -85,10 +85,10 @@ module Telnyx
       # @!attribute organization_type
       #   Organization category for vetting purposes:
       #
-      #   - `commercial` — for-profit business entities (LLC, corp, partnership, sole
+      #   - `commercial` - for-profit business entities (LLC, corp, partnership, sole
       #     proprietorship). Most callers fall here.
-      #   - `government` — federal/state/local government bodies.
-      #   - `non_profit` — registered 501(c)(3)/equivalent (incl. educational
+      #   - `government` - federal/state/local government bodies.
+      #   - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
       #     institutions, charities, religious organisations).
       #
       #   @return [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType]
@@ -254,12 +254,12 @@ module Telnyx
 
       # Legal-entity form. Pick the form that matches your incorporation documents:
       #
-      # - `corporation` — C-corp or S-corp.
-      # - `llc` — limited liability company.
-      # - `partnership` — general/limited partnership.
-      # - `nonprofit` — non-profit corporation, charitable trust, or
+      # - `corporation` - C-corp or S-corp.
+      # - `llc` - limited liability company.
+      # - `partnership` - general/limited partnership.
+      # - `nonprofit` - non-profit corporation, charitable trust, or
       #   501(c)(3)/equivalent.
-      # - `other` — anything else (sole proprietorships, government bodies, DBAs, etc.).
+      # - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
       #   You may be asked for additional documents during vetting.
       module OrganizationLegalType
         extend Telnyx::Internal::Type::Enum
@@ -276,10 +276,10 @@ module Telnyx
 
       # Organization category for vetting purposes:
       #
-      # - `commercial` — for-profit business entities (LLC, corp, partnership, sole
+      # - `commercial` - for-profit business entities (LLC, corp, partnership, sole
       #   proprietorship). Most callers fall here.
-      # - `government` — federal/state/local government bodies.
-      # - `non_profit` — registered 501(c)(3)/equivalent (incl. educational
+      # - `government` - federal/state/local government bodies.
+      # - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
       #   institutions, charities, religious organisations).
       module OrganizationType
         extend Telnyx::Internal::Type::Enum
