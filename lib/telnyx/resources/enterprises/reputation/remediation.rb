@@ -19,15 +19,15 @@ module Telnyx
           # Each phone number must be in E.164 format and belong to this enterprise. A
           # number that already has an in-flight remediation request is rejected.
           #
-          # @overload create(enterprise_id, call_purpose:, contact_email:, phone_numbers:, webhook_url: nil, request_options: {})
+          # @overload create(enterprise_id, call_purpose:, phone_numbers:, contact_email: nil, webhook_url: nil, request_options: {})
           #
           # @param enterprise_id [String] The enterprise id. Lowercase UUID.
           #
           # @param call_purpose [String] How the numbers are used (free text).
           #
-          # @param contact_email [String] Contact email for tracking this request.
-          #
           # @param phone_numbers [Array<String>] Phone numbers in E.164 format. Each must belong to this enterprise. Maximum 2,00
+          #
+          # @param contact_email [String] Optional contact email for this remediation request.
           #
           # @param webhook_url [String] Optional https:// URL for status notifications.
           #

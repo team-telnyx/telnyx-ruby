@@ -27,11 +27,6 @@ module Telnyx
             #   @return [String]
             required :call_purpose, String
 
-            # @!attribute contact_email
-            #
-            #   @return [String]
-            required :contact_email, String
-
             # @!attribute created_at
             #
             #   @return [Time]
@@ -69,6 +64,11 @@ module Telnyx
             #   @return [Time]
             required :updated_at, Time
 
+            # @!attribute contact_email
+            #
+            #   @return [String, nil]
+            optional :contact_email, String, nil?: true
+
             # @!attribute results
             #   Per-category buckets. Populated once results are available. Null while the
             #   request is still pending.
@@ -93,7 +93,7 @@ module Telnyx
             #   @return [String, nil]
             optional :webhook_url, String, nil?: true
 
-            # @!method initialize(id:, call_purpose:, contact_email:, created_at:, phone_numbers_count:, phone_numbers_ineligible:, phone_numbers_submitted:, status:, updated_at:, results: nil, tier1_completed_at: nil, tier2_completed_at: nil, webhook_url: nil)
+            # @!method initialize(id:, call_purpose:, created_at:, phone_numbers_count:, phone_numbers_ineligible:, phone_numbers_submitted:, status:, updated_at:, contact_email: nil, results: nil, tier1_completed_at: nil, tier2_completed_at: nil, webhook_url: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Enterprises::Reputation::RemediationRetrieveResponse::Data} for
             #   more details.
@@ -103,8 +103,6 @@ module Telnyx
             #   @param id [String]
             #
             #   @param call_purpose [String]
-            #
-            #   @param contact_email [String]
             #
             #   @param created_at [Time]
             #
@@ -117,6 +115,8 @@ module Telnyx
             #   @param status [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationRetrieveResponse::Data::Status] Customer-facing status of a remediation request.
             #
             #   @param updated_at [Time]
+            #
+            #   @param contact_email [String, nil]
             #
             #   @param results [Telnyx::Models::Enterprises::Reputation::RemediationRetrieveResponse::Data::Results, nil] Per-category buckets. Populated once results are available. Null while the reque
             #

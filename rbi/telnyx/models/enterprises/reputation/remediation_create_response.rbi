@@ -67,9 +67,6 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :call_purpose
 
-            sig { returns(String) }
-            attr_accessor :contact_email
-
             sig { returns(Time) }
             attr_accessor :created_at
 
@@ -97,6 +94,9 @@ module Telnyx
 
             sig { returns(Time) }
             attr_accessor :updated_at
+
+            sig { returns(T.nilable(String)) }
+            attr_accessor :contact_email
 
             # Per-category buckets. Populated once results are available. Null while the
             # request is still pending.
@@ -133,7 +133,6 @@ module Telnyx
               params(
                 id: String,
                 call_purpose: String,
-                contact_email: String,
                 created_at: Time,
                 phone_numbers_count: Integer,
                 phone_numbers_ineligible: Integer,
@@ -141,6 +140,7 @@ module Telnyx
                 status:
                   Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::OrSymbol,
                 updated_at: Time,
+                contact_email: T.nilable(String),
                 results:
                   T.nilable(
                     Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results::OrHash
@@ -153,7 +153,6 @@ module Telnyx
             def self.new(
               id:,
               call_purpose:,
-              contact_email:,
               created_at:,
               # Total phone numbers in this batch, including any later cancelled. May exceed the
               # sum of the per-category result buckets, which omit cancelled numbers.
@@ -166,6 +165,7 @@ module Telnyx
               # Customer-facing status of a remediation request.
               status:,
               updated_at:,
+              contact_email: nil,
               # Per-category buckets. Populated once results are available. Null while the
               # request is still pending.
               results: nil,
@@ -180,7 +180,6 @@ module Telnyx
                 {
                   id: String,
                   call_purpose: String,
-                  contact_email: String,
                   created_at: Time,
                   phone_numbers_count: Integer,
                   phone_numbers_ineligible: Integer,
@@ -188,6 +187,7 @@ module Telnyx
                   status:
                     Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol,
                   updated_at: Time,
+                  contact_email: T.nilable(String),
                   results:
                     T.nilable(
                       Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results
