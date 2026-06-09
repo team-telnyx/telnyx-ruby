@@ -18,8 +18,8 @@ module Telnyx
             params(
               enterprise_id: String,
               call_purpose: String,
-              contact_email: String,
               phone_numbers: T::Array[String],
+              contact_email: String,
               webhook_url: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
@@ -31,11 +31,11 @@ module Telnyx
             enterprise_id,
             # How the numbers are used (free text).
             call_purpose:,
-            # Contact email for tracking this request.
-            contact_email:,
             # Phone numbers in E.164 format. Each must belong to this enterprise. Maximum
             # 2,000 per request.
             phone_numbers:,
+            # Optional contact email for this remediation request.
+            contact_email: nil,
             # Optional https:// URL for status notifications.
             webhook_url: nil,
             request_options: {}

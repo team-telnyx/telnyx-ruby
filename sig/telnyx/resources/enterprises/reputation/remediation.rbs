@@ -6,8 +6,8 @@ module Telnyx
           def create: (
             String enterprise_id,
             call_purpose: String,
-            contact_email: String,
             phone_numbers: ::Array[String],
+            ?contact_email: String,
             ?webhook_url: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse

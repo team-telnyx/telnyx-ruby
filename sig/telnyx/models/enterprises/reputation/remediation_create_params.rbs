@@ -6,8 +6,8 @@ module Telnyx
           {
             enterprise_id: String,
             call_purpose: String,
-            contact_email: String,
             phone_numbers: ::Array[String],
+            contact_email: String,
             webhook_url: String
           }
           & Telnyx::Internal::Type::request_parameters
@@ -20,9 +20,11 @@ module Telnyx
 
           attr_accessor call_purpose: String
 
-          attr_accessor contact_email: String
-
           attr_accessor phone_numbers: ::Array[String]
+
+          attr_reader contact_email: String?
+
+          def contact_email=: (String) -> String
 
           attr_reader webhook_url: String?
 
@@ -31,8 +33,8 @@ module Telnyx
           def initialize: (
             enterprise_id: String,
             call_purpose: String,
-            contact_email: String,
             phone_numbers: ::Array[String],
+            ?contact_email: String,
             ?webhook_url: String,
             ?request_options: Telnyx::request_opts
           ) -> void
@@ -40,8 +42,8 @@ module Telnyx
           def to_hash: -> {
             enterprise_id: String,
             call_purpose: String,
-            contact_email: String,
             phone_numbers: ::Array[String],
+            contact_email: String,
             webhook_url: String,
             request_options: Telnyx::RequestOptions
           }

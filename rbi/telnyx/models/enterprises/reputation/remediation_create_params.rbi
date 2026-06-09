@@ -23,14 +23,17 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :call_purpose
 
-          # Contact email for tracking this request.
-          sig { returns(String) }
-          attr_accessor :contact_email
-
           # Phone numbers in E.164 format. Each must belong to this enterprise. Maximum
           # 2,000 per request.
           sig { returns(T::Array[String]) }
           attr_accessor :phone_numbers
+
+          # Optional contact email for this remediation request.
+          sig { returns(T.nilable(String)) }
+          attr_reader :contact_email
+
+          sig { params(contact_email: String).void }
+          attr_writer :contact_email
 
           # Optional https:// URL for status notifications.
           sig { returns(T.nilable(String)) }
@@ -43,8 +46,8 @@ module Telnyx
             params(
               enterprise_id: String,
               call_purpose: String,
-              contact_email: String,
               phone_numbers: T::Array[String],
+              contact_email: String,
               webhook_url: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
@@ -53,11 +56,11 @@ module Telnyx
             enterprise_id:,
             # How the numbers are used (free text).
             call_purpose:,
-            # Contact email for tracking this request.
-            contact_email:,
             # Phone numbers in E.164 format. Each must belong to this enterprise. Maximum
             # 2,000 per request.
             phone_numbers:,
+            # Optional contact email for this remediation request.
+            contact_email: nil,
             # Optional https:// URL for status notifications.
             webhook_url: nil,
             request_options: {}
@@ -69,8 +72,8 @@ module Telnyx
               {
                 enterprise_id: String,
                 call_purpose: String,
-                contact_email: String,
                 phone_numbers: T::Array[String],
+                contact_email: String,
                 webhook_url: String,
                 request_options: Telnyx::RequestOptions
               }

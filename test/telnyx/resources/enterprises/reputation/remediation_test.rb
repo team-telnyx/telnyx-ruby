@@ -10,7 +10,6 @@ class Telnyx::Test::Resources::Enterprises::Reputation::RemediationTest < Telnyx
       @telnyx.enterprises.reputation.remediation.create(
         "4a6192a4-573d-446d-b3ce-aff9117272a6",
         call_purpose: "Appointment reminders for our dental clinic.",
-        contact_email: "ops@example.com",
         phone_numbers: ["+19493253498", "+12134445566"]
       )
 

@@ -22,13 +22,13 @@ module Telnyx
             {
               id: String,
               call_purpose: String,
-              contact_email: String,
               created_at: Time,
               phone_numbers_count: Integer,
               phone_numbers_ineligible: Integer,
               phone_numbers_submitted: Integer,
               status: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status,
               updated_at: Time,
+              contact_email: String?,
               results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?,
               :tier1_completed_at => Time?,
               :tier2_completed_at => Time?,
@@ -39,8 +39,6 @@ module Telnyx
             attr_accessor id: String
 
             attr_accessor call_purpose: String
-
-            attr_accessor contact_email: String
 
             attr_accessor created_at: Time
 
@@ -54,6 +52,8 @@ module Telnyx
 
             attr_accessor updated_at: Time
 
+            attr_accessor contact_email: String?
+
             attr_accessor results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?
 
             attr_accessor tier1_completed_at: Time?
@@ -65,13 +65,13 @@ module Telnyx
             def initialize: (
               id: String,
               call_purpose: String,
-              contact_email: String,
               created_at: Time,
               phone_numbers_count: Integer,
               phone_numbers_ineligible: Integer,
               phone_numbers_submitted: Integer,
               status: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status,
               updated_at: Time,
+              ?contact_email: String?,
               ?results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?,
               ?tier1_completed_at: Time?,
               ?tier2_completed_at: Time?,
@@ -81,13 +81,13 @@ module Telnyx
             def to_hash: -> {
               id: String,
               call_purpose: String,
-              contact_email: String,
               created_at: Time,
               phone_numbers_count: Integer,
               phone_numbers_ineligible: Integer,
               phone_numbers_submitted: Integer,
               status: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status,
               updated_at: Time,
+              contact_email: String?,
               results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?,
               :tier1_completed_at => Time?,
               :tier2_completed_at => Time?,
