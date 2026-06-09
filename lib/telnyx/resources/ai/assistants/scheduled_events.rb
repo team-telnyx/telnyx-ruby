@@ -11,7 +11,7 @@ module Telnyx
           #
           # Create a scheduled event for an assistant
           #
-          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
+          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, call_settings: nil, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
           #
           # @param assistant_id [String] Unique identifier of the assistant.
           #
@@ -22,6 +22,8 @@ module Telnyx
           # @param telnyx_conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
           #
           # @param telnyx_end_user_target [String] The phone number, SIP URI, to schedule the call or text to.
+          #
+          # @param call_settings [Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings] Per-call telephony overrides applied when a scheduled phone-call event
           #
           # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
           #

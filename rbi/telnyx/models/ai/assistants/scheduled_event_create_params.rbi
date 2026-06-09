@@ -36,6 +36,26 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :telnyx_end_user_target
 
+          # Per-call telephony overrides applied when a scheduled phone-call event
+          # dispatches. Phone-call events only. New per-call dispatch options should be
+          # added here rather than as top-level event fields.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings
+              )
+            )
+          end
+          attr_reader :call_settings
+
+          sig do
+            params(
+              call_settings:
+                Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::OrHash
+            ).void
+          end
+          attr_writer :call_settings
+
           # Metadata associated with the conversation. Telnyx provides several pieces of
           # metadata, but customers can also add their own.
           sig do
@@ -98,6 +118,8 @@ module Telnyx
               telnyx_conversation_channel:
                 Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
               telnyx_end_user_target: String,
+              call_settings:
+                Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::OrHash,
               conversation_metadata:
                 T::Hash[
                   Symbol,
@@ -119,6 +141,10 @@ module Telnyx
             telnyx_conversation_channel:,
             # The phone number, SIP URI, to schedule the call or text to.
             telnyx_end_user_target:,
+            # Per-call telephony overrides applied when a scheduled phone-call event
+            # dispatches. Phone-call events only. New per-call dispatch options should be
+            # added here rather than as top-level event fields.
+            call_settings: nil,
             # Metadata associated with the conversation. Telnyx provides several pieces of
             # metadata, but customers can also add their own.
             conversation_metadata: nil,
@@ -144,6 +170,8 @@ module Telnyx
                 telnyx_conversation_channel:
                   Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
                 telnyx_end_user_target: String,
+                call_settings:
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings,
                 conversation_metadata:
                   T::Hash[
                     Symbol,
@@ -158,6 +186,116 @@ module Telnyx
             )
           end
           def to_hash
+          end
+
+          class CallSettings < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # SIP region passed to Telnyx when initiating an outbound call. Values match the
+            # Telnyx TeXML `SipRegion` parameter exactly. Telnyx defaults to `US` when
+            # omitted.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::OrSymbol
+                )
+              )
+            end
+            attr_reader :sip_region
+
+            sig do
+              params(
+                sip_region:
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::OrSymbol
+              ).void
+            end
+            attr_writer :sip_region
+
+            # Per-call telephony overrides applied when a scheduled phone-call event
+            # dispatches. Phone-call events only. New per-call dispatch options should be
+            # added here rather than as top-level event fields.
+            sig do
+              params(
+                sip_region:
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # SIP region passed to Telnyx when initiating an outbound call. Values match the
+              # Telnyx TeXML `SipRegion` parameter exactly. Telnyx defaults to `US` when
+              # omitted.
+              sip_region: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  sip_region:
+                    Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # SIP region passed to Telnyx when initiating an outbound call. Values match the
+            # Telnyx TeXML `SipRegion` parameter exactly. Telnyx defaults to `US` when
+            # omitted.
+            module SipRegion
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              US =
+                T.let(
+                  :US,
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::TaggedSymbol
+                )
+              EUROPE =
+                T.let(
+                  :Europe,
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::TaggedSymbol
+                )
+              CANADA =
+                T.let(
+                  :Canada,
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::TaggedSymbol
+                )
+              AUSTRALIA =
+                T.let(
+                  :Australia,
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::TaggedSymbol
+                )
+              MIDDLE_EAST =
+                T.let(
+                  :"Middle East",
+                  Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
 
           module ConversationMetadata
