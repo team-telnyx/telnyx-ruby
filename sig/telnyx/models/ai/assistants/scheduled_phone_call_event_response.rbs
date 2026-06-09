@@ -11,6 +11,7 @@ module Telnyx
             telnyx_end_user_target: String,
             call_attempts: ::Array[Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallAttempt],
             call_duration: Integer,
+            call_settings: Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings,
             call_status: String,
             conversation_id: String,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::conversation_metadata],
@@ -46,6 +47,12 @@ module Telnyx
           attr_reader call_duration: Integer?
 
           def call_duration=: (Integer) -> Integer
+
+          attr_reader call_settings: Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings?
+
+          def call_settings=: (
+            Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings
+          ) -> Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings
 
           attr_reader call_status: String?
 
@@ -113,6 +120,7 @@ module Telnyx
             telnyx_end_user_target: String,
             ?call_attempts: ::Array[Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallAttempt],
             ?call_duration: Integer,
+            ?call_settings: Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings,
             ?call_status: String,
             ?conversation_id: String,
             ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::conversation_metadata],
@@ -136,6 +144,7 @@ module Telnyx
             telnyx_end_user_target: String,
             call_attempts: ::Array[Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallAttempt],
             call_duration: Integer,
+            call_settings: Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings,
             call_status: String,
             conversation_id: String,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::conversation_metadata],
@@ -190,6 +199,42 @@ module Telnyx
               call_duration: Integer,
               telnyx_call_control_id: String
             }
+          end
+
+          type call_settings =
+            {
+              sip_region: Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::sip_region
+            }
+
+          class CallSettings < Telnyx::Internal::Type::BaseModel
+            attr_reader sip_region: Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::sip_region?
+
+            def sip_region=: (
+              Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::sip_region
+            ) -> Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::sip_region
+
+            def initialize: (
+              ?sip_region: Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::sip_region
+            ) -> void
+
+            def to_hash: -> {
+              sip_region: Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::sip_region
+            }
+
+            type sip_region =
+              :US | :Europe | :Canada | :Australia | :"Middle East"
+
+            module SipRegion
+              extend Telnyx::Internal::Type::Enum
+
+              US: :US
+              EUROPE: :Europe
+              CANADA: :Canada
+              AUSTRALIA: :Australia
+              MIDDLE_EAST: :"Middle East"
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::sip_region]
+            end
           end
 
           type conversation_metadata = String | Integer | bool

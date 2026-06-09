@@ -15,6 +15,8 @@ module Telnyx
               telnyx_conversation_channel:
                 Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
               telnyx_end_user_target: String,
+              call_settings:
+                Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::OrHash,
               conversation_metadata:
                 T::Hash[
                   Symbol,
@@ -37,6 +39,10 @@ module Telnyx
             telnyx_conversation_channel:,
             # The phone number, SIP URI, to schedule the call or text to.
             telnyx_end_user_target:,
+            # Per-call telephony overrides applied when a scheduled phone-call event
+            # dispatches. Phone-call events only. New per-call dispatch options should be
+            # added here rather than as top-level event fields.
+            call_settings: nil,
             # Metadata associated with the conversation. Telnyx provides several pieces of
             # metadata, but customers can also add their own.
             conversation_metadata: nil,

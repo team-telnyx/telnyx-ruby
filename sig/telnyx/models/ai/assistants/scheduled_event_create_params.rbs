@@ -9,6 +9,7 @@ module Telnyx
             telnyx_agent_target: String,
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
+            call_settings: Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
             dynamic_variables: ::Hash[Symbol, String],
             max_retries_client_errors: Integer,
@@ -30,6 +31,12 @@ module Telnyx
           attr_accessor telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type
 
           attr_accessor telnyx_end_user_target: String
+
+          attr_reader call_settings: Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings?
+
+          def call_settings=: (
+            Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings
+          ) -> Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings
 
           attr_reader conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata]?
 
@@ -61,6 +68,7 @@ module Telnyx
             telnyx_agent_target: String,
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
+            ?call_settings: Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings,
             ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
             ?dynamic_variables: ::Hash[Symbol, String],
             ?max_retries_client_errors: Integer,
@@ -75,6 +83,7 @@ module Telnyx
             telnyx_agent_target: String,
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
+            call_settings: Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings,
             conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
             dynamic_variables: ::Hash[Symbol, String],
             max_retries_client_errors: Integer,
@@ -82,6 +91,42 @@ module Telnyx
             text: String,
             request_options: Telnyx::RequestOptions
           }
+
+          type call_settings =
+            {
+              sip_region: Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::sip_region
+            }
+
+          class CallSettings < Telnyx::Internal::Type::BaseModel
+            attr_reader sip_region: Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::sip_region?
+
+            def sip_region=: (
+              Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::sip_region
+            ) -> Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::sip_region
+
+            def initialize: (
+              ?sip_region: Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::sip_region
+            ) -> void
+
+            def to_hash: -> {
+              sip_region: Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::sip_region
+            }
+
+            type sip_region =
+              :US | :Europe | :Canada | :Australia | :"Middle East"
+
+            module SipRegion
+              extend Telnyx::Internal::Type::Enum
+
+              US: :US
+              EUROPE: :Europe
+              CANADA: :Canada
+              AUSTRALIA: :Australia
+              MIDDLE_EAST: :"Middle East"
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::sip_region]
+            end
+          end
 
           type conversation_metadata = String | Integer | bool
 
