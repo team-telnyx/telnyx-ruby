@@ -42,11 +42,17 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::DirUpdateParams} for more details.
       #
-      # Edit a DIR. Only DIRs in `draft`, `rejected`, `unsuccessful`, or `suspended` are
-      # editable. PATCH is a pure edit - `status` is never changed by this endpoint. To
-      # re-vet after editing, call `POST /v2/dir/{dir_id}/submit` explicitly.
+      # Edit a DIR. DIRs in `draft`, `rejected`, `unsuccessful`, or `suspended` can be
+      # edited freely: PATCH is a pure edit, `status` is never changed, and you re-vet
+      # by calling `POST /v2/dir/{dir_id}/submit` explicitly. A `verified` DIR can also
+      # be edited in place: a PATCH that changes any value returns the DIR to `draft`
+      # and branded delivery stops until you re-submit and the DIR is approved again,
+      # while a PATCH that changes nothing (an empty body or values identical to the
+      # current ones) leaves the DIR `verified`, so idempotent retries are safe. DIRs in
+      # any other status (`submitted`, `in_review`, `expired`, `infringement_claimed`,
+      # `permanently_rejected`) cannot be edited.
       #
-      # @overload update(dir_id, authorizer_email: nil, authorizer_name: nil, call_reasons: nil, display_name: nil, logo_url: nil, reselling: nil, request_options: {})
+      # @overload update(dir_id, authorizer_email: nil, authorizer_name: nil, call_reasons: nil, certify_brand_is_accurate: nil, certify_ip_ownership: nil, certify_no_shaft_content: nil, display_name: nil, documents: nil, logo_url: nil, reselling: nil, request_options: {})
       #
       # @param dir_id [String] The DIR id. Lowercase UUID.
       #
@@ -56,7 +62,15 @@ module Telnyx
       #
       # @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
       #
+      # @param certify_brand_is_accurate [Boolean] Certification that the DIR information is accurate. Must be `true` for the DIR t
+      #
+      # @param certify_ip_ownership [Boolean] Certification of ownership of any logos/trademarks shown. Must be `true` for the
+      #
+      # @param certify_no_shaft_content [Boolean] Certification that this DIR is not used for SHAFT content (Sex, Hate, Alcohol, F
+      #
       # @param display_name [String] Name shown to call recipients. 1–35 characters, no emoji, not whitespace-only.
+      #
+      # @param documents [Array<Telnyx::Models::DirUpdateParams::Document>] Additional supporting documents to attach. Append-only: existing documents are n
       #
       # @param logo_url [String] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #

@@ -17,7 +17,11 @@ module Telnyx
         ?authorizer_email: String,
         ?authorizer_name: String,
         ?call_reasons: ::Array[String],
+        ?certify_brand_is_accurate: bool,
+        ?certify_ip_ownership: bool,
+        ?certify_no_shaft_content: bool,
         ?display_name: String,
+        ?documents: ::Array[Telnyx::DirUpdateParams::Document],
         ?logo_url: String,
         ?reselling: bool,
         ?request_options: Telnyx::request_opts
