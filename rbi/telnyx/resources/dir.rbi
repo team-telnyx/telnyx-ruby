@@ -33,16 +33,26 @@ module Telnyx
       )
       end
 
-      # Edit a DIR. Only DIRs in `draft`, `rejected`, `unsuccessful`, or `suspended` are
-      # editable. PATCH is a pure edit - `status` is never changed by this endpoint. To
-      # re-vet after editing, call `POST /v2/dir/{dir_id}/submit` explicitly.
+      # Edit a DIR. DIRs in `draft`, `rejected`, `unsuccessful`, or `suspended` can be
+      # edited freely: PATCH is a pure edit, `status` is never changed, and you re-vet
+      # by calling `POST /v2/dir/{dir_id}/submit` explicitly. A `verified` DIR can also
+      # be edited in place: a PATCH that changes any value returns the DIR to `draft`
+      # and branded delivery stops until you re-submit and the DIR is approved again,
+      # while a PATCH that changes nothing (an empty body or values identical to the
+      # current ones) leaves the DIR `verified`, so idempotent retries are safe. DIRs in
+      # any other status (`submitted`, `in_review`, `expired`, `infringement_claimed`,
+      # `permanently_rejected`) cannot be edited.
       sig do
         params(
           dir_id: String,
           authorizer_email: String,
           authorizer_name: String,
           call_reasons: T::Array[String],
+          certify_brand_is_accurate: T::Boolean,
+          certify_ip_ownership: T::Boolean,
+          certify_no_shaft_content: T::Boolean,
           display_name: String,
+          documents: T::Array[Telnyx::DirUpdateParams::Document::OrHash],
           logo_url: String,
           reselling: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
@@ -60,8 +70,22 @@ module Telnyx
         # 1–10 reasons your business calls customers. Validate phrasing against
         # `POST /call_reasons/validate`.
         call_reasons: nil,
+        # Certification that the DIR information is accurate. Must be `true` for the DIR
+        # to be submitted for vetting.
+        certify_brand_is_accurate: nil,
+        # Certification of ownership of any logos/trademarks shown. Must be `true` for the
+        # DIR to be submitted for vetting.
+        certify_ip_ownership: nil,
+        # Certification that this DIR is not used for SHAFT content (Sex, Hate, Alcohol,
+        # Firearms, Tobacco) where prohibited. Must be `true` for the DIR to be submitted
+        # for vetting.
+        certify_no_shaft_content: nil,
         # Name shown to call recipients. 1–35 characters, no emoji, not whitespace-only.
         display_name: nil,
+        # Additional supporting documents to attach. Append-only: existing documents are
+        # never removed or replaced, and an empty or omitted list is a no-op. Each
+        # `document_id` may appear at most once on a DIR.
+        documents: nil,
         # Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
         logo_url: nil,
         # Set to true if your organization places calls on behalf of other enterprises
