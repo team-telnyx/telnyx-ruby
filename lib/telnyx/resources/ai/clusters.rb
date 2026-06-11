@@ -12,7 +12,7 @@ module Telnyx
         #
         # @overload retrieve(task_id, show_subclusters: nil, top_n_nodes: nil, request_options: {})
         #
-        # @param task_id [String]
+        # @param task_id [String] Unique identifier of the task.
         #
         # @param show_subclusters [Boolean] Whether or not to include subclusters and their nodes in the response.
         #
@@ -63,7 +63,8 @@ module Telnyx
         #
         # @overload delete(task_id, request_options: {})
         #
-        # @param task_id [String]
+        # @param task_id [String] Unique identifier of the task.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
@@ -117,8 +118,10 @@ module Telnyx
         #
         # @overload fetch_graph(task_id, cluster_id: nil, request_options: {})
         #
-        # @param task_id [String]
-        # @param cluster_id [Integer]
+        # @param task_id [String] Unique identifier of the task.
+        #
+        # @param cluster_id [Integer] Filter results by cluster id.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [StringIO]

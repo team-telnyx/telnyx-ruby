@@ -58,7 +58,8 @@ module Telnyx
           #
           # @overload retrieve(test_id, request_options: {})
           #
-          # @param test_id [String]
+          # @param test_id [String] Unique identifier of the test.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::AssistantTest]
@@ -77,7 +78,7 @@ module Telnyx
           #
           # @overload update(test_id, description: nil, destination: nil, instructions: nil, max_duration_seconds: nil, name: nil, rubric: nil, telnyx_conversation_channel: nil, test_suite: nil, request_options: {})
           #
-          # @param test_id [String]
+          # @param test_id [String] Unique identifier of the test.
           #
           # @param description [String] Updated description of the test's purpose and evaluation criteria.
           #
@@ -148,7 +149,8 @@ module Telnyx
           #
           # @overload delete(test_id, request_options: {})
           #
-          # @param test_id [String]
+          # @param test_id [String] Unique identifier of the test.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]

@@ -277,6 +277,10 @@ module Telnyx
   CallPlaybackStartedWebhookEvent =
     Telnyx::Models::CallPlaybackStartedWebhookEvent
 
+  CallReasonListParams = Telnyx::Models::CallReasonListParams
+
+  CallReasonValidateParams = Telnyx::Models::CallReasonValidateParams
+
   CallRecordingError = Telnyx::Models::CallRecordingError
 
   CallRecordingErrorWebhookEvent =
@@ -566,6 +570,27 @@ module Telnyx
   DialogflowConnectionUpdateParams =
     Telnyx::Models::DialogflowConnectionUpdateParams
 
+  Dir = Telnyx::Models::Dir
+
+  DirCreateLoaParams = Telnyx::Models::DirCreateLoaParams
+
+  DirDeleteParams = Telnyx::Models::DirDeleteParams
+
+  DirListDocumentTypesParams = Telnyx::Models::DirListDocumentTypesParams
+
+  DirListInfringementClaimsParams =
+    Telnyx::Models::DirListInfringementClaimsParams
+
+  DirListParams = Telnyx::Models::DirListParams
+
+  DirRetrieveParams = Telnyx::Models::DirRetrieveParams
+
+  DirSubmitParams = Telnyx::Models::DirSubmitParams
+
+  DirUpdateInfringementParams = Telnyx::Models::DirUpdateInfringementParams
+
+  DirUpdateParams = Telnyx::Models::DirUpdateParams
+
   DocReqsRequirementType = Telnyx::Models::DocReqsRequirementType
 
   DocServiceDocument = Telnyx::Models::DocServiceDocument
@@ -620,6 +645,9 @@ module Telnyx
     Telnyx::Models::DynamicEmergencyEndpointRetrieveParams
 
   EncryptedMedia = Telnyx::Models::EncryptedMedia
+
+  EnterpriseActivateBrandedCallingParams =
+    Telnyx::Models::EnterpriseActivateBrandedCallingParams
 
   EnterpriseCreateParams = Telnyx::Models::EnterpriseCreateParams
 
@@ -806,6 +834,12 @@ module Telnyx
 
   InexplicitNumberOrderRetrieveParams =
     Telnyx::Models::InexplicitNumberOrderRetrieveParams
+
+  InfringementClaimContestParams =
+    Telnyx::Models::InfringementClaimContestParams
+
+  InfringementClaimRetrieveParams =
+    Telnyx::Models::InfringementClaimRetrieveParams
 
   IntegrationSecret = Telnyx::Models::IntegrationSecret
 
@@ -1016,8 +1050,6 @@ module Telnyx
 
   Metadata = Telnyx::Models::Metadata
 
-  MetaInfo = Telnyx::Models::MetaInfo
-
   MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
 
   MobileNetworkOperatorListParams =
@@ -1062,8 +1094,6 @@ module Telnyx
 
   MobileVoiceConnectionUpdateParams =
     Telnyx::Models::MobileVoiceConnectionUpdateParams
-
-  ModelMetadata = Telnyx::Models::ModelMetadata
 
   MonthDetail = Telnyx::Models::MonthDetail
 
@@ -1426,8 +1456,6 @@ module Telnyx
   PublicInternetGatewayListParams =
     Telnyx::Models::PublicInternetGatewayListParams
 
-  PublicInternetGatewayRead = Telnyx::Models::PublicInternetGatewayRead
-
   PublicInternetGatewayRetrieveParams =
     Telnyx::Models::PublicInternetGatewayRetrieveParams
 
@@ -1508,9 +1536,6 @@ module Telnyx
   Reputation = Telnyx::Models::Reputation
 
   ReputationData = Telnyx::Models::ReputationData
-
-  ReputationPhoneNumberWithReputationData =
-    Telnyx::Models::ReputationPhoneNumberWithReputationData
 
   RequirementGroup = Telnyx::Models::RequirementGroup
 
@@ -1758,6 +1783,11 @@ module Telnyx
 
   TermsOfService = Telnyx::Models::TermsOfService
 
+  TermsOfServiceRetrieveInfoParams =
+    Telnyx::Models::TermsOfServiceRetrieveInfoParams
+
+  TermsOfServiceStatusParams = Telnyx::Models::TermsOfServiceStatusParams
+
   Texml = Telnyx::Models::Texml
 
   TexmlApplication = Telnyx::Models::TexmlApplication
@@ -1811,8 +1841,6 @@ module Telnyx
 
   TransportProtocol = Telnyx::Models::TransportProtocol
 
-  UacConnection = Telnyx::Models::UacConnection
-
   UacConnectionCreateParams = Telnyx::Models::UacConnectionCreateParams
 
   UacConnectionDeleteParams = Telnyx::Models::UacConnectionDeleteParams
@@ -1824,14 +1852,6 @@ module Telnyx
   UacConnections = Telnyx::Models::UacConnections
 
   UacConnectionUpdateParams = Telnyx::Models::UacConnectionUpdateParams
-
-  UacExternalSettings = Telnyx::Models::UacExternalSettings
-
-  UacInbound = Telnyx::Models::UacInbound
-
-  UacInternalSettings = Telnyx::Models::UacInternalSettings
-
-  UacOutbound = Telnyx::Models::UacOutbound
 
   UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
 
@@ -1916,8 +1936,6 @@ module Telnyx
     Telnyx::Models::VerifyProfileUpdateTemplateParams
 
   VideoRegion = Telnyx::Models::VideoRegion
-
-  VirtualCrossConnectCombined = Telnyx::Models::VirtualCrossConnectCombined
 
   VirtualCrossConnectCreateParams =
     Telnyx::Models::VirtualCrossConnectCreateParams
@@ -2030,8 +2048,6 @@ module Telnyx
 
   WireguardInterfaceListParams = Telnyx::Models::WireguardInterfaceListParams
 
-  WireguardInterfaceRead = Telnyx::Models::WireguardInterfaceRead
-
   WireguardInterfaceRetrieveParams =
     Telnyx::Models::WireguardInterfaceRetrieveParams
 
@@ -2073,6 +2089,4 @@ module Telnyx
   WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 
   X402 = Telnyx::Models::X402
-
-  XaiVoiceSettings = Telnyx::Models::XaiVoiceSettings
 end

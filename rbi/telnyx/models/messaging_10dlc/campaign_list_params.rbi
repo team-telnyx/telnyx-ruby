@@ -15,6 +15,7 @@ module Telnyx
             )
           end
 
+        # Filter results by brand id.
         sig { returns(String) }
         attr_accessor :brand_id
 
@@ -61,6 +62,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # Filter results by brand id.
           brand_id:,
           # The 1-indexed page number to get. The default value is `1`.
           page: nil,

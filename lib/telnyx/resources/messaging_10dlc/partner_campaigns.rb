@@ -8,7 +8,8 @@ module Telnyx
         #
         # @overload retrieve(campaign_id, request_options: {})
         #
-        # @param campaign_id [String]
+        # @param campaign_id [String] Unique identifier of the campaign.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::TelnyxDownstreamCampaign]
@@ -28,7 +29,7 @@ module Telnyx
         #
         # @overload update(campaign_id, webhook_failover_url: nil, webhook_url: nil, request_options: {})
         #
-        # @param campaign_id [String]
+        # @param campaign_id [String] Unique identifier of the campaign.
         #
         # @param webhook_failover_url [String] Webhook failover to which campaign status updates are sent.
         #

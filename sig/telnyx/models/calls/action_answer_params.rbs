@@ -644,7 +644,7 @@ module Telnyx
               | Telnyx::RimeVoiceSettings
               | Telnyx::ResembleVoiceSettings
               | Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld
-              | Telnyx::XaiVoiceSettings
+              | Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Xai
 
             module VoiceSettings
               extend Telnyx::Internal::Type::Union
@@ -657,6 +657,20 @@ module Telnyx
                 def initialize: (?type: :inworld) -> void
 
                 def to_hash: -> { type: :inworld }
+              end
+
+              type xai = { type: :xai, language: String }
+
+              class Xai < Telnyx::Internal::Type::BaseModel
+                attr_accessor type: :xai
+
+                attr_reader language: String?
+
+                def language=: (String) -> String
+
+                def initialize: (?language: String, ?type: :xai) -> void
+
+                def to_hash: -> { type: :xai, language: String }
               end
 
               def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::voice_settings]
@@ -701,7 +715,7 @@ module Telnyx
             | Telnyx::RimeVoiceSettings
             | Telnyx::ResembleVoiceSettings
             | Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld
-            | Telnyx::XaiVoiceSettings
+            | Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Xai
 
           module VoiceSettings
             extend Telnyx::Internal::Type::Union
@@ -714,6 +728,20 @@ module Telnyx
               def initialize: (?type: :inworld) -> void
 
               def to_hash: -> { type: :inworld }
+            end
+
+            type xai = { type: :xai, language: String }
+
+            class Xai < Telnyx::Internal::Type::BaseModel
+              attr_accessor type: :xai
+
+              attr_reader language: String?
+
+              def language=: (String) -> String
+
+              def initialize: (?language: String, ?type: :xai) -> void
+
+              def to_hash: -> { type: :xai, language: String }
             end
 
             def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::voice_settings]

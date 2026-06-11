@@ -10,8 +10,10 @@ module Telnyx
             #
             # @overload list(run_id, mission_id:, request_options: {})
             #
-            # @param run_id [String]
-            # @param mission_id [String]
+            # @param run_id [String] Unique identifier of the run.
+            #
+            # @param mission_id [String] Unique identifier of the mission.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse]
@@ -35,9 +37,9 @@ module Telnyx
             #
             # @overload link(run_id, mission_id:, telnyx_agent_id:, request_options: {})
             #
-            # @param run_id [String] Path param
+            # @param run_id [String] Path param: Unique identifier of the run.
             #
-            # @param mission_id [String] Path param
+            # @param mission_id [String] Path param: Unique identifier of the mission.
             #
             # @param telnyx_agent_id [String] Body param: The Telnyx AI agent ID to link
             #
@@ -65,9 +67,12 @@ module Telnyx
             #
             # @overload unlink(telnyx_agent_id, mission_id:, run_id:, request_options: {})
             #
-            # @param telnyx_agent_id [String]
-            # @param mission_id [String]
-            # @param run_id [String]
+            # @param telnyx_agent_id [String] Unique identifier of the telnyx agent.
+            #
+            # @param mission_id [String] Unique identifier of the mission.
+            #
+            # @param run_id [String] Unique identifier of the run.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [nil]

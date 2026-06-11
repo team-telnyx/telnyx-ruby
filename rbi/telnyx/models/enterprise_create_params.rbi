@@ -23,41 +23,35 @@ module Telnyx
       sig { params(billing_contact: Telnyx::BillingContact::OrHash).void }
       attr_writer :billing_contact
 
-      # Country code. Currently only 'US' is accepted.
+      # ISO 3166-1 alpha-2 country code. Currently `US` and `CA` are supported.
       sig { returns(String) }
       attr_accessor :country_code
 
-      # Primary business name / DBA name
       sig { returns(String) }
       attr_accessor :doing_business_as
 
-      # Federal Employer Identification Number. Format: XX-XXXXXXX or 9-digit number
-      # (minimum 9 digits).
+      # US Federal Employer Identification Number (`NN-NNNNNNN`) or Canadian equivalent.
       sig { returns(String) }
       attr_accessor :fein
 
-      # Industry classification. Case-insensitive. Accepted values: accounting, finance,
-      # billing, collections, business, charity, nonprofit, communications, telecom,
-      # customer service, support, delivery, shipping, logistics, education, financial,
-      # banking, government, public, healthcare, health, pharmacy, medical, insurance,
-      # legal, law, notifications, scheduling, real estate, property, retail, ecommerce,
-      # sales, marketing, software, technology, tech, media, surveys, market research,
-      # travel, hospitality, hotel
-      sig { returns(String) }
+      # Industry classification.
+      sig { returns(Telnyx::EnterpriseCreateParams::Industry::OrSymbol) }
       attr_accessor :industry
 
-      # Legal name of the enterprise
+      sig { returns(String) }
+      attr_accessor :jurisdiction_of_incorporation
+
+      # Legal name of the enterprise.
       sig { returns(String) }
       attr_accessor :legal_name
 
-      # Employee count range
+      # Approximate headcount range. Used for vetting heuristics; pick the bucket that
+      # contains your current employee count.
       sig do
         returns(Telnyx::EnterpriseCreateParams::NumberOfEmployees::OrSymbol)
       end
       attr_accessor :number_of_employees
 
-      # Organization contact information. Note: the response returns this object with
-      # the phone field as 'phone' (not 'phone_number').
       sig { returns(Telnyx::OrganizationContact) }
       attr_reader :organization_contact
 
@@ -66,7 +60,15 @@ module Telnyx
       end
       attr_writer :organization_contact
 
-      # Legal structure type
+      # Legal-entity form. Pick the form that matches your incorporation documents:
+      #
+      # - `corporation` - C-corp or S-corp.
+      # - `llc` - limited liability company.
+      # - `partnership` - general/limited partnership.
+      # - `nonprofit` - non-profit corporation, charitable trust, or
+      #   501(c)(3)/equivalent.
+      # - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
+      #   You may be asked for additional documents during vetting.
       sig do
         returns(Telnyx::EnterpriseCreateParams::OrganizationLegalType::OrSymbol)
       end
@@ -82,52 +84,47 @@ module Telnyx
       end
       attr_writer :organization_physical_address
 
-      # Type of organization
+      # Organization category for vetting purposes:
+      #
+      # - `commercial` - for-profit business entities (LLC, corp, partnership, sole
+      #   proprietorship). Most callers fall here.
+      # - `government` - federal/state/local government bodies.
+      # - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
+      #   institutions, charities, religious organisations).
       sig do
         returns(Telnyx::EnterpriseCreateParams::OrganizationType::OrSymbol)
       end
       attr_accessor :organization_type
 
-      # Enterprise website URL. Accepts any string — no URL format validation enforced.
       sig { returns(String) }
       attr_accessor :website
 
-      # Corporate registration number (optional)
+      # Optional corporate-registration / company-number identifier.
       sig { returns(T.nilable(String)) }
-      attr_reader :corporate_registration_number
+      attr_accessor :corporate_registration_number
 
-      sig { params(corporate_registration_number: String).void }
-      attr_writer :corporate_registration_number
-
-      # Optional customer reference identifier for your own tracking
+      # Optional free-form string the caller can attach for their own bookkeeping.
+      # Telnyx does not interpret it.
       sig { returns(T.nilable(String)) }
       attr_reader :customer_reference
 
       sig { params(customer_reference: String).void }
       attr_writer :customer_reference
 
-      # D-U-N-S Number (optional)
+      # Optional D-U-N-S Number.
       sig { returns(T.nilable(String)) }
-      attr_reader :dun_bradstreet_number
+      attr_accessor :dun_bradstreet_number
 
-      sig { params(dun_bradstreet_number: String).void }
-      attr_writer :dun_bradstreet_number
-
-      # SIC Code (optional)
+      # Optional SIC code for the primary line of business.
       sig { returns(T.nilable(String)) }
-      attr_reader :primary_business_domain_sic_code
+      attr_accessor :primary_business_domain_sic_code
 
-      sig { params(primary_business_domain_sic_code: String).void }
-      attr_writer :primary_business_domain_sic_code
-
-      # Professional license number (optional)
+      # Optional professional-license number for regulated industries.
       sig { returns(T.nilable(String)) }
-      attr_reader :professional_license_number
+      attr_accessor :professional_license_number
 
-      sig { params(professional_license_number: String).void }
-      attr_writer :professional_license_number
-
-      # Role type in Branded Calling / Number Reputation services
+      # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
+      # Process Outsourcer placing calls on behalf of one or more enterprises.
       sig do
         returns(T.nilable(Telnyx::EnterpriseCreateParams::RoleType::OrSymbol))
       end
@@ -147,7 +144,8 @@ module Telnyx
           country_code: String,
           doing_business_as: String,
           fein: String,
-          industry: String,
+          industry: Telnyx::EnterpriseCreateParams::Industry::OrSymbol,
+          jurisdiction_of_incorporation: String,
           legal_name: String,
           number_of_employees:
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::OrSymbol,
@@ -158,11 +156,11 @@ module Telnyx
           organization_type:
             Telnyx::EnterpriseCreateParams::OrganizationType::OrSymbol,
           website: String,
-          corporate_registration_number: String,
+          corporate_registration_number: T.nilable(String),
           customer_reference: String,
-          dun_bradstreet_number: String,
-          primary_business_domain_sic_code: String,
-          professional_license_number: String,
+          dun_bradstreet_number: T.nilable(String),
+          primary_business_domain_sic_code: T.nilable(String),
+          professional_license_number: T.nilable(String),
           role_type: Telnyx::EnterpriseCreateParams::RoleType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -170,46 +168,53 @@ module Telnyx
       def self.new(
         billing_address:,
         billing_contact:,
-        # Country code. Currently only 'US' is accepted.
+        # ISO 3166-1 alpha-2 country code. Currently `US` and `CA` are supported.
         country_code:,
-        # Primary business name / DBA name
         doing_business_as:,
-        # Federal Employer Identification Number. Format: XX-XXXXXXX or 9-digit number
-        # (minimum 9 digits).
+        # US Federal Employer Identification Number (`NN-NNNNNNN`) or Canadian equivalent.
         fein:,
-        # Industry classification. Case-insensitive. Accepted values: accounting, finance,
-        # billing, collections, business, charity, nonprofit, communications, telecom,
-        # customer service, support, delivery, shipping, logistics, education, financial,
-        # banking, government, public, healthcare, health, pharmacy, medical, insurance,
-        # legal, law, notifications, scheduling, real estate, property, retail, ecommerce,
-        # sales, marketing, software, technology, tech, media, surveys, market research,
-        # travel, hospitality, hotel
+        # Industry classification.
         industry:,
-        # Legal name of the enterprise
+        jurisdiction_of_incorporation:,
+        # Legal name of the enterprise.
         legal_name:,
-        # Employee count range
+        # Approximate headcount range. Used for vetting heuristics; pick the bucket that
+        # contains your current employee count.
         number_of_employees:,
-        # Organization contact information. Note: the response returns this object with
-        # the phone field as 'phone' (not 'phone_number').
         organization_contact:,
-        # Legal structure type
+        # Legal-entity form. Pick the form that matches your incorporation documents:
+        #
+        # - `corporation` - C-corp or S-corp.
+        # - `llc` - limited liability company.
+        # - `partnership` - general/limited partnership.
+        # - `nonprofit` - non-profit corporation, charitable trust, or
+        #   501(c)(3)/equivalent.
+        # - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
+        #   You may be asked for additional documents during vetting.
         organization_legal_type:,
         organization_physical_address:,
-        # Type of organization
+        # Organization category for vetting purposes:
+        #
+        # - `commercial` - for-profit business entities (LLC, corp, partnership, sole
+        #   proprietorship). Most callers fall here.
+        # - `government` - federal/state/local government bodies.
+        # - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
+        #   institutions, charities, religious organisations).
         organization_type:,
-        # Enterprise website URL. Accepts any string — no URL format validation enforced.
         website:,
-        # Corporate registration number (optional)
+        # Optional corporate-registration / company-number identifier.
         corporate_registration_number: nil,
-        # Optional customer reference identifier for your own tracking
+        # Optional free-form string the caller can attach for their own bookkeeping.
+        # Telnyx does not interpret it.
         customer_reference: nil,
-        # D-U-N-S Number (optional)
+        # Optional D-U-N-S Number.
         dun_bradstreet_number: nil,
-        # SIC Code (optional)
+        # Optional SIC code for the primary line of business.
         primary_business_domain_sic_code: nil,
-        # Professional license number (optional)
+        # Optional professional-license number for regulated industries.
         professional_license_number: nil,
-        # Role type in Branded Calling / Number Reputation services
+        # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
+        # Process Outsourcer placing calls on behalf of one or more enterprises.
         role_type: nil,
         request_options: {}
       )
@@ -223,7 +228,8 @@ module Telnyx
             country_code: String,
             doing_business_as: String,
             fein: String,
-            industry: String,
+            industry: Telnyx::EnterpriseCreateParams::Industry::OrSymbol,
+            jurisdiction_of_incorporation: String,
             legal_name: String,
             number_of_employees:
               Telnyx::EnterpriseCreateParams::NumberOfEmployees::OrSymbol,
@@ -234,11 +240,11 @@ module Telnyx
             organization_type:
               Telnyx::EnterpriseCreateParams::OrganizationType::OrSymbol,
             website: String,
-            corporate_registration_number: String,
+            corporate_registration_number: T.nilable(String),
             customer_reference: String,
-            dun_bradstreet_number: String,
-            primary_business_domain_sic_code: String,
-            professional_license_number: String,
+            dun_bradstreet_number: T.nilable(String),
+            primary_business_domain_sic_code: T.nilable(String),
+            professional_license_number: T.nilable(String),
             role_type: Telnyx::EnterpriseCreateParams::RoleType::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
@@ -247,7 +253,213 @@ module Telnyx
       def to_hash
       end
 
-      # Employee count range
+      # Industry classification.
+      module Industry
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::EnterpriseCreateParams::Industry)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ACCOUNTING =
+          T.let(
+            :accounting,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        FINANCE =
+          T.let(
+            :finance,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        BILLING =
+          T.let(
+            :billing,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        COLLECTIONS =
+          T.let(
+            :collections,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        BUSINESS =
+          T.let(
+            :business,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        CHARITY =
+          T.let(
+            :charity,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        NONPROFIT =
+          T.let(
+            :nonprofit,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        COMMUNICATIONS =
+          T.let(
+            :communications,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        TELECOM =
+          T.let(
+            :telecom,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        CUSTOMER_SERVICE =
+          T.let(
+            :"customer service",
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        SUPPORT =
+          T.let(
+            :support,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        DELIVERY =
+          T.let(
+            :delivery,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        SHIPPING =
+          T.let(
+            :shipping,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        LOGISTICS =
+          T.let(
+            :logistics,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        EDUCATION =
+          T.let(
+            :education,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        FINANCIAL =
+          T.let(
+            :financial,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        BANKING =
+          T.let(
+            :banking,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        GOVERNMENT =
+          T.let(
+            :government,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        PUBLIC =
+          T.let(:public, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        HEALTHCARE =
+          T.let(
+            :healthcare,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        HEALTH =
+          T.let(:health, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        PHARMACY =
+          T.let(
+            :pharmacy,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        MEDICAL =
+          T.let(
+            :medical,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        INSURANCE =
+          T.let(
+            :insurance,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        LEGAL =
+          T.let(:legal, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        LAW =
+          T.let(:law, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        NOTIFICATIONS =
+          T.let(
+            :notifications,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        SCHEDULING =
+          T.let(
+            :scheduling,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        REAL_ESTATE =
+          T.let(
+            :"real estate",
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        PROPERTY =
+          T.let(
+            :property,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        RETAIL =
+          T.let(:retail, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        ECOMMERCE =
+          T.let(
+            :ecommerce,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        SALES =
+          T.let(:sales, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        MARKETING =
+          T.let(
+            :marketing,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        SOFTWARE =
+          T.let(
+            :software,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        TECHNOLOGY =
+          T.let(
+            :technology,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        TECH =
+          T.let(:tech, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        MEDIA =
+          T.let(:media, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        SURVEYS =
+          T.let(
+            :surveys,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        MARKET_RESEARCH =
+          T.let(
+            :"market research",
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        TRAVEL =
+          T.let(:travel, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+        HOSPITALITY =
+          T.let(
+            :hospitality,
+            Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol
+          )
+        HOTEL =
+          T.let(:hotel, Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::EnterpriseCreateParams::Industry::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Approximate headcount range. Used for vetting heuristics; pick the bucket that
+      # contains your current employee count.
       module NumberOfEmployees
         extend Telnyx::Internal::Type::Enum
 
@@ -304,7 +516,15 @@ module Telnyx
         end
       end
 
-      # Legal structure type
+      # Legal-entity form. Pick the form that matches your incorporation documents:
+      #
+      # - `corporation` - C-corp or S-corp.
+      # - `llc` - limited liability company.
+      # - `partnership` - general/limited partnership.
+      # - `nonprofit` - non-profit corporation, charitable trust, or
+      #   501(c)(3)/equivalent.
+      # - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
+      #   You may be asked for additional documents during vetting.
       module OrganizationLegalType
         extend Telnyx::Internal::Type::Enum
 
@@ -351,7 +571,13 @@ module Telnyx
         end
       end
 
-      # Type of organization
+      # Organization category for vetting purposes:
+      #
+      # - `commercial` - for-profit business entities (LLC, corp, partnership, sole
+      #   proprietorship). Most callers fall here.
+      # - `government` - federal/state/local government bodies.
+      # - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
+      #   institutions, charities, religious organisations).
       module OrganizationType
         extend Telnyx::Internal::Type::Enum
 
@@ -388,7 +614,8 @@ module Telnyx
         end
       end
 
-      # Role type in Branded Calling / Number Reputation services
+      # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
+      # Process Outsourcer placing calls on behalf of one or more enterprises.
       module RoleType
         extend Telnyx::Internal::Type::Enum
 

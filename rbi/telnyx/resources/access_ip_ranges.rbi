@@ -45,7 +45,11 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::AccessIPRange)
       end
-      def delete(access_ip_range_id, request_options: {})
+      def delete(
+        # Unique identifier of the access ip range.
+        access_ip_range_id,
+        request_options: {}
+      )
       end
 
       # @api private

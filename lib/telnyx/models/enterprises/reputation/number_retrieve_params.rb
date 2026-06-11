@@ -20,8 +20,8 @@ module Telnyx
           required :phone_number, String
 
           # @!attribute fresh
-          #   When true, fetches fresh reputation data (incurs API cost). When false, returns
-          #   cached data.
+          #   When true, fetches fresh reputation data (incurs API cost). When false
+          #   (default), returns cached data.
           #
           #   @return [Boolean, nil]
           optional :fresh, Telnyx::Internal::Type::Boolean
@@ -35,7 +35,7 @@ module Telnyx
           #
           #   @param phone_number [String]
           #
-          #   @param fresh [Boolean] When true, fetches fresh reputation data (incurs API cost). When false, returns
+          #   @param fresh [Boolean] When true, fetches fresh reputation data (incurs API cost). When false (default)
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end

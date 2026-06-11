@@ -41,20 +41,24 @@ module Telnyx
             dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-            external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
-            fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
+            external_llm:
+              Telnyx::AI::AssistantCreateParams::ExternalLlm::OrHash,
+            fallback_config:
+              Telnyx::AI::AssistantCreateParams::FallbackConfig::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
-            integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
+            integrations:
+              T::Array[Telnyx::AI::AssistantCreateParams::Integration::OrHash],
             interruption_settings:
-              Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
+              Telnyx::AI::AssistantCreateParams::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
-            mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantCreateParams::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
-              Telnyx::AI::PostConversationSettingsReq::OrHash,
+              Telnyx::AI::AssistantCreateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             tags: T::Array[String],
             telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
@@ -188,10 +192,15 @@ module Telnyx
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def retrieve(
+          # Unique identifier of the assistant.
           assistant_id,
+          # Filter results by call control id.
           call_control_id: nil,
+          # Whether to fetch dynamic variables from the configured webhook.
           fetch_dynamic_variables_from_webhook: nil,
+          # Start of the filter range.
           from: nil,
+          # End of the filter range.
           to: nil,
           request_options: {}
         )
@@ -208,22 +217,26 @@ module Telnyx
             dynamic_variables_webhook_timeout_ms: Integer,
             dynamic_variables_webhook_url: String,
             enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-            external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
-            fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
+            external_llm:
+              Telnyx::AI::AssistantUpdateParams::ExternalLlm::OrHash,
+            fallback_config:
+              Telnyx::AI::AssistantUpdateParams::FallbackConfig::OrHash,
             greeting: String,
             insight_settings: Telnyx::AI::InsightSettings::OrHash,
             instructions: String,
-            integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
+            integrations:
+              T::Array[Telnyx::AI::AssistantUpdateParams::Integration::OrHash],
             interruption_settings:
-              Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
+              Telnyx::AI::AssistantUpdateParams::InterruptionSettings::OrHash,
             llm_api_key_ref: String,
-            mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
+            mcp_servers:
+              T::Array[Telnyx::AI::AssistantUpdateParams::McpServer::OrHash],
             messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
             model: String,
             name: String,
             observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
             post_conversation_settings:
-              Telnyx::AI::PostConversationSettingsReq::OrHash,
+              Telnyx::AI::AssistantUpdateParams::PostConversationSettings::OrHash,
             privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
             promote_to_main: T::Boolean,
             tags: T::Array[String],
@@ -252,6 +265,7 @@ module Telnyx
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def update(
+          # Unique identifier of the assistant.
           assistant_id,
           # Conversation flow as supplied by API clients (create / update).
           #
@@ -369,7 +383,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::AssistantDeleteResponse)
         end
-        def delete(assistant_id, request_options: {})
+        def delete(
+          # Unique identifier of the assistant.
+          assistant_id,
+          request_options: {}
+        )
         end
 
         # This endpoint allows a client to send a chat message to a specific AI Assistant.
@@ -390,6 +408,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::AssistantChatResponse)
         end
         def chat(
+          # Unique identifier of the assistant.
           assistant_id,
           # The message content sent by the client to the assistant
           content:,
@@ -408,7 +427,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
-        def clone_(assistant_id, request_options: {})
+        def clone_(
+          # Unique identifier of the assistant.
+          assistant_id,
+          request_options: {}
+        )
         end
 
         # Get an assistant texml by `assistant_id`.
@@ -418,7 +441,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(String)
         end
-        def get_texml(assistant_id, request_options: {})
+        def get_texml(
+          # Unique identifier of the assistant.
+          assistant_id,
+          request_options: {}
+        )
         end
 
         # Import assistants from external providers. Any assistant that has already been
@@ -473,6 +500,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::AssistantSendSMSResponse)
         end
         def send_sms(
+          # Unique identifier of the assistant.
           assistant_id,
           from:,
           to:,

@@ -450,7 +450,7 @@ module Telnyx
           # @!attribute voice_settings
           #   The settings associated with the voice selected
           #
-          #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings, nil]
+          #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Xai, nil]
           optional :voice_settings,
                    union: -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings }
 
@@ -496,7 +496,7 @@ module Telnyx
           #
           #   @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
           #
-          #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+          #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Xai] The settings associated with the voice selected
 
           # Controls when caller input can interrupt assistant speech. `any` allows speech
           # or DTMF interruptions; `none` disables interruptions; `speech` allows speech
@@ -692,7 +692,7 @@ module Telnyx
             # @!attribute voice_settings
             #   The settings associated with the voice selected
             #
-            #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings, nil]
+            #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Xai, nil]
             optional :voice_settings,
                      union: -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings }
 
@@ -717,7 +717,7 @@ module Telnyx
             #
             #   @param voice [String] Voice identifier for this language.
             #
-            #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+            #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Xai] The settings associated with the voice selected
 
             # Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
             # `Telnyx` are supported for backward compatibility. When provided in a
@@ -768,7 +768,8 @@ module Telnyx
               variant :inworld,
                       -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld }
 
-              variant :xai, -> { Telnyx::XaiVoiceSettings }
+              variant :xai,
+                      -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Xai }
 
               class Inworld < Telnyx::Internal::Type::BaseModel
                 # @!attribute type
@@ -781,8 +782,27 @@ module Telnyx
                 #   @param type [Symbol, :inworld] Voice settings provider type
               end
 
+              class Xai < Telnyx::Internal::Type::BaseModel
+                # @!attribute type
+                #   Voice settings provider type
+                #
+                #   @return [Symbol, :xai]
+                required :type, const: :xai
+
+                # @!attribute language
+                #   Language code, or `auto` to detect automatically.
+                #
+                #   @return [String, nil]
+                optional :language, String
+
+                # @!method initialize(language: nil, type: :xai)
+                #   @param language [String] Language code, or `auto` to detect automatically.
+                #
+                #   @param type [Symbol, :xai] Voice settings provider type
+              end
+
               # @!method self.variants
-              #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings)]
+              #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Xai)]
             end
           end
 
@@ -835,7 +855,7 @@ module Telnyx
             variant :inworld,
                     -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld }
 
-            variant :xai, -> { Telnyx::XaiVoiceSettings }
+            variant :xai, -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Xai }
 
             class Inworld < Telnyx::Internal::Type::BaseModel
               # @!attribute type
@@ -848,8 +868,27 @@ module Telnyx
               #   @param type [Symbol, :inworld] Voice settings provider type
             end
 
+            class Xai < Telnyx::Internal::Type::BaseModel
+              # @!attribute type
+              #   Voice settings provider type
+              #
+              #   @return [Symbol, :xai]
+              required :type, const: :xai
+
+              # @!attribute language
+              #   Language code, or `auto` to detect automatically.
+              #
+              #   @return [String, nil]
+              optional :language, String
+
+              # @!method initialize(language: nil, type: :xai)
+              #   @param language [String] Language code, or `auto` to detect automatically.
+              #
+              #   @param type [Symbol, :xai] Voice settings provider type
+            end
+
             # @!method self.variants
-            #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld, Telnyx::Models::XaiVoiceSettings)]
+            #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Xai)]
           end
         end
 

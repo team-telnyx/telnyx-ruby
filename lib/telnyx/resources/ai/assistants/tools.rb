@@ -10,8 +10,10 @@ module Telnyx
           #
           # @overload add(tool_id, assistant_id:, request_options: {})
           #
-          # @param tool_id [String]
-          # @param assistant_id [String]
+          # @param tool_id [String] Unique identifier of the tool.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -35,8 +37,10 @@ module Telnyx
           #
           # @overload remove(tool_id, assistant_id:, request_options: {})
           #
-          # @param tool_id [String]
-          # @param assistant_id [String]
+          # @param tool_id [String] Unique identifier of the tool.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Object]
@@ -60,9 +64,9 @@ module Telnyx
           #
           # @overload test_(tool_id, assistant_id:, arguments: nil, dynamic_variables: nil, request_options: {})
           #
-          # @param tool_id [String] Path param
+          # @param tool_id [String] Path param: Unique identifier of the tool.
           #
-          # @param assistant_id [String] Path param
+          # @param assistant_id [String] Path param: Unique identifier of the assistant.
           #
           # @param arguments [Hash{Symbol=>Object}] Body param: Key-value arguments to use for the webhook test
           #

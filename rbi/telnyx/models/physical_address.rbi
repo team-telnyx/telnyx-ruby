@@ -8,27 +8,23 @@ module Telnyx
           T.any(Telnyx::PhysicalAddress, Telnyx::Internal::AnyHash)
         end
 
-      # State or province
+      # State or province code (e.g. `IL`, `ON`).
       sig { returns(String) }
       attr_accessor :administrative_area
 
-      # City name
       sig { returns(String) }
       attr_accessor :city
 
-      # Country name (e.g., United States)
+      # ISO 3166-1 alpha-2 code (currently `US` or `CA`).
       sig { returns(String) }
       attr_accessor :country
 
-      # ZIP or postal code
       sig { returns(String) }
       attr_accessor :postal_code
 
-      # Street address
       sig { returns(String) }
       attr_accessor :street_address
 
-      # Additional address line (suite, apt, etc.)
       sig { returns(T.nilable(String)) }
       attr_accessor :extended_address
 
@@ -43,17 +39,13 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # State or province
+        # State or province code (e.g. `IL`, `ON`).
         administrative_area:,
-        # City name
         city:,
-        # Country name (e.g., United States)
+        # ISO 3166-1 alpha-2 code (currently `US` or `CA`).
         country:,
-        # ZIP or postal code
         postal_code:,
-        # Street address
         street_address:,
-        # Additional address line (suite, apt, etc.)
         extended_address: nil
       )
       end

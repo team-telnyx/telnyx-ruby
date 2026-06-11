@@ -8,25 +8,25 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute id
-      #   Message uuid
+      #   Filter results by identifier.
       #
       #   @return [String, nil]
       optional :id, String
 
       # @!attribute cld
-      #   Destination number
+      #   Filter results by cld.
       #
       #   @return [String, nil]
       optional :cld, String
 
       # @!attribute cli
-      #   Origination number
+      #   Filter results by cli.
       #
       #   @return [String, nil]
       optional :cli, String
 
       # @!attribute direction
-      #   Direction (inbound or outbound)
+      #   Filter results by direction.
       #
       #   @return [Symbol, Telnyx::Models::ReportListMdrsParams::Direction, nil]
       optional :direction, enum: -> { Telnyx::ReportListMdrsParams::Direction }
@@ -38,13 +38,13 @@ module Telnyx
       optional :end_date, String
 
       # @!attribute message_type
-      #   Type of message
+      #   Filter results by message type.
       #
       #   @return [Symbol, Telnyx::Models::ReportListMdrsParams::MessageType, nil]
       optional :message_type, enum: -> { Telnyx::ReportListMdrsParams::MessageType }
 
       # @!attribute profile
-      #   Name of the profile
+      #   Filter results by profile.
       #
       #   @return [String, nil]
       optional :profile, String
@@ -56,33 +56,33 @@ module Telnyx
       optional :start_date, String
 
       # @!attribute status
-      #   Message status
+      #   Filter results by status.
       #
       #   @return [Symbol, Telnyx::Models::ReportListMdrsParams::Status, nil]
       optional :status, enum: -> { Telnyx::ReportListMdrsParams::Status }
 
       # @!method initialize(id: nil, cld: nil, cli: nil, direction: nil, end_date: nil, message_type: nil, profile: nil, start_date: nil, status: nil, request_options: {})
-      #   @param id [String] Message uuid
+      #   @param id [String] Filter results by identifier.
       #
-      #   @param cld [String] Destination number
+      #   @param cld [String] Filter results by cld.
       #
-      #   @param cli [String] Origination number
+      #   @param cli [String] Filter results by cli.
       #
-      #   @param direction [Symbol, Telnyx::Models::ReportListMdrsParams::Direction] Direction (inbound or outbound)
+      #   @param direction [Symbol, Telnyx::Models::ReportListMdrsParams::Direction] Filter results by direction.
       #
       #   @param end_date [String] Pagination end date
       #
-      #   @param message_type [Symbol, Telnyx::Models::ReportListMdrsParams::MessageType] Type of message
+      #   @param message_type [Symbol, Telnyx::Models::ReportListMdrsParams::MessageType] Filter results by message type.
       #
-      #   @param profile [String] Name of the profile
+      #   @param profile [String] Filter results by profile.
       #
       #   @param start_date [String] Pagination start date
       #
-      #   @param status [Symbol, Telnyx::Models::ReportListMdrsParams::Status] Message status
+      #   @param status [Symbol, Telnyx::Models::ReportListMdrsParams::Status] Filter results by status.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      # Direction (inbound or outbound)
+      # Filter results by direction.
       module Direction
         extend Telnyx::Internal::Type::Enum
 
@@ -93,7 +93,7 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # Type of message
+      # Filter results by message type.
       module MessageType
         extend Telnyx::Internal::Type::Enum
 
@@ -104,7 +104,7 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # Message status
+      # Filter results by status.
       module Status
         extend Telnyx::Internal::Type::Enum
 

@@ -99,10 +99,16 @@ module Telnyx
       module CredentialConnections
       end
 
+      module Dir
+      end
+
       module Embeddings
       end
 
       module Enterprises
+        module Dir
+        end
+
         module Reputation
         end
       end

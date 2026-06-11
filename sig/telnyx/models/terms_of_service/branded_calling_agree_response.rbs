@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    module TermsOfService
+      type branded_calling_agree_response =
+        {
+          data: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data
+        }
+
+      class BrandedCallingAgreeResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            agreed_at: Time,
+            created_at: Time,
+            product_type: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data::product_type,
+            terms_version: String,
+            version: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader product_type: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data::product_type?
+
+          def product_type=: (
+            Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data::product_type
+          ) -> Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data::product_type
+
+          attr_reader terms_version: String?
+
+          def terms_version=: (String) -> String
+
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader agreed_at: Time?
+
+          def agreed_at=: (Time) -> Time
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader version: String?
+
+          def version=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?agreed_at: Time,
+            ?created_at: Time,
+            ?product_type: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data::product_type,
+            ?terms_version: String,
+            ?version: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            agreed_at: Time,
+            created_at: Time,
+            product_type: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data::product_type,
+            terms_version: String,
+            version: String
+          }
+
+          type product_type = :branded_calling | :number_reputation
+
+          module ProductType
+            extend Telnyx::Internal::Type::Enum
+
+            BRANDED_CALLING: :branded_calling
+            NUMBER_REPUTATION: :number_reputation
+
+            def self?.values: -> ::Array[Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data::product_type]
+          end
+        end
+      end
+    end
+  end
+end

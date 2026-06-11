@@ -10,7 +10,8 @@ module Telnyx
           #
           # @overload get_attributes(campaign_id, request_options: {})
           #
-          # @param campaign_id [String]
+          # @param campaign_id [String] Unique identifier of the campaign.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Hash{Symbol=>Object}]

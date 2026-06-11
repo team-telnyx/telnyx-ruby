@@ -44,7 +44,11 @@ module Telnyx
                 Telnyx::Models::Legacy::Reporting::UsageReports::MessagingRetrieveResponse
               )
             end
-            def retrieve(id, request_options: {})
+            def retrieve(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # Fetch all previous requests for MDR usage reports.
@@ -77,7 +81,11 @@ module Telnyx
                 Telnyx::Models::Legacy::Reporting::UsageReports::MessagingDeleteResponse
               )
             end
-            def delete(id, request_options: {})
+            def delete(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # @api private

@@ -26,11 +26,13 @@ module Telnyx
       optional :filter_phone_number_contains, String
 
       # @!attribute page_number
+      #   Page number to retrieve (1-based).
       #
       #   @return [Integer, nil]
       optional :page_number, Integer
 
       # @!attribute page_size
+      #   Number of items to return per page.
       #
       #   @return [Integer, nil]
       optional :page_size, Integer
@@ -48,9 +50,9 @@ module Telnyx
       #
       #   @param filter_phone_number_contains [String] Filter by phone number substring.
       #
-      #   @param page_number [Integer]
+      #   @param page_number [Integer] Page number to retrieve (1-based).
       #
-      #   @param page_size [Integer]
+      #   @param page_size [Integer] Number of items to return per page.
       #
       #   @param sort_phone_number [Symbol, Telnyx::Models::MessagingHostedNumberListParams::SortPhoneNumber] Sort by phone number.
       #

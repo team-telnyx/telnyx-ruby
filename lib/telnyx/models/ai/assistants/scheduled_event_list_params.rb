@@ -15,11 +15,13 @@ module Telnyx
           required :assistant_id, String
 
           # @!attribute conversation_channel
+          #   Filter results by conversation channel.
           #
           #   @return [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType, nil]
           optional :conversation_channel, enum: -> { Telnyx::AI::Assistants::ConversationChannelType }
 
           # @!attribute from_date
+          #   Start of the date range filter (inclusive, ISO 8601).
           #
           #   @return [Time, nil]
           optional :from_date, Time
@@ -35,17 +37,24 @@ module Telnyx
           optional :page_size, Integer
 
           # @!attribute to_date
+          #   End of the date range filter (inclusive, ISO 8601).
           #
           #   @return [Time, nil]
           optional :to_date, Time
 
           # @!method initialize(assistant_id:, conversation_channel: nil, from_date: nil, page_number: nil, page_size: nil, to_date: nil, request_options: {})
           #   @param assistant_id [String]
-          #   @param conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
-          #   @param from_date [Time]
+          #
+          #   @param conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType] Filter results by conversation channel.
+          #
+          #   @param from_date [Time] Start of the date range filter (inclusive, ISO 8601).
+          #
           #   @param page_number [Integer]
+          #
           #   @param page_size [Integer]
-          #   @param to_date [Time]
+          #
+          #   @param to_date [Time] End of the date range filter (inclusive, ISO 8601).
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

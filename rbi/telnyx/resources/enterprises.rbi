@@ -2,23 +2,33 @@
 
 module Telnyx
   module Resources
-    # Enterprise management for Branded Calling and Number Reputation services
+    # Manage the legal-entity record that owns your DIRs and phone numbers.
     class Enterprises
-      # Manage Number Reputation enrollment and check frequency settings for an
-      # enterprise
+      # Phone-number reputation monitoring (spam-score lookup and tracking).
       sig { returns(Telnyx::Resources::Enterprises::Reputation) }
       attr_reader :reputation
 
-      # Create a new enterprise for Branded Calling / Number Reputation services.
+      # A Display Identity Record (DIR) is the verified calling identity (display name,
+      # logo, call reasons) shown to recipients on outbound calls.
+      sig { returns(Telnyx::Resources::Enterprises::Dir) }
+      attr_reader :dir
+
+      sig { returns(Telnyx::Resources::Enterprises::Usage) }
+      attr_reader :usage
+
+      # Create the legal entity (enterprise) that represents your business on the Telnyx
+      # platform.
       #
-      # Registers the enterprise in the Branded Calling / Number Reputation services,
-      # enabling it to create Display Identity Records (DIRs) or enroll in Number
-      # Reputation monitoring.
+      # The response carries a server-assigned `id` you use for every subsequent call.
+      # An enterprise is created once and reused; the API collects all required fields
+      # up front.
       #
-      # **Required Fields:** `legal_name`, `doing_business_as`, `organization_type`,
-      # `country_code`, `website`, `fein`, `industry`, `number_of_employees`,
-      # `organization_legal_type`, `organization_contact`, `billing_contact`,
-      # `organization_physical_address`, `billing_address`
+      # Common failure modes:
+      #
+      # - `422` - a required field is missing or malformed (the response
+      #   `errors[].source.pointer` names the field).
+      # - `409` - an enterprise with the same identifying details already exists under
+      #   your account.
       sig do
         params(
           billing_address: Telnyx::BillingAddress::OrHash,
@@ -26,7 +36,8 @@ module Telnyx
           country_code: String,
           doing_business_as: String,
           fein: String,
-          industry: String,
+          industry: Telnyx::EnterpriseCreateParams::Industry::OrSymbol,
+          jurisdiction_of_incorporation: String,
           legal_name: String,
           number_of_employees:
             Telnyx::EnterpriseCreateParams::NumberOfEmployees::OrSymbol,
@@ -37,11 +48,11 @@ module Telnyx
           organization_type:
             Telnyx::EnterpriseCreateParams::OrganizationType::OrSymbol,
           website: String,
-          corporate_registration_number: String,
+          corporate_registration_number: T.nilable(String),
           customer_reference: String,
-          dun_bradstreet_number: String,
-          primary_business_domain_sic_code: String,
-          professional_license_number: String,
+          dun_bradstreet_number: T.nilable(String),
+          primary_business_domain_sic_code: T.nilable(String),
+          professional_license_number: T.nilable(String),
           role_type: Telnyx::EnterpriseCreateParams::RoleType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::EnterpriseCreateResponse)
@@ -49,52 +60,60 @@ module Telnyx
       def create(
         billing_address:,
         billing_contact:,
-        # Country code. Currently only 'US' is accepted.
+        # ISO 3166-1 alpha-2 country code. Currently `US` and `CA` are supported.
         country_code:,
-        # Primary business name / DBA name
         doing_business_as:,
-        # Federal Employer Identification Number. Format: XX-XXXXXXX or 9-digit number
-        # (minimum 9 digits).
+        # US Federal Employer Identification Number (`NN-NNNNNNN`) or Canadian equivalent.
         fein:,
-        # Industry classification. Case-insensitive. Accepted values: accounting, finance,
-        # billing, collections, business, charity, nonprofit, communications, telecom,
-        # customer service, support, delivery, shipping, logistics, education, financial,
-        # banking, government, public, healthcare, health, pharmacy, medical, insurance,
-        # legal, law, notifications, scheduling, real estate, property, retail, ecommerce,
-        # sales, marketing, software, technology, tech, media, surveys, market research,
-        # travel, hospitality, hotel
+        # Industry classification.
         industry:,
-        # Legal name of the enterprise
+        jurisdiction_of_incorporation:,
+        # Legal name of the enterprise.
         legal_name:,
-        # Employee count range
+        # Approximate headcount range. Used for vetting heuristics; pick the bucket that
+        # contains your current employee count.
         number_of_employees:,
-        # Organization contact information. Note: the response returns this object with
-        # the phone field as 'phone' (not 'phone_number').
         organization_contact:,
-        # Legal structure type
+        # Legal-entity form. Pick the form that matches your incorporation documents:
+        #
+        # - `corporation` - C-corp or S-corp.
+        # - `llc` - limited liability company.
+        # - `partnership` - general/limited partnership.
+        # - `nonprofit` - non-profit corporation, charitable trust, or
+        #   501(c)(3)/equivalent.
+        # - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
+        #   You may be asked for additional documents during vetting.
         organization_legal_type:,
         organization_physical_address:,
-        # Type of organization
+        # Organization category for vetting purposes:
+        #
+        # - `commercial` - for-profit business entities (LLC, corp, partnership, sole
+        #   proprietorship). Most callers fall here.
+        # - `government` - federal/state/local government bodies.
+        # - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
+        #   institutions, charities, religious organisations).
         organization_type:,
-        # Enterprise website URL. Accepts any string — no URL format validation enforced.
         website:,
-        # Corporate registration number (optional)
+        # Optional corporate-registration / company-number identifier.
         corporate_registration_number: nil,
-        # Optional customer reference identifier for your own tracking
+        # Optional free-form string the caller can attach for their own bookkeeping.
+        # Telnyx does not interpret it.
         customer_reference: nil,
-        # D-U-N-S Number (optional)
+        # Optional D-U-N-S Number.
         dun_bradstreet_number: nil,
-        # SIC Code (optional)
+        # Optional SIC code for the primary line of business.
         primary_business_domain_sic_code: nil,
-        # Professional license number (optional)
+        # Optional professional-license number for regulated industries.
         professional_license_number: nil,
-        # Role type in Branded Calling / Number Reputation services
+        # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
+        # Process Outsourcer placing calls on behalf of one or more enterprises.
         role_type: nil,
         request_options: {}
       )
       end
 
-      # Retrieve details of a specific enterprise by ID.
+      # Retrieve a single enterprise by id. Returns `404` if the id does not exist or
+      # does not belong to your account.
       sig do
         params(
           enterprise_id: String,
@@ -102,78 +121,71 @@ module Telnyx
         ).returns(Telnyx::Models::EnterpriseRetrieveResponse)
       end
       def retrieve(
-        # Unique identifier of the enterprise (UUID)
+        # The enterprise id. Lowercase UUID.
         enterprise_id,
         request_options: {}
       )
       end
 
-      # Update enterprise information. All fields are optional — only the provided
-      # fields will be updated.
+      # Replace the enterprise's mutable fields. Only mutable fields may be sent.
+      # Server-assigned and immutable fields (`id`, `record_type`, `created_at`,
+      # `updated_at`, status fields, `organization_type`, `country_code`, `role_type`)
+      # cannot be changed: including any of them in the body is rejected with
+      # `400 Bad Request` (`Field 'X' is not allowed in this request`).
       sig do
         params(
           enterprise_id: String,
           billing_address: Telnyx::BillingAddress::OrHash,
           billing_contact: Telnyx::BillingContact::OrHash,
-          corporate_registration_number: String,
+          corporate_registration_number: T.nilable(String),
           customer_reference: String,
           doing_business_as: String,
-          dun_bradstreet_number: String,
+          dun_bradstreet_number: T.nilable(String),
           fein: String,
-          industry: String,
+          industry: Telnyx::EnterpriseUpdateParams::Industry::OrSymbol,
+          jurisdiction_of_incorporation: String,
           legal_name: String,
-          number_of_employees:
-            Telnyx::EnterpriseUpdateParams::NumberOfEmployees::OrSymbol,
+          number_of_employees: String,
           organization_contact: Telnyx::OrganizationContact::OrHash,
-          organization_legal_type:
-            Telnyx::EnterpriseUpdateParams::OrganizationLegalType::OrSymbol,
+          organization_legal_type: String,
           organization_physical_address: Telnyx::PhysicalAddress::OrHash,
-          primary_business_domain_sic_code: String,
-          professional_license_number: String,
+          primary_business_domain_sic_code: T.nilable(String),
+          professional_license_number: T.nilable(String),
           website: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::EnterpriseUpdateResponse)
       end
       def update(
-        # Unique identifier of the enterprise (UUID)
+        # The enterprise id. Lowercase UUID.
         enterprise_id,
         billing_address: nil,
         billing_contact: nil,
-        # Corporate registration number
         corporate_registration_number: nil,
-        # Customer reference identifier
         customer_reference: nil,
-        # DBA name
         doing_business_as: nil,
-        # D-U-N-S Number
         dun_bradstreet_number: nil,
-        # Federal Employer Identification Number. Format: XX-XXXXXXX or XXXXXXXXX
         fein: nil,
-        # Industry classification
         industry: nil,
-        # Legal name of the enterprise
+        # Updated state/province/country of incorporation. Optional on update.
+        jurisdiction_of_incorporation: nil,
+        # Legal name of the enterprise.
         legal_name: nil,
-        # Employee count range
         number_of_employees: nil,
-        # Organization contact information. Note: the response returns this object with
-        # the phone field as 'phone' (not 'phone_number').
         organization_contact: nil,
-        # Legal structure type
         organization_legal_type: nil,
         organization_physical_address: nil,
-        # SIC Code
         primary_business_domain_sic_code: nil,
-        # Professional license number
         professional_license_number: nil,
-        # Company website URL
         website: nil,
         request_options: {}
       )
       end
 
-      # Retrieve a paginated list of enterprises associated with your account.
+      # Return the enterprises you own, paginated. The default page size is 20; the
+      # maximum is 250.
       sig do
         params(
+          filter_legal_name_contains: String,
           legal_name: String,
           page_number: Integer,
           page_size: Integer,
@@ -183,17 +195,28 @@ module Telnyx
         )
       end
       def list(
-        # Filter by legal name (partial match)
+        # Case-insensitive partial match on legal name.
+        filter_legal_name_contains: nil,
+        # Filter by legal name (partial match).
         legal_name: nil,
-        # Page number (1-indexed)
+        # 1-based page number. Out-of-range values return an empty page with correct meta.
         page_number: nil,
-        # Number of items per page
+        # Items per page. Default 10. Maximum 250; values above are clamped to 250.
         page_size: nil,
         request_options: {}
       )
       end
 
-      # Delete an enterprise and all associated resources. This action is irreversible.
+      # Soft-delete an enterprise.
+      #
+      # Failure modes:
+      #
+      # - `400` - the enterprise still has dependent resources in a non-deletable state.
+      #   Remove those first; the response `detail` identifies what is blocking the
+      #   delete.
+      # - `409` - the enterprise has a dependent resource with an unresolved claim.
+      #   Resolve it before deleting.
+      # - `404` - the enterprise does not exist or does not belong to your account.
       sig do
         params(
           enterprise_id: String,
@@ -201,7 +224,40 @@ module Telnyx
         ).void
       end
       def delete(
-        # Unique identifier of the enterprise (UUID)
+        # The enterprise id. Lowercase UUID.
+        enterprise_id,
+        request_options: {}
+      )
+      end
+
+      # Branded Calling is a paid product that must be activated on each enterprise.
+      # Activation is idempotent:
+      #
+      # - First call: marks the enterprise as activated and begins onboarding it with
+      #   the Branded Calling platform asynchronously. Returns `200` with
+      #   `branded_calling_enabled: true`.
+      # - Re-call after success: no-op, returns the same enterprise body.
+      # - Re-call after a prior failure: re-queues onboarding, returns `200`.
+      #
+      # Prerequisite: the calling user must have agreed to the Branded Calling Terms of
+      # Service (`POST /terms_of_service/branded_calling/agree`). Without that, this
+      # endpoint returns `403 terms_of_service_not_accepted`.
+      #
+      # Failure modes:
+      #
+      # - `403` - Branded Calling Terms of Service not accepted.
+      # - `404` - enterprise does not exist or does not belong to your account.
+      #
+      # **Pricing:** This is a billable action. See https://telnyx.com/pricing/numbers
+      # for current pricing.
+      sig do
+        params(
+          enterprise_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::EnterpriseActivateBrandedCallingResponse)
+      end
+      def activate_branded_calling(
+        # The enterprise id. Lowercase UUID.
         enterprise_id,
         request_options: {}
       )

@@ -22,6 +22,7 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :version_id
 
+          # Whether to include MCP servers in the response.
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :include_mcp_servers
 
@@ -39,6 +40,7 @@ module Telnyx
           def self.new(
             assistant_id:,
             version_id:,
+            # Whether to include MCP servers in the response.
             include_mcp_servers: nil,
             request_options: {}
           )

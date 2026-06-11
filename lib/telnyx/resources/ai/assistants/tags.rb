@@ -28,8 +28,10 @@ module Telnyx
           #
           # @overload add(assistant_id, tag:, request_options: {})
           #
-          # @param assistant_id [String]
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param tag [String]
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::TagAddResponse]
@@ -50,8 +52,10 @@ module Telnyx
           #
           # @overload remove(tag, assistant_id:, request_options: {})
           #
-          # @param tag [String]
-          # @param assistant_id [String]
+          # @param tag [String] Unique identifier of the tag.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::TagRemoveResponse]

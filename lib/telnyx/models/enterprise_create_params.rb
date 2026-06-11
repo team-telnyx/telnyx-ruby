@@ -18,57 +18,61 @@ module Telnyx
       required :billing_contact, -> { Telnyx::BillingContact }
 
       # @!attribute country_code
-      #   Country code. Currently only 'US' is accepted.
+      #   ISO 3166-1 alpha-2 country code. Currently `US` and `CA` are supported.
       #
       #   @return [String]
       required :country_code, String
 
       # @!attribute doing_business_as
-      #   Primary business name / DBA name
       #
       #   @return [String]
       required :doing_business_as, String
 
       # @!attribute fein
-      #   Federal Employer Identification Number. Format: XX-XXXXXXX or 9-digit number
-      #   (minimum 9 digits).
+      #   US Federal Employer Identification Number (`NN-NNNNNNN`) or Canadian equivalent.
       #
       #   @return [String]
       required :fein, String
 
       # @!attribute industry
-      #   Industry classification. Case-insensitive. Accepted values: accounting, finance,
-      #   billing, collections, business, charity, nonprofit, communications, telecom,
-      #   customer service, support, delivery, shipping, logistics, education, financial,
-      #   banking, government, public, healthcare, health, pharmacy, medical, insurance,
-      #   legal, law, notifications, scheduling, real estate, property, retail, ecommerce,
-      #   sales, marketing, software, technology, tech, media, surveys, market research,
-      #   travel, hospitality, hotel
+      #   Industry classification.
+      #
+      #   @return [Symbol, Telnyx::Models::EnterpriseCreateParams::Industry]
+      required :industry, enum: -> { Telnyx::EnterpriseCreateParams::Industry }
+
+      # @!attribute jurisdiction_of_incorporation
       #
       #   @return [String]
-      required :industry, String
+      required :jurisdiction_of_incorporation, String
 
       # @!attribute legal_name
-      #   Legal name of the enterprise
+      #   Legal name of the enterprise.
       #
       #   @return [String]
       required :legal_name, String
 
       # @!attribute number_of_employees
-      #   Employee count range
+      #   Approximate headcount range. Used for vetting heuristics; pick the bucket that
+      #   contains your current employee count.
       #
       #   @return [Symbol, Telnyx::Models::EnterpriseCreateParams::NumberOfEmployees]
       required :number_of_employees, enum: -> { Telnyx::EnterpriseCreateParams::NumberOfEmployees }
 
       # @!attribute organization_contact
-      #   Organization contact information. Note: the response returns this object with
-      #   the phone field as 'phone' (not 'phone_number').
       #
       #   @return [Telnyx::Models::OrganizationContact]
       required :organization_contact, -> { Telnyx::OrganizationContact }
 
       # @!attribute organization_legal_type
-      #   Legal structure type
+      #   Legal-entity form. Pick the form that matches your incorporation documents:
+      #
+      #   - `corporation` - C-corp or S-corp.
+      #   - `llc` - limited liability company.
+      #   - `partnership` - general/limited partnership.
+      #   - `nonprofit` - non-profit corporation, charitable trust, or
+      #     501(c)(3)/equivalent.
+      #   - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
+      #     You may be asked for additional documents during vetting.
       #
       #   @return [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType]
       required :organization_legal_type, enum: -> { Telnyx::EnterpriseCreateParams::OrganizationLegalType }
@@ -79,54 +83,61 @@ module Telnyx
       required :organization_physical_address, -> { Telnyx::PhysicalAddress }
 
       # @!attribute organization_type
-      #   Type of organization
+      #   Organization category for vetting purposes:
+      #
+      #   - `commercial` - for-profit business entities (LLC, corp, partnership, sole
+      #     proprietorship). Most callers fall here.
+      #   - `government` - federal/state/local government bodies.
+      #   - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
+      #     institutions, charities, religious organisations).
       #
       #   @return [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType]
       required :organization_type, enum: -> { Telnyx::EnterpriseCreateParams::OrganizationType }
 
       # @!attribute website
-      #   Enterprise website URL. Accepts any string — no URL format validation enforced.
       #
       #   @return [String]
       required :website, String
 
       # @!attribute corporate_registration_number
-      #   Corporate registration number (optional)
+      #   Optional corporate-registration / company-number identifier.
       #
       #   @return [String, nil]
-      optional :corporate_registration_number, String
+      optional :corporate_registration_number, String, nil?: true
 
       # @!attribute customer_reference
-      #   Optional customer reference identifier for your own tracking
+      #   Optional free-form string the caller can attach for their own bookkeeping.
+      #   Telnyx does not interpret it.
       #
       #   @return [String, nil]
       optional :customer_reference, String
 
       # @!attribute dun_bradstreet_number
-      #   D-U-N-S Number (optional)
+      #   Optional D-U-N-S Number.
       #
       #   @return [String, nil]
-      optional :dun_bradstreet_number, String
+      optional :dun_bradstreet_number, String, nil?: true
 
       # @!attribute primary_business_domain_sic_code
-      #   SIC Code (optional)
+      #   Optional SIC code for the primary line of business.
       #
       #   @return [String, nil]
-      optional :primary_business_domain_sic_code, String
+      optional :primary_business_domain_sic_code, String, nil?: true
 
       # @!attribute professional_license_number
-      #   Professional license number (optional)
+      #   Optional professional-license number for regulated industries.
       #
       #   @return [String, nil]
-      optional :professional_license_number, String
+      optional :professional_license_number, String, nil?: true
 
       # @!attribute role_type
-      #   Role type in Branded Calling / Number Reputation services
+      #   `enterprise` for an organization registering its own DIRs; `bpo` for a Business
+      #   Process Outsourcer placing calls on behalf of one or more enterprises.
       #
       #   @return [Symbol, Telnyx::Models::EnterpriseCreateParams::RoleType, nil]
       optional :role_type, enum: -> { Telnyx::EnterpriseCreateParams::RoleType }
 
-      # @!method initialize(billing_address:, billing_contact:, country_code:, doing_business_as:, fein:, industry:, legal_name:, number_of_employees:, organization_contact:, organization_legal_type:, organization_physical_address:, organization_type:, website:, corporate_registration_number: nil, customer_reference: nil, dun_bradstreet_number: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, role_type: nil, request_options: {})
+      # @!method initialize(billing_address:, billing_contact:, country_code:, doing_business_as:, fein:, industry:, jurisdiction_of_incorporation:, legal_name:, number_of_employees:, organization_contact:, organization_legal_type:, organization_physical_address:, organization_type:, website:, corporate_registration_number: nil, customer_reference: nil, dun_bradstreet_number: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, role_type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::EnterpriseCreateParams} for more details.
       #
@@ -134,43 +145,98 @@ module Telnyx
       #
       #   @param billing_contact [Telnyx::Models::BillingContact]
       #
-      #   @param country_code [String] Country code. Currently only 'US' is accepted.
+      #   @param country_code [String] ISO 3166-1 alpha-2 country code. Currently `US` and `CA` are supported.
       #
-      #   @param doing_business_as [String] Primary business name / DBA name
+      #   @param doing_business_as [String]
       #
-      #   @param fein [String] Federal Employer Identification Number. Format: XX-XXXXXXX or 9-digit number (mi
+      #   @param fein [String] US Federal Employer Identification Number (`NN-NNNNNNN`) or Canadian equivalent.
       #
-      #   @param industry [String] Industry classification. Case-insensitive. Accepted values: accounting, finance,
+      #   @param industry [Symbol, Telnyx::Models::EnterpriseCreateParams::Industry] Industry classification.
       #
-      #   @param legal_name [String] Legal name of the enterprise
+      #   @param jurisdiction_of_incorporation [String]
       #
-      #   @param number_of_employees [Symbol, Telnyx::Models::EnterpriseCreateParams::NumberOfEmployees] Employee count range
+      #   @param legal_name [String] Legal name of the enterprise.
       #
-      #   @param organization_contact [Telnyx::Models::OrganizationContact] Organization contact information. Note: the response returns this object with th
+      #   @param number_of_employees [Symbol, Telnyx::Models::EnterpriseCreateParams::NumberOfEmployees] Approximate headcount range. Used for vetting heuristics; pick the bucket that c
       #
-      #   @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType] Legal structure type
+      #   @param organization_contact [Telnyx::Models::OrganizationContact]
+      #
+      #   @param organization_legal_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationLegalType] Legal-entity form. Pick the form that matches your incorporation documents:
       #
       #   @param organization_physical_address [Telnyx::Models::PhysicalAddress]
       #
-      #   @param organization_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType] Type of organization
+      #   @param organization_type [Symbol, Telnyx::Models::EnterpriseCreateParams::OrganizationType] Organization category for vetting purposes:
       #
-      #   @param website [String] Enterprise website URL. Accepts any string — no URL format validation enforced.
+      #   @param website [String]
       #
-      #   @param corporate_registration_number [String] Corporate registration number (optional)
+      #   @param corporate_registration_number [String, nil] Optional corporate-registration / company-number identifier.
       #
-      #   @param customer_reference [String] Optional customer reference identifier for your own tracking
+      #   @param customer_reference [String] Optional free-form string the caller can attach for their own bookkeeping. Telny
       #
-      #   @param dun_bradstreet_number [String] D-U-N-S Number (optional)
+      #   @param dun_bradstreet_number [String, nil] Optional D-U-N-S Number.
       #
-      #   @param primary_business_domain_sic_code [String] SIC Code (optional)
+      #   @param primary_business_domain_sic_code [String, nil] Optional SIC code for the primary line of business.
       #
-      #   @param professional_license_number [String] Professional license number (optional)
+      #   @param professional_license_number [String, nil] Optional professional-license number for regulated industries.
       #
-      #   @param role_type [Symbol, Telnyx::Models::EnterpriseCreateParams::RoleType] Role type in Branded Calling / Number Reputation services
+      #   @param role_type [Symbol, Telnyx::Models::EnterpriseCreateParams::RoleType] `enterprise` for an organization registering its own DIRs; `bpo` for a Business
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      # Employee count range
+      # Industry classification.
+      module Industry
+        extend Telnyx::Internal::Type::Enum
+
+        ACCOUNTING = :accounting
+        FINANCE = :finance
+        BILLING = :billing
+        COLLECTIONS = :collections
+        BUSINESS = :business
+        CHARITY = :charity
+        NONPROFIT = :nonprofit
+        COMMUNICATIONS = :communications
+        TELECOM = :telecom
+        CUSTOMER_SERVICE = :"customer service"
+        SUPPORT = :support
+        DELIVERY = :delivery
+        SHIPPING = :shipping
+        LOGISTICS = :logistics
+        EDUCATION = :education
+        FINANCIAL = :financial
+        BANKING = :banking
+        GOVERNMENT = :government
+        PUBLIC = :public
+        HEALTHCARE = :healthcare
+        HEALTH = :health
+        PHARMACY = :pharmacy
+        MEDICAL = :medical
+        INSURANCE = :insurance
+        LEGAL = :legal
+        LAW = :law
+        NOTIFICATIONS = :notifications
+        SCHEDULING = :scheduling
+        REAL_ESTATE = :"real estate"
+        PROPERTY = :property
+        RETAIL = :retail
+        ECOMMERCE = :ecommerce
+        SALES = :sales
+        MARKETING = :marketing
+        SOFTWARE = :software
+        TECHNOLOGY = :technology
+        TECH = :tech
+        MEDIA = :media
+        SURVEYS = :surveys
+        MARKET_RESEARCH = :"market research"
+        TRAVEL = :travel
+        HOSPITALITY = :hospitality
+        HOTEL = :hotel
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      # Approximate headcount range. Used for vetting heuristics; pick the bucket that
+      # contains your current employee count.
       module NumberOfEmployees
         extend Telnyx::Internal::Type::Enum
 
@@ -186,7 +252,15 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # Legal structure type
+      # Legal-entity form. Pick the form that matches your incorporation documents:
+      #
+      # - `corporation` - C-corp or S-corp.
+      # - `llc` - limited liability company.
+      # - `partnership` - general/limited partnership.
+      # - `nonprofit` - non-profit corporation, charitable trust, or
+      #   501(c)(3)/equivalent.
+      # - `other` - anything else (sole proprietorships, government bodies, DBAs, etc.).
+      #   You may be asked for additional documents during vetting.
       module OrganizationLegalType
         extend Telnyx::Internal::Type::Enum
 
@@ -200,7 +274,13 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # Type of organization
+      # Organization category for vetting purposes:
+      #
+      # - `commercial` - for-profit business entities (LLC, corp, partnership, sole
+      #   proprietorship). Most callers fall here.
+      # - `government` - federal/state/local government bodies.
+      # - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
+      #   institutions, charities, religious organisations).
       module OrganizationType
         extend Telnyx::Internal::Type::Enum
 
@@ -212,7 +292,8 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # Role type in Branded Calling / Number Reputation services
+      # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
+      # Process Outsourcer placing calls on behalf of one or more enterprises.
       module RoleType
         extend Telnyx::Internal::Type::Enum
 

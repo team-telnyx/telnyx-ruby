@@ -47,7 +47,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::MissionRetrieveResponse)
         end
-        def retrieve(mission_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the mission.
+          mission_id,
+          request_options: {}
+        )
         end
 
         # List all missions for the organization
@@ -76,7 +80,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.anything)
         end
-        def clone_mission(mission_id, request_options: {})
+        def clone_mission(
+          # Unique identifier of the mission.
+          mission_id,
+          request_options: {}
+        )
         end
 
         # Delete a mission
@@ -86,7 +94,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).void
         end
-        def delete_mission(mission_id, request_options: {})
+        def delete_mission(
+          # Unique identifier of the mission.
+          mission_id,
+          request_options: {}
+        )
         end
 
         # List recent events across all missions
@@ -107,6 +119,7 @@ module Telnyx
           page_number: nil,
           # Number of items per page
           page_size: nil,
+          # Filter results by type.
           type: nil,
           request_options: {}
         )
@@ -127,6 +140,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::MissionUpdateMissionResponse)
         end
         def update_mission(
+          # Unique identifier of the mission.
           mission_id,
           description: nil,
           execution_mode: nil,

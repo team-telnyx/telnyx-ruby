@@ -11,7 +11,7 @@ module Telnyx
           #
           # @overload list(conversation_id, page_number: nil, page_size: nil, request_options: {})
           #
-          # @param conversation_id [String]
+          # @param conversation_id [String] Unique identifier of the conversation.
           #
           # @param page_number [Integer] The page number to retrieve.
           #

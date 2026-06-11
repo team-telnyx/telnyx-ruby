@@ -1,5 +1,28 @@
 # Changelog
 
+## 5.127.0 (2026-06-11)
+
+Full Changelog: [v5.126.0...v5.127.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.126.0...v5.127.0)
+
+### Features
+
+* Add sip region to scheduled events ([ba73e09](https://github.com/team-telnyx/telnyx-ruby/commit/ba73e09a84634b4556ac84844976ce51525a5d1c))
+* branded-calling: drop 'simplified'/'no enterprise_id' framing from DIR endpoints ([fb32053](https://github.com/team-telnyx/telnyx-ruby/commit/fb3205370772cb637a6d08d0091f55271fa7aa58))
+* branded-calling: sync PATCH /dir/{dir_id} spec with deployed service behavior ([1d38748](https://github.com/team-telnyx/telnyx-ruby/commit/1d38748972411414ed9a202aa4cfae37ffcde91d))
+* **branded-calling:** document LOA (DIR) + reputation remediation endpoints ([4a2da80](https://github.com/team-telnyx/telnyx-ruby/commit/4a2da80cfd2cc2078936fbca7b8fb02e77545e79))
+* Fix cross-product leakage: de-dup shared enterprise/ToS endpoints + neutralize descriptions ([d9fc9bd](https://github.com/team-telnyx/telnyx-ruby/commit/d9fc9bd11d7d2ab5a20725c8e18f5f2e96ecf858))
+* NUM-6470: Add branded-calling-v2 OpenAPI specs (external + internal) ([4fa2646](https://github.com/team-telnyx/telnyx-ruby/commit/4fa26468681db3ab033f82e8e0b1ddbc5932d79c))
+* **spec:** backfill parameter descriptions to 100% coverage ([49144ec](https://github.com/team-telnyx/telnyx-ruby/commit/49144ecf6cf9441257da24da606183feea6bbd29))
+* **spec:** inline 2xx response schemas — REST response coverage 41% → 91% (sync of openapi[#199](https://github.com/team-telnyx/telnyx-ruby/issues/199)) ([d49fc69](https://github.com/team-telnyx/telnyx-ruby/commit/d49fc6970c7deb249b0aeaa35e7d32b98a8e0538))
+* specs: add GET /terms_of_service/info (branded-calling + number-reputation) ([3548a3d](https://github.com/team-telnyx/telnyx-ruby/commit/3548a3d3749d1520acc85ad0bbfde9ab59c86aab))
+* specs: drop legacy plain filter params (keep filter[] canonical) on list endpoints ([627e538](https://github.com/team-telnyx/telnyx-ruby/commit/627e538249226b907c5f31e61719328911e52faa))
+* specs: remove em dashes from branded-calling + number-reputation descriptions ([a978847](https://github.com/team-telnyx/telnyx-ruby/commit/a9788477bdbeef42039bf0c104022ea2e8afa8ab))
+
+
+### Bug Fixes
+
+* **number-reputation:** remediation contact_email is optional ([b79c34a](https://github.com/team-telnyx/telnyx-ruby/commit/b79c34a9a5770552a632bc6526d52dad14b410a8))
+
 ## 5.126.0 (2026-06-05)
 
 Full Changelog: [v5.125.0...v5.126.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.125.0...v5.126.0)

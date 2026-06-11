@@ -13,7 +13,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T::Hash[Symbol, T.anything])
           end
-          def get_attributes(campaign_id, request_options: {})
+          def get_attributes(
+            # Unique identifier of the campaign.
+            campaign_id,
+            request_options: {}
+          )
           end
 
           # @api private

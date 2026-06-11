@@ -18,6 +18,7 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :task_id
 
+        # Filter results by cluster id.
         sig { returns(T.nilable(Integer)) }
         attr_reader :cluster_id
 
@@ -31,7 +32,12 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(task_id:, cluster_id: nil, request_options: {})
+        def self.new(
+          task_id:,
+          # Filter results by cluster id.
+          cluster_id: nil,
+          request_options: {}
+        )
         end
 
         sig do

@@ -183,6 +183,7 @@ module Telnyx
           )
         end
         def retrieve_conversations_insights(
+          # Unique identifier of the conversation.
           conversation_id,
           request_options: {}
         )

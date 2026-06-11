@@ -35,7 +35,8 @@ module Telnyx
         #
         # @overload retrieve(id, request_options: {})
         #
-        # @param id [String]
+        # @param id [String] Unique identifier of the resource.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Reports::MdrUsageReportRetrieveResponse]
@@ -79,7 +80,8 @@ module Telnyx
         #
         # @overload delete(id, request_options: {})
         #
-        # @param id [String]
+        # @param id [String] Unique identifier of the resource.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Reports::MdrUsageReportDeleteResponse]
@@ -100,10 +102,14 @@ module Telnyx
         #
         # @overload fetch_sync(aggregation_type:, end_date: nil, profiles: nil, start_date: nil, request_options: {})
         #
-        # @param aggregation_type [Symbol, Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::AggregationType]
-        # @param end_date [Time]
-        # @param profiles [Array<String>]
-        # @param start_date [Time]
+        # @param aggregation_type [Symbol, Telnyx::Models::Reports::MdrUsageReportFetchSyncParams::AggregationType] Type of aggregation to apply to the results.
+        #
+        # @param end_date [Time] End of the date range filter (inclusive, ISO 8601).
+        #
+        # @param profiles [Array<String>] Filter results by profile.
+        #
+        # @param start_date [Time] Start of the date range filter (inclusive, ISO 8601).
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Reports::MdrUsageReportFetchSyncResponse]

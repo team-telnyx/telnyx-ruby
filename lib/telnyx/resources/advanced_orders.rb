@@ -43,7 +43,8 @@ module Telnyx
       #
       # @overload retrieve(order_id, request_options: {})
       #
-      # @param order_id [String]
+      # @param order_id [String] Unique identifier of the order.
+      #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::AdvancedOrderRetrieveResponse]
@@ -80,7 +81,7 @@ module Telnyx
       #
       # @overload update_requirement_group(advanced_order_id, area_code: nil, comments: nil, country_code: nil, customer_reference: nil, features: nil, phone_number_type: nil, quantity: nil, requirement_group_id: nil, request_options: {})
       #
-      # @param advanced_order_id [String]
+      # @param advanced_order_id [String] Unique identifier of the advanced order.
       #
       # @param area_code [String]
       #

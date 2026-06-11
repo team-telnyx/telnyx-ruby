@@ -10,19 +10,19 @@ module Telnyx
             #
             # @overload list(run_id, mission_id:, agent_id: nil, page_number: nil, page_size: nil, step_id: nil, type: nil, request_options: {})
             #
-            # @param run_id [String] Path param
+            # @param run_id [String] Path param: Unique identifier of the run.
             #
-            # @param mission_id [String] Path param
+            # @param mission_id [String] Path param: Unique identifier of the mission.
             #
-            # @param agent_id [String] Query param
+            # @param agent_id [String] Query param: Filter results by agent id.
             #
             # @param page_number [Integer] Query param: Page number (1-based)
             #
             # @param page_size [Integer] Query param: Number of items per page
             #
-            # @param step_id [String] Query param
+            # @param step_id [String] Query param: Filter results by step id.
             #
-            # @param type [String] Query param
+            # @param type [String] Query param: Filter results by type.
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -50,9 +50,12 @@ module Telnyx
             #
             # @overload get_event_details(event_id, mission_id:, run_id:, request_options: {})
             #
-            # @param event_id [String]
-            # @param mission_id [String]
-            # @param run_id [String]
+            # @param event_id [String] Unique identifier of the event.
+            #
+            # @param mission_id [String] Unique identifier of the mission.
+            #
+            # @param run_id [String] Unique identifier of the run.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsResponse]
@@ -80,9 +83,9 @@ module Telnyx
             #
             # @overload log(run_id, mission_id:, summary:, type:, agent_id: nil, idempotency_key: nil, payload: nil, step_id: nil, request_options: {})
             #
-            # @param run_id [String] Path param
+            # @param run_id [String] Path param: Unique identifier of the run.
             #
-            # @param mission_id [String] Path param
+            # @param mission_id [String] Path param: Unique identifier of the mission.
             #
             # @param summary [String] Body param
             #

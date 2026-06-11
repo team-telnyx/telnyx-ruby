@@ -14,7 +14,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::AI::Embeddings::BucketRetrieveResponse)
           end
-          def retrieve(bucket_name, request_options: {})
+          def retrieve(
+            # Name of the bucket.
+            bucket_name,
+            request_options: {}
+          )
           end
 
           # Get all embedding buckets for a user.
@@ -34,7 +38,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(bucket_name, request_options: {})
+          def delete(
+            # Name of the bucket.
+            bucket_name,
+            request_options: {}
+          )
           end
 
           # @api private

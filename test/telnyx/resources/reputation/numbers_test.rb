@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.reputation.numbers.retrieve("+16035551234")
+    response = @telnyx.reputation.numbers.retrieve("+19493253498")
 
     assert_pattern do
       response => Telnyx::Models::Reputation::NumberRetrieveResponse
@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::ReputationPhoneNumberWithReputationData | nil
+        data: Telnyx::Models::Reputation::NumberRetrieveResponse::Data
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::ReputationPhoneNumberWithReputationData
+      row => Telnyx::Models::Reputation::NumberListResponse
     end
 
     assert_pattern do
@@ -50,7 +50,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
   def test_delete
     skip("Mock server tests are disabled")
 
-    response = @telnyx.reputation.numbers.delete("+16035551234")
+    response = @telnyx.reputation.numbers.delete("+19493253498")
 
     assert_pattern do
       response => nil

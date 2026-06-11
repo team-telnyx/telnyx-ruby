@@ -51,7 +51,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::WireguardInterfaceRead
+            Telnyx::Models::WireguardInterfaceListResponse
           ]
         )
       end

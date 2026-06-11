@@ -11,7 +11,7 @@ module Telnyx
           T.any(Telnyx::ReportListWdrsParams, Telnyx::Internal::AnyHash)
         end
 
-      # WDR uuid
+      # Filter results by identifier.
       sig { returns(T.nilable(String)) }
       attr_reader :id
 
@@ -25,21 +25,21 @@ module Telnyx
       sig { params(end_date: String).void }
       attr_writer :end_date
 
-      # International mobile subscriber identity
+      # Filter results by imsi.
       sig { returns(T.nilable(String)) }
       attr_reader :imsi
 
       sig { params(imsi: String).void }
       attr_writer :imsi
 
-      # Mobile country code
+      # Filter results by mcc.
       sig { returns(T.nilable(String)) }
       attr_reader :mcc
 
       sig { params(mcc: String).void }
       attr_writer :mcc
 
-      # Mobile network code
+      # Filter results by mnc.
       sig { returns(T.nilable(String)) }
       attr_reader :mnc
 
@@ -58,36 +58,35 @@ module Telnyx
       sig { params(page_size: Integer).void }
       attr_writer :page_size
 
-      # Phone number
+      # Filter results by phone number.
       sig { returns(T.nilable(String)) }
       attr_reader :phone_number
 
       sig { params(phone_number: String).void }
       attr_writer :phone_number
 
-      # Sim card unique identifier
+      # Filter results by sim card id.
       sig { returns(T.nilable(String)) }
       attr_reader :sim_card_id
 
       sig { params(sim_card_id: String).void }
       attr_writer :sim_card_id
 
-      # Sim group unique identifier
+      # Filter results by sim group id.
       sig { returns(T.nilable(String)) }
       attr_reader :sim_group_id
 
       sig { params(sim_group_id: String).void }
       attr_writer :sim_group_id
 
-      # Sim group name
+      # Filter results by sim group name.
       sig { returns(T.nilable(String)) }
       attr_reader :sim_group_name
 
       sig { params(sim_group_name: String).void }
       attr_writer :sim_group_name
 
-      # Field used to order the data. If no field is specified, default value is
-      # 'created_at'
+      # Field and direction to sort the results by.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :sort
 
@@ -120,28 +119,27 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # WDR uuid
+        # Filter results by identifier.
         id: nil,
         # End date
         end_date: nil,
-        # International mobile subscriber identity
+        # Filter results by imsi.
         imsi: nil,
-        # Mobile country code
+        # Filter results by mcc.
         mcc: nil,
-        # Mobile network code
+        # Filter results by mnc.
         mnc: nil,
         page_number: nil,
         page_size: nil,
-        # Phone number
+        # Filter results by phone number.
         phone_number: nil,
-        # Sim card unique identifier
+        # Filter results by sim card id.
         sim_card_id: nil,
-        # Sim group unique identifier
+        # Filter results by sim group id.
         sim_group_id: nil,
-        # Sim group name
+        # Filter results by sim group name.
         sim_group_name: nil,
-        # Field used to order the data. If no field is specified, default value is
-        # 'created_at'
+        # Field and direction to sort the results by.
         sort: nil,
         # Start date
         start_date: nil,

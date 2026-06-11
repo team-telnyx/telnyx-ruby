@@ -46,9 +46,12 @@ module Telnyx
         #
         # @overload list_phone_number_status(task_id, page: nil, records_per_page: nil, request_options: {})
         #
-        # @param task_id [String]
-        # @param page [Integer]
-        # @param records_per_page [Integer]
+        # @param task_id [String] Unique identifier of the task.
+        #
+        # @param page [Integer] Page number to retrieve (1-based).
+        #
+        # @param records_per_page [Integer] Number of records to return per page.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileListPhoneNumberStatusResponse]
@@ -72,9 +75,12 @@ module Telnyx
         #
         # @overload retrieve_phone_number_status(task_id, page: nil, records_per_page: nil, request_options: {})
         #
-        # @param task_id [String]
-        # @param page [Integer]
-        # @param records_per_page [Integer]
+        # @param task_id [String] Unique identifier of the task.
+        #
+        # @param page [Integer] Page number to retrieve (1-based).
+        #
+        # @param records_per_page [Integer] Number of records to return per page.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrievePhoneNumberStatusResponse]
@@ -98,7 +104,8 @@ module Telnyx
         #
         # @overload retrieve_status(task_id, request_options: {})
         #
-        # @param task_id [String]
+        # @param task_id [String] Unique identifier of the task.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::Messaging10dlc::PhoneNumberAssignmentByProfileRetrieveStatusResponse]

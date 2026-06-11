@@ -39,7 +39,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::ToolRetrieveResponse)
         end
-        def retrieve(tool_id, request_options: {})
+        def retrieve(
+          # Unique identifier of the tool.
+          tool_id,
+          request_options: {}
+        )
         end
 
         # Update Tool
@@ -58,6 +62,7 @@ module Telnyx
           ).returns(Telnyx::Models::AI::ToolUpdateResponse)
         end
         def update(
+          # Unique identifier of the tool.
           tool_id,
           display_name: nil,
           function: nil,
@@ -86,9 +91,13 @@ module Telnyx
           )
         end
         def list(
+          # Filter results by filter name.
           filter_name: nil,
+          # Filter results by filter type.
           filter_type: nil,
+          # Page number to retrieve (1-based).
           page_number: nil,
+          # Number of items to return per page.
           page_size: nil,
           request_options: {}
         )
@@ -101,7 +110,11 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.anything)
         end
-        def delete(tool_id, request_options: {})
+        def delete(
+          # Unique identifier of the tool.
+          tool_id,
+          request_options: {}
+        )
         end
 
         # @api private

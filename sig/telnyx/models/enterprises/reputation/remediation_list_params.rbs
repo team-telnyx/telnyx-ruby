@@ -1,0 +1,82 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type remediation_list_params =
+          {
+            enterprise_id: String,
+            filter_created_at_gte: Time,
+            filter_created_at_lte: Time,
+            filter_status: Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status,
+            page_number: Integer,
+            page_size: Integer
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class RemediationListParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor enterprise_id: String
+
+          attr_reader filter_created_at_gte: Time?
+
+          def filter_created_at_gte=: (Time) -> Time
+
+          attr_reader filter_created_at_lte: Time?
+
+          def filter_created_at_lte=: (Time) -> Time
+
+          attr_reader filter_status: Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status?
+
+          def filter_status=: (
+            Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status
+          ) -> Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status
+
+          attr_reader page_number: Integer?
+
+          def page_number=: (Integer) -> Integer
+
+          attr_reader page_size: Integer?
+
+          def page_size=: (Integer) -> Integer
+
+          def initialize: (
+            enterprise_id: String,
+            ?filter_created_at_gte: Time,
+            ?filter_created_at_lte: Time,
+            ?filter_status: Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status,
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            enterprise_id: String,
+            filter_created_at_gte: Time,
+            filter_created_at_lte: Time,
+            filter_status: Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status,
+            page_number: Integer,
+            page_size: Integer,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type filter_status =
+            :pending | :in_progress | :completed | :failed | :cancelled
+
+          module FilterStatus
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            IN_PROGRESS: :in_progress
+            COMPLETED: :completed
+            FAILED: :failed
+            CANCELLED: :cancelled
+
+            def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::RemediationListParams::filter_status]
+          end
+        end
+      end
+    end
+  end
+end

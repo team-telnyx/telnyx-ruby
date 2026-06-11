@@ -3,22 +3,19 @@
 module Telnyx
   module Resources
     class Reputation
-      # Associate phone numbers with an enterprise for reputation monitoring and
-      # retrieve reputation scores
+      # Phone-number reputation monitoring (spam-score lookup and tracking).
       class Numbers
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Reputation::NumberRetrieveParams} for more details.
         #
-        # Get reputation data for a specific phone number without requiring an
-        # `enterprise_id`.
-        #
-        # Same response as the enterprise-scoped endpoint. Uses cached data by default.
+        # Convenience alias for
+        # `GET /v2/enterprises/{enterprise_id}/reputation/numbers/{phone_number}`.
         #
         # @overload retrieve(phone_number, fresh: nil, request_options: {})
         #
-        # @param phone_number [String] Phone number in E.164 format
+        # @param phone_number [String] Phone number in E.164 format (`+1NPANXXXXXX` for US/CA). The leading `+` MUST be
         #
-        # @param fresh [Boolean] When true, fetches fresh reputation data (incurs API cost). When false, returns
+        # @param fresh [Boolean] When true, fetches fresh reputation data (incurs API cost). When false (default)
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -37,23 +34,28 @@ module Telnyx
           )
         end
 
-        # List all phone numbers enrolled in Number Reputation monitoring for your
-        # account. This is a simplified endpoint that does not require an `enterprise_id`
-        # — it returns numbers across all your enterprises.
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Reputation::NumberListParams} for more details.
         #
-        # Supports pagination and filtering by phone number.
+        # Convenience alias for `GET /v2/enterprises/{enterprise_id}/reputation/numbers`
+        # that returns numbers across every enterprise you own. Useful when you don't want
+        # to look up the enterprise id first.
         #
-        # @overload list(page_number: nil, page_size: nil, phone_number: nil, request_options: {})
+        # @overload list(filter_enterprise_id: nil, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, request_options: {})
         #
-        # @param page_number [Integer] Page number (1-indexed)
+        # @param filter_enterprise_id [String] Filter by enterprise ID.
         #
-        # @param page_size [Integer] Number of items per page
+        # @param filter_phone_number_contains [String] Partial match on phone number. Must contain at least 5 digits.
         #
-        # @param phone_number [String] Filter by specific phone number (E.164 format)
+        # @param filter_phone_number_eq [String] Exact phone-number match (E.164).
+        #
+        # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
+        #
+        # @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ReputationPhoneNumberWithReputationData>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Reputation::NumberListResponse>]
         #
         # @see Telnyx::Models::Reputation::NumberListParams
         def list(params = {})
@@ -62,19 +64,28 @@ module Telnyx
           @client.request(
             method: :get,
             path: "reputation/numbers",
-            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            query: query.transform_keys(
+              filter_enterprise_id: "filter[enterprise_id]",
+              filter_phone_number_contains: "filter[phone_number][contains]",
+              filter_phone_number_eq: "filter[phone_number][eq]",
+              page_number: "page[number]",
+              page_size: "page[size]"
+            ),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::ReputationPhoneNumberWithReputationData,
+            model: Telnyx::Models::Reputation::NumberListResponse,
             options: options
           )
         end
 
-        # Remove a phone number from Number Reputation monitoring without requiring an
-        # `enterprise_id`.
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Reputation::NumberDeleteParams} for more details.
+        #
+        # Convenience alias for
+        # `DELETE /v2/enterprises/{enterprise_id}/reputation/numbers/{phone_number}`.
         #
         # @overload delete(phone_number, request_options: {})
         #
-        # @param phone_number [String] Phone number in E.164 format
+        # @param phone_number [String] Phone number in E.164 format (`+1NPANXXXXXX` for US/CA). The leading `+` MUST be
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

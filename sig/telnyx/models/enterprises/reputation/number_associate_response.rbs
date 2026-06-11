@@ -5,28 +5,22 @@ module Telnyx
         type number_associate_response =
           {
             data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
-            meta: Telnyx::MetaInfo
+            meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
           }
 
         class NumberAssociateResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]?
+          attr_accessor data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]
 
-          def data=: (
-            ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]
-          ) -> ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]
-
-          attr_reader meta: Telnyx::MetaInfo?
-
-          def meta=: (Telnyx::MetaInfo) -> Telnyx::MetaInfo
+          attr_accessor meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
 
           def initialize: (
-            ?data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
-            ?meta: Telnyx::MetaInfo
+            data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
+            meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
           ) -> void
 
           def to_hash: -> {
             data: ::Array[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data],
-            meta: Telnyx::MetaInfo
+            meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
           }
 
           type data =
@@ -35,18 +29,11 @@ module Telnyx
               created_at: Time,
               enterprise_id: String,
               phone_number: String,
+              reputation_data: Telnyx::ReputationData?,
               updated_at: Time
             }
 
           class Data < Telnyx::Internal::Type::BaseModel
-            attr_reader id: String?
-
-            def id=: (String) -> String
-
-            attr_reader created_at: Time?
-
-            def created_at=: (Time) -> Time
-
             attr_reader enterprise_id: String?
 
             def enterprise_id=: (String) -> String
@@ -54,6 +41,16 @@ module Telnyx
             attr_reader phone_number: String?
 
             def phone_number=: (String) -> String
+
+            attr_accessor reputation_data: Telnyx::ReputationData?
+
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader created_at: Time?
+
+            def created_at=: (Time) -> Time
 
             attr_reader updated_at: Time?
 
@@ -64,6 +61,7 @@ module Telnyx
               ?created_at: Time,
               ?enterprise_id: String,
               ?phone_number: String,
+              ?reputation_data: Telnyx::ReputationData?,
               ?updated_at: Time
             ) -> void
 
@@ -72,7 +70,40 @@ module Telnyx
               created_at: Time,
               enterprise_id: String,
               phone_number: String,
+              reputation_data: Telnyx::ReputationData?,
               updated_at: Time
+            }
+          end
+
+          type meta =
+            {
+              page_number: Integer,
+              page_size: Integer,
+              total_pages: Integer,
+              total_results: Integer
+            }
+
+          class Meta < Telnyx::Internal::Type::BaseModel
+            attr_accessor page_number: Integer
+
+            attr_accessor page_size: Integer
+
+            attr_accessor total_pages: Integer
+
+            attr_accessor total_results: Integer
+
+            def initialize: (
+              page_number: Integer,
+              page_size: Integer,
+              total_pages: Integer,
+              total_results: Integer
+            ) -> void
+
+            def to_hash: -> {
+              page_number: Integer,
+              page_size: Integer,
+              total_pages: Integer,
+              total_results: Integer
             }
           end
         end

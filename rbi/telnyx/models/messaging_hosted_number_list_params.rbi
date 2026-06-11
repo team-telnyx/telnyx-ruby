@@ -35,12 +35,14 @@ module Telnyx
       sig { params(filter_phone_number_contains: String).void }
       attr_writer :filter_phone_number_contains
 
+      # Page number to retrieve (1-based).
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_number
 
       sig { params(page_number: Integer).void }
       attr_writer :page_number
 
+      # Number of items to return per page.
       sig { returns(T.nilable(Integer)) }
       attr_reader :page_size
 
@@ -84,7 +86,9 @@ module Telnyx
         filter_phone_number: nil,
         # Filter by phone number substring.
         filter_phone_number_contains: nil,
+        # Page number to retrieve (1-based).
         page_number: nil,
+        # Number of items to return per page.
         page_size: nil,
         # Sort by phone number.
         sort_phone_number: nil,

@@ -16,11 +16,11 @@ module Telnyx
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def retrieve(
-            # Path param
+            # Path param: Unique identifier of the version.
             version_id,
-            # Path param
+            # Path param: Unique identifier of the assistant.
             assistant_id:,
-            # Query param
+            # Query param: Whether to include MCP servers in the response.
             include_mcp_servers: nil,
             request_options: {}
           )
@@ -39,22 +39,30 @@ module Telnyx
               dynamic_variables_webhook_timeout_ms: Integer,
               dynamic_variables_webhook_url: String,
               enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-              external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
-              fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
+              external_llm:
+                Telnyx::AI::Assistants::UpdateAssistant::ExternalLlm::OrHash,
+              fallback_config:
+                Telnyx::AI::Assistants::UpdateAssistant::FallbackConfig::OrHash,
               greeting: String,
               insight_settings: Telnyx::AI::InsightSettings::OrHash,
               instructions: String,
-              integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
+              integrations:
+                T::Array[
+                  Telnyx::AI::Assistants::UpdateAssistant::Integration::OrHash
+                ],
               interruption_settings:
-                Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
+                Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::OrHash,
               llm_api_key_ref: String,
-              mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
+              mcp_servers:
+                T::Array[
+                  Telnyx::AI::Assistants::UpdateAssistant::McpServer::OrHash
+                ],
               messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
               model: String,
               name: String,
               observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
               post_conversation_settings:
-                Telnyx::AI::PostConversationSettingsReq::OrHash,
+                Telnyx::AI::Assistants::UpdateAssistant::PostConversationSettings::OrHash,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               tags: T::Array[String],
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,
@@ -82,9 +90,9 @@ module Telnyx
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
           def update(
-            # Path param
+            # Path param: Unique identifier of the version.
             version_id,
-            # Path param
+            # Path param: Unique identifier of the assistant.
             assistant_id:,
             # Body param: Conversation flow as supplied by API clients (create / update).
             #
@@ -204,7 +212,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::AssistantsList)
           end
-          def list(assistant_id, request_options: {})
+          def list(
+            # Unique identifier of the assistant.
+            assistant_id,
+            request_options: {}
+          )
           end
 
           # Permanently removes a specific version of an assistant. Can not delete main
@@ -216,7 +228,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(version_id, assistant_id:, request_options: {})
+          def delete(
+            # Unique identifier of the version.
+            version_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # Promotes a specific version to be the main/current version of the assistant.
@@ -229,7 +247,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::InferenceEmbedding)
           end
-          def promote(version_id, assistant_id:, request_options: {})
+          def promote(
+            # Unique identifier of the version.
+            version_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # @api private

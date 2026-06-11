@@ -7,30 +7,41 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute filter_legal_name_contains
+      #   Case-insensitive partial match on legal name.
+      #
+      #   @return [String, nil]
+      optional :filter_legal_name_contains, String
+
       # @!attribute legal_name
-      #   Filter by legal name (partial match)
+      #   Filter by legal name (partial match).
       #
       #   @return [String, nil]
       optional :legal_name, String
 
       # @!attribute page_number
-      #   Page number (1-indexed)
+      #   1-based page number. Out-of-range values return an empty page with correct meta.
       #
       #   @return [Integer, nil]
       optional :page_number, Integer
 
       # @!attribute page_size
-      #   Number of items per page
+      #   Items per page. Default 10. Maximum 250; values above are clamped to 250.
       #
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!method initialize(legal_name: nil, page_number: nil, page_size: nil, request_options: {})
-      #   @param legal_name [String] Filter by legal name (partial match)
+      # @!method initialize(filter_legal_name_contains: nil, legal_name: nil, page_number: nil, page_size: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::EnterpriseListParams} for more details.
       #
-      #   @param page_number [Integer] Page number (1-indexed)
+      #   @param filter_legal_name_contains [String] Case-insensitive partial match on legal name.
       #
-      #   @param page_size [Integer] Number of items per page
+      #   @param legal_name [String] Filter by legal name (partial match).
+      #
+      #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
+      #
+      #   @param page_size [Integer] Items per page. Default 10. Maximum 250; values above are clamped to 250.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

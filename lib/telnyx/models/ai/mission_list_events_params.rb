@@ -21,6 +21,7 @@ module Telnyx
         optional :page_size, Integer
 
         # @!attribute type
+        #   Filter results by type.
         #
         #   @return [String, nil]
         optional :type, String
@@ -30,7 +31,7 @@ module Telnyx
         #
         #   @param page_size [Integer] Number of items per page
         #
-        #   @param type [String]
+        #   @param type [String] Filter results by type.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

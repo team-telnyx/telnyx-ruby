@@ -15,6 +15,8 @@ module Telnyx
               telnyx_conversation_channel:
                 Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
               telnyx_end_user_target: String,
+              call_settings:
+                Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::OrHash,
               conversation_metadata:
                 T::Hash[
                   Symbol,
@@ -28,6 +30,7 @@ module Telnyx
             ).returns(Telnyx::AI::Assistants::ScheduledEventResponse::Variants)
           end
           def create(
+            # Unique identifier of the assistant.
             assistant_id,
             # The datetime at which the event should be scheduled. Formatted as ISO 8601.
             scheduled_at_fixed_datetime:,
@@ -36,6 +39,10 @@ module Telnyx
             telnyx_conversation_channel:,
             # The phone number, SIP URI, to schedule the call or text to.
             telnyx_end_user_target:,
+            # Per-call telephony overrides applied when a scheduled phone-call event
+            # dispatches. Phone-call events only. New per-call dispatch options should be
+            # added here rather than as top-level event fields.
+            call_settings: nil,
             # Metadata associated with the conversation. Telnyx provides several pieces of
             # metadata, but customers can also add their own.
             conversation_metadata: nil,
@@ -60,7 +67,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::ScheduledEventResponse::Variants)
           end
-          def retrieve(event_id, assistant_id:, request_options: {})
+          def retrieve(
+            # Unique identifier of the event.
+            event_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # Get scheduled events for an assistant with pagination and filtering
@@ -81,11 +94,15 @@ module Telnyx
             )
           end
           def list(
+            # Unique identifier of the assistant.
             assistant_id,
+            # Filter results by conversation channel.
             conversation_channel: nil,
+            # Start of the date range filter (inclusive, ISO 8601).
             from_date: nil,
             page_number: nil,
             page_size: nil,
+            # End of the date range filter (inclusive, ISO 8601).
             to_date: nil,
             request_options: {}
           )
@@ -100,7 +117,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete(event_id, assistant_id:, request_options: {})
+          def delete(
+            # Unique identifier of the event.
+            event_id,
+            # Unique identifier of the assistant.
+            assistant_id:,
+            request_options: {}
+          )
           end
 
           # @api private

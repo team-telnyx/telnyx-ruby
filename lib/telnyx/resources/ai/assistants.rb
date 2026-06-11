@@ -52,21 +52,21 @@ module Telnyx
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
-        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
+        # @param external_llm [Telnyx::Models::AI::AssistantCreateParams::ExternalLlm]
         #
-        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
+        # @param fallback_config [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
         # @param insight_settings [Telnyx::Models::AI::InsightSettings]
         #
-        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        # @param integrations [Array<Telnyx::Models::AI::AssistantCreateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        # @param interruption_settings [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantCreateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
@@ -74,7 +74,7 @@ module Telnyx
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
-        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
+        # @param post_conversation_settings [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -112,11 +112,16 @@ module Telnyx
         #
         # @overload retrieve(assistant_id, call_control_id: nil, fetch_dynamic_variables_from_webhook: nil, from: nil, to: nil, request_options: {})
         #
-        # @param assistant_id [String]
-        # @param call_control_id [String]
-        # @param fetch_dynamic_variables_from_webhook [Boolean]
-        # @param from [String]
-        # @param to [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
+        # @param call_control_id [String] Filter results by call control id.
+        #
+        # @param fetch_dynamic_variables_from_webhook [Boolean] Whether to fetch dynamic variables from the configured webhook.
+        #
+        # @param from [String] Start of the filter range.
+        #
+        # @param to [String] End of the filter range.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::InferenceEmbedding]
@@ -141,7 +146,7 @@ module Telnyx
         #
         # @overload update(assistant_id, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
         #
         # @param conversation_flow [Telnyx::Models::AI::AssistantUpdateParams::ConversationFlow] Conversation flow as supplied by API clients (create / update).
         #
@@ -155,9 +160,9 @@ module Telnyx
         #
         # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
-        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
+        # @param external_llm [Telnyx::Models::AI::AssistantUpdateParams::ExternalLlm]
         #
-        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
+        # @param fallback_config [Telnyx::Models::AI::AssistantUpdateParams::FallbackConfig]
         #
         # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
@@ -165,13 +170,13 @@ module Telnyx
         #
         # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
         #
-        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        # @param integrations [Array<Telnyx::Models::AI::AssistantUpdateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        # @param interruption_settings [Telnyx::Models::AI::AssistantUpdateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantUpdateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
@@ -181,7 +186,7 @@ module Telnyx
         #
         # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
-        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
+        # @param post_conversation_settings [Telnyx::Models::AI::AssistantUpdateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -241,7 +246,8 @@ module Telnyx
         #
         # @overload delete(assistant_id, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::AssistantDeleteResponse]
@@ -267,7 +273,7 @@ module Telnyx
         #
         # @overload chat(assistant_id, content:, conversation_id:, name: nil, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
         #
         # @param content [String] The message content sent by the client to the assistant
         #
@@ -295,7 +301,8 @@ module Telnyx
         #
         # @overload clone_(assistant_id, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::InferenceEmbedding]
@@ -314,7 +321,8 @@ module Telnyx
         #
         # @overload get_texml(assistant_id, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [String]
@@ -374,12 +382,18 @@ module Telnyx
         #
         # @overload send_sms(assistant_id, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
         #
-        # @param assistant_id [String]
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
         # @param from [String]
+        #
         # @param to [String]
+        #
         # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]
+        #
         # @param should_create_conversation [Boolean]
+        #
         # @param text [String]
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::AssistantSendSMSResponse]

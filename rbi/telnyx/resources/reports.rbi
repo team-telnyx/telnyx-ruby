@@ -27,23 +27,23 @@ module Telnyx
         ).returns(Telnyx::Models::ReportListMdrsResponse)
       end
       def list_mdrs(
-        # Message uuid
+        # Filter results by identifier.
         id: nil,
-        # Destination number
+        # Filter results by cld.
         cld: nil,
-        # Origination number
+        # Filter results by cli.
         cli: nil,
-        # Direction (inbound or outbound)
+        # Filter results by direction.
         direction: nil,
         # Pagination end date
         end_date: nil,
-        # Type of message
+        # Filter results by message type.
         message_type: nil,
-        # Name of the profile
+        # Filter results by profile.
         profile: nil,
         # Pagination start date
         start_date: nil,
-        # Message status
+        # Filter results by status.
         status: nil,
         request_options: {}
       )
@@ -73,28 +73,27 @@ module Telnyx
         )
       end
       def list_wdrs(
-        # WDR uuid
+        # Filter results by identifier.
         id: nil,
         # End date
         end_date: nil,
-        # International mobile subscriber identity
+        # Filter results by imsi.
         imsi: nil,
-        # Mobile country code
+        # Filter results by mcc.
         mcc: nil,
-        # Mobile network code
+        # Filter results by mnc.
         mnc: nil,
         page_number: nil,
         page_size: nil,
-        # Phone number
+        # Filter results by phone number.
         phone_number: nil,
-        # Sim card unique identifier
+        # Filter results by sim card id.
         sim_card_id: nil,
-        # Sim group unique identifier
+        # Filter results by sim group id.
         sim_group_id: nil,
-        # Sim group name
+        # Filter results by sim group name.
         sim_group_name: nil,
-        # Field used to order the data. If no field is specified, default value is
-        # 'created_at'
+        # Field and direction to sort the results by.
         sort: nil,
         # Start date
         start_date: nil,

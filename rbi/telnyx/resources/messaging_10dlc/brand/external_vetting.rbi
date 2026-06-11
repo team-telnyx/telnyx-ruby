@@ -17,7 +17,11 @@ module Telnyx
               ]
             )
           end
-          def list(brand_id, request_options: {})
+          def list(
+            # Unique identifier of the brand.
+            brand_id,
+            request_options: {}
+          )
           end
 
           # This operation can be used to import an external vetting record from a
@@ -36,6 +40,7 @@ module Telnyx
             )
           end
           def imports(
+            # Unique identifier of the brand.
             brand_id,
             # External vetting provider ID for the brand.
             evp_id:,
@@ -64,6 +69,7 @@ module Telnyx
             )
           end
           def order(
+            # Unique identifier of the brand.
             brand_id,
             # External vetting provider ID for the brand.
             evp_id:,

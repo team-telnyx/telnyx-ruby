@@ -7,10 +7,10 @@ module Telnyx
       class ReputationRetrieveResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Telnyx::Models::Enterprises::EnterpriseReputationPublic, nil]
-        optional :data, -> { Telnyx::Enterprises::EnterpriseReputationPublic }
+        #   @return [Telnyx::Models::Enterprises::EnterpriseReputationPublic]
+        required :data, -> { Telnyx::Enterprises::EnterpriseReputationPublic }
 
-        # @!method initialize(data: nil)
+        # @!method initialize(data:)
         #   @param data [Telnyx::Models::Enterprises::EnterpriseReputationPublic]
       end
     end

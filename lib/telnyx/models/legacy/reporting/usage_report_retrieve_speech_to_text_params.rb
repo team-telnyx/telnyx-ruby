@@ -10,18 +10,22 @@ module Telnyx
           include Telnyx::Internal::Type::RequestParameters
 
           # @!attribute end_date
+          #   End of the date range filter (inclusive, ISO 8601).
           #
           #   @return [Time, nil]
           optional :end_date, Time
 
           # @!attribute start_date
+          #   Start of the date range filter (inclusive, ISO 8601).
           #
           #   @return [Time, nil]
           optional :start_date, Time
 
           # @!method initialize(end_date: nil, start_date: nil, request_options: {})
-          #   @param end_date [Time]
-          #   @param start_date [Time]
+          #   @param end_date [Time] End of the date range filter (inclusive, ISO 8601).
+          #
+          #   @param start_date [Time] Start of the date range filter (inclusive, ISO 8601).
+          #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

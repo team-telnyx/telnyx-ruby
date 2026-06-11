@@ -19,7 +19,7 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :enterprise_id
 
-          # List of phone numbers to associate for reputation monitoring (max 100)
+          # 1–100 phone numbers in E.164 format with a leading `+`.
           sig { returns(T::Array[String]) }
           attr_accessor :phone_numbers
 
@@ -32,7 +32,7 @@ module Telnyx
           end
           def self.new(
             enterprise_id:,
-            # List of phone numbers to associate for reputation monitoring (max 100)
+            # 1–100 phone numbers in E.164 format with a leading `+`.
             phone_numbers:,
             request_options: {}
           )

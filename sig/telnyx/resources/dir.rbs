@@ -1,0 +1,86 @@
+module Telnyx
+  module Resources
+    class Dir
+      attr_reader comments: Telnyx::Resources::Dir::Comments
+
+      attr_reader phone_number_batches: Telnyx::Resources::Dir::PhoneNumberBatches
+
+      attr_reader phone_numbers: Telnyx::Resources::Dir::PhoneNumbers
+
+      def retrieve: (
+        String dir_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DirRetrieveResponse
+
+      def update: (
+        String dir_id,
+        ?authorizer_email: String,
+        ?authorizer_name: String,
+        ?call_reasons: ::Array[String],
+        ?certify_brand_is_accurate: bool,
+        ?certify_ip_ownership: bool,
+        ?certify_no_shaft_content: bool,
+        ?display_name: String,
+        ?documents: ::Array[Telnyx::DirUpdateParams::Document],
+        ?logo_url: String,
+        ?reselling: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DirUpdateResponse
+
+      def list: (
+        ?filter_call_reason_contains: String,
+        ?filter_display_name_contains: String,
+        ?filter_enterprise_id: String,
+        ?filter_expiring_at_gte: Time,
+        ?filter_expiring_at_lte: Time,
+        ?filter_status: Telnyx::Models::DirListParams::filter_status,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::DirListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::DirListResponse]
+
+      def delete: (String dir_id, ?request_options: Telnyx::request_opts) -> nil
+
+      def create_loa: (
+        String dir_id,
+        phone_numbers: ::Array[String],
+        ?agent: Telnyx::DirCreateLoaParams::Agent,
+        ?signature: Telnyx::DirCreateLoaParams::Signature,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def list_document_types: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DirListDocumentTypesResponse
+
+      def list_infringement_claims: (
+        String dir_id,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::DirListInfringementClaimsResponse]
+
+      def submit: (
+        String dir_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DirSubmitResponse
+
+      def update_infringement: (
+        String dir_id,
+        certify_brand_is_accurate: Telnyx::Models::DirUpdateInfringementParams::certify_brand_is_accurate,
+        certify_ip_ownership: Telnyx::Models::DirUpdateInfringementParams::certify_ip_ownership,
+        certify_no_infringement: Telnyx::Models::DirUpdateInfringementParams::certify_no_infringement,
+        certify_no_shaft_content: Telnyx::Models::DirUpdateInfringementParams::certify_no_shaft_content,
+        infringement_resolution_notes: String,
+        ?call_reasons: ::Array[String]?,
+        ?display_name: String?,
+        ?documents: ::Array[Telnyx::DirUpdateInfringementParams::Document]?,
+        ?logo_url: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DirUpdateInfringementResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

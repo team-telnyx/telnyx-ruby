@@ -14,6 +14,7 @@ module Telnyx
         required :profile_id, String
 
         # @!attribute country_code
+        #   Filter results by country code.
         #
         #   @return [String, nil]
         optional :country_code, String
@@ -38,7 +39,7 @@ module Telnyx
         #
         #   @param profile_id [String]
         #
-        #   @param country_code [String]
+        #   @param country_code [String] Filter results by country code.
         #
         #   @param created_at [Telnyx::Models::MessagingProfiles::AutorespConfigListParams::CreatedAt] Consolidated created_at parameter (deepObject style). Originally: created_at[gte
         #

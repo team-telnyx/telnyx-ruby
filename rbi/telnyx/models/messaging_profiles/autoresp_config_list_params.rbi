@@ -18,6 +18,7 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :profile_id
 
+        # Filter results by country code.
         sig { returns(T.nilable(String)) }
         attr_reader :country_code
 
@@ -75,6 +76,7 @@ module Telnyx
         end
         def self.new(
           profile_id:,
+          # Filter results by country code.
           country_code: nil,
           # Consolidated created_at parameter (deepObject style). Originally:
           # created_at[gte], created_at[lte]

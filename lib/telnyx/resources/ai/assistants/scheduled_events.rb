@@ -11,9 +11,9 @@ module Telnyx
           #
           # Create a scheduled event for an assistant
           #
-          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
+          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, call_settings: nil, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
           #
-          # @param assistant_id [String]
+          # @param assistant_id [String] Unique identifier of the assistant.
           #
           # @param scheduled_at_fixed_datetime [Time] The datetime at which the event should be scheduled. Formatted as ISO 8601.
           #
@@ -22,6 +22,8 @@ module Telnyx
           # @param telnyx_conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
           #
           # @param telnyx_end_user_target [String] The phone number, SIP URI, to schedule the call or text to.
+          #
+          # @param call_settings [Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings] Per-call telephony overrides applied when a scheduled phone-call event
           #
           # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
           #
@@ -53,8 +55,10 @@ module Telnyx
           #
           # @overload retrieve(event_id, assistant_id:, request_options: {})
           #
-          # @param event_id [String]
-          # @param assistant_id [String]
+          # @param event_id [String] Unique identifier of the event.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse, Telnyx::Models::AI::Assistants::ScheduledSMSEventResponse]
@@ -78,12 +82,18 @@ module Telnyx
           #
           # @overload list(assistant_id, conversation_channel: nil, from_date: nil, page_number: nil, page_size: nil, to_date: nil, request_options: {})
           #
-          # @param assistant_id [String]
-          # @param conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
-          # @param from_date [Time]
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
+          # @param conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType] Filter results by conversation channel.
+          #
+          # @param from_date [Time] Start of the date range filter (inclusive, ISO 8601).
+          #
           # @param page_number [Integer]
+          #
           # @param page_size [Integer]
-          # @param to_date [Time]
+          #
+          # @param to_date [Time] End of the date range filter (inclusive, ISO 8601).
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse, Telnyx::Models::AI::Assistants::ScheduledSMSEventResponse>]
@@ -107,8 +117,10 @@ module Telnyx
           #
           # @overload delete(event_id, assistant_id:, request_options: {})
           #
-          # @param event_id [String]
-          # @param assistant_id [String]
+          # @param event_id [String] Unique identifier of the event.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]

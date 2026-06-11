@@ -10,11 +10,11 @@ module Telnyx
           #
           # @overload retrieve(version_id, assistant_id:, include_mcp_servers: nil, request_options: {})
           #
-          # @param version_id [String] Path param
+          # @param version_id [String] Path param: Unique identifier of the version.
           #
-          # @param assistant_id [String] Path param
+          # @param assistant_id [String] Path param: Unique identifier of the assistant.
           #
-          # @param include_mcp_servers [Boolean] Query param
+          # @param include_mcp_servers [Boolean] Query param: Whether to include MCP servers in the response.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -45,9 +45,9 @@ module Telnyx
           #
           # @overload update(version_id, assistant_id:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
           #
-          # @param version_id [String] Path param
+          # @param version_id [String] Path param: Unique identifier of the version.
           #
-          # @param assistant_id [String] Path param
+          # @param assistant_id [String] Path param: Unique identifier of the assistant.
           #
           # @param conversation_flow [Telnyx::Models::AI::Assistants::UpdateAssistant::ConversationFlow] Body param: Conversation flow as supplied by API clients (create / update).
           #
@@ -61,9 +61,9 @@ module Telnyx
           #
           # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param
           #
-          # @param external_llm [Telnyx::Models::AI::ExternalLlmReq] Body param
+          # @param external_llm [Telnyx::Models::AI::Assistants::UpdateAssistant::ExternalLlm] Body param
           #
-          # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq] Body param
+          # @param fallback_config [Telnyx::Models::AI::Assistants::UpdateAssistant::FallbackConfig] Body param
           #
           # @param greeting [String] Body param: Text that the assistant will use to start the conversation. This may
           #
@@ -71,13 +71,13 @@ module Telnyx
           #
           # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
           #
-          # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Body param: Connected integrations attached to the assistant. The catalog of ava
+          # @param integrations [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::Integration>] Body param: Connected integrations attached to the assistant. The catalog of ava
           #
-          # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
+          # @param interruption_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::InterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
           #
           # @param llm_api_key_ref [String] Body param: This is only needed when using third-party inference providers selec
           #
-          # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
+          # @param mcp_servers [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::McpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
           #
           # @param messaging_settings [Telnyx::Models::AI::MessagingSettings] Body param
           #
@@ -87,7 +87,7 @@ module Telnyx
           #
           # @param observability_settings [Telnyx::Models::AI::ObservabilityReq] Body param
           #
-          # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Body param: Configuration for post-conversation processing. When enabled, the as
+          # @param post_conversation_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::PostConversationSettings] Body param: Configuration for post-conversation processing. When enabled, the as
           #
           # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
           #
@@ -132,7 +132,8 @@ module Telnyx
           #
           # @overload list(assistant_id, request_options: {})
           #
-          # @param assistant_id [String]
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::AssistantsList]
@@ -152,8 +153,10 @@ module Telnyx
           #
           # @overload delete(version_id, assistant_id:, request_options: {})
           #
-          # @param version_id [String]
-          # @param assistant_id [String]
+          # @param version_id [String] Unique identifier of the version.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]
@@ -179,8 +182,10 @@ module Telnyx
           #
           # @overload promote(version_id, assistant_id:, request_options: {})
           #
-          # @param version_id [String]
-          # @param assistant_id [String]
+          # @param version_id [String] Unique identifier of the version.
+          #
+          # @param assistant_id [String] Unique identifier of the assistant.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::InferenceEmbedding]

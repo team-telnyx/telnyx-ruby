@@ -9,6 +9,7 @@ module Telnyx
           created_at: Time,
           enterprise_id: String,
           loa_document_id: String?,
+          loa_status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status,
           rejection_reasons: ::Array[String]?,
           status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::status,
           updated_at: Time
@@ -21,15 +22,17 @@ module Telnyx
           Telnyx::Models::Enterprises::EnterpriseReputationPublic::check_frequency
         ) -> Telnyx::Models::Enterprises::EnterpriseReputationPublic::check_frequency
 
-        attr_reader created_at: Time?
-
-        def created_at=: (Time) -> Time
-
         attr_reader enterprise_id: String?
 
         def enterprise_id=: (String) -> String
 
         attr_accessor loa_document_id: String?
+
+        attr_reader loa_status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status?
+
+        def loa_status=: (
+          Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status
+        ) -> Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status
 
         attr_accessor rejection_reasons: ::Array[String]?
 
@@ -38,6 +41,10 @@ module Telnyx
         def status=: (
           Telnyx::Models::Enterprises::EnterpriseReputationPublic::status
         ) -> Telnyx::Models::Enterprises::EnterpriseReputationPublic::status
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
 
         attr_reader updated_at: Time?
 
@@ -48,6 +55,7 @@ module Telnyx
           ?created_at: Time,
           ?enterprise_id: String,
           ?loa_document_id: String?,
+          ?loa_status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status,
           ?rejection_reasons: ::Array[String]?,
           ?status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::status,
           ?updated_at: Time
@@ -58,6 +66,7 @@ module Telnyx
           created_at: Time,
           enterprise_id: String,
           loa_document_id: String?,
+          loa_status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status,
           rejection_reasons: ::Array[String]?,
           status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::status,
           updated_at: Time
@@ -79,15 +88,27 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Enterprises::EnterpriseReputationPublic::check_frequency]
         end
 
-        type status = :pending | :approved | :rejected | :deleted
+        type loa_status = :pending | :approved | :rejected
+
+        module LoaStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          APPROVED: :approved
+          REJECTED: :rejected
+
+          def self?.values: -> ::Array[Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status]
+        end
+
+        type status = :pending | :approved | :deleted | :rejected
 
         module Status
           extend Telnyx::Internal::Type::Enum
 
           PENDING: :pending
           APPROVED: :approved
-          REJECTED: :rejected
           DELETED: :deleted
+          REJECTED: :rejected
 
           def self?.values: -> ::Array[Telnyx::Models::Enterprises::EnterpriseReputationPublic::status]
         end

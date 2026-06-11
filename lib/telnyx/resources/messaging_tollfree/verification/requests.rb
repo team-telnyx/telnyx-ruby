@@ -100,7 +100,8 @@ module Telnyx
           #
           # @overload retrieve(id, request_options: {})
           #
-          # @param id [String]
+          # @param id [String] Unique identifier of the resource.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus]
@@ -124,7 +125,7 @@ module Telnyx
           #
           # @overload update(id, additional_information:, business_addr1:, business_city:, business_contact_email:, business_contact_first_name:, business_contact_last_name:, business_contact_phone:, business_name:, business_state:, business_zip:, corporate_website:, message_volume:, opt_in_workflow:, opt_in_workflow_image_urls:, phone_numbers:, production_message_content:, use_case:, use_case_summary:, age_gated_content: nil, business_addr2: nil, business_registration_country: nil, business_registration_number: nil, business_registration_type: nil, campaign_verify_authorization_token: nil, doing_business_as: nil, entity_type: nil, help_message_response: nil, isv_reseller: nil, opt_in_confirmation_response: nil, opt_in_keywords: nil, privacy_policy_url: nil, terms_and_condition_url: nil, webhook_url: nil, request_options: {})
           #
-          # @param id [String]
+          # @param id [String] Unique identifier of the resource.
           #
           # @param additional_information [String] Any additional information
           #
@@ -216,19 +217,19 @@ module Telnyx
           #
           # @overload list(page:, page_size:, business_name: nil, date_end: nil, date_start: nil, phone_number: nil, status: nil, request_options: {})
           #
-          # @param page [Integer]
+          # @param page [Integer] Page number to retrieve (1-based).
           #
           # @param page_size [Integer]
           #
           # @param business_name [String] Filter verification requests by business name
           #
-          # @param date_end [Time]
+          # @param date_end [Time] End of the date range filter (inclusive, ISO 8601).
           #
-          # @param date_start [Time]
+          # @param date_start [Time] Start of the date range filter (inclusive, ISO 8601).
           #
-          # @param phone_number [String]
+          # @param phone_number [String] Filter results by phone number.
           #
-          # @param status [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus] Tollfree verification status
+          # @param status [Symbol, Telnyx::Models::MessagingTollfree::Verification::TfVerificationStatus] Filter results by status.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -258,7 +259,8 @@ module Telnyx
           #
           # @overload delete(id, request_options: {})
           #
-          # @param id [String]
+          # @param id [String] Unique identifier of the resource.
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [nil]
@@ -273,10 +275,6 @@ module Telnyx
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveStatusHistoryParams}
-          # for more details.
-          #
           # Get the history of status changes for a verification request.
           #
           # Returns a paginated list of historical status changes including the reason for
@@ -284,11 +282,11 @@ module Telnyx
           #
           # @overload retrieve_status_history(id, page_number:, page_size:, request_options: {})
           #
-          # @param id [String]
+          # @param id [String] Unique identifier of the resource.
           #
-          # @param page_number [Integer]
+          # @param page_number [Integer] Page number to retrieve (1-based).
           #
-          # @param page_size [Integer] Request this many records per page. This value is automatically clamped if the p
+          # @param page_size [Integer] Number of items to return per page.
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

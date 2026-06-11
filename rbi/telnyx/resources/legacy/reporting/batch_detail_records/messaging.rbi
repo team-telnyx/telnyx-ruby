@@ -67,7 +67,11 @@ module Telnyx
                 Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingRetrieveResponse
               )
             end
-            def retrieve(id, request_options: {})
+            def retrieve(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # Retrieves all MDR detailed report requests for the authenticated user
@@ -88,7 +92,11 @@ module Telnyx
                 Telnyx::Models::Legacy::Reporting::BatchDetailRecords::MessagingDeleteResponse
               )
             end
-            def delete(id, request_options: {})
+            def delete(
+              # Unique identifier of the resource.
+              id,
+              request_options: {}
+            )
             end
 
             # @api private

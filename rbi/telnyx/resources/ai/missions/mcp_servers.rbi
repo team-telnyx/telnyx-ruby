@@ -12,7 +12,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def create_mcp_server(mission_id, request_options: {})
+          def create_mcp_server(
+            # Unique identifier of the mission.
+            mission_id,
+            request_options: {}
+          )
           end
 
           # Delete an MCP server from a mission
@@ -23,7 +27,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).void
           end
-          def delete_mcp_server(mcp_server_id, mission_id:, request_options: {})
+          def delete_mcp_server(
+            # Unique identifier of the mcp server.
+            mcp_server_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # Get a specific MCP server by ID
@@ -34,7 +44,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def get_mcp_server(mcp_server_id, mission_id:, request_options: {})
+          def get_mcp_server(
+            # Unique identifier of the mcp server.
+            mcp_server_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # List all MCP servers for a mission
@@ -44,7 +60,11 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def list_mcp_servers(mission_id, request_options: {})
+          def list_mcp_servers(
+            # Unique identifier of the mission.
+            mission_id,
+            request_options: {}
+          )
           end
 
           # Update an MCP server definition
@@ -55,7 +75,13 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.anything)
           end
-          def update_mcp_server(mcp_server_id, mission_id:, request_options: {})
+          def update_mcp_server(
+            # Unique identifier of the mcp server.
+            mcp_server_id,
+            # Unique identifier of the mission.
+            mission_id:,
+            request_options: {}
+          )
           end
 
           # @api private

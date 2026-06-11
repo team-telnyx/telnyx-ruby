@@ -638,13 +638,15 @@ module Telnyx
     sig { returns(Telnyx::Resources::TrafficPolicyProfiles) }
     attr_reader :traffic_policy_profiles
 
-    # Enterprise management for Branded Calling and Number Reputation services
+    # Manage the legal-entity record that owns your DIRs and phone numbers.
     sig { returns(Telnyx::Resources::Enterprises) }
     attr_reader :enterprises
 
     sig { returns(Telnyx::Resources::Reputation) }
     attr_reader :reputation
 
+    # Accept and review the Branded Calling and Phone Number Reputation terms of
+    # service.
     sig { returns(Telnyx::Resources::TermsOfService) }
     attr_reader :terms_of_service
 
@@ -653,6 +655,19 @@ module Telnyx
     # notation) that control how specific words are spoken.
     sig { returns(Telnyx::Resources::PronunciationDicts) }
     attr_reader :pronunciation_dicts
+
+    # Static reference values the API accepts: call reasons, document types, rejection
+    # types.
+    sig { returns(Telnyx::Resources::CallReasons) }
+    attr_reader :call_reasons
+
+    sig { returns(Telnyx::Resources::Dir) }
+    attr_reader :dir
+
+    # Trademark or impersonation claims filed against your DIR. Customers may contest
+    # a claim with supporting evidence.
+    sig { returns(Telnyx::Resources::InfringementClaims) }
+    attr_reader :infringement_claims
 
     # UAC connection operations
     sig { returns(Telnyx::Resources::UacConnections) }

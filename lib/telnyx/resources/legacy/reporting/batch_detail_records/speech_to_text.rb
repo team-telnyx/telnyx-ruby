@@ -36,7 +36,8 @@ module Telnyx
             #
             # @overload retrieve(id, request_options: {})
             #
-            # @param id [String]
+            # @param id [String] Unique identifier of the resource.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextRetrieveResponse]
@@ -73,7 +74,8 @@ module Telnyx
             #
             # @overload delete(id, request_options: {})
             #
-            # @param id [String]
+            # @param id [String] Unique identifier of the resource.
+            #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [Telnyx::Models::Legacy::Reporting::BatchDetailRecords::SpeechToTextDeleteResponse]

@@ -15,7 +15,13 @@ module Telnyx
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(Telnyx::AI::Assistants::Tests::TestRunResponse)
             end
-            def retrieve(run_id, test_id:, request_options: {})
+            def retrieve(
+              # Unique identifier of the run.
+              run_id,
+              # Unique identifier of the test.
+              test_id:,
+              request_options: {}
+            )
             end
 
             # Retrieves paginated execution history for a specific assistant test with
@@ -34,6 +40,7 @@ module Telnyx
               )
             end
             def list(
+              # Unique identifier of the test.
               test_id,
               page_number: nil,
               page_size: nil,
@@ -52,6 +59,7 @@ module Telnyx
               ).returns(Telnyx::AI::Assistants::Tests::TestRunResponse)
             end
             def trigger(
+              # Unique identifier of the test.
               test_id,
               # Optional assistant version ID to use for this test run. If provided, the version
               # must exist or a 400 error will be returned. If not provided, test will run on

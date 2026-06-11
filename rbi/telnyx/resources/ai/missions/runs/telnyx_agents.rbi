@@ -16,7 +16,13 @@ module Telnyx
                 Telnyx::Models::AI::Missions::Runs::TelnyxAgentListResponse
               )
             end
-            def list(run_id, mission_id:, request_options: {})
+            def list(
+              # Unique identifier of the run.
+              run_id,
+              # Unique identifier of the mission.
+              mission_id:,
+              request_options: {}
+            )
             end
 
             # Link a Telnyx AI agent (voice/messaging) to a run
@@ -31,9 +37,9 @@ module Telnyx
               )
             end
             def link(
-              # Path param
+              # Path param: Unique identifier of the run.
               run_id,
-              # Path param
+              # Path param: Unique identifier of the mission.
               mission_id:,
               # Body param: The Telnyx AI agent ID to link
               telnyx_agent_id:,
@@ -51,8 +57,11 @@ module Telnyx
               ).void
             end
             def unlink(
+              # Unique identifier of the telnyx agent.
               telnyx_agent_id,
+              # Unique identifier of the mission.
               mission_id:,
+              # Unique identifier of the run.
               run_id:,
               request_options: {}
             )

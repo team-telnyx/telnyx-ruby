@@ -643,13 +643,15 @@ module Telnyx
     # @return [Telnyx::Resources::TrafficPolicyProfiles]
     attr_reader :traffic_policy_profiles
 
-    # Enterprise management for Branded Calling and Number Reputation services
+    # Manage the legal-entity record that owns your DIRs and phone numbers.
     # @return [Telnyx::Resources::Enterprises]
     attr_reader :enterprises
 
     # @return [Telnyx::Resources::Reputation]
     attr_reader :reputation
 
+    # Accept and review the Branded Calling and Phone Number Reputation terms of
+    # service.
     # @return [Telnyx::Resources::TermsOfService]
     attr_reader :terms_of_service
 
@@ -658,6 +660,19 @@ module Telnyx
     # notation) that control how specific words are spoken.
     # @return [Telnyx::Resources::PronunciationDicts]
     attr_reader :pronunciation_dicts
+
+    # Static reference values the API accepts: call reasons, document types, rejection
+    # types.
+    # @return [Telnyx::Resources::CallReasons]
+    attr_reader :call_reasons
+
+    # @return [Telnyx::Resources::Dir]
+    attr_reader :dir
+
+    # Trademark or impersonation claims filed against your DIR. Customers may contest
+    # a claim with supporting evidence.
+    # @return [Telnyx::Resources::InfringementClaims]
+    attr_reader :infringement_claims
 
     # UAC connection operations
     # @return [Telnyx::Resources::UacConnections]
@@ -948,6 +963,9 @@ module Telnyx
       @reputation = Telnyx::Resources::Reputation.new(client: self)
       @terms_of_service = Telnyx::Resources::TermsOfService.new(client: self)
       @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
+      @call_reasons = Telnyx::Resources::CallReasons.new(client: self)
+      @dir = Telnyx::Resources::Dir.new(client: self)
+      @infringement_claims = Telnyx::Resources::InfringementClaims.new(client: self)
       @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
       @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
       @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)

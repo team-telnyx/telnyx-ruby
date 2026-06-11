@@ -11,7 +11,7 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::EnterprisePublic)) }
+      sig { returns(Telnyx::EnterprisePublic) }
       attr_reader :data
 
       sig { params(data: Telnyx::EnterprisePublic::OrHash).void }
@@ -20,7 +20,7 @@ module Telnyx
       sig do
         params(data: Telnyx::EnterprisePublic::OrHash).returns(T.attached_class)
       end
-      def self.new(data: nil)
+      def self.new(data:)
       end
 
       sig { override.returns({ data: Telnyx::EnterprisePublic }) }

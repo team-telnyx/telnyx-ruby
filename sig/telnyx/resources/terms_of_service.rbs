@@ -3,6 +3,20 @@ module Telnyx
     class TermsOfService
       attr_reader number_reputation: Telnyx::Resources::TermsOfService::NumberReputation
 
+      attr_reader agreements: Telnyx::Resources::TermsOfService::Agreements
+
+      attr_reader branded_calling: Telnyx::Resources::TermsOfService::BrandedCalling
+
+      def retrieve_info: (
+        ?product_type: Telnyx::Models::TermsOfServiceRetrieveInfoParams::product_type,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TermsOfServiceRetrieveInfoResponse
+
+      def status: (
+        ?product_type: Telnyx::Models::TermsOfServiceStatusParams::product_type,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TermsOfServiceStatusResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

@@ -1,0 +1,30 @@
+module Telnyx
+  module Resources
+    class Dir
+      class PhoneNumbers
+        def list: (
+          String dir_id,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?status: Telnyx::Models::Dir::PhoneNumberListParams::status,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Dir::PhoneNumberListResponse]
+
+        def add: (
+          String dir_id,
+          documents: ::Array[Telnyx::Dir::PhoneNumberAddParams::Document],
+          phone_numbers: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::PhoneNumberAddResponse
+
+        def remove: (
+          String dir_id,
+          phone_numbers: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::PhoneNumberRemoveResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

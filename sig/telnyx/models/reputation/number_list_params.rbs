@@ -2,12 +2,30 @@ module Telnyx
   module Models
     module Reputation
       type number_list_params =
-        { page_number: Integer, page_size: Integer, phone_number: String }
+        {
+          filter_enterprise_id: String,
+          filter_phone_number_contains: String,
+          filter_phone_number_eq: String,
+          page_number: Integer,
+          page_size: Integer
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class NumberListParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter_enterprise_id: String?
+
+        def filter_enterprise_id=: (String) -> String
+
+        attr_reader filter_phone_number_contains: String?
+
+        def filter_phone_number_contains=: (String) -> String
+
+        attr_reader filter_phone_number_eq: String?
+
+        def filter_phone_number_eq=: (String) -> String
 
         attr_reader page_number: Integer?
 
@@ -17,21 +35,21 @@ module Telnyx
 
         def page_size=: (Integer) -> Integer
 
-        attr_reader phone_number: String?
-
-        def phone_number=: (String) -> String
-
         def initialize: (
+          ?filter_enterprise_id: String,
+          ?filter_phone_number_contains: String,
+          ?filter_phone_number_eq: String,
           ?page_number: Integer,
           ?page_size: Integer,
-          ?phone_number: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
+          filter_enterprise_id: String,
+          filter_phone_number_contains: String,
+          filter_phone_number_eq: String,
           page_number: Integer,
           page_size: Integer,
-          phone_number: String,
           request_options: Telnyx::RequestOptions
         }
       end

@@ -15,21 +15,25 @@ module Telnyx
         optional :brand_id, String
 
         # @!attribute country
+        #   Filter results by country.
         #
         #   @return [String, nil]
         optional :country, String
 
         # @!attribute display_name
+        #   Filter results by display name.
         #
         #   @return [String, nil]
         optional :display_name, String
 
         # @!attribute entity_type
+        #   Filter results by entity type.
         #
         #   @return [String, nil]
         optional :entity_type, String
 
         # @!attribute page
+        #   Page number to retrieve (1-based).
         #
         #   @return [Integer, nil]
         optional :page, Integer
@@ -48,6 +52,7 @@ module Telnyx
         optional :sort, enum: -> { Telnyx::Messaging10dlc::BrandListParams::Sort }
 
         # @!attribute state
+        #   Filter results by state.
         #
         #   @return [String, nil]
         optional :state, String
@@ -64,19 +69,19 @@ module Telnyx
         #
         #   @param brand_id [String] Filter results by the Telnyx Brand id
         #
-        #   @param country [String]
+        #   @param country [String] Filter results by country.
         #
-        #   @param display_name [String]
+        #   @param display_name [String] Filter results by display name.
         #
-        #   @param entity_type [String]
+        #   @param entity_type [String] Filter results by entity type.
         #
-        #   @param page [Integer]
+        #   @param page [Integer] Page number to retrieve (1-based).
         #
         #   @param records_per_page [Integer] number of records per page. maximum of 500
         #
         #   @param sort [Symbol, Telnyx::Models::Messaging10dlc::BrandListParams::Sort] Specifies the sort order for results. If not given, results are sorted by create
         #
-        #   @param state [String]
+        #   @param state [String] Filter results by state.
         #
         #   @param tcr_brand_id [String] Filter results by the TCR Brand id
         #

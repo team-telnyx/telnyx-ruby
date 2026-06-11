@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    module Dir
+      type comment_list_params =
+        {
+          dir_id: String,
+          comment_type: Telnyx::Models::Dir::CommentListParams::comment_type,
+          page_number: Integer,
+          page_size: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class CommentListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor dir_id: String
+
+        attr_reader comment_type: Telnyx::Models::Dir::CommentListParams::comment_type?
+
+        def comment_type=: (
+          Telnyx::Models::Dir::CommentListParams::comment_type
+        ) -> Telnyx::Models::Dir::CommentListParams::comment_type
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        def initialize: (
+          dir_id: String,
+          ?comment_type: Telnyx::Models::Dir::CommentListParams::comment_type,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          dir_id: String,
+          comment_type: Telnyx::Models::Dir::CommentListParams::comment_type,
+          page_number: Integer,
+          page_size: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type comment_type =
+          :vetting_comment
+          | :rejection_reason
+          | :internal_note
+          | :notification
+          | :status_update
+          | :customer_inquiry
+          | :admin_response
+
+        module CommentType
+          extend Telnyx::Internal::Type::Enum
+
+          VETTING_COMMENT: :vetting_comment
+          REJECTION_REASON: :rejection_reason
+          INTERNAL_NOTE: :internal_note
+          NOTIFICATION: :notification
+          STATUS_UPDATE: :status_update
+          CUSTOMER_INQUIRY: :customer_inquiry
+          ADMIN_RESPONSE: :admin_response
+
+          def self?.values: -> ::Array[Telnyx::Models::Dir::CommentListParams::comment_type]
+        end
+      end
+    end
+  end
+end

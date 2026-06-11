@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class TermsOfService
+      class Agreements
+        def retrieve: (
+          String agreement_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::TermsOfService::AgreementRetrieveResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?product_type: Telnyx::Models::TermsOfService::AgreementListParams::product_type,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::TermsOfService::AgreementListResponse]
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

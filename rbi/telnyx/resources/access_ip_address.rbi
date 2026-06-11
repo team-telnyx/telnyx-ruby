@@ -22,7 +22,11 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::AccessIPAddressResponse)
       end
-      def retrieve(access_ip_address_id, request_options: {})
+      def retrieve(
+        # Unique identifier of the access ip address.
+        access_ip_address_id,
+        request_options: {}
+      )
       end
 
       # List all Access IP Addresses
@@ -56,7 +60,11 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::AccessIPAddressResponse)
       end
-      def delete(access_ip_address_id, request_options: {})
+      def delete(
+        # Unique identifier of the access ip address.
+        access_ip_address_id,
+        request_options: {}
+      )
       end
 
       # @api private

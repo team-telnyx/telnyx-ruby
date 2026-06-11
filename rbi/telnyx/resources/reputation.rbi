@@ -3,8 +3,7 @@
 module Telnyx
   module Resources
     class Reputation
-      # Associate phone numbers with an enterprise for reputation monitoring and
-      # retrieve reputation scores
+      # Phone-number reputation monitoring (spam-score lookup and tracking).
       sig { returns(Telnyx::Resources::Reputation::Numbers) }
       attr_reader :numbers
 
