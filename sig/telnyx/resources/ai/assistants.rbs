@@ -14,6 +14,8 @@ module Telnyx
 
         attr_reader tags: Telnyx::Resources::AI::Assistants::Tags
 
+        attr_reader instructions: Telnyx::Resources::AI::Assistants::Instructions
+
         def create: (
           instructions: String,
           name: String,
