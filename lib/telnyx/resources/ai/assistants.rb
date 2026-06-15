@@ -29,6 +29,10 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Assistants::Tags]
         attr_reader :tags
 
+        # Configure AI assistant specifications
+        # @return [Telnyx::Resources::AI::Assistants::Instructions]
+        attr_reader :instructions
+
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::AssistantCreateParams} for more details.
         #
@@ -421,6 +425,7 @@ module Telnyx
           @tools = Telnyx::Resources::AI::Assistants::Tools.new(client: client)
           @versions = Telnyx::Resources::AI::Assistants::Versions.new(client: client)
           @tags = Telnyx::Resources::AI::Assistants::Tags.new(client: client)
+          @instructions = Telnyx::Resources::AI::Assistants::Instructions.new(client: client)
         end
       end
     end
