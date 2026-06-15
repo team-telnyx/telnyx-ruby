@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.128.0 (2026-06-15)
+
+Full Changelog: [v5.127.0...v5.128.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.127.0...v5.128.0)
+
+### Features
+
+* Document POST /ai/assistants/{assistant_id}/instructions/enhance ([f07ac06](https://github.com/team-telnyx/telnyx-ruby/commit/f07ac069ef9d4690e5d5ac74e7ce4a61fa238957))
+
 ## 5.127.0 (2026-06-11)
 
 Full Changelog: [v5.126.0...v5.127.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.126.0...v5.127.0)
