@@ -2,20 +2,20 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        type remediation_create_response =
+        type remediation_submit_response =
           {
-            data: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data
+            data: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data
           }
 
-        class RemediationCreateResponse < Telnyx::Internal::Type::BaseModel
-          attr_accessor data: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data
+        class RemediationSubmitResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data
 
           def initialize: (
-            data: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data
+            data: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data
           ) -> void
 
           def to_hash: -> {
-            data: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data
+            data: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data
           }
 
           type data =
@@ -26,10 +26,10 @@ module Telnyx
               phone_numbers_count: Integer,
               phone_numbers_ineligible: Integer,
               phone_numbers_submitted: Integer,
-              status: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status,
+              status: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::status,
               updated_at: Time,
               contact_email: String?,
-              results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?,
+              results: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results?,
               :tier1_completed_at => Time?,
               :tier2_completed_at => Time?,
               webhook_url: String?
@@ -48,13 +48,13 @@ module Telnyx
 
             attr_accessor phone_numbers_submitted: Integer
 
-            attr_accessor status: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status
+            attr_accessor status: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::status
 
             attr_accessor updated_at: Time
 
             attr_accessor contact_email: String?
 
-            attr_accessor results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?
+            attr_accessor results: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results?
 
             attr_accessor tier1_completed_at: Time?
 
@@ -69,10 +69,10 @@ module Telnyx
               phone_numbers_count: Integer,
               phone_numbers_ineligible: Integer,
               phone_numbers_submitted: Integer,
-              status: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status,
+              status: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::status,
               updated_at: Time,
               ?contact_email: String?,
-              ?results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?,
+              ?results: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results?,
               ?tier1_completed_at: Time?,
               ?tier2_completed_at: Time?,
               ?webhook_url: String?
@@ -85,10 +85,10 @@ module Telnyx
               phone_numbers_count: Integer,
               phone_numbers_ineligible: Integer,
               phone_numbers_submitted: Integer,
-              status: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status,
+              status: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::status,
               updated_at: Time,
               contact_email: String?,
-              results: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results?,
+              results: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results?,
               :tier1_completed_at => Time?,
               :tier2_completed_at => Time?,
               webhook_url: String?
@@ -106,7 +106,7 @@ module Telnyx
               FAILED: :failed
               CANCELLED: :cancelled
 
-              def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::status]
+              def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::status]
             end
 
             type results =

@@ -4,8 +4,8 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        # @see Telnyx::Resources::Enterprises::Reputation::Remediation#create
-        class RemediationCreateParams < Telnyx::Internal::Type::BaseModel
+        # @see Telnyx::Resources::Enterprises::Reputation::Remediation#submit
+        class RemediationSubmitParams < Telnyx::Internal::Type::BaseModel
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
@@ -41,7 +41,7 @@ module Telnyx
 
           # @!method initialize(enterprise_id:, call_purpose:, phone_numbers:, contact_email: nil, webhook_url: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::Enterprises::Reputation::RemediationCreateParams} for more
+          #   {Telnyx::Models::Enterprises::Reputation::RemediationSubmitParams} for more
           #   details.
           #
           #   @param enterprise_id [String]

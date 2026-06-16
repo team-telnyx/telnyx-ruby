@@ -1555,7 +1555,7 @@ module Telnyx
 
   module TermsOfService = Telnyx::Models::TermsOfService
 
-  class TermsOfServiceRetrieveInfoParams = Telnyx::Models::TermsOfServiceRetrieveInfoParams
+  class TermsOfServiceInfoParams = Telnyx::Models::TermsOfServiceInfoParams
 
   class TermsOfServiceStatusParams = Telnyx::Models::TermsOfServiceStatusParams
 

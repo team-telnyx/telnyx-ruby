@@ -3,27 +3,6 @@
 require_relative "../../../test_helper"
 
 class Telnyx::Test::Resources::Enterprises::Reputation::RemediationTest < Telnyx::Test::ResourceTest
-  def test_create_required_params
-    skip("Mock server tests are disabled")
-
-    response =
-      @telnyx.enterprises.reputation.remediation.create(
-        "4a6192a4-573d-446d-b3ce-aff9117272a6",
-        call_purpose: "Appointment reminders for our dental clinic.",
-        phone_numbers: ["+19493253498", "+12134445566"]
-      )
-
-    assert_pattern do
-      response => Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data
-      }
-    end
-  end
-
   def test_retrieve_required_params
     skip("Mock server tests are disabled")
 
@@ -70,6 +49,27 @@ class Telnyx::Test::Resources::Enterprises::Reputation::RemediationTest < Telnyx
         updated_at: Time,
         tier1_completed_at: Time | nil,
         tier2_completed_at: Time | nil
+      }
+    end
+  end
+
+  def test_submit_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.enterprises.reputation.remediation.submit(
+        "4a6192a4-573d-446d-b3ce-aff9117272a6",
+        call_purpose: "Appointment reminders for our dental clinic.",
+        phone_numbers: ["+19493253498", "+12134445566"]
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data
       }
     end
   end

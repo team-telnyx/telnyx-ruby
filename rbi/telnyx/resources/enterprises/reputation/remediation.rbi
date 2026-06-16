@@ -6,42 +6,6 @@ module Telnyx
       class Reputation
         # Phone-number reputation monitoring (spam-score lookup and tracking).
         class Remediation
-          # Submit a batch of phone numbers belonging to this enterprise for reputation
-          # remediation. The request is accepted asynchronously: this endpoint returns `202`
-          # with the persisted request id, then the request transitions through processing
-          # states until completion. Use the GET endpoints to poll status and per-number
-          # results.
-          #
-          # Each phone number must be in E.164 format and belong to this enterprise. A
-          # number that already has an in-flight remediation request is rejected.
-          sig do
-            params(
-              enterprise_id: String,
-              call_purpose: String,
-              phone_numbers: T::Array[String],
-              contact_email: String,
-              webhook_url: String,
-              request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse
-            )
-          end
-          def create(
-            # The enterprise id. Lowercase UUID.
-            enterprise_id,
-            # How the numbers are used (free text).
-            call_purpose:,
-            # Phone numbers in E.164 format. Each must belong to this enterprise. Maximum
-            # 2,000 per request.
-            phone_numbers:,
-            # Optional contact email for this remediation request.
-            contact_email: nil,
-            # Optional https:// URL for status notifications.
-            webhook_url: nil,
-            request_options: {}
-          )
-          end
-
           # Retrieve the full detail of a remediation request, including current status,
           # per-number results (once available), and submission metadata.
           sig do
@@ -95,6 +59,42 @@ module Telnyx
             page_number: nil,
             # Items per page. Maximum 250; values above are clamped to 250.
             page_size: nil,
+            request_options: {}
+          )
+          end
+
+          # Submit a batch of phone numbers belonging to this enterprise for reputation
+          # remediation. The request is accepted asynchronously: this endpoint returns `202`
+          # with the persisted request id, then the request transitions through processing
+          # states until completion. Use the GET endpoints to poll status and per-number
+          # results.
+          #
+          # Each phone number must be in E.164 format and belong to this enterprise. A
+          # number that already has an in-flight remediation request is rejected.
+          sig do
+            params(
+              enterprise_id: String,
+              call_purpose: String,
+              phone_numbers: T::Array[String],
+              contact_email: String,
+              webhook_url: String,
+              request_options: Telnyx::RequestOptions::OrHash
+            ).returns(
+              Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse
+            )
+          end
+          def submit(
+            # The enterprise id. Lowercase UUID.
+            enterprise_id,
+            # How the numbers are used (free text).
+            call_purpose:,
+            # Phone numbers in E.164 format. Each must belong to this enterprise. Maximum
+            # 2,000 per request.
+            phone_numbers:,
+            # Optional contact email for this remediation request.
+            contact_email: nil,
+            # Optional https:// URL for status notifications.
+            webhook_url: nil,
             request_options: {}
           )
           end

@@ -4,11 +4,11 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        class RemediationCreateResponse < Telnyx::Internal::Type::BaseModel
+        class RemediationSubmitResponse < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse,
+                Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -16,7 +16,7 @@ module Telnyx
           # Full detail of a remediation request, returned on submit and GET by id.
           sig do
             returns(
-              Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data
+              Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data
             )
           end
           attr_reader :data
@@ -24,7 +24,7 @@ module Telnyx
           sig do
             params(
               data:
-                Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::OrHash
+                Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::OrHash
             ).void
           end
           attr_writer :data
@@ -32,7 +32,7 @@ module Telnyx
           sig do
             params(
               data:
-                Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::OrHash
+                Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -45,7 +45,7 @@ module Telnyx
             override.returns(
               {
                 data:
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data
               }
             )
           end
@@ -56,7 +56,7 @@ module Telnyx
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data,
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -87,7 +87,7 @@ module Telnyx
             # Customer-facing status of a remediation request.
             sig do
               returns(
-                Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol
+                Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol
               )
             end
             attr_accessor :status
@@ -103,7 +103,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results
                 )
               )
             end
@@ -113,7 +113,7 @@ module Telnyx
               params(
                 results:
                   T.nilable(
-                    Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results::OrHash
+                    Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results::OrHash
                   )
               ).void
             end
@@ -138,12 +138,12 @@ module Telnyx
                 phone_numbers_ineligible: Integer,
                 phone_numbers_submitted: Integer,
                 status:
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::OrSymbol,
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::OrSymbol,
                 updated_at: Time,
                 contact_email: T.nilable(String),
                 results:
                   T.nilable(
-                    Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results::OrHash
+                    Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results::OrHash
                   ),
                 tier1_completed_at: T.nilable(Time),
                 tier2_completed_at: T.nilable(Time),
@@ -185,12 +185,12 @@ module Telnyx
                   phone_numbers_ineligible: Integer,
                   phone_numbers_submitted: Integer,
                   status:
-                    Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol,
+                    Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol,
                   updated_at: Time,
                   contact_email: T.nilable(String),
                   results:
                     T.nilable(
-                      Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results
+                      Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results
                     ),
                   tier1_completed_at: T.nilable(Time),
                   tier2_completed_at: T.nilable(Time),
@@ -209,7 +209,7 @@ module Telnyx
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status
+                    Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -217,33 +217,33 @@ module Telnyx
               PENDING =
                 T.let(
                   :pending,
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol
                 )
               IN_PROGRESS =
                 T.let(
                   :in_progress,
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol
                 )
               COMPLETED =
                 T.let(
                   :completed,
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol
                 )
               FAILED =
                 T.let(
                   :failed,
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol
                 )
               CANCELLED =
                 T.let(
                   :cancelled,
-                  Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol
+                  Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status::TaggedSymbol
+                    Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status::TaggedSymbol
                   ]
                 )
               end
@@ -255,7 +255,7 @@ module Telnyx
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results,
+                    Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results,
                     Telnyx::Internal::AnyHash
                   )
                 end

@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.130.0 (2026-06-16)
+
+Full Changelog: [v5.129.0...v5.130.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.129.0...v5.130.0)
+
+### Features
+
+* ENGDESK-51290: Add Aicoustic NS engines to portal backend ([6ab023b](https://github.com/team-telnyx/telnyx-ruby/commit/6ab023bbed7fbcac79c17e98ccb6af4b326b2ff3))
+
 ## 5.129.0 (2026-06-16)
 
 Full Changelog: [v5.128.0...v5.129.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.128.0...v5.129.0)

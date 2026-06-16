@@ -90,6 +90,12 @@ module Telnyx
           DEEP_FILTER_NET = :DeepFilterNet
           KRISP = :Krisp
           AI_COUSTICS = :AiCoustics
+          AIC_L_QUAIL = :aic_l_quail
+          AIC_L_ROOK = :aic_l_rook
+          AIC_S_QUAIL = :aic_s_quail
+          AIC_S_ROOK = :aic_s_rook
+          QUAIL_VOICE_FOCUS_S = :quail_voice_focus_s
+          QUAIL_VOICE_FOCUS_XS = :quail_voice_focus_xs
 
           # @!method self.values
           #   @return [Array<Symbol>]
