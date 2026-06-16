@@ -1869,7 +1869,8 @@ module Telnyx
         #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
         # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
         # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
-        #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+        #   `Inworld.Max.Oliver`, `Inworld.TTS2.Loretta`). Supported models: `Mini`,
+        #   `Max`, `TTS2`.
         # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
         #   `ara`, `rex`, `sal`, `leo`.
         sig { returns(T.nilable(String)) }
@@ -2027,7 +2028,8 @@ module Telnyx
           #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
           # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
           # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
-          #   `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          #   `Inworld.Max.Oliver`, `Inworld.TTS2.Loretta`). Supported models: `Mini`,
+          #   `Max`, `TTS2`.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
           voice: nil,
@@ -2751,15 +2753,98 @@ module Telnyx
               sig { returns(Symbol) }
               attr_accessor :type
 
-              sig { params(type: Symbol).returns(T.attached_class) }
+              # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+              # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+              # more expressive variation, and `BALANCED` sits in between. Optional and only
+              # supported by `TTS2`; when omitted, the provider default applies.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::OrSymbol
+                  )
+                )
+              end
+              attr_reader :delivery_mode
+
+              sig do
+                params(
+                  delivery_mode:
+                    Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::OrSymbol
+                ).void
+              end
+              attr_writer :delivery_mode
+
+              sig do
+                params(
+                  delivery_mode:
+                    Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::OrSymbol,
+                  type: Symbol
+                ).returns(T.attached_class)
+              end
               def self.new(
+                # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+                # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+                # more expressive variation, and `BALANCED` sits in between. Optional and only
+                # supported by `TTS2`; when omitted, the provider default applies.
+                delivery_mode: nil,
                 # Voice settings provider type
                 type: :inworld
               )
               end
 
-              sig { override.returns({ type: Symbol }) }
+              sig do
+                override.returns(
+                  {
+                    type: Symbol,
+                    delivery_mode:
+                      Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::OrSymbol
+                  }
+                )
+              end
               def to_hash
+              end
+
+              # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+              # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+              # more expressive variation, and `BALANCED` sits in between. Optional and only
+              # supported by `TTS2`; when omitted, the provider default applies.
+              module DeliveryMode
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                STABLE =
+                  T.let(
+                    :STABLE,
+                    Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                  )
+                BALANCED =
+                  T.let(
+                    :BALANCED,
+                    Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                  )
+                CREATIVE =
+                  T.let(
+                    :CREATIVE,
+                    Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::CallDialParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
               end
             end
 
@@ -2921,15 +3006,98 @@ module Telnyx
             sig { returns(Symbol) }
             attr_accessor :type
 
-            sig { params(type: Symbol).returns(T.attached_class) }
+            # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+            # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+            # more expressive variation, and `BALANCED` sits in between. Optional and only
+            # supported by `TTS2`; when omitted, the provider default applies.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::OrSymbol
+                )
+              )
+            end
+            attr_reader :delivery_mode
+
+            sig do
+              params(
+                delivery_mode:
+                  Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::OrSymbol
+              ).void
+            end
+            attr_writer :delivery_mode
+
+            sig do
+              params(
+                delivery_mode:
+                  Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::OrSymbol,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
             def self.new(
+              # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+              # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+              # more expressive variation, and `BALANCED` sits in between. Optional and only
+              # supported by `TTS2`; when omitted, the provider default applies.
+              delivery_mode: nil,
               # Voice settings provider type
               type: :inworld
             )
             end
 
-            sig { override.returns({ type: Symbol }) }
+            sig do
+              override.returns(
+                {
+                  type: Symbol,
+                  delivery_mode:
+                    Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::OrSymbol
+                }
+              )
+            end
             def to_hash
+            end
+
+            # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+            # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+            # more expressive variation, and `BALANCED` sits in between. Optional and only
+            # supported by `TTS2`; when omitted, the provider default applies.
+            module DeliveryMode
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              STABLE =
+                T.let(
+                  :STABLE,
+                  Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                )
+              BALANCED =
+                T.let(
+                  :BALANCED,
+                  Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                )
+              CREATIVE =
+                T.let(
+                  :CREATIVE,
+                  Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::CallDialParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 

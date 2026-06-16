@@ -440,7 +440,8 @@ module Telnyx
           #     [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
           #   - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
           #   - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
-          #     `Inworld.Max.Oliver`). Supported models: `Mini`, `Max`.
+          #     `Inworld.Max.Oliver`, `Inworld.TTS2.Loretta`). Supported models: `Mini`,
+          #     `Max`, `TTS2`.
           #   - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #     `ara`, `rex`, `sal`, `leo`.
           #
@@ -778,8 +779,41 @@ module Telnyx
                 #   @return [Symbol, :inworld]
                 required :type, const: :inworld
 
-                # @!method initialize(type: :inworld)
+                # @!attribute delivery_mode
+                #   Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+                #   synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+                #   more expressive variation, and `BALANCED` sits in between. Optional and only
+                #   supported by `TTS2`; when omitted, the provider default applies.
+                #
+                #   @return [Symbol, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode, nil]
+                optional :delivery_mode,
+                         enum: -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode }
+
+                # @!method initialize(delivery_mode: nil, type: :inworld)
+                #   Some parameter documentations has been truncated, see
+                #   {Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld}
+                #   for more details.
+                #
+                #   @param delivery_mode [Symbol, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld::DeliveryMode] Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+                #
                 #   @param type [Symbol, :inworld] Voice settings provider type
+
+                # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+                # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+                # more expressive variation, and `BALANCED` sits in between. Optional and only
+                # supported by `TTS2`; when omitted, the provider default applies.
+                #
+                # @see Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::Language::VoiceSettings::Inworld#delivery_mode
+                module DeliveryMode
+                  extend Telnyx::Internal::Type::Enum
+
+                  STABLE = :STABLE
+                  BALANCED = :BALANCED
+                  CREATIVE = :CREATIVE
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
               end
 
               class Xai < Telnyx::Internal::Type::BaseModel
@@ -864,8 +898,41 @@ module Telnyx
               #   @return [Symbol, :inworld]
               required :type, const: :inworld
 
-              # @!method initialize(type: :inworld)
+              # @!attribute delivery_mode
+              #   Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+              #   synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+              #   more expressive variation, and `BALANCED` sits in between. Optional and only
+              #   supported by `TTS2`; when omitted, the provider default applies.
+              #
+              #   @return [Symbol, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode, nil]
+              optional :delivery_mode,
+                       enum: -> { Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode }
+
+              # @!method initialize(delivery_mode: nil, type: :inworld)
+              #   Some parameter documentations has been truncated, see
+              #   {Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld}
+              #   for more details.
+              #
+              #   @param delivery_mode [Symbol, Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld::DeliveryMode] Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+              #
               #   @param type [Symbol, :inworld] Voice settings provider type
+
+              # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
+              # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
+              # more expressive variation, and `BALANCED` sits in between. Optional and only
+              # supported by `TTS2`; when omitted, the provider default applies.
+              #
+              # @see Telnyx::Models::Calls::ActionAnswerParams::ConversationRelayConfig::VoiceSettings::Inworld#delivery_mode
+              module DeliveryMode
+                extend Telnyx::Internal::Type::Enum
+
+                STABLE = :STABLE
+                BALANCED = :BALANCED
+                CREATIVE = :CREATIVE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class Xai < Telnyx::Internal::Type::BaseModel
