@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.130.1 (2026-06-16)
+
+Full Changelog: [v5.130.0...v5.130.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.130.0...v5.130.1)
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([b4e3271](https://github.com/team-telnyx/telnyx-ruby/commit/b4e327110e5529b70e53a7437223eee156597f78))
+
 ## 5.130.0 (2026-06-16)
 
 Full Changelog: [v5.129.0...v5.130.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.129.0...v5.130.0)
