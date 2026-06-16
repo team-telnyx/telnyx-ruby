@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.129.0 (2026-06-16)
+
+Full Changelog: [v5.128.0...v5.129.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.128.0...v5.129.0)
+
+### Features
+
+* TELAPPS-719: add Inworld inworld-tts-2 model + delivery_mode to call-control voice settings ([1f84640](https://github.com/team-telnyx/telnyx-ruby/commit/1f84640dab2e0aa2e51a4c302c89e09302664953))
+
 ## 5.128.0 (2026-06-15)
 
 Full Changelog: [v5.127.0...v5.128.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.127.0...v5.128.0)
