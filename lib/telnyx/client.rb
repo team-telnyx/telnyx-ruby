@@ -675,16 +675,16 @@ module Telnyx
     attr_reader :infringement_claims
 
     # UAC connection operations
-    # @return [Telnyx::Resources::UacConnections]
-    attr_reader :uac_connections
-
-    # UAC connection operations
     # @return [Telnyx::Resources::SipRegistrationStatus]
     attr_reader :sip_registration_status
 
     # Discover available speech-to-text providers, models, and supported languages.
     # @return [Telnyx::Resources::SpeechToText]
     attr_reader :speech_to_text
+
+    # UAC connection operations
+    # @return [Telnyx::Resources::UacConnections]
+    attr_reader :uac_connections
 
     # Retrieve raw Voice SDK call report stats payloads for WebRTC call
     # troubleshooting.
@@ -966,9 +966,9 @@ module Telnyx
       @call_reasons = Telnyx::Resources::CallReasons.new(client: self)
       @dir = Telnyx::Resources::Dir.new(client: self)
       @infringement_claims = Telnyx::Resources::InfringementClaims.new(client: self)
-      @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
       @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
       @speech_to_text = Telnyx::Resources::SpeechToText.new(client: self)
+      @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
       @voice_sdk_call_reports = Telnyx::Resources::VoiceSDKCallReports.new(client: self)
     end
   end

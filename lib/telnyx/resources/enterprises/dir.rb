@@ -6,15 +6,6 @@ module Telnyx
       # A Display Identity Record (DIR) is the verified calling identity (display name,
       # logo, call reasons) shown to recipients on outbound calls.
       class Dir
-        # @return [Telnyx::Resources::Enterprises::Dir::Comments]
-        attr_reader :comments
-
-        # @return [Telnyx::Resources::Enterprises::Dir::PhoneNumberBatches]
-        attr_reader :phone_number_batches
-
-        # @return [Telnyx::Resources::Enterprises::Dir::PhoneNumbers]
-        attr_reader :phone_numbers
-
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Enterprises::DirCreateParams} for more details.
         #
@@ -151,9 +142,6 @@ module Telnyx
         # @param client [Telnyx::Client]
         def initialize(client:)
           @client = client
-          @comments = Telnyx::Resources::Enterprises::Dir::Comments.new(client: client)
-          @phone_number_batches = Telnyx::Resources::Enterprises::Dir::PhoneNumberBatches.new(client: client)
-          @phone_numbers = Telnyx::Resources::Enterprises::Dir::PhoneNumbers.new(client: client)
         end
       end
     end

@@ -4,18 +4,18 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        # @see Telnyx::Resources::Enterprises::Reputation::Remediation#create
-        class RemediationCreateResponse < Telnyx::Internal::Type::BaseModel
+        # @see Telnyx::Resources::Enterprises::Reputation::Remediation#submit
+        class RemediationSubmitResponse < Telnyx::Internal::Type::BaseModel
           # @!attribute data
           #   Full detail of a remediation request, returned on submit and GET by id.
           #
-          #   @return [Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data]
-          required :data, -> { Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data }
+          #   @return [Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data]
+          required :data, -> { Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data }
 
           # @!method initialize(data:)
-          #   @param data [Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data] Full detail of a remediation request, returned on submit and GET by id.
+          #   @param data [Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data] Full detail of a remediation request, returned on submit and GET by id.
 
-          # @see Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse#data
+          # @see Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse#data
           class Data < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #
@@ -55,9 +55,9 @@ module Telnyx
             # @!attribute status
             #   Customer-facing status of a remediation request.
             #
-            #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status]
+            #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status]
             required :status,
-                     enum: -> { Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status }
+                     enum: -> { Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status }
 
             # @!attribute updated_at
             #
@@ -73,9 +73,9 @@ module Telnyx
             #   Per-category buckets. Populated once results are available. Null while the
             #   request is still pending.
             #
-            #   @return [Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results, nil]
+            #   @return [Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results, nil]
             optional :results,
-                     -> { Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results },
+                     -> { Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results },
                      nil?: true
 
             # @!attribute tier1_completed_at
@@ -95,7 +95,7 @@ module Telnyx
 
             # @!method initialize(id:, call_purpose:, created_at:, phone_numbers_count:, phone_numbers_ineligible:, phone_numbers_submitted:, status:, updated_at:, contact_email: nil, results: nil, tier1_completed_at: nil, tier2_completed_at: nil, webhook_url: nil)
             #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data} for
+            #   {Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data} for
             #   more details.
             #
             #   Full detail of a remediation request, returned on submit and GET by id.
@@ -112,13 +112,13 @@ module Telnyx
             #
             #   @param phone_numbers_submitted [Integer] Numbers accepted for remediation, i.e. not rejected as ineligible. Counts number
             #
-            #   @param status [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Status] Customer-facing status of a remediation request.
+            #   @param status [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Status] Customer-facing status of a remediation request.
             #
             #   @param updated_at [Time]
             #
             #   @param contact_email [String, nil]
             #
-            #   @param results [Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data::Results, nil] Per-category buckets. Populated once results are available. Null while the reque
+            #   @param results [Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data::Results, nil] Per-category buckets. Populated once results are available. Null while the reque
             #
             #   @param tier1_completed_at [Time, nil]
             #
@@ -128,7 +128,7 @@ module Telnyx
 
             # Customer-facing status of a remediation request.
             #
-            # @see Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data#status
+            # @see Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data#status
             module Status
               extend Telnyx::Internal::Type::Enum
 
@@ -142,7 +142,7 @@ module Telnyx
               #   @return [Array<Symbol>]
             end
 
-            # @see Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse::Data#results
+            # @see Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse::Data#results
             class Results < Telnyx::Internal::Type::BaseModel
               # @!attribute ineligible
               #

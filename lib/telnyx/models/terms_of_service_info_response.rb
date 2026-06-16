@@ -2,16 +2,16 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::TermsOfService#retrieve_info
-    class TermsOfServiceRetrieveInfoResponse < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::TermsOfService#info
+    class TermsOfServiceInfoResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute agreements
       #
-      #   @return [Array<Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement>, nil]
+      #   @return [Array<Telnyx::Models::TermsOfServiceInfoResponse::Agreement>, nil]
       optional :agreements,
-               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement] }
+               -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::TermsOfServiceInfoResponse::Agreement] }
 
       # @!method initialize(agreements: nil)
-      #   @param agreements [Array<Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement>]
+      #   @param agreements [Array<Telnyx::Models::TermsOfServiceInfoResponse::Agreement>]
 
       class Agreement < Telnyx::Internal::Type::BaseModel
         # @!attribute current_version
@@ -32,9 +32,8 @@ module Telnyx
         # @!attribute product_type
         #   Telnyx product the Terms of Service apply to.
         #
-        #   @return [Symbol, Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType, nil]
-        optional :product_type,
-                 enum: -> { Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType }
+        #   @return [Symbol, Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType, nil]
+        optional :product_type, enum: -> { Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType }
 
         # @!attribute terms_url
         #
@@ -48,13 +47,13 @@ module Telnyx
         #
         #   @param effective_date [Date]
         #
-        #   @param product_type [Symbol, Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType] Telnyx product the Terms of Service apply to.
+        #   @param product_type [Symbol, Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType] Telnyx product the Terms of Service apply to.
         #
         #   @param terms_url [String]
 
         # Telnyx product the Terms of Service apply to.
         #
-        # @see Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement#product_type
+        # @see Telnyx::Models::TermsOfServiceInfoResponse::Agreement#product_type
         module ProductType
           extend Telnyx::Internal::Type::Enum
 

@@ -6,15 +6,6 @@ module Telnyx
       # A Display Identity Record (DIR) is the verified calling identity (display name,
       # logo, call reasons) shown to recipients on outbound calls.
       class Dir
-        sig { returns(Telnyx::Resources::Enterprises::Dir::Comments) }
-        attr_reader :comments
-
-        sig { returns(Telnyx::Resources::Enterprises::Dir::PhoneNumberBatches) }
-        attr_reader :phone_number_batches
-
-        sig { returns(Telnyx::Resources::Enterprises::Dir::PhoneNumbers) }
-        attr_reader :phone_numbers
-
         # Create a new DIR under the given enterprise. The DIR starts in `draft` status;
         # it must be submitted (`POST .../submit`) and approved by Telnyx before any phone
         # number can be attached.

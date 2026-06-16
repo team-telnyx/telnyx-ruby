@@ -5,8 +5,6 @@ module Telnyx
 
       attr_reader dir: Telnyx::Resources::Enterprises::Dir
 
-      attr_reader usage: Telnyx::Resources::Enterprises::Usage
-
       def create: (
         billing_address: Telnyx::BillingAddress,
         billing_contact: Telnyx::BillingContact,

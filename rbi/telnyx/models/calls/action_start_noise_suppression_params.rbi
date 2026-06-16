@@ -220,6 +220,36 @@ module Telnyx
               :AiCoustics,
               Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
             )
+          AIC_L_QUAIL =
+            T.let(
+              :aic_l_quail,
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
+            )
+          AIC_L_ROOK =
+            T.let(
+              :aic_l_rook,
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
+            )
+          AIC_S_QUAIL =
+            T.let(
+              :aic_s_quail,
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
+            )
+          AIC_S_ROOK =
+            T.let(
+              :aic_s_rook,
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
+            )
+          QUAIL_VOICE_FOCUS_S =
+            T.let(
+              :quail_voice_focus_s,
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
+            )
+          QUAIL_VOICE_FOCUS_XS =
+            T.let(
+              :quail_voice_focus_xs,
+              Telnyx::Calls::ActionStartNoiseSuppressionParams::NoiseSuppressionEngine::TaggedSymbol
+            )
 
           sig do
             override.returns(

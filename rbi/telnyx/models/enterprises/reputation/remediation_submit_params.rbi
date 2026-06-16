@@ -4,14 +4,14 @@ module Telnyx
   module Models
     module Enterprises
       module Reputation
-        class RemediationCreateParams < Telnyx::Internal::Type::BaseModel
+        class RemediationSubmitParams < Telnyx::Internal::Type::BaseModel
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Enterprises::Reputation::RemediationCreateParams,
+                Telnyx::Enterprises::Reputation::RemediationSubmitParams,
                 Telnyx::Internal::AnyHash
               )
             end

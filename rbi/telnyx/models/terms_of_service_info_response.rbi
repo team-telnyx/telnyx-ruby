@@ -2,11 +2,11 @@
 
 module Telnyx
   module Models
-    class TermsOfServiceRetrieveInfoResponse < Telnyx::Internal::Type::BaseModel
+    class TermsOfServiceInfoResponse < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            Telnyx::Models::TermsOfServiceRetrieveInfoResponse,
+            Telnyx::Models::TermsOfServiceInfoResponse,
             Telnyx::Internal::AnyHash
           )
         end
@@ -14,9 +14,7 @@ module Telnyx
       sig do
         returns(
           T.nilable(
-            T::Array[
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement
-            ]
+            T::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]
           )
         )
       end
@@ -26,7 +24,7 @@ module Telnyx
         params(
           agreements:
             T::Array[
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::OrHash
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement::OrHash
             ]
         ).void
       end
@@ -36,7 +34,7 @@ module Telnyx
         params(
           agreements:
             T::Array[
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::OrHash
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement::OrHash
             ]
         ).returns(T.attached_class)
       end
@@ -47,9 +45,7 @@ module Telnyx
         override.returns(
           {
             agreements:
-              T::Array[
-                Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement
-              ]
+              T::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]
           }
         )
       end
@@ -60,7 +56,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement,
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement,
               Telnyx::Internal::AnyHash
             )
           end
@@ -87,7 +83,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType::TaggedSymbol
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType::TaggedSymbol
             )
           )
         end
@@ -96,7 +92,7 @@ module Telnyx
         sig do
           params(
             product_type:
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType::OrSymbol
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType::OrSymbol
           ).void
         end
         attr_writer :product_type
@@ -113,7 +109,7 @@ module Telnyx
             description: String,
             effective_date: Date,
             product_type:
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType::OrSymbol,
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType::OrSymbol,
             terms_url: String
           ).returns(T.attached_class)
         end
@@ -134,7 +130,7 @@ module Telnyx
               description: String,
               effective_date: Date,
               product_type:
-                Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType::TaggedSymbol,
+                Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType::TaggedSymbol,
               terms_url: String
             }
           )
@@ -150,7 +146,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Symbol,
-                Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType
+                Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -158,18 +154,18 @@ module Telnyx
           BRANDED_CALLING =
             T.let(
               :branded_calling,
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType::TaggedSymbol
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType::TaggedSymbol
             )
           NUMBER_REPUTATION =
             T.let(
               :number_reputation,
-              Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType::TaggedSymbol
+              Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::ProductType::TaggedSymbol
+                Telnyx::Models::TermsOfServiceInfoResponse::Agreement::ProductType::TaggedSymbol
               ]
             )
           end
