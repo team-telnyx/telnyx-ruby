@@ -223,14 +223,42 @@ module Telnyx
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
 
-          type inworld = { type: :inworld }
+          type inworld =
+            {
+              type: :inworld,
+              delivery_mode: Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
+            }
 
           class Inworld < Telnyx::Internal::Type::BaseModel
             attr_accessor type: :inworld
 
-            def initialize: (?type: :inworld) -> void
+            attr_reader delivery_mode: Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode?
 
-            def to_hash: -> { type: :inworld }
+            def delivery_mode=: (
+              Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
+            ) -> Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
+
+            def initialize: (
+              ?delivery_mode: Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode,
+              ?type: :inworld
+            ) -> void
+
+            def to_hash: -> {
+              type: :inworld,
+              delivery_mode: Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
+            }
+
+            type delivery_mode = :STABLE | :BALANCED | :CREATIVE
+
+            module DeliveryMode
+              extend Telnyx::Internal::Type::Enum
+
+              STABLE: :STABLE
+              BALANCED: :BALANCED
+              CREATIVE: :CREATIVE
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode]
+            end
           end
 
           type xai = { type: :xai, language: String }
