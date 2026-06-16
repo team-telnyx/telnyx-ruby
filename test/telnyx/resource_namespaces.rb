@@ -106,9 +106,6 @@ module Telnyx
       end
 
       module Enterprises
-        module Dir
-        end
-
         module Reputation
         end
       end

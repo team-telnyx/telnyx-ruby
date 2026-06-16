@@ -3,18 +3,18 @@
 require_relative "../test_helper"
 
 class Telnyx::Test::Resources::TermsOfServiceTest < Telnyx::Test::ResourceTest
-  def test_retrieve_info
+  def test_info
     skip("Mock server tests are disabled")
 
-    response = @telnyx.terms_of_service.retrieve_info
+    response = @telnyx.terms_of_service.info
 
     assert_pattern do
-      response => Telnyx::Models::TermsOfServiceRetrieveInfoResponse
+      response => Telnyx::Models::TermsOfServiceInfoResponse
     end
 
     assert_pattern do
       response => {
-        agreements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement]) | nil
+        agreements: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]) | nil
       }
     end
   end

@@ -13,9 +13,6 @@ module Telnyx
       # @return [Telnyx::Resources::Enterprises::Dir]
       attr_reader :dir
 
-      # @return [Telnyx::Resources::Enterprises::Usage]
-      attr_reader :usage
-
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::EnterpriseCreateParams} for more details.
       #
@@ -285,7 +282,6 @@ module Telnyx
         @client = client
         @reputation = Telnyx::Resources::Enterprises::Reputation.new(client: client)
         @dir = Telnyx::Resources::Enterprises::Dir.new(client: client)
-        @usage = Telnyx::Resources::Enterprises::Usage.new(client: client)
       end
     end
   end

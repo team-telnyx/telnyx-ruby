@@ -3,15 +3,6 @@ module Telnyx
     class Enterprises
       class Reputation
         class Remediation
-          def create: (
-            String enterprise_id,
-            call_purpose: String,
-            phone_numbers: ::Array[String],
-            ?contact_email: String,
-            ?webhook_url: String,
-            ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse
-
           def retrieve: (
             String remediation_id,
             enterprise_id: String,
@@ -27,6 +18,15 @@ module Telnyx
             ?page_size: Integer,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::Reputation::RemediationListResponse]
+
+          def submit: (
+            String enterprise_id,
+            call_purpose: String,
+            phone_numbers: ::Array[String],
+            ?contact_email: String,
+            ?webhook_url: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

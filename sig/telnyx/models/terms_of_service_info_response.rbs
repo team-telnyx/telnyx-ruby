@@ -1,23 +1,23 @@
 module Telnyx
   module Models
-    type terms_of_service_retrieve_info_response =
+    type terms_of_service_info_response =
       {
-        agreements: ::Array[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement]
+        agreements: ::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]
       }
 
-    class TermsOfServiceRetrieveInfoResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader agreements: ::Array[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement]?
+    class TermsOfServiceInfoResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader agreements: ::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]?
 
       def agreements=: (
-        ::Array[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement]
-      ) -> ::Array[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement]
+        ::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]
+      ) -> ::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]
 
       def initialize: (
-        ?agreements: ::Array[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement]
+        ?agreements: ::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]
       ) -> void
 
       def to_hash: -> {
-        agreements: ::Array[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement]
+        agreements: ::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement]
       }
 
       type agreement =
@@ -25,7 +25,7 @@ module Telnyx
           current_version: String,
           description: String,
           effective_date: Date,
-          product_type: Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::product_type,
+          product_type: Telnyx::Models::TermsOfServiceInfoResponse::Agreement::product_type,
           terms_url: String
         }
 
@@ -42,11 +42,11 @@ module Telnyx
 
         def effective_date=: (Date) -> Date
 
-        attr_reader product_type: Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::product_type?
+        attr_reader product_type: Telnyx::Models::TermsOfServiceInfoResponse::Agreement::product_type?
 
         def product_type=: (
-          Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::product_type
-        ) -> Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::product_type
+          Telnyx::Models::TermsOfServiceInfoResponse::Agreement::product_type
+        ) -> Telnyx::Models::TermsOfServiceInfoResponse::Agreement::product_type
 
         attr_reader terms_url: String?
 
@@ -56,7 +56,7 @@ module Telnyx
           ?current_version: String,
           ?description: String,
           ?effective_date: Date,
-          ?product_type: Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::product_type,
+          ?product_type: Telnyx::Models::TermsOfServiceInfoResponse::Agreement::product_type,
           ?terms_url: String
         ) -> void
 
@@ -64,7 +64,7 @@ module Telnyx
           current_version: String,
           description: String,
           effective_date: Date,
-          product_type: Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::product_type,
+          product_type: Telnyx::Models::TermsOfServiceInfoResponse::Agreement::product_type,
           terms_url: String
         }
 
@@ -76,7 +76,7 @@ module Telnyx
           BRANDED_CALLING: :branded_calling
           NUMBER_REPUTATION: :number_reputation
 
-          def self?.values: -> ::Array[Telnyx::Models::TermsOfServiceRetrieveInfoResponse::Agreement::product_type]
+          def self?.values: -> ::Array[Telnyx::Models::TermsOfServiceInfoResponse::Agreement::product_type]
         end
       end
     end

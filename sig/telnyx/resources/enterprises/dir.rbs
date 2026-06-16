@@ -2,12 +2,6 @@ module Telnyx
   module Resources
     class Enterprises
       class Dir
-        attr_reader comments: Telnyx::Resources::Enterprises::Dir::Comments
-
-        attr_reader phone_number_batches: Telnyx::Resources::Enterprises::Dir::PhoneNumberBatches
-
-        attr_reader phone_numbers: Telnyx::Resources::Enterprises::Dir::PhoneNumbers
-
         def create: (
           String enterprise_id,
           authorizer_email: String,

@@ -25,12 +25,11 @@ module Telnyx
       # to scope to one.
       sig do
         params(
-          product_type:
-            Telnyx::TermsOfServiceRetrieveInfoParams::ProductType::OrSymbol,
+          product_type: Telnyx::TermsOfServiceInfoParams::ProductType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::TermsOfServiceRetrieveInfoResponse)
+        ).returns(Telnyx::Models::TermsOfServiceInfoResponse)
       end
-      def retrieve_info(
+      def info(
         # Optional product filter. Omit to return info for all products.
         product_type: nil,
         request_options: {}

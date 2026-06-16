@@ -13,9 +13,6 @@ module Telnyx
       sig { returns(Telnyx::Resources::Enterprises::Dir) }
       attr_reader :dir
 
-      sig { returns(Telnyx::Resources::Enterprises::Usage) }
-      attr_reader :usage
-
       # Create the legal entity (enterprise) that represents your business on the Telnyx
       # platform.
       #

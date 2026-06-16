@@ -6,47 +6,6 @@ module Telnyx
       class Reputation
         # Phone-number reputation monitoring (spam-score lookup and tracking).
         class Remediation
-          # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::Enterprises::Reputation::RemediationCreateParams} for more
-          # details.
-          #
-          # Submit a batch of phone numbers belonging to this enterprise for reputation
-          # remediation. The request is accepted asynchronously: this endpoint returns `202`
-          # with the persisted request id, then the request transitions through processing
-          # states until completion. Use the GET endpoints to poll status and per-number
-          # results.
-          #
-          # Each phone number must be in E.164 format and belong to this enterprise. A
-          # number that already has an in-flight remediation request is rejected.
-          #
-          # @overload create(enterprise_id, call_purpose:, phone_numbers:, contact_email: nil, webhook_url: nil, request_options: {})
-          #
-          # @param enterprise_id [String] The enterprise id. Lowercase UUID.
-          #
-          # @param call_purpose [String] How the numbers are used (free text).
-          #
-          # @param phone_numbers [Array<String>] Phone numbers in E.164 format. Each must belong to this enterprise. Maximum 2,00
-          #
-          # @param contact_email [String] Optional contact email for this remediation request.
-          #
-          # @param webhook_url [String] Optional https:// URL for status notifications.
-          #
-          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-          #
-          # @return [Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse]
-          #
-          # @see Telnyx::Models::Enterprises::Reputation::RemediationCreateParams
-          def create(enterprise_id, params)
-            parsed, options = Telnyx::Enterprises::Reputation::RemediationCreateParams.dump_request(params)
-            @client.request(
-              method: :post,
-              path: ["enterprises/%1$s/reputation/remediation", enterprise_id],
-              body: parsed,
-              model: Telnyx::Models::Enterprises::Reputation::RemediationCreateResponse,
-              options: options
-            )
-          end
-
           # Retrieve the full detail of a remediation request, including current status,
           # per-number results (once available), and submission metadata.
           #
@@ -118,6 +77,47 @@ module Telnyx
               ),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::Models::Enterprises::Reputation::RemediationListResponse,
+              options: options
+            )
+          end
+
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Enterprises::Reputation::RemediationSubmitParams} for more
+          # details.
+          #
+          # Submit a batch of phone numbers belonging to this enterprise for reputation
+          # remediation. The request is accepted asynchronously: this endpoint returns `202`
+          # with the persisted request id, then the request transitions through processing
+          # states until completion. Use the GET endpoints to poll status and per-number
+          # results.
+          #
+          # Each phone number must be in E.164 format and belong to this enterprise. A
+          # number that already has an in-flight remediation request is rejected.
+          #
+          # @overload submit(enterprise_id, call_purpose:, phone_numbers:, contact_email: nil, webhook_url: nil, request_options: {})
+          #
+          # @param enterprise_id [String] The enterprise id. Lowercase UUID.
+          #
+          # @param call_purpose [String] How the numbers are used (free text).
+          #
+          # @param phone_numbers [Array<String>] Phone numbers in E.164 format. Each must belong to this enterprise. Maximum 2,00
+          #
+          # @param contact_email [String] Optional contact email for this remediation request.
+          #
+          # @param webhook_url [String] Optional https:// URL for status notifications.
+          #
+          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse]
+          #
+          # @see Telnyx::Models::Enterprises::Reputation::RemediationSubmitParams
+          def submit(enterprise_id, params)
+            parsed, options = Telnyx::Enterprises::Reputation::RemediationSubmitParams.dump_request(params)
+            @client.request(
+              method: :post,
+              path: ["enterprises/%1$s/reputation/remediation", enterprise_id],
+              body: parsed,
+              model: Telnyx::Models::Enterprises::Reputation::RemediationSubmitResponse,
               options: options
             )
           end
