@@ -1,0 +1,63 @@
+name: Release Please
+
+# Versioning owner for the public telnyx-ruby repo (post-Stainless cutover).
+#
+# The stlc promote hop (promote-to-prod.yml in telnyx-ruby-staging) lands the
+# generated SDK on `master` with a `Release-As: X.Y.Z` footer. release-please
+# reads that footer off `master`, opens a "release: X.Y.Z" PR that bumps
+# .release-please-manifest.json + lib/telnyx/version.rb + README.md and writes
+# the CHANGELOG. Merging that PR tags `vX.Y.Z` + creates the GitHub Release,
+# which fires publish-gem.yml -> RubyGems.
+#
+# This replaces the decommissioned stainless-app[bot] hosted release-please.
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: release-please-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    # Guard so this only runs in the prod repo itself, never a fork.
+    if: github.repository == 'team-telnyx/telnyx-ruby'
+    runs-on: ubuntu-latest
+    steps:
+      - id: release_please
+        uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
+        with:
+          token: ${{ secrets.SDK_WRITE_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      # Enable GitHub native auto-merge on release PRs so they merge once all
+      # required CI checks pass. Use the release-please `pr` output directly to
+      # avoid a race (the PR may not appear in `gh pr list` immediately), then a
+      # label-based sweep as fallback for any earlier-missed release PRs.
+      - name: Enable auto-merge on release PRs
+        if: steps.release_please.outputs.prs_created == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.SDK_WRITE_TOKEN }}
+          REPO: ${{ github.repository }}
+          # Pass the release-please `pr` output via env so the shell never sees
+          # its changelog body (parens/quotes) as script text.
+          RELEASE_PR: ${{ steps.release_please.outputs.pr }}
+        run: |
+          PR_NUMS=$(printf '%s' "$RELEASE_PR" | jq -r 'if type == "array" then .[].number else .number end // empty' 2>/dev/null)
+          for pr in $PR_NUMS; do
+            if [ -n "$pr" ]; then
+              gh pr merge "$pr" --auto --merge --repo "$REPO" 2>/dev/null || echo "Auto-merge already enabled or PR #$pr not mergeable"
+            fi
+          done
+          sleep 3
+          prs=$(gh pr list --repo "$REPO" --state open --label "autorelease: pending" --json number --jq '.[].number')
+          for pr in $prs; do
+            gh pr merge "$pr" --auto --merge --repo "$REPO" 2>/dev/null || true
+          done
