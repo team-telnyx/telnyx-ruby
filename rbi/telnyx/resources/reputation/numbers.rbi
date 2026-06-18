@@ -12,7 +12,9 @@ module Telnyx
             phone_number: String,
             fresh: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Reputation::NumberRetrieveResponse)
+          ).returns(
+            Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
+          )
         end
         def retrieve(
           # Phone number in E.164 format (`+1NPANXXXXXX` for US/CA). The leading `+` MUST be
@@ -38,7 +40,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Reputation::NumberListResponse
+              Telnyx::Enterprises::Reputation::ReputationPhoneNumber
             ]
           )
         end

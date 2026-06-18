@@ -24,9 +24,7 @@ module Telnyx
 
       # List of pronunciation items (alias or phoneme type).
       sig do
-        returns(
-          T.nilable(T::Array[Telnyx::PronunciationDictData::Item::Variants])
-        )
+        returns(T.nilable(T::Array[Telnyx::PronunciationDictItem::Variants]))
       end
       attr_reader :items
 
@@ -122,7 +120,7 @@ module Telnyx
           {
             id: String,
             created_at: Time,
-            items: T::Array[Telnyx::PronunciationDictData::Item::Variants],
+            items: T::Array[Telnyx::PronunciationDictItem::Variants],
             name: String,
             record_type:
               Telnyx::PronunciationDictData::RecordType::TaggedSymbol,
@@ -132,29 +130,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      # A single pronunciation dictionary item. Use type 'alias' to replace matched text
-      # with a spoken alias, or type 'phoneme' to specify exact pronunciation using IPA
-      # notation.
-      module Item
-        extend Telnyx::Internal::Type::Union
-
-        Variants =
-          T.type_alias do
-            T.any(
-              Telnyx::PronunciationDictAliasItem,
-              Telnyx::PronunciationDictPhonemeItem
-            )
-          end
-
-        sig do
-          override.returns(
-            T::Array[Telnyx::PronunciationDictData::Item::Variants]
-          )
-        end
-        def self.variants
-        end
       end
 
       # Identifies the resource type.

@@ -9,7 +9,7 @@ module Telnyx
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
-          region: Telnyx::Models::Conferences::ActionRecordStartParams::region,
+          region: Telnyx::Models::Conferences::conference_region,
           trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim
         }
         & Telnyx::Internal::Type::request_parameters
@@ -40,11 +40,11 @@ module Telnyx
 
         def play_beep=: (bool) -> bool
 
-        attr_reader region: Telnyx::Models::Conferences::ActionRecordStartParams::region?
+        attr_reader region: Telnyx::Models::Conferences::conference_region?
 
         def region=: (
-          Telnyx::Models::Conferences::ActionRecordStartParams::region
-        ) -> Telnyx::Models::Conferences::ActionRecordStartParams::region
+          Telnyx::Models::Conferences::conference_region
+        ) -> Telnyx::Models::Conferences::conference_region
 
         attr_reader trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim?
 
@@ -59,7 +59,7 @@ module Telnyx
           ?command_id: String,
           ?custom_file_name: String,
           ?play_beep: bool,
-          ?region: Telnyx::Models::Conferences::ActionRecordStartParams::region,
+          ?region: Telnyx::Models::Conferences::conference_region,
           ?trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -71,7 +71,7 @@ module Telnyx
           command_id: String,
           custom_file_name: String,
           play_beep: bool,
-          region: Telnyx::Models::Conferences::ActionRecordStartParams::region,
+          region: Telnyx::Models::Conferences::conference_region,
           trim: Telnyx::Models::Conferences::ActionRecordStartParams::trim,
           request_options: Telnyx::RequestOptions
         }
@@ -96,19 +96,6 @@ module Telnyx
           DUAL: :dual
 
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::channels]
-        end
-
-        type region = :Australia | :Europe | :"Middle East" | :US
-
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA: :Australia
-          EUROPE: :Europe
-          MIDDLE_EAST: :"Middle East"
-          US: :US
-
-          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStartParams::region]
         end
 
         type trim = :"trim-silence"

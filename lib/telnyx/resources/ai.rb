@@ -54,9 +54,9 @@ module Telnyx
       # supported at the moment. Use the `conversation` parameter with a Telnyx
       # Conversation ID to leverage persistent conversations.
       #
-      # @overload create_response_deprecated(body:, request_options: {})
+      # @overload create_response_deprecated(response_request:, request_options: {})
       #
-      # @param body [Hash{Symbol=>Object}]
+      # @param response_request [Hash{Symbol=>Object}]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Hash{Symbol=>Object}]
@@ -67,42 +67,14 @@ module Telnyx
         @client.request(
           method: :post,
           path: "ai/responses",
-          body: parsed[:body],
+          body: parsed[:response_request],
           model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
           options: options
         )
       end
 
-      # @deprecated
-      #
-      # **Deprecated**: Use `GET /v2/ai/openai/models` instead.
-      #
-      # Returns the same `ModelsResponse` payload as the OpenAI-compatible endpoint —
-      # open-source LLMs hosted on Telnyx (e.g. `moonshotai/Kimi-K2.6`,
-      # `zai-org/GLM-5.1-FP8`, `MiniMaxAI/MiniMax-M2.7`), embedding models, and
-      # fine-tuned models — kept around for backwards compatibility. New integrations
-      # should use `/v2/ai/openai/models`.
-      #
-      # Model ids follow the `{organization}/{model_name}` convention from Hugging Face.
-      #
-      # @overload retrieve_models(request_options: {})
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Telnyx::Models::AIRetrieveModelsResponse]
-      #
-      # @see Telnyx::Models::AIRetrieveModelsParams
-      def retrieve_models(params = {})
-        @client.request(
-          method: :get,
-          path: "ai/models",
-          model: Telnyx::Models::AIRetrieveModelsResponse,
-          options: params[:request_options]
-        )
-      end
-
       # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::AISearchConversationHistoriesParams} for more details.
+      # {Telnyx::Models::AIRetrieveConversationHistoriesParams} for more details.
       #
       # Performs semantic vector search across conversation history records.
       #
@@ -156,11 +128,11 @@ module Telnyx
       # GET /v2/ai/conversation_histories?q=hold+time&record_type=voice&filter[language]=en
       # ```
       #
-      # @overload search_conversation_histories(q:, record_type:, filter_document_id: nil, filter_ingested_at_gte: nil, filter_ingested_at_lte: nil, filter_record_created_at_gte: nil, filter_record_created_at_lte: nil, filter_record_id: nil, filter_region_in: nil, filter_retention: nil, filter_user_id: nil, min_score: nil, region: nil, top_k: nil, request_options: {})
+      # @overload retrieve_conversation_histories(q:, record_type:, filter_document_id: nil, filter_ingested_at_gte: nil, filter_ingested_at_lte: nil, filter_record_created_at_gte: nil, filter_record_created_at_lte: nil, filter_record_id: nil, filter_region_in: nil, filter_retention: nil, filter_user_id: nil, min_score: nil, region: nil, top_k: nil, request_options: {})
       #
       # @param q [String] Natural language search query. The text is embedded into a 1024-dimensional vect
       #
-      # @param record_type [Symbol, Telnyx::Models::AISearchConversationHistoriesParams::RecordType] The type of records to search. Each record type is stored in a separate vector i
+      # @param record_type [Symbol, Telnyx::Models::AIRetrieveConversationHistoriesParams::RecordType] The type of records to search. Each record type is stored in a separate vector i
       #
       # @param filter_document_id [String] Filter by document identifier (exact match). Populated for knowledge_base record
       #
@@ -182,17 +154,17 @@ module Telnyx
       #
       # @param min_score [Float] Minimum cosine similarity score threshold (0.0 to 1.0). Results below this thres
       #
-      # @param region [Symbol, Telnyx::Models::AISearchConversationHistoriesParams::Region] Restrict search to a specific region's OpenSearch cluster. When omitted, all reg
+      # @param region [Symbol, Telnyx::Models::AIRetrieveConversationHistoriesParams::Region] Restrict search to a specific region's OpenSearch cluster. When omitted, all reg
       #
       # @param top_k [Integer] Maximum number of results to return. Defaults to 20, maximum 100.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::AISearchConversationHistoriesResponse]
+      # @return [Telnyx::Models::AIRetrieveConversationHistoriesResponse]
       #
-      # @see Telnyx::Models::AISearchConversationHistoriesParams
-      def search_conversation_histories(params)
-        parsed, options = Telnyx::AISearchConversationHistoriesParams.dump_request(params)
+      # @see Telnyx::Models::AIRetrieveConversationHistoriesParams
+      def retrieve_conversation_histories(params)
+        parsed, options = Telnyx::AIRetrieveConversationHistoriesParams.dump_request(params)
         query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
@@ -208,8 +180,36 @@ module Telnyx
             filter_retention: "filter[retention]",
             filter_user_id: "filter[user_id]"
           ),
-          model: Telnyx::Models::AISearchConversationHistoriesResponse,
+          model: Telnyx::Models::AIRetrieveConversationHistoriesResponse,
           options: options
+        )
+      end
+
+      # @deprecated
+      #
+      # **Deprecated**: Use `GET /v2/ai/openai/models` instead.
+      #
+      # Returns the same `ModelsResponse` payload as the OpenAI-compatible endpoint —
+      # open-source LLMs hosted on Telnyx (e.g. `moonshotai/Kimi-K2.6`,
+      # `zai-org/GLM-5.1-FP8`, `MiniMaxAI/MiniMax-M2.7`), embedding models, and
+      # fine-tuned models — kept around for backwards compatibility. New integrations
+      # should use `/v2/ai/openai/models`.
+      #
+      # Model ids follow the `{organization}/{model_name}` convention from Hugging Face.
+      #
+      # @overload retrieve_models(request_options: {})
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::ModelsResponse]
+      #
+      # @see Telnyx::Models::AIRetrieveModelsParams
+      def retrieve_models(params = {})
+        @client.request(
+          method: :get,
+          path: "ai/models",
+          model: Telnyx::ModelsResponse,
+          options: params[:request_options]
         )
       end
 

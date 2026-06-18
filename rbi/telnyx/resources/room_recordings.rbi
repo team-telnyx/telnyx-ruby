@@ -26,9 +26,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::RoomRecordingListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::RoomRecording]
         )
       end
       def list(

@@ -28,9 +28,7 @@ module Telnyx
         # registered numbers.
         sig do
           returns(
-            T.nilable(
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol
-            )
+            T.nilable(Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol)
           )
         end
         attr_reader :check_frequency
@@ -38,7 +36,7 @@ module Telnyx
         sig do
           params(
             check_frequency:
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol
+              Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol
           ).void
         end
         attr_writer :check_frequency
@@ -48,7 +46,7 @@ module Telnyx
             enterprise_id: String,
             loa_document_id: String,
             check_frequency:
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol,
+              Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -71,68 +69,12 @@ module Telnyx
               enterprise_id: String,
               loa_document_id: String,
               check_frequency:
-                Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol,
+                Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )
         end
         def to_hash
-        end
-
-        # How often Telnyx refreshes the stored reputation data for this enterprise's
-        # registered numbers.
-        module CheckFrequency
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Enterprises::ReputationEnableParams::CheckFrequency
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          BUSINESS_DAILY =
-            T.let(
-              :business_daily,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
-            )
-          DAILY =
-            T.let(
-              :daily,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
-            )
-          WEEKLY =
-            T.let(
-              :weekly,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
-            )
-          BIWEEKLY =
-            T.let(
-              :biweekly,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
-            )
-          MONTHLY =
-            T.let(
-              :monthly,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
-            )
-          NEVER =
-            T.let(
-              :never,
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

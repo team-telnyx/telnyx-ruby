@@ -6,7 +6,7 @@ module Telnyx
           dir_id: String,
           page_number: Integer,
           page_size: Integer,
-          status: Telnyx::Models::Dir::PhoneNumberListParams::status
+          status: Telnyx::Models::Dir::dir_phone_number_status
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -24,17 +24,17 @@ module Telnyx
 
         def page_size=: (Integer) -> Integer
 
-        attr_reader status: Telnyx::Models::Dir::PhoneNumberListParams::status?
+        attr_reader status: Telnyx::Models::Dir::dir_phone_number_status?
 
         def status=: (
-          Telnyx::Models::Dir::PhoneNumberListParams::status
-        ) -> Telnyx::Models::Dir::PhoneNumberListParams::status
+          Telnyx::Models::Dir::dir_phone_number_status
+        ) -> Telnyx::Models::Dir::dir_phone_number_status
 
         def initialize: (
           dir_id: String,
           ?page_number: Integer,
           ?page_size: Integer,
-          ?status: Telnyx::Models::Dir::PhoneNumberListParams::status,
+          ?status: Telnyx::Models::Dir::dir_phone_number_status,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -42,32 +42,9 @@ module Telnyx
           dir_id: String,
           page_number: Integer,
           page_size: Integer,
-          status: Telnyx::Models::Dir::PhoneNumberListParams::status,
+          status: Telnyx::Models::Dir::dir_phone_number_status,
           request_options: Telnyx::RequestOptions
         }
-
-        type status =
-          :submitted
-          | :in_review
-          | :verified
-          | :unsuccessful
-          | :suspended
-          | :expired
-          | :permanently_rejected
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          SUBMITTED: :submitted
-          IN_REVIEW: :in_review
-          VERIFIED: :verified
-          UNSUCCESSFUL: :unsuccessful
-          SUSPENDED: :suspended
-          EXPIRED: :expired
-          PERMANENTLY_REJECTED: :permanently_rejected
-
-          def self?.values: -> ::Array[Telnyx::Models::Dir::PhoneNumberListParams::status]
-        end
       end
     end
   end

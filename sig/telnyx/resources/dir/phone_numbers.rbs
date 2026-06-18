@@ -6,13 +6,13 @@ module Telnyx
           String dir_id,
           ?page_number: Integer,
           ?page_size: Integer,
-          ?status: Telnyx::Models::Dir::PhoneNumberListParams::status,
+          ?status: Telnyx::Models::Dir::dir_phone_number_status,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Dir::PhoneNumberListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Dir::DirPhoneNumber]
 
         def add: (
           String dir_id,
-          documents: ::Array[Telnyx::Dir::PhoneNumberAddParams::Document],
+          documents: ::Array[Telnyx::Document],
           phone_numbers: ::Array[String],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Dir::PhoneNumberAddResponse

@@ -15,14 +15,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Array<Telnyx::Models::VoiceSDKCallReportRetrieveResponseItem>]
+      # @return [Array<Telnyx::Models::VoiceSDKCallReport>]
       #
       # @see Telnyx::Models::VoiceSDKCallReportRetrieveParams
       def retrieve(call_id, params = {})
         @client.request(
           method: :get,
           path: ["voice_sdk_call_reports/%1$s", call_id],
-          model: Telnyx::Internal::Type::ArrayOf[Telnyx::Models::VoiceSDKCallReportRetrieveResponseItem],
+          model: Telnyx::Internal::Type::ArrayOf[Telnyx::VoiceSDKCallReport],
           options: params[:request_options]
         )
       end
@@ -44,7 +44,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VoiceSDKCallReportListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VoiceSDKCallReport>]
       #
       # @see Telnyx::Models::VoiceSDKCallReportListParams
       def list(params = {})
@@ -55,7 +55,7 @@ module Telnyx
           path: "voice_sdk_call_reports",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::VoiceSDKCallReportListResponse,
+          model: Telnyx::VoiceSDKCallReport,
           options: options
         )
       end

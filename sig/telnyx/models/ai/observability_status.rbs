@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      type observability_status = :enabled | :disabled
+
+      module ObservabilityStatus
+        extend Telnyx::Internal::Type::Enum
+
+        ENABLED: :enabled
+        DISABLED: :disabled
+
+        def self?.values: -> ::Array[Telnyx::Models::AI::observability_status]
+      end
+    end
+  end
+end

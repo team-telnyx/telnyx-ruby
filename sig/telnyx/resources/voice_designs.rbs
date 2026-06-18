@@ -14,13 +14,13 @@ module Telnyx
         ?top_p: Float,
         ?voice_design_id: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VoiceDesignCreateResponse
+      ) -> Telnyx::VoiceDesignResponse
 
       def retrieve: (
         String id,
         ?version: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::VoiceDesignRetrieveResponse
+      ) -> Telnyx::VoiceDesignResponse
 
       def list: (
         ?filter_name: String,
@@ -28,7 +28,7 @@ module Telnyx
         ?page_size: Integer,
         ?sort: Telnyx::Models::VoiceDesignListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VoiceDesignListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceDesignSummaryData]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

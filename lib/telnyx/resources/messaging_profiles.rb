@@ -296,7 +296,7 @@ module Telnyx
       #
       # @param id [String] The identifier of the messaging profile.
       #
-      # @param time_frame [Symbol, Telnyx::Models::MessagingProfileRetrieveMetricsParams::TimeFrame] The time frame for metrics.
+      # @param time_frame [Symbol, Telnyx::Models::MessagingMetricsTimeFrame] The time frame for metrics.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

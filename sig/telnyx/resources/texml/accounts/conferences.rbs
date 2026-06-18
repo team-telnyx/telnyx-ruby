@@ -9,7 +9,7 @@ module Telnyx
             String conference_sid,
             account_sid: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse
+          ) -> Telnyx::Texml::Accounts::ConferenceResource
 
           def update: (
             String conference_sid,
@@ -18,7 +18,7 @@ module Telnyx
             ?announce_url: String,
             ?status: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse
+          ) -> Telnyx::Texml::Accounts::ConferenceResource
 
           def retrieve_conferences: (
             String account_sid,
@@ -42,7 +42,7 @@ module Telnyx
             String conference_sid,
             account_sid: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonResponse
+          ) -> Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
 
           def initialize: (client: Telnyx::Client) -> void
         end

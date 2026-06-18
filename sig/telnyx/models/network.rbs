@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type network = { name: String }
+
+    class Network < Telnyx::Models::Record
+      def name: -> String?
+
+      def name=: (String _) -> String
+
+      def initialize: (?name: String) -> void
+
+      def to_hash: -> { name: String }
+    end
+  end
+end

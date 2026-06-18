@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    type create_verification_request_sms =
+      {
+        phone_number: String,
+        verify_profile_id: String,
+        custom_code: String?,
+        timeout_secs: Integer
+      }
+
+    class CreateVerificationRequestSMS < Telnyx::Internal::Type::BaseModel
+      attr_accessor phone_number: String
+
+      attr_accessor verify_profile_id: String
+
+      attr_accessor custom_code: String?
+
+      attr_reader timeout_secs: Integer?
+
+      def timeout_secs=: (Integer) -> Integer
+
+      def initialize: (
+        phone_number: String,
+        verify_profile_id: String,
+        ?custom_code: String?,
+        ?timeout_secs: Integer
+      ) -> void
+
+      def to_hash: -> {
+        phone_number: String,
+        verify_profile_id: String,
+        custom_code: String?,
+        timeout_secs: Integer
+      }
+    end
+  end
+end

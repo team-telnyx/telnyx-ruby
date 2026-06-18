@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::RoomRecordingsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::RoomRecordingRetrieveResponse::Data | nil
+        data: Telnyx::RoomRecording | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::RoomRecordingsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::RoomRecordingListResponse
+      row => Telnyx::RoomRecording
     end
 
     assert_pattern do
@@ -50,8 +50,8 @@ class Telnyx::Test::Resources::RoomRecordingsTest < Telnyx::Test::ResourceTest
         session_id: String | nil,
         size_mb: Float | nil,
         started_at: Time | nil,
-        status: Telnyx::Models::RoomRecordingListResponse::Status | nil,
-        type: Telnyx::Models::RoomRecordingListResponse::Type | nil,
+        status: Telnyx::RoomRecording::Status | nil,
+        type: Telnyx::RoomRecording::Type | nil,
         updated_at: Time | nil
       }
     end

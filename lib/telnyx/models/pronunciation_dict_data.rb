@@ -20,7 +20,7 @@ module Telnyx
       #   List of pronunciation items (alias or phoneme type).
       #
       #   @return [Array<Telnyx::Models::PronunciationDictAliasItem, Telnyx::Models::PronunciationDictPhonemeItem>, nil]
-      optional :items, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::PronunciationDictData::Item] }
+      optional :items, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::PronunciationDictItem] }
 
       # @!attribute name
       #   Human-readable name for the dictionary. Must be unique within the organization.
@@ -66,24 +66,6 @@ module Telnyx
       #   @param updated_at [Time] ISO 8601 timestamp with millisecond precision.
       #
       #   @param version [Integer] Auto-incrementing version number. Increases by 1 on each update. Used for optimi
-
-      # A single pronunciation dictionary item. Use type 'alias' to replace matched text
-      # with a spoken alias, or type 'phoneme' to specify exact pronunciation using IPA
-      # notation.
-      module Item
-        extend Telnyx::Internal::Type::Union
-
-        discriminator :type
-
-        # An alias pronunciation item. When the `text` value is found in input, it is replaced with the `alias` before speech synthesis.
-        variant :alias, -> { Telnyx::PronunciationDictAliasItem }
-
-        # A phoneme pronunciation item. When the `text` value is found in input, it is pronounced using the specified IPA phoneme notation.
-        variant :phoneme, -> { Telnyx::PronunciationDictPhonemeItem }
-
-        # @!method self.variants
-        #   @return [Array(Telnyx::Models::PronunciationDictAliasItem, Telnyx::Models::PronunciationDictPhonemeItem)]
-      end
 
       # Identifies the resource type.
       #

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::ConnectionRetrieveResponse::Data | nil
+        data: Telnyx::Connection | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::ConnectionListResponse
+      row => Telnyx::Connection
     end
 
     assert_pattern do
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
         record_type: String | nil,
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         updated_at: String | nil,
-        webhook_api_version: Telnyx::Models::ConnectionListResponse::WebhookAPIVersion | nil,
+        webhook_api_version: Telnyx::Connection::WebhookAPIVersion | nil,
         webhook_event_failover_url: String | nil,
         webhook_event_url: String | nil
       }

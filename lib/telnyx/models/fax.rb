@@ -76,8 +76,8 @@ module Telnyx
       #   available, but also present longer fax processing times. `ultra_light` is best
       #   suited for images, wihle `ultra_dark` is best suited for text.
       #
-      #   @return [Symbol, Telnyx::Models::Fax::Quality, nil]
-      optional :quality, enum: -> { Telnyx::Fax::Quality }
+      #   @return [Symbol, Telnyx::Models::Quality, nil]
+      optional :quality, enum: -> { Telnyx::Quality }
 
       # @!attribute record_type
       #   Identifies the type of the resource.
@@ -153,7 +153,7 @@ module Telnyx
       #
       #   @param preview_url [String] If `store_preview` was set to `true`, this is a link to temporary location. Link
       #
-      #   @param quality [Symbol, Telnyx::Models::Fax::Quality] The quality of the fax. The `ultra` settings provides the highest quality availa
+      #   @param quality [Symbol, Telnyx::Models::Quality] The quality of the fax. The `ultra` settings provides the highest quality availa
       #
       #   @param record_type [Symbol, Telnyx::Models::Fax::RecordType] Identifies the type of the resource.
       #
@@ -179,24 +179,6 @@ module Telnyx
 
         INBOUND = :inbound
         OUTBOUND = :outbound
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
-
-      # The quality of the fax. The `ultra` settings provides the highest quality
-      # available, but also present longer fax processing times. `ultra_light` is best
-      # suited for images, wihle `ultra_dark` is best suited for text.
-      #
-      # @see Telnyx::Models::Fax#quality
-      module Quality
-        extend Telnyx::Internal::Type::Enum
-
-        NORMAL = :normal
-        HIGH = :high
-        VERY_HIGH = :very_high
-        ULTRA_LIGHT = :ultra_light
-        ULTRA_DARK = :ultra_dark
 
         # @!method self.values
         #   @return [Array<Symbol>]

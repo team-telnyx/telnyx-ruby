@@ -27,12 +27,12 @@ module Telnyx
         ?professional_license_number: String?,
         ?role_type: Telnyx::Models::EnterpriseCreateParams::role_type,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EnterpriseCreateResponse
+      ) -> Telnyx::EnterprisePublicWrapped
 
       def retrieve: (
         String enterprise_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EnterpriseRetrieveResponse
+      ) -> Telnyx::EnterprisePublicWrapped
 
       def update: (
         String enterprise_id,
@@ -54,7 +54,7 @@ module Telnyx
         ?professional_license_number: String?,
         ?website: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EnterpriseUpdateResponse
+      ) -> Telnyx::EnterprisePublicWrapped
 
       def list: (
         ?filter_legal_name_contains: String,
@@ -69,10 +69,10 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> nil
 
-      def activate_branded_calling: (
+      def branded_calling: (
         String enterprise_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EnterpriseActivateBrandedCallingResponse
+      ) -> Telnyx::EnterprisePublicWrapped
 
       def initialize: (client: Telnyx::Client) -> void
     end

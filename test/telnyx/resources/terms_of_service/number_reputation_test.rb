@@ -9,12 +9,12 @@ class Telnyx::Test::Resources::TermsOfService::NumberReputationTest < Telnyx::Te
     response = @telnyx.terms_of_service.number_reputation.agree
 
     assert_pattern do
-      response => Telnyx::Models::TermsOfService::NumberReputationAgreeResponse
+      response => Telnyx::TermsOfService::TosAgreementWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::TermsOfService::NumberReputationAgreeResponse::Data
+        data: Telnyx::TermsOfService::TosAgreement
       }
     end
   end

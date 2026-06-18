@@ -164,7 +164,7 @@ module Telnyx
           participant_id: String,
           id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::ConferenceRetrieveParticipantResponse)
+        ).returns(Telnyx::ConferenceParticipantResource)
       end
       def retrieve_participant(
         # Uniquely identifies the participant by their ID or label.
@@ -185,7 +185,7 @@ module Telnyx
           end_conference_on_exit: T::Boolean,
           soft_end_conference_on_exit: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::ConferenceUpdateParticipantResponse)
+        ).returns(Telnyx::ConferenceParticipantResource)
       end
       def update_participant(
         # Path param: Uniquely identifies the participant.

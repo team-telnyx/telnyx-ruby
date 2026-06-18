@@ -35,7 +35,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse]
+            # @return [Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody]
             #
             # @see Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams
             def recordings_json(call_sid, params)
@@ -49,7 +49,7 @@ module Telnyx
                 path: ["texml/Accounts/%1$s/Calls/%2$s/Recordings.json", account_sid, call_sid],
                 headers: {"content-type" => "application/x-www-form-urlencoded"},
                 body: parsed,
-                model: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse,
+                model: Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody,
                 options: options
               )
             end
@@ -64,7 +64,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonResponse]
+            # @return [Telnyx::Models::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody]
             #
             # @see Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonParams
             def retrieve_recordings_json(call_sid, params)
@@ -77,7 +77,7 @@ module Telnyx
               @client.request(
                 method: :get,
                 path: ["texml/Accounts/%1$s/Calls/%2$s/Recordings.json", account_sid, call_sid],
-                model: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonResponse,
+                model: Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody,
                 options: options
               )
             end

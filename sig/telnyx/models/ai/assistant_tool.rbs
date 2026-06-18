@@ -167,15 +167,15 @@ module Telnyx
             }
 
             type targets =
-              ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0]
+              ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList]
               | String
 
             module Targets
               extend Telnyx::Internal::Type::Union
 
-              type union_member0 = { to: String, name: String }
+              type targets_list = { to: String, name: String }
 
-              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+              class TargetsList < Telnyx::Internal::Type::BaseModel
                 attr_accessor to: String
 
                 attr_reader name: String?
@@ -189,7 +189,7 @@ module Telnyx
 
               def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets]
 
-              UnionMember0Array: Telnyx::Internal::Type::Converter
+              TargetsListArray: Telnyx::Internal::Type::Converter
             end
 
             type custom_header = { name: String, value: String }
@@ -503,15 +503,15 @@ module Telnyx
             end
 
             type targets =
-              ::Array[Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0]
+              ::Array[Telnyx::AI::AssistantTool::Invite::Invite::Targets::TargetsList]
               | String
 
             module Targets
               extend Telnyx::Internal::Type::Union
 
-              type union_member0 = { to: String, name: String }
+              type targets_list = { to: String, name: String }
 
-              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+              class TargetsList < Telnyx::Internal::Type::BaseModel
                 attr_accessor to: String
 
                 attr_reader name: String?
@@ -525,7 +525,7 @@ module Telnyx
 
               def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Invite::Invite::targets]
 
-              UnionMember0Array: Telnyx::Internal::Type::Converter
+              TargetsListArray: Telnyx::Internal::Type::Converter
             end
 
             type voicemail_detection =

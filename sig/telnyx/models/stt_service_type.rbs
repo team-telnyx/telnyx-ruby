@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type stt_service_type = :streaming | :file_based | :in_call | :ai_assistant
+
+    module SttServiceType
+      extend Telnyx::Internal::Type::Enum
+
+      STREAMING: :streaming
+      FILE_BASED: :file_based
+      IN_CALL: :in_call
+      AI_ASSISTANT: :ai_assistant
+
+      def self?.values: -> ::Array[Telnyx::Models::stt_service_type]
+    end
+  end
+end

@@ -17,7 +17,7 @@ module Telnyx
         #
         # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, seed: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
         #
-        # @param messages [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Message>] A list of the previous chat messages for context.
+        # @param messages [Array<Telnyx::Models::AI::ChatCompletionRequest::Message>] A list of the previous chat messages for context.
         #
         # @param api_key_ref [String] If you are using an external inference provider like xAI or OpenAI, this field a
         #
@@ -49,7 +49,7 @@ module Telnyx
         #
         # @param presence_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
         #
-        # @param response_format [Telnyx::Models::AI::ChatCreateCompletionParams::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
+        # @param response_format [Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
         #
         # @param seed [Integer] If specified, the system will make a best effort to sample deterministically, su
         #
@@ -59,9 +59,9 @@ module Telnyx
         #
         # @param temperature [Float] Adjusts the "creativity" of the model. Lower values make the model more determin
         #
-        # @param tool_choice [Symbol, Telnyx::Models::AI::ChatCreateCompletionParams::ToolChoice]
+        # @param tool_choice [Symbol, Telnyx::Models::AI::ChatCompletionRequest::ToolChoice]
         #
-        # @param tools [Array<Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Function, Telnyx::Models::AI::ChatCreateCompletionParams::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
+        # @param tools [Array<Telnyx::Models::AI::ChatCompletionRequest::Tool::Function, Telnyx::Models::AI::ChatCompletionRequest::Tool::Retrieval>] The `function` tool type follows the same schema as the [OpenAI Chat Completions
         #
         # @param top_logprobs [Integer] This is used with `logprobs`. An integer between 0 and 20 specifying the number
         #

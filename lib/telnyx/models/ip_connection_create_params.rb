@@ -94,8 +94,8 @@ module Telnyx
       #   applied to outgoing audio. When set to 'both', it's applied in both directions.
       #   When set to 'disabled', noise suppression is turned off.
       #
-      #   @return [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression, nil]
-      optional :noise_suppression, enum: -> { Telnyx::IPConnectionCreateParams::NoiseSuppression }
+      #   @return [Symbol, Telnyx::Models::ConnectionNoiseSuppression, nil]
+      optional :noise_suppression, enum: -> { Telnyx::ConnectionNoiseSuppression }
 
       # @!attribute noise_suppression_details
       #   Configuration options for noise suppression. These settings are stored
@@ -191,7 +191,7 @@ module Telnyx
       #
       #   @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
-      #   @param noise_suppression [Symbol, Telnyx::Models::IPConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #   @param noise_suppression [Symbol, Telnyx::Models::ConnectionNoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
       #   @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
@@ -432,22 +432,6 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      # Controls when noise suppression is applied to calls. When set to 'inbound',
-      # noise suppression is applied to incoming audio. When set to 'outbound', it's
-      # applied to outgoing audio. When set to 'both', it's applied in both directions.
-      # When set to 'disabled', noise suppression is turned off.
-      module NoiseSuppression
-        extend Telnyx::Internal::Type::Enum
-
-        INBOUND = :inbound
-        OUTBOUND = :outbound
-        BOTH = :both
-        DISABLED = :disabled
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
       end
 
       # One of UDP, TLS, or TCP. Applies only to connections with IP authentication or

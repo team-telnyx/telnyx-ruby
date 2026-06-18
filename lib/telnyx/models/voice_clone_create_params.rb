@@ -7,35 +7,36 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!attribute params
+      # @!attribute voice_clone_request
       #   Request body for creating a voice clone from an existing voice design.
       #
-      #   @return [Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone]
-      required :params, union: -> { Telnyx::VoiceCloneCreateParams::Params }
+      #   @return [Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone]
+      required :voice_clone_request, union: -> { Telnyx::VoiceCloneCreateParams::VoiceCloneRequest }
 
-      # @!method initialize(params:, request_options: {})
-      #   @param params [Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone] Request body for creating a voice clone from an existing voice design.
+      # @!method initialize(voice_clone_request:, request_options: {})
+      #   @param voice_clone_request [Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone] Request body for creating a voice clone from an existing voice design.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
       # Request body for creating a voice clone from an existing voice design.
-      module Params
+      module VoiceCloneRequest
         extend Telnyx::Internal::Type::Union
 
         discriminator :provider
 
         # Create a voice clone from a voice design using the Telnyx provider.
-        variant -> { Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone }
+        variant -> { Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone }
 
         # Create a voice clone from a voice design using the Minimax provider.
-        variant -> { Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone }
+        variant -> { Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone }
 
         class TelnyxDesignClone < Telnyx::Internal::Type::BaseModel
           # @!attribute gender
           #   Gender of the voice clone.
           #
-          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender]
-          required :gender, enum: -> { Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender }
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender]
+          required :gender,
+                   enum: -> { Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender }
 
           # @!attribute language
           #   ISO 639-1 language code for the clone. Supports the combined Telnyx language
@@ -59,17 +60,18 @@ module Telnyx
           # @!attribute provider
           #   Voice synthesis provider. Defaults to `telnyx`.
           #
-          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider, nil]
-          optional :provider, enum: -> { Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider }
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider, nil]
+          optional :provider,
+                   enum: -> { Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider }
 
           # @!method initialize(gender:, language:, name:, voice_design_id:, provider: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone} for more
-          #   details.
+          #   {Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone}
+          #   for more details.
           #
           #   Create a voice clone from a voice design using the Telnyx provider.
           #
-          #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender] Gender of the voice clone.
+          #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender] Gender of the voice clone.
           #
           #   @param language [String] ISO 639-1 language code for the clone. Supports the combined Telnyx language set
           #
@@ -77,11 +79,11 @@ module Telnyx
           #
           #   @param voice_design_id [String] UUID of the source voice design to clone.
           #
-          #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider] Voice synthesis provider. Defaults to `telnyx`.
+          #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider] Voice synthesis provider. Defaults to `telnyx`.
 
           # Gender of the voice clone.
           #
-          # @see Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone#gender
+          # @see Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone#gender
           module Gender
             extend Telnyx::Internal::Type::Enum
 
@@ -95,7 +97,7 @@ module Telnyx
 
           # Voice synthesis provider. Defaults to `telnyx`.
           #
-          # @see Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone#provider
+          # @see Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone#provider
           module Provider
             extend Telnyx::Internal::Type::Enum
 
@@ -111,8 +113,9 @@ module Telnyx
           # @!attribute gender
           #   Gender of the voice clone.
           #
-          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender]
-          required :gender, enum: -> { Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender }
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender]
+          required :gender,
+                   enum: -> { Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender }
 
           # @!attribute language
           #   ISO 639-1 language code for the clone. Supports the Minimax language set.
@@ -129,8 +132,9 @@ module Telnyx
           # @!attribute provider
           #   Voice synthesis provider. Must be `minimax`.
           #
-          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider]
-          required :provider, enum: -> { Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider }
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider]
+          required :provider,
+                   enum: -> { Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider }
 
           # @!attribute voice_design_id
           #   UUID of the source voice design to clone.
@@ -141,19 +145,19 @@ module Telnyx
           # @!method initialize(gender:, language:, name:, provider:, voice_design_id:)
           #   Create a voice clone from a voice design using the Minimax provider.
           #
-          #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender] Gender of the voice clone.
+          #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender] Gender of the voice clone.
           #
           #   @param language [String] ISO 639-1 language code for the clone. Supports the Minimax language set.
           #
           #   @param name [String] Name for the voice clone.
           #
-          #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider] Voice synthesis provider. Must be `minimax`.
+          #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider] Voice synthesis provider. Must be `minimax`.
           #
           #   @param voice_design_id [String] UUID of the source voice design to clone.
 
           # Gender of the voice clone.
           #
-          # @see Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone#gender
+          # @see Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone#gender
           module Gender
             extend Telnyx::Internal::Type::Enum
 
@@ -167,7 +171,7 @@ module Telnyx
 
           # Voice synthesis provider. Must be `minimax`.
           #
-          # @see Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone#provider
+          # @see Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone#provider
           module Provider
             extend Telnyx::Internal::Type::Enum
 
@@ -180,7 +184,7 @@ module Telnyx
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::VoiceCloneCreateParams::Params::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::Params::MinimaxDesignClone)]
+        #   @return [Array(Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone, Telnyx::Models::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone)]
       end
     end
   end

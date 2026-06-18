@@ -5,7 +5,7 @@ module Telnyx
         region_code: String,
         ?bandwidth_mbps: Float,
         ?bgp_asn: Float,
-        ?cloud_provider: Telnyx::Models::VirtualCrossConnectCreateParams::cloud_provider,
+        ?cloud_provider: Telnyx::Models::VirtualCrossConnectCreate::cloud_provider,
         ?cloud_provider_region: String,
         ?name: String,
         ?network_id: String,
@@ -41,7 +41,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VirtualCrossConnectListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VirtualCrossConnectCombined]
 
       def delete: (
         String id,

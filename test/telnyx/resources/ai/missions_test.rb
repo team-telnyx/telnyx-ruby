@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.missions.create(name: "name")
 
     assert_pattern do
-      response => Telnyx::Models::AI::MissionCreateResponse
+      response => Telnyx::AI::MissionResponse
     end
 
     assert_pattern do
@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.missions.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::AI::MissionRetrieveResponse
+      response => Telnyx::AI::MissionResponse
     end
 
     assert_pattern do
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
     assert_pattern do
       row => {
         created_at: Time,
-        execution_mode: Telnyx::AI::MissionData::ExecutionMode,
+        execution_mode: Telnyx::AI::ExecutionMode,
         mission_id: String,
         name: String,
         updated_at: Time,
@@ -108,7 +108,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
         run_id: String,
         summary: String,
         timestamp: Time,
-        type: Telnyx::AI::Missions::Runs::EventData::Type,
+        type: Telnyx::AI::Missions::Runs::EventType,
         agent_id: String | nil,
         idempotency_key: String | nil,
         payload: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
@@ -123,7 +123,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.missions.update_mission("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::AI::MissionUpdateMissionResponse
+      response => Telnyx::AI::MissionResponse
     end
 
     assert_pattern do

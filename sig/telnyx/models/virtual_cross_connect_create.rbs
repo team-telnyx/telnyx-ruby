@@ -1,0 +1,11 @@
+module Telnyx
+  module Models
+    type virtual_cross_connect_create = {  }
+
+    class VirtualCrossConnectCreate < Telnyx::Models::Record
+      def initialize: -> void
+
+      def to_hash: -> {  }
+    end
+  end
+end

@@ -1,30 +1,18 @@
 module Telnyx
   module Models
     type virtual_cross_connect_retrieve_response =
-      { data: Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data }
+      { data: Telnyx::VirtualCrossConnectCombined }
 
     class VirtualCrossConnectRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data?
+      attr_reader data: Telnyx::VirtualCrossConnectCombined?
 
       def data=: (
-        Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data
-      ) -> Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data
+        Telnyx::VirtualCrossConnectCombined
+      ) -> Telnyx::VirtualCrossConnectCombined
 
-      def initialize: (
-        ?data: Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::VirtualCrossConnectCombined) -> void
 
-      def to_hash: -> {
-        data: Telnyx::Models::VirtualCrossConnectRetrieveResponse::Data
-      }
-
-      type data = {  }
-
-      class Data < Telnyx::Models::Record
-        def initialize: -> void
-
-        def to_hash: -> {  }
-      end
+      def to_hash: -> { data: Telnyx::VirtualCrossConnectCombined }
     end
   end
 end

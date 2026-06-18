@@ -7,12 +7,12 @@ module Telnyx
         port: Integer,
         ?app_subdomain: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::SiprecConnectorCreateResponse
+      ) -> Telnyx::SiprecConnectorResponse
 
       def retrieve: (
         String connector_name,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::SiprecConnectorRetrieveResponse
+      ) -> Telnyx::SiprecConnectorResponse
 
       def update: (
         String connector_name,
@@ -21,7 +21,7 @@ module Telnyx
         port: Integer,
         ?app_subdomain: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::SiprecConnectorUpdateResponse
+      ) -> Telnyx::SiprecConnectorResponse
 
       def delete: (
         String connector_name,

@@ -83,7 +83,7 @@ class Telnyx::Test::Resources::IPConnectionsTest < Telnyx::Test::ResourceTest
         inbound: Telnyx::InboundIP | nil,
         ios_push_credential_id: String | nil,
         jitter_buffer: Telnyx::ConnectionJitterBuffer | nil,
-        noise_suppression: Telnyx::IPConnection::NoiseSuppression | nil,
+        noise_suppression: Telnyx::ConnectionNoiseSuppression | nil,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails | nil,
         onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
         outbound: Telnyx::OutboundIP | nil,

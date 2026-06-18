@@ -43,7 +43,7 @@ module Telnyx
       #
       # @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
-      # @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      # @param noise_suppression [Symbol, Telnyx::Models::ConnectionNoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
       # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
@@ -134,7 +134,7 @@ module Telnyx
       #
       # @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
-      # @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      # @param noise_suppression [Symbol, Telnyx::Models::ConnectionNoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
       # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #

@@ -41,7 +41,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RequirementListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::DocReqsRequirement>]
       #
       # @see Telnyx::Models::RequirementListParams
       def list(params = {})
@@ -52,7 +52,7 @@ module Telnyx
           path: "requirements",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::RequirementListResponse,
+          model: Telnyx::DocReqsRequirement,
           options: options
         )
       end

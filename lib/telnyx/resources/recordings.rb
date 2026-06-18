@@ -16,14 +16,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::RecordingRetrieveResponse]
+      # @return [Telnyx::Models::RecordingResponse]
       #
       # @see Telnyx::Models::RecordingRetrieveParams
       def retrieve(recording_id, params = {})
         @client.request(
           method: :get,
           path: ["recordings/%1$s", recording_id],
-          model: Telnyx::Models::RecordingRetrieveResponse,
+          model: Telnyx::RecordingResponse,
           options: params[:request_options]
         )
       end
@@ -64,14 +64,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::RecordingDeleteResponse]
+      # @return [Telnyx::Models::RecordingResponse]
       #
       # @see Telnyx::Models::RecordingDeleteParams
       def delete(recording_id, params = {})
         @client.request(
           method: :delete,
           path: ["recordings/%1$s", recording_id],
-          model: Telnyx::Models::RecordingDeleteResponse,
+          model: Telnyx::RecordingResponse,
           options: params[:request_options]
         )
       end

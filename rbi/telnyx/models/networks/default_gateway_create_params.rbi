@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     module Networks
-      class DefaultGatewayCreateParams < Telnyx::Internal::Type::BaseModel
+      class DefaultGatewayCreateParams < Telnyx::Models::Networks::NetworksDefaultGateway
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
@@ -18,33 +18,19 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :network_identifier
 
-        # Wireguard peer ID.
-        sig { returns(T.nilable(String)) }
-        attr_reader :wireguard_peer_id
-
-        sig { params(wireguard_peer_id: String).void }
-        attr_writer :wireguard_peer_id
-
         sig do
           params(
             network_identifier: String,
-            wireguard_peer_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(
-          network_identifier:,
-          # Wireguard peer ID.
-          wireguard_peer_id: nil,
-          request_options: {}
-        )
+        def self.new(network_identifier:, request_options: {})
         end
 
         sig do
           override.returns(
             {
               network_identifier: String,
-              wireguard_peer_id: String,
               request_options: Telnyx::RequestOptions
             }
           )

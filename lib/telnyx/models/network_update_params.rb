@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::Networks#update
-    class NetworkUpdateParams < Telnyx::Models::NetworkCreate
+    class NetworkUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 

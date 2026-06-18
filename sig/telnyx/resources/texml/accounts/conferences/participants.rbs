@@ -9,7 +9,7 @@ module Telnyx
               account_sid: String,
               conference_sid: String,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveResponse
+            ) -> Telnyx::Texml::Accounts::Conferences::ParticipantResource
 
             def update: (
               String call_sid_or_participant_label,
@@ -27,7 +27,7 @@ module Telnyx
               ?muted: bool,
               ?wait_url: String,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse
+            ) -> Telnyx::Texml::Accounts::Conferences::ParticipantResource
 
             def delete: (
               String call_sid_or_participant_label,

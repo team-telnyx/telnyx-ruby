@@ -44,7 +44,7 @@ module Telnyx
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
-        # @param filter_status [Symbol, Telnyx::Models::Dir::PhoneNumberBatchListParams::FilterStatus] Restrict to batches whose aggregate status equals this value.
+        # @param filter_status [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus] Restrict to batches whose aggregate status equals this value.
         #
         # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
@@ -52,7 +52,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Dir::PhoneNumberBatchListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Dir::PhoneNumberBatch>]
         #
         # @see Telnyx::Models::Dir::PhoneNumberBatchListParams
         def list(dir_id, params = {})
@@ -67,7 +67,7 @@ module Telnyx
               page_size: "page[size]"
             ),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Dir::PhoneNumberBatchListResponse,
+            model: Telnyx::Dir::PhoneNumberBatch,
             options: options
           )
         end

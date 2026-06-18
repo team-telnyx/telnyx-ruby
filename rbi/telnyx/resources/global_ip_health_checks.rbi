@@ -45,9 +45,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::GlobalIPHealthCheckListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::GlobalIPHealthCheck]
         )
       end
       def list(page_number: nil, page_size: nil, request_options: {})

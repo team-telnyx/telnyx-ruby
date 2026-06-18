@@ -8,24 +8,11 @@ module Telnyx
       # can be created.
       sig do
         params(
-          region_code: String,
-          enable_sip_trunking: T::Boolean,
-          name: String,
-          network_id: String,
+          body: Telnyx::WireguardInterfaceCreateParams::Body::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::WireguardInterfaceCreateResponse)
       end
-      def create(
-        # The region the interface should be deployed to.
-        region_code:,
-        # Enable SIP traffic forwarding over VPN interface.
-        enable_sip_trunking: nil,
-        # A user specified name for the interface.
-        name: nil,
-        # The id of the network associated with the interface.
-        network_id: nil,
-        request_options: {}
-      )
+      def create(body:, request_options: {})
       end
 
       # Retrieve a WireGuard Interfaces.
@@ -51,7 +38,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::WireguardInterfaceListResponse
+            Telnyx::WireguardInterfaceRead
           ]
         )
       end

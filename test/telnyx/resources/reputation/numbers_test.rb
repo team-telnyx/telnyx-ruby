@@ -9,12 +9,12 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
     response = @telnyx.reputation.numbers.retrieve("+19493253498")
 
     assert_pattern do
-      response => Telnyx::Models::Reputation::NumberRetrieveResponse
+      response => Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Reputation::NumberRetrieveResponse::Data
+        data: Telnyx::Enterprises::Reputation::ReputationPhoneNumber
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Reputation::NumberListResponse
+      row => Telnyx::Enterprises::Reputation::ReputationPhoneNumber
     end
 
     assert_pattern do

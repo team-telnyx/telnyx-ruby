@@ -1,0 +1,92 @@
+module Telnyx
+  module Models
+    class WhatsappTemplateHeaderComponent = Whatsapp::WhatsappTemplateHeaderComponent
+
+    module Whatsapp
+      type whatsapp_template_header_component =
+        {
+          file_format: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::format_,
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::type_,
+          example: Telnyx::Whatsapp::WhatsappTemplateHeaderComponent::Example,
+          text: String
+        }
+
+      class WhatsappTemplateHeaderComponent < Telnyx::Internal::Type::BaseModel
+        attr_accessor file_format: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::format_
+
+        attr_accessor type: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::type_
+
+        attr_reader example: Telnyx::Whatsapp::WhatsappTemplateHeaderComponent::Example?
+
+        def example=: (
+          Telnyx::Whatsapp::WhatsappTemplateHeaderComponent::Example
+        ) -> Telnyx::Whatsapp::WhatsappTemplateHeaderComponent::Example
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        def initialize: (
+          file_format: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::format_,
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::type_,
+          ?example: Telnyx::Whatsapp::WhatsappTemplateHeaderComponent::Example,
+          ?text: String
+        ) -> void
+
+        def to_hash: -> {
+          file_format: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::format_,
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::type_,
+          example: Telnyx::Whatsapp::WhatsappTemplateHeaderComponent::Example,
+          text: String
+        }
+
+        type format_ = :TEXT | :IMAGE | :VIDEO | :DOCUMENT | :LOCATION
+
+        module Format
+          extend Telnyx::Internal::Type::Enum
+
+          TEXT: :TEXT
+          IMAGE: :IMAGE
+          VIDEO: :VIDEO
+          DOCUMENT: :DOCUMENT
+          LOCATION: :LOCATION
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::format_]
+        end
+
+        type type_ = :HEADER
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          HEADER: :HEADER
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent::type_]
+        end
+
+        type example =
+          { header_handle: ::Array[String], header_text: ::Array[String] }
+
+        class Example < Telnyx::Internal::Type::BaseModel
+          attr_reader header_handle: ::Array[String]?
+
+          def header_handle=: (::Array[String]) -> ::Array[String]
+
+          attr_reader header_text: ::Array[String]?
+
+          def header_text=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            ?header_handle: ::Array[String],
+            ?header_text: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            header_handle: ::Array[String],
+            header_text: ::Array[String]
+          }
+        end
+      end
+    end
+  end
+end

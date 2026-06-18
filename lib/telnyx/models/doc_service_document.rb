@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::Documents#list
-    class DocServiceDocument < Telnyx::Internal::Type::BaseModel
+    class DocServiceDocument < Telnyx::Models::DocServiceRecord
       # @!attribute customer_reference
       #   Optional reference string for customer tracking.
       #
@@ -17,12 +17,6 @@ module Telnyx
       optional :filename, String
 
       response_only do
-        # @!attribute id
-        #   Identifies the resource.
-        #
-        #   @return [String, nil]
-        optional :id, String
-
         # @!attribute av_scan_status
         #   The antivirus scan status of the document.
         #
@@ -34,12 +28,6 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :content_type, String
-
-        # @!attribute created_at
-        #   ISO 8601 formatted date-time indicating when the resource was created.
-        #
-        #   @return [String, nil]
-        optional :created_at, String
 
         # @!attribute record_type
         #   Identifies the type of the resource.
@@ -64,22 +52,12 @@ module Telnyx
         #
         #   @return [Symbol, Telnyx::Models::DocServiceDocument::Status, nil]
         optional :status, enum: -> { Telnyx::DocServiceDocument::Status }
-
-        # @!attribute updated_at
-        #   ISO 8601 formatted date-time indicating when the resource was updated.
-        #
-        #   @return [String, nil]
-        optional :updated_at, String
       end
 
-      # @!method initialize(id: nil, av_scan_status: nil, content_type: nil, created_at: nil, customer_reference: nil, filename: nil, record_type: nil, sha256: nil, size: nil, status: nil, updated_at: nil)
-      #   @param id [String] Identifies the resource.
-      #
+      # @!method initialize(av_scan_status: nil, content_type: nil, customer_reference: nil, filename: nil, record_type: nil, sha256: nil, size: nil, status: nil)
       #   @param av_scan_status [Symbol, Telnyx::Models::DocServiceDocument::AvScanStatus] The antivirus scan status of the document.
       #
       #   @param content_type [String] The document's content_type.
-      #
-      #   @param created_at [String] ISO 8601 formatted date-time indicating when the resource was created.
       #
       #   @param customer_reference [String] Optional reference string for customer tracking.
       #
@@ -92,12 +70,8 @@ module Telnyx
       #   @param size [Telnyx::Models::DocServiceDocument::Size] Indicates the document's filesize
       #
       #   @param status [Symbol, Telnyx::Models::DocServiceDocument::Status] Indicates the current document reviewing status
-      #
-      #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
 
       # The antivirus scan status of the document.
-      #
-      # @see Telnyx::Models::DocServiceDocument#av_scan_status
       module AvScanStatus
         extend Telnyx::Internal::Type::Enum
 
@@ -110,7 +84,6 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # @see Telnyx::Models::DocServiceDocument#size
       class Size < Telnyx::Internal::Type::BaseModel
         response_only do
           # @!attribute amount
@@ -135,8 +108,6 @@ module Telnyx
       end
 
       # Indicates the current document reviewing status
-      #
-      # @see Telnyx::Models::DocServiceDocument#status
       module Status
         extend Telnyx::Internal::Type::Enum
 

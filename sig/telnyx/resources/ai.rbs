@@ -26,17 +26,13 @@ module Telnyx
       attr_reader tools: Telnyx::Resources::AI::Tools
 
       def create_response_deprecated: (
-        body: ::Hash[Symbol, top],
+        response_request: ::Hash[Symbol, top],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::ai_create_response_deprecated_response
 
-      def retrieve_models: (
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::AIRetrieveModelsResponse
-
-      def search_conversation_histories: (
+      def retrieve_conversation_histories: (
         q: String,
-        record_type: Telnyx::Models::AISearchConversationHistoriesParams::record_type,
+        record_type: Telnyx::Models::AIRetrieveConversationHistoriesParams::record_type,
         ?filter_document_id: String,
         ?filter_ingested_at_gte: Time,
         ?filter_ingested_at_lte: Time,
@@ -47,10 +43,14 @@ module Telnyx
         ?filter_retention: String,
         ?filter_user_id: String,
         ?min_score: Float,
-        ?region: Telnyx::Models::AISearchConversationHistoriesParams::region,
+        ?region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region,
         ?top_k: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::AISearchConversationHistoriesResponse
+      ) -> Telnyx::Models::AIRetrieveConversationHistoriesResponse
+
+      def retrieve_models: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::ModelsResponse
 
       def summarize: (
         bucket: String,

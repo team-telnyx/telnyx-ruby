@@ -28,8 +28,8 @@ module Telnyx
         # @!attribute status
         #   Filter by phone-number status.
         #
-        #   @return [Symbol, Telnyx::Models::Dir::PhoneNumberListParams::Status, nil]
-        optional :status, enum: -> { Telnyx::Dir::PhoneNumberListParams::Status }
+        #   @return [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus, nil]
+        optional :status, enum: -> { Telnyx::Dir::DirPhoneNumberStatus }
 
         # @!method initialize(dir_id:, page_number: nil, page_size: nil, status: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -41,25 +41,9 @@ module Telnyx
         #
         #   @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
-        #   @param status [Symbol, Telnyx::Models::Dir::PhoneNumberListParams::Status] Filter by phone-number status.
+        #   @param status [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus] Filter by phone-number status.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # Filter by phone-number status.
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          SUBMITTED = :submitted
-          IN_REVIEW = :in_review
-          VERIFIED = :verified
-          UNSUCCESSFUL = :unsuccessful
-          SUSPENDED = :suspended
-          EXPIRED = :expired
-          PERMANENTLY_REJECTED = :permanently_rejected
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

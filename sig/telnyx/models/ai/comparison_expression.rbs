@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    module AI
+      type comparison_expression =
+        {
+          left: top,
+          op: Telnyx::Models::AI::ComparisonExpression::op,
+          right: top,
+          type: :comparison
+        }
+
+      class ComparisonExpression < Telnyx::Internal::Type::BaseModel
+        attr_accessor left: top
+
+        attr_accessor op: Telnyx::Models::AI::ComparisonExpression::op
+
+        attr_accessor right: top
+
+        attr_accessor type: :comparison
+
+        def initialize: (
+          left: top,
+          op: Telnyx::Models::AI::ComparisonExpression::op,
+          right: top,
+          ?type: :comparison
+        ) -> void
+
+        def to_hash: -> {
+          left: top,
+          op: Telnyx::Models::AI::ComparisonExpression::op,
+          right: top,
+          type: :comparison
+        }
+
+        type op = :== | :!= | :< | :<= | :> | :>= | :contains | :not_contains
+
+        module Op
+          extend Telnyx::Internal::Type::Enum
+
+          EQ: :==
+          NE: :!=
+          LT: :<
+          LTE: :<=
+          GT: :>
+          GTE: :>=
+          CONTAINS: :contains
+          NOT_CONTAINS: :not_contains
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ComparisonExpression::op]
+        end
+      end
+    end
+  end
+end

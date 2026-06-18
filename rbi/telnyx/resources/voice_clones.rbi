@@ -9,17 +9,17 @@ module Telnyx
       # design. The clone can then be used for text-to-speech synthesis.
       sig do
         params(
-          params:
+          voice_clone_request:
             T.any(
-              Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::OrHash,
-              Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::OrHash
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::OrHash,
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceCloneCreateResponse)
+        ).returns(Telnyx::VoiceCloneResponse)
       end
       def create(
         # Request body for creating a voice clone from an existing voice design.
-        params:,
+        voice_clone_request:,
         request_options: {}
       )
       end
@@ -32,7 +32,7 @@ module Telnyx
           gender: Telnyx::VoiceCloneUpdateParams::Gender::OrSymbol,
           language: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceCloneUpdateResponse)
+        ).returns(Telnyx::VoiceCloneResponse)
       end
       def update(
         # The voice clone UUID.
@@ -92,19 +92,19 @@ module Telnyx
       # clear speech. Maximum file size: 5MB for Telnyx, 20MB for Minimax.
       sig do
         params(
-          params:
+          voice_clone_upload_request:
             T.any(
-              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxQwen3TtsClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::Params::TelnyxUltraClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::Params::MinimaxClone::OrHash
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceCloneCreateFromUploadResponse)
+        ).returns(Telnyx::VoiceCloneResponse)
       end
       def create_from_upload(
         # Multipart form data for creating a voice clone from a direct audio upload.
         # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
-        params:,
+        voice_clone_upload_request:,
         request_options: {}
       )
       end

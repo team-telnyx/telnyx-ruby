@@ -4,14 +4,14 @@ module Telnyx
       def retrieve: (
         String claim_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::InfringementClaimRetrieveResponse
+      ) -> Telnyx::InfringementClaimWrapped
 
       def contest: (
         String claim_id,
         contest_notes: String,
-        ?documents: ::Array[Telnyx::InfringementClaimContestParams::Document],
+        ?documents: ::Array[Telnyx::Document],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::InfringementClaimContestResponse
+      ) -> Telnyx::InfringementClaimWrapped
 
       def initialize: (client: Telnyx::Client) -> void
     end

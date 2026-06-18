@@ -13,7 +13,7 @@ module Telnyx
           channel_zone_id: String,
           channels: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::ChannelZoneUpdateResponse)
+        ).returns(Telnyx::GcbChannelZone)
       end
       def update(
         # Channel zone identifier
@@ -35,9 +35,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::ChannelZoneListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::GcbChannelZone]
         )
       end
       def list(page_number: nil, page_size: nil, request_options: {})

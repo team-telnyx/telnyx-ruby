@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type node_position = { x: Float, y_: Float }
+
+      class NodePosition < Telnyx::Internal::Type::BaseModel
+        attr_accessor x: Float
+
+        attr_accessor y_: Float
+
+        def initialize: (x: Float, y_: Float) -> void
+
+        def to_hash: -> { x: Float, y_: Float }
+      end
+    end
+  end
+end

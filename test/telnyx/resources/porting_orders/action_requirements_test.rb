@@ -16,7 +16,7 @@ class Telnyx::Test::Resources::PortingOrders::ActionRequirementsTest < Telnyx::T
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::PortingOrders::ActionRequirementListResponse
+      row => Telnyx::PortingOrders::PortingActionRequirement
     end
 
     assert_pattern do
@@ -27,9 +27,9 @@ class Telnyx::Test::Resources::PortingOrders::ActionRequirementsTest < Telnyx::T
         cancel_reason: String | nil,
         created_at: Time | nil,
         porting_order_id: String | nil,
-        record_type: Telnyx::Models::PortingOrders::ActionRequirementListResponse::RecordType | nil,
+        record_type: Telnyx::PortingOrders::PortingActionRequirement::RecordType | nil,
         requirement_type_id: String | nil,
-        status: Telnyx::Models::PortingOrders::ActionRequirementListResponse::Status | nil,
+        status: Telnyx::PortingOrders::PortingActionRequirement::Status | nil,
         updated_at: Time | nil
       }
     end
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::PortingOrders::ActionRequirementsTest < Telnyx::T
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::PortingOrders::ActionRequirementInitiateResponse::Data | nil
+        data: Telnyx::PortingOrders::PortingActionRequirement | nil
       }
     end
   end

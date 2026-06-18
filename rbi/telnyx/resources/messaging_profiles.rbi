@@ -303,8 +303,7 @@ module Telnyx
       sig do
         params(
           id: String,
-          time_frame:
-            Telnyx::MessagingProfileRetrieveMetricsParams::TimeFrame::OrSymbol,
+          time_frame: Telnyx::MessagingMetricsTimeFrame::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessagingProfileRetrieveMetricsResponse)
       end

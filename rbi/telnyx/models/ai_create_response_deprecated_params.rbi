@@ -15,21 +15,21 @@ module Telnyx
         end
 
       sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :body
+      attr_accessor :response_request
 
       sig do
         params(
-          body: T::Hash[Symbol, T.anything],
+          response_request: T::Hash[Symbol, T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(body:, request_options: {})
+      def self.new(response_request:, request_options: {})
       end
 
       sig do
         override.returns(
           {
-            body: T::Hash[Symbol, T.anything],
+            response_request: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions
           }
         )

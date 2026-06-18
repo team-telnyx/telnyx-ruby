@@ -15,7 +15,7 @@ module Telnyx
                 conference_sid: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveResponse
+                Telnyx::Texml::Accounts::Conferences::ParticipantResource
               )
             end
             def retrieve(
@@ -50,7 +50,7 @@ module Telnyx
                 wait_url: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse
+                Telnyx::Texml::Accounts::Conferences::ParticipantResource
               )
             end
             def update(

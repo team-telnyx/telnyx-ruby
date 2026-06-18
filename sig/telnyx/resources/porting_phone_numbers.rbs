@@ -6,7 +6,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingPhoneNumberListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingPhoneNumber]
 
       def initialize: (client: Telnyx::Client) -> void
     end

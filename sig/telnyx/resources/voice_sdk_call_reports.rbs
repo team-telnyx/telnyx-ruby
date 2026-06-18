@@ -11,7 +11,7 @@ module Telnyx
         ?page_size: Integer,
         ?sort: Telnyx::Models::VoiceSDKCallReportListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::VoiceSDKCallReportListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceSDKCallReport]
 
       def initialize: (client: Telnyx::Client) -> void
     end

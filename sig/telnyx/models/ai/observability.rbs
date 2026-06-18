@@ -6,11 +6,11 @@ module Telnyx
           host: String,
           prompt_label: String,
           prompt_name: String,
-          prompt_sync: Telnyx::Models::AI::Observability::prompt_sync,
+          prompt_sync: Telnyx::Models::AI::prompt_sync_status,
           prompt_version: Integer,
           public_key_ref: String,
           secret_key_ref: String,
-          status: Telnyx::Models::AI::Observability::status
+          status: Telnyx::Models::AI::observability_status
         }
 
       class Observability < Telnyx::Internal::Type::BaseModel
@@ -26,11 +26,11 @@ module Telnyx
 
         def prompt_name=: (String) -> String
 
-        attr_reader prompt_sync: Telnyx::Models::AI::Observability::prompt_sync?
+        attr_reader prompt_sync: Telnyx::Models::AI::prompt_sync_status?
 
         def prompt_sync=: (
-          Telnyx::Models::AI::Observability::prompt_sync
-        ) -> Telnyx::Models::AI::Observability::prompt_sync
+          Telnyx::Models::AI::prompt_sync_status
+        ) -> Telnyx::Models::AI::prompt_sync_status
 
         attr_reader prompt_version: Integer?
 
@@ -44,55 +44,33 @@ module Telnyx
 
         def secret_key_ref=: (String) -> String
 
-        attr_reader status: Telnyx::Models::AI::Observability::status?
+        attr_reader status: Telnyx::Models::AI::observability_status?
 
         def status=: (
-          Telnyx::Models::AI::Observability::status
-        ) -> Telnyx::Models::AI::Observability::status
+          Telnyx::Models::AI::observability_status
+        ) -> Telnyx::Models::AI::observability_status
 
         def initialize: (
           ?host: String,
           ?prompt_label: String,
           ?prompt_name: String,
-          ?prompt_sync: Telnyx::Models::AI::Observability::prompt_sync,
+          ?prompt_sync: Telnyx::Models::AI::prompt_sync_status,
           ?prompt_version: Integer,
           ?public_key_ref: String,
           ?secret_key_ref: String,
-          ?status: Telnyx::Models::AI::Observability::status
+          ?status: Telnyx::Models::AI::observability_status
         ) -> void
 
         def to_hash: -> {
           host: String,
           prompt_label: String,
           prompt_name: String,
-          prompt_sync: Telnyx::Models::AI::Observability::prompt_sync,
+          prompt_sync: Telnyx::Models::AI::prompt_sync_status,
           prompt_version: Integer,
           public_key_ref: String,
           secret_key_ref: String,
-          status: Telnyx::Models::AI::Observability::status
+          status: Telnyx::Models::AI::observability_status
         }
-
-        type prompt_sync = :enabled | :disabled
-
-        module PromptSync
-          extend Telnyx::Internal::Type::Enum
-
-          ENABLED: :enabled
-          DISABLED: :disabled
-
-          def self?.values: -> ::Array[Telnyx::Models::AI::Observability::prompt_sync]
-        end
-
-        type status = :enabled | :disabled
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          ENABLED: :enabled
-          DISABLED: :disabled
-
-          def self?.values: -> ::Array[Telnyx::Models::AI::Observability::status]
-        end
       end
     end
   end

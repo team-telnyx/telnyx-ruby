@@ -25,8 +25,7 @@ module Telnyx
           inbound: Telnyx::CredentialInbound::OrHash,
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
-          noise_suppression:
-            Telnyx::CredentialConnectionCreateParams::NoiseSuppression::OrSymbol,
+          noise_suppression: Telnyx::ConnectionNoiseSuppression::OrSymbol,
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
@@ -154,8 +153,7 @@ module Telnyx
           inbound: Telnyx::CredentialInbound::OrHash,
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
-          noise_suppression:
-            Telnyx::CredentialConnectionUpdateParams::NoiseSuppression::OrSymbol,
+          noise_suppression: Telnyx::ConnectionNoiseSuppression::OrSymbol,
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,

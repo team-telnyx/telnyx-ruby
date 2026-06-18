@@ -12,9 +12,7 @@ module Telnyx
               brand_id: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              T::Array[
-                Telnyx::Models::Messaging10dlc::Brand::ExternalVettingListResponseItem
-              ]
+              T::Array[Telnyx::Messaging10dlc::Brand::BrandExternalVetting]
             )
           end
           def list(
@@ -35,9 +33,7 @@ module Telnyx
               vetting_id: String,
               vetting_token: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Models::Messaging10dlc::Brand::ExternalVettingImportsResponse
-            )
+            ).returns(Telnyx::Messaging10dlc::Brand::BrandExternalVetting)
           end
           def imports(
             # Unique identifier of the brand.
@@ -64,9 +60,7 @@ module Telnyx
               evp_id: String,
               vetting_class: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Models::Messaging10dlc::Brand::ExternalVettingOrderResponse
-            )
+            ).returns(Telnyx::Messaging10dlc::Brand::BrandExternalVetting)
           end
           def order(
             # Unique identifier of the brand.

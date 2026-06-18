@@ -24,12 +24,12 @@ class Telnyx::Test::Resources::DialogflowConnectionsTest < Telnyx::Test::Resourc
       )
 
     assert_pattern do
-      response => Telnyx::Models::DialogflowConnectionCreateResponse
+      response => Telnyx::DialogflowConnectionResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::DialogflowConnectionCreateResponse::Data
+        data: Telnyx::DialogflowConnectionResponse::Data
       }
     end
   end
@@ -40,12 +40,12 @@ class Telnyx::Test::Resources::DialogflowConnectionsTest < Telnyx::Test::Resourc
     response = @telnyx.dialogflow_connections.retrieve("connection_id")
 
     assert_pattern do
-      response => Telnyx::Models::DialogflowConnectionRetrieveResponse
+      response => Telnyx::DialogflowConnectionResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::DialogflowConnectionRetrieveResponse::Data
+        data: Telnyx::DialogflowConnectionResponse::Data
       }
     end
   end
@@ -71,12 +71,12 @@ class Telnyx::Test::Resources::DialogflowConnectionsTest < Telnyx::Test::Resourc
       )
 
     assert_pattern do
-      response => Telnyx::Models::DialogflowConnectionUpdateResponse
+      response => Telnyx::DialogflowConnectionResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::DialogflowConnectionUpdateResponse::Data
+        data: Telnyx::DialogflowConnectionResponse::Data
       }
     end
   end

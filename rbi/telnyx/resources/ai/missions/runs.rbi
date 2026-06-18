@@ -21,7 +21,7 @@ module Telnyx
               input: T::Hash[Symbol, T.anything],
               metadata: T::Hash[Symbol, T.anything],
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Missions::RunCreateResponse)
+            ).returns(Telnyx::AI::Missions::MissionRunResponse)
           end
           def create(
             # Unique identifier of the mission.
@@ -38,7 +38,7 @@ module Telnyx
               run_id: String,
               mission_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Missions::RunRetrieveResponse)
+            ).returns(Telnyx::AI::Missions::MissionRunResponse)
           end
           def retrieve(
             # Unique identifier of the run.
@@ -58,9 +58,9 @@ module Telnyx
               metadata: T::Hash[Symbol, T.anything],
               result_payload: T::Hash[Symbol, T.anything],
               result_summary: String,
-              status: Telnyx::AI::Missions::RunUpdateParams::Status::OrSymbol,
+              status: Telnyx::AI::Missions::RunStatus::OrSymbol,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Missions::RunUpdateResponse)
+            ).returns(Telnyx::AI::Missions::MissionRunResponse)
           end
           def update(
             # Path param: Unique identifier of the run.
@@ -114,7 +114,7 @@ module Telnyx
               run_id: String,
               mission_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Missions::RunCancelRunResponse)
+            ).returns(Telnyx::AI::Missions::MissionRunResponse)
           end
           def cancel_run(
             # Unique identifier of the run.
@@ -155,7 +155,7 @@ module Telnyx
               run_id: String,
               mission_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Missions::RunPauseRunResponse)
+            ).returns(Telnyx::AI::Missions::MissionRunResponse)
           end
           def pause_run(
             # Unique identifier of the run.
@@ -172,7 +172,7 @@ module Telnyx
               run_id: String,
               mission_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Missions::RunResumeRunResponse)
+            ).returns(Telnyx::AI::Missions::MissionRunResponse)
           end
           def resume_run(
             # Unique identifier of the run.

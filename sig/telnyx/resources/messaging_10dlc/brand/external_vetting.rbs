@@ -14,14 +14,14 @@ module Telnyx
             vetting_id: String,
             ?vetting_token: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Messaging10dlc::Brand::ExternalVettingImportsResponse
+          ) -> Telnyx::Messaging10dlc::Brand::BrandExternalVetting
 
           def order: (
             String brand_id,
             evp_id: String,
             vetting_class: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Messaging10dlc::Brand::ExternalVettingOrderResponse
+          ) -> Telnyx::Messaging10dlc::Brand::BrandExternalVetting
 
           def initialize: (client: Telnyx::Client) -> void
         end

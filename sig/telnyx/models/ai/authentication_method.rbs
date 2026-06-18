@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      type authentication_method = :token | :certificate
+
+      module AuthenticationMethod
+        extend Telnyx::Internal::Type::Enum
+
+        TOKEN: :token
+        CERTIFICATE: :certificate
+
+        def self?.values: -> ::Array[Telnyx::Models::AI::authentication_method]
+      end
+    end
+  end
+end

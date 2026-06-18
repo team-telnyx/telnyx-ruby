@@ -26,11 +26,7 @@ module Telnyx
           page_size: Integer,
           sort: Telnyx::ConnectionListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::ConnectionListResponse
-          ]
-        )
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::Connection])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

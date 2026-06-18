@@ -5,7 +5,7 @@ module Telnyx
         {
           page_number: Integer,
           page_size: Integer,
-          product_type: Telnyx::Models::TermsOfService::AgreementListParams::product_type
+          product_type: Telnyx::Models::TermsOfService::tos_product_type
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -21,36 +21,25 @@ module Telnyx
 
         def page_size=: (Integer) -> Integer
 
-        attr_reader product_type: Telnyx::Models::TermsOfService::AgreementListParams::product_type?
+        attr_reader product_type: Telnyx::Models::TermsOfService::tos_product_type?
 
         def product_type=: (
-          Telnyx::Models::TermsOfService::AgreementListParams::product_type
-        ) -> Telnyx::Models::TermsOfService::AgreementListParams::product_type
+          Telnyx::Models::TermsOfService::tos_product_type
+        ) -> Telnyx::Models::TermsOfService::tos_product_type
 
         def initialize: (
           ?page_number: Integer,
           ?page_size: Integer,
-          ?product_type: Telnyx::Models::TermsOfService::AgreementListParams::product_type,
+          ?product_type: Telnyx::Models::TermsOfService::tos_product_type,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           page_number: Integer,
           page_size: Integer,
-          product_type: Telnyx::Models::TermsOfService::AgreementListParams::product_type,
+          product_type: Telnyx::Models::TermsOfService::tos_product_type,
           request_options: Telnyx::RequestOptions
         }
-
-        type product_type = :branded_calling | :number_reputation
-
-        module ProductType
-          extend Telnyx::Internal::Type::Enum
-
-          BRANDED_CALLING: :branded_calling
-          NUMBER_REPUTATION: :number_reputation
-
-          def self?.values: -> ::Array[Telnyx::Models::TermsOfService::AgreementListParams::product_type]
-        end
       end
     end
   end

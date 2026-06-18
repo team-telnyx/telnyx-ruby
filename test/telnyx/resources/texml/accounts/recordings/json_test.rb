@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Recordings::JsonTest < Telnyx::T
       response => {
         account_sid: String | nil,
         call_sid: String | nil,
-        channels: Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels | nil,
+        channels: Telnyx::Texml::Accounts::Calls::TwimlRecordingChannels | nil,
         conference_sid: String | nil,
         date_created: Time | nil,
         date_updated: Time | nil,
@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Recordings::JsonTest < Telnyx::T
         error_code: String | nil,
         media_url: String | nil,
         sid: String | nil,
-        source: Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source | nil,
+        source: Telnyx::Texml::Accounts::Calls::RecordingSource | nil,
         start_time: Time | nil,
         status: Telnyx::Texml::TexmlGetCallRecordingResponseBody::Status | nil,
         subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris | nil,

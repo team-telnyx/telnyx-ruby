@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WebhookDeliveryRetrieveResponse::Data | nil
+        data: Telnyx::WebhookDelivery | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::WebhookDeliveryListResponse
+      row => Telnyx::WebhookDelivery
     end
 
     assert_pattern do
@@ -42,9 +42,9 @@ class Telnyx::Test::Resources::WebhookDeliveriesTest < Telnyx::Test::ResourceTes
         finished_at: Time | nil,
         record_type: String | nil,
         started_at: Time | nil,
-        status: Telnyx::Models::WebhookDeliveryListResponse::Status | nil,
+        status: Telnyx::WebhookDelivery::Status | nil,
         user_id: String | nil,
-        webhook: Telnyx::Models::WebhookDeliveryListResponse::Webhook | nil
+        webhook: Telnyx::WebhookDelivery::Webhook | nil
       }
     end
   end

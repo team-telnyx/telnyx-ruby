@@ -74,7 +74,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EnterpriseCreateResponse]
+      # @return [Telnyx::Models::EnterprisePublicWrapped]
       #
       # @see Telnyx::Models::EnterpriseCreateParams
       def create(params)
@@ -83,7 +83,7 @@ module Telnyx
           method: :post,
           path: "enterprises",
           body: parsed,
-          model: Telnyx::Models::EnterpriseCreateResponse,
+          model: Telnyx::EnterprisePublicWrapped,
           options: options
         )
       end
@@ -97,14 +97,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EnterpriseRetrieveResponse]
+      # @return [Telnyx::Models::EnterprisePublicWrapped]
       #
       # @see Telnyx::Models::EnterpriseRetrieveParams
       def retrieve(enterprise_id, params = {})
         @client.request(
           method: :get,
           path: ["enterprises/%1$s", enterprise_id],
-          model: Telnyx::Models::EnterpriseRetrieveResponse,
+          model: Telnyx::EnterprisePublicWrapped,
           options: params[:request_options]
         )
       end
@@ -155,7 +155,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EnterpriseUpdateResponse]
+      # @return [Telnyx::Models::EnterprisePublicWrapped]
       #
       # @see Telnyx::Models::EnterpriseUpdateParams
       def update(enterprise_id, params = {})
@@ -164,7 +164,7 @@ module Telnyx
           method: :put,
           path: ["enterprises/%1$s", enterprise_id],
           body: parsed,
-          model: Telnyx::Models::EnterpriseUpdateResponse,
+          model: Telnyx::EnterprisePublicWrapped,
           options: options
         )
       end
@@ -257,20 +257,20 @@ module Telnyx
       # **Pricing:** This is a billable action. See https://telnyx.com/pricing/numbers
       # for current pricing.
       #
-      # @overload activate_branded_calling(enterprise_id, request_options: {})
+      # @overload branded_calling(enterprise_id, request_options: {})
       #
       # @param enterprise_id [String] The enterprise id. Lowercase UUID.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EnterpriseActivateBrandedCallingResponse]
+      # @return [Telnyx::Models::EnterprisePublicWrapped]
       #
-      # @see Telnyx::Models::EnterpriseActivateBrandedCallingParams
-      def activate_branded_calling(enterprise_id, params = {})
+      # @see Telnyx::Models::EnterpriseBrandedCallingParams
+      def branded_calling(enterprise_id, params = {})
         @client.request(
           method: :post,
           path: ["enterprises/%1$s/branded_calling", enterprise_id],
-          model: Telnyx::Models::EnterpriseActivateBrandedCallingResponse,
+          model: Telnyx::EnterprisePublicWrapped,
           options: params[:request_options]
         )
       end

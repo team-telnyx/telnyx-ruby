@@ -10,10 +10,9 @@ module Telnyx
 
       # Create a new Network.
       #
-      # @overload create(name:, request_options: {})
+      # @overload create(network_create:, request_options: {})
       #
-      # @param name [String] A user specified name for the network.
-      #
+      # @param network_create [Telnyx::Models::NetworkCreate]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::NetworkCreateResponse]
@@ -24,7 +23,7 @@ module Telnyx
         @client.request(
           method: :post,
           path: "networks",
-          body: parsed,
+          body: parsed[:network_create],
           model: Telnyx::Models::NetworkCreateResponse,
           options: options
         )
@@ -52,11 +51,11 @@ module Telnyx
 
       # Update a Network.
       #
-      # @overload update(network_id, name:, request_options: {})
+      # @overload update(network_id, network_create:, request_options: {})
       #
       # @param network_id [String] Identifies the resource.
       #
-      # @param name [String] A user specified name for the network.
+      # @param network_create [Telnyx::Models::NetworkCreate]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -68,7 +67,7 @@ module Telnyx
         @client.request(
           method: :patch,
           path: ["networks/%1$s", network_id],
-          body: parsed,
+          body: parsed[:network_create],
           model: Telnyx::Models::NetworkUpdateResponse,
           options: options
         )
@@ -86,7 +85,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NetworkListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Network>]
       #
       # @see Telnyx::Models::NetworkListParams
       def list(params = {})
@@ -97,7 +96,7 @@ module Telnyx
           path: "networks",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::NetworkListResponse,
+          model: Telnyx::Network,
           options: options
         )
       end

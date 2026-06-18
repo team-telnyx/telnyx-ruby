@@ -15,14 +15,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TermsOfService::NumberReputationAgreeResponse]
+        # @return [Telnyx::Models::TermsOfService::TosAgreementWrapped]
         #
         # @see Telnyx::Models::TermsOfService::NumberReputationAgreeParams
         def agree(params = {})
           @client.request(
             method: :post,
             path: "terms_of_service/number_reputation/agree",
-            model: Telnyx::Models::TermsOfService::NumberReputationAgreeResponse,
+            model: Telnyx::TermsOfService::TosAgreementWrapped,
             options: params[:request_options]
           )
         end

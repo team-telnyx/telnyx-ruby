@@ -10,7 +10,7 @@ module Telnyx
           command_id: String,
           language: Telnyx::Models::Conferences::ActionSpeakParams::language,
           payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
-          region: Telnyx::Models::Conferences::ActionSpeakParams::region,
+          region: Telnyx::Models::Conferences::conference_region,
           voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings
         }
         & Telnyx::Internal::Type::request_parameters
@@ -45,11 +45,11 @@ module Telnyx
           Telnyx::Models::Conferences::ActionSpeakParams::payload_type
         ) -> Telnyx::Models::Conferences::ActionSpeakParams::payload_type
 
-        attr_reader region: Telnyx::Models::Conferences::ActionSpeakParams::region?
+        attr_reader region: Telnyx::Models::Conferences::conference_region?
 
         def region=: (
-          Telnyx::Models::Conferences::ActionSpeakParams::region
-        ) -> Telnyx::Models::Conferences::ActionSpeakParams::region
+          Telnyx::Models::Conferences::conference_region
+        ) -> Telnyx::Models::Conferences::conference_region
 
         attr_reader voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings?
 
@@ -65,7 +65,7 @@ module Telnyx
           ?command_id: String,
           ?language: Telnyx::Models::Conferences::ActionSpeakParams::language,
           ?payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
-          ?region: Telnyx::Models::Conferences::ActionSpeakParams::region,
+          ?region: Telnyx::Models::Conferences::conference_region,
           ?voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -78,7 +78,7 @@ module Telnyx
           command_id: String,
           language: Telnyx::Models::Conferences::ActionSpeakParams::language,
           payload_type: Telnyx::Models::Conferences::ActionSpeakParams::payload_type,
-          region: Telnyx::Models::Conferences::ActionSpeakParams::region,
+          region: Telnyx::Models::Conferences::conference_region,
           voice_settings: Telnyx::Models::Conferences::ActionSpeakParams::voice_settings,
           request_options: Telnyx::RequestOptions
         }
@@ -161,19 +161,6 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::payload_type]
         end
 
-        type region = :Australia | :Europe | :"Middle East" | :US
-
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA: :Australia
-          EUROPE: :Europe
-          MIDDLE_EAST: :"Middle East"
-          US: :US
-
-          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::region]
-        end
-
         type voice_settings =
           Telnyx::Calls::ElevenLabsVoiceSettings
           | Telnyx::Calls::TelnyxVoiceSettings
@@ -182,63 +169,11 @@ module Telnyx
           | Telnyx::AzureVoiceSettings
           | Telnyx::RimeVoiceSettings
           | Telnyx::ResembleVoiceSettings
-          | Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Inworld
-          | Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Xai
+          | Telnyx::InworldVoiceSettings
+          | Telnyx::XaiVoiceSettings
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
-
-          type inworld =
-            {
-              type: :inworld,
-              delivery_mode: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
-            }
-
-          class Inworld < Telnyx::Internal::Type::BaseModel
-            attr_accessor type: :inworld
-
-            attr_reader delivery_mode: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode?
-
-            def delivery_mode=: (
-              Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
-            ) -> Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
-
-            def initialize: (
-              ?delivery_mode: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode,
-              ?type: :inworld
-            ) -> void
-
-            def to_hash: -> {
-              type: :inworld,
-              delivery_mode: Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode
-            }
-
-            type delivery_mode = :STABLE | :BALANCED | :CREATIVE
-
-            module DeliveryMode
-              extend Telnyx::Internal::Type::Enum
-
-              STABLE: :STABLE
-              BALANCED: :BALANCED
-              CREATIVE: :CREATIVE
-
-              def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::delivery_mode]
-            end
-          end
-
-          type xai = { type: :xai, language: String }
-
-          class Xai < Telnyx::Internal::Type::BaseModel
-            attr_accessor type: :xai
-
-            attr_reader language: String?
-
-            def language=: (String) -> String
-
-            def initialize: (?language: String, ?type: :xai) -> void
-
-            def to_hash: -> { type: :xai, language: String }
-          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Conferences::ActionSpeakParams::voice_settings]
         end

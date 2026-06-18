@@ -13,7 +13,7 @@ module Telnyx
             allowed_tools: T.nilable(T::Array[String]),
             api_key_ref: T.nilable(String),
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::McpServerCreateResponse)
+          ).returns(Telnyx::AI::McpServer)
         end
         def create(
           name:,
@@ -30,7 +30,7 @@ module Telnyx
           params(
             mcp_server_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::McpServerRetrieveResponse)
+          ).returns(Telnyx::AI::McpServer)
         end
         def retrieve(
           # Unique identifier of the mcp server.
@@ -51,7 +51,7 @@ module Telnyx
             type: String,
             url: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::McpServerUpdateResponse)
+          ).returns(Telnyx::AI::McpServer)
         end
         def update(
           # Unique identifier of the mcp server.
@@ -77,7 +77,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPaginationTopLevelArray[
-              Telnyx::Models::AI::McpServerListResponse
+              Telnyx::AI::McpServer
             ]
           )
         end

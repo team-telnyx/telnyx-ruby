@@ -19,7 +19,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
+              Telnyx::Enterprises::ReputationCheckFrequency::TaggedSymbol
             )
           )
         end
@@ -28,7 +28,7 @@ module Telnyx
         sig do
           params(
             check_frequency:
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::OrSymbol
+              Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol
           ).void
         end
         attr_writer :check_frequency
@@ -99,7 +99,7 @@ module Telnyx
         sig do
           params(
             check_frequency:
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::OrSymbol,
+              Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol,
             created_at: Time,
             enterprise_id: String,
             loa_document_id: T.nilable(String),
@@ -134,7 +134,7 @@ module Telnyx
           override.returns(
             {
               check_frequency:
-                Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol,
+                Telnyx::Enterprises::ReputationCheckFrequency::TaggedSymbol,
               created_at: Time,
               enterprise_id: String,
               loa_document_id: T.nilable(String),
@@ -148,62 +148,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        # How often Telnyx refreshes the stored reputation data for this enterprise's
-        # registered numbers.
-        module CheckFrequency
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          BUSINESS_DAILY =
-            T.let(
-              :business_daily,
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
-            )
-          DAILY =
-            T.let(
-              :daily,
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
-            )
-          WEEKLY =
-            T.let(
-              :weekly,
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
-            )
-          BIWEEKLY =
-            T.let(
-              :biweekly,
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
-            )
-          MONTHLY =
-            T.let(
-              :monthly,
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
-            )
-          NEVER =
-            T.let(
-              :never,
-              Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         # Customer-facing Letter-of-Authorization verification state. `approved` is

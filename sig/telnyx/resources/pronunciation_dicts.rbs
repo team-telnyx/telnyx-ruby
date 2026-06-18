@@ -2,22 +2,22 @@ module Telnyx
   module Resources
     class PronunciationDicts
       def create: (
-        items: ::Array[Telnyx::Models::PronunciationDictCreateParams::item],
+        items: ::Array[Telnyx::Models::pronunciation_dict_item],
         name: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PronunciationDictCreateResponse
+      ) -> Telnyx::PronunciationDictResponse
 
       def retrieve: (
         String id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PronunciationDictRetrieveResponse
+      ) -> Telnyx::PronunciationDictResponse
 
       def update: (
         String id,
-        ?items: ::Array[Telnyx::Models::PronunciationDictUpdateParams::item],
+        ?items: ::Array[Telnyx::Models::pronunciation_dict_item],
         ?name: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::PronunciationDictUpdateResponse
+      ) -> Telnyx::PronunciationDictResponse
 
       def list: (
         ?page_number: Integer,

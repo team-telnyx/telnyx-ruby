@@ -44,12 +44,11 @@ module Telnyx
               Telnyx::Enterprises::DirCreateParams::CertifyNoShaftContent::OrBoolean,
             display_name: String,
             call_reasons: T::Array[String],
-            documents:
-              T::Array[Telnyx::Enterprises::DirCreateParams::Document::OrHash],
+            documents: T::Array[Telnyx::Document::OrHash],
             logo_url: String,
             reselling: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Enterprises::DirCreateResponse)
+          ).returns(Telnyx::DirWrapped)
         end
         def create(
           # The enterprise id. Lowercase UUID.
@@ -100,17 +99,12 @@ module Telnyx
             filter_expiring_at_gte: Time,
             filter_expiring_at_lte: Time,
             filter_expiring_within_days: Integer,
-            filter_status:
-              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
+            filter_status: Telnyx::DirStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             sort: Telnyx::Enterprises::DirListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Enterprises::DirListResponse
-            ]
-          )
+          ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::DirAPI])
         end
         def list(
           # The enterprise id. Lowercase UUID.

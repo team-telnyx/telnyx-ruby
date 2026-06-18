@@ -1,47 +1,78 @@
 module Telnyx
   module Models
     type wireguard_interface_create_params =
-      {
-        region_code: String,
-        enable_sip_trunking: bool,
-        name: String,
-        network_id: String
-      }
+      { body: Telnyx::WireguardInterfaceCreateParams::Body }
       & Telnyx::Internal::Type::request_parameters
 
     class WireguardInterfaceCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor region_code: String
-
-      attr_reader enable_sip_trunking: bool?
-
-      def enable_sip_trunking=: (bool) -> bool
-
-      attr_reader name: String?
-
-      def name=: (String) -> String
-
-      attr_reader network_id: String?
-
-      def network_id=: (String) -> String
+      attr_accessor body: Telnyx::WireguardInterfaceCreateParams::Body
 
       def initialize: (
-        region_code: String,
-        ?enable_sip_trunking: bool,
-        ?name: String,
-        ?network_id: String,
+        body: Telnyx::WireguardInterfaceCreateParams::Body,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        region_code: String,
-        enable_sip_trunking: bool,
-        name: String,
-        network_id: String,
+        body: Telnyx::WireguardInterfaceCreateParams::Body,
         request_options: Telnyx::RequestOptions
       }
+
+      type body =
+        {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String,
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          enable_sip_trunking: bool,
+          endpoint: String,
+          public_key: String,
+          region_code: String
+        }
+
+      class Body < Telnyx::Internal::Type::BaseModel
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader network_id: String?
+
+        def network_id=: (String) -> String
+
+        attr_reader enable_sip_trunking: bool?
+
+        def enable_sip_trunking=: (bool) -> bool
+
+        attr_reader region_code: String?
+
+        def region_code=: (String) -> String
+
+        def initialize: (
+          ?name: String,
+          ?network_id: String,
+          ?enable_sip_trunking: bool,
+          ?region_code: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          record_type: String,
+          updated_at: String,
+          name: String,
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          enable_sip_trunking: bool,
+          endpoint: String,
+          public_key: String,
+          region_code: String
+        }
+      end
     end
   end
 end

@@ -46,7 +46,7 @@ module Telnyx
         String participant_id,
         id: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ConferenceRetrieveParticipantResponse
+      ) -> Telnyx::ConferenceParticipantResource
 
       def update_participant: (
         String participant_id,
@@ -55,7 +55,7 @@ module Telnyx
         ?end_conference_on_exit: bool,
         ?soft_end_conference_on_exit: bool,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ConferenceUpdateParticipantResponse
+      ) -> Telnyx::ConferenceParticipantResource
 
       def initialize: (client: Telnyx::Client) -> void
     end

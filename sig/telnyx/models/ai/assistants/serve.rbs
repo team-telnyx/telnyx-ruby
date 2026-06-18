@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type serve =
+          {
+            rollout: ::Array[Telnyx::AI::Assistants::RolloutSlot],
+            version_id: String
+          }
+
+        class Serve < Telnyx::Internal::Type::BaseModel
+          attr_reader rollout: ::Array[Telnyx::AI::Assistants::RolloutSlot]?
+
+          def rollout=: (
+            ::Array[Telnyx::AI::Assistants::RolloutSlot]
+          ) -> ::Array[Telnyx::AI::Assistants::RolloutSlot]
+
+          attr_reader version_id: String?
+
+          def version_id=: (String) -> String
+
+          def initialize: (
+            ?rollout: ::Array[Telnyx::AI::Assistants::RolloutSlot],
+            ?version_id: String
+          ) -> void
+
+          def to_hash: -> {
+            rollout: ::Array[Telnyx::AI::Assistants::RolloutSlot],
+            version_id: String
+          }
+        end
+      end
+    end
+  end
+end

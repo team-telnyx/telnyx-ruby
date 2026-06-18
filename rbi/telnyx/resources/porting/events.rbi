@@ -28,7 +28,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Porting::EventListResponse::Variants
+              Telnyx::Porting::PortingEvent::Variants
             ]
           )
         end

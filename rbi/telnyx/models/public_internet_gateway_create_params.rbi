@@ -14,57 +14,52 @@ module Telnyx
           )
         end
 
-      # A user specified name for the interface.
-      sig { returns(T.nilable(String)) }
-      attr_reader :name
-
-      sig { params(name: String).void }
-      attr_writer :name
-
-      # The id of the network associated with the interface.
-      sig { returns(T.nilable(String)) }
-      attr_reader :network_id
-
-      sig { params(network_id: String).void }
-      attr_writer :network_id
-
-      # The region interface is deployed to.
-      sig { returns(T.nilable(String)) }
-      attr_reader :region_code
-
-      sig { params(region_code: String).void }
-      attr_writer :region_code
+      sig { returns(Telnyx::PublicInternetGatewayCreateParams::Body) }
+      attr_reader :body
 
       sig do
         params(
-          name: String,
-          network_id: String,
-          region_code: String,
+          body: Telnyx::PublicInternetGatewayCreateParams::Body::OrHash
+        ).void
+      end
+      attr_writer :body
+
+      sig do
+        params(
+          body: Telnyx::PublicInternetGatewayCreateParams::Body::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(
-        # A user specified name for the interface.
-        name: nil,
-        # The id of the network associated with the interface.
-        network_id: nil,
-        # The region interface is deployed to.
-        region_code: nil,
-        request_options: {}
-      )
+      def self.new(body:, request_options: {})
       end
 
       sig do
         override.returns(
           {
-            name: String,
-            network_id: String,
-            region_code: String,
+            body: Telnyx::PublicInternetGatewayCreateParams::Body,
             request_options: Telnyx::RequestOptions
           }
         )
       end
       def to_hash
+      end
+
+      class Body < Telnyx::Models::PublicInternetGateway
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::PublicInternetGatewayCreateParams::Body,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        sig { returns(T.attached_class) }
+        def self.new
+        end
+
+        sig { override.returns({}) }
+        def to_hash
+        end
       end
     end
   end

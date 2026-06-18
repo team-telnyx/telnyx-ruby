@@ -19,7 +19,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::CustomStorageCredentialCreateResponse]
+      # @return [Telnyx::Models::CredentialsResponse]
       #
       # @see Telnyx::Models::CustomStorageCredentialCreateParams
       def create(connection_id, params)
@@ -28,7 +28,7 @@ module Telnyx
           method: :post,
           path: ["custom_storage_credentials/%1$s", connection_id],
           body: parsed,
-          model: Telnyx::Models::CustomStorageCredentialCreateResponse,
+          model: Telnyx::CredentialsResponse,
           options: options
         )
       end
@@ -44,14 +44,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::CustomStorageCredentialRetrieveResponse]
+      # @return [Telnyx::Models::CredentialsResponse]
       #
       # @see Telnyx::Models::CustomStorageCredentialRetrieveParams
       def retrieve(connection_id, params = {})
         @client.request(
           method: :get,
           path: ["custom_storage_credentials/%1$s", connection_id],
-          model: Telnyx::Models::CustomStorageCredentialRetrieveResponse,
+          model: Telnyx::CredentialsResponse,
           options: params[:request_options]
         )
       end
@@ -71,7 +71,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::CustomStorageCredentialUpdateResponse]
+      # @return [Telnyx::Models::CredentialsResponse]
       #
       # @see Telnyx::Models::CustomStorageCredentialUpdateParams
       def update(connection_id, params)
@@ -80,7 +80,7 @@ module Telnyx
           method: :put,
           path: ["custom_storage_credentials/%1$s", connection_id],
           body: parsed,
-          model: Telnyx::Models::CustomStorageCredentialUpdateResponse,
+          model: Telnyx::CredentialsResponse,
           options: options
         )
       end

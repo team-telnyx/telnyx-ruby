@@ -15,14 +15,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::IntegrationRetrieveResponse]
+        # @return [Telnyx::Models::AI::Integration]
         #
         # @see Telnyx::Models::AI::IntegrationRetrieveParams
         def retrieve(integration_id, params = {})
           @client.request(
             method: :get,
             path: ["ai/integrations/%1$s", integration_id],
-            model: Telnyx::Models::AI::IntegrationRetrieveResponse,
+            model: Telnyx::AI::Integration,
             options: params[:request_options]
           )
         end

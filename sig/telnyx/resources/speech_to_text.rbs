@@ -3,9 +3,22 @@ module Telnyx
     class SpeechToText
       def list_providers: (
         ?provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
-        ?service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type,
+        ?service_type: Telnyx::Models::stt_service_type,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::SpeechToTextListProvidersResponse
+
+      def retrieve_transcription: (
+        input_format: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::input_format,
+        transcription_engine: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::transcription_engine,
+        ?endpointing: Integer,
+        ?interim_results: bool,
+        ?keyterm: String,
+        ?keywords: String,
+        ?language: String,
+        ?model: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::model,
+        ?redact: String,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
 
       def initialize: (client: Telnyx::Client) -> void
     end

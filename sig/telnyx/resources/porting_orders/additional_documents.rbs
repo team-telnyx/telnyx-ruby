@@ -15,7 +15,7 @@ module Telnyx
           ?page_size: Integer,
           ?sort: Telnyx::PortingOrders::AdditionalDocumentListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::AdditionalDocumentListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingOrders::PortingAdditionalDocument]
 
         def delete: (
           String additional_document_id,

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::RequirementsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::RequirementRetrieveResponse::Data | nil
+        data: Telnyx::DocReqsRequirement | nil
       }
     end
   end
@@ -32,17 +32,17 @@ class Telnyx::Test::Resources::RequirementsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::RequirementListResponse
+      row => Telnyx::DocReqsRequirement
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        action: Telnyx::Models::RequirementListResponse::Action | nil,
+        action: Telnyx::DocReqsRequirement::Action | nil,
         country_code: String | nil,
         created_at: String | nil,
         locality: String | nil,
-        phone_number_type: Telnyx::Models::RequirementListResponse::PhoneNumberType | nil,
+        phone_number_type: Telnyx::DocReqsRequirement::PhoneNumberType | nil,
         record_type: String | nil,
         requirements_types: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::DocReqsRequirementType]) | nil,
         updated_at: String | nil

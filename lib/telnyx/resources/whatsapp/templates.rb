@@ -14,7 +14,7 @@ module Telnyx
         #
         # @param category [Symbol, Telnyx::Models::Whatsapp::TemplateCreateParams::Category] Template category: AUTHENTICATION, UTILITY, or MARKETING.
         #
-        # @param components [Array<Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Header, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Body, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Footer, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Buttons, Telnyx::Models::Whatsapp::TemplateCreateParams::Component::Carousel>] Template components defining message structure. Passed through to Meta Graph API
+        # @param components [Array<Telnyx::Models::Whatsapp::WhatsappTemplateHeaderComponent, Telnyx::Models::Whatsapp::WhatsappTemplateBodyComponent, Telnyx::Models::Whatsapp::WhatsappTemplateFooterComponent, Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent, Telnyx::Models::Whatsapp::WhatsappTemplateCarouselComponent>] Template components defining message structure. Passed through to Meta Graph API
         #
         # @param language [String] Template language code (e.g. en_US, es, pt_BR).
         #

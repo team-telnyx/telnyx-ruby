@@ -33,7 +33,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::CallRetrieveResponse]
+          # @return [Telnyx::Models::Texml::Accounts::CallResource]
           #
           # @see Telnyx::Models::Texml::Accounts::CallRetrieveParams
           def retrieve(call_sid, params)
@@ -45,7 +45,7 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["texml/Accounts/%1$s/Calls/%2$s", account_sid, call_sid],
-              model: Telnyx::Models::Texml::Accounts::CallRetrieveResponse,
+              model: Telnyx::Texml::Accounts::CallResource,
               options: options
             )
           end
@@ -80,7 +80,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::CallUpdateResponse]
+          # @return [Telnyx::Models::Texml::Accounts::CallResource]
           #
           # @see Telnyx::Models::Texml::Accounts::CallUpdateParams
           def update(call_sid, params)
@@ -94,7 +94,7 @@ module Telnyx
               path: ["texml/Accounts/%1$s/Calls/%2$s", account_sid, call_sid],
               headers: {"content-type" => "application/x-www-form-urlencoded"},
               body: parsed,
-              model: Telnyx::Models::Texml::Accounts::CallUpdateResponse,
+              model: Telnyx::Texml::Accounts::CallResource,
               options: options
             )
           end
@@ -102,11 +102,11 @@ module Telnyx
           # Initiate an outbound TeXML call. Telnyx will request TeXML from the XML Request
           # URL configured for the connection in the Mission Control Portal.
           #
-          # @overload calls(account_sid, params:, request_options: {})
+          # @overload calls(account_sid, body:, request_options: {})
           #
           # @param account_sid [String] The id of the account the resource belongs to.
           #
-          # @param params [Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault]
+          # @param body [Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault]
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -118,7 +118,7 @@ module Telnyx
             @client.request(
               method: :post,
               path: ["texml/Accounts/%1$s/Calls", account_sid],
-              body: parsed[:params],
+              body: parsed[:body],
               model: Telnyx::Models::Texml::Accounts::CallCallsResponse,
               options: options
             )

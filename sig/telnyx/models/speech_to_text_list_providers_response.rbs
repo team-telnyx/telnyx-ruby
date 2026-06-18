@@ -48,38 +48,22 @@ module Telnyx
         }
 
         type service_type =
-          {
-            languages: ::Array[String],
-            type: Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::type_
-          }
+          { languages: ::Array[String], type: Telnyx::Models::stt_service_type }
 
         class ServiceType < Telnyx::Internal::Type::BaseModel
           attr_accessor languages: ::Array[String]
 
-          attr_accessor type: Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::type_
+          attr_accessor type: Telnyx::Models::stt_service_type
 
           def initialize: (
             languages: ::Array[String],
-            type: Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::type_
+            type: Telnyx::Models::stt_service_type
           ) -> void
 
           def to_hash: -> {
             languages: ::Array[String],
-            type: Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::type_
+            type: Telnyx::Models::stt_service_type
           }
-
-          type type_ = :streaming | :file_based | :in_call | :ai_assistant
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            STREAMING: :streaming
-            FILE_BASED: :file_based
-            IN_CALL: :in_call
-            AI_ASSISTANT: :ai_assistant
-
-            def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::type_]
-          end
         end
       end
 

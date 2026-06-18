@@ -11,97 +11,18 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::Models::GlobalIPDeleteResponse::Data)) }
+      sig { returns(T.nilable(Telnyx::GlobalIP)) }
       attr_reader :data
 
-      sig do
-        params(data: Telnyx::Models::GlobalIPDeleteResponse::Data::OrHash).void
-      end
+      sig { params(data: Telnyx::GlobalIP::OrHash).void }
       attr_writer :data
 
-      sig do
-        params(
-          data: Telnyx::Models::GlobalIPDeleteResponse::Data::OrHash
-        ).returns(T.attached_class)
-      end
+      sig { params(data: Telnyx::GlobalIP::OrHash).returns(T.attached_class) }
       def self.new(data: nil)
       end
 
-      sig do
-        override.returns({ data: Telnyx::Models::GlobalIPDeleteResponse::Data })
-      end
+      sig { override.returns({ data: Telnyx::GlobalIP }) }
       def to_hash
-      end
-
-      class Data < Telnyx::Models::Record
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::Models::GlobalIPDeleteResponse::Data,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # A user specified description for the address.
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
-
-        # A user specified name for the address.
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
-
-        # A Global IP ports grouped by protocol code.
-        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-        attr_reader :ports
-
-        sig { params(ports: T::Hash[Symbol, T.anything]).void }
-        attr_writer :ports
-
-        # The Global IP address.
-        sig { returns(T.nilable(String)) }
-        attr_reader :ip_address
-
-        sig { params(ip_address: String).void }
-        attr_writer :ip_address
-
-        sig do
-          params(
-            description: String,
-            ip_address: String,
-            name: String,
-            ports: T::Hash[Symbol, T.anything]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # A user specified description for the address.
-          description: nil,
-          # The Global IP address.
-          ip_address: nil,
-          # A user specified name for the address.
-          name: nil,
-          # A Global IP ports grouped by protocol code.
-          ports: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              description: String,
-              ip_address: String,
-              name: String,
-              ports: T::Hash[Symbol, T.anything]
-            }
-          )
-        end
-        def to_hash
-        end
       end
     end
   end

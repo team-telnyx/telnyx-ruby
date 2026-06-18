@@ -53,28 +53,11 @@ module Telnyx
       # Conversation ID to leverage persistent conversations.
       sig do
         params(
-          body: T::Hash[Symbol, T.anything],
+          response_request: T::Hash[Symbol, T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T::Hash[Symbol, T.anything])
       end
-      def create_response_deprecated(body:, request_options: {})
-      end
-
-      # **Deprecated**: Use `GET /v2/ai/openai/models` instead.
-      #
-      # Returns the same `ModelsResponse` payload as the OpenAI-compatible endpoint —
-      # open-source LLMs hosted on Telnyx (e.g. `moonshotai/Kimi-K2.6`,
-      # `zai-org/GLM-5.1-FP8`, `MiniMaxAI/MiniMax-M2.7`), embedding models, and
-      # fine-tuned models — kept around for backwards compatibility. New integrations
-      # should use `/v2/ai/openai/models`.
-      #
-      # Model ids follow the `{organization}/{model_name}` convention from Hugging Face.
-      sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          Telnyx::Models::AIRetrieveModelsResponse
-        )
-      end
-      def retrieve_models(request_options: {})
+      def create_response_deprecated(response_request:, request_options: {})
       end
 
       # Performs semantic vector search across conversation history records.
@@ -132,7 +115,7 @@ module Telnyx
         params(
           q: String,
           record_type:
-            Telnyx::AISearchConversationHistoriesParams::RecordType::OrSymbol,
+            Telnyx::AIRetrieveConversationHistoriesParams::RecordType::OrSymbol,
           filter_document_id: String,
           filter_ingested_at_gte: Time,
           filter_ingested_at_lte: Time,
@@ -143,12 +126,13 @@ module Telnyx
           filter_retention: String,
           filter_user_id: String,
           min_score: Float,
-          region: Telnyx::AISearchConversationHistoriesParams::Region::OrSymbol,
+          region:
+            Telnyx::AIRetrieveConversationHistoriesParams::Region::OrSymbol,
           top_k: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AISearchConversationHistoriesResponse)
+        ).returns(Telnyx::Models::AIRetrieveConversationHistoriesResponse)
       end
-      def search_conversation_histories(
+      def retrieve_conversation_histories(
         # Natural language search query. The text is embedded into a 1024-dimensional
         # vector and compared against indexed record chunks using kNN cosine similarity.
         q:,
@@ -192,6 +176,23 @@ module Telnyx
         top_k: nil,
         request_options: {}
       )
+      end
+
+      # **Deprecated**: Use `GET /v2/ai/openai/models` instead.
+      #
+      # Returns the same `ModelsResponse` payload as the OpenAI-compatible endpoint —
+      # open-source LLMs hosted on Telnyx (e.g. `moonshotai/Kimi-K2.6`,
+      # `zai-org/GLM-5.1-FP8`, `MiniMaxAI/MiniMax-M2.7`), embedding models, and
+      # fine-tuned models — kept around for backwards compatibility. New integrations
+      # should use `/v2/ai/openai/models`.
+      #
+      # Model ids follow the `{organization}/{model_name}` convention from Hugging Face.
+      sig do
+        params(request_options: Telnyx::RequestOptions::OrHash).returns(
+          Telnyx::ModelsResponse
+        )
+      end
+      def retrieve_models(request_options: {})
       end
 
       # Generate a summary of a file's contents.

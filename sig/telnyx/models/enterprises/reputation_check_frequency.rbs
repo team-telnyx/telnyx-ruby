@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module Enterprises
+      type reputation_check_frequency =
+        :business_daily | :daily | :weekly | :biweekly | :monthly | :never
+
+      module ReputationCheckFrequency
+        extend Telnyx::Internal::Type::Enum
+
+        BUSINESS_DAILY: :business_daily
+        DAILY: :daily
+        WEEKLY: :weekly
+        BIWEEKLY: :biweekly
+        MONTHLY: :monthly
+        NEVER: :never
+
+        def self?.values: -> ::Array[Telnyx::Models::Enterprises::reputation_check_frequency]
+      end
+    end
+  end
+end

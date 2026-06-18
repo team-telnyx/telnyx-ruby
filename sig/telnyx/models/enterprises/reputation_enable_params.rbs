@@ -5,7 +5,7 @@ module Telnyx
         {
           enterprise_id: String,
           loa_document_id: String,
-          check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency
+          check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -17,41 +17,25 @@ module Telnyx
 
         attr_accessor loa_document_id: String
 
-        attr_reader check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency?
+        attr_reader check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency?
 
         def check_frequency=: (
-          Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency
-        ) -> Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency
+          Telnyx::Models::Enterprises::reputation_check_frequency
+        ) -> Telnyx::Models::Enterprises::reputation_check_frequency
 
         def initialize: (
           enterprise_id: String,
           loa_document_id: String,
-          ?check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency,
+          ?check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           enterprise_id: String,
           loa_document_id: String,
-          check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency,
+          check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           request_options: Telnyx::RequestOptions
         }
-
-        type check_frequency =
-          :business_daily | :daily | :weekly | :biweekly | :monthly | :never
-
-        module CheckFrequency
-          extend Telnyx::Internal::Type::Enum
-
-          BUSINESS_DAILY: :business_daily
-          DAILY: :daily
-          WEEKLY: :weekly
-          BIWEEKLY: :biweekly
-          MONTHLY: :monthly
-          NEVER: :never
-
-          def self?.values: -> ::Array[Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency]
-        end
       end
     end
   end

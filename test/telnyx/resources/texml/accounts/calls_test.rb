@@ -9,17 +9,17 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
     response = @telnyx.texml.accounts.calls.retrieve("call_sid", account_sid: "account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::CallRetrieveResponse
+      response => Telnyx::Texml::Accounts::CallResource
     end
 
     assert_pattern do
       response => {
         account_sid: String | nil,
-        answered_by: Telnyx::Models::Texml::Accounts::CallRetrieveResponse::AnsweredBy | nil,
+        answered_by: Telnyx::Texml::Accounts::CallResource::AnsweredBy | nil,
         caller_name: String | nil,
         date_created: String | nil,
         date_updated: String | nil,
-        direction: Telnyx::Models::Texml::Accounts::CallRetrieveResponse::Direction | nil,
+        direction: Telnyx::Texml::Accounts::CallResource::Direction | nil,
         duration: String | nil,
         end_time: String | nil,
         from: String | nil,
@@ -28,7 +28,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
         price_unit: String | nil,
         sid: String | nil,
         start_time: String | nil,
-        status: Telnyx::Models::Texml::Accounts::CallRetrieveResponse::Status | nil,
+        status: Telnyx::Texml::Accounts::CallResource::Status | nil,
         to: String | nil,
         to_formatted: String | nil,
         uri: String | nil
@@ -42,17 +42,17 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
     response = @telnyx.texml.accounts.calls.update("call_sid", account_sid: "account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::CallUpdateResponse
+      response => Telnyx::Texml::Accounts::CallResource
     end
 
     assert_pattern do
       response => {
         account_sid: String | nil,
-        answered_by: Telnyx::Models::Texml::Accounts::CallUpdateResponse::AnsweredBy | nil,
+        answered_by: Telnyx::Texml::Accounts::CallResource::AnsweredBy | nil,
         caller_name: String | nil,
         date_created: String | nil,
         date_updated: String | nil,
-        direction: Telnyx::Models::Texml::Accounts::CallUpdateResponse::Direction | nil,
+        direction: Telnyx::Texml::Accounts::CallResource::Direction | nil,
         duration: String | nil,
         end_time: String | nil,
         from: String | nil,
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
         price_unit: String | nil,
         sid: String | nil,
         start_time: String | nil,
-        status: Telnyx::Models::Texml::Accounts::CallUpdateResponse::Status | nil,
+        status: Telnyx::Texml::Accounts::CallResource::Status | nil,
         to: String | nil,
         to_formatted: String | nil,
         uri: String | nil
@@ -73,7 +73,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.texml.accounts.calls.calls("account_sid", params: {Url: "https://www.example.com/texml.xml"})
+      @telnyx.texml.accounts.calls.calls("account_sid", body: {Url: "https://www.example.com/texml.xml"})
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::CallCallsResponse
@@ -99,7 +99,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        calls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Texml::Accounts::CallRetrieveCallsResponse::Call]) | nil,
+        calls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::CallResource]) | nil,
         end_: Integer | nil,
         first_page_uri: String | nil,
         next_page_uri: String | nil,

@@ -7,7 +7,7 @@ module Telnyx
         filter_enterprise_id: String,
         filter_expiring_at_gte: Time,
         filter_expiring_at_lte: Time,
-        filter_status: Telnyx::Models::DirListParams::filter_status,
+        filter_status: Telnyx::Models::dir_status,
         page_number: Integer,
         page_size: Integer,
         sort: Telnyx::Models::DirListParams::sort
@@ -38,11 +38,11 @@ module Telnyx
 
       def filter_expiring_at_lte=: (Time) -> Time
 
-      attr_reader filter_status: Telnyx::Models::DirListParams::filter_status?
+      attr_reader filter_status: Telnyx::Models::dir_status?
 
       def filter_status=: (
-        Telnyx::Models::DirListParams::filter_status
-      ) -> Telnyx::Models::DirListParams::filter_status
+        Telnyx::Models::dir_status
+      ) -> Telnyx::Models::dir_status
 
       attr_reader page_number: Integer?
 
@@ -64,7 +64,7 @@ module Telnyx
         ?filter_enterprise_id: String,
         ?filter_expiring_at_gte: Time,
         ?filter_expiring_at_lte: Time,
-        ?filter_status: Telnyx::Models::DirListParams::filter_status,
+        ?filter_status: Telnyx::Models::dir_status,
         ?page_number: Integer,
         ?page_size: Integer,
         ?sort: Telnyx::Models::DirListParams::sort,
@@ -77,41 +77,12 @@ module Telnyx
         filter_enterprise_id: String,
         filter_expiring_at_gte: Time,
         filter_expiring_at_lte: Time,
-        filter_status: Telnyx::Models::DirListParams::filter_status,
+        filter_status: Telnyx::Models::dir_status,
         page_number: Integer,
         page_size: Integer,
         sort: Telnyx::Models::DirListParams::sort,
         request_options: Telnyx::RequestOptions
       }
-
-      type filter_status =
-        :draft
-        | :submitted
-        | :in_review
-        | :verified
-        | :rejected
-        | :unsuccessful
-        | :suspended
-        | :expired
-        | :infringement_claimed
-        | :permanently_rejected
-
-      module FilterStatus
-        extend Telnyx::Internal::Type::Enum
-
-        DRAFT: :draft
-        SUBMITTED: :submitted
-        IN_REVIEW: :in_review
-        VERIFIED: :verified
-        REJECTED: :rejected
-        UNSUCCESSFUL: :unsuccessful
-        SUSPENDED: :suspended
-        EXPIRED: :expired
-        INFRINGEMENT_CLAIMED: :infringement_claimed
-        PERMANENTLY_REJECTED: :permanently_rejected
-
-        def self?.values: -> ::Array[Telnyx::Models::DirListParams::filter_status]
-      end
 
       type sort =
         :created_at

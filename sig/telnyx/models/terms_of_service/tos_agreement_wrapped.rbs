@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module TermsOfService
+      type tos_agreement_wrapped =
+        { data: Telnyx::TermsOfService::TosAgreement }
+
+      class TosAgreementWrapped < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::TermsOfService::TosAgreement
+
+        def initialize: (data: Telnyx::TermsOfService::TosAgreement) -> void
+
+        def to_hash: -> { data: Telnyx::TermsOfService::TosAgreement }
+      end
+    end
+  end
+end

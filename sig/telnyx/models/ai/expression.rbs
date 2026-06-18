@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    module AI
+      type expression =
+        Telnyx::AI::ComparisonExpression
+        | Telnyx::AI::BooleanOpExpression
+        | Telnyx::AI::ArithmeticExpression
+        | Telnyx::AI::Expression::Variable
+        | Telnyx::AI::Expression::StringLiteral
+        | Telnyx::AI::Expression::NumberLiteral
+        | Telnyx::AI::Expression::BoolLiteral
+
+      module Expression
+        extend Telnyx::Internal::Type::Union
+
+        type variable = { name: String, type: :variable }
+
+        class Variable < Telnyx::Internal::Type::BaseModel
+          attr_accessor name: String
+
+          attr_accessor type: :variable
+
+          def initialize: (name: String, ?type: :variable) -> void
+
+          def to_hash: -> { name: String, type: :variable }
+        end
+
+        type string_literal = { type: :string_literal, value: String }
+
+        class StringLiteral < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: :string_literal
+
+          attr_accessor value: String
+
+          def initialize: (value: String, ?type: :string_literal) -> void
+
+          def to_hash: -> { type: :string_literal, value: String }
+        end
+
+        type number_literal = { type: :number_literal, value: Float }
+
+        class NumberLiteral < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: :number_literal
+
+          attr_accessor value: Float
+
+          def initialize: (value: Float, ?type: :number_literal) -> void
+
+          def to_hash: -> { type: :number_literal, value: Float }
+        end
+
+        type bool_literal = { type: :bool_literal, value: bool }
+
+        class BoolLiteral < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: :bool_literal
+
+          attr_accessor value: bool
+
+          def initialize: (value: bool, ?type: :bool_literal) -> void
+
+          def to_hash: -> { type: :bool_literal, value: bool }
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::AI::expression]
+      end
+    end
+  end
+end

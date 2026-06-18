@@ -33,18 +33,13 @@ module Telnyx
         # (branded_calling and number_reputation); pass a value to return only that
         # product's agreements.
         sig do
-          returns(
-            T.nilable(
-              Telnyx::TermsOfService::AgreementListParams::ProductType::OrSymbol
-            )
-          )
+          returns(T.nilable(Telnyx::TermsOfService::TosProductType::OrSymbol))
         end
         attr_reader :product_type
 
         sig do
           params(
-            product_type:
-              Telnyx::TermsOfService::AgreementListParams::ProductType::OrSymbol
+            product_type: Telnyx::TermsOfService::TosProductType::OrSymbol
           ).void
         end
         attr_writer :product_type
@@ -53,8 +48,7 @@ module Telnyx
           params(
             page_number: Integer,
             page_size: Integer,
-            product_type:
-              Telnyx::TermsOfService::AgreementListParams::ProductType::OrSymbol,
+            product_type: Telnyx::TermsOfService::TosProductType::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -76,50 +70,12 @@ module Telnyx
             {
               page_number: Integer,
               page_size: Integer,
-              product_type:
-                Telnyx::TermsOfService::AgreementListParams::ProductType::OrSymbol,
+              product_type: Telnyx::TermsOfService::TosProductType::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )
         end
         def to_hash
-        end
-
-        # Optional filter. Omit to list the user's agreements for **every** product
-        # (branded_calling and number_reputation); pass a value to return only that
-        # product's agreements.
-        module ProductType
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::TermsOfService::AgreementListParams::ProductType
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          BRANDED_CALLING =
-            T.let(
-              :branded_calling,
-              Telnyx::TermsOfService::AgreementListParams::ProductType::TaggedSymbol
-            )
-          NUMBER_REPUTATION =
-            T.let(
-              :number_reputation,
-              Telnyx::TermsOfService::AgreementListParams::ProductType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::TermsOfService::AgreementListParams::ProductType::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

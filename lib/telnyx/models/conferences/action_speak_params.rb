@@ -103,13 +103,13 @@ module Telnyx
         #   Region where the conference data is located. Defaults to the region defined in
         #   user's data locality settings (Europe or US).
         #
-        #   @return [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Region, nil]
-        optional :region, enum: -> { Telnyx::Conferences::ActionSpeakParams::Region }
+        #   @return [Symbol, Telnyx::Models::Conferences::ConferenceRegion, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ConferenceRegion }
 
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Xai, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Conferences::ActionSpeakParams::VoiceSettings }
 
         # @!method initialize(id:, payload:, voice:, call_control_ids: nil, command_id: nil, language: nil, payload_type: nil, region: nil, voice_settings: nil, request_options: {})
@@ -130,9 +130,9 @@ module Telnyx
         #
         #   @param payload_type [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::PayloadType] The type of the provided payload. The payload can either be plain text, or Speec
         #
-        #   @param region [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        #   @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Xai] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -187,20 +187,6 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA = :Australia
-          EUROPE = :Europe
-          MIDDLE_EAST = :"Middle East"
-          US = :US
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
         # The settings associated with the voice selected
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
@@ -221,75 +207,12 @@ module Telnyx
 
           variant :resemble, -> { Telnyx::ResembleVoiceSettings }
 
-          variant :inworld, -> { Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Inworld }
+          variant :inworld, -> { Telnyx::InworldVoiceSettings }
 
-          variant :xai, -> { Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Xai }
-
-          class Inworld < Telnyx::Internal::Type::BaseModel
-            # @!attribute type
-            #   Voice settings provider type
-            #
-            #   @return [Symbol, :inworld]
-            required :type, const: :inworld
-
-            # @!attribute delivery_mode
-            #   Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            #   synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
-            #   more expressive variation, and `BALANCED` sits in between. Optional and only
-            #   supported by `TTS2`; when omitted, the provider default applies.
-            #
-            #   @return [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::DeliveryMode, nil]
-            optional :delivery_mode,
-                     enum: -> { Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Inworld::DeliveryMode }
-
-            # @!method initialize(delivery_mode: nil, type: :inworld)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld} for
-            #   more details.
-            #
-            #   @param delivery_mode [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld::DeliveryMode] Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            #
-            #   @param type [Symbol, :inworld] Voice settings provider type
-
-            # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
-            # more expressive variation, and `BALANCED` sits in between. Optional and only
-            # supported by `TTS2`; when omitted, the provider default applies.
-            #
-            # @see Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld#delivery_mode
-            module DeliveryMode
-              extend Telnyx::Internal::Type::Enum
-
-              STABLE = :STABLE
-              BALANCED = :BALANCED
-              CREATIVE = :CREATIVE
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          class Xai < Telnyx::Internal::Type::BaseModel
-            # @!attribute type
-            #   Voice settings provider type
-            #
-            #   @return [Symbol, :xai]
-            required :type, const: :xai
-
-            # @!attribute language
-            #   Language code, or `auto` to detect automatically.
-            #
-            #   @return [String, nil]
-            optional :language, String
-
-            # @!method initialize(language: nil, type: :xai)
-            #   @param language [String] Language code, or `auto` to detect automatically.
-            #
-            #   @param type [Symbol, :xai] Voice settings provider type
-          end
+          variant :xai, -> { Telnyx::XaiVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Xai)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings)]
         end
       end
     end

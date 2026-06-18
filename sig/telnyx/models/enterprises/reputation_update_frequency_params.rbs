@@ -4,7 +4,7 @@ module Telnyx
       type reputation_update_frequency_params =
         {
           enterprise_id: String,
-          check_frequency: Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::check_frequency
+          check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -14,35 +14,19 @@ module Telnyx
 
         attr_accessor enterprise_id: String
 
-        attr_accessor check_frequency: Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::check_frequency
+        attr_accessor check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency
 
         def initialize: (
           enterprise_id: String,
-          check_frequency: Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::check_frequency,
+          check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           enterprise_id: String,
-          check_frequency: Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::check_frequency,
+          check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           request_options: Telnyx::RequestOptions
         }
-
-        type check_frequency =
-          :business_daily | :daily | :weekly | :biweekly | :monthly | :never
-
-        module CheckFrequency
-          extend Telnyx::Internal::Type::Enum
-
-          BUSINESS_DAILY: :business_daily
-          DAILY: :daily
-          WEEKLY: :weekly
-          BIWEEKLY: :biweekly
-          MONTHLY: :monthly
-          NEVER: :never
-
-          def self?.values: -> ::Array[Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::check_frequency]
-        end
       end
     end
   end

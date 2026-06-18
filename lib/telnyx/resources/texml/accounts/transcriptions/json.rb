@@ -51,7 +51,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse]
+            # @return [Telnyx::Models::Texml::Accounts::Transcriptions::TexmlRecordingTranscription]
             #
             # @see Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonParams
             def retrieve_recording_transcription_sid_json(recording_transcription_sid, params)
@@ -70,7 +70,7 @@ module Telnyx
                   account_sid,
                   recording_transcription_sid
                 ],
-                model: Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse,
+                model: Telnyx::Texml::Accounts::Transcriptions::TexmlRecordingTranscription,
                 options: options
               )
             end

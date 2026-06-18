@@ -24,23 +24,23 @@ module Telnyx
       # terms URL, effective date). Omit `product_type` to return all products; pass it
       # to scope to one.
       #
-      # @overload info(product_type: nil, request_options: {})
+      # @overload retrieve_info(product_type: nil, request_options: {})
       #
-      # @param product_type [Symbol, Telnyx::Models::TermsOfServiceInfoParams::ProductType] Optional product filter. Omit to return info for all products.
+      # @param product_type [Symbol, Telnyx::Models::TermsOfService::TosProductType] Optional product filter. Omit to return info for all products.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::TermsOfServiceInfoResponse]
+      # @return [Telnyx::Models::TermsOfServiceRetrieveInfoResponse]
       #
-      # @see Telnyx::Models::TermsOfServiceInfoParams
-      def info(params = {})
-        parsed, options = Telnyx::TermsOfServiceInfoParams.dump_request(params)
+      # @see Telnyx::Models::TermsOfServiceRetrieveInfoParams
+      def retrieve_info(params = {})
+        parsed, options = Telnyx::TermsOfServiceRetrieveInfoParams.dump_request(params)
         query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "terms_of_service/info",
           query: query,
-          model: Telnyx::Models::TermsOfServiceInfoResponse,
+          model: Telnyx::Models::TermsOfServiceRetrieveInfoResponse,
           options: options
         )
       end
@@ -52,23 +52,23 @@ module Telnyx
       # `agreement_required: true` means the user has not yet agreed (or has agreed to
       # an outdated version) and must agree before using that product's endpoints.
       #
-      # @overload status(product_type: nil, request_options: {})
+      # @overload retrieve_status(product_type: nil, request_options: {})
       #
-      # @param product_type [Symbol, Telnyx::Models::TermsOfServiceStatusParams::ProductType] Which product's ToS to check. Defaults to `branded_calling`.
+      # @param product_type [Symbol, Telnyx::Models::TermsOfService::TosProductType] Which product's ToS to check. Defaults to `branded_calling`.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::TermsOfServiceStatusResponse]
+      # @return [Telnyx::Models::TermsOfServiceRetrieveStatusResponse]
       #
-      # @see Telnyx::Models::TermsOfServiceStatusParams
-      def status(params = {})
-        parsed, options = Telnyx::TermsOfServiceStatusParams.dump_request(params)
+      # @see Telnyx::Models::TermsOfServiceRetrieveStatusParams
+      def retrieve_status(params = {})
+        parsed, options = Telnyx::TermsOfServiceRetrieveStatusParams.dump_request(params)
         query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "terms_of_service/status",
           query: query,
-          model: Telnyx::Models::TermsOfServiceStatusResponse,
+          model: Telnyx::Models::TermsOfServiceRetrieveStatusResponse,
           options: options
         )
       end

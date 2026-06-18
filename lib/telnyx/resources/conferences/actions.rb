@@ -20,7 +20,7 @@ module Telnyx
         #
         # @param command_id [String] Use this field to avoid execution of duplicate commands. Telnyx will ignore subs
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::UpdateConference::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param whisper_call_control_ids [Array<String>] Array of unique call_control_ids the supervisor can whisper to. If none provided
         #
@@ -139,7 +139,7 @@ module Telnyx
         #
         # @param media_name [String] The media_name of a file to be played to the participants when they are put on h
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionHoldParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -193,7 +193,7 @@ module Telnyx
         #
         # @param mute [Boolean] Whether the participant should be muted immediately after joining the conference
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionJoinParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param soft_end_conference_on_exit [Boolean] Whether the conference should end after the participant leaves the conference. N
         #
@@ -238,7 +238,7 @@ module Telnyx
         #
         # @param command_id [String] Use this field to avoid execution of duplicate commands. Telnyx will ignore subs
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionLeaveParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -267,7 +267,7 @@ module Telnyx
         #
         # @param call_control_ids [Array<String>] Array of unique identifiers and tokens for controlling the call. When empty all
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionMuteParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -302,7 +302,7 @@ module Telnyx
         #
         # @param media_name [String] The media_name of a file to be played back in the conference. The media_name mus
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionPlayParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -333,7 +333,7 @@ module Telnyx
         #
         # @param recording_id [String] Use this field to pause specific recording.
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordPauseParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -364,7 +364,7 @@ module Telnyx
         #
         # @param recording_id [String] Use this field to resume specific recording.
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordResumeParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -406,7 +406,7 @@ module Telnyx
         #
         # @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param trim [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim] When set to `trim-silence`, silence will be removed from the beginning and end o
         #
@@ -445,7 +445,7 @@ module Telnyx
         #
         # @param recording_id [String] Uniquely identifies the resource.
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionRecordStopParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -518,9 +518,9 @@ module Telnyx
         #
         # @param payload_type [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::PayloadType] The type of the provided payload. The payload can either be plain text, or Speec
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionSpeakParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Conferences::ActionSpeakParams::VoiceSettings::Xai] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -549,7 +549,7 @@ module Telnyx
         #
         # @param call_control_ids [Array<String>] List of call control ids identifying participants the audio file should stop be
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionStopParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -578,7 +578,7 @@ module Telnyx
         #
         # @param call_control_ids [Array<String>] List of unique identifiers and tokens for controlling the call. Enter each call
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionUnholdParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -607,7 +607,7 @@ module Telnyx
         #
         # @param call_control_ids [Array<String>] List of unique identifiers and tokens for controlling the call. Enter each call
         #
-        # @param region [Symbol, Telnyx::Models::Conferences::ActionUnmuteParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -70,8 +70,8 @@ module Telnyx
           #   live-streaming and non-streaming/batch models (matching the
           #   `TranscriptionConfig.model` enum on `call-control` voice assistants).
           #
-          #   @return [Symbol, Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type]
-          required :type, enum: -> { Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type }
+          #   @return [Symbol, Telnyx::Models::SttServiceType]
+          required :type, enum: -> { Telnyx::SttServiceType }
 
           # @!method initialize(languages:, type:)
           #   Some parameter documentations has been truncated, see
@@ -85,25 +85,7 @@ module Telnyx
           #
           #   @param languages [Array<String>] Languages accepted on this service surface, in the provider's native code format
           #
-          #   @param type [Symbol, Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type] Service surface a model is available on. `ai_assistant` is the STT surface confi
-
-          # Service surface a model is available on. `ai_assistant` is the STT surface
-          # configured via Call Control voice-assistant transcription; it covers both
-          # live-streaming and non-streaming/batch models (matching the
-          # `TranscriptionConfig.model` enum on `call-control` voice assistants).
-          #
-          # @see Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType#type
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            STREAMING = :streaming
-            FILE_BASED = :file_based
-            IN_CALL = :in_call
-            AI_ASSISTANT = :ai_assistant
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
+          #   @param type [Symbol, Telnyx::Models::SttServiceType] Service surface a model is available on. `ai_assistant` is the STT surface confi
         end
       end
 

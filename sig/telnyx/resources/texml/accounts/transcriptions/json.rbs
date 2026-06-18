@@ -14,7 +14,7 @@ module Telnyx
               String recording_transcription_sid,
               account_sid: String,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse
+            ) -> Telnyx::Texml::Accounts::Transcriptions::TexmlRecordingTranscription
 
             def initialize: (client: Telnyx::Client) -> void
           end

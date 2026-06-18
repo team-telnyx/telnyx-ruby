@@ -48,12 +48,12 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Models::EnterpriseCreateResponse
+      response => Telnyx::EnterprisePublicWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::EnterprisePublic
+        data: Telnyx::EnterprisePublic | nil
       }
     end
   end
@@ -64,12 +64,12 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
     response = @telnyx.enterprises.retrieve("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
-      response => Telnyx::Models::EnterpriseRetrieveResponse
+      response => Telnyx::EnterprisePublicWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::EnterprisePublic
+        data: Telnyx::EnterprisePublic | nil
       }
     end
   end
@@ -80,12 +80,12 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
     response = @telnyx.enterprises.update("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
-      response => Telnyx::Models::EnterpriseUpdateResponse
+      response => Telnyx::EnterprisePublicWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::EnterprisePublic
+        data: Telnyx::EnterprisePublic | nil
       }
     end
   end
@@ -147,18 +147,18 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
     end
   end
 
-  def test_activate_branded_calling
+  def test_branded_calling
     skip("Mock server tests are disabled")
 
-    response = @telnyx.enterprises.activate_branded_calling("4a6192a4-573d-446d-b3ce-aff9117272a6")
+    response = @telnyx.enterprises.branded_calling("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
-      response => Telnyx::Models::EnterpriseActivateBrandedCallingResponse
+      response => Telnyx::EnterprisePublicWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::EnterprisePublic
+        data: Telnyx::EnterprisePublic | nil
       }
     end
   end
