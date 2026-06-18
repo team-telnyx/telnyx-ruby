@@ -11,15 +11,15 @@ GIT
 PATH
   remote: .
   specs:
-    telnyx (5.146.0)
+    telnyx (5.131.1)
       cgi
       connection_pool
-      standardwebhooks
+      websocket-client-simple (~> 0.8)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (8.1.1)
+    activesupport (8.1.2.1)
       base64
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.3.1)
@@ -43,10 +43,10 @@ GEM
       traces (~> 0.18)
     base64 (0.3.0)
     benchmark (0.5.0)
-    bigdecimal (3.3.1)
+    bigdecimal (4.0.1)
     cgi (0.5.1)
-    concurrent-ruby (1.3.5)
-    connection_pool (2.5.4)
+    concurrent-ruby (1.3.6)
+    connection_pool (3.0.2)
     console (1.34.2)
       fiber-annotation
       fiber-local (~> 1.1)
@@ -57,22 +57,24 @@ GEM
     csv (3.3.5)
     drb (2.2.3)
     erubi (1.13.1)
-    ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-aarch64-linux-musl)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86_64-darwin)
-    ffi (1.17.2-x86_64-linux-gnu)
-    ffi (1.17.2-x86_64-linux-musl)
+    event_emitter (0.2.6)
+    ffi (1.17.3)
+    ffi (1.17.3-aarch64-linux-gnu)
+    ffi (1.17.3-aarch64-linux-musl)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
+    ffi (1.17.3-x86_64-linux-musl)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
       fiber-storage
     fiber-storage (1.0.1)
     fileutils (1.8.0)
     hashdiff (1.2.1)
-    i18n (1.14.7)
+    i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     io-event (1.11.2)
-    json (2.15.2)
+    json (2.19.2)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     listen (3.9.0)
@@ -80,7 +82,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
     metrics (0.15.0)
-    minitest (5.26.0)
+    minitest (5.27.0)
     minitest-focus (1.4.0)
       minitest (>= 4, < 6)
     minitest-hooks (1.5.2)
@@ -144,7 +146,7 @@ GEM
       rexml (>= 3.2.6)
       sorbet-static-and-runtime (>= 0.5.10187)
       thor (>= 0.19.2)
-    standardwebhooks (1.0.1)
+    standardwebhooks (1.1.0)
     steep (1.10.0)
       activesupport (>= 5.1)
       concurrent-ruby (>= 1.1.10)
@@ -183,13 +185,19 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
-    uri (1.1.0)
+    unicode-emoji (4.2.0)
+    uri (1.1.1)
     webmock (3.26.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.9.1)
+    websocket (1.2.11)
+    websocket-client-simple (0.9.0)
+      base64
+      event_emitter
+      mutex_m
+      websocket
     yard (0.9.37)
     yard-sorbet (0.9.0)
       sorbet-runtime
@@ -200,6 +208,7 @@ PLATFORMS
   aarch64-linux-gnu
   aarch64-linux-musl
   arm64-darwin
+  ruby
   universal-darwin
   x86_64-darwin
   x86_64-linux-gnu
@@ -217,6 +226,7 @@ DEPENDENCIES
   redcarpet
   rubocop
   sorbet
+  standardwebhooks (~> 1.0)
   steep
   syntax_tree
   syntax_tree-rbs!
