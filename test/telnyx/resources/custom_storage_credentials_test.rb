@@ -14,14 +14,14 @@ class Telnyx::Test::Resources::CustomStorageCredentialsTest < Telnyx::Test::Reso
       )
 
     assert_pattern do
-      response => Telnyx::Models::CustomStorageCredentialCreateResponse
+      response => Telnyx::CredentialsResponse
     end
 
     assert_pattern do
       response => {
         connection_id: String,
         data: Telnyx::CustomStorageConfiguration,
-        record_type: Telnyx::Models::CustomStorageCredentialCreateResponse::RecordType
+        record_type: Telnyx::CredentialsResponse::RecordType
       }
     end
   end
@@ -32,14 +32,14 @@ class Telnyx::Test::Resources::CustomStorageCredentialsTest < Telnyx::Test::Reso
     response = @telnyx.custom_storage_credentials.retrieve("connection_id")
 
     assert_pattern do
-      response => Telnyx::Models::CustomStorageCredentialRetrieveResponse
+      response => Telnyx::CredentialsResponse
     end
 
     assert_pattern do
       response => {
         connection_id: String,
         data: Telnyx::CustomStorageConfiguration,
-        record_type: Telnyx::Models::CustomStorageCredentialRetrieveResponse::RecordType
+        record_type: Telnyx::CredentialsResponse::RecordType
       }
     end
   end
@@ -55,14 +55,14 @@ class Telnyx::Test::Resources::CustomStorageCredentialsTest < Telnyx::Test::Reso
       )
 
     assert_pattern do
-      response => Telnyx::Models::CustomStorageCredentialUpdateResponse
+      response => Telnyx::CredentialsResponse
     end
 
     assert_pattern do
       response => {
         connection_id: String,
         data: Telnyx::CustomStorageConfiguration,
-        record_type: Telnyx::Models::CustomStorageCredentialUpdateResponse::RecordType
+        record_type: Telnyx::CredentialsResponse::RecordType
       }
     end
   end

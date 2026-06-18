@@ -8,20 +8,20 @@ module Telnyx
             ?friendly_name: String,
             ?max_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::QueueCreateResponse
+          ) -> Telnyx::Texml::Accounts::QueueResource
 
           def retrieve: (
             String queue_sid,
             account_sid: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::QueueRetrieveResponse
+          ) -> Telnyx::Texml::Accounts::QueueResource
 
           def update: (
             String queue_sid,
             account_sid: String,
             ?max_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::QueueUpdateResponse
+          ) -> Telnyx::Texml::Accounts::QueueResource
 
           def list: (
             String account_sid,
@@ -31,7 +31,7 @@ module Telnyx
             ?page_size: Integer,
             ?page_token: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultPaginationForQueues[Telnyx::Models::Texml::Accounts::QueueListResponse]
+          ) -> Telnyx::Internal::DefaultPaginationForQueues[Telnyx::Texml::Accounts::QueueResource]
 
           def delete: (
             String queue_sid,

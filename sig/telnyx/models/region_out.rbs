@@ -1,0 +1,46 @@
+module Telnyx
+  module Models
+    type region_out = { region: Telnyx::RegionOut::Region, region_code: String }
+
+    class RegionOut < Telnyx::Internal::Type::BaseModel
+      attr_reader region: Telnyx::RegionOut::Region?
+
+      def region=: (Telnyx::RegionOut::Region) -> Telnyx::RegionOut::Region
+
+      attr_reader region_code: String?
+
+      def region_code=: (String) -> String
+
+      def initialize: (
+        ?region: Telnyx::RegionOut::Region,
+        ?region_code: String
+      ) -> void
+
+      def to_hash: -> { region: Telnyx::RegionOut::Region, region_code: String }
+
+      type region = { code: String, name: String, record_type: String }
+
+      class Region < Telnyx::Internal::Type::BaseModel
+        attr_reader code: String?
+
+        def code=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        def initialize: (
+          ?code: String,
+          ?name: String,
+          ?record_type: String
+        ) -> void
+
+        def to_hash: -> { code: String, name: String, record_type: String }
+      end
+    end
+  end
+end

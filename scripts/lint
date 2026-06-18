@@ -6,4 +6,12 @@ cd -- "$(dirname -- "$0")/.."
 
 echo "==> Running linters"
 
-exec -- bundle exec rake lint "$@"
+# When SKIP_TYPECHECK is set, only run rubocop (skip `:typecheck:steep` and
+# `:typecheck:sorbet`). Used in stlc-generate CI where staging-repo CI is
+# responsible for the slower typechecker run. steep on the full generated
+# SDK takes 30+ min and frequently hits the workflow timeout.
+if [ -n "${SKIP_TYPECHECK:-}" ]; then
+  exec -- bundle exec rake lint:rubocop "$@"
+else
+  exec -- bundle exec rake lint "$@"
+fi

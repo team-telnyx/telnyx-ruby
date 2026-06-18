@@ -1,0 +1,67 @@
+module Telnyx
+  module Models
+    type document =
+      {
+        document_id: String,
+        document_type: Telnyx::Models::Document::document_type,
+        description: String
+      }
+
+    class Document < Telnyx::Internal::Type::BaseModel
+      attr_accessor document_id: String
+
+      attr_accessor document_type: Telnyx::Models::Document::document_type
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      def initialize: (
+        document_id: String,
+        document_type: Telnyx::Models::Document::document_type,
+        ?description: String
+      ) -> void
+
+      def to_hash: -> {
+        document_id: String,
+        document_type: Telnyx::Models::Document::document_type,
+        description: String
+      }
+
+      type document_type =
+        :letter_of_authorization
+        | :business_registration
+        | :articles_of_incorporation
+        | :tax_document
+        | :ein_letter
+        | :trademark_registration
+        | :website_ownership
+        | :business_license
+        | :professional_license
+        | :government_id
+        | :utility_bill
+        | :bank_statement
+        | :other
+
+      module DocumentType
+        extend Telnyx::Internal::Type::Enum
+
+        LETTER_OF_AUTHORIZATION: :letter_of_authorization
+        BUSINESS_REGISTRATION: :business_registration
+        ARTICLES_OF_INCORPORATION: :articles_of_incorporation
+        TAX_DOCUMENT: :tax_document
+        EIN_LETTER: :ein_letter
+        TRADEMARK_REGISTRATION: :trademark_registration
+        WEBSITE_OWNERSHIP: :website_ownership
+        BUSINESS_LICENSE: :business_license
+        PROFESSIONAL_LICENSE: :professional_license
+        GOVERNMENT_ID: :government_id
+        UTILITY_BILL: :utility_bill
+        BANK_STATEMENT: :bank_statement
+        OTHER: :other
+
+        def self?.values: -> ::Array[Telnyx::Models::Document::document_type]
+      end
+    end
+  end
+end

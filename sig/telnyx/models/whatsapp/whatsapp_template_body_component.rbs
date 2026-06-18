@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    class WhatsappTemplateBodyComponent = Whatsapp::WhatsappTemplateBodyComponent
+
+    module Whatsapp
+      type whatsapp_template_body_component =
+        {
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateBodyComponent::type_,
+          example: Telnyx::Whatsapp::WhatsappTemplateBodyComponent::Example,
+          text: String
+        }
+
+      class WhatsappTemplateBodyComponent < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::Whatsapp::WhatsappTemplateBodyComponent::type_
+
+        attr_reader example: Telnyx::Whatsapp::WhatsappTemplateBodyComponent::Example?
+
+        def example=: (
+          Telnyx::Whatsapp::WhatsappTemplateBodyComponent::Example
+        ) -> Telnyx::Whatsapp::WhatsappTemplateBodyComponent::Example
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        def initialize: (
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateBodyComponent::type_,
+          ?example: Telnyx::Whatsapp::WhatsappTemplateBodyComponent::Example,
+          ?text: String
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateBodyComponent::type_,
+          example: Telnyx::Whatsapp::WhatsappTemplateBodyComponent::Example,
+          text: String
+        }
+
+        type type_ = :BODY
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          BODY: :BODY
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateBodyComponent::type_]
+        end
+
+        type example = { body_text: ::Array[::Array[String]] }
+
+        class Example < Telnyx::Internal::Type::BaseModel
+          attr_reader body_text: ::Array[::Array[String]]?
+
+          def body_text=: (::Array[::Array[String]]) -> ::Array[::Array[String]]
+
+          def initialize: (?body_text: ::Array[::Array[String]]) -> void
+
+          def to_hash: -> { body_text: ::Array[::Array[String]] }
+        end
+      end
+    end
+  end
+end

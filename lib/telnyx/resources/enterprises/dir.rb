@@ -53,7 +53,7 @@ module Telnyx
         #
         # @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
         #
-        # @param documents [Array<Telnyx::Models::Enterprises::DirCreateParams::Document>] Supporting documents. Each `document_id` may appear at most once on a DIR.
+        # @param documents [Array<Telnyx::Models::Document>] Supporting documents. Each `document_id` may appear at most once on a DIR.
         #
         # @param logo_url [String] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
         #
@@ -61,7 +61,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Enterprises::DirCreateResponse]
+        # @return [Telnyx::Models::DirWrapped]
         #
         # @see Telnyx::Models::Enterprises::DirCreateParams
         def create(enterprise_id, params)
@@ -70,7 +70,7 @@ module Telnyx
             method: :post,
             path: ["enterprises/%1$s/dir", enterprise_id],
             body: parsed,
-            model: Telnyx::Models::Enterprises::DirCreateResponse,
+            model: Telnyx::DirWrapped,
             options: options
           )
         end
@@ -102,7 +102,7 @@ module Telnyx
         #
         # @param filter_expiring_within_days [Integer] Convenience: returns DIRs whose `expiring_at` falls within the next N days (1–36
         #
-        # @param filter_status [Symbol, Telnyx::Models::Enterprises::DirListParams::FilterStatus] Filter by DIR status.
+        # @param filter_status [Symbol, Telnyx::Models::DirStatus] Filter by DIR status.
         #
         # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
@@ -112,7 +112,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Enterprises::DirListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::DirAPI>]
         #
         # @see Telnyx::Models::Enterprises::DirListParams
         def list(enterprise_id, params = {})
@@ -132,7 +132,7 @@ module Telnyx
               page_size: "page[size]"
             ),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Enterprises::DirListResponse,
+            model: Telnyx::DirAPI,
             options: options
           )
         end

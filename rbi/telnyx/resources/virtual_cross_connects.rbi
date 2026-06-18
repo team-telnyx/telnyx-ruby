@@ -16,7 +16,7 @@ module Telnyx
           bandwidth_mbps: Float,
           bgp_asn: Float,
           cloud_provider:
-            Telnyx::VirtualCrossConnectCreateParams::CloudProvider::OrSymbol,
+            Telnyx::VirtualCrossConnectCreate::CloudProvider::OrSymbol,
           cloud_provider_region: String,
           name: String,
           network_id: String,
@@ -154,7 +154,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::VirtualCrossConnectListResponse
+            Telnyx::VirtualCrossConnectCombined
           ]
         )
       end

@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::ChannelZonesTest < Telnyx::Test::ResourceTest
     response = @telnyx.channel_zones.update("channel_zone_id", channels: 0)
 
     assert_pattern do
-      response => Telnyx::Models::ChannelZoneUpdateResponse
+      response => Telnyx::GcbChannelZone
     end
 
     assert_pattern do
@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::ChannelZonesTest < Telnyx::Test::ResourceTest
         channels: Integer,
         countries: ^(Telnyx::Internal::Type::ArrayOf[String]),
         name: String,
-        record_type: Telnyx::Models::ChannelZoneUpdateResponse::RecordType,
+        record_type: Telnyx::GcbChannelZone::RecordType,
         created_at: String | nil,
         updated_at: String | nil
       }
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::ChannelZonesTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::ChannelZoneListResponse
+      row => Telnyx::GcbChannelZone
     end
 
     assert_pattern do
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::ChannelZonesTest < Telnyx::Test::ResourceTest
         channels: Integer,
         countries: ^(Telnyx::Internal::Type::ArrayOf[String]),
         name: String,
-        record_type: Telnyx::Models::ChannelZoneListResponse::RecordType,
+        record_type: Telnyx::GcbChannelZone::RecordType,
         created_at: String | nil,
         updated_at: String | nil
       }

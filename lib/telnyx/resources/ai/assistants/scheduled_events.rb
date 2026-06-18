@@ -23,7 +23,7 @@ module Telnyx
           #
           # @param telnyx_end_user_target [String] The phone number, SIP URI, to schedule the call or text to.
           #
-          # @param call_settings [Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings] Per-call telephony overrides applied when a scheduled phone-call event
+          # @param call_settings [Telnyx::Models::AI::Assistants::ScheduledCallSettings] Per-call telephony overrides applied when a scheduled phone-call event
           #
           # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
           #

@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Texml::AccountsTest < Telnyx::Test::ResourceTest
     response = @telnyx.texml.accounts.retrieve_recordings_json("account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::AccountRetrieveRecordingsJsonResponse
+      response => Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
     end
 
     assert_pattern do
@@ -45,7 +45,7 @@ class Telnyx::Test::Resources::Texml::AccountsTest < Telnyx::Test::ResourceTest
         page_size: Integer | nil,
         previous_page_uri: String | nil,
         start: Integer | nil,
-        transcriptions: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse::Transcription]) | nil,
+        transcriptions: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::Transcriptions::TexmlRecordingTranscription]) | nil,
         uri: String | nil
       }
     end

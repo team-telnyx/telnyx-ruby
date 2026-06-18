@@ -2,7 +2,7 @@
 
 module Telnyx
   module Models
-    class DocServiceDocument < Telnyx::Internal::Type::BaseModel
+    class DocServiceDocument < Telnyx::Models::DocServiceRecord
       OrHash =
         T.type_alias do
           T.any(Telnyx::DocServiceDocument, Telnyx::Internal::AnyHash)
@@ -21,13 +21,6 @@ module Telnyx
 
       sig { params(filename: String).void }
       attr_writer :filename
-
-      # Identifies the resource.
-      sig { returns(T.nilable(String)) }
-      attr_reader :id
-
-      sig { params(id: String).void }
-      attr_writer :id
 
       # The antivirus scan status of the document.
       sig do
@@ -50,13 +43,6 @@ module Telnyx
 
       sig { params(content_type: String).void }
       attr_writer :content_type
-
-      # ISO 8601 formatted date-time indicating when the resource was created.
-      sig { returns(T.nilable(String)) }
-      attr_reader :created_at
-
-      sig { params(created_at: String).void }
-      attr_writer :created_at
 
       # Identifies the type of the resource.
       sig { returns(T.nilable(String)) }
@@ -88,37 +74,23 @@ module Telnyx
       sig { params(status: Telnyx::DocServiceDocument::Status::OrSymbol).void }
       attr_writer :status
 
-      # ISO 8601 formatted date-time indicating when the resource was updated.
-      sig { returns(T.nilable(String)) }
-      attr_reader :updated_at
-
-      sig { params(updated_at: String).void }
-      attr_writer :updated_at
-
       sig do
         params(
-          id: String,
           av_scan_status: Telnyx::DocServiceDocument::AvScanStatus::OrSymbol,
           content_type: String,
-          created_at: String,
           customer_reference: String,
           filename: String,
           record_type: String,
           sha256: String,
           size: Telnyx::DocServiceDocument::Size::OrHash,
-          status: Telnyx::DocServiceDocument::Status::OrSymbol,
-          updated_at: String
+          status: Telnyx::DocServiceDocument::Status::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
-        # Identifies the resource.
-        id: nil,
         # The antivirus scan status of the document.
         av_scan_status: nil,
         # The document's content_type.
         content_type: nil,
-        # ISO 8601 formatted date-time indicating when the resource was created.
-        created_at: nil,
         # Optional reference string for customer tracking.
         customer_reference: nil,
         # The filename of the document.
@@ -130,27 +102,22 @@ module Telnyx
         # Indicates the document's filesize
         size: nil,
         # Indicates the current document reviewing status
-        status: nil,
-        # ISO 8601 formatted date-time indicating when the resource was updated.
-        updated_at: nil
+        status: nil
       )
       end
 
       sig do
         override.returns(
           {
-            id: String,
             av_scan_status:
               Telnyx::DocServiceDocument::AvScanStatus::TaggedSymbol,
             content_type: String,
-            created_at: String,
             customer_reference: String,
             filename: String,
             record_type: String,
             sha256: String,
             size: Telnyx::DocServiceDocument::Size,
-            status: Telnyx::DocServiceDocument::Status::TaggedSymbol,
-            updated_at: String
+            status: Telnyx::DocServiceDocument::Status::TaggedSymbol
           }
         )
       end

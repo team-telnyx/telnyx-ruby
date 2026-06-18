@@ -15,7 +15,7 @@ module Telnyx
           #
           # @param assistant_id [String] Unique identifier of the assistant.
           #
-          # @param rules [Array<Telnyx::Models::AI::Assistants::CanaryDeploy::Rule>]
+          # @param rules [Array<Telnyx::Models::AI::Assistants::RuleInput>]
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -66,7 +66,7 @@ module Telnyx
           #
           # @param assistant_id [String] Unique identifier of the assistant.
           #
-          # @param rules [Array<Telnyx::Models::AI::Assistants::CanaryDeploy::Rule>]
+          # @param rules [Array<Telnyx::Models::AI::Assistants::RuleInput>]
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

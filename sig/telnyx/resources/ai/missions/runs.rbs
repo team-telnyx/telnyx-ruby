@@ -14,13 +14,13 @@ module Telnyx
             ?input: ::Hash[Symbol, top],
             ?metadata: ::Hash[Symbol, top],
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Missions::RunCreateResponse
+          ) -> Telnyx::AI::Missions::MissionRunResponse
 
           def retrieve: (
             String run_id,
             mission_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Missions::RunRetrieveResponse
+          ) -> Telnyx::AI::Missions::MissionRunResponse
 
           def update: (
             String run_id,
@@ -29,9 +29,9 @@ module Telnyx
             ?metadata: ::Hash[Symbol, top],
             ?result_payload: ::Hash[Symbol, top],
             ?result_summary: String,
-            ?status: Telnyx::Models::AI::Missions::RunUpdateParams::status,
+            ?status: Telnyx::Models::AI::Missions::run_status,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Missions::RunUpdateResponse
+          ) -> Telnyx::AI::Missions::MissionRunResponse
 
           def list: (
             String mission_id,
@@ -45,7 +45,7 @@ module Telnyx
             String run_id,
             mission_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Missions::RunCancelRunResponse
+          ) -> Telnyx::AI::Missions::MissionRunResponse
 
           def list_runs: (
             ?page_number: Integer,
@@ -58,13 +58,13 @@ module Telnyx
             String run_id,
             mission_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Missions::RunPauseRunResponse
+          ) -> Telnyx::AI::Missions::MissionRunResponse
 
           def resume_run: (
             String run_id,
             mission_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::AI::Missions::RunResumeRunResponse
+          ) -> Telnyx::AI::Missions::MissionRunResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

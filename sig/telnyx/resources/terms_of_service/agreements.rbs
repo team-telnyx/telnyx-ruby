@@ -5,14 +5,14 @@ module Telnyx
         def retrieve: (
           String agreement_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::TermsOfService::AgreementRetrieveResponse
+        ) -> Telnyx::TermsOfService::TosAgreementWrapped
 
         def list: (
           ?page_number: Integer,
           ?page_size: Integer,
-          ?product_type: Telnyx::Models::TermsOfService::AgreementListParams::product_type,
+          ?product_type: Telnyx::Models::TermsOfService::tos_product_type,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::TermsOfService::AgreementListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::TermsOfService::TosAgreement]
 
         def initialize: (client: Telnyx::Client) -> void
       end

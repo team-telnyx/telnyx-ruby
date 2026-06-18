@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.mcp_servers.create(name: "name", type: "type", url: "url")
 
     assert_pattern do
-      response => Telnyx::Models::AI::McpServerCreateResponse
+      response => Telnyx::AI::McpServer
     end
 
     assert_pattern do
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.mcp_servers.retrieve("mcp_server_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::McpServerRetrieveResponse
+      response => Telnyx::AI::McpServer
     end
 
     assert_pattern do
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.mcp_servers.update("mcp_server_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::McpServerUpdateResponse
+      response => Telnyx::AI::McpServer
     end
 
     assert_pattern do
@@ -82,7 +82,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::AI::McpServerListResponse
+      row => Telnyx::AI::McpServer
     end
 
     assert_pattern do

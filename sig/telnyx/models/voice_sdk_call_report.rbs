@@ -1,0 +1,227 @@
+module Telnyx
+  module Models
+    type voice_sdk_call_report =
+      {
+        call_id: String,
+        call_report_id: String,
+        created_at: Time,
+        flush_reason: ::Hash[Symbol, top],
+        logs: Telnyx::Models::VoiceSDKCallReport::logs,
+        organization_id: String,
+        segment: Integer,
+        stats: Telnyx::Models::VoiceSDKCallReport::stats,
+        stored_at: Time,
+        summary: ::Hash[Symbol, top],
+        telnyx_leg_id: String,
+        telnyx_session_id: String,
+        user_agent: String,
+        user_id: String,
+        version: String,
+        voice_sdk_id: String,
+        voice_sdk_id_decoded: ::Hash[Symbol, top],
+        voice_sdk_session_id: String
+      }
+
+    class VoiceSDKCallReport < Telnyx::Internal::Type::BaseModel
+      attr_reader call_id: String?
+
+      def call_id=: (String) -> String
+
+      attr_reader call_report_id: String?
+
+      def call_report_id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader flush_reason: ::Hash[Symbol, top]?
+
+      def flush_reason=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader logs: Telnyx::Models::VoiceSDKCallReport::logs?
+
+      def logs=: (
+        Telnyx::Models::VoiceSDKCallReport::logs
+      ) -> Telnyx::Models::VoiceSDKCallReport::logs
+
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
+      attr_reader segment: Integer?
+
+      def segment=: (Integer) -> Integer
+
+      attr_reader stats: Telnyx::Models::VoiceSDKCallReport::stats?
+
+      def stats=: (
+        Telnyx::Models::VoiceSDKCallReport::stats
+      ) -> Telnyx::Models::VoiceSDKCallReport::stats
+
+      attr_reader stored_at: Time?
+
+      def stored_at=: (Time) -> Time
+
+      attr_reader summary: ::Hash[Symbol, top]?
+
+      def summary=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader telnyx_leg_id: String?
+
+      def telnyx_leg_id=: (String) -> String
+
+      attr_reader telnyx_session_id: String?
+
+      def telnyx_session_id=: (String) -> String
+
+      attr_reader user_agent: String?
+
+      def user_agent=: (String) -> String
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      attr_reader version: String?
+
+      def version=: (String) -> String
+
+      attr_reader voice_sdk_id: String?
+
+      def voice_sdk_id=: (String) -> String
+
+      attr_reader voice_sdk_id_decoded: ::Hash[Symbol, top]?
+
+      def voice_sdk_id_decoded=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader voice_sdk_session_id: String?
+
+      def voice_sdk_session_id=: (String) -> String
+
+      def initialize: (
+        ?call_id: String,
+        ?call_report_id: String,
+        ?created_at: Time,
+        ?flush_reason: ::Hash[Symbol, top],
+        ?logs: Telnyx::Models::VoiceSDKCallReport::logs,
+        ?organization_id: String,
+        ?segment: Integer,
+        ?stats: Telnyx::Models::VoiceSDKCallReport::stats,
+        ?stored_at: Time,
+        ?summary: ::Hash[Symbol, top],
+        ?telnyx_leg_id: String,
+        ?telnyx_session_id: String,
+        ?user_agent: String,
+        ?user_id: String,
+        ?version: String,
+        ?voice_sdk_id: String,
+        ?voice_sdk_id_decoded: ::Hash[Symbol, top],
+        ?voice_sdk_session_id: String
+      ) -> void
+
+      def to_hash: -> {
+        call_id: String,
+        call_report_id: String,
+        created_at: Time,
+        flush_reason: ::Hash[Symbol, top],
+        logs: Telnyx::Models::VoiceSDKCallReport::logs,
+        organization_id: String,
+        segment: Integer,
+        stats: Telnyx::Models::VoiceSDKCallReport::stats,
+        stored_at: Time,
+        summary: ::Hash[Symbol, top],
+        telnyx_leg_id: String,
+        telnyx_session_id: String,
+        user_agent: String,
+        user_id: String,
+        version: String,
+        voice_sdk_id: String,
+        voice_sdk_id_decoded: ::Hash[Symbol, top],
+        voice_sdk_session_id: String
+      }
+
+      type logs =
+        ::Array[Telnyx::VoiceSDKCallReportLogEntry]
+        | Telnyx::VoiceSDKCallReport::Logs::Entries
+
+      module Logs
+        extend Telnyx::Internal::Type::Union
+
+        type entries = { entries: ::Array[Telnyx::VoiceSDKCallReportLogEntry] }
+
+        class Entries < Telnyx::Internal::Type::BaseModel
+          attr_reader entries: ::Array[Telnyx::VoiceSDKCallReportLogEntry]?
+
+          def entries=: (
+            ::Array[Telnyx::VoiceSDKCallReportLogEntry]
+          ) -> ::Array[Telnyx::VoiceSDKCallReportLogEntry]
+
+          def initialize: (
+            ?entries: ::Array[Telnyx::VoiceSDKCallReportLogEntry]
+          ) -> void
+
+          def to_hash: -> {
+            entries: ::Array[Telnyx::VoiceSDKCallReportLogEntry]
+          }
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::VoiceSDKCallReport::logs]
+
+        VoiceSDKCallReportLogEntryArray: Telnyx::Internal::Type::Converter
+      end
+
+      type stats =
+        ::Array[::Hash[Symbol, top]]
+        | Telnyx::VoiceSDKCallReport::Stats::UnionMember1
+
+      module Stats
+        extend Telnyx::Internal::Type::Union
+
+        type union_member1 =
+          {
+            audio: ::Hash[Symbol, top],
+            connection: ::Hash[Symbol, top],
+            ice: ::Hash[Symbol, top],
+            transport: ::Hash[Symbol, top]
+          }
+
+        class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          attr_reader audio: ::Hash[Symbol, top]?
+
+          def audio=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader connection: ::Hash[Symbol, top]?
+
+          def connection=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader ice: ::Hash[Symbol, top]?
+
+          def ice=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader transport: ::Hash[Symbol, top]?
+
+          def transport=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          def initialize: (
+            ?audio: ::Hash[Symbol, top],
+            ?connection: ::Hash[Symbol, top],
+            ?ice: ::Hash[Symbol, top],
+            ?transport: ::Hash[Symbol, top]
+          ) -> void
+
+          def to_hash: -> {
+            audio: ::Hash[Symbol, top],
+            connection: ::Hash[Symbol, top],
+            ice: ::Hash[Symbol, top],
+            transport: ::Hash[Symbol, top]
+          }
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::VoiceSDKCallReport::stats]
+
+        UnionMember0Array: Telnyx::Internal::Type::Converter
+      end
+    end
+  end
+end

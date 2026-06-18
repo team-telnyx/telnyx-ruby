@@ -26,11 +26,7 @@ module Telnyx
             sig { returns(String) }
             attr_accessor :summary
 
-            sig do
-              returns(
-                Telnyx::AI::Missions::Runs::EventLogParams::Type::OrSymbol
-              )
-            end
+            sig { returns(Telnyx::AI::Missions::Runs::EventType::OrSymbol) }
             attr_accessor :type
 
             sig { returns(T.nilable(String)) }
@@ -63,8 +59,7 @@ module Telnyx
                 mission_id: String,
                 run_id: String,
                 summary: String,
-                type:
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::OrSymbol,
+                type: Telnyx::AI::Missions::Runs::EventType::OrSymbol,
                 agent_id: String,
                 idempotency_key: String,
                 payload: T::Hash[Symbol, T.anything],
@@ -92,8 +87,7 @@ module Telnyx
                   mission_id: String,
                   run_id: String,
                   summary: String,
-                  type:
-                    Telnyx::AI::Missions::Runs::EventLogParams::Type::OrSymbol,
+                  type: Telnyx::AI::Missions::Runs::EventType::OrSymbol,
                   agent_id: String,
                   idempotency_key: String,
                   payload: T::Hash[Symbol, T.anything],
@@ -103,75 +97,6 @@ module Telnyx
               )
             end
             def to_hash
-            end
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::AI::Missions::Runs::EventLogParams::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              STATUS_CHANGE =
-                T.let(
-                  :status_change,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              STEP_STARTED =
-                T.let(
-                  :step_started,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              STEP_COMPLETED =
-                T.let(
-                  :step_completed,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              STEP_FAILED =
-                T.let(
-                  :step_failed,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              TOOL_CALL =
-                T.let(
-                  :tool_call,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              TOOL_RESULT =
-                T.let(
-                  :tool_result,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              MESSAGE =
-                T.let(
-                  :message,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              ERROR =
-                T.let(
-                  :error,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-              CUSTOM =
-                T.let(
-                  :custom,
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::AI::Missions::Runs::EventLogParams::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
           end
         end

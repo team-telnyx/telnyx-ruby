@@ -1,60 +1,15 @@
 module Telnyx
   module Models
-    type global_ip_create_response =
-      { data: Telnyx::Models::GlobalIPCreateResponse::Data }
+    type global_ip_create_response = { data: Telnyx::GlobalIP }
 
     class GlobalIPCreateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::GlobalIPCreateResponse::Data?
+      attr_reader data: Telnyx::GlobalIP?
 
-      def data=: (
-        Telnyx::Models::GlobalIPCreateResponse::Data
-      ) -> Telnyx::Models::GlobalIPCreateResponse::Data
+      def data=: (Telnyx::GlobalIP) -> Telnyx::GlobalIP
 
-      def initialize: (
-        ?data: Telnyx::Models::GlobalIPCreateResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::GlobalIP) -> void
 
-      def to_hash: -> { data: Telnyx::Models::GlobalIPCreateResponse::Data }
-
-      type data =
-        {
-          description: String,
-          ip_address: String,
-          name: String,
-          ports: ::Hash[Symbol, top]
-        }
-
-      class Data < Telnyx::Models::Record
-        def description: -> String?
-
-        def description=: (String _) -> String
-
-        def name: -> String?
-
-        def name=: (String _) -> String
-
-        def ports: -> ::Hash[Symbol, top]?
-
-        def ports=: (::Hash[Symbol, top] _) -> ::Hash[Symbol, top]
-
-        def ip_address: -> String?
-
-        def ip_address=: (String _) -> String
-
-        def initialize: (
-          ?description: String,
-          ?ip_address: String,
-          ?name: String,
-          ?ports: ::Hash[Symbol, top]
-        ) -> void
-
-        def to_hash: -> {
-          description: String,
-          ip_address: String,
-          name: String,
-          ports: ::Hash[Symbol, top]
-        }
-      end
+      def to_hash: -> { data: Telnyx::GlobalIP }
     end
   end
 end

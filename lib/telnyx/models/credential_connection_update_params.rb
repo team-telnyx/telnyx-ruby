@@ -100,8 +100,8 @@ module Telnyx
       #   applied to outgoing audio. When set to 'both', it's applied in both directions.
       #   When set to 'disabled', noise suppression is turned off.
       #
-      #   @return [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppression, nil]
-      optional :noise_suppression, enum: -> { Telnyx::CredentialConnectionUpdateParams::NoiseSuppression }
+      #   @return [Symbol, Telnyx::Models::ConnectionNoiseSuppression, nil]
+      optional :noise_suppression, enum: -> { Telnyx::ConnectionNoiseSuppression }
 
       # @!attribute noise_suppression_details
       #   Configuration options for noise suppression. These settings are stored
@@ -217,7 +217,7 @@ module Telnyx
       #
       #   @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
-      #   @param noise_suppression [Symbol, Telnyx::Models::CredentialConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      #   @param noise_suppression [Symbol, Telnyx::Models::ConnectionNoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
       #   @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
@@ -244,22 +244,6 @@ module Telnyx
       #   @param webhook_timeout_secs [Integer, nil] Specifies how many seconds to wait before timing out a webhook.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-      # Controls when noise suppression is applied to calls. When set to 'inbound',
-      # noise suppression is applied to incoming audio. When set to 'outbound', it's
-      # applied to outgoing audio. When set to 'both', it's applied in both directions.
-      # When set to 'disabled', noise suppression is turned off.
-      module NoiseSuppression
-        extend Telnyx::Internal::Type::Enum
-
-        INBOUND = :inbound
-        OUTBOUND = :outbound
-        BOTH = :both
-        DISABLED = :disabled
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # This feature enables inbound SIP URI calls to your Credential Auth Connection.
       # If enabled for all (unrestricted) then anyone who calls the SIP URI

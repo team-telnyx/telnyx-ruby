@@ -66,19 +66,10 @@ module Telnyx
         attr_writer :call_reasons
 
         # Supporting documents. Each `document_id` may appear at most once on a DIR.
-        sig do
-          returns(
-            T.nilable(T::Array[Telnyx::Enterprises::DirCreateParams::Document])
-          )
-        end
+        sig { returns(T.nilable(T::Array[Telnyx::Document])) }
         attr_reader :documents
 
-        sig do
-          params(
-            documents:
-              T::Array[Telnyx::Enterprises::DirCreateParams::Document::OrHash]
-          ).void
-        end
+        sig { params(documents: T::Array[Telnyx::Document::OrHash]).void }
         attr_writer :documents
 
         # Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
@@ -109,8 +100,7 @@ module Telnyx
               Telnyx::Enterprises::DirCreateParams::CertifyNoShaftContent::OrBoolean,
             display_name: String,
             call_reasons: T::Array[String],
-            documents:
-              T::Array[Telnyx::Enterprises::DirCreateParams::Document::OrHash],
+            documents: T::Array[Telnyx::Document::OrHash],
             logo_url: String,
             reselling: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
@@ -161,8 +151,7 @@ module Telnyx
                 Telnyx::Enterprises::DirCreateParams::CertifyNoShaftContent::OrBoolean,
               display_name: String,
               call_reasons: T::Array[String],
-              documents:
-                T::Array[Telnyx::Enterprises::DirCreateParams::Document],
+              documents: T::Array[Telnyx::Document],
               logo_url: String,
               reselling: T::Boolean,
               request_options: Telnyx::RequestOptions
@@ -260,162 +249,6 @@ module Telnyx
             )
           end
           def self.values
-          end
-        end
-
-        class Document < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Enterprises::DirCreateParams::Document,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # Id returned by the Telnyx Documents API after you upload the file (upload via
-          # `POST /v2/documents`; see https://developers.telnyx.com/api/documents).
-          sig { returns(String) }
-          attr_accessor :document_id
-
-          # Type of supporting document. Pick the closest match to what the file actually
-          # contains; `other` triggers manual vetting and may slow approval. The matching
-          # short_name reference list is at `GET /v2/dir/document_types`.
-          sig do
-            returns(
-              Telnyx::Enterprises::DirCreateParams::Document::DocumentType::OrSymbol
-            )
-          end
-          attr_accessor :document_type
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :description
-
-          sig { params(description: String).void }
-          attr_writer :description
-
-          sig do
-            params(
-              document_id: String,
-              document_type:
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::OrSymbol,
-              description: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Id returned by the Telnyx Documents API after you upload the file (upload via
-            # `POST /v2/documents`; see https://developers.telnyx.com/api/documents).
-            document_id:,
-            # Type of supporting document. Pick the closest match to what the file actually
-            # contains; `other` triggers manual vetting and may slow approval. The matching
-            # short_name reference list is at `GET /v2/dir/document_types`.
-            document_type:,
-            description: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                document_id: String,
-                document_type:
-                  Telnyx::Enterprises::DirCreateParams::Document::DocumentType::OrSymbol,
-                description: String
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # Type of supporting document. Pick the closest match to what the file actually
-          # contains; `other` triggers manual vetting and may slow approval. The matching
-          # short_name reference list is at `GET /v2/dir/document_types`.
-          module DocumentType
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Enterprises::DirCreateParams::Document::DocumentType
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            LETTER_OF_AUTHORIZATION =
-              T.let(
-                :letter_of_authorization,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            BUSINESS_REGISTRATION =
-              T.let(
-                :business_registration,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            ARTICLES_OF_INCORPORATION =
-              T.let(
-                :articles_of_incorporation,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            TAX_DOCUMENT =
-              T.let(
-                :tax_document,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            EIN_LETTER =
-              T.let(
-                :ein_letter,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            TRADEMARK_REGISTRATION =
-              T.let(
-                :trademark_registration,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            WEBSITE_OWNERSHIP =
-              T.let(
-                :website_ownership,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            BUSINESS_LICENSE =
-              T.let(
-                :business_license,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            PROFESSIONAL_LICENSE =
-              T.let(
-                :professional_license,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            GOVERNMENT_ID =
-              T.let(
-                :government_id,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            UTILITY_BILL =
-              T.let(
-                :utility_bill,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            BANK_STATEMENT =
-              T.let(
-                :bank_statement,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-            OTHER =
-              T.let(
-                :other,
-                Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Enterprises::DirCreateParams::Document::DocumentType::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

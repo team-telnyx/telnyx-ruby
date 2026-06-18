@@ -9,7 +9,7 @@ module Telnyx
           ?page_size: Integer,
           ?sort: Telnyx::PortingOrders::ActionRequirementListParams::Sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::ActionRequirementListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingOrders::PortingActionRequirement]
 
         def initiate: (
           String id,

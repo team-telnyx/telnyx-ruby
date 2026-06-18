@@ -8,7 +8,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     response =
       @telnyx.voice_clones.create(
-        params: {
+        voice_clone_request: {
           gender: :male,
           language: "en",
           name: "clone-narrator",
@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Models::VoiceCloneCreateResponse
+      response => Telnyx::VoiceCloneResponse
     end
 
     assert_pattern do
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
     response = @telnyx.voice_clones.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", name: "updated-clone")
 
     assert_pattern do
-      response => Telnyx::Models::VoiceCloneUpdateResponse
+      response => Telnyx::VoiceCloneResponse
     end
 
     assert_pattern do
@@ -96,7 +96,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
 
     response =
       @telnyx.voice_clones.create_from_upload(
-        params: {
+        voice_clone_upload_request: {
           audio_file: StringIO.new("Example data"),
           gender: :male,
           language: "lkf-Lz1vLbBu-9uDh-9AHaOS2D-Cbf",
@@ -106,7 +106,7 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Models::VoiceCloneCreateFromUploadResponse
+      response => Telnyx::VoiceCloneResponse
     end
 
     assert_pattern do

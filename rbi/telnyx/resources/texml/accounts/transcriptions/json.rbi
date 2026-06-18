@@ -31,7 +31,7 @@ module Telnyx
                 account_sid: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse
+                Telnyx::Texml::Accounts::Transcriptions::TexmlRecordingTranscription
               )
             end
             def retrieve_recording_transcription_sid_json(

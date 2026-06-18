@@ -21,7 +21,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::SiprecConnectorCreateResponse]
+      # @return [Telnyx::Models::SiprecConnectorResponse]
       #
       # @see Telnyx::Models::SiprecConnectorCreateParams
       def create(params)
@@ -30,7 +30,7 @@ module Telnyx
           method: :post,
           path: "siprec_connectors",
           body: parsed,
-          model: Telnyx::Models::SiprecConnectorCreateResponse,
+          model: Telnyx::SiprecConnectorResponse,
           options: options
         )
       end
@@ -43,14 +43,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::SiprecConnectorRetrieveResponse]
+      # @return [Telnyx::Models::SiprecConnectorResponse]
       #
       # @see Telnyx::Models::SiprecConnectorRetrieveParams
       def retrieve(connector_name, params = {})
         @client.request(
           method: :get,
           path: ["siprec_connectors/%1$s", connector_name],
-          model: Telnyx::Models::SiprecConnectorRetrieveResponse,
+          model: Telnyx::SiprecConnectorResponse,
           options: params[:request_options]
         )
       end
@@ -74,7 +74,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::SiprecConnectorUpdateResponse]
+      # @return [Telnyx::Models::SiprecConnectorResponse]
       #
       # @see Telnyx::Models::SiprecConnectorUpdateParams
       def update(connector_name, params)
@@ -83,7 +83,7 @@ module Telnyx
           method: :put,
           path: ["siprec_connectors/%1$s", connector_name],
           body: parsed,
-          model: Telnyx::Models::SiprecConnectorUpdateResponse,
+          model: Telnyx::SiprecConnectorResponse,
           options: options
         )
       end

@@ -16,8 +16,8 @@ module Telnyx
         # @!attribute filter_status
         #   Restrict to batches whose aggregate status equals this value.
         #
-        #   @return [Symbol, Telnyx::Models::Dir::PhoneNumberBatchListParams::FilterStatus, nil]
-        optional :filter_status, enum: -> { Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus }
+        #   @return [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus, nil]
+        optional :filter_status, enum: -> { Telnyx::Dir::DirPhoneNumberStatus }
 
         # @!attribute page_number
         #   1-based page number. Out-of-range values return an empty page with correct meta.
@@ -37,29 +37,13 @@ module Telnyx
         #
         #   @param dir_id [String]
         #
-        #   @param filter_status [Symbol, Telnyx::Models::Dir::PhoneNumberBatchListParams::FilterStatus] Restrict to batches whose aggregate status equals this value.
+        #   @param filter_status [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus] Restrict to batches whose aggregate status equals this value.
         #
         #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
         #   @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # Restrict to batches whose aggregate status equals this value.
-        module FilterStatus
-          extend Telnyx::Internal::Type::Enum
-
-          SUBMITTED = :submitted
-          IN_REVIEW = :in_review
-          VERIFIED = :verified
-          UNSUCCESSFUL = :unsuccessful
-          SUSPENDED = :suspended
-          EXPIRED = :expired
-          PERMANENTLY_REJECTED = :permanently_rejected
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

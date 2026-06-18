@@ -50,22 +50,6 @@ class Telnyx::Test::Resources::DocumentsTest < Telnyx::Test::ResourceTest
     assert_pattern do
       row => Telnyx::DocServiceDocument
     end
-
-    assert_pattern do
-      row => {
-        id: String | nil,
-        av_scan_status: Telnyx::DocServiceDocument::AvScanStatus | nil,
-        content_type: String | nil,
-        created_at: String | nil,
-        customer_reference: String | nil,
-        filename: String | nil,
-        record_type: String | nil,
-        sha256: String | nil,
-        size: Telnyx::DocServiceDocument::Size | nil,
-        status: Telnyx::DocServiceDocument::Status | nil,
-        updated_at: String | nil
-      }
-    end
   end
 
   def test_delete

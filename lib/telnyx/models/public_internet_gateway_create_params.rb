@@ -7,32 +7,18 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!attribute name
-      #   A user specified name for the interface.
+      # @!attribute body
       #
-      #   @return [String, nil]
-      optional :name, String
+      #   @return [Telnyx::Models::PublicInternetGatewayCreateParams::Body]
+      required :body, -> { Telnyx::PublicInternetGatewayCreateParams::Body }
 
-      # @!attribute network_id
-      #   The id of the network associated with the interface.
-      #
-      #   @return [String, nil]
-      optional :network_id, String
-
-      # @!attribute region_code
-      #   The region interface is deployed to.
-      #
-      #   @return [String, nil]
-      optional :region_code, String
-
-      # @!method initialize(name: nil, network_id: nil, region_code: nil, request_options: {})
-      #   @param name [String] A user specified name for the interface.
-      #
-      #   @param network_id [String] The id of the network associated with the interface.
-      #
-      #   @param region_code [String] The region interface is deployed to.
-      #
+      # @!method initialize(body:, request_options: {})
+      #   @param body [Telnyx::Models::PublicInternetGatewayCreateParams::Body]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+      class Body < Telnyx::Models::PublicInternetGateway
+        # @!method initialize
+      end
     end
   end
 end

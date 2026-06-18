@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::IntegrationsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.integrations.retrieve("integration_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::IntegrationRetrieveResponse
+      response => Telnyx::AI::Integration
     end
 
     assert_pattern do
@@ -20,7 +20,7 @@ class Telnyx::Test::Resources::AI::IntegrationsTest < Telnyx::Test::ResourceTest
         display_name: String,
         logo_url: String,
         name: String,
-        status: Telnyx::Models::AI::IntegrationRetrieveResponse::Status
+        status: Telnyx::AI::Integration::Status
       }
     end
   end
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::AI::IntegrationsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::IntegrationListResponse::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Integration])
       }
     end
   end

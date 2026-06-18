@@ -39,7 +39,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RoomRecordingListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RoomRecording>]
       #
       # @see Telnyx::Models::RoomRecordingListParams
       def list(params = {})
@@ -50,7 +50,7 @@ module Telnyx
           path: "room_recordings",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::RoomRecordingListResponse,
+          model: Telnyx::RoomRecording,
           options: options
         )
       end

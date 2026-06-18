@@ -27,7 +27,7 @@ module Telnyx
           params(
             enterprise_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Enterprises::ReputationRetrieveResponse)
+          ).returns(Telnyx::Enterprises::EnterpriseReputationPublicWrapped)
         end
         def retrieve(
           # The enterprise id. Lowercase UUID.
@@ -74,9 +74,9 @@ module Telnyx
             enterprise_id: String,
             loa_document_id: String,
             check_frequency:
-              Telnyx::Enterprises::ReputationEnableParams::CheckFrequency::OrSymbol,
+              Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Enterprises::ReputationEnableResponse)
+          ).returns(Telnyx::Enterprises::EnterpriseReputationPublicWrapped)
         end
         def enable(
           # The enterprise id. Lowercase UUID.
@@ -102,11 +102,9 @@ module Telnyx
           params(
             enterprise_id: String,
             check_frequency:
-              Telnyx::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency::OrSymbol,
+              Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Models::Enterprises::ReputationUpdateFrequencyResponse
-          )
+          ).returns(Telnyx::Enterprises::EnterpriseReputationPublicWrapped)
         end
         def update_frequency(
           # The enterprise id. Lowercase UUID.

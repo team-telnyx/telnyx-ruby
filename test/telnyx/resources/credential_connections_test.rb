@@ -88,7 +88,7 @@ class Telnyx::Test::Resources::CredentialConnectionsTest < Telnyx::Test::Resourc
         inbound: Telnyx::CredentialInbound | nil,
         ios_push_credential_id: String | nil,
         jitter_buffer: Telnyx::ConnectionJitterBuffer | nil,
-        noise_suppression: Telnyx::CredentialConnection::NoiseSuppression | nil,
+        noise_suppression: Telnyx::ConnectionNoiseSuppression | nil,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails | nil,
         onnet_t38_passthrough_enabled: Telnyx::Internal::Type::Boolean | nil,
         outbound: Telnyx::CredentialOutbound | nil,

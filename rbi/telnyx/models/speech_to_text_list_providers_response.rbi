@@ -139,11 +139,7 @@ module Telnyx
           # configured via Call Control voice-assistant transcription; it covers both
           # live-streaming and non-streaming/batch models (matching the
           # `TranscriptionConfig.model` enum on `call-control` voice assistants).
-          sig do
-            returns(
-              Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
-            )
-          end
+          sig { returns(Telnyx::SttServiceType::TaggedSymbol) }
           attr_accessor :type
 
           # A supported service surface for a given (provider, model), along with the
@@ -153,8 +149,7 @@ module Telnyx
           sig do
             params(
               languages: T::Array[String],
-              type:
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::OrSymbol
+              type: Telnyx::SttServiceType::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -173,60 +168,11 @@ module Telnyx
             override.returns(
               {
                 languages: T::Array[String],
-                type:
-                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
+                type: Telnyx::SttServiceType::TaggedSymbol
               }
             )
           end
           def to_hash
-          end
-
-          # Service surface a model is available on. `ai_assistant` is the STT surface
-          # configured via Call Control voice-assistant transcription; it covers both
-          # live-streaming and non-streaming/batch models (matching the
-          # `TranscriptionConfig.model` enum on `call-control` voice assistants).
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            STREAMING =
-              T.let(
-                :streaming,
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
-              )
-            FILE_BASED =
-              T.let(
-                :file_based,
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
-              )
-            IN_CALL =
-              T.let(
-                :in_call,
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
-              )
-            AI_ASSISTANT =
-              T.let(
-                :ai_assistant,
-                Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

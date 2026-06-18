@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module DirPhoneNumberStatus = Dir::DirPhoneNumberStatus
+
+    module Dir
+      type dir_phone_number_status =
+        :submitted
+        | :in_review
+        | :verified
+        | :unsuccessful
+        | :suspended
+        | :expired
+        | :permanently_rejected
+
+      module DirPhoneNumberStatus
+        extend Telnyx::Internal::Type::Enum
+
+        SUBMITTED: :submitted
+        IN_REVIEW: :in_review
+        VERIFIED: :verified
+        UNSUCCESSFUL: :unsuccessful
+        SUSPENDED: :suspended
+        EXPIRED: :expired
+        PERMANENTLY_REJECTED: :permanently_rejected
+
+        def self?.values: -> ::Array[Telnyx::Models::Dir::dir_phone_number_status]
+      end
+    end
+  end
+end

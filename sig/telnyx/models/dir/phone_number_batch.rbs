@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    module Dir
+      type phone_number_batch =
+        {
+          batch_id: String,
+          dir_display_name: String,
+          dir_id: String,
+          documents: ::Array[Telnyx::Document],
+          enterprise_id: String,
+          phone_numbers: ::Array[Telnyx::Dir::DirPhoneNumber],
+          status: Telnyx::Models::Dir::dir_phone_number_status,
+          submitted_at: Time,
+          total_count: Integer
+        }
+
+      class PhoneNumberBatch < Telnyx::Internal::Type::BaseModel
+        attr_reader dir_id: String?
+
+        def dir_id=: (String) -> String
+
+        attr_reader documents: ::Array[Telnyx::Document]?
+
+        def documents=: (::Array[Telnyx::Document]) -> ::Array[Telnyx::Document]
+
+        attr_reader enterprise_id: String?
+
+        def enterprise_id=: (String) -> String
+
+        attr_reader phone_numbers: ::Array[Telnyx::Dir::DirPhoneNumber]?
+
+        def phone_numbers=: (
+          ::Array[Telnyx::Dir::DirPhoneNumber]
+        ) -> ::Array[Telnyx::Dir::DirPhoneNumber]
+
+        attr_reader status: Telnyx::Models::Dir::dir_phone_number_status?
+
+        def status=: (
+          Telnyx::Models::Dir::dir_phone_number_status
+        ) -> Telnyx::Models::Dir::dir_phone_number_status
+
+        attr_reader batch_id: String?
+
+        def batch_id=: (String) -> String
+
+        attr_reader dir_display_name: String?
+
+        def dir_display_name=: (String) -> String
+
+        attr_reader submitted_at: Time?
+
+        def submitted_at=: (Time) -> Time
+
+        attr_reader total_count: Integer?
+
+        def total_count=: (Integer) -> Integer
+
+        def initialize: (
+          ?batch_id: String,
+          ?dir_display_name: String,
+          ?dir_id: String,
+          ?documents: ::Array[Telnyx::Document],
+          ?enterprise_id: String,
+          ?phone_numbers: ::Array[Telnyx::Dir::DirPhoneNumber],
+          ?status: Telnyx::Models::Dir::dir_phone_number_status,
+          ?submitted_at: Time,
+          ?total_count: Integer
+        ) -> void
+
+        def to_hash: -> {
+          batch_id: String,
+          dir_display_name: String,
+          dir_id: String,
+          documents: ::Array[Telnyx::Document],
+          enterprise_id: String,
+          phone_numbers: ::Array[Telnyx::Dir::DirPhoneNumber],
+          status: Telnyx::Models::Dir::dir_phone_number_status,
+          submitted_at: Time,
+          total_count: Integer
+        }
+      end
+    end
+  end
+end

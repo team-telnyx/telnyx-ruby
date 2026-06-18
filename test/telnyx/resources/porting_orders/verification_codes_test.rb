@@ -16,7 +16,7 @@ class Telnyx::Test::Resources::PortingOrders::VerificationCodesTest < Telnyx::Te
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::PortingOrders::VerificationCodeListResponse
+      row => Telnyx::PortingOrders::PortingVerificationCode
     end
 
     assert_pattern do
@@ -53,7 +53,7 @@ class Telnyx::Test::Resources::PortingOrders::VerificationCodesTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingOrders::VerificationCodeVerifyResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::PortingVerificationCode]) | nil
       }
     end
   end

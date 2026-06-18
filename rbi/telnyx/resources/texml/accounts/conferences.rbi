@@ -20,9 +20,7 @@ module Telnyx
               conference_sid: String,
               account_sid: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(
-              Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse
-            )
+            ).returns(Telnyx::Texml::Accounts::ConferenceResource)
           end
           def retrieve(
             # The ConferenceSid that uniquely identifies a conference.
@@ -43,7 +41,7 @@ module Telnyx
               announce_url: String,
               status: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse)
+            ).returns(Telnyx::Texml::Accounts::ConferenceResource)
           end
           def update(
             # Path param: The ConferenceSid that uniquely identifies a conference.
@@ -130,7 +128,7 @@ module Telnyx
               account_sid: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonResponse
+              Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
             )
           end
           def retrieve_recordings_json(

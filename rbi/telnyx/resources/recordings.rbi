@@ -13,7 +13,7 @@ module Telnyx
         params(
           recording_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::RecordingRetrieveResponse)
+        ).returns(Telnyx::RecordingResponse)
       end
       def retrieve(
         # Uniquely identifies the recording by id.
@@ -47,7 +47,7 @@ module Telnyx
         params(
           recording_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::RecordingDeleteResponse)
+        ).returns(Telnyx::RecordingResponse)
       end
       def delete(
         # Uniquely identifies the recording by id.

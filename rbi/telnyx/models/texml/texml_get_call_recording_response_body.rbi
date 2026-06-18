@@ -29,7 +29,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels::TaggedInteger
+              Telnyx::Texml::Accounts::Calls::TwimlRecordingChannels::TaggedInteger
             )
           )
         end
@@ -38,7 +38,7 @@ module Telnyx
         sig do
           params(
             channels:
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels::OrInteger
+              Telnyx::Texml::Accounts::Calls::TwimlRecordingChannels::OrInteger
           ).void
         end
         attr_writer :channels
@@ -82,7 +82,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
+              Telnyx::Texml::Accounts::Calls::RecordingSource::TaggedSymbol
             )
           )
         end
@@ -90,8 +90,7 @@ module Telnyx
 
         sig do
           params(
-            source:
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::OrSymbol
+            source: Telnyx::Texml::Accounts::Calls::RecordingSource::OrSymbol
           ).void
         end
         attr_writer :source
@@ -145,7 +144,7 @@ module Telnyx
             account_sid: String,
             call_sid: String,
             channels:
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels::OrInteger,
+              Telnyx::Texml::Accounts::Calls::TwimlRecordingChannels::OrInteger,
             conference_sid: T.nilable(String),
             date_created: Time,
             date_updated: Time,
@@ -153,8 +152,7 @@ module Telnyx
             error_code: T.nilable(String),
             media_url: String,
             sid: String,
-            source:
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::OrSymbol,
+            source: Telnyx::Texml::Accounts::Calls::RecordingSource::OrSymbol,
             start_time: Time,
             status:
               Telnyx::Texml::TexmlGetCallRecordingResponseBody::Status::OrSymbol,
@@ -193,7 +191,7 @@ module Telnyx
               account_sid: String,
               call_sid: String,
               channels:
-                Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels::TaggedInteger,
+                Telnyx::Texml::Accounts::Calls::TwimlRecordingChannels::TaggedInteger,
               conference_sid: T.nilable(String),
               date_created: Time,
               date_updated: Time,
@@ -202,7 +200,7 @@ module Telnyx
               media_url: String,
               sid: String,
               source:
-                Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol,
+                Telnyx::Texml::Accounts::Calls::RecordingSource::TaggedSymbol,
               start_time: Time,
               status:
                 Telnyx::Texml::TexmlGetCallRecordingResponseBody::Status::TaggedSymbol,
@@ -212,100 +210,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        module Channels
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedInteger =
-            T.type_alias do
-              T.all(
-                Integer,
-                Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels
-              )
-            end
-          OrInteger = T.type_alias { Integer }
-
-          CHANNEL_1 =
-            T.let(
-              1,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels::TaggedInteger
-            )
-          CHANNEL_2 =
-            T.let(
-              2,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels::TaggedInteger
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels::TaggedInteger
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Defines how the recording was created.
-        module Source
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          START_CALL_RECORDING_API =
-            T.let(
-              :StartCallRecordingAPI,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-            )
-          START_CONFERENCE_RECORDING_API =
-            T.let(
-              :StartConferenceRecordingAPI,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-            )
-          OUTBOUND_API =
-            T.let(
-              :OutboundAPI,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-            )
-          DIAL_VERB =
-            T.let(
-              :DialVerb,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-            )
-          CONFERENCE =
-            T.let(
-              :Conference,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-            )
-          RECORD_VERB =
-            T.let(
-              :RecordVerb,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-            )
-          TRUNKING =
-            T.let(
-              :Trunking,
-              Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         module Status

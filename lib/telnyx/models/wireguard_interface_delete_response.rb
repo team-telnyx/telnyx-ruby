@@ -6,16 +6,11 @@ module Telnyx
     class WireguardInterfaceDeleteResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::WireguardInterfaceDeleteResponse::Data, nil]
-      optional :data, -> { Telnyx::Models::WireguardInterfaceDeleteResponse::Data }
+      #   @return [Telnyx::Models::WireguardInterfaceRead, nil]
+      optional :data, -> { Telnyx::WireguardInterfaceRead }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::WireguardInterfaceDeleteResponse::Data]
-
-      # @see Telnyx::Models::WireguardInterfaceDeleteResponse#data
-      class Data < Telnyx::Models::Record
-        # @!method initialize
-      end
+      #   @param data [Telnyx::Models::WireguardInterfaceRead]
     end
   end
 end

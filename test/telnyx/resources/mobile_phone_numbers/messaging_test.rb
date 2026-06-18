@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test:
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::MobilePhoneNumbers::MessagingRetrieveResponse::Data | nil
+        data: Telnyx::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test:
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::MobilePhoneNumbers::MessagingListResponse
+      row => Telnyx::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings
     end
 
     assert_pattern do
@@ -40,15 +40,15 @@ class Telnyx::Test::Resources::MobilePhoneNumbers::MessagingTest < Telnyx::Test:
         id: String | nil,
         country_code: String | nil,
         created_at: Time | nil,
-        features: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Features | nil,
+        features: Telnyx::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings::Features | nil,
         messaging_product: String | nil,
         messaging_profile_id: String | nil,
         organization_id: String | nil,
         phone_number: String | nil,
-        record_type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::RecordType | nil,
+        record_type: Telnyx::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings::RecordType | nil,
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
         traffic_type: String | nil,
-        type: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse::Type | nil,
+        type: Telnyx::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings::Type | nil,
         updated_at: Time | nil
       }
     end

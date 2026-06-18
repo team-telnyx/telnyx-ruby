@@ -8,7 +8,7 @@ module Telnyx
             enterprise_id: String,
             ?fresh: bool,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Enterprises::Reputation::NumberRetrieveResponse
+          ) -> Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
 
           def list: (
             String enterprise_id,
@@ -17,13 +17,13 @@ module Telnyx
             ?page_number: Integer,
             ?page_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::Reputation::NumberListResponse]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Enterprises::Reputation::ReputationPhoneNumber]
 
           def associate: (
             String enterprise_id,
             phone_numbers: ::Array[String],
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse
+          ) -> Telnyx::Enterprises::Reputation::ReputationPhoneNumberList
 
           def disassociate: (
             String phone_number,

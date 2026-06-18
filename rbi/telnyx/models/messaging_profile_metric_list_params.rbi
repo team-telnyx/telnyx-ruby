@@ -15,27 +15,17 @@ module Telnyx
         end
 
       # The time frame for metrics.
-      sig do
-        returns(
-          T.nilable(
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::OrSymbol
-          )
-        )
-      end
+      sig { returns(T.nilable(Telnyx::MessagingMetricsTimeFrame::OrSymbol)) }
       attr_reader :time_frame
 
       sig do
-        params(
-          time_frame:
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::OrSymbol
-        ).void
+        params(time_frame: Telnyx::MessagingMetricsTimeFrame::OrSymbol).void
       end
       attr_writer :time_frame
 
       sig do
         params(
-          time_frame:
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::OrSymbol,
+          time_frame: Telnyx::MessagingMetricsTimeFrame::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -49,65 +39,12 @@ module Telnyx
       sig do
         override.returns(
           {
-            time_frame:
-              Telnyx::MessagingProfileMetricListParams::TimeFrame::OrSymbol,
+            time_frame: Telnyx::MessagingMetricsTimeFrame::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
         )
       end
       def to_hash
-      end
-
-      # The time frame for metrics.
-      module TimeFrame
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::MessagingProfileMetricListParams::TimeFrame)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        TIME_FRAME_1_H =
-          T.let(
-            :"1h",
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::TaggedSymbol
-          )
-        TIME_FRAME_3_H =
-          T.let(
-            :"3h",
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::TaggedSymbol
-          )
-        TIME_FRAME_24_H =
-          T.let(
-            :"24h",
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::TaggedSymbol
-          )
-        TIME_FRAME_3_D =
-          T.let(
-            :"3d",
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::TaggedSymbol
-          )
-        TIME_FRAME_7_D =
-          T.let(
-            :"7d",
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::TaggedSymbol
-          )
-        TIME_FRAME_30_D =
-          T.let(
-            :"30d",
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Telnyx::MessagingProfileMetricListParams::TimeFrame::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type conference_participant_resource =
+      { data: Telnyx::ConferenceParticipant }
+
+    class ConferenceParticipantResource < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::ConferenceParticipant?
+
+      def data=: (
+        Telnyx::ConferenceParticipant
+      ) -> Telnyx::ConferenceParticipant
+
+      def initialize: (?data: Telnyx::ConferenceParticipant) -> void
+
+      def to_hash: -> { data: Telnyx::ConferenceParticipant }
+    end
+  end
+end

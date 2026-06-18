@@ -14,7 +14,7 @@ module Telnyx
         ?media_url: String,
         ?monochrome: bool,
         ?preview_format: Telnyx::Models::FaxCreateParams::preview_format,
-        ?quality: Telnyx::Models::FaxCreateParams::quality,
+        ?quality: Telnyx::Models::quality,
         ?store_media: bool,
         ?store_preview: bool,
         ?t38_enabled: bool,

@@ -41,8 +41,8 @@ module Telnyx
       # @!attribute filter_status
       #   Filter by DIR status.
       #
-      #   @return [Symbol, Telnyx::Models::DirListParams::FilterStatus, nil]
-      optional :filter_status, enum: -> { Telnyx::DirListParams::FilterStatus }
+      #   @return [Symbol, Telnyx::Models::DirStatus, nil]
+      optional :filter_status, enum: -> { Telnyx::DirStatus }
 
       # @!attribute page_number
       #   1-based page number. Out-of-range values return an empty page with correct meta.
@@ -77,7 +77,7 @@ module Telnyx
       #
       #   @param filter_expiring_at_lte [Time] Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
       #
-      #   @param filter_status [Symbol, Telnyx::Models::DirListParams::FilterStatus] Filter by DIR status.
+      #   @param filter_status [Symbol, Telnyx::Models::DirStatus] Filter by DIR status.
       #
       #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
       #
@@ -86,25 +86,6 @@ module Telnyx
       #   @param sort [Symbol, Telnyx::Models::DirListParams::Sort] Sort field. Allowed values: `created_at`, `updated_at`, `display_name`, `status`
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-      # Filter by DIR status.
-      module FilterStatus
-        extend Telnyx::Internal::Type::Enum
-
-        DRAFT = :draft
-        SUBMITTED = :submitted
-        IN_REVIEW = :in_review
-        VERIFIED = :verified
-        REJECTED = :rejected
-        UNSUCCESSFUL = :unsuccessful
-        SUSPENDED = :suspended
-        EXPIRED = :expired
-        INFRINGEMENT_CLAIMED = :infringement_claimed
-        PERMANENTLY_REJECTED = :permanently_rejected
-
-        # @!method self.values
-        #   @return [Array<Symbol>]
-      end
 
       # Sort field. Allowed values: `created_at`, `updated_at`, `display_name`,
       # `status`. Prefix with `-` for descending. Default `-created_at`.

@@ -92,10 +92,10 @@ module Telnyx
       # The quality of the fax. The `ultra` settings provides the highest quality
       # available, but also present longer fax processing times. `ultra_light` is best
       # suited for images, wihle `ultra_dark` is best suited for text.
-      sig { returns(T.nilable(Telnyx::FaxCreateParams::Quality::OrSymbol)) }
+      sig { returns(T.nilable(Telnyx::Quality::OrSymbol)) }
       attr_reader :quality
 
-      sig { params(quality: Telnyx::FaxCreateParams::Quality::OrSymbol).void }
+      sig { params(quality: Telnyx::Quality::OrSymbol).void }
       attr_writer :quality
 
       # Should fax media be stored on temporary URL. It does not support media_name,
@@ -140,7 +140,7 @@ module Telnyx
           media_url: String,
           monochrome: T::Boolean,
           preview_format: Telnyx::FaxCreateParams::PreviewFormat::OrSymbol,
-          quality: Telnyx::FaxCreateParams::Quality::OrSymbol,
+          quality: Telnyx::Quality::OrSymbol,
           store_media: T::Boolean,
           store_preview: T::Boolean,
           t38_enabled: T::Boolean,
@@ -211,7 +211,7 @@ module Telnyx
             media_url: String,
             monochrome: T::Boolean,
             preview_format: Telnyx::FaxCreateParams::PreviewFormat::OrSymbol,
-            quality: Telnyx::FaxCreateParams::Quality::OrSymbol,
+            quality: Telnyx::Quality::OrSymbol,
             store_media: T::Boolean,
             store_preview: T::Boolean,
             t38_enabled: T::Boolean,
@@ -238,34 +238,6 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::FaxCreateParams::PreviewFormat::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # The quality of the fax. The `ultra` settings provides the highest quality
-      # available, but also present longer fax processing times. `ultra_light` is best
-      # suited for images, wihle `ultra_dark` is best suited for text.
-      module Quality
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Telnyx::FaxCreateParams::Quality) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        NORMAL = T.let(:normal, Telnyx::FaxCreateParams::Quality::TaggedSymbol)
-        HIGH = T.let(:high, Telnyx::FaxCreateParams::Quality::TaggedSymbol)
-        VERY_HIGH =
-          T.let(:very_high, Telnyx::FaxCreateParams::Quality::TaggedSymbol)
-        ULTRA_LIGHT =
-          T.let(:ultra_light, Telnyx::FaxCreateParams::Quality::TaggedSymbol)
-        ULTRA_DARK =
-          T.let(:ultra_dark, Telnyx::FaxCreateParams::Quality::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Telnyx::FaxCreateParams::Quality::TaggedSymbol]
           )
         end
         def self.values

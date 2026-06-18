@@ -22,13 +22,13 @@ module Telnyx
         #
         # @param name [String]
         # @param description [String]
-        # @param execution_mode [Symbol, Telnyx::Models::AI::MissionCreateParams::ExecutionMode]
+        # @param execution_mode [Symbol, Telnyx::Models::AI::ExecutionMode]
         # @param instructions [String]
         # @param metadata [Hash{Symbol=>Object}]
         # @param model [String]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::MissionCreateResponse]
+        # @return [Telnyx::Models::AI::MissionResponse]
         #
         # @see Telnyx::Models::AI::MissionCreateParams
         def create(params)
@@ -37,7 +37,7 @@ module Telnyx
             method: :post,
             path: "ai/missions",
             body: parsed,
-            model: Telnyx::Models::AI::MissionCreateResponse,
+            model: Telnyx::AI::MissionResponse,
             options: options
           )
         end
@@ -50,14 +50,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::MissionRetrieveResponse]
+        # @return [Telnyx::Models::AI::MissionResponse]
         #
         # @see Telnyx::Models::AI::MissionRetrieveParams
         def retrieve(mission_id, params = {})
           @client.request(
             method: :get,
             path: ["ai/missions/%1$s", mission_id],
-            model: Telnyx::Models::AI::MissionRetrieveResponse,
+            model: Telnyx::AI::MissionResponse,
             options: params[:request_options]
           )
         end
@@ -164,7 +164,7 @@ module Telnyx
         #
         # @param description [String]
         #
-        # @param execution_mode [Symbol, Telnyx::Models::AI::MissionUpdateMissionParams::ExecutionMode]
+        # @param execution_mode [Symbol, Telnyx::Models::AI::ExecutionMode]
         #
         # @param instructions [String]
         #
@@ -176,7 +176,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::MissionUpdateMissionResponse]
+        # @return [Telnyx::Models::AI::MissionResponse]
         #
         # @see Telnyx::Models::AI::MissionUpdateMissionParams
         def update_mission(mission_id, params = {})
@@ -185,7 +185,7 @@ module Telnyx
             method: :put,
             path: ["ai/missions/%1$s", mission_id],
             body: parsed,
-            model: Telnyx::Models::AI::MissionUpdateMissionResponse,
+            model: Telnyx::AI::MissionResponse,
             options: options
           )
         end

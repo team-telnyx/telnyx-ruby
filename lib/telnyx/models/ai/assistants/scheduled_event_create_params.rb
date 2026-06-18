@@ -42,8 +42,8 @@ module Telnyx
           #   dispatches. Phone-call events only. New per-call dispatch options should be
           #   added here rather than as top-level event fields.
           #
-          #   @return [Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings, nil]
-          optional :call_settings, -> { Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings }
+          #   @return [Telnyx::Models::AI::Assistants::ScheduledCallSettings, nil]
+          optional :call_settings, -> { Telnyx::AI::Assistants::ScheduledCallSettings }
 
           # @!attribute conversation_metadata
           #   Metadata associated with the conversation. Telnyx provides several pieces of
@@ -92,7 +92,7 @@ module Telnyx
           #
           #   @param telnyx_end_user_target [String] The phone number, SIP URI, to schedule the call or text to.
           #
-          #   @param call_settings [Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings] Per-call telephony overrides applied when a scheduled phone-call event
+          #   @param call_settings [Telnyx::Models::AI::Assistants::ScheduledCallSettings] Per-call telephony overrides applied when a scheduled phone-call event
           #
           #   @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
           #
@@ -105,46 +105,6 @@ module Telnyx
           #   @param text [String] Required for sms scheduled events. The text to be sent to the end user.
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-          class CallSettings < Telnyx::Internal::Type::BaseModel
-            # @!attribute sip_region
-            #   SIP region passed to Telnyx when initiating an outbound call. Values match the
-            #   Telnyx TeXML `SipRegion` parameter exactly. Telnyx defaults to `US` when
-            #   omitted.
-            #
-            #   @return [Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion, nil]
-            optional :sip_region,
-                     enum: -> { Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion }
-
-            # @!method initialize(sip_region: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings} for
-            #   more details.
-            #
-            #   Per-call telephony overrides applied when a scheduled phone-call event
-            #   dispatches. Phone-call events only. New per-call dispatch options should be
-            #   added here rather than as top-level event fields.
-            #
-            #   @param sip_region [Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings::SipRegion] SIP region passed to Telnyx when initiating an outbound call. Values
-
-            # SIP region passed to Telnyx when initiating an outbound call. Values match the
-            # Telnyx TeXML `SipRegion` parameter exactly. Telnyx defaults to `US` when
-            # omitted.
-            #
-            # @see Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::CallSettings#sip_region
-            module SipRegion
-              extend Telnyx::Internal::Type::Enum
-
-              US = :US
-              EUROPE = :Europe
-              CANADA = :Canada
-              AUSTRALIA = :Australia
-              MIDDLE_EAST = :"Middle East"
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
 
           module ConversationMetadata
             extend Telnyx::Internal::Type::Union

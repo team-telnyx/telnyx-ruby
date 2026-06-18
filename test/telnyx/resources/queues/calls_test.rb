@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Queues::CallRetrieveResponse::Data | nil
+        data: Telnyx::Queues::QueueCall | nil
       }
     end
   end
@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Queues::CallListResponse
+      row => Telnyx::Queues::QueueCall
     end
 
     assert_pattern do
@@ -55,7 +55,7 @@ class Telnyx::Test::Resources::Queues::CallsTest < Telnyx::Test::ResourceTest
         from: String,
         queue_id: String,
         queue_position: Integer,
-        record_type: Telnyx::Models::Queues::CallListResponse::RecordType,
+        record_type: Telnyx::Queues::QueueCall::RecordType,
         to: String,
         wait_time_secs: Integer,
         is_alive: Telnyx::Internal::Type::Boolean | nil

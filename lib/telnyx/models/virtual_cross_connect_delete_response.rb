@@ -6,16 +6,11 @@ module Telnyx
     class VirtualCrossConnectDeleteResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::VirtualCrossConnectDeleteResponse::Data, nil]
-      optional :data, -> { Telnyx::Models::VirtualCrossConnectDeleteResponse::Data }
+      #   @return [Telnyx::Models::VirtualCrossConnectCombined, nil]
+      optional :data, -> { Telnyx::VirtualCrossConnectCombined }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::VirtualCrossConnectDeleteResponse::Data]
-
-      # @see Telnyx::Models::VirtualCrossConnectDeleteResponse#data
-      class Data < Telnyx::Models::Record
-        # @!method initialize
-      end
+      #   @param data [Telnyx::Models::VirtualCrossConnectCombined]
     end
   end
 end

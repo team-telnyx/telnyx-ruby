@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module Dir
+      type rejection_reason =
+        { code: String, detail: String, message: String?, title: String }
+
+      class RejectionReason < Telnyx::Internal::Type::BaseModel
+        attr_reader code: String?
+
+        def code=: (String) -> String
+
+        attr_reader detail: String?
+
+        def detail=: (String) -> String
+
+        attr_accessor message: String?
+
+        attr_reader title: String?
+
+        def title=: (String) -> String
+
+        def initialize: (
+          ?code: String,
+          ?detail: String,
+          ?message: String?,
+          ?title: String
+        ) -> void
+
+        def to_hash: -> {
+          code: String,
+          detail: String,
+          message: String?,
+          title: String
+        }
+      end
+    end
+  end
+end

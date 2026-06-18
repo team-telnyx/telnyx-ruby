@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    class EnterpriseReputationPublicWrapped = Enterprises::EnterpriseReputationPublicWrapped
+
+    module Enterprises
+      type enterprise_reputation_public_wrapped =
+        { data: Telnyx::Enterprises::EnterpriseReputationPublic }
+
+      class EnterpriseReputationPublicWrapped < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Enterprises::EnterpriseReputationPublic
+
+        def initialize: (
+          data: Telnyx::Enterprises::EnterpriseReputationPublic
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Enterprises::EnterpriseReputationPublic
+        }
+      end
+    end
+  end
+end

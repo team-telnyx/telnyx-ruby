@@ -32,7 +32,7 @@ module Telnyx
         # @param page_size [Integer]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MobilePhoneNumbers::MessagingListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings>]
         #
         # @see Telnyx::Models::MobilePhoneNumbers::MessagingListParams
         def list(params = {})
@@ -43,7 +43,7 @@ module Telnyx
             path: "mobile_phone_numbers/messaging",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::MobilePhoneNumbers::MessagingListResponse,
+            model: Telnyx::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings,
             options: options
           )
         end

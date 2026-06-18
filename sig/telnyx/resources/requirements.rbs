@@ -12,7 +12,7 @@ module Telnyx
         ?page_size: Integer,
         ?sort: ::Array[Telnyx::Models::RequirementListParams::sort],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::RequirementListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DocReqsRequirement]
 
       def initialize: (client: Telnyx::Client) -> void
     end

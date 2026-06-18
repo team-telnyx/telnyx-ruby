@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module AI
+      type mission_response = { data: Telnyx::AI::MissionData }
+
+      class MissionResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::AI::MissionData
+
+        def initialize: (data: Telnyx::AI::MissionData) -> void
+
+        def to_hash: -> { data: Telnyx::AI::MissionData }
+      end
+    end
+  end
+end

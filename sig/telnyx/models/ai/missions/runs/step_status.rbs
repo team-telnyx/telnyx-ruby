@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type step_status =
+            :pending | :in_progress | :completed | :skipped | :failed
+
+          module StepStatus
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            IN_PROGRESS: :in_progress
+            COMPLETED: :completed
+            SKIPPED: :skipped
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Missions::Runs::step_status]
+          end
+        end
+      end
+    end
+  end
+end

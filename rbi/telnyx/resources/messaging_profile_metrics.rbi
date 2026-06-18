@@ -7,8 +7,7 @@ module Telnyx
       # authenticated user.
       sig do
         params(
-          time_frame:
-            Telnyx::MessagingProfileMetricListParams::TimeFrame::OrSymbol,
+          time_frame: Telnyx::MessagingMetricsTimeFrame::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessagingProfileMetricListResponse)
       end

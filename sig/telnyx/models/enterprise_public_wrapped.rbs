@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type enterprise_public_wrapped = { data: Telnyx::EnterprisePublic }
+
+    class EnterprisePublicWrapped < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::EnterprisePublic?
+
+      def data=: (Telnyx::EnterprisePublic) -> Telnyx::EnterprisePublic
+
+      def initialize: (?data: Telnyx::EnterprisePublic) -> void
+
+      def to_hash: -> { data: Telnyx::EnterprisePublic }
+    end
+  end
+end

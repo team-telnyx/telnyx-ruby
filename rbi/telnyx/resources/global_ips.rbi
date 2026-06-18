@@ -44,11 +44,7 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::GlobalIPListResponse
-          ]
-        )
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::GlobalIP])
       end
       def list(page_number: nil, page_size: nil, request_options: {})
       end

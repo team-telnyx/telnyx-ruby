@@ -15,13 +15,13 @@ module Telnyx
               ?recording_track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonParams::recording_track,
               ?send_recording_url: bool,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse
+            ) -> Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody
 
             def retrieve_recordings_json: (
               String call_sid,
               account_sid: String,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonResponse
+            ) -> Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
 
             def initialize: (client: Telnyx::Client) -> void
           end

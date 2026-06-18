@@ -10,12 +10,12 @@ class Telnyx::Test::Resources::SiprecConnectorsTest < Telnyx::Test::ResourceTest
       @telnyx.siprec_connectors.create(host: "siprec.telnyx.com", name: "my-siprec-connector", port: 5060)
 
     assert_pattern do
-      response => Telnyx::Models::SiprecConnectorCreateResponse
+      response => Telnyx::SiprecConnectorResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SiprecConnectorCreateResponse::Data
+        data: Telnyx::SiprecConnectorResponse::Data
       }
     end
   end
@@ -26,12 +26,12 @@ class Telnyx::Test::Resources::SiprecConnectorsTest < Telnyx::Test::ResourceTest
     response = @telnyx.siprec_connectors.retrieve("connector_name")
 
     assert_pattern do
-      response => Telnyx::Models::SiprecConnectorRetrieveResponse
+      response => Telnyx::SiprecConnectorResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SiprecConnectorRetrieveResponse::Data
+        data: Telnyx::SiprecConnectorResponse::Data
       }
     end
   end
@@ -48,12 +48,12 @@ class Telnyx::Test::Resources::SiprecConnectorsTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Models::SiprecConnectorUpdateResponse
+      response => Telnyx::SiprecConnectorResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::SiprecConnectorUpdateResponse::Data
+        data: Telnyx::SiprecConnectorResponse::Data
       }
     end
   end

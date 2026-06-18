@@ -9,12 +9,12 @@ module Telnyx
         ?environment: String,
         ?location: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::DialogflowConnectionCreateResponse
+      ) -> Telnyx::DialogflowConnectionResponse
 
       def retrieve: (
         String connection_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::DialogflowConnectionRetrieveResponse
+      ) -> Telnyx::DialogflowConnectionResponse
 
       def update: (
         String connection_id,
@@ -24,7 +24,7 @@ module Telnyx
         ?environment: String,
         ?location: String,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::DialogflowConnectionUpdateResponse
+      ) -> Telnyx::DialogflowConnectionResponse
 
       def delete: (
         String connection_id,

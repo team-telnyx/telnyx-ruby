@@ -6,25 +6,20 @@ module Telnyx
     class PublicInternetGateways
       # Create a new Public Internet Gateway.
       #
-      # @overload create(name: nil, network_id: nil, region_code: nil, request_options: {})
+      # @overload create(body:, request_options: {})
       #
-      # @param name [String] A user specified name for the interface.
-      #
-      # @param network_id [String] The id of the network associated with the interface.
-      #
-      # @param region_code [String] The region interface is deployed to.
-      #
+      # @param body [Telnyx::Models::PublicInternetGatewayCreateParams::Body]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::PublicInternetGatewayCreateResponse]
       #
       # @see Telnyx::Models::PublicInternetGatewayCreateParams
-      def create(params = {})
+      def create(params)
         parsed, options = Telnyx::PublicInternetGatewayCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "public_internet_gateways",
-          body: parsed,
+          body: parsed[:body],
           model: Telnyx::Models::PublicInternetGatewayCreateResponse,
           options: options
         )
@@ -65,7 +60,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PublicInternetGatewayListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PublicInternetGatewayRead>]
       #
       # @see Telnyx::Models::PublicInternetGatewayListParams
       def list(params = {})
@@ -76,7 +71,7 @@ module Telnyx
           path: "public_internet_gateways",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::PublicInternetGatewayListResponse,
+          model: Telnyx::PublicInternetGatewayRead,
           options: options
         )
       end

@@ -18,7 +18,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::QueueCreateResponse]
+          # @return [Telnyx::Models::Texml::Accounts::QueueResource]
           #
           # @see Telnyx::Models::Texml::Accounts::QueueCreateParams
           def create(account_sid, params = {})
@@ -28,7 +28,7 @@ module Telnyx
               path: ["texml/Accounts/%1$s/Queues", account_sid],
               headers: {"content-type" => "application/x-www-form-urlencoded"},
               body: parsed,
-              model: Telnyx::Models::Texml::Accounts::QueueCreateResponse,
+              model: Telnyx::Texml::Accounts::QueueResource,
               options: options
             )
           end
@@ -43,7 +43,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::QueueRetrieveResponse]
+          # @return [Telnyx::Models::Texml::Accounts::QueueResource]
           #
           # @see Telnyx::Models::Texml::Accounts::QueueRetrieveParams
           def retrieve(queue_sid, params)
@@ -55,7 +55,7 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["texml/Accounts/%1$s/Queues/%2$s", account_sid, queue_sid],
-              model: Telnyx::Models::Texml::Accounts::QueueRetrieveResponse,
+              model: Telnyx::Texml::Accounts::QueueResource,
               options: options
             )
           end
@@ -72,7 +72,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::QueueUpdateResponse]
+          # @return [Telnyx::Models::Texml::Accounts::QueueResource]
           #
           # @see Telnyx::Models::Texml::Accounts::QueueUpdateParams
           def update(queue_sid, params)
@@ -86,7 +86,7 @@ module Telnyx
               path: ["texml/Accounts/%1$s/Queues/%2$s", account_sid, queue_sid],
               headers: {"content-type" => "application/x-www-form-urlencoded"},
               body: parsed,
-              model: Telnyx::Models::Texml::Accounts::QueueUpdateResponse,
+              model: Telnyx::Texml::Accounts::QueueResource,
               options: options
             )
           end
@@ -112,7 +112,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultPaginationForQueues<Telnyx::Models::Texml::Accounts::QueueListResponse>]
+          # @return [Telnyx::Internal::DefaultPaginationForQueues<Telnyx::Models::Texml::Accounts::QueueResource>]
           #
           # @see Telnyx::Models::Texml::Accounts::QueueListParams
           def list(account_sid, params = {})
@@ -129,7 +129,7 @@ module Telnyx
                 page_token: "PageToken"
               ),
               page: Telnyx::Internal::DefaultPaginationForQueues,
-              model: Telnyx::Models::Texml::Accounts::QueueListResponse,
+              model: Telnyx::Texml::Accounts::QueueResource,
               options: options
             )
           end

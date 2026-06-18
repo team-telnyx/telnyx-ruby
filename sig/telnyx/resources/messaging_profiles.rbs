@@ -91,7 +91,7 @@ module Telnyx
 
       def retrieve_metrics: (
         String id,
-        ?time_frame: Telnyx::Models::MessagingProfileRetrieveMetricsParams::time_frame,
+        ?time_frame: Telnyx::Models::messaging_metrics_time_frame,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessagingProfileRetrieveMetricsResponse
 

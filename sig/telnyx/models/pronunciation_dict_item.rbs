@@ -1,0 +1,12 @@
+module Telnyx
+  module Models
+    type pronunciation_dict_item =
+      Telnyx::PronunciationDictAliasItem | Telnyx::PronunciationDictPhonemeItem
+
+    module PronunciationDictItem
+      extend Telnyx::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Telnyx::Models::pronunciation_dict_item]
+    end
+  end
+end

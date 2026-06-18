@@ -24,21 +24,10 @@ module Telnyx
         sig { params(description: String).void }
         attr_writer :description
 
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::OrSymbol
-            )
-          )
-        end
+        sig { returns(T.nilable(Telnyx::AI::ExecutionMode::OrSymbol)) }
         attr_reader :execution_mode
 
-        sig do
-          params(
-            execution_mode:
-              Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::OrSymbol
-          ).void
-        end
+        sig { params(execution_mode: Telnyx::AI::ExecutionMode::OrSymbol).void }
         attr_writer :execution_mode
 
         sig { returns(T.nilable(String)) }
@@ -69,8 +58,7 @@ module Telnyx
           params(
             mission_id: String,
             description: String,
-            execution_mode:
-              Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::OrSymbol,
+            execution_mode: Telnyx::AI::ExecutionMode::OrSymbol,
             instructions: String,
             metadata: T::Hash[Symbol, T.anything],
             model: String,
@@ -95,8 +83,7 @@ module Telnyx
             {
               mission_id: String,
               description: String,
-              execution_mode:
-                Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::OrSymbol,
+              execution_mode: Telnyx::AI::ExecutionMode::OrSymbol,
               instructions: String,
               metadata: T::Hash[Symbol, T.anything],
               model: String,
@@ -106,40 +93,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        module ExecutionMode
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::AI::MissionUpdateMissionParams::ExecutionMode
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          EXTERNAL =
-            T.let(
-              :external,
-              Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::TaggedSymbol
-            )
-          MANAGED =
-            T.let(
-              :managed,
-              Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

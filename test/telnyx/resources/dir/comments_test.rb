@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Dir::CommentsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Dir::CommentCreateResponse::Data
+        data: Telnyx::Dir::DirComment
       }
     end
   end
@@ -36,19 +36,19 @@ class Telnyx::Test::Resources::Dir::CommentsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Dir::CommentListResponse
+      row => Telnyx::Dir::DirComment
     end
 
     assert_pattern do
       row => {
         id: String | nil,
         author_name: String | nil,
-        author_role: Telnyx::Models::Dir::CommentListResponse::AuthorRole | nil,
-        comment_type: Telnyx::Models::Dir::CommentListResponse::CommentType | nil,
+        author_role: Telnyx::Dir::DirComment::AuthorRole | nil,
+        comment_type: Telnyx::Dir::CommentType | nil,
         content: String | nil,
         created_at: Time | nil,
-        entity_type: Telnyx::Models::Dir::CommentListResponse::EntityType | nil,
-        visibility: Telnyx::Models::Dir::CommentListResponse::Visibility | nil
+        entity_type: Telnyx::Dir::DirComment::EntityType | nil,
+        visibility: Telnyx::Dir::DirComment::Visibility | nil
       }
     end
   end

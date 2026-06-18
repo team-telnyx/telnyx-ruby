@@ -2,62 +2,41 @@ module Telnyx
   module Models
     type document_link_list_response =
       {
-        id: String,
-        created_at: String,
         document_id: String,
         linked_record_type: String,
         linked_resource_id: String,
-        record_type: String,
-        updated_at: String
+        record_type: String
       }
 
-    class DocumentLinkListResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader id: String?
+    class DocumentLinkListResponse < Telnyx::Models::DocServiceRecord
+      def document_id: -> String?
 
-      def id=: (String) -> String
+      def document_id=: (String _) -> String
 
-      attr_reader created_at: String?
+      def linked_record_type: -> String?
 
-      def created_at=: (String) -> String
+      def linked_record_type=: (String _) -> String
 
-      attr_reader document_id: String?
+      def linked_resource_id: -> String?
 
-      def document_id=: (String) -> String
+      def linked_resource_id=: (String _) -> String
 
-      attr_reader linked_record_type: String?
+      def record_type: -> String?
 
-      def linked_record_type=: (String) -> String
-
-      attr_reader linked_resource_id: String?
-
-      def linked_resource_id=: (String) -> String
-
-      attr_reader record_type: String?
-
-      def record_type=: (String) -> String
-
-      attr_reader updated_at: String?
-
-      def updated_at=: (String) -> String
+      def record_type=: (String _) -> String
 
       def initialize: (
-        ?id: String,
-        ?created_at: String,
         ?document_id: String,
         ?linked_record_type: String,
         ?linked_resource_id: String,
-        ?record_type: String,
-        ?updated_at: String
+        ?record_type: String
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        created_at: String,
         document_id: String,
         linked_record_type: String,
         linked_resource_id: String,
-        record_type: String,
-        updated_at: String
+        record_type: String
       }
     end
   end

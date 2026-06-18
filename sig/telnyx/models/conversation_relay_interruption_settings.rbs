@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    type conversation_relay_interruption_settings =
+      {
+        enable: bool,
+        interruptible: Telnyx::Models::Calls::conversation_relay_interruptible,
+        interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible,
+        welcome_greeting_interruptible: Telnyx::Models::Calls::conversation_relay_interruptible
+      }
+
+    class ConversationRelayInterruptionSettings < Telnyx::Internal::Type::BaseModel
+      attr_reader enable: bool?
+
+      def enable=: (bool) -> bool
+
+      attr_reader interruptible: Telnyx::Models::Calls::conversation_relay_interruptible?
+
+      def interruptible=: (
+        Telnyx::Models::Calls::conversation_relay_interruptible
+      ) -> Telnyx::Models::Calls::conversation_relay_interruptible
+
+      attr_reader interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible?
+
+      def interruptible_greeting=: (
+        Telnyx::Models::Calls::conversation_relay_interruptible
+      ) -> Telnyx::Models::Calls::conversation_relay_interruptible
+
+      attr_reader welcome_greeting_interruptible: Telnyx::Models::Calls::conversation_relay_interruptible?
+
+      def welcome_greeting_interruptible=: (
+        Telnyx::Models::Calls::conversation_relay_interruptible
+      ) -> Telnyx::Models::Calls::conversation_relay_interruptible
+
+      def initialize: (
+        ?enable: bool,
+        ?interruptible: Telnyx::Models::Calls::conversation_relay_interruptible,
+        ?interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible,
+        ?welcome_greeting_interruptible: Telnyx::Models::Calls::conversation_relay_interruptible
+      ) -> void
+
+      def to_hash: -> {
+        enable: bool,
+        interruptible: Telnyx::Models::Calls::conversation_relay_interruptible,
+        interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible,
+        welcome_greeting_interruptible: Telnyx::Models::Calls::conversation_relay_interruptible
+      }
+    end
+  end
+end

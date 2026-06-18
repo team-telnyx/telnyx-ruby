@@ -54,21 +54,10 @@ module Telnyx
         attr_writer :filter_expiring_within_days
 
         # Filter by DIR status.
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol
-            )
-          )
-        end
+        sig { returns(T.nilable(Telnyx::DirStatus::OrSymbol)) }
         attr_reader :filter_status
 
-        sig do
-          params(
-            filter_status:
-              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol
-          ).void
-        end
+        sig { params(filter_status: Telnyx::DirStatus::OrSymbol).void }
         attr_writer :filter_status
 
         # 1-based page number. Out-of-range values return an empty page with correct meta.
@@ -106,8 +95,7 @@ module Telnyx
             filter_expiring_at_gte: Time,
             filter_expiring_at_lte: Time,
             filter_expiring_within_days: Integer,
-            filter_status:
-              Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
+            filter_status: Telnyx::DirStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             sort: Telnyx::Enterprises::DirListParams::Sort::OrSymbol,
@@ -152,8 +140,7 @@ module Telnyx
               filter_expiring_at_gte: Time,
               filter_expiring_at_lte: Time,
               filter_expiring_within_days: Integer,
-              filter_status:
-                Telnyx::Enterprises::DirListParams::FilterStatus::OrSymbol,
+              filter_status: Telnyx::DirStatus::OrSymbol,
               page_number: Integer,
               page_size: Integer,
               sort: Telnyx::Enterprises::DirListParams::Sort::OrSymbol,
@@ -162,78 +149,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        # Filter by DIR status.
-        module FilterStatus
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::Enterprises::DirListParams::FilterStatus)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          DRAFT =
-            T.let(
-              :draft,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          SUBMITTED =
-            T.let(
-              :submitted,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          IN_REVIEW =
-            T.let(
-              :in_review,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          VERIFIED =
-            T.let(
-              :verified,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          REJECTED =
-            T.let(
-              :rejected,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          UNSUCCESSFUL =
-            T.let(
-              :unsuccessful,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          SUSPENDED =
-            T.let(
-              :suspended,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          EXPIRED =
-            T.let(
-              :expired,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          INFRINGEMENT_CLAIMED =
-            T.let(
-              :infringement_claimed,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-          PERMANENTLY_REJECTED =
-            T.let(
-              :permanently_rejected,
-              Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Enterprises::DirListParams::FilterStatus::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         # Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,

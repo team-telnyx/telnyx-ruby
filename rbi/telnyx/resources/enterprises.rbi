@@ -52,7 +52,7 @@ module Telnyx
           professional_license_number: T.nilable(String),
           role_type: Telnyx::EnterpriseCreateParams::RoleType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EnterpriseCreateResponse)
+        ).returns(Telnyx::EnterprisePublicWrapped)
       end
       def create(
         billing_address:,
@@ -115,7 +115,7 @@ module Telnyx
         params(
           enterprise_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EnterpriseRetrieveResponse)
+        ).returns(Telnyx::EnterprisePublicWrapped)
       end
       def retrieve(
         # The enterprise id. Lowercase UUID.
@@ -150,7 +150,7 @@ module Telnyx
           professional_license_number: T.nilable(String),
           website: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EnterpriseUpdateResponse)
+        ).returns(Telnyx::EnterprisePublicWrapped)
       end
       def update(
         # The enterprise id. Lowercase UUID.
@@ -251,9 +251,9 @@ module Telnyx
         params(
           enterprise_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EnterpriseActivateBrandedCallingResponse)
+        ).returns(Telnyx::EnterprisePublicWrapped)
       end
-      def activate_branded_calling(
+      def branded_calling(
         # The enterprise id. Lowercase UUID.
         enterprise_id,
         request_options: {}

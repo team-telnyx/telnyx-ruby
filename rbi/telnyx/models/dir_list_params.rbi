@@ -46,14 +46,10 @@ module Telnyx
       attr_writer :filter_expiring_at_lte
 
       # Filter by DIR status.
-      sig { returns(T.nilable(Telnyx::DirListParams::FilterStatus::OrSymbol)) }
+      sig { returns(T.nilable(Telnyx::DirStatus::OrSymbol)) }
       attr_reader :filter_status
 
-      sig do
-        params(
-          filter_status: Telnyx::DirListParams::FilterStatus::OrSymbol
-        ).void
-      end
+      sig { params(filter_status: Telnyx::DirStatus::OrSymbol).void }
       attr_writer :filter_status
 
       # 1-based page number. Out-of-range values return an empty page with correct meta.
@@ -85,7 +81,7 @@ module Telnyx
           filter_enterprise_id: String,
           filter_expiring_at_gte: Time,
           filter_expiring_at_lte: Time,
-          filter_status: Telnyx::DirListParams::FilterStatus::OrSymbol,
+          filter_status: Telnyx::DirStatus::OrSymbol,
           page_number: Integer,
           page_size: Integer,
           sort: Telnyx::DirListParams::Sort::OrSymbol,
@@ -125,7 +121,7 @@ module Telnyx
             filter_enterprise_id: String,
             filter_expiring_at_gte: Time,
             filter_expiring_at_lte: Time,
-            filter_status: Telnyx::DirListParams::FilterStatus::OrSymbol,
+            filter_status: Telnyx::DirStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             sort: Telnyx::DirListParams::Sort::OrSymbol,
@@ -134,52 +130,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      # Filter by DIR status.
-      module FilterStatus
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Telnyx::DirListParams::FilterStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        DRAFT = T.let(:draft, Telnyx::DirListParams::FilterStatus::TaggedSymbol)
-        SUBMITTED =
-          T.let(:submitted, Telnyx::DirListParams::FilterStatus::TaggedSymbol)
-        IN_REVIEW =
-          T.let(:in_review, Telnyx::DirListParams::FilterStatus::TaggedSymbol)
-        VERIFIED =
-          T.let(:verified, Telnyx::DirListParams::FilterStatus::TaggedSymbol)
-        REJECTED =
-          T.let(:rejected, Telnyx::DirListParams::FilterStatus::TaggedSymbol)
-        UNSUCCESSFUL =
-          T.let(
-            :unsuccessful,
-            Telnyx::DirListParams::FilterStatus::TaggedSymbol
-          )
-        SUSPENDED =
-          T.let(:suspended, Telnyx::DirListParams::FilterStatus::TaggedSymbol)
-        EXPIRED =
-          T.let(:expired, Telnyx::DirListParams::FilterStatus::TaggedSymbol)
-        INFRINGEMENT_CLAIMED =
-          T.let(
-            :infringement_claimed,
-            Telnyx::DirListParams::FilterStatus::TaggedSymbol
-          )
-        PERMANENTLY_REJECTED =
-          T.let(
-            :permanently_rejected,
-            Telnyx::DirListParams::FilterStatus::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[Telnyx::DirListParams::FilterStatus::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
       end
 
       # Sort field. Allowed values: `created_at`, `updated_at`, `display_name`,

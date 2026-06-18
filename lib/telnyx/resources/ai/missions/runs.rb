@@ -26,7 +26,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Missions::RunCreateResponse]
+          # @return [Telnyx::Models::AI::Missions::MissionRunResponse]
           #
           # @see Telnyx::Models::AI::Missions::RunCreateParams
           def create(mission_id, params = {})
@@ -35,7 +35,7 @@ module Telnyx
               method: :post,
               path: ["ai/missions/%1$s/runs", mission_id],
               body: parsed,
-              model: Telnyx::Models::AI::Missions::RunCreateResponse,
+              model: Telnyx::AI::Missions::MissionRunResponse,
               options: options
             )
           end
@@ -50,7 +50,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Missions::RunRetrieveResponse]
+          # @return [Telnyx::Models::AI::Missions::MissionRunResponse]
           #
           # @see Telnyx::Models::AI::Missions::RunRetrieveParams
           def retrieve(run_id, params)
@@ -62,7 +62,7 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["ai/missions/%1$s/runs/%2$s", mission_id, run_id],
-              model: Telnyx::Models::AI::Missions::RunRetrieveResponse,
+              model: Telnyx::AI::Missions::MissionRunResponse,
               options: options
             )
           end
@@ -83,11 +83,11 @@ module Telnyx
           #
           # @param result_summary [String] Body param
           #
-          # @param status [Symbol, Telnyx::Models::AI::Missions::RunUpdateParams::Status] Body param
+          # @param status [Symbol, Telnyx::Models::AI::Missions::RunStatus] Body param
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Missions::RunUpdateResponse]
+          # @return [Telnyx::Models::AI::Missions::MissionRunResponse]
           #
           # @see Telnyx::Models::AI::Missions::RunUpdateParams
           def update(run_id, params)
@@ -100,7 +100,7 @@ module Telnyx
               method: :patch,
               path: ["ai/missions/%1$s/runs/%2$s", mission_id, run_id],
               body: parsed,
-              model: Telnyx::Models::AI::Missions::RunUpdateResponse,
+              model: Telnyx::AI::Missions::MissionRunResponse,
               options: options
             )
           end
@@ -145,7 +145,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Missions::RunCancelRunResponse]
+          # @return [Telnyx::Models::AI::Missions::MissionRunResponse]
           #
           # @see Telnyx::Models::AI::Missions::RunCancelRunParams
           def cancel_run(run_id, params)
@@ -157,7 +157,7 @@ module Telnyx
             @client.request(
               method: :post,
               path: ["ai/missions/%1$s/runs/%2$s/cancel", mission_id, run_id],
-              model: Telnyx::Models::AI::Missions::RunCancelRunResponse,
+              model: Telnyx::AI::Missions::MissionRunResponse,
               options: options
             )
           end
@@ -200,7 +200,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Missions::RunPauseRunResponse]
+          # @return [Telnyx::Models::AI::Missions::MissionRunResponse]
           #
           # @see Telnyx::Models::AI::Missions::RunPauseRunParams
           def pause_run(run_id, params)
@@ -212,7 +212,7 @@ module Telnyx
             @client.request(
               method: :post,
               path: ["ai/missions/%1$s/runs/%2$s/pause", mission_id, run_id],
-              model: Telnyx::Models::AI::Missions::RunPauseRunResponse,
+              model: Telnyx::AI::Missions::MissionRunResponse,
               options: options
             )
           end
@@ -227,7 +227,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Missions::RunResumeRunResponse]
+          # @return [Telnyx::Models::AI::Missions::MissionRunResponse]
           #
           # @see Telnyx::Models::AI::Missions::RunResumeRunParams
           def resume_run(run_id, params)
@@ -239,7 +239,7 @@ module Telnyx
             @client.request(
               method: :post,
               path: ["ai/missions/%1$s/runs/%2$s/resume", mission_id, run_id],
-              model: Telnyx::Models::AI::Missions::RunResumeRunResponse,
+              model: Telnyx::AI::Missions::MissionRunResponse,
               options: options
             )
           end

@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.advanced_orders.create
 
     assert_pattern do
-      response => Telnyx::Models::AdvancedOrderCreateResponse
+      response => Telnyx::AdvancedOrder
     end
 
     assert_pattern do
@@ -19,12 +19,12 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
         comments: String | nil,
         country_code: String | nil,
         customer_reference: String | nil,
-        features: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderCreateResponse::Feature]) | nil,
+        features: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Feature]) | nil,
         orders: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        phone_number_type: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderCreateResponse::PhoneNumberType]) | nil,
+        phone_number_type: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::PhoneNumberType]) | nil,
         quantity: Integer | nil,
         requirement_group_id: String | nil,
-        status: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderCreateResponse::Status]) | nil
+        status: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Status]) | nil
       }
     end
   end
@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.advanced_orders.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::AdvancedOrderRetrieveResponse
+      response => Telnyx::AdvancedOrder
     end
 
     assert_pattern do
@@ -45,12 +45,12 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
         comments: String | nil,
         country_code: String | nil,
         customer_reference: String | nil,
-        features: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderRetrieveResponse::Feature]) | nil,
+        features: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Feature]) | nil,
         orders: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        phone_number_type: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderRetrieveResponse::PhoneNumberType]) | nil,
+        phone_number_type: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::PhoneNumberType]) | nil,
         quantity: Integer | nil,
         requirement_group_id: String | nil,
-        status: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderRetrieveResponse::Status]) | nil
+        status: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Status]) | nil
       }
     end
   end
@@ -66,7 +66,7 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AdvancedOrderListResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AdvancedOrder]) | nil
       }
     end
   end
@@ -77,7 +77,7 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
     response = @telnyx.advanced_orders.update_requirement_group("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse
+      response => Telnyx::AdvancedOrder
     end
 
     assert_pattern do
@@ -87,12 +87,12 @@ class Telnyx::Test::Resources::AdvancedOrdersTest < Telnyx::Test::ResourceTest
         comments: String | nil,
         country_code: String | nil,
         customer_reference: String | nil,
-        features: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse::Feature]) | nil,
+        features: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Feature]) | nil,
         orders: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        phone_number_type: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse::PhoneNumberType]) | nil,
+        phone_number_type: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::PhoneNumberType]) | nil,
         quantity: Integer | nil,
         requirement_group_id: String | nil,
-        status: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse::Status]) | nil
+        status: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Status]) | nil
       }
     end
   end

@@ -18,7 +18,7 @@ module Telnyx
           ?page: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Texml::AccountRetrieveRecordingsJsonResponse
+        ) -> Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
 
         def retrieve_transcriptions_json: (
           String account_sid,

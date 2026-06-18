@@ -19,19 +19,12 @@ module Telnyx
         attr_accessor :dir_id
 
         # Restrict to batches whose aggregate status equals this value.
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::OrSymbol
-            )
-          )
-        end
+        sig { returns(T.nilable(Telnyx::Dir::DirPhoneNumberStatus::OrSymbol)) }
         attr_reader :filter_status
 
         sig do
           params(
-            filter_status:
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::OrSymbol
+            filter_status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol
           ).void
         end
         attr_writer :filter_status
@@ -53,8 +46,7 @@ module Telnyx
         sig do
           params(
             dir_id: String,
-            filter_status:
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::OrSymbol,
+            filter_status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -76,8 +68,7 @@ module Telnyx
           override.returns(
             {
               dir_id: String,
-              filter_status:
-                Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::OrSymbol,
+              filter_status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol,
               page_number: Integer,
               page_size: Integer,
               request_options: Telnyx::RequestOptions
@@ -85,66 +76,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        # Restrict to batches whose aggregate status equals this value.
-        module FilterStatus
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          SUBMITTED =
-            T.let(
-              :submitted,
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-            )
-          IN_REVIEW =
-            T.let(
-              :in_review,
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-            )
-          VERIFIED =
-            T.let(
-              :verified,
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-            )
-          UNSUCCESSFUL =
-            T.let(
-              :unsuccessful,
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-            )
-          SUSPENDED =
-            T.let(
-              :suspended,
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-            )
-          EXPIRED =
-            T.let(
-              :expired,
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-            )
-          PERMANENTLY_REJECTED =
-            T.let(
-              :permanently_rejected,
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

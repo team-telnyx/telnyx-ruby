@@ -12,12 +12,12 @@ module Telnyx
           ?timeout_ms: Integer,
           ?webhook: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::ToolCreateResponse
+        ) -> Telnyx::AI::SharedToolResponse
 
         def retrieve: (
           String tool_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::ToolRetrieveResponse
+        ) -> Telnyx::AI::SharedToolResponse
 
         def update: (
           String tool_id,
@@ -30,7 +30,7 @@ module Telnyx
           ?type: String,
           ?webhook: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::ToolUpdateResponse
+        ) -> Telnyx::AI::SharedToolResponse
 
         def list: (
           ?filter_name: String,
@@ -38,7 +38,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::ToolListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::SharedToolResponse]
 
         def delete: (
           String tool_id,

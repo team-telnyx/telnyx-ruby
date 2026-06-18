@@ -57,9 +57,8 @@ module Telnyx
           # @!attribute activation_status
           #   Filter results by activation status
           #
-          #   @return [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus, nil]
-          optional :activation_status,
-                   enum: -> { Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus }
+          #   @return [Symbol, Telnyx::Models::PortingOrderActivationStatus, nil]
+          optional :activation_status, enum: -> { Telnyx::PortingOrderActivationStatus }
 
           # @!attribute phone_number
           #   Filter results by a list of phone numbers
@@ -103,7 +102,7 @@ module Telnyx
           #   filter[porting_order_id], filter[support_key], filter[status],
           #   filter[phone_number], filter[activation_status], filter[portability_status]
           #
-          #   @param activation_status [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus] Filter results by activation status
+          #   @param activation_status [Symbol, Telnyx::Models::PortingOrderActivationStatus] Filter results by activation status
           #
           #   @param phone_number [Array<String>] Filter results by a list of phone numbers
           #
@@ -114,30 +113,6 @@ module Telnyx
           #   @param status [Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderMultipleStatus, Array<Symbol, Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::Status::PortingOrderStatusList>] Filter porting orders by status(es). Originally: filter[status], filter[status]
           #
           #   @param support_key [String, Array<String>] Filter results by support key(s). Originally: filter[support_key][eq], filter[su
-
-          # Filter results by activation status
-          #
-          # @see Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter#activation_status
-          module ActivationStatus
-            extend Telnyx::Internal::Type::Enum
-
-            NEW = :New
-            PENDING = :Pending
-            CONFLICT = :Conflict
-            CANCEL_PENDING = :"Cancel Pending"
-            FAILED = :Failed
-            CONCURRED = :Concurred
-            ACTIVATE_RDY = :"Activate RDY"
-            DISCONNECT_PENDING = :"Disconnect Pending"
-            CONCURRENCE_SENT = :"Concurrence Sent"
-            OLD = :Old
-            SENDING = :Sending
-            ACTIVE = :Active
-            CANCELLED = :Cancelled
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
 
           # Filter results by portability status
           #

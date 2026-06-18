@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    class WhatsappTemplateFooterComponent = Whatsapp::WhatsappTemplateFooterComponent
+
+    module Whatsapp
+      type whatsapp_template_footer_component =
+        {
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateFooterComponent::type_,
+          code_expiration_minutes: Integer,
+          text: String
+        }
+
+      class WhatsappTemplateFooterComponent < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::Whatsapp::WhatsappTemplateFooterComponent::type_
+
+        attr_reader code_expiration_minutes: Integer?
+
+        def code_expiration_minutes=: (Integer) -> Integer
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        def initialize: (
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateFooterComponent::type_,
+          ?code_expiration_minutes: Integer,
+          ?text: String
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateFooterComponent::type_,
+          code_expiration_minutes: Integer,
+          text: String
+        }
+
+        type type_ = :FOOTER
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          FOOTER: :FOOTER
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateFooterComponent::type_]
+        end
+      end
+    end
+  end
+end

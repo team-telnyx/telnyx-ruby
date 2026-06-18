@@ -31,7 +31,7 @@ module Telnyx
               call_sid: String,
               account_sid: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::Texml::Accounts::CallRetrieveResponse)
+            ).returns(Telnyx::Texml::Accounts::CallResource)
           end
           def retrieve(
             # The CallSid that identifies the call to update.
@@ -59,7 +59,7 @@ module Telnyx
               texml: String,
               url: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::Texml::Accounts::CallUpdateResponse)
+            ).returns(Telnyx::Texml::Accounts::CallResource)
           end
           def update(
             # Path param: The CallSid that identifies the call to update.
@@ -95,11 +95,11 @@ module Telnyx
           sig do
             params(
               account_sid: String,
-              params:
+              body:
                 T.any(
-                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::OrHash,
-                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::OrHash,
-                  Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::OrHash
+                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::OrHash
                 ),
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::Texml::Accounts::CallCallsResponse)
@@ -107,7 +107,7 @@ module Telnyx
           def calls(
             # The id of the account the resource belongs to.
             account_sid,
-            params:,
+            body:,
             request_options: {}
           )
           end

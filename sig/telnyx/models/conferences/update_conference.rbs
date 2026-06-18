@@ -8,7 +8,7 @@ module Telnyx
           call_control_id: String,
           supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
           command_id: String,
-          region: Telnyx::Models::Conferences::UpdateConference::region,
+          region: Telnyx::Models::Conferences::conference_region,
           whisper_call_control_ids: ::Array[String]
         }
 
@@ -21,11 +21,11 @@ module Telnyx
 
         def command_id=: (String) -> String
 
-        attr_reader region: Telnyx::Models::Conferences::UpdateConference::region?
+        attr_reader region: Telnyx::Models::Conferences::conference_region?
 
         def region=: (
-          Telnyx::Models::Conferences::UpdateConference::region
-        ) -> Telnyx::Models::Conferences::UpdateConference::region
+          Telnyx::Models::Conferences::conference_region
+        ) -> Telnyx::Models::Conferences::conference_region
 
         attr_reader whisper_call_control_ids: ::Array[String]?
 
@@ -35,7 +35,7 @@ module Telnyx
           call_control_id: String,
           supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
           ?command_id: String,
-          ?region: Telnyx::Models::Conferences::UpdateConference::region,
+          ?region: Telnyx::Models::Conferences::conference_region,
           ?whisper_call_control_ids: ::Array[String]
         ) -> void
 
@@ -43,7 +43,7 @@ module Telnyx
           call_control_id: String,
           supervisor_role: Telnyx::Models::Conferences::UpdateConference::supervisor_role,
           command_id: String,
-          region: Telnyx::Models::Conferences::UpdateConference::region,
+          region: Telnyx::Models::Conferences::conference_region,
           whisper_call_control_ids: ::Array[String]
         }
 
@@ -58,19 +58,6 @@ module Telnyx
           WHISPER: :whisper
 
           def self?.values: -> ::Array[Telnyx::Models::Conferences::UpdateConference::supervisor_role]
-        end
-
-        type region = :Australia | :Europe | :"Middle East" | :US
-
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA: :Australia
-          EUROPE: :Europe
-          MIDDLE_EAST: :"Middle East"
-          US: :US
-
-          def self?.values: -> ::Array[Telnyx::Models::Conferences::UpdateConference::region]
         end
       end
     end

@@ -24,9 +24,7 @@ module Telnyx
             attr_accessor :sequence
 
             sig do
-              returns(
-                Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol
-              )
+              returns(Telnyx::AI::Missions::Runs::StepStatus::TaggedSymbol)
             end
             attr_accessor :status
 
@@ -62,8 +60,7 @@ module Telnyx
                 description: String,
                 run_id: String,
                 sequence: Integer,
-                status:
-                  Telnyx::AI::Missions::Runs::PlanStepData::Status::OrSymbol,
+                status: Telnyx::AI::Missions::Runs::StepStatus::OrSymbol,
                 step_id: String,
                 completed_at: Time,
                 metadata: T::Hash[Symbol, T.anything],
@@ -90,8 +87,7 @@ module Telnyx
                   description: String,
                   run_id: String,
                   sequence: Integer,
-                  status:
-                    Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol,
+                  status: Telnyx::AI::Missions::Runs::StepStatus::TaggedSymbol,
                   step_id: String,
                   completed_at: Time,
                   metadata: T::Hash[Symbol, T.anything],
@@ -101,55 +97,6 @@ module Telnyx
               )
             end
             def to_hash
-            end
-
-            module Status
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::AI::Missions::Runs::PlanStepData::Status
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              PENDING =
-                T.let(
-                  :pending,
-                  Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol
-                )
-              IN_PROGRESS =
-                T.let(
-                  :in_progress,
-                  Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol
-                )
-              COMPLETED =
-                T.let(
-                  :completed,
-                  Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol
-                )
-              SKIPPED =
-                T.let(
-                  :skipped,
-                  Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol
-                )
-              FAILED =
-                T.let(
-                  :failed,
-                  Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::AI::Missions::Runs::PlanStepData::Status::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
           end
         end

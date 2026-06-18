@@ -10,7 +10,7 @@ module Telnyx
             metadata: ::Hash[Symbol, top],
             result_payload: ::Hash[Symbol, top],
             result_summary: String,
-            status: Telnyx::Models::AI::Missions::RunUpdateParams::status
+            status: Telnyx::Models::AI::Missions::run_status
           }
           & Telnyx::Internal::Type::request_parameters
 
@@ -38,11 +38,11 @@ module Telnyx
 
           def result_summary=: (String) -> String
 
-          attr_reader status: Telnyx::Models::AI::Missions::RunUpdateParams::status?
+          attr_reader status: Telnyx::Models::AI::Missions::run_status?
 
           def status=: (
-            Telnyx::Models::AI::Missions::RunUpdateParams::status
-          ) -> Telnyx::Models::AI::Missions::RunUpdateParams::status
+            Telnyx::Models::AI::Missions::run_status
+          ) -> Telnyx::Models::AI::Missions::run_status
 
           def initialize: (
             mission_id: String,
@@ -51,7 +51,7 @@ module Telnyx
             ?metadata: ::Hash[Symbol, top],
             ?result_payload: ::Hash[Symbol, top],
             ?result_summary: String,
-            ?status: Telnyx::Models::AI::Missions::RunUpdateParams::status,
+            ?status: Telnyx::Models::AI::Missions::run_status,
             ?request_options: Telnyx::request_opts
           ) -> void
 
@@ -62,25 +62,9 @@ module Telnyx
             metadata: ::Hash[Symbol, top],
             result_payload: ::Hash[Symbol, top],
             result_summary: String,
-            status: Telnyx::Models::AI::Missions::RunUpdateParams::status,
+            status: Telnyx::Models::AI::Missions::run_status,
             request_options: Telnyx::RequestOptions
           }
-
-          type status =
-            :pending | :running | :paused | :succeeded | :failed | :cancelled
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            PENDING: :pending
-            RUNNING: :running
-            PAUSED: :paused
-            SUCCEEDED: :succeeded
-            FAILED: :failed
-            CANCELLED: :cancelled
-
-            def self?.values: -> ::Array[Telnyx::Models::AI::Missions::RunUpdateParams::status]
-          end
         end
       end
     end

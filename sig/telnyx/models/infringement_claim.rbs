@@ -1,0 +1,242 @@
+module Telnyx
+  module Models
+    type infringement_claim =
+      {
+        id: String,
+        claim_date: Time,
+        claim_description: String,
+        claim_type: Telnyx::Models::InfringementClaim::claim_type,
+        claimant_contact: String,
+        claimant_name: String,
+        contest_documents: ::Array[Telnyx::Document],
+        contest_history: ::Array[Telnyx::InfringementClaim::ContestHistory],
+        created_at: Time,
+        dir: Telnyx::InfringementClaim::Dir,
+        dir_id: String,
+        enterprise_id: String,
+        resolution: Telnyx::Models::InfringementClaim::resolution?,
+        resolution_date: Time?,
+        resolution_notes: String?,
+        status: Telnyx::Models::InfringementClaim::status,
+        updated_at: Time
+      }
+
+    class InfringementClaim < Telnyx::Internal::Type::BaseModel
+      attr_reader claim_description: String?
+
+      def claim_description=: (String) -> String
+
+      attr_reader claim_type: Telnyx::Models::InfringementClaim::claim_type?
+
+      def claim_type=: (
+        Telnyx::Models::InfringementClaim::claim_type
+      ) -> Telnyx::Models::InfringementClaim::claim_type
+
+      attr_reader claimant_contact: String?
+
+      def claimant_contact=: (String) -> String
+
+      attr_reader claimant_name: String?
+
+      def claimant_name=: (String) -> String
+
+      attr_reader contest_documents: ::Array[Telnyx::Document]?
+
+      def contest_documents=: (
+        ::Array[Telnyx::Document]
+      ) -> ::Array[Telnyx::Document]
+
+      attr_reader dir: Telnyx::InfringementClaim::Dir?
+
+      def dir=: (
+        Telnyx::InfringementClaim::Dir
+      ) -> Telnyx::InfringementClaim::Dir
+
+      attr_reader dir_id: String?
+
+      def dir_id=: (String) -> String
+
+      attr_reader enterprise_id: String?
+
+      def enterprise_id=: (String) -> String
+
+      attr_accessor resolution: Telnyx::Models::InfringementClaim::resolution?
+
+      attr_reader status: Telnyx::Models::InfringementClaim::status?
+
+      def status=: (
+        Telnyx::Models::InfringementClaim::status
+      ) -> Telnyx::Models::InfringementClaim::status
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader claim_date: Time?
+
+      def claim_date=: (Time) -> Time
+
+      attr_reader contest_history: ::Array[Telnyx::InfringementClaim::ContestHistory]?
+
+      def contest_history=: (
+        ::Array[Telnyx::InfringementClaim::ContestHistory]
+      ) -> ::Array[Telnyx::InfringementClaim::ContestHistory]
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_accessor resolution_date: Time?
+
+      attr_accessor resolution_notes: String?
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?claim_date: Time,
+        ?claim_description: String,
+        ?claim_type: Telnyx::Models::InfringementClaim::claim_type,
+        ?claimant_contact: String,
+        ?claimant_name: String,
+        ?contest_documents: ::Array[Telnyx::Document],
+        ?contest_history: ::Array[Telnyx::InfringementClaim::ContestHistory],
+        ?created_at: Time,
+        ?dir: Telnyx::InfringementClaim::Dir,
+        ?dir_id: String,
+        ?enterprise_id: String,
+        ?resolution: Telnyx::Models::InfringementClaim::resolution?,
+        ?resolution_date: Time?,
+        ?resolution_notes: String?,
+        ?status: Telnyx::Models::InfringementClaim::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        claim_date: Time,
+        claim_description: String,
+        claim_type: Telnyx::Models::InfringementClaim::claim_type,
+        claimant_contact: String,
+        claimant_name: String,
+        contest_documents: ::Array[Telnyx::Document],
+        contest_history: ::Array[Telnyx::InfringementClaim::ContestHistory],
+        created_at: Time,
+        dir: Telnyx::InfringementClaim::Dir,
+        dir_id: String,
+        enterprise_id: String,
+        resolution: Telnyx::Models::InfringementClaim::resolution?,
+        resolution_date: Time?,
+        resolution_notes: String?,
+        status: Telnyx::Models::InfringementClaim::status,
+        updated_at: Time
+      }
+
+      type claim_type = :trademark | :copyright
+
+      module ClaimType
+        extend Telnyx::Internal::Type::Enum
+
+        TRADEMARK: :trademark
+        COPYRIGHT: :copyright
+
+        def self?.values: -> ::Array[Telnyx::Models::InfringementClaim::claim_type]
+      end
+
+      type contest_history =
+        { document_count: Integer, notes: String, submitted_at: Time }
+
+      class ContestHistory < Telnyx::Internal::Type::BaseModel
+        attr_reader notes: String?
+
+        def notes=: (String) -> String
+
+        attr_reader document_count: Integer?
+
+        def document_count=: (Integer) -> Integer
+
+        attr_reader submitted_at: Time?
+
+        def submitted_at=: (Time) -> Time
+
+        def initialize: (
+          ?document_count: Integer,
+          ?notes: String,
+          ?submitted_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          document_count: Integer,
+          notes: String,
+          submitted_at: Time
+        }
+      end
+
+      type dir =
+        {
+          id: String,
+          display_name: String,
+          enterprise_id: String,
+          status: Telnyx::Models::dir_status
+        }
+
+      class Dir < Telnyx::Internal::Type::BaseModel
+        attr_reader display_name: String?
+
+        def display_name=: (String) -> String
+
+        attr_reader enterprise_id: String?
+
+        def enterprise_id=: (String) -> String
+
+        attr_reader status: Telnyx::Models::dir_status?
+
+        def status=: (Telnyx::Models::dir_status) -> Telnyx::Models::dir_status
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?display_name: String,
+          ?enterprise_id: String,
+          ?status: Telnyx::Models::dir_status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          display_name: String,
+          enterprise_id: String,
+          status: Telnyx::Models::dir_status
+        }
+      end
+
+      type resolution = :upheld | :rejected | :modified
+
+      module Resolution
+        extend Telnyx::Internal::Type::Enum
+
+        UPHELD: :upheld
+        REJECTED: :rejected
+        MODIFIED: :modified
+
+        def self?.values: -> ::Array[Telnyx::Models::InfringementClaim::resolution]
+      end
+
+      type status = :pending | :contested | :resolved
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        CONTESTED: :contested
+        RESOLVED: :resolved
+
+        def self?.values: -> ::Array[Telnyx::Models::InfringementClaim::status]
+      end
+    end
+  end
+end

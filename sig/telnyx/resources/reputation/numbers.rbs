@@ -6,7 +6,7 @@ module Telnyx
           String phone_number,
           ?fresh: bool,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Reputation::NumberRetrieveResponse
+        ) -> Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
 
         def list: (
           ?filter_enterprise_id: String,
@@ -15,7 +15,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Reputation::NumberListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Enterprises::Reputation::ReputationPhoneNumber]
 
         def delete: (
           String phone_number,

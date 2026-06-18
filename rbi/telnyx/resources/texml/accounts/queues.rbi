@@ -13,7 +13,7 @@ module Telnyx
               friendly_name: String,
               max_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::Texml::Accounts::QueueCreateResponse)
+            ).returns(Telnyx::Texml::Accounts::QueueResource)
           end
           def create(
             # The id of the account the resource belongs to.
@@ -32,7 +32,7 @@ module Telnyx
               queue_sid: String,
               account_sid: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::Texml::Accounts::QueueRetrieveResponse)
+            ).returns(Telnyx::Texml::Accounts::QueueResource)
           end
           def retrieve(
             # The QueueSid that identifies the call queue.
@@ -50,7 +50,7 @@ module Telnyx
               account_sid: String,
               max_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::Texml::Accounts::QueueUpdateResponse)
+            ).returns(Telnyx::Texml::Accounts::QueueResource)
           end
           def update(
             # Path param: The QueueSid that identifies the call queue.
@@ -75,7 +75,7 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
               Telnyx::Internal::DefaultPaginationForQueues[
-                Telnyx::Models::Texml::Accounts::QueueListResponse
+                Telnyx::Texml::Accounts::QueueResource
               ]
             )
           end

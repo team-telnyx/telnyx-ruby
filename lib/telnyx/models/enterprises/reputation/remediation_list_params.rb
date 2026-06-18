@@ -29,8 +29,8 @@ module Telnyx
           # @!attribute filter_status
           #   Filter by customer-facing status.
           #
-          #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationListParams::FilterStatus, nil]
-          optional :filter_status, enum: -> { Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus }
+          #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationStatus, nil]
+          optional :filter_status, enum: -> { Telnyx::Enterprises::Reputation::RemediationStatus }
 
           # @!attribute page_number
           #   1-based page number. Out-of-range values return an empty page with correct meta.
@@ -55,27 +55,13 @@ module Telnyx
           #
           #   @param filter_created_at_lte [Time] Only requests created on or before this timestamp (ISO 8601).
           #
-          #   @param filter_status [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationListParams::FilterStatus] Filter by customer-facing status.
+          #   @param filter_status [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationStatus] Filter by customer-facing status.
           #
           #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
           #
           #   @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-          # Filter by customer-facing status.
-          module FilterStatus
-            extend Telnyx::Internal::Type::Enum
-
-            PENDING = :pending
-            IN_PROGRESS = :in_progress
-            COMPLETED = :completed
-            FAILED = :failed
-            CANCELLED = :cancelled
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
     end

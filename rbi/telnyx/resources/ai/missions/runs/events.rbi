@@ -49,9 +49,7 @@ module Telnyx
                 mission_id: String,
                 run_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(
-                Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsResponse
-              )
+              ).returns(Telnyx::AI::Missions::Runs::EventResponse)
             end
             def get_event_details(
               # Unique identifier of the event.
@@ -70,14 +68,13 @@ module Telnyx
                 run_id: String,
                 mission_id: String,
                 summary: String,
-                type:
-                  Telnyx::AI::Missions::Runs::EventLogParams::Type::OrSymbol,
+                type: Telnyx::AI::Missions::Runs::EventType::OrSymbol,
                 agent_id: String,
                 idempotency_key: String,
                 payload: T::Hash[Symbol, T.anything],
                 step_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(Telnyx::Models::AI::Missions::Runs::EventLogResponse)
+              ).returns(Telnyx::AI::Missions::Runs::EventResponse)
             end
             def log(
               # Path param: Unique identifier of the run.

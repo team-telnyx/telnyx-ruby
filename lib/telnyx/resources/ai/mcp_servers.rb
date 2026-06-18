@@ -15,7 +15,7 @@ module Telnyx
         # @param api_key_ref [String, nil]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::McpServerCreateResponse]
+        # @return [Telnyx::Models::AI::McpServer]
         #
         # @see Telnyx::Models::AI::McpServerCreateParams
         def create(params)
@@ -24,7 +24,7 @@ module Telnyx
             method: :post,
             path: "ai/mcp_servers",
             body: parsed,
-            model: Telnyx::Models::AI::McpServerCreateResponse,
+            model: Telnyx::AI::McpServer,
             options: options
           )
         end
@@ -37,14 +37,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::McpServerRetrieveResponse]
+        # @return [Telnyx::Models::AI::McpServer]
         #
         # @see Telnyx::Models::AI::McpServerRetrieveParams
         def retrieve(mcp_server_id, params = {})
           @client.request(
             method: :get,
             path: ["ai/mcp_servers/%1$s", mcp_server_id],
-            model: Telnyx::Models::AI::McpServerRetrieveResponse,
+            model: Telnyx::AI::McpServer,
             options: params[:request_options]
           )
         end
@@ -71,7 +71,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::McpServerUpdateResponse]
+        # @return [Telnyx::Models::AI::McpServer]
         #
         # @see Telnyx::Models::AI::McpServerUpdateParams
         def update(mcp_server_id, params = {})
@@ -80,7 +80,7 @@ module Telnyx
             method: :put,
             path: ["ai/mcp_servers/%1$s", mcp_server_id],
             body: parsed,
-            model: Telnyx::Models::AI::McpServerUpdateResponse,
+            model: Telnyx::AI::McpServer,
             options: options
           )
         end
@@ -99,7 +99,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPaginationTopLevelArray<Telnyx::Models::AI::McpServerListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPaginationTopLevelArray<Telnyx::Models::AI::McpServer>]
         #
         # @see Telnyx::Models::AI::McpServerListParams
         def list(params = {})
@@ -110,7 +110,7 @@ module Telnyx
             path: "ai/mcp_servers",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPaginationTopLevelArray,
-            model: Telnyx::Models::AI::McpServerListResponse,
+            model: Telnyx::AI::McpServer,
             options: options
           )
         end

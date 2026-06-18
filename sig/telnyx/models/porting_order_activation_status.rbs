@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    type porting_order_activation_status =
+      :New
+      | :Pending
+      | :Conflict
+      | :"Cancel Pending"
+      | :Failed
+      | :Concurred
+      | :"Activate RDY"
+      | :"Disconnect Pending"
+      | :"Concurrence Sent"
+      | :Old
+      | :Sending
+      | :Active
+      | :Cancelled
+
+    module PortingOrderActivationStatus
+      extend Telnyx::Internal::Type::Enum
+
+      NEW: :New
+      PENDING: :Pending
+      CONFLICT: :Conflict
+      CANCEL_PENDING: :"Cancel Pending"
+      FAILED: :Failed
+      CONCURRED: :Concurred
+      ACTIVATE_RDY: :"Activate RDY"
+      DISCONNECT_PENDING: :"Disconnect Pending"
+      CONCURRENCE_SENT: :"Concurrence Sent"
+      OLD: :Old
+      SENDING: :Sending
+      ACTIVE: :Active
+      CANCELLED: :Cancelled
+
+      def self?.values: -> ::Array[Telnyx::Models::porting_order_activation_status]
+    end
+  end
+end

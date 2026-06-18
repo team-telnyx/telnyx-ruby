@@ -24,7 +24,7 @@ module Telnyx
                 send_recording_url: T::Boolean,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse
+                Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody
               )
             end
             def recordings_json(
@@ -60,7 +60,7 @@ module Telnyx
                 account_sid: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonResponse
+                Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
               )
             end
             def retrieve_recordings_json(

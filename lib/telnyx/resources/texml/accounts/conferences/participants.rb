@@ -19,7 +19,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveResponse]
+            # @return [Telnyx::Models::Texml::Accounts::Conferences::ParticipantResource]
             #
             # @see Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveParams
             def retrieve(call_sid_or_participant_label, params)
@@ -40,7 +40,7 @@ module Telnyx
                   conference_sid,
                   call_sid_or_participant_label
                 ],
-                model: Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveResponse,
+                model: Telnyx::Texml::Accounts::Conferences::ParticipantResource,
                 options: options
               )
             end
@@ -83,7 +83,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse]
+            # @return [Telnyx::Models::Texml::Accounts::Conferences::ParticipantResource]
             #
             # @see Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams
             def update(call_sid_or_participant_label, params)
@@ -106,7 +106,7 @@ module Telnyx
                 ],
                 headers: {"content-type" => "application/x-www-form-urlencoded"},
                 body: parsed,
-                model: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse,
+                model: Telnyx::Texml::Accounts::Conferences::ParticipantResource,
                 options: options
               )
             end

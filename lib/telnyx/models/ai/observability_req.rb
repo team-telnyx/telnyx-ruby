@@ -26,8 +26,8 @@ module Telnyx
         #   `instructions` to Langfuse via create_prompt and stores the returned version in
         #   prompt_version.
         #
-        #   @return [Symbol, Telnyx::Models::AI::ObservabilityReq::PromptSync, nil]
-        optional :prompt_sync, enum: -> { Telnyx::AI::ObservabilityReq::PromptSync }
+        #   @return [Symbol, Telnyx::Models::AI::PromptSyncStatus, nil]
+        optional :prompt_sync, enum: -> { Telnyx::AI::PromptSyncStatus }
 
         # @!attribute prompt_version
         #
@@ -46,8 +46,8 @@ module Telnyx
 
         # @!attribute status
         #
-        #   @return [Symbol, Telnyx::Models::AI::ObservabilityReq::Status, nil]
-        optional :status, enum: -> { Telnyx::AI::ObservabilityReq::Status }
+        #   @return [Symbol, Telnyx::Models::AI::ObservabilityStatus, nil]
+        optional :status, enum: -> { Telnyx::AI::ObservabilityStatus }
 
         # @!method initialize(host: nil, prompt_label: nil, prompt_name: nil, prompt_sync: nil, prompt_version: nil, public_key_ref: nil, secret_key_ref: nil, status: nil)
         #   Some parameter documentations has been truncated, see
@@ -59,7 +59,7 @@ module Telnyx
         #
         #   @param prompt_name [String]
         #
-        #   @param prompt_sync [Symbol, Telnyx::Models::AI::ObservabilityReq::PromptSync] Whether to auto-publish the assistant's instructions as a Langfuse prompt.
+        #   @param prompt_sync [Symbol, Telnyx::Models::AI::PromptSyncStatus] Whether to auto-publish the assistant's instructions as a Langfuse prompt.
         #
         #   @param prompt_version [Integer]
         #
@@ -67,35 +67,7 @@ module Telnyx
         #
         #   @param secret_key_ref [String]
         #
-        #   @param status [Symbol, Telnyx::Models::AI::ObservabilityReq::Status]
-
-        # Whether to auto-publish the assistant's instructions as a Langfuse prompt.
-        #
-        # When ENABLED + prompt_name set, every assistant create/update pushes
-        # `instructions` to Langfuse via create_prompt and stores the returned version in
-        # prompt_version.
-        #
-        # @see Telnyx::Models::AI::ObservabilityReq#prompt_sync
-        module PromptSync
-          extend Telnyx::Internal::Type::Enum
-
-          ENABLED = :enabled
-          DISABLED = :disabled
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # @see Telnyx::Models::AI::ObservabilityReq#status
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          ENABLED = :enabled
-          DISABLED = :disabled
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        #   @param status [Symbol, Telnyx::Models::AI::ObservabilityStatus]
       end
     end
   end

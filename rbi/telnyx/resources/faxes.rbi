@@ -43,7 +43,7 @@ module Telnyx
           media_url: String,
           monochrome: T::Boolean,
           preview_format: Telnyx::FaxCreateParams::PreviewFormat::OrSymbol,
-          quality: Telnyx::FaxCreateParams::Quality::OrSymbol,
+          quality: Telnyx::Quality::OrSymbol,
           store_media: T::Boolean,
           store_preview: T::Boolean,
           t38_enabled: T::Boolean,

@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    module AI
+      type arithmetic_expression =
+        {
+          left: top,
+          op: Telnyx::Models::AI::ArithmeticExpression::op,
+          right: top,
+          type: :arithmetic
+        }
+
+      class ArithmeticExpression < Telnyx::Internal::Type::BaseModel
+        attr_accessor left: top
+
+        attr_accessor op: Telnyx::Models::AI::ArithmeticExpression::op
+
+        attr_accessor right: top
+
+        attr_accessor type: :arithmetic
+
+        def initialize: (
+          left: top,
+          op: Telnyx::Models::AI::ArithmeticExpression::op,
+          right: top,
+          ?type: :arithmetic
+        ) -> void
+
+        def to_hash: -> {
+          left: top,
+          op: Telnyx::Models::AI::ArithmeticExpression::op,
+          right: top,
+          type: :arithmetic
+        }
+
+        type op = :+ | :- | :* | :/ | :%
+
+        module Op
+          extend Telnyx::Internal::Type::Enum
+
+          PLUS: :+
+          MINUS: :-
+          MULTIPLY: :*
+          DIVIDE: :/
+          MODULO: :%
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ArithmeticExpression::op]
+        end
+      end
+    end
+  end
+end

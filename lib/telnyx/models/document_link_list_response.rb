@@ -3,20 +3,8 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::DocumentLinks#list
-    class DocumentLinkListResponse < Telnyx::Internal::Type::BaseModel
+    class DocumentLinkListResponse < Telnyx::Models::DocServiceRecord
       response_only do
-        # @!attribute id
-        #   Identifies the resource.
-        #
-        #   @return [String, nil]
-        optional :id, String
-
-        # @!attribute created_at
-        #   ISO 8601 formatted date-time indicating when the resource was created.
-        #
-        #   @return [String, nil]
-        optional :created_at, String
-
         # @!attribute document_id
         #   Identifies the associated document.
         #
@@ -40,19 +28,9 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :record_type, String
-
-        # @!attribute updated_at
-        #   ISO 8601 formatted date-time indicating when the resource was updated.
-        #
-        #   @return [String, nil]
-        optional :updated_at, String
       end
 
-      # @!method initialize(id: nil, created_at: nil, document_id: nil, linked_record_type: nil, linked_resource_id: nil, record_type: nil, updated_at: nil)
-      #   @param id [String] Identifies the resource.
-      #
-      #   @param created_at [String] ISO 8601 formatted date-time indicating when the resource was created.
-      #
+      # @!method initialize(document_id: nil, linked_record_type: nil, linked_resource_id: nil, record_type: nil)
       #   @param document_id [String] Identifies the associated document.
       #
       #   @param linked_record_type [String] The linked resource's record type.
@@ -60,8 +38,6 @@ module Telnyx
       #   @param linked_resource_id [String] Identifies the linked resource.
       #
       #   @param record_type [String] Identifies the type of the resource.
-      #
-      #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
     end
   end
 end

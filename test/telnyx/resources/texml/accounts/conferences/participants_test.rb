@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
       )
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveResponse
+      response => Telnyx::Texml::Accounts::Conferences::ParticipantResource
     end
 
     assert_pattern do
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
         end_conference_on_exit: Telnyx::Internal::Type::Boolean | nil,
         hold: Telnyx::Internal::Type::Boolean | nil,
         muted: Telnyx::Internal::Type::Boolean | nil,
-        status: Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveResponse::Status | nil,
+        status: Telnyx::Texml::Accounts::Conferences::ParticipantResource::Status | nil,
         uri: String | nil
       }
     end
@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
       )
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse
+      response => Telnyx::Texml::Accounts::Conferences::ParticipantResource
     end
 
     assert_pattern do
@@ -67,7 +67,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
         end_conference_on_exit: Telnyx::Internal::Type::Boolean | nil,
         hold: Telnyx::Internal::Type::Boolean | nil,
         muted: Telnyx::Internal::Type::Boolean | nil,
-        status: Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateResponse::Status | nil,
+        status: Telnyx::Texml::Accounts::Conferences::ParticipantResource::Status | nil,
         uri: String | nil
       }
     end
@@ -137,7 +137,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
         next_page_uri: String | nil,
         page: Integer | nil,
         page_size: Integer | nil,
-        participants: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveParticipantsResponse::Participant]) | nil,
+        participants: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::Conferences::ParticipantResource]) | nil,
         start: Integer | nil,
         uri: String | nil
       }

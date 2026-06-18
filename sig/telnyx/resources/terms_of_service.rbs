@@ -7,15 +7,15 @@ module Telnyx
 
       attr_reader branded_calling: Telnyx::Resources::TermsOfService::BrandedCalling
 
-      def info: (
-        ?product_type: Telnyx::Models::TermsOfServiceInfoParams::product_type,
+      def retrieve_info: (
+        ?product_type: Telnyx::Models::TermsOfService::tos_product_type,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::TermsOfServiceInfoResponse
+      ) -> Telnyx::Models::TermsOfServiceRetrieveInfoResponse
 
-      def status: (
-        ?product_type: Telnyx::Models::TermsOfServiceStatusParams::product_type,
+      def retrieve_status: (
+        ?product_type: Telnyx::Models::TermsOfService::tos_product_type,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::TermsOfServiceStatusResponse
+      ) -> Telnyx::Models::TermsOfServiceRetrieveStatusResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

@@ -17,7 +17,7 @@ module Telnyx
             timeout_ms: Integer,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::ToolCreateResponse)
+          ).returns(Telnyx::AI::SharedToolResponse)
         end
         def create(
           display_name:,
@@ -37,7 +37,7 @@ module Telnyx
           params(
             tool_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::ToolRetrieveResponse)
+          ).returns(Telnyx::AI::SharedToolResponse)
         end
         def retrieve(
           # Unique identifier of the tool.
@@ -59,7 +59,7 @@ module Telnyx
             type: String,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::ToolUpdateResponse)
+          ).returns(Telnyx::AI::SharedToolResponse)
         end
         def update(
           # Unique identifier of the tool.
@@ -86,7 +86,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::AI::ToolListResponse
+              Telnyx::AI::SharedToolResponse
             ]
           )
         end

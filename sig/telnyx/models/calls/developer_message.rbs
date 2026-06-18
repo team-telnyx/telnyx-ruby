@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module Calls
+      type developer_message =
+        {
+          content: String,
+          role: Telnyx::Models::Calls::DeveloperMessage::role,
+          metadata: ::Hash[Symbol, top]
+        }
+
+      class DeveloperMessage < Telnyx::Internal::Type::BaseModel
+        attr_accessor content: String
+
+        attr_accessor role: Telnyx::Models::Calls::DeveloperMessage::role
+
+        attr_reader metadata: ::Hash[Symbol, top]?
+
+        def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        def initialize: (
+          content: String,
+          role: Telnyx::Models::Calls::DeveloperMessage::role,
+          ?metadata: ::Hash[Symbol, top]
+        ) -> void
+
+        def to_hash: -> {
+          content: String,
+          role: Telnyx::Models::Calls::DeveloperMessage::role,
+          metadata: ::Hash[Symbol, top]
+        }
+
+        type role = :developer
+
+        module Role
+          extend Telnyx::Internal::Type::Enum
+
+          DEVELOPER: :developer
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::DeveloperMessage::role]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,158 @@
+module Telnyx
+  module Models
+    type porting_phone_number =
+      {
+        activation_status: Telnyx::Models::porting_order_activation_status,
+        phone_number: String,
+        phone_number_type: Telnyx::Models::PortingPhoneNumber::phone_number_type,
+        portability_status: Telnyx::Models::PortingPhoneNumber::portability_status,
+        porting_order_id: String,
+        porting_order_status: Telnyx::Models::PortingPhoneNumber::porting_order_status,
+        record_type: String,
+        requirements_status: Telnyx::Models::PortingPhoneNumber::requirements_status,
+        support_key: String
+      }
+
+    class PortingPhoneNumber < Telnyx::Internal::Type::BaseModel
+      attr_reader activation_status: Telnyx::Models::porting_order_activation_status?
+
+      def activation_status=: (
+        Telnyx::Models::porting_order_activation_status
+      ) -> Telnyx::Models::porting_order_activation_status
+
+      attr_reader phone_number: String?
+
+      def phone_number=: (String) -> String
+
+      attr_reader phone_number_type: Telnyx::Models::PortingPhoneNumber::phone_number_type?
+
+      def phone_number_type=: (
+        Telnyx::Models::PortingPhoneNumber::phone_number_type
+      ) -> Telnyx::Models::PortingPhoneNumber::phone_number_type
+
+      attr_reader portability_status: Telnyx::Models::PortingPhoneNumber::portability_status?
+
+      def portability_status=: (
+        Telnyx::Models::PortingPhoneNumber::portability_status
+      ) -> Telnyx::Models::PortingPhoneNumber::portability_status
+
+      attr_reader porting_order_id: String?
+
+      def porting_order_id=: (String) -> String
+
+      attr_reader porting_order_status: Telnyx::Models::PortingPhoneNumber::porting_order_status?
+
+      def porting_order_status=: (
+        Telnyx::Models::PortingPhoneNumber::porting_order_status
+      ) -> Telnyx::Models::PortingPhoneNumber::porting_order_status
+
+      attr_reader requirements_status: Telnyx::Models::PortingPhoneNumber::requirements_status?
+
+      def requirements_status=: (
+        Telnyx::Models::PortingPhoneNumber::requirements_status
+      ) -> Telnyx::Models::PortingPhoneNumber::requirements_status
+
+      attr_reader support_key: String?
+
+      def support_key=: (String) -> String
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      def initialize: (
+        ?activation_status: Telnyx::Models::porting_order_activation_status,
+        ?phone_number: String,
+        ?phone_number_type: Telnyx::Models::PortingPhoneNumber::phone_number_type,
+        ?portability_status: Telnyx::Models::PortingPhoneNumber::portability_status,
+        ?porting_order_id: String,
+        ?porting_order_status: Telnyx::Models::PortingPhoneNumber::porting_order_status,
+        ?record_type: String,
+        ?requirements_status: Telnyx::Models::PortingPhoneNumber::requirements_status,
+        ?support_key: String
+      ) -> void
+
+      def to_hash: -> {
+        activation_status: Telnyx::Models::porting_order_activation_status,
+        phone_number: String,
+        phone_number_type: Telnyx::Models::PortingPhoneNumber::phone_number_type,
+        portability_status: Telnyx::Models::PortingPhoneNumber::portability_status,
+        porting_order_id: String,
+        porting_order_status: Telnyx::Models::PortingPhoneNumber::porting_order_status,
+        record_type: String,
+        requirements_status: Telnyx::Models::PortingPhoneNumber::requirements_status,
+        support_key: String
+      }
+
+      type phone_number_type =
+        :landline | :local | :mobile | :national | :shared_cost | :toll_free
+
+      module PhoneNumberType
+        extend Telnyx::Internal::Type::Enum
+
+        LANDLINE: :landline
+        LOCAL: :local
+        MOBILE: :mobile
+        NATIONAL: :national
+        SHARED_COST: :shared_cost
+        TOLL_FREE: :toll_free
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingPhoneNumber::phone_number_type]
+      end
+
+      type portability_status = :pending | :confirmed | :provisional
+
+      module PortabilityStatus
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        CONFIRMED: :confirmed
+        PROVISIONAL: :provisional
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingPhoneNumber::portability_status]
+      end
+
+      type porting_order_status =
+        :draft
+        | :"in-process"
+        | :submitted
+        | :exception
+        | :"foc-date-confirmed"
+        | :"cancel-pending"
+        | :ported
+        | :cancelled
+
+      module PortingOrderStatus
+        extend Telnyx::Internal::Type::Enum
+
+        DRAFT: :draft
+        IN_PROCESS: :"in-process"
+        SUBMITTED: :submitted
+        EXCEPTION: :exception
+        FOC_DATE_CONFIRMED: :"foc-date-confirmed"
+        CANCEL_PENDING: :"cancel-pending"
+        PORTED: :ported
+        CANCELLED: :cancelled
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingPhoneNumber::porting_order_status]
+      end
+
+      type requirements_status =
+        :"requirement-info-pending"
+        | :"requirement-info-under-review"
+        | :"requirement-info-exception"
+        | :approved
+
+      module RequirementsStatus
+        extend Telnyx::Internal::Type::Enum
+
+        REQUIREMENT_INFO_PENDING: :"requirement-info-pending"
+        REQUIREMENT_INFO_UNDER_REVIEW: :"requirement-info-under-review"
+        REQUIREMENT_INFO_EXCEPTION: :"requirement-info-exception"
+        APPROVED: :approved
+
+        def self?.values: -> ::Array[Telnyx::Models::PortingPhoneNumber::requirements_status]
+      end
+    end
+  end
+end

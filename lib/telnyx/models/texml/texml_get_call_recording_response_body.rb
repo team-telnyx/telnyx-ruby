@@ -16,8 +16,8 @@ module Telnyx
 
         # @!attribute channels
         #
-        #   @return [Integer, Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::Channels, nil]
-        optional :channels, enum: -> { Telnyx::Texml::TexmlGetCallRecordingResponseBody::Channels }
+        #   @return [Integer, Telnyx::Models::Texml::Accounts::Calls::TwimlRecordingChannels, nil]
+        optional :channels, enum: -> { Telnyx::Texml::Accounts::Calls::TwimlRecordingChannels }
 
         # @!attribute conference_sid
         #
@@ -59,8 +59,8 @@ module Telnyx
         # @!attribute source
         #   Defines how the recording was created.
         #
-        #   @return [Symbol, Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::Source, nil]
-        optional :source, enum: -> { Telnyx::Texml::TexmlGetCallRecordingResponseBody::Source }
+        #   @return [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingSource, nil]
+        optional :source, enum: -> { Telnyx::Texml::Accounts::Calls::RecordingSource }
 
         # @!attribute start_time
         #
@@ -89,7 +89,7 @@ module Telnyx
         #
         #   @param call_sid [String]
         #
-        #   @param channels [Integer, Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::Channels]
+        #   @param channels [Integer, Telnyx::Models::Texml::Accounts::Calls::TwimlRecordingChannels]
         #
         #   @param conference_sid [String, nil]
         #
@@ -105,7 +105,7 @@ module Telnyx
         #
         #   @param sid [String] Identifier of a resource.
         #
-        #   @param source [Symbol, Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::Source] Defines how the recording was created.
+        #   @param source [Symbol, Telnyx::Models::Texml::Accounts::Calls::RecordingSource] Defines how the recording was created.
         #
         #   @param start_time [Time]
         #
@@ -114,35 +114,6 @@ module Telnyx
         #   @param subresources_uris [Telnyx::Models::Texml::TexmlRecordingSubresourcesUris] Subresources details for a recording if available.
         #
         #   @param uri [String] The relative URI for this recording resource.
-
-        # @see Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody#channels
-        module Channels
-          extend Telnyx::Internal::Type::Enum
-
-          CHANNEL_1 = 1
-          CHANNEL_2 = 2
-
-          # @!method self.values
-          #   @return [Array<Integer>]
-        end
-
-        # Defines how the recording was created.
-        #
-        # @see Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody#source
-        module Source
-          extend Telnyx::Internal::Type::Enum
-
-          START_CALL_RECORDING_API = :StartCallRecordingAPI
-          START_CONFERENCE_RECORDING_API = :StartConferenceRecordingAPI
-          OUTBOUND_API = :OutboundAPI
-          DIAL_VERB = :DialVerb
-          CONFERENCE = :Conference
-          RECORD_VERB = :RecordVerb
-          TRUNKING = :Trunking
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
 
         # @see Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody#status
         module Status

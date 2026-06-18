@@ -9,7 +9,7 @@ module Telnyx
             telnyx_agent_target: String,
             telnyx_conversation_channel: Telnyx::Models::AI::Assistants::conversation_channel_type,
             telnyx_end_user_target: String,
-            ?call_settings: Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings,
+            ?call_settings: Telnyx::AI::Assistants::ScheduledCallSettings,
             ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::Assistants::ScheduledEventCreateParams::conversation_metadata],
             ?dynamic_variables: ::Hash[Symbol, String],
             ?max_retries_client_errors: Integer,

@@ -44,7 +44,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::PortingPhoneNumberConfiguration>]
         #
         # @see Telnyx::Models::PortingOrders::PhoneNumberConfigurationListParams
         def list(params = {})
@@ -55,7 +55,7 @@ module Telnyx
             path: "porting_orders/phone_number_configurations",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse,
+            model: Telnyx::PortingOrders::PortingPhoneNumberConfiguration,
             options: options
           )
         end

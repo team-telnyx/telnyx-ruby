@@ -47,16 +47,12 @@ module Telnyx
         # Region where the conference data is located. Defaults to the region defined in
         # user's data locality settings (Europe or US).
         sig do
-          returns(
-            T.nilable(Telnyx::Conferences::ActionHoldParams::Region::OrSymbol)
-          )
+          returns(T.nilable(Telnyx::Conferences::ConferenceRegion::OrSymbol))
         end
         attr_reader :region
 
         sig do
-          params(
-            region: Telnyx::Conferences::ActionHoldParams::Region::OrSymbol
-          ).void
+          params(region: Telnyx::Conferences::ConferenceRegion::OrSymbol).void
         end
         attr_writer :region
 
@@ -66,7 +62,7 @@ module Telnyx
             audio_url: String,
             call_control_ids: T::Array[String],
             media_name: String,
-            region: Telnyx::Conferences::ActionHoldParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -97,55 +93,12 @@ module Telnyx
               audio_url: String,
               call_control_ids: T::Array[String],
               media_name: String,
-              region: Telnyx::Conferences::ActionHoldParams::Region::OrSymbol,
+              region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )
         end
         def to_hash
-        end
-
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::Conferences::ActionHoldParams::Region)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          AUSTRALIA =
-            T.let(
-              :Australia,
-              Telnyx::Conferences::ActionHoldParams::Region::TaggedSymbol
-            )
-          EUROPE =
-            T.let(
-              :Europe,
-              Telnyx::Conferences::ActionHoldParams::Region::TaggedSymbol
-            )
-          MIDDLE_EAST =
-            T.let(
-              :"Middle East",
-              Telnyx::Conferences::ActionHoldParams::Region::TaggedSymbol
-            )
-          US =
-            T.let(
-              :US,
-              Telnyx::Conferences::ActionHoldParams::Region::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Conferences::ActionHoldParams::Region::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

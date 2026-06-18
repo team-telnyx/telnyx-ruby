@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::PortingOrders::AdditionalDocumentsTest < Telnyx::
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingOrders::AdditionalDocumentCreateResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::PortingAdditionalDocument]) | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::PortingOrders::AdditionalDocumentsTest < Telnyx::
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::PortingOrders::AdditionalDocumentListResponse
+      row => Telnyx::PortingOrders::PortingAdditionalDocument
     end
 
     assert_pattern do
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::PortingOrders::AdditionalDocumentsTest < Telnyx::
         content_type: String | nil,
         created_at: Time | nil,
         document_id: String | nil,
-        document_type: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse::DocumentType | nil,
+        document_type: Telnyx::PortingOrders::PortingAdditionalDocument::DocumentType | nil,
         filename: String | nil,
         porting_order_id: String | nil,
         record_type: String | nil,

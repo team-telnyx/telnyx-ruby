@@ -310,9 +310,7 @@ module Telnyx
             reference_id: String,
             brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse
-          )
+          ).returns(Telnyx::Messaging10dlc::BrandSMSOtpStatus)
         end
         def get_sms_otp_by_reference(
           # The reference ID returned when the OTP was initially triggered
@@ -353,9 +351,7 @@ module Telnyx
           params(
             brand_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(
-            Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse
-          )
+          ).returns(Telnyx::Messaging10dlc::BrandSMSOtpStatus)
         end
         def retrieve_sms_otp_status(
           # The Brand ID for which to query OTP status

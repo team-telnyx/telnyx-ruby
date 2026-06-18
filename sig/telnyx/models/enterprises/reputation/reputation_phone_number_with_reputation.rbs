@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module Enterprises
+      class ReputationPhoneNumberWithReputation = Reputation::ReputationPhoneNumberWithReputation
+
+      module Reputation
+        type reputation_phone_number_with_reputation =
+          { data: Telnyx::Enterprises::Reputation::ReputationPhoneNumber }
+
+        class ReputationPhoneNumberWithReputation < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Enterprises::Reputation::ReputationPhoneNumber
+
+          def initialize: (
+            data: Telnyx::Enterprises::Reputation::ReputationPhoneNumber
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Enterprises::Reputation::ReputationPhoneNumber
+          }
+        end
+      end
+    end
+  end
+end

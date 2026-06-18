@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type plan_step_response =
+            { data: Telnyx::AI::Missions::Runs::PlanStepData }
+
+          class PlanStepResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: Telnyx::AI::Missions::Runs::PlanStepData
+
+            def initialize: (
+              data: Telnyx::AI::Missions::Runs::PlanStepData
+            ) -> void
+
+            def to_hash: -> { data: Telnyx::AI::Missions::Runs::PlanStepData }
+          end
+        end
+      end
+    end
+  end
+end

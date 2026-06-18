@@ -13,11 +13,7 @@ module Telnyx
 
       # Activation status
       sig do
-        returns(
-          T.nilable(
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        )
+        returns(T.nilable(Telnyx::PortingOrderActivationStatus::TaggedSymbol))
       end
       attr_accessor :activation_status
 
@@ -39,9 +35,7 @@ module Telnyx
       sig do
         params(
           activation_status:
-            T.nilable(
-              Telnyx::PortingOrderActivationSettings::ActivationStatus::OrSymbol
-            ),
+            T.nilable(Telnyx::PortingOrderActivationStatus::OrSymbol),
           fast_port_eligible: T::Boolean,
           foc_datetime_actual: T.nilable(Time),
           foc_datetime_requested: T.nilable(Time)
@@ -63,9 +57,7 @@ module Telnyx
         override.returns(
           {
             activation_status:
-              T.nilable(
-                Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-              ),
+              T.nilable(Telnyx::PortingOrderActivationStatus::TaggedSymbol),
             fast_port_eligible: T::Boolean,
             foc_datetime_actual: T.nilable(Time),
             foc_datetime_requested: T.nilable(Time)
@@ -73,96 +65,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      # Activation status
-      module ActivationStatus
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Telnyx::PortingOrderActivationSettings::ActivationStatus
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        NEW =
-          T.let(
-            :New,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        PENDING =
-          T.let(
-            :Pending,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        CONFLICT =
-          T.let(
-            :Conflict,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        CANCEL_PENDING =
-          T.let(
-            :"Cancel Pending",
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        FAILED =
-          T.let(
-            :Failed,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        CONCURRED =
-          T.let(
-            :Concurred,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        ACTIVATE_RDY =
-          T.let(
-            :"Activate RDY",
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        DISCONNECT_PENDING =
-          T.let(
-            :"Disconnect Pending",
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        CONCURRENCE_SENT =
-          T.let(
-            :"Concurrence Sent",
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        OLD =
-          T.let(
-            :Old,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        SENDING =
-          T.let(
-            :Sending,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        ACTIVE =
-          T.let(
-            :Active,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-        CANCELLED =
-          T.let(
-            :Cancelled,
-            Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Telnyx::PortingOrderActivationSettings::ActivationStatus::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
     end
   end

@@ -34,14 +34,12 @@ module Telnyx
         sig do
           params(
             dir_id: String,
-            comment_type: Telnyx::Dir::CommentListParams::CommentType::OrSymbol,
+            comment_type: Telnyx::Dir::CommentType::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Dir::CommentListResponse
-            ]
+            Telnyx::Internal::DefaultFlatPagination[Telnyx::Dir::DirComment]
           )
         end
         def list(

@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Whatsapp::UserDataTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::UserDataRetrieveResponse::Data | nil
+        data: Telnyx::Whatsapp::WhatsappUserData | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Whatsapp::UserDataTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::UserDataUpdateResponse::Data | nil
+        data: Telnyx::Whatsapp::WhatsappUserData | nil
       }
     end
   end

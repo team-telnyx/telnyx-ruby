@@ -430,17 +430,17 @@ module Telnyx
                 T.type_alias do
                   T.any(
                     T::Array[
-                      Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList
                     ],
                     String
                   )
                 end
 
-              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+              class TargetsList < Telnyx::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0,
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList,
                       Telnyx::Internal::AnyHash
                     )
                   end
@@ -482,10 +482,10 @@ module Telnyx
               def self.variants
               end
 
-              UnionMember0Array =
+              TargetsListArray =
                 T.let(
                   Telnyx::Internal::Type::ArrayOf[
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::UnionMember0
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList
                   ],
                   Telnyx::Internal::Type::Converter
                 )
@@ -1272,17 +1272,17 @@ module Telnyx
                 T.type_alias do
                   T.any(
                     T::Array[
-                      Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0
+                      Telnyx::AI::AssistantTool::Invite::Invite::Targets::TargetsList
                     ],
                     String
                   )
                 end
 
-              class UnionMember0 < Telnyx::Internal::Type::BaseModel
+              class TargetsList < Telnyx::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0,
+                      Telnyx::AI::AssistantTool::Invite::Invite::Targets::TargetsList,
                       Telnyx::Internal::AnyHash
                     )
                   end
@@ -1324,10 +1324,10 @@ module Telnyx
               def self.variants
               end
 
-              UnionMember0Array =
+              TargetsListArray =
                 T.let(
                   Telnyx::Internal::Type::ArrayOf[
-                    Telnyx::AI::AssistantTool::Invite::Invite::Targets::UnionMember0
+                    Telnyx::AI::AssistantTool::Invite::Invite::Targets::TargetsList
                   ],
                   Telnyx::Internal::Type::Converter
                 )

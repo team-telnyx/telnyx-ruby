@@ -42,16 +42,12 @@ module Telnyx
         # Region where the conference data is located. Defaults to the region defined in
         # user's data locality settings (Europe or US).
         sig do
-          returns(
-            T.nilable(Telnyx::Conferences::UpdateConference::Region::OrSymbol)
-          )
+          returns(T.nilable(Telnyx::Conferences::ConferenceRegion::OrSymbol))
         end
         attr_reader :region
 
         sig do
-          params(
-            region: Telnyx::Conferences::UpdateConference::Region::OrSymbol
-          ).void
+          params(region: Telnyx::Conferences::ConferenceRegion::OrSymbol).void
         end
         attr_writer :region
 
@@ -70,7 +66,7 @@ module Telnyx
             supervisor_role:
               Telnyx::Conferences::UpdateConference::SupervisorRole::OrSymbol,
             command_id: String,
-            region: Telnyx::Conferences::UpdateConference::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             whisper_call_control_ids: T::Array[String]
           ).returns(T.attached_class)
         end
@@ -104,7 +100,7 @@ module Telnyx
               supervisor_role:
                 Telnyx::Conferences::UpdateConference::SupervisorRole::OrSymbol,
               command_id: String,
-              region: Telnyx::Conferences::UpdateConference::Region::OrSymbol,
+              region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
               whisper_call_control_ids: T::Array[String]
             }
           )
@@ -154,49 +150,6 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Conferences::UpdateConference::SupervisorRole::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::Conferences::UpdateConference::Region)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          AUSTRALIA =
-            T.let(
-              :Australia,
-              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
-            )
-          EUROPE =
-            T.let(
-              :Europe,
-              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
-            )
-          MIDDLE_EAST =
-            T.let(
-              :"Middle East",
-              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
-            )
-          US =
-            T.let(
-              :US,
-              Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Conferences::UpdateConference::Region::TaggedSymbol
               ]
             )
           end

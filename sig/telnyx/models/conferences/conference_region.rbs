@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module ConferenceRegion = Conferences::ConferenceRegion
+
+    module Conferences
+      type conference_region = :Australia | :Europe | :"Middle East" | :US
+
+      module ConferenceRegion
+        extend Telnyx::Internal::Type::Enum
+
+        AUSTRALIA: :Australia
+        EUROPE: :Europe
+        MIDDLE_EAST: :"Middle East"
+        US: :US
+
+        def self?.values: -> ::Array[Telnyx::Models::Conferences::conference_region]
+      end
+    end
+  end
+end

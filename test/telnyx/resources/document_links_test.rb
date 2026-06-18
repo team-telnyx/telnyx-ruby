@@ -18,17 +18,5 @@ class Telnyx::Test::Resources::DocumentLinksTest < Telnyx::Test::ResourceTest
     assert_pattern do
       row => Telnyx::Models::DocumentLinkListResponse
     end
-
-    assert_pattern do
-      row => {
-        id: String | nil,
-        created_at: String | nil,
-        document_id: String | nil,
-        linked_record_type: String | nil,
-        linked_resource_id: String | nil,
-        record_type: String | nil,
-        updated_at: String | nil
-      }
-    end
   end
 end

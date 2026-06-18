@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
     response = @telnyx.ai.missions.runs.create("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::RunCreateResponse
+      response => Telnyx::AI::Missions::MissionRunResponse
     end
 
     assert_pattern do
@@ -29,7 +29,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::RunRetrieveResponse
+      response => Telnyx::AI::Missions::MissionRunResponse
     end
 
     assert_pattern do
@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::RunUpdateResponse
+      response => Telnyx::AI::Missions::MissionRunResponse
     end
 
     assert_pattern do
@@ -80,7 +80,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
         mission_id: String,
         run_id: String,
         started_at: Time,
-        status: Telnyx::AI::Missions::MissionRunData::Status,
+        status: Telnyx::AI::Missions::RunStatus,
         updated_at: Time,
         error: String | nil,
         finished_at: Time | nil,
@@ -102,7 +102,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::RunCancelRunResponse
+      response => Telnyx::AI::Missions::MissionRunResponse
     end
 
     assert_pattern do
@@ -133,7 +133,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
         mission_id: String,
         run_id: String,
         started_at: Time,
-        status: Telnyx::AI::Missions::MissionRunData::Status,
+        status: Telnyx::AI::Missions::RunStatus,
         updated_at: Time,
         error: String | nil,
         finished_at: Time | nil,
@@ -155,7 +155,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::RunPauseRunResponse
+      response => Telnyx::AI::Missions::MissionRunResponse
     end
 
     assert_pattern do
@@ -175,7 +175,7 @@ class Telnyx::Test::Resources::AI::Missions::RunsTest < Telnyx::Test::ResourceTe
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::RunResumeRunResponse
+      response => Telnyx::AI::Missions::MissionRunResponse
     end
 
     assert_pattern do

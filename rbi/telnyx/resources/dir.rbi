@@ -24,7 +24,7 @@ module Telnyx
         params(
           dir_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::DirRetrieveResponse)
+        ).returns(Telnyx::DirWrapped)
       end
       def retrieve(
         # The DIR id. Lowercase UUID.
@@ -52,11 +52,11 @@ module Telnyx
           certify_ip_ownership: T::Boolean,
           certify_no_shaft_content: T::Boolean,
           display_name: String,
-          documents: T::Array[Telnyx::DirUpdateParams::Document::OrHash],
+          documents: T::Array[Telnyx::Document::OrHash],
           logo_url: String,
           reselling: T::Boolean,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::DirUpdateResponse)
+        ).returns(Telnyx::DirWrapped)
       end
       def update(
         # The DIR id. Lowercase UUID.
@@ -110,16 +110,12 @@ module Telnyx
           filter_enterprise_id: String,
           filter_expiring_at_gte: Time,
           filter_expiring_at_lte: Time,
-          filter_status: Telnyx::DirListParams::FilterStatus::OrSymbol,
+          filter_status: Telnyx::DirStatus::OrSymbol,
           page_number: Integer,
           page_size: Integer,
           sort: Telnyx::DirListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::DirListResponse
-          ]
-        )
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::DirAPI])
       end
       def list(
         # Case-insensitive partial match on call reason.
@@ -162,42 +158,6 @@ module Telnyx
       )
       end
 
-      # Generate a pre-filled Letter of Authorization (LOA) PDF for a DIR. Enterprise
-      # identity (legal name, DBA, address, contact, website, tax id) and the DIR
-      # display name are read server-side; the caller supplies the telephone numbers to
-      # authorize, an optional Authorized Agent block, and an optional drawn signature.
-      #
-      # When `signature` is omitted the PDF is returned unsigned so the customer can
-      # sign it externally and upload it via the Documents API. When `signature` is
-      # present the PDF embeds the supplied image, printed name, and signed-at date.
-      #
-      # Returns `application/pdf`.
-      sig do
-        params(
-          dir_id: String,
-          phone_numbers: T::Array[String],
-          agent: Telnyx::DirCreateLoaParams::Agent::OrHash,
-          signature: Telnyx::DirCreateLoaParams::Signature::OrHash,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(StringIO)
-      end
-      def create_loa(
-        # The DIR id.
-        dir_id,
-        # Telephone numbers to authorize on the DIR, in `+E164` format (`+` followed by
-        # 10-15 digits). Max 15 per request.
-        phone_numbers:,
-        # Third-party reseller / partner managing the enterprise's phone numbers. Omit
-        # when the enterprise works directly with Telnyx.
-        agent: nil,
-        # Optional. When provided the rendered PDF embeds the signature image, printed
-        # name, and signed-at date. When absent the PDF is returned unsigned so the
-        # customer can sign externally and upload it via the Documents API.
-        signature: nil,
-        request_options: {}
-      )
-      end
-
       # Reference list of `document_type` values accepted by
       # `DirCreateRequest.documents[].document_type` and the infringement-contest
       # endpoint. Each entry has a stable `short_name` (used in API calls) and a
@@ -223,9 +183,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::DirListInfringementClaimsResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::InfringementClaim]
         )
       end
       def list_infringement_claims(
@@ -235,6 +193,42 @@ module Telnyx
         page_number: nil,
         # Items per page. Maximum 250; values above are clamped to 250.
         page_size: nil,
+        request_options: {}
+      )
+      end
+
+      # Generate a pre-filled Letter of Authorization (LOA) PDF for a DIR. Enterprise
+      # identity (legal name, DBA, address, contact, website, tax id) and the DIR
+      # display name are read server-side; the caller supplies the telephone numbers to
+      # authorize, an optional Authorized Agent block, and an optional drawn signature.
+      #
+      # When `signature` is omitted the PDF is returned unsigned so the customer can
+      # sign it externally and upload it via the Documents API. When `signature` is
+      # present the PDF embeds the supplied image, printed name, and signed-at date.
+      #
+      # Returns `application/pdf`.
+      sig do
+        params(
+          dir_id: String,
+          phone_numbers: T::Array[String],
+          agent: Telnyx::Enterprises::Reputation::AgentInput::OrHash,
+          signature: Telnyx::DirNewLoaParams::Signature::OrHash,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(StringIO)
+      end
+      def new_loa(
+        # The DIR id.
+        dir_id,
+        # Telephone numbers to authorize on the DIR, in `+E164` format (`+` followed by
+        # 10-15 digits). Max 15 per request.
+        phone_numbers:,
+        # Third-party reseller / partner managing the enterprise's phone numbers. Omit
+        # when the enterprise works directly with Telnyx.
+        agent: nil,
+        # Optional. When provided the rendered PDF embeds the signature image, printed
+        # name, and signed-at date. When absent the PDF is returned unsigned so the
+        # customer can sign externally and upload it via the Documents API.
+        signature: nil,
         request_options: {}
       )
       end
@@ -251,7 +245,7 @@ module Telnyx
         params(
           dir_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::DirSubmitResponse)
+        ).returns(Telnyx::DirWrapped)
       end
       def submit(
         # The DIR id. Lowercase UUID.
@@ -280,13 +274,10 @@ module Telnyx
           infringement_resolution_notes: String,
           call_reasons: T.nilable(T::Array[String]),
           display_name: T.nilable(String),
-          documents:
-            T.nilable(
-              T::Array[Telnyx::DirUpdateInfringementParams::Document::OrHash]
-            ),
+          documents: T.nilable(T::Array[Telnyx::Document::OrHash]),
           logo_url: T.nilable(String),
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::DirUpdateInfringementResponse)
+        ).returns(Telnyx::DirWrapped)
       end
       def update_infringement(
         # The DIR id. Lowercase UUID.

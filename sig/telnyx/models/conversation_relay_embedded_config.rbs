@@ -1,0 +1,185 @@
+module Telnyx
+  module Models
+    type conversation_relay_embedded_config =
+      {
+        url: String,
+        custom_parameters: ::Hash[Symbol, top],
+        dtmf_detection: bool,
+        greeting: String,
+        interruptible: Telnyx::Models::Calls::conversation_relay_interruptible,
+        interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible,
+        interruption_settings: Telnyx::ConversationRelayInterruptionSettings,
+        language: String,
+        languages: ::Array[Telnyx::ConversationRelayLanguage],
+        provider: String,
+        structured_provider: ::Hash[Symbol, top],
+        transcription_engine: Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine,
+        transcription_engine_config: ::Hash[Symbol, top],
+        tts_provider: String,
+        voice: String,
+        voice_settings: Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings
+      }
+
+    class ConversationRelayEmbeddedConfig < Telnyx::Internal::Type::BaseModel
+      attr_accessor url: String
+
+      attr_reader custom_parameters: ::Hash[Symbol, top]?
+
+      def custom_parameters=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader dtmf_detection: bool?
+
+      def dtmf_detection=: (bool) -> bool
+
+      attr_reader greeting: String?
+
+      def greeting=: (String) -> String
+
+      attr_reader interruptible: Telnyx::Models::Calls::conversation_relay_interruptible?
+
+      def interruptible=: (
+        Telnyx::Models::Calls::conversation_relay_interruptible
+      ) -> Telnyx::Models::Calls::conversation_relay_interruptible
+
+      attr_reader interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible?
+
+      def interruptible_greeting=: (
+        Telnyx::Models::Calls::conversation_relay_interruptible
+      ) -> Telnyx::Models::Calls::conversation_relay_interruptible
+
+      attr_reader interruption_settings: Telnyx::ConversationRelayInterruptionSettings?
+
+      def interruption_settings=: (
+        Telnyx::ConversationRelayInterruptionSettings
+      ) -> Telnyx::ConversationRelayInterruptionSettings
+
+      attr_reader language: String?
+
+      def language=: (String) -> String
+
+      attr_reader languages: ::Array[Telnyx::ConversationRelayLanguage]?
+
+      def languages=: (
+        ::Array[Telnyx::ConversationRelayLanguage]
+      ) -> ::Array[Telnyx::ConversationRelayLanguage]
+
+      attr_reader provider: String?
+
+      def provider=: (String) -> String
+
+      attr_reader structured_provider: ::Hash[Symbol, top]?
+
+      def structured_provider=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader transcription_engine: Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine?
+
+      def transcription_engine=: (
+        Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine
+      ) -> Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine
+
+      attr_reader transcription_engine_config: ::Hash[Symbol, top]?
+
+      def transcription_engine_config=: (
+        ::Hash[Symbol, top]
+      ) -> ::Hash[Symbol, top]
+
+      attr_reader tts_provider: String?
+
+      def tts_provider=: (String) -> String
+
+      attr_reader voice: String?
+
+      def voice=: (String) -> String
+
+      attr_reader voice_settings: Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings?
+
+      def voice_settings=: (
+        Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings
+      ) -> Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings
+
+      def initialize: (
+        url: String,
+        ?custom_parameters: ::Hash[Symbol, top],
+        ?dtmf_detection: bool,
+        ?greeting: String,
+        ?interruptible: Telnyx::Models::Calls::conversation_relay_interruptible,
+        ?interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible,
+        ?interruption_settings: Telnyx::ConversationRelayInterruptionSettings,
+        ?language: String,
+        ?languages: ::Array[Telnyx::ConversationRelayLanguage],
+        ?provider: String,
+        ?structured_provider: ::Hash[Symbol, top],
+        ?transcription_engine: Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine,
+        ?transcription_engine_config: ::Hash[Symbol, top],
+        ?tts_provider: String,
+        ?voice: String,
+        ?voice_settings: Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings
+      ) -> void
+
+      def to_hash: -> {
+        url: String,
+        custom_parameters: ::Hash[Symbol, top],
+        dtmf_detection: bool,
+        greeting: String,
+        interruptible: Telnyx::Models::Calls::conversation_relay_interruptible,
+        interruptible_greeting: Telnyx::Models::Calls::conversation_relay_interruptible,
+        interruption_settings: Telnyx::ConversationRelayInterruptionSettings,
+        language: String,
+        languages: ::Array[Telnyx::ConversationRelayLanguage],
+        provider: String,
+        structured_provider: ::Hash[Symbol, top],
+        transcription_engine: Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine,
+        transcription_engine_config: ::Hash[Symbol, top],
+        tts_provider: String,
+        voice: String,
+        voice_settings: Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings
+      }
+
+      type transcription_engine =
+        :Google
+        | :Telnyx
+        | :Deepgram
+        | :Azure
+        | :xAI
+        | :AssemblyAI
+        | :Speechmatics
+        | :Soniox
+        | :A
+        | :B
+
+      module TranscriptionEngine
+        extend Telnyx::Internal::Type::Enum
+
+        GOOGLE: :Google
+        TELNYX: :Telnyx
+        DEEPGRAM: :Deepgram
+        AZURE: :Azure
+        X_AI: :xAI
+        ASSEMBLY_AI: :AssemblyAI
+        SPEECHMATICS: :Speechmatics
+        SONIOX: :Soniox
+        A: :A
+        B: :B
+
+        def self?.values: -> ::Array[Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine]
+      end
+
+      type voice_settings =
+        Telnyx::Calls::ElevenLabsVoiceSettings
+        | Telnyx::Calls::TelnyxVoiceSettings
+        | Telnyx::Calls::AwsVoiceSettings
+        | Telnyx::MinimaxVoiceSettings
+        | Telnyx::AzureVoiceSettings
+        | Telnyx::RimeVoiceSettings
+        | Telnyx::ResembleVoiceSettings
+        | Telnyx::InworldVoiceSettings
+        | Telnyx::XaiVoiceSettings
+
+      module VoiceSettings
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings]
+      end
+    end
+  end
+end

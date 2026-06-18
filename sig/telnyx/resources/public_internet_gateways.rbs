@@ -2,9 +2,7 @@ module Telnyx
   module Resources
     class PublicInternetGateways
       def create: (
-        ?name: String,
-        ?network_id: String,
-        ?region_code: String,
+        body: Telnyx::PublicInternetGatewayCreateParams::Body,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::PublicInternetGatewayCreateResponse
 
@@ -18,7 +16,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PublicInternetGatewayListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PublicInternetGatewayRead]
 
       def delete: (
         String id,

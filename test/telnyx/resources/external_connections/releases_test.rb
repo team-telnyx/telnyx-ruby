@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::ExternalConnections::ReleasesTest < Telnyx::Test:
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data | nil
+        data: Telnyx::ExternalConnections::Release | nil
       }
     end
   end
@@ -36,14 +36,14 @@ class Telnyx::Test::Resources::ExternalConnections::ReleasesTest < Telnyx::Test:
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::ExternalConnections::ReleaseListResponse
+      row => Telnyx::ExternalConnections::Release
     end
 
     assert_pattern do
       row => {
         created_at: String | nil,
         error_message: String | nil,
-        status: Telnyx::Models::ExternalConnections::ReleaseListResponse::Status | nil,
+        status: Telnyx::ExternalConnections::Release::Status | nil,
         telephone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::TnReleaseEntry]) | nil,
         tenant_id: String | nil,
         ticket_id: String | nil

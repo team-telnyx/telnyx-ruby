@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::PortingOrders::PhoneNumberConfigurationsTest < Te
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::PortingOrders::PhoneNumberConfigurationCreateResponse::Data]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PortingOrders::PortingPhoneNumberConfiguration]) | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::PortingOrders::PhoneNumberConfigurationsTest < Te
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::PortingOrders::PhoneNumberConfigurationListResponse
+      row => Telnyx::PortingOrders::PortingPhoneNumberConfiguration
     end
 
     assert_pattern do

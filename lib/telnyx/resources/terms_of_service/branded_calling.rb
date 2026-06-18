@@ -18,14 +18,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse]
+        # @return [Telnyx::Models::TermsOfService::TosAgreementWrapped]
         #
         # @see Telnyx::Models::TermsOfService::BrandedCallingAgreeParams
         def agree(params = {})
           @client.request(
             method: :post,
             path: "terms_of_service/branded_calling/agree",
-            model: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse,
+            model: Telnyx::TermsOfService::TosAgreementWrapped,
             options: params[:request_options]
           )
         end

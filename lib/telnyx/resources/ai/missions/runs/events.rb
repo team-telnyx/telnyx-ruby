@@ -58,7 +58,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsResponse]
+            # @return [Telnyx::Models::AI::Missions::Runs::EventResponse]
             #
             # @see Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsParams
             def get_event_details(event_id, params)
@@ -74,7 +74,7 @@ module Telnyx
               @client.request(
                 method: :get,
                 path: ["ai/missions/%1$s/runs/%2$s/events/%3$s", mission_id, run_id, event_id],
-                model: Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsResponse,
+                model: Telnyx::AI::Missions::Runs::EventResponse,
                 options: options
               )
             end
@@ -89,7 +89,7 @@ module Telnyx
             #
             # @param summary [String] Body param
             #
-            # @param type [Symbol, Telnyx::Models::AI::Missions::Runs::EventLogParams::Type] Body param
+            # @param type [Symbol, Telnyx::Models::AI::Missions::Runs::EventType] Body param
             #
             # @param agent_id [String] Body param
             #
@@ -101,7 +101,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::AI::Missions::Runs::EventLogResponse]
+            # @return [Telnyx::Models::AI::Missions::Runs::EventResponse]
             #
             # @see Telnyx::Models::AI::Missions::Runs::EventLogParams
             def log(run_id, params)
@@ -114,7 +114,7 @@ module Telnyx
                 method: :post,
                 path: ["ai/missions/%1$s/runs/%2$s/events", mission_id, run_id],
                 body: parsed,
-                model: Telnyx::Models::AI::Missions::Runs::EventLogResponse,
+                model: Telnyx::AI::Missions::Runs::EventResponse,
                 options: options
               )
             end

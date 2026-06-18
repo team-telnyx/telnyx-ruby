@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    type dir_list =
+      {
+        data: ::Array[Telnyx::DirAPI],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      }
+
+    class DirList < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::DirAPI]
+
+      attr_accessor meta: Telnyx::BrandedCallingPaginationMeta
+
+      def initialize: (
+        data: ::Array[Telnyx::DirAPI],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::DirAPI],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      }
+    end
+  end
+end

@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    type quality = :normal | :high | :very_high | :ultra_light | :ultra_dark
+
+    module Quality
+      extend Telnyx::Internal::Type::Enum
+
+      NORMAL: :normal
+      HIGH: :high
+      VERY_HIGH: :very_high
+      ULTRA_LIGHT: :ultra_light
+      ULTRA_DARK: :ultra_dark
+
+      def self?.values: -> ::Array[Telnyx::Models::quality]
+    end
+  end
+end

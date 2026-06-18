@@ -20,11 +20,11 @@ module Telnyx
         #
         # @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
-        # @param status [Symbol, Telnyx::Models::Dir::PhoneNumberListParams::Status] Filter by phone-number status.
+        # @param status [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus] Filter by phone-number status.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Dir::PhoneNumberListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Dir::DirPhoneNumber>]
         #
         # @see Telnyx::Models::Dir::PhoneNumberListParams
         def list(dir_id, params = {})
@@ -35,7 +35,7 @@ module Telnyx
             path: ["dir/%1$s/phone_numbers", dir_id],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Dir::PhoneNumberListResponse,
+            model: Telnyx::Dir::DirPhoneNumber,
             options: options
           )
         end
@@ -54,7 +54,7 @@ module Telnyx
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
-        # @param documents [Array<Telnyx::Models::Dir::PhoneNumberAddParams::Document>] Supporting documents covering this batch. At least one entry with `document_type
+        # @param documents [Array<Telnyx::Models::Document>] Supporting documents covering this batch. At least one entry with `document_type
         #
         # @param phone_numbers [Array<String>] 1–15 phone numbers in E.164 format. 10-digit US numbers are auto-prefixed with `
         #

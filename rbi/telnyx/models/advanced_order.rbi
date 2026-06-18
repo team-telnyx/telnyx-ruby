@@ -7,6 +7,12 @@ module Telnyx
         T.type_alias { T.any(Telnyx::AdvancedOrder, Telnyx::Internal::AnyHash) }
 
       sig { returns(T.nilable(String)) }
+      attr_reader :id
+
+      sig { params(id: String).void }
+      attr_writer :id
+
+      sig { returns(T.nilable(String)) }
       attr_reader :area_code
 
       sig { params(area_code: String).void }
@@ -31,7 +37,9 @@ module Telnyx
       attr_writer :customer_reference
 
       sig do
-        returns(T.nilable(T::Array[Telnyx::AdvancedOrder::Feature::OrSymbol]))
+        returns(
+          T.nilable(T::Array[Telnyx::AdvancedOrder::Feature::TaggedSymbol])
+        )
       end
       attr_reader :features
 
@@ -42,14 +50,25 @@ module Telnyx
       end
       attr_writer :features
 
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :orders
+
+      sig { params(orders: T::Array[String]).void }
+      attr_writer :orders
+
       sig do
-        returns(T.nilable(Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol))
+        returns(
+          T.nilable(
+            T::Array[Telnyx::AdvancedOrder::PhoneNumberType::TaggedSymbol]
+          )
+        )
       end
       attr_reader :phone_number_type
 
       sig do
         params(
-          phone_number_type: Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol
+          phone_number_type:
+            T::Array[Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol]
         ).void
       end
       attr_writer :phone_number_type
@@ -60,7 +79,7 @@ module Telnyx
       sig { params(quantity: Integer).void }
       attr_writer :quantity
 
-      # The ID of the requirement group to associate with this advanced order
+      # The ID of the requirement group associated with this advanced order
       sig { returns(T.nilable(String)) }
       attr_reader :requirement_group_id
 
@@ -68,41 +87,64 @@ module Telnyx
       attr_writer :requirement_group_id
 
       sig do
+        returns(
+          T.nilable(T::Array[Telnyx::AdvancedOrder::Status::TaggedSymbol])
+        )
+      end
+      attr_reader :status
+
+      sig do
+        params(status: T::Array[Telnyx::AdvancedOrder::Status::OrSymbol]).void
+      end
+      attr_writer :status
+
+      sig do
         params(
+          id: String,
           area_code: String,
           comments: String,
           country_code: String,
           customer_reference: String,
           features: T::Array[Telnyx::AdvancedOrder::Feature::OrSymbol],
-          phone_number_type: Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol,
+          orders: T::Array[String],
+          phone_number_type:
+            T::Array[Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol],
           quantity: Integer,
-          requirement_group_id: String
+          requirement_group_id: String,
+          status: T::Array[Telnyx::AdvancedOrder::Status::OrSymbol]
         ).returns(T.attached_class)
       end
       def self.new(
+        id: nil,
         area_code: nil,
         comments: nil,
         country_code: nil,
         customer_reference: nil,
         features: nil,
+        orders: nil,
         phone_number_type: nil,
         quantity: nil,
-        # The ID of the requirement group to associate with this advanced order
-        requirement_group_id: nil
+        # The ID of the requirement group associated with this advanced order
+        requirement_group_id: nil,
+        status: nil
       )
       end
 
       sig do
         override.returns(
           {
+            id: String,
             area_code: String,
             comments: String,
             country_code: String,
             customer_reference: String,
-            features: T::Array[Telnyx::AdvancedOrder::Feature::OrSymbol],
-            phone_number_type: Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol,
+            features: T::Array[Telnyx::AdvancedOrder::Feature::TaggedSymbol],
+            orders: T::Array[String],
+            phone_number_type:
+              T::Array[Telnyx::AdvancedOrder::PhoneNumberType::TaggedSymbol],
             quantity: Integer,
-            requirement_group_id: String
+            requirement_group_id: String,
+            status: T::Array[Telnyx::AdvancedOrder::Status::TaggedSymbol]
           }
         )
       end
@@ -161,6 +203,27 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::AdvancedOrder::PhoneNumberType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::AdvancedOrder::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        PENDING = T.let(:pending, Telnyx::AdvancedOrder::Status::TaggedSymbol)
+        PROCESSING =
+          T.let(:processing, Telnyx::AdvancedOrder::Status::TaggedSymbol)
+        ORDERED = T.let(:ordered, Telnyx::AdvancedOrder::Status::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::AdvancedOrder::Status::TaggedSymbol]
           )
         end
         def self.values

@@ -42,7 +42,7 @@ module Telnyx
         sig do
           params(
             conversation: String,
-            input: T.anything,
+            input: T::Hash[Symbol, T.anything],
             instructions: String,
             model: String,
             stream: T::Boolean,
@@ -88,7 +88,7 @@ module Telnyx
         # `client.models.list()` to retrieve the same payload.
         sig do
           params(request_options: Telnyx::RequestOptions::OrHash).returns(
-            Telnyx::Models::AI::OpenAIListModelsResponse
+            Telnyx::ModelsResponse
           )
         end
         def list_models(request_options: {})
