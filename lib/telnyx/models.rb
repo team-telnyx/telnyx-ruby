@@ -87,6 +87,8 @@ module Telnyx
 
   AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
 
+  AISearchConversationHistoriesParams = Telnyx::Models::AISearchConversationHistoriesParams
+
   AISummarizeParams = Telnyx::Models::AISummarizeParams
 
   AlphanumericSenderID = Telnyx::Models::AlphanumericSenderID

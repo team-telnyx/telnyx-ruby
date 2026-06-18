@@ -47,6 +47,8 @@ module Telnyx
 
   class AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
 
+  class AISearchConversationHistoriesParams = Telnyx::Models::AISearchConversationHistoriesParams
+
   class AISummarizeParams = Telnyx::Models::AISummarizeParams
 
   class AlphanumericSenderID = Telnyx::Models::AlphanumericSenderID
