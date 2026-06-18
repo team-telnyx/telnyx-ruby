@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.131.0 (2026-06-18)
+
+Full Changelog: [v5.130.1...v5.131.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.130.1...v5.131.0)
+
+### Features
+
+* add transcriptions-search API spec (dev/external) ([b1cda17](https://github.com/team-telnyx/telnyx-ruby/commit/b1cda17c4f29a9398b7a785b2e8cd3645ff80b63))
+
 ## 5.130.1 (2026-06-16)
 
 Full Changelog: [v5.130.0...v5.130.1](https://github.com/team-telnyx/telnyx-ruby/compare/v5.130.0...v5.130.1)
