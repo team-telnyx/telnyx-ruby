@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.147.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.131.0...v5.147.0) (2026-06-18)
+
+
+### Chores
+
+* add self-hosted release-please pipeline ([#271](https://github.com/team-telnyx/telnyx-ruby/issues/271)) ([f212af2](https://github.com/team-telnyx/telnyx-ruby/commit/f212af296539b9cd840a8dc9c76f2b75562d08f8))
+
 ## 5.131.0 (2026-06-18)
 
 Full Changelog: [v5.130.1...v5.131.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.130.1...v5.131.0)
