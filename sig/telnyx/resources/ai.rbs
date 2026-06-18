@@ -34,6 +34,24 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::AIRetrieveModelsResponse
 
+      def search_conversation_histories: (
+        q: String,
+        record_type: Telnyx::Models::AISearchConversationHistoriesParams::record_type,
+        ?filter_document_id: String,
+        ?filter_ingested_at_gte: Time,
+        ?filter_ingested_at_lte: Time,
+        ?filter_record_created_at_gte: Time,
+        ?filter_record_created_at_lte: Time,
+        ?filter_record_id: String,
+        ?filter_region_in: String,
+        ?filter_retention: String,
+        ?filter_user_id: String,
+        ?min_score: Float,
+        ?region: Telnyx::Models::AISearchConversationHistoriesParams::region,
+        ?top_k: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AISearchConversationHistoriesResponse
+
       def summarize: (
         bucket: String,
         filename: String,

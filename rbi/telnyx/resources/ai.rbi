@@ -2,7 +2,6 @@
 
 module Telnyx
   module Resources
-    # Generate text with LLMs
     class AI
       # Configure AI assistant specifications
       sig { returns(Telnyx::Resources::AI::Assistants) }
@@ -76,6 +75,123 @@ module Telnyx
         )
       end
       def retrieve_models(request_options: {})
+      end
+
+      # Performs semantic vector search across conversation history records.
+      #
+      # **How it works:**
+      #
+      # 1. The query text is embedded into a 1024-dimensional vector using the
+      #    multilingual-e5-large model.
+      # 2. The vector is sent to regional OpenSearch clusters for kNN search using HNSW
+      #    cosine similarity.
+      # 3. When no region is specified, all regions are queried in parallel (fan-out)
+      #    and results are merged by score.
+      # 4. Results are ranked by cosine similarity score (descending) and truncated to
+      #    `top_k`.
+      #
+      # **Authentication:** Requires a Telnyx API key via `Authorization: Bearer <key>`.
+      # Results are automatically scoped to the caller's organization —
+      # `organization_id` is injected from the auth token and cannot be overridden.
+      #
+      # **Chunking:** Records are split into chunks of up to 480 tokens with 64-token
+      # overlap at ingestion time. Each search result represents a single chunk, with
+      # `chunk_index` and `chunk_total` indicating its position within the original
+      # record.
+      #
+      # **Filtering:** Use `filter[field][operator]=value` query parameters to narrow
+      # results before vector search.
+      #
+      # Top-level filterable fields: `user_id`, `record_type`, `region`, `document_id`,
+      # `record_id`, `record_created_at`, `ingested_at`, `retention`
+      #
+      # Note: `retention` is filter-only — it can be used to narrow results but is not
+      # returned in the response body.
+      #
+      # Metadata fields: any field not in the list above is resolved to
+      # `data.metadata.<field>` in OpenSearch (e.g., `filter[language]=en` →
+      # `data.metadata.language`).
+      #
+      # Supported filter operators:
+      #
+      # - `eq` — exact match (default when no operator specified)
+      # - `in` — match any of comma-separated values
+      # - `gte`, `gt`, `lte`, `lt` — range comparisons (useful for date filtering)
+      # - `contains` — wildcard substring match
+      #
+      # **Examples:**
+      #
+      # ```
+      # GET /v2/ai/conversation_histories?q=billing+issue&record_type=voice&top_k=10
+      # GET /v2/ai/conversation_histories?q=setup+guide&record_type=knowledge_base&region=USA&min_score=0.5
+      # GET /v2/ai/conversation_histories?q=refund&record_type=voice&filter[record_created_at][gte]=2026-01-01T00:00:00Z
+      # GET /v2/ai/conversation_histories?q=outage&record_type=voice&filter[region][in]=USA,DEU
+      # GET /v2/ai/conversation_histories?q=hold+time&record_type=voice&filter[language]=en
+      # ```
+      sig do
+        params(
+          q: String,
+          record_type:
+            Telnyx::AISearchConversationHistoriesParams::RecordType::OrSymbol,
+          filter_document_id: String,
+          filter_ingested_at_gte: Time,
+          filter_ingested_at_lte: Time,
+          filter_record_created_at_gte: Time,
+          filter_record_created_at_lte: Time,
+          filter_record_id: String,
+          filter_region_in: String,
+          filter_retention: String,
+          filter_user_id: String,
+          min_score: Float,
+          region: Telnyx::AISearchConversationHistoriesParams::Region::OrSymbol,
+          top_k: Integer,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::AISearchConversationHistoriesResponse)
+      end
+      def search_conversation_histories(
+        # Natural language search query. The text is embedded into a 1024-dimensional
+        # vector and compared against indexed record chunks using kNN cosine similarity.
+        q:,
+        # The type of records to search. Each record type is stored in a separate vector
+        # index.
+        record_type:,
+        # Filter by document identifier (exact match). Populated for knowledge_base
+        # records.
+        filter_document_id: nil,
+        # Only include records ingested (chunked, embedded, and indexed) on or after this
+        # ISO 8601 timestamp.
+        filter_ingested_at_gte: nil,
+        # Only include records ingested (chunked, embedded, and indexed) on or before this
+        # ISO 8601 timestamp.
+        filter_ingested_at_lte: nil,
+        # Only include records whose original creation time is on or after this ISO 8601
+        # timestamp.
+        filter_record_created_at_gte: nil,
+        # Only include records whose original creation time is on or before this ISO 8601
+        # timestamp.
+        filter_record_created_at_lte: nil,
+        # Filter to chunks belonging to a specific parent record (exact match).
+        filter_record_id: nil,
+        # Filter by the region stored on the record. Comma-separated to match multiple
+        # regions (USA, DEU, AUS, UAE). Distinct from the `region` parameter, which
+        # selects which cluster(s) are queried.
+        filter_region_in: nil,
+        # Filter by retention policy (exact match). Filter-only: not returned in the
+        # response body.
+        filter_retention: nil,
+        # Filter to records owned by a specific user (exact match).
+        filter_user_id: nil,
+        # Minimum cosine similarity score threshold (0.0 to 1.0). Results below this
+        # threshold are excluded.
+        min_score: nil,
+        # Restrict search to a specific region's OpenSearch cluster. When omitted, all
+        # regions are queried in parallel (fan-out) and results are merged by cosine
+        # similarity score.
+        region: nil,
+        # Maximum number of results to return. Defaults to 20, maximum 100.
+        top_k: nil,
+        request_options: {}
+      )
       end
 
       # Generate a summary of a file's contents.
