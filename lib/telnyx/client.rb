@@ -70,7 +70,6 @@ module Telnyx
     # @return [Telnyx::Resources::AdvancedOrders]
     attr_reader :advanced_orders
 
-    # Generate text with LLMs
     # @return [Telnyx::Resources::AI]
     attr_reader :ai
 

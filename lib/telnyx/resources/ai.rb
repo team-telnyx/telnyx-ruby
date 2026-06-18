@@ -2,7 +2,6 @@
 
 module Telnyx
   module Resources
-    # Generate text with LLMs
     class AI
       # Configure AI assistant specifications
       # @return [Telnyx::Resources::AI::Assistants]
@@ -99,6 +98,118 @@ module Telnyx
           path: "ai/models",
           model: Telnyx::Models::AIRetrieveModelsResponse,
           options: params[:request_options]
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::AISearchConversationHistoriesParams} for more details.
+      #
+      # Performs semantic vector search across conversation history records.
+      #
+      # **How it works:**
+      #
+      # 1. The query text is embedded into a 1024-dimensional vector using the
+      #    multilingual-e5-large model.
+      # 2. The vector is sent to regional OpenSearch clusters for kNN search using HNSW
+      #    cosine similarity.
+      # 3. When no region is specified, all regions are queried in parallel (fan-out)
+      #    and results are merged by score.
+      # 4. Results are ranked by cosine similarity score (descending) and truncated to
+      #    `top_k`.
+      #
+      # **Authentication:** Requires a Telnyx API key via `Authorization: Bearer <key>`.
+      # Results are automatically scoped to the caller's organization —
+      # `organization_id` is injected from the auth token and cannot be overridden.
+      #
+      # **Chunking:** Records are split into chunks of up to 480 tokens with 64-token
+      # overlap at ingestion time. Each search result represents a single chunk, with
+      # `chunk_index` and `chunk_total` indicating its position within the original
+      # record.
+      #
+      # **Filtering:** Use `filter[field][operator]=value` query parameters to narrow
+      # results before vector search.
+      #
+      # Top-level filterable fields: `user_id`, `record_type`, `region`, `document_id`,
+      # `record_id`, `record_created_at`, `ingested_at`, `retention`
+      #
+      # Note: `retention` is filter-only — it can be used to narrow results but is not
+      # returned in the response body.
+      #
+      # Metadata fields: any field not in the list above is resolved to
+      # `data.metadata.<field>` in OpenSearch (e.g., `filter[language]=en` →
+      # `data.metadata.language`).
+      #
+      # Supported filter operators:
+      #
+      # - `eq` — exact match (default when no operator specified)
+      # - `in` — match any of comma-separated values
+      # - `gte`, `gt`, `lte`, `lt` — range comparisons (useful for date filtering)
+      # - `contains` — wildcard substring match
+      #
+      # **Examples:**
+      #
+      # ```
+      # GET /v2/ai/conversation_histories?q=billing+issue&record_type=voice&top_k=10
+      # GET /v2/ai/conversation_histories?q=setup+guide&record_type=knowledge_base&region=USA&min_score=0.5
+      # GET /v2/ai/conversation_histories?q=refund&record_type=voice&filter[record_created_at][gte]=2026-01-01T00:00:00Z
+      # GET /v2/ai/conversation_histories?q=outage&record_type=voice&filter[region][in]=USA,DEU
+      # GET /v2/ai/conversation_histories?q=hold+time&record_type=voice&filter[language]=en
+      # ```
+      #
+      # @overload search_conversation_histories(q:, record_type:, filter_document_id: nil, filter_ingested_at_gte: nil, filter_ingested_at_lte: nil, filter_record_created_at_gte: nil, filter_record_created_at_lte: nil, filter_record_id: nil, filter_region_in: nil, filter_retention: nil, filter_user_id: nil, min_score: nil, region: nil, top_k: nil, request_options: {})
+      #
+      # @param q [String] Natural language search query. The text is embedded into a 1024-dimensional vect
+      #
+      # @param record_type [Symbol, Telnyx::Models::AISearchConversationHistoriesParams::RecordType] The type of records to search. Each record type is stored in a separate vector i
+      #
+      # @param filter_document_id [String] Filter by document identifier (exact match). Populated for knowledge_base record
+      #
+      # @param filter_ingested_at_gte [Time] Only include records ingested (chunked, embedded, and indexed) on or after this
+      #
+      # @param filter_ingested_at_lte [Time] Only include records ingested (chunked, embedded, and indexed) on or before this
+      #
+      # @param filter_record_created_at_gte [Time] Only include records whose original creation time is on or after this ISO 8601 t
+      #
+      # @param filter_record_created_at_lte [Time] Only include records whose original creation time is on or before this ISO 8601
+      #
+      # @param filter_record_id [String] Filter to chunks belonging to a specific parent record (exact match).
+      #
+      # @param filter_region_in [String] Filter by the region stored on the record. Comma-separated to match multiple reg
+      #
+      # @param filter_retention [String] Filter by retention policy (exact match). Filter-only: not returned in the respo
+      #
+      # @param filter_user_id [String] Filter to records owned by a specific user (exact match).
+      #
+      # @param min_score [Float] Minimum cosine similarity score threshold (0.0 to 1.0). Results below this thres
+      #
+      # @param region [Symbol, Telnyx::Models::AISearchConversationHistoriesParams::Region] Restrict search to a specific region's OpenSearch cluster. When omitted, all reg
+      #
+      # @param top_k [Integer] Maximum number of results to return. Defaults to 20, maximum 100.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::AISearchConversationHistoriesResponse]
+      #
+      # @see Telnyx::Models::AISearchConversationHistoriesParams
+      def search_conversation_histories(params)
+        parsed, options = Telnyx::AISearchConversationHistoriesParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: "ai/conversation_histories",
+          query: query.transform_keys(
+            filter_document_id: "filter[document_id]",
+            filter_ingested_at_gte: "filter[ingested_at][gte]",
+            filter_ingested_at_lte: "filter[ingested_at][lte]",
+            filter_record_created_at_gte: "filter[record_created_at][gte]",
+            filter_record_created_at_lte: "filter[record_created_at][lte]",
+            filter_record_id: "filter[record_id]",
+            filter_region_in: "filter[region][in]",
+            filter_retention: "filter[retention]",
+            filter_user_id: "filter[user_id]"
+          ),
+          model: Telnyx::Models::AISearchConversationHistoriesResponse,
+          options: options
         )
       end
 

@@ -65,7 +65,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::AdvancedOrders) }
     attr_reader :advanced_orders
 
-    # Generate text with LLMs
     sig { returns(Telnyx::Resources::AI) }
     attr_reader :ai
 
