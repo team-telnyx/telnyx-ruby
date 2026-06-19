@@ -126,6 +126,7 @@ jobs:
             release-please-config.json \
             .release-please-manifest.json \
             bin/check-release-environment \
+            rbi/telnyx/lib/ \
             2>/dev/null || true
 
       - name: Commit and push to prod next

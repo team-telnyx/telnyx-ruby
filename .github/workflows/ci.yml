@@ -15,16 +15,11 @@ on:
       - 'stl-preview-base/**'
 
 jobs:
-  build:
+  lint-rubocop:
     timeout-minutes: 10
-    name: build
-    permissions:
-      contents: read
-      id-token: write
-    runs-on: ${{ github.repository == 'stainless-sdks/telnyx-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
-    if: |-
-      github.repository == 'stainless-sdks/telnyx-ruby' &&
-      (github.event_name == 'push' || github.event.pull_request.head.repo.fork) && (github.event_name != 'push' || github.event.head_commit.message != 'codegen metadata')
+    name: lint (rubocop)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Set up Ruby
@@ -33,32 +28,32 @@ jobs:
           bundler-cache: false
       - run: |-
           bundle install
+      - name: Run rubocop
+        run: bundle exec rake lint:rubocop
 
-      - name: Get GitHub OIDC Token
-        if: |-
-          github.repository == 'stainless-sdks/telnyx-ruby' &&
-          !startsWith(github.ref, 'refs/heads/stl/')
-        id: github-oidc
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+  lint-steep:
+    timeout-minutes: 30
+    name: lint (steep)
+    runs-on: telnyx-2xlarge
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Fix tool cache permissions
+        run: sudo mkdir -p /opt/hostedtoolcache && sudo chmod 777 /opt/hostedtoolcache
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
-          script: core.setOutput('github_token', await core.getIDToken());
+          bundler-cache: false
+      - run: |-
+          bundle install
+      - name: Run steep
+        run: bundle exec steep check --jobs=4
 
-      - name: Build and upload gem artifacts
-        if: |-
-          github.repository == 'stainless-sdks/telnyx-ruby' &&
-          !startsWith(github.ref, 'refs/heads/stl/')
-        env:
-          URL: https://pkg.stainless.com/s
-          AUTH: ${{ steps.github-oidc.outputs.github_token }}
-          SHA: ${{ github.sha }}
-          PACKAGE_NAME: telnyx
-        run: ./scripts/utils/upload-artifact.sh
-  lint:
-    timeout-minutes: 60
-    name: lint
-    runs-on: ${{ github.repository == 'stainless-sdks/telnyx-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
-
+  lint-sorbet:
+    timeout-minutes: 20
+    name: lint (sorbet)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Set up Ruby
@@ -67,14 +62,14 @@ jobs:
           bundler-cache: false
       - run: |-
           bundle install
+      - name: Run sorbet
+        run: bundle exec rake typecheck:sorbet
 
-      - name: Run lints
-        run: ./scripts/lint
   test:
     timeout-minutes: 10
     name: test
-    runs-on: ${{ github.repository == 'stainless-sdks/telnyx-ruby' && 'depot-ubuntu-24.04' || 'ubuntu-latest' }}
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.fork
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Set up Ruby

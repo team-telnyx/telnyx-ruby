@@ -6,6 +6,21 @@ module Telnyx
       def initialize: -> void
 
       def to_hash: -> {  }
+
+      type cloud_provider =
+        :aws
+        | :azure
+        | :gce
+
+      module CloudProvider
+        extend Telnyx::Internal::Type::Enum
+
+        AWS: :aws
+        AZURE: :azure
+        GCE: :gce
+
+        def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectCreate::cloud_provider]
+      end
     end
   end
 end

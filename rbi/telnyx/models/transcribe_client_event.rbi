@@ -2,6 +2,6 @@
 
 module Telnyx
   module Models
-    TranscribeClientEvent = Telnyx::Internal::FileInput
+    TranscribeClientEvent = T.type_alias { Telnyx::Internal::FileInput }
   end
 end
