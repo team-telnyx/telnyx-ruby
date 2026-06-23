@@ -9,12 +9,12 @@ class Telnyx::Test::Resources::TermsOfService::AgreementsTest < Telnyx::Test::Re
     response = @telnyx.terms_of_service.agreements.retrieve("550e8400-e29b-41d4-a716-446655440000")
 
     assert_pattern do
-      response => Telnyx::Models::TermsOfService::AgreementRetrieveResponse
+      response => Telnyx::TermsOfService::TosAgreementWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::TermsOfService::AgreementRetrieveResponse::Data
+        data: Telnyx::TermsOfService::TosAgreement
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::TermsOfService::AgreementsTest < Telnyx::Test::Re
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::TermsOfService::AgreementListResponse
+      row => Telnyx::TermsOfService::TosAgreement
     end
 
     assert_pattern do
@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::TermsOfService::AgreementsTest < Telnyx::Test::Re
         id: String | nil,
         agreed_at: Time | nil,
         created_at: Time | nil,
-        product_type: Telnyx::Models::TermsOfService::AgreementListResponse::ProductType | nil,
+        product_type: Telnyx::TermsOfService::TosProductType | nil,
         terms_version: String | nil,
         version: String | nil
       }

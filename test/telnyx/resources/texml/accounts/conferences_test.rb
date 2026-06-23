@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
     response = @telnyx.texml.accounts.conferences.retrieve("conference_sid", account_sid: "account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse
+      response => Telnyx::Texml::Accounts::ConferenceResource
     end
 
     assert_pattern do
@@ -20,10 +20,10 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
         date_created: String | nil,
         date_updated: String | nil,
         friendly_name: String | nil,
-        reason_conference_ended: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::ReasonConferenceEnded | nil,
+        reason_conference_ended: Telnyx::Texml::Accounts::ConferenceResource::ReasonConferenceEnded | nil,
         region: String | nil,
         sid: String | nil,
-        status: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse::Status | nil,
+        status: Telnyx::Texml::Accounts::ConferenceResource::Status | nil,
         subresource_uris: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         uri: String | nil
       }
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
     response = @telnyx.texml.accounts.conferences.update("conference_sid", account_sid: "account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse
+      response => Telnyx::Texml::Accounts::ConferenceResource
     end
 
     assert_pattern do
@@ -47,10 +47,10 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
         date_created: String | nil,
         date_updated: String | nil,
         friendly_name: String | nil,
-        reason_conference_ended: Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse::ReasonConferenceEnded | nil,
+        reason_conference_ended: Telnyx::Texml::Accounts::ConferenceResource::ReasonConferenceEnded | nil,
         region: String | nil,
         sid: String | nil,
-        status: Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse::Status | nil,
+        status: Telnyx::Texml::Accounts::ConferenceResource::Status | nil,
         subresource_uris: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         uri: String | nil
       }
@@ -68,7 +68,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
 
     assert_pattern do
       response => {
-        conferences: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesResponse::Conference]) | nil,
+        conferences: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Texml::Accounts::ConferenceResource]) | nil,
         end_: Integer | nil,
         first_page_uri: String | nil,
         next_page_uri: String | nil,
@@ -115,7 +115,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
       )
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonResponse
+      response => Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
     end
 
     assert_pattern do

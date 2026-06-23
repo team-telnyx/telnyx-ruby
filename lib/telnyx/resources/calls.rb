@@ -63,7 +63,7 @@ module Telnyx
       #
       # @param conference_config [Telnyx::Models::CallDialParams::ConferenceConfig] Optional configuration parameters to dial new participant into a conference.
       #
-      # @param conversation_relay_config [Telnyx::Models::CallDialParams::ConversationRelayConfig] Starts a Conversation Relay session automatically when the answered/dialed call
+      # @param conversation_relay_config [Telnyx::Models::ConversationRelayEmbeddedConfig] Starts a Conversation Relay session automatically when the answered/dialed call
       #
       # @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP INVITE.
       #

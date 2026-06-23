@@ -7,16 +7,9 @@ module Telnyx
       # Create a new WireGuard Interface. Current limitation of 10 interfaces per user
       # can be created.
       #
-      # @overload create(region_code:, enable_sip_trunking: nil, name: nil, network_id: nil, request_options: {})
+      # @overload create(body:, request_options: {})
       #
-      # @param region_code [String] The region the interface should be deployed to.
-      #
-      # @param enable_sip_trunking [Boolean] Enable SIP traffic forwarding over VPN interface.
-      #
-      # @param name [String] A user specified name for the interface.
-      #
-      # @param network_id [String] The id of the network associated with the interface.
-      #
+      # @param body [Telnyx::Models::WireguardInterfaceCreateParams::Body]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::WireguardInterfaceCreateResponse]
@@ -27,7 +20,7 @@ module Telnyx
         @client.request(
           method: :post,
           path: "wireguard_interfaces",
-          body: parsed,
+          body: parsed[:body],
           model: Telnyx::Models::WireguardInterfaceCreateResponse,
           options: options
         )
@@ -68,7 +61,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardInterfaceListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardInterfaceRead>]
       #
       # @see Telnyx::Models::WireguardInterfaceListParams
       def list(params = {})
@@ -79,7 +72,7 @@ module Telnyx
           path: "wireguard_interfaces",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::WireguardInterfaceListResponse,
+          model: Telnyx::WireguardInterfaceRead,
           options: options
         )
       end

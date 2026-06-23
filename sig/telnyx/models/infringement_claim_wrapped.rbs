@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type infringement_claim_wrapped = { data: Telnyx::InfringementClaim }
+
+    class InfringementClaimWrapped < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::InfringementClaim
+
+      def initialize: (data: Telnyx::InfringementClaim) -> void
+
+      def to_hash: -> { data: Telnyx::InfringementClaim }
+    end
+  end
+end

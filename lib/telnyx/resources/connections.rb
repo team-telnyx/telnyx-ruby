@@ -42,7 +42,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ConnectionListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Connection>]
       #
       # @see Telnyx::Models::ConnectionListParams
       def list(params = {})
@@ -53,7 +53,7 @@ module Telnyx
           path: "connections",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::ConnectionListResponse,
+          model: Telnyx::Connection,
           options: options
         )
       end

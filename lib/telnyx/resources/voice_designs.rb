@@ -37,7 +37,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::VoiceDesignCreateResponse]
+      # @return [Telnyx::Models::VoiceDesignResponse]
       #
       # @see Telnyx::Models::VoiceDesignCreateParams
       def create(params)
@@ -46,7 +46,7 @@ module Telnyx
           method: :post,
           path: "voice_designs",
           body: parsed,
-          model: Telnyx::Models::VoiceDesignCreateResponse,
+          model: Telnyx::VoiceDesignResponse,
           options: options
         )
       end
@@ -63,7 +63,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::VoiceDesignRetrieveResponse]
+      # @return [Telnyx::Models::VoiceDesignResponse]
       #
       # @see Telnyx::Models::VoiceDesignRetrieveParams
       def retrieve(id, params = {})
@@ -73,7 +73,7 @@ module Telnyx
           method: :get,
           path: ["voice_designs/%1$s", id],
           query: query,
-          model: Telnyx::Models::VoiceDesignRetrieveResponse,
+          model: Telnyx::VoiceDesignResponse,
           options: options
         )
       end
@@ -93,7 +93,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VoiceDesignListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VoiceDesignSummaryData>]
       #
       # @see Telnyx::Models::VoiceDesignListParams
       def list(params = {})
@@ -108,7 +108,7 @@ module Telnyx
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::VoiceDesignListResponse,
+          model: Telnyx::VoiceDesignSummaryData,
           options: options
         )
       end

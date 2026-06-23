@@ -28,7 +28,7 @@ module Telnyx
           # Customer-facing status of a remediation request.
           sig do
             returns(
-              Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol
+              Telnyx::Enterprises::Reputation::RemediationStatus::TaggedSymbol
             )
           end
           attr_accessor :status
@@ -51,7 +51,7 @@ module Telnyx
               created_at: Time,
               phone_numbers_count: Integer,
               status:
-                Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::OrSymbol,
+                Telnyx::Enterprises::Reputation::RemediationStatus::OrSymbol,
               updated_at: Time,
               tier1_completed_at: T.nilable(Time),
               tier2_completed_at: T.nilable(Time)
@@ -78,7 +78,7 @@ module Telnyx
                 created_at: Time,
                 phone_numbers_count: Integer,
                 status:
-                  Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol,
+                  Telnyx::Enterprises::Reputation::RemediationStatus::TaggedSymbol,
                 updated_at: Time,
                 tier1_completed_at: T.nilable(Time),
                 tier2_completed_at: T.nilable(Time)
@@ -86,56 +86,6 @@ module Telnyx
             )
           end
           def to_hash
-          end
-
-          # Customer-facing status of a remediation request.
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            PENDING =
-              T.let(
-                :pending,
-                Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol
-              )
-            IN_PROGRESS =
-              T.let(
-                :in_progress,
-                Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol
-              )
-            COMPLETED =
-              T.let(
-                :completed,
-                Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol
-              )
-            FAILED =
-              T.let(
-                :failed,
-                Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol
-              )
-            CANCELLED =
-              T.let(
-                :cancelled,
-                Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

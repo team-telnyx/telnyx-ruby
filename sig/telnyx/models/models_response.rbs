@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    type models_response =
+      { data: ::Array[Telnyx::ModelMetadata], object: String }
+
+    class ModelsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::ModelMetadata]
+
+      attr_reader object: String?
+
+      def object=: (String) -> String
+
+      def initialize: (
+        data: ::Array[Telnyx::ModelMetadata],
+        ?object: String
+      ) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::ModelMetadata], object: String }
+    end
+  end
+end

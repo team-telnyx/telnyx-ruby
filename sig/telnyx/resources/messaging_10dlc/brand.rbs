@@ -94,7 +94,7 @@ module Telnyx
           String reference_id,
           ?brand_id: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse
+        ) -> Telnyx::Messaging10dlc::BrandSMSOtpStatus
 
         def resend_2fa_email: (
           String brand_id,
@@ -104,7 +104,7 @@ module Telnyx
         def retrieve_sms_otp_status: (
           String brand_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse
+        ) -> Telnyx::Messaging10dlc::BrandSMSOtpStatus
 
         def revet: (
           String brand_id,

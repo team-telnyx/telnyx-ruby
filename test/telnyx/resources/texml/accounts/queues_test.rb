@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
     response = @telnyx.texml.accounts.queues.create("account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::QueueCreateResponse
+      response => Telnyx::Texml::Accounts::QueueResource
     end
 
     assert_pattern do
@@ -33,7 +33,7 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
     response = @telnyx.texml.accounts.queues.retrieve("queue_sid", account_sid: "account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::QueueRetrieveResponse
+      response => Telnyx::Texml::Accounts::QueueResource
     end
 
     assert_pattern do
@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
     response = @telnyx.texml.accounts.queues.update("queue_sid", account_sid: "account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::QueueUpdateResponse
+      response => Telnyx::Texml::Accounts::QueueResource
     end
 
     assert_pattern do
@@ -88,7 +88,7 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Texml::Accounts::QueueListResponse
+      row => Telnyx::Texml::Accounts::QueueResource
     end
 
     assert_pattern do

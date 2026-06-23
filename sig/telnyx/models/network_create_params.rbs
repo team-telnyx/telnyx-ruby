@@ -3,7 +3,7 @@ module Telnyx
     type network_create_params =
       {  } & Telnyx::Internal::Type::request_parameters
 
-    class NetworkCreateParams < Telnyx::Models::NetworkCreate
+    class NetworkCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 

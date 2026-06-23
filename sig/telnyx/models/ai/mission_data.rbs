@@ -4,7 +4,7 @@ module Telnyx
       type mission_data =
         {
           created_at: Time,
-          execution_mode: Telnyx::Models::AI::MissionData::execution_mode,
+          execution_mode: Telnyx::Models::AI::execution_mode,
           mission_id: String,
           name: String,
           updated_at: Time,
@@ -17,7 +17,7 @@ module Telnyx
       class MissionData < Telnyx::Internal::Type::BaseModel
         attr_accessor created_at: Time
 
-        attr_accessor execution_mode: Telnyx::Models::AI::MissionData::execution_mode
+        attr_accessor execution_mode: Telnyx::Models::AI::execution_mode
 
         attr_accessor mission_id: String
 
@@ -43,7 +43,7 @@ module Telnyx
 
         def initialize: (
           created_at: Time,
-          execution_mode: Telnyx::Models::AI::MissionData::execution_mode,
+          execution_mode: Telnyx::Models::AI::execution_mode,
           mission_id: String,
           name: String,
           updated_at: Time,
@@ -55,7 +55,7 @@ module Telnyx
 
         def to_hash: -> {
           created_at: Time,
-          execution_mode: Telnyx::Models::AI::MissionData::execution_mode,
+          execution_mode: Telnyx::Models::AI::execution_mode,
           mission_id: String,
           name: String,
           updated_at: Time,
@@ -64,17 +64,6 @@ module Telnyx
           metadata: ::Hash[Symbol, top],
           model: String
         }
-
-        type execution_mode = :external | :managed
-
-        module ExecutionMode
-          extend Telnyx::Internal::Type::Enum
-
-          EXTERNAL: :external
-          MANAGED: :managed
-
-          def self?.values: -> ::Array[Telnyx::Models::AI::MissionData::execution_mode]
-        end
       end
     end
   end

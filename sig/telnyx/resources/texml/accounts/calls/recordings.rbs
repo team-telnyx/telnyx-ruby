@@ -10,7 +10,7 @@ module Telnyx
               call_sid: String,
               ?status: Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::status,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonResponse
+            ) -> Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody
 
             def initialize: (client: Telnyx::Client) -> void
           end

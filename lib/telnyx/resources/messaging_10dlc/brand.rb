@@ -302,7 +302,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse]
+        # @return [Telnyx::Models::Messaging10dlc::BrandSMSOtpStatus]
         #
         # @see Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceParams
         def get_sms_otp_by_reference(reference_id, params = {})
@@ -312,7 +312,7 @@ module Telnyx
             method: :get,
             path: ["10dlc/brand/smsOtp/%1$s", reference_id],
             query: query.transform_keys(brand_id: "brandId"),
-            model: Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse,
+            model: Telnyx::Messaging10dlc::BrandSMSOtpStatus,
             options: options
           )
         end
@@ -356,14 +356,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse]
+        # @return [Telnyx::Models::Messaging10dlc::BrandSMSOtpStatus]
         #
         # @see Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusParams
         def retrieve_sms_otp_status(brand_id, params = {})
           @client.request(
             method: :get,
             path: ["10dlc/brand/%1$s/smsOtp", brand_id],
-            model: Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse,
+            model: Telnyx::Messaging10dlc::BrandSMSOtpStatus,
             options: params[:request_options]
           )
         end

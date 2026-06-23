@@ -41,8 +41,8 @@ module Telnyx
 
           # @!attribute status
           #
-          #   @return [Symbol, Telnyx::Models::AI::Missions::RunUpdateParams::Status, nil]
-          optional :status, enum: -> { Telnyx::AI::Missions::RunUpdateParams::Status }
+          #   @return [Symbol, Telnyx::Models::AI::Missions::RunStatus, nil]
+          optional :status, enum: -> { Telnyx::AI::Missions::RunStatus }
 
           # @!method initialize(mission_id:, run_id:, error: nil, metadata: nil, result_payload: nil, result_summary: nil, status: nil, request_options: {})
           #   @param mission_id [String]
@@ -51,22 +51,8 @@ module Telnyx
           #   @param metadata [Hash{Symbol=>Object}]
           #   @param result_payload [Hash{Symbol=>Object}]
           #   @param result_summary [String]
-          #   @param status [Symbol, Telnyx::Models::AI::Missions::RunUpdateParams::Status]
+          #   @param status [Symbol, Telnyx::Models::AI::Missions::RunStatus]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            PENDING = :pending
-            RUNNING = :running
-            PAUSED = :paused
-            SUCCEEDED = :succeeded
-            FAILED = :failed
-            CANCELLED = :cancelled
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
     end

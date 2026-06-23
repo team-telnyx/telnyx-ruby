@@ -4,7 +4,7 @@ module Telnyx
       {
         id: String,
         created_at: Time,
-        items: ::Array[Telnyx::Models::PronunciationDictData::item],
+        items: ::Array[Telnyx::Models::pronunciation_dict_item],
         name: String,
         record_type: Telnyx::Models::PronunciationDictData::record_type,
         updated_at: Time,
@@ -20,11 +20,11 @@ module Telnyx
 
       def created_at=: (Time) -> Time
 
-      attr_reader items: ::Array[Telnyx::Models::PronunciationDictData::item]?
+      attr_reader items: ::Array[Telnyx::Models::pronunciation_dict_item]?
 
       def items=: (
-        ::Array[Telnyx::Models::PronunciationDictData::item]
-      ) -> ::Array[Telnyx::Models::PronunciationDictData::item]
+        ::Array[Telnyx::Models::pronunciation_dict_item]
+      ) -> ::Array[Telnyx::Models::pronunciation_dict_item]
 
       attr_reader name: String?
 
@@ -47,7 +47,7 @@ module Telnyx
       def initialize: (
         ?id: String,
         ?created_at: Time,
-        ?items: ::Array[Telnyx::Models::PronunciationDictData::item],
+        ?items: ::Array[Telnyx::Models::pronunciation_dict_item],
         ?name: String,
         ?record_type: Telnyx::Models::PronunciationDictData::record_type,
         ?updated_at: Time,
@@ -57,22 +57,12 @@ module Telnyx
       def to_hash: -> {
         id: String,
         created_at: Time,
-        items: ::Array[Telnyx::Models::PronunciationDictData::item],
+        items: ::Array[Telnyx::Models::pronunciation_dict_item],
         name: String,
         record_type: Telnyx::Models::PronunciationDictData::record_type,
         updated_at: Time,
         version: Integer
       }
-
-      type item =
-        Telnyx::PronunciationDictAliasItem
-        | Telnyx::PronunciationDictPhonemeItem
-
-      module Item
-        extend Telnyx::Internal::Type::Union
-
-        def self?.variants: -> ::Array[Telnyx::Models::PronunciationDictData::item]
-      end
 
       type record_type = :pronunciation_dict
 

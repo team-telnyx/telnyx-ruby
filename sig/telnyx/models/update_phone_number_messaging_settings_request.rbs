@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    type update_phone_number_messaging_settings_request =
+      {
+        messaging_product: String,
+        messaging_profile_id: String,
+        tags: ::Array[String]
+      }
+
+    class UpdatePhoneNumberMessagingSettingsRequest < Telnyx::Internal::Type::BaseModel
+      attr_reader messaging_product: String?
+
+      def messaging_product=: (String) -> String
+
+      attr_reader messaging_profile_id: String?
+
+      def messaging_profile_id=: (String) -> String
+
+      attr_reader tags: ::Array[String]?
+
+      def tags=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?messaging_product: String,
+        ?messaging_profile_id: String,
+        ?tags: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        messaging_product: String,
+        messaging_profile_id: String,
+        tags: ::Array[String]
+      }
+    end
+  end
+end

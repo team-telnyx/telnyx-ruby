@@ -2,96 +2,75 @@ module Telnyx
   module Models
     type doc_service_document =
       {
-        id: String,
         av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status,
         content_type: String,
-        created_at: String,
         customer_reference: String,
         filename: String,
         record_type: String,
         :sha256 => String,
         size: Telnyx::DocServiceDocument::Size,
-        status: Telnyx::Models::DocServiceDocument::status,
-        updated_at: String
+        status: Telnyx::Models::DocServiceDocument::status
       }
 
-    class DocServiceDocument < Telnyx::Internal::Type::BaseModel
-      attr_reader customer_reference: String?
+    class DocServiceDocument < Telnyx::Models::DocServiceRecord
+      def customer_reference: -> String?
 
-      def customer_reference=: (String) -> String
+      def customer_reference=: (String _) -> String
 
-      attr_reader filename: String?
+      def filename: -> String?
 
-      def filename=: (String) -> String
+      def filename=: (String _) -> String
 
-      attr_reader id: String?
-
-      def id=: (String) -> String
-
-      attr_reader av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status?
+      def av_scan_status: -> Telnyx::Models::DocServiceDocument::av_scan_status?
 
       def av_scan_status=: (
-        Telnyx::Models::DocServiceDocument::av_scan_status
+        Telnyx::Models::DocServiceDocument::av_scan_status _
       ) -> Telnyx::Models::DocServiceDocument::av_scan_status
 
-      attr_reader content_type: String?
+      def content_type: -> String?
 
-      def content_type=: (String) -> String
+      def content_type=: (String _) -> String
 
-      attr_reader created_at: String?
+      def record_type: -> String?
 
-      def created_at=: (String) -> String
+      def record_type=: (String _) -> String
 
-      attr_reader record_type: String?
+      def sha256: -> String?
 
-      def record_type=: (String) -> String
+      def sha256=: (String _) -> String
 
-      attr_reader sha256: String?
-
-      def sha256=: (String) -> String
-
-      attr_reader size: Telnyx::DocServiceDocument::Size?
+      def size: -> Telnyx::DocServiceDocument::Size?
 
       def size=: (
-        Telnyx::DocServiceDocument::Size
+        Telnyx::DocServiceDocument::Size _
       ) -> Telnyx::DocServiceDocument::Size
 
-      attr_reader status: Telnyx::Models::DocServiceDocument::status?
+      def status: -> Telnyx::Models::DocServiceDocument::status?
 
       def status=: (
-        Telnyx::Models::DocServiceDocument::status
+        Telnyx::Models::DocServiceDocument::status _
       ) -> Telnyx::Models::DocServiceDocument::status
 
-      attr_reader updated_at: String?
-
-      def updated_at=: (String) -> String
-
       def initialize: (
-        ?id: String,
         ?av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status,
         ?content_type: String,
-        ?created_at: String,
         ?customer_reference: String,
         ?filename: String,
         ?record_type: String,
         ?sha256: String,
         ?size: Telnyx::DocServiceDocument::Size,
-        ?status: Telnyx::Models::DocServiceDocument::status,
-        ?updated_at: String
+        ?status: Telnyx::Models::DocServiceDocument::status
       ) -> void
 
       def to_hash: -> {
-        id: String,
         av_scan_status: Telnyx::Models::DocServiceDocument::av_scan_status,
         content_type: String,
-        created_at: String,
         customer_reference: String,
         filename: String,
         record_type: String,
         :sha256 => String,
         size: Telnyx::DocServiceDocument::Size,
-        status: Telnyx::Models::DocServiceDocument::status,
-        updated_at: String
+        status: Telnyx::Models::DocServiceDocument::status
       }
 
       type av_scan_status = :scanned | :infected | :pending_scan | :not_scanned

@@ -1,0 +1,41 @@
+module Telnyx
+  module Models
+    type dir_retrieve_document_types_response =
+      {
+        data: ::Array[Telnyx::Models::DirRetrieveDocumentTypesResponse::Data],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      }
+
+    class DirRetrieveDocumentTypesResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::DirRetrieveDocumentTypesResponse::Data]
+
+      attr_accessor meta: Telnyx::BrandedCallingPaginationMeta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::DirRetrieveDocumentTypesResponse::Data],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::DirRetrieveDocumentTypesResponse::Data],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      }
+
+      type data = { description: String, short_name: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_reader short_name: String?
+
+        def short_name=: (String) -> String
+
+        def initialize: (?description: String, ?short_name: String) -> void
+
+        def to_hash: -> { description: String, short_name: String }
+      end
+    end
+  end
+end

@@ -4,7 +4,7 @@ module Telnyx
       type phone_number_batch_list_params =
         {
           dir_id: String,
-          filter_status: Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status,
+          filter_status: Telnyx::Models::Dir::dir_phone_number_status,
           page_number: Integer,
           page_size: Integer
         }
@@ -16,11 +16,11 @@ module Telnyx
 
         attr_accessor dir_id: String
 
-        attr_reader filter_status: Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status?
+        attr_reader filter_status: Telnyx::Models::Dir::dir_phone_number_status?
 
         def filter_status=: (
-          Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status
-        ) -> Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status
+          Telnyx::Models::Dir::dir_phone_number_status
+        ) -> Telnyx::Models::Dir::dir_phone_number_status
 
         attr_reader page_number: Integer?
 
@@ -32,7 +32,7 @@ module Telnyx
 
         def initialize: (
           dir_id: String,
-          ?filter_status: Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status,
+          ?filter_status: Telnyx::Models::Dir::dir_phone_number_status,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
@@ -40,34 +40,11 @@ module Telnyx
 
         def to_hash: -> {
           dir_id: String,
-          filter_status: Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status,
+          filter_status: Telnyx::Models::Dir::dir_phone_number_status,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions
         }
-
-        type filter_status =
-          :submitted
-          | :in_review
-          | :verified
-          | :unsuccessful
-          | :suspended
-          | :expired
-          | :permanently_rejected
-
-        module FilterStatus
-          extend Telnyx::Internal::Type::Enum
-
-          SUBMITTED: :submitted
-          IN_REVIEW: :in_review
-          VERIFIED: :verified
-          UNSUCCESSFUL: :unsuccessful
-          SUSPENDED: :suspended
-          EXPIRED: :expired
-          PERMANENTLY_REJECTED: :permanently_rejected
-
-          def self?.values: -> ::Array[Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status]
-        end
       end
     end
   end

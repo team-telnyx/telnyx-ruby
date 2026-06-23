@@ -12,9 +12,7 @@ module Telnyx
         params(
           call_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          T::Array[Telnyx::Models::VoiceSDKCallReportRetrieveResponseItem]
-        )
+        ).returns(T::Array[Telnyx::VoiceSDKCallReport])
       end
       def retrieve(
         # Call identifier used to retrieve reports owned by the authenticated user.
@@ -33,9 +31,7 @@ module Telnyx
           sort: Telnyx::VoiceSDKCallReportListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::VoiceSDKCallReportListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::VoiceSDKCallReport]
         )
       end
       def list(

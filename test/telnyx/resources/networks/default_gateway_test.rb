@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Networks::DefaultGatewayTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Networks::DefaultGatewayCreateResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Networks::NetworksDefaultGateway]) | nil,
         meta: Telnyx::PaginationMeta | nil
       }
     end
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::Networks::DefaultGatewayTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Networks::DefaultGatewayRetrieveResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Networks::NetworksDefaultGateway]) | nil,
         meta: Telnyx::PaginationMeta | nil
       }
     end
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::Networks::DefaultGatewayTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Networks::NetworksDefaultGateway]) | nil,
         meta: Telnyx::PaginationMeta | nil
       }
     end

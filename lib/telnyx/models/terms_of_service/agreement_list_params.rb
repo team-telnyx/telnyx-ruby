@@ -25,8 +25,8 @@ module Telnyx
         #   (branded_calling and number_reputation); pass a value to return only that
         #   product's agreements.
         #
-        #   @return [Symbol, Telnyx::Models::TermsOfService::AgreementListParams::ProductType, nil]
-        optional :product_type, enum: -> { Telnyx::TermsOfService::AgreementListParams::ProductType }
+        #   @return [Symbol, Telnyx::Models::TermsOfService::TosProductType, nil]
+        optional :product_type, enum: -> { Telnyx::TermsOfService::TosProductType }
 
         # @!method initialize(page_number: nil, page_size: nil, product_type: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -36,22 +36,9 @@ module Telnyx
         #
         #   @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
-        #   @param product_type [Symbol, Telnyx::Models::TermsOfService::AgreementListParams::ProductType] Optional filter. Omit to list the user's agreements for **every** product (brand
+        #   @param product_type [Symbol, Telnyx::Models::TermsOfService::TosProductType] Optional filter. Omit to list the user's agreements for **every** product (brand
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # Optional filter. Omit to list the user's agreements for **every** product
-        # (branded_calling and number_reputation); pass a value to return only that
-        # product's agreements.
-        module ProductType
-          extend Telnyx::Internal::Type::Enum
-
-          BRANDED_CALLING = :branded_calling
-          NUMBER_REPUTATION = :number_reputation
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

@@ -12,7 +12,7 @@ module Telnyx
         media_name: String,
         media_url: String,
         preview_url: String,
-        quality: Telnyx::Models::Fax::quality,
+        quality: Telnyx::Models::quality,
         record_type: Telnyx::Models::Fax::record_type,
         status: Telnyx::Models::Fax::status,
         store_media: bool,
@@ -66,11 +66,9 @@ module Telnyx
 
       def preview_url=: (String) -> String
 
-      attr_reader quality: Telnyx::Models::Fax::quality?
+      attr_reader quality: Telnyx::Models::quality?
 
-      def quality=: (
-        Telnyx::Models::Fax::quality
-      ) -> Telnyx::Models::Fax::quality
+      def quality=: (Telnyx::Models::quality) -> Telnyx::Models::quality
 
       attr_reader record_type: Telnyx::Models::Fax::record_type?
 
@@ -117,7 +115,7 @@ module Telnyx
         ?media_name: String,
         ?media_url: String,
         ?preview_url: String,
-        ?quality: Telnyx::Models::Fax::quality,
+        ?quality: Telnyx::Models::quality,
         ?record_type: Telnyx::Models::Fax::record_type,
         ?status: Telnyx::Models::Fax::status,
         ?store_media: bool,
@@ -139,7 +137,7 @@ module Telnyx
         media_name: String,
         media_url: String,
         preview_url: String,
-        quality: Telnyx::Models::Fax::quality,
+        quality: Telnyx::Models::quality,
         record_type: Telnyx::Models::Fax::record_type,
         status: Telnyx::Models::Fax::status,
         store_media: bool,
@@ -159,20 +157,6 @@ module Telnyx
         OUTBOUND: :outbound
 
         def self?.values: -> ::Array[Telnyx::Models::Fax::direction]
-      end
-
-      type quality = :normal | :high | :very_high | :ultra_light | :ultra_dark
-
-      module Quality
-        extend Telnyx::Internal::Type::Enum
-
-        NORMAL: :normal
-        HIGH: :high
-        VERY_HIGH: :very_high
-        ULTRA_LIGHT: :ultra_light
-        ULTRA_DARK: :ultra_dark
-
-        def self?.values: -> ::Array[Telnyx::Models::Fax::quality]
       end
 
       type record_type = :fax

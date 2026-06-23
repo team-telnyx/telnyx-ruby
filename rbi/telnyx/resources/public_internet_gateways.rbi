@@ -7,21 +7,11 @@ module Telnyx
       # Create a new Public Internet Gateway.
       sig do
         params(
-          name: String,
-          network_id: String,
-          region_code: String,
+          body: Telnyx::PublicInternetGatewayCreateParams::Body::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::PublicInternetGatewayCreateResponse)
       end
-      def create(
-        # A user specified name for the interface.
-        name: nil,
-        # The id of the network associated with the interface.
-        network_id: nil,
-        # The region interface is deployed to.
-        region_code: nil,
-        request_options: {}
-      )
+      def create(body:, request_options: {})
       end
 
       # Retrieve a Public Internet Gateway.
@@ -47,7 +37,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::PublicInternetGatewayListResponse
+            Telnyx::PublicInternetGatewayRead
           ]
         )
       end

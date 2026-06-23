@@ -8,7 +8,7 @@ module Telnyx
 
         def create_response: (
           ?conversation: String,
-          ?input: top,
+          ?input: ::Hash[Symbol, top],
           ?instructions: String,
           ?model: String,
           ?stream: bool,
@@ -17,7 +17,7 @@ module Telnyx
 
         def list_models: (
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::OpenAIListModelsResponse
+        ) -> Telnyx::ModelsResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    type gcb_channel_zone =
+      {
+        id: String,
+        channels: Integer,
+        countries: ::Array[String],
+        name: String,
+        record_type: Telnyx::Models::GcbChannelZone::record_type,
+        created_at: String,
+        updated_at: String
+      }
+
+    class GcbChannelZone < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor channels: Integer
+
+      attr_accessor countries: ::Array[String]
+
+      attr_accessor name: String
+
+      attr_accessor record_type: Telnyx::Models::GcbChannelZone::record_type
+
+      attr_reader created_at: String?
+
+      def created_at=: (String) -> String
+
+      attr_reader updated_at: String?
+
+      def updated_at=: (String) -> String
+
+      def initialize: (
+        id: String,
+        channels: Integer,
+        countries: ::Array[String],
+        name: String,
+        record_type: Telnyx::Models::GcbChannelZone::record_type,
+        ?created_at: String,
+        ?updated_at: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        channels: Integer,
+        countries: ::Array[String],
+        name: String,
+        record_type: Telnyx::Models::GcbChannelZone::record_type,
+        created_at: String,
+        updated_at: String
+      }
+
+      type record_type = :channel_zone
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        CHANNEL_ZONE: :channel_zone
+
+        def self?.values: -> ::Array[Telnyx::Models::GcbChannelZone::record_type]
+      end
+    end
+  end
+end

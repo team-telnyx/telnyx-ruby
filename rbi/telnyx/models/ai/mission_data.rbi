@@ -12,7 +12,7 @@ module Telnyx
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol) }
+        sig { returns(Telnyx::AI::ExecutionMode::TaggedSymbol) }
         attr_accessor :execution_mode
 
         sig { returns(String) }
@@ -51,7 +51,7 @@ module Telnyx
         sig do
           params(
             created_at: Time,
-            execution_mode: Telnyx::AI::MissionData::ExecutionMode::OrSymbol,
+            execution_mode: Telnyx::AI::ExecutionMode::OrSymbol,
             mission_id: String,
             name: String,
             updated_at: Time,
@@ -78,8 +78,7 @@ module Telnyx
           override.returns(
             {
               created_at: Time,
-              execution_mode:
-                Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol,
+              execution_mode: Telnyx::AI::ExecutionMode::TaggedSymbol,
               mission_id: String,
               name: String,
               updated_at: Time,
@@ -91,35 +90,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        module ExecutionMode
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::AI::MissionData::ExecutionMode)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          EXTERNAL =
-            T.let(
-              :external,
-              Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol
-            )
-          MANAGED =
-            T.let(
-              :managed,
-              Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[Telnyx::AI::MissionData::ExecutionMode::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

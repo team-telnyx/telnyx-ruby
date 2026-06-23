@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::Assistants::TagsTest < Telnyx::Test::Resource
     response = @telnyx.ai.assistants.tags.list
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::TagListResponse
+      response => Telnyx::AI::Assistants::TagsResponse
     end
 
     assert_pattern do
@@ -25,7 +25,7 @@ class Telnyx::Test::Resources::AI::Assistants::TagsTest < Telnyx::Test::Resource
     response = @telnyx.ai.assistants.tags.add("assistant_id", tag: "tag")
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::TagAddResponse
+      response => Telnyx::AI::Assistants::TagsResponse
     end
 
     assert_pattern do
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::AI::Assistants::TagsTest < Telnyx::Test::Resource
     response = @telnyx.ai.assistants.tags.remove("tag", assistant_id: "assistant_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::Assistants::TagRemoveResponse
+      response => Telnyx::AI::Assistants::TagsResponse
     end
 
     assert_pattern do

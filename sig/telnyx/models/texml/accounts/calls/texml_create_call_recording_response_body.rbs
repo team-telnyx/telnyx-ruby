@@ -1,0 +1,134 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Calls
+          type texml_create_call_recording_response_body =
+            {
+              account_sid: String,
+              call_sid: String,
+              channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels,
+              conference_sid: String?,
+              date_created: Time,
+              date_updated: Time,
+              duration: String?,
+              error_code: String?,
+              price: String?,
+              price_unit: String?,
+              sid: String,
+              source: Telnyx::Models::Texml::Accounts::Calls::recording_source,
+              start_time: Time,
+              track: Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::track,
+              uri: String
+            }
+
+          class TexmlCreateCallRecordingResponseBody < Telnyx::Internal::Type::BaseModel
+            attr_reader account_sid: String?
+
+            def account_sid=: (String) -> String
+
+            attr_reader call_sid: String?
+
+            def call_sid=: (String) -> String
+
+            attr_reader channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels?
+
+            def channels=: (
+              Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels
+            ) -> Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels
+
+            attr_accessor conference_sid: String?
+
+            attr_reader date_created: Time?
+
+            def date_created=: (Time) -> Time
+
+            attr_reader date_updated: Time?
+
+            def date_updated=: (Time) -> Time
+
+            attr_accessor duration: String?
+
+            attr_accessor error_code: String?
+
+            attr_accessor price: String?
+
+            attr_accessor price_unit: String?
+
+            attr_reader sid: String?
+
+            def sid=: (String) -> String
+
+            attr_reader source: Telnyx::Models::Texml::Accounts::Calls::recording_source?
+
+            def source=: (
+              Telnyx::Models::Texml::Accounts::Calls::recording_source
+            ) -> Telnyx::Models::Texml::Accounts::Calls::recording_source
+
+            attr_reader start_time: Time?
+
+            def start_time=: (Time) -> Time
+
+            attr_reader track: Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::track?
+
+            def track=: (
+              Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::track
+            ) -> Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::track
+
+            attr_reader uri: String?
+
+            def uri=: (String) -> String
+
+            def initialize: (
+              ?account_sid: String,
+              ?call_sid: String,
+              ?channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels,
+              ?conference_sid: String?,
+              ?date_created: Time,
+              ?date_updated: Time,
+              ?duration: String?,
+              ?error_code: String?,
+              ?price: String?,
+              ?price_unit: String?,
+              ?sid: String,
+              ?source: Telnyx::Models::Texml::Accounts::Calls::recording_source,
+              ?start_time: Time,
+              ?track: Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::track,
+              ?uri: String
+            ) -> void
+
+            def to_hash: -> {
+              account_sid: String,
+              call_sid: String,
+              channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels,
+              conference_sid: String?,
+              date_created: Time,
+              date_updated: Time,
+              duration: String?,
+              error_code: String?,
+              price: String?,
+              price_unit: String?,
+              sid: String,
+              source: Telnyx::Models::Texml::Accounts::Calls::recording_source,
+              start_time: Time,
+              track: Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::track,
+              uri: String
+            }
+
+            type track = :inbound | :outbound | :both
+
+            module Track
+              extend Telnyx::Internal::Type::Enum
+
+              INBOUND: :inbound
+              OUTBOUND: :outbound
+              BOTH: :both
+
+              def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::track]
+            end
+          end
+        end
+      end
+    end
+  end
+end

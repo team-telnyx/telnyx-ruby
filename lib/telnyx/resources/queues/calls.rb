@@ -74,7 +74,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Queues::CallListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Queues::QueueCall>]
         #
         # @see Telnyx::Models::Queues::CallListParams
         def list(queue_name, params = {})
@@ -85,7 +85,7 @@ module Telnyx
             path: ["queues/%1$s/calls", queue_name],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Queues::CallListResponse,
+            model: Telnyx::Queues::QueueCall,
             options: options
           )
         end

@@ -29,8 +29,8 @@ module Telnyx
           # @!attribute status
           #   Customer-facing status of a remediation request.
           #
-          #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status]
-          required :status, enum: -> { Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status }
+          #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationStatus]
+          required :status, enum: -> { Telnyx::Enterprises::Reputation::RemediationStatus }
 
           # @!attribute updated_at
           #
@@ -59,29 +59,13 @@ module Telnyx
           #
           #   @param phone_numbers_count [Integer]
           #
-          #   @param status [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationListResponse::Status] Customer-facing status of a remediation request.
+          #   @param status [Symbol, Telnyx::Models::Enterprises::Reputation::RemediationStatus] Customer-facing status of a remediation request.
           #
           #   @param updated_at [Time]
           #
           #   @param tier1_completed_at [Time, nil]
           #
           #   @param tier2_completed_at [Time, nil]
-
-          # Customer-facing status of a remediation request.
-          #
-          # @see Telnyx::Models::Enterprises::Reputation::RemediationListResponse#status
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            PENDING = :pending
-            IN_PROGRESS = :in_progress
-            COMPLETED = :completed
-            FAILED = :failed
-            CANCELLED = :cancelled
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
     end

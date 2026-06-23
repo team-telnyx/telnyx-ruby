@@ -1,0 +1,155 @@
+module Telnyx
+  module Models
+    type dir_api =
+      {
+        id: String,
+        authorizer_email: String?,
+        authorizer_name: String?,
+        call_reasons: ::Array[Telnyx::DirAPI::CallReason],
+        certify_brand_is_accurate: bool,
+        certify_ip_ownership: bool,
+        certify_no_shaft_content: bool,
+        created_at: Time,
+        display_name: String,
+        documents: ::Array[Telnyx::Document]?,
+        enterprise_id: String,
+        expiring_at: Time?,
+        logo_url: String?,
+        rejected_at: Time?,
+        rejection_reasons: ::Array[Telnyx::Dir::RejectionReason]?,
+        reselling: bool,
+        status: Telnyx::Models::dir_status,
+        submitted_at: Time?,
+        updated_at: Time,
+        verified_at: Time?
+      }
+
+    class DirAPI < Telnyx::Internal::Type::BaseModel
+      attr_accessor authorizer_email: String?
+
+      attr_accessor authorizer_name: String?
+
+      attr_reader call_reasons: ::Array[Telnyx::DirAPI::CallReason]?
+
+      def call_reasons=: (
+        ::Array[Telnyx::DirAPI::CallReason]
+      ) -> ::Array[Telnyx::DirAPI::CallReason]
+
+      attr_reader certify_brand_is_accurate: bool?
+
+      def certify_brand_is_accurate=: (bool) -> bool
+
+      attr_reader certify_ip_ownership: bool?
+
+      def certify_ip_ownership=: (bool) -> bool
+
+      attr_reader certify_no_shaft_content: bool?
+
+      def certify_no_shaft_content=: (bool) -> bool
+
+      attr_reader display_name: String?
+
+      def display_name=: (String) -> String
+
+      attr_accessor documents: ::Array[Telnyx::Document]?
+
+      attr_reader enterprise_id: String?
+
+      def enterprise_id=: (String) -> String
+
+      attr_accessor logo_url: String?
+
+      attr_accessor rejection_reasons: ::Array[Telnyx::Dir::RejectionReason]?
+
+      attr_reader reselling: bool?
+
+      def reselling=: (bool) -> bool
+
+      attr_reader status: Telnyx::Models::dir_status?
+
+      def status=: (Telnyx::Models::dir_status) -> Telnyx::Models::dir_status
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_accessor expiring_at: Time?
+
+      attr_accessor rejected_at: Time?
+
+      attr_accessor submitted_at: Time?
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_accessor verified_at: Time?
+
+      def initialize: (
+        ?id: String,
+        ?authorizer_email: String?,
+        ?authorizer_name: String?,
+        ?call_reasons: ::Array[Telnyx::DirAPI::CallReason],
+        ?certify_brand_is_accurate: bool,
+        ?certify_ip_ownership: bool,
+        ?certify_no_shaft_content: bool,
+        ?created_at: Time,
+        ?display_name: String,
+        ?documents: ::Array[Telnyx::Document]?,
+        ?enterprise_id: String,
+        ?expiring_at: Time?,
+        ?logo_url: String?,
+        ?rejected_at: Time?,
+        ?rejection_reasons: ::Array[Telnyx::Dir::RejectionReason]?,
+        ?reselling: bool,
+        ?status: Telnyx::Models::dir_status,
+        ?submitted_at: Time?,
+        ?updated_at: Time,
+        ?verified_at: Time?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        authorizer_email: String?,
+        authorizer_name: String?,
+        call_reasons: ::Array[Telnyx::DirAPI::CallReason],
+        certify_brand_is_accurate: bool,
+        certify_ip_ownership: bool,
+        certify_no_shaft_content: bool,
+        created_at: Time,
+        display_name: String,
+        documents: ::Array[Telnyx::Document]?,
+        enterprise_id: String,
+        expiring_at: Time?,
+        logo_url: String?,
+        rejected_at: Time?,
+        rejection_reasons: ::Array[Telnyx::Dir::RejectionReason]?,
+        reselling: bool,
+        status: Telnyx::Models::dir_status,
+        submitted_at: Time?,
+        updated_at: Time,
+        verified_at: Time?
+      }
+
+      type call_reason = { created_at: Time, reason: String }
+
+      class CallReason < Telnyx::Internal::Type::BaseModel
+        attr_reader reason: String?
+
+        def reason=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        def initialize: (?created_at: Time, ?reason: String) -> void
+
+        def to_hash: -> { created_at: Time, reason: String }
+      end
+    end
+  end
+end

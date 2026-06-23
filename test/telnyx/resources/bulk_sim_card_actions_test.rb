@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::BulkSimCardActionsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::BulkSimCardActionRetrieveResponse::Data | nil
+        data: Telnyx::BulkSimCardActionDetailed | nil
       }
     end
   end
@@ -32,13 +32,13 @@ class Telnyx::Test::Resources::BulkSimCardActionsTest < Telnyx::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::BulkSimCardActionListResponse
+      row => Telnyx::BulkSimCardActionDetailed
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        action_type: Telnyx::Models::BulkSimCardActionListResponse::ActionType | nil,
+        action_type: Telnyx::BulkSimCardActionDetailed::ActionType | nil,
         created_at: String | nil,
         record_type: String | nil,
         settings: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,

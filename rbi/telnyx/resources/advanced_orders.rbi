@@ -10,12 +10,13 @@ module Telnyx
           comments: String,
           country_code: String,
           customer_reference: String,
-          features: T::Array[Telnyx::AdvancedOrder::Feature::OrSymbol],
-          phone_number_type: Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol,
+          features: T::Array[Telnyx::AdvancedOrderRequest::Feature::OrSymbol],
+          phone_number_type:
+            Telnyx::AdvancedOrderRequest::PhoneNumberType::OrSymbol,
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AdvancedOrderCreateResponse)
+        ).returns(Telnyx::AdvancedOrder)
       end
       def create(
         area_code: nil,
@@ -36,7 +37,7 @@ module Telnyx
         params(
           order_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AdvancedOrderRetrieveResponse)
+        ).returns(Telnyx::AdvancedOrder)
       end
       def retrieve(
         # Unique identifier of the order.
@@ -62,12 +63,13 @@ module Telnyx
           comments: String,
           country_code: String,
           customer_reference: String,
-          features: T::Array[Telnyx::AdvancedOrder::Feature::OrSymbol],
-          phone_number_type: Telnyx::AdvancedOrder::PhoneNumberType::OrSymbol,
+          features: T::Array[Telnyx::AdvancedOrderRequest::Feature::OrSymbol],
+          phone_number_type:
+            Telnyx::AdvancedOrderRequest::PhoneNumberType::OrSymbol,
           quantity: Integer,
           requirement_group_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse)
+        ).returns(Telnyx::AdvancedOrder)
       end
       def update_requirement_group(
         # Unique identifier of the advanced order.

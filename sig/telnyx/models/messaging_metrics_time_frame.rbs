@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type messaging_metrics_time_frame =
+      :"1h" | :"3h" | :"24h" | :"3d" | :"7d" | :"30d"
+
+    module MessagingMetricsTimeFrame
+      extend Telnyx::Internal::Type::Enum
+
+      TIME_FRAME_1_H: :"1h"
+      TIME_FRAME_3_H: :"3h"
+      TIME_FRAME_24_H: :"24h"
+      TIME_FRAME_3_D: :"3d"
+      TIME_FRAME_7_D: :"7d"
+      TIME_FRAME_30_D: :"30d"
+
+      def self?.values: -> ::Array[Telnyx::Models::messaging_metrics_time_frame]
+    end
+  end
+end

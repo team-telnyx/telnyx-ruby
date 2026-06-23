@@ -30,14 +30,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Enterprises::ReputationRetrieveResponse]
+        # @return [Telnyx::Models::Enterprises::EnterpriseReputationPublicWrapped]
         #
         # @see Telnyx::Models::Enterprises::ReputationRetrieveParams
         def retrieve(enterprise_id, params = {})
           @client.request(
             method: :get,
             path: ["enterprises/%1$s/reputation", enterprise_id],
-            model: Telnyx::Models::Enterprises::ReputationRetrieveResponse,
+            model: Telnyx::Enterprises::EnterpriseReputationPublicWrapped,
             options: params[:request_options]
           )
         end
@@ -91,11 +91,11 @@ module Telnyx
         #
         # @param loa_document_id [String] Id of the signed Letter of Authorization document, returned by the Telnyx Docume
         #
-        # @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationEnableParams::CheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
+        # @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationCheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Enterprises::ReputationEnableResponse]
+        # @return [Telnyx::Models::Enterprises::EnterpriseReputationPublicWrapped]
         #
         # @see Telnyx::Models::Enterprises::ReputationEnableParams
         def enable(enterprise_id, params)
@@ -104,7 +104,7 @@ module Telnyx
             method: :post,
             path: ["enterprises/%1$s/reputation", enterprise_id],
             body: parsed,
-            model: Telnyx::Models::Enterprises::ReputationEnableResponse,
+            model: Telnyx::Enterprises::EnterpriseReputationPublicWrapped,
             options: options
           )
         end
@@ -123,11 +123,11 @@ module Telnyx
         #
         # @param enterprise_id [String] The enterprise id. Lowercase UUID.
         #
-        # @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
+        # @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationCheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Enterprises::ReputationUpdateFrequencyResponse]
+        # @return [Telnyx::Models::Enterprises::EnterpriseReputationPublicWrapped]
         #
         # @see Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams
         def update_frequency(enterprise_id, params)
@@ -136,7 +136,7 @@ module Telnyx
             method: :patch,
             path: ["enterprises/%1$s/reputation/frequency", enterprise_id],
             body: parsed,
-            model: Telnyx::Models::Enterprises::ReputationUpdateFrequencyResponse,
+            model: Telnyx::Enterprises::EnterpriseReputationPublicWrapped,
             options: options
           )
         end

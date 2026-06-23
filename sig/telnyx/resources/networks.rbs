@@ -4,7 +4,7 @@ module Telnyx
       attr_reader default_gateway: Telnyx::Resources::Networks::DefaultGateway
 
       def create: (
-        name: String,
+        network_create: Telnyx::NetworkCreate,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::NetworkCreateResponse
 
@@ -15,7 +15,7 @@ module Telnyx
 
       def update: (
         String network_id,
-        name: String,
+        network_create: Telnyx::NetworkCreate,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::NetworkUpdateResponse
 
@@ -24,7 +24,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::NetworkListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Network]
 
       def delete: (
         String id,

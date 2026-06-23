@@ -116,18 +116,13 @@ module Telnyx
 
           # Filter results by activation status
           sig do
-            returns(
-              T.nilable(
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::OrSymbol
-              )
-            )
+            returns(T.nilable(Telnyx::PortingOrderActivationStatus::OrSymbol))
           end
           attr_reader :activation_status
 
           sig do
             params(
-              activation_status:
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::OrSymbol
+              activation_status: Telnyx::PortingOrderActivationStatus::OrSymbol
             ).void
           end
           attr_writer :activation_status
@@ -217,8 +212,7 @@ module Telnyx
           # filter[phone_number], filter[activation_status], filter[portability_status]
           sig do
             params(
-              activation_status:
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::OrSymbol,
+              activation_status: Telnyx::PortingOrderActivationStatus::OrSymbol,
               phone_number: T::Array[String],
               portability_status:
                 Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::PortabilityStatus::OrSymbol,
@@ -256,7 +250,7 @@ module Telnyx
             override.returns(
               {
                 activation_status:
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::OrSymbol,
+                  Telnyx::PortingOrderActivationStatus::OrSymbol,
                 phone_number: T::Array[String],
                 portability_status:
                   Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::PortabilityStatus::OrSymbol,
@@ -274,96 +268,6 @@ module Telnyx
             )
           end
           def to_hash
-          end
-
-          # Filter results by activation status
-          module ActivationStatus
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            NEW =
-              T.let(
-                :New,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            PENDING =
-              T.let(
-                :Pending,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            CONFLICT =
-              T.let(
-                :Conflict,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            CANCEL_PENDING =
-              T.let(
-                :"Cancel Pending",
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            FAILED =
-              T.let(
-                :Failed,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            CONCURRED =
-              T.let(
-                :Concurred,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            ACTIVATE_RDY =
-              T.let(
-                :"Activate RDY",
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            DISCONNECT_PENDING =
-              T.let(
-                :"Disconnect Pending",
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            CONCURRENCE_SENT =
-              T.let(
-                :"Concurrence Sent",
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            OLD =
-              T.let(
-                :Old,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            SENDING =
-              T.let(
-                :Sending,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            ACTIVE =
-              T.let(
-                :Active,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-            CANCELLED =
-              T.let(
-                :Cancelled,
-                Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::PortingOrders::PhoneNumberBlockListParams::Filter::ActivationStatus::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
 
           # Filter results by portability status

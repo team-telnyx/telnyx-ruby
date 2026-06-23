@@ -5,13 +5,13 @@ module Telnyx
         String channel_zone_id,
         channels: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ChannelZoneUpdateResponse
+      ) -> Telnyx::GcbChannelZone
 
       def list: (
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ChannelZoneListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::GcbChannelZone]
 
       def initialize: (client: Telnyx::Client) -> void
     end

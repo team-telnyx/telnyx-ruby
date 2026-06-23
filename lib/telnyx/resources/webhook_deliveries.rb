@@ -40,7 +40,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WebhookDeliveryListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WebhookDelivery>]
       #
       # @see Telnyx::Models::WebhookDeliveryListParams
       def list(params = {})
@@ -51,7 +51,7 @@ module Telnyx
           path: "webhook_deliveries",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::WebhookDeliveryListResponse,
+          model: Telnyx::WebhookDelivery,
           options: options
         )
       end

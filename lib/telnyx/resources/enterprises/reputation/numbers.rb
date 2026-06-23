@@ -24,7 +24,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Enterprises::Reputation::NumberRetrieveResponse]
+          # @return [Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumberWithReputation]
           #
           # @see Telnyx::Models::Enterprises::Reputation::NumberRetrieveParams
           def retrieve(phone_number, params)
@@ -38,7 +38,7 @@ module Telnyx
               method: :get,
               path: ["enterprises/%1$s/reputation/numbers/%2$s", enterprise_id, phone_number],
               query: query,
-              model: Telnyx::Models::Enterprises::Reputation::NumberRetrieveResponse,
+              model: Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation,
               options: options
             )
           end
@@ -64,7 +64,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Enterprises::Reputation::NumberListResponse>]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumber>]
           #
           # @see Telnyx::Models::Enterprises::Reputation::NumberListParams
           def list(enterprise_id, params = {})
@@ -80,7 +80,7 @@ module Telnyx
                 page_size: "page[size]"
               ),
               page: Telnyx::Internal::DefaultFlatPagination,
-              model: Telnyx::Models::Enterprises::Reputation::NumberListResponse,
+              model: Telnyx::Enterprises::Reputation::ReputationPhoneNumber,
               options: options
             )
           end
@@ -103,7 +103,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse]
+          # @return [Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumberList]
           #
           # @see Telnyx::Models::Enterprises::Reputation::NumberAssociateParams
           def associate(enterprise_id, params)
@@ -112,7 +112,7 @@ module Telnyx
               method: :post,
               path: ["enterprises/%1$s/reputation/numbers", enterprise_id],
               body: parsed,
-              model: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse,
+              model: Telnyx::Enterprises::Reputation::ReputationPhoneNumberList,
               options: options
             )
           end

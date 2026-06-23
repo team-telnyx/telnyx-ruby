@@ -3,7 +3,7 @@ module Telnyx
     type pronunciation_dict_update_params =
       {
         id: String,
-        items: ::Array[Telnyx::Models::PronunciationDictUpdateParams::item],
+        items: ::Array[Telnyx::Models::pronunciation_dict_item],
         name: String
       }
       & Telnyx::Internal::Type::request_parameters
@@ -14,11 +14,11 @@ module Telnyx
 
       attr_accessor id: String
 
-      attr_reader items: ::Array[Telnyx::Models::PronunciationDictUpdateParams::item]?
+      attr_reader items: ::Array[Telnyx::Models::pronunciation_dict_item]?
 
       def items=: (
-        ::Array[Telnyx::Models::PronunciationDictUpdateParams::item]
-      ) -> ::Array[Telnyx::Models::PronunciationDictUpdateParams::item]
+        ::Array[Telnyx::Models::pronunciation_dict_item]
+      ) -> ::Array[Telnyx::Models::pronunciation_dict_item]
 
       attr_reader name: String?
 
@@ -26,27 +26,17 @@ module Telnyx
 
       def initialize: (
         id: String,
-        ?items: ::Array[Telnyx::Models::PronunciationDictUpdateParams::item],
+        ?items: ::Array[Telnyx::Models::pronunciation_dict_item],
         ?name: String,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         id: String,
-        items: ::Array[Telnyx::Models::PronunciationDictUpdateParams::item],
+        items: ::Array[Telnyx::Models::pronunciation_dict_item],
         name: String,
         request_options: Telnyx::RequestOptions
       }
-
-      type item =
-        Telnyx::PronunciationDictAliasItem
-        | Telnyx::PronunciationDictPhonemeItem
-
-      module Item
-        extend Telnyx::Internal::Type::Union
-
-        def self?.variants: -> ::Array[Telnyx::Models::PronunciationDictUpdateParams::item]
-      end
     end
   end
 end

@@ -11,54 +11,18 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::Models::NetworkCreateResponse::Data)) }
+      sig { returns(T.nilable(Telnyx::Network)) }
       attr_reader :data
 
-      sig do
-        params(data: Telnyx::Models::NetworkCreateResponse::Data::OrHash).void
-      end
+      sig { params(data: Telnyx::Network::OrHash).void }
       attr_writer :data
 
-      sig do
-        params(
-          data: Telnyx::Models::NetworkCreateResponse::Data::OrHash
-        ).returns(T.attached_class)
-      end
+      sig { params(data: Telnyx::Network::OrHash).returns(T.attached_class) }
       def self.new(data: nil)
       end
 
-      sig do
-        override.returns({ data: Telnyx::Models::NetworkCreateResponse::Data })
-      end
+      sig { override.returns({ data: Telnyx::Network }) }
       def to_hash
-      end
-
-      class Data < Telnyx::Models::Record
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::Models::NetworkCreateResponse::Data,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # A user specified name for the network.
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
-
-        sig { params(name: String).returns(T.attached_class) }
-        def self.new(
-          # A user specified name for the network.
-          name: nil
-        )
-        end
-
-        sig { override.returns({ name: String }) }
-        def to_hash
-        end
       end
     end
   end

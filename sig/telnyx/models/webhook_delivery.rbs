@@ -1,0 +1,145 @@
+module Telnyx
+  module Models
+    type webhook_delivery =
+      {
+        id: String,
+        attempts: ::Array[Telnyx::Attempt],
+        finished_at: Time,
+        record_type: String,
+        started_at: Time,
+        status: Telnyx::Models::WebhookDelivery::status,
+        user_id: String,
+        webhook: Telnyx::WebhookDelivery::Webhook
+      }
+
+    class WebhookDelivery < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader attempts: ::Array[Telnyx::Attempt]?
+
+      def attempts=: (::Array[Telnyx::Attempt]) -> ::Array[Telnyx::Attempt]
+
+      attr_reader finished_at: Time?
+
+      def finished_at=: (Time) -> Time
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader started_at: Time?
+
+      def started_at=: (Time) -> Time
+
+      attr_reader status: Telnyx::Models::WebhookDelivery::status?
+
+      def status=: (
+        Telnyx::Models::WebhookDelivery::status
+      ) -> Telnyx::Models::WebhookDelivery::status
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      attr_reader webhook: Telnyx::WebhookDelivery::Webhook?
+
+      def webhook=: (
+        Telnyx::WebhookDelivery::Webhook
+      ) -> Telnyx::WebhookDelivery::Webhook
+
+      def initialize: (
+        ?id: String,
+        ?attempts: ::Array[Telnyx::Attempt],
+        ?finished_at: Time,
+        ?record_type: String,
+        ?started_at: Time,
+        ?status: Telnyx::Models::WebhookDelivery::status,
+        ?user_id: String,
+        ?webhook: Telnyx::WebhookDelivery::Webhook
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        attempts: ::Array[Telnyx::Attempt],
+        finished_at: Time,
+        record_type: String,
+        started_at: Time,
+        status: Telnyx::Models::WebhookDelivery::status,
+        user_id: String,
+        webhook: Telnyx::WebhookDelivery::Webhook
+      }
+
+      type status = :delivered | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        DELIVERED: :delivered
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::WebhookDelivery::status]
+      end
+
+      type webhook =
+        {
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: ::Hash[Symbol, top],
+          record_type: Telnyx::Models::WebhookDelivery::Webhook::record_type
+        }
+
+      class Webhook < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: String?
+
+        def event_type=: (String) -> String
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: ::Hash[Symbol, top]?
+
+        def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader record_type: Telnyx::Models::WebhookDelivery::Webhook::record_type?
+
+        def record_type=: (
+          Telnyx::Models::WebhookDelivery::Webhook::record_type
+        ) -> Telnyx::Models::WebhookDelivery::Webhook::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: String,
+          ?occurred_at: Time,
+          ?payload: ::Hash[Symbol, top],
+          ?record_type: Telnyx::Models::WebhookDelivery::Webhook::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: ::Hash[Symbol, top],
+          record_type: Telnyx::Models::WebhookDelivery::Webhook::record_type
+        }
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::WebhookDelivery::Webhook::record_type]
+        end
+      end
+    end
+  end
+end

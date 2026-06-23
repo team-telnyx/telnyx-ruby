@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    module AI
+      module Assistants
+        type scheduled_call_settings =
+          {
+            sip_region: Telnyx::Models::AI::Assistants::ScheduledCallSettings::sip_region
+          }
+
+        class ScheduledCallSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader sip_region: Telnyx::Models::AI::Assistants::ScheduledCallSettings::sip_region?
+
+          def sip_region=: (
+            Telnyx::Models::AI::Assistants::ScheduledCallSettings::sip_region
+          ) -> Telnyx::Models::AI::Assistants::ScheduledCallSettings::sip_region
+
+          def initialize: (
+            ?sip_region: Telnyx::Models::AI::Assistants::ScheduledCallSettings::sip_region
+          ) -> void
+
+          def to_hash: -> {
+            sip_region: Telnyx::Models::AI::Assistants::ScheduledCallSettings::sip_region
+          }
+
+          type sip_region =
+            :US | :Europe | :Canada | :Australia | :"Middle East"
+
+          module SipRegion
+            extend Telnyx::Internal::Type::Enum
+
+            US: :US
+            EUROPE: :Europe
+            CANADA: :Canada
+            AUSTRALIA: :Australia
+            MIDDLE_EAST: :"Middle East"
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Assistants::ScheduledCallSettings::sip_region]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,31 +1,42 @@
 module Telnyx
   module Resources
     class TextToSpeech
-      def generate: (
-        ?aws: ::Telnyx::TextToSpeechGenerateParams::Aws,
-        ?azure: ::Telnyx::TextToSpeechGenerateParams::Azure,
+      def generate_speech: (
+        ?aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws,
+        ?azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         ?disable_cache: bool,
-        ?elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs,
+        ?elevenlabs: ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs,
         ?language: String,
-        ?minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax,
-        ?output_type: ::Telnyx::Models::TextToSpeechGenerateParams::output_type,
-        ?provider: ::Telnyx::Models::TextToSpeechGenerateParams::provider,
-        ?resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble,
-        ?rime: ::Telnyx::TextToSpeechGenerateParams::Rime,
-        ?telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx,
+        ?minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax,
+        ?output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
+        ?provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
+        ?resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
+        ?rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime,
+        ?telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         ?text: String,
-        ?text_type: ::Telnyx::Models::TextToSpeechGenerateParams::text_type,
+        ?text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,
         ?voice: String,
         ?voice_settings: ::Hash[Symbol, top],
-        ?xai: ::Telnyx::TextToSpeechGenerateParams::Xai,
+        ?xai: ::Telnyx::TextToSpeechGenerateSpeechParams::Xai,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::TextToSpeechGenerateResponse
+      ) -> Telnyx::Models::TextToSpeechGenerateSpeechResponse
 
       def list_voices: (
         ?api_key: String,
         ?provider: Telnyx::Models::TextToSpeechListVoicesParams::provider,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::TextToSpeechListVoicesResponse
+
+      def retrieve_speech: (
+        ?audio_format: Telnyx::Models::TextToSpeechRetrieveSpeechParams::audio_format,
+        ?disable_cache: bool,
+        ?model_id: String,
+        ?provider: Telnyx::Models::TextToSpeechRetrieveSpeechParams::provider,
+        ?socket_id: String,
+        ?voice: String,
+        ?voice_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
 
       def initialize: (client: Telnyx::Client) -> void
     end

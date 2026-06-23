@@ -30,5 +30,3 @@ group :development, :docs do
   gem "webrick"
   gem "yard"
 end
-
-gem "standardwebhooks", "~> 1.0"

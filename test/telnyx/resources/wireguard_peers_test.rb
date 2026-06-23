@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.wireguard_peers.create(wireguard_interface_id: "6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+    response = @telnyx.wireguard_peers.create(body: {})
 
     assert_pattern do
       response => Telnyx::Models::WireguardPeerCreateResponse
@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WireguardPeerCreateResponse::Data | nil
+        data: Telnyx::WireguardPeer | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WireguardPeerRetrieveResponse::Data | nil
+        data: Telnyx::WireguardPeer | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WireguardPeerUpdateResponse::Data | nil
+        data: Telnyx::WireguardPeer | nil
       }
     end
   end
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::WireguardPeerListResponse
+      row => Telnyx::WireguardPeer
     end
   end
 
@@ -79,7 +79,7 @@ class Telnyx::Test::Resources::WireguardPeersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WireguardPeerDeleteResponse::Data | nil
+        data: Telnyx::WireguardPeer | nil
       }
     end
   end

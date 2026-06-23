@@ -9,7 +9,7 @@ module Telnyx
           # Get All Tags
           sig do
             params(request_options: Telnyx::RequestOptions::OrHash).returns(
-              Telnyx::Models::AI::Assistants::TagListResponse
+              Telnyx::AI::Assistants::TagsResponse
             )
           end
           def list(request_options: {})
@@ -21,7 +21,7 @@ module Telnyx
               assistant_id: String,
               tag: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Assistants::TagAddResponse)
+            ).returns(Telnyx::AI::Assistants::TagsResponse)
           end
           def add(
             # Unique identifier of the assistant.
@@ -37,7 +37,7 @@ module Telnyx
               tag: String,
               assistant_id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::AI::Assistants::TagRemoveResponse)
+            ).returns(Telnyx::AI::Assistants::TagsResponse)
           end
           def remove(
             # Unique identifier of the tag.

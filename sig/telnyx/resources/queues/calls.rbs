@@ -20,7 +20,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Queues::CallListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Queues::QueueCall]
 
         def remove: (
           String call_control_id,

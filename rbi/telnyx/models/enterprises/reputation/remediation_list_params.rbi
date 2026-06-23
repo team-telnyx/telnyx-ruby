@@ -37,7 +37,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::OrSymbol
+                Telnyx::Enterprises::Reputation::RemediationStatus::OrSymbol
               )
             )
           end
@@ -46,7 +46,7 @@ module Telnyx
           sig do
             params(
               filter_status:
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::OrSymbol
+                Telnyx::Enterprises::Reputation::RemediationStatus::OrSymbol
             ).void
           end
           attr_writer :filter_status
@@ -71,7 +71,7 @@ module Telnyx
               filter_created_at_gte: Time,
               filter_created_at_lte: Time,
               filter_status:
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::OrSymbol,
+                Telnyx::Enterprises::Reputation::RemediationStatus::OrSymbol,
               page_number: Integer,
               page_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
@@ -100,7 +100,7 @@ module Telnyx
                 filter_created_at_gte: Time,
                 filter_created_at_lte: Time,
                 filter_status:
-                  Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::OrSymbol,
+                  Telnyx::Enterprises::Reputation::RemediationStatus::OrSymbol,
                 page_number: Integer,
                 page_size: Integer,
                 request_options: Telnyx::RequestOptions
@@ -108,56 +108,6 @@ module Telnyx
             )
           end
           def to_hash
-          end
-
-          # Filter by customer-facing status.
-          module FilterStatus
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            PENDING =
-              T.let(
-                :pending,
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::TaggedSymbol
-              )
-            IN_PROGRESS =
-              T.let(
-                :in_progress,
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::TaggedSymbol
-              )
-            COMPLETED =
-              T.let(
-                :completed,
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::TaggedSymbol
-              )
-            FAILED =
-              T.let(
-                :failed,
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::TaggedSymbol
-              )
-            CANCELLED =
-              T.let(
-                :cancelled,
-                Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Enterprises::Reputation::RemediationListParams::FilterStatus::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

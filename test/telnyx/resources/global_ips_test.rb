@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::GlobalIPsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::GlobalIPCreateResponse::Data | nil
+        data: Telnyx::GlobalIP | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::GlobalIPsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::GlobalIPRetrieveResponse::Data | nil
+        data: Telnyx::GlobalIP | nil
       }
     end
   end
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::GlobalIPsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::GlobalIPListResponse
+      row => Telnyx::GlobalIP
     end
   end
 
@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::GlobalIPsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::GlobalIPDeleteResponse::Data | nil
+        data: Telnyx::GlobalIP | nil
       }
     end
   end

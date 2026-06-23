@@ -47,8 +47,8 @@ module Telnyx
         #   Region where the conference data is located. Defaults to the region defined in
         #   user's data locality settings (Europe or US).
         #
-        #   @return [Symbol, Telnyx::Models::Conferences::ActionPlayParams::Region, nil]
-        optional :region, enum: -> { Telnyx::Conferences::ActionPlayParams::Region }
+        #   @return [Symbol, Telnyx::Models::Conferences::ConferenceRegion, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ConferenceRegion }
 
         # @!method initialize(id:, audio_url: nil, call_control_ids: nil, loop_: nil, media_name: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -64,23 +64,9 @@ module Telnyx
         #
         #   @param media_name [String] The media_name of a file to be played back in the conference. The media_name mus
         #
-        #   @param region [Symbol, Telnyx::Models::Conferences::ActionPlayParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        #   @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA = :Australia
-          EUROPE = :Europe
-          MIDDLE_EAST = :"Middle East"
-          US = :US
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

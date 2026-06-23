@@ -14,14 +14,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::InfringementClaimRetrieveResponse]
+      # @return [Telnyx::Models::InfringementClaimWrapped]
       #
       # @see Telnyx::Models::InfringementClaimRetrieveParams
       def retrieve(claim_id, params = {})
         @client.request(
           method: :get,
           path: ["infringement_claims/%1$s", claim_id],
-          model: Telnyx::Models::InfringementClaimRetrieveResponse,
+          model: Telnyx::InfringementClaimWrapped,
           options: params[:request_options]
         )
       end
@@ -51,11 +51,11 @@ module Telnyx
       #
       # @param contest_notes [String] Customer's response to the claim. 10–2000 characters.
       #
-      # @param documents [Array<Telnyx::Models::InfringementClaimContestParams::Document>] Up to 20 supporting documents per submission. `document_id` must be unique withi
+      # @param documents [Array<Telnyx::Models::Document>] Up to 20 supporting documents per submission. `document_id` must be unique withi
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::InfringementClaimContestResponse]
+      # @return [Telnyx::Models::InfringementClaimWrapped]
       #
       # @see Telnyx::Models::InfringementClaimContestParams
       def contest(claim_id, params)
@@ -64,7 +64,7 @@ module Telnyx
           method: :post,
           path: ["infringement_claims/%1$s/contest", claim_id],
           body: parsed,
-          model: Telnyx::Models::InfringementClaimContestResponse,
+          model: Telnyx::InfringementClaimWrapped,
           options: options
         )
       end

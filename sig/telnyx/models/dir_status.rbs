@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type dir_status =
+      :draft
+      | :submitted
+      | :in_review
+      | :verified
+      | :rejected
+      | :unsuccessful
+      | :suspended
+      | :expired
+      | :infringement_claimed
+      | :permanently_rejected
+
+    module DirStatus
+      extend Telnyx::Internal::Type::Enum
+
+      DRAFT: :draft
+      SUBMITTED: :submitted
+      IN_REVIEW: :in_review
+      VERIFIED: :verified
+      REJECTED: :rejected
+      UNSUCCESSFUL: :unsuccessful
+      SUSPENDED: :suspended
+      EXPIRED: :expired
+      INFRINGEMENT_CLAIMED: :infringement_claimed
+      PERMANENTLY_REJECTED: :permanently_rejected
+
+      def self?.values: -> ::Array[Telnyx::Models::dir_status]
+    end
+  end
+end

@@ -15,7 +15,7 @@ module Telnyx
             String call_sid,
             account_sid: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::CallRetrieveResponse
+          ) -> Telnyx::Texml::Accounts::CallResource
 
           def update: (
             String call_sid,
@@ -29,11 +29,11 @@ module Telnyx
             ?texml: String,
             ?url: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Texml::Accounts::CallUpdateResponse
+          ) -> Telnyx::Texml::Accounts::CallResource
 
           def calls: (
             String account_sid,
-            params: Telnyx::Models::Texml::Accounts::CallCallsParams::params,
+            body: Telnyx::Models::Texml::Accounts::CallCallsParams::body,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::Texml::Accounts::CallCallsResponse
 

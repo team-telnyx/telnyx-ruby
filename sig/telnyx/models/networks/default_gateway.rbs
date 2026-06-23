@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    module Networks
+      type networks_default_gateway =
+        {
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          wireguard_peer_id: String
+        }
+
+      class NetworksDefaultGateway < Telnyx::Models::Record
+        def wireguard_peer_id: -> String?
+
+        def wireguard_peer_id=: (String _) -> String
+
+        def network_id: -> String?
+
+        def network_id=: (String _) -> String
+
+        def status: -> Telnyx::Models::interface_status?
+
+        def status=: (
+          Telnyx::Models::interface_status _
+        ) -> Telnyx::Models::interface_status
+
+        def initialize: (
+          ?network_id: String,
+          ?status: Telnyx::Models::interface_status,
+          ?wireguard_peer_id: String
+        ) -> void
+
+        def to_hash: -> {
+          network_id: String,
+          status: Telnyx::Models::interface_status,
+          wireguard_peer_id: String
+        }
+      end
+    end
+  end
+end

@@ -21,13 +21,12 @@ module Telnyx
           params(
             name: String,
             description: String,
-            execution_mode:
-              Telnyx::AI::MissionCreateParams::ExecutionMode::OrSymbol,
+            execution_mode: Telnyx::AI::ExecutionMode::OrSymbol,
             instructions: String,
             metadata: T::Hash[Symbol, T.anything],
             model: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::MissionCreateResponse)
+          ).returns(Telnyx::AI::MissionResponse)
         end
         def create(
           name:,
@@ -45,7 +44,7 @@ module Telnyx
           params(
             mission_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::MissionRetrieveResponse)
+          ).returns(Telnyx::AI::MissionResponse)
         end
         def retrieve(
           # Unique identifier of the mission.
@@ -130,14 +129,13 @@ module Telnyx
           params(
             mission_id: String,
             description: String,
-            execution_mode:
-              Telnyx::AI::MissionUpdateMissionParams::ExecutionMode::OrSymbol,
+            execution_mode: Telnyx::AI::ExecutionMode::OrSymbol,
             instructions: String,
             metadata: T::Hash[Symbol, T.anything],
             model: String,
             name: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::MissionUpdateMissionResponse)
+          ).returns(Telnyx::AI::MissionResponse)
         end
         def update_mission(
           # Unique identifier of the mission.

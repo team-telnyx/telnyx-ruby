@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module Networks
       # @see Telnyx::Resources::Networks::DefaultGateway#create
-      class DefaultGatewayCreateParams < Telnyx::Internal::Type::BaseModel
+      class DefaultGatewayCreateParams < Telnyx::Models::Networks::NetworksDefaultGateway
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
@@ -13,17 +13,8 @@ module Telnyx
         #   @return [String]
         required :network_identifier, String
 
-        # @!attribute wireguard_peer_id
-        #   Wireguard peer ID.
-        #
-        #   @return [String, nil]
-        optional :wireguard_peer_id, String
-
-        # @!method initialize(network_identifier:, wireguard_peer_id: nil, request_options: {})
+        # @!method initialize(network_identifier:, request_options: {})
         #   @param network_identifier [String]
-        #
-        #   @param wireguard_peer_id [String] Wireguard peer ID.
-        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -1,0 +1,155 @@
+module Telnyx
+  module Models
+    module AI
+      type flow_edge =
+        {
+          id: String,
+          condition: Telnyx::Models::AI::FlowEdge::condition,
+          start_node_id: String,
+          target: Telnyx::Models::AI::FlowEdge::target
+        }
+
+      class FlowEdge < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor condition: Telnyx::Models::AI::FlowEdge::condition
+
+        attr_accessor start_node_id: String
+
+        attr_accessor target: Telnyx::Models::AI::FlowEdge::target
+
+        def initialize: (
+          id: String,
+          condition: Telnyx::Models::AI::FlowEdge::condition,
+          start_node_id: String,
+          target: Telnyx::Models::AI::FlowEdge::target
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          condition: Telnyx::Models::AI::FlowEdge::condition,
+          start_node_id: String,
+          target: Telnyx::Models::AI::FlowEdge::target
+        }
+
+        type condition =
+          Telnyx::AI::FlowEdge::Condition::Llm
+          | Telnyx::AI::FlowEdge::Condition::Expression
+          | Telnyx::AI::FlowEdge::Condition::Default
+
+        module Condition
+          extend Telnyx::Internal::Type::Union
+
+          type llm = { prompt: String, type: :llm }
+
+          class Llm < Telnyx::Internal::Type::BaseModel
+            attr_accessor prompt: String
+
+            attr_accessor type: :llm
+
+            def initialize: (prompt: String, ?type: :llm) -> void
+
+            def to_hash: -> { prompt: String, type: :llm }
+          end
+
+          type expression = { expression: top, type: :expression }
+
+          class Expression < Telnyx::Internal::Type::BaseModel
+            attr_accessor expression: top
+
+            attr_accessor type: :expression
+
+            def initialize: (expression: top, ?type: :expression) -> void
+
+            def to_hash: -> { expression: top, type: :expression }
+          end
+
+          type default = { type: :default }
+
+          class Default < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :default
+
+            def initialize: (?type: :default) -> void
+
+            def to_hash: -> { type: :default }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::FlowEdge::condition]
+        end
+
+        type target =
+          Telnyx::AI::FlowEdge::Target::Node
+          | Telnyx::AI::FlowEdge::Target::Assistant
+
+        module Target
+          extend Telnyx::Internal::Type::Union
+
+          type node = { node_id: String, type: :node }
+
+          class Node < Telnyx::Internal::Type::BaseModel
+            attr_accessor node_id: String
+
+            attr_accessor type: :node
+
+            def initialize: (node_id: String, ?type: :node) -> void
+
+            def to_hash: -> { node_id: String, type: :node }
+          end
+
+          type assistant =
+            {
+              assistant_id: String,
+              type: :assistant,
+              position: Telnyx::AI::NodePosition,
+              voice_mode: Telnyx::Models::AI::FlowEdge::Target::Assistant::voice_mode
+            }
+
+          class Assistant < Telnyx::Internal::Type::BaseModel
+            attr_accessor assistant_id: String
+
+            attr_accessor type: :assistant
+
+            attr_reader position: Telnyx::AI::NodePosition?
+
+            def position=: (
+              Telnyx::AI::NodePosition
+            ) -> Telnyx::AI::NodePosition
+
+            attr_reader voice_mode: Telnyx::Models::AI::FlowEdge::Target::Assistant::voice_mode?
+
+            def voice_mode=: (
+              Telnyx::Models::AI::FlowEdge::Target::Assistant::voice_mode
+            ) -> Telnyx::Models::AI::FlowEdge::Target::Assistant::voice_mode
+
+            def initialize: (
+              assistant_id: String,
+              ?position: Telnyx::AI::NodePosition,
+              ?voice_mode: Telnyx::Models::AI::FlowEdge::Target::Assistant::voice_mode,
+              ?type: :assistant
+            ) -> void
+
+            def to_hash: -> {
+              assistant_id: String,
+              type: :assistant,
+              position: Telnyx::AI::NodePosition,
+              voice_mode: Telnyx::Models::AI::FlowEdge::Target::Assistant::voice_mode
+            }
+
+            type voice_mode = :unified | :distinct
+
+            module VoiceMode
+              extend Telnyx::Internal::Type::Enum
+
+              UNIFIED: :unified
+              DISTINCT: :distinct
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::FlowEdge::Target::Assistant::voice_mode]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::FlowEdge::target]
+        end
+      end
+    end
+  end
+end

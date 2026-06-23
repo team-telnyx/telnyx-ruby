@@ -25,11 +25,11 @@ module Telnyx
       # to scope to one.
       sig do
         params(
-          product_type: Telnyx::TermsOfServiceInfoParams::ProductType::OrSymbol,
+          product_type: Telnyx::TermsOfService::TosProductType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::TermsOfServiceInfoResponse)
+        ).returns(Telnyx::Models::TermsOfServiceRetrieveInfoResponse)
       end
-      def info(
+      def retrieve_info(
         # Optional product filter. Omit to return info for all products.
         product_type: nil,
         request_options: {}
@@ -44,12 +44,11 @@ module Telnyx
       # an outdated version) and must agree before using that product's endpoints.
       sig do
         params(
-          product_type:
-            Telnyx::TermsOfServiceStatusParams::ProductType::OrSymbol,
+          product_type: Telnyx::TermsOfService::TosProductType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::TermsOfServiceStatusResponse)
+        ).returns(Telnyx::Models::TermsOfServiceRetrieveStatusResponse)
       end
-      def status(
+      def retrieve_status(
         # Which product's ToS to check. Defaults to `branded_calling`.
         product_type: nil,
         request_options: {}

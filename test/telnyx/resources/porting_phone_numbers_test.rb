@@ -16,19 +16,19 @@ class Telnyx::Test::Resources::PortingPhoneNumbersTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::PortingPhoneNumberListResponse
+      row => Telnyx::PortingPhoneNumber
     end
 
     assert_pattern do
       row => {
-        activation_status: Telnyx::Models::PortingPhoneNumberListResponse::ActivationStatus | nil,
+        activation_status: Telnyx::PortingOrderActivationStatus | nil,
         phone_number: String | nil,
-        phone_number_type: Telnyx::Models::PortingPhoneNumberListResponse::PhoneNumberType | nil,
-        portability_status: Telnyx::Models::PortingPhoneNumberListResponse::PortabilityStatus | nil,
+        phone_number_type: Telnyx::PortingPhoneNumber::PhoneNumberType | nil,
+        portability_status: Telnyx::PortingPhoneNumber::PortabilityStatus | nil,
         porting_order_id: String | nil,
-        porting_order_status: Telnyx::Models::PortingPhoneNumberListResponse::PortingOrderStatus | nil,
+        porting_order_status: Telnyx::PortingPhoneNumber::PortingOrderStatus | nil,
         record_type: String | nil,
-        requirements_status: Telnyx::Models::PortingPhoneNumberListResponse::RequirementsStatus | nil,
+        requirements_status: Telnyx::PortingPhoneNumber::RequirementsStatus | nil,
         support_key: String | nil
       }
     end

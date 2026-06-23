@@ -12,7 +12,7 @@ module Telnyx
         media_url: String,
         monochrome: bool,
         preview_format: Telnyx::Models::FaxCreateParams::preview_format,
-        quality: Telnyx::Models::FaxCreateParams::quality,
+        quality: Telnyx::Models::quality,
         store_media: bool,
         store_preview: bool,
         :t38_enabled => bool,
@@ -60,11 +60,9 @@ module Telnyx
         Telnyx::Models::FaxCreateParams::preview_format
       ) -> Telnyx::Models::FaxCreateParams::preview_format
 
-      attr_reader quality: Telnyx::Models::FaxCreateParams::quality?
+      attr_reader quality: Telnyx::Models::quality?
 
-      def quality=: (
-        Telnyx::Models::FaxCreateParams::quality
-      ) -> Telnyx::Models::FaxCreateParams::quality
+      def quality=: (Telnyx::Models::quality) -> Telnyx::Models::quality
 
       attr_reader store_media: bool?
 
@@ -93,7 +91,7 @@ module Telnyx
         ?media_url: String,
         ?monochrome: bool,
         ?preview_format: Telnyx::Models::FaxCreateParams::preview_format,
-        ?quality: Telnyx::Models::FaxCreateParams::quality,
+        ?quality: Telnyx::Models::quality,
         ?store_media: bool,
         ?store_preview: bool,
         ?t38_enabled: bool,
@@ -112,7 +110,7 @@ module Telnyx
         media_url: String,
         monochrome: bool,
         preview_format: Telnyx::Models::FaxCreateParams::preview_format,
-        quality: Telnyx::Models::FaxCreateParams::quality,
+        quality: Telnyx::Models::quality,
         store_media: bool,
         store_preview: bool,
         :t38_enabled => bool,
@@ -129,20 +127,6 @@ module Telnyx
         TIFF: :tiff
 
         def self?.values: -> ::Array[Telnyx::Models::FaxCreateParams::preview_format]
-      end
-
-      type quality = :normal | :high | :very_high | :ultra_light | :ultra_dark
-
-      module Quality
-        extend Telnyx::Internal::Type::Enum
-
-        NORMAL: :normal
-        HIGH: :high
-        VERY_HIGH: :very_high
-        ULTRA_LIGHT: :ultra_light
-        ULTRA_DARK: :ultra_dark
-
-        def self?.values: -> ::Array[Telnyx::Models::FaxCreateParams::quality]
       end
     end
   end

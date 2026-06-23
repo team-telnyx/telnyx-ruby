@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type event_type =
+            :status_change
+            | :step_started
+            | :step_completed
+            | :step_failed
+            | :tool_call
+            | :tool_result
+            | :message
+            | :error
+            | :custom
+
+          module EventType
+            extend Telnyx::Internal::Type::Enum
+
+            STATUS_CHANGE: :status_change
+            STEP_STARTED: :step_started
+            STEP_COMPLETED: :step_completed
+            STEP_FAILED: :step_failed
+            TOOL_CALL: :tool_call
+            TOOL_RESULT: :tool_result
+            MESSAGE: :message
+            ERROR: :error
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Missions::Runs::event_type]
+          end
+        end
+      end
+    end
+  end
+end

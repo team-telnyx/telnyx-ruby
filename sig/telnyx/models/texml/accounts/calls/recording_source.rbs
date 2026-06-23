@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module Texml
+      module Accounts
+        module Calls
+          type recording_source =
+            :StartCallRecordingAPI
+            | :StartConferenceRecordingAPI
+            | :OutboundAPI
+            | :DialVerb
+            | :Conference
+            | :RecordVerb
+            | :Trunking
+
+          module RecordingSource
+            extend Telnyx::Internal::Type::Enum
+
+            START_CALL_RECORDING_API: :StartCallRecordingAPI
+            START_CONFERENCE_RECORDING_API: :StartConferenceRecordingAPI
+            OUTBOUND_API: :OutboundAPI
+            DIAL_VERB: :DialVerb
+            CONFERENCE: :Conference
+            RECORD_VERB: :RecordVerb
+            TRUNKING: :Trunking
+
+            def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::Calls::recording_source]
+          end
+        end
+      end
+    end
+  end
+end

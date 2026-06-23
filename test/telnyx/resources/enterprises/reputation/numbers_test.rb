@@ -13,12 +13,12 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
       )
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::Reputation::NumberRetrieveResponse
+      response => Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Enterprises::Reputation::NumberRetrieveResponse::Data
+        data: Telnyx::Enterprises::Reputation::ReputationPhoneNumber
       }
     end
   end
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Enterprises::Reputation::NumberListResponse
+      row => Telnyx::Enterprises::Reputation::ReputationPhoneNumber
     end
 
     assert_pattern do
@@ -61,13 +61,13 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
       )
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse
+      response => Telnyx::Enterprises::Reputation::ReputationPhoneNumberList
     end
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Data]),
-        meta: Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse::Meta
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Enterprises::Reputation::ReputationPhoneNumber]),
+        meta: Telnyx::NumberReputationPaginationMeta
       }
     end
   end

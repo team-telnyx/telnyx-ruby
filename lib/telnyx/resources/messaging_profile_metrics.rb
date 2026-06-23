@@ -8,7 +8,7 @@ module Telnyx
       #
       # @overload list(time_frame: nil, request_options: {})
       #
-      # @param time_frame [Symbol, Telnyx::Models::MessagingProfileMetricListParams::TimeFrame] The time frame for metrics.
+      # @param time_frame [Symbol, Telnyx::Models::MessagingMetricsTimeFrame] The time frame for metrics.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

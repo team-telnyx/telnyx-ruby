@@ -40,7 +40,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Texml::AccountRetrieveRecordingsJsonResponse]
+        # @return [Telnyx::Models::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody]
         #
         # @see Telnyx::Models::Texml::AccountRetrieveRecordingsJsonParams
         def retrieve_recordings_json(account_sid, params = {})
@@ -50,7 +50,7 @@ module Telnyx
             method: :get,
             path: ["texml/Accounts/%1$s/Recordings.json", account_sid],
             query: query.transform_keys(date_created: "DateCreated", page: "Page", page_size: "PageSize"),
-            model: Telnyx::Models::Texml::AccountRetrieveRecordingsJsonResponse,
+            model: Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody,
             options: options
           )
         end

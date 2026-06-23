@@ -20,8 +20,7 @@ module Telnyx
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
           microsoft_teams_sbc: T::Boolean,
-          noise_suppression:
-            Telnyx::FqdnConnectionCreateParams::NoiseSuppression::OrSymbol,
+          noise_suppression: Telnyx::ConnectionNoiseSuppression::OrSymbol,
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
@@ -139,8 +138,7 @@ module Telnyx
           inbound: Telnyx::InboundFqdn::OrHash,
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
-          noise_suppression:
-            Telnyx::FqdnConnectionUpdateParams::NoiseSuppression::OrSymbol,
+          noise_suppression: Telnyx::ConnectionNoiseSuppression::OrSymbol,
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,

@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Teln
     response = @telnyx.messaging_10dlc.brand.external_vetting.list("brandId")
 
     assert_pattern do
-      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Messaging10dlc::Brand::ExternalVettingListResponseItem])
+      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Messaging10dlc::Brand::BrandExternalVetting])
     end
   end
 
@@ -24,7 +24,7 @@ class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Teln
       )
 
     assert_pattern do
-      response => Telnyx::Models::Messaging10dlc::Brand::ExternalVettingImportsResponse
+      response => Telnyx::Messaging10dlc::Brand::BrandExternalVetting
     end
 
     assert_pattern do
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Teln
       )
 
     assert_pattern do
-      response => Telnyx::Models::Messaging10dlc::Brand::ExternalVettingOrderResponse
+      response => Telnyx::Messaging10dlc::Brand::BrandExternalVetting
     end
 
     assert_pattern do

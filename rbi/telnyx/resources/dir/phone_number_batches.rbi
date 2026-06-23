@@ -29,14 +29,13 @@ module Telnyx
         sig do
           params(
             dir_id: String,
-            filter_status:
-              Telnyx::Dir::PhoneNumberBatchListParams::FilterStatus::OrSymbol,
+            filter_status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Dir::PhoneNumberBatchListResponse
+              Telnyx::Dir::PhoneNumberBatch
             ]
           )
         end

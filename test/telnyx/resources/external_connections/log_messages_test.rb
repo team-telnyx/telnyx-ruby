@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        log_messages: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::ExternalConnections::LogMessageRetrieveResponse::LogMessage]) | nil
+        log_messages: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ExternalConnections::LogMessage]) | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::ExternalConnections::LogMessageListResponse
+      row => Telnyx::ExternalConnections::LogMessage
     end
 
     assert_pattern do
@@ -40,8 +40,8 @@ class Telnyx::Test::Resources::ExternalConnections::LogMessagesTest < Telnyx::Te
         code: String,
         title: String,
         detail: String | nil,
-        meta: Telnyx::Models::ExternalConnections::LogMessageListResponse::Meta | nil,
-        source: Telnyx::Models::ExternalConnections::LogMessageListResponse::Source | nil
+        meta: Telnyx::ExternalConnections::LogMessage::Meta | nil,
+        source: Telnyx::ExternalConnections::LogMessage::Source | nil
       }
     end
   end

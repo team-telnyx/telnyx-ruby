@@ -27,7 +27,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Transcriptions::JsonTest < Telny
       )
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse
+      response => Telnyx::Texml::Accounts::Transcriptions::TexmlRecordingTranscription
     end
 
     assert_pattern do
@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Transcriptions::JsonTest < Telny
         duration: String | nil,
         recording_sid: String | nil,
         sid: String | nil,
-        status: Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonResponse::Status | nil,
+        status: Telnyx::Texml::Accounts::Transcriptions::TexmlRecordingTranscription::Status | nil,
         transcription_text: String | nil,
         uri: String | nil
       }

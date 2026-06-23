@@ -19,12 +19,12 @@ class Telnyx::Test::Resources::AI::OpenAITest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.openai.list_models
 
     assert_pattern do
-      response => Telnyx::Models::AI::OpenAIListModelsResponse
+      response => Telnyx::ModelsResponse
     end
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::OpenAIListModelsResponse::Data]),
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ModelMetadata]),
         object: String | nil
       }
     end

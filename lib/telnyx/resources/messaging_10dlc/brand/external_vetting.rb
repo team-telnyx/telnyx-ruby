@@ -14,14 +14,14 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Array<Telnyx::Models::Messaging10dlc::Brand::ExternalVettingListResponseItem>]
+          # @return [Array<Telnyx::Models::Messaging10dlc::Brand::BrandExternalVetting>]
           #
           # @see Telnyx::Models::Messaging10dlc::Brand::ExternalVettingListParams
           def list(brand_id, params = {})
             @client.request(
               method: :get,
               path: ["10dlc/brand/%1$s/externalVetting", brand_id],
-              model: Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Messaging10dlc::Brand::ExternalVettingListResponseItem],
+              model: Telnyx::Internal::Type::ArrayOf[Telnyx::Messaging10dlc::Brand::BrandExternalVetting],
               options: params[:request_options]
             )
           end
@@ -47,7 +47,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Messaging10dlc::Brand::ExternalVettingImportsResponse]
+          # @return [Telnyx::Models::Messaging10dlc::Brand::BrandExternalVetting]
           #
           # @see Telnyx::Models::Messaging10dlc::Brand::ExternalVettingImportsParams
           def imports(brand_id, params)
@@ -56,7 +56,7 @@ module Telnyx
               method: :put,
               path: ["10dlc/brand/%1$s/externalVetting", brand_id],
               body: parsed,
-              model: Telnyx::Models::Messaging10dlc::Brand::ExternalVettingImportsResponse,
+              model: Telnyx::Messaging10dlc::Brand::BrandExternalVetting,
               options: options
             )
           end
@@ -77,7 +77,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Messaging10dlc::Brand::ExternalVettingOrderResponse]
+          # @return [Telnyx::Models::Messaging10dlc::Brand::BrandExternalVetting]
           #
           # @see Telnyx::Models::Messaging10dlc::Brand::ExternalVettingOrderParams
           def order(brand_id, params)
@@ -86,7 +86,7 @@ module Telnyx
               method: :post,
               path: ["10dlc/brand/%1$s/externalVetting", brand_id],
               body: parsed,
-              model: Telnyx::Models::Messaging10dlc::Brand::ExternalVettingOrderResponse,
+              model: Telnyx::Messaging10dlc::Brand::BrandExternalVetting,
               options: options
             )
           end

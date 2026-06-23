@@ -2,7 +2,7 @@ module Telnyx
   module Resources
     class MessagingProfileMetrics
       def list: (
-        ?time_frame: Telnyx::Models::MessagingProfileMetricListParams::time_frame,
+        ?time_frame: Telnyx::Models::messaging_metrics_time_frame,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessagingProfileMetricListResponse
 

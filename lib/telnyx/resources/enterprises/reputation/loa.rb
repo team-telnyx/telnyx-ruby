@@ -21,7 +21,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Enterprises::Reputation::LoaUpdateResponse]
+          # @return [Telnyx::Models::Enterprises::EnterpriseReputationPublicWrapped]
           #
           # @see Telnyx::Models::Enterprises::Reputation::LoaUpdateParams
           def update(enterprise_id, params)
@@ -30,7 +30,7 @@ module Telnyx
               method: :patch,
               path: ["enterprises/%1$s/reputation/loa", enterprise_id],
               body: parsed,
-              model: Telnyx::Models::Enterprises::Reputation::LoaUpdateResponse,
+              model: Telnyx::Enterprises::EnterpriseReputationPublicWrapped,
               options: options
             )
           end
@@ -50,7 +50,7 @@ module Telnyx
           #
           # @param enterprise_id [String] The enterprise id. Lowercase UUID.
           #
-          # @param agent [Telnyx::Models::Enterprises::Reputation::LoaRenderParams::Agent] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
+          # @param agent [Telnyx::Models::Enterprises::Reputation::AgentInput] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
           #
           # @param signature [Telnyx::Models::Enterprises::Reputation::LoaRenderParams::Signature] Optional signature embedded in the rendered PDF. When omitted the PDF is returne
           #

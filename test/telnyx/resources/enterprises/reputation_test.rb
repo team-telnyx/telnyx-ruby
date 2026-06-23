@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
     response = @telnyx.enterprises.reputation.retrieve("4a6192a4-573d-446d-b3ce-aff9117272a6")
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::ReputationRetrieveResponse
+      response => Telnyx::Enterprises::EnterpriseReputationPublicWrapped
     end
 
     assert_pattern do
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
       )
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::ReputationEnableResponse
+      response => Telnyx::Enterprises::EnterpriseReputationPublicWrapped
     end
 
     assert_pattern do
@@ -59,7 +59,7 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
       )
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::ReputationUpdateFrequencyResponse
+      response => Telnyx::Enterprises::EnterpriseReputationPublicWrapped
     end
 
     assert_pattern do

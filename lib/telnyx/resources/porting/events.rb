@@ -51,7 +51,7 @@ module Telnyx
             path: "porting/events",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Porting::EventListResponse,
+            model: Telnyx::Porting::PortingEvent,
             options: options
           )
         end

@@ -12,8 +12,8 @@ module Telnyx
 
         # @!attribute execution_mode
         #
-        #   @return [Symbol, Telnyx::Models::AI::MissionData::ExecutionMode]
-        required :execution_mode, enum: -> { Telnyx::AI::MissionData::ExecutionMode }
+        #   @return [Symbol, Telnyx::Models::AI::ExecutionMode]
+        required :execution_mode, enum: -> { Telnyx::AI::ExecutionMode }
 
         # @!attribute mission_id
         #
@@ -52,7 +52,7 @@ module Telnyx
 
         # @!method initialize(created_at:, execution_mode:, mission_id:, name:, updated_at:, description: nil, instructions: nil, metadata: nil, model: nil)
         #   @param created_at [Time]
-        #   @param execution_mode [Symbol, Telnyx::Models::AI::MissionData::ExecutionMode]
+        #   @param execution_mode [Symbol, Telnyx::Models::AI::ExecutionMode]
         #   @param mission_id [String]
         #   @param name [String]
         #   @param updated_at [Time]
@@ -60,17 +60,6 @@ module Telnyx
         #   @param instructions [String]
         #   @param metadata [Hash{Symbol=>Object}]
         #   @param model [String]
-
-        # @see Telnyx::Models::AI::MissionData#execution_mode
-        module ExecutionMode
-          extend Telnyx::Internal::Type::Enum
-
-          EXTERNAL = :external
-          MANAGED = :managed
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

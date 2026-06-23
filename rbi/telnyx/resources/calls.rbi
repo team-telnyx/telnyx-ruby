@@ -49,7 +49,7 @@ module Telnyx
           command_id: String,
           conference_config: Telnyx::CallDialParams::ConferenceConfig::OrHash,
           conversation_relay_config:
-            Telnyx::CallDialParams::ConversationRelayConfig::OrHash,
+            Telnyx::ConversationRelayEmbeddedConfig::OrHash,
           custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
           deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection::OrHash,
           dialogflow_config: Telnyx::DialogflowConfig::OrHash,

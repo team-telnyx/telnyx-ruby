@@ -109,16 +109,12 @@ module Telnyx
         # Region where the conference data is located. Defaults to the region defined in
         # user's data locality settings (Europe or US).
         sig do
-          returns(
-            T.nilable(Telnyx::Conferences::ActionJoinParams::Region::OrSymbol)
-          )
+          returns(T.nilable(Telnyx::Conferences::ConferenceRegion::OrSymbol))
         end
         attr_reader :region
 
         sig do
-          params(
-            region: Telnyx::Conferences::ActionJoinParams::Region::OrSymbol
-          ).void
+          params(region: Telnyx::Conferences::ConferenceRegion::OrSymbol).void
         end
         attr_writer :region
 
@@ -183,7 +179,7 @@ module Telnyx
             hold_audio_url: String,
             hold_media_name: String,
             mute: T::Boolean,
-            region: Telnyx::Conferences::ActionJoinParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             soft_end_conference_on_exit: T::Boolean,
             start_conference_on_enter: T::Boolean,
             supervisor_role:
@@ -267,7 +263,7 @@ module Telnyx
               hold_audio_url: String,
               hold_media_name: String,
               mute: T::Boolean,
-              region: Telnyx::Conferences::ActionJoinParams::Region::OrSymbol,
+              region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
               soft_end_conference_on_exit: T::Boolean,
               start_conference_on_enter: T::Boolean,
               supervisor_role:
@@ -316,49 +312,6 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Conferences::ActionJoinParams::BeepEnabled::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::Conferences::ActionJoinParams::Region)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          AUSTRALIA =
-            T.let(
-              :Australia,
-              Telnyx::Conferences::ActionJoinParams::Region::TaggedSymbol
-            )
-          EUROPE =
-            T.let(
-              :Europe,
-              Telnyx::Conferences::ActionJoinParams::Region::TaggedSymbol
-            )
-          MIDDLE_EAST =
-            T.let(
-              :"Middle East",
-              Telnyx::Conferences::ActionJoinParams::Region::TaggedSymbol
-            )
-          US =
-            T.let(
-              :US,
-              Telnyx::Conferences::ActionJoinParams::Region::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Conferences::ActionJoinParams::Region::TaggedSymbol
               ]
             )
           end

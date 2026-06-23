@@ -4,7 +4,7 @@ module Telnyx
       class NumberReputation
         def agree: (
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::TermsOfService::NumberReputationAgreeResponse
+        ) -> Telnyx::TermsOfService::TosAgreementWrapped
 
         def initialize: (client: Telnyx::Client) -> void
       end

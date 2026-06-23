@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      type execution_mode = :external | :managed
+
+      module ExecutionMode
+        extend Telnyx::Internal::Type::Enum
+
+        EXTERNAL: :external
+        MANAGED: :managed
+
+        def self?.values: -> ::Array[Telnyx::Models::AI::execution_mode]
+      end
+    end
+  end
+end

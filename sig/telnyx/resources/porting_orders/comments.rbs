@@ -13,7 +13,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::PortingOrders::CommentListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingOrders::PortingOrdersComment]
 
         def initialize: (client: Telnyx::Client) -> void
       end

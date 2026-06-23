@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    type dir_retrieve_infringement_claims_params =
+      { dir_id: String, page_number: Integer, page_size: Integer }
+      & Telnyx::Internal::Type::request_parameters
+
+    class DirRetrieveInfringementClaimsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor dir_id: String
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      def initialize: (
+        dir_id: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        dir_id: String,
+        page_number: Integer,
+        page_size: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

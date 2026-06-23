@@ -2,36 +2,18 @@ module Telnyx
   module Models
     module Porting
       type event_retrieve_response =
-        { data: Telnyx::Models::Porting::EventRetrieveResponse::data }
+        { data: Telnyx::Models::Porting::porting_event }
 
       class EventRetrieveResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: Telnyx::Models::Porting::EventRetrieveResponse::data?
+        attr_reader data: Telnyx::Models::Porting::porting_event?
 
         def data=: (
-          Telnyx::Models::Porting::EventRetrieveResponse::data
-        ) -> Telnyx::Models::Porting::EventRetrieveResponse::data
+          Telnyx::Models::Porting::porting_event
+        ) -> Telnyx::Models::Porting::porting_event
 
-        def initialize: (
-          ?data: Telnyx::Models::Porting::EventRetrieveResponse::data
-        ) -> void
+        def initialize: (?data: Telnyx::Models::Porting::porting_event) -> void
 
-        def to_hash: -> {
-          data: Telnyx::Models::Porting::EventRetrieveResponse::data
-        }
-
-        type data =
-          Telnyx::Porting::PortingEventDeletedPayload
-          | Telnyx::Porting::PortingEventMessagingChangedPayload
-          | Telnyx::Porting::PortingEventStatusChangedEvent
-          | Telnyx::Porting::PortingEventNewCommentEvent
-          | Telnyx::Porting::PortingEventSplitEvent
-          | Telnyx::Porting::PortingEventWithoutWebhook
-
-        module Data
-          extend Telnyx::Internal::Type::Union
-
-          def self?.variants: -> ::Array[Telnyx::Models::Porting::EventRetrieveResponse::data]
-        end
+        def to_hash: -> { data: Telnyx::Models::Porting::porting_event }
       end
     end
   end

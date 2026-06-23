@@ -51,7 +51,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ExternalConnections::ReleaseListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ExternalConnections::Release>]
         #
         # @see Telnyx::Models::ExternalConnections::ReleaseListParams
         def list(id, params = {})
@@ -62,7 +62,7 @@ module Telnyx
             path: ["external_connections/%1$s/releases", id],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::ExternalConnections::ReleaseListResponse,
+            model: Telnyx::ExternalConnections::Release,
             options: options
           )
         end

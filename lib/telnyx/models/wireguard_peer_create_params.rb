@@ -7,16 +7,18 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      # @!attribute wireguard_interface_id
-      #   The id of the wireguard interface associated with the peer.
+      # @!attribute body
       #
-      #   @return [String]
-      required :wireguard_interface_id, String
+      #   @return [Telnyx::Models::WireguardPeerCreateParams::Body]
+      required :body, -> { Telnyx::WireguardPeerCreateParams::Body }
 
-      # @!method initialize(wireguard_interface_id:, request_options: {})
-      #   @param wireguard_interface_id [String] The id of the wireguard interface associated with the peer.
-      #
+      # @!method initialize(body:, request_options: {})
+      #   @param body [Telnyx::Models::WireguardPeerCreateParams::Body]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+      class Body < Telnyx::Models::WireguardPeer
+        # @!method initialize
+      end
     end
   end
 end

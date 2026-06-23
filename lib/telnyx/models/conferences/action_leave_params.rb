@@ -38,8 +38,8 @@ module Telnyx
         #   Region where the conference data is located. Defaults to the region defined in
         #   user's data locality settings (Europe or US).
         #
-        #   @return [Symbol, Telnyx::Models::Conferences::ActionLeaveParams::Region, nil]
-        optional :region, enum: -> { Telnyx::Conferences::ActionLeaveParams::Region }
+        #   @return [Symbol, Telnyx::Models::Conferences::ConferenceRegion, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ConferenceRegion }
 
         # @!method initialize(id:, call_control_id:, beep_enabled: nil, command_id: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -53,7 +53,7 @@ module Telnyx
         #
         #   @param command_id [String] Use this field to avoid execution of duplicate commands. Telnyx will ignore subs
         #
-        #   @param region [Symbol, Telnyx::Models::Conferences::ActionLeaveParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        #   @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -66,20 +66,6 @@ module Telnyx
           NEVER = :never
           ON_ENTER = :on_enter
           ON_EXIT = :on_exit
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA = :Australia
-          EUROPE = :Europe
-          MIDDLE_EAST = :"Middle East"
-          US = :US
 
           # @!method self.values
           #   @return [Array<Symbol>]

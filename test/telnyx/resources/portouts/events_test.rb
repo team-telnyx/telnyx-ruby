@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Portouts::EventsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Portouts::EventRetrieveResponse::Data | nil
+        data: Telnyx::Portouts::PortoutEvent | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::Portouts::EventsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Portouts::EventListResponse
+      row => Telnyx::Portouts::PortoutEvent
     end
 
     assert_pattern do

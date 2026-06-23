@@ -1,0 +1,112 @@
+module Telnyx
+  module Models
+    class DirComment = Dir::DirComment
+
+    module Dir
+      type dir_comment =
+        {
+          id: String,
+          author_name: String?,
+          author_role: Telnyx::Models::Dir::DirComment::author_role,
+          comment_type: Telnyx::Models::Dir::comment_type,
+          content: String,
+          created_at: Time,
+          entity_type: Telnyx::Models::Dir::DirComment::entity_type,
+          visibility: Telnyx::Models::Dir::DirComment::visibility
+        }
+
+      class DirComment < Telnyx::Internal::Type::BaseModel
+        attr_reader comment_type: Telnyx::Models::Dir::comment_type?
+
+        def comment_type=: (
+          Telnyx::Models::Dir::comment_type
+        ) -> Telnyx::Models::Dir::comment_type
+
+        attr_reader content: String?
+
+        def content=: (String) -> String
+
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_accessor author_name: String?
+
+        attr_reader author_role: Telnyx::Models::Dir::DirComment::author_role?
+
+        def author_role=: (
+          Telnyx::Models::Dir::DirComment::author_role
+        ) -> Telnyx::Models::Dir::DirComment::author_role
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader entity_type: Telnyx::Models::Dir::DirComment::entity_type?
+
+        def entity_type=: (
+          Telnyx::Models::Dir::DirComment::entity_type
+        ) -> Telnyx::Models::Dir::DirComment::entity_type
+
+        attr_reader visibility: Telnyx::Models::Dir::DirComment::visibility?
+
+        def visibility=: (
+          Telnyx::Models::Dir::DirComment::visibility
+        ) -> Telnyx::Models::Dir::DirComment::visibility
+
+        def initialize: (
+          ?id: String,
+          ?author_name: String?,
+          ?author_role: Telnyx::Models::Dir::DirComment::author_role,
+          ?comment_type: Telnyx::Models::Dir::comment_type,
+          ?content: String,
+          ?created_at: Time,
+          ?entity_type: Telnyx::Models::Dir::DirComment::entity_type,
+          ?visibility: Telnyx::Models::Dir::DirComment::visibility
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          author_name: String?,
+          author_role: Telnyx::Models::Dir::DirComment::author_role,
+          comment_type: Telnyx::Models::Dir::comment_type,
+          content: String,
+          created_at: Time,
+          entity_type: Telnyx::Models::Dir::DirComment::entity_type,
+          visibility: Telnyx::Models::Dir::DirComment::visibility
+        }
+
+        type author_role = :customer | :admin
+
+        module AuthorRole
+          extend Telnyx::Internal::Type::Enum
+
+          CUSTOMER: :customer
+          ADMIN: :admin
+
+          def self?.values: -> ::Array[Telnyx::Models::Dir::DirComment::author_role]
+        end
+
+        type entity_type = :dir
+
+        module EntityType
+          extend Telnyx::Internal::Type::Enum
+
+          DIR: :dir
+
+          def self?.values: -> ::Array[Telnyx::Models::Dir::DirComment::entity_type]
+        end
+
+        type visibility = :customer
+
+        module Visibility
+          extend Telnyx::Internal::Type::Enum
+
+          CUSTOMER: :customer
+
+          def self?.values: -> ::Array[Telnyx::Models::Dir::DirComment::visibility]
+        end
+      end
+    end
+  end
+end

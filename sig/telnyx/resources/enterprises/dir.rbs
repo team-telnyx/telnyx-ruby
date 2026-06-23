@@ -11,11 +11,11 @@ module Telnyx
           certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
           display_name: String,
           ?call_reasons: ::Array[String],
-          ?documents: ::Array[Telnyx::Enterprises::DirCreateParams::Document],
+          ?documents: ::Array[Telnyx::Document],
           ?logo_url: String,
           ?reselling: bool,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Enterprises::DirCreateResponse
+        ) -> Telnyx::DirWrapped
 
         def list: (
           String enterprise_id,
@@ -24,12 +24,12 @@ module Telnyx
           ?filter_expiring_at_gte: Time,
           ?filter_expiring_at_lte: Time,
           ?filter_expiring_within_days: Integer,
-          ?filter_status: Telnyx::Models::Enterprises::DirListParams::filter_status,
+          ?filter_status: Telnyx::Models::dir_status,
           ?page_number: Integer,
           ?page_size: Integer,
           ?sort: Telnyx::Models::Enterprises::DirListParams::sort,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Enterprises::DirListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DirAPI]
 
         def initialize: (client: Telnyx::Client) -> void
       end

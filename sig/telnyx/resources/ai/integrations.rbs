@@ -7,7 +7,7 @@ module Telnyx
         def retrieve: (
           String integration_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::IntegrationRetrieveResponse
+        ) -> Telnyx::AI::Integration
 
         def list: (
           ?request_options: Telnyx::request_opts

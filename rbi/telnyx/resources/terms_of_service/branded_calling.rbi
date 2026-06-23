@@ -15,7 +15,7 @@ module Telnyx
         # returns `403`.
         sig do
           params(request_options: Telnyx::RequestOptions::OrHash).returns(
-            Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse
+            Telnyx::TermsOfService::TosAgreementWrapped
           )
         end
         def agree(request_options: {})

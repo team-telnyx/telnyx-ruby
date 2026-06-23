@@ -1,0 +1,61 @@
+module Telnyx
+  module Models
+    type transcribe_server_event =
+      Telnyx::Models::TranscribeServerEvent::Transcript
+      | Telnyx::Models::TranscribeServerEvent::Error
+
+    module TranscribeServerEvent
+      extend Telnyx::Internal::Type::Union
+
+      type transcript =
+        {
+          transcript: String,
+          type: :transcript,
+          confidence: Float,
+          is_final: bool
+        }
+
+      class Transcript < Telnyx::Internal::Type::BaseModel
+        attr_accessor transcript: String
+
+        attr_accessor type: :transcript
+
+        attr_reader confidence: Float?
+
+        def confidence=: (Float) -> Float
+
+        attr_reader is_final: bool?
+
+        def is_final=: (bool) -> bool
+
+        def initialize: (
+          transcript: String,
+          ?confidence: Float,
+          ?is_final: bool,
+          ?type: :transcript
+        ) -> void
+
+        def to_hash: -> {
+          transcript: String,
+          type: :transcript,
+          confidence: Float,
+          is_final: bool
+        }
+      end
+
+      type error = { error: String, type: :error }
+
+      class Error < Telnyx::Internal::Type::BaseModel
+        attr_accessor error: String
+
+        attr_accessor type: :error
+
+        def initialize: (error: String, ?type: :error) -> void
+
+        def to_hash: -> { error: String, type: :error }
+      end
+
+      def self?.variants: -> ::Array[Telnyx::Models::transcribe_server_event]
+    end
+  end
+end

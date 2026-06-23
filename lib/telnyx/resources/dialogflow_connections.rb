@@ -26,7 +26,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DialogflowConnectionCreateResponse]
+      # @return [Telnyx::Models::DialogflowConnectionResponse]
       #
       # @see Telnyx::Models::DialogflowConnectionCreateParams
       def create(connection_id, params)
@@ -35,7 +35,7 @@ module Telnyx
           method: :post,
           path: ["dialogflow_connections/%1$s", connection_id],
           body: parsed,
-          model: Telnyx::Models::DialogflowConnectionCreateResponse,
+          model: Telnyx::DialogflowConnectionResponse,
           options: options
         )
       end
@@ -49,14 +49,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DialogflowConnectionRetrieveResponse]
+      # @return [Telnyx::Models::DialogflowConnectionResponse]
       #
       # @see Telnyx::Models::DialogflowConnectionRetrieveParams
       def retrieve(connection_id, params = {})
         @client.request(
           method: :get,
           path: ["dialogflow_connections/%1$s", connection_id],
-          model: Telnyx::Models::DialogflowConnectionRetrieveResponse,
+          model: Telnyx::DialogflowConnectionResponse,
           options: params[:request_options]
         )
       end
@@ -82,7 +82,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DialogflowConnectionUpdateResponse]
+      # @return [Telnyx::Models::DialogflowConnectionResponse]
       #
       # @see Telnyx::Models::DialogflowConnectionUpdateParams
       def update(connection_id, params)
@@ -91,7 +91,7 @@ module Telnyx
           method: :put,
           path: ["dialogflow_connections/%1$s", connection_id],
           body: parsed,
-          model: Telnyx::Models::DialogflowConnectionUpdateResponse,
+          model: Telnyx::DialogflowConnectionResponse,
           options: options
         )
       end

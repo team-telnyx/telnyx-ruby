@@ -5,7 +5,7 @@ module Telnyx
         {
           mission_id: String,
           description: String,
-          execution_mode: Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode,
+          execution_mode: Telnyx::Models::AI::execution_mode,
           instructions: String,
           metadata: ::Hash[Symbol, top],
           model: String,
@@ -23,11 +23,11 @@ module Telnyx
 
         def description=: (String) -> String
 
-        attr_reader execution_mode: Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode?
+        attr_reader execution_mode: Telnyx::Models::AI::execution_mode?
 
         def execution_mode=: (
-          Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode
-        ) -> Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode
+          Telnyx::Models::AI::execution_mode
+        ) -> Telnyx::Models::AI::execution_mode
 
         attr_reader instructions: String?
 
@@ -48,7 +48,7 @@ module Telnyx
         def initialize: (
           mission_id: String,
           ?description: String,
-          ?execution_mode: Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode,
+          ?execution_mode: Telnyx::Models::AI::execution_mode,
           ?instructions: String,
           ?metadata: ::Hash[Symbol, top],
           ?model: String,
@@ -59,24 +59,13 @@ module Telnyx
         def to_hash: -> {
           mission_id: String,
           description: String,
-          execution_mode: Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode,
+          execution_mode: Telnyx::Models::AI::execution_mode,
           instructions: String,
           metadata: ::Hash[Symbol, top],
           model: String,
           name: String,
           request_options: Telnyx::RequestOptions
         }
-
-        type execution_mode = :external | :managed
-
-        module ExecutionMode
-          extend Telnyx::Internal::Type::Enum
-
-          EXTERNAL: :external
-          MANAGED: :managed
-
-          def self?.values: -> ::Array[Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode]
-        end
       end
     end
   end

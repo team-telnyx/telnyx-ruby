@@ -12,7 +12,7 @@ module Telnyx
         sig do
           params(
             messages:
-              T::Array[Telnyx::AI::ChatCreateCompletionParams::Message::OrHash],
+              T::Array[Telnyx::AI::ChatCompletionRequest::Message::OrHash],
             api_key_ref: String,
             best_of: Integer,
             early_stopping: T::Boolean,
@@ -29,18 +29,18 @@ module Telnyx
             n: Float,
             presence_penalty: Float,
             response_format:
-              Telnyx::AI::ChatCreateCompletionParams::ResponseFormat::OrHash,
+              Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash,
             seed: Integer,
-            stop: Telnyx::AI::ChatCreateCompletionParams::Stop::Variants,
+            stop: Telnyx::AI::ChatCompletionRequest::Stop::Variants,
             stream: T::Boolean,
             temperature: Float,
             tool_choice:
-              Telnyx::AI::ChatCreateCompletionParams::ToolChoice::OrSymbol,
+              Telnyx::AI::ChatCompletionRequest::ToolChoice::OrSymbol,
             tools:
               T::Array[
                 T.any(
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::Function::OrHash,
-                  Telnyx::AI::ChatCreateCompletionParams::Tool::Retrieval::OrHash
+                  Telnyx::AI::ChatCompletionRequest::Tool::Function::OrHash,
+                  Telnyx::AI::ChatCompletionRequest::Tool::Retrieval::OrHash
                 )
               ],
             top_logprobs: Integer,

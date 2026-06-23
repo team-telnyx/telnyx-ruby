@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    module Dir
+      type comment_type =
+        :vetting_comment
+        | :rejection_reason
+        | :internal_note
+        | :notification
+        | :status_update
+        | :customer_inquiry
+        | :admin_response
+
+      module CommentType
+        extend Telnyx::Internal::Type::Enum
+
+        VETTING_COMMENT: :vetting_comment
+        REJECTION_REASON: :rejection_reason
+        INTERNAL_NOTE: :internal_note
+        NOTIFICATION: :notification
+        STATUS_UPDATE: :status_update
+        CUSTOMER_INQUIRY: :customer_inquiry
+        ADMIN_RESPONSE: :admin_response
+
+        def self?.values: -> ::Array[Telnyx::Models::Dir::comment_type]
+      end
+    end
+  end
+end

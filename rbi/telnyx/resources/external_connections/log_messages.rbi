@@ -32,7 +32,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultPaginationForLogMessages[
-              Telnyx::Models::ExternalConnections::LogMessageListResponse
+              Telnyx::ExternalConnections::LogMessage
             ]
           )
         end

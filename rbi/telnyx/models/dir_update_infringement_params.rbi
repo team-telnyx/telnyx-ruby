@@ -57,11 +57,7 @@ module Telnyx
       attr_accessor :display_name
 
       # Append-only supporting documents.
-      sig do
-        returns(
-          T.nilable(T::Array[Telnyx::DirUpdateInfringementParams::Document])
-        )
-      end
+      sig { returns(T.nilable(T::Array[Telnyx::Document])) }
       attr_accessor :documents
 
       # Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
@@ -82,10 +78,7 @@ module Telnyx
           infringement_resolution_notes: String,
           call_reasons: T.nilable(T::Array[String]),
           display_name: T.nilable(String),
-          documents:
-            T.nilable(
-              T::Array[Telnyx::DirUpdateInfringementParams::Document::OrHash]
-            ),
+          documents: T.nilable(T::Array[Telnyx::Document::OrHash]),
           logo_url: T.nilable(String),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -127,10 +120,7 @@ module Telnyx
             infringement_resolution_notes: String,
             call_reasons: T.nilable(T::Array[String]),
             display_name: T.nilable(String),
-            documents:
-              T.nilable(
-                T::Array[Telnyx::DirUpdateInfringementParams::Document]
-              ),
+            documents: T.nilable(T::Array[Telnyx::Document]),
             logo_url: T.nilable(String),
             request_options: Telnyx::RequestOptions
           }
@@ -256,162 +246,6 @@ module Telnyx
           )
         end
         def self.values
-        end
-      end
-
-      class Document < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::DirUpdateInfringementParams::Document,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Id returned by the Telnyx Documents API after you upload the file (upload via
-        # `POST /v2/documents`; see https://developers.telnyx.com/api/documents).
-        sig { returns(String) }
-        attr_accessor :document_id
-
-        # Type of supporting document. Pick the closest match to what the file actually
-        # contains; `other` triggers manual vetting and may slow approval. The matching
-        # short_name reference list is at `GET /v2/dir/document_types`.
-        sig do
-          returns(
-            Telnyx::DirUpdateInfringementParams::Document::DocumentType::OrSymbol
-          )
-        end
-        attr_accessor :document_type
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
-
-        sig do
-          params(
-            document_id: String,
-            document_type:
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::OrSymbol,
-            description: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Id returned by the Telnyx Documents API after you upload the file (upload via
-          # `POST /v2/documents`; see https://developers.telnyx.com/api/documents).
-          document_id:,
-          # Type of supporting document. Pick the closest match to what the file actually
-          # contains; `other` triggers manual vetting and may slow approval. The matching
-          # short_name reference list is at `GET /v2/dir/document_types`.
-          document_type:,
-          description: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              document_id: String,
-              document_type:
-                Telnyx::DirUpdateInfringementParams::Document::DocumentType::OrSymbol,
-              description: String
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # Type of supporting document. Pick the closest match to what the file actually
-        # contains; `other` triggers manual vetting and may slow approval. The matching
-        # short_name reference list is at `GET /v2/dir/document_types`.
-        module DocumentType
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::DirUpdateInfringementParams::Document::DocumentType
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          LETTER_OF_AUTHORIZATION =
-            T.let(
-              :letter_of_authorization,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          BUSINESS_REGISTRATION =
-            T.let(
-              :business_registration,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          ARTICLES_OF_INCORPORATION =
-            T.let(
-              :articles_of_incorporation,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          TAX_DOCUMENT =
-            T.let(
-              :tax_document,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          EIN_LETTER =
-            T.let(
-              :ein_letter,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          TRADEMARK_REGISTRATION =
-            T.let(
-              :trademark_registration,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          WEBSITE_OWNERSHIP =
-            T.let(
-              :website_ownership,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          BUSINESS_LICENSE =
-            T.let(
-              :business_license,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          PROFESSIONAL_LICENSE =
-            T.let(
-              :professional_license,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          GOVERNMENT_ID =
-            T.let(
-              :government_id,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          UTILITY_BILL =
-            T.let(
-              :utility_bill,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          BANK_STATEMENT =
-            T.let(
-              :bank_statement,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-          OTHER =
-            T.let(
-              :other,
-              Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::DirUpdateInfringementParams::Document::DocumentType::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

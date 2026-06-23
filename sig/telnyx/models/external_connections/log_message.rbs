@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    module ExternalConnections
+      type log_message =
+        {
+          code: String,
+          title: String,
+          detail: String,
+          meta: Telnyx::ExternalConnections::LogMessage::Meta,
+          source: Telnyx::ExternalConnections::LogMessage::Source
+        }
+
+      class LogMessage < Telnyx::Internal::Type::BaseModel
+        attr_accessor code: String
+
+        attr_accessor title: String
+
+        attr_reader detail: String?
+
+        def detail=: (String) -> String
+
+        attr_reader meta: Telnyx::ExternalConnections::LogMessage::Meta?
+
+        def meta=: (
+          Telnyx::ExternalConnections::LogMessage::Meta
+        ) -> Telnyx::ExternalConnections::LogMessage::Meta
+
+        attr_reader source: Telnyx::ExternalConnections::LogMessage::Source?
+
+        def source=: (
+          Telnyx::ExternalConnections::LogMessage::Source
+        ) -> Telnyx::ExternalConnections::LogMessage::Source
+
+        def initialize: (
+          code: String,
+          title: String,
+          ?detail: String,
+          ?meta: Telnyx::ExternalConnections::LogMessage::Meta,
+          ?source: Telnyx::ExternalConnections::LogMessage::Source
+        ) -> void
+
+        def to_hash: -> {
+          code: String,
+          title: String,
+          detail: String,
+          meta: Telnyx::ExternalConnections::LogMessage::Meta,
+          source: Telnyx::ExternalConnections::LogMessage::Source
+        }
+
+        type meta =
+          {
+            external_connection_id: String,
+            telephone_number: String,
+            ticket_id: String
+          }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_reader external_connection_id: String?
+
+          def external_connection_id=: (String) -> String
+
+          attr_reader telephone_number: String?
+
+          def telephone_number=: (String) -> String
+
+          attr_reader ticket_id: String?
+
+          def ticket_id=: (String) -> String
+
+          def initialize: (
+            ?external_connection_id: String,
+            ?telephone_number: String,
+            ?ticket_id: String
+          ) -> void
+
+          def to_hash: -> {
+            external_connection_id: String,
+            telephone_number: String,
+            ticket_id: String
+          }
+        end
+
+        type source = { pointer: String }
+
+        class Source < Telnyx::Internal::Type::BaseModel
+          attr_reader pointer: String?
+
+          def pointer=: (String) -> String
+
+          def initialize: (?pointer: String) -> void
+
+          def to_hash: -> { pointer: String }
+        end
+      end
+    end
+  end
+end

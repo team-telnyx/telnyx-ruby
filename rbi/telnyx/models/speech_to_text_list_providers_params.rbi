@@ -39,28 +39,16 @@ module Telnyx
       # `ai_assistant_transcription` are silently accepted and normalized to
       # `file_based`, `in_call`, and `ai_assistant` respectively. The response always
       # emits the canonical (post-rename) values.
-      sig do
-        returns(
-          T.nilable(
-            Telnyx::SpeechToTextListProvidersParams::ServiceType::OrSymbol
-          )
-        )
-      end
+      sig { returns(T.nilable(Telnyx::SttServiceType::OrSymbol)) }
       attr_reader :service_type
 
-      sig do
-        params(
-          service_type:
-            Telnyx::SpeechToTextListProvidersParams::ServiceType::OrSymbol
-        ).void
-      end
+      sig { params(service_type: Telnyx::SttServiceType::OrSymbol).void }
       attr_writer :service_type
 
       sig do
         params(
           provider: Telnyx::SpeechToTextListProvidersParams::Provider::OrSymbol,
-          service_type:
-            Telnyx::SpeechToTextListProvidersParams::ServiceType::OrSymbol,
+          service_type: Telnyx::SttServiceType::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -87,8 +75,7 @@ module Telnyx
           {
             provider:
               Telnyx::SpeechToTextListProvidersParams::Provider::OrSymbol,
-            service_type:
-              Telnyx::SpeechToTextListProvidersParams::ServiceType::OrSymbol,
+            service_type: Telnyx::SttServiceType::OrSymbol,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -160,53 +147,6 @@ module Telnyx
           override.returns(
             T::Array[
               Telnyx::SpeechToTextListProvidersParams::Provider::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Filter to entries that support the given service type. For backward
-      # compatibility with the values that briefly shipped before the product-aligned
-      # rename, the legacy aliases `file_transcription`, `in_call_transcription`, and
-      # `ai_assistant_transcription` are silently accepted and normalized to
-      # `file_based`, `in_call`, and `ai_assistant` respectively. The response always
-      # emits the canonical (post-rename) values.
-      module ServiceType
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::SpeechToTextListProvidersParams::ServiceType)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        STREAMING =
-          T.let(
-            :streaming,
-            Telnyx::SpeechToTextListProvidersParams::ServiceType::TaggedSymbol
-          )
-        FILE_BASED =
-          T.let(
-            :file_based,
-            Telnyx::SpeechToTextListProvidersParams::ServiceType::TaggedSymbol
-          )
-        IN_CALL =
-          T.let(
-            :in_call,
-            Telnyx::SpeechToTextListProvidersParams::ServiceType::TaggedSymbol
-          )
-        AI_ASSISTANT =
-          T.let(
-            :ai_assistant,
-            Telnyx::SpeechToTextListProvidersParams::ServiceType::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Telnyx::SpeechToTextListProvidersParams::ServiceType::TaggedSymbol
             ]
           )
         end

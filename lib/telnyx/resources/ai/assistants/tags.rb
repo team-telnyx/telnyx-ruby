@@ -12,14 +12,14 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::TagListResponse]
+          # @return [Telnyx::Models::AI::Assistants::TagsResponse]
           #
           # @see Telnyx::Models::AI::Assistants::TagListParams
           def list(params = {})
             @client.request(
               method: :get,
               path: "ai/assistants/tags",
-              model: Telnyx::Models::AI::Assistants::TagListResponse,
+              model: Telnyx::AI::Assistants::TagsResponse,
               options: params[:request_options]
             )
           end
@@ -34,7 +34,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::TagAddResponse]
+          # @return [Telnyx::Models::AI::Assistants::TagsResponse]
           #
           # @see Telnyx::Models::AI::Assistants::TagAddParams
           def add(assistant_id, params)
@@ -43,7 +43,7 @@ module Telnyx
               method: :post,
               path: ["ai/assistants/%1$s/tags", assistant_id],
               body: parsed,
-              model: Telnyx::Models::AI::Assistants::TagAddResponse,
+              model: Telnyx::AI::Assistants::TagsResponse,
               options: options
             )
           end
@@ -58,7 +58,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::AI::Assistants::TagRemoveResponse]
+          # @return [Telnyx::Models::AI::Assistants::TagsResponse]
           #
           # @see Telnyx::Models::AI::Assistants::TagRemoveParams
           def remove(tag, params)
@@ -70,7 +70,7 @@ module Telnyx
             @client.request(
               method: :delete,
               path: ["ai/assistants/%1$s/tags/%2$s", assistant_id, tag],
-              model: Telnyx::Models::AI::Assistants::TagRemoveResponse,
+              model: Telnyx::AI::Assistants::TagsResponse,
               options: options
             )
           end

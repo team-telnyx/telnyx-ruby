@@ -29,8 +29,8 @@ module Telnyx
 
             # @!attribute type
             #
-            #   @return [Symbol, Telnyx::Models::AI::Missions::Runs::EventData::Type]
-            required :type, enum: -> { Telnyx::AI::Missions::Runs::EventData::Type }
+            #   @return [Symbol, Telnyx::Models::AI::Missions::Runs::EventType]
+            required :type, enum: -> { Telnyx::AI::Missions::Runs::EventType }
 
             # @!attribute agent_id
             #
@@ -57,29 +57,11 @@ module Telnyx
             #   @param run_id [String]
             #   @param summary [String]
             #   @param timestamp [Time]
-            #   @param type [Symbol, Telnyx::Models::AI::Missions::Runs::EventData::Type]
+            #   @param type [Symbol, Telnyx::Models::AI::Missions::Runs::EventType]
             #   @param agent_id [String]
             #   @param idempotency_key [String]
             #   @param payload [Hash{Symbol=>Object}]
             #   @param step_id [String]
-
-            # @see Telnyx::Models::AI::Missions::Runs::EventData#type
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              STATUS_CHANGE = :status_change
-              STEP_STARTED = :step_started
-              STEP_COMPLETED = :step_completed
-              STEP_FAILED = :step_failed
-              TOOL_CALL = :tool_call
-              TOOL_RESULT = :tool_result
-              MESSAGE = :message
-              ERROR = :error
-              CUSTOM = :custom
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
           end
         end
       end

@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_engine_assemblyai_config =
+        {
+          interim_results: bool,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model
+        }
+
+      class TranscriptionEngineAssemblyaiConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader interim_results: bool?
+
+        def interim_results=: (bool) -> bool
+
+        attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine?
+
+        def transcription_engine=: (
+          Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine
+        ) -> Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine
+
+        attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model?
+
+        def transcription_model=: (
+          Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model
+        ) -> Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model
+
+        def initialize: (
+          ?interim_results: bool,
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine,
+          ?transcription_model: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model
+        ) -> void
+
+        def to_hash: -> {
+          interim_results: bool,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model
+        }
+
+        type transcription_engine = :AssemblyAI
+
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          ASSEMBLY_AI: :AssemblyAI
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine]
+        end
+
+        type transcription_model = :"assemblyai/universal-streaming"
+
+        module TranscriptionModel
+          extend Telnyx::Internal::Type::Enum
+
+          ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model]
+        end
+      end
+    end
+  end
+end

@@ -17,9 +17,8 @@ module Telnyx
         #   How often Telnyx refreshes the stored reputation data for this enterprise's
         #   registered numbers.
         #
-        #   @return [Symbol, Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency]
-        required :check_frequency,
-                 enum: -> { Telnyx::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency }
+        #   @return [Symbol, Telnyx::Models::Enterprises::ReputationCheckFrequency]
+        required :check_frequency, enum: -> { Telnyx::Enterprises::ReputationCheckFrequency }
 
         # @!method initialize(enterprise_id:, check_frequency:, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -27,25 +26,9 @@ module Telnyx
         #
         #   @param enterprise_id [String]
         #
-        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::CheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
+        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationCheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # How often Telnyx refreshes the stored reputation data for this enterprise's
-        # registered numbers.
-        module CheckFrequency
-          extend Telnyx::Internal::Type::Enum
-
-          BUSINESS_DAILY = :business_daily
-          DAILY = :daily
-          WEEKLY = :weekly
-          BIWEEKLY = :biweekly
-          MONTHLY = :monthly
-          NEVER = :never
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

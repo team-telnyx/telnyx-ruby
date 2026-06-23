@@ -18,12 +18,12 @@ class Telnyx::Test::Resources::Enterprises::DirTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::DirCreateResponse
+      response => Telnyx::DirWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Enterprises::DirCreateResponse::Data
+        data: Telnyx::DirAPI
       }
     end
   end
@@ -41,7 +41,7 @@ class Telnyx::Test::Resources::Enterprises::DirTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Enterprises::DirListResponse
+      row => Telnyx::DirAPI
     end
 
     assert_pattern do
@@ -49,20 +49,20 @@ class Telnyx::Test::Resources::Enterprises::DirTest < Telnyx::Test::ResourceTest
         id: String | nil,
         authorizer_email: String | nil,
         authorizer_name: String | nil,
-        call_reasons: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::DirListResponse::CallReason]) | nil,
+        call_reasons: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::DirAPI::CallReason]) | nil,
         certify_brand_is_accurate: Telnyx::Internal::Type::Boolean | nil,
         certify_ip_ownership: Telnyx::Internal::Type::Boolean | nil,
         certify_no_shaft_content: Telnyx::Internal::Type::Boolean | nil,
         created_at: Time | nil,
         display_name: String | nil,
-        documents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::DirListResponse::Document]) | nil,
+        documents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Document]) | nil,
         enterprise_id: String | nil,
         expiring_at: Time | nil,
         logo_url: String | nil,
         rejected_at: Time | nil,
-        rejection_reasons: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Enterprises::DirListResponse::RejectionReason]) | nil,
+        rejection_reasons: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Dir::RejectionReason]) | nil,
         reselling: Telnyx::Internal::Type::Boolean | nil,
-        status: Telnyx::Models::Enterprises::DirListResponse::Status | nil,
+        status: Telnyx::DirStatus | nil,
         submitted_at: Time | nil,
         updated_at: Time | nil,
         verified_at: Time | nil
