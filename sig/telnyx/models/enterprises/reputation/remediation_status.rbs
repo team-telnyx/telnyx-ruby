@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type remediation_status =
+          :pending | :in_progress | :completed | :failed | :cancelled
+
+        module RemediationStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          IN_PROGRESS: :in_progress
+          COMPLETED: :completed
+          FAILED: :failed
+          CANCELLED: :cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::remediation_status]
+        end
+      end
+    end
+  end
+end

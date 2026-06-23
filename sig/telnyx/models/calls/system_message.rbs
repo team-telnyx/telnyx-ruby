@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module Calls
+      type system_message =
+        {
+          content: String,
+          role: Telnyx::Models::Calls::SystemMessage::role,
+          metadata: ::Hash[Symbol, top]
+        }
+
+      class SystemMessage < Telnyx::Internal::Type::BaseModel
+        attr_accessor content: String
+
+        attr_accessor role: Telnyx::Models::Calls::SystemMessage::role
+
+        attr_reader metadata: ::Hash[Symbol, top]?
+
+        def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        def initialize: (
+          content: String,
+          role: Telnyx::Models::Calls::SystemMessage::role,
+          ?metadata: ::Hash[Symbol, top]
+        ) -> void
+
+        def to_hash: -> {
+          content: String,
+          role: Telnyx::Models::Calls::SystemMessage::role,
+          metadata: ::Hash[Symbol, top]
+        }
+
+        type role = :system
+
+        module Role
+          extend Telnyx::Internal::Type::Enum
+
+          SYSTEM: :system
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::SystemMessage::role]
+        end
+      end
+    end
+  end
+end

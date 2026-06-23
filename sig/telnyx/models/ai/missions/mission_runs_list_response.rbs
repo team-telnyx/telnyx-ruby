@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    module AI
+      class MissionRunsListResponse = Missions::MissionRunsListResponse
+
+      module Missions
+        type mission_runs_list_response =
+          {
+            data: ::Array[Telnyx::AI::Missions::MissionRunData],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+
+        class MissionRunsListResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::AI::Missions::MissionRunData]
+
+          attr_accessor meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+
+          def initialize: (
+            data: ::Array[Telnyx::AI::Missions::MissionRunData],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::AI::Missions::MissionRunData],
+            meta: Telnyx::AI::Assistants::Tests::TestSuites::Meta
+          }
+        end
+      end
+    end
+  end
+end

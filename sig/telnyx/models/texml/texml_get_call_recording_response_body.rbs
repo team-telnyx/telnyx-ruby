@@ -7,7 +7,7 @@ module Telnyx
         {
           account_sid: String,
           call_sid: String,
-          channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels,
+          channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels,
           conference_sid: String?,
           date_created: Time,
           date_updated: Time,
@@ -15,7 +15,7 @@ module Telnyx
           error_code: String?,
           media_url: String,
           sid: String,
-          source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source,
+          source: Telnyx::Models::Texml::Accounts::Calls::recording_source,
           start_time: Time,
           status: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status,
           subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris,
@@ -31,11 +31,11 @@ module Telnyx
 
         def call_sid=: (String) -> String
 
-        attr_reader channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels?
+        attr_reader channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels?
 
         def channels=: (
-          Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels
-        ) -> Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels
+          Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels
+        ) -> Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels
 
         attr_accessor conference_sid: String?
 
@@ -59,11 +59,11 @@ module Telnyx
 
         def sid=: (String) -> String
 
-        attr_reader source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source?
+        attr_reader source: Telnyx::Models::Texml::Accounts::Calls::recording_source?
 
         def source=: (
-          Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source
-        ) -> Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source
+          Telnyx::Models::Texml::Accounts::Calls::recording_source
+        ) -> Telnyx::Models::Texml::Accounts::Calls::recording_source
 
         attr_reader start_time: Time?
 
@@ -88,7 +88,7 @@ module Telnyx
         def initialize: (
           ?account_sid: String,
           ?call_sid: String,
-          ?channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels,
+          ?channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels,
           ?conference_sid: String?,
           ?date_created: Time,
           ?date_updated: Time,
@@ -96,7 +96,7 @@ module Telnyx
           ?error_code: String?,
           ?media_url: String,
           ?sid: String,
-          ?source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source,
+          ?source: Telnyx::Models::Texml::Accounts::Calls::recording_source,
           ?start_time: Time,
           ?status: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status,
           ?subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris,
@@ -106,7 +106,7 @@ module Telnyx
         def to_hash: -> {
           account_sid: String,
           call_sid: String,
-          channels: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels,
+          channels: Telnyx::Models::Texml::Accounts::Calls::twiml_recording_channels,
           conference_sid: String?,
           date_created: Time,
           date_updated: Time,
@@ -114,46 +114,12 @@ module Telnyx
           error_code: String?,
           media_url: String,
           sid: String,
-          source: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source,
+          source: Telnyx::Models::Texml::Accounts::Calls::recording_source,
           start_time: Time,
           status: Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::status,
           subresources_uris: Telnyx::Texml::TexmlRecordingSubresourcesUris,
           uri: String
         }
-
-        type channels = 1 | 2
-
-        module Channels
-          extend Telnyx::Internal::Type::Enum
-
-          CHANNEL_1: 1
-          CHANNEL_2: 2
-
-          def self?.values: -> ::Array[Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::channels]
-        end
-
-        type source =
-          :StartCallRecordingAPI
-          | :StartConferenceRecordingAPI
-          | :OutboundAPI
-          | :DialVerb
-          | :Conference
-          | :RecordVerb
-          | :Trunking
-
-        module Source
-          extend Telnyx::Internal::Type::Enum
-
-          START_CALL_RECORDING_API: :StartCallRecordingAPI
-          START_CONFERENCE_RECORDING_API: :StartConferenceRecordingAPI
-          OUTBOUND_API: :OutboundAPI
-          DIAL_VERB: :DialVerb
-          CONFERENCE: :Conference
-          RECORD_VERB: :RecordVerb
-          TRUNKING: :Trunking
-
-          def self?.values: -> ::Array[Telnyx::Models::Texml::TexmlGetCallRecordingResponseBody::source]
-        end
 
         type status = :"in-progress" | :completed | :paused | :stopped
 

@@ -32,7 +32,7 @@ module Telnyx
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Models::Texml::AccountRetrieveRecordingsJsonResponse
+            Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
           )
         end
         def retrieve_recordings_json(

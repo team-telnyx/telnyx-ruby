@@ -1,43 +1,15 @@
 module Telnyx
   module Models
     type verification_trigger_sms_params =
-      {
-        phone_number: String,
-        verify_profile_id: String,
-        custom_code: String?,
-        timeout_secs: Integer
-      }
-      & Telnyx::Internal::Type::request_parameters
+      {  } & Telnyx::Internal::Type::request_parameters
 
-    class VerificationTriggerSMSParams < Telnyx::Internal::Type::BaseModel
+    class VerificationTriggerSMSParams < Telnyx::Models::CreateVerificationRequestSMS
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor phone_number: String
+      def initialize: (?request_options: Telnyx::request_opts) -> void
 
-      attr_accessor verify_profile_id: String
-
-      attr_accessor custom_code: String?
-
-      attr_reader timeout_secs: Integer?
-
-      def timeout_secs=: (Integer) -> Integer
-
-      def initialize: (
-        phone_number: String,
-        verify_profile_id: String,
-        ?custom_code: String?,
-        ?timeout_secs: Integer,
-        ?request_options: Telnyx::request_opts
-      ) -> void
-
-      def to_hash: -> {
-        phone_number: String,
-        verify_profile_id: String,
-        custom_code: String?,
-        timeout_secs: Integer,
-        request_options: Telnyx::RequestOptions
-      }
+      def to_hash: -> { request_options: Telnyx::RequestOptions }
     end
   end
 end

@@ -12,7 +12,7 @@ module Telnyx
           params(
             integration_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::IntegrationRetrieveResponse)
+          ).returns(Telnyx::AI::Integration)
         end
         def retrieve(
           # The integration id

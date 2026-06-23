@@ -29,7 +29,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
         run_id: String,
         summary: String,
         timestamp: Time,
-        type: Telnyx::AI::Missions::Runs::EventData::Type,
+        type: Telnyx::AI::Missions::Runs::EventType,
         agent_id: String | nil,
         idempotency_key: String | nil,
         payload: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
@@ -49,7 +49,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::Runs::EventGetEventDetailsResponse
+      response => Telnyx::AI::Missions::Runs::EventResponse
     end
 
     assert_pattern do
@@ -71,7 +71,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::Runs::EventLogResponse
+      response => Telnyx::AI::Missions::Runs::EventResponse
     end
 
     assert_pattern do

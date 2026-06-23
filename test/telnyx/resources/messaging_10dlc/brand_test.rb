@@ -202,7 +202,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
     response = @telnyx.messaging_10dlc.brand.get_sms_otp_by_reference("OTP4B2001")
 
     assert_pattern do
-      response => Telnyx::Models::Messaging10dlc::BrandGetSMSOtpByReferenceResponse
+      response => Telnyx::Messaging10dlc::BrandSMSOtpStatus
     end
 
     assert_pattern do
@@ -235,7 +235,7 @@ class Telnyx::Test::Resources::Messaging10dlc::BrandTest < Telnyx::Test::Resourc
     response = @telnyx.messaging_10dlc.brand.retrieve_sms_otp_status("4b20019b-043a-78f8-0657-b3be3f4b4002")
 
     assert_pattern do
-      response => Telnyx::Models::Messaging10dlc::BrandRetrieveSMSOtpStatusResponse
+      response => Telnyx::Messaging10dlc::BrandSMSOtpStatus
     end
 
     assert_pattern do

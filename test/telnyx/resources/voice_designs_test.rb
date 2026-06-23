@@ -13,7 +13,7 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Telnyx::Models::VoiceDesignCreateResponse
+      response => Telnyx::VoiceDesignResponse
     end
 
     assert_pattern do
@@ -29,7 +29,7 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
     response = @telnyx.voice_designs.retrieve("id")
 
     assert_pattern do
-      response => Telnyx::Models::VoiceDesignRetrieveResponse
+      response => Telnyx::VoiceDesignResponse
     end
 
     assert_pattern do
@@ -52,7 +52,7 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::VoiceDesignListResponse
+      row => Telnyx::VoiceDesignSummaryData
     end
 
     assert_pattern do
@@ -60,9 +60,9 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
         id: String | nil,
         created_at: Time | nil,
         name: String | nil,
-        provider: Telnyx::Models::VoiceDesignListResponse::Provider | nil,
+        provider: Telnyx::VoiceDesignSummaryData::Provider | nil,
         provider_supported_models: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
-        record_type: Telnyx::Models::VoiceDesignListResponse::RecordType | nil,
+        record_type: Telnyx::VoiceDesignSummaryData::RecordType | nil,
         updated_at: Time | nil
       }
     end
@@ -109,7 +109,7 @@ class Telnyx::Test::Resources::VoiceDesignsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::VoiceDesignRenameResponse::Data | nil
+        data: Telnyx::VoiceDesignSummaryData | nil
       }
     end
   end

@@ -19,7 +19,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Reputation::NumberRetrieveResponse]
+        # @return [Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumberWithReputation]
         #
         # @see Telnyx::Models::Reputation::NumberRetrieveParams
         def retrieve(phone_number, params = {})
@@ -29,7 +29,7 @@ module Telnyx
             method: :get,
             path: ["reputation/numbers/%1$s", phone_number],
             query: query,
-            model: Telnyx::Models::Reputation::NumberRetrieveResponse,
+            model: Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation,
             options: options
           )
         end
@@ -55,7 +55,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Reputation::NumberListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumber>]
         #
         # @see Telnyx::Models::Reputation::NumberListParams
         def list(params = {})
@@ -72,7 +72,7 @@ module Telnyx
               page_size: "page[size]"
             ),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Reputation::NumberListResponse,
+            model: Telnyx::Enterprises::Reputation::ReputationPhoneNumber,
             options: options
           )
         end

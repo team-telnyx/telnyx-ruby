@@ -17,7 +17,7 @@ module Telnyx
                   Telnyx::Texml::Accounts::Calls::RecordingRecordingSidJsonParams::Status::OrSymbol,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(
-                Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonResponse
+                Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody
               )
             end
             def recording_sid_json(

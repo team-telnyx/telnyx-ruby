@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::AI::ToolsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.tools.create(display_name: "display_name", type: "type")
 
     assert_pattern do
-      response => Telnyx::Models::AI::ToolCreateResponse
+      response => Telnyx::AI::SharedToolResponse
     end
 
     assert_pattern do
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::AI::ToolsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.tools.retrieve("tool_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::ToolRetrieveResponse
+      response => Telnyx::AI::SharedToolResponse
     end
 
     assert_pattern do
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::AI::ToolsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.tools.update("tool_id")
 
     assert_pattern do
-      response => Telnyx::Models::AI::ToolUpdateResponse
+      response => Telnyx::AI::SharedToolResponse
     end
 
     assert_pattern do
@@ -79,7 +79,7 @@ class Telnyx::Test::Resources::AI::ToolsTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::AI::ToolListResponse
+      row => Telnyx::AI::SharedToolResponse
     end
 
     assert_pattern do

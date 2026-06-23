@@ -37,7 +37,7 @@ module Telnyx
       #
       # @param microsoft_teams_sbc [Boolean] When enabled, the connection will be created for Microsoft Teams Direct Routing.
       #
-      # @param noise_suppression [Symbol, Telnyx::Models::FqdnConnectionCreateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      # @param noise_suppression [Symbol, Telnyx::Models::ConnectionNoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
       # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #
@@ -128,7 +128,7 @@ module Telnyx
       #
       # @param jitter_buffer [Telnyx::Models::ConnectionJitterBuffer] Configuration options for Jitter Buffer. Enables Jitter Buffer for RTP streams o
       #
-      # @param noise_suppression [Symbol, Telnyx::Models::FqdnConnectionUpdateParams::NoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
+      # @param noise_suppression [Symbol, Telnyx::Models::ConnectionNoiseSuppression] Controls when noise suppression is applied to calls. When set to 'inbound', nois
       #
       # @param noise_suppression_details [Telnyx::Models::ConnectionNoiseSuppressionDetails] Configuration options for noise suppression. These settings are stored regardles
       #

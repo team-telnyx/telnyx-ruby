@@ -16,7 +16,7 @@ class Telnyx::Test::Resources::Dir::PhoneNumbersTest < Telnyx::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Dir::PhoneNumberListResponse
+      row => Telnyx::Dir::DirPhoneNumber
     end
 
     assert_pattern do
@@ -28,8 +28,8 @@ class Telnyx::Test::Resources::Dir::PhoneNumbersTest < Telnyx::Test::ResourceTes
         enterprise_id: String | nil,
         loa_document_id: String | nil,
         phone_number: String | nil,
-        rejection_reason: Telnyx::Models::Dir::PhoneNumberListResponse::RejectionReason | nil,
-        status: Telnyx::Models::Dir::PhoneNumberListResponse::Status | nil,
+        rejection_reason: Telnyx::Dir::RejectionReason | nil,
+        status: Telnyx::Dir::DirPhoneNumberStatus | nil,
         updated_at: Time | nil,
         verified_at: Time | nil
       }
@@ -57,7 +57,7 @@ class Telnyx::Test::Resources::Dir::PhoneNumbersTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Dir::PhoneNumberAddResponse::Data])
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Dir::DirPhoneNumber])
       }
     end
   end

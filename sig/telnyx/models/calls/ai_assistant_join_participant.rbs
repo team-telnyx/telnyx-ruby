@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    module Calls
+      type ai_assistant_join_participant =
+        {
+          id: String,
+          role: Telnyx::Models::Calls::AIAssistantJoinParticipant::role,
+          name: String,
+          on_hangup: Telnyx::Models::Calls::AIAssistantJoinParticipant::on_hangup
+        }
+
+      class AIAssistantJoinParticipant < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor role: Telnyx::Models::Calls::AIAssistantJoinParticipant::role
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader on_hangup: Telnyx::Models::Calls::AIAssistantJoinParticipant::on_hangup?
+
+        def on_hangup=: (
+          Telnyx::Models::Calls::AIAssistantJoinParticipant::on_hangup
+        ) -> Telnyx::Models::Calls::AIAssistantJoinParticipant::on_hangup
+
+        def initialize: (
+          id: String,
+          role: Telnyx::Models::Calls::AIAssistantJoinParticipant::role,
+          ?name: String,
+          ?on_hangup: Telnyx::Models::Calls::AIAssistantJoinParticipant::on_hangup
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          role: Telnyx::Models::Calls::AIAssistantJoinParticipant::role,
+          name: String,
+          on_hangup: Telnyx::Models::Calls::AIAssistantJoinParticipant::on_hangup
+        }
+
+        type role = :user
+
+        module Role
+          extend Telnyx::Internal::Type::Enum
+
+          USER: :user
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::AIAssistantJoinParticipant::role]
+        end
+
+        type on_hangup = :continue_conversation | :end_conversation
+
+        module OnHangup
+          extend Telnyx::Internal::Type::Enum
+
+          CONTINUE_CONVERSATION: :continue_conversation
+          END_CONVERSATION: :end_conversation
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::AIAssistantJoinParticipant::on_hangup]
+        end
+      end
+    end
+  end
+end

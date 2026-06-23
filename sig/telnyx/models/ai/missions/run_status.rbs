@@ -1,0 +1,23 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        type run_status =
+          :pending | :running | :paused | :succeeded | :failed | :cancelled
+
+        module RunStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          RUNNING: :running
+          PAUSED: :paused
+          SUCCEEDED: :succeeded
+          FAILED: :failed
+          CANCELLED: :cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::Missions::run_status]
+        end
+      end
+    end
+  end
+end

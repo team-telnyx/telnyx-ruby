@@ -9,12 +9,12 @@ class Telnyx::Test::Resources::InfringementClaimsTest < Telnyx::Test::ResourceTe
     response = @telnyx.infringement_claims.retrieve("e379fbc8-cd83-4bef-a280-a0ac9d00dcf8")
 
     assert_pattern do
-      response => Telnyx::Models::InfringementClaimRetrieveResponse
+      response => Telnyx::InfringementClaimWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::InfringementClaimRetrieveResponse::Data
+        data: Telnyx::InfringementClaim
       }
     end
   end
@@ -29,12 +29,12 @@ class Telnyx::Test::Resources::InfringementClaimsTest < Telnyx::Test::ResourceTe
       )
 
     assert_pattern do
-      response => Telnyx::Models::InfringementClaimContestResponse
+      response => Telnyx::InfringementClaimWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::InfringementClaimContestResponse::Data
+        data: Telnyx::InfringementClaim
       }
     end
   end

@@ -7,11 +7,11 @@ module Telnyx
             String enterprise_id,
             loa_document_id: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Enterprises::Reputation::LoaUpdateResponse
+          ) -> Telnyx::Enterprises::EnterpriseReputationPublicWrapped
 
           def render: (
             String enterprise_id,
-            ?agent: Telnyx::Enterprises::Reputation::LoaRenderParams::Agent,
+            ?agent: Telnyx::Enterprises::Reputation::AgentInput,
             ?signature: Telnyx::Enterprises::Reputation::LoaRenderParams::Signature,
             ?request_options: Telnyx::request_opts
           ) -> StringIO

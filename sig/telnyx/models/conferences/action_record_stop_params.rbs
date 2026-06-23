@@ -7,7 +7,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           recording_id: String,
-          region: Telnyx::Models::Conferences::ActionRecordStopParams::region
+          region: Telnyx::Models::Conferences::conference_region
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -29,18 +29,18 @@ module Telnyx
 
         def recording_id=: (String) -> String
 
-        attr_reader region: Telnyx::Models::Conferences::ActionRecordStopParams::region?
+        attr_reader region: Telnyx::Models::Conferences::conference_region?
 
         def region=: (
-          Telnyx::Models::Conferences::ActionRecordStopParams::region
-        ) -> Telnyx::Models::Conferences::ActionRecordStopParams::region
+          Telnyx::Models::Conferences::conference_region
+        ) -> Telnyx::Models::Conferences::conference_region
 
         def initialize: (
           id: String,
           ?client_state: String,
           ?command_id: String,
           ?recording_id: String,
-          ?region: Telnyx::Models::Conferences::ActionRecordStopParams::region,
+          ?region: Telnyx::Models::Conferences::conference_region,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -49,22 +49,9 @@ module Telnyx
           client_state: String,
           command_id: String,
           recording_id: String,
-          region: Telnyx::Models::Conferences::ActionRecordStopParams::region,
+          region: Telnyx::Models::Conferences::conference_region,
           request_options: Telnyx::RequestOptions
         }
-
-        type region = :Australia | :Europe | :"Middle East" | :US
-
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA: :Australia
-          EUROPE: :Europe
-          MIDDLE_EAST: :"Middle East"
-          US: :US
-
-          def self?.values: -> ::Array[Telnyx::Models::Conferences::ActionRecordStopParams::region]
-        end
       end
     end
   end

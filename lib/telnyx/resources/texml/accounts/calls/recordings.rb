@@ -21,7 +21,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonResponse]
+            # @return [Telnyx::Models::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody]
             #
             # @see Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams
             def recording_sid_json(recording_sid, params)
@@ -44,7 +44,7 @@ module Telnyx
                 ],
                 headers: {"content-type" => "application/x-www-form-urlencoded"},
                 body: parsed,
-                model: Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonResponse,
+                model: Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody,
                 options: options
               )
             end

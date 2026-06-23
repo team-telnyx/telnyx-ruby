@@ -2,7 +2,13 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::AdvancedOrders#create
     class AdvancedOrder < Telnyx::Internal::Type::BaseModel
+      # @!attribute id
+      #
+      #   @return [String, nil]
+      optional :id, String
+
       # @!attribute area_code
       #
       #   @return [String, nil]
@@ -28,10 +34,16 @@ module Telnyx
       #   @return [Array<Symbol, Telnyx::Models::AdvancedOrder::Feature>, nil]
       optional :features, -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Feature] }
 
+      # @!attribute orders
+      #
+      #   @return [Array<String>, nil]
+      optional :orders, Telnyx::Internal::Type::ArrayOf[String]
+
       # @!attribute phone_number_type
       #
-      #   @return [Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType, nil]
-      optional :phone_number_type, enum: -> { Telnyx::AdvancedOrder::PhoneNumberType }
+      #   @return [Array<Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType>, nil]
+      optional :phone_number_type,
+               -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::PhoneNumberType] }
 
       # @!attribute quantity
       #
@@ -39,12 +51,19 @@ module Telnyx
       optional :quantity, Integer
 
       # @!attribute requirement_group_id
-      #   The ID of the requirement group to associate with this advanced order
+      #   The ID of the requirement group associated with this advanced order
       #
       #   @return [String, nil]
       optional :requirement_group_id, String
 
-      # @!method initialize(area_code: nil, comments: nil, country_code: nil, customer_reference: nil, features: nil, phone_number_type: nil, quantity: nil, requirement_group_id: nil)
+      # @!attribute status
+      #
+      #   @return [Array<Symbol, Telnyx::Models::AdvancedOrder::Status>, nil]
+      optional :status, -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AdvancedOrder::Status] }
+
+      # @!method initialize(id: nil, area_code: nil, comments: nil, country_code: nil, customer_reference: nil, features: nil, orders: nil, phone_number_type: nil, quantity: nil, requirement_group_id: nil, status: nil)
+      #   @param id [String]
+      #
       #   @param area_code [String]
       #
       #   @param comments [String]
@@ -55,11 +74,15 @@ module Telnyx
       #
       #   @param features [Array<Symbol, Telnyx::Models::AdvancedOrder::Feature>]
       #
-      #   @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType]
+      #   @param orders [Array<String>]
+      #
+      #   @param phone_number_type [Array<Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType>]
       #
       #   @param quantity [Integer]
       #
-      #   @param requirement_group_id [String] The ID of the requirement group to associate with this advanced order
+      #   @param requirement_group_id [String] The ID of the requirement group associated with this advanced order
+      #
+      #   @param status [Array<Symbol, Telnyx::Models::AdvancedOrder::Status>]
 
       module Feature
         extend Telnyx::Internal::Type::Enum
@@ -74,7 +97,6 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # @see Telnyx::Models::AdvancedOrder#phone_number_type
       module PhoneNumberType
         extend Telnyx::Internal::Type::Enum
 
@@ -84,6 +106,17 @@ module Telnyx
         SHARED_COST = :shared_cost
         NATIONAL = :national
         LANDLINE = :landline
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING = :pending
+        PROCESSING = :processing
+        ORDERED = :ordered
 
         # @!method self.values
         #   @return [Array<Symbol>]

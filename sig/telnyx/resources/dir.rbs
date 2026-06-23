@@ -10,7 +10,7 @@ module Telnyx
       def retrieve: (
         String dir_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::DirRetrieveResponse
+      ) -> Telnyx::DirWrapped
 
       def update: (
         String dir_id,
@@ -21,11 +21,11 @@ module Telnyx
         ?certify_ip_ownership: bool,
         ?certify_no_shaft_content: bool,
         ?display_name: String,
-        ?documents: ::Array[Telnyx::DirUpdateParams::Document],
+        ?documents: ::Array[Telnyx::Document],
         ?logo_url: String,
         ?reselling: bool,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::DirUpdateResponse
+      ) -> Telnyx::DirWrapped
 
       def list: (
         ?filter_call_reason_contains: String,
@@ -33,22 +33,14 @@ module Telnyx
         ?filter_enterprise_id: String,
         ?filter_expiring_at_gte: Time,
         ?filter_expiring_at_lte: Time,
-        ?filter_status: Telnyx::Models::DirListParams::filter_status,
+        ?filter_status: Telnyx::Models::dir_status,
         ?page_number: Integer,
         ?page_size: Integer,
         ?sort: Telnyx::Models::DirListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::DirListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DirAPI]
 
       def delete: (String dir_id, ?request_options: Telnyx::request_opts) -> nil
-
-      def create_loa: (
-        String dir_id,
-        phone_numbers: ::Array[String],
-        ?agent: Telnyx::DirCreateLoaParams::Agent,
-        ?signature: Telnyx::DirCreateLoaParams::Signature,
-        ?request_options: Telnyx::request_opts
-      ) -> StringIO
 
       def list_document_types: (
         ?request_options: Telnyx::request_opts
@@ -59,12 +51,20 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::DirListInfringementClaimsResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::InfringementClaim]
+
+      def new_loa: (
+        String dir_id,
+        phone_numbers: ::Array[String],
+        ?agent: Telnyx::Enterprises::Reputation::AgentInput,
+        ?signature: Telnyx::DirNewLoaParams::Signature,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
 
       def submit: (
         String dir_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::DirSubmitResponse
+      ) -> Telnyx::DirWrapped
 
       def update_infringement: (
         String dir_id,
@@ -75,10 +75,10 @@ module Telnyx
         infringement_resolution_notes: String,
         ?call_reasons: ::Array[String]?,
         ?display_name: String?,
-        ?documents: ::Array[Telnyx::DirUpdateInfringementParams::Document]?,
+        ?documents: ::Array[Telnyx::Document]?,
         ?logo_url: String?,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::DirUpdateInfringementResponse
+      ) -> Telnyx::DirWrapped
 
       def initialize: (client: Telnyx::Client) -> void
     end

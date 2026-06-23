@@ -12,7 +12,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Porting::event_list_response]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Porting::porting_event]
 
         def republish: (
           String id,

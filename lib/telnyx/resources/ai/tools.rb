@@ -19,7 +19,7 @@ module Telnyx
         # @param webhook [Hash{Symbol=>Object}]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::ToolCreateResponse]
+        # @return [Telnyx::Models::AI::SharedToolResponse]
         #
         # @see Telnyx::Models::AI::ToolCreateParams
         def create(params)
@@ -28,7 +28,7 @@ module Telnyx
             method: :post,
             path: "ai/tools",
             body: parsed,
-            model: Telnyx::Models::AI::ToolCreateResponse,
+            model: Telnyx::AI::SharedToolResponse,
             options: options
           )
         end
@@ -41,14 +41,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::ToolRetrieveResponse]
+        # @return [Telnyx::Models::AI::SharedToolResponse]
         #
         # @see Telnyx::Models::AI::ToolRetrieveParams
         def retrieve(tool_id, params = {})
           @client.request(
             method: :get,
             path: ["ai/tools/%1$s", tool_id],
-            model: Telnyx::Models::AI::ToolRetrieveResponse,
+            model: Telnyx::AI::SharedToolResponse,
             options: params[:request_options]
           )
         end
@@ -77,7 +77,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::ToolUpdateResponse]
+        # @return [Telnyx::Models::AI::SharedToolResponse]
         #
         # @see Telnyx::Models::AI::ToolUpdateParams
         def update(tool_id, params = {})
@@ -86,7 +86,7 @@ module Telnyx
             method: :patch,
             path: ["ai/tools/%1$s", tool_id],
             body: parsed,
-            model: Telnyx::Models::AI::ToolUpdateResponse,
+            model: Telnyx::AI::SharedToolResponse,
             options: options
           )
         end
@@ -105,7 +105,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::ToolListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::SharedToolResponse>]
         #
         # @see Telnyx::Models::AI::ToolListParams
         def list(params = {})
@@ -121,7 +121,7 @@ module Telnyx
               page_size: "page[size]"
             ),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::AI::ToolListResponse,
+            model: Telnyx::AI::SharedToolResponse,
             options: options
           )
         end

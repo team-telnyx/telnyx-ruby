@@ -1,0 +1,53 @@
+module Telnyx
+  module Models
+    class WhatsappTemplateCarouselComponent = Whatsapp::WhatsappTemplateCarouselComponent
+
+    module Whatsapp
+      type whatsapp_template_carousel_component =
+        {
+          cards: ::Array[Telnyx::Whatsapp::WhatsappTemplateCarouselComponent::Card],
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateCarouselComponent::type_
+        }
+
+      class WhatsappTemplateCarouselComponent < Telnyx::Internal::Type::BaseModel
+        attr_accessor cards: ::Array[Telnyx::Whatsapp::WhatsappTemplateCarouselComponent::Card]
+
+        attr_accessor type: Telnyx::Models::Whatsapp::WhatsappTemplateCarouselComponent::type_
+
+        def initialize: (
+          cards: ::Array[Telnyx::Whatsapp::WhatsappTemplateCarouselComponent::Card],
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateCarouselComponent::type_
+        ) -> void
+
+        def to_hash: -> {
+          cards: ::Array[Telnyx::Whatsapp::WhatsappTemplateCarouselComponent::Card],
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateCarouselComponent::type_
+        }
+
+        type card = { components: ::Array[::Hash[Symbol, top]] }
+
+        class Card < Telnyx::Internal::Type::BaseModel
+          attr_reader components: ::Array[::Hash[Symbol, top]]?
+
+          def components=: (
+            ::Array[::Hash[Symbol, top]]
+          ) -> ::Array[::Hash[Symbol, top]]
+
+          def initialize: (?components: ::Array[::Hash[Symbol, top]]) -> void
+
+          def to_hash: -> { components: ::Array[::Hash[Symbol, top]] }
+        end
+
+        type type_ = :CAROUSEL
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          CAROUSEL: :CAROUSEL
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateCarouselComponent::type_]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,61 @@
+module Telnyx
+  module Models
+    module Enterprises
+      class ReputationPhoneNumber = Reputation::ReputationPhoneNumber
+
+      module Reputation
+        type reputation_phone_number =
+          {
+            id: String,
+            created_at: Time,
+            enterprise_id: String,
+            phone_number: String,
+            reputation_data: Telnyx::ReputationData?,
+            updated_at: Time
+          }
+
+        class ReputationPhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_reader enterprise_id: String?
+
+          def enterprise_id=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_accessor reputation_data: Telnyx::ReputationData?
+
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          def initialize: (
+            ?id: String,
+            ?created_at: Time,
+            ?enterprise_id: String,
+            ?phone_number: String,
+            ?reputation_data: Telnyx::ReputationData?,
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            enterprise_id: String,
+            phone_number: String,
+            reputation_data: Telnyx::ReputationData?,
+            updated_at: Time
+          }
+        end
+      end
+    end
+  end
+end

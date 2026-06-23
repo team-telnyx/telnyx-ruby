@@ -1,32 +1,15 @@
 module Telnyx
   module Models
-    type network_create_response =
-      { data: Telnyx::Models::NetworkCreateResponse::Data }
+    type network_create_response = { data: Telnyx::Network }
 
     class NetworkCreateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::NetworkCreateResponse::Data?
+      attr_reader data: Telnyx::Network?
 
-      def data=: (
-        Telnyx::Models::NetworkCreateResponse::Data
-      ) -> Telnyx::Models::NetworkCreateResponse::Data
+      def data=: (Telnyx::Network) -> Telnyx::Network
 
-      def initialize: (
-        ?data: Telnyx::Models::NetworkCreateResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::Network) -> void
 
-      def to_hash: -> { data: Telnyx::Models::NetworkCreateResponse::Data }
-
-      type data = { name: String }
-
-      class Data < Telnyx::Models::Record
-        def name: -> String?
-
-        def name=: (String _) -> String
-
-        def initialize: (?name: String) -> void
-
-        def to_hash: -> { name: String }
-      end
+      def to_hash: -> { data: Telnyx::Network }
     end
   end
 end

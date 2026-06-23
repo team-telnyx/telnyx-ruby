@@ -3,13 +3,11 @@ module Telnyx
     type network_update_params =
       { network_id: String } & Telnyx::Internal::Type::request_parameters
 
-    class NetworkUpdateParams < Telnyx::Models::NetworkCreate
+    class NetworkUpdateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      def network_id: -> String
-
-      def network_id=: (String _) -> String
+      attr_accessor network_id: String
 
       def initialize: (
         network_id: String,

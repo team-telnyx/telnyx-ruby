@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::PortingOrders::CommentsTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::PortingOrders::CommentCreateResponse::Data | nil
+        data: Telnyx::PortingOrders::PortingOrdersComment | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::PortingOrders::CommentsTest < Telnyx::Test::Resou
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::PortingOrders::CommentListResponse
+      row => Telnyx::PortingOrders::PortingOrdersComment
     end
 
     assert_pattern do
@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::PortingOrders::CommentsTest < Telnyx::Test::Resou
         created_at: Time | nil,
         porting_order_id: String | nil,
         record_type: String | nil,
-        user_type: Telnyx::Models::PortingOrders::CommentListResponse::UserType | nil
+        user_type: Telnyx::PortingOrders::PortingOrdersComment::UserType | nil
       }
     end
   end

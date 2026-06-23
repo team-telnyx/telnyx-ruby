@@ -10,11 +10,11 @@ module Telnyx
 
         def list: (
           String dir_id,
-          ?filter_status: Telnyx::Models::Dir::PhoneNumberBatchListParams::filter_status,
+          ?filter_status: Telnyx::Models::Dir::dir_phone_number_status,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Dir::PhoneNumberBatchListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Dir::PhoneNumberBatch]
 
         def initialize: (client: Telnyx::Client) -> void
       end

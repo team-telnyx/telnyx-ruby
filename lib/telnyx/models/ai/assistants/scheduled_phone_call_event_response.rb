@@ -47,8 +47,8 @@ module Telnyx
           #   dispatches. Phone-call events only. New per-call dispatch options should be
           #   added here rather than as top-level event fields.
           #
-          #   @return [Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings, nil]
-          optional :call_settings, -> { Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings }
+          #   @return [Telnyx::Models::AI::Assistants::ScheduledCallSettings, nil]
+          optional :call_settings, -> { Telnyx::AI::Assistants::ScheduledCallSettings }
 
           # @!attribute call_status
           #   Values: busy, canceled, no-answer, ringing, completed, failed, in-progress
@@ -141,7 +141,7 @@ module Telnyx
           #
           #   @param call_duration [Integer] Duration of the call in seconds
           #
-          #   @param call_settings [Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings] Per-call telephony overrides applied when a scheduled phone-call event
+          #   @param call_settings [Telnyx::Models::AI::Assistants::ScheduledCallSettings] Per-call telephony overrides applied when a scheduled phone-call event
           #
           #   @param call_status [String] Values: busy, canceled, no-answer, ringing, completed, failed, in-progress
           #
@@ -209,47 +209,6 @@ module Telnyx
             #   @param call_duration [Integer] Duration of the call in seconds
             #
             #   @param telnyx_call_control_id [String]
-          end
-
-          # @see Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse#call_settings
-          class CallSettings < Telnyx::Internal::Type::BaseModel
-            # @!attribute sip_region
-            #   SIP region passed to Telnyx when initiating an outbound call. Values match the
-            #   Telnyx TeXML `SipRegion` parameter exactly. Telnyx defaults to `US` when
-            #   omitted.
-            #
-            #   @return [Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::SipRegion, nil]
-            optional :sip_region,
-                     enum: -> { Telnyx::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::SipRegion }
-
-            # @!method initialize(sip_region: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings}
-            #   for more details.
-            #
-            #   Per-call telephony overrides applied when a scheduled phone-call event
-            #   dispatches. Phone-call events only. New per-call dispatch options should be
-            #   added here rather than as top-level event fields.
-            #
-            #   @param sip_region [Symbol, Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings::SipRegion] SIP region passed to Telnyx when initiating an outbound call. Values
-
-            # SIP region passed to Telnyx when initiating an outbound call. Values match the
-            # Telnyx TeXML `SipRegion` parameter exactly. Telnyx defaults to `US` when
-            # omitted.
-            #
-            # @see Telnyx::Models::AI::Assistants::ScheduledPhoneCallEventResponse::CallSettings#sip_region
-            module SipRegion
-              extend Telnyx::Internal::Type::Enum
-
-              US = :US
-              EUROPE = :Europe
-              CANADA = :Canada
-              AUSTRALIA = :Australia
-              MIDDLE_EAST = :"Middle East"
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
           end
 
           module ConversationMetadata

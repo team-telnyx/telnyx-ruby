@@ -41,7 +41,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultPaginationForLogMessages<Telnyx::Models::ExternalConnections::LogMessageListResponse>]
+        # @return [Telnyx::Internal::DefaultPaginationForLogMessages<Telnyx::Models::ExternalConnections::LogMessage>]
         #
         # @see Telnyx::Models::ExternalConnections::LogMessageListParams
         def list(params = {})
@@ -52,7 +52,7 @@ module Telnyx
             path: "external_connections/log_messages",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultPaginationForLogMessages,
-            model: Telnyx::Models::ExternalConnections::LogMessageListResponse,
+            model: Telnyx::ExternalConnections::LogMessage,
             options: options
           )
         end

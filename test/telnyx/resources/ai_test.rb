@@ -6,10 +6,31 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
   def test_create_response_deprecated_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.create_response_deprecated(body: {model: "bar", input: "bar"})
+    response = @telnyx.ai.create_response_deprecated(response_request: {model: "bar", input: "bar"})
 
     assert_pattern do
       response => ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown])
+    end
+  end
+
+  def test_retrieve_conversation_histories_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.ai.retrieve_conversation_histories(
+        q: "customer called about billing issue",
+        record_type: :voice
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::AIRetrieveConversationHistoriesResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data]),
+        meta: Telnyx::Models::AIRetrieveConversationHistoriesResponse::Meta
+      }
     end
   end
 
@@ -19,31 +40,13 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.retrieve_models
 
     assert_pattern do
-      response => Telnyx::Models::AIRetrieveModelsResponse
+      response => Telnyx::ModelsResponse
     end
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AIRetrieveModelsResponse::Data]),
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::ModelMetadata]),
         object: String | nil
-      }
-    end
-  end
-
-  def test_search_conversation_histories_required_params
-    skip("Mock server tests are disabled")
-
-    response =
-      @telnyx.ai.search_conversation_histories(q: "customer called about billing issue", record_type: :voice)
-
-    assert_pattern do
-      response => Telnyx::Models::AISearchConversationHistoriesResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AISearchConversationHistoriesResponse::Data]),
-        meta: Telnyx::Models::AISearchConversationHistoriesResponse::Meta
       }
     end
   end

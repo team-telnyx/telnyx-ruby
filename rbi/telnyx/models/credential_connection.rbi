@@ -113,18 +113,13 @@ module Telnyx
       # applied to outgoing audio. When set to 'both', it's applied in both directions.
       # When set to 'disabled', noise suppression is turned off.
       sig do
-        returns(
-          T.nilable(
-            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
-          )
-        )
+        returns(T.nilable(Telnyx::ConnectionNoiseSuppression::TaggedSymbol))
       end
       attr_reader :noise_suppression
 
       sig do
         params(
-          noise_suppression:
-            Telnyx::CredentialConnection::NoiseSuppression::OrSymbol
+          noise_suppression: Telnyx::ConnectionNoiseSuppression::OrSymbol
         ).void
       end
       attr_writer :noise_suppression
@@ -276,8 +271,7 @@ module Telnyx
           inbound: Telnyx::CredentialInbound::OrHash,
           ios_push_credential_id: T.nilable(String),
           jitter_buffer: Telnyx::ConnectionJitterBuffer::OrHash,
-          noise_suppression:
-            Telnyx::CredentialConnection::NoiseSuppression::OrSymbol,
+          noise_suppression: Telnyx::ConnectionNoiseSuppression::OrSymbol,
           noise_suppression_details:
             Telnyx::ConnectionNoiseSuppressionDetails::OrHash,
           onnet_t38_passthrough_enabled: T::Boolean,
@@ -400,8 +394,7 @@ module Telnyx
             inbound: Telnyx::CredentialInbound,
             ios_push_credential_id: T.nilable(String),
             jitter_buffer: Telnyx::ConnectionJitterBuffer,
-            noise_suppression:
-              Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol,
+            noise_suppression: Telnyx::ConnectionNoiseSuppression::TaggedSymbol,
             noise_suppression_details:
               Telnyx::ConnectionNoiseSuppressionDetails,
             onnet_t38_passthrough_enabled: T::Boolean,
@@ -423,51 +416,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      # Controls when noise suppression is applied to calls. When set to 'inbound',
-      # noise suppression is applied to incoming audio. When set to 'outbound', it's
-      # applied to outgoing audio. When set to 'both', it's applied in both directions.
-      # When set to 'disabled', noise suppression is turned off.
-      module NoiseSuppression
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::CredentialConnection::NoiseSuppression)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        INBOUND =
-          T.let(
-            :inbound,
-            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
-          )
-        OUTBOUND =
-          T.let(
-            :outbound,
-            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
-          )
-        BOTH =
-          T.let(
-            :both,
-            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
-          )
-        DISABLED =
-          T.let(
-            :disabled,
-            Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Telnyx::CredentialConnection::NoiseSuppression::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
       end
 
       # This feature enables inbound SIP URI calls to your Credential Auth Connection.

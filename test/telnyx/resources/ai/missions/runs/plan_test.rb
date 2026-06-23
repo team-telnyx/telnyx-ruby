@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::Runs::PlanCreateResponse
+      response => Telnyx::AI::Missions::Runs::PlanStepsCreatedResponse
     end
 
     assert_pattern do
@@ -55,7 +55,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanResponse
+      response => Telnyx::AI::Missions::Runs::PlanStepsCreatedResponse
     end
 
     assert_pattern do
@@ -76,7 +76,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsResponse
+      response => Telnyx::AI::Missions::Runs::PlanStepResponse
     end
 
     assert_pattern do
@@ -97,7 +97,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
       )
 
     assert_pattern do
-      response => Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse
+      response => Telnyx::AI::Missions::Runs::PlanStepResponse
     end
 
     assert_pattern do

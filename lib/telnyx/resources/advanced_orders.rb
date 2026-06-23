@@ -15,9 +15,9 @@ module Telnyx
       #
       # @param customer_reference [String]
       #
-      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrder::Feature>]
+      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrderRequest::Feature>]
       #
-      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType]
+      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrderRequest::PhoneNumberType]
       #
       # @param quantity [Integer]
       #
@@ -25,7 +25,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::AdvancedOrderCreateResponse]
+      # @return [Telnyx::Models::AdvancedOrder]
       #
       # @see Telnyx::Models::AdvancedOrderCreateParams
       def create(params = {})
@@ -34,7 +34,7 @@ module Telnyx
           method: :post,
           path: "advanced_orders",
           body: parsed,
-          model: Telnyx::Models::AdvancedOrderCreateResponse,
+          model: Telnyx::AdvancedOrder,
           options: options
         )
       end
@@ -47,14 +47,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::AdvancedOrderRetrieveResponse]
+      # @return [Telnyx::Models::AdvancedOrder]
       #
       # @see Telnyx::Models::AdvancedOrderRetrieveParams
       def retrieve(order_id, params = {})
         @client.request(
           method: :get,
           path: ["advanced_orders/%1$s", order_id],
-          model: Telnyx::Models::AdvancedOrderRetrieveResponse,
+          model: Telnyx::AdvancedOrder,
           options: params[:request_options]
         )
       end
@@ -91,9 +91,9 @@ module Telnyx
       #
       # @param customer_reference [String]
       #
-      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrder::Feature>]
+      # @param features [Array<Symbol, Telnyx::Models::AdvancedOrderRequest::Feature>]
       #
-      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrder::PhoneNumberType]
+      # @param phone_number_type [Symbol, Telnyx::Models::AdvancedOrderRequest::PhoneNumberType]
       #
       # @param quantity [Integer]
       #
@@ -101,7 +101,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse]
+      # @return [Telnyx::Models::AdvancedOrder]
       #
       # @see Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams
       def update_requirement_group(advanced_order_id, params = {})
@@ -110,7 +110,7 @@ module Telnyx
           method: :patch,
           path: ["advanced_orders/%1$s/requirement_group", advanced_order_id],
           body: parsed,
-          model: Telnyx::Models::AdvancedOrderUpdateRequirementGroupResponse,
+          model: Telnyx::AdvancedOrder,
           options: options
         )
       end

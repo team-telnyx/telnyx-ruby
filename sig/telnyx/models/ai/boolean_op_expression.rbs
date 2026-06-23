@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module AI
+      type boolean_op_expression =
+        {
+          op: Telnyx::Models::AI::BooleanOpExpression::op,
+          operands: ::Array[Telnyx::Models::AI::expression],
+          type: :bool_op
+        }
+
+      class BooleanOpExpression < Telnyx::Internal::Type::BaseModel
+        attr_accessor op: Telnyx::Models::AI::BooleanOpExpression::op
+
+        attr_accessor operands: ::Array[Telnyx::Models::AI::expression]
+
+        attr_accessor type: :bool_op
+
+        def initialize: (
+          op: Telnyx::Models::AI::BooleanOpExpression::op,
+          operands: ::Array[Telnyx::Models::AI::expression],
+          ?type: :bool_op
+        ) -> void
+
+        def to_hash: -> {
+          op: Telnyx::Models::AI::BooleanOpExpression::op,
+          operands: ::Array[Telnyx::Models::AI::expression],
+          type: :bool_op
+        }
+
+        type op = :and | :or | :not
+
+        module Op
+          extend Telnyx::Internal::Type::Enum
+
+          AND: :and
+          OR: :or
+          NOT: :not
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::BooleanOpExpression::op]
+        end
+      end
+    end
+  end
+end

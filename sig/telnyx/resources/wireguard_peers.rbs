@@ -2,7 +2,7 @@ module Telnyx
   module Resources
     class WireguardPeers
       def create: (
-        wireguard_interface_id: String,
+        body: Telnyx::WireguardPeerCreateParams::Body,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::WireguardPeerCreateResponse
 
@@ -22,7 +22,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::WireguardPeerListResponse]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::WireguardPeer]
 
       def delete: (
         String id,

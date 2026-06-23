@@ -6,23 +6,11 @@ module Telnyx
     class NetworkUpdateResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::NetworkUpdateResponse::Data, nil]
-      optional :data, -> { Telnyx::Models::NetworkUpdateResponse::Data }
+      #   @return [Telnyx::Models::Network, nil]
+      optional :data, -> { Telnyx::Network }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::NetworkUpdateResponse::Data]
-
-      # @see Telnyx::Models::NetworkUpdateResponse#data
-      class Data < Telnyx::Models::Record
-        # @!attribute name
-        #   A user specified name for the network.
-        #
-        #   @return [String, nil]
-        optional :name, String
-
-        # @!method initialize(name: nil)
-        #   @param name [String] A user specified name for the network.
-      end
+      #   @param data [Telnyx::Models::Network]
     end
   end
 end

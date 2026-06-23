@@ -21,7 +21,7 @@ module Telnyx
           top_p: Float,
           voice_design_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceDesignCreateResponse)
+        ).returns(Telnyx::VoiceDesignResponse)
       end
       def create(
         # Natural language description of the voice style, e.g. 'Speak in a warm, friendly
@@ -68,7 +68,7 @@ module Telnyx
           id: String,
           version: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::VoiceDesignRetrieveResponse)
+        ).returns(Telnyx::VoiceDesignResponse)
       end
       def retrieve(
         # The voice design UUID or name.
@@ -90,7 +90,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::VoiceDesignListResponse
+            Telnyx::VoiceDesignSummaryData
           ]
         )
       end

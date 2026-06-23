@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::RecordingsTest < Telnyx::Test::ResourceTest
     response = @telnyx.recordings.retrieve("recording_id")
 
     assert_pattern do
-      response => Telnyx::Models::RecordingRetrieveResponse
+      response => Telnyx::RecordingResponse
     end
 
     assert_pattern do
@@ -66,7 +66,7 @@ class Telnyx::Test::Resources::RecordingsTest < Telnyx::Test::ResourceTest
     response = @telnyx.recordings.delete("recording_id")
 
     assert_pattern do
-      response => Telnyx::Models::RecordingDeleteResponse
+      response => Telnyx::RecordingResponse
     end
 
     assert_pattern do

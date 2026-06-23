@@ -17,18 +17,10 @@ module Telnyx
 
         # Restrict to comments of this category. Customer-visible categories only:
         # internal-only comments are filtered out regardless of this filter.
-        sig do
-          returns(
-            T.nilable(Telnyx::Dir::CommentListParams::CommentType::OrSymbol)
-          )
-        end
+        sig { returns(T.nilable(Telnyx::Dir::CommentType::OrSymbol)) }
         attr_reader :comment_type
 
-        sig do
-          params(
-            comment_type: Telnyx::Dir::CommentListParams::CommentType::OrSymbol
-          ).void
-        end
+        sig { params(comment_type: Telnyx::Dir::CommentType::OrSymbol).void }
         attr_writer :comment_type
 
         # 1-based page number. Out-of-range values return an empty page with correct meta.
@@ -48,7 +40,7 @@ module Telnyx
         sig do
           params(
             dir_id: String,
-            comment_type: Telnyx::Dir::CommentListParams::CommentType::OrSymbol,
+            comment_type: Telnyx::Dir::CommentType::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -71,8 +63,7 @@ module Telnyx
           override.returns(
             {
               dir_id: String,
-              comment_type:
-                Telnyx::Dir::CommentListParams::CommentType::OrSymbol,
+              comment_type: Telnyx::Dir::CommentType::OrSymbol,
               page_number: Integer,
               page_size: Integer,
               request_options: Telnyx::RequestOptions
@@ -80,64 +71,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        # Restrict to comments of this category. Customer-visible categories only:
-        # internal-only comments are filtered out regardless of this filter.
-        module CommentType
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::Dir::CommentListParams::CommentType)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          VETTING_COMMENT =
-            T.let(
-              :vetting_comment,
-              Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-            )
-          REJECTION_REASON =
-            T.let(
-              :rejection_reason,
-              Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-            )
-          INTERNAL_NOTE =
-            T.let(
-              :internal_note,
-              Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-            )
-          NOTIFICATION =
-            T.let(
-              :notification,
-              Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-            )
-          STATUS_UPDATE =
-            T.let(
-              :status_update,
-              Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-            )
-          CUSTOMER_INQUIRY =
-            T.let(
-              :customer_inquiry,
-              Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-            )
-          ADMIN_RESPONSE =
-            T.let(
-              :admin_response,
-              Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Dir::CommentListParams::CommentType::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
     end

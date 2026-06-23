@@ -16,7 +16,7 @@ module Telnyx
               fresh: T::Boolean,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::Enterprises::Reputation::NumberRetrieveResponse
+              Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
             )
           end
           def retrieve(
@@ -45,7 +45,7 @@ module Telnyx
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
               Telnyx::Internal::DefaultFlatPagination[
-                Telnyx::Models::Enterprises::Reputation::NumberListResponse
+                Telnyx::Enterprises::Reputation::ReputationPhoneNumber
               ]
             )
           end
@@ -79,7 +79,7 @@ module Telnyx
               phone_numbers: T::Array[String],
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::Models::Enterprises::Reputation::NumberAssociateResponse
+              Telnyx::Enterprises::Reputation::ReputationPhoneNumberList
             )
           end
           def associate(

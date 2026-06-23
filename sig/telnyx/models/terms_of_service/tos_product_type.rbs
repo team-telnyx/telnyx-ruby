@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module TermsOfService
+      type tos_product_type = :branded_calling | :number_reputation
+
+      module TosProductType
+        extend Telnyx::Internal::Type::Enum
+
+        BRANDED_CALLING: :branded_calling
+        NUMBER_REPUTATION: :number_reputation
+
+        def self?.values: -> ::Array[Telnyx::Models::TermsOfService::tos_product_type]
+      end
+    end
+  end
+end

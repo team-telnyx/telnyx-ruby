@@ -36,7 +36,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PronunciationDictCreateResponse]
+      # @return [Telnyx::Models::PronunciationDictResponse]
       #
       # @see Telnyx::Models::PronunciationDictCreateParams
       def create(params)
@@ -45,7 +45,7 @@ module Telnyx
           method: :post,
           path: "pronunciation_dicts",
           body: parsed,
-          model: Telnyx::Models::PronunciationDictCreateResponse,
+          model: Telnyx::PronunciationDictResponse,
           options: options
         )
       end
@@ -58,14 +58,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PronunciationDictRetrieveResponse]
+      # @return [Telnyx::Models::PronunciationDictResponse]
       #
       # @see Telnyx::Models::PronunciationDictRetrieveParams
       def retrieve(id, params = {})
         @client.request(
           method: :get,
           path: ["pronunciation_dicts/%1$s", id],
-          model: Telnyx::Models::PronunciationDictRetrieveResponse,
+          model: Telnyx::PronunciationDictResponse,
           options: params[:request_options]
         )
       end
@@ -84,7 +84,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::PronunciationDictUpdateResponse]
+      # @return [Telnyx::Models::PronunciationDictResponse]
       #
       # @see Telnyx::Models::PronunciationDictUpdateParams
       def update(id, params = {})
@@ -93,7 +93,7 @@ module Telnyx
           method: :patch,
           path: ["pronunciation_dicts/%1$s", id],
           body: parsed,
-          model: Telnyx::Models::PronunciationDictUpdateResponse,
+          model: Telnyx::PronunciationDictResponse,
           options: options
         )
       end

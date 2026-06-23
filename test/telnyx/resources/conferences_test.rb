@@ -114,7 +114,7 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
       @telnyx.conferences.retrieve_participant("participant_id", id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::ConferenceRetrieveParticipantResponse
+      response => Telnyx::ConferenceParticipantResource
     end
 
     assert_pattern do
@@ -131,7 +131,7 @@ class Telnyx::Test::Resources::ConferencesTest < Telnyx::Test::ResourceTest
       @telnyx.conferences.update_participant("participant_id", id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::ConferenceUpdateParticipantResponse
+      response => Telnyx::ConferenceParticipantResource
     end
 
     assert_pattern do

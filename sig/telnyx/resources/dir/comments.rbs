@@ -11,11 +11,11 @@ module Telnyx
 
         def list: (
           String dir_id,
-          ?comment_type: Telnyx::Models::Dir::CommentListParams::comment_type,
+          ?comment_type: Telnyx::Models::Dir::comment_type,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Dir::CommentListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Dir::DirComment]
 
         def initialize: (client: Telnyx::Client) -> void
       end

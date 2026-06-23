@@ -14,11 +14,11 @@ module Telnyx
             #
             # @param mission_id [String] Path param: Unique identifier of the mission.
             #
-            # @param steps [Array<Telnyx::Models::AI::Missions::Runs::PlanCreateParams::Step>] Body param
+            # @param steps [Array<Telnyx::Models::AI::Missions::Runs::CreatePlanStepRequest>] Body param
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::AI::Missions::Runs::PlanCreateResponse]
+            # @return [Telnyx::Models::AI::Missions::Runs::PlanStepsCreatedResponse]
             #
             # @see Telnyx::Models::AI::Missions::Runs::PlanCreateParams
             def create(run_id, params)
@@ -31,7 +31,7 @@ module Telnyx
                 method: :post,
                 path: ["ai/missions/%1$s/runs/%2$s/plan", mission_id, run_id],
                 body: parsed,
-                model: Telnyx::Models::AI::Missions::Runs::PlanCreateResponse,
+                model: Telnyx::AI::Missions::Runs::PlanStepsCreatedResponse,
                 options: options
               )
             end
@@ -71,11 +71,11 @@ module Telnyx
             #
             # @param mission_id [String] Path param: Unique identifier of the mission.
             #
-            # @param steps [Array<Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanParams::Step>] Body param
+            # @param steps [Array<Telnyx::Models::AI::Missions::Runs::CreatePlanStepRequest>] Body param
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanResponse]
+            # @return [Telnyx::Models::AI::Missions::Runs::PlanStepsCreatedResponse]
             #
             # @see Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanParams
             def add_steps_to_plan(run_id, params)
@@ -88,7 +88,7 @@ module Telnyx
                 method: :post,
                 path: ["ai/missions/%1$s/runs/%2$s/plan/steps", mission_id, run_id],
                 body: parsed,
-                model: Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanResponse,
+                model: Telnyx::AI::Missions::Runs::PlanStepsCreatedResponse,
                 options: options
               )
             end
@@ -105,7 +105,7 @@ module Telnyx
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsResponse]
+            # @return [Telnyx::Models::AI::Missions::Runs::PlanStepResponse]
             #
             # @see Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsParams
             def get_step_details(step_id, params)
@@ -121,7 +121,7 @@ module Telnyx
               @client.request(
                 method: :get,
                 path: ["ai/missions/%1$s/runs/%2$s/plan/steps/%3$s", mission_id, run_id, step_id],
-                model: Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsResponse,
+                model: Telnyx::AI::Missions::Runs::PlanStepResponse,
                 options: options
               )
             end
@@ -138,11 +138,11 @@ module Telnyx
             #
             # @param metadata [Hash{Symbol=>Object}] Body param
             #
-            # @param status [Symbol, Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams::Status] Body param
+            # @param status [Symbol, Telnyx::Models::AI::Missions::Runs::StepStatus] Body param
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse]
+            # @return [Telnyx::Models::AI::Missions::Runs::PlanStepResponse]
             #
             # @see Telnyx::Models::AI::Missions::Runs::PlanUpdateStepParams
             def update_step(step_id, params)
@@ -159,7 +159,7 @@ module Telnyx
                 method: :patch,
                 path: ["ai/missions/%1$s/runs/%2$s/plan/steps/%3$s", mission_id, run_id, step_id],
                 body: parsed,
-                model: Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse,
+                model: Telnyx::AI::Missions::Runs::PlanStepResponse,
                 options: options
               )
             end

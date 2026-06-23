@@ -15,7 +15,7 @@ module Telnyx
         ios_push_credential_id: String?,
         jitter_buffer: Telnyx::ConnectionJitterBuffer,
         microsoft_teams_sbc: bool,
-        noise_suppression: Telnyx::Models::FqdnConnectionCreateParams::noise_suppression,
+        noise_suppression: Telnyx::Models::connection_noise_suppression,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundFqdn,
@@ -81,11 +81,11 @@ module Telnyx
 
       def microsoft_teams_sbc=: (bool) -> bool
 
-      attr_reader noise_suppression: Telnyx::Models::FqdnConnectionCreateParams::noise_suppression?
+      attr_reader noise_suppression: Telnyx::Models::connection_noise_suppression?
 
       def noise_suppression=: (
-        Telnyx::Models::FqdnConnectionCreateParams::noise_suppression
-      ) -> Telnyx::Models::FqdnConnectionCreateParams::noise_suppression
+        Telnyx::Models::connection_noise_suppression
+      ) -> Telnyx::Models::connection_noise_suppression
 
       attr_reader noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails?
 
@@ -145,7 +145,7 @@ module Telnyx
         ?ios_push_credential_id: String?,
         ?jitter_buffer: Telnyx::ConnectionJitterBuffer,
         ?microsoft_teams_sbc: bool,
-        ?noise_suppression: Telnyx::Models::FqdnConnectionCreateParams::noise_suppression,
+        ?noise_suppression: Telnyx::Models::connection_noise_suppression,
         ?noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
         ?onnet_t38_passthrough_enabled: bool,
         ?outbound: Telnyx::OutboundFqdn,
@@ -173,7 +173,7 @@ module Telnyx
         ios_push_credential_id: String?,
         jitter_buffer: Telnyx::ConnectionJitterBuffer,
         microsoft_teams_sbc: bool,
-        noise_suppression: Telnyx::Models::FqdnConnectionCreateParams::noise_suppression,
+        noise_suppression: Telnyx::Models::connection_noise_suppression,
         noise_suppression_details: Telnyx::ConnectionNoiseSuppressionDetails,
         :onnet_t38_passthrough_enabled => bool,
         outbound: Telnyx::OutboundFqdn,
@@ -186,19 +186,6 @@ module Telnyx
         webhook_timeout_secs: Integer?,
         request_options: Telnyx::RequestOptions
       }
-
-      type noise_suppression = :inbound | :outbound | :both | :disabled
-
-      module NoiseSuppression
-        extend Telnyx::Internal::Type::Enum
-
-        INBOUND: :inbound
-        OUTBOUND: :outbound
-        BOTH: :both
-        DISABLED: :disabled
-
-        def self?.values: -> ::Array[Telnyx::Models::FqdnConnectionCreateParams::noise_suppression]
-      end
     end
   end
 end

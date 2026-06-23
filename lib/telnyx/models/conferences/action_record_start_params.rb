@@ -55,8 +55,8 @@ module Telnyx
         #   Region where the conference data is located. Defaults to the region defined in
         #   user's data locality settings (Europe or US).
         #
-        #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Region, nil]
-        optional :region, enum: -> { Telnyx::Conferences::ActionRecordStartParams::Region }
+        #   @return [Symbol, Telnyx::Models::Conferences::ConferenceRegion, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ConferenceRegion }
 
         # @!attribute trim
         #   When set to `trim-silence`, silence will be removed from the beginning and end
@@ -81,7 +81,7 @@ module Telnyx
         #
         #   @param play_beep [Boolean] If enabled, a beep sound will be played at the start of a recording.
         #
-        #   @param region [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        #   @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         #   @param trim [Symbol, Telnyx::Models::Conferences::ActionRecordStartParams::Trim] When set to `trim-silence`, silence will be removed from the beginning and end o
         #
@@ -106,20 +106,6 @@ module Telnyx
 
           SINGLE = :single
           DUAL = :dual
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA = :Australia
-          EUROPE = :Europe
-          MIDDLE_EAST = :"Middle East"
-          US = :US
 
           # @!method self.values
           #   @return [Array<Symbol>]

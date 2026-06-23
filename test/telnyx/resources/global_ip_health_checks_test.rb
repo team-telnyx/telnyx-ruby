@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::GlobalIPHealthCheckCreateResponse::Data | nil
+        data: Telnyx::GlobalIPHealthCheck | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::GlobalIPHealthCheckRetrieveResponse::Data | nil
+        data: Telnyx::GlobalIPHealthCheck | nil
       }
     end
   end
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::GlobalIPHealthCheckListResponse
+      row => Telnyx::GlobalIPHealthCheck
     end
   end
 
@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::GlobalIPHealthChecksTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::GlobalIPHealthCheckDeleteResponse::Data | nil
+        data: Telnyx::GlobalIPHealthCheck | nil
       }
     end
   end

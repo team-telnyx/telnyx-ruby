@@ -13,10 +13,10 @@ module Telnyx
                 mission_id: String,
                 steps:
                   T::Array[
-                    Telnyx::AI::Missions::Runs::PlanCreateParams::Step::OrHash
+                    Telnyx::AI::Missions::Runs::CreatePlanStepRequest::OrHash
                   ],
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(Telnyx::Models::AI::Missions::Runs::PlanCreateResponse)
+              ).returns(Telnyx::AI::Missions::Runs::PlanStepsCreatedResponse)
             end
             def create(
               # Path param: Unique identifier of the run.
@@ -55,12 +55,10 @@ module Telnyx
                 mission_id: String,
                 steps:
                   T::Array[
-                    Telnyx::AI::Missions::Runs::PlanAddStepsToPlanParams::Step::OrHash
+                    Telnyx::AI::Missions::Runs::CreatePlanStepRequest::OrHash
                   ],
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(
-                Telnyx::Models::AI::Missions::Runs::PlanAddStepsToPlanResponse
-              )
+              ).returns(Telnyx::AI::Missions::Runs::PlanStepsCreatedResponse)
             end
             def add_steps_to_plan(
               # Path param: Unique identifier of the run.
@@ -80,9 +78,7 @@ module Telnyx
                 mission_id: String,
                 run_id: String,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(
-                Telnyx::Models::AI::Missions::Runs::PlanGetStepDetailsResponse
-              )
+              ).returns(Telnyx::AI::Missions::Runs::PlanStepResponse)
             end
             def get_step_details(
               # Unique identifier of the step.
@@ -102,12 +98,9 @@ module Telnyx
                 mission_id: String,
                 run_id: String,
                 metadata: T::Hash[Symbol, T.anything],
-                status:
-                  Telnyx::AI::Missions::Runs::PlanUpdateStepParams::Status::OrSymbol,
+                status: Telnyx::AI::Missions::Runs::StepStatus::OrSymbol,
                 request_options: Telnyx::RequestOptions::OrHash
-              ).returns(
-                Telnyx::Models::AI::Missions::Runs::PlanUpdateStepResponse
-              )
+              ).returns(Telnyx::AI::Missions::Runs::PlanStepResponse)
             end
             def update_step(
               # Path param: Unique identifier of the step.

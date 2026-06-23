@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module PortingEvent = Porting::PortingEvent
+
+    module Porting
+      type porting_event =
+        Telnyx::Porting::PortingEventDeletedPayload
+        | Telnyx::Porting::PortingEventMessagingChangedPayload
+        | Telnyx::Porting::PortingEventStatusChangedEvent
+        | Telnyx::Porting::PortingEventNewCommentEvent
+        | Telnyx::Porting::PortingEventSplitEvent
+        | Telnyx::Porting::PortingEventWithoutWebhook
+
+      module PortingEvent
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::Porting::porting_event]
+      end
+    end
+  end
+end

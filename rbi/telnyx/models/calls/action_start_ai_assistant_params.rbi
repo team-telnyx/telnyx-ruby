@@ -70,11 +70,11 @@ module Telnyx
             T.nilable(
               T::Array[
                 T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer
+                  Telnyx::Calls::UserMessage,
+                  Telnyx::Calls::AssistantMessage,
+                  Telnyx::Calls::ToolMessage,
+                  Telnyx::Calls::SystemMessage,
+                  Telnyx::Calls::DeveloperMessage
                 )
               ]
             )
@@ -87,11 +87,11 @@ module Telnyx
             message_history:
               T::Array[
                 T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer::OrHash
+                  Telnyx::Calls::UserMessage::OrHash,
+                  Telnyx::Calls::AssistantMessage::OrHash,
+                  Telnyx::Calls::ToolMessage::OrHash,
+                  Telnyx::Calls::SystemMessage::OrHash,
+                  Telnyx::Calls::DeveloperMessage::OrHash
                 )
               ]
           ).void
@@ -101,9 +101,7 @@ module Telnyx
         # A list of participants to add to the conversation when it starts.
         sig do
           returns(
-            T.nilable(
-              T::Array[Telnyx::Calls::ActionStartAIAssistantParams::Participant]
-            )
+            T.nilable(T::Array[Telnyx::Calls::AIAssistantJoinParticipant])
           )
         end
         attr_reader :participants
@@ -111,9 +109,7 @@ module Telnyx
         sig do
           params(
             participants:
-              T::Array[
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OrHash
-              ]
+              T::Array[Telnyx::Calls::AIAssistantJoinParticipant::OrHash]
           ).void
         end
         attr_writer :participants
@@ -182,7 +178,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai
+                Telnyx::XaiVoiceSettings
               )
             )
           )
@@ -199,7 +195,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               )
           ).void
         end
@@ -216,17 +212,15 @@ module Telnyx
             message_history:
               T::Array[
                 T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer::OrHash
+                  Telnyx::Calls::UserMessage::OrHash,
+                  Telnyx::Calls::AssistantMessage::OrHash,
+                  Telnyx::Calls::ToolMessage::OrHash,
+                  Telnyx::Calls::SystemMessage::OrHash,
+                  Telnyx::Calls::DeveloperMessage::OrHash
                 )
               ],
             participants:
-              T::Array[
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OrHash
-              ],
+              T::Array[Telnyx::Calls::AIAssistantJoinParticipant::OrHash],
             send_message_history_updates: T::Boolean,
             transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
             voice: String,
@@ -238,7 +232,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -320,17 +314,14 @@ module Telnyx
               message_history:
                 T::Array[
                   T.any(
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User,
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant,
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool,
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System,
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer
+                    Telnyx::Calls::UserMessage,
+                    Telnyx::Calls::AssistantMessage,
+                    Telnyx::Calls::ToolMessage,
+                    Telnyx::Calls::SystemMessage,
+                    Telnyx::Calls::DeveloperMessage
                   )
                 ],
-              participants:
-                T::Array[
-                  Telnyx::Calls::ActionStartAIAssistantParams::Participant
-                ],
+              participants: T::Array[Telnyx::Calls::AIAssistantJoinParticipant],
               send_message_history_updates: T::Boolean,
               transcription: Telnyx::Calls::TranscriptionConfig,
               voice: String,
@@ -342,7 +333,7 @@ module Telnyx
                   Telnyx::AzureVoiceSettings,
                   Telnyx::RimeVoiceSettings,
                   Telnyx::ResembleVoiceSettings,
-                  Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai
+                  Telnyx::XaiVoiceSettings
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -358,460 +349,13 @@ module Telnyx
           Variants =
             T.type_alias do
               T.any(
-                Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User,
-                Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant,
-                Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool,
-                Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System,
-                Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer
+                Telnyx::Calls::UserMessage,
+                Telnyx::Calls::AssistantMessage,
+                Telnyx::Calls::ToolMessage,
+                Telnyx::Calls::SystemMessage,
+                Telnyx::Calls::DeveloperMessage
               )
             end
-
-          class User < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The contents of the user message.
-            sig { returns(String) }
-            attr_accessor :content
-
-            # The role of the messages author, in this case `user`.
-            sig { returns(Symbol) }
-            attr_accessor :role
-
-            # Metadata to add to the message
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-            attr_reader :metadata
-
-            sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-            attr_writer :metadata
-
-            # Messages sent by an end user
-            sig do
-              params(
-                content: String,
-                metadata: T::Hash[Symbol, T.anything],
-                role: Symbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The contents of the user message.
-              content:,
-              # Metadata to add to the message
-              metadata: nil,
-              # The role of the messages author, in this case `user`.
-              role: :user
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  content: String,
-                  role: Symbol,
-                  metadata: T::Hash[Symbol, T.anything]
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class Assistant < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The role of the messages author, in this case `assistant`.
-            sig { returns(Symbol) }
-            attr_accessor :role
-
-            # The contents of the assistant message. Required unless `tool_calls`
-            sig { returns(T.nilable(String)) }
-            attr_reader :content
-
-            sig { params(content: String).void }
-            attr_writer :content
-
-            # Metadata to add to the message
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-            attr_reader :metadata
-
-            sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-            attr_writer :metadata
-
-            # The tool calls generated by the model, such as function calls.
-            sig do
-              returns(
-                T.nilable(
-                  T::Array[
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall
-                  ]
-                )
-              )
-            end
-            attr_reader :tool_calls
-
-            sig do
-              params(
-                tool_calls:
-                  T::Array[
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::OrHash
-                  ]
-              ).void
-            end
-            attr_writer :tool_calls
-
-            # Messages sent by the model in response to user messages.
-            sig do
-              params(
-                content: String,
-                metadata: T::Hash[Symbol, T.anything],
-                tool_calls:
-                  T::Array[
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::OrHash
-                  ],
-                role: Symbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The contents of the assistant message. Required unless `tool_calls`
-              content: nil,
-              # Metadata to add to the message
-              metadata: nil,
-              # The tool calls generated by the model, such as function calls.
-              tool_calls: nil,
-              # The role of the messages author, in this case `assistant`.
-              role: :assistant
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  role: Symbol,
-                  content: String,
-                  metadata: T::Hash[Symbol, T.anything],
-                  tool_calls:
-                    T::Array[
-                      Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall
-                    ]
-                }
-              )
-            end
-            def to_hash
-            end
-
-            class ToolCall < Telnyx::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall,
-                    Telnyx::Internal::AnyHash
-                  )
-                end
-
-              # The ID of the tool call.
-              sig { returns(String) }
-              attr_accessor :id
-
-              # The function that the model called.
-              sig do
-                returns(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function
-                )
-              end
-              attr_reader :function
-
-              sig do
-                params(
-                  function:
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function::OrHash
-                ).void
-              end
-              attr_writer :function
-
-              # The type of the tool. Currently, only `function` is supported.
-              sig do
-                returns(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type::OrSymbol
-                )
-              end
-              attr_accessor :type
-
-              # A call to a function tool created by the model.
-              sig do
-                params(
-                  id: String,
-                  function:
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function::OrHash,
-                  type:
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type::OrSymbol
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # The ID of the tool call.
-                id:,
-                # The function that the model called.
-                function:,
-                # The type of the tool. Currently, only `function` is supported.
-                type:
-              )
-              end
-
-              sig do
-                override.returns(
-                  {
-                    id: String,
-                    function:
-                      Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function,
-                    type:
-                      Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type::OrSymbol
-                  }
-                )
-              end
-              def to_hash
-              end
-
-              class Function < Telnyx::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Function,
-                      Telnyx::Internal::AnyHash
-                    )
-                  end
-
-                # The name of the function to call.
-                sig { returns(String) }
-                attr_accessor :name
-
-                # The function that the model called.
-                sig { params(name: String).returns(T.attached_class) }
-                def self.new(
-                  # The name of the function to call.
-                  name:
-                )
-                end
-
-                sig { override.returns({ name: String }) }
-                def to_hash
-                end
-              end
-
-              # The type of the tool. Currently, only `function` is supported.
-              module Type
-                extend Telnyx::Internal::Type::Enum
-
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(
-                      Symbol,
-                      Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type
-                    )
-                  end
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                FUNCTION =
-                  T.let(
-                    :function,
-                    Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type::TaggedSymbol
-                  )
-
-                sig do
-                  override.returns(
-                    T::Array[
-                      Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::ToolCall::Type::TaggedSymbol
-                    ]
-                  )
-                end
-                def self.values
-                end
-              end
-            end
-          end
-
-          class Tool < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The contents of the tool message.
-            sig { returns(String) }
-            attr_accessor :content
-
-            # The role of the messages author, in this case `tool`.
-            sig { returns(Symbol) }
-            attr_accessor :role
-
-            # Tool call that this message is responding to.
-            sig { returns(String) }
-            attr_accessor :tool_call_id
-
-            # Metadata to add to the message
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-            attr_reader :metadata
-
-            sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-            attr_writer :metadata
-
-            sig do
-              params(
-                content: String,
-                tool_call_id: String,
-                metadata: T::Hash[Symbol, T.anything],
-                role: Symbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The contents of the tool message.
-              content:,
-              # Tool call that this message is responding to.
-              tool_call_id:,
-              # Metadata to add to the message
-              metadata: nil,
-              # The role of the messages author, in this case `tool`.
-              role: :tool
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  content: String,
-                  role: Symbol,
-                  tool_call_id: String,
-                  metadata: T::Hash[Symbol, T.anything]
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class System < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The contents of the system message.
-            sig { returns(String) }
-            attr_accessor :content
-
-            # The role of the messages author, in this case `system`.
-            sig { returns(Symbol) }
-            attr_accessor :role
-
-            # Metadata to add to the message
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-            attr_reader :metadata
-
-            sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-            attr_writer :metadata
-
-            # Developer-provided instructions that the model should follow, regardless of
-            # messages sent by the user.
-            sig do
-              params(
-                content: String,
-                metadata: T::Hash[Symbol, T.anything],
-                role: Symbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The contents of the system message.
-              content:,
-              # Metadata to add to the message
-              metadata: nil,
-              # The role of the messages author, in this case `system`.
-              role: :system
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  content: String,
-                  role: Symbol,
-                  metadata: T::Hash[Symbol, T.anything]
-                }
-              )
-            end
-            def to_hash
-            end
-          end
-
-          class Developer < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The contents of the developer message.
-            sig { returns(String) }
-            attr_accessor :content
-
-            # The role of the messages author, in this case developer.
-            sig { returns(Symbol) }
-            attr_accessor :role
-
-            # Metadata to add to the message
-            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-            attr_reader :metadata
-
-            sig { params(metadata: T::Hash[Symbol, T.anything]).void }
-            attr_writer :metadata
-
-            # Developer-provided instructions that the model should follow, regardless of
-            # messages sent by the user.
-            sig do
-              params(
-                content: String,
-                metadata: T::Hash[Symbol, T.anything],
-                role: Symbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The contents of the developer message.
-              content:,
-              # Metadata to add to the message
-              metadata: nil,
-              # The role of the messages author, in this case developer.
-              role: :developer
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  content: String,
-                  role: Symbol,
-                  metadata: T::Hash[Symbol, T.anything]
-                }
-              )
-            end
-            def to_hash
-            end
-          end
 
           sig do
             override.returns(
@@ -821,155 +365,6 @@ module Telnyx
             )
           end
           def self.variants
-          end
-        end
-
-        class Participant < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The call_control_id of the participant to add to the conversation.
-          sig { returns(String) }
-          attr_accessor :id
-
-          # The role of the participant in the conversation.
-          sig do
-            returns(
-              Telnyx::Calls::ActionStartAIAssistantParams::Participant::Role::OrSymbol
-            )
-          end
-          attr_accessor :role
-
-          # Display name for the participant.
-          sig { returns(T.nilable(String)) }
-          attr_reader :name
-
-          sig { params(name: String).void }
-          attr_writer :name
-
-          # Determines what happens to the conversation when this participant hangs up.
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup::OrSymbol
-              )
-            )
-          end
-          attr_reader :on_hangup
-
-          sig do
-            params(
-              on_hangup:
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup::OrSymbol
-            ).void
-          end
-          attr_writer :on_hangup
-
-          sig do
-            params(
-              id: String,
-              role:
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::Role::OrSymbol,
-              name: String,
-              on_hangup:
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup::OrSymbol
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The call_control_id of the participant to add to the conversation.
-            id:,
-            # The role of the participant in the conversation.
-            role:,
-            # Display name for the participant.
-            name: nil,
-            # Determines what happens to the conversation when this participant hangs up.
-            on_hangup: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                id: String,
-                role:
-                  Telnyx::Calls::ActionStartAIAssistantParams::Participant::Role::OrSymbol,
-                name: String,
-                on_hangup:
-                  Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup::OrSymbol
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # The role of the participant in the conversation.
-          module Role
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Calls::ActionStartAIAssistantParams::Participant::Role
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            USER =
-              T.let(
-                :user,
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::Role::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Calls::ActionStartAIAssistantParams::Participant::Role::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-
-          # Determines what happens to the conversation when this participant hangs up.
-          module OnHangup
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            CONTINUE_CONVERSATION =
-              T.let(
-                :continue_conversation,
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup::TaggedSymbol
-              )
-            END_CONVERSATION =
-              T.let(
-                :end_conversation,
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::Calls::ActionStartAIAssistantParams::Participant::OnHangup::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
 
@@ -986,45 +381,9 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai
+                Telnyx::XaiVoiceSettings
               )
             end
-
-          class Xai < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Voice settings provider type
-            sig { returns(Symbol) }
-            attr_accessor :type
-
-            # Language code, or `auto` to detect automatically.
-            sig { returns(T.nilable(String)) }
-            attr_reader :language
-
-            sig { params(language: String).void }
-            attr_writer :language
-
-            sig do
-              params(language: String, type: Symbol).returns(T.attached_class)
-            end
-            def self.new(
-              # Language code, or `auto` to detect automatically.
-              language: nil,
-              # Voice settings provider type
-              type: :xai
-            )
-            end
-
-            sig { override.returns({ type: Symbol, language: String }) }
-            def to_hash
-            end
-          end
 
           sig do
             override.returns(

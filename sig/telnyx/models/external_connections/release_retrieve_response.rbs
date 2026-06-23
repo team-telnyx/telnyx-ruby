@@ -2,105 +2,18 @@ module Telnyx
   module Models
     module ExternalConnections
       type release_retrieve_response =
-        {
-          data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
-        }
+        { data: Telnyx::ExternalConnections::Release }
 
       class ReleaseRetrieveResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data?
+        attr_reader data: Telnyx::ExternalConnections::Release?
 
         def data=: (
-          Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
-        ) -> Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
+          Telnyx::ExternalConnections::Release
+        ) -> Telnyx::ExternalConnections::Release
 
-        def initialize: (
-          ?data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
-        ) -> void
+        def initialize: (?data: Telnyx::ExternalConnections::Release) -> void
 
-        def to_hash: -> {
-          data: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data
-        }
-
-        type data =
-          {
-            created_at: String,
-            error_message: String,
-            status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status,
-            telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry],
-            tenant_id: String,
-            ticket_id: String
-          }
-
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader created_at: String?
-
-          def created_at=: (String) -> String
-
-          attr_reader error_message: String?
-
-          def error_message=: (String) -> String
-
-          attr_reader status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status?
-
-          def status=: (
-            Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status
-          ) -> Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status
-
-          attr_reader telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry]?
-
-          def telephone_numbers=: (
-            ::Array[Telnyx::ExternalConnections::TnReleaseEntry]
-          ) -> ::Array[Telnyx::ExternalConnections::TnReleaseEntry]
-
-          attr_reader tenant_id: String?
-
-          def tenant_id=: (String) -> String
-
-          attr_reader ticket_id: String?
-
-          def ticket_id=: (String) -> String
-
-          def initialize: (
-            ?created_at: String,
-            ?error_message: String,
-            ?status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status,
-            ?telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry],
-            ?tenant_id: String,
-            ?ticket_id: String
-          ) -> void
-
-          def to_hash: -> {
-            created_at: String,
-            error_message: String,
-            status: Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status,
-            telephone_numbers: ::Array[Telnyx::ExternalConnections::TnReleaseEntry],
-            tenant_id: String,
-            ticket_id: String
-          }
-
-          type status =
-            :pending_upload
-            | :pending
-            | :in_progress
-            | :complete
-            | :failed
-            | :expired
-            | :unknown
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            PENDING_UPLOAD: :pending_upload
-            PENDING: :pending
-            IN_PROGRESS: :in_progress
-            COMPLETE: :complete
-            FAILED: :failed
-            EXPIRED: :expired
-            UNKNOWN: :unknown
-
-            def self?.values: -> ::Array[Telnyx::Models::ExternalConnections::ReleaseRetrieveResponse::Data::status]
-          end
-        end
+        def to_hash: -> { data: Telnyx::ExternalConnections::Release }
       end
     end
   end

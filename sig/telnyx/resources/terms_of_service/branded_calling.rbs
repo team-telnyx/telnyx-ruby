@@ -4,7 +4,7 @@ module Telnyx
       class BrandedCalling
         def agree: (
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse
+        ) -> Telnyx::TermsOfService::TosAgreementWrapped
 
         def initialize: (client: Telnyx::Client) -> void
       end

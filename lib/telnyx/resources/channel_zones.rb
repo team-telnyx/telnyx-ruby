@@ -17,7 +17,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ChannelZoneUpdateResponse]
+      # @return [Telnyx::Models::GcbChannelZone]
       #
       # @see Telnyx::Models::ChannelZoneUpdateParams
       def update(channel_zone_id, params)
@@ -26,7 +26,7 @@ module Telnyx
           method: :put,
           path: ["channel_zones/%1$s", channel_zone_id],
           body: parsed,
-          model: Telnyx::Models::ChannelZoneUpdateResponse,
+          model: Telnyx::GcbChannelZone,
           options: options
         )
       end
@@ -43,7 +43,7 @@ module Telnyx
       # @param page_size [Integer]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::ChannelZoneListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::GcbChannelZone>]
       #
       # @see Telnyx::Models::ChannelZoneListParams
       def list(params = {})
@@ -54,7 +54,7 @@ module Telnyx
           path: "channel_zones",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::ChannelZoneListResponse,
+          model: Telnyx::GcbChannelZone,
           options: options
         )
       end

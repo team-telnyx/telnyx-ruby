@@ -24,9 +24,7 @@ module Telnyx
           sig { returns(Time) }
           attr_accessor :started_at
 
-          sig do
-            returns(Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol)
-          end
+          sig { returns(Telnyx::AI::Missions::RunStatus::TaggedSymbol) }
           attr_accessor :status
 
           sig { returns(Time) }
@@ -73,7 +71,7 @@ module Telnyx
               mission_id: String,
               run_id: String,
               started_at: Time,
-              status: Telnyx::AI::Missions::MissionRunData::Status::OrSymbol,
+              status: Telnyx::AI::Missions::RunStatus::OrSymbol,
               updated_at: Time,
               error: String,
               finished_at: Time,
@@ -104,8 +102,7 @@ module Telnyx
                 mission_id: String,
                 run_id: String,
                 started_at: Time,
-                status:
-                  Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol,
+                status: Telnyx::AI::Missions::RunStatus::TaggedSymbol,
                 updated_at: Time,
                 error: String,
                 finished_at: Time,
@@ -117,57 +114,6 @@ module Telnyx
             )
           end
           def to_hash
-          end
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Telnyx::AI::Missions::MissionRunData::Status)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            PENDING =
-              T.let(
-                :pending,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
-              )
-            RUNNING =
-              T.let(
-                :running,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
-              )
-            PAUSED =
-              T.let(
-                :paused,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
-              )
-            SUCCEEDED =
-              T.let(
-                :succeeded,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
-              )
-            FAILED =
-              T.let(
-                :failed,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
-              )
-            CANCELLED =
-              T.let(
-                :cancelled,
-                Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::AI::Missions::MissionRunData::Status::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

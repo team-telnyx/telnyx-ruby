@@ -16,7 +16,7 @@ module Telnyx
               Telnyx::AzureConfigurationData::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CustomStorageCredentialCreateResponse)
+        ).returns(Telnyx::CredentialsResponse)
       end
       def create(
         # Uniquely identifies a Telnyx application (Call Control, TeXML) or Sip connection
@@ -33,7 +33,7 @@ module Telnyx
         params(
           connection_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CustomStorageCredentialRetrieveResponse)
+        ).returns(Telnyx::CredentialsResponse)
       end
       def retrieve(
         # Uniquely identifies a Telnyx application (Call Control, TeXML) or Sip connection
@@ -55,7 +55,7 @@ module Telnyx
               Telnyx::AzureConfigurationData::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::CustomStorageCredentialUpdateResponse)
+        ).returns(Telnyx::CredentialsResponse)
       end
       def update(
         # Uniquely identifies a Telnyx application (Call Control, TeXML) or Sip connection

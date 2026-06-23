@@ -1,55 +1,15 @@
 module Telnyx
   module Models
-    type wireguard_peer_update_response =
-      { data: Telnyx::Models::WireguardPeerUpdateResponse::Data }
+    type wireguard_peer_update_response = { data: Telnyx::WireguardPeer }
 
     class WireguardPeerUpdateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::Models::WireguardPeerUpdateResponse::Data?
+      attr_reader data: Telnyx::WireguardPeer?
 
-      def data=: (
-        Telnyx::Models::WireguardPeerUpdateResponse::Data
-      ) -> Telnyx::Models::WireguardPeerUpdateResponse::Data
+      def data=: (Telnyx::WireguardPeer) -> Telnyx::WireguardPeer
 
-      def initialize: (
-        ?data: Telnyx::Models::WireguardPeerUpdateResponse::Data
-      ) -> void
+      def initialize: (?data: Telnyx::WireguardPeer) -> void
 
-      def to_hash: -> {
-        data: Telnyx::Models::WireguardPeerUpdateResponse::Data
-      }
-
-      type data =
-        {
-          last_seen: String,
-          private_key: String,
-          wireguard_interface_id: String
-        }
-
-      class Data < Telnyx::Models::Record
-        def wireguard_interface_id: -> String?
-
-        def wireguard_interface_id=: (String _) -> String
-
-        def last_seen: -> String?
-
-        def last_seen=: (String _) -> String
-
-        def private_key: -> String?
-
-        def private_key=: (String _) -> String
-
-        def initialize: (
-          ?last_seen: String,
-          ?private_key: String,
-          ?wireguard_interface_id: String
-        ) -> void
-
-        def to_hash: -> {
-          last_seen: String,
-          private_key: String,
-          wireguard_interface_id: String
-        }
-      end
+      def to_hash: -> { data: Telnyx::WireguardPeer }
     end
   end
 end

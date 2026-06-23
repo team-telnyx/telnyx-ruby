@@ -12,9 +12,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::PortingPhoneNumberListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::PortingPhoneNumber]
         )
       end
       def list(

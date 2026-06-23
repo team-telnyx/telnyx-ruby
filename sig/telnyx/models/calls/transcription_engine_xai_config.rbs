@@ -1,0 +1,130 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_engine_xai_config =
+        {
+          interim_results: bool,
+          language: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::language,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_model
+        }
+
+      class TranscriptionEngineXaiConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader interim_results: bool?
+
+        def interim_results=: (bool) -> bool
+
+        attr_reader language: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::language?
+
+        def language=: (
+          Telnyx::Models::Calls::TranscriptionEngineXaiConfig::language
+        ) -> Telnyx::Models::Calls::TranscriptionEngineXaiConfig::language
+
+        attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_engine?
+
+        def transcription_engine=: (
+          Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_engine
+        ) -> Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_engine
+
+        attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_model?
+
+        def transcription_model=: (
+          Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_model
+        ) -> Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_model
+
+        def initialize: (
+          ?interim_results: bool,
+          ?language: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::language,
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_engine,
+          ?transcription_model: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_model
+        ) -> void
+
+        def to_hash: -> {
+          interim_results: bool,
+          language: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::language,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_model
+        }
+
+        type language =
+          :ar
+          | :cs
+          | :da
+          | :de
+          | :en
+          | :es
+          | :fa
+          | :fil
+          | :fr
+          | :hi
+          | :id
+          | :it
+          | :ja
+          | :ko
+          | :mk
+          | :ms
+          | :nl
+          | :pl
+          | :pt
+          | :ro
+          | :ru
+          | :sv
+          | :th
+          | :tr
+          | :vi
+
+        module Language
+          extend Telnyx::Internal::Type::Enum
+
+          AR: :ar
+          CS: :cs
+          DA: :da
+          DE: :de
+          EN: :en
+          ES: :es
+          FA: :fa
+          FIL: :fil
+          FR: :fr
+          HI: :hi
+          ID: :id
+          IT: :it
+          JA: :ja
+          KO: :ko
+          MK: :mk
+          MS: :ms
+          NL: :nl
+          PL: :pl
+          PT: :pt
+          RO: :ro
+          RU: :ru
+          SV: :sv
+          TH: :th
+          TR: :tr
+          VI: :vi
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineXaiConfig::language]
+        end
+
+        type transcription_engine = :xAI
+
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          X_AI: :xAI
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_engine]
+        end
+
+        type transcription_model = :"xai/grok-stt"
+
+        module TranscriptionModel
+          extend Telnyx::Internal::Type::Enum
+
+          XAI_GROK_STT: :"xai/grok-stt"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineXaiConfig::transcription_model]
+        end
+      end
+    end
+  end
+end

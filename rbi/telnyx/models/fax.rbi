@@ -85,10 +85,10 @@ module Telnyx
       # The quality of the fax. The `ultra` settings provides the highest quality
       # available, but also present longer fax processing times. `ultra_light` is best
       # suited for images, wihle `ultra_dark` is best suited for text.
-      sig { returns(T.nilable(Telnyx::Fax::Quality::TaggedSymbol)) }
+      sig { returns(T.nilable(Telnyx::Quality::TaggedSymbol)) }
       attr_reader :quality
 
-      sig { params(quality: Telnyx::Fax::Quality::OrSymbol).void }
+      sig { params(quality: Telnyx::Quality::OrSymbol).void }
       attr_writer :quality
 
       # Identifies the type of the resource.
@@ -161,7 +161,7 @@ module Telnyx
           media_name: String,
           media_url: String,
           preview_url: String,
-          quality: Telnyx::Fax::Quality::OrSymbol,
+          quality: Telnyx::Quality::OrSymbol,
           record_type: Telnyx::Fax::RecordType::OrSymbol,
           status: Telnyx::Fax::Status::OrSymbol,
           store_media: T::Boolean,
@@ -238,7 +238,7 @@ module Telnyx
             media_name: String,
             media_url: String,
             preview_url: String,
-            quality: Telnyx::Fax::Quality::TaggedSymbol,
+            quality: Telnyx::Quality::TaggedSymbol,
             record_type: Telnyx::Fax::RecordType::TaggedSymbol,
             status: Telnyx::Fax::Status::TaggedSymbol,
             store_media: T::Boolean,
@@ -264,26 +264,6 @@ module Telnyx
         OUTBOUND = T.let(:outbound, Telnyx::Fax::Direction::TaggedSymbol)
 
         sig { override.returns(T::Array[Telnyx::Fax::Direction::TaggedSymbol]) }
-        def self.values
-        end
-      end
-
-      # The quality of the fax. The `ultra` settings provides the highest quality
-      # available, but also present longer fax processing times. `ultra_light` is best
-      # suited for images, wihle `ultra_dark` is best suited for text.
-      module Quality
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol = T.type_alias { T.all(Symbol, Telnyx::Fax::Quality) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        NORMAL = T.let(:normal, Telnyx::Fax::Quality::TaggedSymbol)
-        HIGH = T.let(:high, Telnyx::Fax::Quality::TaggedSymbol)
-        VERY_HIGH = T.let(:very_high, Telnyx::Fax::Quality::TaggedSymbol)
-        ULTRA_LIGHT = T.let(:ultra_light, Telnyx::Fax::Quality::TaggedSymbol)
-        ULTRA_DARK = T.let(:ultra_dark, Telnyx::Fax::Quality::TaggedSymbol)
-
-        sig { override.returns(T::Array[Telnyx::Fax::Quality::TaggedSymbol]) }
         def self.values
         end
       end

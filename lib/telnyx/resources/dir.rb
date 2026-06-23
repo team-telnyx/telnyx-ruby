@@ -27,14 +27,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DirRetrieveResponse]
+      # @return [Telnyx::Models::DirWrapped]
       #
       # @see Telnyx::Models::DirRetrieveParams
       def retrieve(dir_id, params = {})
         @client.request(
           method: :get,
           path: ["dir/%1$s", dir_id],
-          model: Telnyx::Models::DirRetrieveResponse,
+          model: Telnyx::DirWrapped,
           options: params[:request_options]
         )
       end
@@ -70,7 +70,7 @@ module Telnyx
       #
       # @param display_name [String] Name shown to call recipients. 1–35 characters, no emoji, not whitespace-only.
       #
-      # @param documents [Array<Telnyx::Models::DirUpdateParams::Document>] Additional supporting documents to attach. Append-only: existing documents are n
+      # @param documents [Array<Telnyx::Models::Document>] Additional supporting documents to attach. Append-only: existing documents are n
       #
       # @param logo_url [String] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #
@@ -78,7 +78,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DirUpdateResponse]
+      # @return [Telnyx::Models::DirWrapped]
       #
       # @see Telnyx::Models::DirUpdateParams
       def update(dir_id, params = {})
@@ -87,7 +87,7 @@ module Telnyx
           method: :patch,
           path: ["dir/%1$s", dir_id],
           body: parsed,
-          model: Telnyx::Models::DirUpdateResponse,
+          model: Telnyx::DirWrapped,
           options: options
         )
       end
@@ -116,7 +116,7 @@ module Telnyx
       #
       # @param filter_expiring_at_lte [Time] Return only DIRs whose `expiring_at` is at or before this ISO-8601 timestamp.
       #
-      # @param filter_status [Symbol, Telnyx::Models::DirListParams::FilterStatus] Filter by DIR status.
+      # @param filter_status [Symbol, Telnyx::Models::DirStatus] Filter by DIR status.
       #
       # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
       #
@@ -126,7 +126,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::DirListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::DirAPI>]
       #
       # @see Telnyx::Models::DirListParams
       def list(params = {})
@@ -146,7 +146,7 @@ module Telnyx
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::DirListResponse,
+          model: Telnyx::DirAPI,
           options: options
         )
       end
@@ -170,47 +170,6 @@ module Telnyx
           path: ["dir/%1$s", dir_id],
           model: NilClass,
           options: params[:request_options]
-        )
-      end
-
-      # Some parameter documentations has been truncated, see
-      # {Telnyx::Models::DirCreateLoaParams} for more details.
-      #
-      # Generate a pre-filled Letter of Authorization (LOA) PDF for a DIR. Enterprise
-      # identity (legal name, DBA, address, contact, website, tax id) and the DIR
-      # display name are read server-side; the caller supplies the telephone numbers to
-      # authorize, an optional Authorized Agent block, and an optional drawn signature.
-      #
-      # When `signature` is omitted the PDF is returned unsigned so the customer can
-      # sign it externally and upload it via the Documents API. When `signature` is
-      # present the PDF embeds the supplied image, printed name, and signed-at date.
-      #
-      # Returns `application/pdf`.
-      #
-      # @overload create_loa(dir_id, phone_numbers:, agent: nil, signature: nil, request_options: {})
-      #
-      # @param dir_id [String] The DIR id.
-      #
-      # @param phone_numbers [Array<String>] Telephone numbers to authorize on the DIR, in `+E164` format (`+` followed by 10
-      #
-      # @param agent [Telnyx::Models::DirCreateLoaParams::Agent] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
-      #
-      # @param signature [Telnyx::Models::DirCreateLoaParams::Signature] Optional. When provided the rendered PDF embeds the signature image, printed nam
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [StringIO]
-      #
-      # @see Telnyx::Models::DirCreateLoaParams
-      def create_loa(dir_id, params)
-        parsed, options = Telnyx::DirCreateLoaParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: ["dir/%1$s/loa", dir_id],
-          headers: {"accept" => "application/pdf"},
-          body: parsed,
-          model: StringIO,
-          options: options
         )
       end
 
@@ -255,7 +214,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::DirListInfringementClaimsResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::InfringementClaim>]
       #
       # @see Telnyx::Models::DirListInfringementClaimsParams
       def list_infringement_claims(dir_id, params = {})
@@ -266,7 +225,48 @@ module Telnyx
           path: ["dir/%1$s/infringement_claims", dir_id],
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::DirListInfringementClaimsResponse,
+          model: Telnyx::InfringementClaim,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DirNewLoaParams} for more details.
+      #
+      # Generate a pre-filled Letter of Authorization (LOA) PDF for a DIR. Enterprise
+      # identity (legal name, DBA, address, contact, website, tax id) and the DIR
+      # display name are read server-side; the caller supplies the telephone numbers to
+      # authorize, an optional Authorized Agent block, and an optional drawn signature.
+      #
+      # When `signature` is omitted the PDF is returned unsigned so the customer can
+      # sign it externally and upload it via the Documents API. When `signature` is
+      # present the PDF embeds the supplied image, printed name, and signed-at date.
+      #
+      # Returns `application/pdf`.
+      #
+      # @overload new_loa(dir_id, phone_numbers:, agent: nil, signature: nil, request_options: {})
+      #
+      # @param dir_id [String] The DIR id.
+      #
+      # @param phone_numbers [Array<String>] Telephone numbers to authorize on the DIR, in `+E164` format (`+` followed by 10
+      #
+      # @param agent [Telnyx::Models::Enterprises::Reputation::AgentInput] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
+      #
+      # @param signature [Telnyx::Models::DirNewLoaParams::Signature] Optional. When provided the rendered PDF embeds the signature image, printed nam
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [StringIO]
+      #
+      # @see Telnyx::Models::DirNewLoaParams
+      def new_loa(dir_id, params)
+        parsed, options = Telnyx::DirNewLoaParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["dir/%1$s/loa", dir_id],
+          headers: {"accept" => "application/pdf"},
+          body: parsed,
+          model: StringIO,
           options: options
         )
       end
@@ -286,14 +286,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DirSubmitResponse]
+      # @return [Telnyx::Models::DirWrapped]
       #
       # @see Telnyx::Models::DirSubmitParams
       def submit(dir_id, params = {})
         @client.request(
           method: :post,
           path: ["dir/%1$s/submit", dir_id],
-          model: Telnyx::Models::DirSubmitResponse,
+          model: Telnyx::DirWrapped,
           options: params[:request_options]
         )
       end
@@ -323,13 +323,13 @@ module Telnyx
       #
       # @param display_name [String, nil]
       #
-      # @param documents [Array<Telnyx::Models::DirUpdateInfringementParams::Document>, nil] Append-only supporting documents.
+      # @param documents [Array<Telnyx::Models::Document>, nil] Append-only supporting documents.
       #
       # @param logo_url [String, nil] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::DirUpdateInfringementResponse]
+      # @return [Telnyx::Models::DirWrapped]
       #
       # @see Telnyx::Models::DirUpdateInfringementParams
       def update_infringement(dir_id, params)
@@ -338,7 +338,7 @@ module Telnyx
           method: :put,
           path: ["dir/%1$s/infringement_update", dir_id],
           body: parsed,
-          model: Telnyx::Models::DirUpdateInfringementResponse,
+          model: Telnyx::DirWrapped,
           options: options
         )
       end

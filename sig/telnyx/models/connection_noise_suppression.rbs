@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    type connection_noise_suppression = :inbound | :outbound | :both | :disabled
+
+    module ConnectionNoiseSuppression
+      extend Telnyx::Internal::Type::Enum
+
+      INBOUND: :inbound
+      OUTBOUND: :outbound
+      BOTH: :both
+      DISABLED: :disabled
+
+      def self?.values: -> ::Array[Telnyx::Models::connection_noise_suppression]
+    end
+  end
+end

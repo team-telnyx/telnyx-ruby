@@ -24,7 +24,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::ActionRequirementListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::PortingActionRequirement>]
         #
         # @see Telnyx::Models::PortingOrders::ActionRequirementListParams
         def list(porting_order_id, params = {})
@@ -35,7 +35,7 @@ module Telnyx
             path: ["porting_orders/%1$s/action_requirements", porting_order_id],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::PortingOrders::ActionRequirementListResponse,
+            model: Telnyx::PortingOrders::PortingActionRequirement,
             options: options
           )
         end

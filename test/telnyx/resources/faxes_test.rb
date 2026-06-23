@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::FaxesTest < Telnyx::Test::ResourceTest
         media_name: String | nil,
         media_url: String | nil,
         preview_url: String | nil,
-        quality: Telnyx::Fax::Quality | nil,
+        quality: Telnyx::Quality | nil,
         record_type: Telnyx::Fax::RecordType | nil,
         status: Telnyx::Fax::Status | nil,
         store_media: Telnyx::Internal::Type::Boolean | nil,

@@ -6,7 +6,7 @@ module Telnyx
       def retrieve: (
         String recording_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RecordingRetrieveResponse
+      ) -> Telnyx::RecordingResponse
 
       def list: (
         ?filter: Telnyx::RecordingListParams::Filter,
@@ -18,7 +18,7 @@ module Telnyx
       def delete: (
         String recording_id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::RecordingDeleteResponse
+      ) -> Telnyx::RecordingResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

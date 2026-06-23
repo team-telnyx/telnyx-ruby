@@ -57,7 +57,7 @@ module Telnyx
       #
       # @param preview_format [Symbol, Telnyx::Models::FaxCreateParams::PreviewFormat] The format for the preview file in case the `store_preview` is `true`.
       #
-      # @param quality [Symbol, Telnyx::Models::FaxCreateParams::Quality] The quality of the fax. The `ultra` settings provides the highest quality availa
+      # @param quality [Symbol, Telnyx::Models::Quality] The quality of the fax. The `ultra` settings provides the highest quality availa
       #
       # @param store_media [Boolean] Should fax media be stored on temporary URL. It does not support media_name, the
       #

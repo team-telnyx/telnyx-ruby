@@ -1,0 +1,306 @@
+module Telnyx
+  module Models
+    module AI
+      type conversation_flow_req =
+        {
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node],
+          start_node_id: String,
+          edges: ::Array[Telnyx::AI::FlowEdge]
+        }
+
+      class ConversationFlowReq < Telnyx::Internal::Type::BaseModel
+        attr_accessor nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node]
+
+        attr_accessor start_node_id: String
+
+        attr_reader edges: ::Array[Telnyx::AI::FlowEdge]?
+
+        def edges=: (
+          ::Array[Telnyx::AI::FlowEdge]
+        ) -> ::Array[Telnyx::AI::FlowEdge]
+
+        def initialize: (
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node],
+          start_node_id: String,
+          ?edges: ::Array[Telnyx::AI::FlowEdge]
+        ) -> void
+
+        def to_hash: -> {
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node],
+          start_node_id: String,
+          edges: ::Array[Telnyx::AI::FlowEdge]
+        }
+
+        type node =
+          Telnyx::AI::ConversationFlowReq::Node::Prompt
+          | Telnyx::AI::ConversationFlowReq::Node::Tool
+          | Telnyx::AI::ConversationFlowReq::Node::Speak
+
+        module Node
+          extend Telnyx::Internal::Type::Union
+
+          type prompt =
+            {
+              id: String,
+              instructions: String,
+              external_llm: Telnyx::AI::ExternalLlmReq,
+              instructions_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::instructions_mode,
+              llm_api_key_ref: String,
+              model: String,
+              name: String,
+              position: Telnyx::AI::NodePosition,
+              shared_tool_ids: ::Array[String],
+              tools_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::tools_mode,
+              transcription: Telnyx::AI::TranscriptionSettings,
+              type: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::type_,
+              voice_settings: Telnyx::AI::VoiceSettings
+            }
+
+          class Prompt < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor instructions: String
+
+            attr_reader external_llm: Telnyx::AI::ExternalLlmReq?
+
+            def external_llm=: (
+              Telnyx::AI::ExternalLlmReq
+            ) -> Telnyx::AI::ExternalLlmReq
+
+            attr_reader instructions_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::instructions_mode?
+
+            def instructions_mode=: (
+              Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::instructions_mode
+            ) -> Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::instructions_mode
+
+            attr_reader llm_api_key_ref: String?
+
+            def llm_api_key_ref=: (String) -> String
+
+            attr_reader model: String?
+
+            def model=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader position: Telnyx::AI::NodePosition?
+
+            def position=: (
+              Telnyx::AI::NodePosition
+            ) -> Telnyx::AI::NodePosition
+
+            attr_reader shared_tool_ids: ::Array[String]?
+
+            def shared_tool_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader tools_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::tools_mode?
+
+            def tools_mode=: (
+              Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::tools_mode
+            ) -> Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::tools_mode
+
+            attr_reader transcription: Telnyx::AI::TranscriptionSettings?
+
+            def transcription=: (
+              Telnyx::AI::TranscriptionSettings
+            ) -> Telnyx::AI::TranscriptionSettings
+
+            attr_reader type: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::type_?
+
+            def type=: (
+              Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::type_
+            ) -> Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::type_
+
+            attr_reader voice_settings: Telnyx::AI::VoiceSettings?
+
+            def voice_settings=: (
+              Telnyx::AI::VoiceSettings
+            ) -> Telnyx::AI::VoiceSettings
+
+            def initialize: (
+              id: String,
+              instructions: String,
+              ?external_llm: Telnyx::AI::ExternalLlmReq,
+              ?instructions_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::instructions_mode,
+              ?llm_api_key_ref: String,
+              ?model: String,
+              ?name: String,
+              ?position: Telnyx::AI::NodePosition,
+              ?shared_tool_ids: ::Array[String],
+              ?tools_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::tools_mode,
+              ?transcription: Telnyx::AI::TranscriptionSettings,
+              ?type: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::type_,
+              ?voice_settings: Telnyx::AI::VoiceSettings
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              instructions: String,
+              external_llm: Telnyx::AI::ExternalLlmReq,
+              instructions_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::instructions_mode,
+              llm_api_key_ref: String,
+              model: String,
+              name: String,
+              position: Telnyx::AI::NodePosition,
+              shared_tool_ids: ::Array[String],
+              tools_mode: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::tools_mode,
+              transcription: Telnyx::AI::TranscriptionSettings,
+              type: Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::type_,
+              voice_settings: Telnyx::AI::VoiceSettings
+            }
+
+            type instructions_mode = :replace | :append
+
+            module InstructionsMode
+              extend Telnyx::Internal::Type::Enum
+
+              REPLACE: :replace
+              APPEND: :append
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::instructions_mode]
+            end
+
+            type tools_mode = :replace | :append
+
+            module ToolsMode
+              extend Telnyx::Internal::Type::Enum
+
+              REPLACE: :replace
+              APPEND: :append
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::tools_mode]
+            end
+
+            type type_ = :prompt
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              PROMPT: :prompt
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::ConversationFlowReq::Node::Prompt::type_]
+            end
+          end
+
+          type tool =
+            {
+              id: String,
+              shared_tool_id: String,
+              name: String,
+              position: Telnyx::AI::NodePosition,
+              type: Telnyx::Models::AI::ConversationFlowReq::Node::Tool::type_
+            }
+
+          class Tool < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor shared_tool_id: String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader position: Telnyx::AI::NodePosition?
+
+            def position=: (
+              Telnyx::AI::NodePosition
+            ) -> Telnyx::AI::NodePosition
+
+            attr_reader type: Telnyx::Models::AI::ConversationFlowReq::Node::Tool::type_?
+
+            def type=: (
+              Telnyx::Models::AI::ConversationFlowReq::Node::Tool::type_
+            ) -> Telnyx::Models::AI::ConversationFlowReq::Node::Tool::type_
+
+            def initialize: (
+              id: String,
+              shared_tool_id: String,
+              ?name: String,
+              ?position: Telnyx::AI::NodePosition,
+              ?type: Telnyx::Models::AI::ConversationFlowReq::Node::Tool::type_
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              shared_tool_id: String,
+              name: String,
+              position: Telnyx::AI::NodePosition,
+              type: Telnyx::Models::AI::ConversationFlowReq::Node::Tool::type_
+            }
+
+            type type_ = :tool
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TOOL: :tool
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::ConversationFlowReq::Node::Tool::type_]
+            end
+          end
+
+          type speak =
+            {
+              id: String,
+              message: String,
+              name: String,
+              position: Telnyx::AI::NodePosition,
+              type: Telnyx::Models::AI::ConversationFlowReq::Node::Speak::type_
+            }
+
+          class Speak < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor message: String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader position: Telnyx::AI::NodePosition?
+
+            def position=: (
+              Telnyx::AI::NodePosition
+            ) -> Telnyx::AI::NodePosition
+
+            attr_reader type: Telnyx::Models::AI::ConversationFlowReq::Node::Speak::type_?
+
+            def type=: (
+              Telnyx::Models::AI::ConversationFlowReq::Node::Speak::type_
+            ) -> Telnyx::Models::AI::ConversationFlowReq::Node::Speak::type_
+
+            def initialize: (
+              id: String,
+              message: String,
+              ?name: String,
+              ?position: Telnyx::AI::NodePosition,
+              ?type: Telnyx::Models::AI::ConversationFlowReq::Node::Speak::type_
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              message: String,
+              name: String,
+              position: Telnyx::AI::NodePosition,
+              type: Telnyx::Models::AI::ConversationFlowReq::Node::Speak::type_
+            }
+
+            type type_ = :speak
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              SPEAK: :speak
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::ConversationFlowReq::Node::Speak::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationFlowReq::node]
+        end
+      end
+    end
+  end
+end

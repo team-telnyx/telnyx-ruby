@@ -22,7 +22,7 @@ module Telnyx
       #
       # @param bgp_asn [Float] The Border Gateway Protocol (BGP) Autonomous System Number (ASN). If null, value
       #
-      # @param cloud_provider [Symbol, Telnyx::Models::VirtualCrossConnectCreateParams::CloudProvider] The Virtual Private Cloud with which you would like to establish a cross connect
+      # @param cloud_provider [Symbol, Telnyx::Models::VirtualCrossConnectCreate::CloudProvider] The Virtual Private Cloud with which you would like to establish a cross connect
       #
       # @param cloud_provider_region [String] The region where your Virtual Private Cloud hosts are located.<br /><br />The av
       #
@@ -140,7 +140,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VirtualCrossConnectListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::VirtualCrossConnectCombined>]
       #
       # @see Telnyx::Models::VirtualCrossConnectListParams
       def list(params = {})
@@ -151,7 +151,7 @@ module Telnyx
           path: "virtual_cross_connects",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::VirtualCrossConnectListResponse,
+          model: Telnyx::VirtualCrossConnectCombined,
           options: options
         )
       end

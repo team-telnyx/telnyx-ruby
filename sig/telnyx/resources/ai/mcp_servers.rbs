@@ -9,12 +9,12 @@ module Telnyx
           ?allowed_tools: ::Array[String]?,
           ?api_key_ref: String?,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::McpServerCreateResponse
+        ) -> Telnyx::AI::McpServer
 
         def retrieve: (
           String mcp_server_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::McpServerRetrieveResponse
+        ) -> Telnyx::AI::McpServer
 
         def update: (
           String mcp_server_id,
@@ -26,7 +26,7 @@ module Telnyx
           ?type: String,
           ?url: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::McpServerUpdateResponse
+        ) -> Telnyx::AI::McpServer
 
         def list: (
           ?page_number: Integer,
@@ -34,7 +34,7 @@ module Telnyx
           ?type: String,
           ?url: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPaginationTopLevelArray[Telnyx::Models::AI::McpServerListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPaginationTopLevelArray[Telnyx::AI::McpServer]
 
         def delete: (
           String mcp_server_id,

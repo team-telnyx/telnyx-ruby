@@ -13,7 +13,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::LoaTest < Telnyx::Test::
       )
 
     assert_pattern do
-      response => Telnyx::Models::Enterprises::Reputation::LoaUpdateResponse
+      response => Telnyx::Enterprises::EnterpriseReputationPublicWrapped
     end
 
     assert_pattern do

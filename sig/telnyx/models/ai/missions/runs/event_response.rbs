@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module AI
+      module Missions
+        module Runs
+          type event_response = { data: Telnyx::AI::Missions::Runs::EventData }
+
+          class EventResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: Telnyx::AI::Missions::Runs::EventData
+
+            def initialize: (
+              data: Telnyx::AI::Missions::Runs::EventData
+            ) -> void
+
+            def to_hash: -> { data: Telnyx::AI::Missions::Runs::EventData }
+          end
+        end
+      end
+    end
+  end
+end

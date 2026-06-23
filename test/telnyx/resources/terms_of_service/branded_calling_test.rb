@@ -9,12 +9,12 @@ class Telnyx::Test::Resources::TermsOfService::BrandedCallingTest < Telnyx::Test
     response = @telnyx.terms_of_service.branded_calling.agree
 
     assert_pattern do
-      response => Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse
+      response => Telnyx::TermsOfService::TosAgreementWrapped
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::TermsOfService::BrandedCallingAgreeResponse::Data
+        data: Telnyx::TermsOfService::TosAgreement
       }
     end
   end

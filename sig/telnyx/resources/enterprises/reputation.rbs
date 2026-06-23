@@ -11,7 +11,7 @@ module Telnyx
         def retrieve: (
           String enterprise_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Enterprises::ReputationRetrieveResponse
+        ) -> Telnyx::Enterprises::EnterpriseReputationPublicWrapped
 
         def disable: (
           String enterprise_id,
@@ -21,15 +21,15 @@ module Telnyx
         def enable: (
           String enterprise_id,
           loa_document_id: String,
-          ?check_frequency: Telnyx::Models::Enterprises::ReputationEnableParams::check_frequency,
+          ?check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Enterprises::ReputationEnableResponse
+        ) -> Telnyx::Enterprises::EnterpriseReputationPublicWrapped
 
         def update_frequency: (
           String enterprise_id,
-          check_frequency: Telnyx::Models::Enterprises::ReputationUpdateFrequencyParams::check_frequency,
+          check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Enterprises::ReputationUpdateFrequencyResponse
+        ) -> Telnyx::Enterprises::EnterpriseReputationPublicWrapped
 
         def initialize: (client: Telnyx::Client) -> void
       end

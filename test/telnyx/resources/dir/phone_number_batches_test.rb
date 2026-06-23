@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Dir::PhoneNumberBatchesTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Dir::PhoneNumberBatchRetrieveResponse::Data
+        data: Telnyx::Dir::PhoneNumberBatch
       }
     end
   end
@@ -36,7 +36,7 @@ class Telnyx::Test::Resources::Dir::PhoneNumberBatchesTest < Telnyx::Test::Resou
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Dir::PhoneNumberBatchListResponse
+      row => Telnyx::Dir::PhoneNumberBatch
     end
 
     assert_pattern do
@@ -44,10 +44,10 @@ class Telnyx::Test::Resources::Dir::PhoneNumberBatchesTest < Telnyx::Test::Resou
         batch_id: String | nil,
         dir_display_name: String | nil,
         dir_id: String | nil,
-        documents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Dir::PhoneNumberBatchListResponse::Document]) | nil,
+        documents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Document]) | nil,
         enterprise_id: String | nil,
-        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Dir::PhoneNumberBatchListResponse::PhoneNumber]) | nil,
-        status: Telnyx::Models::Dir::PhoneNumberBatchListResponse::Status | nil,
+        phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Dir::DirPhoneNumber]) | nil,
+        status: Telnyx::Dir::DirPhoneNumberStatus | nil,
         submitted_at: Time | nil,
         total_count: Integer | nil
       }

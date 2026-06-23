@@ -57,7 +57,7 @@ module Telnyx
 
         type filter =
           {
-            activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status,
+            activation_status: Telnyx::Models::porting_order_activation_status,
             phone_number: ::Array[String],
             portability_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status,
             porting_order_id: ::Array[String],
@@ -66,11 +66,11 @@ module Telnyx
           }
 
         class Filter < Telnyx::Internal::Type::BaseModel
-          attr_reader activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status?
+          attr_reader activation_status: Telnyx::Models::porting_order_activation_status?
 
           def activation_status=: (
-            Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status
-          ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status
+            Telnyx::Models::porting_order_activation_status
+          ) -> Telnyx::Models::porting_order_activation_status
 
           attr_reader phone_number: ::Array[String]?
 
@@ -99,7 +99,7 @@ module Telnyx
           ) -> Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key
 
           def initialize: (
-            ?activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status,
+            ?activation_status: Telnyx::Models::porting_order_activation_status,
             ?phone_number: ::Array[String],
             ?portability_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status,
             ?porting_order_id: ::Array[String],
@@ -108,48 +108,13 @@ module Telnyx
           ) -> void
 
           def to_hash: -> {
-            activation_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status,
+            activation_status: Telnyx::Models::porting_order_activation_status,
             phone_number: ::Array[String],
             portability_status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::portability_status,
             porting_order_id: ::Array[String],
             status: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::status,
             support_key: Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::support_key
           }
-
-          type activation_status =
-            :New
-            | :Pending
-            | :Conflict
-            | :"Cancel Pending"
-            | :Failed
-            | :Concurred
-            | :"Activate RDY"
-            | :"Disconnect Pending"
-            | :"Concurrence Sent"
-            | :Old
-            | :Sending
-            | :Active
-            | :Cancelled
-
-          module ActivationStatus
-            extend Telnyx::Internal::Type::Enum
-
-            NEW: :New
-            PENDING: :Pending
-            CONFLICT: :Conflict
-            CANCEL_PENDING: :"Cancel Pending"
-            FAILED: :Failed
-            CONCURRED: :Concurred
-            ACTIVATE_RDY: :"Activate RDY"
-            DISCONNECT_PENDING: :"Disconnect Pending"
-            CONCURRENCE_SENT: :"Concurrence Sent"
-            OLD: :Old
-            SENDING: :Sending
-            ACTIVE: :Active
-            CANCELLED: :Cancelled
-
-            def self?.values: -> ::Array[Telnyx::Models::PortingOrders::PhoneNumberBlockListParams::Filter::activation_status]
-          end
 
           type portability_status = :pending | :confirmed | :provisional
 

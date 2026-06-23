@@ -24,27 +24,31 @@ module Telnyx
       # configure these features.
       sig do
         params(
-          aws: ::Telnyx::TextToSpeechGenerateParams::Aws::OrHash,
-          azure: ::Telnyx::TextToSpeechGenerateParams::Azure::OrHash,
+          aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws::OrHash,
+          azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure::OrHash,
           disable_cache: T::Boolean,
-          elevenlabs: ::Telnyx::TextToSpeechGenerateParams::Elevenlabs::OrHash,
+          elevenlabs:
+            ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs::OrHash,
           language: String,
-          minimax: ::Telnyx::TextToSpeechGenerateParams::Minimax::OrHash,
+          minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax::OrHash,
           output_type:
-            ::Telnyx::TextToSpeechGenerateParams::OutputType::OrSymbol,
-          provider: ::Telnyx::TextToSpeechGenerateParams::Provider::OrSymbol,
-          resemble: ::Telnyx::TextToSpeechGenerateParams::Resemble::OrHash,
-          rime: ::Telnyx::TextToSpeechGenerateParams::Rime::OrHash,
-          telnyx: ::Telnyx::TextToSpeechGenerateParams::Telnyx::OrHash,
+            ::Telnyx::TextToSpeechGenerateSpeechParams::OutputType::OrSymbol,
+          provider:
+            ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::OrSymbol,
+          resemble:
+            ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble::OrHash,
+          rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime::OrHash,
+          telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx::OrHash,
           text: String,
-          text_type: ::Telnyx::TextToSpeechGenerateParams::TextType::OrSymbol,
+          text_type:
+            ::Telnyx::TextToSpeechGenerateSpeechParams::TextType::OrSymbol,
           voice: String,
           voice_settings: T::Hash[Symbol, T.anything],
-          xai: ::Telnyx::TextToSpeechGenerateParams::Xai::OrHash,
+          xai: ::Telnyx::TextToSpeechGenerateSpeechParams::Xai::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::TextToSpeechGenerateResponse)
+        ).returns(Telnyx::Models::TextToSpeechGenerateSpeechResponse)
       end
-      def generate(
+      def generate_speech(
         # AWS Polly provider-specific parameters.
         aws: nil,
         # Azure Cognitive Services provider-specific parameters.
@@ -107,6 +111,72 @@ module Telnyx
         api_key: nil,
         # Filter voices by provider. If omitted, voices from all providers are returned.
         provider: nil,
+        request_options: {}
+      )
+      end
+
+      # Open a WebSocket connection to stream text and receive synthesized audio in real
+      # time. Authentication is provided via the standard
+      # `Authorization: Bearer <API_KEY>` header. Send JSON frames with text to
+      # synthesize; receive JSON frames containing base64-encoded audio chunks.
+      #
+      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `rime`,
+      # `resemble`, `elevenlabs`, `xai`.
+      #
+      # **Connection flow:**
+      #
+      # 1. Open WebSocket with query parameters specifying provider, voice, and model.
+      # 2. Send an initial handshake message `{"text": " "}` (single space) with
+      #    optional `voice_settings` to initialize the session.
+      # 3. Send text messages as `{"text": "Hello world"}`.
+      # 4. Receive audio chunks as JSON frames with base64-encoded audio.
+      # 5. A final frame with `isFinal: true` indicates the end of audio for the current
+      #    text.
+      #
+      # To interrupt and restart synthesis mid-stream, send `{"force": true}` — the
+      # current worker is stopped and a new one is started.
+      #
+      # **Note:** The Telnyx `Ultra` model is not available over WebSocket. Use the HTTP
+      # POST `/text-to-speech/speech` endpoint instead.
+      sig do
+        params(
+          audio_format:
+            Telnyx::TextToSpeechRetrieveSpeechParams::AudioFormat::OrSymbol,
+          disable_cache: T::Boolean,
+          model_id: String,
+          provider:
+            Telnyx::TextToSpeechRetrieveSpeechParams::Provider::OrSymbol,
+          socket_id: String,
+          voice: String,
+          voice_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).void
+      end
+      def retrieve_speech(
+        # Audio output format override. Supported for Telnyx models. `pcm` and `wav` are
+        # available for `Natural`/`NaturalHD` models. The `Ultra` model outputs PCM at
+        # 24kHz s16le or MP3 at 128kbps 24kHz.
+        audio_format: nil,
+        # When `true`, bypass the audio cache and generate fresh audio.
+        disable_cache: nil,
+        # Model identifier for the chosen provider. Examples: `Natural`, `NaturalHD`,
+        # `Ultra` (Telnyx); `Polly.Generative` (AWS).
+        model_id: nil,
+        # TTS provider. Defaults to `telnyx` if not specified. Ignored when `voice` is
+        # provided.
+        provider: nil,
+        # Client-provided socket identifier for tracking. If not provided, one is
+        # generated server-side.
+        socket_id: nil,
+        # Voice identifier in the format `provider.model_id.voice_id` or
+        # `provider.voice_id` (e.g. `telnyx.NaturalHD.Telnyx_Alloy`,
+        # `Telnyx.Ultra.<voice_id>`, or `azure.en-US-AvaMultilingualNeural`). When
+        # provided, the `provider`, `model_id`, and `voice_id` are extracted
+        # automatically. Takes precedence over individual `provider`/`model_id`/`voice_id`
+        # parameters.
+        voice: nil,
+        # Voice identifier for the chosen provider.
+        voice_id: nil,
         request_options: {}
       )
       end

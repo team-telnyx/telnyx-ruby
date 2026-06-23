@@ -47,7 +47,7 @@ module Telnyx
         #
         # @param conversation [String] Optional Telnyx Conversation ID from `POST /ai/conversations`. When provided, Te
         #
-        # @param input [Object] The input items for this turn, using the OpenAI Responses API input format.
+        # @param input [Hash{Symbol=>Object}] The input items for this turn, using the OpenAI Responses API input format.
         #
         # @param instructions [String] Optional system/developer instructions for the model. When used with a persisted
         #
@@ -91,14 +91,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::OpenAIListModelsResponse]
+        # @return [Telnyx::Models::ModelsResponse]
         #
         # @see Telnyx::Models::AI::OpenAIListModelsParams
         def list_models(params = {})
           @client.request(
             method: :get,
             path: "ai/openai/models",
-            model: Telnyx::Models::AI::OpenAIListModelsResponse,
+            model: Telnyx::ModelsResponse,
             options: params[:request_options]
           )
         end

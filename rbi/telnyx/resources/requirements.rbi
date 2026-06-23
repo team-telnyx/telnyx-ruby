@@ -27,9 +27,7 @@ module Telnyx
           sort: T::Array[Telnyx::RequirementListParams::Sort::OrSymbol],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::RequirementListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::DocReqsRequirement]
         )
       end
       def list(

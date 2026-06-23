@@ -12,7 +12,7 @@ module Telnyx
           params(
             agreement_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::TermsOfService::AgreementRetrieveResponse)
+          ).returns(Telnyx::TermsOfService::TosAgreementWrapped)
         end
         def retrieve(
           # Unique identifier of the agreement.
@@ -35,12 +35,11 @@ module Telnyx
           params(
             page_number: Integer,
             page_size: Integer,
-            product_type:
-              Telnyx::TermsOfService::AgreementListParams::ProductType::OrSymbol,
+            product_type: Telnyx::TermsOfService::TosProductType::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::TermsOfService::AgreementListResponse
+              Telnyx::TermsOfService::TosAgreement
             ]
           )
         end

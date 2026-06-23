@@ -174,7 +174,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ConferenceRetrieveParticipantResponse]
+      # @return [Telnyx::Models::ConferenceParticipantResource]
       #
       # @see Telnyx::Models::ConferenceRetrieveParticipantParams
       def retrieve_participant(participant_id, params)
@@ -186,7 +186,7 @@ module Telnyx
         @client.request(
           method: :get,
           path: ["conferences/%1$s/participants/%2$s", id, participant_id],
-          model: Telnyx::Models::ConferenceRetrieveParticipantResponse,
+          model: Telnyx::ConferenceParticipantResource,
           options: options
         )
       end
@@ -210,7 +210,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::ConferenceUpdateParticipantResponse]
+      # @return [Telnyx::Models::ConferenceParticipantResource]
       #
       # @see Telnyx::Models::ConferenceUpdateParticipantParams
       def update_participant(participant_id, params)
@@ -223,7 +223,7 @@ module Telnyx
           method: :patch,
           path: ["conferences/%1$s/participants/%2$s", id, participant_id],
           body: parsed,
-          model: Telnyx::Models::ConferenceUpdateParticipantResponse,
+          model: Telnyx::ConferenceParticipantResource,
           options: options
         )
       end

@@ -45,7 +45,7 @@ module Telnyx
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
-        # @param comment_type [Symbol, Telnyx::Models::Dir::CommentListParams::CommentType] Restrict to comments of this category. Customer-visible categories only: interna
+        # @param comment_type [Symbol, Telnyx::Models::Dir::CommentType] Restrict to comments of this category. Customer-visible categories only: interna
         #
         # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
@@ -53,7 +53,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Dir::CommentListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Dir::DirComment>]
         #
         # @see Telnyx::Models::Dir::CommentListParams
         def list(dir_id, params = {})
@@ -64,7 +64,7 @@ module Telnyx
             path: ["dir/%1$s/comments", dir_id],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Dir::CommentListResponse,
+            model: Telnyx::Dir::DirComment,
             options: options
           )
         end

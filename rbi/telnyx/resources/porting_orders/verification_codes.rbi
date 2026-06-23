@@ -18,7 +18,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::PortingOrders::VerificationCodeListResponse
+              Telnyx::PortingOrders::PortingVerificationCode
             ]
           )
         end

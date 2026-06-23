@@ -11,15 +11,11 @@ module Telnyx
       # Create a new Network.
       sig do
         params(
-          name: String,
+          network_create: Telnyx::NetworkCreate::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::NetworkCreateResponse)
       end
-      def create(
-        # A user specified name for the network.
-        name:,
-        request_options: {}
-      )
+      def create(network_create:, request_options: {})
       end
 
       # Retrieve a Network.
@@ -40,15 +36,14 @@ module Telnyx
       sig do
         params(
           network_id: String,
-          name: String,
+          network_create: Telnyx::NetworkCreate::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::NetworkUpdateResponse)
       end
       def update(
         # Identifies the resource.
         network_id,
-        # A user specified name for the network.
-        name:,
+        network_create:,
         request_options: {}
       )
       end
@@ -60,11 +55,7 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::NetworkListResponse
-          ]
-        )
+        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::Network])
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[name]

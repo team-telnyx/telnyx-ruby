@@ -21,7 +21,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::VerificationCodeListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::PortingVerificationCode>]
         #
         # @see Telnyx::Models::PortingOrders::VerificationCodeListParams
         def list(id, params = {})
@@ -32,7 +32,7 @@ module Telnyx
             path: ["porting_orders/%1$s/verification_codes", id],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::PortingOrders::VerificationCodeListResponse,
+            model: Telnyx::PortingOrders::PortingVerificationCode,
             options: options
           )
         end

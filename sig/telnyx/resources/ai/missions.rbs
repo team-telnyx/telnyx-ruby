@@ -13,17 +13,17 @@ module Telnyx
         def create: (
           name: String,
           ?description: String,
-          ?execution_mode: Telnyx::Models::AI::MissionCreateParams::execution_mode,
+          ?execution_mode: Telnyx::Models::AI::execution_mode,
           ?instructions: String,
           ?metadata: ::Hash[Symbol, top],
           ?model: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::MissionCreateResponse
+        ) -> Telnyx::AI::MissionResponse
 
         def retrieve: (
           String mission_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::MissionRetrieveResponse
+        ) -> Telnyx::AI::MissionResponse
 
         def list: (
           ?page_number: Integer,
@@ -51,13 +51,13 @@ module Telnyx
         def update_mission: (
           String mission_id,
           ?description: String,
-          ?execution_mode: Telnyx::Models::AI::MissionUpdateMissionParams::execution_mode,
+          ?execution_mode: Telnyx::Models::AI::execution_mode,
           ?instructions: String,
           ?metadata: ::Hash[Symbol, top],
           ?model: String,
           ?name: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::MissionUpdateMissionResponse
+        ) -> Telnyx::AI::MissionResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

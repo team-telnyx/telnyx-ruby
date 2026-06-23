@@ -37,8 +37,8 @@ module Telnyx
         #   Region where the conference data is located. Defaults to the region defined in
         #   user's data locality settings (Europe or US).
         #
-        #   @return [Symbol, Telnyx::Models::Conferences::ActionRecordStopParams::Region, nil]
-        optional :region, enum: -> { Telnyx::Conferences::ActionRecordStopParams::Region }
+        #   @return [Symbol, Telnyx::Models::Conferences::ConferenceRegion, nil]
+        optional :region, enum: -> { Telnyx::Conferences::ConferenceRegion }
 
         # @!method initialize(id:, client_state: nil, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -52,23 +52,9 @@ module Telnyx
         #
         #   @param recording_id [String] Uniquely identifies the resource.
         #
-        #   @param region [Symbol, Telnyx::Models::Conferences::ActionRecordStopParams::Region] Region where the conference data is located. Defaults to the region defined in u
+        #   @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # Region where the conference data is located. Defaults to the region defined in
-        # user's data locality settings (Europe or US).
-        module Region
-          extend Telnyx::Internal::Type::Enum
-
-          AUSTRALIA = :Australia
-          EUROPE = :Europe
-          MIDDLE_EAST = :"Middle East"
-          US = :US
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
     end
   end

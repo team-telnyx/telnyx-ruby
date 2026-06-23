@@ -8,7 +8,7 @@ module Telnyx
             call_purpose: String,
             created_at: Time,
             phone_numbers_count: Integer,
-            status: Telnyx::Models::Enterprises::Reputation::RemediationListResponse::status,
+            status: Telnyx::Models::Enterprises::Reputation::remediation_status,
             updated_at: Time,
             :tier1_completed_at => Time?,
             :tier2_completed_at => Time?
@@ -23,7 +23,7 @@ module Telnyx
 
           attr_accessor phone_numbers_count: Integer
 
-          attr_accessor status: Telnyx::Models::Enterprises::Reputation::RemediationListResponse::status
+          attr_accessor status: Telnyx::Models::Enterprises::Reputation::remediation_status
 
           attr_accessor updated_at: Time
 
@@ -36,7 +36,7 @@ module Telnyx
             call_purpose: String,
             created_at: Time,
             phone_numbers_count: Integer,
-            status: Telnyx::Models::Enterprises::Reputation::RemediationListResponse::status,
+            status: Telnyx::Models::Enterprises::Reputation::remediation_status,
             updated_at: Time,
             ?tier1_completed_at: Time?,
             ?tier2_completed_at: Time?
@@ -47,26 +47,11 @@ module Telnyx
             call_purpose: String,
             created_at: Time,
             phone_numbers_count: Integer,
-            status: Telnyx::Models::Enterprises::Reputation::RemediationListResponse::status,
+            status: Telnyx::Models::Enterprises::Reputation::remediation_status,
             updated_at: Time,
             :tier1_completed_at => Time?,
             :tier2_completed_at => Time?
           }
-
-          type status =
-            :pending | :in_progress | :completed | :failed | :cancelled
-
-          module Status
-            extend Telnyx::Internal::Type::Enum
-
-            PENDING: :pending
-            IN_PROGRESS: :in_progress
-            COMPLETED: :completed
-            FAILED: :failed
-            CANCELLED: :cancelled
-
-            def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::RemediationListResponse::status]
-          end
         end
       end
     end

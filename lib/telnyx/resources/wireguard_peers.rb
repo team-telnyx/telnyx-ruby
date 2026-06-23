@@ -7,10 +7,9 @@ module Telnyx
       # Create a new WireGuard Peer. Current limitation of 5 peers per interface can be
       # created.
       #
-      # @overload create(wireguard_interface_id:, request_options: {})
+      # @overload create(body:, request_options: {})
       #
-      # @param wireguard_interface_id [String] The id of the wireguard interface associated with the peer.
-      #
+      # @param body [Telnyx::Models::WireguardPeerCreateParams::Body]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Telnyx::Models::WireguardPeerCreateResponse]
@@ -21,7 +20,7 @@ module Telnyx
         @client.request(
           method: :post,
           path: "wireguard_peers",
-          body: parsed,
+          body: parsed[:body],
           model: Telnyx::Models::WireguardPeerCreateResponse,
           options: options
         )
@@ -89,7 +88,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardPeerListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WireguardPeer>]
       #
       # @see Telnyx::Models::WireguardPeerListParams
       def list(params = {})
@@ -100,7 +99,7 @@ module Telnyx
           path: "wireguard_peers",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::WireguardPeerListResponse,
+          model: Telnyx::WireguardPeer,
           options: options
         )
       end

@@ -3,65 +3,30 @@ module Telnyx
     module Networks
       type default_gateway_delete_response =
         {
-          data: ::Array[Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data],
+          data: ::Array[Telnyx::Networks::NetworksDefaultGateway],
           meta: Telnyx::PaginationMeta
         }
 
       class DefaultGatewayDeleteResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: ::Array[Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data]?
+        attr_reader data: ::Array[Telnyx::Networks::NetworksDefaultGateway]?
 
         def data=: (
-          ::Array[Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data]
-        ) -> ::Array[Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data]
+          ::Array[Telnyx::Networks::NetworksDefaultGateway]
+        ) -> ::Array[Telnyx::Networks::NetworksDefaultGateway]
 
         attr_reader meta: Telnyx::PaginationMeta?
 
         def meta=: (Telnyx::PaginationMeta) -> Telnyx::PaginationMeta
 
         def initialize: (
-          ?data: ::Array[Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data],
+          ?data: ::Array[Telnyx::Networks::NetworksDefaultGateway],
           ?meta: Telnyx::PaginationMeta
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[Telnyx::Models::Networks::DefaultGatewayDeleteResponse::Data],
+          data: ::Array[Telnyx::Networks::NetworksDefaultGateway],
           meta: Telnyx::PaginationMeta
         }
-
-        type data =
-          {
-            network_id: String,
-            status: Telnyx::Models::interface_status,
-            wireguard_peer_id: String
-          }
-
-        class Data < Telnyx::Models::Record
-          def wireguard_peer_id: -> String?
-
-          def wireguard_peer_id=: (String _) -> String
-
-          def network_id: -> String?
-
-          def network_id=: (String _) -> String
-
-          def status: -> Telnyx::Models::interface_status?
-
-          def status=: (
-            Telnyx::Models::interface_status _
-          ) -> Telnyx::Models::interface_status
-
-          def initialize: (
-            ?network_id: String,
-            ?status: Telnyx::Models::interface_status,
-            ?wireguard_peer_id: String
-          ) -> void
-
-          def to_hash: -> {
-            network_id: String,
-            status: Telnyx::Models::interface_status,
-            wireguard_peer_id: String
-          }
-        end
       end
     end
   end

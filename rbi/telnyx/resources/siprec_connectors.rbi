@@ -12,7 +12,7 @@ module Telnyx
           port: Integer,
           app_subdomain: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::SiprecConnectorCreateResponse)
+        ).returns(Telnyx::SiprecConnectorResponse)
       end
       def create(
         # Hostname/IPv4 address of the SIPREC SRS.
@@ -32,7 +32,7 @@ module Telnyx
         params(
           connector_name: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::SiprecConnectorRetrieveResponse)
+        ).returns(Telnyx::SiprecConnectorResponse)
       end
       def retrieve(
         # Uniquely identifies a SIPREC connector.
@@ -50,7 +50,7 @@ module Telnyx
           port: Integer,
           app_subdomain: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::SiprecConnectorUpdateResponse)
+        ).returns(Telnyx::SiprecConnectorResponse)
       end
       def update(
         # Uniquely identifies a SIPREC connector.

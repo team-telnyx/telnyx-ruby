@@ -1,0 +1,182 @@
+module Telnyx
+  module Models
+    class WhatsappTemplateButtonsComponent = Whatsapp::WhatsappTemplateButtonsComponent
+
+    module Whatsapp
+      type whatsapp_template_buttons_component =
+        {
+          buttons: ::Array[Telnyx::Whatsapp::WhatsappTemplateButtonsComponent::Button],
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::type_
+        }
+
+      class WhatsappTemplateButtonsComponent < Telnyx::Internal::Type::BaseModel
+        attr_accessor buttons: ::Array[Telnyx::Whatsapp::WhatsappTemplateButtonsComponent::Button]
+
+        attr_accessor type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::type_
+
+        def initialize: (
+          buttons: ::Array[Telnyx::Whatsapp::WhatsappTemplateButtonsComponent::Button],
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::type_
+        ) -> void
+
+        def to_hash: -> {
+          buttons: ::Array[Telnyx::Whatsapp::WhatsappTemplateButtonsComponent::Button],
+          type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::type_
+        }
+
+        type button =
+          {
+            type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::type_,
+            autofill_text: String,
+            example: ::Array[String],
+            flow_action: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::flow_action,
+            flow_id: String,
+            navigate_screen: String,
+            otp_type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::otp_type,
+            package_name: String,
+            phone_number: String,
+            signature_hash: String,
+            text: String,
+            url: String,
+            zero_tap_terms_accepted: bool
+          }
+
+        class Button < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::type_
+
+          attr_reader autofill_text: String?
+
+          def autofill_text=: (String) -> String
+
+          attr_reader example: ::Array[String]?
+
+          def example=: (::Array[String]) -> ::Array[String]
+
+          attr_reader flow_action: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::flow_action?
+
+          def flow_action=: (
+            Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::flow_action
+          ) -> Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::flow_action
+
+          attr_reader flow_id: String?
+
+          def flow_id=: (String) -> String
+
+          attr_reader navigate_screen: String?
+
+          def navigate_screen=: (String) -> String
+
+          attr_reader otp_type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::otp_type?
+
+          def otp_type=: (
+            Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::otp_type
+          ) -> Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::otp_type
+
+          attr_reader package_name: String?
+
+          def package_name=: (String) -> String
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader signature_hash: String?
+
+          def signature_hash=: (String) -> String
+
+          attr_reader text: String?
+
+          def text=: (String) -> String
+
+          attr_reader url: String?
+
+          def url=: (String) -> String
+
+          attr_reader zero_tap_terms_accepted: bool?
+
+          def zero_tap_terms_accepted=: (bool) -> bool
+
+          def initialize: (
+            type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::type_,
+            ?autofill_text: String,
+            ?example: ::Array[String],
+            ?flow_action: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::flow_action,
+            ?flow_id: String,
+            ?navigate_screen: String,
+            ?otp_type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::otp_type,
+            ?package_name: String,
+            ?phone_number: String,
+            ?signature_hash: String,
+            ?text: String,
+            ?url: String,
+            ?zero_tap_terms_accepted: bool
+          ) -> void
+
+          def to_hash: -> {
+            type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::type_,
+            autofill_text: String,
+            example: ::Array[String],
+            flow_action: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::flow_action,
+            flow_id: String,
+            navigate_screen: String,
+            otp_type: Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::otp_type,
+            package_name: String,
+            phone_number: String,
+            signature_hash: String,
+            text: String,
+            url: String,
+            zero_tap_terms_accepted: bool
+          }
+
+          type type_ =
+            :URL | :PHONE_NUMBER | :QUICK_REPLY | :OTP | :COPY_CODE | :FLOW
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            URL: :URL
+            PHONE_NUMBER: :PHONE_NUMBER
+            QUICK_REPLY: :QUICK_REPLY
+            OTP: :OTP
+            COPY_CODE: :COPY_CODE
+            FLOW: :FLOW
+
+            def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::type_]
+          end
+
+          type flow_action = :navigate | :data_exchange
+
+          module FlowAction
+            extend Telnyx::Internal::Type::Enum
+
+            NAVIGATE: :navigate
+            DATA_EXCHANGE: :data_exchange
+
+            def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::flow_action]
+          end
+
+          type otp_type = :COPY_CODE | :ONE_TAP
+
+          module OtpType
+            extend Telnyx::Internal::Type::Enum
+
+            COPY_CODE: :COPY_CODE
+            ONE_TAP: :ONE_TAP
+
+            def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::Button::otp_type]
+          end
+        end
+
+        type type_ = :BUTTONS
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          BUTTONS: :BUTTONS
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappTemplateButtonsComponent::type_]
+        end
+      end
+    end
+  end
+end

@@ -8,15 +8,11 @@ module Telnyx
       # created.
       sig do
         params(
-          wireguard_interface_id: String,
+          body: Telnyx::WireguardPeerCreateParams::Body::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::WireguardPeerCreateResponse)
       end
-      def create(
-        # The id of the wireguard interface associated with the peer.
-        wireguard_interface_id:,
-        request_options: {}
-      )
+      def create(body:, request_options: {})
       end
 
       # Retrieve the WireGuard peer.
@@ -59,9 +55,7 @@ module Telnyx
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::Models::WireguardPeerListResponse
-          ]
+          Telnyx::Internal::DefaultFlatPagination[Telnyx::WireguardPeer]
         )
       end
       def list(

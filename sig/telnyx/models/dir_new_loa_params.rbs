@@ -1,0 +1,61 @@
+module Telnyx
+  module Models
+    type dir_new_loa_params =
+      {
+        dir_id: String,
+        phone_numbers: ::Array[String],
+        agent: Telnyx::Enterprises::Reputation::AgentInput,
+        signature: Telnyx::DirNewLoaParams::Signature
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class DirNewLoaParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor dir_id: String
+
+      attr_accessor phone_numbers: ::Array[String]
+
+      attr_reader agent: Telnyx::Enterprises::Reputation::AgentInput?
+
+      def agent=: (
+        Telnyx::Enterprises::Reputation::AgentInput
+      ) -> Telnyx::Enterprises::Reputation::AgentInput
+
+      attr_reader signature: Telnyx::DirNewLoaParams::Signature?
+
+      def signature=: (
+        Telnyx::DirNewLoaParams::Signature
+      ) -> Telnyx::DirNewLoaParams::Signature
+
+      def initialize: (
+        dir_id: String,
+        phone_numbers: ::Array[String],
+        ?agent: Telnyx::Enterprises::Reputation::AgentInput,
+        ?signature: Telnyx::DirNewLoaParams::Signature,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        dir_id: String,
+        phone_numbers: ::Array[String],
+        agent: Telnyx::Enterprises::Reputation::AgentInput,
+        signature: Telnyx::DirNewLoaParams::Signature,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type signature = { :image_base64 => String, signer_name: String? }
+
+      class Signature < Telnyx::Internal::Type::BaseModel
+        attr_accessor image_base64: String
+
+        attr_accessor signer_name: String?
+
+        def initialize: (image_base64: String, ?signer_name: String?) -> void
+
+        def to_hash: -> { :image_base64 => String, signer_name: String? }
+      end
+    end
+  end
+end

@@ -11,7 +11,7 @@ module Telnyx
         params(
           claim_id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::InfringementClaimRetrieveResponse)
+        ).returns(Telnyx::InfringementClaimWrapped)
       end
       def retrieve(
         # Claim id (lowercase UUID).
@@ -39,10 +39,9 @@ module Telnyx
         params(
           claim_id: String,
           contest_notes: String,
-          documents:
-            T::Array[Telnyx::InfringementClaimContestParams::Document::OrHash],
+          documents: T::Array[Telnyx::Document::OrHash],
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::InfringementClaimContestResponse)
+        ).returns(Telnyx::InfringementClaimWrapped)
       end
       def contest(
         # Unique identifier of the claim.

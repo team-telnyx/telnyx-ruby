@@ -15,26 +15,26 @@ module Telnyx
       sig do
         returns(
           T.any(
-            Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone,
-            Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone
+            Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone,
+            Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone
           )
         )
       end
-      attr_accessor :params
+      attr_accessor :voice_clone_request
 
       sig do
         params(
-          params:
+          voice_clone_request:
             T.any(
-              Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::OrHash,
-              Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::OrHash
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::OrHash,
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         # Request body for creating a voice clone from an existing voice design.
-        params:,
+        voice_clone_request:,
         request_options: {}
       )
       end
@@ -42,10 +42,10 @@ module Telnyx
       sig do
         override.returns(
           {
-            params:
+            voice_clone_request:
               T.any(
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone,
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone,
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone
               ),
             request_options: Telnyx::RequestOptions
           }
@@ -55,14 +55,14 @@ module Telnyx
       end
 
       # Request body for creating a voice clone from an existing voice design.
-      module Params
+      module VoiceCloneRequest
         extend Telnyx::Internal::Type::Union
 
         Variants =
           T.type_alias do
             T.any(
-              Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone,
-              Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone,
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone
             )
           end
 
@@ -70,7 +70,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone,
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -78,7 +78,7 @@ module Telnyx
           # Gender of the voice clone.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender::OrSymbol
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender::OrSymbol
             )
           end
           attr_accessor :gender
@@ -100,7 +100,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::OrSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider::OrSymbol
               )
             )
           end
@@ -109,7 +109,7 @@ module Telnyx
           sig do
             params(
               provider:
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::OrSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider::OrSymbol
             ).void
           end
           attr_writer :provider
@@ -118,12 +118,12 @@ module Telnyx
           sig do
             params(
               gender:
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender::OrSymbol,
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender::OrSymbol,
               language: String,
               name: String,
               voice_design_id: String,
               provider:
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::OrSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -145,12 +145,12 @@ module Telnyx
             override.returns(
               {
                 gender:
-                  Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender::OrSymbol,
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender::OrSymbol,
                 language: String,
                 name: String,
                 voice_design_id: String,
                 provider:
-                  Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::OrSymbol
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider::OrSymbol
               }
             )
           end
@@ -165,7 +165,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -173,23 +173,23 @@ module Telnyx
             MALE =
               T.let(
                 :male,
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender::TaggedSymbol
               )
             FEMALE =
               T.let(
                 :female,
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender::TaggedSymbol
               )
             NEUTRAL =
               T.let(
                 :neutral,
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Gender::TaggedSymbol
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Gender::TaggedSymbol
                 ]
               )
             end
@@ -205,7 +205,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -213,18 +213,18 @@ module Telnyx
             TELNYX =
               T.let(
                 :telnyx,
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider::TaggedSymbol
               )
             MINIMAX =
               T.let(
                 :minimax,
-                Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateParams::Params::TelnyxDesignClone::Provider::TaggedSymbol
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::TelnyxDesignClone::Provider::TaggedSymbol
                 ]
               )
             end
@@ -237,7 +237,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone,
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -245,7 +245,7 @@ module Telnyx
           # Gender of the voice clone.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender::OrSymbol
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender::OrSymbol
             )
           end
           attr_accessor :gender
@@ -261,7 +261,7 @@ module Telnyx
           # Voice synthesis provider. Must be `minimax`.
           sig do
             returns(
-              Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::OrSymbol
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider::OrSymbol
             )
           end
           attr_accessor :provider
@@ -274,11 +274,11 @@ module Telnyx
           sig do
             params(
               gender:
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender::OrSymbol,
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender::OrSymbol,
               language: String,
               name: String,
               provider:
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::OrSymbol,
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider::OrSymbol,
               voice_design_id: String
             ).returns(T.attached_class)
           end
@@ -300,11 +300,11 @@ module Telnyx
             override.returns(
               {
                 gender:
-                  Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender::OrSymbol,
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender::OrSymbol,
                 language: String,
                 name: String,
                 provider:
-                  Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::OrSymbol,
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider::OrSymbol,
                 voice_design_id: String
               }
             )
@@ -320,7 +320,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -328,23 +328,23 @@ module Telnyx
             MALE =
               T.let(
                 :male,
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender::TaggedSymbol
               )
             FEMALE =
               T.let(
                 :female,
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender::TaggedSymbol
               )
             NEUTRAL =
               T.let(
                 :neutral,
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Gender::TaggedSymbol
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Gender::TaggedSymbol
                 ]
               )
             end
@@ -360,7 +360,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -368,18 +368,18 @@ module Telnyx
             TELNYX =
               T.let(
                 :telnyx,
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider::TaggedSymbol
               )
             MINIMAX =
               T.let(
                 :minimax,
-                Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::TaggedSymbol
+                Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::VoiceCloneCreateParams::Params::MinimaxDesignClone::Provider::TaggedSymbol
+                  Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::MinimaxDesignClone::Provider::TaggedSymbol
                 ]
               )
             end
@@ -390,7 +390,9 @@ module Telnyx
 
         sig do
           override.returns(
-            T::Array[Telnyx::VoiceCloneCreateParams::Params::Variants]
+            T::Array[
+              Telnyx::VoiceCloneCreateParams::VoiceCloneRequest::Variants
+            ]
           )
         end
         def self.variants

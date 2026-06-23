@@ -8,8 +8,8 @@ module Telnyx
         #   How often Telnyx refreshes the stored reputation data for this enterprise's
         #   registered numbers.
         #
-        #   @return [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::CheckFrequency, nil]
-        optional :check_frequency, enum: -> { Telnyx::Enterprises::EnterpriseReputationPublic::CheckFrequency }
+        #   @return [Symbol, Telnyx::Models::Enterprises::ReputationCheckFrequency, nil]
+        optional :check_frequency, enum: -> { Telnyx::Enterprises::ReputationCheckFrequency }
 
         # @!attribute enterprise_id
         #
@@ -57,7 +57,7 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Enterprises::EnterpriseReputationPublic} for more details.
         #
-        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::CheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
+        #   @param check_frequency [Symbol, Telnyx::Models::Enterprises::ReputationCheckFrequency] How often Telnyx refreshes the stored reputation data for this enterprise's regi
         #
         #   @param created_at [Time]
         #
@@ -72,24 +72,6 @@ module Telnyx
         #   @param status [Symbol, Telnyx::Models::Enterprises::EnterpriseReputationPublic::Status] Lifecycle status of the enterprise's Phone Number Reputation activation.
         #
         #   @param updated_at [Time]
-
-        # How often Telnyx refreshes the stored reputation data for this enterprise's
-        # registered numbers.
-        #
-        # @see Telnyx::Models::Enterprises::EnterpriseReputationPublic#check_frequency
-        module CheckFrequency
-          extend Telnyx::Internal::Type::Enum
-
-          BUSINESS_DAILY = :business_daily
-          DAILY = :daily
-          WEEKLY = :weekly
-          BIWEEKLY = :biweekly
-          MONTHLY = :monthly
-          NEVER = :never
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
 
         # Customer-facing Letter-of-Authorization verification state. `approved` is
         # required (alongside reputation status) before phone numbers can be added.

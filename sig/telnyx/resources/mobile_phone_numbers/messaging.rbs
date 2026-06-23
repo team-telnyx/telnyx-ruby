@@ -11,7 +11,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::MobilePhoneNumbers::MessagingListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::MobilePhoneNumbers::MobilePhoneNumberWithMessagingSettings]
 
         def initialize: (client: Telnyx::Client) -> void
       end

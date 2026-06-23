@@ -5,8 +5,7 @@ require_relative "lib/telnyx/version"
 Gem::Specification.new do |s|
   s.name = "telnyx"
   s.version = Telnyx::VERSION
-  s.summary = "Global communications APIs for Voice, SMS, MMS, WhatsApp, Fax, IoT, SIP, and Call Control."
-  s.description = "Official Telnyx SDK for Ruby developers. Integrate Voice, SMS, MMS, WhatsApp, Fax, Wireless IoT, SIP Trunking, Call Control, Number Management, and Emergency Services — all built on Telnyx's private carrier-grade cloud."
+  s.summary = "Ruby library to access the Telnyx API"
   s.authors = ["Telnyx"]
   s.email = "support@telnyx.com"
   s.homepage = "https://gemdocs.org/gems/telnyx"
@@ -27,5 +26,5 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.add_dependency "cgi"
   s.add_dependency "connection_pool"
-  s.add_dependency "websocket-client-simple", "~> 0.8"
+  s.add_dependency "standardwebhooks"
 end

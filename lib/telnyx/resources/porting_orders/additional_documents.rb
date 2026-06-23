@@ -48,7 +48,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::AdditionalDocumentListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::PortingAdditionalDocument>]
         #
         # @see Telnyx::Models::PortingOrders::AdditionalDocumentListParams
         def list(id, params = {})
@@ -59,7 +59,7 @@ module Telnyx
             path: ["porting_orders/%1$s/additional_documents", id],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::PortingOrders::AdditionalDocumentListResponse,
+            model: Telnyx::PortingOrders::PortingAdditionalDocument,
             options: options
           )
         end

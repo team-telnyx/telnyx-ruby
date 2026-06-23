@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    module Enterprises
+      class ReputationPhoneNumberListWithReputation = Reputation::ReputationPhoneNumberListWithReputation
+
+      module Reputation
+        type reputation_phone_number_list_with_reputation =
+          {
+            data: ::Array[Telnyx::Enterprises::Reputation::ReputationPhoneNumber],
+            meta: Telnyx::NumberReputationPaginationMeta
+          }
+
+        class ReputationPhoneNumberListWithReputation < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::Enterprises::Reputation::ReputationPhoneNumber]
+
+          attr_accessor meta: Telnyx::NumberReputationPaginationMeta
+
+          def initialize: (
+            data: ::Array[Telnyx::Enterprises::Reputation::ReputationPhoneNumber],
+            meta: Telnyx::NumberReputationPaginationMeta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Enterprises::Reputation::ReputationPhoneNumber],
+            meta: Telnyx::NumberReputationPaginationMeta
+          }
+        end
+      end
+    end
+  end
+end

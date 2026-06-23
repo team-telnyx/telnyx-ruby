@@ -16,7 +16,7 @@ module Telnyx
                 Telnyx::AI::Assistants::ConversationChannelType::OrSymbol,
               telnyx_end_user_target: String,
               call_settings:
-                Telnyx::AI::Assistants::ScheduledEventCreateParams::CallSettings::OrHash,
+                Telnyx::AI::Assistants::ScheduledCallSettings::OrHash,
               conversation_metadata:
                 T::Hash[
                   Symbol,

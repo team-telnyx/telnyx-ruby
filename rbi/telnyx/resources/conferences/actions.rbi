@@ -13,7 +13,7 @@ module Telnyx
             supervisor_role:
               Telnyx::Conferences::UpdateConference::SupervisorRole::OrSymbol,
             command_id: String,
-            region: Telnyx::Conferences::UpdateConference::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             whisper_call_control_ids: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionUpdateResponse)
@@ -136,7 +136,7 @@ module Telnyx
             audio_url: String,
             call_control_ids: T::Array[String],
             media_name: String,
-            region: Telnyx::Conferences::ActionHoldParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionHoldResponse)
         end
@@ -184,7 +184,7 @@ module Telnyx
             hold_audio_url: String,
             hold_media_name: String,
             mute: T::Boolean,
-            region: Telnyx::Conferences::ActionJoinParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             soft_end_conference_on_exit: T::Boolean,
             start_conference_on_enter: T::Boolean,
             supervisor_role:
@@ -267,7 +267,7 @@ module Telnyx
             beep_enabled:
               Telnyx::Conferences::ActionLeaveParams::BeepEnabled::OrSymbol,
             command_id: String,
-            region: Telnyx::Conferences::ActionLeaveParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionLeaveResponse)
         end
@@ -295,7 +295,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
-            region: Telnyx::Conferences::ActionMuteParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionMuteResponse)
         end
@@ -320,7 +320,7 @@ module Telnyx
             call_control_ids: T::Array[String],
             loop_: Telnyx::Calls::Loopcount::Variants,
             media_name: String,
-            region: Telnyx::Conferences::ActionPlayParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionPlayResponse)
         end
@@ -354,8 +354,7 @@ module Telnyx
             id: String,
             command_id: String,
             recording_id: String,
-            region:
-              Telnyx::Conferences::ActionRecordPauseParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordPauseResponse)
         end
@@ -380,8 +379,7 @@ module Telnyx
             id: String,
             command_id: String,
             recording_id: String,
-            region:
-              Telnyx::Conferences::ActionRecordResumeParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordResumeResponse)
         end
@@ -416,8 +414,7 @@ module Telnyx
             command_id: String,
             custom_file_name: String,
             play_beep: T::Boolean,
-            region:
-              Telnyx::Conferences::ActionRecordStartParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             trim: Telnyx::Conferences::ActionRecordStartParams::Trim::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordStartResponse)
@@ -460,8 +457,7 @@ module Telnyx
             client_state: String,
             command_id: String,
             recording_id: String,
-            region:
-              Telnyx::Conferences::ActionRecordStopParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionRecordStopResponse)
         end
@@ -524,7 +520,7 @@ module Telnyx
               Telnyx::Conferences::ActionSpeakParams::Language::OrSymbol,
             payload_type:
               Telnyx::Conferences::ActionSpeakParams::PayloadType::OrSymbol,
-            region: Telnyx::Conferences::ActionSpeakParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             voice_settings:
               T.any(
                 Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
@@ -534,8 +530,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Conferences::ActionSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionSpeakResponse)
@@ -619,7 +615,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
-            region: Telnyx::Conferences::ActionStopParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionStopResponse)
         end
@@ -641,7 +637,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
-            region: Telnyx::Conferences::ActionUnholdParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionUnholdResponse)
         end
@@ -663,7 +659,7 @@ module Telnyx
           params(
             id: String,
             call_control_ids: T::Array[String],
-            region: Telnyx::Conferences::ActionUnmuteParams::Region::OrSymbol,
+            region: Telnyx::Conferences::ConferenceRegion::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Conferences::ActionUnmuteResponse)
         end

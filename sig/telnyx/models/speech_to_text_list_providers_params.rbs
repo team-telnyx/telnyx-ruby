@@ -3,7 +3,7 @@ module Telnyx
     type speech_to_text_list_providers_params =
       {
         provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
-        service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type
+        service_type: Telnyx::Models::stt_service_type
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -17,21 +17,21 @@ module Telnyx
         Telnyx::Models::SpeechToTextListProvidersParams::provider
       ) -> Telnyx::Models::SpeechToTextListProvidersParams::provider
 
-      attr_reader service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type?
+      attr_reader service_type: Telnyx::Models::stt_service_type?
 
       def service_type=: (
-        Telnyx::Models::SpeechToTextListProvidersParams::service_type
-      ) -> Telnyx::Models::SpeechToTextListProvidersParams::service_type
+        Telnyx::Models::stt_service_type
+      ) -> Telnyx::Models::stt_service_type
 
       def initialize: (
         ?provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
-        ?service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type,
+        ?service_type: Telnyx::Models::stt_service_type,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         provider: Telnyx::Models::SpeechToTextListProvidersParams::provider,
-        service_type: Telnyx::Models::SpeechToTextListProvidersParams::service_type,
+        service_type: Telnyx::Models::stt_service_type,
         request_options: Telnyx::RequestOptions
       }
 
@@ -60,19 +60,6 @@ module Telnyx
         TELNYX: :telnyx
 
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersParams::provider]
-      end
-
-      type service_type = :streaming | :file_based | :in_call | :ai_assistant
-
-      module ServiceType
-        extend Telnyx::Internal::Type::Enum
-
-        STREAMING: :streaming
-        FILE_BASED: :file_based
-        IN_CALL: :in_call
-        AI_ASSISTANT: :ai_assistant
-
-        def self?.values: -> ::Array[Telnyx::Models::SpeechToTextListProvidersParams::service_type]
       end
     end
   end

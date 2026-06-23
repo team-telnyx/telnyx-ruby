@@ -41,7 +41,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::CommentListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PortingOrders::PortingOrdersComment>]
         #
         # @see Telnyx::Models::PortingOrders::CommentListParams
         def list(id, params = {})
@@ -52,7 +52,7 @@ module Telnyx
             path: ["porting_orders/%1$s/comments", id],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::PortingOrders::CommentListResponse,
+            model: Telnyx::PortingOrders::PortingOrdersComment,
             options: options
           )
         end

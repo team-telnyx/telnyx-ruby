@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::VoiceSDKCallReportsTest < Telnyx::Test::ResourceT
     response = @telnyx.voice_sdk_call_reports.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::VoiceSDKCallReportRetrieveResponseItem])
+      response => ^(Telnyx::Internal::Type::ArrayOf[Telnyx::VoiceSDKCallReport])
     end
   end
 
@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::VoiceSDKCallReportsTest < Telnyx::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::VoiceSDKCallReportListResponse
+      row => Telnyx::VoiceSDKCallReport
     end
 
     assert_pattern do
@@ -35,10 +35,10 @@ class Telnyx::Test::Resources::VoiceSDKCallReportsTest < Telnyx::Test::ResourceT
         call_report_id: String | nil,
         created_at: Time | nil,
         flush_reason: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
-        logs: Telnyx::Models::VoiceSDKCallReportListResponse::Logs | nil,
+        logs: Telnyx::VoiceSDKCallReport::Logs | nil,
         organization_id: String | nil,
         segment: Integer | nil,
-        stats: Telnyx::Models::VoiceSDKCallReportListResponse::Stats | nil,
+        stats: Telnyx::VoiceSDKCallReport::Stats | nil,
         stored_at: Time | nil,
         summary: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         telnyx_leg_id: String | nil,

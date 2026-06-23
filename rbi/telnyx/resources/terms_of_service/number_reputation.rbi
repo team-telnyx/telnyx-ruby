@@ -12,7 +12,7 @@ module Telnyx
         # Prerequisite for using any of the `/v2/.../reputation/*` endpoints.
         sig do
           params(request_options: Telnyx::RequestOptions::OrHash).returns(
-            Telnyx::Models::TermsOfService::NumberReputationAgreeResponse
+            Telnyx::TermsOfService::TosAgreementWrapped
           )
         end
         def agree(request_options: {})

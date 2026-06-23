@@ -15,14 +15,14 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::TermsOfService::AgreementRetrieveResponse]
+        # @return [Telnyx::Models::TermsOfService::TosAgreementWrapped]
         #
         # @see Telnyx::Models::TermsOfService::AgreementRetrieveParams
         def retrieve(agreement_id, params = {})
           @client.request(
             method: :get,
             path: ["terms_of_service/agreements/%1$s", agreement_id],
-            model: Telnyx::Models::TermsOfService::AgreementRetrieveResponse,
+            model: Telnyx::TermsOfService::TosAgreementWrapped,
             options: params[:request_options]
           )
         end
@@ -47,11 +47,11 @@ module Telnyx
         #
         # @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
         #
-        # @param product_type [Symbol, Telnyx::Models::TermsOfService::AgreementListParams::ProductType] Optional filter. Omit to list the user's agreements for **every** product (brand
+        # @param product_type [Symbol, Telnyx::Models::TermsOfService::TosProductType] Optional filter. Omit to list the user's agreements for **every** product (brand
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::TermsOfService::AgreementListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::TermsOfService::TosAgreement>]
         #
         # @see Telnyx::Models::TermsOfService::AgreementListParams
         def list(params = {})
@@ -62,7 +62,7 @@ module Telnyx
             path: "terms_of_service/agreements",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::TermsOfService::AgreementListResponse,
+            model: Telnyx::TermsOfService::TosAgreement,
             options: options
           )
         end

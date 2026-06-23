@@ -10,14 +10,14 @@ class Telnyx::Test::Resources::Texml::Accounts::Calls::RecordingsJsonTest < Teln
       @telnyx.texml.accounts.calls.recordings_json.recordings_json("call_sid", account_sid: "account_sid")
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse
+      response => Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody
     end
 
     assert_pattern do
       response => {
         account_sid: String | nil,
         call_sid: String | nil,
-        channels: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::Channels | nil,
+        channels: Telnyx::Texml::Accounts::Calls::TwimlRecordingChannels | nil,
         conference_sid: String | nil,
         date_created: Time | nil,
         date_updated: Time | nil,
@@ -26,9 +26,9 @@ class Telnyx::Test::Resources::Texml::Accounts::Calls::RecordingsJsonTest < Teln
         price: String | nil,
         price_unit: String | nil,
         sid: String | nil,
-        source: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::Source | nil,
+        source: Telnyx::Texml::Accounts::Calls::RecordingSource | nil,
         start_time: Time | nil,
-        track: Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRecordingsJsonResponse::Track | nil,
+        track: Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody::Track | nil,
         uri: String | nil
       }
     end
@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Calls::RecordingsJsonTest < Teln
       )
 
     assert_pattern do
-      response => Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonResponse
+      response => Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
     end
 
     assert_pattern do

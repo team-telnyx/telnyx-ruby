@@ -20,7 +20,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse]
+          # @return [Telnyx::Models::Texml::Accounts::ConferenceResource]
           #
           # @see Telnyx::Models::Texml::Accounts::ConferenceRetrieveParams
           def retrieve(conference_sid, params)
@@ -32,7 +32,7 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["texml/Accounts/%1$s/Conferences/%2$s", account_sid, conference_sid],
-              model: Telnyx::Models::Texml::Accounts::ConferenceRetrieveResponse,
+              model: Telnyx::Texml::Accounts::ConferenceResource,
               options: options
             )
           end
@@ -56,7 +56,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse]
+          # @return [Telnyx::Models::Texml::Accounts::ConferenceResource]
           #
           # @see Telnyx::Models::Texml::Accounts::ConferenceUpdateParams
           def update(conference_sid, params)
@@ -70,7 +70,7 @@ module Telnyx
               path: ["texml/Accounts/%1$s/Conferences/%2$s", account_sid, conference_sid],
               headers: {"content-type" => "application/x-www-form-urlencoded"},
               body: parsed,
-              model: Telnyx::Models::Texml::Accounts::ConferenceUpdateResponse,
+              model: Telnyx::Texml::Accounts::ConferenceResource,
               options: options
             )
           end
@@ -161,7 +161,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonResponse]
+          # @return [Telnyx::Models::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody]
           #
           # @see Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonParams
           def retrieve_recordings_json(conference_sid, params)
@@ -173,7 +173,7 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["texml/Accounts/%1$s/Conferences/%2$s/Recordings.json", account_sid, conference_sid],
-              model: Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonResponse,
+              model: Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody,
               options: options
             )
           end

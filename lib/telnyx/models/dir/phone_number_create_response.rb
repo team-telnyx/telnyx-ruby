@@ -1,0 +1,32 @@
+# frozen_string_literal: true
+
+module Telnyx
+  module Models
+    module Dir
+      # @see Telnyx::Resources::Dir::PhoneNumbers#create
+      class PhoneNumberCreateResponse < Telnyx::Internal::Type::BaseModel
+        # @!attribute data
+        #   Phone numbers accepted into the new batch. List order mirrors the request order.
+        #   Each element shares the same `batch_id`.
+        #
+        #   @return [Array<Telnyx::Models::Dir::DirPhoneNumber>]
+        required :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Dir::DirPhoneNumber] }
+
+        # @!method initialize(data:)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::Dir::PhoneNumberCreateResponse} for more details.
+        #
+        #   Bulk-add success response (HTTP 201). All numbers in the request were accepted
+        #   into a single new batch. Every entry in `data` shares the same `batch_id` - read
+        #   it from any element to obtain the batch id for subsequent
+        #   `GET .../phone_number_batches/{batch_id}` calls. If any number in the request
+        #   fails (schema-invalid, not in inventory, already attached to another DIR, etc.)
+        #   the entire request is rejected with HTTP 400 and the canonical Telnyx error
+        #   envelope; the success body described here is therefore an all-or-nothing
+        #   payload.
+        #
+        #   @param data [Array<Telnyx::Models::Dir::DirPhoneNumber>] Phone numbers accepted into the new batch. List order mirrors the request order.
+      end
+    end
+  end
+end

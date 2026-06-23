@@ -58,7 +58,7 @@ module Telnyx
       # @param page_size [Integer]
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::GlobalIPListResponse>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::GlobalIP>]
       #
       # @see Telnyx::Models::GlobalIPListParams
       def list(params = {})
@@ -69,7 +69,7 @@ module Telnyx
           path: "global_ips",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::Models::GlobalIPListResponse,
+          model: Telnyx::GlobalIP,
           options: options
         )
       end

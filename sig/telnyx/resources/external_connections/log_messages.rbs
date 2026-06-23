@@ -12,7 +12,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultPaginationForLogMessages[Telnyx::Models::ExternalConnections::LogMessageListResponse]
+        ) -> Telnyx::Internal::DefaultPaginationForLogMessages[Telnyx::ExternalConnections::LogMessage]
 
         def dismiss: (
           String id,

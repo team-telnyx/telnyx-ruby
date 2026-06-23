@@ -49,8 +49,8 @@ module Telnyx
         # @!attribute filter_status
         #   Filter by DIR status.
         #
-        #   @return [Symbol, Telnyx::Models::Enterprises::DirListParams::FilterStatus, nil]
-        optional :filter_status, enum: -> { Telnyx::Enterprises::DirListParams::FilterStatus }
+        #   @return [Symbol, Telnyx::Models::DirStatus, nil]
+        optional :filter_status, enum: -> { Telnyx::DirStatus }
 
         # @!attribute page_number
         #   1-based page number. Out-of-range values return an empty page with correct meta.
@@ -88,7 +88,7 @@ module Telnyx
         #
         #   @param filter_expiring_within_days [Integer] Convenience: returns DIRs whose `expiring_at` falls within the next N days (1–36
         #
-        #   @param filter_status [Symbol, Telnyx::Models::Enterprises::DirListParams::FilterStatus] Filter by DIR status.
+        #   @param filter_status [Symbol, Telnyx::Models::DirStatus] Filter by DIR status.
         #
         #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
@@ -97,25 +97,6 @@ module Telnyx
         #   @param sort [Symbol, Telnyx::Models::Enterprises::DirListParams::Sort] Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`, `subm
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        # Filter by DIR status.
-        module FilterStatus
-          extend Telnyx::Internal::Type::Enum
-
-          DRAFT = :draft
-          SUBMITTED = :submitted
-          IN_REVIEW = :in_review
-          VERIFIED = :verified
-          REJECTED = :rejected
-          UNSUCCESSFUL = :unsuccessful
-          SUSPENDED = :suspended
-          EXPIRED = :expired
-          INFRINGEMENT_CLAIMED = :infringement_claimed
-          PERMANENTLY_REJECTED = :permanently_rejected
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
 
         # Sort field. Allowed: `created_at`, `updated_at`, `display_name`, `status`,
         # `submitted_at`, `verified_at`, `expiring_at`. Prefix with `-` for descending.

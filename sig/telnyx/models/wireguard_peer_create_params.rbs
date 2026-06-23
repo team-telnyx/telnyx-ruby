@@ -1,24 +1,32 @@
 module Telnyx
   module Models
     type wireguard_peer_create_params =
-      { wireguard_interface_id: String }
+      { body: Telnyx::WireguardPeerCreateParams::Body }
       & Telnyx::Internal::Type::request_parameters
 
     class WireguardPeerCreateParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor wireguard_interface_id: String
+      attr_accessor body: Telnyx::WireguardPeerCreateParams::Body
 
       def initialize: (
-        wireguard_interface_id: String,
+        body: Telnyx::WireguardPeerCreateParams::Body,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        wireguard_interface_id: String,
+        body: Telnyx::WireguardPeerCreateParams::Body,
         request_options: Telnyx::RequestOptions
       }
+
+      type body = {  }
+
+      class Body < Telnyx::Models::WireguardPeer
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
     end
   end
 end

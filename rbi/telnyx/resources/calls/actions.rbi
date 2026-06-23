@@ -14,11 +14,11 @@ module Telnyx
             messages:
               T::Array[
                 T.any(
-                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::User::OrHash,
-                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Assistant::OrHash,
-                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Tool::OrHash,
-                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::System::OrHash,
-                  Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message::Developer::OrHash
+                  Telnyx::Calls::UserMessage::OrHash,
+                  Telnyx::Calls::AssistantMessage::OrHash,
+                  Telnyx::Calls::ToolMessage::OrHash,
+                  Telnyx::Calls::SystemMessage::OrHash,
+                  Telnyx::Calls::DeveloperMessage::OrHash
                 )
               ],
             request_options: Telnyx::RequestOptions::OrHash
@@ -62,7 +62,7 @@ module Telnyx
             client_state: String,
             command_id: String,
             conversation_relay_config:
-              Telnyx::Calls::ActionAnswerParams::ConversationRelayConfig::OrHash,
+              Telnyx::ConversationRelayEmbeddedConfig::OrHash,
             custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
             deepfake_detection:
               Telnyx::Calls::ActionAnswerParams::DeepfakeDetection::OrHash,
@@ -460,7 +460,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -671,8 +671,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -808,8 +808,7 @@ module Telnyx
           params(
             call_control_id: String,
             conversation_id: String,
-            participant:
-              Telnyx::Calls::ActionJoinAIAssistantParams::Participant::OrHash,
+            participant: Telnyx::Calls::AIAssistantJoinParticipant::OrHash,
             client_state: String,
             command_id: String,
             request_options: Telnyx::RequestOptions::OrHash
@@ -1086,8 +1085,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1192,17 +1191,15 @@ module Telnyx
             message_history:
               T::Array[
                 T.any(
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::User::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Assistant::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Tool::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::System::OrHash,
-                  Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Developer::OrHash
+                  Telnyx::Calls::UserMessage::OrHash,
+                  Telnyx::Calls::AssistantMessage::OrHash,
+                  Telnyx::Calls::ToolMessage::OrHash,
+                  Telnyx::Calls::SystemMessage::OrHash,
+                  Telnyx::Calls::DeveloperMessage::OrHash
                 )
               ],
             participants:
-              T::Array[
-                Telnyx::Calls::ActionStartAIAssistantParams::Participant::OrHash
-              ],
+              T::Array[Telnyx::Calls::AIAssistantJoinParticipant::OrHash],
             send_message_history_updates: T::Boolean,
             transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
             voice: String,
@@ -1214,7 +1211,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Xai::OrHash
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
@@ -1311,16 +1308,13 @@ module Telnyx
             dtmf_detection: T::Boolean,
             greeting: String,
             interruptible:
-              Telnyx::Calls::ActionStartConversationRelayParams::Interruptible::OrSymbol,
+              Telnyx::Calls::ConversationRelayInterruptible::OrSymbol,
             interruptible_greeting:
-              Telnyx::Calls::ActionStartConversationRelayParams::InterruptibleGreeting::OrSymbol,
+              Telnyx::Calls::ConversationRelayInterruptible::OrSymbol,
             interruption_settings:
-              Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings::OrHash,
+              Telnyx::ConversationRelayInterruptionSettings::OrHash,
             language: String,
-            languages:
-              T::Array[
-                Telnyx::Calls::ActionStartConversationRelayParams::Language::OrHash
-              ],
+            languages: T::Array[Telnyx::ConversationRelayLanguage::OrHash],
             provider: String,
             structured_provider: T::Hash[Symbol, T.anything],
             transcription: T::Hash[Symbol, T.anything],
@@ -1339,8 +1333,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai::OrHash
+                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartConversationRelayResponse)
@@ -1841,10 +1835,10 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineGoogleConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineTelnyxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAzureConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::XAI::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::OrHash,
+                Telnyx::Calls::TranscriptionEngineXaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,

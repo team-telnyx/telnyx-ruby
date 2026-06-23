@@ -130,7 +130,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Xai, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings }
 
         # @!method initialize(call_control_id:, payload:, voice:, client_state: nil, command_id: nil, language: nil, loop_: nil, payload_type: nil, service_level: nil, stop: nil, target_legs: nil, voice_settings: nil, request_options: {})
@@ -159,7 +159,7 @@ module Telnyx
         #
         #   @param target_legs [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs] Specifies which legs of the call should receive the spoken audio.
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Xai] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -258,75 +258,12 @@ module Telnyx
 
           variant :resemble, -> { Telnyx::ResembleVoiceSettings }
 
-          variant :inworld, -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld }
+          variant :inworld, -> { Telnyx::InworldVoiceSettings }
 
-          variant :xai, -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings::Xai }
-
-          class Inworld < Telnyx::Internal::Type::BaseModel
-            # @!attribute type
-            #   Voice settings provider type
-            #
-            #   @return [Symbol, :inworld]
-            required :type, const: :inworld
-
-            # @!attribute delivery_mode
-            #   Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            #   synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
-            #   more expressive variation, and `BALANCED` sits in between. Optional and only
-            #   supported by `TTS2`; when omitted, the provider default applies.
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::DeliveryMode, nil]
-            optional :delivery_mode,
-                     enum: -> { Telnyx::Calls::ActionSpeakParams::VoiceSettings::Inworld::DeliveryMode }
-
-            # @!method initialize(delivery_mode: nil, type: :inworld)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld} for more
-            #   details.
-            #
-            #   @param delivery_mode [Symbol, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld::DeliveryMode] Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            #
-            #   @param type [Symbol, :inworld] Voice settings provider type
-
-            # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
-            # more expressive variation, and `BALANCED` sits in between. Optional and only
-            # supported by `TTS2`; when omitted, the provider default applies.
-            #
-            # @see Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld#delivery_mode
-            module DeliveryMode
-              extend Telnyx::Internal::Type::Enum
-
-              STABLE = :STABLE
-              BALANCED = :BALANCED
-              CREATIVE = :CREATIVE
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          class Xai < Telnyx::Internal::Type::BaseModel
-            # @!attribute type
-            #   Voice settings provider type
-            #
-            #   @return [Symbol, :xai]
-            required :type, const: :xai
-
-            # @!attribute language
-            #   Language code, or `auto` to detect automatically.
-            #
-            #   @return [String, nil]
-            optional :language, String
-
-            # @!method initialize(language: nil, type: :xai)
-            #   @param language [String] Language code, or `auto` to detect automatically.
-            #
-            #   @param type [Symbol, :xai] Voice settings provider type
-          end
+          variant :xai, -> { Telnyx::XaiVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Inworld, Telnyx::Models::Calls::ActionSpeakParams::VoiceSettings::Xai)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings)]
         end
       end
     end

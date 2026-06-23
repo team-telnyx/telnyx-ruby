@@ -35,7 +35,7 @@ module Telnyx
             ],
           name: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PronunciationDictCreateResponse)
+        ).returns(Telnyx::PronunciationDictResponse)
       end
       def create(
         # List of pronunciation items (alias or phoneme type). At least one item is
@@ -52,7 +52,7 @@ module Telnyx
         params(
           id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PronunciationDictRetrieveResponse)
+        ).returns(Telnyx::PronunciationDictResponse)
       end
       def retrieve(
         # The UUID of the pronunciation dictionary.
@@ -76,7 +76,7 @@ module Telnyx
             ],
           name: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::PronunciationDictUpdateResponse)
+        ).returns(Telnyx::PronunciationDictResponse)
       end
       def update(
         # The UUID of the pronunciation dictionary.

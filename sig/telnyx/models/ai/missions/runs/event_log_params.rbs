@@ -8,7 +8,7 @@ module Telnyx
               mission_id: String,
               run_id: String,
               summary: String,
-              type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
+              type: Telnyx::Models::AI::Missions::Runs::event_type,
               agent_id: String,
               idempotency_key: String,
               payload: ::Hash[Symbol, top],
@@ -26,7 +26,7 @@ module Telnyx
 
             attr_accessor summary: String
 
-            attr_accessor type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_
+            attr_accessor type: Telnyx::Models::AI::Missions::Runs::event_type
 
             attr_reader agent_id: String?
 
@@ -48,7 +48,7 @@ module Telnyx
               mission_id: String,
               run_id: String,
               summary: String,
-              type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
+              type: Telnyx::Models::AI::Missions::Runs::event_type,
               ?agent_id: String,
               ?idempotency_key: String,
               ?payload: ::Hash[Symbol, top],
@@ -60,40 +60,13 @@ module Telnyx
               mission_id: String,
               run_id: String,
               summary: String,
-              type: Telnyx::Models::AI::Missions::Runs::EventLogParams::type_,
+              type: Telnyx::Models::AI::Missions::Runs::event_type,
               agent_id: String,
               idempotency_key: String,
               payload: ::Hash[Symbol, top],
               step_id: String,
               request_options: Telnyx::RequestOptions
             }
-
-            type type_ =
-              :status_change
-              | :step_started
-              | :step_completed
-              | :step_failed
-              | :tool_call
-              | :tool_result
-              | :message
-              | :error
-              | :custom
-
-            module Type
-              extend Telnyx::Internal::Type::Enum
-
-              STATUS_CHANGE: :status_change
-              STEP_STARTED: :step_started
-              STEP_COMPLETED: :step_completed
-              STEP_FAILED: :step_failed
-              TOOL_CALL: :tool_call
-              TOOL_RESULT: :tool_result
-              MESSAGE: :message
-              ERROR: :error
-              CUSTOM: :custom
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::Missions::Runs::EventLogParams::type_]
-            end
           end
         end
       end

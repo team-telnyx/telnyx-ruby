@@ -2,15 +2,8 @@
 
 module Telnyx
   module Models
-    class NetworkCreate < Telnyx::Models::Record
-      # @!attribute name
-      #   A user specified name for the network.
-      #
-      #   @return [String]
-      required :name, String
-
-      # @!method initialize(name:)
-      #   @param name [String] A user specified name for the network.
+    class NetworkCreate < Telnyx::Models::Network
+      # @!method initialize
     end
   end
 end

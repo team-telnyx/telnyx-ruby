@@ -13,12 +13,10 @@ module Telnyx
             dir_id: String,
             page_number: Integer,
             page_size: Integer,
-            status: Telnyx::Dir::PhoneNumberListParams::Status::OrSymbol,
+            status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Dir::PhoneNumberListResponse
-            ]
+            Telnyx::Internal::DefaultFlatPagination[Telnyx::Dir::DirPhoneNumber]
           )
         end
         def list(
@@ -43,8 +41,7 @@ module Telnyx
         sig do
           params(
             dir_id: String,
-            documents:
-              T::Array[Telnyx::Dir::PhoneNumberAddParams::Document::OrHash],
+            documents: T::Array[Telnyx::Document::OrHash],
             phone_numbers: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Dir::PhoneNumberAddResponse)
