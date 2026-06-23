@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.147.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.131.0...v5.147.0) (2026-06-23)
+
+
+### Bug Fixes
+
+* handle modify/delete conflicts in release-please code-carry merge ([#274](https://github.com/team-telnyx/telnyx-ruby/issues/274)) ([58566c6](https://github.com/team-telnyx/telnyx-ruby/commit/58566c62dabbcebb506dca24567e0dafaed9c911))
+* remove `|| true` from github-release step ([#278](https://github.com/team-telnyx/telnyx-ruby/issues/278)) ([781b89b](https://github.com/team-telnyx/telnyx-ruby/commit/781b89bd7876f99ecf3e386f5f05165393eb7035))
+
+
+### Chores
+
+* add self-hosted release-please pipeline ([#271](https://github.com/team-telnyx/telnyx-ruby/issues/271)) ([f212af2](https://github.com/team-telnyx/telnyx-ruby/commit/f212af296539b9cd840a8dc9c76f2b75562d08f8))
+
 ## 5.131.0 (2026-06-18)
 
 Full Changelog: [v5.130.1...v5.131.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.130.1...v5.131.0)
