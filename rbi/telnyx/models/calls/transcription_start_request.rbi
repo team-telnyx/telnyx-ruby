@@ -58,6 +58,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
@@ -79,6 +80,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -112,6 +114,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -154,6 +157,7 @@ module Telnyx
                   Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI,
                   Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
                   Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet,
                   Telnyx::Calls::TranscriptionEngineAConfig,
                   Telnyx::Calls::TranscriptionEngineBConfig,
                   Telnyx::Calls::DeepgramNova2Config,
@@ -220,6 +224,11 @@ module Telnyx
               :Soniox,
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
             )
+          PARAKEET =
+            T.let(
+              :Parakeet,
+              Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
+            )
           A =
             T.let(
               :A,
@@ -255,6 +264,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
@@ -1147,6 +1157,154 @@ module Telnyx
                 override.returns(
                   T::Array[
                     Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::TranscriptionModel::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class Parakeet < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Whether to send also interim results. If set to false, only final results will
+            # be sent.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :interim_results
+
+            sig { params(interim_results: T::Boolean).void }
+            attr_writer :interim_results
+
+            # Engine identifier for Parakeet transcription service
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionEngine::OrSymbol
+                )
+              )
+            end
+            attr_reader :transcription_engine
+
+            sig do
+              params(
+                transcription_engine:
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionEngine::OrSymbol
+              ).void
+            end
+            attr_writer :transcription_engine
+
+            # The model to use for transcription.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionModel::OrSymbol
+                )
+              )
+            end
+            attr_reader :transcription_model
+
+            sig do
+              params(
+                transcription_model:
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionModel::OrSymbol
+              ).void
+            end
+            attr_writer :transcription_model
+
+            sig do
+              params(
+                interim_results: T::Boolean,
+                transcription_engine:
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionEngine::OrSymbol,
+                transcription_model:
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionModel::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Whether to send also interim results. If set to false, only final results will
+              # be sent.
+              interim_results: nil,
+              # Engine identifier for Parakeet transcription service
+              transcription_engine: nil,
+              # The model to use for transcription.
+              transcription_model: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  interim_results: T::Boolean,
+                  transcription_engine:
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionEngine::OrSymbol,
+                  transcription_model:
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionModel::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Engine identifier for Parakeet transcription service
+            module TranscriptionEngine
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionEngine
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              PARAKEET =
+                T.let(
+                  :Parakeet,
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionEngine::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionEngine::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # The model to use for transcription.
+            module TranscriptionModel
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionModel
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              PARAKEET_TDT_0_6B_V3 =
+                T.let(
+                  :"parakeet/tdt-0.6b-v3",
+                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionModel::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::TranscriptionModel::TaggedSymbol
                   ]
                 )
               end

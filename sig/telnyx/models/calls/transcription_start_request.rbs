@@ -60,6 +60,7 @@ module Telnyx
           | :AssemblyAI
           | :Speechmatics
           | :Soniox
+          | :Parakeet
           | :A
           | :B
 
@@ -74,6 +75,7 @@ module Telnyx
           ASSEMBLY_AI: :AssemblyAI
           SPEECHMATICS: :Speechmatics
           SONIOX: :Soniox
+          PARAKEET: :Parakeet
           A: :A
           B: :B
 
@@ -88,6 +90,7 @@ module Telnyx
           | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::AssemblyAI
           | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Speechmatics
           | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox
+          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet
           | Telnyx::Calls::TranscriptionEngineAConfig
           | Telnyx::Calls::TranscriptionEngineBConfig
           | Telnyx::Calls::DeepgramNova2Config
@@ -448,6 +451,63 @@ module Telnyx
               SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
 
               def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Soniox::transcription_model]
+            end
+          end
+
+          type parakeet =
+            {
+              interim_results: bool,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_model
+            }
+
+          class Parakeet < Telnyx::Internal::Type::BaseModel
+            attr_reader interim_results: bool?
+
+            def interim_results=: (bool) -> bool
+
+            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_engine?
+
+            def transcription_engine=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_engine
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_engine
+
+            attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_model?
+
+            def transcription_model=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_model
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_model
+
+            def initialize: (
+              ?interim_results: bool,
+              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_engine,
+              ?transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_model
+            ) -> void
+
+            def to_hash: -> {
+              interim_results: bool,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_model
+            }
+
+            type transcription_engine = :Parakeet
+
+            module TranscriptionEngine
+              extend Telnyx::Internal::Type::Enum
+
+              PARAKEET: :Parakeet
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_engine]
+            end
+
+            type transcription_model = :"parakeet/tdt-0.6b-v3"
+
+            module TranscriptionModel
+              extend Telnyx::Internal::Type::Enum
+
+              PARAKEET_TDT_0_6B_V3: :"parakeet/tdt-0.6b-v3"
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Parakeet::transcription_model]
             end
           end
 
