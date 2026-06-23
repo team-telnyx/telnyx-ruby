@@ -1,7 +1,0 @@
-module Telnyx
-  module Models
-    type usage_report_list_response = ::Hash[Symbol, top]
-
-    UsageReportListResponse: Telnyx::Internal::Type::Converter
-  end
-end

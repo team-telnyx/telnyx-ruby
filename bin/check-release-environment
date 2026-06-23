@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# Ruby SDK now uses OIDC for RubyGems publishing via rubygems/configure-rubygems-credentials@main
-# No secret checks needed - OIDC authentication is handled in the publish workflow
-
-echo "The environment is ready to push releases!"
