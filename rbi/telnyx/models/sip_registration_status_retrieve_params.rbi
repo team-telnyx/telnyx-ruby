@@ -14,12 +14,8 @@ module Telnyx
           )
         end
 
-      # Identifier of the UAC connection to look up.
-      sig { returns(String) }
-      attr_accessor :connection_id
-
-      # The kind of credential to look up. Only `uac_external_credential` is supported
-      # today.
+      # The kind of credential to look up. `uac_external_credential` is keyed by
+      # `connection_id`; `telephony_credential` is keyed by `username`.
       sig do
         returns(
           Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol
@@ -27,20 +23,41 @@ module Telnyx
       end
       attr_accessor :credential_type
 
+      # Identifier of the UAC connection to look up. Required when `credential_type` is
+      # `uac_external_credential`.
+      sig { returns(T.nilable(String)) }
+      attr_reader :connection_id
+
+      sig { params(connection_id: String).void }
+      attr_writer :connection_id
+
+      # SIP username of the telephony credential to look up. Required when
+      # `credential_type` is `telephony_credential`.
+      sig { returns(T.nilable(String)) }
+      attr_reader :username
+
+      sig { params(username: String).void }
+      attr_writer :username
+
       sig do
         params(
-          connection_id: String,
           credential_type:
             Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol,
+          connection_id: String,
+          username: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
-        # Identifier of the UAC connection to look up.
-        connection_id:,
-        # The kind of credential to look up. Only `uac_external_credential` is supported
-        # today.
+        # The kind of credential to look up. `uac_external_credential` is keyed by
+        # `connection_id`; `telephony_credential` is keyed by `username`.
         credential_type:,
+        # Identifier of the UAC connection to look up. Required when `credential_type` is
+        # `uac_external_credential`.
+        connection_id: nil,
+        # SIP username of the telephony credential to look up. Required when
+        # `credential_type` is `telephony_credential`.
+        username: nil,
         request_options: {}
       )
       end
@@ -48,9 +65,10 @@ module Telnyx
       sig do
         override.returns(
           {
-            connection_id: String,
             credential_type:
               Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol,
+            connection_id: String,
+            username: String,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -58,8 +76,8 @@ module Telnyx
       def to_hash
       end
 
-      # The kind of credential to look up. Only `uac_external_credential` is supported
-      # today.
+      # The kind of credential to look up. `uac_external_credential` is keyed by
+      # `connection_id`; `telephony_credential` is keyed by `username`.
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
@@ -75,6 +93,11 @@ module Telnyx
         UAC_EXTERNAL_CREDENTIAL =
           T.let(
             :uac_external_credential,
+            Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::TaggedSymbol
+          )
+        TELEPHONY_CREDENTIAL =
+          T.let(
+            :telephony_credential,
             Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::TaggedSymbol
           )
 
