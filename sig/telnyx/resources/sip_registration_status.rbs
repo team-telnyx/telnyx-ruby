@@ -2,8 +2,9 @@ module Telnyx
   module Resources
     class SipRegistrationStatus
       def retrieve: (
-        connection_id: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
+        ?connection_id: String,
+        ?username: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::SipRegistrationStatusRetrieveResponse
 

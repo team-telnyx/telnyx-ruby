@@ -34,7 +34,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Array<String>, Array<Hash{Symbol=>Object}>, Hash{Symbol=>Object}, Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse]
+      # @return [Array<String>, Array<Hash{Symbol=>Object}>, Hash{Symbol=>String}, Hash{Symbol=>Object}, Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse]
       #
       # @see Telnyx::Models::Messaging10dlcGetEnumParams
       def get_enum(endpoint, params = {})
