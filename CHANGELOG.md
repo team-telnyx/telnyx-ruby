@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.148.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.147.0...v5.148.0) (2026-06-24)
+
+
+### Bug Fixes
+
+* restore OIDC + release trigger in publish-gem.yml ([#282](https://github.com/team-telnyx/telnyx-ruby/issues/282)) ([2102367](https://github.com/team-telnyx/telnyx-ruby/commit/21023671fa50a5db3968d874a47f7dfc32ab2032))
+* restore release-please-config.json ([#280](https://github.com/team-telnyx/telnyx-ruby/issues/280)) ([8d34b0e](https://github.com/team-telnyx/telnyx-ruby/commit/8d34b0ec6d19e8a230c2c87eb0d5229a0f3170a7))
+
 ## [5.147.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.131.0...v5.147.0) (2026-06-23)
 
 
