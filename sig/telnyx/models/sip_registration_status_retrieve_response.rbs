@@ -73,12 +73,13 @@ module Telnyx
         sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
       }
 
-      type credential_type = :uac_external_credential
+      type credential_type = :uac_external_credential | :telephony_credential
 
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
         UAC_EXTERNAL_CREDENTIAL: :uac_external_credential
+        TELEPHONY_CREDENTIAL: :telephony_credential
 
         def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type]
       end
@@ -88,8 +89,13 @@ module Telnyx
           auth_retries: Integer,
           expires: Integer,
           failures: Integer,
+          last_modified: String,
           next_action_at: Integer,
+          node: String,
           sip_uri_user_host: String,
+          transport: String,
+          ua_ip: String,
+          ua_port: Integer,
           uptime: Integer
         }
 
@@ -106,13 +112,33 @@ module Telnyx
 
         def failures=: (Integer) -> Integer
 
+        attr_reader last_modified: String?
+
+        def last_modified=: (String) -> String
+
         attr_reader next_action_at: Integer?
 
         def next_action_at=: (Integer) -> Integer
 
+        attr_reader node: String?
+
+        def node=: (String) -> String
+
         attr_reader sip_uri_user_host: String?
 
         def sip_uri_user_host=: (String) -> String
+
+        attr_reader transport: String?
+
+        def transport=: (String) -> String
+
+        attr_reader ua_ip: String?
+
+        def ua_ip=: (String) -> String
+
+        attr_reader ua_port: Integer?
+
+        def ua_port=: (Integer) -> Integer
 
         attr_reader uptime: Integer?
 
@@ -122,8 +148,13 @@ module Telnyx
           ?auth_retries: Integer,
           ?expires: Integer,
           ?failures: Integer,
+          ?last_modified: String,
           ?next_action_at: Integer,
+          ?node: String,
           ?sip_uri_user_host: String,
+          ?transport: String,
+          ?ua_ip: String,
+          ?ua_port: Integer,
           ?uptime: Integer
         ) -> void
 
@@ -131,8 +162,13 @@ module Telnyx
           auth_retries: Integer,
           expires: Integer,
           failures: Integer,
+          last_modified: String,
           next_action_at: Integer,
+          node: String,
           sip_uri_user_host: String,
+          transport: String,
+          ua_ip: String,
+          ua_port: Integer,
           uptime: Integer
         }
       end

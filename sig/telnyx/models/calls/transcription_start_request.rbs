@@ -60,6 +60,7 @@ module Telnyx
           | :AssemblyAI
           | :Speechmatics
           | :Soniox
+          | :Parakeet
           | :A
           | :B
 
@@ -74,6 +75,7 @@ module Telnyx
           ASSEMBLY_AI: :AssemblyAI
           SPEECHMATICS: :Speechmatics
           SONIOX: :Soniox
+          PARAKEET: :Parakeet
           A: :A
           B: :B
 
@@ -88,6 +90,7 @@ module Telnyx
           | Telnyx::Calls::TranscriptionEngineAssemblyaiConfig
           | Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig
           | Telnyx::Calls::TranscriptionEngineSonioxConfig
+          | Telnyx::Calls::TranscriptionEngineParakeetConfig
           | Telnyx::Calls::TranscriptionEngineAConfig
           | Telnyx::Calls::TranscriptionEngineBConfig
           | Telnyx::Calls::DeepgramNova2Config

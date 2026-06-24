@@ -10,7 +10,7 @@ module Telnyx
 
       variant -> { Telnyx::Models::Messaging10dlcGetEnumResponse::EnumObjectListResponseArray }
 
-      variant -> { Telnyx::Models::Messaging10dlcGetEnumResponse::EnumObjectToStringResponseMap }
+      variant -> { Telnyx::Models::Messaging10dlcGetEnumResponse::StringMap }
 
       variant -> { Telnyx::Models::Messaging10dlcGetEnumResponse::EnumObjecToObjecttResponseMap }
 
@@ -40,7 +40,7 @@ module Telnyx
       end
 
       # @!method self.variants
-      #   @return [Array(Array<String>, Array<Hash{Symbol=>Object}>, Hash{Symbol=>Object}, Hash{Symbol=>Object}, Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse)]
+      #   @return [Array(Array<String>, Array<Hash{Symbol=>Object}>, Hash{Symbol=>String}, Hash{Symbol=>Object}, Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse)]
 
       # @type [Telnyx::Internal::Type::Converter]
       StringArray = Telnyx::Internal::Type::ArrayOf[String]
@@ -50,7 +50,7 @@ module Telnyx
         Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
       # @type [Telnyx::Internal::Type::Converter]
-      EnumObjectToStringResponseMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      StringMap = Telnyx::Internal::Type::HashOf[String]
 
       # @type [Telnyx::Internal::Type::Converter]
       EnumObjecToObjecttResponseMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
