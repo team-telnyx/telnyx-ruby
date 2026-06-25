@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_engine_parakeet_config =
+        {
+          interim_results: bool,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model
+        }
+
+      class TranscriptionEngineParakeetConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader interim_results: bool?
+
+        def interim_results=: (bool) -> bool
+
+        attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine?
+
+        def transcription_engine=: (
+          Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine
+        ) -> Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine
+
+        attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model?
+
+        def transcription_model=: (
+          Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model
+        ) -> Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model
+
+        def initialize: (
+          ?interim_results: bool,
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine,
+          ?transcription_model: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model
+        ) -> void
+
+        def to_hash: -> {
+          interim_results: bool,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model
+        }
+
+        type transcription_engine = :Parakeet
+
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          PARAKEET: :Parakeet
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine]
+        end
+
+        type transcription_model = :"parakeet/tdt-0.6b-v3"
+
+        module TranscriptionModel
+          extend Telnyx::Internal::Type::Enum
+
+          PARAKEET_TDT_0_6B_V3: :"parakeet/tdt-0.6b-v3"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model]
+        end
+      end
+    end
+  end
+end

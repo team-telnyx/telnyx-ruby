@@ -10,6 +10,7 @@ module Telnyx
           T.any(
             T::Array[String],
             T::Array[T::Hash[Symbol, T.anything]],
+            T::Hash[Symbol, String],
             T::Hash[Symbol, T.anything],
             Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse
           )
@@ -78,9 +79,9 @@ module Telnyx
           Telnyx::Internal::Type::Converter
         )
 
-      EnumObjectToStringResponseMap =
+      StringMap =
         T.let(
-          Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+          Telnyx::Internal::Type::HashOf[String],
           Telnyx::Internal::Type::Converter
         )
 
