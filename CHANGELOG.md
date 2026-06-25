@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.149.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.148.0...v5.149.0) (2026-06-25)
+
+
+### Bug Fixes
+
+* restore release-please-config.json deleted by release PR merge ([#283](https://github.com/team-telnyx/telnyx-ruby/issues/283)) ([db1e0ab](https://github.com/team-telnyx/telnyx-ruby/commit/db1e0abf7fa3613c41095bd15dc357a7c9846c93))
+* restore release:published trigger + OIDC in publish-gem.yml ([#284](https://github.com/team-telnyx/telnyx-ruby/issues/284)) ([6ee6aa7](https://github.com/team-telnyx/telnyx-ruby/commit/6ee6aa77356aa4a782f7a1fd8f36dce867af23cb))
+
 ## [5.148.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.147.0...v5.148.0) (2026-06-24)
 
 
