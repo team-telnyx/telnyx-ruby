@@ -129,7 +129,7 @@ jobs:
           #                       prod = workflow_dispatch + release published trigger
           #   release-doctor.yml: staging = checks RELEASE_PLEASE_TOKEN + GEM_HOST_API_KEY;
           #                       prod = OIDC-based, no secret checks
-          #   release-please-config.json: staging has prerelease + versioning:prerelease;
+          #   release-please-config.json: only on master, restored from there (not next);
           #                               prod does not
           #   bin/check-release-environment: staging checks RELEASE_PLEASE_TOKEN + GEM_HOST_API_KEY;
           #                                  prod uses OIDC (no checks needed)
@@ -138,16 +138,31 @@ jobs:
           # from `next` (prod's current HEAD). However, release-please.yml
           # only exists on `master` (it is never committed to `next` because
           # staging doesn't have it and the restore-from-next silently fails).
-          # We fetch origin/master and restore release-please.yml from there.
+          # Restore ALL prod-owned files from master.
+          #
+          # Why master (not next): prod-owned files are manually managed on prod.
+          # The `next` branch gets overwritten with staging content on each promote,
+          # so restoring from `next` gives stale/staging versions — not the latest
+          # prod fixes. Manual fixes on master (e.g. adding release triggers to
+          # publish-gem.yml) get silently reverted when the release PR carries the
+          # staging version from next to master.
+          #
+          # Restoring from master preserves all manual prod edits:
+          #   release-please.yml: two-phase trigger (next → release PR, master → tag/release)
+          #   release-please-config.json: release-please config (changelog sections, version-file)
+          #   publish-gem.yml: release:published trigger + OIDC (staging has workflow_dispatch only)
+          #   ci.yml: prod runner config (depot vs ubuntu-latest)
+          #   release-doctor.yml: OIDC-based (staging checks secrets)
+          #   .release-please-manifest.json: current released version
+          #   bin/check-release-environment: OIDC version (staging checks RELEASE_PLEASE_TOKEN)
+          #   rbi/telnyx/lib/: Sorbet RBI files maintained on prod
+          #
+          # See: PR #283 (restore release-please-config.json), PR #282 (reverted
+          # publish-gem.yml release trigger), PR #115 (release-please.yml fix).
           git fetch origin master:refs/remotes/origin/master 2>/dev/null || true
 
-          # Restore release-please.yml from master (it only exists there)
           git checkout origin/master -- \
             .github/workflows/release-please.yml \
-            2>/dev/null || true
-
-          # Restore remaining prod-owned files from next
-          git checkout next -- \
             .github/workflows/ci.yml \
             .github/workflows/publish-gem.yml \
             .github/workflows/release-doctor.yml \
