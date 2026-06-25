@@ -26,7 +26,7 @@ jobs:
           bundle install
 
       - name: Configure RubyGems Credentials
-        uses: rubygems/configure-rubygems-credentials@main
+        uses: rubygems/configure-rubygems-credentials@6861877652452567c1a007a50badad3d316fc9ba
 
       - name: Publish to RubyGems.org
         run: |
