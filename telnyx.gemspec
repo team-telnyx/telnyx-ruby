@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = "support@telnyx.com"
   s.homepage = "https://gemdocs.org/gems/telnyx"
   s.metadata["homepage_uri"] = s.homepage
-  s.metadata["source_code_uri"] = "https://github.com/stainless-sdks/telnyx-ruby"
+  s.metadata["source_code_uri"] = "https://github.com/team-telnyx/telnyx-ruby"
   s.metadata["rubygems_mfa_required"] = false.to_s
   s.required_ruby_version = ">= 3.2.0"
 

@@ -26,12 +26,10 @@ module Telnyx
           id: String,
           chunk_index: Integer,
           chunk_total: Integer,
-          document_id: String?,
           ingested_at: Time,
           organization_id: String,
           record_created_at: Time,
           record_id: String,
-          record_type: Telnyx::Models::AISearchConversationHistoriesResponse::Data::record_type,
           region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region,
           score: Float,
           text: String,
@@ -46,8 +44,6 @@ module Telnyx
 
         attr_accessor chunk_total: Integer
 
-        attr_accessor document_id: String?
-
         attr_accessor ingested_at: Time
 
         attr_accessor organization_id: String
@@ -55,8 +51,6 @@ module Telnyx
         attr_accessor record_created_at: Time
 
         attr_accessor record_id: String
-
-        attr_accessor record_type: Telnyx::Models::AISearchConversationHistoriesResponse::Data::record_type
 
         attr_accessor region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region
 
@@ -74,12 +68,10 @@ module Telnyx
           id: String,
           chunk_index: Integer,
           chunk_total: Integer,
-          document_id: String?,
           ingested_at: Time,
           organization_id: String,
           record_created_at: Time,
           record_id: String,
-          record_type: Telnyx::Models::AISearchConversationHistoriesResponse::Data::record_type,
           region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region,
           score: Float,
           text: String,
@@ -91,32 +83,16 @@ module Telnyx
           id: String,
           chunk_index: Integer,
           chunk_total: Integer,
-          document_id: String?,
           ingested_at: Time,
           organization_id: String,
           record_created_at: Time,
           record_id: String,
-          record_type: Telnyx::Models::AISearchConversationHistoriesResponse::Data::record_type,
           region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region,
           score: Float,
           text: String,
           user_id: String,
           metadata: ::Hash[Symbol, top]
         }
-
-        type record_type =
-          :voice | :message | :ai_pipeline_storage | :knowledge_base
-
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          VOICE: :voice
-          MESSAGE: :message
-          AI_PIPELINE_STORAGE: :ai_pipeline_storage
-          KNOWLEDGE_BASE: :knowledge_base
-
-          def self?.values: -> ::Array[Telnyx::Models::AISearchConversationHistoriesResponse::Data::record_type]
-        end
 
         type region = :USA | :DEU | :AUS | :UAE
 

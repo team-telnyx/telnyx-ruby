@@ -83,12 +83,12 @@ module Telnyx
       #
       # 1. The query text is embedded into a 1024-dimensional vector using the
       #    multilingual-e5-large model.
-      # 2. The vector is sent to regional OpenSearch clusters for kNN search using HNSW
-      #    cosine similarity.
+      # 2. The vector is compared against indexed record chunks using semantic
+      #    similarity search.
       # 3. When no region is specified, all regions are queried in parallel (fan-out)
       #    and results are merged by score.
-      # 4. Results are ranked by cosine similarity score (descending) and truncated to
-      #    `top_k`.
+      # 4. Results are ranked by similarity score (descending) and paginated via
+      #    `page[number]` / `page[size]`.
       #
       # **Authentication:** Requires a Telnyx API key via `Authorization: Bearer <key>`.
       # Results are automatically scoped to the caller's organization —
@@ -102,14 +102,14 @@ module Telnyx
       # **Filtering:** Use `filter[field][operator]=value` query parameters to narrow
       # results before vector search.
       #
-      # Top-level filterable fields: `user_id`, `record_type`, `region`, `document_id`,
-      # `record_id`, `record_created_at`, `ingested_at`, `retention`
+      # Top-level filterable fields: `user_id`, `region`, `record_id`,
+      # `record_created_at`, `ingested_at`, `retention`
       #
       # Note: `retention` is filter-only — it can be used to narrow results but is not
       # returned in the response body.
       #
       # Metadata fields: any field not in the list above is resolved to
-      # `data.metadata.<field>` in OpenSearch (e.g., `filter[language]=en` →
+      # `data.metadata.<field>` (e.g., `filter[language]=en` →
       # `data.metadata.language`).
       #
       # Supported filter operators:
@@ -122,18 +122,15 @@ module Telnyx
       # **Examples:**
       #
       # ```
-      # GET /v2/ai/conversation_histories?q=billing+issue&record_type=voice&top_k=10
-      # GET /v2/ai/conversation_histories?q=setup+guide&record_type=knowledge_base&region=USA&min_score=0.5
-      # GET /v2/ai/conversation_histories?q=refund&record_type=voice&filter[record_created_at][gte]=2026-01-01T00:00:00Z
-      # GET /v2/ai/conversation_histories?q=outage&record_type=voice&filter[region][in]=USA,DEU
-      # GET /v2/ai/conversation_histories?q=hold+time&record_type=voice&filter[language]=en
+      # GET /v2/ai/conversation_histories?q=billing+issue&page[size]=10
+      # GET /v2/ai/conversation_histories?q=setup+guide&region=USA&min_score=0.5
+      # GET /v2/ai/conversation_histories?q=refund&filter[record_created_at][gte]=2026-01-01T00:00:00Z
+      # GET /v2/ai/conversation_histories?q=outage&filter[region][in]=USA,DEU
+      # GET /v2/ai/conversation_histories?q=hold+time&filter[language]=en
       # ```
       sig do
         params(
           q: String,
-          record_type:
-            Telnyx::AISearchConversationHistoriesParams::RecordType::OrSymbol,
-          filter_document_id: String,
           filter_ingested_at_gte: Time,
           filter_ingested_at_lte: Time,
           filter_record_created_at_gte: Time,
@@ -143,21 +140,16 @@ module Telnyx
           filter_retention: String,
           filter_user_id: String,
           min_score: Float,
+          page_number: Integer,
+          page_size: Integer,
           region: Telnyx::AISearchConversationHistoriesParams::Region::OrSymbol,
-          top_k: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::AISearchConversationHistoriesResponse)
       end
       def search_conversation_histories(
         # Natural language search query. The text is embedded into a 1024-dimensional
-        # vector and compared against indexed record chunks using kNN cosine similarity.
+        # vector and compared against indexed record chunks using semantic similarity.
         q:,
-        # The type of records to search. Each record type is stored in a separate vector
-        # index.
-        record_type:,
-        # Filter by document identifier (exact match). Populated for knowledge_base
-        # records.
-        filter_document_id: nil,
         # Only include records ingested (chunked, embedded, and indexed) on or after this
         # ISO 8601 timestamp.
         filter_ingested_at_gte: nil,
@@ -184,12 +176,13 @@ module Telnyx
         # Minimum cosine similarity score threshold (0.0 to 1.0). Results below this
         # threshold are excluded.
         min_score: nil,
-        # Restrict search to a specific region's OpenSearch cluster. When omitted, all
-        # regions are queried in parallel (fan-out) and results are merged by cosine
-        # similarity score.
+        # Page number to return (1-based). Defaults to 1.
+        page_number: nil,
+        # Number of results per page. Defaults to 20, maximum 100.
+        page_size: nil,
+        # Restrict search to a specific region. When omitted, all regions are queried in
+        # parallel (fan-out) and results are merged by similarity score.
         region: nil,
-        # Maximum number of results to return. Defaults to 20, maximum 100.
-        top_k: nil,
         request_options: {}
       )
       end

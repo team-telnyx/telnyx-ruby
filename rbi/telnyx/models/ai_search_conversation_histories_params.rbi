@@ -15,26 +15,9 @@ module Telnyx
         end
 
       # Natural language search query. The text is embedded into a 1024-dimensional
-      # vector and compared against indexed record chunks using kNN cosine similarity.
+      # vector and compared against indexed record chunks using semantic similarity.
       sig { returns(String) }
       attr_accessor :q
-
-      # The type of records to search. Each record type is stored in a separate vector
-      # index.
-      sig do
-        returns(
-          Telnyx::AISearchConversationHistoriesParams::RecordType::OrSymbol
-        )
-      end
-      attr_accessor :record_type
-
-      # Filter by document identifier (exact match). Populated for knowledge_base
-      # records.
-      sig { returns(T.nilable(String)) }
-      attr_reader :filter_document_id
-
-      sig { params(filter_document_id: String).void }
-      attr_writer :filter_document_id
 
       # Only include records ingested (chunked, embedded, and indexed) on or after this
       # ISO 8601 timestamp.
@@ -107,9 +90,22 @@ module Telnyx
       sig { params(min_score: Float).void }
       attr_writer :min_score
 
-      # Restrict search to a specific region's OpenSearch cluster. When omitted, all
-      # regions are queried in parallel (fan-out) and results are merged by cosine
-      # similarity score.
+      # Page number to return (1-based). Defaults to 1.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_number
+
+      sig { params(page_number: Integer).void }
+      attr_writer :page_number
+
+      # Number of results per page. Defaults to 20, maximum 100.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :page_size
+
+      sig { params(page_size: Integer).void }
+      attr_writer :page_size
+
+      # Restrict search to a specific region. When omitted, all regions are queried in
+      # parallel (fan-out) and results are merged by similarity score.
       sig do
         returns(
           T.nilable(
@@ -126,19 +122,9 @@ module Telnyx
       end
       attr_writer :region
 
-      # Maximum number of results to return. Defaults to 20, maximum 100.
-      sig { returns(T.nilable(Integer)) }
-      attr_reader :top_k
-
-      sig { params(top_k: Integer).void }
-      attr_writer :top_k
-
       sig do
         params(
           q: String,
-          record_type:
-            Telnyx::AISearchConversationHistoriesParams::RecordType::OrSymbol,
-          filter_document_id: String,
           filter_ingested_at_gte: Time,
           filter_ingested_at_lte: Time,
           filter_record_created_at_gte: Time,
@@ -148,21 +134,16 @@ module Telnyx
           filter_retention: String,
           filter_user_id: String,
           min_score: Float,
+          page_number: Integer,
+          page_size: Integer,
           region: Telnyx::AISearchConversationHistoriesParams::Region::OrSymbol,
-          top_k: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         # Natural language search query. The text is embedded into a 1024-dimensional
-        # vector and compared against indexed record chunks using kNN cosine similarity.
+        # vector and compared against indexed record chunks using semantic similarity.
         q:,
-        # The type of records to search. Each record type is stored in a separate vector
-        # index.
-        record_type:,
-        # Filter by document identifier (exact match). Populated for knowledge_base
-        # records.
-        filter_document_id: nil,
         # Only include records ingested (chunked, embedded, and indexed) on or after this
         # ISO 8601 timestamp.
         filter_ingested_at_gte: nil,
@@ -189,12 +170,13 @@ module Telnyx
         # Minimum cosine similarity score threshold (0.0 to 1.0). Results below this
         # threshold are excluded.
         min_score: nil,
-        # Restrict search to a specific region's OpenSearch cluster. When omitted, all
-        # regions are queried in parallel (fan-out) and results are merged by cosine
-        # similarity score.
+        # Page number to return (1-based). Defaults to 1.
+        page_number: nil,
+        # Number of results per page. Defaults to 20, maximum 100.
+        page_size: nil,
+        # Restrict search to a specific region. When omitted, all regions are queried in
+        # parallel (fan-out) and results are merged by similarity score.
         region: nil,
-        # Maximum number of results to return. Defaults to 20, maximum 100.
-        top_k: nil,
         request_options: {}
       )
       end
@@ -203,9 +185,6 @@ module Telnyx
         override.returns(
           {
             q: String,
-            record_type:
-              Telnyx::AISearchConversationHistoriesParams::RecordType::OrSymbol,
-            filter_document_id: String,
             filter_ingested_at_gte: Time,
             filter_ingested_at_lte: Time,
             filter_record_created_at_gte: Time,
@@ -215,9 +194,10 @@ module Telnyx
             filter_retention: String,
             filter_user_id: String,
             min_score: Float,
+            page_number: Integer,
+            page_size: Integer,
             region:
               Telnyx::AISearchConversationHistoriesParams::Region::OrSymbol,
-            top_k: Integer,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -225,55 +205,8 @@ module Telnyx
       def to_hash
       end
 
-      # The type of records to search. Each record type is stored in a separate vector
-      # index.
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Telnyx::AISearchConversationHistoriesParams::RecordType
-            )
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        VOICE =
-          T.let(
-            :voice,
-            Telnyx::AISearchConversationHistoriesParams::RecordType::TaggedSymbol
-          )
-        MESSAGE =
-          T.let(
-            :message,
-            Telnyx::AISearchConversationHistoriesParams::RecordType::TaggedSymbol
-          )
-        AI_PIPELINE_STORAGE =
-          T.let(
-            :ai_pipeline_storage,
-            Telnyx::AISearchConversationHistoriesParams::RecordType::TaggedSymbol
-          )
-        KNOWLEDGE_BASE =
-          T.let(
-            :knowledge_base,
-            Telnyx::AISearchConversationHistoriesParams::RecordType::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              Telnyx::AISearchConversationHistoriesParams::RecordType::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # Restrict search to a specific region's OpenSearch cluster. When omitted, all
-      # regions are queried in parallel (fan-out) and results are merged by cosine
-      # similarity score.
+      # Restrict search to a specific region. When omitted, all regions are queried in
+      # parallel (fan-out) and results are merged by similarity score.
       module Region
         extend Telnyx::Internal::Type::Enum
 

@@ -33,8 +33,7 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
   def test_search_conversation_histories_required_params
     skip("Mock server tests are disabled")
 
-    response =
-      @telnyx.ai.search_conversation_histories(q: "customer called about billing issue", record_type: :voice)
+    response = @telnyx.ai.search_conversation_histories(q: "customer called about billing issue")
 
     assert_pattern do
       response => Telnyx::Models::AISearchConversationHistoriesResponse
