@@ -1,5 +1,5 @@
 module Telnyx
   module Models
-    class SubNumberOrdersReportDownloadResponse = Telnyx::Internal::Type::FileInput
+    class SubNumberOrdersReportDownloadResponse = StringIO
   end
 end

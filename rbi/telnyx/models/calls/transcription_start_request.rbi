@@ -220,11 +220,6 @@ module Telnyx
               :Soniox,
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
             )
-          PARAKEET =
-            T.let(
-              :Parakeet,
-              Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
-            )
           A =
             T.let(
               :A,

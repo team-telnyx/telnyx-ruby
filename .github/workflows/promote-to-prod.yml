@@ -114,27 +114,17 @@ jobs:
           #   bin/check-release-environment: staging checks RELEASE_PLEASE_TOKEN + GEM_HOST_API_KEY;
           #                                  prod uses OIDC (no checks needed)
           #
-          # Strategy: restore from prod's branches. Most files are restored
-          # from `next` (prod's current HEAD). However, release-please.yml
-          # only exists on `master` (it is never committed to `next` because
-          # staging doesn't have it and the restore-from-next silently fails).
-          # We fetch origin/master and restore release-please.yml from there.
-          git fetch origin master:refs/remotes/origin/master 2>/dev/null || true
+          # Strategy: restore each from the existing `next` branch (prod's
+          # current HEAD). These files survive across promotes because we
+          # always restore them here.
 
-          # Restore release-please.yml from master (it only exists there)
-          git checkout origin/master -- \
-            .github/workflows/release-please.yml \
-            2>/dev/null || true
-
-          # Restore remaining prod-owned files from next
           git checkout next -- \
+            .github/workflows/release-please.yml \
             .github/workflows/ci.yml \
             .github/workflows/publish-gem.yml \
             .github/workflows/release-doctor.yml \
             release-please-config.json \
-            .release-please-manifest.json \
             bin/check-release-environment \
-            rbi/telnyx/lib/ \
             2>/dev/null || true
 
       - name: Commit and push to prod next

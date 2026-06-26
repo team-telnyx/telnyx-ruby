@@ -68,7 +68,6 @@ module Telnyx
           ASSEMBLY_AI = :AssemblyAI
           SPEECHMATICS = :Speechmatics
           SONIOX = :Soniox
-          PARAKEET = :Parakeet
           A = :A
           B = :B
 

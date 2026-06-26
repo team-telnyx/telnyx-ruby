@@ -11,7 +11,7 @@ module Telnyx
           )
         end
 
-      # Identifier of the connection associated with the credential.
+      # Identifier of the UAC connection.
       sig { returns(T.nilable(String)) }
       attr_reader :connection_id
 
@@ -64,8 +64,7 @@ module Telnyx
       sig { params(registered: T::Boolean).void }
       attr_writer :registered
 
-      # Detailed registration information reported by the registrar. The populated
-      # fields depend on `credential_type`.
+      # Detailed registration information reported by the registrar.
       sig do
         returns(
           T.nilable(
@@ -117,7 +116,7 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # Identifier of the connection associated with the credential.
+        # Identifier of the UAC connection.
         connection_id: nil,
         # Human-readable connection name.
         connection_name: nil,
@@ -129,8 +128,7 @@ module Telnyx
         last_registration_response: nil,
         # True if the endpoint is currently registered.
         registered: nil,
-        # Detailed registration information reported by the registrar. The populated
-        # fields depend on `credential_type`.
+        # Detailed registration information reported by the registrar.
         sip_registration_details: nil,
         # Human-readable registration status derived from the registrar state.
         sip_registration_status: nil
@@ -175,11 +173,6 @@ module Telnyx
             :uac_external_credential,
             Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::TaggedSymbol
           )
-        TELEPHONY_CREDENTIAL =
-          T.let(
-            :telephony_credential,
-            Telnyx::Models::SipRegistrationStatusRetrieveResponse::CredentialType::TaggedSymbol
-          )
 
         sig do
           override.returns(
@@ -222,26 +215,12 @@ module Telnyx
         sig { params(failures: Integer).void }
         attr_writer :failures
 
-        # Timestamp when the registration row was last modified (telephony_credential).
-        sig { returns(T.nilable(String)) }
-        attr_reader :last_modified
-
-        sig { params(last_modified: String).void }
-        attr_writer :last_modified
-
         # Unix timestamp of the next scheduled registration action.
         sig { returns(T.nilable(Integer)) }
         attr_reader :next_action_at
 
         sig { params(next_action_at: Integer).void }
         attr_writer :next_action_at
-
-        # Registrar node handling the registration (telephony_credential).
-        sig { returns(T.nilable(String)) }
-        attr_reader :node
-
-        sig { params(node: String).void }
-        attr_writer :node
 
         # SIP URI user@host of the registered contact.
         sig { returns(T.nilable(String)) }
@@ -250,27 +229,6 @@ module Telnyx
         sig { params(sip_uri_user_host: String).void }
         attr_writer :sip_uri_user_host
 
-        # Transport used for the registration, e.g. UDP/TCP/TLS (telephony_credential).
-        sig { returns(T.nilable(String)) }
-        attr_reader :transport
-
-        sig { params(transport: String).void }
-        attr_writer :transport
-
-        # IP address of the registered user agent (telephony_credential).
-        sig { returns(T.nilable(String)) }
-        attr_reader :ua_ip
-
-        sig { params(ua_ip: String).void }
-        attr_writer :ua_ip
-
-        # Port of the registered user agent (telephony_credential).
-        sig { returns(T.nilable(Integer)) }
-        attr_reader :ua_port
-
-        sig { params(ua_port: Integer).void }
-        attr_writer :ua_port
-
         # Registration uptime reported by the registrar.
         sig { returns(T.nilable(Integer)) }
         attr_reader :uptime
@@ -278,20 +236,14 @@ module Telnyx
         sig { params(uptime: Integer).void }
         attr_writer :uptime
 
-        # Detailed registration information reported by the registrar. The populated
-        # fields depend on `credential_type`.
+        # Detailed registration information reported by the registrar.
         sig do
           params(
             auth_retries: Integer,
             expires: Integer,
             failures: Integer,
-            last_modified: String,
             next_action_at: Integer,
-            node: String,
             sip_uri_user_host: String,
-            transport: String,
-            ua_ip: String,
-            ua_port: Integer,
             uptime: Integer
           ).returns(T.attached_class)
         end
@@ -302,20 +254,10 @@ module Telnyx
           expires: nil,
           # Count of consecutive registration failures.
           failures: nil,
-          # Timestamp when the registration row was last modified (telephony_credential).
-          last_modified: nil,
           # Unix timestamp of the next scheduled registration action.
           next_action_at: nil,
-          # Registrar node handling the registration (telephony_credential).
-          node: nil,
           # SIP URI user@host of the registered contact.
           sip_uri_user_host: nil,
-          # Transport used for the registration, e.g. UDP/TCP/TLS (telephony_credential).
-          transport: nil,
-          # IP address of the registered user agent (telephony_credential).
-          ua_ip: nil,
-          # Port of the registered user agent (telephony_credential).
-          ua_port: nil,
           # Registration uptime reported by the registrar.
           uptime: nil
         )
@@ -327,13 +269,8 @@ module Telnyx
               auth_retries: Integer,
               expires: Integer,
               failures: Integer,
-              last_modified: String,
               next_action_at: Integer,
-              node: String,
               sip_uri_user_host: String,
-              transport: String,
-              ua_ip: String,
-              ua_port: Integer,
               uptime: Integer
             }
           )

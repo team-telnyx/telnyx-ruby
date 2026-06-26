@@ -9,23 +9,18 @@ module Telnyx
       # received from the registrar. Only `uac_external_credential` is supported today.
       sig do
         params(
+          connection_id: String,
           credential_type:
             Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol,
-          connection_id: String,
-          username: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::SipRegistrationStatusRetrieveResponse)
       end
       def retrieve(
-        # The kind of credential to look up. `uac_external_credential` is keyed by
-        # `connection_id`; `telephony_credential` is keyed by `username`.
+        # Identifier of the UAC connection to look up.
+        connection_id:,
+        # The kind of credential to look up. Only `uac_external_credential` is supported
+        # today.
         credential_type:,
-        # Identifier of the UAC connection to look up. Required when `credential_type` is
-        # `uac_external_credential`.
-        connection_id: nil,
-        # SIP username of the telephony credential to look up. Required when
-        # `credential_type` is `telephony_credential`.
-        username: nil,
         request_options: {}
       )
       end

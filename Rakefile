@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "etc"
 require "pathname"
 require "securerandom"
 require "shellwords"
@@ -39,17 +38,6 @@ multitask(:test) do
 end
 
 xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
-# `syntax_tree`'s parallel CLI (`stree`) has a tail race in its worker pool:
-# `process_queue` spawns `min(Etc.nprocessors, queue.size)` threads that each do
-# a non-atomic `until queue.empty?; item = queue.shift` against a blocking
-# `Thread::Queue`. When more than one file is queued, two workers can both pass
-# `empty?` with one item left; one shifts it and the other blocks forever on the
-# now-empty queue, so the process aborts with "No live threads left. Deadlock?"
-# (intermittently failing `rake format`). Feeding exactly one file per `stree`
-# process makes `queue.size == 1`, so a single worker runs and the race is
-# structurally impossible. `--max-procs` is capped at the CPU count so we keep
-# parallelism across files without spawning one process per file all at once.
-stree_xargs = %W[xargs --no-run-if-empty --null --max-procs=#{Etc.nprocessors} --max-args=1 --]
 ruby_opt = {"RUBYOPT" => [ENV["RUBYOPT"], "--encoding=UTF-8"].compact.join(" ")}
 
 filtered = ->(ext, dirs) do
@@ -87,7 +75,7 @@ end
 desc("Format `*.rbi`")
 multitask(:"format:rbi") do
   files = filtered["rbi", %w[./rbi]]
-  fmt = stree_xargs + %w[stree write --]
+  fmt = xargs + %w[stree write --]
   sh(ruby_opt, "#{files.shelljoin} | #{norm_lines} | #{fmt.shelljoin}")
 end
 
@@ -103,7 +91,7 @@ multitask(:"format:rbs") do
   sed = xargs + [sed_bin, "-E", *inplace, "-e"]
   # annotate unprocessable aliases with a unique comment
   pre = sed + ["s/(class|module) ([^ ]+) = (.+$)/# \\1 #{uuid}\\n\\2: \\3/", "--"]
-  fmt = stree_xargs + %w[stree write --plugin=rbs --]
+  fmt = xargs + %w[stree write --plugin=rbs --]
   # remove the unique comment and unprocessable aliases to type aliases
   subst = <<~SED
     s/# (class|module) #{uuid}/\\1/

@@ -16,7 +16,7 @@ class Telnyx::Test::Resources::Messaging10dlcTest < Telnyx::Test::ResourceTest
       case response
       in Telnyx::Models::Messaging10dlcGetEnumResponse::StringArray
       in Telnyx::Models::Messaging10dlcGetEnumResponse::EnumObjectListResponseArray
-      in Telnyx::Models::Messaging10dlcGetEnumResponse::StringMap
+      in Telnyx::Models::Messaging10dlcGetEnumResponse::EnumObjectToStringResponseMap
       in Telnyx::Models::Messaging10dlcGetEnumResponse::EnumObjecToObjecttResponseMap
       in Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse
       end
