@@ -32,8 +32,6 @@ module Telnyx
 
       def retrieve_conversation_histories: (
         q: String,
-        record_type: Telnyx::Models::AIRetrieveConversationHistoriesParams::record_type,
-        ?filter_document_id: String,
         ?filter_ingested_at_gte: Time,
         ?filter_ingested_at_lte: Time,
         ?filter_record_created_at_gte: Time,
@@ -43,8 +41,9 @@ module Telnyx
         ?filter_retention: String,
         ?filter_user_id: String,
         ?min_score: Float,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region,
-        ?top_k: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::AIRetrieveConversationHistoriesResponse
 
