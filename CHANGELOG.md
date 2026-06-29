@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.150.0 (2026-06-29)
+
+Full Changelog: [v5.149.0...v5.150.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.149.0...v5.150.0)
+
+### Bug Fixes
+
+* add --local flag so release-please scans next branch for commits ([#287](https://github.com/team-telnyx/telnyx-ruby/issues/287)) ([b35995d](https://github.com/team-telnyx/telnyx-ruby/commit/b35995daef2d66a34a140de1221b5271623b9114))
+
+
+### Chores
+
+* promote from staging 52e1334 ([f303bae](https://github.com/team-telnyx/telnyx-ruby/commit/f303baef71c5a21f66726ff27cf5688cb2606924))
+* sync repo ([24bb41a](https://github.com/team-telnyx/telnyx-ruby/commit/24bb41a6380f4681476280ae36d54fcd396cd23c))
+
 ## [5.147.0](https://github.com/team-telnyx/telnyx-ruby-staging/compare/v5.146.0...v5.147.0) (2026-06-18)
 
 
