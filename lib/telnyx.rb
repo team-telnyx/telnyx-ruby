@@ -688,6 +688,7 @@ require_relative "telnyx/models/calls/transcription_engine_azure_config"
 require_relative "telnyx/models/calls/transcription_engine_b_config"
 require_relative "telnyx/models/calls/transcription_engine_deepgram_config"
 require_relative "telnyx/models/calls/transcription_engine_google_config"
+require_relative "telnyx/models/calls/transcription_engine_parakeet_config"
 require_relative "telnyx/models/calls/transcription_engine_soniox_config"
 require_relative "telnyx/models/calls/transcription_engine_speechmatics_config"
 require_relative "telnyx/models/calls/transcription_engine_telnyx_config"
@@ -2870,3 +2871,7 @@ require_relative "telnyx/resources/wireless_blocklists"
 require_relative "telnyx/resources/wireless_blocklist_values"
 require_relative "telnyx/resources/x402"
 require_relative "telnyx/resources/x402/credit_account"
+
+# Custom lib entry point — preserved across codegen.
+# If this line is lost after a Stainless codegen run, it must be re-added.
+require_relative "telnyx/lib"

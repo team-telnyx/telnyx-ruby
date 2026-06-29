@@ -40,27 +40,47 @@ jobs:
 
       - name: Read Release-As version from staging history
         id: version
+        env:
+          GH_TOKEN: ${{ secrets.SDK_WRITE_TOKEN }}
         run: |
+          set -euo pipefail
           VERSION=""
-          # The stlc-generate.yml injects a "Release-As: X.Y.Z" footer
-          # into the generate commit. Find the latest one in main history.
-          for commit in $(git rev-list HEAD --max-count=50); do
-            BODY=$(git log -1 --format=%b "$commit")
-            RA=$(echo "$BODY" | grep -oP 'Release-As:\s*\K[\d.]+' || true)
-            if [ -n "$RA" ]; then
-              VERSION="$RA"
-              break
-            fi
-          done
 
-          # Fallback: read from manifest
+          # Primary: read the current released version from PROD master's manifest.
+          # This is the source of truth — prod master reflects the last successful
+          # release. We bump minor (X.Y.Z → X.(Y+1).0) to compute the next version.
+          # Staging history can be stale (old Release-As footers persist), leading
+          # to duplicate version collisions.
+          PROD_MANIFEST=$(gh api "repos/team-telnyx/telnyx-ruby/contents/.release-please-manifest.json?ref=master" --jq '.content' 2>/dev/null | base64 -d 2>/dev/null || true)
+          CUR=$(echo "$PROD_MANIFEST" | jq -r '.["."] // empty' 2>/dev/null || true)
+          if [ -n "$CUR" ] && printf '%s' "$CUR" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            VERSION=$(printf '%s' "$CUR" | awk -F. '{printf "%d.%d.0", $1, $2+1}')
+            echo "Read prod master manifest: $CUR → next (minor bump) $VERSION"
+          fi
+
+          # Fallback: read Release-As from staging history (last 50 commits)
           if [ -z "$VERSION" ]; then
-            VERSION=$(jq -r '."." // empty' .release-please-manifest.json 2>/dev/null || true)
+            for commit in $(git rev-list HEAD --max-count=50); do
+              BODY=$(git log -1 --format=%b "$commit")
+              RA=$(echo "$BODY" | grep -oP 'Release-As:\s*\K[\d.]+' || true)
+              if [ -n "$RA" ]; then
+                VERSION="$RA"
+                break
+              fi
+            done
+            [ -n "$VERSION" ] && echo "Fallback: read Release-As from staging history: $VERSION"
+          fi
+
+          # Fallback: read from staging manifest
+          if [ -z "$VERSION" ]; then
+            VERSION=$(jq -r '.["."] // empty' .release-please-manifest.json 2>/dev/null || true)
+            [ -n "$VERSION" ] && echo "Fallback: read from staging manifest: $VERSION"
           fi
 
           # Fallback: read from lib/telnyx/version.rb
           if [ -z "$VERSION" ]; then
             VERSION=$(grep 'VERSION' lib/telnyx/version.rb | head -1 | sed 's/.*"\(.*\)".*/\1/' || true)
+            [ -n "$VERSION" ] && echo "Fallback: read from version.rb: $VERSION"
           fi
 
           if [ -z "$VERSION" ]; then
@@ -109,22 +129,47 @@ jobs:
           #                       prod = workflow_dispatch + release published trigger
           #   release-doctor.yml: staging = checks RELEASE_PLEASE_TOKEN + GEM_HOST_API_KEY;
           #                       prod = OIDC-based, no secret checks
-          #   release-please-config.json: staging has prerelease + versioning:prerelease;
+          #   release-please-config.json: only on master, restored from there (not next);
           #                               prod does not
           #   bin/check-release-environment: staging checks RELEASE_PLEASE_TOKEN + GEM_HOST_API_KEY;
           #                                  prod uses OIDC (no checks needed)
           #
-          # Strategy: restore each from the existing `next` branch (prod's
-          # current HEAD). These files survive across promotes because we
-          # always restore them here.
+          # Strategy: restore from prod's branches. Most files are restored
+          # from `next` (prod's current HEAD). However, release-please.yml
+          # only exists on `master` (it is never committed to `next` because
+          # staging doesn't have it and the restore-from-next silently fails).
+          # Restore ALL prod-owned files from master.
+          #
+          # Why master (not next): prod-owned files are manually managed on prod.
+          # The `next` branch gets overwritten with staging content on each promote,
+          # so restoring from `next` gives stale/staging versions — not the latest
+          # prod fixes. Manual fixes on master (e.g. adding release triggers to
+          # publish-gem.yml) get silently reverted when the release PR carries the
+          # staging version from next to master.
+          #
+          # Restoring from master preserves all manual prod edits:
+          #   release-please.yml: two-phase trigger (next → release PR, master → tag/release)
+          #   release-please-config.json: release-please config (changelog sections, version-file)
+          #   publish-gem.yml: release:published trigger + OIDC (staging has workflow_dispatch only)
+          #   ci.yml: prod runner config (depot vs ubuntu-latest)
+          #   release-doctor.yml: OIDC-based (staging checks secrets)
+          #   .release-please-manifest.json: current released version
+          #   bin/check-release-environment: OIDC version (staging checks RELEASE_PLEASE_TOKEN)
+          #   rbi/telnyx/lib/: Sorbet RBI files maintained on prod
+          #
+          # See: PR #283 (restore release-please-config.json), PR #282 (reverted
+          # publish-gem.yml release trigger), PR #115 (release-please.yml fix).
+          git fetch origin master:refs/remotes/origin/master 2>/dev/null || true
 
-          git checkout next -- \
+          git checkout origin/master -- \
             .github/workflows/release-please.yml \
             .github/workflows/ci.yml \
             .github/workflows/publish-gem.yml \
             .github/workflows/release-doctor.yml \
             release-please-config.json \
+            .release-please-manifest.json \
             bin/check-release-environment \
+            rbi/telnyx/lib/ \
             2>/dev/null || true
 
       - name: Commit and push to prod next

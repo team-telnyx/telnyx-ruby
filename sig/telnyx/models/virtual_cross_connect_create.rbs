@@ -1,11 +1,157 @@
 module Telnyx
   module Models
-    type virtual_cross_connect_create = {  }
+    type virtual_cross_connect_create =
+      {
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        region_code: String,
+        bandwidth_mbps: Float,
+        bgp_asn: Float,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCreate::cloud_provider,
+        cloud_provider_region: String,
+        primary_bgp_key: String,
+        primary_cloud_account_id: String,
+        primary_cloud_ip: String,
+        primary_enabled: bool,
+        primary_telnyx_ip: String,
+        secondary_bgp_key: String,
+        secondary_cloud_account_id: String,
+        secondary_cloud_ip: String,
+        secondary_enabled: bool,
+        secondary_telnyx_ip: String
+      }
 
     class VirtualCrossConnectCreate < Telnyx::Models::Record
-      def initialize: -> void
+      def name: -> String?
 
-      def to_hash: -> {  }
+      def name=: (String _) -> String
+
+      def network_id: -> String?
+
+      def network_id=: (String _) -> String
+
+      def region_code: -> String
+
+      def region_code=: (String _) -> String
+
+      def bandwidth_mbps: -> Float?
+
+      def bandwidth_mbps=: (Float _) -> Float
+
+      def bgp_asn: -> Float?
+
+      def bgp_asn=: (Float _) -> Float
+
+      def cloud_provider: -> Telnyx::Models::VirtualCrossConnectCreate::cloud_provider?
+
+      def cloud_provider=: (
+        Telnyx::Models::VirtualCrossConnectCreate::cloud_provider _
+      ) -> Telnyx::Models::VirtualCrossConnectCreate::cloud_provider
+
+      def cloud_provider_region: -> String?
+
+      def cloud_provider_region=: (String _) -> String
+
+      def primary_bgp_key: -> String?
+
+      def primary_bgp_key=: (String _) -> String
+
+      def primary_cloud_account_id: -> String?
+
+      def primary_cloud_account_id=: (String _) -> String
+
+      def primary_cloud_ip: -> String?
+
+      def primary_cloud_ip=: (String _) -> String
+
+      def primary_telnyx_ip: -> String?
+
+      def primary_telnyx_ip=: (String _) -> String
+
+      def secondary_bgp_key: -> String?
+
+      def secondary_bgp_key=: (String _) -> String
+
+      def secondary_cloud_account_id: -> String?
+
+      def secondary_cloud_account_id=: (String _) -> String
+
+      def secondary_cloud_ip: -> String?
+
+      def secondary_cloud_ip=: (String _) -> String
+
+      def secondary_telnyx_ip: -> String?
+
+      def secondary_telnyx_ip=: (String _) -> String
+
+      def status: -> Telnyx::Models::interface_status?
+
+      def status=: (
+        Telnyx::Models::interface_status _
+      ) -> Telnyx::Models::interface_status
+
+      def primary_enabled: -> bool?
+
+      def primary_enabled=: (bool _) -> bool
+
+      def secondary_enabled: -> bool?
+
+      def secondary_enabled=: (bool _) -> bool
+
+      def initialize: (
+        region_code: String,
+        ?name: String,
+        ?network_id: String,
+        ?status: Telnyx::Models::interface_status,
+        ?bandwidth_mbps: Float,
+        ?bgp_asn: Float,
+        ?cloud_provider: Telnyx::Models::VirtualCrossConnectCreate::cloud_provider,
+        ?cloud_provider_region: String,
+        ?primary_bgp_key: String,
+        ?primary_cloud_account_id: String,
+        ?primary_cloud_ip: String,
+        ?primary_enabled: bool,
+        ?primary_telnyx_ip: String,
+        ?secondary_bgp_key: String,
+        ?secondary_cloud_account_id: String,
+        ?secondary_cloud_ip: String,
+        ?secondary_enabled: bool,
+        ?secondary_telnyx_ip: String
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        region_code: String,
+        bandwidth_mbps: Float,
+        bgp_asn: Float,
+        cloud_provider: Telnyx::Models::VirtualCrossConnectCreate::cloud_provider,
+        cloud_provider_region: String,
+        primary_bgp_key: String,
+        primary_cloud_account_id: String,
+        primary_cloud_ip: String,
+        primary_enabled: bool,
+        primary_telnyx_ip: String,
+        secondary_bgp_key: String,
+        secondary_cloud_account_id: String,
+        secondary_cloud_ip: String,
+        secondary_enabled: bool,
+        secondary_telnyx_ip: String
+      }
+
+      type cloud_provider = :aws | :azure | :gce
+
+      module CloudProvider
+        extend Telnyx::Internal::Type::Enum
+
+        AWS: :aws
+        AZURE: :azure
+        GCE: :gce
+
+        def self?.values: -> ::Array[Telnyx::Models::VirtualCrossConnectCreate::cloud_provider]
+      end
     end
   end
 end

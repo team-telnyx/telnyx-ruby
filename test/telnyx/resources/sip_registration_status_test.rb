@@ -6,11 +6,7 @@ class Telnyx::Test::Resources::SipRegistrationStatusTest < Telnyx::Test::Resourc
   def test_retrieve_required_params
     skip("Mock server tests are disabled")
 
-    response =
-      @telnyx.sip_registration_status.retrieve(
-        connection_id: "connection_id",
-        credential_type: :uac_external_credential
-      )
+    response = @telnyx.sip_registration_status.retrieve(credential_type: :uac_external_credential)
 
     assert_pattern do
       response => Telnyx::Models::SipRegistrationStatusRetrieveResponse

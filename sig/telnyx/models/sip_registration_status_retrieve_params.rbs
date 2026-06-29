@@ -2,8 +2,9 @@ module Telnyx
   module Models
     type sip_registration_status_retrieve_params =
       {
+        credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
         connection_id: String,
-        credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type
+        username: String
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -11,28 +12,37 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor connection_id: String
-
       attr_accessor credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type
 
+      attr_reader connection_id: String?
+
+      def connection_id=: (String) -> String
+
+      attr_reader username: String?
+
+      def username=: (String) -> String
+
       def initialize: (
-        connection_id: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
+        ?connection_id: String,
+        ?username: String,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
-        connection_id: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type,
+        connection_id: String,
+        username: String,
         request_options: Telnyx::RequestOptions
       }
 
-      type credential_type = :uac_external_credential
+      type credential_type = :uac_external_credential | :telephony_credential
 
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
         UAC_EXTERNAL_CREDENTIAL: :uac_external_credential
+        TELEPHONY_CREDENTIAL: :telephony_credential
 
         def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveParams::credential_type]
       end

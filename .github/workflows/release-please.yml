@@ -87,6 +87,7 @@ jobs:
             --target-branch master
             --config-file release-please-config.json
             --manifest-file .release-please-manifest.json
+            --local
           )
 
           if [ "${{ steps.version.outputs.has_version }}" = "true" ]; then
@@ -160,9 +161,27 @@ jobs:
             git push origin "$PR_BRANCH"
             echo "Successfully merged next into release PR branch"
           else
-            echo "::error::Failed to merge next into release PR"
-            git merge --abort
-            exit 1
+            # Handle modify/delete conflicts: prod-owned files (like
+            # .release-please-manifest.json) may be deleted on `next` (staging
+            # doesn't have them) but modified on the release PR branch.
+            # Resolution: keep the release PR branch's version (--ours).
+            CONFLICTS=$(git diff --name-only --diff-filter=U)
+            if [ -n "$CONFLICTS" ]; then
+              echo "Resolving modify/delete conflicts:"
+              echo "$CONFLICTS"
+              # For all conflicted files, keep our version (release PR branch)
+              echo "$CONFLICTS" | while IFS= read -r f; do
+                git checkout --ours "$f" 2>/dev/null || true
+                git add "$f" 2>/dev/null || true
+              done
+              git commit --no-edit
+              git push origin "$PR_BRANCH"
+              echo "Successfully merged next into release PR branch (with conflict resolution)"
+            else
+              echo "::error::Failed to merge next into release PR"
+              git merge --abort
+              exit 1
+            fi
           fi
 
       - name: Run release-please (github-release)
@@ -174,7 +193,7 @@ jobs:
             --target-branch master \
             --config-file release-please-config.json \
             --manifest-file .release-please-manifest.json \
-            2>&1 || true
+            2>&1
 
       - name: Enable auto-merge on release PRs
         if: github.ref == 'refs/heads/next' && steps.release-pr.outputs.prs_created == 'true'

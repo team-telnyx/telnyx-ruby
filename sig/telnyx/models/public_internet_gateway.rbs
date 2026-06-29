@@ -1,11 +1,40 @@
 module Telnyx
   module Models
-    type public_internet_gateway = {  }
+    type public_internet_gateway =
+      {
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        public_ip: String,
+        region_code: String
+      }
 
     class PublicInternetGateway < Telnyx::Models::Record
-      def initialize: -> void
+      def name: -> String?
 
-      def to_hash: -> {  }
+      def name=: (String _) -> String
+
+      def network_id: -> String?
+
+      def network_id=: (String _) -> String
+
+      def region_code: -> String?
+
+      def region_code=: (String _) -> String
+
+      def initialize: (
+        ?name: String,
+        ?network_id: String,
+        ?region_code: String
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        public_ip: String,
+        region_code: String
+      }
     end
   end
 end

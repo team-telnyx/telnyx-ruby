@@ -1,5 +1,5 @@
 module Telnyx
   module Models
-    class TranscribeClientEvent = Telnyx::Internal::file_input
+    class TranscribeClientEvent = Telnyx::Internal::Type::FileInput
   end
 end
