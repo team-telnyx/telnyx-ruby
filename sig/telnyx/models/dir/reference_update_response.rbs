@@ -1,0 +1,103 @@
+module Telnyx
+  module Models
+    module Dir
+      type reference_update_response =
+        { data: Telnyx::Models::Dir::ReferenceUpdateResponse::Data }
+
+      class ReferenceUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::Dir::ReferenceUpdateResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::Dir::ReferenceUpdateResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Dir::ReferenceUpdateResponse::Data
+        }
+
+        type data =
+          {
+            full_name: String,
+            :phone_e164 => String,
+            record_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::record_type,
+            ref_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::ref_type,
+            slot: Integer,
+            timezone: String,
+            email: String?,
+            job_title: String?,
+            organization: String?,
+            relationship_to_registrant: String?
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor full_name: String
+
+          attr_accessor phone_e164: String
+
+          attr_accessor ref_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::ref_type
+
+          attr_accessor slot: Integer
+
+          attr_accessor timezone: String
+
+          attr_accessor email: String?
+
+          attr_accessor job_title: String?
+
+          attr_accessor organization: String?
+
+          attr_accessor relationship_to_registrant: String?
+
+          attr_accessor record_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::record_type
+
+          def initialize: (
+            full_name: String,
+            phone_e164: String,
+            record_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::record_type,
+            ref_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::ref_type,
+            slot: Integer,
+            timezone: String,
+            ?email: String?,
+            ?job_title: String?,
+            ?organization: String?,
+            ?relationship_to_registrant: String?
+          ) -> void
+
+          def to_hash: -> {
+            full_name: String,
+            :phone_e164 => String,
+            record_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::record_type,
+            ref_type: Telnyx::Models::Dir::ReferenceUpdateResponse::Data::ref_type,
+            slot: Integer,
+            timezone: String,
+            email: String?,
+            job_title: String?,
+            organization: String?,
+            relationship_to_registrant: String?
+          }
+
+          type record_type = :dir_reference
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            DIR_REFERENCE: :dir_reference
+
+            def self?.values: -> ::Array[Telnyx::Models::Dir::ReferenceUpdateResponse::Data::record_type]
+          end
+
+          type ref_type = :business | :financial
+
+          module RefType
+            extend Telnyx::Internal::Type::Enum
+
+            BUSINESS: :business
+            FINANCIAL: :financial
+
+            def self?.values: -> ::Array[Telnyx::Models::Dir::ReferenceUpdateResponse::Data::ref_type]
+          end
+        end
+      end
+    end
+  end
+end

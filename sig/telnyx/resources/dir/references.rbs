@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class Dir
+      class References
+        def update: (
+          Integer slot,
+          dir_id: String,
+          ref_type: Telnyx::Models::Dir::ReferenceUpdateParams::ref_type,
+          ?email: String,
+          ?full_name: String,
+          ?job_title: String?,
+          ?organization: String?,
+          ?phone_e164: String,
+          ?relationship_to_registrant: String?,
+          ?timezone: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::ReferenceUpdateResponse
+
+        def list: (
+          String dir_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::ReferenceListResponse
+
+        def submit: (
+          String dir_id,
+          business_references: ::Array[Telnyx::Dir::ReferenceSubmitParams::BusinessReference],
+          financial_reference: Telnyx::Dir::ReferenceSubmitParams::FinancialReference,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::ReferenceSubmitResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

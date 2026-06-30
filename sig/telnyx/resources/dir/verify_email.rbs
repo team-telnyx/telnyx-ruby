@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class Dir
+      class VerifyEmail
+        def confirm_code: (
+          String dir_id,
+          code: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::VerifyEmailConfirmCodeResponse
+
+        def send_code: (
+          String dir_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::VerifyEmailSendCodeResponse
+
+        def status: (
+          String dir_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Dir::VerifyEmailStatusResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

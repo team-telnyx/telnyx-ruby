@@ -1,0 +1,132 @@
+module Telnyx
+  module Models
+    module Dir
+      type reference_submit_params =
+        {
+          dir_id: String,
+          business_references: ::Array[Telnyx::Dir::ReferenceSubmitParams::BusinessReference],
+          financial_reference: Telnyx::Dir::ReferenceSubmitParams::FinancialReference
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ReferenceSubmitParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor dir_id: String
+
+        attr_accessor business_references: ::Array[Telnyx::Dir::ReferenceSubmitParams::BusinessReference]
+
+        attr_accessor financial_reference: Telnyx::Dir::ReferenceSubmitParams::FinancialReference
+
+        def initialize: (
+          dir_id: String,
+          business_references: ::Array[Telnyx::Dir::ReferenceSubmitParams::BusinessReference],
+          financial_reference: Telnyx::Dir::ReferenceSubmitParams::FinancialReference,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          dir_id: String,
+          business_references: ::Array[Telnyx::Dir::ReferenceSubmitParams::BusinessReference],
+          financial_reference: Telnyx::Dir::ReferenceSubmitParams::FinancialReference,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type business_reference =
+          {
+            email: String,
+            full_name: String,
+            :phone_e164 => String,
+            timezone: String,
+            job_title: String?,
+            organization: String?,
+            relationship_to_registrant: String?
+          }
+
+        class BusinessReference < Telnyx::Internal::Type::BaseModel
+          attr_accessor email: String
+
+          attr_accessor full_name: String
+
+          attr_accessor phone_e164: String
+
+          attr_accessor timezone: String
+
+          attr_accessor job_title: String?
+
+          attr_accessor organization: String?
+
+          attr_accessor relationship_to_registrant: String?
+
+          def initialize: (
+            email: String,
+            full_name: String,
+            phone_e164: String,
+            timezone: String,
+            ?job_title: String?,
+            ?organization: String?,
+            ?relationship_to_registrant: String?
+          ) -> void
+
+          def to_hash: -> {
+            email: String,
+            full_name: String,
+            :phone_e164 => String,
+            timezone: String,
+            job_title: String?,
+            organization: String?,
+            relationship_to_registrant: String?
+          }
+        end
+
+        type financial_reference =
+          {
+            email: String,
+            full_name: String,
+            :phone_e164 => String,
+            timezone: String,
+            job_title: String?,
+            organization: String?,
+            relationship_to_registrant: String?
+          }
+
+        class FinancialReference < Telnyx::Internal::Type::BaseModel
+          attr_accessor email: String
+
+          attr_accessor full_name: String
+
+          attr_accessor phone_e164: String
+
+          attr_accessor timezone: String
+
+          attr_accessor job_title: String?
+
+          attr_accessor organization: String?
+
+          attr_accessor relationship_to_registrant: String?
+
+          def initialize: (
+            email: String,
+            full_name: String,
+            phone_e164: String,
+            timezone: String,
+            ?job_title: String?,
+            ?organization: String?,
+            ?relationship_to_registrant: String?
+          ) -> void
+
+          def to_hash: -> {
+            email: String,
+            full_name: String,
+            :phone_e164 => String,
+            timezone: String,
+            job_title: String?,
+            organization: String?,
+            relationship_to_registrant: String?
+          }
+        end
+      end
+    end
+  end
+end
