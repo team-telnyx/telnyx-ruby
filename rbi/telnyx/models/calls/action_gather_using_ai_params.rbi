@@ -195,7 +195,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::XaiVoiceSettings
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai
               )
             )
           )
@@ -212,7 +212,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
               )
           ).void
         end
@@ -246,7 +246,7 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -360,7 +360,7 @@ module Telnyx
                   Telnyx::AzureVoiceSettings,
                   Telnyx::RimeVoiceSettings,
                   Telnyx::ResembleVoiceSettings,
-                  Telnyx::XaiVoiceSettings
+                  Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -479,9 +479,45 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::XaiVoiceSettings
+                Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai
               )
             end
+
+          class Xai < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Calls::ActionGatherUsingAIParams::VoiceSettings::Xai,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Voice settings provider type
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # Language code, or `auto` to detect automatically.
+            sig { returns(T.nilable(String)) }
+            attr_reader :language
+
+            sig { params(language: String).void }
+            attr_writer :language
+
+            sig do
+              params(language: String, type: Symbol).returns(T.attached_class)
+            end
+            def self.new(
+              # Language code, or `auto` to detect automatically.
+              language: nil,
+              # Voice settings provider type
+              type: :xai
+            )
+            end
+
+            sig { override.returns({ type: Symbol, language: String }) }
+            def to_hash
+            end
+          end
 
           sig do
             override.returns(

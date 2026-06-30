@@ -2,18 +2,69 @@ module Telnyx
   module Models
     module Whatsapp
       type user_data_update_response =
-        { data: Telnyx::Whatsapp::WhatsappUserData }
+        { data: Telnyx::Models::Whatsapp::UserDataUpdateResponse::Data }
 
       class UserDataUpdateResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: Telnyx::Whatsapp::WhatsappUserData?
+        attr_reader data: Telnyx::Models::Whatsapp::UserDataUpdateResponse::Data?
 
         def data=: (
-          Telnyx::Whatsapp::WhatsappUserData
-        ) -> Telnyx::Whatsapp::WhatsappUserData
+          Telnyx::Models::Whatsapp::UserDataUpdateResponse::Data
+        ) -> Telnyx::Models::Whatsapp::UserDataUpdateResponse::Data
 
-        def initialize: (?data: Telnyx::Whatsapp::WhatsappUserData) -> void
+        def initialize: (
+          ?data: Telnyx::Models::Whatsapp::UserDataUpdateResponse::Data
+        ) -> void
 
-        def to_hash: -> { data: Telnyx::Whatsapp::WhatsappUserData }
+        def to_hash: -> {
+          data: Telnyx::Models::Whatsapp::UserDataUpdateResponse::Data
+        }
+
+        type data =
+          {
+            created_at: Time,
+            record_type: String,
+            updated_at: Time,
+            webhook_failover_url: String,
+            webhook_url: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          attr_reader webhook_failover_url: String?
+
+          def webhook_failover_url=: (String) -> String
+
+          attr_reader webhook_url: String?
+
+          def webhook_url=: (String) -> String
+
+          def initialize: (
+            ?created_at: Time,
+            ?record_type: String,
+            ?updated_at: Time,
+            ?webhook_failover_url: String,
+            ?webhook_url: String
+          ) -> void
+
+          def to_hash: -> {
+            created_at: Time,
+            record_type: String,
+            updated_at: Time,
+            webhook_failover_url: String,
+            webhook_url: String
+          }
+        end
       end
     end
   end

@@ -1,0 +1,144 @@
+module Telnyx
+  module Models
+    type ai_search_conversation_histories_response =
+      {
+        data: ::Array[Telnyx::Models::AISearchConversationHistoriesResponse::Data],
+        meta: Telnyx::Models::AISearchConversationHistoriesResponse::Meta
+      }
+
+    class AISearchConversationHistoriesResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::AISearchConversationHistoriesResponse::Data]
+
+      attr_accessor meta: Telnyx::Models::AISearchConversationHistoriesResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::AISearchConversationHistoriesResponse::Data],
+        meta: Telnyx::Models::AISearchConversationHistoriesResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::AISearchConversationHistoriesResponse::Data],
+        meta: Telnyx::Models::AISearchConversationHistoriesResponse::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          chunk_index: Integer,
+          chunk_total: Integer,
+          ingested_at: Time,
+          organization_id: String,
+          record_created_at: Time,
+          record_id: String,
+          region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region,
+          score: Float,
+          text: String,
+          user_id: String,
+          metadata: ::Hash[Symbol, top]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor chunk_index: Integer
+
+        attr_accessor chunk_total: Integer
+
+        attr_accessor ingested_at: Time
+
+        attr_accessor organization_id: String
+
+        attr_accessor record_created_at: Time
+
+        attr_accessor record_id: String
+
+        attr_accessor region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region
+
+        attr_accessor score: Float
+
+        attr_accessor text: String
+
+        attr_accessor user_id: String
+
+        attr_reader metadata: ::Hash[Symbol, top]?
+
+        def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        def initialize: (
+          id: String,
+          chunk_index: Integer,
+          chunk_total: Integer,
+          ingested_at: Time,
+          organization_id: String,
+          record_created_at: Time,
+          record_id: String,
+          region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region,
+          score: Float,
+          text: String,
+          user_id: String,
+          ?metadata: ::Hash[Symbol, top]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          chunk_index: Integer,
+          chunk_total: Integer,
+          ingested_at: Time,
+          organization_id: String,
+          record_created_at: Time,
+          record_id: String,
+          region: Telnyx::Models::AISearchConversationHistoriesResponse::Data::region,
+          score: Float,
+          text: String,
+          user_id: String,
+          metadata: ::Hash[Symbol, top]
+        }
+
+        type region = :USA | :DEU | :AUS | :UAE
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          USA: :USA
+          DEU: :DEU
+          AUS: :AUS
+          UAE: :UAE
+
+          def self?.values: -> ::Array[Telnyx::Models::AISearchConversationHistoriesResponse::Data::region]
+        end
+      end
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor total_pages: Integer
+
+        attr_accessor total_results: Integer
+
+        def initialize: (
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer
+        }
+      end
+    end
+  end
+end

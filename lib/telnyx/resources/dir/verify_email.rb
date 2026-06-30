@@ -12,7 +12,7 @@ module Telnyx
         # For security, any failure (wrong, expired, already-used, or too many attempts)
         # returns the same generic message.
         #
-        # @overload confirm(dir_id, code:, request_options: {})
+        # @overload confirm_code(dir_id, code:, request_options: {})
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
@@ -20,16 +20,16 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Dir::VerifyEmailConfirmResponse]
+        # @return [Telnyx::Models::Dir::VerifyEmailConfirmCodeResponse]
         #
-        # @see Telnyx::Models::Dir::VerifyEmailConfirmParams
-        def confirm(dir_id, params)
-          parsed, options = Telnyx::Dir::VerifyEmailConfirmParams.dump_request(params)
+        # @see Telnyx::Models::Dir::VerifyEmailConfirmCodeParams
+        def confirm_code(dir_id, params)
+          parsed, options = Telnyx::Dir::VerifyEmailConfirmCodeParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["dir/%1$s/verify_email/confirm", dir_id],
             body: parsed,
-            model: Telnyx::Models::Dir::VerifyEmailConfirmResponse,
+            model: Telnyx::Models::Dir::VerifyEmailConfirmCodeResponse,
             options: options
           )
         end
@@ -41,20 +41,20 @@ module Telnyx
         # one. Resends are rate limited (a short cooldown plus a daily cap). Submit the
         # code to `POST /dir/{dir_id}/verify_email/confirm`.
         #
-        # @overload send_(dir_id, request_options: {})
+        # @overload send_code(dir_id, request_options: {})
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Dir::VerifyEmailSendResponse]
+        # @return [Telnyx::Models::Dir::VerifyEmailSendCodeResponse]
         #
-        # @see Telnyx::Models::Dir::VerifyEmailSendParams
-        def send_(dir_id, params = {})
+        # @see Telnyx::Models::Dir::VerifyEmailSendCodeParams
+        def send_code(dir_id, params = {})
           @client.request(
             method: :post,
             path: ["dir/%1$s/verify_email", dir_id],
-            model: Telnyx::Models::Dir::VerifyEmailSendResponse,
+            model: Telnyx::Models::Dir::VerifyEmailSendCodeResponse,
             options: params[:request_options]
           )
         end

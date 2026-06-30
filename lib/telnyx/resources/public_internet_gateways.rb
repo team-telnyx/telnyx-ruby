@@ -65,7 +65,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PublicInternetGatewayRead>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PublicInternetGatewayListResponse>]
       #
       # @see Telnyx::Models::PublicInternetGatewayListParams
       def list(params = {})
@@ -76,7 +76,7 @@ module Telnyx
           path: "public_internet_gateways",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::PublicInternetGatewayRead,
+          model: Telnyx::Models::PublicInternetGatewayListResponse,
           options: options
         )
       end

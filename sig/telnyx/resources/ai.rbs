@@ -25,12 +25,16 @@ module Telnyx
 
       attr_reader tools: Telnyx::Resources::AI::Tools
 
-      def create_response: (
-        input: ::Hash[Symbol, top],
+      def create_response_deprecated: (
+        body: ::Hash[Symbol, top],
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::ai_create_response_response
+      ) -> Telnyx::Models::ai_create_response_deprecated_response
 
-      def list_conversation_histories: (
+      def retrieve_models: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AIRetrieveModelsResponse
+
+      def search_conversation_histories: (
         q: String,
         ?filter_ingested_at_gte: Time,
         ?filter_ingested_at_lte: Time,
@@ -43,13 +47,9 @@ module Telnyx
         ?min_score: Float,
         ?page_number: Integer,
         ?page_size: Integer,
-        ?region: Telnyx::Models::AIListConversationHistoriesParams::region,
+        ?region: Telnyx::Models::AISearchConversationHistoriesParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AIListConversationHistoriesResponse]
-
-      def retrieve_models: (
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::AIRetrieveModelsResponse
+      ) -> Telnyx::Models::AISearchConversationHistoriesResponse
 
       def summarize: (
         bucket: String,

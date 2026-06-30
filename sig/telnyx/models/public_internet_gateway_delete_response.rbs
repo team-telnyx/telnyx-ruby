@@ -1,18 +1,30 @@
 module Telnyx
   module Models
     type public_internet_gateway_delete_response =
-      { data: Telnyx::PublicInternetGatewayRead }
+      { data: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data }
 
     class PublicInternetGatewayDeleteResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::PublicInternetGatewayRead?
+      attr_reader data: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data?
 
       def data=: (
-        Telnyx::PublicInternetGatewayRead
-      ) -> Telnyx::PublicInternetGatewayRead
+        Telnyx::Models::PublicInternetGatewayDeleteResponse::Data
+      ) -> Telnyx::Models::PublicInternetGatewayDeleteResponse::Data
 
-      def initialize: (?data: Telnyx::PublicInternetGatewayRead) -> void
+      def initialize: (
+        ?data: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data
+      ) -> void
 
-      def to_hash: -> { data: Telnyx::PublicInternetGatewayRead }
+      def to_hash: -> {
+        data: Telnyx::Models::PublicInternetGatewayDeleteResponse::Data
+      }
+
+      type data = {  }
+
+      class Data < Telnyx::Models::Record
+        def initialize: -> void
+
+        def to_hash: -> {  }
+      end
     end
   end
 end

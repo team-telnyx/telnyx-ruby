@@ -2,16 +2,16 @@ module Telnyx
   module Resources
     class Dir
       class VerifyEmail
-        def confirm: (
+        def confirm_code: (
           String dir_id,
           code: String,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Dir::VerifyEmailConfirmResponse
+        ) -> Telnyx::Models::Dir::VerifyEmailConfirmCodeResponse
 
-        def send_: (
+        def send_code: (
           String dir_id,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Dir::VerifyEmailSendResponse
+        ) -> Telnyx::Models::Dir::VerifyEmailSendCodeResponse
 
         def status: (
           String dir_id,

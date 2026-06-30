@@ -99,9 +99,6 @@ module Telnyx
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Telnyx::Models::Texml::Accounts::CallCallsParams} for more details.
-          #
           # Initiate an outbound TeXML call. Telnyx will request TeXML from the XML Request
           # URL configured for the connection in the Mission Control Portal.
           #
@@ -109,7 +106,7 @@ module Telnyx
           #
           # @param account_sid [String] The id of the account the resource belongs to.
           #
-          # @param params [Telnyx::Models::Texml::Accounts::CallCallsParams::Params] Initiate a TeXML call. Provide either `Url` (fetches TeXML from URL) or `Texml`
+          # @param params [Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithURL, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::WithTeXml, Telnyx::Models::Texml::Accounts::CallCallsParams::Params::ApplicationDefault]
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

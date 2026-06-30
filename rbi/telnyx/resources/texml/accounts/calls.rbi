@@ -95,16 +95,18 @@ module Telnyx
           sig do
             params(
               account_sid: String,
-              params: Telnyx::Texml::Accounts::CallCallsParams::Params::OrHash,
+              params:
+                T.any(
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithURL::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::WithTeXml::OrHash,
+                  Telnyx::Texml::Accounts::CallCallsParams::Params::ApplicationDefault::OrHash
+                ),
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::Models::Texml::Accounts::CallCallsResponse)
           end
           def calls(
             # The id of the account the resource belongs to.
             account_sid,
-            # Initiate a TeXML call. Provide either `Url` (fetches TeXML from URL) or `Texml`
-            # (inline TeXML), or neither (uses the application default). `Url` and `Texml` are
-            # mutually exclusive.
             params:,
             request_options: {}
           )

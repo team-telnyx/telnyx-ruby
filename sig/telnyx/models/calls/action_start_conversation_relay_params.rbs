@@ -15,9 +15,9 @@ module Telnyx
           greeting: String,
           interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible,
           interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible_greeting,
-          interruption_settings: Telnyx::ConversationRelayInterruptionSettings,
+          interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings,
           language: String,
-          languages: ::Array[Telnyx::ConversationRelayLanguage],
+          languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language],
           provider: String,
           structured_provider: ::Hash[Symbol, top],
           transcription: ::Hash[Symbol, top],
@@ -88,21 +88,21 @@ module Telnyx
           Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible_greeting
         ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible_greeting
 
-        attr_reader interruption_settings: Telnyx::ConversationRelayInterruptionSettings?
+        attr_reader interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings?
 
         def interruption_settings=: (
-          Telnyx::ConversationRelayInterruptionSettings
-        ) -> Telnyx::ConversationRelayInterruptionSettings
+          Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings
+        ) -> Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings
 
         attr_reader language: String?
 
         def language=: (String) -> String
 
-        attr_reader languages: ::Array[Telnyx::ConversationRelayLanguage]?
+        attr_reader languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language]?
 
         def languages=: (
-          ::Array[Telnyx::ConversationRelayLanguage]
-        ) -> ::Array[Telnyx::ConversationRelayLanguage]
+          ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language]
+        ) -> ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language]
 
         attr_reader provider: String?
 
@@ -159,9 +159,9 @@ module Telnyx
           ?greeting: String,
           ?interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible,
           ?interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible_greeting,
-          ?interruption_settings: Telnyx::ConversationRelayInterruptionSettings,
+          ?interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings,
           ?language: String,
-          ?languages: ::Array[Telnyx::ConversationRelayLanguage],
+          ?languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language],
           ?provider: String,
           ?structured_provider: ::Hash[Symbol, top],
           ?transcription: ::Hash[Symbol, top],
@@ -187,9 +187,9 @@ module Telnyx
           greeting: String,
           interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible,
           interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible_greeting,
-          interruption_settings: Telnyx::ConversationRelayInterruptionSettings,
+          interruption_settings: Telnyx::Calls::ActionStartConversationRelayParams::InterruptionSettings,
           language: String,
-          languages: ::Array[Telnyx::ConversationRelayLanguage],
+          languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::Language],
           provider: String,
           structured_provider: ::Hash[Symbol, top],
           transcription: ::Hash[Symbol, top],
@@ -222,7 +222,7 @@ module Telnyx
             dtmf_detection: bool,
             interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible,
             interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting,
-            languages: ::Array[Telnyx::ConversationRelayLanguage]
+            languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
           }
 
         class ConversationRelaySettings < Telnyx::Internal::Type::BaseModel
@@ -244,18 +244,18 @@ module Telnyx
             Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting
           ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting
 
-          attr_reader languages: ::Array[Telnyx::ConversationRelayLanguage]?
+          attr_reader languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]?
 
           def languages=: (
-            ::Array[Telnyx::ConversationRelayLanguage]
-          ) -> ::Array[Telnyx::ConversationRelayLanguage]
+            ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
+          ) -> ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
 
           def initialize: (
             url: String,
             ?dtmf_detection: bool,
             ?interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible,
             ?interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting,
-            ?languages: ::Array[Telnyx::ConversationRelayLanguage]
+            ?languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
           ) -> void
 
           def to_hash: -> {
@@ -263,7 +263,7 @@ module Telnyx
             dtmf_detection: bool,
             interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible,
             interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting,
-            languages: ::Array[Telnyx::ConversationRelayLanguage]
+            languages: ::Array[Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language]
           }
 
           type interruptible = :none | :any | :speech | :dtmf
@@ -291,6 +291,176 @@ module Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::interruptible_greeting]
           end
+
+          type language =
+            {
+              language: String,
+              speech_model: String,
+              transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::transcription_engine,
+              transcription_engine_config: ::Hash[Symbol, top],
+              transcription_provider: String,
+              tts_provider: String,
+              voice: String,
+              voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::voice_settings
+            }
+
+          class Language < Telnyx::Internal::Type::BaseModel
+            attr_accessor language: String
+
+            attr_reader speech_model: String?
+
+            def speech_model=: (String) -> String
+
+            attr_reader transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::transcription_engine?
+
+            def transcription_engine=: (
+              Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::transcription_engine
+            ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::transcription_engine
+
+            attr_reader transcription_engine_config: ::Hash[Symbol, top]?
+
+            def transcription_engine_config=: (
+              ::Hash[Symbol, top]
+            ) -> ::Hash[Symbol, top]
+
+            attr_reader transcription_provider: String?
+
+            def transcription_provider=: (String) -> String
+
+            attr_reader tts_provider: String?
+
+            def tts_provider=: (String) -> String
+
+            attr_reader voice: String?
+
+            def voice=: (String) -> String
+
+            attr_reader voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::voice_settings?
+
+            def voice_settings=: (
+              Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::voice_settings
+            ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::voice_settings
+
+            def initialize: (
+              language: String,
+              ?speech_model: String,
+              ?transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::transcription_engine,
+              ?transcription_engine_config: ::Hash[Symbol, top],
+              ?transcription_provider: String,
+              ?tts_provider: String,
+              ?voice: String,
+              ?voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::voice_settings
+            ) -> void
+
+            def to_hash: -> {
+              language: String,
+              speech_model: String,
+              transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::transcription_engine,
+              transcription_engine_config: ::Hash[Symbol, top],
+              transcription_provider: String,
+              tts_provider: String,
+              voice: String,
+              voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::voice_settings
+            }
+
+            type transcription_engine =
+              :Google
+              | :Telnyx
+              | :Deepgram
+              | :Azure
+              | :xAI
+              | :AssemblyAI
+              | :Speechmatics
+              | :Soniox
+              | :A
+              | :B
+
+            module TranscriptionEngine
+              extend Telnyx::Internal::Type::Enum
+
+              GOOGLE: :Google
+              TELNYX: :Telnyx
+              DEEPGRAM: :Deepgram
+              AZURE: :Azure
+              X_AI: :xAI
+              ASSEMBLY_AI: :AssemblyAI
+              SPEECHMATICS: :Speechmatics
+              SONIOX: :Soniox
+              A: :A
+              B: :B
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::transcription_engine]
+            end
+
+            type voice_settings =
+              Telnyx::Calls::ElevenLabsVoiceSettings
+              | Telnyx::Calls::TelnyxVoiceSettings
+              | Telnyx::Calls::AwsVoiceSettings
+              | Telnyx::MinimaxVoiceSettings
+              | Telnyx::AzureVoiceSettings
+              | Telnyx::RimeVoiceSettings
+              | Telnyx::ResembleVoiceSettings
+              | Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld
+              | Telnyx::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Xai
+
+            module VoiceSettings
+              extend Telnyx::Internal::Type::Union
+
+              type inworld =
+                {
+                  type: :inworld,
+                  delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld::delivery_mode
+                }
+
+              class Inworld < Telnyx::Internal::Type::BaseModel
+                attr_accessor type: :inworld
+
+                attr_reader delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld::delivery_mode?
+
+                def delivery_mode=: (
+                  Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld::delivery_mode
+                ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld::delivery_mode
+
+                def initialize: (
+                  ?delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld::delivery_mode,
+                  ?type: :inworld
+                ) -> void
+
+                def to_hash: -> {
+                  type: :inworld,
+                  delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld::delivery_mode
+                }
+
+                type delivery_mode = :STABLE | :BALANCED | :CREATIVE
+
+                module DeliveryMode
+                  extend Telnyx::Internal::Type::Enum
+
+                  STABLE: :STABLE
+                  BALANCED: :BALANCED
+                  CREATIVE: :CREATIVE
+
+                  def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::VoiceSettings::Inworld::delivery_mode]
+                end
+              end
+
+              type xai = { type: :xai, language: String }
+
+              class Xai < Telnyx::Internal::Type::BaseModel
+                attr_accessor type: :xai
+
+                attr_reader language: String?
+
+                def language=: (String) -> String
+
+                def initialize: (?language: String, ?type: :xai) -> void
+
+                def to_hash: -> { type: :xai, language: String }
+              end
+
+              def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::ConversationRelaySettings::Language::voice_settings]
+            end
+          end
         end
 
         type interruptible = :none | :any | :speech | :dtmf
@@ -317,6 +487,261 @@ module Telnyx
           DTMF: :dtmf
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::interruptible_greeting]
+        end
+
+        type interruption_settings =
+          {
+            enable: bool,
+            interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible,
+            interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible_greeting,
+            welcome_greeting_interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::welcome_greeting_interruptible
+          }
+
+        class InterruptionSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader enable: bool?
+
+          def enable=: (bool) -> bool
+
+          attr_reader interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible?
+
+          def interruptible=: (
+            Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible
+          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible
+
+          attr_reader interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible_greeting?
+
+          def interruptible_greeting=: (
+            Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible_greeting
+          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible_greeting
+
+          attr_reader welcome_greeting_interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::welcome_greeting_interruptible?
+
+          def welcome_greeting_interruptible=: (
+            Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::welcome_greeting_interruptible
+          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::welcome_greeting_interruptible
+
+          def initialize: (
+            ?enable: bool,
+            ?interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible,
+            ?interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible_greeting,
+            ?welcome_greeting_interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::welcome_greeting_interruptible
+          ) -> void
+
+          def to_hash: -> {
+            enable: bool,
+            interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible,
+            interruptible_greeting: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible_greeting,
+            welcome_greeting_interruptible: Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::welcome_greeting_interruptible
+          }
+
+          type interruptible = :none | :any | :speech | :dtmf
+
+          module Interruptible
+            extend Telnyx::Internal::Type::Enum
+
+            NONE: :none
+            ANY: :any
+            SPEECH: :speech
+            DTMF: :dtmf
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible]
+          end
+
+          type interruptible_greeting = :none | :any | :speech | :dtmf
+
+          module InterruptibleGreeting
+            extend Telnyx::Internal::Type::Enum
+
+            NONE: :none
+            ANY: :any
+            SPEECH: :speech
+            DTMF: :dtmf
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::interruptible_greeting]
+          end
+
+          type welcome_greeting_interruptible = :none | :any | :speech | :dtmf
+
+          module WelcomeGreetingInterruptible
+            extend Telnyx::Internal::Type::Enum
+
+            NONE: :none
+            ANY: :any
+            SPEECH: :speech
+            DTMF: :dtmf
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::InterruptionSettings::welcome_greeting_interruptible]
+          end
+        end
+
+        type language =
+          {
+            language: String,
+            speech_model: String,
+            transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::transcription_engine,
+            transcription_engine_config: ::Hash[Symbol, top],
+            transcription_provider: String,
+            tts_provider: String,
+            voice: String,
+            voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::voice_settings
+          }
+
+        class Language < Telnyx::Internal::Type::BaseModel
+          attr_accessor language: String
+
+          attr_reader speech_model: String?
+
+          def speech_model=: (String) -> String
+
+          attr_reader transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::transcription_engine?
+
+          def transcription_engine=: (
+            Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::transcription_engine
+          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::transcription_engine
+
+          attr_reader transcription_engine_config: ::Hash[Symbol, top]?
+
+          def transcription_engine_config=: (
+            ::Hash[Symbol, top]
+          ) -> ::Hash[Symbol, top]
+
+          attr_reader transcription_provider: String?
+
+          def transcription_provider=: (String) -> String
+
+          attr_reader tts_provider: String?
+
+          def tts_provider=: (String) -> String
+
+          attr_reader voice: String?
+
+          def voice=: (String) -> String
+
+          attr_reader voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::voice_settings?
+
+          def voice_settings=: (
+            Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::voice_settings
+          ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::voice_settings
+
+          def initialize: (
+            language: String,
+            ?speech_model: String,
+            ?transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::transcription_engine,
+            ?transcription_engine_config: ::Hash[Symbol, top],
+            ?transcription_provider: String,
+            ?tts_provider: String,
+            ?voice: String,
+            ?voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::voice_settings
+          ) -> void
+
+          def to_hash: -> {
+            language: String,
+            speech_model: String,
+            transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::transcription_engine,
+            transcription_engine_config: ::Hash[Symbol, top],
+            transcription_provider: String,
+            tts_provider: String,
+            voice: String,
+            voice_settings: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::voice_settings
+          }
+
+          type transcription_engine =
+            :Google
+            | :Telnyx
+            | :Deepgram
+            | :Azure
+            | :xAI
+            | :AssemblyAI
+            | :Speechmatics
+            | :Soniox
+            | :A
+            | :B
+
+          module TranscriptionEngine
+            extend Telnyx::Internal::Type::Enum
+
+            GOOGLE: :Google
+            TELNYX: :Telnyx
+            DEEPGRAM: :Deepgram
+            AZURE: :Azure
+            X_AI: :xAI
+            ASSEMBLY_AI: :AssemblyAI
+            SPEECHMATICS: :Speechmatics
+            SONIOX: :Soniox
+            A: :A
+            B: :B
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::transcription_engine]
+          end
+
+          type voice_settings =
+            Telnyx::Calls::ElevenLabsVoiceSettings
+            | Telnyx::Calls::TelnyxVoiceSettings
+            | Telnyx::Calls::AwsVoiceSettings
+            | Telnyx::MinimaxVoiceSettings
+            | Telnyx::AzureVoiceSettings
+            | Telnyx::RimeVoiceSettings
+            | Telnyx::ResembleVoiceSettings
+            | Telnyx::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld
+            | Telnyx::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Xai
+
+          module VoiceSettings
+            extend Telnyx::Internal::Type::Union
+
+            type inworld =
+              {
+                type: :inworld,
+                delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld::delivery_mode
+              }
+
+            class Inworld < Telnyx::Internal::Type::BaseModel
+              attr_accessor type: :inworld
+
+              attr_reader delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld::delivery_mode?
+
+              def delivery_mode=: (
+                Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld::delivery_mode
+              ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld::delivery_mode
+
+              def initialize: (
+                ?delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld::delivery_mode,
+                ?type: :inworld
+              ) -> void
+
+              def to_hash: -> {
+                type: :inworld,
+                delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld::delivery_mode
+              }
+
+              type delivery_mode = :STABLE | :BALANCED | :CREATIVE
+
+              module DeliveryMode
+                extend Telnyx::Internal::Type::Enum
+
+                STABLE: :STABLE
+                BALANCED: :BALANCED
+                CREATIVE: :CREATIVE
+
+                def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::VoiceSettings::Inworld::delivery_mode]
+              end
+            end
+
+            type xai = { type: :xai, language: String }
+
+            class Xai < Telnyx::Internal::Type::BaseModel
+              attr_accessor type: :xai
+
+              attr_reader language: String?
+
+              def language=: (String) -> String
+
+              def initialize: (?language: String, ?type: :xai) -> void
+
+              def to_hash: -> { type: :xai, language: String }
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::Language::voice_settings]
+          end
         end
 
         type transcription_engine =
@@ -356,11 +781,63 @@ module Telnyx
           | Telnyx::AzureVoiceSettings
           | Telnyx::RimeVoiceSettings
           | Telnyx::ResembleVoiceSettings
-          | Telnyx::InworldVoiceSettings
-          | Telnyx::XaiVoiceSettings
+          | Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld
+          | Telnyx::Calls::ActionStartConversationRelayParams::VoiceSettings::Xai
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
+
+          type inworld =
+            {
+              type: :inworld,
+              delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::delivery_mode
+            }
+
+          class Inworld < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :inworld
+
+            attr_reader delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::delivery_mode?
+
+            def delivery_mode=: (
+              Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::delivery_mode
+            ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::delivery_mode
+
+            def initialize: (
+              ?delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::delivery_mode,
+              ?type: :inworld
+            ) -> void
+
+            def to_hash: -> {
+              type: :inworld,
+              delivery_mode: Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::delivery_mode
+            }
+
+            type delivery_mode = :STABLE | :BALANCED | :CREATIVE
+
+            module DeliveryMode
+              extend Telnyx::Internal::Type::Enum
+
+              STABLE: :STABLE
+              BALANCED: :BALANCED
+              CREATIVE: :CREATIVE
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::VoiceSettings::Inworld::delivery_mode]
+            end
+          end
+
+          type xai = { type: :xai, language: String }
+
+          class Xai < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :xai
+
+            attr_reader language: String?
+
+            def language=: (String) -> String
+
+            def initialize: (?language: String, ?type: :xai) -> void
+
+            def to_hash: -> { type: :xai, language: String }
+          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionStartConversationRelayParams::voice_settings]
         end
