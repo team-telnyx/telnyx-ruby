@@ -2419,6 +2419,8 @@ require_relative "telnyx/models/whatsapp/business_accounts/setting_update_params
 require_relative "telnyx/models/whatsapp/business_accounts/setting_update_response"
 require_relative "telnyx/models/whatsapp/business_accounts/waba_settings"
 require_relative "telnyx/models/whatsapp/phone_number_delete_params"
+require_relative "telnyx/models/whatsapp/phone_number_get_conversation_window_params"
+require_relative "telnyx/models/whatsapp/phone_number_get_conversation_window_response"
 require_relative "telnyx/models/whatsapp/phone_number_list_params"
 require_relative "telnyx/models/whatsapp/phone_number_list_response"
 require_relative "telnyx/models/whatsapp/phone_number_resend_verification_params"

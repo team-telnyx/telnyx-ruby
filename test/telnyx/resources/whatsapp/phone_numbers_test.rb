@@ -46,6 +46,26 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
     end
   end
 
+  def test_get_conversation_window_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.whatsapp.phone_numbers.get_conversation_window(
+        "phone_number",
+        destination_number: "+353894650851"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Whatsapp::PhoneNumberGetConversationWindowResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Whatsapp::PhoneNumberGetConversationWindowResponse::Data | nil
+      }
+    end
+  end
+
   def test_resend_verification
     skip("Mock server tests are disabled")
 
