@@ -23,6 +23,15 @@ module Telnyx
         end
         attr_accessor :transcription_model
 
+        # Nova-2 keyword biasing without intensifiers. Up to 100 terms to bias recognition
+        # toward. For weighted biasing, use `keywords_boosting` instead. Nova-2-only; use
+        # `keyterms` on Nova-3.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :hints
+
+        sig { params(hints: T::Array[String]).void }
+        attr_writer :hints
+
         # Whether to send also interim results. If set to false, only final results will
         # be sent.
         sig { returns(T.nilable(T::Boolean)) }
@@ -55,6 +64,17 @@ module Telnyx
         end
         attr_writer :language
 
+        # Enable Deepgram's smart formatting (capitalization, punctuation, and digit
+        # normalization). Note: Telnyx defaults this to `true`, overriding Deepgram's
+        # underlying default of `false` — omit the field to get a smart-formatted
+        # transcript, or set it to `false` to receive the raw lowercase transcript without
+        # punctuation.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :smart_format
+
+        sig { params(smart_format: T::Boolean).void }
+        attr_writer :smart_format
+
         # Number of milliseconds of silence to consider an utterance ended. Ranges from 0
         # to 5000 ms.
         sig { returns(T.nilable(Integer)) }
@@ -69,15 +89,21 @@ module Telnyx
               Telnyx::Calls::DeepgramNova2Config::TranscriptionEngine::OrSymbol,
             transcription_model:
               Telnyx::Calls::DeepgramNova2Config::TranscriptionModel::OrSymbol,
+            hints: T::Array[String],
             interim_results: T::Boolean,
             keywords_boosting: T::Hash[Symbol, Float],
             language: Telnyx::Calls::DeepgramNova2Config::Language::OrSymbol,
+            smart_format: T::Boolean,
             utterance_end_ms: Integer
           ).returns(T.attached_class)
         end
         def self.new(
           transcription_engine:,
           transcription_model:,
+          # Nova-2 keyword biasing without intensifiers. Up to 100 terms to bias recognition
+          # toward. For weighted biasing, use `keywords_boosting` instead. Nova-2-only; use
+          # `keyterms` on Nova-3.
+          hints: nil,
           # Whether to send also interim results. If set to false, only final results will
           # be sent.
           interim_results: nil,
@@ -87,6 +113,12 @@ module Telnyx
           keywords_boosting: nil,
           # Language to use for speech recognition with nova-2 model
           language: nil,
+          # Enable Deepgram's smart formatting (capitalization, punctuation, and digit
+          # normalization). Note: Telnyx defaults this to `true`, overriding Deepgram's
+          # underlying default of `false` — omit the field to get a smart-formatted
+          # transcript, or set it to `false` to receive the raw lowercase transcript without
+          # punctuation.
+          smart_format: nil,
           # Number of milliseconds of silence to consider an utterance ended. Ranges from 0
           # to 5000 ms.
           utterance_end_ms: nil
@@ -100,9 +132,11 @@ module Telnyx
                 Telnyx::Calls::DeepgramNova2Config::TranscriptionEngine::OrSymbol,
               transcription_model:
                 Telnyx::Calls::DeepgramNova2Config::TranscriptionModel::OrSymbol,
+              hints: T::Array[String],
               interim_results: T::Boolean,
               keywords_boosting: T::Hash[Symbol, Float],
               language: Telnyx::Calls::DeepgramNova2Config::Language::OrSymbol,
+              smart_format: T::Boolean,
               utterance_end_ms: Integer
             }
           )
