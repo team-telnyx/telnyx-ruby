@@ -23,6 +23,12 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> nil
 
+        def retrieve_conversation_window: (
+          String phone_number,
+          destination_number: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::PhoneNumberRetrieveConversationWindowResponse
+
         def verify: (
           String phone_number,
           code: String,
