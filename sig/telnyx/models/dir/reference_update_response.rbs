@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module Dir
+      type reference_update_response = { data: Telnyx::Dir::Reference }
+
+      class ReferenceUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Dir::Reference
+
+        def initialize: (data: Telnyx::Dir::Reference) -> void
+
+        def to_hash: -> { data: Telnyx::Dir::Reference }
+      end
+    end
+  end
+end

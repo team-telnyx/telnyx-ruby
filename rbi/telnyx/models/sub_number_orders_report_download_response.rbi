@@ -2,6 +2,6 @@
 
 module Telnyx
   module Models
-    SubNumberOrdersReportDownloadResponse = StringIO
+    SubNumberOrdersReportDownloadResponse = T.type_alias { StringIO }
   end
 end
