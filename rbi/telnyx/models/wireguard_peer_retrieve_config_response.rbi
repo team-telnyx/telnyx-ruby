@@ -2,6 +2,6 @@
 
 module Telnyx
   module Models
-    WireguardPeerRetrieveConfigResponse = T.type_alias { String }
+    WireguardPeerRetrieveConfigResponse = String
   end
 end
