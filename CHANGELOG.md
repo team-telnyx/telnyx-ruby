@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.150.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.149.0...v5.150.0) (2026-06-30)
+
+
+### Bug Fixes
+
+* add --local flag so release-please scans next branch for commits ([#287](https://github.com/team-telnyx/telnyx-ruby/issues/287)) ([b35995d](https://github.com/team-telnyx/telnyx-ruby/commit/b35995daef2d66a34a140de1221b5271623b9114))
+
+
+### Chores
+
+* remove leaked staging-only promote-to-prod.yml from prod ([#288](https://github.com/team-telnyx/telnyx-ruby/issues/288)) ([f356646](https://github.com/team-telnyx/telnyx-ruby/commit/f356646e0d7a1645b2a73c689caee86a9a7b55ad))
+
 ## [5.149.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.148.0...v5.149.0) (2026-06-25)
 
 
