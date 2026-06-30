@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module AI
       module Assistants
-        InstructionEnhanceResponse = T.type_alias { String }
+        InstructionEnhanceResponse = String
       end
     end
   end
