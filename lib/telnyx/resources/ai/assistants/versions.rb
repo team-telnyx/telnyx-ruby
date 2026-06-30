@@ -61,9 +61,9 @@ module Telnyx
           #
           # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param
           #
-          # @param external_llm [Telnyx::Models::AI::Assistants::UpdateAssistant::ExternalLlm] Body param
+          # @param external_llm [Telnyx::Models::AI::ExternalLlmReq] Body param
           #
-          # @param fallback_config [Telnyx::Models::AI::Assistants::UpdateAssistant::FallbackConfig] Body param
+          # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq] Body param
           #
           # @param greeting [String] Body param: Text that the assistant will use to start the conversation. This may
           #
@@ -71,13 +71,13 @@ module Telnyx
           #
           # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
           #
-          # @param integrations [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::Integration>] Body param: Connected integrations attached to the assistant. The catalog of ava
+          # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Body param: Connected integrations attached to the assistant. The catalog of ava
           #
-          # @param interruption_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::InterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
+          # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
           #
           # @param llm_api_key_ref [String] Body param: This is only needed when using third-party inference providers selec
           #
-          # @param mcp_servers [Array<Telnyx::Models::AI::Assistants::UpdateAssistant::McpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
+          # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
           #
           # @param messaging_settings [Telnyx::Models::AI::MessagingSettings] Body param
           #
@@ -87,7 +87,7 @@ module Telnyx
           #
           # @param observability_settings [Telnyx::Models::AI::ObservabilityReq] Body param
           #
-          # @param post_conversation_settings [Telnyx::Models::AI::Assistants::UpdateAssistant::PostConversationSettings] Body param: Configuration for post-conversation processing. When enabled, the as
+          # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Body param: Configuration for post-conversation processing. When enabled, the as
           #
           # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
           #

@@ -1,0 +1,75 @@
+module Telnyx
+  module Models
+    module AI
+      type external_llm_req =
+        {
+          base_url: String,
+          model: String,
+          authentication_method: Telnyx::Models::AI::ExternalLlmReq::authentication_method,
+          certificate_ref: String,
+          forward_metadata: bool,
+          llm_api_key_ref: String,
+          token_retrieval_url: String
+        }
+
+      class ExternalLlmReq < Telnyx::Internal::Type::BaseModel
+        attr_accessor base_url: String
+
+        attr_accessor model: String
+
+        attr_reader authentication_method: Telnyx::Models::AI::ExternalLlmReq::authentication_method?
+
+        def authentication_method=: (
+          Telnyx::Models::AI::ExternalLlmReq::authentication_method
+        ) -> Telnyx::Models::AI::ExternalLlmReq::authentication_method
+
+        attr_reader certificate_ref: String?
+
+        def certificate_ref=: (String) -> String
+
+        attr_reader forward_metadata: bool?
+
+        def forward_metadata=: (bool) -> bool
+
+        attr_reader llm_api_key_ref: String?
+
+        def llm_api_key_ref=: (String) -> String
+
+        attr_reader token_retrieval_url: String?
+
+        def token_retrieval_url=: (String) -> String
+
+        def initialize: (
+          base_url: String,
+          model: String,
+          ?authentication_method: Telnyx::Models::AI::ExternalLlmReq::authentication_method,
+          ?certificate_ref: String,
+          ?forward_metadata: bool,
+          ?llm_api_key_ref: String,
+          ?token_retrieval_url: String
+        ) -> void
+
+        def to_hash: -> {
+          base_url: String,
+          model: String,
+          authentication_method: Telnyx::Models::AI::ExternalLlmReq::authentication_method,
+          certificate_ref: String,
+          forward_metadata: bool,
+          llm_api_key_ref: String,
+          token_retrieval_url: String
+        }
+
+        type authentication_method = :token | :certificate
+
+        module AuthenticationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          TOKEN: :token
+          CERTIFICATE: :certificate
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ExternalLlmReq::authentication_method]
+        end
+      end
+    end
+  end
+end

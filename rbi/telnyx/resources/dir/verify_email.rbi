@@ -16,9 +16,9 @@ module Telnyx
             dir_id: String,
             code: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Dir::VerifyEmailConfirmCodeResponse)
+          ).returns(Telnyx::Models::Dir::VerifyEmailConfirmResponse)
         end
-        def confirm_code(
+        def confirm(
           # The DIR id. Lowercase UUID.
           dir_id,
           # The 6-digit code sent to the authorizer email.
@@ -37,9 +37,9 @@ module Telnyx
           params(
             dir_id: String,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Dir::VerifyEmailSendCodeResponse)
+          ).returns(Telnyx::Models::Dir::VerifyEmailSendResponse)
         end
-        def send_code(
+        def send_(
           # The DIR id. Lowercase UUID.
           dir_id,
           request_options: {}

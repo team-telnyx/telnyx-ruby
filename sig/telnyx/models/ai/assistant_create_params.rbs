@@ -11,18 +11,18 @@ module Telnyx
           dynamic_variables_webhook_timeout_ms: Integer,
           dynamic_variables_webhook_url: String,
           enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
-          external_llm: Telnyx::AI::AssistantCreateParams::ExternalLlm,
-          fallback_config: Telnyx::AI::AssistantCreateParams::FallbackConfig,
+          external_llm: Telnyx::AI::ExternalLlmReq,
+          fallback_config: Telnyx::AI::FallbackConfigReq,
           greeting: String,
           insight_settings: Telnyx::AI::InsightSettings,
-          integrations: ::Array[Telnyx::AI::AssistantCreateParams::Integration],
-          interruption_settings: Telnyx::AI::AssistantCreateParams::InterruptionSettings,
+          integrations: ::Array[Telnyx::AI::AssistantIntegration],
+          interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings,
           llm_api_key_ref: String,
-          mcp_servers: ::Array[Telnyx::AI::AssistantCreateParams::McpServer],
+          mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer],
           messaging_settings: Telnyx::AI::MessagingSettings,
           model: String,
           observability_settings: Telnyx::AI::ObservabilityReq,
-          post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings,
+          post_conversation_settings: Telnyx::AI::PostConversationSettingsReq,
           privacy_settings: Telnyx::AI::PrivacySettings,
           tags: ::Array[String],
           telephony_settings: Telnyx::AI::TelephonySettings,
@@ -70,17 +70,17 @@ module Telnyx
           ::Array[Telnyx::Models::AI::enabled_features]
         ) -> ::Array[Telnyx::Models::AI::enabled_features]
 
-        attr_reader external_llm: Telnyx::AI::AssistantCreateParams::ExternalLlm?
+        attr_reader external_llm: Telnyx::AI::ExternalLlmReq?
 
         def external_llm=: (
-          Telnyx::AI::AssistantCreateParams::ExternalLlm
-        ) -> Telnyx::AI::AssistantCreateParams::ExternalLlm
+          Telnyx::AI::ExternalLlmReq
+        ) -> Telnyx::AI::ExternalLlmReq
 
-        attr_reader fallback_config: Telnyx::AI::AssistantCreateParams::FallbackConfig?
+        attr_reader fallback_config: Telnyx::AI::FallbackConfigReq?
 
         def fallback_config=: (
-          Telnyx::AI::AssistantCreateParams::FallbackConfig
-        ) -> Telnyx::AI::AssistantCreateParams::FallbackConfig
+          Telnyx::AI::FallbackConfigReq
+        ) -> Telnyx::AI::FallbackConfigReq
 
         attr_reader greeting: String?
 
@@ -92,27 +92,27 @@ module Telnyx
           Telnyx::AI::InsightSettings
         ) -> Telnyx::AI::InsightSettings
 
-        attr_reader integrations: ::Array[Telnyx::AI::AssistantCreateParams::Integration]?
+        attr_reader integrations: ::Array[Telnyx::AI::AssistantIntegration]?
 
         def integrations=: (
-          ::Array[Telnyx::AI::AssistantCreateParams::Integration]
-        ) -> ::Array[Telnyx::AI::AssistantCreateParams::Integration]
+          ::Array[Telnyx::AI::AssistantIntegration]
+        ) -> ::Array[Telnyx::AI::AssistantIntegration]
 
-        attr_reader interruption_settings: Telnyx::AI::AssistantCreateParams::InterruptionSettings?
+        attr_reader interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings?
 
         def interruption_settings=: (
-          Telnyx::AI::AssistantCreateParams::InterruptionSettings
-        ) -> Telnyx::AI::AssistantCreateParams::InterruptionSettings
+          Telnyx::AI::InferenceEmbeddingInterruptionSettings
+        ) -> Telnyx::AI::InferenceEmbeddingInterruptionSettings
 
         attr_reader llm_api_key_ref: String?
 
         def llm_api_key_ref=: (String) -> String
 
-        attr_reader mcp_servers: ::Array[Telnyx::AI::AssistantCreateParams::McpServer]?
+        attr_reader mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer]?
 
         def mcp_servers=: (
-          ::Array[Telnyx::AI::AssistantCreateParams::McpServer]
-        ) -> ::Array[Telnyx::AI::AssistantCreateParams::McpServer]
+          ::Array[Telnyx::AI::AssistantMcpServer]
+        ) -> ::Array[Telnyx::AI::AssistantMcpServer]
 
         attr_reader messaging_settings: Telnyx::AI::MessagingSettings?
 
@@ -130,11 +130,11 @@ module Telnyx
           Telnyx::AI::ObservabilityReq
         ) -> Telnyx::AI::ObservabilityReq
 
-        attr_reader post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings?
+        attr_reader post_conversation_settings: Telnyx::AI::PostConversationSettingsReq?
 
         def post_conversation_settings=: (
-          Telnyx::AI::AssistantCreateParams::PostConversationSettings
-        ) -> Telnyx::AI::AssistantCreateParams::PostConversationSettings
+          Telnyx::AI::PostConversationSettingsReq
+        ) -> Telnyx::AI::PostConversationSettingsReq
 
         attr_reader privacy_settings: Telnyx::AI::PrivacySettings?
 
@@ -189,18 +189,18 @@ module Telnyx
           ?dynamic_variables_webhook_timeout_ms: Integer,
           ?dynamic_variables_webhook_url: String,
           ?enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
-          ?external_llm: Telnyx::AI::AssistantCreateParams::ExternalLlm,
-          ?fallback_config: Telnyx::AI::AssistantCreateParams::FallbackConfig,
+          ?external_llm: Telnyx::AI::ExternalLlmReq,
+          ?fallback_config: Telnyx::AI::FallbackConfigReq,
           ?greeting: String,
           ?insight_settings: Telnyx::AI::InsightSettings,
-          ?integrations: ::Array[Telnyx::AI::AssistantCreateParams::Integration],
-          ?interruption_settings: Telnyx::AI::AssistantCreateParams::InterruptionSettings,
+          ?integrations: ::Array[Telnyx::AI::AssistantIntegration],
+          ?interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings,
           ?llm_api_key_ref: String,
-          ?mcp_servers: ::Array[Telnyx::AI::AssistantCreateParams::McpServer],
+          ?mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer],
           ?messaging_settings: Telnyx::AI::MessagingSettings,
           ?model: String,
           ?observability_settings: Telnyx::AI::ObservabilityReq,
-          ?post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings,
+          ?post_conversation_settings: Telnyx::AI::PostConversationSettingsReq,
           ?privacy_settings: Telnyx::AI::PrivacySettings,
           ?tags: ::Array[String],
           ?telephony_settings: Telnyx::AI::TelephonySettings,
@@ -221,18 +221,18 @@ module Telnyx
           dynamic_variables_webhook_timeout_ms: Integer,
           dynamic_variables_webhook_url: String,
           enabled_features: ::Array[Telnyx::Models::AI::enabled_features],
-          external_llm: Telnyx::AI::AssistantCreateParams::ExternalLlm,
-          fallback_config: Telnyx::AI::AssistantCreateParams::FallbackConfig,
+          external_llm: Telnyx::AI::ExternalLlmReq,
+          fallback_config: Telnyx::AI::FallbackConfigReq,
           greeting: String,
           insight_settings: Telnyx::AI::InsightSettings,
-          integrations: ::Array[Telnyx::AI::AssistantCreateParams::Integration],
-          interruption_settings: Telnyx::AI::AssistantCreateParams::InterruptionSettings,
+          integrations: ::Array[Telnyx::AI::AssistantIntegration],
+          interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings,
           llm_api_key_ref: String,
-          mcp_servers: ::Array[Telnyx::AI::AssistantCreateParams::McpServer],
+          mcp_servers: ::Array[Telnyx::AI::AssistantMcpServer],
           messaging_settings: Telnyx::AI::MessagingSettings,
           model: String,
           observability_settings: Telnyx::AI::ObservabilityReq,
-          post_conversation_settings: Telnyx::AI::AssistantCreateParams::PostConversationSettings,
+          post_conversation_settings: Telnyx::AI::PostConversationSettingsReq,
           privacy_settings: Telnyx::AI::PrivacySettings,
           tags: ::Array[String],
           telephony_settings: Telnyx::AI::TelephonySettings,
@@ -286,7 +286,7 @@ module Telnyx
               {
                 id: String,
                 instructions: String,
-                external_llm: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm,
+                external_llm: Telnyx::AI::ExternalLlmReq,
                 instructions_mode: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::instructions_mode,
                 llm_api_key_ref: String,
                 model: String,
@@ -304,11 +304,11 @@ module Telnyx
 
               attr_accessor instructions: String
 
-              attr_reader external_llm: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm?
+              attr_reader external_llm: Telnyx::AI::ExternalLlmReq?
 
               def external_llm=: (
-                Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm
-              ) -> Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm
+                Telnyx::AI::ExternalLlmReq
+              ) -> Telnyx::AI::ExternalLlmReq
 
               attr_reader instructions_mode: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::instructions_mode?
 
@@ -365,7 +365,7 @@ module Telnyx
               def initialize: (
                 id: String,
                 instructions: String,
-                ?external_llm: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm,
+                ?external_llm: Telnyx::AI::ExternalLlmReq,
                 ?instructions_mode: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::instructions_mode,
                 ?llm_api_key_ref: String,
                 ?model: String,
@@ -381,7 +381,7 @@ module Telnyx
               def to_hash: -> {
                 id: String,
                 instructions: String,
-                external_llm: Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm,
+                external_llm: Telnyx::AI::ExternalLlmReq,
                 instructions_mode: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::instructions_mode,
                 llm_api_key_ref: String,
                 model: String,
@@ -393,76 +393,6 @@ module Telnyx
                 type: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::type_,
                 voice_settings: Telnyx::AI::VoiceSettings
               }
-
-              type external_llm =
-                {
-                  base_url: String,
-                  model: String,
-                  authentication_method: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::authentication_method,
-                  certificate_ref: String,
-                  forward_metadata: bool,
-                  llm_api_key_ref: String,
-                  token_retrieval_url: String
-                }
-
-              class ExternalLlm < Telnyx::Internal::Type::BaseModel
-                attr_accessor base_url: String
-
-                attr_accessor model: String
-
-                attr_reader authentication_method: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::authentication_method?
-
-                def authentication_method=: (
-                  Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::authentication_method
-                ) -> Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::authentication_method
-
-                attr_reader certificate_ref: String?
-
-                def certificate_ref=: (String) -> String
-
-                attr_reader forward_metadata: bool?
-
-                def forward_metadata=: (bool) -> bool
-
-                attr_reader llm_api_key_ref: String?
-
-                def llm_api_key_ref=: (String) -> String
-
-                attr_reader token_retrieval_url: String?
-
-                def token_retrieval_url=: (String) -> String
-
-                def initialize: (
-                  base_url: String,
-                  model: String,
-                  ?authentication_method: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::authentication_method,
-                  ?certificate_ref: String,
-                  ?forward_metadata: bool,
-                  ?llm_api_key_ref: String,
-                  ?token_retrieval_url: String
-                ) -> void
-
-                def to_hash: -> {
-                  base_url: String,
-                  model: String,
-                  authentication_method: Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::authentication_method,
-                  certificate_ref: String,
-                  forward_metadata: bool,
-                  llm_api_key_ref: String,
-                  token_retrieval_url: String
-                }
-
-                type authentication_method = :token | :certificate
-
-                module AuthenticationMethod
-                  extend Telnyx::Internal::Type::Enum
-
-                  TOKEN: :token
-                  CERTIFICATE: :certificate
-
-                  def self?.values: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::authentication_method]
-                end
-              end
 
               type instructions_mode = :replace | :append
 
@@ -892,324 +822,6 @@ module Telnyx
               def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Edge::target]
             end
           end
-        end
-
-        type external_llm =
-          {
-            base_url: String,
-            model: String,
-            authentication_method: Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::authentication_method,
-            certificate_ref: String,
-            forward_metadata: bool,
-            llm_api_key_ref: String,
-            token_retrieval_url: String
-          }
-
-        class ExternalLlm < Telnyx::Internal::Type::BaseModel
-          attr_accessor base_url: String
-
-          attr_accessor model: String
-
-          attr_reader authentication_method: Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::authentication_method?
-
-          def authentication_method=: (
-            Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::authentication_method
-          ) -> Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::authentication_method
-
-          attr_reader certificate_ref: String?
-
-          def certificate_ref=: (String) -> String
-
-          attr_reader forward_metadata: bool?
-
-          def forward_metadata=: (bool) -> bool
-
-          attr_reader llm_api_key_ref: String?
-
-          def llm_api_key_ref=: (String) -> String
-
-          attr_reader token_retrieval_url: String?
-
-          def token_retrieval_url=: (String) -> String
-
-          def initialize: (
-            base_url: String,
-            model: String,
-            ?authentication_method: Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::authentication_method,
-            ?certificate_ref: String,
-            ?forward_metadata: bool,
-            ?llm_api_key_ref: String,
-            ?token_retrieval_url: String
-          ) -> void
-
-          def to_hash: -> {
-            base_url: String,
-            model: String,
-            authentication_method: Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::authentication_method,
-            certificate_ref: String,
-            forward_metadata: bool,
-            llm_api_key_ref: String,
-            token_retrieval_url: String
-          }
-
-          type authentication_method = :token | :certificate
-
-          module AuthenticationMethod
-            extend Telnyx::Internal::Type::Enum
-
-            TOKEN: :token
-            CERTIFICATE: :certificate
-
-            def self?.values: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::authentication_method]
-          end
-        end
-
-        type fallback_config =
-          {
-            external_llm: Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm,
-            llm_api_key_ref: String,
-            model: String
-          }
-
-        class FallbackConfig < Telnyx::Internal::Type::BaseModel
-          attr_reader external_llm: Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm?
-
-          def external_llm=: (
-            Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm
-          ) -> Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm
-
-          attr_reader llm_api_key_ref: String?
-
-          def llm_api_key_ref=: (String) -> String
-
-          attr_reader model: String?
-
-          def model=: (String) -> String
-
-          def initialize: (
-            ?external_llm: Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm,
-            ?llm_api_key_ref: String,
-            ?model: String
-          ) -> void
-
-          def to_hash: -> {
-            external_llm: Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm,
-            llm_api_key_ref: String,
-            model: String
-          }
-
-          type external_llm =
-            {
-              base_url: String,
-              model: String,
-              authentication_method: Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::authentication_method,
-              certificate_ref: String,
-              forward_metadata: bool,
-              llm_api_key_ref: String,
-              token_retrieval_url: String
-            }
-
-          class ExternalLlm < Telnyx::Internal::Type::BaseModel
-            attr_accessor base_url: String
-
-            attr_accessor model: String
-
-            attr_reader authentication_method: Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::authentication_method?
-
-            def authentication_method=: (
-              Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::authentication_method
-            ) -> Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::authentication_method
-
-            attr_reader certificate_ref: String?
-
-            def certificate_ref=: (String) -> String
-
-            attr_reader forward_metadata: bool?
-
-            def forward_metadata=: (bool) -> bool
-
-            attr_reader llm_api_key_ref: String?
-
-            def llm_api_key_ref=: (String) -> String
-
-            attr_reader token_retrieval_url: String?
-
-            def token_retrieval_url=: (String) -> String
-
-            def initialize: (
-              base_url: String,
-              model: String,
-              ?authentication_method: Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::authentication_method,
-              ?certificate_ref: String,
-              ?forward_metadata: bool,
-              ?llm_api_key_ref: String,
-              ?token_retrieval_url: String
-            ) -> void
-
-            def to_hash: -> {
-              base_url: String,
-              model: String,
-              authentication_method: Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::authentication_method,
-              certificate_ref: String,
-              forward_metadata: bool,
-              llm_api_key_ref: String,
-              token_retrieval_url: String
-            }
-
-            type authentication_method = :token | :certificate
-
-            module AuthenticationMethod
-              extend Telnyx::Internal::Type::Enum
-
-              TOKEN: :token
-              CERTIFICATE: :certificate
-
-              def self?.values: -> ::Array[Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::authentication_method]
-            end
-          end
-        end
-
-        type integration =
-          { integration_id: String, allowed_list: ::Array[String] }
-
-        class Integration < Telnyx::Internal::Type::BaseModel
-          attr_accessor integration_id: String
-
-          attr_reader allowed_list: ::Array[String]?
-
-          def allowed_list=: (::Array[String]) -> ::Array[String]
-
-          def initialize: (
-            integration_id: String,
-            ?allowed_list: ::Array[String]
-          ) -> void
-
-          def to_hash: -> {
-            integration_id: String,
-            allowed_list: ::Array[String]
-          }
-        end
-
-        type interruption_settings =
-          {
-            disable_greeting_interruption: bool,
-            enable: bool,
-            start_speaking_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan
-          }
-
-        class InterruptionSettings < Telnyx::Internal::Type::BaseModel
-          attr_reader disable_greeting_interruption: bool?
-
-          def disable_greeting_interruption=: (bool) -> bool
-
-          attr_reader enable: bool?
-
-          def enable=: (bool) -> bool
-
-          attr_reader start_speaking_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan?
-
-          def start_speaking_plan=: (
-            Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan
-          ) -> Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan
-
-          def initialize: (
-            ?disable_greeting_interruption: bool,
-            ?enable: bool,
-            ?start_speaking_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan
-          ) -> void
-
-          def to_hash: -> {
-            disable_greeting_interruption: bool,
-            enable: bool,
-            start_speaking_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan
-          }
-
-          type start_speaking_plan =
-            {
-              transcription_endpointing_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
-              wait_seconds: Float
-            }
-
-          class StartSpeakingPlan < Telnyx::Internal::Type::BaseModel
-            attr_reader transcription_endpointing_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan?
-
-            def transcription_endpointing_plan=: (
-              Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
-            ) -> Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan
-
-            attr_reader wait_seconds: Float?
-
-            def wait_seconds=: (Float) -> Float
-
-            def initialize: (
-              ?transcription_endpointing_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
-              ?wait_seconds: Float
-            ) -> void
-
-            def to_hash: -> {
-              transcription_endpointing_plan: Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan,
-              wait_seconds: Float
-            }
-
-            type transcription_endpointing_plan =
-              {
-                on_no_punctuation_seconds: Float,
-                on_number_seconds: Float,
-                on_punctuation_seconds: Float
-              }
-
-            class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
-              attr_reader on_no_punctuation_seconds: Float?
-
-              def on_no_punctuation_seconds=: (Float) -> Float
-
-              attr_reader on_number_seconds: Float?
-
-              def on_number_seconds=: (Float) -> Float
-
-              attr_reader on_punctuation_seconds: Float?
-
-              def on_punctuation_seconds=: (Float) -> Float
-
-              def initialize: (
-                ?on_no_punctuation_seconds: Float,
-                ?on_number_seconds: Float,
-                ?on_punctuation_seconds: Float
-              ) -> void
-
-              def to_hash: -> {
-                on_no_punctuation_seconds: Float,
-                on_number_seconds: Float,
-                on_punctuation_seconds: Float
-              }
-            end
-          end
-        end
-
-        type mcp_server = { id: String, allowed_tools: ::Array[String] }
-
-        class McpServer < Telnyx::Internal::Type::BaseModel
-          attr_accessor id: String
-
-          attr_reader allowed_tools: ::Array[String]?
-
-          def allowed_tools=: (::Array[String]) -> ::Array[String]
-
-          def initialize: (id: String, ?allowed_tools: ::Array[String]) -> void
-
-          def to_hash: -> { id: String, allowed_tools: ::Array[String] }
-        end
-
-        type post_conversation_settings = { enabled: bool }
-
-        class PostConversationSettings < Telnyx::Internal::Type::BaseModel
-          attr_reader enabled: bool?
-
-          def enabled=: (bool) -> bool
-
-          def initialize: (?enabled: bool) -> void
-
-          def to_hash: -> { enabled: bool }
         end
       end
     end

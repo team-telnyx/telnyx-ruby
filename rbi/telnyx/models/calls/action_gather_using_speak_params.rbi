@@ -218,8 +218,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai
+                Telnyx::InworldVoiceSettings,
+                Telnyx::XaiVoiceSettings
               )
             )
           )
@@ -237,8 +237,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::XaiVoiceSettings::OrHash
               )
           ).void
         end
@@ -274,8 +274,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::OrHash,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai::OrHash
+                Telnyx::InworldVoiceSettings::OrHash,
+                Telnyx::XaiVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -405,8 +405,8 @@ module Telnyx
                   Telnyx::AzureVoiceSettings,
                   Telnyx::RimeVoiceSettings,
                   Telnyx::ResembleVoiceSettings,
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld,
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai
+                  Telnyx::InworldVoiceSettings,
+                  Telnyx::XaiVoiceSettings
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -672,154 +672,10 @@ module Telnyx
                 Telnyx::AzureVoiceSettings,
                 Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld,
-                Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai
+                Telnyx::InworldVoiceSettings,
+                Telnyx::XaiVoiceSettings
               )
             end
-
-          class Inworld < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Voice settings provider type
-            sig { returns(Symbol) }
-            attr_accessor :type
-
-            # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
-            # more expressive variation, and `BALANCED` sits in between. Optional and only
-            # supported by `TTS2`; when omitted, the provider default applies.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::OrSymbol
-                )
-              )
-            end
-            attr_reader :delivery_mode
-
-            sig do
-              params(
-                delivery_mode:
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::OrSymbol
-              ).void
-            end
-            attr_writer :delivery_mode
-
-            sig do
-              params(
-                delivery_mode:
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::OrSymbol,
-                type: Symbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-              # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
-              # more expressive variation, and `BALANCED` sits in between. Optional and only
-              # supported by `TTS2`; when omitted, the provider default applies.
-              delivery_mode: nil,
-              # Voice settings provider type
-              type: :inworld
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  type: Symbol,
-                  delivery_mode:
-                    Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::OrSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # Controls the expressiveness and consistency of the Inworld `TTS2` model's speech
-            # synthesis. `STABLE` favors consistent, predictable output, `CREATIVE` allows
-            # more expressive variation, and `BALANCED` sits in between. Optional and only
-            # supported by `TTS2`; when omitted, the provider default applies.
-            module DeliveryMode
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              STABLE =
-                T.let(
-                  :STABLE,
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
-                )
-              BALANCED =
-                T.let(
-                  :BALANCED,
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
-                )
-              CREATIVE =
-                T.let(
-                  :CREATIVE,
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Inworld::DeliveryMode::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
-
-          class Xai < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings::Xai,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Voice settings provider type
-            sig { returns(Symbol) }
-            attr_accessor :type
-
-            # Language code, or `auto` to detect automatically.
-            sig { returns(T.nilable(String)) }
-            attr_reader :language
-
-            sig { params(language: String).void }
-            attr_writer :language
-
-            sig do
-              params(language: String, type: Symbol).returns(T.attached_class)
-            end
-            def self.new(
-              # Language code, or `auto` to detect automatically.
-              language: nil,
-              # Voice settings provider type
-              type: :xai
-            )
-            end
-
-            sig { override.returns({ type: Symbol, language: String }) }
-            def to_hash
-            end
-          end
 
           sig do
             override.returns(

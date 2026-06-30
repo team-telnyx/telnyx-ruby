@@ -3,34 +3,34 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Dir::VerifyEmailTest < Telnyx::Test::ResourceTest
-  def test_confirm_code_required_params
+  def test_confirm_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.dir.verify_email.confirm_code("16635d38-75a6-4481-82e8-69af60e05011", code: "482915")
+    response = @telnyx.dir.verify_email.confirm("16635d38-75a6-4481-82e8-69af60e05011", code: "482915")
 
     assert_pattern do
-      response => Telnyx::Models::Dir::VerifyEmailConfirmCodeResponse
+      response => Telnyx::Models::Dir::VerifyEmailConfirmResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Dir::VerifyEmailConfirmCodeResponse::Data
+        data: Telnyx::Models::Dir::VerifyEmailConfirmResponse::Data
       }
     end
   end
 
-  def test_send_code
+  def test_send_
     skip("Mock server tests are disabled")
 
-    response = @telnyx.dir.verify_email.send_code("16635d38-75a6-4481-82e8-69af60e05011")
+    response = @telnyx.dir.verify_email.send_("16635d38-75a6-4481-82e8-69af60e05011")
 
     assert_pattern do
-      response => Telnyx::Models::Dir::VerifyEmailSendCodeResponse
+      response => Telnyx::Models::Dir::VerifyEmailSendResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Dir::VerifyEmailSendCodeResponse::Data
+        data: Telnyx::Models::Dir::VerifyEmailSendResponse::Data
       }
     end
   end

@@ -70,13 +70,13 @@ module Telnyx
 
         # @!attribute external_llm
         #
-        #   @return [Telnyx::Models::AI::AssistantCreateParams::ExternalLlm, nil]
-        optional :external_llm, -> { Telnyx::AI::AssistantCreateParams::ExternalLlm }
+        #   @return [Telnyx::Models::AI::ExternalLlmReq, nil]
+        optional :external_llm, -> { Telnyx::AI::ExternalLlmReq }
 
         # @!attribute fallback_config
         #
-        #   @return [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig, nil]
-        optional :fallback_config, -> { Telnyx::AI::AssistantCreateParams::FallbackConfig }
+        #   @return [Telnyx::Models::AI::FallbackConfigReq, nil]
+        optional :fallback_config, -> { Telnyx::AI::FallbackConfigReq }
 
         # @!attribute greeting
         #   Text that the assistant will use to start the conversation. This may be
@@ -100,9 +100,8 @@ module Telnyx
         #   `/ai/integrations/connections`. Each item references a catalog integration by
         #   `integration_id`.
         #
-        #   @return [Array<Telnyx::Models::AI::AssistantCreateParams::Integration>, nil]
-        optional :integrations,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantCreateParams::Integration] }
+        #   @return [Array<Telnyx::Models::AI::AssistantIntegration>, nil]
+        optional :integrations, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantIntegration] }
 
         # @!attribute interruption_settings
         #   Settings for interruptions and how the assistant decides the user has finished
@@ -112,8 +111,8 @@ module Telnyx
         #   `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
         #   `eager_eot_threshold`).
         #
-        #   @return [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings, nil]
-        optional :interruption_settings, -> { Telnyx::AI::AssistantCreateParams::InterruptionSettings }
+        #   @return [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings, nil]
+        optional :interruption_settings, -> { Telnyx::AI::InferenceEmbeddingInterruptionSettings }
 
         # @!attribute llm_api_key_ref
         #   This is only needed when using third-party inference providers selected by
@@ -130,9 +129,8 @@ module Telnyx
         #   MCP servers attached to the assistant. Create MCP servers with
         #   `/ai/mcp_servers`, then reference them by `id` here.
         #
-        #   @return [Array<Telnyx::Models::AI::AssistantCreateParams::McpServer>, nil]
-        optional :mcp_servers,
-                 -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantCreateParams::McpServer] }
+        #   @return [Array<Telnyx::Models::AI::AssistantMcpServer>, nil]
+        optional :mcp_servers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantMcpServer] }
 
         # @!attribute messaging_settings
         #
@@ -162,8 +160,8 @@ module Telnyx
         #   Telephony-control tools (e.g. hangup, transfer) are unavailable
         #   post-conversation. Beta feature.
         #
-        #   @return [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings, nil]
-        optional :post_conversation_settings, -> { Telnyx::AI::AssistantCreateParams::PostConversationSettings }
+        #   @return [Telnyx::Models::AI::PostConversationSettingsReq, nil]
+        optional :post_conversation_settings, -> { Telnyx::AI::PostConversationSettingsReq }
 
         # @!attribute privacy_settings
         #
@@ -233,21 +231,21 @@ module Telnyx
         #
         #   @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
         #
-        #   @param external_llm [Telnyx::Models::AI::AssistantCreateParams::ExternalLlm]
+        #   @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
         #
-        #   @param fallback_config [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig]
+        #   @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
         #
         #   @param greeting [String] Text that the assistant will use to start the conversation. This may be template
         #
         #   @param insight_settings [Telnyx::Models::AI::InsightSettings]
         #
-        #   @param integrations [Array<Telnyx::Models::AI::AssistantCreateParams::Integration>] Connected integrations attached to the assistant. The catalog of available integ
+        #   @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
         #
-        #   @param interruption_settings [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        #   @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
         #
         #   @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
         #
-        #   @param mcp_servers [Array<Telnyx::Models::AI::AssistantCreateParams::McpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        #   @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
         #
         #   @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
         #
@@ -255,7 +253,7 @@ module Telnyx
         #
         #   @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
         #
-        #   @param post_conversation_settings [Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings] Configuration for post-conversation processing. When enabled, the assistant rece
+        #   @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
         #
         #   @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
         #
@@ -363,9 +361,8 @@ module Telnyx
               #   credentials). Part of the LLM bundle — see `model` for cascade semantics.
               #   Mutually exclusive with `model` on the node (a single LLM identity per node).
               #
-              #   @return [Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm, nil]
-              optional :external_llm,
-                       -> { Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm }
+              #   @return [Telnyx::Models::AI::ExternalLlmReq, nil]
+              optional :external_llm, -> { Telnyx::AI::ExternalLlmReq }
 
               # @!attribute instructions_mode
               #   How `instructions` combine with the assistant-level instructions. `replace`
@@ -459,7 +456,7 @@ module Telnyx
               #
               #   @param instructions [String] Prompt that drives the LLM while this node is active. Required.
               #
-              #   @param external_llm [Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm] Override for `Assistant.external_llm` while this node is active. Use this to rou
+              #   @param external_llm [Telnyx::Models::AI::ExternalLlmReq] Override for `Assistant.external_llm` while this node is active. Use this to rou
               #
               #   @param instructions_mode [Symbol, Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::InstructionsMode] How `instructions` combine with the assistant-level instructions. `replace` (def
               #
@@ -480,96 +477,6 @@ module Telnyx
               #   @param type [Symbol, Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::Type] Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a s
               #
               #   @param voice_settings [Telnyx::Models::AI::VoiceSettings] Per-node voice override. Only fields set here override the assistant-level voice
-
-              # @see Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt#external_llm
-              class ExternalLlm < Telnyx::Internal::Type::BaseModel
-                # @!attribute base_url
-                #   Base URL for the external LLM endpoint.
-                #
-                #   @return [String]
-                required :base_url, String
-
-                # @!attribute model
-                #   Model identifier to use with the external LLM endpoint.
-                #
-                #   @return [String]
-                required :model, String
-
-                # @!attribute authentication_method
-                #   Authentication method used when connecting to the external LLM endpoint.
-                #
-                #   @return [Symbol, Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::AuthenticationMethod, nil]
-                optional :authentication_method,
-                         enum: -> { Telnyx::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::AuthenticationMethod }
-
-                # @!attribute certificate_ref
-                #   Integration secret identifier for the client certificate used with certificate
-                #   authentication.
-                #
-                #   @return [String, nil]
-                optional :certificate_ref, String
-
-                # @!attribute forward_metadata
-                #   When `true`, Telnyx forwards the assistant's dynamic variables to the external
-                #   LLM endpoint as a top-level `extra_metadata` object on the chat completion
-                #   request body. Defaults to `false`. Example payload sent to the external
-                #   endpoint:
-                #   `{"extra_metadata": {"customer_name": "Jane", "account_id": "acct_789", "telnyx_agent_target": "+13125550100", "telnyx_end_user_target": "+13125550123"}}`.
-                #   Distinct from OpenAI's native `metadata` field, which has its own size and type
-                #   limits.
-                #
-                #   @return [Boolean, nil]
-                optional :forward_metadata, Telnyx::Internal::Type::Boolean
-
-                # @!attribute llm_api_key_ref
-                #   Integration secret identifier for the external LLM API key.
-                #
-                #   @return [String, nil]
-                optional :llm_api_key_ref, String
-
-                # @!attribute token_retrieval_url
-                #   URL used to retrieve an access token when certificate authentication is enabled.
-                #
-                #   @return [String, nil]
-                optional :token_retrieval_url, String
-
-                # @!method initialize(base_url:, model:, authentication_method: nil, certificate_ref: nil, forward_metadata: nil, llm_api_key_ref: nil, token_retrieval_url: nil)
-                #   Some parameter documentations has been truncated, see
-                #   {Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm}
-                #   for more details.
-                #
-                #   Override for `Assistant.external_llm` while this node is active. Use this to
-                #   route a node's turns to a different external LLM (different `model`, `base_url`,
-                #   credentials). Part of the LLM bundle — see `model` for cascade semantics.
-                #   Mutually exclusive with `model` on the node (a single LLM identity per node).
-                #
-                #   @param base_url [String] Base URL for the external LLM endpoint.
-                #
-                #   @param model [String] Model identifier to use with the external LLM endpoint.
-                #
-                #   @param authentication_method [Symbol, Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm::AuthenticationMethod] Authentication method used when connecting to the external LLM endpoint.
-                #
-                #   @param certificate_ref [String] Integration secret identifier for the client certificate used with certificate a
-                #
-                #   @param forward_metadata [Boolean] When `true`, Telnyx forwards the assistant's dynamic variables to the external L
-                #
-                #   @param llm_api_key_ref [String] Integration secret identifier for the external LLM API key.
-                #
-                #   @param token_retrieval_url [String] URL used to retrieve an access token when certificate authentication is enabled.
-
-                # Authentication method used when connecting to the external LLM endpoint.
-                #
-                # @see Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Node::Prompt::ExternalLlm#authentication_method
-                module AuthenticationMethod
-                  extend Telnyx::Internal::Type::Enum
-
-                  TOKEN = :token
-                  CERTIFICATE = :certificate
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
 
               # How `instructions` combine with the assistant-level instructions. `replace`
               # (default): the node's instructions are used alone. `append`: the node's
@@ -1267,395 +1174,6 @@ module Telnyx
               #   @return [Array(Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Edge::Target::Node, Telnyx::Models::AI::AssistantCreateParams::ConversationFlow::Edge::Target::Assistant)]
             end
           end
-        end
-
-        class ExternalLlm < Telnyx::Internal::Type::BaseModel
-          # @!attribute base_url
-          #   Base URL for the external LLM endpoint.
-          #
-          #   @return [String]
-          required :base_url, String
-
-          # @!attribute model
-          #   Model identifier to use with the external LLM endpoint.
-          #
-          #   @return [String]
-          required :model, String
-
-          # @!attribute authentication_method
-          #   Authentication method used when connecting to the external LLM endpoint.
-          #
-          #   @return [Symbol, Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::AuthenticationMethod, nil]
-          optional :authentication_method,
-                   enum: -> { Telnyx::AI::AssistantCreateParams::ExternalLlm::AuthenticationMethod }
-
-          # @!attribute certificate_ref
-          #   Integration secret identifier for the client certificate used with certificate
-          #   authentication.
-          #
-          #   @return [String, nil]
-          optional :certificate_ref, String
-
-          # @!attribute forward_metadata
-          #   When `true`, Telnyx forwards the assistant's dynamic variables to the external
-          #   LLM endpoint as a top-level `extra_metadata` object on the chat completion
-          #   request body. Defaults to `false`. Example payload sent to the external
-          #   endpoint:
-          #   `{"extra_metadata": {"customer_name": "Jane", "account_id": "acct_789", "telnyx_agent_target": "+13125550100", "telnyx_end_user_target": "+13125550123"}}`.
-          #   Distinct from OpenAI's native `metadata` field, which has its own size and type
-          #   limits.
-          #
-          #   @return [Boolean, nil]
-          optional :forward_metadata, Telnyx::Internal::Type::Boolean
-
-          # @!attribute llm_api_key_ref
-          #   Integration secret identifier for the external LLM API key.
-          #
-          #   @return [String, nil]
-          optional :llm_api_key_ref, String
-
-          # @!attribute token_retrieval_url
-          #   URL used to retrieve an access token when certificate authentication is enabled.
-          #
-          #   @return [String, nil]
-          optional :token_retrieval_url, String
-
-          # @!method initialize(base_url:, model:, authentication_method: nil, certificate_ref: nil, forward_metadata: nil, llm_api_key_ref: nil, token_retrieval_url: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::AI::AssistantCreateParams::ExternalLlm} for more details.
-          #
-          #   @param base_url [String] Base URL for the external LLM endpoint.
-          #
-          #   @param model [String] Model identifier to use with the external LLM endpoint.
-          #
-          #   @param authentication_method [Symbol, Telnyx::Models::AI::AssistantCreateParams::ExternalLlm::AuthenticationMethod] Authentication method used when connecting to the external LLM endpoint.
-          #
-          #   @param certificate_ref [String] Integration secret identifier for the client certificate used with certificate a
-          #
-          #   @param forward_metadata [Boolean] When `true`, Telnyx forwards the assistant's dynamic variables to the external L
-          #
-          #   @param llm_api_key_ref [String] Integration secret identifier for the external LLM API key.
-          #
-          #   @param token_retrieval_url [String] URL used to retrieve an access token when certificate authentication is enabled.
-
-          # Authentication method used when connecting to the external LLM endpoint.
-          #
-          # @see Telnyx::Models::AI::AssistantCreateParams::ExternalLlm#authentication_method
-          module AuthenticationMethod
-            extend Telnyx::Internal::Type::Enum
-
-            TOKEN = :token
-            CERTIFICATE = :certificate
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
-
-        class FallbackConfig < Telnyx::Internal::Type::BaseModel
-          # @!attribute external_llm
-          #
-          #   @return [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm, nil]
-          optional :external_llm, -> { Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm }
-
-          # @!attribute llm_api_key_ref
-          #   Integration secret identifier for the fallback model API key.
-          #
-          #   @return [String, nil]
-          optional :llm_api_key_ref, String
-
-          # @!attribute model
-          #   Fallback Telnyx-hosted model to use when the primary LLM provider is
-          #   unavailable.
-          #
-          #   @return [String, nil]
-          optional :model, String
-
-          # @!method initialize(external_llm: nil, llm_api_key_ref: nil, model: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::AI::AssistantCreateParams::FallbackConfig} for more details.
-          #
-          #   @param external_llm [Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm]
-          #
-          #   @param llm_api_key_ref [String] Integration secret identifier for the fallback model API key.
-          #
-          #   @param model [String] Fallback Telnyx-hosted model to use when the primary LLM provider is unavailable
-
-          # @see Telnyx::Models::AI::AssistantCreateParams::FallbackConfig#external_llm
-          class ExternalLlm < Telnyx::Internal::Type::BaseModel
-            # @!attribute base_url
-            #   Base URL for the external LLM endpoint.
-            #
-            #   @return [String]
-            required :base_url, String
-
-            # @!attribute model
-            #   Model identifier to use with the external LLM endpoint.
-            #
-            #   @return [String]
-            required :model, String
-
-            # @!attribute authentication_method
-            #   Authentication method used when connecting to the external LLM endpoint.
-            #
-            #   @return [Symbol, Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::AuthenticationMethod, nil]
-            optional :authentication_method,
-                     enum: -> { Telnyx::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::AuthenticationMethod }
-
-            # @!attribute certificate_ref
-            #   Integration secret identifier for the client certificate used with certificate
-            #   authentication.
-            #
-            #   @return [String, nil]
-            optional :certificate_ref, String
-
-            # @!attribute forward_metadata
-            #   When `true`, Telnyx forwards the assistant's dynamic variables to the external
-            #   LLM endpoint as a top-level `extra_metadata` object on the chat completion
-            #   request body. Defaults to `false`. Example payload sent to the external
-            #   endpoint:
-            #   `{"extra_metadata": {"customer_name": "Jane", "account_id": "acct_789", "telnyx_agent_target": "+13125550100", "telnyx_end_user_target": "+13125550123"}}`.
-            #   Distinct from OpenAI's native `metadata` field, which has its own size and type
-            #   limits.
-            #
-            #   @return [Boolean, nil]
-            optional :forward_metadata, Telnyx::Internal::Type::Boolean
-
-            # @!attribute llm_api_key_ref
-            #   Integration secret identifier for the external LLM API key.
-            #
-            #   @return [String, nil]
-            optional :llm_api_key_ref, String
-
-            # @!attribute token_retrieval_url
-            #   URL used to retrieve an access token when certificate authentication is enabled.
-            #
-            #   @return [String, nil]
-            optional :token_retrieval_url, String
-
-            # @!method initialize(base_url:, model:, authentication_method: nil, certificate_ref: nil, forward_metadata: nil, llm_api_key_ref: nil, token_retrieval_url: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm} for
-            #   more details.
-            #
-            #   @param base_url [String] Base URL for the external LLM endpoint.
-            #
-            #   @param model [String] Model identifier to use with the external LLM endpoint.
-            #
-            #   @param authentication_method [Symbol, Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm::AuthenticationMethod] Authentication method used when connecting to the external LLM endpoint.
-            #
-            #   @param certificate_ref [String] Integration secret identifier for the client certificate used with certificate a
-            #
-            #   @param forward_metadata [Boolean] When `true`, Telnyx forwards the assistant's dynamic variables to the external L
-            #
-            #   @param llm_api_key_ref [String] Integration secret identifier for the external LLM API key.
-            #
-            #   @param token_retrieval_url [String] URL used to retrieve an access token when certificate authentication is enabled.
-
-            # Authentication method used when connecting to the external LLM endpoint.
-            #
-            # @see Telnyx::Models::AI::AssistantCreateParams::FallbackConfig::ExternalLlm#authentication_method
-            module AuthenticationMethod
-              extend Telnyx::Internal::Type::Enum
-
-              TOKEN = :token
-              CERTIFICATE = :certificate
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-        end
-
-        class Integration < Telnyx::Internal::Type::BaseModel
-          # @!attribute integration_id
-          #   Catalog integration ID to attach. This is the `id` from the integrations catalog
-          #   at `/ai/integrations` (the same value also appears as `integration_id` on
-          #   entries returned by `/ai/integrations/connections`). It is **not** the
-          #   connection-level `id` from `/ai/integrations/connections`.
-          #
-          #   @return [String]
-          required :integration_id, String
-
-          # @!attribute allowed_list
-          #   Optional per-assistant allowlist of integration tool names. When omitted or
-          #   empty, all tools allowed by the connected integration are available to the
-          #   assistant.
-          #
-          #   @return [Array<String>, nil]
-          optional :allowed_list, Telnyx::Internal::Type::ArrayOf[String]
-
-          # @!method initialize(integration_id:, allowed_list: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::AI::AssistantCreateParams::Integration} for more details.
-          #
-          #   Reference to a connected integration attached to an assistant. Discover
-          #   available integrations with `/ai/integrations` and connected integrations with
-          #   `/ai/integrations/connections`.
-          #
-          #   @param integration_id [String] Catalog integration ID to attach. This is the `id` from the integrations catalog
-          #
-          #   @param allowed_list [Array<String>] Optional per-assistant allowlist of integration tool names. When omitted or empt
-        end
-
-        class InterruptionSettings < Telnyx::Internal::Type::BaseModel
-          # @!attribute disable_greeting_interruption
-          #   When true, disables user interruptions while the assistant greeting is playing.
-          #
-          #   @return [Boolean, nil]
-          optional :disable_greeting_interruption, Telnyx::Internal::Type::Boolean
-
-          # @!attribute enable
-          #   Whether users can interrupt the assistant while it is speaking.
-          #
-          #   @return [Boolean, nil]
-          optional :enable, Telnyx::Internal::Type::Boolean
-
-          # @!attribute start_speaking_plan
-          #   Controls when the assistant starts speaking after the user stops. These
-          #   thresholds primarily apply to non turn-taking transcription models. For
-          #   turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
-          #   transcription end-of-turn settings under `transcription.settings` instead.
-          #
-          #   @return [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan, nil]
-          optional :start_speaking_plan,
-                   -> { Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan }
-
-          # @!method initialize(disable_greeting_interruption: nil, enable: nil, start_speaking_plan: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings} for more
-          #   details.
-          #
-          #   Settings for interruptions and how the assistant decides the user has finished
-          #   speaking. These timings are most relevant when using non turn-taking
-          #   transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
-          #   behavior is controlled by the transcription end-of-turn settings under
-          #   `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
-          #   `eager_eot_threshold`).
-          #
-          #   @param disable_greeting_interruption [Boolean] When true, disables user interruptions while the assistant greeting is playing.
-          #
-          #   @param enable [Boolean] Whether users can interrupt the assistant while it is speaking.
-          #
-          #   @param start_speaking_plan [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan] Controls when the assistant starts speaking after the user stops. These threshol
-
-          # @see Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings#start_speaking_plan
-          class StartSpeakingPlan < Telnyx::Internal::Type::BaseModel
-            # @!attribute transcription_endpointing_plan
-            #   Endpointing thresholds used to decide when the user has finished speaking.
-            #   Applies to non turn-taking transcription models. For `deepgram/flux`, use
-            #   `transcription.settings.eot_threshold` / `eot_timeout_ms` /
-            #   `eager_eot_threshold`.
-            #
-            #   @return [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan, nil]
-            optional :transcription_endpointing_plan,
-                     -> { Telnyx::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan }
-
-            # @!attribute wait_seconds
-            #   Minimum seconds to wait before the assistant starts speaking.
-            #
-            #   @return [Float, nil]
-            optional :wait_seconds, Float
-
-            # @!method initialize(transcription_endpointing_plan: nil, wait_seconds: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan}
-            #   for more details.
-            #
-            #   Controls when the assistant starts speaking after the user stops. These
-            #   thresholds primarily apply to non turn-taking transcription models. For
-            #   turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
-            #   transcription end-of-turn settings under `transcription.settings` instead.
-            #
-            #   @param transcription_endpointing_plan [Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan::TranscriptionEndpointingPlan] Endpointing thresholds used to decide when the user has finished speaking. Appli
-            #
-            #   @param wait_seconds [Float] Minimum seconds to wait before the assistant starts speaking.
-
-            # @see Telnyx::Models::AI::AssistantCreateParams::InterruptionSettings::StartSpeakingPlan#transcription_endpointing_plan
-            class TranscriptionEndpointingPlan < Telnyx::Internal::Type::BaseModel
-              # @!attribute on_no_punctuation_seconds
-              #   Seconds to wait after the transcript ends without punctuation.
-              #
-              #   @return [Float, nil]
-              optional :on_no_punctuation_seconds, Float
-
-              # @!attribute on_number_seconds
-              #   Seconds to wait after the transcript ends with a number.
-              #
-              #   @return [Float, nil]
-              optional :on_number_seconds, Float
-
-              # @!attribute on_punctuation_seconds
-              #   Seconds to wait after the transcript ends with punctuation.
-              #
-              #   @return [Float, nil]
-              optional :on_punctuation_seconds, Float
-
-              # @!method initialize(on_no_punctuation_seconds: nil, on_number_seconds: nil, on_punctuation_seconds: nil)
-              #   Endpointing thresholds used to decide when the user has finished speaking.
-              #   Applies to non turn-taking transcription models. For `deepgram/flux`, use
-              #   `transcription.settings.eot_threshold` / `eot_timeout_ms` /
-              #   `eager_eot_threshold`.
-              #
-              #   @param on_no_punctuation_seconds [Float] Seconds to wait after the transcript ends without punctuation.
-              #
-              #   @param on_number_seconds [Float] Seconds to wait after the transcript ends with a number.
-              #
-              #   @param on_punctuation_seconds [Float] Seconds to wait after the transcript ends with punctuation.
-            end
-          end
-        end
-
-        class McpServer < Telnyx::Internal::Type::BaseModel
-          # @!attribute id
-          #   ID of the MCP server to attach. This must be the `id` of an MCP server returned
-          #   by the `/ai/mcp_servers` endpoints.
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!attribute allowed_tools
-          #   Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
-          #   uses the MCP server's configured `allowed_tools`.
-          #
-          #   @return [Array<String>, nil]
-          optional :allowed_tools, Telnyx::Internal::Type::ArrayOf[String]
-
-          # @!method initialize(id:, allowed_tools: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::AI::AssistantCreateParams::McpServer} for more details.
-          #
-          #   Reference to an MCP server attached to an assistant. Create and manage MCP
-          #   servers with the `/ai/mcp_servers` endpoints, then attach them to assistants by
-          #   ID.
-          #
-          #   @param id [String] ID of the MCP server to attach. This must be the `id` of an MCP server returned
-          #
-          #   @param allowed_tools [Array<String>] Optional per-assistant allowlist of MCP tool names. When omitted, the assistant
-        end
-
-        class PostConversationSettings < Telnyx::Internal::Type::BaseModel
-          # @!attribute enabled
-          #   Whether post-conversation processing is enabled. When true, the assistant will
-          #   be invoked after the conversation ends to perform any final tool calls. Defaults
-          #   to false.
-          #
-          #   @return [Boolean, nil]
-          optional :enabled, Telnyx::Internal::Type::Boolean
-
-          # @!method initialize(enabled: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::AI::AssistantCreateParams::PostConversationSettings} for more
-          #   details.
-          #
-          #   Configuration for post-conversation processing. When enabled, the assistant
-          #   receives one additional LLM turn after the conversation ends, allowing it to
-          #   execute tool calls such as logging to a CRM or sending a summary. The assistant
-          #   can execute multiple parallel or sequential tools during this phase.
-          #   Telephony-control tools (e.g. hangup, transfer) are unavailable
-          #   post-conversation. Beta feature.
-          #
-          #   @param enabled [Boolean] Whether post-conversation processing is enabled. When true, the assistant will b
         end
       end
     end

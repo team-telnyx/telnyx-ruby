@@ -39,30 +39,22 @@ module Telnyx
               dynamic_variables_webhook_timeout_ms: Integer,
               dynamic_variables_webhook_url: String,
               enabled_features: T::Array[Telnyx::AI::EnabledFeatures::OrSymbol],
-              external_llm:
-                Telnyx::AI::Assistants::UpdateAssistant::ExternalLlm::OrHash,
-              fallback_config:
-                Telnyx::AI::Assistants::UpdateAssistant::FallbackConfig::OrHash,
+              external_llm: Telnyx::AI::ExternalLlmReq::OrHash,
+              fallback_config: Telnyx::AI::FallbackConfigReq::OrHash,
               greeting: String,
               insight_settings: Telnyx::AI::InsightSettings::OrHash,
               instructions: String,
-              integrations:
-                T::Array[
-                  Telnyx::AI::Assistants::UpdateAssistant::Integration::OrHash
-                ],
+              integrations: T::Array[Telnyx::AI::AssistantIntegration::OrHash],
               interruption_settings:
-                Telnyx::AI::Assistants::UpdateAssistant::InterruptionSettings::OrHash,
+                Telnyx::AI::InferenceEmbeddingInterruptionSettings::OrHash,
               llm_api_key_ref: String,
-              mcp_servers:
-                T::Array[
-                  Telnyx::AI::Assistants::UpdateAssistant::McpServer::OrHash
-                ],
+              mcp_servers: T::Array[Telnyx::AI::AssistantMcpServer::OrHash],
               messaging_settings: Telnyx::AI::MessagingSettings::OrHash,
               model: String,
               name: String,
               observability_settings: Telnyx::AI::ObservabilityReq::OrHash,
               post_conversation_settings:
-                Telnyx::AI::Assistants::UpdateAssistant::PostConversationSettings::OrHash,
+                Telnyx::AI::PostConversationSettingsReq::OrHash,
               privacy_settings: Telnyx::AI::PrivacySettings::OrHash,
               tags: T::Array[String],
               telephony_settings: Telnyx::AI::TelephonySettings::OrHash,

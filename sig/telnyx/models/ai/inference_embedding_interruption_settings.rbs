@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    module AI
+      type inference_embedding_interruption_settings =
+        {
+          disable_greeting_interruption: bool,
+          enable: bool,
+          start_speaking_plan: Telnyx::AI::StartSpeakingPlan
+        }
+
+      class InferenceEmbeddingInterruptionSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader disable_greeting_interruption: bool?
+
+        def disable_greeting_interruption=: (bool) -> bool
+
+        attr_reader enable: bool?
+
+        def enable=: (bool) -> bool
+
+        attr_reader start_speaking_plan: Telnyx::AI::StartSpeakingPlan?
+
+        def start_speaking_plan=: (
+          Telnyx::AI::StartSpeakingPlan
+        ) -> Telnyx::AI::StartSpeakingPlan
+
+        def initialize: (
+          ?disable_greeting_interruption: bool,
+          ?enable: bool,
+          ?start_speaking_plan: Telnyx::AI::StartSpeakingPlan
+        ) -> void
+
+        def to_hash: -> {
+          disable_greeting_interruption: bool,
+          enable: bool,
+          start_speaking_plan: Telnyx::AI::StartSpeakingPlan
+        }
+      end
+    end
+  end
+end

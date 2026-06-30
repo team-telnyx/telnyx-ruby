@@ -33,7 +33,7 @@ module Telnyx
 
           def calls: (
             String account_sid,
-            params: Telnyx::Models::Texml::Accounts::CallCallsParams::params,
+            params: Telnyx::Texml::Accounts::CallCallsParams::Params,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::Texml::Accounts::CallCallsResponse
 
