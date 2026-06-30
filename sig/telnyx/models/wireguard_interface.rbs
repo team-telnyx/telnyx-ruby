@@ -1,11 +1,42 @@
 module Telnyx
   module Models
-    type wireguard_interface = {  }
+    type wireguard_interface =
+      {
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        enable_sip_trunking: bool,
+        endpoint: String,
+        public_key: String
+      }
 
     class WireguardInterface < Telnyx::Models::Record
-      def initialize: -> void
+      def name: -> String?
 
-      def to_hash: -> {  }
+      def name=: (String _) -> String
+
+      def network_id: -> String?
+
+      def network_id=: (String _) -> String
+
+      def enable_sip_trunking: -> bool?
+
+      def enable_sip_trunking=: (bool _) -> bool
+
+      def initialize: (
+        ?name: String,
+        ?network_id: String,
+        ?enable_sip_trunking: bool
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        network_id: String,
+        status: Telnyx::Models::interface_status,
+        enable_sip_trunking: bool,
+        endpoint: String,
+        public_key: String
+      }
     end
   end
 end
