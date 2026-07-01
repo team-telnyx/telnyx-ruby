@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.151.0 (2026-07-01)
+
+Full Changelog: [v5.150.0...v5.151.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.150.0...v5.151.0)
+
+### Bug Fixes
+
+* pass SDK_WRITE_TOKEN instead of RELEASE_PLEASE_TOKEN ([b6dccb6](https://github.com/team-telnyx/telnyx-ruby/commit/b6dccb6667f598dbec7af0496aeb5b45bf488075))
+
+
+### Chores
+
+* promote from staging ee34971 ([2cee8ca](https://github.com/team-telnyx/telnyx-ruby/commit/2cee8caffa27a55fcee3abbe7bcebd5fda63b178))
+
 ## [5.147.0](https://github.com/team-telnyx/telnyx-ruby-staging/compare/v5.146.0...v5.147.0) (2026-06-18)
 
 
