@@ -31,6 +31,14 @@ module Telnyx
         sig { params(interim_results: T::Boolean).void }
         attr_writer :interim_results
 
+        # Nova-3 keyterm prompting. Up to 100 domain-specific terms or brand names to bias
+        # recognition toward. Nova-3-only; use `hints` on Nova-2.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :keyterms
+
+        sig { params(keyterms: T::Array[String]).void }
+        attr_writer :keyterms
+
         # Keywords and their respective intensifiers (boosting values) to improve
         # transcription accuracy for specific words or phrases. The intensifier should be
         # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
@@ -55,6 +63,17 @@ module Telnyx
         end
         attr_writer :language
 
+        # Enable Deepgram's smart formatting (capitalization, punctuation, and digit
+        # normalization). Note: Telnyx defaults this to `true`, overriding Deepgram's
+        # underlying default of `false` — omit the field to get a smart-formatted
+        # transcript, or set it to `false` to receive the raw lowercase transcript without
+        # punctuation.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :smart_format
+
+        sig { params(smart_format: T::Boolean).void }
+        attr_writer :smart_format
+
         # Number of milliseconds of silence to consider an utterance ended. Ranges from 0
         # to 5000 ms.
         sig { returns(T.nilable(Integer)) }
@@ -70,8 +89,10 @@ module Telnyx
             transcription_model:
               Telnyx::Calls::DeepgramNova3Config::TranscriptionModel::OrSymbol,
             interim_results: T::Boolean,
+            keyterms: T::Array[String],
             keywords_boosting: T::Hash[Symbol, Float],
             language: Telnyx::Calls::DeepgramNova3Config::Language::OrSymbol,
+            smart_format: T::Boolean,
             utterance_end_ms: Integer
           ).returns(T.attached_class)
         end
@@ -81,12 +102,21 @@ module Telnyx
           # Whether to send also interim results. If set to false, only final results will
           # be sent.
           interim_results: nil,
+          # Nova-3 keyterm prompting. Up to 100 domain-specific terms or brand names to bias
+          # recognition toward. Nova-3-only; use `hints` on Nova-2.
+          keyterms: nil,
           # Keywords and their respective intensifiers (boosting values) to improve
           # transcription accuracy for specific words or phrases. The intensifier should be
           # a numeric value. Example: `{"snuffleupagus": 5, "systrom": 2, "krieger": 1}`.
           keywords_boosting: nil,
           # Language to use for speech recognition with nova-3 model
           language: nil,
+          # Enable Deepgram's smart formatting (capitalization, punctuation, and digit
+          # normalization). Note: Telnyx defaults this to `true`, overriding Deepgram's
+          # underlying default of `false` — omit the field to get a smart-formatted
+          # transcript, or set it to `false` to receive the raw lowercase transcript without
+          # punctuation.
+          smart_format: nil,
           # Number of milliseconds of silence to consider an utterance ended. Ranges from 0
           # to 5000 ms.
           utterance_end_ms: nil
@@ -101,8 +131,10 @@ module Telnyx
               transcription_model:
                 Telnyx::Calls::DeepgramNova3Config::TranscriptionModel::OrSymbol,
               interim_results: T::Boolean,
+              keyterms: T::Array[String],
               keywords_boosting: T::Hash[Symbol, Float],
               language: Telnyx::Calls::DeepgramNova3Config::Language::OrSymbol,
+              smart_format: T::Boolean,
               utterance_end_ms: Integer
             }
           )

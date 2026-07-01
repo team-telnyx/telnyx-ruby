@@ -5,9 +5,11 @@ module Telnyx
         {
           transcription_engine: Telnyx::Models::Calls::DeepgramNova2Config::transcription_engine,
           transcription_model: Telnyx::Models::Calls::DeepgramNova2Config::transcription_model,
+          hints: ::Array[String],
           interim_results: bool,
           keywords_boosting: ::Hash[Symbol, Float],
           language: Telnyx::Models::Calls::DeepgramNova2Config::language,
+          smart_format: bool,
           utterance_end_ms: Integer
         }
 
@@ -15,6 +17,10 @@ module Telnyx
         attr_accessor transcription_engine: Telnyx::Models::Calls::DeepgramNova2Config::transcription_engine
 
         attr_accessor transcription_model: Telnyx::Models::Calls::DeepgramNova2Config::transcription_model
+
+        attr_reader hints: ::Array[String]?
+
+        def hints=: (::Array[String]) -> ::Array[String]
 
         attr_reader interim_results: bool?
 
@@ -30,6 +36,10 @@ module Telnyx
           Telnyx::Models::Calls::DeepgramNova2Config::language
         ) -> Telnyx::Models::Calls::DeepgramNova2Config::language
 
+        attr_reader smart_format: bool?
+
+        def smart_format=: (bool) -> bool
+
         attr_reader utterance_end_ms: Integer?
 
         def utterance_end_ms=: (Integer) -> Integer
@@ -37,18 +47,22 @@ module Telnyx
         def initialize: (
           transcription_engine: Telnyx::Models::Calls::DeepgramNova2Config::transcription_engine,
           transcription_model: Telnyx::Models::Calls::DeepgramNova2Config::transcription_model,
+          ?hints: ::Array[String],
           ?interim_results: bool,
           ?keywords_boosting: ::Hash[Symbol, Float],
           ?language: Telnyx::Models::Calls::DeepgramNova2Config::language,
+          ?smart_format: bool,
           ?utterance_end_ms: Integer
         ) -> void
 
         def to_hash: -> {
           transcription_engine: Telnyx::Models::Calls::DeepgramNova2Config::transcription_engine,
           transcription_model: Telnyx::Models::Calls::DeepgramNova2Config::transcription_model,
+          hints: ::Array[String],
           interim_results: bool,
           keywords_boosting: ::Hash[Symbol, Float],
           language: Telnyx::Models::Calls::DeepgramNova2Config::language,
+          smart_format: bool,
           utterance_end_ms: Integer
         }
 

@@ -47,13 +47,6 @@ module Telnyx
         #   @return [Integer]
         required :chunk_total, Integer
 
-        # @!attribute document_id
-        #   Document identifier. Present only for knowledge_base records; null for all other
-        #   record types.
-        #
-        #   @return [String, nil]
-        required :document_id, String, nil?: true
-
         # @!attribute ingested_at
         #   When the record was chunked, embedded, and indexed (ISO 8601).
         #
@@ -78,13 +71,6 @@ module Telnyx
         #
         #   @return [String]
         required :record_id, String
-
-        # @!attribute record_type
-        #   Type of the record.
-        #
-        #   @return [Symbol, Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType]
-        required :record_type,
-                 enum: -> { Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType }
 
         # @!attribute region
         #   The region where this record is stored.
@@ -112,14 +98,13 @@ module Telnyx
         required :user_id, String
 
         # @!attribute metadata
-        #   Arbitrary metadata attached to the record at ingestion time. Stored as a
-        #   flat_object in OpenSearch and filterable via filter[field]=value query
-        #   parameters.
+        #   Arbitrary metadata attached to the record at ingestion time. Filterable via
+        #   filter[field]=value query parameters.
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-        # @!method initialize(id:, chunk_index:, chunk_total:, document_id:, ingested_at:, organization_id:, record_created_at:, record_id:, record_type:, region:, score:, text:, user_id:, metadata: nil)
+        # @!method initialize(id:, chunk_index:, chunk_total:, ingested_at:, organization_id:, record_created_at:, record_id:, region:, score:, text:, user_id:, metadata: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data} for more
         #   details.
@@ -134,8 +119,6 @@ module Telnyx
         #
         #   @param chunk_total [Integer] Total number of chunks the parent record was split into.
         #
-        #   @param document_id [String, nil] Document identifier. Present only for knowledge_base records; null for all other
-        #
         #   @param ingested_at [Time] When the record was chunked, embedded, and indexed (ISO 8601).
         #
         #   @param organization_id [String] Identifier of the organization that owns this record.
@@ -143,8 +126,6 @@ module Telnyx
         #   @param record_created_at [Time] When the original record was created (ISO 8601).
         #
         #   @param record_id [String] Identifier of the parent record. Multiple chunks from the same record share this
-        #
-        #   @param record_type [Symbol, Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType] Type of the record.
         #
         #   @param region [Symbol, Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::Region] The region where this record is stored.
         #
@@ -154,22 +135,7 @@ module Telnyx
         #
         #   @param user_id [String] Identifier of the user who owns this record.
         #
-        #   @param metadata [Hash{Symbol=>Object}] Arbitrary metadata attached to the record at ingestion time. Stored as a flat_ob
-
-        # Type of the record.
-        #
-        # @see Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data#record_type
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          VOICE = :voice
-          MESSAGE = :message
-          AI_PIPELINE_STORAGE = :ai_pipeline_storage
-          KNOWLEDGE_BASE = :knowledge_base
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        #   @param metadata [Hash{Symbol=>Object}] Arbitrary metadata attached to the record at ingestion time. Filterable via filt
 
         # The region where this record is stored.
         #
@@ -190,14 +156,13 @@ module Telnyx
       # @see Telnyx::Models::AIRetrieveConversationHistoriesResponse#meta
       class Meta < Telnyx::Internal::Type::BaseModel
         # @!attribute page_number
-        #   Current page number (always 1 — this API does not support pagination, use top_k
-        #   instead).
+        #   Current page number (1-based), matching the requested page[number].
         #
         #   @return [Integer]
         required :page_number, Integer
 
         # @!attribute page_size
-        #   Number of results per page (equals the effective top_k value).
+        #   Number of results per page, matching the requested page[size].
         #
         #   @return [Integer]
         required :page_size, Integer
@@ -209,26 +174,21 @@ module Telnyx
         required :total_pages, Integer
 
         # @!attribute total_results
-        #   Total number of matching results across all queried regions (before top_k
-        #   truncation).
+        #   Total number of matching results across all queried regions.
         #
         #   @return [Integer]
         required :total_results, Integer
 
         # @!method initialize(page_number:, page_size:, total_pages:, total_results:)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::AIRetrieveConversationHistoriesResponse::Meta} for more
-        #   details.
-        #
         #   Pagination metadata following the standard Telnyx V2 API format.
         #
-        #   @param page_number [Integer] Current page number (always 1 — this API does not support pagination, use top_k
+        #   @param page_number [Integer] Current page number (1-based), matching the requested page[number].
         #
-        #   @param page_size [Integer] Number of results per page (equals the effective top_k value).
+        #   @param page_size [Integer] Number of results per page, matching the requested page[size].
         #
         #   @param total_pages [Integer] Total number of pages.
         #
-        #   @param total_results [Integer] Total number of matching results across all queried regions (before top_k trunca
+        #   @param total_results [Integer] Total number of matching results across all queried regions.
       end
     end
   end
