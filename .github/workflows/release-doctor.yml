@@ -18,6 +18,6 @@ jobs:
         run: |
           bash ./bin/check-release-environment
         env:
-          RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          SDK_WRITE_TOKEN: ${{ secrets.SDK_WRITE_TOKEN }}
           RUBYGEMS_HOST: ${{ secrets.TELNYX_RUBYGEMS_HOST || secrets.RUBYGEMS_HOST }}
           GEM_HOST_API_KEY: ${{ secrets.TELNYX_GEM_HOST_API_KEY || secrets.GEM_HOST_API_KEY }}
