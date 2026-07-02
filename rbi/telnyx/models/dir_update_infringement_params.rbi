@@ -56,7 +56,8 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :display_name
 
-      # Append-only supporting documents.
+      # Append-only supporting documents to attach while resolving the claim (e.g.
+      # authorization or licensing proof).
       sig { returns(T.nilable(T::Array[Telnyx::Document])) }
       attr_accessor :documents
 
@@ -97,7 +98,8 @@ module Telnyx
         infringement_resolution_notes:,
         call_reasons: nil,
         display_name: nil,
-        # Append-only supporting documents.
+        # Append-only supporting documents to attach while resolving the claim (e.g.
+        # authorization or licensing proof).
         documents: nil,
         # Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
         logo_url: nil,

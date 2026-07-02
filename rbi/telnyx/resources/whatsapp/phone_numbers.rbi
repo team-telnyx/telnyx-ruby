@@ -61,6 +61,27 @@ module Telnyx
         )
         end
 
+        # Returns whether the 24-hour conversation window is currently open for a given
+        # source/destination pair. If window_active is false, only template messages may
+        # be sent.
+        sig do
+          params(
+            phone_number: String,
+            destination_number: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(
+            Telnyx::Models::Whatsapp::PhoneNumberRetrieveConversationWindowResponse
+          )
+        end
+        def retrieve_conversation_window(
+          # Phone number (E.164 format)
+          phone_number,
+          # Destination phone number in E.164 format
+          destination_number:,
+          request_options: {}
+        )
+        end
+
         # Submit verification code for a phone number
         sig do
           params(

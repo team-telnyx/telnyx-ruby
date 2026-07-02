@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     module AI
-      AssistantGetTexmlResponse = String
+      AssistantGetTexmlResponse = T.type_alias { String }
     end
   end
 end

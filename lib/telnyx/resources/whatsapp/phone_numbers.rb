@@ -81,6 +81,33 @@ module Telnyx
           )
         end
 
+        # Returns whether the 24-hour conversation window is currently open for a given
+        # source/destination pair. If window_active is false, only template messages may
+        # be sent.
+        #
+        # @overload retrieve_conversation_window(phone_number, destination_number:, request_options: {})
+        #
+        # @param phone_number [String] Phone number (E.164 format)
+        #
+        # @param destination_number [String] Destination phone number in E.164 format
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Whatsapp::PhoneNumberRetrieveConversationWindowResponse]
+        #
+        # @see Telnyx::Models::Whatsapp::PhoneNumberRetrieveConversationWindowParams
+        def retrieve_conversation_window(phone_number, params)
+          parsed, options = Telnyx::Whatsapp::PhoneNumberRetrieveConversationWindowParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
+          @client.request(
+            method: :get,
+            path: ["v2/whatsapp/phone_numbers/%1$s/conversation_window", phone_number],
+            query: query,
+            model: Telnyx::Models::Whatsapp::PhoneNumberRetrieveConversationWindowResponse,
+            options: options
+          )
+        end
+
         # Submit verification code for a phone number
         #
         # @overload verify(phone_number, code:, request_options: {})

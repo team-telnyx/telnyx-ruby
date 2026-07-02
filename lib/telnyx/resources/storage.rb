@@ -16,6 +16,10 @@ module Telnyx
       # @return [Telnyx::Resources::Storage::Migrations]
       attr_reader :migrations
 
+      # Manage KV storage namespaces
+      # @return [Telnyx::Resources::Storage::Kvs]
+      attr_reader :kvs
+
       # List Migration Source coverage
       #
       # @overload list_migration_source_coverage(request_options: {})
@@ -42,6 +46,7 @@ module Telnyx
         @buckets = Telnyx::Resources::Storage::Buckets.new(client: client)
         @migration_sources = Telnyx::Resources::Storage::MigrationSources.new(client: client)
         @migrations = Telnyx::Resources::Storage::Migrations.new(client: client)
+        @kvs = Telnyx::Resources::Storage::Kvs.new(client: client)
       end
     end
   end
