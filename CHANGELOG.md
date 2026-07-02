@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.151.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.150.0...v5.151.0) (2026-07-02)
+
+
+### Bug Fixes
+
+* pass SDK_WRITE_TOKEN instead of RELEASE_PLEASE_TOKEN ([#296](https://github.com/team-telnyx/telnyx-ruby/issues/296)) ([a230240](https://github.com/team-telnyx/telnyx-ruby/commit/a230240c8545ebd7e8b33d6de860c5c279e0497d))
+
 ## [5.150.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.149.0...v5.150.0) (2026-06-30)
 
 
