@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.152.0 (2026-07-02)
+
+Full Changelog: [v5.151.0...v5.152.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.151.0...v5.152.0)
+
+### Chores
+
+* promote from staging 07b2d36 ([d8e7db7](https://github.com/team-telnyx/telnyx-ruby/commit/d8e7db739974cd709716567aab5f07356013800c))
+* sync repo ([a3e7b10](https://github.com/team-telnyx/telnyx-ruby/commit/a3e7b1046dc79c12fc799c6463d72200e812cbf8))
+
 ## [5.147.0](https://github.com/team-telnyx/telnyx-ruby-staging/compare/v5.146.0...v5.147.0) (2026-06-18)
 
 
