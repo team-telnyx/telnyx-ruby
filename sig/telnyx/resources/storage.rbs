@@ -7,6 +7,8 @@ module Telnyx
 
       attr_reader migrations: Telnyx::Resources::Storage::Migrations
 
+      attr_reader kvs: Telnyx::Resources::Storage::Kvs
+
       def list_migration_source_coverage: (
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::StorageListMigrationSourceCoverageResponse

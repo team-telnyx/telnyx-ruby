@@ -16,6 +16,10 @@ module Telnyx
       sig { returns(Telnyx::Resources::Storage::Migrations) }
       attr_reader :migrations
 
+      # Manage KV storage namespaces
+      sig { returns(Telnyx::Resources::Storage::Kvs) }
+      attr_reader :kvs
+
       # List Migration Source coverage
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(

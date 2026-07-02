@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module Dir
+      type reference_list = { data: ::Array[Telnyx::Dir::Reference] }
+
+      class ReferenceList < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Dir::Reference]
+
+        def initialize: (data: ::Array[Telnyx::Dir::Reference]) -> void
+
+        def to_hash: -> { data: ::Array[Telnyx::Dir::Reference] }
+      end
+    end
+  end
+end

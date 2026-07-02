@@ -6,11 +6,11 @@ module Telnyx
           enterprise_id: String,
           authorizer_email: String,
           authorizer_name: String,
+          call_reasons: ::Array[String],
           certify_brand_is_accurate: Telnyx::Models::Enterprises::DirCreateParams::certify_brand_is_accurate,
           certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership,
           certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
           display_name: String,
-          call_reasons: ::Array[String],
           documents: ::Array[Telnyx::Document],
           logo_url: String,
           reselling: bool
@@ -27,6 +27,8 @@ module Telnyx
 
         attr_accessor authorizer_name: String
 
+        attr_accessor call_reasons: ::Array[String]
+
         attr_accessor certify_brand_is_accurate: Telnyx::Models::Enterprises::DirCreateParams::certify_brand_is_accurate
 
         attr_accessor certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership
@@ -34,10 +36,6 @@ module Telnyx
         attr_accessor certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content
 
         attr_accessor display_name: String
-
-        attr_reader call_reasons: ::Array[String]?
-
-        def call_reasons=: (::Array[String]) -> ::Array[String]
 
         attr_reader documents: ::Array[Telnyx::Document]?
 
@@ -55,11 +53,11 @@ module Telnyx
           enterprise_id: String,
           authorizer_email: String,
           authorizer_name: String,
+          call_reasons: ::Array[String],
           certify_brand_is_accurate: Telnyx::Models::Enterprises::DirCreateParams::certify_brand_is_accurate,
           certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership,
           certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
           display_name: String,
-          ?call_reasons: ::Array[String],
           ?documents: ::Array[Telnyx::Document],
           ?logo_url: String,
           ?reselling: bool,
@@ -70,11 +68,11 @@ module Telnyx
           enterprise_id: String,
           authorizer_email: String,
           authorizer_name: String,
+          call_reasons: ::Array[String],
           certify_brand_is_accurate: Telnyx::Models::Enterprises::DirCreateParams::certify_brand_is_accurate,
           certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership,
           certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
           display_name: String,
-          call_reasons: ::Array[String],
           documents: ::Array[Telnyx::Document],
           logo_url: String,
           reselling: bool,
