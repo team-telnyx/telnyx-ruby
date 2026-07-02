@@ -1,0 +1,39 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Kvs
+        class Keys
+          def retrieve: (
+            String key,
+            id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> StringIO
+
+          def list: (
+            String id,
+            ?cursor: String,
+            ?limit: Integer,
+            ?prefix: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Kvs::KeyListResponse
+
+          def delete: (
+            String key,
+            id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def set: (
+            String key,
+            id: String,
+            body: Telnyx::Internal::file_input,
+            ?ttl_secs: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end
