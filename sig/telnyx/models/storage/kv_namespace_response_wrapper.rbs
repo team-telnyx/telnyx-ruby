@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Storage
+      type kv_namespace_response_wrapper =
+        { data: Telnyx::Storage::KvNamespace }
+
+      class KvNamespaceResponseWrapper < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Storage::KvNamespace?
+
+        def data=: (
+          Telnyx::Storage::KvNamespace
+        ) -> Telnyx::Storage::KvNamespace
+
+        def initialize: (?data: Telnyx::Storage::KvNamespace) -> void
+
+        def to_hash: -> { data: Telnyx::Storage::KvNamespace }
+      end
+    end
+  end
+end

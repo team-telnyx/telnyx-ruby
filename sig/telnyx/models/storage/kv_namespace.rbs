@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    module Storage
+      type kv_namespace =
+        {
+          id: String,
+          created_at: Time,
+          name: String,
+          record_type: String,
+          status: Telnyx::Models::Storage::KvNamespace::status,
+          updated_at: Time
+        }
+
+      class KvNamespace < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: Telnyx::Models::Storage::KvNamespace::status?
+
+        def status=: (
+          Telnyx::Models::Storage::KvNamespace::status
+        ) -> Telnyx::Models::Storage::KvNamespace::status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?name: String,
+          ?record_type: String,
+          ?status: Telnyx::Models::Storage::KvNamespace::status,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          name: String,
+          record_type: String,
+          status: Telnyx::Models::Storage::KvNamespace::status,
+          updated_at: Time
+        }
+
+        type status =
+          :pending
+          | :provision_ok
+          | :provision_failed
+          | :deleting
+          | :delete_failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          PROVISION_OK: :provision_ok
+          PROVISION_FAILED: :provision_failed
+          DELETING: :deleting
+          DELETE_FAILED: :delete_failed
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::KvNamespace::status]
+        end
+      end
+    end
+  end
+end

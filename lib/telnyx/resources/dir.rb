@@ -18,6 +18,17 @@ module Telnyx
       # @return [Telnyx::Resources::Dir::PhoneNumbers]
       attr_reader :phone_numbers
 
+      # Submit and manage the two business references and one financial reference that
+      # vouch for a DIR. References are contacted to confirm the business identity
+      # during vetting.
+      # @return [Telnyx::Resources::Dir::References]
+      attr_reader :references
+
+      # Verify ownership of a DIR's authorizer email. A short code is emailed and
+      # confirmed; the email must be verified before references can be submitted.
+      # @return [Telnyx::Resources::Dir::VerifyEmail]
+      attr_reader :verify_email
+
       # Returns a single DIR by id. The enterprise is resolved server-side from the DIR
       # id. Returns `404` if the DIR does not exist or is not yours.
       #
@@ -298,6 +309,9 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DirUpdateInfringementParams} for more details.
+      #
       # Push a fix for a DIR that is `suspended` with an open infringement claim back
       # into vetting. `POST /dir/{dir_id}/submit` is blocked while a claim is open, so
       # this is the customer-callable path to update the DIR's content and re-certify
@@ -323,7 +337,7 @@ module Telnyx
       #
       # @param display_name [String, nil]
       #
-      # @param documents [Array<Telnyx::Models::Document>, nil] Append-only supporting documents.
+      # @param documents [Array<Telnyx::Models::Document>, nil] Append-only supporting documents to attach while resolving the claim (e.g. autho
       #
       # @param logo_url [String, nil] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #
@@ -351,6 +365,8 @@ module Telnyx
         @comments = Telnyx::Resources::Dir::Comments.new(client: client)
         @phone_number_batches = Telnyx::Resources::Dir::PhoneNumberBatches.new(client: client)
         @phone_numbers = Telnyx::Resources::Dir::PhoneNumbers.new(client: client)
+        @references = Telnyx::Resources::Dir::References.new(client: client)
+        @verify_email = Telnyx::Resources::Dir::VerifyEmail.new(client: client)
       end
     end
   end

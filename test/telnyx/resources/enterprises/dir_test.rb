@@ -11,6 +11,7 @@ class Telnyx::Test::Resources::Enterprises::DirTest < Telnyx::Test::ResourceTest
         "4a6192a4-573d-446d-b3ce-aff9117272a6",
         authorizer_email: "sam@acmeplumbing.example.com",
         authorizer_name: "Sam Owner",
+        call_reasons: ["Appointment reminders", "Billing inquiries"],
         certify_brand_is_accurate: true,
         certify_ip_ownership: true,
         certify_no_shaft_content: true,

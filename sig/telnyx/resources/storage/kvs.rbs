@@ -1,0 +1,32 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Kvs
+        attr_reader keys: Telnyx::Resources::Storage::Kvs::Keys
+
+        def create: (
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::KvNamespaceResponseWrapper
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::KvNamespaceResponseWrapper
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Storage::KvNamespace]
+
+        def delete: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::KvNamespaceResponseWrapper
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    module Dir
+      type email_verification_status_wrapped =
+        { data: Telnyx::Dir::EmailVerificationStatusWrapped::Data }
+
+      class EmailVerificationStatusWrapped < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Dir::EmailVerificationStatusWrapped::Data
+
+        def initialize: (
+          data: Telnyx::Dir::EmailVerificationStatusWrapped::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Dir::EmailVerificationStatusWrapped::Data
+        }
+
+        type data =
+          {
+            email_verified: bool,
+            record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type,
+            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor email_verified: bool
+
+          attr_accessor status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status
+
+          attr_accessor record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type
+
+          def initialize: (
+            email_verified: bool,
+            record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type,
+            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status
+          ) -> void
+
+          def to_hash: -> {
+            email_verified: bool,
+            record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type,
+            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status
+          }
+
+          type record_type = :email_verification
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL_VERIFICATION: :email_verification
+
+            def self?.values: -> ::Array[Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type]
+          end
+
+          type status = :sent | :verified | :unverified
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            SENT: :sent
+            VERIFIED: :verified
+            UNVERIFIED: :unverified
+
+            def self?.values: -> ::Array[Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status]
+          end
+        end
+      end
+    end
+  end
+end

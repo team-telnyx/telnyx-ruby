@@ -18,6 +18,17 @@ module Telnyx
       sig { returns(Telnyx::Resources::Dir::PhoneNumbers) }
       attr_reader :phone_numbers
 
+      # Submit and manage the two business references and one financial reference that
+      # vouch for a DIR. References are contacted to confirm the business identity
+      # during vetting.
+      sig { returns(Telnyx::Resources::Dir::References) }
+      attr_reader :references
+
+      # Verify ownership of a DIR's authorizer email. A short code is emailed and
+      # confirmed; the email must be verified before references can be submitted.
+      sig { returns(Telnyx::Resources::Dir::VerifyEmail) }
+      attr_reader :verify_email
+
       # Returns a single DIR by id. The enterprise is resolved server-side from the DIR
       # id. Returns `404` if the DIR does not exist or is not yours.
       sig do
@@ -294,7 +305,8 @@ module Telnyx
         infringement_resolution_notes:,
         call_reasons: nil,
         display_name: nil,
-        # Append-only supporting documents.
+        # Append-only supporting documents to attach while resolving the claim (e.g.
+        # authorization or licensing proof).
         documents: nil,
         # Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
         logo_url: nil,

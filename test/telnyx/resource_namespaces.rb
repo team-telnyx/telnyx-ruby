@@ -125,6 +125,9 @@ module Telnyx
       module Integrations
       end
 
+      module Kvs
+      end
+
       module Legacy
         module Reporting
           module BatchDetailRecords
@@ -264,6 +267,9 @@ module Telnyx
 
       module Storage
         module Buckets
+        end
+
+        module Kvs
         end
 
         module Migrations

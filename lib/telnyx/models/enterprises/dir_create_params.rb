@@ -27,6 +27,13 @@ module Telnyx
         #   @return [String]
         required :authorizer_name, String
 
+        # @!attribute call_reasons
+        #   1–10 reasons your business calls customers. Validate phrasing against
+        #   `POST /call_reasons/validate`.
+        #
+        #   @return [Array<String>]
+        required :call_reasons, Telnyx::Internal::Type::ArrayOf[String]
+
         # @!attribute certify_brand_is_accurate
         #   Must be `true`.
         #
@@ -54,13 +61,6 @@ module Telnyx
         #   @return [String]
         required :display_name, String
 
-        # @!attribute call_reasons
-        #   1–10 reasons your business calls customers. Validate phrasing against
-        #   `POST /call_reasons/validate`.
-        #
-        #   @return [Array<String>, nil]
-        optional :call_reasons, Telnyx::Internal::Type::ArrayOf[String]
-
         # @!attribute documents
         #   Supporting documents. Each `document_id` may appear at most once on a DIR.
         #
@@ -80,7 +80,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :reselling, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(enterprise_id:, authorizer_email:, authorizer_name:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, call_reasons: nil, documents: nil, logo_url: nil, reselling: nil, request_options: {})
+        # @!method initialize(enterprise_id:, authorizer_email:, authorizer_name:, call_reasons:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, documents: nil, logo_url: nil, reselling: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Enterprises::DirCreateParams} for more details.
         #
@@ -90,6 +90,8 @@ module Telnyx
         #
         #   @param authorizer_name [String] Name of the person at your enterprise who is authorizing this DIR registration.
         #
+        #   @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
+        #
         #   @param certify_brand_is_accurate [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyBrandIsAccurate] Must be `true`.
         #
         #   @param certify_ip_ownership [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyIPOwnership] Must be `true`. Confirms ownership of any logos/trademarks shown.
@@ -97,8 +99,6 @@ module Telnyx
         #   @param certify_no_shaft_content [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyNoShaftContent] Must be `true`. Confirms this DIR is not used for SHAFT content (Sex, Hate, Alco
         #
         #   @param display_name [String] Name shown to call recipients. No emoji; not whitespace-only.
-        #
-        #   @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
         #
         #   @param documents [Array<Telnyx::Models::Document>] Supporting documents. Each `document_id` may appear at most once on a DIR.
         #

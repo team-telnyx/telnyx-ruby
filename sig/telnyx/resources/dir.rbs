@@ -7,6 +7,10 @@ module Telnyx
 
       attr_reader phone_numbers: Telnyx::Resources::Dir::PhoneNumbers
 
+      attr_reader references: Telnyx::Resources::Dir::References
+
+      attr_reader verify_email: Telnyx::Resources::Dir::VerifyEmail
+
       def retrieve: (
         String dir_id,
         ?request_options: Telnyx::request_opts

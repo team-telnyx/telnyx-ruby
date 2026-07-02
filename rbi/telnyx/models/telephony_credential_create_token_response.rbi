@@ -2,6 +2,6 @@
 
 module Telnyx
   module Models
-    TelephonyCredentialCreateTokenResponse = String
+    TelephonyCredentialCreateTokenResponse = T.type_alias { String }
   end
 end
