@@ -320,12 +320,8 @@ module Telnyx
               #   The call events for which Telnyx should send a webhook. Multiple events can be
               #   defined when separated by a space.
               #
-              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent, nil]
-              optional :status_callback_event,
-                       enum: -> {
-                         Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent
-                       },
-                       api_name: :StatusCallbackEvent
+              #   @return [String, nil]
+              optional :status_callback_event, String, api_name: :StatusCallbackEvent
 
               # @!attribute status_callback_method
               #   HTTP request type used for `StatusCallback`.
@@ -475,7 +471,7 @@ module Telnyx
               #
               #   @param status_callback [String] URL destination for Telnyx to send status callback events to for the call.
               #
-              #   @param status_callback_event [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent] The call events for which Telnyx should send a webhook. Multiple events can be d
+              #   @param status_callback_event [String] The call events for which Telnyx should send a webhook. Multiple events can be d
               #
               #   @param status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod] HTTP request type used for `StatusCallback`.
               #
@@ -653,22 +649,6 @@ module Telnyx
                 CANADA = :Canada
                 AUSTRALIA = :Australia
                 MIDDLE_EAST = :"Middle East"
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # The call events for which Telnyx should send a webhook. Multiple events can be
-              # defined when separated by a space.
-              #
-              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL#status_callback_event
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                INITIATED = :initiated
-                RINGING = :ringing
-                ANSWERED = :answered
-                COMPLETED = :completed
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -1022,12 +1002,8 @@ module Telnyx
               #   The call events for which Telnyx should send a webhook. Multiple events can be
               #   defined when separated by a space.
               #
-              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent, nil]
-              optional :status_callback_event,
-                       enum: -> {
-                         Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent
-                       },
-                       api_name: :StatusCallbackEvent
+              #   @return [String, nil]
+              optional :status_callback_event, String, api_name: :StatusCallbackEvent
 
               # @!attribute status_callback_method
               #   HTTP request type used for `StatusCallback`.
@@ -1179,7 +1155,7 @@ module Telnyx
               #
               #   @param status_callback [String] URL destination for Telnyx to send status callback events to for the call.
               #
-              #   @param status_callback_event [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent] The call events for which Telnyx should send a webhook. Multiple events can be d
+              #   @param status_callback_event [String] The call events for which Telnyx should send a webhook. Multiple events can be d
               #
               #   @param status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod] HTTP request type used for `StatusCallback`.
               #
@@ -1357,22 +1333,6 @@ module Telnyx
                 CANADA = :Canada
                 AUSTRALIA = :Australia
                 MIDDLE_EAST = :"Middle East"
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # The call events for which Telnyx should send a webhook. Multiple events can be
-              # defined when separated by a space.
-              #
-              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml#status_callback_event
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                INITIATED = :initiated
-                RINGING = :ringing
-                ANSWERED = :answered
-                COMPLETED = :completed
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -1725,12 +1685,8 @@ module Telnyx
               #   The call events for which Telnyx should send a webhook. Multiple events can be
               #   defined when separated by a space.
               #
-              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent, nil]
-              optional :status_callback_event,
-                       enum: -> {
-                         Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent
-                       },
-                       api_name: :StatusCallbackEvent
+              #   @return [String, nil]
+              optional :status_callback_event, String, api_name: :StatusCallbackEvent
 
               # @!attribute status_callback_method
               #   HTTP request type used for `StatusCallback`.
@@ -1887,7 +1843,7 @@ module Telnyx
               #
               #   @param status_callback [String] URL destination for Telnyx to send status callback events to for the call.
               #
-              #   @param status_callback_event [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent] The call events for which Telnyx should send a webhook. Multiple events can be d
+              #   @param status_callback_event [String] The call events for which Telnyx should send a webhook. Multiple events can be d
               #
               #   @param status_callback_method [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod] HTTP request type used for `StatusCallback`.
               #
@@ -2067,22 +2023,6 @@ module Telnyx
                 CANADA = :Canada
                 AUSTRALIA = :Australia
                 MIDDLE_EAST = :"Middle East"
-
-                # @!method self.values
-                #   @return [Array<Symbol>]
-              end
-
-              # The call events for which Telnyx should send a webhook. Multiple events can be
-              # defined when separated by a space.
-              #
-              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault#status_callback_event
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                INITIATED = :initiated
-                RINGING = :ringing
-                ANSWERED = :answered
-                COMPLETED = :completed
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

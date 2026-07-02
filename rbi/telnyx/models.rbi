@@ -613,14 +613,9 @@ module Telnyx
     Telnyx::Models::DirListInfringementClaimsParams
 
   DirListParams = Telnyx::Models::DirListParams
-  DirLoaParams = Telnyx::Models::DirLoaParams
 
   DirNewLoaParams = Telnyx::Models::DirNewLoaParams
 
-  DirRetrieveDocumentTypesParams =
-    Telnyx::Models::DirRetrieveDocumentTypesParams
-  DirRetrieveInfringementClaimsParams =
-    Telnyx::Models::DirRetrieveInfringementClaimsParams
   DirRetrieveParams = Telnyx::Models::DirRetrieveParams
 
   DirStatus = Telnyx::Models::DirStatus
@@ -628,8 +623,6 @@ module Telnyx
   DirSubmitParams = Telnyx::Models::DirSubmitParams
 
   DirUpdateInfringementParams = Telnyx::Models::DirUpdateInfringementParams
-  DirUpdateInfringementUpdateParams =
-    Telnyx::Models::DirUpdateInfringementUpdateParams
 
   DirUpdateParams = Telnyx::Models::DirUpdateParams
 

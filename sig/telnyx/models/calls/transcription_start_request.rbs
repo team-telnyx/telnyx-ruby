@@ -90,6 +90,7 @@ module Telnyx
           | Telnyx::Calls::TranscriptionEngineAssemblyaiConfig
           | Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig
           | Telnyx::Calls::TranscriptionEngineSonioxConfig
+          | Telnyx::Calls::TranscriptionEngineParakeetConfig
           | Telnyx::Calls::TranscriptionEngineAConfig
           | Telnyx::Calls::TranscriptionEngineBConfig
           | Telnyx::Calls::DeepgramNova2Config

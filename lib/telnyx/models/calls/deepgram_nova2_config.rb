@@ -14,6 +14,14 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::DeepgramNova2Config::TranscriptionModel]
         required :transcription_model, enum: -> { Telnyx::Calls::DeepgramNova2Config::TranscriptionModel }
 
+        # @!attribute hints
+        #   Nova-2 keyword biasing without intensifiers. Up to 100 terms to bias recognition
+        #   toward. For weighted biasing, use `keywords_boosting` instead. Nova-2-only; use
+        #   `keyterms` on Nova-3.
+        #
+        #   @return [Array<String>, nil]
+        optional :hints, Telnyx::Internal::Type::ArrayOf[String]
+
         # @!attribute interim_results
         #   Whether to send also interim results. If set to false, only final results will
         #   be sent.
@@ -35,6 +43,16 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::DeepgramNova2Config::Language, nil]
         optional :language, enum: -> { Telnyx::Calls::DeepgramNova2Config::Language }
 
+        # @!attribute smart_format
+        #   Enable Deepgram's smart formatting (capitalization, punctuation, and digit
+        #   normalization). Note: Telnyx defaults this to `true`, overriding Deepgram's
+        #   underlying default of `false` — omit the field to get a smart-formatted
+        #   transcript, or set it to `false` to receive the raw lowercase transcript without
+        #   punctuation.
+        #
+        #   @return [Boolean, nil]
+        optional :smart_format, Telnyx::Internal::Type::Boolean
+
         # @!attribute utterance_end_ms
         #   Number of milliseconds of silence to consider an utterance ended. Ranges from 0
         #   to 5000 ms.
@@ -42,7 +60,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :utterance_end_ms, Integer
 
-        # @!method initialize(transcription_engine:, transcription_model:, interim_results: nil, keywords_boosting: nil, language: nil, utterance_end_ms: nil)
+        # @!method initialize(transcription_engine:, transcription_model:, hints: nil, interim_results: nil, keywords_boosting: nil, language: nil, smart_format: nil, utterance_end_ms: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::DeepgramNova2Config} for more details.
         #
@@ -50,11 +68,15 @@ module Telnyx
         #
         #   @param transcription_model [Symbol, Telnyx::Models::Calls::DeepgramNova2Config::TranscriptionModel]
         #
+        #   @param hints [Array<String>] Nova-2 keyword biasing without intensifiers. Up to 100 terms to bias recognition
+        #
         #   @param interim_results [Boolean] Whether to send also interim results. If set to false, only final results will b
         #
         #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
         #
         #   @param language [Symbol, Telnyx::Models::Calls::DeepgramNova2Config::Language] Language to use for speech recognition with nova-2 model
+        #
+        #   @param smart_format [Boolean] Enable Deepgram's smart formatting (capitalization, punctuation, and digit norma
         #
         #   @param utterance_end_ms [Integer] Number of milliseconds of silence to consider an utterance ended. Ranges from 0
 
