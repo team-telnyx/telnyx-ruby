@@ -28,6 +28,11 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :authorizer_name
 
+        # 1–10 reasons your business calls customers. Validate phrasing against
+        # `POST /call_reasons/validate`.
+        sig { returns(T::Array[String]) }
+        attr_accessor :call_reasons
+
         # Must be `true`.
         sig do
           returns(
@@ -56,14 +61,6 @@ module Telnyx
         # Name shown to call recipients. No emoji; not whitespace-only.
         sig { returns(String) }
         attr_accessor :display_name
-
-        # 1–10 reasons your business calls customers. Validate phrasing against
-        # `POST /call_reasons/validate`.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :call_reasons
-
-        sig { params(call_reasons: T::Array[String]).void }
-        attr_writer :call_reasons
 
         # Supporting documents. Each `document_id` may appear at most once on a DIR.
         sig do
@@ -101,6 +98,7 @@ module Telnyx
             enterprise_id: String,
             authorizer_email: String,
             authorizer_name: String,
+            call_reasons: T::Array[String],
             certify_brand_is_accurate:
               Telnyx::Enterprises::DirCreateParams::CertifyBrandIsAccurate::OrBoolean,
             certify_ip_ownership:
@@ -108,7 +106,6 @@ module Telnyx
             certify_no_shaft_content:
               Telnyx::Enterprises::DirCreateParams::CertifyNoShaftContent::OrBoolean,
             display_name: String,
-            call_reasons: T::Array[String],
             documents:
               T::Array[Telnyx::Enterprises::DirCreateParams::Document::OrHash],
             logo_url: String,
@@ -124,6 +121,9 @@ module Telnyx
           # Name of the person at your enterprise who is authorizing this DIR registration.
           # Must be a real individual (used for audit and trademark-claim contests).
           authorizer_name:,
+          # 1–10 reasons your business calls customers. Validate phrasing against
+          # `POST /call_reasons/validate`.
+          call_reasons:,
           # Must be `true`.
           certify_brand_is_accurate:,
           # Must be `true`. Confirms ownership of any logos/trademarks shown.
@@ -133,9 +133,6 @@ module Telnyx
           certify_no_shaft_content:,
           # Name shown to call recipients. No emoji; not whitespace-only.
           display_name:,
-          # 1–10 reasons your business calls customers. Validate phrasing against
-          # `POST /call_reasons/validate`.
-          call_reasons: nil,
           # Supporting documents. Each `document_id` may appear at most once on a DIR.
           documents: nil,
           # Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
@@ -153,6 +150,7 @@ module Telnyx
               enterprise_id: String,
               authorizer_email: String,
               authorizer_name: String,
+              call_reasons: T::Array[String],
               certify_brand_is_accurate:
                 Telnyx::Enterprises::DirCreateParams::CertifyBrandIsAccurate::OrBoolean,
               certify_ip_ownership:
@@ -160,7 +158,6 @@ module Telnyx
               certify_no_shaft_content:
                 Telnyx::Enterprises::DirCreateParams::CertifyNoShaftContent::OrBoolean,
               display_name: String,
-              call_reasons: T::Array[String],
               documents:
                 T::Array[Telnyx::Enterprises::DirCreateParams::Document],
               logo_url: String,

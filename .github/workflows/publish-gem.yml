@@ -1,0 +1,31 @@
+# This workflow is triggered when a GitHub release is created.
+# It can also be run manually to re-publish to rubygems.org in case it failed for some reason.
+# You can run this workflow by navigating to https://www.github.com/team-telnyx/telnyx-ruby/actions/workflows/publish-gem.yml
+name: Publish Gem
+on:
+  workflow_dispatch:
+
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
+        with:
+          bundler-cache: false
+      - run: |-
+          bundle install
+
+      - name: Publish to RubyGems.org
+        run: |
+          bash ./bin/publish-gem
+        env:
+          # `RUBYGEMS_HOST` is only required for private gem repositories, not https://rubygems.org
+          RUBYGEMS_HOST: ${{ secrets.TELNYX_RUBYGEMS_HOST || secrets.RUBYGEMS_HOST }}
+          GEM_HOST_API_KEY: ${{ secrets.TELNYX_GEM_HOST_API_KEY || secrets.GEM_HOST_API_KEY }}

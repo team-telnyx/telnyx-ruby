@@ -55,7 +55,8 @@ module Telnyx
       optional :display_name, String, nil?: true
 
       # @!attribute documents
-      #   Append-only supporting documents.
+      #   Append-only supporting documents to attach while resolving the claim (e.g.
+      #   authorization or licensing proof).
       #
       #   @return [Array<Telnyx::Models::DirUpdateInfringementParams::Document>, nil]
       optional :documents,
@@ -69,6 +70,9 @@ module Telnyx
       optional :logo_url, String, nil?: true
 
       # @!method initialize(dir_id:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_infringement:, certify_no_shaft_content:, infringement_resolution_notes:, call_reasons: nil, display_name: nil, documents: nil, logo_url: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::DirUpdateInfringementParams} for more details.
+      #
       #   @param dir_id [String]
       #
       #   @param certify_brand_is_accurate [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyBrandIsAccurate] Must be `true`.
@@ -85,7 +89,7 @@ module Telnyx
       #
       #   @param display_name [String, nil]
       #
-      #   @param documents [Array<Telnyx::Models::DirUpdateInfringementParams::Document>, nil] Append-only supporting documents.
+      #   @param documents [Array<Telnyx::Models::DirUpdateInfringementParams::Document>, nil] Append-only supporting documents to attach while resolving the claim (e.g. autho
       #
       #   @param logo_url [String, nil] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #

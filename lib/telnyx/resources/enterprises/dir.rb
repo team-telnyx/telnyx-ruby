@@ -35,13 +35,15 @@ module Telnyx
         #   `POST /enterprises/{id}/branded_calling`).
         # - `404` - enterprise does not exist or does not belong to your account.
         #
-        # @overload create(enterprise_id, authorizer_email:, authorizer_name:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, call_reasons: nil, documents: nil, logo_url: nil, reselling: nil, request_options: {})
+        # @overload create(enterprise_id, authorizer_email:, authorizer_name:, call_reasons:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, documents: nil, logo_url: nil, reselling: nil, request_options: {})
         #
         # @param enterprise_id [String] The enterprise id. Lowercase UUID.
         #
         # @param authorizer_email [String] Contact email of the authorizer. Telnyx may send verification or infringement-no
         #
         # @param authorizer_name [String] Name of the person at your enterprise who is authorizing this DIR registration.
+        #
+        # @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
         #
         # @param certify_brand_is_accurate [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyBrandIsAccurate] Must be `true`.
         #
@@ -50,8 +52,6 @@ module Telnyx
         # @param certify_no_shaft_content [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyNoShaftContent] Must be `true`. Confirms this DIR is not used for SHAFT content (Sex, Hate, Alco
         #
         # @param display_name [String] Name shown to call recipients. No emoji; not whitespace-only.
-        #
-        # @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
         #
         # @param documents [Array<Telnyx::Models::Enterprises::DirCreateParams::Document>] Supporting documents. Each `document_id` may appear at most once on a DIR.
         #

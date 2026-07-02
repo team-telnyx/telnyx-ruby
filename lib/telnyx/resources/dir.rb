@@ -309,6 +309,9 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DirUpdateInfringementParams} for more details.
+      #
       # Push a fix for a DIR that is `suspended` with an open infringement claim back
       # into vetting. `POST /dir/{dir_id}/submit` is blocked while a claim is open, so
       # this is the customer-callable path to update the DIR's content and re-certify
@@ -334,7 +337,7 @@ module Telnyx
       #
       # @param display_name [String, nil]
       #
-      # @param documents [Array<Telnyx::Models::DirUpdateInfringementParams::Document>, nil] Append-only supporting documents.
+      # @param documents [Array<Telnyx::Models::DirUpdateInfringementParams::Document>, nil] Append-only supporting documents to attach while resolving the claim (e.g. autho
       #
       # @param logo_url [String, nil] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #
