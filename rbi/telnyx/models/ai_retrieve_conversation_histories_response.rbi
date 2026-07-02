@@ -91,11 +91,6 @@ module Telnyx
         sig { returns(Integer) }
         attr_accessor :chunk_total
 
-        # Document identifier. Present only for knowledge_base records; null for all other
-        # record types.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :document_id
-
         # When the record was chunked, embedded, and indexed (ISO 8601).
         sig { returns(Time) }
         attr_accessor :ingested_at
@@ -112,14 +107,6 @@ module Telnyx
         # ID.
         sig { returns(String) }
         attr_accessor :record_id
-
-        # Type of the record.
-        sig do
-          returns(
-            Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::TaggedSymbol
-          )
-        end
-        attr_accessor :record_type
 
         # The region where this record is stored.
         sig do
@@ -142,9 +129,8 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :user_id
 
-        # Arbitrary metadata attached to the record at ingestion time. Stored as a
-        # flat_object in OpenSearch and filterable via filter[field]=value query
-        # parameters.
+        # Arbitrary metadata attached to the record at ingestion time. Filterable via
+        # filter[field]=value query parameters.
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :metadata
 
@@ -159,13 +145,10 @@ module Telnyx
             id: String,
             chunk_index: Integer,
             chunk_total: Integer,
-            document_id: T.nilable(String),
             ingested_at: Time,
             organization_id: String,
             record_created_at: Time,
             record_id: String,
-            record_type:
-              Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::OrSymbol,
             region:
               Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::Region::OrSymbol,
             score: Float,
@@ -181,9 +164,6 @@ module Telnyx
           chunk_index:,
           # Total number of chunks the parent record was split into.
           chunk_total:,
-          # Document identifier. Present only for knowledge_base records; null for all other
-          # record types.
-          document_id:,
           # When the record was chunked, embedded, and indexed (ISO 8601).
           ingested_at:,
           # Identifier of the organization that owns this record.
@@ -193,8 +173,6 @@ module Telnyx
           # Identifier of the parent record. Multiple chunks from the same record share this
           # ID.
           record_id:,
-          # Type of the record.
-          record_type:,
           # The region where this record is stored.
           region:,
           # Cosine similarity score between the query vector and this chunk's vector. Higher
@@ -204,9 +182,8 @@ module Telnyx
           text:,
           # Identifier of the user who owns this record.
           user_id:,
-          # Arbitrary metadata attached to the record at ingestion time. Stored as a
-          # flat_object in OpenSearch and filterable via filter[field]=value query
-          # parameters.
+          # Arbitrary metadata attached to the record at ingestion time. Filterable via
+          # filter[field]=value query parameters.
           metadata: nil
         )
         end
@@ -217,13 +194,10 @@ module Telnyx
               id: String,
               chunk_index: Integer,
               chunk_total: Integer,
-              document_id: T.nilable(String),
               ingested_at: Time,
               organization_id: String,
               record_created_at: Time,
               record_id: String,
-              record_type:
-                Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::TaggedSymbol,
               region:
                 Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::Region::TaggedSymbol,
               score: Float,
@@ -234,51 +208,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        # Type of the record.
-        module RecordType
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          VOICE =
-            T.let(
-              :voice,
-              Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::TaggedSymbol
-            )
-          MESSAGE =
-            T.let(
-              :message,
-              Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::TaggedSymbol
-            )
-          AI_PIPELINE_STORAGE =
-            T.let(
-              :ai_pipeline_storage,
-              Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::TaggedSymbol
-            )
-          KNOWLEDGE_BASE =
-            T.let(
-              :knowledge_base,
-              Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data::RecordType::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         # The region where this record is stored.
@@ -336,12 +265,11 @@ module Telnyx
             )
           end
 
-        # Current page number (always 1 — this API does not support pagination, use top_k
-        # instead).
+        # Current page number (1-based), matching the requested page[number].
         sig { returns(Integer) }
         attr_accessor :page_number
 
-        # Number of results per page (equals the effective top_k value).
+        # Number of results per page, matching the requested page[size].
         sig { returns(Integer) }
         attr_accessor :page_size
 
@@ -349,8 +277,7 @@ module Telnyx
         sig { returns(Integer) }
         attr_accessor :total_pages
 
-        # Total number of matching results across all queried regions (before top_k
-        # truncation).
+        # Total number of matching results across all queried regions.
         sig { returns(Integer) }
         attr_accessor :total_results
 
@@ -364,15 +291,13 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Current page number (always 1 — this API does not support pagination, use top_k
-          # instead).
+          # Current page number (1-based), matching the requested page[number].
           page_number:,
-          # Number of results per page (equals the effective top_k value).
+          # Number of results per page, matching the requested page[size].
           page_size:,
           # Total number of pages.
           total_pages:,
-          # Total number of matching results across all queried regions (before top_k
-          # truncation).
+          # Total number of matching results across all queried regions.
           total_results:
         )
         end

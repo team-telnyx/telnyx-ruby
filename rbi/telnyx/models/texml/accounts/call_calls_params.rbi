@@ -484,21 +484,10 @@ module Telnyx
 
               # The call events for which Telnyx should send a webhook. Multiple events can be
               # defined when separated by a space.
-              sig do
-                returns(
-                  T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(String)) }
               attr_reader :status_callback_event
 
-              sig do
-                params(
-                  status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol
-                ).void
-              end
+              sig { params(status_callback_event: String).void }
               attr_writer :status_callback_event
 
               # HTTP request type used for `StatusCallback`.
@@ -664,8 +653,7 @@ module Telnyx
                   sip_region:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::OrSymbol,
                   status_callback: String,
-                  status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol,
+                  status_callback_event: String,
                   status_callback_method:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol,
                   supervise_call_sid: String,
@@ -862,8 +850,7 @@ module Telnyx
                     sip_region:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::OrSymbol,
                     status_callback: String,
-                    status_callback_event:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::OrSymbol,
+                    status_callback_event: String,
                     status_callback_method:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackMethod::OrSymbol,
                     supervise_call_sid: String,
@@ -1297,52 +1284,6 @@ module Telnyx
                   override.returns(
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::SipRegion::TaggedSymbol
-                    ]
-                  )
-                end
-                def self.values
-                end
-              end
-
-              # The call events for which Telnyx should send a webhook. Multiple events can be
-              # defined when separated by a space.
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(
-                      Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent
-                    )
-                  end
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                INITIATED =
-                  T.let(
-                    :initiated,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
-                  )
-                RINGING =
-                  T.let(
-                    :ringing,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
-                  )
-                ANSWERED =
-                  T.let(
-                    :answered,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
-                  )
-                COMPLETED =
-                  T.let(
-                    :completed,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
-                  )
-
-                sig do
-                  override.returns(
-                    T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::StatusCallbackEvent::TaggedSymbol
                     ]
                   )
                 end
@@ -1911,21 +1852,10 @@ module Telnyx
 
               # The call events for which Telnyx should send a webhook. Multiple events can be
               # defined when separated by a space.
-              sig do
-                returns(
-                  T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(String)) }
               attr_reader :status_callback_event
 
-              sig do
-                params(
-                  status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol
-                ).void
-              end
+              sig { params(status_callback_event: String).void }
               attr_writer :status_callback_event
 
               # HTTP request type used for `StatusCallback`.
@@ -2091,8 +2021,7 @@ module Telnyx
                   sip_region:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::OrSymbol,
                   status_callback: String,
-                  status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol,
+                  status_callback_event: String,
                   status_callback_method:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol,
                   supervise_call_sid: String,
@@ -2290,8 +2219,7 @@ module Telnyx
                     sip_region:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::OrSymbol,
                     status_callback: String,
-                    status_callback_event:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::OrSymbol,
+                    status_callback_event: String,
                     status_callback_method:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackMethod::OrSymbol,
                     supervise_call_sid: String,
@@ -2725,52 +2653,6 @@ module Telnyx
                   override.returns(
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::SipRegion::TaggedSymbol
-                    ]
-                  )
-                end
-                def self.values
-                end
-              end
-
-              # The call events for which Telnyx should send a webhook. Multiple events can be
-              # defined when separated by a space.
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(
-                      Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent
-                    )
-                  end
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                INITIATED =
-                  T.let(
-                    :initiated,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
-                  )
-                RINGING =
-                  T.let(
-                    :ringing,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
-                  )
-                ANSWERED =
-                  T.let(
-                    :answered,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
-                  )
-                COMPLETED =
-                  T.let(
-                    :completed,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
-                  )
-
-                sig do
-                  override.returns(
-                    T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::StatusCallbackEvent::TaggedSymbol
                     ]
                   )
                 end
@@ -3334,21 +3216,10 @@ module Telnyx
 
               # The call events for which Telnyx should send a webhook. Multiple events can be
               # defined when separated by a space.
-              sig do
-                returns(
-                  T.nilable(
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol
-                  )
-                )
-              end
+              sig { returns(T.nilable(String)) }
               attr_reader :status_callback_event
 
-              sig do
-                params(
-                  status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol
-                ).void
-              end
+              sig { params(status_callback_event: String).void }
               attr_writer :status_callback_event
 
               # HTTP request type used for `StatusCallback`.
@@ -3516,8 +3387,7 @@ module Telnyx
                   sip_region:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::OrSymbol,
                   status_callback: String,
-                  status_callback_event:
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol,
+                  status_callback_event: String,
                   status_callback_method:
                     Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol,
                   supervise_call_sid: String,
@@ -3713,8 +3583,7 @@ module Telnyx
                     sip_region:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::OrSymbol,
                     status_callback: String,
-                    status_callback_event:
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::OrSymbol,
+                    status_callback_event: String,
                     status_callback_method:
                       Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackMethod::OrSymbol,
                     supervise_call_sid: String,
@@ -4149,52 +4018,6 @@ module Telnyx
                   override.returns(
                     T::Array[
                       Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::SipRegion::TaggedSymbol
-                    ]
-                  )
-                end
-                def self.values
-                end
-              end
-
-              # The call events for which Telnyx should send a webhook. Multiple events can be
-              # defined when separated by a space.
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(
-                      Symbol,
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent
-                    )
-                  end
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                INITIATED =
-                  T.let(
-                    :initiated,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
-                  )
-                RINGING =
-                  T.let(
-                    :ringing,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
-                  )
-                ANSWERED =
-                  T.let(
-                    :answered,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
-                  )
-                COMPLETED =
-                  T.let(
-                    :completed,
-                    Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
-                  )
-
-                sig do
-                  override.returns(
-                    T::Array[
-                      Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::StatusCallbackEvent::TaggedSymbol
                     ]
                   )
                 end

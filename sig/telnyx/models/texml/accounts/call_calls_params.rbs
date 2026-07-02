@@ -74,7 +74,7 @@ module Telnyx
                 sip_auth_username: String,
                 sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::sip_region,
                 status_callback: String,
-                status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_event,
+                status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::supervising_role,
@@ -247,11 +247,9 @@ module Telnyx
 
               def status_callback=: (String) -> String
 
-              attr_reader status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_event?
+              attr_reader status_callback_event: String?
 
-              def status_callback_event=: (
-                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_event
-              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_event
+              def status_callback_event=: (String) -> String
 
               attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method?
 
@@ -331,7 +329,7 @@ module Telnyx
                 ?sip_auth_username: String,
                 ?sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::sip_region,
                 ?status_callback: String,
-                ?status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_event,
+                ?status_callback_event: String,
                 ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method,
                 ?supervise_call_sid: String,
                 ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::supervising_role,
@@ -379,7 +377,7 @@ module Telnyx
                 sip_auth_username: String,
                 sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::sip_region,
                 status_callback: String,
-                status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_event,
+                status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_method,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::supervising_role,
@@ -520,20 +518,6 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::sip_region]
               end
 
-              type status_callback_event =
-                :initiated | :ringing | :answered | :completed
-
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                INITIATED: :initiated
-                RINGING: :ringing
-                ANSWERED: :answered
-                COMPLETED: :completed
-
-                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::status_callback_event]
-              end
-
               type status_callback_method = :GET | :POST
 
               module StatusCallbackMethod
@@ -617,7 +601,7 @@ module Telnyx
                 sip_auth_username: String,
                 sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::sip_region,
                 status_callback: String,
-                status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_event,
+                status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::supervising_role,
@@ -790,11 +774,9 @@ module Telnyx
 
               def status_callback=: (String) -> String
 
-              attr_reader status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_event?
+              attr_reader status_callback_event: String?
 
-              def status_callback_event=: (
-                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_event
-              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_event
+              def status_callback_event=: (String) -> String
 
               attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method?
 
@@ -874,7 +856,7 @@ module Telnyx
                 ?sip_auth_username: String,
                 ?sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::sip_region,
                 ?status_callback: String,
-                ?status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_event,
+                ?status_callback_event: String,
                 ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method,
                 ?supervise_call_sid: String,
                 ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::supervising_role,
@@ -922,7 +904,7 @@ module Telnyx
                 sip_auth_username: String,
                 sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::sip_region,
                 status_callback: String,
-                status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_event,
+                status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_method,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::supervising_role,
@@ -1063,20 +1045,6 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::sip_region]
               end
 
-              type status_callback_event =
-                :initiated | :ringing | :answered | :completed
-
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                INITIATED: :initiated
-                RINGING: :ringing
-                ANSWERED: :answered
-                COMPLETED: :completed
-
-                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::status_callback_event]
-              end
-
               type status_callback_method = :GET | :POST
 
               module StatusCallbackMethod
@@ -1159,7 +1127,7 @@ module Telnyx
                 sip_auth_username: String,
                 sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::sip_region,
                 status_callback: String,
-                status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_event,
+                status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::supervising_role,
@@ -1331,11 +1299,9 @@ module Telnyx
 
               def status_callback=: (String) -> String
 
-              attr_reader status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_event?
+              attr_reader status_callback_event: String?
 
-              def status_callback_event=: (
-                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_event
-              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_event
+              def status_callback_event=: (String) -> String
 
               attr_reader status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method?
 
@@ -1416,7 +1382,7 @@ module Telnyx
                 ?sip_auth_username: String,
                 ?sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::sip_region,
                 ?status_callback: String,
-                ?status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_event,
+                ?status_callback_event: String,
                 ?status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method,
                 ?supervise_call_sid: String,
                 ?supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::supervising_role,
@@ -1464,7 +1430,7 @@ module Telnyx
                 sip_auth_username: String,
                 sip_region: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::sip_region,
                 status_callback: String,
-                status_callback_event: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_event,
+                status_callback_event: String,
                 status_callback_method: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_method,
                 supervise_call_sid: String,
                 supervising_role: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::supervising_role,
@@ -1604,20 +1570,6 @@ module Telnyx
                 MIDDLE_EAST: :"Middle East"
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::sip_region]
-              end
-
-              type status_callback_event =
-                :initiated | :ringing | :answered | :completed
-
-              module StatusCallbackEvent
-                extend Telnyx::Internal::Type::Enum
-
-                INITIATED: :initiated
-                RINGING: :ringing
-                ANSWERED: :answered
-                COMPLETED: :completed
-
-                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::status_callback_event]
               end
 
               type status_callback_method = :GET | :POST

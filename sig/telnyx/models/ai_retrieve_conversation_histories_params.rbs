@@ -3,8 +3,6 @@ module Telnyx
     type ai_retrieve_conversation_histories_params =
       {
         q: String,
-        record_type: Telnyx::Models::AIRetrieveConversationHistoriesParams::record_type,
-        filter_document_id: String,
         filter_ingested_at_gte: Time,
         filter_ingested_at_lte: Time,
         filter_record_created_at_gte: Time,
@@ -14,8 +12,9 @@ module Telnyx
         filter_retention: String,
         filter_user_id: String,
         min_score: Float,
-        region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region,
-        top_k: Integer
+        page_number: Integer,
+        page_size: Integer,
+        region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -24,12 +23,6 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       attr_accessor q: String
-
-      attr_accessor record_type: Telnyx::Models::AIRetrieveConversationHistoriesParams::record_type
-
-      attr_reader filter_document_id: String?
-
-      def filter_document_id=: (String) -> String
 
       attr_reader filter_ingested_at_gte: Time?
 
@@ -67,20 +60,22 @@ module Telnyx
 
       def min_score=: (Float) -> Float
 
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
       attr_reader region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region?
 
       def region=: (
         Telnyx::Models::AIRetrieveConversationHistoriesParams::region
       ) -> Telnyx::Models::AIRetrieveConversationHistoriesParams::region
 
-      attr_reader top_k: Integer?
-
-      def top_k=: (Integer) -> Integer
-
       def initialize: (
         q: String,
-        record_type: Telnyx::Models::AIRetrieveConversationHistoriesParams::record_type,
-        ?filter_document_id: String,
         ?filter_ingested_at_gte: Time,
         ?filter_ingested_at_lte: Time,
         ?filter_record_created_at_gte: Time,
@@ -90,15 +85,14 @@ module Telnyx
         ?filter_retention: String,
         ?filter_user_id: String,
         ?min_score: Float,
+        ?page_number: Integer,
+        ?page_size: Integer,
         ?region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region,
-        ?top_k: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
         q: String,
-        record_type: Telnyx::Models::AIRetrieveConversationHistoriesParams::record_type,
-        filter_document_id: String,
         filter_ingested_at_gte: Time,
         filter_ingested_at_lte: Time,
         filter_record_created_at_gte: Time,
@@ -108,24 +102,11 @@ module Telnyx
         filter_retention: String,
         filter_user_id: String,
         min_score: Float,
+        page_number: Integer,
+        page_size: Integer,
         region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region,
-        top_k: Integer,
         request_options: Telnyx::RequestOptions
       }
-
-      type record_type =
-        :voice | :message | :ai_pipeline_storage | :knowledge_base
-
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
-
-        VOICE: :voice
-        MESSAGE: :message
-        AI_PIPELINE_STORAGE: :ai_pipeline_storage
-        KNOWLEDGE_BASE: :knowledge_base
-
-        def self?.values: -> ::Array[Telnyx::Models::AIRetrieveConversationHistoriesParams::record_type]
-      end
 
       type region = :USA | :DEU | :AUS | :UAE
 

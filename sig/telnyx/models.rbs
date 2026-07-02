@@ -525,7 +525,6 @@ module Telnyx
 
   class DirListParams = Telnyx::Models::DirListParams
 
-  class DirLoaParams = Telnyx::Models::DirLoaParams
   class DirNewLoaParams = Telnyx::Models::DirNewLoaParams
 
   class DirRetrieveParams = Telnyx::Models::DirRetrieveParams
