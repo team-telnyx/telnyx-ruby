@@ -249,6 +249,11 @@ module Telnyx
             :Soniox,
             Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
           )
+        PARAKEET =
+          T.let(
+            :Parakeet,
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
+          )
 
         sig do
           override.returns(
@@ -352,6 +357,11 @@ module Telnyx
         SONIOX_STT_RT_V4 =
           T.let(
             :"soniox/stt-rt-v4",
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
+          )
+        PARAKEET_TDT_0_6B_V3 =
+          T.let(
+            :"parakeet/tdt-0.6b-v3",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
 

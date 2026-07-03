@@ -122,6 +122,11 @@ module Telnyx
             :soniox,
             Telnyx::SpeechToTextListProvidersParams::Provider::TaggedSymbol
           )
+        PARAKEET =
+          T.let(
+            :parakeet,
+            Telnyx::SpeechToTextListProvidersParams::Provider::TaggedSymbol
+          )
         AZURE =
           T.let(
             :azure,
