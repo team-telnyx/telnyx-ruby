@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.153.0 (2026-07-03)
+
+Full Changelog: [v5.152.0...v5.153.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.152.0...v5.153.0)
+
+### Bug Fixes
+
+* use git reset --hard for tree replacement, force-push, and fix PR URL regex in release-please.yml ([#303](https://github.com/team-telnyx/telnyx-ruby/issues/303)) ([7da92a6](https://github.com/team-telnyx/telnyx-ruby/commit/7da92a649c21dd2f589008c48ae3622649a62a32))
+
+
+### Chores
+
+* merge master into next to restore release ancestry ([432a5af](https://github.com/team-telnyx/telnyx-ruby/commit/432a5afa3ed31f32c5ccfc3e1a8a29adedbd90bc))
+* promote from staging 22a5f93 ([fc68a18](https://github.com/team-telnyx/telnyx-ruby/commit/fc68a18b30da6da34a2c7b3ad15e60cf2986b019))
+* promote from staging 7c4634b ([8269726](https://github.com/team-telnyx/telnyx-ruby/commit/8269726bc2178ae7f48ac226b84b97d617e15121))
+* promote from staging c96d2dc ([c0dce5c](https://github.com/team-telnyx/telnyx-ruby/commit/c0dce5cd2765e1ea3a0557b2a6ac2adccf89f9b5))
+
 ## [5.147.0](https://github.com/team-telnyx/telnyx-ruby-staging/compare/v5.146.0...v5.147.0) (2026-06-18)
 
 
