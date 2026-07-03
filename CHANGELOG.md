@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.154.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.153.0...v5.154.0) (2026-07-03)
+
+
+### Bug Fixes
+
+* **release:** take first Release-As match (multiline output broke GITHUB_OUTPUT) ([#311](https://github.com/team-telnyx/telnyx-ruby/issues/311)) ([9eb945c](https://github.com/team-telnyx/telnyx-ruby/commit/9eb945cd1de676e45a7b8e50d41845b1b2c4e34a))
+
 ## [5.153.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.152.0...v5.153.0) (2026-07-03)
 
 
