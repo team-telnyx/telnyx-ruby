@@ -115,6 +115,7 @@ module Telnyx
         X_AI = :xAI
         SPEECHMATICS = :Speechmatics
         SONIOX = :Soniox
+        PARAKEET = :Parakeet
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -140,6 +141,7 @@ module Telnyx
         XAI_GROK_STT = :"xai/grok-stt"
         SPEECHMATICS_STANDARD = :"speechmatics/standard"
         SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
+        PARAKEET_TDT_0_6B_V3 = :"parakeet/tdt-0.6b-v3"
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -34,6 +34,8 @@ module Telnyx
         # - `xai/grok-stt` for live streaming transcription.
         # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #   automatic language detection.
+        # - `parakeet/tdt-0.6b-v3` for multilingual transcription with automatic language
+        #   detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -86,6 +88,8 @@ module Telnyx
           # - `xai/grok-stt` for live streaming transcription.
           # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
           #   automatic language detection.
+          # - `parakeet/tdt-0.6b-v3` for multilingual transcription with automatic language
+          #   detection.
           # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
           #   unsupported regions require `api_key_ref`.
           # - `google/latest_long` for non-streaming multilingual transcription.
@@ -119,6 +123,8 @@ module Telnyx
         # - `xai/grok-stt` for live streaming transcription.
         # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #   automatic language detection.
+        # - `parakeet/tdt-0.6b-v3` for multilingual transcription with automatic language
+        #   detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -178,6 +184,11 @@ module Telnyx
           SONIOX_STT_RT_V4 =
             T.let(
               :"soniox/stt-rt-v4",
+              Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
+            )
+          PARAKEET_TDT_0_6B_V3 =
+            T.let(
+              :"parakeet/tdt-0.6b-v3",
               Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
             )
           AZURE_FAST =

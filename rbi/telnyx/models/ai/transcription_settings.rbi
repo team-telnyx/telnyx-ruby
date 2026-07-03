@@ -42,6 +42,8 @@ module Telnyx
         # - `xai/grok-stt` is a multilingual Grok STT model.
         # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
         #   detection and configurable endpointing.
+        # - `parakeet/tdt-0.6b-v3` is a multilingual transcription model with automatic
+        #   language detection.
         sig do
           returns(T.nilable(Telnyx::AI::TranscriptionSettings::Model::OrSymbol))
         end
@@ -101,6 +103,8 @@ module Telnyx
           # - `xai/grok-stt` is a multilingual Grok STT model.
           # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
           #   detection and configurable endpointing.
+          # - `parakeet/tdt-0.6b-v3` is a multilingual transcription model with automatic
+          #   language detection.
           model: nil,
           # Region on third party cloud providers (currently Azure) if using one of their
           # models. Some regions require `api_key_ref`.
@@ -135,6 +139,8 @@ module Telnyx
         # - `xai/grok-stt` is a multilingual Grok STT model.
         # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
         #   detection and configurable endpointing.
+        # - `parakeet/tdt-0.6b-v3` is a multilingual transcription model with automatic
+        #   language detection.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -177,6 +183,11 @@ module Telnyx
           SONIOX_STT_RT_V4 =
             T.let(
               :"soniox/stt-rt-v4",
+              Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
+            )
+          PARAKEET_TDT_0_6B_V3 =
+            T.let(
+              :"parakeet/tdt-0.6b-v3",
               Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
             )
           DISTIL_WHISPER_DISTIL_LARGE_V2 =
