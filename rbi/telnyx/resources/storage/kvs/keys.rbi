@@ -18,9 +18,10 @@ module Telnyx
           end
           def retrieve(
             # Key name. Allowed characters: `a-z A-Z 0-9 - _ / = .`; maximum 256 characters;
-            # names starting with `_` are reserved for system use. May contain `/`; URL-encode
-            # it so the whole string is treated as one key (for example `user/1` ->
-            # `user%2F1`).
+            # names starting with `_` are reserved for system use. May contain `/`. When
+            # calling the HTTP API directly, URL-encode the key so the whole string is treated
+            # as one key (for example `user/1` -> `user%2F1`). SDK users should pass the key
+            # raw - SDKs URL-encode path parameters automatically.
             key,
             # KV namespace ID
             id:,
@@ -44,8 +45,9 @@ module Telnyx
           def update(
             # Path param: Key name. Allowed characters: `a-z A-Z 0-9 - _ / = .`; maximum 256
             # characters; names starting with `_` are reserved for system use. May contain
-            # `/`; URL-encode it so the whole string is treated as one key (for example
-            # `user/1` -> `user%2F1`).
+            # `/`. When calling the HTTP API directly, URL-encode the key so the whole string
+            # is treated as one key (for example `user/1` -> `user%2F1`). SDK users should
+            # pass the key raw - SDKs URL-encode path parameters automatically.
             key,
             # Path param: KV namespace ID
             id:,
@@ -94,9 +96,10 @@ module Telnyx
           end
           def delete(
             # Key name. Allowed characters: `a-z A-Z 0-9 - _ / = .`; maximum 256 characters;
-            # names starting with `_` are reserved for system use. May contain `/`; URL-encode
-            # it so the whole string is treated as one key (for example `user/1` ->
-            # `user%2F1`).
+            # names starting with `_` are reserved for system use. May contain `/`. When
+            # calling the HTTP API directly, URL-encode the key so the whole string is treated
+            # as one key (for example `user/1` -> `user%2F1`). SDK users should pass the key
+            # raw - SDKs URL-encode path parameters automatically.
             key,
             # KV namespace ID
             id:,
