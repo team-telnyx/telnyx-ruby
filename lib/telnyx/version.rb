@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Telnyx
-  VERSION = "5.152.0"
+  VERSION = "5.153.0"
 end
