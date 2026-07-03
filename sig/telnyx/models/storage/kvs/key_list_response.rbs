@@ -3,84 +3,28 @@ module Telnyx
     module Storage
       module Kvs
         type key_list_response =
-          {
-            data: ::Array[Telnyx::Models::Storage::Kvs::KeyListResponse::Data],
-            meta: Telnyx::Models::Storage::Kvs::KeyListResponse::Meta,
-            record_type: String
-          }
+          { key: String, size_bytes: Integer, updated_at: Time }
 
         class KeyListResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: ::Array[Telnyx::Models::Storage::Kvs::KeyListResponse::Data]?
+          attr_reader key: String?
 
-          def data=: (
-            ::Array[Telnyx::Models::Storage::Kvs::KeyListResponse::Data]
-          ) -> ::Array[Telnyx::Models::Storage::Kvs::KeyListResponse::Data]
+          def key=: (String) -> String
 
-          attr_reader meta: Telnyx::Models::Storage::Kvs::KeyListResponse::Meta?
+          attr_reader size_bytes: Integer?
 
-          def meta=: (
-            Telnyx::Models::Storage::Kvs::KeyListResponse::Meta
-          ) -> Telnyx::Models::Storage::Kvs::KeyListResponse::Meta
+          def size_bytes=: (Integer) -> Integer
 
-          attr_reader record_type: String?
+          attr_reader updated_at: Time?
 
-          def record_type=: (String) -> String
+          def updated_at=: (Time) -> Time
 
           def initialize: (
-            ?data: ::Array[Telnyx::Models::Storage::Kvs::KeyListResponse::Data],
-            ?meta: Telnyx::Models::Storage::Kvs::KeyListResponse::Meta,
-            ?record_type: String
+            ?key: String,
+            ?size_bytes: Integer,
+            ?updated_at: Time
           ) -> void
 
-          def to_hash: -> {
-            data: ::Array[Telnyx::Models::Storage::Kvs::KeyListResponse::Data],
-            meta: Telnyx::Models::Storage::Kvs::KeyListResponse::Meta,
-            record_type: String
-          }
-
-          type data = { key: String, size_bytes: Integer, updated_at: Time }
-
-          class Data < Telnyx::Internal::Type::BaseModel
-            attr_reader key: String?
-
-            def key=: (String) -> String
-
-            attr_reader size_bytes: Integer?
-
-            def size_bytes=: (Integer) -> Integer
-
-            attr_reader updated_at: Time?
-
-            def updated_at=: (Time) -> Time
-
-            def initialize: (
-              ?key: String,
-              ?size_bytes: Integer,
-              ?updated_at: Time
-            ) -> void
-
-            def to_hash: -> {
-              key: String,
-              size_bytes: Integer,
-              updated_at: Time
-            }
-          end
-
-          type meta = { cursor: String, has_more: bool }
-
-          class Meta < Telnyx::Internal::Type::BaseModel
-            attr_reader cursor: String?
-
-            def cursor=: (String) -> String
-
-            attr_reader has_more: bool?
-
-            def has_more=: (bool) -> bool
-
-            def initialize: (?cursor: String, ?has_more: bool) -> void
-
-            def to_hash: -> { cursor: String, has_more: bool }
-          end
+          def to_hash: -> { key: String, size_bytes: Integer, updated_at: Time }
         end
       end
     end

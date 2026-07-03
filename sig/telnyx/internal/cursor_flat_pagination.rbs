@@ -1,0 +1,28 @@
+module Telnyx
+  module Internal
+    class CursorFlatPagination[Elem]
+      include Telnyx::Internal::Type::BasePage[Elem]
+
+      attr_accessor data: ::Array[Elem]?
+
+      attr_accessor meta: Meta
+
+      def inspect: -> String
+
+      type meta = { cursor: String, has_more: bool }
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader cursor: String?
+
+        def cursor=: (String) -> String
+
+        attr_reader has_more: bool?
+
+        def has_more=: (bool) -> bool
+
+        def initialize: (?cursor: String, ?has_more: bool) -> void
+
+        def to_hash: -> { cursor: String, has_more: bool }
+      end
+    end
+  end
+end

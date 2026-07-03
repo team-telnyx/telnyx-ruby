@@ -95,7 +95,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Storage::Kvs::KeyListResponse]
+          # @return [Telnyx::Internal::CursorFlatPagination<Telnyx::Models::Storage::Kvs::KeyListResponse>]
           #
           # @see Telnyx::Models::Storage::Kvs::KeyListParams
           def list(id, params = {})
@@ -105,6 +105,7 @@ module Telnyx
               method: :get,
               path: ["storage/kvs/%1$s/keys", id],
               query: query,
+              page: Telnyx::Internal::CursorFlatPagination,
               model: Telnyx::Models::Storage::Kvs::KeyListResponse,
               options: options
             )

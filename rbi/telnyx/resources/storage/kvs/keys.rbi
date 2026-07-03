@@ -70,7 +70,11 @@ module Telnyx
               limit: Integer,
               prefix: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Models::Storage::Kvs::KeyListResponse)
+            ).returns(
+              Telnyx::Internal::CursorFlatPagination[
+                Telnyx::Models::Storage::Kvs::KeyListResponse
+              ]
+            )
           end
           def list(
             # KV namespace ID
