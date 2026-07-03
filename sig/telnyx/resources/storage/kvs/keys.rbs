@@ -23,7 +23,7 @@ module Telnyx
             ?limit: Integer,
             ?prefix: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Models::Storage::Kvs::KeyListResponse
+          ) -> Telnyx::Internal::CursorFlatPagination[Telnyx::Models::Storage::Kvs::KeyListResponse]
 
           def delete: (
             String key,

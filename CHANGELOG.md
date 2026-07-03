@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.153.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.152.0...v5.153.0) (2026-07-03)
+
+
+### Bug Fixes
+
+* use git reset --hard for tree replacement, force-push, and fix PR URL regex in release-please.yml ([#303](https://github.com/team-telnyx/telnyx-ruby/issues/303)) ([7da92a6](https://github.com/team-telnyx/telnyx-ruby/commit/7da92a649c21dd2f589008c48ae3622649a62a32))
+
 ## 5.152.0 (2026-07-02)
 
 Full Changelog: [v5.151.0...v5.152.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.151.0...v5.152.0)

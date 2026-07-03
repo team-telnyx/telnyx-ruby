@@ -122,6 +122,14 @@ module Telnyx
       sig { params(sip_compact_headers_enabled: T::Boolean).void }
       attr_writer :sip_compact_headers_enabled
 
+      # Selects which `sip_region` to receive inbound calls from. If null, the default
+      # region (US) will be used.
+      sig { returns(T.nilable(Telnyx::UacInbound::SipRegion::TaggedSymbol)) }
+      attr_reader :sip_region
+
+      sig { params(sip_region: Telnyx::UacInbound::SipRegion::OrSymbol).void }
+      attr_writer :sip_region
+
       # The Telnyx-generated SIP subdomain for this UAC connection.
       sig { returns(T.nilable(String)) }
       attr_reader :sip_subdomain
@@ -176,6 +184,7 @@ module Telnyx
           simultaneous_ringing:
             Telnyx::UacInbound::SimultaneousRinging::OrSymbol,
           sip_compact_headers_enabled: T::Boolean,
+          sip_region: Telnyx::UacInbound::SipRegion::OrSymbol,
           sip_subdomain: String,
           sip_subdomain_receive_settings:
             Telnyx::UacInbound::SipSubdomainReceiveSettings::OrSymbol,
@@ -215,6 +224,9 @@ module Telnyx
         simultaneous_ringing: nil,
         # Defaults to true.
         sip_compact_headers_enabled: nil,
+        # Selects which `sip_region` to receive inbound calls from. If null, the default
+        # region (US) will be used.
+        sip_region: nil,
         # The Telnyx-generated SIP subdomain for this UAC connection.
         sip_subdomain: nil,
         # Controls which SIP URI callers may reach this connection.
@@ -244,6 +256,7 @@ module Telnyx
             simultaneous_ringing:
               Telnyx::UacInbound::SimultaneousRinging::TaggedSymbol,
             sip_compact_headers_enabled: T::Boolean,
+            sip_region: Telnyx::UacInbound::SipRegion::TaggedSymbol,
             sip_subdomain: String,
             sip_subdomain_receive_settings:
               Telnyx::UacInbound::SipSubdomainReceiveSettings::TaggedSymbol,
@@ -368,6 +381,29 @@ module Telnyx
         sig do
           override.returns(
             T::Array[Telnyx::UacInbound::SimultaneousRinging::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      # Selects which `sip_region` to receive inbound calls from. If null, the default
+      # region (US) will be used.
+      module SipRegion
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::UacInbound::SipRegion) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        US = T.let(:US, Telnyx::UacInbound::SipRegion::TaggedSymbol)
+        EUROPE = T.let(:Europe, Telnyx::UacInbound::SipRegion::TaggedSymbol)
+        AUSTRALIA =
+          T.let(:Australia, Telnyx::UacInbound::SipRegion::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::UacInbound::SipRegion::TaggedSymbol]
           )
         end
         def self.values

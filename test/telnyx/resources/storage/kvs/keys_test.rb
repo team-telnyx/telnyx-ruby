@@ -34,14 +34,21 @@ class Telnyx::Test::Resources::Storage::Kvs::KeysTest < Telnyx::Test::ResourceTe
     response = @telnyx.storage.kvs.keys.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::Storage::Kvs::KeyListResponse
+      response => Telnyx::Internal::CursorFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::Storage::Kvs::KeyListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Storage::Kvs::KeyListResponse::Data]) | nil,
-        meta: Telnyx::Models::Storage::Kvs::KeyListResponse::Meta | nil,
-        record_type: String | nil
+      row => {
+        key: String | nil,
+        size_bytes: Integer | nil,
+        updated_at: Time | nil
       }
     end
   end

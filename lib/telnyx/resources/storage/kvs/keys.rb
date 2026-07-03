@@ -33,7 +33,7 @@ module Telnyx
             @client.request(
               method: :get,
               path: ["storage/kvs/%1$s/keys/%2$s", id, key],
-              headers: {"accept" => "*/*"},
+              headers: {"accept" => "application/octet-stream"},
               model: StringIO,
               options: options
             )
@@ -73,7 +73,7 @@ module Telnyx
               method: :put,
               path: ["storage/kvs/%1$s/keys/%2$s", id, key],
               query: query,
-              headers: {"content-type" => "*/*"},
+              headers: {"content-type" => "application/octet-stream"},
               body: parsed[:body],
               model: NilClass,
               options: options
@@ -95,7 +95,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::Storage::Kvs::KeyListResponse]
+          # @return [Telnyx::Internal::CursorFlatPagination<Telnyx::Models::Storage::Kvs::KeyListResponse>]
           #
           # @see Telnyx::Models::Storage::Kvs::KeyListParams
           def list(id, params = {})
@@ -105,6 +105,7 @@ module Telnyx
               method: :get,
               path: ["storage/kvs/%1$s/keys", id],
               query: query,
+              page: Telnyx::Internal::CursorFlatPagination,
               model: Telnyx::Models::Storage::Kvs::KeyListResponse,
               options: options
             )
