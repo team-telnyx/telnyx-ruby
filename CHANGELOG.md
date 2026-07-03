@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.153.0 (2026-07-03)
+
+Full Changelog: [v5.152.0...v5.153.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.152.0...v5.153.0)
+
+### Bug Fixes
+
+* replace git merge with tree replacement in release-please.yml ([#300](https://github.com/team-telnyx/telnyx-ruby/issues/300)) ([65f0712](https://github.com/team-telnyx/telnyx-ruby/commit/65f07125ec3b19d8477a9e72f306e009c69cf2ae))
+
+
+### Chores
+
+* promote from staging 07b2d36 ([4c88b27](https://github.com/team-telnyx/telnyx-ruby/commit/4c88b27006c85f93d4b3f2cc2ef0db7d061a8c06))
+* promote from staging 22a5f93 ([fc68a18](https://github.com/team-telnyx/telnyx-ruby/commit/fc68a18b30da6da34a2c7b3ad15e60cf2986b019))
+* promote from staging 7c4634b ([8269726](https://github.com/team-telnyx/telnyx-ruby/commit/8269726bc2178ae7f48ac226b84b97d617e15121))
+* sync repo ([0795c19](https://github.com/team-telnyx/telnyx-ruby/commit/0795c190c1e5602fc82bffdd75015950b5337eae))
+
 ## [5.147.0](https://github.com/team-telnyx/telnyx-ruby-staging/compare/v5.146.0...v5.147.0) (2026-06-18)
 
 
