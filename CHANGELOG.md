@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.156.0 (2026-07-03)
+
+Full Changelog: [v5.155.0...v5.156.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.155.0...v5.156.0)
+
+### Bug Fixes
+
+* **release:** scan next's commits in release-pr (stop depending on master hotfixes) ([#315](https://github.com/team-telnyx/telnyx-ruby/issues/315)) ([67446aa](https://github.com/team-telnyx/telnyx-ruby/commit/67446aa023de85bdbd6143ec50b9f12d447fb0e7))
+
+
+### Chores
+
+* promote from staging 61dbdc7 ([7ba89a2](https://github.com/team-telnyx/telnyx-ruby/commit/7ba89a2ca73c744253bca0513544327a9e9adb47))
+
 ## [5.147.0](https://github.com/team-telnyx/telnyx-ruby-staging/compare/v5.146.0...v5.147.0) (2026-06-18)
 
 
