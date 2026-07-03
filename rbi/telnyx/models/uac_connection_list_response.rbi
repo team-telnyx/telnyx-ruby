@@ -952,6 +952,25 @@ module Telnyx
         sig { params(sip_compact_headers_enabled: T::Boolean).void }
         attr_writer :sip_compact_headers_enabled
 
+        # Selects which `sip_region` to receive inbound calls from. If null, the default
+        # region (US) will be used.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :sip_region
+
+        sig do
+          params(
+            sip_region:
+              Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::OrSymbol
+          ).void
+        end
+        attr_writer :sip_region
+
         # The Telnyx-generated SIP subdomain for this UAC connection.
         sig { returns(T.nilable(String)) }
         attr_reader :sip_subdomain
@@ -1008,6 +1027,8 @@ module Telnyx
             simultaneous_ringing:
               Telnyx::Models::UacConnectionListResponse::Inbound::SimultaneousRinging::OrSymbol,
             sip_compact_headers_enabled: T::Boolean,
+            sip_region:
+              Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::OrSymbol,
             sip_subdomain: String,
             sip_subdomain_receive_settings:
               Telnyx::Models::UacConnectionListResponse::Inbound::SipSubdomainReceiveSettings::OrSymbol,
@@ -1047,6 +1068,9 @@ module Telnyx
           simultaneous_ringing: nil,
           # Defaults to true.
           sip_compact_headers_enabled: nil,
+          # Selects which `sip_region` to receive inbound calls from. If null, the default
+          # region (US) will be used.
+          sip_region: nil,
           # The Telnyx-generated SIP subdomain for this UAC connection.
           sip_subdomain: nil,
           # Controls which SIP URI callers may reach this connection.
@@ -1076,6 +1100,8 @@ module Telnyx
               simultaneous_ringing:
                 Telnyx::Models::UacConnectionListResponse::Inbound::SimultaneousRinging::TaggedSymbol,
               sip_compact_headers_enabled: T::Boolean,
+              sip_region:
+                Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::TaggedSymbol,
               sip_subdomain: String,
               sip_subdomain_receive_settings:
                 Telnyx::Models::UacConnectionListResponse::Inbound::SipSubdomainReceiveSettings::TaggedSymbol,
@@ -1242,6 +1268,47 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Models::UacConnectionListResponse::Inbound::SimultaneousRinging::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Selects which `sip_region` to receive inbound calls from. If null, the default
+        # region (US) will be used.
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          US =
+            T.let(
+              :US,
+              Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::TaggedSymbol
+            )
+          EUROPE =
+            T.let(
+              :Europe,
+              Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::TaggedSymbol
+            )
+          AUSTRALIA =
+            T.let(
+              :Australia,
+              Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Models::UacConnectionListResponse::Inbound::SipRegion::TaggedSymbol
               ]
             )
           end

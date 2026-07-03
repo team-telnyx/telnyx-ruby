@@ -437,6 +437,13 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :sip_compact_headers_enabled, Telnyx::Internal::Type::Boolean
 
+        # @!attribute sip_region
+        #   Selects which `sip_region` to receive inbound calls from. If null, the default
+        #   region (US) will be used.
+        #
+        #   @return [Symbol, Telnyx::Models::UacConnectionCreateParams::Inbound::SipRegion, nil]
+        optional :sip_region, enum: -> { Telnyx::UacConnectionCreateParams::Inbound::SipRegion }
+
         # @!attribute timeout_1xx_secs
         #   Time(sec) before aborting if connection is not made.
         #
@@ -449,7 +456,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :timeout_2xx_secs, Integer
 
-        # @!method initialize(ani_number_format: nil, channel_limit: nil, codecs: nil, default_routing_method: nil, dnis_number_format: nil, generate_ringback_tone: nil, isup_headers_enabled: nil, prack_enabled: nil, shaken_stir_enabled: nil, simultaneous_ringing: nil, sip_compact_headers_enabled: nil, timeout_1xx_secs: nil, timeout_2xx_secs: nil)
+        # @!method initialize(ani_number_format: nil, channel_limit: nil, codecs: nil, default_routing_method: nil, dnis_number_format: nil, generate_ringback_tone: nil, isup_headers_enabled: nil, prack_enabled: nil, shaken_stir_enabled: nil, simultaneous_ringing: nil, sip_compact_headers_enabled: nil, sip_region: nil, timeout_1xx_secs: nil, timeout_2xx_secs: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::UacConnectionCreateParams::Inbound} for more details.
         #
@@ -478,6 +485,8 @@ module Telnyx
         #   @param simultaneous_ringing [Symbol, Telnyx::Models::UacConnectionCreateParams::Inbound::SimultaneousRinging] When enabled, allows multiple devices to ring simultaneously on incoming calls.
         #
         #   @param sip_compact_headers_enabled [Boolean] Defaults to true.
+        #
+        #   @param sip_region [Symbol, Telnyx::Models::UacConnectionCreateParams::Inbound::SipRegion] Selects which `sip_region` to receive inbound calls from. If null, the default r
         #
         #   @param timeout_1xx_secs [Integer] Time(sec) before aborting if connection is not made.
         #
@@ -535,6 +544,21 @@ module Telnyx
 
           DISABLED = :disabled
           ENABLED = :enabled
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Selects which `sip_region` to receive inbound calls from. If null, the default
+        # region (US) will be used.
+        #
+        # @see Telnyx::Models::UacConnectionCreateParams::Inbound#sip_region
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          US = :US
+          EUROPE = :Europe
+          AUSTRALIA = :Australia
 
           # @!method self.values
           #   @return [Array<Symbol>]

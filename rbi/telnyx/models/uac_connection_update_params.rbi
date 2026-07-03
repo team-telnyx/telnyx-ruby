@@ -761,6 +761,25 @@ module Telnyx
         sig { params(sip_compact_headers_enabled: T::Boolean).void }
         attr_writer :sip_compact_headers_enabled
 
+        # Selects which `sip_region` to receive inbound calls from. If null, the default
+        # region (US) will be used.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::OrSymbol
+            )
+          )
+        end
+        attr_reader :sip_region
+
+        sig do
+          params(
+            sip_region:
+              Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::OrSymbol
+          ).void
+        end
+        attr_writer :sip_region
+
         # Time(sec) before aborting if connection is not made.
         sig { returns(T.nilable(Integer)) }
         attr_reader :timeout_1xx_secs
@@ -795,6 +814,8 @@ module Telnyx
             simultaneous_ringing:
               Telnyx::UacConnectionUpdateParams::Inbound::SimultaneousRinging::OrSymbol,
             sip_compact_headers_enabled: T::Boolean,
+            sip_region:
+              Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::OrSymbol,
             timeout_1xx_secs: Integer,
             timeout_2xx_secs: Integer
           ).returns(T.attached_class)
@@ -831,6 +852,9 @@ module Telnyx
           simultaneous_ringing: nil,
           # Defaults to true.
           sip_compact_headers_enabled: nil,
+          # Selects which `sip_region` to receive inbound calls from. If null, the default
+          # region (US) will be used.
+          sip_region: nil,
           # Time(sec) before aborting if connection is not made.
           timeout_1xx_secs: nil,
           # Time(sec) before aborting if call is unanswered (min: 1, max: 600).
@@ -856,6 +880,8 @@ module Telnyx
               simultaneous_ringing:
                 Telnyx::UacConnectionUpdateParams::Inbound::SimultaneousRinging::OrSymbol,
               sip_compact_headers_enabled: T::Boolean,
+              sip_region:
+                Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::OrSymbol,
               timeout_1xx_secs: Integer,
               timeout_2xx_secs: Integer
             }
@@ -1019,6 +1045,47 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::UacConnectionUpdateParams::Inbound::SimultaneousRinging::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Selects which `sip_region` to receive inbound calls from. If null, the default
+        # region (US) will be used.
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::UacConnectionUpdateParams::Inbound::SipRegion
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          US =
+            T.let(
+              :US,
+              Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::TaggedSymbol
+            )
+          EUROPE =
+            T.let(
+              :Europe,
+              Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::TaggedSymbol
+            )
+          AUSTRALIA =
+            T.let(
+              :Australia,
+              Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::UacConnectionUpdateParams::Inbound::SipRegion::TaggedSymbol
               ]
             )
           end

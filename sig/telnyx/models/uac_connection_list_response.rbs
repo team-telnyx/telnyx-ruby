@@ -385,6 +385,7 @@ module Telnyx
           shaken_stir_enabled: bool,
           simultaneous_ringing: Telnyx::Models::UacConnectionListResponse::Inbound::simultaneous_ringing,
           sip_compact_headers_enabled: bool,
+          sip_region: Telnyx::Models::UacConnectionListResponse::Inbound::sip_region,
           sip_subdomain: String,
           sip_subdomain_receive_settings: Telnyx::Models::UacConnectionListResponse::Inbound::sip_subdomain_receive_settings,
           :timeout_1xx_secs => Integer,
@@ -444,6 +445,12 @@ module Telnyx
 
         def sip_compact_headers_enabled=: (bool) -> bool
 
+        attr_reader sip_region: Telnyx::Models::UacConnectionListResponse::Inbound::sip_region?
+
+        def sip_region=: (
+          Telnyx::Models::UacConnectionListResponse::Inbound::sip_region
+        ) -> Telnyx::Models::UacConnectionListResponse::Inbound::sip_region
+
         attr_reader sip_subdomain: String?
 
         def sip_subdomain=: (String) -> String
@@ -474,6 +481,7 @@ module Telnyx
           ?shaken_stir_enabled: bool,
           ?simultaneous_ringing: Telnyx::Models::UacConnectionListResponse::Inbound::simultaneous_ringing,
           ?sip_compact_headers_enabled: bool,
+          ?sip_region: Telnyx::Models::UacConnectionListResponse::Inbound::sip_region,
           ?sip_subdomain: String,
           ?sip_subdomain_receive_settings: Telnyx::Models::UacConnectionListResponse::Inbound::sip_subdomain_receive_settings,
           ?timeout_1xx_secs: Integer,
@@ -492,6 +500,7 @@ module Telnyx
           shaken_stir_enabled: bool,
           simultaneous_ringing: Telnyx::Models::UacConnectionListResponse::Inbound::simultaneous_ringing,
           sip_compact_headers_enabled: bool,
+          sip_region: Telnyx::Models::UacConnectionListResponse::Inbound::sip_region,
           sip_subdomain: String,
           sip_subdomain_receive_settings: Telnyx::Models::UacConnectionListResponse::Inbound::sip_subdomain_receive_settings,
           :timeout_1xx_secs => Integer,
@@ -545,6 +554,18 @@ module Telnyx
           ENABLED: :enabled
 
           def self?.values: -> ::Array[Telnyx::Models::UacConnectionListResponse::Inbound::simultaneous_ringing]
+        end
+
+        type sip_region = :US | :Europe | :Australia
+
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          US: :US
+          EUROPE: :Europe
+          AUSTRALIA: :Australia
+
+          def self?.values: -> ::Array[Telnyx::Models::UacConnectionListResponse::Inbound::sip_region]
         end
 
         type sip_subdomain_receive_settings =

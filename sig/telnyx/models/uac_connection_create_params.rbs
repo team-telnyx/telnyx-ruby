@@ -299,6 +299,7 @@ module Telnyx
           shaken_stir_enabled: bool,
           simultaneous_ringing: Telnyx::Models::UacConnectionCreateParams::Inbound::simultaneous_ringing,
           sip_compact_headers_enabled: bool,
+          sip_region: Telnyx::Models::UacConnectionCreateParams::Inbound::sip_region,
           :timeout_1xx_secs => Integer,
           :timeout_2xx_secs => Integer
         }
@@ -356,6 +357,12 @@ module Telnyx
 
         def sip_compact_headers_enabled=: (bool) -> bool
 
+        attr_reader sip_region: Telnyx::Models::UacConnectionCreateParams::Inbound::sip_region?
+
+        def sip_region=: (
+          Telnyx::Models::UacConnectionCreateParams::Inbound::sip_region
+        ) -> Telnyx::Models::UacConnectionCreateParams::Inbound::sip_region
+
         attr_reader timeout_1xx_secs: Integer?
 
         def timeout_1xx_secs=: (Integer) -> Integer
@@ -376,6 +383,7 @@ module Telnyx
           ?shaken_stir_enabled: bool,
           ?simultaneous_ringing: Telnyx::Models::UacConnectionCreateParams::Inbound::simultaneous_ringing,
           ?sip_compact_headers_enabled: bool,
+          ?sip_region: Telnyx::Models::UacConnectionCreateParams::Inbound::sip_region,
           ?timeout_1xx_secs: Integer,
           ?timeout_2xx_secs: Integer
         ) -> void
@@ -392,6 +400,7 @@ module Telnyx
           shaken_stir_enabled: bool,
           simultaneous_ringing: Telnyx::Models::UacConnectionCreateParams::Inbound::simultaneous_ringing,
           sip_compact_headers_enabled: bool,
+          sip_region: Telnyx::Models::UacConnectionCreateParams::Inbound::sip_region,
           :timeout_1xx_secs => Integer,
           :timeout_2xx_secs => Integer
         }
@@ -443,6 +452,18 @@ module Telnyx
           ENABLED: :enabled
 
           def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateParams::Inbound::simultaneous_ringing]
+        end
+
+        type sip_region = :US | :Europe | :Australia
+
+        module SipRegion
+          extend Telnyx::Internal::Type::Enum
+
+          US: :US
+          EUROPE: :Europe
+          AUSTRALIA: :Australia
+
+          def self?.values: -> ::Array[Telnyx::Models::UacConnectionCreateParams::Inbound::sip_region]
         end
       end
 
