@@ -29,6 +29,8 @@ module Telnyx
         #   - `xai/grok-stt` for live streaming transcription.
         #   - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #     automatic language detection.
+        #   - `parakeet/tdt-0.6b-v3` for multilingual transcription with automatic language
+        #     detection.
         #   - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #     unsupported regions require `api_key_ref`.
         #   - `google/latest_long` for non-streaming multilingual transcription.
@@ -64,6 +66,8 @@ module Telnyx
         # - `xai/grok-stt` for live streaming transcription.
         # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #   automatic language detection.
+        # - `parakeet/tdt-0.6b-v3` for multilingual transcription with automatic language
+        #   detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -85,6 +89,7 @@ module Telnyx
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
+          PARAKEET_TDT_0_6B_V3 = :"parakeet/tdt-0.6b-v3"
           AZURE_FAST = :"azure/fast"
           AZURE_REALTIME = :"azure/realtime"
           GOOGLE_LATEST_LONG = :"google/latest_long"

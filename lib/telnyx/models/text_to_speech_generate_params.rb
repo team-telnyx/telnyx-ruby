@@ -71,7 +71,9 @@ module Telnyx
       # @!attribute telnyx
       #   Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
       #   `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
-      #   `volume`, and `emotion`.
+      #   `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
+      #   or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
+      #   restricted to `mp3` or `pcm` (no `wav`).
       #
       #   @return [::Telnyx::Models::TextToSpeechGenerateParams::Telnyx, nil]
       optional :telnyx, -> { ::Telnyx::TextToSpeechGenerateParams::Telnyx }
@@ -91,10 +93,10 @@ module Telnyx
       # @!attribute voice
       #   Voice identifier in the format `provider.model_id.voice_id` or
       #   `provider.voice_id`. Examples: `telnyx.NaturalHD.Alloy`,
-      #   `Telnyx.Ultra.<voice_id>`, `azure.en-US-AvaMultilingualNeural`,
-      #   `aws.Polly.Generative.Lucia`. When provided, `provider`, `model_id`, and
-      #   `voice_id` are extracted automatically and take precedence over individual
-      #   parameters.
+      #   `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`, `Telnyx.Sukhan.urdu-professor`,
+      #   `azure.en-US-AvaMultilingualNeural`, `aws.Polly.Generative.Lucia`. When
+      #   provided, `provider`, `model_id`, and `voice_id` are extracted automatically and
+      #   take precedence over individual parameters.
       #
       #   @return [String, nil]
       optional :voice, String
@@ -486,7 +488,8 @@ module Telnyx
         optional :temperature, Float
 
         # @!attribute voice_speed
-        #   Voice speed multiplier. Applies to all models. Range: 0.5 to 2.0.
+        #   Voice speed multiplier. Applies to all models except `Bayan` and `Sukhan`, which
+        #   don't support it. Range: 0.5 to 2.0.
         #
         #   @return [Float, nil]
         optional :voice_speed, Float
@@ -503,7 +506,9 @@ module Telnyx
         #
         #   Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
         #   `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
-        #   `volume`, and `emotion`.
+        #   `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
+        #   or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
+        #   restricted to `mp3` or `pcm` (no `wav`).
         #
         #   @param emotion [Symbol, ::Telnyx::Models::TextToSpeechGenerateParams::Telnyx::Emotion] Emotion control for the Ultra model. Adjusts the emotional tone of the synthesiz
         #
@@ -513,7 +518,7 @@ module Telnyx
         #
         #   @param temperature [Float] Sampling temperature. Applies to `Natural` and `NaturalHD` models only.
         #
-        #   @param voice_speed [Float] Voice speed multiplier. Applies to all models. Range: 0.5 to 2.0.
+        #   @param voice_speed [Float] Voice speed multiplier. Applies to all models except `Bayan` and `Sukhan`, which
         #
         #   @param volume [Float] Volume level for the Ultra model. Range: 0.0 to 2.0.
 

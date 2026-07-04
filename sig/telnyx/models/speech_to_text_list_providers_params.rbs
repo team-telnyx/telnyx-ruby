@@ -41,6 +41,7 @@ module Telnyx
         | :assemblyai
         | :xai
         | :soniox
+        | :parakeet
         | :azure
         | :openai
         | :google
@@ -54,6 +55,7 @@ module Telnyx
         ASSEMBLYAI: :assemblyai
         XAI: :xai
         SONIOX: :soniox
+        PARAKEET: :parakeet
         AZURE: :azure
         OPENAI: :openai
         GOOGLE: :google

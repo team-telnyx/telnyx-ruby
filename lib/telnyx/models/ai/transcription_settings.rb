@@ -36,6 +36,8 @@ module Telnyx
         #   - `xai/grok-stt` is a multilingual Grok STT model.
         #   - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
         #     detection and configurable endpointing.
+        #   - `parakeet/tdt-0.6b-v3` is a multilingual transcription model with automatic
+        #     language detection.
         #
         #   @return [Symbol, Telnyx::Models::AI::TranscriptionSettings::Model, nil]
         optional :model, enum: -> { Telnyx::AI::TranscriptionSettings::Model }
@@ -78,6 +80,8 @@ module Telnyx
         # - `xai/grok-stt` is a multilingual Grok STT model.
         # - `soniox/stt-rt-v4` is a multilingual streaming model with automatic language
         #   detection and configurable endpointing.
+        # - `parakeet/tdt-0.6b-v3` is a multilingual transcription model with automatic
+        #   language detection.
         #
         # @see Telnyx::Models::AI::TranscriptionSettings#model
         module Model
@@ -90,6 +94,7 @@ module Telnyx
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
+          PARAKEET_TDT_0_6B_V3 = :"parakeet/tdt-0.6b-v3"
           DISTIL_WHISPER_DISTIL_LARGE_V2 = :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO = :"openai/whisper-large-v3-turbo"
 
