@@ -77,10 +77,10 @@ module Telnyx
 
       # Voice identifier in the format `provider.model_id.voice_id` or
       # `provider.voice_id` (e.g. `telnyx.NaturalHD.Telnyx_Alloy`,
-      # `Telnyx.Ultra.<voice_id>`, or `azure.en-US-AvaMultilingualNeural`). When
-      # provided, the `provider`, `model_id`, and `voice_id` are extracted
-      # automatically. Takes precedence over individual `provider`/`model_id`/`voice_id`
-      # parameters.
+      # `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`, `Telnyx.Sukhan.urdu-professor`,
+      # or `azure.en-US-AvaMultilingualNeural`). When provided, the `provider`,
+      # `model_id`, and `voice_id` are extracted automatically. Takes precedence over
+      # individual `provider`/`model_id`/`voice_id` parameters.
       sig { returns(T.nilable(String)) }
       attr_reader :voice
 
@@ -126,10 +126,10 @@ module Telnyx
         socket_id: nil,
         # Voice identifier in the format `provider.model_id.voice_id` or
         # `provider.voice_id` (e.g. `telnyx.NaturalHD.Telnyx_Alloy`,
-        # `Telnyx.Ultra.<voice_id>`, or `azure.en-US-AvaMultilingualNeural`). When
-        # provided, the `provider`, `model_id`, and `voice_id` are extracted
-        # automatically. Takes precedence over individual `provider`/`model_id`/`voice_id`
-        # parameters.
+        # `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`, `Telnyx.Sukhan.urdu-professor`,
+        # or `azure.en-US-AvaMultilingualNeural`). When provided, the `provider`,
+        # `model_id`, and `voice_id` are extracted automatically. Takes precedence over
+        # individual `provider`/`model_id`/`voice_id` parameters.
         voice: nil,
         # Voice identifier for the chosen provider.
         voice_id: nil,

@@ -14,7 +14,8 @@ module Telnyx
         attr_accessor :type
 
         # The voice speed to be used for the voice. The voice speed must be between 0.1
-        # and 2.0. Default value is 1.0.
+        # and 2.0. Default value is 1.0. Not supported for `Telnyx.Bayan.*` or
+        # `Telnyx.Sukhan.*` voices.
         sig { returns(T.nilable(Float)) }
         attr_reader :voice_speed
 
@@ -31,7 +32,8 @@ module Telnyx
           # Voice settings provider type
           type:,
           # The voice speed to be used for the voice. The voice speed must be between 0.1
-          # and 2.0. Default value is 1.0.
+          # and 2.0. Default value is 1.0. Not supported for `Telnyx.Bayan.*` or
+          # `Telnyx.Sukhan.*` voices.
           voice_speed: nil
         )
         end
