@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::AI#retrieve_models
     class ModelsResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #

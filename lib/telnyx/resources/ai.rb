@@ -10,7 +10,6 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Audio]
       attr_reader :audio
 
-      # Generate text with LLMs
       # @return [Telnyx::Resources::AI::Chat]
       attr_reader :chat
 
@@ -44,34 +43,6 @@ module Telnyx
       # Configure AI assistant specifications
       # @return [Telnyx::Resources::AI::Tools]
       attr_reader :tools
-
-      # @deprecated
-      #
-      # **Deprecated**: Use `POST /v2/ai/openai/responses` instead. This endpoint is
-      # compatible with the
-      # [OpenAI Responses API](https://developers.openai.com/api/reference/responses/overview)
-      # and may be used with the OpenAI JS or Python SDK. Response id parameter is not
-      # supported at the moment. Use the `conversation` parameter with a Telnyx
-      # Conversation ID to leverage persistent conversations.
-      #
-      # @overload create_response_deprecated(response_request:, request_options: {})
-      #
-      # @param response_request [Hash{Symbol=>Object}]
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Hash{Symbol=>Object}]
-      #
-      # @see Telnyx::Models::AICreateResponseDeprecatedParams
-      def create_response_deprecated(params)
-        parsed, options = Telnyx::AICreateResponseDeprecatedParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "ai/responses",
-          body: parsed[:response_request],
-          model: Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
-          options: options
-        )
-      end
 
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AIRetrieveConversationHistoriesParams} for more details.
@@ -181,34 +152,6 @@ module Telnyx
           ),
           model: Telnyx::Models::AIRetrieveConversationHistoriesResponse,
           options: options
-        )
-      end
-
-      # @deprecated
-      #
-      # **Deprecated**: Use `GET /v2/ai/openai/models` instead.
-      #
-      # Returns the same `ModelsResponse` payload as the OpenAI-compatible endpoint —
-      # open-source LLMs hosted on Telnyx (e.g. `moonshotai/Kimi-K2.6`,
-      # `zai-org/GLM-5.1-FP8`, `MiniMaxAI/MiniMax-M2.7`), embedding models, and
-      # fine-tuned models — kept around for backwards compatibility. New integrations
-      # should use `/v2/ai/openai/models`.
-      #
-      # Model ids follow the `{organization}/{model_name}` convention from Hugging Face.
-      #
-      # @overload retrieve_models(request_options: {})
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Telnyx::Models::ModelsResponse]
-      #
-      # @see Telnyx::Models::AIRetrieveModelsParams
-      def retrieve_models(params = {})
-        @client.request(
-          method: :get,
-          path: "ai/models",
-          model: Telnyx::ModelsResponse,
-          options: params[:request_options]
         )
       end
 

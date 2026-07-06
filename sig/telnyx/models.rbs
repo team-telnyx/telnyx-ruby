@@ -45,11 +45,7 @@ module Telnyx
 
   module AI = Telnyx::Models::AI
 
-  class AICreateResponseDeprecatedParams = Telnyx::Models::AICreateResponseDeprecatedParams
-
   class AIRetrieveConversationHistoriesParams = Telnyx::Models::AIRetrieveConversationHistoriesParams
-
-  class AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
 
   class AISummarizeParams = Telnyx::Models::AISummarizeParams
 
@@ -880,8 +876,6 @@ module Telnyx
   class MessageSendParams = Telnyx::Models::MessageSendParams
 
   class MessageSendShortCodeParams = Telnyx::Models::MessageSendShortCodeParams
-
-  class MessageSendWhatsappParams = Telnyx::Models::MessageSendWhatsappParams
 
   class MessageSendWithAlphanumericSenderParams = Telnyx::Models::MessageSendWithAlphanumericSenderParams
 

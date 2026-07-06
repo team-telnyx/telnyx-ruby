@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Messages
     class Messages
       # Send RCS messages
       # @return [Telnyx::Resources::Messages::Rcs]
@@ -347,38 +348,6 @@ module Telnyx
           path: "messages/short_code",
           body: parsed,
           model: Telnyx::Models::MessageSendShortCodeResponse,
-          options: options
-        )
-      end
-
-      # Send a Whatsapp message
-      #
-      # @overload send_whatsapp(from:, to:, whatsapp_message:, messaging_profile_id: nil, type: nil, webhook_url: nil, request_options: {})
-      #
-      # @param from [String] Phone number in +E.164 format associated with Whatsapp account
-      #
-      # @param to [String] Phone number in +E.164 format
-      #
-      # @param whatsapp_message [Telnyx::Models::WhatsappMessageContent]
-      #
-      # @param messaging_profile_id [String] Messaging profile ID - required if the 'from' number is not SMS-enabled
-      #
-      # @param type [Symbol, Telnyx::Models::MessageSendWhatsappParams::Type] Message type - must be set to "WHATSAPP"
-      #
-      # @param webhook_url [String] The URL where webhooks related to this message will be sent.
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Telnyx::Models::MessageSendWhatsappResponse]
-      #
-      # @see Telnyx::Models::MessageSendWhatsappParams
-      def send_whatsapp(params)
-        parsed, options = Telnyx::MessageSendWhatsappParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "messages/whatsapp",
-          body: parsed,
-          model: Telnyx::Models::MessageSendWhatsappResponse,
           options: options
         )
       end
