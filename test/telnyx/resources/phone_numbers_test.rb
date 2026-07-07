@@ -64,6 +64,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
         record_type: String,
         status: Telnyx::PhoneNumberDetailed::Status,
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]),
+        activated_at: Time | nil,
         billing_group_id: String | nil,
         call_forwarding_enabled: Telnyx::Internal::Type::Boolean | nil,
         call_recording_enabled: Telnyx::Internal::Type::Boolean | nil,
@@ -121,6 +122,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
     assert_pattern do
       row => {
         id: String | nil,
+        activated_at: Time | nil,
         billing_group_id: String | nil,
         call_forwarding_enabled: Telnyx::Internal::Type::Boolean | nil,
         call_recording_enabled: Telnyx::Internal::Type::Boolean | nil,

@@ -107,6 +107,13 @@ module Telnyx
         sig { params(id: String).void }
         attr_writer :id
 
+        # ISO 8601 formatted date indicating when the phone number was first activated
+        # (transitioned from purchase-pending or port-pending to active). Will be null for
+        # numbers that have not yet been activated, or for legacy numbers activated before
+        # this field was tracked.
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :activated_at
+
         # Indicates if call forwarding will be enabled for this number if forwards_to and
         # forwarding_type are filled in. Defaults to true for backwards compatibility with
         # APIV1 use of numbers endpoints.
@@ -257,6 +264,7 @@ module Telnyx
         sig do
           params(
             id: String,
+            activated_at: T.nilable(Time),
             billing_group_id: String,
             call_forwarding_enabled: T::Boolean,
             call_recording_enabled: T::Boolean,
@@ -288,6 +296,11 @@ module Telnyx
         def self.new(
           # Identifies the resource.
           id: nil,
+          # ISO 8601 formatted date indicating when the phone number was first activated
+          # (transitioned from purchase-pending or port-pending to active). Will be null for
+          # numbers that have not yet been activated, or for legacy numbers activated before
+          # this field was tracked.
+          activated_at: nil,
           # Identifies the billing group associated with the phone number.
           billing_group_id: nil,
           # Indicates if call forwarding will be enabled for this number if forwards_to and
@@ -352,6 +365,7 @@ module Telnyx
           override.returns(
             {
               id: String,
+              activated_at: T.nilable(Time),
               billing_group_id: String,
               call_forwarding_enabled: T::Boolean,
               call_recording_enabled: T::Boolean,
