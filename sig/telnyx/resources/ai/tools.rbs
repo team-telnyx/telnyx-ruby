@@ -5,6 +5,7 @@ module Telnyx
         def create: (
           display_name: String,
           type: String,
+          ?client_side_tool: ::Hash[Symbol, top],
           ?function: ::Hash[Symbol, top],
           ?handoff: ::Hash[Symbol, top],
           ?invite: ::Hash[Symbol, top],
@@ -21,6 +22,7 @@ module Telnyx
 
         def update: (
           String tool_id,
+          ?client_side_tool: ::Hash[Symbol, top],
           ?display_name: String,
           ?function: ::Hash[Symbol, top],
           ?handoff: ::Hash[Symbol, top],

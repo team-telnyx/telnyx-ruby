@@ -13,6 +13,8 @@ module Telnyx
 
         variant :webhook, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams }
 
+        variant :client_side_tool, -> { Telnyx::AI::AssistantTool::ClientSideTool }
+
         variant :retrieval, -> { Telnyx::AI::RetrievalTool }
 
         # The handoff tool allows the assistant to hand off control of the conversation to another AI assistant. By default, this will happen transparently to the end user.
@@ -32,6 +34,97 @@ module Telnyx
         variant :send_message, -> { Telnyx::AI::AssistantTool::SendMessage }
 
         variant :skip_turn, -> { Telnyx::AI::AssistantTool::SkipTurn }
+
+        class ClientSideTool < Telnyx::Internal::Type::BaseModel
+          # @!attribute client_side_tool
+          #
+          #   @return [Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool]
+          required :client_side_tool, -> { Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, :client_side_tool]
+          required :type, const: :client_side_tool
+
+          # @!method initialize(client_side_tool:, type: :client_side_tool)
+          #   @param client_side_tool [Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool]
+          #   @param type [Symbol, :client_side_tool]
+
+          # @see Telnyx::Models::AI::AssistantTool::ClientSideTool#client_side_tool
+          class ClientSideTool < Telnyx::Internal::Type::BaseModel
+            # @!attribute description
+            #   The description of the tool.
+            #
+            #   @return [String]
+            required :description, String
+
+            # @!attribute name
+            #   The name of the tool.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute parameters
+            #   The parameters the tool accepts, described as a JSON Schema object. See the
+            #   [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
+            #   documentation about the format
+            #
+            #   @return [Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters]
+            required :parameters, -> { Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters }
+
+            # @!method initialize(description:, name:, parameters:)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool} for more
+            #   details.
+            #
+            #   @param description [String] The description of the tool.
+            #
+            #   @param name [String] The name of the tool.
+            #
+            #   @param parameters [Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters] The parameters the tool accepts, described as a JSON Schema object. See the [JSO
+
+            # @see Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool#parameters
+            class Parameters < Telnyx::Internal::Type::BaseModel
+              # @!attribute properties
+              #   The properties of the parameters.
+              #
+              #   @return [Hash{Symbol=>Object}, nil]
+              optional :properties, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+              # @!attribute required
+              #   The required properties of the parameters.
+              #
+              #   @return [Array<String>, nil]
+              optional :required, Telnyx::Internal::Type::ArrayOf[String]
+
+              # @!attribute type
+              #
+              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type, nil]
+              optional :type, enum: -> { Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type }
+
+              # @!method initialize(properties: nil, required: nil, type: nil)
+              #   The parameters the tool accepts, described as a JSON Schema object. See the
+              #   [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
+              #   documentation about the format
+              #
+              #   @param properties [Hash{Symbol=>Object}] The properties of the parameters.
+              #
+              #   @param required [Array<String>] The required properties of the parameters.
+              #
+              #   @param type [Symbol, Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type]
+
+              # @see Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters#type
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                OBJECT = :object
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+          end
+        end
 
         class Handoff < Telnyx::Internal::Type::BaseModel
           # @!attribute handoff
@@ -953,7 +1046,7 @@ module Telnyx
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn)]
+        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn)]
       end
     end
   end

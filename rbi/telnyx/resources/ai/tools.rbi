@@ -10,6 +10,7 @@ module Telnyx
           params(
             display_name: String,
             type: String,
+            client_side_tool: T::Hash[Symbol, T.anything],
             function: T::Hash[Symbol, T.anything],
             handoff: T::Hash[Symbol, T.anything],
             invite: T::Hash[Symbol, T.anything],
@@ -22,6 +23,7 @@ module Telnyx
         def create(
           display_name:,
           type:,
+          client_side_tool: nil,
           function: nil,
           handoff: nil,
           invite: nil,
@@ -50,6 +52,7 @@ module Telnyx
         sig do
           params(
             tool_id: String,
+            client_side_tool: T::Hash[Symbol, T.anything],
             display_name: String,
             function: T::Hash[Symbol, T.anything],
             handoff: T::Hash[Symbol, T.anything],
@@ -64,6 +67,7 @@ module Telnyx
         def update(
           # Unique identifier of the tool.
           tool_id,
+          client_side_tool: nil,
           display_name: nil,
           function: nil,
           handoff: nil,

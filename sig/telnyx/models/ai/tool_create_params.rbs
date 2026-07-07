@@ -5,6 +5,7 @@ module Telnyx
         {
           display_name: String,
           type: String,
+          client_side_tool: ::Hash[Symbol, top],
           function: ::Hash[Symbol, top],
           handoff: ::Hash[Symbol, top],
           invite: ::Hash[Symbol, top],
@@ -21,6 +22,10 @@ module Telnyx
         attr_accessor display_name: String
 
         attr_accessor type: String
+
+        attr_reader client_side_tool: ::Hash[Symbol, top]?
+
+        def client_side_tool=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader function: ::Hash[Symbol, top]?
 
@@ -49,6 +54,7 @@ module Telnyx
         def initialize: (
           display_name: String,
           type: String,
+          ?client_side_tool: ::Hash[Symbol, top],
           ?function: ::Hash[Symbol, top],
           ?handoff: ::Hash[Symbol, top],
           ?invite: ::Hash[Symbol, top],
@@ -61,6 +67,7 @@ module Telnyx
         def to_hash: -> {
           display_name: String,
           type: String,
+          client_side_tool: ::Hash[Symbol, top],
           function: ::Hash[Symbol, top],
           handoff: ::Hash[Symbol, top],
           invite: ::Hash[Symbol, top],

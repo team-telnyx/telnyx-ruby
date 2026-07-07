@@ -19,6 +19,12 @@ module Telnyx
         attr_accessor :type
 
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_reader :client_side_tool
+
+        sig { params(client_side_tool: T::Hash[Symbol, T.anything]).void }
+        attr_writer :client_side_tool
+
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :function
 
         sig { params(function: T::Hash[Symbol, T.anything]).void }
@@ -58,6 +64,7 @@ module Telnyx
           params(
             display_name: String,
             type: String,
+            client_side_tool: T::Hash[Symbol, T.anything],
             function: T::Hash[Symbol, T.anything],
             handoff: T::Hash[Symbol, T.anything],
             invite: T::Hash[Symbol, T.anything],
@@ -70,6 +77,7 @@ module Telnyx
         def self.new(
           display_name:,
           type:,
+          client_side_tool: nil,
           function: nil,
           handoff: nil,
           invite: nil,
@@ -85,6 +93,7 @@ module Telnyx
             {
               display_name: String,
               type: String,
+              client_side_tool: T::Hash[Symbol, T.anything],
               function: T::Hash[Symbol, T.anything],
               handoff: T::Hash[Symbol, T.anything],
               invite: T::Hash[Symbol, T.anything],

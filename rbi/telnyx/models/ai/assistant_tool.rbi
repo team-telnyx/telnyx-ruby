@@ -13,6 +13,7 @@ module Telnyx
           T.type_alias do
             T.any(
               Telnyx::AI::InferenceEmbeddingWebhookToolParams,
+              Telnyx::AI::AssistantTool::ClientSideTool,
               Telnyx::AI::RetrievalTool,
               Telnyx::AI::AssistantTool::Handoff,
               Telnyx::AI::HangupTool,
@@ -24,6 +25,226 @@ module Telnyx
               Telnyx::AI::AssistantTool::SkipTurn
             )
           end
+
+        class ClientSideTool < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantTool::ClientSideTool,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool)
+          end
+          attr_reader :client_side_tool
+
+          sig do
+            params(
+              client_side_tool:
+                Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::OrHash
+            ).void
+          end
+          attr_writer :client_side_tool
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          sig do
+            params(
+              client_side_tool:
+                Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(client_side_tool:, type: :client_side_tool)
+          end
+
+          sig do
+            override.returns(
+              {
+                client_side_tool:
+                  Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
+                type: Symbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class ClientSideTool < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # The description of the tool.
+            sig { returns(String) }
+            attr_accessor :description
+
+            # The name of the tool.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The parameters the tool accepts, described as a JSON Schema object. See the
+            # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
+            # documentation about the format
+            sig do
+              returns(
+                Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters
+              )
+            end
+            attr_reader :parameters
+
+            sig do
+              params(
+                parameters:
+                  Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::OrHash
+              ).void
+            end
+            attr_writer :parameters
+
+            sig do
+              params(
+                description: String,
+                name: String,
+                parameters:
+                  Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::OrHash
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The description of the tool.
+              description:,
+              # The name of the tool.
+              name:,
+              # The parameters the tool accepts, described as a JSON Schema object. See the
+              # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
+              # documentation about the format
+              parameters:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  description: String,
+                  name: String,
+                  parameters:
+                    Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Parameters < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The properties of the parameters.
+              sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+              attr_reader :properties
+
+              sig { params(properties: T::Hash[Symbol, T.anything]).void }
+              attr_writer :properties
+
+              # The required properties of the parameters.
+              sig { returns(T.nilable(T::Array[String])) }
+              attr_reader :required
+
+              sig { params(required: T::Array[String]).void }
+              attr_writer :required
+
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type::OrSymbol
+                  )
+                )
+              end
+              attr_reader :type
+
+              sig do
+                params(
+                  type:
+                    Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type::OrSymbol
+                ).void
+              end
+              attr_writer :type
+
+              # The parameters the tool accepts, described as a JSON Schema object. See the
+              # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
+              # documentation about the format
+              sig do
+                params(
+                  properties: T::Hash[Symbol, T.anything],
+                  required: T::Array[String],
+                  type:
+                    Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The properties of the parameters.
+                properties: nil,
+                # The required properties of the parameters.
+                required: nil,
+                type: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    properties: T::Hash[Symbol, T.anything],
+                    required: T::Array[String],
+                    type:
+                      Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                OBJECT =
+                  T.let(
+                    :object,
+                    Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+        end
 
         class Handoff < Telnyx::Internal::Type::BaseModel
           OrHash =

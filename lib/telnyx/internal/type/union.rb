@@ -10,10 +10,10 @@ module Telnyx
       #   case assistant_tool
       #   when Telnyx::AI::InferenceEmbeddingWebhookToolParams
       #     puts(assistant_tool.type)
+      #   when Telnyx::AI::AssistantTool::ClientSideTool
+      #     puts(assistant_tool.client_side_tool)
       #   when Telnyx::AI::RetrievalTool
       #     puts(assistant_tool.retrieval)
-      #   when Telnyx::AI::AssistantTool::Handoff
-      #     puts(assistant_tool.handoff)
       #   else
       #     puts(assistant_tool)
       #   end
@@ -22,10 +22,10 @@ module Telnyx
       #   case assistant_tool
       #   in {type: :webhook, webhook: webhook}
       #     puts(webhook)
+      #   in {type: :client_side_tool, client_side_tool: client_side_tool}
+      #     puts(client_side_tool)
       #   in {type: :retrieval, retrieval: retrieval}
       #     puts(retrieval)
-      #   in {type: :handoff, handoff: handoff}
-      #     puts(handoff)
       #   else
       #     puts(assistant_tool)
       #   end

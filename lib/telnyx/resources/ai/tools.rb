@@ -7,10 +7,11 @@ module Telnyx
       class Tools
         # Create Tool
         #
-        # @overload create(display_name:, type:, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, webhook: nil, request_options: {})
+        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, webhook: nil, request_options: {})
         #
         # @param display_name [String]
         # @param type [String]
+        # @param client_side_tool [Hash{Symbol=>Object}]
         # @param function [Hash{Symbol=>Object}]
         # @param handoff [Hash{Symbol=>Object}]
         # @param invite [Hash{Symbol=>Object}]
@@ -55,9 +56,11 @@ module Telnyx
 
         # Update Tool
         #
-        # @overload update(tool_id, display_name: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
+        # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
         #
         # @param tool_id [String] Unique identifier of the tool.
+        #
+        # @param client_side_tool [Hash{Symbol=>Object}]
         #
         # @param display_name [String]
         #
