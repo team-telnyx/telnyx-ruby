@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    module AI
+      module Conversations
+        type conversation_insight_retrieve_aggregates_response =
+          {
+            data: ::Array[Telnyx::Models::AI::Conversations::ConversationInsightRetrieveAggregatesResponse::Data]
+          }
+
+        class ConversationInsightRetrieveAggregatesResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::Models::AI::Conversations::ConversationInsightRetrieveAggregatesResponse::Data]
+
+          def initialize: (
+            data: ::Array[Telnyx::Models::AI::Conversations::ConversationInsightRetrieveAggregatesResponse::Data]
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::AI::Conversations::ConversationInsightRetrieveAggregatesResponse::Data]
+          }
+
+          type data = { record_count: Integer }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor record_count: Integer
+
+            def initialize: (record_count: Integer) -> void
+
+            def to_hash: -> { record_count: Integer }
+          end
+        end
+      end
+    end
+  end
+end

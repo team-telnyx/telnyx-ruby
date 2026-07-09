@@ -17,6 +17,12 @@ module Telnyx
         sig { returns(Telnyx::Resources::AI::Conversations::Messages) }
         attr_reader :messages
 
+        # Manage historical AI assistant conversations
+        sig do
+          returns(Telnyx::Resources::AI::Conversations::ConversationInsights)
+        end
+        attr_reader :conversation_insights
+
         # Create a new AI Conversation.
         sig do
           params(
