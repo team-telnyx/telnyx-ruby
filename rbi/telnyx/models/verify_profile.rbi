@@ -475,7 +475,7 @@ module Telnyx
         sig { returns(T.nilable(String)) }
         attr_accessor :sender_phone_number
 
-        # Customer pre-approved authentication template name registered on Meta
+        # Customer pre-approved authentication template ID registered on Meta
         sig { returns(T.nilable(String)) }
         attr_accessor :template_id
 
@@ -521,7 +521,7 @@ module Telnyx
           messaging_template_id: nil,
           # Phone number registered on the customer WABA to send OTPs from
           sender_phone_number: nil,
-          # Customer pre-approved authentication template name registered on Meta
+          # Customer pre-approved authentication template ID registered on Meta
           template_id: nil,
           # Customer Meta WABA ID for Bring-Your-Own-WABA sending
           waba_id: nil,
