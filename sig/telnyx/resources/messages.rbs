@@ -108,16 +108,6 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MessageSendShortCodeResponse
 
-      def send_whatsapp: (
-        from: String,
-        to: String,
-        whatsapp_message: Telnyx::WhatsappMessageContent,
-        ?messaging_profile_id: String,
-        ?type: Telnyx::Models::MessageSendWhatsappParams::type_,
-        ?webhook_url: String,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::MessageSendWhatsappResponse
-
       def send_with_alphanumeric_sender: (
         from: String,
         messaging_profile_id: String,

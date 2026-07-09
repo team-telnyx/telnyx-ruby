@@ -13,6 +13,7 @@ module Telnyx
         record_type: String,
         status: Telnyx::Models::PhoneNumberDetailed::status,
         tags: ::Array[String],
+        activated_at: Time?,
         billing_group_id: String?,
         call_forwarding_enabled: bool,
         call_recording_enabled: bool,
@@ -78,6 +79,8 @@ module Telnyx
 
       attr_accessor status: Telnyx::Models::PhoneNumberDetailed::status
 
+      attr_accessor activated_at: Time?
+
       attr_reader call_forwarding_enabled: bool?
 
       def call_forwarding_enabled=: (bool) -> bool
@@ -128,6 +131,7 @@ module Telnyx
         record_type: String,
         status: Telnyx::Models::PhoneNumberDetailed::status,
         tags: ::Array[String],
+        ?activated_at: Time?,
         ?billing_group_id: String?,
         ?call_forwarding_enabled: bool,
         ?call_recording_enabled: bool,
@@ -160,6 +164,7 @@ module Telnyx
         record_type: String,
         status: Telnyx::Models::PhoneNumberDetailed::status,
         tags: ::Array[String],
+        activated_at: Time?,
         billing_group_id: String?,
         call_forwarding_enabled: bool,
         call_recording_enabled: bool,

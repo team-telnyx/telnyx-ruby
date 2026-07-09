@@ -15,6 +15,12 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :tool_id
 
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_reader :client_side_tool
+
+        sig { params(client_side_tool: T::Hash[Symbol, T.anything]).void }
+        attr_writer :client_side_tool
+
         sig { returns(T.nilable(String)) }
         attr_reader :display_name
 
@@ -66,6 +72,7 @@ module Telnyx
         sig do
           params(
             tool_id: String,
+            client_side_tool: T::Hash[Symbol, T.anything],
             display_name: String,
             function: T::Hash[Symbol, T.anything],
             handoff: T::Hash[Symbol, T.anything],
@@ -79,6 +86,7 @@ module Telnyx
         end
         def self.new(
           tool_id:,
+          client_side_tool: nil,
           display_name: nil,
           function: nil,
           handoff: nil,
@@ -95,6 +103,7 @@ module Telnyx
           override.returns(
             {
               tool_id: String,
+              client_side_tool: T::Hash[Symbol, T.anything],
               display_name: String,
               function: T::Hash[Symbol, T.anything],
               handoff: T::Hash[Symbol, T.anything],

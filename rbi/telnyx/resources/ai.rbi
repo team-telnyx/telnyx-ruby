@@ -10,7 +10,6 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Audio) }
       attr_reader :audio
 
-      # Generate text with LLMs
       sig { returns(Telnyx::Resources::AI::Chat) }
       attr_reader :chat
 
@@ -44,21 +43,6 @@ module Telnyx
       # Configure AI assistant specifications
       sig { returns(Telnyx::Resources::AI::Tools) }
       attr_reader :tools
-
-      # **Deprecated**: Use `POST /v2/ai/openai/responses` instead. This endpoint is
-      # compatible with the
-      # [OpenAI Responses API](https://developers.openai.com/api/reference/responses/overview)
-      # and may be used with the OpenAI JS or Python SDK. Response id parameter is not
-      # supported at the moment. Use the `conversation` parameter with a Telnyx
-      # Conversation ID to leverage persistent conversations.
-      sig do
-        params(
-          response_request: T::Hash[Symbol, T.anything],
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(T::Hash[Symbol, T.anything])
-      end
-      def create_response_deprecated(response_request:, request_options: {})
-      end
 
       # Performs semantic vector search across conversation history records.
       #
@@ -169,23 +153,6 @@ module Telnyx
         region: nil,
         request_options: {}
       )
-      end
-
-      # **Deprecated**: Use `GET /v2/ai/openai/models` instead.
-      #
-      # Returns the same `ModelsResponse` payload as the OpenAI-compatible endpoint —
-      # open-source LLMs hosted on Telnyx (e.g. `moonshotai/Kimi-K2.6`,
-      # `zai-org/GLM-5.1-FP8`, `MiniMaxAI/MiniMax-M2.7`), embedding models, and
-      # fine-tuned models — kept around for backwards compatibility. New integrations
-      # should use `/v2/ai/openai/models`.
-      #
-      # Model ids follow the `{organization}/{model_name}` convention from Hugging Face.
-      sig do
-        params(request_options: Telnyx::RequestOptions::OrHash).returns(
-          Telnyx::ModelsResponse
-        )
-      end
-      def retrieve_models(request_options: {})
       end
 
       # Generate a summary of a file's contents.

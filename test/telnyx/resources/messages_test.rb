@@ -179,22 +179,6 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
     end
   end
 
-  def test_send_whatsapp_required_params
-    skip("Mock server tests are disabled")
-
-    response = @telnyx.messages.send_whatsapp(from: "+13125551234", to: "+13125551234", whatsapp_message: {})
-
-    assert_pattern do
-      response => Telnyx::Models::MessageSendWhatsappResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::Models::MessageSendWhatsappResponse::Data | nil
-      }
-    end
-  end
-
   def test_send_with_alphanumeric_sender_required_params
     skip("Mock server tests are disabled")
 

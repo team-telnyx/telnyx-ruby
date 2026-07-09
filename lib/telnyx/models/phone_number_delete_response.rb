@@ -66,6 +66,15 @@ module Telnyx
           #   @return [String, nil]
           optional :id, String
 
+          # @!attribute activated_at
+          #   ISO 8601 formatted date indicating when the phone number was first activated
+          #   (transitioned from purchase-pending or port-pending to active). Will be null for
+          #   numbers that have not yet been activated, or for legacy numbers activated before
+          #   this field was tracked.
+          #
+          #   @return [Time, nil]
+          optional :activated_at, Time, nil?: true
+
           # @!attribute call_forwarding_enabled
           #   Indicates if call forwarding will be enabled for this number if forwards_to and
           #   forwarding_type are filled in. Defaults to true for backwards compatibility with
@@ -175,11 +184,13 @@ module Telnyx
           optional :updated_at, String
         end
 
-        # @!method initialize(id: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, created_at: nil, customer_reference: nil, deletion_lock_enabled: nil, emergency_address_id: nil, emergency_enabled: nil, external_pin: nil, hd_voice_enabled: nil, messaging_profile_id: nil, messaging_profile_name: nil, phone_number: nil, phone_number_type: nil, purchased_at: nil, record_type: nil, status: nil, t38_fax_gateway_enabled: nil, tags: nil, updated_at: nil)
+        # @!method initialize(id: nil, activated_at: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, created_at: nil, customer_reference: nil, deletion_lock_enabled: nil, emergency_address_id: nil, emergency_enabled: nil, external_pin: nil, hd_voice_enabled: nil, messaging_profile_id: nil, messaging_profile_name: nil, phone_number: nil, phone_number_type: nil, purchased_at: nil, record_type: nil, status: nil, t38_fax_gateway_enabled: nil, tags: nil, updated_at: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PhoneNumberDeleteResponse::Data} for more details.
         #
         #   @param id [String] Identifies the resource.
+        #
+        #   @param activated_at [Time, nil] ISO 8601 formatted date indicating when the phone number was first activated (tr
         #
         #   @param billing_group_id [String] Identifies the billing group associated with the phone number.
         #

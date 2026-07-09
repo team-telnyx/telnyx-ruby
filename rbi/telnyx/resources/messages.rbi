@@ -2,6 +2,7 @@
 
 module Telnyx
   module Resources
+    # Messages
     class Messages
       # Send RCS messages
       sig { returns(Telnyx::Resources::Messages::Rcs) }
@@ -394,34 +395,6 @@ module Telnyx
         # The failover URL where webhooks related to this message will be sent if sending
         # to the primary URL fails.
         webhook_failover_url: nil,
-        # The URL where webhooks related to this message will be sent.
-        webhook_url: nil,
-        request_options: {}
-      )
-      end
-
-      # Send a Whatsapp message
-      sig do
-        params(
-          from: String,
-          to: String,
-          whatsapp_message: Telnyx::WhatsappMessageContent::OrHash,
-          messaging_profile_id: String,
-          type: Telnyx::MessageSendWhatsappParams::Type::OrSymbol,
-          webhook_url: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MessageSendWhatsappResponse)
-      end
-      def send_whatsapp(
-        # Phone number in +E.164 format associated with Whatsapp account
-        from:,
-        # Phone number in +E.164 format
-        to:,
-        whatsapp_message:,
-        # Messaging profile ID - required if the 'from' number is not SMS-enabled
-        messaging_profile_id: nil,
-        # Message type - must be set to "WHATSAPP"
-        type: nil,
         # The URL where webhooks related to this message will be sent.
         webhook_url: nil,
         request_options: {}

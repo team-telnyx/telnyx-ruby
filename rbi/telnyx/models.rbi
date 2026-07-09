@@ -48,13 +48,8 @@ module Telnyx
 
   AI = Telnyx::Models::AI
 
-  AICreateResponseDeprecatedParams =
-    Telnyx::Models::AICreateResponseDeprecatedParams
-
   AIRetrieveConversationHistoriesParams =
     Telnyx::Models::AIRetrieveConversationHistoriesParams
-
-  AIRetrieveModelsParams = Telnyx::Models::AIRetrieveModelsParams
 
   AISummarizeParams = Telnyx::Models::AISummarizeParams
 
@@ -1006,8 +1001,6 @@ module Telnyx
   MessageSendParams = Telnyx::Models::MessageSendParams
 
   MessageSendShortCodeParams = Telnyx::Models::MessageSendShortCodeParams
-
-  MessageSendWhatsappParams = Telnyx::Models::MessageSendWhatsappParams
 
   MessageSendWithAlphanumericSenderParams =
     Telnyx::Models::MessageSendWithAlphanumericSenderParams

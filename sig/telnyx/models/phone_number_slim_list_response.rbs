@@ -3,6 +3,7 @@ module Telnyx
     type phone_number_slim_list_response =
       {
         id: String,
+        activated_at: Time?,
         billing_group_id: String,
         call_forwarding_enabled: bool,
         call_recording_enabled: bool,
@@ -59,6 +60,8 @@ module Telnyx
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_accessor activated_at: Time?
 
       attr_reader call_forwarding_enabled: bool?
 
@@ -130,6 +133,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?activated_at: Time?,
         ?billing_group_id: String,
         ?call_forwarding_enabled: bool,
         ?call_recording_enabled: bool,
@@ -156,6 +160,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        activated_at: Time?,
         billing_group_id: String,
         call_forwarding_enabled: bool,
         call_recording_enabled: bool,

@@ -4,6 +4,7 @@ module Telnyx
       type tool_update_params =
         {
           tool_id: String,
+          client_side_tool: ::Hash[Symbol, top],
           display_name: String,
           function: ::Hash[Symbol, top],
           handoff: ::Hash[Symbol, top],
@@ -20,6 +21,10 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor tool_id: String
+
+        attr_reader client_side_tool: ::Hash[Symbol, top]?
+
+        def client_side_tool=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader display_name: String?
 
@@ -55,6 +60,7 @@ module Telnyx
 
         def initialize: (
           tool_id: String,
+          ?client_side_tool: ::Hash[Symbol, top],
           ?display_name: String,
           ?function: ::Hash[Symbol, top],
           ?handoff: ::Hash[Symbol, top],
@@ -68,6 +74,7 @@ module Telnyx
 
         def to_hash: -> {
           tool_id: String,
+          client_side_tool: ::Hash[Symbol, top],
           display_name: String,
           function: ::Hash[Symbol, top],
           handoff: ::Hash[Symbol, top],

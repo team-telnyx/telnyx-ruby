@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type assistant_tool =
         Telnyx::AI::InferenceEmbeddingWebhookToolParams
+        | Telnyx::AI::AssistantTool::ClientSideTool
         | Telnyx::AI::RetrievalTool
         | Telnyx::AI::AssistantTool::Handoff
         | Telnyx::AI::HangupTool
@@ -15,6 +16,100 @@ module Telnyx
 
       module AssistantTool
         extend Telnyx::Internal::Type::Union
+
+        type client_side_tool =
+          {
+            client_side_tool: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
+            type: :client_side_tool
+          }
+
+        class ClientSideTool < Telnyx::Internal::Type::BaseModel
+          attr_accessor client_side_tool: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool
+
+          attr_accessor type: :client_side_tool
+
+          def initialize: (
+            client_side_tool: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
+            ?type: :client_side_tool
+          ) -> void
+
+          def to_hash: -> {
+            client_side_tool: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
+            type: :client_side_tool
+          }
+
+          type client_side_tool =
+            {
+              description: String,
+              name: String,
+              parameters: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters
+            }
+
+          class ClientSideTool < Telnyx::Internal::Type::BaseModel
+            attr_accessor description: String
+
+            attr_accessor name: String
+
+            attr_accessor parameters: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters
+
+            def initialize: (
+              description: String,
+              name: String,
+              parameters: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters
+            ) -> void
+
+            def to_hash: -> {
+              description: String,
+              name: String,
+              parameters: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters
+            }
+
+            type parameters =
+              {
+                properties: ::Hash[Symbol, top],
+                required: ::Array[String],
+                type: Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::type_
+              }
+
+            class Parameters < Telnyx::Internal::Type::BaseModel
+              attr_reader properties: ::Hash[Symbol, top]?
+
+              def properties=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader required: ::Array[String]?
+
+              def required=: (::Array[String]) -> ::Array[String]
+
+              attr_reader type: Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::type_?
+
+              def type=: (
+                Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::type_
+              ) -> Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::type_
+
+              def initialize: (
+                ?properties: ::Hash[Symbol, top],
+                ?required: ::Array[String],
+                ?type: Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::type_
+              ) -> void
+
+              def to_hash: -> {
+                properties: ::Hash[Symbol, top],
+                required: ::Array[String],
+                type: Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::type_
+              }
+
+              type type_ = :object
+
+              module Type
+                extend Telnyx::Internal::Type::Enum
+
+                OBJECT: :object
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool::Parameters::type_]
+              end
+            end
+          end
+        end
 
         type handoff =
           {

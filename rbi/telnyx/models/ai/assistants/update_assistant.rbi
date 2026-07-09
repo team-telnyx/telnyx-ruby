@@ -277,6 +277,7 @@ module Telnyx
                 T::Array[
                   T.any(
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams,
+                    Telnyx::AI::AssistantTool::ClientSideTool,
                     Telnyx::AI::RetrievalTool,
                     Telnyx::AI::AssistantTool::Handoff,
                     Telnyx::AI::HangupTool,
@@ -299,6 +300,7 @@ module Telnyx
                 T::Array[
                   T.any(
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
+                    Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                     Telnyx::AI::RetrievalTool::OrHash,
                     Telnyx::AI::AssistantTool::Handoff::OrHash,
                     Telnyx::AI::HangupTool::OrHash,
@@ -378,6 +380,7 @@ module Telnyx
                 T::Array[
                   T.any(
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
+                    Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                     Telnyx::AI::RetrievalTool::OrHash,
                     Telnyx::AI::AssistantTool::Handoff::OrHash,
                     Telnyx::AI::HangupTool::OrHash,
@@ -526,6 +529,7 @@ module Telnyx
                   T::Array[
                     T.any(
                       Telnyx::AI::InferenceEmbeddingWebhookToolParams,
+                      Telnyx::AI::AssistantTool::ClientSideTool,
                       Telnyx::AI::RetrievalTool,
                       Telnyx::AI::AssistantTool::Handoff,
                       Telnyx::AI::HangupTool,

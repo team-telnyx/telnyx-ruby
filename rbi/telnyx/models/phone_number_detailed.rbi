@@ -120,6 +120,13 @@ module Telnyx
       sig { returns(Telnyx::PhoneNumberDetailed::Status::TaggedSymbol) }
       attr_accessor :status
 
+      # ISO 8601 formatted date indicating when the phone number was first activated
+      # (transitioned from purchase-pending or port-pending to active). Will be null for
+      # numbers that have not yet been activated, or for legacy numbers activated before
+      # this field was tracked.
+      sig { returns(T.nilable(Time)) }
+      attr_accessor :activated_at
+
       # Indicates if call forwarding will be enabled for this number if forwards_to and
       # forwarding_type are filled in. Defaults to true for backwards compatibility with
       # APIV1 use of numbers endpoints.
@@ -210,6 +217,7 @@ module Telnyx
           record_type: String,
           status: Telnyx::PhoneNumberDetailed::Status::OrSymbol,
           tags: T::Array[String],
+          activated_at: T.nilable(Time),
           billing_group_id: T.nilable(String),
           call_forwarding_enabled: T::Boolean,
           call_recording_enabled: T::Boolean,
@@ -262,6 +270,11 @@ module Telnyx
         status:,
         # A list of user-assigned tags to help manage the phone number.
         tags:,
+        # ISO 8601 formatted date indicating when the phone number was first activated
+        # (transitioned from purchase-pending or port-pending to active). Will be null for
+        # numbers that have not yet been activated, or for legacy numbers activated before
+        # this field was tracked.
+        activated_at: nil,
         # Identifies the billing group associated with the phone number.
         billing_group_id: nil,
         # Indicates if call forwarding will be enabled for this number if forwards_to and
@@ -326,6 +339,7 @@ module Telnyx
             record_type: String,
             status: Telnyx::PhoneNumberDetailed::Status::TaggedSymbol,
             tags: T::Array[String],
+            activated_at: T.nilable(Time),
             billing_group_id: T.nilable(String),
             call_forwarding_enabled: T::Boolean,
             call_recording_enabled: T::Boolean,

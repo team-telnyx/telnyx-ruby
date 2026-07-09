@@ -13,6 +13,11 @@ module Telnyx
         #   @return [String]
         required :tool_id, String
 
+        # @!attribute client_side_tool
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :client_side_tool, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
         # @!attribute display_name
         #
         #   @return [String, nil]
@@ -53,8 +58,9 @@ module Telnyx
         #   @return [Hash{Symbol=>Object}, nil]
         optional :webhook, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-        # @!method initialize(tool_id:, display_name: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
+        # @!method initialize(tool_id:, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
         #   @param tool_id [String]
+        #   @param client_side_tool [Hash{Symbol=>Object}]
         #   @param display_name [String]
         #   @param function [Hash{Symbol=>Object}]
         #   @param handoff [Hash{Symbol=>Object}]
