@@ -1,0 +1,175 @@
+module Telnyx
+  module Models
+    module AI
+      module Anthropic
+        type v1_messages_params =
+          {
+            max_tokens: Integer,
+            messages: ::Array[::Hash[Symbol, top]],
+            model: String,
+            api_key_ref: String,
+            billing_group_id: String,
+            fallback_config: ::Hash[Symbol, top],
+            max_retries: Integer,
+            mcp_servers: ::Array[::Hash[Symbol, top]],
+            metadata: ::Hash[Symbol, top],
+            service_tier: String,
+            stop_sequences: ::Array[String],
+            stream: bool,
+            system_: Telnyx::Models::AI::Anthropic::V1MessagesParams::system_,
+            temperature: Float,
+            thinking: ::Hash[Symbol, top],
+            timeout: Float,
+            tool_choice: ::Hash[Symbol, top],
+            tools: ::Array[::Hash[Symbol, top]],
+            top_k: Integer,
+            top_p: Float
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class V1MessagesParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor max_tokens: Integer
+
+          attr_accessor messages: ::Array[::Hash[Symbol, top]]
+
+          attr_accessor model: String
+
+          attr_reader api_key_ref: String?
+
+          def api_key_ref=: (String) -> String
+
+          attr_reader billing_group_id: String?
+
+          def billing_group_id=: (String) -> String
+
+          attr_reader fallback_config: ::Hash[Symbol, top]?
+
+          def fallback_config=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader max_retries: Integer?
+
+          def max_retries=: (Integer) -> Integer
+
+          attr_reader mcp_servers: ::Array[::Hash[Symbol, top]]?
+
+          def mcp_servers=: (
+            ::Array[::Hash[Symbol, top]]
+          ) -> ::Array[::Hash[Symbol, top]]
+
+          attr_reader metadata: ::Hash[Symbol, top]?
+
+          def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader service_tier: String?
+
+          def service_tier=: (String) -> String
+
+          attr_reader stop_sequences: ::Array[String]?
+
+          def stop_sequences=: (::Array[String]) -> ::Array[String]
+
+          attr_reader stream: bool?
+
+          def stream=: (bool) -> bool
+
+          attr_reader system_: Telnyx::Models::AI::Anthropic::V1MessagesParams::system_?
+
+          def system_=: (
+            Telnyx::Models::AI::Anthropic::V1MessagesParams::system_
+          ) -> Telnyx::Models::AI::Anthropic::V1MessagesParams::system_
+
+          attr_reader temperature: Float?
+
+          def temperature=: (Float) -> Float
+
+          attr_reader thinking: ::Hash[Symbol, top]?
+
+          def thinking=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader timeout: Float?
+
+          def timeout=: (Float) -> Float
+
+          attr_reader tool_choice: ::Hash[Symbol, top]?
+
+          def tool_choice=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader tools: ::Array[::Hash[Symbol, top]]?
+
+          def tools=: (
+            ::Array[::Hash[Symbol, top]]
+          ) -> ::Array[::Hash[Symbol, top]]
+
+          attr_reader top_k: Integer?
+
+          def top_k=: (Integer) -> Integer
+
+          attr_reader top_p: Float?
+
+          def top_p=: (Float) -> Float
+
+          def initialize: (
+            max_tokens: Integer,
+            messages: ::Array[::Hash[Symbol, top]],
+            model: String,
+            ?api_key_ref: String,
+            ?billing_group_id: String,
+            ?fallback_config: ::Hash[Symbol, top],
+            ?max_retries: Integer,
+            ?mcp_servers: ::Array[::Hash[Symbol, top]],
+            ?metadata: ::Hash[Symbol, top],
+            ?service_tier: String,
+            ?stop_sequences: ::Array[String],
+            ?stream: bool,
+            ?system_: Telnyx::Models::AI::Anthropic::V1MessagesParams::system_,
+            ?temperature: Float,
+            ?thinking: ::Hash[Symbol, top],
+            ?timeout: Float,
+            ?tool_choice: ::Hash[Symbol, top],
+            ?tools: ::Array[::Hash[Symbol, top]],
+            ?top_k: Integer,
+            ?top_p: Float,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            max_tokens: Integer,
+            messages: ::Array[::Hash[Symbol, top]],
+            model: String,
+            api_key_ref: String,
+            billing_group_id: String,
+            fallback_config: ::Hash[Symbol, top],
+            max_retries: Integer,
+            mcp_servers: ::Array[::Hash[Symbol, top]],
+            metadata: ::Hash[Symbol, top],
+            service_tier: String,
+            stop_sequences: ::Array[String],
+            stream: bool,
+            system_: Telnyx::Models::AI::Anthropic::V1MessagesParams::system_,
+            temperature: Float,
+            thinking: ::Hash[Symbol, top],
+            timeout: Float,
+            tool_choice: ::Hash[Symbol, top],
+            tools: ::Array[::Hash[Symbol, top]],
+            top_k: Integer,
+            top_p: Float,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type system_ = String | ::Array[::Hash[Symbol, top]]
+
+          module System
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::Anthropic::V1MessagesParams::system_]
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+        end
+      end
+    end
+  end
+end

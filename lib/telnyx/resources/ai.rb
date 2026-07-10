@@ -44,6 +44,9 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Tools]
       attr_reader :tools
 
+      # @return [Telnyx::Resources::AI::Anthropic]
+      attr_reader :anthropic
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AIRetrieveConversationHistoriesParams} for more details.
       #
@@ -208,6 +211,7 @@ module Telnyx
         @missions = Telnyx::Resources::AI::Missions.new(client: client)
         @openai = Telnyx::Resources::AI::OpenAI.new(client: client)
         @tools = Telnyx::Resources::AI::Tools.new(client: client)
+        @anthropic = Telnyx::Resources::AI::Anthropic.new(client: client)
       end
     end
   end

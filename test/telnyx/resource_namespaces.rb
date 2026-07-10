@@ -24,6 +24,9 @@ module Telnyx
       end
 
       module AI
+        module Anthropic
+        end
+
         module Assistants
           module Tests
             module TestSuites
@@ -52,6 +55,9 @@ module Telnyx
 
         module OpenAI
         end
+      end
+
+      module Anthropic
       end
 
       module Assistants
