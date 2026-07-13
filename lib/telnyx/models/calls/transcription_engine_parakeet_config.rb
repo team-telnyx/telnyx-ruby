@@ -53,7 +53,7 @@ module Telnyx
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
-          PARAKEET_TDT_0_6B_V3 = :"parakeet/tdt-0.6b-v3"
+          NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
 
           # @!method self.values
           #   @return [Array<Symbol>]
