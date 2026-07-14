@@ -369,6 +369,17 @@ module Telnyx
       end
       attr_writer :record_trim
 
+      # Whether to keep trying the remaining routing paths (e.g. alternate
+      # providers/gateways) for the same destination after `timeout_secs` is reached for
+      # the current attempt. When set to `false`, reaching `timeout_secs` aborts the
+      # entire dial attempt and the `call.hangup` webhook reports a `hangup_cause` of
+      # `no_answer` instead of `timeout`.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :retry_on_timeout
+
+      sig { params(retry_on_timeout: T::Boolean).void }
+      attr_writer :retry_on_timeout
+
       # DTMF digits to send automatically after the called party answers. Useful for
       # reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once the
       # called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause), `W`
@@ -707,6 +718,7 @@ module Telnyx
           record_timeout_secs: Integer,
           record_track: Telnyx::CallDialParams::RecordTrack::OrSymbol,
           record_trim: Telnyx::CallDialParams::RecordTrim::OrSymbol,
+          retry_on_timeout: T::Boolean,
           send_digits_on_answer: String,
           send_silence_when_idle: T::Boolean,
           sip_auth_password: String,
@@ -894,6 +906,12 @@ module Telnyx
         # When set to `trim-silence`, silence will be removed from the beginning and end
         # of the recording.
         record_trim: nil,
+        # Whether to keep trying the remaining routing paths (e.g. alternate
+        # providers/gateways) for the same destination after `timeout_secs` is reached for
+        # the current attempt. When set to `false`, reaching `timeout_secs` aborts the
+        # entire dial attempt and the `call.hangup` webhook reports a `hangup_cause` of
+        # `no_answer` instead of `timeout`.
+        retry_on_timeout: nil,
         # DTMF digits to send automatically after the called party answers. Useful for
         # reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once the
         # called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause), `W`
@@ -1022,6 +1040,7 @@ module Telnyx
             record_timeout_secs: Integer,
             record_track: Telnyx::CallDialParams::RecordTrack::OrSymbol,
             record_trim: Telnyx::CallDialParams::RecordTrim::OrSymbol,
+            retry_on_timeout: T::Boolean,
             send_digits_on_answer: String,
             send_silence_when_idle: T::Boolean,
             sip_auth_password: String,
