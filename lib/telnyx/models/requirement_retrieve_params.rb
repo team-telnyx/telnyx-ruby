@@ -12,8 +12,21 @@ module Telnyx
       #   @return [String]
       required :id, String
 
-      # @!method initialize(id:, request_options: {})
+      # @!attribute version
+      #   Filter by requirement version number. When omitted, returns the currently-active
+      #   version.
+      #
+      #   @return [Integer, nil]
+      optional :version, Integer
+
+      # @!method initialize(id:, version: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::RequirementRetrieveParams} for more details.
+      #
       #   @param id [String]
+      #
+      #   @param version [Integer] Filter by requirement version number. When omitted, returns the currently-active
+      #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

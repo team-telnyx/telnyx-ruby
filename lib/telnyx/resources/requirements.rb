@@ -4,11 +4,16 @@ module Telnyx
   module Resources
     # Requirements for international numbers and porting orders
     class Requirements
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::RequirementRetrieveParams} for more details.
+      #
       # Retrieve a document requirement record
       #
-      # @overload retrieve(id, request_options: {})
+      # @overload retrieve(id, version: nil, request_options: {})
       #
       # @param id [String] Uniquely identifies the requirement_type record
+      #
+      # @param version [Integer] Filter by requirement version number. When omitted, returns the currently-active
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -16,11 +21,14 @@ module Telnyx
       #
       # @see Telnyx::Models::RequirementRetrieveParams
       def retrieve(id, params = {})
+        parsed, options = Telnyx::RequirementRetrieveParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["requirements/%1$s", id],
+          query: query,
           model: Telnyx::Models::RequirementRetrieveResponse,
-          options: params[:request_options]
+          options: options
         )
       end
 
@@ -29,7 +37,7 @@ module Telnyx
       #
       # List all requirements with filtering, sorting, and pagination
       #
-      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, version: nil, request_options: {})
       #
       # @param filter [Telnyx::Models::RequirementListParams::Filter] Consolidated filter parameter for requirements (deepObject style). Originally: f
       #
@@ -38,6 +46,8 @@ module Telnyx
       # @param page_size [Integer]
       #
       # @param sort [Array<Symbol, Telnyx::Models::RequirementListParams::Sort>] Consolidated sort parameter for requirements (deepObject style). Originally: sor
+      #
+      # @param version [Integer] Filter by requirement version number. When omitted, returns the currently-active
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

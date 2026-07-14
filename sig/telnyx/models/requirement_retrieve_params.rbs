@@ -1,7 +1,8 @@
 module Telnyx
   module Models
     type requirement_retrieve_params =
-      { id: String } & Telnyx::Internal::Type::request_parameters
+      { id: String, version: Integer }
+      & Telnyx::Internal::Type::request_parameters
 
     class RequirementRetrieveParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
@@ -9,12 +10,21 @@ module Telnyx
 
       attr_accessor id: String
 
+      attr_reader version: Integer?
+
+      def version=: (Integer) -> Integer
+
       def initialize: (
         id: String,
+        ?version: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
-      def to_hash: -> { id: String, request_options: Telnyx::RequestOptions }
+      def to_hash: -> {
+        id: String,
+        version: Integer,
+        request_options: Telnyx::RequestOptions
+      }
     end
   end
 end

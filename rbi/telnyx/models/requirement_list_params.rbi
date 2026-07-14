@@ -47,12 +47,21 @@ module Telnyx
       end
       attr_writer :sort
 
+      # Filter by requirement version number. When omitted, returns the currently-active
+      # version.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :version
+
+      sig { params(version: Integer).void }
+      attr_writer :version
+
       sig do
         params(
           filter: Telnyx::RequirementListParams::Filter::OrHash,
           page_number: Integer,
           page_size: Integer,
           sort: T::Array[Telnyx::RequirementListParams::Sort::OrSymbol],
+          version: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -65,6 +74,9 @@ module Telnyx
         # Consolidated sort parameter for requirements (deepObject style). Originally:
         # sort[]
         sort: nil,
+        # Filter by requirement version number. When omitted, returns the currently-active
+        # version.
+        version: nil,
         request_options: {}
       )
       end
@@ -76,6 +88,7 @@ module Telnyx
             page_number: Integer,
             page_size: Integer,
             sort: T::Array[Telnyx::RequirementListParams::Sort::OrSymbol],
+            version: Integer,
             request_options: Telnyx::RequestOptions
           }
         )

@@ -41,11 +41,14 @@ class Telnyx::Test::Resources::RequirementsTest < Telnyx::Test::ResourceTest
         action: Telnyx::DocReqsRequirement::Action | nil,
         country_code: String | nil,
         created_at: String | nil,
+        effective_end_at: Time | nil,
+        effective_start_at: Time | nil,
         locality: String | nil,
         phone_number_type: Telnyx::DocReqsRequirement::PhoneNumberType | nil,
         record_type: String | nil,
-        requirements_types: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::DocReqsRequirementType]) | nil,
-        updated_at: String | nil
+        requirement_types: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::DocReqsRequirementType]) | nil,
+        updated_at: String | nil,
+        version: Integer | nil
       }
     end
   end

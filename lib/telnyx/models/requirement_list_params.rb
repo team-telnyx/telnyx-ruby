@@ -31,7 +31,14 @@ module Telnyx
       #   @return [Array<Symbol, Telnyx::Models::RequirementListParams::Sort>, nil]
       optional :sort, -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::RequirementListParams::Sort] }
 
-      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!attribute version
+      #   Filter by requirement version number. When omitted, returns the currently-active
+      #   version.
+      #
+      #   @return [Integer, nil]
+      optional :version, Integer
+
+      # @!method initialize(filter: nil, page_number: nil, page_size: nil, sort: nil, version: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::RequirementListParams} for more details.
       #
@@ -42,6 +49,8 @@ module Telnyx
       #   @param page_size [Integer]
       #
       #   @param sort [Array<Symbol, Telnyx::Models::RequirementListParams::Sort>] Consolidated sort parameter for requirements (deepObject style). Originally: sor
+      #
+      #   @param version [Integer] Filter by requirement version number. When omitted, returns the currently-active
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
