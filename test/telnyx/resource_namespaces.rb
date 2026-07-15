@@ -94,6 +94,9 @@ module Telnyx
       module CampaignBuilder
       end
 
+      module Cloudfs
+      end
+
       module Conferences
       end
 
@@ -273,6 +276,9 @@ module Telnyx
 
       module Storage
         module Buckets
+        end
+
+        module Cloudfs
         end
 
         module Kvs

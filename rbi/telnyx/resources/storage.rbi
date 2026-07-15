@@ -20,6 +20,11 @@ module Telnyx
       sig { returns(Telnyx::Resources::Storage::Kvs) }
       attr_reader :kvs
 
+      # Manage CloudFS filesystems — JuiceFS-compatible filesystems backed by Telnyx
+      # Cloud Storage
+      sig { returns(Telnyx::Resources::Storage::Cloudfs) }
+      attr_reader :cloudfs
+
       # List Migration Source coverage
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(

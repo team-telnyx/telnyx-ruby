@@ -1,0 +1,112 @@
+module Telnyx
+  module Models
+    module Storage
+      type cloudf_list_params =
+        {
+          filter_name: String,
+          filter_region: String,
+          filter_status: Telnyx::Models::Storage::CloudfListParams::filter_status,
+          page_after: String,
+          page_before: String,
+          page_limit: Integer,
+          sort: Telnyx::Models::Storage::CloudfListParams::sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class CloudfListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter_name: String?
+
+        def filter_name=: (String) -> String
+
+        attr_reader filter_region: String?
+
+        def filter_region=: (String) -> String
+
+        attr_reader filter_status: Telnyx::Models::Storage::CloudfListParams::filter_status?
+
+        def filter_status=: (
+          Telnyx::Models::Storage::CloudfListParams::filter_status
+        ) -> Telnyx::Models::Storage::CloudfListParams::filter_status
+
+        attr_reader page_after: String?
+
+        def page_after=: (String) -> String
+
+        attr_reader page_before: String?
+
+        def page_before=: (String) -> String
+
+        attr_reader page_limit: Integer?
+
+        def page_limit=: (Integer) -> Integer
+
+        attr_reader sort: Telnyx::Models::Storage::CloudfListParams::sort?
+
+        def sort=: (
+          Telnyx::Models::Storage::CloudfListParams::sort
+        ) -> Telnyx::Models::Storage::CloudfListParams::sort
+
+        def initialize: (
+          ?filter_name: String,
+          ?filter_region: String,
+          ?filter_status: Telnyx::Models::Storage::CloudfListParams::filter_status,
+          ?page_after: String,
+          ?page_before: String,
+          ?page_limit: Integer,
+          ?sort: Telnyx::Models::Storage::CloudfListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter_name: String,
+          filter_region: String,
+          filter_status: Telnyx::Models::Storage::CloudfListParams::filter_status,
+          page_after: String,
+          page_before: String,
+          page_limit: Integer,
+          sort: Telnyx::Models::Storage::CloudfListParams::sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter_status =
+          :provisioning | :ready | :needs_format | :deleting | :failed
+
+        module FilterStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PROVISIONING: :provisioning
+          READY: :ready
+          NEEDS_FORMAT: :needs_format
+          DELETING: :deleting
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::CloudfListParams::filter_status]
+        end
+
+        type sort =
+          :created_at
+          | :"-created_at"
+          | :updated_at
+          | :"-updated_at"
+          | :name
+          | :"-name"
+
+        module Sort
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED_AT: :created_at
+          CREATED_AT_DESC: :"-created_at"
+          UPDATED_AT: :updated_at
+          UPDATED_AT_DESC: :"-updated_at"
+          NAME: :name
+          NAME_DESC: :"-name"
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::CloudfListParams::sort]
+        end
+      end
+    end
+  end
+end

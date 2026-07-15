@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module Storage
+      module Cloudfs
+        type action_rotate_meta_token_params =
+          { id: String, idempotency_key: String }
+          & Telnyx::Internal::Type::request_parameters
+
+        class ActionRotateMetaTokenParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor id: String
+
+          attr_accessor idempotency_key: String
+
+          def initialize: (
+            id: String,
+            idempotency_key: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            idempotency_key: String,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

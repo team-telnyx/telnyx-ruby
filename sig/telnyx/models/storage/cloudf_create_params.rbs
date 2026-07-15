@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    module Storage
+      type cloudf_create_params =
+        {
+          name: String,
+          region: Telnyx::Models::Storage::CloudfCreateParams::region,
+          idempotency_key: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class CloudfCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor name: String
+
+        attr_accessor region: Telnyx::Models::Storage::CloudfCreateParams::region
+
+        attr_accessor idempotency_key: String
+
+        def initialize: (
+          name: String,
+          region: Telnyx::Models::Storage::CloudfCreateParams::region,
+          idempotency_key: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          name: String,
+          region: Telnyx::Models::Storage::CloudfCreateParams::region,
+          idempotency_key: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type region = :"us-central-1" | :"us-east-1" | :"us-west-1"
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          US_CENTRAL_1: :"us-central-1"
+          US_EAST_1: :"us-east-1"
+          US_WEST_1: :"us-west-1"
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::CloudfCreateParams::region]
+        end
+      end
+    end
+  end
+end
