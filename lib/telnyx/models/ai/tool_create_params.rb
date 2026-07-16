@@ -38,6 +38,11 @@ module Telnyx
         #   @return [Hash{Symbol=>Object}, nil]
         optional :invite, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
+        # @!attribute pay
+        #
+        #   @return [Telnyx::Models::AI::PayToolParams, nil]
+        optional :pay, -> { Telnyx::AI::PayToolParams }
+
         # @!attribute retrieval
         #
         #   @return [Hash{Symbol=>Object}, nil]
@@ -53,13 +58,14 @@ module Telnyx
         #   @return [Hash{Symbol=>Object}, nil]
         optional :webhook, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-        # @!method initialize(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, webhook: nil, request_options: {})
+        # @!method initialize(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, webhook: nil, request_options: {})
         #   @param display_name [String]
         #   @param type [String]
         #   @param client_side_tool [Hash{Symbol=>Object}]
         #   @param function [Hash{Symbol=>Object}]
         #   @param handoff [Hash{Symbol=>Object}]
         #   @param invite [Hash{Symbol=>Object}]
+        #   @param pay [Telnyx::Models::AI::PayToolParams]
         #   @param retrieval [Hash{Symbol=>Object}]
         #   @param timeout_ms [Integer]
         #   @param webhook [Hash{Symbol=>Object}]

@@ -13,6 +13,7 @@ module Telnyx
         | Telnyx::AI::AssistantTool::SendDtmf
         | Telnyx::AI::AssistantTool::SendMessage
         | Telnyx::AI::AssistantTool::SkipTurn
+        | Telnyx::AI::AssistantTool::Pay
 
       module AssistantTool
         extend Telnyx::Internal::Type::Union
@@ -921,6 +922,18 @@ module Telnyx
 
             def to_hash: -> { description: String }
           end
+        end
+
+        type pay = { pay: Telnyx::AI::PayToolParams, type: :pay }
+
+        class Pay < Telnyx::Internal::Type::BaseModel
+          attr_accessor pay: Telnyx::AI::PayToolParams
+
+          attr_accessor type: :pay
+
+          def initialize: (pay: Telnyx::AI::PayToolParams, ?type: :pay) -> void
+
+          def to_hash: -> { pay: Telnyx::AI::PayToolParams, type: :pay }
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::AI::assistant_tool]

@@ -404,6 +404,7 @@ require_relative "telnyx/models/ai/openai/embedding_list_embedding_models_respon
 require_relative "telnyx/models/ai/openai_create_response_params"
 require_relative "telnyx/models/ai/openai_create_response_response"
 require_relative "telnyx/models/ai/openai_list_models_params"
+require_relative "telnyx/models/ai/pay_tool_params"
 require_relative "telnyx/models/ai/post_conversation_settings"
 require_relative "telnyx/models/ai/post_conversation_settings_req"
 require_relative "telnyx/models/ai/privacy_settings"

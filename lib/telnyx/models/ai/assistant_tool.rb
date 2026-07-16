@@ -35,6 +35,9 @@ module Telnyx
 
         variant :skip_turn, -> { Telnyx::AI::AssistantTool::SkipTurn }
 
+        # The pay tool allows the assistant to collect card payments from the caller via DTMF during the conversation. Recording is automatically paused while the pay tool is active and resumes when the payment flow completes. The connector_name must reference a pay connector configured in the Telnyx API.
+        variant :pay, -> { Telnyx::AI::AssistantTool::Pay }
+
         class ClientSideTool < Telnyx::Internal::Type::BaseModel
           # @!attribute client_side_tool
           #
@@ -1045,8 +1048,29 @@ module Telnyx
           end
         end
 
+        class Pay < Telnyx::Internal::Type::BaseModel
+          # @!attribute pay
+          #
+          #   @return [Telnyx::Models::AI::PayToolParams]
+          required :pay, -> { Telnyx::AI::PayToolParams }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, :pay]
+          required :type, const: :pay
+
+          # @!method initialize(pay:, type: :pay)
+          #   The pay tool allows the assistant to collect card payments from the caller via
+          #   DTMF during the conversation. Recording is automatically paused while the pay
+          #   tool is active and resumes when the payment flow completes. The connector_name
+          #   must reference a pay connector configured in the Telnyx API.
+          #
+          #   @param pay [Telnyx::Models::AI::PayToolParams]
+          #   @param type [Symbol, :pay]
+        end
+
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn)]
+        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay)]
       end
     end
   end

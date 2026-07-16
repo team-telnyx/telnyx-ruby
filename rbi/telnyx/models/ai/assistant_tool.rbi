@@ -22,7 +22,8 @@ module Telnyx
               Telnyx::AI::AssistantTool::Refer,
               Telnyx::AI::AssistantTool::SendDtmf,
               Telnyx::AI::AssistantTool::SendMessage,
-              Telnyx::AI::AssistantTool::SkipTurn
+              Telnyx::AI::AssistantTool::SkipTurn,
+              Telnyx::AI::AssistantTool::Pay
             )
           end
 
@@ -2289,6 +2290,41 @@ module Telnyx
             sig { override.returns({ description: String }) }
             def to_hash
             end
+          end
+        end
+
+        class Pay < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Telnyx::AI::AssistantTool::Pay, Telnyx::Internal::AnyHash)
+            end
+
+          sig { returns(Telnyx::AI::PayToolParams) }
+          attr_reader :pay
+
+          sig { params(pay: Telnyx::AI::PayToolParams::OrHash).void }
+          attr_writer :pay
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # The pay tool allows the assistant to collect card payments from the caller via
+          # DTMF during the conversation. Recording is automatically paused while the pay
+          # tool is active and resumes when the payment flow completes. The connector_name
+          # must reference a pay connector configured in the Telnyx API.
+          sig do
+            params(
+              pay: Telnyx::AI::PayToolParams::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(pay:, type: :pay)
+          end
+
+          sig do
+            override.returns({ pay: Telnyx::AI::PayToolParams, type: Symbol })
+          end
+          def to_hash
           end
         end
 
