@@ -3,73 +3,242 @@ module Telnyx
     type inbound_message =
       {
         id: String,
-        event_type: Telnyx::Models::InboundMessage::event_type,
-        occurred_at: Time,
-        payload: Telnyx::InboundMessagePayload,
-        record_type: Telnyx::Models::InboundMessage::record_type
+        attachments: ::Array[::Hash[Symbol, top]],
+        bcc: ::Array[Telnyx::InboundMessage::Bcc],
+        cc: ::Array[Telnyx::InboundMessage::Cc],
+        created_at: Time,
+        direction: Telnyx::Models::InboundMessage::direction,
+        from: Telnyx::InboundMessage::From,
+        has_quoted_text: bool,
+        headers: ::Hash[Symbol, top],
+        html_body_url: String?,
+        in_reply_to: String?,
+        inbox_id: String,
+        inline_files: ::Array[::Hash[Symbol, top]],
+        message_id: String,
+        read_at: Time?,
+        received_at: Time,
+        record_type: Telnyx::Models::InboundMessage::record_type,
+        references: ::Array[String],
+        reply_text: String?,
+        reply_to: ::Array[Telnyx::InboundMessage::ReplyTo],
+        status: Telnyx::Models::InboundMessage::status,
+        subject: String?,
+        text_body_url: String?,
+        thread_id: String,
+        to: ::Array[Telnyx::InboundMessage::To],
+        updated_at: Time
       }
 
     class InboundMessage < Telnyx::Internal::Type::BaseModel
-      attr_reader id: String?
+      attr_accessor id: String
 
-      def id=: (String) -> String
+      attr_accessor attachments: ::Array[::Hash[Symbol, top]]
 
-      attr_reader event_type: Telnyx::Models::InboundMessage::event_type?
+      attr_accessor bcc: ::Array[Telnyx::InboundMessage::Bcc]
 
-      def event_type=: (
-        Telnyx::Models::InboundMessage::event_type
-      ) -> Telnyx::Models::InboundMessage::event_type
+      attr_accessor cc: ::Array[Telnyx::InboundMessage::Cc]
 
-      attr_reader occurred_at: Time?
+      attr_accessor created_at: Time
 
-      def occurred_at=: (Time) -> Time
+      attr_accessor direction: Telnyx::Models::InboundMessage::direction
 
-      attr_reader payload: Telnyx::InboundMessagePayload?
+      attr_accessor from: Telnyx::InboundMessage::From
 
-      def payload=: (
-        Telnyx::InboundMessagePayload
-      ) -> Telnyx::InboundMessagePayload
+      attr_accessor has_quoted_text: bool
 
-      attr_reader record_type: Telnyx::Models::InboundMessage::record_type?
+      attr_accessor headers: ::Hash[Symbol, top]
 
-      def record_type=: (
-        Telnyx::Models::InboundMessage::record_type
-      ) -> Telnyx::Models::InboundMessage::record_type
+      attr_accessor html_body_url: String?
+
+      attr_accessor in_reply_to: String?
+
+      attr_accessor inbox_id: String
+
+      attr_accessor inline_files: ::Array[::Hash[Symbol, top]]
+
+      attr_accessor message_id: String
+
+      attr_accessor read_at: Time?
+
+      attr_accessor received_at: Time
+
+      attr_accessor record_type: Telnyx::Models::InboundMessage::record_type
+
+      attr_accessor references: ::Array[String]
+
+      attr_accessor reply_text: String?
+
+      attr_accessor reply_to: ::Array[Telnyx::InboundMessage::ReplyTo]
+
+      attr_accessor status: Telnyx::Models::InboundMessage::status
+
+      attr_accessor subject: String?
+
+      attr_accessor text_body_url: String?
+
+      attr_accessor thread_id: String
+
+      attr_accessor to: ::Array[Telnyx::InboundMessage::To]
+
+      attr_accessor updated_at: Time
 
       def initialize: (
-        ?id: String,
-        ?event_type: Telnyx::Models::InboundMessage::event_type,
-        ?occurred_at: Time,
-        ?payload: Telnyx::InboundMessagePayload,
-        ?record_type: Telnyx::Models::InboundMessage::record_type
+        id: String,
+        attachments: ::Array[::Hash[Symbol, top]],
+        bcc: ::Array[Telnyx::InboundMessage::Bcc],
+        cc: ::Array[Telnyx::InboundMessage::Cc],
+        created_at: Time,
+        direction: Telnyx::Models::InboundMessage::direction,
+        from: Telnyx::InboundMessage::From,
+        has_quoted_text: bool,
+        headers: ::Hash[Symbol, top],
+        html_body_url: String?,
+        in_reply_to: String?,
+        inbox_id: String,
+        inline_files: ::Array[::Hash[Symbol, top]],
+        message_id: String,
+        read_at: Time?,
+        received_at: Time,
+        record_type: Telnyx::Models::InboundMessage::record_type,
+        references: ::Array[String],
+        reply_text: String?,
+        reply_to: ::Array[Telnyx::InboundMessage::ReplyTo],
+        status: Telnyx::Models::InboundMessage::status,
+        subject: String?,
+        text_body_url: String?,
+        thread_id: String,
+        to: ::Array[Telnyx::InboundMessage::To],
+        updated_at: Time
       ) -> void
 
       def to_hash: -> {
         id: String,
-        event_type: Telnyx::Models::InboundMessage::event_type,
-        occurred_at: Time,
-        payload: Telnyx::InboundMessagePayload,
-        record_type: Telnyx::Models::InboundMessage::record_type
+        attachments: ::Array[::Hash[Symbol, top]],
+        bcc: ::Array[Telnyx::InboundMessage::Bcc],
+        cc: ::Array[Telnyx::InboundMessage::Cc],
+        created_at: Time,
+        direction: Telnyx::Models::InboundMessage::direction,
+        from: Telnyx::InboundMessage::From,
+        has_quoted_text: bool,
+        headers: ::Hash[Symbol, top],
+        html_body_url: String?,
+        in_reply_to: String?,
+        inbox_id: String,
+        inline_files: ::Array[::Hash[Symbol, top]],
+        message_id: String,
+        read_at: Time?,
+        received_at: Time,
+        record_type: Telnyx::Models::InboundMessage::record_type,
+        references: ::Array[String],
+        reply_text: String?,
+        reply_to: ::Array[Telnyx::InboundMessage::ReplyTo],
+        status: Telnyx::Models::InboundMessage::status,
+        subject: String?,
+        text_body_url: String?,
+        thread_id: String,
+        to: ::Array[Telnyx::InboundMessage::To],
+        updated_at: Time
       }
 
-      type event_type = :"message.received"
+      type bcc = { email: String, name: String }
 
-      module EventType
-        extend Telnyx::Internal::Type::Enum
+      class Bcc < Telnyx::Internal::Type::BaseModel
+        attr_accessor email: String
 
-        MESSAGE_RECEIVED: :"message.received"
+        attr_reader name: String?
 
-        def self?.values: -> ::Array[Telnyx::Models::InboundMessage::event_type]
+        def name=: (String) -> String
+
+        def initialize: (email: String, ?name: String) -> void
+
+        def to_hash: -> { email: String, name: String }
       end
 
-      type record_type = :event
+      type cc = { email: String, name: String }
+
+      class Cc < Telnyx::Internal::Type::BaseModel
+        attr_accessor email: String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (email: String, ?name: String) -> void
+
+        def to_hash: -> { email: String, name: String }
+      end
+
+      type direction = :inbound
+
+      module Direction
+        extend Telnyx::Internal::Type::Enum
+
+        INBOUND: :inbound
+
+        def self?.values: -> ::Array[Telnyx::Models::InboundMessage::direction]
+      end
+
+      type from = { email: String, name: String }
+
+      class From < Telnyx::Internal::Type::BaseModel
+        attr_accessor email: String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (email: String, ?name: String) -> void
+
+        def to_hash: -> { email: String, name: String }
+      end
+
+      type record_type = :email_message
 
       module RecordType
         extend Telnyx::Internal::Type::Enum
 
-        EVENT: :event
+        EMAIL_MESSAGE: :email_message
 
         def self?.values: -> ::Array[Telnyx::Models::InboundMessage::record_type]
+      end
+
+      type reply_to = { email: String, name: String }
+
+      class ReplyTo < Telnyx::Internal::Type::BaseModel
+        attr_accessor email: String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (email: String, ?name: String) -> void
+
+        def to_hash: -> { email: String, name: String }
+      end
+
+      type status = :received
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        RECEIVED: :received
+
+        def self?.values: -> ::Array[Telnyx::Models::InboundMessage::status]
+      end
+
+      type to = { email: String, name: String }
+
+      class To < Telnyx::Internal::Type::BaseModel
+        attr_accessor email: String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (email: String, ?name: String) -> void
+
+        def to_hash: -> { email: String, name: String }
       end
     end
   end
