@@ -59,7 +59,8 @@ module Telnyx
       type filter =
         {
           email: Telnyx::ManagedAccountListParams::Filter::Email,
-          organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName
+          organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName,
+          status: Telnyx::ManagedAccountListParams::Filter::Status
         }
 
       class Filter < Telnyx::Internal::Type::BaseModel
@@ -75,14 +76,22 @@ module Telnyx
           Telnyx::ManagedAccountListParams::Filter::OrganizationName
         ) -> Telnyx::ManagedAccountListParams::Filter::OrganizationName
 
+        attr_reader status: Telnyx::ManagedAccountListParams::Filter::Status?
+
+        def status=: (
+          Telnyx::ManagedAccountListParams::Filter::Status
+        ) -> Telnyx::ManagedAccountListParams::Filter::Status
+
         def initialize: (
           ?email: Telnyx::ManagedAccountListParams::Filter::Email,
-          ?organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName
+          ?organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName,
+          ?status: Telnyx::ManagedAccountListParams::Filter::Status
         ) -> void
 
         def to_hash: -> {
           email: Telnyx::ManagedAccountListParams::Filter::Email,
-          organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName
+          organization_name: Telnyx::ManagedAccountListParams::Filter::OrganizationName,
+          status: Telnyx::ManagedAccountListParams::Filter::Status
         }
 
         type email = { contains: String, eq: String }
@@ -115,6 +124,41 @@ module Telnyx
           def initialize: (?contains: String, ?eq: String) -> void
 
           def to_hash: -> { contains: String, eq: String }
+        end
+
+        type status =
+          { eq: Telnyx::Models::ManagedAccountListParams::Filter::Status::eq }
+
+        class Status < Telnyx::Internal::Type::BaseModel
+          attr_reader eq: Telnyx::Models::ManagedAccountListParams::Filter::Status::eq?
+
+          def eq=: (
+            Telnyx::Models::ManagedAccountListParams::Filter::Status::eq
+          ) -> Telnyx::Models::ManagedAccountListParams::Filter::Status::eq
+
+          def initialize: (
+            ?eq: Telnyx::Models::ManagedAccountListParams::Filter::Status::eq
+          ) -> void
+
+          def to_hash: -> {
+            eq: Telnyx::Models::ManagedAccountListParams::Filter::Status::eq
+          }
+
+          type eq =
+            :all | :active | :enabled | :cancelled | :disabled | :blocked
+
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            ALL: :all
+            ACTIVE: :active
+            ENABLED: :enabled
+            CANCELLED: :cancelled
+            DISABLED: :disabled
+            BLOCKED: :blocked
+
+            def self?.values: -> ::Array[Telnyx::Models::ManagedAccountListParams::Filter::Status::eq]
+          end
         end
       end
 

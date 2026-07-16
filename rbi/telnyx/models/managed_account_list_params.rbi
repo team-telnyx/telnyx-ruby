@@ -13,7 +13,7 @@ module Telnyx
 
       # Consolidated filter parameter (deepObject style). Originally:
       # filter[email][contains], filter[email][eq], filter[organization_name][contains],
-      # filter[organization_name][eq]
+      # filter[organization_name][eq], filter[status][eq]
       sig { returns(T.nilable(Telnyx::ManagedAccountListParams::Filter)) }
       attr_reader :filter
 
@@ -78,7 +78,7 @@ module Telnyx
       def self.new(
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[email][contains], filter[email][eq], filter[organization_name][contains],
-        # filter[organization_name][eq]
+        # filter[organization_name][eq], filter[status][eq]
         filter: nil,
         # Specifies if cancelled accounts should be included in the results.
         include_cancelled_accounts: nil,
@@ -156,17 +156,30 @@ module Telnyx
         end
         attr_writer :organization_name
 
+        sig do
+          returns(T.nilable(Telnyx::ManagedAccountListParams::Filter::Status))
+        end
+        attr_reader :status
+
+        sig do
+          params(
+            status: Telnyx::ManagedAccountListParams::Filter::Status::OrHash
+          ).void
+        end
+        attr_writer :status
+
         # Consolidated filter parameter (deepObject style). Originally:
         # filter[email][contains], filter[email][eq], filter[organization_name][contains],
-        # filter[organization_name][eq]
+        # filter[organization_name][eq], filter[status][eq]
         sig do
           params(
             email: Telnyx::ManagedAccountListParams::Filter::Email::OrHash,
             organization_name:
-              Telnyx::ManagedAccountListParams::Filter::OrganizationName::OrHash
+              Telnyx::ManagedAccountListParams::Filter::OrganizationName::OrHash,
+            status: Telnyx::ManagedAccountListParams::Filter::Status::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(email: nil, organization_name: nil)
+        def self.new(email: nil, organization_name: nil, status: nil)
         end
 
         sig do
@@ -174,7 +187,8 @@ module Telnyx
             {
               email: Telnyx::ManagedAccountListParams::Filter::Email,
               organization_name:
-                Telnyx::ManagedAccountListParams::Filter::OrganizationName
+                Telnyx::ManagedAccountListParams::Filter::OrganizationName,
+              status: Telnyx::ManagedAccountListParams::Filter::Status
             }
           )
         end
@@ -262,6 +276,116 @@ module Telnyx
 
           sig { override.returns({ contains: String, eq: String }) }
           def to_hash
+          end
+        end
+
+        class Status < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::ManagedAccountListParams::Filter::Status,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # If present, only returns managed accounts with the <code>status</code> matching
+          # exactly the value given. Use <code>enabled</code> or <code>disabled</code> to
+          # filter accounts by whether they are currently able to use Telnyx services.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::ManagedAccountListParams::Filter::Status::Eq::OrSymbol
+              )
+            )
+          end
+          attr_reader :eq
+
+          sig do
+            params(
+              eq: Telnyx::ManagedAccountListParams::Filter::Status::Eq::OrSymbol
+            ).void
+          end
+          attr_writer :eq
+
+          sig do
+            params(
+              eq: Telnyx::ManagedAccountListParams::Filter::Status::Eq::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # If present, only returns managed accounts with the <code>status</code> matching
+            # exactly the value given. Use <code>enabled</code> or <code>disabled</code> to
+            # filter accounts by whether they are currently able to use Telnyx services.
+            eq: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                eq:
+                  Telnyx::ManagedAccountListParams::Filter::Status::Eq::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # If present, only returns managed accounts with the <code>status</code> matching
+          # exactly the value given. Use <code>enabled</code> or <code>disabled</code> to
+          # filter accounts by whether they are currently able to use Telnyx services.
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::ManagedAccountListParams::Filter::Status::Eq
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ALL =
+              T.let(
+                :all,
+                Telnyx::ManagedAccountListParams::Filter::Status::Eq::TaggedSymbol
+              )
+            ACTIVE =
+              T.let(
+                :active,
+                Telnyx::ManagedAccountListParams::Filter::Status::Eq::TaggedSymbol
+              )
+            ENABLED =
+              T.let(
+                :enabled,
+                Telnyx::ManagedAccountListParams::Filter::Status::Eq::TaggedSymbol
+              )
+            CANCELLED =
+              T.let(
+                :cancelled,
+                Telnyx::ManagedAccountListParams::Filter::Status::Eq::TaggedSymbol
+              )
+            DISABLED =
+              T.let(
+                :disabled,
+                Telnyx::ManagedAccountListParams::Filter::Status::Eq::TaggedSymbol
+              )
+            BLOCKED =
+              T.let(
+                :blocked,
+                Telnyx::ManagedAccountListParams::Filter::Status::Eq::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::ManagedAccountListParams::Filter::Status::Eq::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

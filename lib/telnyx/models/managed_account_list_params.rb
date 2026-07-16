@@ -10,7 +10,7 @@ module Telnyx
       # @!attribute filter
       #   Consolidated filter parameter (deepObject style). Originally:
       #   filter[email][contains], filter[email][eq], filter[organization_name][contains],
-      #   filter[organization_name][eq]
+      #   filter[organization_name][eq], filter[status][eq]
       #
       #   @return [Telnyx::Models::ManagedAccountListParams::Filter, nil]
       optional :filter, -> { Telnyx::ManagedAccountListParams::Filter }
@@ -77,13 +77,19 @@ module Telnyx
         #   @return [Telnyx::Models::ManagedAccountListParams::Filter::OrganizationName, nil]
         optional :organization_name, -> { Telnyx::ManagedAccountListParams::Filter::OrganizationName }
 
-        # @!method initialize(email: nil, organization_name: nil)
+        # @!attribute status
+        #
+        #   @return [Telnyx::Models::ManagedAccountListParams::Filter::Status, nil]
+        optional :status, -> { Telnyx::ManagedAccountListParams::Filter::Status }
+
+        # @!method initialize(email: nil, organization_name: nil, status: nil)
         #   Consolidated filter parameter (deepObject style). Originally:
         #   filter[email][contains], filter[email][eq], filter[organization_name][contains],
-        #   filter[organization_name][eq]
+        #   filter[organization_name][eq], filter[status][eq]
         #
         #   @param email [Telnyx::Models::ManagedAccountListParams::Filter::Email]
         #   @param organization_name [Telnyx::Models::ManagedAccountListParams::Filter::OrganizationName]
+        #   @param status [Telnyx::Models::ManagedAccountListParams::Filter::Status]
 
         # @see Telnyx::Models::ManagedAccountListParams::Filter#email
         class Email < Telnyx::Internal::Type::BaseModel
@@ -135,6 +141,42 @@ module Telnyx
           #   @param contains [String] If present, only returns results with the <code>organization_name</code> contain
           #
           #   @param eq [String] If present, only returns results with the <code>organization_name</code> matchin
+        end
+
+        # @see Telnyx::Models::ManagedAccountListParams::Filter#status
+        class Status < Telnyx::Internal::Type::BaseModel
+          # @!attribute eq
+          #   If present, only returns managed accounts with the <code>status</code> matching
+          #   exactly the value given. Use <code>enabled</code> or <code>disabled</code> to
+          #   filter accounts by whether they are currently able to use Telnyx services.
+          #
+          #   @return [Symbol, Telnyx::Models::ManagedAccountListParams::Filter::Status::Eq, nil]
+          optional :eq, enum: -> { Telnyx::ManagedAccountListParams::Filter::Status::Eq }
+
+          # @!method initialize(eq: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::ManagedAccountListParams::Filter::Status} for more details.
+          #
+          #   @param eq [Symbol, Telnyx::Models::ManagedAccountListParams::Filter::Status::Eq] If present, only returns managed accounts with the <code>status</code> matching
+
+          # If present, only returns managed accounts with the <code>status</code> matching
+          # exactly the value given. Use <code>enabled</code> or <code>disabled</code> to
+          # filter accounts by whether they are currently able to use Telnyx services.
+          #
+          # @see Telnyx::Models::ManagedAccountListParams::Filter::Status#eq
+          module Eq
+            extend Telnyx::Internal::Type::Enum
+
+            ALL = :all
+            ACTIVE = :active
+            ENABLED = :enabled
+            CANCELLED = :cancelled
+            DISABLED = :disabled
+            BLOCKED = :blocked
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
 
