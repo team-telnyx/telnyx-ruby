@@ -35,7 +35,7 @@ module Telnyx
 
         variant :skip_turn, -> { Telnyx::AI::AssistantTool::SkipTurn }
 
-        # The pay tool allows the assistant to collect card payments from the caller via DTMF during the conversation. Recording is automatically paused while the pay tool is active and resumes when the payment flow completes. The connector_name must reference a pay connector configured in the Telnyx API.
+        # (BETA) The pay tool allows the assistant to collect card payments from the caller via DTMF during the conversation. Recording is automatically paused while the pay tool is active and resumes when the payment flow completes. The connector_name must reference a pay connector configured in the Telnyx API.
         variant :pay, -> { Telnyx::AI::AssistantTool::Pay }
 
         class ClientSideTool < Telnyx::Internal::Type::BaseModel
@@ -1060,10 +1060,10 @@ module Telnyx
           required :type, const: :pay
 
           # @!method initialize(pay:, type: :pay)
-          #   The pay tool allows the assistant to collect card payments from the caller via
-          #   DTMF during the conversation. Recording is automatically paused while the pay
-          #   tool is active and resumes when the payment flow completes. The connector_name
-          #   must reference a pay connector configured in the Telnyx API.
+          #   (BETA) The pay tool allows the assistant to collect card payments from the
+          #   caller via DTMF during the conversation. Recording is automatically paused while
+          #   the pay tool is active and resumes when the payment flow completes. The
+          #   connector_name must reference a pay connector configured in the Telnyx API.
           #
           #   @param pay [Telnyx::Models::AI::PayToolParams]
           #   @param type [Symbol, :pay]
