@@ -359,9 +359,9 @@ module Telnyx
             :"soniox/stt-rt-v4",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
-        PARAKEET_TDT_0_6B_V3 =
+        NVIDIA_PARAKEET_V3 =
           T.let(
-            :"parakeet/tdt-0.6b-v3",
+            :"nvidia/parakeet-v3",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
 

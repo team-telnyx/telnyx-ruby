@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class AI
+      class Anthropic
+        attr_reader v1: Telnyx::Resources::AI::Anthropic::V1
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

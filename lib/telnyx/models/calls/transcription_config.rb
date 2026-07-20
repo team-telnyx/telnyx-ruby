@@ -12,7 +12,11 @@ module Telnyx
         #   controls the language hint), `multi` (no language hint), and language-specific
         #   hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For
         #   `soniox/stt-rt-v4`, `auto` omits the language hint and lets Soniox auto-detect;
-        #   ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language.
+        #   ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language. For
+        #   `assemblyai/universal-streaming`, `auto` (or unset) enables native multilingual
+        #   code-switching; ISO 639-1 codes (`en`, `es`, `de`, `fr`, `pt`, `it`, `tr`, `nl`,
+        #   `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`, `he`, `ja`, `zh`) bias the session to
+        #   that language.
         #
         #   @return [String, nil]
         optional :language, String
@@ -29,7 +33,7 @@ module Telnyx
         #   - `xai/grok-stt` for live streaming transcription.
         #   - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #     automatic language detection.
-        #   - `parakeet/tdt-0.6b-v3` for multilingual transcription with automatic language
+        #   - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #     detection.
         #   - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #     unsupported regions require `api_key_ref`.
@@ -66,7 +70,7 @@ module Telnyx
         # - `xai/grok-stt` for live streaming transcription.
         # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #   automatic language detection.
-        # - `parakeet/tdt-0.6b-v3` for multilingual transcription with automatic language
+        # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #   detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
@@ -89,7 +93,7 @@ module Telnyx
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
-          PARAKEET_TDT_0_6B_V3 = :"parakeet/tdt-0.6b-v3"
+          NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
           AZURE_FAST = :"azure/fast"
           AZURE_REALTIME = :"azure/realtime"
           GOOGLE_LATEST_LONG = :"google/latest_long"

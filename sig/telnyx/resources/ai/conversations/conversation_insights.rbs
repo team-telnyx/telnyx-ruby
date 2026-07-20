@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class AI
+      class Conversations
+        class ConversationInsights
+          def retrieve_aggregates: (
+            ?created_at: String,
+            ?group_by: ::Array[String],
+            ?insight_id: String,
+            ?metadata: Telnyx::AI::Conversations::ConversationInsightRetrieveAggregatesParams::Metadata,
+            ?show: ::Array[String],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Conversations::ConversationInsightRetrieveAggregatesResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

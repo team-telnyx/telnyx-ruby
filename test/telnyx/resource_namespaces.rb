@@ -24,6 +24,9 @@ module Telnyx
       end
 
       module AI
+        module Anthropic
+        end
+
         module Assistants
           module Tests
             module TestSuites
@@ -52,6 +55,9 @@ module Telnyx
 
         module OpenAI
         end
+      end
+
+      module Anthropic
       end
 
       module Assistants
@@ -86,6 +92,9 @@ module Telnyx
       end
 
       module CampaignBuilder
+      end
+
+      module Cloudfs
       end
 
       module Conferences
@@ -267,6 +276,9 @@ module Telnyx
 
       module Storage
         module Buckets
+        end
+
+        module Cloudfs
         end
 
         module Kvs

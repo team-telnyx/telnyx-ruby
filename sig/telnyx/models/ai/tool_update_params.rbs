@@ -9,6 +9,7 @@ module Telnyx
           function: ::Hash[Symbol, top],
           handoff: ::Hash[Symbol, top],
           invite: ::Hash[Symbol, top],
+          pay: Telnyx::AI::PayToolParams,
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
           type: String,
@@ -42,6 +43,10 @@ module Telnyx
 
         def invite=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
+        attr_reader pay: Telnyx::AI::PayToolParams?
+
+        def pay=: (Telnyx::AI::PayToolParams) -> Telnyx::AI::PayToolParams
+
         attr_reader retrieval: ::Hash[Symbol, top]?
 
         def retrieval=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -65,6 +70,7 @@ module Telnyx
           ?function: ::Hash[Symbol, top],
           ?handoff: ::Hash[Symbol, top],
           ?invite: ::Hash[Symbol, top],
+          ?pay: Telnyx::AI::PayToolParams,
           ?retrieval: ::Hash[Symbol, top],
           ?timeout_ms: Integer,
           ?type: String,
@@ -79,6 +85,7 @@ module Telnyx
           function: ::Hash[Symbol, top],
           handoff: ::Hash[Symbol, top],
           invite: ::Hash[Symbol, top],
+          pay: Telnyx::AI::PayToolParams,
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
           type: String,

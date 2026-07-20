@@ -8,67 +8,174 @@ module Telnyx
           T.any(Telnyx::InboundMessage, Telnyx::Internal::AnyHash)
         end
 
-      # Identifies the type of resource.
+      sig { returns(String) }
+      attr_accessor :id
+
+      sig { returns(T::Array[T::Hash[Symbol, T.anything]]) }
+      attr_accessor :attachments
+
+      sig { returns(T::Array[Telnyx::InboundMessage::Bcc]) }
+      attr_accessor :bcc
+
+      sig { returns(T::Array[Telnyx::InboundMessage::Cc]) }
+      attr_accessor :cc
+
+      sig { returns(Time) }
+      attr_accessor :created_at
+
+      sig { returns(Telnyx::InboundMessage::Direction::OrSymbol) }
+      attr_accessor :direction
+
+      sig { returns(Telnyx::InboundMessage::From) }
+      attr_reader :from
+
+      sig { params(from: Telnyx::InboundMessage::From::OrHash).void }
+      attr_writer :from
+
+      # Whether conservative plain-text extraction detected a quoted tail. False does
+      # not prove that the source contains no quoted content.
+      sig { returns(T::Boolean) }
+      attr_accessor :has_quoted_text
+
+      sig { returns(T::Hash[Symbol, T.anything]) }
+      attr_accessor :headers
+
+      # URL for an offloaded HTML body. Null means the body is not offloaded to a URL;
+      # an inline HTML body may still exist but is not returned on list reads.
+      # `reply_text` and `has_quoted_text` are computed from the inline plain-text body
+      # when present.
       sig { returns(T.nilable(String)) }
-      attr_reader :id
+      attr_accessor :html_body_url
 
-      sig { params(id: String).void }
-      attr_writer :id
+      sig { returns(T.nilable(String)) }
+      attr_accessor :in_reply_to
 
-      # The type of event being delivered.
-      sig do
-        returns(T.nilable(Telnyx::InboundMessage::EventType::TaggedSymbol))
-      end
-      attr_reader :event_type
+      sig { returns(String) }
+      attr_accessor :inbox_id
 
-      sig do
-        params(event_type: Telnyx::InboundMessage::EventType::OrSymbol).void
-      end
-      attr_writer :event_type
+      sig { returns(T::Array[T::Hash[Symbol, T.anything]]) }
+      attr_accessor :inline_files
 
-      # ISO 8601 formatted date indicating when the resource was created.
+      # RFC Message-ID header.
+      sig { returns(String) }
+      attr_accessor :message_id
+
       sig { returns(T.nilable(Time)) }
-      attr_reader :occurred_at
+      attr_accessor :read_at
 
-      sig { params(occurred_at: Time).void }
-      attr_writer :occurred_at
+      sig { returns(Time) }
+      attr_accessor :received_at
 
-      sig { returns(T.nilable(Telnyx::InboundMessagePayload)) }
-      attr_reader :payload
+      sig { returns(Telnyx::InboundMessage::RecordType::OrSymbol) }
+      attr_accessor :record_type
 
-      sig { params(payload: Telnyx::InboundMessagePayload::OrHash).void }
-      attr_writer :payload
+      # Ordered RFC Message-ID values from the References header.
+      sig { returns(T::Array[String]) }
+      attr_accessor :references
 
-      # Identifies the type of the resource.
-      sig do
-        returns(T.nilable(Telnyx::InboundMessage::RecordType::TaggedSymbol))
-      end
-      attr_reader :record_type
+      # Conservatively extracted new-reply content from the available plain-text body.
+      # Null means no plain-text body was available because it was absent or offloaded;
+      # HTML bodies are not parsed.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :reply_text
 
-      sig do
-        params(record_type: Telnyx::InboundMessage::RecordType::OrSymbol).void
-      end
-      attr_writer :record_type
+      sig { returns(T::Array[Telnyx::InboundMessage::ReplyTo]) }
+      attr_accessor :reply_to
+
+      sig { returns(Telnyx::InboundMessage::Status::OrSymbol) }
+      attr_accessor :status
+
+      sig { returns(T.nilable(String)) }
+      attr_accessor :subject
+
+      # URL for an offloaded plain-text body. Null means the body is not offloaded to a
+      # URL; an inline plain-text body may still exist but is not returned on list
+      # reads. `reply_text` and `has_quoted_text` are computed from the inline
+      # plain-text body when present.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :text_body_url
+
+      sig { returns(String) }
+      attr_accessor :thread_id
+
+      sig { returns(T::Array[Telnyx::InboundMessage::To]) }
+      attr_accessor :to
+
+      sig { returns(Time) }
+      attr_accessor :updated_at
 
       sig do
         params(
           id: String,
-          event_type: Telnyx::InboundMessage::EventType::OrSymbol,
-          occurred_at: Time,
-          payload: Telnyx::InboundMessagePayload::OrHash,
-          record_type: Telnyx::InboundMessage::RecordType::OrSymbol
+          attachments: T::Array[T::Hash[Symbol, T.anything]],
+          bcc: T::Array[Telnyx::InboundMessage::Bcc::OrHash],
+          cc: T::Array[Telnyx::InboundMessage::Cc::OrHash],
+          created_at: Time,
+          direction: Telnyx::InboundMessage::Direction::OrSymbol,
+          from: Telnyx::InboundMessage::From::OrHash,
+          has_quoted_text: T::Boolean,
+          headers: T::Hash[Symbol, T.anything],
+          html_body_url: T.nilable(String),
+          in_reply_to: T.nilable(String),
+          inbox_id: String,
+          inline_files: T::Array[T::Hash[Symbol, T.anything]],
+          message_id: String,
+          read_at: T.nilable(Time),
+          received_at: Time,
+          record_type: Telnyx::InboundMessage::RecordType::OrSymbol,
+          references: T::Array[String],
+          reply_text: T.nilable(String),
+          reply_to: T::Array[Telnyx::InboundMessage::ReplyTo::OrHash],
+          status: Telnyx::InboundMessage::Status::OrSymbol,
+          subject: T.nilable(String),
+          text_body_url: T.nilable(String),
+          thread_id: String,
+          to: T::Array[Telnyx::InboundMessage::To::OrHash],
+          updated_at: Time
         ).returns(T.attached_class)
       end
       def self.new(
-        # Identifies the type of resource.
-        id: nil,
-        # The type of event being delivered.
-        event_type: nil,
-        # ISO 8601 formatted date indicating when the resource was created.
-        occurred_at: nil,
-        payload: nil,
-        # Identifies the type of the resource.
-        record_type: nil
+        id:,
+        attachments:,
+        bcc:,
+        cc:,
+        created_at:,
+        direction:,
+        from:,
+        # Whether conservative plain-text extraction detected a quoted tail. False does
+        # not prove that the source contains no quoted content.
+        has_quoted_text:,
+        headers:,
+        # URL for an offloaded HTML body. Null means the body is not offloaded to a URL;
+        # an inline HTML body may still exist but is not returned on list reads.
+        # `reply_text` and `has_quoted_text` are computed from the inline plain-text body
+        # when present.
+        html_body_url:,
+        in_reply_to:,
+        inbox_id:,
+        inline_files:,
+        # RFC Message-ID header.
+        message_id:,
+        read_at:,
+        received_at:,
+        record_type:,
+        # Ordered RFC Message-ID values from the References header.
+        references:,
+        # Conservatively extracted new-reply content from the available plain-text body.
+        # Null means no plain-text body was available because it was absent or offloaded;
+        # HTML bodies are not parsed.
+        reply_text:,
+        reply_to:,
+        status:,
+        subject:,
+        # URL for an offloaded plain-text body. Null means the body is not offloaded to a
+        # URL; an inline plain-text body may still exist but is not returned on list
+        # reads. `reply_text` and `has_quoted_text` are computed from the inline
+        # plain-text body when present.
+        text_body_url:,
+        thread_id:,
+        to:,
+        updated_at:
       )
       end
 
@@ -76,40 +183,128 @@ module Telnyx
         override.returns(
           {
             id: String,
-            event_type: Telnyx::InboundMessage::EventType::TaggedSymbol,
-            occurred_at: Time,
-            payload: Telnyx::InboundMessagePayload,
-            record_type: Telnyx::InboundMessage::RecordType::TaggedSymbol
+            attachments: T::Array[T::Hash[Symbol, T.anything]],
+            bcc: T::Array[Telnyx::InboundMessage::Bcc],
+            cc: T::Array[Telnyx::InboundMessage::Cc],
+            created_at: Time,
+            direction: Telnyx::InboundMessage::Direction::OrSymbol,
+            from: Telnyx::InboundMessage::From,
+            has_quoted_text: T::Boolean,
+            headers: T::Hash[Symbol, T.anything],
+            html_body_url: T.nilable(String),
+            in_reply_to: T.nilable(String),
+            inbox_id: String,
+            inline_files: T::Array[T::Hash[Symbol, T.anything]],
+            message_id: String,
+            read_at: T.nilable(Time),
+            received_at: Time,
+            record_type: Telnyx::InboundMessage::RecordType::OrSymbol,
+            references: T::Array[String],
+            reply_text: T.nilable(String),
+            reply_to: T::Array[Telnyx::InboundMessage::ReplyTo],
+            status: Telnyx::InboundMessage::Status::OrSymbol,
+            subject: T.nilable(String),
+            text_body_url: T.nilable(String),
+            thread_id: String,
+            to: T::Array[Telnyx::InboundMessage::To],
+            updated_at: Time
           }
         )
       end
       def to_hash
       end
 
-      # The type of event being delivered.
-      module EventType
+      class Bcc < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::InboundMessage::Bcc, Telnyx::Internal::AnyHash)
+          end
+
+        sig { returns(String) }
+        attr_accessor :email
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
+
+        sig { params(email: String, name: String).returns(T.attached_class) }
+        def self.new(email:, name: nil)
+        end
+
+        sig { override.returns({ email: String, name: String }) }
+        def to_hash
+        end
+      end
+
+      class Cc < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::InboundMessage::Cc, Telnyx::Internal::AnyHash)
+          end
+
+        sig { returns(String) }
+        attr_accessor :email
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
+
+        sig { params(email: String, name: String).returns(T.attached_class) }
+        def self.new(email:, name: nil)
+        end
+
+        sig { override.returns({ email: String, name: String }) }
+        def to_hash
+        end
+      end
+
+      module Direction
         extend Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Telnyx::InboundMessage::EventType) }
+          T.type_alias { T.all(Symbol, Telnyx::InboundMessage::Direction) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        MESSAGE_RECEIVED =
-          T.let(
-            :"message.received",
-            Telnyx::InboundMessage::EventType::TaggedSymbol
-          )
+        INBOUND =
+          T.let(:inbound, Telnyx::InboundMessage::Direction::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Telnyx::InboundMessage::EventType::TaggedSymbol]
+            T::Array[Telnyx::InboundMessage::Direction::TaggedSymbol]
           )
         end
         def self.values
         end
       end
 
-      # Identifies the type of the resource.
+      class From < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::InboundMessage::From, Telnyx::Internal::AnyHash)
+          end
+
+        sig { returns(String) }
+        attr_accessor :email
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
+
+        sig { params(email: String, name: String).returns(T.attached_class) }
+        def self.new(email:, name: nil)
+        end
+
+        sig { override.returns({ email: String, name: String }) }
+        def to_hash
+        end
+      end
+
       module RecordType
         extend Telnyx::Internal::Type::Enum
 
@@ -117,7 +312,11 @@ module Telnyx
           T.type_alias { T.all(Symbol, Telnyx::InboundMessage::RecordType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        EVENT = T.let(:event, Telnyx::InboundMessage::RecordType::TaggedSymbol)
+        EMAIL_MESSAGE =
+          T.let(
+            :email_message,
+            Telnyx::InboundMessage::RecordType::TaggedSymbol
+          )
 
         sig do
           override.returns(
@@ -125,6 +324,73 @@ module Telnyx
           )
         end
         def self.values
+        end
+      end
+
+      class ReplyTo < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::InboundMessage::ReplyTo, Telnyx::Internal::AnyHash)
+          end
+
+        sig { returns(String) }
+        attr_accessor :email
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
+
+        sig { params(email: String, name: String).returns(T.attached_class) }
+        def self.new(email:, name: nil)
+        end
+
+        sig { override.returns({ email: String, name: String }) }
+        def to_hash
+        end
+      end
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::InboundMessage::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        RECEIVED =
+          T.let(:received, Telnyx::InboundMessage::Status::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::InboundMessage::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+
+      class To < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Telnyx::InboundMessage::To, Telnyx::Internal::AnyHash)
+          end
+
+        sig { returns(String) }
+        attr_accessor :email
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
+
+        sig { params(email: String, name: String).returns(T.attached_class) }
+        def self.new(email:, name: nil)
+        end
+
+        sig { override.returns({ email: String, name: String }) }
+        def to_hash
         end
       end
     end

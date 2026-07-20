@@ -47,12 +47,12 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine]
         end
 
-        type transcription_model = :"parakeet/tdt-0.6b-v3"
+        type transcription_model = :"nvidia/parakeet-v3"
 
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
-          PARAKEET_TDT_0_6B_V3: :"parakeet/tdt-0.6b-v3"
+          NVIDIA_PARAKEET_V3: :"nvidia/parakeet-v3"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model]
         end

@@ -254,7 +254,7 @@ module Telnyx
         optional :sender_phone_number, String, nil?: true
 
         # @!attribute template_id
-        #   Customer pre-approved authentication template name registered on Meta
+        #   Customer pre-approved authentication template ID registered on Meta
         #
         #   @return [String, nil]
         optional :template_id, String, nil?: true
@@ -283,7 +283,7 @@ module Telnyx
         #
         #   @param sender_phone_number [String, nil] Phone number registered on the customer WABA to send OTPs from
         #
-        #   @param template_id [String, nil] Customer pre-approved authentication template name registered on Meta
+        #   @param template_id [String, nil] Customer pre-approved authentication template ID registered on Meta
         #
         #   @param waba_id [String, nil] Customer Meta WABA ID for Bring-Your-Own-WABA sending
         #

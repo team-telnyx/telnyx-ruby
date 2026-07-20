@@ -1,0 +1,45 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Cloudfs
+        attr_reader actions: Telnyx::Resources::Storage::Cloudfs::Actions
+
+        def create: (
+          name: String,
+          region: Telnyx::Models::Storage::CloudfCreateParams::region,
+          idempotency_key: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::CloudfsFilesystemResponseWrapper
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::CloudfsFilesystemDetailResponseWrapper
+
+        def update: (
+          String id,
+          ?name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::CloudfsFilesystemDetailResponseWrapper
+
+        def list: (
+          ?filter_name: String,
+          ?filter_region: String,
+          ?filter_status: Telnyx::Models::Storage::CloudfListParams::filter_status,
+          ?page_after: String,
+          ?page_before: String,
+          ?page_limit: Integer,
+          ?sort: Telnyx::Models::Storage::CloudfListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Storage::CloudfListResponse
+
+        def delete: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::CloudfsFilesystemDetailResponseWrapper
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

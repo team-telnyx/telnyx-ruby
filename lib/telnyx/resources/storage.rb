@@ -20,6 +20,11 @@ module Telnyx
       # @return [Telnyx::Resources::Storage::Kvs]
       attr_reader :kvs
 
+      # Manage CloudFS filesystems — JuiceFS-compatible filesystems backed by Telnyx
+      # Cloud Storage
+      # @return [Telnyx::Resources::Storage::Cloudfs]
+      attr_reader :cloudfs
+
       # List Migration Source coverage
       #
       # @overload list_migration_source_coverage(request_options: {})
@@ -47,6 +52,7 @@ module Telnyx
         @migration_sources = Telnyx::Resources::Storage::MigrationSources.new(client: client)
         @migrations = Telnyx::Resources::Storage::Migrations.new(client: client)
         @kvs = Telnyx::Resources::Storage::Kvs.new(client: client)
+        @cloudfs = Telnyx::Resources::Storage::Cloudfs.new(client: client)
       end
     end
   end

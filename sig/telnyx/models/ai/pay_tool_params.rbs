@@ -1,0 +1,41 @@
+module Telnyx
+  module Models
+    module AI
+      type pay_tool_params =
+        {
+          connector_name: String,
+          currency: String,
+          description: String?,
+          payment_method: String
+        }
+
+      class PayToolParams < Telnyx::Internal::Type::BaseModel
+        attr_accessor connector_name: String
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_accessor description: String?
+
+        attr_reader payment_method: String?
+
+        def payment_method=: (String) -> String
+
+        def initialize: (
+          connector_name: String,
+          ?currency: String,
+          ?description: String?,
+          ?payment_method: String
+        ) -> void
+
+        def to_hash: -> {
+          connector_name: String,
+          currency: String,
+          description: String?,
+          payment_method: String
+        }
+      end
+    end
+  end
+end

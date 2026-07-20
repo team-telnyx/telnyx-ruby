@@ -36,6 +36,7 @@ module Telnyx
         record_timeout_secs: Integer,
         record_track: Telnyx::Models::CallDialParams::record_track,
         record_trim: Telnyx::Models::CallDialParams::record_trim,
+        retry_on_timeout: bool,
         send_digits_on_answer: String,
         send_silence_when_idle: bool,
         sip_auth_password: String,
@@ -231,6 +232,10 @@ module Telnyx
         Telnyx::Models::CallDialParams::record_trim
       ) -> Telnyx::Models::CallDialParams::record_trim
 
+      attr_reader retry_on_timeout: bool?
+
+      def retry_on_timeout=: (bool) -> bool
+
       attr_reader send_digits_on_answer: String?
 
       def send_digits_on_answer=: (String) -> String
@@ -408,6 +413,7 @@ module Telnyx
         ?record_timeout_secs: Integer,
         ?record_track: Telnyx::Models::CallDialParams::record_track,
         ?record_trim: Telnyx::Models::CallDialParams::record_trim,
+        ?retry_on_timeout: bool,
         ?send_digits_on_answer: String,
         ?send_silence_when_idle: bool,
         ?sip_auth_password: String,
@@ -474,6 +480,7 @@ module Telnyx
         record_timeout_secs: Integer,
         record_track: Telnyx::Models::CallDialParams::record_track,
         record_trim: Telnyx::Models::CallDialParams::record_trim,
+        retry_on_timeout: bool,
         send_digits_on_answer: String,
         send_silence_when_idle: bool,
         sip_auth_password: String,

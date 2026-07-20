@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.157.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.156.0...v5.157.0) (2026-07-17)
+
+
+### Bug Fixes
+
+* **release:** assert a release PR exists for unreleased commits ([#326](https://github.com/team-telnyx/telnyx-ruby/issues/326)) ([d8a97f0](https://github.com/team-telnyx/telnyx-ruby/commit/d8a97f00ce88d2d91f7529644eb36b7bf75ab996))
+* **release:** make the --local scan clone see the repointed release branch ([#324](https://github.com/team-telnyx/telnyx-ruby/issues/324)) ([82dfdae](https://github.com/team-telnyx/telnyx-ruby/commit/82dfdae237576a2a71c3ca8ebc470ae590b81fb9))
+
 ## [5.156.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.155.0...v5.156.0) (2026-07-09)
 
 

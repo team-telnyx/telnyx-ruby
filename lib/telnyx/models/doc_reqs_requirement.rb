@@ -43,26 +43,45 @@ module Telnyx
         #   @return [String, nil]
         optional :created_at, String
 
+        # @!attribute effective_end_at
+        #   When this version was superseded. NULL means this is the active or pending
+        #   version.
+        #
+        #   @return [Time, nil]
+        optional :effective_end_at, Time, nil?: true
+
+        # @!attribute effective_start_at
+        #   When this version became (or will become) active.
+        #
+        #   @return [Time, nil]
+        optional :effective_start_at, Time, nil?: true
+
         # @!attribute record_type
         #   Identifies the type of the resource.
         #
         #   @return [String, nil]
         optional :record_type, String
 
-        # @!attribute requirements_types
+        # @!attribute requirement_types
         #   Lists the requirement types necessary to fulfill this requirement
         #
         #   @return [Array<Telnyx::Models::DocReqsRequirementType>, nil]
-        optional :requirements_types, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::DocReqsRequirementType] }
+        optional :requirement_types, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::DocReqsRequirementType] }
 
         # @!attribute updated_at
         #   ISO 8601 formatted date-time indicating when the resource was last updated.
         #
         #   @return [String, nil]
         optional :updated_at, String
+
+        # @!attribute version
+        #   Version number. Increments with each new version. Defaults to 1.
+        #
+        #   @return [Integer, nil]
+        optional :version, Integer
       end
 
-      # @!method initialize(id: nil, action: nil, country_code: nil, created_at: nil, locality: nil, phone_number_type: nil, record_type: nil, requirements_types: nil, updated_at: nil)
+      # @!method initialize(id: nil, action: nil, country_code: nil, created_at: nil, effective_end_at: nil, effective_start_at: nil, locality: nil, phone_number_type: nil, record_type: nil, requirement_types: nil, updated_at: nil, version: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::DocReqsRequirement} for more details.
       #
@@ -74,15 +93,21 @@ module Telnyx
       #
       #   @param created_at [String] ISO 8601 formatted date-time indicating when the resource was created.
       #
+      #   @param effective_end_at [Time, nil] When this version was superseded. NULL means this is the active or pending versi
+      #
+      #   @param effective_start_at [Time, nil] When this version became (or will become) active.
+      #
       #   @param locality [String] The locality where this requirement applies
       #
       #   @param phone_number_type [Symbol, Telnyx::Models::DocReqsRequirement::PhoneNumberType] Indicates the phone_number_type this requirement applies to. Leave blank if this
       #
       #   @param record_type [String] Identifies the type of the resource.
       #
-      #   @param requirements_types [Array<Telnyx::Models::DocReqsRequirementType>] Lists the requirement types necessary to fulfill this requirement
+      #   @param requirement_types [Array<Telnyx::Models::DocReqsRequirementType>] Lists the requirement types necessary to fulfill this requirement
       #
       #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was last updated.
+      #
+      #   @param version [Integer] Version number. Increments with each new version. Defaults to 1.
 
       # Indicates whether this requirement applies to branded_calling, ordering,
       # porting, or both ordering and porting

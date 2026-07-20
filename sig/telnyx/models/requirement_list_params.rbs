@@ -5,7 +5,8 @@ module Telnyx
         filter: Telnyx::RequirementListParams::Filter,
         page_number: Integer,
         page_size: Integer,
-        sort: ::Array[Telnyx::Models::RequirementListParams::sort]
+        sort: ::Array[Telnyx::Models::RequirementListParams::sort],
+        version: Integer
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -33,11 +34,16 @@ module Telnyx
         ::Array[Telnyx::Models::RequirementListParams::sort]
       ) -> ::Array[Telnyx::Models::RequirementListParams::sort]
 
+      attr_reader version: Integer?
+
+      def version=: (Integer) -> Integer
+
       def initialize: (
         ?filter: Telnyx::RequirementListParams::Filter,
         ?page_number: Integer,
         ?page_size: Integer,
         ?sort: ::Array[Telnyx::Models::RequirementListParams::sort],
+        ?version: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -46,6 +52,7 @@ module Telnyx
         page_number: Integer,
         page_size: Integer,
         sort: ::Array[Telnyx::Models::RequirementListParams::sort],
+        version: Integer,
         request_options: Telnyx::RequestOptions
       }
 

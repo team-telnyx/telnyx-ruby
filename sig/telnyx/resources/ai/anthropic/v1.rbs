@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class AI
+      class Anthropic
+        class V1
+          def messages: (
+            max_tokens: Integer,
+            messages: ::Array[::Hash[Symbol, top]],
+            model: String,
+            ?api_key_ref: String,
+            ?billing_group_id: String,
+            ?fallback_config: ::Hash[Symbol, top],
+            ?max_retries: Integer,
+            ?mcp_servers: ::Array[::Hash[Symbol, top]],
+            ?metadata: ::Hash[Symbol, top],
+            ?service_tier: String,
+            ?stop_sequences: ::Array[String],
+            ?stream: bool,
+            ?system_: Telnyx::Models::AI::Anthropic::V1MessagesParams::system_,
+            ?temperature: Float,
+            ?thinking: ::Hash[Symbol, top],
+            ?timeout: Float,
+            ?tool_choice: ::Hash[Symbol, top],
+            ?tools: ::Array[::Hash[Symbol, top]],
+            ?top_k: Integer,
+            ?top_p: Float,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Anthropic::v1_messages_response
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

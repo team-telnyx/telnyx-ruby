@@ -44,6 +44,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Tools) }
       attr_reader :tools
 
+      sig { returns(Telnyx::Resources::AI::Anthropic) }
+      attr_reader :anthropic
+
       # Performs semantic vector search across conversation history records.
       #
       # **How it works:**

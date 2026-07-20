@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module Storage
+      type cloudfs_filesystem_status =
+        :provisioning | :ready | :needs_format | :deleting | :failed | :deleted
+
+      module CloudfsFilesystemStatus
+        extend Telnyx::Internal::Type::Enum
+
+        PROVISIONING: :provisioning
+        READY: :ready
+        NEEDS_FORMAT: :needs_format
+        DELETING: :deleting
+        FAILED: :failed
+        DELETED: :deleted
+
+        def self?.values: -> ::Array[Telnyx::Models::Storage::cloudfs_filesystem_status]
+      end
+    end
+  end
+end

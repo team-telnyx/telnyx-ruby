@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Cloudfs
+        class Actions
+          def rotate_meta_token: (
+            String id,
+            idempotency_key: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Storage::CloudfsFilesystemResponseWrapper
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

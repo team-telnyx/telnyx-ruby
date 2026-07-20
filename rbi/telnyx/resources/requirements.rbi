@@ -8,12 +8,16 @@ module Telnyx
       sig do
         params(
           id: String,
+          version: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::RequirementRetrieveResponse)
       end
       def retrieve(
         # Uniquely identifies the requirement_type record
         id,
+        # Filter by requirement version number. When omitted, returns the currently-active
+        # version.
+        version: nil,
         request_options: {}
       )
       end
@@ -25,6 +29,7 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           sort: T::Array[Telnyx::RequirementListParams::Sort::OrSymbol],
+          version: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[Telnyx::DocReqsRequirement]
@@ -39,6 +44,9 @@ module Telnyx
         # Consolidated sort parameter for requirements (deepObject style). Originally:
         # sort[]
         sort: nil,
+        # Filter by requirement version number. When omitted, returns the currently-active
+        # version.
+        version: nil,
         request_options: {}
       )
       end

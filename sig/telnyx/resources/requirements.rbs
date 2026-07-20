@@ -3,6 +3,7 @@ module Telnyx
     class Requirements
       def retrieve: (
         String id,
+        ?version: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::RequirementRetrieveResponse
 
@@ -11,6 +12,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?sort: ::Array[Telnyx::Models::RequirementListParams::sort],
+        ?version: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DocReqsRequirement]
 

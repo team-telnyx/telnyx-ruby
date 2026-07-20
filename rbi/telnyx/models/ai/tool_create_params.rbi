@@ -42,6 +42,12 @@ module Telnyx
         sig { params(invite: T::Hash[Symbol, T.anything]).void }
         attr_writer :invite
 
+        sig { returns(T.nilable(Telnyx::AI::PayToolParams)) }
+        attr_reader :pay
+
+        sig { params(pay: Telnyx::AI::PayToolParams::OrHash).void }
+        attr_writer :pay
+
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :retrieval
 
@@ -68,6 +74,7 @@ module Telnyx
             function: T::Hash[Symbol, T.anything],
             handoff: T::Hash[Symbol, T.anything],
             invite: T::Hash[Symbol, T.anything],
+            pay: Telnyx::AI::PayToolParams::OrHash,
             retrieval: T::Hash[Symbol, T.anything],
             timeout_ms: Integer,
             webhook: T::Hash[Symbol, T.anything],
@@ -81,6 +88,7 @@ module Telnyx
           function: nil,
           handoff: nil,
           invite: nil,
+          pay: nil,
           retrieval: nil,
           timeout_ms: nil,
           webhook: nil,
@@ -97,6 +105,7 @@ module Telnyx
               function: T::Hash[Symbol, T.anything],
               handoff: T::Hash[Symbol, T.anything],
               invite: T::Hash[Symbol, T.anything],
+              pay: Telnyx::AI::PayToolParams,
               retrieval: T::Hash[Symbol, T.anything],
               timeout_ms: Integer,
               webhook: T::Hash[Symbol, T.anything],

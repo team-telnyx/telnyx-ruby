@@ -7,7 +7,7 @@ module Telnyx
       class Tools
         # Create Tool
         #
-        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, webhook: nil, request_options: {})
+        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, webhook: nil, request_options: {})
         #
         # @param display_name [String]
         # @param type [String]
@@ -15,6 +15,7 @@ module Telnyx
         # @param function [Hash{Symbol=>Object}]
         # @param handoff [Hash{Symbol=>Object}]
         # @param invite [Hash{Symbol=>Object}]
+        # @param pay [Telnyx::Models::AI::PayToolParams]
         # @param retrieval [Hash{Symbol=>Object}]
         # @param timeout_ms [Integer]
         # @param webhook [Hash{Symbol=>Object}]
@@ -56,7 +57,7 @@ module Telnyx
 
         # Update Tool
         #
-        # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
+        # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
         #
         # @param tool_id [String] Unique identifier of the tool.
         #
@@ -69,6 +70,8 @@ module Telnyx
         # @param handoff [Hash{Symbol=>Object}]
         #
         # @param invite [Hash{Symbol=>Object}]
+        #
+        # @param pay [Telnyx::Models::AI::PayToolParams]
         #
         # @param retrieval [Hash{Symbol=>Object}]
         #

@@ -17,6 +17,10 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Conversations::Messages]
         attr_reader :messages
 
+        # Manage historical AI assistant conversations
+        # @return [Telnyx::Resources::AI::Conversations::ConversationInsights]
+        attr_reader :conversation_insights
+
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::ConversationCreateParams} for more details.
         #
@@ -237,6 +241,7 @@ module Telnyx
           @insight_groups = Telnyx::Resources::AI::Conversations::InsightGroups.new(client: client)
           @insights = Telnyx::Resources::AI::Conversations::Insights.new(client: client)
           @messages = Telnyx::Resources::AI::Conversations::Messages.new(client: client)
+          @conversation_insights = Telnyx::Resources::AI::Conversations::ConversationInsights.new(client: client)
         end
       end
     end

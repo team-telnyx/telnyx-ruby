@@ -8,6 +8,8 @@ module Telnyx
 
         attr_reader messages: Telnyx::Resources::AI::Conversations::Messages
 
+        attr_reader conversation_insights: Telnyx::Resources::AI::Conversations::ConversationInsights
+
         def create: (
           ?metadata: ::Hash[Symbol, String],
           ?name: String,

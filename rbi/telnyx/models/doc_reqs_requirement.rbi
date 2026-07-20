@@ -63,6 +63,15 @@ module Telnyx
       sig { params(created_at: String).void }
       attr_writer :created_at
 
+      # When this version was superseded. NULL means this is the active or pending
+      # version.
+      sig { returns(T.nilable(Time)) }
+      attr_accessor :effective_end_at
+
+      # When this version became (or will become) active.
+      sig { returns(T.nilable(Time)) }
+      attr_accessor :effective_start_at
+
       # Identifies the type of the resource.
       sig { returns(T.nilable(String)) }
       attr_reader :record_type
@@ -72,14 +81,14 @@ module Telnyx
 
       # Lists the requirement types necessary to fulfill this requirement
       sig { returns(T.nilable(T::Array[Telnyx::DocReqsRequirementType])) }
-      attr_reader :requirements_types
+      attr_reader :requirement_types
 
       sig do
         params(
-          requirements_types: T::Array[Telnyx::DocReqsRequirementType::OrHash]
+          requirement_types: T::Array[Telnyx::DocReqsRequirementType::OrHash]
         ).void
       end
-      attr_writer :requirements_types
+      attr_writer :requirement_types
 
       # ISO 8601 formatted date-time indicating when the resource was last updated.
       sig { returns(T.nilable(String)) }
@@ -88,18 +97,28 @@ module Telnyx
       sig { params(updated_at: String).void }
       attr_writer :updated_at
 
+      # Version number. Increments with each new version. Defaults to 1.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :version
+
+      sig { params(version: Integer).void }
+      attr_writer :version
+
       sig do
         params(
           id: String,
           action: Telnyx::DocReqsRequirement::Action::OrSymbol,
           country_code: String,
           created_at: String,
+          effective_end_at: T.nilable(Time),
+          effective_start_at: T.nilable(Time),
           locality: String,
           phone_number_type:
             Telnyx::DocReqsRequirement::PhoneNumberType::OrSymbol,
           record_type: String,
-          requirements_types: T::Array[Telnyx::DocReqsRequirementType::OrHash],
-          updated_at: String
+          requirement_types: T::Array[Telnyx::DocReqsRequirementType::OrHash],
+          updated_at: String,
+          version: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -112,6 +131,11 @@ module Telnyx
         country_code: nil,
         # ISO 8601 formatted date-time indicating when the resource was created.
         created_at: nil,
+        # When this version was superseded. NULL means this is the active or pending
+        # version.
+        effective_end_at: nil,
+        # When this version became (or will become) active.
+        effective_start_at: nil,
         # The locality where this requirement applies
         locality: nil,
         # Indicates the phone_number_type this requirement applies to. Leave blank if this
@@ -120,9 +144,11 @@ module Telnyx
         # Identifies the type of the resource.
         record_type: nil,
         # Lists the requirement types necessary to fulfill this requirement
-        requirements_types: nil,
+        requirement_types: nil,
         # ISO 8601 formatted date-time indicating when the resource was last updated.
-        updated_at: nil
+        updated_at: nil,
+        # Version number. Increments with each new version. Defaults to 1.
+        version: nil
       )
       end
 
@@ -133,12 +159,15 @@ module Telnyx
             action: Telnyx::DocReqsRequirement::Action::TaggedSymbol,
             country_code: String,
             created_at: String,
+            effective_end_at: T.nilable(Time),
+            effective_start_at: T.nilable(Time),
             locality: String,
             phone_number_type:
               Telnyx::DocReqsRequirement::PhoneNumberType::TaggedSymbol,
             record_type: String,
-            requirements_types: T::Array[Telnyx::DocReqsRequirementType],
-            updated_at: String
+            requirement_types: T::Array[Telnyx::DocReqsRequirementType],
+            updated_at: String,
+            version: Integer
           }
         )
       end

@@ -288,7 +288,8 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Refer,
                   Telnyx::AI::AssistantTool::SendDtmf,
                   Telnyx::AI::AssistantTool::SendMessage,
-                  Telnyx::AI::AssistantTool::SkipTurn
+                  Telnyx::AI::AssistantTool::SkipTurn,
+                  Telnyx::AI::AssistantTool::Pay
                 )
               ]
             )
@@ -311,7 +312,8 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
-                  Telnyx::AI::AssistantTool::SkipTurn::OrHash
+                  Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Pay::OrHash
                 )
               ]
           ).void
@@ -389,7 +391,8 @@ module Telnyx
                   Telnyx::AI::AssistantTool::Refer::OrHash,
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
-                  Telnyx::AI::AssistantTool::SkipTurn::OrHash
+                  Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Pay::OrHash
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
@@ -545,7 +548,8 @@ module Telnyx
                     Telnyx::AI::AssistantTool::Refer,
                     Telnyx::AI::AssistantTool::SendDtmf,
                     Telnyx::AI::AssistantTool::SendMessage,
-                    Telnyx::AI::AssistantTool::SkipTurn
+                    Telnyx::AI::AssistantTool::SkipTurn,
+                    Telnyx::AI::AssistantTool::Pay
                   )
                 ],
               transcription: Telnyx::AI::TranscriptionSettings,

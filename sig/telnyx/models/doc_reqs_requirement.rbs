@@ -6,11 +6,14 @@ module Telnyx
         action: Telnyx::Models::DocReqsRequirement::action,
         country_code: String,
         created_at: String,
+        effective_end_at: Time?,
+        effective_start_at: Time?,
         locality: String,
         phone_number_type: Telnyx::Models::DocReqsRequirement::phone_number_type,
         record_type: String,
-        requirements_types: ::Array[Telnyx::DocReqsRequirementType],
-        updated_at: String
+        requirement_types: ::Array[Telnyx::DocReqsRequirementType],
+        updated_at: String,
+        version: Integer
       }
 
     class DocReqsRequirement < Telnyx::Internal::Type::BaseModel
@@ -42,13 +45,17 @@ module Telnyx
 
       def created_at=: (String) -> String
 
+      attr_accessor effective_end_at: Time?
+
+      attr_accessor effective_start_at: Time?
+
       attr_reader record_type: String?
 
       def record_type=: (String) -> String
 
-      attr_reader requirements_types: ::Array[Telnyx::DocReqsRequirementType]?
+      attr_reader requirement_types: ::Array[Telnyx::DocReqsRequirementType]?
 
-      def requirements_types=: (
+      def requirement_types=: (
         ::Array[Telnyx::DocReqsRequirementType]
       ) -> ::Array[Telnyx::DocReqsRequirementType]
 
@@ -56,16 +63,23 @@ module Telnyx
 
       def updated_at=: (String) -> String
 
+      attr_reader version: Integer?
+
+      def version=: (Integer) -> Integer
+
       def initialize: (
         ?id: String,
         ?action: Telnyx::Models::DocReqsRequirement::action,
         ?country_code: String,
         ?created_at: String,
+        ?effective_end_at: Time?,
+        ?effective_start_at: Time?,
         ?locality: String,
         ?phone_number_type: Telnyx::Models::DocReqsRequirement::phone_number_type,
         ?record_type: String,
-        ?requirements_types: ::Array[Telnyx::DocReqsRequirementType],
-        ?updated_at: String
+        ?requirement_types: ::Array[Telnyx::DocReqsRequirementType],
+        ?updated_at: String,
+        ?version: Integer
       ) -> void
 
       def to_hash: -> {
@@ -73,11 +87,14 @@ module Telnyx
         action: Telnyx::Models::DocReqsRequirement::action,
         country_code: String,
         created_at: String,
+        effective_end_at: Time?,
+        effective_start_at: Time?,
         locality: String,
         phone_number_type: Telnyx::Models::DocReqsRequirement::phone_number_type,
         record_type: String,
-        requirements_types: ::Array[Telnyx::DocReqsRequirementType],
-        updated_at: String
+        requirement_types: ::Array[Telnyx::DocReqsRequirementType],
+        updated_at: String,
+        version: Integer
       }
 
       type action = :both | :branded_calling | :ordering | :porting

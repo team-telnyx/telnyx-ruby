@@ -288,6 +288,16 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallDialParams::RecordTrim, nil]
       optional :record_trim, enum: -> { Telnyx::CallDialParams::RecordTrim }
 
+      # @!attribute retry_on_timeout
+      #   Whether to keep trying the remaining routing paths (e.g. alternate
+      #   providers/gateways) for the same destination after `timeout_secs` is reached for
+      #   the current attempt. When set to `false`, reaching `timeout_secs` aborts the
+      #   entire dial attempt and the `call.hangup` webhook reports a `hangup_cause` of
+      #   `no_answer` instead of `timeout`.
+      #
+      #   @return [Boolean, nil]
+      optional :retry_on_timeout, Telnyx::Internal::Type::Boolean
+
       # @!attribute send_digits_on_answer
       #   DTMF digits to send automatically after the called party answers. Useful for
       #   reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once the
@@ -486,7 +496,7 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::CallDialParams::WebhookURLsMethod, nil]
       optional :webhook_urls_method, enum: -> { Telnyx::CallDialParams::WebhookURLsMethod }
 
-      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, assistant: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, conversation_relay_config: nil, custom_headers: nil, deepfake_detection: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, prevent_double_bridge: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_digits_on_answer: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+      # @!method initialize(connection_id:, from:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, assistant: nil, audio_url: nil, billing_group_id: nil, bridge_intent: nil, bridge_on_answer: nil, client_state: nil, command_id: nil, conference_config: nil, conversation_relay_config: nil, custom_headers: nil, deepfake_detection: nil, dialogflow_config: nil, enable_dialogflow: nil, from_display_name: nil, link_to: nil, media_encryption: nil, media_name: nil, park_after_unbridge: nil, preferred_codecs: nil, prevent_double_bridge: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, retry_on_timeout: nil, send_digits_on_answer: nil, send_silence_when_idle: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, stream_auth_token: nil, stream_bidirectional_codec: nil, stream_bidirectional_mode: nil, stream_bidirectional_sampling_rate: nil, stream_bidirectional_target_legs: nil, stream_codec: nil, stream_establish_before_call_originate: nil, stream_track: nil, stream_url: nil, supervise_call_control_id: nil, supervisor_role: nil, time_limit_secs: nil, timeout_secs: nil, transcription: nil, transcription_config: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallDialParams} for more details.
       #
@@ -557,6 +567,8 @@ module Telnyx
       #   @param record_track [Symbol, Telnyx::Models::CallDialParams::RecordTrack] The audio track to be recorded. Can be either `both`, `inbound` or `outbound`. I
       #
       #   @param record_trim [Symbol, Telnyx::Models::CallDialParams::RecordTrim] When set to `trim-silence`, silence will be removed from the beginning and end o
+      #
+      #   @param retry_on_timeout [Boolean] Whether to keep trying the remaining routing paths (e.g. alternate providers/gat
       #
       #   @param send_digits_on_answer [String] DTMF digits to send automatically after the called party answers. Useful for rea
       #
