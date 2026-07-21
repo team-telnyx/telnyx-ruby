@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.158.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.157.0...v5.158.0) (2026-07-21)
+
+
+### Features
+
+* promote from staging e91cd78 ([9d82346](https://github.com/team-telnyx/telnyx-ruby/commit/9d82346e3969d669ea6fc37c81a7239f622bab0b))
+
+
+### Bug Fixes
+
+* **release:** keep release PR history on production base ([#329](https://github.com/team-telnyx/telnyx-ruby/issues/329)) ([f2305fc](https://github.com/team-telnyx/telnyx-ruby/commit/f2305fcfa8c5d44c80a3280a5ad1912d30ce473d))
+* **release:** support fresh-runner release synchronization ([#331](https://github.com/team-telnyx/telnyx-ruby/issues/331)) ([4a553cc](https://github.com/team-telnyx/telnyx-ruby/commit/4a553cc97f6898d13d2cf79f984958a48304f61b))
+* scan next commits when creating release PR ([#327](https://github.com/team-telnyx/telnyx-ruby/issues/327)) ([0d62d91](https://github.com/team-telnyx/telnyx-ruby/commit/0d62d91169dfab9b872d3c7756e16bfe65671766))
+
 ## [5.157.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.156.0...v5.157.0) (2026-07-17)
 
 
