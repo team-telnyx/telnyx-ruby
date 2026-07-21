@@ -34,6 +34,29 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::Fax::Direction, nil]
       optional :direction, enum: -> { Telnyx::Fax::Direction }
 
+      # @!attribute failure_reason
+      #   Customer-facing failure reason for the fax. Present on every fax object (null
+      #   when the fax has not failed). Mapped from the more granular
+      #   `internal_failure_reason`. Common values include: `receiver_call_dropped`,
+      #   `sender_call_dropped`, `sender_canceled`, `carrier_lost`, `service_unavailable`,
+      #   `fax_signaling_error`, `receiver_communication_error`,
+      #   `sender_communication_error`, `receiver_decline`,
+      #   `receiver_recovery_on_timer_expire`, `receiver_no_response`,
+      #   `receiver_invalid_number_format`, `receiver_no_answer`,
+      #   `receiver_incompatible_destination`, `receiver_unallocated_number`,
+      #   `destination_unreachable`, `user_busy`, `invalid_ecm_response_from_receiver`,
+      #   `fax_initial_communication_timeout`, `destination_not_in_service_plan`,
+      #   `account_disabled`, `destination_invalid`, `no_outbound_profile`,
+      #   `destination_not_in_countries_whitelist`, `user_channel_limit_exceeded`,
+      #   `outbound_profile_channel_limit_exceeded`, `connection_channel_limit_exceeded`,
+      #   `outbound_profile_daily_spend_limit_exceeded`, `unverified_origination_number`,
+      #   `unverified_destination_not_allowed`, `file_format_invalid`,
+      #   `file_download_failed`, `file_size_limit_exceeded`, `page_count_limit_exceeded`,
+      #   `media_processing_exception`.
+      #
+      #   @return [String, nil]
+      optional :failure_reason, String, nil?: true
+
       # @!attribute from
       #   The phone number, in E.164 format, the fax will be sent from.
       #
@@ -46,6 +69,14 @@ module Telnyx
       #
       #   @return [String, nil]
       optional :from_display_name, String
+
+      # @!attribute internal_failure_reason
+      #   Internal, more granular failure reason for the fax. Present on every fax object
+      #   (null when the fax has not failed). Useful for deeper debugging beyond the
+      #   customer-facing `failure_reason`.
+      #
+      #   @return [String, nil]
+      optional :internal_failure_reason, String, nil?: true
 
       # @!attribute media_name
       #   The media_name used for the fax's media. Must point to a file previously
@@ -129,7 +160,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(id: nil, client_state: nil, connection_id: nil, created_at: nil, direction: nil, from: nil, from_display_name: nil, media_name: nil, media_url: nil, preview_url: nil, quality: nil, record_type: nil, status: nil, store_media: nil, stored_media_url: nil, to: nil, updated_at: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, client_state: nil, connection_id: nil, created_at: nil, direction: nil, failure_reason: nil, from: nil, from_display_name: nil, internal_failure_reason: nil, media_name: nil, media_url: nil, preview_url: nil, quality: nil, record_type: nil, status: nil, store_media: nil, stored_media_url: nil, to: nil, updated_at: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see {Telnyx::Models::Fax} for
       #   more details.
       #
@@ -143,9 +174,13 @@ module Telnyx
       #
       #   @param direction [Symbol, Telnyx::Models::Fax::Direction] The direction of the fax.
       #
+      #   @param failure_reason [String, nil] Customer-facing failure reason for the fax. Present on every fax object (null wh
+      #
       #   @param from [String] The phone number, in E.164 format, the fax will be sent from.
       #
       #   @param from_display_name [String] The string used as the caller id name (SIP From Display Name) presented to the d
+      #
+      #   @param internal_failure_reason [String, nil] Internal, more granular failure reason for the fax. Present on every fax object
       #
       #   @param media_name [String] The media_name used for the fax's media. Must point to a file previously uploade
       #
