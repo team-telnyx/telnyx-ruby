@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.158.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.157.0...v5.158.0) (2026-07-21)
+
+
+### Features
+
+* promote from staging e91cd78 ([b2e4486](https://github.com/team-telnyx/telnyx-ruby/commit/b2e4486323a4f44a77977962c69c6672d59c4113))
+
+
+### Bug Fixes
+
+* scan next commits when creating release PR ([#327](https://github.com/team-telnyx/telnyx-ruby/issues/327)) ([0d62d91](https://github.com/team-telnyx/telnyx-ruby/commit/0d62d91169dfab9b872d3c7756e16bfe65671766))
+
 ## [5.157.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.156.0...v5.157.0) (2026-07-17)
 
 

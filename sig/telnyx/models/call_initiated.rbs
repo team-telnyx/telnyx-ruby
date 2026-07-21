@@ -78,7 +78,7 @@ module Telnyx
           offered_codecs: String,
           shaken_stir_attestation: String,
           shaken_stir_validated: bool,
-          sip_headers: ::Array[Telnyx::SipHeader],
+          sip_headers: ::Array[Telnyx::CallInitiated::Payload::SipHeader],
           start_time: Time,
           state: Telnyx::Models::CallInitiated::Payload::state,
           tags: ::Array[String],
@@ -146,11 +146,11 @@ module Telnyx
 
         def shaken_stir_validated=: (bool) -> bool
 
-        attr_reader sip_headers: ::Array[Telnyx::SipHeader]?
+        attr_reader sip_headers: ::Array[Telnyx::CallInitiated::Payload::SipHeader]?
 
         def sip_headers=: (
-          ::Array[Telnyx::SipHeader]
-        ) -> ::Array[Telnyx::SipHeader]
+          ::Array[Telnyx::CallInitiated::Payload::SipHeader]
+        ) -> ::Array[Telnyx::CallInitiated::Payload::SipHeader]
 
         attr_reader start_time: Time?
 
@@ -185,7 +185,7 @@ module Telnyx
           ?offered_codecs: String,
           ?shaken_stir_attestation: String,
           ?shaken_stir_validated: bool,
-          ?sip_headers: ::Array[Telnyx::SipHeader],
+          ?sip_headers: ::Array[Telnyx::CallInitiated::Payload::SipHeader],
           ?start_time: Time,
           ?state: Telnyx::Models::CallInitiated::Payload::state,
           ?tags: ::Array[String],
@@ -207,7 +207,7 @@ module Telnyx
           offered_codecs: String,
           shaken_stir_attestation: String,
           shaken_stir_validated: bool,
-          sip_headers: ::Array[Telnyx::SipHeader],
+          sip_headers: ::Array[Telnyx::CallInitiated::Payload::SipHeader],
           start_time: Time,
           state: Telnyx::Models::CallInitiated::Payload::state,
           tags: ::Array[String],
@@ -223,6 +223,39 @@ module Telnyx
           OUTGOING: :outgoing
 
           def self?.values: -> ::Array[Telnyx::Models::CallInitiated::Payload::direction]
+        end
+
+        type sip_header =
+          {
+            name: Telnyx::Models::CallInitiated::Payload::SipHeader::name_,
+            value: String
+          }
+
+        class SipHeader < Telnyx::Internal::Type::BaseModel
+          attr_accessor name: Telnyx::Models::CallInitiated::Payload::SipHeader::name_
+
+          attr_accessor value: String
+
+          def initialize: (
+            name: Telnyx::Models::CallInitiated::Payload::SipHeader::name_,
+            value: String
+          ) -> void
+
+          def to_hash: -> {
+            name: Telnyx::Models::CallInitiated::Payload::SipHeader::name_,
+            value: String
+          }
+
+          type name_ = :"User-to-User" | :Diversion
+
+          module Name
+            extend Telnyx::Internal::Type::Enum
+
+            USER_TO_USER: :"User-to-User"
+            DIVERSION: :Diversion
+
+            def self?.values: -> ::Array[Telnyx::Models::CallInitiated::Payload::SipHeader::name_]
+          end
         end
 
         type state = :parked | :bridging
