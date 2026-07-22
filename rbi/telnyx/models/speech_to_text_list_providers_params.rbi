@@ -127,6 +127,11 @@ module Telnyx
             :parakeet,
             Telnyx::SpeechToTextListProvidersParams::Provider::TaggedSymbol
           )
+        HUMAIN =
+          T.let(
+            :humain,
+            Telnyx::SpeechToTextListProvidersParams::Provider::TaggedSymbol
+          )
         AZURE =
           T.let(
             :azure,

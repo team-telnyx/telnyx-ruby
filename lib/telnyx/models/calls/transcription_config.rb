@@ -16,7 +16,10 @@ module Telnyx
         #   `assemblyai/universal-streaming`, `auto` (or unset) enables native multilingual
         #   code-switching; ISO 639-1 codes (`en`, `es`, `de`, `fr`, `pt`, `it`, `tr`, `nl`,
         #   `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`, `he`, `ja`, `zh`) bias the session to
-        #   that language.
+        #   that language. For `humain/realtime`, supported values are `ar`, `en`,
+        #   `codeswitch` (Arabic/English code-switching), and `auto` (resolves server-side
+        #   to code-switching). Unlike other models, `humain/realtime` does not fall back to
+        #   `auto` when `language` is omitted — omitting it applies `en` instead.
         #
         #   @return [String, nil]
         optional :language, String
@@ -35,6 +38,8 @@ module Telnyx
         #     automatic language detection.
         #   - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #     detection.
+        #   - `humain/realtime` for live streaming transcription with native Arabic and
+        #     Arabic/English code-switching support.
         #   - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #     unsupported regions require `api_key_ref`.
         #   - `google/latest_long` for non-streaming multilingual transcription.
@@ -72,6 +77,8 @@ module Telnyx
         #   automatic language detection.
         # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #   detection.
+        # - `humain/realtime` for live streaming transcription with native Arabic and
+        #   Arabic/English code-switching support.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -94,6 +101,7 @@ module Telnyx
           XAI_GROK_STT = :"xai/grok-stt"
           SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
           NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
+          HUMAIN_REALTIME = :"humain/realtime"
           AZURE_FAST = :"azure/fast"
           AZURE_REALTIME = :"azure/realtime"
           GOOGLE_LATEST_LONG = :"google/latest_long"

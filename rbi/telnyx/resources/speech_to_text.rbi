@@ -49,7 +49,7 @@ module Telnyx
       # `Authorization: Bearer <API_KEY>` header.
       #
       # Supported engines: `Azure`, `Deepgram`, `Google`, `Telnyx`, `xAI`,
-      # `Speechmatics`, `Soniox`, `Parakeet`.
+      # `Speechmatics`, `Soniox`, `Parakeet`, `Humain`.
       #
       # **Connection flow:**
       #

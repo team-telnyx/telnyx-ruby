@@ -1861,6 +1861,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,

@@ -61,6 +61,7 @@ module Telnyx
           | :Speechmatics
           | :Soniox
           | :Parakeet
+          | :Humain
           | :A
           | :B
 
@@ -76,6 +77,7 @@ module Telnyx
           SPEECHMATICS: :Speechmatics
           SONIOX: :Soniox
           PARAKEET: :Parakeet
+          HUMAIN: :Humain
           A: :A
           B: :B
 
@@ -91,6 +93,7 @@ module Telnyx
           | Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig
           | Telnyx::Calls::TranscriptionEngineSonioxConfig
           | Telnyx::Calls::TranscriptionEngineParakeetConfig
+          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain
           | Telnyx::Calls::TranscriptionEngineAConfig
           | Telnyx::Calls::TranscriptionEngineBConfig
           | Telnyx::Calls::DeepgramNova2Config
@@ -98,6 +101,78 @@ module Telnyx
 
         module TranscriptionEngineConfig
           extend Telnyx::Internal::Type::Union
+
+          type humain =
+            {
+              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::language,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_model
+            }
+
+          class Humain < Telnyx::Internal::Type::BaseModel
+            attr_reader language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::language?
+
+            def language=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::language
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::language
+
+            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_engine?
+
+            def transcription_engine=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_engine
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_engine
+
+            attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_model?
+
+            def transcription_model=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_model
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_model
+
+            def initialize: (
+              ?language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::language,
+              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_engine,
+              ?transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_model
+            ) -> void
+
+            def to_hash: -> {
+              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::language,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_model
+            }
+
+            type language = :ar | :en | :codeswitch | :auto
+
+            module Language
+              extend Telnyx::Internal::Type::Enum
+
+              AR: :ar
+              EN: :en
+              CODESWITCH: :codeswitch
+              AUTO: :auto
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::language]
+            end
+
+            type transcription_engine = :Humain
+
+            module TranscriptionEngine
+              extend Telnyx::Internal::Type::Enum
+
+              HUMAIN: :Humain
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_engine]
+            end
+
+            type transcription_model = :"humain/realtime"
+
+            module TranscriptionModel
+              extend Telnyx::Internal::Type::Enum
+
+              HUMAIN_REALTIME: :"humain/realtime"
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::transcription_model]
+            end
+          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config]
         end

@@ -23,7 +23,11 @@ module Telnyx
         # hint), `multi` (no language hint), and language-specific hints `en`, `es`, `fr`,
         # `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For `soniox/stt-rt-v4`, `auto`
         # omits the language hint and lets Soniox auto-detect; ISO 639-1 codes (e.g. `en`,
-        # `es`) bias detection toward that language.
+        # `es`) bias detection toward that language. For `humain/realtime`, supported
+        # values are `ar`, `en`, `codeswitch` (Arabic/English code-switching), and `auto`
+        # (resolves server-side to code-switching). Unlike other models, `humain/realtime`
+        # does not fall back to `auto` when `language` is omitted — omitting it applies
+        # `en` instead.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -44,6 +48,8 @@ module Telnyx
         #   detection and configurable endpointing.
         # - `nvidia/parakeet-v3` is a multilingual transcription model with automatic
         #   language detection.
+        # - `humain/realtime` is a streaming model with native Arabic and Arabic/English
+        #   code-switching support.
         sig do
           returns(T.nilable(Telnyx::AI::TranscriptionSettings::Model::OrSymbol))
         end
@@ -89,7 +95,11 @@ module Telnyx
           # hint), `multi` (no language hint), and language-specific hints `en`, `es`, `fr`,
           # `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For `soniox/stt-rt-v4`, `auto`
           # omits the language hint and lets Soniox auto-detect; ISO 639-1 codes (e.g. `en`,
-          # `es`) bias detection toward that language.
+          # `es`) bias detection toward that language. For `humain/realtime`, supported
+          # values are `ar`, `en`, `codeswitch` (Arabic/English code-switching), and `auto`
+          # (resolves server-side to code-switching). Unlike other models, `humain/realtime`
+          # does not fall back to `auto` when `language` is omitted — omitting it applies
+          # `en` instead.
           language: nil,
           # The speech to text model to be used by the voice assistant. All Deepgram models
           # are run on-premise.
@@ -105,6 +115,8 @@ module Telnyx
           #   detection and configurable endpointing.
           # - `nvidia/parakeet-v3` is a multilingual transcription model with automatic
           #   language detection.
+          # - `humain/realtime` is a streaming model with native Arabic and Arabic/English
+          #   code-switching support.
           model: nil,
           # Region on third party cloud providers (currently Azure) if using one of their
           # models. Some regions require `api_key_ref`.
@@ -141,6 +153,8 @@ module Telnyx
         #   detection and configurable endpointing.
         # - `nvidia/parakeet-v3` is a multilingual transcription model with automatic
         #   language detection.
+        # - `humain/realtime` is a streaming model with native Arabic and Arabic/English
+        #   code-switching support.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -188,6 +202,11 @@ module Telnyx
           NVIDIA_PARAKEET_V3 =
             T.let(
               :"nvidia/parakeet-v3",
+              Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
+            )
+          HUMAIN_REALTIME =
+            T.let(
+              :"humain/realtime",
               Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
             )
           DISTIL_WHISPER_DISTIL_LARGE_V2 =

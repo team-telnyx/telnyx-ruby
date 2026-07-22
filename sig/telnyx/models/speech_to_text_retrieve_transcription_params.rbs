@@ -98,6 +98,7 @@ module Telnyx
         | :Speechmatics
         | :Soniox
         | :Parakeet
+        | :Humain
 
       module TranscriptionEngine
         extend Telnyx::Internal::Type::Enum
@@ -110,6 +111,7 @@ module Telnyx
         SPEECHMATICS: :Speechmatics
         SONIOX: :Soniox
         PARAKEET: :Parakeet
+        HUMAIN: :Humain
 
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::transcription_engine]
       end
@@ -132,6 +134,7 @@ module Telnyx
         | :"speechmatics/standard"
         | :"soniox/stt-rt-v4"
         | :"nvidia/parakeet-v3"
+        | :"humain/realtime"
 
       module Model
         extend Telnyx::Internal::Type::Enum
@@ -153,6 +156,7 @@ module Telnyx
         SPEECHMATICS_STANDARD: :"speechmatics/standard"
         SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
         NVIDIA_PARAKEET_V3: :"nvidia/parakeet-v3"
+        HUMAIN_REALTIME: :"humain/realtime"
 
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::model]
       end
