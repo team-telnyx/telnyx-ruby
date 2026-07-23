@@ -59,6 +59,13 @@ module Telnyx
         sig { params(failure_reasons: String).void }
         attr_writer :failure_reasons
 
+        # The assignment status of the number towards other carriers.
+        sig { returns(T.nilable(String)) }
+        attr_reader :non_tmobile_number_mapping_status
+
+        sig { params(non_tmobile_number_mapping_status: String).void }
+        attr_writer :non_tmobile_number_mapping_status
+
         # TCR's alphanumeric ID for the brand.
         sig { returns(T.nilable(String)) }
         attr_reader :tcr_brand_id
@@ -80,6 +87,13 @@ module Telnyx
         sig { params(telnyx_campaign_id: String).void }
         attr_writer :telnyx_campaign_id
 
+        # The T-Mobile assignment status of the number.
+        sig { returns(T.nilable(String)) }
+        attr_reader :tmobile_number_mapping_status
+
+        sig { params(tmobile_number_mapping_status: String).void }
+        attr_writer :tmobile_number_mapping_status
+
         sig do
           params(
             campaign_id: String,
@@ -90,9 +104,11 @@ module Telnyx
               Telnyx::Messaging10dlc::PhoneNumberCampaign::AssignmentStatus::OrSymbol,
             brand_id: String,
             failure_reasons: String,
+            non_tmobile_number_mapping_status: String,
             tcr_brand_id: String,
             tcr_campaign_id: String,
-            telnyx_campaign_id: String
+            telnyx_campaign_id: String,
+            tmobile_number_mapping_status: String
           ).returns(T.attached_class)
         end
         def self.new(
@@ -109,12 +125,16 @@ module Telnyx
           # Extra info about a failure to assign/unassign a number. Relevant only if the
           # assignmentStatus is either FAILED_ASSIGNMENT or FAILED_UNASSIGNMENT
           failure_reasons: nil,
+          # The assignment status of the number towards other carriers.
+          non_tmobile_number_mapping_status: nil,
           # TCR's alphanumeric ID for the brand.
           tcr_brand_id: nil,
           # TCR's alphanumeric ID for the campaign.
           tcr_campaign_id: nil,
           # Campaign ID. Empty if the number is associated to a shared campaign.
-          telnyx_campaign_id: nil
+          telnyx_campaign_id: nil,
+          # The T-Mobile assignment status of the number.
+          tmobile_number_mapping_status: nil
         )
         end
 
@@ -129,9 +149,11 @@ module Telnyx
                 Telnyx::Messaging10dlc::PhoneNumberCampaign::AssignmentStatus::TaggedSymbol,
               brand_id: String,
               failure_reasons: String,
+              non_tmobile_number_mapping_status: String,
               tcr_brand_id: String,
               tcr_campaign_id: String,
-              telnyx_campaign_id: String
+              telnyx_campaign_id: String,
+              tmobile_number_mapping_status: String
             }
           )
         end

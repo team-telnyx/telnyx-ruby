@@ -18,6 +18,7 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :messaging_profile_id
 
+      # Tags associated with the resource.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :tags
 
@@ -36,6 +37,7 @@ module Telnyx
         id:,
         # Unique identifier for a messaging profile.
         messaging_profile_id:,
+        # Tags associated with the resource.
         tags: nil,
         request_options: {}
       )

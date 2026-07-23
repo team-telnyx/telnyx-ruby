@@ -1220,7 +1220,6 @@ require_relative "telnyx/models/legacy/reporting/usage_reports/number_lookup_cre
 require_relative "telnyx/models/legacy/reporting/usage_reports/number_lookup_create_response"
 require_relative "telnyx/models/legacy/reporting/usage_reports/number_lookup_delete_params"
 require_relative "telnyx/models/legacy/reporting/usage_reports/number_lookup_list_params"
-require_relative "telnyx/models/legacy/reporting/usage_reports/number_lookup_list_response"
 require_relative "telnyx/models/legacy/reporting/usage_reports/number_lookup_retrieve_params"
 require_relative "telnyx/models/legacy/reporting/usage_reports/number_lookup_retrieve_response"
 require_relative "telnyx/models/legacy/reporting/usage_reports/standard_pagination_meta"

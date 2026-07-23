@@ -10,6 +10,7 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :messaging_profile_id
 
+      # Tags associated with the resource.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :tags
 
@@ -83,6 +84,7 @@ module Telnyx
         record_type: nil,
         # Short digit sequence used to address messages.
         short_code: nil,
+        # Tags associated with the resource.
         tags: nil,
         # ISO 8601 formatted date indicating when the resource was updated.
         updated_at: nil

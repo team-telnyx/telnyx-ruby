@@ -18,8 +18,10 @@ module Telnyx
             ) -> Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupRetrieveResponse
 
             def list: (
+              ?page: Integer,
+              ?per_page: Integer,
               ?request_options: Telnyx::request_opts
-            ) -> Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse
+            ) -> Telnyx::Internal::PerPagePagination[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse]
 
             def delete: (
               String id,
