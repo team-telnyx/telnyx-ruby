@@ -38,6 +38,7 @@ module Telnyx
         RIME = :rime
         RESEMBLE = :resemble
         XAI = :xai
+        HUMAIN = :humain
 
         # @!method self.values
         #   @return [Array<Symbol>]

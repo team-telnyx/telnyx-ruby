@@ -31,6 +31,14 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Elevenlabs, nil]
       optional :elevenlabs, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs }
 
+      # @!attribute humain
+      #   Humain provider-specific parameters. Unlike other providers, Humain has no
+      #   format/sample-rate negotiation (output is always PCM16 24kHz mono) and no
+      #   language parameter — language is fixed per voice.
+      #
+      #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain, nil]
+      optional :humain, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Humain }
+
       # @!attribute language
       #   Language code (e.g. `en-US`). Usage varies by provider.
       #
@@ -114,7 +122,7 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Xai, nil]
       optional :xai, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Xai }
 
-      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {::Telnyx::Models::TextToSpeechGenerateSpeechParams} for more details.
       #
@@ -125,6 +133,8 @@ module Telnyx
       #   @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
       #   @param elevenlabs [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Elevenlabs] ElevenLabs provider-specific parameters.
+      #
+      #   @param humain [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain] Humain provider-specific parameters. Unlike other providers, Humain has no forma
       #
       #   @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
@@ -321,6 +331,46 @@ module Telnyx
         #   @param voice_settings [Hash{Symbol=>Object}] ElevenLabs voice settings (stability, similarity_boost, etc.).
       end
 
+      class Humain < ::Telnyx::Internal::Type::BaseModel
+        # @!attribute voice_id
+        #   Humain voice identifier.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain::VoiceID]
+        required :voice_id, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID }
+
+        # @!attribute ttfb_eagerness
+        #   Time-to-first-byte eagerness, trading synthesis latency for quality.
+        #
+        #   @return [Float, nil]
+        optional :ttfb_eagerness, Float
+
+        # @!method initialize(voice_id:, ttfb_eagerness: nil)
+        #   Humain provider-specific parameters. Unlike other providers, Humain has no
+        #   format/sample-rate negotiation (output is always PCM16 24kHz mono) and no
+        #   language parameter — language is fixed per voice.
+        #
+        #   @param voice_id [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain::VoiceID] Humain voice identifier.
+        #
+        #   @param ttfb_eagerness [Float] Time-to-first-byte eagerness, trading synthesis latency for quality.
+
+        # Humain voice identifier.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain#voice_id
+        module VoiceID
+          extend ::Telnyx::Internal::Type::Enum
+
+          SARA_EN = :"sara-en"
+          ABDULAZIZ_EN = :"abdulaziz-en"
+          SARA_AR = :"sara-ar"
+          ABDULAZIZ_AR = :"abdulaziz-ar"
+          NOURAH_AR = :"nourah-ar"
+          ABDULLAH_AR = :"abdullah-ar"
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
+
       class Minimax < ::Telnyx::Internal::Type::BaseModel
         # @!attribute language_boost
         #   Language code to boost pronunciation for.
@@ -390,6 +440,7 @@ module Telnyx
         RIME = :rime
         RESEMBLE = :resemble
         XAI = :xai
+        HUMAIN = :humain
 
         # @!method self.values
         #   @return [Array<Symbol>]

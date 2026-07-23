@@ -17,7 +17,7 @@ module Telnyx
       # with provider-specific parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
-      # `resemble`, `xai`.
+      # `resemble`, `xai`, `humain`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
@@ -29,6 +29,7 @@ module Telnyx
           disable_cache: T::Boolean,
           elevenlabs:
             ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs::OrHash,
+          humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::OrHash,
           language: String,
           minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax::OrHash,
           output_type:
@@ -57,6 +58,10 @@ module Telnyx
         disable_cache: nil,
         # ElevenLabs provider-specific parameters.
         elevenlabs: nil,
+        # Humain provider-specific parameters. Unlike other providers, Humain has no
+        # format/sample-rate negotiation (output is always PCM16 24kHz mono) and no
+        # language parameter — language is fixed per voice.
+        humain: nil,
         # Language code (e.g. `en-US`). Usage varies by provider.
         language: nil,
         # Minimax provider-specific parameters.
@@ -123,7 +128,7 @@ module Telnyx
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `rime`,
-      # `resemble`, `elevenlabs`, `xai`.
+      # `resemble`, `elevenlabs`, `xai`, `humain`.
       #
       # **Connection flow:**
       #

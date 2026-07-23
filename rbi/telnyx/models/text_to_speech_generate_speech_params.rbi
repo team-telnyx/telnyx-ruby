@@ -63,6 +63,21 @@ module Telnyx
       end
       attr_writer :elevenlabs
 
+      # Humain provider-specific parameters. Unlike other providers, Humain has no
+      # format/sample-rate negotiation (output is always PCM16 24kHz mono) and no
+      # language parameter — language is fixed per voice.
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechGenerateSpeechParams::Humain))
+      end
+      attr_reader :humain
+
+      sig do
+        params(
+          humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::OrHash
+        ).void
+      end
+      attr_writer :humain
+
       # Language code (e.g. `en-US`). Usage varies by provider.
       sig { returns(T.nilable(String)) }
       attr_reader :language
@@ -228,6 +243,7 @@ module Telnyx
           disable_cache: T::Boolean,
           elevenlabs:
             ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs::OrHash,
+          humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::OrHash,
           language: String,
           minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax::OrHash,
           output_type:
@@ -256,6 +272,10 @@ module Telnyx
         disable_cache: nil,
         # ElevenLabs provider-specific parameters.
         elevenlabs: nil,
+        # Humain provider-specific parameters. Unlike other providers, Humain has no
+        # format/sample-rate negotiation (output is always PCM16 24kHz mono) and no
+        # language parameter — language is fixed per voice.
+        humain: nil,
         # Language code (e.g. `en-US`). Usage varies by provider.
         language: nil,
         # Minimax provider-specific parameters.
@@ -302,6 +322,7 @@ module Telnyx
             azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
             disable_cache: T::Boolean,
             elevenlabs: ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs,
+            humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain,
             language: String,
             minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax,
             output_type:
@@ -680,6 +701,116 @@ module Telnyx
         end
       end
 
+      class Humain < ::Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain,
+              ::Telnyx::Internal::AnyHash
+            )
+          end
+
+        # Humain voice identifier.
+        sig do
+          returns(
+            ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::OrSymbol
+          )
+        end
+        attr_accessor :voice_id
+
+        # Time-to-first-byte eagerness, trading synthesis latency for quality.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :ttfb_eagerness
+
+        sig { params(ttfb_eagerness: Float).void }
+        attr_writer :ttfb_eagerness
+
+        # Humain provider-specific parameters. Unlike other providers, Humain has no
+        # format/sample-rate negotiation (output is always PCM16 24kHz mono) and no
+        # language parameter — language is fixed per voice.
+        sig do
+          params(
+            voice_id:
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::OrSymbol,
+            ttfb_eagerness: Float
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Humain voice identifier.
+          voice_id:,
+          # Time-to-first-byte eagerness, trading synthesis latency for quality.
+          ttfb_eagerness: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              voice_id:
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::OrSymbol,
+              ttfb_eagerness: Float
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # Humain voice identifier.
+        module VoiceID
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SARA_EN =
+            T.let(
+              :"sara-en",
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::TaggedSymbol
+            )
+          ABDULAZIZ_EN =
+            T.let(
+              :"abdulaziz-en",
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::TaggedSymbol
+            )
+          SARA_AR =
+            T.let(
+              :"sara-ar",
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::TaggedSymbol
+            )
+          ABDULAZIZ_AR =
+            T.let(
+              :"abdulaziz-ar",
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::TaggedSymbol
+            )
+          NOURAH_AR =
+            T.let(
+              :"nourah-ar",
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::TaggedSymbol
+            )
+          ABDULLAH_AR =
+            T.let(
+              :"abdullah-ar",
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Humain::VoiceID::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+
       class Minimax < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
@@ -847,6 +978,11 @@ module Telnyx
         XAI =
           T.let(
             :xai,
+            ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::TaggedSymbol
+          )
+        HUMAIN =
+          T.let(
+            :humain,
             ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::TaggedSymbol
           )
 

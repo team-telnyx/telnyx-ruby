@@ -542,6 +542,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -734,6 +738,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -1154,6 +1162,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -1293,6 +1305,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -1457,6 +1473,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -2227,6 +2247,7 @@ module Telnyx
               Telnyx::Calls::ActionTransferParams::RecordTrack::OrSymbol,
             record_trim:
               Telnyx::Calls::ActionTransferParams::RecordTrim::OrSymbol,
+            route_to_mobile: T::Boolean,
             send_digits_on_answer: String,
             sip_auth_password: String,
             sip_auth_username: String,
@@ -2356,6 +2377,13 @@ module Telnyx
           # When set to `trim-silence`, silence will be removed from the beginning and end
           # of the recording.
           record_trim: nil,
+          # When set to true, routes the call directly to the mobile device associated with
+          # the destination Telnyx Mobile number, bypassing Inbound Calls Interception
+          # configured in the Telnyx Portal under Mobile Numbers → select the number → Voice
+          # → Call Interception. Use this when transferring an intercepted call to the
+          # mobile device to prevent the call from being intercepted again. Defaults to
+          # false.
+          route_to_mobile: nil,
           # DTMF digits to send automatically after the transfer destination answers. Useful
           # for reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once
           # the called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause),
