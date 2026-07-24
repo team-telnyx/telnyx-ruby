@@ -106,6 +106,7 @@ module Telnyx
           content: String,
           conversation_id: String,
           ?name: String,
+          ?stream: bool,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::AssistantChatResponse
 
