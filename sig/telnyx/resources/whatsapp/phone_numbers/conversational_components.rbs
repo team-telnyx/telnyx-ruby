@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class PhoneNumbers
+        class ConversationalComponents
+          def list: (
+            String phone_number,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentListResponse
+
+          def patch_all: (
+            String phone_number,
+            ?commands: ::Array[Telnyx::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllParams::Command],
+            ?ice_breakers: ::Array[String],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end
