@@ -1,0 +1,126 @@
+module Telnyx
+  module Models
+    module EmailMessages
+      type email_recipient =
+        {
+          id: String,
+          address: String?,
+          billable: bool,
+          kind: Telnyx::Models::EmailMessages::EmailRecipient::kind,
+          message_id: String,
+          record_type: Telnyx::Models::EmailMessages::EmailRecipient::record_type,
+          status: Telnyx::Models::EmailMessages::EmailRecipient::status,
+          delivered_at: Time?,
+          failed_at: Time?,
+          sent_at: Time?,
+          smtp_code: Integer?,
+          smtp_response: String?
+        }
+
+      class EmailRecipient < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor address: String?
+
+        attr_accessor billable: bool
+
+        attr_accessor kind: Telnyx::Models::EmailMessages::EmailRecipient::kind
+
+        attr_accessor message_id: String
+
+        attr_accessor record_type: Telnyx::Models::EmailMessages::EmailRecipient::record_type
+
+        attr_accessor status: Telnyx::Models::EmailMessages::EmailRecipient::status
+
+        attr_accessor delivered_at: Time?
+
+        attr_accessor failed_at: Time?
+
+        attr_accessor sent_at: Time?
+
+        attr_accessor smtp_code: Integer?
+
+        attr_accessor smtp_response: String?
+
+        def initialize: (
+          id: String,
+          address: String?,
+          billable: bool,
+          kind: Telnyx::Models::EmailMessages::EmailRecipient::kind,
+          message_id: String,
+          record_type: Telnyx::Models::EmailMessages::EmailRecipient::record_type,
+          status: Telnyx::Models::EmailMessages::EmailRecipient::status,
+          ?delivered_at: Time?,
+          ?failed_at: Time?,
+          ?sent_at: Time?,
+          ?smtp_code: Integer?,
+          ?smtp_response: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          address: String?,
+          billable: bool,
+          kind: Telnyx::Models::EmailMessages::EmailRecipient::kind,
+          message_id: String,
+          record_type: Telnyx::Models::EmailMessages::EmailRecipient::record_type,
+          status: Telnyx::Models::EmailMessages::EmailRecipient::status,
+          delivered_at: Time?,
+          failed_at: Time?,
+          sent_at: Time?,
+          smtp_code: Integer?,
+          smtp_response: String?
+        }
+
+        type kind = :to | :cc | :bcc
+
+        module Kind
+          extend Telnyx::Internal::Type::Enum
+
+          TO: :to
+          CC: :cc
+          BCC: :bcc
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailMessages::EmailRecipient::kind]
+        end
+
+        type record_type = :email_recipient
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_RECIPIENT: :email_recipient
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailMessages::EmailRecipient::record_type]
+        end
+
+        type status =
+          :queued
+          | :sending
+          | :sent
+          | :deferred
+          | :delivered
+          | :bounced
+          | :failed
+          | :gw_reject
+          | :cancelled
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          QUEUED: :queued
+          SENDING: :sending
+          SENT: :sent
+          DEFERRED: :deferred
+          DELIVERED: :delivered
+          BOUNCED: :bounced
+          FAILED: :failed
+          GW_REJECT: :gw_reject
+          CANCELLED: :cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailMessages::EmailRecipient::status]
+        end
+      end
+    end
+  end
+end

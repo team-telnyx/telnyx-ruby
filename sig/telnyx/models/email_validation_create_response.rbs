@@ -1,0 +1,121 @@
+module Telnyx
+  module Models
+    type email_validation_create_response =
+      { data: Telnyx::Models::EmailValidationCreateResponse::Data }
+
+    class EmailValidationCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::EmailValidationCreateResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::EmailValidationCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::EmailValidationCreateResponse::Data
+      }
+
+      type data =
+        {
+          checks: Telnyx::Models::EmailValidationCreateResponse::Data::Checks,
+          email: String,
+          record_type: Telnyx::Models::EmailValidationCreateResponse::Data::record_type,
+          risk_score: Float,
+          valid: bool,
+          did_you_mean: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor checks: Telnyx::Models::EmailValidationCreateResponse::Data::Checks
+
+        attr_accessor email: String
+
+        attr_accessor record_type: Telnyx::Models::EmailValidationCreateResponse::Data::record_type
+
+        attr_accessor risk_score: Float
+
+        attr_accessor valid: bool
+
+        attr_reader did_you_mean: String?
+
+        def did_you_mean=: (String) -> String
+
+        def initialize: (
+          checks: Telnyx::Models::EmailValidationCreateResponse::Data::Checks,
+          email: String,
+          record_type: Telnyx::Models::EmailValidationCreateResponse::Data::record_type,
+          risk_score: Float,
+          valid: bool,
+          ?did_you_mean: String
+        ) -> void
+
+        def to_hash: -> {
+          checks: Telnyx::Models::EmailValidationCreateResponse::Data::Checks,
+          email: String,
+          record_type: Telnyx::Models::EmailValidationCreateResponse::Data::record_type,
+          risk_score: Float,
+          valid: bool,
+          did_you_mean: String
+        }
+
+        type checks =
+          {
+            disposable: Telnyx::EmailValidationCheck,
+            mx: Telnyx::EmailValidationCheck,
+            role_based: Telnyx::EmailValidationCheck,
+            syntax: Telnyx::EmailValidationCheck,
+            typo: Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo
+          }
+
+        class Checks < Telnyx::Internal::Type::BaseModel
+          attr_accessor disposable: Telnyx::EmailValidationCheck
+
+          attr_accessor mx: Telnyx::EmailValidationCheck
+
+          attr_accessor role_based: Telnyx::EmailValidationCheck
+
+          attr_accessor syntax: Telnyx::EmailValidationCheck
+
+          attr_accessor typo: Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo
+
+          def initialize: (
+            disposable: Telnyx::EmailValidationCheck,
+            mx: Telnyx::EmailValidationCheck,
+            role_based: Telnyx::EmailValidationCheck,
+            syntax: Telnyx::EmailValidationCheck,
+            typo: Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo
+          ) -> void
+
+          def to_hash: -> {
+            disposable: Telnyx::EmailValidationCheck,
+            mx: Telnyx::EmailValidationCheck,
+            role_based: Telnyx::EmailValidationCheck,
+            syntax: Telnyx::EmailValidationCheck,
+            typo: Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo
+          }
+
+          type typo = { suggestion: String }
+
+          class Typo < Telnyx::Models::EmailValidationCheck
+            def suggestion: -> String?
+
+            def suggestion=: (String _) -> String
+
+            def initialize: (?suggestion: String) -> void
+
+            def to_hash: -> { suggestion: String }
+          end
+        end
+
+        type record_type = :email_validation
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_VALIDATION: :email_validation
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailValidationCreateResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type mutate_inbox_filters_request =
+        {
+          entries: ::Array[String],
+          type: Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_
+        }
+
+      class MutateInboxFiltersRequest < Telnyx::Internal::Type::BaseModel
+        attr_accessor entries: ::Array[String]
+
+        attr_accessor type: Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_
+
+        def initialize: (
+          entries: ::Array[String],
+          type: Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_
+        ) -> void
+
+        def to_hash: -> {
+          entries: ::Array[String],
+          type: Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_
+        }
+
+        type type_ = :allowlist | :blocklist
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          ALLOWLIST: :allowlist
+          BLOCKLIST: :blocklist
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_]
+        end
+      end
+    end
+  end
+end

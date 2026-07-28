@@ -356,6 +356,24 @@ module Telnyx
 
     attr_reader infringement_claims: Telnyx::Resources::InfringementClaims
 
+    attr_reader email_blocks: Telnyx::Resources::EmailBlocks
+
+    attr_reader email_domains: Telnyx::Resources::EmailDomains
+
+    attr_reader email_events: Telnyx::Resources::EmailEvents
+
+    attr_reader email_inboxes: Telnyx::Resources::EmailInboxes
+
+    attr_reader email_messages: Telnyx::Resources::EmailMessages
+
+    attr_reader email_templates: Telnyx::Resources::EmailTemplates
+
+    attr_reader email_threads: Telnyx::Resources::EmailThreads
+
+    attr_reader email_unsubscribe_groups: Telnyx::Resources::EmailUnsubscribeGroups
+
+    attr_reader email_validations: Telnyx::Resources::EmailValidations
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

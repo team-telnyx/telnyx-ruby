@@ -1,0 +1,57 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type filter_list_response =
+        { data: Telnyx::Models::EmailInboxes::FilterListResponse::Data }
+
+      class FilterListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::EmailInboxes::FilterListResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::EmailInboxes::FilterListResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::EmailInboxes::FilterListResponse::Data
+        }
+
+        type data =
+          {
+            allowlist: ::Array[String],
+            blocklist: ::Array[String],
+            record_type: Telnyx::Models::EmailInboxes::FilterListResponse::Data::record_type
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor allowlist: ::Array[String]
+
+          attr_accessor blocklist: ::Array[String]
+
+          attr_accessor record_type: Telnyx::Models::EmailInboxes::FilterListResponse::Data::record_type
+
+          def initialize: (
+            allowlist: ::Array[String],
+            blocklist: ::Array[String],
+            record_type: Telnyx::Models::EmailInboxes::FilterListResponse::Data::record_type
+          ) -> void
+
+          def to_hash: -> {
+            allowlist: ::Array[String],
+            blocklist: ::Array[String],
+            record_type: Telnyx::Models::EmailInboxes::FilterListResponse::Data::record_type
+          }
+
+          type record_type = :email_inbox_filters
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL_INBOX_FILTERS: :email_inbox_filters
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::FilterListResponse::Data::record_type]
+          end
+        end
+      end
+    end
+  end
+end

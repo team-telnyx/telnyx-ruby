@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type inbound_thread_detail =
+        { messages: ::Array[Telnyx::EmailInboxes::ThreadMessage] }
+
+      class InboundThreadDetail < Telnyx::Models::EmailInboxes::InboundThread
+        def messages: -> ::Array[Telnyx::EmailInboxes::ThreadMessage]
+
+        def messages=: (
+          ::Array[Telnyx::EmailInboxes::ThreadMessage] _
+        ) -> ::Array[Telnyx::EmailInboxes::ThreadMessage]
+
+        def initialize: (
+          messages: ::Array[Telnyx::EmailInboxes::ThreadMessage]
+        ) -> void
+
+        def to_hash: -> {
+          messages: ::Array[Telnyx::EmailInboxes::ThreadMessage]
+        }
+      end
+    end
+  end
+end

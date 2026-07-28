@@ -1,0 +1,135 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type email_draft_request =
+        {
+          attachments: ::Array[top],
+          bcc: ::Array[Telnyx::Models::email_address_input],
+          cc: ::Array[Telnyx::Models::email_address_input],
+          from_email: String,
+          from_name: String,
+          headers: ::Hash[Symbol, String],
+          html: String,
+          html_body: String,
+          labels: ::Array[String],
+          metadata: top,
+          reply_to: String,
+          subject: String,
+          tags: ::Array[String],
+          text: String,
+          text_body: String,
+          to: ::Array[Telnyx::Models::email_address_input]
+        }
+
+      class EmailDraftRequest < Telnyx::Internal::Type::BaseModel
+        attr_reader attachments: ::Array[top]?
+
+        def attachments=: (::Array[top]) -> ::Array[top]
+
+        attr_reader bcc: ::Array[Telnyx::Models::email_address_input]?
+
+        def bcc=: (
+          ::Array[Telnyx::Models::email_address_input]
+        ) -> ::Array[Telnyx::Models::email_address_input]
+
+        attr_reader cc: ::Array[Telnyx::Models::email_address_input]?
+
+        def cc=: (
+          ::Array[Telnyx::Models::email_address_input]
+        ) -> ::Array[Telnyx::Models::email_address_input]
+
+        attr_reader from_email: String?
+
+        def from_email=: (String) -> String
+
+        attr_reader from_name: String?
+
+        def from_name=: (String) -> String
+
+        attr_reader headers: ::Hash[Symbol, String]?
+
+        def headers=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+        attr_reader html: String?
+
+        def html=: (String) -> String
+
+        attr_reader html_body: String?
+
+        def html_body=: (String) -> String
+
+        attr_reader labels: ::Array[String]?
+
+        def labels=: (::Array[String]) -> ::Array[String]
+
+        attr_reader metadata: top?
+
+        def metadata=: (top) -> top
+
+        attr_reader reply_to: String?
+
+        def reply_to=: (String) -> String
+
+        attr_reader subject: String?
+
+        def subject=: (String) -> String
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        attr_reader text_body: String?
+
+        def text_body=: (String) -> String
+
+        attr_reader to: ::Array[Telnyx::Models::email_address_input]?
+
+        def to=: (
+          ::Array[Telnyx::Models::email_address_input]
+        ) -> ::Array[Telnyx::Models::email_address_input]
+
+        def initialize: (
+          ?attachments: ::Array[top],
+          ?bcc: ::Array[Telnyx::Models::email_address_input],
+          ?cc: ::Array[Telnyx::Models::email_address_input],
+          ?from_email: String,
+          ?from_name: String,
+          ?headers: ::Hash[Symbol, String],
+          ?html: String,
+          ?html_body: String,
+          ?labels: ::Array[String],
+          ?metadata: top,
+          ?reply_to: String,
+          ?subject: String,
+          ?tags: ::Array[String],
+          ?text: String,
+          ?text_body: String,
+          ?to: ::Array[Telnyx::Models::email_address_input]
+        ) -> void
+
+        def to_hash: -> {
+          attachments: ::Array[top],
+          bcc: ::Array[Telnyx::Models::email_address_input],
+          cc: ::Array[Telnyx::Models::email_address_input],
+          from_email: String,
+          from_name: String,
+          headers: ::Hash[Symbol, String],
+          html: String,
+          html_body: String,
+          labels: ::Array[String],
+          metadata: top,
+          reply_to: String,
+          subject: String,
+          tags: ::Array[String],
+          text: String,
+          text_body: String,
+          to: ::Array[Telnyx::Models::email_address_input]
+        }
+      end
+    end
+  end
+end

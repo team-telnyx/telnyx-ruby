@@ -1,0 +1,149 @@
+module Telnyx
+  module Models
+    type email_event_list_response =
+      {
+        data: ::Array[Telnyx::Models::EmailEventListResponse::Data],
+        meta: Telnyx::Models::EmailEventListResponse::Meta
+      }
+
+    class EmailEventListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::EmailEventListResponse::Data]
+
+      attr_accessor meta: Telnyx::Models::EmailEventListResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::EmailEventListResponse::Data],
+        meta: Telnyx::Models::EmailEventListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::EmailEventListResponse::Data],
+        meta: Telnyx::Models::EmailEventListResponse::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          email_id: String,
+          occurred_at: Time,
+          record_type: Telnyx::Models::EmailEventListResponse::Data::record_type,
+          type: Telnyx::Models::email_event_type,
+          email: Telnyx::Models::EmailEventListResponse::Data::Email,
+          payload: ::Hash[Symbol, top]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor email_id: String
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor record_type: Telnyx::Models::EmailEventListResponse::Data::record_type
+
+        attr_accessor type: Telnyx::Models::email_event_type
+
+        attr_reader email: Telnyx::Models::EmailEventListResponse::Data::Email?
+
+        def email=: (
+          Telnyx::Models::EmailEventListResponse::Data::Email
+        ) -> Telnyx::Models::EmailEventListResponse::Data::Email
+
+        attr_reader payload: ::Hash[Symbol, top]?
+
+        def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        def initialize: (
+          id: String,
+          email_id: String,
+          occurred_at: Time,
+          record_type: Telnyx::Models::EmailEventListResponse::Data::record_type,
+          type: Telnyx::Models::email_event_type,
+          ?email: Telnyx::Models::EmailEventListResponse::Data::Email,
+          ?payload: ::Hash[Symbol, top]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          email_id: String,
+          occurred_at: Time,
+          record_type: Telnyx::Models::EmailEventListResponse::Data::record_type,
+          type: Telnyx::Models::email_event_type,
+          email: Telnyx::Models::EmailEventListResponse::Data::Email,
+          payload: ::Hash[Symbol, top]
+        }
+
+        type record_type = :email_event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_EVENT: :email_event
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailEventListResponse::Data::record_type]
+        end
+
+        type email =
+          {
+            cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+            from: Telnyx::EmailInboxes::EmailAddress,
+            subject: String,
+            to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+          }
+
+        class Email < Telnyx::Internal::Type::BaseModel
+          attr_accessor cc: ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+          attr_accessor from: Telnyx::EmailInboxes::EmailAddress
+
+          attr_accessor subject: String
+
+          attr_accessor to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+          def initialize: (
+            cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+            from: Telnyx::EmailInboxes::EmailAddress,
+            subject: String,
+            to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+          ) -> void
+
+          def to_hash: -> {
+            cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+            from: Telnyx::EmailInboxes::EmailAddress,
+            subject: String,
+            to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+          }
+        end
+      end
+
+      type meta =
+        {
+          page_size: Integer,
+          time_range: Telnyx::TimeRange,
+          page_cursor: String
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_size: Integer
+
+        attr_accessor time_range: Telnyx::TimeRange
+
+        attr_reader page_cursor: String?
+
+        def page_cursor=: (String) -> String
+
+        def initialize: (
+          page_size: Integer,
+          time_range: Telnyx::TimeRange,
+          ?page_cursor: String
+        ) -> void
+
+        def to_hash: -> {
+          page_size: Integer,
+          time_range: Telnyx::TimeRange,
+          page_cursor: String
+        }
+      end
+    end
+  end
+end

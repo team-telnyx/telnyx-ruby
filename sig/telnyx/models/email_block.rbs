@@ -1,0 +1,142 @@
+module Telnyx
+  module Models
+    type email_block =
+      {
+        id: String,
+        created_at: Time,
+        reason: Telnyx::Models::EmailBlock::reason,
+        record_type: Telnyx::Models::EmailBlock::record_type,
+        scope: Telnyx::Models::EmailBlock::scope,
+        source: Telnyx::Models::EmailBlock::source,
+        status: Telnyx::Models::EmailBlock::status,
+        to: String,
+        updated_at: Time,
+        domain_id: String?,
+        expires_at: Time?,
+        from: String?,
+        group_id: String?
+      }
+
+    class EmailBlock < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor reason: Telnyx::Models::EmailBlock::reason
+
+      attr_accessor record_type: Telnyx::Models::EmailBlock::record_type
+
+      attr_accessor scope: Telnyx::Models::EmailBlock::scope
+
+      attr_accessor source: Telnyx::Models::EmailBlock::source
+
+      attr_accessor status: Telnyx::Models::EmailBlock::status
+
+      attr_accessor to: String
+
+      attr_accessor updated_at: Time
+
+      attr_accessor domain_id: String?
+
+      attr_accessor expires_at: Time?
+
+      attr_accessor from: String?
+
+      attr_accessor group_id: String?
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        reason: Telnyx::Models::EmailBlock::reason,
+        record_type: Telnyx::Models::EmailBlock::record_type,
+        scope: Telnyx::Models::EmailBlock::scope,
+        source: Telnyx::Models::EmailBlock::source,
+        status: Telnyx::Models::EmailBlock::status,
+        to: String,
+        updated_at: Time,
+        ?domain_id: String?,
+        ?expires_at: Time?,
+        ?from: String?,
+        ?group_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        reason: Telnyx::Models::EmailBlock::reason,
+        record_type: Telnyx::Models::EmailBlock::record_type,
+        scope: Telnyx::Models::EmailBlock::scope,
+        source: Telnyx::Models::EmailBlock::source,
+        status: Telnyx::Models::EmailBlock::status,
+        to: String,
+        updated_at: Time,
+        domain_id: String?,
+        expires_at: Time?,
+        from: String?,
+        group_id: String?
+      }
+
+      type reason =
+        :hard_bounce | :spam_complaint | :unsubscribe | :invalid | :manual_block
+
+      module Reason
+        extend Telnyx::Internal::Type::Enum
+
+        HARD_BOUNCE: :hard_bounce
+        SPAM_COMPLAINT: :spam_complaint
+        UNSUBSCRIBE: :unsubscribe
+        INVALID: :invalid
+        MANUAL_BLOCK: :manual_block
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailBlock::reason]
+      end
+
+      type record_type = :email_block
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EMAIL_BLOCK: :email_block
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailBlock::record_type]
+      end
+
+      type scope = :account | :domain | :address
+
+      module Scope
+        extend Telnyx::Internal::Type::Enum
+
+        ACCOUNT: :account
+        DOMAIN: :domain
+        ADDRESS: :address
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailBlock::scope]
+      end
+
+      type source = :feedback | :manual | :import | :system
+
+      module Source
+        extend Telnyx::Internal::Type::Enum
+
+        FEEDBACK: :feedback
+        MANUAL: :manual
+        IMPORT: :import
+        SYSTEM: :system
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailBlock::source]
+      end
+
+      type status = :active | :expired | :removed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        ACTIVE: :active
+        EXPIRED: :expired
+        REMOVED: :removed
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailBlock::status]
+      end
+    end
+  end
+end

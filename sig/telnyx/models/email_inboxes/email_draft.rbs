@@ -1,0 +1,185 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type email_draft =
+        {
+          id: String,
+          inbox_id: String,
+          record_type: Telnyx::Models::EmailInboxes::EmailDraft::record_type,
+          status: Telnyx::Models::EmailInboxes::EmailDraft::status,
+          attachments: ::Array[top],
+          bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          created_at: Time,
+          from: String?,
+          from_name: String?,
+          headers: ::Hash[Symbol, String],
+          html_body: String?,
+          labels: ::Array[String],
+          metadata: top,
+          reply_to: String?,
+          reply_to_message_id: String?,
+          sent_at: Time?,
+          sent_message_id: String?,
+          subject: String?,
+          tags: ::Array[String],
+          text_body: String?,
+          thread_id: String?,
+          to: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          updated_at: Time
+        }
+
+      class EmailDraft < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor inbox_id: String
+
+        attr_accessor record_type: Telnyx::Models::EmailInboxes::EmailDraft::record_type
+
+        attr_accessor status: Telnyx::Models::EmailInboxes::EmailDraft::status
+
+        attr_reader attachments: ::Array[top]?
+
+        def attachments=: (::Array[top]) -> ::Array[top]
+
+        attr_reader bcc: ::Array[Telnyx::EmailInboxes::EmailAddress]?
+
+        def bcc=: (
+          ::Array[Telnyx::EmailInboxes::EmailAddress]
+        ) -> ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+        attr_reader cc: ::Array[Telnyx::EmailInboxes::EmailAddress]?
+
+        def cc=: (
+          ::Array[Telnyx::EmailInboxes::EmailAddress]
+        ) -> ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_accessor from: String?
+
+        attr_accessor from_name: String?
+
+        attr_reader headers: ::Hash[Symbol, String]?
+
+        def headers=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+        attr_accessor html_body: String?
+
+        attr_reader labels: ::Array[String]?
+
+        def labels=: (::Array[String]) -> ::Array[String]
+
+        attr_reader metadata: top?
+
+        def metadata=: (top) -> top
+
+        attr_accessor reply_to: String?
+
+        attr_accessor reply_to_message_id: String?
+
+        attr_accessor sent_at: Time?
+
+        attr_accessor sent_message_id: String?
+
+        attr_accessor subject: String?
+
+        attr_reader tags: ::Array[String]?
+
+        def tags=: (::Array[String]) -> ::Array[String]
+
+        attr_accessor text_body: String?
+
+        attr_accessor thread_id: String?
+
+        attr_reader to: ::Array[Telnyx::EmailInboxes::EmailAddress]?
+
+        def to=: (
+          ::Array[Telnyx::EmailInboxes::EmailAddress]
+        ) -> ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          id: String,
+          inbox_id: String,
+          record_type: Telnyx::Models::EmailInboxes::EmailDraft::record_type,
+          status: Telnyx::Models::EmailInboxes::EmailDraft::status,
+          ?attachments: ::Array[top],
+          ?bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          ?cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          ?created_at: Time,
+          ?from: String?,
+          ?from_name: String?,
+          ?headers: ::Hash[Symbol, String],
+          ?html_body: String?,
+          ?labels: ::Array[String],
+          ?metadata: top,
+          ?reply_to: String?,
+          ?reply_to_message_id: String?,
+          ?sent_at: Time?,
+          ?sent_message_id: String?,
+          ?subject: String?,
+          ?tags: ::Array[String],
+          ?text_body: String?,
+          ?thread_id: String?,
+          ?to: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          inbox_id: String,
+          record_type: Telnyx::Models::EmailInboxes::EmailDraft::record_type,
+          status: Telnyx::Models::EmailInboxes::EmailDraft::status,
+          attachments: ::Array[top],
+          bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          created_at: Time,
+          from: String?,
+          from_name: String?,
+          headers: ::Hash[Symbol, String],
+          html_body: String?,
+          labels: ::Array[String],
+          metadata: top,
+          reply_to: String?,
+          reply_to_message_id: String?,
+          sent_at: Time?,
+          sent_message_id: String?,
+          subject: String?,
+          tags: ::Array[String],
+          text_body: String?,
+          thread_id: String?,
+          to: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          updated_at: Time
+        }
+
+        type record_type = :email_draft
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_DRAFT: :email_draft
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::EmailDraft::record_type]
+        end
+
+        type status = :draft | :sending | :sent
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          DRAFT: :draft
+          SENDING: :sending
+          SENT: :sent
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::EmailDraft::status]
+        end
+      end
+    end
+  end
+end

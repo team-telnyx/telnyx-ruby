@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      module Messages
+        type label_create_response = { data: Telnyx::InboundMessage }
+
+        class LabelCreateResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::InboundMessage
+
+          def initialize: (data: Telnyx::InboundMessage) -> void
+
+          def to_hash: -> { data: Telnyx::InboundMessage }
+        end
+      end
+    end
+  end
+end

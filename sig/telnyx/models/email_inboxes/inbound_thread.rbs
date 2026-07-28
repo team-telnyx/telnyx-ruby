@@ -1,0 +1,87 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type inbound_thread =
+        {
+          id: String,
+          created_at: Time,
+          inbox_id: String,
+          labels: ::Array[String],
+          last_message_at: Time,
+          last_message_id: String,
+          message_count: Integer,
+          preview: String?,
+          record_type: Telnyx::Models::EmailInboxes::InboundThread::record_type,
+          subject: String?,
+          unread_count: Integer,
+          updated_at: Time
+        }
+
+      class InboundThread < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor inbox_id: String
+
+        attr_accessor labels: ::Array[String]
+
+        attr_accessor last_message_at: Time
+
+        attr_accessor last_message_id: String
+
+        attr_accessor message_count: Integer
+
+        attr_accessor preview: String?
+
+        attr_accessor record_type: Telnyx::Models::EmailInboxes::InboundThread::record_type
+
+        attr_accessor subject: String?
+
+        attr_accessor unread_count: Integer
+
+        attr_accessor updated_at: Time
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          inbox_id: String,
+          labels: ::Array[String],
+          last_message_at: Time,
+          last_message_id: String,
+          message_count: Integer,
+          preview: String?,
+          record_type: Telnyx::Models::EmailInboxes::InboundThread::record_type,
+          subject: String?,
+          unread_count: Integer,
+          updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          inbox_id: String,
+          labels: ::Array[String],
+          last_message_at: Time,
+          last_message_id: String,
+          message_count: Integer,
+          preview: String?,
+          record_type: Telnyx::Models::EmailInboxes::InboundThread::record_type,
+          subject: String?,
+          unread_count: Integer,
+          updated_at: Time
+        }
+
+        type record_type = :email_thread
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_THREAD: :email_thread
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::InboundThread::record_type]
+        end
+      end
+    end
+  end
+end

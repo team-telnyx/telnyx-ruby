@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    type email_template =
+      {
+        id: String,
+        created_at: Time,
+        html_body: String?,
+        name: String,
+        record_type: Telnyx::Models::EmailTemplate::record_type,
+        subject: String?,
+        text_body: String?,
+        updated_at: Time,
+        variables: ::Array[String]
+      }
+
+    class EmailTemplate < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor html_body: String?
+
+      attr_accessor name: String
+
+      attr_accessor record_type: Telnyx::Models::EmailTemplate::record_type
+
+      attr_accessor subject: String?
+
+      attr_accessor text_body: String?
+
+      attr_accessor updated_at: Time
+
+      attr_accessor variables: ::Array[String]
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        html_body: String?,
+        name: String,
+        record_type: Telnyx::Models::EmailTemplate::record_type,
+        subject: String?,
+        text_body: String?,
+        updated_at: Time,
+        variables: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        html_body: String?,
+        name: String,
+        record_type: Telnyx::Models::EmailTemplate::record_type,
+        subject: String?,
+        text_body: String?,
+        updated_at: Time,
+        variables: ::Array[String]
+      }
+
+      type record_type = :email_template
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EMAIL_TEMPLATE: :email_template
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailTemplate::record_type]
+      end
+    end
+  end
+end

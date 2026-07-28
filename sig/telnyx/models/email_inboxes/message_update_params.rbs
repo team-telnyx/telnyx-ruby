@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type message_update_params =
+        {
+          inbox_id: String,
+          message_id: String,
+          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at?
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class MessageUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor inbox_id: String
+
+        attr_accessor message_id: String
+
+        attr_accessor read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at?
+
+        def initialize: (
+          inbox_id: String,
+          message_id: String,
+          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at?,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          inbox_id: String,
+          message_id: String,
+          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at?,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type read_at = (true | Time)?
+
+        module ReadAt
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at]
+
+          TRUE: true
+        end
+      end
+    end
+  end
+end

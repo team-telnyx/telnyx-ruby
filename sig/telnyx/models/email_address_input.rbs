@@ -1,0 +1,11 @@
+module Telnyx
+  module Models
+    type email_address_input = String | Telnyx::EmailInboxes::EmailAddress
+
+    module EmailAddressInput
+      extend Telnyx::Internal::Type::Union
+
+      def self?.variants: -> ::Array[Telnyx::Models::email_address_input]
+    end
+  end
+end

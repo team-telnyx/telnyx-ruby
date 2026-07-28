@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    type unsubscribe_group =
+      {
+        id: String,
+        created_at: Time,
+        description: String?,
+        name: String,
+        record_type: Telnyx::Models::UnsubscribeGroup::record_type,
+        updated_at: Time
+      }
+
+    class UnsubscribeGroup < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor description: String?
+
+      attr_accessor name: String
+
+      attr_accessor record_type: Telnyx::Models::UnsubscribeGroup::record_type
+
+      attr_accessor updated_at: Time
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        description: String?,
+        name: String,
+        record_type: Telnyx::Models::UnsubscribeGroup::record_type,
+        updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        description: String?,
+        name: String,
+        record_type: Telnyx::Models::UnsubscribeGroup::record_type,
+        updated_at: Time
+      }
+
+      type record_type = :email_unsubscribe_group
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EMAIL_UNSUBSCRIBE_GROUP: :email_unsubscribe_group
+
+        def self?.values: -> ::Array[Telnyx::Models::UnsubscribeGroup::record_type]
+      end
+    end
+  end
+end

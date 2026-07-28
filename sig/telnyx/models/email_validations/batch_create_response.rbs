@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    module EmailValidations
+      type batch_create_response =
+        { data: Telnyx::Models::EmailValidations::BatchCreateResponse::Data }
+
+      class BatchCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::EmailValidations::BatchCreateResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::EmailValidations::BatchCreateResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::EmailValidations::BatchCreateResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            duplicates_removed: Integer,
+            record_type: Telnyx::Models::EmailValidations::BatchCreateResponse::Data::record_type,
+            status: Telnyx::Models::EmailValidations::email_validation_batch_status,
+            total: Integer,
+            webhook_url: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor duplicates_removed: Integer
+
+          attr_accessor record_type: Telnyx::Models::EmailValidations::BatchCreateResponse::Data::record_type
+
+          attr_accessor status: Telnyx::Models::EmailValidations::email_validation_batch_status
+
+          attr_accessor total: Integer
+
+          attr_reader webhook_url: String?
+
+          def webhook_url=: (String) -> String
+
+          def initialize: (
+            id: String,
+            duplicates_removed: Integer,
+            record_type: Telnyx::Models::EmailValidations::BatchCreateResponse::Data::record_type,
+            status: Telnyx::Models::EmailValidations::email_validation_batch_status,
+            total: Integer,
+            ?webhook_url: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            duplicates_removed: Integer,
+            record_type: Telnyx::Models::EmailValidations::BatchCreateResponse::Data::record_type,
+            status: Telnyx::Models::EmailValidations::email_validation_batch_status,
+            total: Integer,
+            webhook_url: String
+          }
+
+          type record_type = :email_validation_batch
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL_VALIDATION_BATCH: :email_validation_batch
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailValidations::BatchCreateResponse::Data::record_type]
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    type email_message_retrieve_response =
+      { data: Telnyx::Models::EmailMessageRetrieveResponse::Data }
+
+    class EmailMessageRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::EmailMessageRetrieveResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::EmailMessageRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::EmailMessageRetrieveResponse::Data
+      }
+
+      type data = { html_body: String?, text_body: String? }
+
+      class Data < Telnyx::Models::EmailInboxes::EmailMessage
+        def html_body: -> String?
+
+        def html_body=: (String? _) -> String?
+
+        def text_body: -> String?
+
+        def text_body=: (String? _) -> String?
+
+        def initialize: (html_body: String?, text_body: String?) -> void
+
+        def to_hash: -> { html_body: String?, text_body: String? }
+      end
+    end
+  end
+end

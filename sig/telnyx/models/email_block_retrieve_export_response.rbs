@@ -1,0 +1,5 @@
+module Telnyx
+  module Models
+    class EmailBlockRetrieveExportResponse = String
+  end
+end

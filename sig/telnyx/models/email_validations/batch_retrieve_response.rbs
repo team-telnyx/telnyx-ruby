@@ -1,0 +1,173 @@
+module Telnyx
+  module Models
+    module EmailValidations
+      type batch_retrieve_response =
+        { data: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data }
+
+      class BatchRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data
+
+        def initialize: (
+          data: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            record_type: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::record_type,
+            status: Telnyx::Models::EmailValidations::email_validation_batch_status,
+            total: Integer,
+            completed_at: Time,
+            results: ::Hash[Symbol, Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result],
+            webhook_url: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor record_type: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::record_type
+
+          attr_accessor status: Telnyx::Models::EmailValidations::email_validation_batch_status
+
+          attr_accessor total: Integer
+
+          attr_reader completed_at: Time?
+
+          def completed_at=: (Time) -> Time
+
+          attr_reader results: ::Hash[Symbol, Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result]?
+
+          def results=: (
+            ::Hash[Symbol, Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result]
+          ) -> ::Hash[Symbol, Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result]
+
+          attr_reader webhook_url: String?
+
+          def webhook_url=: (String) -> String
+
+          def initialize: (
+            id: String,
+            record_type: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::record_type,
+            status: Telnyx::Models::EmailValidations::email_validation_batch_status,
+            total: Integer,
+            ?completed_at: Time,
+            ?results: ::Hash[Symbol, Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result],
+            ?webhook_url: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            record_type: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::record_type,
+            status: Telnyx::Models::EmailValidations::email_validation_batch_status,
+            total: Integer,
+            completed_at: Time,
+            results: ::Hash[Symbol, Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result],
+            webhook_url: String
+          }
+
+          type record_type = :email_validation_batch
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL_VALIDATION_BATCH: :email_validation_batch
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::record_type]
+          end
+
+          type result =
+            {
+              checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks,
+              email: String,
+              risk_score: Float,
+              valid: bool,
+              did_you_mean: String
+            }
+
+          class Result < Telnyx::Internal::Type::BaseModel
+            attr_accessor checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks
+
+            attr_accessor email: String
+
+            attr_accessor risk_score: Float
+
+            attr_accessor valid: bool
+
+            attr_reader did_you_mean: String?
+
+            def did_you_mean=: (String) -> String
+
+            def initialize: (
+              checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks,
+              email: String,
+              risk_score: Float,
+              valid: bool,
+              ?did_you_mean: String
+            ) -> void
+
+            def to_hash: -> {
+              checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks,
+              email: String,
+              risk_score: Float,
+              valid: bool,
+              did_you_mean: String
+            }
+
+            type checks =
+              {
+                disposable: Telnyx::EmailValidationCheck,
+                mx: Telnyx::EmailValidationCheck,
+                role_based: Telnyx::EmailValidationCheck,
+                syntax: Telnyx::EmailValidationCheck,
+                typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
+              }
+
+            class Checks < Telnyx::Internal::Type::BaseModel
+              attr_accessor disposable: Telnyx::EmailValidationCheck
+
+              attr_accessor mx: Telnyx::EmailValidationCheck
+
+              attr_accessor role_based: Telnyx::EmailValidationCheck
+
+              attr_accessor syntax: Telnyx::EmailValidationCheck
+
+              attr_accessor typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
+
+              def initialize: (
+                disposable: Telnyx::EmailValidationCheck,
+                mx: Telnyx::EmailValidationCheck,
+                role_based: Telnyx::EmailValidationCheck,
+                syntax: Telnyx::EmailValidationCheck,
+                typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
+              ) -> void
+
+              def to_hash: -> {
+                disposable: Telnyx::EmailValidationCheck,
+                mx: Telnyx::EmailValidationCheck,
+                role_based: Telnyx::EmailValidationCheck,
+                syntax: Telnyx::EmailValidationCheck,
+                typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
+              }
+
+              type typo = { suggestion: String }
+
+              class Typo < Telnyx::Models::EmailValidationCheck
+                def suggestion: -> String?
+
+                def suggestion=: (String _) -> String
+
+                def initialize: (?suggestion: String) -> void
+
+                def to_hash: -> { suggestion: String }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

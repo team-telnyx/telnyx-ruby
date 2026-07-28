@@ -71,6 +71,8 @@ module Telnyx
 
   APIError = Telnyx::Models::APIError
 
+  AttachmentRequest = Telnyx::Models::AttachmentRequest
+
   Attempt = Telnyx::Models::Attempt
 
   AuditEventListParams = Telnyx::Models::AuditEventListParams
@@ -623,6 +625,8 @@ module Telnyx
 
   DirWrapped = Telnyx::Models::DirWrapped
 
+  DNSRecord = Telnyx::Models::DNSRecord
+
   DocReqsRequirement = Telnyx::Models::DocReqsRequirement
 
   DocReqsRequirementType = Telnyx::Models::DocReqsRequirementType
@@ -651,6 +655,8 @@ module Telnyx
   DocumentUploadJsonParams = Telnyx::Models::DocumentUploadJsonParams
 
   DocumentUploadParams = Telnyx::Models::DocumentUploadParams
+
+  DomainsTrackingSettings = Telnyx::Models::DomainsTrackingSettings
 
   DtmfType = Telnyx::Models::DtmfType
 
@@ -681,6 +687,143 @@ module Telnyx
 
   DynamicEmergencyEndpointRetrieveParams =
     Telnyx::Models::DynamicEmergencyEndpointRetrieveParams
+
+  EmailAddressInput = Telnyx::Models::EmailAddressInput
+
+  EmailBlock = Telnyx::Models::EmailBlock
+
+  EmailBlockCreateParams = Telnyx::Models::EmailBlockCreateParams
+
+  EmailBlockDeleteParams = Telnyx::Models::EmailBlockDeleteParams
+
+  EmailBlockListParams = Telnyx::Models::EmailBlockListParams
+
+  EmailBlockResponse = Telnyx::Models::EmailBlockResponse
+
+  EmailBlockRetrieveEventsParams =
+    Telnyx::Models::EmailBlockRetrieveEventsParams
+
+  EmailBlockRetrieveExportParams =
+    Telnyx::Models::EmailBlockRetrieveExportParams
+
+  EmailBlockRetrieveParams = Telnyx::Models::EmailBlockRetrieveParams
+
+  EmailBlocks = Telnyx::Models::EmailBlocks
+
+  EmailDmarcPolicy = Telnyx::Models::EmailDmarcPolicy
+
+  EmailDomain = Telnyx::Models::EmailDomain
+
+  EmailDomainCreateParams = Telnyx::Models::EmailDomainCreateParams
+
+  EmailDomainDeleteParams = Telnyx::Models::EmailDomainDeleteParams
+
+  EmailDomainListParams = Telnyx::Models::EmailDomainListParams
+
+  EmailDomainResponse = Telnyx::Models::EmailDomainResponse
+
+  EmailDomainRetrieveDNSRecordsParams =
+    Telnyx::Models::EmailDomainRetrieveDNSRecordsParams
+
+  EmailDomainRetrieveHealthParams =
+    Telnyx::Models::EmailDomainRetrieveHealthParams
+
+  EmailDomainRetrieveParams = Telnyx::Models::EmailDomainRetrieveParams
+
+  EmailDomains = Telnyx::Models::EmailDomains
+
+  EmailDomainStatus = Telnyx::Models::EmailDomainStatus
+
+  EmailDomainType = Telnyx::Models::EmailDomainType
+
+  EmailDomainUpdateParams = Telnyx::Models::EmailDomainUpdateParams
+
+  EmailDomainVerification = Telnyx::Models::EmailDomainVerification
+
+  EmailDomainVerifyParams = Telnyx::Models::EmailDomainVerifyParams
+
+  EmailEventListParams = Telnyx::Models::EmailEventListParams
+
+  EmailEventRetrieveStatsParams = Telnyx::Models::EmailEventRetrieveStatsParams
+
+  EmailEventType = Telnyx::Models::EmailEventType
+
+  EmailInbox = Telnyx::Models::EmailInbox
+
+  EmailInboxCreateParams = Telnyx::Models::EmailInboxCreateParams
+
+  EmailInboxDeleteParams = Telnyx::Models::EmailInboxDeleteParams
+
+  EmailInboxes = Telnyx::Models::EmailInboxes
+
+  EmailInboxListParams = Telnyx::Models::EmailInboxListParams
+
+  EmailInboxResponse = Telnyx::Models::EmailInboxResponse
+
+  EmailInboxRetrieveParams = Telnyx::Models::EmailInboxRetrieveParams
+
+  EmailMessageBatchParams = Telnyx::Models::EmailMessageBatchParams
+
+  EmailMessageCreateParams = Telnyx::Models::EmailMessageCreateParams
+
+  EmailMessageDeleteAllParams = Telnyx::Models::EmailMessageDeleteAllParams
+
+  EmailMessageDeleteParams = Telnyx::Models::EmailMessageDeleteParams
+
+  EmailMessageDeleteScheduleParams =
+    Telnyx::Models::EmailMessageDeleteScheduleParams
+
+  EmailMessageListParams = Telnyx::Models::EmailMessageListParams
+
+  EmailMessageRetrieveEventsParams =
+    Telnyx::Models::EmailMessageRetrieveEventsParams
+
+  EmailMessageRetrieveParams = Telnyx::Models::EmailMessageRetrieveParams
+
+  EmailMessages = Telnyx::Models::EmailMessages
+
+  EmailTemplate = Telnyx::Models::EmailTemplate
+
+  EmailTemplateCreateParams = Telnyx::Models::EmailTemplateCreateParams
+
+  EmailTemplateDeleteParams = Telnyx::Models::EmailTemplateDeleteParams
+
+  EmailTemplateListParams = Telnyx::Models::EmailTemplateListParams
+
+  EmailTemplateRenderParams = Telnyx::Models::EmailTemplateRenderParams
+
+  EmailTemplateResponse = Telnyx::Models::EmailTemplateResponse
+
+  EmailTemplateRetrieveParams = Telnyx::Models::EmailTemplateRetrieveParams
+
+  EmailTemplateUpdateParams = Telnyx::Models::EmailTemplateUpdateParams
+
+  EmailThreadListParams = Telnyx::Models::EmailThreadListParams
+
+  EmailThreadRetrieveParams = Telnyx::Models::EmailThreadRetrieveParams
+
+  EmailUnsubscribeGroupCreateParams =
+    Telnyx::Models::EmailUnsubscribeGroupCreateParams
+
+  EmailUnsubscribeGroupDeleteParams =
+    Telnyx::Models::EmailUnsubscribeGroupDeleteParams
+
+  EmailUnsubscribeGroupListParams =
+    Telnyx::Models::EmailUnsubscribeGroupListParams
+
+  EmailUnsubscribeGroupRetrieveParams =
+    Telnyx::Models::EmailUnsubscribeGroupRetrieveParams
+
+  EmailUnsubscribeGroups = Telnyx::Models::EmailUnsubscribeGroups
+
+  EmailUnsubscribeGroupUpdateParams =
+    Telnyx::Models::EmailUnsubscribeGroupUpdateParams
+
+  EmailValidationCheck = Telnyx::Models::EmailValidationCheck
+
+  EmailValidationCreateParams = Telnyx::Models::EmailValidationCreateParams
+
+  EmailValidations = Telnyx::Models::EmailValidations
 
   EncryptedMedia = Telnyx::Models::EncryptedMedia
 
@@ -849,6 +992,8 @@ module Telnyx
 
   GlobalIPUsageRetrieveParams = Telnyx::Models::GlobalIPUsageRetrieveParams
 
+  GroupListMeta = Telnyx::Models::GroupListMeta
+
   HostedNumber = Telnyx::Models::HostedNumber
 
   HostedNumberOrderEventWebhookEvent =
@@ -982,6 +1127,8 @@ module Telnyx
   MediaUploadParams = Telnyx::Models::MediaUploadParams
 
   MessageCancelScheduledParams = Telnyx::Models::MessageCancelScheduledParams
+
+  MessageEvent = Telnyx::Models::MessageEvent
 
   MessageRetrieveGroupMessagesParams =
     Telnyx::Models::MessageRetrieveGroupMessagesParams
@@ -1317,6 +1464,8 @@ module Telnyx
   OAuthRetrieveParams = Telnyx::Models::OAuthRetrieveParams
 
   OAuthTokenParams = Telnyx::Models::OAuthTokenParams
+
+  OffsetMeta = Telnyx::Models::OffsetMeta
 
   OperatorConnect = Telnyx::Models::OperatorConnect
 
@@ -1908,6 +2057,10 @@ module Telnyx
 
   TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
 
+  TimeRange = Telnyx::Models::TimeRange
+
+  TrackingSettings = Telnyx::Models::TrackingSettings
+
   TrafficPolicyProfile = Telnyx::Models::TrafficPolicyProfile
 
   TrafficPolicyProfileCreateParams =
@@ -1962,7 +2115,13 @@ module Telnyx
 
   UnsafeUnwrapWebhookEvent = Telnyx::Models::UnsafeUnwrapWebhookEvent
 
+  UnsubscribeGroup = Telnyx::Models::UnsubscribeGroup
+
+  UnsubscribeGroupResponse = Telnyx::Models::UnsubscribeGroupResponse
+
   UnwrapWebhookEvent = Telnyx::Models::UnwrapWebhookEvent
+
+  UpdateEmailTemplateRequest = Telnyx::Models::UpdateEmailTemplateRequest
 
   UpdatePhoneNumberMessagingSettingsRequest =
     Telnyx::Models::UpdatePhoneNumberMessagingSettingsRequest

@@ -1,0 +1,23 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      module Messages
+        type reply_email_inbox_message_request = { html: String, text: String }
+
+        class ReplyEmailInboxMessageRequest < Telnyx::Internal::Type::BaseModel
+          attr_reader html: String?
+
+          def html=: (String) -> String
+
+          attr_reader text: String?
+
+          def text=: (String) -> String
+
+          def initialize: (?html: String, ?text: String) -> void
+
+          def to_hash: -> { html: String, text: String }
+        end
+      end
+    end
+  end
+end

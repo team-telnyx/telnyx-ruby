@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module EmailBlocks
+      type import_create_params =
+        { file: Telnyx::Internal::file_input, block_ttl_days: Integer }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ImportCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor file: Telnyx::Internal::file_input
+
+        attr_reader block_ttl_days: Integer?
+
+        def block_ttl_days=: (Integer) -> Integer
+
+        def initialize: (
+          file: Telnyx::Internal::file_input,
+          ?block_ttl_days: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          file: Telnyx::Internal::file_input,
+          block_ttl_days: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    type email_validation_check = { pass: bool, details: String }
+
+    class EmailValidationCheck < Telnyx::Internal::Type::BaseModel
+      attr_accessor pass: bool
+
+      attr_reader details: String?
+
+      def details=: (String) -> String
+
+      def initialize: (pass: bool, ?details: String) -> void
+
+      def to_hash: -> { pass: bool, details: String }
+    end
+  end
+end

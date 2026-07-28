@@ -685,6 +685,44 @@ module Telnyx
     sig { returns(Telnyx::Resources::InfringementClaims) }
     attr_reader :infringement_claims
 
+    # Recipient suppression records (`/v2/email_blocks`).
+    sig { returns(Telnyx::Resources::EmailBlocks) }
+    attr_reader :email_blocks
+
+    sig { returns(Telnyx::Resources::EmailDomains) }
+    attr_reader :email_domains
+
+    # Retrieve account-level email events and event statistics.
+    sig { returns(Telnyx::Resources::EmailEvents) }
+    attr_reader :email_events
+
+    # Create and manage agent inboxes, retrieve inbound messages and threads, and
+    # reply to or forward messages.
+    sig { returns(Telnyx::Resources::EmailInboxes) }
+    attr_reader :email_inboxes
+
+    # Send and manage email messages. Legacy `/v2/emails` routes are aliases for these
+    # endpoints.
+    sig { returns(Telnyx::Resources::EmailMessages) }
+    attr_reader :email_messages
+
+    # Create, list, retrieve, update, delete, and render Liquid email templates.
+    sig { returns(Telnyx::Resources::EmailTemplates) }
+    attr_reader :email_templates
+
+    # Account-wide conversation threads across every inbox, for agents operating many
+    # inboxes at once.
+    sig { returns(Telnyx::Resources::EmailThreads) }
+    attr_reader :email_threads
+
+    # Named groups and group-scoped suppressions.
+    sig { returns(Telnyx::Resources::EmailUnsubscribeGroups) }
+    attr_reader :email_unsubscribe_groups
+
+    # Validate email addresses synchronously or in asynchronous batches.
+    sig { returns(Telnyx::Resources::EmailValidations) }
+    attr_reader :email_validations
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

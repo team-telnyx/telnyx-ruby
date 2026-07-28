@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module EmailValidationBatchStatus = EmailValidations::EmailValidationBatchStatus
+
+    module EmailValidations
+      type email_validation_batch_status =
+        :pending | :processing | :completed | :failed
+
+      module EmailValidationBatchStatus
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        PROCESSING: :processing
+        COMPLETED: :completed
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailValidations::email_validation_batch_status]
+      end
+    end
+  end
+end

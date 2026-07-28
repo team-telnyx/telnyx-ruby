@@ -1,0 +1,76 @@
+module Telnyx
+  module Resources
+    class EmailMessages
+      attr_reader recipients: Telnyx::Resources::EmailMessages::Recipients
+
+      def create: (
+        from: Telnyx::Models::email_address_input,
+        to: ::Array[Telnyx::Models::email_address_input],
+        ?attachments: ::Array[Telnyx::AttachmentRequest],
+        ?bcc: ::Array[Telnyx::Models::email_address_input],
+        ?cc: ::Array[Telnyx::Models::email_address_input],
+        ?forward_of_message_id: String?,
+        ?from_name: String,
+        ?group_id: String?,
+        ?headers: ::Hash[Symbol, String],
+        ?html_body: String,
+        ?ignore_suppression: bool,
+        ?in_reply_to_message_id: String?,
+        ?inline_css: bool,
+        ?metadata: ::Hash[Symbol, top],
+        ?reply_to: Telnyx::Models::email_address_input,
+        ?reply_to_all: bool?,
+        ?sandbox_mode: bool,
+        ?scheduled_at: Time?,
+        ?send_at: Time,
+        ?subject: String,
+        ?tags: ::Array[String],
+        ?template_id: String,
+        ?template_variables: ::Hash[Symbol, top],
+        ?text_body: String,
+        ?tracking_settings: Telnyx::TrackingSettings,
+        ?idempotency_key: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailInboxes::EmailMessageResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailMessageRetrieveResponse
+
+      def list: (
+        ?page_cursor: String,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailMessageListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def batch: (
+        messages: ::Array[Telnyx::EmailMessageBatchParams::Message],
+        ?sandbox_mode: bool,
+        ?idempotency_key: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailMessageBatchResponse
+
+      def delete_all: (
+        address: String,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def delete_schedule: (
+        String email_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailInboxes::EmailMessageResponse
+
+      def retrieve_events: (
+        String email_id,
+        ?page_cursor: String,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailMessageRetrieveEventsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type message_event =
+      {
+        occurred_at: Time,
+        type: Telnyx::Models::email_event_type,
+        payload: ::Hash[Symbol, top]
+      }
+
+    class MessageEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor occurred_at: Time
+
+      attr_accessor type: Telnyx::Models::email_event_type
+
+      attr_reader payload: ::Hash[Symbol, top]?
+
+      def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      def initialize: (
+        occurred_at: Time,
+        type: Telnyx::Models::email_event_type,
+        ?payload: ::Hash[Symbol, top]
+      ) -> void
+
+      def to_hash: -> {
+        occurred_at: Time,
+        type: Telnyx::Models::email_event_type,
+        payload: ::Hash[Symbol, top]
+      }
+    end
+  end
+end
