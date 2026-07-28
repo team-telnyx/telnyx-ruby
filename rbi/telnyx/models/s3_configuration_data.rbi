@@ -8,67 +8,55 @@ module Telnyx
           T.any(Telnyx::S3ConfigurationData, Telnyx::Internal::AnyHash)
         end
 
+      # AWS credentials access key id.
+      sig { returns(String) }
+      attr_accessor :aws_access_key_id
+
+      # AWS secret access key.
+      sig { returns(String) }
+      attr_accessor :aws_secret_access_key
+
       # Storage backend type
       sig { returns(Telnyx::S3ConfigurationData::Backend::OrSymbol) }
       attr_accessor :backend
 
-      # AWS credentials access key id.
-      sig { returns(T.nilable(String)) }
-      attr_reader :aws_access_key_id
-
-      sig { params(aws_access_key_id: String).void }
-      attr_writer :aws_access_key_id
-
-      # AWS secret access key.
-      sig { returns(T.nilable(String)) }
-      attr_reader :aws_secret_access_key
-
-      sig { params(aws_secret_access_key: String).void }
-      attr_writer :aws_secret_access_key
-
       # Name of the bucket to be used to store recording files.
-      sig { returns(T.nilable(String)) }
-      attr_reader :bucket
-
-      sig { params(bucket: String).void }
-      attr_writer :bucket
+      sig { returns(String) }
+      attr_accessor :bucket
 
       # Region where the bucket is located.
-      sig { returns(T.nilable(String)) }
-      attr_reader :region
-
-      sig { params(region: String).void }
-      attr_writer :region
+      sig { returns(String) }
+      attr_accessor :region
 
       sig do
         params(
-          backend: Telnyx::S3ConfigurationData::Backend::OrSymbol,
           aws_access_key_id: String,
           aws_secret_access_key: String,
+          backend: Telnyx::S3ConfigurationData::Backend::OrSymbol,
           bucket: String,
           region: String
         ).returns(T.attached_class)
       end
       def self.new(
+        # AWS credentials access key id.
+        aws_access_key_id:,
+        # AWS secret access key.
+        aws_secret_access_key:,
         # Storage backend type
         backend:,
-        # AWS credentials access key id.
-        aws_access_key_id: nil,
-        # AWS secret access key.
-        aws_secret_access_key: nil,
         # Name of the bucket to be used to store recording files.
-        bucket: nil,
+        bucket:,
         # Region where the bucket is located.
-        region: nil
+        region:
       )
       end
 
       sig do
         override.returns(
           {
-            backend: Telnyx::S3ConfigurationData::Backend::OrSymbol,
             aws_access_key_id: String,
             aws_secret_access_key: String,
+            backend: Telnyx::S3ConfigurationData::Backend::OrSymbol,
             bucket: String,
             region: String
           }
