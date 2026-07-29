@@ -6,21 +6,23 @@ module Telnyx
       # Create and manage agent inboxes, retrieve inbound messages and threads, and
       # reply to or forward messages.
       class Filters
-        # Replaces both sender filter lists atomically. Omitting either list clears that
-        # list. Use `POST` or `DELETE` for incremental changes.
+        # Adds entries to either the allowlist or blocklist. The operation is an
+        # idempotent set union: entries already present remain unchanged.
         sig do
           params(
             inbox_id: String,
-            allowlist: T::Array[String],
-            blocklist: T::Array[String],
+            entries: T::Array[String],
+            type:
+              Telnyx::EmailInboxes::MutateInboxFiltersRequest::Type::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::EmailInboxes::FilterCreateResponse)
         end
         def create(
           # Email inbox UUID.
           inbox_id,
-          allowlist: nil,
-          blocklist: nil,
+          entries:,
+          # The list to change.
+          type:,
           request_options: {}
         )
         end

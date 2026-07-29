@@ -55,8 +55,7 @@ module Telnyx
       )
       end
 
-      # Replaces template fields. Behaves identically to PATCH; provided for
-      # compatibility with Phoenix resource routes.
+      # Updates one or more template fields.
       sig do
         params(
           id: String,

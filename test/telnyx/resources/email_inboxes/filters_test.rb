@@ -3,10 +3,15 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::ResourceTest
-  def test_create
+  def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.email_inboxes.filters.create("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    response =
+      @telnyx.email_inboxes.filters.create(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        entries: ["@spam.example"],
+        type: :blocklist
+      )
 
     assert_pattern do
       response => Telnyx::Models::EmailInboxes::FilterCreateResponse

@@ -2,38 +2,23 @@ module Telnyx
   module Models
     module EmailInboxes
       type filter_create_params =
-        {
-          inbox_id: String,
-          allowlist: ::Array[String],
-          blocklist: ::Array[String]
-        }
-        & Telnyx::Internal::Type::request_parameters
+        { inbox_id: String } & Telnyx::Internal::Type::request_parameters
 
-      class FilterCreateParams < Telnyx::Internal::Type::BaseModel
+      class FilterCreateParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        attr_accessor inbox_id: String
+        def inbox_id: -> String
 
-        attr_reader allowlist: ::Array[String]?
-
-        def allowlist=: (::Array[String]) -> ::Array[String]
-
-        attr_reader blocklist: ::Array[String]?
-
-        def blocklist=: (::Array[String]) -> ::Array[String]
+        def inbox_id=: (String _) -> String
 
         def initialize: (
           inbox_id: String,
-          ?allowlist: ::Array[String],
-          ?blocklist: ::Array[String],
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           inbox_id: String,
-          allowlist: ::Array[String],
-          blocklist: ::Array[String],
           request_options: Telnyx::RequestOptions
         }
       end

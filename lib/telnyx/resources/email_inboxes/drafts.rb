@@ -93,13 +93,7 @@ module Telnyx
           )
         end
 
-        # Updates the supplied fields on a draft. `account_id` and `inbox_id` are
-        # server-owned and ignored if present in the body, so a draft can never be moved
-        # between accounts or inboxes.
-        #
-        # A draft that is being sent or has already been sent is immutable and returns 422
-        # — modifying it would race with delivery or rewrite the record of what was
-        # actually sent.
+        # Identical to `PUT`; both apply a partial update to the supplied fields.
         #
         # @overload update(draft_id, inbox_id:, attachments: nil, bcc: nil, cc: nil, from_email: nil, from_name: nil, headers: nil, html: nil, html_body: nil, labels: nil, metadata: nil, reply_to: nil, subject: nil, tags: nil, text: nil, text_body: nil, to: nil, request_options: {})
         #
@@ -151,7 +145,7 @@ module Telnyx
               raise ArgumentError.new("missing required path argument #{_1}")
             end
           @client.request(
-            method: :put,
+            method: :patch,
             path: ["email_inboxes/%1$s/drafts/%2$s", inbox_id, draft_id],
             body: parsed,
             model: Telnyx::EmailInboxes::EmailDraftResponse,

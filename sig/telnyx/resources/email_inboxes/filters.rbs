@@ -4,8 +4,8 @@ module Telnyx
       class Filters
         def create: (
           String inbox_id,
-          ?allowlist: ::Array[String],
-          ?blocklist: ::Array[String],
+          entries: ::Array[String],
+          type: Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::EmailInboxes::FilterCreateResponse
 

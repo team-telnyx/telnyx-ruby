@@ -61,8 +61,7 @@ module Telnyx
         )
       end
 
-      # Replaces template fields. Behaves identically to PATCH; provided for
-      # compatibility with Phoenix resource routes.
+      # Updates one or more template fields.
       #
       # @overload update(id, html_body: nil, name: nil, subject: nil, text_body: nil, variables: nil, request_options: {})
       #
@@ -86,7 +85,7 @@ module Telnyx
       def update(id, params = {})
         parsed, options = Telnyx::EmailTemplateUpdateParams.dump_request(params)
         @client.request(
-          method: :put,
+          method: :patch,
           path: ["email_templates/%1$s", id],
           body: parsed,
           model: Telnyx::EmailTemplateResponse,

@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     module EmailInboxes
-      class FilterCreateParams < Telnyx::Internal::Type::BaseModel
+      class FilterCreateParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
@@ -18,42 +18,18 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :inbox_id
 
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :allowlist
-
-        sig { params(allowlist: T::Array[String]).void }
-        attr_writer :allowlist
-
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :blocklist
-
-        sig { params(blocklist: T::Array[String]).void }
-        attr_writer :blocklist
-
         sig do
           params(
             inbox_id: String,
-            allowlist: T::Array[String],
-            blocklist: T::Array[String],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(
-          inbox_id:,
-          allowlist: nil,
-          blocklist: nil,
-          request_options: {}
-        )
+        def self.new(inbox_id:, request_options: {})
         end
 
         sig do
           override.returns(
-            {
-              inbox_id: String,
-              allowlist: T::Array[String],
-              blocklist: T::Array[String],
-              request_options: Telnyx::RequestOptions
-            }
+            { inbox_id: String, request_options: Telnyx::RequestOptions }
           )
         end
         def to_hash
