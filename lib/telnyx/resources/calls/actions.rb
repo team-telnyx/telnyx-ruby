@@ -635,6 +635,85 @@ module Telnyx
         end
 
         # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Calls::ActionPayParams} for more details.
+        #
+        # Collect payment details from the caller using DTMF and either charge or tokenize
+        # the payment method through a configured Pay connector. Pay pauses active call
+        # recordings while sensitive payment details are collected.
+        #
+        # When `payment_token` is supplied, the DTMF collection steps are skipped and the
+        # existing token is sent to the connector.
+        #
+        # **Expected Webhooks:**
+        #
+        # - `call.payment.progress`
+        # - `call.payment.completed`
+        #
+        # **Test mode card numbers:** `4111111111111111` (Visa), `5555555555554444`
+        # (Mastercard), `378282246310005` (American Express), `6011111111111117`
+        # (Discover), `3065930009020004` (Diners Club), `3566002020360505` (JCB),
+        # `6200000000000005` (UnionPay), and `6771798021000008` (Maestro). Test-mode
+        # connectors reject other card numbers before contacting the configured processor.
+        # The UnionPay and Maestro numbers are accepted for processor testing, but Pay
+        # currently does not emit a card type for them.
+        #
+        # @overload pay(call_control_id, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, voice: nil, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param amount [Float] Amount to charge. Required when `transaction_type` is `charge`.
+        #
+        # @param client_state [String] Base64-encoded state included in subsequent webhooks.
+        #
+        # @param command_id [String] Idempotency key for the command. Telnyx ignores a duplicate command with the sam
+        #
+        # @param connector_name [String] Name of the Pay connector used to process the transaction.
+        #
+        # @param currency [Symbol, Telnyx::Models::Calls::ActionPayParams::Currency] Currency used for the transaction. Pay currently supports USD only.
+        #
+        # @param description [String] Optional description forwarded with the payment transaction.
+        #
+        # @param inter_digit_timeout_millis [Integer] Time in milliseconds to wait between consecutive DTMF digits.
+        #
+        # @param language [String] Language used for payment prompts.
+        #
+        # @param max_attempts [Integer] Maximum number of attempts for each payment collection step.
+        #
+        # @param metadata [Hash{Symbol=>Object}] Metadata forwarded to the Pay connector.
+        #
+        # @param parameters [Hash{Symbol=>Object}] Additional parameters forwarded to the Pay connector.
+        #
+        # @param payment_method [Symbol, Telnyx::Models::Calls::ActionPayParams::PaymentMethod] Payment method to collect.
+        #
+        # @param payment_token [String] Existing payment token. When supplied, payment-detail collection is skipped.
+        #
+        # @param prompts [Telnyx::Models::Calls::ActionPayParams::Prompts] Custom text-to-speech prompts keyed by payment collection step.
+        #
+        # @param service_level [String] Speech synthesis service level used for payment prompts. Pay defaults to `premiu
+        #
+        # @param timeout_millis [Integer] Time in milliseconds to wait for DTMF input for each collection step.
+        #
+        # @param transaction_type [Symbol, Telnyx::Models::Calls::ActionPayParams::TransactionType] Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is absen
+        #
+        # @param voice [String] Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Calls::ActionPayResponse]
+        #
+        # @see Telnyx::Models::Calls::ActionPayParams
+        def pay(call_control_id, params = {})
+          parsed, options = Telnyx::Calls::ActionPayParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["calls/%1$s/actions/pay", call_control_id],
+            body: parsed,
+            model: Telnyx::Models::Calls::ActionPayResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionReferParams} for more details.
         #
         # Initiate a SIP Refer on a Call Control call. You can initiate a SIP Refer at any

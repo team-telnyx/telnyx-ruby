@@ -898,6 +898,99 @@ module Telnyx
         )
         end
 
+        # Collect payment details from the caller using DTMF and either charge or tokenize
+        # the payment method through a configured Pay connector. Pay pauses active call
+        # recordings while sensitive payment details are collected.
+        #
+        # When `payment_token` is supplied, the DTMF collection steps are skipped and the
+        # existing token is sent to the connector.
+        #
+        # **Expected Webhooks:**
+        #
+        # - `call.payment.progress`
+        # - `call.payment.completed`
+        #
+        # **Test mode card numbers:** `4111111111111111` (Visa), `5555555555554444`
+        # (Mastercard), `378282246310005` (American Express), `6011111111111117`
+        # (Discover), `3065930009020004` (Diners Club), `3566002020360505` (JCB),
+        # `6200000000000005` (UnionPay), and `6771798021000008` (Maestro). Test-mode
+        # connectors reject other card numbers before contacting the configured processor.
+        # The UnionPay and Maestro numbers are accepted for processor testing, but Pay
+        # currently does not emit a card type for them.
+        sig do
+          params(
+            call_control_id: String,
+            amount: Float,
+            client_state: String,
+            command_id: String,
+            connector_name: String,
+            currency: Telnyx::Calls::ActionPayParams::Currency::OrSymbol,
+            description: String,
+            inter_digit_timeout_millis: Integer,
+            language: String,
+            max_attempts: Integer,
+            metadata: T::Hash[Symbol, T.anything],
+            parameters: T::Hash[Symbol, T.anything],
+            payment_method:
+              Telnyx::Calls::ActionPayParams::PaymentMethod::OrSymbol,
+            payment_token: String,
+            prompts: Telnyx::Calls::ActionPayParams::Prompts::OrHash,
+            service_level: String,
+            timeout_millis: Integer,
+            transaction_type:
+              Telnyx::Calls::ActionPayParams::TransactionType::OrSymbol,
+            voice: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Calls::ActionPayResponse)
+        end
+        def pay(
+          # Unique identifier and token for controlling the call
+          call_control_id,
+          # Amount to charge. Required when `transaction_type` is `charge`.
+          amount: nil,
+          # Base64-encoded state included in subsequent webhooks.
+          client_state: nil,
+          # Idempotency key for the command. Telnyx ignores a duplicate command with the
+          # same `command_id` for the same `call_control_id`.
+          command_id: nil,
+          # Name of the Pay connector used to process the transaction.
+          connector_name: nil,
+          # Currency used for the transaction. Pay currently supports USD only.
+          currency: nil,
+          # Optional description forwarded with the payment transaction.
+          description: nil,
+          # Time in milliseconds to wait between consecutive DTMF digits.
+          inter_digit_timeout_millis: nil,
+          # Language used for payment prompts.
+          language: nil,
+          # Maximum number of attempts for each payment collection step.
+          max_attempts: nil,
+          # Metadata forwarded to the Pay connector.
+          metadata: nil,
+          # Additional parameters forwarded to the Pay connector.
+          parameters: nil,
+          # Payment method to collect.
+          payment_method: nil,
+          # Existing payment token. When supplied, payment-detail collection is skipped.
+          payment_token: nil,
+          # Custom text-to-speech prompts keyed by payment collection step.
+          prompts: nil,
+          # Speech synthesis service level used for payment prompts. Pay defaults to
+          # `premium`.
+          service_level: nil,
+          # Time in milliseconds to wait for DTMF input for each collection step.
+          timeout_millis: nil,
+          # Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is
+          # absent or zero and `charge` when `amount` is positive.
+          transaction_type: nil,
+          # Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
+          # `<Provider>.<Model>.<VoiceId>` format, for example `AWS.Polly.Joanna` or
+          # `Telnyx.KokoroTTS.af`.
+          voice: nil,
+          request_options: {}
+        )
+        end
+
         # Initiate a SIP Refer on a Call Control call. You can initiate a SIP Refer at any
         # point in the duration of a call.
         #

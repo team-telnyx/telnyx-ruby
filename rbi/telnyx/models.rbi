@@ -274,6 +274,12 @@ module Telnyx
   CallMachinePremiumGreetingEndedWebhookEvent =
     Telnyx::Models::CallMachinePremiumGreetingEndedWebhookEvent
 
+  CallPaymentCompletedWebhookEvent =
+    Telnyx::Models::CallPaymentCompletedWebhookEvent
+
+  CallPaymentProgressWebhookEvent =
+    Telnyx::Models::CallPaymentProgressWebhookEvent
+
   CallPlaybackEnded = Telnyx::Models::CallPlaybackEnded
 
   CallPlaybackEndedWebhookEvent = Telnyx::Models::CallPlaybackEndedWebhookEvent
