@@ -21,6 +21,7 @@ module Telnyx
         pricing: ::Hash[Symbol, String],
         recommended_for_assistants: bool,
         regions: ::Array[String],
+        service_tiers: ::Array[Telnyx::Models::ModelMetadata::service_tier],
         task: String
       }
 
@@ -75,6 +76,12 @@ module Telnyx
 
       def regions=: (::Array[String]) -> ::Array[String]
 
+      attr_reader service_tiers: ::Array[Telnyx::Models::ModelMetadata::service_tier]?
+
+      def service_tiers=: (
+        ::Array[Telnyx::Models::ModelMetadata::service_tier]
+      ) -> ::Array[Telnyx::Models::ModelMetadata::service_tier]
+
       attr_reader task: String?
 
       def task=: (String) -> String
@@ -99,6 +106,7 @@ module Telnyx
         ?pricing: ::Hash[Symbol, String],
         ?recommended_for_assistants: bool,
         ?regions: ::Array[String],
+        ?service_tiers: ::Array[Telnyx::Models::ModelMetadata::service_tier],
         ?task: String
       ) -> void
 
@@ -122,6 +130,7 @@ module Telnyx
         pricing: ::Hash[Symbol, String],
         recommended_for_assistants: bool,
         regions: ::Array[String],
+        service_tiers: ::Array[Telnyx::Models::ModelMetadata::service_tier],
         task: String
       }
 
@@ -136,6 +145,18 @@ module Telnyx
         UNLISTED: :unlisted
 
         def self?.values: -> ::Array[Telnyx::Models::ModelMetadata::tier]
+      end
+
+      type service_tier = :default | :priority | :flex
+
+      module ServiceTier
+        extend Telnyx::Internal::Type::Enum
+
+        DEFAULT: :default
+        PRIORITY: :priority
+        FLEX: :flex
+
+        def self?.values: -> ::Array[Telnyx::Models::ModelMetadata::service_tier]
       end
     end
   end

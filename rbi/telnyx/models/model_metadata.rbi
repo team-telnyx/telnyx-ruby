@@ -118,6 +118,23 @@ module Telnyx
       sig { params(regions: T::Array[String]).void }
       attr_writer :regions
 
+      # Service tiers supported by this Telnyx-hosted model. Use one of these values as
+      # `service_tier` in Chat Completions or Responses requests. This field is omitted
+      # for externally hosted models.
+      sig do
+        returns(
+          T.nilable(T::Array[Telnyx::ModelMetadata::ServiceTier::TaggedSymbol])
+        )
+      end
+      attr_reader :service_tiers
+
+      sig do
+        params(
+          service_tiers: T::Array[Telnyx::ModelMetadata::ServiceTier::OrSymbol]
+        ).void
+      end
+      attr_writer :service_tiers
+
       # Primary task the model is intended for, e.g. `text-generation`,
       # `audio-text-to-text`, `feature-extraction` (embeddings).
       sig { returns(T.nilable(String)) }
@@ -152,6 +169,7 @@ module Telnyx
           pricing: T::Hash[Symbol, String],
           recommended_for_assistants: T::Boolean,
           regions: T::Array[String],
+          service_tiers: T::Array[Telnyx::ModelMetadata::ServiceTier::OrSymbol],
           task: String
         ).returns(T.attached_class)
       end
@@ -212,6 +230,10 @@ module Telnyx
         # Public region names where the model is currently deployed (e.g. `us-central-1`,
         # `eu-central-1`).
         regions: nil,
+        # Service tiers supported by this Telnyx-hosted model. Use one of these values as
+        # `service_tier` in Chat Completions or Responses requests. This field is omitted
+        # for externally hosted models.
+        service_tiers: nil,
         # Primary task the model is intended for, e.g. `text-generation`,
         # `audio-text-to-text`, `feature-extraction` (embeddings).
         task: nil
@@ -240,6 +262,8 @@ module Telnyx
             pricing: T::Hash[Symbol, String],
             recommended_for_assistants: T::Boolean,
             regions: T::Array[String],
+            service_tiers:
+              T::Array[Telnyx::ModelMetadata::ServiceTier::TaggedSymbol],
             task: String
           }
         )
@@ -263,6 +287,28 @@ module Telnyx
 
         sig do
           override.returns(T::Array[Telnyx::ModelMetadata::Tier::TaggedSymbol])
+        end
+        def self.values
+        end
+      end
+
+      module ServiceTier
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Telnyx::ModelMetadata::ServiceTier) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        DEFAULT =
+          T.let(:default, Telnyx::ModelMetadata::ServiceTier::TaggedSymbol)
+        PRIORITY =
+          T.let(:priority, Telnyx::ModelMetadata::ServiceTier::TaggedSymbol)
+        FLEX = T.let(:flex, Telnyx::ModelMetadata::ServiceTier::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::ModelMetadata::ServiceTier::TaggedSymbol]
+          )
         end
         def self.values
         end

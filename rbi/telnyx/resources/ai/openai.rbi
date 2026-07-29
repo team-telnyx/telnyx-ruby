@@ -45,6 +45,7 @@ module Telnyx
             input: T::Hash[Symbol, T.anything],
             instructions: String,
             model: String,
+            service_tier: String,
             stream: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T::Hash[Symbol, T.anything])
@@ -64,6 +65,10 @@ module Telnyx
           # Model identifier to use for the response, for example `zai-org/GLM-5.1-FP8` or
           # another model available from the Telnyx OpenAI-compatible models endpoint.
           model: nil,
+          # The service tier to use for this request. Supported values vary by model; use
+          # `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
+          # omitted, Telnyx-hosted models use `default`.
+          service_tier: nil,
           # Set to `true` to stream Server-Sent Events, matching OpenAI's Responses
           # streaming format.
           stream: nil,

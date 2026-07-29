@@ -40,7 +40,7 @@ module Telnyx
           #
           # @param metadata [Hash{Symbol=>Object}] An object describing metadata about the request.
           #
-          # @param service_tier [String] Service tier for the request.
+          # @param service_tier [String] The service tier to use for this request. Supported values vary by model; use th
           #
           # @param stop_sequences [Array<String>] Custom sequences that will cause the model to stop generating.
           #

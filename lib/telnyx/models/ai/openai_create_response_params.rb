@@ -38,6 +38,14 @@ module Telnyx
         #   @return [String, nil]
         optional :model, String
 
+        # @!attribute service_tier
+        #   The service tier to use for this request. Supported values vary by model; use
+        #   `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
+        #   omitted, Telnyx-hosted models use `default`.
+        #
+        #   @return [String, nil]
+        optional :service_tier, String
+
         # @!attribute stream
         #   Set to `true` to stream Server-Sent Events, matching OpenAI's Responses
         #   streaming format.
@@ -45,7 +53,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :stream, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(conversation: nil, input: nil, instructions: nil, model: nil, stream: nil, request_options: {})
+        # @!method initialize(conversation: nil, input: nil, instructions: nil, model: nil, service_tier: nil, stream: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::OpenAICreateResponseParams} for more details.
         #
@@ -56,6 +64,8 @@ module Telnyx
         #   @param instructions [String] Optional system/developer instructions for the model. When used with a persisted
         #
         #   @param model [String] Model identifier to use for the response, for example `zai-org/GLM-5.1-FP8` or a
+        #
+        #   @param service_tier [String] The service tier to use for this request. Supported values vary by model; use `G
         #
         #   @param stream [Boolean] Set to `true` to stream Server-Sent Events, matching OpenAI's Responses streamin
         #

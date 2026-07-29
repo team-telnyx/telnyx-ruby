@@ -71,7 +71,9 @@ module Telnyx
           optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
           # @!attribute service_tier
-          #   Service tier for the request.
+          #   The service tier to use for this request. Supported values vary by model; use
+          #   the Telnyx models endpoint and inspect the model's `service_tiers` field. If
+          #   omitted, Telnyx-hosted models use `default`.
           #
           #   @return [String, nil]
           optional :service_tier, String
@@ -162,7 +164,7 @@ module Telnyx
           #
           #   @param metadata [Hash{Symbol=>Object}] An object describing metadata about the request.
           #
-          #   @param service_tier [String] Service tier for the request.
+          #   @param service_tier [String] The service tier to use for this request. Supported values vary by model; use th
           #
           #   @param stop_sequences [Array<String>] Custom sequences that will cause the model to stop generating.
           #

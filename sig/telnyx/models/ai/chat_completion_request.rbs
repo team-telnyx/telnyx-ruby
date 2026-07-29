@@ -21,6 +21,7 @@ module Telnyx
           presence_penalty: Float,
           response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           seed: Integer,
+          service_tier: String,
           stop: Telnyx::Models::AI::ChatCompletionRequest::stop,
           stream: bool,
           temperature: Float,
@@ -104,6 +105,10 @@ module Telnyx
 
         def seed=: (Integer) -> Integer
 
+        attr_reader service_tier: String?
+
+        def service_tier=: (String) -> String
+
         attr_reader stop: Telnyx::Models::AI::ChatCompletionRequest::stop?
 
         def stop=: (
@@ -161,6 +166,7 @@ module Telnyx
           ?presence_penalty: Float,
           ?response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           ?seed: Integer,
+          ?service_tier: String,
           ?stop: Telnyx::Models::AI::ChatCompletionRequest::stop,
           ?stream: bool,
           ?temperature: Float,
@@ -190,6 +196,7 @@ module Telnyx
           presence_penalty: Float,
           response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           seed: Integer,
+          service_tier: String,
           stop: Telnyx::Models::AI::ChatCompletionRequest::stop,
           stream: bool,
           temperature: Float,
