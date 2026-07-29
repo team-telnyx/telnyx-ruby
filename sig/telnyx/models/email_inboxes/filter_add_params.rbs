@@ -1,10 +1,10 @@
 module Telnyx
   module Models
     module EmailInboxes
-      type filter_create_params =
+      type filter_add_params =
         { inbox_id: String } & Telnyx::Internal::Type::request_parameters
 
-      class FilterCreateParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
+      class FilterAddParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 

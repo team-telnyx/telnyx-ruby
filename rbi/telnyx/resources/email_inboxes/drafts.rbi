@@ -86,7 +86,13 @@ module Telnyx
         )
         end
 
-        # Identical to `PUT`; both apply a partial update to the supplied fields.
+        # Updates the supplied fields on a draft. `account_id` and `inbox_id` are
+        # server-owned and ignored if present in the body, so a draft can never be moved
+        # between accounts or inboxes.
+        #
+        # A draft that is being sent or has already been sent is immutable and returns 422
+        # — modifying it would race with delivery or rewrite the record of what was
+        # actually sent.
         sig do
           params(
             draft_id: String,
@@ -199,6 +205,80 @@ module Telnyx
           draft_id,
           # Email inbox UUID.
           inbox_id:,
+          request_options: {}
+        )
+        end
+
+        # Identical to `PUT`; both apply a partial update to the supplied fields.
+        sig do
+          params(
+            draft_id: String,
+            inbox_id: String,
+            attachments: T::Array[T.anything],
+            bcc:
+              T::Array[
+                T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
+              ],
+            cc:
+              T::Array[
+                T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
+              ],
+            from_email: String,
+            from_name: String,
+            headers: T::Hash[Symbol, String],
+            html: String,
+            html_body: String,
+            labels: T::Array[String],
+            metadata: T.anything,
+            reply_to: String,
+            subject: String,
+            tags: T::Array[String],
+            text: String,
+            text_body: String,
+            to:
+              T::Array[
+                T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
+              ],
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::EmailInboxes::EmailDraftResponse)
+        end
+        def patch(
+          # Path param: Email draft UUID.
+          draft_id,
+          # Path param: Email inbox UUID.
+          inbox_id:,
+          # Body param
+          attachments: nil,
+          # Body param
+          bcc: nil,
+          # Body param
+          cc: nil,
+          # Body param
+          from_email: nil,
+          # Body param
+          from_name: nil,
+          # Body param
+          headers: nil,
+          # Body param: Alias for `html_body`, matching the send endpoint.
+          html: nil,
+          # Body param
+          html_body: nil,
+          # Body param
+          labels: nil,
+          # Body param
+          metadata: nil,
+          # Body param
+          reply_to: nil,
+          # Body param
+          subject: nil,
+          # Body param
+          tags: nil,
+          # Body param: Alias for `text_body`, matching the send endpoint.
+          text: nil,
+          # Body param
+          text_body: nil,
+          # Body param
+          to: nil,
           request_options: {}
         )
         end

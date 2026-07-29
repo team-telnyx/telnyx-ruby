@@ -93,7 +93,13 @@ module Telnyx
           )
         end
 
-        # Identical to `PUT`; both apply a partial update to the supplied fields.
+        # Updates the supplied fields on a draft. `account_id` and `inbox_id` are
+        # server-owned and ignored if present in the body, so a draft can never be moved
+        # between accounts or inboxes.
+        #
+        # A draft that is being sent or has already been sent is immutable and returns 422
+        # — modifying it would race with delivery or rewrite the record of what was
+        # actually sent.
         #
         # @overload update(draft_id, inbox_id:, attachments: nil, bcc: nil, cc: nil, from_email: nil, from_name: nil, headers: nil, html: nil, html_body: nil, labels: nil, metadata: nil, reply_to: nil, subject: nil, tags: nil, text: nil, text_body: nil, to: nil, request_options: {})
         #
@@ -145,7 +151,7 @@ module Telnyx
               raise ArgumentError.new("missing required path argument #{_1}")
             end
           @client.request(
-            method: :patch,
+            method: :put,
             path: ["email_inboxes/%1$s/drafts/%2$s", inbox_id, draft_id],
             body: parsed,
             model: Telnyx::EmailInboxes::EmailDraftResponse,
@@ -211,6 +217,66 @@ module Telnyx
             method: :delete,
             path: ["email_inboxes/%1$s/drafts/%2$s", inbox_id, draft_id],
             model: NilClass,
+            options: options
+          )
+        end
+
+        # Identical to `PUT`; both apply a partial update to the supplied fields.
+        #
+        # @overload patch(draft_id, inbox_id:, attachments: nil, bcc: nil, cc: nil, from_email: nil, from_name: nil, headers: nil, html: nil, html_body: nil, labels: nil, metadata: nil, reply_to: nil, subject: nil, tags: nil, text: nil, text_body: nil, to: nil, request_options: {})
+        #
+        # @param draft_id [String] Path param: Email draft UUID.
+        #
+        # @param inbox_id [String] Path param: Email inbox UUID.
+        #
+        # @param attachments [Array<Object>] Body param
+        #
+        # @param bcc [Array<String, Telnyx::Models::EmailInboxes::EmailAddress>] Body param
+        #
+        # @param cc [Array<String, Telnyx::Models::EmailInboxes::EmailAddress>] Body param
+        #
+        # @param from_email [String] Body param
+        #
+        # @param from_name [String] Body param
+        #
+        # @param headers [Hash{Symbol=>String}] Body param
+        #
+        # @param html [String] Body param: Alias for `html_body`, matching the send endpoint.
+        #
+        # @param html_body [String] Body param
+        #
+        # @param labels [Array<String>] Body param
+        #
+        # @param metadata [Object] Body param
+        #
+        # @param reply_to [String] Body param
+        #
+        # @param subject [String] Body param
+        #
+        # @param tags [Array<String>] Body param
+        #
+        # @param text [String] Body param: Alias for `text_body`, matching the send endpoint.
+        #
+        # @param text_body [String] Body param
+        #
+        # @param to [Array<String, Telnyx::Models::EmailInboxes::EmailAddress>] Body param
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::EmailInboxes::EmailDraftResponse]
+        #
+        # @see Telnyx::Models::EmailInboxes::DraftPatchParams
+        def patch(draft_id, params)
+          parsed, options = Telnyx::EmailInboxes::DraftPatchParams.dump_request(params)
+          inbox_id =
+            parsed.delete(:inbox_id) do
+              raise ArgumentError.new("missing required path argument #{_1}")
+            end
+          @client.request(
+            method: :patch,
+            path: ["email_inboxes/%1$s/drafts/%2$s", inbox_id, draft_id],
+            body: parsed,
+            model: Telnyx::EmailInboxes::EmailDraftResponse,
             options: options
           )
         end

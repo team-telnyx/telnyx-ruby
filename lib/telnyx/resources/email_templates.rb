@@ -169,6 +169,39 @@ module Telnyx
         )
       end
 
+      # Replaces template fields. Behaves identically to PATCH; provided for
+      # compatibility with Phoenix resource routes.
+      #
+      # @overload replace(id, html_body: nil, name: nil, subject: nil, text_body: nil, variables: nil, request_options: {})
+      #
+      # @param id [String] Email template UUID.
+      #
+      # @param html_body [String, nil] Liquid template HTML body.
+      #
+      # @param name [String]
+      #
+      # @param subject [String, nil] Liquid template subject.
+      #
+      # @param text_body [String, nil] Liquid template text body.
+      #
+      # @param variables [Array<String>]
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::EmailTemplateResponse]
+      #
+      # @see Telnyx::Models::EmailTemplateReplaceParams
+      def replace(id, params = {})
+        parsed, options = Telnyx::EmailTemplateReplaceParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: ["email_templates/%1$s", id],
+          body: parsed,
+          model: Telnyx::EmailTemplateResponse,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]

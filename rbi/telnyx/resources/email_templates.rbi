@@ -130,6 +130,34 @@ module Telnyx
       )
       end
 
+      # Replaces template fields. Behaves identically to PATCH; provided for
+      # compatibility with Phoenix resource routes.
+      sig do
+        params(
+          id: String,
+          html_body: T.nilable(String),
+          name: String,
+          subject: T.nilable(String),
+          text_body: T.nilable(String),
+          variables: T::Array[String],
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::EmailTemplateResponse)
+      end
+      def replace(
+        # Email template UUID.
+        id,
+        # Liquid template HTML body.
+        html_body: nil,
+        name: nil,
+        # Liquid template subject.
+        subject: nil,
+        # Liquid template text body.
+        text_body: nil,
+        variables: nil,
+        request_options: {}
+      )
+      end
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)

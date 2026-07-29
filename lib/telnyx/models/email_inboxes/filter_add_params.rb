@@ -3,8 +3,8 @@
 module Telnyx
   module Models
     module EmailInboxes
-      # @see Telnyx::Resources::EmailInboxes::Filters#create
-      class FilterCreateParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
+      # @see Telnyx::Resources::EmailInboxes::Filters#add
+      class FilterAddParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 

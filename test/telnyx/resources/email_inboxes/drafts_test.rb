@@ -90,6 +90,26 @@ class Telnyx::Test::Resources::EmailInboxes::DraftsTest < Telnyx::Test::Resource
     end
   end
 
+  def test_patch_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.email_inboxes.drafts.patch(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        inbox_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+      )
+
+    assert_pattern do
+      response => Telnyx::EmailInboxes::EmailDraftResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::EmailInboxes::EmailDraft
+      }
+    end
+  end
+
   def test_send__required_params
     skip("Mock server tests are disabled")
 

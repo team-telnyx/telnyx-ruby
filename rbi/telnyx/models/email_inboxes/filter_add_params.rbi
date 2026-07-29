@@ -3,14 +3,14 @@
 module Telnyx
   module Models
     module EmailInboxes
-      class FilterCreateParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
+      class FilterAddParams < Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::EmailInboxes::FilterCreateParams,
+              Telnyx::EmailInboxes::FilterAddParams,
               Telnyx::Internal::AnyHash
             )
           end

@@ -736,6 +736,8 @@ module Telnyx
 
   EmailTemplateRenderParams = Telnyx::Models::EmailTemplateRenderParams
 
+  EmailTemplateReplaceParams = Telnyx::Models::EmailTemplateReplaceParams
+
   EmailTemplateResponse = Telnyx::Models::EmailTemplateResponse
 
   EmailTemplateRetrieveParams = Telnyx::Models::EmailTemplateRetrieveParams

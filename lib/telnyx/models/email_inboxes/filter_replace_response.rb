@@ -3,17 +3,17 @@
 module Telnyx
   module Models
     module EmailInboxes
-      # @see Telnyx::Resources::EmailInboxes::Filters#create
-      class FilterCreateResponse < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::EmailInboxes::Filters#replace
+      class FilterReplaceResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Telnyx::Models::EmailInboxes::FilterCreateResponse::Data]
-        required :data, -> { Telnyx::Models::EmailInboxes::FilterCreateResponse::Data }
+        #   @return [Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data]
+        required :data, -> { Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data }
 
         # @!method initialize(data:)
-        #   @param data [Telnyx::Models::EmailInboxes::FilterCreateResponse::Data]
+        #   @param data [Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data]
 
-        # @see Telnyx::Models::EmailInboxes::FilterCreateResponse#data
+        # @see Telnyx::Models::EmailInboxes::FilterReplaceResponse#data
         class Data < Telnyx::Internal::Type::BaseModel
           # @!attribute allowlist
           #
@@ -27,15 +27,15 @@ module Telnyx
 
           # @!attribute record_type
           #
-          #   @return [Symbol, Telnyx::Models::EmailInboxes::FilterCreateResponse::Data::RecordType]
-          required :record_type, enum: -> { Telnyx::Models::EmailInboxes::FilterCreateResponse::Data::RecordType }
+          #   @return [Symbol, Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data::RecordType]
+          required :record_type, enum: -> { Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data::RecordType }
 
           # @!method initialize(allowlist:, blocklist:, record_type:)
           #   @param allowlist [Array<String>]
           #   @param blocklist [Array<String>]
-          #   @param record_type [Symbol, Telnyx::Models::EmailInboxes::FilterCreateResponse::Data::RecordType]
+          #   @param record_type [Symbol, Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data::RecordType]
 
-          # @see Telnyx::Models::EmailInboxes::FilterCreateResponse::Data#record_type
+          # @see Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data#record_type
           module RecordType
             extend Telnyx::Internal::Type::Enum
 

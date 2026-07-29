@@ -3,27 +3,6 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::ResourceTest
-  def test_create_required_params
-    skip("Mock server tests are disabled")
-
-    response =
-      @telnyx.email_inboxes.filters.create(
-        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        entries: ["@spam.example"],
-        type: :blocklist
-      )
-
-    assert_pattern do
-      response => Telnyx::Models::EmailInboxes::FilterCreateResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::Models::EmailInboxes::FilterCreateResponse::Data
-      }
-    end
-  end
-
   def test_list
     skip("Mock server tests are disabled")
 
@@ -36,6 +15,27 @@ class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::Resourc
     assert_pattern do
       response => {
         data: Telnyx::Models::EmailInboxes::FilterListResponse::Data
+      }
+    end
+  end
+
+  def test_add_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.email_inboxes.filters.add(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        entries: ["@spam.example"],
+        type: :blocklist
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::EmailInboxes::FilterAddResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::EmailInboxes::FilterAddResponse::Data
       }
     end
   end
@@ -57,6 +57,22 @@ class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::Resourc
     assert_pattern do
       response => {
         data: Telnyx::Models::EmailInboxes::FilterDeleteAllResponse::Data
+      }
+    end
+  end
+
+  def test_replace
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.email_inboxes.filters.replace("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::EmailInboxes::FilterReplaceResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data
       }
     end
   end

@@ -93,4 +93,20 @@ class Telnyx::Test::Resources::EmailTemplatesTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_replace
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.email_templates.replace("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::EmailTemplateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::EmailTemplate
+      }
+    end
+  end
 end

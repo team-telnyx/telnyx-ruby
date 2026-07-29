@@ -40,6 +40,16 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::EmailTemplateRenderResponse
 
+      def replace: (
+        String id,
+        ?html_body: String?,
+        ?name: String,
+        ?subject: String?,
+        ?text_body: String?,
+        ?variables: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailTemplateResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end
