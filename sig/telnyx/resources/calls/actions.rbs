@@ -7,6 +7,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],
+          ?trigger_response: bool,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse
 

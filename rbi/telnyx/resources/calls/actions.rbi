@@ -21,6 +21,7 @@ module Telnyx
                   Telnyx::Calls::DeveloperMessage::OrHash
                 )
               ],
+            trigger_response: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse)
         end
@@ -35,6 +36,10 @@ module Telnyx
           command_id: nil,
           # The messages to add to the conversation.
           messages: nil,
+          # When `true`, the injected messages immediately trigger an assistant
+          # response/turn instead of waiting for the next natural turn or idle timeout. This
+          # may interrupt a user who is still speaking.
+          trigger_response: nil,
           request_options: {}
         )
         end

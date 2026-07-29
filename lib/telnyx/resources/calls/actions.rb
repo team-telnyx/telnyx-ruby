@@ -10,7 +10,7 @@ module Telnyx
         #
         # Add messages to the conversation started by an AI assistant on the call.
         #
-        # @overload add_ai_assistant_messages(call_control_id, client_state: nil, command_id: nil, messages: nil, request_options: {})
+        # @overload add_ai_assistant_messages(call_control_id, client_state: nil, command_id: nil, messages: nil, trigger_response: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -19,6 +19,8 @@ module Telnyx
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         # @param messages [Array<Telnyx::Models::Calls::UserMessage, Telnyx::Models::Calls::AssistantMessage, Telnyx::Models::Calls::ToolMessage, Telnyx::Models::Calls::SystemMessage, Telnyx::Models::Calls::DeveloperMessage>] The messages to add to the conversation.
+        #
+        # @param trigger_response [Boolean] When `true`, the injected messages immediately trigger an assistant response/tur
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
