@@ -251,6 +251,9 @@ module Telnyx
       module Portouts
       end
 
+      module Pricing
+      end
+
       module Profile
       end
 

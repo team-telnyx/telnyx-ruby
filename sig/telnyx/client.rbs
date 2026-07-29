@@ -374,6 +374,8 @@ module Telnyx
 
     attr_reader email_validations: Telnyx::Resources::EmailValidations
 
+    attr_reader pricing: Telnyx::Resources::Pricing
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

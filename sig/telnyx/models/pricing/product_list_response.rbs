@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module Pricing
+      type product_list_response =
+        { description: String, name: String, slug: String }
+
+      class ProductListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor description: String
+
+        attr_accessor name: String
+
+        attr_accessor slug: String
+
+        def initialize: (
+          description: String,
+          name: String,
+          slug: String
+        ) -> void
+
+        def to_hash: -> { description: String, name: String, slug: String }
+      end
+    end
+  end
+end

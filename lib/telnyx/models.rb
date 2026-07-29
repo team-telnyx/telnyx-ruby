@@ -1487,6 +1487,8 @@ module Telnyx
 
   PortoutUpdateStatusParams = Telnyx::Models::PortoutUpdateStatusParams
 
+  Pricing = Telnyx::Models::Pricing
+
   PrivateWirelessGateway = Telnyx::Models::PrivateWirelessGateway
 
   PrivateWirelessGatewayCreateParams = Telnyx::Models::PrivateWirelessGatewayCreateParams

@@ -723,6 +723,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::EmailValidations) }
     attr_reader :email_validations
 
+    sig { returns(Telnyx::Resources::Pricing) }
+    attr_reader :pricing
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

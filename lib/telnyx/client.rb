@@ -728,6 +728,9 @@ module Telnyx
     # @return [Telnyx::Resources::EmailValidations]
     attr_reader :email_validations
 
+    # @return [Telnyx::Resources::Pricing]
+    attr_reader :pricing
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1016,6 +1019,7 @@ module Telnyx
       @email_threads = Telnyx::Resources::EmailThreads.new(client: self)
       @email_unsubscribe_groups = Telnyx::Resources::EmailUnsubscribeGroups.new(client: self)
       @email_validations = Telnyx::Resources::EmailValidations.new(client: self)
+      @pricing = Telnyx::Resources::Pricing.new(client: self)
     end
   end
 end
