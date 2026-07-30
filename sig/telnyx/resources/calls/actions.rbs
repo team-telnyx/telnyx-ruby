@@ -286,8 +286,6 @@ module Telnyx
           ?participants: ::Array[Telnyx::Calls::AIAssistantJoinParticipant],
           ?send_message_history_updates: bool,
           ?transcription: Telnyx::Calls::TranscriptionConfig,
-          ?voice: String,
-          ?voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionStartAIAssistantResponse
 

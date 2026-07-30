@@ -971,7 +971,7 @@ module Telnyx
         # - `call.conversation.ended`
         # - `call.conversation_insights.generated`
         #
-        # @overload start_ai_assistant(call_control_id, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @overload start_ai_assistant(call_control_id, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -992,10 +992,6 @@ module Telnyx
         # @param send_message_history_updates [Boolean] When `true`, a webhook is sent each time the conversation message history is upd
         #
         # @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
-        #
-        # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
-        #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -169,6 +169,12 @@ module Telnyx
       end
       attr_writer :tools
 
+      sig { returns(T.nilable(Telnyx::AI::VoiceSettings)) }
+      attr_reader :voice_settings
+
+      sig { params(voice_settings: Telnyx::AI::VoiceSettings::OrHash).void }
+      attr_writer :voice_settings
+
       # AI Assistant configuration. All fields except `id` are optional — the
       # assistant's stored configuration will be used as fallback for any omitted
       # fields.
@@ -200,7 +206,8 @@ module Telnyx
                 Telnyx::AI::TransferTool::OrHash,
                 Telnyx::CallControlRetrievalTool::OrHash
               )
-            ]
+            ],
+          voice_settings: Telnyx::AI::VoiceSettings::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -248,7 +255,8 @@ module Telnyx
         openai_api_key_ref: nil,
         # Inline tool definitions available to the assistant (webhook, retrieval,
         # transfer, hangup, etc.). Overrides the assistant's stored tools if provided.
-        tools: nil
+        tools: nil,
+        voice_settings: nil
       )
       end
 
@@ -281,7 +289,8 @@ module Telnyx
                   Telnyx::AI::TransferTool,
                   Telnyx::CallControlRetrievalTool
                 )
-              ]
+              ],
+            voice_settings: Telnyx::AI::VoiceSettings
           }
         )
       end

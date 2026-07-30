@@ -12,9 +12,7 @@ module Telnyx
           message_history: ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history],
           participants: ::Array[Telnyx::Calls::AIAssistantJoinParticipant],
           send_message_history_updates: bool,
-          transcription: Telnyx::Calls::TranscriptionConfig,
-          voice: String,
-          voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
+          transcription: Telnyx::Calls::TranscriptionConfig
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -70,16 +68,6 @@ module Telnyx
           Telnyx::Calls::TranscriptionConfig
         ) -> Telnyx::Calls::TranscriptionConfig
 
-        attr_reader voice: String?
-
-        def voice=: (String) -> String
-
-        attr_reader voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings?
-
-        def voice_settings=: (
-          Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
-        ) -> Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings
-
         def initialize: (
           call_control_id: String,
           ?assistant: Telnyx::CallAssistantRequest,
@@ -91,8 +79,6 @@ module Telnyx
           ?participants: ::Array[Telnyx::Calls::AIAssistantJoinParticipant],
           ?send_message_history_updates: bool,
           ?transcription: Telnyx::Calls::TranscriptionConfig,
-          ?voice: String,
-          ?voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -107,8 +93,6 @@ module Telnyx
           participants: ::Array[Telnyx::Calls::AIAssistantJoinParticipant],
           send_message_history_updates: bool,
           transcription: Telnyx::Calls::TranscriptionConfig,
-          voice: String,
-          voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
           request_options: Telnyx::RequestOptions
         }
 
@@ -123,21 +107,6 @@ module Telnyx
           extend Telnyx::Internal::Type::Union
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::message_history]
-        end
-
-        type voice_settings =
-          Telnyx::Calls::ElevenLabsVoiceSettings
-          | Telnyx::Calls::TelnyxVoiceSettings
-          | Telnyx::Calls::AwsVoiceSettings
-          | Telnyx::AzureVoiceSettings
-          | Telnyx::RimeVoiceSettings
-          | Telnyx::ResembleVoiceSettings
-          | Telnyx::XaiVoiceSettings
-
-        module VoiceSettings
-          extend Telnyx::Internal::Type::Union
-
-          def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings]
         end
       end
     end

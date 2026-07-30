@@ -1327,17 +1327,6 @@ module Telnyx
               T::Array[Telnyx::Calls::AIAssistantJoinParticipant::OrHash],
             send_message_history_updates: T::Boolean,
             transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
-            voice: String,
-            voice_settings:
-              T.any(
-                Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
-                Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
-              ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
         end
@@ -1373,43 +1362,6 @@ module Telnyx
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
           # ignore this field.
           transcription: nil,
-          # The voice to be used by the voice assistant. Currently we support ElevenLabs,
-          # Telnyx and AWS voices.
-          #
-          # **Supported Providers:**
-          #
-          # - **AWS:** Use `AWS.Polly.<VoiceId>` (e.g., `AWS.Polly.Joanna`). For neural
-          #   voices, which provide more realistic, human-like speech, append `-Neural` to
-          #   the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
-          #   [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
-          #   for compatibility.
-          # - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
-          #   Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
-          #   Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
-          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
-          # - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
-          #   `ElevenLabs.BaseModel.John`). The `ModelId` part is optional. To use
-          #   ElevenLabs, you must provide your ElevenLabs API key as an integration secret
-          #   under `"voice_settings": {"api_key_ref": "<secret_id>"}`. See
-          #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
-          #   for details. Check
-          #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
-          # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
-          # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
-          #   `Inworld.Max.Oliver`, `Inworld.TTS2.Loretta`). Supported models: `Mini`,
-          #   `Max`, `TTS2`.
-          # - **Fish Audio:** Use `FishAudio.<ModelId>.<VoiceId>` (e.g.,
-          #   `FishAudio.s2.1-pro.<reference_id>`). Supported models: `s2.1-pro`, `s2-pro`,
-          #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
-          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
-          #   `ara`, `rex`, `sal`, `leo`.
-          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
-          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
-          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
-          #   `ModelId` segment.
-          voice: nil,
-          # The settings associated with the voice selected
-          voice_settings: nil,
           request_options: {}
         )
         end
