@@ -259,6 +259,11 @@ module Telnyx
             :Humain,
             Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
           )
+        RESON8 =
+          T.let(
+            :Reson8,
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
+          )
 
         sig do
           override.returns(
@@ -372,6 +377,11 @@ module Telnyx
         HUMAIN_REALTIME =
           T.let(
             :"humain/realtime",
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
+          )
+        RESON8_TURNS =
+          T.let(
+            :"reson8/turns",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
 

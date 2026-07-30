@@ -43,6 +43,7 @@ module Telnyx
         | :soniox
         | :parakeet
         | :humain
+        | :reson8
         | :azure
         | :openai
         | :google
@@ -58,6 +59,7 @@ module Telnyx
         SONIOX: :soniox
         PARAKEET: :parakeet
         HUMAIN: :humain
+        RESON8: :reson8
         AZURE: :azure
         OPENAI: :openai
         GOOGLE: :google

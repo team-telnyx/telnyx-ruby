@@ -132,6 +132,11 @@ module Telnyx
             :humain,
             Telnyx::SpeechToTextListProvidersParams::Provider::TaggedSymbol
           )
+        RESON8 =
+          T.let(
+            :reson8,
+            Telnyx::SpeechToTextListProvidersParams::Provider::TaggedSymbol
+          )
         AZURE =
           T.let(
             :azure,

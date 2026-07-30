@@ -1980,6 +1980,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,

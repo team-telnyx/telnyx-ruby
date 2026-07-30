@@ -27,7 +27,9 @@ module Telnyx
         # values are `ar`, `en`, `codeswitch` (Arabic/English code-switching), and `auto`
         # (resolves server-side to code-switching). Unlike other models, `humain/realtime`
         # does not fall back to `auto` when `language` is omitted — omitting it applies
-        # `en` instead.
+        # `en` instead. For `reson8/turns`, supported values are `auto` (or unset) for
+        # automatic language detection, and the language codes `nl`, `en`, `fr`, `fy`,
+        # `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -50,6 +52,8 @@ module Telnyx
         #   language detection.
         # - `humain/realtime` is a streaming model with native Arabic and Arabic/English
         #   code-switching support.
+        # - `reson8/turns` is a turn-based streaming model covering 10 European languages
+        #   with automatic language detection.
         sig do
           returns(T.nilable(Telnyx::AI::TranscriptionSettings::Model::OrSymbol))
         end
@@ -99,7 +103,9 @@ module Telnyx
           # values are `ar`, `en`, `codeswitch` (Arabic/English code-switching), and `auto`
           # (resolves server-side to code-switching). Unlike other models, `humain/realtime`
           # does not fall back to `auto` when `language` is omitted — omitting it applies
-          # `en` instead.
+          # `en` instead. For `reson8/turns`, supported values are `auto` (or unset) for
+          # automatic language detection, and the language codes `nl`, `en`, `fr`, `fy`,
+          # `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language.
           language: nil,
           # The speech to text model to be used by the voice assistant. All Deepgram models
           # are run on-premise.
@@ -117,6 +123,8 @@ module Telnyx
           #   language detection.
           # - `humain/realtime` is a streaming model with native Arabic and Arabic/English
           #   code-switching support.
+          # - `reson8/turns` is a turn-based streaming model covering 10 European languages
+          #   with automatic language detection.
           model: nil,
           # Region on third party cloud providers (currently Azure) if using one of their
           # models. Some regions require `api_key_ref`.
@@ -155,6 +163,8 @@ module Telnyx
         #   language detection.
         # - `humain/realtime` is a streaming model with native Arabic and Arabic/English
         #   code-switching support.
+        # - `reson8/turns` is a turn-based streaming model covering 10 European languages
+        #   with automatic language detection.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -207,6 +217,11 @@ module Telnyx
           HUMAIN_REALTIME =
             T.let(
               :"humain/realtime",
+              Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
+            )
+          RESON8_TURNS =
+            T.let(
+              :"reson8/turns",
               Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
             )
           DISTIL_WHISPER_DISTIL_LARGE_V2 =
