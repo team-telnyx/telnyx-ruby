@@ -16,7 +16,11 @@ module Telnyx
         # @!attribute business_references
         #   Exactly two business references. Array order determines each one's slot: the
         #   first entry becomes slot 1 and the second becomes slot 2. Those slots are what
-        #   you pass when updating a single reference later.
+        #   you pass when updating a single reference later. Each should be a senior contact
+        #   who can speak to your company's reputation and operations: a C-suite executive
+        #   (CEO, CFO, CTO, COO), an owner or founder as reflected in your corporate
+        #   records, or a senior manager, director, or executive at an organization you work
+        #   with, such as a vendor, partner, or client.
         #
         #   @return [Array<Telnyx::Models::Dir::ReferenceInput>]
         required :business_references, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Dir::ReferenceInput] }

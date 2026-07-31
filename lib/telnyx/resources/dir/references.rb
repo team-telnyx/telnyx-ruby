@@ -30,6 +30,16 @@ module Telnyx
         #
         # The response always echoes the stored references in the same shape as the GET.
         #
+        # Who qualifies: the two business references confirm the company's reputation and
+        # operations. Each should be a senior contact at an organization the business
+        # works with, such as a vendor, partner, or client: a C-suite executive (CEO, CFO,
+        # CTO, COO), an owner or founder as reflected in the company's corporate records,
+        # or a senior manager, director, or executive. The financial reference confirms
+        # the company pays its bills and should be a licensed certified public accountant
+        # (CPA) the company uses, a contact at a bank or financial institution that has a
+        # relationship with the company, or a reasonable alternative banking or financial
+        # reference.
+        #
         # @overload create(dir_id, business_references:, financial_reference:, request_options: {})
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
