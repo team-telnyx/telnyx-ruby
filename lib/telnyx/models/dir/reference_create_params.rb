@@ -14,7 +14,9 @@ module Telnyx
         required :dir_id, String
 
         # @!attribute business_references
-        #   Exactly two business references.
+        #   Exactly two business references. Array order determines each one's slot: the
+        #   first entry becomes slot 1 and the second becomes slot 2. Those slots are what
+        #   you pass when updating a single reference later.
         #
         #   @return [Array<Telnyx::Models::Dir::ReferenceInput>]
         required :business_references, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Dir::ReferenceInput] }
@@ -32,7 +34,7 @@ module Telnyx
         #
         #   @param dir_id [String]
         #
-        #   @param business_references [Array<Telnyx::Models::Dir::ReferenceInput>] Exactly two business references.
+        #   @param business_references [Array<Telnyx::Models::Dir::ReferenceInput>] Exactly two business references. Array order determines each one's slot: the fir
         #
         #   @param financial_reference [Telnyx::Models::Dir::ReferenceInput] One reference supplied at submit. The reference type is implied by the field tha
         #

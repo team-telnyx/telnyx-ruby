@@ -21,8 +21,10 @@ module Telnyx
         sig { returns(Telnyx::Dir::Reference::RefType::TaggedSymbol) }
         attr_accessor :ref_type
 
-        # Position within the reference type. Business references occupy slots 0 and 1;
-        # the financial reference occupies slot 0.
+        # Position within the reference type, counting from 1. Business references occupy
+        # slots 1 and 2, in the order they were sent in the `business_references` array;
+        # the financial reference occupies slot 1. Use this value together with `ref_type`
+        # to address the reference when updating it.
         sig { returns(Integer) }
         attr_accessor :slot
 
@@ -76,8 +78,10 @@ module Telnyx
           record_type:,
           # Whether this is a business reference or the financial reference.
           ref_type:,
-          # Position within the reference type. Business references occupy slots 0 and 1;
-          # the financial reference occupies slot 0.
+          # Position within the reference type, counting from 1. Business references occupy
+          # slots 1 and 2, in the order they were sent in the `business_references` array;
+          # the financial reference occupies slot 1. Use this value together with `ref_type`
+          # to address the reference when updating it.
           slot:,
           # IANA timezone id for the reference. Calls are only placed within the reference's
           # local 8am-9pm window.

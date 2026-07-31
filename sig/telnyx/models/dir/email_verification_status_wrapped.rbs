@@ -19,7 +19,9 @@ module Telnyx
           {
             email_verified: bool,
             record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type,
-            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status
+            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status,
+            expires_at: Time?,
+            sends_remaining_today: Integer?
           }
 
         class Data < Telnyx::Internal::Type::BaseModel
@@ -29,16 +31,24 @@ module Telnyx
 
           attr_accessor record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type
 
+          attr_accessor expires_at: Time?
+
+          attr_accessor sends_remaining_today: Integer?
+
           def initialize: (
             email_verified: bool,
             record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type,
-            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status
+            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status,
+            ?expires_at: Time?,
+            ?sends_remaining_today: Integer?
           ) -> void
 
           def to_hash: -> {
             email_verified: bool,
             record_type: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::record_type,
-            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status
+            status: Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::status,
+            expires_at: Time?,
+            sends_remaining_today: Integer?
           }
 
           type record_type = :email_verification

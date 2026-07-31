@@ -72,6 +72,16 @@ module Telnyx
           end
           attr_accessor :record_type
 
+          # When the outstanding code stops being accepted. Null when no verification is in
+          # progress.
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :expires_at
+
+          # How many more codes may be requested for this DIR today. Null when the daily cap
+          # does not apply.
+          sig { returns(T.nilable(Integer)) }
+          attr_accessor :sends_remaining_today
+
           # Verification state for a DIR's authorizer email.
           sig do
             params(
@@ -79,7 +89,9 @@ module Telnyx
               record_type:
                 Telnyx::Dir::EmailVerificationStatusWrapped::Data::RecordType::OrSymbol,
               status:
-                Telnyx::Dir::EmailVerificationStatusWrapped::Data::Status::OrSymbol
+                Telnyx::Dir::EmailVerificationStatusWrapped::Data::Status::OrSymbol,
+              expires_at: T.nilable(Time),
+              sends_remaining_today: T.nilable(Integer)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -89,7 +101,13 @@ module Telnyx
             record_type:,
             # `sent` after a code is emailed; `verified` after a successful confirm;
             # `unverified` when no verification is in progress.
-            status:
+            status:,
+            # When the outstanding code stops being accepted. Null when no verification is in
+            # progress.
+            expires_at: nil,
+            # How many more codes may be requested for this DIR today. Null when the daily cap
+            # does not apply.
+            sends_remaining_today: nil
           )
           end
 
@@ -100,7 +118,9 @@ module Telnyx
                 record_type:
                   Telnyx::Dir::EmailVerificationStatusWrapped::Data::RecordType::TaggedSymbol,
                 status:
-                  Telnyx::Dir::EmailVerificationStatusWrapped::Data::Status::TaggedSymbol
+                  Telnyx::Dir::EmailVerificationStatusWrapped::Data::Status::TaggedSymbol,
+                expires_at: T.nilable(Time),
+                sends_remaining_today: T.nilable(Integer)
               }
             )
           end

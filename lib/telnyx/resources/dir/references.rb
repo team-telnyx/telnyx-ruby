@@ -16,15 +16,25 @@ module Telnyx
         # endpoint). Until it is, this returns `409` and no references are stored.
         #
         # The request body carries exactly two business references plus one financial
-        # reference. On success the references are stored and the response echoes them in
-        # the same shape as the GET. Submitting again converges on the already-stored
-        # references rather than erroring.
+        # reference. The first submission stores them and returns `201`. Resubmitting
+        # returns `200`: identical values are simply confirmed and nothing is written,
+        # while changed values replace those references.
+        #
+        # Replacing a reference is allowed only while the DIR itself is still editable,
+        # the same window in which a single reference may be updated; once the DIR has
+        # been submitted for vetting this returns `400`. A replaced reference's pending
+        # verification call is cancelled and its dial-in code stops working, and the
+        # replacement contact is emailed fresh scheduling details. References whose
+        # details did not change keep their existing call, code, and the notice already
+        # sent to them.
+        #
+        # The response always echoes the stored references in the same shape as the GET.
         #
         # @overload create(dir_id, business_references:, financial_reference:, request_options: {})
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
-        # @param business_references [Array<Telnyx::Models::Dir::ReferenceInput>] Exactly two business references.
+        # @param business_references [Array<Telnyx::Models::Dir::ReferenceInput>] Exactly two business references. Array order determines each one's slot: the fir
         #
         # @param financial_reference [Telnyx::Models::Dir::ReferenceInput] One reference supplied at submit. The reference type is implied by the field tha
         #
@@ -58,7 +68,7 @@ module Telnyx
         #
         # @overload update(slot, dir_id:, ref_type:, email: nil, full_name: nil, job_title: nil, organization: nil, phone_e164: nil, relationship_to_registrant: nil, timezone: nil, request_options: {})
         #
-        # @param slot [Integer] Path param: Reference slot. Business references use slots 0 and 1; the financial
+        # @param slot [Integer] Path param: Reference slot, counting from 1. Business references are slots 1 and
         #
         # @param dir_id [String] Path param: The DIR id. Lowercase UUID.
         #
@@ -104,10 +114,12 @@ module Telnyx
 
         # List the business and financial references submitted for a DIR.
         #
-        # Returns the two business references (slots 0 and 1) followed by the single
-        # financial reference. Each entry carries only the customer-supplied details
-        # (name, title, organization, relationship, phone, email, timezone). Returns an
-        # empty list when no references were submitted.
+        # Returns the two business references (slots 1 and 2) followed by the single
+        # financial reference. Each entry carries its `ref_type` and `slot`, which
+        # together address the reference when updating it, alongside the details supplied
+        # when it was submitted (name, title, organization, relationship, phone, email,
+        # timezone). No internal identifiers are exposed. Returns an empty list when no
+        # references were submitted.
         #
         # @overload list(dir_id, request_options: {})
         #

@@ -15,7 +15,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :dir_id
 
-        # Exactly two business references.
+        # Exactly two business references. Array order determines each one's slot: the
+        # first entry becomes slot 1 and the second becomes slot 2. Those slots are what
+        # you pass when updating a single reference later.
         sig { returns(T::Array[Telnyx::Dir::ReferenceInput]) }
         attr_accessor :business_references
 
@@ -39,7 +41,9 @@ module Telnyx
         end
         def self.new(
           dir_id:,
-          # Exactly two business references.
+          # Exactly two business references. Array order determines each one's slot: the
+          # first entry becomes slot 1 and the second becomes slot 2. Those slots are what
+          # you pass when updating a single reference later.
           business_references:,
           # One reference supplied at submit. The reference type is implied by the field
           # that carries it (business_references vs financial_reference).
