@@ -7,8 +7,10 @@ module Telnyx
         connection_id: String,
         created_at: Time,
         direction: Telnyx::Models::Fax::direction,
+        failure_reason: String?,
         from: String,
         from_display_name: String,
+        internal_failure_reason: String?,
         media_name: String,
         media_url: String,
         preview_url: String,
@@ -46,6 +48,8 @@ module Telnyx
         Telnyx::Models::Fax::direction
       ) -> Telnyx::Models::Fax::direction
 
+      attr_accessor failure_reason: String?
+
       attr_reader from: String?
 
       def from=: (String) -> String
@@ -53,6 +57,8 @@ module Telnyx
       attr_reader from_display_name: String?
 
       def from_display_name=: (String) -> String
+
+      attr_accessor internal_failure_reason: String?
 
       attr_reader media_name: String?
 
@@ -110,8 +116,10 @@ module Telnyx
         ?connection_id: String,
         ?created_at: Time,
         ?direction: Telnyx::Models::Fax::direction,
+        ?failure_reason: String?,
         ?from: String,
         ?from_display_name: String,
+        ?internal_failure_reason: String?,
         ?media_name: String,
         ?media_url: String,
         ?preview_url: String,
@@ -132,8 +140,10 @@ module Telnyx
         connection_id: String,
         created_at: Time,
         direction: Telnyx::Models::Fax::direction,
+        failure_reason: String?,
         from: String,
         from_display_name: String,
+        internal_failure_reason: String?,
         media_name: String,
         media_url: String,
         preview_url: String,

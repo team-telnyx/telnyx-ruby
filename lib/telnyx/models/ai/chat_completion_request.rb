@@ -128,6 +128,14 @@ module Telnyx
         #   @return [Integer, nil]
         optional :seed, Integer
 
+        # @!attribute service_tier
+        #   The service tier to use for this request. Supported values vary by model; use
+        #   `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
+        #   omitted, Telnyx-hosted models use `default`.
+        #
+        #   @return [String, nil]
+        optional :service_tier, String
+
         # @!attribute stop
         #   Up to 4 sequences where the API will stop generating further tokens. The
         #   returned text will not contain the stop sequence.
@@ -187,7 +195,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :use_beam_search, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, seed: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil)
+        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, seed: nil, service_tier: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ChatCompletionRequest} for more details.
         #
@@ -226,6 +234,8 @@ module Telnyx
         #   @param response_format [Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
         #
         #   @param seed [Integer] If specified, the system will make a best effort to sample deterministically, su
+        #
+        #   @param service_tier [String] The service tier to use for this request. Supported values vary by model; use `G
         #
         #   @param stop [String, Array<String>] Up to 4 sequences where the API will stop generating further tokens. The returne
         #

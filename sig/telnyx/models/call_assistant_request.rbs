@@ -14,7 +14,8 @@ module Telnyx
         name: String,
         observability_settings: ::Hash[Symbol, top],
         openai_api_key_ref: String,
-        tools: ::Array[Telnyx::Models::CallAssistantRequest::tool]
+        tools: ::Array[Telnyx::Models::CallAssistantRequest::tool],
+        voice_settings: Telnyx::AI::VoiceSettings
       }
 
     class CallAssistantRequest < Telnyx::Internal::Type::BaseModel
@@ -78,6 +79,12 @@ module Telnyx
         ::Array[Telnyx::Models::CallAssistantRequest::tool]
       ) -> ::Array[Telnyx::Models::CallAssistantRequest::tool]
 
+      attr_reader voice_settings: Telnyx::AI::VoiceSettings?
+
+      def voice_settings=: (
+        Telnyx::AI::VoiceSettings
+      ) -> Telnyx::AI::VoiceSettings
+
       def initialize: (
         id: String,
         ?dynamic_variables: ::Hash[Symbol, Telnyx::Models::CallAssistantRequest::dynamic_variable],
@@ -91,7 +98,8 @@ module Telnyx
         ?name: String,
         ?observability_settings: ::Hash[Symbol, top],
         ?openai_api_key_ref: String,
-        ?tools: ::Array[Telnyx::Models::CallAssistantRequest::tool]
+        ?tools: ::Array[Telnyx::Models::CallAssistantRequest::tool],
+        ?voice_settings: Telnyx::AI::VoiceSettings
       ) -> void
 
       def to_hash: -> {
@@ -107,7 +115,8 @@ module Telnyx
         name: String,
         observability_settings: ::Hash[Symbol, top],
         openai_api_key_ref: String,
-        tools: ::Array[Telnyx::Models::CallAssistantRequest::tool]
+        tools: ::Array[Telnyx::Models::CallAssistantRequest::tool],
+        voice_settings: Telnyx::AI::VoiceSettings
       }
 
       type dynamic_variable = String | Float | bool

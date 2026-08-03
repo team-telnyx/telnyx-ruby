@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module EmailDomains
+      type webhook_list_params =
+        {
+          domain_id: String,
+          page_number: Integer,
+          page_size: Integer,
+          sort: Telnyx::Models::EmailDomains::WebhookListParams::sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class WebhookListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor domain_id: String
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader sort: Telnyx::Models::EmailDomains::WebhookListParams::sort?
+
+        def sort=: (
+          Telnyx::Models::EmailDomains::WebhookListParams::sort
+        ) -> Telnyx::Models::EmailDomains::WebhookListParams::sort
+
+        def initialize: (
+          domain_id: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort: Telnyx::Models::EmailDomains::WebhookListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          domain_id: String,
+          page_number: Integer,
+          page_size: Integer,
+          sort: Telnyx::Models::EmailDomains::WebhookListParams::sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type sort = :created_at | :"-created_at"
+
+        module Sort
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED_AT: :created_at
+          CREATED_AT_DESC: :"-created_at"
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailDomains::WebhookListParams::sort]
+        end
+      end
+    end
+  end
+end

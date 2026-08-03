@@ -58,19 +58,27 @@ module Telnyx
 
             # Retrieve a paginated list of telco data usage reports
             #
-            # @overload list(request_options: {})
+            # @overload list(page: nil, per_page: nil, request_options: {})
+            #
+            # @param page [Integer] Page number to retrieve (1-based).
+            #
+            # @param per_page [Integer] Filter results by per page.
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
-            # @return [Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse]
+            # @return [Telnyx::Internal::PerPagePagination<Telnyx::Models::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse>]
             #
             # @see Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListParams
             def list(params = {})
+              parsed, options = Telnyx::Legacy::Reporting::UsageReports::NumberLookupListParams.dump_request(params)
+              query = Telnyx::Internal::Util.encode_query_params(parsed)
               @client.request(
                 method: :get,
                 path: "legacy/reporting/usage_reports/number_lookup",
-                model: Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse,
-                options: params[:request_options]
+                query: query,
+                page: Telnyx::Internal::PerPagePagination,
+                model: Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse,
+                options: options
               )
             end
 

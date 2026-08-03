@@ -186,22 +186,12 @@ module Telnyx
           end
           attr_writer :direction
 
-          # Cause of the sending failure
-          sig do
-            returns(
-              T.nilable(
-                Telnyx::FaxFailed::Data::Payload::FailureReason::TaggedSymbol
-              )
-            )
-          end
+          # Customer-facing cause of the fax failure. Mapped from the more granular
+          # `internal_failure_reason`.
+          sig { returns(T.nilable(String)) }
           attr_reader :failure_reason
 
-          sig do
-            params(
-              failure_reason:
-                Telnyx::FaxFailed::Data::Payload::FailureReason::OrSymbol
-            ).void
-          end
+          sig { params(failure_reason: String).void }
           attr_writer :failure_reason
 
           # Identifies the fax.
@@ -217,6 +207,14 @@ module Telnyx
 
           sig { params(from: String).void }
           attr_writer :from
+
+          # Internal, more granular cause of the fax failure. Useful for deeper debugging
+          # beyond the customer-facing `failure_reason`.
+          sig { returns(T.nilable(String)) }
+          attr_reader :internal_failure_reason
+
+          sig { params(internal_failure_reason: String).void }
+          attr_writer :internal_failure_reason
 
           # The media_name used for the fax's media. Must point to a file previously
           # uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
@@ -270,10 +268,10 @@ module Telnyx
               client_state: String,
               connection_id: String,
               direction: Telnyx::FaxFailed::Data::Payload::Direction::OrSymbol,
-              failure_reason:
-                Telnyx::FaxFailed::Data::Payload::FailureReason::OrSymbol,
+              failure_reason: String,
               fax_id: String,
               from: String,
+              internal_failure_reason: String,
               media_name: String,
               original_media_url: String,
               status: Telnyx::FaxFailed::Data::Payload::Status::OrSymbol,
@@ -288,12 +286,16 @@ module Telnyx
             connection_id: nil,
             # The direction of the fax.
             direction: nil,
-            # Cause of the sending failure
+            # Customer-facing cause of the fax failure. Mapped from the more granular
+            # `internal_failure_reason`.
             failure_reason: nil,
             # Identifies the fax.
             fax_id: nil,
             # The phone number, in E.164 format, the fax will be sent from.
             from: nil,
+            # Internal, more granular cause of the fax failure. Useful for deeper debugging
+            # beyond the customer-facing `failure_reason`.
+            internal_failure_reason: nil,
             # The media_name used for the fax's media. Must point to a file previously
             # uploaded to api.telnyx.com/v2/media by the same user/organization. Supported
             # formats: PDF, TIFF, JPEG, PNG, DOC, DOCX, RTF, and TXT. media_name and
@@ -318,10 +320,10 @@ module Telnyx
                 connection_id: String,
                 direction:
                   Telnyx::FaxFailed::Data::Payload::Direction::TaggedSymbol,
-                failure_reason:
-                  Telnyx::FaxFailed::Data::Payload::FailureReason::TaggedSymbol,
+                failure_reason: String,
                 fax_id: String,
                 from: String,
+                internal_failure_reason: String,
                 media_name: String,
                 original_media_url: String,
                 status: Telnyx::FaxFailed::Data::Payload::Status::TaggedSymbol,
@@ -358,33 +360,6 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::FaxFailed::Data::Payload::Direction::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-
-          # Cause of the sending failure
-          module FailureReason
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Telnyx::FaxFailed::Data::Payload::FailureReason)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            REJECTED =
-              T.let(
-                :rejected,
-                Telnyx::FaxFailed::Data::Payload::FailureReason::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::FaxFailed::Data::Payload::FailureReason::TaggedSymbol
                 ]
               )
             end

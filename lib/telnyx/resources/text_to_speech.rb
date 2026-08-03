@@ -20,13 +20,13 @@ module Telnyx
       # with provider-specific parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
-      # `resemble`, `xai`.
+      # `resemble`, `xai`, `humain`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
       # configure these features.
       #
-      # @overload generate_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @overload generate_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #
       # @param aws [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Aws] AWS Polly provider-specific parameters.
       #
@@ -35,6 +35,8 @@ module Telnyx
       # @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
       # @param elevenlabs [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Elevenlabs] ElevenLabs provider-specific parameters.
+      #
+      # @param humain [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain] Humain provider-specific parameters. Unlike other providers, Humain has no forma
       #
       # @param language [String] Language code (e.g. `en-US`). Usage varies by provider.
       #
@@ -114,7 +116,7 @@ module Telnyx
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `rime`,
-      # `resemble`, `elevenlabs`, `xai`.
+      # `resemble`, `elevenlabs`, `xai`, `humain`.
       #
       # **Connection flow:**
       #

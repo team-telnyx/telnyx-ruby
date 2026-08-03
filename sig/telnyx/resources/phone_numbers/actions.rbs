@@ -4,7 +4,7 @@ module Telnyx
       class Actions
         def change_bundle_status: (
           String id,
-          bundle_id: String,
+          bundle_id: String?,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::PhoneNumbers::ActionChangeBundleStatusResponse
 

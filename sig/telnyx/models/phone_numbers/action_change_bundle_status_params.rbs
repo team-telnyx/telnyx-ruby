@@ -2,7 +2,7 @@ module Telnyx
   module Models
     module PhoneNumbers
       type action_change_bundle_status_params =
-        { id: String, bundle_id: String }
+        { id: String, bundle_id: String? }
         & Telnyx::Internal::Type::request_parameters
 
       class ActionChangeBundleStatusParams < Telnyx::Internal::Type::BaseModel
@@ -11,17 +11,17 @@ module Telnyx
 
         attr_accessor id: String
 
-        attr_accessor bundle_id: String
+        attr_accessor bundle_id: String?
 
         def initialize: (
           id: String,
-          bundle_id: String,
+          bundle_id: String?,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           id: String,
-          bundle_id: String,
+          bundle_id: String?,
           request_options: Telnyx::RequestOptions
         }
       end

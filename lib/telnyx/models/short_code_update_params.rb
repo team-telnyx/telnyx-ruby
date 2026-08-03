@@ -19,6 +19,7 @@ module Telnyx
       required :messaging_profile_id, String
 
       # @!attribute tags
+      #   Tags associated with the resource.
       #
       #   @return [Array<String>, nil]
       optional :tags, Telnyx::Internal::Type::ArrayOf[String]
@@ -28,7 +29,7 @@ module Telnyx
       #
       #   @param messaging_profile_id [String] Unique identifier for a messaging profile.
       #
-      #   @param tags [Array<String>]
+      #   @param tags [Array<String>] Tags associated with the resource.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

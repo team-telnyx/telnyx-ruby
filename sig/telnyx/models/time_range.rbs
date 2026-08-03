@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type time_range = { from: Time?, to: Time? }
+
+    class TimeRange < Telnyx::Internal::Type::BaseModel
+      attr_accessor from: Time?
+
+      attr_accessor to: Time?
+
+      def initialize: (from: Time?, to: Time?) -> void
+
+      def to_hash: -> { from: Time?, to: Time? }
+    end
+  end
+end

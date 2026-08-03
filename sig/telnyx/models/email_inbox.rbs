@@ -1,0 +1,81 @@
+module Telnyx
+  module Models
+    type email_inbox =
+      {
+        id: String,
+        address: String,
+        created_at: Time,
+        domain: String,
+        domain_id: String,
+        record_type: Telnyx::Models::EmailInbox::record_type,
+        settings: ::Hash[Symbol, top],
+        status: Telnyx::Models::EmailInbox::status,
+        updated_at: Time
+      }
+
+    class EmailInbox < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor address: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor domain: String
+
+      attr_accessor domain_id: String
+
+      attr_accessor record_type: Telnyx::Models::EmailInbox::record_type
+
+      attr_accessor settings: ::Hash[Symbol, top]
+
+      attr_accessor status: Telnyx::Models::EmailInbox::status
+
+      attr_accessor updated_at: Time
+
+      def initialize: (
+        id: String,
+        address: String,
+        created_at: Time,
+        domain: String,
+        domain_id: String,
+        record_type: Telnyx::Models::EmailInbox::record_type,
+        settings: ::Hash[Symbol, top],
+        status: Telnyx::Models::EmailInbox::status,
+        updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        address: String,
+        created_at: Time,
+        domain: String,
+        domain_id: String,
+        record_type: Telnyx::Models::EmailInbox::record_type,
+        settings: ::Hash[Symbol, top],
+        status: Telnyx::Models::EmailInbox::status,
+        updated_at: Time
+      }
+
+      type record_type = :email_inbox
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        EMAIL_INBOX: :email_inbox
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailInbox::record_type]
+      end
+
+      type status = :active | :paused
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        ACTIVE: :active
+        PAUSED: :paused
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailInbox::status]
+      end
+    end
+  end
+end

@@ -48,6 +48,12 @@ module Telnyx
         #   @return [String, nil]
         optional :failure_reasons, String, api_name: :failureReasons
 
+        # @!attribute non_tmobile_number_mapping_status
+        #   The assignment status of the number towards other carriers.
+        #
+        #   @return [String, nil]
+        optional :non_tmobile_number_mapping_status, String, api_name: :nonTmobileNumberMappingStatus
+
         # @!attribute tcr_brand_id
         #   TCR's alphanumeric ID for the brand.
         #
@@ -66,7 +72,13 @@ module Telnyx
         #   @return [String, nil]
         optional :telnyx_campaign_id, String, api_name: :telnyxCampaignId
 
-        # @!method initialize(campaign_id:, created_at:, phone_number:, updated_at:, assignment_status: nil, brand_id: nil, failure_reasons: nil, tcr_brand_id: nil, tcr_campaign_id: nil, telnyx_campaign_id: nil)
+        # @!attribute tmobile_number_mapping_status
+        #   The T-Mobile assignment status of the number.
+        #
+        #   @return [String, nil]
+        optional :tmobile_number_mapping_status, String, api_name: :tmobileNumberMappingStatus
+
+        # @!method initialize(campaign_id:, created_at:, phone_number:, updated_at:, assignment_status: nil, brand_id: nil, failure_reasons: nil, non_tmobile_number_mapping_status: nil, tcr_brand_id: nil, tcr_campaign_id: nil, telnyx_campaign_id: nil, tmobile_number_mapping_status: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Messaging10dlc::PhoneNumberCampaign} for more details.
         #
@@ -84,11 +96,15 @@ module Telnyx
         #
         #   @param failure_reasons [String] Extra info about a failure to assign/unassign a number. Relevant only if the ass
         #
+        #   @param non_tmobile_number_mapping_status [String] The assignment status of the number towards other carriers.
+        #
         #   @param tcr_brand_id [String] TCR's alphanumeric ID for the brand.
         #
         #   @param tcr_campaign_id [String] TCR's alphanumeric ID for the campaign.
         #
         #   @param telnyx_campaign_id [String] Campaign ID. Empty if the number is associated to a shared campaign.
+        #
+        #   @param tmobile_number_mapping_status [String] The T-Mobile assignment status of the number.
 
         # The assignment status of the number.
         #

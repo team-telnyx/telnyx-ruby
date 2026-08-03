@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      module Messages
+        type label_mutation_request = { labels: ::Array[String] }
+
+        class LabelMutationRequest < Telnyx::Internal::Type::BaseModel
+          attr_accessor labels: ::Array[String]
+
+          def initialize: (labels: ::Array[String]) -> void
+
+          def to_hash: -> { labels: ::Array[String] }
+        end
+      end
+    end
+  end
+end

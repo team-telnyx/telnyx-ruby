@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class EmailInboxes
+      class Filters
+        def list: (
+          String inbox_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::FilterListResponse
+
+        def add: (
+          String inbox_id,
+          entries: ::Array[String],
+          type: Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::FilterAddResponse
+
+        def delete_all: (
+          String inbox_id,
+          entries: ::Array[String],
+          type: Telnyx::Models::EmailInboxes::MutateInboxFiltersRequest::type_,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::FilterDeleteAllResponse
+
+        def replace: (
+          String inbox_id,
+          ?allowlist: ::Array[String],
+          ?blocklist: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::FilterReplaceResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

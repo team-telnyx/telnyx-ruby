@@ -23,8 +23,10 @@ module Telnyx
         required :ref_type, enum: -> { Telnyx::Dir::Reference::RefType }
 
         # @!attribute slot
-        #   Position within the reference type. Business references occupy slots 0 and 1;
-        #   the financial reference occupies slot 0.
+        #   Position within the reference type, counting from 1. Business references occupy
+        #   slots 1 and 2, in the order they were sent in the `business_references` array;
+        #   the financial reference occupies slot 1. Use this value together with `ref_type`
+        #   to address the reference when updating it.
         #
         #   @return [Integer]
         required :slot, Integer
@@ -83,7 +85,7 @@ module Telnyx
         #
         #   @param ref_type [Symbol, Telnyx::Models::Dir::Reference::RefType] Whether this is a business reference or the financial reference.
         #
-        #   @param slot [Integer] Position within the reference type. Business references occupy slots 0 and 1; th
+        #   @param slot [Integer] Position within the reference type, counting from 1. Business references occupy
         #
         #   @param timezone [String] IANA timezone id for the reference. Calls are only placed within the reference's
         #

@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class EmailEvents
+      def list: (
+        ?email_id: String,
+        ?event_type: Telnyx::Models::EmailEventListParams::event_type,
+        ?from: Time,
+        ?page_cursor: String,
+        ?page_size: Integer,
+        ?to: Time,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailEventListResponse
+
+      def retrieve_stats: (
+        ?from: Time,
+        ?to: Time,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailEventRetrieveStatsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

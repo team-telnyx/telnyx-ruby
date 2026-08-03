@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      module Threads
+        type label_create_response =
+          {
+            data: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data
+          }
+
+        class LabelCreateResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data
+
+          def initialize: (
+            data: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data
+          }
+
+          type data =
+            {
+              id: String,
+              labels: ::Array[String],
+              record_type: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data::record_type,
+              inbox_id: String
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor labels: ::Array[String]
+
+            attr_accessor record_type: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data::record_type
+
+            attr_reader inbox_id: String?
+
+            def inbox_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              labels: ::Array[String],
+              record_type: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data::record_type,
+              ?inbox_id: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              labels: ::Array[String],
+              record_type: Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data::record_type,
+              inbox_id: String
+            }
+
+            type record_type = :email_thread
+
+            module RecordType
+              extend Telnyx::Internal::Type::Enum
+
+              EMAIL_THREAD: :email_thread
+
+              def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse::Data::record_type]
+            end
+          end
+        end
+      end
+    end
+  end
+end

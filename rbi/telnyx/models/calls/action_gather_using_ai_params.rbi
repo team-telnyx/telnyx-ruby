@@ -181,6 +181,10 @@ module Telnyx
         #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
         # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
         #   `ara`, `rex`, `sal`, `leo`.
+        # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+        #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+        #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+        #   `ModelId` segment.
         sig { returns(T.nilable(String)) }
         attr_reader :voice
 
@@ -330,6 +334,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,

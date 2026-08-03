@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class EmailInboxes
+      class Threads
+        attr_reader labels: Telnyx::Resources::EmailInboxes::Threads::Labels
+
+        def retrieve: (
+          String thread_id,
+          inbox_id: String,
+          ?page_after: String,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::ThreadRetrieveResponse
+
+        def list: (
+          String inbox_id,
+          ?filter_label: String,
+          ?page_after: String,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailInboxes::InboundThreadListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

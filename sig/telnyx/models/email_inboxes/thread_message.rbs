@@ -1,0 +1,178 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type thread_message =
+        {
+          id: String,
+          attachments: ::Array[::Hash[Symbol, top]],
+          bcc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          created_at: Time,
+          direction: Telnyx::Models::EmailInboxes::ThreadMessage::direction,
+          from: Telnyx::EmailInboxes::InboundEmailAddress,
+          has_quoted_text: bool,
+          headers: ::Hash[Symbol, top],
+          html_body_url: String?,
+          in_reply_to: String?,
+          inbox_id: String,
+          inline_files: ::Array[::Hash[Symbol, top]],
+          labels: ::Array[String],
+          message_id: String?,
+          read_at: Time?,
+          received_at: Time?,
+          record_type: Telnyx::Models::EmailInboxes::ThreadMessage::record_type,
+          references: ::Array[String],
+          reply_text: String?,
+          reply_to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          sent_at: Time?,
+          status: String,
+          subject: String?,
+          text_body_url: String?,
+          thread_id: String,
+          to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          updated_at: Time
+        }
+
+      class ThreadMessage < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor attachments: ::Array[::Hash[Symbol, top]]
+
+        attr_accessor bcc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress]
+
+        attr_accessor cc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress]
+
+        attr_accessor created_at: Time
+
+        attr_accessor direction: Telnyx::Models::EmailInboxes::ThreadMessage::direction
+
+        attr_accessor from: Telnyx::EmailInboxes::InboundEmailAddress
+
+        attr_accessor has_quoted_text: bool
+
+        attr_accessor headers: ::Hash[Symbol, top]
+
+        attr_accessor html_body_url: String?
+
+        attr_accessor in_reply_to: String?
+
+        attr_accessor inbox_id: String
+
+        attr_accessor inline_files: ::Array[::Hash[Symbol, top]]
+
+        attr_accessor labels: ::Array[String]
+
+        attr_accessor message_id: String?
+
+        attr_accessor read_at: Time?
+
+        attr_accessor received_at: Time?
+
+        attr_accessor record_type: Telnyx::Models::EmailInboxes::ThreadMessage::record_type
+
+        attr_accessor references: ::Array[String]
+
+        attr_accessor reply_text: String?
+
+        attr_accessor reply_to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress]
+
+        attr_accessor sent_at: Time?
+
+        attr_accessor status: String
+
+        attr_accessor subject: String?
+
+        attr_accessor text_body_url: String?
+
+        attr_accessor thread_id: String
+
+        attr_accessor to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress]
+
+        attr_accessor updated_at: Time
+
+        def initialize: (
+          id: String,
+          attachments: ::Array[::Hash[Symbol, top]],
+          bcc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          created_at: Time,
+          direction: Telnyx::Models::EmailInboxes::ThreadMessage::direction,
+          from: Telnyx::EmailInboxes::InboundEmailAddress,
+          has_quoted_text: bool,
+          headers: ::Hash[Symbol, top],
+          html_body_url: String?,
+          in_reply_to: String?,
+          inbox_id: String,
+          inline_files: ::Array[::Hash[Symbol, top]],
+          labels: ::Array[String],
+          message_id: String?,
+          read_at: Time?,
+          received_at: Time?,
+          record_type: Telnyx::Models::EmailInboxes::ThreadMessage::record_type,
+          references: ::Array[String],
+          reply_text: String?,
+          reply_to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          sent_at: Time?,
+          status: String,
+          subject: String?,
+          text_body_url: String?,
+          thread_id: String,
+          to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          attachments: ::Array[::Hash[Symbol, top]],
+          bcc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          created_at: Time,
+          direction: Telnyx::Models::EmailInboxes::ThreadMessage::direction,
+          from: Telnyx::EmailInboxes::InboundEmailAddress,
+          has_quoted_text: bool,
+          headers: ::Hash[Symbol, top],
+          html_body_url: String?,
+          in_reply_to: String?,
+          inbox_id: String,
+          inline_files: ::Array[::Hash[Symbol, top]],
+          labels: ::Array[String],
+          message_id: String?,
+          read_at: Time?,
+          received_at: Time?,
+          record_type: Telnyx::Models::EmailInboxes::ThreadMessage::record_type,
+          references: ::Array[String],
+          reply_text: String?,
+          reply_to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          sent_at: Time?,
+          status: String,
+          subject: String?,
+          text_body_url: String?,
+          thread_id: String,
+          to: ::Array[Telnyx::EmailInboxes::InboundEmailAddress],
+          updated_at: Time
+        }
+
+        type direction = :inbound | :outbound
+
+        module Direction
+          extend Telnyx::Internal::Type::Enum
+
+          INBOUND: :inbound
+          OUTBOUND: :outbound
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::ThreadMessage::direction]
+        end
+
+        type record_type = :email_message
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_MESSAGE: :email_message
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::ThreadMessage::record_type]
+        end
+      end
+    end
+  end
+end

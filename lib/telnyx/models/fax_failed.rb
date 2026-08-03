@@ -94,10 +94,11 @@ module Telnyx
           optional :direction, enum: -> { Telnyx::FaxFailed::Data::Payload::Direction }
 
           # @!attribute failure_reason
-          #   Cause of the sending failure
+          #   Customer-facing cause of the fax failure. Mapped from the more granular
+          #   `internal_failure_reason`.
           #
-          #   @return [Symbol, Telnyx::Models::FaxFailed::Data::Payload::FailureReason, nil]
-          optional :failure_reason, enum: -> { Telnyx::FaxFailed::Data::Payload::FailureReason }
+          #   @return [String, nil]
+          optional :failure_reason, String
 
           # @!attribute fax_id
           #   Identifies the fax.
@@ -110,6 +111,13 @@ module Telnyx
           #
           #   @return [String, nil]
           optional :from, String
+
+          # @!attribute internal_failure_reason
+          #   Internal, more granular cause of the fax failure. Useful for deeper debugging
+          #   beyond the customer-facing `failure_reason`.
+          #
+          #   @return [String, nil]
+          optional :internal_failure_reason, String
 
           # @!attribute media_name
           #   The media_name used for the fax's media. Must point to a file previously
@@ -145,7 +153,7 @@ module Telnyx
           #   @return [String, nil]
           optional :user_id, String
 
-          # @!method initialize(client_state: nil, connection_id: nil, direction: nil, failure_reason: nil, fax_id: nil, from: nil, media_name: nil, original_media_url: nil, status: nil, to: nil, user_id: nil)
+          # @!method initialize(client_state: nil, connection_id: nil, direction: nil, failure_reason: nil, fax_id: nil, from: nil, internal_failure_reason: nil, media_name: nil, original_media_url: nil, status: nil, to: nil, user_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::FaxFailed::Data::Payload} for more details.
           #
@@ -155,11 +163,13 @@ module Telnyx
           #
           #   @param direction [Symbol, Telnyx::Models::FaxFailed::Data::Payload::Direction] The direction of the fax.
           #
-          #   @param failure_reason [Symbol, Telnyx::Models::FaxFailed::Data::Payload::FailureReason] Cause of the sending failure
+          #   @param failure_reason [String] Customer-facing cause of the fax failure. Mapped from the more granular `interna
           #
           #   @param fax_id [String] Identifies the fax.
           #
           #   @param from [String] The phone number, in E.164 format, the fax will be sent from.
+          #
+          #   @param internal_failure_reason [String] Internal, more granular cause of the fax failure. Useful for deeper debugging be
           #
           #   @param media_name [String] The media_name used for the fax's media. Must point to a file previously uploade
           #
@@ -179,18 +189,6 @@ module Telnyx
 
             INBOUND = :inbound
             OUTBOUND = :outbound
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
-          # Cause of the sending failure
-          #
-          # @see Telnyx::Models::FaxFailed::Data::Payload#failure_reason
-          module FailureReason
-            extend Telnyx::Internal::Type::Enum
-
-            REJECTED = :rejected
 
             # @!method self.values
             #   @return [Array<Symbol>]

@@ -22,6 +22,7 @@ module Telnyx
             ?presence_penalty: Float,
             ?response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
             ?seed: Integer,
+            ?service_tier: String,
             ?stop: Telnyx::Models::AI::ChatCompletionRequest::stop,
             ?stream: bool,
             ?temperature: Float,

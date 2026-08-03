@@ -66,7 +66,9 @@ module Telnyx
             mcp_servers: nil,
             # An object describing metadata about the request.
             metadata: nil,
-            # Service tier for the request.
+            # The service tier to use for this request. Supported values vary by model; use
+            # the Telnyx models endpoint and inspect the model's `service_tiers` field. If
+            # omitted, Telnyx-hosted models use `default`.
             service_tier: nil,
             # Custom sequences that will cause the model to stop generating.
             stop_sequences: nil,

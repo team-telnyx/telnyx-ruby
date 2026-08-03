@@ -23,13 +23,13 @@ module Telnyx
         # the number from a bundle, this must be null. You cannot assign a number from one
         # bundle to another directly. You must first remove it from a bundle, and then
         # assign it to a new bundle.
-        sig { returns(String) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :bundle_id
 
         sig do
           params(
             id: String,
-            bundle_id: String,
+            bundle_id: T.nilable(String),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -49,7 +49,7 @@ module Telnyx
           override.returns(
             {
               id: String,
-              bundle_id: String,
+              bundle_id: T.nilable(String),
               request_options: Telnyx::RequestOptions
             }
           )

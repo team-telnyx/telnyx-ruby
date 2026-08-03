@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type email_domain_retrieve_dns_records_response =
+      { data: ::Array[Telnyx::DNSRecord] }
+
+    class EmailDomainRetrieveDNSRecordsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::DNSRecord]
+
+      def initialize: (data: ::Array[Telnyx::DNSRecord]) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::DNSRecord] }
+    end
+  end
+end

@@ -111,6 +111,11 @@ module Telnyx
             :xai,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
+        HUMAIN =
+          T.let(
+            :humain,
+            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
+          )
 
         sig do
           override.returns(

@@ -35,9 +35,23 @@ module Telnyx
             #
             #   @return [Symbol, Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::RecordType]
             required :record_type, enum: -> { Telnyx::Dir::EmailVerificationStatusWrapped::Data::RecordType }
+
+            # @!attribute expires_at
+            #   When the outstanding code stops being accepted. Null when no verification is in
+            #   progress.
+            #
+            #   @return [Time, nil]
+            optional :expires_at, Time, nil?: true
+
+            # @!attribute sends_remaining_today
+            #   How many more codes may be requested for this DIR today. Null when the daily cap
+            #   does not apply.
+            #
+            #   @return [Integer, nil]
+            optional :sends_remaining_today, Integer, nil?: true
           end
 
-          # @!method initialize(email_verified:, record_type:, status:)
+          # @!method initialize(email_verified:, record_type:, status:, expires_at: nil, sends_remaining_today: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data} for more details.
           #
@@ -48,6 +62,10 @@ module Telnyx
           #   @param record_type [Symbol, Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::RecordType] Always `email_verification`.
           #
           #   @param status [Symbol, Telnyx::Models::Dir::EmailVerificationStatusWrapped::Data::Status] `sent` after a code is emailed; `verified` after a successful confirm; `unverifi
+          #
+          #   @param expires_at [Time, nil] When the outstanding code stops being accepted. Null when no verification is in
+          #
+          #   @param sends_remaining_today [Integer, nil] How many more codes may be requested for this DIR today. Null when the daily cap
 
           # Always `email_verification`.
           #

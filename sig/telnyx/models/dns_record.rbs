@@ -1,0 +1,98 @@
+module Telnyx
+  module Models
+    type dns_record =
+      {
+        id: String,
+        host: String,
+        purpose: Telnyx::Models::DNSRecord::purpose,
+        record_type: Telnyx::Models::DNSRecord::record_type,
+        required: bool,
+        status: Telnyx::Models::DNSRecord::status,
+        value: String,
+        actual_value: String?,
+        priority: Integer?
+      }
+
+    class DNSRecord < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor host: String
+
+      attr_accessor purpose: Telnyx::Models::DNSRecord::purpose
+
+      attr_accessor record_type: Telnyx::Models::DNSRecord::record_type
+
+      attr_accessor required: bool
+
+      attr_accessor status: Telnyx::Models::DNSRecord::status
+
+      attr_accessor value: String
+
+      attr_accessor actual_value: String?
+
+      attr_accessor priority: Integer?
+
+      def initialize: (
+        id: String,
+        host: String,
+        purpose: Telnyx::Models::DNSRecord::purpose,
+        record_type: Telnyx::Models::DNSRecord::record_type,
+        required: bool,
+        status: Telnyx::Models::DNSRecord::status,
+        value: String,
+        ?actual_value: String?,
+        ?priority: Integer?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        host: String,
+        purpose: Telnyx::Models::DNSRecord::purpose,
+        record_type: Telnyx::Models::DNSRecord::record_type,
+        required: bool,
+        status: Telnyx::Models::DNSRecord::status,
+        value: String,
+        actual_value: String?,
+        priority: Integer?
+      }
+
+      type purpose = :ownership | :spf | :dkim | :dmarc | :mx
+
+      module Purpose
+        extend Telnyx::Internal::Type::Enum
+
+        OWNERSHIP: :ownership
+        SPF: :spf
+        DKIM: :dkim
+        DMARC: :dmarc
+        MX: :mx
+
+        def self?.values: -> ::Array[Telnyx::Models::DNSRecord::purpose]
+      end
+
+      type record_type = :TXT | :MX
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        TXT: :TXT
+        MX: :MX
+
+        def self?.values: -> ::Array[Telnyx::Models::DNSRecord::record_type]
+      end
+
+      type status = :pending | :verified | :failed | :not_required
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        VERIFIED: :verified
+        FAILED: :failed
+        NOT_REQUIRED: :not_required
+
+        def self?.values: -> ::Array[Telnyx::Models::DNSRecord::status]
+      end
+    end
+  end
+end

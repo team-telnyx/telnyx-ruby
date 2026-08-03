@@ -25,9 +25,11 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
         assignment_status: Telnyx::Messaging10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
+        non_tmobile_number_mapping_status: String | nil,
         tcr_brand_id: String | nil,
         tcr_campaign_id: String | nil,
-        telnyx_campaign_id: String | nil
+        telnyx_campaign_id: String | nil,
+        tmobile_number_mapping_status: String | nil
       }
     end
   end
@@ -50,9 +52,11 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
         assignment_status: Telnyx::Messaging10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
+        non_tmobile_number_mapping_status: String | nil,
         tcr_brand_id: String | nil,
         tcr_campaign_id: String | nil,
-        telnyx_campaign_id: String | nil
+        telnyx_campaign_id: String | nil,
+        tmobile_number_mapping_status: String | nil
       }
     end
   end
@@ -80,9 +84,11 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
         assignment_status: Telnyx::Messaging10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
+        non_tmobile_number_mapping_status: String | nil,
         tcr_brand_id: String | nil,
         tcr_campaign_id: String | nil,
-        telnyx_campaign_id: String | nil
+        telnyx_campaign_id: String | nil,
+        tmobile_number_mapping_status: String | nil
       }
     end
   end
@@ -112,9 +118,11 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
         assignment_status: Telnyx::Messaging10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
+        non_tmobile_number_mapping_status: String | nil,
         tcr_brand_id: String | nil,
         tcr_campaign_id: String | nil,
-        telnyx_campaign_id: String | nil
+        telnyx_campaign_id: String | nil,
+        tmobile_number_mapping_status: String | nil
       }
     end
   end
@@ -137,9 +145,11 @@ class Telnyx::Test::Resources::Messaging10dlc::PhoneNumberCampaignsTest < Telnyx
         assignment_status: Telnyx::Messaging10dlc::PhoneNumberCampaign::AssignmentStatus | nil,
         brand_id: String | nil,
         failure_reasons: String | nil,
+        non_tmobile_number_mapping_status: String | nil,
         tcr_brand_id: String | nil,
         tcr_campaign_id: String | nil,
-        telnyx_campaign_id: String | nil
+        telnyx_campaign_id: String | nil,
+        tmobile_number_mapping_status: String | nil
       }
     end
   end

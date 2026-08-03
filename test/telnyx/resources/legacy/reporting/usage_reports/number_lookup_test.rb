@@ -41,13 +41,29 @@ class Telnyx::Test::Resources::Legacy::Reporting::UsageReports::NumberLookupTest
     response = @telnyx.legacy.reporting.usage_reports.number_lookup.list
 
     assert_pattern do
-      response => Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse
+      response => Telnyx::Internal::PerPagePagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse]) | nil,
-        meta: Telnyx::Legacy::Reporting::UsageReports::StandardPaginationMeta | nil
+      row => {
+        id: String | nil,
+        aggregation_type: String | nil,
+        created_at: Time | nil,
+        end_date: Date | nil,
+        managed_accounts: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        record_type: String | nil,
+        report_url: String | nil,
+        result: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageRecord]) | nil,
+        start_date: Date | nil,
+        status: String | nil,
+        updated_at: Time | nil
       }
     end
   end

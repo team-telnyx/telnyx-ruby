@@ -34,7 +34,15 @@ module Telnyx
         optional :messages,
                  -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::Calls::ActionAddAIAssistantMessagesParams::Message] }
 
-        # @!method initialize(call_control_id:, client_state: nil, command_id: nil, messages: nil, request_options: {})
+        # @!attribute trigger_response
+        #   When `true`, the injected messages immediately trigger an assistant
+        #   response/turn instead of waiting for the next natural turn or idle timeout. This
+        #   may interrupt a user who is still speaking.
+        #
+        #   @return [Boolean, nil]
+        optional :trigger_response, Telnyx::Internal::Type::Boolean
+
+        # @!method initialize(call_control_id:, client_state: nil, command_id: nil, messages: nil, trigger_response: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams} for more details.
         #
@@ -45,6 +53,8 @@ module Telnyx
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         #   @param messages [Array<Telnyx::Models::Calls::UserMessage, Telnyx::Models::Calls::AssistantMessage, Telnyx::Models::Calls::ToolMessage, Telnyx::Models::Calls::SystemMessage, Telnyx::Models::Calls::DeveloperMessage>] The messages to add to the conversation.
+        #
+        #   @param trigger_response [Boolean] When `true`, the injected messages immediately trigger an assistant response/tur
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

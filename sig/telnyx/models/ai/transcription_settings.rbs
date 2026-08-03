@@ -60,6 +60,8 @@ module Telnyx
           | :"xai/grok-stt"
           | :"soniox/stt-rt-v4"
           | :"nvidia/parakeet-v3"
+          | :"humain/realtime"
+          | :"reson8/turns"
           | :"distil-whisper/distil-large-v2"
           | :"openai/whisper-large-v3-turbo"
 
@@ -74,6 +76,8 @@ module Telnyx
           XAI_GROK_STT: :"xai/grok-stt"
           SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
           NVIDIA_PARAKEET_V3: :"nvidia/parakeet-v3"
+          HUMAIN_REALTIME: :"humain/realtime"
+          RESON8_TURNS: :"reson8/turns"
           DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
 

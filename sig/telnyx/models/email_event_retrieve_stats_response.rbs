@@ -1,0 +1,164 @@
+module Telnyx
+  module Models
+    type email_event_retrieve_stats_response =
+      { data: Telnyx::Models::EmailEventRetrieveStatsResponse::Data }
+
+    class EmailEventRetrieveStatsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::EmailEventRetrieveStatsResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::EmailEventRetrieveStatsResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::EmailEventRetrieveStatsResponse::Data
+      }
+
+      type data =
+        {
+          counts: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Counts,
+          rates: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Rates,
+          record_type: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::record_type,
+          time_range: Telnyx::TimeRange
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor counts: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Counts
+
+        attr_accessor rates: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Rates
+
+        attr_accessor record_type: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::record_type
+
+        attr_accessor time_range: Telnyx::TimeRange
+
+        def initialize: (
+          counts: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Counts,
+          rates: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Rates,
+          record_type: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::record_type,
+          time_range: Telnyx::TimeRange
+        ) -> void
+
+        def to_hash: -> {
+          counts: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Counts,
+          rates: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::Rates,
+          record_type: Telnyx::Models::EmailEventRetrieveStatsResponse::Data::record_type,
+          time_range: Telnyx::TimeRange
+        }
+
+        type counts =
+          {
+            bounced: Integer,
+            clicked: Integer,
+            complained: Integer,
+            deferred: Integer,
+            delivered: Integer,
+            failed: Integer,
+            opened: Integer,
+            queued: Integer,
+            sent: Integer,
+            unsubscribed: Integer
+          }
+
+        class Counts < Telnyx::Internal::Type::BaseModel
+          attr_accessor bounced: Integer
+
+          attr_accessor clicked: Integer
+
+          attr_accessor complained: Integer
+
+          attr_accessor deferred: Integer
+
+          attr_accessor delivered: Integer
+
+          attr_accessor failed: Integer
+
+          attr_accessor opened: Integer
+
+          attr_accessor queued: Integer
+
+          attr_accessor sent: Integer
+
+          attr_accessor unsubscribed: Integer
+
+          def initialize: (
+            bounced: Integer,
+            clicked: Integer,
+            complained: Integer,
+            deferred: Integer,
+            delivered: Integer,
+            failed: Integer,
+            opened: Integer,
+            queued: Integer,
+            sent: Integer,
+            unsubscribed: Integer
+          ) -> void
+
+          def to_hash: -> {
+            bounced: Integer,
+            clicked: Integer,
+            complained: Integer,
+            deferred: Integer,
+            delivered: Integer,
+            failed: Integer,
+            opened: Integer,
+            queued: Integer,
+            sent: Integer,
+            unsubscribed: Integer
+          }
+        end
+
+        type rates =
+          {
+            bounce_rate: Float,
+            click_rate: Float,
+            complaint_rate: Float,
+            deferred_rate: Float,
+            delivery_rate: Float,
+            open_rate: Float
+          }
+
+        class Rates < Telnyx::Internal::Type::BaseModel
+          attr_accessor bounce_rate: Float
+
+          attr_accessor click_rate: Float
+
+          attr_accessor complaint_rate: Float
+
+          attr_accessor deferred_rate: Float
+
+          attr_accessor delivery_rate: Float
+
+          attr_accessor open_rate: Float
+
+          def initialize: (
+            bounce_rate: Float,
+            click_rate: Float,
+            complaint_rate: Float,
+            deferred_rate: Float,
+            delivery_rate: Float,
+            open_rate: Float
+          ) -> void
+
+          def to_hash: -> {
+            bounce_rate: Float,
+            click_rate: Float,
+            complaint_rate: Float,
+            deferred_rate: Float,
+            delivery_rate: Float,
+            open_rate: Float
+          }
+        end
+
+        type record_type = :email_event_stats
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_EVENT_STATS: :email_event_stats
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailEventRetrieveStatsResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module EmailMessages
+      type recipient_retrieve_response =
+        { data: Telnyx::EmailMessages::EmailRecipient }
+
+      class RecipientRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::EmailMessages::EmailRecipient
+
+        def initialize: (data: Telnyx::EmailMessages::EmailRecipient) -> void
+
+        def to_hash: -> { data: Telnyx::EmailMessages::EmailRecipient }
+      end
+    end
+  end
+end

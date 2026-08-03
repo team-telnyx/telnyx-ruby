@@ -28,6 +28,7 @@ module Telnyx
           record_timeout_secs: Integer,
           record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          route_to_mobile: bool,
           send_digits_on_answer: String,
           sip_auth_password: String,
           sip_auth_username: String,
@@ -168,6 +169,10 @@ module Telnyx
           Telnyx::Models::Calls::ActionTransferParams::record_trim
         ) -> Telnyx::Models::Calls::ActionTransferParams::record_trim
 
+        attr_reader route_to_mobile: bool?
+
+        def route_to_mobile=: (bool) -> bool
+
         attr_reader send_digits_on_answer: String?
 
         def send_digits_on_answer=: (String) -> String
@@ -268,6 +273,7 @@ module Telnyx
           ?record_timeout_secs: Integer,
           ?record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           ?record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          ?route_to_mobile: bool,
           ?send_digits_on_answer: String,
           ?sip_auth_password: String,
           ?sip_auth_username: String,
@@ -312,6 +318,7 @@ module Telnyx
           record_timeout_secs: Integer,
           record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          route_to_mobile: bool,
           send_digits_on_answer: String,
           sip_auth_password: String,
           sip_auth_username: String,

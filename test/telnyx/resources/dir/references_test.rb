@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::Dir::ReferencesTest < Telnyx::Test::ResourceTest
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.dir.references.update(0, dir_id: "16635d38-75a6-4481-82e8-69af60e05011", ref_type: :business)
+      @telnyx.dir.references.update(1, dir_id: "16635d38-75a6-4481-82e8-69af60e05011", ref_type: :business)
 
     assert_pattern do
       response => Telnyx::Models::Dir::ReferenceUpdateResponse

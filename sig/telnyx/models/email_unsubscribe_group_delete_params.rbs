@@ -1,0 +1,46 @@
+module Telnyx
+  module Models
+    type email_unsubscribe_group_delete_params =
+      {
+        id: String,
+        force: Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class EmailUnsubscribeGroupDeleteParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_reader force: Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force?
+
+      def force=: (
+        Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force
+      ) -> Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force
+
+      def initialize: (
+        id: String,
+        ?force: Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        force: Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type force = :true | :false | bool
+
+      module Force
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force]
+
+        TRUE: :true
+        FALSE: :false
+      end
+    end
+  end
+end

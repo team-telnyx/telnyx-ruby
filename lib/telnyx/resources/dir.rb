@@ -288,8 +288,9 @@ module Telnyx
       # numbers flip back to `submitted`. When re-submitting from `verified`, the
       # existing registration stays live throughout the new vetting cycle.
       #
-      # Returns `400` from `submitted`/`in_review`/`permanently_rejected`. Returns `409`
-      # if the DIR has an unresolved infringement claim.
+      # Returns `400` from `submitted`/`in_review`/`permanently_rejected`. Returns `400`
+      # if the DIR's business and financial references have not been submitted. Returns
+      # `409` if the DIR has an unresolved infringement claim.
       #
       # @overload submit(dir_id, request_options: {})
       #

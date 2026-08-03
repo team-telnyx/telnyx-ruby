@@ -1,0 +1,91 @@
+module Telnyx
+  module Models
+    type email_domain_retrieve_health_response =
+      { data: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data }
+
+    class EmailDomainRetrieveHealthResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          checked_at: Time,
+          record_type: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::record_type,
+          status: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::status,
+          usable_for_inbound: bool,
+          usable_for_sending: bool,
+          verification: Telnyx::EmailDomainVerification
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor checked_at: Time
+
+        attr_accessor record_type: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::record_type
+
+        attr_accessor status: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::status
+
+        attr_accessor usable_for_inbound: bool
+
+        attr_accessor usable_for_sending: bool
+
+        attr_accessor verification: Telnyx::EmailDomainVerification
+
+        def initialize: (
+          id: String,
+          checked_at: Time,
+          record_type: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::record_type,
+          status: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::status,
+          usable_for_inbound: bool,
+          usable_for_sending: bool,
+          verification: Telnyx::EmailDomainVerification
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          checked_at: Time,
+          record_type: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::record_type,
+          status: Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::status,
+          usable_for_inbound: bool,
+          usable_for_sending: bool,
+          verification: Telnyx::EmailDomainVerification
+        }
+
+        type record_type = :email_domain_health
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_DOMAIN_HEALTH: :email_domain_health
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::record_type]
+        end
+
+        type status =
+          :pending | :verifying | :verified | :failed | :degraded | :suspended
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          VERIFYING: :verifying
+          VERIFIED: :verified
+          FAILED: :failed
+          DEGRADED: :degraded
+          SUSPENDED: :suspended
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailDomainRetrieveHealthResponse::Data::status]
+        end
+      end
+    end
+  end
+end

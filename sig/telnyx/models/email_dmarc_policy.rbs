@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    type email_dmarc_policy =
+      {
+        p_: Telnyx::Models::EmailDmarcPolicy::p_,
+        pct: Integer,
+        rua: String?,
+        sp: Telnyx::Models::EmailDmarcPolicy::sp?
+      }
+
+    class EmailDmarcPolicy < Telnyx::Internal::Type::BaseModel
+      attr_reader p_: Telnyx::Models::EmailDmarcPolicy::p_?
+
+      def p_=: (
+        Telnyx::Models::EmailDmarcPolicy::p_
+      ) -> Telnyx::Models::EmailDmarcPolicy::p_
+
+      attr_reader pct: Integer?
+
+      def pct=: (Integer) -> Integer
+
+      attr_accessor rua: String?
+
+      attr_accessor sp: Telnyx::Models::EmailDmarcPolicy::sp?
+
+      def initialize: (
+        ?p_: Telnyx::Models::EmailDmarcPolicy::p_,
+        ?pct: Integer,
+        ?rua: String?,
+        ?sp: Telnyx::Models::EmailDmarcPolicy::sp?
+      ) -> void
+
+      def to_hash: -> {
+        p_: Telnyx::Models::EmailDmarcPolicy::p_,
+        pct: Integer,
+        rua: String?,
+        sp: Telnyx::Models::EmailDmarcPolicy::sp?
+      }
+
+      type p_ = :none | :quarantine | :reject
+
+      module P
+        extend Telnyx::Internal::Type::Enum
+
+        NONE: :none
+        QUARANTINE: :quarantine
+        REJECT: :reject
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailDmarcPolicy::p_]
+      end
+
+      type sp = :none | :quarantine | :reject
+
+      module Sp
+        extend Telnyx::Internal::Type::Enum
+
+        NONE: :none
+        QUARANTINE: :quarantine
+        REJECT: :reject
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailDmarcPolicy::sp]
+      end
+    end
+  end
+end

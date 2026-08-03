@@ -1,0 +1,57 @@
+module Telnyx
+  module Resources
+    class EmailInboxes
+      class Messages
+        attr_reader actions: Telnyx::Resources::EmailInboxes::Messages::Actions
+
+        attr_reader labels: Telnyx::Resources::EmailInboxes::Messages::Labels
+
+        def update: (
+          String message_id,
+          inbox_id: String,
+          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::MessageUpdateResponse
+
+        def list: (
+          String inbox_id,
+          ?filter_from: String,
+          ?filter_label: String,
+          ?filter_read: bool,
+          ?filter_received_after: Time,
+          ?filter_received_before: Time,
+          ?filter_search: String,
+          ?filter_subject: String,
+          ?filter_unread: bool,
+          ?page_after: String,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::MessageListResponse
+
+        def drafts: (
+          String message_id,
+          inbox_id: String,
+          ?attachments: ::Array[top],
+          ?bcc: ::Array[Telnyx::Models::email_address_input],
+          ?cc: ::Array[Telnyx::Models::email_address_input],
+          ?from_email: String,
+          ?from_name: String,
+          ?headers: ::Hash[Symbol, String],
+          ?html: String,
+          ?html_body: String,
+          ?labels: ::Array[String],
+          ?metadata: top,
+          ?reply_to: String,
+          ?subject: String,
+          ?tags: ::Array[String],
+          ?text: String,
+          ?text_body: String,
+          ?to: ::Array[Telnyx::Models::email_address_input],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailInboxes::EmailDraftResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

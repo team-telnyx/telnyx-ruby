@@ -1,0 +1,39 @@
+module Telnyx
+  module Resources
+    class EmailUnsubscribeGroups
+      attr_reader suppressions: Telnyx::Resources::EmailUnsubscribeGroups::Suppressions
+
+      def create: (
+        name: String,
+        ?description: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::UnsubscribeGroupResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::UnsubscribeGroupResponse
+
+      def update: (
+        String id,
+        ?description: String?,
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::UnsubscribeGroupResponse
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::UnsubscribeGroup]
+
+      def delete: (
+        String id,
+        ?force: Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force,
+        ?request_options: Telnyx::request_opts
+      ) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

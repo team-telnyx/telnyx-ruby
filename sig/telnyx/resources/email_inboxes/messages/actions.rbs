@@ -1,0 +1,38 @@
+module Telnyx
+  module Resources
+    class EmailInboxes
+      class Messages
+        class Actions
+          def forward: (
+            String message_id,
+            inbox_id: String,
+            to: Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::to,
+            ?bcc: Telnyx::Models::EmailInboxes::Messages::inbox_action_recipient_input,
+            ?cc: Telnyx::Models::EmailInboxes::Messages::inbox_action_recipient_input,
+            ?html: String,
+            ?text: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::EmailInboxes::EmailMessageResponse
+
+          def reply: (
+            String message_id,
+            inbox_id: String,
+            ?html: String,
+            ?text: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::EmailInboxes::EmailMessageResponse
+
+          def reply_all: (
+            String message_id,
+            inbox_id: String,
+            ?html: String,
+            ?text: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::EmailInboxes::EmailMessageResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

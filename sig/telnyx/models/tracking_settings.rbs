@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type tracking_settings = { click_tracking: bool, open_tracking: bool }
+
+    class TrackingSettings < Telnyx::Internal::Type::BaseModel
+      attr_reader click_tracking: bool?
+
+      def click_tracking=: (bool) -> bool
+
+      attr_reader open_tracking: bool?
+
+      def open_tracking=: (bool) -> bool
+
+      def initialize: (?click_tracking: bool, ?open_tracking: bool) -> void
+
+      def to_hash: -> { click_tracking: bool, open_tracking: bool }
+    end
+  end
+end

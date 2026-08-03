@@ -31,6 +31,8 @@ module Telnyx
             Telnyx::CallMachineGreetingEndedWebhookEvent,
             Telnyx::CallMachinePremiumDetectionEndedWebhookEvent,
             Telnyx::CallMachinePremiumGreetingEndedWebhookEvent,
+            Telnyx::CallPaymentCompletedWebhookEvent,
+            Telnyx::CallPaymentProgressWebhookEvent,
             Telnyx::CallPlaybackEndedWebhookEvent,
             Telnyx::CallPlaybackStartedWebhookEvent,
             Telnyx::CallRecordingErrorWebhookEvent,

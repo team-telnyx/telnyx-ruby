@@ -1,0 +1,34 @@
+module Telnyx
+  module Resources
+    class EmailInboxes
+      attr_reader drafts: Telnyx::Resources::EmailInboxes::Drafts
+
+      attr_reader filters: Telnyx::Resources::EmailInboxes::Filters
+
+      attr_reader messages: Telnyx::Resources::EmailInboxes::Messages
+
+      attr_reader threads: Telnyx::Resources::EmailInboxes::Threads
+
+      def create: (
+        ?domain_id: String,
+        ?username: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailInboxResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailInboxResponse
+
+      def list: (
+        ?page_cursor: String,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailInboxListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

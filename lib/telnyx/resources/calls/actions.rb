@@ -10,7 +10,7 @@ module Telnyx
         #
         # Add messages to the conversation started by an AI assistant on the call.
         #
-        # @overload add_ai_assistant_messages(call_control_id, client_state: nil, command_id: nil, messages: nil, request_options: {})
+        # @overload add_ai_assistant_messages(call_control_id, client_state: nil, command_id: nil, messages: nil, trigger_response: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -19,6 +19,8 @@ module Telnyx
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         # @param messages [Array<Telnyx::Models::Calls::UserMessage, Telnyx::Models::Calls::AssistantMessage, Telnyx::Models::Calls::ToolMessage, Telnyx::Models::Calls::SystemMessage, Telnyx::Models::Calls::DeveloperMessage>] The messages to add to the conversation.
+        #
+        # @param trigger_response [Boolean] When `true`, the injected messages immediately trigger an assistant response/tur
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -635,6 +637,85 @@ module Telnyx
         end
 
         # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Calls::ActionPayParams} for more details.
+        #
+        # Collect payment details from the caller using DTMF and either charge or tokenize
+        # the payment method through a configured Pay connector. Pay pauses active call
+        # recordings while sensitive payment details are collected.
+        #
+        # When `payment_token` is supplied, the DTMF collection steps are skipped and the
+        # existing token is sent to the connector.
+        #
+        # **Expected Webhooks:**
+        #
+        # - `call.payment.progress`
+        # - `call.payment.completed`
+        #
+        # **Test mode card numbers:** `4111111111111111` (Visa), `5555555555554444`
+        # (Mastercard), `378282246310005` (American Express), `6011111111111117`
+        # (Discover), `3065930009020004` (Diners Club), `3566002020360505` (JCB),
+        # `6200000000000005` (UnionPay), and `6771798021000008` (Maestro). Test-mode
+        # connectors reject other card numbers before contacting the configured processor.
+        # The UnionPay and Maestro numbers are accepted for processor testing, but Pay
+        # currently does not emit a card type for them.
+        #
+        # @overload pay(call_control_id, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, voice: nil, request_options: {})
+        #
+        # @param call_control_id [String] Unique identifier and token for controlling the call
+        #
+        # @param amount [Float] Amount to charge. Required when `transaction_type` is `charge`.
+        #
+        # @param client_state [String] Base64-encoded state included in subsequent webhooks.
+        #
+        # @param command_id [String] Idempotency key for the command. Telnyx ignores a duplicate command with the sam
+        #
+        # @param connector_name [String] Name of the Pay connector used to process the transaction.
+        #
+        # @param currency [Symbol, Telnyx::Models::Calls::ActionPayParams::Currency] Currency used for the transaction. Pay currently supports USD only.
+        #
+        # @param description [String] Optional description forwarded with the payment transaction.
+        #
+        # @param inter_digit_timeout_millis [Integer] Time in milliseconds to wait between consecutive DTMF digits.
+        #
+        # @param language [String] Language used for payment prompts.
+        #
+        # @param max_attempts [Integer] Maximum number of attempts for each payment collection step.
+        #
+        # @param metadata [Hash{Symbol=>Object}] Metadata forwarded to the Pay connector.
+        #
+        # @param parameters [Hash{Symbol=>Object}] Additional parameters forwarded to the Pay connector.
+        #
+        # @param payment_method [Symbol, Telnyx::Models::Calls::ActionPayParams::PaymentMethod] Payment method to collect.
+        #
+        # @param payment_token [String] Existing payment token. When supplied, payment-detail collection is skipped.
+        #
+        # @param prompts [Telnyx::Models::Calls::ActionPayParams::Prompts] Custom text-to-speech prompts keyed by payment collection step.
+        #
+        # @param service_level [String] Speech synthesis service level used for payment prompts. Pay defaults to `premiu
+        #
+        # @param timeout_millis [Integer] Time in milliseconds to wait for DTMF input for each collection step.
+        #
+        # @param transaction_type [Symbol, Telnyx::Models::Calls::ActionPayParams::TransactionType] Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is absen
+        #
+        # @param voice [String] Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Calls::ActionPayResponse]
+        #
+        # @see Telnyx::Models::Calls::ActionPayParams
+        def pay(call_control_id, params = {})
+          parsed, options = Telnyx::Calls::ActionPayParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["calls/%1$s/actions/pay", call_control_id],
+            body: parsed,
+            model: Telnyx::Models::Calls::ActionPayResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionReferParams} for more details.
         #
         # Initiate a SIP Refer on a Call Control call. You can initiate a SIP Refer at any
@@ -890,7 +971,7 @@ module Telnyx
         # - `call.conversation.ended`
         # - `call.conversation_insights.generated`
         #
-        # @overload start_ai_assistant(call_control_id, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @overload start_ai_assistant(call_control_id, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -911,10 +992,6 @@ module Telnyx
         # @param send_message_history_updates [Boolean] When `true`, a webhook is sent each time the conversation message history is upd
         #
         # @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
-        #
-        # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
-        #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -1339,7 +1416,7 @@ module Telnyx
         #
         # @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
+        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
         #
         # @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
         #
@@ -1733,7 +1810,7 @@ module Telnyx
         # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
         #   was requested and a beep was detected
         #
-        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -1784,6 +1861,8 @@ module Telnyx
         # @param record_track [Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordTrack] The audio track to be recorded. Can be either `both`, `inbound` or `outbound`. I
         #
         # @param record_trim [Symbol, Telnyx::Models::Calls::ActionTransferParams::RecordTrim] When set to `trim-silence`, silence will be removed from the beginning and end o
+        #
+        # @param route_to_mobile [Boolean] When set to true, routes the call directly to the mobile device associated with
         #
         # @param send_digits_on_answer [String] DTMF digits to send automatically after the transfer destination answers. Useful
         #

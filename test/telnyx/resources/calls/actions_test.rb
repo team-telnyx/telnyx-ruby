@@ -209,6 +209,22 @@ class Telnyx::Test::Resources::Calls::ActionsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_pay
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.calls.actions.pay("call_control_id")
+
+    assert_pattern do
+      response => Telnyx::Models::Calls::ActionPayResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Calls::CallControlCommandResult | nil
+      }
+    end
+  end
+
   def test_refer_required_params
     skip("Mock server tests are disabled")
 

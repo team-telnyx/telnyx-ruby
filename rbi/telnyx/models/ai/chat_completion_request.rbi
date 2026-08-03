@@ -155,6 +155,15 @@ module Telnyx
         sig { params(seed: Integer).void }
         attr_writer :seed
 
+        # The service tier to use for this request. Supported values vary by model; use
+        # `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
+        # omitted, Telnyx-hosted models use `default`.
+        sig { returns(T.nilable(String)) }
+        attr_reader :service_tier
+
+        sig { params(service_tier: String).void }
+        attr_writer :service_tier
+
         # Up to 4 sequences where the API will stop generating further tokens. The
         # returned text will not contain the stop sequence.
         sig do
@@ -277,6 +286,7 @@ module Telnyx
             response_format:
               Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash,
             seed: Integer,
+            service_tier: String,
             stop: Telnyx::AI::ChatCompletionRequest::Stop::Variants,
             stream: T::Boolean,
             temperature: Float,
@@ -347,6 +357,10 @@ module Telnyx
           # such that repeated requests with the same `seed` and parameters should return
           # the same result.
           seed: nil,
+          # The service tier to use for this request. Supported values vary by model; use
+          # `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
+          # omitted, Telnyx-hosted models use `default`.
+          service_tier: nil,
           # Up to 4 sequences where the API will stop generating further tokens. The
           # returned text will not contain the stop sequence.
           stop: nil,
@@ -399,6 +413,7 @@ module Telnyx
               response_format:
                 Telnyx::AI::ChatCompletionRequest::ResponseFormat,
               seed: Integer,
+              service_tier: String,
               stop: Telnyx::AI::ChatCompletionRequest::Stop::Variants,
               stream: T::Boolean,
               temperature: Float,

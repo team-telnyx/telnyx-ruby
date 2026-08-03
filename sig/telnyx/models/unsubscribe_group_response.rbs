@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type unsubscribe_group_response = { data: Telnyx::UnsubscribeGroup }
+
+    class UnsubscribeGroupResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::UnsubscribeGroup
+
+      def initialize: (data: Telnyx::UnsubscribeGroup) -> void
+
+      def to_hash: -> { data: Telnyx::UnsubscribeGroup }
+    end
+  end
+end

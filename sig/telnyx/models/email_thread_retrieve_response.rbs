@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    type email_thread_retrieve_response =
+      {
+        data: Telnyx::EmailInboxes::InboundThreadDetail,
+        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      }
+
+    class EmailThreadRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::EmailInboxes::InboundThreadDetail
+
+      attr_accessor meta: Telnyx::EmailInboxes::EmailPaginationMeta
+
+      def initialize: (
+        data: Telnyx::EmailInboxes::InboundThreadDetail,
+        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::EmailInboxes::InboundThreadDetail,
+        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      }
+    end
+  end
+end

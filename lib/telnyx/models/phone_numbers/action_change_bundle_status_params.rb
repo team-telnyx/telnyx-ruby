@@ -20,8 +20,8 @@ module Telnyx
         #   bundle to another directly. You must first remove it from a bundle, and then
         #   assign it to a new bundle.
         #
-        #   @return [String]
-        required :bundle_id, String
+        #   @return [String, nil]
+        required :bundle_id, String, nil?: true
 
         # @!method initialize(id:, bundle_id:, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -29,7 +29,7 @@ module Telnyx
         #
         #   @param id [String]
         #
-        #   @param bundle_id [String] The new bundle_id setting for the number. If you are assigning the number to a b
+        #   @param bundle_id [String, nil] The new bundle_id setting for the number. If you are assigning the number to a b
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

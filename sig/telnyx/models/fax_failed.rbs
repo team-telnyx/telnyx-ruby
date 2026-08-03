@@ -89,9 +89,10 @@ module Telnyx
             client_state: String,
             connection_id: String,
             direction: Telnyx::Models::FaxFailed::Data::Payload::direction,
-            failure_reason: Telnyx::Models::FaxFailed::Data::Payload::failure_reason,
+            failure_reason: String,
             fax_id: String,
             from: String,
+            internal_failure_reason: String,
             media_name: String,
             original_media_url: String,
             status: Telnyx::Models::FaxFailed::Data::Payload::status,
@@ -114,11 +115,9 @@ module Telnyx
             Telnyx::Models::FaxFailed::Data::Payload::direction
           ) -> Telnyx::Models::FaxFailed::Data::Payload::direction
 
-          attr_reader failure_reason: Telnyx::Models::FaxFailed::Data::Payload::failure_reason?
+          attr_reader failure_reason: String?
 
-          def failure_reason=: (
-            Telnyx::Models::FaxFailed::Data::Payload::failure_reason
-          ) -> Telnyx::Models::FaxFailed::Data::Payload::failure_reason
+          def failure_reason=: (String) -> String
 
           attr_reader fax_id: String?
 
@@ -127,6 +126,10 @@ module Telnyx
           attr_reader from: String?
 
           def from=: (String) -> String
+
+          attr_reader internal_failure_reason: String?
+
+          def internal_failure_reason=: (String) -> String
 
           attr_reader media_name: String?
 
@@ -154,9 +157,10 @@ module Telnyx
             ?client_state: String,
             ?connection_id: String,
             ?direction: Telnyx::Models::FaxFailed::Data::Payload::direction,
-            ?failure_reason: Telnyx::Models::FaxFailed::Data::Payload::failure_reason,
+            ?failure_reason: String,
             ?fax_id: String,
             ?from: String,
+            ?internal_failure_reason: String,
             ?media_name: String,
             ?original_media_url: String,
             ?status: Telnyx::Models::FaxFailed::Data::Payload::status,
@@ -168,9 +172,10 @@ module Telnyx
             client_state: String,
             connection_id: String,
             direction: Telnyx::Models::FaxFailed::Data::Payload::direction,
-            failure_reason: Telnyx::Models::FaxFailed::Data::Payload::failure_reason,
+            failure_reason: String,
             fax_id: String,
             from: String,
+            internal_failure_reason: String,
             media_name: String,
             original_media_url: String,
             status: Telnyx::Models::FaxFailed::Data::Payload::status,
@@ -187,16 +192,6 @@ module Telnyx
             OUTBOUND: :outbound
 
             def self?.values: -> ::Array[Telnyx::Models::FaxFailed::Data::Payload::direction]
-          end
-
-          type failure_reason = :rejected
-
-          module FailureReason
-            extend Telnyx::Internal::Type::Enum
-
-            REJECTED: :rejected
-
-            def self?.values: -> ::Array[Telnyx::Models::FaxFailed::Data::Payload::failure_reason]
           end
 
           type status = :failed

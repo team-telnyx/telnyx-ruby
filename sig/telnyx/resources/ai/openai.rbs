@@ -11,6 +11,7 @@ module Telnyx
           ?input: ::Hash[Symbol, top],
           ?instructions: String,
           ?model: String,
+          ?service_tier: String,
           ?stream: bool,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::openai_create_response_response

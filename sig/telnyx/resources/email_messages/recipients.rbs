@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class EmailMessages
+      class Recipients
+        def retrieve: (
+          String recipient_id,
+          email_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailMessages::RecipientRetrieveResponse
+
+        def list: (
+          String email_id,
+          ?kind: Telnyx::Models::EmailMessages::RecipientListParams::kind,
+          ?page_cursor: String,
+          ?page_size: Integer,
+          ?status: Telnyx::Models::EmailMessages::RecipientListParams::status,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailMessages::RecipientListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

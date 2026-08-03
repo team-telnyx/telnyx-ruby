@@ -1,0 +1,102 @@
+module Telnyx
+  module Models
+    type email_domain_verification =
+      {
+        dkim: Telnyx::Models::EmailDomainVerification::dkim,
+        dmarc: Telnyx::Models::EmailDomainVerification::dmarc,
+        mx: Telnyx::Models::EmailDomainVerification::mx,
+        ownership: Telnyx::Models::EmailDomainVerification::ownership,
+        spf: Telnyx::Models::EmailDomainVerification::spf
+      }
+
+    class EmailDomainVerification < Telnyx::Internal::Type::BaseModel
+      attr_accessor dkim: Telnyx::Models::EmailDomainVerification::dkim
+
+      attr_accessor dmarc: Telnyx::Models::EmailDomainVerification::dmarc
+
+      attr_accessor mx: Telnyx::Models::EmailDomainVerification::mx
+
+      attr_accessor ownership: Telnyx::Models::EmailDomainVerification::ownership
+
+      attr_accessor spf: Telnyx::Models::EmailDomainVerification::spf
+
+      def initialize: (
+        dkim: Telnyx::Models::EmailDomainVerification::dkim,
+        dmarc: Telnyx::Models::EmailDomainVerification::dmarc,
+        mx: Telnyx::Models::EmailDomainVerification::mx,
+        ownership: Telnyx::Models::EmailDomainVerification::ownership,
+        spf: Telnyx::Models::EmailDomainVerification::spf
+      ) -> void
+
+      def to_hash: -> {
+        dkim: Telnyx::Models::EmailDomainVerification::dkim,
+        dmarc: Telnyx::Models::EmailDomainVerification::dmarc,
+        mx: Telnyx::Models::EmailDomainVerification::mx,
+        ownership: Telnyx::Models::EmailDomainVerification::ownership,
+        spf: Telnyx::Models::EmailDomainVerification::spf
+      }
+
+      type dkim = :pending | :verified | :failed
+
+      module Dkim
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        VERIFIED: :verified
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailDomainVerification::dkim]
+      end
+
+      type dmarc = :missing_optional | :verified | :failed
+
+      module Dmarc
+        extend Telnyx::Internal::Type::Enum
+
+        MISSING_OPTIONAL: :missing_optional
+        VERIFIED: :verified
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailDomainVerification::dmarc]
+      end
+
+      type mx = :not_required | :pending | :verified | :failed
+
+      module Mx
+        extend Telnyx::Internal::Type::Enum
+
+        NOT_REQUIRED: :not_required
+        PENDING: :pending
+        VERIFIED: :verified
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailDomainVerification::mx]
+      end
+
+      type ownership = :pending | :verified | :not_required
+
+      module Ownership
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        VERIFIED: :verified
+        NOT_REQUIRED: :not_required
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailDomainVerification::ownership]
+      end
+
+      type spf = :missing_optional | :verified | :failed | :not_required
+
+      module Spf
+        extend Telnyx::Internal::Type::Enum
+
+        MISSING_OPTIONAL: :missing_optional
+        VERIFIED: :verified
+        FAILED: :failed
+        NOT_REQUIRED: :not_required
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailDomainVerification::spf]
+      end
+    end
+  end
+end

@@ -15,7 +15,7 @@ module Telnyx
       #
       # @param backend [Symbol, Telnyx::Models::CustomStorageConfiguration::Backend]
       #
-      # @param configuration [Telnyx::Models::GcsConfigurationData, Telnyx::Models::S3ConfigurationData, Telnyx::Models::AzureConfigurationData]
+      # @param configuration [Telnyx::Models::GcsConfigurationData, Telnyx::Models::S3ConfigurationData, Telnyx::Models::CustomStorageConfiguration::Configuration::S3Generic, Telnyx::Models::AzureConfigurationData]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -67,7 +67,7 @@ module Telnyx
       #
       # @param backend [Symbol, Telnyx::Models::CustomStorageConfiguration::Backend]
       #
-      # @param configuration [Telnyx::Models::GcsConfigurationData, Telnyx::Models::S3ConfigurationData, Telnyx::Models::AzureConfigurationData]
+      # @param configuration [Telnyx::Models::GcsConfigurationData, Telnyx::Models::S3ConfigurationData, Telnyx::Models::CustomStorageConfiguration::Configuration::S3Generic, Telnyx::Models::AzureConfigurationData]
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

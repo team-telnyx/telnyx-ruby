@@ -1,0 +1,261 @@
+module Telnyx
+  module Models
+    module Calls
+      type action_pay_params =
+        {
+          call_control_id: String,
+          amount: Float,
+          client_state: String,
+          command_id: String,
+          connector_name: String,
+          currency: Telnyx::Models::Calls::ActionPayParams::currency,
+          description: String,
+          inter_digit_timeout_millis: Integer,
+          language: String,
+          max_attempts: Integer,
+          metadata: ::Hash[Symbol, top],
+          parameters: ::Hash[Symbol, top],
+          payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method,
+          payment_token: String,
+          prompts: Telnyx::Calls::ActionPayParams::Prompts,
+          service_level: String,
+          timeout_millis: Integer,
+          transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          voice: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionPayParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor call_control_id: String
+
+        attr_reader amount: Float?
+
+        def amount=: (Float) -> Float
+
+        attr_reader client_state: String?
+
+        def client_state=: (String) -> String
+
+        attr_reader command_id: String?
+
+        def command_id=: (String) -> String
+
+        attr_reader connector_name: String?
+
+        def connector_name=: (String) -> String
+
+        attr_reader currency: Telnyx::Models::Calls::ActionPayParams::currency?
+
+        def currency=: (
+          Telnyx::Models::Calls::ActionPayParams::currency
+        ) -> Telnyx::Models::Calls::ActionPayParams::currency
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_reader inter_digit_timeout_millis: Integer?
+
+        def inter_digit_timeout_millis=: (Integer) -> Integer
+
+        attr_reader language: String?
+
+        def language=: (String) -> String
+
+        attr_reader max_attempts: Integer?
+
+        def max_attempts=: (Integer) -> Integer
+
+        attr_reader metadata: ::Hash[Symbol, top]?
+
+        def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader parameters: ::Hash[Symbol, top]?
+
+        def parameters=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method?
+
+        def payment_method=: (
+          Telnyx::Models::Calls::ActionPayParams::payment_method
+        ) -> Telnyx::Models::Calls::ActionPayParams::payment_method
+
+        attr_reader payment_token: String?
+
+        def payment_token=: (String) -> String
+
+        attr_reader prompts: Telnyx::Calls::ActionPayParams::Prompts?
+
+        def prompts=: (
+          Telnyx::Calls::ActionPayParams::Prompts
+        ) -> Telnyx::Calls::ActionPayParams::Prompts
+
+        attr_reader service_level: String?
+
+        def service_level=: (String) -> String
+
+        attr_reader timeout_millis: Integer?
+
+        def timeout_millis=: (Integer) -> Integer
+
+        attr_reader transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type?
+
+        def transaction_type=: (
+          Telnyx::Models::Calls::ActionPayParams::transaction_type
+        ) -> Telnyx::Models::Calls::ActionPayParams::transaction_type
+
+        attr_reader voice: String?
+
+        def voice=: (String) -> String
+
+        def initialize: (
+          call_control_id: String,
+          ?amount: Float,
+          ?client_state: String,
+          ?command_id: String,
+          ?connector_name: String,
+          ?currency: Telnyx::Models::Calls::ActionPayParams::currency,
+          ?description: String,
+          ?inter_digit_timeout_millis: Integer,
+          ?language: String,
+          ?max_attempts: Integer,
+          ?metadata: ::Hash[Symbol, top],
+          ?parameters: ::Hash[Symbol, top],
+          ?payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method,
+          ?payment_token: String,
+          ?prompts: Telnyx::Calls::ActionPayParams::Prompts,
+          ?service_level: String,
+          ?timeout_millis: Integer,
+          ?transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          ?voice: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          call_control_id: String,
+          amount: Float,
+          client_state: String,
+          command_id: String,
+          connector_name: String,
+          currency: Telnyx::Models::Calls::ActionPayParams::currency,
+          description: String,
+          inter_digit_timeout_millis: Integer,
+          language: String,
+          max_attempts: Integer,
+          metadata: ::Hash[Symbol, top],
+          parameters: ::Hash[Symbol, top],
+          payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method,
+          payment_token: String,
+          prompts: Telnyx::Calls::ActionPayParams::Prompts,
+          service_level: String,
+          timeout_millis: Integer,
+          transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          voice: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type currency = :USD | :usd
+
+        module Currency
+          extend Telnyx::Internal::Type::Enum
+
+          USD: :USD
+          USD_2: :usd
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionPayParams::currency]
+        end
+
+        type payment_method = :"credit-card" | :"ach-debit"
+
+        module PaymentMethod
+          extend Telnyx::Internal::Type::Enum
+
+          CREDIT_CARD: :"credit-card"
+          ACH_DEBIT: :"ach-debit"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionPayParams::payment_method]
+        end
+
+        type prompts =
+          {
+            bank_account_number: Telnyx::Models::Calls::pay_prompt_value,
+            bank_routing_number: Telnyx::Models::Calls::pay_prompt_value,
+            expiration_date: Telnyx::Models::Calls::pay_prompt_value,
+            payment_card_number: Telnyx::Models::Calls::pay_prompt_value,
+            postal_code: Telnyx::Models::Calls::pay_prompt_value,
+            security_code: Telnyx::Models::Calls::pay_prompt_value
+          }
+
+        class Prompts < Telnyx::Internal::Type::BaseModel
+          attr_reader bank_account_number: Telnyx::Models::Calls::pay_prompt_value?
+
+          def bank_account_number=: (
+            Telnyx::Models::Calls::pay_prompt_value
+          ) -> Telnyx::Models::Calls::pay_prompt_value
+
+          attr_reader bank_routing_number: Telnyx::Models::Calls::pay_prompt_value?
+
+          def bank_routing_number=: (
+            Telnyx::Models::Calls::pay_prompt_value
+          ) -> Telnyx::Models::Calls::pay_prompt_value
+
+          attr_reader expiration_date: Telnyx::Models::Calls::pay_prompt_value?
+
+          def expiration_date=: (
+            Telnyx::Models::Calls::pay_prompt_value
+          ) -> Telnyx::Models::Calls::pay_prompt_value
+
+          attr_reader payment_card_number: Telnyx::Models::Calls::pay_prompt_value?
+
+          def payment_card_number=: (
+            Telnyx::Models::Calls::pay_prompt_value
+          ) -> Telnyx::Models::Calls::pay_prompt_value
+
+          attr_reader postal_code: Telnyx::Models::Calls::pay_prompt_value?
+
+          def postal_code=: (
+            Telnyx::Models::Calls::pay_prompt_value
+          ) -> Telnyx::Models::Calls::pay_prompt_value
+
+          attr_reader security_code: Telnyx::Models::Calls::pay_prompt_value?
+
+          def security_code=: (
+            Telnyx::Models::Calls::pay_prompt_value
+          ) -> Telnyx::Models::Calls::pay_prompt_value
+
+          def initialize: (
+            ?bank_account_number: Telnyx::Models::Calls::pay_prompt_value,
+            ?bank_routing_number: Telnyx::Models::Calls::pay_prompt_value,
+            ?expiration_date: Telnyx::Models::Calls::pay_prompt_value,
+            ?payment_card_number: Telnyx::Models::Calls::pay_prompt_value,
+            ?postal_code: Telnyx::Models::Calls::pay_prompt_value,
+            ?security_code: Telnyx::Models::Calls::pay_prompt_value
+          ) -> void
+
+          def to_hash: -> {
+            bank_account_number: Telnyx::Models::Calls::pay_prompt_value,
+            bank_routing_number: Telnyx::Models::Calls::pay_prompt_value,
+            expiration_date: Telnyx::Models::Calls::pay_prompt_value,
+            payment_card_number: Telnyx::Models::Calls::pay_prompt_value,
+            postal_code: Telnyx::Models::Calls::pay_prompt_value,
+            security_code: Telnyx::Models::Calls::pay_prompt_value
+          }
+        end
+
+        type transaction_type = :charge | :tokenize
+
+        module TransactionType
+          extend Telnyx::Internal::Type::Enum
+
+          CHARGE: :charge
+          TOKENIZE: :tokenize
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionPayParams::transaction_type]
+        end
+      end
+    end
+  end
+end

@@ -10,6 +10,7 @@ module Telnyx
       required :messaging_profile_id, String, nil?: true
 
       # @!attribute tags
+      #   Tags associated with the resource.
       #
       #   @return [Array<String>, nil]
       optional :tags, Telnyx::Internal::Type::ArrayOf[String]
@@ -65,7 +66,7 @@ module Telnyx
       #
       #   @param short_code [String] Short digit sequence used to address messages.
       #
-      #   @param tags [Array<String>]
+      #   @param tags [Array<String>] Tags associated with the resource.
       #
       #   @param updated_at [Time] ISO 8601 formatted date indicating when the resource was updated.
 

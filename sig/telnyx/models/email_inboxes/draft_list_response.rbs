@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type draft_list_response =
+        {
+          data: ::Array[Telnyx::EmailInboxes::EmailDraft],
+          meta: Telnyx::EmailInboxes::EmailPaginationMeta
+        }
+
+      class DraftListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::EmailInboxes::EmailDraft]
+
+        attr_accessor meta: Telnyx::EmailInboxes::EmailPaginationMeta
+
+        def initialize: (
+          data: ::Array[Telnyx::EmailInboxes::EmailDraft],
+          meta: Telnyx::EmailInboxes::EmailPaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::EmailInboxes::EmailDraft],
+          meta: Telnyx::EmailInboxes::EmailPaginationMeta
+        }
+      end
+    end
+  end
+end
