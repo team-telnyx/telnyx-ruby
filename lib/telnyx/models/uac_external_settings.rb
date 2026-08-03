@@ -51,6 +51,13 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::UacExternalSettings::Transport, nil]
       optional :transport, enum: -> { Telnyx::UacExternalSettings::Transport }, nil?: true
 
+      # @!attribute user_agent
+      #   Custom SIP User-Agent header value that Telnyx uses on outbound REGISTER and
+      #   INVITE messages. Set to null to use Telnyx's default User-Agent.
+      #
+      #   @return [String, nil]
+      optional :user_agent, String, nil?: true
+
       # @!attribute username
       #   The SIP username used to authenticate with the external SIP peer for
       #   registrations and outbound calls. Must start with a letter or number and contain
@@ -59,7 +66,7 @@ module Telnyx
       #   @return [String, nil]
       optional :username, String
 
-      # @!method initialize(auth_username: nil, expiration_sec: nil, from_user: nil, outbound_proxy: nil, password: nil, proxy: nil, transport: nil, username: nil)
+      # @!method initialize(auth_username: nil, expiration_sec: nil, from_user: nil, outbound_proxy: nil, password: nil, proxy: nil, transport: nil, user_agent: nil, username: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::UacExternalSettings} for more details.
       #
@@ -79,6 +86,8 @@ module Telnyx
       #   @param proxy [String] The SIP proxy address of the external SIP peer used for registrations and outbou
       #
       #   @param transport [Symbol, Telnyx::Models::UacExternalSettings::Transport, nil] The transport protocol used for SIP signaling when communicating with the extern
+      #
+      #   @param user_agent [String, nil] Custom SIP User-Agent header value that Telnyx uses on outbound REGISTER and INV
       #
       #   @param username [String] The SIP username used to authenticate with the external SIP peer for registratio
 

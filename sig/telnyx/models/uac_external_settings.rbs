@@ -9,6 +9,7 @@ module Telnyx
         password: String,
         proxy: String,
         transport: Telnyx::Models::UacExternalSettings::transport?,
+        user_agent: String?,
         username: String
       }
 
@@ -31,6 +32,8 @@ module Telnyx
 
       attr_accessor transport: Telnyx::Models::UacExternalSettings::transport?
 
+      attr_accessor user_agent: String?
+
       attr_reader username: String?
 
       def username=: (String) -> String
@@ -43,6 +46,7 @@ module Telnyx
         ?password: String,
         ?proxy: String,
         ?transport: Telnyx::Models::UacExternalSettings::transport?,
+        ?user_agent: String?,
         ?username: String
       ) -> void
 
@@ -54,6 +58,7 @@ module Telnyx
         password: String,
         proxy: String,
         transport: Telnyx::Models::UacExternalSettings::transport?,
+        user_agent: String?,
         username: String
       }
 
