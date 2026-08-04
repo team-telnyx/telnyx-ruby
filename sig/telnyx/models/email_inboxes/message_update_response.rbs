@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type message_update_response = { data: Telnyx::InboundMessage }
+
+      class MessageUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::InboundMessage
+
+        def initialize: (data: Telnyx::InboundMessage) -> void
+
+        def to_hash: -> { data: Telnyx::InboundMessage }
+      end
+    end
+  end
+end

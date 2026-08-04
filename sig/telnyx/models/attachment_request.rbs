@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    type attachment_request =
+      {
+        content: String,
+        content_id: String?,
+        content_type: String,
+        disposition: String,
+        filename: String
+      }
+
+    class AttachmentRequest < Telnyx::Internal::Type::BaseModel
+      attr_reader content: String?
+
+      def content=: (String) -> String
+
+      attr_accessor content_id: String?
+
+      attr_reader content_type: String?
+
+      def content_type=: (String) -> String
+
+      attr_reader disposition: String?
+
+      def disposition=: (String) -> String
+
+      attr_reader filename: String?
+
+      def filename=: (String) -> String
+
+      def initialize: (
+        ?content: String,
+        ?content_id: String?,
+        ?content_type: String,
+        ?disposition: String,
+        ?filename: String
+      ) -> void
+
+      def to_hash: -> {
+        content: String,
+        content_id: String?,
+        content_type: String,
+        disposition: String,
+        filename: String
+      }
+    end
+  end
+end

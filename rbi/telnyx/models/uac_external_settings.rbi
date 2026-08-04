@@ -50,6 +50,11 @@ module Telnyx
       end
       attr_accessor :transport
 
+      # Custom SIP User-Agent header value that Telnyx uses on outbound REGISTER and
+      # INVITE messages. Set to null to use Telnyx's default User-Agent.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :user_agent
+
       # The SIP username used to authenticate with the external SIP peer for
       # registrations and outbound calls. Must start with a letter or number and contain
       # only letters, numbers, hyphens, and underscores.
@@ -71,6 +76,7 @@ module Telnyx
           proxy: String,
           transport:
             T.nilable(Telnyx::UacExternalSettings::Transport::OrSymbol),
+          user_agent: T.nilable(String),
           username: String
         ).returns(T.attached_class)
       end
@@ -95,6 +101,9 @@ module Telnyx
         # The transport protocol used for SIP signaling when communicating with the
         # external SIP peer. One of UDP, TLS, or TCP.
         transport: nil,
+        # Custom SIP User-Agent header value that Telnyx uses on outbound REGISTER and
+        # INVITE messages. Set to null to use Telnyx's default User-Agent.
+        user_agent: nil,
         # The SIP username used to authenticate with the external SIP peer for
         # registrations and outbound calls. Must start with a letter or number and contain
         # only letters, numbers, hyphens, and underscores.
@@ -113,6 +122,7 @@ module Telnyx
             proxy: String,
             transport:
               T.nilable(Telnyx::UacExternalSettings::Transport::OrSymbol),
+            user_agent: T.nilable(String),
             username: String
           }
         )

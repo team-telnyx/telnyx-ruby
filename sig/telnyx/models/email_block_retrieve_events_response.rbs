@@ -1,0 +1,100 @@
+module Telnyx
+  module Models
+    type email_block_retrieve_events_response =
+      {
+        data: ::Array[Telnyx::Models::EmailBlockRetrieveEventsResponse::Data],
+        meta: Telnyx::OffsetMeta
+      }
+
+    class EmailBlockRetrieveEventsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::EmailBlockRetrieveEventsResponse::Data]
+
+      attr_accessor meta: Telnyx::OffsetMeta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::EmailBlockRetrieveEventsResponse::Data],
+        meta: Telnyx::OffsetMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::EmailBlockRetrieveEventsResponse::Data],
+        meta: Telnyx::OffsetMeta
+      }
+
+      type data =
+        {
+          id: String,
+          actor: String,
+          event_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::event_type,
+          occurred_at: Time,
+          reason: String,
+          record_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::record_type,
+          source: String,
+          meta: ::Hash[Symbol, top]?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor actor: String
+
+        attr_accessor event_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::event_type
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor reason: String
+
+        attr_accessor record_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::record_type
+
+        attr_accessor source: String
+
+        attr_accessor meta: ::Hash[Symbol, top]?
+
+        def initialize: (
+          id: String,
+          actor: String,
+          event_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::event_type,
+          occurred_at: Time,
+          reason: String,
+          record_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::record_type,
+          source: String,
+          ?meta: ::Hash[Symbol, top]?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          actor: String,
+          event_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::event_type,
+          occurred_at: Time,
+          reason: String,
+          record_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::record_type,
+          source: String,
+          meta: ::Hash[Symbol, top]?
+        }
+
+        type event_type = :created | :removed | :expired | :override_used
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED: :created
+          REMOVED: :removed
+          EXPIRED: :expired
+          OVERRIDE_USED: :override_used
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::event_type]
+        end
+
+        type record_type = :email_block_event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_BLOCK_EVENT: :email_block_event
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailBlockRetrieveEventsResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

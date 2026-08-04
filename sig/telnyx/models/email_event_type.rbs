@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    type email_event_type =
+      :queued
+      | :deferred
+      | :scheduled
+      | :cancelled
+      | :sandbox
+      | :sending
+      | :sent
+      | :failed
+      | :delivered
+      | :bounced
+      | :complained
+      | :rejected
+      | :opened
+      | :clicked
+      | :unsubscribed
+      | :daily_limit_exceeded
+
+    module EmailEventType
+      extend Telnyx::Internal::Type::Enum
+
+      QUEUED: :queued
+      DEFERRED: :deferred
+      SCHEDULED: :scheduled
+      CANCELLED: :cancelled
+      SANDBOX: :sandbox
+      SENDING: :sending
+      SENT: :sent
+      FAILED: :failed
+      DELIVERED: :delivered
+      BOUNCED: :bounced
+      COMPLAINED: :complained
+      REJECTED: :rejected
+      OPENED: :opened
+      CLICKED: :clicked
+      UNSUBSCRIBED: :unsubscribed
+      DAILY_LIMIT_EXCEEDED: :daily_limit_exceeded
+
+      def self?.values: -> ::Array[Telnyx::Models::email_event_type]
+    end
+  end
+end

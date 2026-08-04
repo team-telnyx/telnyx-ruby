@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type email_domain_type = :custom | :shared | :shared_inbound
+
+    module EmailDomainType
+      extend Telnyx::Internal::Type::Enum
+
+      CUSTOM: :custom
+      SHARED: :shared
+      SHARED_INBOUND: :shared_inbound
+
+      def self?.values: -> ::Array[Telnyx::Models::email_domain_type]
+    end
+  end
+end

@@ -6,6 +6,7 @@ module Telnyx
         azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         disable_cache: bool,
         elevenlabs: ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs,
+        humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain,
         language: String,
         minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax,
         output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
@@ -46,6 +47,12 @@ module Telnyx
       def elevenlabs=: (
         ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs
       ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs
+
+      attr_reader humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain?
+
+      def humain=: (
+        ::Telnyx::TextToSpeechGenerateSpeechParams::Humain
+      ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Humain
 
       attr_reader language: String?
 
@@ -116,6 +123,7 @@ module Telnyx
         ?azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         ?disable_cache: bool,
         ?elevenlabs: ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs,
+        ?humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain,
         ?language: String,
         ?minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax,
         ?output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
@@ -136,6 +144,7 @@ module Telnyx
         azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         disable_cache: bool,
         elevenlabs: ::Telnyx::TextToSpeechGenerateSpeechParams::Elevenlabs,
+        humain: ::Telnyx::TextToSpeechGenerateSpeechParams::Humain,
         language: String,
         minimax: ::Telnyx::TextToSpeechGenerateSpeechParams::Minimax,
         output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
@@ -325,6 +334,51 @@ module Telnyx
         }
       end
 
+      type humain =
+        {
+          voice_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain::voice_id,
+          ttfb_eagerness: Float
+        }
+
+      class Humain < ::Telnyx::Internal::Type::BaseModel
+        attr_accessor voice_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain::voice_id
+
+        attr_reader ttfb_eagerness: Float?
+
+        def ttfb_eagerness=: (Float) -> Float
+
+        def initialize: (
+          voice_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain::voice_id,
+          ?ttfb_eagerness: Float
+        ) -> void
+
+        def to_hash: -> {
+          voice_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain::voice_id,
+          ttfb_eagerness: Float
+        }
+
+        type voice_id =
+          :"sara-en"
+          | :"abdulaziz-en"
+          | :"sara-ar"
+          | :"abdulaziz-ar"
+          | :"nourah-ar"
+          | :"abdullah-ar"
+
+        module VoiceID
+          extend ::Telnyx::Internal::Type::Enum
+
+          SARA_EN: :"sara-en"
+          ABDULAZIZ_EN: :"abdulaziz-en"
+          SARA_AR: :"sara-ar"
+          ABDULAZIZ_AR: :"abdulaziz-ar"
+          NOURAH_AR: :"nourah-ar"
+          ABDULLAH_AR: :"abdullah-ar"
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Humain::voice_id]
+        end
+      end
+
       type minimax =
         {
           language_boost: String,
@@ -392,6 +446,7 @@ module Telnyx
         | :rime
         | :resemble
         | :xai
+        | :humain
 
       module Provider
         extend ::Telnyx::Internal::Type::Enum
@@ -404,6 +459,7 @@ module Telnyx
         RIME: :rime
         RESEMBLE: :resemble
         XAI: :xai
+        HUMAIN: :humain
 
         def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider]
       end

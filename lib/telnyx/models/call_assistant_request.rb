@@ -104,7 +104,12 @@ module Telnyx
       #   @return [Array<Telnyx::Models::BookAppointmentTool, Telnyx::Models::CheckAvailabilityTool, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::CallControlRetrievalTool>, nil]
       optional :tools, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::CallAssistantRequest::Tool] }
 
-      # @!method initialize(id:, dynamic_variables: nil, external_llm: nil, fallback_config: nil, greeting: nil, instructions: nil, llm_api_key_ref: nil, mcp_servers: nil, model: nil, name: nil, observability_settings: nil, openai_api_key_ref: nil, tools: nil)
+      # @!attribute voice_settings
+      #
+      #   @return [Telnyx::Models::AI::VoiceSettings, nil]
+      optional :voice_settings, -> { Telnyx::AI::VoiceSettings }
+
+      # @!method initialize(id:, dynamic_variables: nil, external_llm: nil, fallback_config: nil, greeting: nil, instructions: nil, llm_api_key_ref: nil, mcp_servers: nil, model: nil, name: nil, observability_settings: nil, openai_api_key_ref: nil, tools: nil, voice_settings: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallAssistantRequest} for more details.
       #
@@ -137,6 +142,8 @@ module Telnyx
       #   @param openai_api_key_ref [String] Deprecated — use `llm_api_key_ref` instead. Integration secret identifier for th
       #
       #   @param tools [Array<Telnyx::Models::BookAppointmentTool, Telnyx::Models::CheckAvailabilityTool, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::CallControlRetrievalTool>] Inline tool definitions available to the assistant (webhook, retrieval, transfer
+      #
+      #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
 
       module DynamicVariable
         extend Telnyx::Internal::Type::Union

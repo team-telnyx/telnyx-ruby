@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type inbound_email_address = { email: String, name: String }
+
+      class InboundEmailAddress < Telnyx::Internal::Type::BaseModel
+        attr_accessor email: String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        def initialize: (email: String, ?name: String) -> void
+
+        def to_hash: -> { email: String, name: String }
+      end
+    end
+  end
+end

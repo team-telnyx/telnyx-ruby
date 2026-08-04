@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class EmailValidations
+      class Batch
+        def create: (
+          emails: ::Array[String],
+          ?webhook_url: String,
+          ?idempotency_key: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailValidations::BatchCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailValidations::BatchRetrieveResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

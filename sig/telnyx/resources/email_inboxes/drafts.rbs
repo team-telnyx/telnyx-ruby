@@ -1,0 +1,100 @@
+module Telnyx
+  module Resources
+    class EmailInboxes
+      class Drafts
+        def create: (
+          String inbox_id,
+          ?attachments: ::Array[top],
+          ?bcc: ::Array[Telnyx::Models::email_address_input],
+          ?cc: ::Array[Telnyx::Models::email_address_input],
+          ?from_email: String,
+          ?from_name: String,
+          ?headers: ::Hash[Symbol, String],
+          ?html: String,
+          ?html_body: String,
+          ?labels: ::Array[String],
+          ?metadata: top,
+          ?reply_to: String,
+          ?subject: String,
+          ?tags: ::Array[String],
+          ?text: String,
+          ?text_body: String,
+          ?to: ::Array[Telnyx::Models::email_address_input],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailInboxes::EmailDraftResponse
+
+        def retrieve: (
+          String draft_id,
+          inbox_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailInboxes::EmailDraftResponse
+
+        def update: (
+          String draft_id,
+          inbox_id: String,
+          ?attachments: ::Array[top],
+          ?bcc: ::Array[Telnyx::Models::email_address_input],
+          ?cc: ::Array[Telnyx::Models::email_address_input],
+          ?from_email: String,
+          ?from_name: String,
+          ?headers: ::Hash[Symbol, String],
+          ?html: String,
+          ?html_body: String,
+          ?labels: ::Array[String],
+          ?metadata: top,
+          ?reply_to: String,
+          ?subject: String,
+          ?tags: ::Array[String],
+          ?text: String,
+          ?text_body: String,
+          ?to: ::Array[Telnyx::Models::email_address_input],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailInboxes::EmailDraftResponse
+
+        def list: (
+          String inbox_id,
+          ?filter_status: Telnyx::Models::EmailInboxes::DraftListParams::filter_status,
+          ?page_after: String,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::EmailInboxes::DraftListResponse
+
+        def delete: (
+          String draft_id,
+          inbox_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def patch: (
+          String draft_id,
+          inbox_id: String,
+          ?attachments: ::Array[top],
+          ?bcc: ::Array[Telnyx::Models::email_address_input],
+          ?cc: ::Array[Telnyx::Models::email_address_input],
+          ?from_email: String,
+          ?from_name: String,
+          ?headers: ::Hash[Symbol, String],
+          ?html: String,
+          ?html_body: String,
+          ?labels: ::Array[String],
+          ?metadata: top,
+          ?reply_to: String,
+          ?subject: String,
+          ?tags: ::Array[String],
+          ?text: String,
+          ?text_body: String,
+          ?to: ::Array[Telnyx::Models::email_address_input],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailInboxes::EmailDraftResponse
+
+        def send_: (
+          String draft_id,
+          inbox_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailInboxes::EmailMessageResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

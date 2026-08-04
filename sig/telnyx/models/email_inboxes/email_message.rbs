@@ -1,0 +1,213 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type email_message =
+        {
+          id: String,
+          attachments: ::Array[Telnyx::EmailInboxes::EmailMessage::Attachment],
+          bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          created_at: Time,
+          events: ::Array[Telnyx::MessageEvent],
+          from: Telnyx::EmailInboxes::EmailAddress,
+          record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type,
+          reply_to: String?,
+          status: Telnyx::Models::EmailInboxes::EmailMessage::status,
+          subject: String,
+          template_id: String?,
+          template_variables: ::Hash[Symbol, top],
+          to: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          inline_css: bool,
+          recipient_statuses: ::Hash[Symbol, Integer],
+          sandbox: bool,
+          scheduled_at: Time
+        }
+
+      class EmailMessage < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor attachments: ::Array[Telnyx::EmailInboxes::EmailMessage::Attachment]
+
+        attr_accessor bcc: ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+        attr_accessor cc: ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+        attr_accessor created_at: Time
+
+        attr_accessor events: ::Array[Telnyx::MessageEvent]
+
+        attr_accessor from: Telnyx::EmailInboxes::EmailAddress
+
+        attr_accessor record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type
+
+        attr_accessor reply_to: String?
+
+        attr_accessor status: Telnyx::Models::EmailInboxes::EmailMessage::status
+
+        attr_accessor subject: String
+
+        attr_accessor template_id: String?
+
+        attr_accessor template_variables: ::Hash[Symbol, top]
+
+        attr_accessor to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+
+        attr_reader inline_css: bool?
+
+        def inline_css=: (bool) -> bool
+
+        attr_reader recipient_statuses: ::Hash[Symbol, Integer]?
+
+        def recipient_statuses=: (
+          ::Hash[Symbol, Integer]
+        ) -> ::Hash[Symbol, Integer]
+
+        attr_reader sandbox: bool?
+
+        def sandbox=: (bool) -> bool
+
+        attr_reader scheduled_at: Time?
+
+        def scheduled_at=: (Time) -> Time
+
+        def initialize: (
+          id: String,
+          attachments: ::Array[Telnyx::EmailInboxes::EmailMessage::Attachment],
+          bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          created_at: Time,
+          events: ::Array[Telnyx::MessageEvent],
+          from: Telnyx::EmailInboxes::EmailAddress,
+          record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type,
+          reply_to: String?,
+          status: Telnyx::Models::EmailInboxes::EmailMessage::status,
+          subject: String,
+          template_id: String?,
+          template_variables: ::Hash[Symbol, top],
+          to: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          ?inline_css: bool,
+          ?recipient_statuses: ::Hash[Symbol, Integer],
+          ?sandbox: bool,
+          ?scheduled_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          attachments: ::Array[Telnyx::EmailInboxes::EmailMessage::Attachment],
+          bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          created_at: Time,
+          events: ::Array[Telnyx::MessageEvent],
+          from: Telnyx::EmailInboxes::EmailAddress,
+          record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type,
+          reply_to: String?,
+          status: Telnyx::Models::EmailInboxes::EmailMessage::status,
+          subject: String,
+          template_id: String?,
+          template_variables: ::Hash[Symbol, top],
+          to: ::Array[Telnyx::EmailInboxes::EmailAddress],
+          inline_css: bool,
+          recipient_statuses: ::Hash[Symbol, Integer],
+          sandbox: bool,
+          scheduled_at: Time
+        }
+
+        type attachment =
+          {
+            content_id: String?,
+            content_type: String,
+            disposition: String,
+            filename: String,
+            :sha256 => String?,
+            size_bytes: Integer?,
+            url: String?
+          }
+
+        class Attachment < Telnyx::Internal::Type::BaseModel
+          attr_accessor content_id: String?
+
+          attr_accessor content_type: String
+
+          attr_accessor disposition: String
+
+          attr_accessor filename: String
+
+          attr_accessor sha256: String?
+
+          attr_accessor size_bytes: Integer?
+
+          attr_accessor url: String?
+
+          def initialize: (
+            content_id: String?,
+            content_type: String,
+            disposition: String,
+            filename: String,
+            sha256: String?,
+            size_bytes: Integer?,
+            url: String?
+          ) -> void
+
+          def to_hash: -> {
+            content_id: String?,
+            content_type: String,
+            disposition: String,
+            filename: String,
+            :sha256 => String?,
+            size_bytes: Integer?,
+            url: String?
+          }
+        end
+
+        type record_type = :email_message
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_MESSAGE: :email_message
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::EmailMessage::record_type]
+        end
+
+        type status =
+          :queued
+          | :scheduled
+          | :cancelled
+          | :sandbox
+          | :sending
+          | :sent
+          | :failed
+          | :deferred
+          | :delivered
+          | :bounced
+          | :complained
+          | :rejected
+          | :opened
+          | :clicked
+          | :unsubscribed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          QUEUED: :queued
+          SCHEDULED: :scheduled
+          CANCELLED: :cancelled
+          SANDBOX: :sandbox
+          SENDING: :sending
+          SENT: :sent
+          FAILED: :failed
+          DEFERRED: :deferred
+          DELIVERED: :delivered
+          BOUNCED: :bounced
+          COMPLAINED: :complained
+          REJECTED: :rejected
+          OPENED: :opened
+          CLICKED: :clicked
+          UNSUBSCRIBED: :unsubscribed
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailInboxes::EmailMessage::status]
+        end
+      end
+    end
+  end
+end

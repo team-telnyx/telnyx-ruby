@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.159.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.158.0...v5.159.0) (2026-08-03)
+
+
+### Features
+
+* promote from staging 096fe95 ([242763e](https://github.com/team-telnyx/telnyx-ruby/commit/242763ec0d95a0cfc6cc322b0480605ccbd9e4a6))
+
+
+### Chores
+
+* add repository code owner ([#334](https://github.com/team-telnyx/telnyx-ruby/issues/334)) ([db8b14a](https://github.com/team-telnyx/telnyx-ruby/commit/db8b14a96026cf8d6218200ac689fb3dd251cec0))
+
 ## [5.158.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.157.0...v5.158.0) (2026-07-21)
 
 

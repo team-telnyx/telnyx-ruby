@@ -266,6 +266,9 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::AssistantChatParams} for more details.
+        #
         # This endpoint allows a client to send a chat message to a specific AI Assistant.
         # The assistant processes the message and returns a relevant reply based on the
         # current conversation context. Refer to the Conversation API to
@@ -275,7 +278,7 @@ module Telnyx
         # and
         # [manually add messages to a conversation](https://developers.telnyx.com/api-reference/conversations/create-message).
         #
-        # @overload chat(assistant_id, content:, conversation_id:, name: nil, request_options: {})
+        # @overload chat(assistant_id, content:, conversation_id:, name: nil, stream: nil, request_options: {})
         #
         # @param assistant_id [String] Unique identifier of the assistant.
         #
@@ -284,6 +287,8 @@ module Telnyx
         # @param conversation_id [String] A unique identifier for the conversation thread, used to maintain context
         #
         # @param name [String] The optional display name of the user sending the message
+        #
+        # @param stream [Boolean] When true, the response is streamed as Server-Sent Events (`text/event-stream`):
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -10,9 +10,11 @@ module Telnyx
           assignment_status: Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status,
           brand_id: String,
           failure_reasons: String,
+          non_tmobile_number_mapping_status: String,
           tcr_brand_id: String,
           tcr_campaign_id: String,
-          telnyx_campaign_id: String
+          telnyx_campaign_id: String,
+          tmobile_number_mapping_status: String
         }
 
       class PhoneNumberCampaign < Telnyx::Internal::Type::BaseModel
@@ -38,6 +40,10 @@ module Telnyx
 
         def failure_reasons=: (String) -> String
 
+        attr_reader non_tmobile_number_mapping_status: String?
+
+        def non_tmobile_number_mapping_status=: (String) -> String
+
         attr_reader tcr_brand_id: String?
 
         def tcr_brand_id=: (String) -> String
@@ -50,6 +56,10 @@ module Telnyx
 
         def telnyx_campaign_id=: (String) -> String
 
+        attr_reader tmobile_number_mapping_status: String?
+
+        def tmobile_number_mapping_status=: (String) -> String
+
         def initialize: (
           campaign_id: String,
           created_at: String,
@@ -58,9 +68,11 @@ module Telnyx
           ?assignment_status: Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status,
           ?brand_id: String,
           ?failure_reasons: String,
+          ?non_tmobile_number_mapping_status: String,
           ?tcr_brand_id: String,
           ?tcr_campaign_id: String,
-          ?telnyx_campaign_id: String
+          ?telnyx_campaign_id: String,
+          ?tmobile_number_mapping_status: String
         ) -> void
 
         def to_hash: -> {
@@ -71,9 +83,11 @@ module Telnyx
           assignment_status: Telnyx::Models::Messaging10dlc::PhoneNumberCampaign::assignment_status,
           brand_id: String,
           failure_reasons: String,
+          non_tmobile_number_mapping_status: String,
           tcr_brand_id: String,
           tcr_campaign_id: String,
-          telnyx_campaign_id: String
+          telnyx_campaign_id: String,
+          tmobile_number_mapping_status: String
         }
 
         type assignment_status =

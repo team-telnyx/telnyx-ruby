@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class EmailThreads
+      def retrieve: (
+        String thread_id,
+        inbox_id: String,
+        ?page_after: String,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailThreadRetrieveResponse
+
+      def list: (
+        ?filter_inbox_id: ::Array[String],
+        ?filter_label: String,
+        ?page_after: String,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailInboxes::InboundThreadListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    type domains_tracking_settings =
+      { click_tracking: bool, open_tracking: bool, unsubscribe_tracking: bool }
+
+    class DomainsTrackingSettings < Telnyx::Internal::Type::BaseModel
+      attr_reader click_tracking: bool?
+
+      def click_tracking=: (bool) -> bool
+
+      attr_reader open_tracking: bool?
+
+      def open_tracking=: (bool) -> bool
+
+      attr_reader unsubscribe_tracking: bool?
+
+      def unsubscribe_tracking=: (bool) -> bool
+
+      def initialize: (
+        ?click_tracking: bool,
+        ?open_tracking: bool,
+        ?unsubscribe_tracking: bool
+      ) -> void
+
+      def to_hash: -> {
+        click_tracking: bool,
+        open_tracking: bool,
+        unsubscribe_tracking: bool
+      }
+    end
+  end
+end

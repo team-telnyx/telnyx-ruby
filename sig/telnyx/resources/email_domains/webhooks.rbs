@@ -1,0 +1,44 @@
+module Telnyx
+  module Resources
+    class EmailDomains
+      class Webhooks
+        def create: (
+          String domain_id,
+          events: ::Array[Telnyx::Models::EmailDomains::email_webhook_event],
+          url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailDomains::EmailWebhookResponse
+
+        def retrieve: (
+          String id,
+          domain_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailDomains::EmailWebhookResponse
+
+        def update: (
+          String id,
+          domain_id: String,
+          ?events: ::Array[Telnyx::Models::EmailDomains::email_webhook_event],
+          ?url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailDomains::EmailWebhookResponse
+
+        def list: (
+          String domain_id,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort: Telnyx::Models::EmailDomains::WebhookListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::EmailDomains::EmailWebhook]
+
+        def delete: (
+          String id,
+          domain_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailDomains::EmailWebhookResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

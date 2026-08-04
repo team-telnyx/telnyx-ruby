@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type email_block_response = { data: Telnyx::EmailBlock }
+
+    class EmailBlockResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::EmailBlock
+
+      def initialize: (data: Telnyx::EmailBlock) -> void
+
+      def to_hash: -> { data: Telnyx::EmailBlock }
+    end
+  end
+end

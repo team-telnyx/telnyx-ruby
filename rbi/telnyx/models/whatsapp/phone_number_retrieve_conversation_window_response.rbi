@@ -74,10 +74,7 @@ module Telnyx
 
           # When the window closes. Null if no active window.
           sig { returns(T.nilable(Time)) }
-          attr_reader :window_expires_at
-
-          sig { params(window_expires_at: Time).void }
-          attr_writer :window_expires_at
+          attr_accessor :window_expires_at
 
           # Window type. Currently always 24h when present.
           sig { returns(T.nilable(String)) }
@@ -90,7 +87,7 @@ module Telnyx
             params(
               last_user_message_at: Time,
               window_active: T::Boolean,
-              window_expires_at: Time,
+              window_expires_at: T.nilable(Time),
               window_type: String
             ).returns(T.attached_class)
           end
@@ -111,7 +108,7 @@ module Telnyx
               {
                 last_user_message_at: Time,
                 window_active: T::Boolean,
-                window_expires_at: Time,
+                window_expires_at: T.nilable(Time),
                 window_type: String
               }
             )

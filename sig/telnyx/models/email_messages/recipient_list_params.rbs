@@ -1,0 +1,99 @@
+module Telnyx
+  module Models
+    module EmailMessages
+      type recipient_list_params =
+        {
+          email_id: String,
+          kind: Telnyx::Models::EmailMessages::RecipientListParams::kind,
+          page_cursor: String,
+          page_size: Integer,
+          status: Telnyx::Models::EmailMessages::RecipientListParams::status
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class RecipientListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor email_id: String
+
+        attr_reader kind: Telnyx::Models::EmailMessages::RecipientListParams::kind?
+
+        def kind=: (
+          Telnyx::Models::EmailMessages::RecipientListParams::kind
+        ) -> Telnyx::Models::EmailMessages::RecipientListParams::kind
+
+        attr_reader page_cursor: String?
+
+        def page_cursor=: (String) -> String
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader status: Telnyx::Models::EmailMessages::RecipientListParams::status?
+
+        def status=: (
+          Telnyx::Models::EmailMessages::RecipientListParams::status
+        ) -> Telnyx::Models::EmailMessages::RecipientListParams::status
+
+        def initialize: (
+          email_id: String,
+          ?kind: Telnyx::Models::EmailMessages::RecipientListParams::kind,
+          ?page_cursor: String,
+          ?page_size: Integer,
+          ?status: Telnyx::Models::EmailMessages::RecipientListParams::status,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          email_id: String,
+          kind: Telnyx::Models::EmailMessages::RecipientListParams::kind,
+          page_cursor: String,
+          page_size: Integer,
+          status: Telnyx::Models::EmailMessages::RecipientListParams::status,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type kind = :to | :cc | :bcc
+
+        module Kind
+          extend Telnyx::Internal::Type::Enum
+
+          TO: :to
+          CC: :cc
+          BCC: :bcc
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailMessages::RecipientListParams::kind]
+        end
+
+        type status =
+          :queued
+          | :sending
+          | :sent
+          | :deferred
+          | :delivered
+          | :bounced
+          | :failed
+          | :gw_reject
+          | :cancelled
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          QUEUED: :queued
+          SENDING: :sending
+          SENT: :sent
+          DEFERRED: :deferred
+          DELIVERED: :delivered
+          BOUNCED: :bounced
+          FAILED: :failed
+          GW_REJECT: :gw_reject
+          CANCELLED: :cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailMessages::RecipientListParams::status]
+        end
+      end
+    end
+  end
+end

@@ -111,6 +111,29 @@ module Telnyx
       module Dir
       end
 
+      module EmailBlocks
+      end
+
+      module EmailDomains
+      end
+
+      module EmailInboxes
+        module Messages
+        end
+
+        module Threads
+        end
+      end
+
+      module EmailMessages
+      end
+
+      module EmailUnsubscribeGroups
+      end
+
+      module EmailValidations
+      end
+
       module Embeddings
       end
 
@@ -228,6 +251,9 @@ module Telnyx
       module Portouts
       end
 
+      module Pricing
+      end
+
       module Profile
       end
 
@@ -313,6 +339,9 @@ module Telnyx
           module Transcriptions
           end
         end
+      end
+
+      module Threads
       end
 
       module Transcriptions

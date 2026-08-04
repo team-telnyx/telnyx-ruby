@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type email_domain_status =
+      :pending | :verifying | :verified | :failed | :degraded | :suspended
+
+    module EmailDomainStatus
+      extend Telnyx::Internal::Type::Enum
+
+      PENDING: :pending
+      VERIFYING: :verifying
+      VERIFIED: :verified
+      FAILED: :failed
+      DEGRADED: :degraded
+      SUSPENDED: :suspended
+
+      def self?.values: -> ::Array[Telnyx::Models::email_domain_status]
+    end
+  end
+end

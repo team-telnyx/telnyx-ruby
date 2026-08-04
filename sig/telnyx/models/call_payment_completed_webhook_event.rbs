@@ -1,0 +1,337 @@
+module Telnyx
+  module Models
+    type call_payment_completed_webhook_event =
+      { data: Telnyx::CallPaymentCompletedWebhookEvent::Data }
+
+    class CallPaymentCompletedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::CallPaymentCompletedWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::CallPaymentCompletedWebhookEvent::Data
+      ) -> Telnyx::CallPaymentCompletedWebhookEvent::Data
+
+      def initialize: (
+        ?data: Telnyx::CallPaymentCompletedWebhookEvent::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::CallPaymentCompletedWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload
+        ) -> Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"call.payment.completed"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_PAYMENT_COMPLETED: :"call.payment.completed"
+
+          def self?.values: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            bank_account_number: String,
+            bank_account_type: String,
+            bank_routing_number: String,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            charge_id: String,
+            client_state: String,
+            connection_id: String,
+            connector_error: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error,
+            expiration_date: String,
+            from: String,
+            pay_error_code: String,
+            payment_card_number: String,
+            payment_card_postal_code: String,
+            payment_card_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type,
+            payment_confirmation_code: String,
+            payment_connector: String,
+            payment_error: String,
+            payment_method: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_method,
+            result: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::result,
+            security_code: String,
+            to: String,
+            token_id: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader bank_account_number: String?
+
+          def bank_account_number=: (String) -> String
+
+          attr_reader bank_account_type: String?
+
+          def bank_account_type=: (String) -> String
+
+          attr_reader bank_routing_number: String?
+
+          def bank_routing_number=: (String) -> String
+
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader charge_id: String?
+
+          def charge_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader connector_error: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error?
+
+          def connector_error=: (
+            Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error
+          ) -> Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error
+
+          attr_reader expiration_date: String?
+
+          def expiration_date=: (String) -> String
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader pay_error_code: String?
+
+          def pay_error_code=: (String) -> String
+
+          attr_reader payment_card_number: String?
+
+          def payment_card_number=: (String) -> String
+
+          attr_reader payment_card_postal_code: String?
+
+          def payment_card_postal_code=: (String) -> String
+
+          attr_reader payment_card_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type?
+
+          def payment_card_type=: (
+            Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type
+          ) -> Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type
+
+          attr_reader payment_confirmation_code: String?
+
+          def payment_confirmation_code=: (String) -> String
+
+          attr_reader payment_connector: String?
+
+          def payment_connector=: (String) -> String
+
+          attr_reader payment_error: String?
+
+          def payment_error=: (String) -> String
+
+          attr_reader payment_method: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_method?
+
+          def payment_method=: (
+            Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_method
+          ) -> Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_method
+
+          attr_reader result: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::result?
+
+          def result=: (
+            Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::result
+          ) -> Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::result
+
+          attr_reader security_code: String?
+
+          def security_code=: (String) -> String
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          attr_reader token_id: String?
+
+          def token_id=: (String) -> String
+
+          def initialize: (
+            ?bank_account_number: String,
+            ?bank_account_type: String,
+            ?bank_routing_number: String,
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?charge_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?connector_error: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error,
+            ?expiration_date: String,
+            ?from: String,
+            ?pay_error_code: String,
+            ?payment_card_number: String,
+            ?payment_card_postal_code: String,
+            ?payment_card_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type,
+            ?payment_confirmation_code: String,
+            ?payment_connector: String,
+            ?payment_error: String,
+            ?payment_method: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_method,
+            ?result: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::result,
+            ?security_code: String,
+            ?to: String,
+            ?token_id: String
+          ) -> void
+
+          def to_hash: -> {
+            bank_account_number: String,
+            bank_account_type: String,
+            bank_routing_number: String,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            charge_id: String,
+            client_state: String,
+            connection_id: String,
+            connector_error: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error,
+            expiration_date: String,
+            from: String,
+            pay_error_code: String,
+            payment_card_number: String,
+            payment_card_postal_code: String,
+            payment_card_type: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type,
+            payment_confirmation_code: String,
+            payment_connector: String,
+            payment_error: String,
+            payment_method: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_method,
+            result: Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::result,
+            security_code: String,
+            to: String,
+            token_id: String
+          }
+
+          type connector_error = String | ::Hash[Symbol, top]
+
+          module ConnectorError
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error]
+
+            UnionMember1Map: Telnyx::Internal::Type::Converter
+          end
+
+          type payment_card_type =
+            :visa | :mastercard | :amex | :discover | :"diners-club" | :jcb
+
+          module PaymentCardType
+            extend Telnyx::Internal::Type::Enum
+
+            VISA: :visa
+            MASTERCARD: :mastercard
+            AMEX: :amex
+            DISCOVER: :discover
+            DINERS_CLUB: :"diners-club"
+            JCB: :jcb
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type]
+          end
+
+          type payment_method = :"credit-card" | :"ach-debit"
+
+          module PaymentMethod
+            extend Telnyx::Internal::Type::Enum
+
+            CREDIT_CARD: :"credit-card"
+            ACH_DEBIT: :"ach-debit"
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_method]
+          end
+
+          type result =
+            :success
+            | :"payment-connector-error"
+            | :"internal-error"
+            | :"too-many-failed-attempts"
+            | :cancelled
+
+          module Result
+            extend Telnyx::Internal::Type::Enum
+
+            SUCCESS: :success
+            PAYMENT_CONNECTOR_ERROR: :"payment-connector-error"
+            INTERNAL_ERROR: :"internal-error"
+            TOO_MANY_FAILED_ATTEMPTS: :"too-many-failed-attempts"
+            CANCELLED: :cancelled
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::result]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

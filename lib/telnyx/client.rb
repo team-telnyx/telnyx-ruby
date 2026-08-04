@@ -690,6 +690,47 @@ module Telnyx
     # @return [Telnyx::Resources::InfringementClaims]
     attr_reader :infringement_claims
 
+    # Recipient suppression records (`/v2/email_blocks`).
+    # @return [Telnyx::Resources::EmailBlocks]
+    attr_reader :email_blocks
+
+    # @return [Telnyx::Resources::EmailDomains]
+    attr_reader :email_domains
+
+    # Retrieve account-level email events and event statistics.
+    # @return [Telnyx::Resources::EmailEvents]
+    attr_reader :email_events
+
+    # Create and manage agent inboxes, retrieve inbound messages and threads, and
+    # reply to or forward messages.
+    # @return [Telnyx::Resources::EmailInboxes]
+    attr_reader :email_inboxes
+
+    # Send and manage email messages. Legacy `/v2/emails` routes are aliases for these
+    # endpoints.
+    # @return [Telnyx::Resources::EmailMessages]
+    attr_reader :email_messages
+
+    # Create, list, retrieve, update, delete, and render Liquid email templates.
+    # @return [Telnyx::Resources::EmailTemplates]
+    attr_reader :email_templates
+
+    # Account-wide conversation threads across every inbox, for agents operating many
+    # inboxes at once.
+    # @return [Telnyx::Resources::EmailThreads]
+    attr_reader :email_threads
+
+    # Named groups and group-scoped suppressions.
+    # @return [Telnyx::Resources::EmailUnsubscribeGroups]
+    attr_reader :email_unsubscribe_groups
+
+    # Validate email addresses synchronously or in asynchronous batches.
+    # @return [Telnyx::Resources::EmailValidations]
+    attr_reader :email_validations
+
+    # @return [Telnyx::Resources::Pricing]
+    attr_reader :pricing
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -969,6 +1010,16 @@ module Telnyx
       @call_reasons = Telnyx::Resources::CallReasons.new(client: self)
       @dir = Telnyx::Resources::Dir.new(client: self)
       @infringement_claims = Telnyx::Resources::InfringementClaims.new(client: self)
+      @email_blocks = Telnyx::Resources::EmailBlocks.new(client: self)
+      @email_domains = Telnyx::Resources::EmailDomains.new(client: self)
+      @email_events = Telnyx::Resources::EmailEvents.new(client: self)
+      @email_inboxes = Telnyx::Resources::EmailInboxes.new(client: self)
+      @email_messages = Telnyx::Resources::EmailMessages.new(client: self)
+      @email_templates = Telnyx::Resources::EmailTemplates.new(client: self)
+      @email_threads = Telnyx::Resources::EmailThreads.new(client: self)
+      @email_unsubscribe_groups = Telnyx::Resources::EmailUnsubscribeGroups.new(client: self)
+      @email_validations = Telnyx::Resources::EmailValidations.new(client: self)
+      @pricing = Telnyx::Resources::Pricing.new(client: self)
     end
   end
 end

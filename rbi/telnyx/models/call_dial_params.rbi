@@ -380,6 +380,18 @@ module Telnyx
       sig { params(retry_on_timeout: T::Boolean).void }
       attr_writer :retry_on_timeout
 
+      # When set to true, routes the call directly to the mobile device associated with
+      # the destination Telnyx Mobile number, bypassing Inbound Calls Interception
+      # configured in the Telnyx Portal under Mobile Numbers → select the number → Voice
+      # → Call Interception. Use this when transferring an intercepted call to the
+      # mobile device to prevent the call from being intercepted again. Defaults to
+      # false.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :route_to_mobile
+
+      sig { params(route_to_mobile: T::Boolean).void }
+      attr_writer :route_to_mobile
+
       # DTMF digits to send automatically after the called party answers. Useful for
       # reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once the
       # called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause), `W`
@@ -719,6 +731,7 @@ module Telnyx
           record_track: Telnyx::CallDialParams::RecordTrack::OrSymbol,
           record_trim: Telnyx::CallDialParams::RecordTrim::OrSymbol,
           retry_on_timeout: T::Boolean,
+          route_to_mobile: T::Boolean,
           send_digits_on_answer: String,
           send_silence_when_idle: T::Boolean,
           sip_auth_password: String,
@@ -912,6 +925,13 @@ module Telnyx
         # entire dial attempt and the `call.hangup` webhook reports a `hangup_cause` of
         # `no_answer` instead of `timeout`.
         retry_on_timeout: nil,
+        # When set to true, routes the call directly to the mobile device associated with
+        # the destination Telnyx Mobile number, bypassing Inbound Calls Interception
+        # configured in the Telnyx Portal under Mobile Numbers → select the number → Voice
+        # → Call Interception. Use this when transferring an intercepted call to the
+        # mobile device to prevent the call from being intercepted again. Defaults to
+        # false.
+        route_to_mobile: nil,
         # DTMF digits to send automatically after the called party answers. Useful for
         # reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once the
         # called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause), `W`
@@ -1041,6 +1061,7 @@ module Telnyx
             record_track: Telnyx::CallDialParams::RecordTrack::OrSymbol,
             record_trim: Telnyx::CallDialParams::RecordTrim::OrSymbol,
             retry_on_timeout: T::Boolean,
+            route_to_mobile: T::Boolean,
             send_digits_on_answer: String,
             send_silence_when_idle: T::Boolean,
             sip_auth_password: String,

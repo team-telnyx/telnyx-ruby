@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    type update_email_template_request =
+      {
+        html_body: String?,
+        name: String,
+        subject: String?,
+        text_body: String?,
+        variables: ::Array[String]
+      }
+
+    class UpdateEmailTemplateRequest < Telnyx::Internal::Type::BaseModel
+      attr_accessor html_body: String?
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_accessor subject: String?
+
+      attr_accessor text_body: String?
+
+      attr_reader variables: ::Array[String]?
+
+      def variables=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?html_body: String?,
+        ?name: String,
+        ?subject: String?,
+        ?text_body: String?,
+        ?variables: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        html_body: String?,
+        name: String,
+        subject: String?,
+        text_body: String?,
+        variables: ::Array[String]
+      }
+    end
+  end
+end

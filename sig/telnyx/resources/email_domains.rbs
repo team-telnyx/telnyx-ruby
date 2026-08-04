@@ -1,0 +1,66 @@
+module Telnyx
+  module Resources
+    class EmailDomains
+      attr_reader webhooks: Telnyx::Resources::EmailDomains::Webhooks
+
+      def create: (
+        domain: String,
+        ?dmarc_policy: Telnyx::EmailDmarcPolicy?,
+        ?inbound_enabled: bool,
+        ?tracking: Telnyx::DomainsTrackingSettings,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailDomainResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailDomainResponse
+
+      def update: (
+        String id,
+        ?dmarc_policy: Telnyx::EmailDmarcPolicy?,
+        ?inbound_enabled: bool,
+        ?tracking: Telnyx::DomainsTrackingSettings,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailDomainResponse
+
+      def list: (
+        ?filter_domain: String,
+        ?filter_profile_id: String,
+        ?filter_status: Telnyx::Models::email_domain_status,
+        ?filter_type: Telnyx::Models::email_domain_type,
+        ?filter_usable_for_inbound: bool,
+        ?filter_usable_for_sending: bool,
+        ?page_after: String,
+        ?page_before: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::EmailDomainListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::EmailDomain]
+
+      def delete: (
+        String id,
+        ?force: bool,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailDomainResponse
+
+      def retrieve_dns_records: (
+        String domain_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailDomainRetrieveDNSRecordsResponse
+
+      def retrieve_health: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailDomainRetrieveHealthResponse
+
+      def verify: (
+        String domain_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailDomainResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,58 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      type email_message_response =
+        {
+          data: Telnyx::EmailInboxes::EmailMessage,
+          suppressed: ::Array[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]
+        }
+
+      class EmailMessageResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::EmailInboxes::EmailMessage
+
+        attr_reader suppressed: ::Array[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]?
+
+        def suppressed=: (
+          ::Array[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]
+        ) -> ::Array[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]
+
+        def initialize: (
+          data: Telnyx::EmailInboxes::EmailMessage,
+          ?suppressed: ::Array[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::EmailInboxes::EmailMessage,
+          suppressed: ::Array[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]
+        }
+
+        type suppressed =
+          { override_allowed: bool, reason: String, scope: String, to: String }
+
+        class Suppressed < Telnyx::Internal::Type::BaseModel
+          attr_accessor override_allowed: bool
+
+          attr_accessor reason: String
+
+          attr_accessor scope: String
+
+          attr_accessor to: String
+
+          def initialize: (
+            override_allowed: bool,
+            reason: String,
+            scope: String,
+            to: String
+          ) -> void
+
+          def to_hash: -> {
+            override_allowed: bool,
+            reason: String,
+            scope: String,
+            to: String
+          }
+        end
+      end
+    end
+  end
+end

@@ -31,7 +31,7 @@ module Telnyx
           #   When the window closes. Null if no active window.
           #
           #   @return [Time, nil]
-          optional :window_expires_at, Time
+          optional :window_expires_at, Time, nil?: true
 
           # @!attribute window_type
           #   Window type. Currently always 24h when present.
@@ -44,7 +44,7 @@ module Telnyx
           #
           #   @param window_active [Boolean] Whether the 24-hour conversation window is currently open
           #
-          #   @param window_expires_at [Time] When the window closes. Null if no active window.
+          #   @param window_expires_at [Time, nil] When the window closes. Null if no active window.
           #
           #   @param window_type [String] Window type. Currently always 24h when present.
         end

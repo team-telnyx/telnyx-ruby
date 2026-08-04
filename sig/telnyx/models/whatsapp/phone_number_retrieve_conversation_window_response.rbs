@@ -25,7 +25,7 @@ module Telnyx
           {
             last_user_message_at: Time,
             window_active: bool,
-            window_expires_at: Time,
+            window_expires_at: Time?,
             window_type: String
           }
 
@@ -38,9 +38,7 @@ module Telnyx
 
           def window_active=: (bool) -> bool
 
-          attr_reader window_expires_at: Time?
-
-          def window_expires_at=: (Time) -> Time
+          attr_accessor window_expires_at: Time?
 
           attr_reader window_type: String?
 
@@ -49,14 +47,14 @@ module Telnyx
           def initialize: (
             ?last_user_message_at: Time,
             ?window_active: bool,
-            ?window_expires_at: Time,
+            ?window_expires_at: Time?,
             ?window_type: String
           ) -> void
 
           def to_hash: -> {
             last_user_message_at: Time,
             window_active: bool,
-            window_expires_at: Time,
+            window_expires_at: Time?,
             window_type: String
           }
         end

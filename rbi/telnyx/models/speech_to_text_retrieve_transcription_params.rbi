@@ -254,6 +254,16 @@ module Telnyx
             :Parakeet,
             Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
           )
+        HUMAIN =
+          T.let(
+            :Humain,
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
+          )
+        RESON8 =
+          T.let(
+            :Reson8,
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
+          )
 
         sig do
           override.returns(
@@ -362,6 +372,16 @@ module Telnyx
         NVIDIA_PARAKEET_V3 =
           T.let(
             :"nvidia/parakeet-v3",
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
+          )
+        HUMAIN_REALTIME =
+          T.let(
+            :"humain/realtime",
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
+          )
+        RESON8_TURNS =
+          T.let(
+            :"reson8/turns",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
 

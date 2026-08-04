@@ -49,6 +49,15 @@ module Telnyx
         sig { params(model: String).void }
         attr_writer :model
 
+        # The service tier to use for this request. Supported values vary by model; use
+        # `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
+        # omitted, Telnyx-hosted models use `default`.
+        sig { returns(T.nilable(String)) }
+        attr_reader :service_tier
+
+        sig { params(service_tier: String).void }
+        attr_writer :service_tier
+
         # Set to `true` to stream Server-Sent Events, matching OpenAI's Responses
         # streaming format.
         sig { returns(T.nilable(T::Boolean)) }
@@ -63,6 +72,7 @@ module Telnyx
             input: T::Hash[Symbol, T.anything],
             instructions: String,
             model: String,
+            service_tier: String,
             stream: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -82,6 +92,10 @@ module Telnyx
           # Model identifier to use for the response, for example `zai-org/GLM-5.1-FP8` or
           # another model available from the Telnyx OpenAI-compatible models endpoint.
           model: nil,
+          # The service tier to use for this request. Supported values vary by model; use
+          # `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
+          # omitted, Telnyx-hosted models use `default`.
+          service_tier: nil,
           # Set to `true` to stream Server-Sent Events, matching OpenAI's Responses
           # streaming format.
           stream: nil,
@@ -96,6 +110,7 @@ module Telnyx
               input: T::Hash[Symbol, T.anything],
               instructions: String,
               model: String,
+              service_tier: String,
               stream: T::Boolean,
               request_options: Telnyx::RequestOptions
             }

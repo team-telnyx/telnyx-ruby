@@ -15,6 +15,14 @@ module Telnyx
         sig { returns(Telnyx::Resources::Whatsapp::PhoneNumbers::Profile) }
         attr_reader :profile
 
+        # Manage Whatsapp phone numbers
+        sig do
+          returns(
+            Telnyx::Resources::Whatsapp::PhoneNumbers::ConversationalComponents
+          )
+        end
+        attr_reader :conversational_components
+
         # List Whatsapp phone numbers
         sig do
           params(

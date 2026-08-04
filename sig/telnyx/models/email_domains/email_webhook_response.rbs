@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module EmailDomains
+      type email_webhook_response = { data: Telnyx::EmailDomains::EmailWebhook }
+
+      class EmailWebhookResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::EmailDomains::EmailWebhook
+
+        def initialize: (data: Telnyx::EmailDomains::EmailWebhook) -> void
+
+        def to_hash: -> { data: Telnyx::EmailDomains::EmailWebhook }
+      end
+    end
+  end
+end

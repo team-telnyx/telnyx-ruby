@@ -6,7 +6,8 @@ module Telnyx
           call_control_id: String,
           client_state: String,
           command_id: String,
-          messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message]
+          messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],
+          trigger_response: bool
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -30,11 +31,16 @@ module Telnyx
           ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message]
         ) -> ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message]
 
+        attr_reader trigger_response: bool?
+
+        def trigger_response=: (bool) -> bool
+
         def initialize: (
           call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],
+          ?trigger_response: bool,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -43,6 +49,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],
+          trigger_response: bool,
           request_options: Telnyx::RequestOptions
         }
 

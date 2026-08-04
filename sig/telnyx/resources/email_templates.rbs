@@ -1,0 +1,56 @@
+module Telnyx
+  module Resources
+    class EmailTemplates
+      def create: (
+        name: String,
+        ?html_body: String?,
+        ?subject: String?,
+        ?text_body: String?,
+        ?variables: ::Array[String],
+        ?idempotency_key: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailTemplateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailTemplateResponse
+
+      def update: (
+        String id,
+        ?html_body: String?,
+        ?name: String,
+        ?subject: String?,
+        ?text_body: String?,
+        ?variables: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailTemplateResponse
+
+      def list: (
+        ?page_cursor: String,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailTemplateListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def render: (
+        String id,
+        ?template_variables: ::Hash[Symbol, top],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailTemplateRenderResponse
+
+      def replace: (
+        String id,
+        ?html_body: String?,
+        ?name: String,
+        ?subject: String?,
+        ?text_body: String?,
+        ?variables: ::Array[String],
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailTemplateResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

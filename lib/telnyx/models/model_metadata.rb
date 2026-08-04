@@ -135,6 +135,14 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :regions, Telnyx::Internal::Type::ArrayOf[String]
 
+      # @!attribute service_tiers
+      #   Service tiers supported by this Telnyx-hosted model. Use one of these values as
+      #   `service_tier` in Chat Completions or Responses requests. This field is omitted
+      #   for externally hosted models.
+      #
+      #   @return [Array<Symbol, Telnyx::Models::ModelMetadata::ServiceTier>, nil]
+      optional :service_tiers, -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::ModelMetadata::ServiceTier] }
+
       # @!attribute task
       #   Primary task the model is intended for, e.g. `text-generation`,
       #   `audio-text-to-text`, `feature-extraction` (embeddings).
@@ -142,7 +150,7 @@ module Telnyx
       #   @return [String, nil]
       optional :task, String
 
-      # @!method initialize(id:, context_length:, created:, languages:, license:, organization:, owned_by:, parameters:, tier:, base_model: nil, description: nil, is_fine_tunable: nil, is_vision_supported: nil, max_completion_tokens: nil, object: nil, parameters_str: nil, pricing: nil, recommended_for_assistants: nil, regions: nil, task: nil)
+      # @!method initialize(id:, context_length:, created:, languages:, license:, organization:, owned_by:, parameters:, tier:, base_model: nil, description: nil, is_fine_tunable: nil, is_vision_supported: nil, max_completion_tokens: nil, object: nil, parameters_str: nil, pricing: nil, recommended_for_assistants: nil, regions: nil, service_tiers: nil, task: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ModelMetadata} for more details.
       #
@@ -190,6 +198,8 @@ module Telnyx
       #
       #   @param regions [Array<String>] Public region names where the model is currently deployed (e.g. `us-central-1`,
       #
+      #   @param service_tiers [Array<Symbol, Telnyx::Models::ModelMetadata::ServiceTier>] Service tiers supported by this Telnyx-hosted model. Use one of these values as
+      #
       #   @param task [String] Primary task the model is intended for, e.g. `text-generation`, `audio-text-to-t
 
       # Billing tier the model belongs to. Used together with `pricing` to determine
@@ -203,6 +213,17 @@ module Telnyx
         MEDIUM = :medium
         LARGE = :large
         UNLISTED = :unlisted
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      module ServiceTier
+        extend Telnyx::Internal::Type::Enum
+
+        DEFAULT = :default
+        PRIORITY = :priority
+        FLEX = :flex
 
         # @!method self.values
         #   @return [Array<Symbol>]

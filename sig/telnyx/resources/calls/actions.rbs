@@ -7,6 +7,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?messages: ::Array[Telnyx::Models::Calls::ActionAddAIAssistantMessagesParams::message],
+          ?trigger_response: bool,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse
 
@@ -189,6 +190,29 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionPauseRecordingResponse
 
+        def pay: (
+          String call_control_id,
+          ?amount: Float,
+          ?client_state: String,
+          ?command_id: String,
+          ?connector_name: String,
+          ?currency: Telnyx::Models::Calls::ActionPayParams::currency,
+          ?description: String,
+          ?inter_digit_timeout_millis: Integer,
+          ?language: String,
+          ?max_attempts: Integer,
+          ?metadata: ::Hash[Symbol, top],
+          ?parameters: ::Hash[Symbol, top],
+          ?payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method,
+          ?payment_token: String,
+          ?prompts: Telnyx::Calls::ActionPayParams::Prompts,
+          ?service_level: String,
+          ?timeout_millis: Integer,
+          ?transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          ?voice: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Calls::ActionPayResponse
+
         def refer: (
           String call_control_id,
           sip_address: String,
@@ -262,8 +286,6 @@ module Telnyx
           ?participants: ::Array[Telnyx::Calls::AIAssistantJoinParticipant],
           ?send_message_history_updates: bool,
           ?transcription: Telnyx::Calls::TranscriptionConfig,
-          ?voice: String,
-          ?voice_settings: Telnyx::Models::Calls::ActionStartAIAssistantParams::voice_settings,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionStartAIAssistantResponse
 
@@ -500,6 +522,7 @@ module Telnyx
           ?record_timeout_secs: Integer,
           ?record_track: Telnyx::Models::Calls::ActionTransferParams::record_track,
           ?record_trim: Telnyx::Models::Calls::ActionTransferParams::record_trim,
+          ?route_to_mobile: bool,
           ?send_digits_on_answer: String,
           ?sip_auth_password: String,
           ?sip_auth_username: String,

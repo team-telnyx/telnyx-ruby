@@ -21,6 +21,7 @@ module Telnyx
                   Telnyx::Calls::DeveloperMessage::OrHash
                 )
               ],
+            trigger_response: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionAddAIAssistantMessagesResponse)
         end
@@ -35,6 +36,10 @@ module Telnyx
           command_id: nil,
           # The messages to add to the conversation.
           messages: nil,
+          # When `true`, the injected messages immediately trigger an assistant
+          # response/turn instead of waiting for the next natural turn or idle timeout. This
+          # may interrupt a user who is still speaking.
+          trigger_response: nil,
           request_options: {}
         )
         end
@@ -542,6 +547,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -734,6 +743,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -886,6 +899,99 @@ module Telnyx
           command_id: nil,
           # Uniquely identifies the resource.
           recording_id: nil,
+          request_options: {}
+        )
+        end
+
+        # Collect payment details from the caller using DTMF and either charge or tokenize
+        # the payment method through a configured Pay connector. Pay pauses active call
+        # recordings while sensitive payment details are collected.
+        #
+        # When `payment_token` is supplied, the DTMF collection steps are skipped and the
+        # existing token is sent to the connector.
+        #
+        # **Expected Webhooks:**
+        #
+        # - `call.payment.progress`
+        # - `call.payment.completed`
+        #
+        # **Test mode card numbers:** `4111111111111111` (Visa), `5555555555554444`
+        # (Mastercard), `378282246310005` (American Express), `6011111111111117`
+        # (Discover), `3065930009020004` (Diners Club), `3566002020360505` (JCB),
+        # `6200000000000005` (UnionPay), and `6771798021000008` (Maestro). Test-mode
+        # connectors reject other card numbers before contacting the configured processor.
+        # The UnionPay and Maestro numbers are accepted for processor testing, but Pay
+        # currently does not emit a card type for them.
+        sig do
+          params(
+            call_control_id: String,
+            amount: Float,
+            client_state: String,
+            command_id: String,
+            connector_name: String,
+            currency: Telnyx::Calls::ActionPayParams::Currency::OrSymbol,
+            description: String,
+            inter_digit_timeout_millis: Integer,
+            language: String,
+            max_attempts: Integer,
+            metadata: T::Hash[Symbol, T.anything],
+            parameters: T::Hash[Symbol, T.anything],
+            payment_method:
+              Telnyx::Calls::ActionPayParams::PaymentMethod::OrSymbol,
+            payment_token: String,
+            prompts: Telnyx::Calls::ActionPayParams::Prompts::OrHash,
+            service_level: String,
+            timeout_millis: Integer,
+            transaction_type:
+              Telnyx::Calls::ActionPayParams::TransactionType::OrSymbol,
+            voice: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Calls::ActionPayResponse)
+        end
+        def pay(
+          # Unique identifier and token for controlling the call
+          call_control_id,
+          # Amount to charge. Required when `transaction_type` is `charge`.
+          amount: nil,
+          # Base64-encoded state included in subsequent webhooks.
+          client_state: nil,
+          # Idempotency key for the command. Telnyx ignores a duplicate command with the
+          # same `command_id` for the same `call_control_id`.
+          command_id: nil,
+          # Name of the Pay connector used to process the transaction.
+          connector_name: nil,
+          # Currency used for the transaction. Pay currently supports USD only.
+          currency: nil,
+          # Optional description forwarded with the payment transaction.
+          description: nil,
+          # Time in milliseconds to wait between consecutive DTMF digits.
+          inter_digit_timeout_millis: nil,
+          # Language used for payment prompts.
+          language: nil,
+          # Maximum number of attempts for each payment collection step.
+          max_attempts: nil,
+          # Metadata forwarded to the Pay connector.
+          metadata: nil,
+          # Additional parameters forwarded to the Pay connector.
+          parameters: nil,
+          # Payment method to collect.
+          payment_method: nil,
+          # Existing payment token. When supplied, payment-detail collection is skipped.
+          payment_token: nil,
+          # Custom text-to-speech prompts keyed by payment collection step.
+          prompts: nil,
+          # Speech synthesis service level used for payment prompts. Pay defaults to
+          # `premium`.
+          service_level: nil,
+          # Time in milliseconds to wait for DTMF input for each collection step.
+          timeout_millis: nil,
+          # Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is
+          # absent or zero and `charge` when `amount` is positive.
+          transaction_type: nil,
+          # Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
+          # `<Provider>.<Model>.<VoiceId>` format, for example `AWS.Polly.Joanna` or
+          # `Telnyx.KokoroTTS.af`.
+          voice: nil,
           request_options: {}
         )
         end
@@ -1154,6 +1260,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -1217,17 +1327,6 @@ module Telnyx
               T::Array[Telnyx::Calls::AIAssistantJoinParticipant::OrHash],
             send_message_history_updates: T::Boolean,
             transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
-            voice: String,
-            voice_settings:
-              T.any(
-                Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
-                Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
-              ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
         end
@@ -1263,39 +1362,6 @@ module Telnyx
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
           # ignore this field.
           transcription: nil,
-          # The voice to be used by the voice assistant. Currently we support ElevenLabs,
-          # Telnyx and AWS voices.
-          #
-          # **Supported Providers:**
-          #
-          # - **AWS:** Use `AWS.Polly.<VoiceId>` (e.g., `AWS.Polly.Joanna`). For neural
-          #   voices, which provide more realistic, human-like speech, append `-Neural` to
-          #   the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
-          #   [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
-          #   for compatibility.
-          # - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
-          #   Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
-          #   Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
-          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
-          # - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
-          #   `ElevenLabs.BaseModel.John`). The `ModelId` part is optional. To use
-          #   ElevenLabs, you must provide your ElevenLabs API key as an integration secret
-          #   under `"voice_settings": {"api_key_ref": "<secret_id>"}`. See
-          #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
-          #   for details. Check
-          #   [available voices](https://elevenlabs.io/docs/api-reference/get-voices).
-          # - **Telnyx:** Use `Telnyx.<model_id>.<voice_id>`
-          # - **Inworld:** Use `Inworld.<ModelId>.<VoiceId>` (e.g., `Inworld.Mini.Loretta`,
-          #   `Inworld.Max.Oliver`, `Inworld.TTS2.Loretta`). Supported models: `Mini`,
-          #   `Max`, `TTS2`.
-          # - **Fish Audio:** Use `FishAudio.<ModelId>.<VoiceId>` (e.g.,
-          #   `FishAudio.s2.1-pro.<reference_id>`). Supported models: `s2.1-pro`, `s2-pro`,
-          #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
-          # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
-          #   `ara`, `rex`, `sal`, `leo`.
-          voice: nil,
-          # The settings associated with the voice selected
-          voice_settings: nil,
           request_options: {}
         )
         end
@@ -1457,6 +1523,10 @@ module Telnyx
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
+          # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
+          #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
+          #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
+          #   `ModelId` segment.
           voice: nil,
           # The settings associated with the voice selected
           voice_settings: nil,
@@ -1861,6 +1931,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::OrHash,
+                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -2226,6 +2298,7 @@ module Telnyx
               Telnyx::Calls::ActionTransferParams::RecordTrack::OrSymbol,
             record_trim:
               Telnyx::Calls::ActionTransferParams::RecordTrim::OrSymbol,
+            route_to_mobile: T::Boolean,
             send_digits_on_answer: String,
             sip_auth_password: String,
             sip_auth_username: String,
@@ -2355,6 +2428,13 @@ module Telnyx
           # When set to `trim-silence`, silence will be removed from the beginning and end
           # of the recording.
           record_trim: nil,
+          # When set to true, routes the call directly to the mobile device associated with
+          # the destination Telnyx Mobile number, bypassing Inbound Calls Interception
+          # configured in the Telnyx Portal under Mobile Numbers → select the number → Voice
+          # → Call Interception. Use this when transferring an intercepted call to the
+          # mobile device to prevent the call from being intercepted again. Defaults to
+          # false.
+          route_to_mobile: nil,
           # DTMF digits to send automatically after the transfer destination answers. Useful
           # for reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once
           # the called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause),

@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class EmailInboxes
+      class Threads
+        class Labels
+          def create: (
+            String thread_id,
+            inbox_id: String,
+            labels: ::Array[String],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::EmailInboxes::Threads::LabelCreateResponse
+
+          def delete_all: (
+            String thread_id,
+            inbox_id: String,
+            labels: ::Array[String],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::EmailInboxes::Threads::LabelDeleteAllResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

@@ -116,6 +116,8 @@ module Telnyx
         SPEECHMATICS = :Speechmatics
         SONIOX = :Soniox
         PARAKEET = :Parakeet
+        HUMAIN = :Humain
+        RESON8 = :Reson8
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -142,6 +144,8 @@ module Telnyx
         SPEECHMATICS_STANDARD = :"speechmatics/standard"
         SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
         NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
+        HUMAIN_REALTIME = :"humain/realtime"
+        RESON8_TURNS = :"reson8/turns"
 
         # @!method self.values
         #   @return [Array<Symbol>]

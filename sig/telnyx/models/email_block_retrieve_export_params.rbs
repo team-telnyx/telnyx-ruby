@@ -1,0 +1,100 @@
+module Telnyx
+  module Models
+    type email_block_retrieve_export_params =
+      {
+        filter_created_after: Time,
+        filter_created_before: Time,
+        filter_domain_id: String,
+        filter_reason: Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason,
+        page_number: Integer,
+        page_size: Integer,
+        sort: Telnyx::Models::EmailBlockRetrieveExportParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class EmailBlockRetrieveExportParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter_created_after: Time?
+
+      def filter_created_after=: (Time) -> Time
+
+      attr_reader filter_created_before: Time?
+
+      def filter_created_before=: (Time) -> Time
+
+      attr_reader filter_domain_id: String?
+
+      def filter_domain_id=: (String) -> String
+
+      attr_reader filter_reason: Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason?
+
+      def filter_reason=: (
+        Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason
+      ) -> Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason
+
+      attr_reader page_number: Integer?
+
+      def page_number=: (Integer) -> Integer
+
+      attr_reader page_size: Integer?
+
+      def page_size=: (Integer) -> Integer
+
+      attr_reader sort: Telnyx::Models::EmailBlockRetrieveExportParams::sort?
+
+      def sort=: (
+        Telnyx::Models::EmailBlockRetrieveExportParams::sort
+      ) -> Telnyx::Models::EmailBlockRetrieveExportParams::sort
+
+      def initialize: (
+        ?filter_created_after: Time,
+        ?filter_created_before: Time,
+        ?filter_domain_id: String,
+        ?filter_reason: Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::EmailBlockRetrieveExportParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter_created_after: Time,
+        filter_created_before: Time,
+        filter_domain_id: String,
+        filter_reason: Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason,
+        page_number: Integer,
+        page_size: Integer,
+        sort: Telnyx::Models::EmailBlockRetrieveExportParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter_reason =
+        :hard_bounce | :spam_complaint | :unsubscribe | :invalid | :manual_block
+
+      module FilterReason
+        extend Telnyx::Internal::Type::Enum
+
+        HARD_BOUNCE: :hard_bounce
+        SPAM_COMPLAINT: :spam_complaint
+        UNSUBSCRIBE: :unsubscribe
+        INVALID: :invalid
+        MANUAL_BLOCK: :manual_block
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason]
+      end
+
+      type sort = :created_at | :"-created_at"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CREATED_AT: :created_at
+        CREATED_AT_DESC: :"-created_at"
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailBlockRetrieveExportParams::sort]
+      end
+    end
+  end
+end

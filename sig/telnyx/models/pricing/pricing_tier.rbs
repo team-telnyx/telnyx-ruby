@@ -1,0 +1,42 @@
+module Telnyx
+  module Models
+    class PricingTier = Pricing::PricingTier
+
+    module Pricing
+      type pricing_tier =
+        {
+          max: Integer?,
+          min: Integer,
+          rate: Telnyx::Models::Pricing::PricingTier::rate
+        }
+
+      class PricingTier < Telnyx::Internal::Type::BaseModel
+        attr_accessor max: Integer?
+
+        attr_accessor min: Integer
+
+        attr_accessor rate: Telnyx::Models::Pricing::PricingTier::rate
+
+        def initialize: (
+          max: Integer?,
+          min: Integer,
+          rate: Telnyx::Models::Pricing::PricingTier::rate
+        ) -> void
+
+        def to_hash: -> {
+          max: Integer?,
+          min: Integer,
+          rate: Telnyx::Models::Pricing::PricingTier::rate
+        }
+
+        type rate = Float | String
+
+        module Rate
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::Pricing::PricingTier::rate]
+        end
+      end
+    end
+  end
+end

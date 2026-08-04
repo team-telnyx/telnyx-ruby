@@ -5,6 +5,7 @@ module Telnyx
     module Legacy
       module Reporting
         module UsageReports
+          # @see Telnyx::Resources::Legacy::Reporting::UsageReports::NumberLookup#list
           class TelcoDataUsageReportResponse < Telnyx::Internal::Type::BaseModel
             # @!attribute id
             #   Unique identifier for the report

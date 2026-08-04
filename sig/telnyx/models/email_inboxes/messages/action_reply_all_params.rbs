@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    module EmailInboxes
+      module Messages
+        type action_reply_all_params =
+          { inbox_id: String, message_id: String }
+          & Telnyx::Internal::Type::request_parameters
+
+        class ActionReplyAllParams < Telnyx::Models::EmailInboxes::Messages::ReplyEmailInboxMessageRequest
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          def inbox_id: -> String
+
+          def inbox_id=: (String _) -> String
+
+          def message_id: -> String
+
+          def message_id=: (String _) -> String
+
+          def initialize: (
+            inbox_id: String,
+            message_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            inbox_id: String,
+            message_id: String,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

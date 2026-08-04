@@ -1,0 +1,349 @@
+module Telnyx
+  module Models
+    type call_payment_progress_webhook_event =
+      { data: Telnyx::CallPaymentProgressWebhookEvent::Data }
+
+    class CallPaymentProgressWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::CallPaymentProgressWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::CallPaymentProgressWebhookEvent::Data
+      ) -> Telnyx::CallPaymentProgressWebhookEvent::Data
+
+      def initialize: (
+        ?data: Telnyx::CallPaymentProgressWebhookEvent::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::CallPaymentProgressWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallPaymentProgressWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::CallPaymentProgressWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::CallPaymentProgressWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::CallPaymentProgressWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::CallPaymentProgressWebhookEvent::Data::Payload
+        ) -> Telnyx::CallPaymentProgressWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::CallPaymentProgressWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::CallPaymentProgressWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallPaymentProgressWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallPaymentProgressWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"call.payment.progress"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_PAYMENT_PROGRESS: :"call.payment.progress"
+
+          def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            attempt: Integer,
+            bank_account_number: String,
+            bank_account_type: String,
+            bank_routing_number: String,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            error_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::error_type,
+            expiration_date: String,
+            from: String,
+            payment_card_number: String,
+            payment_card_postal_code: String,
+            payment_card_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type,
+            payment_connector: String,
+            payment_method: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_method,
+            payment_status: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_status,
+            payment_step: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_step,
+            security_code: String,
+            to: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader attempt: Integer?
+
+          def attempt=: (Integer) -> Integer
+
+          attr_reader bank_account_number: String?
+
+          def bank_account_number=: (String) -> String
+
+          attr_reader bank_account_type: String?
+
+          def bank_account_type=: (String) -> String
+
+          attr_reader bank_routing_number: String?
+
+          def bank_routing_number=: (String) -> String
+
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader error_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::error_type?
+
+          def error_type=: (
+            Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::error_type
+          ) -> Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::error_type
+
+          attr_reader expiration_date: String?
+
+          def expiration_date=: (String) -> String
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader payment_card_number: String?
+
+          def payment_card_number=: (String) -> String
+
+          attr_reader payment_card_postal_code: String?
+
+          def payment_card_postal_code=: (String) -> String
+
+          attr_reader payment_card_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type?
+
+          def payment_card_type=: (
+            Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type
+          ) -> Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type
+
+          attr_reader payment_connector: String?
+
+          def payment_connector=: (String) -> String
+
+          attr_reader payment_method: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_method?
+
+          def payment_method=: (
+            Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_method
+          ) -> Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_method
+
+          attr_reader payment_status: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_status?
+
+          def payment_status=: (
+            Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_status
+          ) -> Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_status
+
+          attr_reader payment_step: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_step?
+
+          def payment_step=: (
+            Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_step
+          ) -> Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_step
+
+          attr_reader security_code: String?
+
+          def security_code=: (String) -> String
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          def initialize: (
+            ?attempt: Integer,
+            ?bank_account_number: String,
+            ?bank_account_type: String,
+            ?bank_routing_number: String,
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?error_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::error_type,
+            ?expiration_date: String,
+            ?from: String,
+            ?payment_card_number: String,
+            ?payment_card_postal_code: String,
+            ?payment_card_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type,
+            ?payment_connector: String,
+            ?payment_method: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_method,
+            ?payment_status: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_status,
+            ?payment_step: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_step,
+            ?security_code: String,
+            ?to: String
+          ) -> void
+
+          def to_hash: -> {
+            attempt: Integer,
+            bank_account_number: String,
+            bank_account_type: String,
+            bank_routing_number: String,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            error_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::error_type,
+            expiration_date: String,
+            from: String,
+            payment_card_number: String,
+            payment_card_postal_code: String,
+            payment_card_type: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type,
+            payment_connector: String,
+            payment_method: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_method,
+            payment_status: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_status,
+            payment_step: Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_step,
+            security_code: String,
+            to: String
+          }
+
+          type error_type =
+            :timeout
+            | :"invalid-card-number"
+            | :"invalid-date"
+            | :"invalid-security-code"
+            | :"invalid-postal-code"
+            | :"invalid-bank-routing-number"
+            | :"invalid-bank-account-number"
+            | :"input-matching-failed"
+
+          module ErrorType
+            extend Telnyx::Internal::Type::Enum
+
+            TIMEOUT: :timeout
+            INVALID_CARD_NUMBER: :"invalid-card-number"
+            INVALID_DATE: :"invalid-date"
+            INVALID_SECURITY_CODE: :"invalid-security-code"
+            INVALID_POSTAL_CODE: :"invalid-postal-code"
+            INVALID_BANK_ROUTING_NUMBER: :"invalid-bank-routing-number"
+            INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
+            INPUT_MATCHING_FAILED: :"input-matching-failed"
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::error_type]
+          end
+
+          type payment_card_type =
+            :visa | :mastercard | :amex | :discover | :"diners-club" | :jcb
+
+          module PaymentCardType
+            extend Telnyx::Internal::Type::Enum
+
+            VISA: :visa
+            MASTERCARD: :mastercard
+            AMEX: :amex
+            DISCOVER: :discover
+            DINERS_CLUB: :"diners-club"
+            JCB: :jcb
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type]
+          end
+
+          type payment_method = :"credit-card" | :"ach-debit"
+
+          module PaymentMethod
+            extend Telnyx::Internal::Type::Enum
+
+            CREDIT_CARD: :"credit-card"
+            ACH_DEBIT: :"ach-debit"
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_method]
+          end
+
+          type payment_status = :completed | :failed | :processing
+
+          module PaymentStatus
+            extend Telnyx::Internal::Type::Enum
+
+            COMPLETED: :completed
+            FAILED: :failed
+            PROCESSING: :processing
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_status]
+          end
+
+          type payment_step =
+            :"payment-card-number"
+            | :"expiration-date"
+            | :"postal-code"
+            | :"security-code"
+            | :"bank-routing-number"
+            | :"bank-account-number"
+            | :"payment-processing"
+
+          module PaymentStep
+            extend Telnyx::Internal::Type::Enum
+
+            PAYMENT_CARD_NUMBER: :"payment-card-number"
+            EXPIRATION_DATE: :"expiration-date"
+            POSTAL_CODE: :"postal-code"
+            SECURITY_CODE: :"security-code"
+            BANK_ROUTING_NUMBER: :"bank-routing-number"
+            BANK_ACCOUNT_NUMBER: :"bank-account-number"
+            PAYMENT_PROCESSING: :"payment-processing"
+
+            def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_step]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

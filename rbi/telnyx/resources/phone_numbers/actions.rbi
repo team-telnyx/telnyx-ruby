@@ -10,7 +10,7 @@ module Telnyx
         sig do
           params(
             id: String,
-            bundle_id: String,
+            bundle_id: T.nilable(String),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Models::PhoneNumbers::ActionChangeBundleStatusResponse

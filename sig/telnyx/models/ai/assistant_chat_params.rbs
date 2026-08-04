@@ -6,7 +6,8 @@ module Telnyx
           assistant_id: String,
           content: String,
           conversation_id: String,
-          name: String
+          name: String,
+          stream: bool
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -24,11 +25,16 @@ module Telnyx
 
         def name=: (String) -> String
 
+        attr_reader stream: bool?
+
+        def stream=: (bool) -> bool
+
         def initialize: (
           assistant_id: String,
           content: String,
           conversation_id: String,
           ?name: String,
+          ?stream: bool,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -37,6 +43,7 @@ module Telnyx
           content: String,
           conversation_id: String,
           name: String,
+          stream: bool,
           request_options: Telnyx::RequestOptions
         }
       end

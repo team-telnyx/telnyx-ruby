@@ -1,0 +1,98 @@
+module Telnyx
+  module Models
+    type email_message_batch_response =
+      {
+        data: ::Array[Telnyx::EmailInboxes::EmailMessage],
+        errors: ::Array[Telnyx::Models::EmailMessageBatchResponse::Error],
+        meta: Telnyx::Models::EmailMessageBatchResponse::Meta
+      }
+
+    class EmailMessageBatchResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::EmailInboxes::EmailMessage]
+
+      attr_accessor errors: ::Array[Telnyx::Models::EmailMessageBatchResponse::Error]
+
+      attr_accessor meta: Telnyx::Models::EmailMessageBatchResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::EmailInboxes::EmailMessage],
+        errors: ::Array[Telnyx::Models::EmailMessageBatchResponse::Error],
+        meta: Telnyx::Models::EmailMessageBatchResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::EmailInboxes::EmailMessage],
+        errors: ::Array[Telnyx::Models::EmailMessageBatchResponse::Error],
+        meta: Telnyx::Models::EmailMessageBatchResponse::Meta
+      }
+
+      type error =
+        {
+          code: Telnyx::Models::EmailMessageBatchResponse::Error::code,
+          index: Integer,
+          message: String
+        }
+
+      class Error < Telnyx::Internal::Type::BaseModel
+        attr_accessor code: Telnyx::Models::EmailMessageBatchResponse::Error::code
+
+        attr_accessor index: Integer
+
+        attr_accessor message: String
+
+        def initialize: (
+          code: Telnyx::Models::EmailMessageBatchResponse::Error::code,
+          index: Integer,
+          message: String
+        ) -> void
+
+        def to_hash: -> {
+          code: Telnyx::Models::EmailMessageBatchResponse::Error::code,
+          index: Integer,
+          message: String
+        }
+
+        type code =
+          :bad_request
+          | :not_found
+          | :forbidden
+          | :service_unavailable
+          | :validation_error
+          | :recipient_suppressed
+          | :reputation_suspended
+
+        module Code
+          extend Telnyx::Internal::Type::Enum
+
+          BAD_REQUEST: :bad_request
+          NOT_FOUND: :not_found
+          FORBIDDEN: :forbidden
+          SERVICE_UNAVAILABLE: :service_unavailable
+          VALIDATION_ERROR: :validation_error
+          RECIPIENT_SUPPRESSED: :recipient_suppressed
+          REPUTATION_SUSPENDED: :reputation_suspended
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailMessageBatchResponse::Error::code]
+        end
+      end
+
+      type meta = { failed: Integer, succeeded: Integer, total: Integer }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor failed: Integer
+
+        attr_accessor succeeded: Integer
+
+        attr_accessor total: Integer
+
+        def initialize: (
+          failed: Integer,
+          succeeded: Integer,
+          total: Integer
+        ) -> void
+
+        def to_hash: -> { failed: Integer, succeeded: Integer, total: Integer }
+      end
+    end
+  end
+end

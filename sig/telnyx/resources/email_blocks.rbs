@@ -1,0 +1,58 @@
+module Telnyx
+  module Resources
+    class EmailBlocks
+      attr_reader import: Telnyx::Resources::EmailBlocks::Import
+
+      def create: (
+        to: String,
+        ?domain_id: String?,
+        ?expires_at: Time?,
+        ?from: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailBlockResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailBlockResponse
+
+      def list: (
+        ?filter_created_after: Time,
+        ?filter_created_before: Time,
+        ?filter_domain_id: String,
+        ?filter_reason: Telnyx::Models::EmailBlockListParams::filter_reason,
+        ?page_after: String,
+        ?page_before: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::EmailBlockListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::EmailBlock]
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailBlockResponse
+
+      def retrieve_events: (
+        String id,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailBlockRetrieveEventsResponse
+
+      def retrieve_export: (
+        ?filter_created_after: Time,
+        ?filter_created_before: Time,
+        ?filter_domain_id: String,
+        ?filter_reason: Telnyx::Models::EmailBlockRetrieveExportParams::filter_reason,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?sort: Telnyx::Models::EmailBlockRetrieveExportParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> String
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

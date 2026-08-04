@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module EmailDomains
+      type email_webhook =
+        {
+          id: String,
+          created_at: Time,
+          domain_id: String,
+          events: ::Array[Telnyx::Models::EmailDomains::email_webhook_event],
+          record_type: Telnyx::Models::EmailDomains::EmailWebhook::record_type,
+          updated_at: Time,
+          url: String
+        }
+
+      class EmailWebhook < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor domain_id: String
+
+        attr_accessor events: ::Array[Telnyx::Models::EmailDomains::email_webhook_event]
+
+        attr_accessor record_type: Telnyx::Models::EmailDomains::EmailWebhook::record_type
+
+        attr_accessor updated_at: Time
+
+        attr_accessor url: String
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          domain_id: String,
+          events: ::Array[Telnyx::Models::EmailDomains::email_webhook_event],
+          record_type: Telnyx::Models::EmailDomains::EmailWebhook::record_type,
+          updated_at: Time,
+          url: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          domain_id: String,
+          events: ::Array[Telnyx::Models::EmailDomains::email_webhook_event],
+          record_type: Telnyx::Models::EmailDomains::EmailWebhook::record_type,
+          updated_at: Time,
+          url: String
+        }
+
+        type record_type = :email_webhook
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_WEBHOOK: :email_webhook
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailDomains::EmailWebhook::record_type]
+        end
+      end
+    end
+  end
+end

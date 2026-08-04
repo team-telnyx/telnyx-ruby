@@ -6,6 +6,8 @@ module Telnyx
 
         attr_reader profile: Telnyx::Resources::Whatsapp::PhoneNumbers::Profile
 
+        attr_reader conversational_components: Telnyx::Resources::Whatsapp::PhoneNumbers::ConversationalComponents
+
         def list: (
           ?page_number: Integer,
           ?page_size: Integer,

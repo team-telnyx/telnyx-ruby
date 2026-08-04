@@ -34,6 +34,7 @@ module Telnyx
         id,
         # Unique identifier for a messaging profile.
         messaging_profile_id:,
+        # Tags associated with the resource.
         tags: nil,
         request_options: {}
       )

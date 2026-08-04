@@ -15,7 +15,7 @@ module Telnyx
         #
         # @param id [String] Identifies the resource.
         #
-        # @param bundle_id [String] The new bundle_id setting for the number. If you are assigning the number to a b
+        # @param bundle_id [String, nil] The new bundle_id setting for the number. If you are assigning the number to a b
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

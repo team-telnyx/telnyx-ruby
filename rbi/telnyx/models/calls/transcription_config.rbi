@@ -20,7 +20,13 @@ module Telnyx
         # `assemblyai/universal-streaming`, `auto` (or unset) enables native multilingual
         # code-switching; ISO 639-1 codes (`en`, `es`, `de`, `fr`, `pt`, `it`, `tr`, `nl`,
         # `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`, `he`, `ja`, `zh`) bias the session to
-        # that language.
+        # that language. For `humain/realtime`, supported values are `ar`, `en`,
+        # `codeswitch` (Arabic/English code-switching), and `auto` (resolves server-side
+        # to code-switching). Unlike other models, `humain/realtime` does not fall back to
+        # `auto` when `language` is omitted — omitting it applies `en` instead. For
+        # `reson8/turns`, supported values are `auto` (or unset) for automatic language
+        # detection, and the language codes `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`,
+        # `pt`, `es`, and `sv` to fix the transcription language.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -40,6 +46,10 @@ module Telnyx
         #   automatic language detection.
         # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #   detection.
+        # - `humain/realtime` for live streaming transcription with native Arabic and
+        #   Arabic/English code-switching support.
+        # - `reson8/turns` for live streaming turn-based transcription of 10 European
+        #   languages with automatic language detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -83,7 +93,13 @@ module Telnyx
           # `assemblyai/universal-streaming`, `auto` (or unset) enables native multilingual
           # code-switching; ISO 639-1 codes (`en`, `es`, `de`, `fr`, `pt`, `it`, `tr`, `nl`,
           # `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`, `he`, `ja`, `zh`) bias the session to
-          # that language.
+          # that language. For `humain/realtime`, supported values are `ar`, `en`,
+          # `codeswitch` (Arabic/English code-switching), and `auto` (resolves server-side
+          # to code-switching). Unlike other models, `humain/realtime` does not fall back to
+          # `auto` when `language` is omitted — omitting it applies `en` instead. For
+          # `reson8/turns`, supported values are `auto` (or unset) for automatic language
+          # detection, and the language codes `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`,
+          # `pt`, `es`, and `sv` to fix the transcription language.
           language: nil,
           # The speech to text model to be used by the voice assistant. Supported models
           # include:
@@ -98,6 +114,10 @@ module Telnyx
           #   automatic language detection.
           # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
           #   detection.
+          # - `humain/realtime` for live streaming transcription with native Arabic and
+          #   Arabic/English code-switching support.
+          # - `reson8/turns` for live streaming turn-based transcription of 10 European
+          #   languages with automatic language detection.
           # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
           #   unsupported regions require `api_key_ref`.
           # - `google/latest_long` for non-streaming multilingual transcription.
@@ -133,6 +153,10 @@ module Telnyx
         #   automatic language detection.
         # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #   detection.
+        # - `humain/realtime` for live streaming transcription with native Arabic and
+        #   Arabic/English code-switching support.
+        # - `reson8/turns` for live streaming turn-based transcription of 10 European
+        #   languages with automatic language detection.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -197,6 +221,16 @@ module Telnyx
           NVIDIA_PARAKEET_V3 =
             T.let(
               :"nvidia/parakeet-v3",
+              Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
+            )
+          HUMAIN_REALTIME =
+            T.let(
+              :"humain/realtime",
+              Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
+            )
+          RESON8_TURNS =
+            T.let(
+              :"reson8/turns",
               Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
             )
           AZURE_FAST =

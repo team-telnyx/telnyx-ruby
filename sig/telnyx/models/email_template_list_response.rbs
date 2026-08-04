@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    type email_template_list_response =
+      {
+        data: ::Array[Telnyx::EmailTemplate],
+        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      }
+
+    class EmailTemplateListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::EmailTemplate]
+
+      attr_accessor meta: Telnyx::EmailInboxes::EmailPaginationMeta
+
+      def initialize: (
+        data: ::Array[Telnyx::EmailTemplate],
+        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::EmailTemplate],
+        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      }
+    end
+  end
+end

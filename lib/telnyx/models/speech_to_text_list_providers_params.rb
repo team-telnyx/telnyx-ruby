@@ -52,6 +52,8 @@ module Telnyx
         XAI = :xai
         SONIOX = :soniox
         PARAKEET = :parakeet
+        HUMAIN = :humain
+        RESON8 = :reson8
         AZURE = :azure
         OPENAI = :openai
         GOOGLE = :google

@@ -34,7 +34,7 @@ module Telnyx
       #
       # @param messaging_profile_id [String] Unique identifier for a messaging profile.
       #
-      # @param tags [Array<String>]
+      # @param tags [Array<String>] Tags associated with the resource.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

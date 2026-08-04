@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    type email_inbox_list_response =
+      {
+        data: ::Array[Telnyx::EmailInbox],
+        meta: Telnyx::Models::EmailInboxListResponse::Meta
+      }
+
+    class EmailInboxListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::EmailInbox]
+
+      attr_accessor meta: Telnyx::Models::EmailInboxListResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::EmailInbox],
+        meta: Telnyx::Models::EmailInboxListResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::EmailInbox],
+        meta: Telnyx::Models::EmailInboxListResponse::Meta
+      }
+
+      type meta = { page_size: Integer, page_cursor: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_size: Integer
+
+        attr_reader page_cursor: String?
+
+        def page_cursor=: (String) -> String
+
+        def initialize: (page_size: Integer, ?page_cursor: String) -> void
+
+        def to_hash: -> { page_size: Integer, page_cursor: String }
+      end
+    end
+  end
+end

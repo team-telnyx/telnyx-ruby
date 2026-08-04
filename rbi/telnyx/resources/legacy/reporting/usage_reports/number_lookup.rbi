@@ -51,11 +51,23 @@ module Telnyx
 
             # Retrieve a paginated list of telco data usage reports
             sig do
-              params(request_options: Telnyx::RequestOptions::OrHash).returns(
-                Telnyx::Models::Legacy::Reporting::UsageReports::NumberLookupListResponse
+              params(
+                page: Integer,
+                per_page: Integer,
+                request_options: Telnyx::RequestOptions::OrHash
+              ).returns(
+                Telnyx::Internal::PerPagePagination[
+                  Telnyx::Legacy::Reporting::UsageReports::TelcoDataUsageReportResponse
+                ]
               )
             end
-            def list(request_options: {})
+            def list(
+              # Page number to retrieve (1-based).
+              page: nil,
+              # Filter results by per page.
+              per_page: nil,
+              request_options: {}
+            )
             end
 
             # Delete a specific telco data usage report by its ID
