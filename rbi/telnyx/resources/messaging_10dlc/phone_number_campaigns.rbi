@@ -36,7 +36,7 @@ module Telnyx
         )
         end
 
-        # Create New Phone Number Campaign
+        # Update Phone Number Campaign
         sig do
           params(
             campaign_phone_number: String,

@@ -19,16 +19,22 @@ module Telnyx
         sig { params(data: T::Array[Telnyx::SimpleSimCard::OrHash]).void }
         attr_writer :data
 
-        sig { returns(T.nilable(T::Array[Telnyx::WirelessError])) }
+        sig do
+          returns(T.nilable(T::Array[Telnyx::Actions::WirelessErrorC5290d5308]))
+        end
         attr_reader :errors
 
-        sig { params(errors: T::Array[Telnyx::WirelessError::OrHash]).void }
+        sig do
+          params(
+            errors: T::Array[Telnyx::Actions::WirelessErrorC5290d5308::OrHash]
+          ).void
+        end
         attr_writer :errors
 
         sig do
           params(
             data: T::Array[Telnyx::SimpleSimCard::OrHash],
-            errors: T::Array[Telnyx::WirelessError::OrHash]
+            errors: T::Array[Telnyx::Actions::WirelessErrorC5290d5308::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -42,7 +48,7 @@ module Telnyx
           override.returns(
             {
               data: T::Array[Telnyx::SimpleSimCard],
-              errors: T::Array[Telnyx::WirelessError]
+              errors: T::Array[Telnyx::Actions::WirelessErrorC5290d5308]
             }
           )
         end

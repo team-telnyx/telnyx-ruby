@@ -90,7 +90,9 @@ module Telnyx
           sort: Telnyx::PhoneNumberListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::PhoneNumberDetailed]
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::NumbersPhoneNumberDetailed
+          ]
         )
       end
       def list(

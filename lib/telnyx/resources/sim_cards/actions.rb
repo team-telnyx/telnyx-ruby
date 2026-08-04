@@ -41,7 +41,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimCards::SimCardAction>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::SimCards::WirelessSimCardAction>]
         #
         # @see Telnyx::Models::SimCards::ActionListParams
         def list(params = {})
@@ -52,7 +52,7 @@ module Telnyx
             path: "sim_card_actions",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::SimCards::SimCardAction,
+            model: Telnyx::SimCards::WirelessSimCardAction,
             options: options
           )
         end

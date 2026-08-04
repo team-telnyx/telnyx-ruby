@@ -46,6 +46,23 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
     end
   end
 
+  def test_get
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.whatsapp.phone_numbers.get
+
+    assert_pattern do
+      response => Telnyx::Models::Whatsapp::PhoneNumberGetResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data]) | nil,
+        meta: Telnyx::MessagingPaginationMeta | nil
+      }
+    end
+  end
+
   def test_resend_verification
     skip("Mock server tests are disabled")
 

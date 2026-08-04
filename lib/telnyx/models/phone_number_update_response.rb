@@ -6,11 +6,11 @@ module Telnyx
     class PhoneNumberUpdateResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::PhoneNumberDetailed, nil]
-      optional :data, -> { Telnyx::PhoneNumberDetailed }
+      #   @return [Telnyx::Models::NumbersPhoneNumberDetailed, nil]
+      optional :data, -> { Telnyx::NumbersPhoneNumberDetailed }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::PhoneNumberDetailed]
+      #   @param data [Telnyx::Models::NumbersPhoneNumberDetailed]
     end
   end
 end

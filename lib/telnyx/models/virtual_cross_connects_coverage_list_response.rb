@@ -29,8 +29,8 @@ module Telnyx
 
       # @!attribute location
       #
-      #   @return [Telnyx::Models::NetappsLocation, nil]
-      optional :location, -> { Telnyx::NetappsLocation }
+      #   @return [Telnyx::Models::NetappsLocation17904fcfbc, nil]
+      optional :location, -> { Telnyx::NetappsLocation17904fcfbc }
 
       response_only do
         # @!attribute record_type
@@ -50,7 +50,7 @@ module Telnyx
       #
       #   @param cloud_provider_region [String] The region where your Virtual Private Cloud hosts are located. Should be identic
       #
-      #   @param location [Telnyx::Models::NetappsLocation]
+      #   @param location [Telnyx::Models::NetappsLocation17904fcfbc]
       #
       #   @param record_type [String] Identifies the type of the resource.
 

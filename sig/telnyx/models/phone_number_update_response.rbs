@@ -1,15 +1,18 @@
 module Telnyx
   module Models
-    type phone_number_update_response = { data: Telnyx::PhoneNumberDetailed }
+    type phone_number_update_response =
+      { data: Telnyx::NumbersPhoneNumberDetailed }
 
     class PhoneNumberUpdateResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::PhoneNumberDetailed?
+      attr_reader data: Telnyx::NumbersPhoneNumberDetailed?
 
-      def data=: (Telnyx::PhoneNumberDetailed) -> Telnyx::PhoneNumberDetailed
+      def data=: (
+        Telnyx::NumbersPhoneNumberDetailed
+      ) -> Telnyx::NumbersPhoneNumberDetailed
 
-      def initialize: (?data: Telnyx::PhoneNumberDetailed) -> void
+      def initialize: (?data: Telnyx::NumbersPhoneNumberDetailed) -> void
 
-      def to_hash: -> { data: Telnyx::PhoneNumberDetailed }
+      def to_hash: -> { data: Telnyx::NumbersPhoneNumberDetailed }
     end
   end
 end

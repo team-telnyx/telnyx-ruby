@@ -1170,6 +1170,8 @@ module Telnyx
 
   MessagingError = Telnyx::Models::MessagingError
 
+  MessagingError0b38e7044b = Telnyx::Models::MessagingError0b38e7044b
+
   MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
 
   MessagingHostedNumberDeleteParams =
@@ -1219,7 +1221,13 @@ module Telnyx
 
   MessagingOptoutListParams = Telnyx::Models::MessagingOptoutListParams
 
+  MessagingOutboundMessagePayload =
+    Telnyx::Models::MessagingOutboundMessagePayload
+
   MessagingPaginationMeta = Telnyx::Models::MessagingPaginationMeta
+
+  MessagingPaginationMeta0b38e7044b =
+    Telnyx::Models::MessagingPaginationMeta0b38e7044b
 
   MessagingProfile = Telnyx::Models::MessagingProfile
 
@@ -1309,6 +1317,8 @@ module Telnyx
   MonthDetail = Telnyx::Models::MonthDetail
 
   NetappsLocation = Telnyx::Models::NetappsLocation
+
+  NetappsLocation17904fcfbc = Telnyx::Models::NetappsLocation17904fcfbc
 
   Network = Telnyx::Models::Network
 
@@ -1439,6 +1449,8 @@ module Telnyx
 
   NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
 
+  NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
+
   OAuthClient = Telnyx::Models::OAuthClient
 
   OAuthClientCreateParams = Telnyx::Models::OAuthClientCreateParams
@@ -1462,6 +1474,8 @@ module Telnyx
   OAuthGrantsParams = Telnyx::Models::OAuthGrantsParams
 
   OAuthIntrospectParams = Telnyx::Models::OAuthIntrospectParams
+
+  OAuthOAuthPaginationMeta = Telnyx::Models::OAuthOAuthPaginationMeta
 
   OAuthRegisterParams = Telnyx::Models::OAuthRegisterParams
 
@@ -2149,6 +2163,8 @@ module Telnyx
   UserAddress = Telnyx::Models::UserAddress
 
   UserAddressCreateParams = Telnyx::Models::UserAddressCreateParams
+
+  UserAddressesUserAddress = Telnyx::Models::UserAddressesUserAddress
 
   UserAddressListParams = Telnyx::Models::UserAddressListParams
 

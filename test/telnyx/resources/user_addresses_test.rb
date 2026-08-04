@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::UserAddressesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::UserAddress | nil
+        data: Telnyx::UserAddressesUserAddress | nil
       }
     end
   end
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::UserAddressesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::UserAddress | nil
+        data: Telnyx::UserAddressesUserAddress | nil
       }
     end
   end
@@ -56,7 +56,7 @@ class Telnyx::Test::Resources::UserAddressesTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::UserAddress
+      row => Telnyx::UserAddressesUserAddress
     end
 
     assert_pattern do

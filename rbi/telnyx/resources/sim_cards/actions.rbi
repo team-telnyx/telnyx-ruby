@@ -29,7 +29,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::SimCards::SimCardAction
+              Telnyx::SimCards::WirelessSimCardAction
             ]
           )
         end

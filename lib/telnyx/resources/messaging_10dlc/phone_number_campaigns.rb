@@ -49,7 +49,7 @@ module Telnyx
           )
         end
 
-        # Create New Phone Number Campaign
+        # Update Phone Number Campaign
         #
         # @overload update(campaign_phone_number, campaign_id:, phone_number:, request_options: {})
         #

@@ -12,8 +12,8 @@ module Telnyx
 
       # @!attribute location
       #
-      #   @return [Telnyx::Models::NetappsLocation, nil]
-      optional :location, -> { Telnyx::NetappsLocation }
+      #   @return [Telnyx::Models::NetappsLocation17904fcfbc, nil]
+      optional :location, -> { Telnyx::NetappsLocation17904fcfbc }
 
       response_only do
         # @!attribute record_type
@@ -26,7 +26,7 @@ module Telnyx
       # @!method initialize(available_services: nil, location: nil, record_type: nil)
       #   @param available_services [Array<Symbol, Telnyx::Models::AvailableService>] List of interface types supported in this region.
       #
-      #   @param location [Telnyx::Models::NetappsLocation]
+      #   @param location [Telnyx::Models::NetappsLocation17904fcfbc]
       #
       #   @param record_type [String] Identifies the type of the resource.
     end

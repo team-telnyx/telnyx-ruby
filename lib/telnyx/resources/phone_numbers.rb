@@ -105,7 +105,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumberDetailed>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NumbersPhoneNumberDetailed>]
       #
       # @see Telnyx::Models::PhoneNumberListParams
       def list(params = {})
@@ -116,7 +116,7 @@ module Telnyx
           path: "phone_numbers",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::PhoneNumberDetailed,
+          model: Telnyx::NumbersPhoneNumberDetailed,
           options: options
         )
       end

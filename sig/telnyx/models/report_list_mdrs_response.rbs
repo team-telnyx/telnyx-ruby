@@ -3,7 +3,7 @@ module Telnyx
     type report_list_mdrs_response =
       {
         data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-        meta: Telnyx::Reports::PaginationMetaReporting
+        meta: Telnyx::Reports::ReportingPaginationMeta77109e5d17
       }
 
     class ReportListMdrsResponse < Telnyx::Internal::Type::BaseModel
@@ -13,20 +13,20 @@ module Telnyx
         ::Array[Telnyx::Models::ReportListMdrsResponse::Data]
       ) -> ::Array[Telnyx::Models::ReportListMdrsResponse::Data]
 
-      attr_reader meta: Telnyx::Reports::PaginationMetaReporting?
+      attr_reader meta: Telnyx::Reports::ReportingPaginationMeta77109e5d17?
 
       def meta=: (
-        Telnyx::Reports::PaginationMetaReporting
-      ) -> Telnyx::Reports::PaginationMetaReporting
+        Telnyx::Reports::ReportingPaginationMeta77109e5d17
+      ) -> Telnyx::Reports::ReportingPaginationMeta77109e5d17
 
       def initialize: (
         ?data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-        ?meta: Telnyx::Reports::PaginationMetaReporting
+        ?meta: Telnyx::Reports::ReportingPaginationMeta77109e5d17
       ) -> void
 
       def to_hash: -> {
         data: ::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-        meta: Telnyx::Reports::PaginationMetaReporting
+        meta: Telnyx::Reports::ReportingPaginationMeta77109e5d17
       }
 
       type data =

@@ -52,6 +52,17 @@ module Telnyx
         )
         end
 
+        # List Whatsapp phone numbers
+        sig do
+          params(
+            page_number: Integer,
+            page_size: Integer,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Whatsapp::PhoneNumberGetResponse)
+        end
+        def get(page_number: nil, page_size: nil, request_options: {})
+        end
+
         # Resend verification code
         sig do
           params(

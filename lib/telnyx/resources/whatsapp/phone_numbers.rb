@@ -61,6 +61,29 @@ module Telnyx
           )
         end
 
+        # List Whatsapp phone numbers
+        #
+        # @overload get(page_number: nil, page_size: nil, request_options: {})
+        #
+        # @param page_number [Integer]
+        # @param page_size [Integer]
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Whatsapp::PhoneNumberGetResponse]
+        #
+        # @see Telnyx::Models::Whatsapp::PhoneNumberGetParams
+        def get(params = {})
+          parsed, options = Telnyx::Whatsapp::PhoneNumberGetParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
+          @client.request(
+            method: :get,
+            path: "whatsapp/phone_numbers",
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            model: Telnyx::Models::Whatsapp::PhoneNumberGetResponse,
+            options: options
+          )
+        end
+
         # Resend verification code
         #
         # @overload resend_verification(phone_number, verification_method: nil, request_options: {})
