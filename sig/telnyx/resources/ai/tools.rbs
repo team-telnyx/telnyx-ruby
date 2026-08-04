@@ -12,6 +12,7 @@ module Telnyx
           ?pay: Telnyx::AI::PayToolParams,
           ?retrieval: ::Hash[Symbol, top],
           ?timeout_ms: Integer,
+          ?update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           ?webhook: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::SharedToolResponse
@@ -32,6 +33,7 @@ module Telnyx
           ?retrieval: ::Hash[Symbol, top],
           ?timeout_ms: Integer,
           ?type: String,
+          ?update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           ?webhook: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::SharedToolResponse

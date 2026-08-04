@@ -13,6 +13,7 @@ module Telnyx
         sig do
           params(
             slug: String,
+            filter_country_iso: T.nilable(String),
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -21,6 +22,7 @@ module Telnyx
         def retrieve(
           # Product slug from the catalog listing.
           slug,
+          filter_country_iso: nil,
           # Page number (1-based).
           page_number: nil,
           # Number of items per page (max 100).
@@ -38,7 +40,7 @@ module Telnyx
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
-            Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders[
+            Telnyx::Internal::DefaultFlatPagination[
               Telnyx::Models::Pricing::ProductListResponse
             ]
           )

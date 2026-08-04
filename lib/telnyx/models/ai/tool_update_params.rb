@@ -58,23 +58,42 @@ module Telnyx
         #   @return [String, nil]
         optional :type, String
 
+        # @!attribute update_dynamic_variables
+        #   Configuration for an update_dynamic_variables tool.
+        #
+        #   @return [Telnyx::Models::AI::UpdateDynamicVariablesToolParams, nil]
+        optional :update_dynamic_variables, -> { Telnyx::AI::UpdateDynamicVariablesToolParams }
+
         # @!attribute webhook
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :webhook, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-        # @!method initialize(tool_id:, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
+        # @!method initialize(tool_id:, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
         #   @param tool_id [String]
+        #
         #   @param client_side_tool [Hash{Symbol=>Object}]
+        #
         #   @param display_name [String]
+        #
         #   @param function [Hash{Symbol=>Object}]
+        #
         #   @param handoff [Hash{Symbol=>Object}]
+        #
         #   @param invite [Hash{Symbol=>Object}]
+        #
         #   @param pay [Telnyx::Models::AI::PayToolParams]
+        #
         #   @param retrieval [Hash{Symbol=>Object}]
+        #
         #   @param timeout_ms [Integer]
+        #
         #   @param type [String]
+        #
+        #   @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
+        #
         #   @param webhook [Hash{Symbol=>Object}]
+        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

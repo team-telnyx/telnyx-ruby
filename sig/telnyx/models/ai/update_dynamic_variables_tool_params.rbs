@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    module AI
+      type update_dynamic_variables_tool_params =
+        {
+          description: String,
+          name: String,
+          updatable_variables: ::Array[Telnyx::AI::UpdateDynamicVariablesToolParams::UpdatableVariable]
+        }
+
+      class UpdateDynamicVariablesToolParams < Telnyx::Internal::Type::BaseModel
+        attr_accessor description: String
+
+        attr_accessor name: String
+
+        attr_accessor updatable_variables: ::Array[Telnyx::AI::UpdateDynamicVariablesToolParams::UpdatableVariable]
+
+        def initialize: (
+          description: String,
+          name: String,
+          updatable_variables: ::Array[Telnyx::AI::UpdateDynamicVariablesToolParams::UpdatableVariable]
+        ) -> void
+
+        def to_hash: -> {
+          description: String,
+          name: String,
+          updatable_variables: ::Array[Telnyx::AI::UpdateDynamicVariablesToolParams::UpdatableVariable]
+        }
+
+        type updatable_variable =
+          { name: String, description: String, type: String }
+
+        class UpdatableVariable < Telnyx::Internal::Type::BaseModel
+          attr_accessor name: String
+
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
+          attr_reader type: String?
+
+          def type=: (String) -> String
+
+          def initialize: (
+            name: String,
+            ?description: String,
+            ?type: String
+          ) -> void
+
+          def to_hash: -> { name: String, description: String, type: String }
+        end
+      end
+    end
+  end
+end

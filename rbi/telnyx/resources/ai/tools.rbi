@@ -17,6 +17,8 @@ module Telnyx
             pay: Telnyx::AI::PayToolParams::OrHash,
             retrieval: T::Hash[Symbol, T.anything],
             timeout_ms: Integer,
+            update_dynamic_variables:
+              Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::SharedToolResponse)
@@ -31,6 +33,8 @@ module Telnyx
           pay: nil,
           retrieval: nil,
           timeout_ms: nil,
+          # Configuration for an update_dynamic_variables tool.
+          update_dynamic_variables: nil,
           webhook: nil,
           request_options: {}
         )
@@ -63,6 +67,8 @@ module Telnyx
             retrieval: T::Hash[Symbol, T.anything],
             timeout_ms: Integer,
             type: String,
+            update_dynamic_variables:
+              Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::SharedToolResponse)
@@ -79,6 +85,8 @@ module Telnyx
           retrieval: nil,
           timeout_ms: nil,
           type: nil,
+          # Configuration for an update_dynamic_variables tool.
+          update_dynamic_variables: nil,
           webhook: nil,
           request_options: {}
         )
