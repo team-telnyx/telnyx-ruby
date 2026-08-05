@@ -1239,6 +1239,8 @@ module Telnyx
 
   class NumberOrderStatusUpdate = Telnyx::Models::NumberOrderStatusUpdate
 
+  class NumberOrderStatusUpdateWebhookEvent = Telnyx::Models::NumberOrderStatusUpdateWebhookEvent
+
   class NumberOrderUpdateParams = Telnyx::Models::NumberOrderUpdateParams
 
   class NumberOrderWithPhoneNumbers = Telnyx::Models::NumberOrderWithPhoneNumbers

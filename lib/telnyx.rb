@@ -1737,6 +1737,7 @@ require_relative "telnyx/models/number_order_phone_number_update_requirements_re
 require_relative "telnyx/models/number_order_retrieve_params"
 require_relative "telnyx/models/number_order_retrieve_response"
 require_relative "telnyx/models/number_order_status_update"
+require_relative "telnyx/models/number_order_status_update_webhook_event"
 require_relative "telnyx/models/number_order_update_params"
 require_relative "telnyx/models/number_order_update_response"
 require_relative "telnyx/models/number_order_with_phone_numbers"
