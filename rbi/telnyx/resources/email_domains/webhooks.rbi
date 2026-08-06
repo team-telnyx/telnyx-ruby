@@ -27,7 +27,8 @@ module Telnyx
         )
         end
 
-        # Retrieve a webhook
+        # Returns the webhook subscription identified by ID within the specified email
+        # domain.
         sig do
           params(
             id: String,
@@ -68,7 +69,8 @@ module Telnyx
         )
         end
 
-        # List webhooks for an email domain
+        # Returns a paginated list of webhook subscriptions scoped to the email domain.
+        # Results can be sorted by creation time.
         sig do
           params(
             domain_id: String,
@@ -95,7 +97,8 @@ module Telnyx
         )
         end
 
-        # Delete a webhook
+        # Deletes the webhook subscription identified by ID within the specified email
+        # domain and returns the deleted subscription.
         sig do
           params(
             id: String,

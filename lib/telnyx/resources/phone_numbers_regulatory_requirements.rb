@@ -8,7 +8,9 @@ module Telnyx
       # {Telnyx::Models::PhoneNumbersRegulatoryRequirementRetrieveParams} for more
       # details.
       #
-      # Retrieve regulatory requirements for a list of phone numbers
+      # Returns the regulatory requirements that apply to the supplied comma-separated
+      # phone numbers. The response includes the matching requirement records and
+      # pagination metadata.
       #
       # @overload retrieve(filter: nil, request_options: {})
       #

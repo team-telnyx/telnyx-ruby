@@ -7,7 +7,9 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AvailablePhoneNumberBlockListParams} for more details.
       #
-      # List available phone number blocks
+      # Searches the Telnyx inventory for available contiguous phone-number blocks.
+      # Results can be filtered by locality, country, national destination code, and
+      # number type.
       #
       # @overload list(filter: nil, request_options: {})
       #

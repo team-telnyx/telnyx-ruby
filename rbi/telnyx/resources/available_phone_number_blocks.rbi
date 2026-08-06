@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Number search
     class AvailablePhoneNumberBlocks
-      # List available phone number blocks
+      # Searches the Telnyx inventory for available contiguous phone-number blocks.
+      # Results can be filtered by locality, country, national destination code, and
+      # number type.
       sig do
         params(
           filter: Telnyx::AvailablePhoneNumberBlockListParams::Filter::OrHash,

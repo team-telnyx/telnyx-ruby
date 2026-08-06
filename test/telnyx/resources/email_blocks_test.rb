@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::EmailBlocksTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.email_blocks.create(to: "to")
+    response = @telnyx.email_blocks.create(to: "spammer@bad.tld")
 
     assert_pattern do
       response => Telnyx::EmailBlockResponse

@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::NumbersFeaturesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.numbers_features.create(phone_numbers: ["string"])
+    response = @telnyx.numbers_features.create(phone_numbers: ["+19705555098"])
 
     assert_pattern do
       response => Telnyx::Models::NumbersFeatureCreateResponse

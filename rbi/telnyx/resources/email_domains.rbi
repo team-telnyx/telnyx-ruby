@@ -7,7 +7,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::EmailDomains::Webhooks) }
       attr_reader :webhooks
 
-      # Create an email domain
+      # Registers a domain for email sending and optional inbound delivery. The response
+      # includes the domain configuration and current verification state.
       sig do
         params(
           domain: String,
@@ -46,7 +47,9 @@ module Telnyx
       )
       end
 
-      # Update an email domain
+      # Updates mutable settings for an existing email domain, including inbound
+      # delivery and tracking configuration. Shared domains are read-only for non-owner
+      # accounts.
       sig do
         params(
           id: String,
@@ -112,7 +115,8 @@ module Telnyx
       )
       end
 
-      # Delete an email domain
+      # Deletes an email domain configuration. Verified domains require `force=true`,
+      # and shared domains are read-only for non-owner accounts.
       sig do
         params(
           id: String,
@@ -129,7 +133,8 @@ module Telnyx
       )
       end
 
-      # List DNS records for an email domain
+      # Returns the DNS records Telnyx generated for domain ownership and DKIM
+      # verification, plus MX records when inbound delivery is enabled.
       sig do
         params(
           domain_id: String,
@@ -157,7 +162,8 @@ module Telnyx
       )
       end
 
-      # Verify DNS records for an email domain
+      # Checks the published DNS records against the records required for the email
+      # domain and returns the latest verification results.
       sig do
         params(
           domain_id: String,

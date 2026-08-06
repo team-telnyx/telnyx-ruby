@@ -27,7 +27,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::PhoneNumbers::Voicemail) }
       attr_reader :voicemail
 
-      # Retrieve a phone number
+      # Returns the detailed configuration and current state of the phone number
+      # identified by `id`.
       sig do
         params(
           id: String,
@@ -41,7 +42,8 @@ module Telnyx
       )
       end
 
-      # Update a phone number
+      # Updates the configurable settings of the specified phone number. The response
+      # contains the complete updated phone-number representation.
       sig do
         params(
           phone_number_id: String,
@@ -79,7 +81,9 @@ module Telnyx
       )
       end
 
-      # List phone numbers
+      # Returns phone numbers associated with the account. Results support pagination,
+      # sorting, and filters for number attributes, status, source, connections, billing
+      # groups, emergency addresses, tags, and customer references.
       sig do
         params(
           filter: Telnyx::PhoneNumberListParams::Filter::OrHash,
@@ -119,7 +123,8 @@ module Telnyx
       )
       end
 
-      # Delete a phone number
+      # Deletes the specified phone number from the account. The response contains the
+      # phone number's final deleted representation.
       sig do
         params(
           id: String,

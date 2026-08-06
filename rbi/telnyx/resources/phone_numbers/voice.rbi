@@ -5,7 +5,8 @@ module Telnyx
     class PhoneNumbers
       # Configure your phone numbers
       class Voice
-        # Retrieve a phone number with voice settings
+        # Returns the specified phone number together with its current voice
+        # configuration.
         sig do
           params(
             id: String,
@@ -19,7 +20,8 @@ module Telnyx
         )
         end
 
-        # Update a phone number with voice settings
+        # Updates the voice configuration for the specified phone number. The response
+        # contains the phone number with its updated voice settings.
         sig do
           params(
             id: String,
@@ -67,7 +69,9 @@ module Telnyx
         )
         end
 
-        # List phone numbers with voice settings
+        # Returns account phone numbers together with their voice settings. Results
+        # support pagination, sorting, and filters for number, connection name, customer
+        # reference, and voice usage payment method.
         sig do
           params(
             filter: Telnyx::PhoneNumbers::VoiceListParams::Filter::OrHash,

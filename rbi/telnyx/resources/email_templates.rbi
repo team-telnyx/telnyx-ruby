@@ -41,7 +41,8 @@ module Telnyx
       )
       end
 
-      # Get an email template
+      # Returns the account-owned template identified by ID, including its Liquid
+      # subject and bodies, declared variables, and timestamps.
       sig do
         params(
           id: String,
@@ -100,7 +101,8 @@ module Telnyx
       )
       end
 
-      # Delete an email template
+      # Deletes the account-owned template. The operation returns `204` with no body and
+      # prevents future sends or renders from using the deleted template ID.
       sig do
         params(id: String, request_options: Telnyx::RequestOptions::OrHash).void
       end
