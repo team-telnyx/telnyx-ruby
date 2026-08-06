@@ -36,7 +36,7 @@ module Telnyx
           )
         end
 
-        # Get a Migration Source
+        # Retrieve the details of a specific migration source.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -56,7 +56,9 @@ module Telnyx
           )
         end
 
-        # List all Migration Sources
+        # List the migration sources configured on your account. A migration source is an
+        # external storage bucket from which data can be migrated into Telnyx Cloud
+        # Storage.
         #
         # @overload list(request_options: {})
         #
@@ -74,7 +76,7 @@ module Telnyx
           )
         end
 
-        # Delete a Migration Source
+        # Delete a migration source configuration.
         #
         # @overload delete(id, request_options: {})
         #

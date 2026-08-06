@@ -7,7 +7,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPAssignmentsUsageRetrieveParams} for more details.
       #
-      # Global IP Assignment Usage Metrics
+      # Retrieve usage metrics for your Global IP assignments.
       #
       # @overload retrieve(filter: nil, request_options: {})
       #

@@ -61,7 +61,7 @@ module Telnyx
           )
         end
 
-        # List Whatsapp phone numbers
+        # Retrieve a list of the phone numbers registered for WhatsApp on your account.
         #
         # @overload get(page_number: nil, page_size: nil, request_options: {})
         #

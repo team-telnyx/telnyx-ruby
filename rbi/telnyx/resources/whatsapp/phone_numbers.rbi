@@ -52,7 +52,7 @@ module Telnyx
         )
         end
 
-        # List Whatsapp phone numbers
+        # Retrieve a list of the phone numbers registered for WhatsApp on your account.
         sig do
           params(
             page_number: Integer,

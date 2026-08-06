@@ -25,7 +25,7 @@ module Telnyx
       # @return [Telnyx::Resources::Storage::Cloudfs]
       attr_reader :cloudfs
 
-      # List Migration Source coverage
+      # List the external storage providers and regions supported as migration sources.
       #
       # @overload list_migration_source_coverage(request_options: {})
       #

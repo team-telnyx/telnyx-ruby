@@ -5,7 +5,7 @@ module Telnyx
     class AI
       # Configure AI assistant specifications
       class Tools
-        # Create Tool
+        # Create a new custom AI tool that can be attached to AI assistants.
         sig do
           params(
             display_name: String,
@@ -40,7 +40,7 @@ module Telnyx
         )
         end
 
-        # Get Tool
+        # Retrieve the details of a specific AI tool.
         sig do
           params(
             tool_id: String,
@@ -54,7 +54,7 @@ module Telnyx
         )
         end
 
-        # Update Tool
+        # Update the configuration of an existing AI tool.
         sig do
           params(
             tool_id: String,
@@ -92,7 +92,7 @@ module Telnyx
         )
         end
 
-        # List Tools
+        # Retrieve a list of the custom AI tools configured on your account.
         sig do
           params(
             filter_name: String,
@@ -119,7 +119,7 @@ module Telnyx
         )
         end
 
-        # Delete Tool
+        # Delete a custom AI tool.
         sig do
           params(
             tool_id: String,

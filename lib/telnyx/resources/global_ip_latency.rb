@@ -7,7 +7,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPLatencyRetrieveParams} for more details.
       #
-      # Global IP Latency Metrics
+      # Retrieve latency metrics measured for your Global IPs.
       #
       # @overload retrieve(filter: nil, request_options: {})
       #

@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # IP Range Operations
     class AccessIPRanges
-      # Create new Access IP Range
+      # Create a new access IP range on your account.
       sig do
         params(
           cidr_block: String,
@@ -15,7 +15,7 @@ module Telnyx
       def create(cidr_block:, description: nil, request_options: {})
       end
 
-      # List all Access IP Ranges
+      # Retrieve a paginated list of access IP ranges configured on your account.
       sig do
         params(
           filter: Telnyx::AccessIPRangeListParams::Filter::OrHash,
@@ -38,7 +38,7 @@ module Telnyx
       )
       end
 
-      # Delete access IP ranges
+      # Delete an access IP range from your account.
       sig do
         params(
           access_ip_range_id: String,

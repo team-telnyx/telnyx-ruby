@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # IP Address Operations
     class AccessIPAddress
-      # Create new Access IP Address
+      # Create a new access IP address entry on your account.
       #
       # @overload create(ip_address:, description: nil, request_options: {})
       #
@@ -26,7 +26,7 @@ module Telnyx
         )
       end
 
-      # Retrieve an access IP address
+      # Retrieve the details of a specific access IP address.
       #
       # @overload retrieve(access_ip_address_id, request_options: {})
       #
@@ -49,7 +49,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AccessIPAddressListParams} for more details.
       #
-      # List all Access IP Addresses
+      # Retrieve a paginated list of access IP addresses configured on your account.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -77,7 +77,7 @@ module Telnyx
         )
       end
 
-      # Delete access IP address
+      # Delete an access IP address entry from your account.
       #
       # @overload delete(access_ip_address_id, request_options: {})
       #

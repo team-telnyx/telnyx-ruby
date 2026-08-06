@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # IP Range Operations
     class AccessIPRanges
-      # Create new Access IP Range
+      # Create a new access IP range on your account.
       #
       # @overload create(cidr_block:, description: nil, request_options: {})
       #
@@ -29,7 +29,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AccessIPRangeListParams} for more details.
       #
-      # List all Access IP Ranges
+      # Retrieve a paginated list of access IP ranges configured on your account.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -57,7 +57,7 @@ module Telnyx
         )
       end
 
-      # Delete access IP ranges
+      # Delete an access IP range from your account.
       #
       # @overload delete(access_ip_range_id, request_options: {})
       #

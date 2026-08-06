@@ -101,7 +101,7 @@ module Telnyx
       )
       end
 
-      # View a fax
+      # Retrieve the details of a single fax.
       sig do
         params(
           id: String,
@@ -115,7 +115,7 @@ module Telnyx
       )
       end
 
-      # View a list of faxes
+      # Retrieve a paginated list of faxes sent or received on your account.
       sig do
         params(
           filter: Telnyx::FaxListParams::Filter::OrHash,
@@ -135,7 +135,7 @@ module Telnyx
       )
       end
 
-      # Delete a fax
+      # Delete a fax resource from your account.
       sig do
         params(id: String, request_options: Telnyx::RequestOptions::OrHash).void
       end

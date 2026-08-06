@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Billing groups operations
     class BillingGroups
-      # Create a billing group
+      # Create a new billing group, which can be used to organize resources for billing
+      # purposes.
       #
       # @overload create(name: nil, request_options: {})
       #
@@ -26,7 +27,7 @@ module Telnyx
         )
       end
 
-      # Get a billing group
+      # Retrieve the details of a specific billing group.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -46,7 +47,7 @@ module Telnyx
         )
       end
 
-      # Update a billing group
+      # Update the properties of an existing billing group.
       #
       # @overload update(id, name: nil, request_options: {})
       #
@@ -70,7 +71,7 @@ module Telnyx
         )
       end
 
-      # List all billing groups
+      # Retrieve a paginated list of billing groups on your account.
       #
       # @overload list(page_number: nil, page_size: nil, request_options: {})
       #
@@ -94,7 +95,7 @@ module Telnyx
         )
       end
 
-      # Delete a billing group
+      # Delete a billing group from your account.
       #
       # @overload delete(id, request_options: {})
       #

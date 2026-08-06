@@ -1579,7 +1579,8 @@ module Telnyx
         )
         end
 
-        # Noise Suppression Start (BETA)
+        # Start noise suppression on an active call to reduce background noise. This
+        # feature is currently in beta.
         sig do
           params(
             call_control_id: String,
@@ -2064,7 +2065,8 @@ module Telnyx
         )
         end
 
-        # Noise Suppression Stop (BETA)
+        # Stop noise suppression previously started on an active call. This feature is
+        # currently in beta.
         sig do
           params(
             call_control_id: String,

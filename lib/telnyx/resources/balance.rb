@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Billing operations
     class Balance
-      # Get user balance details
+      # Retrieve the current balance, available credit, and credit limit for your
+      # account.
       #
       # @overload retrieve(request_options: {})
       #

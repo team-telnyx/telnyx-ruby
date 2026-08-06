@@ -5,7 +5,7 @@ module Telnyx
     class AI
       # Configure AI assistant specifications
       class Tools
-        # Create Tool
+        # Create a new custom AI tool that can be attached to AI assistants.
         #
         # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
         #
@@ -47,7 +47,7 @@ module Telnyx
           )
         end
 
-        # Get Tool
+        # Retrieve the details of a specific AI tool.
         #
         # @overload retrieve(tool_id, request_options: {})
         #
@@ -67,7 +67,7 @@ module Telnyx
           )
         end
 
-        # Update Tool
+        # Update the configuration of an existing AI tool.
         #
         # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
         #
@@ -111,7 +111,7 @@ module Telnyx
           )
         end
 
-        # List Tools
+        # Retrieve a list of the custom AI tools configured on your account.
         #
         # @overload list(filter_name: nil, filter_type: nil, page_number: nil, page_size: nil, request_options: {})
         #
@@ -146,7 +146,7 @@ module Telnyx
           )
         end
 
-        # Delete Tool
+        # Delete a custom AI tool.
         #
         # @overload delete(tool_id, request_options: {})
         #

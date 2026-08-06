@@ -5,7 +5,7 @@ module Telnyx
     class AI
       # Identify common themes and patterns in your embedded documents
       class Clusters
-        # Fetch a cluster
+        # Fetch the results of a clustering task, including the discovered clusters.
         sig do
           params(
             task_id: String,
@@ -26,7 +26,7 @@ module Telnyx
         )
         end
 
-        # List all clusters
+        # Retrieve a paginated list of clustering tasks and their statuses.
         sig do
           params(
             page_number: Integer,
@@ -41,7 +41,7 @@ module Telnyx
         def list(page_number: nil, page_size: nil, request_options: {})
         end
 
-        # Delete a cluster
+        # Delete a clustering task and its computed results.
         sig do
           params(
             task_id: String,
@@ -87,7 +87,7 @@ module Telnyx
         )
         end
 
-        # Fetch a cluster visualization
+        # Fetch a visualization image of the clusters computed by a clustering task.
         sig do
           params(
             task_id: String,

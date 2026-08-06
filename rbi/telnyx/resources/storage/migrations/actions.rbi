@@ -6,7 +6,7 @@ module Telnyx
       class Migrations
         # Migrate data from an external provider into Telnyx Cloud Storage
         class Actions
-          # Stop a Migration
+          # Stop an in-progress storage migration.
           sig do
             params(
               id: String,
