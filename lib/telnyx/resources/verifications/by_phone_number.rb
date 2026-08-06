@@ -9,7 +9,8 @@ module Telnyx
         # @return [Telnyx::Resources::Verifications::ByPhoneNumber::Actions]
         attr_reader :actions
 
-        # List verifications by phone number
+        # Returns a paginated list of verifications associated with the specified phone
+        # number.
         #
         # @overload list(phone_number, request_options: {})
         #

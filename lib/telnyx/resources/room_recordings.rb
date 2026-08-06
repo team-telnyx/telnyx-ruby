@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Rooms Recordings operations.
     class RoomRecordings
-      # View a room recording.
+      # Returns the recording identified by `room_recording_id`, including its room,
+      # session, participant, status, media details, lifecycle timestamps, and download
+      # URL.
       #
       # @overload retrieve(room_recording_id, request_options: {})
       #
@@ -27,7 +29,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomRecordingListParams} for more details.
       #
-      # View a list of room recordings.
+      # Returns a paginated list of room recordings. Filter recordings by room, session,
+      # participant, recording type, status, duration, or start and end dates.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -78,7 +81,9 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomRecordingDeleteBulkParams} for more details.
       #
-      # Delete several room recordings in a bulk.
+      # Deletes the room recordings that match the supplied filters and returns the
+      # number of recordings affected. Filters support room, session, participant,
+      # recording type, status, duration, and start or end dates.
       #
       # @overload delete_bulk(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

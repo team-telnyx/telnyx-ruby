@@ -8,7 +8,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Verifications::ActionVerifyParams} for more details.
         #
-        # Verify verification code by ID
+        # Checks the supplied code, or the supplied status for a custom-code verification,
+        # against the verification identified by ID. The response indicates whether the
+        # verification was accepted or rejected.
         #
         # @overload verify(verification_id, code: nil, status: nil, request_options: {})
         #

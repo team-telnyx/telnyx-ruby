@@ -8,7 +8,9 @@ module Telnyx
         # @return [Telnyx::Resources::Rooms::Sessions::Actions]
         attr_reader :actions
 
-        # View a room session.
+        # Returns the room session identified by `room_session_id`, including its room,
+        # active status, and lifecycle timestamps. Use `include_participants` to include
+        # its participant records.
         #
         # @overload retrieve(room_session_id, include_participants: nil, request_options: {})
         #
@@ -36,7 +38,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Rooms::SessionList0Params} for more details.
         #
-        # View a list of room sessions.
+        # Returns a paginated list of room sessions across the account. Filter sessions by
+        # room, creation, update, or end date and active status, and use
+        # `include_participants` to include participant records.
         #
         # @overload list_0(filter: nil, include_participants: nil, page_number: nil, page_size: nil, request_options: {})
         #
@@ -69,7 +73,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Rooms::SessionList1Params} for more details.
         #
-        # View a list of room sessions.
+        # Returns a paginated list of sessions for the specified room. Filter sessions by
+        # creation, update, or end date and active status, and use `include_participants`
+        # to include participant records.
         #
         # @overload list_1(room_id, filter: nil, include_participants: nil, page_number: nil, page_size: nil, request_options: {})
         #
@@ -104,7 +110,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Rooms::SessionRetrieveParticipantsParams} for more details.
         #
-        # View a list of room participants.
+        # Returns a paginated list of participants for the specified room session. Filter
+        # participants by join, update, or leave date and by participant context.
         #
         # @overload retrieve_participants(room_session_id, filter: nil, page_number: nil, page_size: nil, request_options: {})
         #
