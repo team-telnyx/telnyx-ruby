@@ -6,7 +6,9 @@ module Telnyx
       class Campaign
         # Campaign operations
         class Osr
-          # Get OSR campaign attributes
+          # Returns the optional shared-responsibility attributes recorded for the campaign.
+          # Use these values to inspect the campaign configuration submitted to the
+          # registry.
           #
           # @overload get_attributes(campaign_id, request_options: {})
           #

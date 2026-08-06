@@ -5,7 +5,8 @@ module Telnyx
     class MessagingProfiles
       # Opt-Out Management
       class AutorespConfigs
-        # Create auto-response setting
+        # Creates an auto-response rule on the specified messaging profile. Matching
+        # inbound messages trigger the configured response.
         #
         # @overload create(profile_id, country_code:, keywords:, op:, resp_text: nil, request_options: {})
         #
@@ -35,7 +36,8 @@ module Telnyx
           )
         end
 
-        # Get Auto-Response Setting
+        # Returns the matching criteria and response content for the specified
+        # auto-response rule.
         #
         # @overload retrieve(autoresp_cfg_id, profile_id:, request_options: {})
         #
@@ -62,7 +64,7 @@ module Telnyx
           )
         end
 
-        # Update Auto-Response Setting
+        # Replaces the configuration of the specified auto-response rule.
         #
         # @overload update(autoresp_cfg_id, profile_id:, country_code:, keywords:, op:, resp_text: nil, request_options: {})
         #
@@ -101,7 +103,7 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::MessagingProfiles::AutorespConfigListParams} for more details.
         #
-        # List Auto-Response Settings
+        # Returns the auto-response rules configured for the specified messaging profile.
         #
         # @overload list(profile_id, country_code: nil, created_at: nil, updated_at: nil, request_options: {})
         #
@@ -130,7 +132,7 @@ module Telnyx
           )
         end
 
-        # Delete Auto-Response Setting
+        # Deletes the specified auto-response rule from the messaging profile.
         #
         # @overload delete(autoresp_cfg_id, profile_id:, request_options: {})
         #

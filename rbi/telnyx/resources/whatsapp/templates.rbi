@@ -5,7 +5,8 @@ module Telnyx
     class Whatsapp
       # Manage Whatsapp message templates
       class Templates
-        # Create a Whatsapp message template
+        # Creates a WhatsApp message template for review and subsequent use in template
+        # messages.
         sig do
           params(
             category:
@@ -43,7 +44,8 @@ module Telnyx
         )
         end
 
-        # List Whatsapp message templates
+        # Returns WhatsApp message templates owned by the authenticated account, including
+        # their current review state.
         sig do
           params(
             filter_category:

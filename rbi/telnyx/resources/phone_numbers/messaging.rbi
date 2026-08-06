@@ -5,7 +5,8 @@ module Telnyx
     class PhoneNumbers
       # Configure your phone numbers
       class Messaging
-        # Retrieve a phone number with messaging settings
+        # Returns the messaging product and messaging-profile assignment for the specified
+        # phone number.
         sig do
           params(
             id: String,
@@ -19,7 +20,8 @@ module Telnyx
         )
         end
 
-        # Update the messaging profile and/or messaging product of a phone number
+        # Updates the messaging product, messaging profile, or both for the specified
+        # phone number.
         sig do
           params(
             id: String,
@@ -50,7 +52,8 @@ module Telnyx
         )
         end
 
-        # List phone numbers with messaging settings
+        # Returns phone numbers with their current messaging product and messaging-profile
+        # assignments.
         sig do
           params(
             filter_messaging_profile_id: String,

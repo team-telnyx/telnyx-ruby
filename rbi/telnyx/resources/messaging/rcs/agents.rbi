@@ -6,7 +6,7 @@ module Telnyx
       class Rcs
         # Send RCS messages
         class Agents
-          # Retrieve an RCS agent
+          # Returns the configuration and current state of the specified RCS agent.
           sig do
             params(
               id: String,
@@ -20,7 +20,7 @@ module Telnyx
           )
           end
 
-          # Modify an RCS agent
+          # Updates the supplied configuration fields on the specified RCS agent.
           sig do
             params(
               id: String,
@@ -43,7 +43,7 @@ module Telnyx
           )
           end
 
-          # List all RCS agents
+          # Returns RCS agents available to the authenticated account.
           sig do
             params(
               page_number: Integer,

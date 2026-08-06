@@ -33,7 +33,8 @@ module Telnyx
           )
         end
 
-        # Send an RCS message
+        # Queues an outbound RCS message through the selected RCS agent. Check recipient
+        # capabilities before sending features that require RCS support.
         #
         # @overload send_(agent_id:, agent_message:, messaging_profile_id:, to:, mms_fallback: nil, sms_fallback: nil, type: nil, webhook_url: nil, request_options: {})
         #

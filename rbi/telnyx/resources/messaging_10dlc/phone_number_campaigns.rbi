@@ -5,7 +5,8 @@ module Telnyx
     class Messaging10dlc
       # Phone number campaign assignment
       class PhoneNumberCampaigns
-        # Create New Phone Number Campaign
+        # Assigns a phone number to a 10DLC campaign. The assignment controls which
+        # registered campaign is used for traffic from that number.
         sig do
           params(
             campaign_id: String,
@@ -36,7 +37,7 @@ module Telnyx
         )
         end
 
-        # Update Phone Number Campaign
+        # Replaces the 10DLC campaign assignment for the specified phone number.
         sig do
           params(
             campaign_phone_number: String,
@@ -56,7 +57,8 @@ module Telnyx
         )
         end
 
-        # List phone number campaigns
+        # Returns phone-number-to-campaign assignments for the authenticated account.
+        # Apply the documented filters and pagination parameters to narrow the result set.
         sig do
           params(
             filter:

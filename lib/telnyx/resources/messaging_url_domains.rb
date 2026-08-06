@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Messaging URL Domains
     class MessagingURLDomains
-      # List messaging URL domains
+      # Returns the URL domains available to the authenticated account for message URL
+      # shortening.
       #
       # @overload list(page_number: nil, page_size: nil, request_options: {})
       #

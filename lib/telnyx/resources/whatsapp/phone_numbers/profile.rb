@@ -10,7 +10,7 @@ module Telnyx
           # @return [Telnyx::Resources::Whatsapp::PhoneNumbers::Profile::Photo]
           attr_reader :photo
 
-          # Get phone number business profile
+          # Returns the business profile displayed for the specified WhatsApp phone number.
           #
           # @overload retrieve(phone_number, request_options: {})
           #
@@ -30,7 +30,8 @@ module Telnyx
             )
           end
 
-          # Update phone number business profile
+          # Updates the supplied business-profile fields for the specified WhatsApp phone
+          # number.
           #
           # @overload update(phone_number, about: nil, address: nil, category: nil, description: nil, display_name: nil, email: nil, profile_id: nil, website: nil, request_options: {})
           #

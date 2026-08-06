@@ -17,7 +17,7 @@ module Telnyx
         # @return [Telnyx::Resources::Whatsapp::PhoneNumbers::ConversationalComponents]
         attr_reader :conversational_components
 
-        # List Whatsapp phone numbers
+        # Returns WhatsApp phone numbers linked to the authenticated Telnyx account.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
@@ -41,7 +41,7 @@ module Telnyx
           )
         end
 
-        # Delete a Whatsapp phone number
+        # Removes the specified phone number from Telnyx WhatsApp management.
         #
         # @overload delete(phone_number, request_options: {})
         #
@@ -84,7 +84,7 @@ module Telnyx
           )
         end
 
-        # Resend verification code
+        # Requests a new verification code for the specified WhatsApp phone number.
         #
         # @overload resend_verification(phone_number, verification_method: nil, request_options: {})
         #
@@ -135,7 +135,7 @@ module Telnyx
           )
         end
 
-        # Submit verification code for a phone number
+        # Submits the verification code received for the specified WhatsApp phone number.
         #
         # @overload verify(phone_number, code:, request_options: {})
         #

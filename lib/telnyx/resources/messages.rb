@@ -181,7 +181,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendGroupMmsParams} for more details.
       #
-      # Send a group MMS message
+      # Queues an MMS addressed to multiple recipients as a group conversation. Delivery
+      # events are reported asynchronously through messaging webhooks.
       #
       # @overload send_group_mms(from:, to:, media_urls: nil, subject: nil, text: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -220,7 +221,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendLongCodeParams} for more details.
       #
-      # Send a long code message
+      # Queues an outbound SMS or MMS using a long-code sender. Delivery progress and
+      # final disposition are reported asynchronously through messaging webhooks.
       #
       # @overload send_long_code(from:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -265,7 +267,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendNumberPoolParams} for more details.
       #
-      # Send a message using number pool
+      # Queues an outbound message using a number pool. Telnyx selects an eligible
+      # sender from the pool according to its messaging profile configuration.
       #
       # @overload send_number_pool(messaging_profile_id:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -310,7 +313,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendShortCodeParams} for more details.
       #
-      # Send a short code message
+      # Queues an outbound SMS or MMS using a short-code sender. Delivery progress and
+      # final disposition are reported asynchronously through messaging webhooks.
       #
       # @overload send_short_code(from:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #

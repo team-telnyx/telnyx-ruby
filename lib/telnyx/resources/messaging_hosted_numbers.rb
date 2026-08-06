@@ -95,7 +95,7 @@ module Telnyx
         )
       end
 
-      # Delete a messaging hosted number
+      # Removes the specified hosted number from Telnyx messaging management.
       #
       # @overload delete(id, request_options: {})
       #
