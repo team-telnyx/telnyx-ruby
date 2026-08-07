@@ -96,7 +96,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
   def test_verify_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.whatsapp.phone_numbers.verify("phone_number", code: "code")
+    response = @telnyx.whatsapp.phone_numbers.verify("phone_number", code: "string")
 
     assert_pattern do
       response => nil

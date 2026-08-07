@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightGroupsTest < Telnyx::Te
   def test_insight_groups_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.conversations.insight_groups.insight_groups(name: "name")
+    response = @telnyx.ai.conversations.insight_groups.insight_groups(name: "Name")
 
     assert_pattern do
       response => Telnyx::AI::Conversations::InsightTemplateGroupDetail

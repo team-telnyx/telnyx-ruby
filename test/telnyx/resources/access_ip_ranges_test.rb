@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::AccessIPRangesTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.access_ip_ranges.create(cidr_block: "cidr_block")
+    response = @telnyx.access_ip_ranges.create(cidr_block: "Cidr Block")
 
     assert_pattern do
       response => Telnyx::AccessIPRange

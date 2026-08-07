@@ -19,8 +19,8 @@ class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Teln
     response =
       @telnyx.messaging_10dlc.brand.external_vetting.imports(
         "brandId",
-        evp_id: "evpId",
-        vetting_id: "vettingId"
+        evp_id: "Evpid",
+        vetting_id: "Vettingid"
       )
 
     assert_pattern do
@@ -46,8 +46,8 @@ class Telnyx::Test::Resources::Messaging10dlc::Brand::ExternalVettingTest < Teln
     response =
       @telnyx.messaging_10dlc.brand.external_vetting.order(
         "brandId",
-        evp_id: "evpId",
-        vetting_class: "vettingClass"
+        evp_id: "Evpid",
+        vetting_class: "Vettingclass"
       )
 
     assert_pattern do

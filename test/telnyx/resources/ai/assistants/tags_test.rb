@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::AI::Assistants::TagsTest < Telnyx::Test::Resource
   def test_add_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.assistants.tags.add("assistant_id", tag: "tag")
+    response = @telnyx.ai.assistants.tags.add("assistant_id", tag: "Tag")
 
     assert_pattern do
       response => Telnyx::AI::Assistants::TagsResponse

@@ -99,8 +99,8 @@ class Telnyx::Test::Resources::VoiceClonesTest < Telnyx::Test::ResourceTest
         voice_clone_upload_request: {
           audio_file: StringIO.new("Example data"),
           gender: :male,
-          language: "lkf-Lz1vLbBu-9uDh-9AHaOS2D-Cbf",
-          name: "name",
+          language: "en",
+          name: "My cloned voice",
           provider: :telnyx
         }
       )

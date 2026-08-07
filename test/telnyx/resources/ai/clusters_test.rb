@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::AI::ClustersTest < Telnyx::Test::ResourceTest
   def test_compute_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.clusters.compute(bucket: "bucket")
+    response = @telnyx.ai.clusters.compute(bucket: "string")
 
     assert_pattern do
       response => Telnyx::Models::AI::ClusterComputeResponse
