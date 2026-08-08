@@ -21,6 +21,7 @@ module Telnyx
       type voice =
         {
           gender: String,
+          hosted: bool,
           language: String,
           name: String,
           provider: String,
@@ -31,6 +32,10 @@ module Telnyx
         attr_reader gender: String?
 
         def gender=: (String) -> String
+
+        attr_reader hosted: bool?
+
+        def hosted=: (bool) -> bool
 
         attr_reader language: String?
 
@@ -50,6 +55,7 @@ module Telnyx
 
         def initialize: (
           ?gender: String,
+          ?hosted: bool,
           ?language: String,
           ?name: String,
           ?provider: String,
@@ -58,6 +64,7 @@ module Telnyx
 
         def to_hash: -> {
           gender: String,
+          hosted: bool,
           language: String,
           name: String,
           provider: String,

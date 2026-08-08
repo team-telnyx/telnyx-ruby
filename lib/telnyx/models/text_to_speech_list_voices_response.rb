@@ -22,6 +22,13 @@ module Telnyx
         #   @return [String, nil]
         optional :gender, String
 
+        # @!attribute hosted
+        #   Whether this voice runs on Telnyx-hosted infrastructure (`true`) or is provided
+        #   by a third-party vendor (`false`).
+        #
+        #   @return [Boolean, nil]
+        optional :hosted, Telnyx::Internal::Type::Boolean
+
         # @!attribute language
         #   Language code.
         #
@@ -46,10 +53,15 @@ module Telnyx
         #   @return [String, nil]
         optional :voice_id, String
 
-        # @!method initialize(gender: nil, language: nil, name: nil, provider: nil, voice_id: nil)
+        # @!method initialize(gender: nil, hosted: nil, language: nil, name: nil, provider: nil, voice_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::TextToSpeechListVoicesResponse::Voice} for more details.
+        #
         #   A voice available for text-to-speech synthesis.
         #
         #   @param gender [String] Voice gender.
+        #
+        #   @param hosted [Boolean] Whether this voice runs on Telnyx-hosted infrastructure (`true`) or is provided
         #
         #   @param language [String] Language code.
         #
