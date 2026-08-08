@@ -102,10 +102,12 @@ module Telnyx
 
       # These errors may point at addressees when referring to unsuccessful/unconfirmed
       # delivery statuses.
-      sig { returns(T.nilable(T::Array[Telnyx::MessagingError])) }
+      sig { returns(T.nilable(T::Array[Telnyx::MessagingError0b38e7044b])) }
       attr_reader :errors
 
-      sig { params(errors: T::Array[Telnyx::MessagingError::OrHash]).void }
+      sig do
+        params(errors: T::Array[Telnyx::MessagingError0b38e7044b::OrHash]).void
+      end
       attr_writer :errors
 
       sig do
@@ -309,7 +311,7 @@ module Telnyx
           direction:
             Telnyx::Models::MessageCancelScheduledResponse::Direction::OrSymbol,
           encoding: String,
-          errors: T::Array[Telnyx::MessagingError::OrHash],
+          errors: T::Array[Telnyx::MessagingError0b38e7044b::OrHash],
           from: Telnyx::Models::MessageCancelScheduledResponse::From::OrHash,
           media:
             T::Array[
@@ -422,7 +424,7 @@ module Telnyx
             direction:
               Telnyx::Models::MessageCancelScheduledResponse::Direction::TaggedSymbol,
             encoding: String,
-            errors: T::Array[Telnyx::MessagingError],
+            errors: T::Array[Telnyx::MessagingError0b38e7044b],
             from: Telnyx::Models::MessageCancelScheduledResponse::From,
             media:
               T::Array[Telnyx::Models::MessageCancelScheduledResponse::Media],

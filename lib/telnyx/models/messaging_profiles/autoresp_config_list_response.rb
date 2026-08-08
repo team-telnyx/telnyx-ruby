@@ -12,14 +12,14 @@ module Telnyx
 
         # @!attribute meta
         #
-        #   @return [Telnyx::Models::MessagingPaginationMeta]
-        required :meta, -> { Telnyx::MessagingPaginationMeta }
+        #   @return [Telnyx::Models::MessagingPaginationMeta0b38e7044b]
+        required :meta, -> { Telnyx::MessagingPaginationMeta0b38e7044b }
 
         # @!method initialize(data:, meta:)
         #   List of Auto-Response Settings
         #
         #   @param data [Array<Telnyx::Models::MessagingProfiles::AutoRespConfig>]
-        #   @param meta [Telnyx::Models::MessagingPaginationMeta]
+        #   @param meta [Telnyx::Models::MessagingPaginationMeta0b38e7044b]
       end
     end
   end

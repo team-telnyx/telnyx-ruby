@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Ledger billing reports
     class LedgerBillingGroupReports
-      # Create a ledger billing group report
+      # Create a ledger billing group report, which aggregates ledger activity by
+      # billing group.
       #
       # @overload create(month: nil, year: nil, request_options: {})
       #
@@ -28,7 +29,8 @@ module Telnyx
         )
       end
 
-      # Get a ledger billing group report
+      # Retrieve the details and status of a previously created ledger billing group
+      # report.
       #
       # @overload retrieve(id, request_options: {})
       #

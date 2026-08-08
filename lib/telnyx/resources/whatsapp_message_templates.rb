@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Manage Whatsapp message templates
     class WhatsappMessageTemplates
-      # Get a Whatsapp message template by ID
+      # Returns the content, components, language, and current review state of the
+      # specified WhatsApp message template.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -24,7 +25,7 @@ module Telnyx
         )
       end
 
-      # Update a Whatsapp message template
+      # Updates the editable fields of the specified WhatsApp message template.
       #
       # @overload update(id, category: nil, components: nil, request_options: {})
       #
@@ -50,7 +51,7 @@ module Telnyx
         )
       end
 
-      # Delete a Whatsapp message template
+      # Deletes the specified WhatsApp message template.
       #
       # @overload delete(id, request_options: {})
       #

@@ -11,19 +11,21 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::UserAddress)) }
+      sig { returns(T.nilable(Telnyx::UserAddressesUserAddress)) }
       attr_reader :data
 
-      sig { params(data: Telnyx::UserAddress::OrHash).void }
+      sig { params(data: Telnyx::UserAddressesUserAddress::OrHash).void }
       attr_writer :data
 
       sig do
-        params(data: Telnyx::UserAddress::OrHash).returns(T.attached_class)
+        params(data: Telnyx::UserAddressesUserAddress::OrHash).returns(
+          T.attached_class
+        )
       end
       def self.new(data: nil)
       end
 
-      sig { override.returns({ data: Telnyx::UserAddress }) }
+      sig { override.returns({ data: Telnyx::UserAddressesUserAddress }) }
       def to_hash
       end
     end

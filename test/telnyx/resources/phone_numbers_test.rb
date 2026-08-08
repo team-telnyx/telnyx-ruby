@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::PhoneNumberDetailed | nil
+        data: Telnyx::NumbersPhoneNumberDetailed | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::PhoneNumberDetailed | nil
+        data: Telnyx::NumbersPhoneNumberDetailed | nil
       }
     end
   end
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::PhoneNumberDetailed
+      row => Telnyx::NumbersPhoneNumberDetailed
     end
 
     assert_pattern do
@@ -59,10 +59,10 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
         deletion_lock_enabled: Telnyx::Internal::Type::Boolean,
         external_pin: String | nil,
         phone_number: String,
-        phone_number_type: Telnyx::PhoneNumberDetailed::PhoneNumberType,
+        phone_number_type: Telnyx::NumbersPhoneNumberDetailed::PhoneNumberType,
         purchased_at: String,
         record_type: String,
-        status: Telnyx::PhoneNumberDetailed::Status,
+        status: Telnyx::NumbersPhoneNumberDetailed::Status,
         tags: ^(Telnyx::Internal::Type::ArrayOf[String]),
         activated_at: Time | nil,
         billing_group_id: String | nil,
@@ -75,12 +75,12 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
         customer_reference: String | nil,
         emergency_address_id: String | nil,
         emergency_enabled: Telnyx::Internal::Type::Boolean | nil,
-        emergency_status: Telnyx::PhoneNumberDetailed::EmergencyStatus | nil,
+        emergency_status: Telnyx::NumbersPhoneNumberDetailed::EmergencyStatus | nil,
         hd_voice_enabled: Telnyx::Internal::Type::Boolean | nil,
-        inbound_call_screening: Telnyx::PhoneNumberDetailed::InboundCallScreening | nil,
+        inbound_call_screening: Telnyx::NumbersPhoneNumberDetailed::InboundCallScreening | nil,
         messaging_profile_id: String | nil,
         messaging_profile_name: String | nil,
-        source_type: Telnyx::PhoneNumberDetailed::SourceType | nil,
+        source_type: Telnyx::NumbersPhoneNumberDetailed::SourceType | nil,
         t38_fax_gateway_enabled: Telnyx::Internal::Type::Boolean | nil,
         updated_at: String | nil
       }

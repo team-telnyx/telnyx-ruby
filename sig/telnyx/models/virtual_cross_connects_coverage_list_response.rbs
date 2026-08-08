@@ -5,7 +5,7 @@ module Telnyx
         available_bandwidth: ::Array[Float],
         cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider,
         cloud_provider_region: String,
-        location: Telnyx::NetappsLocation,
+        location: Telnyx::NetappsLocation17904fcfbc,
         record_type: String
       }
 
@@ -24,9 +24,11 @@ module Telnyx
 
       def cloud_provider_region=: (String) -> String
 
-      attr_reader location: Telnyx::NetappsLocation?
+      attr_reader location: Telnyx::NetappsLocation17904fcfbc?
 
-      def location=: (Telnyx::NetappsLocation) -> Telnyx::NetappsLocation
+      def location=: (
+        Telnyx::NetappsLocation17904fcfbc
+      ) -> Telnyx::NetappsLocation17904fcfbc
 
       attr_reader record_type: String?
 
@@ -36,7 +38,7 @@ module Telnyx
         ?available_bandwidth: ::Array[Float],
         ?cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider,
         ?cloud_provider_region: String,
-        ?location: Telnyx::NetappsLocation,
+        ?location: Telnyx::NetappsLocation17904fcfbc,
         ?record_type: String
       ) -> void
 
@@ -44,7 +46,7 @@ module Telnyx
         available_bandwidth: ::Array[Float],
         cloud_provider: Telnyx::Models::VirtualCrossConnectsCoverageListResponse::cloud_provider,
         cloud_provider_region: String,
-        location: Telnyx::NetappsLocation,
+        location: Telnyx::NetappsLocation17904fcfbc,
         record_type: String
       }
 

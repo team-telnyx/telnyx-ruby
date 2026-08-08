@@ -53,9 +53,7 @@ module Telnyx
 
           # Message Volume Enums
           sig do
-            returns(
-              Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol
-            )
+            returns(Telnyx::MessagingTollfree::Verification::Volume::OrSymbol)
           end
           attr_accessor :message_volume
 
@@ -80,7 +78,7 @@ module Telnyx
           # Tollfree usecase categories
           sig do
             returns(
-              Telnyx::MessagingTollfree::Verification::UseCaseCategories::TaggedSymbol
+              Telnyx::MessagingTollfree::Verification::UseCaseCategories::OrSymbol
             )
           end
           attr_accessor :use_case
@@ -136,7 +134,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::TaggedSymbol
+                Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
               )
             )
           end
@@ -190,7 +188,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::MessagingTollfree::Verification::TfVerificationStatus::TaggedSymbol
+                Telnyx::MessagingTollfree::Verification::TfVerificationStatus::OrSymbol
               )
             )
           end
@@ -321,7 +319,7 @@ module Telnyx
                 business_zip: String,
                 corporate_website: String,
                 message_volume:
-                  Telnyx::MessagingTollfree::Verification::Volume::TaggedSymbol,
+                  Telnyx::MessagingTollfree::Verification::Volume::OrSymbol,
                 opt_in_workflow: String,
                 opt_in_workflow_image_urls:
                   T::Array[Telnyx::MessagingTollfree::Verification::URL],
@@ -331,7 +329,7 @@ module Telnyx
                   ],
                 production_message_content: String,
                 use_case:
-                  Telnyx::MessagingTollfree::Verification::UseCaseCategories::TaggedSymbol,
+                  Telnyx::MessagingTollfree::Verification::UseCaseCategories::OrSymbol,
                 use_case_summary: String,
                 verification_request_id: String,
                 age_gated_content: T::Boolean,
@@ -342,7 +340,7 @@ module Telnyx
                 campaign_verify_authorization_token: T.nilable(String),
                 doing_business_as: String,
                 entity_type:
-                  Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::TaggedSymbol,
+                  Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol,
                 help_message_response: String,
                 isv_reseller: String,
                 opt_in_confirmation_response: String,
@@ -350,7 +348,7 @@ module Telnyx
                 privacy_policy_url: String,
                 terms_and_condition_url: String,
                 verification_status:
-                  Telnyx::MessagingTollfree::Verification::TfVerificationStatus::TaggedSymbol,
+                  Telnyx::MessagingTollfree::Verification::TfVerificationStatus::OrSymbol,
                 webhook_url: String
               }
             )

@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # Mobile voice connection operations
     class MobileVoiceConnections
-      # Create a Mobile Voice Connection
+      # Create a new mobile voice connection.
       #
       # @overload create(active: nil, connection_name: nil, inbound: nil, outbound: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
@@ -33,7 +33,7 @@ module Telnyx
         )
       end
 
-      # Retrieve a Mobile Voice Connection
+      # Retrieve the details of a specific mobile voice connection.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -53,7 +53,7 @@ module Telnyx
         )
       end
 
-      # Update a Mobile Voice Connection
+      # Update the settings of a specific mobile voice connection.
       #
       # @overload update(id, active: nil, connection_name: nil, inbound: nil, outbound: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
@@ -96,7 +96,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MobileVoiceConnectionListParams} for more details.
       #
-      # List Mobile Voice Connections
+      # Retrieve a paginated list of mobile voice connections on your account.
       #
       # @overload list(filter_connection_name_contains: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
@@ -130,7 +130,7 @@ module Telnyx
         )
       end
 
-      # Delete a Mobile Voice Connection
+      # Delete a mobile voice connection from your account.
       #
       # @overload delete(id, request_options: {})
       #

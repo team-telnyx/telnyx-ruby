@@ -12,12 +12,12 @@ module Telnyx
 
       # @!attribute meta
       #
-      #   @return [Telnyx::Models::MessagingPaginationMeta, nil]
-      optional :meta, -> { Telnyx::MessagingPaginationMeta }
+      #   @return [Telnyx::Models::MessagingPaginationMeta0b38e7044b, nil]
+      optional :meta, -> { Telnyx::MessagingPaginationMeta0b38e7044b }
 
       # @!method initialize(data: nil, meta: nil)
       #   @param data [Array<Hash{Symbol=>Object}>]
-      #   @param meta [Telnyx::Models::MessagingPaginationMeta]
+      #   @param meta [Telnyx::Models::MessagingPaginationMeta0b38e7044b]
     end
   end
 end

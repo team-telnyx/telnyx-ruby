@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::MessagingProfileMetricsTest < Telnyx::Test::Resou
     assert_pattern do
       response => {
         data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]) | nil,
-        meta: Telnyx::MessagingPaginationMeta | nil
+        meta: Telnyx::MessagingPaginationMeta0b38e7044b | nil
       }
     end
   end

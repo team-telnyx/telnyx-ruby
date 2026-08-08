@@ -5,7 +5,8 @@ module Telnyx
     class Messaging10dlc
       # Phone number campaign assignment
       class PhoneNumberCampaigns
-        # Create New Phone Number Campaign
+        # Assigns a phone number to a 10DLC campaign. The assignment controls which
+        # registered campaign is used for traffic from that number.
         #
         # @overload create(campaign_id:, phone_number:, request_options: {})
         #
@@ -49,7 +50,7 @@ module Telnyx
           )
         end
 
-        # Create New Phone Number Campaign
+        # Replaces the 10DLC campaign assignment for the specified phone number.
         #
         # @overload update(campaign_phone_number, campaign_id:, phone_number:, request_options: {})
         #
@@ -79,7 +80,8 @@ module Telnyx
         # {Telnyx::Models::Messaging10dlc::PhoneNumberCampaignListParams} for more
         # details.
         #
-        # List phone number campaigns
+        # Returns phone-number-to-campaign assignments for the authenticated account.
+        # Apply the documented filters and pagination parameters to narrow the result set.
         #
         # @overload list(filter: nil, page: nil, records_per_page: nil, sort: nil, request_options: {})
         #

@@ -62,6 +62,11 @@ module Telnyx
             )
           end
 
+        # Whether this model runs on Telnyx-hosted infrastructure (`true`) or is provided
+        # by a third-party vendor (`false`).
+        sig { returns(T::Boolean) }
+        attr_accessor :hosted
+
         # Provider-scoped model name.
         sig { returns(String) }
         attr_accessor :model
@@ -86,6 +91,7 @@ module Telnyx
         # entry in `service_types` describes one surface and the languages accepted on it.
         sig do
           params(
+            hosted: T::Boolean,
             model: String,
             provider: String,
             service_types:
@@ -95,6 +101,9 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # Whether this model runs on Telnyx-hosted infrastructure (`true`) or is provided
+          # by a third-party vendor (`false`).
+          hosted:,
           # Provider-scoped model name.
           model:,
           # STT provider name.
@@ -109,6 +118,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              hosted: T::Boolean,
               model: String,
               provider: String,
               service_types:

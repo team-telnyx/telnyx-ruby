@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::AI::Conversations::InsightsTest < Telnyx::Test::R
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.conversations.insights.create(instructions: "instructions", name: "name")
+    response = @telnyx.ai.conversations.insights.create(instructions: "Instructions", name: "Name")
 
     assert_pattern do
       response => Telnyx::AI::Conversations::InsightTemplateDetail

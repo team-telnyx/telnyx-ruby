@@ -64,7 +64,8 @@ module Telnyx
         )
       end
 
-      # Update Verify profile
+      # Updates the specified Verify profile's name, webhook destinations, language,
+      # daily spend limits, or channel-specific settings. Returns the updated profile.
       #
       # @overload update(verify_profile_id, call: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, language: nil, name: nil, sms: nil, webhook_failover_url: nil, webhook_url: nil, whatsapp: nil, request_options: {})
       #
@@ -132,7 +133,7 @@ module Telnyx
         )
       end
 
-      # Delete Verify profile
+      # Deletes the specified Verify profile and returns the deleted profile record.
       #
       # @overload delete(verify_profile_id, request_options: {})
       #

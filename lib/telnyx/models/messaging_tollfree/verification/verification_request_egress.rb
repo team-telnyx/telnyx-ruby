@@ -4,7 +4,6 @@ module Telnyx
   module Models
     module MessagingTollfree
       module Verification
-        # @see Telnyx::Resources::MessagingTollfree::Verification::Requests#create
         class VerificationRequestEgress < Telnyx::Internal::Type::BaseModel
           # @!attribute id
           #

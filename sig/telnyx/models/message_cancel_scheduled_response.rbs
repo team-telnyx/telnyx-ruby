@@ -9,7 +9,7 @@ module Telnyx
         cost_breakdown: Telnyx::Models::MessageCancelScheduledResponse::CostBreakdown?,
         direction: Telnyx::Models::MessageCancelScheduledResponse::direction,
         encoding: String,
-        errors: ::Array[Telnyx::MessagingError],
+        errors: ::Array[Telnyx::MessagingError0b38e7044b],
         from: Telnyx::Models::MessageCancelScheduledResponse::From,
         media: ::Array[Telnyx::Models::MessageCancelScheduledResponse::Media],
         messaging_profile_id: String,
@@ -60,11 +60,11 @@ module Telnyx
 
       def encoding=: (String) -> String
 
-      attr_reader errors: ::Array[Telnyx::MessagingError]?
+      attr_reader errors: ::Array[Telnyx::MessagingError0b38e7044b]?
 
       def errors=: (
-        ::Array[Telnyx::MessagingError]
-      ) -> ::Array[Telnyx::MessagingError]
+        ::Array[Telnyx::MessagingError0b38e7044b]
+      ) -> ::Array[Telnyx::MessagingError0b38e7044b]
 
       attr_reader from: Telnyx::Models::MessageCancelScheduledResponse::From?
 
@@ -154,7 +154,7 @@ module Telnyx
         ?cost_breakdown: Telnyx::Models::MessageCancelScheduledResponse::CostBreakdown?,
         ?direction: Telnyx::Models::MessageCancelScheduledResponse::direction,
         ?encoding: String,
-        ?errors: ::Array[Telnyx::MessagingError],
+        ?errors: ::Array[Telnyx::MessagingError0b38e7044b],
         ?from: Telnyx::Models::MessageCancelScheduledResponse::From,
         ?media: ::Array[Telnyx::Models::MessageCancelScheduledResponse::Media],
         ?messaging_profile_id: String,
@@ -186,7 +186,7 @@ module Telnyx
         cost_breakdown: Telnyx::Models::MessageCancelScheduledResponse::CostBreakdown?,
         direction: Telnyx::Models::MessageCancelScheduledResponse::direction,
         encoding: String,
-        errors: ::Array[Telnyx::MessagingError],
+        errors: ::Array[Telnyx::MessagingError0b38e7044b],
         from: Telnyx::Models::MessageCancelScheduledResponse::From,
         media: ::Array[Telnyx::Models::MessageCancelScheduledResponse::Media],
         messaging_profile_id: String,

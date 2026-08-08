@@ -13,6 +13,7 @@ module Telnyx
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
           type: String,
+          update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           webhook: ::Hash[Symbol, top]
         }
         & Telnyx::Internal::Type::request_parameters
@@ -59,6 +60,12 @@ module Telnyx
 
         def type=: (String) -> String
 
+        attr_reader update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams?
+
+        def update_dynamic_variables=: (
+          Telnyx::AI::UpdateDynamicVariablesToolParams
+        ) -> Telnyx::AI::UpdateDynamicVariablesToolParams
+
         attr_reader webhook: ::Hash[Symbol, top]?
 
         def webhook=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -74,6 +81,7 @@ module Telnyx
           ?retrieval: ::Hash[Symbol, top],
           ?timeout_ms: Integer,
           ?type: String,
+          ?update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           ?webhook: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -89,6 +97,7 @@ module Telnyx
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
           type: String,
+          update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           webhook: ::Hash[Symbol, top],
           request_options: Telnyx::RequestOptions
         }

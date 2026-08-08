@@ -17,6 +17,15 @@ module Telnyx
         sig { params(default_texml_app_id: String).void }
         attr_writer :default_texml_app_id
 
+        # Disable inbound DTMF for the entire call. Must be set to true if a 'pay' tool is
+        # configured anywhere on the assistant — on the main tool array or on any workflow
+        # node — enforced at write time.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :disable_dtmf
+
+        sig { params(disable_dtmf: T::Boolean).void }
+        attr_writer :disable_dtmf
+
         # The noise suppression engine to use. Use 'disabled' to turn off noise
         # suppression.
         sig do
@@ -125,6 +134,7 @@ module Telnyx
         sig do
           params(
             default_texml_app_id: String,
+            disable_dtmf: T::Boolean,
             noise_suppression:
               Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
             noise_suppression_config:
@@ -143,6 +153,10 @@ module Telnyx
           # Default Texml App used for voice calls with your assistant. This will be created
           # automatically on assistant creation.
           default_texml_app_id: nil,
+          # Disable inbound DTMF for the entire call. Must be set to true if a 'pay' tool is
+          # configured anywhere on the assistant — on the main tool array or on any workflow
+          # node — enforced at write time.
+          disable_dtmf: nil,
           # The noise suppression engine to use. Use 'disabled' to turn off noise
           # suppression.
           noise_suppression: nil,
@@ -183,6 +197,7 @@ module Telnyx
           override.returns(
             {
               default_texml_app_id: String,
+              disable_dtmf: T::Boolean,
               noise_suppression:
                 Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
               noise_suppression_config:

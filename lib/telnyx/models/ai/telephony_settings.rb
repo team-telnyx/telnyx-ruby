@@ -11,6 +11,14 @@ module Telnyx
         #   @return [String, nil]
         optional :default_texml_app_id, String
 
+        # @!attribute disable_dtmf
+        #   Disable inbound DTMF for the entire call. Must be set to true if a 'pay' tool is
+        #   configured anywhere on the assistant — on the main tool array or on any workflow
+        #   node — enforced at write time.
+        #
+        #   @return [Boolean, nil]
+        optional :disable_dtmf, Telnyx::Internal::Type::Boolean
+
         # @!attribute noise_suppression
         #   The noise suppression engine to use. Use 'disabled' to turn off noise
         #   suppression.
@@ -76,11 +84,13 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
 
-        # @!method initialize(default_texml_app_id: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
+        # @!method initialize(default_texml_app_id: nil, disable_dtmf: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelephonySettings} for more details.
         #
         #   @param default_texml_app_id [String] Default Texml App used for voice calls with your assistant. This will be created
+        #
+        #   @param disable_dtmf [Boolean] Disable inbound DTMF for the entire call. Must be set to true if a 'pay' tool is
         #
         #   @param noise_suppression [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppression] The noise suppression engine to use. Use 'disabled' to turn off noise suppressio
         #

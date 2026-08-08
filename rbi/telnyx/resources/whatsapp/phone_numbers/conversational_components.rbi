@@ -6,7 +6,8 @@ module Telnyx
       class PhoneNumbers
         # Manage Whatsapp phone numbers
         class ConversationalComponents
-          # Get phone number conversational components
+          # Returns the conversational components configured for the specified WhatsApp
+          # phone number.
           sig do
             params(
               phone_number: String,
@@ -22,7 +23,8 @@ module Telnyx
           )
           end
 
-          # Update phone number conversational components
+          # Updates the conversational components configured for the specified WhatsApp
+          # phone number.
           sig do
             params(
               phone_number: String,

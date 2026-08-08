@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Number orders
     class Comments
-      # Create a comment
+      # Creates a comment associated with a supported number-order record. The response
+      # contains the created comment.
       sig do
         params(
           body: String,
@@ -21,7 +22,8 @@ module Telnyx
       )
       end
 
-      # Retrieve a comment
+      # Returns the comment identified by `id`, including its associated record and
+      # comment metadata.
       sig do
         params(
           id: String,
@@ -35,7 +37,8 @@ module Telnyx
       )
       end
 
-      # Retrieve all comments
+      # Returns comments associated with number-order records. Results can be filtered
+      # by record type and record ID and include pagination metadata.
       sig do
         params(
           filter: Telnyx::CommentListParams::Filter::OrHash,
@@ -50,7 +53,8 @@ module Telnyx
       )
       end
 
-      # Mark a comment as read
+      # Marks the specified comment as read. The response contains the updated read
+      # state for the comment.
       sig do
         params(
           id: String,

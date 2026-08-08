@@ -13,13 +13,13 @@ module Telnyx
 
         # @!attribute errors
         #
-        #   @return [Array<Telnyx::Models::WirelessError>, nil]
-        optional :errors, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::WirelessError] }
+        #   @return [Array<Telnyx::Models::Actions::WirelessErrorC5290d5308>, nil]
+        optional :errors, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Actions::WirelessErrorC5290d5308] }
 
         # @!method initialize(data: nil, errors: nil)
         #   @param data [Array<Telnyx::Models::SimpleSimCard>] Successfully registered SIM cards.
         #
-        #   @param errors [Array<Telnyx::Models::WirelessError>]
+        #   @param errors [Array<Telnyx::Models::Actions::WirelessErrorC5290d5308>]
       end
     end
   end

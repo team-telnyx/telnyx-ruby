@@ -38,7 +38,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta
+                  Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta705dfa7312
                 )
               )
             end
@@ -47,7 +47,7 @@ module Telnyx
             sig do
               params(
                 meta:
-                  Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta::OrHash
+                  Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta705dfa7312::OrHash
               ).void
             end
             attr_writer :meta
@@ -59,7 +59,7 @@ module Telnyx
                     Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse::OrHash
                   ],
                 meta:
-                  Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta::OrHash
+                  Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta705dfa7312::OrHash
               ).returns(T.attached_class)
             end
             def self.new(data: nil, meta: nil)
@@ -73,7 +73,7 @@ module Telnyx
                       Telnyx::Legacy::Reporting::BatchDetailRecords::MdrDetailReportResponse
                     ],
                   meta:
-                    Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta
+                    Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta705dfa7312
                 }
               )
             end

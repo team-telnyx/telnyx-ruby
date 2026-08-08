@@ -14,6 +14,7 @@ module Telnyx
         | Telnyx::AI::AssistantTool::SendMessage
         | Telnyx::AI::AssistantTool::SkipTurn
         | Telnyx::AI::AssistantTool::Pay
+        | Telnyx::AI::AssistantTool::UpdateDynamicVariables
 
       module AssistantTool
         extend Telnyx::Internal::Type::Union
@@ -934,6 +935,28 @@ module Telnyx
           def initialize: (pay: Telnyx::AI::PayToolParams, ?type: :pay) -> void
 
           def to_hash: -> { pay: Telnyx::AI::PayToolParams, type: :pay }
+        end
+
+        type update_dynamic_variables =
+          {
+            type: :update_dynamic_variables,
+            update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams
+          }
+
+        class UpdateDynamicVariables < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: :update_dynamic_variables
+
+          attr_accessor update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams
+
+          def initialize: (
+            update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+            ?type: :update_dynamic_variables
+          ) -> void
+
+          def to_hash: -> {
+            type: :update_dynamic_variables,
+            update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams
+          }
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::AI::assistant_tool]

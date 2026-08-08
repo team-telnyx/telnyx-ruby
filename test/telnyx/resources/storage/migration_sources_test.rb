@@ -7,7 +7,7 @@ class Telnyx::Test::Resources::Storage::MigrationSourcesTest < Telnyx::Test::Res
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.storage.migration_sources.create(bucket_name: "bucket_name", provider: :aws, provider_auth: {})
+      @telnyx.storage.migration_sources.create(bucket_name: "string", provider: :aws, provider_auth: {})
 
     assert_pattern do
       response => Telnyx::Models::Storage::MigrationSourceCreateResponse

@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     class PhoneNumbers
       class CsvDownloads
-        # Create a CSV download
+        # Starts generation of a CSV export for phone numbers matching the supplied
+        # filters. The `csv_format` parameter selects the output format, and the response
+        # contains the resulting download record.
         sig do
           params(
             csv_format:
@@ -28,7 +30,8 @@ module Telnyx
         )
         end
 
-        # Retrieve a CSV download
+        # Returns the current status and download details for the CSV export identified by
+        # `id`.
         sig do
           params(
             id: String,
@@ -42,7 +45,8 @@ module Telnyx
         )
         end
 
-        # List CSV downloads
+        # Returns CSV export jobs created for account phone numbers, including each
+        # export's current status and pagination metadata.
         sig do
           params(
             page_number: Integer,

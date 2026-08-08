@@ -6,7 +6,7 @@ module Telnyx
       class Assistants
         # Configure AI assistant specifications
         class Tags
-          # Get All Tags
+          # Retrieve all tags that have been applied to your AI assistants.
           #
           # @overload list(request_options: {})
           #
@@ -24,7 +24,7 @@ module Telnyx
             )
           end
 
-          # Add Assistant Tag
+          # Add a tag to an AI assistant. Tags help you organize and filter your assistants.
           #
           # @overload add(assistant_id, tag:, request_options: {})
           #
@@ -48,7 +48,7 @@ module Telnyx
             )
           end
 
-          # Remove Assistant Tag
+          # Remove a tag from an AI assistant.
           #
           # @overload remove(tag, assistant_id:, request_options: {})
           #

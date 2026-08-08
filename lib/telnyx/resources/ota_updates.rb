@@ -27,7 +27,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::OtaUpdateListParams} for more details.
       #
-      # List OTA updates
+      # Retrieve a paginated list of over-the-air (OTA) update operations for your SIM
+      # cards.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

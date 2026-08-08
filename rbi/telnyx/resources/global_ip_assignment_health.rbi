@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPAssignmentHealth
-      # Global IP Assignment Health Check Metrics
+      # Retrieve health check metrics for your Global IP assignments.
       sig do
         params(
           filter:

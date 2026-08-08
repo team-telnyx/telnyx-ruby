@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::AI::FineTuning::JobsTest < Telnyx::Test::Resource
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.fine_tuning.jobs.create(model: "model", training_file: "training_file")
+    response = @telnyx.ai.fine_tuning.jobs.create(model: "string", training_file: "string")
 
     assert_pattern do
       response => Telnyx::AI::FineTuning::FineTuningJob

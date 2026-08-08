@@ -51,7 +51,8 @@ module Telnyx
       )
       end
 
-      # Update Verify profile
+      # Updates the specified Verify profile's name, webhook destinations, language,
+      # daily spend limits, or channel-specific settings. Returns the updated profile.
       sig do
         params(
           verify_profile_id: String,
@@ -105,7 +106,7 @@ module Telnyx
       )
       end
 
-      # Delete Verify profile
+      # Deletes the specified Verify profile and returns the deleted profile record.
       sig do
         params(
           verify_profile_id: String,

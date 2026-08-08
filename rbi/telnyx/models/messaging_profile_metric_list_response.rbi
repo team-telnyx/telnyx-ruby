@@ -17,16 +17,18 @@ module Telnyx
       sig { params(data: T::Array[T::Hash[Symbol, T.anything]]).void }
       attr_writer :data
 
-      sig { returns(T.nilable(Telnyx::MessagingPaginationMeta)) }
+      sig { returns(T.nilable(Telnyx::MessagingPaginationMeta0b38e7044b)) }
       attr_reader :meta
 
-      sig { params(meta: Telnyx::MessagingPaginationMeta::OrHash).void }
+      sig do
+        params(meta: Telnyx::MessagingPaginationMeta0b38e7044b::OrHash).void
+      end
       attr_writer :meta
 
       sig do
         params(
           data: T::Array[T::Hash[Symbol, T.anything]],
-          meta: Telnyx::MessagingPaginationMeta::OrHash
+          meta: Telnyx::MessagingPaginationMeta0b38e7044b::OrHash
         ).returns(T.attached_class)
       end
       def self.new(data: nil, meta: nil)
@@ -36,7 +38,7 @@ module Telnyx
         override.returns(
           {
             data: T::Array[T::Hash[Symbol, T.anything]],
-            meta: Telnyx::MessagingPaginationMeta
+            meta: Telnyx::MessagingPaginationMeta0b38e7044b
           }
         )
       end

@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Rooms Participants operations.
     class RoomParticipants
-      # View a room participant.
+      # Returns the participant identified by `room_participant_id`, including its
+      # session, context, and join, update, and leave timestamps.
       sig do
         params(
           room_participant_id: String,
@@ -18,7 +19,8 @@ module Telnyx
       )
       end
 
-      # View a list of room participants.
+      # Returns a paginated list of room participants across sessions. Filter
+      # participants by session, join, update, or leave date and by participant context.
       sig do
         params(
           filter: Telnyx::RoomParticipantListParams::Filter::OrHash,

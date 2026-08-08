@@ -49,7 +49,8 @@ module Telnyx
         )
       end
 
-      # Update requirement group for a phone number order
+      # Associates an existing requirement group with a phone number in a number order.
+      # The response contains the updated number-order phone-number details.
       #
       # @overload update_requirement_group(id, requirement_group_id:, request_options: {})
       #

@@ -7,7 +7,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPUsageRetrieveParams} for more details.
       #
-      # Global IP Usage Metrics
+      # Retrieve usage metrics for your Global IPs.
       #
       # @overload retrieve(filter: nil, request_options: {})
       #

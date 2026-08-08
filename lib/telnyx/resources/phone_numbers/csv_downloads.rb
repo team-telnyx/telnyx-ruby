@@ -7,7 +7,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams} for more details.
         #
-        # Create a CSV download
+        # Starts generation of a CSV export for phone numbers matching the supplied
+        # filters. The `csv_format` parameter selects the output format, and the response
+        # contains the resulting download record.
         #
         # @overload create(csv_format: nil, filter: nil, request_options: {})
         #
@@ -32,7 +34,8 @@ module Telnyx
           )
         end
 
-        # Retrieve a CSV download
+        # Returns the current status and download details for the CSV export identified by
+        # `id`.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -52,7 +55,8 @@ module Telnyx
           )
         end
 
-        # List CSV downloads
+        # Returns CSV export jobs created for account phone numbers, including each
+        # export's current status and pagination metadata.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
         #

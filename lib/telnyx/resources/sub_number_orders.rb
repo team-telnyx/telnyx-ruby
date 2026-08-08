@@ -101,7 +101,9 @@ module Telnyx
         )
       end
 
-      # Update requirement group for a sub number order
+      # Associates an existing requirement group with the specified sub number order.
+      # The response contains the updated sub number order requirement-group
+      # relationship.
       #
       # @overload update_requirement_group(id, requirement_group_id:, request_options: {})
       #

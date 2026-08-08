@@ -13,7 +13,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingProfileCreateParams} for more details.
       #
-      # Create a messaging profile
+      # Creates a messaging profile that controls outbound sender selection, webhook
+      # delivery, and inbound message handling for associated numbers and short codes.
       #
       # @overload create(name:, whitelisted_destinations:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, resource_group_id: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -69,7 +70,8 @@ module Telnyx
         )
       end
 
-      # Retrieve a messaging profile
+      # Returns the complete configuration of the specified messaging profile, including
+      # webhook and sender-selection settings.
       #
       # @overload retrieve(messaging_profile_id, request_options: {})
       #
@@ -92,7 +94,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingProfileUpdateParams} for more details.
       #
-      # Update a messaging profile
+      # Updates the supplied settings on the specified messaging profile. Settings
+      # omitted from the request remain unchanged.
       #
       # @overload update(messaging_profile_id, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
       #
@@ -148,7 +151,8 @@ module Telnyx
         )
       end
 
-      # List messaging profiles
+      # Returns messaging profiles owned by the authenticated account. Apply the
+      # documented filters and pagination parameters to narrow the result set.
       #
       # @overload list(filter: nil, filter_name_contains: nil, filter_name_eq: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -185,7 +189,8 @@ module Telnyx
         )
       end
 
-      # Delete a messaging profile
+      # Deletes the specified messaging profile and returns the profile's final
+      # configuration.
       #
       # @overload delete(messaging_profile_id, request_options: {})
       #
@@ -233,7 +238,8 @@ module Telnyx
         )
       end
 
-      # List phone numbers associated with a messaging profile
+      # Returns the phone numbers currently associated with the specified messaging
+      # profile.
       #
       # @overload list_phone_numbers(messaging_profile_id, page_number: nil, page_size: nil, request_options: {})
       #
@@ -261,7 +267,8 @@ module Telnyx
         )
       end
 
-      # List short codes associated with a messaging profile
+      # Returns the short codes currently associated with the specified messaging
+      # profile.
       #
       # @overload list_short_codes(messaging_profile_id, page_number: nil, page_size: nil, request_options: {})
       #

@@ -120,7 +120,7 @@ module Telnyx
           )
         end
 
-        # Get Sharing Status
+        # Returns the partner-sharing state for the specified campaign.
         #
         # @overload retrieve_sharing_status(campaign_id, request_options: {})
         #

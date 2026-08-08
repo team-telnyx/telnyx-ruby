@@ -5,7 +5,8 @@ module Telnyx
     class VerifiedNumbers
       # Verified Numbers operations
       class Actions
-        # Submit verification code
+        # Submit the verification code received via the selected verification method to
+        # verify a phone number.
         sig do
           params(
             phone_number: String,

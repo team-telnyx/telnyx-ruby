@@ -5,7 +5,8 @@ module Telnyx
     class PhoneNumbers
       # Background jobs performed over a batch of phone numbers
       class Jobs
-        # Retrieve a phone numbers job
+        # Returns the status and details of the phone-number background job identified by
+        # `id`.
         sig do
           params(
             id: String,
@@ -19,7 +20,8 @@ module Telnyx
         )
         end
 
-        # Lists the phone numbers jobs
+        # Returns background jobs that operate on phone numbers. Results can be filtered
+        # by job type and sorted by creation time, and include pagination metadata.
         sig do
           params(
             filter: Telnyx::PhoneNumbers::JobListParams::Filter::OrHash,

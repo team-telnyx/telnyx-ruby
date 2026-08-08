@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::SimCards::SimCardAction | nil
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
       }
     end
   end
@@ -32,18 +32,18 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::SimCards::SimCardAction
+      row => Telnyx::SimCards::WirelessSimCardAction
     end
 
     assert_pattern do
       row => {
         id: String | nil,
-        action_type: Telnyx::SimCards::SimCardAction::ActionType | nil,
+        action_type: Telnyx::SimCards::WirelessSimCardAction::ActionType | nil,
         created_at: String | nil,
         record_type: String | nil,
         settings: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         sim_card_id: String | nil,
-        status: Telnyx::SimCards::SimCardAction::Status | nil,
+        status: Telnyx::SimCards::WirelessSimCardAction::Status | nil,
         updated_at: String | nil
       }
     end
@@ -111,7 +111,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::SimCards::SimCardAction | nil
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
       }
     end
   end
@@ -127,7 +127,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::SimCards::SimCardAction | nil
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
       }
     end
   end
@@ -143,7 +143,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::SimCards::SimCardAction | nil
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
       }
     end
   end
@@ -159,7 +159,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::SimCards::SimCardAction | nil
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
       }
     end
   end
@@ -175,7 +175,7 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::SimCards::SimCardAction | nil
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
       }
     end
   end

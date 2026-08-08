@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::TelnyxAgentsTest < Telnyx::Te
       @telnyx.ai.missions.runs.telnyx_agents.link(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         mission_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        telnyx_agent_id: "telnyx_agent_id"
+        telnyx_agent_id: "Telnyx Agent Id"
       )
 
     assert_pattern do

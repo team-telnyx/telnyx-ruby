@@ -3,7 +3,8 @@
 module Telnyx
   module Resources
     class AdvancedOrders
-      # Create Advanced Order
+      # Creates an advanced number order from the requested order configuration. The
+      # response contains the resulting advanced order and its initial state.
       sig do
         params(
           area_code: String,
@@ -32,7 +33,8 @@ module Telnyx
       )
       end
 
-      # Get Advanced Order
+      # Returns the advanced number order identified by `order_id`, including its
+      # configuration and current state.
       sig do
         params(
           order_id: String,
@@ -46,7 +48,8 @@ module Telnyx
       )
       end
 
-      # List Advanced Orders
+      # Returns the advanced number orders associated with the account. Each result
+      # includes the order configuration and its current state.
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(
           Telnyx::Models::AdvancedOrderListResponse
@@ -55,7 +58,8 @@ module Telnyx
       def list(request_options: {})
       end
 
-      # Update Advanced Order
+      # Updates the requirement-group configuration for the specified advanced number
+      # order. The response contains the updated advanced order.
       sig do
         params(
           advanced_order_id: String,

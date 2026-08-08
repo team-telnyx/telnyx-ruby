@@ -33,7 +33,8 @@ module Telnyx
           )
         end
 
-        # Retrieve a webhook
+        # Returns the webhook subscription identified by ID within the specified email
+        # domain.
         #
         # @overload retrieve(id, domain_id:, request_options: {})
         #
@@ -93,7 +94,8 @@ module Telnyx
           )
         end
 
-        # List webhooks for an email domain
+        # Returns a paginated list of webhook subscriptions scoped to the email domain.
+        # Results can be sorted by creation time.
         #
         # @overload list(domain_id, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #
@@ -123,7 +125,8 @@ module Telnyx
           )
         end
 
-        # Delete a webhook
+        # Deletes the webhook subscription identified by ID within the specified email
+        # domain and returns the deleted subscription.
         #
         # @overload delete(id, domain_id:, request_options: {})
         #

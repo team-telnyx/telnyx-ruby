@@ -22,6 +22,13 @@ module Telnyx
       #   @param meta [Telnyx::Models::SpeechToTextListProvidersResponse::Meta]
 
       class Data < Telnyx::Internal::Type::BaseModel
+        # @!attribute hosted
+        #   Whether this model runs on Telnyx-hosted infrastructure (`true`) or is provided
+        #   by a third-party vendor (`false`).
+        #
+        #   @return [Boolean]
+        required :hosted, Telnyx::Internal::Type::Boolean
+
         # @!attribute model
         #   Provider-scoped model name.
         #
@@ -43,12 +50,14 @@ module Telnyx
         required :service_types,
                  -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType] }
 
-        # @!method initialize(model:, provider:, service_types:)
+        # @!method initialize(hosted:, model:, provider:, service_types:)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::SpeechToTextListProvidersResponse::Data} for more details.
         #
         #   A (provider, model) tuple along with the service surfaces it supports. Each
         #   entry in `service_types` describes one surface and the languages accepted on it.
+        #
+        #   @param hosted [Boolean] Whether this model runs on Telnyx-hosted infrastructure (`true`) or is provided
         #
         #   @param model [String] Provider-scoped model name.
         #

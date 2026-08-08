@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Messaging URL Domains
     class MessagingURLDomains
-      # List messaging URL domains
+      # Returns the URL domains available to the authenticated account for message URL
+      # shortening.
       sig do
         params(
           page_number: Integer,

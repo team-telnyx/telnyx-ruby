@@ -6,7 +6,7 @@ module Telnyx
       class Assistants
         # Configure AI assistant specifications
         class Tags
-          # Get All Tags
+          # Retrieve all tags that have been applied to your AI assistants.
           sig do
             params(request_options: Telnyx::RequestOptions::OrHash).returns(
               Telnyx::AI::Assistants::TagsResponse
@@ -15,7 +15,7 @@ module Telnyx
           def list(request_options: {})
           end
 
-          # Add Assistant Tag
+          # Add a tag to an AI assistant. Tags help you organize and filter your assistants.
           sig do
             params(
               assistant_id: String,
@@ -31,7 +31,7 @@ module Telnyx
           )
           end
 
-          # Remove Assistant Tag
+          # Remove a tag from an AI assistant.
           sig do
             params(
               tag: String,

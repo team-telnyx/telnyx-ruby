@@ -13,6 +13,11 @@ module Telnyx
         #   @return [String]
         required :slug, String
 
+        # @!attribute filter_country_iso
+        #
+        #   @return [String, nil]
+        optional :filter_country_iso, String, nil?: true
+
         # @!attribute page_number
         #   Page number (1-based).
         #
@@ -25,8 +30,10 @@ module Telnyx
         #   @return [Integer, nil]
         optional :page_size, Integer
 
-        # @!method initialize(slug:, page_number: nil, page_size: nil, request_options: {})
+        # @!method initialize(slug:, filter_country_iso: nil, page_number: nil, page_size: nil, request_options: {})
         #   @param slug [String]
+        #
+        #   @param filter_country_iso [String, nil]
         #
         #   @param page_number [Integer] Page number (1-based).
         #

@@ -1137,7 +1137,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionStartNoiseSuppressionParams} for more details.
         #
-        # Noise Suppression Start (BETA)
+        # Start noise suppression on an active call to reduce background noise. This
+        # feature is currently in beta.
         #
         # @overload start_noise_suppression(call_control_id, client_state: nil, command_id: nil, direction: nil, noise_suppression_engine: nil, noise_suppression_engine_config: nil, request_options: {})
         #
@@ -1565,7 +1566,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionStopNoiseSuppressionParams} for more details.
         #
-        # Noise Suppression Stop (BETA)
+        # Stop noise suppression previously started on an active call. This feature is
+        # currently in beta.
         #
         # @overload stop_noise_suppression(call_control_id, client_state: nil, command_id: nil, request_options: {})
         #

@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module MessagingTollfree
       module Verification
-        # @see Telnyx::Resources::MessagingTollfree::Verification::Requests#retrieve
+        # @see Telnyx::Resources::MessagingTollfree::Verification::Requests#list
         class VerificationRequestStatus < Telnyx::Internal::Type::BaseModel
           # @!attribute id
           #
