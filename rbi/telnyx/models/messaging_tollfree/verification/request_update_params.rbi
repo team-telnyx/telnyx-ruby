@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module MessagingTollfree
       module Verification
-        class RequestUpdateParams < Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest
+        class RequestUpdateParams < Telnyx::Models::MessagingTollfree::Verification::MessagingTollFreeVerificationTfVerificationRequest
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 

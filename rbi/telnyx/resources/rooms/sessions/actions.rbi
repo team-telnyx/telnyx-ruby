@@ -20,7 +20,9 @@ module Telnyx
           )
           end
 
-          # Kick participants from a room session.
+          # Removes the selected participants from the specified room session. Apply the
+          # action to a list of participant IDs or to `all`, with optional participant IDs
+          # excluded from the action.
           sig do
             params(
               room_session_id: String,
@@ -45,7 +47,9 @@ module Telnyx
           )
           end
 
-          # Mute participants in room session.
+          # Mutes the selected participants in the specified room session. Apply the action
+          # to a list of participant IDs or to `all`, with optional participant IDs excluded
+          # from the action.
           sig do
             params(
               room_session_id: String,
@@ -70,7 +74,9 @@ module Telnyx
           )
           end
 
-          # Unmute participants in room session.
+          # Unmutes the selected participants in the specified room session. Apply the
+          # action to a list of participant IDs or to `all`, with optional participant IDs
+          # excluded from the action.
           sig do
             params(
               room_session_id: String,

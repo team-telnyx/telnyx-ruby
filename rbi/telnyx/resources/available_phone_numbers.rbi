@@ -4,7 +4,10 @@ module Telnyx
   module Resources
     # Number search
     class AvailablePhoneNumbers
-      # List available phone numbers
+      # Searches the Telnyx inventory for available phone numbers. Filters support
+      # number patterns, location, number type, features, reservability, and other
+      # inventory constraints; the response includes matching numbers and search
+      # metadata.
       sig do
         params(
           filter: Telnyx::AvailablePhoneNumberListParams::Filter::OrHash,

@@ -7,7 +7,8 @@ module Telnyx
         class Profile
           # Manage Whatsapp phone numbers
           class Photo
-            # Get Whatsapp profile photo
+            # Returns the current business-profile photo for the specified WhatsApp phone
+            # number.
             sig do
               params(
                 phone_number: String,
@@ -23,7 +24,7 @@ module Telnyx
             )
             end
 
-            # Delete Whatsapp profile photo
+            # Removes the business-profile photo from the specified WhatsApp phone number.
             sig do
               params(
                 phone_number: String,
@@ -37,7 +38,8 @@ module Telnyx
             )
             end
 
-            # Upload Whatsapp profile photo
+            # Uploads and assigns a business-profile photo to the specified WhatsApp phone
+            # number.
             sig do
               params(
                 phone_number: String,

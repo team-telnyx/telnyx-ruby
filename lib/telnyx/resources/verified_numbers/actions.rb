@@ -5,7 +5,8 @@ module Telnyx
     class VerifiedNumbers
       # Verified Numbers operations
       class Actions
-        # Submit verification code
+        # Submit the verification code received via the selected verification method to
+        # verify a phone number.
         #
         # @overload submit_verification_code(phone_number, verification_code:, request_options: {})
         #

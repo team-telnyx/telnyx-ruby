@@ -96,7 +96,7 @@ module Telnyx
         )
         end
 
-        # Get Sharing Status
+        # Returns the partner-sharing state for the specified campaign.
         sig do
           params(
             campaign_id: String,

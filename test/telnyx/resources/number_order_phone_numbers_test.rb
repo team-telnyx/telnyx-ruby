@@ -42,7 +42,7 @@ class Telnyx::Test::Resources::NumberOrderPhoneNumbersTest < Telnyx::Test::Resou
     response =
       @telnyx.number_order_phone_numbers.update_requirement_group(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        requirement_group_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+        requirement_group_id: "a4b201f9-8646-4e54-a7d2-b2e403eeaf8c"
       )
 
     assert_pattern do

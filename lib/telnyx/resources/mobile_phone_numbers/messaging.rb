@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class MobilePhoneNumbers
       class Messaging
-        # Retrieve a mobile phone number with messaging settings
+        # Returns the messaging configuration for the specified mobile phone number.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -24,7 +24,7 @@ module Telnyx
           )
         end
 
-        # List mobile phone numbers with messaging settings
+        # Returns mobile phone numbers with their current messaging configuration.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
         #

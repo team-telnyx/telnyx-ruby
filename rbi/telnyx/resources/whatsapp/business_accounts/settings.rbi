@@ -6,7 +6,7 @@ module Telnyx
       class BusinessAccounts
         # Manage Whatsapp business accounts
         class Settings
-          # Get WABA settings
+          # Returns account-level settings for the specified WhatsApp Business Account.
           sig do
             params(
               id: String,
@@ -22,7 +22,8 @@ module Telnyx
           )
           end
 
-          # Update WABA settings
+          # Updates the supplied account-level settings for the specified WhatsApp Business
+          # Account.
           sig do
             params(
               id: String,

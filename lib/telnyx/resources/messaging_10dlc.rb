@@ -26,7 +26,8 @@ module Telnyx
       # @return [Telnyx::Resources::Messaging10dlc::PhoneNumberAssignmentByProfile]
       attr_reader :phone_number_assignment_by_profile
 
-      # Get Enum
+      # Returns the accepted values for the selected 10DLC enumeration endpoint. Use
+      # these values when constructing brand and campaign requests.
       #
       # @overload get_enum(endpoint, request_options: {})
       #

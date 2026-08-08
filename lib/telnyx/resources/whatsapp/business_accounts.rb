@@ -12,7 +12,7 @@ module Telnyx
         # @return [Telnyx::Resources::Whatsapp::BusinessAccounts::Settings]
         attr_reader :settings
 
-        # Get a single Whatsapp Business Account
+        # Returns the configuration and status of the specified WhatsApp Business Account.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -32,7 +32,7 @@ module Telnyx
           )
         end
 
-        # List Whatsapp Business Accounts
+        # Returns WhatsApp Business Accounts linked to the authenticated Telnyx account.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
@@ -56,7 +56,8 @@ module Telnyx
           )
         end
 
-        # Delete a Whatsapp Business Account
+        # Unlinks and deletes the specified WhatsApp Business Account resource from
+        # Telnyx.
         #
         # @overload delete(id, request_options: {})
         #

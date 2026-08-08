@@ -7,7 +7,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::GlobalIPAssignmentHealthRetrieveParams} for more details.
       #
-      # Global IP Assignment Health Check Metrics
+      # Retrieve health check metrics for your Global IP assignments.
       #
       # @overload retrieve(filter: nil, request_options: {})
       #

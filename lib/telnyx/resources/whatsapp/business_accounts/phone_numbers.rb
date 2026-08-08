@@ -5,7 +5,7 @@ module Telnyx
     class Whatsapp
       class BusinessAccounts
         class PhoneNumbers
-          # List phone numbers for a WABA
+          # Returns phone numbers registered under the specified WhatsApp Business Account.
           #
           # @overload list(id, page_number: nil, page_size: nil, request_options: {})
           #
@@ -33,7 +33,8 @@ module Telnyx
             )
           end
 
-          # Initialize Whatsapp phone number verification
+          # Starts verification of a phone number for the specified WhatsApp Business
+          # Account using the requested verification method.
           #
           # @overload initialize_verification(id, display_name:, phone_number:, language: nil, verification_method: nil, request_options: {})
           #

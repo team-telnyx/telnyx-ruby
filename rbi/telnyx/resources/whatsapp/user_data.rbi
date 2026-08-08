@@ -5,7 +5,8 @@ module Telnyx
     class Whatsapp
       # Manage Whatsapp business accounts
       class UserData
-        # Fetch Whatsapp user data
+        # Returns the WhatsApp user-data settings associated with the authenticated Telnyx
+        # account.
         sig do
           params(request_options: Telnyx::RequestOptions::OrHash).returns(
             Telnyx::Models::Whatsapp::UserDataRetrieveResponse
@@ -14,7 +15,8 @@ module Telnyx
         def retrieve(request_options: {})
         end
 
-        # Update Whatsapp user data
+        # Updates the supplied WhatsApp user-data settings for the authenticated Telnyx
+        # account.
         sig do
           params(
             webhook_failover_url: String,

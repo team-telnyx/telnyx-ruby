@@ -8,7 +8,9 @@ module Telnyx
         sig { returns(Telnyx::Resources::Rooms::Sessions::Actions) }
         attr_reader :actions
 
-        # View a room session.
+        # Returns the room session identified by `room_session_id`, including its room,
+        # active status, and lifecycle timestamps. Use `include_participants` to include
+        # its participant records.
         sig do
           params(
             room_session_id: String,
@@ -25,7 +27,9 @@ module Telnyx
         )
         end
 
-        # View a list of room sessions.
+        # Returns a paginated list of room sessions across the account. Filter sessions by
+        # room, creation, update, or end date and active status, and use
+        # `include_participants` to include participant records.
         sig do
           params(
             filter: Telnyx::Rooms::SessionList0Params::Filter::OrHash,
@@ -53,7 +57,9 @@ module Telnyx
         )
         end
 
-        # View a list of room sessions.
+        # Returns a paginated list of sessions for the specified room. Filter sessions by
+        # creation, update, or end date and active status, and use `include_participants`
+        # to include participant records.
         sig do
           params(
             room_id: String,
@@ -84,7 +90,8 @@ module Telnyx
         )
         end
 
-        # View a list of room participants.
+        # Returns a paginated list of participants for the specified room session. Filter
+        # participants by join, update, or leave date and by participant context.
         sig do
           params(
             room_session_id: String,

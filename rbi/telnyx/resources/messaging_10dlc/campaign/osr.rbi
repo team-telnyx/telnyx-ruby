@@ -6,7 +6,9 @@ module Telnyx
       class Campaign
         # Campaign operations
         class Osr
-          # Get OSR campaign attributes
+          # Returns the optional shared-responsibility attributes recorded for the campaign.
+          # Use these values to inspect the campaign configuration submitted to the
+          # registry.
           sig do
             params(
               campaign_id: String,

@@ -49,8 +49,8 @@ module Telnyx
       #   These errors may point at addressees when referring to unsuccessful/unconfirmed
       #   delivery statuses.
       #
-      #   @return [Array<Telnyx::Models::MessagingError>, nil]
-      optional :errors, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingError] }
+      #   @return [Array<Telnyx::Models::MessagingError0b38e7044b>, nil]
+      optional :errors, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingError0b38e7044b] }
 
       # @!attribute from
       #
@@ -202,7 +202,7 @@ module Telnyx
       #
       #   @param encoding [String] Encoding scheme used for the message body.
       #
-      #   @param errors [Array<Telnyx::Models::MessagingError>] These errors may point at addressees when referring to unsuccessful/unconfirmed
+      #   @param errors [Array<Telnyx::Models::MessagingError0b38e7044b>] These errors may point at addressees when referring to unsuccessful/unconfirmed
       #
       #   @param from [Telnyx::Models::MessageCancelScheduledResponse::From]
       #

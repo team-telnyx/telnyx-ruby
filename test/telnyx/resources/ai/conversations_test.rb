@@ -84,7 +84,7 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
   def test_add_message_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.conversations.add_message("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", role: "role")
+    response = @telnyx.ai.conversations.add_message("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", role: "Role")
 
     assert_pattern do
       response => nil

@@ -24,10 +24,10 @@ module Telnyx
       end
       attr_writer :available_services
 
-      sig { returns(T.nilable(Telnyx::NetappsLocation)) }
+      sig { returns(T.nilable(Telnyx::NetappsLocation17904fcfbc)) }
       attr_reader :location
 
-      sig { params(location: Telnyx::NetappsLocation::OrHash).void }
+      sig { params(location: Telnyx::NetappsLocation17904fcfbc::OrHash).void }
       attr_writer :location
 
       # Identifies the type of the resource.
@@ -40,7 +40,7 @@ module Telnyx
       sig do
         params(
           available_services: T::Array[Telnyx::AvailableService::OrSymbol],
-          location: Telnyx::NetappsLocation::OrHash,
+          location: Telnyx::NetappsLocation17904fcfbc::OrHash,
           record_type: String
         ).returns(T.attached_class)
       end
@@ -58,7 +58,7 @@ module Telnyx
           {
             available_services:
               T::Array[Telnyx::AvailableService::TaggedSymbol],
-            location: Telnyx::NetappsLocation,
+            location: Telnyx::NetappsLocation17904fcfbc,
             record_type: String
           }
         )

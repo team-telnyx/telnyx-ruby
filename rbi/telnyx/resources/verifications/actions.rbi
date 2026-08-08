@@ -5,7 +5,9 @@ module Telnyx
     class Verifications
       # Two factor authentication API
       class Actions
-        # Verify verification code by ID
+        # Checks the supplied code, or the supplied status for a custom-code verification,
+        # against the verification identified by ID. The response indicates whether the
+        # verification was accepted or rejected.
         sig do
           params(
             verification_id: String,

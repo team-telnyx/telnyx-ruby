@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Requirement Groups
     class RequirementGroups
-      # Create a new requirement group
+      # Creates a regulatory requirement group for a country, number type, and ordering
+      # or porting action. Optional customer-reference and requirement values are
+      # retained on the created group.
       #
       # @overload create(action:, country_code:, phone_number_type:, customer_reference: nil, regulatory_requirements: nil, request_options: {})
       #
@@ -34,7 +36,8 @@ module Telnyx
         )
       end
 
-      # Get a single requirement group by ID
+      # Returns the regulatory requirement group identified by `id`, including its
+      # requirement values and current approval status.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -54,7 +57,8 @@ module Telnyx
         )
       end
 
-      # Update requirement values in requirement group
+      # Updates the customer reference or regulatory requirement values on the specified
+      # requirement group. The response contains the updated group.
       #
       # @overload update(id, customer_reference: nil, regulatory_requirements: nil, request_options: {})
       #
@@ -83,7 +87,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RequirementGroupListParams} for more details.
       #
-      # List requirement groups
+      # Returns regulatory requirement groups for the account. Results can be filtered
+      # by country, number type, action, approval status, and customer reference.
       #
       # @overload list(filter: nil, request_options: {})
       #
@@ -106,7 +111,8 @@ module Telnyx
         )
       end
 
-      # Delete a requirement group by ID
+      # Deletes the regulatory requirement group identified by `id`. The response
+      # contains the deleted requirement-group representation.
       #
       # @overload delete(id, request_options: {})
       #
@@ -126,7 +132,8 @@ module Telnyx
         )
       end
 
-      # Submit a Requirement Group for Approval
+      # Submits the specified regulatory requirement group for approval. The response
+      # contains the requirement group with its resulting approval status.
       #
       # @overload submit_for_approval(id, request_options: {})
       #

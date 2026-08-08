@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Short codes
     class ShortCodes
-      # Retrieve a short code
+      # Returns the messaging configuration and assignment details for the specified
+      # short code.
       sig do
         params(
           id: String,
@@ -40,7 +41,8 @@ module Telnyx
       )
       end
 
-      # List short codes
+      # Returns short codes owned by the authenticated account. Apply the documented
+      # filters and pagination parameters to narrow the result set.
       sig do
         params(
           filter: Telnyx::ShortCodeListParams::Filter::OrHash,

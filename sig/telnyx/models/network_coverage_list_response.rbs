@@ -3,7 +3,7 @@ module Telnyx
     type network_coverage_list_response =
       {
         available_services: ::Array[Telnyx::Models::available_service],
-        location: Telnyx::NetappsLocation,
+        location: Telnyx::NetappsLocation17904fcfbc,
         record_type: String
       }
 
@@ -14,9 +14,11 @@ module Telnyx
         ::Array[Telnyx::Models::available_service]
       ) -> ::Array[Telnyx::Models::available_service]
 
-      attr_reader location: Telnyx::NetappsLocation?
+      attr_reader location: Telnyx::NetappsLocation17904fcfbc?
 
-      def location=: (Telnyx::NetappsLocation) -> Telnyx::NetappsLocation
+      def location=: (
+        Telnyx::NetappsLocation17904fcfbc
+      ) -> Telnyx::NetappsLocation17904fcfbc
 
       attr_reader record_type: String?
 
@@ -24,13 +26,13 @@ module Telnyx
 
       def initialize: (
         ?available_services: ::Array[Telnyx::Models::available_service],
-        ?location: Telnyx::NetappsLocation,
+        ?location: Telnyx::NetappsLocation17904fcfbc,
         ?record_type: String
       ) -> void
 
       def to_hash: -> {
         available_services: ::Array[Telnyx::Models::available_service],
-        location: Telnyx::NetappsLocation,
+        location: Telnyx::NetappsLocation17904fcfbc,
         record_type: String
       }
     end

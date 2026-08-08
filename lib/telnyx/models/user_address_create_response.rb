@@ -6,11 +6,11 @@ module Telnyx
     class UserAddressCreateResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::UserAddress, nil]
-      optional :data, -> { Telnyx::UserAddress }
+      #   @return [Telnyx::Models::UserAddressesUserAddress, nil]
+      optional :data, -> { Telnyx::UserAddressesUserAddress }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::UserAddress]
+      #   @param data [Telnyx::Models::UserAddressesUserAddress]
     end
   end
 end

@@ -15,12 +15,12 @@ module Telnyx
 
             # @!attribute meta
             #
-            #   @return [Telnyx::Models::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta, nil]
-            optional :meta, -> { Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta }
+            #   @return [Telnyx::Models::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta705dfa7312, nil]
+            optional :meta, -> { Telnyx::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta705dfa7312 }
 
             # @!method initialize(data: nil, meta: nil)
             #   @param data [Array<Telnyx::Models::Legacy::Reporting::BatchDetailRecords::CdrDetailedReqResponse>]
-            #   @param meta [Telnyx::Models::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta]
+            #   @param meta [Telnyx::Models::Legacy::Reporting::BatchDetailRecords::BatchCsvPaginationMeta705dfa7312]
           end
         end
       end

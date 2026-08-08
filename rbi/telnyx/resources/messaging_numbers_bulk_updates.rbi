@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Configure your phone numbers
     class MessagingNumbersBulkUpdates
-      # Bulk update phone number profiles
+      # Starts a bulk update of messaging-profile assignments for the supplied phone
+      # numbers. The response identifies the order used to monitor processing.
       sig do
         params(
           messaging_profile_id: String,
@@ -29,7 +30,8 @@ module Telnyx
       )
       end
 
-      # Retrieve bulk update status
+      # Returns processing status and results for a bulk messaging-settings update
+      # order.
       sig do
         params(
           order_id: String,

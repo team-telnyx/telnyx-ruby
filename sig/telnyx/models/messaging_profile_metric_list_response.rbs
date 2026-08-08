@@ -3,7 +3,7 @@ module Telnyx
     type messaging_profile_metric_list_response =
       {
         data: ::Array[::Hash[Symbol, top]],
-        meta: Telnyx::MessagingPaginationMeta
+        meta: Telnyx::MessagingPaginationMeta0b38e7044b
       }
 
     class MessagingProfileMetricListResponse < Telnyx::Internal::Type::BaseModel
@@ -11,20 +11,20 @@ module Telnyx
 
       def data=: (::Array[::Hash[Symbol, top]]) -> ::Array[::Hash[Symbol, top]]
 
-      attr_reader meta: Telnyx::MessagingPaginationMeta?
+      attr_reader meta: Telnyx::MessagingPaginationMeta0b38e7044b?
 
       def meta=: (
-        Telnyx::MessagingPaginationMeta
-      ) -> Telnyx::MessagingPaginationMeta
+        Telnyx::MessagingPaginationMeta0b38e7044b
+      ) -> Telnyx::MessagingPaginationMeta0b38e7044b
 
       def initialize: (
         ?data: ::Array[::Hash[Symbol, top]],
-        ?meta: Telnyx::MessagingPaginationMeta
+        ?meta: Telnyx::MessagingPaginationMeta0b38e7044b
       ) -> void
 
       def to_hash: -> {
         data: ::Array[::Hash[Symbol, top]],
-        meta: Telnyx::MessagingPaginationMeta
+        meta: Telnyx::MessagingPaginationMeta0b38e7044b
       }
     end
   end

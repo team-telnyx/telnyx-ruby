@@ -1080,6 +1080,8 @@ module Telnyx
 
   MessagingError = Telnyx::Models::MessagingError
 
+  MessagingError0b38e7044b = Telnyx::Models::MessagingError0b38e7044b
+
   MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
 
   MessagingHostedNumberDeleteParams = Telnyx::Models::MessagingHostedNumberDeleteParams
@@ -1119,7 +1121,11 @@ module Telnyx
 
   MessagingOptoutListParams = Telnyx::Models::MessagingOptoutListParams
 
+  MessagingOutboundMessagePayload = Telnyx::Models::MessagingOutboundMessagePayload
+
   MessagingPaginationMeta = Telnyx::Models::MessagingPaginationMeta
+
+  MessagingPaginationMeta0b38e7044b = Telnyx::Models::MessagingPaginationMeta0b38e7044b
 
   MessagingProfile = Telnyx::Models::MessagingProfile
 
@@ -1193,6 +1199,8 @@ module Telnyx
   MonthDetail = Telnyx::Models::MonthDetail
 
   NetappsLocation = Telnyx::Models::NetappsLocation
+
+  NetappsLocation17904fcfbc = Telnyx::Models::NetappsLocation17904fcfbc
 
   Network = Telnyx::Models::Network
 
@@ -1286,6 +1294,8 @@ module Telnyx
 
   NumberOrderStatusUpdate = Telnyx::Models::NumberOrderStatusUpdate
 
+  NumberOrderStatusUpdateWebhookEvent = Telnyx::Models::NumberOrderStatusUpdateWebhookEvent
+
   NumberOrderUpdateParams = Telnyx::Models::NumberOrderUpdateParams
 
   NumberOrderWithPhoneNumbers = Telnyx::Models::NumberOrderWithPhoneNumbers
@@ -1305,6 +1315,8 @@ module Telnyx
   NumberReservations = Telnyx::Models::NumberReservations
 
   NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
+
+  NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
 
   OAuthClient = Telnyx::Models::OAuthClient
 
@@ -1329,6 +1341,8 @@ module Telnyx
   OAuthGrantsParams = Telnyx::Models::OAuthGrantsParams
 
   OAuthIntrospectParams = Telnyx::Models::OAuthIntrospectParams
+
+  OAuthOAuthPaginationMeta = Telnyx::Models::OAuthOAuthPaginationMeta
 
   OAuthRegisterParams = Telnyx::Models::OAuthRegisterParams
 
@@ -1949,6 +1963,8 @@ module Telnyx
   UserAddress = Telnyx::Models::UserAddress
 
   UserAddressCreateParams = Telnyx::Models::UserAddressCreateParams
+
+  UserAddressesUserAddress = Telnyx::Models::UserAddressesUserAddress
 
   UserAddressListParams = Telnyx::Models::UserAddressListParams
 

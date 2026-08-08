@@ -42,7 +42,7 @@ module Telnyx
               doing_business_as: T.nilable(String),
               entity_type:
                 T.nilable(
-                  Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
+                  Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
               isv_reseller: T.nilable(String),
@@ -53,7 +53,7 @@ module Telnyx
               webhook_url: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+              Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress
             )
           end
           def create(
@@ -145,7 +145,7 @@ module Telnyx
               id: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
+              Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveResponse
             )
           end
           def retrieve(
@@ -193,7 +193,7 @@ module Telnyx
               doing_business_as: T.nilable(String),
               entity_type:
                 T.nilable(
-                  Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType::OrSymbol
+                  Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationEntityType::OrSymbol
                 ),
               help_message_response: T.nilable(String),
               isv_reseller: T.nilable(String),
@@ -204,7 +204,7 @@ module Telnyx
               webhook_url: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(
-              Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+              Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress
             )
           end
           def update(

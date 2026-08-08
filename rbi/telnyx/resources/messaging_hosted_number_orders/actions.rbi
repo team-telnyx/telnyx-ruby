@@ -5,7 +5,7 @@ module Telnyx
     class MessagingHostedNumberOrders
       # Manage your messaging hosted numbers
       class Actions
-        # Upload hosted number document
+        # Uploads a supporting document to the specified hosted-messaging order.
         sig do
           params(
             id: String,

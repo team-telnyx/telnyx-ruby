@@ -7,7 +7,7 @@ module Telnyx
       sig { returns(Telnyx::Resources::MobilePhoneNumbers::Messaging) }
       attr_reader :messaging
 
-      # Retrieve a Mobile Phone Number
+      # Retrieve the details of a specific mobile phone number.
       sig do
         params(
           id: String,
@@ -21,7 +21,7 @@ module Telnyx
       )
       end
 
-      # Update a Mobile Phone Number
+      # Update the settings of a specific mobile phone number.
       sig do
         params(
           id: String,
@@ -61,7 +61,7 @@ module Telnyx
       )
       end
 
-      # List Mobile Phone Numbers
+      # Retrieve a paginated list of mobile phone numbers on your account.
       sig do
         params(
           page_number: Integer,

@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Number orders
     class Comments
-      # Create a comment
+      # Creates a comment associated with a supported number-order record. The response
+      # contains the created comment.
       #
       # @overload create(body: nil, comment_record_id: nil, comment_record_type: nil, request_options: {})
       #
@@ -27,7 +28,8 @@ module Telnyx
         )
       end
 
-      # Retrieve a comment
+      # Returns the comment identified by `id`, including its associated record and
+      # comment metadata.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -50,7 +52,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::CommentListParams} for more details.
       #
-      # Retrieve all comments
+      # Returns comments associated with number-order records. Results can be filtered
+      # by record type and record ID and include pagination metadata.
       #
       # @overload list(filter: nil, request_options: {})
       #
@@ -73,7 +76,8 @@ module Telnyx
         )
       end
 
-      # Mark a comment as read
+      # Marks the specified comment as read. The response contains the updated read
+      # state for the comment.
       #
       # @overload mark_as_read(id, request_options: {})
       #

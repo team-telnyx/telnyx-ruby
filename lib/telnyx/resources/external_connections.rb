@@ -184,7 +184,8 @@ module Telnyx
         )
       end
 
-      # Update a location's static emergency address
+      # Update the static emergency address assigned to a specific location of an
+      # external connection.
       #
       # @overload update_location(location_id, id:, static_emergency_address_id:, request_options: {})
       #

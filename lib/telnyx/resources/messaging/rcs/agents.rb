@@ -6,7 +6,7 @@ module Telnyx
       class Rcs
         # Send RCS messages
         class Agents
-          # Retrieve an RCS agent
+          # Returns the configuration and current state of the specified RCS agent.
           #
           # @overload retrieve(id, request_options: {})
           #
@@ -26,7 +26,7 @@ module Telnyx
             )
           end
 
-          # Modify an RCS agent
+          # Updates the supplied configuration fields on the specified RCS agent.
           #
           # @overload update(id, profile_id: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
           #
@@ -54,7 +54,7 @@ module Telnyx
             )
           end
 
-          # List all RCS agents
+          # Returns RCS agents available to the authenticated account.
           #
           # @overload list(page_number: nil, page_size: nil, request_options: {})
           #

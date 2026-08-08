@@ -8,13 +8,7 @@ class Telnyx::Test::Resources::InexplicitNumberOrdersTest < Telnyx::Test::Resour
 
     response =
       @telnyx.inexplicit_number_orders.create(
-        ordering_groups: [
-          {
-            count_requested: "count_requested",
-            country_iso: :US,
-            phone_number_type: "phone_number_type"
-          }
-        ]
+        ordering_groups: [{count_requested: "5", country_iso: :US, phone_number_type: "local"}]
       )
 
     assert_pattern do

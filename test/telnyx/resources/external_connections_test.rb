@@ -114,7 +114,7 @@ class Telnyx::Test::Resources::ExternalConnectionsTest < Telnyx::Test::ResourceT
       @telnyx.external_connections.update_location(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        static_emergency_address_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+        static_emergency_address_id: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
       )
 
     assert_pattern do

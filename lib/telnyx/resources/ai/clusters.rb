@@ -8,7 +8,7 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::ClusterRetrieveParams} for more details.
         #
-        # Fetch a cluster
+        # Fetch the results of a clustering task, including the discovered clusters.
         #
         # @overload retrieve(task_id, show_subclusters: nil, top_n_nodes: nil, request_options: {})
         #
@@ -35,7 +35,7 @@ module Telnyx
           )
         end
 
-        # List all clusters
+        # Retrieve a paginated list of clustering tasks and their statuses.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
@@ -59,7 +59,7 @@ module Telnyx
           )
         end
 
-        # Delete a cluster
+        # Delete a clustering task and its computed results.
         #
         # @overload delete(task_id, request_options: {})
         #
@@ -114,7 +114,7 @@ module Telnyx
           )
         end
 
-        # Fetch a cluster visualization
+        # Fetch a visualization image of the clusters computed by a clustering task.
         #
         # @overload fetch_graph(task_id, cluster_id: nil, request_options: {})
         #

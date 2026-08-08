@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class MobilePhoneNumbers
       class Messaging
-        # Retrieve a mobile phone number with messaging settings
+        # Returns the messaging configuration for the specified mobile phone number.
         sig do
           params(
             id: String,
@@ -20,7 +20,7 @@ module Telnyx
         )
         end
 
-        # List mobile phone numbers with messaging settings
+        # Returns mobile phone numbers with their current messaging configuration.
         sig do
           params(
             page_number: Integer,

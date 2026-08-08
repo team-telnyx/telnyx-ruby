@@ -25,18 +25,22 @@ module Telnyx
       end
       attr_writer :data
 
-      sig { returns(T.nilable(Telnyx::Reports::PaginationMetaReporting)) }
+      sig do
+        returns(T.nilable(Telnyx::Reports::ReportingPaginationMeta77109e5d17))
+      end
       attr_reader :meta
 
       sig do
-        params(meta: Telnyx::Reports::PaginationMetaReporting::OrHash).void
+        params(
+          meta: Telnyx::Reports::ReportingPaginationMeta77109e5d17::OrHash
+        ).void
       end
       attr_writer :meta
 
       sig do
         params(
           data: T::Array[Telnyx::Models::ReportListMdrsResponse::Data::OrHash],
-          meta: Telnyx::Reports::PaginationMetaReporting::OrHash
+          meta: Telnyx::Reports::ReportingPaginationMeta77109e5d17::OrHash
         ).returns(T.attached_class)
       end
       def self.new(data: nil, meta: nil)
@@ -46,7 +50,7 @@ module Telnyx
         override.returns(
           {
             data: T::Array[Telnyx::Models::ReportListMdrsResponse::Data],
-            meta: Telnyx::Reports::PaginationMetaReporting
+            meta: Telnyx::Reports::ReportingPaginationMeta77109e5d17
           }
         )
       end

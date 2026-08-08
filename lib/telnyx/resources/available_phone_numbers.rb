@@ -7,7 +7,10 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AvailablePhoneNumberListParams} for more details.
       #
-      # List available phone numbers
+      # Searches the Telnyx inventory for available phone numbers. Filters support
+      # number patterns, location, number type, features, reservability, and other
+      # inventory constraints; the response includes matching numbers and search
+      # metadata.
       #
       # @overload list(filter: nil, request_options: {})
       #

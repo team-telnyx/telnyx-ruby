@@ -155,7 +155,8 @@ module Telnyx
       )
       end
 
-      # Update a location's static emergency address
+      # Update the static emergency address assigned to a specific location of an
+      # external connection.
       sig do
         params(
           location_id: String,

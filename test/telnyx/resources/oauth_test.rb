@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   def test_grants_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.oauth.grants(allowed: true, consent_token: "consent_token")
+    response = @telnyx.oauth.grants(allowed: false, consent_token: "string")
 
     assert_pattern do
       response => Telnyx::Models::OAuthGrantsResponse
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
   def test_introspect_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.oauth.introspect(token: "token")
+    response = @telnyx.oauth.introspect(token: "string")
 
     assert_pattern do
       response => Telnyx::Models::OAuthIntrospectResponse

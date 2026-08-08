@@ -38,7 +38,7 @@ module Telnyx
         )
       end
 
-      # Retrieve a verified number
+      # Retrieve the details of a verified number on your account.
       #
       # @overload retrieve(phone_number, request_options: {})
       #
@@ -82,7 +82,7 @@ module Telnyx
         )
       end
 
-      # Delete a verified number
+      # Remove a verified number from your account.
       #
       # @overload delete(phone_number, request_options: {})
       #

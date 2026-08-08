@@ -7,7 +7,8 @@ module Telnyx
         class Profile
           # Manage Whatsapp phone numbers
           class Photo
-            # Get Whatsapp profile photo
+            # Returns the current business-profile photo for the specified WhatsApp phone
+            # number.
             #
             # @overload retrieve(phone_number, request_options: {})
             #
@@ -27,7 +28,7 @@ module Telnyx
               )
             end
 
-            # Delete Whatsapp profile photo
+            # Removes the business-profile photo from the specified WhatsApp phone number.
             #
             # @overload delete(phone_number, request_options: {})
             #
@@ -47,7 +48,8 @@ module Telnyx
               )
             end
 
-            # Upload Whatsapp profile photo
+            # Uploads and assigns a business-profile photo to the specified WhatsApp phone
+            # number.
             #
             # @overload upload(phone_number, file:, request_options: {})
             #

@@ -27,7 +27,8 @@ module Telnyx
       # @return [Telnyx::Resources::PhoneNumbers::Voicemail]
       attr_reader :voicemail
 
-      # Retrieve a phone number
+      # Returns the detailed configuration and current state of the phone number
+      # identified by `id`.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -50,7 +51,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PhoneNumberUpdateParams} for more details.
       #
-      # Update a phone number
+      # Updates the configurable settings of the specified phone number. The response
+      # contains the complete updated phone-number representation.
       #
       # @overload update(phone_number_id, address_id: nil, billing_group_id: nil, connection_id: nil, customer_reference: nil, external_pin: nil, hd_voice_enabled: nil, tags: nil, request_options: {})
       #
@@ -89,7 +91,9 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PhoneNumberListParams} for more details.
       #
-      # List phone numbers
+      # Returns phone numbers associated with the account. Results support pagination,
+      # sorting, and filters for number attributes, status, source, connections, billing
+      # groups, emergency addresses, tags, and customer references.
       #
       # @overload list(filter: nil, handle_messaging_profile_error: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
@@ -105,7 +109,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumberDetailed>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::NumbersPhoneNumberDetailed>]
       #
       # @see Telnyx::Models::PhoneNumberListParams
       def list(params = {})
@@ -116,12 +120,13 @@ module Telnyx
           path: "phone_numbers",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::PhoneNumberDetailed,
+          model: Telnyx::NumbersPhoneNumberDetailed,
           options: options
         )
       end
 
-      # Delete a phone number
+      # Deletes the specified phone number from the account. The response contains the
+      # phone number's final deleted representation.
       #
       # @overload delete(id, request_options: {})
       #

@@ -267,7 +267,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   def test_imports_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.assistants.imports(api_key_ref: "api_key_ref", provider: :elevenlabs)
+    response = @telnyx.ai.assistants.imports(api_key_ref: "string", provider: :elevenlabs)
 
     assert_pattern do
       response => Telnyx::AI::AssistantsList
@@ -283,7 +283,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
   def test_send_sms_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.assistants.send_sms("assistant_id", from: "from", to: "to")
+    response = @telnyx.ai.assistants.send_sms("assistant_id", from: "From", to: "To")
 
     assert_pattern do
       response => Telnyx::Models::AI::AssistantSendSMSResponse

@@ -33,7 +33,7 @@ module Telnyx
       )
       end
 
-      # Retrieve a verified number
+      # Retrieve the details of a verified number on your account.
       sig do
         params(
           phone_number: String,
@@ -60,7 +60,7 @@ module Telnyx
       def list(page_number: nil, page_size: nil, request_options: {})
       end
 
-      # Delete a verified number
+      # Remove a verified number from your account.
       sig do
         params(
           phone_number: String,

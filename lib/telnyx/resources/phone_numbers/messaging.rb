@@ -5,7 +5,8 @@ module Telnyx
     class PhoneNumbers
       # Configure your phone numbers
       class Messaging
-        # Retrieve a phone number with messaging settings
+        # Returns the messaging product and messaging-profile assignment for the specified
+        # phone number.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -28,7 +29,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::MessagingUpdateParams} for more details.
         #
-        # Update the messaging profile and/or messaging product of a phone number
+        # Updates the messaging product, messaging profile, or both for the specified
+        # phone number.
         #
         # @overload update(id, messaging_product: nil, messaging_profile_id: nil, tags: nil, request_options: {})
         #
@@ -56,7 +58,8 @@ module Telnyx
           )
         end
 
-        # List phone numbers with messaging settings
+        # Returns phone numbers with their current messaging product and messaging-profile
+        # assignments.
         #
         # @overload list(filter_messaging_profile_id: nil, filter_phone_number: nil, filter_phone_number_contains: nil, filter_type: nil, page_number: nil, page_size: nil, sort_phone_number: nil, request_options: {})
         #

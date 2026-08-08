@@ -19,6 +19,12 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> nil
 
+        def get: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::PhoneNumberGetResponse
+
         def resend_verification: (
           String phone_number,
           ?verification_method: Telnyx::Models::Whatsapp::PhoneNumberResendVerificationParams::verification_method,

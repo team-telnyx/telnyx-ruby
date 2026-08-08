@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Requirement Groups
     class RequirementGroups
-      # Create a new requirement group
+      # Creates a regulatory requirement group for a country, number type, and ordering
+      # or porting action. Optional customer-reference and requirement values are
+      # retained on the created group.
       sig do
         params(
           action: Telnyx::RequirementGroupCreateParams::Action::OrSymbol,
@@ -30,7 +32,8 @@ module Telnyx
       )
       end
 
-      # Get a single requirement group by ID
+      # Returns the regulatory requirement group identified by `id`, including its
+      # requirement values and current approval status.
       sig do
         params(
           id: String,
@@ -44,7 +47,8 @@ module Telnyx
       )
       end
 
-      # Update requirement values in requirement group
+      # Updates the customer reference or regulatory requirement values on the specified
+      # requirement group. The response contains the updated group.
       sig do
         params(
           id: String,
@@ -66,7 +70,8 @@ module Telnyx
       )
       end
 
-      # List requirement groups
+      # Returns regulatory requirement groups for the account. Results can be filtered
+      # by country, number type, action, approval status, and customer reference.
       sig do
         params(
           filter: Telnyx::RequirementGroupListParams::Filter::OrHash,
@@ -82,7 +87,8 @@ module Telnyx
       )
       end
 
-      # Delete a requirement group by ID
+      # Deletes the regulatory requirement group identified by `id`. The response
+      # contains the deleted requirement-group representation.
       sig do
         params(
           id: String,
@@ -96,7 +102,8 @@ module Telnyx
       )
       end
 
-      # Submit a Requirement Group for Approval
+      # Submits the specified regulatory requirement group for approval. The response
+      # contains the requirement group with its resulting approval status.
       sig do
         params(
           id: String,

@@ -10,7 +10,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
       @telnyx.ai.missions.runs.plan.create(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         mission_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        steps: [{description: "description", sequence: 0, step_id: "step_id"}]
+        steps: [{description: "Description", sequence: 0, step_id: "Step Id"}]
       )
 
     assert_pattern do
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::PlanTest < Telnyx::Test::Reso
       @telnyx.ai.missions.runs.plan.add_steps_to_plan(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         mission_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        steps: [{description: "description", sequence: 0, step_id: "step_id"}]
+        steps: [{description: "Description", sequence: 0, step_id: "Step Id"}]
       )
 
     assert_pattern do
