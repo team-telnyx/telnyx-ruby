@@ -1513,11 +1513,9 @@ module Telnyx
 
   class QueueUpdateParams = Telnyx::Models::QueueUpdateParams
 
-  class RcsAgent = Telnyx::Models::RcsAgent
+  module Rcs = Telnyx::Models::Rcs
 
   class RcsAgentMessage = Telnyx::Models::RcsAgentMessage
-
-  class RcsAgentResponse = Telnyx::Models::RcsAgentResponse
 
   class RcsCardContent = Telnyx::Models::RcsCardContent
 

@@ -6,7 +6,7 @@ module Telnyx
           def retrieve: (
             String id,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::RcsAgentResponse
+          ) -> Telnyx::Rcs::RcsAgentResponse
 
           def update: (
             String id,
@@ -14,13 +14,13 @@ module Telnyx
             ?webhook_failover_url: String?,
             ?webhook_url: String?,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::RcsAgentResponse
+          ) -> Telnyx::Rcs::RcsAgentResponse
 
           def list: (
             ?page_number: Integer,
             ?page_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::RcsAgent]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Rcs::RcsAgent]
 
           def initialize: (client: Telnyx::Client) -> void
         end

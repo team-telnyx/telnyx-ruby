@@ -1730,11 +1730,9 @@ module Telnyx
 
   QueueUpdateParams = Telnyx::Models::QueueUpdateParams
 
-  RcsAgent = Telnyx::Models::RcsAgent
+  Rcs = Telnyx::Models::Rcs
 
   RcsAgentMessage = Telnyx::Models::RcsAgentMessage
-
-  RcsAgentResponse = Telnyx::Models::RcsAgentResponse
 
   RcsCardContent = Telnyx::Models::RcsCardContent
 

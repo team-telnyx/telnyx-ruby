@@ -1,6 +1,8 @@
 module Telnyx
   module Resources
-    class RcsAgents
+    class Rcs
+      attr_reader agents: Telnyx::Resources::Rcs::Agents
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

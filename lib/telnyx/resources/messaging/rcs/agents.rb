@@ -14,14 +14,14 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::RcsAgentResponse]
+          # @return [Telnyx::Models::Rcs::RcsAgentResponse]
           #
           # @see Telnyx::Models::Messaging::Rcs::AgentRetrieveParams
           def retrieve(id, params = {})
             @client.request(
               method: :get,
               path: ["messaging/rcs/agents/%1$s", id],
-              model: Telnyx::RcsAgentResponse,
+              model: Telnyx::Rcs::RcsAgentResponse,
               options: params[:request_options]
             )
           end
@@ -40,7 +40,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::RcsAgentResponse]
+          # @return [Telnyx::Models::Rcs::RcsAgentResponse]
           #
           # @see Telnyx::Models::Messaging::Rcs::AgentUpdateParams
           def update(id, params = {})
@@ -49,7 +49,7 @@ module Telnyx
               method: :patch,
               path: ["messaging/rcs/agents/%1$s", id],
               body: parsed,
-              model: Telnyx::RcsAgentResponse,
+              model: Telnyx::Rcs::RcsAgentResponse,
               options: options
             )
           end
@@ -62,7 +62,7 @@ module Telnyx
           # @param page_size [Integer]
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::RcsAgent>]
+          # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Rcs::RcsAgent>]
           #
           # @see Telnyx::Models::Messaging::Rcs::AgentListParams
           def list(params = {})
@@ -73,7 +73,7 @@ module Telnyx
               path: "messaging/rcs/agents",
               query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
-              model: Telnyx::RcsAgent,
+              model: Telnyx::Rcs::RcsAgent,
               options: options
             )
           end
