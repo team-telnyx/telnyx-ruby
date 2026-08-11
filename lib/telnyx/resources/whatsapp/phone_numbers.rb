@@ -17,7 +17,7 @@ module Telnyx
         # @return [Telnyx::Resources::Whatsapp::PhoneNumbers::ConversationalComponents]
         attr_reader :conversational_components
 
-        # List Whatsapp phone numbers
+        # Returns WhatsApp phone numbers linked to the authenticated Telnyx account.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
@@ -41,7 +41,7 @@ module Telnyx
           )
         end
 
-        # Delete a Whatsapp phone number
+        # Removes the specified phone number from Telnyx WhatsApp management.
         #
         # @overload delete(phone_number, request_options: {})
         #
@@ -61,7 +61,30 @@ module Telnyx
           )
         end
 
-        # Resend verification code
+        # Retrieve a list of the phone numbers registered for WhatsApp on your account.
+        #
+        # @overload get(page_number: nil, page_size: nil, request_options: {})
+        #
+        # @param page_number [Integer]
+        # @param page_size [Integer]
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Whatsapp::PhoneNumberGetResponse]
+        #
+        # @see Telnyx::Models::Whatsapp::PhoneNumberGetParams
+        def get(params = {})
+          parsed, options = Telnyx::Whatsapp::PhoneNumberGetParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
+          @client.request(
+            method: :get,
+            path: "whatsapp/phone_numbers",
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            model: Telnyx::Models::Whatsapp::PhoneNumberGetResponse,
+            options: options
+          )
+        end
+
+        # Requests a new verification code for the specified WhatsApp phone number.
         #
         # @overload resend_verification(phone_number, verification_method: nil, request_options: {})
         #
@@ -112,7 +135,7 @@ module Telnyx
           )
         end
 
-        # Submit verification code for a phone number
+        # Submits the verification code received for the specified WhatsApp phone number.
         #
         # @overload verify(phone_number, code:, request_options: {})
         #

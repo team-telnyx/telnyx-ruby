@@ -23,7 +23,7 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
   def test_summarize_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.summarize(bucket: "bucket", filename: "filename")
+    response = @telnyx.ai.summarize(bucket: "string", filename: "string")
 
     assert_pattern do
       response => Telnyx::Models::AISummarizeResponse

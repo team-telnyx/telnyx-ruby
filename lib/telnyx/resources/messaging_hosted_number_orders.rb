@@ -11,7 +11,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingHostedNumberOrderCreateParams} for more details.
       #
-      # Create a messaging hosted number order
+      # Creates an order to enable Telnyx messaging on phone numbers whose voice service
+      # remains with another carrier.
       #
       # @overload create(messaging_profile_id: nil, phone_numbers: nil, request_options: {})
       #
@@ -35,7 +36,8 @@ module Telnyx
         )
       end
 
-      # Retrieve a messaging hosted number order
+      # Returns the current state, phone numbers, and required actions for the specified
+      # hosted-messaging order.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -55,7 +57,8 @@ module Telnyx
         )
       end
 
-      # List messaging hosted number orders
+      # Returns hosted-messaging orders for the authenticated account. Apply the
+      # documented filters and pagination parameters to narrow the result set.
       #
       # @overload list(page_number: nil, page_size: nil, request_options: {})
       #
@@ -99,7 +102,8 @@ module Telnyx
         )
       end
 
-      # Check hosted messaging eligibility
+      # Checks whether the supplied phone numbers are eligible for hosted messaging
+      # before an order is created.
       #
       # @overload check_eligibility(phone_numbers:, request_options: {})
       #

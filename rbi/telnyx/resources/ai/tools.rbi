@@ -5,7 +5,7 @@ module Telnyx
     class AI
       # Configure AI assistant specifications
       class Tools
-        # Create Tool
+        # Create a new custom AI tool that can be attached to AI assistants.
         sig do
           params(
             display_name: String,
@@ -17,6 +17,8 @@ module Telnyx
             pay: Telnyx::AI::PayToolParams::OrHash,
             retrieval: T::Hash[Symbol, T.anything],
             timeout_ms: Integer,
+            update_dynamic_variables:
+              Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::SharedToolResponse)
@@ -31,12 +33,14 @@ module Telnyx
           pay: nil,
           retrieval: nil,
           timeout_ms: nil,
+          # Configuration for an update_dynamic_variables tool.
+          update_dynamic_variables: nil,
           webhook: nil,
           request_options: {}
         )
         end
 
-        # Get Tool
+        # Retrieve the details of a specific AI tool.
         sig do
           params(
             tool_id: String,
@@ -50,7 +54,7 @@ module Telnyx
         )
         end
 
-        # Update Tool
+        # Update the configuration of an existing AI tool.
         sig do
           params(
             tool_id: String,
@@ -63,6 +67,8 @@ module Telnyx
             retrieval: T::Hash[Symbol, T.anything],
             timeout_ms: Integer,
             type: String,
+            update_dynamic_variables:
+              Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::SharedToolResponse)
@@ -79,12 +85,14 @@ module Telnyx
           retrieval: nil,
           timeout_ms: nil,
           type: nil,
+          # Configuration for an update_dynamic_variables tool.
+          update_dynamic_variables: nil,
           webhook: nil,
           request_options: {}
         )
         end
 
-        # List Tools
+        # Retrieve a list of the custom AI tools configured on your account.
         sig do
           params(
             filter_name: String,
@@ -111,7 +119,7 @@ module Telnyx
         )
         end
 
-        # Delete Tool
+        # Delete a custom AI tool.
         sig do
           params(
             tool_id: String,

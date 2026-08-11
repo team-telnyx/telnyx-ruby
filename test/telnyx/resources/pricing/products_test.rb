@@ -26,7 +26,7 @@ class Telnyx::Test::Resources::Pricing::ProductsTest < Telnyx::Test::ResourceTes
     response = @telnyx.pricing.products.list
 
     assert_pattern do
-      response => Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders
+      response => Telnyx::Internal::DefaultFlatPagination
     end
 
     row = response.to_enum.first

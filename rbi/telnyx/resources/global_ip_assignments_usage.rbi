@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPAssignmentsUsage
-      # Global IP Assignment Usage Metrics
+      # Retrieve usage metrics for your Global IP assignments.
       sig do
         params(
           filter:

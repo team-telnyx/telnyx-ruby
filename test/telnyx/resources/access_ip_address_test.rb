@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::AccessIPAddressTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.access_ip_address.create(ip_address: "ip_address")
+    response = @telnyx.access_ip_address.create(ip_address: "Ip Address")
 
     assert_pattern do
       response => Telnyx::AccessIPAddressResponse

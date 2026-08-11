@@ -66,7 +66,7 @@ class Telnyx::Test::Resources::AI::Missions::Runs::EventsTest < Telnyx::Test::Re
       @telnyx.ai.missions.runs.events.log(
         "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         mission_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        summary: "summary",
+        summary: "Summary",
         type: :status_change
       )
 

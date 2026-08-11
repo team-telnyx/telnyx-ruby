@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_submission_status = :SUBMITTED | :APPROVED | :REJECTED
+
+      module AgentSubmissionStatus
+        extend Telnyx::Internal::Type::Enum
+
+        SUBMITTED: :SUBMITTED
+        APPROVED: :APPROVED
+        REJECTED: :REJECTED
+
+        def self?.values: -> ::Array[Telnyx::Models::Rcs::agent_submission_status]
+      end
+    end
+  end
+end

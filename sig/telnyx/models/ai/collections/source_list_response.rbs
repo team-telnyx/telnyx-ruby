@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type source_list_response =
+          { data: ::Array[Telnyx::AI::Collections::Source] }
+
+        class SourceListResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::AI::Collections::Source]?
+
+          def data=: (
+            ::Array[Telnyx::AI::Collections::Source]
+          ) -> ::Array[Telnyx::AI::Collections::Source]
+
+          def initialize: (
+            ?data: ::Array[Telnyx::AI::Collections::Source]
+          ) -> void
+
+          def to_hash: -> { data: ::Array[Telnyx::AI::Collections::Source] }
+        end
+      end
+    end
+  end
+end

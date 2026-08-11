@@ -7,7 +7,7 @@ module Telnyx
       # @return [Telnyx::Resources::MobilePhoneNumbers::Messaging]
       attr_reader :messaging
 
-      # Retrieve a Mobile Phone Number
+      # Retrieve the details of a specific mobile phone number.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -27,7 +27,7 @@ module Telnyx
         )
       end
 
-      # Update a Mobile Phone Number
+      # Update the settings of a specific mobile phone number.
       #
       # @overload update(id, call_forwarding: nil, call_recording: nil, caller_id_name_enabled: nil, cnam_listing: nil, connection_id: nil, customer_reference: nil, inbound: nil, inbound_call_screening: nil, noise_suppression: nil, outbound: nil, tags: nil, request_options: {})
       #
@@ -71,7 +71,7 @@ module Telnyx
         )
       end
 
-      # List Mobile Phone Numbers
+      # Retrieve a paginated list of mobile phone numbers on your account.
       #
       # @overload list(page_number: nil, page_size: nil, request_options: {})
       #

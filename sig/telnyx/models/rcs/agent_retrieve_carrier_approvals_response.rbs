@@ -1,0 +1,10 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_retrieve_carrier_approvals_response =
+        ::Array[Telnyx::Rcs::CarrierApprovalResponse]
+
+      AgentRetrieveCarrierApprovalsResponse: Telnyx::Internal::Type::Converter
+    end
+  end
+end

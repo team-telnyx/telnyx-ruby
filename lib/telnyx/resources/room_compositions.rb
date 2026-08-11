@@ -41,7 +41,9 @@ module Telnyx
         )
       end
 
-      # View a room composition.
+      # Returns the composition identified by `room_composition_id`, including its room
+      # and session, processing status, media details, video layout, lifecycle
+      # timestamps, and download URL.
       #
       # @overload retrieve(room_composition_id, request_options: {})
       #
@@ -64,7 +66,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomCompositionListParams} for more details.
       #
-      # View a list of room compositions.
+      # Returns a paginated list of room compositions. Filter compositions by creation
+      # date, room session, or processing status.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

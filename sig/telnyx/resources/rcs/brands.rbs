@@ -1,0 +1,50 @@
+module Telnyx
+  module Resources
+    class Rcs
+      class Brands
+        def create: (
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandCreateParams::Address],
+          contacts: Telnyx::Rcs::BrandCreateParams::Contacts,
+          display_name: String,
+          identifiers: Telnyx::Rcs::BrandCreateParams::Identifiers,
+          legal_entity_type: Telnyx::Models::Rcs::brand_legal_entity_type,
+          legal_name: String,
+          organization_type: Telnyx::Models::Rcs::brand_organization_type,
+          website_url: String,
+          ?profile_id: String?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Rcs::BrandResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Rcs::BrandResponse
+
+        def update: (
+          String id,
+          ?addresses: ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address],
+          ?contacts: Telnyx::Rcs::BrandUpdateParams::Contacts,
+          ?display_name: String,
+          ?identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers,
+          ?legal_entity_type: Telnyx::Models::Rcs::brand_legal_entity_type,
+          ?legal_name: String,
+          ?organization_type: Telnyx::Models::Rcs::brand_organization_type,
+          ?profile_id: String,
+          ?website_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Rcs::BrandResponse
+
+        def list: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Rcs::brand_list_response
+
+        def submit: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Rcs::BrandResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

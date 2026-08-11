@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::AI::MissionsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.missions.create(name: "name")
+    response = @telnyx.ai.missions.create(name: "Name")
 
     assert_pattern do
       response => Telnyx::AI::MissionResponse

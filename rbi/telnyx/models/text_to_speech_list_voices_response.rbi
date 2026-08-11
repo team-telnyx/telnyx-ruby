@@ -69,6 +69,14 @@ module Telnyx
         sig { params(gender: String).void }
         attr_writer :gender
 
+        # Whether this voice runs on Telnyx-hosted infrastructure (`true`) or is provided
+        # by a third-party vendor (`false`).
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :hosted
+
+        sig { params(hosted: T::Boolean).void }
+        attr_writer :hosted
+
         # Language code.
         sig { returns(T.nilable(String)) }
         attr_reader :language
@@ -101,6 +109,7 @@ module Telnyx
         sig do
           params(
             gender: String,
+            hosted: T::Boolean,
             language: String,
             name: String,
             provider: String,
@@ -110,6 +119,9 @@ module Telnyx
         def self.new(
           # Voice gender.
           gender: nil,
+          # Whether this voice runs on Telnyx-hosted infrastructure (`true`) or is provided
+          # by a third-party vendor (`false`).
+          hosted: nil,
           # Language code.
           language: nil,
           # Voice name.
@@ -125,6 +137,7 @@ module Telnyx
           override.returns(
             {
               gender: String,
+              hosted: T::Boolean,
               language: String,
               name: String,
               provider: String,

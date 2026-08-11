@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module Rcs
+      type brand_legal_entity_type =
+        :LIMITED_LIABILITY_COMPANY
+        | :SOLE_PROPRIETORSHIP
+        | :PARTNERSHIP
+        | :CORPORATION
+        | :S_CORPORATION
+
+      module BrandLegalEntityType
+        extend Telnyx::Internal::Type::Enum
+
+        LIMITED_LIABILITY_COMPANY: :LIMITED_LIABILITY_COMPANY
+        SOLE_PROPRIETORSHIP: :SOLE_PROPRIETORSHIP
+        PARTNERSHIP: :PARTNERSHIP
+        CORPORATION: :CORPORATION
+        S_CORPORATION: :S_CORPORATION
+
+        def self?.values: -> ::Array[Telnyx::Models::Rcs::brand_legal_entity_type]
+      end
+    end
+  end
+end

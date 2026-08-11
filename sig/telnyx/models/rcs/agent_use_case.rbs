@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_use_case = :MULTI_USE | :PROMOTIONAL | :TRANSACTIONAL | :OTP
+
+      module AgentUseCase
+        extend Telnyx::Internal::Type::Enum
+
+        MULTI_USE: :MULTI_USE
+        PROMOTIONAL: :PROMOTIONAL
+        TRANSACTIONAL: :TRANSACTIONAL
+        OTP: :OTP
+
+        def self?.values: -> ::Array[Telnyx::Models::Rcs::agent_use_case]
+      end
+    end
+  end
+end

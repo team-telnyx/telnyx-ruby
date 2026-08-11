@@ -38,6 +38,9 @@ module Telnyx
         # (BETA) The pay tool allows the assistant to collect card payments from the caller via DTMF during the conversation. Recording is automatically paused while the pay tool is active and resumes when the payment flow completes. The connector_name must reference a pay connector configured in the Telnyx API.
         variant :pay, -> { Telnyx::AI::AssistantTool::Pay }
 
+        # The update_dynamic_variables tool lets the assistant write values into the conversation's dynamic-variables context during the call. Updated variables are available to later `{{variable}}` interpolation (prompts, speak nodes, message templates) and to flow edge conditions. Declare each variable the assistant is allowed to set under `updatable_variables`.
+        variant :update_dynamic_variables, -> { Telnyx::AI::AssistantTool::UpdateDynamicVariables }
+
         class ClientSideTool < Telnyx::Internal::Type::BaseModel
           # @!attribute client_side_tool
           #
@@ -1069,8 +1072,32 @@ module Telnyx
           #   @param type [Symbol, :pay]
         end
 
+        class UpdateDynamicVariables < Telnyx::Internal::Type::BaseModel
+          # @!attribute type
+          #
+          #   @return [Symbol, :update_dynamic_variables]
+          required :type, const: :update_dynamic_variables
+
+          # @!attribute update_dynamic_variables
+          #   Configuration for an update_dynamic_variables tool.
+          #
+          #   @return [Telnyx::Models::AI::UpdateDynamicVariablesToolParams]
+          required :update_dynamic_variables, -> { Telnyx::AI::UpdateDynamicVariablesToolParams }
+
+          # @!method initialize(update_dynamic_variables:, type: :update_dynamic_variables)
+          #   The update_dynamic_variables tool lets the assistant write values into the
+          #   conversation's dynamic-variables context during the call. Updated variables are
+          #   available to later `{{variable}}` interpolation (prompts, speak nodes, message
+          #   templates) and to flow edge conditions. Declare each variable the assistant is
+          #   allowed to set under `updatable_variables`.
+          #
+          #   @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
+          #
+          #   @param type [Symbol, :update_dynamic_variables]
+        end
+
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay)]
+        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables)]
       end
     end
   end

@@ -4,22 +4,22 @@ module Telnyx
       type autoresp_config_list_response =
         {
           data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig],
-          meta: Telnyx::MessagingPaginationMeta
+          meta: Telnyx::MessagingPaginationMeta0b38e7044b
         }
 
       class AutorespConfigListResponse < Telnyx::Internal::Type::BaseModel
         attr_accessor data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig]
 
-        attr_accessor meta: Telnyx::MessagingPaginationMeta
+        attr_accessor meta: Telnyx::MessagingPaginationMeta0b38e7044b
 
         def initialize: (
           data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig],
-          meta: Telnyx::MessagingPaginationMeta
+          meta: Telnyx::MessagingPaginationMeta0b38e7044b
         ) -> void
 
         def to_hash: -> {
           data: ::Array[Telnyx::MessagingProfiles::AutoRespConfig],
-          meta: Telnyx::MessagingPaginationMeta
+          meta: Telnyx::MessagingPaginationMeta0b38e7044b
         }
       end
     end

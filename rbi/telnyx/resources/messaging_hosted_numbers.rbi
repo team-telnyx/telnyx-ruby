@@ -82,7 +82,7 @@ module Telnyx
       )
       end
 
-      # Delete a messaging hosted number
+      # Removes the specified hosted number from Telnyx messaging management.
       sig do
         params(
           id: String,

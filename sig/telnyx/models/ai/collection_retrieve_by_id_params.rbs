@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    module AI
+      type collection_retrieve_by_id_params =
+        { uuid: String } & Telnyx::Internal::Type::request_parameters
+
+      class CollectionRetrieveByIDParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor uuid: String
+
+        def initialize: (
+          uuid: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          uuid: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

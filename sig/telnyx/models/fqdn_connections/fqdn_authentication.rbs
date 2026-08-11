@@ -1,0 +1,135 @@
+module Telnyx
+  module Models
+    module FqdnConnections
+      type fqdn_connections_fqdn_authentication =
+        {
+          id: String,
+          connection_id: String,
+          failover_url: String,
+          fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::fqdn_outbound_authentication,
+          ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::ip_authentication_method,
+          microsoft_teams_sbc: bool,
+          password: String,
+          record_type: String,
+          txt_name: String,
+          txt_ttl: Integer,
+          txt_value: String,
+          user_name: String,
+          webhook_url: String
+        }
+
+      class FqdnConnectionsFqdnAuthentication < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
+        attr_reader failover_url: String?
+
+        def failover_url=: (String) -> String
+
+        attr_reader fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::fqdn_outbound_authentication?
+
+        def fqdn_outbound_authentication=: (
+          Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::fqdn_outbound_authentication
+        ) -> Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::fqdn_outbound_authentication
+
+        attr_reader ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::ip_authentication_method?
+
+        def ip_authentication_method=: (
+          Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::ip_authentication_method
+        ) -> Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::ip_authentication_method
+
+        attr_reader microsoft_teams_sbc: bool?
+
+        def microsoft_teams_sbc=: (bool) -> bool
+
+        attr_reader password: String?
+
+        def password=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader txt_name: String?
+
+        def txt_name=: (String) -> String
+
+        attr_reader txt_ttl: Integer?
+
+        def txt_ttl=: (Integer) -> Integer
+
+        attr_reader txt_value: String?
+
+        def txt_value=: (String) -> String
+
+        attr_reader user_name: String?
+
+        def user_name=: (String) -> String
+
+        attr_reader webhook_url: String?
+
+        def webhook_url=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?connection_id: String,
+          ?failover_url: String,
+          ?fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::fqdn_outbound_authentication,
+          ?ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::ip_authentication_method,
+          ?microsoft_teams_sbc: bool,
+          ?password: String,
+          ?record_type: String,
+          ?txt_name: String,
+          ?txt_ttl: Integer,
+          ?txt_value: String,
+          ?user_name: String,
+          ?webhook_url: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          connection_id: String,
+          failover_url: String,
+          fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::fqdn_outbound_authentication,
+          ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::ip_authentication_method,
+          microsoft_teams_sbc: bool,
+          password: String,
+          record_type: String,
+          txt_name: String,
+          txt_ttl: Integer,
+          txt_value: String,
+          user_name: String,
+          webhook_url: String
+        }
+
+        type fqdn_outbound_authentication =
+          :"ip-authentication" | :"credential-authentication"
+
+        module FqdnOutboundAuthentication
+          extend Telnyx::Internal::Type::Enum
+
+          IP_AUTHENTICATION: :"ip-authentication"
+          CREDENTIAL_AUTHENTICATION: :"credential-authentication"
+
+          def self?.values: -> ::Array[Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::fqdn_outbound_authentication]
+        end
+
+        type ip_authentication_method = :token | :"p-charge-info"
+
+        module IPAuthenticationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          TOKEN: :token
+          P_CHARGE_INFO: :"p-charge-info"
+
+          def self?.values: -> ::Array[Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication::ip_authentication_method]
+        end
+      end
+    end
+  end
+end

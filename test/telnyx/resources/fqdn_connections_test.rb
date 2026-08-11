@@ -77,6 +77,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
         android_push_credential_id: String | nil,
         call_cost_enabled: Telnyx::Internal::Type::Boolean | nil,
         call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
+        conversation_persistence: Telnyx::Internal::Type::Boolean | nil,
         created_at: String | nil,
         default_on_hold_comfort_noise_enabled: Telnyx::Internal::Type::Boolean | nil,
         dtmf_type: Telnyx::DtmfType | nil,

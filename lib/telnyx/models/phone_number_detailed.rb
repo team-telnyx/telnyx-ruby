@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::PhoneNumbers#list
     class PhoneNumberDetailed < Telnyx::Internal::Type::BaseModel
       # @!attribute deletion_lock_enabled
       #   Indicates whether deletion lock is enabled for this number. When enabled, this

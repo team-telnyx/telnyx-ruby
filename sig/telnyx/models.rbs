@@ -811,6 +811,8 @@ module Telnyx
 
   class FqdnConnectionRetrieveParams = Telnyx::Models::FqdnConnectionRetrieveParams
 
+  module FqdnConnections = Telnyx::Models::FqdnConnections
+
   class FqdnConnectionUpdateParams = Telnyx::Models::FqdnConnectionUpdateParams
 
   class FqdnCreateParams = Telnyx::Models::FqdnCreateParams
@@ -1023,6 +1025,8 @@ module Telnyx
 
   class MessageTemplate = Telnyx::Models::MessageTemplate
 
+  class MessageWhatsappParams = Telnyx::Models::MessageWhatsappParams
+
   module Messaging = Telnyx::Models::Messaging
 
   module Messaging10dlc = Telnyx::Models::Messaging10dlc
@@ -1030,6 +1034,8 @@ module Telnyx
   class Messaging10dlcGetEnumParams = Telnyx::Models::Messaging10dlcGetEnumParams
 
   class MessagingError = Telnyx::Models::MessagingError
+
+  class MessagingError0b38e7044b = Telnyx::Models::MessagingError0b38e7044b
 
   class MessagingFeatureSet = Telnyx::Models::MessagingFeatureSet
 
@@ -1067,7 +1073,11 @@ module Telnyx
 
   class MessagingOptoutListParams = Telnyx::Models::MessagingOptoutListParams
 
+  class MessagingOutboundMessagePayload = Telnyx::Models::MessagingOutboundMessagePayload
+
   class MessagingPaginationMeta = Telnyx::Models::MessagingPaginationMeta
+
+  class MessagingPaginationMeta0b38e7044b = Telnyx::Models::MessagingPaginationMeta0b38e7044b
 
   class MessagingProfile = Telnyx::Models::MessagingProfile
 
@@ -1140,6 +1150,8 @@ module Telnyx
   class MonthDetail = Telnyx::Models::MonthDetail
 
   class NetappsLocation = Telnyx::Models::NetappsLocation
+
+  class NetappsLocation17904fcfbc = Telnyx::Models::NetappsLocation17904fcfbc
 
   class Network = Telnyx::Models::Network
 
@@ -1231,6 +1243,8 @@ module Telnyx
 
   class NumberOrderStatusUpdate = Telnyx::Models::NumberOrderStatusUpdate
 
+  class NumberOrderStatusUpdateWebhookEvent = Telnyx::Models::NumberOrderStatusUpdateWebhookEvent
+
   class NumberOrderUpdateParams = Telnyx::Models::NumberOrderUpdateParams
 
   class NumberOrderWithPhoneNumbers = Telnyx::Models::NumberOrderWithPhoneNumbers
@@ -1250,6 +1264,8 @@ module Telnyx
   module NumberReservations = Telnyx::Models::NumberReservations
 
   class NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
+
+  class NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
 
   class OAuthClient = Telnyx::Models::OAuthClient
 
@@ -1274,6 +1290,8 @@ module Telnyx
   class OAuthGrantsParams = Telnyx::Models::OAuthGrantsParams
 
   class OAuthIntrospectParams = Telnyx::Models::OAuthIntrospectParams
+
+  class OAuthOAuthPaginationMeta = Telnyx::Models::OAuthOAuthPaginationMeta
 
   class OAuthRegisterParams = Telnyx::Models::OAuthRegisterParams
 
@@ -1499,11 +1517,9 @@ module Telnyx
 
   class QueueUpdateParams = Telnyx::Models::QueueUpdateParams
 
-  class RcsAgent = Telnyx::Models::RcsAgent
+  module Rcs = Telnyx::Models::Rcs
 
   class RcsAgentMessage = Telnyx::Models::RcsAgentMessage
-
-  class RcsAgentResponse = Telnyx::Models::RcsAgentResponse
 
   class RcsCardContent = Telnyx::Models::RcsCardContent
 
@@ -1892,6 +1908,8 @@ module Telnyx
   class UserAddress = Telnyx::Models::UserAddress
 
   class UserAddressCreateParams = Telnyx::Models::UserAddressCreateParams
+
+  class UserAddressesUserAddress = Telnyx::Models::UserAddressesUserAddress
 
   class UserAddressListParams = Telnyx::Models::UserAddressListParams
 

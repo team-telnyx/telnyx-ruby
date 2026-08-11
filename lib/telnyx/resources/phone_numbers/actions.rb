@@ -8,8 +8,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::ActionChangeBundleStatusParams} for more details.
         #
-        # Change the bundle status for a phone number (set to being in a bundle or remove
-        # from a bundle)
+        # Adds the specified phone number to a bundle or removes it from a bundle
+        # according to the requested status change. The response contains the phone number
+        # with its updated bundle state.
         #
         # @overload change_bundle_status(id, bundle_id:, request_options: {})
         #
@@ -33,7 +34,9 @@ module Telnyx
           )
         end
 
-        # Enable emergency for a phone number
+        # Associates emergency-service settings with the specified phone number. The
+        # operation returns the updated phone-number configuration when completed
+        # immediately or an accepted state when processing continues asynchronously.
         #
         # @overload enable_emergency(id, emergency_address_id:, emergency_enabled:, request_options: {})
         #

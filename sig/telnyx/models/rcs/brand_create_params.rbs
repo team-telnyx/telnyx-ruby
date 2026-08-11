@@ -1,0 +1,182 @@
+module Telnyx
+  module Models
+    module Rcs
+      type brand_create_params =
+        {
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandCreateParams::Address],
+          contacts: Telnyx::Rcs::BrandCreateParams::Contacts,
+          display_name: String,
+          identifiers: Telnyx::Rcs::BrandCreateParams::Identifiers,
+          legal_entity_type: Telnyx::Models::Rcs::brand_legal_entity_type,
+          legal_name: String,
+          organization_type: Telnyx::Models::Rcs::brand_organization_type,
+          website_url: String,
+          profile_id: String?
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class BrandCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor addresses: ::Hash[Symbol, Telnyx::Rcs::BrandCreateParams::Address]
+
+        attr_accessor contacts: Telnyx::Rcs::BrandCreateParams::Contacts
+
+        attr_accessor display_name: String
+
+        attr_accessor identifiers: Telnyx::Rcs::BrandCreateParams::Identifiers
+
+        attr_accessor legal_entity_type: Telnyx::Models::Rcs::brand_legal_entity_type
+
+        attr_accessor legal_name: String
+
+        attr_accessor organization_type: Telnyx::Models::Rcs::brand_organization_type
+
+        attr_accessor website_url: String
+
+        attr_accessor profile_id: String?
+
+        def initialize: (
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandCreateParams::Address],
+          contacts: Telnyx::Rcs::BrandCreateParams::Contacts,
+          display_name: String,
+          identifiers: Telnyx::Rcs::BrandCreateParams::Identifiers,
+          legal_entity_type: Telnyx::Models::Rcs::brand_legal_entity_type,
+          legal_name: String,
+          organization_type: Telnyx::Models::Rcs::brand_organization_type,
+          website_url: String,
+          ?profile_id: String?,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandCreateParams::Address],
+          contacts: Telnyx::Rcs::BrandCreateParams::Contacts,
+          display_name: String,
+          identifiers: Telnyx::Rcs::BrandCreateParams::Identifiers,
+          legal_entity_type: Telnyx::Models::Rcs::brand_legal_entity_type,
+          legal_name: String,
+          organization_type: Telnyx::Models::Rcs::brand_organization_type,
+          website_url: String,
+          profile_id: String?,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type address =
+          {
+            administrative_area: String,
+            city: String,
+            country_code: String,
+            :line_1 => String,
+            postal_code: String,
+            :line_2 => String?
+          }
+
+        class Address < Telnyx::Internal::Type::BaseModel
+          attr_accessor administrative_area: String
+
+          attr_accessor city: String
+
+          attr_accessor country_code: String
+
+          attr_accessor line_1: String
+
+          attr_accessor postal_code: String
+
+          attr_accessor line_2: String?
+
+          def initialize: (
+            administrative_area: String,
+            city: String,
+            country_code: String,
+            line_1: String,
+            postal_code: String,
+            ?line_2: String?
+          ) -> void
+
+          def to_hash: -> {
+            administrative_area: String,
+            city: String,
+            country_code: String,
+            :line_1 => String,
+            postal_code: String,
+            :line_2 => String?
+          }
+        end
+
+        type contacts =
+          { brand: Telnyx::Rcs::BrandCreateParams::Contacts::Brand }
+
+        class Contacts < Telnyx::Internal::Type::BaseModel
+          attr_accessor brand: Telnyx::Rcs::BrandCreateParams::Contacts::Brand
+
+          def initialize: (
+            brand: Telnyx::Rcs::BrandCreateParams::Contacts::Brand
+          ) -> void
+
+          def to_hash: -> {
+            brand: Telnyx::Rcs::BrandCreateParams::Contacts::Brand
+          }
+
+          type brand =
+            {
+              contact_type: Telnyx::Models::Rcs::BrandCreateParams::Contacts::Brand::contact_type
+            }
+
+          class Brand < Telnyx::Models::Rcs::BrandContact
+            def contact_type: -> Telnyx::Models::Rcs::BrandCreateParams::Contacts::Brand::contact_type?
+
+            def contact_type=: (
+              Telnyx::Models::Rcs::BrandCreateParams::Contacts::Brand::contact_type _
+            ) -> Telnyx::Models::Rcs::BrandCreateParams::Contacts::Brand::contact_type
+
+            def initialize: (
+              ?contact_type: Telnyx::Models::Rcs::BrandCreateParams::Contacts::Brand::contact_type
+            ) -> void
+
+            def to_hash: -> {
+              contact_type: Telnyx::Models::Rcs::BrandCreateParams::Contacts::Brand::contact_type
+            }
+
+            type contact_type = :BRAND
+
+            module ContactType
+              extend Telnyx::Internal::Type::Enum
+
+              BRAND: :BRAND
+
+              def self?.values: -> ::Array[Telnyx::Models::Rcs::BrandCreateParams::Contacts::Brand::contact_type]
+            end
+          end
+        end
+
+        type identifiers =
+          {
+            ein: Telnyx::Rcs::EinBrandIdentifier,
+            stock_symbol: Telnyx::Rcs::StockSymbolBrandIdentifier
+          }
+
+        class Identifiers < Telnyx::Internal::Type::BaseModel
+          attr_accessor ein: Telnyx::Rcs::EinBrandIdentifier
+
+          attr_reader stock_symbol: Telnyx::Rcs::StockSymbolBrandIdentifier?
+
+          def stock_symbol=: (
+            Telnyx::Rcs::StockSymbolBrandIdentifier
+          ) -> Telnyx::Rcs::StockSymbolBrandIdentifier
+
+          def initialize: (
+            ein: Telnyx::Rcs::EinBrandIdentifier,
+            ?stock_symbol: Telnyx::Rcs::StockSymbolBrandIdentifier
+          ) -> void
+
+          def to_hash: -> {
+            ein: Telnyx::Rcs::EinBrandIdentifier,
+            stock_symbol: Telnyx::Rcs::StockSymbolBrandIdentifier
+          }
+        end
+      end
+    end
+  end
+end

@@ -42,8 +42,8 @@ class Telnyx::Test::Resources::Whatsapp::BusinessAccounts::PhoneNumbersTest < Te
     response =
       @telnyx.whatsapp.business_accounts.phone_numbers.initialize_verification(
         "id",
-        display_name: "display_name",
-        phone_number: "phone_number"
+        display_name: "string",
+        phone_number: "string"
       )
 
     assert_pattern do

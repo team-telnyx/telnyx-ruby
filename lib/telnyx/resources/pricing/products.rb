@@ -11,9 +11,11 @@ module Telnyx
         # cached_input_rate) with tiered pricing. Some products use rate decks
         # (pricing_type: rate_deck) where rates are determined dynamically.
         #
-        # @overload retrieve(slug, page_number: nil, page_size: nil, request_options: {})
+        # @overload retrieve(slug, filter_country_iso: nil, page_number: nil, page_size: nil, request_options: {})
         #
         # @param slug [String] Product slug from the catalog listing.
+        #
+        # @param filter_country_iso [String, nil]
         #
         # @param page_number [Integer] Page number (1-based).
         #
@@ -30,7 +32,11 @@ module Telnyx
           @client.request(
             method: :get,
             path: ["pricing/products/%1$s", slug],
-            query: query,
+            query: query.transform_keys(
+              filter_country_iso: "filter[country_iso]",
+              page_number: "page[number]",
+              page_size: "page[size]"
+            ),
             model: Telnyx::Models::Pricing::ProductRetrieveResponse,
             options: options
           )
@@ -48,7 +54,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders<Telnyx::Models::Pricing::ProductListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Pricing::ProductListResponse>]
         #
         # @see Telnyx::Models::Pricing::ProductListParams
         def list(params = {})
@@ -57,8 +63,8 @@ module Telnyx
           @client.request(
             method: :get,
             path: "pricing/products",
-            query: query,
-            page: Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders,
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::Pricing::ProductListResponse,
             options: options
           )

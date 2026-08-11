@@ -10,7 +10,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::MessagingProfiles::Actions) }
       attr_reader :actions
 
-      # Create a messaging profile
+      # Creates a messaging profile that controls outbound sender selection, webhook
+      # delivery, and inbound message handling for associated numbers and short codes.
       sig do
         params(
           name: String,
@@ -95,7 +96,8 @@ module Telnyx
       )
       end
 
-      # Retrieve a messaging profile
+      # Returns the complete configuration of the specified messaging profile, including
+      # webhook and sender-selection settings.
       sig do
         params(
           messaging_profile_id: String,
@@ -109,7 +111,8 @@ module Telnyx
       )
       end
 
-      # Update a messaging profile
+      # Updates the supplied settings on the specified messaging profile. Settings
+      # omitted from the request remain unchanged.
       sig do
         params(
           messaging_profile_id: String,
@@ -196,7 +199,8 @@ module Telnyx
       )
       end
 
-      # List messaging profiles
+      # Returns messaging profiles owned by the authenticated account. Apply the
+      # documented filters and pagination parameters to narrow the result set.
       sig do
         params(
           filter: Telnyx::MessagingProfileListParams::Filter::OrHash,
@@ -222,7 +226,8 @@ module Telnyx
       )
       end
 
-      # Delete a messaging profile
+      # Deletes the specified messaging profile and returns the profile's final
+      # configuration.
       sig do
         params(
           messaging_profile_id: String,
@@ -258,7 +263,8 @@ module Telnyx
       )
       end
 
-      # List phone numbers associated with a messaging profile
+      # Returns the phone numbers currently associated with the specified messaging
+      # profile.
       sig do
         params(
           messaging_profile_id: String,
@@ -280,7 +286,8 @@ module Telnyx
       )
       end
 
-      # List short codes associated with a messaging profile
+      # Returns the short codes currently associated with the specified messaging
+      # profile.
       sig do
         params(
           messaging_profile_id: String,

@@ -1,0 +1,46 @@
+module Telnyx
+  module Models
+    module Rcs
+      module Agents
+        type test_device_response =
+          {
+            invite_status: Telnyx::Models::Rcs::Agents::TestDeviceResponse::invite_status,
+            phone_number: String,
+            test_device_id: String
+          }
+
+        class TestDeviceResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor invite_status: Telnyx::Models::Rcs::Agents::TestDeviceResponse::invite_status
+
+          attr_accessor phone_number: String
+
+          attr_accessor test_device_id: String
+
+          def initialize: (
+            invite_status: Telnyx::Models::Rcs::Agents::TestDeviceResponse::invite_status,
+            phone_number: String,
+            test_device_id: String
+          ) -> void
+
+          def to_hash: -> {
+            invite_status: Telnyx::Models::Rcs::Agents::TestDeviceResponse::invite_status,
+            phone_number: String,
+            test_device_id: String
+          }
+
+          type invite_status = :PENDING | :ACCEPTED | :DECLINED
+
+          module InviteStatus
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :PENDING
+            ACCEPTED: :ACCEPTED
+            DECLINED: :DECLINED
+
+            def self?.values: -> ::Array[Telnyx::Models::Rcs::Agents::TestDeviceResponse::invite_status]
+          end
+        end
+      end
+    end
+  end
+end

@@ -83,7 +83,7 @@ module Telnyx
         )
       end
 
-      # View a fax
+      # Retrieve the details of a single fax.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -106,7 +106,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::FaxListParams} for more details.
       #
-      # View a list of faxes
+      # Retrieve a paginated list of faxes sent or received on your account.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -134,7 +134,7 @@ module Telnyx
         )
       end
 
-      # Delete a fax
+      # Delete a fax resource from your account.
       #
       # @overload delete(id, request_options: {})
       #

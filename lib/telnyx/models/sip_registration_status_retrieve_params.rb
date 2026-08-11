@@ -9,7 +9,8 @@ module Telnyx
 
       # @!attribute credential_type
       #   The kind of credential to look up. `uac_external_credential` is keyed by
-      #   `connection_id`; `telephony_credential` is keyed by `username`.
+      #   `connection_id`; `telephony_credential` and `sip_credential_connection` are
+      #   keyed by `username`.
       #
       #   @return [Symbol, Telnyx::Models::SipRegistrationStatusRetrieveParams::CredentialType]
       required :credential_type, enum: -> { Telnyx::SipRegistrationStatusRetrieveParams::CredentialType }
@@ -22,8 +23,8 @@ module Telnyx
       optional :connection_id, String
 
       # @!attribute username
-      #   SIP username of the telephony credential to look up. Required when
-      #   `credential_type` is `telephony_credential`.
+      #   SIP username to look up. Required when `credential_type` is
+      #   `telephony_credential` or `sip_credential_connection`.
       #
       #   @return [String, nil]
       optional :username, String
@@ -36,17 +37,19 @@ module Telnyx
       #
       #   @param connection_id [String] Identifier of the UAC connection to look up. Required when `credential_type` is
       #
-      #   @param username [String] SIP username of the telephony credential to look up. Required when `credential_t
+      #   @param username [String] SIP username to look up. Required when `credential_type` is `telephony_credentia
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
       # The kind of credential to look up. `uac_external_credential` is keyed by
-      # `connection_id`; `telephony_credential` is keyed by `username`.
+      # `connection_id`; `telephony_credential` and `sip_credential_connection` are
+      # keyed by `username`.
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
         UAC_EXTERNAL_CREDENTIAL = :uac_external_credential
         TELEPHONY_CREDENTIAL = :telephony_credential
+        SIP_CREDENTIAL_CONNECTION = :sip_credential_connection
 
         # @!method self.values
         #   @return [Array<Symbol>]

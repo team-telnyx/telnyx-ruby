@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Rcs
+      type ein_brand_identifier = { identifier_type: :EIN, value: String }
+
+      class EinBrandIdentifier < Telnyx::Internal::Type::BaseModel
+        attr_accessor identifier_type: :EIN
+
+        attr_accessor value: String
+
+        def initialize: (value: String, ?identifier_type: :EIN) -> void
+
+        def to_hash: -> { identifier_type: :EIN, value: String }
+      end
+    end
+  end
+end

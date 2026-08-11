@@ -6,7 +6,7 @@ module Telnyx
       class Assistants
         # Configure AI assistant specifications
         class Tools
-          # Add Assistant Tool
+          # Attach an existing tool to an AI assistant.
           #
           # @overload add(tool_id, assistant_id:, request_options: {})
           #
@@ -33,7 +33,7 @@ module Telnyx
             )
           end
 
-          # Remove Assistant Tool
+          # Detach a tool from an AI assistant.
           #
           # @overload remove(tool_id, assistant_id:, request_options: {})
           #

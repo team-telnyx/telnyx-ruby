@@ -23,6 +23,9 @@ module Telnyx
       module Addresses
       end
 
+      module Agents
+      end
+
       module AI
         module Anthropic
         end
@@ -32,6 +35,9 @@ module Telnyx
             module TestSuites
             end
           end
+        end
+
+        module Collections
         end
 
         module Conversations
@@ -97,6 +103,9 @@ module Telnyx
       module Cloudfs
       end
 
+      module Collections
+      end
+
       module Conferences
       end
 
@@ -149,6 +158,9 @@ module Telnyx
       end
 
       module FineTuning
+      end
+
+      module FqdnConnections
       end
 
       module InsightGroups
@@ -261,6 +273,8 @@ module Telnyx
       end
 
       module Rcs
+        module Agents
+        end
       end
 
       module Recordings

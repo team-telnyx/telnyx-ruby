@@ -8,7 +8,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::EmailUnsubscribeGroups::Suppressions) }
       attr_reader :suppressions
 
-      # Create an unsubscribe group
+      # Creates an account-owned unsubscribe group for associating email categories with
+      # separate recipient suppression lists.
       sig do
         params(
           name: String,
@@ -19,7 +20,7 @@ module Telnyx
       def create(name:, description: nil, request_options: {})
       end
 
-      # Retrieve an unsubscribe group
+      # Returns the account-owned unsubscribe group identified by ID.
       sig do
         params(
           id: String,

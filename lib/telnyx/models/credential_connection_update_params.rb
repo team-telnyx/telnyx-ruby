@@ -44,6 +44,14 @@ module Telnyx
       #   @return [String, nil]
       optional :connection_name, String
 
+      # @!attribute conversation_persistence
+      #   Whether conversation persistence is enabled for this connection. When enabled,
+      #   calls handled by the connection are transcribed, stored, and indexed. Defaults
+      #   to false.
+      #
+      #   @return [Boolean, nil]
+      optional :conversation_persistence, Telnyx::Internal::Type::Boolean
+
       # @!attribute default_on_hold_comfort_noise_enabled
       #   When enabled, Telnyx will generate comfort noise when you place the call on
       #   hold. If disabled, you will need to generate comfort noise or on hold music to
@@ -187,7 +195,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(id:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @!method initialize(id:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, conversation_persistence: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CredentialConnectionUpdateParams} for more details.
       #
@@ -202,6 +210,8 @@ module Telnyx
       #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
       #   @param connection_name [String] A user-assigned name to help manage the connection.
+      #
+      #   @param conversation_persistence [Boolean] Whether conversation persistence is enabled for this connection. When enabled, c
       #
       #   @param default_on_hold_comfort_noise_enabled [Boolean] When enabled, Telnyx will generate comfort noise when you place the call on hold
       #

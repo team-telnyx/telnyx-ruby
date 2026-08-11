@@ -220,7 +220,7 @@ module Telnyx
 
     attr_reader queues: Telnyx::Resources::Queues
 
-    attr_reader rcs_agents: Telnyx::Resources::RcsAgents
+    attr_reader rcs: Telnyx::Resources::Rcs
 
     attr_reader recording_transcriptions: Telnyx::Resources::RecordingTranscriptions
 

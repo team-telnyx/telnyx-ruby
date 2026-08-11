@@ -6,7 +6,8 @@ module Telnyx
       class PhoneNumbers
         # Manage Whatsapp phone numbers
         class ConversationalComponents
-          # Get phone number conversational components
+          # Returns the conversational components configured for the specified WhatsApp
+          # phone number.
           #
           # @overload list(phone_number, request_options: {})
           #
@@ -26,7 +27,8 @@ module Telnyx
             )
           end
 
-          # Update phone number conversational components
+          # Updates the conversational components configured for the specified WhatsApp
+          # phone number.
           #
           # @overload patch_all(phone_number, commands: nil, ice_breakers: nil, request_options: {})
           #

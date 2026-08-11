@@ -1,0 +1,9 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_list_response = ::Array[Telnyx::Rcs::AgentResponse]
+
+      AgentListResponse: Telnyx::Internal::Type::Converter
+    end
+  end
+end

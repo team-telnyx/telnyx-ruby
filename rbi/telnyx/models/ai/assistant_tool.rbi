@@ -23,7 +23,8 @@ module Telnyx
               Telnyx::AI::AssistantTool::SendDtmf,
               Telnyx::AI::AssistantTool::SendMessage,
               Telnyx::AI::AssistantTool::SkipTurn,
-              Telnyx::AI::AssistantTool::Pay
+              Telnyx::AI::AssistantTool::Pay,
+              Telnyx::AI::AssistantTool::UpdateDynamicVariables
             )
           end
 
@@ -2323,6 +2324,62 @@ module Telnyx
 
           sig do
             override.returns({ pay: Telnyx::AI::PayToolParams, type: Symbol })
+          end
+          def to_hash
+          end
+        end
+
+        class UpdateDynamicVariables < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantTool::UpdateDynamicVariables,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # Configuration for an update_dynamic_variables tool.
+          sig { returns(Telnyx::AI::UpdateDynamicVariablesToolParams) }
+          attr_reader :update_dynamic_variables
+
+          sig do
+            params(
+              update_dynamic_variables:
+                Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash
+            ).void
+          end
+          attr_writer :update_dynamic_variables
+
+          # The update_dynamic_variables tool lets the assistant write values into the
+          # conversation's dynamic-variables context during the call. Updated variables are
+          # available to later `{{variable}}` interpolation (prompts, speak nodes, message
+          # templates) and to flow edge conditions. Declare each variable the assistant is
+          # allowed to set under `updatable_variables`.
+          sig do
+            params(
+              update_dynamic_variables:
+                Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Configuration for an update_dynamic_variables tool.
+            update_dynamic_variables:,
+            type: :update_dynamic_variables
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                type: Symbol,
+                update_dynamic_variables:
+                  Telnyx::AI::UpdateDynamicVariablesToolParams
+              }
+            )
           end
           def to_hash
           end

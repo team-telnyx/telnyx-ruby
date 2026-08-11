@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Rooms Participants operations.
     class RoomParticipants
-      # View a room participant.
+      # Returns the participant identified by `room_participant_id`, including its
+      # session, context, and join, update, and leave timestamps.
       #
       # @overload retrieve(room_participant_id, request_options: {})
       #
@@ -27,7 +28,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomParticipantListParams} for more details.
       #
-      # View a list of room participants.
+      # Returns a paginated list of room participants across sessions. Filter
+      # participants by session, join, update, or leave date and by participant context.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

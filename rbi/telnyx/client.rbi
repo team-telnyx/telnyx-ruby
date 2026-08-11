@@ -270,7 +270,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::Media) }
     attr_reader :media
 
-    # Messages
     sig { returns(Telnyx::Resources::Messages) }
     attr_reader :messages
 
@@ -416,8 +415,8 @@ module Telnyx
     sig { returns(Telnyx::Resources::Queues) }
     attr_reader :queues
 
-    sig { returns(Telnyx::Resources::RcsAgents) }
-    attr_reader :rcs_agents
+    sig { returns(Telnyx::Resources::Rcs) }
+    attr_reader :rcs
 
     # Call Recordings operations.
     sig { returns(Telnyx::Resources::RecordingTranscriptions) }

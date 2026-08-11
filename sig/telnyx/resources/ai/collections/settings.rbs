@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class AI
+      class Collections
+        class Settings
+          def create: (
+            String uuid,
+            ?retrieval: Telnyx::AI::Collections::RetrievalSettings,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Collections::SettingsEnvelope
+
+          def list: (
+            String uuid,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Collections::SettingsEnvelope
+
+          def patch_all: (
+            String uuid,
+            ?retrieval: Telnyx::AI::Collections::RetrievalSettings,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AI::Collections::SettingsEnvelope
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

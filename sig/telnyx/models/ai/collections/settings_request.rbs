@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type settings_request =
+          { retrieval: Telnyx::AI::Collections::RetrievalSettings }
+
+        class SettingsRequest < Telnyx::Internal::Type::BaseModel
+          attr_reader retrieval: Telnyx::AI::Collections::RetrievalSettings?
+
+          def retrieval=: (
+            Telnyx::AI::Collections::RetrievalSettings
+          ) -> Telnyx::AI::Collections::RetrievalSettings
+
+          def initialize: (
+            ?retrieval: Telnyx::AI::Collections::RetrievalSettings
+          ) -> void
+
+          def to_hash: -> {
+            retrieval: Telnyx::AI::Collections::RetrievalSettings
+          }
+        end
+      end
+    end
+  end
+end

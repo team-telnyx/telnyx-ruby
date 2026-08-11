@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPUsage
-      # Global IP Usage Metrics
+      # Retrieve usage metrics for your Global IPs.
       sig do
         params(
           filter: Telnyx::GlobalIPUsageRetrieveParams::Filter::OrHash,

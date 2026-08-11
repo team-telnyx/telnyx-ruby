@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module FqdnConnections
+      type fqdn_authentication_list_response =
+        { data: Telnyx::FqdnConnections::FqdnConnectionsFqdnAuthentication }
+
+      class FqdnAuthenticationListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::FqdnConnections::FqdnConnectionsFqdnAuthentication?
+
+        def data=: (
+          Telnyx::FqdnConnections::FqdnConnectionsFqdnAuthentication
+        ) -> Telnyx::FqdnConnections::FqdnConnectionsFqdnAuthentication
+
+        def initialize: (
+          ?data: Telnyx::FqdnConnections::FqdnConnectionsFqdnAuthentication
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::FqdnConnections::FqdnConnectionsFqdnAuthentication
+        }
+      end
+    end
+  end
+end

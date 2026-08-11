@@ -69,6 +69,18 @@ module Telnyx
         sig { params(type: String).void }
         attr_writer :type
 
+        # Configuration for an update_dynamic_variables tool.
+        sig { returns(T.nilable(Telnyx::AI::UpdateDynamicVariablesToolParams)) }
+        attr_reader :update_dynamic_variables
+
+        sig do
+          params(
+            update_dynamic_variables:
+              Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash
+          ).void
+        end
+        attr_writer :update_dynamic_variables
+
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :webhook
 
@@ -87,6 +99,8 @@ module Telnyx
             retrieval: T::Hash[Symbol, T.anything],
             timeout_ms: Integer,
             type: String,
+            update_dynamic_variables:
+              Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -102,6 +116,8 @@ module Telnyx
           retrieval: nil,
           timeout_ms: nil,
           type: nil,
+          # Configuration for an update_dynamic_variables tool.
+          update_dynamic_variables: nil,
           webhook: nil,
           request_options: {}
         )
@@ -120,6 +136,8 @@ module Telnyx
               retrieval: T::Hash[Symbol, T.anything],
               timeout_ms: Integer,
               type: String,
+              update_dynamic_variables:
+                Telnyx::AI::UpdateDynamicVariablesToolParams,
               webhook: T::Hash[Symbol, T.anything],
               request_options: Telnyx::RequestOptions
             }

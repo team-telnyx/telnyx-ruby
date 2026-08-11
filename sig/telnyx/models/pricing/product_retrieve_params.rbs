@@ -2,7 +2,12 @@ module Telnyx
   module Models
     module Pricing
       type product_retrieve_params =
-        { slug: String, page_number: Integer, page_size: Integer }
+        {
+          slug: String,
+          filter_country_iso: String?,
+          page_number: Integer,
+          page_size: Integer
+        }
         & Telnyx::Internal::Type::request_parameters
 
       class ProductRetrieveParams < Telnyx::Internal::Type::BaseModel
@@ -10,6 +15,8 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor slug: String
+
+        attr_accessor filter_country_iso: String?
 
         attr_reader page_number: Integer?
 
@@ -21,6 +28,7 @@ module Telnyx
 
         def initialize: (
           slug: String,
+          ?filter_country_iso: String?,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
@@ -28,6 +36,7 @@ module Telnyx
 
         def to_hash: -> {
           slug: String,
+          filter_country_iso: String?,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions

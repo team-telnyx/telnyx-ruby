@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_phone_contact = { label: String, number: String }
+
+      class AgentPhoneContact < Telnyx::Internal::Type::BaseModel
+        attr_accessor label: String
+
+        attr_accessor number: String
+
+        def initialize: (label: String, number: String) -> void
+
+        def to_hash: -> { label: String, number: String }
+      end
+    end
+  end
+end

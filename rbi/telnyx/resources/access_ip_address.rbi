@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # IP Address Operations
     class AccessIPAddress
-      # Create new Access IP Address
+      # Create a new access IP address entry on your account.
       sig do
         params(
           ip_address: String,
@@ -15,7 +15,7 @@ module Telnyx
       def create(ip_address:, description: nil, request_options: {})
       end
 
-      # Retrieve an access IP address
+      # Retrieve the details of a specific access IP address.
       sig do
         params(
           access_ip_address_id: String,
@@ -29,7 +29,7 @@ module Telnyx
       )
       end
 
-      # List all Access IP Addresses
+      # Retrieve a paginated list of access IP addresses configured on your account.
       sig do
         params(
           filter: Telnyx::AccessIPAddressListParams::Filter::OrHash,
@@ -53,7 +53,7 @@ module Telnyx
       )
       end
 
-      # Delete access IP address
+      # Delete an access IP address entry from your account.
       sig do
         params(
           access_ip_address_id: String,

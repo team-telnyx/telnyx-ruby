@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # Mobile voice connection operations
     class MobileVoiceConnections
-      # Create a Mobile Voice Connection
+      # Create a new mobile voice connection.
       sig do
         params(
           active: T::Boolean,
@@ -34,7 +34,7 @@ module Telnyx
       )
       end
 
-      # Retrieve a Mobile Voice Connection
+      # Retrieve the details of a specific mobile voice connection.
       sig do
         params(
           id: String,
@@ -48,7 +48,7 @@ module Telnyx
       )
       end
 
-      # Update a Mobile Voice Connection
+      # Update the settings of a specific mobile voice connection.
       sig do
         params(
           id: String,
@@ -81,7 +81,7 @@ module Telnyx
       )
       end
 
-      # List Mobile Voice Connections
+      # Retrieve a paginated list of mobile voice connections on your account.
       sig do
         params(
           filter_connection_name_contains: String,
@@ -107,7 +107,7 @@ module Telnyx
       )
       end
 
-      # Delete a Mobile Voice Connection
+      # Delete a mobile voice connection from your account.
       sig do
         params(
           id: String,

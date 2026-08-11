@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Short codes
     class ShortCodes
-      # Retrieve a short code
+      # Returns the messaging configuration and assignment details for the specified
+      # short code.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -55,7 +56,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::ShortCodeListParams} for more details.
       #
-      # List short codes
+      # Returns short codes owned by the authenticated account. Apply the documented
+      # filters and pagination parameters to narrow the result set.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

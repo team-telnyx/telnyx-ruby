@@ -7,7 +7,9 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RegulatoryRequirementRetrieveParams} for more details.
       #
-      # Retrieve regulatory requirements
+      # Returns regulatory requirements for number ordering, porting, or other supported
+      # actions. Results can be filtered by phone number, requirement group, country,
+      # number type, and action.
       #
       # @overload retrieve(filter: nil, request_options: {})
       #

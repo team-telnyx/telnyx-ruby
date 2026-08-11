@@ -2,7 +2,6 @@
 
 module Telnyx
   module Resources
-    # Messages
     class Messages
       # Send RCS messages
       # @return [Telnyx::Resources::Messages::Rcs]
@@ -181,7 +180,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendGroupMmsParams} for more details.
       #
-      # Send a group MMS message
+      # Queues an MMS addressed to multiple recipients as a group conversation. Delivery
+      # events are reported asynchronously through messaging webhooks.
       #
       # @overload send_group_mms(from:, to:, media_urls: nil, subject: nil, text: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -220,7 +220,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendLongCodeParams} for more details.
       #
-      # Send a long code message
+      # Queues an outbound SMS or MMS using a long-code sender. Delivery progress and
+      # final disposition are reported asynchronously through messaging webhooks.
       #
       # @overload send_long_code(from:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -265,7 +266,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendNumberPoolParams} for more details.
       #
-      # Send a message using number pool
+      # Queues an outbound message using a number pool. Telnyx selects an eligible
+      # sender from the pool according to its messaging profile configuration.
       #
       # @overload send_number_pool(messaging_profile_id:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -310,7 +312,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessageSendShortCodeParams} for more details.
       #
-      # Send a short code message
+      # Queues an outbound SMS or MMS using a short-code sender. Delivery progress and
+      # final disposition are reported asynchronously through messaging webhooks.
       #
       # @overload send_short_code(from:, to:, auto_detect: nil, encoding: nil, media_urls: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
@@ -382,6 +385,41 @@ module Telnyx
           path: "messages/alphanumeric_sender_id",
           body: parsed,
           model: Telnyx::Models::MessageSendWithAlphanumericSenderResponse,
+          options: options
+        )
+      end
+
+      # Sends a WhatsApp message using a Telnyx WhatsApp-enabled number. The message
+      # body, interactive elements, media, location, and reaction content are specified
+      # in the `whatsapp_message` field. Delivery progress and final disposition are
+      # reported asynchronously through messaging webhooks.
+      #
+      # @overload whatsapp(from:, to:, whatsapp_message:, messaging_profile_id: nil, type: nil, webhook_url: nil, request_options: {})
+      #
+      # @param from [String] Phone number in +E.164 format associated with Whatsapp account
+      #
+      # @param to [String] Phone number in +E.164 format
+      #
+      # @param whatsapp_message [Telnyx::Models::WhatsappMessageContent]
+      #
+      # @param messaging_profile_id [String] Messaging profile ID - required if the 'from' number is not SMS-enabled
+      #
+      # @param type [Symbol, Telnyx::Models::MessageWhatsappParams::Type] Message type - must be set to "WHATSAPP"
+      #
+      # @param webhook_url [String] The URL where webhooks related to this message will be sent.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::MessageWhatsappResponse]
+      #
+      # @see Telnyx::Models::MessageWhatsappParams
+      def whatsapp(params)
+        parsed, options = Telnyx::MessageWhatsappParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "messages/whatsapp",
+          body: parsed,
+          model: Telnyx::Models::MessageWhatsappResponse,
           options: options
         )
       end

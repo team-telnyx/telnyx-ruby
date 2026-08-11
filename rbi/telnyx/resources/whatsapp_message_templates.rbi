@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Manage Whatsapp message templates
     class WhatsappMessageTemplates
-      # Get a Whatsapp message template by ID
+      # Returns the content, components, language, and current review state of the
+      # specified WhatsApp message template.
       sig do
         params(
           id: String,
@@ -18,7 +19,7 @@ module Telnyx
       )
       end
 
-      # Update a Whatsapp message template
+      # Updates the editable fields of the specified WhatsApp message template.
       sig do
         params(
           id: String,
@@ -47,7 +48,7 @@ module Telnyx
       )
       end
 
-      # Delete a Whatsapp message template
+      # Deletes the specified WhatsApp message template.
       sig do
         params(id: String, request_options: Telnyx::RequestOptions::OrHash).void
       end

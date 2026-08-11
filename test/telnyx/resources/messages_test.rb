@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
         cost_breakdown: Telnyx::Models::MessageCancelScheduledResponse::CostBreakdown | nil,
         direction: Telnyx::Models::MessageCancelScheduledResponse::Direction | nil,
         encoding: String | nil,
-        errors: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingError]) | nil,
+        errors: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingError0b38e7044b]) | nil,
         from: Telnyx::Models::MessageCancelScheduledResponse::From | nil,
         media: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MessageCancelScheduledResponse::Media]) | nil,
         messaging_profile_id: String | nil,
@@ -74,7 +74,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OutboundMessagePayload]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingOutboundMessagePayload]) | nil
       }
     end
   end
@@ -90,7 +90,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::OutboundMessagePayload | nil
+        data: Telnyx::MessagingOutboundMessagePayload | nil
       }
     end
   end
@@ -106,7 +106,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::OutboundMessagePayload | nil
+        data: Telnyx::MessagingOutboundMessagePayload | nil
       }
     end
   end
@@ -122,7 +122,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::OutboundMessagePayload | nil
+        data: Telnyx::MessagingOutboundMessagePayload | nil
       }
     end
   end
@@ -138,7 +138,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::OutboundMessagePayload | nil
+        data: Telnyx::MessagingOutboundMessagePayload | nil
       }
     end
   end
@@ -158,7 +158,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::OutboundMessagePayload | nil
+        data: Telnyx::MessagingOutboundMessagePayload | nil
       }
     end
   end
@@ -174,7 +174,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::OutboundMessagePayload | nil
+        data: Telnyx::MessagingOutboundMessagePayload | nil
       }
     end
   end
@@ -197,6 +197,22 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: Telnyx::OutboundMessagePayload | nil
+      }
+    end
+  end
+
+  def test_whatsapp_required_params
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.messages.whatsapp(from: "+13125551234", to: "+13125551234", whatsapp_message: {})
+
+    assert_pattern do
+      response => Telnyx::Models::MessageWhatsappResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::MessageWhatsappResponse::Data | nil
       }
     end
   end

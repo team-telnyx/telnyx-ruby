@@ -29,7 +29,9 @@ module Telnyx
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Rooms::Sessions::ActionKickParams} for more details.
           #
-          # Kick participants from a room session.
+          # Removes the selected participants from the specified room session. Apply the
+          # action to a list of participant IDs or to `all`, with optional participant IDs
+          # excluded from the action.
           #
           # @overload kick(room_session_id, exclude: nil, participants: nil, request_options: {})
           #
@@ -58,7 +60,9 @@ module Telnyx
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Rooms::Sessions::ActionMuteParams} for more details.
           #
-          # Mute participants in room session.
+          # Mutes the selected participants in the specified room session. Apply the action
+          # to a list of participant IDs or to `all`, with optional participant IDs excluded
+          # from the action.
           #
           # @overload mute(room_session_id, exclude: nil, participants: nil, request_options: {})
           #
@@ -87,7 +91,9 @@ module Telnyx
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Rooms::Sessions::ActionUnmuteParams} for more details.
           #
-          # Unmute participants in room session.
+          # Unmutes the selected participants in the specified room session. Apply the
+          # action to a list of participant IDs or to `all`, with optional participant IDs
+          # excluded from the action.
           #
           # @overload unmute(room_session_id, exclude: nil, participants: nil, request_options: {})
           #

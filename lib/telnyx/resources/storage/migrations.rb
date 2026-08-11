@@ -41,7 +41,7 @@ module Telnyx
           )
         end
 
-        # Get a Migration
+        # Retrieve the details and status of a specific storage migration.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -61,7 +61,7 @@ module Telnyx
           )
         end
 
-        # List all Migrations
+        # Retrieve a list of the storage migrations on your account.
         #
         # @overload list(request_options: {})
         #

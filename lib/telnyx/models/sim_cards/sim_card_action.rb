@@ -3,7 +3,6 @@
 module Telnyx
   module Models
     module SimCards
-      # @see Telnyx::Resources::SimCards::Actions#list
       class SimCardAction < Telnyx::Internal::Type::BaseModel
         # @!attribute status
         #

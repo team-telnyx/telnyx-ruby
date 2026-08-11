@@ -96,7 +96,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::UserAddress>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::UserAddressesUserAddress>]
       #
       # @see Telnyx::Models::UserAddressListParams
       def list(params = {})
@@ -107,7 +107,7 @@ module Telnyx
           path: "user_addresses",
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::UserAddress,
+          model: Telnyx::UserAddressesUserAddress,
           options: options
         )
       end

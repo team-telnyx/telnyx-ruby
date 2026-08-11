@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::AI::McpServersTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.mcp_servers.create(name: "name", type: "type", url: "url")
+    response = @telnyx.ai.mcp_servers.create(name: "Name", type: "Type", url: "Url")
 
     assert_pattern do
       response => Telnyx::AI::McpServer

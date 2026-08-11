@@ -6,12 +6,12 @@ module Telnyx
       class Rcs
         # Send RCS messages
         class Agents
-          # Retrieve an RCS agent
+          # Returns the configuration and current state of the specified RCS agent.
           sig do
             params(
               id: String,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::RcsAgentResponse)
+            ).returns(Telnyx::Rcs::RcsAgentResponse)
           end
           def retrieve(
             # RCS agent ID
@@ -20,7 +20,7 @@ module Telnyx
           )
           end
 
-          # Modify an RCS agent
+          # Updates the supplied configuration fields on the specified RCS agent.
           sig do
             params(
               id: String,
@@ -28,7 +28,7 @@ module Telnyx
               webhook_failover_url: T.nilable(String),
               webhook_url: T.nilable(String),
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::RcsAgentResponse)
+            ).returns(Telnyx::Rcs::RcsAgentResponse)
           end
           def update(
             # RCS agent ID
@@ -43,13 +43,15 @@ module Telnyx
           )
           end
 
-          # List all RCS agents
+          # Returns RCS agents available to the authenticated account.
           sig do
             params(
               page_number: Integer,
               page_size: Integer,
               request_options: Telnyx::RequestOptions::OrHash
-            ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::RcsAgent])
+            ).returns(
+              Telnyx::Internal::DefaultFlatPagination[Telnyx::Rcs::RcsAgent]
+            )
           end
           def list(page_number: nil, page_size: nil, request_options: {})
           end

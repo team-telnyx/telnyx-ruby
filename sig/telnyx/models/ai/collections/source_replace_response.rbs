@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type source_replace_response =
+          {
+            data: ::Array[Telnyx::AI::Collections::Source],
+            meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
+          }
+
+        class SourceReplaceResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::AI::Collections::Source]?
+
+          def data=: (
+            ::Array[Telnyx::AI::Collections::Source]
+          ) -> ::Array[Telnyx::AI::Collections::Source]
+
+          attr_reader meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta?
+
+          def meta=: (
+            Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
+          ) -> Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
+
+          def initialize: (
+            ?data: ::Array[Telnyx::AI::Collections::Source],
+            ?meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::AI::Collections::Source],
+            meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
+          }
+
+          type meta =
+            {
+              added: ::Array[String],
+              removed: ::Array[String],
+              retained: ::Array[String]
+            }
+
+          class Meta < Telnyx::Internal::Type::BaseModel
+            attr_reader added: ::Array[String]?
+
+            def added=: (::Array[String]) -> ::Array[String]
+
+            attr_reader removed: ::Array[String]?
+
+            def removed=: (::Array[String]) -> ::Array[String]
+
+            attr_reader retained: ::Array[String]?
+
+            def retained=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (
+              ?added: ::Array[String],
+              ?removed: ::Array[String],
+              ?retained: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              added: ::Array[String],
+              removed: ::Array[String],
+              retained: ::Array[String]
+            }
+          end
+        end
+      end
+    end
+  end
+end

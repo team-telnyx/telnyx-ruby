@@ -29,7 +29,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
       )
 
     assert_pattern do
-      response => Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+      response => Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress
     end
 
     assert_pattern do
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_registration_type: String | nil,
         campaign_verify_authorization_token: String | nil,
         doing_business_as: String | nil,
-        entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
+        entity_type: Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationEntityType | nil,
         help_message_response: String | nil,
         isv_reseller: String | nil,
         opt_in_confirmation_response: String | nil,
@@ -81,7 +81,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
       @telnyx.messaging_tollfree.verification.requests.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
+      response => Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveResponse
     end
 
     assert_pattern do
@@ -114,7 +114,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         campaign_verify_authorization_token: String | nil,
         created_at: Time | nil,
         doing_business_as: String | nil,
-        entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
+        entity_type: Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationEntityType | nil,
         help_message_response: String | nil,
         isv_reseller: String | nil,
         opt_in_confirmation_response: String | nil,
@@ -155,7 +155,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
       )
 
     assert_pattern do
-      response => Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+      response => Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress
     end
 
     assert_pattern do
@@ -187,7 +187,7 @@ class Telnyx::Test::Resources::MessagingTollfree::Verification::RequestsTest < T
         business_registration_type: String | nil,
         campaign_verify_authorization_token: String | nil,
         doing_business_as: String | nil,
-        entity_type: Telnyx::MessagingTollfree::Verification::TollFreeVerificationEntityType | nil,
+        entity_type: Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationEntityType | nil,
         help_message_response: String | nil,
         isv_reseller: String | nil,
         opt_in_confirmation_response: String | nil,

@@ -1,0 +1,91 @@
+module Telnyx
+  module Models
+    module AI
+      type collection =
+        {
+          created_at: Time,
+          description: String,
+          name: String,
+          record_type: String,
+          settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
+          slug: String,
+          sources: ::Array[Telnyx::AI::Collections::Source],
+          status: String,
+          updated_at: Time,
+          uuid: String
+        }
+
+      class Collection < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader settings: Telnyx::AI::Collections::RetrievalSettingsWrapper?
+
+        def settings=: (
+          Telnyx::AI::Collections::RetrievalSettingsWrapper
+        ) -> Telnyx::AI::Collections::RetrievalSettingsWrapper
+
+        attr_reader slug: String?
+
+        def slug=: (String) -> String
+
+        attr_reader sources: ::Array[Telnyx::AI::Collections::Source]?
+
+        def sources=: (
+          ::Array[Telnyx::AI::Collections::Source]
+        ) -> ::Array[Telnyx::AI::Collections::Source]
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader uuid: String?
+
+        def uuid=: (String) -> String
+
+        def initialize: (
+          ?created_at: Time,
+          ?description: String,
+          ?name: String,
+          ?record_type: String,
+          ?settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
+          ?slug: String,
+          ?sources: ::Array[Telnyx::AI::Collections::Source],
+          ?status: String,
+          ?updated_at: Time,
+          ?uuid: String
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Time,
+          description: String,
+          name: String,
+          record_type: String,
+          settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
+          slug: String,
+          sources: ::Array[Telnyx::AI::Collections::Source],
+          status: String,
+          updated_at: Time,
+          uuid: String
+        }
+      end
+    end
+  end
+end

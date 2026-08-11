@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type source_create_response = { data: Telnyx::AI::Collections::Source }
+
+        class SourceCreateResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::AI::Collections::Source?
+
+          def data=: (
+            Telnyx::AI::Collections::Source
+          ) -> Telnyx::AI::Collections::Source
+
+          def initialize: (?data: Telnyx::AI::Collections::Source) -> void
+
+          def to_hash: -> { data: Telnyx::AI::Collections::Source }
+        end
+      end
+    end
+  end
+end

@@ -8,7 +8,8 @@ module Telnyx
       # @return [Telnyx::Resources::EmailUnsubscribeGroups::Suppressions]
       attr_reader :suppressions
 
-      # Create an unsubscribe group
+      # Creates an account-owned unsubscribe group for associating email categories with
+      # separate recipient suppression lists.
       #
       # @overload create(name:, description: nil, request_options: {})
       #
@@ -30,7 +31,7 @@ module Telnyx
         )
       end
 
-      # Retrieve an unsubscribe group
+      # Returns the account-owned unsubscribe group identified by ID.
       #
       # @overload retrieve(id, request_options: {})
       #
