@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class AI
+      class Collections
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

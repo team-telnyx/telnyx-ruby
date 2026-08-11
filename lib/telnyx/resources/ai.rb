@@ -17,6 +17,9 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Clusters]
       attr_reader :clusters
 
+      # @return [Telnyx::Resources::AI::Collections]
+      attr_reader :collections
+
       # Manage historical AI assistant conversations
       # @return [Telnyx::Resources::AI::Conversations]
       attr_reader :conversations
@@ -203,6 +206,7 @@ module Telnyx
         @audio = Telnyx::Resources::AI::Audio.new(client: client)
         @chat = Telnyx::Resources::AI::Chat.new(client: client)
         @clusters = Telnyx::Resources::AI::Clusters.new(client: client)
+        @collections = Telnyx::Resources::AI::Collections.new(client: client)
         @conversations = Telnyx::Resources::AI::Conversations.new(client: client)
         @embeddings = Telnyx::Resources::AI::Embeddings.new(client: client)
         @fine_tuning = Telnyx::Resources::AI::FineTuning.new(client: client)

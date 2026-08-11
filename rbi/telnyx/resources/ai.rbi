@@ -17,6 +17,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Clusters) }
       attr_reader :clusters
 
+      sig { returns(Telnyx::Resources::AI::Collections) }
+      attr_reader :collections
+
       # Manage historical AI assistant conversations
       sig { returns(Telnyx::Resources::AI::Conversations) }
       attr_reader :conversations
