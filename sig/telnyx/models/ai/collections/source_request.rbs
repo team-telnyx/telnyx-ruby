@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type source_request =
+          {
+            source_type: Telnyx::Models::AI::Collections::source_type,
+            bucket_id: String
+          }
+
+        class SourceRequest < Telnyx::Internal::Type::BaseModel
+          attr_accessor source_type: Telnyx::Models::AI::Collections::source_type
+
+          attr_reader bucket_id: String?
+
+          def bucket_id=: (String) -> String
+
+          def initialize: (
+            source_type: Telnyx::Models::AI::Collections::source_type,
+            ?bucket_id: String
+          ) -> void
+
+          def to_hash: -> {
+            source_type: Telnyx::Models::AI::Collections::source_type,
+            bucket_id: String
+          }
+        end
+      end
+    end
+  end
+end

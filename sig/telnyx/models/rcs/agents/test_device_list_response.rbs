@@ -1,0 +1,12 @@
+module Telnyx
+  module Models
+    module Rcs
+      module Agents
+        type test_device_list_response =
+          ::Array[Telnyx::Rcs::Agents::TestDeviceResponse]
+
+        TestDeviceListResponse: Telnyx::Internal::Type::Converter
+      end
+    end
+  end
+end

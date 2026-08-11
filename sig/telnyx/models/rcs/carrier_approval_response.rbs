@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    module Rcs
+      type carrier_approval_response =
+        {
+          approval_id: String,
+          approved_at: Time?,
+          carrier: String?,
+          rejected_reason: String?,
+          scope_type: Telnyx::Models::Rcs::CarrierApprovalResponse::scope_type,
+          status: Telnyx::Models::Rcs::CarrierApprovalResponse::status,
+          submitted_at: Time?
+        }
+
+      class CarrierApprovalResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor approval_id: String
+
+        attr_accessor approved_at: Time?
+
+        attr_accessor carrier: String?
+
+        attr_accessor rejected_reason: String?
+
+        attr_accessor scope_type: Telnyx::Models::Rcs::CarrierApprovalResponse::scope_type
+
+        attr_accessor status: Telnyx::Models::Rcs::CarrierApprovalResponse::status
+
+        attr_accessor submitted_at: Time?
+
+        def initialize: (
+          approval_id: String,
+          approved_at: Time?,
+          carrier: String?,
+          rejected_reason: String?,
+          scope_type: Telnyx::Models::Rcs::CarrierApprovalResponse::scope_type,
+          status: Telnyx::Models::Rcs::CarrierApprovalResponse::status,
+          submitted_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          approval_id: String,
+          approved_at: Time?,
+          carrier: String?,
+          rejected_reason: String?,
+          scope_type: Telnyx::Models::Rcs::CarrierApprovalResponse::scope_type,
+          status: Telnyx::Models::Rcs::CarrierApprovalResponse::status,
+          submitted_at: Time?
+        }
+
+        type scope_type = :carrier | :hub | :bot
+
+        module ScopeType
+          extend Telnyx::Internal::Type::Enum
+
+          CARRIER: :carrier
+          HUB: :hub
+          BOT: :bot
+
+          def self?.values: -> ::Array[Telnyx::Models::Rcs::CarrierApprovalResponse::scope_type]
+        end
+
+        type status = :PENDING | :SUBMITTED | :APPROVED | :REJECTED
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :PENDING
+          SUBMITTED: :SUBMITTED
+          APPROVED: :APPROVED
+          REJECTED: :REJECTED
+
+          def self?.values: -> ::Array[Telnyx::Models::Rcs::CarrierApprovalResponse::status]
+        end
+      end
+    end
+  end
+end

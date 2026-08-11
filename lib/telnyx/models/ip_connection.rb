@@ -41,6 +41,14 @@ module Telnyx
       #   @return [String, nil]
       optional :connection_name, String
 
+      # @!attribute conversation_persistence
+      #   Whether conversation persistence is enabled for this connection. When enabled,
+      #   calls handled by the connection are transcribed, stored, and indexed. Defaults
+      #   to false.
+      #
+      #   @return [Boolean, nil]
+      optional :conversation_persistence, Telnyx::Internal::Type::Boolean
+
       # @!attribute created_at
       #   ISO 8601 formatted date indicating when the resource was created.
       #
@@ -184,7 +192,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, record_type: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, updated_at: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, conversation_persistence: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, record_type: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, updated_at: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::IPConnection} for more details.
       #
@@ -199,6 +207,8 @@ module Telnyx
       #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
       #   @param connection_name [String]
+      #
+      #   @param conversation_persistence [Boolean] Whether conversation persistence is enabled for this connection. When enabled, c
       #
       #   @param created_at [String] ISO 8601 formatted date indicating when the resource was created.
       #

@@ -75,6 +75,7 @@ class Telnyx::Test::Resources::IPConnectionsTest < Telnyx::Test::ResourceTest
         android_push_credential_id: String | nil,
         call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
         connection_name: String | nil,
+        conversation_persistence: Telnyx::Internal::Type::Boolean | nil,
         created_at: String | nil,
         default_on_hold_comfort_noise_enabled: Telnyx::Internal::Type::Boolean | nil,
         dtmf_type: Telnyx::DtmfType | nil,

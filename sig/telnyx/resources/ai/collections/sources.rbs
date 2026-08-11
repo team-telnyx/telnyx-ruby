@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class AI
+      class Collections
+        class Sources
+          def create: (
+            String uuid,
+            source_type: Telnyx::Models::AI::Collections::source_type,
+            ?bucket_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Collections::SourceCreateResponse
+
+          def list: (
+            String uuid,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Collections::SourceListResponse
+
+          def delete: (
+            String source_id,
+            uuid: String,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def replace: (
+            String uuid,
+            sources: ::Array[Telnyx::AI::Collections::SourceRequest],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Collections::SourceReplaceResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

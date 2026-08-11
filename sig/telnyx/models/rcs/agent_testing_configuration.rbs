@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_testing_configuration =
+        {
+          test_url: String,
+          additional_information: String?,
+          message_id: String?
+        }
+
+      class AgentTestingConfiguration < Telnyx::Internal::Type::BaseModel
+        attr_accessor test_url: String
+
+        attr_accessor additional_information: String?
+
+        attr_accessor message_id: String?
+
+        def initialize: (
+          test_url: String,
+          ?additional_information: String?,
+          ?message_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          test_url: String,
+          additional_information: String?,
+          message_id: String?
+        }
+      end
+    end
+  end
+end

@@ -2,6 +2,56 @@ module Telnyx
   module Resources
     class AI
       class Collections
+        attr_reader settings: Telnyx::Resources::AI::Collections::Settings
+
+        attr_reader sources: Telnyx::Resources::AI::Collections::Sources
+
+        def create: (
+          name: String,
+          ?description: String,
+          ?settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
+          ?slug: String,
+          ?sources: ::Array[Telnyx::AI::Collections::SourceRequest],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::CollectionEnvelope
+
+        def retrieve: (
+          String slug,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::CollectionEnvelope
+
+        def update: (
+          String uuid,
+          ?description: String,
+          ?name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::CollectionEnvelope
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Collection]
+
+        def delete: (String uuid, ?request_options: Telnyx::request_opts) -> nil
+
+        def retrieve_by_id: (
+          String uuid,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::CollectionEnvelope
+
+        def retrieve_documents: (
+          String slug,
+          ?filter: ::Hash[Symbol, top],
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?query: String,
+          ?retrieval_type: Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type,
+          ?sources: String,
+          ?top_k: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::CollectionRetrieveDocumentsResponse
+
         def initialize: (client: Telnyx::Client) -> void
       end
     end

@@ -50,6 +50,15 @@ module Telnyx
       sig { params(connection_name: String).void }
       attr_writer :connection_name
 
+      # Whether conversation persistence is enabled for this connection. When enabled,
+      # calls handled by the connection are transcribed, stored, and indexed. Defaults
+      # to false.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :conversation_persistence
+
+      sig { params(conversation_persistence: T::Boolean).void }
+      attr_writer :conversation_persistence
+
       # ISO-8601 formatted date indicating when the resource was created.
       sig { returns(T.nilable(String)) }
       attr_reader :created_at
@@ -263,6 +272,7 @@ module Telnyx
           android_push_credential_id: T.nilable(String),
           call_cost_in_webhooks: T::Boolean,
           connection_name: String,
+          conversation_persistence: T::Boolean,
           created_at: String,
           default_on_hold_comfort_noise_enabled: T::Boolean,
           dtmf_type: Telnyx::DtmfType::OrSymbol,
@@ -305,6 +315,10 @@ module Telnyx
         # Specifies if call cost webhooks should be sent for this connection.
         call_cost_in_webhooks: nil,
         connection_name: nil,
+        # Whether conversation persistence is enabled for this connection. When enabled,
+        # calls handled by the connection are transcribed, stored, and indexed. Defaults
+        # to false.
+        conversation_persistence: nil,
         # ISO-8601 formatted date indicating when the resource was created.
         created_at: nil,
         # When enabled, Telnyx will generate comfort noise when you place the call on
@@ -386,6 +400,7 @@ module Telnyx
             android_push_credential_id: T.nilable(String),
             call_cost_in_webhooks: T::Boolean,
             connection_name: String,
+            conversation_persistence: T::Boolean,
             created_at: String,
             default_on_hold_comfort_noise_enabled: T::Boolean,
             dtmf_type: Telnyx::DtmfType::TaggedSymbol,

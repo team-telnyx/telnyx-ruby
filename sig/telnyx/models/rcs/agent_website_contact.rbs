@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_website_contact = { label: String, url: String }
+
+      class AgentWebsiteContact < Telnyx::Internal::Type::BaseModel
+        attr_accessor label: String
+
+        attr_accessor url: String
+
+        def initialize: (label: String, url: String) -> void
+
+        def to_hash: -> { label: String, url: String }
+      end
+    end
+  end
+end

@@ -17,6 +17,8 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Clusters]
       attr_reader :clusters
 
+      # Create and manage logical collections of your Telnyx data, tune retrieval
+      # settings, manage sources, and run collection-scoped semantic search.
       # @return [Telnyx::Resources::AI::Collections]
       attr_reader :collections
 
@@ -97,13 +99,11 @@ module Telnyx
       #
       # **Examples:**
       #
-      # ```
-      # GET /v2/ai/conversation_histories?q=billing+issue&page[size]=10
-      # GET /v2/ai/conversation_histories?q=setup+guide&region=USA&min_score=0.5
-      # GET /v2/ai/conversation_histories?q=refund&filter[record_created_at][gte]=2026-01-01T00:00:00Z
-      # GET /v2/ai/conversation_histories?q=outage&filter[region][in]=USA,DEU
-      # GET /v2/ai/conversation_histories?q=hold+time&filter[language]=en
-      # ```
+      # - `GET /v2/ai/conversation_histories?q=billing+issue&page[size]=10`
+      # - `GET /v2/ai/conversation_histories?q=setup+guide&region=USA&min_score=0.5`
+      # - `GET /v2/ai/conversation_histories?q=refund&filter[record_created_at][gte]=2026-01-01T00:00:00Z`
+      # - `GET /v2/ai/conversation_histories?q=outage&filter[region][in]=USA,DEU`
+      # - `GET /v2/ai/conversation_histories?q=hold+time&filter[language]=en`
       #
       # @overload retrieve_conversation_histories(q:, filter_ingested_at_gte: nil, filter_ingested_at_lte: nil, filter_record_created_at_gte: nil, filter_record_created_at_lte: nil, filter_record_id: nil, filter_region_in: nil, filter_retention: nil, filter_user_id: nil, min_score: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
       #

@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type source_replace_params =
+          {
+            uuid: String,
+            sources: ::Array[Telnyx::AI::Collections::SourceRequest]
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class SourceReplaceParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor uuid: String
+
+          attr_accessor sources: ::Array[Telnyx::AI::Collections::SourceRequest]
+
+          def initialize: (
+            uuid: String,
+            sources: ::Array[Telnyx::AI::Collections::SourceRequest],
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            uuid: String,
+            sources: ::Array[Telnyx::AI::Collections::SourceRequest],
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

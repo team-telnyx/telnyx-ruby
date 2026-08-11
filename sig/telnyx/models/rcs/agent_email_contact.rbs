@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_email_contact = { address: String, label: String }
+
+      class AgentEmailContact < Telnyx::Internal::Type::BaseModel
+        attr_accessor address: String
+
+        attr_accessor label: String
+
+        def initialize: (address: String, label: String) -> void
+
+        def to_hash: -> { address: String, label: String }
+      end
+    end
+  end
+end

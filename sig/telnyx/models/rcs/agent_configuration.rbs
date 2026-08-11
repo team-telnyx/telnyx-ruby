@@ -1,0 +1,250 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_configuration =
+        {
+          basics: Telnyx::Models::Rcs::AgentConfiguration::basics,
+          campaign: Telnyx::Rcs::AgentCampaignConfiguration?,
+          testing: Telnyx::Rcs::AgentTestingConfiguration?
+        }
+
+      class AgentConfiguration < Telnyx::Internal::Type::BaseModel
+        attr_accessor basics: Telnyx::Models::Rcs::AgentConfiguration::basics
+
+        attr_accessor campaign: Telnyx::Rcs::AgentCampaignConfiguration?
+
+        attr_accessor testing: Telnyx::Rcs::AgentTestingConfiguration?
+
+        def initialize: (
+          basics: Telnyx::Models::Rcs::AgentConfiguration::basics,
+          ?campaign: Telnyx::Rcs::AgentCampaignConfiguration?,
+          ?testing: Telnyx::Rcs::AgentTestingConfiguration?
+        ) -> void
+
+        def to_hash: -> {
+          basics: Telnyx::Models::Rcs::AgentConfiguration::basics,
+          campaign: Telnyx::Rcs::AgentCampaignConfiguration?,
+          testing: Telnyx::Rcs::AgentTestingConfiguration?
+        }
+
+        type basics =
+          Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0
+          | Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1
+          | Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2
+
+        module Basics
+          extend Telnyx::Internal::Type::Union
+
+          type union_member0 =
+            {
+              phone_number: Telnyx::Rcs::AgentPhoneContact,
+              brand_color: String,
+              description: String,
+              email: Telnyx::Rcs::AgentEmailContact?,
+              hero_url: String,
+              logo_url: String,
+              privacy_policy_url: String,
+              terms_and_conditions_url: String,
+              website: Telnyx::Rcs::AgentWebsiteContact?
+            }
+
+          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            attr_accessor phone_number: Telnyx::Rcs::AgentPhoneContact
+
+            attr_reader brand_color: String?
+
+            def brand_color=: (String) -> String
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_accessor email: Telnyx::Rcs::AgentEmailContact?
+
+            attr_reader hero_url: String?
+
+            def hero_url=: (String) -> String
+
+            attr_reader logo_url: String?
+
+            def logo_url=: (String) -> String
+
+            attr_reader privacy_policy_url: String?
+
+            def privacy_policy_url=: (String) -> String
+
+            attr_reader terms_and_conditions_url: String?
+
+            def terms_and_conditions_url=: (String) -> String
+
+            attr_accessor website: Telnyx::Rcs::AgentWebsiteContact?
+
+            def initialize: (
+              phone_number: Telnyx::Rcs::AgentPhoneContact,
+              ?brand_color: String,
+              ?description: String,
+              ?email: Telnyx::Rcs::AgentEmailContact?,
+              ?hero_url: String,
+              ?logo_url: String,
+              ?privacy_policy_url: String,
+              ?terms_and_conditions_url: String,
+              ?website: Telnyx::Rcs::AgentWebsiteContact?
+            ) -> void
+
+            def to_hash: -> {
+              phone_number: Telnyx::Rcs::AgentPhoneContact,
+              brand_color: String,
+              description: String,
+              email: Telnyx::Rcs::AgentEmailContact?,
+              hero_url: String,
+              logo_url: String,
+              privacy_policy_url: String,
+              terms_and_conditions_url: String,
+              website: Telnyx::Rcs::AgentWebsiteContact?
+            }
+          end
+
+          type union_member1 =
+            {
+              website: Telnyx::Rcs::AgentWebsiteContact,
+              brand_color: String,
+              description: String,
+              email: Telnyx::Rcs::AgentEmailContact?,
+              hero_url: String,
+              logo_url: String,
+              phone_number: Telnyx::Rcs::AgentPhoneContact?,
+              privacy_policy_url: String,
+              terms_and_conditions_url: String
+            }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            attr_accessor website: Telnyx::Rcs::AgentWebsiteContact
+
+            attr_reader brand_color: String?
+
+            def brand_color=: (String) -> String
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_accessor email: Telnyx::Rcs::AgentEmailContact?
+
+            attr_reader hero_url: String?
+
+            def hero_url=: (String) -> String
+
+            attr_reader logo_url: String?
+
+            def logo_url=: (String) -> String
+
+            attr_accessor phone_number: Telnyx::Rcs::AgentPhoneContact?
+
+            attr_reader privacy_policy_url: String?
+
+            def privacy_policy_url=: (String) -> String
+
+            attr_reader terms_and_conditions_url: String?
+
+            def terms_and_conditions_url=: (String) -> String
+
+            def initialize: (
+              website: Telnyx::Rcs::AgentWebsiteContact,
+              ?brand_color: String,
+              ?description: String,
+              ?email: Telnyx::Rcs::AgentEmailContact?,
+              ?hero_url: String,
+              ?logo_url: String,
+              ?phone_number: Telnyx::Rcs::AgentPhoneContact?,
+              ?privacy_policy_url: String,
+              ?terms_and_conditions_url: String
+            ) -> void
+
+            def to_hash: -> {
+              website: Telnyx::Rcs::AgentWebsiteContact,
+              brand_color: String,
+              description: String,
+              email: Telnyx::Rcs::AgentEmailContact?,
+              hero_url: String,
+              logo_url: String,
+              phone_number: Telnyx::Rcs::AgentPhoneContact?,
+              privacy_policy_url: String,
+              terms_and_conditions_url: String
+            }
+          end
+
+          type union_member2 =
+            {
+              email: Telnyx::Rcs::AgentEmailContact,
+              brand_color: String,
+              description: String,
+              hero_url: String,
+              logo_url: String,
+              phone_number: Telnyx::Rcs::AgentPhoneContact?,
+              privacy_policy_url: String,
+              terms_and_conditions_url: String,
+              website: Telnyx::Rcs::AgentWebsiteContact?
+            }
+
+          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+            attr_accessor email: Telnyx::Rcs::AgentEmailContact
+
+            attr_reader brand_color: String?
+
+            def brand_color=: (String) -> String
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader hero_url: String?
+
+            def hero_url=: (String) -> String
+
+            attr_reader logo_url: String?
+
+            def logo_url=: (String) -> String
+
+            attr_accessor phone_number: Telnyx::Rcs::AgentPhoneContact?
+
+            attr_reader privacy_policy_url: String?
+
+            def privacy_policy_url=: (String) -> String
+
+            attr_reader terms_and_conditions_url: String?
+
+            def terms_and_conditions_url=: (String) -> String
+
+            attr_accessor website: Telnyx::Rcs::AgentWebsiteContact?
+
+            def initialize: (
+              email: Telnyx::Rcs::AgentEmailContact,
+              ?brand_color: String,
+              ?description: String,
+              ?hero_url: String,
+              ?logo_url: String,
+              ?phone_number: Telnyx::Rcs::AgentPhoneContact?,
+              ?privacy_policy_url: String,
+              ?terms_and_conditions_url: String,
+              ?website: Telnyx::Rcs::AgentWebsiteContact?
+            ) -> void
+
+            def to_hash: -> {
+              email: Telnyx::Rcs::AgentEmailContact,
+              brand_color: String,
+              description: String,
+              hero_url: String,
+              logo_url: String,
+              phone_number: Telnyx::Rcs::AgentPhoneContact?,
+              privacy_policy_url: String,
+              terms_and_conditions_url: String,
+              website: Telnyx::Rcs::AgentWebsiteContact?
+            }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::Rcs::AgentConfiguration::basics]
+        end
+      end
+    end
+  end
+end

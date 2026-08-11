@@ -3,6 +3,8 @@ module Telnyx
     class Rcs
       attr_reader agents: Telnyx::Resources::Rcs::Agents
 
+      attr_reader brands: Telnyx::Resources::Rcs::Brands
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module Rcs
+      type capabilities_response =
+        {
+          brand_entity: bool,
+          brand_verification: bool,
+          campaigns: bool,
+          distinct_launch_phase: bool,
+          invite_test_devices: bool,
+          per_carrier_approval: bool,
+          submission_sections: bool,
+          templates: bool,
+          vendor_webhooks: bool
+        }
+
+      class CapabilitiesResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor brand_entity: bool
+
+        attr_accessor brand_verification: bool
+
+        attr_accessor campaigns: bool
+
+        attr_accessor distinct_launch_phase: bool
+
+        attr_accessor invite_test_devices: bool
+
+        attr_accessor per_carrier_approval: bool
+
+        attr_accessor submission_sections: bool
+
+        attr_accessor templates: bool
+
+        attr_accessor vendor_webhooks: bool
+
+        def initialize: (
+          brand_entity: bool,
+          brand_verification: bool,
+          campaigns: bool,
+          distinct_launch_phase: bool,
+          invite_test_devices: bool,
+          per_carrier_approval: bool,
+          submission_sections: bool,
+          templates: bool,
+          vendor_webhooks: bool
+        ) -> void
+
+        def to_hash: -> {
+          brand_entity: bool,
+          brand_verification: bool,
+          campaigns: bool,
+          distinct_launch_phase: bool,
+          invite_test_devices: bool,
+          per_carrier_approval: bool,
+          submission_sections: bool,
+          templates: bool,
+          vendor_webhooks: bool
+        }
+      end
+    end
+  end
+end
