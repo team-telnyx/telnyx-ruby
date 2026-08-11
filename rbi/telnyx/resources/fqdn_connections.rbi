@@ -4,6 +4,10 @@ module Telnyx
   module Resources
     # FQDN connection operations
     class FqdnConnections
+      # FQDN connection operations
+      sig { returns(Telnyx::Resources::FqdnConnections::FqdnAuthentication) }
+      attr_reader :fqdn_authentication
+
       # Creates a FQDN connection.
       sig do
         params(

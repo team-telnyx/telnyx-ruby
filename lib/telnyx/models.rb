@@ -858,6 +858,8 @@ module Telnyx
 
   FqdnConnectionRetrieveParams = Telnyx::Models::FqdnConnectionRetrieveParams
 
+  FqdnConnections = Telnyx::Models::FqdnConnections
+
   FqdnConnectionUpdateParams = Telnyx::Models::FqdnConnectionUpdateParams
 
   FqdnCreateParams = Telnyx::Models::FqdnCreateParams
@@ -1071,6 +1073,8 @@ module Telnyx
   MessageSendWithAlphanumericSenderParams = Telnyx::Models::MessageSendWithAlphanumericSenderParams
 
   MessageTemplate = Telnyx::Models::MessageTemplate
+
+  MessageWhatsappParams = Telnyx::Models::MessageWhatsappParams
 
   Messaging = Telnyx::Models::Messaging
 

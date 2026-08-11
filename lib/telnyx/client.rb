@@ -275,7 +275,6 @@ module Telnyx
     # @return [Telnyx::Resources::Media]
     attr_reader :media
 
-    # Messages
     # @return [Telnyx::Resources::Messages]
     attr_reader :messages
 

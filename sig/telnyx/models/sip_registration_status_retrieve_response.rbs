@@ -6,7 +6,7 @@ module Telnyx
         connection_name: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type,
         credential_username: String,
-        last_registration_response: String,
+        last_registration_response: String?,
         registered: bool,
         sip_registration_details: Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails,
         sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
@@ -31,9 +31,7 @@ module Telnyx
 
       def credential_username=: (String) -> String
 
-      attr_reader last_registration_response: String?
-
-      def last_registration_response=: (String) -> String
+      attr_accessor last_registration_response: String?
 
       attr_reader registered: bool?
 
@@ -56,7 +54,7 @@ module Telnyx
         ?connection_name: String,
         ?credential_type: Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type,
         ?credential_username: String,
-        ?last_registration_response: String,
+        ?last_registration_response: String?,
         ?registered: bool,
         ?sip_registration_details: Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails,
         ?sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
@@ -67,19 +65,23 @@ module Telnyx
         connection_name: String,
         credential_type: Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type,
         credential_username: String,
-        last_registration_response: String,
+        last_registration_response: String?,
         registered: bool,
         sip_registration_details: Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails,
         sip_registration_status: Telnyx::Models::SipRegistrationStatusRetrieveResponse::sip_registration_status
       }
 
-      type credential_type = :uac_external_credential | :telephony_credential
+      type credential_type =
+        :uac_external_credential
+        | :telephony_credential
+        | :sip_credential_connection
 
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
         UAC_EXTERNAL_CREDENTIAL: :uac_external_credential
         TELEPHONY_CREDENTIAL: :telephony_credential
+        SIP_CREDENTIAL_CONNECTION: :sip_credential_connection
 
         def self?.values: -> ::Array[Telnyx::Models::SipRegistrationStatusRetrieveResponse::credential_type]
       end
@@ -91,7 +93,6 @@ module Telnyx
           failures: Integer,
           last_modified: String,
           next_action_at: Integer,
-          node: String,
           sip_uri_user_host: String,
           transport: String,
           ua_ip: String,
@@ -120,10 +121,6 @@ module Telnyx
 
         def next_action_at=: (Integer) -> Integer
 
-        attr_reader node: String?
-
-        def node=: (String) -> String
-
         attr_reader sip_uri_user_host: String?
 
         def sip_uri_user_host=: (String) -> String
@@ -150,7 +147,6 @@ module Telnyx
           ?failures: Integer,
           ?last_modified: String,
           ?next_action_at: Integer,
-          ?node: String,
           ?sip_uri_user_host: String,
           ?transport: String,
           ?ua_ip: String,
@@ -164,7 +160,6 @@ module Telnyx
           failures: Integer,
           last_modified: String,
           next_action_at: Integer,
-          node: String,
           sip_uri_user_host: String,
           transport: String,
           ua_ip: String,

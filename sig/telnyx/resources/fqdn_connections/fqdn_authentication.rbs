@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class FqdnConnections
+      class FqdnAuthentication
+        def list: (
+          String fqdn_connection_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::FqdnConnections::FqdnAuthenticationListResponse
+
+        def patch_all: (
+          String fqdn_connection_id,
+          ?failover_url: String,
+          ?fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication,
+          ?ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method,
+          ?password: String,
+          ?txt_name: String,
+          ?txt_ttl: Integer,
+          ?txt_value: String,
+          ?user_name: String,
+          ?webhook_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

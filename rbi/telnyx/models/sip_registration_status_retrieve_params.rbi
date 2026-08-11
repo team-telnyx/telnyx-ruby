@@ -15,7 +15,8 @@ module Telnyx
         end
 
       # The kind of credential to look up. `uac_external_credential` is keyed by
-      # `connection_id`; `telephony_credential` is keyed by `username`.
+      # `connection_id`; `telephony_credential` and `sip_credential_connection` are
+      # keyed by `username`.
       sig do
         returns(
           Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::OrSymbol
@@ -31,8 +32,8 @@ module Telnyx
       sig { params(connection_id: String).void }
       attr_writer :connection_id
 
-      # SIP username of the telephony credential to look up. Required when
-      # `credential_type` is `telephony_credential`.
+      # SIP username to look up. Required when `credential_type` is
+      # `telephony_credential` or `sip_credential_connection`.
       sig { returns(T.nilable(String)) }
       attr_reader :username
 
@@ -50,13 +51,14 @@ module Telnyx
       end
       def self.new(
         # The kind of credential to look up. `uac_external_credential` is keyed by
-        # `connection_id`; `telephony_credential` is keyed by `username`.
+        # `connection_id`; `telephony_credential` and `sip_credential_connection` are
+        # keyed by `username`.
         credential_type:,
         # Identifier of the UAC connection to look up. Required when `credential_type` is
         # `uac_external_credential`.
         connection_id: nil,
-        # SIP username of the telephony credential to look up. Required when
-        # `credential_type` is `telephony_credential`.
+        # SIP username to look up. Required when `credential_type` is
+        # `telephony_credential` or `sip_credential_connection`.
         username: nil,
         request_options: {}
       )
@@ -77,7 +79,8 @@ module Telnyx
       end
 
       # The kind of credential to look up. `uac_external_credential` is keyed by
-      # `connection_id`; `telephony_credential` is keyed by `username`.
+      # `connection_id`; `telephony_credential` and `sip_credential_connection` are
+      # keyed by `username`.
       module CredentialType
         extend Telnyx::Internal::Type::Enum
 
@@ -98,6 +101,11 @@ module Telnyx
         TELEPHONY_CREDENTIAL =
           T.let(
             :telephony_credential,
+            Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::TaggedSymbol
+          )
+        SIP_CREDENTIAL_CONNECTION =
+          T.let(
+            :sip_credential_connection,
             Telnyx::SipRegistrationStatusRetrieveParams::CredentialType::TaggedSymbol
           )
 

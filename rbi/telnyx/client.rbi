@@ -270,7 +270,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::Media) }
     attr_reader :media
 
-    # Messages
     sig { returns(Telnyx::Resources::Messages) }
     attr_reader :messages
 

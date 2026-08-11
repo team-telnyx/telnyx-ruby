@@ -4,6 +4,10 @@ module Telnyx
   module Resources
     # FQDN connection operations
     class FqdnConnections
+      # FQDN connection operations
+      # @return [Telnyx::Resources::FqdnConnections::FqdnAuthentication]
+      attr_reader :fqdn_authentication
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::FqdnConnectionCreateParams} for more details.
       #
@@ -227,6 +231,7 @@ module Telnyx
       # @param client [Telnyx::Client]
       def initialize(client:)
         @client = client
+        @fqdn_authentication = Telnyx::Resources::FqdnConnections::FqdnAuthentication.new(client: client)
       end
     end
   end

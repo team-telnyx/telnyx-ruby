@@ -160,6 +160,9 @@ module Telnyx
       module FineTuning
       end
 
+      module FqdnConnections
+      end
+
       module InsightGroups
       end
 
