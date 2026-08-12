@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class WebSearch
+      class Research
+        def create: (
+          query: String,
+          ?background: bool,
+          ?max_sources: Integer,
+          ?research_effort: Telnyx::Models::WebSearch::ResearchCreateParams::research_effort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::WebSearch::ResearchCreateResponse
+
+        def retrieve: (
+          String task_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::WebSearch::ResearchRetrieveResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -381,6 +381,9 @@ module Telnyx
       module VerifiedNumbers
       end
 
+      module WebSearch
+      end
+
       module Whatsapp
         module BusinessAccounts
         end

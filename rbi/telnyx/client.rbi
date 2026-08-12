@@ -725,6 +725,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::Pricing) }
     attr_reader :pricing
 
+    sig { returns(Telnyx::Resources::WebSearch) }
+    attr_reader :web_search
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

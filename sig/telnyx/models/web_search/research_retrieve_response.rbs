@@ -1,0 +1,80 @@
+module Telnyx
+  module Models
+    module WebSearch
+      type research_retrieve_response =
+        { data: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data }
+
+      class ResearchRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data?
+
+        def data=: (
+          Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data
+        ) -> Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            status: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data::status,
+            task_id: String,
+            answer: String,
+            citations: ::Array[Telnyx::WebSearch::ResearchCitation],
+            error: String?
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor status: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data::status
+
+          attr_accessor task_id: String
+
+          attr_reader answer: String?
+
+          def answer=: (String) -> String
+
+          attr_reader citations: ::Array[Telnyx::WebSearch::ResearchCitation]?
+
+          def citations=: (
+            ::Array[Telnyx::WebSearch::ResearchCitation]
+          ) -> ::Array[Telnyx::WebSearch::ResearchCitation]
+
+          attr_accessor error: String?
+
+          def initialize: (
+            status: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data::status,
+            task_id: String,
+            ?answer: String,
+            ?citations: ::Array[Telnyx::WebSearch::ResearchCitation],
+            ?error: String?
+          ) -> void
+
+          def to_hash: -> {
+            status: Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data::status,
+            task_id: String,
+            answer: String,
+            citations: ::Array[Telnyx::WebSearch::ResearchCitation],
+            error: String?
+          }
+
+          type status = :pending | :running | :completed | :failed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            RUNNING: :running
+            COMPLETED: :completed
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::WebSearch::ResearchRetrieveResponse::Data::status]
+          end
+        end
+      end
+    end
+  end
+end

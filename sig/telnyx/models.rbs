@@ -2047,6 +2047,14 @@ module Telnyx
 
   class WebhookUnwrapParams = Telnyx::Models::WebhookUnwrapParams
 
+  module WebSearch = Telnyx::Models::WebSearch
+
+  class WebSearchContentsParams = Telnyx::Models::WebSearchContentsParams
+
+  class WebSearchCreateParams = Telnyx::Models::WebSearchCreateParams
+
+  class WebSearchResult = Telnyx::Models::WebSearchResult
+
   class WellKnownRetrieveAuthorizationServerMetadataParams = Telnyx::Models::WellKnownRetrieveAuthorizationServerMetadataParams
 
   class WellKnownRetrieveProtectedResourceMetadataParams = Telnyx::Models::WellKnownRetrieveProtectedResourceMetadataParams

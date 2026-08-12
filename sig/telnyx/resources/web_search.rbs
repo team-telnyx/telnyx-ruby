@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class WebSearch
+      attr_reader research: Telnyx::Resources::WebSearch::Research
+
+      def create: (
+        query: String,
+        ?count: Integer,
+        ?country: String,
+        ?exclude_domains: ::Array[String],
+        ?freshness: String,
+        ?include_domains: ::Array[String],
+        ?livecrawl: bool,
+        ?safesearch: Telnyx::Models::WebSearchCreateParams::safesearch,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WebSearchCreateResponse
+
+      def contents: (
+        urls: ::Array[String],
+        ?crawl_timeout: Integer,
+        ?formats: ::Array[Telnyx::Models::WebSearchContentsParams::format_],
+        ?max_age: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::WebSearchContentsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

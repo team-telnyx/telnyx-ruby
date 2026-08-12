@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    type web_search_result =
+      {
+        description: String,
+        snippets: ::Array[String],
+        title: String,
+        url: String,
+        favicon_url: String,
+        thumbnail_url: String
+      }
+
+    class WebSearchResult < Telnyx::Internal::Type::BaseModel
+      attr_accessor description: String
+
+      attr_accessor snippets: ::Array[String]
+
+      attr_accessor title: String
+
+      attr_accessor url: String
+
+      attr_reader favicon_url: String?
+
+      def favicon_url=: (String) -> String
+
+      attr_reader thumbnail_url: String?
+
+      def thumbnail_url=: (String) -> String
+
+      def initialize: (
+        description: String,
+        snippets: ::Array[String],
+        title: String,
+        url: String,
+        ?favicon_url: String,
+        ?thumbnail_url: String
+      ) -> void
+
+      def to_hash: -> {
+        description: String,
+        snippets: ::Array[String],
+        title: String,
+        url: String,
+        favicon_url: String,
+        thumbnail_url: String
+      }
+    end
+  end
+end

@@ -2323,6 +2323,14 @@ module Telnyx
 
   WebhookUnwrapParams = Telnyx::Models::WebhookUnwrapParams
 
+  WebSearch = Telnyx::Models::WebSearch
+
+  WebSearchContentsParams = Telnyx::Models::WebSearchContentsParams
+
+  WebSearchCreateParams = Telnyx::Models::WebSearchCreateParams
+
+  WebSearchResult = Telnyx::Models::WebSearchResult
+
   WellKnownRetrieveAuthorizationServerMetadataParams =
     Telnyx::Models::WellKnownRetrieveAuthorizationServerMetadataParams
 

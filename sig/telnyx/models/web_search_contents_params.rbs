@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    type web_search_contents_params =
+      {
+        urls: ::Array[String],
+        crawl_timeout: Integer,
+        formats: ::Array[Telnyx::Models::WebSearchContentsParams::format_],
+        max_age: Integer?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class WebSearchContentsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor urls: ::Array[String]
+
+      attr_reader crawl_timeout: Integer?
+
+      def crawl_timeout=: (Integer) -> Integer
+
+      attr_reader formats: ::Array[Telnyx::Models::WebSearchContentsParams::format_]?
+
+      def formats=: (
+        ::Array[Telnyx::Models::WebSearchContentsParams::format_]
+      ) -> ::Array[Telnyx::Models::WebSearchContentsParams::format_]
+
+      attr_accessor max_age: Integer?
+
+      def initialize: (
+        urls: ::Array[String],
+        ?crawl_timeout: Integer,
+        ?formats: ::Array[Telnyx::Models::WebSearchContentsParams::format_],
+        ?max_age: Integer?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        urls: ::Array[String],
+        crawl_timeout: Integer,
+        formats: ::Array[Telnyx::Models::WebSearchContentsParams::format_],
+        max_age: Integer?,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type format_ = :html | :markdown | :metadata
+
+      module Format
+        extend Telnyx::Internal::Type::Enum
+
+        HTML: :html
+        MARKDOWN: :markdown
+        METADATA: :metadata
+
+        def self?.values: -> ::Array[Telnyx::Models::WebSearchContentsParams::format_]
+      end
+    end
+  end
+end
