@@ -3,18 +3,18 @@
 module Telnyx
   module Models
     module SimCards
-      # @see Telnyx::Resources::SimCards::Actions#bulk_enable_voice
-      class ActionBulkEnableVoiceParams < Telnyx::Internal::Type::BaseModel
+      # @see Telnyx::Resources::SimCards::Actions#enable_voice
+      class ActionEnableVoiceParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters
 
-        # @!attribute sim_card_group_id
+        # @!attribute id
         #
         #   @return [String]
-        required :sim_card_group_id, String
+        required :id, String
 
         # @!attribute connection_id
-        #   The identifier of the Mobile Voice Connection to associate with the SIM cards.
+        #   The identifier of the Mobile Voice Connection to associate with this SIM card.
         #   The connection must be owned by the same user and of type
         #   <code>mobile_voice</code>. If omitted, voice is enabled without a connection
         #   association.
@@ -22,13 +22,13 @@ module Telnyx
         #   @return [String, nil]
         optional :connection_id, String
 
-        # @!method initialize(sim_card_group_id:, connection_id: nil, request_options: {})
+        # @!method initialize(id:, connection_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::SimCards::ActionBulkEnableVoiceParams} for more details.
+        #   {Telnyx::Models::SimCards::ActionEnableVoiceParams} for more details.
         #
-        #   @param sim_card_group_id [String]
+        #   @param id [String]
         #
-        #   @param connection_id [String] The identifier of the Mobile Voice Connection to associate with the SIM cards. T
+        #   @param connection_id [String] The identifier of the Mobile Voice Connection to associate with this SIM card. T
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

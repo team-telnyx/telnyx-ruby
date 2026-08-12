@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module SimCards
+      type action_enable_voice_response =
+        { data: Telnyx::SimCards::WirelessSimCardAction }
+
+      class ActionEnableVoiceResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::SimCards::WirelessSimCardAction?
+
+        def data=: (
+          Telnyx::SimCards::WirelessSimCardAction
+        ) -> Telnyx::SimCards::WirelessSimCardAction
+
+        def initialize: (?data: Telnyx::SimCards::WirelessSimCardAction) -> void
+
+        def to_hash: -> { data: Telnyx::SimCards::WirelessSimCardAction }
+      end
+    end
+  end
+end

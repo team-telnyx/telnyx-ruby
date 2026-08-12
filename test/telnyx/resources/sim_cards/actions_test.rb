@@ -116,6 +116,22 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
     end
   end
 
+  def test_disable_voice
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.sim_cards.actions.disable_voice("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+
+    assert_pattern do
+      response => Telnyx::Models::SimCards::ActionDisableVoiceResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
+      }
+    end
+  end
+
   def test_enable
     skip("Mock server tests are disabled")
 
@@ -123,6 +139,22 @@ class Telnyx::Test::Resources::SimCards::ActionsTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => Telnyx::Models::SimCards::ActionEnableResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::SimCards::WirelessSimCardAction | nil
+      }
+    end
+  end
+
+  def test_enable_voice
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.sim_cards.actions.enable_voice("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
+
+    assert_pattern do
+      response => Telnyx::Models::SimCards::ActionEnableVoiceResponse
     end
 
     assert_pattern do
