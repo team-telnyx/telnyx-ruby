@@ -64,7 +64,7 @@ module Telnyx
           #
           # @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
           #
-          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil] Business entity classification
+          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::MessagingTollFreeVerificationEntityType, nil] Business entity classification
           #
           # @param help_message_response [String, nil] The message returned when users text 'HELP'
           #
@@ -82,7 +82,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress]
+          # @return [Telnyx::Models::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress]
           #
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestCreateParams
           def create(params)
@@ -91,7 +91,7 @@ module Telnyx
               method: :post,
               path: "messaging_tollfree/verification/requests",
               body: parsed,
-              model: Telnyx::MessagingTollfree::Verification::VerificationRequestEgress,
+              model: Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress,
               options: options
             )
           end
@@ -104,14 +104,14 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::MessagingTollfree::Verification::VerificationRequestStatus]
+          # @return [Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveResponse]
           #
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveParams
           def retrieve(id, params = {})
             @client.request(
               method: :get,
               path: ["messaging_tollfree/verification/requests/%1$s", id],
-              model: Telnyx::MessagingTollfree::Verification::VerificationRequestStatus,
+              model: Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveResponse,
               options: params[:request_options]
             )
           end
@@ -177,7 +177,7 @@ module Telnyx
           #
           # @param doing_business_as [String, nil] Doing Business As (DBA) name if different from legal name
           #
-          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::TollFreeVerificationEntityType, nil] Business entity classification
+          # @param entity_type [Symbol, Telnyx::Models::MessagingTollfree::Verification::MessagingTollFreeVerificationEntityType, nil] Business entity classification
           #
           # @param help_message_response [String, nil] The message returned when users text 'HELP'
           #
@@ -195,7 +195,7 @@ module Telnyx
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [Telnyx::Models::MessagingTollfree::Verification::VerificationRequestEgress]
+          # @return [Telnyx::Models::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress]
           #
           # @see Telnyx::Models::MessagingTollfree::Verification::RequestUpdateParams
           def update(id, params)
@@ -204,7 +204,7 @@ module Telnyx
               method: :patch,
               path: ["messaging_tollfree/verification/requests/%1$s", id],
               body: parsed,
-              model: Telnyx::MessagingTollfree::Verification::VerificationRequestEgress,
+              model: Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress,
               options: options
             )
           end

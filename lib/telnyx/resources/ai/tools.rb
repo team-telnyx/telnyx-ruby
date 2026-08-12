@@ -5,20 +5,32 @@ module Telnyx
     class AI
       # Configure AI assistant specifications
       class Tools
-        # Create Tool
+        # Create a new custom AI tool that can be attached to AI assistants.
         #
-        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, webhook: nil, request_options: {})
+        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
         #
         # @param display_name [String]
+        #
         # @param type [String]
+        #
         # @param client_side_tool [Hash{Symbol=>Object}]
+        #
         # @param function [Hash{Symbol=>Object}]
+        #
         # @param handoff [Hash{Symbol=>Object}]
+        #
         # @param invite [Hash{Symbol=>Object}]
+        #
         # @param pay [Telnyx::Models::AI::PayToolParams]
+        #
         # @param retrieval [Hash{Symbol=>Object}]
+        #
         # @param timeout_ms [Integer]
+        #
+        # @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
+        #
         # @param webhook [Hash{Symbol=>Object}]
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::SharedToolResponse]
@@ -35,7 +47,7 @@ module Telnyx
           )
         end
 
-        # Get Tool
+        # Retrieve the details of a specific AI tool.
         #
         # @overload retrieve(tool_id, request_options: {})
         #
@@ -55,9 +67,9 @@ module Telnyx
           )
         end
 
-        # Update Tool
+        # Update the configuration of an existing AI tool.
         #
-        # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, webhook: nil, request_options: {})
+        # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
         #
         # @param tool_id [String] Unique identifier of the tool.
         #
@@ -79,6 +91,8 @@ module Telnyx
         #
         # @param type [String]
         #
+        # @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
+        #
         # @param webhook [Hash{Symbol=>Object}]
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
@@ -97,7 +111,7 @@ module Telnyx
           )
         end
 
-        # List Tools
+        # Retrieve a list of the custom AI tools configured on your account.
         #
         # @overload list(filter_name: nil, filter_type: nil, page_number: nil, page_size: nil, request_options: {})
         #
@@ -132,7 +146,7 @@ module Telnyx
           )
         end
 
-        # Delete Tool
+        # Delete a custom AI tool.
         #
         # @overload delete(tool_id, request_options: {})
         #

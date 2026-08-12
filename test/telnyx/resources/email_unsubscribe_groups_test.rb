@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::EmailUnsubscribeGroupsTest < Telnyx::Test::Resour
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.email_unsubscribe_groups.create(name: "x")
+    response = @telnyx.email_unsubscribe_groups.create(name: "Marketing Newsletter")
 
     assert_pattern do
       response => Telnyx::UnsubscribeGroupResponse

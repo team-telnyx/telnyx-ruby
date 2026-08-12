@@ -31,7 +31,7 @@ module Telnyx
         )
         end
 
-        # Get a Migration Source
+        # Retrieve the details of a specific migration source.
         sig do
           params(
             id: String,
@@ -45,7 +45,9 @@ module Telnyx
         )
         end
 
-        # List all Migration Sources
+        # List the migration sources configured on your account. A migration source is an
+        # external storage bucket from which data can be migrated into Telnyx Cloud
+        # Storage.
         sig do
           params(request_options: Telnyx::RequestOptions::OrHash).returns(
             Telnyx::Models::Storage::MigrationSourceListResponse
@@ -54,7 +56,7 @@ module Telnyx
         def list(request_options: {})
         end
 
-        # Delete a Migration Source
+        # Delete a migration source configuration.
         sig do
           params(
             id: String,

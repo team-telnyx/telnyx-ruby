@@ -4,6 +4,7 @@ module Telnyx
       class Products
         def retrieve: (
           String slug,
+          ?filter_country_iso: String?,
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
@@ -13,7 +14,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPaginationForInexplicitNumberOrders[Telnyx::Models::Pricing::ProductListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Pricing::ProductListResponse]
 
         def initialize: (client: Telnyx::Client) -> void
       end

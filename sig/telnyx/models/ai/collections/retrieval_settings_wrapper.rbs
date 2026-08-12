@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type retrieval_settings_wrapper =
+          {
+            record_type: String,
+            retrieval: Telnyx::AI::Collections::RetrievalSettings
+          }
+
+        class RetrievalSettingsWrapper < Telnyx::Internal::Type::BaseModel
+          attr_reader retrieval: Telnyx::AI::Collections::RetrievalSettings?
+
+          def retrieval=: (
+            Telnyx::AI::Collections::RetrievalSettings
+          ) -> Telnyx::AI::Collections::RetrievalSettings
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?record_type: String,
+            ?retrieval: Telnyx::AI::Collections::RetrievalSettings
+          ) -> void
+
+          def to_hash: -> {
+            record_type: String,
+            retrieval: Telnyx::AI::Collections::RetrievalSettings
+          }
+        end
+      end
+    end
+  end
+end

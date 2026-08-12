@@ -8,7 +8,7 @@ module Telnyx
       sig { returns(Telnyx::Resources::Payment::AutoRechargePrefs) }
       attr_reader :auto_recharge_prefs
 
-      # Create a stored payment transaction
+      # Create a transaction that charges a stored payment method on the account.
       sig do
         params(
           amount: String,

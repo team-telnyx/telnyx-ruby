@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    class RcsAgentResponse = Rcs::RcsAgentResponse
+
+    module Rcs
+      type rcs_agent_response = { data: Telnyx::Rcs::RcsAgent }
+
+      class RcsAgentResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Rcs::RcsAgent?
+
+        def data=: (Telnyx::Rcs::RcsAgent) -> Telnyx::Rcs::RcsAgent
+
+        def initialize: (?data: Telnyx::Rcs::RcsAgent) -> void
+
+        def to_hash: -> { data: Telnyx::Rcs::RcsAgent }
+      end
+    end
+  end
+end

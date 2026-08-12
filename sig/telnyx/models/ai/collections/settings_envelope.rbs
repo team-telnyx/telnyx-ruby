@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type settings_envelope =
+          { data: Telnyx::AI::Collections::RetrievalSettingsWrapper }
+
+        class SettingsEnvelope < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::AI::Collections::RetrievalSettingsWrapper?
+
+          def data=: (
+            Telnyx::AI::Collections::RetrievalSettingsWrapper
+          ) -> Telnyx::AI::Collections::RetrievalSettingsWrapper
+
+          def initialize: (
+            ?data: Telnyx::AI::Collections::RetrievalSettingsWrapper
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::AI::Collections::RetrievalSettingsWrapper
+          }
+        end
+      end
+    end
+  end
+end

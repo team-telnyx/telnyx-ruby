@@ -1,0 +1,395 @@
+module Telnyx
+  module Models
+    type number_order_status_update_webhook_event =
+      {
+        data: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data,
+        meta: Telnyx::NumberOrderStatusUpdateWebhookEvent::Meta
+      }
+
+    class NumberOrderStatusUpdateWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data
+
+      attr_accessor meta: Telnyx::NumberOrderStatusUpdateWebhookEvent::Meta
+
+      def initialize: (
+        data: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data,
+        meta: Telnyx::NumberOrderStatusUpdateWebhookEvent::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data,
+        meta: Telnyx::NumberOrderStatusUpdateWebhookEvent::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: String
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload
+
+        attr_accessor record_type: String
+
+        def initialize: (
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload,
+          record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload,
+          record_type: String
+        }
+
+        type payload =
+          {
+            id: String,
+            billing_group_id: String,
+            connection_id: String,
+            created_at: Time,
+            customer_reference: String,
+            messaging_profile_id: String,
+            phone_numbers: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber],
+            phone_numbers_count: Integer,
+            record_type: String,
+            requirements_met: bool,
+            status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::status,
+            sub_number_orders_ids: ::Array[String],
+            updated_at: Time
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader billing_group_id: String?
+
+          def billing_group_id=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
+          attr_reader messaging_profile_id: String?
+
+          def messaging_profile_id=: (String) -> String
+
+          attr_reader phone_numbers: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber]?
+
+          def phone_numbers=: (
+            ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber]
+          ) -> ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber]
+
+          attr_reader phone_numbers_count: Integer?
+
+          def phone_numbers_count=: (Integer) -> Integer
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader requirements_met: bool?
+
+          def requirements_met=: (bool) -> bool
+
+          attr_reader status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::status?
+
+          def status=: (
+            Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::status
+          ) -> Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::status
+
+          attr_reader sub_number_orders_ids: ::Array[String]?
+
+          def sub_number_orders_ids=: (::Array[String]) -> ::Array[String]
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          def initialize: (
+            ?id: String,
+            ?billing_group_id: String,
+            ?connection_id: String,
+            ?created_at: Time,
+            ?customer_reference: String,
+            ?messaging_profile_id: String,
+            ?phone_numbers: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber],
+            ?phone_numbers_count: Integer,
+            ?record_type: String,
+            ?requirements_met: bool,
+            ?status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::status,
+            ?sub_number_orders_ids: ::Array[String],
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            billing_group_id: String,
+            connection_id: String,
+            created_at: Time,
+            customer_reference: String,
+            messaging_profile_id: String,
+            phone_numbers: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber],
+            phone_numbers_count: Integer,
+            record_type: String,
+            requirements_met: bool,
+            status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::status,
+            sub_number_orders_ids: ::Array[String],
+            updated_at: Time
+          }
+
+          type phone_number =
+            {
+              id: String,
+              bundle_id: String,
+              country_code: String,
+              :country_iso_alpha2 => String,
+              phone_number: String,
+              phone_number_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::phone_number_type,
+              record_type: String,
+              regulatory_requirements: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement],
+              requirements_met: bool,
+              requirements_status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::requirements_status,
+              status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::status
+            }
+
+          class PhoneNumber < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader bundle_id: String?
+
+            def bundle_id=: (String) -> String
+
+            attr_reader country_code: String?
+
+            def country_code=: (String) -> String
+
+            attr_reader country_iso_alpha2: String?
+
+            def country_iso_alpha2=: (String) -> String
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            attr_reader phone_number_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::phone_number_type?
+
+            def phone_number_type=: (
+              Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::phone_number_type
+            ) -> Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::phone_number_type
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader regulatory_requirements: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement]?
+
+            def regulatory_requirements=: (
+              ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement]
+            ) -> ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement]
+
+            attr_reader requirements_met: bool?
+
+            def requirements_met=: (bool) -> bool
+
+            attr_reader requirements_status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::requirements_status?
+
+            def requirements_status=: (
+              Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::requirements_status
+            ) -> Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::requirements_status
+
+            attr_reader status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::status?
+
+            def status=: (
+              Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::status
+            ) -> Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::status
+
+            def initialize: (
+              ?id: String,
+              ?bundle_id: String,
+              ?country_code: String,
+              ?country_iso_alpha2: String,
+              ?phone_number: String,
+              ?phone_number_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::phone_number_type,
+              ?record_type: String,
+              ?regulatory_requirements: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement],
+              ?requirements_met: bool,
+              ?requirements_status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::requirements_status,
+              ?status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::status
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              bundle_id: String,
+              country_code: String,
+              :country_iso_alpha2 => String,
+              phone_number: String,
+              phone_number_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::phone_number_type,
+              record_type: String,
+              regulatory_requirements: ::Array[Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement],
+              requirements_met: bool,
+              requirements_status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::requirements_status,
+              status: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::status
+            }
+
+            type phone_number_type =
+              :local | :mobile | :national | :shared_cost | :toll_free
+
+            module PhoneNumberType
+              extend Telnyx::Internal::Type::Enum
+
+              LOCAL: :local
+              MOBILE: :mobile
+              NATIONAL: :national
+              SHARED_COST: :shared_cost
+              TOLL_FREE: :toll_free
+
+              def self?.values: -> ::Array[Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::phone_number_type]
+            end
+
+            type regulatory_requirement =
+              {
+                field_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement::field_type,
+                field_value: String,
+                record_type: String,
+                requirement_id: String
+              }
+
+            class RegulatoryRequirement < Telnyx::Internal::Type::BaseModel
+              attr_reader field_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement::field_type?
+
+              def field_type=: (
+                Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement::field_type
+              ) -> Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement::field_type
+
+              attr_reader field_value: String?
+
+              def field_value=: (String) -> String
+
+              attr_reader record_type: String?
+
+              def record_type=: (String) -> String
+
+              attr_reader requirement_id: String?
+
+              def requirement_id=: (String) -> String
+
+              def initialize: (
+                ?field_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement::field_type,
+                ?field_value: String,
+                ?record_type: String,
+                ?requirement_id: String
+              ) -> void
+
+              def to_hash: -> {
+                field_type: Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement::field_type,
+                field_value: String,
+                record_type: String,
+                requirement_id: String
+              }
+
+              type field_type = :textual | :datetime | :address | :document
+
+              module FieldType
+                extend Telnyx::Internal::Type::Enum
+
+                TEXTUAL: :textual
+                DATETIME: :datetime
+                ADDRESS: :address
+                DOCUMENT: :document
+
+                def self?.values: -> ::Array[Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::RegulatoryRequirement::field_type]
+              end
+            end
+
+            type requirements_status =
+              :pending
+              | :approved
+              | :cancelled
+              | :deleted
+              | :"requirement-info-exception"
+              | :"requirement-info-pending"
+              | :"requirement-info-under-review"
+
+            module RequirementsStatus
+              extend Telnyx::Internal::Type::Enum
+
+              PENDING: :pending
+              APPROVED: :approved
+              CANCELLED: :cancelled
+              DELETED: :deleted
+              REQUIREMENT_INFO_EXCEPTION: :"requirement-info-exception"
+              REQUIREMENT_INFO_PENDING: :"requirement-info-pending"
+              REQUIREMENT_INFO_UNDER_REVIEW: :"requirement-info-under-review"
+
+              def self?.values: -> ::Array[Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::requirements_status]
+            end
+
+            type status = :pending | :success | :failure
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              PENDING: :pending
+              SUCCESS: :success
+              FAILURE: :failure
+
+              def self?.values: -> ::Array[Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::PhoneNumber::status]
+            end
+          end
+
+          type status = :pending | :success | :failure
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            SUCCESS: :success
+            FAILURE: :failure
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload::status]
+          end
+        end
+      end
+
+      type meta = { attempt: Integer, delivered_to: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor attempt: Integer
+
+        attr_accessor delivered_to: String
+
+        def initialize: (attempt: Integer, delivered_to: String) -> void
+
+        def to_hash: -> { attempt: Integer, delivered_to: String }
+      end
+    end
+  end
+end

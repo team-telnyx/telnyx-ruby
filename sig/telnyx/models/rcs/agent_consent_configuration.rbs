@@ -1,0 +1,100 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_consent_configuration =
+        {
+          call_to_action: String,
+          double_opt_in: bool,
+          help_response: String,
+          opt_in_message: String,
+          opt_in_methods: ::Array[Telnyx::Rcs::AgentConsentConfiguration::OptInMethod],
+          opt_out_response: String,
+          call_to_action_media_url: String?,
+          call_to_action_url: String?,
+          double_opt_in_message: String?
+        }
+
+      class AgentConsentConfiguration < Telnyx::Internal::Type::BaseModel
+        attr_accessor call_to_action: String
+
+        attr_accessor double_opt_in: bool
+
+        attr_accessor help_response: String
+
+        attr_accessor opt_in_message: String
+
+        attr_accessor opt_in_methods: ::Array[Telnyx::Rcs::AgentConsentConfiguration::OptInMethod]
+
+        attr_accessor opt_out_response: String
+
+        attr_accessor call_to_action_media_url: String?
+
+        attr_accessor call_to_action_url: String?
+
+        attr_accessor double_opt_in_message: String?
+
+        def initialize: (
+          call_to_action: String,
+          double_opt_in: bool,
+          help_response: String,
+          opt_in_message: String,
+          opt_in_methods: ::Array[Telnyx::Rcs::AgentConsentConfiguration::OptInMethod],
+          opt_out_response: String,
+          ?call_to_action_media_url: String?,
+          ?call_to_action_url: String?,
+          ?double_opt_in_message: String?
+        ) -> void
+
+        def to_hash: -> {
+          call_to_action: String,
+          double_opt_in: bool,
+          help_response: String,
+          opt_in_message: String,
+          opt_in_methods: ::Array[Telnyx::Rcs::AgentConsentConfiguration::OptInMethod],
+          opt_out_response: String,
+          call_to_action_media_url: String?,
+          call_to_action_url: String?,
+          double_opt_in_message: String?
+        }
+
+        type opt_in_method =
+          {
+            method_type: Telnyx::Models::Rcs::AgentConsentConfiguration::OptInMethod::method_type,
+            description: String?
+          }
+
+        class OptInMethod < Telnyx::Internal::Type::BaseModel
+          attr_accessor method_type: Telnyx::Models::Rcs::AgentConsentConfiguration::OptInMethod::method_type
+
+          attr_accessor description: String?
+
+          def initialize: (
+            method_type: Telnyx::Models::Rcs::AgentConsentConfiguration::OptInMethod::method_type,
+            ?description: String?
+          ) -> void
+
+          def to_hash: -> {
+            method_type: Telnyx::Models::Rcs::AgentConsentConfiguration::OptInMethod::method_type,
+            description: String?
+          }
+
+          type method_type =
+            :SMS | :WEBSITE | :MOBILE_APP | :QR_CODE | :SALE_POINT | :OTHER
+
+          module MethodType
+            extend Telnyx::Internal::Type::Enum
+
+            SMS: :SMS
+            WEBSITE: :WEBSITE
+            MOBILE_APP: :MOBILE_APP
+            QR_CODE: :QR_CODE
+            SALE_POINT: :SALE_POINT
+            OTHER: :OTHER
+
+            def self?.values: -> ::Array[Telnyx::Models::Rcs::AgentConsentConfiguration::OptInMethod::method_type]
+          end
+        end
+      end
+    end
+  end
+end

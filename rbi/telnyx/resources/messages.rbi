@@ -2,7 +2,6 @@
 
 module Telnyx
   module Resources
-    # Messages
     class Messages
       # Send RCS messages
       sig { returns(Telnyx::Resources::Messages::Rcs) }
@@ -195,7 +194,8 @@ module Telnyx
       )
       end
 
-      # Send a group MMS message
+      # Queues an MMS addressed to multiple recipients as a group conversation. Delivery
+      # events are reported asynchronously through messaging webhooks.
       sig do
         params(
           from: String,
@@ -233,7 +233,8 @@ module Telnyx
       )
       end
 
-      # Send a long code message
+      # Queues an outbound SMS or MMS using a long-code sender. Delivery progress and
+      # final disposition are reported asynchronously through messaging webhooks.
       sig do
         params(
           from: String,
@@ -289,7 +290,8 @@ module Telnyx
       )
       end
 
-      # Send a message using number pool
+      # Queues an outbound message using a number pool. Telnyx selects an eligible
+      # sender from the pool according to its messaging profile configuration.
       sig do
         params(
           messaging_profile_id: String,
@@ -345,7 +347,8 @@ module Telnyx
       )
       end
 
-      # Send a short code message
+      # Queues an outbound SMS or MMS using a short-code sender. Delivery progress and
+      # final disposition are reported asynchronously through messaging webhooks.
       sig do
         params(
           from: String,
@@ -428,6 +431,37 @@ module Telnyx
         # Failover callback URL for delivery status updates.
         webhook_failover_url: nil,
         # Callback URL for delivery status updates.
+        webhook_url: nil,
+        request_options: {}
+      )
+      end
+
+      # Sends a WhatsApp message using a Telnyx WhatsApp-enabled number. The message
+      # body, interactive elements, media, location, and reaction content are specified
+      # in the `whatsapp_message` field. Delivery progress and final disposition are
+      # reported asynchronously through messaging webhooks.
+      sig do
+        params(
+          from: String,
+          to: String,
+          whatsapp_message: Telnyx::WhatsappMessageContent::OrHash,
+          messaging_profile_id: String,
+          type: Telnyx::MessageWhatsappParams::Type::OrSymbol,
+          webhook_url: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::MessageWhatsappResponse)
+      end
+      def whatsapp(
+        # Phone number in +E.164 format associated with Whatsapp account
+        from:,
+        # Phone number in +E.164 format
+        to:,
+        whatsapp_message:,
+        # Messaging profile ID - required if the 'from' number is not SMS-enabled
+        messaging_profile_id: nil,
+        # Message type - must be set to "WHATSAPP"
+        type: nil,
+        # The URL where webhooks related to this message will be sent.
         webhook_url: nil,
         request_options: {}
       )

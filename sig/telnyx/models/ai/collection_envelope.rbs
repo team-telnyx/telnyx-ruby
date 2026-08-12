@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type collection_envelope = { data: Telnyx::AI::Collection }
+
+      class CollectionEnvelope < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::AI::Collection?
+
+        def data=: (Telnyx::AI::Collection) -> Telnyx::AI::Collection
+
+        def initialize: (?data: Telnyx::AI::Collection) -> void
+
+        def to_hash: -> { data: Telnyx::AI::Collection }
+      end
+    end
+  end
+end

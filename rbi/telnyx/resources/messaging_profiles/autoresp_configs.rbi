@@ -5,7 +5,8 @@ module Telnyx
     class MessagingProfiles
       # Opt-Out Management
       class AutorespConfigs
-        # Create auto-response setting
+        # Creates an auto-response rule on the specified messaging profile. Matching
+        # inbound messages trigger the configured response.
         sig do
           params(
             profile_id: String,
@@ -27,7 +28,8 @@ module Telnyx
         )
         end
 
-        # Get Auto-Response Setting
+        # Returns the matching criteria and response content for the specified
+        # auto-response rule.
         sig do
           params(
             autoresp_cfg_id: String,
@@ -44,7 +46,7 @@ module Telnyx
         )
         end
 
-        # Update Auto-Response Setting
+        # Replaces the configuration of the specified auto-response rule.
         sig do
           params(
             autoresp_cfg_id: String,
@@ -73,7 +75,7 @@ module Telnyx
         )
         end
 
-        # List Auto-Response Settings
+        # Returns the auto-response rules configured for the specified messaging profile.
         sig do
           params(
             profile_id: String,
@@ -102,7 +104,7 @@ module Telnyx
         )
         end
 
-        # Delete Auto-Response Setting
+        # Deletes the specified auto-response rule from the messaging profile.
         sig do
           params(
             autoresp_cfg_id: String,

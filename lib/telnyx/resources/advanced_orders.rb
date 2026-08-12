@@ -3,7 +3,8 @@
 module Telnyx
   module Resources
     class AdvancedOrders
-      # Create Advanced Order
+      # Creates an advanced number order from the requested order configuration. The
+      # response contains the resulting advanced order and its initial state.
       #
       # @overload create(area_code: nil, comments: nil, country_code: nil, customer_reference: nil, features: nil, phone_number_type: nil, quantity: nil, requirement_group_id: nil, request_options: {})
       #
@@ -39,7 +40,8 @@ module Telnyx
         )
       end
 
-      # Get Advanced Order
+      # Returns the advanced number order identified by `order_id`, including its
+      # configuration and current state.
       #
       # @overload retrieve(order_id, request_options: {})
       #
@@ -59,7 +61,8 @@ module Telnyx
         )
       end
 
-      # List Advanced Orders
+      # Returns the advanced number orders associated with the account. Each result
+      # includes the order configuration and its current state.
       #
       # @overload list(request_options: {})
       #
@@ -77,7 +80,8 @@ module Telnyx
         )
       end
 
-      # Update Advanced Order
+      # Updates the requirement-group configuration for the specified advanced number
+      # order. The response contains the updated advanced order.
       #
       # @overload update_requirement_group(advanced_order_id, area_code: nil, comments: nil, country_code: nil, customer_reference: nil, features: nil, phone_number_type: nil, quantity: nil, requirement_group_id: nil, request_options: {})
       #

@@ -42,7 +42,7 @@ module Telnyx
       # enabled/disabled.
       sig do
         returns(
-          T.nilable(Telnyx::PhoneNumberDetailed::EmergencyStatus::TaggedSymbol)
+          T.nilable(Telnyx::PhoneNumberDetailed::EmergencyStatus::OrSymbol)
         )
       end
       attr_reader :emergency_status
@@ -61,9 +61,7 @@ module Telnyx
       # feature has an additional per-number monthly cost associated with it.
       sig do
         returns(
-          T.nilable(
-            Telnyx::PhoneNumberDetailed::InboundCallScreening::TaggedSymbol
-          )
+          T.nilable(Telnyx::PhoneNumberDetailed::InboundCallScreening::OrSymbol)
         )
       end
       attr_reader :inbound_call_screening
@@ -103,9 +101,7 @@ module Telnyx
       # The phone number's type. Note: For numbers purchased prior to July 2023 or when
       # fetching a number's details immediately after a purchase completes, the legacy
       # values `tollfree`, `shortcode` or `longcode` may be returned instead.
-      sig do
-        returns(Telnyx::PhoneNumberDetailed::PhoneNumberType::TaggedSymbol)
-      end
+      sig { returns(Telnyx::PhoneNumberDetailed::PhoneNumberType::OrSymbol) }
       attr_accessor :phone_number_type
 
       # ISO 8601 formatted date indicating when the resource was purchased.
@@ -117,7 +113,7 @@ module Telnyx
       attr_accessor :record_type
 
       # The phone number's current status.
-      sig { returns(Telnyx::PhoneNumberDetailed::Status::TaggedSymbol) }
+      sig { returns(Telnyx::PhoneNumberDetailed::Status::OrSymbol) }
       attr_accessor :status
 
       # ISO 8601 formatted date indicating when the phone number was first activated
@@ -183,9 +179,7 @@ module Telnyx
       # Indicates if the phone number was purchased or ported in. For some numbers this
       # information may not be available.
       sig do
-        returns(
-          T.nilable(Telnyx::PhoneNumberDetailed::SourceType::TaggedSymbol)
-        )
+        returns(T.nilable(Telnyx::PhoneNumberDetailed::SourceType::OrSymbol))
       end
       attr_accessor :source_type
 
@@ -334,10 +328,10 @@ module Telnyx
             external_pin: T.nilable(String),
             phone_number: String,
             phone_number_type:
-              Telnyx::PhoneNumberDetailed::PhoneNumberType::TaggedSymbol,
+              Telnyx::PhoneNumberDetailed::PhoneNumberType::OrSymbol,
             purchased_at: String,
             record_type: String,
-            status: Telnyx::PhoneNumberDetailed::Status::TaggedSymbol,
+            status: Telnyx::PhoneNumberDetailed::Status::OrSymbol,
             tags: T::Array[String],
             activated_at: T.nilable(Time),
             billing_group_id: T.nilable(String),
@@ -351,14 +345,14 @@ module Telnyx
             emergency_address_id: T.nilable(String),
             emergency_enabled: T::Boolean,
             emergency_status:
-              Telnyx::PhoneNumberDetailed::EmergencyStatus::TaggedSymbol,
+              Telnyx::PhoneNumberDetailed::EmergencyStatus::OrSymbol,
             hd_voice_enabled: T::Boolean,
             inbound_call_screening:
-              Telnyx::PhoneNumberDetailed::InboundCallScreening::TaggedSymbol,
+              Telnyx::PhoneNumberDetailed::InboundCallScreening::OrSymbol,
             messaging_profile_id: T.nilable(String),
             messaging_profile_name: T.nilable(String),
             source_type:
-              T.nilable(Telnyx::PhoneNumberDetailed::SourceType::TaggedSymbol),
+              T.nilable(Telnyx::PhoneNumberDetailed::SourceType::OrSymbol),
             t38_fax_gateway_enabled: T::Boolean,
             updated_at: String
           }

@@ -36,7 +36,7 @@ module Telnyx
         #  </ul>
         sig do
           returns(
-            T.nilable(Telnyx::SimCards::SimCardAction::ActionType::TaggedSymbol)
+            T.nilable(Telnyx::SimCards::SimCardAction::ActionType::OrSymbol)
           )
         end
         attr_reader :action_type
@@ -123,7 +123,7 @@ module Telnyx
             {
               id: String,
               action_type:
-                Telnyx::SimCards::SimCardAction::ActionType::TaggedSymbol,
+                Telnyx::SimCards::SimCardAction::ActionType::OrSymbol,
               created_at: String,
               record_type: String,
               settings: T.nilable(T::Hash[Symbol, T.anything]),
@@ -208,7 +208,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::SimCards::SimCardAction::Status::Value::TaggedSymbol
+                Telnyx::SimCards::SimCardAction::Status::Value::OrSymbol
               )
             )
           end
@@ -242,8 +242,7 @@ module Telnyx
             override.returns(
               {
                 reason: String,
-                value:
-                  Telnyx::SimCards::SimCardAction::Status::Value::TaggedSymbol
+                value: Telnyx::SimCards::SimCardAction::Status::Value::OrSymbol
               }
             )
           end

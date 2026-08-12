@@ -6,7 +6,7 @@ module Telnyx
       class Assistants
         # Configure AI assistant specifications
         class Tools
-          # Add Assistant Tool
+          # Attach an existing tool to an AI assistant.
           sig do
             params(
               tool_id: String,
@@ -23,7 +23,7 @@ module Telnyx
           )
           end
 
-          # Remove Assistant Tool
+          # Detach a tool from an AI assistant.
           sig do
             params(
               tool_id: String,

@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Rooms Recordings operations.
     class RoomRecordings
-      # View a room recording.
+      # Returns the recording identified by `room_recording_id`, including its room,
+      # session, participant, status, media details, lifecycle timestamps, and download
+      # URL.
       sig do
         params(
           room_recording_id: String,
@@ -18,7 +20,8 @@ module Telnyx
       )
       end
 
-      # View a list of room recordings.
+      # Returns a paginated list of room recordings. Filter recordings by room, session,
+      # participant, recording type, status, duration, or start and end dates.
       sig do
         params(
           filter: Telnyx::RoomRecordingListParams::Filter::OrHash,
@@ -57,7 +60,9 @@ module Telnyx
       )
       end
 
-      # Delete several room recordings in a bulk.
+      # Deletes the room recordings that match the supplied filters and returns the
+      # number of recordings affected. Filters support room, session, participant,
+      # recording type, status, duration, and start or end dates.
       sig do
         params(
           filter: Telnyx::RoomRecordingDeleteBulkParams::Filter::OrHash,

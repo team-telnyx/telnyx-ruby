@@ -54,6 +54,14 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :call_cost_in_webhooks, Telnyx::Internal::Type::Boolean
 
+      # @!attribute conversation_persistence
+      #   Whether conversation persistence is enabled for this connection. When enabled,
+      #   calls handled by the connection are transcribed, stored, and indexed. Defaults
+      #   to false.
+      #
+      #   @return [Boolean, nil]
+      optional :conversation_persistence, Telnyx::Internal::Type::Boolean
+
       # @!attribute created_at
       #   ISO 8601 formatted date indicating when the resource was created.
       #
@@ -263,7 +271,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(connection_name:, id: nil, active: nil, adjust_dtmf_timestamp: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_enabled: nil, call_cost_in_webhooks: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, ignore_dtmf_duration: nil, ignore_mark_bit: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, microsoft_teams_sbc: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, rtp_pass_codecs_on_stream_change: nil, send_normalized_timestamps: nil, tags: nil, third_party_control_enabled: nil, transport_protocol: nil, txt_name: nil, txt_ttl: nil, txt_value: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(connection_name:, id: nil, active: nil, adjust_dtmf_timestamp: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_enabled: nil, call_cost_in_webhooks: nil, conversation_persistence: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, ignore_dtmf_duration: nil, ignore_mark_bit: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, microsoft_teams_sbc: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, rtcp_settings: nil, rtp_pass_codecs_on_stream_change: nil, send_normalized_timestamps: nil, tags: nil, third_party_control_enabled: nil, transport_protocol: nil, txt_name: nil, txt_ttl: nil, txt_value: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::FqdnConnection} for more details.
       #
@@ -282,6 +290,8 @@ module Telnyx
       #   @param call_cost_enabled [Boolean] Indicates whether call cost calculation is enabled.
       #
       #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
+      #
+      #   @param conversation_persistence [Boolean] Whether conversation persistence is enabled for this connection. When enabled, c
       #
       #   @param created_at [String] ISO 8601 formatted date indicating when the resource was created.
       #

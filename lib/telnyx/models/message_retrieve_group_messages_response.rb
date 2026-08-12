@@ -6,11 +6,11 @@ module Telnyx
     class MessageRetrieveGroupMessagesResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Telnyx::Models::OutboundMessagePayload>, nil]
-      optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::OutboundMessagePayload] }
+      #   @return [Array<Telnyx::Models::MessagingOutboundMessagePayload>, nil]
+      optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingOutboundMessagePayload] }
 
       # @!method initialize(data: nil)
-      #   @param data [Array<Telnyx::Models::OutboundMessagePayload>]
+      #   @param data [Array<Telnyx::Models::MessagingOutboundMessagePayload>]
     end
   end
 end

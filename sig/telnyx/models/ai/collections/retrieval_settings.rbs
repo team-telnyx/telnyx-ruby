@@ -1,0 +1,47 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type retrieval_settings =
+          {
+            retrieval_type: Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type,
+            top_k: Integer
+          }
+
+        class RetrievalSettings < Telnyx::Internal::Type::BaseModel
+          attr_reader retrieval_type: Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type?
+
+          def retrieval_type=: (
+            Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type
+          ) -> Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type
+
+          attr_reader top_k: Integer?
+
+          def top_k=: (Integer) -> Integer
+
+          def initialize: (
+            ?retrieval_type: Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type,
+            ?top_k: Integer
+          ) -> void
+
+          def to_hash: -> {
+            retrieval_type: Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type,
+            top_k: Integer
+          }
+
+          type retrieval_type = :vector | :hybrid | :keyword
+
+          module RetrievalType
+            extend Telnyx::Internal::Type::Enum
+
+            VECTOR: :vector
+            HYBRID: :hybrid
+            KEYWORD: :keyword
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type]
+          end
+        end
+      end
+    end
+  end
+end

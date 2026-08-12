@@ -29,7 +29,7 @@ module Telnyx
             ?business_registration_type: String?,
             ?campaign_verify_authorization_token: String?,
             ?doing_business_as: String?,
-            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
+            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::messaging_toll_free_verification_entity_type?,
             ?help_message_response: String?,
             ?isv_reseller: String?,
             ?opt_in_confirmation_response: String?,
@@ -38,12 +38,12 @@ module Telnyx
             ?terms_and_condition_url: String?,
             ?webhook_url: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+          ) -> Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress
 
           def retrieve: (
             String id,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::MessagingTollfree::Verification::VerificationRequestStatus
+          ) -> Telnyx::Models::MessagingTollfree::Verification::RequestRetrieveResponse
 
           def update: (
             String id,
@@ -72,7 +72,7 @@ module Telnyx
             ?business_registration_type: String?,
             ?campaign_verify_authorization_token: String?,
             ?doing_business_as: String?,
-            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::toll_free_verification_entity_type?,
+            ?entity_type: Telnyx::Models::MessagingTollfree::Verification::messaging_toll_free_verification_entity_type?,
             ?help_message_response: String?,
             ?isv_reseller: String?,
             ?opt_in_confirmation_response: String?,
@@ -81,7 +81,7 @@ module Telnyx
             ?terms_and_condition_url: String?,
             ?webhook_url: String,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::MessagingTollfree::Verification::VerificationRequestEgress
+          ) -> Telnyx::MessagingTollfree::Verification::MessagingTollFreeVerificationVerificationRequestEgress
 
           def list: (
             page: Integer,

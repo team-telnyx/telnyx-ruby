@@ -23,7 +23,7 @@ module Telnyx
         end
         attr_reader :conversational_components
 
-        # List Whatsapp phone numbers
+        # Returns WhatsApp phone numbers linked to the authenticated Telnyx account.
         sig do
           params(
             page_number: Integer,
@@ -38,7 +38,7 @@ module Telnyx
         def list(page_number: nil, page_size: nil, request_options: {})
         end
 
-        # Delete a Whatsapp phone number
+        # Removes the specified phone number from Telnyx WhatsApp management.
         sig do
           params(
             phone_number: String,
@@ -52,7 +52,18 @@ module Telnyx
         )
         end
 
-        # Resend verification code
+        # Retrieve a list of the phone numbers registered for WhatsApp on your account.
+        sig do
+          params(
+            page_number: Integer,
+            page_size: Integer,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::Whatsapp::PhoneNumberGetResponse)
+        end
+        def get(page_number: nil, page_size: nil, request_options: {})
+        end
+
+        # Requests a new verification code for the specified WhatsApp phone number.
         sig do
           params(
             phone_number: String,
@@ -90,7 +101,7 @@ module Telnyx
         )
         end
 
-        # Submit verification code for a phone number
+        # Submits the verification code received for the specified WhatsApp phone number.
         sig do
           params(
             phone_number: String,

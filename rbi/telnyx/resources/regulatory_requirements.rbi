@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Regulatory Requirements
     class RegulatoryRequirements
-      # Retrieve regulatory requirements
+      # Returns regulatory requirements for number ordering, porting, or other supported
+      # actions. Results can be filtered by phone number, requirement group, country,
+      # number type, and action.
       sig do
         params(
           filter: Telnyx::RegulatoryRequirementRetrieveParams::Filter::OrHash,

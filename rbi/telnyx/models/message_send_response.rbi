@@ -8,21 +8,23 @@ module Telnyx
           T.any(Telnyx::Models::MessageSendResponse, Telnyx::Internal::AnyHash)
         end
 
-      sig { returns(T.nilable(Telnyx::OutboundMessagePayload)) }
+      sig { returns(T.nilable(Telnyx::MessagingOutboundMessagePayload)) }
       attr_reader :data
 
-      sig { params(data: Telnyx::OutboundMessagePayload::OrHash).void }
+      sig { params(data: Telnyx::MessagingOutboundMessagePayload::OrHash).void }
       attr_writer :data
 
       sig do
-        params(data: Telnyx::OutboundMessagePayload::OrHash).returns(
+        params(data: Telnyx::MessagingOutboundMessagePayload::OrHash).returns(
           T.attached_class
         )
       end
       def self.new(data: nil)
       end
 
-      sig { override.returns({ data: Telnyx::OutboundMessagePayload }) }
+      sig do
+        override.returns({ data: Telnyx::MessagingOutboundMessagePayload })
+      end
       def to_hash
       end
     end

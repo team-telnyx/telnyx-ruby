@@ -73,7 +73,7 @@ module Telnyx
             Telnyx::FaxSendingStarted,
             Telnyx::HostedNumberOrderEventWebhookEvent,
             Telnyx::InboundMessageWebhookEvent,
-            Telnyx::NumberOrderStatusUpdate,
+            Telnyx::NumberOrderStatusUpdateWebhookEvent,
             Telnyx::ReplacedLinkClickWebhookEvent,
             Telnyx::TranscriptionWebhookEvent
           )

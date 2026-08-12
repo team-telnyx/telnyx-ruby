@@ -18,7 +18,8 @@ module Telnyx
       )
       end
 
-      # List OTA updates
+      # Retrieve a paginated list of over-the-air (OTA) update operations for your SIM
+      # cards.
       sig do
         params(
           filter: Telnyx::OtaUpdateListParams::Filter::OrHash,

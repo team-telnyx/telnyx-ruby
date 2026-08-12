@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.embeddings.create(bucket_name: "bucket_name")
+    response = @telnyx.ai.embeddings.create(bucket_name: "Bucket Name")
 
     assert_pattern do
       response => Telnyx::AI::EmbeddingResponse
@@ -54,7 +54,7 @@ class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   def test_similarity_search_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.embeddings.similarity_search(bucket_name: "bucket_name", query: "query")
+    response = @telnyx.ai.embeddings.similarity_search(bucket_name: "Bucket Name", query: "Query")
 
     assert_pattern do
       response => Telnyx::Models::AI::EmbeddingSimilaritySearchResponse
@@ -70,7 +70,7 @@ class Telnyx::Test::Resources::AI::EmbeddingsTest < Telnyx::Test::ResourceTest
   def test_url_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.embeddings.url(bucket_name: "bucket_name", url: "url")
+    response = @telnyx.ai.embeddings.url(bucket_name: "Bucket Name", url: "URL")
 
     assert_pattern do
       response => Telnyx::AI::EmbeddingResponse

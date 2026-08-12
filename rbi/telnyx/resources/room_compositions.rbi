@@ -40,7 +40,9 @@ module Telnyx
       )
       end
 
-      # View a room composition.
+      # Returns the composition identified by `room_composition_id`, including its room
+      # and session, processing status, media details, video layout, lifecycle
+      # timestamps, and download URL.
       sig do
         params(
           room_composition_id: String,
@@ -54,7 +56,8 @@ module Telnyx
       )
       end
 
-      # View a list of room compositions.
+      # Returns a paginated list of room compositions. Filter compositions by creation
+      # date, room session, or processing status.
       sig do
         params(
           filter: Telnyx::RoomCompositionListParams::Filter::OrHash,

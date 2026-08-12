@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class Rcs
+      class Agents
+        class TestDevices
+          def create: (
+            String id,
+            phone_number: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Rcs::Agents::TestDeviceResponse
+
+          def list: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Rcs::Agents::test_device_list_response
+
+          def delete: (
+            String test_device_id,
+            id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

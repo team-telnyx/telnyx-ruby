@@ -5,7 +5,8 @@ module Telnyx
     class PhoneNumbers
       # Configure your phone numbers
       class Voice
-        # Retrieve a phone number with voice settings
+        # Returns the specified phone number together with its current voice
+        # configuration.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -28,7 +29,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::VoiceUpdateParams} for more details.
         #
-        # Update a phone number with voice settings
+        # Updates the voice configuration for the specified phone number. The response
+        # contains the phone number with its updated voice settings.
         #
         # @overload update(id, call_forwarding: nil, call_recording: nil, caller_id_name_enabled: nil, cnam_listing: nil, inbound_call_screening: nil, media_features: nil, tech_prefix_enabled: nil, translated_number: nil, usage_payment_method: nil, request_options: {})
         #
@@ -71,7 +73,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::VoiceListParams} for more details.
         #
-        # List phone numbers with voice settings
+        # Returns account phone numbers together with their voice settings. Results
+        # support pagination, sorting, and filters for number, connection name, customer
+        # reference, and voice usage payment method.
         #
         # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #

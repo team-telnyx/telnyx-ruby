@@ -5,7 +5,7 @@ module Telnyx
         type request_update_params =
           { id: String } & Telnyx::Internal::Type::request_parameters
 
-        class RequestUpdateParams < Telnyx::Models::MessagingTollfree::Verification::TfVerificationRequest
+        class RequestUpdateParams < Telnyx::Models::MessagingTollfree::Verification::MessagingTollFreeVerificationTfVerificationRequest
           extend Telnyx::Internal::Type::RequestParameters::Converter
           include Telnyx::Internal::Type::RequestParameters
 

@@ -1,0 +1,63 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type source =
+          {
+            id: String,
+            bucket_id: String,
+            collection_id: String,
+            record_type: String,
+            source_type: Telnyx::Models::AI::Collections::source_type,
+            status: String
+          }
+
+        class Source < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader bucket_id: String?
+
+          def bucket_id=: (String) -> String
+
+          attr_reader collection_id: String?
+
+          def collection_id=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader source_type: Telnyx::Models::AI::Collections::source_type?
+
+          def source_type=: (
+            Telnyx::Models::AI::Collections::source_type
+          ) -> Telnyx::Models::AI::Collections::source_type
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?bucket_id: String,
+            ?collection_id: String,
+            ?record_type: String,
+            ?source_type: Telnyx::Models::AI::Collections::source_type,
+            ?status: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            bucket_id: String,
+            collection_id: String,
+            record_type: String,
+            source_type: Telnyx::Models::AI::Collections::source_type,
+            status: String
+          }
+        end
+      end
+    end
+  end
+end

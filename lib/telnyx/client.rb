@@ -275,7 +275,6 @@ module Telnyx
     # @return [Telnyx::Resources::Media]
     attr_reader :media
 
-    # Messages
     # @return [Telnyx::Resources::Messages]
     attr_reader :messages
 
@@ -421,8 +420,8 @@ module Telnyx
     # @return [Telnyx::Resources::Queues]
     attr_reader :queues
 
-    # @return [Telnyx::Resources::RcsAgents]
-    attr_reader :rcs_agents
+    # @return [Telnyx::Resources::Rcs]
+    attr_reader :rcs
 
     # Call Recordings operations.
     # @return [Telnyx::Resources::RecordingTranscriptions]
@@ -942,7 +941,7 @@ module Telnyx
       @private_wireless_gateways = Telnyx::Resources::PrivateWirelessGateways.new(client: self)
       @public_internet_gateways = Telnyx::Resources::PublicInternetGateways.new(client: self)
       @queues = Telnyx::Resources::Queues.new(client: self)
-      @rcs_agents = Telnyx::Resources::RcsAgents.new(client: self)
+      @rcs = Telnyx::Resources::Rcs.new(client: self)
       @recording_transcriptions = Telnyx::Resources::RecordingTranscriptions.new(client: self)
       @recordings = Telnyx::Resources::Recordings.new(client: self)
       @regions = Telnyx::Resources::Regions.new(client: self)

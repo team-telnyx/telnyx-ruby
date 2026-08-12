@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module Rcs
+      type stock_symbol_brand_identifier =
+        { identifier_type: :STOCK_SYMBOL, value: String }
+
+      class StockSymbolBrandIdentifier < Telnyx::Internal::Type::BaseModel
+        attr_accessor identifier_type: :STOCK_SYMBOL
+
+        attr_accessor value: String
+
+        def initialize: (value: String, ?identifier_type: :STOCK_SYMBOL) -> void
+
+        def to_hash: -> { identifier_type: :STOCK_SYMBOL, value: String }
+      end
+    end
+  end
+end

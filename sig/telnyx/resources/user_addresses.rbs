@@ -30,7 +30,7 @@ module Telnyx
         ?page_size: Integer,
         ?sort: Telnyx::Models::UserAddressListParams::sort,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::UserAddress]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::UserAddressesUserAddress]
 
       def initialize: (client: Telnyx::Client) -> void
     end

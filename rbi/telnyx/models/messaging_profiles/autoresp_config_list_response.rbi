@@ -15,17 +15,19 @@ module Telnyx
         sig { returns(T::Array[Telnyx::MessagingProfiles::AutoRespConfig]) }
         attr_accessor :data
 
-        sig { returns(Telnyx::MessagingPaginationMeta) }
+        sig { returns(Telnyx::MessagingPaginationMeta0b38e7044b) }
         attr_reader :meta
 
-        sig { params(meta: Telnyx::MessagingPaginationMeta::OrHash).void }
+        sig do
+          params(meta: Telnyx::MessagingPaginationMeta0b38e7044b::OrHash).void
+        end
         attr_writer :meta
 
         # List of Auto-Response Settings
         sig do
           params(
             data: T::Array[Telnyx::MessagingProfiles::AutoRespConfig::OrHash],
-            meta: Telnyx::MessagingPaginationMeta::OrHash
+            meta: Telnyx::MessagingPaginationMeta0b38e7044b::OrHash
           ).returns(T.attached_class)
         end
         def self.new(data:, meta:)
@@ -35,7 +37,7 @@ module Telnyx
           override.returns(
             {
               data: T::Array[Telnyx::MessagingProfiles::AutoRespConfig],
-              meta: Telnyx::MessagingPaginationMeta
+              meta: Telnyx::MessagingPaginationMeta0b38e7044b
             }
           )
         end

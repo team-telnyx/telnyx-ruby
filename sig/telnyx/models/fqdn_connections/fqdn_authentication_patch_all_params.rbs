@@ -1,0 +1,118 @@
+module Telnyx
+  module Models
+    module FqdnConnections
+      type fqdn_authentication_patch_all_params =
+        {
+          fqdn_connection_id: String,
+          failover_url: String,
+          fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication,
+          ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method,
+          password: String,
+          txt_name: String,
+          txt_ttl: Integer,
+          txt_value: String,
+          user_name: String,
+          webhook_url: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class FqdnAuthenticationPatchAllParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor fqdn_connection_id: String
+
+        attr_reader failover_url: String?
+
+        def failover_url=: (String) -> String
+
+        attr_reader fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication?
+
+        def fqdn_outbound_authentication=: (
+          Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication
+        ) -> Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication
+
+        attr_reader ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method?
+
+        def ip_authentication_method=: (
+          Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method
+        ) -> Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method
+
+        attr_reader password: String?
+
+        def password=: (String) -> String
+
+        attr_reader txt_name: String?
+
+        def txt_name=: (String) -> String
+
+        attr_reader txt_ttl: Integer?
+
+        def txt_ttl=: (Integer) -> Integer
+
+        attr_reader txt_value: String?
+
+        def txt_value=: (String) -> String
+
+        attr_reader user_name: String?
+
+        def user_name=: (String) -> String
+
+        attr_reader webhook_url: String?
+
+        def webhook_url=: (String) -> String
+
+        def initialize: (
+          fqdn_connection_id: String,
+          ?failover_url: String,
+          ?fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication,
+          ?ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method,
+          ?password: String,
+          ?txt_name: String,
+          ?txt_ttl: Integer,
+          ?txt_value: String,
+          ?user_name: String,
+          ?webhook_url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          fqdn_connection_id: String,
+          failover_url: String,
+          fqdn_outbound_authentication: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication,
+          ip_authentication_method: Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method,
+          password: String,
+          txt_name: String,
+          txt_ttl: Integer,
+          txt_value: String,
+          user_name: String,
+          webhook_url: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type fqdn_outbound_authentication =
+          :"ip-authentication" | :"credential-authentication"
+
+        module FqdnOutboundAuthentication
+          extend Telnyx::Internal::Type::Enum
+
+          IP_AUTHENTICATION: :"ip-authentication"
+          CREDENTIAL_AUTHENTICATION: :"credential-authentication"
+
+          def self?.values: -> ::Array[Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::fqdn_outbound_authentication]
+        end
+
+        type ip_authentication_method = :token | :"p-charge-info"
+
+        module IPAuthenticationMethod
+          extend Telnyx::Internal::Type::Enum
+
+          TOKEN: :token
+          P_CHARGE_INFO: :"p-charge-info"
+
+          def self?.values: -> ::Array[Telnyx::Models::FqdnConnections::FqdnAuthenticationPatchAllParams::ip_authentication_method]
+        end
+      end
+    end
+  end
+end

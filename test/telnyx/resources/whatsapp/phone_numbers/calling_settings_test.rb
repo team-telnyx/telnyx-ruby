@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbers::CallingSettingsTest < Tel
   def test_update_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.whatsapp.phone_numbers.calling_settings.update("phone_number", enabled: true)
+    response = @telnyx.whatsapp.phone_numbers.calling_settings.update("phone_number", enabled: false)
 
     assert_pattern do
       response => Telnyx::Models::Whatsapp::PhoneNumbers::CallingSettingUpdateResponse

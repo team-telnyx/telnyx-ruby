@@ -8,7 +8,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::MessagingHostedNumberOrders::Actions) }
       attr_reader :actions
 
-      # Create a messaging hosted number order
+      # Creates an order to enable Telnyx messaging on phone numbers whose voice service
+      # remains with another carrier.
       sig do
         params(
           messaging_profile_id: String,
@@ -26,7 +27,8 @@ module Telnyx
       )
       end
 
-      # Retrieve a messaging hosted number order
+      # Returns the current state, phone numbers, and required actions for the specified
+      # hosted-messaging order.
       sig do
         params(
           id: String,
@@ -40,7 +42,8 @@ module Telnyx
       )
       end
 
-      # List messaging hosted number orders
+      # Returns hosted-messaging orders for the authenticated account. Apply the
+      # documented filters and pagination parameters to narrow the result set.
       sig do
         params(
           page_number: Integer,
@@ -69,7 +72,8 @@ module Telnyx
       )
       end
 
-      # Check hosted messaging eligibility
+      # Checks whether the supplied phone numbers are eligible for hosted messaging
+      # before an order is created.
       sig do
         params(
           phone_numbers: T::Array[String],

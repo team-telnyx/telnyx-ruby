@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module AI
+      module Collections
+        type source_type = :voice | :meeting_bot | :message | :bucket
+
+        module SourceType
+          extend Telnyx::Internal::Type::Enum
+
+          VOICE: :voice
+          MEETING_BOT: :meeting_bot
+          MESSAGE: :message
+          BUCKET: :bucket
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::Collections::source_type]
+        end
+      end
+    end
+  end
+end

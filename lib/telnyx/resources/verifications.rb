@@ -12,7 +12,8 @@ module Telnyx
       # @return [Telnyx::Resources::Verifications::Actions]
       attr_reader :actions
 
-      # Retrieve verification
+      # Returns the verification identified by ID, including its channel, phone number,
+      # Verify profile, timeout, and current status.
       #
       # @overload retrieve(verification_id, request_options: {})
       #
@@ -35,7 +36,9 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::VerificationTriggerCallParams} for more details.
       #
-      # Trigger Call verification
+      # Starts a verification for the specified phone number and delivers its code in a
+      # voice call using the selected Verify profile. Returns the pending verification
+      # record.
       #
       # @overload trigger_call(phone_number:, verify_profile_id:, custom_code: nil, extension: nil, timeout_secs: nil, request_options: {})
       #
@@ -65,7 +68,9 @@ module Telnyx
         )
       end
 
-      # Trigger Flash call verification
+      # Starts a verification for the specified phone number and places a brief call
+      # with the code embedded in the caller ID. Returns the pending verification
+      # record.
       #
       # @overload trigger_flashcall(phone_number:, verify_profile_id:, timeout_secs: nil, request_options: {})
       #
@@ -91,7 +96,8 @@ module Telnyx
         )
       end
 
-      # Trigger SMS verification
+      # Starts a verification for the specified phone number and sends its code by SMS
+      # using the selected Verify profile. Returns the pending verification record.
       #
       # @overload trigger_sms(phone_number:, verify_profile_id:, custom_code: nil, timeout_secs: nil, request_options: {})
       #
@@ -119,7 +125,9 @@ module Telnyx
         )
       end
 
-      # Trigger WhatsApp verification
+      # Starts a verification for the specified phone number and sends its code over
+      # WhatsApp using the selected Verify profile. Returns the pending verification
+      # record.
       #
       # @overload trigger_whatsapp_verification(phone_number:, verify_profile_id:, custom_code: nil, timeout_secs: nil, request_options: {})
       #

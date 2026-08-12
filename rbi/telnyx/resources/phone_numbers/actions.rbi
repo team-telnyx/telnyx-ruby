@@ -5,8 +5,9 @@ module Telnyx
     class PhoneNumbers
       # Configure your phone numbers
       class Actions
-        # Change the bundle status for a phone number (set to being in a bundle or remove
-        # from a bundle)
+        # Adds the specified phone number to a bundle or removes it from a bundle
+        # according to the requested status change. The response contains the phone number
+        # with its updated bundle state.
         sig do
           params(
             id: String,
@@ -29,7 +30,9 @@ module Telnyx
         )
         end
 
-        # Enable emergency for a phone number
+        # Associates emergency-service settings with the specified phone number. The
+        # operation returns the updated phone-number configuration when completed
+        # immediately or an accepted state when processing continues asynchronously.
         sig do
           params(
             id: String,

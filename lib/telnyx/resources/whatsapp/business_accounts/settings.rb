@@ -6,7 +6,7 @@ module Telnyx
       class BusinessAccounts
         # Manage Whatsapp business accounts
         class Settings
-          # Get WABA settings
+          # Returns account-level settings for the specified WhatsApp Business Account.
           #
           # @overload retrieve(id, request_options: {})
           #
@@ -26,7 +26,8 @@ module Telnyx
             )
           end
 
-          # Update WABA settings
+          # Updates the supplied account-level settings for the specified WhatsApp Business
+          # Account.
           #
           # @overload update(id, name: nil, timezone: nil, webhook_enabled: nil, webhook_events: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
           #

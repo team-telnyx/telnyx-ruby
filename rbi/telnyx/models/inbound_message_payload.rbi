@@ -52,9 +52,7 @@ module Telnyx
       # The direction of the message. Inbound messages are sent to you whereas outbound
       # messages are sent from you.
       sig do
-        returns(
-          T.nilable(Telnyx::InboundMessagePayload::Direction::TaggedSymbol)
-        )
+        returns(T.nilable(Telnyx::InboundMessagePayload::Direction::OrSymbol))
       end
       attr_reader :direction
 
@@ -133,9 +131,7 @@ module Telnyx
 
       # Identifies the type of the resource.
       sig do
-        returns(
-          T.nilable(Telnyx::InboundMessagePayload::RecordType::TaggedSymbol)
-        )
+        returns(T.nilable(Telnyx::InboundMessagePayload::RecordType::OrSymbol))
       end
       attr_reader :record_type
 
@@ -194,9 +190,7 @@ module Telnyx
       attr_writer :to
 
       # The type of message. This value can be either 'sms' or 'mms'.
-      sig do
-        returns(T.nilable(Telnyx::InboundMessagePayload::Type::TaggedSymbol))
-      end
+      sig { returns(T.nilable(Telnyx::InboundMessagePayload::Type::OrSymbol)) }
       attr_reader :type
 
       sig { params(type: Telnyx::InboundMessagePayload::Type::OrSymbol).void }
@@ -317,7 +311,7 @@ module Telnyx
             cost: T.nilable(Telnyx::InboundMessagePayload::Cost),
             cost_breakdown:
               T.nilable(Telnyx::InboundMessagePayload::CostBreakdown),
-            direction: Telnyx::InboundMessagePayload::Direction::TaggedSymbol,
+            direction: Telnyx::InboundMessagePayload::Direction::OrSymbol,
             encoding: String,
             errors: T::Array[Telnyx::MessagingError],
             from: Telnyx::InboundMessagePayload::From,
@@ -327,8 +321,7 @@ module Telnyx
             organization_id: String,
             parts: Integer,
             received_at: Time,
-            record_type:
-              Telnyx::InboundMessagePayload::RecordType::TaggedSymbol,
+            record_type: Telnyx::InboundMessagePayload::RecordType::OrSymbol,
             sent_at: T.nilable(Time),
             subject: T.nilable(String),
             tags: T::Array[String],
@@ -337,7 +330,7 @@ module Telnyx
             tcr_campaign_registered: T.nilable(String),
             text: String,
             to: T::Array[Telnyx::InboundMessagePayload::To],
-            type: Telnyx::InboundMessagePayload::Type::TaggedSymbol,
+            type: Telnyx::InboundMessagePayload::Type::OrSymbol,
             valid_until: T.nilable(Time),
             webhook_failover_url: T.nilable(String),
             webhook_url: T.nilable(String)
@@ -363,7 +356,7 @@ module Telnyx
         # The line-type of the receiver.
         sig do
           returns(
-            T.nilable(Telnyx::InboundMessagePayload::Cc::LineType::TaggedSymbol)
+            T.nilable(Telnyx::InboundMessagePayload::Cc::LineType::OrSymbol)
           )
         end
         attr_reader :line_type
@@ -384,7 +377,7 @@ module Telnyx
 
         sig do
           returns(
-            T.nilable(Telnyx::InboundMessagePayload::Cc::Status::TaggedSymbol)
+            T.nilable(Telnyx::InboundMessagePayload::Cc::Status::OrSymbol)
           )
         end
         attr_reader :status
@@ -419,10 +412,9 @@ module Telnyx
           override.returns(
             {
               carrier: String,
-              line_type:
-                Telnyx::InboundMessagePayload::Cc::LineType::TaggedSymbol,
+              line_type: Telnyx::InboundMessagePayload::Cc::LineType::OrSymbol,
               phone_number: String,
-              status: Telnyx::InboundMessagePayload::Cc::Status::TaggedSymbol
+              status: Telnyx::InboundMessagePayload::Cc::Status::OrSymbol
             }
           )
         end
@@ -758,9 +750,7 @@ module Telnyx
         # The line-type of the sender.
         sig do
           returns(
-            T.nilable(
-              Telnyx::InboundMessagePayload::From::LineType::TaggedSymbol
-            )
+            T.nilable(Telnyx::InboundMessagePayload::From::LineType::OrSymbol)
           )
         end
         attr_reader :line_type
@@ -782,7 +772,7 @@ module Telnyx
 
         sig do
           returns(
-            T.nilable(Telnyx::InboundMessagePayload::From::Status::TaggedSymbol)
+            T.nilable(Telnyx::InboundMessagePayload::From::Status::OrSymbol)
           )
         end
         attr_reader :status
@@ -819,9 +809,9 @@ module Telnyx
             {
               carrier: String,
               line_type:
-                Telnyx::InboundMessagePayload::From::LineType::TaggedSymbol,
+                Telnyx::InboundMessagePayload::From::LineType::OrSymbol,
               phone_number: String,
-              status: Telnyx::InboundMessagePayload::From::Status::TaggedSymbol
+              status: Telnyx::InboundMessagePayload::From::Status::OrSymbol
             }
           )
         end
@@ -1024,7 +1014,7 @@ module Telnyx
         # The line-type of the receiver.
         sig do
           returns(
-            T.nilable(Telnyx::InboundMessagePayload::To::LineType::TaggedSymbol)
+            T.nilable(Telnyx::InboundMessagePayload::To::LineType::OrSymbol)
           )
         end
         attr_reader :line_type
@@ -1045,7 +1035,7 @@ module Telnyx
 
         sig do
           returns(
-            T.nilable(Telnyx::InboundMessagePayload::To::Status::TaggedSymbol)
+            T.nilable(Telnyx::InboundMessagePayload::To::Status::OrSymbol)
           )
         end
         attr_reader :status
@@ -1080,10 +1070,9 @@ module Telnyx
           override.returns(
             {
               carrier: String,
-              line_type:
-                Telnyx::InboundMessagePayload::To::LineType::TaggedSymbol,
+              line_type: Telnyx::InboundMessagePayload::To::LineType::OrSymbol,
               phone_number: String,
-              status: Telnyx::InboundMessagePayload::To::Status::TaggedSymbol
+              status: Telnyx::InboundMessagePayload::To::Status::OrSymbol
             }
           )
         end

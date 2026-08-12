@@ -8,7 +8,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Whatsapp::TemplateCreateParams} for more details.
         #
-        # Create a Whatsapp message template
+        # Creates a WhatsApp message template for review and subsequent use in template
+        # messages.
         #
         # @overload create(category:, components:, language:, name:, waba_id:, request_options: {})
         #
@@ -38,7 +39,8 @@ module Telnyx
           )
         end
 
-        # List Whatsapp message templates
+        # Returns WhatsApp message templates owned by the authenticated account, including
+        # their current review state.
         #
         # @overload list(filter_category: nil, filter_search: nil, filter_status: nil, filter_waba_id: nil, page_number: nil, page_size: nil, request_options: {})
         #

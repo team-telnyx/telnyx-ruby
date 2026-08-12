@@ -6,7 +6,8 @@ module Telnyx
       class Campaign
         # Campaign operations
         class Usecase
-          # Get Campaign Cost
+          # Returns the upfront and monthly cost associated with the selected 10DLC campaign
+          # use case.
           #
           # @overload get_cost(usecase:, request_options: {})
           #

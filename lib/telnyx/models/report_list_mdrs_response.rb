@@ -11,12 +11,12 @@ module Telnyx
 
       # @!attribute meta
       #
-      #   @return [Telnyx::Models::Reports::PaginationMetaReporting, nil]
-      optional :meta, -> { Telnyx::Reports::PaginationMetaReporting }
+      #   @return [Telnyx::Models::Reports::ReportingPaginationMeta77109e5d17, nil]
+      optional :meta, -> { Telnyx::Reports::ReportingPaginationMeta77109e5d17 }
 
       # @!method initialize(data: nil, meta: nil)
       #   @param data [Array<Telnyx::Models::ReportListMdrsResponse::Data>]
-      #   @param meta [Telnyx::Models::Reports::PaginationMetaReporting]
+      #   @param meta [Telnyx::Models::Reports::ReportingPaginationMeta77109e5d17]
 
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute id

@@ -26,7 +26,7 @@ module Telnyx
         )
         end
 
-        # Check RCS capabilities (batch)
+        # Returns RCS capability information for multiple recipients in one request.
         sig do
           params(
             agent_id: String,
@@ -43,7 +43,8 @@ module Telnyx
         )
         end
 
-        # Check RCS capabilities
+        # Returns the RCS features supported by the specified recipient for the selected
+        # agent.
         sig do
           params(
             phone_number: String,

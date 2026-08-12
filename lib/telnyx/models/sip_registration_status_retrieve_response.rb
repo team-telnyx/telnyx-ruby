@@ -33,7 +33,7 @@ module Telnyx
       #   SIP response from the last registration attempt.
       #
       #   @return [String, nil]
-      optional :last_registration_response, String
+      optional :last_registration_response, String, nil?: true
 
       # @!attribute registered
       #   True if the endpoint is currently registered.
@@ -43,7 +43,10 @@ module Telnyx
 
       # @!attribute sip_registration_details
       #   Detailed registration information reported by the registrar. The populated
-      #   fields depend on `credential_type`.
+      #   fields depend on `credential_type`: UAC external credentials report
+      #   `auth_retries`, `uptime`, `next_action_at`, `failures`, and `sip_uri_user_host`;
+      #   telephony credentials and SIP credential connections report `ua_ip`, `ua_port`,
+      #   `transport`, and `last_modified`. All types report `expires`.
       #
       #   @return [Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails, nil]
       optional :sip_registration_details,
@@ -68,7 +71,7 @@ module Telnyx
       #
       #   @param credential_username [String] SIP username used for the registration.
       #
-      #   @param last_registration_response [String] SIP response from the last registration attempt.
+      #   @param last_registration_response [String, nil] SIP response from the last registration attempt.
       #
       #   @param registered [Boolean] True if the endpoint is currently registered.
       #
@@ -84,6 +87,7 @@ module Telnyx
 
         UAC_EXTERNAL_CREDENTIAL = :uac_external_credential
         TELEPHONY_CREDENTIAL = :telephony_credential
+        SIP_CREDENTIAL_CONNECTION = :sip_credential_connection
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -92,7 +96,7 @@ module Telnyx
       # @see Telnyx::Models::SipRegistrationStatusRetrieveResponse#sip_registration_details
       class SipRegistrationDetails < Telnyx::Internal::Type::BaseModel
         # @!attribute auth_retries
-        #   Number of authentication retries on the last attempt.
+        #   Number of authentication retries on the last attempt (uac_external_credential).
         #
         #   @return [Integer, nil]
         optional :auth_retries, Integer
@@ -104,84 +108,88 @@ module Telnyx
         optional :expires, Integer
 
         # @!attribute failures
-        #   Count of consecutive registration failures.
+        #   Count of consecutive registration failures (uac_external_credential).
         #
         #   @return [Integer, nil]
         optional :failures, Integer
 
         # @!attribute last_modified
-        #   Timestamp when the registration row was last modified (telephony_credential).
+        #   Timestamp when the registration was last modified (telephony_credential and
+        #   sip_credential_connection).
         #
         #   @return [String, nil]
         optional :last_modified, String
 
         # @!attribute next_action_at
-        #   Unix timestamp of the next scheduled registration action.
+        #   Unix timestamp of the next scheduled registration action
+        #   (uac_external_credential).
         #
         #   @return [Integer, nil]
         optional :next_action_at, Integer
 
-        # @!attribute node
-        #   Registrar node handling the registration (telephony_credential).
-        #
-        #   @return [String, nil]
-        optional :node, String
-
         # @!attribute sip_uri_user_host
-        #   SIP URI user@host of the registered contact.
+        #   SIP URI user@host of the registered contact (uac_external_credential).
         #
         #   @return [String, nil]
         optional :sip_uri_user_host, String
 
         # @!attribute transport
-        #   Transport used for the registration, e.g. UDP/TCP/TLS (telephony_credential).
+        #   Transport used for the registration, e.g. UDP/TCP/TLS (telephony_credential and
+        #   sip_credential_connection).
         #
         #   @return [String, nil]
         optional :transport, String
 
         # @!attribute ua_ip
-        #   IP address of the registered user agent (telephony_credential).
+        #   IP address of the registered user agent (telephony_credential and
+        #   sip_credential_connection).
         #
         #   @return [String, nil]
         optional :ua_ip, String
 
         # @!attribute ua_port
-        #   Port of the registered user agent (telephony_credential).
+        #   Port of the registered user agent (telephony_credential and
+        #   sip_credential_connection).
         #
         #   @return [Integer, nil]
         optional :ua_port, Integer
 
         # @!attribute uptime
-        #   Registration uptime reported by the registrar.
+        #   Registration uptime reported by the registrar (uac_external_credential).
         #
         #   @return [Integer, nil]
         optional :uptime, Integer
 
-        # @!method initialize(auth_retries: nil, expires: nil, failures: nil, last_modified: nil, next_action_at: nil, node: nil, sip_uri_user_host: nil, transport: nil, ua_ip: nil, ua_port: nil, uptime: nil)
-        #   Detailed registration information reported by the registrar. The populated
-        #   fields depend on `credential_type`.
+        # @!method initialize(auth_retries: nil, expires: nil, failures: nil, last_modified: nil, next_action_at: nil, sip_uri_user_host: nil, transport: nil, ua_ip: nil, ua_port: nil, uptime: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::SipRegistrationStatusRetrieveResponse::SipRegistrationDetails}
+        #   for more details.
         #
-        #   @param auth_retries [Integer] Number of authentication retries on the last attempt.
+        #   Detailed registration information reported by the registrar. The populated
+        #   fields depend on `credential_type`: UAC external credentials report
+        #   `auth_retries`, `uptime`, `next_action_at`, `failures`, and `sip_uri_user_host`;
+        #   telephony credentials and SIP credential connections report `ua_ip`, `ua_port`,
+        #   `transport`, and `last_modified`. All types report `expires`.
+        #
+        #   @param auth_retries [Integer] Number of authentication retries on the last attempt (uac_external_credential).
         #
         #   @param expires [Integer] Unix timestamp when the current registration expires.
         #
-        #   @param failures [Integer] Count of consecutive registration failures.
+        #   @param failures [Integer] Count of consecutive registration failures (uac_external_credential).
         #
-        #   @param last_modified [String] Timestamp when the registration row was last modified (telephony_credential).
+        #   @param last_modified [String] Timestamp when the registration was last modified (telephony*credential and sip*
         #
-        #   @param next_action_at [Integer] Unix timestamp of the next scheduled registration action.
+        #   @param next_action_at [Integer] Unix timestamp of the next scheduled registration action (uac_external_credentia
         #
-        #   @param node [String] Registrar node handling the registration (telephony_credential).
+        #   @param sip_uri_user_host [String] SIP URI user@host of the registered contact (uac_external_credential).
         #
-        #   @param sip_uri_user_host [String] SIP URI user@host of the registered contact.
+        #   @param transport [String] Transport used for the registration, e.g. UDP/TCP/TLS (telephony_credential and
         #
-        #   @param transport [String] Transport used for the registration, e.g. UDP/TCP/TLS (telephony_credential).
+        #   @param ua_ip [String] IP address of the registered user agent (telephony_credential and sip_credential
         #
-        #   @param ua_ip [String] IP address of the registered user agent (telephony_credential).
+        #   @param ua_port [Integer] Port of the registered user agent (telephony_credential and sip_credential_conne
         #
-        #   @param ua_port [Integer] Port of the registered user agent (telephony_credential).
-        #
-        #   @param uptime [Integer] Registration uptime reported by the registrar.
+        #   @param uptime [Integer] Registration uptime reported by the registrar (uac_external_credential).
       end
 
       # Human-readable registration status derived from the registrar state.

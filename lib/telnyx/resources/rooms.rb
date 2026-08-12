@@ -46,7 +46,9 @@ module Telnyx
         )
       end
 
-      # View a room.
+      # Returns the room identified by `room_id`, including its participant limit,
+      # recording and webhook configuration, and active session identifier. Use
+      # `include_sessions` to include its sessions.
       #
       # @overload retrieve(room_id, include_sessions: nil, request_options: {})
       #
@@ -111,7 +113,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomListParams} for more details.
       #
-      # View a list of rooms.
+      # Returns a paginated list of rooms. Filter the results by creation or update date
+      # and unique name, and use `include_sessions` to include each room’s sessions.
       #
       # @overload list(filter: nil, include_sessions: nil, page_number: nil, page_size: nil, request_options: {})
       #

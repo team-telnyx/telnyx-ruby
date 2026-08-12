@@ -18,6 +18,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :slug
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :filter_country_iso
+
         # Page number (1-based).
         sig { returns(T.nilable(Integer)) }
         attr_reader :page_number
@@ -35,6 +38,7 @@ module Telnyx
         sig do
           params(
             slug: String,
+            filter_country_iso: T.nilable(String),
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -42,6 +46,7 @@ module Telnyx
         end
         def self.new(
           slug:,
+          filter_country_iso: nil,
           # Page number (1-based).
           page_number: nil,
           # Number of items per page (max 100).
@@ -54,6 +59,7 @@ module Telnyx
           override.returns(
             {
               slug: String,
+              filter_country_iso: T.nilable(String),
               page_number: Integer,
               page_size: Integer,
               request_options: Telnyx::RequestOptions

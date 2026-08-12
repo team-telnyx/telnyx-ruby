@@ -12,6 +12,7 @@ module Telnyx
           pay: Telnyx::AI::PayToolParams,
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
+          update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           webhook: ::Hash[Symbol, top]
         }
         & Telnyx::Internal::Type::request_parameters
@@ -52,6 +53,12 @@ module Telnyx
 
         def timeout_ms=: (Integer) -> Integer
 
+        attr_reader update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams?
+
+        def update_dynamic_variables=: (
+          Telnyx::AI::UpdateDynamicVariablesToolParams
+        ) -> Telnyx::AI::UpdateDynamicVariablesToolParams
+
         attr_reader webhook: ::Hash[Symbol, top]?
 
         def webhook=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -66,6 +73,7 @@ module Telnyx
           ?pay: Telnyx::AI::PayToolParams,
           ?retrieval: ::Hash[Symbol, top],
           ?timeout_ms: Integer,
+          ?update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           ?webhook: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -80,6 +88,7 @@ module Telnyx
           pay: Telnyx::AI::PayToolParams,
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
+          update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           webhook: ::Hash[Symbol, top],
           request_options: Telnyx::RequestOptions
         }

@@ -98,7 +98,11 @@ module Telnyx
           page_size: Integer,
           sort: Telnyx::UserAddressListParams::Sort::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Internal::DefaultFlatPagination[Telnyx::UserAddress])
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::UserAddressesUserAddress
+          ]
+        )
       end
       def list(
         # Consolidated filter parameter (deepObject style). Originally:

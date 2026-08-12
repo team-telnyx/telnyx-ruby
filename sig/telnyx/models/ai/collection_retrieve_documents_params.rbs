@@ -1,0 +1,91 @@
+module Telnyx
+  module Models
+    module AI
+      type collection_retrieve_documents_params =
+        {
+          slug: String,
+          filter: ::Hash[Symbol, top],
+          page_number: Integer,
+          page_size: Integer,
+          query: String,
+          retrieval_type: Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type,
+          sources: String,
+          top_k: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class CollectionRetrieveDocumentsParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor slug: String
+
+        attr_reader filter: ::Hash[Symbol, top]?
+
+        def filter=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader query: String?
+
+        def query=: (String) -> String
+
+        attr_reader retrieval_type: Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type?
+
+        def retrieval_type=: (
+          Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type
+        ) -> Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type
+
+        attr_reader sources: String?
+
+        def sources=: (String) -> String
+
+        attr_reader top_k: Integer?
+
+        def top_k=: (Integer) -> Integer
+
+        def initialize: (
+          slug: String,
+          ?filter: ::Hash[Symbol, top],
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?query: String,
+          ?retrieval_type: Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type,
+          ?sources: String,
+          ?top_k: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          slug: String,
+          filter: ::Hash[Symbol, top],
+          page_number: Integer,
+          page_size: Integer,
+          query: String,
+          retrieval_type: Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type,
+          sources: String,
+          top_k: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type retrieval_type = :vector | :hybrid | :keyword
+
+        module RetrievalType
+          extend Telnyx::Internal::Type::Enum
+
+          VECTOR: :vector
+          HYBRID: :hybrid
+          KEYWORD: :keyword
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::CollectionRetrieveDocumentsParams::retrieval_type]
+        end
+      end
+    end
+  end
+end

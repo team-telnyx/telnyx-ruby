@@ -6,7 +6,8 @@ module Telnyx
       class ByPhoneNumber
         # Two factor authentication API
         class Actions
-          # Verify verification code by phone number
+          # Submits a verification code for the specified phone number and Verify profile.
+          # The response indicates whether the code was accepted or rejected.
           sig do
             params(
               phone_number: String,

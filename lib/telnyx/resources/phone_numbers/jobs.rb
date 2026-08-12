@@ -5,7 +5,8 @@ module Telnyx
     class PhoneNumbers
       # Background jobs performed over a batch of phone numbers
       class Jobs
-        # Retrieve a phone numbers job
+        # Returns the status and details of the phone-number background job identified by
+        # `id`.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -28,7 +29,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::JobListParams} for more details.
         #
-        # Lists the phone numbers jobs
+        # Returns background jobs that operate on phone numbers. Results can be filtered
+        # by job type and sorted by creation time, and include pagination metadata.
         #
         # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #

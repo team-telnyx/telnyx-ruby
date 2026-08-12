@@ -15,8 +15,9 @@ module Telnyx
       # immutable and cannot be altered once created. If you realize you need to alter
       # an address, a new record must be created with the differing address.
       class Actions
-        # Accepts this address suggestion as a new emergency address for Operator Connect
-        # and finishes the uploads of the numbers associated with it to Microsoft.
+        # Accept the validated address suggestion for this address, replacing the original
+        # values, and finish uploading the numbers associated with it to Microsoft for
+        # Operator Connect.
         #
         # @overload accept_suggestions(address_uuid, id: nil, request_options: {})
         #

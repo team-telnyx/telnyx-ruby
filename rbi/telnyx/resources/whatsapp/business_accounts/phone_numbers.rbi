@@ -5,7 +5,7 @@ module Telnyx
     class Whatsapp
       class BusinessAccounts
         class PhoneNumbers
-          # List phone numbers for a WABA
+          # Returns phone numbers registered under the specified WhatsApp Business Account.
           sig do
             params(
               id: String,
@@ -27,7 +27,8 @@ module Telnyx
           )
           end
 
-          # Initialize Whatsapp phone number verification
+          # Starts verification of a phone number for the specified WhatsApp Business
+          # Account using the requested verification method.
           sig do
             params(
               id: String,

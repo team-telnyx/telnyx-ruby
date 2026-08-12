@@ -14,7 +14,7 @@ module Telnyx
         sig { returns(Telnyx::Resources::Whatsapp::BusinessAccounts::Settings) }
         attr_reader :settings
 
-        # Get a single Whatsapp Business Account
+        # Returns the configuration and status of the specified WhatsApp Business Account.
         sig do
           params(
             id: String,
@@ -28,7 +28,7 @@ module Telnyx
         )
         end
 
-        # List Whatsapp Business Accounts
+        # Returns WhatsApp Business Accounts linked to the authenticated Telnyx account.
         sig do
           params(
             page_number: Integer,
@@ -43,7 +43,8 @@ module Telnyx
         def list(page_number: nil, page_size: nil, request_options: {})
         end
 
-        # Delete a Whatsapp Business Account
+        # Unlinks and deletes the specified WhatsApp Business Account resource from
+        # Telnyx.
         sig do
           params(
             id: String,

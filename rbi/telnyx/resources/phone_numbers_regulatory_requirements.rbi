@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Regulatory Requirements
     class PhoneNumbersRegulatoryRequirements
-      # Retrieve regulatory requirements for a list of phone numbers
+      # Returns the regulatory requirements that apply to the supplied comma-separated
+      # phone numbers. The response includes the matching requirement records and
+      # pagination metadata.
       sig do
         params(
           filter:

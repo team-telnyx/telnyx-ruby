@@ -9,12 +9,12 @@ class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::Resour
     response = @telnyx.messaging.rcs.agents.retrieve("id")
 
     assert_pattern do
-      response => Telnyx::RcsAgentResponse
+      response => Telnyx::Rcs::RcsAgentResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::RcsAgent | nil
+        data: Telnyx::Rcs::RcsAgent | nil
       }
     end
   end
@@ -25,12 +25,12 @@ class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::Resour
     response = @telnyx.messaging.rcs.agents.update("id")
 
     assert_pattern do
-      response => Telnyx::RcsAgentResponse
+      response => Telnyx::Rcs::RcsAgentResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::RcsAgent | nil
+        data: Telnyx::Rcs::RcsAgent | nil
       }
     end
   end
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::Messaging::Rcs::AgentsTest < Telnyx::Test::Resour
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::RcsAgent
+      row => Telnyx::Rcs::RcsAgent
     end
 
     assert_pattern do

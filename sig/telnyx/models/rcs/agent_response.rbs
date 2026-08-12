@@ -1,0 +1,130 @@
+module Telnyx
+  module Models
+    module Rcs
+      type agent_response =
+        {
+          agent_id: String,
+          basics_status: Telnyx::Models::Rcs::agent_submission_status?,
+          billing_category: Telnyx::Models::Rcs::AgentResponse::billing_category?,
+          brand_id: String,
+          campaign_status: Telnyx::Models::Rcs::agent_submission_status?,
+          capabilities: Telnyx::Rcs::CapabilitiesResponse,
+          carrier_approvals: ::Array[Telnyx::Rcs::CarrierApprovalResponse],
+          configuration: Telnyx::Rcs::AgentConfiguration,
+          display_name: String,
+          hosting_region: String?,
+          profile_id: String?,
+          status: Telnyx::Models::Rcs::AgentResponse::status,
+          test_devices: ::Array[Telnyx::Rcs::Agents::TestDeviceResponse],
+          testing_status: Telnyx::Models::Rcs::agent_submission_status?,
+          use_case: Telnyx::Models::Rcs::agent_use_case
+        }
+
+      class AgentResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor agent_id: String
+
+        attr_accessor basics_status: Telnyx::Models::Rcs::agent_submission_status?
+
+        attr_accessor billing_category: Telnyx::Models::Rcs::AgentResponse::billing_category?
+
+        attr_accessor brand_id: String
+
+        attr_accessor campaign_status: Telnyx::Models::Rcs::agent_submission_status?
+
+        attr_accessor capabilities: Telnyx::Rcs::CapabilitiesResponse
+
+        attr_accessor carrier_approvals: ::Array[Telnyx::Rcs::CarrierApprovalResponse]
+
+        attr_accessor configuration: Telnyx::Rcs::AgentConfiguration
+
+        attr_accessor display_name: String
+
+        attr_accessor hosting_region: String?
+
+        attr_accessor profile_id: String?
+
+        attr_accessor status: Telnyx::Models::Rcs::AgentResponse::status
+
+        attr_accessor test_devices: ::Array[Telnyx::Rcs::Agents::TestDeviceResponse]
+
+        attr_accessor testing_status: Telnyx::Models::Rcs::agent_submission_status?
+
+        attr_accessor use_case: Telnyx::Models::Rcs::agent_use_case
+
+        def initialize: (
+          agent_id: String,
+          basics_status: Telnyx::Models::Rcs::agent_submission_status?,
+          billing_category: Telnyx::Models::Rcs::AgentResponse::billing_category?,
+          brand_id: String,
+          campaign_status: Telnyx::Models::Rcs::agent_submission_status?,
+          capabilities: Telnyx::Rcs::CapabilitiesResponse,
+          carrier_approvals: ::Array[Telnyx::Rcs::CarrierApprovalResponse],
+          configuration: Telnyx::Rcs::AgentConfiguration,
+          display_name: String,
+          hosting_region: String?,
+          profile_id: String?,
+          status: Telnyx::Models::Rcs::AgentResponse::status,
+          test_devices: ::Array[Telnyx::Rcs::Agents::TestDeviceResponse],
+          testing_status: Telnyx::Models::Rcs::agent_submission_status?,
+          use_case: Telnyx::Models::Rcs::agent_use_case
+        ) -> void
+
+        def to_hash: -> {
+          agent_id: String,
+          basics_status: Telnyx::Models::Rcs::agent_submission_status?,
+          billing_category: Telnyx::Models::Rcs::AgentResponse::billing_category?,
+          brand_id: String,
+          campaign_status: Telnyx::Models::Rcs::agent_submission_status?,
+          capabilities: Telnyx::Rcs::CapabilitiesResponse,
+          carrier_approvals: ::Array[Telnyx::Rcs::CarrierApprovalResponse],
+          configuration: Telnyx::Rcs::AgentConfiguration,
+          display_name: String,
+          hosting_region: String?,
+          profile_id: String?,
+          status: Telnyx::Models::Rcs::AgentResponse::status,
+          test_devices: ::Array[Telnyx::Rcs::Agents::TestDeviceResponse],
+          testing_status: Telnyx::Models::Rcs::agent_submission_status?,
+          use_case: Telnyx::Models::Rcs::agent_use_case
+        }
+
+        type billing_category = :NON_CONVERSATIONAL | :CONVERSATIONAL
+
+        module BillingCategory
+          extend Telnyx::Internal::Type::Enum
+
+          NON_CONVERSATIONAL: :NON_CONVERSATIONAL
+          CONVERSATIONAL: :CONVERSATIONAL
+
+          def self?.values: -> ::Array[Telnyx::Models::Rcs::AgentResponse::billing_category]
+        end
+
+        type status =
+          :CREATED
+          | :SUBMITTED
+          | :VERIFYING
+          | :VERIFIED
+          | :LAUNCHING
+          | :LAUNCHED
+          | :LIVE
+          | :REJECTED
+          | :FAILED
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          CREATED: :CREATED
+          SUBMITTED: :SUBMITTED
+          VERIFYING: :VERIFYING
+          VERIFIED: :VERIFIED
+          LAUNCHING: :LAUNCHING
+          LAUNCHED: :LAUNCHED
+          LIVE: :LIVE
+          REJECTED: :REJECTED
+          FAILED: :FAILED
+
+          def self?.values: -> ::Array[Telnyx::Models::Rcs::AgentResponse::status]
+        end
+      end
+    end
+  end
+end

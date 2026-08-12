@@ -23,12 +23,15 @@ module Telnyx
 
       type data =
         {
+          hosted: bool,
           model: String,
           provider: String,
           service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType]
         }
 
       class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor hosted: bool
+
         attr_accessor model: String
 
         attr_accessor provider: String
@@ -36,12 +39,14 @@ module Telnyx
         attr_accessor service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType]
 
         def initialize: (
+          hosted: bool,
           model: String,
           provider: String,
           service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType]
         ) -> void
 
         def to_hash: -> {
+          hosted: bool,
           model: String,
           provider: String,
           service_types: ::Array[Telnyx::Models::SpeechToTextListProvidersResponse::Data::ServiceType]

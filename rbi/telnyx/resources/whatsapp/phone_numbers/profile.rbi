@@ -12,7 +12,7 @@ module Telnyx
           end
           attr_reader :photo
 
-          # Get phone number business profile
+          # Returns the business profile displayed for the specified WhatsApp phone number.
           sig do
             params(
               phone_number: String,
@@ -28,7 +28,8 @@ module Telnyx
           )
           end
 
-          # Update phone number business profile
+          # Updates the supplied business-profile fields for the specified WhatsApp phone
+          # number.
           sig do
             params(
               phone_number: String,

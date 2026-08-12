@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPLatency
-      # Global IP Latency Metrics
+      # Retrieve latency metrics measured for your Global IPs.
       sig do
         params(
           filter: Telnyx::GlobalIPLatencyRetrieveParams::Filter::OrHash,

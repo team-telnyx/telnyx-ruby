@@ -121,7 +121,7 @@ class Telnyx::Test::Resources::MessagingHostedNumberOrdersTest < Telnyx::Test::R
     response =
       @telnyx.messaging_hosted_number_orders.validate_codes(
         "id",
-        verification_codes: [{code: "code", phone_number: "phone_number"}]
+        verification_codes: [{code: "string", phone_number: "string"}]
       )
 
     assert_pattern do

@@ -45,7 +45,8 @@ module Telnyx
         )
       end
 
-      # Retrieve a suppression
+      # Returns the account-owned suppression identified by ID. Cross-account lookups
+      # and malformed IDs return `404` without exposing another account’s data.
       #
       # @overload retrieve(id, request_options: {})
       #

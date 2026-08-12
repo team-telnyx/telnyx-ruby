@@ -8,6 +8,7 @@ module Telnyx
         android_push_credential_id: String?,
         call_cost_in_webhooks: bool,
         connection_name: String,
+        conversation_persistence: bool,
         created_at: String,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
@@ -55,6 +56,10 @@ module Telnyx
       attr_reader connection_name: String?
 
       def connection_name=: (String) -> String
+
+      attr_reader conversation_persistence: bool?
+
+      def conversation_persistence=: (bool) -> bool
 
       attr_reader created_at: String?
 
@@ -151,6 +156,7 @@ module Telnyx
         ?android_push_credential_id: String?,
         ?call_cost_in_webhooks: bool,
         ?connection_name: String,
+        ?conversation_persistence: bool,
         ?created_at: String,
         ?default_on_hold_comfort_noise_enabled: bool,
         ?dtmf_type: Telnyx::Models::dtmf_type,
@@ -181,6 +187,7 @@ module Telnyx
         android_push_credential_id: String?,
         call_cost_in_webhooks: bool,
         connection_name: String,
+        conversation_persistence: bool,
         created_at: String,
         default_on_hold_comfort_noise_enabled: bool,
         dtmf_type: Telnyx::Models::dtmf_type,
