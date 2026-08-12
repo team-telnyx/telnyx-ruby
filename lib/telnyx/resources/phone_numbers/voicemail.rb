@@ -5,13 +5,21 @@ module Telnyx
     class PhoneNumbers
       # Voicemail API
       class Voicemail
-        # Create voicemail settings for a phone number
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::PhoneNumbers::VoicemailCreateParams} for more details.
         #
-        # @overload create(phone_number_id, enabled: nil, pin: nil, request_options: {})
+        # Create voicemail settings for a phone number. You can also configure a custom
+        # greeting by setting the `greeting` object: use `mode` `custom_greeting` together
+        # with a `media_name` that points to an audio file uploaded through the Media
+        # Storage API, or `mode` `default` to use the standard system greeting.
+        #
+        # @overload create(phone_number_id, enabled: nil, greeting: nil, pin: nil, request_options: {})
         #
         # @param phone_number_id [String] The ID of the phone number.
         #
         # @param enabled [Boolean] Whether voicemail is enabled.
+        #
+        # @param greeting [Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting] Controls the greeting a caller hears before leaving a voicemail. Set `mode` to `
         #
         # @param pin [String] The pin used for voicemail
         #
@@ -51,13 +59,21 @@ module Telnyx
           )
         end
 
-        # Update voicemail settings for a phone number
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::PhoneNumbers::VoicemailUpdateParams} for more details.
         #
-        # @overload update(phone_number_id, enabled: nil, pin: nil, request_options: {})
+        # Update voicemail settings for a phone number. You can also configure a custom
+        # greeting by setting the `greeting` object: use `mode` `custom_greeting` together
+        # with a `media_name` that points to an audio file uploaded through the Media
+        # Storage API, or `mode` `default` to use the standard system greeting.
+        #
+        # @overload update(phone_number_id, enabled: nil, greeting: nil, pin: nil, request_options: {})
         #
         # @param phone_number_id [String] The ID of the phone number.
         #
         # @param enabled [Boolean] Whether voicemail is enabled.
+        #
+        # @param greeting [Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting] Controls the greeting a caller hears before leaving a voicemail. Set `mode` to `
         #
         # @param pin [String] The pin used for voicemail
         #
