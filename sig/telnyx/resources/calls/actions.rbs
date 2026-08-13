@@ -43,7 +43,7 @@ module Telnyx
           ?webhook_retries_policies: ::Hash[Symbol, Telnyx::Calls::ActionAnswerParams::WebhookRetriesPolicy],
           ?webhook_url: String,
           ?webhook_url_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_url_method,
-          ?webhook_urls: ::Hash[Symbol, String],
+          ?webhook_urls: ::Hash[Symbol, ::Array[String]],
           ?webhook_urls_method: Telnyx::Models::Calls::ActionAnswerParams::webhook_urls_method,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionAnswerResponse
@@ -536,7 +536,7 @@ module Telnyx
           ?webhook_retries_policies: ::Hash[Symbol, Telnyx::Calls::ActionTransferParams::WebhookRetriesPolicy],
           ?webhook_url: String,
           ?webhook_url_method: Telnyx::Models::Calls::ActionTransferParams::webhook_url_method,
-          ?webhook_urls: ::Hash[Symbol, String],
+          ?webhook_urls: ::Hash[Symbol, ::Array[String]],
           ?webhook_urls_method: Telnyx::Models::Calls::ActionTransferParams::webhook_urls_method,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionTransferResponse

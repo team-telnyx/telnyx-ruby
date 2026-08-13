@@ -122,7 +122,7 @@ module Telnyx
         #
         # @param webhook_url_method [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLMethod] HTTP request type used for `webhook_url`.
         #
-        # @param webhook_urls [Hash{Symbol=>String}] A map of event types to webhook URLs. When an event of the specified type occurs
+        # @param webhook_urls [Hash{Symbol=>Array<String>}] A map of event types to arrays of webhook URLs. When an event of the specified t
         #
         # @param webhook_urls_method [Symbol, Telnyx::Models::Calls::ActionAnswerParams::WebhookURLsMethod] HTTP request method to invoke `webhook_urls`.
         #
@@ -1892,7 +1892,7 @@ module Telnyx
         #
         # @param webhook_url_method [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLMethod] HTTP request type used for `webhook_url`.
         #
-        # @param webhook_urls [Hash{Symbol=>String}] A map of event types to webhook URLs. When an event of the specified type occurs
+        # @param webhook_urls [Hash{Symbol=>Array<String>}] A map of event types to arrays of webhook URLs. When an event of the specified t
         #
         # @param webhook_urls_method [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLsMethod] HTTP request method to invoke `webhook_urls`.
         #
