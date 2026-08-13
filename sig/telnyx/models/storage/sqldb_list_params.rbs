@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    module Storage
+      type sqldb_list_params =
+        {
+          filter_name: String,
+          filter_status: Telnyx::Models::Storage::SqldbListParams::filter_status,
+          page_number: Integer,
+          page_size: Integer,
+          sort: Telnyx::Models::Storage::SqldbListParams::sort
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class SqldbListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter_name: String?
+
+        def filter_name=: (String) -> String
+
+        attr_reader filter_status: Telnyx::Models::Storage::SqldbListParams::filter_status?
+
+        def filter_status=: (
+          Telnyx::Models::Storage::SqldbListParams::filter_status
+        ) -> Telnyx::Models::Storage::SqldbListParams::filter_status
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        attr_reader sort: Telnyx::Models::Storage::SqldbListParams::sort?
+
+        def sort=: (
+          Telnyx::Models::Storage::SqldbListParams::sort
+        ) -> Telnyx::Models::Storage::SqldbListParams::sort
+
+        def initialize: (
+          ?filter_name: String,
+          ?filter_status: Telnyx::Models::Storage::SqldbListParams::filter_status,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort: Telnyx::Models::Storage::SqldbListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter_name: String,
+          filter_status: Telnyx::Models::Storage::SqldbListParams::filter_status,
+          page_number: Integer,
+          page_size: Integer,
+          sort: Telnyx::Models::Storage::SqldbListParams::sort,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter_status =
+          :pending
+          | :provision_ok
+          | :provision_failed
+          | :deleting
+          | :delete_failed
+
+        module FilterStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          PROVISION_OK: :provision_ok
+          PROVISION_FAILED: :provision_failed
+          DELETING: :deleting
+          DELETE_FAILED: :delete_failed
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::SqldbListParams::filter_status]
+        end
+
+        type sort =
+          :name | :"-name" | :status | :"-status" | :created_at | :"-created_at"
+
+        module Sort
+          extend Telnyx::Internal::Type::Enum
+
+          NAME: :name
+          NAME_DESC: :"-name"
+          STATUS: :status
+          STATUS_DESC: :"-status"
+          CREATED_AT: :created_at
+          CREATED_AT_DESC: :"-created_at"
+
+          def self?.values: -> ::Array[Telnyx::Models::Storage::SqldbListParams::sort]
+        end
+      end
+    end
+  end
+end
