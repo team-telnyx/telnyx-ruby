@@ -23,6 +23,8 @@ class CiRunnerPolicyTest(unittest.TestCase):
         worker = job_block(self.workflow, "lint-steep-worker", "lint-steep-staging")
         self.assertIn("runs-on: ubuntu-latest", worker)
         self.assertIn("github.event_name == 'workflow_dispatch'", worker)
+        self.assertIn("github.ref == 'refs/heads/next'", worker)
+        self.assertNotIn("github.ref == 'refs/heads/master'", worker)
         self.assertIn("run_steep_shard.py", worker)
         self.assertIn("contents: read", worker)
         self.assertIn("persist-credentials: false", worker)
@@ -52,6 +54,7 @@ class CiRunnerPolicyTest(unittest.TestCase):
         self.assertIn("TARGET_SHA:", steep)
         self.assertIn("CORRELATION_ID:", steep)
         self.assertIn("PRIMARY_WORKER_REF:", steep)
+        self.assertIn("PRIMARY_WORKER_REF: next", steep)
         self.assertIn("Run fork-safe production Steep check", steep)
         self.assertIn("exit 1", steep)
 

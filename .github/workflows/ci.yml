@@ -12,8 +12,8 @@ on:
       - 'stl-preview-head/**'
       - 'stl-preview-base/**'
   # Ref: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch
-  # workflow_dispatch runs triggered with GITHUB_TOKEN are explicitly supported. Worker runs use
-  # the protected default-branch workflow and check out the immutable target SHA without secrets.
+  # workflow_dispatch runs triggered with GITHUB_TOKEN are explicitly supported. Workers run on
+  # the non-default `next` cache scope and check out the immutable target SHA without secrets.
   workflow_dispatch:
     inputs:
       target_sha:
@@ -55,7 +55,9 @@ jobs:
     timeout-minutes: 60
     name: Steep worker
     runs-on: ubuntu-latest
-    if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'workflow_dispatch'
+    # Never execute PR-controlled code in the default-branch cache scope. The feature branch is a
+    # one-time rollout path; the durable worker control branch is `next`.
+    if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/next' || github.ref == 'refs/heads/ci/steep-single-check')
     permissions:
       contents: read
     steps:
@@ -129,7 +131,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
           CORRELATION_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.event.pull_request.head.sha || github.sha }}
-          PRIMARY_WORKER_REF: ${{ github.event.repository.default_branch }}
+          PRIMARY_WORKER_REF: next
           ROLLOUT_FALLBACK_REF: ${{ github.head_ref || github.ref_name }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_API_URL: ${{ github.api_url }}
