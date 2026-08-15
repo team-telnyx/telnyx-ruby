@@ -48,12 +48,11 @@ class CiRunnerPolicyTest(unittest.TestCase):
         self.assertIn("python3 .github/scripts/test_run_steep_shards.py", rubocop)
         self.assertIn("name: lint (rubocop)", rubocop)
 
-    def test_push_ci_preserves_existing_feature_branch_coverage(self) -> None:
+    def test_push_ci_runs_only_on_long_lived_branches_to_avoid_duplicate_pr_checks(self) -> None:
         trigger = self.workflow.split("  push:\n", 1)[1].split("  pull_request:\n", 1)[0]
-        self.assertIn("- '**'", trigger)
-        for excluded in ("integrated/**", "stl-preview-head/**", "stl-preview-base/**", "generated", "codegen/**"):
-            self.assertIn(f"- '!{excluded}'", trigger)
-        self.assertIn("- 'codegen/stl/**'", trigger)
+        self.assertNotIn("- '**'", trigger)
+        for branch in ("main", "master", "next", "codegen/stl/**"):
+            self.assertIn(f"- '{branch}'", trigger)
 
     def test_serial_production_signature_job_is_removed(self) -> None:
         self.assertNotIn("  lint-steep-signatures:\n", self.workflow)
