@@ -1,19 +1,16 @@
-name: CI
-run-name: ${{ github.event_name == 'workflow_dispatch' && format('Steep worker {0} · shard {1}', inputs.correlation_id, inputs.shard_index) || github.ref_name }}
+name: Steep Worker Control
+run-name: ${{ github.event_name == 'workflow_dispatch' && format('Steep worker {0} · shard {1}', inputs.correlation_id, inputs.shard_index) || format('Worker control PR · {0}', github.head_ref) }}
 on:
-  push:
-    branches:
-      - 'main'
-      - 'master'
-      - 'next'
-      - 'codegen/stl/**'
   pull_request:
-    branches-ignore:
-      - 'stl-preview-head/**'
-      - 'stl-preview-base/**'
-  # Ref: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch
-  # workflow_dispatch runs triggered with GITHUB_TOKEN are explicitly supported. Workers run on
-  # a dedicated non-default cache scope and check out the immutable target SHA without secrets.
+    branches:
+      - 'ci/steep-workers'
+    paths:
+      - '.github/workflows/ci.yml'
+      - '.github/scripts/run_steep_shard.py'
+      - '.github/scripts/run_steep_shards.py'
+      - '.github/scripts/test_run_steep_shard.py'
+      - '.github/scripts/test_run_steep_shards.py'
+      - '.github/scripts/test_steep_worker_control.py'
   workflow_dispatch:
     inputs:
       target_sha:
@@ -29,35 +26,31 @@ on:
         required: true
         type: string
 
+permissions: {}
+
 jobs:
-  lint-rubocop:
-    timeout-minutes: 10
-    name: lint (rubocop)
+  control-policy:
+    if: github.event_name == 'pull_request'
+    name: worker control policy
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    timeout-minutes: 5
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Validate CI runner policy
+        with:
+          persist-credentials: false
+      - name: Validate worker control plane
         run: |-
-          python3 .github/scripts/test_ci_runner_policy.py
+          python3 .github/scripts/test_steep_worker_control.py
           python3 .github/scripts/test_run_steep_shard.py
           python3 .github/scripts/test_run_steep_shards.py
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
-        with:
-          bundler-cache: false
-      - run: |-
-          bundle install
-      - name: Run rubocop
-        run: bundle exec rake lint:rubocop
 
-  lint-steep-worker:
-    timeout-minutes: 60
+  steep-worker:
+    if: github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/ci/steep-workers' || github.ref == 'refs/heads/ci/install-steep-workers')
     name: Steep worker
     runs-on: ubuntu-latest
-    # Never execute PR-controlled code in the default-branch cache scope. The feature branches are
-    # one-time rollout paths; the durable control branch runs no privileged workflows or secrets.
-    if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/ci/steep-workers' || github.ref == 'refs/heads/ci/steep-single-check' || github.ref == 'refs/heads/ci/install-steep-workers')
+    timeout-minutes: 60
     permissions:
       contents: read
     steps:
@@ -70,9 +63,6 @@ jobs:
           [[ "$TARGET_SHA" =~ ^[0-9a-f]{40}$ ]]
           [[ "$SHARD_INDEX" =~ ^[0-3]$ ]]
           [[ "$CORRELATION_ID" =~ ^[0-9]+-[0-9]+-[0-9a-f]{40}$ ]]
-      # codeql[actions/cache-poisoning/poisonable-step]
-      # Safe: branch-gated above to an isolated non-default cache scope, with no secrets,
-      # no privileged cache consumers, a read-only token, and no persisted credentials.
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ inputs.target_sha }}
@@ -81,17 +71,11 @@ jobs:
         env:
           TARGET_SHA: ${{ inputs.target_sha }}
         run: test "$(git rev-parse HEAD)" = "$TARGET_SHA"
-      # codeql[actions/cache-poisoning/poisonable-step]
-      # Safe for the same isolated-scope reason documented above; Bundler caching is disabled.
       - name: Set up Ruby
         uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
           bundler-cache: false
-      # codeql[actions/cache-poisoning/poisonable-step]
-      # Safe for the same isolated-scope reason documented above.
       - run: bundle install
-      # codeql[actions/cache-poisoning/poisonable-step]
-      # Safe for the same isolated-scope reason documented above.
       - name: Run Steep shard
         env:
           SHARD_INDEX: ${{ inputs.shard_index }}
@@ -100,105 +84,3 @@ jobs:
             --shard-index "$SHARD_INDEX" \
             --shard-count 4 \
             --jobs 2
-
-  lint-steep-staging:
-    timeout-minutes: 60
-    name: lint (steep staging)
-    runs-on: telnyx-2xlarge
-    if: github.repository == 'team-telnyx/telnyx-ruby-staging' && (github.event_name == 'push' || github.event_name == 'pull_request')
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Fix tool cache permissions
-        run: sudo mkdir -p /opt/hostedtoolcache && sudo chmod 777 /opt/hostedtoolcache
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
-        with:
-          bundler-cache: false
-      - run: bundle install
-      - name: Run steep
-        run: bundle exec steep check --jobs=4
-
-  lint-steep:
-    timeout-minutes: 60
-    name: lint (steep)
-    runs-on: ubuntu-latest
-    if: always() && (github.event_name == 'push' || github.event_name == 'pull_request')
-    needs:
-      - lint-steep-staging
-    permissions:
-      actions: write
-      contents: read
-    steps:
-      - name: Check out CI orchestration
-        if: github.repository == 'team-telnyx/telnyx-ruby' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-      - name: Run production Steep workers
-        if: github.repository == 'team-telnyx/telnyx-ruby' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-          CORRELATION_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.event.pull_request.head.sha || github.sha }}
-          PRIMARY_WORKER_REF: ci/steep-workers
-          ROLLOUT_FALLBACK_REF: ${{ github.head_ref || github.ref_name }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_API_URL: ${{ github.api_url }}
-          GITHUB_STEP_SUMMARY: ${{ github.step_summary }}
-        run: python3 .github/scripts/run_steep_shards.py
-      - name: Run fork-safe production Steep check
-        if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-      - name: Set up Ruby for fork-safe check
-        if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
-        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
-        with:
-          bundler-cache: false
-      - name: Run fork-safe production Steep check
-        if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
-        run: |-
-          bundle install
-          bundle exec steep check --jobs=2
-      - name: Verify staging Steep check
-        if: github.repository == 'team-telnyx/telnyx-ruby-staging'
-        env:
-          STAGING_RESULT: ${{ needs.lint-steep-staging.result }}
-        run: test "$STAGING_RESULT" = "success"
-      - name: Reject unsupported repository
-        if: github.repository != 'team-telnyx/telnyx-ruby' && github.repository != 'team-telnyx/telnyx-ruby-staging'
-        run: exit 1
-
-  lint-sorbet:
-    timeout-minutes: 20
-    name: lint (sorbet)
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
-        with:
-          bundler-cache: false
-      - run: |-
-          bundle install
-      - name: Run sorbet
-        run: bundle exec rake typecheck:sorbet
-
-  test:
-    timeout-minutes: 10
-    name: test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
-        with:
-          bundler-cache: false
-      - run: |-
-          bundle install
-
-      - name: Run tests
-        run: ./scripts/test
