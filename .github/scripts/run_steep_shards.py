@@ -138,7 +138,6 @@ def write_summary(summary_path: Optional[Path], runs: Dict[int, dict]) -> None:
 def orchestrate(
     api,
     worker_ref: str,
-    rollout_fallback_ref: str,
     target_sha: str,
     correlation_id: str,
     summary_path: Optional[Path],
@@ -146,23 +145,16 @@ def orchestrate(
     timeout_seconds: float = 3300,
 ) -> bool:
     validate_inputs(target_sha, correlation_id, worker_ref)
-    dispatched_ref = worker_ref
     inputs = {
         "target_sha": target_sha,
         "shard_index": "0",
         "correlation_id": correlation_id,
     }
-    try:
-        api.dispatch(dispatched_ref, inputs)
-    except ApiError as error:
-        if error.status != 422 or not rollout_fallback_ref:
-            raise
-        dispatched_ref = rollout_fallback_ref
-        api.dispatch(dispatched_ref, inputs)
+    api.dispatch(worker_ref, inputs)
 
     for shard in range(1, SHARD_COUNT):
         api.dispatch(
-            dispatched_ref,
+            worker_ref,
             {
                 "target_sha": target_sha,
                 "shard_index": str(shard),
@@ -233,7 +225,6 @@ def main() -> int:
     orchestrate(
         api=api,
         worker_ref=os.environ["PRIMARY_WORKER_REF"],
-        rollout_fallback_ref=os.environ.get("ROLLOUT_FALLBACK_REF", ""),
         target_sha=os.environ["TARGET_SHA"],
         correlation_id=os.environ["CORRELATION_ID"],
         summary_path=Path(summary) if summary else None,

@@ -61,8 +61,7 @@ class RunSteepShardsTest(unittest.TestCase):
             summary = Path(directory) / "summary.md"
             result = module.orchestrate(
                 api=api,
-                worker_ref="master",
-                rollout_fallback_ref="feature",
+                worker_ref="ci/steep-workers",
                 target_sha="a" * 40,
                 correlation_id=correlation,
                 summary_path=summary,
@@ -71,7 +70,9 @@ class RunSteepShardsTest(unittest.TestCase):
             )
 
             self.assertTrue(result)
-            self.assertEqual([ref for ref, _ in api.dispatched], ["master"] * 4)
+            self.assertEqual(
+                [ref for ref, _ in api.dispatched], ["ci/steep-workers"] * 4
+            )
             self.assertEqual(
                 [inputs["shard_index"] for _, inputs in api.dispatched],
                 ["0", "1", "2", "3"],
@@ -99,8 +100,7 @@ class RunSteepShardsTest(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, r"\[2\]"):
                 module.orchestrate(
                     api=api,
-                    worker_ref="master",
-                    rollout_fallback_ref="feature",
+                    worker_ref="ci/steep-workers",
                     target_sha="a" * 40,
                     correlation_id="123-1-" + "a" * 40,
                     summary_path=summary,
@@ -131,8 +131,7 @@ class RunSteepShardsTest(unittest.TestCase):
         with self.assertRaisesRegex(TimeoutError, r"\[0, 1, 2, 3\]"):
             module.orchestrate(
                 api=api,
-                worker_ref="master",
-                rollout_fallback_ref="feature",
+                worker_ref="ci/steep-workers",
                 target_sha="a" * 40,
                 correlation_id="123-1-" + "a" * 40,
                 summary_path=None,
@@ -141,27 +140,25 @@ class RunSteepShardsTest(unittest.TestCase):
             )
         self.assertEqual(api.cancelled, [100, 101])
 
-    def test_rollout_falls_back_only_when_default_branch_dispatch_is_unavailable(self):
+    def test_dispatch_failure_is_fail_closed_without_untrusted_ref_fallback(self):
         module = load_module()
 
-        class RolloutApi(FakeActionsApi):
+        class UnavailableApi(FakeActionsApi):
             def dispatch(self, ref, inputs):
-                if ref == "master":
-                    raise module.ApiError(422, "workflow_dispatch is not active yet")
-                super().dispatch(ref, inputs)
+                raise module.ApiError(422, "workflow_dispatch is unavailable")
 
-        api = RolloutApi()
-        module.orchestrate(
-            api=api,
-            worker_ref="master",
-            rollout_fallback_ref="feature",
-            target_sha="a" * 40,
-            correlation_id="123-1-" + "a" * 40,
-            summary_path=None,
-            poll_seconds=0,
-            timeout_seconds=1,
-        )
-        self.assertEqual([ref for ref, _ in api.dispatched], ["feature"] * 4)
+        api = UnavailableApi()
+        with self.assertRaises(module.ApiError):
+            module.orchestrate(
+                api=api,
+                worker_ref="ci/steep-workers",
+                target_sha="a" * 40,
+                correlation_id="123-1-" + "a" * 40,
+                summary_path=None,
+                poll_seconds=0,
+                timeout_seconds=1,
+            )
+        self.assertEqual(api.dispatched, [])
 
 
 if __name__ == "__main__":
