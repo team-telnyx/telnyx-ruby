@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     # Never execute PR-controlled code in the default-branch cache scope. The feature branch is a
     # one-time rollout path; the durable worker control branch is `next`.
-    if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/next' || github.ref == 'refs/heads/ci/steep-single-check')
+    if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/next' || github.ref == 'refs/heads/ci/steep-single-check' || github.ref == 'refs/heads/ci/steep-worker-next')
     permissions:
       contents: read
     steps:
