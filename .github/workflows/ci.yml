@@ -22,6 +22,10 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Validate CI runner policy
+        run: |-
+          python3 .github/scripts/test_ci_runner_policy.py
+          python3 .github/scripts/test_run_steep_shard.py
       - name: Set up Ruby
         uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
@@ -31,11 +35,34 @@ jobs:
       - name: Run rubocop
         run: bundle exec rake lint:rubocop
 
-  lint-steep:
+  lint-steep-shards:
     timeout-minutes: 60
-    name: lint (steep)
-    runs-on: ${{ github.repository == 'team-telnyx/telnyx-ruby-staging' && 'telnyx-2xlarge' || 'ubuntu-latest' }}
-    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    name: lint (steep shard ${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    if: github.repository == 'team-telnyx/telnyx-ruby' && (github.event_name == 'push' || github.event_name == 'pull_request')
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
+        with:
+          bundler-cache: false
+      - run: bundle install
+      - name: Run Steep shard
+        run: |-
+          python3 .github/scripts/run_steep_shard.py \
+            --shard-index "${{ matrix.shard }}" \
+            --shard-count 4 \
+            --jobs 2
+
+  lint-steep-staging:
+    timeout-minutes: 60
+    name: lint (steep staging)
+    runs-on: telnyx-2xlarge
+    if: github.repository == 'team-telnyx/telnyx-ruby-staging' && (github.event_name == 'push' || github.event_name == 'pull_request')
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Fix tool cache permissions
@@ -44,10 +71,34 @@ jobs:
         uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
           bundler-cache: false
-      - run: |-
-          bundle install
+      - run: bundle install
       - name: Run steep
         run: bundle exec steep check --jobs=4
+
+  lint-steep:
+    timeout-minutes: 5
+    name: lint (steep)
+    runs-on: ubuntu-latest
+    if: always()
+    needs:
+      - lint-steep-shards
+      - lint-steep-staging
+    steps:
+      - name: Verify repository-specific Steep checks
+        env:
+          SHARDS_RESULT: ${{ needs.lint-steep-shards.result }}
+          STAGING_RESULT: ${{ needs.lint-steep-staging.result }}
+        run: |-
+          if [[ "${{ github.repository }}" == "team-telnyx/telnyx-ruby" ]]; then
+            [[ "$SHARDS_RESULT" == "success" ]] || exit 1
+            [[ "$STAGING_RESULT" == "skipped" ]] || exit 1
+          elif [[ "${{ github.repository }}" == "team-telnyx/telnyx-ruby-staging" ]]; then
+            [[ "$SHARDS_RESULT" == "skipped" ]] || exit 1
+            [[ "$STAGING_RESULT" == "success" ]] || exit 1
+          else
+            echo "Unsupported repository for Steep CI: ${{ github.repository }}"
+            exit 1
+          fi
 
   lint-sorbet:
     timeout-minutes: 20
