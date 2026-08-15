@@ -185,6 +185,9 @@ module Telnyx
       module ManagedAccounts
       end
 
+      module MeetingSessions
+      end
+
       module Messages
       end
 

@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type meeting_session_response = { data: Telnyx::MeetingSession }
+
+    class MeetingSessionResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::MeetingSession
+
+      def initialize: (data: Telnyx::MeetingSession) -> void
+
+      def to_hash: -> { data: Telnyx::MeetingSession }
+    end
+  end
+end

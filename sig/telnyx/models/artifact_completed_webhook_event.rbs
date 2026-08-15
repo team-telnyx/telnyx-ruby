@@ -1,0 +1,120 @@
+module Telnyx
+  module Models
+    type artifact_completed_webhook_event =
+      {
+        id: String,
+        data: Telnyx::ArtifactCompletedWebhookEvent::Data,
+        event: Telnyx::Models::ArtifactCompletedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+    class ArtifactCompletedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor data: Telnyx::ArtifactCompletedWebhookEvent::Data
+
+      attr_accessor event: Telnyx::Models::ArtifactCompletedWebhookEvent::event
+
+      attr_accessor occurred_at: Time
+
+      attr_accessor version: String
+
+      def initialize: (
+        id: String,
+        data: Telnyx::ArtifactCompletedWebhookEvent::Data,
+        event: Telnyx::Models::ArtifactCompletedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        data: Telnyx::ArtifactCompletedWebhookEvent::Data,
+        event: Telnyx::Models::ArtifactCompletedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+      type data =
+        {
+          artifact_id: String,
+          content: Telnyx::ArtifactCompletedWebhookEvent::Data::Content,
+          model_provenance: Telnyx::ArtifactCompletedWebhookEvent::Data::ModelProvenance,
+          session_id: String,
+          type: Telnyx::Models::ArtifactCompletedWebhookEvent::Data::type_
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor artifact_id: String
+
+        attr_accessor content: Telnyx::ArtifactCompletedWebhookEvent::Data::Content
+
+        attr_accessor model_provenance: Telnyx::ArtifactCompletedWebhookEvent::Data::ModelProvenance
+
+        attr_accessor session_id: String
+
+        attr_accessor type: Telnyx::Models::ArtifactCompletedWebhookEvent::Data::type_
+
+        def initialize: (
+          artifact_id: String,
+          content: Telnyx::ArtifactCompletedWebhookEvent::Data::Content,
+          model_provenance: Telnyx::ArtifactCompletedWebhookEvent::Data::ModelProvenance,
+          session_id: String,
+          type: Telnyx::Models::ArtifactCompletedWebhookEvent::Data::type_
+        ) -> void
+
+        def to_hash: -> {
+          artifact_id: String,
+          content: Telnyx::ArtifactCompletedWebhookEvent::Data::Content,
+          model_provenance: Telnyx::ArtifactCompletedWebhookEvent::Data::ModelProvenance,
+          session_id: String,
+          type: Telnyx::Models::ArtifactCompletedWebhookEvent::Data::type_
+        }
+
+        type content = { text: String }
+
+        class Content < Telnyx::Internal::Type::BaseModel
+          attr_accessor text: String
+
+          def initialize: (text: String) -> void
+
+          def to_hash: -> { text: String }
+        end
+
+        type model_provenance = { model: String, provider: String }
+
+        class ModelProvenance < Telnyx::Internal::Type::BaseModel
+          attr_accessor model: String
+
+          attr_accessor provider: String
+
+          def initialize: (model: String, provider: String) -> void
+
+          def to_hash: -> { model: String, provider: String }
+        end
+
+        type type_ = :summary | :action_items
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          SUMMARY: :summary
+          ACTION_ITEMS: :action_items
+
+          def self?.values: -> ::Array[Telnyx::Models::ArtifactCompletedWebhookEvent::Data::type_]
+        end
+      end
+
+      type event = :"artifact.completed"
+
+      module Event
+        extend Telnyx::Internal::Type::Enum
+
+        ARTIFACT_COMPLETED: :"artifact.completed"
+
+        def self?.values: -> ::Array[Telnyx::Models::ArtifactCompletedWebhookEvent::event]
+      end
+    end
+  end
+end

@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    type meeting_session_retrieve_events_params =
+      { id: String, after: Integer, limit: Integer }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MeetingSessionRetrieveEventsParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_reader after: Integer?
+
+      def after=: (Integer) -> Integer
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      def initialize: (
+        id: String,
+        ?after: Integer,
+        ?limit: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        after: Integer,
+        limit: Integer,
+        request_options: Telnyx::RequestOptions
+      }
+    end
+  end
+end

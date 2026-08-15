@@ -1,0 +1,222 @@
+module Telnyx
+  module Models
+    type meeting_session_create_params =
+      {
+        meeting_url: String,
+        assistant: Telnyx::MeetingSessionCreateParams::Assistant,
+        avatar: Telnyx::MeetingSessionCreateParams::Avatar,
+        barge_in: bool,
+        bot_name: String,
+        camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
+        idempotency_key: String,
+        join_at: Time,
+        metadata: ::Hash[Symbol, top],
+        speak_on_enter: String,
+        summarize_on_end: bool,
+        voice: String,
+        webhook_url: String
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MeetingSessionCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor meeting_url: String
+
+      attr_reader assistant: Telnyx::MeetingSessionCreateParams::Assistant?
+
+      def assistant=: (
+        Telnyx::MeetingSessionCreateParams::Assistant
+      ) -> Telnyx::MeetingSessionCreateParams::Assistant
+
+      attr_reader avatar: Telnyx::MeetingSessionCreateParams::Avatar?
+
+      def avatar=: (
+        Telnyx::MeetingSessionCreateParams::Avatar
+      ) -> Telnyx::MeetingSessionCreateParams::Avatar
+
+      attr_reader barge_in: bool?
+
+      def barge_in=: (bool) -> bool
+
+      attr_reader bot_name: String?
+
+      def bot_name=: (String) -> String
+
+      attr_reader camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image?
+
+      def camera_image=: (
+        Telnyx::Models::MeetingSessionCreateParams::camera_image
+      ) -> Telnyx::Models::MeetingSessionCreateParams::camera_image
+
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> String
+
+      attr_reader join_at: Time?
+
+      def join_at=: (Time) -> Time
+
+      attr_reader metadata: ::Hash[Symbol, top]?
+
+      def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader speak_on_enter: String?
+
+      def speak_on_enter=: (String) -> String
+
+      attr_reader summarize_on_end: bool?
+
+      def summarize_on_end=: (bool) -> bool
+
+      attr_reader voice: String?
+
+      def voice=: (String) -> String
+
+      attr_reader webhook_url: String?
+
+      def webhook_url=: (String) -> String
+
+      def initialize: (
+        meeting_url: String,
+        ?assistant: Telnyx::MeetingSessionCreateParams::Assistant,
+        ?avatar: Telnyx::MeetingSessionCreateParams::Avatar,
+        ?barge_in: bool,
+        ?bot_name: String,
+        ?camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
+        ?idempotency_key: String,
+        ?join_at: Time,
+        ?metadata: ::Hash[Symbol, top],
+        ?speak_on_enter: String,
+        ?summarize_on_end: bool,
+        ?voice: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        meeting_url: String,
+        assistant: Telnyx::MeetingSessionCreateParams::Assistant,
+        avatar: Telnyx::MeetingSessionCreateParams::Avatar,
+        barge_in: bool,
+        bot_name: String,
+        camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
+        idempotency_key: String,
+        join_at: Time,
+        metadata: ::Hash[Symbol, top],
+        speak_on_enter: String,
+        summarize_on_end: bool,
+        voice: String,
+        webhook_url: String,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type assistant =
+        {
+          id: String,
+          call_control_connection_id: String,
+          from: String,
+          loopback_sip_uri: String,
+          audio_gate: Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate
+        }
+
+      class Assistant < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor call_control_connection_id: String
+
+        attr_accessor from: String
+
+        attr_accessor loopback_sip_uri: String
+
+        attr_reader audio_gate: Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate?
+
+        def audio_gate=: (
+          Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate
+        ) -> Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate
+
+        def initialize: (
+          id: String,
+          call_control_connection_id: String,
+          from: String,
+          loopback_sip_uri: String,
+          ?audio_gate: Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          call_control_connection_id: String,
+          from: String,
+          loopback_sip_uri: String,
+          audio_gate: Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate
+        }
+
+        type audio_gate = :none | :half_duplex
+
+        module AudioGate
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+          HALF_DUPLEX: :half_duplex
+
+          def self?.values: -> ::Array[Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate]
+        end
+      end
+
+      type avatar = { api_key: String, avatar_id: String, provider: :anam }
+
+      class Avatar < Telnyx::Internal::Type::BaseModel
+        attr_accessor avatar_id: String
+
+        attr_accessor provider: :anam
+
+        attr_accessor api_key: String
+
+        def initialize: (
+          api_key: String,
+          avatar_id: String,
+          ?provider: :anam
+        ) -> void
+
+        def to_hash: -> { api_key: String, avatar_id: String, provider: :anam }
+      end
+
+      type camera_image =
+        Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageBase64Source
+        | Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageURLSource
+
+      module CameraImage
+        extend Telnyx::Internal::Type::Union
+
+        type meeting_session_camera_image_base64_source =
+          { :base64_data => String, format_: :jpeg }
+
+        class MeetingSessionCameraImageBase64Source < Telnyx::Internal::Type::BaseModel
+          attr_accessor base64_data: String
+
+          attr_accessor format_: :jpeg
+
+          def initialize: (base64_data: String, ?format_: :jpeg) -> void
+
+          def to_hash: -> { :base64_data => String, format_: :jpeg }
+        end
+
+        type meeting_session_camera_image_url_source =
+          { format_: :jpeg, url: String }
+
+        class MeetingSessionCameraImageURLSource < Telnyx::Internal::Type::BaseModel
+          attr_accessor format_: :jpeg
+
+          attr_accessor url: String
+
+          def initialize: (url: String, ?format_: :jpeg) -> void
+
+          def to_hash: -> { format_: :jpeg, url: String }
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::MeetingSessionCreateParams::camera_image]
+      end
+    end
+  end
+end

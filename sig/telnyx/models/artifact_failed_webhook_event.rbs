@@ -1,0 +1,88 @@
+module Telnyx
+  module Models
+    type artifact_failed_webhook_event =
+      {
+        id: String,
+        data: Telnyx::ArtifactFailedWebhookEvent::Data,
+        event: Telnyx::Models::ArtifactFailedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+    class ArtifactFailedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor data: Telnyx::ArtifactFailedWebhookEvent::Data
+
+      attr_accessor event: Telnyx::Models::ArtifactFailedWebhookEvent::event
+
+      attr_accessor occurred_at: Time
+
+      attr_accessor version: String
+
+      def initialize: (
+        id: String,
+        data: Telnyx::ArtifactFailedWebhookEvent::Data,
+        event: Telnyx::Models::ArtifactFailedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        data: Telnyx::ArtifactFailedWebhookEvent::Data,
+        event: Telnyx::Models::ArtifactFailedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+      type data =
+        {
+          artifact_id: String,
+          session_id: String,
+          type: Telnyx::Models::ArtifactFailedWebhookEvent::Data::type_
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor artifact_id: String
+
+        attr_accessor session_id: String
+
+        attr_accessor type: Telnyx::Models::ArtifactFailedWebhookEvent::Data::type_
+
+        def initialize: (
+          artifact_id: String,
+          session_id: String,
+          type: Telnyx::Models::ArtifactFailedWebhookEvent::Data::type_
+        ) -> void
+
+        def to_hash: -> {
+          artifact_id: String,
+          session_id: String,
+          type: Telnyx::Models::ArtifactFailedWebhookEvent::Data::type_
+        }
+
+        type type_ = :summary | :action_items
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          SUMMARY: :summary
+          ACTION_ITEMS: :action_items
+
+          def self?.values: -> ::Array[Telnyx::Models::ArtifactFailedWebhookEvent::Data::type_]
+        end
+      end
+
+      type event = :"artifact.failed"
+
+      module Event
+        extend Telnyx::Internal::Type::Enum
+
+        ARTIFACT_FAILED: :"artifact.failed"
+
+        def self?.values: -> ::Array[Telnyx::Models::ArtifactFailedWebhookEvent::event]
+      end
+    end
+  end
+end

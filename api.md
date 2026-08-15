@@ -3072,3 +3072,33 @@ Methods:
 
 - <code title="post /web_search/research">client.web_search.research.<a href="./lib/telnyx/resources/web_search/research.rb">create</a>(\*\*params)</code>
 - <code title="get /web_search/research/{task_id}">client.web_search.research.<a href="./lib/telnyx/resources/web_search/research.rb">retrieve</a>(\*\*params)</code>
+
+# MeetingSessions
+
+Methods:
+
+- <code title="post /meeting_sessions">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">create</a>(\*\*params)</code>
+- <code title="get /meeting_sessions/{id}">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /meeting_sessions/{id}">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">update</a>(\*\*params)</code>
+- <code title="get /meeting_sessions">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">list</a>(\*\*params)</code>
+- <code title="delete /meeting_sessions/{id}">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete</a>(\*\*params)</code>
+- <code title="delete /meeting_sessions/{id}/recording_media">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete_recording_media</a>(\*\*params)</code>
+- <code title="get /meeting_sessions/{id}/events">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_events</a>(\*\*params)</code>
+- <code title="get /meeting_sessions/{id}/recordings">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_recordings</a>(\*\*params)</code>
+- <code title="get /meeting_sessions/{id}/transcript">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_transcript</a>(\*\*params)</code>
+
+## Actions
+
+Methods:
+
+- <code title="post /meeting_sessions/{id}/actions/send_chat">client.meeting_sessions.actions.<a href="./lib/telnyx/resources/meeting_sessions/actions.rb">send_chat</a>(\*\*params)</code>
+- <code title="post /meeting_sessions/{id}/actions/speak">client.meeting_sessions.actions.<a href="./lib/telnyx/resources/meeting_sessions/actions.rb">speak</a>(\*\*params)</code>
+- <code title="post /meeting_sessions/{id}/actions/stop_speaking">client.meeting_sessions.actions.<a href="./lib/telnyx/resources/meeting_sessions/actions.rb">stop_speaking</a>(\*\*params)</code>
+
+## Artifacts
+
+Methods:
+
+- <code title="post /meeting_sessions/{id}/artifacts">client.meeting_sessions.artifacts.<a href="./lib/telnyx/resources/meeting_sessions/artifacts.rb">create</a>(\*\*params)</code>
+- <code title="get /meeting_sessions/{id}/artifacts/{artifact_id}">client.meeting_sessions.artifacts.<a href="./lib/telnyx/resources/meeting_sessions/artifacts.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /meeting_sessions/{id}/artifacts">client.meeting_sessions.artifacts.<a href="./lib/telnyx/resources/meeting_sessions/artifacts.rb">list</a>(\*\*params)</code>

@@ -63,6 +63,10 @@ module Telnyx
 
   class APIError = Telnyx::Models::APIError
 
+  class ArtifactCompletedWebhookEvent = Telnyx::Models::ArtifactCompletedWebhookEvent
+
+  class ArtifactFailedWebhookEvent = Telnyx::Models::ArtifactFailedWebhookEvent
+
   class AttachmentRequest = Telnyx::Models::AttachmentRequest
 
   class Attempt = Telnyx::Models::Attempt
@@ -999,6 +1003,30 @@ module Telnyx
 
   class MediaUploadParams = Telnyx::Models::MediaUploadParams
 
+  class MeetingSession = Telnyx::Models::MeetingSession
+
+  class MeetingSessionCreateParams = Telnyx::Models::MeetingSessionCreateParams
+
+  class MeetingSessionDeleteParams = Telnyx::Models::MeetingSessionDeleteParams
+
+  class MeetingSessionDeleteRecordingMediaParams = Telnyx::Models::MeetingSessionDeleteRecordingMediaParams
+
+  class MeetingSessionListParams = Telnyx::Models::MeetingSessionListParams
+
+  class MeetingSessionResponse = Telnyx::Models::MeetingSessionResponse
+
+  class MeetingSessionRetrieveEventsParams = Telnyx::Models::MeetingSessionRetrieveEventsParams
+
+  class MeetingSessionRetrieveParams = Telnyx::Models::MeetingSessionRetrieveParams
+
+  class MeetingSessionRetrieveRecordingsParams = Telnyx::Models::MeetingSessionRetrieveRecordingsParams
+
+  class MeetingSessionRetrieveTranscriptParams = Telnyx::Models::MeetingSessionRetrieveTranscriptParams
+
+  module MeetingSessions = Telnyx::Models::MeetingSessions
+
+  class MeetingSessionUpdateParams = Telnyx::Models::MeetingSessionUpdateParams
+
   class MessageCancelScheduledParams = Telnyx::Models::MessageCancelScheduledParams
 
   class MessageEvent = Telnyx::Models::MessageEvent
@@ -1531,6 +1559,8 @@ module Telnyx
 
   class Record = Telnyx::Models::Record
 
+  class RecordingAvailableWebhookEvent = Telnyx::Models::RecordingAvailableWebhookEvent
+
   class RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
   class RecordingListParams = Telnyx::Models::RecordingListParams
@@ -1650,6 +1680,8 @@ module Telnyx
   module SessionAnalysis = Telnyx::Models::SessionAnalysis
 
   class SessionAnalysisRetrieveParams = Telnyx::Models::SessionAnalysisRetrieveParams
+
+  class SessionStatusChangedWebhookEvent = Telnyx::Models::SessionStatusChangedWebhookEvent
 
   class SetiRetrieveBlackBoxTestResultsParams = Telnyx::Models::SetiRetrieveBlackBoxTestResultsParams
 
@@ -1852,6 +1884,8 @@ module Telnyx
   class TrafficPolicyProfileUpdateParams = Telnyx::Models::TrafficPolicyProfileUpdateParams
 
   module TrafficType = Telnyx::Models::TrafficType
+
+  class TranscriptCompletedWebhookEvent = Telnyx::Models::TranscriptCompletedWebhookEvent
 
   class Transcription = Telnyx::Models::Transcription
 

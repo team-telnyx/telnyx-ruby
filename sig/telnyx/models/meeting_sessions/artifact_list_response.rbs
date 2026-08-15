@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module MeetingSessions
+      type artifact_list_response =
+        { data: ::Array[Telnyx::MeetingSessions::MeetingSessionArtifact] }
+
+      class ArtifactListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::MeetingSessions::MeetingSessionArtifact]
+
+        def initialize: (
+          data: ::Array[Telnyx::MeetingSessions::MeetingSessionArtifact]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::MeetingSessions::MeetingSessionArtifact]
+        }
+      end
+    end
+  end
+end

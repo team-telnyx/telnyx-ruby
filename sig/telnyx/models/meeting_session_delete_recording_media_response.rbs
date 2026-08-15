@@ -1,0 +1,61 @@
+module Telnyx
+  module Models
+    type meeting_session_delete_recording_media_response =
+      { data: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data }
+
+    class MeetingSessionDeleteRecordingMediaResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data
+      }
+
+      type data =
+        {
+          deletion_status: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data::deletion_status,
+          meeting_session_id: String,
+          provider: :recall,
+          scope: :provider_recording_media
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor deletion_status: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data::deletion_status
+
+        attr_accessor meeting_session_id: String
+
+        attr_accessor provider: :recall
+
+        attr_accessor scope: :provider_recording_media
+
+        def initialize: (
+          deletion_status: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data::deletion_status,
+          meeting_session_id: String,
+          ?provider: :recall,
+          ?scope: :provider_recording_media
+        ) -> void
+
+        def to_hash: -> {
+          deletion_status: Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data::deletion_status,
+          meeting_session_id: String,
+          provider: :recall,
+          scope: :provider_recording_media
+        }
+
+        type deletion_status = :requested | :already_in_progress
+
+        module DeletionStatus
+          extend Telnyx::Internal::Type::Enum
+
+          REQUESTED: :requested
+          ALREADY_IN_PROGRESS: :already_in_progress
+
+          def self?.values: -> ::Array[Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data::deletion_status]
+        end
+      end
+    end
+  end
+end
