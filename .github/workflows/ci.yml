@@ -13,7 +13,7 @@ on:
       - 'stl-preview-base/**'
   # Ref: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch
   # workflow_dispatch runs triggered with GITHUB_TOKEN are explicitly supported. Workers run on
-  # the non-default `next` cache scope and check out the immutable target SHA without secrets.
+  # a dedicated non-default cache scope and check out the immutable target SHA without secrets.
   workflow_dispatch:
     inputs:
       target_sha:
@@ -55,9 +55,9 @@ jobs:
     timeout-minutes: 60
     name: Steep worker
     runs-on: ubuntu-latest
-    # Never execute PR-controlled code in the default-branch cache scope. The feature branch is a
-    # one-time rollout path; the durable worker control branch is `next`.
-    if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/next' || github.ref == 'refs/heads/ci/steep-single-check' || github.ref == 'refs/heads/ci/steep-worker-next')
+    # Never execute PR-controlled code in the default-branch cache scope. The feature branches are
+    # one-time rollout paths; the durable control branch runs no privileged workflows or secrets.
+    if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/ci/steep-workers' || github.ref == 'refs/heads/ci/steep-single-check' || github.ref == 'refs/heads/ci/install-steep-workers')
     permissions:
       contents: read
     steps:
@@ -70,6 +70,9 @@ jobs:
           [[ "$TARGET_SHA" =~ ^[0-9a-f]{40}$ ]]
           [[ "$SHARD_INDEX" =~ ^[0-3]$ ]]
           [[ "$CORRELATION_ID" =~ ^[0-9]+-[0-9]+-[0-9a-f]{40}$ ]]
+      # codeql[actions/cache-poisoning/poisonable-step]
+      # Safe: branch-gated above to an isolated non-default cache scope, with no secrets,
+      # no privileged cache consumers, a read-only token, and no persisted credentials.
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ inputs.target_sha }}
@@ -78,11 +81,17 @@ jobs:
         env:
           TARGET_SHA: ${{ inputs.target_sha }}
         run: test "$(git rev-parse HEAD)" = "$TARGET_SHA"
+      # codeql[actions/cache-poisoning/poisonable-step]
+      # Safe for the same isolated-scope reason documented above; Bundler caching is disabled.
       - name: Set up Ruby
         uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
           bundler-cache: false
+      # codeql[actions/cache-poisoning/poisonable-step]
+      # Safe for the same isolated-scope reason documented above.
       - run: bundle install
+      # codeql[actions/cache-poisoning/poisonable-step]
+      # Safe for the same isolated-scope reason documented above.
       - name: Run Steep shard
         env:
           SHARD_INDEX: ${{ inputs.shard_index }}
@@ -131,7 +140,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
           CORRELATION_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.event.pull_request.head.sha || github.sha }}
-          PRIMARY_WORKER_REF: next
+          PRIMARY_WORKER_REF: ci/steep-workers
           ROLLOUT_FALLBACK_REF: ${{ github.head_ref || github.ref_name }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_API_URL: ${{ github.api_url }}
