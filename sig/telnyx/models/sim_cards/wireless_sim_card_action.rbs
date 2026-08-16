@@ -71,7 +71,12 @@ module Telnyx
         }
 
         type action_type =
-          :enable | :enable_standby_sim_card | :disable | :set_standby
+          :enable
+          | :enable_standby_sim_card
+          | :disable
+          | :set_standby
+          | :enable_voice
+          | :disable_voice
 
         module ActionType
           extend Telnyx::Internal::Type::Enum
@@ -80,6 +85,8 @@ module Telnyx
           ENABLE_STANDBY_SIM_CARD: :enable_standby_sim_card
           DISABLE: :disable
           SET_STANDBY: :set_standby
+          ENABLE_VOICE: :enable_voice
+          DISABLE_VOICE: :disable_voice
 
           def self?.values: -> ::Array[Telnyx::Models::SimCards::WirelessSimCardAction::action_type]
         end

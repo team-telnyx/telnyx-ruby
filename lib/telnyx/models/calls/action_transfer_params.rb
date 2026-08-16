@@ -322,12 +322,13 @@ module Telnyx
         optional :webhook_url_method, enum: -> { Telnyx::Calls::ActionTransferParams::WebhookURLMethod }
 
         # @!attribute webhook_urls
-        #   A map of event types to webhook URLs. When an event of the specified type
-        #   occurs, the webhook URL associated with that event type will be called instead
-        #   of `webhook_url`. Events not mapped here will use the default `webhook_url`.
+        #   A map of event types to arrays of webhook URLs. When an event of the specified
+        #   type occurs, the webhook URLs associated with that event type will be called
+        #   instead of `webhook_url`. Events not mapped here will use the default
+        #   `webhook_url`.
         #
-        #   @return [Hash{Symbol=>String}, nil]
-        optional :webhook_urls, Telnyx::Internal::Type::HashOf[String]
+        #   @return [Hash{Symbol=>Array<String>}, nil]
+        optional :webhook_urls, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::ArrayOf[String]]
 
         # @!attribute webhook_urls_method
         #   HTTP request method to invoke `webhook_urls`.
@@ -417,7 +418,7 @@ module Telnyx
         #
         #   @param webhook_url_method [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLMethod] HTTP request type used for `webhook_url`.
         #
-        #   @param webhook_urls [Hash{Symbol=>String}] A map of event types to webhook URLs. When an event of the specified type occurs
+        #   @param webhook_urls [Hash{Symbol=>Array<String>}] A map of event types to arrays of webhook URLs. When an event of the specified t
         #
         #   @param webhook_urls_method [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLsMethod] HTTP request method to invoke `webhook_urls`.
         #

@@ -1,0 +1,26 @@
+module Telnyx
+  module Resources
+    class MeetingSessions
+      class Artifacts
+        def create: (
+          String id,
+          type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::type_,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MeetingSessions::MeetingSessionArtifactResponse
+
+        def retrieve: (
+          String artifact_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MeetingSessions::MeetingSessionArtifactResponse
+
+        def list: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::MeetingSessions::ArtifactListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

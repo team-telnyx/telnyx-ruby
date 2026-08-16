@@ -91,6 +91,8 @@ module Telnyx
             | :set_standby
             | :remove_public_ip
             | :set_public_ip
+            | :enable_voice
+            | :disable_voice
 
           module ActionType
             extend Telnyx::Internal::Type::Enum
@@ -101,6 +103,8 @@ module Telnyx
             SET_STANDBY: :set_standby
             REMOVE_PUBLIC_IP: :remove_public_ip
             SET_PUBLIC_IP: :set_public_ip
+            ENABLE_VOICE: :enable_voice
+            DISABLE_VOICE: :disable_voice
 
             def self?.values: -> ::Array[Telnyx::Models::SimCards::ActionListParams::Filter::action_type]
           end

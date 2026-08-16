@@ -185,6 +185,9 @@ module Telnyx
       module ManagedAccounts
       end
 
+      module MeetingSessions
+      end
+
       module Messages
       end
 
@@ -314,6 +317,9 @@ module Telnyx
       module SimCards
       end
 
+      module Sqldbs
+      end
+
       module Storage
         module Buckets
         end
@@ -325,6 +331,9 @@ module Telnyx
         end
 
         module Migrations
+        end
+
+        module Sqldbs
         end
       end
 
@@ -379,6 +388,9 @@ module Telnyx
       end
 
       module VerifiedNumbers
+      end
+
+      module WebSearch
       end
 
       module Whatsapp

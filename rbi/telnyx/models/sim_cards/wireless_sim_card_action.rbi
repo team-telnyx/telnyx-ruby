@@ -38,6 +38,8 @@ module Telnyx
         #  <li><code>enable_standby_sim_card</code> - move a SIM card previously on the <code>standby</code> status to the <code>enabled</code> status after it consumes data.</li>
         #  <li><code>disable</code> - move the SIM card to the <code>disabled</code> status</li>
         #  <li><code>set_standby</code> - move the SIM card to the <code>standby</code> status</li>
+        #  <li><code>enable_voice</code> - enable voice calling on the SIM card</li>
+        #  <li><code>disable_voice</code> - disable voice calling on the SIM card</li>
         #  </ul>
         sig do
           returns(
@@ -112,6 +114,8 @@ module Telnyx
           #  <li><code>enable_standby_sim_card</code> - move a SIM card previously on the <code>standby</code> status to the <code>enabled</code> status after it consumes data.</li>
           #  <li><code>disable</code> - move the SIM card to the <code>disabled</code> status</li>
           #  <li><code>set_standby</code> - move the SIM card to the <code>standby</code> status</li>
+          #  <li><code>enable_voice</code> - enable voice calling on the SIM card</li>
+          #  <li><code>disable_voice</code> - disable voice calling on the SIM card</li>
           #  </ul>
           action_type: nil,
           # ISO 8601 formatted date-time indicating when the resource was created.
@@ -152,6 +156,8 @@ module Telnyx
         #  <li><code>enable_standby_sim_card</code> - move a SIM card previously on the <code>standby</code> status to the <code>enabled</code> status after it consumes data.</li>
         #  <li><code>disable</code> - move the SIM card to the <code>disabled</code> status</li>
         #  <li><code>set_standby</code> - move the SIM card to the <code>standby</code> status</li>
+        #  <li><code>enable_voice</code> - enable voice calling on the SIM card</li>
+        #  <li><code>disable_voice</code> - disable voice calling on the SIM card</li>
         #  </ul>
         module ActionType
           extend Telnyx::Internal::Type::Enum
@@ -180,6 +186,16 @@ module Telnyx
           SET_STANDBY =
             T.let(
               :set_standby,
+              Telnyx::SimCards::WirelessSimCardAction::ActionType::TaggedSymbol
+            )
+          ENABLE_VOICE =
+            T.let(
+              :enable_voice,
+              Telnyx::SimCards::WirelessSimCardAction::ActionType::TaggedSymbol
+            )
+          DISABLE_VOICE =
+            T.let(
+              :disable_voice,
               Telnyx::SimCards::WirelessSimCardAction::ActionType::TaggedSymbol
             )
 

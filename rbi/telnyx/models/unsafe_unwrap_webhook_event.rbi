@@ -11,6 +11,8 @@ module Telnyx
             Telnyx::CallAIGatherEndedWebhookEvent,
             Telnyx::CallAIGatherMessageHistoryUpdatedWebhookEvent,
             Telnyx::CallAIGatherPartialResultsWebhookEvent,
+            Telnyx::ArtifactCompletedWebhookEvent,
+            Telnyx::ArtifactFailedWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
             Telnyx::CallBridgedWebhookEvent,
             Telnyx::CallConversationEndedWebhookEvent,
@@ -74,7 +76,10 @@ module Telnyx
             Telnyx::HostedNumberOrderEventWebhookEvent,
             Telnyx::InboundMessageWebhookEvent,
             Telnyx::NumberOrderStatusUpdateWebhookEvent,
+            Telnyx::RecordingAvailableWebhookEvent,
             Telnyx::ReplacedLinkClickWebhookEvent,
+            Telnyx::SessionStatusChangedWebhookEvent,
+            Telnyx::TranscriptCompletedWebhookEvent,
             Telnyx::TranscriptionWebhookEvent
           )
         end

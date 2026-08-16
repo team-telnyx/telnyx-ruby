@@ -1,0 +1,36 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Sqldbs
+        attr_reader actions: Telnyx::Resources::Storage::Sqldbs::Actions
+
+        def create: (
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::SqlDatabaseResponseWrapper
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Storage::SqlDatabaseResponseWrapper
+
+        def list: (
+          ?filter_name: String,
+          ?filter_status: Telnyx::Models::Storage::SqldbListParams::filter_status,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?sort: Telnyx::Models::Storage::SqldbListParams::sort,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Storage::SqlDatabase]
+
+        def delete: (
+          String id,
+          ?force: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

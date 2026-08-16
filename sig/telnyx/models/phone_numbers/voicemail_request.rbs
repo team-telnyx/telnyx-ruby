@@ -1,20 +1,76 @@
 module Telnyx
   module Models
     module PhoneNumbers
-      type voicemail_request = { enabled: bool, pin: String }
+      type voicemail_request =
+        {
+          enabled: bool,
+          greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting,
+          pin: String
+        }
 
       class VoicemailRequest < Telnyx::Internal::Type::BaseModel
         attr_reader enabled: bool?
 
         def enabled=: (bool) -> bool
 
+        attr_reader greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting?
+
+        def greeting=: (
+          Telnyx::PhoneNumbers::VoicemailRequest::Greeting
+        ) -> Telnyx::PhoneNumbers::VoicemailRequest::Greeting
+
         attr_reader pin: String?
 
         def pin=: (String) -> String
 
-        def initialize: (?enabled: bool, ?pin: String) -> void
+        def initialize: (
+          ?enabled: bool,
+          ?greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting,
+          ?pin: String
+        ) -> void
 
-        def to_hash: -> { enabled: bool, pin: String }
+        def to_hash: -> {
+          enabled: bool,
+          greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting,
+          pin: String
+        }
+
+        type greeting =
+          {
+            media_name: String?,
+            mode: Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting::mode
+          }
+
+        class Greeting < Telnyx::Internal::Type::BaseModel
+          attr_accessor media_name: String?
+
+          attr_reader mode: Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting::mode?
+
+          def mode=: (
+            Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting::mode
+          ) -> Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting::mode
+
+          def initialize: (
+            ?media_name: String?,
+            ?mode: Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting::mode
+          ) -> void
+
+          def to_hash: -> {
+            media_name: String?,
+            mode: Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting::mode
+          }
+
+          type mode = :default | :custom_greeting
+
+          module Mode
+            extend Telnyx::Internal::Type::Enum
+
+            DEFAULT: :default
+            CUSTOM_GREETING: :custom_greeting
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::VoicemailRequest::Greeting::mode]
+          end
+        end
       end
     end
   end

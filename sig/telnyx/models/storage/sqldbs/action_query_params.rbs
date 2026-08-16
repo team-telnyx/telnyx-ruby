@@ -1,0 +1,52 @@
+module Telnyx
+  module Models
+    module Storage
+      module Sqldbs
+        type action_query_params =
+          {
+            id: String,
+            sql: String,
+            params: ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param?]
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class ActionQueryParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor id: String
+
+          attr_accessor sql: String
+
+          attr_reader params: ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param?]?
+
+          def params=: (
+            ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param?]
+          ) -> ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param?]
+
+          def initialize: (
+            id: String,
+            sql: String,
+            ?params: ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param?],
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            sql: String,
+            params: ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param?],
+            request_options: Telnyx::RequestOptions
+          }
+
+          type param = (String | Float | bool)?
+
+          module Param
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param]
+          end
+        end
+      end
+    end
+  end
+end

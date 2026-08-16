@@ -1,0 +1,104 @@
+module Telnyx
+  module Models
+    type web_search_contents_response =
+      { data: Telnyx::Models::WebSearchContentsResponse::Data }
+
+    class WebSearchContentsResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::WebSearchContentsResponse::Data?
+
+      def data=: (
+        Telnyx::Models::WebSearchContentsResponse::Data
+      ) -> Telnyx::Models::WebSearchContentsResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::WebSearchContentsResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::WebSearchContentsResponse::Data }
+
+      type data =
+        {
+          results: ::Array[Telnyx::Models::WebSearchContentsResponse::Data::Result]
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader results: ::Array[Telnyx::Models::WebSearchContentsResponse::Data::Result]?
+
+        def results=: (
+          ::Array[Telnyx::Models::WebSearchContentsResponse::Data::Result]
+        ) -> ::Array[Telnyx::Models::WebSearchContentsResponse::Data::Result]
+
+        def initialize: (
+          ?results: ::Array[Telnyx::Models::WebSearchContentsResponse::Data::Result]
+        ) -> void
+
+        def to_hash: -> {
+          results: ::Array[Telnyx::Models::WebSearchContentsResponse::Data::Result]
+        }
+
+        type result =
+          {
+            url: String,
+            html: String,
+            markdown: String,
+            metadata: Telnyx::Models::WebSearchContentsResponse::Data::Result::Metadata,
+            title: String
+          }
+
+        class Result < Telnyx::Internal::Type::BaseModel
+          attr_accessor url: String
+
+          attr_reader html: String?
+
+          def html=: (String) -> String
+
+          attr_reader markdown: String?
+
+          def markdown=: (String) -> String
+
+          attr_reader metadata: Telnyx::Models::WebSearchContentsResponse::Data::Result::Metadata?
+
+          def metadata=: (
+            Telnyx::Models::WebSearchContentsResponse::Data::Result::Metadata
+          ) -> Telnyx::Models::WebSearchContentsResponse::Data::Result::Metadata
+
+          attr_reader title: String?
+
+          def title=: (String) -> String
+
+          def initialize: (
+            url: String,
+            ?html: String,
+            ?markdown: String,
+            ?metadata: Telnyx::Models::WebSearchContentsResponse::Data::Result::Metadata,
+            ?title: String
+          ) -> void
+
+          def to_hash: -> {
+            url: String,
+            html: String,
+            markdown: String,
+            metadata: Telnyx::Models::WebSearchContentsResponse::Data::Result::Metadata,
+            title: String
+          }
+
+          type metadata = { favicon_url: String, site_name: String }
+
+          class Metadata < Telnyx::Internal::Type::BaseModel
+            attr_reader favicon_url: String?
+
+            def favicon_url=: (String) -> String
+
+            attr_reader site_name: String?
+
+            def site_name=: (String) -> String
+
+            def initialize: (?favicon_url: String, ?site_name: String) -> void
+
+            def to_hash: -> { favicon_url: String, site_name: String }
+          end
+        end
+      end
+    end
+  end
+end

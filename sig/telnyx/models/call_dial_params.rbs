@@ -64,7 +64,7 @@ module Telnyx
         webhook_retries_policies: ::Hash[Symbol, Telnyx::CallDialParams::WebhookRetriesPolicy],
         webhook_url: String,
         webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method,
-        webhook_urls: ::Hash[Symbol, String],
+        webhook_urls: ::Hash[Symbol, ::Array[String]],
         webhook_urls_method: Telnyx::Models::CallDialParams::webhook_urls_method
       }
       & Telnyx::Internal::Type::request_parameters
@@ -373,9 +373,11 @@ module Telnyx
         Telnyx::Models::CallDialParams::webhook_url_method
       ) -> Telnyx::Models::CallDialParams::webhook_url_method
 
-      attr_reader webhook_urls: ::Hash[Symbol, String]?
+      attr_reader webhook_urls: ::Hash[Symbol, ::Array[String]]?
 
-      def webhook_urls=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+      def webhook_urls=: (
+        ::Hash[Symbol, ::Array[String]]
+      ) -> ::Hash[Symbol, ::Array[String]]
 
       attr_reader webhook_urls_method: Telnyx::Models::CallDialParams::webhook_urls_method?
 
@@ -446,7 +448,7 @@ module Telnyx
         ?webhook_retries_policies: ::Hash[Symbol, Telnyx::CallDialParams::WebhookRetriesPolicy],
         ?webhook_url: String,
         ?webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method,
-        ?webhook_urls: ::Hash[Symbol, String],
+        ?webhook_urls: ::Hash[Symbol, ::Array[String]],
         ?webhook_urls_method: Telnyx::Models::CallDialParams::webhook_urls_method,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -514,7 +516,7 @@ module Telnyx
         webhook_retries_policies: ::Hash[Symbol, Telnyx::CallDialParams::WebhookRetriesPolicy],
         webhook_url: String,
         webhook_url_method: Telnyx::Models::CallDialParams::webhook_url_method,
-        webhook_urls: ::Hash[Symbol, String],
+        webhook_urls: ::Hash[Symbol, ::Array[String]],
         webhook_urls_method: Telnyx::Models::CallDialParams::webhook_urls_method,
         request_options: Telnyx::RequestOptions
       }

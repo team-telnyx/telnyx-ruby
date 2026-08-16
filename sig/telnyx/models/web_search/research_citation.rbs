@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module WebSearch
+      type research_citation = { title: String, url: String, snippet: String }
+
+      class ResearchCitation < Telnyx::Internal::Type::BaseModel
+        attr_accessor title: String
+
+        attr_accessor url: String
+
+        attr_reader snippet: String?
+
+        def snippet=: (String) -> String
+
+        def initialize: (title: String, url: String, ?snippet: String) -> void
+
+        def to_hash: -> { title: String, url: String, snippet: String }
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Telnyx
+  module Resources
+    class Storage
+      class Sqldbs
+        class Actions
+          def query: (
+            String id,
+            sql: String,
+            ?params: ::Array[Telnyx::Models::Storage::Sqldbs::ActionQueryParams::param?],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Storage::Sqldbs::ActionQueryResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

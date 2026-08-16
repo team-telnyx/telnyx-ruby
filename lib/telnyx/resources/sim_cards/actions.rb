@@ -87,6 +87,9 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::SimCards::ActionBulkEnableVoiceParams} for more details.
+        #
         # This API triggers an asynchronous operation to enable voice on SIM cards
         # belonging to a specified SIM Card Group.<br/> For each SIM Card a SIM Card
         # Action will be generated. The status of the SIM Card Actions can be followed
@@ -98,9 +101,12 @@ module Telnyx
         # [List Bulk SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-bulk-sim-card-actions)
         # API.
         #
-        # @overload bulk_enable_voice(sim_card_group_id:, request_options: {})
+        # @overload bulk_enable_voice(sim_card_group_id:, connection_id: nil, request_options: {})
         #
         # @param sim_card_group_id [String]
+        #
+        # @param connection_id [String] The identifier of the Mobile Voice Connection to associate with the SIM cards. T
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse]
@@ -167,6 +173,31 @@ module Telnyx
           )
         end
 
+        # This API disables voice calling on a SIM card. The SIM card will no longer be
+        # able to make or receive calls.<br/> The API will trigger an asynchronous
+        # operation called a SIM Card Action. The status of the SIM Card Action can be
+        # followed through the
+        # [List SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-sim-card-actions)
+        # API.
+        #
+        # @overload disable_voice(id, request_options: {})
+        #
+        # @param id [String] Identifies the SIM.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::SimCards::ActionDisableVoiceResponse]
+        #
+        # @see Telnyx::Models::SimCards::ActionDisableVoiceParams
+        def disable_voice(id, params = {})
+          @client.request(
+            method: :post,
+            path: ["sim_cards/%1$s/actions/disable_voice", id],
+            model: Telnyx::Models::SimCards::ActionDisableVoiceResponse,
+            options: params[:request_options]
+          )
+        end
+
         # This API enables a SIM card, connecting it to the network and making it possible
         # to consume data.<br/> To enable a SIM card, it must be associated with a SIM
         # card group.<br/> The API will trigger an asynchronous operation called a SIM
@@ -190,6 +221,40 @@ module Telnyx
             path: ["sim_cards/%1$s/actions/enable", id],
             model: Telnyx::Models::SimCards::ActionEnableResponse,
             options: params[:request_options]
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::SimCards::ActionEnableVoiceParams} for more details.
+        #
+        # This API enables voice calling on a SIM card. When a <code>connection_id</code>
+        # is provided, the SIM is associated with the specified Mobile Voice Connection.
+        # The connection must be owned by the same user and of type
+        # <code>mobile_voice</code>.<br/> The API will trigger an asynchronous operation
+        # called a SIM Card Action. The status of the SIM Card Action can be followed
+        # through the
+        # [List SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-sim-card-actions)
+        # API.
+        #
+        # @overload enable_voice(id, connection_id: nil, request_options: {})
+        #
+        # @param id [String] Identifies the SIM.
+        #
+        # @param connection_id [String] The identifier of the Mobile Voice Connection to associate with this SIM card. T
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::SimCards::ActionEnableVoiceResponse]
+        #
+        # @see Telnyx::Models::SimCards::ActionEnableVoiceParams
+        def enable_voice(id, params = {})
+          parsed, options = Telnyx::SimCards::ActionEnableVoiceParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["sim_cards/%1$s/actions/enable_voice", id],
+            body: parsed,
+            model: Telnyx::Models::SimCards::ActionEnableVoiceResponse,
+            options: options
           )
         end
 

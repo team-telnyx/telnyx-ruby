@@ -1,0 +1,82 @@
+module Telnyx
+  module Models
+    type session_status_changed_webhook_event =
+      {
+        id: String,
+        data: Telnyx::SessionStatusChangedWebhookEvent::Data,
+        event: Telnyx::Models::SessionStatusChangedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+    class SessionStatusChangedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor data: Telnyx::SessionStatusChangedWebhookEvent::Data
+
+      attr_accessor event: Telnyx::Models::SessionStatusChangedWebhookEvent::event
+
+      attr_accessor occurred_at: Time
+
+      attr_accessor version: String
+
+      def initialize: (
+        id: String,
+        data: Telnyx::SessionStatusChangedWebhookEvent::Data,
+        event: Telnyx::Models::SessionStatusChangedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        data: Telnyx::SessionStatusChangedWebhookEvent::Data,
+        event: Telnyx::Models::SessionStatusChangedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+      type data =
+        {
+          recording: bool,
+          session_id: String,
+          status: String,
+          status_detail: String?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor recording: bool
+
+        attr_accessor session_id: String
+
+        attr_accessor status: String
+
+        attr_accessor status_detail: String?
+
+        def initialize: (
+          recording: bool,
+          session_id: String,
+          status: String,
+          status_detail: String?
+        ) -> void
+
+        def to_hash: -> {
+          recording: bool,
+          session_id: String,
+          status: String,
+          status_detail: String?
+        }
+      end
+
+      type event = :"session.status_changed"
+
+      module Event
+        extend Telnyx::Internal::Type::Enum
+
+        SESSION_STATUS_CHANGED: :"session.status_changed"
+
+        def self?.values: -> ::Array[Telnyx::Models::SessionStatusChangedWebhookEvent::event]
+      end
+    end
+  end
+end

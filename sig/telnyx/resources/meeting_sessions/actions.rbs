@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class MeetingSessions
+      class Actions
+        def send_chat: (
+          String id,
+          text: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MeetingSessions::ActionAcceptedResponse
+
+        def speak: (
+          String id,
+          text: String,
+          ?interrupt: bool,
+          ?voice: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MeetingSessions::ActionAcceptedResponse
+
+        def stop_speaking: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::MeetingSessions::ActionAcceptedResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

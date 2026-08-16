@@ -1,0 +1,75 @@
+module Telnyx
+  module Resources
+    class MeetingSessions
+      attr_reader actions: Telnyx::Resources::MeetingSessions::Actions
+
+      attr_reader artifacts: Telnyx::Resources::MeetingSessions::Artifacts
+
+      def create: (
+        meeting_url: String,
+        ?assistant: Telnyx::MeetingSessionCreateParams::Assistant,
+        ?avatar: Telnyx::MeetingSessionCreateParams::Avatar,
+        ?barge_in: bool,
+        ?bot_name: String,
+        ?camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
+        ?idempotency_key: String,
+        ?join_at: Time,
+        ?metadata: ::Hash[Symbol, top],
+        ?speak_on_enter: String,
+        ?summarize_on_end: bool,
+        ?voice: String,
+        ?webhook_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::MeetingSessionResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::MeetingSessionResponse
+
+      def update: (
+        String id,
+        ?bot_name: String,
+        ?join_at: Time,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::MeetingSessionResponse
+
+      def list: (
+        ?status: Telnyx::Models::MeetingSessionListParams::status,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MeetingSessionListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::MeetingSessionResponse
+
+      def delete_recording_media: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse
+
+      def retrieve_events: (
+        String id,
+        ?after: Integer,
+        ?limit: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MeetingSessionRetrieveEventsResponse
+
+      def retrieve_recordings: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MeetingSessionRetrieveRecordingsResponse
+
+      def retrieve_transcript: (
+        String id,
+        ?after: Integer,
+        ?limit: Integer,
+        ?wait_seconds: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MeetingSessionRetrieveTranscriptResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type meeting_session_list_response =
+      { data: ::Array[Telnyx::MeetingSession] }
+
+    class MeetingSessionListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::MeetingSession]
+
+      def initialize: (data: ::Array[Telnyx::MeetingSession]) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::MeetingSession] }
+    end
+  end
+end

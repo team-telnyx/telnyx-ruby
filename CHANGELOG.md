@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.161.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.160.0...v5.161.0) (2026-08-16)
+
+
+### Features
+
+* promote from staging 2ba3fff ([0ed0d6c](https://github.com/team-telnyx/telnyx-ruby/commit/0ed0d6c9d8dccdac163a918465ffdd03bace1211))
+
+
+### Bug Fixes
+
+* **ci:** attest private release provenance ([#342](https://github.com/team-telnyx/telnyx-ruby/issues/342)) ([b12f392](https://github.com/team-telnyx/telnyx-ruby/commit/b12f392866c7dc097b53d885762b11b222cd2e86))
+
 ## [5.160.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.159.0...v5.160.0) (2026-08-11)
 
 

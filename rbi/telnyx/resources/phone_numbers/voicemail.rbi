@@ -5,11 +5,15 @@ module Telnyx
     class PhoneNumbers
       # Voicemail API
       class Voicemail
-        # Create voicemail settings for a phone number
+        # Create voicemail settings for a phone number. You can also configure a custom
+        # greeting by setting the `greeting` object: use `mode` `custom_greeting` together
+        # with a `media_name` that points to an audio file uploaded through the Media
+        # Storage API, or `mode` `default` to use the standard system greeting.
         sig do
           params(
             phone_number_id: String,
             enabled: T::Boolean,
+            greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting::OrHash,
             pin: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::PhoneNumbers::VoicemailCreateResponse)
@@ -19,6 +23,12 @@ module Telnyx
           phone_number_id,
           # Whether voicemail is enabled.
           enabled: nil,
+          # Controls the greeting a caller hears before leaving a voicemail. Set `mode` to
+          # `default` to play the standard system greeting, or to `custom_greeting` to play
+          # your own audio. When `mode` is `custom_greeting`, `media_name` is required and
+          # must reference an audio file already uploaded to your account through the Media
+          # Storage API.
+          greeting: nil,
           # The pin used for voicemail
           pin: nil,
           request_options: {}
@@ -39,11 +49,15 @@ module Telnyx
         )
         end
 
-        # Update voicemail settings for a phone number
+        # Update voicemail settings for a phone number. You can also configure a custom
+        # greeting by setting the `greeting` object: use `mode` `custom_greeting` together
+        # with a `media_name` that points to an audio file uploaded through the Media
+        # Storage API, or `mode` `default` to use the standard system greeting.
         sig do
           params(
             phone_number_id: String,
             enabled: T::Boolean,
+            greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting::OrHash,
             pin: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::PhoneNumbers::VoicemailUpdateResponse)
@@ -53,6 +67,12 @@ module Telnyx
           phone_number_id,
           # Whether voicemail is enabled.
           enabled: nil,
+          # Controls the greeting a caller hears before leaving a voicemail. Set `mode` to
+          # `default` to play the standard system greeting, or to `custom_greeting` to play
+          # your own audio. When `mode` is `custom_greeting`, `media_name` is required and
+          # must reference an audio file already uploaded to your account through the Media
+          # Storage API.
+          greeting: nil,
           # The pin used for voicemail
           pin: nil,
           request_options: {}

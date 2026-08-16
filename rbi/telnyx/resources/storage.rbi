@@ -25,6 +25,10 @@ module Telnyx
       sig { returns(Telnyx::Resources::Storage::Cloudfs) }
       attr_reader :cloudfs
 
+      # Manage SQL databases and run SQL against them
+      sig { returns(Telnyx::Resources::Storage::Sqldbs) }
+      attr_reader :sqldbs
+
       # List the external storage providers and regions supported as migration sources.
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(

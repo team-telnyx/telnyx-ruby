@@ -1,0 +1,109 @@
+module Telnyx
+  module Models
+    class MeetingSessionArtifact = MeetingSessions::MeetingSessionArtifact
+
+    module MeetingSessions
+      type meeting_session_artifact =
+        {
+          id: String,
+          content: Telnyx::MeetingSessions::MeetingSessionArtifact::Content?,
+          created_at: Time,
+          failure_reason: String?,
+          model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?,
+          session_id: String,
+          status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status,
+          type: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_,
+          updated_at: Time
+        }
+
+      class MeetingSessionArtifact < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor content: Telnyx::MeetingSessions::MeetingSessionArtifact::Content?
+
+        attr_accessor created_at: Time
+
+        attr_accessor failure_reason: String?
+
+        attr_accessor model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?
+
+        attr_accessor session_id: String
+
+        attr_accessor status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status
+
+        attr_accessor type: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_
+
+        attr_accessor updated_at: Time
+
+        def initialize: (
+          id: String,
+          content: Telnyx::MeetingSessions::MeetingSessionArtifact::Content?,
+          created_at: Time,
+          failure_reason: String?,
+          model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?,
+          session_id: String,
+          status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status,
+          type: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_,
+          updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          content: Telnyx::MeetingSessions::MeetingSessionArtifact::Content?,
+          created_at: Time,
+          failure_reason: String?,
+          model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?,
+          session_id: String,
+          status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status,
+          type: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_,
+          updated_at: Time
+        }
+
+        type content = { text: String }
+
+        class Content < Telnyx::Internal::Type::BaseModel
+          attr_accessor text: String
+
+          def initialize: (text: String) -> void
+
+          def to_hash: -> { text: String }
+        end
+
+        type model_provenance = { model: String, provider: String }
+
+        class ModelProvenance < Telnyx::Internal::Type::BaseModel
+          attr_accessor model: String
+
+          attr_accessor provider: String
+
+          def initialize: (model: String, provider: String) -> void
+
+          def to_hash: -> { model: String, provider: String }
+        end
+
+        type status = :pending | :completed | :failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          COMPLETED: :completed
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status]
+        end
+
+        type type_ = :summary | :action_items
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          SUMMARY: :summary
+          ACTION_ITEMS: :action_items
+
+          def self?.values: -> ::Array[Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_]
+        end
+      end
+    end
+  end
+end
