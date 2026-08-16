@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    type web_search_create_params =
+      {
+        query: String,
+        count: Integer,
+        country: String,
+        exclude_domains: ::Array[String],
+        freshness: String,
+        include_domains: ::Array[String],
+        livecrawl: bool,
+        safesearch: Telnyx::Models::WebSearchCreateParams::safesearch
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class WebSearchCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor query: String
+
+      attr_reader count: Integer?
+
+      def count=: (Integer) -> Integer
+
+      attr_reader country: String?
+
+      def country=: (String) -> String
+
+      attr_reader exclude_domains: ::Array[String]?
+
+      def exclude_domains=: (::Array[String]) -> ::Array[String]
+
+      attr_reader freshness: String?
+
+      def freshness=: (String) -> String
+
+      attr_reader include_domains: ::Array[String]?
+
+      def include_domains=: (::Array[String]) -> ::Array[String]
+
+      attr_reader livecrawl: bool?
+
+      def livecrawl=: (bool) -> bool
+
+      attr_reader safesearch: Telnyx::Models::WebSearchCreateParams::safesearch?
+
+      def safesearch=: (
+        Telnyx::Models::WebSearchCreateParams::safesearch
+      ) -> Telnyx::Models::WebSearchCreateParams::safesearch
+
+      def initialize: (
+        query: String,
+        ?count: Integer,
+        ?country: String,
+        ?exclude_domains: ::Array[String],
+        ?freshness: String,
+        ?include_domains: ::Array[String],
+        ?livecrawl: bool,
+        ?safesearch: Telnyx::Models::WebSearchCreateParams::safesearch,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        query: String,
+        count: Integer,
+        country: String,
+        exclude_domains: ::Array[String],
+        freshness: String,
+        include_domains: ::Array[String],
+        livecrawl: bool,
+        safesearch: Telnyx::Models::WebSearchCreateParams::safesearch,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type safesearch = :off | :moderate | :strict
+
+      module Safesearch
+        extend Telnyx::Internal::Type::Enum
+
+        OFF: :off
+        MODERATE: :moderate
+        STRICT: :strict
+
+        def self?.values: -> ::Array[Telnyx::Models::WebSearchCreateParams::safesearch]
+      end
+    end
+  end
+end

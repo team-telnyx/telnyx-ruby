@@ -9,7 +9,7 @@ module Telnyx
         end
 
       # This attribute is an
-      # [error code](https://developers.telnyx.com/development/api-fundamentals/api-errors)
+      # [error code](https://developers.telnyx.com/docs/development/api-fundamentals/api-errors)
       # related to the failure reason.
       sig { returns(T.nilable(String)) }
       attr_accessor :error_code
@@ -50,7 +50,7 @@ module Telnyx
       end
       def self.new(
         # This attribute is an
-        # [error code](https://developers.telnyx.com/development/api-fundamentals/api-errors)
+        # [error code](https://developers.telnyx.com/docs/development/api-fundamentals/api-errors)
         # related to the failure reason.
         error_code: nil,
         # This attribute provides a human-readable explanation of why a failure happened.

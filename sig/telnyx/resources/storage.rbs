@@ -11,6 +11,8 @@ module Telnyx
 
       attr_reader cloudfs: Telnyx::Resources::Storage::Cloudfs
 
+      attr_reader sqldbs: Telnyx::Resources::Storage::Sqldbs
+
       def list_migration_source_coverage: (
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::StorageListMigrationSourceCoverageResponse

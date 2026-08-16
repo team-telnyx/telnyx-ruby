@@ -88,6 +88,8 @@ module Telnyx
             SET_STANDBY = :set_standby
             REMOVE_PUBLIC_IP = :remove_public_ip
             SET_PUBLIC_IP = :set_public_ip
+            ENABLE_VOICE = :enable_voice
+            DISABLE_VOICE = :disable_voice
 
             # @!method self.values
             #   @return [Array<Symbol>]

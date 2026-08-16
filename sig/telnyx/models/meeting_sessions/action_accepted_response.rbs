@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module MeetingSessions
+      type action_accepted_response =
+        { data: Telnyx::MeetingSessions::ActionAcceptedResponse::Data }
+
+      class ActionAcceptedResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::MeetingSessions::ActionAcceptedResponse::Data
+
+        def initialize: (
+          data: Telnyx::MeetingSessions::ActionAcceptedResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::MeetingSessions::ActionAcceptedResponse::Data
+        }
+
+        type data = { accepted: true }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor accepted: true
+
+          def initialize: (?accepted: true) -> void
+
+          def to_hash: -> { accepted: true }
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Storage
+      type sql_database_response_wrapper =
+        { data: Telnyx::Storage::SqlDatabase }
+
+      class SqlDatabaseResponseWrapper < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Storage::SqlDatabase?
+
+        def data=: (
+          Telnyx::Storage::SqlDatabase
+        ) -> Telnyx::Storage::SqlDatabase
+
+        def initialize: (?data: Telnyx::Storage::SqlDatabase) -> void
+
+        def to_hash: -> { data: Telnyx::Storage::SqlDatabase }
+      end
+    end
+  end
+end

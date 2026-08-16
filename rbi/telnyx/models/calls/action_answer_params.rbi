@@ -387,13 +387,14 @@ module Telnyx
         end
         attr_writer :webhook_url_method
 
-        # A map of event types to webhook URLs. When an event of the specified type
-        # occurs, the webhook URL associated with that event type will be called instead
-        # of `webhook_url`. Events not mapped here will use the default `webhook_url`.
-        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        # A map of event types to arrays of webhook URLs. When an event of the specified
+        # type occurs, the webhook URLs associated with that event type will be called
+        # instead of `webhook_url`. Events not mapped here will use the default
+        # `webhook_url`.
+        sig { returns(T.nilable(T::Hash[Symbol, T::Array[String]])) }
         attr_reader :webhook_urls
 
-        sig { params(webhook_urls: T::Hash[Symbol, String]).void }
+        sig { params(webhook_urls: T::Hash[Symbol, T::Array[String]]).void }
         attr_writer :webhook_urls
 
         # HTTP request method to invoke `webhook_urls`.
@@ -464,7 +465,7 @@ module Telnyx
             webhook_url: String,
             webhook_url_method:
               Telnyx::Calls::ActionAnswerParams::WebhookURLMethod::OrSymbol,
-            webhook_urls: T::Hash[Symbol, String],
+            webhook_urls: T::Hash[Symbol, T::Array[String]],
             webhook_urls_method:
               Telnyx::Calls::ActionAnswerParams::WebhookURLsMethod::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
@@ -562,9 +563,10 @@ module Telnyx
           webhook_url: nil,
           # HTTP request type used for `webhook_url`.
           webhook_url_method: nil,
-          # A map of event types to webhook URLs. When an event of the specified type
-          # occurs, the webhook URL associated with that event type will be called instead
-          # of `webhook_url`. Events not mapped here will use the default `webhook_url`.
+          # A map of event types to arrays of webhook URLs. When an event of the specified
+          # type occurs, the webhook URLs associated with that event type will be called
+          # instead of `webhook_url`. Events not mapped here will use the default
+          # `webhook_url`.
           webhook_urls: nil,
           # HTTP request method to invoke `webhook_urls`.
           webhook_urls_method: nil,
@@ -622,7 +624,7 @@ module Telnyx
               webhook_url: String,
               webhook_url_method:
                 Telnyx::Calls::ActionAnswerParams::WebhookURLMethod::OrSymbol,
-              webhook_urls: T::Hash[Symbol, String],
+              webhook_urls: T::Hash[Symbol, T::Array[String]],
               webhook_urls_method:
                 Telnyx::Calls::ActionAnswerParams::WebhookURLsMethod::OrSymbol,
               request_options: Telnyx::RequestOptions

@@ -5,6 +5,7 @@ module Telnyx
         def create: (
           String phone_number_id,
           ?enabled: bool,
+          ?greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting,
           ?pin: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::PhoneNumbers::VoicemailCreateResponse
@@ -17,6 +18,7 @@ module Telnyx
         def update: (
           String phone_number_id,
           ?enabled: bool,
+          ?greeting: Telnyx::PhoneNumbers::VoicemailRequest::Greeting,
           ?pin: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::PhoneNumbers::VoicemailUpdateResponse

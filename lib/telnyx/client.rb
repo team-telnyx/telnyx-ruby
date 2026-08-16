@@ -730,6 +730,12 @@ module Telnyx
     # @return [Telnyx::Resources::Pricing]
     attr_reader :pricing
 
+    # @return [Telnyx::Resources::WebSearch]
+    attr_reader :web_search
+
+    # @return [Telnyx::Resources::MeetingSessions]
+    attr_reader :meeting_sessions
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1019,6 +1025,8 @@ module Telnyx
       @email_unsubscribe_groups = Telnyx::Resources::EmailUnsubscribeGroups.new(client: self)
       @email_validations = Telnyx::Resources::EmailValidations.new(client: self)
       @pricing = Telnyx::Resources::Pricing.new(client: self)
+      @web_search = Telnyx::Resources::WebSearch.new(client: self)
+      @meeting_sessions = Telnyx::Resources::MeetingSessions.new(client: self)
     end
   end
 end

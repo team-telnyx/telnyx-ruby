@@ -76,10 +76,19 @@ module Telnyx
         sig do
           params(
             sim_card_group_id: String,
+            connection_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse)
         end
-        def bulk_enable_voice(sim_card_group_id:, request_options: {})
+        def bulk_enable_voice(
+          sim_card_group_id:,
+          # The identifier of the Mobile Voice Connection to associate with the SIM cards.
+          # The connection must be owned by the same user and of type
+          # <code>mobile_voice</code>. If omitted, voice is enabled without a connection
+          # association.
+          connection_id: nil,
+          request_options: {}
+        )
         end
 
         # This API triggers an asynchronous operation to set a public IP for each of the
@@ -115,6 +124,25 @@ module Telnyx
         )
         end
 
+        # This API disables voice calling on a SIM card. The SIM card will no longer be
+        # able to make or receive calls.<br/> The API will trigger an asynchronous
+        # operation called a SIM Card Action. The status of the SIM Card Action can be
+        # followed through the
+        # [List SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-sim-card-actions)
+        # API.
+        sig do
+          params(
+            id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::SimCards::ActionDisableVoiceResponse)
+        end
+        def disable_voice(
+          # Identifies the SIM.
+          id,
+          request_options: {}
+        )
+        end
+
         # This API enables a SIM card, connecting it to the network and making it possible
         # to consume data.<br/> To enable a SIM card, it must be associated with a SIM
         # card group.<br/> The API will trigger an asynchronous operation called a SIM
@@ -131,6 +159,33 @@ module Telnyx
         def enable(
           # Identifies the SIM.
           id,
+          request_options: {}
+        )
+        end
+
+        # This API enables voice calling on a SIM card. When a <code>connection_id</code>
+        # is provided, the SIM is associated with the specified Mobile Voice Connection.
+        # The connection must be owned by the same user and of type
+        # <code>mobile_voice</code>.<br/> The API will trigger an asynchronous operation
+        # called a SIM Card Action. The status of the SIM Card Action can be followed
+        # through the
+        # [List SIM Card Action](https://developers.telnyx.com/api-reference/sim-card-actions/list-sim-card-actions)
+        # API.
+        sig do
+          params(
+            id: String,
+            connection_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::SimCards::ActionEnableVoiceResponse)
+        end
+        def enable_voice(
+          # Identifies the SIM.
+          id,
+          # The identifier of the Mobile Voice Connection to associate with this SIM card.
+          # The connection must be owned by the same user and of type
+          # <code>mobile_voice</code>. If omitted, voice is enabled without a connection
+          # association.
+          connection_id: nil,
           request_options: {}
         )
         end

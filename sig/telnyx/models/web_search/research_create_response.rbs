@@ -1,0 +1,95 @@
+module Telnyx
+  module Models
+    module WebSearch
+      type research_create_response =
+        { data: Telnyx::Models::WebSearch::ResearchCreateResponse::data }
+
+      class ResearchCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::WebSearch::ResearchCreateResponse::data?
+
+        def data=: (
+          Telnyx::Models::WebSearch::ResearchCreateResponse::data
+        ) -> Telnyx::Models::WebSearch::ResearchCreateResponse::data
+
+        def initialize: (
+          ?data: Telnyx::Models::WebSearch::ResearchCreateResponse::data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::WebSearch::ResearchCreateResponse::data
+        }
+
+        type data =
+          Telnyx::Models::WebSearch::ResearchCreateResponse::Data::ResearchResponseSync
+          | Telnyx::Models::WebSearch::ResearchCreateResponse::Data::ResearchResponseAsync
+
+        module Data
+          extend Telnyx::Internal::Type::Union
+
+          type research_response_sync =
+            {
+              answer: String,
+              citations: ::Array[Telnyx::WebSearch::ResearchCitation]
+            }
+
+          class ResearchResponseSync < Telnyx::Internal::Type::BaseModel
+            attr_accessor answer: String
+
+            attr_reader citations: ::Array[Telnyx::WebSearch::ResearchCitation]?
+
+            def citations=: (
+              ::Array[Telnyx::WebSearch::ResearchCitation]
+            ) -> ::Array[Telnyx::WebSearch::ResearchCitation]
+
+            def initialize: (
+              answer: String,
+              ?citations: ::Array[Telnyx::WebSearch::ResearchCitation]
+            ) -> void
+
+            def to_hash: -> {
+              answer: String,
+              citations: ::Array[Telnyx::WebSearch::ResearchCitation]
+            }
+          end
+
+          type research_response_async =
+            {
+              status: Telnyx::Models::WebSearch::ResearchCreateResponse::Data::ResearchResponseAsync::status,
+              task_id: String
+            }
+
+          class ResearchResponseAsync < Telnyx::Internal::Type::BaseModel
+            attr_accessor status: Telnyx::Models::WebSearch::ResearchCreateResponse::Data::ResearchResponseAsync::status
+
+            attr_accessor task_id: String
+
+            def initialize: (
+              status: Telnyx::Models::WebSearch::ResearchCreateResponse::Data::ResearchResponseAsync::status,
+              task_id: String
+            ) -> void
+
+            def to_hash: -> {
+              status: Telnyx::Models::WebSearch::ResearchCreateResponse::Data::ResearchResponseAsync::status,
+              task_id: String
+            }
+
+            type status = :pending | :running | :completed | :failed
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              PENDING: :pending
+              RUNNING: :running
+              COMPLETED: :completed
+              FAILED: :failed
+
+              def self?.values: -> ::Array[Telnyx::Models::WebSearch::ResearchCreateResponse::Data::ResearchResponseAsync::status]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::WebSearch::ResearchCreateResponse::data]
+        end
+      end
+    end
+  end
+end

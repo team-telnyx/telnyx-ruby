@@ -25,6 +25,10 @@ module Telnyx
       # @return [Telnyx::Resources::Storage::Cloudfs]
       attr_reader :cloudfs
 
+      # Manage SQL databases and run SQL against them
+      # @return [Telnyx::Resources::Storage::Sqldbs]
+      attr_reader :sqldbs
+
       # List the external storage providers and regions supported as migration sources.
       #
       # @overload list_migration_source_coverage(request_options: {})
@@ -53,6 +57,7 @@ module Telnyx
         @migrations = Telnyx::Resources::Storage::Migrations.new(client: client)
         @kvs = Telnyx::Resources::Storage::Kvs.new(client: client)
         @cloudfs = Telnyx::Resources::Storage::Cloudfs.new(client: client)
+        @sqldbs = Telnyx::Resources::Storage::Sqldbs.new(client: client)
       end
     end
   end

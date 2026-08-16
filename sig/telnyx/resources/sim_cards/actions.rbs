@@ -21,6 +21,7 @@ module Telnyx
 
         def bulk_enable_voice: (
           sim_card_group_id: String,
+          ?connection_id: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::SimCards::ActionBulkEnableVoiceResponse
 
@@ -34,10 +35,21 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::SimCards::ActionDisableResponse
 
+        def disable_voice: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionDisableVoiceResponse
+
         def enable: (
           String id,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::SimCards::ActionEnableResponse
+
+        def enable_voice: (
+          String id,
+          ?connection_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::SimCards::ActionEnableVoiceResponse
 
         def remove_public_ip: (
           String id,

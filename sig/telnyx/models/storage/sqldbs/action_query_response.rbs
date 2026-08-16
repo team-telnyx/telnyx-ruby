@@ -1,0 +1,124 @@
+module Telnyx
+  module Models
+    module Storage
+      module Sqldbs
+        type action_query_response =
+          { data: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data }
+
+        class ActionQueryResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data?
+
+          def data=: (
+            Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data
+          ) -> Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data
+
+          def initialize: (
+            ?data: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data
+          }
+
+          type data =
+            {
+              count: Integer,
+              duration: Float,
+              meta: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data::Meta,
+              results: ::Array[::Hash[Symbol, top]],
+              success: bool
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader count: Integer?
+
+            def count=: (Integer) -> Integer
+
+            attr_reader duration: Float?
+
+            def duration=: (Float) -> Float
+
+            attr_reader meta: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data::Meta?
+
+            def meta=: (
+              Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data::Meta
+            ) -> Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data::Meta
+
+            attr_reader results: ::Array[::Hash[Symbol, top]]?
+
+            def results=: (
+              ::Array[::Hash[Symbol, top]]
+            ) -> ::Array[::Hash[Symbol, top]]
+
+            attr_reader success: bool?
+
+            def success=: (bool) -> bool
+
+            def initialize: (
+              ?count: Integer,
+              ?duration: Float,
+              ?meta: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data::Meta,
+              ?results: ::Array[::Hash[Symbol, top]],
+              ?success: bool
+            ) -> void
+
+            def to_hash: -> {
+              count: Integer,
+              duration: Float,
+              meta: Telnyx::Models::Storage::Sqldbs::ActionQueryResponse::Data::Meta,
+              results: ::Array[::Hash[Symbol, top]],
+              success: bool
+            }
+
+            type meta =
+              {
+                changes: Integer,
+                duration: Float,
+                last_row_id: Integer,
+                rows_read: Integer,
+                rows_written: Integer
+              }
+
+            class Meta < Telnyx::Internal::Type::BaseModel
+              attr_reader changes: Integer?
+
+              def changes=: (Integer) -> Integer
+
+              attr_reader duration: Float?
+
+              def duration=: (Float) -> Float
+
+              attr_reader last_row_id: Integer?
+
+              def last_row_id=: (Integer) -> Integer
+
+              attr_reader rows_read: Integer?
+
+              def rows_read=: (Integer) -> Integer
+
+              attr_reader rows_written: Integer?
+
+              def rows_written=: (Integer) -> Integer
+
+              def initialize: (
+                ?changes: Integer,
+                ?duration: Float,
+                ?last_row_id: Integer,
+                ?rows_read: Integer,
+                ?rows_written: Integer
+              ) -> void
+
+              def to_hash: -> {
+                changes: Integer,
+                duration: Float,
+                last_row_id: Integer,
+                rows_read: Integer,
+                rows_written: Integer
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

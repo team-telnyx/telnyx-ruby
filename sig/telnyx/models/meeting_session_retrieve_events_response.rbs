@@ -1,0 +1,52 @@
+module Telnyx
+  module Models
+    type meeting_session_retrieve_events_response =
+      {
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveEventsResponse::Data]
+      }
+
+    class MeetingSessionRetrieveEventsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::MeetingSessionRetrieveEventsResponse::Data]
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveEventsResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveEventsResponse::Data]
+      }
+
+      type data =
+        {
+          occurred_at: Time,
+          payload: ::Hash[Symbol, top],
+          seq: Integer,
+          type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: ::Hash[Symbol, top]
+
+        attr_accessor seq: Integer
+
+        attr_accessor type: String
+
+        def initialize: (
+          occurred_at: Time,
+          payload: ::Hash[Symbol, top],
+          seq: Integer,
+          type: String
+        ) -> void
+
+        def to_hash: -> {
+          occurred_at: Time,
+          payload: ::Hash[Symbol, top],
+          seq: Integer,
+          type: String
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,77 @@
+module Telnyx
+  module Models
+    type meeting_session_retrieve_transcript_response =
+      {
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Data],
+        meta: Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Meta
+      }
+
+    class MeetingSessionRetrieveTranscriptResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Data]
+
+      attr_accessor meta: Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Data],
+        meta: Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Data],
+        meta: Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Meta
+      }
+
+      type data =
+        {
+          confidence: Float?,
+          occurred_at: Time,
+          relative_ts: Float?,
+          seq: Integer,
+          speaker_label: String?,
+          text: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor confidence: Float?
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor relative_ts: Float?
+
+        attr_accessor seq: Integer
+
+        attr_accessor speaker_label: String?
+
+        attr_accessor text: String
+
+        def initialize: (
+          confidence: Float?,
+          occurred_at: Time,
+          relative_ts: Float?,
+          seq: Integer,
+          speaker_label: String?,
+          text: String
+        ) -> void
+
+        def to_hash: -> {
+          confidence: Float?,
+          occurred_at: Time,
+          relative_ts: Float?,
+          seq: Integer,
+          speaker_label: String?,
+          text: String
+        }
+      end
+
+      type meta = { next_after: Integer? }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor next_after: Integer?
+
+        def initialize: (next_after: Integer?) -> void
+
+        def to_hash: -> { next_after: Integer? }
+      end
+    end
+  end
+end

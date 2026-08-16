@@ -1,0 +1,53 @@
+module Telnyx
+  module Models
+    type meeting_session_list_params =
+      { status: Telnyx::Models::MeetingSessionListParams::status }
+      & Telnyx::Internal::Type::request_parameters
+
+    class MeetingSessionListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader status: Telnyx::Models::MeetingSessionListParams::status?
+
+      def status=: (
+        Telnyx::Models::MeetingSessionListParams::status
+      ) -> Telnyx::Models::MeetingSessionListParams::status
+
+      def initialize: (
+        ?status: Telnyx::Models::MeetingSessionListParams::status,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        status: Telnyx::Models::MeetingSessionListParams::status,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type status =
+        :scheduled
+        | :joining
+        | :waiting_for_admission
+        | :active
+        | :leaving
+        | :ended
+        | :failed
+        | :admission_denied
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        SCHEDULED: :scheduled
+        JOINING: :joining
+        WAITING_FOR_ADMISSION: :waiting_for_admission
+        ACTIVE: :active
+        LEAVING: :leaving
+        ENDED: :ended
+        FAILED: :failed
+        ADMISSION_DENIED: :admission_denied
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSessionListParams::status]
+      end
+    end
+  end
+end

@@ -211,6 +211,16 @@ module Telnyx
                 :set_public_ip,
                 Telnyx::SimCards::ActionListParams::Filter::ActionType::TaggedSymbol
               )
+            ENABLE_VOICE =
+              T.let(
+                :enable_voice,
+                Telnyx::SimCards::ActionListParams::Filter::ActionType::TaggedSymbol
+              )
+            DISABLE_VOICE =
+              T.let(
+                :disable_voice,
+                Telnyx::SimCards::ActionListParams::Filter::ActionType::TaggedSymbol
+              )
 
             sig do
               override.returns(

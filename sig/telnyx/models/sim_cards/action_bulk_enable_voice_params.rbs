@@ -2,7 +2,7 @@ module Telnyx
   module Models
     module SimCards
       type action_bulk_enable_voice_params =
-        { sim_card_group_id: String }
+        { sim_card_group_id: String, connection_id: String }
         & Telnyx::Internal::Type::request_parameters
 
       class ActionBulkEnableVoiceParams < Telnyx::Internal::Type::BaseModel
@@ -11,13 +11,19 @@ module Telnyx
 
         attr_accessor sim_card_group_id: String
 
+        attr_reader connection_id: String?
+
+        def connection_id=: (String) -> String
+
         def initialize: (
           sim_card_group_id: String,
+          ?connection_id: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           sim_card_group_id: String,
+          connection_id: String,
           request_options: Telnyx::RequestOptions
         }
       end

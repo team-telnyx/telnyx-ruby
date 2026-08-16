@@ -1,0 +1,277 @@
+module Telnyx
+  module Models
+    type meeting_session =
+      {
+        id: String,
+        account_id: String,
+        assistant: Telnyx::MeetingSession::Assistant?,
+        assistant_state: Telnyx::Models::MeetingSession::assistant_state?,
+        assistant_state_changed_at: Time?,
+        avatar: Telnyx::MeetingSession::Avatar?,
+        avatar_state: Telnyx::Models::MeetingSession::avatar_state?,
+        avatar_state_changed_at: Time?,
+        bot_name: String,
+        config: Telnyx::MeetingSession::Config,
+        created_at: Time,
+        ended_at: Time?,
+        failure_reason: String?,
+        join_at: Time?,
+        joined_at: Time?,
+        meeting_url: String,
+        metadata: ::Hash[Symbol, top],
+        platform: Telnyx::Models::MeetingSession::platform,
+        provider: String,
+        recording: bool,
+        status: Telnyx::Models::MeetingSession::status,
+        status_detail: String?,
+        updated_at: Time,
+        webhook_url: String?
+      }
+
+    class MeetingSession < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor account_id: String
+
+      attr_accessor assistant: Telnyx::MeetingSession::Assistant?
+
+      attr_accessor assistant_state: Telnyx::Models::MeetingSession::assistant_state?
+
+      attr_accessor assistant_state_changed_at: Time?
+
+      attr_accessor avatar: Telnyx::MeetingSession::Avatar?
+
+      attr_accessor avatar_state: Telnyx::Models::MeetingSession::avatar_state?
+
+      attr_accessor avatar_state_changed_at: Time?
+
+      attr_accessor bot_name: String
+
+      attr_accessor config: Telnyx::MeetingSession::Config
+
+      attr_accessor created_at: Time
+
+      attr_accessor ended_at: Time?
+
+      attr_accessor failure_reason: String?
+
+      attr_accessor join_at: Time?
+
+      attr_accessor joined_at: Time?
+
+      attr_accessor meeting_url: String
+
+      attr_accessor metadata: ::Hash[Symbol, top]
+
+      attr_accessor platform: Telnyx::Models::MeetingSession::platform
+
+      attr_accessor provider: String
+
+      attr_accessor recording: bool
+
+      attr_accessor status: Telnyx::Models::MeetingSession::status
+
+      attr_accessor status_detail: String?
+
+      attr_accessor updated_at: Time
+
+      attr_accessor webhook_url: String?
+
+      def initialize: (
+        id: String,
+        account_id: String,
+        assistant: Telnyx::MeetingSession::Assistant?,
+        assistant_state: Telnyx::Models::MeetingSession::assistant_state?,
+        assistant_state_changed_at: Time?,
+        avatar: Telnyx::MeetingSession::Avatar?,
+        avatar_state: Telnyx::Models::MeetingSession::avatar_state?,
+        avatar_state_changed_at: Time?,
+        bot_name: String,
+        config: Telnyx::MeetingSession::Config,
+        created_at: Time,
+        ended_at: Time?,
+        failure_reason: String?,
+        join_at: Time?,
+        joined_at: Time?,
+        meeting_url: String,
+        metadata: ::Hash[Symbol, top],
+        platform: Telnyx::Models::MeetingSession::platform,
+        provider: String,
+        recording: bool,
+        status: Telnyx::Models::MeetingSession::status,
+        status_detail: String?,
+        updated_at: Time,
+        webhook_url: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        account_id: String,
+        assistant: Telnyx::MeetingSession::Assistant?,
+        assistant_state: Telnyx::Models::MeetingSession::assistant_state?,
+        assistant_state_changed_at: Time?,
+        avatar: Telnyx::MeetingSession::Avatar?,
+        avatar_state: Telnyx::Models::MeetingSession::avatar_state?,
+        avatar_state_changed_at: Time?,
+        bot_name: String,
+        config: Telnyx::MeetingSession::Config,
+        created_at: Time,
+        ended_at: Time?,
+        failure_reason: String?,
+        join_at: Time?,
+        joined_at: Time?,
+        meeting_url: String,
+        metadata: ::Hash[Symbol, top],
+        platform: Telnyx::Models::MeetingSession::platform,
+        provider: String,
+        recording: bool,
+        status: Telnyx::Models::MeetingSession::status,
+        status_detail: String?,
+        updated_at: Time,
+        webhook_url: String?
+      }
+
+      type assistant =
+        {
+          id: String,
+          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
+        }
+
+      class Assistant < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
+
+        def initialize: (
+          id: String,
+          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
+        }
+
+        type audio_gate = :none | :half_duplex
+
+        module AudioGate
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+          HALF_DUPLEX: :half_duplex
+
+          def self?.values: -> ::Array[Telnyx::Models::MeetingSession::Assistant::audio_gate]
+        end
+      end
+
+      type assistant_state = :starting | :connected | :failed | :ended
+
+      module AssistantState
+        extend Telnyx::Internal::Type::Enum
+
+        STARTING: :starting
+        CONNECTED: :connected
+        FAILED: :failed
+        ENDED: :ended
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSession::assistant_state]
+      end
+
+      type avatar = { avatar_id: String, provider: :anam }
+
+      class Avatar < Telnyx::Internal::Type::BaseModel
+        attr_accessor avatar_id: String
+
+        attr_accessor provider: :anam
+
+        def initialize: (avatar_id: String, ?provider: :anam) -> void
+
+        def to_hash: -> { avatar_id: String, provider: :anam }
+      end
+
+      type avatar_state = :starting | :connected | :degraded | :disconnected
+
+      module AvatarState
+        extend Telnyx::Internal::Type::Enum
+
+        STARTING: :starting
+        CONNECTED: :connected
+        DEGRADED: :degraded
+        DISCONNECTED: :disconnected
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSession::avatar_state]
+      end
+
+      type config =
+        {
+          barge_in: bool,
+          speak_on_enter: String?,
+          summarize_on_end: bool,
+          voice: String?
+        }
+
+      class Config < Telnyx::Internal::Type::BaseModel
+        attr_accessor barge_in: bool
+
+        attr_accessor speak_on_enter: String?
+
+        attr_accessor summarize_on_end: bool
+
+        attr_accessor voice: String?
+
+        def initialize: (
+          barge_in: bool,
+          speak_on_enter: String?,
+          summarize_on_end: bool,
+          voice: String?
+        ) -> void
+
+        def to_hash: -> {
+          barge_in: bool,
+          speak_on_enter: String?,
+          summarize_on_end: bool,
+          voice: String?
+        }
+      end
+
+      type platform = :zoom | :google_meet | :teams | :webex | :unknown
+
+      module Platform
+        extend Telnyx::Internal::Type::Enum
+
+        ZOOM: :zoom
+        GOOGLE_MEET: :google_meet
+        TEAMS: :teams
+        WEBEX: :webex
+        UNKNOWN: :unknown
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSession::platform]
+      end
+
+      type status =
+        :scheduled
+        | :joining
+        | :waiting_for_admission
+        | :active
+        | :leaving
+        | :ended
+        | :failed
+        | :admission_denied
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        SCHEDULED: :scheduled
+        JOINING: :joining
+        WAITING_FOR_ADMISSION: :waiting_for_admission
+        ACTIVE: :active
+        LEAVING: :leaving
+        ENDED: :ended
+        FAILED: :failed
+        ADMISSION_DENIED: :admission_denied
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSession::status]
+      end
+    end
+  end
+end

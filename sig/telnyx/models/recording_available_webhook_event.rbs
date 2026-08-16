@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    type recording_available_webhook_event =
+      {
+        id: String,
+        data: Telnyx::RecordingAvailableWebhookEvent::Data,
+        event: Telnyx::Models::RecordingAvailableWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+    class RecordingAvailableWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor data: Telnyx::RecordingAvailableWebhookEvent::Data
+
+      attr_accessor event: Telnyx::Models::RecordingAvailableWebhookEvent::event
+
+      attr_accessor occurred_at: Time
+
+      attr_accessor version: String
+
+      def initialize: (
+        id: String,
+        data: Telnyx::RecordingAvailableWebhookEvent::Data,
+        event: Telnyx::Models::RecordingAvailableWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        data: Telnyx::RecordingAvailableWebhookEvent::Data,
+        event: Telnyx::Models::RecordingAvailableWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+      type data = { recording_types: ::Array[String], session_id: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor recording_types: ::Array[String]
+
+        attr_accessor session_id: String
+
+        def initialize: (
+          recording_types: ::Array[String],
+          session_id: String
+        ) -> void
+
+        def to_hash: -> { recording_types: ::Array[String], session_id: String }
+      end
+
+      type event = :"recording.available"
+
+      module Event
+        extend Telnyx::Internal::Type::Enum
+
+        RECORDING_AVAILABLE: :"recording.available"
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingAvailableWebhookEvent::event]
+      end
+    end
+  end
+end

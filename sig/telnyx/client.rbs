@@ -376,6 +376,10 @@ module Telnyx
 
     attr_reader pricing: Telnyx::Resources::Pricing
 
+    attr_reader web_search: Telnyx::Resources::WebSearch
+
+    attr_reader meeting_sessions: Telnyx::Resources::MeetingSessions
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

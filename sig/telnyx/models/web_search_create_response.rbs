@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    type web_search_create_response =
+      { data: Telnyx::Models::WebSearchCreateResponse::Data }
+
+    class WebSearchCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::WebSearchCreateResponse::Data?
+
+      def data=: (
+        Telnyx::Models::WebSearchCreateResponse::Data
+      ) -> Telnyx::Models::WebSearchCreateResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::WebSearchCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::WebSearchCreateResponse::Data }
+
+      type data =
+        { results: Telnyx::Models::WebSearchCreateResponse::Data::Results }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader results: Telnyx::Models::WebSearchCreateResponse::Data::Results?
+
+        def results=: (
+          Telnyx::Models::WebSearchCreateResponse::Data::Results
+        ) -> Telnyx::Models::WebSearchCreateResponse::Data::Results
+
+        def initialize: (
+          ?results: Telnyx::Models::WebSearchCreateResponse::Data::Results
+        ) -> void
+
+        def to_hash: -> {
+          results: Telnyx::Models::WebSearchCreateResponse::Data::Results
+        }
+
+        type results =
+          {
+            web: ::Array[Telnyx::WebSearchResult],
+            news: ::Array[Telnyx::WebSearchResult]
+          }
+
+        class Results < Telnyx::Internal::Type::BaseModel
+          attr_accessor web: ::Array[Telnyx::WebSearchResult]
+
+          attr_reader news: ::Array[Telnyx::WebSearchResult]?
+
+          def news=: (
+            ::Array[Telnyx::WebSearchResult]
+          ) -> ::Array[Telnyx::WebSearchResult]
+
+          def initialize: (
+            web: ::Array[Telnyx::WebSearchResult],
+            ?news: ::Array[Telnyx::WebSearchResult]
+          ) -> void
+
+          def to_hash: -> {
+            web: ::Array[Telnyx::WebSearchResult],
+            news: ::Array[Telnyx::WebSearchResult]
+          }
+        end
+      end
+    end
+  end
+end
