@@ -2,12 +2,9 @@ name: CI
 on:
   push:
     branches:
-      - '**'
-      - '!integrated/**'
-      - '!stl-preview-head/**'
-      - '!stl-preview-base/**'
-      - '!generated'
-      - '!codegen/**'
+      - 'main'
+      - 'master'
+      - 'next'
       - 'codegen/stl/**'
   pull_request:
     branches-ignore:
@@ -22,6 +19,11 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Validate CI runner policy
+        run: |-
+          python3 .github/scripts/test_ci_runner_policy.py
+          python3 .github/scripts/test_run_steep_shard.py
+          python3 .github/scripts/test_run_steep_shards.py
       - name: Set up Ruby
         uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
@@ -34,20 +36,43 @@ jobs:
   lint-steep:
     timeout-minutes: 60
     name: lint (steep)
-    runs-on: ${{ github.repository == 'team-telnyx/telnyx-ruby-staging' && 'telnyx-2xlarge' || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
+    permissions:
+      actions: write
+      contents: read
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Fix tool cache permissions
-        run: sudo mkdir -p /opt/hostedtoolcache && sudo chmod 777 /opt/hostedtoolcache
-      - name: Set up Ruby
+      - name: Check out CI orchestration
+        if: github.repository == 'team-telnyx/telnyx-ruby' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Run production Steep workers
+        if: github.repository == 'team-telnyx/telnyx-ruby' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          CORRELATION_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.event.pull_request.head.sha || github.sha }}
+          PRIMARY_WORKER_REF: ci/steep-workers
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_API_URL: ${{ github.api_url }}
+          GITHUB_STEP_SUMMARY: ${{ github.step_summary }}
+        run: python3 .github/scripts/run_steep_shards.py
+      - name: Run fork-safe production Steep check
+        if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Set up Ruby for fork-safe check
+        if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
         uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
           bundler-cache: false
-      - run: |-
+      - name: Run fork-safe production Steep check
+        if: github.repository == 'team-telnyx/telnyx-ruby' && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        run: |-
           bundle install
-      - name: Run steep
-        run: bundle exec steep check --jobs=4
+          bundle exec steep check --jobs=2
 
   lint-sorbet:
     timeout-minutes: 20
