@@ -363,6 +363,7 @@ module Telnyx
         type answering_machine_detection_config =
           {
             after_greeting_silence_millis: Integer,
+            beep_detection_profile: Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile,
             between_words_silence_millis: Integer,
             greeting_duration_millis: Integer,
             greeting_silence_duration_millis: Integer,
@@ -378,6 +379,12 @@ module Telnyx
           attr_reader after_greeting_silence_millis: Integer?
 
           def after_greeting_silence_millis=: (Integer) -> Integer
+
+          attr_reader beep_detection_profile: Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile?
+
+          def beep_detection_profile=: (
+            Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile
+          ) -> Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile
 
           attr_reader between_words_silence_millis: Integer?
 
@@ -417,6 +424,7 @@ module Telnyx
 
           def initialize: (
             ?after_greeting_silence_millis: Integer,
+            ?beep_detection_profile: Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile,
             ?between_words_silence_millis: Integer,
             ?greeting_duration_millis: Integer,
             ?greeting_silence_duration_millis: Integer,
@@ -430,6 +438,7 @@ module Telnyx
 
           def to_hash: -> {
             after_greeting_silence_millis: Integer,
+            beep_detection_profile: Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile,
             between_words_silence_millis: Integer,
             greeting_duration_millis: Integer,
             greeting_silence_duration_millis: Integer,
@@ -440,6 +449,17 @@ module Telnyx
             silence_threshold: Integer,
             total_analysis_time_millis: Integer
           }
+
+          type beep_detection_profile = :both | :freq_only
+
+          module BeepDetectionProfile
+            extend Telnyx::Internal::Type::Enum
+
+            BOTH: :both
+            FREQ_ONLY: :freq_only
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile]
+          end
         end
 
         type media_encryption = :disabled | :SRTP | :DTLS

@@ -1217,6 +1217,26 @@ module Telnyx
         sig { params(after_greeting_silence_millis: Integer).void }
         attr_writer :after_greeting_silence_millis
 
+        # Selects which detectors must validate a beep. `both` requires the amplitude and
+        # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+        # beeps whose volume is too unsteady for the default profile.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::OrSymbol
+            )
+          )
+        end
+        attr_reader :beep_detection_profile
+
+        sig do
+          params(
+            beep_detection_profile:
+              Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::OrSymbol
+          ).void
+        end
+        attr_writer :beep_detection_profile
+
         # Maximum threshold for silence between words.
         sig { returns(T.nilable(Integer)) }
         attr_reader :between_words_silence_millis
@@ -1290,6 +1310,8 @@ module Telnyx
         sig do
           params(
             after_greeting_silence_millis: Integer,
+            beep_detection_profile:
+              Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::OrSymbol,
             between_words_silence_millis: Integer,
             greeting_duration_millis: Integer,
             greeting_silence_duration_millis: Integer,
@@ -1305,6 +1327,10 @@ module Telnyx
           # Silence duration threshold after a greeting message or voice for it be
           # considered human.
           after_greeting_silence_millis: nil,
+          # Selects which detectors must validate a beep. `both` requires the amplitude and
+          # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+          # beeps whose volume is too unsteady for the default profile.
+          beep_detection_profile: nil,
           # Maximum threshold for silence between words.
           between_words_silence_millis: nil,
           # Maximum threshold of a human greeting. If greeting longer than this value,
@@ -1333,6 +1359,8 @@ module Telnyx
           override.returns(
             {
               after_greeting_silence_millis: Integer,
+              beep_detection_profile:
+                Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::OrSymbol,
               between_words_silence_millis: Integer,
               greeting_duration_millis: Integer,
               greeting_silence_duration_millis: Integer,
@@ -1346,6 +1374,43 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        # Selects which detectors must validate a beep. `both` requires the amplitude and
+        # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+        # beeps whose volume is too unsteady for the default profile.
+        module BeepDetectionProfile
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          BOTH =
+            T.let(
+              :both,
+              Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::TaggedSymbol
+            )
+          FREQ_ONLY =
+            T.let(
+              :freq_only,
+              Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 

@@ -27,7 +27,7 @@ module Telnyx
       # Recording, AMD, transcription, and deepfake detection callbacks are only sent
       # when those features are enabled.
       #
-      # @overload initiate_ai_call(connection_id, ai_assistant_id:, from:, to:, ai_assistant_dynamic_variables: nil, ai_assistant_version: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, conversation_callback: nil, conversation_callback_method: nil, conversation_callbacks: nil, custom_headers: nil, detection_mode: nil, machine_detection: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, passports: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, status_callbacks: nil, time_limit: nil, timeout_seconds: nil, trim: nil, request_options: {})
+      # @overload initiate_ai_call(connection_id, ai_assistant_id:, from:, to:, ai_assistant_dynamic_variables: nil, ai_assistant_version: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, conversation_callback: nil, conversation_callback_method: nil, conversation_callbacks: nil, custom_headers: nil, detection_mode: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, passports: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, status_callbacks: nil, time_limit: nil, timeout_seconds: nil, trim: nil, request_options: {})
       #
       # @param connection_id [String] The ID of the TeXML connection to use for the call.
       #
@@ -60,6 +60,8 @@ module Telnyx
       # @param detection_mode [Symbol, Telnyx::Models::TexmlInitiateAICallParams::DetectionMode] Allows you to choose between Regular, Premium, and PremiumCallScreening detectio
       #
       # @param machine_detection [Symbol, Telnyx::Models::TexmlInitiateAICallParams::MachineDetection] Enables Answering Machine Detection.
+      #
+      # @param machine_detection_beep_profile [Symbol, Telnyx::Models::TexmlInitiateAICallParams::MachineDetectionBeepProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
       #
       # @param machine_detection_prompt_end_timeout [Integer] Silence duration threshold after a call screening prompt before ending prompt de
       #

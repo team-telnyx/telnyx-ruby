@@ -151,7 +151,7 @@ module Telnyx
         )
       end
 
-      # Returns messaging profiles owned by the authenticated account. Apply the
+      # Lists messaging profiles owned by the authenticated account. Apply the
       # documented filters and pagination parameters to narrow the result set.
       #
       # @overload list(filter: nil, filter_name_contains: nil, filter_name_eq: nil, page_number: nil, page_size: nil, request_options: {})

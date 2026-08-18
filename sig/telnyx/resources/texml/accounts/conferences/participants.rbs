@@ -63,6 +63,7 @@ module Telnyx
               ?from: String,
               ?label: String,
               ?machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
+              ?machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection_beep_profile,
               ?machine_detection_silence_timeout: Integer,
               ?machine_detection_speech_end_threshold: Integer,
               ?machine_detection_speech_threshold: Integer,
