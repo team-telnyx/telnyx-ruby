@@ -199,7 +199,7 @@ module Telnyx
       )
       end
 
-      # Returns messaging profiles owned by the authenticated account. Apply the
+      # Lists messaging profiles owned by the authenticated account. Apply the
       # documented filters and pagination parameters to narrow the result set.
       sig do
         params(

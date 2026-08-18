@@ -1,10 +1,18 @@
 module Telnyx
   module Models
     type rime_voice_settings =
-      { type: Telnyx::Models::RimeVoiceSettings::type_, voice_speed: Float }
+      {
+        type: Telnyx::Models::RimeVoiceSettings::type_,
+        api_key_ref: String,
+        voice_speed: Float
+      }
 
     class RimeVoiceSettings < Telnyx::Internal::Type::BaseModel
       attr_accessor type: Telnyx::Models::RimeVoiceSettings::type_
+
+      attr_reader api_key_ref: String?
+
+      def api_key_ref=: (String) -> String
 
       attr_reader voice_speed: Float?
 
@@ -12,11 +20,13 @@ module Telnyx
 
       def initialize: (
         type: Telnyx::Models::RimeVoiceSettings::type_,
+        ?api_key_ref: String,
         ?voice_speed: Float
       ) -> void
 
       def to_hash: -> {
         type: Telnyx::Models::RimeVoiceSettings::type_,
+        api_key_ref: String,
         voice_speed: Float
       }
 

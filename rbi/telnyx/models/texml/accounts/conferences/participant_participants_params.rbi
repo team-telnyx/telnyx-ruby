@@ -317,6 +317,27 @@ module Telnyx
             end
             attr_writer :machine_detection
 
+            # Selects which detectors must validate a beep. `both` requires the amplitude and
+            # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+            # beeps whose volume is too unsteady for the default profile. Only used when
+            # MachineDetection is enabled.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile::OrSymbol
+                )
+              )
+            end
+            attr_reader :machine_detection_beep_profile
+
+            sig do
+              params(
+                machine_detection_beep_profile:
+                  Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile::OrSymbol
+              ).void
+            end
+            attr_writer :machine_detection_beep_profile
+
             # If initial silence duration is greater than this value, consider it a machine.
             # Ignored when `premium` detection is used.
             sig { returns(T.nilable(Integer)) }
@@ -592,6 +613,8 @@ module Telnyx
                 label: String,
                 machine_detection:
                   Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetection::OrSymbol,
+                machine_detection_beep_profile:
+                  Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile::OrSymbol,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
                 machine_detection_speech_threshold: Integer,
@@ -703,6 +726,11 @@ module Telnyx
               # identified. Use `DetectMessageEnd`, if you would like to leave a message on an
               # answering machine.
               machine_detection: nil,
+              # Selects which detectors must validate a beep. `both` requires the amplitude and
+              # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+              # beeps whose volume is too unsteady for the default profile. Only used when
+              # MachineDetection is enabled.
+              machine_detection_beep_profile: nil,
               # If initial silence duration is greater than this value, consider it a machine.
               # Ignored when `premium` detection is used.
               machine_detection_silence_timeout: nil,
@@ -808,6 +836,8 @@ module Telnyx
                   label: String,
                   machine_detection:
                     Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetection::OrSymbol,
+                  machine_detection_beep_profile:
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile::OrSymbol,
                   machine_detection_silence_timeout: Integer,
                   machine_detection_speech_end_threshold: Integer,
                   machine_detection_speech_threshold: Integer,
@@ -1143,6 +1173,44 @@ module Telnyx
                 override.returns(
                   T::Array[
                     Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetection::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Selects which detectors must validate a beep. `both` requires the amplitude and
+            # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+            # beeps whose volume is too unsteady for the default profile. Only used when
+            # MachineDetection is enabled.
+            module MachineDetectionBeepProfile
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              BOTH =
+                T.let(
+                  :both,
+                  Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile::TaggedSymbol
+                )
+              FREQ_ONLY =
+                T.let(
+                  :freq_only,
+                  Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile::TaggedSymbol
                   ]
                 )
               end

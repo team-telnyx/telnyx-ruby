@@ -170,6 +170,19 @@ module Telnyx
                        enum: -> { Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection },
                        api_name: :MachineDetection
 
+              # @!attribute machine_detection_beep_profile
+              #   Selects which detectors must validate a beep. `both` requires the amplitude and
+              #   frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+              #   beeps whose volume is too unsteady for the default profile. Only used when
+              #   MachineDetection is enabled.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetectionBeepProfile, nil]
+              optional :machine_detection_beep_profile,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetectionBeepProfile
+                       },
+                       api_name: :MachineDetectionBeepProfile
+
               # @!attribute machine_detection_prompt_end_timeout
               #   Silence duration threshold after a call screening prompt before ending prompt
               #   detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
@@ -396,7 +409,7 @@ module Telnyx
                        enum: -> { Telnyx::Texml::Accounts::CallCallsParams::Body::WithURL::URLMethod },
                        api_name: :UrlMethod
 
-              # @!method initialize(url:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url_method: nil)
+              # @!method initialize(url:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL} for more
               #   details.
@@ -432,6 +445,8 @@ module Telnyx
               #   @param from [String] The phone number of the party that initiated the call. Phone numbers are formatt
               #
               #   @param machine_detection [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetection] Enables Answering Machine Detection.
+              #
+              #   @param machine_detection_beep_profile [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::MachineDetectionBeepProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
               #
               #   @param machine_detection_prompt_end_timeout [Integer] Silence duration threshold after a call screening prompt before ending prompt de
               #
@@ -576,6 +591,22 @@ module Telnyx
                 ENABLE = :Enable
                 DISABLE = :Disable
                 DETECT_MESSAGE_END = :DetectMessageEnd
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Selects which detectors must validate a beep. `both` requires the amplitude and
+              # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+              # beeps whose volume is too unsteady for the default profile. Only used when
+              # MachineDetection is enabled.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL#machine_detection_beep_profile
+              module MachineDetectionBeepProfile
+                extend Telnyx::Internal::Type::Enum
+
+                BOTH = :both
+                FREQ_ONLY = :freq_only
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -850,6 +881,19 @@ module Telnyx
                        },
                        api_name: :MachineDetection
 
+              # @!attribute machine_detection_beep_profile
+              #   Selects which detectors must validate a beep. `both` requires the amplitude and
+              #   frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+              #   beeps whose volume is too unsteady for the default profile. Only used when
+              #   MachineDetection is enabled.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetectionBeepProfile, nil]
+              optional :machine_detection_beep_profile,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetectionBeepProfile
+                       },
+                       api_name: :MachineDetectionBeepProfile
+
               # @!attribute machine_detection_prompt_end_timeout
               #   Silence duration threshold after a call screening prompt before ending prompt
               #   detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
@@ -1080,7 +1124,7 @@ module Telnyx
                        enum: -> { Telnyx::Texml::Accounts::CallCallsParams::Body::WithTeXml::URLMethod },
                        api_name: :UrlMethod
 
-              # @!method initialize(texml:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
+              # @!method initialize(texml:, application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml} for more
               #   details.
@@ -1116,6 +1160,8 @@ module Telnyx
               #   @param from [String] The phone number of the party that initiated the call. Phone numbers are formatt
               #
               #   @param machine_detection [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetection] Enables Answering Machine Detection.
+              #
+              #   @param machine_detection_beep_profile [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::MachineDetectionBeepProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
               #
               #   @param machine_detection_prompt_end_timeout [Integer] Silence duration threshold after a call screening prompt before ending prompt de
               #
@@ -1260,6 +1306,22 @@ module Telnyx
                 ENABLE = :Enable
                 DISABLE = :Disable
                 DETECT_MESSAGE_END = :DetectMessageEnd
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Selects which detectors must validate a beep. `both` requires the amplitude and
+              # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+              # beeps whose volume is too unsteady for the default profile. Only used when
+              # MachineDetection is enabled.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml#machine_detection_beep_profile
+              module MachineDetectionBeepProfile
+                extend Telnyx::Internal::Type::Enum
+
+                BOTH = :both
+                FREQ_ONLY = :freq_only
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -1529,6 +1591,19 @@ module Telnyx
                        },
                        api_name: :MachineDetection
 
+              # @!attribute machine_detection_beep_profile
+              #   Selects which detectors must validate a beep. `both` requires the amplitude and
+              #   frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+              #   beeps whose volume is too unsteady for the default profile. Only used when
+              #   MachineDetection is enabled.
+              #
+              #   @return [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetectionBeepProfile, nil]
+              optional :machine_detection_beep_profile,
+                       enum: -> {
+                         Telnyx::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetectionBeepProfile
+                       },
+                       api_name: :MachineDetectionBeepProfile
+
               # @!attribute machine_detection_prompt_end_timeout
               #   Silence duration threshold after a call screening prompt before ending prompt
               #   detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
@@ -1770,7 +1845,7 @@ module Telnyx
                        },
                        api_name: :UrlMethod
 
-              # @!method initialize(application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
+              # @!method initialize(application_sid: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, custom_headers: nil, deepfake_detection: nil, deepfake_detection_callback_method: nil, deepfake_detection_callback_url: nil, detection_mode: nil, fallback_url: nil, from: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, media_encryption: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, supervise_call_sid: nil, supervising_role: nil, texml: nil, time_limit: nil, timeout: nil, to: nil, trim: nil, url: nil, url_method: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault} for
               #   more details.
@@ -1804,6 +1879,8 @@ module Telnyx
               #   @param from [String] The phone number of the party that initiated the call. Phone numbers are formatt
               #
               #   @param machine_detection [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetection] Enables Answering Machine Detection.
+              #
+              #   @param machine_detection_beep_profile [Symbol, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::MachineDetectionBeepProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
               #
               #   @param machine_detection_prompt_end_timeout [Integer] Silence duration threshold after a call screening prompt before ending prompt de
               #
@@ -1950,6 +2027,22 @@ module Telnyx
                 ENABLE = :Enable
                 DISABLE = :Disable
                 DETECT_MESSAGE_END = :DetectMessageEnd
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Selects which detectors must validate a beep. `both` requires the amplitude and
+              # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+              # beeps whose volume is too unsteady for the default profile. Only used when
+              # MachineDetection is enabled.
+              #
+              # @see Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault#machine_detection_beep_profile
+              module MachineDetectionBeepProfile
+                extend Telnyx::Internal::Type::Enum
+
+                BOTH = :both
+                FREQ_ONLY = :freq_only
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

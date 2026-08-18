@@ -18,6 +18,7 @@ module Telnyx
         custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
         detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
         machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        machine_detection_beep_profile: Telnyx::Models::TexmlInitiateAICallParams::machine_detection_beep_profile,
         machine_detection_prompt_end_timeout: Integer,
         machine_detection_silence_timeout: Integer,
         machine_detection_speech_end_threshold: Integer,
@@ -117,6 +118,12 @@ module Telnyx
       def machine_detection=: (
         Telnyx::Models::TexmlInitiateAICallParams::machine_detection
       ) -> Telnyx::Models::TexmlInitiateAICallParams::machine_detection
+
+      attr_reader machine_detection_beep_profile: Telnyx::Models::TexmlInitiateAICallParams::machine_detection_beep_profile?
+
+      def machine_detection_beep_profile=: (
+        Telnyx::Models::TexmlInitiateAICallParams::machine_detection_beep_profile
+      ) -> Telnyx::Models::TexmlInitiateAICallParams::machine_detection_beep_profile
 
       attr_reader machine_detection_prompt_end_timeout: Integer?
 
@@ -247,6 +254,7 @@ module Telnyx
         ?custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
         ?detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
         ?machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        ?machine_detection_beep_profile: Telnyx::Models::TexmlInitiateAICallParams::machine_detection_beep_profile,
         ?machine_detection_prompt_end_timeout: Integer,
         ?machine_detection_silence_timeout: Integer,
         ?machine_detection_speech_end_threshold: Integer,
@@ -292,6 +300,7 @@ module Telnyx
         custom_headers: ::Array[Telnyx::TexmlInitiateAICallParams::CustomHeader],
         detection_mode: Telnyx::Models::TexmlInitiateAICallParams::detection_mode,
         machine_detection: Telnyx::Models::TexmlInitiateAICallParams::machine_detection,
+        machine_detection_beep_profile: Telnyx::Models::TexmlInitiateAICallParams::machine_detection_beep_profile,
         machine_detection_prompt_end_timeout: Integer,
         machine_detection_silence_timeout: Integer,
         machine_detection_speech_end_threshold: Integer,
@@ -376,6 +385,17 @@ module Telnyx
         DETECT_MESSAGE_END: :DetectMessageEnd
 
         def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::machine_detection]
+      end
+
+      type machine_detection_beep_profile = :both | :freq_only
+
+      module MachineDetectionBeepProfile
+        extend Telnyx::Internal::Type::Enum
+
+        BOTH: :both
+        FREQ_ONLY: :freq_only
+
+        def self?.values: -> ::Array[Telnyx::Models::TexmlInitiateAICallParams::machine_detection_beep_profile]
       end
 
       type recording_channels = :mono | :dual

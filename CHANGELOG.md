@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.162.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.161.0...v5.162.0) (2026-08-18)
+
+
+### Features
+
+* promote from staging da5b392 ([a6f764f](https://github.com/team-telnyx/telnyx-ruby/commit/a6f764f5d8e682c5f37c1d0efb7cd007adc143be))
+
+
+### Bug Fixes
+
+* **ci:** ignore closed release PR events ([#343](https://github.com/team-telnyx/telnyx-ruby/issues/343)) ([c65fae5](https://github.com/team-telnyx/telnyx-ruby/commit/c65fae5ee03bbbfab28da33b0204f3fc972b509f))
+
 ## [5.161.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.160.0...v5.161.0) (2026-08-16)
 
 

@@ -706,6 +706,15 @@ module Telnyx
         #   @return [Integer, nil]
         optional :after_greeting_silence_millis, Integer
 
+        # @!attribute beep_detection_profile
+        #   Selects which detectors must validate a beep. `both` requires the amplitude and
+        #   frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+        #   beeps whose volume is too unsteady for the default profile.
+        #
+        #   @return [Symbol, Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile, nil]
+        optional :beep_detection_profile,
+                 enum: -> { Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile }
+
         # @!attribute between_words_silence_millis
         #   Maximum threshold for silence between words.
         #
@@ -763,7 +772,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :total_analysis_time_millis, Integer
 
-        # @!method initialize(after_greeting_silence_millis: nil, between_words_silence_millis: nil, greeting_duration_millis: nil, greeting_silence_duration_millis: nil, greeting_total_analysis_time_millis: nil, initial_silence_millis: nil, maximum_number_of_words: nil, maximum_word_length_millis: nil, silence_threshold: nil, total_analysis_time_millis: nil)
+        # @!method initialize(after_greeting_silence_millis: nil, beep_detection_profile: nil, between_words_silence_millis: nil, greeting_duration_millis: nil, greeting_silence_duration_millis: nil, greeting_total_analysis_time_millis: nil, initial_silence_millis: nil, maximum_number_of_words: nil, maximum_word_length_millis: nil, silence_threshold: nil, total_analysis_time_millis: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig} for more
         #   details.
@@ -774,6 +783,8 @@ module Telnyx
         #   answering_machine_detection.
         #
         #   @param after_greeting_silence_millis [Integer] Silence duration threshold after a greeting message or voice for it be considere
+        #
+        #   @param beep_detection_profile [Symbol, Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
         #
         #   @param between_words_silence_millis [Integer] Maximum threshold for silence between words.
         #
@@ -792,6 +803,21 @@ module Telnyx
         #   @param silence_threshold [Integer] Minimum noise threshold for any analysis.
         #
         #   @param total_analysis_time_millis [Integer] Maximum timeout threshold for overall detection.
+
+        # Selects which detectors must validate a beep. `both` requires the amplitude and
+        # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+        # beeps whose volume is too unsteady for the default profile.
+        #
+        # @see Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig#beep_detection_profile
+        module BeepDetectionProfile
+          extend Telnyx::Internal::Type::Enum
+
+          BOTH = :both
+          FREQ_ONLY = :freq_only
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       class ConferenceConfig < Telnyx::Internal::Type::BaseModel
