@@ -46,6 +46,8 @@ module Telnyx
             Telnyx::TexmlInitiateAICallParams::DetectionMode::OrSymbol,
           machine_detection:
             Telnyx::TexmlInitiateAICallParams::MachineDetection::OrSymbol,
+          machine_detection_beep_profile:
+            Telnyx::TexmlInitiateAICallParams::MachineDetectionBeepProfile::OrSymbol,
           machine_detection_prompt_end_timeout: Integer,
           machine_detection_silence_timeout: Integer,
           machine_detection_speech_end_threshold: Integer,
@@ -122,6 +124,11 @@ module Telnyx
         detection_mode: nil,
         # Enables Answering Machine Detection.
         machine_detection: nil,
+        # Selects which detectors must validate a beep. `both` requires the amplitude and
+        # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+        # beeps whose volume is too unsteady for the default profile. Only used when
+        # MachineDetection is enabled.
+        machine_detection_beep_profile: nil,
         # Silence duration threshold after a call screening prompt before ending prompt
         # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
         machine_detection_prompt_end_timeout: nil,

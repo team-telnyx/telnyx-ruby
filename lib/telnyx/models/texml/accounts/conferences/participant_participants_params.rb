@@ -230,6 +230,19 @@ module Telnyx
                      },
                      api_name: :MachineDetection
 
+            # @!attribute machine_detection_beep_profile
+            #   Selects which detectors must validate a beep. `both` requires the amplitude and
+            #   frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+            #   beeps whose volume is too unsteady for the default profile. Only used when
+            #   MachineDetection is enabled.
+            #
+            #   @return [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile, nil]
+            optional :machine_detection_beep_profile,
+                     enum: -> {
+                       Telnyx::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile
+                     },
+                     api_name: :MachineDetectionBeepProfile
+
             # @!attribute machine_detection_silence_timeout
             #   If initial silence duration is greater than this value, consider it a machine.
             #   Ignored when `premium` detection is used.
@@ -410,7 +423,7 @@ module Telnyx
             #   @return [String, nil]
             optional :wait_url, String, api_name: :WaitUrl
 
-            # @!method initialize(account_sid:, conference_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
+            # @!method initialize(account_sid:, conference_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams}
             #   for more details.
@@ -466,6 +479,8 @@ module Telnyx
             #   @param label [String] A unique label for the participant that will be added to the conference. The lab
             #
             #   @param machine_detection [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetection] Whether to detect if a human or an answering machine picked up the call. Use `En
+            #
+            #   @param machine_detection_beep_profile [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
             #
             #   @param machine_detection_silence_timeout [Integer] If initial silence duration is greater than this value, consider it a machine. I
             #
@@ -620,6 +635,20 @@ module Telnyx
 
               ENABLE = :Enable
               DETECT_MESSAGE_END = :DetectMessageEnd
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Selects which detectors must validate a beep. `both` requires the amplitude and
+            # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
+            # beeps whose volume is too unsteady for the default profile. Only used when
+            # MachineDetection is enabled.
+            module MachineDetectionBeepProfile
+              extend Telnyx::Internal::Type::Enum
+
+              BOTH = :both
+              FREQ_ONLY = :freq_only
 
               # @!method self.values
               #   @return [Array<Symbol>]

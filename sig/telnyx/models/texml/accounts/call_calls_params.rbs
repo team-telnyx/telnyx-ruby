@@ -55,6 +55,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection,
+                machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection_beep_profile,
                 machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
@@ -160,6 +161,12 @@ module Telnyx
               def machine_detection=: (
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection
+
+              attr_reader machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection_beep_profile?
+
+              def machine_detection_beep_profile=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection_beep_profile
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection_beep_profile
 
               attr_reader machine_detection_prompt_end_timeout: Integer?
 
@@ -310,6 +317,7 @@ module Telnyx
                 ?fallback_url: String,
                 ?from: String,
                 ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection,
+                ?machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection_beep_profile,
                 ?machine_detection_prompt_end_timeout: Integer,
                 ?machine_detection_silence_timeout: Integer,
                 ?machine_detection_speech_end_threshold: Integer,
@@ -358,6 +366,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection,
+                machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection_beep_profile,
                 machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
@@ -455,6 +464,17 @@ module Telnyx
                 DETECT_MESSAGE_END: :DetectMessageEnd
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection]
+              end
+
+              type machine_detection_beep_profile = :both | :freq_only
+
+              module MachineDetectionBeepProfile
+                extend Telnyx::Internal::Type::Enum
+
+                BOTH: :both
+                FREQ_ONLY: :freq_only
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL::machine_detection_beep_profile]
               end
 
               type media_encryption = :disabled | :SRTP | :DTLS
@@ -582,6 +602,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection,
+                machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection_beep_profile,
                 machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
@@ -687,6 +708,12 @@ module Telnyx
               def machine_detection=: (
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection
+
+              attr_reader machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection_beep_profile?
+
+              def machine_detection_beep_profile=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection_beep_profile
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection_beep_profile
 
               attr_reader machine_detection_prompt_end_timeout: Integer?
 
@@ -837,6 +864,7 @@ module Telnyx
                 ?fallback_url: String,
                 ?from: String,
                 ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection,
+                ?machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection_beep_profile,
                 ?machine_detection_prompt_end_timeout: Integer,
                 ?machine_detection_silence_timeout: Integer,
                 ?machine_detection_speech_end_threshold: Integer,
@@ -885,6 +913,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection,
+                machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection_beep_profile,
                 machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
@@ -982,6 +1011,17 @@ module Telnyx
                 DETECT_MESSAGE_END: :DetectMessageEnd
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection]
+              end
+
+              type machine_detection_beep_profile = :both | :freq_only
+
+              module MachineDetectionBeepProfile
+                extend Telnyx::Internal::Type::Enum
+
+                BOTH: :both
+                FREQ_ONLY: :freq_only
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml::machine_detection_beep_profile]
               end
 
               type media_encryption = :disabled | :SRTP | :DTLS
@@ -1108,6 +1148,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection,
+                machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection_beep_profile,
                 machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
@@ -1212,6 +1253,12 @@ module Telnyx
               def machine_detection=: (
                 Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection
               ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection
+
+              attr_reader machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection_beep_profile?
+
+              def machine_detection_beep_profile=: (
+                Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection_beep_profile
+              ) -> Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection_beep_profile
 
               attr_reader machine_detection_prompt_end_timeout: Integer?
 
@@ -1363,6 +1410,7 @@ module Telnyx
                 ?fallback_url: String,
                 ?from: String,
                 ?machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection,
+                ?machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection_beep_profile,
                 ?machine_detection_prompt_end_timeout: Integer,
                 ?machine_detection_silence_timeout: Integer,
                 ?machine_detection_speech_end_threshold: Integer,
@@ -1411,6 +1459,7 @@ module Telnyx
                 fallback_url: String,
                 from: String,
                 machine_detection: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection,
+                machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection_beep_profile,
                 machine_detection_prompt_end_timeout: Integer,
                 machine_detection_silence_timeout: Integer,
                 machine_detection_speech_end_threshold: Integer,
@@ -1509,6 +1558,17 @@ module Telnyx
                 DETECT_MESSAGE_END: :DetectMessageEnd
 
                 def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection]
+              end
+
+              type machine_detection_beep_profile = :both | :freq_only
+
+              module MachineDetectionBeepProfile
+                extend Telnyx::Internal::Type::Enum
+
+                BOTH: :both
+                FREQ_ONLY: :freq_only
+
+                def self?.values: -> ::Array[Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault::machine_detection_beep_profile]
               end
 
               type media_encryption = :disabled | :SRTP | :DTLS
