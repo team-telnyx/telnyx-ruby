@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Outbound voice profiles operations
     class OutboundVoiceProfiles
-      # Create an outbound voice profile.
+      # Creates a new outbound voice profile defining calling permissions, destinations,
+      # and limits for outbound calls, and returns the created profile.
       sig do
         params(
           name: String,

@@ -18,7 +18,7 @@ module Telnyx
       )
       end
 
-      # Updates a stored media file.
+      # Updates the specified stored media file and returns the updated resource.
       sig do
         params(
           media_name: String,
@@ -40,7 +40,8 @@ module Telnyx
       )
       end
 
-      # Returns a list of stored media files.
+      # Returns a list of the media files stored on your account, with support for
+      # filtering.
       sig do
         params(
           filter: Telnyx::MediaListParams::Filter::OrHash,
@@ -55,7 +56,7 @@ module Telnyx
       )
       end
 
-      # Deletes a stored media file.
+      # Permanently deletes the specified media file from storage.
       sig do
         params(
           media_name: String,
@@ -69,7 +70,7 @@ module Telnyx
       )
       end
 
-      # Downloads a stored media file.
+      # Downloads the raw content of the specified stored media file.
       sig do
         params(
           media_name: String,

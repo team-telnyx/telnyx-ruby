@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     class AI
       class McpServers
-        # Create a new MCP server.
+        # Creates a new MCP server configuration on your account and returns the created
+        # server.
         #
         # @overload create(name:, type:, url:, allowed_tools: nil, api_key_ref: nil, request_options: {})
         #
@@ -49,7 +50,7 @@ module Telnyx
           )
         end
 
-        # Update an existing MCP server.
+        # Updates the specified MCP server's configuration and returns the updated server.
         #
         # @overload update(mcp_server_id, id: nil, allowed_tools: nil, api_key_ref: nil, created_at: nil, name: nil, type: nil, url: nil, request_options: {})
         #
@@ -85,7 +86,8 @@ module Telnyx
           )
         end
 
-        # Retrieve a list of MCP servers.
+        # Returns a paginated list of the MCP servers configured on your account, with
+        # optional filtering by type or URL.
         #
         # @overload list(page_number: nil, page_size: nil, type: nil, url: nil, request_options: {})
         #
@@ -115,7 +117,7 @@ module Telnyx
           )
         end
 
-        # Delete a specific MCP server.
+        # Permanently deletes the specified MCP server configuration from your account.
         #
         # @overload delete(mcp_server_id, request_options: {})
         #

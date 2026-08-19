@@ -6,7 +6,9 @@ module Telnyx
       class Missions
         class Runs
           class Events
-            # List events for a run (paginated)
+            # Returns a paginated list of events logged for the specified run, filterable by
+            # event type, plan step, and agent, so you can reconstruct exactly what happened
+            # during execution.
             sig do
               params(
                 run_id: String,
@@ -42,7 +44,8 @@ module Telnyx
             )
             end
 
-            # Get details of a specific event
+            # Returns the details of a single event logged for the specified run, including
+            # its type and payload.
             sig do
               params(
                 event_id: String,
@@ -62,7 +65,8 @@ module Telnyx
             )
             end
 
-            # Log an event for a run
+            # Logs a new event against the specified run and returns the created event. Events
+            # form the run's audit trail and can reference a plan step or agent.
             sig do
               params(
                 run_id: String,

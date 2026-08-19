@@ -3,7 +3,8 @@
 module Telnyx
   module Resources
     class OAuthClients
-      # Create a new OAuth client
+      # Creates a new OAuth client on your account for authenticating third-party
+      # integrations, and returns the created client.
       #
       # @overload create(allowed_grant_types:, allowed_scopes:, client_type:, name:, logo_uri: nil, policy_uri: nil, redirect_uris: nil, require_pkce: nil, tos_uri: nil, request_options: {})
       #
@@ -41,7 +42,7 @@ module Telnyx
         )
       end
 
-      # Retrieve a single OAuth client by ID
+      # Returns the details of a single OAuth client on your account by its ID.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -61,7 +62,8 @@ module Telnyx
         )
       end
 
-      # Update an existing OAuth client
+      # Updates the specified OAuth client's configuration and returns the updated
+      # client.
       #
       # @overload update(id, allowed_grant_types: nil, allowed_scopes: nil, logo_uri: nil, name: nil, policy_uri: nil, redirect_uris: nil, require_pkce: nil, tos_uri: nil, request_options: {})
       #
@@ -146,7 +148,7 @@ module Telnyx
         )
       end
 
-      # Delete an OAuth client
+      # Permanently deletes the specified OAuth client from your account.
       #
       # @overload delete(id, request_options: {})
       #

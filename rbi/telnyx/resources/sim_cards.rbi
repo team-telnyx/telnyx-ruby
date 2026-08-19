@@ -29,7 +29,7 @@ module Telnyx
       )
       end
 
-      # Updates SIM card data
+      # Updates the specified SIM card's attributes and returns the updated SIM card.
       sig do
         params(
           sim_card_id: String,

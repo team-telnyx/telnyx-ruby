@@ -317,7 +317,7 @@ module Telnyx
       )
       end
 
-      # Deletes an existing UAC connection.
+      # Permanently deletes the specified UAC connection from your account.
       sig do
         params(
           id: String,

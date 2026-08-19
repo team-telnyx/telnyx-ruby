@@ -62,7 +62,7 @@ module Telnyx
         )
       end
 
-      # Retrieve a Virtual Cross Connect.
+      # Returns the details of a single virtual cross connect by its identifier.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -128,7 +128,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::VirtualCrossConnectListParams} for more details.
       #
-      # List all Virtual Cross Connects.
+      # Returns a paginated list of the virtual cross connects on your account, with
+      # support for filtering.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -156,7 +157,7 @@ module Telnyx
         )
       end
 
-      # Delete a Virtual Cross Connect.
+      # Deletes the specified virtual cross connect from your account.
       #
       # @overload delete(id, request_options: {})
       #

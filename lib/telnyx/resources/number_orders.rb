@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Number orders
     class NumberOrders
-      # Creates a phone number order.
+      # Creates an order to purchase the specified phone numbers and returns the created
+      # order. Track fulfillment through the order's status.
       #
       # @overload create(billing_group_id: nil, connection_id: nil, customer_reference: nil, messaging_profile_id: nil, phone_numbers: nil, request_options: {})
       #
@@ -34,7 +35,8 @@ module Telnyx
         )
       end
 
-      # Get an existing phone number order.
+      # Returns the details of an existing phone number order, including its status and
+      # the numbers included.
       #
       # @overload retrieve(number_order_id, request_options: {})
       #
@@ -54,7 +56,8 @@ module Telnyx
         )
       end
 
-      # Updates a phone number order.
+      # Updates an existing phone number order, for example to satisfy regulatory
+      # requirements attached to the order, and returns the updated order.
       #
       # @overload update(number_order_id, customer_reference: nil, regulatory_requirements: nil, request_options: {})
       #
@@ -83,7 +86,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::NumberOrderListParams} for more details.
       #
-      # Get a paginated list of number orders.
+      # Returns a paginated list of your phone number orders, with support for
+      # filtering.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

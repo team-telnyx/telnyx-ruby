@@ -22,6 +22,8 @@ module Telnyx
         def retrieve(
           # Product slug from the catalog listing.
           slug,
+          # Two-letter ISO 3166-1 alpha-2 country code (uppercase, e.g. US) to filter
+          # pricing to a single country.
           filter_country_iso: nil,
           # Page number (1-based).
           page_number: nil,

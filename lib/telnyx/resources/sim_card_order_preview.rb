@@ -7,7 +7,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::SimCardOrderPreviewPreviewParams} for more details.
       #
-      # Preview SIM card order purchases.
+      # Previews a SIM card order purchase, returning estimated costs and details before
+      # you place the order. The preview is processed asynchronously.
       #
       # @overload preview(address_id:, quantity:, request_options: {})
       #

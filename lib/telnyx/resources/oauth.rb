@@ -23,7 +23,8 @@ module Telnyx
         )
       end
 
-      # Create an OAuth authorization grant
+      # Creates an OAuth authorization grant and returns the grant response for
+      # completing the authorization flow.
       #
       # @overload grants(allowed:, consent_token:, request_options: {})
       #
@@ -128,7 +129,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [nil]
+      # @return [String]
       #
       # @see Telnyx::Models::OAuthRetrieveAuthorizeParams
       def retrieve_authorize(params)
@@ -138,7 +139,8 @@ module Telnyx
           method: :get,
           path: "oauth/authorize",
           query: query,
-          model: NilClass,
+          headers: {"accept" => "text/html"},
+          model: String,
           options: options
         )
       end

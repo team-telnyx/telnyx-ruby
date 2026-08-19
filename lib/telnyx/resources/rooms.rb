@@ -14,7 +14,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomCreateParams} for more details.
       #
-      # Synchronously create a Room.
+      # Synchronously creates a new video room with the provided configuration and
+      # returns the created room.
       #
       # @overload create(enable_recording: nil, max_participants: nil, unique_name: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
@@ -76,7 +77,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::RoomUpdateParams} for more details.
       #
-      # Synchronously update a Room.
+      # Synchronously updates the specified video room's configuration and returns the
+      # updated room.
       #
       # @overload update(room_id, enable_recording: nil, max_participants: nil, unique_name: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #

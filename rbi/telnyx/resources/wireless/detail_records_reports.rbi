@@ -23,7 +23,8 @@ module Telnyx
         )
         end
 
-        # Returns one specific WDR report
+        # Returns a single Wireless Detail Record (WDR) report by its identifier,
+        # including its parameters and current status.
         sig do
           params(
             id: String,
@@ -56,7 +57,7 @@ module Telnyx
         )
         end
 
-        # Deletes one specific WDR report.
+        # Permanently deletes the specified Wireless Detail Record (WDR) report.
         sig do
           params(
             id: String,

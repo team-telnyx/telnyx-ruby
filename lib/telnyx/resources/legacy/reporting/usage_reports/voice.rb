@@ -46,7 +46,8 @@ module Telnyx
               )
             end
 
-            # Fetch single cdr usage report by id.
+            # Returns a single CDR (Call Detail Record) usage report by its identifier,
+            # including its parameters and current status.
             #
             # @overload retrieve(id, request_options: {})
             #

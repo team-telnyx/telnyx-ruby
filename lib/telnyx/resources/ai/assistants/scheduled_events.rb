@@ -51,7 +51,8 @@ module Telnyx
             )
           end
 
-          # Retrieve a scheduled event by event ID
+          # Returns the details of a single scheduled event configured for the specified
+          # assistant.
           #
           # @overload retrieve(event_id, assistant_id:, request_options: {})
           #

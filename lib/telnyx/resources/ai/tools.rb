@@ -146,7 +146,7 @@ module Telnyx
           )
         end
 
-        # Delete a custom AI tool.
+        # Permanently deletes the specified custom AI tool from your account.
         #
         # @overload delete(tool_id, request_options: {})
         #

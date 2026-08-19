@@ -216,7 +216,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionEnqueueParams} for more details.
         #
-        # Put the call in a queue.
+        # Places the call into a queue, where it waits until it is removed or bridged to
+        # another leg. Queue behavior is configured through the request body.
         #
         # @overload enqueue(call_control_id, queue_name:, client_state: nil, command_id: nil, keep_after_hangup: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
         #
@@ -575,7 +576,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionLeaveQueueParams} for more details.
         #
-        # Removes the call from a queue.
+        # Removes the call from the queue it is currently waiting in. The call remains
+        # active and can be directed with further call commands.
         #
         # @overload leave_queue(call_control_id, client_state: nil, command_id: nil, request_options: {})
         #
@@ -1440,7 +1442,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionStopAIAssistantParams} for more details.
         #
-        # Stop an AI assistant on the call.
+        # Stops the AI assistant currently engaged on the call. The call remains active
+        # and can continue with other call control commands.
         #
         # @overload stop_ai_assistant(call_control_id, client_state: nil, command_id: nil, request_options: {})
         #
@@ -1736,7 +1739,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionStopTranscriptionParams} for more details.
         #
-        # Stop real-time transcription.
+        # Stops real-time transcription on the call. Transcription webhooks cease once the
+        # command takes effect; the call itself is unaffected.
         #
         # @overload stop_transcription(call_control_id, client_state: nil, command_id: nil, request_options: {})
         #
@@ -1915,7 +1919,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionUpdateClientStateParams} for more details.
         #
-        # Updates client state
+        # Updates the client state associated with the call. Client state is an opaque
+        # value echoed back in subsequent webhooks for the call, letting you correlate
+        # events with your application's state.
         #
         # @overload update_client_state(call_control_id, client_state:, request_options: {})
         #

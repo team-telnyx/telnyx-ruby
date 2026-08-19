@@ -6,7 +6,8 @@ module Telnyx
       class Conversations
         # Manage historical AI assistant conversations
         class Insights
-          # Create a new insight
+          # Creates a new insight template defining an analysis to run over conversations,
+          # and returns the created template.
           #
           # @overload create(instructions:, name:, json_schema: nil, webhook: nil, request_options: {})
           #
@@ -34,7 +35,8 @@ module Telnyx
             )
           end
 
-          # Get insight by ID
+          # Returns the details of a single insight template by its ID, including its
+          # configuration.
           #
           # @overload retrieve(insight_id, request_options: {})
           #
@@ -54,7 +56,7 @@ module Telnyx
             )
           end
 
-          # Update an insight template
+          # Updates the specified insight template and returns the updated template.
           #
           # @overload update(insight_id, instructions: nil, json_schema: nil, name: nil, webhook: nil, request_options: {})
           #
@@ -84,7 +86,8 @@ module Telnyx
             )
           end
 
-          # Get all insights
+          # Returns a paginated list of your insight templates. Insight templates define
+          # analyses that run over AI conversations to extract structured findings.
           #
           # @overload list(page_number: nil, page_size: nil, request_options: {})
           #
@@ -108,7 +111,7 @@ module Telnyx
             )
           end
 
-          # Delete insight by ID
+          # Permanently deletes the specified insight template by its ID.
           #
           # @overload delete(insight_id, request_options: {})
           #

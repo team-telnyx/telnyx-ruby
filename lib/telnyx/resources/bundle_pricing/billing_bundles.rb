@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     class BundlePricing
       class BillingBundles
-        # Get a single bundle by ID.
+        # Returns the details of a single billing bundle by its ID, so you can inspect its
+        # contents before purchasing a user bundle.
         #
         # @overload retrieve(bundle_id, authorization_bearer: nil, request_options: {})
         #
@@ -31,7 +32,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::BundlePricing::BillingBundleListParams} for more details.
         #
-        # Get all allowed bundles.
+        # Returns a paginated list of the billing bundles available to your account, with
+        # support for filtering.
         #
         # @overload list(filter: nil, page_number: nil, page_size: nil, authorization_bearer: nil, request_options: {})
         #

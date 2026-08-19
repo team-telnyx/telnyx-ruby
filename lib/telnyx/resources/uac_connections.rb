@@ -224,7 +224,7 @@ module Telnyx
         )
       end
 
-      # Deletes an existing UAC connection.
+      # Permanently deletes the specified UAC connection from your account.
       #
       # @overload delete(id, request_options: {})
       #

@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Notification settings operations
     class NotificationProfiles
-      # Create a notification profile.
+      # Creates a new notification profile, a named grouping used to organize
+      # notification settings, and returns it.
       #
       # @overload create(name: nil, request_options: {})
       #
@@ -26,7 +27,7 @@ module Telnyx
         )
       end
 
-      # Get a notification profile.
+      # Returns the details of a single notification profile by its identifier.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -46,7 +47,7 @@ module Telnyx
         )
       end
 
-      # Update a notification profile.
+      # Updates the specified notification profile and returns the updated profile.
       #
       # @overload update(notification_profile_id, name: nil, request_options: {})
       #
@@ -94,7 +95,7 @@ module Telnyx
         )
       end
 
-      # Delete a notification profile.
+      # Deletes the specified notification profile from your account.
       #
       # @overload delete(id, request_options: {})
       #

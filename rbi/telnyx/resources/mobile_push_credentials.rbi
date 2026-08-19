@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Mobile push credential management
     class MobilePushCredentials
-      # Creates a new mobile push credential
+      # Creates a new mobile push credential for delivering push notifications to iOS or
+      # Android apps, and returns the created credential.
       sig do
         params(
           create_mobile_push_credential_request:
@@ -32,7 +33,8 @@ module Telnyx
       )
       end
 
-      # List mobile push credentials
+      # Returns a paginated list of the mobile push credentials on your account, with
+      # support for filtering.
       sig do
         params(
           filter: Telnyx::MobilePushCredentialListParams::Filter::OrHash,

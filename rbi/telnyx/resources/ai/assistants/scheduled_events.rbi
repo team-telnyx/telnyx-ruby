@@ -59,7 +59,8 @@ module Telnyx
           )
           end
 
-          # Retrieve a scheduled event by event ID
+          # Returns the details of a single scheduled event configured for the specified
+          # assistant.
           sig do
             params(
               event_id: String,

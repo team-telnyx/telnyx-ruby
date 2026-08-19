@@ -20,21 +20,26 @@ module Telnyx
       optional :filter_profile_id, String
 
       # @!attribute filter_status
+      #   Filter domains by verification status: pending, verifying, verified, failed,
+      #   degraded, or suspended.
       #
       #   @return [Symbol, Telnyx::Models::EmailDomainStatus, nil]
       optional :filter_status, enum: -> { Telnyx::EmailDomainStatus }
 
       # @!attribute filter_type
+      #   Filter domains by type: custom, shared, or shared_inbound.
       #
       #   @return [Symbol, Telnyx::Models::EmailDomainType, nil]
       optional :filter_type, enum: -> { Telnyx::EmailDomainType }
 
       # @!attribute filter_usable_for_inbound
+      #   Filter domains by whether they can currently receive inbound email.
       #
       #   @return [Boolean, nil]
       optional :filter_usable_for_inbound, Telnyx::Internal::Type::Boolean
 
       # @!attribute filter_usable_for_sending
+      #   Filter domains by whether they can currently be used to send email.
       #
       #   @return [Boolean, nil]
       optional :filter_usable_for_sending, Telnyx::Internal::Type::Boolean
@@ -70,17 +75,20 @@ module Telnyx
       optional :sort, enum: -> { Telnyx::EmailDomainListParams::Sort }
 
       # @!method initialize(filter_domain: nil, filter_profile_id: nil, filter_status: nil, filter_type: nil, filter_usable_for_inbound: nil, filter_usable_for_sending: nil, page_after: nil, page_before: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::EmailDomainListParams} for more details.
+      #
       #   @param filter_domain [String] Partial match on domain name (case-insensitive)
       #
       #   @param filter_profile_id [String] Filter by profile UUID
       #
-      #   @param filter_status [Symbol, Telnyx::Models::EmailDomainStatus]
+      #   @param filter_status [Symbol, Telnyx::Models::EmailDomainStatus] Filter domains by verification status: pending, verifying, verified, failed, deg
       #
-      #   @param filter_type [Symbol, Telnyx::Models::EmailDomainType]
+      #   @param filter_type [Symbol, Telnyx::Models::EmailDomainType] Filter domains by type: custom, shared, or shared_inbound.
       #
-      #   @param filter_usable_for_inbound [Boolean]
+      #   @param filter_usable_for_inbound [Boolean] Filter domains by whether they can currently receive inbound email.
       #
-      #   @param filter_usable_for_sending [Boolean]
+      #   @param filter_usable_for_sending [Boolean] Filter domains by whether they can currently be used to send email.
       #
       #   @param page_after [String] Cursor for records after the provided value (cursor pagination)
       #

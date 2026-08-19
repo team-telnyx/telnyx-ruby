@@ -62,7 +62,8 @@ module Telnyx
         )
       end
 
-      # Updates one or more template fields.
+      # Updates one or more fields of the specified email template and returns the
+      # updated template.
       #
       # @overload update(id, html_body: nil, name: nil, subject: nil, text_body: nil, variables: nil, request_options: {})
       #

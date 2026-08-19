@@ -24,7 +24,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::ConversationCreateParams} for more details.
         #
-        # Create a new AI Conversation.
+        # Creates a new AI conversation, the container for messages exchanged with an
+        # assistant, and returns the created conversation.
         #
         # @overload create(metadata: nil, name: nil, request_options: {})
         #

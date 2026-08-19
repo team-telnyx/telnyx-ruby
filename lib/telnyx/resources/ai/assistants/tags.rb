@@ -48,7 +48,8 @@ module Telnyx
             )
           end
 
-          # Remove a tag from an AI assistant.
+          # Removes the specified tag from the AI assistant and returns the assistant's
+          # updated tag list.
           #
           # @overload remove(tag, assistant_id:, request_options: {})
           #

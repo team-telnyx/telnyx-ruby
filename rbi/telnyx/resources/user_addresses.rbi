@@ -8,7 +8,8 @@ module Telnyx
     # cannot be used for emergency calling and are distinct from Address records,
     # which are used on phone numbers.
     class UserAddresses
-      # Creates a user address.
+      # Creates a new user address from the provided details and returns the created
+      # address.
       sig do
         params(
           business_name: String,
@@ -90,7 +91,8 @@ module Telnyx
       )
       end
 
-      # Returns a list of your user addresses.
+      # Returns a paginated list of your user addresses, with support for filtering and
+      # sorting.
       sig do
         params(
           filter: Telnyx::UserAddressListParams::Filter::OrHash,

@@ -7,7 +7,8 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Integrations::Connections]
         attr_reader :connections
 
-        # Retrieve integration details
+        # Returns the details of a single available integration, including its
+        # configuration details.
         #
         # @overload retrieve(integration_id, request_options: {})
         #
@@ -27,7 +28,8 @@ module Telnyx
           )
         end
 
-        # List all available integrations.
+        # Returns the list of third-party integrations available to connect to your AI
+        # assistants and workflows.
         #
         # @overload list(request_options: {})
         #

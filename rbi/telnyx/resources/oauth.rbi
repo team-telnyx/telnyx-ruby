@@ -17,7 +17,8 @@ module Telnyx
       )
       end
 
-      # Create an OAuth authorization grant
+      # Creates an OAuth authorization grant and returns the grant response for
+      # completing the authorization flow.
       sig do
         params(
           allowed: T::Boolean,
@@ -101,7 +102,7 @@ module Telnyx
           scope: String,
           state: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).void
+        ).returns(String)
       end
       def retrieve_authorize(
         # OAuth client identifier

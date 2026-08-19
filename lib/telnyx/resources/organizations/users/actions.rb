@@ -6,7 +6,8 @@ module Telnyx
       class Users
         # Operations related to users in your organization
         class Actions
-          # Deletes a user in your organization.
+          # Removes the specified user from your organization and returns the result of the
+          # removal.
           #
           # @overload remove(id, request_options: {})
           #

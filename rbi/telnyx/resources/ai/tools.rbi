@@ -119,7 +119,7 @@ module Telnyx
         )
         end
 
-        # Delete a custom AI tool.
+        # Permanently deletes the specified custom AI tool from your account.
         sig do
           params(
             tool_id: String,

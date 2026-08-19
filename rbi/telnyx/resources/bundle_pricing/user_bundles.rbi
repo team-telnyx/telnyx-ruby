@@ -28,7 +28,7 @@ module Telnyx
         )
         end
 
-        # Retrieves a user bundle by its ID.
+        # Returns the details of a single user bundle on your account by its ID.
         sig do
           params(
             user_bundle_id: String,
@@ -45,7 +45,8 @@ module Telnyx
         )
         end
 
-        # Get a paginated list of user bundles.
+        # Returns a paginated list of the bundles active on your account, with support for
+        # filtering.
         sig do
           params(
             filter: Telnyx::BundlePricing::UserBundleListParams::Filter::OrHash,
@@ -74,7 +75,8 @@ module Telnyx
         )
         end
 
-        # Deactivates a user bundle by its ID.
+        # Deactivates the specified user bundle on your account and returns the
+        # deactivated bundle.
         sig do
           params(
             user_bundle_id: String,

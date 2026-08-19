@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     class AI
       class McpServers
-        # Create a new MCP server.
+        # Creates a new MCP server configuration on your account and returns the created
+        # server.
         sig do
           params(
             name: String,
@@ -39,7 +40,7 @@ module Telnyx
         )
         end
 
-        # Update an existing MCP server.
+        # Updates the specified MCP server's configuration and returns the updated server.
         sig do
           params(
             mcp_server_id: String,
@@ -67,7 +68,8 @@ module Telnyx
         )
         end
 
-        # Retrieve a list of MCP servers.
+        # Returns a paginated list of the MCP servers configured on your account, with
+        # optional filtering by type or URL.
         sig do
           params(
             page_number: Integer,
@@ -94,7 +96,7 @@ module Telnyx
         )
         end
 
-        # Delete a specific MCP server.
+        # Permanently deletes the specified MCP server configuration from your account.
         sig do
           params(
             mcp_server_id: String,

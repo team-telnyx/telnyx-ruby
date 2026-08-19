@@ -14,7 +14,8 @@ module Telnyx
           end
           attr_reader :insights
 
-          # Get insight group by ID
+          # Returns the details of a single insight template group, including the insight
+          # templates assigned to it.
           sig do
             params(
               group_id: String,
@@ -28,7 +29,7 @@ module Telnyx
           )
           end
 
-          # Update an insight template group
+          # Updates the specified insight template group and returns the updated group.
           sig do
             params(
               group_id: String,
@@ -48,7 +49,7 @@ module Telnyx
           )
           end
 
-          # Delete insight group by ID
+          # Permanently deletes the specified insight template group by its ID.
           sig do
             params(
               group_id: String,
@@ -62,7 +63,8 @@ module Telnyx
           )
           end
 
-          # Create a new insight group
+          # Creates a new insight template group for organizing related insight templates,
+          # and returns the created group.
           sig do
             params(
               name: String,
@@ -79,7 +81,9 @@ module Telnyx
           )
           end
 
-          # Get all insight groups
+          # Returns a paginated list of your insight template groups. Groups organize
+          # related insight templates that are applied together when analyzing
+          # conversations.
           sig do
             params(
               page_number: Integer,

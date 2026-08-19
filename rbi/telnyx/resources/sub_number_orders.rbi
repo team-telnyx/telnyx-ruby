@@ -3,7 +3,7 @@
 module Telnyx
   module Resources
     class SubNumberOrders
-      # Get an existing sub number order.
+      # Returns the details of an existing sub number order, with support for filtering.
       sig do
         params(
           sub_number_order_id: String,
@@ -21,7 +21,8 @@ module Telnyx
       )
       end
 
-      # Updates a sub number order.
+      # Updates the requirements of an existing sub number order and returns the updated
+      # order.
       sig do
         params(
           sub_number_order_id: String,

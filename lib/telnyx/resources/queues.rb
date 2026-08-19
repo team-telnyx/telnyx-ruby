@@ -8,7 +8,8 @@ module Telnyx
       # @return [Telnyx::Resources::Queues::Calls]
       attr_reader :calls
 
-      # Create a new call queue.
+      # Creates a new call queue with the provided configuration and returns the created
+      # queue.
       #
       # @overload create(queue_name:, max_size: nil, request_options: {})
       #
@@ -32,7 +33,8 @@ module Telnyx
         )
       end
 
-      # Retrieve an existing call queue
+      # Returns the details of an existing call queue, including its current
+      # configuration.
       #
       # @overload retrieve(queue_name, request_options: {})
       #
@@ -102,7 +104,7 @@ module Telnyx
         )
       end
 
-      # Delete an existing call queue.
+      # Permanently deletes the specified call queue from your account.
       #
       # @overload delete(queue_name, request_options: {})
       #

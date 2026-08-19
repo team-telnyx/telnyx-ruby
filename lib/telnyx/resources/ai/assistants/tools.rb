@@ -33,7 +33,8 @@ module Telnyx
             )
           end
 
-          # Detach a tool from an AI assistant.
+          # Detaches the specified tool from the AI assistant so the assistant can no longer
+          # invoke it.
           #
           # @overload remove(tool_id, assistant_id:, request_options: {})
           #
@@ -60,7 +61,9 @@ module Telnyx
             )
           end
 
-          # Test a webhook tool for an assistant
+          # Executes a test invocation of the specified webhook tool for the assistant and
+          # returns the outcome, so you can verify the webhook's behavior before relying on
+          # it in conversations.
           #
           # @overload test_(tool_id, assistant_id:, arguments: nil, dynamic_variables: nil, request_options: {})
           #

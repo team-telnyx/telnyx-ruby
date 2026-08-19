@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPAllowedPorts
-      # List all Global IP Allowed Ports
+      # Returns the ports allowed for Global IP traffic, for use when configuring Global
+      # IP resources.
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(
           Telnyx::Models::GlobalIPAllowedPortListResponse

@@ -5,7 +5,8 @@ module Telnyx
     class Portouts
       # Number portout operations
       class Comments
-        # Creates a comment on a portout request.
+        # Creates a comment on the specified port-out request and returns the created
+        # comment.
         sig do
           params(
             id: String,

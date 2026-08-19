@@ -29,7 +29,8 @@ module Telnyx
           )
         end
 
-        # Retrieve a specific report generated.
+        # Returns the details of a previously requested porting report, including its
+        # status and parameters.
         #
         # @overload retrieve(id, request_options: {})
         #

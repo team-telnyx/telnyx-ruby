@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Documents
     class Documents
-      # Retrieve a document.
+      # Returns the details of a single document on your account, including its
+      # metadata.
       sig do
         params(
           id: String,
@@ -18,7 +19,7 @@ module Telnyx
       )
       end
 
-      # Update a document.
+      # Updates the specified document's attributes and returns the updated document.
       sig do
         params(
           document_id: String,
@@ -79,7 +80,7 @@ module Telnyx
       )
       end
 
-      # Download a document.
+      # Downloads the raw file content of the specified document as originally uploaded.
       sig do
         params(
           id: String,

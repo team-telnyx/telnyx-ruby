@@ -323,7 +323,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Conferences::ActionRecordPauseParams} for more details.
         #
-        # Pause conference recording.
+        # Pauses the active recording of the specified conference. Resume it later with
+        # the record_resume action.
         #
         # @overload record_pause(id, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #
@@ -354,7 +355,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Conferences::ActionRecordResumeParams} for more details.
         #
-        # Resume conference recording.
+        # Resumes a previously paused recording of the specified conference, continuing
+        # capture from the point it was paused.
         #
         # @overload record_resume(id, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #

@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # User-defined tags for Telnyx resources
     class UserTags
-      # List all user tags.
+      # Returns the user tags defined on your account, with support for filtering. Tags
+      # help organize resources such as phone numbers.
       sig do
         params(
           filter: Telnyx::UserTagListParams::Filter::OrHash,

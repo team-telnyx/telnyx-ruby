@@ -50,7 +50,8 @@ module Telnyx
         )
       end
 
-      # Update a Wireless Blocklist.
+      # Updates the specified wireless blocklist. The update is processed
+      # asynchronously, so the request is accepted and completes in the background.
       #
       # @overload update(id, name: nil, values: nil, request_options: {})
       #
@@ -114,7 +115,7 @@ module Telnyx
         )
       end
 
-      # Deletes the Wireless Blocklist.
+      # Permanently deletes the specified wireless blocklist from your account.
       #
       # @overload delete(id, request_options: {})
       #

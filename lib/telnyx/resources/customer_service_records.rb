@@ -30,7 +30,8 @@ module Telnyx
         )
       end
 
-      # Get a specific customer service record.
+      # Returns the details of a single customer service record (CSR) request, including
+      # its status and any retrieved record data.
       #
       # @overload retrieve(customer_service_record_id, request_options: {})
       #
@@ -53,7 +54,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::CustomerServiceRecordListParams} for more details.
       #
-      # List customer service records.
+      # Returns a paginated list of your customer service record (CSR) requests, with
+      # support for filtering and sorting.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #

@@ -7,7 +7,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::FqdnCreateParams} for more details.
       #
-      # Create a new FQDN object.
+      # Creates a new FQDN record and attaches it to the specified connection.
       #
       # @overload create(connection_id:, dns_record_type:, fqdn:, port: nil, request_options: {})
       #
@@ -58,7 +58,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::FqdnUpdateParams} for more details.
       #
-      # Update the details of a specific FQDN.
+      # Updates the details of the specified FQDN record and returns the updated FQDN.
       #
       # @overload update(id, connection_id: nil, dns_record_type: nil, fqdn: nil, port: nil, request_options: {})
       #
@@ -120,7 +120,7 @@ module Telnyx
         )
       end
 
-      # Delete an FQDN.
+      # Permanently deletes the specified FQDN record from its connection.
       #
       # @overload delete(id, request_options: {})
       #

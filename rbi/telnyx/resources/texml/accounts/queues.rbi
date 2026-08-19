@@ -6,7 +6,8 @@ module Telnyx
       class Accounts
         # TeXML REST Commands
         class Queues
-          # Creates a new queue resource.
+          # Creates a new queue resource for the account with the provided settings and
+          # returns it.
           sig do
             params(
               account_sid: String,
@@ -26,7 +27,7 @@ module Telnyx
           )
           end
 
-          # Returns a queue resource.
+          # Returns a single queue resource for the account by its QueueSid.
           sig do
             params(
               queue_sid: String,
@@ -43,7 +44,7 @@ module Telnyx
           )
           end
 
-          # Updates a queue resource.
+          # Updates the specified queue resource's settings and returns the updated queue.
           sig do
             params(
               queue_sid: String,
@@ -63,7 +64,8 @@ module Telnyx
           )
           end
 
-          # Lists queue resources.
+          # Returns a paginated list of queue resources for the account, with support for
+          # filtering by creation or update dates.
           sig do
             params(
               account_sid: String,
@@ -99,7 +101,7 @@ module Telnyx
           )
           end
 
-          # Delete a queue resource.
+          # Permanently deletes the specified queue resource from the account.
           sig do
             params(
               queue_sid: String,

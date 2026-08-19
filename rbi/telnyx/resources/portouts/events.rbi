@@ -5,7 +5,7 @@ module Telnyx
     class Portouts
       # Number portout operations
       class Events
-        # Show a specific port-out event.
+        # Returns the details of a single port-out event, including its type and payload.
         sig do
           params(
             id: String,
@@ -19,7 +19,8 @@ module Telnyx
         )
         end
 
-        # Returns a list of all port-out events.
+        # Returns a paginated list of port-out events on your account, such as status
+        # changes on port-out requests, with support for filtering.
         sig do
           params(
             filter: Telnyx::Portouts::EventListParams::Filter::OrHash,
@@ -42,7 +43,8 @@ module Telnyx
         )
         end
 
-        # Republish a specific port-out event.
+        # Republishes the specified port-out event, triggering re-delivery of the
+        # corresponding webhook to your account.
         sig do
           params(
             id: String,

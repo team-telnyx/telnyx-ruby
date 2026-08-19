@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Mobile voice connection operations
     class MobileVoiceConnections
-      # Create a new mobile voice connection.
+      # Creates a new mobile voice connection with the provided configuration and
+      # returns the created connection.
       #
       # @overload create(active: nil, connection_name: nil, inbound: nil, outbound: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #

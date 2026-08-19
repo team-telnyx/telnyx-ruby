@@ -15,7 +15,7 @@ module Telnyx
       def create(body:, request_options: {})
       end
 
-      # Retrieve the WireGuard peer.
+      # Returns the details of a single WireGuard peer by its identifier.
       sig do
         params(
           id: String,
@@ -29,7 +29,7 @@ module Telnyx
       )
       end
 
-      # Update the WireGuard peer.
+      # Updates the specified WireGuard peer and returns the updated peer.
       sig do
         params(
           id: String,
@@ -47,7 +47,7 @@ module Telnyx
       )
       end
 
-      # List all WireGuard peers.
+      # Returns a paginated list of your WireGuard peers, with support for filtering.
       sig do
         params(
           filter: Telnyx::WireguardPeerListParams::Filter::OrHash,
@@ -68,7 +68,7 @@ module Telnyx
       )
       end
 
-      # Delete the WireGuard peer.
+      # Deletes the specified WireGuard peer from its interface.
       sig do
         params(
           id: String,

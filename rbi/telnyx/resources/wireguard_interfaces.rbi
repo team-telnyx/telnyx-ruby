@@ -15,7 +15,7 @@ module Telnyx
       def create(body:, request_options: {})
       end
 
-      # Retrieve a WireGuard Interfaces.
+      # Returns the details of a single WireGuard interface by its identifier.
       sig do
         params(
           id: String,
@@ -29,7 +29,8 @@ module Telnyx
       )
       end
 
-      # List all WireGuard Interfaces.
+      # Returns a paginated list of the WireGuard interfaces on your account, with
+      # support for filtering.
       sig do
         params(
           filter: Telnyx::WireguardInterfaceListParams::Filter::OrHash,
@@ -51,7 +52,7 @@ module Telnyx
       )
       end
 
-      # Delete a WireGuard Interface.
+      # Deletes the specified WireGuard interface from its network.
       sig do
         params(
           id: String,

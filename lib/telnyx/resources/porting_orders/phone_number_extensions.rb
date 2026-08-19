@@ -9,7 +9,8 @@ module Telnyx
         # {Telnyx::Models::PortingOrders::PhoneNumberExtensionCreateParams} for more
         # details.
         #
-        # Creates a new phone number extension.
+        # Creates a phone number extension on the porting order, mapping extension ranges
+        # to one of the order's phone numbers.
         #
         # @overload create(porting_order_id, activation_ranges:, extension_range:, porting_phone_number_id:, request_options: {})
         #
@@ -73,7 +74,7 @@ module Telnyx
           )
         end
 
-        # Deletes a phone number extension.
+        # Deletes the specified phone number extension from the porting order.
         #
         # @overload delete(id, porting_order_id:, request_options: {})
         #

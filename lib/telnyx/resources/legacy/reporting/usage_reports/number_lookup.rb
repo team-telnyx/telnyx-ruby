@@ -7,7 +7,8 @@ module Telnyx
         class UsageReports
           # Number lookup usage reports
           class NumberLookup
-            # Submit a new telco data usage report
+            # Submits a new telco data (number lookup) usage report request. The report is
+            # generated asynchronously; retrieve it by its identifier once ready.
             #
             # @overload create(aggregation_type: nil, end_date: nil, managed_accounts: nil, start_date: nil, request_options: {})
             #

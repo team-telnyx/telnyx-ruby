@@ -12,7 +12,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Organizations::UserRetrieveParams} for more details.
         #
-        # Returns a user in your organization.
+        # Returns the details of a user in your organization, optionally including the
+        # groups the user belongs to.
         #
         # @overload retrieve(id, include_groups: nil, request_options: {})
         #

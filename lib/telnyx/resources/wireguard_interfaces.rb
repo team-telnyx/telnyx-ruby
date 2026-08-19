@@ -26,7 +26,7 @@ module Telnyx
         )
       end
 
-      # Retrieve a WireGuard Interfaces.
+      # Returns the details of a single WireGuard interface by its identifier.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -49,7 +49,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::WireguardInterfaceListParams} for more details.
       #
-      # List all WireGuard Interfaces.
+      # Returns a paginated list of the WireGuard interfaces on your account, with
+      # support for filtering.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -77,7 +78,7 @@ module Telnyx
         )
       end
 
-      # Delete a WireGuard Interface.
+      # Deletes the specified WireGuard interface from its network.
       #
       # @overload delete(id, request_options: {})
       #

@@ -348,7 +348,8 @@ module Telnyx
         )
         end
 
-        # Pause conference recording.
+        # Pauses the active recording of the specified conference. Resume it later with
+        # the record_resume action.
         sig do
           params(
             id: String,
@@ -373,7 +374,8 @@ module Telnyx
         )
         end
 
-        # Resume conference recording.
+        # Resumes a previously paused recording of the specified conference, continuing
+        # capture from the point it was paused.
         sig do
           params(
             id: String,

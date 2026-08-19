@@ -7,7 +7,7 @@ module Telnyx
         class InsightGroups
           # Manage historical AI assistant conversations
           class Insights
-            # Assign an insight to a group
+            # Assigns the specified insight template to the specified insight template group.
             #
             # @overload assign(insight_id, group_id:, request_options: {})
             #
@@ -34,7 +34,8 @@ module Telnyx
               )
             end
 
-            # Remove an insight from a group
+            # Removes the specified insight template from the specified group. The insight
+            # template itself is not deleted.
             #
             # @overload delete_unassign(insight_id, group_id:, request_options: {})
             #

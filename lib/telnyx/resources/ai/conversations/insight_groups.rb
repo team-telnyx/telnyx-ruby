@@ -10,7 +10,8 @@ module Telnyx
           # @return [Telnyx::Resources::AI::Conversations::InsightGroups::Insights]
           attr_reader :insights
 
-          # Get insight group by ID
+          # Returns the details of a single insight template group, including the insight
+          # templates assigned to it.
           #
           # @overload retrieve(group_id, request_options: {})
           #
@@ -30,7 +31,7 @@ module Telnyx
             )
           end
 
-          # Update an insight template group
+          # Updates the specified insight template group and returns the updated group.
           #
           # @overload update(group_id, description: nil, name: nil, webhook: nil, request_options: {})
           #
@@ -58,7 +59,7 @@ module Telnyx
             )
           end
 
-          # Delete insight group by ID
+          # Permanently deletes the specified insight template group by its ID.
           #
           # @overload delete(group_id, request_options: {})
           #
@@ -78,7 +79,8 @@ module Telnyx
             )
           end
 
-          # Create a new insight group
+          # Creates a new insight template group for organizing related insight templates,
+          # and returns the created group.
           #
           # @overload insight_groups(name:, description: nil, webhook: nil, request_options: {})
           #
@@ -101,7 +103,9 @@ module Telnyx
             )
           end
 
-          # Get all insight groups
+          # Returns a paginated list of your insight template groups. Groups organize
+          # related insight templates that are applied together when analyzing
+          # conversations.
           #
           # @overload retrieve_insight_groups(page_number: nil, page_size: nil, request_options: {})
           #

@@ -33,7 +33,8 @@ module Telnyx
         sig { returns(Telnyx::Resources::AI::Assistants::Instructions) }
         attr_reader :instructions
 
-        # Create a new AI Assistant.
+        # Creates a new AI assistant from the provided configuration, including its model,
+        # instructions, and attached tools, and returns the created assistant.
         sig do
           params(
             instructions: String,
@@ -208,7 +209,9 @@ module Telnyx
         )
         end
 
-        # Update an AI Assistant's attributes.
+        # Updates the specified AI assistant's attributes and returns the updated
+        # assistant. The request can also control how the change is promoted across
+        # assistant versions.
         sig do
           params(
             assistant_id: String,

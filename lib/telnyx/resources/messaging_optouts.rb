@@ -7,7 +7,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MessagingOptoutListParams} for more details.
       #
-      # Retrieve a list of opt-out blocks.
+      # Returns a paginated list of opt-out blocks created when message recipients opt
+      # out. Supports filtering and optional redaction of recipient numbers.
       #
       # @overload list(created_at: nil, filter: nil, page_number: nil, page_size: nil, redaction_enabled: nil, request_options: {})
       #

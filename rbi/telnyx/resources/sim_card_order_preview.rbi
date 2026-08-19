@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # SIM Card Orders operations
     class SimCardOrderPreview
-      # Preview SIM card order purchases.
+      # Previews a SIM card order purchase, returning estimated costs and details before
+      # you place the order. The preview is processed asynchronously.
       sig do
         params(
           address_id: String,

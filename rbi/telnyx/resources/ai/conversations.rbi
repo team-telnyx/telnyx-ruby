@@ -23,7 +23,8 @@ module Telnyx
         end
         attr_reader :conversation_insights
 
-        # Create a new AI Conversation.
+        # Creates a new AI conversation, the container for messages exchanged with an
+        # assistant, and returns the created conversation.
         sig do
           params(
             metadata: T::Hash[Symbol, String],

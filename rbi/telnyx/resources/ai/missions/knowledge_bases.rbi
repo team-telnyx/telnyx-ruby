@@ -19,7 +19,8 @@ module Telnyx
           )
           end
 
-          # Delete a knowledge base from a mission
+          # Detaches the specified knowledge base from the mission so its content is no
+          # longer available to agents in subsequent runs.
           sig do
             params(
               knowledge_base_id: String,
@@ -36,7 +37,8 @@ module Telnyx
           )
           end
 
-          # Get a specific knowledge base by ID
+          # Returns the details of a single knowledge base attached to the specified
+          # mission.
           sig do
             params(
               knowledge_base_id: String,
@@ -53,7 +55,8 @@ module Telnyx
           )
           end
 
-          # List all knowledge bases for a mission
+          # Returns the knowledge bases attached to the specified mission. Knowledge bases
+          # provide reference content agents can draw on during runs.
           sig do
             params(
               mission_id: String,
@@ -67,7 +70,7 @@ module Telnyx
           )
           end
 
-          # Update a knowledge base definition
+          # Replaces the definition of the specified knowledge base on this mission.
           sig do
             params(
               knowledge_base_id: String,
