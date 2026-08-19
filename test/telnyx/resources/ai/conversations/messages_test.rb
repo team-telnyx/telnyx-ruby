@@ -24,6 +24,7 @@ class Telnyx::Test::Resources::AI::Conversations::MessagesTest < Telnyx::Test::R
         role: Telnyx::Models::AI::Conversations::MessageListResponse::Role,
         text: String,
         created_at: Time | nil,
+        metadata: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Models::AI::Conversations::MessageListResponse::Metadata]) | nil,
         sent_at: Time | nil,
         tool_calls: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall]) | nil
       }

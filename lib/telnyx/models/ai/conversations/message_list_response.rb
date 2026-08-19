@@ -26,6 +26,12 @@ module Telnyx
           #   @return [Time, nil]
           optional :created_at, Time
 
+          # @!attribute metadata
+          #
+          #   @return [Hash{Symbol=>String, Integer, Boolean, Array<String, Integer, Boolean>}, nil]
+          optional :metadata,
+                   -> { Telnyx::Internal::Type::HashOf[union: Telnyx::Models::AI::Conversations::MessageListResponse::Metadata] }
+
           # @!attribute sent_at
           #   The datetime the message was sent to the end user.
           #
@@ -39,7 +45,7 @@ module Telnyx
           optional :tool_calls,
                    -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::Conversations::MessageListResponse::ToolCall] }
 
-          # @!method initialize(role:, text:, created_at: nil, sent_at: nil, tool_calls: nil)
+          # @!method initialize(role:, text:, created_at: nil, metadata: nil, sent_at: nil, tool_calls: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Conversations::MessageListResponse} for more details.
           #
@@ -48,6 +54,8 @@ module Telnyx
           #   @param text [String] The message content. Can be null for tool calls.
           #
           #   @param created_at [Time] The datetime the message was created on the conversation. This does not necesari
+          #
+          #   @param metadata [Hash{Symbol=>String, Integer, Boolean, Array<String, Integer, Boolean>}]
           #
           #   @param sent_at [Time] The datetime the message was sent to the end user.
           #
@@ -65,6 +73,38 @@ module Telnyx
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          module Metadata
+            extend Telnyx::Internal::Type::Union
+
+            variant String
+
+            variant Integer
+
+            variant Telnyx::Internal::Type::Boolean
+
+            variant -> { Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::UnionMember3Array }
+
+            module UnionMember3
+              extend Telnyx::Internal::Type::Union
+
+              variant String
+
+              variant Integer
+
+              variant Telnyx::Internal::Type::Boolean
+
+              # @!method self.variants
+              #   @return [Array(String, Integer, Boolean)]
+            end
+
+            # @!method self.variants
+            #   @return [Array(String, Integer, Boolean, Array<String, Integer, Boolean>)]
+
+            # @type [Telnyx::Internal::Type::Converter]
+            UnionMember3Array =
+              Telnyx::Internal::Type::ArrayOf[union: -> { Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::UnionMember3 }]
           end
 
           class ToolCall < Telnyx::Internal::Type::BaseModel
