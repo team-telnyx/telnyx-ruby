@@ -6,7 +6,7 @@ module Telnyx
       attr_reader dir: Telnyx::Resources::Enterprises::Dir
 
       def create: (
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
@@ -36,7 +36,7 @@ module Telnyx
 
       def update: (
         String enterprise_id,
-        ?billing_address: Telnyx::BillingAddress,
+        ?billing_address: Telnyx::PhysicalAddress,
         ?billing_contact: Telnyx::BillingContact,
         ?corporate_registration_number: String?,
         ?customer_reference: String,

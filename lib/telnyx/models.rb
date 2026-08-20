@@ -139,8 +139,6 @@ module Telnyx
 
   BalanceRetrieveParams = Telnyx::Models::BalanceRetrieveParams
 
-  BillingAddress = Telnyx::Models::BillingAddress
-
   BillingContact = Telnyx::Models::BillingContact
 
   BillingGroup = Telnyx::Models::BillingGroup

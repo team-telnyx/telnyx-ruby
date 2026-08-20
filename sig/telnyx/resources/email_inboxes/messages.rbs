@@ -31,7 +31,7 @@ module Telnyx
         def drafts: (
           String message_id,
           inbox_id: String,
-          ?attachments: ::Array[top],
+          ?attachments: ::Array[::Hash[Symbol, top]],
           ?bcc: ::Array[Telnyx::Models::email_address_input],
           ?cc: ::Array[Telnyx::Models::email_address_input],
           ?from_email: String,
@@ -40,7 +40,7 @@ module Telnyx
           ?html: String,
           ?html_body: String,
           ?labels: ::Array[String],
-          ?metadata: top,
+          ?metadata: ::Hash[Symbol, top],
           ?reply_to: String,
           ?subject: String,
           ?tags: ::Array[String],

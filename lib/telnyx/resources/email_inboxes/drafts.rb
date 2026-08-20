@@ -17,7 +17,7 @@ module Telnyx
         #
         # @param inbox_id [String] Email inbox UUID.
         #
-        # @param attachments [Array<Object>]
+        # @param attachments [Array<Hash{Symbol=>Object}>]
         #
         # @param bcc [Array<String, Telnyx::Models::EmailInboxes::EmailAddress>]
         #
@@ -35,7 +35,7 @@ module Telnyx
         #
         # @param labels [Array<String>]
         #
-        # @param metadata [Object]
+        # @param metadata [Hash{Symbol=>Object}]
         #
         # @param reply_to [String]
         #
@@ -107,7 +107,7 @@ module Telnyx
         #
         # @param inbox_id [String] Path param: Email inbox UUID.
         #
-        # @param attachments [Array<Object>] Body param
+        # @param attachments [Array<Hash{Symbol=>Object}>] Body param
         #
         # @param bcc [Array<String, Telnyx::Models::EmailInboxes::EmailAddress>] Body param
         #
@@ -125,7 +125,7 @@ module Telnyx
         #
         # @param labels [Array<String>] Body param
         #
-        # @param metadata [Object] Body param
+        # @param metadata [Hash{Symbol=>Object}] Body param
         #
         # @param reply_to [String] Body param
         #
@@ -229,7 +229,7 @@ module Telnyx
         #
         # @param inbox_id [String] Path param: Email inbox UUID.
         #
-        # @param attachments [Array<Object>] Body param
+        # @param attachments [Array<Hash{Symbol=>Object}>] Body param
         #
         # @param bcc [Array<String, Telnyx::Models::EmailInboxes::EmailAddress>] Body param
         #
@@ -247,7 +247,7 @@ module Telnyx
         #
         # @param labels [Array<String>] Body param
         #
-        # @param metadata [Object] Body param
+        # @param metadata [Hash{Symbol=>Object}] Body param
         #
         # @param reply_to [String] Body param
         #

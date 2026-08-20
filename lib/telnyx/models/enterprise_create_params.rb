@@ -9,8 +9,8 @@ module Telnyx
 
       # @!attribute billing_address
       #
-      #   @return [Telnyx::Models::BillingAddress]
-      required :billing_address, -> { Telnyx::BillingAddress }
+      #   @return [Telnyx::Models::PhysicalAddress]
+      required :billing_address, -> { Telnyx::PhysicalAddress }
 
       # @!attribute billing_contact
       #
@@ -141,7 +141,7 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::EnterpriseCreateParams} for more details.
       #
-      #   @param billing_address [Telnyx::Models::BillingAddress]
+      #   @param billing_address [Telnyx::Models::PhysicalAddress]
       #
       #   @param billing_contact [Telnyx::Models::BillingContact]
       #

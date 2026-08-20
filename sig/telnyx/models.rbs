@@ -99,8 +99,6 @@ module Telnyx
 
   class BalanceRetrieveParams = Telnyx::Models::BalanceRetrieveParams
 
-  class BillingAddress = Telnyx::Models::BillingAddress
-
   class BillingContact = Telnyx::Models::BillingContact
 
   class BillingGroup = Telnyx::Models::BillingGroup

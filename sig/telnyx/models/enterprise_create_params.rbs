@@ -2,7 +2,7 @@ module Telnyx
   module Models
     type enterprise_create_params =
       {
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
@@ -29,7 +29,7 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
-      attr_accessor billing_address: Telnyx::BillingAddress
+      attr_accessor billing_address: Telnyx::PhysicalAddress
 
       attr_accessor billing_contact: Telnyx::BillingContact
 
@@ -76,7 +76,7 @@ module Telnyx
       ) -> Telnyx::Models::EnterpriseCreateParams::role_type
 
       def initialize: (
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,
@@ -100,7 +100,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         country_code: String,
         doing_business_as: String,

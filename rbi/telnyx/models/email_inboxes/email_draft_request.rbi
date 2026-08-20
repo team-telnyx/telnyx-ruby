@@ -12,10 +12,10 @@ module Telnyx
             )
           end
 
-        sig { returns(T.nilable(T::Array[T.anything])) }
+        sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
         attr_reader :attachments
 
-        sig { params(attachments: T::Array[T.anything]).void }
+        sig { params(attachments: T::Array[T::Hash[Symbol, T.anything]]).void }
         attr_writer :attachments
 
         sig do
@@ -93,10 +93,10 @@ module Telnyx
         sig { params(labels: T::Array[String]).void }
         attr_writer :labels
 
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :metadata
 
-        sig { params(metadata: T.anything).void }
+        sig { params(metadata: T::Hash[Symbol, T.anything]).void }
         attr_writer :metadata
 
         sig { returns(T.nilable(String)) }
@@ -154,7 +154,7 @@ module Telnyx
         # `thread_id` are server-owned and ignored if supplied.
         sig do
           params(
-            attachments: T::Array[T.anything],
+            attachments: T::Array[T::Hash[Symbol, T.anything]],
             bcc:
               T::Array[
                 T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
@@ -169,7 +169,7 @@ module Telnyx
             html: String,
             html_body: String,
             labels: T::Array[String],
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             reply_to: String,
             subject: String,
             tags: T::Array[String],
@@ -206,7 +206,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              attachments: T::Array[T.anything],
+              attachments: T::Array[T::Hash[Symbol, T.anything]],
               bcc: T::Array[T.any(String, Telnyx::EmailInboxes::EmailAddress)],
               cc: T::Array[T.any(String, Telnyx::EmailInboxes::EmailAddress)],
               from_email: String,
@@ -215,7 +215,7 @@ module Telnyx
               html: String,
               html_body: String,
               labels: T::Array[String],
-              metadata: T.anything,
+              metadata: T::Hash[Symbol, T.anything],
               reply_to: String,
               subject: String,
               tags: T::Array[String],

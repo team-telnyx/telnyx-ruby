@@ -28,7 +28,7 @@ module Telnyx
       #   your account.
       sig do
         params(
-          billing_address: Telnyx::BillingAddress::OrHash,
+          billing_address: Telnyx::PhysicalAddress::OrHash,
           billing_contact: Telnyx::BillingContact::OrHash,
           country_code: String,
           doing_business_as: String,
@@ -132,7 +132,7 @@ module Telnyx
       sig do
         params(
           enterprise_id: String,
-          billing_address: Telnyx::BillingAddress::OrHash,
+          billing_address: Telnyx::PhysicalAddress::OrHash,
           billing_contact: Telnyx::BillingContact::OrHash,
           corporate_registration_number: T.nilable(String),
           customer_reference: String,

@@ -40,7 +40,7 @@ module Telnyx
       end
 
       # @!method self.variants
-      #   @return [Array(Array<String>, Array<Hash{Symbol=>Object}>, Hash{Symbol=>String}, Hash{Symbol=>Object}, Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse)]
+      #   @return [Array(Array<String>, Array<Hash{Symbol=>Object}>, Hash{Symbol=>String}, Hash{Symbol=>Hash{Symbol=>Object}}, Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse)]
 
       # @type [Telnyx::Internal::Type::Converter]
       StringArray = Telnyx::Internal::Type::ArrayOf[String]
@@ -53,7 +53,8 @@ module Telnyx
       StringMap = Telnyx::Internal::Type::HashOf[String]
 
       # @type [Telnyx::Internal::Type::Converter]
-      EnumObjecToObjecttResponseMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      EnumObjecToObjecttResponseMap =
+        Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
     end
   end
 end

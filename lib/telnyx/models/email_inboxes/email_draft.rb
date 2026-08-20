@@ -28,8 +28,9 @@ module Telnyx
 
         # @!attribute attachments
         #
-        #   @return [Array<Object>, nil]
-        optional :attachments, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+        #   @return [Array<Hash{Symbol=>Object}>, nil]
+        optional :attachments,
+                 Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
         # @!attribute bcc
         #
@@ -77,8 +78,8 @@ module Telnyx
         # @!attribute metadata
         #   Arbitrary customer-defined metadata.
         #
-        #   @return [Object, nil]
-        optional :metadata, Telnyx::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!attribute reply_to
         #
@@ -149,7 +150,7 @@ module Telnyx
         #
         #   @param status [Symbol, Telnyx::Models::EmailInboxes::EmailDraft::Status] `draft` until the draft is sent. A sent draft is retained for audit and
         #
-        #   @param attachments [Array<Object>]
+        #   @param attachments [Array<Hash{Symbol=>Object}>]
         #
         #   @param bcc [Array<Telnyx::Models::EmailInboxes::EmailAddress>]
         #
@@ -167,7 +168,7 @@ module Telnyx
         #
         #   @param labels [Array<String>] Mutable mailbox-state labels. Not propagated to Email Detail Records.
         #
-        #   @param metadata [Object] Arbitrary customer-defined metadata.
+        #   @param metadata [Hash{Symbol=>Object}] Arbitrary customer-defined metadata.
         #
         #   @param reply_to [String, nil]
         #

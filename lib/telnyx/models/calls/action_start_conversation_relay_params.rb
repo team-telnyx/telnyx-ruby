@@ -127,7 +127,7 @@ module Telnyx
         optional :structured_provider, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!attribute transcription
-        #   @deprecated
+        #   @deprecated Use transcription_engine and transcription_engine_config instead.
         #
         #   Not supported for Conversation Relay start requests. Use `transcription_engine`
         #   and `transcription_engine_config` instead.

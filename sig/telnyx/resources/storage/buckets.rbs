@@ -9,7 +9,7 @@ module Telnyx
         def create_presigned_url: (
           String object_name,
           bucket_name: String,
-          ?ttl: Integer,
+          ?body: Telnyx::Storage::BucketCreatePresignedURLParams::Body,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Storage::BucketCreatePresignedURLResponse
 

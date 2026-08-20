@@ -14,8 +14,8 @@ module Telnyx
 
       # @!attribute billing_address
       #
-      #   @return [Telnyx::Models::BillingAddress, nil]
-      optional :billing_address, -> { Telnyx::BillingAddress }
+      #   @return [Telnyx::Models::PhysicalAddress, nil]
+      optional :billing_address, -> { Telnyx::PhysicalAddress }
 
       # @!attribute billing_contact
       #
@@ -102,7 +102,7 @@ module Telnyx
       # @!method initialize(enterprise_id:, billing_address: nil, billing_contact: nil, corporate_registration_number: nil, customer_reference: nil, doing_business_as: nil, dun_bradstreet_number: nil, fein: nil, industry: nil, jurisdiction_of_incorporation: nil, legal_name: nil, number_of_employees: nil, organization_contact: nil, organization_legal_type: nil, organization_physical_address: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, website: nil, request_options: {})
       #   @param enterprise_id [String]
       #
-      #   @param billing_address [Telnyx::Models::BillingAddress]
+      #   @param billing_address [Telnyx::Models::PhysicalAddress]
       #
       #   @param billing_contact [Telnyx::Models::BillingContact]
       #

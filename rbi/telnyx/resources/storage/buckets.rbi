@@ -23,7 +23,7 @@ module Telnyx
           params(
             object_name: String,
             bucket_name: String,
-            ttl: Integer,
+            body: Telnyx::Storage::BucketCreatePresignedURLParams::Body::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Storage::BucketCreatePresignedURLResponse)
         end
@@ -32,8 +32,8 @@ module Telnyx
           object_name,
           # Path param: The name of the bucket
           bucket_name:,
-          # Body param: The time to live of the token in seconds
-          ttl: nil,
+          # Body param
+          body: nil,
           request_options: {}
         )
         end

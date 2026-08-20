@@ -6,8 +6,8 @@ module Telnyx
     class EnterprisePublic < Telnyx::Internal::Type::BaseModel
       # @!attribute billing_address
       #
-      #   @return [Telnyx::Models::BillingAddress, nil]
-      optional :billing_address, -> { Telnyx::BillingAddress }
+      #   @return [Telnyx::Models::PhysicalAddress, nil]
+      optional :billing_address, -> { Telnyx::PhysicalAddress }
 
       # @!attribute billing_contact
       #
@@ -145,7 +145,7 @@ module Telnyx
       #
       #   @param id [String]
       #
-      #   @param billing_address [Telnyx::Models::BillingAddress]
+      #   @param billing_address [Telnyx::Models::PhysicalAddress]
       #
       #   @param billing_contact [Telnyx::Models::BillingContact]
       #

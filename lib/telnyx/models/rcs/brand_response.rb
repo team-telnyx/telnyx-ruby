@@ -83,9 +83,11 @@ module Telnyx
         module Identifier
           extend Telnyx::Internal::Type::Union
 
-          variant -> { Telnyx::Rcs::EinBrandIdentifier }
+          discriminator :identifier_type
 
-          variant -> { Telnyx::Rcs::StockSymbolBrandIdentifier }
+          variant :EIN, -> { Telnyx::Rcs::EinBrandIdentifier }
+
+          variant :STOCK_SYMBOL, -> { Telnyx::Rcs::StockSymbolBrandIdentifier }
 
           # @!method self.variants
           #   @return [Array(Telnyx::Models::Rcs::EinBrandIdentifier, Telnyx::Models::Rcs::StockSymbolBrandIdentifier)]

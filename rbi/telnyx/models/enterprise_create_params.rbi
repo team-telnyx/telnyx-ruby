@@ -11,10 +11,10 @@ module Telnyx
           T.any(Telnyx::EnterpriseCreateParams, Telnyx::Internal::AnyHash)
         end
 
-      sig { returns(Telnyx::BillingAddress) }
+      sig { returns(Telnyx::PhysicalAddress) }
       attr_reader :billing_address
 
-      sig { params(billing_address: Telnyx::BillingAddress::OrHash).void }
+      sig { params(billing_address: Telnyx::PhysicalAddress::OrHash).void }
       attr_writer :billing_address
 
       sig { returns(Telnyx::BillingContact) }
@@ -139,7 +139,7 @@ module Telnyx
 
       sig do
         params(
-          billing_address: Telnyx::BillingAddress::OrHash,
+          billing_address: Telnyx::PhysicalAddress::OrHash,
           billing_contact: Telnyx::BillingContact::OrHash,
           country_code: String,
           doing_business_as: String,
@@ -223,7 +223,7 @@ module Telnyx
       sig do
         override.returns(
           {
-            billing_address: Telnyx::BillingAddress,
+            billing_address: Telnyx::PhysicalAddress,
             billing_contact: Telnyx::BillingContact,
             country_code: String,
             doing_business_as: String,
