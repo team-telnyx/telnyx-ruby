@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type remediation_request =
+          {
+            id: String,
+            call_purpose: String,
+            created_at: Time,
+            phone_numbers_count: Integer,
+            phone_numbers_ineligible: Integer,
+            phone_numbers_submitted: Integer,
+            status: Telnyx::Models::Enterprises::Reputation::remediation_status,
+            updated_at: Time,
+            contact_email: String?,
+            results: Telnyx::Enterprises::Reputation::RemediationPerNumberResults?,
+            :tier1_completed_at => Time?,
+            :tier2_completed_at => Time?,
+            webhook_url: String?
+          }
+
+        class RemediationRequest < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor call_purpose: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor phone_numbers_count: Integer
+
+          attr_accessor phone_numbers_ineligible: Integer
+
+          attr_accessor phone_numbers_submitted: Integer
+
+          attr_accessor status: Telnyx::Models::Enterprises::Reputation::remediation_status
+
+          attr_accessor updated_at: Time
+
+          attr_accessor contact_email: String?
+
+          attr_accessor results: Telnyx::Enterprises::Reputation::RemediationPerNumberResults?
+
+          attr_accessor tier1_completed_at: Time?
+
+          attr_accessor tier2_completed_at: Time?
+
+          attr_accessor webhook_url: String?
+
+          def initialize: (
+            id: String,
+            call_purpose: String,
+            created_at: Time,
+            phone_numbers_count: Integer,
+            phone_numbers_ineligible: Integer,
+            phone_numbers_submitted: Integer,
+            status: Telnyx::Models::Enterprises::Reputation::remediation_status,
+            updated_at: Time,
+            ?contact_email: String?,
+            ?results: Telnyx::Enterprises::Reputation::RemediationPerNumberResults?,
+            ?tier1_completed_at: Time?,
+            ?tier2_completed_at: Time?,
+            ?webhook_url: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            call_purpose: String,
+            created_at: Time,
+            phone_numbers_count: Integer,
+            phone_numbers_ineligible: Integer,
+            phone_numbers_submitted: Integer,
+            status: Telnyx::Models::Enterprises::Reputation::remediation_status,
+            updated_at: Time,
+            contact_email: String?,
+            results: Telnyx::Enterprises::Reputation::RemediationPerNumberResults?,
+            :tier1_completed_at => Time?,
+            :tier2_completed_at => Time?,
+            webhook_url: String?
+          }
+        end
+      end
+    end
+  end
+end

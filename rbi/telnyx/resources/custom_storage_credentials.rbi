@@ -13,7 +13,7 @@ module Telnyx
             T.any(
               Telnyx::GcsConfigurationData::OrHash,
               Telnyx::S3ConfigurationData::OrHash,
-              Telnyx::CustomStorageConfiguration::Configuration::S3Generic::OrHash,
+              Telnyx::S3GenericConfigurationData::OrHash,
               Telnyx::AzureConfigurationData::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
@@ -53,7 +53,7 @@ module Telnyx
             T.any(
               Telnyx::GcsConfigurationData::OrHash,
               Telnyx::S3ConfigurationData::OrHash,
-              Telnyx::CustomStorageConfiguration::Configuration::S3Generic::OrHash,
+              Telnyx::S3GenericConfigurationData::OrHash,
               Telnyx::AzureConfigurationData::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash

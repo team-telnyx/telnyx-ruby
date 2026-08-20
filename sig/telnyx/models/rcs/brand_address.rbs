@@ -1,0 +1,47 @@
+module Telnyx
+  module Models
+    module Rcs
+      type brand_address =
+        {
+          administrative_area: String,
+          city: String,
+          country_code: String,
+          :line_1 => String,
+          postal_code: String,
+          :line_2 => String?
+        }
+
+      class BrandAddress < Telnyx::Internal::Type::BaseModel
+        attr_accessor administrative_area: String
+
+        attr_accessor city: String
+
+        attr_accessor country_code: String
+
+        attr_accessor line_1: String
+
+        attr_accessor postal_code: String
+
+        attr_accessor line_2: String?
+
+        def initialize: (
+          administrative_area: String,
+          city: String,
+          country_code: String,
+          line_1: String,
+          postal_code: String,
+          ?line_2: String?
+        ) -> void
+
+        def to_hash: -> {
+          administrative_area: String,
+          city: String,
+          country_code: String,
+          :line_1 => String,
+          postal_code: String,
+          :line_2 => String?
+        }
+      end
+    end
+  end
+end

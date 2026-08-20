@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_engine_reson8_config =
+        {
+          language: Telnyx::Models::Calls::TranscriptionEngineReson8Config::language,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_model
+        }
+
+      class TranscriptionEngineReson8Config < Telnyx::Internal::Type::BaseModel
+        attr_reader language: Telnyx::Models::Calls::TranscriptionEngineReson8Config::language?
+
+        def language=: (
+          Telnyx::Models::Calls::TranscriptionEngineReson8Config::language
+        ) -> Telnyx::Models::Calls::TranscriptionEngineReson8Config::language
+
+        attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_engine?
+
+        def transcription_engine=: (
+          Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_engine
+        ) -> Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_engine
+
+        attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_model?
+
+        def transcription_model=: (
+          Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_model
+        ) -> Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_model
+
+        def initialize: (
+          ?language: Telnyx::Models::Calls::TranscriptionEngineReson8Config::language,
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_engine,
+          ?transcription_model: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_model
+        ) -> void
+
+        def to_hash: -> {
+          language: Telnyx::Models::Calls::TranscriptionEngineReson8Config::language,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_model
+        }
+
+        type language =
+          :auto | :nl | :en | :fr | :fy | :de | :it | :pl | :pt | :es | :sv
+
+        module Language
+          extend Telnyx::Internal::Type::Enum
+
+          AUTO: :auto
+          NL: :nl
+          EN: :en
+          FR: :fr
+          FY: :fy
+          DE: :de
+          IT: :it
+          PL: :pl
+          PT: :pt
+          ES: :es
+          SV: :sv
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineReson8Config::language]
+        end
+
+        type transcription_engine = :Reson8
+
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          RESON8: :Reson8
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_engine]
+        end
+
+        type transcription_model = :"reson8/turns"
+
+        module TranscriptionModel
+          extend Telnyx::Internal::Type::Enum
+
+          RESON8_TURNS: :"reson8/turns"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineReson8Config::transcription_model]
+        end
+      end
+    end
+  end
+end

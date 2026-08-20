@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::EmailBlocks::ImportTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::EmailBlocks::EmailBlockImportResponse::Data
+        data: Telnyx::EmailBlocks::EmailBlockImport
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::EmailBlocks::ImportTest < Telnyx::Test::ResourceT
 
     assert_pattern do
       response => {
-        data: Telnyx::EmailBlocks::EmailBlockImportResponse::Data
+        data: Telnyx::EmailBlocks::EmailBlockImport
       }
     end
   end

@@ -1926,7 +1926,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8::OrHash,
+                Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,

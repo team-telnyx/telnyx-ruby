@@ -81,7 +81,7 @@ module Telnyx
 
           type result =
             {
-              checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks,
+              checks: Telnyx::EmailValidationChecks,
               email: String,
               risk_score: Float,
               valid: bool,
@@ -89,7 +89,7 @@ module Telnyx
             }
 
           class Result < Telnyx::Internal::Type::BaseModel
-            attr_accessor checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks
+            attr_accessor checks: Telnyx::EmailValidationChecks
 
             attr_accessor email: String
 
@@ -102,7 +102,7 @@ module Telnyx
             def did_you_mean=: (String) -> String
 
             def initialize: (
-              checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks,
+              checks: Telnyx::EmailValidationChecks,
               email: String,
               risk_score: Float,
               valid: bool,
@@ -110,61 +110,12 @@ module Telnyx
             ) -> void
 
             def to_hash: -> {
-              checks: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks,
+              checks: Telnyx::EmailValidationChecks,
               email: String,
               risk_score: Float,
               valid: bool,
               did_you_mean: String
             }
-
-            type checks =
-              {
-                disposable: Telnyx::EmailValidationCheck,
-                mx: Telnyx::EmailValidationCheck,
-                role_based: Telnyx::EmailValidationCheck,
-                syntax: Telnyx::EmailValidationCheck,
-                typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
-              }
-
-            class Checks < Telnyx::Internal::Type::BaseModel
-              attr_accessor disposable: Telnyx::EmailValidationCheck
-
-              attr_accessor mx: Telnyx::EmailValidationCheck
-
-              attr_accessor role_based: Telnyx::EmailValidationCheck
-
-              attr_accessor syntax: Telnyx::EmailValidationCheck
-
-              attr_accessor typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
-
-              def initialize: (
-                disposable: Telnyx::EmailValidationCheck,
-                mx: Telnyx::EmailValidationCheck,
-                role_based: Telnyx::EmailValidationCheck,
-                syntax: Telnyx::EmailValidationCheck,
-                typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
-              ) -> void
-
-              def to_hash: -> {
-                disposable: Telnyx::EmailValidationCheck,
-                mx: Telnyx::EmailValidationCheck,
-                role_based: Telnyx::EmailValidationCheck,
-                syntax: Telnyx::EmailValidationCheck,
-                typo: Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo
-              }
-
-              type typo = { suggestion: String }
-
-              class Typo < Telnyx::Models::EmailValidationCheck
-                def suggestion: -> String?
-
-                def suggestion=: (String _) -> String
-
-                def initialize: (?suggestion: String) -> void
-
-                def to_hash: -> { suggestion: String }
-              end
-            end
           end
         end
       end

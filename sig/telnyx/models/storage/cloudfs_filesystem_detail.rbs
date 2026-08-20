@@ -1,0 +1,96 @@
+module Telnyx
+  module Models
+    module Storage
+      type cloudfs_filesystem_detail =
+        {
+          id: String,
+          created_at: Time,
+          error: String,
+          meta_url: String,
+          name: String,
+          record_type: String,
+          region: String,
+          :s3_bucket => String,
+          :s3_endpoint => String,
+          status: Telnyx::Models::Storage::cloudfs_filesystem_status,
+          updated_at: Time
+        }
+
+      class CloudfsFilesystemDetail < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader error: String?
+
+        def error=: (String) -> String
+
+        attr_reader meta_url: String?
+
+        def meta_url=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader region: String?
+
+        def region=: (String) -> String
+
+        attr_reader s3_bucket: String?
+
+        def s3_bucket=: (String) -> String
+
+        attr_reader s3_endpoint: String?
+
+        def s3_endpoint=: (String) -> String
+
+        attr_reader status: Telnyx::Models::Storage::cloudfs_filesystem_status?
+
+        def status=: (
+          Telnyx::Models::Storage::cloudfs_filesystem_status
+        ) -> Telnyx::Models::Storage::cloudfs_filesystem_status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?error: String,
+          ?meta_url: String,
+          ?name: String,
+          ?record_type: String,
+          ?region: String,
+          ?s3_bucket: String,
+          ?s3_endpoint: String,
+          ?status: Telnyx::Models::Storage::cloudfs_filesystem_status,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          error: String,
+          meta_url: String,
+          name: String,
+          record_type: String,
+          region: String,
+          :s3_bucket => String,
+          :s3_endpoint => String,
+          status: Telnyx::Models::Storage::cloudfs_filesystem_status,
+          updated_at: Time
+        }
+      end
+    end
+  end
+end

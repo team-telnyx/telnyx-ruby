@@ -126,7 +126,7 @@ class Telnyx::Test::Resources::EmailInboxes::DraftsTest < Telnyx::Test::Resource
     assert_pattern do
       response => {
         data: Telnyx::EmailInboxes::EmailMessage,
-        suppressed: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]) | nil
+        suppressed: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SuppressedRecipient]) | nil
       }
     end
   end

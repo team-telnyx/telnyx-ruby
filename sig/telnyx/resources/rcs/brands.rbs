@@ -3,7 +3,7 @@ module Telnyx
     class Rcs
       class Brands
         def create: (
-          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandCreateParams::Address],
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           contacts: Telnyx::Rcs::BrandCreateParams::Contacts,
           display_name: String,
           identifiers: Telnyx::Rcs::BrandCreateParams::Identifiers,
@@ -22,7 +22,7 @@ module Telnyx
 
         def update: (
           String id,
-          ?addresses: ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address],
+          ?addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           ?contacts: Telnyx::Rcs::BrandUpdateParams::Contacts,
           ?display_name: String,
           ?identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers,

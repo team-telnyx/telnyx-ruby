@@ -19,7 +19,7 @@ class Telnyx::Test::Resources::Storage::CloudfsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Storage::CloudfsFilesystemResponseWrapper::Data | nil
+        data: Telnyx::Storage::CloudfsFilesystem | nil
       }
     end
   end
@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::Storage::CloudfsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Storage::CloudfsFilesystemDetailResponseWrapper::Data | nil
+        data: Telnyx::Storage::CloudfsFilesystemDetail | nil
       }
     end
   end
@@ -51,7 +51,7 @@ class Telnyx::Test::Resources::Storage::CloudfsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Storage::CloudfsFilesystemDetailResponseWrapper::Data | nil
+        data: Telnyx::Storage::CloudfsFilesystemDetail | nil
       }
     end
   end
@@ -84,7 +84,7 @@ class Telnyx::Test::Resources::Storage::CloudfsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Storage::CloudfsFilesystemDetailResponseWrapper::Data | nil
+        data: Telnyx::Storage::CloudfsFilesystemDetail | nil
       }
     end
   end

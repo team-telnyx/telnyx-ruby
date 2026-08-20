@@ -40,7 +40,7 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),
@@ -67,7 +67,7 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),
@@ -94,7 +94,7 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),
@@ -131,7 +131,7 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),

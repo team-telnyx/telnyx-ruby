@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Storage::Cloudfs::ActionsTest < Telnyx::Test::Res
 
     assert_pattern do
       response => {
-        data: Telnyx::Storage::CloudfsFilesystemResponseWrapper::Data | nil
+        data: Telnyx::Storage::CloudfsFilesystem | nil
       }
     end
   end

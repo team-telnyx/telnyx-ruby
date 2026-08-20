@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::EmailMessagesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: Telnyx::EmailInboxes::EmailMessage,
-        suppressed: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]) | nil
+        suppressed: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SuppressedRecipient]) | nil
       }
     end
   end
@@ -109,7 +109,7 @@ class Telnyx::Test::Resources::EmailMessagesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         data: Telnyx::EmailInboxes::EmailMessage,
-        suppressed: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailMessageResponse::Suppressed]) | nil
+        suppressed: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SuppressedRecipient]) | nil
       }
     end
   end

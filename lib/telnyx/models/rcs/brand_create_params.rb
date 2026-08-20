@@ -10,8 +10,8 @@ module Telnyx
 
         # @!attribute addresses
         #
-        #   @return [Hash{Symbol=>Telnyx::Models::Rcs::BrandCreateParams::Address}]
-        required :addresses, -> { Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandCreateParams::Address] }
+        #   @return [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}]
+        required :addresses, -> { Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress] }
 
         # @!attribute contacts
         #   Named business contacts. Use the `brand` key for the required BRAND contact.
@@ -62,7 +62,7 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Rcs::BrandCreateParams} for more details.
         #
-        #   @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandCreateParams::Address}]
+        #   @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}]
         #
         #   @param contacts [Telnyx::Models::Rcs::BrandCreateParams::Contacts] Named business contacts. Use the `brand` key for the required BRAND contact.
         #
@@ -81,52 +81,6 @@ module Telnyx
         #   @param profile_id [String, nil] A Messaging Profile owned by the authenticated organization. Agents inherit this
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
-
-        class Address < Telnyx::Internal::Type::BaseModel
-          # @!attribute administrative_area
-          #
-          #   @return [String]
-          required :administrative_area, String
-
-          # @!attribute city
-          #
-          #   @return [String]
-          required :city, String
-
-          # @!attribute country_code
-          #   The two-letter ISO 3166-1 country code.
-          #
-          #   @return [String]
-          required :country_code, String
-
-          # @!attribute line_1
-          #
-          #   @return [String]
-          required :line_1, String
-
-          # @!attribute postal_code
-          #
-          #   @return [String]
-          required :postal_code, String
-
-          # @!attribute line_2
-          #
-          #   @return [String, nil]
-          optional :line_2, String, nil?: true
-
-          # @!method initialize(administrative_area:, city:, country_code:, line_1:, postal_code:, line_2: nil)
-          #   @param administrative_area [String]
-          #
-          #   @param city [String]
-          #
-          #   @param country_code [String] The two-letter ISO 3166-1 country code.
-          #
-          #   @param line_1 [String]
-          #
-          #   @param postal_code [String]
-          #
-          #   @param line_2 [String, nil]
-        end
 
         class Contacts < Telnyx::Internal::Type::BaseModel
           # @!attribute brand

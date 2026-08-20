@@ -723,6 +723,8 @@ module Telnyx
 
   class EmailValidationCheck = Telnyx::Models::EmailValidationCheck
 
+  class EmailValidationChecks = Telnyx::Models::EmailValidationChecks
+
   class EmailValidationCreateParams = Telnyx::Models::EmailValidationCreateParams
 
   module EmailValidations = Telnyx::Models::EmailValidations
@@ -1679,6 +1681,8 @@ module Telnyx
 
   class S3ConfigurationData = Telnyx::Models::S3ConfigurationData
 
+  class S3GenericConfigurationData = Telnyx::Models::S3GenericConfigurationData
+
   module ServicePlan = Telnyx::Models::ServicePlan
 
   module SessionAnalysis = Telnyx::Models::SessionAnalysis
@@ -1822,6 +1826,8 @@ module Telnyx
   class SubNumberOrderUpdateParams = Telnyx::Models::SubNumberOrderUpdateParams
 
   class SubNumberOrderUpdateRequirementGroupParams = Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
+
+  class SuppressedRecipient = Telnyx::Models::SuppressedRecipient
 
   class TelephonyCredential = Telnyx::Models::TelephonyCredential
 

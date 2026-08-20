@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Dir::VerifyEmailTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Dir::EmailVerificationStatusWrapped::Data
+        data: Telnyx::Dir::EmailVerificationStatus
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Dir::VerifyEmailTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Dir::EmailVerificationStatusWrapped::Data
+        data: Telnyx::Dir::EmailVerificationStatus
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::Dir::VerifyEmailTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Dir::EmailVerificationStatusWrapped::Data
+        data: Telnyx::Dir::EmailVerificationStatus
       }
     end
   end

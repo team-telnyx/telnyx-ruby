@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EmailInboxes::FilterListResponse::Data
+        data: Telnyx::EmailInboxes::InboxFilters
       }
     end
   end
@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EmailInboxes::FilterAddResponse::Data
+        data: Telnyx::EmailInboxes::InboxFilters
       }
     end
   end
@@ -56,7 +56,7 @@ class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EmailInboxes::FilterDeleteAllResponse::Data
+        data: Telnyx::EmailInboxes::InboxFilters
       }
     end
   end
@@ -72,7 +72,7 @@ class Telnyx::Test::Resources::EmailInboxes::FiltersTest < Telnyx::Test::Resourc
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EmailInboxes::FilterReplaceResponse::Data
+        data: Telnyx::EmailInboxes::InboxFilters
       }
     end
   end
