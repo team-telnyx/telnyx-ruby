@@ -1350,6 +1350,8 @@ module Telnyx
 
   NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
 
+  NumbersSubNumberOrder = Telnyx::Models::NumbersSubNumberOrder
+
   OAuthClient = Telnyx::Models::OAuthClient
 
   OAuthClientCreateParams = Telnyx::Models::OAuthClientCreateParams

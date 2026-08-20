@@ -6,11 +6,11 @@ module Telnyx
     class SubNumberOrderUpdateResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::SubNumberOrder, nil]
-      optional :data, -> { Telnyx::SubNumberOrder }
+      #   @return [Telnyx::Models::NumbersSubNumberOrder, nil]
+      optional :data, -> { Telnyx::NumbersSubNumberOrder }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::SubNumberOrder]
+      #   @param data [Telnyx::Models::NumbersSubNumberOrder]
     end
   end
 end

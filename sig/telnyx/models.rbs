@@ -1295,6 +1295,8 @@ module Telnyx
 
   class NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
 
+  class NumbersSubNumberOrder = Telnyx::Models::NumbersSubNumberOrder
+
   class OAuthClient = Telnyx::Models::OAuthClient
 
   class OAuthClientCreateParams = Telnyx::Models::OAuthClientCreateParams
