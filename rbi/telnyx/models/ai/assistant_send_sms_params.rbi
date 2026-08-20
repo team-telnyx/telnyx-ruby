@@ -56,6 +56,12 @@ module Telnyx
         sig { params(text: String).void }
         attr_writer :text
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             assistant_id: String,
@@ -68,6 +74,7 @@ module Telnyx
               ],
             should_create_conversation: T::Boolean,
             text: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -78,6 +85,7 @@ module Telnyx
           conversation_metadata: nil,
           should_create_conversation: nil,
           text: nil,
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -95,6 +103,7 @@ module Telnyx
                 ],
               should_create_conversation: T::Boolean,
               text: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           )

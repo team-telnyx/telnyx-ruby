@@ -78,7 +78,12 @@ module Telnyx
           #   @return [String, nil]
           optional :text, String
 
-          # @!method initialize(assistant_id:, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, call_settings: nil, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
+          # @!attribute idempotency_key
+          #
+          #   @return [String, nil]
+          optional :idempotency_key, String
+
+          # @!method initialize(assistant_id:, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, call_settings: nil, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, idempotency_key: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Assistants::ScheduledEventCreateParams} for more details.
           #
@@ -103,6 +108,8 @@ module Telnyx
           #   @param retry_interval_secs [Integer]
           #
           #   @param text [String] Required for sms scheduled events. The text to be sent to the end user.
+          #
+          #   @param idempotency_key [String]
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

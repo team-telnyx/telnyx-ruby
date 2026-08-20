@@ -26,35 +26,50 @@ module Telnyx
               max_retries_client_errors: Integer,
               retry_interval_secs: Integer,
               text: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Assistants::ScheduledEventResponse::Variants)
           end
           def create(
-            # Unique identifier of the assistant.
+            # Path param: Unique identifier of the assistant.
             assistant_id,
-            # The datetime at which the event should be scheduled. Formatted as ISO 8601.
+            # Body param: The datetime at which the event should be scheduled. Formatted as
+            # ISO 8601.
             scheduled_at_fixed_datetime:,
-            # The phone number, SIP URI, to schedule the call or text from.
+            # Body param: The phone number, SIP URI, to schedule the call or text from.
             telnyx_agent_target:,
+            # Body param
             telnyx_conversation_channel:,
-            # The phone number, SIP URI, to schedule the call or text to.
+            # Body param: The phone number, SIP URI, to schedule the call or text to.
             telnyx_end_user_target:,
-            # Per-call telephony overrides applied when a scheduled phone-call event
-            # dispatches. Phone-call events only. New per-call dispatch options should be
-            # added here rather than as top-level event fields.
+            # Body param: Per-call telephony overrides applied when a scheduled phone-call
+            # event dispatches. Phone-call events only. New per-call dispatch options should
+            # be added here rather than as top-level event fields.
             call_settings: nil,
-            # Metadata associated with the conversation. Telnyx provides several pieces of
-            # metadata, but customers can also add their own.
+            # Body param: Metadata associated with the conversation. Telnyx provides several
+            # pieces of metadata, but customers can also add their own.
             conversation_metadata: nil,
-            # A map of dynamic variable names to values. These variables can be referenced in
-            # the assistant's instructions and messages using {{variable_name}} syntax.
+            # Body param: A map of dynamic variable names to values. These variables can be
+            # referenced in the assistant's instructions and messages using {{variable_name}}
+            # syntax.
             dynamic_variables: nil,
-            # Configure number of retries on client errors: busy, no-answer, failed, canceled
-            # (caller hung up before the callee answered)
+            # Body param: Configure number of retries on client errors: busy, no-answer,
+            # failed, canceled (caller hung up before the callee answered)
             max_retries_client_errors: nil,
+            # Body param
             retry_interval_secs: nil,
-            # Required for sms scheduled events. The text to be sent to the end user.
+            # Body param: Required for sms scheduled events. The text to be sent to the end
+            # user.
             text: nil,
+            # Header param: Optional opaque, unquoted key for safely retrying the same logical
+            # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+            # Generate a unique UUID v4 for each operation and reuse it only when retrying
+            # that operation with the same request. Invalid headers—including duplicate,
+            # empty, malformed, or overlong values—return 400 with error code 10015. A request
+            # already in progress with the same key returns 409; reusing the key with a
+            # different request returns 422. Only successful responses are replayed, for up to
+            # 24 hours. Do not include sensitive data in the key.
+            idempotency_key: nil,
             request_options: {}
           )
           end

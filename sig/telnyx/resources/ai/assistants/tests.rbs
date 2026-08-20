@@ -16,6 +16,7 @@ module Telnyx
             ?max_duration_seconds: Integer,
             ?telnyx_conversation_channel: Telnyx::Models::AI::Assistants::telnyx_conversation_channel,
             ?test_suite: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::Assistants::AssistantTest
 

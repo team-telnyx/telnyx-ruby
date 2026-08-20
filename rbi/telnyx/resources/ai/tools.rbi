@@ -20,22 +20,42 @@ module Telnyx
             update_dynamic_variables:
               Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::SharedToolResponse)
         end
         def create(
+          # Body param
           display_name:,
+          # Body param
           type:,
+          # Body param
           client_side_tool: nil,
+          # Body param
           function: nil,
+          # Body param
           handoff: nil,
+          # Body param
           invite: nil,
+          # Body param
           pay: nil,
+          # Body param
           retrieval: nil,
+          # Body param
           timeout_ms: nil,
-          # Configuration for an update_dynamic_variables tool.
+          # Body param: Configuration for an update_dynamic_variables tool.
           update_dynamic_variables: nil,
+          # Body param
           webhook: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end

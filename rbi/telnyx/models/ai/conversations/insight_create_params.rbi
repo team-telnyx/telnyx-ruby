@@ -46,6 +46,12 @@ module Telnyx
           sig { params(webhook: String).void }
           attr_writer :webhook
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :idempotency_key
+
+          sig { params(idempotency_key: String).void }
+          attr_writer :idempotency_key
+
           sig do
             params(
               instructions: String,
@@ -53,6 +59,7 @@ module Telnyx
               json_schema:
                 Telnyx::AI::Conversations::InsightCreateParams::JsonSchema::Variants,
               webhook: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
@@ -62,6 +69,7 @@ module Telnyx
             # If specified, the output will follow the JSON schema.
             json_schema: nil,
             webhook: nil,
+            idempotency_key: nil,
             request_options: {}
           )
           end
@@ -74,6 +82,7 @@ module Telnyx
                 json_schema:
                   Telnyx::AI::Conversations::InsightCreateParams::JsonSchema::Variants,
                 webhook: String,
+                idempotency_key: String,
                 request_options: Telnyx::RequestOptions
               }
             )

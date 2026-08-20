@@ -10,6 +10,7 @@ module Telnyx
           ?document_chunk_size: Integer,
           ?embedding_model: Telnyx::Models::AI::EmbeddingCreateParams::embedding_model,
           ?loader: Telnyx::Models::AI::EmbeddingCreateParams::loader,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::EmbeddingResponse
 
@@ -33,6 +34,7 @@ module Telnyx
         def url: (
           bucket_name: String,
           url: String,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::EmbeddingResponse
 

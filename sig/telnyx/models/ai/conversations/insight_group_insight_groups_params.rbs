@@ -3,7 +3,12 @@ module Telnyx
     module AI
       module Conversations
         type insight_group_insight_groups_params =
-          { name: String, description: String, webhook: String }
+          {
+            name: String,
+            description: String,
+            webhook: String,
+            idempotency_key: String
+          }
           & Telnyx::Internal::Type::request_parameters
 
         class InsightGroupInsightGroupsParams < Telnyx::Internal::Type::BaseModel
@@ -20,10 +25,15 @@ module Telnyx
 
           def webhook=: (String) -> String
 
+          attr_reader idempotency_key: String?
+
+          def idempotency_key=: (String) -> String
+
           def initialize: (
             name: String,
             ?description: String,
             ?webhook: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> void
 
@@ -31,6 +41,7 @@ module Telnyx
             name: String,
             description: String,
             webhook: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions
           }
         end

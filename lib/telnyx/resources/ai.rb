@@ -161,6 +161,9 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::AISummarizeParams} for more details.
+      #
       # Generate a summary of a file's contents.
       #
       # Supports the following text formats:
@@ -173,13 +176,15 @@ module Telnyx
       # - flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm
       # - Up to 100 MB
       #
-      # @overload summarize(bucket:, filename:, system_prompt: nil, request_options: {})
+      # @overload summarize(bucket:, filename:, system_prompt: nil, idempotency_key: nil, request_options: {})
       #
-      # @param bucket [String] The name of the bucket that contains the file to be summarized.
+      # @param bucket [String] Body param: The name of the bucket that contains the file to be summarized.
       #
-      # @param filename [String] The name of the file to be summarized.
+      # @param filename [String] Body param: The name of the file to be summarized.
       #
-      # @param system_prompt [String] A system prompt to guide the summary generation.
+      # @param system_prompt [String] Body param: A system prompt to guide the summary generation.
+      #
+      # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -188,10 +193,12 @@ module Telnyx
       # @see Telnyx::Models::AISummarizeParams
       def summarize(params)
         parsed, options = Telnyx::AISummarizeParams.dump_request(params)
+        header_params = {idempotency_key: "idempotency-key"}
         @client.request(
           method: :post,
           path: "ai/summarize",
-          body: parsed,
+          headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+          body: parsed.except(*header_params.keys),
           model: Telnyx::Models::AISummarizeResponse,
           options: options
         )

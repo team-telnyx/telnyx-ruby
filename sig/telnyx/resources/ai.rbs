@@ -50,6 +50,7 @@ module Telnyx
         bucket: String,
         filename: String,
         ?system_prompt: String,
+        ?idempotency_key: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::AISummarizeResponse
 

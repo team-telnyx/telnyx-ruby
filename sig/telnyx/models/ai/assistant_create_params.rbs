@@ -30,7 +30,8 @@ module Telnyx
           tools: ::Array[Telnyx::Models::AI::assistant_tool],
           transcription: Telnyx::AI::TranscriptionSettings,
           voice_settings: Telnyx::AI::VoiceSettings,
-          widget_settings: Telnyx::AI::WidgetSettings
+          widget_settings: Telnyx::AI::WidgetSettings,
+          idempotency_key: String
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -180,6 +181,10 @@ module Telnyx
           Telnyx::AI::WidgetSettings
         ) -> Telnyx::AI::WidgetSettings
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         def initialize: (
           instructions: String,
           name: String,
@@ -209,6 +214,7 @@ module Telnyx
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::VoiceSettings,
           ?widget_settings: Telnyx::AI::WidgetSettings,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -241,6 +247,7 @@ module Telnyx
           transcription: Telnyx::AI::TranscriptionSettings,
           voice_settings: Telnyx::AI::VoiceSettings,
           widget_settings: Telnyx::AI::WidgetSettings,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions
         }
       end

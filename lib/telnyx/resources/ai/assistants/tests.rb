@@ -20,23 +20,25 @@ module Telnyx
           # Creates a comprehensive test configuration for evaluating AI assistant
           # performance
           #
-          # @overload create(destination:, instructions:, name:, rubric:, description: nil, max_duration_seconds: nil, telnyx_conversation_channel: nil, test_suite: nil, request_options: {})
+          # @overload create(destination:, instructions:, name:, rubric:, description: nil, max_duration_seconds: nil, telnyx_conversation_channel: nil, test_suite: nil, idempotency_key: nil, request_options: {})
           #
-          # @param destination [String] The target destination for the test conversation. Format depends on the channel:
+          # @param destination [String] Body param: The target destination for the test conversation. Format depends on
           #
-          # @param instructions [String] Detailed instructions that define the test scenario and what the assistant shoul
+          # @param instructions [String] Body param: Detailed instructions that define the test scenario and what the ass
           #
-          # @param name [String] A descriptive name for the assistant test. This will be used to identify the tes
+          # @param name [String] Body param: A descriptive name for the assistant test. This will be used to iden
           #
-          # @param rubric [Array<Telnyx::Models::AI::Assistants::TestCreateParams::Rubric>] Evaluation criteria used to assess the assistant's performance. Each rubric item
+          # @param rubric [Array<Telnyx::Models::AI::Assistants::TestCreateParams::Rubric>] Body param: Evaluation criteria used to assess the assistant's performance. Each
           #
-          # @param description [String] Optional detailed description of what this test evaluates and its purpose. Helps
+          # @param description [String] Body param: Optional detailed description of what this test evaluates and its pu
           #
-          # @param max_duration_seconds [Integer] Maximum duration in seconds that the test conversation should run before timing
+          # @param max_duration_seconds [Integer] Body param: Maximum duration in seconds that the test conversation should run be
           #
-          # @param telnyx_conversation_channel [Symbol, Telnyx::Models::AI::Assistants::TelnyxConversationChannel] The communication channel through which the test will be conducted. Determines h
+          # @param telnyx_conversation_channel [Symbol, Telnyx::Models::AI::Assistants::TelnyxConversationChannel] Body param: The communication channel through which the test will be conducted.
           #
-          # @param test_suite [String] Optional test suite name to group related tests together. Useful for organizing
+          # @param test_suite [String] Body param: Optional test suite name to group related tests together. Useful for
+          #
+          # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -45,10 +47,12 @@ module Telnyx
           # @see Telnyx::Models::AI::Assistants::TestCreateParams
           def create(params)
             parsed, options = Telnyx::AI::Assistants::TestCreateParams.dump_request(params)
+            header_params = {idempotency_key: "idempotency-key"}
             @client.request(
               method: :post,
               path: "ai/assistants/tests",
-              body: parsed,
+              headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+              body: parsed.except(*header_params.keys),
               model: Telnyx::AI::Assistants::AssistantTest,
               options: options
             )

@@ -15,6 +15,7 @@ module Telnyx
             ?max_retries_client_errors: Integer,
             ?retry_interval_secs: Integer,
             ?text: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::AI::Assistants::scheduled_event_response
 

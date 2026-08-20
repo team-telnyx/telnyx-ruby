@@ -11,29 +11,31 @@ module Telnyx
           #
           # Create a scheduled event for an assistant
           #
-          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, call_settings: nil, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, request_options: {})
+          # @overload create(assistant_id, scheduled_at_fixed_datetime:, telnyx_agent_target:, telnyx_conversation_channel:, telnyx_end_user_target:, call_settings: nil, conversation_metadata: nil, dynamic_variables: nil, max_retries_client_errors: nil, retry_interval_secs: nil, text: nil, idempotency_key: nil, request_options: {})
           #
-          # @param assistant_id [String] Unique identifier of the assistant.
+          # @param assistant_id [String] Path param: Unique identifier of the assistant.
           #
-          # @param scheduled_at_fixed_datetime [Time] The datetime at which the event should be scheduled. Formatted as ISO 8601.
+          # @param scheduled_at_fixed_datetime [Time] Body param: The datetime at which the event should be scheduled. Formatted as IS
           #
-          # @param telnyx_agent_target [String] The phone number, SIP URI, to schedule the call or text from.
+          # @param telnyx_agent_target [String] Body param: The phone number, SIP URI, to schedule the call or text from.
           #
-          # @param telnyx_conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType]
+          # @param telnyx_conversation_channel [Symbol, Telnyx::Models::AI::Assistants::ConversationChannelType] Body param
           #
-          # @param telnyx_end_user_target [String] The phone number, SIP URI, to schedule the call or text to.
+          # @param telnyx_end_user_target [String] Body param: The phone number, SIP URI, to schedule the call or text to.
           #
-          # @param call_settings [Telnyx::Models::AI::Assistants::ScheduledCallSettings] Per-call telephony overrides applied when a scheduled phone-call event
+          # @param call_settings [Telnyx::Models::AI::Assistants::ScheduledCallSettings] Body param: Per-call telephony overrides applied when a scheduled phone-call eve
           #
-          # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Metadata associated with the conversation. Telnyx provides several pieces of met
+          # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Body param: Metadata associated with the conversation. Telnyx provides several p
           #
-          # @param dynamic_variables [Hash{Symbol=>String}] A map of dynamic variable names to values. These variables can be referenced in
+          # @param dynamic_variables [Hash{Symbol=>String}] Body param: A map of dynamic variable names to values. These variables can be re
           #
-          # @param max_retries_client_errors [Integer] Configure number of retries on client errors: busy, no-answer, failed, canceled
+          # @param max_retries_client_errors [Integer] Body param: Configure number of retries on client errors: busy, no-answer, faile
           #
-          # @param retry_interval_secs [Integer]
+          # @param retry_interval_secs [Integer] Body param
           #
-          # @param text [String] Required for sms scheduled events. The text to be sent to the end user.
+          # @param text [String] Body param: Required for sms scheduled events. The text to be sent to the end us
+          #
+          # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -42,10 +44,12 @@ module Telnyx
           # @see Telnyx::Models::AI::Assistants::ScheduledEventCreateParams
           def create(assistant_id, params)
             parsed, options = Telnyx::AI::Assistants::ScheduledEventCreateParams.dump_request(params)
+            header_params = {idempotency_key: "idempotency-key"}
             @client.request(
               method: :post,
               path: ["ai/assistants/%1$s/scheduled_events", assistant_id],
-              body: parsed,
+              headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+              body: parsed.except(*header_params.keys),
               model: Telnyx::AI::Assistants::ScheduledEventResponse,
               options: options
             )

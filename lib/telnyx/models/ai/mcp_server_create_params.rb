@@ -33,12 +33,18 @@ module Telnyx
         #   @return [String, nil]
         optional :api_key_ref, String, nil?: true
 
-        # @!method initialize(name:, type:, url:, allowed_tools: nil, api_key_ref: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(name:, type:, url:, allowed_tools: nil, api_key_ref: nil, idempotency_key: nil, request_options: {})
         #   @param name [String]
         #   @param type [String]
         #   @param url [String]
         #   @param allowed_tools [Array<String>, nil]
         #   @param api_key_ref [String, nil]
+        #   @param idempotency_key [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
     end

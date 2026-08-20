@@ -39,63 +39,65 @@ module Telnyx
         # Creates a new AI assistant from the provided configuration, including its model,
         # instructions, and attached tools, and returns the created assistant.
         #
-        # @overload create(instructions:, name:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload create(instructions:, name:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, idempotency_key: nil, request_options: {})
         #
-        # @param instructions [String] System instructions for the assistant. These may be templated with [dynamic vari
+        # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
         #
-        # @param name [String]
+        # @param name [String] Body param
         #
-        # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Conversation flow as supplied by API clients (create / update).
+        # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Body param: Conversation flow as supplied by API clients (create / update).
         #
-        # @param description [String]
+        # @param description [String] Body param
         #
-        # @param dynamic_variables [Hash{Symbol=>Object}] Map of dynamic variables and their default values
+        # @param dynamic_variables [Hash{Symbol=>Object}] Body param: Map of dynamic variables and their default values
         #
-        # @param dynamic_variables_webhook_timeout_ms [Integer] Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
+        # @param dynamic_variables_webhook_timeout_ms [Integer] Body param: Timeout in milliseconds for the dynamic variables webhook. Must be b
         #
-        # @param dynamic_variables_webhook_url [String] If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this U
+        # @param dynamic_variables_webhook_url [String] Body param: If `dynamic_variables_webhook_url` is set, Telnyx sends a POST reque
         #
-        # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>]
+        # @param enabled_features [Array<Symbol, Telnyx::Models::AI::EnabledFeatures>] Body param
         #
-        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq]
+        # @param external_llm [Telnyx::Models::AI::ExternalLlmReq] Body param
         #
-        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq]
+        # @param fallback_config [Telnyx::Models::AI::FallbackConfigReq] Body param
         #
-        # @param greeting [String] Text that the assistant will use to start the conversation. This may be template
+        # @param greeting [String] Body param: Text that the assistant will use to start the conversation. This may
         #
-        # @param insight_settings [Telnyx::Models::AI::InsightSettings]
+        # @param insight_settings [Telnyx::Models::AI::InsightSettings] Body param
         #
-        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Connected integrations attached to the assistant. The catalog of available integ
+        # @param integrations [Array<Telnyx::Models::AI::AssistantIntegration>] Body param: Connected integrations attached to the assistant. The catalog of ava
         #
-        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Settings for interruptions and how the assistant decides the user has finished s
+        # @param interruption_settings [Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings] Body param: Settings for interruptions and how the assistant decides the user ha
         #
-        # @param llm_api_key_ref [String] This is only needed when using third-party inference providers selected by `mode
+        # @param llm_api_key_ref [String] Body param: This is only needed when using third-party inference providers selec
         #
-        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] MCP servers attached to the assistant. Create MCP servers with `/ai/mcp_servers`
+        # @param mcp_servers [Array<Telnyx::Models::AI::AssistantMcpServer>] Body param: MCP servers attached to the assistant. Create MCP servers with `/ai/
         #
-        # @param messaging_settings [Telnyx::Models::AI::MessagingSettings]
+        # @param messaging_settings [Telnyx::Models::AI::MessagingSettings] Body param
         #
-        # @param model [String] ID of the model to use when `external_llm` is not set. You can use the [Get mode
+        # @param model [String] Body param: ID of the model to use when `external_llm` is not set. You can use t
         #
-        # @param observability_settings [Telnyx::Models::AI::ObservabilityReq]
+        # @param observability_settings [Telnyx::Models::AI::ObservabilityReq] Body param
         #
-        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Configuration for post-conversation processing. When enabled, the assistant rece
+        # @param post_conversation_settings [Telnyx::Models::AI::PostConversationSettingsReq] Body param: Configuration for post-conversation processing. When enabled, the as
         #
-        # @param privacy_settings [Telnyx::Models::AI::PrivacySettings]
+        # @param privacy_settings [Telnyx::Models::AI::PrivacySettings] Body param
         #
-        # @param tags [Array<String>] Tags associated with the assistant. Tags can also be managed with the assistant
+        # @param tags [Array<String>] Body param: Tags associated with the assistant. Tags can also be managed with th
         #
-        # @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
+        # @param telephony_settings [Telnyx::Models::AI::TelephonySettings] Body param
         #
-        # @param tool_ids [Array<String>] IDs of shared tools to attach to the assistant. New integrations should prefer `
+        # @param tool_ids [Array<String>] Body param: IDs of shared tools to attach to the assistant. New integrations sho
         #
-        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] Deprecated for new integrations. Inline tool definitions available to the assist
+        # @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] Body param: Deprecated for new integrations. Inline tool definitions available t
         #
-        # @param transcription [Telnyx::Models::AI::TranscriptionSettings]
+        # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
         #
-        # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
         #
-        # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
+        # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -104,10 +106,12 @@ module Telnyx
         # @see Telnyx::Models::AI::AssistantCreateParams
         def create(params)
           parsed, options = Telnyx::AI::AssistantCreateParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "ai/assistants",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::AI::InferenceEmbedding,
             options: options
           )
@@ -309,11 +313,16 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::AssistantCloneParams} for more details.
+        #
         # Clone an existing assistant, excluding telephony and messaging settings.
         #
-        # @overload clone_(assistant_id, request_options: {})
+        # @overload clone_(assistant_id, idempotency_key: nil, request_options: {})
         #
         # @param assistant_id [String] Unique identifier of the assistant.
+        #
+        # @param idempotency_key [String] Optional opaque, unquoted key for safely retrying the same logical request. Keys
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -321,11 +330,13 @@ module Telnyx
         #
         # @see Telnyx::Models::AI::AssistantCloneParams
         def clone_(assistant_id, params = {})
+          parsed, options = Telnyx::AI::AssistantCloneParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["ai/assistants/%1$s/clone", assistant_id],
+            headers: parsed.transform_keys(idempotency_key: "idempotency-key"),
             model: Telnyx::AI::InferenceEmbedding,
-            options: params[:request_options]
+            options: options
           )
         end
 
@@ -356,13 +367,15 @@ module Telnyx
         # imported will be overwritten with its latest version from the importing
         # provider.
         #
-        # @overload imports(api_key_ref:, provider:, import_ids: nil, request_options: {})
+        # @overload imports(api_key_ref:, provider:, import_ids: nil, idempotency_key: nil, request_options: {})
         #
-        # @param api_key_ref [String] Integration secret pointer that refers to the API key for the external provider.
+        # @param api_key_ref [String] Body param: Integration secret pointer that refers to the API key for the extern
         #
-        # @param provider [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider] The external provider to import assistants from.
+        # @param provider [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider] Body param: The external provider to import assistants from.
         #
-        # @param import_ids [Array<String>] Optional list of assistant IDs to import from the external provider. If not prov
+        # @param import_ids [Array<String>] Body param: Optional list of assistant IDs to import from the external provider.
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -371,15 +384,20 @@ module Telnyx
         # @see Telnyx::Models::AI::AssistantImportsParams
         def imports(params)
           parsed, options = Telnyx::AI::AssistantImportsParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "ai/assistants/import",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::AI::AssistantsList,
             options: options
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::AssistantSendSMSParams} for more details.
+        #
         # Send an SMS message for an assistant. This endpoint:
         #
         # 1. Validates the assistant exists and has messaging profile configured
@@ -392,19 +410,21 @@ module Telnyx
         # 4. Updates conversation metadata if provided
         # 5. Returns the conversation ID
         #
-        # @overload send_sms(assistant_id, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
+        # @overload send_sms(assistant_id, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, idempotency_key: nil, request_options: {})
         #
-        # @param assistant_id [String] Unique identifier of the assistant.
+        # @param assistant_id [String] Path param: Unique identifier of the assistant.
         #
-        # @param from [String]
+        # @param from [String] Body param
         #
-        # @param to [String]
+        # @param to [String] Body param
         #
-        # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]
+        # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Body param
         #
-        # @param should_create_conversation [Boolean]
+        # @param should_create_conversation [Boolean] Body param
         #
-        # @param text [String]
+        # @param text [String] Body param
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -413,10 +433,12 @@ module Telnyx
         # @see Telnyx::Models::AI::AssistantSendSMSParams
         def send_sms(assistant_id, params)
           parsed, options = Telnyx::AI::AssistantSendSMSParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: ["ai/assistants/%1$s/chat/sms", assistant_id],
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::Models::AI::AssistantSendSMSResponse,
             options: options
           )

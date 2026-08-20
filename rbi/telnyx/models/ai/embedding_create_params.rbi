@@ -60,6 +60,12 @@ module Telnyx
         end
         attr_writer :loader
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             bucket_name: String,
@@ -68,6 +74,7 @@ module Telnyx
             embedding_model:
               Telnyx::AI::EmbeddingCreateParams::EmbeddingModel::OrSymbol,
             loader: Telnyx::AI::EmbeddingCreateParams::Loader::OrSymbol,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -79,6 +86,7 @@ module Telnyx
           embedding_model: nil,
           # Supported types of custom document loaders for embeddings.
           loader: nil,
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -92,6 +100,7 @@ module Telnyx
               embedding_model:
                 Telnyx::AI::EmbeddingCreateParams::EmbeddingModel::OrSymbol,
               loader: Telnyx::AI::EmbeddingCreateParams::Loader::OrSymbol,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           )

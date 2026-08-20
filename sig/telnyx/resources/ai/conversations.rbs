@@ -13,6 +13,7 @@ module Telnyx
         def create: (
           ?metadata: ::Hash[Symbol, String],
           ?name: String,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::Conversation
 
@@ -58,6 +59,7 @@ module Telnyx
           ?tool_call_id: String,
           ?tool_calls: ::Array[::Hash[Symbol, top]],
           ?tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> nil
 

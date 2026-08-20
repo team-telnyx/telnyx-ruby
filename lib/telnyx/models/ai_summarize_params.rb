@@ -25,12 +25,19 @@ module Telnyx
       #   @return [String, nil]
       optional :system_prompt, String
 
-      # @!method initialize(bucket:, filename:, system_prompt: nil, request_options: {})
+      # @!attribute idempotency_key
+      #
+      #   @return [String, nil]
+      optional :idempotency_key, String
+
+      # @!method initialize(bucket:, filename:, system_prompt: nil, idempotency_key: nil, request_options: {})
       #   @param bucket [String] The name of the bucket that contains the file to be summarized.
       #
       #   @param filename [String] The name of the file to be summarized.
       #
       #   @param system_prompt [String] A system prompt to guide the summary generation.
+      #
+      #   @param idempotency_key [String]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

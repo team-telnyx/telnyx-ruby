@@ -47,11 +47,13 @@ module Telnyx
               #
               # Executes all tests within a specific test suite as a batch operation
               #
-              # @overload trigger(suite_name, destination_version_id: nil, request_options: {})
+              # @overload trigger(suite_name, destination_version_id: nil, idempotency_key: nil, request_options: {})
               #
-              # @param suite_name [String] Name of the suite.
+              # @param suite_name [String] Path param: Name of the suite.
               #
-              # @param destination_version_id [String] Optional assistant version ID to use for all test runs in this suite. If provide
+              # @param destination_version_id [String] Body param: Optional assistant version ID to use for all test runs in this suite
+              #
+              # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
               #
               # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
               #
@@ -60,10 +62,12 @@ module Telnyx
               # @see Telnyx::Models::AI::Assistants::Tests::TestSuites::RunTriggerParams
               def trigger(suite_name, params = {})
                 parsed, options = Telnyx::AI::Assistants::Tests::TestSuites::RunTriggerParams.dump_request(params)
+                header_params = {idempotency_key: "idempotency-key"}
                 @client.request(
                   method: :post,
                   path: ["ai/assistants/tests/test-suites/%1$s/runs", suite_name],
-                  body: parsed,
+                  headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+                  body: parsed.except(*header_params.keys),
                   model: Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Assistants::Tests::TestRunResponse],
                   options: options
                 )

@@ -84,101 +84,124 @@ module Telnyx
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def create(
-          # System instructions for the assistant. These may be templated with
+          # Body param: System instructions for the assistant. These may be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           instructions:,
+          # Body param
           name:,
-          # Conversation flow as supplied by API clients (create / update).
+          # Body param: Conversation flow as supplied by API clients (create / update).
           #
           # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
           # unique node/edge IDs, that `start_node_id` references a real node, and that
           # every edge's endpoints reference real nodes.
           conversation_flow: nil,
+          # Body param
           description: nil,
-          # Map of dynamic variables and their default values
+          # Body param: Map of dynamic variables and their default values
           dynamic_variables: nil,
-          # Timeout in milliseconds for the dynamic variables webhook. Must be between 1 and
-          # 10000 ms. If the webhook does not respond within this timeout, the call proceeds
-          # with default values. See the
+          # Body param: Timeout in milliseconds for the dynamic variables webhook. Must be
+          # between 1 and 10000 ms. If the webhook does not respond within this timeout, the
+          # call proceeds with default values. See the
           # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
           dynamic_variables_webhook_timeout_ms: nil,
-          # If `dynamic_variables_webhook_url` is set, Telnyx sends a POST request to this
-          # URL at the start of the conversation to resolve dynamic variables. **Gotcha:**
-          # the webhook response must wrap variables under a top-level `dynamic_variables`
-          # object, e.g. `{"dynamic_variables": {"customer_name": "Jane"}}`. Returning a
-          # flat object will be ignored and variables will fall back to their defaults. See
-          # the
+          # Body param: If `dynamic_variables_webhook_url` is set, Telnyx sends a POST
+          # request to this URL at the start of the conversation to resolve dynamic
+          # variables. **Gotcha:** the webhook response must wrap variables under a
+          # top-level `dynamic_variables` object, e.g.
+          # `{"dynamic_variables": {"customer_name": "Jane"}}`. Returning a flat object will
+          # be ignored and variables will fall back to their defaults. See the
           # [dynamic variables guide](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           # for the full request/response format and timeout behavior.
           dynamic_variables_webhook_url: nil,
+          # Body param
           enabled_features: nil,
+          # Body param
           external_llm: nil,
+          # Body param
           fallback_config: nil,
-          # Text that the assistant will use to start the conversation. This may be
-          # templated with
+          # Body param: Text that the assistant will use to start the conversation. This may
+          # be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables).
           # Use an empty string to have the assistant wait for the user to speak first. Use
           # the special value `<assistant-speaks-first-with-model-generated-message>` to
           # have the assistant generate the greeting based on the system instructions.
           greeting: nil,
+          # Body param
           insight_settings: nil,
-          # Connected integrations attached to the assistant. The catalog of available
-          # integrations is at `/ai/integrations`; the user's connected integrations are at
-          # `/ai/integrations/connections`. Each item references a catalog integration by
-          # `integration_id`.
+          # Body param: Connected integrations attached to the assistant. The catalog of
+          # available integrations is at `/ai/integrations`; the user's connected
+          # integrations are at `/ai/integrations/connections`. Each item references a
+          # catalog integration by `integration_id`.
           integrations: nil,
-          # Settings for interruptions and how the assistant decides the user has finished
-          # speaking. These timings are most relevant when using non turn-taking
-          # transcription models. For turn-taking models like `deepgram/flux`, end-of-turn
-          # behavior is controlled by the transcription end-of-turn settings under
-          # `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
+          # Body param: Settings for interruptions and how the assistant decides the user
+          # has finished speaking. These timings are most relevant when using non
+          # turn-taking transcription models. For turn-taking models like `deepgram/flux`,
+          # end-of-turn behavior is controlled by the transcription end-of-turn settings
+          # under `transcription.settings` (`eot_threshold`, `eot_timeout_ms`,
           # `eager_eot_threshold`).
           interruption_settings: nil,
-          # This is only needed when using third-party inference providers selected by
-          # `model`. The `identifier` for an integration secret
+          # Body param: This is only needed when using third-party inference providers
+          # selected by `model`. The `identifier` for an integration secret
           # [/v2/integration_secrets](https://developers.telnyx.com/api-reference/integration-secrets/create-a-secret)
           # that refers to your LLM provider's API key. For bring-your-own endpoint
           # authentication, use `external_llm.llm_api_key_ref` instead. Warning: Free plans
           # are unlikely to work with this integration.
           llm_api_key_ref: nil,
-          # MCP servers attached to the assistant. Create MCP servers with
+          # Body param: MCP servers attached to the assistant. Create MCP servers with
           # `/ai/mcp_servers`, then reference them by `id` here.
           mcp_servers: nil,
+          # Body param
           messaging_settings: nil,
-          # ID of the model to use when `external_llm` is not set. You can use the
+          # Body param: ID of the model to use when `external_llm` is not set. You can use
+          # the
           # [Get models API](https://developers.telnyx.com/api-reference/openai-chat/get-available-models-openai-compatible)
           # to see available models. If `external_llm` is provided, the assistant uses
           # `external_llm` instead of this field. If neither `model` nor `external_llm` is
           # provided, Telnyx applies the default model.
           model: nil,
+          # Body param
           observability_settings: nil,
-          # Configuration for post-conversation processing. When enabled, the assistant
-          # receives one additional LLM turn after the conversation ends, allowing it to
-          # execute tool calls such as logging to a CRM or sending a summary. The assistant
-          # can execute multiple parallel or sequential tools during this phase.
+          # Body param: Configuration for post-conversation processing. When enabled, the
+          # assistant receives one additional LLM turn after the conversation ends, allowing
+          # it to execute tool calls such as logging to a CRM or sending a summary. The
+          # assistant can execute multiple parallel or sequential tools during this phase.
           # Telephony-control tools (e.g. hangup, transfer) are unavailable
           # post-conversation. Beta feature.
           post_conversation_settings: nil,
+          # Body param
           privacy_settings: nil,
-          # Tags associated with the assistant. Tags can also be managed with the assistant
-          # tag endpoints.
+          # Body param: Tags associated with the assistant. Tags can also be managed with
+          # the assistant tag endpoints.
           tags: nil,
+          # Body param
           telephony_settings: nil,
-          # IDs of shared tools to attach to the assistant. New integrations should prefer
-          # `tool_ids` over inline `tools`.
+          # Body param: IDs of shared tools to attach to the assistant. New integrations
+          # should prefer `tool_ids` over inline `tools`.
           tool_ids: nil,
-          # Deprecated for new integrations. Inline tool definitions available to the
-          # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
-          # endpoints.
+          # Body param: Deprecated for new integrations. Inline tool definitions available
+          # to the assistant. Prefer `tool_ids` to attach shared tools created with the AI
+          # Tools endpoints.
           tools: nil,
+          # Body param
           transcription: nil,
+          # Body param
           voice_settings: nil,
-          # Configuration settings for the assistant's web widget.
+          # Body param: Configuration settings for the assistant's web widget.
           widget_settings: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -434,12 +457,22 @@ module Telnyx
         sig do
           params(
             assistant_id: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
         end
         def clone_(
           # Unique identifier of the assistant.
           assistant_id,
+          # Optional opaque, unquoted key for safely retrying the same logical request. Keys
+          # must contain 1 to 255 letters, numbers, hyphens, or underscores. Generate a
+          # unique UUID v4 for each operation and reuse it only when retrying that operation
+          # with the same request. Invalid headers—including duplicate, empty, malformed, or
+          # overlong values—return 400 with error code 10015. A request already in progress
+          # with the same key returns 409; reusing the key with a different request
+          # returns 422. Only successful responses are replayed, for up to 24 hours. Do not
+          # include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -466,19 +499,29 @@ module Telnyx
             api_key_ref: String,
             provider: Telnyx::AI::AssistantImportsParams::Provider::OrSymbol,
             import_ids: T::Array[String],
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::AssistantsList)
         end
         def imports(
-          # Integration secret pointer that refers to the API key for the external provider.
-          # This should be an identifier for an integration secret created via
-          # /v2/integration_secrets.
+          # Body param: Integration secret pointer that refers to the API key for the
+          # external provider. This should be an identifier for an integration secret
+          # created via /v2/integration_secrets.
           api_key_ref:,
-          # The external provider to import assistants from.
+          # Body param: The external provider to import assistants from.
           provider:,
-          # Optional list of assistant IDs to import from the external provider. If not
-          # provided, all assistants will be imported.
+          # Body param: Optional list of assistant IDs to import from the external provider.
+          # If not provided, all assistants will be imported.
           import_ids: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -506,17 +549,32 @@ module Telnyx
               ],
             should_create_conversation: T::Boolean,
             text: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::AssistantSendSMSResponse)
         end
         def send_sms(
-          # Unique identifier of the assistant.
+          # Path param: Unique identifier of the assistant.
           assistant_id,
+          # Body param
           from:,
+          # Body param
           to:,
+          # Body param
           conversation_metadata: nil,
+          # Body param
           should_create_conversation: nil,
+          # Body param
           text: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end

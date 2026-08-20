@@ -30,7 +30,12 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook, String
 
-          # @!method initialize(instructions:, name:, json_schema: nil, webhook: nil, request_options: {})
+          # @!attribute idempotency_key
+          #
+          #   @return [String, nil]
+          optional :idempotency_key, String
+
+          # @!method initialize(instructions:, name:, json_schema: nil, webhook: nil, idempotency_key: nil, request_options: {})
           #   @param instructions [String]
           #
           #   @param name [String]
@@ -38,6 +43,8 @@ module Telnyx
           #   @param json_schema [String, Hash{Symbol=>Object}] If specified, the output will follow the JSON schema.
           #
           #   @param webhook [String]
+          #
+          #   @param idempotency_key [String]
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

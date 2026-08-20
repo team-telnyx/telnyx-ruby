@@ -3,7 +3,8 @@ module Telnyx
     module AI
       module Assistants
         type canary_deploy_create_params =
-          { assistant_id: String } & Telnyx::Internal::Type::request_parameters
+          { assistant_id: String, idempotency_key: String }
+          & Telnyx::Internal::Type::request_parameters
 
         class CanaryDeployCreateParams < Telnyx::Models::AI::Assistants::CanaryDeploy
           extend Telnyx::Internal::Type::RequestParameters::Converter
@@ -13,13 +14,19 @@ module Telnyx
 
           def assistant_id=: (String _) -> String
 
+          def idempotency_key: -> String?
+
+          def idempotency_key=: (String _) -> String
+
           def initialize: (
             assistant_id: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> void
 
           def to_hash: -> {
             assistant_id: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions
           }
         end

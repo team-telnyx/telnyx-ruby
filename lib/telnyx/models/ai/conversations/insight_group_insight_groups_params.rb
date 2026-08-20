@@ -24,10 +24,16 @@ module Telnyx
           #   @return [String, nil]
           optional :webhook, String
 
-          # @!method initialize(name:, description: nil, webhook: nil, request_options: {})
+          # @!attribute idempotency_key
+          #
+          #   @return [String, nil]
+          optional :idempotency_key, String
+
+          # @!method initialize(name:, description: nil, webhook: nil, idempotency_key: nil, request_options: {})
           #   @param name [String]
           #   @param description [String]
           #   @param webhook [String]
+          #   @param idempotency_key [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

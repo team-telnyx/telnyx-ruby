@@ -5,31 +5,36 @@ module Telnyx
     class AI
       # Configure AI assistant specifications
       class Tools
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::ToolCreateParams} for more details.
+        #
         # Create a new custom AI tool that can be attached to AI assistants.
         #
-        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
+        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, idempotency_key: nil, request_options: {})
         #
-        # @param display_name [String]
+        # @param display_name [String] Body param
         #
-        # @param type [String]
+        # @param type [String] Body param
         #
-        # @param client_side_tool [Hash{Symbol=>Object}]
+        # @param client_side_tool [Hash{Symbol=>Object}] Body param
         #
-        # @param function [Hash{Symbol=>Object}]
+        # @param function [Hash{Symbol=>Object}] Body param
         #
-        # @param handoff [Hash{Symbol=>Object}]
+        # @param handoff [Hash{Symbol=>Object}] Body param
         #
-        # @param invite [Hash{Symbol=>Object}]
+        # @param invite [Hash{Symbol=>Object}] Body param
         #
-        # @param pay [Telnyx::Models::AI::PayToolParams]
+        # @param pay [Telnyx::Models::AI::PayToolParams] Body param
         #
-        # @param retrieval [Hash{Symbol=>Object}]
+        # @param retrieval [Hash{Symbol=>Object}] Body param
         #
-        # @param timeout_ms [Integer]
+        # @param timeout_ms [Integer] Body param
         #
-        # @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
+        # @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Body param: Configuration for an update_dynamic_variables tool.
         #
-        # @param webhook [Hash{Symbol=>Object}]
+        # @param webhook [Hash{Symbol=>Object}] Body param
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -38,10 +43,12 @@ module Telnyx
         # @see Telnyx::Models::AI::ToolCreateParams
         def create(params)
           parsed, options = Telnyx::AI::ToolCreateParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "ai/tools",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::AI::SharedToolResponse,
             options: options
           )

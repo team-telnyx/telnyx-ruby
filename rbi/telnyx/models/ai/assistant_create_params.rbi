@@ -326,6 +326,12 @@ module Telnyx
         sig { params(widget_settings: Telnyx::AI::WidgetSettings::OrHash).void }
         attr_writer :widget_settings
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             instructions: String,
@@ -375,6 +381,7 @@ module Telnyx
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::VoiceSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -470,6 +477,7 @@ module Telnyx
           voice_settings: nil,
           # Configuration settings for the assistant's web widget.
           widget_settings: nil,
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -524,6 +532,7 @@ module Telnyx
               transcription: Telnyx::AI::TranscriptionSettings,
               voice_settings: Telnyx::AI::VoiceSettings,
               widget_settings: Telnyx::AI::WidgetSettings,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           )

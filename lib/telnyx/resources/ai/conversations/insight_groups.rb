@@ -79,14 +79,23 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::AI::Conversations::InsightGroupInsightGroupsParams} for more
+          # details.
+          #
           # Creates a new insight template group for organizing related insight templates,
           # and returns the created group.
           #
-          # @overload insight_groups(name:, description: nil, webhook: nil, request_options: {})
+          # @overload insight_groups(name:, description: nil, webhook: nil, idempotency_key: nil, request_options: {})
           #
-          # @param name [String]
-          # @param description [String]
-          # @param webhook [String]
+          # @param name [String] Body param
+          #
+          # @param description [String] Body param
+          #
+          # @param webhook [String] Body param
+          #
+          # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
+          #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Telnyx::Models::AI::Conversations::InsightTemplateGroupDetail]
@@ -94,10 +103,12 @@ module Telnyx
           # @see Telnyx::Models::AI::Conversations::InsightGroupInsightGroupsParams
           def insight_groups(params)
             parsed, options = Telnyx::AI::Conversations::InsightGroupInsightGroupsParams.dump_request(params)
+            header_params = {idempotency_key: "idempotency-key"}
             @client.request(
               method: :post,
               path: "ai/conversations/insight-groups",
-              body: parsed,
+              headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+              body: parsed.except(*header_params.keys),
               model: Telnyx::AI::Conversations::InsightTemplateGroupDetail,
               options: options
             )

@@ -65,7 +65,12 @@ module Telnyx
           #   @return [String, nil]
           optional :test_suite, String
 
-          # @!method initialize(destination:, instructions:, name:, rubric:, description: nil, max_duration_seconds: nil, telnyx_conversation_channel: nil, test_suite: nil, request_options: {})
+          # @!attribute idempotency_key
+          #
+          #   @return [String, nil]
+          optional :idempotency_key, String
+
+          # @!method initialize(destination:, instructions:, name:, rubric:, description: nil, max_duration_seconds: nil, telnyx_conversation_channel: nil, test_suite: nil, idempotency_key: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Assistants::TestCreateParams} for more details.
           #
@@ -84,6 +89,8 @@ module Telnyx
           #   @param telnyx_conversation_channel [Symbol, Telnyx::Models::AI::Assistants::TelnyxConversationChannel] The communication channel through which the test will be conducted. Determines h
           #
           #   @param test_suite [String] Optional test suite name to group related tests together. Useful for organizing
+          #
+          #   @param idempotency_key [String]
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

@@ -13,15 +13,30 @@ module Telnyx
             url: String,
             allowed_tools: T.nilable(T::Array[String]),
             api_key_ref: T.nilable(String),
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::McpServer)
         end
         def create(
+          # Body param
           name:,
+          # Body param
           type:,
+          # Body param
           url:,
+          # Body param
           allowed_tools: nil,
+          # Body param
           api_key_ref: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end

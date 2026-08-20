@@ -29,7 +29,12 @@ module Telnyx
         #   @return [Array<String>, nil]
         optional :import_ids, Telnyx::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(api_key_ref:, provider:, import_ids: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(api_key_ref:, provider:, import_ids: nil, idempotency_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::AssistantImportsParams} for more details.
         #
@@ -38,6 +43,8 @@ module Telnyx
         #   @param provider [Symbol, Telnyx::Models::AI::AssistantImportsParams::Provider] The external provider to import assistants from.
         #
         #   @param import_ids [Array<String>] Optional list of assistant IDs to import from the external provider. If not prov
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

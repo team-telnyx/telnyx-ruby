@@ -81,6 +81,12 @@ module Telnyx
           sig { params(test_suite: String).void }
           attr_writer :test_suite
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :idempotency_key
+
+          sig { params(idempotency_key: String).void }
+          attr_writer :idempotency_key
+
           sig do
             params(
               destination: String,
@@ -95,6 +101,7 @@ module Telnyx
               telnyx_conversation_channel:
                 Telnyx::AI::Assistants::TelnyxConversationChannel::OrSymbol,
               test_suite: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
@@ -123,6 +130,7 @@ module Telnyx
             # Optional test suite name to group related tests together. Useful for organizing
             # tests by feature, team, or release cycle.
             test_suite: nil,
+            idempotency_key: nil,
             request_options: {}
           )
           end
@@ -140,6 +148,7 @@ module Telnyx
                 telnyx_conversation_channel:
                   Telnyx::AI::Assistants::TelnyxConversationChannel::OrSymbol,
                 test_suite: String,
+                idempotency_key: String,
                 request_options: Telnyx::RequestOptions
               }
             )

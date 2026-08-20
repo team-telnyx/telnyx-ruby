@@ -13,7 +13,8 @@ module Telnyx
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
           update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
-          webhook: ::Hash[Symbol, top]
+          webhook: ::Hash[Symbol, top],
+          idempotency_key: String
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -63,6 +64,10 @@ module Telnyx
 
         def webhook=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         def initialize: (
           display_name: String,
           type: String,
@@ -75,6 +80,7 @@ module Telnyx
           ?timeout_ms: Integer,
           ?update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           ?webhook: ::Hash[Symbol, top],
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -90,6 +96,7 @@ module Telnyx
           timeout_ms: Integer,
           update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
           webhook: ::Hash[Symbol, top],
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions
         }
       end
