@@ -901,6 +901,8 @@ module Telnyx
 
   class InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
 
+  class InboundSipHeader = Telnyx::Models::InboundSipHeader
+
   class InexplicitNumberOrderCreateParams = Telnyx::Models::InexplicitNumberOrderCreateParams
 
   class InexplicitNumberOrderListParams = Telnyx::Models::InexplicitNumberOrderListParams
@@ -1092,6 +1094,8 @@ module Telnyx
   class MessagingHostedNumberRetrieveParams = Telnyx::Models::MessagingHostedNumberRetrieveParams
 
   class MessagingHostedNumberUpdateParams = Telnyx::Models::MessagingHostedNumberUpdateParams
+
+  class MessagingInboundMessagePayload = Telnyx::Models::MessagingInboundMessagePayload
 
   module MessagingMetricsTimeFrame = Telnyx::Models::MessagingMetricsTimeFrame
 

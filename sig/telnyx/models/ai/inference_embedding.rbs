@@ -8,7 +8,7 @@ module Telnyx
           instructions: String,
           model: String,
           name: String,
-          conversation_flow: Telnyx::AI::InferenceEmbedding::ConversationFlow,
+          conversation_flow: Telnyx::AI::ConversationFlow,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_timeout_ms: Integer,
@@ -50,11 +50,11 @@ module Telnyx
 
         attr_accessor name: String
 
-        attr_reader conversation_flow: Telnyx::AI::InferenceEmbedding::ConversationFlow?
+        attr_reader conversation_flow: Telnyx::AI::ConversationFlow?
 
         def conversation_flow=: (
-          Telnyx::AI::InferenceEmbedding::ConversationFlow
-        ) -> Telnyx::AI::InferenceEmbedding::ConversationFlow
+          Telnyx::AI::ConversationFlow
+        ) -> Telnyx::AI::ConversationFlow
 
         attr_reader description: String?
 
@@ -206,7 +206,7 @@ module Telnyx
           instructions: String,
           model: String,
           name: String,
-          ?conversation_flow: Telnyx::AI::InferenceEmbedding::ConversationFlow,
+          ?conversation_flow: Telnyx::AI::ConversationFlow,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_timeout_ms: Integer,
@@ -243,7 +243,7 @@ module Telnyx
           instructions: String,
           model: String,
           name: String,
-          conversation_flow: Telnyx::AI::InferenceEmbedding::ConversationFlow,
+          conversation_flow: Telnyx::AI::ConversationFlow,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_timeout_ms: Integer,
@@ -273,325 +273,6 @@ module Telnyx
           voice_settings: Telnyx::AI::VoiceSettings,
           widget_settings: Telnyx::AI::WidgetSettings
         }
-
-        type conversation_flow =
-          {
-            nodes: ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::node],
-            start_node_id: String,
-            edges: ::Array[Telnyx::AI::FlowEdge]
-          }
-
-        class ConversationFlow < Telnyx::Internal::Type::BaseModel
-          attr_accessor nodes: ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::node]
-
-          attr_accessor start_node_id: String
-
-          attr_reader edges: ::Array[Telnyx::AI::FlowEdge]?
-
-          def edges=: (
-            ::Array[Telnyx::AI::FlowEdge]
-          ) -> ::Array[Telnyx::AI::FlowEdge]
-
-          def initialize: (
-            nodes: ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::node],
-            start_node_id: String,
-            ?edges: ::Array[Telnyx::AI::FlowEdge]
-          ) -> void
-
-          def to_hash: -> {
-            nodes: ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::node],
-            start_node_id: String,
-            edges: ::Array[Telnyx::AI::FlowEdge]
-          }
-
-          type node =
-            Telnyx::AI::InferenceEmbedding::ConversationFlow::Node::Prompt
-            | Telnyx::AI::InferenceEmbedding::ConversationFlow::Node::Tool
-            | Telnyx::AI::InferenceEmbedding::ConversationFlow::Node::Speak
-
-          module Node
-            extend Telnyx::Internal::Type::Union
-
-            type prompt =
-              {
-                id: String,
-                instructions: String,
-                external_llm: Telnyx::AI::ExternalLlm,
-                instructions_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::instructions_mode,
-                llm_api_key_ref: String,
-                model: String,
-                name: String,
-                position: Telnyx::AI::NodePosition,
-                shared_tool_ids: ::Array[String],
-                tools: ::Array[::Array[Telnyx::Models::AI::assistant_tool]],
-                tools_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::tools_mode,
-                transcription: Telnyx::AI::TranscriptionSettings,
-                type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::type_,
-                voice_settings: Telnyx::AI::VoiceSettings
-              }
-
-            class Prompt < Telnyx::Internal::Type::BaseModel
-              attr_accessor id: String
-
-              attr_accessor instructions: String
-
-              attr_reader external_llm: Telnyx::AI::ExternalLlm?
-
-              def external_llm=: (
-                Telnyx::AI::ExternalLlm
-              ) -> Telnyx::AI::ExternalLlm
-
-              attr_reader instructions_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::instructions_mode?
-
-              def instructions_mode=: (
-                Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::instructions_mode
-              ) -> Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::instructions_mode
-
-              attr_reader llm_api_key_ref: String?
-
-              def llm_api_key_ref=: (String) -> String
-
-              attr_reader model: String?
-
-              def model=: (String) -> String
-
-              attr_reader name: String?
-
-              def name=: (String) -> String
-
-              attr_reader position: Telnyx::AI::NodePosition?
-
-              def position=: (
-                Telnyx::AI::NodePosition
-              ) -> Telnyx::AI::NodePosition
-
-              attr_reader shared_tool_ids: ::Array[String]?
-
-              def shared_tool_ids=: (::Array[String]) -> ::Array[String]
-
-              attr_reader tools: ::Array[::Array[Telnyx::Models::AI::assistant_tool]]?
-
-              def tools=: (
-                ::Array[::Array[Telnyx::Models::AI::assistant_tool]]
-              ) -> ::Array[::Array[Telnyx::Models::AI::assistant_tool]]
-
-              attr_reader tools_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::tools_mode?
-
-              def tools_mode=: (
-                Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::tools_mode
-              ) -> Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::tools_mode
-
-              attr_reader transcription: Telnyx::AI::TranscriptionSettings?
-
-              def transcription=: (
-                Telnyx::AI::TranscriptionSettings
-              ) -> Telnyx::AI::TranscriptionSettings
-
-              attr_reader type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::type_?
-
-              def type=: (
-                Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::type_
-              ) -> Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::type_
-
-              attr_reader voice_settings: Telnyx::AI::VoiceSettings?
-
-              def voice_settings=: (
-                Telnyx::AI::VoiceSettings
-              ) -> Telnyx::AI::VoiceSettings
-
-              def initialize: (
-                id: String,
-                instructions: String,
-                ?external_llm: Telnyx::AI::ExternalLlm,
-                ?instructions_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::instructions_mode,
-                ?llm_api_key_ref: String,
-                ?model: String,
-                ?name: String,
-                ?position: Telnyx::AI::NodePosition,
-                ?shared_tool_ids: ::Array[String],
-                ?tools: ::Array[::Array[Telnyx::Models::AI::assistant_tool]],
-                ?tools_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::tools_mode,
-                ?transcription: Telnyx::AI::TranscriptionSettings,
-                ?type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::type_,
-                ?voice_settings: Telnyx::AI::VoiceSettings
-              ) -> void
-
-              def to_hash: -> {
-                id: String,
-                instructions: String,
-                external_llm: Telnyx::AI::ExternalLlm,
-                instructions_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::instructions_mode,
-                llm_api_key_ref: String,
-                model: String,
-                name: String,
-                position: Telnyx::AI::NodePosition,
-                shared_tool_ids: ::Array[String],
-                tools: ::Array[::Array[Telnyx::Models::AI::assistant_tool]],
-                tools_mode: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::tools_mode,
-                transcription: Telnyx::AI::TranscriptionSettings,
-                type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::type_,
-                voice_settings: Telnyx::AI::VoiceSettings
-              }
-
-              type instructions_mode = :replace | :append
-
-              module InstructionsMode
-                extend Telnyx::Internal::Type::Enum
-
-                REPLACE: :replace
-                APPEND: :append
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::instructions_mode]
-              end
-
-              type tools_mode = :replace | :append
-
-              module ToolsMode
-                extend Telnyx::Internal::Type::Enum
-
-                REPLACE: :replace
-                APPEND: :append
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::tools_mode]
-              end
-
-              type type_ = :prompt
-
-              module Type
-                extend Telnyx::Internal::Type::Enum
-
-                PROMPT: :prompt
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Prompt::type_]
-              end
-            end
-
-            type tool =
-              {
-                id: String,
-                shared_tool_id: String,
-                name: String,
-                position: Telnyx::AI::NodePosition,
-                tool: ::Array[Telnyx::Models::AI::assistant_tool],
-                type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool::type_
-              }
-
-            class Tool < Telnyx::Internal::Type::BaseModel
-              attr_accessor id: String
-
-              attr_accessor shared_tool_id: String
-
-              attr_reader name: String?
-
-              def name=: (String) -> String
-
-              attr_reader position: Telnyx::AI::NodePosition?
-
-              def position=: (
-                Telnyx::AI::NodePosition
-              ) -> Telnyx::AI::NodePosition
-
-              attr_reader tool: ::Array[Telnyx::Models::AI::assistant_tool]?
-
-              def tool=: (
-                ::Array[Telnyx::Models::AI::assistant_tool]
-              ) -> ::Array[Telnyx::Models::AI::assistant_tool]
-
-              attr_reader type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool::type_?
-
-              def type=: (
-                Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool::type_
-              ) -> Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool::type_
-
-              def initialize: (
-                id: String,
-                shared_tool_id: String,
-                ?name: String,
-                ?position: Telnyx::AI::NodePosition,
-                ?tool: ::Array[Telnyx::Models::AI::assistant_tool],
-                ?type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool::type_
-              ) -> void
-
-              def to_hash: -> {
-                id: String,
-                shared_tool_id: String,
-                name: String,
-                position: Telnyx::AI::NodePosition,
-                tool: ::Array[Telnyx::Models::AI::assistant_tool],
-                type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool::type_
-              }
-
-              type type_ = :tool
-
-              module Type
-                extend Telnyx::Internal::Type::Enum
-
-                TOOL: :tool
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Tool::type_]
-              end
-            end
-
-            type speak =
-              {
-                id: String,
-                message: String,
-                name: String,
-                position: Telnyx::AI::NodePosition,
-                type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::type_
-              }
-
-            class Speak < Telnyx::Internal::Type::BaseModel
-              attr_accessor id: String
-
-              attr_accessor message: String
-
-              attr_reader name: String?
-
-              def name=: (String) -> String
-
-              attr_reader position: Telnyx::AI::NodePosition?
-
-              def position=: (
-                Telnyx::AI::NodePosition
-              ) -> Telnyx::AI::NodePosition
-
-              attr_reader type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::type_?
-
-              def type=: (
-                Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::type_
-              ) -> Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::type_
-
-              def initialize: (
-                id: String,
-                message: String,
-                ?name: String,
-                ?position: Telnyx::AI::NodePosition,
-                ?type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::type_
-              ) -> void
-
-              def to_hash: -> {
-                id: String,
-                message: String,
-                name: String,
-                position: Telnyx::AI::NodePosition,
-                type: Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::type_
-              }
-
-              type type_ = :speak
-
-              module Type
-                extend Telnyx::Internal::Type::Enum
-
-                SPEAK: :speak
-
-                def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::Node::Speak::type_]
-              end
-            end
-
-            def self?.variants: -> ::Array[Telnyx::Models::AI::InferenceEmbedding::ConversationFlow::node]
-          end
-        end
       end
     end
   end

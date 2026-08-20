@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    module AI
+      type tool_node_req =
+        {
+          id: String,
+          shared_tool_id: String,
+          name: String,
+          position: Telnyx::AI::NodePosition,
+          type: Telnyx::Models::AI::ToolNodeReq::type_
+        }
+
+      class ToolNodeReq < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor shared_tool_id: String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader position: Telnyx::AI::NodePosition?
+
+        def position=: (Telnyx::AI::NodePosition) -> Telnyx::AI::NodePosition
+
+        attr_reader type: Telnyx::Models::AI::ToolNodeReq::type_?
+
+        def type=: (
+          Telnyx::Models::AI::ToolNodeReq::type_
+        ) -> Telnyx::Models::AI::ToolNodeReq::type_
+
+        def initialize: (
+          id: String,
+          shared_tool_id: String,
+          ?name: String,
+          ?position: Telnyx::AI::NodePosition,
+          ?type: Telnyx::Models::AI::ToolNodeReq::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          shared_tool_id: String,
+          name: String,
+          position: Telnyx::AI::NodePosition,
+          type: Telnyx::Models::AI::ToolNodeReq::type_
+        }
+
+        type type_ = :tool
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TOOL: :tool
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ToolNodeReq::type_]
+        end
+      end
+    end
+  end
+end

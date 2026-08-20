@@ -27,7 +27,7 @@ module Telnyx
 
         # @!attribute transcription_engine_config
         #
-        #   @return [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config, nil]
+        #   @return [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionEngineHumainConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config, nil]
         optional :transcription_engine_config,
                  union: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig }
 
@@ -49,7 +49,7 @@ module Telnyx
         #
         #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        #   @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
+        #   @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionEngineHumainConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
         #
         #   @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
 
@@ -100,7 +100,7 @@ module Telnyx
 
           variant :Parakeet, -> { Telnyx::Calls::TranscriptionEngineParakeetConfig }
 
-          variant :Humain, -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain }
+          variant :Humain, -> { Telnyx::Calls::TranscriptionEngineHumainConfig }
 
           variant :Reson8, -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8 }
 
@@ -111,81 +111,6 @@ module Telnyx
           variant :"deepgram/nova-2", -> { Telnyx::Calls::DeepgramNova2Config }
 
           variant :"deepgram/nova-3", -> { Telnyx::Calls::DeepgramNova3Config }
-
-          class Humain < Telnyx::Internal::Type::BaseModel
-            # @!attribute language
-            #   The language of the audio to be transcribed. `codeswitch` enables Arabic/English
-            #   code-switching. `auto` resolves server-side to code-switching.
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language, nil]
-            optional :language,
-                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language }
-
-            # @!attribute transcription_engine
-            #   Engine identifier for Humain transcription service
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine, nil]
-            optional :transcription_engine,
-                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine }
-
-            # @!attribute transcription_model
-            #   The model to use for transcription.
-            #
-            #   @return [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel, nil]
-            optional :transcription_model,
-                     enum: -> { Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel }
-
-            # @!method initialize(language: nil, transcription_engine: nil, transcription_model: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain}
-            #   for more details.
-            #
-            #   @param language [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language] The language of the audio to be transcribed. `codeswitch` enables Arabic/English
-            #
-            #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine] Engine identifier for Humain transcription service
-            #
-            #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel] The model to use for transcription.
-
-            # The language of the audio to be transcribed. `codeswitch` enables Arabic/English
-            # code-switching. `auto` resolves server-side to code-switching.
-            #
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain#language
-            module Language
-              extend Telnyx::Internal::Type::Enum
-
-              AR = :ar
-              EN = :en
-              CODESWITCH = :codeswitch
-              AUTO = :auto
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # Engine identifier for Humain transcription service
-            #
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain#transcription_engine
-            module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
-
-              HUMAIN = :Humain
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-
-            # The model to use for transcription.
-            #
-            # @see Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain#transcription_model
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              HUMAIN_REALTIME = :"humain/realtime"
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
 
           class Reson8 < Telnyx::Internal::Type::BaseModel
             # @!attribute language
@@ -270,7 +195,7 @@ module Telnyx
           end
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config)]
+          #   @return [Array(Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionEngineHumainConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config)]
         end
       end
     end

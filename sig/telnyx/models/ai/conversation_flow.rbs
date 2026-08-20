@@ -1,15 +1,15 @@
 module Telnyx
   module Models
     module AI
-      type conversation_flow_req =
+      type conversation_flow =
         {
-          nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node],
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node],
           start_node_id: String,
           edges: ::Array[Telnyx::AI::FlowEdge]
         }
 
-      class ConversationFlowReq < Telnyx::Internal::Type::BaseModel
-        attr_accessor nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node]
+      class ConversationFlow < Telnyx::Internal::Type::BaseModel
+        attr_accessor nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node]
 
         attr_accessor start_node_id: String
 
@@ -20,26 +20,24 @@ module Telnyx
         ) -> ::Array[Telnyx::AI::FlowEdge]
 
         def initialize: (
-          nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node],
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node],
           start_node_id: String,
           ?edges: ::Array[Telnyx::AI::FlowEdge]
         ) -> void
 
         def to_hash: -> {
-          nodes: ::Array[Telnyx::Models::AI::ConversationFlowReq::node],
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node],
           start_node_id: String,
           edges: ::Array[Telnyx::AI::FlowEdge]
         }
 
         type node =
-          Telnyx::AI::FlowNodeReq
-          | Telnyx::AI::ToolNodeReq
-          | Telnyx::AI::SpeakNodeReq
+          Telnyx::AI::FlowNode | Telnyx::AI::ToolNode | Telnyx::AI::SpeakNode
 
         module Node
           extend Telnyx::Internal::Type::Union
 
-          def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationFlowReq::node]
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationFlow::node]
         end
       end
     end

@@ -59,7 +59,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig,
                 Telnyx::Calls::TranscriptionEngineSonioxConfig,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain,
+                Telnyx::Calls::TranscriptionEngineHumainConfig,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
@@ -83,7 +83,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::OrHash,
+                Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
@@ -119,7 +119,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::OrHash,
+                Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
@@ -164,7 +164,7 @@ module Telnyx
                   Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig,
                   Telnyx::Calls::TranscriptionEngineSonioxConfig,
                   Telnyx::Calls::TranscriptionEngineParakeetConfig,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain,
+                  Telnyx::Calls::TranscriptionEngineHumainConfig,
                   Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8,
                   Telnyx::Calls::TranscriptionEngineAConfig,
                   Telnyx::Calls::TranscriptionEngineBConfig,
@@ -283,7 +283,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig,
                 Telnyx::Calls::TranscriptionEngineSonioxConfig,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain,
+                Telnyx::Calls::TranscriptionEngineHumainConfig,
                 Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
@@ -291,213 +291,6 @@ module Telnyx
                 Telnyx::Calls::DeepgramNova3Config
               )
             end
-
-          class Humain < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The language of the audio to be transcribed. `codeswitch` enables Arabic/English
-            # code-switching. `auto` resolves server-side to code-switching.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::OrSymbol
-                )
-              )
-            end
-            attr_reader :language
-
-            sig do
-              params(
-                language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::OrSymbol
-              ).void
-            end
-            attr_writer :language
-
-            # Engine identifier for Humain transcription service
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_engine
-
-            sig do
-              params(
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_engine
-
-            # The model to use for transcription.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_model
-
-            sig do
-              params(
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_model
-
-            sig do
-              params(
-                language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::OrSymbol,
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine::OrSymbol,
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The language of the audio to be transcribed. `codeswitch` enables Arabic/English
-              # code-switching. `auto` resolves server-side to code-switching.
-              language: nil,
-              # Engine identifier for Humain transcription service
-              transcription_engine: nil,
-              # The model to use for transcription.
-              transcription_model: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  language:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::OrSymbol,
-                  transcription_engine:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine::OrSymbol,
-                  transcription_model:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel::OrSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # The language of the audio to be transcribed. `codeswitch` enables Arabic/English
-            # code-switching. `auto` resolves server-side to code-switching.
-            module Language
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              AR =
-                T.let(
-                  :ar,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::TaggedSymbol
-                )
-              EN =
-                T.let(
-                  :en,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::TaggedSymbol
-                )
-              CODESWITCH =
-                T.let(
-                  :codeswitch,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::TaggedSymbol
-                )
-              AUTO =
-                T.let(
-                  :auto,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::Language::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            # Engine identifier for Humain transcription service
-            module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              HUMAIN =
-                T.let(
-                  :Humain,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionEngine::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            # The model to use for transcription.
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              HUMAIN_REALTIME =
-                T.let(
-                  :"humain/realtime",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::TranscriptionModel::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
 
           class Reson8 < Telnyx::Internal::Type::BaseModel
             OrHash =

@@ -222,18 +222,11 @@ module Telnyx
         attr_writer :shaken_stir_validated
 
         # User-to-User and Diversion headers from sip invite.
-        sig do
-          returns(
-            T.nilable(T::Array[Telnyx::CallInitiated::Payload::SipHeader])
-          )
-        end
+        sig { returns(T.nilable(T::Array[Telnyx::InboundSipHeader])) }
         attr_reader :sip_headers
 
         sig do
-          params(
-            sip_headers:
-              T::Array[Telnyx::CallInitiated::Payload::SipHeader::OrHash]
-          ).void
+          params(sip_headers: T::Array[Telnyx::InboundSipHeader::OrHash]).void
         end
         attr_writer :sip_headers
 
@@ -287,8 +280,7 @@ module Telnyx
             offered_codecs: String,
             shaken_stir_attestation: String,
             shaken_stir_validated: T::Boolean,
-            sip_headers:
-              T::Array[Telnyx::CallInitiated::Payload::SipHeader::OrHash],
+            sip_headers: T::Array[Telnyx::InboundSipHeader::OrHash],
             start_time: Time,
             state: Telnyx::CallInitiated::Payload::State::OrSymbol,
             tags: T::Array[String],
@@ -357,7 +349,7 @@ module Telnyx
               offered_codecs: String,
               shaken_stir_attestation: String,
               shaken_stir_validated: T::Boolean,
-              sip_headers: T::Array[Telnyx::CallInitiated::Payload::SipHeader],
+              sip_headers: T::Array[Telnyx::InboundSipHeader],
               start_time: Time,
               state: Telnyx::CallInitiated::Payload::State::TaggedSymbol,
               tags: T::Array[String],
@@ -395,86 +387,6 @@ module Telnyx
             )
           end
           def self.values
-          end
-        end
-
-        class SipHeader < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::CallInitiated::Payload::SipHeader,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # The name of the header received from the SIP INVITE.
-          sig do
-            returns(
-              Telnyx::CallInitiated::Payload::SipHeader::Name::TaggedSymbol
-            )
-          end
-          attr_accessor :name
-
-          # The value of the header.
-          sig { returns(String) }
-          attr_accessor :value
-
-          sig do
-            params(
-              name: Telnyx::CallInitiated::Payload::SipHeader::Name::OrSymbol,
-              value: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The name of the header received from the SIP INVITE.
-            name:,
-            # The value of the header.
-            value:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                name:
-                  Telnyx::CallInitiated::Payload::SipHeader::Name::TaggedSymbol,
-                value: String
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # The name of the header received from the SIP INVITE.
-          module Name
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(Symbol, Telnyx::CallInitiated::Payload::SipHeader::Name)
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            USER_TO_USER =
-              T.let(
-                :"User-to-User",
-                Telnyx::CallInitiated::Payload::SipHeader::Name::TaggedSymbol
-              )
-            DIVERSION =
-              T.let(
-                :Diversion,
-                Telnyx::CallInitiated::Payload::SipHeader::Name::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::CallInitiated::Payload::SipHeader::Name::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
 
