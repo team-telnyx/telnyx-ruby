@@ -8,9 +8,8 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute audio_format
-      #   Audio output format override. Supported for Telnyx models. `pcm` and `wav` are
-      #   available for `Natural`/`NaturalHD` models. The `Ultra` model outputs PCM at
-      #   24kHz s16le or MP3 at 128kbps 24kHz.
+      #   Audio output format override. Supported for Telnyx models. The `Ultra` model
+      #   outputs PCM at 24kHz s16le or MP3 at 128kbps 24kHz.
       #
       #   @return [Symbol, Telnyx::Models::TextToSpeechRetrieveSpeechParams::AudioFormat, nil]
       optional :audio_format, enum: -> { Telnyx::TextToSpeechRetrieveSpeechParams::AudioFormat }
@@ -22,8 +21,8 @@ module Telnyx
       optional :disable_cache, Telnyx::Internal::Type::Boolean
 
       # @!attribute model_id
-      #   Model identifier for the chosen provider. Examples: `Natural`, `NaturalHD`,
-      #   `Ultra` (Telnyx); `Polly.Generative` (AWS).
+      #   Model identifier for the chosen provider. Examples: `Ultra`, `KokoroTTS`
+      #   (Telnyx); `Polly.Generative` (AWS).
       #
       #   @return [String, nil]
       optional :model_id, String
@@ -44,11 +43,11 @@ module Telnyx
 
       # @!attribute voice
       #   Voice identifier in the format `provider.model_id.voice_id` or
-      #   `provider.voice_id` (e.g. `telnyx.NaturalHD.Telnyx_Alloy`,
-      #   `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`, `Telnyx.Sukhan.urdu-professor`,
-      #   or `azure.en-US-AvaMultilingualNeural`). When provided, the `provider`,
-      #   `model_id`, and `voice_id` are extracted automatically. Takes precedence over
-      #   individual `provider`/`model_id`/`voice_id` parameters.
+      #   `provider.voice_id` (e.g. `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`,
+      #   `Telnyx.Sukhan.urdu-professor`, or `azure.en-US-AvaMultilingualNeural`). When
+      #   provided, the `provider`, `model_id`, and `voice_id` are extracted
+      #   automatically. Takes precedence over individual `provider`/`model_id`/`voice_id`
+      #   parameters.
       #
       #   @return [String, nil]
       optional :voice, String
@@ -63,11 +62,11 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::TextToSpeechRetrieveSpeechParams} for more details.
       #
-      #   @param audio_format [Symbol, Telnyx::Models::TextToSpeechRetrieveSpeechParams::AudioFormat] Audio output format override. Supported for Telnyx models. `pcm` and `wav` are a
+      #   @param audio_format [Symbol, Telnyx::Models::TextToSpeechRetrieveSpeechParams::AudioFormat] Audio output format override. Supported for Telnyx models. The `Ultra` model out
       #
       #   @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
-      #   @param model_id [String] Model identifier for the chosen provider. Examples: `Natural`, `NaturalHD`, `Ult
+      #   @param model_id [String] Model identifier for the chosen provider. Examples: `Ultra`, `KokoroTTS` (Telnyx
       #
       #   @param provider [Symbol, Telnyx::Models::TextToSpeechRetrieveSpeechParams::Provider] TTS provider. Defaults to `telnyx` if not specified. Ignored when `voice` is pro
       #
@@ -79,9 +78,8 @@ module Telnyx
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-      # Audio output format override. Supported for Telnyx models. `pcm` and `wav` are
-      # available for `Natural`/`NaturalHD` models. The `Ultra` model outputs PCM at
-      # 24kHz s16le or MP3 at 128kbps 24kHz.
+      # Audio output format override. Supported for Telnyx models. The `Ultra` model
+      # outputs PCM at 24kHz s16le or MP3 at 128kbps 24kHz.
       module AudioFormat
         extend Telnyx::Internal::Type::Enum
 
@@ -104,7 +102,6 @@ module Telnyx
         ELEVENLABS = :elevenlabs
         MINIMAX = :minimax
         MURFAI = :murfai
-        RIME = :rime
         RESEMBLE = :resemble
         XAI = :xai
         HUMAIN = :humain

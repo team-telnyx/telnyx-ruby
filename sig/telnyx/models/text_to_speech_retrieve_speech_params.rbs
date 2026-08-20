@@ -89,7 +89,6 @@ module Telnyx
         | :elevenlabs
         | :minimax
         | :murfai
-        | :rime
         | :resemble
         | :xai
         | :humain
@@ -103,7 +102,6 @@ module Telnyx
         ELEVENLABS: :elevenlabs
         MINIMAX: :minimax
         MURFAI: :murfai
-        RIME: :rime
         RESEMBLE: :resemble
         XAI: :xai
         HUMAIN: :humain

@@ -1685,8 +1685,6 @@ module Telnyx
 
   ReservedPhoneNumber = Telnyx::Models::ReservedPhoneNumber
 
-  RimeVoiceSettings = Telnyx::Models::RimeVoiceSettings
-
   Room = Telnyx::Models::Room
 
   RoomComposition = Telnyx::Models::RoomComposition

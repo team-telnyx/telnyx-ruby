@@ -12,7 +12,6 @@ module Telnyx
         output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
         provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
         resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
-        rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime,
         telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         text: String,
         text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,
@@ -82,12 +81,6 @@ module Telnyx
         ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble
       ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble
 
-      attr_reader rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime?
-
-      def rime=: (
-        ::Telnyx::TextToSpeechGenerateSpeechParams::Rime
-      ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Rime
-
       attr_reader telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx?
 
       def telnyx=: (
@@ -129,7 +122,6 @@ module Telnyx
         ?output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
         ?provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
         ?resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
-        ?rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime,
         ?telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         ?text: String,
         ?text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,
@@ -150,7 +142,6 @@ module Telnyx
         output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
         provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
         resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
-        rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime,
         telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         text: String,
         text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,
@@ -443,7 +434,6 @@ module Telnyx
         | :azure
         | :elevenlabs
         | :minimax
-        | :rime
         | :resemble
         | :xai
         | :humain
@@ -456,7 +446,6 @@ module Telnyx
         AZURE: :azure
         ELEVENLABS: :elevenlabs
         MINIMAX: :minimax
-        RIME: :rime
         RESEMBLE: :resemble
         XAI: :xai
         HUMAIN: :humain
@@ -504,41 +493,11 @@ module Telnyx
         }
       end
 
-      type rime =
-        { response_format: String, sampling_rate: Integer, voice_speed: Float }
-
-      class Rime < ::Telnyx::Internal::Type::BaseModel
-        attr_reader response_format: String?
-
-        def response_format=: (String) -> String
-
-        attr_reader sampling_rate: Integer?
-
-        def sampling_rate=: (Integer) -> Integer
-
-        attr_reader voice_speed: Float?
-
-        def voice_speed=: (Float) -> Float
-
-        def initialize: (
-          ?response_format: String,
-          ?sampling_rate: Integer,
-          ?voice_speed: Float
-        ) -> void
-
-        def to_hash: -> {
-          response_format: String,
-          sampling_rate: Integer,
-          voice_speed: Float
-        }
-      end
-
       type telnyx =
         {
           emotion: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx::emotion,
           response_format: String,
           sampling_rate: Integer,
-          temperature: Float,
           voice_speed: Float,
           volume: Float
         }
@@ -558,10 +517,6 @@ module Telnyx
 
         def sampling_rate=: (Integer) -> Integer
 
-        attr_reader temperature: Float?
-
-        def temperature=: (Float) -> Float
-
         attr_reader voice_speed: Float?
 
         def voice_speed=: (Float) -> Float
@@ -574,7 +529,6 @@ module Telnyx
           ?emotion: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx::emotion,
           ?response_format: String,
           ?sampling_rate: Integer,
-          ?temperature: Float,
           ?voice_speed: Float,
           ?volume: Float
         ) -> void
@@ -583,7 +537,6 @@ module Telnyx
           emotion: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx::emotion,
           response_format: String,
           sampling_rate: Integer,
-          temperature: Float,
           voice_speed: Float,
           volume: Float
         }

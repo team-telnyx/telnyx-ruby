@@ -15,18 +15,18 @@ module Telnyx
       # header.
       #
       # The `voice` parameter provides a convenient shorthand to specify provider,
-      # model, and voice in a single string (e.g. `telnyx.NaturalHD.Alloy` or
-      # `Telnyx.Ultra.<voice_id>`). Alternatively, specify `provider` explicitly along
-      # with provider-specific parameters.
+      # model, and voice in a single string (e.g. `Telnyx.Ultra.<voice_id>`).
+      # Alternatively, specify `provider` explicitly along with provider-specific
+      # parameters.
       #
-      # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
+      # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`,
       # `resemble`, `xai`, `humain`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
       # configure these features.
       #
-      # @overload generate_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @overload generate_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #
       # @param aws [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Aws] AWS Polly provider-specific parameters.
       #
@@ -48,9 +48,7 @@ module Telnyx
       #
       # @param resemble [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Resemble] Resemble AI provider-specific parameters.
       #
-      # @param rime [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Rime] Rime provider-specific parameters.
-      #
-      # @param telnyx [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx] Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for `Na
+      # @param telnyx [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx] Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`, `
       #
       # @param text [String] The text to convert to speech.
       #
@@ -115,8 +113,8 @@ module Telnyx
       # `Authorization: Bearer <API_KEY>` header. Send JSON frames with text to
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
-      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `rime`,
-      # `resemble`, `elevenlabs`, `xai`, `humain`.
+      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `resemble`,
+      # `elevenlabs`, `xai`, `humain`.
       #
       # **Connection flow:**
       #
@@ -136,11 +134,11 @@ module Telnyx
       #
       # @overload retrieve_speech(audio_format: nil, disable_cache: nil, model_id: nil, provider: nil, socket_id: nil, voice: nil, voice_id: nil, request_options: {})
       #
-      # @param audio_format [Symbol, Telnyx::Models::TextToSpeechRetrieveSpeechParams::AudioFormat] Audio output format override. Supported for Telnyx models. `pcm` and `wav` are a
+      # @param audio_format [Symbol, Telnyx::Models::TextToSpeechRetrieveSpeechParams::AudioFormat] Audio output format override. Supported for Telnyx models. The `Ultra` model out
       #
       # @param disable_cache [Boolean] When `true`, bypass the audio cache and generate fresh audio.
       #
-      # @param model_id [String] Model identifier for the chosen provider. Examples: `Natural`, `NaturalHD`, `Ult
+      # @param model_id [String] Model identifier for the chosen provider. Examples: `Ultra`, `KokoroTTS` (Telnyx
       #
       # @param provider [Symbol, Telnyx::Models::TextToSpeechRetrieveSpeechParams::Provider] TTS provider. Defaults to `telnyx` if not specified. Ignored when `voice` is pro
       #

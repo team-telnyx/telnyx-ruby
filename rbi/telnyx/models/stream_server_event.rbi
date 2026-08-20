@@ -25,8 +25,8 @@ module Telnyx
           end
 
         # Base64-encoded audio data. May be `null` for providers that use
-        # `drop_concatenated_audio` mode (Telnyx Natural/NaturalHD, Rime, Minimax, MurfAI,
-        # Resemble) — in that case only streamed chunks carry audio.
+        # `drop_concatenated_audio` mode (Telnyx, Minimax, MurfAI, Resemble) — in that
+        # case only streamed chunks carry audio.
         sig { returns(T.nilable(String)) }
         attr_accessor :audio
 
@@ -86,8 +86,8 @@ module Telnyx
         end
         def self.new(
           # Base64-encoded audio data. May be `null` for providers that use
-          # `drop_concatenated_audio` mode (Telnyx Natural/NaturalHD, Rime, Minimax, MurfAI,
-          # Resemble) — in that case only streamed chunks carry audio.
+          # `drop_concatenated_audio` mode (Telnyx, Minimax, MurfAI, Resemble) — in that
+          # case only streamed chunks carry audio.
           audio: nil,
           # Whether this audio was served from cache.
           cached: nil,

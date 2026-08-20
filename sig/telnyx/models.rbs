@@ -1629,8 +1629,6 @@ module Telnyx
 
   class ReservedPhoneNumber = Telnyx::Models::ReservedPhoneNumber
 
-  class RimeVoiceSettings = Telnyx::Models::RimeVoiceSettings
-
   class Room = Telnyx::Models::Room
 
   class RoomComposition = Telnyx::Models::RoomComposition

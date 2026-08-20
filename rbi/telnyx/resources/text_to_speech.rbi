@@ -12,11 +12,11 @@ module Telnyx
       # header.
       #
       # The `voice` parameter provides a convenient shorthand to specify provider,
-      # model, and voice in a single string (e.g. `telnyx.NaturalHD.Alloy` or
-      # `Telnyx.Ultra.<voice_id>`). Alternatively, specify `provider` explicitly along
-      # with provider-specific parameters.
+      # model, and voice in a single string (e.g. `Telnyx.Ultra.<voice_id>`).
+      # Alternatively, specify `provider` explicitly along with provider-specific
+      # parameters.
       #
-      # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`, `rime`,
+      # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`,
       # `resemble`, `xai`, `humain`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
@@ -38,7 +38,6 @@ module Telnyx
             ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::OrSymbol,
           resemble:
             ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble::OrHash,
-          rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime::OrHash,
           telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx::OrHash,
           text: String,
           text_type:
@@ -73,10 +72,7 @@ module Telnyx
         provider: nil,
         # Resemble AI provider-specific parameters.
         resemble: nil,
-        # Rime provider-specific parameters.
-        rime: nil,
-        # Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
-        # `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+        # Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
         # `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
         # or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
         # restricted to `mp3` or `pcm` (no `wav`).
@@ -86,11 +82,11 @@ module Telnyx
         # Text type. Use `ssml` for SSML-formatted input (supported by AWS and Azure).
         text_type: nil,
         # Voice identifier in the format `provider.model_id.voice_id` or
-        # `provider.voice_id`. Examples: `telnyx.NaturalHD.Alloy`,
-        # `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`, `Telnyx.Sukhan.urdu-professor`,
-        # `azure.en-US-AvaMultilingualNeural`, `aws.Polly.Generative.Lucia`. When
-        # provided, `provider`, `model_id`, and `voice_id` are extracted automatically and
-        # take precedence over individual parameters.
+        # `provider.voice_id`. Examples: `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`,
+        # `Telnyx.Sukhan.urdu-professor`, `azure.en-US-AvaMultilingualNeural`,
+        # `aws.Polly.Generative.Lucia`. When provided, `provider`, `model_id`, and
+        # `voice_id` are extracted automatically and take precedence over individual
+        # parameters.
         voice: nil,
         # Provider-specific voice settings. Contents vary by provider — see
         # provider-specific parameter objects below.
@@ -127,8 +123,8 @@ module Telnyx
       # `Authorization: Bearer <API_KEY>` header. Send JSON frames with text to
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
-      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `rime`,
-      # `resemble`, `elevenlabs`, `xai`, `humain`.
+      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `resemble`,
+      # `elevenlabs`, `xai`, `humain`.
       #
       # **Connection flow:**
       #
@@ -160,14 +156,13 @@ module Telnyx
         ).void
       end
       def retrieve_speech(
-        # Audio output format override. Supported for Telnyx models. `pcm` and `wav` are
-        # available for `Natural`/`NaturalHD` models. The `Ultra` model outputs PCM at
-        # 24kHz s16le or MP3 at 128kbps 24kHz.
+        # Audio output format override. Supported for Telnyx models. The `Ultra` model
+        # outputs PCM at 24kHz s16le or MP3 at 128kbps 24kHz.
         audio_format: nil,
         # When `true`, bypass the audio cache and generate fresh audio.
         disable_cache: nil,
-        # Model identifier for the chosen provider. Examples: `Natural`, `NaturalHD`,
-        # `Ultra` (Telnyx); `Polly.Generative` (AWS).
+        # Model identifier for the chosen provider. Examples: `Ultra`, `KokoroTTS`
+        # (Telnyx); `Polly.Generative` (AWS).
         model_id: nil,
         # TTS provider. Defaults to `telnyx` if not specified. Ignored when `voice` is
         # provided.
@@ -176,11 +171,11 @@ module Telnyx
         # generated server-side.
         socket_id: nil,
         # Voice identifier in the format `provider.model_id.voice_id` or
-        # `provider.voice_id` (e.g. `telnyx.NaturalHD.Telnyx_Alloy`,
-        # `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`, `Telnyx.Sukhan.urdu-professor`,
-        # or `azure.en-US-AvaMultilingualNeural`). When provided, the `provider`,
-        # `model_id`, and `voice_id` are extracted automatically. Takes precedence over
-        # individual `provider`/`model_id`/`voice_id` parameters.
+        # `provider.voice_id` (e.g. `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`,
+        # `Telnyx.Sukhan.urdu-professor`, or `azure.en-US-AvaMultilingualNeural`). When
+        # provided, the `provider`, `model_id`, and `voice_id` are extracted
+        # automatically. Takes precedence over individual `provider`/`model_id`/`voice_id`
+        # parameters.
         voice: nil,
         # Voice identifier for the chosen provider.
         voice_id: nil,
