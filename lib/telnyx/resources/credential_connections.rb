@@ -11,7 +11,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::CredentialConnectionCreateParams} for more details.
       #
-      # Creates a credential connection.
+      # Creates a new credential-based SIP connection. Credential connections
+      # authenticate with a username and password rather than by IP address.
       #
       # @overload create(connection_name:, password:, user_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #

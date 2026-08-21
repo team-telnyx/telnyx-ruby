@@ -51,7 +51,7 @@ module Telnyx
           attr_accessor :accepted
 
           sig { params(accepted: T::Boolean).returns(T.attached_class) }
-          def self.new(accepted: true)
+          def self.new(accepted:)
           end
 
           sig { override.returns({ accepted: T::Boolean }) }

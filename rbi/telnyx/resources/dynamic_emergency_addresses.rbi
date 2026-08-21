@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Dynamic emergency address operations
     class DynamicEmergencyAddresses
-      # Creates a dynamic emergency address.
+      # Creates a dynamic emergency address, the validated physical location used when
+      # provisioning dynamic emergency endpoints.
       sig do
         params(
           administrative_area: String,

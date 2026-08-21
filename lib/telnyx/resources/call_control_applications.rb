@@ -7,7 +7,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::CallControlApplicationCreateParams} for more details.
       #
-      # Create a call control application.
+      # Creates a call control application, which defines the webhook endpoints and
+      # settings used to control calls on associated connections.
       #
       # @overload create(application_name:, webhook_event_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, redact_dtmf_debug_logging: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
@@ -163,7 +164,8 @@ module Telnyx
         )
       end
 
-      # Deletes a call control application.
+      # Permanently deletes the specified call control application and its webhook
+      # configuration.
       #
       # @overload delete(id, request_options: {})
       #

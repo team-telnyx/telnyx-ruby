@@ -41,6 +41,7 @@ module Telnyx
             async_timeout_ms: Integer,
             body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
             headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
+            messages: ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::message],
             http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
             path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
             query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
@@ -74,6 +75,12 @@ module Telnyx
           def headers=: (
             ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header]
           ) -> ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header]
+
+          attr_reader messages: ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::message]?
+
+          def messages=: (
+            ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::message]
+          ) -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::message]
 
           attr_reader http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_?
 
@@ -111,6 +118,7 @@ module Telnyx
             ?async_timeout_ms: Integer,
             ?body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
             ?headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
+            ?messages: ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::message],
             ?http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
             ?path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
             ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
@@ -126,6 +134,7 @@ module Telnyx
             async_timeout_ms: Integer,
             body_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters,
             headers: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header],
+            messages: ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::message],
             http_method: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::method_,
             path_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
             query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
@@ -192,6 +201,68 @@ module Telnyx
             def initialize: (?name: String, ?value: String) -> void
 
             def to_hash: -> { name: String, value: String }
+          end
+
+          type message =
+            Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage
+            | Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage
+
+          module Message
+            extend Telnyx::Internal::Type::Union
+
+            type webhook_tool_request_start_message =
+              { content: String, type: :request_start, timing_ms: Integer }
+
+            class WebhookToolRequestStartMessage < Telnyx::Internal::Type::BaseModel
+              attr_accessor content: String
+
+              attr_accessor type: :request_start
+
+              attr_reader timing_ms: Integer?
+
+              def timing_ms=: (Integer) -> Integer
+
+              def initialize: (
+                content: String,
+                ?timing_ms: Integer,
+                ?type: :request_start
+              ) -> void
+
+              def to_hash: -> {
+                content: String,
+                type: :request_start,
+                timing_ms: Integer
+              }
+            end
+
+            type webhook_tool_request_response_delayed_message =
+              {
+                content: String,
+                timing_ms: Integer,
+                type: :request_response_delayed
+              }
+
+            class WebhookToolRequestResponseDelayedMessage < Telnyx::Internal::Type::BaseModel
+              attr_accessor content: String
+
+              attr_accessor timing_ms: Integer
+
+              attr_accessor type: :request_response_delayed
+
+              def initialize: (
+                content: String,
+                timing_ms: Integer,
+                ?type: :request_response_delayed
+              ) -> void
+
+              def to_hash: -> {
+                content: String,
+                timing_ms: Integer,
+                type: :request_response_delayed
+              }
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::message]
           end
 
           type method_ = :GET | :POST | :PUT | :DELETE | :PATCH

@@ -31,7 +31,9 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AddressCreateParams} for more details.
       #
-      # Creates an address.
+      # Creates a new address on your account from the provided details, for use with
+      # services that require a physical address such as emergency calling and
+      # regulatory compliance.
       #
       # @overload create(business_name:, country_code:, first_name:, last_name:, locality:, street_address:, address_book: nil, administrative_area: nil, borough: nil, customer_reference: nil, extended_address: nil, neighborhood: nil, phone_number: nil, postal_code: nil, validate_address: nil, request_options: {})
       #
@@ -104,7 +106,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AddressListParams} for more details.
       #
-      # Returns a list of your addresses.
+      # Returns a paginated list of the addresses on your account, with support for
+      # filtering and sorting.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
@@ -134,7 +137,7 @@ module Telnyx
         )
       end
 
-      # Deletes an existing address.
+      # Permanently deletes the specified address from your account.
       #
       # @overload delete(id, request_options: {})
       #

@@ -39,13 +39,19 @@ module Telnyx
         #   @return [String, nil]
         optional :text, String
 
-        # @!method initialize(assistant_id:, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(assistant_id:, from:, to:, conversation_metadata: nil, should_create_conversation: nil, text: nil, idempotency_key: nil, request_options: {})
         #   @param assistant_id [String]
         #   @param from [String]
         #   @param to [String]
         #   @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}]
         #   @param should_create_conversation [Boolean]
         #   @param text [String]
+        #   @param idempotency_key [String]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
         module ConversationMetadata

@@ -44,7 +44,9 @@ module Telnyx
       # @return [Telnyx::Resources::PortingOrders::PhoneNumberExtensions]
       attr_reader :phone_number_extensions
 
-      # Creates a new porting order object.
+      # Creates a new porting order to bring phone numbers from another carrier to
+      # Telnyx. Complete the order's requirements and then confirm it to submit the
+      # port.
       #
       # @overload create(phone_numbers:, customer_group_reference: nil, customer_reference: nil, request_options: {})
       #
@@ -155,7 +157,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PortingOrderListParams} for more details.
       #
-      # Returns a list of your porting order.
+      # Returns a paginated list of your porting orders. Supports filtering and sorting,
+      # and can optionally include the phone numbers attached to each order.
       #
       # @overload list(filter: nil, include_phone_numbers: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #
@@ -249,7 +252,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PortingOrderRetrieveLoaTemplateParams} for more details.
       #
-      # Download a porting order loa template
+      # Downloads the Letter of Authorization (LOA) template document for this porting
+      # order, optionally rendered with a specific LOA configuration.
       #
       # @overload retrieve_loa_template(id, loa_configuration_id: nil, request_options: {})
       #

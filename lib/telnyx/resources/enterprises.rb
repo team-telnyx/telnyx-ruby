@@ -32,7 +32,7 @@ module Telnyx
       #
       # @overload create(billing_address:, billing_contact:, country_code:, doing_business_as:, fein:, industry:, jurisdiction_of_incorporation:, legal_name:, number_of_employees:, organization_contact:, organization_legal_type:, organization_physical_address:, organization_type:, website:, corporate_registration_number: nil, customer_reference: nil, dun_bradstreet_number: nil, primary_business_domain_sic_code: nil, professional_license_number: nil, role_type: nil, request_options: {})
       #
-      # @param billing_address [Telnyx::Models::BillingAddress]
+      # @param billing_address [Telnyx::Models::PhysicalAddress]
       #
       # @param billing_contact [Telnyx::Models::BillingContact]
       #
@@ -119,7 +119,7 @@ module Telnyx
       #
       # @param enterprise_id [String] The enterprise id. Lowercase UUID.
       #
-      # @param billing_address [Telnyx::Models::BillingAddress]
+      # @param billing_address [Telnyx::Models::PhysicalAddress]
       #
       # @param billing_contact [Telnyx::Models::BillingContact]
       #

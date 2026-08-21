@@ -25,7 +25,8 @@ module Telnyx
             )
           end
 
-          # Delete a knowledge base from a mission
+          # Detaches the specified knowledge base from the mission so its content is no
+          # longer available to agents in subsequent runs.
           #
           # @overload delete_knowledge_base(knowledge_base_id, mission_id:, request_options: {})
           #
@@ -52,7 +53,8 @@ module Telnyx
             )
           end
 
-          # Get a specific knowledge base by ID
+          # Returns the details of a single knowledge base attached to the specified
+          # mission.
           #
           # @overload get_knowledge_base(knowledge_base_id, mission_id:, request_options: {})
           #
@@ -79,7 +81,8 @@ module Telnyx
             )
           end
 
-          # List all knowledge bases for a mission
+          # Returns the knowledge bases attached to the specified mission. Knowledge bases
+          # provide reference content agents can draw on during runs.
           #
           # @overload list_knowledge_bases(mission_id, request_options: {})
           #
@@ -99,7 +102,7 @@ module Telnyx
             )
           end
 
-          # Update a knowledge base definition
+          # Replaces the definition of the specified knowledge base on this mission.
           #
           # @overload update_knowledge_base(knowledge_base_id, mission_id:, request_options: {})
           #

@@ -65,7 +65,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::ManagedAccountUpdateParams} for more details.
       #
-      # Update a single managed account.
+      # Updates the specified managed account's attributes and returns the updated
+      # account.
       #
       # @overload update(id, managed_account_allow_custom_pricing: nil, request_options: {})
       #

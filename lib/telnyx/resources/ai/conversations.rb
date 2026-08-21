@@ -24,13 +24,16 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::ConversationCreateParams} for more details.
         #
-        # Create a new AI Conversation.
+        # Creates a new AI conversation, the container for messages exchanged with an
+        # assistant, and returns the created conversation.
         #
-        # @overload create(metadata: nil, name: nil, request_options: {})
+        # @overload create(metadata: nil, name: nil, idempotency_key: nil, request_options: {})
         #
-        # @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation. Set `ai_disabled` to `true` to create
+        # @param metadata [Hash{Symbol=>String}] Body param: Metadata associated with the conversation. Set `ai_disabled` to `tru
         #
-        # @param name [String]
+        # @param name [String] Body param
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -39,10 +42,12 @@ module Telnyx
         # @see Telnyx::Models::AI::ConversationCreateParams
         def create(params = {})
           parsed, options = Telnyx::AI::ConversationCreateParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "ai/conversations",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::AI::Conversation,
             options: options
           )
@@ -174,28 +179,33 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::ConversationAddMessageParams} for more details.
+        #
         # Add a new message to the conversation. Used to insert a new messages to a
         # conversation manually ( without using chat endpoint )
         #
-        # @overload add_message(conversation_id, role:, content: nil, metadata: nil, name: nil, sent_at: nil, tool_call_id: nil, tool_calls: nil, tool_choice: nil, request_options: {})
+        # @overload add_message(conversation_id, role:, content: nil, metadata: nil, name: nil, sent_at: nil, tool_call_id: nil, tool_calls: nil, tool_choice: nil, idempotency_key: nil, request_options: {})
         #
-        # @param conversation_id [String] The ID of the conversation
+        # @param conversation_id [String] Path param: The ID of the conversation
         #
-        # @param role [String]
+        # @param role [String] Body param
         #
-        # @param content [String]
+        # @param content [String] Body param
         #
-        # @param metadata [Hash{Symbol=>String, Integer, Boolean, Array<String, Integer, Boolean>}]
+        # @param metadata [Hash{Symbol=>String, Integer, Boolean, Array<String, Integer, Boolean>}] Body param
         #
-        # @param name [String]
+        # @param name [String] Body param
         #
-        # @param sent_at [Time]
+        # @param sent_at [Time] Body param
         #
-        # @param tool_call_id [String]
+        # @param tool_call_id [String] Body param
         #
-        # @param tool_calls [Array<Hash{Symbol=>Object}>]
+        # @param tool_calls [Array<Hash{Symbol=>Object}>] Body param
         #
-        # @param tool_choice [String, Hash{Symbol=>Object}]
+        # @param tool_choice [String, Hash{Symbol=>Object}] Body param
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -204,10 +214,12 @@ module Telnyx
         # @see Telnyx::Models::AI::ConversationAddMessageParams
         def add_message(conversation_id, params)
           parsed, options = Telnyx::AI::ConversationAddMessageParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: ["ai/conversations/%1$s/message", conversation_id],
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: NilClass,
             options: options
           )

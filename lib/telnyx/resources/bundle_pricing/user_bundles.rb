@@ -35,7 +35,7 @@ module Telnyx
           )
         end
 
-        # Retrieves a user bundle by its ID.
+        # Returns the details of a single user bundle on your account by its ID.
         #
         # @overload retrieve(user_bundle_id, authorization_bearer: nil, request_options: {})
         #
@@ -62,7 +62,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::BundlePricing::UserBundleListParams} for more details.
         #
-        # Get a paginated list of user bundles.
+        # Returns a paginated list of the bundles active on your account, with support for
+        # filtering.
         #
         # @overload list(filter: nil, page_number: nil, page_size: nil, authorization_bearer: nil, request_options: {})
         #
@@ -94,7 +95,8 @@ module Telnyx
           )
         end
 
-        # Deactivates a user bundle by its ID.
+        # Deactivates the specified user bundle on your account and returns the
+        # deactivated bundle.
         #
         # @overload deactivate(user_bundle_id, authorization_bearer: nil, request_options: {})
         #

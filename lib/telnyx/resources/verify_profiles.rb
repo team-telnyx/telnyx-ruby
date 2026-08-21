@@ -44,7 +44,8 @@ module Telnyx
         )
       end
 
-      # Gets a single Verify profile.
+      # Returns the details of a single Verify profile by its ID, including its
+      # verification channel configuration.
       #
       # @overload retrieve(verify_profile_id, request_options: {})
       #

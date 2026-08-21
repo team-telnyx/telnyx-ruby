@@ -78,6 +78,12 @@ module Telnyx
         sig { params(webhook: T::Hash[Symbol, T.anything]).void }
         attr_writer :webhook
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             display_name: String,
@@ -92,6 +98,7 @@ module Telnyx
             update_dynamic_variables:
               Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -108,6 +115,7 @@ module Telnyx
           # Configuration for an update_dynamic_variables tool.
           update_dynamic_variables: nil,
           webhook: nil,
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -127,6 +135,7 @@ module Telnyx
               update_dynamic_variables:
                 Telnyx::AI::UpdateDynamicVariablesToolParams,
               webhook: T::Hash[Symbol, T.anything],
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           )

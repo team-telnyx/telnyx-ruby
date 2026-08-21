@@ -15,14 +15,14 @@ module Telnyx
           data: Telnyx::MeetingSessions::ActionAcceptedResponse::Data
         }
 
-        type data = { accepted: true }
+        type data = { accepted: bool }
 
         class Data < Telnyx::Internal::Type::BaseModel
-          attr_accessor accepted: true
+          attr_accessor accepted: bool
 
-          def initialize: (?accepted: true) -> void
+          def initialize: (accepted: bool) -> void
 
-          def to_hash: -> { accepted: true }
+          def to_hash: -> { accepted: bool }
         end
       end
     end

@@ -35,7 +35,12 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::AI::EmbeddingCreateParams::Loader, nil]
         optional :loader, enum: -> { Telnyx::AI::EmbeddingCreateParams::Loader }
 
-        # @!method initialize(bucket_name:, document_chunk_overlap_size: nil, document_chunk_size: nil, embedding_model: nil, loader: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(bucket_name:, document_chunk_overlap_size: nil, document_chunk_size: nil, embedding_model: nil, loader: nil, idempotency_key: nil, request_options: {})
         #   @param bucket_name [String]
         #
         #   @param document_chunk_overlap_size [Integer]
@@ -45,6 +50,8 @@ module Telnyx
         #   @param embedding_model [Symbol, Telnyx::Models::AI::EmbeddingCreateParams::EmbeddingModel] Supported models to vectorize and embed documents.
         #
         #   @param loader [Symbol, Telnyx::Models::AI::EmbeddingCreateParams::Loader] Supported types of custom document loaders for embeddings.
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

@@ -39,7 +39,7 @@ module Telnyx
         ?scope: String,
         ?state: String,
         ?request_options: Telnyx::request_opts
-      ) -> nil
+      ) -> String
 
       def retrieve_jwks: (
         ?request_options: Telnyx::request_opts

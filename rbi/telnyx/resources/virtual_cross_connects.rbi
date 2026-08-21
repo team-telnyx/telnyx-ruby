@@ -87,7 +87,7 @@ module Telnyx
       )
       end
 
-      # Retrieve a Virtual Cross Connect.
+      # Returns the details of a single virtual cross connect by its identifier.
       sig do
         params(
           id: String,
@@ -145,7 +145,8 @@ module Telnyx
       )
       end
 
-      # List all Virtual Cross Connects.
+      # Returns a paginated list of the virtual cross connects on your account, with
+      # support for filtering.
       sig do
         params(
           filter: Telnyx::VirtualCrossConnectListParams::Filter::OrHash,
@@ -167,7 +168,7 @@ module Telnyx
       )
       end
 
-      # Delete a Virtual Cross Connect.
+      # Deletes the specified virtual cross connect from your account.
       sig do
         params(
           id: String,

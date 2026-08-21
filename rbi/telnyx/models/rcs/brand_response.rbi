@@ -9,7 +9,7 @@ module Telnyx
             T.any(Telnyx::Rcs::BrandResponse, Telnyx::Internal::AnyHash)
           end
 
-        sig { returns(T::Hash[Symbol, Telnyx::Rcs::BrandResponse::Address]) }
+        sig { returns(T::Hash[Symbol, Telnyx::Rcs::BrandAddress]) }
         attr_accessor :addresses
 
         sig { returns(String) }
@@ -29,11 +29,7 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :display_name
 
-        sig do
-          returns(
-            T::Hash[Symbol, Telnyx::Rcs::BrandResponse::Identifier::Variants]
-          )
-        end
+        sig { returns(T::Hash[Symbol, Telnyx::Rcs::BrandIdentifier::Variants]) }
         attr_accessor :identifiers
 
         sig { returns(String) }
@@ -56,8 +52,7 @@ module Telnyx
 
         sig do
           params(
-            addresses:
-              T::Hash[Symbol, Telnyx::Rcs::BrandResponse::Address::OrHash],
+            addresses: T::Hash[Symbol, Telnyx::Rcs::BrandAddress::OrHash],
             brand_id: String,
             capabilities: Telnyx::Rcs::CapabilitiesResponse::OrHash,
             contacts: T::Hash[Symbol, Telnyx::Rcs::BrandContact::OrHash],
@@ -97,16 +92,13 @@ module Telnyx
         sig do
           override.returns(
             {
-              addresses: T::Hash[Symbol, Telnyx::Rcs::BrandResponse::Address],
+              addresses: T::Hash[Symbol, Telnyx::Rcs::BrandAddress],
               brand_id: String,
               capabilities: Telnyx::Rcs::CapabilitiesResponse,
               contacts: T::Hash[Symbol, Telnyx::Rcs::BrandContact],
               display_name: String,
               identifiers:
-                T::Hash[
-                  Symbol,
-                  Telnyx::Rcs::BrandResponse::Identifier::Variants
-                ],
+                T::Hash[Symbol, Telnyx::Rcs::BrandIdentifier::Variants],
               legal_entity_type: String,
               legal_name: String,
               organization_type: String,
@@ -117,91 +109,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        class Address < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Rcs::BrandResponse::Address,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :administrative_area
-
-          sig { returns(String) }
-          attr_accessor :city
-
-          # The two-letter ISO 3166-1 country code.
-          sig { returns(String) }
-          attr_accessor :country_code
-
-          sig { returns(String) }
-          attr_accessor :line_1
-
-          sig { returns(String) }
-          attr_accessor :postal_code
-
-          sig { returns(T.nilable(String)) }
-          attr_accessor :line_2
-
-          sig do
-            params(
-              administrative_area: String,
-              city: String,
-              country_code: String,
-              line_1: String,
-              postal_code: String,
-              line_2: T.nilable(String)
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            administrative_area:,
-            city:,
-            # The two-letter ISO 3166-1 country code.
-            country_code:,
-            line_1:,
-            postal_code:,
-            line_2: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                administrative_area: String,
-                city: String,
-                country_code: String,
-                line_1: String,
-                postal_code: String,
-                line_2: T.nilable(String)
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-
-        module Identifier
-          extend Telnyx::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Telnyx::Rcs::EinBrandIdentifier,
-                Telnyx::Rcs::StockSymbolBrandIdentifier
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Telnyx::Rcs::BrandResponse::Identifier::Variants]
-            )
-          end
-          def self.variants
-          end
         end
 
         module Status

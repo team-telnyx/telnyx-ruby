@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPHealthCheckTypes
-      # List all Global IP Health check types.
+      # Returns the health check types available for Global IPs, for use when creating
+      # Global IP health checks.
       #
       # @overload list(request_options: {})
       #

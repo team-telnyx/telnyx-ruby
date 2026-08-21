@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::SubNumberOrdersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::SubNumberOrder | nil
+        data: Telnyx::NumbersSubNumberOrder | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::SubNumberOrdersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::SubNumberOrder | nil
+        data: Telnyx::NumbersSubNumberOrder | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::SubNumberOrdersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SubNumberOrder]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::NumbersSubNumberOrder]) | nil,
         meta: Telnyx::PaginationMeta | nil
       }
     end
@@ -63,7 +63,7 @@ class Telnyx::Test::Resources::SubNumberOrdersTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::SubNumberOrder | nil
+        data: Telnyx::NumbersSubNumberOrder | nil
       }
     end
   end

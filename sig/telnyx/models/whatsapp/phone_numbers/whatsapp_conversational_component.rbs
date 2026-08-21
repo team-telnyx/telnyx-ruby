@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module PhoneNumbers
+        type whatsapp_conversational_component =
+          {
+            commands: ::Array[Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent::Command],
+            ice_breakers: ::Array[String],
+            phone_number: String,
+            record_type: String
+          }
+
+        class WhatsappConversationalComponent < Telnyx::Internal::Type::BaseModel
+          attr_reader commands: ::Array[Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent::Command]?
+
+          def commands=: (
+            ::Array[Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent::Command]
+          ) -> ::Array[Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent::Command]
+
+          attr_reader ice_breakers: ::Array[String]?
+
+          def ice_breakers=: (::Array[String]) -> ::Array[String]
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          def initialize: (
+            ?commands: ::Array[Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent::Command],
+            ?ice_breakers: ::Array[String],
+            ?phone_number: String,
+            ?record_type: String
+          ) -> void
+
+          def to_hash: -> {
+            commands: ::Array[Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent::Command],
+            ice_breakers: ::Array[String],
+            phone_number: String,
+            record_type: String
+          }
+
+          type command = { command: String, description: String }
+
+          class Command < Telnyx::Internal::Type::BaseModel
+            attr_reader command: String?
+
+            def command=: (String) -> String
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            def initialize: (?command: String, ?description: String) -> void
+
+            def to_hash: -> { command: String, description: String }
+          end
+        end
+      end
+    end
+  end
+end

@@ -13,7 +13,7 @@ module Telnyx
         #
         # @overload create(addresses:, contacts:, display_name:, identifiers:, legal_entity_type:, legal_name:, organization_type:, website_url:, profile_id: nil, request_options: {})
         #
-        # @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandCreateParams::Address}]
+        # @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}]
         #
         # @param contacts [Telnyx::Models::Rcs::BrandCreateParams::Contacts] Named business contacts. Use the `brand` key for the required BRAND contact.
         #
@@ -77,7 +77,7 @@ module Telnyx
         #
         # @param id [String] The Telnyx-assigned brand identifier.
         #
-        # @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandUpdateParams::Address}]
+        # @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}]
         #
         # @param contacts [Telnyx::Models::Rcs::BrandUpdateParams::Contacts] Named business contacts. Use the `brand` key for the required BRAND contact.
         #

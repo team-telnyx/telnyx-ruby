@@ -62,7 +62,8 @@ module Telnyx
         )
       end
 
-      # Updates one or more template fields.
+      # Updates one or more fields of the specified email template and returns the
+      # updated template.
       #
       # @overload update(id, html_body: nil, name: nil, subject: nil, text_body: nil, variables: nil, request_options: {})
       #
@@ -107,7 +108,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailTemplateListResponse]
+      # @return [Telnyx::Internal::EmailCursorPagination<Telnyx::Models::EmailTemplate>]
       #
       # @see Telnyx::Models::EmailTemplateListParams
       def list(params = {})
@@ -117,7 +118,8 @@ module Telnyx
           method: :get,
           path: "email_templates",
           query: query,
-          model: Telnyx::Models::EmailTemplateListResponse,
+          page: Telnyx::Internal::EmailCursorPagination,
+          model: Telnyx::EmailTemplate,
           options: options
         )
       end

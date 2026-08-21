@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class EmailBlocks
+      class Imports
+        def create: (
+          file: Telnyx::Internal::file_input,
+          ?block_ttl_days: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailBlocks::EmailBlockImportResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::EmailBlocks::EmailBlockImportResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

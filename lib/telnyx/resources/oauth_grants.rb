@@ -3,7 +3,7 @@
 module Telnyx
   module Resources
     class OAuthGrants
-      # Retrieve a single OAuth grant by ID
+      # Returns the details of a single OAuth grant on your account by its ID.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -49,7 +49,8 @@ module Telnyx
         )
       end
 
-      # Revoke an OAuth grant
+      # Revokes the specified OAuth grant, withdrawing the access previously granted to
+      # the client.
       #
       # @overload delete(id, request_options: {})
       #

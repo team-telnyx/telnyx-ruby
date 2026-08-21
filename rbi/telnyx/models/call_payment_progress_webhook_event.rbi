@@ -525,6 +525,11 @@ module Telnyx
                 :"invalid-card-number",
                 Telnyx::CallPaymentProgressWebhookEvent::Data::Payload::ErrorType::TaggedSymbol
               )
+            INVALID_CARD_TYPE =
+              T.let(
+                :"invalid-card-type",
+                Telnyx::CallPaymentProgressWebhookEvent::Data::Payload::ErrorType::TaggedSymbol
+              )
             INVALID_DATE =
               T.let(
                 :"invalid-date",
@@ -595,6 +600,11 @@ module Telnyx
                 :amex,
                 Telnyx::CallPaymentProgressWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
               )
+            OPTIMA =
+              T.let(
+                :optima,
+                Telnyx::CallPaymentProgressWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
+              )
             DISCOVER =
               T.let(
                 :discover,
@@ -608,6 +618,16 @@ module Telnyx
             JCB =
               T.let(
                 :jcb,
+                Telnyx::CallPaymentProgressWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
+              )
+            MAESTRO =
+              T.let(
+                :maestro,
+                Telnyx::CallPaymentProgressWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
+              )
+            ENROUTE =
+              T.let(
+                :enroute,
                 Telnyx::CallPaymentProgressWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
               )
 

@@ -15,8 +15,8 @@ module Telnyx
 
         # @!attribute addresses
         #
-        #   @return [Hash{Symbol=>Telnyx::Models::Rcs::BrandUpdateParams::Address}, nil]
-        optional :addresses, -> { Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandUpdateParams::Address] }
+        #   @return [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}, nil]
+        optional :addresses, -> { Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress] }
 
         # @!attribute contacts
         #   Named business contacts. Use the `brand` key for the required BRAND contact.
@@ -67,7 +67,7 @@ module Telnyx
         #
         #   @param id [String]
         #
-        #   @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandUpdateParams::Address}]
+        #   @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}]
         #
         #   @param contacts [Telnyx::Models::Rcs::BrandUpdateParams::Contacts] Named business contacts. Use the `brand` key for the required BRAND contact.
         #
@@ -87,52 +87,6 @@ module Telnyx
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-        class Address < Telnyx::Internal::Type::BaseModel
-          # @!attribute administrative_area
-          #
-          #   @return [String]
-          required :administrative_area, String
-
-          # @!attribute city
-          #
-          #   @return [String]
-          required :city, String
-
-          # @!attribute country_code
-          #   The two-letter ISO 3166-1 country code.
-          #
-          #   @return [String]
-          required :country_code, String
-
-          # @!attribute line_1
-          #
-          #   @return [String]
-          required :line_1, String
-
-          # @!attribute postal_code
-          #
-          #   @return [String]
-          required :postal_code, String
-
-          # @!attribute line_2
-          #
-          #   @return [String, nil]
-          optional :line_2, String, nil?: true
-
-          # @!method initialize(administrative_area:, city:, country_code:, line_1:, postal_code:, line_2: nil)
-          #   @param administrative_area [String]
-          #
-          #   @param city [String]
-          #
-          #   @param country_code [String] The two-letter ISO 3166-1 country code.
-          #
-          #   @param line_1 [String]
-          #
-          #   @param postal_code [String]
-          #
-          #   @param line_2 [String, nil]
-        end
-
         class Contacts < Telnyx::Internal::Type::BaseModel
           # @!attribute brand
           #
@@ -146,22 +100,7 @@ module Telnyx
 
           # @see Telnyx::Models::Rcs::BrandUpdateParams::Contacts#brand
           class Brand < Telnyx::Models::Rcs::BrandContact
-            # @!attribute contact_type
-            #
-            #   @return [Symbol, Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::ContactType, nil]
-            optional :contact_type, enum: -> { Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType }
-
-            # @!method initialize(contact_type: nil)
-            #   @param contact_type [Symbol, Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::ContactType]
-
-            module ContactType
-              extend Telnyx::Internal::Type::Enum
-
-              BRAND = :BRAND
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
+            # @!method initialize
           end
         end
 

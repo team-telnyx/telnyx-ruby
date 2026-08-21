@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    type s3_generic_configuration_data =
+      {
+        aws_access_key_id: String,
+        aws_secret_access_key: String,
+        backend: Telnyx::Models::S3GenericConfigurationData::backend,
+        bucket: String,
+        endpoint: String,
+        region: String
+      }
+
+    class S3GenericConfigurationData < Telnyx::Internal::Type::BaseModel
+      attr_accessor aws_access_key_id: String
+
+      attr_accessor aws_secret_access_key: String
+
+      attr_accessor backend: Telnyx::Models::S3GenericConfigurationData::backend
+
+      attr_accessor bucket: String
+
+      attr_accessor endpoint: String
+
+      attr_accessor region: String
+
+      def initialize: (
+        aws_access_key_id: String,
+        aws_secret_access_key: String,
+        backend: Telnyx::Models::S3GenericConfigurationData::backend,
+        bucket: String,
+        endpoint: String,
+        region: String
+      ) -> void
+
+      def to_hash: -> {
+        aws_access_key_id: String,
+        aws_secret_access_key: String,
+        backend: Telnyx::Models::S3GenericConfigurationData::backend,
+        bucket: String,
+        endpoint: String,
+        region: String
+      }
+
+      type backend = :"s3-generic"
+
+      module Backend
+        extend Telnyx::Internal::Type::Enum
+
+        S3_GENERIC: :"s3-generic"
+
+        def self?.values: -> ::Array[Telnyx::Models::S3GenericConfigurationData::backend]
+      end
+    end
+  end
+end

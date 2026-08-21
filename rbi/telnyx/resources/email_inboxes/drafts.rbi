@@ -15,7 +15,7 @@ module Telnyx
         sig do
           params(
             inbox_id: String,
-            attachments: T::Array[T.anything],
+            attachments: T::Array[T::Hash[Symbol, T.anything]],
             bcc:
               T::Array[
                 T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
@@ -30,7 +30,7 @@ module Telnyx
             html: String,
             html_body: String,
             labels: T::Array[String],
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             reply_to: String,
             subject: String,
             tags: T::Array[String],
@@ -97,7 +97,7 @@ module Telnyx
           params(
             draft_id: String,
             inbox_id: String,
-            attachments: T::Array[T.anything],
+            attachments: T::Array[T::Hash[Symbol, T.anything]],
             bcc:
               T::Array[
                 T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
@@ -112,7 +112,7 @@ module Telnyx
             html: String,
             html_body: String,
             labels: T::Array[String],
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             reply_to: String,
             subject: String,
             tags: T::Array[String],
@@ -176,7 +176,11 @@ module Telnyx
             page_after: String,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::EmailInboxes::DraftListResponse)
+          ).returns(
+            Telnyx::Internal::EmailBracketCursorPagination[
+              Telnyx::EmailInboxes::EmailDraft
+            ]
+          )
         end
         def list(
           # Email inbox UUID.
@@ -214,7 +218,7 @@ module Telnyx
           params(
             draft_id: String,
             inbox_id: String,
-            attachments: T::Array[T.anything],
+            attachments: T::Array[T::Hash[Symbol, T.anything]],
             bcc:
               T::Array[
                 T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
@@ -229,7 +233,7 @@ module Telnyx
             html: String,
             html_body: String,
             labels: T::Array[String],
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             reply_to: String,
             subject: String,
             tags: T::Array[String],

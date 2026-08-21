@@ -11,7 +11,8 @@ module Telnyx
       # @return [Telnyx::Resources::Reports::MdrUsageReports]
       attr_reader :mdr_usage_reports
 
-      # Fetch all Mdr records
+      # Returns message detail records (MDRs) matching the provided criteria, such as
+      # date range, direction, status, and message type.
       #
       # @overload list_mdrs(id: nil, cld: nil, cli: nil, direction: nil, end_date: nil, message_type: nil, profile: nil, start_date: nil, status: nil, request_options: {})
       #
@@ -50,7 +51,8 @@ module Telnyx
         )
       end
 
-      # Fetch all Wdr records
+      # Returns wireless detail records (WDRs) matching the provided criteria, such as
+      # date range, SIM card, IMSI, or phone number, with pagination and sorting.
       #
       # @overload list_wdrs(id: nil, end_date: nil, imsi: nil, mcc: nil, mnc: nil, page_number: nil, page_size: nil, phone_number: nil, sim_card_id: nil, sim_group_id: nil, sim_group_name: nil, sort: nil, start_date: nil, request_options: {})
       #

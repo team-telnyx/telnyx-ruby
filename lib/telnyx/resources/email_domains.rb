@@ -95,6 +95,9 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::EmailDomainListParams} for more details.
+      #
       # Shared (`type: shared`) Telnyx-managed domains are included/readable for every
       # account, in addition to the account's own custom domains.
       #
@@ -104,13 +107,13 @@ module Telnyx
       #
       # @param filter_profile_id [String] Filter by profile UUID
       #
-      # @param filter_status [Symbol, Telnyx::Models::EmailDomainStatus]
+      # @param filter_status [Symbol, Telnyx::Models::EmailDomainStatus] Filter domains by verification status: pending, verifying, verified, failed, deg
       #
-      # @param filter_type [Symbol, Telnyx::Models::EmailDomainType]
+      # @param filter_type [Symbol, Telnyx::Models::EmailDomainType] Filter domains by type: custom, shared, or shared_inbound.
       #
-      # @param filter_usable_for_inbound [Boolean]
+      # @param filter_usable_for_inbound [Boolean] Filter domains by whether they can currently receive inbound email.
       #
-      # @param filter_usable_for_sending [Boolean]
+      # @param filter_usable_for_sending [Boolean] Filter domains by whether they can currently be used to send email.
       #
       # @param page_after [String] Cursor for records after the provided value (cursor pagination)
       #

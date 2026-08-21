@@ -65,7 +65,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::EmailInboxes::InboundThreadListResponse]
+        # @return [Telnyx::Internal::EmailBracketCursorPagination<Telnyx::Models::EmailInboxes::InboundThread>]
         #
         # @see Telnyx::Models::EmailInboxes::ThreadListParams
         def list(inbox_id, params = {})
@@ -79,7 +79,8 @@ module Telnyx
               page_after: "page[after]",
               page_size: "page[size]"
             ),
-            model: Telnyx::EmailInboxes::InboundThreadListResponse,
+            page: Telnyx::Internal::EmailBracketCursorPagination,
+            model: Telnyx::EmailInboxes::InboundThread,
             options: options
           )
         end

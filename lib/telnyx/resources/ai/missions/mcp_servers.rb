@@ -5,7 +5,8 @@ module Telnyx
     class AI
       class Missions
         class McpServers
-          # Create a new MCP server for a mission
+          # Adds an MCP server to the specified mission, making the server's tools available
+          # to agents during runs of this mission.
           #
           # @overload create_mcp_server(mission_id, request_options: {})
           #
@@ -25,7 +26,8 @@ module Telnyx
             )
           end
 
-          # Delete an MCP server from a mission
+          # Removes the specified MCP server from the mission, revoking agent access to its
+          # tools in subsequent runs.
           #
           # @overload delete_mcp_server(mcp_server_id, mission_id:, request_options: {})
           #
@@ -52,7 +54,8 @@ module Telnyx
             )
           end
 
-          # Get a specific MCP server by ID
+          # Returns the configuration of a single MCP server attached to the specified
+          # mission.
           #
           # @overload get_mcp_server(mcp_server_id, mission_id:, request_options: {})
           #
@@ -79,7 +82,8 @@ module Telnyx
             )
           end
 
-          # List all MCP servers for a mission
+          # Returns the MCP servers configured on the specified mission. MCP servers expose
+          # external tools and data sources agents can use during runs.
           #
           # @overload list_mcp_servers(mission_id, request_options: {})
           #
@@ -99,7 +103,7 @@ module Telnyx
             )
           end
 
-          # Update an MCP server definition
+          # Replaces the configuration of the specified MCP server on this mission.
           #
           # @overload update_mcp_server(mcp_server_id, mission_id:, request_options: {})
           #

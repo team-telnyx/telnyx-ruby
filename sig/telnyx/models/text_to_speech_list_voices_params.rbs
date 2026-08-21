@@ -39,7 +39,6 @@ module Telnyx
         | :azure
         | :elevenlabs
         | :minimax
-        | :rime
         | :resemble
         | :xai
         | :humain
@@ -52,7 +51,6 @@ module Telnyx
         AZURE: :azure
         ELEVENLABS: :elevenlabs
         MINIMAX: :minimax
-        RIME: :rime
         RESEMBLE: :resemble
         XAI: :xai
         HUMAIN: :humain

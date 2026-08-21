@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPHealthChecks
-      # Create a Global IP health check.
+      # Creates a health check for a Global IP to monitor the health of its assignments.
+      # Creation is asynchronous, so the request is accepted and the health check
+      # becomes active once provisioning completes.
       sig do
         params(
           global_ip_id: String,
@@ -24,7 +26,8 @@ module Telnyx
       )
       end
 
-      # Retrieve a Global IP health check.
+      # Returns the details of a single Global IP health check, including its type and
+      # configuration.
       sig do
         params(
           id: String,
@@ -38,7 +41,8 @@ module Telnyx
       )
       end
 
-      # List all Global IP health checks.
+      # Returns a paginated list of the Global IP health checks configured on your
+      # account.
       sig do
         params(
           page_number: Integer,
@@ -51,7 +55,8 @@ module Telnyx
       def list(page_number: nil, page_size: nil, request_options: {})
       end
 
-      # Delete a Global IP health check.
+      # Deletes the specified Global IP health check so it no longer monitors the Global
+      # IP's assignments.
       sig do
         params(
           id: String,

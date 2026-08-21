@@ -7,7 +7,7 @@ module Telnyx
           inbox_id: String,
           record_type: Telnyx::Models::EmailInboxes::EmailDraft::record_type,
           status: Telnyx::Models::EmailInboxes::EmailDraft::status,
-          attachments: ::Array[top],
+          attachments: ::Array[::Hash[Symbol, top]],
           bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           created_at: Time,
@@ -16,7 +16,7 @@ module Telnyx
           headers: ::Hash[Symbol, String],
           html_body: String?,
           labels: ::Array[String],
-          metadata: top,
+          metadata: ::Hash[Symbol, top],
           reply_to: String?,
           reply_to_message_id: String?,
           sent_at: Time?,
@@ -38,9 +38,11 @@ module Telnyx
 
         attr_accessor status: Telnyx::Models::EmailInboxes::EmailDraft::status
 
-        attr_reader attachments: ::Array[top]?
+        attr_reader attachments: ::Array[::Hash[Symbol, top]]?
 
-        def attachments=: (::Array[top]) -> ::Array[top]
+        def attachments=: (
+          ::Array[::Hash[Symbol, top]]
+        ) -> ::Array[::Hash[Symbol, top]]
 
         attr_reader bcc: ::Array[Telnyx::EmailInboxes::EmailAddress]?
 
@@ -72,9 +74,9 @@ module Telnyx
 
         def labels=: (::Array[String]) -> ::Array[String]
 
-        attr_reader metadata: top?
+        attr_reader metadata: ::Hash[Symbol, top]?
 
-        def metadata=: (top) -> top
+        def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_accessor reply_to: String?
 
@@ -109,7 +111,7 @@ module Telnyx
           inbox_id: String,
           record_type: Telnyx::Models::EmailInboxes::EmailDraft::record_type,
           status: Telnyx::Models::EmailInboxes::EmailDraft::status,
-          ?attachments: ::Array[top],
+          ?attachments: ::Array[::Hash[Symbol, top]],
           ?bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           ?cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           ?created_at: Time,
@@ -118,7 +120,7 @@ module Telnyx
           ?headers: ::Hash[Symbol, String],
           ?html_body: String?,
           ?labels: ::Array[String],
-          ?metadata: top,
+          ?metadata: ::Hash[Symbol, top],
           ?reply_to: String?,
           ?reply_to_message_id: String?,
           ?sent_at: Time?,
@@ -136,7 +138,7 @@ module Telnyx
           inbox_id: String,
           record_type: Telnyx::Models::EmailInboxes::EmailDraft::record_type,
           status: Telnyx::Models::EmailInboxes::EmailDraft::status,
-          attachments: ::Array[top],
+          attachments: ::Array[::Hash[Symbol, top]],
           bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           created_at: Time,
@@ -145,7 +147,7 @@ module Telnyx
           headers: ::Hash[Symbol, String],
           html_body: String?,
           labels: ::Array[String],
-          metadata: top,
+          metadata: ::Hash[Symbol, top],
           reply_to: String?,
           reply_to_message_id: String?,
           sent_at: Time?,

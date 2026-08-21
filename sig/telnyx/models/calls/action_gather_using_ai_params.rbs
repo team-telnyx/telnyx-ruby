@@ -180,7 +180,6 @@ module Telnyx
           | Telnyx::Calls::TelnyxVoiceSettings
           | Telnyx::Calls::AwsVoiceSettings
           | Telnyx::AzureVoiceSettings
-          | Telnyx::RimeVoiceSettings
           | Telnyx::ResembleVoiceSettings
           | Telnyx::XaiVoiceSettings
 

@@ -7,8 +7,8 @@ module Telnyx
       class BrandResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute addresses
         #
-        #   @return [Hash{Symbol=>Telnyx::Models::Rcs::BrandResponse::Address}]
-        required :addresses, -> { Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address] }
+        #   @return [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}]
+        required :addresses, -> { Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress] }
 
         # @!attribute brand_id
         #
@@ -33,8 +33,7 @@ module Telnyx
         # @!attribute identifiers
         #
         #   @return [Hash{Symbol=>Telnyx::Models::Rcs::EinBrandIdentifier, Telnyx::Models::Rcs::StockSymbolBrandIdentifier}]
-        required :identifiers,
-                 -> { Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandResponse::Identifier] }
+        required :identifiers, -> { Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandIdentifier] }
 
         # @!attribute legal_entity_type
         #
@@ -67,7 +66,7 @@ module Telnyx
         required :website_url, String
 
         # @!method initialize(addresses:, brand_id:, capabilities:, contacts:, display_name:, identifiers:, legal_entity_type:, legal_name:, organization_type:, profile_id:, status:, website_url:)
-        #   @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandResponse::Address}]
+        #   @param addresses [Hash{Symbol=>Telnyx::Models::Rcs::BrandAddress}]
         #   @param brand_id [String]
         #   @param capabilities [Telnyx::Models::Rcs::CapabilitiesResponse]
         #   @param contacts [Hash{Symbol=>Telnyx::Models::Rcs::BrandContact}]
@@ -79,63 +78,6 @@ module Telnyx
         #   @param profile_id [String, nil]
         #   @param status [Symbol, Telnyx::Models::Rcs::BrandResponse::Status]
         #   @param website_url [String]
-
-        class Address < Telnyx::Internal::Type::BaseModel
-          # @!attribute administrative_area
-          #
-          #   @return [String]
-          required :administrative_area, String
-
-          # @!attribute city
-          #
-          #   @return [String]
-          required :city, String
-
-          # @!attribute country_code
-          #   The two-letter ISO 3166-1 country code.
-          #
-          #   @return [String]
-          required :country_code, String
-
-          # @!attribute line_1
-          #
-          #   @return [String]
-          required :line_1, String
-
-          # @!attribute postal_code
-          #
-          #   @return [String]
-          required :postal_code, String
-
-          # @!attribute line_2
-          #
-          #   @return [String, nil]
-          optional :line_2, String, nil?: true
-
-          # @!method initialize(administrative_area:, city:, country_code:, line_1:, postal_code:, line_2: nil)
-          #   @param administrative_area [String]
-          #
-          #   @param city [String]
-          #
-          #   @param country_code [String] The two-letter ISO 3166-1 country code.
-          #
-          #   @param line_1 [String]
-          #
-          #   @param postal_code [String]
-          #
-          #   @param line_2 [String, nil]
-        end
-
-        module Identifier
-          extend Telnyx::Internal::Type::Union
-
-          variant -> { Telnyx::Rcs::EinBrandIdentifier }
-
-          variant -> { Telnyx::Rcs::StockSymbolBrandIdentifier }
-
-          # @!method self.variants
-          #   @return [Array(Telnyx::Models::Rcs::EinBrandIdentifier, Telnyx::Models::Rcs::StockSymbolBrandIdentifier)]
-        end
 
         # @see Telnyx::Models::Rcs::BrandResponse#status
         module Status

@@ -70,11 +70,13 @@ module Telnyx
             #
             # Initiates immediate execution of a specific assistant test
             #
-            # @overload trigger(test_id, destination_version_id: nil, request_options: {})
+            # @overload trigger(test_id, destination_version_id: nil, idempotency_key: nil, request_options: {})
             #
-            # @param test_id [String] Unique identifier of the test.
+            # @param test_id [String] Path param: Unique identifier of the test.
             #
-            # @param destination_version_id [String] Optional assistant version ID to use for this test run. If provided, the version
+            # @param destination_version_id [String] Body param: Optional assistant version ID to use for this test run. If provided,
+            #
+            # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -83,10 +85,12 @@ module Telnyx
             # @see Telnyx::Models::AI::Assistants::Tests::RunTriggerParams
             def trigger(test_id, params = {})
               parsed, options = Telnyx::AI::Assistants::Tests::RunTriggerParams.dump_request(params)
+              header_params = {idempotency_key: "idempotency-key"}
               @client.request(
                 method: :post,
                 path: ["ai/assistants/tests/%1$s/runs", test_id],
-                body: parsed,
+                headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+                body: parsed.except(*header_params.keys),
                 model: Telnyx::AI::Assistants::Tests::TestRunResponse,
                 options: options
               )

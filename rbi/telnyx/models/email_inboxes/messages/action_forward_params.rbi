@@ -28,11 +28,11 @@ module Telnyx
             returns(
               T.any(
                 String,
-                Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1,
+                Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress,
                 T::Array[
                   T.any(
                     String,
-                    Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1
+                    Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress
                   )
                 ]
               )
@@ -47,11 +47,11 @@ module Telnyx
               T.nilable(
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress
                     )
                   ]
                 )
@@ -65,11 +65,11 @@ module Telnyx
               bcc:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 )
@@ -84,11 +84,11 @@ module Telnyx
               T.nilable(
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress
                     )
                   ]
                 )
@@ -102,11 +102,11 @@ module Telnyx
               cc:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 )
@@ -137,33 +137,33 @@ module Telnyx
               to:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 ),
               bcc:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 ),
               cc:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 ),
@@ -202,33 +202,33 @@ module Telnyx
                 to:
                   T.any(
                     String,
-                    Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1,
+                    Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress,
                     T::Array[
                       T.any(
                         String,
-                        Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1
+                        Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress
                       )
                     ]
                   ),
                 bcc:
                   T.any(
                     String,
-                    Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1,
+                    Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress,
                     T::Array[
                       T.any(
                         String,
-                        Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1
+                        Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress
                       )
                     ]
                   ),
                 cc:
                   T.any(
                     String,
-                    Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1,
+                    Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress,
                     T::Array[
                       T.any(
                         String,
-                        Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1
+                        Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress
                       )
                     ]
                   ),
@@ -250,18 +250,18 @@ module Telnyx
               T.type_alias do
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1,
+                  Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress,
                   T::Array[
                     Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::Variants
                   ]
                 )
               end
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class InboxRecipientAddress < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1,
+                    Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress,
                     Telnyx::Internal::AnyHash
                   )
                 end

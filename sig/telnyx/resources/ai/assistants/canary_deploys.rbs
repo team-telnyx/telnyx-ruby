@@ -6,6 +6,7 @@ module Telnyx
           def create: (
             String assistant_id,
             ?rules: ::Array[Telnyx::AI::Assistants::RuleInput],
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::Assistants::CanaryDeployResponse
 

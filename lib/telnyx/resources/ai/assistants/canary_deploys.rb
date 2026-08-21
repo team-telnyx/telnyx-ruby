@@ -6,16 +6,21 @@ module Telnyx
       class Assistants
         # Configure AI assistant specifications
         class CanaryDeploys
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::AI::Assistants::CanaryDeployCreateParams} for more details.
+          #
           # Endpoint to create a canary deploy configuration for an assistant.
           #
           # Creates a new canary deploy configuration with multiple version IDs and their
           # traffic percentages for A/B testing or gradual rollouts of assistant versions.
           #
-          # @overload create(assistant_id, rules: nil, request_options: {})
+          # @overload create(assistant_id, rules: nil, idempotency_key: nil, request_options: {})
           #
-          # @param assistant_id [String] Unique identifier of the assistant.
+          # @param assistant_id [String] Path param: Unique identifier of the assistant.
           #
-          # @param rules [Array<Telnyx::Models::AI::Assistants::RuleInput>]
+          # @param rules [Array<Telnyx::Models::AI::Assistants::RuleInput>] Body param
+          #
+          # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -24,10 +29,12 @@ module Telnyx
           # @see Telnyx::Models::AI::Assistants::CanaryDeployCreateParams
           def create(assistant_id, params = {})
             parsed, options = Telnyx::AI::Assistants::CanaryDeployCreateParams.dump_request(params)
+            header_params = {idempotency_key: "idempotency-key"}
             @client.request(
               method: :post,
               path: ["ai/assistants/%1$s/canary-deploys", assistant_id],
-              body: parsed,
+              headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+              body: parsed.except(*header_params.keys),
               model: Telnyx::AI::Assistants::CanaryDeployResponse,
               options: options
             )

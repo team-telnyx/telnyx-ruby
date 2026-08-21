@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module Rcs
+      type brand_identifier =
+        Telnyx::Rcs::EinBrandIdentifier
+        | Telnyx::Rcs::StockSymbolBrandIdentifier
+
+      module BrandIdentifier
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::Rcs::brand_identifier]
+      end
+    end
+  end
+end

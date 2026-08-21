@@ -2876,12 +2876,12 @@ Methods:
 - <code title="get /email_blocks/{id}/events">client.email_blocks.<a href="./lib/telnyx/resources/email_blocks.rb">retrieve_events</a>(\*\*params)</code>
 - <code title="get /email_blocks/export">client.email_blocks.<a href="./lib/telnyx/resources/email_blocks.rb">retrieve_export</a>(\*\*params)</code>
 
-## Import
+## Imports
 
 Methods:
 
-- <code title="post /email_blocks/import">client.email_blocks.import.<a href="./lib/telnyx/resources/email_blocks/import.rb">create</a>(\*\*params)</code>
-- <code title="get /email_blocks/import/{id}">client.email_blocks.import.<a href="./lib/telnyx/resources/email_blocks/import.rb">retrieve</a>(\*\*params)</code>
+- <code title="post /email_blocks/import">client.email_blocks.imports.<a href="./lib/telnyx/resources/email_blocks/imports.rb">create</a>(\*\*params)</code>
+- <code title="get /email_blocks/import/{id}">client.email_blocks.imports.<a href="./lib/telnyx/resources/email_blocks/imports.rb">retrieve</a>(\*\*params)</code>
 
 # EmailDomains
 

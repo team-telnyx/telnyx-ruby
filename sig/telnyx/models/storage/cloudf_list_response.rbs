@@ -3,160 +3,79 @@ module Telnyx
     module Storage
       type cloudf_list_response =
         {
-          data: ::Array[Telnyx::Models::Storage::CloudfListResponse::Data],
-          meta: Telnyx::Models::Storage::CloudfListResponse::Meta
+          id: String,
+          created_at: Time,
+          name: String,
+          record_type: String,
+          region: String,
+          :s3_bucket => String,
+          :s3_endpoint => String,
+          status: Telnyx::Models::Storage::cloudfs_filesystem_status,
+          updated_at: Time
         }
 
       class CloudfListResponse < Telnyx::Internal::Type::BaseModel
-        attr_reader data: ::Array[Telnyx::Models::Storage::CloudfListResponse::Data]?
+        attr_reader id: String?
 
-        def data=: (
-          ::Array[Telnyx::Models::Storage::CloudfListResponse::Data]
-        ) -> ::Array[Telnyx::Models::Storage::CloudfListResponse::Data]
+        def id=: (String) -> String
 
-        attr_reader meta: Telnyx::Models::Storage::CloudfListResponse::Meta?
+        attr_reader created_at: Time?
 
-        def meta=: (
-          Telnyx::Models::Storage::CloudfListResponse::Meta
-        ) -> Telnyx::Models::Storage::CloudfListResponse::Meta
+        def created_at=: (Time) -> Time
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader region: String?
+
+        def region=: (String) -> String
+
+        attr_reader s3_bucket: String?
+
+        def s3_bucket=: (String) -> String
+
+        attr_reader s3_endpoint: String?
+
+        def s3_endpoint=: (String) -> String
+
+        attr_reader status: Telnyx::Models::Storage::cloudfs_filesystem_status?
+
+        def status=: (
+          Telnyx::Models::Storage::cloudfs_filesystem_status
+        ) -> Telnyx::Models::Storage::cloudfs_filesystem_status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
 
         def initialize: (
-          ?data: ::Array[Telnyx::Models::Storage::CloudfListResponse::Data],
-          ?meta: Telnyx::Models::Storage::CloudfListResponse::Meta
+          ?id: String,
+          ?created_at: Time,
+          ?name: String,
+          ?record_type: String,
+          ?region: String,
+          ?s3_bucket: String,
+          ?s3_endpoint: String,
+          ?status: Telnyx::Models::Storage::cloudfs_filesystem_status,
+          ?updated_at: Time
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[Telnyx::Models::Storage::CloudfListResponse::Data],
-          meta: Telnyx::Models::Storage::CloudfListResponse::Meta
+          id: String,
+          created_at: Time,
+          name: String,
+          record_type: String,
+          region: String,
+          :s3_bucket => String,
+          :s3_endpoint => String,
+          status: Telnyx::Models::Storage::cloudfs_filesystem_status,
+          updated_at: Time
         }
-
-        type data =
-          {
-            id: String,
-            created_at: Time,
-            name: String,
-            record_type: String,
-            region: String,
-            :s3_bucket => String,
-            :s3_endpoint => String,
-            status: Telnyx::Models::Storage::cloudfs_filesystem_status,
-            updated_at: Time
-          }
-
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
-
-          def id=: (String) -> String
-
-          attr_reader created_at: Time?
-
-          def created_at=: (Time) -> Time
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_reader record_type: String?
-
-          def record_type=: (String) -> String
-
-          attr_reader region: String?
-
-          def region=: (String) -> String
-
-          attr_reader s3_bucket: String?
-
-          def s3_bucket=: (String) -> String
-
-          attr_reader s3_endpoint: String?
-
-          def s3_endpoint=: (String) -> String
-
-          attr_reader status: Telnyx::Models::Storage::cloudfs_filesystem_status?
-
-          def status=: (
-            Telnyx::Models::Storage::cloudfs_filesystem_status
-          ) -> Telnyx::Models::Storage::cloudfs_filesystem_status
-
-          attr_reader updated_at: Time?
-
-          def updated_at=: (Time) -> Time
-
-          def initialize: (
-            ?id: String,
-            ?created_at: Time,
-            ?name: String,
-            ?record_type: String,
-            ?region: String,
-            ?s3_bucket: String,
-            ?s3_endpoint: String,
-            ?status: Telnyx::Models::Storage::cloudfs_filesystem_status,
-            ?updated_at: Time
-          ) -> void
-
-          def to_hash: -> {
-            id: String,
-            created_at: Time,
-            name: String,
-            record_type: String,
-            region: String,
-            :s3_bucket => String,
-            :s3_endpoint => String,
-            status: Telnyx::Models::Storage::cloudfs_filesystem_status,
-            updated_at: Time
-          }
-        end
-
-        type meta =
-          {
-            cursors: Telnyx::Models::Storage::CloudfListResponse::Meta::Cursors,
-            next_: String,
-            previous: String
-          }
-
-        class Meta < Telnyx::Internal::Type::BaseModel
-          attr_reader cursors: Telnyx::Models::Storage::CloudfListResponse::Meta::Cursors?
-
-          def cursors=: (
-            Telnyx::Models::Storage::CloudfListResponse::Meta::Cursors
-          ) -> Telnyx::Models::Storage::CloudfListResponse::Meta::Cursors
-
-          attr_reader next_: String?
-
-          def next_=: (String) -> String
-
-          attr_reader previous: String?
-
-          def previous=: (String) -> String
-
-          def initialize: (
-            ?cursors: Telnyx::Models::Storage::CloudfListResponse::Meta::Cursors,
-            ?next_: String,
-            ?previous: String
-          ) -> void
-
-          def to_hash: -> {
-            cursors: Telnyx::Models::Storage::CloudfListResponse::Meta::Cursors,
-            next_: String,
-            previous: String
-          }
-
-          type cursors = { after: String, before: String }
-
-          class Cursors < Telnyx::Internal::Type::BaseModel
-            attr_reader after: String?
-
-            def after=: (String) -> String
-
-            attr_reader before: String?
-
-            def before=: (String) -> String
-
-            def initialize: (?after: String, ?before: String) -> void
-
-            def to_hash: -> { after: String, before: String }
-          end
-        end
       end
     end
   end

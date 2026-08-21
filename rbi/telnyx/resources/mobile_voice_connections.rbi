@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Mobile voice connection operations
     class MobileVoiceConnections
-      # Create a new mobile voice connection.
+      # Creates a new mobile voice connection with the provided configuration and
+      # returns the created connection.
       sig do
         params(
           active: T::Boolean,

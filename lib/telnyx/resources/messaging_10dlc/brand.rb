@@ -83,7 +83,8 @@ module Telnyx
           )
         end
 
-        # Retrieve a brand by `brandId`.
+        # Returns the details of a 10DLC brand by its brandId, including the count of
+        # campaigns associated with the brand.
         #
         # @overload retrieve(brand_id, request_options: {})
         #

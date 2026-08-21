@@ -23,7 +23,7 @@ module Telnyx
         returns(
           T.nilable(
             T.any(
-              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::OrSymbol,
+              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::OrSymbol,
               T::Boolean
             )
           )
@@ -35,7 +35,7 @@ module Telnyx
         params(
           force:
             T.any(
-              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::OrSymbol,
+              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::OrSymbol,
               T::Boolean
             )
         ).void
@@ -47,7 +47,7 @@ module Telnyx
           id: String,
           force:
             T.any(
-              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::OrSymbol,
+              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::OrSymbol,
               T::Boolean
             ),
           request_options: Telnyx::RequestOptions::OrHash
@@ -68,7 +68,7 @@ module Telnyx
             id: String,
             force:
               T.any(
-                Telnyx::EmailUnsubscribeGroupDeleteParams::Force::OrSymbol,
+                Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::OrSymbol,
                 T::Boolean
               ),
             request_options: Telnyx::RequestOptions
@@ -86,10 +86,44 @@ module Telnyx
         Variants =
           T.type_alias do
             T.any(
-              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::TaggedSymbol,
+              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::TaggedSymbol,
               T::Boolean
             )
           end
+
+        module ForceString
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          TRUE =
+            T.let(
+              :true,
+              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::TaggedSymbol
+            )
+          FALSE =
+            T.let(
+              :false,
+              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
 
         sig do
           override.returns(
@@ -98,23 +132,6 @@ module Telnyx
         end
         def self.variants
         end
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Telnyx::EmailUnsubscribeGroupDeleteParams::Force)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        TRUE =
-          T.let(
-            :true,
-            Telnyx::EmailUnsubscribeGroupDeleteParams::Force::TaggedSymbol
-          )
-        FALSE =
-          T.let(
-            :false,
-            Telnyx::EmailUnsubscribeGroupDeleteParams::Force::TaggedSymbol
-          )
       end
     end
   end

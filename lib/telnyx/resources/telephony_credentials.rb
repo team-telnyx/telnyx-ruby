@@ -3,7 +3,8 @@
 module Telnyx
   module Resources
     class TelephonyCredentials
-      # Create a credential.
+      # Creates a new on-demand telephony credential for the specified connection. The
+      # credential can then be used to generate access tokens for SIP or WebRTC clients.
       #
       # @overload create(connection_id:, expires_at: nil, name: nil, tag: nil, request_options: {})
       #
@@ -51,7 +52,7 @@ module Telnyx
         )
       end
 
-      # Update an existing credential.
+      # Updates the specified telephony credential and returns the updated credential.
       #
       # @overload update(id, connection_id: nil, expires_at: nil, name: nil, tag: nil, request_options: {})
       #
@@ -84,7 +85,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::TelephonyCredentialListParams} for more details.
       #
-      # List all On-demand Credentials.
+      # Returns a paginated list of the on-demand telephony credentials on your account,
+      # with support for filtering.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -112,7 +114,8 @@ module Telnyx
         )
       end
 
-      # Delete an existing credential.
+      # Permanently deletes the specified telephony credential, revoking any access it
+      # provided.
       #
       # @overload delete(id, request_options: {})
       #

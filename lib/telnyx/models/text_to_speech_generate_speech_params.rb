@@ -70,15 +70,8 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Resemble, nil]
       optional :resemble, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble }
 
-      # @!attribute rime
-      #   Rime provider-specific parameters.
-      #
-      #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Rime, nil]
-      optional :rime, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Rime }
-
       # @!attribute telnyx
-      #   Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
-      #   `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+      #   Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
       #   `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
       #   or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
       #   restricted to `mp3` or `pcm` (no `wav`).
@@ -100,11 +93,11 @@ module Telnyx
 
       # @!attribute voice
       #   Voice identifier in the format `provider.model_id.voice_id` or
-      #   `provider.voice_id`. Examples: `telnyx.NaturalHD.Alloy`,
-      #   `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`, `Telnyx.Sukhan.urdu-professor`,
-      #   `azure.en-US-AvaMultilingualNeural`, `aws.Polly.Generative.Lucia`. When
-      #   provided, `provider`, `model_id`, and `voice_id` are extracted automatically and
-      #   take precedence over individual parameters.
+      #   `provider.voice_id`. Examples: `Telnyx.Ultra.<voice_id>`, `Telnyx.Bayan.Ahmed`,
+      #   `Telnyx.Sukhan.urdu-professor`, `azure.en-US-AvaMultilingualNeural`,
+      #   `aws.Polly.Generative.Lucia`. When provided, `provider`, `model_id`, and
+      #   `voice_id` are extracted automatically and take precedence over individual
+      #   parameters.
       #
       #   @return [String, nil]
       optional :voice, String
@@ -122,7 +115,7 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Xai, nil]
       optional :xai, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Xai }
 
-      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, rime: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {::Telnyx::Models::TextToSpeechGenerateSpeechParams} for more details.
       #
@@ -146,9 +139,7 @@ module Telnyx
       #
       #   @param resemble [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Resemble] Resemble AI provider-specific parameters.
       #
-      #   @param rime [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Rime] Rime provider-specific parameters.
-      #
-      #   @param telnyx [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx] Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for `Na
+      #   @param telnyx [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx] Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`, `
       #
       #   @param text [String] The text to convert to speech.
       #
@@ -437,7 +428,6 @@ module Telnyx
         AZURE = :azure
         ELEVENLABS = :elevenlabs
         MINIMAX = :minimax
-        RIME = :rime
         RESEMBLE = :resemble
         XAI = :xai
         HUMAIN = :humain
@@ -483,35 +473,6 @@ module Telnyx
         #   @param sample_rate [String] Audio sample rate.
       end
 
-      class Rime < ::Telnyx::Internal::Type::BaseModel
-        # @!attribute response_format
-        #   Audio output format.
-        #
-        #   @return [String, nil]
-        optional :response_format, String
-
-        # @!attribute sampling_rate
-        #   Audio sampling rate in Hz.
-        #
-        #   @return [Integer, nil]
-        optional :sampling_rate, Integer
-
-        # @!attribute voice_speed
-        #   Voice speed multiplier.
-        #
-        #   @return [Float, nil]
-        optional :voice_speed, Float
-
-        # @!method initialize(response_format: nil, sampling_rate: nil, voice_speed: nil)
-        #   Rime provider-specific parameters.
-        #
-        #   @param response_format [String] Audio output format.
-        #
-        #   @param sampling_rate [Integer] Audio sampling rate in Hz.
-        #
-        #   @param voice_speed [Float] Voice speed multiplier.
-      end
-
       class Telnyx < ::Telnyx::Internal::Type::BaseModel
         # @!attribute emotion
         #   Emotion control for the Ultra model. Adjusts the emotional tone of the
@@ -532,12 +493,6 @@ module Telnyx
         #   @return [Integer, nil]
         optional :sampling_rate, Integer
 
-        # @!attribute temperature
-        #   Sampling temperature. Applies to `Natural` and `NaturalHD` models only.
-        #
-        #   @return [Float, nil]
-        optional :temperature, Float
-
         # @!attribute voice_speed
         #   Voice speed multiplier. Applies to all models except `Bayan` and `Sukhan`, which
         #   don't support it. Range: 0.5 to 2.0.
@@ -551,12 +506,11 @@ module Telnyx
         #   @return [Float, nil]
         optional :volume, Float
 
-        # @!method initialize(emotion: nil, response_format: nil, sampling_rate: nil, temperature: nil, voice_speed: nil, volume: nil)
+        # @!method initialize(emotion: nil, response_format: nil, sampling_rate: nil, voice_speed: nil, volume: nil)
         #   Some parameter documentations has been truncated, see
         #   {::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx} for more details.
         #
-        #   Telnyx provider-specific parameters. Use `voice_speed` and `temperature` for
-        #   `Natural` and `NaturalHD` models. For the `Ultra` model, use `voice_speed`,
+        #   Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
         #   `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
         #   or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
         #   restricted to `mp3` or `pcm` (no `wav`).
@@ -566,8 +520,6 @@ module Telnyx
         #   @param response_format [String] Audio response format.
         #
         #   @param sampling_rate [Integer] Audio sampling rate in Hz.
-        #
-        #   @param temperature [Float] Sampling temperature. Applies to `Natural` and `NaturalHD` models only.
         #
         #   @param voice_speed [Float] Voice speed multiplier. Applies to all models except `Bayan` and `Sukhan`, which
         #

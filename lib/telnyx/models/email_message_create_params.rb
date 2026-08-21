@@ -141,7 +141,7 @@ module Telnyx
       optional :scheduled_at, Time, nil?: true
 
       # @!attribute send_at
-      #   @deprecated
+      #   @deprecated Use scheduled_at instead.
       #
       #   Deprecated alias for `scheduled_at`.
       #

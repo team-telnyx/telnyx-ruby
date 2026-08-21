@@ -56,7 +56,12 @@ module Telnyx
         #   @return [String, Hash{Symbol=>Object}, nil]
         optional :tool_choice, union: -> { Telnyx::AI::ConversationAddMessageParams::ToolChoice }
 
-        # @!method initialize(conversation_id:, role:, content: nil, metadata: nil, name: nil, sent_at: nil, tool_call_id: nil, tool_calls: nil, tool_choice: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(conversation_id:, role:, content: nil, metadata: nil, name: nil, sent_at: nil, tool_call_id: nil, tool_calls: nil, tool_choice: nil, idempotency_key: nil, request_options: {})
         #   @param conversation_id [String] The ID of the conversation
         #
         #   @param role [String]
@@ -74,6 +79,8 @@ module Telnyx
         #   @param tool_calls [Array<Hash{Symbol=>Object}>]
         #
         #   @param tool_choice [String, Hash{Symbol=>Object}]
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

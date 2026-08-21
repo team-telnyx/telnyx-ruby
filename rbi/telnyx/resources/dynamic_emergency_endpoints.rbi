@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Dynamic Emergency Endpoints
     class DynamicEmergencyEndpoints
-      # Creates a dynamic emergency endpoints.
+      # Creates a dynamic emergency endpoint, associating a callback number and location
+      # with a device for emergency calling.
       sig do
         params(
           callback_number: String,

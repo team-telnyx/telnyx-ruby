@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # TeXML Applications operations
     class TexmlApplications
-      # Creates a TeXML Application.
+      # Creates a TeXML application, which defines the voice URLs and settings used to
+      # serve TeXML instructions for calls, and returns the created application.
       sig do
         params(
           friendly_name: String,
@@ -184,7 +185,7 @@ module Telnyx
       )
       end
 
-      # Deletes a TeXML Application.
+      # Permanently deletes the specified TeXML application from your account.
       sig do
         params(
           id: String,

@@ -209,6 +209,7 @@ module Telnyx
           ?service_level: String,
           ?timeout_millis: Integer,
           ?transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          ?valid_card_types: ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type],
           ?voice: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionPayResponse

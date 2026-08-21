@@ -61,7 +61,7 @@ module Telnyx
       #   an array of interval snapshots, but object-shaped stats payloads are also
       #   allowed for compatibility.
       #
-      #   @return [Array<Hash{Symbol=>Object}>, Telnyx::Models::VoiceSDKCallReport::Stats::UnionMember1, nil]
+      #   @return [Array<Hash{Symbol=>Object}>, Telnyx::Models::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject, nil]
       optional :stats, union: -> { Telnyx::VoiceSDKCallReport::Stats }
 
       # @!attribute stored_at
@@ -150,7 +150,7 @@ module Telnyx
       #
       #   @param segment [Integer] Zero-based stats segment index when the SDK sends segmented or intermediate repo
       #
-      #   @param stats [Array<Hash{Symbol=>Object}>, Telnyx::Models::VoiceSDKCallReport::Stats::UnionMember1] Raw stats payload emitted by the Voice SDK and stored without normalization. The
+      #   @param stats [Array<Hash{Symbol=>Object}>, Telnyx::Models::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject] Raw stats payload emitted by the Voice SDK and stored without normalization. The
       #
       #   @param stored_at [Time] Time when the call report was stored.
       #
@@ -221,9 +221,9 @@ module Telnyx
         variant -> { Telnyx::Models::VoiceSDKCallReport::Stats::UnionMember0Array }
 
         # Raw stats object emitted by the Voice SDK.
-        variant -> { Telnyx::VoiceSDKCallReport::Stats::UnionMember1 }
+        variant -> { Telnyx::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject }
 
-        class UnionMember1 < Telnyx::Internal::Type::BaseModel
+        class VoiceSDKCallReportStatsObject < Telnyx::Internal::Type::BaseModel
           # @!attribute audio
           #   Raw audio stats such as inbound/outbound packet, byte, jitter, packet-loss,
           #   bitrate, and audio-level metrics.
@@ -254,7 +254,8 @@ module Telnyx
 
           # @!method initialize(audio: nil, connection: nil, ice: nil, transport: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::VoiceSDKCallReport::Stats::UnionMember1} for more details.
+          #   {Telnyx::Models::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject} for
+          #   more details.
           #
           #   Raw stats object emitted by the Voice SDK.
           #
@@ -268,7 +269,7 @@ module Telnyx
         end
 
         # @!method self.variants
-        #   @return [Array(Array<Hash{Symbol=>Object}>, Telnyx::Models::VoiceSDKCallReport::Stats::UnionMember1)]
+        #   @return [Array(Array<Hash{Symbol=>Object}>, Telnyx::Models::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject)]
 
         # @type [Telnyx::Internal::Type::Converter]
         UnionMember0Array =

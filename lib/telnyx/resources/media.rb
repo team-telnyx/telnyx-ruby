@@ -27,7 +27,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MediaUpdateParams} for more details.
       #
-      # Updates a stored media file.
+      # Updates the specified stored media file and returns the updated resource.
       #
       # @overload update(media_name, media_url: nil, ttl_secs: nil, request_options: {})
       #
@@ -56,7 +56,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::MediaListParams} for more details.
       #
-      # Returns a list of stored media files.
+      # Returns a list of the media files stored on your account, with support for
+      # filtering.
       #
       # @overload list(filter: nil, request_options: {})
       #
@@ -79,7 +80,7 @@ module Telnyx
         )
       end
 
-      # Deletes a stored media file.
+      # Permanently deletes the specified media file from storage.
       #
       # @overload delete(media_name, request_options: {})
       #
@@ -99,7 +100,7 @@ module Telnyx
         )
       end
 
-      # Downloads a stored media file.
+      # Downloads the raw content of the specified stored media file.
       #
       # @overload download(media_name, request_options: {})
       #

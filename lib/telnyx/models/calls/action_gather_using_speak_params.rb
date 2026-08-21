@@ -54,14 +54,6 @@ module Telnyx
         #     `Minimax.speech-02-hd.Wise_Woman`). Supported models: `speech-02-turbo`,
         #     `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Use `voice_settings`
         #     to configure speed, volume, pitch, and language_boost.
-        #   - **Rime:** Use `Rime.<model_id>.<voice_id>` (e.g., `Rime.Arcana.cove`).
-        #     Supported model_ids: `Arcana`, `Mist`, `ArcanaV3`, `Coda`. Use
-        #     `voice_settings` to configure voice_speed. To use your own Rime account,
-        #     provide your Rime API key as an integration secret in
-        #     `"voice_settings": {"type": "rime", "api_key_ref": "<secret_identifier>"}`.
-        #     See
-        #     [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
-        #     for details.
         #   - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
         #     `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
         #     `voice_settings` to configure precision, sample_rate, and format.
@@ -177,7 +169,7 @@ module Telnyx
         # @!attribute voice_settings
         #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings }
 
         # @!method initialize(call_control_id:, payload:, voice:, client_state: nil, command_id: nil, inter_digit_timeout_millis: nil, invalid_payload: nil, language: nil, maximum_digits: nil, maximum_tries: nil, minimum_digits: nil, payload_type: nil, service_level: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, voice_settings: nil, request_options: {})
@@ -217,7 +209,7 @@ module Telnyx
         #
         #   @param valid_digits [String] A list of all digits accepted as valid.
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -300,8 +292,6 @@ module Telnyx
 
           variant :azure, -> { Telnyx::AzureVoiceSettings }
 
-          variant :rime, -> { Telnyx::RimeVoiceSettings }
-
           variant :resemble, -> { Telnyx::ResembleVoiceSettings }
 
           variant :inworld, -> { Telnyx::InworldVoiceSettings }
@@ -309,7 +299,7 @@ module Telnyx
           variant :xai, -> { Telnyx::XaiVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings)]
         end
       end
     end

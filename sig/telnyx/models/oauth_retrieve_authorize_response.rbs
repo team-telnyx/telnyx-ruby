@@ -1,0 +1,5 @@
+module Telnyx
+  module Models
+    class OAuthRetrieveAuthorizeResponse = String
+  end
+end

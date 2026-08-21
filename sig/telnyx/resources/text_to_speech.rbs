@@ -12,7 +12,6 @@ module Telnyx
         ?output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
         ?provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
         ?resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
-        ?rime: ::Telnyx::TextToSpeechGenerateSpeechParams::Rime,
         ?telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         ?text: String,
         ?text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,

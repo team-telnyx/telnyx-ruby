@@ -28,7 +28,7 @@ module Telnyx
         )
       end
 
-      # Retrieve a paginated list of invoices.
+      # Returns a paginated list of your invoices, with support for sorting.
       #
       # @overload list(page_number: nil, page_size: nil, sort: nil, request_options: {})
       #

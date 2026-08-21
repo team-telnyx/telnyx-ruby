@@ -64,7 +64,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::DialogflowConnectionUpdateParams} for more details.
       #
-      # Updates a stored Dialogflow Connection.
+      # Updates the stored Dialogflow connection for the specified connection and
+      # returns the updated configuration.
       #
       # @overload update(connection_id, service_account:, conversation_profile_id: nil, dialogflow_api: nil, environment: nil, location: nil, request_options: {})
       #
@@ -96,7 +97,7 @@ module Telnyx
         )
       end
 
-      # Deletes a stored Dialogflow Connection.
+      # Deletes the stored Dialogflow connection for the specified connection.
       #
       # @overload delete(connection_id, request_options: {})
       #

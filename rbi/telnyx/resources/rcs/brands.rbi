@@ -9,8 +9,7 @@ module Telnyx
         # review.
         sig do
           params(
-            addresses:
-              T::Hash[Symbol, Telnyx::Rcs::BrandCreateParams::Address::OrHash],
+            addresses: T::Hash[Symbol, Telnyx::Rcs::BrandAddress::OrHash],
             contacts: Telnyx::Rcs::BrandCreateParams::Contacts::OrHash,
             display_name: String,
             identifiers: Telnyx::Rcs::BrandCreateParams::Identifiers::OrHash,
@@ -60,8 +59,7 @@ module Telnyx
         sig do
           params(
             id: String,
-            addresses:
-              T::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address::OrHash],
+            addresses: T::Hash[Symbol, Telnyx::Rcs::BrandAddress::OrHash],
             contacts: Telnyx::Rcs::BrandUpdateParams::Contacts::OrHash,
             display_name: String,
             identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers::OrHash,

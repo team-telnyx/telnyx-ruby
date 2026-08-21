@@ -20,10 +20,17 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :url
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             bucket_name: String,
             url: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -32,6 +39,7 @@ module Telnyx
           bucket_name:,
           # The URL of the webpage to embed
           url:,
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -41,6 +49,7 @@ module Telnyx
             {
               bucket_name: String,
               url: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           )

@@ -31,7 +31,8 @@ module Telnyx
           )
           end
 
-          # Remove a tag from an AI assistant.
+          # Removes the specified tag from the AI assistant and returns the assistant's
+          # updated tag list.
           sig do
             params(
               tag: String,

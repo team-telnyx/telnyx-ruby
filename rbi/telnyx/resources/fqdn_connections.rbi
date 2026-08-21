@@ -8,7 +8,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::FqdnConnections::FqdnAuthentication) }
       attr_reader :fqdn_authentication
 
-      # Creates a FQDN connection.
+      # Creates a new FQDN-based SIP connection. FQDN connections authenticate by your
+      # registered domain names rather than static IP addresses.
       sig do
         params(
           connection_name: String,
@@ -272,7 +273,7 @@ module Telnyx
       )
       end
 
-      # Deletes an FQDN connection.
+      # Permanently deletes the specified FQDN connection from your account.
       sig do
         params(
           id: String,

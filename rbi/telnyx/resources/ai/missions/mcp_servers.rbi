@@ -5,7 +5,8 @@ module Telnyx
     class AI
       class Missions
         class McpServers
-          # Create a new MCP server for a mission
+          # Adds an MCP server to the specified mission, making the server's tools available
+          # to agents during runs of this mission.
           sig do
             params(
               mission_id: String,
@@ -19,7 +20,8 @@ module Telnyx
           )
           end
 
-          # Delete an MCP server from a mission
+          # Removes the specified MCP server from the mission, revoking agent access to its
+          # tools in subsequent runs.
           sig do
             params(
               mcp_server_id: String,
@@ -36,7 +38,8 @@ module Telnyx
           )
           end
 
-          # Get a specific MCP server by ID
+          # Returns the configuration of a single MCP server attached to the specified
+          # mission.
           sig do
             params(
               mcp_server_id: String,
@@ -53,7 +56,8 @@ module Telnyx
           )
           end
 
-          # List all MCP servers for a mission
+          # Returns the MCP servers configured on the specified mission. MCP servers expose
+          # external tools and data sources agents can use during runs.
           sig do
             params(
               mission_id: String,
@@ -67,7 +71,7 @@ module Telnyx
           )
           end
 
-          # Update an MCP server definition
+          # Replaces the configuration of the specified MCP server on this mission.
           sig do
             params(
               mcp_server_id: String,

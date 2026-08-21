@@ -9,6 +9,9 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Embeddings::Buckets]
         attr_reader :buckets
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::EmbeddingCreateParams} for more details.
+        #
         # Perform embedding on a Telnyx Storage Bucket using the a embedding model. The
         # current supported file types are:
         #
@@ -39,17 +42,19 @@ module Telnyx
         # values will be returned by the `/v2/ai/embeddings/similarity-search` endpoint in
         # the `loader_metadata` field.
         #
-        # @overload create(bucket_name:, document_chunk_overlap_size: nil, document_chunk_size: nil, embedding_model: nil, loader: nil, request_options: {})
+        # @overload create(bucket_name:, document_chunk_overlap_size: nil, document_chunk_size: nil, embedding_model: nil, loader: nil, idempotency_key: nil, request_options: {})
         #
-        # @param bucket_name [String]
+        # @param bucket_name [String] Body param
         #
-        # @param document_chunk_overlap_size [Integer]
+        # @param document_chunk_overlap_size [Integer] Body param
         #
-        # @param document_chunk_size [Integer]
+        # @param document_chunk_size [Integer] Body param
         #
-        # @param embedding_model [Symbol, Telnyx::Models::AI::EmbeddingCreateParams::EmbeddingModel] Supported models to vectorize and embed documents.
+        # @param embedding_model [Symbol, Telnyx::Models::AI::EmbeddingCreateParams::EmbeddingModel] Body param: Supported models to vectorize and embed documents.
         #
-        # @param loader [Symbol, Telnyx::Models::AI::EmbeddingCreateParams::Loader] Supported types of custom document loaders for embeddings.
+        # @param loader [Symbol, Telnyx::Models::AI::EmbeddingCreateParams::Loader] Body param: Supported types of custom document loaders for embeddings.
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -58,10 +63,12 @@ module Telnyx
         # @see Telnyx::Models::AI::EmbeddingCreateParams
         def create(params)
           parsed, options = Telnyx::AI::EmbeddingCreateParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "ai/embeddings",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::AI::EmbeddingResponse,
             options: options
           )
@@ -154,6 +161,9 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::EmbeddingURLParams} for more details.
+        #
         # Embed website content from a specified URL, including child pages up to 5 levels
         # deep within the same domain. The process crawls and loads content from the main
         # URL and its linked pages into a Telnyx Cloud Storage bucket. As soon as each
@@ -162,11 +172,13 @@ module Telnyx
         # [similarity search](https://developers.telnyx.com/api-reference/embeddings/search-for-documents)
         # and [clustering](https://developers.telnyx.com/docs/inference/clusters).
         #
-        # @overload url(bucket_name:, url:, request_options: {})
+        # @overload url(bucket_name:, url:, idempotency_key: nil, request_options: {})
         #
-        # @param bucket_name [String] Name of the bucket to store the embeddings. This bucket must already exist.
+        # @param bucket_name [String] Body param: Name of the bucket to store the embeddings. This bucket must already
         #
-        # @param url [String] The URL of the webpage to embed
+        # @param url [String] Body param: The URL of the webpage to embed
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -175,10 +187,12 @@ module Telnyx
         # @see Telnyx::Models::AI::EmbeddingURLParams
         def url(params)
           parsed, options = Telnyx::AI::EmbeddingURLParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "ai/embeddings/url",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::AI::EmbeddingResponse,
             options: options
           )

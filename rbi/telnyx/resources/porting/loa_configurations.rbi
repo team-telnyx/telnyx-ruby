@@ -5,7 +5,8 @@ module Telnyx
     class Porting
       # Endpoints related to porting orders management.
       class LoaConfigurations
-        # Create a LOA configuration.
+        # Creates a new LOA configuration with your company details and branding for use
+        # when generating LOA documents for porting orders.
         sig do
           params(
             address:
@@ -33,7 +34,8 @@ module Telnyx
         )
         end
 
-        # Retrieve a specific LOA configuration.
+        # Returns the details of a single LOA (Letter of Authorization) configuration by
+        # its identifier.
         sig do
           params(
             id: String,
@@ -47,7 +49,8 @@ module Telnyx
         )
         end
 
-        # Update a specific LOA configuration.
+        # Updates the specified LOA configuration with the provided fields and returns the
+        # updated configuration.
         sig do
           params(
             id: String,
@@ -78,7 +81,9 @@ module Telnyx
         )
         end
 
-        # List the LOA configurations.
+        # Returns a paginated list of your LOA (Letter of Authorization) configurations.
+        # LOA configurations customize the company details and branding used on generated
+        # LOA documents.
         sig do
           params(
             page_number: Integer,
@@ -93,7 +98,8 @@ module Telnyx
         def list(page_number: nil, page_size: nil, request_options: {})
         end
 
-        # Delete a specific LOA configuration.
+        # Permanently deletes the specified LOA configuration so it can no longer be used
+        # when generating LOA documents.
         sig do
           params(
             id: String,
@@ -165,7 +171,8 @@ module Telnyx
         )
         end
 
-        # Preview a specific LOA configuration.
+        # Renders a preview of the LOA document produced by this configuration so you can
+        # verify company details and branding before using it on porting orders.
         sig do
           params(
             id: String,

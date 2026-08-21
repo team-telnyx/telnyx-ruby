@@ -6,8 +6,8 @@ module Telnyx
     class SubNumberOrderListResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Telnyx::Models::SubNumberOrder>, nil]
-      optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SubNumberOrder] }
+      #   @return [Array<Telnyx::Models::NumbersSubNumberOrder>, nil]
+      optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::NumbersSubNumberOrder] }
 
       # @!attribute meta
       #
@@ -15,7 +15,7 @@ module Telnyx
       optional :meta, -> { Telnyx::PaginationMeta }
 
       # @!method initialize(data: nil, meta: nil)
-      #   @param data [Array<Telnyx::Models::SubNumberOrder>]
+      #   @param data [Array<Telnyx::Models::NumbersSubNumberOrder>]
       #   @param meta [Telnyx::Models::PaginationMeta]
     end
   end

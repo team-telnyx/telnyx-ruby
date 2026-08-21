@@ -42,18 +42,28 @@ module Telnyx
                 params(
                   suite_name: String,
                   destination_version_id: String,
+                  idempotency_key: String,
                   request_options: Telnyx::RequestOptions::OrHash
                 ).returns(
                   T::Array[Telnyx::AI::Assistants::Tests::TestRunResponse]
                 )
               end
               def trigger(
-                # Name of the suite.
+                # Path param: Name of the suite.
                 suite_name,
-                # Optional assistant version ID to use for all test runs in this suite. If
-                # provided, the version must exist or a 400 error will be returned. If not
-                # provided, test will run on main version
+                # Body param: Optional assistant version ID to use for all test runs in this
+                # suite. If provided, the version must exist or a 400 error will be returned. If
+                # not provided, test will run on main version
                 destination_version_id: nil,
+                # Header param: Optional opaque, unquoted key for safely retrying the same logical
+                # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+                # Generate a unique UUID v4 for each operation and reuse it only when retrying
+                # that operation with the same request. Invalid headers—including duplicate,
+                # empty, malformed, or overlong values—return 400 with error code 10015. A request
+                # already in progress with the same key returns 409; reusing the key with a
+                # different request returns 422. Only successful responses are replayed, for up to
+                # 24 hours. Do not include sensitive data in the key.
+                idempotency_key: nil,
                 request_options: {}
               )
               end

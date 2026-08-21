@@ -14,7 +14,8 @@ module Telnyx
           # @return [Telnyx::Resources::AI::Missions::Runs::TelnyxAgents]
           attr_reader :telnyx_agents
 
-          # Start a new run for a mission
+          # Starts a new run of the specified mission and returns the created run object.
+          # Track its progress through the run detail, plan, and events endpoints.
           #
           # @overload create(mission_id, input: nil, metadata: nil, request_options: {})
           #
@@ -40,7 +41,8 @@ module Telnyx
             )
           end
 
-          # Get details of a specific run
+          # Returns the full details of a single run, including its current status. Use this
+          # to poll an in-flight run or inspect the outcome of a completed one.
           #
           # @overload retrieve(run_id, mission_id:, request_options: {})
           #
@@ -67,7 +69,9 @@ module Telnyx
             )
           end
 
-          # Update run status and/or result
+          # Updates a run's status and/or result and returns the updated run object.
+          # Typically used by executing agents to report progress or record the final
+          # outcome.
           #
           # @overload update(run_id, mission_id:, error: nil, metadata: nil, result_payload: nil, result_summary: nil, status: nil, request_options: {})
           #
@@ -105,7 +109,8 @@ module Telnyx
             )
           end
 
-          # List all runs for a specific mission
+          # Returns a paginated list of runs for the specified mission, optionally filtered
+          # by run status, so you can track the mission's execution history over time.
           #
           # @overload list(mission_id, page_number: nil, page_size: nil, status: nil, request_options: {})
           #
@@ -135,7 +140,8 @@ module Telnyx
             )
           end
 
-          # Cancel a running or paused run
+          # Cancels a running or paused run and returns the updated run object. A cancelled
+          # run stops executing; start a new run to execute the mission again.
           #
           # @overload cancel_run(run_id, mission_id:, request_options: {})
           #
@@ -162,7 +168,9 @@ module Telnyx
             )
           end
 
-          # List recent runs across all missions
+          # Returns a paginated list of recent runs across every mission in your
+          # organization, optionally filtered by run status. Useful for monitoring overall
+          # mission activity without querying each mission individually.
           #
           # @overload list_runs(page_number: nil, page_size: nil, status: nil, request_options: {})
           #
@@ -190,7 +198,8 @@ module Telnyx
             )
           end
 
-          # Pause a running run
+          # Pauses a currently running run and returns the updated run object. Execution
+          # halts until the run is resumed.
           #
           # @overload pause_run(run_id, mission_id:, request_options: {})
           #
@@ -217,7 +226,8 @@ module Telnyx
             )
           end
 
-          # Resume a paused run
+          # Resumes a previously paused run and returns the updated run object, letting
+          # execution continue from where it was paused.
           #
           # @overload resume_run(run_id, mission_id:, request_options: {})
           #

@@ -17,11 +17,11 @@ module Telnyx
         class Data < Telnyx::Internal::Type::BaseModel
           # @!attribute accepted
           #
-          #   @return [Boolean, true]
-          required :accepted, const: true
+          #   @return [Boolean]
+          required :accepted, Telnyx::Internal::Type::Boolean
 
-          # @!method initialize(accepted: true)
-          #   @param accepted [Boolean, true]
+          # @!method initialize(accepted:)
+          #   @param accepted [Boolean]
         end
       end
     end

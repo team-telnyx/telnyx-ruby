@@ -18,6 +18,8 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :slug
 
+        # Two-letter ISO 3166-1 alpha-2 country code (uppercase, e.g. US) to filter
+        # pricing to a single country.
         sig { returns(T.nilable(String)) }
         attr_accessor :filter_country_iso
 
@@ -46,6 +48,8 @@ module Telnyx
         end
         def self.new(
           slug:,
+          # Two-letter ISO 3166-1 alpha-2 country code (uppercase, e.g. US) to filter
+          # pricing to a single country.
           filter_country_iso: nil,
           # Page number (1-based).
           page_number: nil,

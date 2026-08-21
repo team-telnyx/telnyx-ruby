@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # IP connection operations
     class IPConnections
-      # Creates an IP connection.
+      # Creates a new IP-based SIP connection, which authenticates traffic by source IP
+      # address.
       sig do
         params(
           active: T::Boolean,
@@ -228,7 +229,8 @@ module Telnyx
       )
       end
 
-      # Returns a list of your IP connections.
+      # Returns a paginated list of your IP-based SIP connections, with support for
+      # filtering and sorting.
       sig do
         params(
           filter: Telnyx::IPConnectionListParams::Filter::OrHash,
@@ -264,7 +266,7 @@ module Telnyx
       )
       end
 
-      # Deletes an existing IP connection.
+      # Permanently deletes the specified IP connection from your account.
       sig do
         params(
           id: String,

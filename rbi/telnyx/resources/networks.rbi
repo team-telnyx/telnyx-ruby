@@ -8,7 +8,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::Networks::DefaultGateway) }
       attr_reader :default_gateway
 
-      # Create a new Network.
+      # Creates a new private network, the container that links your WireGuard
+      # interfaces, gateways, and cross connects.
       sig do
         params(
           network_create: Telnyx::NetworkCreate::OrHash,
@@ -18,7 +19,7 @@ module Telnyx
       def create(network_create:, request_options: {})
       end
 
-      # Retrieve a Network.
+      # Returns the details of a single network by its identifier.
       sig do
         params(
           id: String,
@@ -32,7 +33,7 @@ module Telnyx
       )
       end
 
-      # Update a Network.
+      # Updates the specified network's attributes and returns the updated network.
       sig do
         params(
           network_id: String,
@@ -48,7 +49,8 @@ module Telnyx
       )
       end
 
-      # List all Networks.
+      # Returns a paginated list of the private networks on your account, with support
+      # for filtering.
       sig do
         params(
           filter: Telnyx::NetworkListParams::Filter::OrHash,
@@ -66,7 +68,7 @@ module Telnyx
       )
       end
 
-      # Delete a Network.
+      # Permanently deletes the specified network from your account.
       sig do
         params(
           id: String,
@@ -80,7 +82,8 @@ module Telnyx
       )
       end
 
-      # List all Interfaces for a Network.
+      # Returns a paginated list of the interfaces attached to the specified network,
+      # with support for filtering.
       sig do
         params(
           id: String,

@@ -3,7 +3,7 @@ module Telnyx
     type enterprise_public =
       {
         id: String,
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         branded_calling_enabled: bool,
         corporate_registration_number: String?,
@@ -30,9 +30,9 @@ module Telnyx
       }
 
     class EnterprisePublic < Telnyx::Internal::Type::BaseModel
-      attr_reader billing_address: Telnyx::BillingAddress?
+      attr_reader billing_address: Telnyx::PhysicalAddress?
 
-      def billing_address=: (Telnyx::BillingAddress) -> Telnyx::BillingAddress
+      def billing_address=: (Telnyx::PhysicalAddress) -> Telnyx::PhysicalAddress
 
       attr_reader billing_contact: Telnyx::BillingContact?
 
@@ -128,7 +128,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
-        ?billing_address: Telnyx::BillingAddress,
+        ?billing_address: Telnyx::PhysicalAddress,
         ?billing_contact: Telnyx::BillingContact,
         ?branded_calling_enabled: bool,
         ?corporate_registration_number: String?,
@@ -156,7 +156,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         branded_calling_enabled: bool,
         corporate_registration_number: String?,

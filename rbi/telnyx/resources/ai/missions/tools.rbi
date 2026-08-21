@@ -5,7 +5,8 @@ module Telnyx
     class AI
       class Missions
         class Tools
-          # Create a new tool for a mission
+          # Adds a new tool to the specified mission, defining an action agents can invoke
+          # during runs of this mission.
           sig do
             params(
               mission_id: String,
@@ -19,7 +20,8 @@ module Telnyx
           )
           end
 
-          # Delete a tool from a mission
+          # Removes the specified tool from the mission so agents can no longer invoke it in
+          # subsequent runs.
           sig do
             params(
               tool_id: String,
@@ -36,7 +38,7 @@ module Telnyx
           )
           end
 
-          # Get a specific tool by ID
+          # Returns the definition of a single tool configured on the specified mission.
           sig do
             params(
               tool_id: String,
@@ -53,7 +55,8 @@ module Telnyx
           )
           end
 
-          # List all tools for a mission
+          # Returns the tools configured on the specified mission. Tools define the actions
+          # agents may invoke while executing the mission's runs.
           sig do
             params(
               mission_id: String,
@@ -67,7 +70,7 @@ module Telnyx
           )
           end
 
-          # Update a tool definition
+          # Replaces the definition of the specified tool on this mission.
           sig do
             params(
               tool_id: String,

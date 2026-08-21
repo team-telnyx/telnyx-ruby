@@ -7,7 +7,7 @@ module Telnyx
         class InsightGroups
           # Manage historical AI assistant conversations
           class Insights
-            # Assign an insight to a group
+            # Assigns the specified insight template to the specified insight template group.
             sig do
               params(
                 insight_id: String,
@@ -24,7 +24,8 @@ module Telnyx
             )
             end
 
-            # Remove an insight from a group
+            # Removes the specified insight template from the specified group. The insight
+            # template itself is not deleted.
             sig do
               params(
                 insight_id: String,

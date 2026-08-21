@@ -35,7 +35,7 @@ module Telnyx
         type condition =
           Telnyx::AI::FlowEdge::Condition::Llm
           | Telnyx::AI::FlowEdge::Condition::Expression
-          | Telnyx::AI::FlowEdge::Condition::Default
+          | Telnyx::AI::FlowEdge::Condition::DefaultCondition
 
         module Condition
           extend Telnyx::Internal::Type::Union
@@ -64,9 +64,9 @@ module Telnyx
             def to_hash: -> { expression: top, type: :expression }
           end
 
-          type default = { type: :default }
+          type default_condition = { type: :default }
 
-          class Default < Telnyx::Internal::Type::BaseModel
+          class DefaultCondition < Telnyx::Internal::Type::BaseModel
             attr_accessor type: :default
 
             def initialize: (?type: :default) -> void

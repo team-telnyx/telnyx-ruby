@@ -249,6 +249,7 @@ module Telnyx
           type error_type =
             :timeout
             | :"invalid-card-number"
+            | :"invalid-card-type"
             | :"invalid-date"
             | :"invalid-security-code"
             | :"invalid-postal-code"
@@ -261,6 +262,7 @@ module Telnyx
 
             TIMEOUT: :timeout
             INVALID_CARD_NUMBER: :"invalid-card-number"
+            INVALID_CARD_TYPE: :"invalid-card-type"
             INVALID_DATE: :"invalid-date"
             INVALID_SECURITY_CODE: :"invalid-security-code"
             INVALID_POSTAL_CODE: :"invalid-postal-code"
@@ -272,7 +274,15 @@ module Telnyx
           end
 
           type payment_card_type =
-            :visa | :mastercard | :amex | :discover | :"diners-club" | :jcb
+            :visa
+            | :mastercard
+            | :amex
+            | :optima
+            | :discover
+            | :"diners-club"
+            | :jcb
+            | :maestro
+            | :enroute
 
           module PaymentCardType
             extend Telnyx::Internal::Type::Enum
@@ -280,9 +290,12 @@ module Telnyx
             VISA: :visa
             MASTERCARD: :mastercard
             AMEX: :amex
+            OPTIMA: :optima
             DISCOVER: :discover
             DINERS_CLUB: :"diners-club"
             JCB: :jcb
+            MAESTRO: :maestro
+            ENROUTE: :enroute
 
             def self?.values: -> ::Array[Telnyx::Models::CallPaymentProgressWebhookEvent::Data::Payload::payment_card_type]
           end

@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Number orders
     class NumberOrders
-      # Creates a phone number order.
+      # Creates an order to purchase the specified phone numbers and returns the created
+      # order. Track fulfillment through the order's status.
       sig do
         params(
           billing_group_id: String,
@@ -30,7 +31,8 @@ module Telnyx
       )
       end
 
-      # Get an existing phone number order.
+      # Returns the details of an existing phone number order, including its status and
+      # the numbers included.
       sig do
         params(
           number_order_id: String,
@@ -44,7 +46,8 @@ module Telnyx
       )
       end
 
-      # Updates a phone number order.
+      # Updates an existing phone number order, for example to satisfy regulatory
+      # requirements attached to the order, and returns the updated order.
       sig do
         params(
           number_order_id: String,
@@ -64,7 +67,8 @@ module Telnyx
       )
       end
 
-      # Get a paginated list of number orders.
+      # Returns a paginated list of your phone number orders, with support for
+      # filtering.
       sig do
         params(
           filter: Telnyx::NumberOrderListParams::Filter::OrHash,

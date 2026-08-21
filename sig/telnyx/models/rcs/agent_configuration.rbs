@@ -28,14 +28,14 @@ module Telnyx
         }
 
         type basics =
-          Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0
-          | Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1
-          | Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2
+          Telnyx::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement
+          | Telnyx::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement
+          | Telnyx::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement
 
         module Basics
           extend Telnyx::Internal::Type::Union
 
-          type union_member0 =
+          type agent_phone_contact_requirement =
             {
               phone_number: Telnyx::Rcs::AgentPhoneContact,
               brand_color: String,
@@ -48,7 +48,7 @@ module Telnyx
               website: Telnyx::Rcs::AgentWebsiteContact?
             }
 
-          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          class AgentPhoneContactRequirement < Telnyx::Internal::Type::BaseModel
             attr_accessor phone_number: Telnyx::Rcs::AgentPhoneContact
 
             attr_reader brand_color: String?
@@ -104,7 +104,7 @@ module Telnyx
             }
           end
 
-          type union_member1 =
+          type agent_webhook_contact_requirement =
             {
               website: Telnyx::Rcs::AgentWebsiteContact,
               brand_color: String,
@@ -117,7 +117,7 @@ module Telnyx
               terms_and_conditions_url: String
             }
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class AgentWebhookContactRequirement < Telnyx::Internal::Type::BaseModel
             attr_accessor website: Telnyx::Rcs::AgentWebsiteContact
 
             attr_reader brand_color: String?
@@ -173,7 +173,7 @@ module Telnyx
             }
           end
 
-          type union_member2 =
+          type agent_profile_contact_requirement =
             {
               email: Telnyx::Rcs::AgentEmailContact,
               brand_color: String,
@@ -186,7 +186,7 @@ module Telnyx
               website: Telnyx::Rcs::AgentWebsiteContact?
             }
 
-          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+          class AgentProfileContactRequirement < Telnyx::Internal::Type::BaseModel
             attr_accessor email: Telnyx::Rcs::AgentEmailContact
 
             attr_reader brand_color: String?

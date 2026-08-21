@@ -4,81 +4,23 @@ module Telnyx
       module PhoneNumbers
         type conversational_component_patch_all_response =
           {
-            data: Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data
+            data: Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent
           }
 
         class ConversationalComponentPatchAllResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data?
+          attr_reader data: Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent?
 
           def data=: (
-            Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data
-          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data
+            Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent
+          ) -> Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent
 
           def initialize: (
-            ?data: Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data
+            ?data: Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent
           ) -> void
 
           def to_hash: -> {
-            data: Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data
+            data: Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent
           }
-
-          type data =
-            {
-              commands: ::Array[Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data::Command],
-              ice_breakers: ::Array[String],
-              phone_number: String,
-              record_type: String
-            }
-
-          class Data < Telnyx::Internal::Type::BaseModel
-            attr_reader commands: ::Array[Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data::Command]?
-
-            def commands=: (
-              ::Array[Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data::Command]
-            ) -> ::Array[Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data::Command]
-
-            attr_reader ice_breakers: ::Array[String]?
-
-            def ice_breakers=: (::Array[String]) -> ::Array[String]
-
-            attr_reader phone_number: String?
-
-            def phone_number=: (String) -> String
-
-            attr_reader record_type: String?
-
-            def record_type=: (String) -> String
-
-            def initialize: (
-              ?commands: ::Array[Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data::Command],
-              ?ice_breakers: ::Array[String],
-              ?phone_number: String,
-              ?record_type: String
-            ) -> void
-
-            def to_hash: -> {
-              commands: ::Array[Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data::Command],
-              ice_breakers: ::Array[String],
-              phone_number: String,
-              record_type: String
-            }
-
-            type command = { command: String, description: String }
-
-            class Command < Telnyx::Internal::Type::BaseModel
-              attr_reader command: String?
-
-              def command=: (String) -> String
-
-              attr_reader description: String?
-
-              def description=: (String) -> String
-
-              def initialize: (?command: String, ?description: String) -> void
-
-              def to_hash: -> { command: String, description: String }
-            end
-          end
         end
       end
     end

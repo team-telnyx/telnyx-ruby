@@ -7,7 +7,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::SimCardGroups::Actions) }
       attr_reader :actions
 
-      # Creates a new SIM card group object
+      # Creates a new SIM card group and returns it. Groups let you apply shared
+      # settings to a set of SIM cards.
       sig do
         params(
           name: String,
@@ -41,7 +42,7 @@ module Telnyx
       )
       end
 
-      # Updates a SIM card group
+      # Updates the specified SIM card group's attributes and returns the updated group.
       sig do
         params(
           id: String,
@@ -91,7 +92,7 @@ module Telnyx
       )
       end
 
-      # Permanently deletes a SIM card group
+      # Permanently deletes the specified SIM card group from your account.
       sig do
         params(
           id: String,

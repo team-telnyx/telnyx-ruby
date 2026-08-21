@@ -41,13 +41,27 @@ class Telnyx::Test::Resources::EmailInboxesTest < Telnyx::Test::ResourceTest
     response = @telnyx.email_inboxes.list
 
     assert_pattern do
-      response => Telnyx::Models::EmailInboxListResponse
+      response => Telnyx::Internal::EmailCursorPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::EmailInbox
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInbox]),
-        meta: Telnyx::Models::EmailInboxListResponse::Meta
+      row => {
+        id: String,
+        address: String,
+        created_at: Time,
+        domain: String,
+        domain_id: String,
+        record_type: Telnyx::EmailInbox::RecordType,
+        settings: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]),
+        status: Telnyx::EmailInbox::Status,
+        updated_at: Time
       }
     end
   end

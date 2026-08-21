@@ -7,7 +7,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::UserTagListParams} for more details.
       #
-      # List all user tags.
+      # Returns the user tags defined on your account, with support for filtering. Tags
+      # help organize resources such as phone numbers.
       #
       # @overload list(filter: nil, request_options: {})
       #

@@ -200,7 +200,6 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings,
                 Telnyx::Calls::AwsVoiceSettings,
                 Telnyx::AzureVoiceSettings,
-                Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
                 Telnyx::XaiVoiceSettings
               )
@@ -217,7 +216,6 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
               )
@@ -251,7 +249,6 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
               ),
@@ -372,7 +369,6 @@ module Telnyx
                   Telnyx::Calls::TelnyxVoiceSettings,
                   Telnyx::Calls::AwsVoiceSettings,
                   Telnyx::AzureVoiceSettings,
-                  Telnyx::RimeVoiceSettings,
                   Telnyx::ResembleVoiceSettings,
                   Telnyx::XaiVoiceSettings
                 ),
@@ -491,7 +487,6 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings,
                 Telnyx::Calls::AwsVoiceSettings,
                 Telnyx::AzureVoiceSettings,
-                Telnyx::RimeVoiceSettings,
                 Telnyx::ResembleVoiceSettings,
                 Telnyx::XaiVoiceSettings
               )

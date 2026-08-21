@@ -46,7 +46,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::PortingOrders::PhoneNumberExtensions) }
       attr_reader :phone_number_extensions
 
-      # Creates a new porting order object.
+      # Creates a new porting order to bring phone numbers from another carrier to
+      # Telnyx. Complete the order's requirements and then confirm it to submit the
+      # port.
       sig do
         params(
           phone_numbers: T::Array[String],
@@ -139,7 +141,8 @@ module Telnyx
       )
       end
 
-      # Returns a list of your porting order.
+      # Returns a paginated list of your porting orders. Supports filtering and sorting,
+      # and can optionally include the phone numbers attached to each order.
       sig do
         params(
           filter: Telnyx::PortingOrderListParams::Filter::OrHash,
@@ -206,7 +209,8 @@ module Telnyx
       def retrieve_exception_types(request_options: {})
       end
 
-      # Download a porting order loa template
+      # Downloads the Letter of Authorization (LOA) template document for this porting
+      # order, optionally rendered with a specific LOA configuration.
       sig do
         params(
           id: String,

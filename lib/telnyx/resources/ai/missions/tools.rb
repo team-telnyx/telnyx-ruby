@@ -5,7 +5,8 @@ module Telnyx
     class AI
       class Missions
         class Tools
-          # Create a new tool for a mission
+          # Adds a new tool to the specified mission, defining an action agents can invoke
+          # during runs of this mission.
           #
           # @overload create_tool(mission_id, request_options: {})
           #
@@ -25,7 +26,8 @@ module Telnyx
             )
           end
 
-          # Delete a tool from a mission
+          # Removes the specified tool from the mission so agents can no longer invoke it in
+          # subsequent runs.
           #
           # @overload delete_tool(tool_id, mission_id:, request_options: {})
           #
@@ -52,7 +54,7 @@ module Telnyx
             )
           end
 
-          # Get a specific tool by ID
+          # Returns the definition of a single tool configured on the specified mission.
           #
           # @overload get_tool(tool_id, mission_id:, request_options: {})
           #
@@ -79,7 +81,8 @@ module Telnyx
             )
           end
 
-          # List all tools for a mission
+          # Returns the tools configured on the specified mission. Tools define the actions
+          # agents may invoke while executing the mission's runs.
           #
           # @overload list_tools(mission_id, request_options: {})
           #
@@ -99,7 +102,7 @@ module Telnyx
             )
           end
 
-          # Update a tool definition
+          # Replaces the definition of the specified tool on this mission.
           #
           # @overload update_tool(tool_id, mission_id:, request_options: {})
           #

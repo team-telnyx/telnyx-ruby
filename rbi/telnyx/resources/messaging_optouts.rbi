@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Opt-Out Management
     class MessagingOptouts
-      # Retrieve a list of opt-out blocks.
+      # Returns a paginated list of opt-out blocks created when message recipients opt
+      # out. Supports filtering and optional redaction of recipient numbers.
       sig do
         params(
           created_at: Telnyx::MessagingOptoutListParams::CreatedAt::OrHash,

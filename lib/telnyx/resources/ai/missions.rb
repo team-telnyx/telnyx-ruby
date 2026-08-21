@@ -16,7 +16,8 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Missions::Tools]
         attr_reader :tools
 
-        # Create a new mission definition
+        # Creates a new mission definition from the provided configuration and returns the
+        # created mission. Execute the mission by starting runs against it.
         #
         # @overload create(name:, description: nil, execution_mode: nil, instructions: nil, metadata: nil, model: nil, request_options: {})
         #
@@ -62,7 +63,9 @@ module Telnyx
           )
         end
 
-        # List all missions for the organization
+        # Returns a paginated list of all mission definitions in your organization.
+        # Missions describe a goal and the tools, knowledge bases, and MCP servers agents
+        # may use to accomplish it.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
         #
@@ -88,7 +91,8 @@ module Telnyx
           )
         end
 
-        # Clone an existing mission
+        # Creates a copy of the specified mission as a new mission definition, so you can
+        # iterate on its configuration without modifying the original.
         #
         # @overload clone_mission(mission_id, request_options: {})
         #
@@ -108,7 +112,8 @@ module Telnyx
           )
         end
 
-        # Delete a mission
+        # Permanently deletes the specified mission definition and returns no content on
+        # success.
         #
         # @overload delete_mission(mission_id, request_options: {})
         #
@@ -128,7 +133,9 @@ module Telnyx
           )
         end
 
-        # List recent events across all missions
+        # Returns a paginated list of recent events across every mission in your
+        # organization, optionally filtered by event type. Useful for building activity
+        # feeds or monitoring dashboards.
         #
         # @overload list_events(page_number: nil, page_size: nil, type: nil, request_options: {})
         #
@@ -156,7 +163,8 @@ module Telnyx
           )
         end
 
-        # Update a mission definition
+        # Replaces the specified mission's definition with the provided configuration and
+        # returns the updated mission.
         #
         # @overload update_mission(mission_id, description: nil, execution_mode: nil, instructions: nil, metadata: nil, model: nil, name: nil, request_options: {})
         #

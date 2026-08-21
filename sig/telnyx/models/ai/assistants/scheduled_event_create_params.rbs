@@ -14,7 +14,8 @@ module Telnyx
             dynamic_variables: ::Hash[Symbol, String],
             max_retries_client_errors: Integer,
             retry_interval_secs: Integer,
-            text: String
+            text: String,
+            idempotency_key: String
           }
           & Telnyx::Internal::Type::request_parameters
 
@@ -62,6 +63,10 @@ module Telnyx
 
           def text=: (String) -> String
 
+          attr_reader idempotency_key: String?
+
+          def idempotency_key=: (String) -> String
+
           def initialize: (
             assistant_id: String,
             scheduled_at_fixed_datetime: Time,
@@ -74,6 +79,7 @@ module Telnyx
             ?max_retries_client_errors: Integer,
             ?retry_interval_secs: Integer,
             ?text: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> void
 
@@ -89,6 +95,7 @@ module Telnyx
             max_retries_client_errors: Integer,
             retry_interval_secs: Integer,
             text: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions
           }
 

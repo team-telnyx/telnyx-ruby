@@ -97,14 +97,7 @@ module Telnyx
         query = Telnyx::Internal::Util.encode_query_params(parsed)
         path =
           @client.base_url_overridden? ? "speech-to-text/transcription" : "wss://api.telnyx.com/v2/speech-to-text/transcription"
-        @client.request(
-          method: :get,
-          path: path,
-          query: query,
-          headers: {"content-type" => "application/octet-stream"},
-          model: NilClass,
-          options: options
-        )
+        @client.request(method: :get, path: path, query: query, model: NilClass, options: options)
       end
 
       # @api private

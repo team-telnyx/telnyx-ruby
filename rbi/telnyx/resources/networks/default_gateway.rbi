@@ -5,7 +5,8 @@ module Telnyx
     class Networks
       # Network operations
       class DefaultGateway
-        # Create Default Gateway.
+        # Creates a default gateway on the specified network, directing the network's
+        # outbound traffic through the chosen gateway.
         sig do
           params(
             network_identifier: String,
@@ -22,7 +23,7 @@ module Telnyx
         )
         end
 
-        # Get Default Gateway status.
+        # Returns the status of the default gateway configured on the specified network.
         sig do
           params(
             id: String,
@@ -36,7 +37,7 @@ module Telnyx
         )
         end
 
-        # Delete Default Gateway.
+        # Removes the default gateway from the specified network.
         sig do
           params(
             id: String,

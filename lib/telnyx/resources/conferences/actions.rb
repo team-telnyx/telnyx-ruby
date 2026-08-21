@@ -323,7 +323,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Conferences::ActionRecordPauseParams} for more details.
         #
-        # Pause conference recording.
+        # Pauses the active recording of the specified conference. Resume it later with
+        # the record_resume action.
         #
         # @overload record_pause(id, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #
@@ -354,7 +355,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Conferences::ActionRecordResumeParams} for more details.
         #
-        # Resume conference recording.
+        # Resumes a previously paused recording of the specified conference, continuing
+        # capture from the point it was paused.
         #
         # @overload record_resume(id, command_id: nil, recording_id: nil, region: nil, request_options: {})
         #
@@ -520,7 +522,7 @@ module Telnyx
         #
         # @param region [Symbol, Telnyx::Models::Conferences::ConferenceRegion] Region where the conference data is located. Defaults to the region defined in u
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

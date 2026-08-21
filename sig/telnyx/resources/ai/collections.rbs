@@ -50,7 +50,7 @@ module Telnyx
           ?sources: String,
           ?top_k: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::AI::CollectionRetrieveDocumentsResponse
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::CollectionRetrieveDocumentsResponse]
 
         def initialize: (client: Telnyx::Client) -> void
       end

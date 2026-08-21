@@ -121,7 +121,7 @@ module Telnyx
       #
       # @param id [String] Resource UUID. Malformed UUIDs are treated as not-found (not 400).
       #
-      # @param force [Symbol, Boolean, Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force] Force-delete a group with active suppressions. Only `"true"` (string) or `true`
+      # @param force [Symbol, Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::ForceString, Boolean] Force-delete a group with active suppressions. Only `"true"` (string) or `true`
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

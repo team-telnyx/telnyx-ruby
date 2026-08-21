@@ -35,7 +35,8 @@ module Telnyx
             )
             end
 
-            # Fetch single MDR usage report by id.
+            # Returns a single MDR (Message Detail Record) usage report by its identifier,
+            # including its parameters and current status.
             sig do
               params(
                 id: String,

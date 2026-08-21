@@ -4,8 +4,7 @@ module Telnyx
       {
         document_id: String,
         linked_record_type: String,
-        linked_resource_id: String,
-        record_type: String
+        linked_resource_id: String
       }
 
     class DocumentLinkListResponse < Telnyx::Models::DocServiceRecord
@@ -21,22 +20,16 @@ module Telnyx
 
       def linked_resource_id=: (String _) -> String
 
-      def record_type: -> String?
-
-      def record_type=: (String _) -> String
-
       def initialize: (
         ?document_id: String,
         ?linked_record_type: String,
-        ?linked_resource_id: String,
-        ?record_type: String
+        ?linked_resource_id: String
       ) -> void
 
       def to_hash: -> {
         document_id: String,
         linked_record_type: String,
-        linked_resource_id: String,
-        record_type: String
+        linked_resource_id: String
       }
     end
   end

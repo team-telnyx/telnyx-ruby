@@ -44,12 +44,13 @@ module Telnyx
         ?page_size: Integer,
         ?region: Telnyx::Models::AIRetrieveConversationHistoriesParams::region,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::AIRetrieveConversationHistoriesResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AIRetrieveConversationHistoriesResponse]
 
       def summarize: (
         bucket: String,
         filename: String,
         ?system_prompt: String,
+        ?idempotency_key: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::AISummarizeResponse
 

@@ -5,7 +5,7 @@ module Telnyx
     class Porting
       # Endpoints related to porting orders management.
       class Events
-        # Show a specific porting event.
+        # Returns the details of a single porting event, including its type and payload.
         sig do
           params(
             id: String,
@@ -19,7 +19,9 @@ module Telnyx
         )
         end
 
-        # Returns a list of all porting events.
+        # Returns a paginated list of porting-related events on your account, such as
+        # status changes on porting orders. Supports filtering and is useful for auditing
+        # or reconciling webhook deliveries.
         sig do
           params(
             filter: Telnyx::Porting::EventListParams::Filter::OrHash,
@@ -42,7 +44,8 @@ module Telnyx
         )
         end
 
-        # Republish a specific porting event.
+        # Republishes the specified porting event, triggering re-delivery of the
+        # corresponding webhook to your account.
         sig do
           params(
             id: String,

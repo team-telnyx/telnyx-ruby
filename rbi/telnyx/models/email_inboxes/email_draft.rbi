@@ -25,10 +25,10 @@ module Telnyx
         sig { returns(Telnyx::EmailInboxes::EmailDraft::Status::TaggedSymbol) }
         attr_accessor :status
 
-        sig { returns(T.nilable(T::Array[T.anything])) }
+        sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
         attr_reader :attachments
 
-        sig { params(attachments: T::Array[T.anything]).void }
+        sig { params(attachments: T::Array[T::Hash[Symbol, T.anything]]).void }
         attr_writer :attachments
 
         sig { returns(T.nilable(T::Array[Telnyx::EmailInboxes::EmailAddress])) }
@@ -78,10 +78,10 @@ module Telnyx
         attr_writer :labels
 
         # Arbitrary customer-defined metadata.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :metadata
 
-        sig { params(metadata: T.anything).void }
+        sig { params(metadata: T::Hash[Symbol, T.anything]).void }
         attr_writer :metadata
 
         sig { returns(T.nilable(String)) }
@@ -137,7 +137,7 @@ module Telnyx
             inbox_id: String,
             record_type: Telnyx::EmailInboxes::EmailDraft::RecordType::OrSymbol,
             status: Telnyx::EmailInboxes::EmailDraft::Status::OrSymbol,
-            attachments: T::Array[T.anything],
+            attachments: T::Array[T::Hash[Symbol, T.anything]],
             bcc: T::Array[Telnyx::EmailInboxes::EmailAddress::OrHash],
             cc: T::Array[Telnyx::EmailInboxes::EmailAddress::OrHash],
             created_at: Time,
@@ -146,7 +146,7 @@ module Telnyx
             headers: T::Hash[Symbol, String],
             html_body: T.nilable(String),
             labels: T::Array[String],
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             reply_to: T.nilable(String),
             reply_to_message_id: T.nilable(String),
             sent_at: T.nilable(Time),
@@ -206,7 +206,7 @@ module Telnyx
               record_type:
                 Telnyx::EmailInboxes::EmailDraft::RecordType::TaggedSymbol,
               status: Telnyx::EmailInboxes::EmailDraft::Status::TaggedSymbol,
-              attachments: T::Array[T.anything],
+              attachments: T::Array[T::Hash[Symbol, T.anything]],
               bcc: T::Array[Telnyx::EmailInboxes::EmailAddress],
               cc: T::Array[Telnyx::EmailInboxes::EmailAddress],
               created_at: Time,
@@ -215,7 +215,7 @@ module Telnyx
               headers: T::Hash[Symbol, String],
               html_body: T.nilable(String),
               labels: T::Array[String],
-              metadata: T.anything,
+              metadata: T::Hash[Symbol, T.anything],
               reply_to: T.nilable(String),
               reply_to_message_id: T.nilable(String),
               sent_at: T.nilable(Time),

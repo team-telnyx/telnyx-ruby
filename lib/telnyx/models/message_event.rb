@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::EmailMessages#retrieve_events
     class MessageEvent < Telnyx::Internal::Type::BaseModel
       # @!attribute occurred_at
       #

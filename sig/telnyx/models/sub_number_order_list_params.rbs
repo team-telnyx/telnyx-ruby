@@ -27,6 +27,7 @@ module Telnyx
       type filter =
         {
           country_code: String,
+          include_phone_numbers: bool,
           order_request_id: String,
           phone_number_type: String,
           phone_numbers_count: Integer,
@@ -37,6 +38,10 @@ module Telnyx
         attr_reader country_code: String?
 
         def country_code=: (String) -> String
+
+        attr_reader include_phone_numbers: bool?
+
+        def include_phone_numbers=: (bool) -> bool
 
         attr_reader order_request_id: String?
 
@@ -56,6 +61,7 @@ module Telnyx
 
         def initialize: (
           ?country_code: String,
+          ?include_phone_numbers: bool,
           ?order_request_id: String,
           ?phone_number_type: String,
           ?phone_numbers_count: Integer,
@@ -64,6 +70,7 @@ module Telnyx
 
         def to_hash: -> {
           country_code: String,
+          include_phone_numbers: bool,
           order_request_id: String,
           phone_number_type: String,
           phone_numbers_count: Integer,

@@ -541,7 +541,7 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Map =
+            ConnectorErrorDetailMap =
               T.let(
                 Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
                 Telnyx::Internal::Type::Converter
@@ -576,6 +576,11 @@ module Telnyx
                 :amex,
                 Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
               )
+            OPTIMA =
+              T.let(
+                :optima,
+                Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
+              )
             DISCOVER =
               T.let(
                 :discover,
@@ -589,6 +594,16 @@ module Telnyx
             JCB =
               T.let(
                 :jcb,
+                Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
+              )
+            MAESTRO =
+              T.let(
+                :maestro,
+                Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
+              )
+            ENROUTE =
+              T.let(
+                :enroute,
                 Telnyx::CallPaymentCompletedWebhookEvent::Data::Payload::PaymentCardType::TaggedSymbol
               )
 

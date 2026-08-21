@@ -24,7 +24,7 @@ module Telnyx
         ?page_cursor: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EmailInboxListResponse
+      ) -> Telnyx::Internal::EmailCursorPagination[Telnyx::EmailInbox]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

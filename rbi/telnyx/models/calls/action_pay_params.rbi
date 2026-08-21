@@ -163,6 +163,27 @@ module Telnyx
         end
         attr_writer :transaction_type
 
+        # Restricts accepted card numbers to the listed card types. When the caller enters
+        # a card number that does not match one of the listed types, Pay treats the input
+        # as invalid and re-prompts for the card number. Cannot be used together with
+        # `payment_token`.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Telnyx::Calls::ActionPayParams::ValidCardType::OrSymbol]
+            )
+          )
+        end
+        attr_reader :valid_card_types
+
+        sig do
+          params(
+            valid_card_types:
+              T::Array[Telnyx::Calls::ActionPayParams::ValidCardType::OrSymbol]
+          ).void
+        end
+        attr_writer :valid_card_types
+
         # Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
         # `<Provider>.<Model>.<VoiceId>` format, for example `AWS.Polly.Joanna` or
         # `Telnyx.KokoroTTS.af`.
@@ -194,6 +215,8 @@ module Telnyx
             timeout_millis: Integer,
             transaction_type:
               Telnyx::Calls::ActionPayParams::TransactionType::OrSymbol,
+            valid_card_types:
+              T::Array[Telnyx::Calls::ActionPayParams::ValidCardType::OrSymbol],
             voice: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -237,6 +260,11 @@ module Telnyx
           # Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is
           # absent or zero and `charge` when `amount` is positive.
           transaction_type: nil,
+          # Restricts accepted card numbers to the listed card types. When the caller enters
+          # a card number that does not match one of the listed types, Pay treats the input
+          # as invalid and re-prompts for the card number. Cannot be used together with
+          # `payment_token`.
+          valid_card_types: nil,
           # Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
           # `<Provider>.<Model>.<VoiceId>` format, for example `AWS.Polly.Joanna` or
           # `Telnyx.KokoroTTS.af`.
@@ -268,6 +296,10 @@ module Telnyx
               timeout_millis: Integer,
               transaction_type:
                 Telnyx::Calls::ActionPayParams::TransactionType::OrSymbol,
+              valid_card_types:
+                T::Array[
+                  Telnyx::Calls::ActionPayParams::ValidCardType::OrSymbol
+                ],
               voice: String,
               request_options: Telnyx::RequestOptions
             }
@@ -286,9 +318,9 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USD =
+          USD_UPPERCASE =
             T.let(:USD, Telnyx::Calls::ActionPayParams::Currency::TaggedSymbol)
-          USD_2 =
+          USD_LOWERCASE =
             T.let(:usd, Telnyx::Calls::ActionPayParams::Currency::TaggedSymbol)
 
           sig do
@@ -472,6 +504,72 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Calls::ActionPayParams::TransactionType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module ValidCardType
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::Calls::ActionPayParams::ValidCardType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          VISA =
+            T.let(
+              :visa,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          MASTERCARD =
+            T.let(
+              :mastercard,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          AMEX =
+            T.let(
+              :amex,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          MAESTRO =
+            T.let(
+              :maestro,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          DISCOVER =
+            T.let(
+              :discover,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          OPTIMA =
+            T.let(
+              :optima,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          JCB =
+            T.let(
+              :jcb,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          DINERS_CLUB =
+            T.let(
+              :"diners-club",
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+          ENROUTE =
+            T.let(
+              :enroute,
+              Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::Calls::ActionPayParams::ValidCardType::TaggedSymbol
               ]
             )
           end

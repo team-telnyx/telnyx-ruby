@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     class BundlePricing
       class BillingBundles
-        # Get a single bundle by ID.
+        # Returns the details of a single billing bundle by its ID, so you can inspect its
+        # contents before purchasing a user bundle.
         sig do
           params(
             bundle_id: String,
@@ -23,7 +24,8 @@ module Telnyx
         )
         end
 
-        # Get all allowed bundles.
+        # Returns a paginated list of the billing bundles available to your account, with
+        # support for filtering.
         sig do
           params(
             filter:

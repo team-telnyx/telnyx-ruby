@@ -15,18 +15,29 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :assistant_id
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             assistant_id: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(assistant_id:, request_options: {})
+        def self.new(assistant_id:, idempotency_key: nil, request_options: {})
         end
 
         sig do
           override.returns(
-            { assistant_id: String, request_options: Telnyx::RequestOptions }
+            {
+              assistant_id: String,
+              idempotency_key: String,
+              request_options: Telnyx::RequestOptions
+            }
           )
         end
         def to_hash

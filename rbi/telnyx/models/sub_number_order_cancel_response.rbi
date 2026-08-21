@@ -11,19 +11,21 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::SubNumberOrder)) }
+      sig { returns(T.nilable(Telnyx::NumbersSubNumberOrder)) }
       attr_reader :data
 
-      sig { params(data: Telnyx::SubNumberOrder::OrHash).void }
+      sig { params(data: Telnyx::NumbersSubNumberOrder::OrHash).void }
       attr_writer :data
 
       sig do
-        params(data: Telnyx::SubNumberOrder::OrHash).returns(T.attached_class)
+        params(data: Telnyx::NumbersSubNumberOrder::OrHash).returns(
+          T.attached_class
+        )
       end
       def self.new(data: nil)
       end
 
-      sig { override.returns({ data: Telnyx::SubNumberOrder }) }
+      sig { override.returns({ data: Telnyx::NumbersSubNumberOrder }) }
       def to_hash
       end
     end

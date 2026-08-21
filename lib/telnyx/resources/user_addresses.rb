@@ -11,7 +11,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::UserAddressCreateParams} for more details.
       #
-      # Creates a user address.
+      # Creates a new user address from the provided details and returns the created
+      # address.
       #
       # @overload create(business_name:, country_code:, first_name:, last_name:, locality:, street_address:, administrative_area: nil, borough: nil, customer_reference: nil, extended_address: nil, neighborhood: nil, phone_number: nil, postal_code: nil, skip_address_verification: nil, request_options: {})
       #
@@ -82,7 +83,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::UserAddressListParams} for more details.
       #
-      # Returns a list of your user addresses.
+      # Returns a paginated list of your user addresses, with support for filtering and
+      # sorting.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
       #

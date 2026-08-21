@@ -57,7 +57,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::EmailMessages::RecipientListResponse]
+        # @return [Telnyx::Internal::EmailCursorPagination<Telnyx::Models::EmailMessages::EmailRecipient>]
         #
         # @see Telnyx::Models::EmailMessages::RecipientListParams
         def list(email_id, params = {})
@@ -67,7 +67,8 @@ module Telnyx
             method: :get,
             path: ["email_messages/%1$s/recipients", email_id],
             query: query,
-            model: Telnyx::Models::EmailMessages::RecipientListResponse,
+            page: Telnyx::Internal::EmailCursorPagination,
+            model: Telnyx::EmailMessages::EmailRecipient,
             options: options
           )
         end

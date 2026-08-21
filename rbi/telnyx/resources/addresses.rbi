@@ -28,7 +28,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::Addresses::Actions) }
       attr_reader :actions
 
-      # Creates an address.
+      # Creates a new address on your account from the provided details, for use with
+      # services that require a physical address such as emergency calling and
+      # regulatory compliance.
       sig do
         params(
           business_name: String,
@@ -112,7 +114,8 @@ module Telnyx
       )
       end
 
-      # Returns a list of your addresses.
+      # Returns a paginated list of the addresses on your account, with support for
+      # filtering and sorting.
       sig do
         params(
           filter: Telnyx::AddressListParams::Filter::OrHash,
@@ -149,7 +152,7 @@ module Telnyx
       )
       end
 
-      # Deletes an existing address.
+      # Permanently deletes the specified address from your account.
       sig do
         params(
           id: String,

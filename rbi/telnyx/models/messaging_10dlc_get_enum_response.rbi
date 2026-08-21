@@ -11,7 +11,7 @@ module Telnyx
             T::Array[String],
             T::Array[T::Hash[Symbol, T.anything]],
             T::Hash[Symbol, String],
-            T::Hash[Symbol, T.anything],
+            T::Hash[Symbol, T::Hash[Symbol, T.anything]],
             Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse
           )
         end
@@ -87,7 +87,9 @@ module Telnyx
 
       EnumObjecToObjecttResponseMap =
         T.let(
-          Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+          Telnyx::Internal::Type::HashOf[
+            Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+          ],
           Telnyx::Internal::Type::Converter
         )
     end

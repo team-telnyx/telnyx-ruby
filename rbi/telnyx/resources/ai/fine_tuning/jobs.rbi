@@ -6,7 +6,8 @@ module Telnyx
       class FineTuning
         # Customize LLMs for your unique needs
         class Jobs
-          # Create a new fine tuning job.
+          # Creates a new fine-tuning job that trains a model on the provided dataset, and
+          # returns the created job.
           sig do
             params(
               model: String,
@@ -30,7 +31,8 @@ module Telnyx
           )
           end
 
-          # Retrieve a fine tuning job by `job_id`.
+          # Returns the details of a single fine-tuning job by its job_id, including its
+          # current status.
           sig do
             params(
               job_id: String,
@@ -53,7 +55,7 @@ module Telnyx
           def list(request_options: {})
           end
 
-          # Cancel a fine tuning job.
+          # Cancels the specified in-progress fine-tuning job and returns the updated job.
           sig do
             params(
               job_id: String,

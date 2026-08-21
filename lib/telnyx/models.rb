@@ -139,8 +139,6 @@ module Telnyx
 
   BalanceRetrieveParams = Telnyx::Models::BalanceRetrieveParams
 
-  BillingAddress = Telnyx::Models::BillingAddress
-
   BillingContact = Telnyx::Models::BillingContact
 
   BillingGroup = Telnyx::Models::BillingGroup
@@ -770,6 +768,8 @@ module Telnyx
 
   EmailValidationCheck = Telnyx::Models::EmailValidationCheck
 
+  EmailValidationChecks = Telnyx::Models::EmailValidationChecks
+
   EmailValidationCreateParams = Telnyx::Models::EmailValidationCreateParams
 
   EmailValidations = Telnyx::Models::EmailValidations
@@ -947,6 +947,8 @@ module Telnyx
   InboundMessagePayload = Telnyx::Models::InboundMessagePayload
 
   InboundMessageWebhookEvent = Telnyx::Models::InboundMessageWebhookEvent
+
+  InboundSipHeader = Telnyx::Models::InboundSipHeader
 
   InexplicitNumberOrderCreateParams = Telnyx::Models::InexplicitNumberOrderCreateParams
 
@@ -1144,6 +1146,8 @@ module Telnyx
   MessagingHostedNumberRetrieveParams = Telnyx::Models::MessagingHostedNumberRetrieveParams
 
   MessagingHostedNumberUpdateParams = Telnyx::Models::MessagingHostedNumberUpdateParams
+
+  MessagingInboundMessagePayload = Telnyx::Models::MessagingInboundMessagePayload
 
   MessagingMetricsTimeFrame = Telnyx::Models::MessagingMetricsTimeFrame
 
@@ -1349,6 +1353,8 @@ module Telnyx
   NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
 
   NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
+
+  NumbersSubNumberOrder = Telnyx::Models::NumbersSubNumberOrder
 
   OAuthClient = Telnyx::Models::OAuthClient
 
@@ -1685,8 +1691,6 @@ module Telnyx
 
   ReservedPhoneNumber = Telnyx::Models::ReservedPhoneNumber
 
-  RimeVoiceSettings = Telnyx::Models::RimeVoiceSettings
-
   Room = Telnyx::Models::Room
 
   RoomComposition = Telnyx::Models::RoomComposition
@@ -1730,6 +1734,8 @@ module Telnyx
   RoomUpdateParams = Telnyx::Models::RoomUpdateParams
 
   S3ConfigurationData = Telnyx::Models::S3ConfigurationData
+
+  S3GenericConfigurationData = Telnyx::Models::S3GenericConfigurationData
 
   ServicePlan = Telnyx::Models::ServicePlan
 
@@ -1833,8 +1839,6 @@ module Telnyx
 
   SpeechToTextRetrieveTranscriptionParams = Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
 
-  SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
-
   Storage = Telnyx::Models::Storage
 
   StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
@@ -1875,6 +1879,8 @@ module Telnyx
   SubNumberOrderUpdateParams = Telnyx::Models::SubNumberOrderUpdateParams
 
   SubNumberOrderUpdateRequirementGroupParams = Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
+
+  SuppressedRecipient = Telnyx::Models::SuppressedRecipient
 
   TelephonyCredential = Telnyx::Models::TelephonyCredential
 
@@ -1919,8 +1925,6 @@ module Telnyx
   TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 
   TextToSpeechRetrieveSpeechParams = Telnyx::Models::TextToSpeechRetrieveSpeechParams
-
-  TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
 
   TimeRange = Telnyx::Models::TimeRange
 

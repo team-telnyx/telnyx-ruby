@@ -5,6 +5,9 @@ module Telnyx
     class Pricing
       # Public pricing operations
       class Products
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Pricing::ProductRetrieveParams} for more details.
+        #
         # Returns pricing entries for a single product. Most products return standard rate
         # entries with fields like rate, unit, country_iso, direction, and tiers.
         # Inference products return model-specific fields (model, input_rate, output_rate,
@@ -15,7 +18,7 @@ module Telnyx
         #
         # @param slug [String] Product slug from the catalog listing.
         #
-        # @param filter_country_iso [String, nil]
+        # @param filter_country_iso [String, nil] Two-letter ISO 3166-1 alpha-2 country code (uppercase, e.g. US) to filter pricin
         #
         # @param page_number [Integer] Page number (1-based).
         #
@@ -23,7 +26,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Pricing::ProductRetrieveResponse]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Pricing::ProductRetrieveResponse>]
         #
         # @see Telnyx::Models::Pricing::ProductRetrieveParams
         def retrieve(slug, params = {})
@@ -37,6 +40,7 @@ module Telnyx
               page_number: "page[number]",
               page_size: "page[size]"
             ),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::Pricing::ProductRetrieveResponse,
             options: options
           )

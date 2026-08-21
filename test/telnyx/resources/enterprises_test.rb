@@ -109,7 +109,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       row => {
         id: String | nil,
-        billing_address: Telnyx::BillingAddress | nil,
+        billing_address: Telnyx::PhysicalAddress | nil,
         billing_contact: Telnyx::BillingContact | nil,
         branded_calling_enabled: Telnyx::Internal::Type::Boolean | nil,
         corporate_registration_number: String | nil,

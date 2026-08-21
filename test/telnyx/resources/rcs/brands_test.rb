@@ -40,12 +40,12 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),
         display_name: String,
-        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandResponse::Identifier]),
+        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandIdentifier]),
         legal_entity_type: String,
         legal_name: String,
         organization_type: String,
@@ -67,12 +67,12 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),
         display_name: String,
-        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandResponse::Identifier]),
+        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandIdentifier]),
         legal_entity_type: String,
         legal_name: String,
         organization_type: String,
@@ -94,12 +94,12 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),
         display_name: String,
-        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandResponse::Identifier]),
+        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandIdentifier]),
         legal_entity_type: String,
         legal_name: String,
         organization_type: String,
@@ -131,12 +131,12 @@ class Telnyx::Test::Resources::Rcs::BrandsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandResponse::Address]),
+        addresses: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandAddress]),
         brand_id: String,
         capabilities: Telnyx::Rcs::CapabilitiesResponse,
         contacts: ^(Telnyx::Internal::Type::HashOf[Telnyx::Rcs::BrandContact]),
         display_name: String,
-        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandResponse::Identifier]),
+        identifiers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandIdentifier]),
         legal_entity_type: String,
         legal_name: String,
         organization_type: String,

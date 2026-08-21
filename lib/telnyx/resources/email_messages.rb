@@ -130,7 +130,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailMessageListResponse]
+      # @return [Telnyx::Internal::EmailCursorPagination<Telnyx::Models::EmailInboxes::EmailMessage>]
       #
       # @see Telnyx::Models::EmailMessageListParams
       def list(params = {})
@@ -140,7 +140,8 @@ module Telnyx
           method: :get,
           path: "email_messages",
           query: query,
-          model: Telnyx::Models::EmailMessageListResponse,
+          page: Telnyx::Internal::EmailCursorPagination,
+          model: Telnyx::EmailInboxes::EmailMessage,
           options: options
         )
       end
@@ -267,7 +268,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailMessageRetrieveEventsResponse]
+      # @return [Telnyx::Internal::EmailCursorPagination<Telnyx::Models::MessageEvent>]
       #
       # @see Telnyx::Models::EmailMessageRetrieveEventsParams
       def retrieve_events(email_id, params = {})
@@ -277,7 +278,8 @@ module Telnyx
           method: :get,
           path: ["email_messages/%1$s/events", email_id],
           query: query,
-          model: Telnyx::Models::EmailMessageRetrieveEventsResponse,
+          page: Telnyx::Internal::EmailCursorPagination,
+          model: Telnyx::MessageEvent,
           options: options
         )
       end

@@ -20,10 +20,17 @@ module Telnyx
         #   @return [String]
         required :url, String
 
-        # @!method initialize(bucket_name:, url:, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(bucket_name:, url:, idempotency_key: nil, request_options: {})
         #   @param bucket_name [String] Name of the bucket to store the embeddings. This bucket must already exist.
         #
         #   @param url [String] The URL of the webpage to embed
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

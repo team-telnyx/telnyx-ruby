@@ -7,7 +7,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::OutboundVoiceProfileCreateParams} for more details.
       #
-      # Create an outbound voice profile.
+      # Creates a new outbound voice profile defining calling permissions, destinations,
+      # and limits for outbound calls, and returns the created profile.
       #
       # @overload create(name:, billing_group_id: nil, call_recording: nil, calling_window: nil, concurrent_call_limit: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, max_destination_rate: nil, service_plan: nil, tags: nil, traffic_type: nil, usage_payment_method: nil, whitelisted_destinations: nil, request_options: {})
       #

@@ -3,7 +3,8 @@
 module Telnyx
   module Resources
     class OAuthClients
-      # Create a new OAuth client
+      # Creates a new OAuth client on your account for authenticating third-party
+      # integrations, and returns the created client.
       sig do
         params(
           allowed_grant_types:
@@ -44,7 +45,7 @@ module Telnyx
       )
       end
 
-      # Retrieve a single OAuth client by ID
+      # Returns the details of a single OAuth client on your account by its ID.
       sig do
         params(
           id: String,
@@ -58,7 +59,8 @@ module Telnyx
       )
       end
 
-      # Update an existing OAuth client
+      # Updates the specified OAuth client's configuration and returns the updated
+      # client.
       sig do
         params(
           id: String,
@@ -136,7 +138,7 @@ module Telnyx
       )
       end
 
-      # Delete an OAuth client
+      # Permanently deletes the specified OAuth client from your account.
       sig do
         params(id: String, request_options: Telnyx::RequestOptions::OrHash).void
       end

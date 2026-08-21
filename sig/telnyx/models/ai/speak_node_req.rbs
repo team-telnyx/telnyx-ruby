@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    module AI
+      type speak_node_req =
+        {
+          id: String,
+          message: String,
+          name: String,
+          position: Telnyx::AI::NodePosition,
+          type: Telnyx::Models::AI::SpeakNodeReq::type_
+        }
+
+      class SpeakNodeReq < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor message: String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader position: Telnyx::AI::NodePosition?
+
+        def position=: (Telnyx::AI::NodePosition) -> Telnyx::AI::NodePosition
+
+        attr_reader type: Telnyx::Models::AI::SpeakNodeReq::type_?
+
+        def type=: (
+          Telnyx::Models::AI::SpeakNodeReq::type_
+        ) -> Telnyx::Models::AI::SpeakNodeReq::type_
+
+        def initialize: (
+          id: String,
+          message: String,
+          ?name: String,
+          ?position: Telnyx::AI::NodePosition,
+          ?type: Telnyx::Models::AI::SpeakNodeReq::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          message: String,
+          name: String,
+          position: Telnyx::AI::NodePosition,
+          type: Telnyx::Models::AI::SpeakNodeReq::type_
+        }
+
+        type type_ = :speak
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          SPEAK: :speak
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::SpeakNodeReq::type_]
+        end
+      end
+    end
+  end
+end

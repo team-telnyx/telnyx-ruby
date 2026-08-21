@@ -26,7 +26,7 @@ module Telnyx
           )
         end
 
-        # Cancel a porting order
+        # Requests cancellation of the porting order and returns the updated order.
         #
         # @overload cancel(id, request_options: {})
         #
@@ -46,7 +46,8 @@ module Telnyx
           )
         end
 
-        # Confirm and submit your porting order.
+        # Confirms the porting order and submits it for processing. Make sure all required
+        # information and documents are attached before confirming.
         #
         # @overload confirm(id, request_options: {})
         #

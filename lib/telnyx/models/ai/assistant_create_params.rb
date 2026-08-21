@@ -211,7 +211,12 @@ module Telnyx
         #   @return [Telnyx::Models::AI::WidgetSettings, nil]
         optional :widget_settings, -> { Telnyx::AI::WidgetSettings }
 
-        # @!method initialize(instructions:, name:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(instructions:, name:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, idempotency_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::AssistantCreateParams} for more details.
         #
@@ -270,6 +275,8 @@ module Telnyx
         #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
         #
         #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

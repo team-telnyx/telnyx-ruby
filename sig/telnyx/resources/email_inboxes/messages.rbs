@@ -9,7 +9,7 @@ module Telnyx
         def update: (
           String message_id,
           inbox_id: String,
-          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at?,
+          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::EmailInboxes::MessageUpdateResponse
 
@@ -26,12 +26,12 @@ module Telnyx
           ?page_after: String,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::EmailInboxes::MessageListResponse
+        ) -> Telnyx::Internal::EmailBracketCursorPagination[Telnyx::InboundMessage]
 
         def drafts: (
           String message_id,
           inbox_id: String,
-          ?attachments: ::Array[top],
+          ?attachments: ::Array[::Hash[Symbol, top]],
           ?bcc: ::Array[Telnyx::Models::email_address_input],
           ?cc: ::Array[Telnyx::Models::email_address_input],
           ?from_email: String,
@@ -40,7 +40,7 @@ module Telnyx
           ?html: String,
           ?html_body: String,
           ?labels: ::Array[String],
-          ?metadata: top,
+          ?metadata: ::Hash[Symbol, top],
           ?reply_to: String,
           ?subject: String,
           ?tags: ::Array[String],

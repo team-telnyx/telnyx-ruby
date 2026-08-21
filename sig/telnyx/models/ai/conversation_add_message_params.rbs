@@ -11,7 +11,8 @@ module Telnyx
           sent_at: Time,
           tool_call_id: String,
           tool_calls: ::Array[::Hash[Symbol, top]],
-          tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice
+          tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
+          idempotency_key: String
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -57,6 +58,10 @@ module Telnyx
           Telnyx::Models::AI::ConversationAddMessageParams::tool_choice
         ) -> Telnyx::Models::AI::ConversationAddMessageParams::tool_choice
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         def initialize: (
           conversation_id: String,
           role: String,
@@ -67,6 +72,7 @@ module Telnyx
           ?tool_call_id: String,
           ?tool_calls: ::Array[::Hash[Symbol, top]],
           ?tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -80,6 +86,7 @@ module Telnyx
           tool_call_id: String,
           tool_calls: ::Array[::Hash[Symbol, top]],
           tool_choice: Telnyx::Models::AI::ConversationAddMessageParams::tool_choice,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions
         }
 

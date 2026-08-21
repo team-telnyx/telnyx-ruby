@@ -15,7 +15,7 @@ module Telnyx
         ?page_after: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::EmailInboxes::InboundThreadListResponse
+      ) -> Telnyx::Internal::EmailBracketCursorPagination[Telnyx::EmailInboxes::InboundThread]
 
       def initialize: (client: Telnyx::Client) -> void
     end

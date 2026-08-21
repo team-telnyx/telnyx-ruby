@@ -9,14 +9,17 @@ module Telnyx
 
         Variants =
           T.type_alias do
-            T.any(String, T::Array[Telnyx::Calls::PayPromptValue::UnionMember1])
+            T.any(
+              String,
+              T::Array[Telnyx::Calls::PayPromptValue::PayPromptList]
+            )
           end
 
-        class UnionMember1 < Telnyx::Internal::Type::BaseModel
+        class PayPromptList < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Calls::PayPromptValue::UnionMember1,
+                Telnyx::Calls::PayPromptValue::PayPromptList,
                 Telnyx::Internal::AnyHash
               )
             end
@@ -32,13 +35,11 @@ module Telnyx
           sig { params(attempt: String).void }
           attr_writer :attempt
 
-          # Lowercase, case-sensitive detected card type for which this prompt applies. Only
-          # the listed brands are currently detected; accepted UnionPay and Maestro test
-          # cards do not produce a card-type qualifier.
+          # Lowercase, case-sensitive detected card type for which this prompt applies.
           sig do
             returns(
               T.nilable(
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::OrSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::OrSymbol
               )
             )
           end
@@ -47,7 +48,7 @@ module Telnyx
           sig do
             params(
               card_type:
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::OrSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::OrSymbol
             ).void
           end
           attr_writer :card_type
@@ -56,7 +57,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::OrSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::OrSymbol
               )
             )
           end
@@ -65,7 +66,7 @@ module Telnyx
           sig do
             params(
               error_type:
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::OrSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::OrSymbol
             ).void
           end
           attr_writer :error_type
@@ -76,9 +77,9 @@ module Telnyx
               text: String,
               attempt: String,
               card_type:
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::OrSymbol,
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::OrSymbol,
               error_type:
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::OrSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -86,9 +87,7 @@ module Telnyx
             text:,
             # Space-separated 1-based attempt numbers for which this prompt applies.
             attempt: nil,
-            # Lowercase, case-sensitive detected card type for which this prompt applies. Only
-            # the listed brands are currently detected; accepted UnionPay and Maestro test
-            # cards do not produce a card-type qualifier.
+            # Lowercase, case-sensitive detected card type for which this prompt applies.
             card_type: nil,
             # Step error for which this prompt applies.
             error_type: nil
@@ -101,18 +100,16 @@ module Telnyx
                 text: String,
                 attempt: String,
                 card_type:
-                  Telnyx::Calls::PayPromptValue::UnionMember1::CardType::OrSymbol,
+                  Telnyx::Calls::PayPromptValue::PayPromptList::CardType::OrSymbol,
                 error_type:
-                  Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::OrSymbol
+                  Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::OrSymbol
               }
             )
           end
           def to_hash
           end
 
-          # Lowercase, case-sensitive detected card type for which this prompt applies. Only
-          # the listed brands are currently detected; accepted UnionPay and Maestro test
-          # cards do not produce a card-type qualifier.
+          # Lowercase, case-sensitive detected card type for which this prompt applies.
           module CardType
             extend Telnyx::Internal::Type::Enum
 
@@ -120,7 +117,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::Calls::PayPromptValue::UnionMember1::CardType
+                  Telnyx::Calls::PayPromptValue::PayPromptList::CardType
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -128,38 +125,53 @@ module Telnyx
             VISA =
               T.let(
                 :visa,
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
             MASTERCARD =
               T.let(
                 :mastercard,
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
             AMEX =
               T.let(
                 :amex,
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
+              )
+            OPTIMA =
+              T.let(
+                :optima,
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
             DISCOVER =
               T.let(
                 :discover,
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
             DINERS_CLUB =
               T.let(
                 :"diners-club",
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
             JCB =
               T.let(
                 :jcb,
-                Telnyx::Calls::PayPromptValue::UnionMember1::CardType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
+              )
+            MAESTRO =
+              T.let(
+                :maestro,
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
+              )
+            ENROUTE =
+              T.let(
+                :enroute,
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::Calls::PayPromptValue::UnionMember1::CardType::TaggedSymbol
+                  Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
                 ]
               )
             end
@@ -175,7 +187,7 @@ module Telnyx
               T.type_alias do
                 T.all(
                   Symbol,
-                  Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType
+                  Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -183,48 +195,53 @@ module Telnyx
             TIMEOUT =
               T.let(
                 :timeout,
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INVALID_CARD_NUMBER =
               T.let(
                 :"invalid-card-number",
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
+              )
+            INVALID_CARD_TYPE =
+              T.let(
+                :"invalid-card-type",
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INVALID_DATE =
               T.let(
                 :"invalid-date",
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INVALID_SECURITY_CODE =
               T.let(
                 :"invalid-security-code",
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INVALID_POSTAL_CODE =
               T.let(
                 :"invalid-postal-code",
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INVALID_BANK_ROUTING_NUMBER =
               T.let(
                 :"invalid-bank-routing-number",
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INVALID_BANK_ACCOUNT_NUMBER =
               T.let(
                 :"invalid-bank-account-number",
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INPUT_MATCHING_FAILED =
               T.let(
                 :"input-matching-failed",
-                Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType::TaggedSymbol
+                  Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
                 ]
               )
             end
@@ -239,10 +256,10 @@ module Telnyx
         def self.variants
         end
 
-        UnionMember1Array =
+        PayPromptListArray =
           T.let(
             Telnyx::Internal::Type::ArrayOf[
-              Telnyx::Calls::PayPromptValue::UnionMember1
+              Telnyx::Calls::PayPromptValue::PayPromptList
             ],
             Telnyx::Internal::Type::Converter
           )

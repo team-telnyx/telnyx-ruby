@@ -37,53 +37,11 @@ module Telnyx
       type configuration =
         Telnyx::GcsConfigurationData
         | Telnyx::S3ConfigurationData
-        | Telnyx::CustomStorageConfiguration::Configuration::S3Generic
+        | Telnyx::S3GenericConfigurationData
         | Telnyx::AzureConfigurationData
 
       module Configuration
         extend Telnyx::Internal::Type::Union
-
-        type s3_generic =
-          {
-            aws_access_key_id: String,
-            aws_secret_access_key: String,
-            backend: :"s3-generic",
-            bucket: String,
-            endpoint: String,
-            region: String
-          }
-
-        class S3Generic < Telnyx::Internal::Type::BaseModel
-          attr_accessor aws_access_key_id: String
-
-          attr_accessor aws_secret_access_key: String
-
-          attr_accessor backend: :"s3-generic"
-
-          attr_accessor bucket: String
-
-          attr_accessor endpoint: String
-
-          attr_accessor region: String
-
-          def initialize: (
-            aws_access_key_id: String,
-            aws_secret_access_key: String,
-            bucket: String,
-            endpoint: String,
-            region: String,
-            ?backend: :"s3-generic"
-          ) -> void
-
-          def to_hash: -> {
-            aws_access_key_id: String,
-            aws_secret_access_key: String,
-            backend: :"s3-generic",
-            bucket: String,
-            endpoint: String,
-            region: String
-          }
-        end
 
         def self?.variants: -> ::Array[Telnyx::Models::CustomStorageConfiguration::configuration]
       end

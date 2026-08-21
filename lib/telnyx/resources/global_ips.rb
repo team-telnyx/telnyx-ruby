@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPs
-      # Create a Global IP.
+      # Requests creation of a new Global IP, a static IP address announced from the
+      # Telnyx network. Provisioning is asynchronous, so the request is accepted and the
+      # Global IP becomes available once provisioning completes.
       #
       # @overload create(description: nil, name: nil, ports: nil, request_options: {})
       #
@@ -30,7 +32,8 @@ module Telnyx
         )
       end
 
-      # Retrieve a Global IP.
+      # Returns the details of a single Global IP, including its address and current
+      # configuration.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -50,7 +53,8 @@ module Telnyx
         )
       end
 
-      # List all Global IPs.
+      # Returns a paginated list of the Global IPs on your account, including each IP's
+      # address and configuration.
       #
       # @overload list(page_number: nil, page_size: nil, request_options: {})
       #
@@ -74,7 +78,7 @@ module Telnyx
         )
       end
 
-      # Delete a Global IP.
+      # Deletes the specified Global IP and releases its address back to Telnyx.
       #
       # @overload delete(id, request_options: {})
       #

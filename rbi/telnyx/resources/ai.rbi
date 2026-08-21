@@ -118,7 +118,11 @@ module Telnyx
           region:
             Telnyx::AIRetrieveConversationHistoriesParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AIRetrieveConversationHistoriesResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::AIRetrieveConversationHistoriesResponse
+          ]
+        )
       end
       def retrieve_conversation_histories(
         # Natural language search query. The text is embedded into a 1024-dimensional
@@ -177,16 +181,26 @@ module Telnyx
           bucket: String,
           filename: String,
           system_prompt: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::AISummarizeResponse)
       end
       def summarize(
-        # The name of the bucket that contains the file to be summarized.
+        # Body param: The name of the bucket that contains the file to be summarized.
         bucket:,
-        # The name of the file to be summarized.
+        # Body param: The name of the file to be summarized.
         filename:,
-        # A system prompt to guide the summary generation.
+        # Body param: A system prompt to guide the summary generation.
         system_prompt: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end

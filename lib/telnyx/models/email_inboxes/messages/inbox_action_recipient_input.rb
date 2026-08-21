@@ -11,11 +11,11 @@ module Telnyx
 
           variant String
 
-          variant -> { Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1 }
+          variant -> { Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress }
 
           variant -> { Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxActionEmailAddressInputArray }
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class InboxRecipientAddress < Telnyx::Internal::Type::BaseModel
             # @!attribute email
             #
             #   @return [String]
@@ -32,7 +32,7 @@ module Telnyx
           end
 
           # @!method self.variants
-          #   @return [Array(String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>)]
+          #   @return [Array(String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>)]
 
           # @type [Telnyx::Internal::Type::Converter]
           InboxActionEmailAddressInputArray =

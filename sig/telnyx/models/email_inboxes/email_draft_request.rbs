@@ -3,7 +3,7 @@ module Telnyx
     module EmailInboxes
       type email_draft_request =
         {
-          attachments: ::Array[top],
+          attachments: ::Array[::Hash[Symbol, top]],
           bcc: ::Array[Telnyx::Models::email_address_input],
           cc: ::Array[Telnyx::Models::email_address_input],
           from_email: String,
@@ -12,7 +12,7 @@ module Telnyx
           html: String,
           html_body: String,
           labels: ::Array[String],
-          metadata: top,
+          metadata: ::Hash[Symbol, top],
           reply_to: String,
           subject: String,
           tags: ::Array[String],
@@ -22,9 +22,11 @@ module Telnyx
         }
 
       class EmailDraftRequest < Telnyx::Internal::Type::BaseModel
-        attr_reader attachments: ::Array[top]?
+        attr_reader attachments: ::Array[::Hash[Symbol, top]]?
 
-        def attachments=: (::Array[top]) -> ::Array[top]
+        def attachments=: (
+          ::Array[::Hash[Symbol, top]]
+        ) -> ::Array[::Hash[Symbol, top]]
 
         attr_reader bcc: ::Array[Telnyx::Models::email_address_input]?
 
@@ -62,9 +64,9 @@ module Telnyx
 
         def labels=: (::Array[String]) -> ::Array[String]
 
-        attr_reader metadata: top?
+        attr_reader metadata: ::Hash[Symbol, top]?
 
-        def metadata=: (top) -> top
+        def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader reply_to: String?
 
@@ -93,7 +95,7 @@ module Telnyx
         ) -> ::Array[Telnyx::Models::email_address_input]
 
         def initialize: (
-          ?attachments: ::Array[top],
+          ?attachments: ::Array[::Hash[Symbol, top]],
           ?bcc: ::Array[Telnyx::Models::email_address_input],
           ?cc: ::Array[Telnyx::Models::email_address_input],
           ?from_email: String,
@@ -102,7 +104,7 @@ module Telnyx
           ?html: String,
           ?html_body: String,
           ?labels: ::Array[String],
-          ?metadata: top,
+          ?metadata: ::Hash[Symbol, top],
           ?reply_to: String,
           ?subject: String,
           ?tags: ::Array[String],
@@ -112,7 +114,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
-          attachments: ::Array[top],
+          attachments: ::Array[::Hash[Symbol, top]],
           bcc: ::Array[Telnyx::Models::email_address_input],
           cc: ::Array[Telnyx::Models::email_address_input],
           from_email: String,
@@ -121,7 +123,7 @@ module Telnyx
           html: String,
           html_body: String,
           labels: ::Array[String],
-          metadata: top,
+          metadata: ::Hash[Symbol, top],
           reply_to: String,
           subject: String,
           tags: ::Array[String],

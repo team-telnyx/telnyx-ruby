@@ -9,7 +9,8 @@ module Telnyx
         sig { returns(Telnyx::Resources::Organizations::Users::Actions) }
         attr_reader :actions
 
-        # Returns a user in your organization.
+        # Returns the details of a user in your organization, optionally including the
+        # groups the user belongs to.
         sig do
           params(
             id: String,
