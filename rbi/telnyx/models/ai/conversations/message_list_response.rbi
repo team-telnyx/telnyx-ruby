@@ -34,6 +34,29 @@ module Telnyx
           sig { params(created_at: Time).void }
           attr_writer :created_at
 
+          sig do
+            returns(
+              T.nilable(
+                T::Hash[
+                  Symbol,
+                  Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::Variants
+                ]
+              )
+            )
+          end
+          attr_reader :metadata
+
+          sig do
+            params(
+              metadata:
+                T::Hash[
+                  Symbol,
+                  Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::Variants
+                ]
+            ).void
+          end
+          attr_writer :metadata
+
           # The datetime the message was sent to the end user.
           sig { returns(T.nilable(Time)) }
           attr_reader :sent_at
@@ -69,6 +92,11 @@ module Telnyx
                 Telnyx::Models::AI::Conversations::MessageListResponse::Role::OrSymbol,
               text: String,
               created_at: Time,
+              metadata:
+                T::Hash[
+                  Symbol,
+                  Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::Variants
+                ],
               sent_at: Time,
               tool_calls:
                 T::Array[
@@ -85,6 +113,7 @@ module Telnyx
             # necesarily correspond to the time the message was sent. The best field to use to
             # determine the time the end user experienced the message is `sent_at`.
             created_at: nil,
+            metadata: nil,
             # The datetime the message was sent to the end user.
             sent_at: nil,
             # Optional tool calls made by the assistant.
@@ -99,6 +128,11 @@ module Telnyx
                   Telnyx::Models::AI::Conversations::MessageListResponse::Role::TaggedSymbol,
                 text: String,
                 created_at: Time,
+                metadata:
+                  T::Hash[
+                    Symbol,
+                    Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::Variants
+                  ],
                 sent_at: Time,
                 tool_calls:
                   T::Array[
@@ -148,6 +182,57 @@ module Telnyx
             end
             def self.values
             end
+          end
+
+          module Metadata
+            extend Telnyx::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.any(
+                  String,
+                  Integer,
+                  T::Boolean,
+                  T::Array[
+                    Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::ConversationMetadataListValue::Variants
+                  ]
+                )
+              end
+
+            module ConversationMetadataListValue
+              extend Telnyx::Internal::Type::Union
+
+              Variants = T.type_alias { T.any(String, Integer, T::Boolean) }
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::ConversationMetadataListValue::Variants
+                  ]
+                )
+              end
+              def self.variants
+              end
+            end
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+
+            ConversationMetadataListValueArray =
+              T.let(
+                Telnyx::Internal::Type::ArrayOf[
+                  union:
+                    Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::ConversationMetadataListValue
+                ],
+                Telnyx::Internal::Type::Converter
+              )
           end
 
           class ToolCall < Telnyx::Internal::Type::BaseModel

@@ -3,7 +3,7 @@
 module Telnyx
   module Resources
     class SubNumberOrders
-      # Get an existing sub number order.
+      # Returns the details of an existing sub number order, with support for filtering.
       sig do
         params(
           sub_number_order_id: String,
@@ -21,7 +21,8 @@ module Telnyx
       )
       end
 
-      # Updates a sub number order.
+      # Updates the requirements of an existing sub number order and returns the updated
+      # order.
       sig do
         params(
           sub_number_order_id: String,
@@ -48,7 +49,7 @@ module Telnyx
       def list(
         # Consolidated filter parameter (deepObject style). Originally: filter[status],
         # filter[order_request_id], filter[country_code], filter[phone_number_type],
-        # filter[phone_numbers_count]
+        # filter[phone_numbers_count], filter[include_phone_numbers]
         filter: nil,
         request_options: {}
       )

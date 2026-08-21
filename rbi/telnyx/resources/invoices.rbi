@@ -20,7 +20,7 @@ module Telnyx
       )
       end
 
-      # Retrieve a paginated list of invoices.
+      # Returns a paginated list of your invoices, with support for sorting.
       sig do
         params(
           page_number: Integer,

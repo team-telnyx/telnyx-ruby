@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Notification settings operations
     class NotificationChannels
-      # Create a notification channel.
+      # Creates a new notification channel defining where notifications are delivered,
+      # and returns the created channel.
       sig do
         params(
           channel_destination: String,
@@ -24,7 +25,7 @@ module Telnyx
       )
       end
 
-      # Get a notification channel.
+      # Returns the details of a single notification channel by its identifier.
       sig do
         params(
           id: String,
@@ -38,7 +39,7 @@ module Telnyx
       )
       end
 
-      # Update a notification channel.
+      # Updates the specified notification channel and returns the updated channel.
       sig do
         params(
           notification_channel_id: String,
@@ -61,7 +62,8 @@ module Telnyx
       )
       end
 
-      # List notification channels.
+      # Returns a paginated list of your notification channels, the destinations that
+      # receive notifications.
       sig do
         params(
           filter: Telnyx::NotificationChannelListParams::Filter::OrHash,
@@ -84,7 +86,8 @@ module Telnyx
       )
       end
 
-      # Delete a notification channel.
+      # Deletes the specified notification channel so notifications are no longer
+      # delivered to it.
       sig do
         params(
           id: String,

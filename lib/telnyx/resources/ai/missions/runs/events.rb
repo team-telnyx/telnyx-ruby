@@ -6,7 +6,9 @@ module Telnyx
       class Missions
         class Runs
           class Events
-            # List events for a run (paginated)
+            # Returns a paginated list of events logged for the specified run, filterable by
+            # event type, plan step, and agent, so you can reconstruct exactly what happened
+            # during execution.
             #
             # @overload list(run_id, mission_id:, agent_id: nil, page_number: nil, page_size: nil, step_id: nil, type: nil, request_options: {})
             #
@@ -46,7 +48,8 @@ module Telnyx
               )
             end
 
-            # Get details of a specific event
+            # Returns the details of a single event logged for the specified run, including
+            # its type and payload.
             #
             # @overload get_event_details(event_id, mission_id:, run_id:, request_options: {})
             #
@@ -79,7 +82,8 @@ module Telnyx
               )
             end
 
-            # Log an event for a run
+            # Logs a new event against the specified run and returns the created event. Events
+            # form the run's audit trail and can reference a plan step or agent.
             #
             # @overload log(run_id, mission_id:, summary:, type:, agent_id: nil, idempotency_key: nil, payload: nil, step_id: nil, request_options: {})
             #

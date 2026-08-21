@@ -5,7 +5,7 @@ module Telnyx
     class Portouts
       # Number portout operations
       class Events
-        # Show a specific port-out event.
+        # Returns the details of a single port-out event, including its type and payload.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -28,7 +28,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Portouts::EventListParams} for more details.
         #
-        # Returns a list of all port-out events.
+        # Returns a paginated list of port-out events on your account, such as status
+        # changes on port-out requests, with support for filtering.
         #
         # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
         #
@@ -56,7 +57,8 @@ module Telnyx
           )
         end
 
-        # Republish a specific port-out event.
+        # Republishes the specified port-out event, triggering re-delivery of the
+        # corresponding webhook to your account.
         #
         # @overload republish(id, request_options: {})
         #

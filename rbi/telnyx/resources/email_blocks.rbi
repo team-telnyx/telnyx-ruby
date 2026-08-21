@@ -5,8 +5,8 @@ module Telnyx
     # Recipient suppression records (`/v2/email_blocks`).
     class EmailBlocks
       # Async CSV import of competitor suppression lists.
-      sig { returns(Telnyx::Resources::EmailBlocks::Import) }
-      attr_reader :import
+      sig { returns(Telnyx::Resources::EmailBlocks::Imports) }
+      attr_reader :imports
 
       # Creates a suppression with `reason: manual_block` and `source: manual`.
       # Caller-supplied `reason` / `source` are **ignored**; `scope` is **derived**
@@ -131,7 +131,11 @@ module Telnyx
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EmailBlockRetrieveEventsResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::EmailBlockRetrieveEventsResponse
+          ]
+        )
       end
       def retrieve_events(
         # Resource UUID. Malformed UUIDs are treated as not-found (not 400).

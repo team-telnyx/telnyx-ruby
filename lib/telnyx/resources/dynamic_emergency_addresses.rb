@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Dynamic emergency address operations
     class DynamicEmergencyAddresses
-      # Creates a dynamic emergency address.
+      # Creates a dynamic emergency address, the validated physical location used when
+      # provisioning dynamic emergency endpoints.
       #
       # @overload create(administrative_area:, country_code:, house_number:, locality:, postal_code:, street_name:, extended_address: nil, house_suffix: nil, street_post_directional: nil, street_pre_directional: nil, street_suffix: nil, request_options: {})
       #

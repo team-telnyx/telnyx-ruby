@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Types of requirements for international numbers and porting orders
     class RequirementTypes
-      # Retrieve a requirement type by id
+      # Returns the details of a single requirement type by its identifier, describing a
+      # kind of documentation needed for regulatory purposes.
       #
       # @overload retrieve(id, request_options: {})
       #

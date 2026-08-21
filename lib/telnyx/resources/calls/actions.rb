@@ -216,7 +216,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionEnqueueParams} for more details.
         #
-        # Put the call in a queue.
+        # Places the call into a queue, where it waits until it is removed or bridged to
+        # another leg. Queue behavior is configured through the request body.
         #
         # @overload enqueue(call_control_id, queue_name:, client_state: nil, command_id: nil, keep_after_hangup: nil, max_size: nil, max_wait_time_secs: nil, request_options: {})
         #
@@ -351,7 +352,7 @@ module Telnyx
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -484,7 +485,7 @@ module Telnyx
         #
         # @param valid_digits [String] A list of all digits accepted as valid.
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -575,7 +576,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionLeaveQueueParams} for more details.
         #
-        # Removes the call from a queue.
+        # Removes the call from the queue it is currently waiting in. The call remains
+        # active and can be directed with further call commands.
         #
         # @overload leave_queue(call_control_id, client_state: nil, command_id: nil, request_options: {})
         #
@@ -659,7 +661,7 @@ module Telnyx
         # The UnionPay and Maestro numbers are accepted for processor testing, but Pay
         # currently does not emit a card type for them.
         #
-        # @overload pay(call_control_id, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, voice: nil, request_options: {})
+        # @overload pay(call_control_id, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, valid_card_types: nil, voice: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -696,6 +698,8 @@ module Telnyx
         # @param timeout_millis [Integer] Time in milliseconds to wait for DTMF input for each collection step.
         #
         # @param transaction_type [Symbol, Telnyx::Models::Calls::ActionPayParams::TransactionType] Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is absen
+        #
+        # @param valid_card_types [Array<Symbol, Telnyx::Models::Calls::ActionPayParams::ValidCardType>] Restricts accepted card numbers to the listed card types. When the caller enters
         #
         # @param voice [String] Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
         #
@@ -943,7 +947,7 @@ module Telnyx
         #
         # @param target_legs [Symbol, Telnyx::Models::Calls::ActionSpeakParams::TargetLegs] Specifies which legs of the call should receive the spoken audio.
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -1072,7 +1076,7 @@ module Telnyx
         #
         # @param voice [String] The voice to be used by the voice assistant. Currently we support ElevenLabs, Te
         #
-        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::RimeVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
+        # @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings] The settings associated with the voice selected
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -1417,7 +1421,7 @@ module Telnyx
         #
         # @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
+        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionEngineHumainConfig, Telnyx::Models::Calls::TranscriptionEngineReson8Config, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
         #
         # @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
         #
@@ -1440,7 +1444,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionStopAIAssistantParams} for more details.
         #
-        # Stop an AI assistant on the call.
+        # Stops the AI assistant currently engaged on the call. The call remains active
+        # and can continue with other call control commands.
         #
         # @overload stop_ai_assistant(call_control_id, client_state: nil, command_id: nil, request_options: {})
         #
@@ -1736,7 +1741,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionStopTranscriptionParams} for more details.
         #
-        # Stop real-time transcription.
+        # Stops real-time transcription on the call. Transcription webhooks cease once the
+        # command takes effect; the call itself is unaffected.
         #
         # @overload stop_transcription(call_control_id, client_state: nil, command_id: nil, request_options: {})
         #
@@ -1915,7 +1921,9 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::Calls::ActionUpdateClientStateParams} for more details.
         #
-        # Updates client state
+        # Updates the client state associated with the call. Client state is an opaque
+        # value echoed back in subsequent webhooks for the call, letting you correlate
+        # events with your application's state.
         #
         # @overload update_client_state(call_control_id, client_state:, request_options: {})
         #

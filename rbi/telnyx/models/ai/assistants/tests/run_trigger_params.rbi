@@ -29,10 +29,17 @@ module Telnyx
             sig { params(destination_version_id: String).void }
             attr_writer :destination_version_id
 
+            sig { returns(T.nilable(String)) }
+            attr_reader :idempotency_key
+
+            sig { params(idempotency_key: String).void }
+            attr_writer :idempotency_key
+
             sig do
               params(
                 test_id: String,
                 destination_version_id: String,
+                idempotency_key: String,
                 request_options: Telnyx::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
@@ -42,6 +49,7 @@ module Telnyx
               # must exist or a 400 error will be returned. If not provided, test will run on
               # main version
               destination_version_id: nil,
+              idempotency_key: nil,
               request_options: {}
             )
             end
@@ -51,6 +59,7 @@ module Telnyx
                 {
                   test_id: String,
                   destination_version_id: String,
+                  idempotency_key: String,
                   request_options: Telnyx::RequestOptions
                 }
               )

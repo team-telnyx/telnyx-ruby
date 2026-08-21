@@ -46,17 +46,30 @@ module Telnyx
             embedding_model:
               Telnyx::AI::EmbeddingCreateParams::EmbeddingModel::OrSymbol,
             loader: Telnyx::AI::EmbeddingCreateParams::Loader::OrSymbol,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::EmbeddingResponse)
         end
         def create(
+          # Body param
           bucket_name:,
+          # Body param
           document_chunk_overlap_size: nil,
+          # Body param
           document_chunk_size: nil,
-          # Supported models to vectorize and embed documents.
+          # Body param: Supported models to vectorize and embed documents.
           embedding_model: nil,
-          # Supported types of custom document loaders for embeddings.
+          # Body param: Supported types of custom document loaders for embeddings.
           loader: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -138,14 +151,25 @@ module Telnyx
           params(
             bucket_name: String,
             url: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::EmbeddingResponse)
         end
         def url(
-          # Name of the bucket to store the embeddings. This bucket must already exist.
+          # Body param: Name of the bucket to store the embeddings. This bucket must already
+          # exist.
           bucket_name:,
-          # The URL of the webpage to embed
+          # Body param: The URL of the webpage to embed
           url:,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end

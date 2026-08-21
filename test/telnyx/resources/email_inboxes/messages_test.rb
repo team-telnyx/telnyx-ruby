@@ -30,14 +30,14 @@ class Telnyx::Test::Resources::EmailInboxes::MessagesTest < Telnyx::Test::Resour
     response = @telnyx.email_inboxes.messages.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::EmailInboxes::MessageListResponse
+      response => Telnyx::Internal::EmailBracketCursorPagination
     end
 
+    row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::InboundMessage]),
-        meta: Telnyx::EmailInboxes::EmailPaginationMeta
-      }
+      row => Telnyx::InboundMessage
     end
   end
 

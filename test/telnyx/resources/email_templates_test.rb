@@ -57,13 +57,27 @@ class Telnyx::Test::Resources::EmailTemplatesTest < Telnyx::Test::ResourceTest
     response = @telnyx.email_templates.list
 
     assert_pattern do
-      response => Telnyx::Models::EmailTemplateListResponse
+      response => Telnyx::Internal::EmailCursorPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::EmailTemplate
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailTemplate]),
-        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      row => {
+        id: String,
+        created_at: Time,
+        html_body: String | nil,
+        name: String,
+        record_type: Telnyx::EmailTemplate::RecordType,
+        subject: String | nil,
+        text_body: String | nil,
+        updated_at: Time,
+        variables: ^(Telnyx::Internal::Type::ArrayOf[String])
       }
     end
   end

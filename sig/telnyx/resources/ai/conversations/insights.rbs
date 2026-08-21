@@ -8,6 +8,7 @@ module Telnyx
             name: String,
             ?json_schema: Telnyx::Models::AI::Conversations::InsightCreateParams::json_schema,
             ?webhook: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::Conversations::InsightTemplateDetail
 

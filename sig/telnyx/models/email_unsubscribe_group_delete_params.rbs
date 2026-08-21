@@ -31,15 +31,25 @@ module Telnyx
         request_options: Telnyx::RequestOptions
       }
 
-      type force = :true | :false | bool
+      type force =
+        Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::force_string
+        | bool
 
       module Force
         extend Telnyx::Internal::Type::Union
 
-        def self?.variants: -> ::Array[Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force]
+        type force_string = :true | :false
 
-        TRUE: :true
-        FALSE: :false
+        module ForceString
+          extend Telnyx::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::force_string]
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::EmailUnsubscribeGroupDeleteParams::force]
       end
     end
   end

@@ -5,7 +5,8 @@ module Telnyx
     class PortingOrders
       # Endpoints related to porting orders management.
       class ActivationJobs
-        # Returns a porting activation job.
+        # Returns the details of a single activation job for the porting order, including
+        # its current status.
         sig do
           params(
             activation_job_id: String,

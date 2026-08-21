@@ -20,13 +20,20 @@ module Telnyx
         #   @return [String, nil]
         optional :name, String
 
-        # @!method initialize(metadata: nil, name: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(metadata: nil, name: nil, idempotency_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ConversationCreateParams} for more details.
         #
         #   @param metadata [Hash{Symbol=>String}] Metadata associated with the conversation. Set `ai_disabled` to `true` to create
         #
         #   @param name [String]
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

@@ -1,0 +1,45 @@
+module Telnyx
+  module Models
+    module AI
+      type conversation_flow =
+        {
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node],
+          start_node_id: String,
+          edges: ::Array[Telnyx::AI::FlowEdge]
+        }
+
+      class ConversationFlow < Telnyx::Internal::Type::BaseModel
+        attr_accessor nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node]
+
+        attr_accessor start_node_id: String
+
+        attr_reader edges: ::Array[Telnyx::AI::FlowEdge]?
+
+        def edges=: (
+          ::Array[Telnyx::AI::FlowEdge]
+        ) -> ::Array[Telnyx::AI::FlowEdge]
+
+        def initialize: (
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node],
+          start_node_id: String,
+          ?edges: ::Array[Telnyx::AI::FlowEdge]
+        ) -> void
+
+        def to_hash: -> {
+          nodes: ::Array[Telnyx::Models::AI::ConversationFlow::node],
+          start_node_id: String,
+          edges: ::Array[Telnyx::AI::FlowEdge]
+        }
+
+        type node =
+          Telnyx::AI::FlowNode | Telnyx::AI::ToolNode | Telnyx::AI::SpeakNode
+
+        module Node
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ConversationFlow::node]
+        end
+      end
+    end
+  end
+end

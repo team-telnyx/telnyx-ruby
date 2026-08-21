@@ -77,7 +77,7 @@ module Telnyx
       )
       end
 
-      # Deletes the Private Wireless Gateway.
+      # Permanently deletes the specified Private Wireless Gateway from your account.
       sig do
         params(
           id: String,

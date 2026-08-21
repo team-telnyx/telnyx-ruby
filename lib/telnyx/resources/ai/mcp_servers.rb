@@ -4,15 +4,26 @@ module Telnyx
   module Resources
     class AI
       class McpServers
-        # Create a new MCP server.
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::McpServerCreateParams} for more details.
         #
-        # @overload create(name:, type:, url:, allowed_tools: nil, api_key_ref: nil, request_options: {})
+        # Creates a new MCP server configuration on your account and returns the created
+        # server.
         #
-        # @param name [String]
-        # @param type [String]
-        # @param url [String]
-        # @param allowed_tools [Array<String>, nil]
-        # @param api_key_ref [String, nil]
+        # @overload create(name:, type:, url:, allowed_tools: nil, api_key_ref: nil, idempotency_key: nil, request_options: {})
+        #
+        # @param name [String] Body param
+        #
+        # @param type [String] Body param
+        #
+        # @param url [String] Body param
+        #
+        # @param allowed_tools [Array<String>, nil] Body param
+        #
+        # @param api_key_ref [String, nil] Body param
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
+        #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Telnyx::Models::AI::McpServer]
@@ -20,10 +31,12 @@ module Telnyx
         # @see Telnyx::Models::AI::McpServerCreateParams
         def create(params)
           parsed, options = Telnyx::AI::McpServerCreateParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "ai/mcp_servers",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::AI::McpServer,
             options: options
           )
@@ -49,7 +62,7 @@ module Telnyx
           )
         end
 
-        # Update an existing MCP server.
+        # Updates the specified MCP server's configuration and returns the updated server.
         #
         # @overload update(mcp_server_id, id: nil, allowed_tools: nil, api_key_ref: nil, created_at: nil, name: nil, type: nil, url: nil, request_options: {})
         #
@@ -85,7 +98,8 @@ module Telnyx
           )
         end
 
-        # Retrieve a list of MCP servers.
+        # Returns a paginated list of the MCP servers configured on your account, with
+        # optional filtering by type or URL.
         #
         # @overload list(page_number: nil, page_size: nil, type: nil, url: nil, request_options: {})
         #
@@ -115,7 +129,7 @@ module Telnyx
           )
         end
 
-        # Delete a specific MCP server.
+        # Permanently deletes the specified MCP server configuration from your account.
         #
         # @overload delete(mcp_server_id, request_options: {})
         #

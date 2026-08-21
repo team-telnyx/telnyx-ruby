@@ -98,7 +98,11 @@ module Telnyx
             page_limit: Integer,
             sort: Telnyx::Storage::CloudfListParams::Sort::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Storage::CloudfListResponse)
+          ).returns(
+            Telnyx::Internal::CloudfsCursorPagination[
+              Telnyx::Models::Storage::CloudfListResponse
+            ]
+          )
         end
         def list(
           # Return only the filesystem whose name matches exactly.

@@ -67,7 +67,7 @@ module Telnyx
       )
       end
 
-      # Deletes a stored SIPREC connector.
+      # Deletes the stored SIPREC connector with the specified connector name.
       sig do
         params(
           connector_name: String,

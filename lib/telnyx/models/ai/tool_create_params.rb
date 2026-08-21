@@ -64,7 +64,12 @@ module Telnyx
         #   @return [Hash{Symbol=>Object}, nil]
         optional :webhook, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
-        # @!method initialize(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, idempotency_key: nil, request_options: {})
         #   @param display_name [String]
         #
         #   @param type [String]
@@ -86,6 +91,8 @@ module Telnyx
         #   @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
         #
         #   @param webhook [Hash{Symbol=>Object}]
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

@@ -4,7 +4,7 @@ module Telnyx
       class Drafts
         def create: (
           String inbox_id,
-          ?attachments: ::Array[top],
+          ?attachments: ::Array[::Hash[Symbol, top]],
           ?bcc: ::Array[Telnyx::Models::email_address_input],
           ?cc: ::Array[Telnyx::Models::email_address_input],
           ?from_email: String,
@@ -13,7 +13,7 @@ module Telnyx
           ?html: String,
           ?html_body: String,
           ?labels: ::Array[String],
-          ?metadata: top,
+          ?metadata: ::Hash[Symbol, top],
           ?reply_to: String,
           ?subject: String,
           ?tags: ::Array[String],
@@ -32,7 +32,7 @@ module Telnyx
         def update: (
           String draft_id,
           inbox_id: String,
-          ?attachments: ::Array[top],
+          ?attachments: ::Array[::Hash[Symbol, top]],
           ?bcc: ::Array[Telnyx::Models::email_address_input],
           ?cc: ::Array[Telnyx::Models::email_address_input],
           ?from_email: String,
@@ -41,7 +41,7 @@ module Telnyx
           ?html: String,
           ?html_body: String,
           ?labels: ::Array[String],
-          ?metadata: top,
+          ?metadata: ::Hash[Symbol, top],
           ?reply_to: String,
           ?subject: String,
           ?tags: ::Array[String],
@@ -57,7 +57,7 @@ module Telnyx
           ?page_after: String,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::EmailInboxes::DraftListResponse
+        ) -> Telnyx::Internal::EmailBracketCursorPagination[Telnyx::EmailInboxes::EmailDraft]
 
         def delete: (
           String draft_id,
@@ -68,7 +68,7 @@ module Telnyx
         def patch: (
           String draft_id,
           inbox_id: String,
-          ?attachments: ::Array[top],
+          ?attachments: ::Array[::Hash[Symbol, top]],
           ?bcc: ::Array[Telnyx::Models::email_address_input],
           ?cc: ::Array[Telnyx::Models::email_address_input],
           ?from_email: String,
@@ -77,7 +77,7 @@ module Telnyx
           ?html: String,
           ?html_body: String,
           ?labels: ::Array[String],
-          ?metadata: top,
+          ?metadata: ::Hash[Symbol, top],
           ?reply_to: String,
           ?subject: String,
           ?tags: ::Array[String],

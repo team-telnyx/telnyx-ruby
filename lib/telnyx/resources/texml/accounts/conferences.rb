@@ -10,7 +10,7 @@ module Telnyx
           # @return [Telnyx::Resources::Texml::Accounts::Conferences::Participants]
           attr_reader :participants
 
-          # Returns a conference resource.
+          # Returns a single conference resource for the account by its ConferenceSid.
           #
           # @overload retrieve(conference_sid, account_sid:, request_options: {})
           #
@@ -40,7 +40,8 @@ module Telnyx
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Texml::Accounts::ConferenceUpdateParams} for more details.
           #
-          # Updates a conference resource.
+          # Updates the specified conference resource, for example to modify its status, and
+          # returns the updated conference.
           #
           # @overload update(conference_sid, account_sid:, announce_method: nil, announce_url: nil, status: nil, request_options: {})
           #
@@ -79,7 +80,8 @@ module Telnyx
           # {Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesParams} for more
           # details.
           #
-          # Lists conference resources.
+          # Returns a paginated list of conference resources for the account, with support
+          # for filtering by friendly name, status, and creation or update dates.
           #
           # @overload retrieve_conferences(account_sid, date_created: nil, date_updated: nil, friendly_name: nil, page: nil, page_size: nil, page_token: nil, status: nil, request_options: {})
           #
@@ -124,7 +126,7 @@ module Telnyx
             )
           end
 
-          # Lists conference recordings
+          # Returns the list of recordings made for the specified conference.
           #
           # @overload retrieve_recordings(conference_sid, account_sid:, request_options: {})
           #

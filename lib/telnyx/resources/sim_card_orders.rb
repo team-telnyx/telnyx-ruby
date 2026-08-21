@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # SIM Card Orders operations
     class SimCardOrders
-      # Creates a new order for SIM cards.
+      # Creates a new order for physical SIM cards, including quantity and shipping
+      # details, and returns the created order.
       #
       # @overload create(address_id:, quantity:, request_options: {})
       #
@@ -28,7 +29,7 @@ module Telnyx
         )
       end
 
-      # Get a single SIM card order by its ID.
+      # Returns the details of a single SIM card order by its ID, including its status.
       #
       # @overload retrieve(id, request_options: {})
       #

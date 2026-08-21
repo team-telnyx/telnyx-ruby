@@ -33,48 +33,12 @@ module Telnyx
           request_options: Telnyx::RequestOptions
         }
 
-        type campaign =
-          {
-            agent_overview: String,
-            consent_settings: Telnyx::Rcs::AgentConsentConfiguration,
-            interactions: ::Array[Telnyx::Rcs::AgentInteraction],
-            message_examples: ::Array[String]
-          }
+        type campaign = {  }
 
         class Campaign < Telnyx::Models::Rcs::AgentCampaignConfiguration
-          def agent_overview: -> String
+          def initialize: -> void
 
-          def agent_overview=: (String _) -> String
-
-          def consent_settings: -> Telnyx::Rcs::AgentConsentConfiguration
-
-          def consent_settings=: (
-            Telnyx::Rcs::AgentConsentConfiguration _
-          ) -> Telnyx::Rcs::AgentConsentConfiguration
-
-          def interactions: -> ::Array[Telnyx::Rcs::AgentInteraction]
-
-          def interactions=: (
-            ::Array[Telnyx::Rcs::AgentInteraction] _
-          ) -> ::Array[Telnyx::Rcs::AgentInteraction]
-
-          def message_examples: -> ::Array[String]
-
-          def message_examples=: (::Array[String] _) -> ::Array[String]
-
-          def initialize: (
-            agent_overview: String,
-            consent_settings: Telnyx::Rcs::AgentConsentConfiguration,
-            interactions: ::Array[Telnyx::Rcs::AgentInteraction],
-            message_examples: ::Array[String]
-          ) -> void
-
-          def to_hash: -> {
-            agent_overview: String,
-            consent_settings: Telnyx::Rcs::AgentConsentConfiguration,
-            interactions: ::Array[Telnyx::Rcs::AgentInteraction],
-            message_examples: ::Array[String]
-          }
+          def to_hash: -> {  }
         end
       end
     end

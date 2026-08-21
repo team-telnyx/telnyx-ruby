@@ -101,7 +101,7 @@ module Telnyx
       )
       end
 
-      # Retrieve the details of a single fax.
+      # Returns the details of a single fax, including its current status.
       sig do
         params(
           id: String,

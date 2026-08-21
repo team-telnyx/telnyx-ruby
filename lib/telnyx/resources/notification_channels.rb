@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Notification settings operations
     class NotificationChannels
-      # Create a notification channel.
+      # Creates a new notification channel defining where notifications are delivered,
+      # and returns the created channel.
       #
       # @overload create(channel_destination: nil, channel_type_id: nil, notification_profile_id: nil, request_options: {})
       #
@@ -30,7 +31,7 @@ module Telnyx
         )
       end
 
-      # Get a notification channel.
+      # Returns the details of a single notification channel by its identifier.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -50,7 +51,7 @@ module Telnyx
         )
       end
 
-      # Update a notification channel.
+      # Updates the specified notification channel and returns the updated channel.
       #
       # @overload update(notification_channel_id, channel_destination: nil, channel_type_id: nil, notification_profile_id: nil, request_options: {})
       #
@@ -81,7 +82,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::NotificationChannelListParams} for more details.
       #
-      # List notification channels.
+      # Returns a paginated list of your notification channels, the destinations that
+      # receive notifications.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -110,7 +112,8 @@ module Telnyx
         )
       end
 
-      # Delete a notification channel.
+      # Deletes the specified notification channel so notifications are no longer
+      # delivered to it.
       #
       # @overload delete(id, request_options: {})
       #

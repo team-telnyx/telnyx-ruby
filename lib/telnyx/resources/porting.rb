@@ -16,7 +16,8 @@ module Telnyx
       # @return [Telnyx::Resources::Porting::LoaConfigurations]
       attr_reader :loa_configurations
 
-      # List available carriers in the UK.
+      # Returns the list of UK carriers available for porting, for use when preparing
+      # porting orders for UK numbers.
       #
       # @overload list_uk_carriers(request_options: {})
       #

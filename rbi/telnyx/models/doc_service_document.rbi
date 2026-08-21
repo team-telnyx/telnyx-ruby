@@ -44,13 +44,6 @@ module Telnyx
       sig { params(content_type: String).void }
       attr_writer :content_type
 
-      # Identifies the type of the resource.
-      sig { returns(T.nilable(String)) }
-      attr_reader :record_type
-
-      sig { params(record_type: String).void }
-      attr_writer :record_type
-
       # The document's SHA256 hash provided for optional verification purposes.
       sig { returns(T.nilable(String)) }
       attr_reader :sha256
@@ -80,7 +73,6 @@ module Telnyx
           content_type: String,
           customer_reference: String,
           filename: String,
-          record_type: String,
           sha256: String,
           size: Telnyx::DocServiceDocument::Size::OrHash,
           status: Telnyx::DocServiceDocument::Status::OrSymbol
@@ -95,8 +87,6 @@ module Telnyx
         customer_reference: nil,
         # The filename of the document.
         filename: nil,
-        # Identifies the type of the resource.
-        record_type: nil,
         # The document's SHA256 hash provided for optional verification purposes.
         sha256: nil,
         # Indicates the document's filesize
@@ -114,7 +104,6 @@ module Telnyx
             content_type: String,
             customer_reference: String,
             filename: String,
-            record_type: String,
             sha256: String,
             size: Telnyx::DocServiceDocument::Size,
             status: Telnyx::DocServiceDocument::Status::TaggedSymbol

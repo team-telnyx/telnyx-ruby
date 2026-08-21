@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Country Coverage
     class CountryCoverage
-      # Get country coverage
+      # Returns Telnyx service coverage information for every country, including which
+      # number types and features are available in each.
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(
           Telnyx::Models::CountryCoverageRetrieveResponse
@@ -13,7 +14,8 @@ module Telnyx
       def retrieve(request_options: {})
       end
 
-      # Get coverage for a specific country
+      # Returns Telnyx service coverage information for the specified country, including
+      # available number types and features.
       sig do
         params(
           country_code: String,

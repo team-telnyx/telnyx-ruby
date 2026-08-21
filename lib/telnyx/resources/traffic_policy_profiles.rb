@@ -55,7 +55,7 @@ module Telnyx
         )
       end
 
-      # Updates a traffic policy profile.
+      # Updates the specified traffic policy profile and returns the updated profile.
       #
       # @overload update(id, domains: nil, ip_ranges: nil, limit_bw_kbps: nil, services: nil, type: nil, request_options: {})
       #
@@ -128,7 +128,7 @@ module Telnyx
         )
       end
 
-      # Deletes the traffic policy profile.
+      # Permanently deletes the specified traffic policy profile from your account.
       #
       # @overload delete(id, request_options: {})
       #

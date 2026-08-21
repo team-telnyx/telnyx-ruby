@@ -16,7 +16,7 @@ module Telnyx
       #   Force-delete a group with active suppressions. Only `"true"` (string) or `true`
       #   (bool) are truthy; all other values are false.
       #
-      #   @return [Symbol, Boolean, Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force, nil]
+      #   @return [Symbol, Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::ForceString, Boolean, nil]
       optional :force, union: -> { Telnyx::EmailUnsubscribeGroupDeleteParams::Force }
 
       # @!method initialize(id:, force: nil, request_options: {})
@@ -25,7 +25,7 @@ module Telnyx
       #
       #   @param id [String]
       #
-      #   @param force [Symbol, Boolean, Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force] Force-delete a group with active suppressions. Only `"true"` (string) or `true`
+      #   @param force [Symbol, Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::ForceString, Boolean] Force-delete a group with active suppressions. Only `"true"` (string) or `true`
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -34,25 +34,22 @@ module Telnyx
       module Force
         extend Telnyx::Internal::Type::Union
 
-        variant const: -> { Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::TRUE }
-
-        variant const: -> { Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::FALSE }
+        variant enum: -> { Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString }
 
         variant Telnyx::Internal::Type::Boolean
 
-        # @!method self.variants
-        #   @return [Array(Symbol, Boolean)]
+        module ForceString
+          extend Telnyx::Internal::Type::Enum
 
-        define_sorbet_constant!(:Variants) do
-          T.type_alias { T.any(Telnyx::EmailUnsubscribeGroupDeleteParams::Force::TaggedSymbol, T::Boolean) }
+          TRUE = :true
+          FALSE = :false
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
-        # @!group
-
-        TRUE = :true
-        FALSE = :false
-
-        # @!endgroup
+        # @!method self.variants
+        #   @return [Array(Symbol, Telnyx::Models::EmailUnsubscribeGroupDeleteParams::Force::ForceString, Boolean)]
       end
     end
   end

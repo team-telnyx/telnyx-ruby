@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     # FQDN operations
     class Fqdns
-      # Create a new FQDN object.
+      # Creates a new FQDN record and attaches it to the specified connection.
       sig do
         params(
           connection_id: String,
@@ -44,7 +44,7 @@ module Telnyx
       )
       end
 
-      # Update the details of a specific FQDN.
+      # Updates the details of the specified FQDN record and returns the updated FQDN.
       sig do
         params(
           id: String,
@@ -92,7 +92,7 @@ module Telnyx
       )
       end
 
-      # Delete an FQDN.
+      # Permanently deletes the specified FQDN record from its connection.
       sig do
         params(
           id: String,

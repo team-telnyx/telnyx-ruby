@@ -6,8 +6,9 @@ module Telnyx
       class EmailDraftRequest < Telnyx::Internal::Type::BaseModel
         # @!attribute attachments
         #
-        #   @return [Array<Object>, nil]
-        optional :attachments, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+        #   @return [Array<Hash{Symbol=>Object}>, nil]
+        optional :attachments,
+                 Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
         # @!attribute bcc
         #
@@ -52,8 +53,8 @@ module Telnyx
 
         # @!attribute metadata
         #
-        #   @return [Object, nil]
-        optional :metadata, Telnyx::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!attribute reply_to
         #
@@ -91,7 +92,7 @@ module Telnyx
         #   `inbox_id`, `status`, `sent_at`, `sent_message_id`, `reply_to_message_id` and
         #   `thread_id` are server-owned and ignored if supplied.
         #
-        #   @param attachments [Array<Object>]
+        #   @param attachments [Array<Hash{Symbol=>Object}>]
         #
         #   @param bcc [Array<String, Telnyx::Models::EmailInboxes::EmailAddress>]
         #
@@ -109,7 +110,7 @@ module Telnyx
         #
         #   @param labels [Array<String>]
         #
-        #   @param metadata [Object]
+        #   @param metadata [Hash{Symbol=>Object}]
         #
         #   @param reply_to [String]
         #

@@ -83,7 +83,7 @@ module Telnyx
         )
       end
 
-      # Retrieve the details of a single fax.
+      # Returns the details of a single fax, including its current status.
       #
       # @overload retrieve(id, request_options: {})
       #

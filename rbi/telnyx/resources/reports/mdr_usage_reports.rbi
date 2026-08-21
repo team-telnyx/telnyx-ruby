@@ -56,7 +56,7 @@ module Telnyx
         def list(page_number: nil, page_size: nil, request_options: {})
         end
 
-        # Delete messaging usage report by id
+        # Permanently deletes the specified messaging usage report by its identifier.
         sig do
           params(
             id: String,

@@ -16,9 +16,7 @@ module Telnyx
       attr_writer :customer_reference
 
       sig do
-        returns(
-          T.nilable(Telnyx::SubNumberOrder::PhoneNumberType::TaggedSymbol)
-        )
+        returns(T.nilable(Telnyx::SubNumberOrder::PhoneNumberType::OrSymbol))
       end
       attr_reader :phone_number_type
 
@@ -103,7 +101,7 @@ module Telnyx
       attr_writer :requirements_met
 
       # The status of the order.
-      sig { returns(T.nilable(Telnyx::SubNumberOrder::Status::TaggedSymbol)) }
+      sig { returns(T.nilable(Telnyx::SubNumberOrder::Status::OrSymbol)) }
       attr_reader :status
 
       sig { params(status: Telnyx::SubNumberOrder::Status::OrSymbol).void }
@@ -170,13 +168,13 @@ module Telnyx
             is_block_sub_number_order: T::Boolean,
             order_request_id: String,
             phone_number_type:
-              Telnyx::SubNumberOrder::PhoneNumberType::TaggedSymbol,
+              Telnyx::SubNumberOrder::PhoneNumberType::OrSymbol,
             phone_numbers_count: Integer,
             record_type: String,
             regulatory_requirements:
               T::Array[Telnyx::SubNumberOrderRegulatoryRequirement],
             requirements_met: T::Boolean,
-            status: Telnyx::SubNumberOrder::Status::TaggedSymbol,
+            status: Telnyx::SubNumberOrder::Status::OrSymbol,
             updated_at: Time,
             user_id: String
           }

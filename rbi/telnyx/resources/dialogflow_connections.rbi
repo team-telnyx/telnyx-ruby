@@ -51,7 +51,8 @@ module Telnyx
       )
       end
 
-      # Updates a stored Dialogflow Connection.
+      # Updates the stored Dialogflow connection for the specified connection and
+      # returns the updated configuration.
       sig do
         params(
           connection_id: String,
@@ -82,7 +83,7 @@ module Telnyx
       )
       end
 
-      # Deletes a stored Dialogflow Connection.
+      # Deletes the stored Dialogflow connection for the specified connection.
       sig do
         params(
           connection_id: String,

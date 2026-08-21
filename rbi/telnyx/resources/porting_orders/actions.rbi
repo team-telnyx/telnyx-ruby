@@ -20,7 +20,7 @@ module Telnyx
         )
         end
 
-        # Cancel a porting order
+        # Requests cancellation of the porting order and returns the updated order.
         sig do
           params(
             id: String,
@@ -34,7 +34,8 @@ module Telnyx
         )
         end
 
-        # Confirm and submit your porting order.
+        # Confirms the porting order and submits it for processing. Make sure all required
+        # information and documents are attached before confirming.
         sig do
           params(
             id: String,

@@ -14,6 +14,8 @@ module Telnyx
         required :slug, String
 
         # @!attribute filter_country_iso
+        #   Two-letter ISO 3166-1 alpha-2 country code (uppercase, e.g. US) to filter
+        #   pricing to a single country.
         #
         #   @return [String, nil]
         optional :filter_country_iso, String, nil?: true
@@ -31,9 +33,12 @@ module Telnyx
         optional :page_size, Integer
 
         # @!method initialize(slug:, filter_country_iso: nil, page_number: nil, page_size: nil, request_options: {})
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::Pricing::ProductRetrieveParams} for more details.
+        #
         #   @param slug [String]
         #
-        #   @param filter_country_iso [String, nil]
+        #   @param filter_country_iso [String, nil] Two-letter ISO 3166-1 alpha-2 country code (uppercase, e.g. US) to filter pricin
         #
         #   @param page_number [Integer] Page number (1-based).
         #

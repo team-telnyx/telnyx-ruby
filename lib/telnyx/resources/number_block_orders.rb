@@ -3,7 +3,8 @@
 module Telnyx
   module Resources
     class NumberBlockOrders
-      # Creates a phone number block order.
+      # Creates an order for a block of consecutive phone numbers and returns the
+      # created order. Track fulfillment through the order's status.
       #
       # @overload create(range:, starting_number:, connection_id: nil, customer_reference: nil, messaging_profile_id: nil, request_options: {})
       #

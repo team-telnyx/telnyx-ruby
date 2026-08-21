@@ -96,11 +96,6 @@ module Telnyx
             :minimax,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
-        RIME =
-          T.let(
-            :rime,
-            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
-          )
         RESEMBLE =
           T.let(
             :resemble,

@@ -8,7 +8,8 @@ module Telnyx
       # @return [Telnyx::Resources::Networks::DefaultGateway]
       attr_reader :default_gateway
 
-      # Create a new Network.
+      # Creates a new private network, the container that links your WireGuard
+      # interfaces, gateways, and cross connects.
       #
       # @overload create(network_create:, request_options: {})
       #
@@ -29,7 +30,7 @@ module Telnyx
         )
       end
 
-      # Retrieve a Network.
+      # Returns the details of a single network by its identifier.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -49,7 +50,7 @@ module Telnyx
         )
       end
 
-      # Update a Network.
+      # Updates the specified network's attributes and returns the updated network.
       #
       # @overload update(network_id, network_create:, request_options: {})
       #
@@ -73,7 +74,8 @@ module Telnyx
         )
       end
 
-      # List all Networks.
+      # Returns a paginated list of the private networks on your account, with support
+      # for filtering.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -101,7 +103,7 @@ module Telnyx
         )
       end
 
-      # Delete a Network.
+      # Permanently deletes the specified network from your account.
       #
       # @overload delete(id, request_options: {})
       #
@@ -124,7 +126,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::NetworkListInterfacesParams} for more details.
       #
-      # List all Interfaces for a Network.
+      # Returns a paginated list of the interfaces attached to the specified network,
+      # with support for filtering.
       #
       # @overload list_interfaces(id, filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

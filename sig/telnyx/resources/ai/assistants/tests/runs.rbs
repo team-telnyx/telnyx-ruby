@@ -21,6 +21,7 @@ module Telnyx
             def trigger: (
               String test_id,
               ?destination_version_id: String,
+              ?idempotency_key: String,
               ?request_options: Telnyx::request_opts
             ) -> Telnyx::AI::Assistants::Tests::TestRunResponse
 

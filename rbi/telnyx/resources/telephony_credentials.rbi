@@ -3,7 +3,8 @@
 module Telnyx
   module Resources
     class TelephonyCredentials
-      # Create a credential.
+      # Creates a new on-demand telephony credential for the specified connection. The
+      # credential can then be used to generate access tokens for SIP or WebRTC clients.
       sig do
         params(
           connection_id: String,
@@ -39,7 +40,7 @@ module Telnyx
       )
       end
 
-      # Update an existing credential.
+      # Updates the specified telephony credential and returns the updated credential.
       sig do
         params(
           id: String,
@@ -64,7 +65,8 @@ module Telnyx
       )
       end
 
-      # List all On-demand Credentials.
+      # Returns a paginated list of the on-demand telephony credentials on your account,
+      # with support for filtering.
       sig do
         params(
           filter: Telnyx::TelephonyCredentialListParams::Filter::OrHash,
@@ -85,7 +87,8 @@ module Telnyx
       )
       end
 
-      # Delete an existing credential.
+      # Permanently deletes the specified telephony credential, revoking any access it
+      # provided.
       sig do
         params(
           id: String,

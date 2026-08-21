@@ -271,13 +271,13 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::ConnectorError::UnionMember1Map }
+            variant -> { Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::ConnectorError::ConnectorErrorDetailMap }
 
             # @!method self.variants
             #   @return [Array(String, Hash{Symbol=>Object})]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember1Map = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+            ConnectorErrorDetailMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
           end
 
           # Detected card type. Present only for the recognized card brands listed below.
@@ -289,9 +289,12 @@ module Telnyx
             VISA = :visa
             MASTERCARD = :mastercard
             AMEX = :amex
+            OPTIMA = :optima
             DISCOVER = :discover
             DINERS_CLUB = :"diners-club"
             JCB = :jcb
+            MAESTRO = :maestro
+            ENROUTE = :enroute
 
             # @!method self.values
             #   @return [Array<Symbol>]

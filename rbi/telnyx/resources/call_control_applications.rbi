@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Call Control applications operations
     class CallControlApplications
-      # Create a call control application.
+      # Creates a call control application, which defines the webhook endpoints and
+      # settings used to control calls on associated connections.
       sig do
         params(
           application_name: String,
@@ -192,7 +193,8 @@ module Telnyx
       )
       end
 
-      # Deletes a call control application.
+      # Permanently deletes the specified call control application and its webhook
+      # configuration.
       sig do
         params(
           id: String,

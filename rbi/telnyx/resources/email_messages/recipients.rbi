@@ -38,7 +38,11 @@ module Telnyx
             status:
               Telnyx::EmailMessages::RecipientListParams::Status::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::EmailMessages::RecipientListResponse)
+          ).returns(
+            Telnyx::Internal::EmailCursorPagination[
+              Telnyx::EmailMessages::EmailRecipient
+            ]
+          )
         end
         def list(
           # Email message UUID.

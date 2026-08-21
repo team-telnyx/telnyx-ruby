@@ -84,7 +84,7 @@ module Telnyx
           stats:
             T.any(
               T::Array[T::Hash[Symbol, T.anything]],
-              Telnyx::VoiceSDKCallReport::Stats::UnionMember1::OrHash
+              Telnyx::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject::OrHash
             )
         ).void
       end
@@ -183,7 +183,7 @@ module Telnyx
           stats:
             T.any(
               T::Array[T::Hash[Symbol, T.anything]],
-              Telnyx::VoiceSDKCallReport::Stats::UnionMember1::OrHash
+              Telnyx::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject::OrHash
             ),
           stored_at: Time,
           summary: T::Hash[Symbol, T.anything],
@@ -361,15 +361,15 @@ module Telnyx
           T.type_alias do
             T.any(
               T::Array[T::Hash[Symbol, T.anything]],
-              Telnyx::VoiceSDKCallReport::Stats::UnionMember1
+              Telnyx::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject
             )
           end
 
-        class UnionMember1 < Telnyx::Internal::Type::BaseModel
+        class VoiceSDKCallReportStatsObject < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::VoiceSDKCallReport::Stats::UnionMember1,
+                Telnyx::VoiceSDKCallReport::Stats::VoiceSDKCallReportStatsObject,
                 Telnyx::Internal::AnyHash
               )
             end

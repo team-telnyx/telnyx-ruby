@@ -38,7 +38,8 @@ module Telnyx
       )
       end
 
-      # Update a Wireless Blocklist.
+      # Updates the specified wireless blocklist. The update is processed
+      # asynchronously, so the request is accepted and completes in the background.
       sig do
         params(
           id: String,
@@ -86,7 +87,7 @@ module Telnyx
       )
       end
 
-      # Deletes the Wireless Blocklist.
+      # Permanently deletes the specified wireless blocklist from your account.
       sig do
         params(
           id: String,

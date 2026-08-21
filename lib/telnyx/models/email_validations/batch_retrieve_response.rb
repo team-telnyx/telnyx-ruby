@@ -84,8 +84,8 @@ module Telnyx
           class Result < Telnyx::Internal::Type::BaseModel
             # @!attribute checks
             #
-            #   @return [Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks]
-            required :checks, -> { Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks }
+            #   @return [Telnyx::Models::EmailValidationChecks]
+            required :checks, -> { Telnyx::EmailValidationChecks }
 
             # @!attribute email
             #
@@ -109,7 +109,7 @@ module Telnyx
             optional :did_you_mean, String
 
             # @!method initialize(checks:, email:, risk_score:, valid:, did_you_mean: nil)
-            #   @param checks [Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks]
+            #   @param checks [Telnyx::Models::EmailValidationChecks]
             #
             #   @param email [String]
             #
@@ -118,53 +118,6 @@ module Telnyx
             #   @param valid [Boolean]
             #
             #   @param did_you_mean [String] Suggested correction for typo. Omitted when nil.
-
-            # @see Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result#checks
-            class Checks < Telnyx::Internal::Type::BaseModel
-              # @!attribute disposable
-              #
-              #   @return [Telnyx::Models::EmailValidationCheck]
-              required :disposable, -> { Telnyx::EmailValidationCheck }
-
-              # @!attribute mx
-              #
-              #   @return [Telnyx::Models::EmailValidationCheck]
-              required :mx, -> { Telnyx::EmailValidationCheck }
-
-              # @!attribute role_based
-              #
-              #   @return [Telnyx::Models::EmailValidationCheck]
-              required :role_based, -> { Telnyx::EmailValidationCheck }
-
-              # @!attribute syntax
-              #
-              #   @return [Telnyx::Models::EmailValidationCheck]
-              required :syntax, -> { Telnyx::EmailValidationCheck }
-
-              # @!attribute typo
-              #
-              #   @return [Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo]
-              required :typo, -> { Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo }
-
-              # @!method initialize(disposable:, mx:, role_based:, syntax:, typo:)
-              #   @param disposable [Telnyx::Models::EmailValidationCheck]
-              #   @param mx [Telnyx::Models::EmailValidationCheck]
-              #   @param role_based [Telnyx::Models::EmailValidationCheck]
-              #   @param syntax [Telnyx::Models::EmailValidationCheck]
-              #   @param typo [Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks::Typo]
-
-              # @see Telnyx::Models::EmailValidations::BatchRetrieveResponse::Data::Result::Checks#typo
-              class Typo < Telnyx::Models::EmailValidationCheck
-                # @!attribute suggestion
-                #   Suggested correction for common typos. Omitted when nil.
-                #
-                #   @return [String, nil]
-                optional :suggestion, String
-
-                # @!method initialize(suggestion: nil)
-                #   @param suggestion [String] Suggested correction for common typos. Omitted when nil.
-              end
-            end
           end
         end
       end

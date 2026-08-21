@@ -11,7 +11,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::Rooms::Sessions) }
       attr_reader :sessions
 
-      # Synchronously create a Room.
+      # Synchronously creates a new video room with the provided configuration and
+      # returns the created room.
       sig do
         params(
           enable_recording: T::Boolean,
@@ -62,7 +63,8 @@ module Telnyx
       )
       end
 
-      # Synchronously update a Room.
+      # Synchronously updates the specified video room's configuration and returns the
+      # updated room.
       sig do
         params(
           room_id: String,

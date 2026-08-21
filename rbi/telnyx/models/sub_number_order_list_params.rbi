@@ -13,7 +13,7 @@ module Telnyx
 
       # Consolidated filter parameter (deepObject style). Originally: filter[status],
       # filter[order_request_id], filter[country_code], filter[phone_number_type],
-      # filter[phone_numbers_count]
+      # filter[phone_numbers_count], filter[include_phone_numbers]
       sig { returns(T.nilable(Telnyx::SubNumberOrderListParams::Filter)) }
       attr_reader :filter
 
@@ -31,7 +31,7 @@ module Telnyx
       def self.new(
         # Consolidated filter parameter (deepObject style). Originally: filter[status],
         # filter[order_request_id], filter[country_code], filter[phone_number_type],
-        # filter[phone_numbers_count]
+        # filter[phone_numbers_count], filter[include_phone_numbers]
         filter: nil,
         request_options: {}
       )
@@ -64,6 +64,14 @@ module Telnyx
         sig { params(country_code: String).void }
         attr_writer :country_code
 
+        # Include the first 50 phone number objects in the results, including their
+        # per-number regulatory requirement statuses
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_phone_numbers
+
+        sig { params(include_phone_numbers: T::Boolean).void }
+        attr_writer :include_phone_numbers
+
         # ID of the number order the sub number order belongs to
         sig { returns(T.nilable(String)) }
         attr_reader :order_request_id
@@ -94,10 +102,11 @@ module Telnyx
 
         # Consolidated filter parameter (deepObject style). Originally: filter[status],
         # filter[order_request_id], filter[country_code], filter[phone_number_type],
-        # filter[phone_numbers_count]
+        # filter[phone_numbers_count], filter[include_phone_numbers]
         sig do
           params(
             country_code: String,
+            include_phone_numbers: T::Boolean,
             order_request_id: String,
             phone_number_type: String,
             phone_numbers_count: Integer,
@@ -107,6 +116,9 @@ module Telnyx
         def self.new(
           # ISO alpha-2 country code.
           country_code: nil,
+          # Include the first 50 phone number objects in the results, including their
+          # per-number regulatory requirement statuses
+          include_phone_numbers: nil,
           # ID of the number order the sub number order belongs to
           order_request_id: nil,
           # Phone Number Type
@@ -122,6 +134,7 @@ module Telnyx
           override.returns(
             {
               country_code: String,
+              include_phone_numbers: T::Boolean,
               order_request_id: String,
               phone_number_type: String,
               phone_numbers_count: Integer,

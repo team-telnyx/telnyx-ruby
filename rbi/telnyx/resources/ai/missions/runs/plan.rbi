@@ -6,7 +6,9 @@ module Telnyx
       class Missions
         class Runs
           class Plan
-            # Create the initial plan for a run
+            # Creates the initial plan for the specified run from the provided steps and
+            # returns the created plan steps. Progress is subsequently reported by updating
+            # individual steps.
             sig do
               params(
                 run_id: String,
@@ -29,7 +31,9 @@ module Telnyx
             )
             end
 
-            # Get the plan (all steps) for a run
+            # Returns the plan for the specified run, including all plan steps and their
+            # statuses, so you can see how the mission was decomposed and how far execution
+            # has progressed.
             sig do
               params(
                 run_id: String,
@@ -71,7 +75,8 @@ module Telnyx
             )
             end
 
-            # Get details of a specific plan step
+            # Returns the details of a single plan step within a run's plan, including its
+            # status.
             sig do
               params(
                 step_id: String,
@@ -91,7 +96,8 @@ module Telnyx
             )
             end
 
-            # Update the status of a plan step
+            # Updates the status of a single plan step and returns the updated step. Typically
+            # called by the executing agent as it works through the plan.
             sig do
               params(
                 step_id: String,

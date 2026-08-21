@@ -92,6 +92,12 @@ module Telnyx
         end
         attr_writer :tool_choice
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             conversation_id: String,
@@ -108,6 +114,7 @@ module Telnyx
             tool_calls: T::Array[T::Hash[Symbol, T.anything]],
             tool_choice:
               Telnyx::AI::ConversationAddMessageParams::ToolChoice::Variants,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -122,6 +129,7 @@ module Telnyx
           tool_call_id: nil,
           tool_calls: nil,
           tool_choice: nil,
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -143,6 +151,7 @@ module Telnyx
               tool_calls: T::Array[T::Hash[Symbol, T.anything]],
               tool_choice:
                 Telnyx::AI::ConversationAddMessageParams::ToolChoice::Variants,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           )

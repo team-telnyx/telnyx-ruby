@@ -3,6 +3,7 @@
 module Telnyx
   module Models
     module EmailMessages
+      # @see Telnyx::Resources::EmailMessages::Recipients#list
       class EmailRecipient < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   Recipient UUID.

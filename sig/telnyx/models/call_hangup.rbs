@@ -73,7 +73,7 @@ module Telnyx
           hangup_cause: Telnyx::Models::CallHangup::Payload::hangup_cause,
           hangup_source: Telnyx::Models::CallHangup::Payload::hangup_source,
           sip_hangup_cause: String,
-          sip_headers: ::Array[Telnyx::CallHangup::Payload::SipHeader],
+          sip_headers: ::Array[Telnyx::InboundSipHeader],
           start_time: Time,
           state: Telnyx::Models::CallHangup::Payload::state,
           tags: ::Array[String],
@@ -129,11 +129,11 @@ module Telnyx
 
         def sip_hangup_cause=: (String) -> String
 
-        attr_reader sip_headers: ::Array[Telnyx::CallHangup::Payload::SipHeader]?
+        attr_reader sip_headers: ::Array[Telnyx::InboundSipHeader]?
 
         def sip_headers=: (
-          ::Array[Telnyx::CallHangup::Payload::SipHeader]
-        ) -> ::Array[Telnyx::CallHangup::Payload::SipHeader]
+          ::Array[Telnyx::InboundSipHeader]
+        ) -> ::Array[Telnyx::InboundSipHeader]
 
         attr_reader start_time: Time?
 
@@ -165,7 +165,7 @@ module Telnyx
           ?hangup_cause: Telnyx::Models::CallHangup::Payload::hangup_cause,
           ?hangup_source: Telnyx::Models::CallHangup::Payload::hangup_source,
           ?sip_hangup_cause: String,
-          ?sip_headers: ::Array[Telnyx::CallHangup::Payload::SipHeader],
+          ?sip_headers: ::Array[Telnyx::InboundSipHeader],
           ?start_time: Time,
           ?state: Telnyx::Models::CallHangup::Payload::state,
           ?tags: ::Array[String],
@@ -184,7 +184,7 @@ module Telnyx
           hangup_cause: Telnyx::Models::CallHangup::Payload::hangup_cause,
           hangup_source: Telnyx::Models::CallHangup::Payload::hangup_source,
           sip_hangup_cause: String,
-          sip_headers: ::Array[Telnyx::CallHangup::Payload::SipHeader],
+          sip_headers: ::Array[Telnyx::InboundSipHeader],
           start_time: Time,
           state: Telnyx::Models::CallHangup::Payload::state,
           tags: ::Array[String],
@@ -324,39 +324,6 @@ module Telnyx
           UNKNOWN: :unknown
 
           def self?.values: -> ::Array[Telnyx::Models::CallHangup::Payload::hangup_source]
-        end
-
-        type sip_header =
-          {
-            name: Telnyx::Models::CallHangup::Payload::SipHeader::name_,
-            value: String
-          }
-
-        class SipHeader < Telnyx::Internal::Type::BaseModel
-          attr_accessor name: Telnyx::Models::CallHangup::Payload::SipHeader::name_
-
-          attr_accessor value: String
-
-          def initialize: (
-            name: Telnyx::Models::CallHangup::Payload::SipHeader::name_,
-            value: String
-          ) -> void
-
-          def to_hash: -> {
-            name: Telnyx::Models::CallHangup::Payload::SipHeader::name_,
-            value: String
-          }
-
-          type name_ = :"User-to-User" | :Diversion
-
-          module Name
-            extend Telnyx::Internal::Type::Enum
-
-            USER_TO_USER: :"User-to-User"
-            DIVERSION: :Diversion
-
-            def self?.values: -> ::Array[Telnyx::Models::CallHangup::Payload::SipHeader::name_]
-          end
         end
 
         type state = :hangup

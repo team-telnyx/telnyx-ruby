@@ -3,12 +3,12 @@ module Telnyx
     module Rcs
       type brand_response =
         {
-          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandResponse::Address],
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           brand_id: String,
           capabilities: Telnyx::Rcs::CapabilitiesResponse,
           contacts: ::Hash[Symbol, Telnyx::Rcs::BrandContact],
           display_name: String,
-          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier],
+          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier],
           legal_entity_type: String,
           legal_name: String,
           organization_type: String,
@@ -18,7 +18,7 @@ module Telnyx
         }
 
       class BrandResponse < Telnyx::Internal::Type::BaseModel
-        attr_accessor addresses: ::Hash[Symbol, Telnyx::Rcs::BrandResponse::Address]
+        attr_accessor addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress]
 
         attr_accessor brand_id: String
 
@@ -28,7 +28,7 @@ module Telnyx
 
         attr_accessor display_name: String
 
-        attr_accessor identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier]
+        attr_accessor identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier]
 
         attr_accessor legal_entity_type: String
 
@@ -43,12 +43,12 @@ module Telnyx
         attr_accessor website_url: String
 
         def initialize: (
-          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandResponse::Address],
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           brand_id: String,
           capabilities: Telnyx::Rcs::CapabilitiesResponse,
           contacts: ::Hash[Symbol, Telnyx::Rcs::BrandContact],
           display_name: String,
-          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier],
+          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier],
           legal_entity_type: String,
           legal_name: String,
           organization_type: String,
@@ -58,12 +58,12 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
-          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandResponse::Address],
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           brand_id: String,
           capabilities: Telnyx::Rcs::CapabilitiesResponse,
           contacts: ::Hash[Symbol, Telnyx::Rcs::BrandContact],
           display_name: String,
-          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier],
+          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier],
           legal_entity_type: String,
           legal_name: String,
           organization_type: String,
@@ -71,58 +71,6 @@ module Telnyx
           status: Telnyx::Models::Rcs::BrandResponse::status,
           website_url: String
         }
-
-        type address =
-          {
-            administrative_area: String,
-            city: String,
-            country_code: String,
-            :line_1 => String,
-            postal_code: String,
-            :line_2 => String?
-          }
-
-        class Address < Telnyx::Internal::Type::BaseModel
-          attr_accessor administrative_area: String
-
-          attr_accessor city: String
-
-          attr_accessor country_code: String
-
-          attr_accessor line_1: String
-
-          attr_accessor postal_code: String
-
-          attr_accessor line_2: String?
-
-          def initialize: (
-            administrative_area: String,
-            city: String,
-            country_code: String,
-            line_1: String,
-            postal_code: String,
-            ?line_2: String?
-          ) -> void
-
-          def to_hash: -> {
-            administrative_area: String,
-            city: String,
-            country_code: String,
-            :line_1 => String,
-            postal_code: String,
-            :line_2 => String?
-          }
-        end
-
-        type identifier =
-          Telnyx::Rcs::EinBrandIdentifier
-          | Telnyx::Rcs::StockSymbolBrandIdentifier
-
-        module Identifier
-          extend Telnyx::Internal::Type::Union
-
-          def self?.variants: -> ::Array[Telnyx::Models::Rcs::BrandResponse::identifier]
-        end
 
         type status =
           :CREATED

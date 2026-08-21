@@ -19,7 +19,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::RemediationTest < Telnyx
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::Reputation::RemediationRequestWrapped::Data
+        data: Telnyx::Enterprises::Reputation::RemediationRequest
       }
     end
   end
@@ -39,7 +39,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::RemediationTest < Telnyx
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::Reputation::RemediationRequestWrapped::Data
+        data: Telnyx::Enterprises::Reputation::RemediationRequest
       }
     end
   end

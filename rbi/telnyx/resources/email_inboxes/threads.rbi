@@ -44,7 +44,11 @@ module Telnyx
             page_after: String,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::EmailInboxes::InboundThreadListResponse)
+          ).returns(
+            Telnyx::Internal::EmailBracketCursorPagination[
+              Telnyx::EmailInboxes::InboundThread
+            ]
+          )
         end
         def list(
           # Email inbox UUID.

@@ -146,8 +146,8 @@ module Telnyx
         # @!attribute sip_headers
         #   User-to-User and Diversion headers from sip invite.
         #
-        #   @return [Array<Telnyx::Models::CallInitiated::Payload::SipHeader>, nil]
-        optional :sip_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CallInitiated::Payload::SipHeader] }
+        #   @return [Array<Telnyx::Models::InboundSipHeader>, nil]
+        optional :sip_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::InboundSipHeader] }
 
         # @!attribute start_time
         #   ISO 8601 datetime of when the call started.
@@ -205,7 +205,7 @@ module Telnyx
         #
         #   @param shaken_stir_validated [Boolean] Whether attestation was successfully validated or not.
         #
-        #   @param sip_headers [Array<Telnyx::Models::CallInitiated::Payload::SipHeader>] User-to-User and Diversion headers from sip invite.
+        #   @param sip_headers [Array<Telnyx::Models::InboundSipHeader>] User-to-User and Diversion headers from sip invite.
         #
         #   @param start_time [Time] ISO 8601 datetime of when the call started.
         #
@@ -226,38 +226,6 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        class SipHeader < Telnyx::Internal::Type::BaseModel
-          # @!attribute name
-          #   The name of the header received from the SIP INVITE.
-          #
-          #   @return [Symbol, Telnyx::Models::CallInitiated::Payload::SipHeader::Name]
-          required :name, enum: -> { Telnyx::CallInitiated::Payload::SipHeader::Name }
-
-          # @!attribute value
-          #   The value of the header.
-          #
-          #   @return [String]
-          required :value, String
-
-          # @!method initialize(name:, value:)
-          #   @param name [Symbol, Telnyx::Models::CallInitiated::Payload::SipHeader::Name] The name of the header received from the SIP INVITE.
-          #
-          #   @param value [String] The value of the header.
-
-          # The name of the header received from the SIP INVITE.
-          #
-          # @see Telnyx::Models::CallInitiated::Payload::SipHeader#name
-          module Name
-            extend Telnyx::Internal::Type::Enum
-
-            USER_TO_USER = :"User-to-User"
-            DIVERSION = :Diversion
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
 
         # State received from a command.

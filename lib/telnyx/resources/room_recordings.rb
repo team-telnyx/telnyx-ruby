@@ -58,7 +58,8 @@ module Telnyx
         )
       end
 
-      # Synchronously delete a Room Recording.
+      # Synchronously deletes the specified video room recording. The recording's media
+      # is removed permanently.
       #
       # @overload delete(room_recording_id, request_options: {})
       #

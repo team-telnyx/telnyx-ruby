@@ -4,7 +4,7 @@ module Telnyx
       ::Array[String]
       | ::Array[::Hash[Symbol, top]]
       | ::Hash[Symbol, String]
-      | ::Hash[Symbol, top]
+      | ::Hash[Symbol, ::Hash[Symbol, top]]
       | Telnyx::Models::Messaging10dlcGetEnumResponse::EnumPaginatedResponse
 
     module Messaging10dlcGetEnumResponse

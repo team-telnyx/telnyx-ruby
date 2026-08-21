@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Documents
     class Documents
-      # Retrieve a document.
+      # Returns the details of a single document on your account, including its
+      # metadata.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -24,7 +25,7 @@ module Telnyx
         )
       end
 
-      # Update a document.
+      # Updates the specified document's attributes and returns the updated document.
       #
       # @overload update(document_id, customer_reference: nil, filename: nil, request_options: {})
       #
@@ -105,7 +106,7 @@ module Telnyx
         )
       end
 
-      # Download a document.
+      # Downloads the raw file content of the specified document as originally uploaded.
       #
       # @overload download(id, request_options: {})
       #

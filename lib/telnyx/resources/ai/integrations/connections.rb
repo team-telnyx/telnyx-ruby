@@ -5,7 +5,7 @@ module Telnyx
     class AI
       class Integrations
         class Connections
-          # Get user setup integrations
+          # Returns the details of a single integration connection by its ID.
           #
           # @overload retrieve(user_connection_id, request_options: {})
           #
@@ -25,7 +25,8 @@ module Telnyx
             )
           end
 
-          # List user setup integrations
+          # Returns the list of integration connections you have set up, linking your
+          # account to third-party services.
           #
           # @overload list(request_options: {})
           #

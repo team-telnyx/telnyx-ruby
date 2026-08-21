@@ -4,7 +4,11 @@ module Telnyx
       module Assistants
         module Tests
           type run_trigger_params =
-            { test_id: String, destination_version_id: String }
+            {
+              test_id: String,
+              destination_version_id: String,
+              idempotency_key: String
+            }
             & Telnyx::Internal::Type::request_parameters
 
           class RunTriggerParams < Telnyx::Internal::Type::BaseModel
@@ -17,15 +21,21 @@ module Telnyx
 
             def destination_version_id=: (String) -> String
 
+            attr_reader idempotency_key: String?
+
+            def idempotency_key=: (String) -> String
+
             def initialize: (
               test_id: String,
               ?destination_version_id: String,
+              ?idempotency_key: String,
               ?request_options: Telnyx::request_opts
             ) -> void
 
             def to_hash: -> {
               test_id: String,
               destination_version_id: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           end

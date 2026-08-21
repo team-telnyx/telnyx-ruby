@@ -21,7 +21,8 @@ module Telnyx
           )
           end
 
-          # Get all embedding buckets for a user.
+          # Returns the list of storage buckets that have been embedded for your account,
+          # for use with similarity search.
           sig do
             params(request_options: Telnyx::RequestOptions::OrHash).returns(
               Telnyx::Models::AI::Embeddings::BucketListResponse

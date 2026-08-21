@@ -331,7 +331,8 @@ module Telnyx
         )
         end
 
-        # Put the call in a queue.
+        # Places the call into a queue, where it waits until it is removed or bridged to
+        # another leg. Queue behavior is configured through the request body.
         sig do
           params(
             call_control_id: String,
@@ -464,7 +465,6 @@ module Telnyx
                 Telnyx::Calls::TelnyxVoiceSettings::OrHash,
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
               ),
@@ -682,7 +682,6 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::MinimaxVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
@@ -729,14 +728,6 @@ module Telnyx
           #   `Minimax.speech-02-hd.Wise_Woman`). Supported models: `speech-02-turbo`,
           #   `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Use `voice_settings`
           #   to configure speed, volume, pitch, and language_boost.
-          # - **Rime:** Use `Rime.<model_id>.<voice_id>` (e.g., `Rime.Arcana.cove`).
-          #   Supported model_ids: `Arcana`, `Mist`, `ArcanaV3`, `Coda`. Use
-          #   `voice_settings` to configure voice_speed. To use your own Rime account,
-          #   provide your Rime API key as an integration secret in
-          #   `"voice_settings": {"type": "rime", "api_key_ref": "<secret_identifier>"}`.
-          #   See
-          #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
-          #   for details.
           # - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
           #   `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
           #   `voice_settings` to configure precision, sample_rate, and format.
@@ -858,7 +849,8 @@ module Telnyx
         )
         end
 
-        # Removes the call from a queue.
+        # Removes the call from the queue it is currently waiting in. The call remains
+        # active and can be directed with further call commands.
         sig do
           params(
             call_control_id: String,
@@ -950,6 +942,8 @@ module Telnyx
             timeout_millis: Integer,
             transaction_type:
               Telnyx::Calls::ActionPayParams::TransactionType::OrSymbol,
+            valid_card_types:
+              T::Array[Telnyx::Calls::ActionPayParams::ValidCardType::OrSymbol],
             voice: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionPayResponse)
@@ -994,6 +988,11 @@ module Telnyx
           # Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is
           # absent or zero and `charge` when `amount` is positive.
           transaction_type: nil,
+          # Restricts accepted card numbers to the listed card types. When the caller enters
+          # a card number that does not match one of the listed types, Pay treats the input
+          # as invalid and re-prompts for the card number. Cannot be used together with
+          # `payment_token`.
+          valid_card_types: nil,
           # Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
           # `<Provider>.<Model>.<VoiceId>` format, for example `AWS.Polly.Joanna` or
           # `Telnyx.KokoroTTS.af`.
@@ -1204,7 +1203,6 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::MinimaxVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
@@ -1251,14 +1249,6 @@ module Telnyx
           #   `Minimax.speech-02-hd.Wise_Woman`). Supported models: `speech-02-turbo`,
           #   `speech-02-hd`, `speech-2.6-turbo`, `speech-2.8-turbo`. Use `voice_settings`
           #   to configure speed, volume, pitch, and language_boost.
-          # - **Rime:** Use `Rime.<model_id>.<voice_id>` (e.g., `Rime.Arcana.cove`).
-          #   Supported model_ids: `Arcana`, `Mist`, `ArcanaV3`, `Coda`. Use
-          #   `voice_settings` to configure voice_speed. To use your own Rime account,
-          #   provide your Rime API key as an integration secret in
-          #   `"voice_settings": {"type": "rime", "api_key_ref": "<secret_identifier>"}`.
-          #   See
-          #   [integration secrets documentation](https://developers.telnyx.com/api/secrets-manager/integration-secrets/create-integration-secret)
-          #   for details.
           # - **Resemble:** Use `Resemble.Turbo.<voice_id>` (e.g.,
           #   `Resemble.Turbo.my_voice`). Only `Turbo` model is supported. Use
           #   `voice_settings` to configure precision, sample_rate, and format.
@@ -1426,7 +1416,6 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::MinimaxVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::RimeVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash
@@ -1943,8 +1932,8 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineSpeechmaticsConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineSonioxConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Humain::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Reson8::OrHash,
+                Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
+                Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -1975,7 +1964,8 @@ module Telnyx
         )
         end
 
-        # Stop an AI assistant on the call.
+        # Stops the AI assistant currently engaged on the call. The call remains active
+        # and can continue with other call control commands.
         sig do
           params(
             call_control_id: String,
@@ -2217,7 +2207,8 @@ module Telnyx
         )
         end
 
-        # Stop real-time transcription.
+        # Stops real-time transcription on the call. Transcription webhooks cease once the
+        # command takes effect; the call itself is unaffected.
         sig do
           params(
             call_control_id: String,
@@ -2505,7 +2496,9 @@ module Telnyx
         )
         end
 
-        # Updates client state
+        # Updates the client state associated with the call. Client state is an opaque
+        # value echoed back in subsequent webhooks for the call, letting you correlate
+        # events with your application's state.
         sig do
           params(
             call_control_id: String,

@@ -7,7 +7,8 @@ module Telnyx
             instructions: String,
             name: String,
             json_schema: Telnyx::Models::AI::Conversations::InsightCreateParams::json_schema,
-            webhook: String
+            webhook: String,
+            idempotency_key: String
           }
           & Telnyx::Internal::Type::request_parameters
 
@@ -29,11 +30,16 @@ module Telnyx
 
           def webhook=: (String) -> String
 
+          attr_reader idempotency_key: String?
+
+          def idempotency_key=: (String) -> String
+
           def initialize: (
             instructions: String,
             name: String,
             ?json_schema: Telnyx::Models::AI::Conversations::InsightCreateParams::json_schema,
             ?webhook: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> void
 
@@ -42,6 +48,7 @@ module Telnyx
             name: String,
             json_schema: Telnyx::Models::AI::Conversations::InsightCreateParams::json_schema,
             webhook: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions
           }
 

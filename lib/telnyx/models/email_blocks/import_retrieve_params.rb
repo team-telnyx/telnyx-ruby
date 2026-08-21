@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     module EmailBlocks
-      # @see Telnyx::Resources::EmailBlocks::Import#retrieve
+      # @see Telnyx::Resources::EmailBlocks::Imports#retrieve
       class ImportRetrieveParams < Telnyx::Internal::Type::BaseModel
         extend Telnyx::Internal::Type::RequestParameters::Converter
         include Telnyx::Internal::Type::RequestParameters

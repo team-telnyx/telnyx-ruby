@@ -105,8 +105,7 @@ module Telnyx
           module Param
             extend Telnyx::Internal::Type::Union
 
-            Variants =
-              T.type_alias { T.nilable(T.any(String, Float, T::Boolean)) }
+            Variants = T.type_alias { T.any(String, Float, T::Boolean) }
 
             sig do
               override.returns(

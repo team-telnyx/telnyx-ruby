@@ -9,13 +9,25 @@ class Telnyx::Test::Resources::EmailEventsTest < Telnyx::Test::ResourceTest
     response = @telnyx.email_events.list
 
     assert_pattern do
-      response => Telnyx::Models::EmailEventListResponse
+      response => Telnyx::Internal::EmailCursorPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::EmailEventListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::EmailEventListResponse::Data]),
-        meta: Telnyx::Models::EmailEventListResponse::Meta
+      row => {
+        id: String,
+        email_id: String,
+        occurred_at: Time,
+        record_type: Telnyx::Models::EmailEventListResponse::RecordType,
+        type: Telnyx::EmailEventType,
+        email: Telnyx::Models::EmailEventListResponse::Email | nil,
+        payload: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil
       }
     end
   end

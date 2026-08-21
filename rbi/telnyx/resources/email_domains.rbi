@@ -97,9 +97,14 @@ module Telnyx
         filter_domain: nil,
         # Filter by profile UUID
         filter_profile_id: nil,
+        # Filter domains by verification status: pending, verifying, verified, failed,
+        # degraded, or suspended.
         filter_status: nil,
+        # Filter domains by type: custom, shared, or shared_inbound.
         filter_type: nil,
+        # Filter domains by whether they can currently receive inbound email.
         filter_usable_for_inbound: nil,
+        # Filter domains by whether they can currently be used to send email.
         filter_usable_for_sending: nil,
         # Cursor for records after the provided value (cursor pagination)
         page_after: nil,

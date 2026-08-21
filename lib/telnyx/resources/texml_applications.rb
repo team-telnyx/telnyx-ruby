@@ -7,7 +7,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::TexmlApplicationCreateParams} for more details.
       #
-      # Creates a TeXML Application.
+      # Creates a TeXML application, which defines the voice URLs and settings used to
+      # serve TeXML instructions for calls, and returns the created application.
       #
       # @overload create(friendly_name:, voice_url:, active: nil, anchorsite_override: nil, call_cost_in_webhooks: nil, dtmf_type: nil, first_command_timeout: nil, first_command_timeout_secs: nil, inbound: nil, outbound: nil, status_callback: nil, status_callback_method: nil, tags: nil, voice_fallback_url: nil, voice_method: nil, request_options: {})
       #
@@ -165,7 +166,7 @@ module Telnyx
         )
       end
 
-      # Deletes a TeXML Application.
+      # Permanently deletes the specified TeXML application from your account.
       #
       # @overload delete(id, request_options: {})
       #

@@ -27,6 +27,7 @@ module Telnyx
             name: String,
             ?description: String,
             ?webhook: String,
+            ?idempotency_key: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::Conversations::InsightTemplateGroupDetail
 

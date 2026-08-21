@@ -7,7 +7,8 @@ module Telnyx
         class Conferences
           # TeXML REST Commands
           class Participants
-            # Gets conference participant resource
+            # Returns a single conference participant resource by call SID or participant
+            # label.
             sig do
               params(
                 call_sid_or_participant_label: String,
@@ -29,7 +30,8 @@ module Telnyx
             )
             end
 
-            # Updates a conference participant
+            # Updates the specified conference participant, for example muting or holding
+            # them, and returns the updated participant.
             sig do
               params(
                 call_sid_or_participant_label: String,
@@ -96,7 +98,8 @@ module Telnyx
             )
             end
 
-            # Deletes a conference participant
+            # Removes the specified participant from the conference, ending their leg of the
+            # call.
             sig do
               params(
                 call_sid_or_participant_label: String,
@@ -116,7 +119,8 @@ module Telnyx
             )
             end
 
-            # Dials a new conference participant
+            # Dials a new participant into the specified conference and returns the created
+            # participant resource.
             sig do
               params(
                 conference_sid: String,
@@ -354,7 +358,7 @@ module Telnyx
             )
             end
 
-            # Lists conference participants
+            # Returns the list of participants currently in the specified conference.
             sig do
               params(
                 conference_sid: String,

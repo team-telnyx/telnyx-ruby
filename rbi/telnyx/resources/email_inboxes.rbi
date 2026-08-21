@@ -68,7 +68,7 @@ module Telnyx
           page_cursor: String,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EmailInboxListResponse)
+        ).returns(Telnyx::Internal::EmailCursorPagination[Telnyx::EmailInbox])
       end
       def list(
         # Opaque cursor returned by the previous inbox page.

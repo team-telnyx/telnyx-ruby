@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Public Internet Gateway operations
     class PublicInternetGateways
-      # Create a new Public Internet Gateway.
+      # Requests creation of a public internet gateway on the specified network, giving
+      # the network internet egress. Creation is asynchronous, so the request is
+      # accepted and completes in the background.
       sig do
         params(
           body: Telnyx::PublicInternetGatewayCreateParams::Body::OrHash,
@@ -14,7 +16,7 @@ module Telnyx
       def create(body:, request_options: {})
       end
 
-      # Retrieve a Public Internet Gateway.
+      # Returns the details of a single public internet gateway by its identifier.
       sig do
         params(
           id: String,
@@ -28,7 +30,8 @@ module Telnyx
       )
       end
 
-      # List all Public Internet Gateways.
+      # Returns a paginated list of the public internet gateways on your account, with
+      # support for filtering.
       sig do
         params(
           filter: Telnyx::PublicInternetGatewayListParams::Filter::OrHash,
@@ -50,7 +53,8 @@ module Telnyx
       )
       end
 
-      # Delete a Public Internet Gateway.
+      # Deletes the specified public internet gateway, removing internet egress through
+      # it.
       sig do
         params(
           id: String,

@@ -7,7 +7,8 @@ module Telnyx
         class Conferences
           # TeXML REST Commands
           class Participants
-            # Gets conference participant resource
+            # Returns a single conference participant resource by call SID or participant
+            # label.
             #
             # @overload retrieve(call_sid_or_participant_label, account_sid:, conference_sid:, request_options: {})
             #
@@ -49,7 +50,8 @@ module Telnyx
             # {Telnyx::Models::Texml::Accounts::Conferences::ParticipantUpdateParams} for more
             # details.
             #
-            # Updates a conference participant
+            # Updates the specified conference participant, for example muting or holding
+            # them, and returns the updated participant.
             #
             # @overload update(call_sid_or_participant_label, account_sid:, conference_sid:, announce_method: nil, announce_url: nil, beep_on_exit: nil, call_sid_to_coach: nil, coaching: nil, end_conference_on_exit: nil, hold: nil, hold_method: nil, hold_url: nil, muted: nil, wait_url: nil, request_options: {})
             #
@@ -111,7 +113,8 @@ module Telnyx
               )
             end
 
-            # Deletes a conference participant
+            # Removes the specified participant from the conference, ending their leg of the
+            # call.
             #
             # @overload delete(call_sid_or_participant_label, account_sid:, conference_sid:, request_options: {})
             #
@@ -153,7 +156,8 @@ module Telnyx
             # {Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams}
             # for more details.
             #
-            # Dials a new conference participant
+            # Dials a new participant into the specified conference and returns the created
+            # participant resource.
             #
             # @overload participants(conference_sid, account_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
             #
@@ -281,7 +285,7 @@ module Telnyx
               )
             end
 
-            # Lists conference participants
+            # Returns the list of participants currently in the specified conference.
             #
             # @overload retrieve_participants(conference_sid, account_sid:, request_options: {})
             #

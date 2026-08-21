@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbers::ConversationalComponentsT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentListResponse::Data | nil
+        data: Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbers::ConversationalComponentsT
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::PhoneNumbers::ConversationalComponentPatchAllResponse::Data | nil
+        data: Telnyx::Whatsapp::PhoneNumbers::WhatsappConversationalComponent | nil
       }
     end
   end

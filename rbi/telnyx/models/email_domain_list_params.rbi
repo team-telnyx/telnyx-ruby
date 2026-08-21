@@ -25,24 +25,29 @@ module Telnyx
       sig { params(filter_profile_id: String).void }
       attr_writer :filter_profile_id
 
+      # Filter domains by verification status: pending, verifying, verified, failed,
+      # degraded, or suspended.
       sig { returns(T.nilable(Telnyx::EmailDomainStatus::OrSymbol)) }
       attr_reader :filter_status
 
       sig { params(filter_status: Telnyx::EmailDomainStatus::OrSymbol).void }
       attr_writer :filter_status
 
+      # Filter domains by type: custom, shared, or shared_inbound.
       sig { returns(T.nilable(Telnyx::EmailDomainType::OrSymbol)) }
       attr_reader :filter_type
 
       sig { params(filter_type: Telnyx::EmailDomainType::OrSymbol).void }
       attr_writer :filter_type
 
+      # Filter domains by whether they can currently receive inbound email.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :filter_usable_for_inbound
 
       sig { params(filter_usable_for_inbound: T::Boolean).void }
       attr_writer :filter_usable_for_inbound
 
+      # Filter domains by whether they can currently be used to send email.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :filter_usable_for_sending
 
@@ -105,9 +110,14 @@ module Telnyx
         filter_domain: nil,
         # Filter by profile UUID
         filter_profile_id: nil,
+        # Filter domains by verification status: pending, verifying, verified, failed,
+        # degraded, or suspended.
         filter_status: nil,
+        # Filter domains by type: custom, shared, or shared_inbound.
         filter_type: nil,
+        # Filter domains by whether they can currently receive inbound email.
         filter_usable_for_inbound: nil,
+        # Filter domains by whether they can currently be used to send email.
         filter_usable_for_sending: nil,
         # Cursor for records after the provided value (cursor pagination)
         page_after: nil,

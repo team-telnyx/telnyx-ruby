@@ -20,7 +20,7 @@ module Telnyx
             T.any(
               Telnyx::AI::FlowEdge::Condition::Llm,
               Telnyx::AI::FlowEdge::Condition::Expression,
-              Telnyx::AI::FlowEdge::Condition::Default
+              Telnyx::AI::FlowEdge::Condition::DefaultCondition
             )
           )
         end
@@ -55,7 +55,7 @@ module Telnyx
               T.any(
                 Telnyx::AI::FlowEdge::Condition::Llm::OrHash,
                 Telnyx::AI::FlowEdge::Condition::Expression::OrHash,
-                Telnyx::AI::FlowEdge::Condition::Default::OrHash
+                Telnyx::AI::FlowEdge::Condition::DefaultCondition::OrHash
               ),
             start_node_id: String,
             target:
@@ -87,7 +87,7 @@ module Telnyx
                 T.any(
                   Telnyx::AI::FlowEdge::Condition::Llm,
                   Telnyx::AI::FlowEdge::Condition::Expression,
-                  Telnyx::AI::FlowEdge::Condition::Default
+                  Telnyx::AI::FlowEdge::Condition::DefaultCondition
                 ),
               start_node_id: String,
               target:
@@ -111,7 +111,7 @@ module Telnyx
               T.any(
                 Telnyx::AI::FlowEdge::Condition::Llm,
                 Telnyx::AI::FlowEdge::Condition::Expression,
-                Telnyx::AI::FlowEdge::Condition::Default
+                Telnyx::AI::FlowEdge::Condition::DefaultCondition
               )
             end
 
@@ -193,11 +193,11 @@ module Telnyx
             end
           end
 
-          class Default < Telnyx::Internal::Type::BaseModel
+          class DefaultCondition < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::AI::FlowEdge::Condition::Default,
+                  Telnyx::AI::FlowEdge::Condition::DefaultCondition,
                   Telnyx::Internal::AnyHash
                 )
               end

@@ -1,0 +1,148 @@
+module Telnyx
+  module Models
+    module AI
+      type flow_node_req =
+        {
+          id: String,
+          instructions: String,
+          external_llm: Telnyx::AI::ExternalLlmReq,
+          instructions_mode: Telnyx::Models::AI::FlowNodeReq::instructions_mode,
+          llm_api_key_ref: String,
+          model: String,
+          name: String,
+          position: Telnyx::AI::NodePosition,
+          shared_tool_ids: ::Array[String],
+          tools_mode: Telnyx::Models::AI::FlowNodeReq::tools_mode,
+          transcription: Telnyx::AI::TranscriptionSettings,
+          type: Telnyx::Models::AI::FlowNodeReq::type_,
+          voice_settings: Telnyx::AI::VoiceSettings
+        }
+
+      class FlowNodeReq < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor instructions: String
+
+        attr_reader external_llm: Telnyx::AI::ExternalLlmReq?
+
+        def external_llm=: (
+          Telnyx::AI::ExternalLlmReq
+        ) -> Telnyx::AI::ExternalLlmReq
+
+        attr_reader instructions_mode: Telnyx::Models::AI::FlowNodeReq::instructions_mode?
+
+        def instructions_mode=: (
+          Telnyx::Models::AI::FlowNodeReq::instructions_mode
+        ) -> Telnyx::Models::AI::FlowNodeReq::instructions_mode
+
+        attr_reader llm_api_key_ref: String?
+
+        def llm_api_key_ref=: (String) -> String
+
+        attr_reader model: String?
+
+        def model=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader position: Telnyx::AI::NodePosition?
+
+        def position=: (Telnyx::AI::NodePosition) -> Telnyx::AI::NodePosition
+
+        attr_reader shared_tool_ids: ::Array[String]?
+
+        def shared_tool_ids=: (::Array[String]) -> ::Array[String]
+
+        attr_reader tools_mode: Telnyx::Models::AI::FlowNodeReq::tools_mode?
+
+        def tools_mode=: (
+          Telnyx::Models::AI::FlowNodeReq::tools_mode
+        ) -> Telnyx::Models::AI::FlowNodeReq::tools_mode
+
+        attr_reader transcription: Telnyx::AI::TranscriptionSettings?
+
+        def transcription=: (
+          Telnyx::AI::TranscriptionSettings
+        ) -> Telnyx::AI::TranscriptionSettings
+
+        attr_reader type: Telnyx::Models::AI::FlowNodeReq::type_?
+
+        def type=: (
+          Telnyx::Models::AI::FlowNodeReq::type_
+        ) -> Telnyx::Models::AI::FlowNodeReq::type_
+
+        attr_reader voice_settings: Telnyx::AI::VoiceSettings?
+
+        def voice_settings=: (
+          Telnyx::AI::VoiceSettings
+        ) -> Telnyx::AI::VoiceSettings
+
+        def initialize: (
+          id: String,
+          instructions: String,
+          ?external_llm: Telnyx::AI::ExternalLlmReq,
+          ?instructions_mode: Telnyx::Models::AI::FlowNodeReq::instructions_mode,
+          ?llm_api_key_ref: String,
+          ?model: String,
+          ?name: String,
+          ?position: Telnyx::AI::NodePosition,
+          ?shared_tool_ids: ::Array[String],
+          ?tools_mode: Telnyx::Models::AI::FlowNodeReq::tools_mode,
+          ?transcription: Telnyx::AI::TranscriptionSettings,
+          ?type: Telnyx::Models::AI::FlowNodeReq::type_,
+          ?voice_settings: Telnyx::AI::VoiceSettings
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          instructions: String,
+          external_llm: Telnyx::AI::ExternalLlmReq,
+          instructions_mode: Telnyx::Models::AI::FlowNodeReq::instructions_mode,
+          llm_api_key_ref: String,
+          model: String,
+          name: String,
+          position: Telnyx::AI::NodePosition,
+          shared_tool_ids: ::Array[String],
+          tools_mode: Telnyx::Models::AI::FlowNodeReq::tools_mode,
+          transcription: Telnyx::AI::TranscriptionSettings,
+          type: Telnyx::Models::AI::FlowNodeReq::type_,
+          voice_settings: Telnyx::AI::VoiceSettings
+        }
+
+        type instructions_mode = :replace | :append
+
+        module InstructionsMode
+          extend Telnyx::Internal::Type::Enum
+
+          REPLACE: :replace
+          APPEND: :append
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::FlowNodeReq::instructions_mode]
+        end
+
+        type tools_mode = :replace | :append
+
+        module ToolsMode
+          extend Telnyx::Internal::Type::Enum
+
+          REPLACE: :replace
+          APPEND: :append
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::FlowNodeReq::tools_mode]
+        end
+
+        type type_ = :prompt
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          PROMPT: :prompt
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::FlowNodeReq::type_]
+        end
+      end
+    end
+  end
+end

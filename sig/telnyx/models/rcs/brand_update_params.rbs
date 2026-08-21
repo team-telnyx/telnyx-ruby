@@ -4,7 +4,7 @@ module Telnyx
       type brand_update_params =
         {
           id: String,
-          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address],
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           contacts: Telnyx::Rcs::BrandUpdateParams::Contacts,
           display_name: String,
           identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers,
@@ -22,11 +22,11 @@ module Telnyx
 
         attr_accessor id: String
 
-        attr_reader addresses: ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address]?
+        attr_reader addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress]?
 
         def addresses=: (
-          ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address]
-        ) -> ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address]
+          ::Hash[Symbol, Telnyx::Rcs::BrandAddress]
+        ) -> ::Hash[Symbol, Telnyx::Rcs::BrandAddress]
 
         attr_reader contacts: Telnyx::Rcs::BrandUpdateParams::Contacts?
 
@@ -70,7 +70,7 @@ module Telnyx
 
         def initialize: (
           id: String,
-          ?addresses: ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address],
+          ?addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           ?contacts: Telnyx::Rcs::BrandUpdateParams::Contacts,
           ?display_name: String,
           ?identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers,
@@ -84,7 +84,7 @@ module Telnyx
 
         def to_hash: -> {
           id: String,
-          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address],
+          addresses: ::Hash[Symbol, Telnyx::Rcs::BrandAddress],
           contacts: Telnyx::Rcs::BrandUpdateParams::Contacts,
           display_name: String,
           identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers,
@@ -95,48 +95,6 @@ module Telnyx
           website_url: String,
           request_options: Telnyx::RequestOptions
         }
-
-        type address =
-          {
-            administrative_area: String,
-            city: String,
-            country_code: String,
-            :line_1 => String,
-            postal_code: String,
-            :line_2 => String?
-          }
-
-        class Address < Telnyx::Internal::Type::BaseModel
-          attr_accessor administrative_area: String
-
-          attr_accessor city: String
-
-          attr_accessor country_code: String
-
-          attr_accessor line_1: String
-
-          attr_accessor postal_code: String
-
-          attr_accessor line_2: String?
-
-          def initialize: (
-            administrative_area: String,
-            city: String,
-            country_code: String,
-            line_1: String,
-            postal_code: String,
-            ?line_2: String?
-          ) -> void
-
-          def to_hash: -> {
-            administrative_area: String,
-            city: String,
-            country_code: String,
-            :line_1 => String,
-            postal_code: String,
-            :line_2 => String?
-          }
-        end
 
         type contacts =
           { brand: Telnyx::Rcs::BrandUpdateParams::Contacts::Brand }
@@ -152,35 +110,12 @@ module Telnyx
             brand: Telnyx::Rcs::BrandUpdateParams::Contacts::Brand
           }
 
-          type brand =
-            {
-              contact_type: Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-            }
+          type brand = {  }
 
           class Brand < Telnyx::Models::Rcs::BrandContact
-            def contact_type: -> Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type?
+            def initialize: -> void
 
-            def contact_type=: (
-              Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type _
-            ) -> Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-
-            def initialize: (
-              ?contact_type: Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-            ) -> void
-
-            def to_hash: -> {
-              contact_type: Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-            }
-
-            type contact_type = :BRAND
-
-            module ContactType
-              extend Telnyx::Internal::Type::Enum
-
-              BRAND: :BRAND
-
-              def self?.values: -> ::Array[Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type]
-            end
+            def to_hash: -> {  }
           end
         end
 

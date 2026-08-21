@@ -23,33 +23,33 @@ module Telnyx
               to:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 ),
               bcc:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 ),
               cc:
                 T.any(
                   String,
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1::OrHash,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress::OrHash,
                   T::Array[
                     T.any(
                       String,
-                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1::OrHash
+                      Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress::OrHash
                     )
                   ]
                 ),

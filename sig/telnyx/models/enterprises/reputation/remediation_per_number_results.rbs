@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type remediation_per_number_results =
+          {
+            ineligible: ::Array[String],
+            not_flagged: ::Array[String],
+            refused: ::Array[String],
+            remediated: ::Array[String],
+            requires_review: ::Array[String]
+          }
+
+        class RemediationPerNumberResults < Telnyx::Internal::Type::BaseModel
+          attr_reader ineligible: ::Array[String]?
+
+          def ineligible=: (::Array[String]) -> ::Array[String]
+
+          attr_reader not_flagged: ::Array[String]?
+
+          def not_flagged=: (::Array[String]) -> ::Array[String]
+
+          attr_reader refused: ::Array[String]?
+
+          def refused=: (::Array[String]) -> ::Array[String]
+
+          attr_reader remediated: ::Array[String]?
+
+          def remediated=: (::Array[String]) -> ::Array[String]
+
+          attr_reader requires_review: ::Array[String]?
+
+          def requires_review=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            ?ineligible: ::Array[String],
+            ?not_flagged: ::Array[String],
+            ?refused: ::Array[String],
+            ?remediated: ::Array[String],
+            ?requires_review: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            ineligible: ::Array[String],
+            not_flagged: ::Array[String],
+            refused: ::Array[String],
+            remediated: ::Array[String],
+            requires_review: ::Array[String]
+          }
+        end
+      end
+    end
+  end
+end

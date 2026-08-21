@@ -3,7 +3,7 @@ module Telnyx
     type enterprise_update_params =
       {
         enterprise_id: String,
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         corporate_registration_number: String?,
         customer_reference: String,
@@ -29,9 +29,9 @@ module Telnyx
 
       attr_accessor enterprise_id: String
 
-      attr_reader billing_address: Telnyx::BillingAddress?
+      attr_reader billing_address: Telnyx::PhysicalAddress?
 
-      def billing_address=: (Telnyx::BillingAddress) -> Telnyx::BillingAddress
+      def billing_address=: (Telnyx::PhysicalAddress) -> Telnyx::PhysicalAddress
 
       attr_reader billing_contact: Telnyx::BillingContact?
 
@@ -97,7 +97,7 @@ module Telnyx
 
       def initialize: (
         enterprise_id: String,
-        ?billing_address: Telnyx::BillingAddress,
+        ?billing_address: Telnyx::PhysicalAddress,
         ?billing_contact: Telnyx::BillingContact,
         ?corporate_registration_number: String?,
         ?customer_reference: String,
@@ -119,7 +119,7 @@ module Telnyx
 
       def to_hash: -> {
         enterprise_id: String,
-        billing_address: Telnyx::BillingAddress,
+        billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
         corporate_registration_number: String?,
         customer_reference: String,

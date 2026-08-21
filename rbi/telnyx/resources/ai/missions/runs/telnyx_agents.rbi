@@ -6,7 +6,8 @@ module Telnyx
       class Missions
         class Runs
           class TelnyxAgents
-            # List all Telnyx agents linked to a run
+            # Returns the Telnyx agents currently linked to the specified run. Linked agents
+            # participate in executing the run's plan.
             sig do
               params(
                 run_id: String,
@@ -47,7 +48,8 @@ module Telnyx
             )
             end
 
-            # Unlink a Telnyx agent from a run
+            # Unlinks the specified Telnyx agent from the run so it no longer participates in
+            # execution. The run itself and its history are unaffected.
             sig do
               params(
                 telnyx_agent_id: String,

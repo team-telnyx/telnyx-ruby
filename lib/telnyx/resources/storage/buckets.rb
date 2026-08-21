@@ -20,13 +20,13 @@ module Telnyx
         #
         # Refer to: https://developers.telnyx.com/docs/cloud-storage/presigned-urls
         #
-        # @overload create_presigned_url(object_name, bucket_name:, ttl: nil, request_options: {})
+        # @overload create_presigned_url(object_name, bucket_name:, body: nil, request_options: {})
         #
         # @param object_name [String] Path param: The name of the object
         #
         # @param bucket_name [String] Path param: The name of the bucket
         #
-        # @param ttl [Integer] Body param: The time to live of the token in seconds
+        # @param body [Telnyx::Models::Storage::BucketCreatePresignedURLParams::Body] Body param
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -42,7 +42,7 @@ module Telnyx
           @client.request(
             method: :post,
             path: ["storage/buckets/%1$s/%2$s/presigned_url", bucket_name, object_name],
-            body: parsed,
+            body: parsed[:body],
             model: Telnyx::Models::Storage::BucketCreatePresignedURLResponse,
             options: options
           )

@@ -82,6 +82,17 @@ module Telnyx
           optional :headers,
                    -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header] }
 
+          # @!attribute messages
+          #   Filler messages spoken while a synchronous webhook request is in progress.
+          #   `request_start` messages are spoken immediately when the request begins.
+          #   `request_response_delayed` messages are spoken after `timing_ms` has elapsed
+          #   only if the webhook response is still pending. Filler messages are not used for
+          #   asynchronous webhooks.
+          #
+          #   @return [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage>, nil]
+          optional :messages,
+                   -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message] }
+
           # @!attribute http_method
           #   The HTTP method to be used when calling the external tool.
           #
@@ -127,7 +138,7 @@ module Telnyx
           #   @return [Integer, nil]
           optional :timeout_ms, Integer
 
-          # @!method initialize(description:, name:, url:, async: nil, async_timeout_ms: nil, body_parameters: nil, headers: nil, http_method: nil, path_parameters: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
+          # @!method initialize(description:, name:, url:, async: nil, async_timeout_ms: nil, body_parameters: nil, headers: nil, messages: nil, http_method: nil, path_parameters: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook} for more
           #   details.
@@ -145,6 +156,8 @@ module Telnyx
           #   @param body_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::BodyParameters] The body parameters the webhook tool accepts, described as a JSON Schema object.
           #
           #   @param headers [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header>] The headers to be sent to the external tool.
+          #
+          #   @param messages [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage>] Filler messages spoken while a synchronous webhook request is in progress. `requ
           #
           #   @param http_method [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method] The HTTP method to be used when calling the external tool.
           #
@@ -224,6 +237,76 @@ module Telnyx
             #   @param name [String]
             #
             #   @param value [String] The value of the header. Note that we support mustache templating for the value.
+          end
+
+          module Message
+            extend Telnyx::Internal::Type::Union
+
+            variant -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage }
+
+            variant -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage }
+
+            class WebhookToolRequestStartMessage < Telnyx::Internal::Type::BaseModel
+              # @!attribute content
+              #   The text the assistant speaks.
+              #
+              #   @return [String]
+              required :content, String
+
+              # @!attribute type
+              #   Speak the filler message immediately when the webhook request begins.
+              #
+              #   @return [Symbol, :request_start]
+              required :type, const: :request_start
+
+              # @!attribute timing_ms
+              #   An optional delay value. This value is ignored for `request_start` messages.
+              #
+              #   @return [Integer, nil]
+              optional :timing_ms, Integer
+
+              # @!method initialize(content:, timing_ms: nil, type: :request_start)
+              #   @param content [String] The text the assistant speaks.
+              #
+              #   @param timing_ms [Integer] An optional delay value. This value is ignored for `request_start` messages.
+              #
+              #   @param type [Symbol, :request_start] Speak the filler message immediately when the webhook request begins.
+            end
+
+            class WebhookToolRequestResponseDelayedMessage < Telnyx::Internal::Type::BaseModel
+              # @!attribute content
+              #   The text the assistant speaks.
+              #
+              #   @return [String]
+              required :content, String
+
+              # @!attribute timing_ms
+              #   The delay in milliseconds from the start of the webhook request.
+              #
+              #   @return [Integer]
+              required :timing_ms, Integer
+
+              # @!attribute type
+              #   Speak the filler message after the configured delay if the webhook response is
+              #   still pending.
+              #
+              #   @return [Symbol, :request_response_delayed]
+              required :type, const: :request_response_delayed
+
+              # @!method initialize(content:, timing_ms:, type: :request_response_delayed)
+              #   Some parameter documentations has been truncated, see
+              #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage}
+              #   for more details.
+              #
+              #   @param content [String] The text the assistant speaks.
+              #
+              #   @param timing_ms [Integer] The delay in milliseconds from the start of the webhook request.
+              #
+              #   @param type [Symbol, :request_response_delayed] Speak the filler message after the configured delay if the webhook response is s
+            end
+
+            # @!method self.variants
+            #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage)]
           end
 
           # The HTTP method to be used when calling the external tool.

@@ -61,7 +61,8 @@ module Telnyx
       )
       end
 
-      # Update a single managed account.
+      # Updates the specified managed account's attributes and returns the updated
+      # account.
       sig do
         params(
           id: String,

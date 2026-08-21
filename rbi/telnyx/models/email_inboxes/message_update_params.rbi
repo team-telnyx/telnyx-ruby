@@ -21,15 +21,11 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :message_id
 
-        # Set to `true` for server time, an ISO 8601 timestamp for an explicit read time,
-        # or `null` to mark unread.
         sig do
           returns(
-            T.nilable(
-              T.any(
-                Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::OrBoolean,
-                Time
-              )
+            T.any(
+              Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::OrBoolean,
+              Time
             )
           )
         end
@@ -40,23 +36,14 @@ module Telnyx
             inbox_id: String,
             message_id: String,
             read_at:
-              T.nilable(
-                T.any(
-                  Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::OrBoolean,
-                  Time
-                )
+              T.any(
+                Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::OrBoolean,
+                Time
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(
-          inbox_id:,
-          message_id:,
-          # Set to `true` for server time, an ISO 8601 timestamp for an explicit read time,
-          # or `null` to mark unread.
-          read_at:,
-          request_options: {}
-        )
+        def self.new(inbox_id:, message_id:, read_at:, request_options: {})
         end
 
         sig do
@@ -65,11 +52,9 @@ module Telnyx
               inbox_id: String,
               message_id: String,
               read_at:
-                T.nilable(
-                  T.any(
-                    Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::OrBoolean,
-                    Time
-                  )
+                T.any(
+                  Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::OrBoolean,
+                  Time
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -78,20 +63,45 @@ module Telnyx
         def to_hash
         end
 
-        # Set to `true` for server time, an ISO 8601 timestamp for an explicit read time,
-        # or `null` to mark unread.
         module ReadAt
           extend Telnyx::Internal::Type::Union
 
           Variants =
             T.type_alias do
-              T.nilable(
-                T.any(
-                  Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::TaggedBoolean,
-                  Time
-                )
+              T.any(
+                Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::TaggedBoolean,
+                Time
               )
             end
+
+          module ServerReadTime
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedBoolean =
+              T.type_alias do
+                T.all(
+                  T::Boolean,
+                  Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime
+                )
+              end
+            OrBoolean = T.type_alias { T::Boolean }
+
+            TRUE =
+              T.let(
+                true,
+                Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::TaggedBoolean
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::TaggedBoolean
+                ]
+              )
+            end
+            def self.values
+            end
+          end
 
           sig do
             override.returns(
@@ -102,21 +112,6 @@ module Telnyx
           end
           def self.variants
           end
-
-          TaggedBoolean =
-            T.type_alias do
-              T.all(
-                T::Boolean,
-                Telnyx::EmailInboxes::MessageUpdateParams::ReadAt
-              )
-            end
-          OrBoolean = T.type_alias { T::Boolean }
-
-          TRUE =
-            T.let(
-              true,
-              Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::TaggedBoolean
-            )
         end
       end
     end

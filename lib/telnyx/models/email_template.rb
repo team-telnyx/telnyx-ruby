@@ -2,6 +2,7 @@
 
 module Telnyx
   module Models
+    # @see Telnyx::Resources::EmailTemplates#list
     class EmailTemplate < Telnyx::Internal::Type::BaseModel
       # @!attribute id
       #

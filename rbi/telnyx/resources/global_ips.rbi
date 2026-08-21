@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPs
-      # Create a Global IP.
+      # Requests creation of a new Global IP, a static IP address announced from the
+      # Telnyx network. Provisioning is asynchronous, so the request is accepted and the
+      # Global IP becomes available once provisioning completes.
       sig do
         params(
           description: String,
@@ -24,7 +26,8 @@ module Telnyx
       )
       end
 
-      # Retrieve a Global IP.
+      # Returns the details of a single Global IP, including its address and current
+      # configuration.
       sig do
         params(
           id: String,
@@ -38,7 +41,8 @@ module Telnyx
       )
       end
 
-      # List all Global IPs.
+      # Returns a paginated list of the Global IPs on your account, including each IP's
+      # address and configuration.
       sig do
         params(
           page_number: Integer,
@@ -49,7 +53,7 @@ module Telnyx
       def list(page_number: nil, page_size: nil, request_options: {})
       end
 
-      # Delete a Global IP.
+      # Deletes the specified Global IP and releases its address back to Telnyx.
       sig do
         params(
           id: String,

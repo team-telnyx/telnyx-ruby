@@ -88,7 +88,7 @@ module Telnyx
         )
       end
 
-      # Deletes a stored SIPREC connector.
+      # Deletes the stored SIPREC connector with the specified connector name.
       #
       # @overload delete(connector_name, request_options: {})
       #

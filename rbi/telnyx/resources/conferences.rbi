@@ -84,7 +84,7 @@ module Telnyx
       )
       end
 
-      # Retrieve an existing conference
+      # Returns the details of an existing conference, including its current status.
       sig do
         params(
           id: String,
@@ -129,7 +129,8 @@ module Telnyx
       )
       end
 
-      # Lists conference participants
+      # Returns a paginated list of participants in the specified conference, with
+      # support for filtering.
       sig do
         params(
           conference_id: String,

@@ -46,7 +46,8 @@ module Telnyx
       )
       end
 
-      # Synchronously delete a Room Recording.
+      # Synchronously deletes the specified video room recording. The recording's media
+      # is removed permanently.
       sig do
         params(
           room_recording_id: String,

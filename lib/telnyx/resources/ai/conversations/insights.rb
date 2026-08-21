@@ -6,17 +6,23 @@ module Telnyx
       class Conversations
         # Manage historical AI assistant conversations
         class Insights
-          # Create a new insight
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::AI::Conversations::InsightCreateParams} for more details.
           #
-          # @overload create(instructions:, name:, json_schema: nil, webhook: nil, request_options: {})
+          # Creates a new insight template defining an analysis to run over conversations,
+          # and returns the created template.
           #
-          # @param instructions [String]
+          # @overload create(instructions:, name:, json_schema: nil, webhook: nil, idempotency_key: nil, request_options: {})
           #
-          # @param name [String]
+          # @param instructions [String] Body param
           #
-          # @param json_schema [String, Hash{Symbol=>Object}] If specified, the output will follow the JSON schema.
+          # @param name [String] Body param
           #
-          # @param webhook [String]
+          # @param json_schema [String, Hash{Symbol=>Object}] Body param: If specified, the output will follow the JSON schema.
+          #
+          # @param webhook [String] Body param
+          #
+          # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -25,16 +31,19 @@ module Telnyx
           # @see Telnyx::Models::AI::Conversations::InsightCreateParams
           def create(params)
             parsed, options = Telnyx::AI::Conversations::InsightCreateParams.dump_request(params)
+            header_params = {idempotency_key: "idempotency-key"}
             @client.request(
               method: :post,
               path: "ai/conversations/insights",
-              body: parsed,
+              headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+              body: parsed.except(*header_params.keys),
               model: Telnyx::AI::Conversations::InsightTemplateDetail,
               options: options
             )
           end
 
-          # Get insight by ID
+          # Returns the details of a single insight template by its ID, including its
+          # configuration.
           #
           # @overload retrieve(insight_id, request_options: {})
           #
@@ -54,7 +63,7 @@ module Telnyx
             )
           end
 
-          # Update an insight template
+          # Updates the specified insight template and returns the updated template.
           #
           # @overload update(insight_id, instructions: nil, json_schema: nil, name: nil, webhook: nil, request_options: {})
           #
@@ -84,7 +93,8 @@ module Telnyx
             )
           end
 
-          # Get all insights
+          # Returns a paginated list of your insight templates. Insight templates define
+          # analyses that run over AI conversations to extract structured findings.
           #
           # @overload list(page_number: nil, page_size: nil, request_options: {})
           #
@@ -108,7 +118,7 @@ module Telnyx
             )
           end
 
-          # Delete insight by ID
+          # Permanently deletes the specified insight template by its ID.
           #
           # @overload delete(insight_id, request_options: {})
           #

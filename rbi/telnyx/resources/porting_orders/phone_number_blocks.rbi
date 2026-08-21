@@ -5,7 +5,8 @@ module Telnyx
     class PortingOrders
       # Endpoints related to porting orders management.
       class PhoneNumberBlocks
-        # Creates a new phone number block.
+        # Creates a phone number block on the porting order, representing a contiguous
+        # range of phone numbers to be ported together.
         sig do
           params(
             porting_order_id: String,
@@ -64,7 +65,7 @@ module Telnyx
         )
         end
 
-        # Deletes a phone number block.
+        # Deletes the specified phone number block from the porting order.
         sig do
           params(
             id: String,

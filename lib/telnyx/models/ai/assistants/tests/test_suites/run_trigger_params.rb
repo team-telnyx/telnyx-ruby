@@ -24,7 +24,12 @@ module Telnyx
               #   @return [String, nil]
               optional :destination_version_id, String
 
-              # @!method initialize(suite_name:, destination_version_id: nil, request_options: {})
+              # @!attribute idempotency_key
+              #
+              #   @return [String, nil]
+              optional :idempotency_key, String
+
+              # @!method initialize(suite_name:, destination_version_id: nil, idempotency_key: nil, request_options: {})
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::AI::Assistants::Tests::TestSuites::RunTriggerParams} for more
               #   details.
@@ -32,6 +37,8 @@ module Telnyx
               #   @param suite_name [String]
               #
               #   @param destination_version_id [String] Optional assistant version ID to use for all test runs in this suite. If provide
+              #
+              #   @param idempotency_key [String]
               #
               #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
             end

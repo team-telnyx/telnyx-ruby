@@ -215,7 +215,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::AI::CollectionRetrieveDocumentsResponse]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AI::CollectionRetrieveDocumentsResponse>]
         #
         # @see Telnyx::Models::AI::CollectionRetrieveDocumentsParams
         def retrieve_documents(slug, params = {})
@@ -225,6 +225,7 @@ module Telnyx
             method: :get,
             path: ["ai/collections/%1$s/documents", slug],
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::AI::CollectionRetrieveDocumentsResponse,
             options: options
           )

@@ -215,7 +215,6 @@ module Telnyx
           | Telnyx::Calls::AwsVoiceSettings
           | Telnyx::MinimaxVoiceSettings
           | Telnyx::AzureVoiceSettings
-          | Telnyx::RimeVoiceSettings
           | Telnyx::ResembleVoiceSettings
           | Telnyx::InworldVoiceSettings
           | Telnyx::XaiVoiceSettings

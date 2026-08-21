@@ -5,7 +5,8 @@ module Telnyx
     class PortingOrders
       # Endpoints related to porting orders management.
       class PhoneNumberExtensions
-        # Creates a new phone number extension.
+        # Creates a phone number extension on the porting order, mapping extension ranges
+        # to one of the order's phone numbers.
         sig do
           params(
             porting_order_id: String,
@@ -67,7 +68,7 @@ module Telnyx
         )
         end
 
-        # Deletes a phone number extension.
+        # Deletes the specified phone number extension from the porting order.
         sig do
           params(
             id: String,

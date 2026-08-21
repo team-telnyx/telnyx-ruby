@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Notification settings operations
     class NotificationSettings
-      # Add a notification setting.
+      # Adds a notification setting that enables delivery of a notification event type
+      # to a notification profile.
       #
       # @overload create(notification_channel_id: nil, notification_event_condition_id: nil, notification_profile_id: nil, parameters: nil, request_options: {})
       #
@@ -32,7 +33,7 @@ module Telnyx
         )
       end
 
-      # Get a notification setting.
+      # Returns the details of a single notification setting by its identifier.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -55,7 +56,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::NotificationSettingListParams} for more details.
       #
-      # List notification settings.
+      # Returns a paginated list of your notification settings, which map notification
+      # event types to profiles and channels.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -84,7 +86,8 @@ module Telnyx
         )
       end
 
-      # Delete a notification setting.
+      # Deletes the specified notification setting, disabling that notification
+      # delivery.
       #
       # @overload delete(id, request_options: {})
       #

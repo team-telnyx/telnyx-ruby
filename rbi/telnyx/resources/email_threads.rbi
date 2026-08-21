@@ -45,7 +45,11 @@ module Telnyx
           page_after: String,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::EmailInboxes::InboundThreadListResponse)
+        ).returns(
+          Telnyx::Internal::EmailBracketCursorPagination[
+            Telnyx::EmailInboxes::InboundThread
+          ]
+        )
       end
       def list(
         # Restrict results to one or more inboxes. Repeat the parameter

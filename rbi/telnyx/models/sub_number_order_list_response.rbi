@@ -11,10 +11,10 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(T::Array[Telnyx::SubNumberOrder])) }
+      sig { returns(T.nilable(T::Array[Telnyx::NumbersSubNumberOrder])) }
       attr_reader :data
 
-      sig { params(data: T::Array[Telnyx::SubNumberOrder::OrHash]).void }
+      sig { params(data: T::Array[Telnyx::NumbersSubNumberOrder::OrHash]).void }
       attr_writer :data
 
       sig { returns(T.nilable(Telnyx::PaginationMeta)) }
@@ -25,7 +25,7 @@ module Telnyx
 
       sig do
         params(
-          data: T::Array[Telnyx::SubNumberOrder::OrHash],
+          data: T::Array[Telnyx::NumbersSubNumberOrder::OrHash],
           meta: Telnyx::PaginationMeta::OrHash
         ).returns(T.attached_class)
       end
@@ -35,7 +35,7 @@ module Telnyx
       sig do
         override.returns(
           {
-            data: T::Array[Telnyx::SubNumberOrder],
+            data: T::Array[Telnyx::NumbersSubNumberOrder],
             meta: Telnyx::PaginationMeta
           }
         )

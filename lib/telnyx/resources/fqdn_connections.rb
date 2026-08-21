@@ -11,7 +11,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::FqdnConnectionCreateParams} for more details.
       #
-      # Creates a FQDN connection.
+      # Creates a new FQDN-based SIP connection. FQDN connections authenticate by your
+      # registered domain names rather than static IP addresses.
       #
       # @overload create(connection_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, microsoft_teams_sbc: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
@@ -206,7 +207,7 @@ module Telnyx
         )
       end
 
-      # Deletes an FQDN connection.
+      # Permanently deletes the specified FQDN connection from your account.
       #
       # @overload delete(id, request_options: {})
       #

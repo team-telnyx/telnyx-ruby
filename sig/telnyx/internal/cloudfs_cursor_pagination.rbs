@@ -1,0 +1,36 @@
+module Telnyx
+  module Internal
+    class CloudfsCursorPagination[Elem]
+      include Telnyx::Internal::Type::BasePage[Elem]
+
+      attr_accessor data: ::Array[Elem]?
+
+      attr_accessor meta: Meta
+
+      def inspect: -> String
+
+      type meta = { cursors: Meta::Cursors }
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader cursors: Meta::Cursors?
+
+        def cursors=: (Meta::Cursors) -> Meta::Cursors
+
+        def initialize: (?cursors: Meta::Cursors) -> void
+
+        def to_hash: -> { cursors: Meta::Cursors }
+
+        type cursors = { after: String }
+
+        class Cursors < Telnyx::Internal::Type::BaseModel
+          attr_reader after: String?
+
+          def after=: (String) -> String
+
+          def initialize: (?after: String) -> void
+
+          def to_hash: -> { after: String }
+        end
+      end
+    end
+  end
+end

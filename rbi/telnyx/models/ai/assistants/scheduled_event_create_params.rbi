@@ -106,6 +106,12 @@ module Telnyx
           sig { params(text: String).void }
           attr_writer :text
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :idempotency_key
+
+          sig { params(idempotency_key: String).void }
+          attr_writer :idempotency_key
+
           sig do
             params(
               assistant_id: String,
@@ -125,6 +131,7 @@ module Telnyx
               max_retries_client_errors: Integer,
               retry_interval_secs: Integer,
               text: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
@@ -153,6 +160,7 @@ module Telnyx
             retry_interval_secs: nil,
             # Required for sms scheduled events. The text to be sent to the end user.
             text: nil,
+            idempotency_key: nil,
             request_options: {}
           )
           end
@@ -176,6 +184,7 @@ module Telnyx
                 max_retries_client_errors: Integer,
                 retry_interval_secs: Integer,
                 text: String,
+                idempotency_key: String,
                 request_options: Telnyx::RequestOptions
               }
             )

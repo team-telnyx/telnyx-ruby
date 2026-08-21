@@ -76,7 +76,7 @@ module Telnyx
           )
         end
 
-        # Delete messaging usage report by id
+        # Permanently deletes the specified messaging usage report by its identifier.
         #
         # @overload delete(id, request_options: {})
         #

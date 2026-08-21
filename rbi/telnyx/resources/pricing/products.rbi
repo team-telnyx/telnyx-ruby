@@ -17,11 +17,17 @@ module Telnyx
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Pricing::ProductRetrieveResponse)
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[
+              Telnyx::Models::Pricing::ProductRetrieveResponse
+            ]
+          )
         end
         def retrieve(
           # Product slug from the catalog listing.
           slug,
+          # Two-letter ISO 3166-1 alpha-2 country code (uppercase, e.g. US) to filter
+          # pricing to a single country.
           filter_country_iso: nil,
           # Page number (1-based).
           page_number: nil,

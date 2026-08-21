@@ -2,7 +2,7 @@ module Telnyx
   module Models
     module AI
       type embedding_url_params =
-        { bucket_name: String, url: String }
+        { bucket_name: String, url: String, idempotency_key: String }
         & Telnyx::Internal::Type::request_parameters
 
       class EmbeddingURLParams < Telnyx::Internal::Type::BaseModel
@@ -13,15 +13,21 @@ module Telnyx
 
         attr_accessor url: String
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         def initialize: (
           bucket_name: String,
           url: String,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           bucket_name: String,
           url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions
         }
       end

@@ -66,51 +66,11 @@ module Telnyx
               )
             end
 
-          sig { returns(String) }
-          attr_accessor :agent_overview
-
-          sig { returns(Telnyx::Rcs::AgentConsentConfiguration) }
-          attr_reader :consent_settings
-
-          sig do
-            params(
-              consent_settings: Telnyx::Rcs::AgentConsentConfiguration::OrHash
-            ).void
-          end
-          attr_writer :consent_settings
-
-          sig { returns(T::Array[Telnyx::Rcs::AgentInteraction]) }
-          attr_accessor :interactions
-
-          sig { returns(T::Array[String]) }
-          attr_accessor :message_examples
-
-          sig do
-            params(
-              agent_overview: String,
-              consent_settings: Telnyx::Rcs::AgentConsentConfiguration::OrHash,
-              interactions: T::Array[Telnyx::Rcs::AgentInteraction::OrHash],
-              message_examples: T::Array[String]
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            agent_overview:,
-            consent_settings:,
-            interactions:,
-            message_examples:
-          )
+          sig { returns(T.attached_class) }
+          def self.new
           end
 
-          sig do
-            override.returns(
-              {
-                agent_overview: String,
-                consent_settings: Telnyx::Rcs::AgentConsentConfiguration,
-                interactions: T::Array[Telnyx::Rcs::AgentInteraction],
-                message_examples: T::Array[String]
-              }
-            )
-          end
+          sig { override.returns({}) }
           def to_hash
           end
         end

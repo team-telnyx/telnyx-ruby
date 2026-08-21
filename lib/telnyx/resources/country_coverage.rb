@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Country Coverage
     class CountryCoverage
-      # Get country coverage
+      # Returns Telnyx service coverage information for every country, including which
+      # number types and features are available in each.
       #
       # @overload retrieve(request_options: {})
       #
@@ -22,7 +23,8 @@ module Telnyx
         )
       end
 
-      # Get coverage for a specific country
+      # Returns Telnyx service coverage information for the specified country, including
+      # available number types and features.
       #
       # @overload retrieve_country(country_code, request_options: {})
       #

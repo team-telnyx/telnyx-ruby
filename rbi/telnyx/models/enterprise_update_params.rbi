@@ -14,10 +14,10 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :enterprise_id
 
-      sig { returns(T.nilable(Telnyx::BillingAddress)) }
+      sig { returns(T.nilable(Telnyx::PhysicalAddress)) }
       attr_reader :billing_address
 
-      sig { params(billing_address: Telnyx::BillingAddress::OrHash).void }
+      sig { params(billing_address: Telnyx::PhysicalAddress::OrHash).void }
       attr_writer :billing_address
 
       sig { returns(T.nilable(Telnyx::BillingContact)) }
@@ -121,7 +121,7 @@ module Telnyx
       sig do
         params(
           enterprise_id: String,
-          billing_address: Telnyx::BillingAddress::OrHash,
+          billing_address: Telnyx::PhysicalAddress::OrHash,
           billing_contact: Telnyx::BillingContact::OrHash,
           corporate_registration_number: T.nilable(String),
           customer_reference: String,
@@ -170,7 +170,7 @@ module Telnyx
         override.returns(
           {
             enterprise_id: String,
-            billing_address: Telnyx::BillingAddress,
+            billing_address: Telnyx::PhysicalAddress,
             billing_contact: Telnyx::BillingContact,
             corporate_registration_number: T.nilable(String),
             customer_reference: String,

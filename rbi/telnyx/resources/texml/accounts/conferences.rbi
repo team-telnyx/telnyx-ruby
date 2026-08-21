@@ -14,7 +14,7 @@ module Telnyx
           end
           attr_reader :participants
 
-          # Returns a conference resource.
+          # Returns a single conference resource for the account by its ConferenceSid.
           sig do
             params(
               conference_sid: String,
@@ -31,7 +31,8 @@ module Telnyx
           )
           end
 
-          # Updates a conference resource.
+          # Updates the specified conference resource, for example to modify its status, and
+          # returns the updated conference.
           sig do
             params(
               conference_sid: String,
@@ -61,7 +62,8 @@ module Telnyx
           )
           end
 
-          # Lists conference resources.
+          # Returns a paginated list of conference resources for the account, with support
+          # for filtering by friendly name, status, and creation or update dates.
           sig do
             params(
               account_sid: String,
@@ -102,7 +104,7 @@ module Telnyx
           )
           end
 
-          # Lists conference recordings
+          # Returns the list of recordings made for the specified conference.
           sig do
             params(
               conference_sid: String,

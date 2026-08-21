@@ -68,7 +68,7 @@ module Telnyx
         )
       end
 
-      # Retrieve an existing conference
+      # Returns the details of an existing conference, including its current status.
       #
       # @overload retrieve(id, region: nil, request_options: {})
       #
@@ -132,7 +132,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::ConferenceListParticipantsParams} for more details.
       #
-      # Lists conference participants
+      # Returns a paginated list of participants in the specified conference, with
+      # support for filtering.
       #
       # @overload list_participants(conference_id, filter: nil, page_number: nil, page_size: nil, region: nil, request_options: {})
       #

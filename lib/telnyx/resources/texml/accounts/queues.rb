@@ -6,7 +6,8 @@ module Telnyx
       class Accounts
         # TeXML REST Commands
         class Queues
-          # Creates a new queue resource.
+          # Creates a new queue resource for the account with the provided settings and
+          # returns it.
           #
           # @overload create(account_sid, friendly_name: nil, max_size: nil, request_options: {})
           #
@@ -33,7 +34,7 @@ module Telnyx
             )
           end
 
-          # Returns a queue resource.
+          # Returns a single queue resource for the account by its QueueSid.
           #
           # @overload retrieve(queue_sid, account_sid:, request_options: {})
           #
@@ -60,7 +61,7 @@ module Telnyx
             )
           end
 
-          # Updates a queue resource.
+          # Updates the specified queue resource's settings and returns the updated queue.
           #
           # @overload update(queue_sid, account_sid:, max_size: nil, request_options: {})
           #
@@ -94,7 +95,8 @@ module Telnyx
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Texml::Accounts::QueueListParams} for more details.
           #
-          # Lists queue resources.
+          # Returns a paginated list of queue resources for the account, with support for
+          # filtering by creation or update dates.
           #
           # @overload list(account_sid, date_created: nil, date_updated: nil, page: nil, page_size: nil, page_token: nil, request_options: {})
           #
@@ -134,7 +136,7 @@ module Telnyx
             )
           end
 
-          # Delete a queue resource.
+          # Permanently deletes the specified queue resource from the account.
           #
           # @overload delete(queue_sid, account_sid:, request_options: {})
           #

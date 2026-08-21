@@ -168,6 +168,38 @@ module Telnyx
           end
           attr_writer :headers
 
+          # Filler messages spoken while a synchronous webhook request is in progress.
+          # `request_start` messages are spoken immediately when the request begins.
+          # `request_response_delayed` messages are spoken after `timing_ms` has elapsed
+          # only if the webhook response is still pending. Filler messages are not used for
+          # asynchronous webhooks.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  T.any(
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage,
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage
+                  )
+                ]
+              )
+            )
+          end
+          attr_reader :messages
+
+          sig do
+            params(
+              messages:
+                T::Array[
+                  T.any(
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage::OrHash,
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage::OrHash
+                  )
+                ]
+            ).void
+          end
+          attr_writer :messages
+
           # The HTTP method to be used when calling the external tool.
           sig do
             returns(
@@ -275,6 +307,13 @@ module Telnyx
                 T::Array[
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header::OrHash
                 ],
+              messages:
+                T::Array[
+                  T.any(
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage::OrHash,
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage::OrHash
+                  )
+                ],
               http_method:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method::OrSymbol,
               path_parameters:
@@ -312,6 +351,12 @@ module Telnyx
             body_parameters: nil,
             # The headers to be sent to the external tool.
             headers: nil,
+            # Filler messages spoken while a synchronous webhook request is in progress.
+            # `request_start` messages are spoken immediately when the request begins.
+            # `request_response_delayed` messages are spoken after `timing_ms` has elapsed
+            # only if the webhook response is still pending. Filler messages are not used for
+            # asynchronous webhooks.
+            messages: nil,
             # The HTTP method to be used when calling the external tool.
             http_method: nil,
             # The path parameters the webhook tool accepts, described as a JSON Schema object.
@@ -349,6 +394,13 @@ module Telnyx
                 headers:
                   T::Array[
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Header
+                  ],
+                messages:
+                  T::Array[
+                    T.any(
+                      Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage,
+                      Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage
+                    )
                   ],
                 http_method:
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method::OrSymbol,
@@ -515,6 +567,127 @@ module Telnyx
 
             sig { override.returns({ name: String, value: String }) }
             def to_hash
+            end
+          end
+
+          module Message
+            extend Telnyx::Internal::Type::Union
+
+            Variants =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage,
+                  Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage
+                )
+              end
+
+            class WebhookToolRequestStartMessage < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestStartMessage,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The text the assistant speaks.
+              sig { returns(String) }
+              attr_accessor :content
+
+              # Speak the filler message immediately when the webhook request begins.
+              sig { returns(Symbol) }
+              attr_accessor :type
+
+              # An optional delay value. This value is ignored for `request_start` messages.
+              sig { returns(T.nilable(Integer)) }
+              attr_reader :timing_ms
+
+              sig { params(timing_ms: Integer).void }
+              attr_writer :timing_ms
+
+              sig do
+                params(
+                  content: String,
+                  timing_ms: Integer,
+                  type: Symbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The text the assistant speaks.
+                content:,
+                # An optional delay value. This value is ignored for `request_start` messages.
+                timing_ms: nil,
+                # Speak the filler message immediately when the webhook request begins.
+                type: :request_start
+              )
+              end
+
+              sig do
+                override.returns(
+                  { content: String, type: Symbol, timing_ms: Integer }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class WebhookToolRequestResponseDelayedMessage < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::WebhookToolRequestResponseDelayedMessage,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The text the assistant speaks.
+              sig { returns(String) }
+              attr_accessor :content
+
+              # The delay in milliseconds from the start of the webhook request.
+              sig { returns(Integer) }
+              attr_accessor :timing_ms
+
+              # Speak the filler message after the configured delay if the webhook response is
+              # still pending.
+              sig { returns(Symbol) }
+              attr_accessor :type
+
+              sig do
+                params(
+                  content: String,
+                  timing_ms: Integer,
+                  type: Symbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The text the assistant speaks.
+                content:,
+                # The delay in milliseconds from the start of the webhook request.
+                timing_ms:,
+                # Speak the filler message after the configured delay if the webhook response is
+                # still pending.
+                type: :request_response_delayed
+              )
+              end
+
+              sig do
+                override.returns(
+                  { content: String, timing_ms: Integer, type: Symbol }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Message::Variants
+                ]
+              )
+            end
+            def self.variants
             end
           end
 

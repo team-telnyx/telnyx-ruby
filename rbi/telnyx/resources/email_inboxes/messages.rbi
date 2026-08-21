@@ -23,11 +23,9 @@ module Telnyx
             message_id: String,
             inbox_id: String,
             read_at:
-              T.nilable(
-                T.any(
-                  Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::OrBoolean,
-                  Time
-                )
+              T.any(
+                Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::OrBoolean,
+                Time
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::EmailInboxes::MessageUpdateResponse)
@@ -37,8 +35,7 @@ module Telnyx
           message_id,
           # Path param: Email inbox UUID.
           inbox_id:,
-          # Body param: Set to `true` for server time, an ISO 8601 timestamp for an explicit
-          # read time, or `null` to mark unread.
+          # Body param
           read_at:,
           request_options: {}
         )
@@ -61,7 +58,11 @@ module Telnyx
             page_after: String,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::EmailInboxes::MessageListResponse)
+          ).returns(
+            Telnyx::Internal::EmailBracketCursorPagination[
+              Telnyx::InboundMessage
+            ]
+          )
         end
         def list(
           # Email inbox UUID.
@@ -106,7 +107,7 @@ module Telnyx
           params(
             message_id: String,
             inbox_id: String,
-            attachments: T::Array[T.anything],
+            attachments: T::Array[T::Hash[Symbol, T.anything]],
             bcc:
               T::Array[
                 T.any(String, Telnyx::EmailInboxes::EmailAddress::OrHash)
@@ -121,7 +122,7 @@ module Telnyx
             html: String,
             html_body: String,
             labels: T::Array[String],
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             reply_to: String,
             subject: String,
             tags: T::Array[String],

@@ -26,11 +26,18 @@ module Telnyx
       sig { params(system_prompt: String).void }
       attr_writer :system_prompt
 
+      sig { returns(T.nilable(String)) }
+      attr_reader :idempotency_key
+
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
+
       sig do
         params(
           bucket: String,
           filename: String,
           system_prompt: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -41,6 +48,7 @@ module Telnyx
         filename:,
         # A system prompt to guide the summary generation.
         system_prompt: nil,
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -51,6 +59,7 @@ module Telnyx
             bucket: String,
             filename: String,
             system_prompt: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions
           }
         )

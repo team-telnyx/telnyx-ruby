@@ -8,7 +8,8 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PortingOrders::PhoneNumberBlockCreateParams} for more details.
         #
-        # Creates a new phone number block.
+        # Creates a phone number block on the porting order, representing a contiguous
+        # range of phone numbers to be ported together.
         #
         # @overload create(porting_order_id, activation_ranges:, phone_number_range:, request_options: {})
         #
@@ -69,7 +70,7 @@ module Telnyx
           )
         end
 
-        # Deletes a phone number block.
+        # Deletes the specified phone number block from the porting order.
         #
         # @overload delete(id, porting_order_id:, request_options: {})
         #

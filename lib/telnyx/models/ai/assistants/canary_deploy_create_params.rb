@@ -14,8 +14,14 @@ module Telnyx
           #   @return [String]
           required :assistant_id, String
 
-          # @!method initialize(assistant_id:, request_options: {})
+          # @!attribute idempotency_key
+          #
+          #   @return [String, nil]
+          optional :idempotency_key, String
+
+          # @!method initialize(assistant_id:, idempotency_key: nil, request_options: {})
           #   @param assistant_id [String]
+          #   @param idempotency_key [String]
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
         end
       end

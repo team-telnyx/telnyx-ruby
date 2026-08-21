@@ -14,7 +14,8 @@ module Telnyx
           end
           attr_reader :insights
 
-          # Get insight group by ID
+          # Returns the details of a single insight template group, including the insight
+          # templates assigned to it.
           sig do
             params(
               group_id: String,
@@ -28,7 +29,7 @@ module Telnyx
           )
           end
 
-          # Update an insight template group
+          # Updates the specified insight template group and returns the updated group.
           sig do
             params(
               group_id: String,
@@ -48,7 +49,7 @@ module Telnyx
           )
           end
 
-          # Delete insight group by ID
+          # Permanently deletes the specified insight template group by its ID.
           sig do
             params(
               group_id: String,
@@ -62,24 +63,40 @@ module Telnyx
           )
           end
 
-          # Create a new insight group
+          # Creates a new insight template group for organizing related insight templates,
+          # and returns the created group.
           sig do
             params(
               name: String,
               description: String,
               webhook: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(Telnyx::AI::Conversations::InsightTemplateGroupDetail)
           end
           def insight_groups(
+            # Body param
             name:,
+            # Body param
             description: nil,
+            # Body param
             webhook: nil,
+            # Header param: Optional opaque, unquoted key for safely retrying the same logical
+            # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+            # Generate a unique UUID v4 for each operation and reuse it only when retrying
+            # that operation with the same request. Invalid headers—including duplicate,
+            # empty, malformed, or overlong values—return 400 with error code 10015. A request
+            # already in progress with the same key returns 409; reusing the key with a
+            # different request returns 422. Only successful responses are replayed, for up to
+            # 24 hours. Do not include sensitive data in the key.
+            idempotency_key: nil,
             request_options: {}
           )
           end
 
-          # Get all insight groups
+          # Returns a paginated list of your insight template groups. Groups organize
+          # related insight templates that are applied together when analyzing
+          # conversations.
           sig do
             params(
               page_number: Integer,

@@ -26,7 +26,7 @@ module Telnyx
         )
       end
 
-      # Retrieve the WireGuard peer.
+      # Returns the details of a single WireGuard peer by its identifier.
       #
       # @overload retrieve(id, request_options: {})
       #
@@ -49,7 +49,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::WireguardPeerUpdateParams} for more details.
       #
-      # Update the WireGuard peer.
+      # Updates the specified WireGuard peer and returns the updated peer.
       #
       # @overload update(id, public_key: nil, request_options: {})
       #
@@ -76,7 +76,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::WireguardPeerListParams} for more details.
       #
-      # List all WireGuard peers.
+      # Returns a paginated list of your WireGuard peers, with support for filtering.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #
@@ -104,7 +104,7 @@ module Telnyx
         )
       end
 
-      # Delete the WireGuard peer.
+      # Deletes the specified WireGuard peer from its interface.
       #
       # @overload delete(id, request_options: {})
       #

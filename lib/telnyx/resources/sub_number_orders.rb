@@ -6,7 +6,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::SubNumberOrderRetrieveParams} for more details.
       #
-      # Get an existing sub number order.
+      # Returns the details of an existing sub number order, with support for filtering.
       #
       # @overload retrieve(sub_number_order_id, filter: nil, request_options: {})
       #
@@ -31,7 +31,8 @@ module Telnyx
         )
       end
 
-      # Updates a sub number order.
+      # Updates the requirements of an existing sub number order and returns the updated
+      # order.
       #
       # @overload update(sub_number_order_id, regulatory_requirements: nil, request_options: {})
       #

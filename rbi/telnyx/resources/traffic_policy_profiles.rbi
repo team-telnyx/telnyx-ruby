@@ -46,7 +46,7 @@ module Telnyx
       )
       end
 
-      # Updates a traffic policy profile.
+      # Updates the specified traffic policy profile and returns the updated profile.
       sig do
         params(
           id: String,
@@ -109,7 +109,7 @@ module Telnyx
       )
       end
 
-      # Deletes the traffic policy profile.
+      # Permanently deletes the specified traffic policy profile from your account.
       sig do
         params(
           id: String,

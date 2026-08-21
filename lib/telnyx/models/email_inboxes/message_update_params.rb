@@ -19,45 +19,34 @@ module Telnyx
         required :message_id, String
 
         # @!attribute read_at
-        #   Set to `true` for server time, an ISO 8601 timestamp for an explicit read time,
-        #   or `null` to mark unread.
         #
-        #   @return [Boolean, Time, Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt, nil]
+        #   @return [Boolean, Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime, Time]
         required :read_at, union: -> { Telnyx::EmailInboxes::MessageUpdateParams::ReadAt }
 
         # @!method initialize(inbox_id:, message_id:, read_at:, request_options: {})
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::EmailInboxes::MessageUpdateParams} for more details.
-        #
         #   @param inbox_id [String]
-        #
         #   @param message_id [String]
-        #
-        #   @param read_at [Boolean, Time, Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt, nil] Set to `true` for server time, an ISO 8601 timestamp for an explicit read time,
-        #
+        #   @param read_at [Boolean, Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime, Time]
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-        # Set to `true` for server time, an ISO 8601 timestamp for an explicit read time,
-        # or `null` to mark unread.
         module ReadAt
           extend Telnyx::Internal::Type::Union
 
-          variant const: -> { Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt::TRUE }
+          variant enum: -> { Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime }
 
           variant Time
 
-          # @!method self.variants
-          #   @return [Array(Boolean, Time)]
+          module ServerReadTime
+            extend Telnyx::Internal::Type::Enum
 
-          define_sorbet_constant!(:Variants) do
-            T.type_alias { T.nilable(T.any(Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::TaggedBoolean, Time)) }
+            TRUE = true
+
+            # @!method self.values
+            #   @return [Array<Boolean>]
           end
 
-          # @!group
-
-          TRUE = true
-
-          # @!endgroup
+          # @!method self.variants
+          #   @return [Array(Boolean, Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime, Time)]
         end
       end
     end

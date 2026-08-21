@@ -46,17 +46,10 @@ module Telnyx
             )
           end
 
-        sig do
-          returns(Telnyx::Models::EmailValidationCreateResponse::Data::Checks)
-        end
+        sig { returns(Telnyx::EmailValidationChecks) }
         attr_reader :checks
 
-        sig do
-          params(
-            checks:
-              Telnyx::Models::EmailValidationCreateResponse::Data::Checks::OrHash
-          ).void
-        end
+        sig { params(checks: Telnyx::EmailValidationChecks::OrHash).void }
         attr_writer :checks
 
         sig { returns(String) }
@@ -84,8 +77,7 @@ module Telnyx
 
         sig do
           params(
-            checks:
-              Telnyx::Models::EmailValidationCreateResponse::Data::Checks::OrHash,
+            checks: Telnyx::EmailValidationChecks::OrHash,
             email: String,
             record_type:
               Telnyx::Models::EmailValidationCreateResponse::Data::RecordType::OrSymbol,
@@ -108,8 +100,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              checks:
-                Telnyx::Models::EmailValidationCreateResponse::Data::Checks,
+              checks: Telnyx::EmailValidationChecks,
               email: String,
               record_type:
                 Telnyx::Models::EmailValidationCreateResponse::Data::RecordType::TaggedSymbol,
@@ -120,111 +111,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        class Checks < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Models::EmailValidationCreateResponse::Data::Checks,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          sig { returns(Telnyx::EmailValidationCheck) }
-          attr_reader :disposable
-
-          sig { params(disposable: Telnyx::EmailValidationCheck::OrHash).void }
-          attr_writer :disposable
-
-          sig { returns(Telnyx::EmailValidationCheck) }
-          attr_reader :mx
-
-          sig { params(mx: Telnyx::EmailValidationCheck::OrHash).void }
-          attr_writer :mx
-
-          sig { returns(Telnyx::EmailValidationCheck) }
-          attr_reader :role_based
-
-          sig { params(role_based: Telnyx::EmailValidationCheck::OrHash).void }
-          attr_writer :role_based
-
-          sig { returns(Telnyx::EmailValidationCheck) }
-          attr_reader :syntax
-
-          sig { params(syntax: Telnyx::EmailValidationCheck::OrHash).void }
-          attr_writer :syntax
-
-          sig do
-            returns(
-              Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo
-            )
-          end
-          attr_reader :typo
-
-          sig do
-            params(
-              typo:
-                Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo::OrHash
-            ).void
-          end
-          attr_writer :typo
-
-          sig do
-            params(
-              disposable: Telnyx::EmailValidationCheck::OrHash,
-              mx: Telnyx::EmailValidationCheck::OrHash,
-              role_based: Telnyx::EmailValidationCheck::OrHash,
-              syntax: Telnyx::EmailValidationCheck::OrHash,
-              typo:
-                Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo::OrHash
-            ).returns(T.attached_class)
-          end
-          def self.new(disposable:, mx:, role_based:, syntax:, typo:)
-          end
-
-          sig do
-            override.returns(
-              {
-                disposable: Telnyx::EmailValidationCheck,
-                mx: Telnyx::EmailValidationCheck,
-                role_based: Telnyx::EmailValidationCheck,
-                syntax: Telnyx::EmailValidationCheck,
-                typo:
-                  Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo
-              }
-            )
-          end
-          def to_hash
-          end
-
-          class Typo < Telnyx::Models::EmailValidationCheck
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Models::EmailValidationCreateResponse::Data::Checks::Typo,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # Suggested correction for common typos. Omitted when nil.
-            sig { returns(T.nilable(String)) }
-            attr_reader :suggestion
-
-            sig { params(suggestion: String).void }
-            attr_writer :suggestion
-
-            sig { params(suggestion: String).returns(T.attached_class) }
-            def self.new(
-              # Suggested correction for common typos. Omitted when nil.
-              suggestion: nil
-            )
-            end
-
-            sig { override.returns({ suggestion: String }) }
-            def to_hash
-            end
-          end
         end
 
         module RecordType

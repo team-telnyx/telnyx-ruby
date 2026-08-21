@@ -15,17 +15,12 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :id
 
-        sig do
-          returns(
-            T.nilable(T::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address])
-          )
-        end
+        sig { returns(T.nilable(T::Hash[Symbol, Telnyx::Rcs::BrandAddress])) }
         attr_reader :addresses
 
         sig do
           params(
-            addresses:
-              T::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address::OrHash]
+            addresses: T::Hash[Symbol, Telnyx::Rcs::BrandAddress::OrHash]
           ).void
         end
         attr_writer :addresses
@@ -100,8 +95,7 @@ module Telnyx
         sig do
           params(
             id: String,
-            addresses:
-              T::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address::OrHash],
+            addresses: T::Hash[Symbol, Telnyx::Rcs::BrandAddress::OrHash],
             contacts: Telnyx::Rcs::BrandUpdateParams::Contacts::OrHash,
             display_name: String,
             identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers::OrHash,
@@ -135,8 +129,7 @@ module Telnyx
           override.returns(
             {
               id: String,
-              addresses:
-                T::Hash[Symbol, Telnyx::Rcs::BrandUpdateParams::Address],
+              addresses: T::Hash[Symbol, Telnyx::Rcs::BrandAddress],
               contacts: Telnyx::Rcs::BrandUpdateParams::Contacts,
               display_name: String,
               identifiers: Telnyx::Rcs::BrandUpdateParams::Identifiers,
@@ -150,71 +143,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        class Address < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::Rcs::BrandUpdateParams::Address,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :administrative_area
-
-          sig { returns(String) }
-          attr_accessor :city
-
-          # The two-letter ISO 3166-1 country code.
-          sig { returns(String) }
-          attr_accessor :country_code
-
-          sig { returns(String) }
-          attr_accessor :line_1
-
-          sig { returns(String) }
-          attr_accessor :postal_code
-
-          sig { returns(T.nilable(String)) }
-          attr_accessor :line_2
-
-          sig do
-            params(
-              administrative_area: String,
-              city: String,
-              country_code: String,
-              line_1: String,
-              postal_code: String,
-              line_2: T.nilable(String)
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            administrative_area:,
-            city:,
-            # The two-letter ISO 3166-1 country code.
-            country_code:,
-            line_1:,
-            postal_code:,
-            line_2: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                administrative_area: String,
-                city: String,
-                country_code: String,
-                line_1: String,
-                postal_code: String,
-                line_2: T.nilable(String)
-              }
-            )
-          end
-          def to_hash
-          end
         end
 
         class Contacts < Telnyx::Internal::Type::BaseModel
@@ -262,70 +190,12 @@ module Telnyx
                 )
               end
 
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType::OrSymbol
-                )
-              )
-            end
-            attr_reader :contact_type
-
-            sig do
-              params(
-                contact_type:
-                  Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType::OrSymbol
-              ).void
-            end
-            attr_writer :contact_type
-
-            sig do
-              params(
-                contact_type:
-                  Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(contact_type: nil)
+            sig { returns(T.attached_class) }
+            def self.new
             end
 
-            sig do
-              override.returns(
-                {
-                  contact_type:
-                    Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType::OrSymbol
-                }
-              )
-            end
+            sig { override.returns({}) }
             def to_hash
-            end
-
-            module ContactType
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              BRAND =
-                T.let(
-                  :BRAND,
-                  Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
           end
         end

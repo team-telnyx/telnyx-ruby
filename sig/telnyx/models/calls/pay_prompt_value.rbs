@@ -2,54 +2,62 @@ module Telnyx
   module Models
     module Calls
       type pay_prompt_value =
-        String | ::Array[Telnyx::Calls::PayPromptValue::UnionMember1]
+        String | ::Array[Telnyx::Calls::PayPromptValue::PayPromptList]
 
       module PayPromptValue
         extend Telnyx::Internal::Type::Union
 
-        type union_member1 =
+        type pay_prompt_list =
           {
             text: String,
             attempt: String,
-            card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type,
-            error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type,
+            error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
           }
 
-        class UnionMember1 < Telnyx::Internal::Type::BaseModel
+        class PayPromptList < Telnyx::Internal::Type::BaseModel
           attr_accessor text: String
 
           attr_reader attempt: String?
 
           def attempt=: (String) -> String
 
-          attr_reader card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type?
+          attr_reader card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type?
 
           def card_type=: (
-            Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type
-          ) -> Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type
+            Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type
+          ) -> Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type
 
-          attr_reader error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type?
+          attr_reader error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type?
 
           def error_type=: (
-            Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
-          ) -> Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
+          ) -> Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
 
           def initialize: (
             text: String,
             ?attempt: String,
-            ?card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type,
-            ?error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            ?card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type,
+            ?error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
           ) -> void
 
           def to_hash: -> {
             text: String,
             attempt: String,
-            card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type,
-            error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type,
+            error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
           }
 
           type card_type =
-            :visa | :mastercard | :amex | :discover | :"diners-club" | :jcb
+            :visa
+            | :mastercard
+            | :amex
+            | :optima
+            | :discover
+            | :"diners-club"
+            | :jcb
+            | :maestro
+            | :enroute
 
           module CardType
             extend Telnyx::Internal::Type::Enum
@@ -57,16 +65,20 @@ module Telnyx
             VISA: :visa
             MASTERCARD: :mastercard
             AMEX: :amex
+            OPTIMA: :optima
             DISCOVER: :discover
             DINERS_CLUB: :"diners-club"
             JCB: :jcb
+            MAESTRO: :maestro
+            ENROUTE: :enroute
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type]
           end
 
           type error_type =
             :timeout
             | :"invalid-card-number"
+            | :"invalid-card-type"
             | :"invalid-date"
             | :"invalid-security-code"
             | :"invalid-postal-code"
@@ -79,6 +91,7 @@ module Telnyx
 
             TIMEOUT: :timeout
             INVALID_CARD_NUMBER: :"invalid-card-number"
+            INVALID_CARD_TYPE: :"invalid-card-type"
             INVALID_DATE: :"invalid-date"
             INVALID_SECURITY_CODE: :"invalid-security-code"
             INVALID_POSTAL_CODE: :"invalid-postal-code"
@@ -86,13 +99,13 @@ module Telnyx
             INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
             INPUT_MATCHING_FAILED: :"input-matching-failed"
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type]
           end
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::Calls::pay_prompt_value]
 
-        UnionMember1Array: Telnyx::Internal::Type::Converter
+        PayPromptListArray: Telnyx::Internal::Type::Converter
       end
     end
   end

@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPProtocols
-      # List all Global IP Protocols
+      # Returns the network protocols supported for Global IP traffic, for use when
+      # configuring Global IP resources.
       #
       # @overload list(request_options: {})
       #

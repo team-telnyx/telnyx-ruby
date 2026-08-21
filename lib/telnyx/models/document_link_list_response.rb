@@ -22,22 +22,14 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :linked_resource_id, String
-
-        # @!attribute record_type
-        #   Identifies the type of the resource.
-        #
-        #   @return [String, nil]
-        optional :record_type, String
       end
 
-      # @!method initialize(document_id: nil, linked_record_type: nil, linked_resource_id: nil, record_type: nil)
+      # @!method initialize(document_id: nil, linked_record_type: nil, linked_resource_id: nil)
       #   @param document_id [String] Identifies the associated document.
       #
       #   @param linked_record_type [String] The linked resource's record type.
       #
       #   @param linked_resource_id [String] Identifies the linked resource.
-      #
-      #   @param record_type [String] Identifies the type of the resource.
     end
   end
 end

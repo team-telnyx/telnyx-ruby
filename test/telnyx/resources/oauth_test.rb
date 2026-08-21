@@ -95,7 +95,7 @@ class Telnyx::Test::Resources::OAuthTest < Telnyx::Test::ResourceTest
       )
 
     assert_pattern do
-      response => nil
+      response => String
     end
   end
 

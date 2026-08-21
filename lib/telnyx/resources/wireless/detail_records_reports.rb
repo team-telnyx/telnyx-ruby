@@ -30,7 +30,8 @@ module Telnyx
           )
         end
 
-        # Returns one specific WDR report
+        # Returns a single Wireless Detail Record (WDR) report by its identifier,
+        # including its parameters and current status.
         #
         # @overload retrieve(id, request_options: {})
         #
@@ -75,7 +76,7 @@ module Telnyx
           )
         end
 
-        # Deletes one specific WDR report.
+        # Permanently deletes the specified Wireless Detail Record (WDR) report.
         #
         # @overload delete(id, request_options: {})
         #

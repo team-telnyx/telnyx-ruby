@@ -23,7 +23,7 @@ module Telnyx
             T.any(
               Telnyx::GcsConfigurationData::OrHash,
               Telnyx::S3ConfigurationData::OrHash,
-              Telnyx::CustomStorageConfiguration::Configuration::S3Generic::OrHash,
+              Telnyx::S3GenericConfigurationData::OrHash,
               Telnyx::AzureConfigurationData::OrHash
             )
         ).returns(T.attached_class)
@@ -84,93 +84,10 @@ module Telnyx
             T.any(
               Telnyx::GcsConfigurationData,
               Telnyx::S3ConfigurationData,
-              Telnyx::CustomStorageConfiguration::Configuration::S3Generic,
+              Telnyx::S3GenericConfigurationData,
               Telnyx::AzureConfigurationData
             )
           end
-
-        class S3Generic < Telnyx::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Telnyx::CustomStorageConfiguration::Configuration::S3Generic,
-                Telnyx::Internal::AnyHash
-              )
-            end
-
-          # AWS credentials access key id.
-          sig { returns(String) }
-          attr_accessor :aws_access_key_id
-
-          # AWS secret access key.
-          sig { returns(String) }
-          attr_accessor :aws_secret_access_key
-
-          # Storage backend type
-          sig { returns(Symbol) }
-          attr_accessor :backend
-
-          # Name of the bucket to be used to store recording files.
-          sig { returns(String) }
-          attr_accessor :bucket
-
-          # URL of an S3-compatible storage endpoint, used to direct uploads and presigned
-          # download URLs to a non-AWS store (for example MinIO, Cloudflare R2, Wasabi,
-          # Backblaze B2, or Supabase). A bare host (https://s3.example.com) or a
-          # path-prefixed URL (https://xyz.supabase.co/storage/v1/s3) is accepted, and must
-          # use the http or https scheme.
-          sig { returns(String) }
-          attr_accessor :endpoint
-
-          # Region where the bucket is located.
-          sig { returns(String) }
-          attr_accessor :region
-
-          sig do
-            params(
-              aws_access_key_id: String,
-              aws_secret_access_key: String,
-              bucket: String,
-              endpoint: String,
-              region: String,
-              backend: Symbol
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # AWS credentials access key id.
-            aws_access_key_id:,
-            # AWS secret access key.
-            aws_secret_access_key:,
-            # Name of the bucket to be used to store recording files.
-            bucket:,
-            # URL of an S3-compatible storage endpoint, used to direct uploads and presigned
-            # download URLs to a non-AWS store (for example MinIO, Cloudflare R2, Wasabi,
-            # Backblaze B2, or Supabase). A bare host (https://s3.example.com) or a
-            # path-prefixed URL (https://xyz.supabase.co/storage/v1/s3) is accepted, and must
-            # use the http or https scheme.
-            endpoint:,
-            # Region where the bucket is located.
-            region:,
-            # Storage backend type
-            backend: :"s3-generic"
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                aws_access_key_id: String,
-                aws_secret_access_key: String,
-                backend: Symbol,
-                bucket: String,
-                endpoint: String,
-                region: String
-              }
-            )
-          end
-          def to_hash
-          end
-        end
 
         sig do
           override.returns(

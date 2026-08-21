@@ -15,7 +15,11 @@ module Telnyx
           page_size: Integer,
           to: Time,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EmailEventListResponse)
+        ).returns(
+          Telnyx::Internal::EmailCursorPagination[
+            Telnyx::Models::EmailEventListResponse
+          ]
+        )
       end
       def list(
         # Filter events for a specific email message UUID. Invalid UUID values are

@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Requirements for international numbers and porting orders
     class Requirements
-      # Retrieve a document requirement record
+      # Returns a single document requirement record by its identifier, describing the
+      # documentation needed for number-related actions. A specific requirement version
+      # can be requested.
       sig do
         params(
           id: String,

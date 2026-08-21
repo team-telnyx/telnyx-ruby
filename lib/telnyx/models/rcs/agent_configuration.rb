@@ -8,7 +8,7 @@ module Telnyx
         #   Basic agent identity and contact information. At least one complete phone,
         #   website, or email contact is required.
         #
-        #   @return [Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember0, Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember1, Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember2]
+        #   @return [Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement, Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement, Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement]
         required :basics, union: -> { Telnyx::Rcs::AgentConfiguration::Basics }
 
         # @!attribute campaign
@@ -25,7 +25,7 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Rcs::AgentConfiguration} for more details.
         #
-        #   @param basics [Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember0, Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember1, Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember2] Basic agent identity and contact information. At least one complete phone, websi
+        #   @param basics [Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement, Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement, Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement] Basic agent identity and contact information. At least one complete phone, websi
         #
         #   @param campaign [Telnyx::Models::Rcs::AgentCampaignConfiguration, nil]
         #
@@ -38,13 +38,13 @@ module Telnyx
         module Basics
           extend Telnyx::Internal::Type::Union
 
-          variant -> { Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0 }
+          variant -> { Telnyx::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement }
 
-          variant -> { Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1 }
+          variant -> { Telnyx::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement }
 
-          variant -> { Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2 }
+          variant -> { Telnyx::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement }
 
-          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          class AgentPhoneContactRequirement < Telnyx::Internal::Type::BaseModel
             # @!attribute phone_number
             #
             #   @return [Telnyx::Models::Rcs::AgentPhoneContact]
@@ -102,7 +102,7 @@ module Telnyx
             #   @param website [Telnyx::Models::Rcs::AgentWebsiteContact, nil]
           end
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class AgentWebhookContactRequirement < Telnyx::Internal::Type::BaseModel
             # @!attribute website
             #
             #   @return [Telnyx::Models::Rcs::AgentWebsiteContact]
@@ -160,7 +160,7 @@ module Telnyx
             #   @param terms_and_conditions_url [String]
           end
 
-          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+          class AgentProfileContactRequirement < Telnyx::Internal::Type::BaseModel
             # @!attribute email
             #
             #   @return [Telnyx::Models::Rcs::AgentEmailContact]
@@ -219,7 +219,7 @@ module Telnyx
           end
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember0, Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember1, Telnyx::Models::Rcs::AgentConfiguration::Basics::UnionMember2)]
+          #   @return [Array(Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement, Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement, Telnyx::Models::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement)]
         end
       end
     end

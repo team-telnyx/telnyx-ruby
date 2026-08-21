@@ -23,19 +23,31 @@ module Telnyx
         end
         attr_reader :conversation_insights
 
-        # Create a new AI Conversation.
+        # Creates a new AI conversation, the container for messages exchanged with an
+        # assistant, and returns the created conversation.
         sig do
           params(
             metadata: T::Hash[Symbol, String],
             name: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::Conversation)
         end
         def create(
-          # Metadata associated with the conversation. Set `ai_disabled` to `true` to create
-          # the conversation with AI message responses disabled.
+          # Body param: Metadata associated with the conversation. Set `ai_disabled` to
+          # `true` to create the conversation with AI message responses disabled.
           metadata: nil,
+          # Body param
           name: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -161,20 +173,38 @@ module Telnyx
             tool_calls: T::Array[T::Hash[Symbol, T.anything]],
             tool_choice:
               Telnyx::AI::ConversationAddMessageParams::ToolChoice::Variants,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).void
         end
         def add_message(
-          # The ID of the conversation
+          # Path param: The ID of the conversation
           conversation_id,
+          # Body param
           role:,
+          # Body param
           content: nil,
+          # Body param
           metadata: nil,
+          # Body param
           name: nil,
+          # Body param
           sent_at: nil,
+          # Body param
           tool_call_id: nil,
+          # Body param
           tool_calls: nil,
+          # Body param
           tool_choice: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
           request_options: {}
         )
         end

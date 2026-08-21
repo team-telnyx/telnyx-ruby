@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    type suppressed_recipient =
+      { override_allowed: bool, reason: String, scope: String, to: String }
+
+    class SuppressedRecipient < Telnyx::Internal::Type::BaseModel
+      attr_accessor override_allowed: bool
+
+      attr_accessor reason: String
+
+      attr_accessor scope: String
+
+      attr_accessor to: String
+
+      def initialize: (
+        override_allowed: bool,
+        reason: String,
+        scope: String,
+        to: String
+      ) -> void
+
+      def to_hash: -> {
+        override_allowed: bool,
+        reason: String,
+        scope: String,
+        to: String
+      }
+    end
+  end
+end

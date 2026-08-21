@@ -54,10 +54,8 @@ module Telnyx
 
             variant Telnyx::Internal::Type::Boolean
 
-            variant NilClass
-
             # @!method self.variants
-            #   @return [Array(String, Float, Boolean, nil)]
+            #   @return [Array(String, Float, Boolean)]
           end
         end
       end

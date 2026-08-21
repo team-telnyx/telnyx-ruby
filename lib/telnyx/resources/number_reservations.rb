@@ -32,7 +32,8 @@ module Telnyx
         )
       end
 
-      # Gets a single phone number reservation.
+      # Returns the details of a single phone number reservation, including its status
+      # and the reserved numbers.
       #
       # @overload retrieve(number_reservation_id, request_options: {})
       #

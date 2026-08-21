@@ -166,7 +166,11 @@ module Telnyx
             sources: String,
             top_k: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::AI::CollectionRetrieveDocumentsResponse)
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[
+              Telnyx::Models::AI::CollectionRetrieveDocumentsResponse
+            ]
+          )
         end
         def retrieve_documents(
           # The collection's slug (unique within your organization).

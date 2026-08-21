@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Notification settings operations
     class NotificationSettings
-      # Add a notification setting.
+      # Adds a notification setting that enables delivery of a notification event type
+      # to a notification profile.
       sig do
         params(
           notification_channel_id: String,
@@ -26,7 +27,7 @@ module Telnyx
       )
       end
 
-      # Get a notification setting.
+      # Returns the details of a single notification setting by its identifier.
       sig do
         params(
           id: String,
@@ -40,7 +41,8 @@ module Telnyx
       )
       end
 
-      # List notification settings.
+      # Returns a paginated list of your notification settings, which map notification
+      # event types to profiles and channels.
       sig do
         params(
           filter: Telnyx::NotificationSettingListParams::Filter::OrHash,
@@ -63,7 +65,8 @@ module Telnyx
       )
       end
 
-      # Delete a notification setting.
+      # Deletes the specified notification setting, disabling that notification
+      # delivery.
       sig do
         params(
           id: String,

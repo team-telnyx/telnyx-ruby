@@ -4,7 +4,9 @@ module Telnyx
   module Resources
     # Global IPs
     class GlobalIPAssignments
-      # Create a Global IP assignment.
+      # Assigns a Global IP to a WireGuard peer so traffic destined for the IP is
+      # delivered over that peer's tunnel. Assignment is asynchronous, so the request is
+      # accepted and completes in the background.
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(
           Telnyx::Models::GlobalIPAssignmentCreateResponse
@@ -13,7 +15,8 @@ module Telnyx
       def create(request_options: {})
       end
 
-      # Retrieve a Global IP assignment.
+      # Returns the details of a single Global IP assignment, including the Global IP
+      # and WireGuard peer it links.
       sig do
         params(
           id: String,
@@ -27,7 +30,8 @@ module Telnyx
       )
       end
 
-      # Update a Global IP assignment.
+      # Updates the specified Global IP assignment with the provided fields and returns
+      # the updated assignment.
       sig do
         params(
           global_ip_assignment_id: String,
@@ -44,7 +48,8 @@ module Telnyx
       )
       end
 
-      # List all Global IP assignments.
+      # Returns a paginated list of your Global IP assignments, the links between Global
+      # IPs and the WireGuard peers that receive their traffic.
       sig do
         params(
           page_number: Integer,
@@ -57,7 +62,8 @@ module Telnyx
       def list(page_number: nil, page_size: nil, request_options: {})
       end
 
-      # Delete a Global IP assignment.
+      # Deletes the specified Global IP assignment, detaching the Global IP from its
+      # WireGuard peer.
       sig do
         params(
           id: String,

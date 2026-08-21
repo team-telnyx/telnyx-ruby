@@ -5,8 +5,8 @@ module Telnyx
     # Recipient suppression records (`/v2/email_blocks`).
     class EmailBlocks
       # Async CSV import of competitor suppression lists.
-      # @return [Telnyx::Resources::EmailBlocks::Import]
-      attr_reader :import
+      # @return [Telnyx::Resources::EmailBlocks::Imports]
+      attr_reader :imports
 
       # Creates a suppression with `reason: manual_block` and `source: manual`.
       # Caller-supplied `reason` / `source` are **ignored**; `scope` is **derived**
@@ -165,7 +165,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailBlockRetrieveEventsResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::EmailBlockRetrieveEventsResponse>]
       #
       # @see Telnyx::Models::EmailBlockRetrieveEventsParams
       def retrieve_events(id, params = {})
@@ -175,6 +175,7 @@ module Telnyx
           method: :get,
           path: ["email_blocks/%1$s/events", id],
           query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::EmailBlockRetrieveEventsResponse,
           options: options
         )
@@ -243,7 +244,7 @@ module Telnyx
       # @param client [Telnyx::Client]
       def initialize(client:)
         @client = client
-        @import = Telnyx::Resources::EmailBlocks::Import.new(client: client)
+        @imports = Telnyx::Resources::EmailBlocks::Imports.new(client: client)
       end
     end
   end

@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # IP operations
     class IPs
-      # Create a new IP object.
+      # Creates a new IP record for use with IP-based connections, associating an IP
+      # address with the specified connection.
       sig do
         params(
           ip_address: String,
@@ -38,7 +39,7 @@ module Telnyx
       )
       end
 
-      # Update the details of a specific IP.
+      # Updates the details of the specified IP record and returns the updated IP.
       sig do
         params(
           id: String,
@@ -80,7 +81,7 @@ module Telnyx
       )
       end
 
-      # Delete an IP.
+      # Permanently deletes the specified IP record from its connection.
       sig do
         params(
           id: String,

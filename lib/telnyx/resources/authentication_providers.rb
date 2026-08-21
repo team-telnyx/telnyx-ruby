@@ -6,7 +6,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AuthenticationProviderCreateParams} for more details.
       #
-      # Creates an authentication provider.
+      # Creates a new authentication provider for single sign-on, configured from the
+      # provided identity provider details, and returns the created resource.
       #
       # @overload create(name:, settings:, short_name:, active: nil, settings_url: nil, request_options: {})
       #

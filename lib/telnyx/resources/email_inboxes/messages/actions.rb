@@ -26,11 +26,11 @@ module Telnyx
           #
           # @param inbox_id [String] Path param: Email inbox UUID.
           #
-          # @param to [String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>] Body param: One recipient or a non-empty recipient array. Each recipient may be
+          # @param to [String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>] Body param: One recipient or a non-empty recipient array. Each recipient may be
           #
-          # @param bcc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>] Body param: One recipient or a recipient array. Each recipient may be an email s
+          # @param bcc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>] Body param: One recipient or a recipient array. Each recipient may be an email s
           #
-          # @param cc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>] Body param: One recipient or a recipient array. Each recipient may be an email s
+          # @param cc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>] Body param: One recipient or a recipient array. Each recipient may be an email s
           #
           # @param html [String] Body param: Optional HTML note prepended to the generated forwarded-message bloc
           #

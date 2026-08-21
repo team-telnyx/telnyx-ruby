@@ -40,7 +40,7 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::SimCardUpdateParams} for more details.
       #
-      # Updates SIM card data
+      # Updates the specified SIM card's attributes and returns the updated SIM card.
       #
       # @overload update(sim_card_id, authorized_imeis: nil, data_limit: nil, sim_card_group_id: nil, status: nil, tags: nil, request_options: {})
       #

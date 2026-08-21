@@ -8,7 +8,8 @@ module Telnyx
       sig { returns(Telnyx::Resources::Queues::Calls) }
       attr_reader :calls
 
-      # Create a new call queue.
+      # Creates a new call queue with the provided configuration and returns the created
+      # queue.
       sig do
         params(
           queue_name: String,
@@ -25,7 +26,8 @@ module Telnyx
       )
       end
 
-      # Retrieve an existing call queue
+      # Returns the details of an existing call queue, including its current
+      # configuration.
       sig do
         params(
           queue_name: String,
@@ -73,7 +75,7 @@ module Telnyx
       )
       end
 
-      # Delete an existing call queue.
+      # Permanently deletes the specified call queue from your account.
       sig do
         params(
           queue_name: String,
