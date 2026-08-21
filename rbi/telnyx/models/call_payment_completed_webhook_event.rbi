@@ -541,7 +541,7 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Map =
+            ConnectorErrorDetailMap =
               T.let(
                 Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
                 Telnyx::Internal::Type::Converter

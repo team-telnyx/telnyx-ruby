@@ -6,7 +6,6 @@ module Telnyx
         content_type: String,
         customer_reference: String,
         filename: String,
-        record_type: String,
         :sha256 => String,
         size: Telnyx::DocServiceDocument::Size,
         status: Telnyx::Models::DocServiceDocument::status
@@ -31,10 +30,6 @@ module Telnyx
 
       def content_type=: (String _) -> String
 
-      def record_type: -> String?
-
-      def record_type=: (String _) -> String
-
       def sha256: -> String?
 
       def sha256=: (String _) -> String
@@ -56,7 +51,6 @@ module Telnyx
         ?content_type: String,
         ?customer_reference: String,
         ?filename: String,
-        ?record_type: String,
         ?sha256: String,
         ?size: Telnyx::DocServiceDocument::Size,
         ?status: Telnyx::Models::DocServiceDocument::status
@@ -67,7 +61,6 @@ module Telnyx
         content_type: String,
         customer_reference: String,
         filename: String,
-        record_type: String,
         :sha256 => String,
         size: Telnyx::DocServiceDocument::Size,
         status: Telnyx::Models::DocServiceDocument::status

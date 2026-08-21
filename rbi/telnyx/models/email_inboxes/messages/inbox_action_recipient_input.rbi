@@ -13,18 +13,18 @@ module Telnyx
             T.type_alias do
               T.any(
                 String,
-                Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1,
+                Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress,
                 T::Array[
                   Telnyx::EmailInboxes::Messages::InboxActionEmailAddressInput::Variants
                 ]
               )
             end
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class InboxRecipientAddress < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1,
+                  Telnyx::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress,
                   Telnyx::Internal::AnyHash
                 )
               end

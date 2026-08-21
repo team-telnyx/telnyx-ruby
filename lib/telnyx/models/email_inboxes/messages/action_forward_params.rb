@@ -23,21 +23,21 @@ module Telnyx
           #   One recipient or a non-empty recipient array. Each recipient may be an email
           #   string or an object with `email` and optional `name`.
           #
-          #   @return [String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>]
+          #   @return [String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>]
           required :to, union: -> { Telnyx::EmailInboxes::Messages::ActionForwardParams::To }
 
           # @!attribute bcc
           #   One recipient or a recipient array. Each recipient may be an email string or an
           #   object with `email` and optional `name`.
           #
-          #   @return [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>, nil]
+          #   @return [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>, nil]
           optional :bcc, union: -> { Telnyx::EmailInboxes::Messages::InboxActionRecipientInput }
 
           # @!attribute cc
           #   One recipient or a recipient array. Each recipient may be an email string or an
           #   object with `email` and optional `name`.
           #
-          #   @return [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>, nil]
+          #   @return [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>, nil]
           optional :cc, union: -> { Telnyx::EmailInboxes::Messages::InboxActionRecipientInput }
 
           # @!attribute html
@@ -62,11 +62,11 @@ module Telnyx
           #
           #   @param message_id [String]
           #
-          #   @param to [String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>] One recipient or a non-empty recipient array. Each recipient may be an email str
+          #   @param to [String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>] One recipient or a non-empty recipient array. Each recipient may be an email str
           #
-          #   @param bcc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>] One recipient or a recipient array. Each recipient may be an email string or an
+          #   @param bcc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>] One recipient or a recipient array. Each recipient may be an email string or an
           #
-          #   @param cc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>] One recipient or a recipient array. Each recipient may be an email string or an
+          #   @param cc [String, Telnyx::Models::EmailInboxes::Messages::InboxActionRecipientInput::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>] One recipient or a recipient array. Each recipient may be an email string or an
           #
           #   @param html [String] Optional HTML note prepended to the generated forwarded-message block. Blank val
           #
@@ -81,11 +81,11 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1 }
+            variant -> { Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress }
 
             variant -> { Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::InboxActionEmailAddressInputArray }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class InboxRecipientAddress < Telnyx::Internal::Type::BaseModel
               # @!attribute email
               #
               #   @return [String]
@@ -102,7 +102,7 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::UnionMember1>)]
+            #   @return [Array(String, Telnyx::Models::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress, Array<String, Telnyx::Models::EmailInboxes::Messages::InboxActionEmailAddressInput::InboxRecipientAddress>)]
 
             # @type [Telnyx::Internal::Type::Converter]
             InboxActionEmailAddressInputArray =

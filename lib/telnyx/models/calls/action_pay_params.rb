@@ -196,7 +196,7 @@ module Telnyx
           # @!attribute bank_account_number
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>, nil]
           optional :bank_account_number,
                    union: -> { Telnyx::Calls::PayPromptValue },
                    api_name: :"bank-account-number"
@@ -204,7 +204,7 @@ module Telnyx
           # @!attribute bank_routing_number
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>, nil]
           optional :bank_routing_number,
                    union: -> { Telnyx::Calls::PayPromptValue },
                    api_name: :"bank-routing-number"
@@ -212,13 +212,13 @@ module Telnyx
           # @!attribute expiration_date
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>, nil]
           optional :expiration_date, union: -> { Telnyx::Calls::PayPromptValue }, api_name: :"expiration-date"
 
           # @!attribute payment_card_number
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>, nil]
           optional :payment_card_number,
                    union: -> { Telnyx::Calls::PayPromptValue },
                    api_name: :"payment-card-number"
@@ -226,29 +226,29 @@ module Telnyx
           # @!attribute postal_code
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>, nil]
           optional :postal_code, union: -> { Telnyx::Calls::PayPromptValue }, api_name: :"postal-code"
 
           # @!attribute security_code
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>, nil]
           optional :security_code, union: -> { Telnyx::Calls::PayPromptValue }, api_name: :"security-code"
 
           # @!method initialize(bank_account_number: nil, bank_routing_number: nil, expiration_date: nil, payment_card_number: nil, postal_code: nil, security_code: nil)
           #   Custom text-to-speech prompts keyed by payment collection step.
           #
-          #   @param bank_account_number [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param bank_account_number [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param bank_routing_number [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param bank_routing_number [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param expiration_date [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param expiration_date [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param payment_card_number [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param payment_card_number [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param postal_code [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param postal_code [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param security_code [String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param security_code [String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>] A default prompt string or an ordered list of qualified prompts.
         end
 
         # Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is

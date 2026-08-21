@@ -2,50 +2,50 @@ module Telnyx
   module Models
     module Calls
       type pay_prompt_value =
-        String | ::Array[Telnyx::Calls::PayPromptValue::UnionMember1]
+        String | ::Array[Telnyx::Calls::PayPromptValue::PayPromptList]
 
       module PayPromptValue
         extend Telnyx::Internal::Type::Union
 
-        type union_member1 =
+        type pay_prompt_list =
           {
             text: String,
             attempt: String,
-            card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type,
-            error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type,
+            error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
           }
 
-        class UnionMember1 < Telnyx::Internal::Type::BaseModel
+        class PayPromptList < Telnyx::Internal::Type::BaseModel
           attr_accessor text: String
 
           attr_reader attempt: String?
 
           def attempt=: (String) -> String
 
-          attr_reader card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type?
+          attr_reader card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type?
 
           def card_type=: (
-            Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type
-          ) -> Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type
+            Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type
+          ) -> Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type
 
-          attr_reader error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type?
+          attr_reader error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type?
 
           def error_type=: (
-            Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
-          ) -> Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
+          ) -> Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
 
           def initialize: (
             text: String,
             ?attempt: String,
-            ?card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type,
-            ?error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            ?card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type,
+            ?error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
           ) -> void
 
           def to_hash: -> {
             text: String,
             attempt: String,
-            card_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type,
-            error_type: Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type
+            card_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type,
+            error_type: Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type
           }
 
           type card_type =
@@ -61,7 +61,7 @@ module Telnyx
             DINERS_CLUB: :"diners-club"
             JCB: :jcb
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::UnionMember1::card_type]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::PayPromptList::card_type]
           end
 
           type error_type =
@@ -86,13 +86,13 @@ module Telnyx
             INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
             INPUT_MATCHING_FAILED: :"input-matching-failed"
 
-            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::UnionMember1::error_type]
+            def self?.values: -> ::Array[Telnyx::Models::Calls::PayPromptValue::PayPromptList::error_type]
           end
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::Calls::pay_prompt_value]
 
-        UnionMember1Array: Telnyx::Internal::Type::Converter
+        PayPromptListArray: Telnyx::Internal::Type::Converter
       end
     end
   end

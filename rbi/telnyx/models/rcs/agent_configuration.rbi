@@ -14,9 +14,9 @@ module Telnyx
         sig do
           returns(
             T.any(
-              Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0,
-              Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1,
-              Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2
+              Telnyx::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement,
+              Telnyx::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement,
+              Telnyx::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement
             )
           )
         end
@@ -46,9 +46,9 @@ module Telnyx
           params(
             basics:
               T.any(
-                Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0::OrHash,
-                Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1::OrHash,
-                Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2::OrHash
+                Telnyx::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement::OrHash,
+                Telnyx::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement::OrHash,
+                Telnyx::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement::OrHash
               ),
             campaign:
               T.nilable(Telnyx::Rcs::AgentCampaignConfiguration::OrHash),
@@ -69,9 +69,9 @@ module Telnyx
             {
               basics:
                 T.any(
-                  Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0,
-                  Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1,
-                  Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2
+                  Telnyx::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement,
+                  Telnyx::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement,
+                  Telnyx::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement
                 ),
               campaign: T.nilable(Telnyx::Rcs::AgentCampaignConfiguration),
               testing: T.nilable(Telnyx::Rcs::AgentTestingConfiguration)
@@ -89,17 +89,17 @@ module Telnyx
           Variants =
             T.type_alias do
               T.any(
-                Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0,
-                Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1,
-                Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2
+                Telnyx::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement,
+                Telnyx::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement,
+                Telnyx::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement
               )
             end
 
-          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          class AgentPhoneContactRequirement < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Rcs::AgentConfiguration::Basics::UnionMember0,
+                  Telnyx::Rcs::AgentConfiguration::Basics::AgentPhoneContactRequirement,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -213,11 +213,11 @@ module Telnyx
             end
           end
 
-          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+          class AgentWebhookContactRequirement < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Rcs::AgentConfiguration::Basics::UnionMember1,
+                  Telnyx::Rcs::AgentConfiguration::Basics::AgentWebhookContactRequirement,
                   Telnyx::Internal::AnyHash
                 )
               end
@@ -331,11 +331,11 @@ module Telnyx
             end
           end
 
-          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+          class AgentProfileContactRequirement < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::Rcs::AgentConfiguration::Basics::UnionMember2,
+                  Telnyx::Rcs::AgentConfiguration::Basics::AgentProfileContactRequirement,
                   Telnyx::Internal::AnyHash
                 )
               end

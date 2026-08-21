@@ -272,7 +272,7 @@ module Telnyx
 
             def self?.variants: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::connector_error]
 
-            UnionMember1Map: Telnyx::Internal::Type::Converter
+            ConnectorErrorDetailMap: Telnyx::Internal::Type::Converter
           end
 
           type payment_card_type =

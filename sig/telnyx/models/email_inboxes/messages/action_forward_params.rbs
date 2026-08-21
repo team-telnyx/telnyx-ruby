@@ -68,15 +68,15 @@ module Telnyx
 
           type to =
             String
-            | Telnyx::EmailInboxes::Messages::ActionForwardParams::To::UnionMember1
+            | Telnyx::EmailInboxes::Messages::ActionForwardParams::To::InboxRecipientAddress
             | ::Array[Telnyx::Models::EmailInboxes::Messages::inbox_action_email_address_input]
 
           module To
             extend Telnyx::Internal::Type::Union
 
-            type union_member1 = { email: String, name: String }
+            type inbox_recipient_address = { email: String, name: String }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class InboxRecipientAddress < Telnyx::Internal::Type::BaseModel
               attr_accessor email: String
 
               attr_reader name: String?

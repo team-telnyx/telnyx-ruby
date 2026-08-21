@@ -9,9 +9,9 @@ module Telnyx
 
         variant String
 
-        variant -> { Telnyx::Models::Calls::PayPromptValue::UnionMember1Array }
+        variant -> { Telnyx::Models::Calls::PayPromptValue::PayPromptListArray }
 
-        class UnionMember1 < Telnyx::Internal::Type::BaseModel
+        class PayPromptList < Telnyx::Internal::Type::BaseModel
           # @!attribute text
           #   Text spoken for the payment collection step.
           #
@@ -29,18 +29,18 @@ module Telnyx
           #   the listed brands are currently detected; accepted UnionPay and Maestro test
           #   cards do not produce a card-type qualifier.
           #
-          #   @return [Symbol, Telnyx::Models::Calls::PayPromptValue::UnionMember1::CardType, nil]
-          optional :card_type, enum: -> { Telnyx::Calls::PayPromptValue::UnionMember1::CardType }
+          #   @return [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::CardType, nil]
+          optional :card_type, enum: -> { Telnyx::Calls::PayPromptValue::PayPromptList::CardType }
 
           # @!attribute error_type
           #   Step error for which this prompt applies.
           #
-          #   @return [Symbol, Telnyx::Models::Calls::PayPromptValue::UnionMember1::ErrorType, nil]
-          optional :error_type, enum: -> { Telnyx::Calls::PayPromptValue::UnionMember1::ErrorType }
+          #   @return [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::ErrorType, nil]
+          optional :error_type, enum: -> { Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType }
 
           # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::Calls::PayPromptValue::UnionMember1} for more details.
+          #   {Telnyx::Models::Calls::PayPromptValue::PayPromptList} for more details.
           #
           #   A text-to-speech prompt with optional matching qualifiers.
           #
@@ -48,15 +48,15 @@ module Telnyx
           #
           #   @param attempt [String] Space-separated 1-based attempt numbers for which this prompt applies.
           #
-          #   @param card_type [Symbol, Telnyx::Models::Calls::PayPromptValue::UnionMember1::CardType] Lowercase, case-sensitive detected card type for which this prompt applies. Only
+          #   @param card_type [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies. Only
           #
-          #   @param error_type [Symbol, Telnyx::Models::Calls::PayPromptValue::UnionMember1::ErrorType] Step error for which this prompt applies.
+          #   @param error_type [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::ErrorType] Step error for which this prompt applies.
 
           # Lowercase, case-sensitive detected card type for which this prompt applies. Only
           # the listed brands are currently detected; accepted UnionPay and Maestro test
           # cards do not produce a card-type qualifier.
           #
-          # @see Telnyx::Models::Calls::PayPromptValue::UnionMember1#card_type
+          # @see Telnyx::Models::Calls::PayPromptValue::PayPromptList#card_type
           module CardType
             extend Telnyx::Internal::Type::Enum
 
@@ -73,7 +73,7 @@ module Telnyx
 
           # Step error for which this prompt applies.
           #
-          # @see Telnyx::Models::Calls::PayPromptValue::UnionMember1#error_type
+          # @see Telnyx::Models::Calls::PayPromptValue::PayPromptList#error_type
           module ErrorType
             extend Telnyx::Internal::Type::Enum
 
@@ -92,11 +92,11 @@ module Telnyx
         end
 
         # @!method self.variants
-        #   @return [Array(String, Array<Telnyx::Models::Calls::PayPromptValue::UnionMember1>)]
+        #   @return [Array(String, Array<Telnyx::Models::Calls::PayPromptValue::PayPromptList>)]
 
         # @type [Telnyx::Internal::Type::Converter]
-        UnionMember1Array = Telnyx::Internal::Type::ArrayOf[-> {
-          Telnyx::Calls::PayPromptValue::UnionMember1
+        PayPromptListArray = Telnyx::Internal::Type::ArrayOf[-> {
+          Telnyx::Calls::PayPromptValue::PayPromptList
         }]
       end
     end

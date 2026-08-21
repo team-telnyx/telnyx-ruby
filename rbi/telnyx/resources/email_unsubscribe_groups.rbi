@@ -86,7 +86,7 @@ module Telnyx
           id: String,
           force:
             T.any(
-              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::OrSymbol,
+              Telnyx::EmailUnsubscribeGroupDeleteParams::Force::ForceString::OrSymbol,
               T::Boolean
             ),
           request_options: Telnyx::RequestOptions::OrHash

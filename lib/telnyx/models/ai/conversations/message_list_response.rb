@@ -84,9 +84,9 @@ module Telnyx
 
             variant Telnyx::Internal::Type::Boolean
 
-            variant -> { Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::UnionMember3Array }
+            variant -> { Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::ConversationMetadataListValueArray }
 
-            module UnionMember3
+            module ConversationMetadataListValue
               extend Telnyx::Internal::Type::Union
 
               variant String
@@ -103,8 +103,10 @@ module Telnyx
             #   @return [Array(String, Integer, Boolean, Array<String, Integer, Boolean>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember3Array =
-              Telnyx::Internal::Type::ArrayOf[union: -> { Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::UnionMember3 }]
+            ConversationMetadataListValueArray =
+              Telnyx::Internal::Type::ArrayOf[
+                union: -> { Telnyx::Models::AI::Conversations::MessageListResponse::Metadata::ConversationMetadataListValue }
+              ]
           end
 
           class ToolCall < Telnyx::Internal::Type::BaseModel
