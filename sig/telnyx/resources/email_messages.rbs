@@ -42,7 +42,7 @@ module Telnyx
         ?page_cursor: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EmailMessageListResponse
+      ) -> Telnyx::Internal::EmailCursorPagination[Telnyx::EmailInboxes::EmailMessage]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
@@ -68,7 +68,7 @@ module Telnyx
         ?page_cursor: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EmailMessageRetrieveEventsResponse
+      ) -> Telnyx::Internal::EmailCursorPagination[Telnyx::MessageEvent]
 
       def initialize: (client: Telnyx::Client) -> void
     end

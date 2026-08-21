@@ -39,7 +39,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EmailBlockRetrieveEventsResponse
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::EmailBlockRetrieveEventsResponse]
 
       def retrieve_export: (
         ?filter_created_after: Time,

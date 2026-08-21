@@ -174,7 +174,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::EmailInboxes::DraftListResponse]
+        # @return [Telnyx::Internal::EmailBracketCursorPagination<Telnyx::Models::EmailInboxes::EmailDraft>]
         #
         # @see Telnyx::Models::EmailInboxes::DraftListParams
         def list(inbox_id, params = {})
@@ -188,7 +188,8 @@ module Telnyx
               page_after: "page[after]",
               page_size: "page[size]"
             ),
-            model: Telnyx::Models::EmailInboxes::DraftListResponse,
+            page: Telnyx::Internal::EmailBracketCursorPagination,
+            model: Telnyx::EmailInboxes::EmailDraft,
             options: options
           )
         end

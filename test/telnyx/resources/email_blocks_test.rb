@@ -92,13 +92,26 @@ class Telnyx::Test::Resources::EmailBlocksTest < Telnyx::Test::ResourceTest
     response = @telnyx.email_blocks.retrieve_events("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::EmailBlockRetrieveEventsResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::EmailBlockRetrieveEventsResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::EmailBlockRetrieveEventsResponse::Data]),
-        meta: Telnyx::OffsetMeta
+      row => {
+        id: String,
+        actor: String,
+        event_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::EventType,
+        occurred_at: Time,
+        reason: String,
+        record_type: Telnyx::Models::EmailBlockRetrieveEventsResponse::RecordType,
+        source: String,
+        meta: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil
       }
     end
   end

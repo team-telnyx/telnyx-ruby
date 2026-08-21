@@ -30,13 +30,30 @@ class Telnyx::Test::Resources::EmailThreadsTest < Telnyx::Test::ResourceTest
     response = @telnyx.email_threads.list
 
     assert_pattern do
-      response => Telnyx::EmailInboxes::InboundThreadListResponse
+      response => Telnyx::Internal::EmailBracketCursorPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::EmailInboxes::InboundThread
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::InboundThread]),
-        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      row => {
+        id: String,
+        created_at: Time,
+        inbox_id: String,
+        labels: ^(Telnyx::Internal::Type::ArrayOf[String]),
+        last_message_at: Time,
+        last_message_id: String,
+        message_count: Integer,
+        preview: String | nil,
+        record_type: Telnyx::EmailInboxes::InboundThread::RecordType,
+        subject: String | nil,
+        unread_count: Integer,
+        updated_at: Time
       }
     end
   end

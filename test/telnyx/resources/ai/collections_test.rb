@@ -115,13 +115,31 @@ class Telnyx::Test::Resources::AI::CollectionsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.collections.retrieve_documents("support-transcripts")
 
     assert_pattern do
-      response => Telnyx::Models::AI::CollectionRetrieveDocumentsResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::AI::CollectionRetrieveDocumentsResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AI::CollectionRetrieveDocumentsResponse::Data]) | nil,
-        meta: Telnyx::Models::AI::CollectionRetrieveDocumentsResponse::Meta | nil
+      row => {
+        id: String | nil,
+        chunk_index: Integer | nil,
+        chunk_total: Integer | nil,
+        ingested_at: Time | nil,
+        metadata: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+        organization_id: String | nil,
+        record_created_at: Time | nil,
+        record_id: String | nil,
+        record_type: String | nil,
+        region: String | nil,
+        score: Float | nil,
+        text: String | nil,
+        user_id: String | nil
       }
     end
   end

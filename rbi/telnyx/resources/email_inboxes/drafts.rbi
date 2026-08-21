@@ -176,7 +176,11 @@ module Telnyx
             page_after: String,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::EmailInboxes::DraftListResponse)
+          ).returns(
+            Telnyx::Internal::EmailBracketCursorPagination[
+              Telnyx::EmailInboxes::EmailDraft
+            ]
+          )
         end
         def list(
           # Email inbox UUID.

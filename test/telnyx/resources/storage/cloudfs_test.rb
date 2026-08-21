@@ -62,13 +62,27 @@ class Telnyx::Test::Resources::Storage::CloudfsTest < Telnyx::Test::ResourceTest
     response = @telnyx.storage.cloudfs.list
 
     assert_pattern do
-      response => Telnyx::Models::Storage::CloudfListResponse
+      response => Telnyx::Internal::CloudfsCursorPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::Storage::CloudfListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Storage::CloudfListResponse::Data]) | nil,
-        meta: Telnyx::Models::Storage::CloudfListResponse::Meta | nil
+      row => {
+        id: String | nil,
+        created_at: Time | nil,
+        name: String | nil,
+        record_type: String | nil,
+        region: String | nil,
+        s3_bucket: String | nil,
+        s3_endpoint: String | nil,
+        status: Telnyx::Storage::CloudfsFilesystemStatus | nil,
+        updated_at: Time | nil
       }
     end
   end

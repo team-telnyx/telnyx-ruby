@@ -3,6 +3,7 @@
 module Telnyx
   module Models
     module EmailInboxes
+      # @see Telnyx::Resources::EmailInboxes::Drafts#list
       class EmailDraft < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #

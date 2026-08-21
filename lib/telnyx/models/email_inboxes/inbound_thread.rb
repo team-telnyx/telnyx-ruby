@@ -3,6 +3,7 @@
 module Telnyx
   module Models
     module EmailInboxes
+      # @see Telnyx::Resources::EmailInboxes::Threads#list
       class InboundThread < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #

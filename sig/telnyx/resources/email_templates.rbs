@@ -30,7 +30,7 @@ module Telnyx
         ?page_cursor: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EmailTemplateListResponse
+      ) -> Telnyx::Internal::EmailCursorPagination[Telnyx::EmailTemplate]
 
       def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 

@@ -118,7 +118,11 @@ module Telnyx
           region:
             Telnyx::AIRetrieveConversationHistoriesParams::Region::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::AIRetrieveConversationHistoriesResponse)
+        ).returns(
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::Models::AIRetrieveConversationHistoriesResponse
+          ]
+        )
       end
       def retrieve_conversation_histories(
         # Natural language search query. The text is embedded into a 1024-dimensional

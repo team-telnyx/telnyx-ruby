@@ -85,7 +85,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailInboxListResponse]
+      # @return [Telnyx::Internal::EmailCursorPagination<Telnyx::Models::EmailInbox>]
       #
       # @see Telnyx::Models::EmailInboxListParams
       def list(params = {})
@@ -95,7 +95,8 @@ module Telnyx
           method: :get,
           path: "email_inboxes",
           query: query,
-          model: Telnyx::Models::EmailInboxListResponse,
+          page: Telnyx::Internal::EmailCursorPagination,
+          model: Telnyx::EmailInbox,
           options: options
         )
       end

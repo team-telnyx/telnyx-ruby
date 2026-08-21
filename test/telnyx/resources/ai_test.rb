@@ -9,13 +9,30 @@ class Telnyx::Test::Resources::AITest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.retrieve_conversation_histories(q: "customer called about billing issue")
 
     assert_pattern do
-      response => Telnyx::Models::AIRetrieveConversationHistoriesResponse
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::AIRetrieveConversationHistoriesResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::AIRetrieveConversationHistoriesResponse::Data]),
-        meta: Telnyx::Models::AIRetrieveConversationHistoriesResponse::Meta
+      row => {
+        id: String,
+        chunk_index: Integer,
+        chunk_total: Integer,
+        ingested_at: Time,
+        organization_id: String,
+        record_created_at: Time,
+        record_id: String,
+        region: Telnyx::Models::AIRetrieveConversationHistoriesResponse::Region,
+        score: Float,
+        text: String,
+        user_id: String,
+        metadata: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil
       }
     end
   end

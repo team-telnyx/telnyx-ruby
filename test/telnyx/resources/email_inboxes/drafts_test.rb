@@ -65,13 +65,42 @@ class Telnyx::Test::Resources::EmailInboxes::DraftsTest < Telnyx::Test::Resource
     response = @telnyx.email_inboxes.drafts.list("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::EmailInboxes::DraftListResponse
+      response => Telnyx::Internal::EmailBracketCursorPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::EmailInboxes::EmailDraft
     end
 
     assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailDraft]),
-        meta: Telnyx::EmailInboxes::EmailPaginationMeta
+      row => {
+        id: String,
+        inbox_id: String,
+        record_type: Telnyx::EmailInboxes::EmailDraft::RecordType,
+        status: Telnyx::EmailInboxes::EmailDraft::Status,
+        attachments: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]) | nil,
+        bcc: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailAddress]) | nil,
+        cc: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailAddress]) | nil,
+        created_at: Time | nil,
+        from: String | nil,
+        from_name: String | nil,
+        headers: ^(Telnyx::Internal::Type::HashOf[String]) | nil,
+        html_body: String | nil,
+        labels: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        metadata: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+        reply_to: String | nil,
+        reply_to_message_id: String | nil,
+        sent_at: Time | nil,
+        sent_message_id: String | nil,
+        subject: String | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        text_body: String | nil,
+        thread_id: String | nil,
+        to: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailAddress]) | nil,
+        updated_at: Time | nil
       }
     end
   end

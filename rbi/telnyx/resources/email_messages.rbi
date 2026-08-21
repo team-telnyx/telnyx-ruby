@@ -180,7 +180,11 @@ module Telnyx
           page_cursor: String,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EmailMessageListResponse)
+        ).returns(
+          Telnyx::Internal::EmailCursorPagination[
+            Telnyx::EmailInboxes::EmailMessage
+          ]
+        )
       end
       def list(
         # Opaque URL-safe Base64 cursor returned by a previous list response.
@@ -276,7 +280,7 @@ module Telnyx
           page_cursor: String,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EmailMessageRetrieveEventsResponse)
+        ).returns(Telnyx::Internal::EmailCursorPagination[Telnyx::MessageEvent])
       end
       def retrieve_events(
         # Email message UUID.

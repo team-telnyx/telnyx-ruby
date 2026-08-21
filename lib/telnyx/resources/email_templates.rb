@@ -108,7 +108,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailTemplateListResponse]
+      # @return [Telnyx::Internal::EmailCursorPagination<Telnyx::Models::EmailTemplate>]
       #
       # @see Telnyx::Models::EmailTemplateListParams
       def list(params = {})
@@ -118,7 +118,8 @@ module Telnyx
           method: :get,
           path: "email_templates",
           query: query,
-          model: Telnyx::Models::EmailTemplateListResponse,
+          page: Telnyx::Internal::EmailCursorPagination,
+          model: Telnyx::EmailTemplate,
           options: options
         )
       end

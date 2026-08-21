@@ -3,160 +3,138 @@ module Telnyx
     module Pricing
       type product_retrieve_response =
         {
-          data: ::Array[Telnyx::Models::Pricing::ProductRetrieveResponse::Data],
-          meta: Telnyx::Pricing::PricingPaginationMeta
+          cached_input_rate: String,
+          cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          country_iso: String?,
+          currency: String,
+          direction: String?,
+          input_rate: String,
+          input_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          model: String,
+          name: String,
+          note: String?,
+          output_rate: String,
+          output_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          pricing_type: String?,
+          rate: Telnyx::Models::Pricing::ProductRetrieveResponse::rate?,
+          tiers: ::Array[Telnyx::Pricing::PricingTier],
+          type: String,
+          unit: String
         }
 
       class ProductRetrieveResponse < Telnyx::Internal::Type::BaseModel
-        attr_accessor data: ::Array[Telnyx::Models::Pricing::ProductRetrieveResponse::Data]
+        attr_reader cached_input_rate: String?
 
-        attr_accessor meta: Telnyx::Pricing::PricingPaginationMeta
+        def cached_input_rate=: (String) -> String
+
+        attr_reader cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier]?
+
+        def cached_input_tiers=: (
+          ::Array[Telnyx::Pricing::PricingTier]
+        ) -> ::Array[Telnyx::Pricing::PricingTier]
+
+        attr_accessor country_iso: String?
+
+        attr_reader currency: String?
+
+        def currency=: (String) -> String
+
+        attr_accessor direction: String?
+
+        attr_reader input_rate: String?
+
+        def input_rate=: (String) -> String
+
+        attr_reader input_tiers: ::Array[Telnyx::Pricing::PricingTier]?
+
+        def input_tiers=: (
+          ::Array[Telnyx::Pricing::PricingTier]
+        ) -> ::Array[Telnyx::Pricing::PricingTier]
+
+        attr_reader model: String?
+
+        def model=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_accessor note: String?
+
+        attr_reader output_rate: String?
+
+        def output_rate=: (String) -> String
+
+        attr_reader output_tiers: ::Array[Telnyx::Pricing::PricingTier]?
+
+        def output_tiers=: (
+          ::Array[Telnyx::Pricing::PricingTier]
+        ) -> ::Array[Telnyx::Pricing::PricingTier]
+
+        attr_accessor pricing_type: String?
+
+        attr_accessor rate: Telnyx::Models::Pricing::ProductRetrieveResponse::rate?
+
+        attr_reader tiers: ::Array[Telnyx::Pricing::PricingTier]?
+
+        def tiers=: (
+          ::Array[Telnyx::Pricing::PricingTier]
+        ) -> ::Array[Telnyx::Pricing::PricingTier]
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        attr_reader unit: String?
+
+        def unit=: (String) -> String
 
         def initialize: (
-          data: ::Array[Telnyx::Models::Pricing::ProductRetrieveResponse::Data],
-          meta: Telnyx::Pricing::PricingPaginationMeta
+          ?cached_input_rate: String,
+          ?cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          ?country_iso: String?,
+          ?currency: String,
+          ?direction: String?,
+          ?input_rate: String,
+          ?input_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          ?model: String,
+          ?name: String,
+          ?note: String?,
+          ?output_rate: String,
+          ?output_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          ?pricing_type: String?,
+          ?rate: Telnyx::Models::Pricing::ProductRetrieveResponse::rate?,
+          ?tiers: ::Array[Telnyx::Pricing::PricingTier],
+          ?type: String,
+          ?unit: String
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[Telnyx::Models::Pricing::ProductRetrieveResponse::Data],
-          meta: Telnyx::Pricing::PricingPaginationMeta
+          cached_input_rate: String,
+          cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          country_iso: String?,
+          currency: String,
+          direction: String?,
+          input_rate: String,
+          input_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          model: String,
+          name: String,
+          note: String?,
+          output_rate: String,
+          output_tiers: ::Array[Telnyx::Pricing::PricingTier],
+          pricing_type: String?,
+          rate: Telnyx::Models::Pricing::ProductRetrieveResponse::rate?,
+          tiers: ::Array[Telnyx::Pricing::PricingTier],
+          type: String,
+          unit: String
         }
 
-        type data =
-          {
-            cached_input_rate: String,
-            cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            country_iso: String?,
-            currency: String,
-            direction: String?,
-            input_rate: String,
-            input_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            model: String,
-            name: String,
-            note: String?,
-            output_rate: String,
-            output_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            pricing_type: String?,
-            rate: Telnyx::Models::Pricing::ProductRetrieveResponse::Data::rate?,
-            tiers: ::Array[Telnyx::Pricing::PricingTier],
-            type: String,
-            unit: String
-          }
+        type rate = Float | String
 
-        class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader cached_input_rate: String?
+        module Rate
+          extend Telnyx::Internal::Type::Union
 
-          def cached_input_rate=: (String) -> String
-
-          attr_reader cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier]?
-
-          def cached_input_tiers=: (
-            ::Array[Telnyx::Pricing::PricingTier]
-          ) -> ::Array[Telnyx::Pricing::PricingTier]
-
-          attr_accessor country_iso: String?
-
-          attr_reader currency: String?
-
-          def currency=: (String) -> String
-
-          attr_accessor direction: String?
-
-          attr_reader input_rate: String?
-
-          def input_rate=: (String) -> String
-
-          attr_reader input_tiers: ::Array[Telnyx::Pricing::PricingTier]?
-
-          def input_tiers=: (
-            ::Array[Telnyx::Pricing::PricingTier]
-          ) -> ::Array[Telnyx::Pricing::PricingTier]
-
-          attr_reader model: String?
-
-          def model=: (String) -> String
-
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
-          attr_accessor note: String?
-
-          attr_reader output_rate: String?
-
-          def output_rate=: (String) -> String
-
-          attr_reader output_tiers: ::Array[Telnyx::Pricing::PricingTier]?
-
-          def output_tiers=: (
-            ::Array[Telnyx::Pricing::PricingTier]
-          ) -> ::Array[Telnyx::Pricing::PricingTier]
-
-          attr_accessor pricing_type: String?
-
-          attr_accessor rate: Telnyx::Models::Pricing::ProductRetrieveResponse::Data::rate?
-
-          attr_reader tiers: ::Array[Telnyx::Pricing::PricingTier]?
-
-          def tiers=: (
-            ::Array[Telnyx::Pricing::PricingTier]
-          ) -> ::Array[Telnyx::Pricing::PricingTier]
-
-          attr_reader type: String?
-
-          def type=: (String) -> String
-
-          attr_reader unit: String?
-
-          def unit=: (String) -> String
-
-          def initialize: (
-            ?cached_input_rate: String,
-            ?cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            ?country_iso: String?,
-            ?currency: String,
-            ?direction: String?,
-            ?input_rate: String,
-            ?input_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            ?model: String,
-            ?name: String,
-            ?note: String?,
-            ?output_rate: String,
-            ?output_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            ?pricing_type: String?,
-            ?rate: Telnyx::Models::Pricing::ProductRetrieveResponse::Data::rate?,
-            ?tiers: ::Array[Telnyx::Pricing::PricingTier],
-            ?type: String,
-            ?unit: String
-          ) -> void
-
-          def to_hash: -> {
-            cached_input_rate: String,
-            cached_input_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            country_iso: String?,
-            currency: String,
-            direction: String?,
-            input_rate: String,
-            input_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            model: String,
-            name: String,
-            note: String?,
-            output_rate: String,
-            output_tiers: ::Array[Telnyx::Pricing::PricingTier],
-            pricing_type: String?,
-            rate: Telnyx::Models::Pricing::ProductRetrieveResponse::Data::rate?,
-            tiers: ::Array[Telnyx::Pricing::PricingTier],
-            type: String,
-            unit: String
-          }
-
-          type rate = Float | String
-
-          module Rate
-            extend Telnyx::Internal::Type::Union
-
-            def self?.variants: -> ::Array[Telnyx::Models::Pricing::ProductRetrieveResponse::Data::rate]
-          end
+          def self?.variants: -> ::Array[Telnyx::Models::Pricing::ProductRetrieveResponse::rate]
         end
       end
     end

@@ -57,7 +57,7 @@ module Telnyx
           ?page_after: String,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::EmailInboxes::DraftListResponse
+        ) -> Telnyx::Internal::EmailBracketCursorPagination[Telnyx::EmailInboxes::EmailDraft]
 
         def delete: (
           String draft_id,

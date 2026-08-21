@@ -17,7 +17,11 @@ module Telnyx
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::Pricing::ProductRetrieveResponse)
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[
+              Telnyx::Models::Pricing::ProductRetrieveResponse
+            ]
+          )
         end
         def retrieve(
           # Product slug from the catalog listing.

@@ -26,7 +26,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Pricing::ProductRetrieveResponse]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Pricing::ProductRetrieveResponse>]
         #
         # @see Telnyx::Models::Pricing::ProductRetrieveParams
         def retrieve(slug, params = {})
@@ -40,6 +40,7 @@ module Telnyx
               page_number: "page[number]",
               page_size: "page[size]"
             ),
+            page: Telnyx::Internal::DefaultFlatPagination,
             model: Telnyx::Models::Pricing::ProductRetrieveResponse,
             options: options
           )

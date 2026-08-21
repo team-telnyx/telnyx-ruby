@@ -135,7 +135,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::AIRetrieveConversationHistoriesResponse]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::AIRetrieveConversationHistoriesResponse>]
       #
       # @see Telnyx::Models::AIRetrieveConversationHistoriesParams
       def retrieve_conversation_histories(params)
@@ -156,6 +156,7 @@ module Telnyx
             page_number: "page[number]",
             page_size: "page[size]"
           ),
+          page: Telnyx::Internal::DefaultFlatPagination,
           model: Telnyx::Models::AIRetrieveConversationHistoriesResponse,
           options: options
         )

@@ -127,7 +127,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Models::Storage::CloudfListResponse]
+        # @return [Telnyx::Internal::CloudfsCursorPagination<Telnyx::Models::Storage::CloudfListResponse>]
         #
         # @see Telnyx::Models::Storage::CloudfListParams
         def list(params = {})
@@ -144,6 +144,7 @@ module Telnyx
               page_before: "page[before]",
               page_limit: "page[limit]"
             ),
+            page: Telnyx::Internal::CloudfsCursorPagination,
             model: Telnyx::Models::Storage::CloudfListResponse,
             options: options
           )

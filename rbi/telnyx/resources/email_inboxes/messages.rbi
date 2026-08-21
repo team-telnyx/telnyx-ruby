@@ -61,7 +61,11 @@ module Telnyx
             page_after: String,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
-          ).returns(Telnyx::Models::EmailInboxes::MessageListResponse)
+          ).returns(
+            Telnyx::Internal::EmailBracketCursorPagination[
+              Telnyx::InboundMessage
+            ]
+          )
         end
         def list(
           # Email inbox UUID.

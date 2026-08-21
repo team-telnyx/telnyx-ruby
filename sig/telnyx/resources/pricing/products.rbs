@@ -8,7 +8,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Models::Pricing::ProductRetrieveResponse
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Pricing::ProductRetrieveResponse]
 
         def list: (
           ?page_number: Integer,
