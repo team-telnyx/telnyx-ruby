@@ -8,7 +8,7 @@ module Telnyx
           capabilities: Telnyx::Rcs::CapabilitiesResponse,
           contacts: ::Hash[Symbol, Telnyx::Rcs::BrandContact],
           display_name: String,
-          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier],
+          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier],
           legal_entity_type: String,
           legal_name: String,
           organization_type: String,
@@ -28,7 +28,7 @@ module Telnyx
 
         attr_accessor display_name: String
 
-        attr_accessor identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier]
+        attr_accessor identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier]
 
         attr_accessor legal_entity_type: String
 
@@ -48,7 +48,7 @@ module Telnyx
           capabilities: Telnyx::Rcs::CapabilitiesResponse,
           contacts: ::Hash[Symbol, Telnyx::Rcs::BrandContact],
           display_name: String,
-          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier],
+          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier],
           legal_entity_type: String,
           legal_name: String,
           organization_type: String,
@@ -63,7 +63,7 @@ module Telnyx
           capabilities: Telnyx::Rcs::CapabilitiesResponse,
           contacts: ::Hash[Symbol, Telnyx::Rcs::BrandContact],
           display_name: String,
-          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::BrandResponse::identifier],
+          identifiers: ::Hash[Symbol, Telnyx::Models::Rcs::brand_identifier],
           legal_entity_type: String,
           legal_name: String,
           organization_type: String,
@@ -71,16 +71,6 @@ module Telnyx
           status: Telnyx::Models::Rcs::BrandResponse::status,
           website_url: String
         }
-
-        type identifier =
-          Telnyx::Rcs::EinBrandIdentifier
-          | Telnyx::Rcs::StockSymbolBrandIdentifier
-
-        module Identifier
-          extend Telnyx::Internal::Type::Union
-
-          def self?.variants: -> ::Array[Telnyx::Models::Rcs::BrandResponse::identifier]
-        end
 
         type status =
           :CREATED

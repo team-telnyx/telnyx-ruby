@@ -64,6 +64,8 @@ module Telnyx
       #   @param status [Symbol, Telnyx::Models::DocServiceDocument::Status] Indicates the current document reviewing status
 
       # The antivirus scan status of the document.
+      #
+      # @see Telnyx::Models::DocServiceDocument#av_scan_status
       module AvScanStatus
         extend Telnyx::Internal::Type::Enum
 
@@ -76,6 +78,7 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
+      # @see Telnyx::Models::DocServiceDocument#size
       class Size < Telnyx::Internal::Type::BaseModel
         response_only do
           # @!attribute amount
@@ -100,6 +103,8 @@ module Telnyx
       end
 
       # Indicates the current document reviewing status
+      #
+      # @see Telnyx::Models::DocServiceDocument#status
       module Status
         extend Telnyx::Internal::Type::Enum
 

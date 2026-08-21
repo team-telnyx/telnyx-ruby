@@ -318,9 +318,9 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          USD =
+          USD_UPPERCASE =
             T.let(:USD, Telnyx::Calls::ActionPayParams::Currency::TaggedSymbol)
-          USD_2 =
+          USD_LOWERCASE =
             T.let(:usd, Telnyx::Calls::ActionPayParams::Currency::TaggedSymbol)
 
           sig do

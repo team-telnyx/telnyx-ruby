@@ -33,8 +33,7 @@ module Telnyx
         # @!attribute identifiers
         #
         #   @return [Hash{Symbol=>Telnyx::Models::Rcs::EinBrandIdentifier, Telnyx::Models::Rcs::StockSymbolBrandIdentifier}]
-        required :identifiers,
-                 -> { Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandResponse::Identifier] }
+        required :identifiers, -> { Telnyx::Internal::Type::HashOf[union: Telnyx::Rcs::BrandIdentifier] }
 
         # @!attribute legal_entity_type
         #
@@ -79,19 +78,6 @@ module Telnyx
         #   @param profile_id [String, nil]
         #   @param status [Symbol, Telnyx::Models::Rcs::BrandResponse::Status]
         #   @param website_url [String]
-
-        module Identifier
-          extend Telnyx::Internal::Type::Union
-
-          discriminator :identifier_type
-
-          variant :EIN, -> { Telnyx::Rcs::EinBrandIdentifier }
-
-          variant :STOCK_SYMBOL, -> { Telnyx::Rcs::StockSymbolBrandIdentifier }
-
-          # @!method self.variants
-          #   @return [Array(Telnyx::Models::Rcs::EinBrandIdentifier, Telnyx::Models::Rcs::StockSymbolBrandIdentifier)]
-        end
 
         # @see Telnyx::Models::Rcs::BrandResponse#status
         module Status

@@ -186,8 +186,8 @@ module Telnyx
         module Currency
           extend Telnyx::Internal::Type::Enum
 
-          USD = :USD
-          USD_2 = :usd
+          USD_UPPERCASE = :USD
+          USD_LOWERCASE = :usd
 
           # @!method self.values
           #   @return [Array<Symbol>]

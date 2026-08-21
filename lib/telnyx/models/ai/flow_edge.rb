@@ -14,7 +14,7 @@ module Telnyx
         #   Condition that gates the transition. Discriminated by `type`: `llm`,
         #   `expression`.
         #
-        #   @return [Telnyx::Models::AI::FlowEdge::Condition::Llm, Telnyx::Models::AI::FlowEdge::Condition::Expression, Telnyx::Models::AI::FlowEdge::Condition::Default]
+        #   @return [Telnyx::Models::AI::FlowEdge::Condition::Llm, Telnyx::Models::AI::FlowEdge::Condition::Expression, Telnyx::Models::AI::FlowEdge::Condition::DefaultCondition]
         required :condition, union: -> { Telnyx::AI::FlowEdge::Condition }
 
         # @!attribute start_node_id
@@ -43,7 +43,7 @@ module Telnyx
         #
         #   @param id [String] Caller-supplied unique identifier for this edge within the flow.
         #
-        #   @param condition [Telnyx::Models::AI::FlowEdge::Condition::Llm, Telnyx::Models::AI::FlowEdge::Condition::Expression, Telnyx::Models::AI::FlowEdge::Condition::Default] Condition that gates the transition. Discriminated by `type`: `llm`, `expression
+        #   @param condition [Telnyx::Models::AI::FlowEdge::Condition::Llm, Telnyx::Models::AI::FlowEdge::Condition::Expression, Telnyx::Models::AI::FlowEdge::Condition::DefaultCondition] Condition that gates the transition. Discriminated by `type`: `llm`, `expression
         #
         #   @param start_node_id [String] ID of the node this edge transitions away from.
         #
@@ -81,7 +81,7 @@ module Telnyx
           # have somewhere to go. A tool/speak node with any outgoing edge is required
           # to carry exactly one `default` edge so it never dead-ends; a tool/speak
           # node with no outgoing edges is a valid terminal step. Carries no parameters.
-          variant :default, -> { Telnyx::AI::FlowEdge::Condition::Default }
+          variant :default, -> { Telnyx::AI::FlowEdge::Condition::DefaultCondition }
 
           class Llm < Telnyx::Internal::Type::BaseModel
             # @!attribute prompt
@@ -136,7 +136,7 @@ module Telnyx
             #   @param type [Symbol, :expression]
           end
 
-          class Default < Telnyx::Internal::Type::BaseModel
+          class DefaultCondition < Telnyx::Internal::Type::BaseModel
             # @!attribute type
             #
             #   @return [Symbol, :default]
@@ -157,7 +157,7 @@ module Telnyx
           end
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::AI::FlowEdge::Condition::Llm, Telnyx::Models::AI::FlowEdge::Condition::Expression, Telnyx::Models::AI::FlowEdge::Condition::Default)]
+          #   @return [Array(Telnyx::Models::AI::FlowEdge::Condition::Llm, Telnyx::Models::AI::FlowEdge::Condition::Expression, Telnyx::Models::AI::FlowEdge::Condition::DefaultCondition)]
         end
 
         # Destination of the transition. Discriminated by `type`: `node` (jump to another

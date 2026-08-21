@@ -1,7 +1,7 @@
 module Telnyx
   module Resources
     class EmailBlocks
-      attr_reader import: Telnyx::Resources::EmailBlocks::Import
+      attr_reader imports: Telnyx::Resources::EmailBlocks::Imports
 
       def create: (
         to: String,

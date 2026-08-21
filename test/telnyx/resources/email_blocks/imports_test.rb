@@ -2,11 +2,11 @@
 
 require_relative "../../test_helper"
 
-class Telnyx::Test::Resources::EmailBlocks::ImportTest < Telnyx::Test::ResourceTest
+class Telnyx::Test::Resources::EmailBlocks::ImportsTest < Telnyx::Test::ResourceTest
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.email_blocks.import.create(file: StringIO.new("Example data"))
+    response = @telnyx.email_blocks.imports.create(file: StringIO.new("Example data"))
 
     assert_pattern do
       response => Telnyx::EmailBlocks::EmailBlockImportResponse
@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::EmailBlocks::ImportTest < Telnyx::Test::ResourceT
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.email_blocks.import.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    response = @telnyx.email_blocks.imports.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
       response => Telnyx::EmailBlocks::EmailBlockImportResponse

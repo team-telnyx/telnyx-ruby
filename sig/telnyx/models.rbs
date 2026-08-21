@@ -1783,8 +1783,6 @@ module Telnyx
 
   class SpeechToTextRetrieveTranscriptionParams = Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
 
-  class SpeechToTextTranscribeParams = Telnyx::Models::SpeechToTextTranscribeParams
-
   module Storage = Telnyx::Models::Storage
 
   class StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams
@@ -1870,8 +1868,6 @@ module Telnyx
   class TextToSpeechListVoicesParams = Telnyx::Models::TextToSpeechListVoicesParams
 
   class TextToSpeechRetrieveSpeechParams = Telnyx::Models::TextToSpeechRetrieveSpeechParams
-
-  class TextToSpeechStreamParams = Telnyx::Models::TextToSpeechStreamParams
 
   class TimeRange = Telnyx::Models::TimeRange
 

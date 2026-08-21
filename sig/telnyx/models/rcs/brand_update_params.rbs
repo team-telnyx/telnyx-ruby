@@ -110,35 +110,12 @@ module Telnyx
             brand: Telnyx::Rcs::BrandUpdateParams::Contacts::Brand
           }
 
-          type brand =
-            {
-              contact_type: Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-            }
+          type brand = {  }
 
           class Brand < Telnyx::Models::Rcs::BrandContact
-            def contact_type: -> Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type?
+            def initialize: -> void
 
-            def contact_type=: (
-              Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type _
-            ) -> Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-
-            def initialize: (
-              ?contact_type: Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-            ) -> void
-
-            def to_hash: -> {
-              contact_type: Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type
-            }
-
-            type contact_type = :BRAND
-
-            module ContactType
-              extend Telnyx::Internal::Type::Enum
-
-              BRAND: :BRAND
-
-              def self?.values: -> ::Array[Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::contact_type]
-            end
+            def to_hash: -> {  }
           end
         end
 

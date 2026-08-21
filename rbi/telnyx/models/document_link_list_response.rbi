@@ -32,19 +32,11 @@ module Telnyx
       sig { params(linked_resource_id: String).void }
       attr_writer :linked_resource_id
 
-      # Identifies the type of the resource.
-      sig { returns(T.nilable(String)) }
-      attr_reader :record_type
-
-      sig { params(record_type: String).void }
-      attr_writer :record_type
-
       sig do
         params(
           document_id: String,
           linked_record_type: String,
-          linked_resource_id: String,
-          record_type: String
+          linked_resource_id: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -53,9 +45,7 @@ module Telnyx
         # The linked resource's record type.
         linked_record_type: nil,
         # Identifies the linked resource.
-        linked_resource_id: nil,
-        # Identifies the type of the resource.
-        record_type: nil
+        linked_resource_id: nil
       )
       end
 
@@ -64,8 +54,7 @@ module Telnyx
           {
             document_id: String,
             linked_record_type: String,
-            linked_resource_id: String,
-            record_type: String
+            linked_resource_id: String
           }
         )
       end

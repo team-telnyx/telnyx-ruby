@@ -38,7 +38,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions
           }
 
-          type param = (String | Float | bool)?
+          type param = String | Float | bool
 
           module Param
             extend Telnyx::Internal::Type::Union

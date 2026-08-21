@@ -29,11 +29,7 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :display_name
 
-        sig do
-          returns(
-            T::Hash[Symbol, Telnyx::Rcs::BrandResponse::Identifier::Variants]
-          )
-        end
+        sig { returns(T::Hash[Symbol, Telnyx::Rcs::BrandIdentifier::Variants]) }
         attr_accessor :identifiers
 
         sig { returns(String) }
@@ -102,10 +98,7 @@ module Telnyx
               contacts: T::Hash[Symbol, Telnyx::Rcs::BrandContact],
               display_name: String,
               identifiers:
-                T::Hash[
-                  Symbol,
-                  Telnyx::Rcs::BrandResponse::Identifier::Variants
-                ],
+                T::Hash[Symbol, Telnyx::Rcs::BrandIdentifier::Variants],
               legal_entity_type: String,
               legal_name: String,
               organization_type: String,
@@ -116,26 +109,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        module Identifier
-          extend Telnyx::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Telnyx::Rcs::EinBrandIdentifier,
-                Telnyx::Rcs::StockSymbolBrandIdentifier
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[Telnyx::Rcs::BrandResponse::Identifier::Variants]
-            )
-          end
-          def self.variants
-          end
         end
 
         module Status

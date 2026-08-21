@@ -100,22 +100,7 @@ module Telnyx
 
           # @see Telnyx::Models::Rcs::BrandUpdateParams::Contacts#brand
           class Brand < Telnyx::Models::Rcs::BrandContact
-            # @!attribute contact_type
-            #
-            #   @return [Symbol, Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::ContactType, nil]
-            optional :contact_type, enum: -> { Telnyx::Rcs::BrandUpdateParams::Contacts::Brand::ContactType }
-
-            # @!method initialize(contact_type: nil)
-            #   @param contact_type [Symbol, Telnyx::Models::Rcs::BrandUpdateParams::Contacts::Brand::ContactType]
-
-            module ContactType
-              extend Telnyx::Internal::Type::Enum
-
-              BRAND = :BRAND
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
+            # @!method initialize
           end
         end
 

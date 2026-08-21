@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class EmailBlocks
       # Async CSV import of competitor suppression lists.
-      class Import
+      class Imports
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::EmailBlocks::ImportCreateParams} for more details.
         #

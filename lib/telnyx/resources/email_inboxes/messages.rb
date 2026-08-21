@@ -14,9 +14,6 @@ module Telnyx
         # @return [Telnyx::Resources::EmailInboxes::Messages::Labels]
         attr_reader :labels
 
-        # Some parameter documentations has been truncated, see
-        # {Telnyx::Models::EmailInboxes::MessageUpdateParams} for more details.
-        #
         # Updates the explicit read state of an account-scoped inbound message. Set
         # `read_at` to `true` to mark the message read at the server's current time, to an
         # ISO 8601 timestamp to use that timestamp, or to `null` to mark the message
@@ -28,7 +25,7 @@ module Telnyx
         #
         # @param inbox_id [String] Path param: Email inbox UUID.
         #
-        # @param read_at [Boolean, Time, Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt, nil] Body param: Set to `true` for server time, an ISO 8601 timestamp for an explicit
+        # @param read_at [Boolean, Telnyx::Models::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime, Time] Body param
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

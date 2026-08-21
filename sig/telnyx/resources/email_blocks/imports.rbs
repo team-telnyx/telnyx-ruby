@@ -1,7 +1,7 @@
 module Telnyx
   module Resources
     class EmailBlocks
-      class Import
+      class Imports
         def create: (
           file: Telnyx::Internal::file_input,
           ?block_ttl_days: Integer,

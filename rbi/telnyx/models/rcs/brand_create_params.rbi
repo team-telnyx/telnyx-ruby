@@ -155,70 +155,12 @@ module Telnyx
                 )
               end
 
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Rcs::BrandCreateParams::Contacts::Brand::ContactType::OrSymbol
-                )
-              )
-            end
-            attr_reader :contact_type
-
-            sig do
-              params(
-                contact_type:
-                  Telnyx::Rcs::BrandCreateParams::Contacts::Brand::ContactType::OrSymbol
-              ).void
-            end
-            attr_writer :contact_type
-
-            sig do
-              params(
-                contact_type:
-                  Telnyx::Rcs::BrandCreateParams::Contacts::Brand::ContactType::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(contact_type: nil)
+            sig { returns(T.attached_class) }
+            def self.new
             end
 
-            sig do
-              override.returns(
-                {
-                  contact_type:
-                    Telnyx::Rcs::BrandCreateParams::Contacts::Brand::ContactType::OrSymbol
-                }
-              )
-            end
+            sig { override.returns({}) }
             def to_hash
-            end
-
-            module ContactType
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Rcs::BrandCreateParams::Contacts::Brand::ContactType
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              BRAND =
-                T.let(
-                  :BRAND,
-                  Telnyx::Rcs::BrandCreateParams::Contacts::Brand::ContactType::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Rcs::BrandCreateParams::Contacts::Brand::ContactType::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
             end
           end
         end

@@ -1,53 +1,11 @@
 module Telnyx
   module Models
-    type inbound_message =
-      {
-        direction: Telnyx::Models::InboundMessage::direction,
-        status: Telnyx::Models::InboundMessage::status
-      }
+    type inbound_message = {  }
 
     class InboundMessage < Telnyx::Models::EmailInboxes::ThreadMessage
-      def direction: -> Telnyx::Models::InboundMessage::direction?
+      def initialize: -> void
 
-      def direction=: (
-        Telnyx::Models::InboundMessage::direction _
-      ) -> Telnyx::Models::InboundMessage::direction
-
-      def status: -> Telnyx::Models::InboundMessage::status?
-
-      def status=: (
-        Telnyx::Models::InboundMessage::status _
-      ) -> Telnyx::Models::InboundMessage::status
-
-      def initialize: (
-        ?direction: Telnyx::Models::InboundMessage::direction,
-        ?status: Telnyx::Models::InboundMessage::status
-      ) -> void
-
-      def to_hash: -> {
-        direction: Telnyx::Models::InboundMessage::direction,
-        status: Telnyx::Models::InboundMessage::status
-      }
-
-      type direction = :inbound
-
-      module Direction
-        extend Telnyx::Internal::Type::Enum
-
-        INBOUND: :inbound
-
-        def self?.values: -> ::Array[Telnyx::Models::InboundMessage::direction]
-      end
-
-      type status = :received
-
-      module Status
-        extend Telnyx::Internal::Type::Enum
-
-        RECEIVED: :received
-
-        def self?.values: -> ::Array[Telnyx::Models::InboundMessage::status]
-      end
+      def to_hash: -> {  }
     end
   end
 end

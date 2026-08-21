@@ -9,7 +9,7 @@ module Telnyx
         def update: (
           String message_id,
           inbox_id: String,
-          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at?,
+          read_at: Telnyx::Models::EmailInboxes::MessageUpdateParams::read_at,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::EmailInboxes::MessageUpdateResponse
 

@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class EmailBlocks
       # Async CSV import of competitor suppression lists.
-      class Import
+      class Imports
         # Accepts `multipart/form-data` with a `file` field (the CSV) and an optional
         # `block_ttl_days` (integer >0, default 30). Validates:
         #

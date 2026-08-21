@@ -23,11 +23,9 @@ module Telnyx
             message_id: String,
             inbox_id: String,
             read_at:
-              T.nilable(
-                T.any(
-                  Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::OrBoolean,
-                  Time
-                )
+              T.any(
+                Telnyx::EmailInboxes::MessageUpdateParams::ReadAt::ServerReadTime::OrBoolean,
+                Time
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::EmailInboxes::MessageUpdateResponse)
@@ -37,8 +35,7 @@ module Telnyx
           message_id,
           # Path param: Email inbox UUID.
           inbox_id:,
-          # Body param: Set to `true` for server time, an ISO 8601 timestamp for an explicit
-          # read time, or `null` to mark unread.
+          # Body param
           read_at:,
           request_options: {}
         )

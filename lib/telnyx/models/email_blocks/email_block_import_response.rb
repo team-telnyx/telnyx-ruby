@@ -3,7 +3,7 @@
 module Telnyx
   module Models
     module EmailBlocks
-      # @see Telnyx::Resources::EmailBlocks::Import#create
+      # @see Telnyx::Resources::EmailBlocks::Imports#create
       class EmailBlockImportResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #   Import job. Schema fields hidden: `account_id`, `csv_content`, `block_ttl_days`.

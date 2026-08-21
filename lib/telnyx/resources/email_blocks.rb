@@ -5,8 +5,8 @@ module Telnyx
     # Recipient suppression records (`/v2/email_blocks`).
     class EmailBlocks
       # Async CSV import of competitor suppression lists.
-      # @return [Telnyx::Resources::EmailBlocks::Import]
-      attr_reader :import
+      # @return [Telnyx::Resources::EmailBlocks::Imports]
+      attr_reader :imports
 
       # Creates a suppression with `reason: manual_block` and `source: manual`.
       # Caller-supplied `reason` / `source` are **ignored**; `scope` is **derived**
@@ -244,7 +244,7 @@ module Telnyx
       # @param client [Telnyx::Client]
       def initialize(client:)
         @client = client
-        @import = Telnyx::Resources::EmailBlocks::Import.new(client: client)
+        @imports = Telnyx::Resources::EmailBlocks::Imports.new(client: client)
       end
     end
   end
