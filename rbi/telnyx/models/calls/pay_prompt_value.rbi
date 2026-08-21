@@ -35,9 +35,7 @@ module Telnyx
           sig { params(attempt: String).void }
           attr_writer :attempt
 
-          # Lowercase, case-sensitive detected card type for which this prompt applies. Only
-          # the listed brands are currently detected; accepted UnionPay and Maestro test
-          # cards do not produce a card-type qualifier.
+          # Lowercase, case-sensitive detected card type for which this prompt applies.
           sig do
             returns(
               T.nilable(
@@ -89,9 +87,7 @@ module Telnyx
             text:,
             # Space-separated 1-based attempt numbers for which this prompt applies.
             attempt: nil,
-            # Lowercase, case-sensitive detected card type for which this prompt applies. Only
-            # the listed brands are currently detected; accepted UnionPay and Maestro test
-            # cards do not produce a card-type qualifier.
+            # Lowercase, case-sensitive detected card type for which this prompt applies.
             card_type: nil,
             # Step error for which this prompt applies.
             error_type: nil
@@ -113,9 +109,7 @@ module Telnyx
           def to_hash
           end
 
-          # Lowercase, case-sensitive detected card type for which this prompt applies. Only
-          # the listed brands are currently detected; accepted UnionPay and Maestro test
-          # cards do not produce a card-type qualifier.
+          # Lowercase, case-sensitive detected card type for which this prompt applies.
           module CardType
             extend Telnyx::Internal::Type::Enum
 
@@ -143,6 +137,11 @@ module Telnyx
                 :amex,
                 Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
+            OPTIMA =
+              T.let(
+                :optima,
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
+              )
             DISCOVER =
               T.let(
                 :discover,
@@ -156,6 +155,16 @@ module Telnyx
             JCB =
               T.let(
                 :jcb,
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
+              )
+            MAESTRO =
+              T.let(
+                :maestro,
+                Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
+              )
+            ENROUTE =
+              T.let(
+                :enroute,
                 Telnyx::Calls::PayPromptValue::PayPromptList::CardType::TaggedSymbol
               )
 
@@ -191,6 +200,11 @@ module Telnyx
             INVALID_CARD_NUMBER =
               T.let(
                 :"invalid-card-number",
+                Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
+              )
+            INVALID_CARD_TYPE =
+              T.let(
+                :"invalid-card-type",
                 Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType::TaggedSymbol
               )
             INVALID_DATE =

@@ -289,9 +289,12 @@ module Telnyx
             VISA = :visa
             MASTERCARD = :mastercard
             AMEX = :amex
+            OPTIMA = :optima
             DISCOVER = :discover
             DINERS_CLUB = :"diners-club"
             JCB = :jcb
+            MAESTRO = :maestro
+            ENROUTE = :enroute
 
             # @!method self.values
             #   @return [Array<Symbol>]

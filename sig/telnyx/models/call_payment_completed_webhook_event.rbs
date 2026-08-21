@@ -276,7 +276,15 @@ module Telnyx
           end
 
           type payment_card_type =
-            :visa | :mastercard | :amex | :discover | :"diners-club" | :jcb
+            :visa
+            | :mastercard
+            | :amex
+            | :optima
+            | :discover
+            | :"diners-club"
+            | :jcb
+            | :maestro
+            | :enroute
 
           module PaymentCardType
             extend Telnyx::Internal::Type::Enum
@@ -284,9 +292,12 @@ module Telnyx
             VISA: :visa
             MASTERCARD: :mastercard
             AMEX: :amex
+            OPTIMA: :optima
             DISCOVER: :discover
             DINERS_CLUB: :"diners-club"
             JCB: :jcb
+            MAESTRO: :maestro
+            ENROUTE: :enroute
 
             def self?.values: -> ::Array[Telnyx::Models::CallPaymentCompletedWebhookEvent::Data::Payload::payment_card_type]
           end

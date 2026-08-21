@@ -661,7 +661,7 @@ module Telnyx
         # The UnionPay and Maestro numbers are accepted for processor testing, but Pay
         # currently does not emit a card type for them.
         #
-        # @overload pay(call_control_id, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, voice: nil, request_options: {})
+        # @overload pay(call_control_id, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, valid_card_types: nil, voice: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -698,6 +698,8 @@ module Telnyx
         # @param timeout_millis [Integer] Time in milliseconds to wait for DTMF input for each collection step.
         #
         # @param transaction_type [Symbol, Telnyx::Models::Calls::ActionPayParams::TransactionType] Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is absen
+        #
+        # @param valid_card_types [Array<Symbol, Telnyx::Models::Calls::ActionPayParams::ValidCardType>] Restricts accepted card numbers to the listed card types. When the caller enters
         #
         # @param voice [String] Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
         #

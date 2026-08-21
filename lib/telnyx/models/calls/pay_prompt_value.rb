@@ -25,9 +25,7 @@ module Telnyx
           optional :attempt, String
 
           # @!attribute card_type
-          #   Lowercase, case-sensitive detected card type for which this prompt applies. Only
-          #   the listed brands are currently detected; accepted UnionPay and Maestro test
-          #   cards do not produce a card-type qualifier.
+          #   Lowercase, case-sensitive detected card type for which this prompt applies.
           #
           #   @return [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::CardType, nil]
           optional :card_type, enum: -> { Telnyx::Calls::PayPromptValue::PayPromptList::CardType }
@@ -39,22 +37,17 @@ module Telnyx
           optional :error_type, enum: -> { Telnyx::Calls::PayPromptValue::PayPromptList::ErrorType }
 
           # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Telnyx::Models::Calls::PayPromptValue::PayPromptList} for more details.
-          #
           #   A text-to-speech prompt with optional matching qualifiers.
           #
           #   @param text [String] Text spoken for the payment collection step.
           #
           #   @param attempt [String] Space-separated 1-based attempt numbers for which this prompt applies.
           #
-          #   @param card_type [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies. Only
+          #   @param card_type [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
           #
           #   @param error_type [Symbol, Telnyx::Models::Calls::PayPromptValue::PayPromptList::ErrorType] Step error for which this prompt applies.
 
-          # Lowercase, case-sensitive detected card type for which this prompt applies. Only
-          # the listed brands are currently detected; accepted UnionPay and Maestro test
-          # cards do not produce a card-type qualifier.
+          # Lowercase, case-sensitive detected card type for which this prompt applies.
           #
           # @see Telnyx::Models::Calls::PayPromptValue::PayPromptList#card_type
           module CardType
@@ -63,9 +56,12 @@ module Telnyx
             VISA = :visa
             MASTERCARD = :mastercard
             AMEX = :amex
+            OPTIMA = :optima
             DISCOVER = :discover
             DINERS_CLUB = :"diners-club"
             JCB = :jcb
+            MAESTRO = :maestro
+            ENROUTE = :enroute
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -79,6 +75,7 @@ module Telnyx
 
             TIMEOUT = :timeout
             INVALID_CARD_NUMBER = :"invalid-card-number"
+            INVALID_CARD_TYPE = :"invalid-card-type"
             INVALID_DATE = :"invalid-date"
             INVALID_SECURITY_CODE = :"invalid-security-code"
             INVALID_POSTAL_CODE = :"invalid-postal-code"

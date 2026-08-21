@@ -942,6 +942,8 @@ module Telnyx
             timeout_millis: Integer,
             transaction_type:
               Telnyx::Calls::ActionPayParams::TransactionType::OrSymbol,
+            valid_card_types:
+              T::Array[Telnyx::Calls::ActionPayParams::ValidCardType::OrSymbol],
             voice: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionPayResponse)
@@ -986,6 +988,11 @@ module Telnyx
           # Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is
           # absent or zero and `charge` when `amount` is positive.
           transaction_type: nil,
+          # Restricts accepted card numbers to the listed card types. When the caller enters
+          # a card number that does not match one of the listed types, Pay treats the input
+          # as invalid and re-prompts for the card number. Cannot be used together with
+          # `payment_token`.
+          valid_card_types: nil,
           # Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
           # `<Provider>.<Model>.<VoiceId>` format, for example `AWS.Polly.Joanna` or
           # `Telnyx.KokoroTTS.af`.

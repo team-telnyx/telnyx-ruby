@@ -118,6 +118,16 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionPayParams::TransactionType, nil]
         optional :transaction_type, enum: -> { Telnyx::Calls::ActionPayParams::TransactionType }
 
+        # @!attribute valid_card_types
+        #   Restricts accepted card numbers to the listed card types. When the caller enters
+        #   a card number that does not match one of the listed types, Pay treats the input
+        #   as invalid and re-prompts for the card number. Cannot be used together with
+        #   `payment_token`.
+        #
+        #   @return [Array<Symbol, Telnyx::Models::Calls::ActionPayParams::ValidCardType>, nil]
+        optional :valid_card_types,
+                 -> { Telnyx::Internal::Type::ArrayOf[enum: Telnyx::Calls::ActionPayParams::ValidCardType] }
+
         # @!attribute voice
         #   Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
         #   `<Provider>.<Model>.<VoiceId>` format, for example `AWS.Polly.Joanna` or
@@ -126,7 +136,7 @@ module Telnyx
         #   @return [String, nil]
         optional :voice, String
 
-        # @!method initialize(call_control_id:, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, voice: nil, request_options: {})
+        # @!method initialize(call_control_id:, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, valid_card_types: nil, voice: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionPayParams} for more details.
         #
@@ -165,6 +175,8 @@ module Telnyx
         #   @param timeout_millis [Integer] Time in milliseconds to wait for DTMF input for each collection step.
         #
         #   @param transaction_type [Symbol, Telnyx::Models::Calls::ActionPayParams::TransactionType] Transaction to perform. If omitted, Pay infers `tokenize` when `amount` is absen
+        #
+        #   @param valid_card_types [Array<Symbol, Telnyx::Models::Calls::ActionPayParams::ValidCardType>] Restricts accepted card numbers to the listed card types. When the caller enters
         #
         #   @param voice [String] Voice used for payment prompts. Accepts `male`, `female`, or a provider voice in
         #
@@ -258,6 +270,23 @@ module Telnyx
 
           CHARGE = :charge
           TOKENIZE = :tokenize
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        module ValidCardType
+          extend Telnyx::Internal::Type::Enum
+
+          VISA = :visa
+          MASTERCARD = :mastercard
+          AMEX = :amex
+          MAESTRO = :maestro
+          DISCOVER = :discover
+          OPTIMA = :optima
+          JCB = :jcb
+          DINERS_CLUB = :"diners-club"
+          ENROUTE = :enroute
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -21,6 +21,7 @@ module Telnyx
           service_level: String,
           timeout_millis: Integer,
           transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          valid_card_types: ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type],
           voice: String
         }
         & Telnyx::Internal::Type::request_parameters
@@ -107,6 +108,12 @@ module Telnyx
           Telnyx::Models::Calls::ActionPayParams::transaction_type
         ) -> Telnyx::Models::Calls::ActionPayParams::transaction_type
 
+        attr_reader valid_card_types: ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type]?
+
+        def valid_card_types=: (
+          ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type]
+        ) -> ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type]
+
         attr_reader voice: String?
 
         def voice=: (String) -> String
@@ -130,6 +137,7 @@ module Telnyx
           ?service_level: String,
           ?timeout_millis: Integer,
           ?transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          ?valid_card_types: ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type],
           ?voice: String,
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -153,6 +161,7 @@ module Telnyx
           service_level: String,
           timeout_millis: Integer,
           transaction_type: Telnyx::Models::Calls::ActionPayParams::transaction_type,
+          valid_card_types: ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type],
           voice: String,
           request_options: Telnyx::RequestOptions
         }
@@ -254,6 +263,33 @@ module Telnyx
           TOKENIZE: :tokenize
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionPayParams::transaction_type]
+        end
+
+        type valid_card_type =
+          :visa
+          | :mastercard
+          | :amex
+          | :maestro
+          | :discover
+          | :optima
+          | :jcb
+          | :"diners-club"
+          | :enroute
+
+        module ValidCardType
+          extend Telnyx::Internal::Type::Enum
+
+          VISA: :visa
+          MASTERCARD: :mastercard
+          AMEX: :amex
+          MAESTRO: :maestro
+          DISCOVER: :discover
+          OPTIMA: :optima
+          JCB: :jcb
+          DINERS_CLUB: :"diners-club"
+          ENROUTE: :enroute
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::ActionPayParams::valid_card_type]
         end
       end
     end
