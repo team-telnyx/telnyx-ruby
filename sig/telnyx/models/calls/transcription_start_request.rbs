@@ -63,6 +63,7 @@ module Telnyx
           | :Parakeet
           | :Humain
           | :Reson8
+          | :Cohere
           | :A
           | :B
 
@@ -80,6 +81,7 @@ module Telnyx
           PARAKEET: :Parakeet
           HUMAIN: :Humain
           RESON8: :Reson8
+          COHERE: :Cohere
           A: :A
           B: :B
 
@@ -97,6 +99,7 @@ module Telnyx
           | Telnyx::Calls::TranscriptionEngineParakeetConfig
           | Telnyx::Calls::TranscriptionEngineHumainConfig
           | Telnyx::Calls::TranscriptionEngineReson8Config
+          | Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere
           | Telnyx::Calls::TranscriptionEngineAConfig
           | Telnyx::Calls::TranscriptionEngineBConfig
           | Telnyx::Calls::DeepgramNova2Config
@@ -104,6 +107,76 @@ module Telnyx
 
         module TranscriptionEngineConfig
           extend Telnyx::Internal::Type::Union
+
+          type cohere =
+            {
+              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::language,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_model
+            }
+
+          class Cohere < Telnyx::Internal::Type::BaseModel
+            attr_reader language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::language?
+
+            def language=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::language
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::language
+
+            attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_engine?
+
+            def transcription_engine=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_engine
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_engine
+
+            attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_model?
+
+            def transcription_model=: (
+              Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_model
+            ) -> Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_model
+
+            def initialize: (
+              ?language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::language,
+              ?transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_engine,
+              ?transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_model
+            ) -> void
+
+            def to_hash: -> {
+              language: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::language,
+              transcription_engine: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_engine,
+              transcription_model: Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_model
+            }
+
+            type language = :ar | :en
+
+            module Language
+              extend Telnyx::Internal::Type::Enum
+
+              AR: :ar
+              EN: :en
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::language]
+            end
+
+            type transcription_engine = :Cohere
+
+            module TranscriptionEngine
+              extend Telnyx::Internal::Type::Enum
+
+              COHERE: :Cohere
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_engine]
+            end
+
+            type transcription_model = :"cohere/ar-stt"
+
+            module TranscriptionModel
+              extend Telnyx::Internal::Type::Enum
+
+              COHERE_AR_STT: :"cohere/ar-stt"
+
+              def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::transcription_model]
+            end
+          end
 
           def self?.variants: -> ::Array[Telnyx::Models::Calls::TranscriptionStartRequest::transcription_engine_config]
         end

@@ -24,7 +24,9 @@ module Telnyx
         #   does not fall back to `auto` when `language` is omitted — omitting it applies
         #   `en` instead. For `reson8/turns`, supported values are `auto` (or unset) for
         #   automatic language detection, and the language codes `nl`, `en`, `fr`, `fy`,
-        #   `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language.
+        #   `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language. For
+        #   `cohere/ar-stt`, supported values are `ar` and `en`; unlike other models, this
+        #   model does not auto-detect and defaults to `ar` when `language` is omitted.
         #
         #   @return [String, nil]
         optional :language, String
@@ -48,6 +50,7 @@ module Telnyx
         #     code-switching support.
         #   - `reson8/turns` is a turn-based streaming model covering 10 European languages
         #     with automatic language detection.
+        #   - `cohere/ar-stt` is a non-streaming Arabic and English transcription model.
         #
         #   @return [Symbol, Telnyx::Models::AI::TranscriptionSettings::Model, nil]
         optional :model, enum: -> { Telnyx::AI::TranscriptionSettings::Model }
@@ -96,6 +99,7 @@ module Telnyx
         #   code-switching support.
         # - `reson8/turns` is a turn-based streaming model covering 10 European languages
         #   with automatic language detection.
+        # - `cohere/ar-stt` is a non-streaming Arabic and English transcription model.
         #
         # @see Telnyx::Models::AI::TranscriptionSettings#model
         module Model
@@ -111,6 +115,7 @@ module Telnyx
           NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
           HUMAIN_REALTIME = :"humain/realtime"
           RESON8_TURNS = :"reson8/turns"
+          COHERE_AR_STT = :"cohere/ar-stt"
           DISTIL_WHISPER_DISTIL_LARGE_V2 = :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO = :"openai/whisper-large-v3-turbo"
 

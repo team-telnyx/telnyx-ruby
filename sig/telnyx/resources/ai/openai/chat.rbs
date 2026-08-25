@@ -20,6 +20,7 @@ module Telnyx
             ?model: String,
             ?n: Float,
             ?presence_penalty: Float,
+            ?reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
             ?response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
             ?seed: Integer,
             ?service_tier: String,

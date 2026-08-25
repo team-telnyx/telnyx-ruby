@@ -111,6 +111,31 @@ module Telnyx
           #   @return [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters, nil]
           optional :path_parameters, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters }
 
+          # @!attribute preset_body_fields
+          #   Body fields supplied by the assistant configuration rather than by the model.
+          #   They are never advertised in the tool definition, so the LLM can neither see nor
+          #   set them, and they take precedence over a `body_parameters` value of the same
+          #   name. Values support mustache templating, so they can hold dynamic variables
+          #   (`{{customer_id}}`) and integration secrets
+          #   (`{{#integration_secret}}my-secret{{/integration_secret}}`). Not sent on `GET`
+          #   requests, which carry no body.
+          #
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :preset_body_fields, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+          # @!attribute preset_query_params
+          #   Query string parameters supplied by the assistant configuration rather than by
+          #   the model. They are never advertised in the tool definition, so the LLM can
+          #   neither see nor set them, and they take precedence over a `query_parameters`
+          #   value of the same name. Values support mustache templating, so they can hold
+          #   dynamic variables (`{{telnyx_end_user_target}}`) and integration secrets
+          #   (`{{#integration_secret}}my-secret{{/integration_secret}}`). Unlike values
+          #   templated directly into the `url`, these are percent-encoded, so a value such as
+          #   `+15551234567` survives the round trip.
+          #
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :preset_query_params, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
           # @!attribute query_parameters
           #   The query parameters the webhook tool accepts, described as a JSON Schema
           #   object. These parameters will be passed to the webhook as the query of the
@@ -138,7 +163,7 @@ module Telnyx
           #   @return [Integer, nil]
           optional :timeout_ms, Integer
 
-          # @!method initialize(description:, name:, url:, async: nil, async_timeout_ms: nil, body_parameters: nil, headers: nil, messages: nil, http_method: nil, path_parameters: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
+          # @!method initialize(description:, name:, url:, async: nil, async_timeout_ms: nil, body_parameters: nil, headers: nil, messages: nil, http_method: nil, path_parameters: nil, preset_body_fields: nil, preset_query_params: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook} for more
           #   details.
@@ -162,6 +187,10 @@ module Telnyx
           #   @param http_method [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method] The HTTP method to be used when calling the external tool.
           #
           #   @param path_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters] The path parameters the webhook tool accepts, described as a JSON Schema object.
+          #
+          #   @param preset_body_fields [Hash{Symbol=>Object}] Body fields supplied by the assistant configuration rather than by the model. Th
+          #
+          #   @param preset_query_params [Hash{Symbol=>Object}] Query string parameters supplied by the assistant configuration rather than by t
           #
           #   @param query_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters] The query parameters the webhook tool accepts, described as a JSON Schema object
           #

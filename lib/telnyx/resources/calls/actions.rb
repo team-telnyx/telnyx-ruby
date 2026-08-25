@@ -993,7 +993,7 @@ module Telnyx
         #
         # @param participants [Array<Telnyx::Models::Calls::AIAssistantJoinParticipant>] A list of participants to add to the conversation when it starts.
         #
-        # @param send_message_history_updates [Boolean] When `true`, a webhook is sent each time the conversation message history is upd
+        # @param send_message_history_updates [Boolean] When `true`, a `call.ai_gather.message_history_updated` webhook carrying the ful
         #
         # @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
         #
@@ -1421,7 +1421,7 @@ module Telnyx
         #
         # @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
         #
-        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionEngineHumainConfig, Telnyx::Models::Calls::TranscriptionEngineReson8Config, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
+        # @param transcription_engine_config [Telnyx::Models::Calls::TranscriptionEngineGoogleConfig, Telnyx::Models::Calls::TranscriptionEngineTelnyxConfig, Telnyx::Models::Calls::TranscriptionEngineAzureConfig, Telnyx::Models::Calls::TranscriptionEngineXaiConfig, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig, Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig, Telnyx::Models::Calls::TranscriptionEngineSonioxConfig, Telnyx::Models::Calls::TranscriptionEngineParakeetConfig, Telnyx::Models::Calls::TranscriptionEngineHumainConfig, Telnyx::Models::Calls::TranscriptionEngineReson8Config, Telnyx::Models::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere, Telnyx::Models::Calls::TranscriptionEngineAConfig, Telnyx::Models::Calls::TranscriptionEngineBConfig, Telnyx::Models::Calls::DeepgramNova2Config, Telnyx::Models::Calls::DeepgramNova3Config]
         #
         # @param transcription_tracks [String] Indicates which leg of the call will be transcribed. Use `inbound` for the leg t
         #

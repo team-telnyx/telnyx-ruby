@@ -54,6 +54,7 @@ module Telnyx
         PARAKEET = :parakeet
         HUMAIN = :humain
         RESON8 = :reson8
+        COHERE = :cohere
         AZURE = :azure
         OPENAI = :openai
         GOOGLE = :google

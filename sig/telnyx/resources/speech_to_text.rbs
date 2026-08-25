@@ -17,6 +17,7 @@ module Telnyx
         ?language: String,
         ?model: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::model,
         ?redact: String,
+        ?sample_rate: Integer,
         ?request_options: Telnyx::request_opts
       ) -> nil
 

@@ -7,6 +7,7 @@ module Telnyx
           input: ::Hash[Symbol, top],
           instructions: String,
           model: String,
+          reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
           service_tier: String,
           stream: bool
         }
@@ -32,6 +33,12 @@ module Telnyx
 
         def model=: (String) -> String
 
+        attr_reader reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning?
+
+        def reasoning=: (
+          Telnyx::AI::OpenAICreateResponseParams::Reasoning
+        ) -> Telnyx::AI::OpenAICreateResponseParams::Reasoning
+
         attr_reader service_tier: String?
 
         def service_tier=: (String) -> String
@@ -45,6 +52,7 @@ module Telnyx
           ?input: ::Hash[Symbol, top],
           ?instructions: String,
           ?model: String,
+          ?reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
           ?service_tier: String,
           ?stream: bool,
           ?request_options: Telnyx::request_opts
@@ -55,10 +63,49 @@ module Telnyx
           input: ::Hash[Symbol, top],
           instructions: String,
           model: String,
+          reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
           service_tier: String,
           stream: bool,
           request_options: Telnyx::RequestOptions
         }
+
+        type reasoning =
+          {
+            effort: Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort
+          }
+
+        class Reasoning < Telnyx::Internal::Type::BaseModel
+          attr_reader effort: Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort?
+
+          def effort=: (
+            Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort
+          ) -> Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort
+
+          def initialize: (
+            ?effort: Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort
+          ) -> void
+
+          def to_hash: -> {
+            effort: Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort
+          }
+
+          type effort =
+            :none | :minimal | :low | :medium | :high | :xhigh | :max
+
+          module Effort
+            extend Telnyx::Internal::Type::Enum
+
+            NONE: :none
+            MINIMAL: :minimal
+            LOW: :low
+            MEDIUM: :medium
+            HIGH: :high
+            XHIGH: :xhigh
+            MAX: :max
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort]
+          end
+        end
       end
     end
   end

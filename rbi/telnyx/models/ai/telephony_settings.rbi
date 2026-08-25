@@ -74,6 +74,20 @@ module Telnyx
         end
         attr_writer :recording_settings
 
+        # Whether the assistant sends a `call.ai_gather.message_history_updated` webhook
+        # with the full message history every time the conversation history changes. Leave
+        # unset to inherit the `send_message_history_updates` value from the
+        # `ai_assistant_start` or `gather_using_ai` command that started the conversation.
+        # Setting it here is authoritative: `true` turns the webhooks on even when the
+        # start command did not request them, and `false` turns them off even when it did.
+        # Messages exchanged during a private warm transfer acceptance phase are never
+        # included.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :send_message_history_updates
+
+        sig { params(send_message_history_updates: T::Boolean).void }
+        attr_writer :send_message_history_updates
+
         # When enabled, allows users to interact with your AI assistant directly from your
         # website without requiring authentication. This is required for FE widgets that
         # work with assistants that have telephony enabled.
@@ -141,6 +155,7 @@ module Telnyx
               Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::OrHash,
             recording_settings:
               Telnyx::AI::TelephonySettings::RecordingSettings::OrHash,
+            send_message_history_updates: T::Boolean,
             supports_unauthenticated_web_calls: T::Boolean,
             time_limit_secs: Integer,
             user_idle_reply_secs: Integer,
@@ -165,6 +180,15 @@ module Telnyx
           noise_suppression_config: nil,
           # Configuration for call recording format and channel settings.
           recording_settings: nil,
+          # Whether the assistant sends a `call.ai_gather.message_history_updated` webhook
+          # with the full message history every time the conversation history changes. Leave
+          # unset to inherit the `send_message_history_updates` value from the
+          # `ai_assistant_start` or `gather_using_ai` command that started the conversation.
+          # Setting it here is authoritative: `true` turns the webhooks on even when the
+          # start command did not request them, and `false` turns them off even when it did.
+          # Messages exchanged during a private warm transfer acceptance phase are never
+          # included.
+          send_message_history_updates: nil,
           # When enabled, allows users to interact with your AI assistant directly from your
           # website without requiring authentication. This is required for FE widgets that
           # work with assistants that have telephony enabled.
@@ -204,6 +228,7 @@ module Telnyx
                 Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
               recording_settings:
                 Telnyx::AI::TelephonySettings::RecordingSettings,
+              send_message_history_updates: T::Boolean,
               supports_unauthenticated_web_calls: T::Boolean,
               time_limit_secs: Integer,
               user_idle_reply_secs: Integer,

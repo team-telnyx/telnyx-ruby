@@ -26,7 +26,9 @@ module Telnyx
         # `auto` when `language` is omitted — omitting it applies `en` instead. For
         # `reson8/turns`, supported values are `auto` (or unset) for automatic language
         # detection, and the language codes `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`,
-        # `pt`, `es`, and `sv` to fix the transcription language.
+        # `pt`, `es`, and `sv` to fix the transcription language. For `cohere/ar-stt`,
+        # supported values are `ar` and `en`; unlike other models, this model does not
+        # auto-detect and defaults to `ar` when `language` is omitted.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -50,6 +52,7 @@ module Telnyx
         #   Arabic/English code-switching support.
         # - `reson8/turns` for live streaming turn-based transcription of 10 European
         #   languages with automatic language detection.
+        # - `cohere/ar-stt` for non-streaming Arabic and English transcription.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -99,7 +102,9 @@ module Telnyx
           # `auto` when `language` is omitted — omitting it applies `en` instead. For
           # `reson8/turns`, supported values are `auto` (or unset) for automatic language
           # detection, and the language codes `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`,
-          # `pt`, `es`, and `sv` to fix the transcription language.
+          # `pt`, `es`, and `sv` to fix the transcription language. For `cohere/ar-stt`,
+          # supported values are `ar` and `en`; unlike other models, this model does not
+          # auto-detect and defaults to `ar` when `language` is omitted.
           language: nil,
           # The speech to text model to be used by the voice assistant. Supported models
           # include:
@@ -118,6 +123,7 @@ module Telnyx
           #   Arabic/English code-switching support.
           # - `reson8/turns` for live streaming turn-based transcription of 10 European
           #   languages with automatic language detection.
+          # - `cohere/ar-stt` for non-streaming Arabic and English transcription.
           # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
           #   unsupported regions require `api_key_ref`.
           # - `google/latest_long` for non-streaming multilingual transcription.
@@ -157,6 +163,7 @@ module Telnyx
         #   Arabic/English code-switching support.
         # - `reson8/turns` for live streaming turn-based transcription of 10 European
         #   languages with automatic language detection.
+        # - `cohere/ar-stt` for non-streaming Arabic and English transcription.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -231,6 +238,11 @@ module Telnyx
           RESON8_TURNS =
             T.let(
               :"reson8/turns",
+              Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
+            )
+          COHERE_AR_STT =
+            T.let(
+              :"cohere/ar-stt",
               Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
             )
           AZURE_FAST =
