@@ -69,7 +69,8 @@ module Telnyx
         attr_writer :minimum_digits
 
         # The digit used to terminate input if fewer than `maximum_digits` digits have
-        # been gathered.
+        # been gathered. Set to an empty string to disable the terminating digit entirely,
+        # so that a digit such as `#` can be collected as input per `valid_digits`.
         sig { returns(T.nilable(String)) }
         attr_reader :terminating_digit
 
@@ -127,7 +128,8 @@ module Telnyx
           # The minimum number of digits to fetch. This parameter has a minimum value of 1.
           minimum_digits: nil,
           # The digit used to terminate input if fewer than `maximum_digits` digits have
-          # been gathered.
+          # been gathered. Set to an empty string to disable the terminating digit entirely,
+          # so that a digit such as `#` can be collected as input per `valid_digits`.
           terminating_digit: nil,
           # The number of milliseconds to wait to complete the request.
           timeout_millis: nil,

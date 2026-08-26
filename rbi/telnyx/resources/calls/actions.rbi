@@ -417,7 +417,8 @@ module Telnyx
           # The minimum number of digits to fetch. This parameter has a minimum value of 1.
           minimum_digits: nil,
           # The digit used to terminate input if fewer than `maximum_digits` digits have
-          # been gathered.
+          # been gathered. Set to an empty string to disable the terminating digit entirely,
+          # so that a digit such as `#` can be collected as input per `valid_digits`.
           terminating_digit: nil,
           # The number of milliseconds to wait to complete the request.
           timeout_millis: nil,
@@ -631,7 +632,8 @@ module Telnyx
           # The minimum number of digits to fetch. This parameter has a minimum value of 1.
           minimum_digits: nil,
           # The digit used to terminate input if fewer than `maximum_digits` digits have
-          # been gathered.
+          # been gathered. Set to an empty string to disable the terminating digit entirely,
+          # so that a digit such as `#` can be collected as input per `valid_digits`.
           terminating_digit: nil,
           # The number of milliseconds to wait for a DTMF response after file playback ends
           # before a replaying the sound file.
@@ -778,7 +780,8 @@ module Telnyx
           # using `basic`, only the `en-US` language and payload type `text` are allowed.
           service_level: nil,
           # The digit used to terminate input if fewer than `maximum_digits` digits have
-          # been gathered.
+          # been gathered. Set to an empty string to disable the terminating digit entirely,
+          # so that a digit such as `#` can be collected as input per `valid_digits`.
           terminating_digit: nil,
           # The number of milliseconds to wait for a DTMF response after speak ends before a
           # replaying the sound file.
