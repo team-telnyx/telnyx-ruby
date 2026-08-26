@@ -61,7 +61,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig,
                 Telnyx::Calls::TranscriptionEngineHumainConfig,
                 Telnyx::Calls::TranscriptionEngineReson8Config,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere,
+                Telnyx::Calls::TranscriptionEngineCohereConfig,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
@@ -86,7 +86,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::OrHash,
+                Telnyx::Calls::TranscriptionEngineCohereConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -123,7 +123,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::OrHash,
+                Telnyx::Calls::TranscriptionEngineCohereConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -169,7 +169,7 @@ module Telnyx
                   Telnyx::Calls::TranscriptionEngineParakeetConfig,
                   Telnyx::Calls::TranscriptionEngineHumainConfig,
                   Telnyx::Calls::TranscriptionEngineReson8Config,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere,
+                  Telnyx::Calls::TranscriptionEngineCohereConfig,
                   Telnyx::Calls::TranscriptionEngineAConfig,
                   Telnyx::Calls::TranscriptionEngineBConfig,
                   Telnyx::Calls::DeepgramNova2Config,
@@ -294,210 +294,13 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig,
                 Telnyx::Calls::TranscriptionEngineHumainConfig,
                 Telnyx::Calls::TranscriptionEngineReson8Config,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere,
+                Telnyx::Calls::TranscriptionEngineCohereConfig,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
                 Telnyx::Calls::DeepgramNova3Config
               )
             end
-
-          class Cohere < Telnyx::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere,
-                  Telnyx::Internal::AnyHash
-                )
-              end
-
-            # The language of the audio to be transcribed. Unlike other self-hosted models,
-            # Cohere does not auto-detect the language; `auto` is not supported.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language::OrSymbol
-                )
-              )
-            end
-            attr_reader :language
-
-            sig do
-              params(
-                language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language::OrSymbol
-              ).void
-            end
-            attr_writer :language
-
-            # Engine identifier for Cohere transcription service
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionEngine::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_engine
-
-            sig do
-              params(
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionEngine::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_engine
-
-            # The model to use for transcription.
-            sig do
-              returns(
-                T.nilable(
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionModel::OrSymbol
-                )
-              )
-            end
-            attr_reader :transcription_model
-
-            sig do
-              params(
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionModel::OrSymbol
-              ).void
-            end
-            attr_writer :transcription_model
-
-            sig do
-              params(
-                language:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language::OrSymbol,
-                transcription_engine:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionEngine::OrSymbol,
-                transcription_model:
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionModel::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # The language of the audio to be transcribed. Unlike other self-hosted models,
-              # Cohere does not auto-detect the language; `auto` is not supported.
-              language: nil,
-              # Engine identifier for Cohere transcription service
-              transcription_engine: nil,
-              # The model to use for transcription.
-              transcription_model: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  language:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language::OrSymbol,
-                  transcription_engine:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionEngine::OrSymbol,
-                  transcription_model:
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionModel::OrSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # The language of the audio to be transcribed. Unlike other self-hosted models,
-            # Cohere does not auto-detect the language; `auto` is not supported.
-            module Language
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              AR =
-                T.let(
-                  :ar,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language::TaggedSymbol
-                )
-              EN =
-                T.let(
-                  :en,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::Language::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            # Engine identifier for Cohere transcription service
-            module TranscriptionEngine
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionEngine
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              COHERE =
-                T.let(
-                  :Cohere,
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionEngine::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionEngine::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            # The model to use for transcription.
-            module TranscriptionModel
-              extend Telnyx::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionModel
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              COHERE_AR_STT =
-                T.let(
-                  :"cohere/ar-stt",
-                  Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionModel::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::TranscriptionModel::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
 
           sig do
             override.returns(

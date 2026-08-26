@@ -1939,7 +1939,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
-                Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngineConfig::Cohere::OrHash,
+                Telnyx::Calls::TranscriptionEngineCohereConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
