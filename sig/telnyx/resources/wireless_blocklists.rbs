@@ -23,16 +23,12 @@ module Telnyx
       def list: (
         ?filter_name: String,
         ?filter_type: String,
-        ?filter_values: String,
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::WirelessBlocklist]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::WirelessWirelessBlocklist]
 
-      def delete: (
-        String id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::WirelessBlocklistDeleteResponse
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
 
       def initialize: (client: Telnyx::Client) -> void
     end

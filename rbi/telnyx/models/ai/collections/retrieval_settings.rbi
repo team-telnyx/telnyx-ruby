@@ -15,6 +15,9 @@ module Telnyx
 
           # Retrieval strategy. `vector` runs semantic similarity search; `hybrid` combines
           # vector similarity with keyword matching; `keyword` runs lexical (BM25) matching.
+          # `keyword` is not accepted yet: setting it returns 422
+          # `unsupported_retrieval_type`. A collection set to `hybrid` is accepted here but
+          # cannot be searched until hybrid execution ships.
           sig do
             returns(
               T.nilable(
@@ -50,6 +53,9 @@ module Telnyx
           def self.new(
             # Retrieval strategy. `vector` runs semantic similarity search; `hybrid` combines
             # vector similarity with keyword matching; `keyword` runs lexical (BM25) matching.
+            # `keyword` is not accepted yet: setting it returns 422
+            # `unsupported_retrieval_type`. A collection set to `hybrid` is accepted here but
+            # cannot be searched until hybrid execution ships.
             retrieval_type: nil,
             # Number of top results to retrieve (1–50).
             top_k: nil
@@ -70,6 +76,9 @@ module Telnyx
 
           # Retrieval strategy. `vector` runs semantic similarity search; `hybrid` combines
           # vector similarity with keyword matching; `keyword` runs lexical (BM25) matching.
+          # `keyword` is not accepted yet: setting it returns 422
+          # `unsupported_retrieval_type`. A collection set to `hybrid` is accepted here but
+          # cannot be searched until hybrid execution ships.
           module RetrievalType
             extend Telnyx::Internal::Type::Enum
 
@@ -90,11 +99,6 @@ module Telnyx
             HYBRID =
               T.let(
                 :hybrid,
-                Telnyx::AI::Collections::RetrievalSettings::RetrievalType::TaggedSymbol
-              )
-            KEYWORD =
-              T.let(
-                :keyword,
                 Telnyx::AI::Collections::RetrievalSettings::RetrievalType::TaggedSymbol
               )
 

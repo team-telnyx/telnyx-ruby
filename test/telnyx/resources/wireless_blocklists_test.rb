@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::WirelessBlocklist | nil
+        data: Telnyx::WirelessWirelessBlocklist | nil
       }
     end
   end
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::WirelessBlocklist | nil
+        data: Telnyx::WirelessWirelessBlocklist | nil
       }
     end
   end
@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::WirelessBlocklist | nil
+        data: Telnyx::WirelessWirelessBlocklist | nil
       }
     end
   end
@@ -65,7 +65,7 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::WirelessBlocklist
+      row => Telnyx::WirelessWirelessBlocklist
     end
 
     assert_pattern do
@@ -73,8 +73,7 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
         id: String | nil,
         created_at: String | nil,
         name: String | nil,
-        record_type: String | nil,
-        type: Telnyx::WirelessBlocklist::Type | nil,
+        type: Telnyx::WirelessWirelessBlocklist::Type | nil,
         updated_at: String | nil,
         values: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil
       }
@@ -87,13 +86,7 @@ class Telnyx::Test::Resources::WirelessBlocklistsTest < Telnyx::Test::ResourceTe
     response = @telnyx.wireless_blocklists.delete("6a09cdc3-8948-47f0-aa62-74ac943d6c58")
 
     assert_pattern do
-      response => Telnyx::Models::WirelessBlocklistDeleteResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: Telnyx::WirelessBlocklist | nil
-      }
+      response => nil
     end
   end
 end

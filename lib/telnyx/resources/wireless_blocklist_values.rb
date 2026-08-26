@@ -7,7 +7,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::WirelessBlocklistValueListParams} for more details.
       #
-      # Retrieve all wireless blocklist values for a given blocklist type.
+      # Retrieve all wireless blocklist values for a given blocklist type. The request
+      # returns `422` when `type` is missing or invalid.
       #
       # @overload list(type:, request_options: {})
       #

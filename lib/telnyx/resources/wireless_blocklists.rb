@@ -79,13 +79,11 @@ module Telnyx
 
       # Get all Wireless Blocklists belonging to the user.
       #
-      # @overload list(filter_name: nil, filter_type: nil, filter_values: nil, page_number: nil, page_size: nil, request_options: {})
+      # @overload list(filter_name: nil, filter_type: nil, page_number: nil, page_size: nil, request_options: {})
       #
       # @param filter_name [String] The name of the Wireless Blocklist.
       #
       # @param filter_type [String] When the Private Wireless Gateway was last updated.
-      #
-      # @param filter_values [String] Values to filter on (inclusive).
       #
       # @param page_number [Integer] The page number to load.
       #
@@ -93,7 +91,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WirelessBlocklist>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WirelessWirelessBlocklist>]
       #
       # @see Telnyx::Models::WirelessBlocklistListParams
       def list(params = {})
@@ -105,17 +103,18 @@ module Telnyx
           query: query.transform_keys(
             filter_name: "filter[name]",
             filter_type: "filter[type]",
-            filter_values: "filter[values]",
             page_number: "page[number]",
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::WirelessBlocklist,
+          model: Telnyx::WirelessWirelessBlocklist,
           options: options
         )
       end
 
-      # Permanently deletes the specified wireless blocklist from your account.
+      # Permanently deletes the specified wireless blocklist from your account. The
+      # request returns `422` when the wireless blocklist is assigned to a SIM Card
+      # Group.
       #
       # @overload delete(id, request_options: {})
       #
@@ -123,14 +122,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::WirelessBlocklistDeleteResponse]
+      # @return [nil]
       #
       # @see Telnyx::Models::WirelessBlocklistDeleteParams
       def delete(id, params = {})
         @client.request(
           method: :delete,
           path: ["wireless_blocklists/%1$s", id],
-          model: Telnyx::Models::WirelessBlocklistDeleteResponse,
+          model: NilClass,
           options: params[:request_options]
         )
       end

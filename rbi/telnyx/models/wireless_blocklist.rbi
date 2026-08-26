@@ -16,7 +16,7 @@ module Telnyx
       attr_writer :name
 
       # The type of the wireless blocklist.
-      sig { returns(T.nilable(Telnyx::WirelessBlocklist::Type::TaggedSymbol)) }
+      sig { returns(T.nilable(Telnyx::WirelessBlocklist::Type::OrSymbol)) }
       attr_reader :type
 
       sig { params(type: Telnyx::WirelessBlocklist::Type::OrSymbol).void }
@@ -91,7 +91,7 @@ module Telnyx
             created_at: String,
             name: String,
             record_type: String,
-            type: Telnyx::WirelessBlocklist::Type::TaggedSymbol,
+            type: Telnyx::WirelessBlocklist::Type::OrSymbol,
             updated_at: String,
             values: T::Array[String]
           }

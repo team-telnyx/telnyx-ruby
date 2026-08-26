@@ -166,19 +166,36 @@ module Telnyx
           sig { params(private_wireless_gateway_id: String).void }
           attr_writer :private_wireless_gateway_id
 
+          # The identification of the related Wireless Blocklist resource.
+          sig { returns(T.nilable(String)) }
+          attr_reader :wireless_blocklist_id
+
+          sig { params(wireless_blocklist_id: String).void }
+          attr_writer :wireless_blocklist_id
+
           # A JSON object representation of the action params.
           sig do
-            params(private_wireless_gateway_id: String).returns(
-              T.attached_class
-            )
+            params(
+              private_wireless_gateway_id: String,
+              wireless_blocklist_id: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # The identification of the related Private Wireless Gateway resource.
-            private_wireless_gateway_id: nil
+            private_wireless_gateway_id: nil,
+            # The identification of the related Wireless Blocklist resource.
+            wireless_blocklist_id: nil
           )
           end
 
-          sig { override.returns({ private_wireless_gateway_id: String }) }
+          sig do
+            override.returns(
+              {
+                private_wireless_gateway_id: String,
+                wireless_blocklist_id: String
+              }
+            )
+          end
           def to_hash
           end
         end

@@ -29,14 +29,13 @@ module Telnyx
             top_k: Integer
           }
 
-          type retrieval_type = :vector | :hybrid | :keyword
+          type retrieval_type = :vector | :hybrid
 
           module RetrievalType
             extend Telnyx::Internal::Type::Enum
 
             VECTOR: :vector
             HYBRID: :hybrid
-            KEYWORD: :keyword
 
             def self?.values: -> ::Array[Telnyx::Models::AI::Collections::RetrievalSettings::retrieval_type]
           end

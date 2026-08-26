@@ -11,21 +11,21 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::WirelessBlocklist)) }
+      sig { returns(T.nilable(Telnyx::WirelessWirelessBlocklist)) }
       attr_reader :data
 
-      sig { params(data: Telnyx::WirelessBlocklist::OrHash).void }
+      sig { params(data: Telnyx::WirelessWirelessBlocklist::OrHash).void }
       attr_writer :data
 
       sig do
-        params(data: Telnyx::WirelessBlocklist::OrHash).returns(
+        params(data: Telnyx::WirelessWirelessBlocklist::OrHash).returns(
           T.attached_class
         )
       end
       def self.new(data: nil)
       end
 
-      sig { override.returns({ data: Telnyx::WirelessBlocklist }) }
+      sig { override.returns({ data: Telnyx::WirelessWirelessBlocklist }) }
       def to_hash
       end
     end
