@@ -64,7 +64,9 @@ module Telnyx
       sig { params(keywords: String).void }
       attr_writer :keywords
 
-      # The language spoken in the audio stream.
+      # The language spoken in the audio stream. For `cohere/ar-stt`, this must be `ar`
+      # or `en` — unlike other engines, Cohere does not auto-detect the language, and
+      # rejects unsupported values including `auto`; omitting it defaults to `ar`.
       sig { returns(T.nilable(String)) }
       attr_reader :language
 
@@ -97,6 +99,15 @@ module Telnyx
       sig { params(redact: String).void }
       attr_writer :redact
 
+      # Audio sample rate in Hz. Required when `input_format` is a raw encoding
+      # (`linear16`, `linear32`) — those formats carry no header metadata. Ignored for
+      # container formats (`mp3`, `wav`), which self-describe their rate.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :sample_rate
+
+      sig { params(sample_rate: Integer).void }
+      attr_writer :sample_rate
+
       sig do
         params(
           input_format:
@@ -111,6 +122,7 @@ module Telnyx
           model:
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::OrSymbol,
           redact: String,
+          sample_rate: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -133,13 +145,19 @@ module Telnyx
         # Comma-separated list of keywords to boost in the transcription. The engine will
         # prioritize recognition of these words.
         keywords: nil,
-        # The language spoken in the audio stream.
+        # The language spoken in the audio stream. For `cohere/ar-stt`, this must be `ar`
+        # or `en` — unlike other engines, Cohere does not auto-detect the language, and
+        # rejects unsupported values including `auto`; omitting it defaults to `ar`.
         language: nil,
         # The specific model to use within the selected transcription engine.
         model: nil,
         # Enable redaction of sensitive information (e.g., PCI data, SSN) from
         # transcription results. Supported values depend on the transcription engine.
         redact: nil,
+        # Audio sample rate in Hz. Required when `input_format` is a raw encoding
+        # (`linear16`, `linear32`) — those formats carry no header metadata. Ignored for
+        # container formats (`mp3`, `wav`), which self-describe their rate.
+        sample_rate: nil,
         request_options: {}
       )
       end
@@ -159,6 +177,7 @@ module Telnyx
             model:
               Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::OrSymbol,
             redact: String,
+            sample_rate: Integer,
             request_options: Telnyx::RequestOptions
           }
         )
@@ -187,6 +206,16 @@ module Telnyx
         WAV =
           T.let(
             :wav,
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::InputFormat::TaggedSymbol
+          )
+        LINEAR16 =
+          T.let(
+            :linear16,
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::InputFormat::TaggedSymbol
+          )
+        LINEAR32 =
+          T.let(
+            :linear32,
             Telnyx::SpeechToTextRetrieveTranscriptionParams::InputFormat::TaggedSymbol
           )
 
@@ -262,6 +291,11 @@ module Telnyx
         RESON8 =
           T.let(
             :Reson8,
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
+          )
+        COHERE =
+          T.let(
+            :Cohere,
             Telnyx::SpeechToTextRetrieveTranscriptionParams::TranscriptionEngine::TaggedSymbol
           )
 
@@ -382,6 +416,11 @@ module Telnyx
         RESON8_TURNS =
           T.let(
             :"reson8/turns",
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
+          )
+        COHERE_AR_STT =
+          T.let(
+            :"cohere/ar-stt",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
 

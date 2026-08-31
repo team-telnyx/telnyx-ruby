@@ -29,7 +29,9 @@ module Telnyx
         # does not fall back to `auto` when `language` is omitted — omitting it applies
         # `en` instead. For `reson8/turns`, supported values are `auto` (or unset) for
         # automatic language detection, and the language codes `nl`, `en`, `fr`, `fy`,
-        # `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language.
+        # `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language. For
+        # `cohere/ar-stt`, supported values are `ar` and `en`; unlike other models, this
+        # model does not auto-detect and defaults to `ar` when `language` is omitted.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -54,6 +56,7 @@ module Telnyx
         #   code-switching support.
         # - `reson8/turns` is a turn-based streaming model covering 10 European languages
         #   with automatic language detection.
+        # - `cohere/ar-stt` is a non-streaming Arabic and English transcription model.
         sig do
           returns(T.nilable(Telnyx::AI::TranscriptionSettings::Model::OrSymbol))
         end
@@ -105,7 +108,9 @@ module Telnyx
           # does not fall back to `auto` when `language` is omitted — omitting it applies
           # `en` instead. For `reson8/turns`, supported values are `auto` (or unset) for
           # automatic language detection, and the language codes `nl`, `en`, `fr`, `fy`,
-          # `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language.
+          # `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the transcription language. For
+          # `cohere/ar-stt`, supported values are `ar` and `en`; unlike other models, this
+          # model does not auto-detect and defaults to `ar` when `language` is omitted.
           language: nil,
           # The speech to text model to be used by the voice assistant. All Deepgram models
           # are run on-premise.
@@ -125,6 +130,7 @@ module Telnyx
           #   code-switching support.
           # - `reson8/turns` is a turn-based streaming model covering 10 European languages
           #   with automatic language detection.
+          # - `cohere/ar-stt` is a non-streaming Arabic and English transcription model.
           model: nil,
           # Region on third party cloud providers (currently Azure) if using one of their
           # models. Some regions require `api_key_ref`.
@@ -165,6 +171,7 @@ module Telnyx
         #   code-switching support.
         # - `reson8/turns` is a turn-based streaming model covering 10 European languages
         #   with automatic language detection.
+        # - `cohere/ar-stt` is a non-streaming Arabic and English transcription model.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -222,6 +229,11 @@ module Telnyx
           RESON8_TURNS =
             T.let(
               :"reson8/turns",
+              Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
+            )
+          COHERE_AR_STT =
+            T.let(
+              :"cohere/ar-stt",
               Telnyx::AI::TranscriptionSettings::Model::TaggedSymbol
             )
           DISTIL_WHISPER_DISTIL_LARGE_V2 =

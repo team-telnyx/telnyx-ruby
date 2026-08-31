@@ -48,8 +48,9 @@ module Telnyx
             # The messages to send to the model, following the
             # [Anthropic Messages API](https://docs.anthropic.com/en/api/messages) format.
             messages:,
-            # The model to use for generating the response, for example `zai-org/GLM-5.2` or
-            # another model available from the Telnyx models endpoint.
+            # The model to use for generating the response, for example
+            # `zai-org/GLM-5.3-Flash` or another model available from the Telnyx models
+            # endpoint.
             model:,
             # If you are using an external inference provider, this field allows you to pass
             # along a reference to your API key. After creating an

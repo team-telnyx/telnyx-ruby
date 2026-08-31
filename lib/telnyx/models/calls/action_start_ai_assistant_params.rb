@@ -64,8 +64,10 @@ module Telnyx
         optional :participants, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::Calls::AIAssistantJoinParticipant] }
 
         # @!attribute send_message_history_updates
-        #   When `true`, a webhook is sent each time the conversation message history is
-        #   updated.
+        #   When `true`, a `call.ai_gather.message_history_updated` webhook carrying the
+        #   full message history is sent each time the conversation message history is
+        #   updated. The assistant's own `telephony_settings.send_message_history_updates`
+        #   overrides this value when it is set.
         #
         #   @return [Boolean, nil]
         optional :send_message_history_updates, Telnyx::Internal::Type::Boolean
@@ -99,7 +101,7 @@ module Telnyx
         #
         #   @param participants [Array<Telnyx::Models::Calls::AIAssistantJoinParticipant>] A list of participants to add to the conversation when it starts.
         #
-        #   @param send_message_history_updates [Boolean] When `true`, a webhook is sent each time the conversation message history is upd
+        #   @param send_message_history_updates [Boolean] When `true`, a `call.ai_gather.message_history_updated` webhook carrying the ful
         #
         #   @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
         #

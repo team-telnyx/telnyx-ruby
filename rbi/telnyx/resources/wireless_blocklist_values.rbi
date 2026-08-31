@@ -4,7 +4,8 @@ module Telnyx
   module Resources
     # Wireless Blocklists operations
     class WirelessBlocklistValues
-      # Retrieve all wireless blocklist values for a given blocklist type.
+      # Retrieve all wireless blocklist values for a given blocklist type. The request
+      # returns `422` when `type` is missing or invalid.
       sig do
         params(
           type: Telnyx::WirelessBlocklistValueListParams::Type::OrSymbol,

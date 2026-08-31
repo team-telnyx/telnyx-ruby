@@ -14,8 +14,7 @@ class Telnyx::Test::Resources::WirelessBlocklistValuesTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::WirelessBlocklistValueListResponse::Data | nil,
-        meta: Telnyx::PaginationMeta | nil
+        data: Telnyx::Models::WirelessBlocklistValueListResponse::Data
       }
     end
   end

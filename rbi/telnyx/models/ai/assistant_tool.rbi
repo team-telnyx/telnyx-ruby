@@ -566,6 +566,34 @@ module Telnyx
             sig { returns(T.nilable(Integer)) }
             attr_accessor :warm_message_delay_ms
 
+            # Requires the transfer destination to accept the call before the caller is
+            # bridged. When enabled, the assistant speaks privately with the destination after
+            # they answer — delivering the warm transfer message and asking whether they take
+            # the call — while the caller keeps hearing ringback. The assistant then finalizes
+            # the transfer with the built-in `complete_transfer` tool: an accept bridges the
+            # calls, a decline hangs up the destination and returns the assistant to the
+            # caller with the reason the destination gave. Requires either
+            # `warm_transfer_instructions` or a `message` on every target, otherwise the
+            # assistant fails to save. Only available for calls started with
+            # `ai_assistant_start`; single-caller conversations only (a conference or
+            # additional invited participants fall back to a regular warm transfer).
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance
+                )
+              )
+            end
+            attr_reader :warm_transfer_acceptance
+
+            sig do
+              params(
+                warm_transfer_acceptance:
+                  Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::OrHash
+              ).void
+            end
+            attr_writer :warm_transfer_acceptance
+
             # Natural language instructions for your agent for how to provide context for the
             # transfer recipient.
             sig { returns(T.nilable(String)) }
@@ -587,6 +615,8 @@ module Telnyx
                 voicemail_detection:
                   Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OrHash,
                 warm_message_delay_ms: T.nilable(Integer),
+                warm_transfer_acceptance:
+                  Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::OrHash,
                 warm_transfer_instructions: String
               ).returns(T.attached_class)
             end
@@ -615,6 +645,18 @@ module Telnyx
               # dial command; instead, playback starts after the specified delay. When not set,
               # existing behavior (audio_url in dial) is preserved.
               warm_message_delay_ms: nil,
+              # Requires the transfer destination to accept the call before the caller is
+              # bridged. When enabled, the assistant speaks privately with the destination after
+              # they answer — delivering the warm transfer message and asking whether they take
+              # the call — while the caller keeps hearing ringback. The assistant then finalizes
+              # the transfer with the built-in `complete_transfer` tool: an accept bridges the
+              # calls, a decline hangs up the destination and returns the assistant to the
+              # caller with the reason the destination gave. Requires either
+              # `warm_transfer_instructions` or a `message` on every target, otherwise the
+              # assistant fails to save. Only available for calls started with
+              # `ai_assistant_start`; single-caller conversations only (a conference or
+              # additional invited participants fall back to a regular warm transfer).
+              warm_transfer_acceptance: nil,
               # Natural language instructions for your agent for how to provide context for the
               # transfer recipient.
               warm_transfer_instructions: nil
@@ -635,6 +677,8 @@ module Telnyx
                   voicemail_detection:
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
                   warm_message_delay_ms: T.nilable(Integer),
+                  warm_transfer_acceptance:
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance,
                   warm_transfer_instructions: String
                 }
               )
@@ -672,6 +716,15 @@ module Telnyx
                 sig { returns(String) }
                 attr_accessor :to
 
+                # The warm transfer message to deliver to this specific target. When set, it takes
+                # precedence over the message the assistant composes from
+                # `warm_transfer_instructions`.
+                sig { returns(T.nilable(String)) }
+                attr_reader :message
+
+                sig { params(message: String).void }
+                attr_writer :message
+
                 # The name of the target.
                 sig { returns(T.nilable(String)) }
                 attr_reader :name
@@ -680,17 +733,27 @@ module Telnyx
                 attr_writer :name
 
                 sig do
-                  params(to: String, name: String).returns(T.attached_class)
+                  params(to: String, message: String, name: String).returns(
+                    T.attached_class
+                  )
                 end
                 def self.new(
                   # The destination number or SIP URI of the call.
                   to:,
+                  # The warm transfer message to deliver to this specific target. When set, it takes
+                  # precedence over the message the assistant composes from
+                  # `warm_transfer_instructions`.
+                  message: nil,
                   # The name of the target.
                   name: nil
                 )
                 end
 
-                sig { override.returns({ to: String, name: String }) }
+                sig do
+                  override.returns(
+                    { to: String, message: String, name: String }
+                  )
+                end
                 def to_hash
                 end
               end
@@ -1269,6 +1332,126 @@ module Telnyx
                     def self.values
                     end
                   end
+                end
+              end
+            end
+
+            class WarmTransferAcceptance < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # Whether the destination must accept the transfer before the calls are bridged.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :enabled
+
+              sig { params(enabled: T::Boolean).void }
+              attr_writer :enabled
+
+              # Controls whether the private exchange between the assistant and the transfer
+              # destination is kept out of the conversation. With `private` (default) the
+              # exchange never reaches the conversation history, AI conversations, webhooks or
+              # insights, and the transfer tool result is rewritten with the outcome only. With
+              # `shared` the exchange stays in the conversation like any other messages.
+              sig do
+                returns(
+                  T.nilable(
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol
+                  )
+                )
+              end
+              attr_reader :end_user_target_context_mode
+
+              sig do
+                params(
+                  end_user_target_context_mode:
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol
+                ).void
+              end
+              attr_writer :end_user_target_context_mode
+
+              # Requires the transfer destination to accept the call before the caller is
+              # bridged. When enabled, the assistant speaks privately with the destination after
+              # they answer — delivering the warm transfer message and asking whether they take
+              # the call — while the caller keeps hearing ringback. The assistant then finalizes
+              # the transfer with the built-in `complete_transfer` tool: an accept bridges the
+              # calls, a decline hangs up the destination and returns the assistant to the
+              # caller with the reason the destination gave. Requires either
+              # `warm_transfer_instructions` or a `message` on every target, otherwise the
+              # assistant fails to save. Only available for calls started with
+              # `ai_assistant_start`; single-caller conversations only (a conference or
+              # additional invited participants fall back to a regular warm transfer).
+              sig do
+                params(
+                  enabled: T::Boolean,
+                  end_user_target_context_mode:
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Whether the destination must accept the transfer before the calls are bridged.
+                enabled: nil,
+                # Controls whether the private exchange between the assistant and the transfer
+                # destination is kept out of the conversation. With `private` (default) the
+                # exchange never reaches the conversation history, AI conversations, webhooks or
+                # insights, and the transfer tool result is rewritten with the outcome only. With
+                # `shared` the exchange stays in the conversation like any other messages.
+                end_user_target_context_mode: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    enabled: T::Boolean,
+                    end_user_target_context_mode:
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # Controls whether the private exchange between the assistant and the transfer
+              # destination is kept out of the conversation. With `private` (default) the
+              # exchange never reaches the conversation history, AI conversations, webhooks or
+              # insights, and the transfer tool result is rewritten with the outcome only. With
+              # `shared` the exchange stays in the conversation like any other messages.
+              module EndUserTargetContextMode
+                extend Telnyx::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRIVATE =
+                  T.let(
+                    :private,
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::TaggedSymbol
+                  )
+                SHARED =
+                  T.let(
+                    :shared,
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
                 end
               end
             end

@@ -8,6 +8,9 @@ module Telnyx
           # @!attribute retrieval_type
           #   Retrieval strategy. `vector` runs semantic similarity search; `hybrid` combines
           #   vector similarity with keyword matching; `keyword` runs lexical (BM25) matching.
+          #   `keyword` is not accepted yet: setting it returns 422
+          #   `unsupported_retrieval_type`. A collection set to `hybrid` is accepted here but
+          #   cannot be searched until hybrid execution ships.
           #
           #   @return [Symbol, Telnyx::Models::AI::Collections::RetrievalSettings::RetrievalType, nil]
           optional :retrieval_type, enum: -> { Telnyx::AI::Collections::RetrievalSettings::RetrievalType }
@@ -30,6 +33,9 @@ module Telnyx
 
           # Retrieval strategy. `vector` runs semantic similarity search; `hybrid` combines
           # vector similarity with keyword matching; `keyword` runs lexical (BM25) matching.
+          # `keyword` is not accepted yet: setting it returns 422
+          # `unsupported_retrieval_type`. A collection set to `hybrid` is accepted here but
+          # cannot be searched until hybrid execution ships.
           #
           # @see Telnyx::Models::AI::Collections::RetrievalSettings#retrieval_type
           module RetrievalType
@@ -37,7 +43,6 @@ module Telnyx
 
             VECTOR = :vector
             HYBRID = :hybrid
-            KEYWORD = :keyword
 
             # @!method self.values
             #   @return [Array<Symbol>]

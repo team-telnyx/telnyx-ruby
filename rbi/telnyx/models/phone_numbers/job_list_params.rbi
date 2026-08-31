@@ -15,7 +15,8 @@ module Telnyx
             )
           end
 
-        # Consolidated filter parameter (deepObject style). Originally: filter[type]
+        # Consolidated filter parameter (deepObject style). Originally: filter[type],
+        # filter[phone_number], filter[phone_number][], filter[status][]
         sig { returns(T.nilable(Telnyx::PhoneNumbers::JobListParams::Filter)) }
         attr_reader :filter
 
@@ -62,7 +63,8 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Consolidated filter parameter (deepObject style). Originally: filter[type]
+          # Consolidated filter parameter (deepObject style). Originally: filter[type],
+          # filter[phone_number], filter[phone_number][], filter[status][]
           filter: nil,
           page_number: nil,
           page_size: nil,
@@ -96,6 +98,51 @@ module Telnyx
               )
             end
 
+          # Returns jobs that targeted any of the supplied account-owned phone numbers.
+          # Values beginning with `+` must contain 1 to 20 digits after the plus sign. The
+          # 10-value limit is enforced before duplicate values are removed. Unmatched or
+          # non-account-owned identifiers return an empty result. Phone-number filtering
+          # must be enabled for the account.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::PhoneNumbers::JobListParams::Filter::PhoneNumber::Variants
+              )
+            )
+          end
+          attr_reader :phone_number
+
+          sig do
+            params(
+              phone_number:
+                Telnyx::PhoneNumbers::JobListParams::Filter::PhoneNumber::Variants
+            ).void
+          end
+          attr_writer :phone_number
+
+          # Returns jobs with any of the supplied statuses. Use repeated `filter[status][]`
+          # parameters; scalar and comma-separated status values are not accepted.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Telnyx::PhoneNumbers::JobListParams::Filter::Status::OrSymbol
+                ]
+              )
+            )
+          end
+          attr_reader :status
+
+          sig do
+            params(
+              status:
+                T::Array[
+                  Telnyx::PhoneNumbers::JobListParams::Filter::Status::OrSymbol
+                ]
+            ).void
+          end
+          attr_writer :status
+
           # Identifies the type of the background job.
           sig do
             returns(
@@ -113,13 +160,29 @@ module Telnyx
           end
           attr_writer :type
 
-          # Consolidated filter parameter (deepObject style). Originally: filter[type]
+          # Consolidated filter parameter (deepObject style). Originally: filter[type],
+          # filter[phone_number], filter[phone_number][], filter[status][]
           sig do
             params(
+              phone_number:
+                Telnyx::PhoneNumbers::JobListParams::Filter::PhoneNumber::Variants,
+              status:
+                T::Array[
+                  Telnyx::PhoneNumbers::JobListParams::Filter::Status::OrSymbol
+                ],
               type: Telnyx::PhoneNumbers::JobListParams::Filter::Type::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
+            # Returns jobs that targeted any of the supplied account-owned phone numbers.
+            # Values beginning with `+` must contain 1 to 20 digits after the plus sign. The
+            # 10-value limit is enforced before duplicate values are removed. Unmatched or
+            # non-account-owned identifiers return an empty result. Phone-number filtering
+            # must be enabled for the account.
+            phone_number: nil,
+            # Returns jobs with any of the supplied statuses. Use repeated `filter[status][]`
+            # parameters; scalar and comma-separated status values are not accepted.
+            status: nil,
             # Identifies the type of the background job.
             type: nil
           )
@@ -128,12 +191,94 @@ module Telnyx
           sig do
             override.returns(
               {
+                phone_number:
+                  Telnyx::PhoneNumbers::JobListParams::Filter::PhoneNumber::Variants,
+                status:
+                  T::Array[
+                    Telnyx::PhoneNumbers::JobListParams::Filter::Status::OrSymbol
+                  ],
                 type:
                   Telnyx::PhoneNumbers::JobListParams::Filter::Type::OrSymbol
               }
             )
           end
           def to_hash
+          end
+
+          # Returns jobs that targeted any of the supplied account-owned phone numbers.
+          # Values beginning with `+` must contain 1 to 20 digits after the plus sign. The
+          # 10-value limit is enforced before duplicate values are removed. Unmatched or
+          # non-account-owned identifiers return an empty result. Phone-number filtering
+          # must be enabled for the account.
+          module PhoneNumber
+            extend Telnyx::Internal::Type::Union
+
+            Variants = T.type_alias { T.any(String, T::Array[String]) }
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::PhoneNumbers::JobListParams::Filter::PhoneNumber::Variants
+                ]
+              )
+            end
+            def self.variants
+            end
+
+            StringArray =
+              T.let(
+                Telnyx::Internal::Type::ArrayOf[String],
+                Telnyx::Internal::Type::Converter
+              )
+          end
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::PhoneNumbers::JobListParams::Filter::Status
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PENDING =
+              T.let(
+                :pending,
+                Telnyx::PhoneNumbers::JobListParams::Filter::Status::TaggedSymbol
+              )
+            IN_PROGRESS =
+              T.let(
+                :in_progress,
+                Telnyx::PhoneNumbers::JobListParams::Filter::Status::TaggedSymbol
+              )
+            COMPLETED =
+              T.let(
+                :completed,
+                Telnyx::PhoneNumbers::JobListParams::Filter::Status::TaggedSymbol
+              )
+            FAILED =
+              T.let(
+                :failed,
+                Telnyx::PhoneNumbers::JobListParams::Filter::Status::TaggedSymbol
+              )
+            EXPIRED =
+              T.let(
+                :expired,
+                Telnyx::PhoneNumbers::JobListParams::Filter::Status::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::PhoneNumbers::JobListParams::Filter::Status::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
 
           # Identifies the type of the background job.

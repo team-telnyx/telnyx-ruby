@@ -6,17 +6,11 @@ module Telnyx
     class WirelessBlocklistValueListResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Country>, Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Mcc>, Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Plmn>, nil]
-      optional :data, union: -> { Telnyx::Models::WirelessBlocklistValueListResponse::Data }
+      #   @return [Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Country>, Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Mcc>, Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Plmn>]
+      required :data, union: -> { Telnyx::Models::WirelessBlocklistValueListResponse::Data }
 
-      # @!attribute meta
-      #
-      #   @return [Telnyx::Models::PaginationMeta, nil]
-      optional :meta, -> { Telnyx::PaginationMeta }
-
-      # @!method initialize(data: nil, meta: nil)
+      # @!method initialize(data:)
       #   @param data [Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Country>, Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Mcc>, Array<Telnyx::Models::WirelessBlocklistValueListResponse::Data::Plmn>]
-      #   @param meta [Telnyx::Models::PaginationMeta]
 
       # @see Telnyx::Models::WirelessBlocklistValueListResponse#data
       module Data
@@ -29,60 +23,36 @@ module Telnyx
         variant -> { Telnyx::Models::WirelessBlocklistValueListResponse::Data::PlmnArray }
 
         class Country < Telnyx::Internal::Type::BaseModel
-          # @!attribute code
+          # @!attribute country_code
           #   ISO 3166-1 Alpha-2 Country Code.
           #
           #   @return [String]
-          required :code, String
+          required :country_code, String
 
-          # @!attribute name
-          #   The name of the country.
-          #
-          #   @return [String]
-          required :name, String
-
-          # @!method initialize(code:, name:)
-          #   @param code [String] ISO 3166-1 Alpha-2 Country Code.
-          #
-          #   @param name [String] The name of the country.
+          # @!method initialize(country_code:)
+          #   @param country_code [String] ISO 3166-1 Alpha-2 Country Code.
         end
 
         class Mcc < Telnyx::Internal::Type::BaseModel
-          # @!attribute code
+          # @!attribute mcc
           #   Mobile Country Code.
           #
           #   @return [String]
-          required :code, String
+          required :mcc, String
 
-          # @!attribute name
-          #   The name of the country.
-          #
-          #   @return [String]
-          required :name, String
-
-          # @!method initialize(code:, name:)
-          #   @param code [String] Mobile Country Code.
-          #
-          #   @param name [String] The name of the country.
+          # @!method initialize(mcc:)
+          #   @param mcc [String] Mobile Country Code.
         end
 
         class Plmn < Telnyx::Internal::Type::BaseModel
-          # @!attribute code
+          # @!attribute plmn
           #   Public land mobile network code (MCC + MNC).
           #
           #   @return [String]
-          required :code, String
+          required :plmn, String
 
-          # @!attribute name
-          #   The name of the network.
-          #
-          #   @return [String]
-          required :name, String
-
-          # @!method initialize(code:, name:)
-          #   @param code [String] Public land mobile network code (MCC + MNC).
-          #
-          #   @param name [String] The name of the network.
+          # @!method initialize(plmn:)
+          #   @param plmn [String] Public land mobile network code (MCC + MNC).
         end
 
         # @!method self.variants

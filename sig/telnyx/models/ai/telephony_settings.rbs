@@ -8,6 +8,7 @@ module Telnyx
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
+          send_message_history_updates: bool,
           supports_unauthenticated_web_calls: bool,
           time_limit_secs: Integer,
           user_idle_reply_secs: Integer,
@@ -42,6 +43,10 @@ module Telnyx
           Telnyx::AI::TelephonySettings::RecordingSettings
         ) -> Telnyx::AI::TelephonySettings::RecordingSettings
 
+        attr_reader send_message_history_updates: bool?
+
+        def send_message_history_updates=: (bool) -> bool
+
         attr_reader supports_unauthenticated_web_calls: bool?
 
         def supports_unauthenticated_web_calls=: (bool) -> bool
@@ -70,6 +75,7 @@ module Telnyx
           ?noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           ?noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           ?recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
+          ?send_message_history_updates: bool,
           ?supports_unauthenticated_web_calls: bool,
           ?time_limit_secs: Integer,
           ?user_idle_reply_secs: Integer,
@@ -83,6 +89,7 @@ module Telnyx
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
+          send_message_history_updates: bool,
           supports_unauthenticated_web_calls: bool,
           time_limit_secs: Integer,
           user_idle_reply_secs: Integer,

@@ -417,7 +417,8 @@ module Telnyx
           # The minimum number of digits to fetch. This parameter has a minimum value of 1.
           minimum_digits: nil,
           # The digit used to terminate input if fewer than `maximum_digits` digits have
-          # been gathered.
+          # been gathered. Set to an empty string to disable the terminating digit entirely,
+          # so that a digit such as `#` can be collected as input per `valid_digits`.
           terminating_digit: nil,
           # The number of milliseconds to wait to complete the request.
           timeout_millis: nil,
@@ -631,7 +632,8 @@ module Telnyx
           # The minimum number of digits to fetch. This parameter has a minimum value of 1.
           minimum_digits: nil,
           # The digit used to terminate input if fewer than `maximum_digits` digits have
-          # been gathered.
+          # been gathered. Set to an empty string to disable the terminating digit entirely,
+          # so that a digit such as `#` can be collected as input per `valid_digits`.
           terminating_digit: nil,
           # The number of milliseconds to wait for a DTMF response after file playback ends
           # before a replaying the sound file.
@@ -778,7 +780,8 @@ module Telnyx
           # using `basic`, only the `en-US` language and payload type `text` are allowed.
           service_level: nil,
           # The digit used to terminate input if fewer than `maximum_digits` digits have
-          # been gathered.
+          # been gathered. Set to an empty string to disable the terminating digit entirely,
+          # so that a digit such as `#` can be collected as input per `valid_digits`.
           terminating_digit: nil,
           # The number of milliseconds to wait for a DTMF response after speak ends before a
           # replaying the sound file.
@@ -1355,8 +1358,10 @@ module Telnyx
           message_history: nil,
           # A list of participants to add to the conversation when it starts.
           participants: nil,
-          # When `true`, a webhook is sent each time the conversation message history is
-          # updated.
+          # When `true`, a `call.ai_gather.message_history_updated` webhook carrying the
+          # full message history is sent each time the conversation message history is
+          # updated. The assistant's own `telephony_settings.send_message_history_updates`
+          # overrides this value when it is set.
           send_message_history_updates: nil,
           # The settings associated with speech to text for the voice assistant. This is
           # only relevant if the assistant uses a text-to-text language model. Any assistant
@@ -1934,6 +1939,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
+                Telnyx::Calls::TranscriptionEngineCohereConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,

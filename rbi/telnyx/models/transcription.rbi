@@ -216,12 +216,10 @@ module Telnyx
               )
             end
 
-          # Speech recognition confidence level.
+          # Speech recognition confidence level. `cohere/ar-stt` returns `null` here rather
+          # than omitting the field.
           sig { returns(T.nilable(Float)) }
-          attr_reader :confidence
-
-          sig { params(confidence: Float).void }
-          attr_writer :confidence
+          attr_accessor :confidence
 
           # When false, it means that this is an interim result.
           sig { returns(T.nilable(T::Boolean)) }
@@ -258,7 +256,7 @@ module Telnyx
 
           sig do
             params(
-              confidence: Float,
+              confidence: T.nilable(Float),
               is_final: T::Boolean,
               transcript: String,
               transcription_track:
@@ -266,7 +264,8 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
-            # Speech recognition confidence level.
+            # Speech recognition confidence level. `cohere/ar-stt` returns `null` here rather
+            # than omitting the field.
             confidence: nil,
             # When false, it means that this is an interim result.
             is_final: nil,
@@ -281,7 +280,7 @@ module Telnyx
           sig do
             override.returns(
               {
-                confidence: Float,
+                confidence: T.nilable(Float),
                 is_final: T::Boolean,
                 transcript: String,
                 transcription_track:

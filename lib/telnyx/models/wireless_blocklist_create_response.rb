@@ -6,11 +6,11 @@ module Telnyx
     class WirelessBlocklistCreateResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::WirelessBlocklist, nil]
-      optional :data, -> { Telnyx::WirelessBlocklist }
+      #   @return [Telnyx::Models::WirelessWirelessBlocklist, nil]
+      optional :data, -> { Telnyx::WirelessWirelessBlocklist }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::WirelessBlocklist]
+      #   @param data [Telnyx::Models::WirelessWirelessBlocklist]
     end
   end
 end

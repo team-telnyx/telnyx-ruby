@@ -19,12 +19,6 @@ module Telnyx
       #   @return [String, nil]
       optional :filter_type, String
 
-      # @!attribute filter_values
-      #   Values to filter on (inclusive).
-      #
-      #   @return [String, nil]
-      optional :filter_values, String
-
       # @!attribute page_number
       #   The page number to load.
       #
@@ -37,12 +31,10 @@ module Telnyx
       #   @return [Integer, nil]
       optional :page_size, Integer
 
-      # @!method initialize(filter_name: nil, filter_type: nil, filter_values: nil, page_number: nil, page_size: nil, request_options: {})
+      # @!method initialize(filter_name: nil, filter_type: nil, page_number: nil, page_size: nil, request_options: {})
       #   @param filter_name [String] The name of the Wireless Blocklist.
       #
       #   @param filter_type [String] When the Private Wireless Gateway was last updated.
-      #
-      #   @param filter_values [String] Values to filter on (inclusive).
       #
       #   @param page_number [Integer] The page number to load.
       #

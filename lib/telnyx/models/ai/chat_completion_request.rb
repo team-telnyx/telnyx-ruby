@@ -113,6 +113,16 @@ module Telnyx
         #   @return [Float, nil]
         optional :presence_penalty, Float
 
+        # @!attribute reasoning_effort
+        #   Controls the reasoning effort for models that support it. When set, the model
+        #   spends more or less compute on internal reasoning before generating its
+        #   response. Supported values: none, minimal, low, medium, high, xhigh, max. Not
+        #   all models support all values; unsupported values are rejected with a 400 error.
+        #   When omitted, reasoning models use their default effort level.
+        #
+        #   @return [Symbol, Telnyx::Models::AI::ChatCompletionRequest::ReasoningEffort, nil]
+        optional :reasoning_effort, enum: -> { Telnyx::AI::ChatCompletionRequest::ReasoningEffort }
+
         # @!attribute response_format
         #   Use this is you want to guarantee a JSON output without defining a schema. For
         #   control over the schema, use `guided_json`.
@@ -195,7 +205,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :use_beam_search, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, response_format: nil, seed: nil, service_tier: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil)
+        # @!method initialize(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, reasoning_effort: nil, response_format: nil, seed: nil, service_tier: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ChatCompletionRequest} for more details.
         #
@@ -230,6 +240,8 @@ module Telnyx
         #   @param n [Float] This will return multiple choices for you instead of a single chat completion.
         #
         #   @param presence_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
+        #
+        #   @param reasoning_effort [Symbol, Telnyx::Models::AI::ChatCompletionRequest::ReasoningEffort] Controls the reasoning effort for models that support it. When set, the model sp
         #
         #   @param response_format [Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
         #
@@ -331,6 +343,28 @@ module Telnyx
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+        end
+
+        # Controls the reasoning effort for models that support it. When set, the model
+        # spends more or less compute on internal reasoning before generating its
+        # response. Supported values: none, minimal, low, medium, high, xhigh, max. Not
+        # all models support all values; unsupported values are rejected with a 400 error.
+        # When omitted, reasoning models use their default effort level.
+        #
+        # @see Telnyx::Models::AI::ChatCompletionRequest#reasoning_effort
+        module ReasoningEffort
+          extend Telnyx::Internal::Type::Enum
+
+          NONE = :none
+          MINIMAL = :minimal
+          LOW = :low
+          MEDIUM = :medium
+          HIGH = :high
+          XHIGH = :xhigh
+          MAX = :max
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see Telnyx::Models::AI::ChatCompletionRequest#response_format

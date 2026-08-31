@@ -1,0 +1,208 @@
+module Telnyx
+  module Models
+    module AI
+      module Knowledge
+        type collection_retrieve_documents_response =
+          {
+            data: ::Array[Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Data],
+            meta: Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Meta
+          }
+
+        class CollectionRetrieveDocumentsResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Data]?
+
+          def data=: (
+            ::Array[Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Data]
+          ) -> ::Array[Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Data]
+
+          attr_reader meta: Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Meta?
+
+          def meta=: (
+            Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Meta
+          ) -> Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Meta
+
+          def initialize: (
+            ?data: ::Array[Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Data],
+            ?meta: Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Meta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Data],
+            meta: Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse::Meta
+          }
+
+          type data =
+            {
+              id: String,
+              chunk_index: Integer,
+              chunk_total: Integer,
+              ingested_at: Time,
+              metadata: ::Hash[Symbol, top],
+              organization_id: String,
+              record_created_at: Time,
+              record_id: String,
+              record_type: String,
+              region: String,
+              score: Float,
+              text: String,
+              user_id: String
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader chunk_index: Integer?
+
+            def chunk_index=: (Integer) -> Integer
+
+            attr_reader chunk_total: Integer?
+
+            def chunk_total=: (Integer) -> Integer
+
+            attr_reader ingested_at: Time?
+
+            def ingested_at=: (Time) -> Time
+
+            attr_reader metadata: ::Hash[Symbol, top]?
+
+            def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+            attr_reader organization_id: String?
+
+            def organization_id=: (String) -> String
+
+            attr_reader record_created_at: Time?
+
+            def record_created_at=: (Time) -> Time
+
+            attr_reader record_id: String?
+
+            def record_id=: (String) -> String
+
+            attr_reader record_type: String?
+
+            def record_type=: (String) -> String
+
+            attr_reader region: String?
+
+            def region=: (String) -> String
+
+            attr_reader score: Float?
+
+            def score=: (Float) -> Float
+
+            attr_reader text: String?
+
+            def text=: (String) -> String
+
+            attr_reader user_id: String?
+
+            def user_id=: (String) -> String
+
+            def initialize: (
+              ?id: String,
+              ?chunk_index: Integer,
+              ?chunk_total: Integer,
+              ?ingested_at: Time,
+              ?metadata: ::Hash[Symbol, top],
+              ?organization_id: String,
+              ?record_created_at: Time,
+              ?record_id: String,
+              ?record_type: String,
+              ?region: String,
+              ?score: Float,
+              ?text: String,
+              ?user_id: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              chunk_index: Integer,
+              chunk_total: Integer,
+              ingested_at: Time,
+              metadata: ::Hash[Symbol, top],
+              organization_id: String,
+              record_created_at: Time,
+              record_id: String,
+              record_type: String,
+              region: String,
+              score: Float,
+              text: String,
+              user_id: String
+            }
+          end
+
+          type meta =
+            {
+              collection_slug: String,
+              page_number: Integer,
+              page_size: Integer,
+              retrieval_type: String,
+              searched_sources: ::Array[String],
+              top_k: Integer,
+              total_pages: Integer,
+              total_results: Integer
+            }
+
+          class Meta < Telnyx::Internal::Type::BaseModel
+            attr_reader collection_slug: String?
+
+            def collection_slug=: (String) -> String
+
+            attr_reader page_number: Integer?
+
+            def page_number=: (Integer) -> Integer
+
+            attr_reader page_size: Integer?
+
+            def page_size=: (Integer) -> Integer
+
+            attr_reader retrieval_type: String?
+
+            def retrieval_type=: (String) -> String
+
+            attr_reader searched_sources: ::Array[String]?
+
+            def searched_sources=: (::Array[String]) -> ::Array[String]
+
+            attr_reader top_k: Integer?
+
+            def top_k=: (Integer) -> Integer
+
+            attr_reader total_pages: Integer?
+
+            def total_pages=: (Integer) -> Integer
+
+            attr_reader total_results: Integer?
+
+            def total_results=: (Integer) -> Integer
+
+            def initialize: (
+              ?collection_slug: String,
+              ?page_number: Integer,
+              ?page_size: Integer,
+              ?retrieval_type: String,
+              ?searched_sources: ::Array[String],
+              ?top_k: Integer,
+              ?total_pages: Integer,
+              ?total_results: Integer
+            ) -> void
+
+            def to_hash: -> {
+              collection_slug: String,
+              page_number: Integer,
+              page_size: Integer,
+              retrieval_type: String,
+              searched_sources: ::Array[String],
+              top_k: Integer,
+              total_pages: Integer,
+              total_results: Integer
+            }
+          end
+        end
+      end
+    end
+  end
+end

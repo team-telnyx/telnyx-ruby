@@ -88,8 +88,9 @@ module Telnyx
           )
         end
 
-        # This action will asynchronously remove an existing Wireless Blocklist to all the
-        # SIMs in the SIM card group.
+        # This action asynchronously removes the Wireless Blocklist assigned to a SIM Card
+        # Group. The request returns `404` when the SIM Card Group does not exist and
+        # `422` when no Wireless Blocklist is assigned.
         #
         # @overload remove_wireless_blocklist(id, request_options: {})
         #
@@ -139,8 +140,9 @@ module Telnyx
           )
         end
 
-        # This action will asynchronously assign a Wireless Blocklist to all the SIMs in
-        # the SIM card group.
+        # This action asynchronously assigns a Wireless Blocklist to all SIMs in the SIM
+        # Card Group. The request returns `404` when the SIM Card Group does not exist and
+        # `422` when the Wireless Blocklist does not exist.
         #
         # @overload set_wireless_blocklist(id, wireless_blocklist_id:, request_options: {})
         #

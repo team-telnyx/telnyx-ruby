@@ -72,8 +72,9 @@ module Telnyx
         )
         end
 
-        # This action will asynchronously remove an existing Wireless Blocklist to all the
-        # SIMs in the SIM card group.
+        # This action asynchronously removes the Wireless Blocklist assigned to a SIM Card
+        # Group. The request returns `404` when the SIM Card Group does not exist and
+        # `422` when no Wireless Blocklist is assigned.
         sig do
           params(
             id: String,
@@ -114,8 +115,9 @@ module Telnyx
         )
         end
 
-        # This action will asynchronously assign a Wireless Blocklist to all the SIMs in
-        # the SIM card group.
+        # This action asynchronously assigns a Wireless Blocklist to all SIMs in the SIM
+        # Card Group. The request returns `404` when the SIM Card Group does not exist and
+        # `422` when the Wireless Blocklist does not exist.
         sig do
           params(
             id: String,

@@ -22,7 +22,9 @@ module Telnyx
         #   `auto` when `language` is omitted — omitting it applies `en` instead. For
         #   `reson8/turns`, supported values are `auto` (or unset) for automatic language
         #   detection, and the language codes `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`,
-        #   `pt`, `es`, and `sv` to fix the transcription language.
+        #   `pt`, `es`, and `sv` to fix the transcription language. For `cohere/ar-stt`,
+        #   supported values are `ar` and `en`; unlike other models, this model does not
+        #   auto-detect and defaults to `ar` when `language` is omitted.
         #
         #   @return [String, nil]
         optional :language, String
@@ -45,6 +47,7 @@ module Telnyx
         #     Arabic/English code-switching support.
         #   - `reson8/turns` for live streaming turn-based transcription of 10 European
         #     languages with automatic language detection.
+        #   - `cohere/ar-stt` for non-streaming Arabic and English transcription.
         #   - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #     unsupported regions require `api_key_ref`.
         #   - `google/latest_long` for non-streaming multilingual transcription.
@@ -86,6 +89,7 @@ module Telnyx
         #   Arabic/English code-switching support.
         # - `reson8/turns` for live streaming turn-based transcription of 10 European
         #   languages with automatic language detection.
+        # - `cohere/ar-stt` for non-streaming Arabic and English transcription.
         # - `azure/fast` and `azure/realtime`; Azure models require `region`, and
         #   unsupported regions require `api_key_ref`.
         # - `google/latest_long` for non-streaming multilingual transcription.
@@ -110,6 +114,7 @@ module Telnyx
           NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
           HUMAIN_REALTIME = :"humain/realtime"
           RESON8_TURNS = :"reson8/turns"
+          COHERE_AR_STT = :"cohere/ar-stt"
           AZURE_FAST = :"azure/fast"
           AZURE_REALTIME = :"azure/realtime"
           GOOGLE_LATEST_LONG = :"google/latest_long"

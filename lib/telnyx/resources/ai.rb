@@ -52,6 +52,9 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Anthropic]
       attr_reader :anthropic
 
+      # @return [Telnyx::Resources::AI::Knowledge]
+      attr_reader :knowledge
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AIRetrieveConversationHistoriesParams} for more details.
       #
@@ -224,6 +227,7 @@ module Telnyx
         @openai = Telnyx::Resources::AI::OpenAI.new(client: client)
         @tools = Telnyx::Resources::AI::Tools.new(client: client)
         @anthropic = Telnyx::Resources::AI::Anthropic.new(client: client)
+        @knowledge = Telnyx::Resources::AI::Knowledge.new(client: client)
       end
     end
   end

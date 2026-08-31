@@ -10,7 +10,8 @@ module Telnyx
         keywords: String,
         language: String,
         model: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::model,
-        redact: String
+        redact: String,
+        sample_rate: Integer
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -52,6 +53,10 @@ module Telnyx
 
       def redact=: (String) -> String
 
+      attr_reader sample_rate: Integer?
+
+      def sample_rate=: (Integer) -> Integer
+
       def initialize: (
         input_format: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::input_format,
         transcription_engine: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::transcription_engine,
@@ -62,6 +67,7 @@ module Telnyx
         ?language: String,
         ?model: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::model,
         ?redact: String,
+        ?sample_rate: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -75,16 +81,19 @@ module Telnyx
         language: String,
         model: Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::model,
         redact: String,
+        sample_rate: Integer,
         request_options: Telnyx::RequestOptions
       }
 
-      type input_format = :mp3 | :wav
+      type input_format = :mp3 | :wav | :linear16 | :linear32
 
       module InputFormat
         extend Telnyx::Internal::Type::Enum
 
         MP3: :mp3
         WAV: :wav
+        LINEAR16: :linear16
+        LINEAR32: :linear32
 
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::input_format]
       end
@@ -100,6 +109,7 @@ module Telnyx
         | :Parakeet
         | :Humain
         | :Reson8
+        | :Cohere
 
       module TranscriptionEngine
         extend Telnyx::Internal::Type::Enum
@@ -114,6 +124,7 @@ module Telnyx
         PARAKEET: :Parakeet
         HUMAIN: :Humain
         RESON8: :Reson8
+        COHERE: :Cohere
 
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::transcription_engine]
       end
@@ -138,6 +149,7 @@ module Telnyx
         | :"nvidia/parakeet-v3"
         | :"humain/realtime"
         | :"reson8/turns"
+        | :"cohere/ar-stt"
 
       module Model
         extend Telnyx::Internal::Type::Enum
@@ -161,6 +173,7 @@ module Telnyx
         NVIDIA_PARAKEET_V3: :"nvidia/parakeet-v3"
         HUMAIN_REALTIME: :"humain/realtime"
         RESON8_TURNS: :"reson8/turns"
+        COHERE_AR_STT: :"cohere/ar-stt"
 
         def self?.values: -> ::Array[Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::model]
       end

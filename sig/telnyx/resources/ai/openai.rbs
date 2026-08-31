@@ -11,6 +11,7 @@ module Telnyx
           ?input: ::Hash[Symbol, top],
           ?instructions: String,
           ?model: String,
+          ?reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
           ?service_tier: String,
           ?stream: bool,
           ?request_options: Telnyx::request_opts

@@ -64,12 +64,13 @@ module Telnyx
         params(
           filter_name: String,
           filter_type: String,
-          filter_values: String,
           page_number: Integer,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
-          Telnyx::Internal::DefaultFlatPagination[Telnyx::WirelessBlocklist]
+          Telnyx::Internal::DefaultFlatPagination[
+            Telnyx::WirelessWirelessBlocklist
+          ]
         )
       end
       def list(
@@ -77,8 +78,6 @@ module Telnyx
         filter_name: nil,
         # When the Private Wireless Gateway was last updated.
         filter_type: nil,
-        # Values to filter on (inclusive).
-        filter_values: nil,
         # The page number to load.
         page_number: nil,
         # The size of the page.
@@ -87,12 +86,11 @@ module Telnyx
       )
       end
 
-      # Permanently deletes the specified wireless blocklist from your account.
+      # Permanently deletes the specified wireless blocklist from your account. The
+      # request returns `422` when the wireless blocklist is assigned to a SIM Card
+      # Group.
       sig do
-        params(
-          id: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::WirelessBlocklistDeleteResponse)
+        params(id: String, request_options: Telnyx::RequestOptions::OrHash).void
       end
       def delete(
         # Identifies the wireless blocklist.

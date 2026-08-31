@@ -63,6 +63,7 @@ module Telnyx
           | :Parakeet
           | :Humain
           | :Reson8
+          | :Cohere
           | :A
           | :B
 
@@ -80,6 +81,7 @@ module Telnyx
           PARAKEET: :Parakeet
           HUMAIN: :Humain
           RESON8: :Reson8
+          COHERE: :Cohere
           A: :A
           B: :B
 
@@ -97,6 +99,7 @@ module Telnyx
           | Telnyx::Calls::TranscriptionEngineParakeetConfig
           | Telnyx::Calls::TranscriptionEngineHumainConfig
           | Telnyx::Calls::TranscriptionEngineReson8Config
+          | Telnyx::Calls::TranscriptionEngineCohereConfig
           | Telnyx::Calls::TranscriptionEngineAConfig
           | Telnyx::Calls::TranscriptionEngineBConfig
           | Telnyx::Calls::DeepgramNova2Config

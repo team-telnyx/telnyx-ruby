@@ -61,7 +61,8 @@ module Telnyx
 
         # @!attribute terminating_digit
         #   The digit used to terminate input if fewer than `maximum_digits` digits have
-        #   been gathered.
+        #   been gathered. Set to an empty string to disable the terminating digit entirely,
+        #   so that a digit such as `#` can be collected as input per `valid_digits`.
         #
         #   @return [String, nil]
         optional :terminating_digit, String
