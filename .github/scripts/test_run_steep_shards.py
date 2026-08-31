@@ -50,10 +50,6 @@ class FakeActionsApi:
 class RunSteepShardsTest(unittest.TestCase):
     def test_retries_transient_github_server_errors_with_bounded_backoff(self):
         module = load_module()
-        api = module.GitHubActionsApi("https://api.github.test", "owner/repo", "token")
-        transient = module.urllib.error.HTTPError(
-            "https://api.github.test", 502, "Server Error", {}, io.BytesIO(b'{"message":"Server Error"}')
-        )
 
         class Response:
             def __enter__(self):
@@ -65,15 +61,27 @@ class RunSteepShardsTest(unittest.TestCase):
             def read(self):
                 return b'{"workflow_runs":[]}'
 
-        with (
-            mock.patch.object(module.urllib.request, "urlopen", side_effect=[transient, Response()]) as request,
-            mock.patch.object(module.time, "sleep") as sleep,
-        ):
-            result = api._request("GET", "/actions/runs")
+        for status in (500, 502, 503, 504):
+            with self.subTest(status=status):
+                api = module.GitHubActionsApi("https://api.github.test", "owner/repo", "token")
+                transient = module.urllib.error.HTTPError(
+                    "https://api.github.test",
+                    status,
+                    "Server Error",
+                    {},
+                    io.BytesIO(b'{"message":"Server Error"}'),
+                )
+                with (
+                    mock.patch.object(
+                        module.urllib.request, "urlopen", side_effect=[transient, Response()]
+                    ) as request,
+                    mock.patch.object(module.time, "sleep") as sleep,
+                ):
+                    result = api._request("GET", "/actions/runs")
 
-        self.assertEqual(result, {"workflow_runs": []})
-        self.assertEqual(request.call_count, 2)
-        sleep.assert_called_once_with(2)
+                self.assertEqual(result, {"workflow_runs": []})
+                self.assertEqual(request.call_count, 2)
+                sleep.assert_called_once_with(2)
 
     def test_does_not_retry_non_transient_github_api_errors(self):
         module = load_module()

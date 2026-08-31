@@ -16,7 +16,7 @@ from typing import Dict, List, Optional
 
 WORKFLOW = "ci.yml"
 SHARD_COUNT = 4
-TRANSIENT_HTTP_STATUSES = frozenset({502, 503, 504})
+TRANSIENT_HTTP_STATUSES = frozenset({500, 502, 503, 504})
 MAX_API_ATTEMPTS = 4
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 CORRELATION_RE = re.compile(r"^[0-9]+-[0-9]+-[0-9a-f]{40}$")
