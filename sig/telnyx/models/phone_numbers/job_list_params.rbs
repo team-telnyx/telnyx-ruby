@@ -51,9 +51,25 @@ module Telnyx
         }
 
         type filter =
-          { type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_ }
+          {
+            phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number,
+            status: ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status],
+            type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
+          }
 
         class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number?
+
+          def phone_number=: (
+            Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number
+          ) -> Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number
+
+          attr_reader status: ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status]?
+
+          def status=: (
+            ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status]
+          ) -> ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status]
+
           attr_reader type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_?
 
           def type=: (
@@ -61,12 +77,41 @@ module Telnyx
           ) -> Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
 
           def initialize: (
+            ?phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number,
+            ?status: ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status],
             ?type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
           ) -> void
 
           def to_hash: -> {
+            phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number,
+            status: ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status],
             type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
           }
+
+          type phone_number = String | ::Array[String]
+
+          module PhoneNumber
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number]
+
+            StringArray: Telnyx::Internal::Type::Converter
+          end
+
+          type status =
+            :pending | :in_progress | :completed | :failed | :expired
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            IN_PROGRESS: :in_progress
+            COMPLETED: :completed
+            FAILED: :failed
+            EXPIRED: :expired
+
+            def self?.values: -> ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status]
+          end
 
           type type_ =
             :update_emergency_settings

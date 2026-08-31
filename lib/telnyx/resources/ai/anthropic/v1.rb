@@ -26,7 +26,7 @@ module Telnyx
           #
           # @param messages [Array<Hash{Symbol=>Object}>] The messages to send to the model, following the [Anthropic Messages API](https:
           #
-          # @param model [String] The model to use for generating the response, for example `zai-org/GLM-5.2` or a
+          # @param model [String] The model to use for generating the response, for example `zai-org/GLM-5.3-Flash
           #
           # @param api_key_ref [String] If you are using an external inference provider, this field allows you to pass a
           #
