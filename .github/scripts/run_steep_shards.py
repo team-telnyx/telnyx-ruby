@@ -16,6 +16,8 @@ from typing import Dict, List, Optional
 
 WORKFLOW = "ci.yml"
 SHARD_COUNT = 4
+TRANSIENT_HTTP_STATUSES = frozenset({502, 503, 504})
+MAX_API_ATTEMPTS = 4
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 CORRELATION_RE = re.compile(r"^[0-9]+-[0-9]+-[0-9a-f]{40}$")
 
@@ -58,13 +60,22 @@ class GitHubActionsApi:
                 "X-GitHub-Api-Version": "2022-11-28",
             },
         )
-        try:
-            with urllib.request.urlopen(request, timeout=30) as response:
-                body = response.read()
-                return None if not body else json.loads(body.decode())
-        except urllib.error.HTTPError as error:
-            body = error.read().decode(errors="replace")
-            raise ApiError(error.code, body) from error
+        for attempt in range(MAX_API_ATTEMPTS):
+            try:
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    body = response.read()
+                    return None if not body else json.loads(body.decode())
+            except urllib.error.HTTPError as error:
+                body = error.read().decode(errors="replace")
+                should_retry = (
+                    error.code in TRANSIENT_HTTP_STATUSES
+                    and attempt + 1 < MAX_API_ATTEMPTS
+                )
+                if not should_retry:
+                    raise ApiError(error.code, body) from error
+                time.sleep(2 ** (attempt + 1))
+
+        raise AssertionError("unreachable GitHub API retry state")
 
     def dispatch(self, ref: str, inputs: Dict[str, str]) -> None:
         # Ref: https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event
