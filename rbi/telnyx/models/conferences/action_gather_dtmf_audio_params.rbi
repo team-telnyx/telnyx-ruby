@@ -111,7 +111,9 @@ module Telnyx
         sig { params(stop_playback_on_dtmf: T::Boolean).void }
         attr_writer :stop_playback_on_dtmf
 
-        # Digit that terminates gathering.
+        # Digit that terminates gathering. Set to an empty string to disable the
+        # terminating digit entirely, so that a digit such as `#` can be collected as
+        # input per `valid_digits`.
         sig { returns(T.nilable(String)) }
         attr_reader :terminating_digit
 
@@ -187,7 +189,9 @@ module Telnyx
           minimum_digits: nil,
           # Whether to stop the audio playback when a DTMF digit is received.
           stop_playback_on_dtmf: nil,
-          # Digit that terminates gathering.
+          # Digit that terminates gathering. Set to an empty string to disable the
+          # terminating digit entirely, so that a digit such as `#` can be collected as
+          # input per `valid_digits`.
           terminating_digit: nil,
           # Duration in milliseconds to wait for input before timing out.
           timeout_millis: nil,

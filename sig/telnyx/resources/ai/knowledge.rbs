@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class AI
+      class Knowledge
+        attr_reader collections: Telnyx::Resources::AI::Knowledge::Collections
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

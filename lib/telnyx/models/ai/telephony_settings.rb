@@ -39,6 +39,19 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::RecordingSettings, nil]
         optional :recording_settings, -> { Telnyx::AI::TelephonySettings::RecordingSettings }
 
+        # @!attribute send_message_history_updates
+        #   Whether the assistant sends a `call.ai_gather.message_history_updated` webhook
+        #   with the full message history every time the conversation history changes. Leave
+        #   unset to inherit the `send_message_history_updates` value from the
+        #   `ai_assistant_start` or `gather_using_ai` command that started the conversation.
+        #   Setting it here is authoritative: `true` turns the webhooks on even when the
+        #   start command did not request them, and `false` turns them off even when it did.
+        #   Messages exchanged during a private warm transfer acceptance phase are never
+        #   included.
+        #
+        #   @return [Boolean, nil]
+        optional :send_message_history_updates, Telnyx::Internal::Type::Boolean
+
         # @!attribute supports_unauthenticated_web_calls
         #   When enabled, allows users to interact with your AI assistant directly from your
         #   website without requiring authentication. This is required for FE widgets that
@@ -84,7 +97,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
 
-        # @!method initialize(default_texml_app_id: nil, disable_dtmf: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
+        # @!method initialize(default_texml_app_id: nil, disable_dtmf: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, send_message_history_updates: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelephonySettings} for more details.
         #
@@ -97,6 +110,8 @@ module Telnyx
         #   @param noise_suppression_config [Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig] Configuration for noise suppression. Only applicable when noise_suppression is '
         #
         #   @param recording_settings [Telnyx::Models::AI::TelephonySettings::RecordingSettings] Configuration for call recording format and channel settings.
+        #
+        #   @param send_message_history_updates [Boolean] Whether the assistant sends a `call.ai_gather.message_history_updated` webhook w
         #
         #   @param supports_unauthenticated_web_calls [Boolean] When enabled, allows users to interact with your AI assistant directly from your
         #

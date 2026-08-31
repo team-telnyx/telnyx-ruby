@@ -76,16 +76,27 @@ module Telnyx
           updated_at: String
         }
 
-        type settings = { private_wireless_gateway_id: String }
+        type settings =
+          { private_wireless_gateway_id: String, wireless_blocklist_id: String }
 
         class Settings < Telnyx::Internal::Type::BaseModel
           attr_reader private_wireless_gateway_id: String?
 
           def private_wireless_gateway_id=: (String) -> String
 
-          def initialize: (?private_wireless_gateway_id: String) -> void
+          attr_reader wireless_blocklist_id: String?
 
-          def to_hash: -> { private_wireless_gateway_id: String }
+          def wireless_blocklist_id=: (String) -> String
+
+          def initialize: (
+            ?private_wireless_gateway_id: String,
+            ?wireless_blocklist_id: String
+          ) -> void
+
+          def to_hash: -> {
+            private_wireless_gateway_id: String,
+            wireless_blocklist_id: String
+          }
         end
 
         type status = :"in-progress" | :completed | :failed

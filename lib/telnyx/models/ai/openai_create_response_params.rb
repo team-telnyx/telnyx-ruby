@@ -38,6 +38,11 @@ module Telnyx
         #   @return [String, nil]
         optional :model, String
 
+        # @!attribute reasoning
+        #
+        #   @return [Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning, nil]
+        optional :reasoning, -> { Telnyx::AI::OpenAICreateResponseParams::Reasoning }
+
         # @!attribute service_tier
         #   The service tier to use for this request. Supported values vary by model; use
         #   `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
@@ -53,7 +58,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :stream, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(conversation: nil, input: nil, instructions: nil, model: nil, service_tier: nil, stream: nil, request_options: {})
+        # @!method initialize(conversation: nil, input: nil, instructions: nil, model: nil, reasoning: nil, service_tier: nil, stream: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::OpenAICreateResponseParams} for more details.
         #
@@ -65,11 +70,47 @@ module Telnyx
         #
         #   @param model [String] Model identifier to use for the response, for example `zai-org/GLM-5.1-FP8` or a
         #
+        #   @param reasoning [Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning]
+        #
         #   @param service_tier [String] The service tier to use for this request. Supported values vary by model; use `G
         #
         #   @param stream [Boolean] Set to `true` to stream Server-Sent Events, matching OpenAI's Responses streamin
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+        class Reasoning < Telnyx::Internal::Type::BaseModel
+          # @!attribute effort
+          #   Controls the reasoning effort for models that support it. Same values and
+          #   semantics as reasoning_effort on Chat Completions.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::Effort, nil]
+          optional :effort, enum: -> { Telnyx::AI::OpenAICreateResponseParams::Reasoning::Effort }
+
+          # @!method initialize(effort: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning} for more details.
+          #
+          #   @param effort [Symbol, Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::Effort] Controls the reasoning effort for models that support it. Same values and semant
+
+          # Controls the reasoning effort for models that support it. Same values and
+          # semantics as reasoning_effort on Chat Completions.
+          #
+          # @see Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning#effort
+          module Effort
+            extend Telnyx::Internal::Type::Enum
+
+            NONE = :none
+            MINIMAL = :minimal
+            LOW = :low
+            MEDIUM = :medium
+            HIGH = :high
+            XHIGH = :xhigh
+            MAX = :max
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
       end
     end
   end

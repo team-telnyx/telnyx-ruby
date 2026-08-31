@@ -2,7 +2,6 @@
 
 module Telnyx
   module Models
-    # @see Telnyx::Resources::WirelessBlocklists#list
     class WirelessBlocklist < Telnyx::Internal::Type::BaseModel
       # @!attribute name
       #   The wireless blocklist name.

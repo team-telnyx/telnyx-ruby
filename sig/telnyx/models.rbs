@@ -2167,6 +2167,8 @@ module Telnyx
 
   class WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 
+  class WirelessWirelessBlocklist = Telnyx::Models::WirelessWirelessBlocklist
+
   module X402 = Telnyx::Models::X402
 
   class XaiVoiceSettings = Telnyx::Models::XaiVoiceSettings

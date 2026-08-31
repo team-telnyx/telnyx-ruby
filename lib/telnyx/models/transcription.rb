@@ -114,10 +114,11 @@ module Telnyx
         # @see Telnyx::Models::Transcription::Payload#transcription_data
         class TranscriptionData < Telnyx::Internal::Type::BaseModel
           # @!attribute confidence
-          #   Speech recognition confidence level.
+          #   Speech recognition confidence level. `cohere/ar-stt` returns `null` here rather
+          #   than omitting the field.
           #
           #   @return [Float, nil]
-          optional :confidence, Float
+          optional :confidence, Float, nil?: true
 
           # @!attribute is_final
           #   When false, it means that this is an interim result.
@@ -143,7 +144,7 @@ module Telnyx
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Transcription::Payload::TranscriptionData} for more details.
           #
-          #   @param confidence [Float] Speech recognition confidence level.
+          #   @param confidence [Float, nil] Speech recognition confidence level. `cohere/ar-stt` returns `null` here rather
           #
           #   @param is_final [Boolean] When false, it means that this is an interim result.
           #

@@ -51,7 +51,9 @@ module Telnyx
       optional :keywords, String
 
       # @!attribute language
-      #   The language spoken in the audio stream.
+      #   The language spoken in the audio stream. For `cohere/ar-stt`, this must be `ar`
+      #   or `en` — unlike other engines, Cohere does not auto-detect the language, and
+      #   rejects unsupported values including `auto`; omitting it defaults to `ar`.
       #
       #   @return [String, nil]
       optional :language, String
@@ -69,7 +71,15 @@ module Telnyx
       #   @return [String, nil]
       optional :redact, String
 
-      # @!method initialize(input_format:, transcription_engine:, endpointing: nil, interim_results: nil, keyterm: nil, keywords: nil, language: nil, model: nil, redact: nil, request_options: {})
+      # @!attribute sample_rate
+      #   Audio sample rate in Hz. Required when `input_format` is a raw encoding
+      #   (`linear16`, `linear32`) — those formats carry no header metadata. Ignored for
+      #   container formats (`mp3`, `wav`), which self-describe their rate.
+      #
+      #   @return [Integer, nil]
+      optional :sample_rate, Integer
+
+      # @!method initialize(input_format:, transcription_engine:, endpointing: nil, interim_results: nil, keyterm: nil, keywords: nil, language: nil, model: nil, redact: nil, sample_rate: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::SpeechToTextRetrieveTranscriptionParams} for more details.
       #
@@ -85,11 +95,13 @@ module Telnyx
       #
       #   @param keywords [String] Comma-separated list of keywords to boost in the transcription. The engine will
       #
-      #   @param language [String] The language spoken in the audio stream.
+      #   @param language [String] The language spoken in the audio stream. For `cohere/ar-stt`, this must be `ar`
       #
       #   @param model [Symbol, Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::Model] The specific model to use within the selected transcription engine.
       #
       #   @param redact [String] Enable redaction of sensitive information (e.g., PCI data, SSN) from transcripti
+      #
+      #   @param sample_rate [Integer] Audio sample rate in Hz. Required when `input_format` is a raw encoding (`linear
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -99,6 +111,8 @@ module Telnyx
 
         MP3 = :mp3
         WAV = :wav
+        LINEAR16 = :linear16
+        LINEAR32 = :linear32
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -118,6 +132,7 @@ module Telnyx
         PARAKEET = :Parakeet
         HUMAIN = :Humain
         RESON8 = :Reson8
+        COHERE = :Cohere
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -146,6 +161,7 @@ module Telnyx
         NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
         HUMAIN_REALTIME = :"humain/realtime"
         RESON8_TURNS = :"reson8/turns"
+        COHERE_AR_STT = :"cohere/ar-stt"
 
         # @!method self.values
         #   @return [Array<Symbol>]

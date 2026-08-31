@@ -19,6 +19,7 @@ module Telnyx
           model: String,
           n: Float,
           presence_penalty: Float,
+          reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
           response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           seed: Integer,
           service_tier: String,
@@ -95,6 +96,12 @@ module Telnyx
 
         def presence_penalty=: (Float) -> Float
 
+        attr_reader reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort?
+
+        def reasoning_effort=: (
+          Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort
+        ) -> Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort
+
         attr_reader response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat?
 
         def response_format=: (
@@ -164,6 +171,7 @@ module Telnyx
           ?model: String,
           ?n: Float,
           ?presence_penalty: Float,
+          ?reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
           ?response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           ?seed: Integer,
           ?service_tier: String,
@@ -194,6 +202,7 @@ module Telnyx
           model: String,
           n: Float,
           presence_penalty: Float,
+          reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
           response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           seed: Integer,
           service_tier: String,
@@ -294,6 +303,23 @@ module Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::AI::ChatCompletionRequest::Message::role]
           end
+        end
+
+        type reasoning_effort =
+          :none | :minimal | :low | :medium | :high | :xhigh | :max
+
+        module ReasoningEffort
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+          MINIMAL: :minimal
+          LOW: :low
+          MEDIUM: :medium
+          HIGH: :high
+          XHIGH: :xhigh
+          MAX: :max
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort]
         end
 
         type response_format =

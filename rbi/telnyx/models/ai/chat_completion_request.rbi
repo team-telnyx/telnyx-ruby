@@ -131,6 +131,28 @@ module Telnyx
         sig { params(presence_penalty: Float).void }
         attr_writer :presence_penalty
 
+        # Controls the reasoning effort for models that support it. When set, the model
+        # spends more or less compute on internal reasoning before generating its
+        # response. Supported values: none, minimal, low, medium, high, xhigh, max. Not
+        # all models support all values; unsupported values are rejected with a 400 error.
+        # When omitted, reasoning models use their default effort level.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol
+            )
+          )
+        end
+        attr_reader :reasoning_effort
+
+        sig do
+          params(
+            reasoning_effort:
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol
+          ).void
+        end
+        attr_writer :reasoning_effort
+
         # Use this is you want to guarantee a JSON output without defining a schema. For
         # control over the schema, use `guided_json`.
         sig do
@@ -283,6 +305,8 @@ module Telnyx
             model: String,
             n: Float,
             presence_penalty: Float,
+            reasoning_effort:
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
             response_format:
               Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash,
             seed: Integer,
@@ -350,6 +374,12 @@ module Telnyx
           n: nil,
           # Higher values will penalize the model from repeating the same output tokens.
           presence_penalty: nil,
+          # Controls the reasoning effort for models that support it. When set, the model
+          # spends more or less compute on internal reasoning before generating its
+          # response. Supported values: none, minimal, low, medium, high, xhigh, max. Not
+          # all models support all values; unsupported values are rejected with a 400 error.
+          # When omitted, reasoning models use their default effort level.
+          reasoning_effort: nil,
           # Use this is you want to guarantee a JSON output without defining a schema. For
           # control over the schema, use `guided_json`.
           response_format: nil,
@@ -410,6 +440,8 @@ module Telnyx
               model: String,
               n: Float,
               presence_penalty: Float,
+              reasoning_effort:
+                Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
               response_format:
                 Telnyx::AI::ChatCompletionRequest::ResponseFormat,
               seed: Integer,
@@ -636,6 +668,67 @@ module Telnyx
             end
             def self.values
             end
+          end
+        end
+
+        # Controls the reasoning effort for models that support it. When set, the model
+        # spends more or less compute on internal reasoning before generating its
+        # response. Supported values: none, minimal, low, medium, high, xhigh, max. Not
+        # all models support all values; unsupported values are rejected with a 400 error.
+        # When omitted, reasoning models use their default effort level.
+        module ReasoningEffort
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::AI::ChatCompletionRequest::ReasoningEffort)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          NONE =
+            T.let(
+              :none,
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+            )
+          MINIMAL =
+            T.let(
+              :minimal,
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+            )
+          LOW =
+            T.let(
+              :low,
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+            )
+          MEDIUM =
+            T.let(
+              :medium,
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+            )
+          HIGH =
+            T.let(
+              :high,
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+            )
+          XHIGH =
+            T.let(
+              :xhigh,
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+            )
+          MAX =
+            T.let(
+              :max,
+              Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
           end
         end
 

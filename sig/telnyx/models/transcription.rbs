@@ -119,16 +119,14 @@ module Telnyx
 
         type transcription_data =
           {
-            confidence: Float,
+            confidence: Float?,
             is_final: bool,
             transcript: String,
             transcription_track: Telnyx::Models::Transcription::Payload::TranscriptionData::transcription_track
           }
 
         class TranscriptionData < Telnyx::Internal::Type::BaseModel
-          attr_reader confidence: Float?
-
-          def confidence=: (Float) -> Float
+          attr_accessor confidence: Float?
 
           attr_reader is_final: bool?
 
@@ -145,14 +143,14 @@ module Telnyx
           ) -> Telnyx::Models::Transcription::Payload::TranscriptionData::transcription_track
 
           def initialize: (
-            ?confidence: Float,
+            ?confidence: Float?,
             ?is_final: bool,
             ?transcript: String,
             ?transcription_track: Telnyx::Models::Transcription::Payload::TranscriptionData::transcription_track
           ) -> void
 
           def to_hash: -> {
-            confidence: Float,
+            confidence: Float?,
             is_final: bool,
             transcript: String,
             transcription_track: Telnyx::Models::Transcription::Payload::TranscriptionData::transcription_track

@@ -61,6 +61,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig,
                 Telnyx::Calls::TranscriptionEngineHumainConfig,
                 Telnyx::Calls::TranscriptionEngineReson8Config,
+                Telnyx::Calls::TranscriptionEngineCohereConfig,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,
@@ -85,6 +86,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
+                Telnyx::Calls::TranscriptionEngineCohereConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -121,6 +123,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineHumainConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineReson8Config::OrHash,
+                Telnyx::Calls::TranscriptionEngineCohereConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineAConfig::OrHash,
                 Telnyx::Calls::TranscriptionEngineBConfig::OrHash,
                 Telnyx::Calls::DeepgramNova2Config::OrHash,
@@ -166,6 +169,7 @@ module Telnyx
                   Telnyx::Calls::TranscriptionEngineParakeetConfig,
                   Telnyx::Calls::TranscriptionEngineHumainConfig,
                   Telnyx::Calls::TranscriptionEngineReson8Config,
+                  Telnyx::Calls::TranscriptionEngineCohereConfig,
                   Telnyx::Calls::TranscriptionEngineAConfig,
                   Telnyx::Calls::TranscriptionEngineBConfig,
                   Telnyx::Calls::DeepgramNova2Config,
@@ -247,6 +251,11 @@ module Telnyx
               :Reson8,
               Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
             )
+          COHERE =
+            T.let(
+              :Cohere,
+              Telnyx::Calls::TranscriptionStartRequest::TranscriptionEngine::TaggedSymbol
+            )
           A =
             T.let(
               :A,
@@ -285,6 +294,7 @@ module Telnyx
                 Telnyx::Calls::TranscriptionEngineParakeetConfig,
                 Telnyx::Calls::TranscriptionEngineHumainConfig,
                 Telnyx::Calls::TranscriptionEngineReson8Config,
+                Telnyx::Calls::TranscriptionEngineCohereConfig,
                 Telnyx::Calls::TranscriptionEngineAConfig,
                 Telnyx::Calls::TranscriptionEngineBConfig,
                 Telnyx::Calls::DeepgramNova2Config,

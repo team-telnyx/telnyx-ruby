@@ -240,6 +240,33 @@ module Telnyx
           end
           attr_writer :path_parameters
 
+          # Body fields supplied by the assistant configuration rather than by the model.
+          # They are never advertised in the tool definition, so the LLM can neither see nor
+          # set them, and they take precedence over a `body_parameters` value of the same
+          # name. Values support mustache templating, so they can hold dynamic variables
+          # (`{{customer_id}}`) and integration secrets
+          # (`{{#integration_secret}}my-secret{{/integration_secret}}`). Not sent on `GET`
+          # requests, which carry no body.
+          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          attr_reader :preset_body_fields
+
+          sig { params(preset_body_fields: T::Hash[Symbol, T.anything]).void }
+          attr_writer :preset_body_fields
+
+          # Query string parameters supplied by the assistant configuration rather than by
+          # the model. They are never advertised in the tool definition, so the LLM can
+          # neither see nor set them, and they take precedence over a `query_parameters`
+          # value of the same name. Values support mustache templating, so they can hold
+          # dynamic variables (`{{telnyx_end_user_target}}`) and integration secrets
+          # (`{{#integration_secret}}my-secret{{/integration_secret}}`). Unlike values
+          # templated directly into the `url`, these are percent-encoded, so a value such as
+          # `+15551234567` survives the round trip.
+          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          attr_reader :preset_query_params
+
+          sig { params(preset_query_params: T::Hash[Symbol, T.anything]).void }
+          attr_writer :preset_query_params
+
           # The query parameters the webhook tool accepts, described as a JSON Schema
           # object. These parameters will be passed to the webhook as the query of the
           # request. See the
@@ -318,6 +345,8 @@ module Telnyx
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method::OrSymbol,
               path_parameters:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters::OrHash,
+              preset_body_fields: T::Hash[Symbol, T.anything],
+              preset_query_params: T::Hash[Symbol, T.anything],
               query_parameters:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters::OrHash,
               store_fields_as_variables:
@@ -365,6 +394,23 @@ module Telnyx
             # [JSON Schema reference](https://json-schema.org/understanding-json-schema) for
             # documentation about the format
             path_parameters: nil,
+            # Body fields supplied by the assistant configuration rather than by the model.
+            # They are never advertised in the tool definition, so the LLM can neither see nor
+            # set them, and they take precedence over a `body_parameters` value of the same
+            # name. Values support mustache templating, so they can hold dynamic variables
+            # (`{{customer_id}}`) and integration secrets
+            # (`{{#integration_secret}}my-secret{{/integration_secret}}`). Not sent on `GET`
+            # requests, which carry no body.
+            preset_body_fields: nil,
+            # Query string parameters supplied by the assistant configuration rather than by
+            # the model. They are never advertised in the tool definition, so the LLM can
+            # neither see nor set them, and they take precedence over a `query_parameters`
+            # value of the same name. Values support mustache templating, so they can hold
+            # dynamic variables (`{{telnyx_end_user_target}}`) and integration secrets
+            # (`{{#integration_secret}}my-secret{{/integration_secret}}`). Unlike values
+            # templated directly into the `url`, these are percent-encoded, so a value such as
+            # `+15551234567` survives the round trip.
+            preset_query_params: nil,
             # The query parameters the webhook tool accepts, described as a JSON Schema
             # object. These parameters will be passed to the webhook as the query of the
             # request. See the
@@ -406,6 +452,8 @@ module Telnyx
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::Method::OrSymbol,
                 path_parameters:
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::PathParameters,
+                preset_body_fields: T::Hash[Symbol, T.anything],
+                preset_query_params: T::Hash[Symbol, T.anything],
                 query_parameters:
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
                 store_fields_as_variables:

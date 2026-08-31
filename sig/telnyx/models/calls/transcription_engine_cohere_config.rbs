@@ -1,0 +1,75 @@
+module Telnyx
+  module Models
+    module Calls
+      type transcription_engine_cohere_config =
+        {
+          language: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::language,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_model
+        }
+
+      class TranscriptionEngineCohereConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader language: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::language?
+
+        def language=: (
+          Telnyx::Models::Calls::TranscriptionEngineCohereConfig::language
+        ) -> Telnyx::Models::Calls::TranscriptionEngineCohereConfig::language
+
+        attr_reader transcription_engine: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_engine?
+
+        def transcription_engine=: (
+          Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_engine
+        ) -> Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_engine
+
+        attr_reader transcription_model: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_model?
+
+        def transcription_model=: (
+          Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_model
+        ) -> Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_model
+
+        def initialize: (
+          ?language: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::language,
+          ?transcription_engine: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_engine,
+          ?transcription_model: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_model
+        ) -> void
+
+        def to_hash: -> {
+          language: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::language,
+          transcription_engine: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_engine,
+          transcription_model: Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_model
+        }
+
+        type language = :ar | :en
+
+        module Language
+          extend Telnyx::Internal::Type::Enum
+
+          AR: :ar
+          EN: :en
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineCohereConfig::language]
+        end
+
+        type transcription_engine = :Cohere
+
+        module TranscriptionEngine
+          extend Telnyx::Internal::Type::Enum
+
+          COHERE: :Cohere
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_engine]
+        end
+
+        type transcription_model = :"cohere/ar-stt"
+
+        module TranscriptionModel
+          extend Telnyx::Internal::Type::Enum
+
+          COHERE_AR_STT: :"cohere/ar-stt"
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineCohereConfig::transcription_model]
+        end
+      end
+    end
+  end
+end

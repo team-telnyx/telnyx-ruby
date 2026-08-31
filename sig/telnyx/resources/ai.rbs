@@ -29,6 +29,8 @@ module Telnyx
 
       attr_reader anthropic: Telnyx::Resources::AI::Anthropic
 
+      attr_reader knowledge: Telnyx::Resources::AI::Knowledge
+
       def retrieve_conversation_histories: (
         q: String,
         ?filter_ingested_at_gte: Time,

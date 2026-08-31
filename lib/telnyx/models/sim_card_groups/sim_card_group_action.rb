@@ -82,10 +82,18 @@ module Telnyx
           #   @return [String, nil]
           optional :private_wireless_gateway_id, String
 
-          # @!method initialize(private_wireless_gateway_id: nil)
+          # @!attribute wireless_blocklist_id
+          #   The identification of the related Wireless Blocklist resource.
+          #
+          #   @return [String, nil]
+          optional :wireless_blocklist_id, String
+
+          # @!method initialize(private_wireless_gateway_id: nil, wireless_blocklist_id: nil)
           #   A JSON object representation of the action params.
           #
           #   @param private_wireless_gateway_id [String] The identification of the related Private Wireless Gateway resource.
+          #
+          #   @param wireless_blocklist_id [String] The identification of the related Wireless Blocklist resource.
         end
 
         # @see Telnyx::Models::SimCardGroups::SimCardGroupAction#status

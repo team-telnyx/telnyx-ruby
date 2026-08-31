@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class AI
+      class Knowledge
+        class Collections
+          def retrieve_documents: (
+            String slug,
+            ?filter: ::Hash[Symbol, top],
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?query: String,
+            ?retrieval_type: Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsParams::retrieval_type,
+            ?sources: String,
+            ?top_k: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Knowledge::CollectionRetrieveDocumentsResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

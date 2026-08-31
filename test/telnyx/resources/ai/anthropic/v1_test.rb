@@ -10,7 +10,7 @@ class Telnyx::Test::Resources::AI::Anthropic::V1Test < Telnyx::Test::ResourceTes
       @telnyx.ai.anthropic.v1.messages(
         max_tokens: 1024,
         messages: [{role: "bar", content: "bar"}],
-        model: "zai-org/GLM-5.2"
+        model: "zai-org/GLM-5.3-Flash"
       )
 
     assert_pattern do

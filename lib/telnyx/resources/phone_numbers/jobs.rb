@@ -29,12 +29,14 @@ module Telnyx
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::PhoneNumbers::JobListParams} for more details.
         #
-        # Returns background jobs that operate on phone numbers. Results can be filtered
-        # by job type and sorted by creation time, and include pagination metadata.
+        # Returns background jobs that operate on phone numbers. Filter by job type,
+        # target phone numbers, or job status, and sort by creation time. Multiple
+        # phone-number or status values use OR semantics within that filter; different
+        # filter categories use AND semantics. Results include pagination metadata.
         #
         # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #
-        # @param filter [Telnyx::Models::PhoneNumbers::JobListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[type]
+        # @param filter [Telnyx::Models::PhoneNumbers::JobListParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[type], filt
         #
         # @param page_number [Integer]
         #

@@ -280,7 +280,6 @@ Methods:
 - <code title="get /ai/collections">client.ai.collections.<a href="./lib/telnyx/resources/ai/collections.rb">list</a>(\*\*params)</code>
 - <code title="delete /ai/collections/{uuid}">client.ai.collections.<a href="./lib/telnyx/resources/ai/collections.rb">delete</a>(\*\*params)</code>
 - <code title="get /ai/collections/{uuid}">client.ai.collections.<a href="./lib/telnyx/resources/ai/collections.rb">retrieve_by_id</a>(\*\*params)</code>
-- <code title="get /ai/collections/{slug}/documents">client.ai.collections.<a href="./lib/telnyx/resources/ai/collections.rb">retrieve_documents</a>(\*\*params)</code>
 
 ### Settings
 
@@ -522,6 +521,14 @@ Methods:
 Methods:
 
 - <code title="post /ai/anthropic/v1/messages">client.ai.anthropic.v1.<a href="./lib/telnyx/resources/ai/anthropic/v1.rb">messages</a>(\*\*params)</code>
+
+## Knowledge
+
+### Collections
+
+Methods:
+
+- <code title="get /ai/knowledge/collections/{slug}/documents">client.ai.knowledge.collections.<a href="./lib/telnyx/resources/ai/knowledge/collections.rb">retrieve_documents</a>(\*\*params)</code>
 
 # AuditEvents
 

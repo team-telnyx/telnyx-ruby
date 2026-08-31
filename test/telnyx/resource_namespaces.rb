@@ -54,6 +54,9 @@ module Telnyx
         module Integrations
         end
 
+        module Knowledge
+        end
+
         module Missions
           module Runs
           end
@@ -167,6 +170,9 @@ module Telnyx
       end
 
       module Integrations
+      end
+
+      module Knowledge
       end
 
       module Kvs

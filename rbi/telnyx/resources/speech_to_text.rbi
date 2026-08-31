@@ -49,13 +49,14 @@ module Telnyx
       # `Authorization: Bearer <API_KEY>` header.
       #
       # Supported engines: `Azure`, `Deepgram`, `Google`, `Telnyx`, `xAI`,
-      # `Speechmatics`, `Soniox`, `Parakeet`, `Humain`, `Reson8`.
+      # `Speechmatics`, `Soniox`, `Parakeet`, `Humain`, `Reson8`, `Cohere`.
       #
       # **Connection flow:**
       #
       # 1. Open WebSocket with query parameters specifying engine, input format, and
       #    language.
-      # 2. Send binary audio frames (mp3/wav format).
+      # 2. Send binary audio frames (mp3, wav, linear16, or linear32 format, per
+      #    `input_format`).
       # 3. Receive JSON transcript frames with `transcript`, `is_final`, and
       #    `confidence` fields.
       # 4. Close connection when done.
@@ -73,6 +74,7 @@ module Telnyx
           model:
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::OrSymbol,
           redact: String,
+          sample_rate: Integer,
           request_options: Telnyx::RequestOptions::OrHash
         ).void
       end
@@ -95,13 +97,19 @@ module Telnyx
         # Comma-separated list of keywords to boost in the transcription. The engine will
         # prioritize recognition of these words.
         keywords: nil,
-        # The language spoken in the audio stream.
+        # The language spoken in the audio stream. For `cohere/ar-stt`, this must be `ar`
+        # or `en` — unlike other engines, Cohere does not auto-detect the language, and
+        # rejects unsupported values including `auto`; omitting it defaults to `ar`.
         language: nil,
         # The specific model to use within the selected transcription engine.
         model: nil,
         # Enable redaction of sensitive information (e.g., PCI data, SSN) from
         # transcription results. Supported values depend on the transcription engine.
         redact: nil,
+        # Audio sample rate in Hz. Required when `input_format` is a raw encoding
+        # (`linear16`, `linear32`) — those formats carry no header metadata. Ignored for
+        # container formats (`mp3`, `wav`), which self-describe their rate.
+        sample_rate: nil,
         request_options: {}
       )
       end

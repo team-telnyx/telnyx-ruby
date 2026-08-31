@@ -1,16 +1,18 @@
 module Telnyx
   module Models
     type wireless_blocklist_retrieve_response =
-      { data: Telnyx::WirelessBlocklist }
+      { data: Telnyx::WirelessWirelessBlocklist }
 
     class WirelessBlocklistRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::WirelessBlocklist?
+      attr_reader data: Telnyx::WirelessWirelessBlocklist?
 
-      def data=: (Telnyx::WirelessBlocklist) -> Telnyx::WirelessBlocklist
+      def data=: (
+        Telnyx::WirelessWirelessBlocklist
+      ) -> Telnyx::WirelessWirelessBlocklist
 
-      def initialize: (?data: Telnyx::WirelessBlocklist) -> void
+      def initialize: (?data: Telnyx::WirelessWirelessBlocklist) -> void
 
-      def to_hash: -> { data: Telnyx::WirelessBlocklist }
+      def to_hash: -> { data: Telnyx::WirelessWirelessBlocklist }
     end
   end
 end

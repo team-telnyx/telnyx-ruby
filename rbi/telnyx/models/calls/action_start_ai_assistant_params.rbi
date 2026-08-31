@@ -114,8 +114,10 @@ module Telnyx
         end
         attr_writer :participants
 
-        # When `true`, a webhook is sent each time the conversation message history is
-        # updated.
+        # When `true`, a `call.ai_gather.message_history_updated` webhook carrying the
+        # full message history is sent each time the conversation message history is
+        # updated. The assistant's own `telephony_settings.send_message_history_updates`
+        # overrides this value when it is set.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :send_message_history_updates
 
@@ -182,8 +184,10 @@ module Telnyx
           message_history: nil,
           # A list of participants to add to the conversation when it starts.
           participants: nil,
-          # When `true`, a webhook is sent each time the conversation message history is
-          # updated.
+          # When `true`, a `call.ai_gather.message_history_updated` webhook carrying the
+          # full message history is sent each time the conversation message history is
+          # updated. The assistant's own `telephony_settings.send_message_history_updates`
+          # overrides this value when it is set.
           send_message_history_updates: nil,
           # The settings associated with speech to text for the voice assistant. This is
           # only relevant if the assistant uses a text-to-text language model. Any assistant

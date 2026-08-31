@@ -28,6 +28,8 @@ module Telnyx
               model: String,
               n: Float,
               presence_penalty: Float,
+              reasoning_effort:
+                Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
               response_format:
                 Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash,
               seed: Integer,
@@ -96,6 +98,12 @@ module Telnyx
             n: nil,
             # Higher values will penalize the model from repeating the same output tokens.
             presence_penalty: nil,
+            # Controls the reasoning effort for models that support it. When set, the model
+            # spends more or less compute on internal reasoning before generating its
+            # response. Supported values: none, minimal, low, medium, high, xhigh, max. Not
+            # all models support all values; unsupported values are rejected with a 400 error.
+            # When omitted, reasoning models use their default effort level.
+            reasoning_effort: nil,
             # Use this is you want to guarantee a JSON output without defining a schema. For
             # control over the schema, use `guided_json`.
             response_format: nil,

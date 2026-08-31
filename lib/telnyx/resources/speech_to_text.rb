@@ -56,18 +56,19 @@ module Telnyx
       # `Authorization: Bearer <API_KEY>` header.
       #
       # Supported engines: `Azure`, `Deepgram`, `Google`, `Telnyx`, `xAI`,
-      # `Speechmatics`, `Soniox`, `Parakeet`, `Humain`, `Reson8`.
+      # `Speechmatics`, `Soniox`, `Parakeet`, `Humain`, `Reson8`, `Cohere`.
       #
       # **Connection flow:**
       #
       # 1. Open WebSocket with query parameters specifying engine, input format, and
       #    language.
-      # 2. Send binary audio frames (mp3/wav format).
+      # 2. Send binary audio frames (mp3, wav, linear16, or linear32 format, per
+      #    `input_format`).
       # 3. Receive JSON transcript frames with `transcript`, `is_final`, and
       #    `confidence` fields.
       # 4. Close connection when done.
       #
-      # @overload retrieve_transcription(input_format:, transcription_engine:, endpointing: nil, interim_results: nil, keyterm: nil, keywords: nil, language: nil, model: nil, redact: nil, request_options: {})
+      # @overload retrieve_transcription(input_format:, transcription_engine:, endpointing: nil, interim_results: nil, keyterm: nil, keywords: nil, language: nil, model: nil, redact: nil, sample_rate: nil, request_options: {})
       #
       # @param input_format [Symbol, Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::InputFormat] The format of input audio stream.
       #
@@ -81,11 +82,13 @@ module Telnyx
       #
       # @param keywords [String] Comma-separated list of keywords to boost in the transcription. The engine will
       #
-      # @param language [String] The language spoken in the audio stream.
+      # @param language [String] The language spoken in the audio stream. For `cohere/ar-stt`, this must be `ar`
       #
       # @param model [Symbol, Telnyx::Models::SpeechToTextRetrieveTranscriptionParams::Model] The specific model to use within the selected transcription engine.
       #
       # @param redact [String] Enable redaction of sensitive information (e.g., PCI data, SSN) from transcripti
+      #
+      # @param sample_rate [Integer] Audio sample rate in Hz. Required when `input_format` is a raw encoding (`linear
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
