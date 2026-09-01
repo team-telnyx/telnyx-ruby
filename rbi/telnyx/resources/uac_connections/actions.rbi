@@ -5,9 +5,9 @@ module Telnyx
     class UacConnections
       # UAC connection operations
       class Actions
-        # Checks the registration status for a UAC connection (`registration_status`) as
-        # well as the timestamp for the last SIP registration event
-        # (`registration_status_updated_at`).
+        # Returns the live SIP registration status for a UAC connection. Reports whether
+        # the endpoint is currently registered (`status`) and the timestamp of the last
+        # SIP registration event (`last_registration`).
         sig do
           params(
             id: String,

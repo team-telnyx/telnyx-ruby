@@ -78,6 +78,16 @@ module Telnyx
         #   @return [Array<Telnyx::Models::CustomSipHeader>, nil]
         optional :custom_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CustomSipHeader] }
 
+        # @!attribute diversion
+        #   The number the inbound call being transferred was originally received on, in
+        #   +E164 format. Supplying it lets an unverified non-Telnyx `from` be used as the
+        #   caller id, provided that number is still on an active inbound call to this
+        #   `diversion` number for your account. The `diversion` number itself must be one
+        #   you own or have verified.
+        #
+        #   @return [String, nil]
+        optional :diversion, String
+
         # @!attribute early_media
         #   If set to false, early media will not be passed to the originating leg.
         #
@@ -336,7 +346,7 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::WebhookURLsMethod, nil]
         optional :webhook_urls_method, enum: -> { Telnyx::Calls::ActionTransferParams::WebhookURLsMethod }
 
-        # @!method initialize(call_control_id:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
+        # @!method initialize(call_control_id:, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, diversion: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionTransferParams} for more details.
         #
@@ -355,6 +365,8 @@ module Telnyx
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         #   @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP INVITE.
+        #
+        #   @param diversion [String] The number the inbound call being transferred was originally received on, in +E1
         #
         #   @param early_media [Boolean] If set to false, early media will not be passed to the originating leg.
         #

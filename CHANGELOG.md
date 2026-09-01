@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.165.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.164.0...v5.165.0) (2026-09-01)
+
+
+### Features
+
+* promote from staging 9d1efe7 ([d16fd9d](https://github.com/team-telnyx/telnyx-ruby/commit/d16fd9d7cff7b0205653440a32023153b7710b1f))
+
+
+### Bug Fixes
+
+* **ci:** retry transient Steep API errors ([#355](https://github.com/team-telnyx/telnyx-ruby/issues/355)) ([25ec469](https://github.com/team-telnyx/telnyx-ruby/commit/25ec4693e5110cdc0bf7849c8cdcfab7ac1d46ce))
+* **ci:** skip post-merge release readiness ([#352](https://github.com/team-telnyx/telnyx-ruby/issues/352)) ([bed03fd](https://github.com/team-telnyx/telnyx-ruby/commit/bed03fd1c162112e4a1f254687d0c5ca9d42cef8))
+
 ## [5.164.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.163.0...v5.164.0) (2026-08-31)
 
 

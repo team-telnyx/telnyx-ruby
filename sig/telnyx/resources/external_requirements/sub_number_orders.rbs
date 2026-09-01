@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class ExternalRequirements
+      class SubNumberOrders
+        def retrieve: (
+          String sub_number_order_id,
+          regulatory_requirement_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse
+
+        def update: (
+          String sub_number_order_id,
+          regulatory_requirement_id: String,
+          requirement: Telnyx::ExternalRequirements::SubNumberOrderUpdateParams::Requirement,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -4,8 +4,8 @@ module Telnyx
   module Models
     class ConnectionRtcpSettings < Telnyx::Internal::Type::BaseModel
       # @!attribute capture_enabled
-      #   BETA - Enable the capture and storage of RTCP messages to create QoS reports on
-      #   the Telnyx Mission Control Portal.
+      #   Enable the capture and storage of RTCP messages to create QoS reports on the
+      #   Telnyx Mission Control Portal.
       #
       #   @return [Boolean, nil]
       optional :capture_enabled, Telnyx::Internal::Type::Boolean
@@ -27,7 +27,7 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ConnectionRtcpSettings} for more details.
       #
-      #   @param capture_enabled [Boolean] BETA - Enable the capture and storage of RTCP messages to create QoS reports on
+      #   @param capture_enabled [Boolean] Enable the capture and storage of RTCP messages to create QoS reports on the Tel
       #
       #   @param port [Symbol, Telnyx::Models::ConnectionRtcpSettings::Port] RTCP port by default is rtp+1, it can also be set to rtcp-mux
       #

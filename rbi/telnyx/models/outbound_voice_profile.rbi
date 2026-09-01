@@ -30,8 +30,8 @@ module Telnyx
       sig { params(call_recording: Telnyx::OutboundCallRecording::OrHash).void }
       attr_writer :call_recording
 
-      # (BETA) Specifies the time window and call limits for calls made using this
-      # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+      # Specifies the time window and call limits for calls made using this outbound
+      # voice profile. Note that all times are UTC in 24-hour clock time.
       sig { returns(T.nilable(Telnyx::OutboundVoiceProfile::CallingWindow)) }
       attr_reader :calling_window
 
@@ -175,8 +175,8 @@ module Telnyx
         # null (for no group assigned).
         billing_group_id: nil,
         call_recording: nil,
-        # (BETA) Specifies the time window and call limits for calls made using this
-        # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        # Specifies the time window and call limits for calls made using this outbound
+        # voice profile. Note that all times are UTC in 24-hour clock time.
         calling_window: nil,
         # Must be no more than your global concurrent call limit. Null means no limit.
         concurrent_call_limit: nil,
@@ -250,32 +250,32 @@ module Telnyx
             )
           end
 
-        # (BETA) The maximum number of calls that can be initiated to a single called
-        # party (CLD) within the calling window. A null value means no limit.
+        # The maximum number of calls that can be initiated to a single called party (CLD)
+        # within the calling window. A null value means no limit.
         sig { returns(T.nilable(Integer)) }
         attr_reader :calls_per_cld
 
         sig { params(calls_per_cld: Integer).void }
         attr_writer :calls_per_cld
 
-        # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no
-        # longer allowed to start.
+        # The UTC time of day (in HH:MM format, 24-hour clock) when calls are no longer
+        # allowed to start.
         sig { returns(T.nilable(String)) }
         attr_reader :end_time
 
         sig { params(end_time: String).void }
         attr_writer :end_time
 
-        # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are
-        # allowed to start.
+        # The UTC time of day (in HH:MM format, 24-hour clock) when calls are allowed to
+        # start.
         sig { returns(T.nilable(String)) }
         attr_reader :start_time
 
         sig { params(start_time: String).void }
         attr_writer :start_time
 
-        # (BETA) Specifies the time window and call limits for calls made using this
-        # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        # Specifies the time window and call limits for calls made using this outbound
+        # voice profile. Note that all times are UTC in 24-hour clock time.
         sig do
           params(
             calls_per_cld: Integer,
@@ -284,14 +284,14 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # (BETA) The maximum number of calls that can be initiated to a single called
-          # party (CLD) within the calling window. A null value means no limit.
+          # The maximum number of calls that can be initiated to a single called party (CLD)
+          # within the calling window. A null value means no limit.
           calls_per_cld: nil,
-          # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no
-          # longer allowed to start.
-          end_time: nil,
-          # (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are
+          # The UTC time of day (in HH:MM format, 24-hour clock) when calls are no longer
           # allowed to start.
+          end_time: nil,
+          # The UTC time of day (in HH:MM format, 24-hour clock) when calls are allowed to
+          # start.
           start_time: nil
         )
         end

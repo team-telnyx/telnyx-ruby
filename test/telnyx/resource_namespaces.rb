@@ -157,6 +157,9 @@ module Telnyx
       module ExternalConnections
       end
 
+      module ExternalRequirements
+      end
+
       module Faxes
       end
 

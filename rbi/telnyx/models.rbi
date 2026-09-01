@@ -881,6 +881,8 @@ module Telnyx
   ExternalConnectionUpdateParams =
     Telnyx::Models::ExternalConnectionUpdateParams
 
+  ExternalRequirements = Telnyx::Models::ExternalRequirements
+
   ExternalVoiceIntegrationsPaginationMeta =
     Telnyx::Models::ExternalVoiceIntegrationsPaginationMeta
 
@@ -2013,9 +2015,6 @@ module Telnyx
   SiprecConnectorRetrieveParams = Telnyx::Models::SiprecConnectorRetrieveParams
 
   SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
-
-  SipRegistrationStatusRetrieveParams =
-    Telnyx::Models::SipRegistrationStatusRetrieveParams
 
   SoundModifications = Telnyx::Models::SoundModifications
 

@@ -202,6 +202,17 @@ module Telnyx
       sig { params(dialogflow_config: Telnyx::DialogflowConfig::OrHash).void }
       attr_writer :dialogflow_config
 
+      # The number the inbound call being transferred was originally received on, in
+      # +E164 format. Supplying it lets an unverified non-Telnyx `from` be used as the
+      # caller id, provided that number is still on an active inbound call to this
+      # `diversion` number for your account. The `diversion` number itself must be one
+      # you own or have verified.
+      sig { returns(T.nilable(String)) }
+      attr_reader :diversion
+
+      sig { params(diversion: String).void }
+      attr_writer :diversion
+
       # Enables Dialogflow for the current call. The default value is false.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :enable_dialogflow
@@ -713,6 +724,7 @@ module Telnyx
           custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
           deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection::OrHash,
           dialogflow_config: Telnyx::DialogflowConfig::OrHash,
+          diversion: String,
           enable_dialogflow: T::Boolean,
           from_display_name: String,
           link_to: String,
@@ -857,6 +869,12 @@ module Telnyx
         # webhook.
         deepfake_detection: nil,
         dialogflow_config: nil,
+        # The number the inbound call being transferred was originally received on, in
+        # +E164 format. Supplying it lets an unverified non-Telnyx `from` be used as the
+        # caller id, provided that number is still on an active inbound call to this
+        # `diversion` number for your account. The `diversion` number itself must be one
+        # you own or have verified.
+        diversion: nil,
         # Enables Dialogflow for the current call. The default value is false.
         enable_dialogflow: nil,
         # The `from_display_name` string to be used as the caller id name (SIP From
@@ -1043,6 +1061,7 @@ module Telnyx
             custom_headers: T::Array[Telnyx::CustomSipHeader],
             deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
             dialogflow_config: Telnyx::DialogflowConfig,
+            diversion: String,
             enable_dialogflow: T::Boolean,
             from_display_name: String,
             link_to: String,

@@ -18,7 +18,7 @@ module Telnyx
       #
       # @param call_recording [Telnyx::Models::OutboundCallRecording]
       #
-      # @param calling_window [Telnyx::Models::OutboundVoiceProfileCreateParams::CallingWindow] (BETA) Specifies the time window and call limits for calls made using this outbo
+      # @param calling_window [Telnyx::Models::OutboundVoiceProfileCreateParams::CallingWindow] Specifies the time window and call limits for calls made using this outbound voi
       #
       # @param concurrent_call_limit [Integer, nil] Must be no more than your global concurrent call limit. Null means no limit.
       #
@@ -91,7 +91,7 @@ module Telnyx
       #
       # @param call_recording [Telnyx::Models::OutboundCallRecording]
       #
-      # @param calling_window [Telnyx::Models::OutboundVoiceProfileUpdateParams::CallingWindow] (BETA) Specifies the time window and call limits for calls made using this outbo
+      # @param calling_window [Telnyx::Models::OutboundVoiceProfileUpdateParams::CallingWindow] Specifies the time window and call limits for calls made using this outbound voi
       #
       # @param concurrent_call_limit [Integer, nil] Must be no more than your global concurrent call limit. Null means no limit.
       #

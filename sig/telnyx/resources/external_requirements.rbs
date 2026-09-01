@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class ExternalRequirements
+      attr_reader sub_number_orders: Telnyx::Resources::ExternalRequirements::SubNumberOrders
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

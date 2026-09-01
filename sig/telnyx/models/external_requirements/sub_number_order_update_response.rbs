@@ -1,0 +1,75 @@
+module Telnyx
+  module Models
+    module ExternalRequirements
+      type sub_number_order_update_response =
+        {
+          data: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data
+        }
+
+      class SubNumberOrderUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data?
+
+        def data=: (
+          Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data
+        ) -> Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data
+        }
+
+        type data =
+          {
+            regulatory_requirement_id: String,
+            requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data::RequirementAction,
+            sub_order_id: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader regulatory_requirement_id: String?
+
+          def regulatory_requirement_id=: (String) -> String
+
+          attr_reader requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data::RequirementAction?
+
+          def requirement_action=: (
+            Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data::RequirementAction
+          ) -> Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data::RequirementAction
+
+          attr_reader sub_order_id: String?
+
+          def sub_order_id=: (String) -> String
+
+          def initialize: (
+            ?regulatory_requirement_id: String,
+            ?requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data::RequirementAction,
+            ?sub_order_id: String
+          ) -> void
+
+          def to_hash: -> {
+            regulatory_requirement_id: String,
+            requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderUpdateResponse::Data::RequirementAction,
+            sub_order_id: String
+          }
+
+          type requirement_action = { type: String, value: String? }
+
+          class RequirementAction < Telnyx::Internal::Type::BaseModel
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            attr_accessor value: String?
+
+            def initialize: (?type: String, ?value: String?) -> void
+
+            def to_hash: -> { type: String, value: String? }
+          end
+        end
+      end
+    end
+  end
+end

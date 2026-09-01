@@ -672,10 +672,6 @@ module Telnyx
     # @return [Telnyx::Resources::VoiceSDKCallReports]
     attr_reader :voice_sdk_call_reports
 
-    # UAC connection operations
-    # @return [Telnyx::Resources::SipRegistrationStatus]
-    attr_reader :sip_registration_status
-
     # Static reference values the API accepts: call reasons, document types, rejection
     # types.
     # @return [Telnyx::Resources::CallReasons]
@@ -735,6 +731,9 @@ module Telnyx
 
     # @return [Telnyx::Resources::MeetingSessions]
     attr_reader :meeting_sessions
+
+    # @return [Telnyx::Resources::ExternalRequirements]
+    attr_reader :external_requirements
 
     # @api private
     #
@@ -1011,7 +1010,6 @@ module Telnyx
       @pronunciation_dicts = Telnyx::Resources::PronunciationDicts.new(client: self)
       @uac_connections = Telnyx::Resources::UacConnections.new(client: self)
       @voice_sdk_call_reports = Telnyx::Resources::VoiceSDKCallReports.new(client: self)
-      @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
       @call_reasons = Telnyx::Resources::CallReasons.new(client: self)
       @dir = Telnyx::Resources::Dir.new(client: self)
       @infringement_claims = Telnyx::Resources::InfringementClaims.new(client: self)
@@ -1027,6 +1025,7 @@ module Telnyx
       @pricing = Telnyx::Resources::Pricing.new(client: self)
       @web_search = Telnyx::Resources::WebSearch.new(client: self)
       @meeting_sessions = Telnyx::Resources::MeetingSessions.new(client: self)
+      @external_requirements = Telnyx::Resources::ExternalRequirements.new(client: self)
     end
   end
 end

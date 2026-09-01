@@ -19,6 +19,7 @@ module Telnyx
         custom_headers: ::Array[Telnyx::CustomSipHeader],
         deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         dialogflow_config: Telnyx::DialogflowConfig,
+        diversion: String,
         enable_dialogflow: bool,
         from_display_name: String,
         link_to: String,
@@ -150,6 +151,10 @@ module Telnyx
       def dialogflow_config=: (
         Telnyx::DialogflowConfig
       ) -> Telnyx::DialogflowConfig
+
+      attr_reader diversion: String?
+
+      def diversion=: (String) -> String
 
       attr_reader enable_dialogflow: bool?
 
@@ -403,6 +408,7 @@ module Telnyx
         ?custom_headers: ::Array[Telnyx::CustomSipHeader],
         ?deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         ?dialogflow_config: Telnyx::DialogflowConfig,
+        ?diversion: String,
         ?enable_dialogflow: bool,
         ?from_display_name: String,
         ?link_to: String,
@@ -471,6 +477,7 @@ module Telnyx
         custom_headers: ::Array[Telnyx::CustomSipHeader],
         deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         dialogflow_config: Telnyx::DialogflowConfig,
+        diversion: String,
         enable_dialogflow: bool,
         from_display_name: String,
         link_to: String,
