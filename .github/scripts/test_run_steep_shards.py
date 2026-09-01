@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import importlib.util
+import io
 import tempfile
 import unittest
 from pathlib import Path
@@ -47,6 +48,49 @@ class FakeActionsApi:
 
 
 class RunSteepShardsTest(unittest.TestCase):
+    def test_retries_transient_github_server_errors_with_bounded_backoff(self):
+        module = load_module()
+        api = module.GitHubActionsApi("https://api.github.test", "owner/repo", "token")
+        transient = module.urllib.error.HTTPError(
+            "https://api.github.test", 502, "Server Error", {}, io.BytesIO(b'{"message":"Server Error"}')
+        )
+
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def read(self):
+                return b'{"workflow_runs":[]}'
+
+        with (
+            mock.patch.object(module.urllib.request, "urlopen", side_effect=[transient, Response()]) as request,
+            mock.patch.object(module.time, "sleep") as sleep,
+        ):
+            result = api._request("GET", "/actions/runs")
+
+        self.assertEqual(result, {"workflow_runs": []})
+        self.assertEqual(request.call_count, 2)
+        sleep.assert_called_once_with(2)
+
+    def test_does_not_retry_non_transient_github_api_errors(self):
+        module = load_module()
+        api = module.GitHubActionsApi("https://api.github.test", "owner/repo", "token")
+        permanent = module.urllib.error.HTTPError(
+            "https://api.github.test", 422, "Unprocessable", {}, io.BytesIO(b'{"message":"bad request"}')
+        )
+        with (
+            mock.patch.object(module.urllib.request, "urlopen", side_effect=permanent) as request,
+            mock.patch.object(module.time, "sleep") as sleep,
+            self.assertRaises(module.ApiError),
+        ):
+            api._request("POST", "/actions/workflows/ci.yml/dispatches", {})
+
+        self.assertEqual(request.call_count, 1)
+        sleep.assert_not_called()
+
     def test_installs_handlers_so_parent_cancellation_reaches_workers(self):
         module = load_module()
         with mock.patch.object(module.signal, "signal") as install:
