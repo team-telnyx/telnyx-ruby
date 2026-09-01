@@ -44,6 +44,21 @@ class RubyReleasePRGateTests(unittest.TestCase):
         self.assertNotIn("release-pr-auto-merge.yml", workflow)
         self.assertNotIn("Dispatch exact-head release PR gate", workflow)
 
+    def test_release_sync_preserves_generated_gemspec(self):
+        workflow = (ROOT / ".github/workflows/release-please.yml").read_text()
+        self.assertNotIn(
+            '"CHANGELOG.md" "lib/telnyx/version.rb" "README.md" "telnyx.gemspec"',
+            workflow,
+        )
+        self.assertNotIn(
+            "for f in CHANGELOG.md lib/telnyx/version.rb README.md telnyx.gemspec",
+            workflow,
+        )
+        self.assertIn(
+            'cmp --silent telnyx.gemspec <(git show origin/next:telnyx.gemspec)',
+            workflow,
+        )
+
     def test_readiness_remains_trusted_dry_run(self):
         workflow = (ROOT / ".github/workflows/release-pr-readiness.yml").read_text()
         self.assertIn("pull_request_target:", workflow)

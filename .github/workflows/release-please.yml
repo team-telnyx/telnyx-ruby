@@ -107,7 +107,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          RELEASE_FILES=("CHANGELOG.md" "lib/telnyx/version.rb" "README.md" "telnyx.gemspec" ".release-please-manifest.json")
+          # The gemspec is generated SDK code (including runtime dependencies),
+          # not release-only metadata. It must come from next unchanged.
+          RELEASE_FILES=("CHANGELOG.md" "lib/telnyx/version.rb" "README.md" ".release-please-manifest.json")
           git restore --source=refs/remotes/origin/release-base --staged --worktree -- "${RELEASE_FILES[@]}"
           SCAN_TREE=$(git write-tree)
           PROMOTE_SUBJECT=$(git log --format=%s --max-count=50 HEAD \
@@ -173,8 +175,8 @@ jobs:
           REPO: ${{ github.repository }}
           PR_NUM: ${{ steps.release-pr.outputs.pr_number }}
         run: |
-          # release-please creates a PR with only version bumps (CHANGELOG,
-          # version.rb, README, gemspec, CHANGELOG.md, .release-please-manifest.json).
+          # release-please creates a PR with release metadata updates (CHANGELOG,
+          # version.rb, README, and .release-please-manifest.json).
           # The actual SDK code changes are on `next` but NOT included in the
           # release PR. This step syncs `next` code into the release PR branch.
           #
@@ -215,7 +217,7 @@ jobs:
 
           # Save version-bump files from the release PR branch (release-please output)
           STASH_DIR=$(mktemp -d)
-          for f in CHANGELOG.md lib/telnyx/version.rb README.md telnyx.gemspec .release-please-manifest.json; do
+          for f in CHANGELOG.md lib/telnyx/version.rb README.md .release-please-manifest.json; do
             if [ -f "$f" ]; then
               mkdir -p "$STASH_DIR/$(dirname "$f")"
               cp "$f" "$STASH_DIR/$f"
@@ -231,7 +233,7 @@ jobs:
           git clean -fdx
 
           # Restore version-bump files from the release PR branch
-          for f in CHANGELOG.md lib/telnyx/version.rb README.md telnyx.gemspec .release-please-manifest.json; do
+          for f in CHANGELOG.md lib/telnyx/version.rb README.md .release-please-manifest.json; do
             if [ -f "$STASH_DIR/$f" ]; then
               mkdir -p "$(dirname "$f")"
               cp "$STASH_DIR/$f" "$f"
@@ -239,6 +241,13 @@ jobs:
             fi
           done
           rm -rf "$STASH_DIR"
+
+          # Runtime dependencies are generated SDK state, never release metadata.
+          # Fail closed if the release sync does not preserve next's exact gemspec.
+          if ! cmp --silent telnyx.gemspec <(git show origin/next:telnyx.gemspec); then
+            echo "::error::Release PR gemspec drifted from next"
+            exit 1
+          fi
 
           # Commit if there are changes
           if git diff --cached --quiet; then
