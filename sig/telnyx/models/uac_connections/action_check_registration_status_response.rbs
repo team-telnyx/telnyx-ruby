@@ -23,36 +23,28 @@ module Telnyx
 
         type data =
           {
-            ip_address: String,
-            last_registration: String,
-            port: Integer,
+            ip_address: String?,
+            last_registration: String?,
+            port: Integer?,
             record_type: String,
-            sip_username: String,
+            sip_username: String?,
             status: Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::status,
-            transport: String,
-            user_agent: String
+            transport: String?,
+            user_agent: String?
           }
 
         class Data < Telnyx::Internal::Type::BaseModel
-          attr_reader ip_address: String?
+          attr_accessor ip_address: String?
 
-          def ip_address=: (String) -> String
+          attr_accessor last_registration: String?
 
-          attr_reader last_registration: String?
-
-          def last_registration=: (String) -> String
-
-          attr_reader port: Integer?
-
-          def port=: (Integer) -> Integer
+          attr_accessor port: Integer?
 
           attr_reader record_type: String?
 
           def record_type=: (String) -> String
 
-          attr_reader sip_username: String?
-
-          def sip_username=: (String) -> String
+          attr_accessor sip_username: String?
 
           attr_reader status: Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::status?
 
@@ -60,34 +52,30 @@ module Telnyx
             Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::status
           ) -> Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::status
 
-          attr_reader transport: String?
+          attr_accessor transport: String?
 
-          def transport=: (String) -> String
-
-          attr_reader user_agent: String?
-
-          def user_agent=: (String) -> String
+          attr_accessor user_agent: String?
 
           def initialize: (
-            ?ip_address: String,
-            ?last_registration: String,
-            ?port: Integer,
+            ?ip_address: String?,
+            ?last_registration: String?,
+            ?port: Integer?,
             ?record_type: String,
-            ?sip_username: String,
+            ?sip_username: String?,
             ?status: Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::status,
-            ?transport: String,
-            ?user_agent: String
+            ?transport: String?,
+            ?user_agent: String?
           ) -> void
 
           def to_hash: -> {
-            ip_address: String,
-            last_registration: String,
-            port: Integer,
+            ip_address: String?,
+            last_registration: String?,
+            port: Integer?,
             record_type: String,
-            sip_username: String,
+            sip_username: String?,
             status: Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::status,
-            transport: String,
-            user_agent: String
+            transport: String?,
+            user_agent: String?
           }
 
           type status =

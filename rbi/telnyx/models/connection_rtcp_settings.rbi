@@ -8,8 +8,8 @@ module Telnyx
           T.any(Telnyx::ConnectionRtcpSettings, Telnyx::Internal::AnyHash)
         end
 
-      # BETA - Enable the capture and storage of RTCP messages to create QoS reports on
-      # the Telnyx Mission Control Portal.
+      # Enable the capture and storage of RTCP messages to create QoS reports on the
+      # Telnyx Mission Control Portal.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :capture_enabled
 
@@ -39,8 +39,8 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
-        # BETA - Enable the capture and storage of RTCP messages to create QoS reports on
-        # the Telnyx Mission Control Portal.
+        # Enable the capture and storage of RTCP messages to create QoS reports on the
+        # Telnyx Mission Control Portal.
         capture_enabled: nil,
         # RTCP port by default is rtp+1, it can also be set to rtcp-mux
         port: nil,

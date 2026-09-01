@@ -765,6 +765,8 @@ module Telnyx
 
   class ExternalConnectionUpdateParams = Telnyx::Models::ExternalConnectionUpdateParams
 
+  module ExternalRequirements = Telnyx::Models::ExternalRequirements
+
   class ExternalVoiceIntegrationsPaginationMeta = Telnyx::Models::ExternalVoiceIntegrationsPaginationMeta
 
   class Fax = Telnyx::Models::Fax
@@ -1774,8 +1776,6 @@ module Telnyx
   class SiprecConnectorRetrieveParams = Telnyx::Models::SiprecConnectorRetrieveParams
 
   class SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
-
-  class SipRegistrationStatusRetrieveParams = Telnyx::Models::SipRegistrationStatusRetrieveParams
 
   class SoundModifications = Telnyx::Models::SoundModifications
 

@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type transcription_settings_config =
         {
+          context: String,
           eager_eot_threshold: Float,
           enable_endpoint_detection: bool,
           end_of_turn_confidence_threshold: Float,
@@ -10,6 +11,7 @@ module Telnyx
           eot_timeout_ms: Integer,
           interim_results: bool,
           keyterm: String,
+          language_hints: ::Array[String],
           max_endpoint_delay_ms: Integer,
           max_turn_silence: Integer,
           min_turn_silence: Integer,
@@ -18,6 +20,10 @@ module Telnyx
         }
 
       class TranscriptionSettingsConfig < Telnyx::Internal::Type::BaseModel
+        attr_reader context: String?
+
+        def context=: (String) -> String
+
         attr_reader eager_eot_threshold: Float?
 
         def eager_eot_threshold=: (Float) -> Float
@@ -46,6 +52,10 @@ module Telnyx
 
         def keyterm=: (String) -> String
 
+        attr_reader language_hints: ::Array[String]?
+
+        def language_hints=: (::Array[String]) -> ::Array[String]
+
         attr_reader max_endpoint_delay_ms: Integer?
 
         def max_endpoint_delay_ms=: (Integer) -> Integer
@@ -67,6 +77,7 @@ module Telnyx
         def smart_format=: (bool) -> bool
 
         def initialize: (
+          ?context: String,
           ?eager_eot_threshold: Float,
           ?enable_endpoint_detection: bool,
           ?end_of_turn_confidence_threshold: Float,
@@ -74,6 +85,7 @@ module Telnyx
           ?eot_timeout_ms: Integer,
           ?interim_results: bool,
           ?keyterm: String,
+          ?language_hints: ::Array[String],
           ?max_endpoint_delay_ms: Integer,
           ?max_turn_silence: Integer,
           ?min_turn_silence: Integer,
@@ -82,6 +94,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          context: String,
           eager_eot_threshold: Float,
           enable_endpoint_detection: bool,
           end_of_turn_confidence_threshold: Float,
@@ -89,6 +102,7 @@ module Telnyx
           eot_timeout_ms: Integer,
           interim_results: bool,
           keyterm: String,
+          language_hints: ::Array[String],
           max_endpoint_delay_ms: Integer,
           max_turn_silence: Integer,
           min_turn_silence: Integer,

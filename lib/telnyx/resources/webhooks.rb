@@ -23,7 +23,7 @@ module Telnyx
           raise ArgumentError.new("Cannot verify a webhook without a key on either the client's public_key or passed in as an argument")
         end
 
-        ::StandardWebhooks::Webhook.new(key).verify(payload, headers)
+        Telnyx::Lib::WebhookVerification.verify_signature!(payload, headers, key)
 
         parsed = JSON.parse(payload, symbolize_names: true)
         Telnyx::Internal::Type::Converter.coerce(Telnyx::Models::UnwrapWebhookEvent, parsed)

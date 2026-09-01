@@ -1,0 +1,110 @@
+module Telnyx
+  module Models
+    module ExternalRequirements
+      type sub_number_order_retrieve_response =
+        {
+          data: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data
+        }
+
+      class SubNumberOrderRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data?
+
+        def data=: (
+          Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data
+        ) -> Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            fields_required: ::Array[Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::FieldsRequired],
+            regulatory_requirement_id: String,
+            requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::RequirementAction
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader fields_required: ::Array[Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::FieldsRequired]?
+
+          def fields_required=: (
+            ::Array[Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::FieldsRequired]
+          ) -> ::Array[Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::FieldsRequired]
+
+          attr_reader regulatory_requirement_id: String?
+
+          def regulatory_requirement_id=: (String) -> String
+
+          attr_reader requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::RequirementAction?
+
+          def requirement_action=: (
+            Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::RequirementAction
+          ) -> Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::RequirementAction
+
+          def initialize: (
+            ?fields_required: ::Array[Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::FieldsRequired],
+            ?regulatory_requirement_id: String,
+            ?requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::RequirementAction
+          ) -> void
+
+          def to_hash: -> {
+            fields_required: ::Array[Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::FieldsRequired],
+            regulatory_requirement_id: String,
+            requirement_action: Telnyx::Models::ExternalRequirements::SubNumberOrderRetrieveResponse::Data::RequirementAction
+          }
+
+          type fields_required =
+            { description: String, name: String, type: String, value: String? }
+
+          class FieldsRequired < Telnyx::Internal::Type::BaseModel
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            attr_accessor value: String?
+
+            def initialize: (
+              ?description: String,
+              ?name: String,
+              ?type: String,
+              ?value: String?
+            ) -> void
+
+            def to_hash: -> {
+              description: String,
+              name: String,
+              type: String,
+              value: String?
+            }
+          end
+
+          type requirement_action = { type: String, value: String? }
+
+          class RequirementAction < Telnyx::Internal::Type::BaseModel
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            attr_accessor value: String?
+
+            def initialize: (?type: String, ?value: String?) -> void
+
+            def to_hash: -> { type: String, value: String? }
+          end
+        end
+      end
+    end
+  end
+end

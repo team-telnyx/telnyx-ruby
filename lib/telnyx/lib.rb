@@ -11,4 +11,6 @@
 #
 # Add new custom modules below:
 
-require_relative "lib/webhooks_ed25519"
+require_relative "lib/webhook_verification_error"
+require_relative "lib/webhook_verification"
+require_relative "lib/websocket"

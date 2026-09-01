@@ -2800,12 +2800,6 @@ Methods:
 - <code title="get /voice_sdk_call_reports/{call_id}">client.voice_sdk_call_reports.<a href="./lib/telnyx/resources/voice_sdk_call_reports.rb">retrieve</a>(\*\*params)</code>
 - <code title="get /voice_sdk_call_reports">client.voice_sdk_call_reports.<a href="./lib/telnyx/resources/voice_sdk_call_reports.rb">list</a>(\*\*params)</code>
 
-# SipRegistrationStatus
-
-Methods:
-
-- <code title="get /sip_registration_status">client.sip_registration_status.<a href="./lib/telnyx/resources/sip_registration_status.rb">retrieve</a>(\*\*params)</code>
-
 # CallReasons
 
 Methods:
@@ -3109,3 +3103,12 @@ Methods:
 - <code title="post /meeting_sessions/{id}/artifacts">client.meeting_sessions.artifacts.<a href="./lib/telnyx/resources/meeting_sessions/artifacts.rb">create</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/artifacts/{artifact_id}">client.meeting_sessions.artifacts.<a href="./lib/telnyx/resources/meeting_sessions/artifacts.rb">retrieve</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/artifacts">client.meeting_sessions.artifacts.<a href="./lib/telnyx/resources/meeting_sessions/artifacts.rb">list</a>(\*\*params)</code>
+
+# ExternalRequirements
+
+## SubNumberOrders
+
+Methods:
+
+- <code title="get /external_requirements/{regulatory_requirement_id}/sub_number_orders/{sub_number_order_id}">client.external_requirements.sub_number_orders.<a href="./lib/telnyx/resources/external_requirements/sub_number_orders.rb">retrieve</a>(\*\*params)</code>
+- <code title="post /external_requirements/{regulatory_requirement_id}/sub_number_orders/{sub_number_order_id}">client.external_requirements.sub_number_orders.<a href="./lib/telnyx/resources/external_requirements/sub_number_orders.rb">update</a>(\*\*params)</code>

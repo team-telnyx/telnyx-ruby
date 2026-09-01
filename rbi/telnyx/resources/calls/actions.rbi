@@ -2286,6 +2286,7 @@ module Telnyx
             client_state: String,
             command_id: String,
             custom_headers: T::Array[Telnyx::CustomSipHeader::OrHash],
+            diversion: String,
             early_media: T::Boolean,
             from: String,
             from_display_name: String,
@@ -2373,6 +2374,12 @@ module Telnyx
           command_id: nil,
           # Custom headers to be added to the SIP INVITE.
           custom_headers: nil,
+          # The number the inbound call being transferred was originally received on, in
+          # +E164 format. Supplying it lets an unverified non-Telnyx `from` be used as the
+          # caller id, provided that number is still on an active inbound call to this
+          # `diversion` number for your account. The `diversion` number itself must be one
+          # you own or have verified.
+          diversion: nil,
           # If set to false, early media will not be passed to the originating leg.
           early_media: nil,
           # The `from` number to be used as the caller id presented to the destination (`to`

@@ -60,24 +60,15 @@ module Telnyx
 
           # The ip used during the SIP connection
           sig { returns(T.nilable(String)) }
-          attr_reader :ip_address
-
-          sig { params(ip_address: String).void }
-          attr_writer :ip_address
+          attr_accessor :ip_address
 
           # ISO 8601 formatted date indicating when the resource was last updated.
           sig { returns(T.nilable(String)) }
-          attr_reader :last_registration
-
-          sig { params(last_registration: String).void }
-          attr_writer :last_registration
+          attr_accessor :last_registration
 
           # The port of the SIP connection
           sig { returns(T.nilable(Integer)) }
-          attr_reader :port
-
-          sig { params(port: Integer).void }
-          attr_writer :port
+          attr_accessor :port
 
           # Identifies the type of the resource.
           sig { returns(T.nilable(String)) }
@@ -88,10 +79,7 @@ module Telnyx
 
           # The user name of the SIP connection
           sig { returns(T.nilable(String)) }
-          attr_reader :sip_username
-
-          sig { params(sip_username: String).void }
-          attr_writer :sip_username
+          attr_accessor :sip_username
 
           # The current registration status of your SIP connection
           sig do
@@ -113,29 +101,23 @@ module Telnyx
 
           # The protocol of the SIP connection
           sig { returns(T.nilable(String)) }
-          attr_reader :transport
-
-          sig { params(transport: String).void }
-          attr_writer :transport
+          attr_accessor :transport
 
           # The user agent of the SIP connection
           sig { returns(T.nilable(String)) }
-          attr_reader :user_agent
-
-          sig { params(user_agent: String).void }
-          attr_writer :user_agent
+          attr_accessor :user_agent
 
           sig do
             params(
-              ip_address: String,
-              last_registration: String,
-              port: Integer,
+              ip_address: T.nilable(String),
+              last_registration: T.nilable(String),
+              port: T.nilable(Integer),
               record_type: String,
-              sip_username: String,
+              sip_username: T.nilable(String),
               status:
                 Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::Status::OrSymbol,
-              transport: String,
-              user_agent: String
+              transport: T.nilable(String),
+              user_agent: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -161,15 +143,15 @@ module Telnyx
           sig do
             override.returns(
               {
-                ip_address: String,
-                last_registration: String,
-                port: Integer,
+                ip_address: T.nilable(String),
+                last_registration: T.nilable(String),
+                port: T.nilable(Integer),
                 record_type: String,
-                sip_username: String,
+                sip_username: T.nilable(String),
                 status:
                   Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::Status::TaggedSymbol,
-                transport: String,
-                user_agent: String
+                transport: T.nilable(String),
+                user_agent: T.nilable(String)
               }
             )
           end
