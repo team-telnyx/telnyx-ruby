@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.165.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.165.0...v5.165.0) (2026-09-01)
+
+
+### Features
+
+* promote from staging 9d1efe7 ([ec9acf0](https://github.com/team-telnyx/telnyx-ruby/commit/ec9acf02322e2a47b5410ba78dd81b5734eb927e))
+
+
+### Bug Fixes
+
+* **release:** preserve generated gemspec ([#357](https://github.com/team-telnyx/telnyx-ruby/issues/357)) ([0db381a](https://github.com/team-telnyx/telnyx-ruby/commit/0db381a00236e8a8a5e65a430947415b29e16b8e))
+
 ## [5.165.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.164.0...v5.165.0) (2026-09-01)
 
 
