@@ -19,19 +19,19 @@ module Telnyx
           #   The ip used during the SIP connection
           #
           #   @return [String, nil]
-          optional :ip_address, String
+          optional :ip_address, String, nil?: true
 
           # @!attribute last_registration
           #   ISO 8601 formatted date indicating when the resource was last updated.
           #
           #   @return [String, nil]
-          optional :last_registration, String
+          optional :last_registration, String, nil?: true
 
           # @!attribute port
           #   The port of the SIP connection
           #
           #   @return [Integer, nil]
-          optional :port, Integer
+          optional :port, Integer, nil?: true
 
           # @!attribute record_type
           #   Identifies the type of the resource.
@@ -43,7 +43,7 @@ module Telnyx
           #   The user name of the SIP connection
           #
           #   @return [String, nil]
-          optional :sip_username, String
+          optional :sip_username, String, nil?: true
 
           # @!attribute status
           #   The current registration status of your SIP connection
@@ -56,30 +56,30 @@ module Telnyx
           #   The protocol of the SIP connection
           #
           #   @return [String, nil]
-          optional :transport, String
+          optional :transport, String, nil?: true
 
           # @!attribute user_agent
           #   The user agent of the SIP connection
           #
           #   @return [String, nil]
-          optional :user_agent, String
+          optional :user_agent, String, nil?: true
 
           # @!method initialize(ip_address: nil, last_registration: nil, port: nil, record_type: nil, sip_username: nil, status: nil, transport: nil, user_agent: nil)
-          #   @param ip_address [String] The ip used during the SIP connection
+          #   @param ip_address [String, nil] The ip used during the SIP connection
           #
-          #   @param last_registration [String] ISO 8601 formatted date indicating when the resource was last updated.
+          #   @param last_registration [String, nil] ISO 8601 formatted date indicating when the resource was last updated.
           #
-          #   @param port [Integer] The port of the SIP connection
+          #   @param port [Integer, nil] The port of the SIP connection
           #
           #   @param record_type [String] Identifies the type of the resource.
           #
-          #   @param sip_username [String] The user name of the SIP connection
+          #   @param sip_username [String, nil] The user name of the SIP connection
           #
           #   @param status [Symbol, Telnyx::Models::UacConnections::ActionCheckRegistrationStatusResponse::Data::Status] The current registration status of your SIP connection
           #
-          #   @param transport [String] The protocol of the SIP connection
+          #   @param transport [String, nil] The protocol of the SIP connection
           #
-          #   @param user_agent [String] The user agent of the SIP connection
+          #   @param user_agent [String, nil] The user agent of the SIP connection
 
           # The current registration status of your SIP connection
           #

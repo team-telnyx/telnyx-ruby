@@ -263,6 +263,17 @@ module Telnyx
             #   @return [String, nil]
             optional :description, String
 
+            # @!attribute diversion
+            #   The number the inbound call was received on, forwarded so an unverified
+            #   non-Telnyx `from` can be used as the caller id -- typically to transfer out as
+            #   the original caller by pairing `from: "{{telnyx_end_user_target}}"` with
+            #   `diversion: "{{telnyx_agent_target}}"`. The caller id is only accepted while
+            #   that number is still on an active inbound call to this `diversion` number, and
+            #   the `diversion` number must be one you own or have verified.
+            #
+            #   @return [String, nil]
+            optional :diversion, String
+
             # @!attribute voicemail_detection
             #   Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             #   transferred call. Allows the assistant to detect when a voicemail system answers
@@ -304,7 +315,7 @@ module Telnyx
             #   @return [String, nil]
             optional :warm_transfer_instructions, String
 
-            # @!method initialize(from:, targets:, custom_headers: nil, description: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_acceptance: nil, warm_transfer_instructions: nil)
+            # @!method initialize(from:, targets:, custom_headers: nil, description: nil, diversion: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_acceptance: nil, warm_transfer_instructions: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer} for more details.
             #
@@ -315,6 +326,8 @@ module Telnyx
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
             #
             #   @param description [String] A description of the transfer tool. By default, Telnyx generates this automatica
+            #
+            #   @param diversion [String] The number the inbound call was received on, forwarded so an unverified non-Teln
             #
             #   @param voicemail_detection [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             #

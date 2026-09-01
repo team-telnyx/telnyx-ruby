@@ -539,6 +539,18 @@ module Telnyx
             sig { params(description: String).void }
             attr_writer :description
 
+            # The number the inbound call was received on, forwarded so an unverified
+            # non-Telnyx `from` can be used as the caller id -- typically to transfer out as
+            # the original caller by pairing `from: "{{telnyx_end_user_target}}"` with
+            # `diversion: "{{telnyx_agent_target}}"`. The caller id is only accepted while
+            # that number is still on an active inbound call to this `diversion` number, and
+            # the `diversion` number must be one you own or have verified.
+            sig { returns(T.nilable(String)) }
+            attr_reader :diversion
+
+            sig { params(diversion: String).void }
+            attr_writer :diversion
+
             # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
             # transferred call. Allows the assistant to detect when a voicemail system answers
             # the transferred call and take appropriate action.
@@ -612,6 +624,7 @@ module Telnyx
                     Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader::OrHash
                   ],
                 description: String,
+                diversion: String,
                 voicemail_detection:
                   Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection::OrHash,
                 warm_message_delay_ms: T.nilable(Integer),
@@ -636,6 +649,13 @@ module Telnyx
               # case the provided value is preserved. Most users should leave this empty and let
               # Telnyx manage it.
               description: nil,
+              # The number the inbound call was received on, forwarded so an unverified
+              # non-Telnyx `from` can be used as the caller id -- typically to transfer out as
+              # the original caller by pairing `from: "{{telnyx_end_user_target}}"` with
+              # `diversion: "{{telnyx_agent_target}}"`. The caller id is only accepted while
+              # that number is still on an active inbound call to this `diversion` number, and
+              # the `diversion` number must be one you own or have verified.
+              diversion: nil,
               # Configuration for voicemail detection (AMD - Answering Machine Detection) on the
               # transferred call. Allows the assistant to detect when a voicemail system answers
               # the transferred call and take appropriate action.
@@ -674,6 +694,7 @@ module Telnyx
                       Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader
                     ],
                   description: String,
+                  diversion: String,
                   voicemail_detection:
                     Telnyx::AI::AssistantTool::Transfer::Transfer::VoicemailDetection,
                   warm_message_delay_ms: T.nilable(Integer),

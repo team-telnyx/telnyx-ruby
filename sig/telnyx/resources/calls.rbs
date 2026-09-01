@@ -21,6 +21,7 @@ module Telnyx
         ?custom_headers: ::Array[Telnyx::CustomSipHeader],
         ?deepfake_detection: Telnyx::CallDialParams::DeepfakeDetection,
         ?dialogflow_config: Telnyx::DialogflowConfig,
+        ?diversion: String,
         ?enable_dialogflow: bool,
         ?from_display_name: String,
         ?link_to: String,

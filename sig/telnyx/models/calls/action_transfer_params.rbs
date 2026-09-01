@@ -11,6 +11,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           custom_headers: ::Array[Telnyx::CustomSipHeader],
+          diversion: String,
           early_media: bool,
           from: String,
           from_display_name: String,
@@ -84,6 +85,10 @@ module Telnyx
         def custom_headers=: (
           ::Array[Telnyx::CustomSipHeader]
         ) -> ::Array[Telnyx::CustomSipHeader]
+
+        attr_reader diversion: String?
+
+        def diversion=: (String) -> String
 
         attr_reader early_media: bool?
 
@@ -258,6 +263,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?diversion: String,
           ?early_media: bool,
           ?from: String,
           ?from_display_name: String,
@@ -303,6 +309,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           custom_headers: ::Array[Telnyx::CustomSipHeader],
+          diversion: String,
           early_media: bool,
           from: String,
           from_display_name: String,
