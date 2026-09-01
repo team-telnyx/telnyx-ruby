@@ -2800,12 +2800,6 @@ Methods:
 - <code title="get /voice_sdk_call_reports/{call_id}">client.voice_sdk_call_reports.<a href="./lib/telnyx/resources/voice_sdk_call_reports.rb">retrieve</a>(\*\*params)</code>
 - <code title="get /voice_sdk_call_reports">client.voice_sdk_call_reports.<a href="./lib/telnyx/resources/voice_sdk_call_reports.rb">list</a>(\*\*params)</code>
 
-# SipRegistrationStatus
-
-Methods:
-
-- <code title="get /sip_registration_status">client.sip_registration_status.<a href="./lib/telnyx/resources/sip_registration_status.rb">retrieve</a>(\*\*params)</code>
-
 # CallReasons
 
 Methods:

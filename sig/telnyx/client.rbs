@@ -348,8 +348,6 @@ module Telnyx
 
     attr_reader voice_sdk_call_reports: Telnyx::Resources::VoiceSDKCallReports
 
-    attr_reader sip_registration_status: Telnyx::Resources::SipRegistrationStatus
-
     attr_reader call_reasons: Telnyx::Resources::CallReasons
 
     attr_reader dir: Telnyx::Resources::Dir
