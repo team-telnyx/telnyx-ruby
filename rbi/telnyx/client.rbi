@@ -731,6 +731,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::MeetingSessions) }
     attr_reader :meeting_sessions
 
+    sig { returns(Telnyx::Resources::ExternalRequirements) }
+    attr_reader :external_requirements
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

@@ -26,8 +26,8 @@ module Telnyx
       optional :call_recording, -> { Telnyx::OutboundCallRecording }
 
       # @!attribute calling_window
-      #   (BETA) Specifies the time window and call limits for calls made using this
-      #   outbound voice profile. Note that all times are UTC in 24-hour clock time.
+      #   Specifies the time window and call limits for calls made using this outbound
+      #   voice profile. Note that all times are UTC in 24-hour clock time.
       #
       #   @return [Telnyx::Models::OutboundVoiceProfileCreateParams::CallingWindow, nil]
       optional :calling_window, -> { Telnyx::OutboundVoiceProfileCreateParams::CallingWindow }
@@ -106,7 +106,7 @@ module Telnyx
       #
       #   @param call_recording [Telnyx::Models::OutboundCallRecording]
       #
-      #   @param calling_window [Telnyx::Models::OutboundVoiceProfileCreateParams::CallingWindow] (BETA) Specifies the time window and call limits for calls made using this outbo
+      #   @param calling_window [Telnyx::Models::OutboundVoiceProfileCreateParams::CallingWindow] Specifies the time window and call limits for calls made using this outbound voi
       #
       #   @param concurrent_call_limit [Integer, nil] Must be no more than your global concurrent call limit. Null means no limit.
       #
@@ -132,22 +132,22 @@ module Telnyx
 
       class CallingWindow < Telnyx::Internal::Type::BaseModel
         # @!attribute calls_per_cld
-        #   (BETA) The maximum number of calls that can be initiated to a single called
-        #   party (CLD) within the calling window. A null value means no limit.
+        #   The maximum number of calls that can be initiated to a single called party (CLD)
+        #   within the calling window. A null value means no limit.
         #
         #   @return [Integer, nil]
         optional :calls_per_cld, Integer
 
         # @!attribute end_time
-        #   (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no
-        #   longer allowed to start.
+        #   The UTC time of day (in HH:MM format, 24-hour clock) when calls are no longer
+        #   allowed to start.
         #
         #   @return [Time, nil]
         optional :end_time, Time
 
         # @!attribute start_time
-        #   (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are
-        #   allowed to start.
+        #   The UTC time of day (in HH:MM format, 24-hour clock) when calls are allowed to
+        #   start.
         #
         #   @return [Time, nil]
         optional :start_time, Time
@@ -157,14 +157,14 @@ module Telnyx
         #   {Telnyx::Models::OutboundVoiceProfileCreateParams::CallingWindow} for more
         #   details.
         #
-        #   (BETA) Specifies the time window and call limits for calls made using this
-        #   outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        #   Specifies the time window and call limits for calls made using this outbound
+        #   voice profile. Note that all times are UTC in 24-hour clock time.
         #
-        #   @param calls_per_cld [Integer] (BETA) The maximum number of calls that can be initiated to a single called part
+        #   @param calls_per_cld [Integer] The maximum number of calls that can be initiated to a single called party (CLD)
         #
-        #   @param end_time [Time] (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are no lo
+        #   @param end_time [Time] The UTC time of day (in HH:MM format, 24-hour clock) when calls are no longer al
         #
-        #   @param start_time [Time] (BETA) The UTC time of day (in HH:MM format, 24-hour clock) when calls are allow
+        #   @param start_time [Time] The UTC time of day (in HH:MM format, 24-hour clock) when calls are allowed to s
       end
     end
   end

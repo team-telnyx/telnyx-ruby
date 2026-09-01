@@ -380,6 +380,8 @@ module Telnyx
 
     attr_reader meeting_sessions: Telnyx::Resources::MeetingSessions
 
+    attr_reader external_requirements: Telnyx::Resources::ExternalRequirements
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

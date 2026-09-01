@@ -812,6 +812,8 @@ module Telnyx
 
   ExternalConnectionUpdateParams = Telnyx::Models::ExternalConnectionUpdateParams
 
+  ExternalRequirements = Telnyx::Models::ExternalRequirements
+
   ExternalVoiceIntegrationsPaginationMeta = Telnyx::Models::ExternalVoiceIntegrationsPaginationMeta
 
   Fax = Telnyx::Models::Fax

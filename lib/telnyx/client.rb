@@ -736,6 +736,9 @@ module Telnyx
     # @return [Telnyx::Resources::MeetingSessions]
     attr_reader :meeting_sessions
 
+    # @return [Telnyx::Resources::ExternalRequirements]
+    attr_reader :external_requirements
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1027,6 +1030,7 @@ module Telnyx
       @pricing = Telnyx::Resources::Pricing.new(client: self)
       @web_search = Telnyx::Resources::WebSearch.new(client: self)
       @meeting_sessions = Telnyx::Resources::MeetingSessions.new(client: self)
+      @external_requirements = Telnyx::Resources::ExternalRequirements.new(client: self)
     end
   end
 end

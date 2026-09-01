@@ -33,8 +33,8 @@ module Telnyx
         # null (for no group assigned).
         billing_group_id: nil,
         call_recording: nil,
-        # (BETA) Specifies the time window and call limits for calls made using this
-        # outbound voice profile. Note that all times are UTC in 24-hour clock time.
+        # Specifies the time window and call limits for calls made using this outbound
+        # voice profile. Note that all times are UTC in 24-hour clock time.
         calling_window: nil,
         # Must be no more than your global concurrent call limit. Null means no limit.
         concurrent_call_limit: nil,
@@ -109,8 +109,8 @@ module Telnyx
         # null (for no group assigned).
         billing_group_id: nil,
         call_recording: nil,
-        # (BETA) Specifies the time window and call limits for calls made using this
-        # outbound voice profile.
+        # Specifies the time window and call limits for calls made using this outbound
+        # voice profile.
         calling_window: nil,
         # Must be no more than your global concurrent call limit. Null means no limit.
         concurrent_call_limit: nil,

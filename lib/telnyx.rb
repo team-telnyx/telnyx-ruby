@@ -31,7 +31,6 @@ end
 
 # Gems.
 require "connection_pool"
-require "standardwebhooks"
 
 # Package files.
 require_relative "telnyx/version"
@@ -1231,6 +1230,10 @@ require_relative "telnyx/models/external_connection_update_location_params"
 require_relative "telnyx/models/external_connection_update_location_response"
 require_relative "telnyx/models/external_connection_update_params"
 require_relative "telnyx/models/external_connection_update_response"
+require_relative "telnyx/models/external_requirements/sub_number_order_retrieve_params"
+require_relative "telnyx/models/external_requirements/sub_number_order_retrieve_response"
+require_relative "telnyx/models/external_requirements/sub_number_order_update_params"
+require_relative "telnyx/models/external_requirements/sub_number_order_update_response"
 require_relative "telnyx/models/external_voice_integrations_pagination_meta"
 require_relative "telnyx/models/fax"
 require_relative "telnyx/models/fax_application"
@@ -3031,6 +3034,8 @@ require_relative "telnyx/resources/external_connections/log_messages"
 require_relative "telnyx/resources/external_connections/phone_numbers"
 require_relative "telnyx/resources/external_connections/releases"
 require_relative "telnyx/resources/external_connections/uploads"
+require_relative "telnyx/resources/external_requirements"
+require_relative "telnyx/resources/external_requirements/sub_number_orders"
 require_relative "telnyx/resources/fax_applications"
 require_relative "telnyx/resources/faxes"
 require_relative "telnyx/resources/faxes/actions"
