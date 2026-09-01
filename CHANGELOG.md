@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.166.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.165.0...v5.166.0) (2026-09-01)
+
+
+### Features
+
+* promote from staging 9d1efe7 ([a84e3f3](https://github.com/team-telnyx/telnyx-ruby/commit/a84e3f3d2a06dfc906ecbb755774b0328e6aa011))
+
+
+### Bug Fixes
+
+* **ci:** retry transient GitHub API 500 errors ([#363](https://github.com/team-telnyx/telnyx-ruby/issues/363)) ([33e8924](https://github.com/team-telnyx/telnyx-ruby/commit/33e892435238c57fd882e30b6945dda26f6b9464))
+* **release:** preserve generated gemspec ([#357](https://github.com/team-telnyx/telnyx-ruby/issues/357)) ([0db381a](https://github.com/team-telnyx/telnyx-ruby/commit/0db381a00236e8a8a5e65a430947415b29e16b8e))
+
 ## [5.165.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.164.0...v5.165.0) (2026-09-01)
 
 
