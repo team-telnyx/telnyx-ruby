@@ -37,6 +37,8 @@ PRODUCTION_POLICY_PATHS = frozenset(
         ".github/scripts/test_ci_runner_policy.py",
         ".github/scripts/test_classify_production_ci.py",
         ".github/scripts/test_release_pr_auto_merge.py",
+        ".github/scripts/install_release_please.sh",
+        ".github/scripts/test_release_workflow_hardening.py",
         ".github/scripts/test_release_pr_ci_gate.py",
         ".github/scripts/test_run_steep_shard.py",
         ".github/scripts/test_run_steep_shards.py",
