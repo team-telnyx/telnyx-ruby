@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.167.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.166.0...v5.167.0) (2026-09-04)
+
+
+### Features
+
+* promote from staging 83ba272 ([e68cb0d](https://github.com/team-telnyx/telnyx-ruby/commit/e68cb0dbe63d0f9639f3346e33f32314464735db))
+
+
+### Bug Fixes
+
+* **release:** remove secrets from release doctor ([#366](https://github.com/team-telnyx/telnyx-ruby/issues/366)) ([9b276d2](https://github.com/team-telnyx/telnyx-ruby/commit/9b276d2e35019aea37a8203b8634c4a7210215d4))
+
 ## [5.166.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.165.0...v5.166.0) (2026-09-01)
 
 
