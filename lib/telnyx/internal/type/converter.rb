@@ -45,6 +45,8 @@ module Telnyx
             value.transform_values { Telnyx::Internal::Type::Unknown.dump(_1, state: state) }
           in Telnyx::Internal::Type::BaseModel
             value.class.dump(value, state: state)
+          in Time
+            value.iso8601(9)
           in StringIO
             value.string
           in Pathname | IO
