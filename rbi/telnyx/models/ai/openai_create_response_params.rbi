@@ -41,6 +41,25 @@ module Telnyx
         sig { params(instructions: String).void }
         attr_writer :instructions
 
+        # How strictly `region` is applied. `preferred` (the default when `region` is set)
+        # tries that region first and falls back to another when the model cannot be
+        # served there, so a request that would have succeeded still succeeds. `strict`
+        # pins the request: it is served from that region or it fails with a 422, never
+        # redirected to another region. Requires `region`.
+        sig do
+          returns(
+            T.nilable(Telnyx::AI::OpenAICreateResponseParams::Mode::OrSymbol)
+          )
+        end
+        attr_reader :mode
+
+        sig do
+          params(
+            mode: Telnyx::AI::OpenAICreateResponseParams::Mode::OrSymbol
+          ).void
+        end
+        attr_writer :mode
+
         # Model identifier to use for the response, for example `zai-org/GLM-5.1-FP8` or
         # another model available from the Telnyx OpenAI-compatible models endpoint.
         sig { returns(T.nilable(String)) }
@@ -60,6 +79,25 @@ module Telnyx
           ).void
         end
         attr_writer :reasoning
+
+        # Optional data-residency region the request should be served from, using the same
+        # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+        # Supported for Telnyx-hosted models only: a request routed to an external
+        # provider never passes through Telnyx model routing, so a region cannot be
+        # enforced for it. Omit for today's latency-based routing.
+        sig do
+          returns(
+            T.nilable(Telnyx::AI::OpenAICreateResponseParams::Region::OrSymbol)
+          )
+        end
+        attr_reader :region
+
+        sig do
+          params(
+            region: Telnyx::AI::OpenAICreateResponseParams::Region::OrSymbol
+          ).void
+        end
+        attr_writer :region
 
         # The service tier to use for this request. Supported values vary by model; use
         # `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
@@ -83,9 +121,11 @@ module Telnyx
             conversation: String,
             input: T::Hash[Symbol, T.anything],
             instructions: String,
+            mode: Telnyx::AI::OpenAICreateResponseParams::Mode::OrSymbol,
             model: String,
             reasoning:
               Telnyx::AI::OpenAICreateResponseParams::Reasoning::OrHash,
+            region: Telnyx::AI::OpenAICreateResponseParams::Region::OrSymbol,
             service_tier: String,
             stream: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
@@ -103,10 +143,22 @@ module Telnyx
           # `conversation`, send these on the first request that creates the thread;
           # subsequent turns can rely on the stored history.
           instructions: nil,
+          # How strictly `region` is applied. `preferred` (the default when `region` is set)
+          # tries that region first and falls back to another when the model cannot be
+          # served there, so a request that would have succeeded still succeeds. `strict`
+          # pins the request: it is served from that region or it fails with a 422, never
+          # redirected to another region. Requires `region`.
+          mode: nil,
           # Model identifier to use for the response, for example `zai-org/GLM-5.1-FP8` or
           # another model available from the Telnyx OpenAI-compatible models endpoint.
           model: nil,
           reasoning: nil,
+          # Optional data-residency region the request should be served from, using the same
+          # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+          # Supported for Telnyx-hosted models only: a request routed to an external
+          # provider never passes through Telnyx model routing, so a region cannot be
+          # enforced for it. Omit for today's latency-based routing.
+          region: nil,
           # The service tier to use for this request. Supported values vary by model; use
           # `GET /v2/ai/openai/models` and inspect the model's `service_tiers` field. If
           # omitted, Telnyx-hosted models use `default`.
@@ -124,8 +176,10 @@ module Telnyx
               conversation: String,
               input: T::Hash[Symbol, T.anything],
               instructions: String,
+              mode: Telnyx::AI::OpenAICreateResponseParams::Mode::OrSymbol,
               model: String,
               reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
+              region: Telnyx::AI::OpenAICreateResponseParams::Region::OrSymbol,
               service_tier: String,
               stream: T::Boolean,
               request_options: Telnyx::RequestOptions
@@ -133,6 +187,42 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        # How strictly `region` is applied. `preferred` (the default when `region` is set)
+        # tries that region first and falls back to another when the model cannot be
+        # served there, so a request that would have succeeded still succeeds. `strict`
+        # pins the request: it is served from that region or it fails with a 422, never
+        # redirected to another region. Requires `region`.
+        module Mode
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::AI::OpenAICreateResponseParams::Mode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PREFERRED =
+            T.let(
+              :preferred,
+              Telnyx::AI::OpenAICreateResponseParams::Mode::TaggedSymbol
+            )
+          STRICT =
+            T.let(
+              :strict,
+              Telnyx::AI::OpenAICreateResponseParams::Mode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::AI::OpenAICreateResponseParams::Mode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Reasoning < Telnyx::Internal::Type::BaseModel
@@ -246,6 +336,52 @@ module Telnyx
             end
             def self.values
             end
+          end
+        end
+
+        # Optional data-residency region the request should be served from, using the same
+        # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+        # Supported for Telnyx-hosted models only: a request routed to an external
+        # provider never passes through Telnyx model routing, so a region cannot be
+        # enforced for it. Omit for today's latency-based routing.
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::AI::OpenAICreateResponseParams::Region)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          USA =
+            T.let(
+              :USA,
+              Telnyx::AI::OpenAICreateResponseParams::Region::TaggedSymbol
+            )
+          EU =
+            T.let(
+              :EU,
+              Telnyx::AI::OpenAICreateResponseParams::Region::TaggedSymbol
+            )
+          AUS =
+            T.let(
+              :AUS,
+              Telnyx::AI::OpenAICreateResponseParams::Region::TaggedSymbol
+            )
+          UAE =
+            T.let(
+              :UAE,
+              Telnyx::AI::OpenAICreateResponseParams::Region::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::AI::OpenAICreateResponseParams::Region::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
           end
         end
       end

@@ -78,6 +78,23 @@ module Telnyx
       #   @return [Telnyx::Models::NumberPoolSettings, nil]
       optional :number_pool_settings, -> { Telnyx::NumberPoolSettings }, nil?: true
 
+      # @!attribute redaction_enabled
+      #   Set to true to enable message content redaction on this profile, or false to
+      #   disable it. Ignored if the organization is not on the redaction allowlist. See
+      #   the [Message Redaction guide](/docs/messaging/messages/message-redaction) for
+      #   what is redacted.
+      #
+      #   @return [Boolean, nil]
+      optional :redaction_enabled, Telnyx::Internal::Type::Boolean
+
+      # @!attribute redaction_level
+      #   The redaction level to apply when redaction is enabled. 1: redact message
+      #   records and reporting only. 2 (default): also redact inbound webhook payloads.
+      #   See the [Message Redaction guide](/docs/messaging/messages/message-redaction).
+      #
+      #   @return [Integer, nil]
+      optional :redaction_level, Integer
+
       # @!attribute smart_encoding
       #   Enables automatic character encoding optimization for SMS messages. When
       #   enabled, the system automatically selects the most efficient encoding (GSM-7 or
@@ -134,7 +151,7 @@ module Telnyx
       #   @return [Array<String>, nil]
       optional :whitelisted_destinations, Telnyx::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(messaging_profile_id:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
+      # @!method initialize(messaging_profile_id:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, redaction_enabled: nil, redaction_level: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfileUpdateParams} for more details.
       #
@@ -159,6 +176,10 @@ module Telnyx
       #   @param name [String] A user friendly name for the messaging profile.
       #
       #   @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
+      #
+      #   @param redaction_enabled [Boolean] Set to true to enable message content redaction on this profile, or false to dis
+      #
+      #   @param redaction_level [Integer] The redaction level to apply when redaction is enabled. 1: redact message record
       #
       #   @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #

@@ -44,6 +44,8 @@ module Telnyx
         ?mobile_only: bool,
         ?name: String,
         ?number_pool_settings: Telnyx::NumberPoolSettings?,
+        ?redaction_enabled: bool,
+        ?redaction_level: Integer,
         ?smart_encoding: bool,
         ?url_shortener_settings: Telnyx::URLShortenerSettings?,
         ?v1_secret: String,
@@ -61,7 +63,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::MessagingProfile]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::MessagingMessagingProfile]
 
       def delete: (
         String messaging_profile_id,

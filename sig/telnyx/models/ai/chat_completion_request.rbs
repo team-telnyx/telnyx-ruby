@@ -16,10 +16,12 @@ module Telnyx
           logprobs: bool,
           max_tokens: Integer,
           min_p: Float,
+          mode: Telnyx::Models::AI::ChatCompletionRequest::mode,
           model: String,
           n: Float,
           presence_penalty: Float,
           reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
+          region: Telnyx::Models::AI::ChatCompletionRequest::region,
           response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           seed: Integer,
           service_tier: String,
@@ -84,6 +86,12 @@ module Telnyx
 
         def min_p=: (Float) -> Float
 
+        attr_reader mode: Telnyx::Models::AI::ChatCompletionRequest::mode?
+
+        def mode=: (
+          Telnyx::Models::AI::ChatCompletionRequest::mode
+        ) -> Telnyx::Models::AI::ChatCompletionRequest::mode
+
         attr_reader model: String?
 
         def model=: (String) -> String
@@ -101,6 +109,12 @@ module Telnyx
         def reasoning_effort=: (
           Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort
         ) -> Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort
+
+        attr_reader region: Telnyx::Models::AI::ChatCompletionRequest::region?
+
+        def region=: (
+          Telnyx::Models::AI::ChatCompletionRequest::region
+        ) -> Telnyx::Models::AI::ChatCompletionRequest::region
 
         attr_reader response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat?
 
@@ -168,10 +182,12 @@ module Telnyx
           ?logprobs: bool,
           ?max_tokens: Integer,
           ?min_p: Float,
+          ?mode: Telnyx::Models::AI::ChatCompletionRequest::mode,
           ?model: String,
           ?n: Float,
           ?presence_penalty: Float,
           ?reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
+          ?region: Telnyx::Models::AI::ChatCompletionRequest::region,
           ?response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           ?seed: Integer,
           ?service_tier: String,
@@ -199,10 +215,12 @@ module Telnyx
           logprobs: bool,
           max_tokens: Integer,
           min_p: Float,
+          mode: Telnyx::Models::AI::ChatCompletionRequest::mode,
           model: String,
           n: Float,
           presence_penalty: Float,
           reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
+          region: Telnyx::Models::AI::ChatCompletionRequest::region,
           response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
           seed: Integer,
           service_tier: String,
@@ -305,6 +323,17 @@ module Telnyx
           end
         end
 
+        type mode = :preferred | :strict
+
+        module Mode
+          extend Telnyx::Internal::Type::Enum
+
+          PREFERRED: :preferred
+          STRICT: :strict
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ChatCompletionRequest::mode]
+        end
+
         type reasoning_effort =
           :none | :minimal | :low | :medium | :high | :xhigh | :max
 
@@ -320,6 +349,19 @@ module Telnyx
           MAX: :max
 
           def self?.values: -> ::Array[Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort]
+        end
+
+        type region = :USA | :EU | :AUS | :UAE
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          USA: :USA
+          EU: :EU
+          AUS: :AUS
+          UAE: :UAE
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::ChatCompletionRequest::region]
         end
 
         type response_format =

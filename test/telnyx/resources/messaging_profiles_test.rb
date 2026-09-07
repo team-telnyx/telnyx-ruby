@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingProfile | nil
+        data: Telnyx::MessagingMessagingProfile | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingProfile | nil
+        data: Telnyx::MessagingMessagingProfile | nil
       }
     end
   end
@@ -46,7 +46,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingProfile | nil
+        data: Telnyx::MessagingMessagingProfile | nil
       }
     end
   end
@@ -64,7 +64,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::MessagingProfile
+      row => Telnyx::MessagingMessagingProfile
     end
 
     assert_pattern do
@@ -83,7 +83,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         name: String | nil,
         number_pool_settings: Telnyx::NumberPoolSettings | nil,
         organization_id: String | nil,
-        record_type: Telnyx::MessagingProfile::RecordType | nil,
+        record_type: Telnyx::MessagingMessagingProfile::RecordType | nil,
         redaction_enabled: Telnyx::Internal::Type::Boolean | nil,
         redaction_level: Integer | nil,
         resource_group_id: String | nil,
@@ -91,7 +91,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         updated_at: Time | nil,
         url_shortener_settings: Telnyx::URLShortenerSettings | nil,
         v1_secret: String | nil,
-        webhook_api_version: Telnyx::MessagingProfile::WebhookAPIVersion | nil,
+        webhook_api_version: Telnyx::MessagingMessagingProfile::WebhookAPIVersion | nil,
         webhook_failover_url: String | nil,
         webhook_url: String | nil,
         whitelisted_destinations: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil
@@ -110,7 +110,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingProfile | nil
+        data: Telnyx::MessagingMessagingProfile | nil
       }
     end
   end

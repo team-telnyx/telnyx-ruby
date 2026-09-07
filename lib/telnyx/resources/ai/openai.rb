@@ -43,7 +43,7 @@ module Telnyx
         # tag the conversation's source, channel, or user) and later filter by it when
         # listing conversations.
         #
-        # @overload create_response(conversation: nil, input: nil, instructions: nil, model: nil, reasoning: nil, service_tier: nil, stream: nil, request_options: {})
+        # @overload create_response(conversation: nil, input: nil, instructions: nil, mode: nil, model: nil, reasoning: nil, region: nil, service_tier: nil, stream: nil, request_options: {})
         #
         # @param conversation [String] Optional Telnyx Conversation ID from `POST /ai/conversations`. When provided, Te
         #
@@ -51,9 +51,13 @@ module Telnyx
         #
         # @param instructions [String] Optional system/developer instructions for the model. When used with a persisted
         #
+        # @param mode [Symbol, Telnyx::Models::AI::OpenAICreateResponseParams::Mode] How strictly `region` is applied. `preferred` (the default when `region` is set)
+        #
         # @param model [String] Model identifier to use for the response, for example `zai-org/GLM-5.1-FP8` or a
         #
         # @param reasoning [Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning]
+        #
+        # @param region [Symbol, Telnyx::Models::AI::OpenAICreateResponseParams::Region] Optional data-residency region the request should be served from, using the same
         #
         # @param service_tier [String] The service tier to use for this request. Supported values vary by model; use `G
         #

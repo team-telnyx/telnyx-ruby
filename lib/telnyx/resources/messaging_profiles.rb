@@ -97,7 +97,7 @@ module Telnyx
       # Updates the supplied settings on the specified messaging profile. Settings
       # omitted from the request remain unchanged.
       #
-      # @overload update(messaging_profile_id, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
+      # @overload update(messaging_profile_id, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, redaction_enabled: nil, redaction_level: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
       #
       # @param messaging_profile_id [String] The id of the messaging profile to retrieve
       #
@@ -120,6 +120,10 @@ module Telnyx
       # @param name [String] A user friendly name for the messaging profile.
       #
       # @param number_pool_settings [Telnyx::Models::NumberPoolSettings, nil] Number Pool allows you to send messages from a pool of numbers of different type
+      #
+      # @param redaction_enabled [Boolean] Set to true to enable message content redaction on this profile, or false to dis
+      #
+      # @param redaction_level [Integer] The redaction level to apply when redaction is enabled. 1: redact message record
       #
       # @param smart_encoding [Boolean] Enables automatic character encoding optimization for SMS messages. When enabled
       #
@@ -168,7 +172,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MessagingProfile>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::MessagingMessagingProfile>]
       #
       # @see Telnyx::Models::MessagingProfileListParams
       def list(params = {})
@@ -184,7 +188,7 @@ module Telnyx
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::MessagingProfile,
+          model: Telnyx::MessagingMessagingProfile,
           options: options
         )
       end

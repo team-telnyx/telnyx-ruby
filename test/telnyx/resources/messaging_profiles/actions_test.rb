@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::MessagingProfiles::ActionsTest < Telnyx::Test::Re
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingProfile | nil
+        data: Telnyx::MessagingMessagingProfile | nil
       }
     end
   end

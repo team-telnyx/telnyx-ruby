@@ -1151,6 +1151,8 @@ module Telnyx
 
   MessagingInboundMessagePayload = Telnyx::Models::MessagingInboundMessagePayload
 
+  MessagingMessagingProfile = Telnyx::Models::MessagingMessagingProfile
+
   MessagingMetricsTimeFrame = Telnyx::Models::MessagingMetricsTimeFrame
 
   MessagingNumbersBulkUpdateCreateParams = Telnyx::Models::MessagingNumbersBulkUpdateCreateParams

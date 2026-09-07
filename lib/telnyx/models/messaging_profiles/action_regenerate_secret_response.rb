@@ -7,11 +7,11 @@ module Telnyx
       class ActionRegenerateSecretResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Telnyx::Models::MessagingProfile, nil]
-        optional :data, -> { Telnyx::MessagingProfile }
+        #   @return [Telnyx::Models::MessagingMessagingProfile, nil]
+        optional :data, -> { Telnyx::MessagingMessagingProfile }
 
         # @!method initialize(data: nil)
-        #   @param data [Telnyx::Models::MessagingProfile]
+        #   @param data [Telnyx::Models::MessagingMessagingProfile]
       end
     end
   end

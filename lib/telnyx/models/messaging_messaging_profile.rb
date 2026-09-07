@@ -2,7 +2,8 @@
 
 module Telnyx
   module Models
-    class MessagingProfile < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::MessagingProfiles#list
+    class MessagingMessagingProfile < Telnyx::Internal::Type::BaseModel
       # @!attribute ai_assistant_id
       #   The AI assistant ID associated with this messaging profile.
       #
@@ -82,14 +83,20 @@ module Telnyx
       optional :organization_id, String
 
       # @!attribute redaction_enabled
-      #   Indicates whether message content redaction is enabled for this profile.
+      #   Indicates whether message content redaction is enabled for this profile. When
+      #   enabled, message text, MMS media, and the counterparty phone number are redacted
+      #   in message records and reporting. Requires organization activation — contact
+      #   support to enable. The field is only present in responses for organizations with
+      #   redaction access.
       #
       #   @return [Boolean, nil]
       optional :redaction_enabled, Telnyx::Internal::Type::Boolean
 
       # @!attribute redaction_level
-      #   Determines how much information is redacted in messages for privacy or
-      #   compliance purposes.
+      #   Determines how much information is redacted for privacy or compliance purposes.
+      #   Level 1: message records and reporting are redacted, but inbound webhook
+      #   payloads are not. Level 2 (default): message records, reporting, and inbound
+      #   webhook payloads are all redacted.
       #
       #   @return [Integer, nil]
       optional :redaction_level, Integer
@@ -130,8 +137,8 @@ module Telnyx
       #   Determines which webhook format will be used, Telnyx API v1, v2, or a legacy
       #   2010-04-01 format.
       #
-      #   @return [Symbol, Telnyx::Models::MessagingProfile::WebhookAPIVersion, nil]
-      optional :webhook_api_version, enum: -> { Telnyx::MessagingProfile::WebhookAPIVersion }
+      #   @return [Symbol, Telnyx::Models::MessagingMessagingProfile::WebhookAPIVersion, nil]
+      optional :webhook_api_version, enum: -> { Telnyx::MessagingMessagingProfile::WebhookAPIVersion }
 
       # @!attribute webhook_failover_url
       #   The failover URL where webhooks related to this messaging profile will be sent
@@ -170,8 +177,8 @@ module Telnyx
         # @!attribute record_type
         #   Identifies the type of the resource.
         #
-        #   @return [Symbol, Telnyx::Models::MessagingProfile::RecordType, nil]
-        optional :record_type, enum: -> { Telnyx::MessagingProfile::RecordType }
+        #   @return [Symbol, Telnyx::Models::MessagingMessagingProfile::RecordType, nil]
+        optional :record_type, enum: -> { Telnyx::MessagingMessagingProfile::RecordType }
 
         # @!attribute updated_at
         #   ISO 8601 formatted date indicating when the resource was updated.
@@ -182,7 +189,7 @@ module Telnyx
 
       # @!method initialize(id: nil, ai_assistant_id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, organization_id: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, resource_group_id: nil, smart_encoding: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::MessagingProfile} for more details.
+      #   {Telnyx::Models::MessagingMessagingProfile} for more details.
       #
       #   @param id [String] Identifies the type of resource.
       #
@@ -212,11 +219,11 @@ module Telnyx
       #
       #   @param organization_id [String] The organization that owns this messaging profile.
       #
-      #   @param record_type [Symbol, Telnyx::Models::MessagingProfile::RecordType] Identifies the type of the resource.
+      #   @param record_type [Symbol, Telnyx::Models::MessagingMessagingProfile::RecordType] Identifies the type of the resource.
       #
-      #   @param redaction_enabled [Boolean] Indicates whether message content redaction is enabled for this profile.
+      #   @param redaction_enabled [Boolean] Indicates whether message content redaction is enabled for this profile. When en
       #
-      #   @param redaction_level [Integer] Determines how much information is redacted in messages for privacy or complianc
+      #   @param redaction_level [Integer] Determines how much information is redacted for privacy or compliance purposes.
       #
       #   @param resource_group_id [String, nil] The resource group ID associated with this messaging profile.
       #
@@ -228,7 +235,7 @@ module Telnyx
       #
       #   @param v1_secret [String] Secret used to authenticate with v1 endpoints.
       #
-      #   @param webhook_api_version [Symbol, Telnyx::Models::MessagingProfile::WebhookAPIVersion] Determines which webhook format will be used, Telnyx API v1, v2, or a legacy 201
+      #   @param webhook_api_version [Symbol, Telnyx::Models::MessagingMessagingProfile::WebhookAPIVersion] Determines which webhook format will be used, Telnyx API v1, v2, or a legacy 201
       #
       #   @param webhook_failover_url [String, nil] The failover URL where webhooks related to this messaging profile will be sent i
       #
@@ -238,7 +245,7 @@ module Telnyx
 
       # Identifies the type of the resource.
       #
-      # @see Telnyx::Models::MessagingProfile#record_type
+      # @see Telnyx::Models::MessagingMessagingProfile#record_type
       module RecordType
         extend Telnyx::Internal::Type::Enum
 
@@ -251,7 +258,7 @@ module Telnyx
       # Determines which webhook format will be used, Telnyx API v1, v2, or a legacy
       # 2010-04-01 format.
       #
-      # @see Telnyx::Models::MessagingProfile#webhook_api_version
+      # @see Telnyx::Models::MessagingMessagingProfile#webhook_api_version
       module WebhookAPIVersion
         extend Telnyx::Internal::Type::Enum
 
