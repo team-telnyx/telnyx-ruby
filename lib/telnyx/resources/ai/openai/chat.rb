@@ -13,7 +13,7 @@ module Telnyx
           # and may be used with the OpenAI JS or Python SDK by setting the base URL to
           # `https://api.telnyx.com/v2/ai/openai`.
           #
-          # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, model: nil, n: nil, presence_penalty: nil, reasoning_effort: nil, response_format: nil, seed: nil, service_tier: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
+          # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, mode: nil, model: nil, n: nil, presence_penalty: nil, reasoning_effort: nil, region: nil, response_format: nil, seed: nil, service_tier: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
           #
           # @param messages [Array<Telnyx::Models::AI::ChatCompletionRequest::Message>] A list of the previous chat messages for context.
           #
@@ -41,6 +41,8 @@ module Telnyx
           #
           # @param min_p [Float] This is an alternative to `top_p` that [many prefer](https://github.com/huggingf
           #
+          # @param mode [Symbol, Telnyx::Models::AI::ChatCompletionRequest::Mode] How strictly `region` is applied. `preferred` (the default when `region` is set)
+          #
           # @param model [String] The language model to chat with.
           #
           # @param n [Float] This will return multiple choices for you instead of a single chat completion.
@@ -48,6 +50,8 @@ module Telnyx
           # @param presence_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
           #
           # @param reasoning_effort [Symbol, Telnyx::Models::AI::ChatCompletionRequest::ReasoningEffort] Controls the reasoning effort for models that support it. When set, the model sp
+          #
+          # @param region [Symbol, Telnyx::Models::AI::ChatCompletionRequest::Region] Optional data-residency region the request should be served from, using the same
           #
           # @param response_format [Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
           #

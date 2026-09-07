@@ -20,7 +20,7 @@ module Telnyx
           # `content_block_start`, `content_block_delta`, `content_block_stop`,
           # `message_delta`, `message_stop`).
           #
-          # @overload messages(max_tokens:, messages:, model:, api_key_ref: nil, billing_group_id: nil, fallback_config: nil, max_retries: nil, mcp_servers: nil, metadata: nil, service_tier: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, timeout: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, request_options: {})
+          # @overload messages(max_tokens:, messages:, model:, api_key_ref: nil, billing_group_id: nil, fallback_config: nil, max_retries: nil, mcp_servers: nil, metadata: nil, mode: nil, region: nil, service_tier: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, timeout: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, request_options: {})
           #
           # @param max_tokens [Integer] The maximum number of tokens to generate in the response.
           #
@@ -39,6 +39,10 @@ module Telnyx
           # @param mcp_servers [Array<Hash{Symbol=>Object}>] List of MCP (Model Context Protocol) servers to make available to the model.
           #
           # @param metadata [Hash{Symbol=>Object}] An object describing metadata about the request.
+          #
+          # @param mode [Symbol, Telnyx::Models::AI::Anthropic::V1MessagesParams::Mode] How strictly `region` is applied. `preferred` (the default when `region` is set)
+          #
+          # @param region [Symbol, Telnyx::Models::AI::Anthropic::V1MessagesParams::Region] Optional data-residency region the request should be served from, using the same
           #
           # @param service_tier [String] The service tier to use for this request. Supported values vary by model; use th
           #

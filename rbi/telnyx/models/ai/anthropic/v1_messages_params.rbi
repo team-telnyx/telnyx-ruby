@@ -78,6 +78,46 @@ module Telnyx
           sig { params(metadata: T::Hash[Symbol, T.anything]).void }
           attr_writer :metadata
 
+          # How strictly `region` is applied. `preferred` (the default when `region` is set)
+          # tries that region first and falls back to another when the model cannot be
+          # served there, so a request that would have succeeded still succeeds. `strict`
+          # pins the request: it is served from that region or it fails with a 422, never
+          # redirected to another region. Requires `region`.
+          sig do
+            returns(
+              T.nilable(Telnyx::AI::Anthropic::V1MessagesParams::Mode::OrSymbol)
+            )
+          end
+          attr_reader :mode
+
+          sig do
+            params(
+              mode: Telnyx::AI::Anthropic::V1MessagesParams::Mode::OrSymbol
+            ).void
+          end
+          attr_writer :mode
+
+          # Optional data-residency region the request should be served from, using the same
+          # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+          # Supported for Telnyx-hosted models only: a request routed to an external
+          # provider never passes through Telnyx model routing, so a region cannot be
+          # enforced for it. Omit for today's latency-based routing.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::Anthropic::V1MessagesParams::Region::OrSymbol
+              )
+            )
+          end
+          attr_reader :region
+
+          sig do
+            params(
+              region: Telnyx::AI::Anthropic::V1MessagesParams::Region::OrSymbol
+            ).void
+          end
+          attr_writer :region
+
           # The service tier to use for this request. Supported values vary by model; use
           # the Telnyx models endpoint and inspect the model's `service_tiers` field. If
           # omitted, Telnyx-hosted models use `default`.
@@ -181,6 +221,8 @@ module Telnyx
               max_retries: Integer,
               mcp_servers: T::Array[T::Hash[Symbol, T.anything]],
               metadata: T::Hash[Symbol, T.anything],
+              mode: Telnyx::AI::Anthropic::V1MessagesParams::Mode::OrSymbol,
+              region: Telnyx::AI::Anthropic::V1MessagesParams::Region::OrSymbol,
               service_tier: String,
               stop_sequences: T::Array[String],
               stream: T::Boolean,
@@ -221,6 +263,18 @@ module Telnyx
             mcp_servers: nil,
             # An object describing metadata about the request.
             metadata: nil,
+            # How strictly `region` is applied. `preferred` (the default when `region` is set)
+            # tries that region first and falls back to another when the model cannot be
+            # served there, so a request that would have succeeded still succeeds. `strict`
+            # pins the request: it is served from that region or it fails with a 422, never
+            # redirected to another region. Requires `region`.
+            mode: nil,
+            # Optional data-residency region the request should be served from, using the same
+            # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+            # Supported for Telnyx-hosted models only: a request routed to an external
+            # provider never passes through Telnyx model routing, so a region cannot be
+            # enforced for it. Omit for today's latency-based routing.
+            region: nil,
             # The service tier to use for this request. Supported values vary by model; use
             # the Telnyx models endpoint and inspect the model's `service_tiers` field. If
             # omitted, Telnyx-hosted models use `default`.
@@ -264,6 +318,9 @@ module Telnyx
                 max_retries: Integer,
                 mcp_servers: T::Array[T::Hash[Symbol, T.anything]],
                 metadata: T::Hash[Symbol, T.anything],
+                mode: Telnyx::AI::Anthropic::V1MessagesParams::Mode::OrSymbol,
+                region:
+                  Telnyx::AI::Anthropic::V1MessagesParams::Region::OrSymbol,
                 service_tier: String,
                 stop_sequences: T::Array[String],
                 stream: T::Boolean,
@@ -281,6 +338,88 @@ module Telnyx
             )
           end
           def to_hash
+          end
+
+          # How strictly `region` is applied. `preferred` (the default when `region` is set)
+          # tries that region first and falls back to another when the model cannot be
+          # served there, so a request that would have succeeded still succeeds. `strict`
+          # pins the request: it is served from that region or it fails with a 422, never
+          # redirected to another region. Requires `region`.
+          module Mode
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Telnyx::AI::Anthropic::V1MessagesParams::Mode)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PREFERRED =
+              T.let(
+                :preferred,
+                Telnyx::AI::Anthropic::V1MessagesParams::Mode::TaggedSymbol
+              )
+            STRICT =
+              T.let(
+                :strict,
+                Telnyx::AI::Anthropic::V1MessagesParams::Mode::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::Anthropic::V1MessagesParams::Mode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Optional data-residency region the request should be served from, using the same
+          # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+          # Supported for Telnyx-hosted models only: a request routed to an external
+          # provider never passes through Telnyx model routing, so a region cannot be
+          # enforced for it. Omit for today's latency-based routing.
+          module Region
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Telnyx::AI::Anthropic::V1MessagesParams::Region)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            USA =
+              T.let(
+                :USA,
+                Telnyx::AI::Anthropic::V1MessagesParams::Region::TaggedSymbol
+              )
+            EU =
+              T.let(
+                :EU,
+                Telnyx::AI::Anthropic::V1MessagesParams::Region::TaggedSymbol
+              )
+            AUS =
+              T.let(
+                :AUS,
+                Telnyx::AI::Anthropic::V1MessagesParams::Region::TaggedSymbol
+              )
+            UAE =
+              T.let(
+                :UAE,
+                Telnyx::AI::Anthropic::V1MessagesParams::Region::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::Anthropic::V1MessagesParams::Region::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
 
           # System prompt. Can be a string or an array of content blocks following the
