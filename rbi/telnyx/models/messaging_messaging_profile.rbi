@@ -2,10 +2,10 @@
 
 module Telnyx
   module Models
-    class MessagingProfile < Telnyx::Internal::Type::BaseModel
+    class MessagingMessagingProfile < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(Telnyx::MessagingProfile, Telnyx::Internal::AnyHash)
+          T.any(Telnyx::MessagingMessagingProfile, Telnyx::Internal::AnyHash)
         end
 
       # The AI assistant ID associated with this messaging profile.
@@ -93,15 +93,21 @@ module Telnyx
       sig { params(organization_id: String).void }
       attr_writer :organization_id
 
-      # Indicates whether message content redaction is enabled for this profile.
+      # Indicates whether message content redaction is enabled for this profile. When
+      # enabled, message text, MMS media, and the counterparty phone number are redacted
+      # in message records and reporting. Requires organization activation — contact
+      # support to enable. The field is only present in responses for organizations with
+      # redaction access.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :redaction_enabled
 
       sig { params(redaction_enabled: T::Boolean).void }
       attr_writer :redaction_enabled
 
-      # Determines how much information is redacted in messages for privacy or
-      # compliance purposes.
+      # Determines how much information is redacted for privacy or compliance purposes.
+      # Level 1: message records and reporting are redacted, but inbound webhook
+      # payloads are not. Level 2 (default): message records, reporting, and inbound
+      # webhook payloads are all redacted.
       sig { returns(T.nilable(Integer)) }
       attr_reader :redaction_level
 
@@ -150,7 +156,9 @@ module Telnyx
       # 2010-04-01 format.
       sig do
         returns(
-          T.nilable(Telnyx::MessagingProfile::WebhookAPIVersion::OrSymbol)
+          T.nilable(
+            Telnyx::MessagingMessagingProfile::WebhookAPIVersion::TaggedSymbol
+          )
         )
       end
       attr_reader :webhook_api_version
@@ -158,7 +166,7 @@ module Telnyx
       sig do
         params(
           webhook_api_version:
-            Telnyx::MessagingProfile::WebhookAPIVersion::OrSymbol
+            Telnyx::MessagingMessagingProfile::WebhookAPIVersion::OrSymbol
         ).void
       end
       attr_writer :webhook_api_version
@@ -196,11 +204,17 @@ module Telnyx
       attr_writer :created_at
 
       # Identifies the type of the resource.
-      sig { returns(T.nilable(Telnyx::MessagingProfile::RecordType::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Telnyx::MessagingMessagingProfile::RecordType::TaggedSymbol)
+        )
+      end
       attr_reader :record_type
 
       sig do
-        params(record_type: Telnyx::MessagingProfile::RecordType::OrSymbol).void
+        params(
+          record_type: Telnyx::MessagingMessagingProfile::RecordType::OrSymbol
+        ).void
       end
       attr_writer :record_type
 
@@ -227,7 +241,7 @@ module Telnyx
           name: String,
           number_pool_settings: T.nilable(Telnyx::NumberPoolSettings::OrHash),
           organization_id: String,
-          record_type: Telnyx::MessagingProfile::RecordType::OrSymbol,
+          record_type: Telnyx::MessagingMessagingProfile::RecordType::OrSymbol,
           redaction_enabled: T::Boolean,
           redaction_level: Integer,
           resource_group_id: T.nilable(String),
@@ -237,7 +251,7 @@ module Telnyx
             T.nilable(Telnyx::URLShortenerSettings::OrHash),
           v1_secret: String,
           webhook_api_version:
-            Telnyx::MessagingProfile::WebhookAPIVersion::OrSymbol,
+            Telnyx::MessagingMessagingProfile::WebhookAPIVersion::OrSymbol,
           webhook_failover_url: T.nilable(String),
           webhook_url: T.nilable(String),
           whitelisted_destinations: T::Array[String]
@@ -280,10 +294,16 @@ module Telnyx
         organization_id: nil,
         # Identifies the type of the resource.
         record_type: nil,
-        # Indicates whether message content redaction is enabled for this profile.
+        # Indicates whether message content redaction is enabled for this profile. When
+        # enabled, message text, MMS media, and the counterparty phone number are redacted
+        # in message records and reporting. Requires organization activation — contact
+        # support to enable. The field is only present in responses for organizations with
+        # redaction access.
         redaction_enabled: nil,
-        # Determines how much information is redacted in messages for privacy or
-        # compliance purposes.
+        # Determines how much information is redacted for privacy or compliance purposes.
+        # Level 1: message records and reporting are redacted, but inbound webhook
+        # payloads are not. Level 2 (default): message records, reporting, and inbound
+        # webhook payloads are all redacted.
         redaction_level: nil,
         # The resource group ID associated with this messaging profile.
         resource_group_id: nil,
@@ -335,7 +355,8 @@ module Telnyx
             name: String,
             number_pool_settings: T.nilable(Telnyx::NumberPoolSettings),
             organization_id: String,
-            record_type: Telnyx::MessagingProfile::RecordType::OrSymbol,
+            record_type:
+              Telnyx::MessagingMessagingProfile::RecordType::TaggedSymbol,
             redaction_enabled: T::Boolean,
             redaction_level: Integer,
             resource_group_id: T.nilable(String),
@@ -344,7 +365,7 @@ module Telnyx
             url_shortener_settings: T.nilable(Telnyx::URLShortenerSettings),
             v1_secret: String,
             webhook_api_version:
-              Telnyx::MessagingProfile::WebhookAPIVersion::OrSymbol,
+              Telnyx::MessagingMessagingProfile::WebhookAPIVersion::TaggedSymbol,
             webhook_failover_url: T.nilable(String),
             webhook_url: T.nilable(String),
             whitelisted_destinations: T::Array[String]
@@ -359,18 +380,22 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Telnyx::MessagingProfile::RecordType) }
+          T.type_alias do
+            T.all(Symbol, Telnyx::MessagingMessagingProfile::RecordType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MESSAGING_PROFILE =
           T.let(
             :messaging_profile,
-            Telnyx::MessagingProfile::RecordType::TaggedSymbol
+            Telnyx::MessagingMessagingProfile::RecordType::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Telnyx::MessagingProfile::RecordType::TaggedSymbol]
+            T::Array[
+              Telnyx::MessagingMessagingProfile::RecordType::TaggedSymbol
+            ]
           )
         end
         def self.values
@@ -384,23 +409,31 @@ module Telnyx
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Telnyx::MessagingProfile::WebhookAPIVersion)
+            T.all(Symbol, Telnyx::MessagingMessagingProfile::WebhookAPIVersion)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         V1 =
-          T.let(:"1", Telnyx::MessagingProfile::WebhookAPIVersion::TaggedSymbol)
+          T.let(
+            :"1",
+            Telnyx::MessagingMessagingProfile::WebhookAPIVersion::TaggedSymbol
+          )
         V2 =
-          T.let(:"2", Telnyx::MessagingProfile::WebhookAPIVersion::TaggedSymbol)
+          T.let(
+            :"2",
+            Telnyx::MessagingMessagingProfile::WebhookAPIVersion::TaggedSymbol
+          )
         V2010_04_01 =
           T.let(
             :"2010-04-01",
-            Telnyx::MessagingProfile::WebhookAPIVersion::TaggedSymbol
+            Telnyx::MessagingMessagingProfile::WebhookAPIVersion::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Telnyx::MessagingProfile::WebhookAPIVersion::TaggedSymbol]
+            T::Array[
+              Telnyx::MessagingMessagingProfile::WebhookAPIVersion::TaggedSymbol
+            ]
           )
         end
         def self.values

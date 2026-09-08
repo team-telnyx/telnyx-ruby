@@ -110,6 +110,21 @@ module Telnyx
         sig { params(min_p: Float).void }
         attr_writer :min_p
 
+        # How strictly `region` is applied. `preferred` (the default when `region` is set)
+        # tries that region first and falls back to another when the model cannot be
+        # served there, so a request that would have succeeded still succeeds. `strict`
+        # pins the request: it is served from that region or it fails with a 422, never
+        # redirected to another region. Requires `region`.
+        sig do
+          returns(T.nilable(Telnyx::AI::ChatCompletionRequest::Mode::OrSymbol))
+        end
+        attr_reader :mode
+
+        sig do
+          params(mode: Telnyx::AI::ChatCompletionRequest::Mode::OrSymbol).void
+        end
+        attr_writer :mode
+
         # The language model to chat with.
         sig { returns(T.nilable(String)) }
         attr_reader :model
@@ -152,6 +167,25 @@ module Telnyx
           ).void
         end
         attr_writer :reasoning_effort
+
+        # Optional data-residency region the request should be served from, using the same
+        # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+        # Supported for Telnyx-hosted models only: a request routed to an external
+        # provider never passes through Telnyx model routing, so a region cannot be
+        # enforced for it. Omit for today's latency-based routing.
+        sig do
+          returns(
+            T.nilable(Telnyx::AI::ChatCompletionRequest::Region::OrSymbol)
+          )
+        end
+        attr_reader :region
+
+        sig do
+          params(
+            region: Telnyx::AI::ChatCompletionRequest::Region::OrSymbol
+          ).void
+        end
+        attr_writer :region
 
         # Use this is you want to guarantee a JSON output without defining a schema. For
         # control over the schema, use `guided_json`.
@@ -302,11 +336,13 @@ module Telnyx
             logprobs: T::Boolean,
             max_tokens: Integer,
             min_p: Float,
+            mode: Telnyx::AI::ChatCompletionRequest::Mode::OrSymbol,
             model: String,
             n: Float,
             presence_penalty: Float,
             reasoning_effort:
               Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
+            region: Telnyx::AI::ChatCompletionRequest::Region::OrSymbol,
             response_format:
               Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash,
             seed: Integer,
@@ -368,6 +404,12 @@ module Telnyx
           # [many prefer](https://github.com/huggingface/transformers/issues/27670). Must be
           # in [0, 1].
           min_p: nil,
+          # How strictly `region` is applied. `preferred` (the default when `region` is set)
+          # tries that region first and falls back to another when the model cannot be
+          # served there, so a request that would have succeeded still succeeds. `strict`
+          # pins the request: it is served from that region or it fails with a 422, never
+          # redirected to another region. Requires `region`.
+          mode: nil,
           # The language model to chat with.
           model: nil,
           # This will return multiple choices for you instead of a single chat completion.
@@ -380,6 +422,12 @@ module Telnyx
           # all models support all values; unsupported values are rejected with a 400 error.
           # When omitted, reasoning models use their default effort level.
           reasoning_effort: nil,
+          # Optional data-residency region the request should be served from, using the same
+          # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+          # Supported for Telnyx-hosted models only: a request routed to an external
+          # provider never passes through Telnyx model routing, so a region cannot be
+          # enforced for it. Omit for today's latency-based routing.
+          region: nil,
           # Use this is you want to guarantee a JSON output without defining a schema. For
           # control over the schema, use `guided_json`.
           response_format: nil,
@@ -437,11 +485,13 @@ module Telnyx
               logprobs: T::Boolean,
               max_tokens: Integer,
               min_p: Float,
+              mode: Telnyx::AI::ChatCompletionRequest::Mode::OrSymbol,
               model: String,
               n: Float,
               presence_penalty: Float,
               reasoning_effort:
                 Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
+              region: Telnyx::AI::ChatCompletionRequest::Region::OrSymbol,
               response_format:
                 Telnyx::AI::ChatCompletionRequest::ResponseFormat,
               seed: Integer,
@@ -671,6 +721,40 @@ module Telnyx
           end
         end
 
+        # How strictly `region` is applied. `preferred` (the default when `region` is set)
+        # tries that region first and falls back to another when the model cannot be
+        # served there, so a request that would have succeeded still succeeds. `strict`
+        # pins the request: it is served from that region or it fails with a 422, never
+        # redirected to another region. Requires `region`.
+        module Mode
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::AI::ChatCompletionRequest::Mode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PREFERRED =
+            T.let(
+              :preferred,
+              Telnyx::AI::ChatCompletionRequest::Mode::TaggedSymbol
+            )
+          STRICT =
+            T.let(
+              :strict,
+              Telnyx::AI::ChatCompletionRequest::Mode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Telnyx::AI::ChatCompletionRequest::Mode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
         # Controls the reasoning effort for models that support it. When set, the model
         # spends more or less compute on internal reasoning before generating its
         # response. Supported values: none, minimal, low, medium, high, xhigh, max. Not
@@ -726,6 +810,38 @@ module Telnyx
               T::Array[
                 Telnyx::AI::ChatCompletionRequest::ReasoningEffort::TaggedSymbol
               ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Optional data-residency region the request should be served from, using the same
+        # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+        # Supported for Telnyx-hosted models only: a request routed to an external
+        # provider never passes through Telnyx model routing, so a region cannot be
+        # enforced for it. Omit for today's latency-based routing.
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::AI::ChatCompletionRequest::Region)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          USA =
+            T.let(:USA, Telnyx::AI::ChatCompletionRequest::Region::TaggedSymbol)
+          EU =
+            T.let(:EU, Telnyx::AI::ChatCompletionRequest::Region::TaggedSymbol)
+          AUS =
+            T.let(:AUS, Telnyx::AI::ChatCompletionRequest::Region::TaggedSymbol)
+          UAE =
+            T.let(:UAE, Telnyx::AI::ChatCompletionRequest::Region::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Telnyx::AI::ChatCompletionRequest::Region::TaggedSymbol]
             )
           end
           def self.values

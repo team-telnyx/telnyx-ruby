@@ -13,6 +13,8 @@ module Telnyx
             max_retries: Integer,
             mcp_servers: ::Array[::Hash[Symbol, top]],
             metadata: ::Hash[Symbol, top],
+            mode: Telnyx::Models::AI::Anthropic::V1MessagesParams::mode,
+            region: Telnyx::Models::AI::Anthropic::V1MessagesParams::region,
             service_tier: String,
             stop_sequences: ::Array[String],
             stream: bool,
@@ -62,6 +64,18 @@ module Telnyx
           attr_reader metadata: ::Hash[Symbol, top]?
 
           def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader mode: Telnyx::Models::AI::Anthropic::V1MessagesParams::mode?
+
+          def mode=: (
+            Telnyx::Models::AI::Anthropic::V1MessagesParams::mode
+          ) -> Telnyx::Models::AI::Anthropic::V1MessagesParams::mode
+
+          attr_reader region: Telnyx::Models::AI::Anthropic::V1MessagesParams::region?
+
+          def region=: (
+            Telnyx::Models::AI::Anthropic::V1MessagesParams::region
+          ) -> Telnyx::Models::AI::Anthropic::V1MessagesParams::region
 
           attr_reader service_tier: String?
 
@@ -121,6 +135,8 @@ module Telnyx
             ?max_retries: Integer,
             ?mcp_servers: ::Array[::Hash[Symbol, top]],
             ?metadata: ::Hash[Symbol, top],
+            ?mode: Telnyx::Models::AI::Anthropic::V1MessagesParams::mode,
+            ?region: Telnyx::Models::AI::Anthropic::V1MessagesParams::region,
             ?service_tier: String,
             ?stop_sequences: ::Array[String],
             ?stream: bool,
@@ -145,6 +161,8 @@ module Telnyx
             max_retries: Integer,
             mcp_servers: ::Array[::Hash[Symbol, top]],
             metadata: ::Hash[Symbol, top],
+            mode: Telnyx::Models::AI::Anthropic::V1MessagesParams::mode,
+            region: Telnyx::Models::AI::Anthropic::V1MessagesParams::region,
             service_tier: String,
             stop_sequences: ::Array[String],
             stream: bool,
@@ -158,6 +176,30 @@ module Telnyx
             top_p: Float,
             request_options: Telnyx::RequestOptions
           }
+
+          type mode = :preferred | :strict
+
+          module Mode
+            extend Telnyx::Internal::Type::Enum
+
+            PREFERRED: :preferred
+            STRICT: :strict
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Anthropic::V1MessagesParams::mode]
+          end
+
+          type region = :USA | :EU | :AUS | :UAE
+
+          module Region
+            extend Telnyx::Internal::Type::Enum
+
+            USA: :USA
+            EU: :EU
+            AUS: :AUS
+            UAE: :UAE
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Anthropic::V1MessagesParams::region]
+          end
 
           type system_ = String | ::Array[::Hash[Symbol, top]]
 

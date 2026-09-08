@@ -71,6 +71,26 @@ module Telnyx
           #   @return [Hash{Symbol=>Object}, nil]
           optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
+          # @!attribute mode
+          #   How strictly `region` is applied. `preferred` (the default when `region` is set)
+          #   tries that region first and falls back to another when the model cannot be
+          #   served there, so a request that would have succeeded still succeeds. `strict`
+          #   pins the request: it is served from that region or it fails with a 422, never
+          #   redirected to another region. Requires `region`.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::Anthropic::V1MessagesParams::Mode, nil]
+          optional :mode, enum: -> { Telnyx::AI::Anthropic::V1MessagesParams::Mode }
+
+          # @!attribute region
+          #   Optional data-residency region the request should be served from, using the same
+          #   vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+          #   Supported for Telnyx-hosted models only: a request routed to an external
+          #   provider never passes through Telnyx model routing, so a region cannot be
+          #   enforced for it. Omit for today's latency-based routing.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::Anthropic::V1MessagesParams::Region, nil]
+          optional :region, enum: -> { Telnyx::AI::Anthropic::V1MessagesParams::Region }
+
           # @!attribute service_tier
           #   The service tier to use for this request. Supported values vary by model; use
           #   the Telnyx models endpoint and inspect the model's `service_tiers` field. If
@@ -143,7 +163,7 @@ module Telnyx
           #   @return [Float, nil]
           optional :top_p, Float
 
-          # @!method initialize(max_tokens:, messages:, model:, api_key_ref: nil, billing_group_id: nil, fallback_config: nil, max_retries: nil, mcp_servers: nil, metadata: nil, service_tier: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, timeout: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, request_options: {})
+          # @!method initialize(max_tokens:, messages:, model:, api_key_ref: nil, billing_group_id: nil, fallback_config: nil, max_retries: nil, mcp_servers: nil, metadata: nil, mode: nil, region: nil, service_tier: nil, stop_sequences: nil, stream: nil, system_: nil, temperature: nil, thinking: nil, timeout: nil, tool_choice: nil, tools: nil, top_k: nil, top_p: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Anthropic::V1MessagesParams} for more details.
           #
@@ -164,6 +184,10 @@ module Telnyx
           #   @param mcp_servers [Array<Hash{Symbol=>Object}>] List of MCP (Model Context Protocol) servers to make available to the model.
           #
           #   @param metadata [Hash{Symbol=>Object}] An object describing metadata about the request.
+          #
+          #   @param mode [Symbol, Telnyx::Models::AI::Anthropic::V1MessagesParams::Mode] How strictly `region` is applied. `preferred` (the default when `region` is set)
+          #
+          #   @param region [Symbol, Telnyx::Models::AI::Anthropic::V1MessagesParams::Region] Optional data-residency region the request should be served from, using the same
           #
           #   @param service_tier [String] The service tier to use for this request. Supported values vary by model; use th
           #
@@ -188,6 +212,38 @@ module Telnyx
           #   @param top_p [Float] Nucleus sampling parameter. Use temperature or top_p, but not both.
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+          # How strictly `region` is applied. `preferred` (the default when `region` is set)
+          # tries that region first and falls back to another when the model cannot be
+          # served there, so a request that would have succeeded still succeeds. `strict`
+          # pins the request: it is served from that region or it fails with a 422, never
+          # redirected to another region. Requires `region`.
+          module Mode
+            extend Telnyx::Internal::Type::Enum
+
+            PREFERRED = :preferred
+            STRICT = :strict
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Optional data-residency region the request should be served from, using the same
+          # vocabulary as your account's Data Locality setting. Behavior depends on `mode`.
+          # Supported for Telnyx-hosted models only: a request routed to an external
+          # provider never passes through Telnyx model routing, so a region cannot be
+          # enforced for it. Omit for today's latency-based routing.
+          module Region
+            extend Telnyx::Internal::Type::Enum
+
+            USA = :USA
+            EU = :EU
+            AUS = :AUS
+            UAE = :UAE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
 
           # System prompt. Can be a string or an array of content blocks following the
           # Anthropic API format.

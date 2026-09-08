@@ -29,15 +29,17 @@ module Telnyx
           raise RuntimeError.new(message)
         end
 
-        req = Telnyx::Internal::Util.deep_merge(
-          @req,
+        req = @req.merge(
           {
-            query: {
-              page_number: @req.fetch(:query).fetch(
-                :page_number,
-                1
-              ).to_i.succ
-            }
+            query: @req.fetch(:query, {}).except(
+              :"page[number]",
+              :"page[number]".to_s
+            ).merge("page[number]": @req.fetch(:query, {}).fetch(
+              :"page[number]",
+              @req.fetch(:query, {}).fetch(
+                :"page[number]".to_s, 1
+              )
+            ).to_i.succ)
           }
         )
         @client.request(req)

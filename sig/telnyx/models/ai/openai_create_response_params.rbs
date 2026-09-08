@@ -6,8 +6,10 @@ module Telnyx
           conversation: String,
           input: ::Hash[Symbol, top],
           instructions: String,
+          mode: Telnyx::Models::AI::OpenAICreateResponseParams::mode,
           model: String,
           reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
+          region: Telnyx::Models::AI::OpenAICreateResponseParams::region,
           service_tier: String,
           stream: bool
         }
@@ -29,6 +31,12 @@ module Telnyx
 
         def instructions=: (String) -> String
 
+        attr_reader mode: Telnyx::Models::AI::OpenAICreateResponseParams::mode?
+
+        def mode=: (
+          Telnyx::Models::AI::OpenAICreateResponseParams::mode
+        ) -> Telnyx::Models::AI::OpenAICreateResponseParams::mode
+
         attr_reader model: String?
 
         def model=: (String) -> String
@@ -38,6 +46,12 @@ module Telnyx
         def reasoning=: (
           Telnyx::AI::OpenAICreateResponseParams::Reasoning
         ) -> Telnyx::AI::OpenAICreateResponseParams::Reasoning
+
+        attr_reader region: Telnyx::Models::AI::OpenAICreateResponseParams::region?
+
+        def region=: (
+          Telnyx::Models::AI::OpenAICreateResponseParams::region
+        ) -> Telnyx::Models::AI::OpenAICreateResponseParams::region
 
         attr_reader service_tier: String?
 
@@ -51,8 +65,10 @@ module Telnyx
           ?conversation: String,
           ?input: ::Hash[Symbol, top],
           ?instructions: String,
+          ?mode: Telnyx::Models::AI::OpenAICreateResponseParams::mode,
           ?model: String,
           ?reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
+          ?region: Telnyx::Models::AI::OpenAICreateResponseParams::region,
           ?service_tier: String,
           ?stream: bool,
           ?request_options: Telnyx::request_opts
@@ -62,12 +78,25 @@ module Telnyx
           conversation: String,
           input: ::Hash[Symbol, top],
           instructions: String,
+          mode: Telnyx::Models::AI::OpenAICreateResponseParams::mode,
           model: String,
           reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
+          region: Telnyx::Models::AI::OpenAICreateResponseParams::region,
           service_tier: String,
           stream: bool,
           request_options: Telnyx::RequestOptions
         }
+
+        type mode = :preferred | :strict
+
+        module Mode
+          extend Telnyx::Internal::Type::Enum
+
+          PREFERRED: :preferred
+          STRICT: :strict
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::OpenAICreateResponseParams::mode]
+        end
 
         type reasoning =
           {
@@ -105,6 +134,19 @@ module Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::AI::OpenAICreateResponseParams::Reasoning::effort]
           end
+        end
+
+        type region = :USA | :EU | :AUS | :UAE
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          USA: :USA
+          EU: :EU
+          AUS: :AUS
+          UAE: :UAE
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::OpenAICreateResponseParams::region]
         end
       end
     end

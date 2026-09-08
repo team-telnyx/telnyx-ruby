@@ -12,21 +12,21 @@ module Telnyx
             )
           end
 
-        sig { returns(T.nilable(Telnyx::MessagingProfile)) }
+        sig { returns(T.nilable(Telnyx::MessagingMessagingProfile)) }
         attr_reader :data
 
-        sig { params(data: Telnyx::MessagingProfile::OrHash).void }
+        sig { params(data: Telnyx::MessagingMessagingProfile::OrHash).void }
         attr_writer :data
 
         sig do
-          params(data: Telnyx::MessagingProfile::OrHash).returns(
+          params(data: Telnyx::MessagingMessagingProfile::OrHash).returns(
             T.attached_class
           )
         end
         def self.new(data: nil)
         end
 
-        sig { override.returns({ data: Telnyx::MessagingProfile }) }
+        sig { override.returns({ data: Telnyx::MessagingMessagingProfile }) }
         def to_hash
         end
       end

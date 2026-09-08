@@ -10,8 +10,10 @@ module Telnyx
           ?conversation: String,
           ?input: ::Hash[Symbol, top],
           ?instructions: String,
+          ?mode: Telnyx::Models::AI::OpenAICreateResponseParams::mode,
           ?model: String,
           ?reasoning: Telnyx::AI::OpenAICreateResponseParams::Reasoning,
+          ?region: Telnyx::Models::AI::OpenAICreateResponseParams::region,
           ?service_tier: String,
           ?stream: bool,
           ?request_options: Telnyx::request_opts

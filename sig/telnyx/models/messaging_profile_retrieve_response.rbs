@@ -1,16 +1,18 @@
 module Telnyx
   module Models
     type messaging_profile_retrieve_response =
-      { data: Telnyx::MessagingProfile }
+      { data: Telnyx::MessagingMessagingProfile }
 
     class MessagingProfileRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::MessagingProfile?
+      attr_reader data: Telnyx::MessagingMessagingProfile?
 
-      def data=: (Telnyx::MessagingProfile) -> Telnyx::MessagingProfile
+      def data=: (
+        Telnyx::MessagingMessagingProfile
+      ) -> Telnyx::MessagingMessagingProfile
 
-      def initialize: (?data: Telnyx::MessagingProfile) -> void
+      def initialize: (?data: Telnyx::MessagingMessagingProfile) -> void
 
-      def to_hash: -> { data: Telnyx::MessagingProfile }
+      def to_hash: -> { data: Telnyx::MessagingMessagingProfile }
     end
   end
 end
