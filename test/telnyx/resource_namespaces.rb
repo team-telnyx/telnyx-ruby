@@ -123,6 +123,9 @@ module Telnyx
       module CredentialConnections
       end
 
+      module CreditAccount
+      end
+
       module Dir
       end
 
@@ -419,6 +422,8 @@ module Telnyx
       end
 
       module X402
+        module CreditAccount
+        end
       end
     end
   end
