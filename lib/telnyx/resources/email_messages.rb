@@ -172,11 +172,13 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::EmailMessageBatchParams} for more details.
       #
-      # Creates up to 50 email messages in a single request.
+      # Creates up to 1,000 email messages in a single request. Each message is
+      # validated and sent independently; per-message failures do not affect other
+      # messages in the batch. All responses use 207 Multi-Status.
       #
       # @overload batch(messages:, sandbox_mode: nil, idempotency_key: nil, request_options: {})
       #
-      # @param messages [Array<Telnyx::Models::EmailMessageBatchParams::Message>] Body param
+      # @param messages [Array<Telnyx::Models::EmailMessageBatchParams::Message>] Body param: Array of email messages to send. Up to 1,000 messages per batch requ
       #
       # @param sandbox_mode [Boolean] Body param: Applies sandbox mode to all messages in the batch. Overrides any per
       #

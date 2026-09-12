@@ -78,6 +78,17 @@ module Telnyx
           sig { params(calling_enabled: T::Boolean).void }
           attr_writer :calling_enabled
 
+          # Current lifecycle state for a coexistence number. This is null for a standard
+          # Cloud API number.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            )
+          end
+          attr_accessor :coexistence_state
+
           sig { returns(T.nilable(Time)) }
           attr_reader :created_at
 
@@ -95,6 +106,14 @@ module Telnyx
 
           sig { params(enabled: T::Boolean).void }
           attr_writer :enabled
+
+          # Indicates whether the number is connected to both the WhatsApp Business app and
+          # Cloud API through WhatsApp Coexistence.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :is_on_biz_app
+
+          sig { params(is_on_biz_app: T::Boolean).void }
+          attr_writer :is_on_biz_app
 
           # Phone number in E164 format
           sig { returns(T.nilable(String)) }
@@ -129,6 +148,32 @@ module Telnyx
           sig { params(status: String).void }
           attr_writer :status
 
+          # Deadline for initiating the current coexistence synchronization cycle. This is
+          # null when no deadline applies.
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :sync_deadline
+
+          # Synchronization progress. This object is returned only while a coexistence
+          # number is synchronizing.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::SyncProgress
+              )
+            )
+          end
+          attr_reader :sync_progress
+
+          sig do
+            params(
+              sync_progress:
+                T.nilable(
+                  Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::SyncProgress::OrHash
+                )
+            ).void
+          end
+          attr_writer :sync_progress
+
           # User ID
           sig { returns(T.nilable(String)) }
           attr_reader :user_id
@@ -146,23 +191,39 @@ module Telnyx
           sig do
             params(
               calling_enabled: T::Boolean,
+              coexistence_state:
+                T.nilable(
+                  Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::OrSymbol
+                ),
               created_at: Time,
               display_name: String,
               enabled: T::Boolean,
+              is_on_biz_app: T::Boolean,
               phone_number: String,
               phone_number_id: String,
               quality_rating: String,
               record_type: String,
               status: String,
+              sync_deadline: T.nilable(Time),
+              sync_progress:
+                T.nilable(
+                  Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::SyncProgress::OrHash
+                ),
               user_id: String,
               waba_id: String
             ).returns(T.attached_class)
           end
           def self.new(
             calling_enabled: nil,
+            # Current lifecycle state for a coexistence number. This is null for a standard
+            # Cloud API number.
+            coexistence_state: nil,
             created_at: nil,
             display_name: nil,
             enabled: nil,
+            # Indicates whether the number is connected to both the WhatsApp Business app and
+            # Cloud API through WhatsApp Coexistence.
+            is_on_biz_app: nil,
             # Phone number in E164 format
             phone_number: nil,
             # Whatsapp phone number ID
@@ -171,6 +232,12 @@ module Telnyx
             quality_rating: nil,
             record_type: nil,
             status: nil,
+            # Deadline for initiating the current coexistence synchronization cycle. This is
+            # null when no deadline applies.
+            sync_deadline: nil,
+            # Synchronization progress. This object is returned only while a coexistence
+            # number is synchronizing.
+            sync_progress: nil,
             # User ID
             user_id: nil,
             # WABA ID of Whatsapp business account
@@ -182,20 +249,166 @@ module Telnyx
             override.returns(
               {
                 calling_enabled: T::Boolean,
+                coexistence_state:
+                  T.nilable(
+                    Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+                  ),
                 created_at: Time,
                 display_name: String,
                 enabled: T::Boolean,
+                is_on_biz_app: T::Boolean,
                 phone_number: String,
                 phone_number_id: String,
                 quality_rating: String,
                 record_type: String,
                 status: String,
+                sync_deadline: T.nilable(Time),
+                sync_progress:
+                  T.nilable(
+                    Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::SyncProgress
+                  ),
                 user_id: String,
                 waba_id: String
               }
             )
           end
           def to_hash
+          end
+
+          # Current lifecycle state for a coexistence number. This is null for a standard
+          # Cloud API number.
+          module CoexistenceState
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PENDING_ONBOARDING =
+              T.let(
+                :pending_onboarding,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            SYNC_PENDING =
+              T.let(
+                :sync_pending,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            SYNCING =
+              T.let(
+                :syncing,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            SYNC_COMPLETE =
+              T.let(
+                :sync_complete,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            ACTIVE =
+              T.let(
+                :active,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            HISTORY_DECLINED =
+              T.let(
+                :history_declined,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            SYNC_DEADLINE_EXPIRED =
+              T.let(
+                :sync_deadline_expired,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            OFFBOARDED =
+              T.let(
+                :offboarded,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+            DISCONNECTED =
+              T.let(
+                :disconnected,
+                Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::CoexistenceState::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class SyncProgress < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data::SyncProgress,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :contacts_status
+
+            sig { params(contacts_status: String).void }
+            attr_writer :contacts_status
+
+            sig { returns(T.nilable(Integer)) }
+            attr_accessor :history_chunk_order
+
+            sig { returns(T.nilable(Integer)) }
+            attr_accessor :history_phase
+
+            sig { returns(T.nilable(Integer)) }
+            attr_accessor :history_progress
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :history_status
+
+            sig { params(history_status: String).void }
+            attr_writer :history_status
+
+            # Synchronization progress. This object is returned only while a coexistence
+            # number is synchronizing.
+            sig do
+              params(
+                contacts_status: String,
+                history_chunk_order: T.nilable(Integer),
+                history_phase: T.nilable(Integer),
+                history_progress: T.nilable(Integer),
+                history_status: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              contacts_status: nil,
+              history_chunk_order: nil,
+              history_phase: nil,
+              history_progress: nil,
+              history_status: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  contacts_status: String,
+                  history_chunk_order: T.nilable(Integer),
+                  history_phase: T.nilable(Integer),
+                  history_progress: T.nilable(Integer),
+                  history_status: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
       end

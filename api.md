@@ -2590,6 +2590,7 @@ Methods:
 - <code title="get /whatsapp/phone_numbers">client.whatsapp.phone_numbers.<a href="./lib/telnyx/resources/whatsapp/phone_numbers.rb">get</a>(\*\*params)</code>
 - <code title="post /v2/whatsapp/phone_numbers/{phone_number}/resend_verification">client.whatsapp.phone_numbers.<a href="./lib/telnyx/resources/whatsapp/phone_numbers.rb">resend_verification</a>(\*\*params)</code>
 - <code title="get /v2/whatsapp/phone_numbers/{phone_number}/conversation_window">client.whatsapp.phone_numbers.<a href="./lib/telnyx/resources/whatsapp/phone_numbers.rb">retrieve_conversation_window</a>(\*\*params)</code>
+- <code title="get /whatsapp/phone_numbers/{phone_number}">client.whatsapp.phone_numbers.<a href="./lib/telnyx/resources/whatsapp/phone_numbers.rb">retrieve_phone_number</a>(\*\*params)</code>
 - <code title="post /v2/whatsapp/phone_numbers/{phone_number}/verify">client.whatsapp.phone_numbers.<a href="./lib/telnyx/resources/whatsapp/phone_numbers.rb">verify</a>(\*\*params)</code>
 
 ### CallingSettings
@@ -3112,3 +3113,14 @@ Methods:
 
 - <code title="get /external_requirements/{regulatory_requirement_id}/sub_number_orders/{sub_number_order_id}">client.external_requirements.sub_number_orders.<a href="./lib/telnyx/resources/external_requirements/sub_number_orders.rb">retrieve</a>(\*\*params)</code>
 - <code title="post /external_requirements/{regulatory_requirement_id}/sub_number_orders/{sub_number_order_id}">client.external_requirements.sub_number_orders.<a href="./lib/telnyx/resources/external_requirements/sub_number_orders.rb">update</a>(\*\*params)</code>
+
+# Compute
+
+## Funcs
+
+Methods:
+
+- <code title="get /compute/funcs/{id}/logs">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_logs</a>(\*\*params)</code>
+- <code title="get /compute/funcs/{id}/metric_aggregates">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_metric_aggregates</a>(\*\*params)</code>
+- <code title="get /compute/funcs/{id}/revisions">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_revisions</a>(\*\*params)</code>
+- <code title="get /compute/funcs/{id}/ship_inspection">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_ship_inspection</a>(\*\*params)</code>

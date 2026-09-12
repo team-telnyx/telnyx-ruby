@@ -3,6 +3,7 @@ module Telnyx
     type messaging_inbound_message_payload =
       {
         id: String,
+        body: Telnyx::MessagingInboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         completed_at: Time?,
         cost: Telnyx::MessagingInboundMessagePayload::Cost?,
@@ -25,7 +26,7 @@ module Telnyx
         tcr_campaign_id: String?,
         tcr_campaign_registered: String?,
         text: String,
-        to: ::Array[Telnyx::MessagingInboundMessagePayload::To],
+        to: Telnyx::Models::MessagingInboundMessagePayload::to,
         type: Telnyx::Models::MessagingInboundMessagePayload::type_,
         valid_until: Time?,
         webhook_failover_url: String?,
@@ -36,6 +37,12 @@ module Telnyx
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_reader body: Telnyx::MessagingInboundMessagePayload::Body?
+
+      def body=: (
+        Telnyx::MessagingInboundMessagePayload::Body
+      ) -> Telnyx::MessagingInboundMessagePayload::Body
 
       attr_reader cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc]?
 
@@ -123,11 +130,11 @@ module Telnyx
 
       def text=: (String) -> String
 
-      attr_reader to: ::Array[Telnyx::MessagingInboundMessagePayload::To]?
+      attr_reader to: Telnyx::Models::MessagingInboundMessagePayload::to?
 
       def to=: (
-        ::Array[Telnyx::MessagingInboundMessagePayload::To]
-      ) -> ::Array[Telnyx::MessagingInboundMessagePayload::To]
+        Telnyx::Models::MessagingInboundMessagePayload::to
+      ) -> Telnyx::Models::MessagingInboundMessagePayload::to
 
       attr_reader type: Telnyx::Models::MessagingInboundMessagePayload::type_?
 
@@ -143,6 +150,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?body: Telnyx::MessagingInboundMessagePayload::Body,
         ?cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         ?completed_at: Time?,
         ?cost: Telnyx::MessagingInboundMessagePayload::Cost?,
@@ -165,7 +173,7 @@ module Telnyx
         ?tcr_campaign_id: String?,
         ?tcr_campaign_registered: String?,
         ?text: String,
-        ?to: ::Array[Telnyx::MessagingInboundMessagePayload::To],
+        ?to: Telnyx::Models::MessagingInboundMessagePayload::to,
         ?type: Telnyx::Models::MessagingInboundMessagePayload::type_,
         ?valid_until: Time?,
         ?webhook_failover_url: String?,
@@ -174,6 +182,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        body: Telnyx::MessagingInboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         completed_at: Time?,
         cost: Telnyx::MessagingInboundMessagePayload::Cost?,
@@ -196,12 +205,106 @@ module Telnyx
         tcr_campaign_id: String?,
         tcr_campaign_registered: String?,
         text: String,
-        to: ::Array[Telnyx::MessagingInboundMessagePayload::To],
+        to: Telnyx::Models::MessagingInboundMessagePayload::to,
         type: Telnyx::Models::MessagingInboundMessagePayload::type_,
         valid_until: Time?,
         webhook_failover_url: String?,
         webhook_url: String?
       }
+
+      type body =
+        {
+          id: String,
+          edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
+          foreign_id: String,
+          from: String,
+          revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+          timestamp: String,
+          type: String
+        }
+
+      class Body < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader edit: Telnyx::MessagingInboundMessagePayload::Body::Edit?
+
+        def edit=: (
+          Telnyx::MessagingInboundMessagePayload::Body::Edit
+        ) -> Telnyx::MessagingInboundMessagePayload::Body::Edit
+
+        attr_reader foreign_id: String?
+
+        def foreign_id=: (String) -> String
+
+        attr_reader from: String?
+
+        def from=: (String) -> String
+
+        attr_reader revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke?
+
+        def revoke=: (
+          Telnyx::MessagingInboundMessagePayload::Body::Revoke
+        ) -> Telnyx::MessagingInboundMessagePayload::Body::Revoke
+
+        attr_reader timestamp: String?
+
+        def timestamp=: (String) -> String
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
+          ?foreign_id: String,
+          ?from: String,
+          ?revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+          ?timestamp: String,
+          ?type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
+          foreign_id: String,
+          from: String,
+          revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+          timestamp: String,
+          type: String
+        }
+
+        type edit =
+          { message: ::Hash[Symbol, top], original_message_id: String }
+
+        class Edit < Telnyx::Internal::Type::BaseModel
+          attr_accessor message: ::Hash[Symbol, top]
+
+          attr_accessor original_message_id: String
+
+          def initialize: (
+            message: ::Hash[Symbol, top],
+            original_message_id: String
+          ) -> void
+
+          def to_hash: -> {
+            message: ::Hash[Symbol, top],
+            original_message_id: String
+          }
+        end
+
+        type revoke = { original_message_id: String }
+
+        class Revoke < Telnyx::Internal::Type::BaseModel
+          attr_accessor original_message_id: String
+
+          def initialize: (original_message_id: String) -> void
+
+          def to_hash: -> { original_message_id: String }
+        end
+      end
 
       type cc =
         {
@@ -286,20 +389,16 @@ module Telnyx
         end
       end
 
-      type cost = { amount: String, currency: String }
+      type cost = { amount: String?, currency: String? }
 
       class Cost < Telnyx::Internal::Type::BaseModel
-        attr_reader amount: String?
+        attr_accessor amount: String?
 
-        def amount=: (String) -> String
+        attr_accessor currency: String?
 
-        attr_reader currency: String?
+        def initialize: (?amount: String?, ?currency: String?) -> void
 
-        def currency=: (String) -> String
-
-        def initialize: (?amount: String, ?currency: String) -> void
-
-        def to_hash: -> { amount: String, currency: String }
+        def to_hash: -> { amount: String?, currency: String? }
       end
 
       type cost_breakdown =
@@ -496,97 +595,110 @@ module Telnyx
       end
 
       type to =
-        {
-          carrier: String,
-          line_type: Telnyx::Models::MessagingInboundMessagePayload::To::line_type,
-          phone_number: String,
-          status: Telnyx::Models::MessagingInboundMessagePayload::To::status
-        }
+        ::Array[Telnyx::MessagingInboundMessagePayload::To::UnionMember0]
+        | String
 
-      class To < Telnyx::Internal::Type::BaseModel
-        attr_reader carrier: String?
+      module To
+        extend Telnyx::Internal::Type::Union
 
-        def carrier=: (String) -> String
+        type union_member0 =
+          {
+            carrier: String,
+            line_type: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type,
+            phone_number: String,
+            status: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status
+          }
 
-        attr_reader line_type: Telnyx::Models::MessagingInboundMessagePayload::To::line_type?
+        class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          attr_reader carrier: String?
 
-        def line_type=: (
-          Telnyx::Models::MessagingInboundMessagePayload::To::line_type
-        ) -> Telnyx::Models::MessagingInboundMessagePayload::To::line_type
+          def carrier=: (String) -> String
 
-        attr_reader phone_number: String?
+          attr_reader line_type: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type?
 
-        def phone_number=: (String) -> String
+          def line_type=: (
+            Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type
+          ) -> Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type
 
-        attr_reader status: Telnyx::Models::MessagingInboundMessagePayload::To::status?
+          attr_reader phone_number: String?
 
-        def status=: (
-          Telnyx::Models::MessagingInboundMessagePayload::To::status
-        ) -> Telnyx::Models::MessagingInboundMessagePayload::To::status
+          def phone_number=: (String) -> String
 
-        def initialize: (
-          ?carrier: String,
-          ?line_type: Telnyx::Models::MessagingInboundMessagePayload::To::line_type,
-          ?phone_number: String,
-          ?status: Telnyx::Models::MessagingInboundMessagePayload::To::status
-        ) -> void
+          attr_reader status: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status?
 
-        def to_hash: -> {
-          carrier: String,
-          line_type: Telnyx::Models::MessagingInboundMessagePayload::To::line_type,
-          phone_number: String,
-          status: Telnyx::Models::MessagingInboundMessagePayload::To::status
-        }
+          def status=: (
+            Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status
+          ) -> Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status
 
-        type line_type =
-          :Wireline | :Wireless | :VoWiFi | :VoIP | :"Pre-Paid Wireless" | :""
+          def initialize: (
+            ?carrier: String,
+            ?line_type: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type,
+            ?phone_number: String,
+            ?status: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status
+          ) -> void
 
-        module LineType
-          extend Telnyx::Internal::Type::Enum
+          def to_hash: -> {
+            carrier: String,
+            line_type: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type,
+            phone_number: String,
+            status: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status
+          }
 
-          WIRELINE: :Wireline
-          WIRELESS: :Wireless
-          VO_WI_FI: :VoWiFi
-          VO_IP: :VoIP
-          PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
-          EMPTY: :""
+          type line_type =
+            :Wireline | :Wireless | :VoWiFi | :VoIP | :"Pre-Paid Wireless" | :""
 
-          def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::To::line_type]
+          module LineType
+            extend Telnyx::Internal::Type::Enum
+
+            WIRELINE: :Wireline
+            WIRELESS: :Wireless
+            VO_WI_FI: :VoWiFi
+            VO_IP: :VoIP
+            PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
+            EMPTY: :""
+
+            def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type]
+          end
+
+          type status =
+            :queued
+            | :sending
+            | :sent
+            | :delivered
+            | :sending_failed
+            | :delivery_failed
+            | :delivery_unconfirmed
+            | :webhook_delivered
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            QUEUED: :queued
+            SENDING: :sending
+            SENT: :sent
+            DELIVERED: :delivered
+            SENDING_FAILED: :sending_failed
+            DELIVERY_FAILED: :delivery_failed
+            DELIVERY_UNCONFIRMED: :delivery_unconfirmed
+            WEBHOOK_DELIVERED: :webhook_delivered
+
+            def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status]
+          end
         end
 
-        type status =
-          :queued
-          | :sending
-          | :sent
-          | :delivered
-          | :sending_failed
-          | :delivery_failed
-          | :delivery_unconfirmed
-          | :webhook_delivered
+        def self?.variants: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::to]
 
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          QUEUED: :queued
-          SENDING: :sending
-          SENT: :sent
-          DELIVERED: :delivered
-          SENDING_FAILED: :sending_failed
-          DELIVERY_FAILED: :delivery_failed
-          DELIVERY_UNCONFIRMED: :delivery_unconfirmed
-          WEBHOOK_DELIVERED: :webhook_delivered
-
-          def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::To::status]
-        end
+        UnionMember0Array: Telnyx::Internal::Type::Converter
       end
 
-      type type_ = :SMS | :MMS
+      type type_ = :SMS | :MMS | :WHATSAPP
 
       module Type
         extend Telnyx::Internal::Type::Enum
 
         SMS: :SMS
         MMS: :MMS
+        WHATSAPP: :WHATSAPP
 
         def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::type_]
       end

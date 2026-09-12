@@ -59,6 +59,7 @@ module Telnyx
           NOT_FOUND = :not_found
           FORBIDDEN = :forbidden
           SERVICE_UNAVAILABLE = :service_unavailable
+          UNPROCESSABLE_ENTITY = :unprocessable_entity
           VALIDATION_ERROR = :validation_error
           RECIPIENT_SUPPRESSED = :recipient_suppressed
           REPUTATION_SUSPENDED = :reputation_suspended

@@ -36,6 +36,14 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :enabled, Telnyx::Internal::Type::Boolean
 
+      # @!attribute features
+      #   Telnyx product features the messaging customer can enable on the messaging
+      #   profile. Keys map to individual feature flags; unknown keys are accepted and
+      #   preserved for forward compatibility with rolling deployments.
+      #
+      #   @return [Telnyx::Models::MessagingProfileFeatures, nil]
+      optional :features, -> { Telnyx::MessagingProfileFeatures }, nil?: true
+
       # @!attribute health_webhook_url
       #   DEPRECATED: health check url service checking
       #
@@ -187,7 +195,7 @@ module Telnyx
         optional :updated_at, Time
       end
 
-      # @!method initialize(id: nil, ai_assistant_id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, organization_id: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, resource_group_id: nil, smart_encoding: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
+      # @!method initialize(id: nil, ai_assistant_id: nil, alpha_sender: nil, created_at: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, features: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, organization_id: nil, record_type: nil, redaction_enabled: nil, redaction_level: nil, resource_group_id: nil, smart_encoding: nil, updated_at: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingMessagingProfile} for more details.
       #
@@ -204,6 +212,8 @@ module Telnyx
       #   @param daily_spend_limit_enabled [Boolean] Whether to enforce the value configured by `daily_spend_limit`.
       #
       #   @param enabled [Boolean] Specifies whether the messaging profile is enabled or not.
+      #
+      #   @param features [Telnyx::Models::MessagingProfileFeatures, nil] Telnyx product features the messaging customer can enable on the messaging profi
       #
       #   @param health_webhook_url [String, nil] DEPRECATED: health check url service checking
       #

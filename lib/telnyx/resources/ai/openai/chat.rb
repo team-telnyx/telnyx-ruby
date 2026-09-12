@@ -13,7 +13,7 @@ module Telnyx
           # and may be used with the OpenAI JS or Python SDK by setting the base URL to
           # `https://api.telnyx.com/v2/ai/openai`.
           #
-          # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, guided_choice: nil, guided_json: nil, guided_regex: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, mode: nil, model: nil, n: nil, presence_penalty: nil, reasoning_effort: nil, region: nil, response_format: nil, seed: nil, service_tier: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
+          # @overload create_completion(messages:, api_key_ref: nil, best_of: nil, early_stopping: nil, enable_thinking: nil, frequency_penalty: nil, length_penalty: nil, logprobs: nil, max_tokens: nil, min_p: nil, mode: nil, model: nil, n: nil, presence_penalty: nil, reasoning_effort: nil, region: nil, response_format: nil, seed: nil, service_tier: nil, stop: nil, stream: nil, temperature: nil, tool_choice: nil, tools: nil, top_logprobs: nil, top_p: nil, use_beam_search: nil, request_options: {})
           #
           # @param messages [Array<Telnyx::Models::AI::ChatCompletionRequest::Message>] A list of the previous chat messages for context.
           #
@@ -26,12 +26,6 @@ module Telnyx
           # @param enable_thinking [Boolean] Whether to enable the thinking/reasoning phase for models that support it (e.g.,
           #
           # @param frequency_penalty [Float] Higher values will penalize the model from repeating the same output tokens.
-          #
-          # @param guided_choice [Array<String>] If specified, the output will be exactly one of the choices.
-          #
-          # @param guided_json [Hash{Symbol=>Object}] Must be a valid JSON schema. If specified, the output will follow the JSON schem
-          #
-          # @param guided_regex [String] If specified, the output will follow the regex pattern.
           #
           # @param length_penalty [Float] This is used with `use_beam_search` to prefer shorter or longer completions.
           #
@@ -53,7 +47,7 @@ module Telnyx
           #
           # @param region [Symbol, Telnyx::Models::AI::ChatCompletionRequest::Region] Optional data-residency region the request should be served from, using the same
           #
-          # @param response_format [Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat] Use this is you want to guarantee a JSON output without defining a schema. For c
+          # @param response_format [Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText, Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject, Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam] Controls the format of the model output. `json_object` guarantees valid JSON out
           #
           # @param seed [Integer] If specified, the system will make a best effort to sample deterministically, su
           #

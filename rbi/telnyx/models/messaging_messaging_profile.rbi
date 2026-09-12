@@ -39,6 +39,19 @@ module Telnyx
       sig { params(enabled: T::Boolean).void }
       attr_writer :enabled
 
+      # Telnyx product features the messaging customer can enable on the messaging
+      # profile. Keys map to individual feature flags; unknown keys are accepted and
+      # preserved for forward compatibility with rolling deployments.
+      sig { returns(T.nilable(Telnyx::MessagingProfileFeatures)) }
+      attr_reader :features
+
+      sig do
+        params(
+          features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash)
+        ).void
+      end
+      attr_writer :features
+
       # DEPRECATED: health check url service checking
       sig { returns(T.nilable(String)) }
       attr_accessor :health_webhook_url
@@ -234,6 +247,7 @@ module Telnyx
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
           enabled: T::Boolean,
+          features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash),
           health_webhook_url: T.nilable(String),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
@@ -274,6 +288,10 @@ module Telnyx
         daily_spend_limit_enabled: nil,
         # Specifies whether the messaging profile is enabled or not.
         enabled: nil,
+        # Telnyx product features the messaging customer can enable on the messaging
+        # profile. Keys map to individual feature flags; unknown keys are accepted and
+        # preserved for forward compatibility with rolling deployments.
+        features: nil,
         # DEPRECATED: health check url service checking
         health_webhook_url: nil,
         # enables SMS fallback for MMS messages.
@@ -348,6 +366,7 @@ module Telnyx
             daily_spend_limit: String,
             daily_spend_limit_enabled: T::Boolean,
             enabled: T::Boolean,
+            features: T.nilable(Telnyx::MessagingProfileFeatures),
             health_webhook_url: T.nilable(String),
             mms_fall_back_to_sms: T::Boolean,
             mms_transcoding: T::Boolean,

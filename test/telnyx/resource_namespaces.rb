@@ -109,6 +109,9 @@ module Telnyx
       module Collections
       end
 
+      module Compute
+      end
+
       module Conferences
       end
 

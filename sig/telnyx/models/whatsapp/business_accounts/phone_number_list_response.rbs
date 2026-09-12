@@ -5,14 +5,18 @@ module Telnyx
         type phone_number_list_response =
           {
             calling_enabled: bool,
+            coexistence_state: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::coexistence_state?,
             created_at: Time,
             display_name: String,
             enabled: bool,
+            is_on_biz_app: bool,
             phone_number: String,
             phone_number_id: String,
             quality_rating: String,
             record_type: String,
             status: String,
+            sync_deadline: Time?,
+            sync_progress: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::SyncProgress?,
             user_id: String,
             waba_id: String
           }
@@ -21,6 +25,8 @@ module Telnyx
           attr_reader calling_enabled: bool?
 
           def calling_enabled=: (bool) -> bool
+
+          attr_accessor coexistence_state: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::coexistence_state?
 
           attr_reader created_at: Time?
 
@@ -33,6 +39,10 @@ module Telnyx
           attr_reader enabled: bool?
 
           def enabled=: (bool) -> bool
+
+          attr_reader is_on_biz_app: bool?
+
+          def is_on_biz_app=: (bool) -> bool
 
           attr_reader phone_number: String?
 
@@ -54,6 +64,10 @@ module Telnyx
 
           def status=: (String) -> String
 
+          attr_accessor sync_deadline: Time?
+
+          attr_accessor sync_progress: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::SyncProgress?
+
           attr_reader user_id: String?
 
           def user_id=: (String) -> String
@@ -64,31 +78,107 @@ module Telnyx
 
           def initialize: (
             ?calling_enabled: bool,
+            ?coexistence_state: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::coexistence_state?,
             ?created_at: Time,
             ?display_name: String,
             ?enabled: bool,
+            ?is_on_biz_app: bool,
             ?phone_number: String,
             ?phone_number_id: String,
             ?quality_rating: String,
             ?record_type: String,
             ?status: String,
+            ?sync_deadline: Time?,
+            ?sync_progress: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::SyncProgress?,
             ?user_id: String,
             ?waba_id: String
           ) -> void
 
           def to_hash: -> {
             calling_enabled: bool,
+            coexistence_state: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::coexistence_state?,
             created_at: Time,
             display_name: String,
             enabled: bool,
+            is_on_biz_app: bool,
             phone_number: String,
             phone_number_id: String,
             quality_rating: String,
             record_type: String,
             status: String,
+            sync_deadline: Time?,
+            sync_progress: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::SyncProgress?,
             user_id: String,
             waba_id: String
           }
+
+          type coexistence_state =
+            :pending_onboarding
+            | :sync_pending
+            | :syncing
+            | :sync_complete
+            | :active
+            | :history_declined
+            | :sync_deadline_expired
+            | :offboarded
+            | :disconnected
+
+          module CoexistenceState
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING_ONBOARDING: :pending_onboarding
+            SYNC_PENDING: :sync_pending
+            SYNCING: :syncing
+            SYNC_COMPLETE: :sync_complete
+            ACTIVE: :active
+            HISTORY_DECLINED: :history_declined
+            SYNC_DEADLINE_EXPIRED: :sync_deadline_expired
+            OFFBOARDED: :offboarded
+            DISCONNECTED: :disconnected
+
+            def self?.values: -> ::Array[Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::coexistence_state]
+          end
+
+          type sync_progress =
+            {
+              contacts_status: String,
+              history_chunk_order: Integer?,
+              history_phase: Integer?,
+              history_progress: Integer?,
+              history_status: String
+            }
+
+          class SyncProgress < Telnyx::Internal::Type::BaseModel
+            attr_reader contacts_status: String?
+
+            def contacts_status=: (String) -> String
+
+            attr_accessor history_chunk_order: Integer?
+
+            attr_accessor history_phase: Integer?
+
+            attr_accessor history_progress: Integer?
+
+            attr_reader history_status: String?
+
+            def history_status=: (String) -> String
+
+            def initialize: (
+              ?contacts_status: String,
+              ?history_chunk_order: Integer?,
+              ?history_phase: Integer?,
+              ?history_progress: Integer?,
+              ?history_status: String
+            ) -> void
+
+            def to_hash: -> {
+              contacts_status: String,
+              history_chunk_order: Integer?,
+              history_phase: Integer?,
+              history_progress: Integer?,
+              history_status: String
+            }
+          end
         end
       end
     end

@@ -392,6 +392,8 @@ module Telnyx
 
   CommentRetrieveParams = Telnyx::Models::CommentRetrieveParams
 
+  Compute = Telnyx::Models::Compute
+
   Conference = Telnyx::Models::Conference
 
   ConferenceCreated = Telnyx::Models::ConferenceCreated
@@ -1279,6 +1281,8 @@ module Telnyx
   MessagingProfileCreateParams = Telnyx::Models::MessagingProfileCreateParams
 
   MessagingProfileDeleteParams = Telnyx::Models::MessagingProfileDeleteParams
+
+  MessagingProfileFeatures = Telnyx::Models::MessagingProfileFeatures
 
   MessagingProfileListAlphanumericSenderIDsParams =
     Telnyx::Models::MessagingProfileListAlphanumericSenderIDsParams
@@ -2386,6 +2390,8 @@ module Telnyx
 
   Whatsapp = Telnyx::Models::Whatsapp
 
+  WhatsappAccountUpdate = Telnyx::Models::WhatsappAccountUpdate
+
   WhatsappContact = Telnyx::Models::WhatsappContact
 
   WhatsappInteractive = Telnyx::Models::WhatsappInteractive
@@ -2395,6 +2401,8 @@ module Telnyx
   WhatsappMedia = Telnyx::Models::WhatsappMedia
 
   WhatsappMessageContent = Telnyx::Models::WhatsappMessageContent
+
+  WhatsappMessageEcho = Telnyx::Models::WhatsappMessageEcho
 
   WhatsappMessageTemplateDeleteParams =
     Telnyx::Models::WhatsappMessageTemplateDeleteParams

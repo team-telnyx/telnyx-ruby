@@ -31,6 +31,24 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :name
 
+        # A2A agents this assistant can delegate to. Tools are not stored here: at the
+        # start of every conversation each agent's card is fetched and one tool is derived
+        # per skill the card advertises, named `a2a_<name>_<skill_id>`. The following
+        # limits are not enforced when the assistant is saved, and anything past them is
+        # dropped when the conversation starts: 64 agents per assistant, 64 skills per
+        # card, 128 derived tools per assistant, and a 6 second budget for all card
+        # fetches combined. An agent whose card cannot be fetched costs the assistant that
+        # capability for the conversation; it does not fail the call.
+        sig { returns(T.nilable(T::Array[Telnyx::AI::AssistantA2AAgent])) }
+        attr_reader :a2a_agents
+
+        sig do
+          params(
+            a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash]
+          ).void
+        end
+        attr_writer :a2a_agents
+
         # Conversation flow as returned by the API.
         sig { returns(T.nilable(Telnyx::AI::ConversationFlow)) }
         attr_reader :conversation_flow
@@ -332,6 +350,7 @@ module Telnyx
             instructions: String,
             model: String,
             name: String,
+            a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
             conversation_flow: Telnyx::AI::ConversationFlow::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
@@ -395,6 +414,15 @@ module Telnyx
           # provided, Telnyx applies the default model.
           model:,
           name:,
+          # A2A agents this assistant can delegate to. Tools are not stored here: at the
+          # start of every conversation each agent's card is fetched and one tool is derived
+          # per skill the card advertises, named `a2a_<name>_<skill_id>`. The following
+          # limits are not enforced when the assistant is saved, and anything past them is
+          # dropped when the conversation starts: 64 agents per assistant, 64 skills per
+          # card, 128 derived tools per assistant, and a 6 second budget for all card
+          # fetches combined. An agent whose card cannot be fetched costs the assistant that
+          # capability for the conversation; it does not fail the call.
+          a2a_agents: nil,
           # Conversation flow as returned by the API.
           conversation_flow: nil,
           description: nil,
@@ -490,6 +518,7 @@ module Telnyx
               instructions: String,
               model: String,
               name: String,
+              a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent],
               conversation_flow: Telnyx::AI::ConversationFlow,
               description: String,
               dynamic_variables: T::Hash[Symbol, T.anything],

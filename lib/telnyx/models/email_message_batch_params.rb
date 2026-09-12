@@ -8,6 +8,9 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       # @!attribute messages
+      #   Array of email messages to send. Up to 1,000 messages per batch request. Each
+      #   message is validated and sent independently; per-message failures do not affect
+      #   other messages in the batch.
       #
       #   @return [Array<Telnyx::Models::EmailMessageBatchParams::Message>]
       required :messages, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::EmailMessageBatchParams::Message] }
@@ -28,7 +31,7 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::EmailMessageBatchParams} for more details.
       #
-      #   @param messages [Array<Telnyx::Models::EmailMessageBatchParams::Message>]
+      #   @param messages [Array<Telnyx::Models::EmailMessageBatchParams::Message>] Array of email messages to send. Up to 1,000 messages per batch request. Each me
       #
       #   @param sandbox_mode [Boolean] Applies sandbox mode to all messages in the batch. Overrides any per-message san
       #

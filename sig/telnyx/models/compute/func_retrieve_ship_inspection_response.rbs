@@ -1,0 +1,117 @@
+module Telnyx
+  module Models
+    module Compute
+      type func_retrieve_ship_inspection_response =
+        {
+          data: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data
+        }
+
+      class FuncRetrieveShipInspectionResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data?
+
+        def data=: (
+          Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data
+        ) -> Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data
+
+        def initialize: (
+          ?data: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data
+        }
+
+        type data =
+          {
+            created_at: Time,
+            reason: String,
+            record_type: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::record_type,
+            runtime: String,
+            snippet: String,
+            stage: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::stage
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          attr_reader record_type: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::record_type?
+
+          def record_type=: (
+            Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::record_type
+          ) -> Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::record_type
+
+          attr_reader runtime: String?
+
+          def runtime=: (String) -> String
+
+          attr_reader snippet: String?
+
+          def snippet=: (String) -> String
+
+          attr_reader stage: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::stage?
+
+          def stage=: (
+            Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::stage
+          ) -> Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::stage
+
+          def initialize: (
+            ?created_at: Time,
+            ?reason: String,
+            ?record_type: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::record_type,
+            ?runtime: String,
+            ?snippet: String,
+            ?stage: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::stage
+          ) -> void
+
+          def to_hash: -> {
+            created_at: Time,
+            reason: String,
+            record_type: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::record_type,
+            runtime: String,
+            snippet: String,
+            stage: Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::stage
+          }
+
+          type record_type = :build_log_inspection
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            BUILD_LOG_INSPECTION: :build_log_inspection
+
+            def self?.values: -> ::Array[Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::record_type]
+          end
+
+          type stage =
+            :build
+            | :platform
+            | :pre_build
+            | :deploy
+            | :security_review
+            | :none
+            | :pending
+
+          module Stage
+            extend Telnyx::Internal::Type::Enum
+
+            BUILD: :build
+            PLATFORM: :platform
+            PRE_BUILD: :pre_build
+            DEPLOY: :deploy
+            SECURITY_REVIEW: :security_review
+            NONE: :none
+            PENDING: :pending
+
+            def self?.values: -> ::Array[Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse::Data::stage]
+          end
+        end
+      end
+    end
+  end
+end

@@ -22,14 +22,18 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
     assert_pattern do
       row => {
         calling_enabled: Telnyx::Internal::Type::Boolean | nil,
+        coexistence_state: Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState | nil,
         created_at: Time | nil,
         display_name: String | nil,
         enabled: Telnyx::Internal::Type::Boolean | nil,
+        is_on_biz_app: Telnyx::Internal::Type::Boolean | nil,
         phone_number: String | nil,
         phone_number_id: String | nil,
         quality_rating: String | nil,
         record_type: String | nil,
         status: String | nil,
+        sync_deadline: Time | nil,
+        sync_progress: Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress | nil,
         user_id: String | nil,
         waba_id: String | nil
       }
@@ -89,6 +93,22 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
     assert_pattern do
       response => {
         data: Telnyx::Models::Whatsapp::PhoneNumberRetrieveConversationWindowResponse::Data | nil
+      }
+    end
+  end
+
+  def test_retrieve_phone_number
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.whatsapp.phone_numbers.retrieve_phone_number("phone_number")
+
+    assert_pattern do
+      response => Telnyx::Models::Whatsapp::PhoneNumberRetrievePhoneNumberResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Whatsapp::PhoneNumberRetrievePhoneNumberResponse::Data
       }
     end
   end

@@ -18,6 +18,16 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
+      # WhatsApp message body. For message edits and revocations, inspect `type` and the
+      # corresponding `edit` or `revoke` object.
+      sig { returns(T.nilable(Telnyx::MessagingInboundMessagePayload::Body)) }
+      attr_reader :body
+
+      sig do
+        params(body: Telnyx::MessagingInboundMessagePayload::Body::OrHash).void
+      end
+      attr_writer :body
+
       sig do
         returns(T.nilable(T::Array[Telnyx::MessagingInboundMessagePayload::Cc]))
       end
@@ -211,19 +221,19 @@ module Telnyx
       sig { params(text: String).void }
       attr_writer :text
 
+      # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
+      # webhooks use one E.164 phone number.
       sig do
-        returns(T.nilable(T::Array[Telnyx::MessagingInboundMessagePayload::To]))
+        returns(T.nilable(Telnyx::MessagingInboundMessagePayload::To::Variants))
       end
       attr_reader :to
 
       sig do
-        params(
-          to: T::Array[Telnyx::MessagingInboundMessagePayload::To::OrHash]
-        ).void
+        params(to: Telnyx::MessagingInboundMessagePayload::To::Variants).void
       end
       attr_writer :to
 
-      # The type of message. This value can be either 'sms' or 'mms'.
+      # The messaging channel used for the message.
       sig do
         returns(
           T.nilable(Telnyx::MessagingInboundMessagePayload::Type::TaggedSymbol)
@@ -254,6 +264,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          body: Telnyx::MessagingInboundMessagePayload::Body::OrHash,
           cc: T::Array[Telnyx::MessagingInboundMessagePayload::Cc::OrHash],
           completed_at: T.nilable(Time),
           cost: T.nilable(Telnyx::MessagingInboundMessagePayload::Cost::OrHash),
@@ -282,7 +293,7 @@ module Telnyx
           tcr_campaign_id: T.nilable(String),
           tcr_campaign_registered: T.nilable(String),
           text: String,
-          to: T::Array[Telnyx::MessagingInboundMessagePayload::To::OrHash],
+          to: Telnyx::MessagingInboundMessagePayload::To::Variants,
           type: Telnyx::MessagingInboundMessagePayload::Type::OrSymbol,
           valid_until: T.nilable(Time),
           webhook_failover_url: T.nilable(String),
@@ -292,6 +303,9 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
+        # WhatsApp message body. For message edits and revocations, inspect `type` and the
+        # corresponding `edit` or `revoke` object.
+        body: nil,
         cc: nil,
         # Not used for inbound messages.
         completed_at: nil,
@@ -336,8 +350,10 @@ module Telnyx
         #
         # **Required for SMS**
         text: nil,
+        # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
+        # webhooks use one E.164 phone number.
         to: nil,
-        # The type of message. This value can be either 'sms' or 'mms'.
+        # The messaging channel used for the message.
         type: nil,
         # Not used for inbound messages.
         valid_until: nil,
@@ -353,6 +369,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            body: Telnyx::MessagingInboundMessagePayload::Body,
             cc: T::Array[Telnyx::MessagingInboundMessagePayload::Cc],
             completed_at: T.nilable(Time),
             cost: T.nilable(Telnyx::MessagingInboundMessagePayload::Cost),
@@ -378,7 +395,7 @@ module Telnyx
             tcr_campaign_id: T.nilable(String),
             tcr_campaign_registered: T.nilable(String),
             text: String,
-            to: T::Array[Telnyx::MessagingInboundMessagePayload::To],
+            to: Telnyx::MessagingInboundMessagePayload::To::Variants,
             type: Telnyx::MessagingInboundMessagePayload::Type::TaggedSymbol,
             valid_until: T.nilable(Time),
             webhook_failover_url: T.nilable(String),
@@ -387,6 +404,203 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class Body < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::MessagingInboundMessagePayload::Body,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # Telnyx identifier for this webhook message.
+        sig { returns(T.nilable(String)) }
+        attr_reader :id
+
+        sig { params(id: String).void }
+        attr_writer :id
+
+        # Details for an edited WhatsApp message.
+        sig do
+          returns(T.nilable(Telnyx::MessagingInboundMessagePayload::Body::Edit))
+        end
+        attr_reader :edit
+
+        sig do
+          params(
+            edit: Telnyx::MessagingInboundMessagePayload::Body::Edit::OrHash
+          ).void
+        end
+        attr_writer :edit
+
+        # Meta WhatsApp message identifier for this webhook event.
+        sig { returns(T.nilable(String)) }
+        attr_reader :foreign_id
+
+        sig { params(foreign_id: String).void }
+        attr_writer :foreign_id
+
+        # WhatsApp sender in E.164 format.
+        sig { returns(T.nilable(String)) }
+        attr_reader :from
+
+        sig { params(from: String).void }
+        attr_writer :from
+
+        # Details for a revoked WhatsApp message.
+        sig do
+          returns(
+            T.nilable(Telnyx::MessagingInboundMessagePayload::Body::Revoke)
+          )
+        end
+        attr_reader :revoke
+
+        sig do
+          params(
+            revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke::OrHash
+          ).void
+        end
+        attr_writer :revoke
+
+        # Unix timestamp supplied by Meta.
+        sig { returns(T.nilable(String)) }
+        attr_reader :timestamp
+
+        sig { params(timestamp: String).void }
+        attr_writer :timestamp
+
+        # WhatsApp message body type. Edit and revoke events use `edit` and `revoke`,
+        # respectively.
+        sig { returns(T.nilable(String)) }
+        attr_reader :type
+
+        sig { params(type: String).void }
+        attr_writer :type
+
+        # WhatsApp message body. For message edits and revocations, inspect `type` and the
+        # corresponding `edit` or `revoke` object.
+        sig do
+          params(
+            id: String,
+            edit: Telnyx::MessagingInboundMessagePayload::Body::Edit::OrHash,
+            foreign_id: String,
+            from: String,
+            revoke:
+              Telnyx::MessagingInboundMessagePayload::Body::Revoke::OrHash,
+            timestamp: String,
+            type: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Telnyx identifier for this webhook message.
+          id: nil,
+          # Details for an edited WhatsApp message.
+          edit: nil,
+          # Meta WhatsApp message identifier for this webhook event.
+          foreign_id: nil,
+          # WhatsApp sender in E.164 format.
+          from: nil,
+          # Details for a revoked WhatsApp message.
+          revoke: nil,
+          # Unix timestamp supplied by Meta.
+          timestamp: nil,
+          # WhatsApp message body type. Edit and revoke events use `edit` and `revoke`,
+          # respectively.
+          type: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
+              foreign_id: String,
+              from: String,
+              revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+              timestamp: String,
+              type: String
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Edit < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::MessagingInboundMessagePayload::Body::Edit,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Replacement WhatsApp message content. Its shape depends on the message type.
+          sig { returns(T::Hash[Symbol, T.anything]) }
+          attr_accessor :message
+
+          # Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp
+          # message ID. Treat this value as opaque.
+          sig { returns(String) }
+          attr_accessor :original_message_id
+
+          # Details for an edited WhatsApp message.
+          sig do
+            params(
+              message: T::Hash[Symbol, T.anything],
+              original_message_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Replacement WhatsApp message content. Its shape depends on the message type.
+            message:,
+            # Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp
+            # message ID. Treat this value as opaque.
+            original_message_id:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                message: T::Hash[Symbol, T.anything],
+                original_message_id: String
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class Revoke < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp
+          # message ID. Treat this value as opaque.
+          sig { returns(String) }
+          attr_accessor :original_message_id
+
+          # Details for a revoked WhatsApp message.
+          sig { params(original_message_id: String).returns(T.attached_class) }
+          def self.new(
+            # Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp
+            # message ID. Treat this value as opaque.
+            original_message_id:
+          )
+          end
+
+          sig { override.returns({ original_message_id: String }) }
+          def to_hash
+          end
+        end
       end
 
       class Cc < Telnyx::Internal::Type::BaseModel
@@ -604,20 +818,17 @@ module Telnyx
 
         # The amount deducted from your account.
         sig { returns(T.nilable(String)) }
-        attr_reader :amount
-
-        sig { params(amount: String).void }
-        attr_writer :amount
+        attr_accessor :amount
 
         # The ISO 4217 currency identifier.
         sig { returns(T.nilable(String)) }
-        attr_reader :currency
-
-        sig { params(currency: String).void }
-        attr_writer :currency
+        attr_accessor :currency
 
         sig do
-          params(amount: String, currency: String).returns(T.attached_class)
+          params(
+            amount: T.nilable(String),
+            currency: T.nilable(String)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The amount deducted from your account.
@@ -627,7 +838,11 @@ module Telnyx
         )
         end
 
-        sig { override.returns({ amount: String, currency: String }) }
+        sig do
+          override.returns(
+            { amount: T.nilable(String), currency: T.nilable(String) }
+          )
+        end
         def to_hash
         end
       end
@@ -1090,216 +1305,253 @@ module Telnyx
         end
       end
 
-      class To < Telnyx::Internal::Type::BaseModel
-        OrHash =
+      # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
+      # webhooks use one E.164 phone number.
+      module To
+        extend Telnyx::Internal::Type::Union
+
+        Variants =
           T.type_alias do
             T.any(
-              Telnyx::MessagingInboundMessagePayload::To,
-              Telnyx::Internal::AnyHash
+              T::Array[
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0
+              ],
+              String
             )
           end
 
-        # The carrier of the receiver.
-        sig { returns(T.nilable(String)) }
-        attr_reader :carrier
+        class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0,
+                Telnyx::Internal::AnyHash
+              )
+            end
 
-        sig { params(carrier: String).void }
-        attr_writer :carrier
-
-        # The line-type of the receiver.
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-            )
-          )
-        end
-        attr_reader :line_type
-
-        sig do
-          params(
-            line_type:
-              Telnyx::MessagingInboundMessagePayload::To::LineType::OrSymbol
-          ).void
-        end
-        attr_writer :line_type
-
-        # Receiving address (+E.164 formatted phone number or short code).
-        sig { returns(T.nilable(String)) }
-        attr_reader :phone_number
-
-        sig { params(phone_number: String).void }
-        attr_writer :phone_number
-
-        sig do
-          returns(
-            T.nilable(
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          )
-        end
-        attr_reader :status
-
-        sig do
-          params(
-            status: Telnyx::MessagingInboundMessagePayload::To::Status::OrSymbol
-          ).void
-        end
-        attr_writer :status
-
-        sig do
-          params(
-            carrier: String,
-            line_type:
-              Telnyx::MessagingInboundMessagePayload::To::LineType::OrSymbol,
-            phone_number: String,
-            status: Telnyx::MessagingInboundMessagePayload::To::Status::OrSymbol
-          ).returns(T.attached_class)
-        end
-        def self.new(
           # The carrier of the receiver.
-          carrier: nil,
+          sig { returns(T.nilable(String)) }
+          attr_reader :carrier
+
+          sig { params(carrier: String).void }
+          attr_writer :carrier
+
           # The line-type of the receiver.
-          line_type: nil,
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :line_type
+
+          sig do
+            params(
+              line_type:
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::OrSymbol
+            ).void
+          end
+          attr_writer :line_type
+
           # Receiving address (+E.164 formatted phone number or short code).
-          phone_number: nil,
-          status: nil
-        )
+          sig { returns(T.nilable(String)) }
+          attr_reader :phone_number
+
+          sig { params(phone_number: String).void }
+          attr_writer :phone_number
+
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :status
+
+          sig do
+            params(
+              status:
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::OrSymbol
+            ).void
+          end
+          attr_writer :status
+
+          sig do
+            params(
+              carrier: String,
+              line_type:
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::OrSymbol,
+              phone_number: String,
+              status:
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The carrier of the receiver.
+            carrier: nil,
+            # The line-type of the receiver.
+            line_type: nil,
+            # Receiving address (+E.164 formatted phone number or short code).
+            phone_number: nil,
+            status: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                carrier: String,
+                line_type:
+                  Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol,
+                phone_number: String,
+                status:
+                  Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The line-type of the receiver.
+          module LineType
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            WIRELINE =
+              T.let(
+                :Wireline,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+              )
+            WIRELESS =
+              T.let(
+                :Wireless,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+              )
+            VO_WI_FI =
+              T.let(
+                :VoWiFi,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+              )
+            VO_IP =
+              T.let(
+                :VoIP,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+              )
+            PRE_PAID_WIRELESS =
+              T.let(
+                :"Pre-Paid Wireless",
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+              )
+            EMPTY =
+              T.let(
+                :"",
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            QUEUED =
+              T.let(
+                :queued,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            SENDING =
+              T.let(
+                :sending,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            SENT =
+              T.let(
+                :sent,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            DELIVERED =
+              T.let(
+                :delivered,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            SENDING_FAILED =
+              T.let(
+                :sending_failed,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            DELIVERY_FAILED =
+              T.let(
+                :delivery_failed,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            DELIVERY_UNCONFIRMED =
+              T.let(
+                :delivery_unconfirmed,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+            WEBHOOK_DELIVERED =
+              T.let(
+                :webhook_delivered,
+                Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
 
         sig do
           override.returns(
-            {
-              carrier: String,
-              line_type:
-                Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol,
-              phone_number: String,
-              status:
-                Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            }
+            T::Array[Telnyx::MessagingInboundMessagePayload::To::Variants]
           )
         end
-        def to_hash
+        def self.variants
         end
 
-        # The line-type of the receiver.
-        module LineType
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::MessagingInboundMessagePayload::To::LineType
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          WIRELINE =
-            T.let(
-              :Wireline,
-              Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-            )
-          WIRELESS =
-            T.let(
-              :Wireless,
-              Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-            )
-          VO_WI_FI =
-            T.let(
-              :VoWiFi,
-              Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-            )
-          VO_IP =
-            T.let(
-              :VoIP,
-              Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-            )
-          PRE_PAID_WIRELESS =
-            T.let(
-              :"Pre-Paid Wireless",
-              Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-            )
-          EMPTY =
-            T.let(
-              :"",
-              Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::MessagingInboundMessagePayload::To::LineType::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-
-        module Status
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::MessagingInboundMessagePayload::To::Status)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          QUEUED =
-            T.let(
-              :queued,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          SENDING =
-            T.let(
-              :sending,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          SENT =
-            T.let(
-              :sent,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          DELIVERED =
-            T.let(
-              :delivered,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          SENDING_FAILED =
-            T.let(
-              :sending_failed,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          DELIVERY_FAILED =
-            T.let(
-              :delivery_failed,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          DELIVERY_UNCONFIRMED =
-            T.let(
-              :delivery_unconfirmed,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-          WEBHOOK_DELIVERED =
-            T.let(
-              :webhook_delivered,
-              Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::MessagingInboundMessagePayload::To::Status::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
+        UnionMember0Array =
+          T.let(
+            Telnyx::Internal::Type::ArrayOf[
+              Telnyx::MessagingInboundMessagePayload::To::UnionMember0
+            ],
+            Telnyx::Internal::Type::Converter
+          )
       end
 
-      # The type of message. This value can be either 'sms' or 'mms'.
+      # The messaging channel used for the message.
       module Type
         extend Telnyx::Internal::Type::Enum
 
@@ -1317,6 +1569,11 @@ module Telnyx
         MMS =
           T.let(
             :MMS,
+            Telnyx::MessagingInboundMessagePayload::Type::TaggedSymbol
+          )
+        WHATSAPP =
+          T.let(
+            :WHATSAPP,
             Telnyx::MessagingInboundMessagePayload::Type::TaggedSymbol
           )
 
