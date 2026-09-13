@@ -11,6 +11,9 @@ module Telnyx
           T.any(Telnyx::EmailMessageBatchParams, Telnyx::Internal::AnyHash)
         end
 
+      # Array of email messages to send. Up to 1,000 messages per batch request. Each
+      # message is validated and sent independently; per-message failures do not affect
+      # other messages in the batch.
       sig { returns(T::Array[Telnyx::EmailMessageBatchParams::Message]) }
       attr_accessor :messages
 
@@ -37,6 +40,9 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        # Array of email messages to send. Up to 1,000 messages per batch request. Each
+        # message is validated and sent independently; per-message failures do not affect
+        # other messages in the batch.
         messages:,
         # Applies sandbox mode to all messages in the batch. Overrides any per-message
         # sandbox_mode in the messages array.

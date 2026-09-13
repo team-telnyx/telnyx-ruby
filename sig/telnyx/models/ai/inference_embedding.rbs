@@ -8,6 +8,7 @@ module Telnyx
           instructions: String,
           model: String,
           name: String,
+          :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
           conversation_flow: Telnyx::AI::ConversationFlow,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
@@ -49,6 +50,12 @@ module Telnyx
         attr_accessor model: String
 
         attr_accessor name: String
+
+        attr_reader a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent]?
+
+        def a2a_agents=: (
+          ::Array[Telnyx::AI::AssistantA2AAgent]
+        ) -> ::Array[Telnyx::AI::AssistantA2AAgent]
 
         attr_reader conversation_flow: Telnyx::AI::ConversationFlow?
 
@@ -206,6 +213,7 @@ module Telnyx
           instructions: String,
           model: String,
           name: String,
+          ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
           ?conversation_flow: Telnyx::AI::ConversationFlow,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
@@ -243,6 +251,7 @@ module Telnyx
           instructions: String,
           model: String,
           name: String,
+          :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
           conversation_flow: Telnyx::AI::ConversationFlow,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],

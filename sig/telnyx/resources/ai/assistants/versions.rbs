@@ -13,6 +13,7 @@ module Telnyx
           def update: (
             String version_id,
             assistant_id: String,
+            ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
             ?conversation_flow: Telnyx::AI::ConversationFlowReq,
             ?description: String,
             ?dynamic_variables: ::Hash[Symbol, top],

@@ -37,6 +37,11 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Whatsapp::PhoneNumberRetrieveConversationWindowResponse
 
+        def retrieve_phone_number: (
+          String phone_number,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::PhoneNumberRetrievePhoneNumberResponse
+
         def verify: (
           String phone_number,
           code: String,

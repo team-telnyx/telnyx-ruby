@@ -8,6 +8,7 @@ module Telnyx
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        features: Telnyx::MessagingProfileFeatures?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,
@@ -46,6 +47,8 @@ module Telnyx
       attr_reader enabled: bool?
 
       def enabled=: (bool) -> bool
+
+      attr_accessor features: Telnyx::MessagingProfileFeatures?
 
       attr_reader mms_fall_back_to_sms: bool?
 
@@ -104,6 +107,7 @@ module Telnyx
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
         ?enabled: bool,
+        ?features: Telnyx::MessagingProfileFeatures?,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
         ?mobile_only: bool,
@@ -128,6 +132,7 @@ module Telnyx
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        features: Telnyx::MessagingProfileFeatures?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,

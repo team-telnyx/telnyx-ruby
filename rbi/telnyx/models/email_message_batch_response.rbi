@@ -139,6 +139,11 @@ module Telnyx
               :service_unavailable,
               Telnyx::Models::EmailMessageBatchResponse::Error::Code::TaggedSymbol
             )
+          UNPROCESSABLE_ENTITY =
+            T.let(
+              :unprocessable_entity,
+              Telnyx::Models::EmailMessageBatchResponse::Error::Code::TaggedSymbol
+            )
           VALIDATION_ERROR =
             T.let(
               :validation_error,

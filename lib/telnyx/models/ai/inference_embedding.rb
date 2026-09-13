@@ -37,6 +37,19 @@ module Telnyx
         #   @return [String]
         required :name, String
 
+        # @!attribute a2a_agents
+        #   A2A agents this assistant can delegate to. Tools are not stored here: at the
+        #   start of every conversation each agent's card is fetched and one tool is derived
+        #   per skill the card advertises, named `a2a_<name>_<skill_id>`. The following
+        #   limits are not enforced when the assistant is saved, and anything past them is
+        #   dropped when the conversation starts: 64 agents per assistant, 64 skills per
+        #   card, 128 derived tools per assistant, and a 6 second budget for all card
+        #   fetches combined. An agent whose card cannot be fetched costs the assistant that
+        #   capability for the conversation; it does not fail the call.
+        #
+        #   @return [Array<Telnyx::Models::AI::AssistantA2AAgent>, nil]
+        optional :a2a_agents, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent] }
+
         # @!attribute conversation_flow
         #   Conversation flow as returned by the API.
         #
@@ -237,7 +250,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::WidgetSettings, nil]
         optional :widget_settings, -> { Telnyx::AI::WidgetSettings }
 
-        # @!method initialize(id:, created_at:, instructions:, model:, name:, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, import_metadata: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, related_mission_ids: nil, tags: nil, telephony_settings: nil, tools: nil, transcription: nil, version_created_at: nil, version_id: nil, version_name: nil, voice_settings: nil, widget_settings: nil)
+        # @!method initialize(id:, created_at:, instructions:, model:, name:, a2a_agents: nil, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, import_metadata: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, related_mission_ids: nil, tags: nil, telephony_settings: nil, tools: nil, transcription: nil, version_created_at: nil, version_id: nil, version_name: nil, voice_settings: nil, widget_settings: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbedding} for more details.
         #
@@ -250,6 +263,8 @@ module Telnyx
         #   @param model [String] ID of the model to use when `external_llm` is not set. You can use the [Get mode
         #
         #   @param name [String]
+        #
+        #   @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
         #   @param conversation_flow [Telnyx::Models::AI::ConversationFlow] Conversation flow as returned by the API.
         #

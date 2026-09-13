@@ -78,7 +78,9 @@ module Telnyx
             Telnyx::ReplacedLinkClickWebhookEvent,
             Telnyx::SessionStatusChangedWebhookEvent,
             Telnyx::TranscriptCompletedWebhookEvent,
-            Telnyx::TranscriptionWebhookEvent
+            Telnyx::TranscriptionWebhookEvent,
+            Telnyx::WhatsappAccountUpdate,
+            Telnyx::WhatsappMessageEcho
           )
         )
       end
@@ -167,7 +169,9 @@ module Telnyx
             Telnyx::ReplacedLinkClickWebhookEvent,
             Telnyx::SessionStatusChangedWebhookEvent,
             Telnyx::TranscriptCompletedWebhookEvent,
-            Telnyx::TranscriptionWebhookEvent
+            Telnyx::TranscriptionWebhookEvent,
+            Telnyx::WhatsappAccountUpdate,
+            Telnyx::WhatsappMessageEcho
           )
         )
       end

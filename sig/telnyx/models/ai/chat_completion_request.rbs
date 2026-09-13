@@ -9,9 +9,6 @@ module Telnyx
           early_stopping: bool,
           enable_thinking: bool,
           frequency_penalty: Float,
-          guided_choice: ::Array[String],
-          guided_json: ::Hash[Symbol, top],
-          guided_regex: String,
           length_penalty: Float,
           logprobs: bool,
           max_tokens: Integer,
@@ -22,7 +19,7 @@ module Telnyx
           presence_penalty: Float,
           reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
           region: Telnyx::Models::AI::ChatCompletionRequest::region,
-          response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
+          response_format: Telnyx::Models::AI::ChatCompletionRequest::response_format,
           seed: Integer,
           service_tier: String,
           stop: Telnyx::Models::AI::ChatCompletionRequest::stop,
@@ -57,18 +54,6 @@ module Telnyx
         attr_reader frequency_penalty: Float?
 
         def frequency_penalty=: (Float) -> Float
-
-        attr_reader guided_choice: ::Array[String]?
-
-        def guided_choice=: (::Array[String]) -> ::Array[String]
-
-        attr_reader guided_json: ::Hash[Symbol, top]?
-
-        def guided_json=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-        attr_reader guided_regex: String?
-
-        def guided_regex=: (String) -> String
 
         attr_reader length_penalty: Float?
 
@@ -116,11 +101,11 @@ module Telnyx
           Telnyx::Models::AI::ChatCompletionRequest::region
         ) -> Telnyx::Models::AI::ChatCompletionRequest::region
 
-        attr_reader response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat?
+        attr_reader response_format: Telnyx::Models::AI::ChatCompletionRequest::response_format?
 
         def response_format=: (
-          Telnyx::AI::ChatCompletionRequest::ResponseFormat
-        ) -> Telnyx::AI::ChatCompletionRequest::ResponseFormat
+          Telnyx::Models::AI::ChatCompletionRequest::response_format
+        ) -> Telnyx::Models::AI::ChatCompletionRequest::response_format
 
         attr_reader seed: Integer?
 
@@ -175,9 +160,6 @@ module Telnyx
           ?early_stopping: bool,
           ?enable_thinking: bool,
           ?frequency_penalty: Float,
-          ?guided_choice: ::Array[String],
-          ?guided_json: ::Hash[Symbol, top],
-          ?guided_regex: String,
           ?length_penalty: Float,
           ?logprobs: bool,
           ?max_tokens: Integer,
@@ -188,7 +170,7 @@ module Telnyx
           ?presence_penalty: Float,
           ?reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
           ?region: Telnyx::Models::AI::ChatCompletionRequest::region,
-          ?response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
+          ?response_format: Telnyx::Models::AI::ChatCompletionRequest::response_format,
           ?seed: Integer,
           ?service_tier: String,
           ?stop: Telnyx::Models::AI::ChatCompletionRequest::stop,
@@ -208,9 +190,6 @@ module Telnyx
           early_stopping: bool,
           enable_thinking: bool,
           frequency_penalty: Float,
-          guided_choice: ::Array[String],
-          guided_json: ::Hash[Symbol, top],
-          guided_regex: String,
           length_penalty: Float,
           logprobs: bool,
           max_tokens: Integer,
@@ -221,7 +200,7 @@ module Telnyx
           presence_penalty: Float,
           reasoning_effort: Telnyx::Models::AI::ChatCompletionRequest::reasoning_effort,
           region: Telnyx::Models::AI::ChatCompletionRequest::region,
-          response_format: Telnyx::AI::ChatCompletionRequest::ResponseFormat,
+          response_format: Telnyx::Models::AI::ChatCompletionRequest::response_format,
           seed: Integer,
           service_tier: String,
           stop: Telnyx::Models::AI::ChatCompletionRequest::stop,
@@ -365,31 +344,94 @@ module Telnyx
         end
 
         type response_format =
-          {
-            type: Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::type_
-          }
+          Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText
+          | Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject
+          | Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam
 
-        class ResponseFormat < Telnyx::Internal::Type::BaseModel
-          attr_accessor type: Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::type_
+        module ResponseFormat
+          extend Telnyx::Internal::Type::Union
 
-          def initialize: (
-            type: Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::type_
-          ) -> void
+          type response_format_text = { type: :text }
 
-          def to_hash: -> {
-            type: Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::type_
-          }
+          class ResponseFormatText < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :text
 
-          type type_ = :text | :json_object
+            def initialize: (?type: :text) -> void
 
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TEXT: :text
-            JSON_OBJECT: :json_object
-
-            def self?.values: -> ::Array[Telnyx::Models::AI::ChatCompletionRequest::ResponseFormat::type_]
+            def to_hash: -> { type: :text }
           end
+
+          type response_format_json_object = { type: :json_object }
+
+          class ResponseFormatJsonObject < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: :json_object
+
+            def initialize: (?type: :json_object) -> void
+
+            def to_hash: -> { type: :json_object }
+          end
+
+          type response_format_json_schema_param =
+            {
+              json_schema: Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema,
+              type: :json_schema
+            }
+
+          class ResponseFormatJsonSchemaParam < Telnyx::Internal::Type::BaseModel
+            attr_accessor json_schema: Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema
+
+            attr_accessor type: :json_schema
+
+            def initialize: (
+              json_schema: Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema,
+              ?type: :json_schema
+            ) -> void
+
+            def to_hash: -> {
+              json_schema: Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema,
+              type: :json_schema
+            }
+
+            type json_schema =
+              {
+                name: String,
+                description: String,
+                schema: ::Hash[Symbol, top],
+                strict: bool
+              }
+
+            class JsonSchema < Telnyx::Internal::Type::BaseModel
+              attr_accessor name: String
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader schema: ::Hash[Symbol, top]?
+
+              def schema=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader strict: bool?
+
+              def strict=: (bool) -> bool
+
+              def initialize: (
+                name: String,
+                ?description: String,
+                ?schema: ::Hash[Symbol, top],
+                ?strict: bool
+              ) -> void
+
+              def to_hash: -> {
+                name: String,
+                description: String,
+                schema: ::Hash[Symbol, top],
+                strict: bool
+              }
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::ChatCompletionRequest::response_format]
         end
 
         type stop = String | ::Array[String]

@@ -6,6 +6,11 @@ module Telnyx
       # Operations for x402 cryptocurrency payment transactions. Fund your Telnyx
       # account using USDC stablecoin payments via the x402 protocol.
       class CreditAccount
+        # Operations for x402 cryptocurrency payment transactions. Fund your Telnyx
+        # account using USDC stablecoin payments via the x402 protocol.
+        # @return [Telnyx::Resources::X402::CreditAccount::Payments]
+        attr_reader :payments
+
         # Creates a payment quote for the specified USD amount. Returns payment details
         # including the x402 payment requirements, network, and expiration time. The quote
         # must be settled before it expires.
@@ -23,7 +28,7 @@ module Telnyx
           parsed, options = Telnyx::X402::CreditAccountCreateQuoteParams.dump_request(params)
           @client.request(
             method: :post,
-            path: "v2/x402/credit_account/quote",
+            path: "x402/credit_account/quote",
             body: parsed,
             model: Telnyx::Models::X402::CreditAccountCreateQuoteResponse,
             options: options
@@ -56,7 +61,7 @@ module Telnyx
           header_params = {header_payment_signature: "payment-signature"}
           @client.request(
             method: :post,
-            path: "v2/x402/credit_account",
+            path: "x402/credit_account",
             headers: parsed.slice(*header_params.keys).transform_keys(header_params),
             body: parsed.except(*header_params.keys),
             model: Telnyx::Models::X402::CreditAccountSettleResponse,
@@ -69,6 +74,7 @@ module Telnyx
         # @param client [Telnyx::Client]
         def initialize(client:)
           @client = client
+          @payments = Telnyx::Resources::X402::CreditAccount::Payments.new(client: client)
         end
       end
     end

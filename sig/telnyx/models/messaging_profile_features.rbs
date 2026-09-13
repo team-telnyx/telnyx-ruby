@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type messaging_profile_features = { ai_opt_out_detection_enabled: bool }
+
+    class MessagingProfileFeatures < Telnyx::Internal::Type::BaseModel
+      attr_reader ai_opt_out_detection_enabled: bool?
+
+      def ai_opt_out_detection_enabled=: (bool) -> bool
+
+      def initialize: (?ai_opt_out_detection_enabled: bool) -> void
+
+      def to_hash: -> { ai_opt_out_detection_enabled: bool }
+    end
+  end
+end

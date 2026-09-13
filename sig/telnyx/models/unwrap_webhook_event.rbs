@@ -74,6 +74,8 @@ module Telnyx
       | Telnyx::SessionStatusChangedWebhookEvent
       | Telnyx::TranscriptCompletedWebhookEvent
       | Telnyx::TranscriptionWebhookEvent
+      | Telnyx::WhatsappAccountUpdate
+      | Telnyx::WhatsappMessageEcho
 
     module UnwrapWebhookEvent
       extend Telnyx::Internal::Type::Union

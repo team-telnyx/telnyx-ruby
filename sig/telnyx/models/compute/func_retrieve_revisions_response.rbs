@@ -1,0 +1,131 @@
+module Telnyx
+  module Models
+    module Compute
+      type func_retrieve_revisions_response =
+        {
+          data: ::Array[Telnyx::Models::Compute::FuncRetrieveRevisionsResponse::Data],
+          meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        }
+
+      class FuncRetrieveRevisionsResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::Compute::FuncRetrieveRevisionsResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::Compute::FuncRetrieveRevisionsResponse::Data]
+        ) -> ::Array[Telnyx::Models::Compute::FuncRetrieveRevisionsResponse::Data]
+
+        attr_reader meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta?
+
+        def meta=: (
+          Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        ) -> Telnyx::Compute::FunctionsObservabilityPaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::Compute::FuncRetrieveRevisionsResponse::Data],
+          ?meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::Compute::FuncRetrieveRevisionsResponse::Data],
+          meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        }
+
+        type data =
+          {
+            active: bool,
+            build_ok_at: Time,
+            build_status: String,
+            commit_sha: String,
+            deploy_status: String,
+            failure_reason: String,
+            failure_stage: String,
+            image: String,
+            record_type: String,
+            revision_id: String,
+            shipped_at: Time,
+            shipped_by: String
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_reader active: bool?
+
+          def active=: (bool) -> bool
+
+          attr_reader build_ok_at: Time?
+
+          def build_ok_at=: (Time) -> Time
+
+          attr_reader build_status: String?
+
+          def build_status=: (String) -> String
+
+          attr_reader commit_sha: String?
+
+          def commit_sha=: (String) -> String
+
+          attr_reader deploy_status: String?
+
+          def deploy_status=: (String) -> String
+
+          attr_reader failure_reason: String?
+
+          def failure_reason=: (String) -> String
+
+          attr_reader failure_stage: String?
+
+          def failure_stage=: (String) -> String
+
+          attr_reader image: String?
+
+          def image=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader revision_id: String?
+
+          def revision_id=: (String) -> String
+
+          attr_reader shipped_at: Time?
+
+          def shipped_at=: (Time) -> Time
+
+          attr_reader shipped_by: String?
+
+          def shipped_by=: (String) -> String
+
+          def initialize: (
+            ?active: bool,
+            ?build_ok_at: Time,
+            ?build_status: String,
+            ?commit_sha: String,
+            ?deploy_status: String,
+            ?failure_reason: String,
+            ?failure_stage: String,
+            ?image: String,
+            ?record_type: String,
+            ?revision_id: String,
+            ?shipped_at: Time,
+            ?shipped_by: String
+          ) -> void
+
+          def to_hash: -> {
+            active: bool,
+            build_ok_at: Time,
+            build_status: String,
+            commit_sha: String,
+            deploy_status: String,
+            failure_reason: String,
+            failure_stage: String,
+            image: String,
+            record_type: String,
+            revision_id: String,
+            shipped_at: Time,
+            shipped_by: String
+          }
+        end
+      end
+    end
+  end
+end

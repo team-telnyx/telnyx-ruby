@@ -1,0 +1,107 @@
+module Telnyx
+  module Models
+    type whatsapp_account_update = { data: Telnyx::WhatsappAccountUpdate::Data }
+
+    class WhatsappAccountUpdate < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::WhatsappAccountUpdate::Data
+
+      def initialize: (data: Telnyx::WhatsappAccountUpdate::Data) -> void
+
+      def to_hash: -> { data: Telnyx::WhatsappAccountUpdate::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::WhatsappAccountUpdate::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappAccountUpdate::Data::Payload,
+          record_type: Telnyx::Models::WhatsappAccountUpdate::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: Telnyx::Models::WhatsappAccountUpdate::Data::event_type
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::WhatsappAccountUpdate::Data::Payload
+
+        attr_accessor record_type: Telnyx::Models::WhatsappAccountUpdate::Data::record_type
+
+        def initialize: (
+          id: String,
+          event_type: Telnyx::Models::WhatsappAccountUpdate::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappAccountUpdate::Data::Payload,
+          record_type: Telnyx::Models::WhatsappAccountUpdate::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::WhatsappAccountUpdate::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappAccountUpdate::Data::Payload,
+          record_type: Telnyx::Models::WhatsappAccountUpdate::Data::record_type
+        }
+
+        type event_type = :"whatsapp.account.update"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          WHATSAPP_ACCOUNT_UPDATE: :"whatsapp.account.update"
+
+          def self?.values: -> ::Array[Telnyx::Models::WhatsappAccountUpdate::Data::event_type]
+        end
+
+        type payload =
+          {
+            event: String,
+            record_type: Telnyx::Models::WhatsappAccountUpdate::Data::Payload::record_type,
+            waba_id: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor event: String
+
+          attr_accessor record_type: Telnyx::Models::WhatsappAccountUpdate::Data::Payload::record_type
+
+          attr_accessor waba_id: String
+
+          def initialize: (
+            event: String,
+            record_type: Telnyx::Models::WhatsappAccountUpdate::Data::Payload::record_type,
+            waba_id: String
+          ) -> void
+
+          def to_hash: -> {
+            event: String,
+            record_type: Telnyx::Models::WhatsappAccountUpdate::Data::Payload::record_type,
+            waba_id: String
+          }
+
+          type record_type = :whatsapp_account
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            WHATSAPP_ACCOUNT: :whatsapp_account
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappAccountUpdate::Data::Payload::record_type]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::WhatsappAccountUpdate::Data::record_type]
+        end
+      end
+    end
+  end
+end

@@ -26,6 +26,19 @@ module Telnyx
         sig { params(disable_dtmf: T::Boolean).void }
         attr_writer :disable_dtmf
 
+        # Destination number or SIP URI to transfer the caller to when the AI conversation
+        # ends abnormally, for example because of an assistant-side error, so the caller
+        # is not left in dead air. This only fires for abnormal ends: it does not fire
+        # when the conversation ends on purpose (the caller hung up, the assistant
+        # completed normally, the caller hung up after a relay handoff, or voicemail was
+        # detected), and it does not fire when the assistant already transferred or
+        # bridged the call.
+        sig { returns(T.nilable(String)) }
+        attr_reader :fallback_destination
+
+        sig { params(fallback_destination: String).void }
+        attr_writer :fallback_destination
+
         # The noise suppression engine to use. Use 'disabled' to turn off noise
         # suppression.
         sig do
@@ -149,6 +162,7 @@ module Telnyx
           params(
             default_texml_app_id: String,
             disable_dtmf: T::Boolean,
+            fallback_destination: String,
             noise_suppression:
               Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
             noise_suppression_config:
@@ -172,6 +186,14 @@ module Telnyx
           # configured anywhere on the assistant — on the main tool array or on any workflow
           # node — enforced at write time.
           disable_dtmf: nil,
+          # Destination number or SIP URI to transfer the caller to when the AI conversation
+          # ends abnormally, for example because of an assistant-side error, so the caller
+          # is not left in dead air. This only fires for abnormal ends: it does not fire
+          # when the conversation ends on purpose (the caller hung up, the assistant
+          # completed normally, the caller hung up after a relay handoff, or voicemail was
+          # detected), and it does not fire when the assistant already transferred or
+          # bridged the call.
+          fallback_destination: nil,
           # The noise suppression engine to use. Use 'disabled' to turn off noise
           # suppression.
           noise_suppression: nil,
@@ -222,6 +244,7 @@ module Telnyx
             {
               default_texml_app_id: String,
               disable_dtmf: T::Boolean,
+              fallback_destination: String,
               noise_suppression:
                 Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
               noise_suppression_config:

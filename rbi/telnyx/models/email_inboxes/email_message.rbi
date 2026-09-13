@@ -95,6 +95,18 @@ module Telnyx
         sig { params(scheduled_at: Time).void }
         attr_writer :scheduled_at
 
+        # Recipients excluded from delivery by suppression checks, with reasons. On batch
+        # items, present when that item had suppressed recipients; all other recipients of
+        # the item still receive the message. For single sends this information appears at
+        # the top level of the response instead (see EmailMessageResponse.suppressed).
+        sig { returns(T.nilable(T::Array[Telnyx::SuppressedRecipient])) }
+        attr_reader :suppressed
+
+        sig do
+          params(suppressed: T::Array[Telnyx::SuppressedRecipient::OrHash]).void
+        end
+        attr_writer :suppressed
+
         sig do
           params(
             id: String,
@@ -116,7 +128,8 @@ module Telnyx
             inline_css: T::Boolean,
             recipient_statuses: T::Hash[Symbol, Integer],
             sandbox: T::Boolean,
-            scheduled_at: Time
+            scheduled_at: Time,
+            suppressed: T::Array[Telnyx::SuppressedRecipient::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -148,7 +161,12 @@ module Telnyx
           sandbox: nil,
           # Present when a scheduled_at value was stored. Persists even after the scheduled
           # send has been processed or cancelled.
-          scheduled_at: nil
+          scheduled_at: nil,
+          # Recipients excluded from delivery by suppression checks, with reasons. On batch
+          # items, present when that item had suppressed recipients; all other recipients of
+          # the item still receive the message. For single sends this information appears at
+          # the top level of the response instead (see EmailMessageResponse.suppressed).
+          suppressed: nil
         )
         end
 
@@ -174,7 +192,8 @@ module Telnyx
               inline_css: T::Boolean,
               recipient_statuses: T::Hash[Symbol, Integer],
               sandbox: T::Boolean,
-              scheduled_at: Time
+              scheduled_at: Time,
+              suppressed: T::Array[Telnyx::SuppressedRecipient]
             }
           )
         end

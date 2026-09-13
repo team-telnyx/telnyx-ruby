@@ -1,0 +1,291 @@
+module Telnyx
+  module Models
+    type whatsapp_message_echo = { data: Telnyx::WhatsappMessageEcho::Data }
+
+    class WhatsappMessageEcho < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::WhatsappMessageEcho::Data
+
+      def initialize: (data: Telnyx::WhatsappMessageEcho::Data) -> void
+
+      def to_hash: -> { data: Telnyx::WhatsappMessageEcho::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::WhatsappMessageEcho::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappMessageEcho::Data::Payload,
+          record_type: Telnyx::Models::WhatsappMessageEcho::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: Telnyx::Models::WhatsappMessageEcho::Data::event_type
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::WhatsappMessageEcho::Data::Payload
+
+        attr_accessor record_type: Telnyx::Models::WhatsappMessageEcho::Data::record_type
+
+        def initialize: (
+          id: String,
+          event_type: Telnyx::Models::WhatsappMessageEcho::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappMessageEcho::Data::Payload,
+          record_type: Telnyx::Models::WhatsappMessageEcho::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::WhatsappMessageEcho::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappMessageEcho::Data::Payload,
+          record_type: Telnyx::Models::WhatsappMessageEcho::Data::record_type
+        }
+
+        type event_type = :"message.echo"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          MESSAGE_ECHO: :"message.echo"
+
+          def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageEcho::Data::event_type]
+        end
+
+        type payload =
+          {
+            id: String,
+            body: Telnyx::WhatsappMessageEcho::Data::Payload::Body,
+            cost: Telnyx::WhatsappMessageEcho::Data::Payload::Cost,
+            direction: Telnyx::Models::WhatsappMessageEcho::Data::Payload::direction,
+            errors: ::Array[Telnyx::MessagingError0b38e7044b],
+            from: Telnyx::WhatsappMessageEcho::Data::Payload::From,
+            messaging_profile_id: String,
+            organization_id: String,
+            origin: Telnyx::Models::WhatsappMessageEcho::Data::Payload::origin,
+            record_type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::record_type,
+            to: String,
+            type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::type_,
+            received_at: Time,
+            tags: ::Array[String],
+            webhook_failover_url: String?,
+            webhook_url: String?
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor body: Telnyx::WhatsappMessageEcho::Data::Payload::Body
+
+          attr_accessor cost: Telnyx::WhatsappMessageEcho::Data::Payload::Cost
+
+          attr_accessor direction: Telnyx::Models::WhatsappMessageEcho::Data::Payload::direction
+
+          attr_accessor errors: ::Array[Telnyx::MessagingError0b38e7044b]
+
+          attr_accessor from: Telnyx::WhatsappMessageEcho::Data::Payload::From
+
+          attr_accessor messaging_profile_id: String
+
+          attr_accessor organization_id: String
+
+          attr_accessor origin: Telnyx::Models::WhatsappMessageEcho::Data::Payload::origin
+
+          attr_accessor record_type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::record_type
+
+          attr_accessor to: String
+
+          attr_accessor type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::type_
+
+          attr_reader received_at: Time?
+
+          def received_at=: (Time) -> Time
+
+          attr_reader tags: ::Array[String]?
+
+          def tags=: (::Array[String]) -> ::Array[String]
+
+          attr_accessor webhook_failover_url: String?
+
+          attr_accessor webhook_url: String?
+
+          def initialize: (
+            id: String,
+            body: Telnyx::WhatsappMessageEcho::Data::Payload::Body,
+            cost: Telnyx::WhatsappMessageEcho::Data::Payload::Cost,
+            direction: Telnyx::Models::WhatsappMessageEcho::Data::Payload::direction,
+            errors: ::Array[Telnyx::MessagingError0b38e7044b],
+            from: Telnyx::WhatsappMessageEcho::Data::Payload::From,
+            messaging_profile_id: String,
+            organization_id: String,
+            origin: Telnyx::Models::WhatsappMessageEcho::Data::Payload::origin,
+            record_type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::record_type,
+            to: String,
+            type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::type_,
+            ?received_at: Time,
+            ?tags: ::Array[String],
+            ?webhook_failover_url: String?,
+            ?webhook_url: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            body: Telnyx::WhatsappMessageEcho::Data::Payload::Body,
+            cost: Telnyx::WhatsappMessageEcho::Data::Payload::Cost,
+            direction: Telnyx::Models::WhatsappMessageEcho::Data::Payload::direction,
+            errors: ::Array[Telnyx::MessagingError0b38e7044b],
+            from: Telnyx::WhatsappMessageEcho::Data::Payload::From,
+            messaging_profile_id: String,
+            organization_id: String,
+            origin: Telnyx::Models::WhatsappMessageEcho::Data::Payload::origin,
+            record_type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::record_type,
+            to: String,
+            type: Telnyx::Models::WhatsappMessageEcho::Data::Payload::type_,
+            received_at: Time,
+            tags: ::Array[String],
+            webhook_failover_url: String?,
+            webhook_url: String?
+          }
+
+          type body =
+            {
+              id: String,
+              foreign_id: String,
+              timestamp: String,
+              type: String,
+              from: String,
+              from_user_id: String
+            }
+
+          class Body < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor foreign_id: String
+
+            attr_accessor timestamp: String
+
+            attr_accessor type: String
+
+            attr_reader from: String?
+
+            def from=: (String) -> String
+
+            attr_reader from_user_id: String?
+
+            def from_user_id=: (String) -> String
+
+            def initialize: (
+              id: String,
+              foreign_id: String,
+              timestamp: String,
+              type: String,
+              ?from: String,
+              ?from_user_id: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              foreign_id: String,
+              timestamp: String,
+              type: String,
+              from: String,
+              from_user_id: String
+            }
+          end
+
+          type cost = { amount: String?, currency: String? }
+
+          class Cost < Telnyx::Internal::Type::BaseModel
+            attr_accessor amount: String?
+
+            attr_accessor currency: String?
+
+            def initialize: (?amount: String?, ?currency: String?) -> void
+
+            def to_hash: -> { amount: String?, currency: String? }
+          end
+
+          type direction = :outbound
+
+          module Direction
+            extend Telnyx::Internal::Type::Enum
+
+            OUTBOUND: :outbound
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageEcho::Data::Payload::direction]
+          end
+
+          type from =
+            { phone_number: String, carrier: String, line_type: String }
+
+          class From < Telnyx::Internal::Type::BaseModel
+            attr_accessor phone_number: String
+
+            attr_reader carrier: String?
+
+            def carrier=: (String) -> String
+
+            attr_reader line_type: String?
+
+            def line_type=: (String) -> String
+
+            def initialize: (
+              phone_number: String,
+              ?carrier: String,
+              ?line_type: String
+            ) -> void
+
+            def to_hash: -> {
+              phone_number: String,
+              carrier: String,
+              line_type: String
+            }
+          end
+
+          type origin = :whatsapp_business_app
+
+          module Origin
+            extend Telnyx::Internal::Type::Enum
+
+            WHATSAPP_BUSINESS_APP: :whatsapp_business_app
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageEcho::Data::Payload::origin]
+          end
+
+          type record_type = :message
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            MESSAGE: :message
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageEcho::Data::Payload::record_type]
+          end
+
+          type type_ = :WHATSAPP
+
+          module Type
+            extend Telnyx::Internal::Type::Enum
+
+            WHATSAPP: :WHATSAPP
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageEcho::Data::Payload::type_]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::WhatsappMessageEcho::Data::record_type]
+        end
+      end
+    end
+  end
+end
