@@ -24,7 +24,7 @@ module Telnyx
           def retrieve(id, params = {})
             @client.request(
               method: :get,
-              path: ["v2/x402/credit_account/payments/%1$s", id],
+              path: ["x402/credit_account/payments/%1$s", id],
               model: Telnyx::Models::X402::CreditAccount::PaymentRetrieveResponse,
               options: params[:request_options]
             )
@@ -50,7 +50,7 @@ module Telnyx
             query = Telnyx::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
-              path: "v2/x402/credit_account/payments",
+              path: "x402/credit_account/payments",
               query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
               page: Telnyx::Internal::DefaultFlatPagination,
               model: Telnyx::X402::CreditAccount::X402TransactionRecord,

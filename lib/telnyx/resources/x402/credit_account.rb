@@ -28,7 +28,7 @@ module Telnyx
           parsed, options = Telnyx::X402::CreditAccountCreateQuoteParams.dump_request(params)
           @client.request(
             method: :post,
-            path: "v2/x402/credit_account/quote",
+            path: "x402/credit_account/quote",
             body: parsed,
             model: Telnyx::Models::X402::CreditAccountCreateQuoteResponse,
             options: options
@@ -61,7 +61,7 @@ module Telnyx
           header_params = {header_payment_signature: "payment-signature"}
           @client.request(
             method: :post,
-            path: "v2/x402/credit_account",
+            path: "x402/credit_account",
             headers: parsed.slice(*header_params.keys).transform_keys(header_params),
             body: parsed.except(*header_params.keys),
             model: Telnyx::Models::X402::CreditAccountSettleResponse,

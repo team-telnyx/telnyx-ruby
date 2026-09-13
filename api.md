@@ -2643,15 +2643,15 @@ Methods:
 
 Methods:
 
-- <code title="post /v2/x402/credit_account/quote">client.x402.credit_account.<a href="./lib/telnyx/resources/x402/credit_account.rb">create_quote</a>(\*\*params)</code>
-- <code title="post /v2/x402/credit_account">client.x402.credit_account.<a href="./lib/telnyx/resources/x402/credit_account.rb">settle</a>(\*\*params)</code>
+- <code title="post /x402/credit_account/quote">client.x402.credit_account.<a href="./lib/telnyx/resources/x402/credit_account.rb">create_quote</a>(\*\*params)</code>
+- <code title="post /x402/credit_account">client.x402.credit_account.<a href="./lib/telnyx/resources/x402/credit_account.rb">settle</a>(\*\*params)</code>
 
 ### Payments
 
 Methods:
 
-- <code title="get /v2/x402/credit_account/payments/{id}">client.x402.credit_account.payments.<a href="./lib/telnyx/resources/x402/credit_account/payments.rb">retrieve</a>(\*\*params)</code>
-- <code title="get /v2/x402/credit_account/payments">client.x402.credit_account.payments.<a href="./lib/telnyx/resources/x402/credit_account/payments.rb">list</a>(\*\*params)</code>
+- <code title="get /x402/credit_account/payments/{id}">client.x402.credit_account.payments.<a href="./lib/telnyx/resources/x402/credit_account/payments.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /x402/credit_account/payments">client.x402.credit_account.payments.<a href="./lib/telnyx/resources/x402/credit_account/payments.rb">list</a>(\*\*params)</code>
 
 # VoiceClones
 
