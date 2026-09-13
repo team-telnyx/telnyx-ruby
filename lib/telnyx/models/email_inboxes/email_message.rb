@@ -106,7 +106,16 @@ module Telnyx
         #   @return [Time, nil]
         optional :scheduled_at, Time
 
-        # @!method initialize(id:, attachments:, bcc:, cc:, created_at:, events:, from:, record_type:, reply_to:, status:, subject:, template_id:, template_variables:, to:, inline_css: nil, recipient_statuses: nil, sandbox: nil, scheduled_at: nil)
+        # @!attribute suppressed
+        #   Recipients excluded from delivery by suppression checks, with reasons. On batch
+        #   items, present when that item had suppressed recipients; all other recipients of
+        #   the item still receive the message. For single sends this information appears at
+        #   the top level of the response instead (see EmailMessageResponse.suppressed).
+        #
+        #   @return [Array<Telnyx::Models::SuppressedRecipient>, nil]
+        optional :suppressed, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SuppressedRecipient] }
+
+        # @!method initialize(id:, attachments:, bcc:, cc:, created_at:, events:, from:, record_type:, reply_to:, status:, subject:, template_id:, template_variables:, to:, inline_css: nil, recipient_statuses: nil, sandbox: nil, scheduled_at: nil, suppressed: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::EmailInboxes::EmailMessage} for more details.
         #
@@ -145,6 +154,8 @@ module Telnyx
         #   @param sandbox [Boolean] Present when sandbox mode was used.
         #
         #   @param scheduled_at [Time] Present when a scheduled_at value was stored. Persists even after the scheduled
+        #
+        #   @param suppressed [Array<Telnyx::Models::SuppressedRecipient>] Recipients excluded from delivery by suppression checks, with reasons. On batch
 
         class Attachment < Telnyx::Internal::Type::BaseModel
           # @!attribute content_id

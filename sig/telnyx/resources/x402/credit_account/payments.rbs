@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class X402
+      class CreditAccount
+        class Payments
+          def retrieve: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::X402::CreditAccount::PaymentRetrieveResponse
+
+          def list: (
+            ?page_number: Integer,
+            ?page_size: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::X402::CreditAccount::X402TransactionRecord]
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

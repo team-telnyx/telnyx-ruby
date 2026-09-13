@@ -6,6 +6,7 @@ module Telnyx
       module Assistants
         type update_assistant =
           {
+            :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
             conversation_flow: Telnyx::AI::ConversationFlowReq,
             description: String,
             dynamic_variables: ::Hash[Symbol, top],
@@ -38,6 +39,12 @@ module Telnyx
           }
 
         class UpdateAssistant < Telnyx::Internal::Type::BaseModel
+          attr_reader a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent]?
+
+          def a2a_agents=: (
+            ::Array[Telnyx::AI::AssistantA2AAgent]
+          ) -> ::Array[Telnyx::AI::AssistantA2AAgent]
+
           attr_reader conversation_flow: Telnyx::AI::ConversationFlowReq?
 
           def conversation_flow=: (
@@ -189,6 +196,7 @@ module Telnyx
           ) -> Telnyx::AI::WidgetSettings
 
           def initialize: (
+            ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
             ?conversation_flow: Telnyx::AI::ConversationFlowReq,
             ?description: String,
             ?dynamic_variables: ::Hash[Symbol, top],
@@ -221,6 +229,7 @@ module Telnyx
           ) -> void
 
           def to_hash: -> {
+            :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
             conversation_flow: Telnyx::AI::ConversationFlowReq,
             description: String,
             dynamic_variables: ::Hash[Symbol, top],

@@ -168,7 +168,10 @@ module Telnyx
       optional :outbound, -> { Telnyx::OutboundFqdn }
 
       # @!attribute password
-      #   The password for the FQDN connection.
+      #   The password for the FQDN connection. For primary accounts created on or after
+      #   September 8, 2026, this password is returned as `********`. The password is
+      #   returned in full on create, and on update only when that update changed the
+      #   password. Accounts created before September 8, 2026 are unaffected.
       #
       #   @return [String, nil]
       optional :password, String
@@ -323,7 +326,7 @@ module Telnyx
       #
       #   @param outbound [Telnyx::Models::OutboundFqdn]
       #
-      #   @param password [String] The password for the FQDN connection.
+      #   @param password [String] The password for the FQDN connection. For primary accounts created on or after S
       #
       #   @param record_type [String] Identifies the type of the resource.
       #

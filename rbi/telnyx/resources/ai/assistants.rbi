@@ -39,6 +39,7 @@ module Telnyx
           params(
             instructions: String,
             name: String,
+            a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
             conversation_flow: Telnyx::AI::ConversationFlowReq::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
@@ -94,6 +95,15 @@ module Telnyx
           instructions:,
           # Body param
           name:,
+          # Body param: A2A agents this assistant can delegate to. Tools are not stored
+          # here: at the start of every conversation each agent's card is fetched and one
+          # tool is derived per skill the card advertises, named `a2a_<name>_<skill_id>`.
+          # The following limits are not enforced when the assistant is saved, and anything
+          # past them is dropped when the conversation starts: 64 agents per assistant, 64
+          # skills per card, 128 derived tools per assistant, and a 6 second budget for all
+          # card fetches combined. An agent whose card cannot be fetched costs the assistant
+          # that capability for the conversation; it does not fail the call.
+          a2a_agents: nil,
           # Body param: Conversation flow as supplied by API clients (create / update).
           #
           # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
@@ -238,6 +248,7 @@ module Telnyx
         sig do
           params(
             assistant_id: String,
+            a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
             conversation_flow: Telnyx::AI::ConversationFlowReq::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
@@ -293,6 +304,16 @@ module Telnyx
         def update(
           # Unique identifier of the assistant.
           assistant_id,
+          # A2A agents this assistant can delegate to. Tools are not stored here: at the
+          # start of every conversation each agent's card is fetched and one tool is derived
+          # per skill the card advertises, named `a2a_<name>_<skill_id>`. The following
+          # limits are not enforced when the assistant is saved, and anything past them is
+          # dropped when the conversation starts: 64 agents per assistant, 64 skills per
+          # card, 128 derived tools per assistant, and a 6 second budget for all card
+          # fetches combined. An agent whose card cannot be fetched costs the assistant that
+          # capability for the conversation; it does not fail the call. Omit this field to
+          # leave the assistant's agents unchanged; send an empty array to remove them all.
+          a2a_agents: nil,
           # Conversation flow as supplied by API clients (create / update).
           #
           # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces

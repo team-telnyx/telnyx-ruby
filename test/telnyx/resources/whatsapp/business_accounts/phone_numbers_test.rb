@@ -22,14 +22,18 @@ class Telnyx::Test::Resources::Whatsapp::BusinessAccounts::PhoneNumbersTest < Te
     assert_pattern do
       row => {
         calling_enabled: Telnyx::Internal::Type::Boolean | nil,
+        coexistence_state: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::CoexistenceState | nil,
         created_at: Time | nil,
         display_name: String | nil,
         enabled: Telnyx::Internal::Type::Boolean | nil,
+        is_on_biz_app: Telnyx::Internal::Type::Boolean | nil,
         phone_number: String | nil,
         phone_number_id: String | nil,
         quality_rating: String | nil,
         record_type: String | nil,
         status: String | nil,
+        sync_deadline: Time | nil,
+        sync_progress: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::SyncProgress | nil,
         user_id: String | nil,
         waba_id: String | nil
       }

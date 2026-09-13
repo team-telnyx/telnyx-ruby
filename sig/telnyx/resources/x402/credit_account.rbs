@@ -2,6 +2,8 @@ module Telnyx
   module Resources
     class X402
       class CreditAccount
+        attr_reader payments: Telnyx::Resources::X402::CreditAccount::Payments
+
         def create_quote: (
           amount_usd: String,
           ?request_options: Telnyx::request_opts

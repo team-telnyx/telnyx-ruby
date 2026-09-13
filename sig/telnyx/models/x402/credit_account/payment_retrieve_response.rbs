@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module X402
+      module CreditAccount
+        type payment_retrieve_response =
+          { data: Telnyx::X402::CreditAccount::X402TransactionRecord }
+
+        class PaymentRetrieveResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::X402::CreditAccount::X402TransactionRecord?
+
+          def data=: (
+            Telnyx::X402::CreditAccount::X402TransactionRecord
+          ) -> Telnyx::X402::CreditAccount::X402TransactionRecord
+
+          def initialize: (
+            ?data: Telnyx::X402::CreditAccount::X402TransactionRecord
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::X402::CreditAccount::X402TransactionRecord
+          }
+        end
+      end
+    end
+  end
+end

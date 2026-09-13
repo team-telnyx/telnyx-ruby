@@ -1,0 +1,41 @@
+module Telnyx
+  module Resources
+    class Compute
+      class Funcs
+        def retrieve_logs: (
+          String id,
+          ?end_time: Time,
+          ?limit: Integer,
+          ?start_time: Time,
+          ?type: Telnyx::Models::Compute::FuncRetrieveLogsParams::type_,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Compute::func_retrieve_logs_response
+
+        def retrieve_metric_aggregates: (
+          String id,
+          end_time: Time,
+          start_time: Time,
+          ?filter_edge_site: String,
+          ?filter_namespace: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Compute::FuncRetrieveMetricAggregatesResponse
+
+        def retrieve_revisions: (
+          String id,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Compute::FuncRetrieveRevisionsResponse
+
+        def retrieve_ship_inspection: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Compute::FuncRetrieveShipInspectionResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

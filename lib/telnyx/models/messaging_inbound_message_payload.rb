@@ -9,6 +9,13 @@ module Telnyx
       #   @return [String, nil]
       optional :id, String
 
+      # @!attribute body
+      #   WhatsApp message body. For message edits and revocations, inspect `type` and the
+      #   corresponding `edit` or `revoke` object.
+      #
+      #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body, nil]
+      optional :body, -> { Telnyx::MessagingInboundMessagePayload::Body }
+
       # @!attribute cc
       #
       #   @return [Array<Telnyx::Models::MessagingInboundMessagePayload::Cc>, nil]
@@ -142,12 +149,14 @@ module Telnyx
       optional :text, String
 
       # @!attribute to
+      #   Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
+      #   webhooks use one E.164 phone number.
       #
-      #   @return [Array<Telnyx::Models::MessagingInboundMessagePayload::To>, nil]
-      optional :to, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingInboundMessagePayload::To] }
+      #   @return [Array<Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0>, String, nil]
+      optional :to, union: -> { Telnyx::MessagingInboundMessagePayload::To }
 
       # @!attribute type
-      #   The type of message. This value can be either 'sms' or 'mms'.
+      #   The messaging channel used for the message.
       #
       #   @return [Symbol, Telnyx::Models::MessagingInboundMessagePayload::Type, nil]
       optional :type, enum: -> { Telnyx::MessagingInboundMessagePayload::Type }
@@ -171,11 +180,13 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, body: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingInboundMessagePayload} for more details.
       #
       #   @param id [String] Identifies the type of resource.
+      #
+      #   @param body [Telnyx::Models::MessagingInboundMessagePayload::Body] WhatsApp message body. For message edits and revocations, inspect `type` and the
       #
       #   @param cc [Array<Telnyx::Models::MessagingInboundMessagePayload::Cc>]
       #
@@ -221,15 +232,126 @@ module Telnyx
       #
       #   @param text [String] Message body (i.e., content) as a non-empty string.
       #
-      #   @param to [Array<Telnyx::Models::MessagingInboundMessagePayload::To>]
+      #   @param to [Array<Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0>, String] Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp web
       #
-      #   @param type [Symbol, Telnyx::Models::MessagingInboundMessagePayload::Type] The type of message. This value can be either 'sms' or 'mms'.
+      #   @param type [Symbol, Telnyx::Models::MessagingInboundMessagePayload::Type] The messaging channel used for the message.
       #
       #   @param valid_until [Time, nil] Not used for inbound messages.
       #
       #   @param webhook_failover_url [String, nil] The failover URL where webhooks related to this message will be sent if sending
       #
       #   @param webhook_url [String, nil] The URL where webhooks related to this message will be sent.
+
+      # @see Telnyx::Models::MessagingInboundMessagePayload#body
+      class Body < Telnyx::Internal::Type::BaseModel
+        # @!attribute id
+        #   Telnyx identifier for this webhook message.
+        #
+        #   @return [String, nil]
+        optional :id, String
+
+        # @!attribute edit
+        #   Details for an edited WhatsApp message.
+        #
+        #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::Edit, nil]
+        optional :edit, -> { Telnyx::MessagingInboundMessagePayload::Body::Edit }
+
+        # @!attribute foreign_id
+        #   Meta WhatsApp message identifier for this webhook event.
+        #
+        #   @return [String, nil]
+        optional :foreign_id, String
+
+        # @!attribute from
+        #   WhatsApp sender in E.164 format.
+        #
+        #   @return [String, nil]
+        optional :from, String
+
+        # @!attribute revoke
+        #   Details for a revoked WhatsApp message.
+        #
+        #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::Revoke, nil]
+        optional :revoke, -> { Telnyx::MessagingInboundMessagePayload::Body::Revoke }
+
+        # @!attribute timestamp
+        #   Unix timestamp supplied by Meta.
+        #
+        #   @return [String, nil]
+        optional :timestamp, String
+
+        # @!attribute type
+        #   WhatsApp message body type. Edit and revoke events use `edit` and `revoke`,
+        #   respectively.
+        #
+        #   @return [String, nil]
+        optional :type, String
+
+        # @!method initialize(id: nil, edit: nil, foreign_id: nil, from: nil, revoke: nil, timestamp: nil, type: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::MessagingInboundMessagePayload::Body} for more details.
+        #
+        #   WhatsApp message body. For message edits and revocations, inspect `type` and the
+        #   corresponding `edit` or `revoke` object.
+        #
+        #   @param id [String] Telnyx identifier for this webhook message.
+        #
+        #   @param edit [Telnyx::Models::MessagingInboundMessagePayload::Body::Edit] Details for an edited WhatsApp message.
+        #
+        #   @param foreign_id [String] Meta WhatsApp message identifier for this webhook event.
+        #
+        #   @param from [String] WhatsApp sender in E.164 format.
+        #
+        #   @param revoke [Telnyx::Models::MessagingInboundMessagePayload::Body::Revoke] Details for a revoked WhatsApp message.
+        #
+        #   @param timestamp [String] Unix timestamp supplied by Meta.
+        #
+        #   @param type [String] WhatsApp message body type. Edit and revoke events use `edit` and `revoke`, resp
+
+        # @see Telnyx::Models::MessagingInboundMessagePayload::Body#edit
+        class Edit < Telnyx::Internal::Type::BaseModel
+          # @!attribute message
+          #   Replacement WhatsApp message content. Its shape depends on the message type.
+          #
+          #   @return [Hash{Symbol=>Object}]
+          required :message, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+          # @!attribute original_message_id
+          #   Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp
+          #   message ID. Treat this value as opaque.
+          #
+          #   @return [String]
+          required :original_message_id, String
+
+          # @!method initialize(message:, original_message_id:)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::MessagingInboundMessagePayload::Body::Edit} for more details.
+          #
+          #   Details for an edited WhatsApp message.
+          #
+          #   @param message [Hash{Symbol=>Object}] Replacement WhatsApp message content. Its shape depends on the message type.
+          #
+          #   @param original_message_id [String] Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp me
+        end
+
+        # @see Telnyx::Models::MessagingInboundMessagePayload::Body#revoke
+        class Revoke < Telnyx::Internal::Type::BaseModel
+          # @!attribute original_message_id
+          #   Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp
+          #   message ID. Treat this value as opaque.
+          #
+          #   @return [String]
+          required :original_message_id, String
+
+          # @!method initialize(original_message_id:)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::MessagingInboundMessagePayload::Body::Revoke} for more details.
+          #
+          #   Details for a revoked WhatsApp message.
+          #
+          #   @param original_message_id [String] Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp me
+        end
+      end
 
       class Cc < Telnyx::Internal::Type::BaseModel
         # @!attribute carrier
@@ -304,18 +426,18 @@ module Telnyx
         #   The amount deducted from your account.
         #
         #   @return [String, nil]
-        optional :amount, String
+        optional :amount, String, nil?: true
 
         # @!attribute currency
         #   The ISO 4217 currency identifier.
         #
         #   @return [String, nil]
-        optional :currency, String
+        optional :currency, String, nil?: true
 
         # @!method initialize(amount: nil, currency: nil)
-        #   @param amount [String] The amount deducted from your account.
+        #   @param amount [String, nil] The amount deducted from your account.
         #
-        #   @param currency [String] The ISO 4217 currency identifier.
+        #   @param currency [String, nil] The ISO 4217 currency identifier.
       end
 
       # @see Telnyx::Models::MessagingInboundMessagePayload#cost_breakdown
@@ -504,75 +626,95 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      class To < Telnyx::Internal::Type::BaseModel
-        # @!attribute carrier
-        #   The carrier of the receiver.
-        #
-        #   @return [String, nil]
-        optional :carrier, String
+      # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
+      # webhooks use one E.164 phone number.
+      #
+      # @see Telnyx::Models::MessagingInboundMessagePayload#to
+      module To
+        extend Telnyx::Internal::Type::Union
 
-        # @!attribute line_type
-        #   The line-type of the receiver.
-        #
-        #   @return [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::LineType, nil]
-        optional :line_type, enum: -> { Telnyx::MessagingInboundMessagePayload::To::LineType }
+        variant -> { Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0Array }
 
-        # @!attribute phone_number
-        #   Receiving address (+E.164 formatted phone number or short code).
-        #
-        #   @return [String, nil]
-        optional :phone_number, String
+        # WhatsApp receiving address in E.164 format.
+        variant String
 
-        # @!attribute status
-        #
-        #   @return [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::Status, nil]
-        optional :status, enum: -> { Telnyx::MessagingInboundMessagePayload::To::Status }
+        class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          # @!attribute carrier
+          #   The carrier of the receiver.
+          #
+          #   @return [String, nil]
+          optional :carrier, String
 
-        # @!method initialize(carrier: nil, line_type: nil, phone_number: nil, status: nil)
-        #   @param carrier [String] The carrier of the receiver.
-        #
-        #   @param line_type [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::LineType] The line-type of the receiver.
-        #
-        #   @param phone_number [String] Receiving address (+E.164 formatted phone number or short code).
-        #
-        #   @param status [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::Status]
+          # @!attribute line_type
+          #   The line-type of the receiver.
+          #
+          #   @return [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::LineType, nil]
+          optional :line_type, enum: -> { Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType }
 
-        # The line-type of the receiver.
-        #
-        # @see Telnyx::Models::MessagingInboundMessagePayload::To#line_type
-        module LineType
-          extend Telnyx::Internal::Type::Enum
+          # @!attribute phone_number
+          #   Receiving address (+E.164 formatted phone number or short code).
+          #
+          #   @return [String, nil]
+          optional :phone_number, String
 
-          WIRELINE = :Wireline
-          WIRELESS = :Wireless
-          VO_WI_FI = :VoWiFi
-          VO_IP = :VoIP
-          PRE_PAID_WIRELESS = :"Pre-Paid Wireless"
-          EMPTY = :""
+          # @!attribute status
+          #
+          #   @return [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::Status, nil]
+          optional :status, enum: -> { Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status }
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          # @!method initialize(carrier: nil, line_type: nil, phone_number: nil, status: nil)
+          #   @param carrier [String] The carrier of the receiver.
+          #
+          #   @param line_type [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::LineType] The line-type of the receiver.
+          #
+          #   @param phone_number [String] Receiving address (+E.164 formatted phone number or short code).
+          #
+          #   @param status [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::Status]
+
+          # The line-type of the receiver.
+          #
+          # @see Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0#line_type
+          module LineType
+            extend Telnyx::Internal::Type::Enum
+
+            WIRELINE = :Wireline
+            WIRELESS = :Wireless
+            VO_WI_FI = :VoWiFi
+            VO_IP = :VoIP
+            PRE_PAID_WIRELESS = :"Pre-Paid Wireless"
+            EMPTY = :""
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0#status
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            QUEUED = :queued
+            SENDING = :sending
+            SENT = :sent
+            DELIVERED = :delivered
+            SENDING_FAILED = :sending_failed
+            DELIVERY_FAILED = :delivery_failed
+            DELIVERY_UNCONFIRMED = :delivery_unconfirmed
+            WEBHOOK_DELIVERED = :webhook_delivered
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
-        # @see Telnyx::Models::MessagingInboundMessagePayload::To#status
-        module Status
-          extend Telnyx::Internal::Type::Enum
+        # @!method self.variants
+        #   @return [Array(Array<Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0>, String)]
 
-          QUEUED = :queued
-          SENDING = :sending
-          SENT = :sent
-          DELIVERED = :delivered
-          SENDING_FAILED = :sending_failed
-          DELIVERY_FAILED = :delivery_failed
-          DELIVERY_UNCONFIRMED = :delivery_unconfirmed
-          WEBHOOK_DELIVERED = :webhook_delivered
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
+        # @type [Telnyx::Internal::Type::Converter]
+        UnionMember0Array =
+          Telnyx::Internal::Type::ArrayOf[-> { Telnyx::MessagingInboundMessagePayload::To::UnionMember0 }]
       end
 
-      # The type of message. This value can be either 'sms' or 'mms'.
+      # The messaging channel used for the message.
       #
       # @see Telnyx::Models::MessagingInboundMessagePayload#type
       module Type
@@ -580,6 +722,7 @@ module Telnyx
 
         SMS = :SMS
         MMS = :MMS
+        WHATSAPP = :WHATSAPP
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -1,0 +1,149 @@
+module Telnyx
+  module Models
+    module Compute
+      type func_retrieve_metric_aggregates_response =
+        {
+          data: ::Array[Telnyx::Models::Compute::FuncRetrieveMetricAggregatesResponse::Data],
+          meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        }
+
+      class FuncRetrieveMetricAggregatesResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: ::Array[Telnyx::Models::Compute::FuncRetrieveMetricAggregatesResponse::Data]?
+
+        def data=: (
+          ::Array[Telnyx::Models::Compute::FuncRetrieveMetricAggregatesResponse::Data]
+        ) -> ::Array[Telnyx::Models::Compute::FuncRetrieveMetricAggregatesResponse::Data]
+
+        attr_reader meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta?
+
+        def meta=: (
+          Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        ) -> Telnyx::Compute::FunctionsObservabilityPaginationMeta
+
+        def initialize: (
+          ?data: ::Array[Telnyx::Models::Compute::FuncRetrieveMetricAggregatesResponse::Data],
+          ?meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::Compute::FuncRetrieveMetricAggregatesResponse::Data],
+          meta: Telnyx::Compute::FunctionsObservabilityPaginationMeta
+        }
+
+        type data =
+          {
+            cpu_used_cores_avg: Float?,
+            cpu_used_cores_max: Float?,
+            end_time: Time,
+            function_id: String,
+            function_name: String,
+            memory_used_bytes_avg: Float?,
+            memory_used_bytes_max: Float?,
+            product: String,
+            record_type: String,
+            request_client_error_rate: Float?,
+            request_count: Float?,
+            request_error_rate: Float?,
+            request_latency_avg_ms: Float?,
+            :request_latency_p50_ms => Float?,
+            :request_latency_p95_ms => Float?,
+            :request_latency_p99_ms => Float?,
+            request_success_rate: Float?,
+            start_time: Time
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor cpu_used_cores_avg: Float?
+
+          attr_accessor cpu_used_cores_max: Float?
+
+          attr_reader end_time: Time?
+
+          def end_time=: (Time) -> Time
+
+          attr_reader function_id: String?
+
+          def function_id=: (String) -> String
+
+          attr_reader function_name: String?
+
+          def function_name=: (String) -> String
+
+          attr_accessor memory_used_bytes_avg: Float?
+
+          attr_accessor memory_used_bytes_max: Float?
+
+          attr_reader product: String?
+
+          def product=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_accessor request_client_error_rate: Float?
+
+          attr_accessor request_count: Float?
+
+          attr_accessor request_error_rate: Float?
+
+          attr_accessor request_latency_avg_ms: Float?
+
+          attr_accessor request_latency_p50_ms: Float?
+
+          attr_accessor request_latency_p95_ms: Float?
+
+          attr_accessor request_latency_p99_ms: Float?
+
+          attr_accessor request_success_rate: Float?
+
+          attr_reader start_time: Time?
+
+          def start_time=: (Time) -> Time
+
+          def initialize: (
+            ?cpu_used_cores_avg: Float?,
+            ?cpu_used_cores_max: Float?,
+            ?end_time: Time,
+            ?function_id: String,
+            ?function_name: String,
+            ?memory_used_bytes_avg: Float?,
+            ?memory_used_bytes_max: Float?,
+            ?product: String,
+            ?record_type: String,
+            ?request_client_error_rate: Float?,
+            ?request_count: Float?,
+            ?request_error_rate: Float?,
+            ?request_latency_avg_ms: Float?,
+            ?request_latency_p50_ms: Float?,
+            ?request_latency_p95_ms: Float?,
+            ?request_latency_p99_ms: Float?,
+            ?request_success_rate: Float?,
+            ?start_time: Time
+          ) -> void
+
+          def to_hash: -> {
+            cpu_used_cores_avg: Float?,
+            cpu_used_cores_max: Float?,
+            end_time: Time,
+            function_id: String,
+            function_name: String,
+            memory_used_bytes_avg: Float?,
+            memory_used_bytes_max: Float?,
+            product: String,
+            record_type: String,
+            request_client_error_rate: Float?,
+            request_count: Float?,
+            request_error_rate: Float?,
+            request_latency_avg_ms: Float?,
+            :request_latency_p50_ms => Float?,
+            :request_latency_p95_ms => Float?,
+            :request_latency_p99_ms => Float?,
+            request_success_rate: Float?,
+            start_time: Time
+          }
+        end
+      end
+    end
+  end
+end

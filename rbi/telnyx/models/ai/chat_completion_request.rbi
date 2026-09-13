@@ -56,28 +56,6 @@ module Telnyx
         sig { params(frequency_penalty: Float).void }
         attr_writer :frequency_penalty
 
-        # If specified, the output will be exactly one of the choices.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :guided_choice
-
-        sig { params(guided_choice: T::Array[String]).void }
-        attr_writer :guided_choice
-
-        # Must be a valid JSON schema. If specified, the output will follow the JSON
-        # schema.
-        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-        attr_reader :guided_json
-
-        sig { params(guided_json: T::Hash[Symbol, T.anything]).void }
-        attr_writer :guided_json
-
-        # If specified, the output will follow the regex pattern.
-        sig { returns(T.nilable(String)) }
-        attr_reader :guided_regex
-
-        sig { params(guided_regex: String).void }
-        attr_writer :guided_regex
-
         # This is used with `use_beam_search` to prefer shorter or longer completions.
         sig { returns(T.nilable(Float)) }
         attr_reader :length_penalty
@@ -187,17 +165,31 @@ module Telnyx
         end
         attr_writer :region
 
-        # Use this is you want to guarantee a JSON output without defining a schema. For
-        # control over the schema, use `guided_json`.
+        # Controls the format of the model output. `json_object` guarantees valid JSON
+        # output without defining a schema; `json_schema` constrains the output to the
+        # JSON schema you supply via the `json_schema` property and is the supported way
+        # to get guaranteed structured output on Telnyx-hosted models.
         sig do
-          returns(T.nilable(Telnyx::AI::ChatCompletionRequest::ResponseFormat))
+          returns(
+            T.nilable(
+              T.any(
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam
+              )
+            )
+          )
         end
         attr_reader :response_format
 
         sig do
           params(
             response_format:
-              Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash
+              T.any(
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText::OrHash,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject::OrHash,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::OrHash
+              )
           ).void
         end
         attr_writer :response_format
@@ -329,9 +321,6 @@ module Telnyx
             early_stopping: T::Boolean,
             enable_thinking: T::Boolean,
             frequency_penalty: Float,
-            guided_choice: T::Array[String],
-            guided_json: T::Hash[Symbol, T.anything],
-            guided_regex: String,
             length_penalty: Float,
             logprobs: T::Boolean,
             max_tokens: Integer,
@@ -344,7 +333,11 @@ module Telnyx
               Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
             region: Telnyx::AI::ChatCompletionRequest::Region::OrSymbol,
             response_format:
-              Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash,
+              T.any(
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText::OrHash,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject::OrHash,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::OrHash
+              ),
             seed: Integer,
             service_tier: String,
             stop: Telnyx::AI::ChatCompletionRequest::Stop::Variants,
@@ -385,13 +378,6 @@ module Telnyx
           enable_thinking: nil,
           # Higher values will penalize the model from repeating the same output tokens.
           frequency_penalty: nil,
-          # If specified, the output will be exactly one of the choices.
-          guided_choice: nil,
-          # Must be a valid JSON schema. If specified, the output will follow the JSON
-          # schema.
-          guided_json: nil,
-          # If specified, the output will follow the regex pattern.
-          guided_regex: nil,
           # This is used with `use_beam_search` to prefer shorter or longer completions.
           length_penalty: nil,
           # Whether to return log probabilities of the output tokens or not. If true,
@@ -428,8 +414,10 @@ module Telnyx
           # provider never passes through Telnyx model routing, so a region cannot be
           # enforced for it. Omit for today's latency-based routing.
           region: nil,
-          # Use this is you want to guarantee a JSON output without defining a schema. For
-          # control over the schema, use `guided_json`.
+          # Controls the format of the model output. `json_object` guarantees valid JSON
+          # output without defining a schema; `json_schema` constrains the output to the
+          # JSON schema you supply via the `json_schema` property and is the supported way
+          # to get guaranteed structured output on Telnyx-hosted models.
           response_format: nil,
           # If specified, the system will make a best effort to sample deterministically,
           # such that repeated requests with the same `seed` and parameters should return
@@ -478,9 +466,6 @@ module Telnyx
               early_stopping: T::Boolean,
               enable_thinking: T::Boolean,
               frequency_penalty: Float,
-              guided_choice: T::Array[String],
-              guided_json: T::Hash[Symbol, T.anything],
-              guided_regex: String,
               length_penalty: Float,
               logprobs: T::Boolean,
               max_tokens: Integer,
@@ -493,7 +478,11 @@ module Telnyx
                 Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
               region: Telnyx::AI::ChatCompletionRequest::Region::OrSymbol,
               response_format:
-                Telnyx::AI::ChatCompletionRequest::ResponseFormat,
+                T.any(
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText,
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject,
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam
+                ),
               seed: Integer,
               service_tier: String,
               stop: Telnyx::AI::ChatCompletionRequest::Stop::Variants,
@@ -848,76 +837,219 @@ module Telnyx
           end
         end
 
-        class ResponseFormat < Telnyx::Internal::Type::BaseModel
-          OrHash =
+        # Controls the format of the model output. `json_object` guarantees valid JSON
+        # output without defining a schema; `json_schema` constrains the output to the
+        # JSON schema you supply via the `json_schema` property and is the supported way
+        # to get guaranteed structured output on Telnyx-hosted models.
+        module ResponseFormat
+          extend Telnyx::Internal::Type::Union
+
+          Variants =
             T.type_alias do
               T.any(
-                Telnyx::AI::ChatCompletionRequest::ResponseFormat,
-                Telnyx::Internal::AnyHash
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject,
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam
               )
             end
 
-          sig do
-            returns(
-              Telnyx::AI::ChatCompletionRequest::ResponseFormat::Type::OrSymbol
-            )
-          end
-          attr_accessor :type
+          class ResponseFormatText < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText,
+                  Telnyx::Internal::AnyHash
+                )
+              end
 
-          # Use this is you want to guarantee a JSON output without defining a schema. For
-          # control over the schema, use `guided_json`.
-          sig do
-            params(
-              type:
-                Telnyx::AI::ChatCompletionRequest::ResponseFormat::Type::OrSymbol
-            ).returns(T.attached_class)
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # Plain text output.
+            sig { params(type: Symbol).returns(T.attached_class) }
+            def self.new(type: :text)
+            end
+
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
           end
-          def self.new(type:)
+
+          class ResponseFormatJsonObject < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # JSON mode: the model output is valid JSON, without a schema.
+            sig { params(type: Symbol).returns(T.attached_class) }
+            def self.new(type: :json_object)
+            end
+
+            sig { override.returns({ type: Symbol }) }
+            def to_hash
+            end
+          end
+
+          class ResponseFormatJsonSchemaParam < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # The JSON schema configuration, required when `type` is `json_schema`. Matches
+            # the
+            # [OpenAI structured outputs](https://platform.openai.com/docs/guides/structured-outputs)
+            # `json_schema` response format.
+            sig do
+              returns(
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema
+              )
+            end
+            attr_reader :json_schema
+
+            sig do
+              params(
+                json_schema:
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema::OrHash
+              ).void
+            end
+            attr_writer :json_schema
+
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            # Structured output: the model output is constrained to the JSON schema supplied
+            # in `json_schema`.
+            sig do
+              params(
+                json_schema:
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema::OrHash,
+                type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The JSON schema configuration, required when `type` is `json_schema`. Matches
+              # the
+              # [OpenAI structured outputs](https://platform.openai.com/docs/guides/structured-outputs)
+              # `json_schema` response format.
+              json_schema:,
+              type: :json_schema
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  json_schema:
+                    Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema,
+                  type: Symbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class JsonSchema < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::JsonSchema,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The name of the response format. Used for clarity only.
+              sig { returns(String) }
+              attr_accessor :name
+
+              # A description of what the response format is for, typically used to guide the
+              # model.
+              sig { returns(T.nilable(String)) }
+              attr_reader :description
+
+              sig { params(description: String).void }
+              attr_writer :description
+
+              # The JSON schema the model output must conform to. A valid
+              # [JSON Schema](https://json-schema.org) object, e.g. a Pydantic
+              # `model_json_schema()` export.
+              sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+              attr_reader :schema
+
+              sig { params(schema: T::Hash[Symbol, T.anything]).void }
+              attr_writer :schema
+
+              # Enables strict schema adherence when supported by the model. If the generated
+              # output does not match the provided schema, the request fails instead of
+              # returning non-conformant output.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :strict
+
+              sig { params(strict: T::Boolean).void }
+              attr_writer :strict
+
+              # The JSON schema configuration, required when `type` is `json_schema`. Matches
+              # the
+              # [OpenAI structured outputs](https://platform.openai.com/docs/guides/structured-outputs)
+              # `json_schema` response format.
+              sig do
+                params(
+                  name: String,
+                  description: String,
+                  schema: T::Hash[Symbol, T.anything],
+                  strict: T::Boolean
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The name of the response format. Used for clarity only.
+                name:,
+                # A description of what the response format is for, typically used to guide the
+                # model.
+                description: nil,
+                # The JSON schema the model output must conform to. A valid
+                # [JSON Schema](https://json-schema.org) object, e.g. a Pydantic
+                # `model_json_schema()` export.
+                schema: nil,
+                # Enables strict schema adherence when supported by the model. If the generated
+                # output does not match the provided schema, the request fails instead of
+                # returning non-conformant output.
+                strict: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    name: String,
+                    description: String,
+                    schema: T::Hash[Symbol, T.anything],
+                    strict: T::Boolean
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
           end
 
           sig do
             override.returns(
-              {
-                type:
-                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::Type::OrSymbol
-              }
+              T::Array[
+                Telnyx::AI::ChatCompletionRequest::ResponseFormat::Variants
+              ]
             )
           end
-          def to_hash
-          end
-
-          module Type
-            extend Telnyx::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            TEXT =
-              T.let(
-                :text,
-                Telnyx::AI::ChatCompletionRequest::ResponseFormat::Type::TaggedSymbol
-              )
-            JSON_OBJECT =
-              T.let(
-                :json_object,
-                Telnyx::AI::ChatCompletionRequest::ResponseFormat::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
+          def self.variants
           end
         end
 

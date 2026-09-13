@@ -71,7 +71,8 @@ class Telnyx::Test::Resources::EmailMessagesTest < Telnyx::Test::ResourceTest
         inline_css: Telnyx::Internal::Type::Boolean | nil,
         recipient_statuses: ^(Telnyx::Internal::Type::HashOf[Integer]) | nil,
         sandbox: Telnyx::Internal::Type::Boolean | nil,
-        scheduled_at: Time | nil
+        scheduled_at: Time | nil,
+        suppressed: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::SuppressedRecipient]) | nil
       }
     end
   end
