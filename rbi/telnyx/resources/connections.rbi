@@ -78,6 +78,17 @@ module Telnyx
       )
       end
 
+      # Returns the number of connections associated with the authenticated user,
+      # grouped by connection type, together with the connection limits that apply to
+      # the user. Forward-only connections are excluded from the counts.
+      sig do
+        params(request_options: Telnyx::RequestOptions::OrHash).returns(
+          Telnyx::Models::ConnectionRetrieveCountResponse
+        )
+      end
+      def retrieve_count(request_options: {})
+      end
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)

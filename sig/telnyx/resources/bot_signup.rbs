@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class BotSignup
+      def create: (
+        bot_challenge_answer: String,
+        bot_challenge_nonce: String,
+        privacy_policy_url: String,
+        terms_and_conditions_url: String,
+        terms_of_service: Telnyx::Models::BotSignupCreateParams::terms_of_service,
+        ?email: String,
+        ?terms_and_conditions_eu_url: String,
+        ?terms_of_service_eu: Telnyx::Models::BotSignupCreateParams::terms_of_service_eu,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::SuccessResponse
+
+      def resend_magic_link: (
+        email: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::SuccessResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -738,6 +738,35 @@ module Telnyx
     # @return [Telnyx::Resources::Compute]
     attr_reader :compute
 
+    # Noise suppression engines that can be selected when configuring noise
+    # suppression on voice connections.
+    # @return [Telnyx::Resources::NoiseSuppressionEngines]
+    attr_reader :noise_suppression_engines
+
+    # Agentic (bot) signup for Telnyx accounts. An AI agent solves a reverse-CAPTCHA
+    # challenge designed to be easy for LLMs and hard for humans, registers an
+    # account, and signs in by consuming a magic link emailed to the account owner.
+    # All endpoints are public and unauthenticated; signup endpoints are additionally
+    # gated by the freemium feature flags and per-country availability.
+    # @return [Telnyx::Resources::BotChallenge]
+    attr_reader :bot_challenge
+
+    # Agentic (bot) signup for Telnyx accounts. An AI agent solves a reverse-CAPTCHA
+    # challenge designed to be easy for LLMs and hard for humans, registers an
+    # account, and signs in by consuming a magic link emailed to the account owner.
+    # All endpoints are public and unauthenticated; signup endpoints are additionally
+    # gated by the freemium feature flags and per-country availability.
+    # @return [Telnyx::Resources::BotSessions]
+    attr_reader :bot_sessions
+
+    # Agentic (bot) signup for Telnyx accounts. An AI agent solves a reverse-CAPTCHA
+    # challenge designed to be easy for LLMs and hard for humans, registers an
+    # account, and signs in by consuming a magic link emailed to the account owner.
+    # All endpoints are public and unauthenticated; signup endpoints are additionally
+    # gated by the freemium feature flags and per-country availability.
+    # @return [Telnyx::Resources::BotSignup]
+    attr_reader :bot_signup
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1030,6 +1059,10 @@ module Telnyx
       @meeting_sessions = Telnyx::Resources::MeetingSessions.new(client: self)
       @external_requirements = Telnyx::Resources::ExternalRequirements.new(client: self)
       @compute = Telnyx::Resources::Compute.new(client: self)
+      @noise_suppression_engines = Telnyx::Resources::NoiseSuppressionEngines.new(client: self)
+      @bot_challenge = Telnyx::Resources::BotChallenge.new(client: self)
+      @bot_sessions = Telnyx::Resources::BotSessions.new(client: self)
+      @bot_signup = Telnyx::Resources::BotSignup.new(client: self)
     end
   end
 end

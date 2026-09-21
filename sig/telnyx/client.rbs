@@ -382,6 +382,14 @@ module Telnyx
 
     attr_reader compute: Telnyx::Resources::Compute
 
+    attr_reader noise_suppression_engines: Telnyx::Resources::NoiseSuppressionEngines
+
+    attr_reader bot_challenge: Telnyx::Resources::BotChallenge
+
+    attr_reader bot_sessions: Telnyx::Resources::BotSessions
+
+    attr_reader bot_signup: Telnyx::Resources::BotSignup
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

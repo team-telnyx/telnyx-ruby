@@ -176,10 +176,10 @@ module Telnyx
         # @!attribute post_conversation_settings
         #   Configuration for post-conversation processing. When enabled, the assistant
         #   receives one additional LLM turn after the conversation ends, allowing it to
-        #   execute tool calls such as logging to a CRM or sending a summary. The assistant
-        #   can execute multiple parallel or sequential tools during this phase.
-        #   Telephony-control tools (e.g. hangup, transfer) are unavailable
-        #   post-conversation. Beta feature.
+        #   execute final tool calls such as sending a summary or updating a record via
+        #   webhook or function tools. Integration and MCP server tools are not available
+        #   post-conversation; call-control tools (e.g. hangup, transfer) are also
+        #   unavailable. Beta feature.
         #
         #   @return [Telnyx::Models::AI::PostConversationSettings, nil]
         optional :post_conversation_settings, -> { Telnyx::AI::PostConversationSettings }
@@ -208,11 +208,14 @@ module Telnyx
         optional :telephony_settings, -> { Telnyx::AI::TelephonySettings }
 
         # @!attribute tools
-        #   Deprecated for new integrations. Inline tool definitions available to the
-        #   assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
-        #   endpoints.
+        #   The assistant's tools. Responses merge the assistant's shared Tools Library
+        #   tools into this array alongside inline tools, each flagged `shared: true`;
+        #   inline tools carry `shared: false`. On update, a sent `tools` array fully
+        #   replaces the inline tools only — shared tools stay attached unless `tool_ids`
+        #   changes. Each tool type except `function`, `webhook`, and `client_side_tool`
+        #   allows at most one instance per assistant across both sources.
         #
-        #   @return [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>, nil]
+        #   @return [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>, nil]
         optional :tools, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool] }
 
         # @!attribute transcription
@@ -310,7 +313,7 @@ module Telnyx
         #
         #   @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        #   @param tools [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] Deprecated for new integrations. Inline tool definitions available to the assist
+        #   @param tools [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] The assistant's tools. Responses merge the assistant's shared Tools Library tool
         #
         #   @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #

@@ -5,6 +5,7 @@ module Telnyx
         {
           disable_greeting_interruption: bool,
           enable: bool,
+          interrupt_prediction_threshold: Float?,
           start_speaking_plan: Telnyx::AI::StartSpeakingPlan
         }
 
@@ -17,6 +18,8 @@ module Telnyx
 
         def enable=: (bool) -> bool
 
+        attr_accessor interrupt_prediction_threshold: Float?
+
         attr_reader start_speaking_plan: Telnyx::AI::StartSpeakingPlan?
 
         def start_speaking_plan=: (
@@ -26,12 +29,14 @@ module Telnyx
         def initialize: (
           ?disable_greeting_interruption: bool,
           ?enable: bool,
+          ?interrupt_prediction_threshold: Float?,
           ?start_speaking_plan: Telnyx::AI::StartSpeakingPlan
         ) -> void
 
         def to_hash: -> {
           disable_greeting_interruption: bool,
           enable: bool,
+          interrupt_prediction_threshold: Float?,
           start_speaking_plan: Telnyx::AI::StartSpeakingPlan
         }
       end

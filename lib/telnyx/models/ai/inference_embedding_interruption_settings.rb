@@ -16,6 +16,13 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :enable, Telnyx::Internal::Type::Boolean
 
+        # @!attribute interrupt_prediction_threshold
+        #   Interrupt-prediction sensitivity, from 0.0 to 1.0. Set to null or 0.0 to disable
+        #   interrupt prediction.
+        #
+        #   @return [Float, nil]
+        optional :interrupt_prediction_threshold, Float, nil?: true
+
         # @!attribute start_speaking_plan
         #   Controls when the assistant starts speaking after the user stops. These
         #   thresholds primarily apply to non turn-taking transcription models. For
@@ -25,7 +32,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::StartSpeakingPlan, nil]
         optional :start_speaking_plan, -> { Telnyx::AI::StartSpeakingPlan }
 
-        # @!method initialize(disable_greeting_interruption: nil, enable: nil, start_speaking_plan: nil)
+        # @!method initialize(disable_greeting_interruption: nil, enable: nil, interrupt_prediction_threshold: nil, start_speaking_plan: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbeddingInterruptionSettings} for more details.
         #
@@ -39,6 +46,8 @@ module Telnyx
         #   @param disable_greeting_interruption [Boolean] When true, disables user interruptions while the assistant greeting is playing.
         #
         #   @param enable [Boolean] Whether users can interrupt the assistant while it is speaking.
+        #
+        #   @param interrupt_prediction_threshold [Float, nil] Interrupt-prediction sensitivity, from 0.0 to 1.0. Set to null or 0.0 to disable
         #
         #   @param start_speaking_plan [Telnyx::Models::AI::StartSpeakingPlan] Controls when the assistant starts speaking after the user stops. These threshol
       end

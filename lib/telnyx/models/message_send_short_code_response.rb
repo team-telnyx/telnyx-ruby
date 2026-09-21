@@ -6,11 +6,11 @@ module Telnyx
     class MessageSendShortCodeResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::MessagingOutboundMessagePayload, nil]
-      optional :data, -> { Telnyx::MessagingOutboundMessagePayload }
+      #   @return [Telnyx::Models::OutboundMessagePayload, nil]
+      optional :data, -> { Telnyx::OutboundMessagePayload }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::MessagingOutboundMessagePayload]
+      #   @param data [Telnyx::Models::OutboundMessagePayload]
     end
   end
 end

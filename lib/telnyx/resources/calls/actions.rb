@@ -1836,7 +1836,7 @@ module Telnyx
         #
         # @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP INVITE.
         #
-        # @param diversion [String] The number the inbound call being transferred was originally received on, in +E1
+        # @param diversion [String] The `to` number of an active inbound call, in +E164 format. Telnyx checks whethe
         #
         # @param early_media [Boolean] If set to false, early media will not be passed to the originating leg.
         #

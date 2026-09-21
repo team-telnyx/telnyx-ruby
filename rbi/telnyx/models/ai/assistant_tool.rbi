@@ -12,11 +12,12 @@ module Telnyx
         Variants =
           T.type_alias do
             T.any(
+              Telnyx::AI::AssistantTool::Function,
               Telnyx::AI::InferenceEmbeddingWebhookToolParams,
               Telnyx::AI::AssistantTool::ClientSideTool,
               Telnyx::AI::RetrievalTool,
               Telnyx::AI::AssistantTool::Handoff,
-              Telnyx::AI::HangupTool,
+              Telnyx::AI::AssistantTool::Hangup,
               Telnyx::AI::AssistantTool::Transfer,
               Telnyx::AI::AssistantTool::Invite,
               Telnyx::AI::AssistantTool::Refer,
@@ -27,6 +28,75 @@ module Telnyx
               Telnyx::AI::AssistantTool::UpdateDynamicVariables
             )
           end
+
+        class Function < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantTool::Function,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Telnyx::AI::OpenAI::FunctionDefinition) }
+          attr_reader :function
+
+          sig do
+            params(
+              function: Telnyx::AI::OpenAI::FunctionDefinition::OrHash
+            ).void
+          end
+          attr_writer :function
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
+          sig do
+            params(
+              function: Telnyx::AI::OpenAI::FunctionDefinition::OrHash,
+              shared: T::Boolean,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            function:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :function
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                function: Telnyx::AI::OpenAI::FunctionDefinition,
+                type: Symbol,
+                shared: T::Boolean
+              }
+            )
+          end
+          def to_hash
+          end
+        end
 
         class ClientSideTool < Telnyx::Internal::Type::BaseModel
           OrHash =
@@ -53,14 +123,39 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           sig do
             params(
               client_side_tool:
                 Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(client_side_tool:, type: :client_side_tool)
+          def self.new(
+            client_side_tool:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :client_side_tool
+          )
           end
 
           sig do
@@ -68,7 +163,8 @@ module Telnyx
               {
                 client_side_tool:
                   Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
-                type: Symbol
+                type: Symbol,
+                shared: T::Boolean
               }
             )
           end
@@ -270,23 +366,49 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           # The handoff tool allows the assistant to hand off control of the conversation to
           # another AI assistant. By default, this will happen transparently to the end
           # user.
           sig do
             params(
               handoff: Telnyx::AI::AssistantTool::Handoff::Handoff::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(handoff:, type: :handoff)
+          def self.new(
+            handoff:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :handoff
+          )
           end
 
           sig do
             override.returns(
               {
                 handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
-                type: Symbol
+                type: Symbol,
+                shared: T::Boolean
               }
             )
           end
@@ -440,6 +562,71 @@ module Telnyx
           end
         end
 
+        class Hangup < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantTool::Hangup,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Telnyx::AI::HangupToolParams) }
+          attr_reader :hangup
+
+          sig { params(hangup: Telnyx::AI::HangupToolParams::OrHash).void }
+          attr_writer :hangup
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
+          sig do
+            params(
+              hangup: Telnyx::AI::HangupToolParams::OrHash,
+              shared: T::Boolean,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            hangup:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :hangup
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                hangup: Telnyx::AI::HangupToolParams,
+                type: Symbol,
+                shared: T::Boolean
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
         class Transfer < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
@@ -462,20 +649,46 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           sig do
             params(
               transfer: Telnyx::AI::AssistantTool::Transfer::Transfer::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(transfer:, type: :transfer)
+          def self.new(
+            transfer:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :transfer
+          )
           end
 
           sig do
             override.returns(
               {
                 transfer: Telnyx::AI::AssistantTool::Transfer::Transfer,
-                type: Symbol
+                type: Symbol,
+                shared: T::Boolean
               }
             )
           end
@@ -1501,20 +1714,46 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           sig do
             params(
               invite: Telnyx::AI::AssistantTool::Invite::Invite::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(invite:, type: :invite)
+          def self.new(
+            invite:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :invite
+          )
           end
 
           sig do
             override.returns(
               {
                 invite: Telnyx::AI::AssistantTool::Invite::Invite,
-                type: Symbol
+                type: Symbol,
+                shared: T::Boolean
               }
             )
           end
@@ -1976,18 +2215,47 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           sig do
             params(
               refer: Telnyx::AI::AssistantTool::Refer::Refer::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(refer:, type: :refer)
+          def self.new(
+            refer:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :refer
+          )
           end
 
           sig do
             override.returns(
-              { refer: Telnyx::AI::AssistantTool::Refer::Refer, type: Symbol }
+              {
+                refer: Telnyx::AI::AssistantTool::Refer::Refer,
+                type: Symbol,
+                shared: T::Boolean
+              }
             )
           end
           def to_hash
@@ -2322,18 +2590,47 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           sig do
             params(
               send_dtmf: T::Hash[Symbol, T.anything],
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(send_dtmf:, type: :send_dtmf)
+          def self.new(
+            send_dtmf:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :send_dtmf
+          )
           end
 
           sig do
             override.returns(
-              { send_dtmf: T::Hash[Symbol, T.anything], type: Symbol }
+              {
+                send_dtmf: T::Hash[Symbol, T.anything],
+                type: Symbol,
+                shared: T::Boolean
+              }
             )
           end
           def to_hash
@@ -2363,6 +2660,19 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           # The send_message tool allows the assistant to send SMS or MMS messages to the
           # end user. The 'to' and 'from' addresses are automatically determined from the
           # conversation context, and the message text is generated by the assistant unless
@@ -2371,10 +2681,22 @@ module Telnyx
             params(
               send_message:
                 Telnyx::AI::AssistantTool::SendMessage::SendMessage::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(send_message:, type: :send_message)
+          def self.new(
+            send_message:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :send_message
+          )
           end
 
           sig do
@@ -2382,7 +2704,8 @@ module Telnyx
               {
                 send_message:
                   Telnyx::AI::AssistantTool::SendMessage::SendMessage,
-                type: Symbol
+                type: Symbol,
+                shared: T::Boolean
               }
             )
           end
@@ -2449,20 +2772,46 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           sig do
             params(
               skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(skip_turn:, type: :skip_turn)
+          def self.new(
+            skip_turn:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :skip_turn
+          )
           end
 
           sig do
             override.returns(
               {
                 skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
-                type: Symbol
+                type: Symbol,
+                shared: T::Boolean
               }
             )
           end
@@ -2513,6 +2862,19 @@ module Telnyx
           sig { returns(Symbol) }
           attr_accessor :type
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           # (BETA) The pay tool allows the assistant to collect card payments from the
           # caller via DTMF during the conversation. Recording is automatically paused while
           # the pay tool is active and resumes when the payment flow completes. The
@@ -2520,14 +2882,32 @@ module Telnyx
           sig do
             params(
               pay: Telnyx::AI::PayToolParams::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
-          def self.new(pay:, type: :pay)
+          def self.new(
+            pay:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            type: :pay
+          )
           end
 
           sig do
-            override.returns({ pay: Telnyx::AI::PayToolParams, type: Symbol })
+            override.returns(
+              {
+                pay: Telnyx::AI::PayToolParams,
+                type: Symbol,
+                shared: T::Boolean
+              }
+            )
           end
           def to_hash
           end
@@ -2557,6 +2937,19 @@ module Telnyx
           end
           attr_writer :update_dynamic_variables
 
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
           # The update_dynamic_variables tool lets the assistant write values into the
           # conversation's dynamic-variables context during the call. Updated variables are
           # available to later `{{variable}}` interpolation (prompts, speak nodes, message
@@ -2566,12 +2959,21 @@ module Telnyx
             params(
               update_dynamic_variables:
                 Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
+              shared: T::Boolean,
               type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
             # Configuration for an update_dynamic_variables tool.
             update_dynamic_variables:,
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
             type: :update_dynamic_variables
           )
           end
@@ -2581,7 +2983,8 @@ module Telnyx
               {
                 type: Symbol,
                 update_dynamic_variables:
-                  Telnyx::AI::UpdateDynamicVariablesToolParams
+                  Telnyx::AI::UpdateDynamicVariablesToolParams,
+                shared: T::Boolean
               }
             )
           end

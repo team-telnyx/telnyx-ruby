@@ -117,6 +117,14 @@ module Telnyx
 
   class BookAppointmentToolParams = Telnyx::Models::BookAppointmentToolParams
 
+  class BotChallengeCreateParams = Telnyx::Models::BotChallengeCreateParams
+
+  class BotSessionListParams = Telnyx::Models::BotSessionListParams
+
+  class BotSignupCreateParams = Telnyx::Models::BotSignupCreateParams
+
+  class BotSignupResendMagicLinkParams = Telnyx::Models::BotSignupResendMagicLinkParams
+
   class BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
 
   class BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
@@ -430,6 +438,8 @@ module Telnyx
   module ConnectionNoiseSuppression = Telnyx::Models::ConnectionNoiseSuppression
 
   class ConnectionNoiseSuppressionDetails = Telnyx::Models::ConnectionNoiseSuppressionDetails
+
+  class ConnectionRetrieveCountParams = Telnyx::Models::ConnectionRetrieveCountParams
 
   class ConnectionRetrieveParams = Telnyx::Models::ConnectionRetrieveParams
 
@@ -1099,6 +1109,8 @@ module Telnyx
 
   class MessagingHostedNumberUpdateParams = Telnyx::Models::MessagingHostedNumberUpdateParams
 
+  class MessagingInboundMessage = Telnyx::Models::MessagingInboundMessage
+
   class MessagingInboundMessagePayload = Telnyx::Models::MessagingInboundMessagePayload
 
   class MessagingMessagingProfile = Telnyx::Models::MessagingMessagingProfile
@@ -1214,6 +1226,8 @@ module Telnyx
   module Networks = Telnyx::Models::Networks
 
   class NetworkUpdateParams = Telnyx::Models::NetworkUpdateParams
+
+  class NoiseSuppressionEngineListParams = Telnyx::Models::NoiseSuppressionEngineListParams
 
   class NotificationChannel = Telnyx::Models::NotificationChannel
 
@@ -1828,6 +1842,8 @@ module Telnyx
   class SubNumberOrderUpdateParams = Telnyx::Models::SubNumberOrderUpdateParams
 
   class SubNumberOrderUpdateRequirementGroupParams = Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
+
+  class SuccessResponse = Telnyx::Models::SuccessResponse
 
   class SuppressedRecipient = Telnyx::Models::SuppressedRecipient
 

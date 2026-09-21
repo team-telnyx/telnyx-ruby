@@ -3,13 +3,14 @@ module Telnyx
     type outbound_message_payload =
       {
         id: String,
+        body: Telnyx::OutboundMessagePayload::Body,
         cc: ::Array[Telnyx::OutboundMessagePayload::Cc],
         completed_at: Time?,
         cost: Telnyx::OutboundMessagePayload::Cost?,
         cost_breakdown: Telnyx::OutboundMessagePayload::CostBreakdown?,
         direction: Telnyx::Models::OutboundMessagePayload::direction,
         encoding: String,
-        errors: ::Array[Telnyx::MessagingError],
+        errors: ::Array[Telnyx::MessagingError0b38e7044b],
         from: Telnyx::OutboundMessagePayload::From,
         media: ::Array[Telnyx::OutboundMessagePayload::Media],
         messaging_profile_id: String,
@@ -39,6 +40,12 @@ module Telnyx
 
       def id=: (String) -> String
 
+      attr_reader body: Telnyx::OutboundMessagePayload::Body?
+
+      def body=: (
+        Telnyx::OutboundMessagePayload::Body
+      ) -> Telnyx::OutboundMessagePayload::Body
+
       attr_reader cc: ::Array[Telnyx::OutboundMessagePayload::Cc]?
 
       def cc=: (
@@ -61,11 +68,11 @@ module Telnyx
 
       def encoding=: (String) -> String
 
-      attr_reader errors: ::Array[Telnyx::MessagingError]?
+      attr_reader errors: ::Array[Telnyx::MessagingError0b38e7044b]?
 
       def errors=: (
-        ::Array[Telnyx::MessagingError]
-      ) -> ::Array[Telnyx::MessagingError]
+        ::Array[Telnyx::MessagingError0b38e7044b]
+      ) -> ::Array[Telnyx::MessagingError0b38e7044b]
 
       attr_reader from: Telnyx::OutboundMessagePayload::From?
 
@@ -151,13 +158,14 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?body: Telnyx::OutboundMessagePayload::Body,
         ?cc: ::Array[Telnyx::OutboundMessagePayload::Cc],
         ?completed_at: Time?,
         ?cost: Telnyx::OutboundMessagePayload::Cost?,
         ?cost_breakdown: Telnyx::OutboundMessagePayload::CostBreakdown?,
         ?direction: Telnyx::Models::OutboundMessagePayload::direction,
         ?encoding: String,
-        ?errors: ::Array[Telnyx::MessagingError],
+        ?errors: ::Array[Telnyx::MessagingError0b38e7044b],
         ?from: Telnyx::OutboundMessagePayload::From,
         ?media: ::Array[Telnyx::OutboundMessagePayload::Media],
         ?messaging_profile_id: String,
@@ -184,13 +192,14 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        body: Telnyx::OutboundMessagePayload::Body,
         cc: ::Array[Telnyx::OutboundMessagePayload::Cc],
         completed_at: Time?,
         cost: Telnyx::OutboundMessagePayload::Cost?,
         cost_breakdown: Telnyx::OutboundMessagePayload::CostBreakdown?,
         direction: Telnyx::Models::OutboundMessagePayload::direction,
         encoding: String,
-        errors: ::Array[Telnyx::MessagingError],
+        errors: ::Array[Telnyx::MessagingError0b38e7044b],
         from: Telnyx::OutboundMessagePayload::From,
         media: ::Array[Telnyx::OutboundMessagePayload::Media],
         messaging_profile_id: String,
@@ -214,6 +223,18 @@ module Telnyx
         webhook_failover_url: String?,
         webhook_url: String?
       }
+
+      type body = { text: String }
+
+      class Body < Telnyx::Internal::Type::BaseModel
+        attr_reader text: String?
+
+        def text=: (String) -> String
+
+        def initialize: (?text: String) -> void
+
+        def to_hash: -> { text: String }
+      end
 
       type cc =
         {
@@ -388,12 +409,22 @@ module Telnyx
 
       type from =
         {
+          agent_id: String,
+          agent_name: String,
           carrier: String,
           line_type: Telnyx::Models::OutboundMessagePayload::From::line_type,
           phone_number: String
         }
 
       class From < Telnyx::Internal::Type::BaseModel
+        attr_reader agent_id: String?
+
+        def agent_id=: (String) -> String
+
+        attr_reader agent_name: String?
+
+        def agent_name=: (String) -> String
+
         attr_reader carrier: String?
 
         def carrier=: (String) -> String
@@ -409,12 +440,16 @@ module Telnyx
         def phone_number=: (String) -> String
 
         def initialize: (
+          ?agent_id: String,
+          ?agent_name: String,
           ?carrier: String,
           ?line_type: Telnyx::Models::OutboundMessagePayload::From::line_type,
           ?phone_number: String
         ) -> void
 
         def to_hash: -> {
+          agent_id: String,
+          agent_name: String,
           carrier: String,
           line_type: Telnyx::Models::OutboundMessagePayload::From::line_type,
           phone_number: String
@@ -549,6 +584,7 @@ module Telnyx
           | :delivery_unconfirmed
           | :delivered
           | :delivery_failed
+          | :read
 
         module Status
           extend Telnyx::Internal::Type::Enum
@@ -561,18 +597,20 @@ module Telnyx
           DELIVERY_UNCONFIRMED: :delivery_unconfirmed
           DELIVERED: :delivered
           DELIVERY_FAILED: :delivery_failed
+          READ: :read
 
           def self?.values: -> ::Array[Telnyx::Models::OutboundMessagePayload::To::status]
         end
       end
 
-      type type_ = :SMS | :MMS
+      type type_ = :SMS | :MMS | :RCS
 
       module Type
         extend Telnyx::Internal::Type::Enum
 
         SMS: :SMS
         MMS: :MMS
+        RCS: :RCS
 
         def self?.values: -> ::Array[Telnyx::Models::OutboundMessagePayload::type_]
       end

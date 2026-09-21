@@ -26,6 +26,11 @@ module Telnyx
         sig { params(enable: T::Boolean).void }
         attr_writer :enable
 
+        # Interrupt-prediction sensitivity, from 0.0 to 1.0. Set to null or 0.0 to disable
+        # interrupt prediction.
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :interrupt_prediction_threshold
+
         # Controls when the assistant starts speaking after the user stops. These
         # thresholds primarily apply to non turn-taking transcription models. For
         # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
@@ -50,6 +55,7 @@ module Telnyx
           params(
             disable_greeting_interruption: T::Boolean,
             enable: T::Boolean,
+            interrupt_prediction_threshold: T.nilable(Float),
             start_speaking_plan: Telnyx::AI::StartSpeakingPlan::OrHash
           ).returns(T.attached_class)
         end
@@ -58,6 +64,9 @@ module Telnyx
           disable_greeting_interruption: nil,
           # Whether users can interrupt the assistant while it is speaking.
           enable: nil,
+          # Interrupt-prediction sensitivity, from 0.0 to 1.0. Set to null or 0.0 to disable
+          # interrupt prediction.
+          interrupt_prediction_threshold: nil,
           # Controls when the assistant starts speaking after the user stops. These
           # thresholds primarily apply to non turn-taking transcription models. For
           # turn-taking models like `deepgram/flux`, end-of-turn detection is driven by the
@@ -71,6 +80,7 @@ module Telnyx
             {
               disable_greeting_interruption: T::Boolean,
               enable: T::Boolean,
+              interrupt_prediction_threshold: T.nilable(Float),
               start_speaking_plan: Telnyx::AI::StartSpeakingPlan
             }
           )

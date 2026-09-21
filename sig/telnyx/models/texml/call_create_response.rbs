@@ -1,0 +1,47 @@
+module Telnyx
+  module Models
+    module Texml
+      type call_create_response =
+        {
+          call_sid: String,
+          from: String,
+          status: Telnyx::Models::Texml::CallCreateResponse::status,
+          to: String
+        }
+
+      class CallCreateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor call_sid: String
+
+        attr_accessor from: String
+
+        attr_accessor status: Telnyx::Models::Texml::CallCreateResponse::status
+
+        attr_accessor to: String
+
+        def initialize: (
+          call_sid: String,
+          from: String,
+          status: Telnyx::Models::Texml::CallCreateResponse::status,
+          to: String
+        ) -> void
+
+        def to_hash: -> {
+          call_sid: String,
+          from: String,
+          status: Telnyx::Models::Texml::CallCreateResponse::status,
+          to: String
+        }
+
+        type status = :queued
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          QUEUED: :queued
+
+          def self?.values: -> ::Array[Telnyx::Models::Texml::CallCreateResponse::status]
+        end
+      end
+    end
+  end
+end

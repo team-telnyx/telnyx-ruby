@@ -4,7 +4,8 @@ module Telnyx
       type inference_embedding_webhook_tool_params =
         {
           type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
-          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
+          shared: bool
         }
 
       class InferenceEmbeddingWebhookToolParams < Telnyx::Internal::Type::BaseModel
@@ -12,14 +13,20 @@ module Telnyx
 
         attr_accessor webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
 
+        attr_reader shared: bool?
+
+        def shared=: (bool) -> bool
+
         def initialize: (
           type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
-          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
+          ?shared: bool
         ) -> void
 
         def to_hash: -> {
           type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
-          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
+          webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
+          shared: bool
         }
 
         type type_ = :webhook

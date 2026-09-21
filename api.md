@@ -738,6 +738,7 @@ Methods:
 - <code title="get /connections/{id}">client.connections.<a href="./lib/telnyx/resources/connections.rb">retrieve</a>(\*\*params)</code>
 - <code title="get /connections">client.connections.<a href="./lib/telnyx/resources/connections.rb">list</a>(\*\*params)</code>
 - <code title="get /connections/{connection_id}/active_calls">client.connections.<a href="./lib/telnyx/resources/connections.rb">list_active_calls</a>(\*\*params)</code>
+- <code title="get /connections/count">client.connections.<a href="./lib/telnyx/resources/connections.rb">retrieve_count</a>()</code>
 
 # CountryCoverage
 
@@ -2108,6 +2109,12 @@ Methods:
 - <code title="post /texml/ai_calls/{connection_id}">client.texml.<a href="./lib/telnyx/resources/texml.rb">initiate_ai_call</a>(\*\*params)</code>
 - <code title="post /texml/secrets">client.texml.<a href="./lib/telnyx/resources/texml.rb">secrets</a>(\*\*params)</code>
 
+## Calls
+
+Methods:
+
+- <code title="post /texml/calls/{connection_id}">client.texml.calls.<a href="./lib/telnyx/resources/texml/calls.rb">create</a>(\*\*params)</code>
+
 ## Accounts
 
 Methods:
@@ -3131,3 +3138,28 @@ Methods:
 - <code title="get /compute/funcs/{id}/metric_aggregates">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_metric_aggregates</a>(\*\*params)</code>
 - <code title="get /compute/funcs/{id}/revisions">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_revisions</a>(\*\*params)</code>
 - <code title="get /compute/funcs/{id}/ship_inspection">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_ship_inspection</a>(\*\*params)</code>
+
+# NoiseSuppressionEngines
+
+Methods:
+
+- <code title="get /noise_suppression_engines">client.noise_suppression_engines.<a href="./lib/telnyx/resources/noise_suppression_engines.rb">list</a>()</code>
+
+# BotChallenge
+
+Methods:
+
+- <code title="post /v2/bot_challenge">client.bot_challenge.<a href="./lib/telnyx/resources/bot_challenge.rb">create</a>(\*\*params)</code>
+
+# BotSessions
+
+Methods:
+
+- <code title="get /v2/bot_sessions">client.bot_sessions.<a href="./lib/telnyx/resources/bot_sessions.rb">list</a>(\*\*params)</code>
+
+# BotSignup
+
+Methods:
+
+- <code title="post /v2/bot_signup">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">create</a>(\*\*params)</code>
+- <code title="post /v2/bot_signup/resend_magic_link">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">resend_magic_link</a>(\*\*params)</code>

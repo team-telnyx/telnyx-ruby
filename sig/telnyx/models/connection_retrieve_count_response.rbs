@@ -1,0 +1,169 @@
+module Telnyx
+  module Models
+    type connection_retrieve_count_response =
+      { data: Telnyx::Models::ConnectionRetrieveCountResponse::Data }
+
+    class ConnectionRetrieveCountResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::ConnectionRetrieveCountResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::ConnectionRetrieveCountResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::ConnectionRetrieveCountResponse::Data
+      }
+
+      type data =
+        {
+          counts: Telnyx::Models::ConnectionRetrieveCountResponse::Data::Counts,
+          limits: Telnyx::Models::ConnectionRetrieveCountResponse::Data::limits,
+          record_type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor counts: Telnyx::Models::ConnectionRetrieveCountResponse::Data::Counts
+
+        attr_accessor limits: Telnyx::Models::ConnectionRetrieveCountResponse::Data::limits
+
+        attr_accessor record_type: String
+
+        def initialize: (
+          counts: Telnyx::Models::ConnectionRetrieveCountResponse::Data::Counts,
+          limits: Telnyx::Models::ConnectionRetrieveCountResponse::Data::limits,
+          record_type: String
+        ) -> void
+
+        def to_hash: -> {
+          counts: Telnyx::Models::ConnectionRetrieveCountResponse::Data::Counts,
+          limits: Telnyx::Models::ConnectionRetrieveCountResponse::Data::limits,
+          record_type: String
+        }
+
+        type counts =
+          {
+            call_control_applications: Integer,
+            credential_connections: Integer,
+            external_connections: Integer,
+            fax_connections: Integer,
+            fqdn_connections: Integer,
+            ip_connections: Integer,
+            microsoft_teams_sbc_connections: Integer,
+            mobile_voice_connections: Integer,
+            operator_connect_connections: Integer,
+            texml_applications: Integer,
+            third_party_provider_connections: Integer,
+            uac_connections: Integer,
+            zoom_sbc_connections: Integer
+          }
+
+        class Counts < Telnyx::Internal::Type::BaseModel
+          attr_accessor call_control_applications: Integer
+
+          attr_accessor credential_connections: Integer
+
+          attr_accessor external_connections: Integer
+
+          attr_accessor fax_connections: Integer
+
+          attr_accessor fqdn_connections: Integer
+
+          attr_accessor ip_connections: Integer
+
+          attr_accessor microsoft_teams_sbc_connections: Integer
+
+          attr_accessor mobile_voice_connections: Integer
+
+          attr_accessor operator_connect_connections: Integer
+
+          attr_accessor texml_applications: Integer
+
+          attr_accessor third_party_provider_connections: Integer
+
+          attr_accessor uac_connections: Integer
+
+          attr_accessor zoom_sbc_connections: Integer
+
+          def initialize: (
+            call_control_applications: Integer,
+            credential_connections: Integer,
+            external_connections: Integer,
+            fax_connections: Integer,
+            fqdn_connections: Integer,
+            ip_connections: Integer,
+            microsoft_teams_sbc_connections: Integer,
+            mobile_voice_connections: Integer,
+            operator_connect_connections: Integer,
+            texml_applications: Integer,
+            third_party_provider_connections: Integer,
+            uac_connections: Integer,
+            zoom_sbc_connections: Integer
+          ) -> void
+
+          def to_hash: -> {
+            call_control_applications: Integer,
+            credential_connections: Integer,
+            external_connections: Integer,
+            fax_connections: Integer,
+            fqdn_connections: Integer,
+            ip_connections: Integer,
+            microsoft_teams_sbc_connections: Integer,
+            mobile_voice_connections: Integer,
+            operator_connect_connections: Integer,
+            texml_applications: Integer,
+            third_party_provider_connections: Integer,
+            uac_connections: Integer,
+            zoom_sbc_connections: Integer
+          }
+        end
+
+        type limits =
+          Telnyx::Models::ConnectionRetrieveCountResponse::Data::Limits::GlobalConnectionLimit
+          | Telnyx::Models::ConnectionRetrieveCountResponse::Data::Limits::PerTypeConnectionLimits
+
+        module Limits
+          extend Telnyx::Internal::Type::Union
+
+          type global_connection_limit = { global_limit: Integer }
+
+          class GlobalConnectionLimit < Telnyx::Internal::Type::BaseModel
+            attr_accessor global_limit: Integer
+
+            def initialize: (global_limit: Integer) -> void
+
+            def to_hash: -> { global_limit: Integer }
+          end
+
+          type per_type_connection_limits =
+            {
+              standard_limit: Integer,
+              texml_limit: Integer,
+              uac_limit: Integer
+            }
+
+          class PerTypeConnectionLimits < Telnyx::Internal::Type::BaseModel
+            attr_accessor standard_limit: Integer
+
+            attr_accessor texml_limit: Integer
+
+            attr_accessor uac_limit: Integer
+
+            def initialize: (
+              standard_limit: Integer,
+              texml_limit: Integer,
+              uac_limit: Integer
+            ) -> void
+
+            def to_hash: -> {
+              standard_limit: Integer,
+              texml_limit: Integer,
+              uac_limit: Integer
+            }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::ConnectionRetrieveCountResponse::Data::limits]
+        end
+      end
+    end
+  end
+end

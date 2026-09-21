@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    type noise_suppression_engine_list_response =
+      {
+        data: ::Array[Telnyx::Models::NoiseSuppressionEngineListResponse::Data]
+      }
+
+    class NoiseSuppressionEngineListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::NoiseSuppressionEngineListResponse::Data]
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::NoiseSuppressionEngineListResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::NoiseSuppressionEngineListResponse::Data]
+      }
+
+      type data =
+        { default_attenuation_level: Integer, label: String, value: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor default_attenuation_level: Integer
+
+        attr_accessor label: String
+
+        attr_accessor value: String
+
+        def initialize: (
+          default_attenuation_level: Integer,
+          label: String,
+          value: String
+        ) -> void
+
+        def to_hash: -> {
+          default_attenuation_level: Integer,
+          label: String,
+          value: String
+        }
+      end
+    end
+  end
+end

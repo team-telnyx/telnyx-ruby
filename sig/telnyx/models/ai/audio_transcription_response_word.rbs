@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    module AI
+      type audio_transcription_response_word =
+        {
+          end_: Float,
+          start: Float,
+          word: String,
+          confidence: Float,
+          punctuated_word: String,
+          speaker: Integer,
+          speaker_confidence: Float
+        }
+
+      class AudioTranscriptionResponseWord < Telnyx::Internal::Type::BaseModel
+        attr_accessor end_: Float
+
+        attr_accessor start: Float
+
+        attr_accessor word: String
+
+        attr_reader confidence: Float?
+
+        def confidence=: (Float) -> Float
+
+        attr_reader punctuated_word: String?
+
+        def punctuated_word=: (String) -> String
+
+        attr_reader speaker: Integer?
+
+        def speaker=: (Integer) -> Integer
+
+        attr_reader speaker_confidence: Float?
+
+        def speaker_confidence=: (Float) -> Float
+
+        def initialize: (
+          end_: Float,
+          start: Float,
+          word: String,
+          ?confidence: Float,
+          ?punctuated_word: String,
+          ?speaker: Integer,
+          ?speaker_confidence: Float
+        ) -> void
+
+        def to_hash: -> {
+          end_: Float,
+          start: Float,
+          word: String,
+          confidence: Float,
+          punctuated_word: String,
+          speaker: Integer,
+          speaker_confidence: Float
+        }
+      end
+    end
+  end
+end

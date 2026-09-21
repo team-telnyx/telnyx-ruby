@@ -71,7 +71,7 @@ module Telnyx
       #
       # @param dialogflow_config [Telnyx::Models::DialogflowConfig]
       #
-      # @param diversion [String] The number the inbound call being transferred was originally received on, in +E1
+      # @param diversion [String] The `to` number of an active inbound call, in +E164 format. Telnyx checks whethe
       #
       # @param enable_dialogflow [Boolean] Enables Dialogflow for the current call. The default value is false.
       #

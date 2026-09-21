@@ -88,6 +88,26 @@ module Telnyx
         )
       end
 
+      # Returns the number of connections associated with the authenticated user,
+      # grouped by connection type, together with the connection limits that apply to
+      # the user. Forward-only connections are excluded from the counts.
+      #
+      # @overload retrieve_count(request_options: {})
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::ConnectionRetrieveCountResponse]
+      #
+      # @see Telnyx::Models::ConnectionRetrieveCountParams
+      def retrieve_count(params = {})
+        @client.request(
+          method: :get,
+          path: "connections/count",
+          model: Telnyx::Models::ConnectionRetrieveCountResponse,
+          options: params[:request_options]
+        )
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]

@@ -32,15 +32,40 @@ module Telnyx
         end
         attr_writer :webhook
 
+        # Whether this tool comes from the shared Tools Library. Responses merge shared
+        # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+        # Read-only: set by the server, not accepted in requests. When updating an
+        # assistant, omit `shared: true` tools from the request `tools` array and manage
+        # them through `tool_ids` instead — re-sending their definitions creates an inline
+        # duplicate (rejected with error code 10015 when the type allows only one instance
+        # per assistant).
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :shared
+
+        sig { params(shared: T::Boolean).void }
+        attr_writer :shared
+
         sig do
           params(
             type:
               Telnyx::AI::InferenceEmbeddingWebhookToolParams::Type::OrSymbol,
             webhook:
-              Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::OrHash
+              Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::OrHash,
+            shared: T::Boolean
           ).returns(T.attached_class)
         end
-        def self.new(type:, webhook:)
+        def self.new(
+          type:,
+          webhook:,
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          shared: nil
+        )
         end
 
         sig do
@@ -48,7 +73,8 @@ module Telnyx
             {
               type:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Type::OrSymbol,
-              webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
+              webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
+              shared: T::Boolean
             }
           )
         end

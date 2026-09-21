@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class BotChallenge
+      def create: (
+        ?llm_model_name: String,
+        ?llm_parameter_count: String,
+        ?llm_quantization: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BotChallengeCreateResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

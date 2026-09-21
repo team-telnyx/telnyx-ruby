@@ -22,7 +22,7 @@ module Telnyx
         params(
           data:
             T.any(
-              Telnyx::MessagingOutboundMessagePayload::OrHash,
+              Telnyx::OutboundMessagePayload::OrHash,
               Telnyx::MessagingInboundMessagePayload::OrHash
             )
         ).void
@@ -33,7 +33,7 @@ module Telnyx
         params(
           data:
             T.any(
-              Telnyx::MessagingOutboundMessagePayload::OrHash,
+              Telnyx::OutboundMessagePayload::OrHash,
               Telnyx::MessagingInboundMessagePayload::OrHash
             )
         ).returns(T.attached_class)
@@ -55,7 +55,7 @@ module Telnyx
         Variants =
           T.type_alias do
             T.any(
-              Telnyx::MessagingOutboundMessagePayload,
+              Telnyx::OutboundMessagePayload,
               Telnyx::MessagingInboundMessagePayload
             )
           end

@@ -51,11 +51,12 @@ module Telnyx
             tool:
               T::Array[
                 T.any(
+                  Telnyx::AI::AssistantTool::Function::OrHash,
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                   Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
-                  Telnyx::AI::HangupTool::OrHash,
+                  Telnyx::AI::AssistantTool::Hangup::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
@@ -87,11 +88,12 @@ module Telnyx
             tool:
               T::Array[
                 T.any(
+                  Telnyx::AI::AssistantTool::Function::OrHash,
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                   Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
-                  Telnyx::AI::HangupTool::OrHash,
+                  Telnyx::AI::AssistantTool::Hangup::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,

@@ -1,6 +1,8 @@
 module Telnyx
   module Resources
     class Texml
+      attr_reader calls: Telnyx::Resources::Texml::Calls
+
       attr_reader accounts: Telnyx::Resources::Texml::Accounts
 
       def initiate_ai_call: (

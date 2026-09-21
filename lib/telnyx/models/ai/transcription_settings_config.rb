@@ -33,9 +33,9 @@ module Telnyx
         optional :enable_endpoint_detection, Telnyx::Internal::Type::Boolean
 
         # @!attribute end_of_turn_confidence_threshold
-        #   Available only for assemblyai/universal-streaming. Confidence level required to
-        #   trigger an end of turn. Higher values require more certainty before ending a
-        #   turn.
+        #   Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        #   assemblyai/universal-streaming). Confidence level required to trigger an end of
+        #   turn. Higher values require more certainty before ending a turn.
         #
         #   @return [Float, nil]
         optional :end_of_turn_confidence_threshold, Float
@@ -90,16 +90,17 @@ module Telnyx
         optional :max_endpoint_delay_ms, Integer
 
         # @!attribute max_turn_silence
-        #   Available only for assemblyai/universal-streaming. Maximum duration of silence
-        #   in milliseconds before forcing an end of turn.
+        #   Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        #   assemblyai/universal-streaming). Maximum duration of silence in milliseconds
+        #   before forcing an end of turn.
         #
         #   @return [Integer, nil]
         optional :max_turn_silence, Integer
 
         # @!attribute min_turn_silence
-        #   Available only for assemblyai/universal-streaming. Minimum duration of silence
-        #   in milliseconds before a turn can end. Must be less than or equal to
-        #   max_turn_silence.
+        #   Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        #   assemblyai/universal-streaming). Minimum duration of silence in milliseconds
+        #   before a turn can end. Must be less than or equal to max_turn_silence.
         #
         #   @return [Integer, nil]
         optional :min_turn_silence, Integer
@@ -124,7 +125,7 @@ module Telnyx
         #
         #   @param enable_endpoint_detection [Boolean] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox emit
         #
-        #   @param end_of_turn_confidence_threshold [Float] Available only for assemblyai/universal-streaming. Confidence level required to
+        #   @param end_of_turn_confidence_threshold [Float] Available only for assemblyai/universal-3-5-pro (and its legacy alias assemblyai
         #
         #   @param eot_threshold [Float] Available only for deepgram/flux. Confidence required to trigger an end of turn.
         #
@@ -138,9 +139,9 @@ module Telnyx
         #
         #   @param max_endpoint_delay_ms [Integer] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. Maximum silence (in mi
         #
-        #   @param max_turn_silence [Integer] Available only for assemblyai/universal-streaming. Maximum duration of silence i
+        #   @param max_turn_silence [Integer] Available only for assemblyai/universal-3-5-pro (and its legacy alias assemblyai
         #
-        #   @param min_turn_silence [Integer] Available only for assemblyai/universal-streaming. Minimum duration of silence i
+        #   @param min_turn_silence [Integer] Available only for assemblyai/universal-3-5-pro (and its legacy alias assemblyai
         #
         #   @param numerals [Boolean]
         #

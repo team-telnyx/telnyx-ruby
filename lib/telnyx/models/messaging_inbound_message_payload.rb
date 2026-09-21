@@ -10,8 +10,9 @@ module Telnyx
       optional :id, String
 
       # @!attribute body
-      #   WhatsApp message body. For message edits and revocations, inspect `type` and the
-      #   corresponding `edit` or `revoke` object.
+      #   Message body for RCS and WhatsApp. RCS messages contain text, user_file,
+      #   location, or suggestion_response. For WhatsApp edits and revocations, inspect
+      #   type and the corresponding edit or revoke object.
       #
       #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body, nil]
       optional :body, -> { Telnyx::MessagingInboundMessagePayload::Body }
@@ -149,8 +150,9 @@ module Telnyx
       optional :text, String
 
       # @!attribute to
-      #   Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
-      #   webhooks use one E.164 phone number.
+      #   Receiving address. SMS, MMS and RCS webhooks use an array of recipients. RCS
+      #   recipients are identified by agent_id and agent_name. WhatsApp webhooks use one
+      #   E.164 phone number.
       #
       #   @return [Array<Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0>, String, nil]
       optional :to, union: -> { Telnyx::MessagingInboundMessagePayload::To }
@@ -186,7 +188,7 @@ module Telnyx
       #
       #   @param id [String] Identifies the type of resource.
       #
-      #   @param body [Telnyx::Models::MessagingInboundMessagePayload::Body] WhatsApp message body. For message edits and revocations, inspect `type` and the
+      #   @param body [Telnyx::Models::MessagingInboundMessagePayload::Body] Message body for RCS and WhatsApp. RCS messages contain text, user_file, locatio
       #
       #   @param cc [Array<Telnyx::Models::MessagingInboundMessagePayload::Cc>]
       #
@@ -232,7 +234,7 @@ module Telnyx
       #
       #   @param text [String] Message body (i.e., content) as a non-empty string.
       #
-      #   @param to [Array<Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0>, String] Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp web
+      #   @param to [Array<Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0>, String] Receiving address. SMS, MMS and RCS webhooks use an array of recipients. RCS rec
       #
       #   @param type [Symbol, Telnyx::Models::MessagingInboundMessagePayload::Type] The messaging channel used for the message.
       #
@@ -268,11 +270,29 @@ module Telnyx
         #   @return [String, nil]
         optional :from, String
 
+        # @!attribute location
+        #   Location shared in an RCS message.
+        #
+        #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::Location, nil]
+        optional :location, -> { Telnyx::MessagingInboundMessagePayload::Body::Location }
+
         # @!attribute revoke
         #   Details for a revoked WhatsApp message.
         #
         #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::Revoke, nil]
         optional :revoke, -> { Telnyx::MessagingInboundMessagePayload::Body::Revoke }
+
+        # @!attribute suggestion_response
+        #   Selected RCS suggestion.
+        #
+        #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::SuggestionResponse, nil]
+        optional :suggestion_response, -> { Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse }
+
+        # @!attribute text
+        #   RCS text string or WhatsApp text object.
+        #
+        #   @return [String, Telnyx::Models::MessagingInboundMessagePayload::Body::Text::Body, nil]
+        optional :text, union: -> { Telnyx::MessagingInboundMessagePayload::Body::Text }
 
         # @!attribute timestamp
         #   Unix timestamp supplied by Meta.
@@ -287,12 +307,19 @@ module Telnyx
         #   @return [String, nil]
         optional :type, String
 
-        # @!method initialize(id: nil, edit: nil, foreign_id: nil, from: nil, revoke: nil, timestamp: nil, type: nil)
+        # @!attribute user_file
+        #   RCS file attachment and optional thumbnail.
+        #
+        #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile, nil]
+        optional :user_file, -> { Telnyx::MessagingInboundMessagePayload::Body::UserFile }
+
+        # @!method initialize(id: nil, edit: nil, foreign_id: nil, from: nil, location: nil, revoke: nil, suggestion_response: nil, text: nil, timestamp: nil, type: nil, user_file: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MessagingInboundMessagePayload::Body} for more details.
         #
-        #   WhatsApp message body. For message edits and revocations, inspect `type` and the
-        #   corresponding `edit` or `revoke` object.
+        #   Message body for RCS and WhatsApp. RCS messages contain text, user_file,
+        #   location, or suggestion_response. For WhatsApp edits and revocations, inspect
+        #   type and the corresponding edit or revoke object.
         #
         #   @param id [String] Telnyx identifier for this webhook message.
         #
@@ -302,11 +329,19 @@ module Telnyx
         #
         #   @param from [String] WhatsApp sender in E.164 format.
         #
+        #   @param location [Telnyx::Models::MessagingInboundMessagePayload::Body::Location] Location shared in an RCS message.
+        #
         #   @param revoke [Telnyx::Models::MessagingInboundMessagePayload::Body::Revoke] Details for a revoked WhatsApp message.
+        #
+        #   @param suggestion_response [Telnyx::Models::MessagingInboundMessagePayload::Body::SuggestionResponse] Selected RCS suggestion.
+        #
+        #   @param text [String, Telnyx::Models::MessagingInboundMessagePayload::Body::Text::Body] RCS text string or WhatsApp text object.
         #
         #   @param timestamp [String] Unix timestamp supplied by Meta.
         #
         #   @param type [String] WhatsApp message body type. Edit and revoke events use `edit` and `revoke`, resp
+        #
+        #   @param user_file [Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile] RCS file attachment and optional thumbnail.
 
         # @see Telnyx::Models::MessagingInboundMessagePayload::Body#edit
         class Edit < Telnyx::Internal::Type::BaseModel
@@ -334,6 +369,25 @@ module Telnyx
           #   @param original_message_id [String] Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp me
         end
 
+        # @see Telnyx::Models::MessagingInboundMessagePayload::Body#location
+        class Location < Telnyx::Internal::Type::BaseModel
+          # @!attribute latitude
+          #
+          #   @return [Float, nil]
+          optional :latitude, Float
+
+          # @!attribute longitude
+          #
+          #   @return [Float, nil]
+          optional :longitude, Float
+
+          # @!method initialize(latitude: nil, longitude: nil)
+          #   Location shared in an RCS message.
+          #
+          #   @param latitude [Float]
+          #   @param longitude [Float]
+        end
+
         # @see Telnyx::Models::MessagingInboundMessagePayload::Body#revoke
         class Revoke < Telnyx::Internal::Type::BaseModel
           # @!attribute original_message_id
@@ -350,6 +404,126 @@ module Telnyx
           #   Details for a revoked WhatsApp message.
           #
           #   @param original_message_id [String] Telnyx message ID when a mapping exists, otherwise the original Meta WhatsApp me
+        end
+
+        # @see Telnyx::Models::MessagingInboundMessagePayload::Body#suggestion_response
+        class SuggestionResponse < Telnyx::Internal::Type::BaseModel
+          # @!attribute postback_data
+          #
+          #   @return [String, nil]
+          optional :postback_data, String
+
+          # @!attribute text
+          #
+          #   @return [String, nil]
+          optional :text, String
+
+          # @!method initialize(postback_data: nil, text: nil)
+          #   Selected RCS suggestion.
+          #
+          #   @param postback_data [String]
+          #   @param text [String]
+        end
+
+        # RCS text string or WhatsApp text object.
+        #
+        # @see Telnyx::Models::MessagingInboundMessagePayload::Body#text
+        module Text
+          extend Telnyx::Internal::Type::Union
+
+          variant String
+
+          variant -> { Telnyx::MessagingInboundMessagePayload::Body::Text::Body }
+
+          class Body < Telnyx::Internal::Type::BaseModel
+            # @!attribute body
+            #
+            #   @return [String, nil]
+            optional :body, String
+
+            # @!method initialize(body: nil)
+            #   @param body [String]
+          end
+
+          # @!method self.variants
+          #   @return [Array(String, Telnyx::Models::MessagingInboundMessagePayload::Body::Text::Body)]
+        end
+
+        # @see Telnyx::Models::MessagingInboundMessagePayload::Body#user_file
+        class UserFile < Telnyx::Internal::Type::BaseModel
+          # @!attribute payload
+          #
+          #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile::Payload, nil]
+          optional :payload, -> { Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload }
+
+          # @!attribute thumbnail
+          #
+          #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile::Thumbnail, nil]
+          optional :thumbnail, -> { Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail }
+
+          # @!method initialize(payload: nil, thumbnail: nil)
+          #   RCS file attachment and optional thumbnail.
+          #
+          #   @param payload [Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile::Payload]
+          #   @param thumbnail [Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile::Thumbnail]
+
+          # @see Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile#payload
+          class Payload < Telnyx::Internal::Type::BaseModel
+            # @!attribute file_name
+            #
+            #   @return [String, nil]
+            optional :file_name, String
+
+            # @!attribute file_size_bytes
+            #
+            #   @return [Integer, nil]
+            optional :file_size_bytes, Integer
+
+            # @!attribute file_uri
+            #
+            #   @return [String, nil]
+            optional :file_uri, String
+
+            # @!attribute mime_type
+            #
+            #   @return [String, nil]
+            optional :mime_type, String
+
+            # @!method initialize(file_name: nil, file_size_bytes: nil, file_uri: nil, mime_type: nil)
+            #   @param file_name [String]
+            #   @param file_size_bytes [Integer]
+            #   @param file_uri [String]
+            #   @param mime_type [String]
+          end
+
+          # @see Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile#thumbnail
+          class Thumbnail < Telnyx::Internal::Type::BaseModel
+            # @!attribute file_name
+            #
+            #   @return [String, nil]
+            optional :file_name, String
+
+            # @!attribute file_size_bytes
+            #
+            #   @return [Integer, nil]
+            optional :file_size_bytes, Integer
+
+            # @!attribute file_uri
+            #
+            #   @return [String, nil]
+            optional :file_uri, String
+
+            # @!attribute mime_type
+            #
+            #   @return [String, nil]
+            optional :mime_type, String
+
+            # @!method initialize(file_name: nil, file_size_bytes: nil, file_uri: nil, mime_type: nil)
+            #   @param file_name [String]
+            #   @param file_size_bytes [Integer]
+            #   @param file_uri [String]
+            #   @param mime_type [String]
+          end
         end
       end
 
@@ -562,6 +736,7 @@ module Telnyx
           VO_IP = :VoIP
           PRE_PAID_WIRELESS = :"Pre-Paid Wireless"
           EMPTY = :""
+          LONG_CODE = :long_code
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -573,6 +748,7 @@ module Telnyx
 
           RECEIVED = :received
           DELIVERED = :delivered
+          WEBHOOK_DELIVERED = :webhook_delivered
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -626,8 +802,9 @@ module Telnyx
         #   @return [Array<Symbol>]
       end
 
-      # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
-      # webhooks use one E.164 phone number.
+      # Receiving address. SMS, MMS and RCS webhooks use an array of recipients. RCS
+      # recipients are identified by agent_id and agent_name. WhatsApp webhooks use one
+      # E.164 phone number.
       #
       # @see Telnyx::Models::MessagingInboundMessagePayload#to
       module To
@@ -639,6 +816,18 @@ module Telnyx
         variant String
 
         class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          # @!attribute agent_id
+          #   RCS agent identifier.
+          #
+          #   @return [String, nil]
+          optional :agent_id, String
+
+          # @!attribute agent_name
+          #   RCS agent name.
+          #
+          #   @return [String, nil]
+          optional :agent_name, String
+
           # @!attribute carrier
           #   The carrier of the receiver.
           #
@@ -662,7 +851,11 @@ module Telnyx
           #   @return [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::Status, nil]
           optional :status, enum: -> { Telnyx::MessagingInboundMessagePayload::To::UnionMember0::Status }
 
-          # @!method initialize(carrier: nil, line_type: nil, phone_number: nil, status: nil)
+          # @!method initialize(agent_id: nil, agent_name: nil, carrier: nil, line_type: nil, phone_number: nil, status: nil)
+          #   @param agent_id [String] RCS agent identifier.
+          #
+          #   @param agent_name [String] RCS agent name.
+          #
           #   @param carrier [String] The carrier of the receiver.
           #
           #   @param line_type [Symbol, Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::LineType] The line-type of the receiver.
@@ -723,6 +916,7 @@ module Telnyx
         SMS = :SMS
         MMS = :MMS
         WHATSAPP = :WHATSAPP
+        RCS = :RCS
 
         # @!method self.values
         #   @return [Array<Symbol>]

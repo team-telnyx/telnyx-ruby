@@ -74,14 +74,20 @@ module Telnyx
         type model =
           :"distil-whisper/distil-large-v2"
           | :"openai/whisper-large-v3-turbo"
+          | :"deepgram/nova-2"
+          | :"deepgram/nova-2-medical"
           | :"deepgram/nova-3"
+          | :"deepgram/nova-3-medical"
 
         module Model
           extend Telnyx::Internal::Type::Enum
 
           DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
           OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
+          DEEPGRAM_NOVA_2: :"deepgram/nova-2"
+          DEEPGRAM_NOVA_2_MEDICAL: :"deepgram/nova-2-medical"
           DEEPGRAM_NOVA_3: :"deepgram/nova-3"
+          DEEPGRAM_NOVA_3_MEDICAL: :"deepgram/nova-3-medical"
 
           def self?.values: -> ::Array[Telnyx::Models::AI::AudioTranscribeParams::model]
         end

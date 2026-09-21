@@ -51,6 +51,7 @@ module Telnyx
 
         MESSAGE_SENT = :"message.sent"
         MESSAGE_FINALIZED = :"message.finalized"
+        MESSAGE_READ = :"message.read"
 
         # @!method self.values
         #   @return [Array<Symbol>]

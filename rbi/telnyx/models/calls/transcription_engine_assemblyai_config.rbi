@@ -38,7 +38,8 @@ module Telnyx
         end
         attr_writer :transcription_engine
 
-        # The model to use for transcription.
+        # The model to use for transcription. `assemblyai/universal-streaming` is a legacy
+        # alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
         sig do
           returns(
             T.nilable(
@@ -71,7 +72,8 @@ module Telnyx
           interim_results: nil,
           # Engine identifier for AssemblyAI transcription service
           transcription_engine: nil,
-          # The model to use for transcription.
+          # The model to use for transcription. `assemblyai/universal-streaming` is a legacy
+          # alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
           transcription_model: nil
         )
         end
@@ -120,7 +122,8 @@ module Telnyx
           end
         end
 
-        # The model to use for transcription.
+        # The model to use for transcription. `assemblyai/universal-streaming` is a legacy
+        # alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
@@ -133,6 +136,11 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          ASSEMBLYAI_UNIVERSAL_3_5_PRO =
+            T.let(
+              :"assemblyai/universal-3-5-pro",
+              Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::TranscriptionModel::TaggedSymbol
+            )
           ASSEMBLYAI_UNIVERSAL_STREAMING =
             T.let(
               :"assemblyai/universal-streaming",

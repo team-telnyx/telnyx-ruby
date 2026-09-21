@@ -5,6 +5,10 @@ module Telnyx
     # TeXML REST Commands
     class Texml
       # TeXML REST Commands
+      sig { returns(Telnyx::Resources::Texml::Calls) }
+      attr_reader :calls
+
+      # TeXML REST Commands
       sig { returns(Telnyx::Resources::Texml::Accounts) }
       attr_reader :accounts
 

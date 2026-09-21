@@ -5,6 +5,10 @@ module Telnyx
     # TeXML REST Commands
     class Texml
       # TeXML REST Commands
+      # @return [Telnyx::Resources::Texml::Calls]
+      attr_reader :calls
+
+      # TeXML REST Commands
       # @return [Telnyx::Resources::Texml::Accounts]
       attr_reader :accounts
 
@@ -165,6 +169,7 @@ module Telnyx
       # @param client [Telnyx::Client]
       def initialize(client:)
         @client = client
+        @calls = Telnyx::Resources::Texml::Calls.new(client: client)
         @accounts = Telnyx::Resources::Texml::Accounts.new(client: client)
       end
     end
