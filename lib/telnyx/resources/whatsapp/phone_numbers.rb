@@ -135,6 +135,28 @@ module Telnyx
           )
         end
 
+        # Returns one WhatsApp phone number linked to the authenticated Telnyx account.
+        # For a coexistence number in the `syncing` state, the response includes
+        # `sync_progress`.
+        #
+        # @overload retrieve_phone_number(phone_number, request_options: {})
+        #
+        # @param phone_number [String] Phone number (E.164 format)
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Whatsapp::PhoneNumberRetrievePhoneNumberResponse]
+        #
+        # @see Telnyx::Models::Whatsapp::PhoneNumberRetrievePhoneNumberParams
+        def retrieve_phone_number(phone_number, params = {})
+          @client.request(
+            method: :get,
+            path: ["whatsapp/phone_numbers/%1$s", phone_number],
+            model: Telnyx::Models::Whatsapp::PhoneNumberRetrievePhoneNumberResponse,
+            options: params[:request_options]
+          )
+        end
+
         # Submits the verification code received for the specified WhatsApp phone number.
         #
         # @overload verify(phone_number, code:, request_options: {})

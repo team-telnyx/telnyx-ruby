@@ -19,6 +19,18 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :disable_dtmf, Telnyx::Internal::Type::Boolean
 
+        # @!attribute fallback_destination
+        #   Destination number or SIP URI to transfer the caller to when the AI conversation
+        #   ends abnormally, for example because of an assistant-side error, so the caller
+        #   is not left in dead air. This only fires for abnormal ends: it does not fire
+        #   when the conversation ends on purpose (the caller hung up, the assistant
+        #   completed normally, the caller hung up after a relay handoff, or voicemail was
+        #   detected), and it does not fire when the assistant already transferred or
+        #   bridged the call.
+        #
+        #   @return [String, nil]
+        optional :fallback_destination, String
+
         # @!attribute noise_suppression
         #   The noise suppression engine to use. Use 'disabled' to turn off noise
         #   suppression.
@@ -97,13 +109,15 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
 
-        # @!method initialize(default_texml_app_id: nil, disable_dtmf: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, send_message_history_updates: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
+        # @!method initialize(default_texml_app_id: nil, disable_dtmf: nil, fallback_destination: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, send_message_history_updates: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelephonySettings} for more details.
         #
         #   @param default_texml_app_id [String] Default Texml App used for voice calls with your assistant. This will be created
         #
         #   @param disable_dtmf [Boolean] Disable inbound DTMF for the entire call. Must be set to true if a 'pay' tool is
+        #
+        #   @param fallback_destination [String] Destination number or SIP URI to transfer the caller to when the AI conversation
         #
         #   @param noise_suppression [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppression] The noise suppression engine to use. Use 'disabled' to turn off noise suppressio
         #

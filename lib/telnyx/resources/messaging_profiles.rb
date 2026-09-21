@@ -16,7 +16,7 @@ module Telnyx
       # Creates a messaging profile that controls outbound sender selection, webhook
       # delivery, and inbound message handling for associated numbers and short codes.
       #
-      # @overload create(name:, whitelisted_destinations:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, resource_group_id: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @overload create(name:, whitelisted_destinations:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, features: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, resource_group_id: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #
       # @param name [String] A user friendly name for the messaging profile.
       #
@@ -31,6 +31,8 @@ module Telnyx
       # @param daily_spend_limit_enabled [Boolean] Whether to enforce the value configured by `daily_spend_limit`.
       #
       # @param enabled [Boolean] Specifies whether the messaging profile is enabled or not.
+      #
+      # @param features [Telnyx::Models::MessagingProfileFeatures, nil] Telnyx product features the messaging customer can enable on the messaging profi
       #
       # @param health_webhook_url [String, nil] A URL to receive health check webhooks for numbers in this profile.
       #
@@ -97,7 +99,7 @@ module Telnyx
       # Updates the supplied settings on the specified messaging profile. Settings
       # omitted from the request remain unchanged.
       #
-      # @overload update(messaging_profile_id, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, redaction_enabled: nil, redaction_level: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
+      # @overload update(messaging_profile_id, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, features: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, name: nil, number_pool_settings: nil, redaction_enabled: nil, redaction_level: nil, smart_encoding: nil, url_shortener_settings: nil, v1_secret: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, whitelisted_destinations: nil, request_options: {})
       #
       # @param messaging_profile_id [String] The id of the messaging profile to retrieve
       #
@@ -110,6 +112,8 @@ module Telnyx
       # @param daily_spend_limit_enabled [Boolean] Whether to enforce the value configured by `daily_spend_limit`.
       #
       # @param enabled [Boolean] Specifies whether the messaging profile is enabled or not.
+      #
+      # @param features [Telnyx::Models::MessagingProfileFeatures, nil] Telnyx product features the messaging customer can enable on the messaging profi
       #
       # @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #

@@ -76,6 +76,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         daily_spend_limit: String | nil,
         daily_spend_limit_enabled: Telnyx::Internal::Type::Boolean | nil,
         enabled: Telnyx::Internal::Type::Boolean | nil,
+        features: Telnyx::MessagingProfileFeatures | nil,
         health_webhook_url: String | nil,
         mms_fall_back_to_sms: Telnyx::Internal::Type::Boolean | nil,
         mms_transcoding: Telnyx::Internal::Type::Boolean | nil,

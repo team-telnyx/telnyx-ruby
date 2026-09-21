@@ -43,7 +43,10 @@ module Telnyx
         optional :microsoft_teams_sbc, Telnyx::Internal::Type::Boolean
 
         # @!attribute password
-        #   The password for authentication.
+        #   The password for authentication. For primary accounts created on or after
+        #   September 8, 2026, this password is returned as `********`. The password is
+        #   returned in full on create, and on update only when that update changed the
+        #   password. Accounts created before September 8, 2026 are unaffected.
         #
         #   @return [String, nil]
         optional :password, String
@@ -85,6 +88,10 @@ module Telnyx
         optional :webhook_url, String
 
         # @!method initialize(id: nil, connection_id: nil, failover_url: nil, fqdn_outbound_authentication: nil, ip_authentication_method: nil, microsoft_teams_sbc: nil, password: nil, record_type: nil, txt_name: nil, txt_ttl: nil, txt_value: nil, user_name: nil, webhook_url: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::FqdnConnections::FqdnConnectionsFqdnAuthentication} for more
+        #   details.
+        #
         #   @param id [String] Identifies the resource.
         #
         #   @param connection_id [String] The ID of the FQDN connection this authentication strategy belongs to.
@@ -97,7 +104,7 @@ module Telnyx
         #
         #   @param microsoft_teams_sbc [Boolean] Whether the connection is a Microsoft Teams SBC.
         #
-        #   @param password [String] The password for authentication.
+        #   @param password [String] The password for authentication. For primary accounts created on or after Septem
         #
         #   @param record_type [String] Identifies the type of the resource.
         #

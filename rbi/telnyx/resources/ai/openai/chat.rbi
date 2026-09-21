@@ -18,9 +18,6 @@ module Telnyx
               early_stopping: T::Boolean,
               enable_thinking: T::Boolean,
               frequency_penalty: Float,
-              guided_choice: T::Array[String],
-              guided_json: T::Hash[Symbol, T.anything],
-              guided_regex: String,
               length_penalty: Float,
               logprobs: T::Boolean,
               max_tokens: Integer,
@@ -33,7 +30,11 @@ module Telnyx
                 Telnyx::AI::ChatCompletionRequest::ReasoningEffort::OrSymbol,
               region: Telnyx::AI::ChatCompletionRequest::Region::OrSymbol,
               response_format:
-                Telnyx::AI::ChatCompletionRequest::ResponseFormat::OrHash,
+                T.any(
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatText::OrHash,
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonObject::OrHash,
+                  Telnyx::AI::ChatCompletionRequest::ResponseFormat::ResponseFormatJsonSchemaParam::OrHash
+                ),
               seed: Integer,
               service_tier: String,
               stop: Telnyx::AI::ChatCompletionRequest::Stop::Variants,
@@ -75,13 +76,6 @@ module Telnyx
             enable_thinking: nil,
             # Higher values will penalize the model from repeating the same output tokens.
             frequency_penalty: nil,
-            # If specified, the output will be exactly one of the choices.
-            guided_choice: nil,
-            # Must be a valid JSON schema. If specified, the output will follow the JSON
-            # schema.
-            guided_json: nil,
-            # If specified, the output will follow the regex pattern.
-            guided_regex: nil,
             # This is used with `use_beam_search` to prefer shorter or longer completions.
             length_penalty: nil,
             # Whether to return log probabilities of the output tokens or not. If true,
@@ -118,8 +112,10 @@ module Telnyx
             # provider never passes through Telnyx model routing, so a region cannot be
             # enforced for it. Omit for today's latency-based routing.
             region: nil,
-            # Use this is you want to guarantee a JSON output without defining a schema. For
-            # control over the schema, use `guided_json`.
+            # Controls the format of the model output. `json_object` guarantees valid JSON
+            # output without defining a schema; `json_schema` constrains the output to the
+            # JSON schema you supply via the `json_schema` property and is the supported way
+            # to get guaranteed structured output on Telnyx-hosted models.
             response_format: nil,
             # If specified, the system will make a best effort to sample deterministically,
             # such that repeated requests with the same `seed` and parameters should return

@@ -28,7 +28,11 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :outbound_proxy
 
-      # The SIP password used for digest authentication with the external SIP peer.
+      # The SIP password used for digest authentication with the external SIP peer. For
+      # primary accounts created on or after September 8, 2026, this password is
+      # returned as `********`. The password is returned in full on create, and on
+      # update only when that update changed the password. Accounts created before
+      # September 8, 2026 are unaffected.
       sig { returns(T.nilable(String)) }
       attr_reader :password
 
@@ -93,7 +97,11 @@ module Telnyx
         # An optional SIP proxy used to route outbound requests before reaching the
         # external SIP peer.
         outbound_proxy: nil,
-        # The SIP password used for digest authentication with the external SIP peer.
+        # The SIP password used for digest authentication with the external SIP peer. For
+        # primary accounts created on or after September 8, 2026, this password is
+        # returned as `********`. The password is returned in full on create, and on
+        # update only when that update changed the password. Accounts created before
+        # September 8, 2026 are unaffected.
         password: nil,
         # The SIP proxy address of the external SIP peer used for registrations and
         # outbound call routing.

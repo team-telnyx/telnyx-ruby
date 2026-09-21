@@ -45,6 +45,19 @@ module Telnyx
       sig { params(enabled: T::Boolean).void }
       attr_writer :enabled
 
+      # Telnyx product features the messaging customer can enable on the messaging
+      # profile. Keys map to individual feature flags; unknown keys are accepted and
+      # preserved for forward compatibility with rolling deployments.
+      sig { returns(T.nilable(Telnyx::MessagingProfileFeatures)) }
+      attr_reader :features
+
+      sig do
+        params(
+          features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash)
+        ).void
+      end
+      attr_writer :features
+
       # enables SMS fallback for MMS messages.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :mms_fall_back_to_sms
@@ -188,6 +201,7 @@ module Telnyx
           daily_spend_limit: String,
           daily_spend_limit_enabled: T::Boolean,
           enabled: T::Boolean,
+          features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
@@ -221,6 +235,10 @@ module Telnyx
         daily_spend_limit_enabled: nil,
         # Specifies whether the messaging profile is enabled or not.
         enabled: nil,
+        # Telnyx product features the messaging customer can enable on the messaging
+        # profile. Keys map to individual feature flags; unknown keys are accepted and
+        # preserved for forward compatibility with rolling deployments.
+        features: nil,
         # enables SMS fallback for MMS messages.
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.
@@ -285,6 +303,7 @@ module Telnyx
             daily_spend_limit: String,
             daily_spend_limit_enabled: T::Boolean,
             enabled: T::Boolean,
+            features: T.nilable(Telnyx::MessagingProfileFeatures),
             mms_fall_back_to_sms: T::Boolean,
             mms_transcoding: T::Boolean,
             mobile_only: T::Boolean,

@@ -9,6 +9,7 @@ module Telnyx
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        features: Telnyx::MessagingProfileFeatures?,
         health_webhook_url: String?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
@@ -46,6 +47,8 @@ module Telnyx
       attr_reader enabled: bool?
 
       def enabled=: (bool) -> bool
+
+      attr_accessor features: Telnyx::MessagingProfileFeatures?
 
       attr_accessor health_webhook_url: String?
 
@@ -89,6 +92,7 @@ module Telnyx
         ?daily_spend_limit: String,
         ?daily_spend_limit_enabled: bool,
         ?enabled: bool,
+        ?features: Telnyx::MessagingProfileFeatures?,
         ?health_webhook_url: String?,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
@@ -111,6 +115,7 @@ module Telnyx
         daily_spend_limit: String,
         daily_spend_limit_enabled: bool,
         enabled: bool,
+        features: Telnyx::MessagingProfileFeatures?,
         health_webhook_url: String?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,

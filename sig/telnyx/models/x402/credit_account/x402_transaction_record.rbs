@@ -1,0 +1,104 @@
+module Telnyx
+  module Models
+    module X402
+      module CreditAccount
+        type x402_transaction_record =
+          {
+            id: String,
+            amount: String,
+            created_at: Time,
+            currency: String,
+            quote_id: String,
+            record_type: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::record_type,
+            status: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::status,
+            tx_hash: String?,
+            updated_at: Time
+          }
+
+        class X402TransactionRecord < Telnyx::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader amount: String?
+
+          def amount=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader currency: String?
+
+          def currency=: (String) -> String
+
+          attr_reader quote_id: String?
+
+          def quote_id=: (String) -> String
+
+          attr_reader record_type: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::record_type?
+
+          def record_type=: (
+            Telnyx::Models::X402::CreditAccount::X402TransactionRecord::record_type
+          ) -> Telnyx::Models::X402::CreditAccount::X402TransactionRecord::record_type
+
+          attr_reader status: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::status?
+
+          def status=: (
+            Telnyx::Models::X402::CreditAccount::X402TransactionRecord::status
+          ) -> Telnyx::Models::X402::CreditAccount::X402TransactionRecord::status
+
+          attr_accessor tx_hash: String?
+
+          attr_reader updated_at: Time?
+
+          def updated_at=: (Time) -> Time
+
+          def initialize: (
+            ?id: String,
+            ?amount: String,
+            ?created_at: Time,
+            ?currency: String,
+            ?quote_id: String,
+            ?record_type: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::record_type,
+            ?status: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::status,
+            ?tx_hash: String?,
+            ?updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            amount: String,
+            created_at: Time,
+            currency: String,
+            quote_id: String,
+            record_type: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::record_type,
+            status: Telnyx::Models::X402::CreditAccount::X402TransactionRecord::status,
+            tx_hash: String?,
+            updated_at: Time
+          }
+
+          type record_type = :x402_transaction
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            X402_TRANSACTION: :x402_transaction
+
+            def self?.values: -> ::Array[Telnyx::Models::X402::CreditAccount::X402TransactionRecord::record_type]
+          end
+
+          type status = :settled
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            SETTLED: :settled
+
+            def self?.values: -> ::Array[Telnyx::Models::X402::CreditAccount::X402TransactionRecord::status]
+          end
+        end
+      end
+    end
+  end
+end

@@ -20,7 +20,8 @@ module Telnyx
           inline_css: bool,
           recipient_statuses: ::Hash[Symbol, Integer],
           sandbox: bool,
-          scheduled_at: Time
+          scheduled_at: Time,
+          suppressed: ::Array[Telnyx::SuppressedRecipient]
         }
 
       class EmailMessage < Telnyx::Internal::Type::BaseModel
@@ -70,6 +71,12 @@ module Telnyx
 
         def scheduled_at=: (Time) -> Time
 
+        attr_reader suppressed: ::Array[Telnyx::SuppressedRecipient]?
+
+        def suppressed=: (
+          ::Array[Telnyx::SuppressedRecipient]
+        ) -> ::Array[Telnyx::SuppressedRecipient]
+
         def initialize: (
           id: String,
           attachments: ::Array[Telnyx::EmailInboxes::EmailMessage::Attachment],
@@ -88,7 +95,8 @@ module Telnyx
           ?inline_css: bool,
           ?recipient_statuses: ::Hash[Symbol, Integer],
           ?sandbox: bool,
-          ?scheduled_at: Time
+          ?scheduled_at: Time,
+          ?suppressed: ::Array[Telnyx::SuppressedRecipient]
         ) -> void
 
         def to_hash: -> {
@@ -109,7 +117,8 @@ module Telnyx
           inline_css: bool,
           recipient_statuses: ::Hash[Symbol, Integer],
           sandbox: bool,
-          scheduled_at: Time
+          scheduled_at: Time,
+          suppressed: ::Array[Telnyx::SuppressedRecipient]
         }
 
         type attachment =

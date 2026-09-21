@@ -75,7 +75,9 @@ module Telnyx
       | Telnyx::ReplacedLinkClickWebhookEvent
       | Telnyx::SessionStatusChangedWebhookEvent
       | Telnyx::TranscriptCompletedWebhookEvent
-      | Telnyx::TranscriptionWebhookEvent)
+      | Telnyx::TranscriptionWebhookEvent
+      | Telnyx::WhatsappAccountUpdate
+      | Telnyx::WhatsappMessageEcho)
 
       def unwrap: (
         String payload,
@@ -153,7 +155,9 @@ module Telnyx
       | Telnyx::ReplacedLinkClickWebhookEvent
       | Telnyx::SessionStatusChangedWebhookEvent
       | Telnyx::TranscriptCompletedWebhookEvent
-      | Telnyx::TranscriptionWebhookEvent)
+      | Telnyx::TranscriptionWebhookEvent
+      | Telnyx::WhatsappAccountUpdate
+      | Telnyx::WhatsappMessageEcho)
 
       def initialize: (client: Telnyx::Client) -> void
     end

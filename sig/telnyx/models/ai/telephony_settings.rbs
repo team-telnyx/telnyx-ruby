@@ -5,6 +5,7 @@ module Telnyx
         {
           default_texml_app_id: String,
           disable_dtmf: bool,
+          fallback_destination: String,
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
@@ -24,6 +25,10 @@ module Telnyx
         attr_reader disable_dtmf: bool?
 
         def disable_dtmf=: (bool) -> bool
+
+        attr_reader fallback_destination: String?
+
+        def fallback_destination=: (String) -> String
 
         attr_reader noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression?
 
@@ -72,6 +77,7 @@ module Telnyx
         def initialize: (
           ?default_texml_app_id: String,
           ?disable_dtmf: bool,
+          ?fallback_destination: String,
           ?noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           ?noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           ?recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,
@@ -86,6 +92,7 @@ module Telnyx
         def to_hash: -> {
           default_texml_app_id: String,
           disable_dtmf: bool,
+          fallback_destination: String,
           noise_suppression: Telnyx::Models::AI::TelephonySettings::noise_suppression,
           noise_suppression_config: Telnyx::AI::TelephonySettings::NoiseSuppressionConfig,
           recording_settings: Telnyx::AI::TelephonySettings::RecordingSettings,

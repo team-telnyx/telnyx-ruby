@@ -109,6 +109,9 @@ module Telnyx
       module Collections
       end
 
+      module Compute
+      end
+
       module Conferences
       end
 
@@ -118,6 +121,9 @@ module Telnyx
       end
 
       module CredentialConnections
+      end
+
+      module CreditAccount
       end
 
       module Dir
@@ -416,6 +422,8 @@ module Telnyx
       end
 
       module X402
+        module CreditAccount
+        end
       end
     end
   end

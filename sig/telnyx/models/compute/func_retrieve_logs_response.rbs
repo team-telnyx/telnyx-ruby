@@ -1,0 +1,210 @@
+module Telnyx
+  module Models
+    module Compute
+      type func_retrieve_logs_response =
+        Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse
+        | Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse
+
+      module FuncRetrieveLogsResponse
+        extend Telnyx::Internal::Type::Union
+
+        type func_runtime_logs_response =
+          {
+            data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data],
+            meta: Telnyx::Compute::LogsMeta
+          }
+
+        class FuncRuntimeLogsResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data]?
+
+          def data=: (
+            ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data]
+          ) -> ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data]
+
+          attr_reader meta: Telnyx::Compute::LogsMeta?
+
+          def meta=: (Telnyx::Compute::LogsMeta) -> Telnyx::Compute::LogsMeta
+
+          def initialize: (
+            ?data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data],
+            ?meta: Telnyx::Compute::LogsMeta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data],
+            meta: Telnyx::Compute::LogsMeta
+          }
+
+          type data =
+            {
+              level: String,
+              message: String,
+              record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data::record_type,
+              timestamp: Time
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader level: String?
+
+            def level=: (String) -> String
+
+            attr_reader message: String?
+
+            def message=: (String) -> String
+
+            attr_reader record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data::record_type?
+
+            def record_type=: (
+              Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data::record_type
+            ) -> Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data::record_type
+
+            attr_reader timestamp: Time?
+
+            def timestamp=: (Time) -> Time
+
+            def initialize: (
+              ?level: String,
+              ?message: String,
+              ?record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data::record_type,
+              ?timestamp: Time
+            ) -> void
+
+            def to_hash: -> {
+              level: String,
+              message: String,
+              record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data::record_type,
+              timestamp: Time
+            }
+
+            type record_type = :compute_func_runtime_log
+
+            module RecordType
+              extend Telnyx::Internal::Type::Enum
+
+              COMPUTE_FUNC_RUNTIME_LOG: :compute_func_runtime_log
+
+              def self?.values: -> ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncRuntimeLogsResponse::Data::record_type]
+            end
+          end
+        end
+
+        type func_invocation_logs_response =
+          {
+            data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data],
+            meta: Telnyx::Compute::LogsMeta
+          }
+
+        class FuncInvocationLogsResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data]?
+
+          def data=: (
+            ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data]
+          ) -> ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data]
+
+          attr_reader meta: Telnyx::Compute::LogsMeta?
+
+          def meta=: (Telnyx::Compute::LogsMeta) -> Telnyx::Compute::LogsMeta
+
+          def initialize: (
+            ?data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data],
+            ?meta: Telnyx::Compute::LogsMeta
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data],
+            meta: Telnyx::Compute::LogsMeta
+          }
+
+          type data =
+            {
+              duration_ms: Float,
+              method_: String,
+              path: String,
+              record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data::record_type,
+              region: String,
+              request_size_bytes: Integer,
+              response_size_bytes: Integer,
+              status_code: Integer,
+              timestamp: Time
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader duration_ms: Float?
+
+            def duration_ms=: (Float) -> Float
+
+            attr_reader method_: String?
+
+            def method_=: (String) -> String
+
+            attr_reader path: String?
+
+            def path=: (String) -> String
+
+            attr_reader record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data::record_type?
+
+            def record_type=: (
+              Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data::record_type
+            ) -> Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data::record_type
+
+            attr_reader region: String?
+
+            def region=: (String) -> String
+
+            attr_reader request_size_bytes: Integer?
+
+            def request_size_bytes=: (Integer) -> Integer
+
+            attr_reader response_size_bytes: Integer?
+
+            def response_size_bytes=: (Integer) -> Integer
+
+            attr_reader status_code: Integer?
+
+            def status_code=: (Integer) -> Integer
+
+            attr_reader timestamp: Time?
+
+            def timestamp=: (Time) -> Time
+
+            def initialize: (
+              ?duration_ms: Float,
+              ?method_: String,
+              ?path: String,
+              ?record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data::record_type,
+              ?region: String,
+              ?request_size_bytes: Integer,
+              ?response_size_bytes: Integer,
+              ?status_code: Integer,
+              ?timestamp: Time
+            ) -> void
+
+            def to_hash: -> {
+              duration_ms: Float,
+              method_: String,
+              path: String,
+              record_type: Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data::record_type,
+              region: String,
+              request_size_bytes: Integer,
+              response_size_bytes: Integer,
+              status_code: Integer,
+              timestamp: Time
+            }
+
+            type record_type = :compute_func_invocation_log
+
+            module RecordType
+              extend Telnyx::Internal::Type::Enum
+
+              COMPUTE_FUNC_INVOCATION_LOG: :compute_func_invocation_log
+
+              def self?.values: -> ::Array[Telnyx::Models::Compute::FuncRetrieveLogsResponse::FuncInvocationLogsResponse::Data::record_type]
+            end
+          end
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::Compute::func_retrieve_logs_response]
+      end
+    end
+  end
+end

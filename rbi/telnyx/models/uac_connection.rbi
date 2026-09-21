@@ -217,7 +217,10 @@ module Telnyx
       attr_writer :outbound
 
       # The password to be used as part of the credentials. Must be 8 to 128 characters
-      # long.
+      # long. For primary accounts created on or after September 8, 2026, this password
+      # is returned as `********`. The password is returned in full on create, and on
+      # update only when that update changed the password. Accounts created before
+      # September 8, 2026 are unaffected.
       sig { returns(T.nilable(String)) }
       attr_reader :password
 
@@ -440,7 +443,10 @@ module Telnyx
         onnet_t38_passthrough_enabled: nil,
         outbound: nil,
         # The password to be used as part of the credentials. Must be 8 to 128 characters
-        # long.
+        # long. For primary accounts created on or after September 8, 2026, this password
+        # is returned as `********`. The password is returned in full on create, and on
+        # update only when that update changed the password. Accounts created before
+        # September 8, 2026 are unaffected.
         password: nil,
         # Identifies the type of the resource.
         record_type: nil,

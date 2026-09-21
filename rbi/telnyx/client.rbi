@@ -730,6 +730,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::ExternalRequirements) }
     attr_reader :external_requirements
 
+    sig { returns(Telnyx::Resources::Compute) }
+    attr_reader :compute
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

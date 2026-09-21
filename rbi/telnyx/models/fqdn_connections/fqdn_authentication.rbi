@@ -76,7 +76,10 @@ module Telnyx
         sig { params(microsoft_teams_sbc: T::Boolean).void }
         attr_writer :microsoft_teams_sbc
 
-        # The password for authentication.
+        # The password for authentication. For primary accounts created on or after
+        # September 8, 2026, this password is returned as `********`. The password is
+        # returned in full on create, and on update only when that update changed the
+        # password. Accounts created before September 8, 2026 are unaffected.
         sig { returns(T.nilable(String)) }
         attr_reader :password
 
@@ -157,7 +160,10 @@ module Telnyx
           ip_authentication_method: nil,
           # Whether the connection is a Microsoft Teams SBC.
           microsoft_teams_sbc: nil,
-          # The password for authentication.
+          # The password for authentication. For primary accounts created on or after
+          # September 8, 2026, this password is returned as `********`. The password is
+          # returned in full on create, and on update only when that update changed the
+          # password. Accounts created before September 8, 2026 are unaffected.
           password: nil,
           # Identifies the type of the resource.
           record_type: nil,

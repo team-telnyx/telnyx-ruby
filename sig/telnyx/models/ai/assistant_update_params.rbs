@@ -4,6 +4,7 @@ module Telnyx
       type assistant_update_params =
         {
           assistant_id: String,
+          :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
           conversation_flow: Telnyx::AI::ConversationFlowReq,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
@@ -42,6 +43,12 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         attr_accessor assistant_id: String
+
+        attr_reader a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent]?
+
+        def a2a_agents=: (
+          ::Array[Telnyx::AI::AssistantA2AAgent]
+        ) -> ::Array[Telnyx::AI::AssistantA2AAgent]
 
         attr_reader conversation_flow: Telnyx::AI::ConversationFlowReq?
 
@@ -199,6 +206,7 @@ module Telnyx
 
         def initialize: (
           assistant_id: String,
+          ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
           ?conversation_flow: Telnyx::AI::ConversationFlowReq,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
@@ -234,6 +242,7 @@ module Telnyx
 
         def to_hash: -> {
           assistant_id: String,
+          :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
           conversation_flow: Telnyx::AI::ConversationFlowReq,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],

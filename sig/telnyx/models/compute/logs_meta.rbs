@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module Compute
+      type logs_meta = { has_more: bool, partial: bool }
+
+      class LogsMeta < Telnyx::Internal::Type::BaseModel
+        attr_reader has_more: bool?
+
+        def has_more=: (bool) -> bool
+
+        attr_reader partial: bool?
+
+        def partial=: (bool) -> bool
+
+        def initialize: (?has_more: bool, ?partial: bool) -> void
+
+        def to_hash: -> { has_more: bool, partial: bool }
+      end
+    end
+  end
+end
