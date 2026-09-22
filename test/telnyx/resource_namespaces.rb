@@ -64,6 +64,9 @@ module Telnyx
 
         module OpenAI
         end
+
+        module Typesafe
+        end
       end
 
       module Anthropic
@@ -388,6 +391,9 @@ module Telnyx
       end
 
       module Transcriptions
+      end
+
+      module Typesafe
       end
 
       module UacConnections

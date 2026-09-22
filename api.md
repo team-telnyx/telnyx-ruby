@@ -530,6 +530,14 @@ Methods:
 
 - <code title="get /ai/knowledge/collections/{slug}/documents">client.ai.knowledge.collections.<a href="./lib/telnyx/resources/ai/knowledge/collections.rb">retrieve_documents</a>(\*\*params)</code>
 
+## Typesafe
+
+### V1
+
+Methods:
+
+- <code title="post /ai/typesafe/v1/systemone">client.ai.typesafe.v1.<a href="./lib/telnyx/resources/ai/typesafe/v1.rb">systemone</a>(\*\*params)</code>
+
 # AuditEvents
 
 Methods:

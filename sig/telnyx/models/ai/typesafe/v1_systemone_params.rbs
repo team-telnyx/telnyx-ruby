@@ -1,0 +1,195 @@
+module Telnyx
+  module Models
+    module AI
+      module Typesafe
+        type v1_systemone_params =
+          {
+            questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
+            state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class V1SystemoneParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question]
+
+          attr_accessor state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state
+
+          def initialize: (
+            questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
+            state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
+            state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state,
+            request_options: Telnyx::RequestOptions
+          }
+
+          type question =
+            Telnyx::AI::Typesafe::V1SystemoneParams::Question::Choice
+            | Telnyx::AI::Typesafe::V1SystemoneParams::Question::Noul
+            | Telnyx::AI::Typesafe::V1SystemoneParams::Question::Score
+
+          module Question
+            extend Telnyx::Internal::Type::Union
+
+            type choice =
+              {
+                criteria: ::Hash[Symbol, String?],
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Choice::instructions,
+                type: :choice
+              }
+
+            class Choice < Telnyx::Internal::Type::BaseModel
+              attr_accessor criteria: ::Hash[Symbol, String?]
+
+              attr_accessor instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Choice::instructions
+
+              attr_accessor type: :choice
+
+              def initialize: (
+                criteria: ::Hash[Symbol, String?],
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Choice::instructions,
+                ?type: :choice
+              ) -> void
+
+              def to_hash: -> {
+                criteria: ::Hash[Symbol, String?],
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Choice::instructions,
+                type: :choice
+              }
+
+              type instructions = String | ::Hash[Symbol, top] | ::Array[top]
+
+              module Instructions
+                extend Telnyx::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Choice::instructions]
+
+                UnionMember1Map: Telnyx::Internal::Type::Converter
+
+                UnionMember2Array: Telnyx::Internal::Type::Converter
+              end
+            end
+
+            type noul =
+              {
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Noul::instructions,
+                type: :noul,
+                criteria: Telnyx::AI::Typesafe::V1SystemoneParams::Question::Noul::Criteria
+              }
+
+            class Noul < Telnyx::Internal::Type::BaseModel
+              attr_accessor instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Noul::instructions
+
+              attr_accessor type: :noul
+
+              attr_reader criteria: Telnyx::AI::Typesafe::V1SystemoneParams::Question::Noul::Criteria?
+
+              def criteria=: (
+                Telnyx::AI::Typesafe::V1SystemoneParams::Question::Noul::Criteria
+              ) -> Telnyx::AI::Typesafe::V1SystemoneParams::Question::Noul::Criteria
+
+              def initialize: (
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Noul::instructions,
+                ?criteria: Telnyx::AI::Typesafe::V1SystemoneParams::Question::Noul::Criteria,
+                ?type: :noul
+              ) -> void
+
+              def to_hash: -> {
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Noul::instructions,
+                type: :noul,
+                criteria: Telnyx::AI::Typesafe::V1SystemoneParams::Question::Noul::Criteria
+              }
+
+              type instructions = String | ::Hash[Symbol, top] | ::Array[top]
+
+              module Instructions
+                extend Telnyx::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Noul::instructions]
+
+                UnionMember1Map: Telnyx::Internal::Type::Converter
+
+                UnionMember2Array: Telnyx::Internal::Type::Converter
+              end
+
+              type criteria = { false_: String, true_: String }
+
+              class Criteria < Telnyx::Internal::Type::BaseModel
+                attr_reader false_: String?
+
+                def false_=: (String) -> String
+
+                attr_reader true_: String?
+
+                def true_=: (String) -> String
+
+                def initialize: (?false_: String, ?true_: String) -> void
+
+                def to_hash: -> { false_: String, true_: String }
+              end
+            end
+
+            type score =
+              {
+                criteria: ::Array[String],
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Score::instructions,
+                type: :score
+              }
+
+            class Score < Telnyx::Internal::Type::BaseModel
+              attr_accessor criteria: ::Array[String]
+
+              attr_accessor instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Score::instructions
+
+              attr_accessor type: :score
+
+              def initialize: (
+                criteria: ::Array[String],
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Score::instructions,
+                ?type: :score
+              ) -> void
+
+              def to_hash: -> {
+                criteria: ::Array[String],
+                instructions: Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Score::instructions,
+                type: :score
+              }
+
+              type instructions = String | ::Hash[Symbol, top] | ::Array[top]
+
+              module Instructions
+                extend Telnyx::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Score::instructions]
+
+                UnionMember1Map: Telnyx::Internal::Type::Converter
+
+                UnionMember2Array: Telnyx::Internal::Type::Converter
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneParams::question]
+          end
+
+          type state = String | ::Hash[Symbol, top] | ::Array[top]
+
+          module State
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneParams::state]
+
+            UnionMember1Map: Telnyx::Internal::Type::Converter
+
+            UnionMember2Array: Telnyx::Internal::Type::Converter
+          end
+        end
+      end
+    end
+  end
+end
