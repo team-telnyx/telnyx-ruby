@@ -3139,6 +3139,14 @@ Methods:
 - <code title="get /compute/funcs/{id}/revisions">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_revisions</a>(\*\*params)</code>
 - <code title="get /compute/funcs/{id}/ship_inspection">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_ship_inspection</a>(\*\*params)</code>
 
+### Export
+
+Methods:
+
+- <code title="put /compute/funcs/{id}/logs/export">client.compute.funcs.export.<a href="./lib/telnyx/resources/compute/funcs/export.rb">create</a>(\*\*params)</code>
+- <code title="get /compute/funcs/{id}/logs/export">client.compute.funcs.export.<a href="./lib/telnyx/resources/compute/funcs/export.rb">list</a>(\*\*params)</code>
+- <code title="delete /compute/funcs/{id}/logs/export">client.compute.funcs.export.<a href="./lib/telnyx/resources/compute/funcs/export.rb">delete_all</a>(\*\*params)</code>
+
 # NoiseSuppressionEngines
 
 Methods:

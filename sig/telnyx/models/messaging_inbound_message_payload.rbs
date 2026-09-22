@@ -3,6 +3,7 @@ module Telnyx
     type messaging_inbound_message_payload =
       {
         id: String,
+        autoresponse_type: String,
         body: Telnyx::MessagingInboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         completed_at: Time?,
@@ -37,6 +38,10 @@ module Telnyx
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_reader autoresponse_type: String?
+
+      def autoresponse_type=: (String) -> String
 
       attr_reader body: Telnyx::MessagingInboundMessagePayload::Body?
 
@@ -150,6 +155,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?autoresponse_type: String,
         ?body: Telnyx::MessagingInboundMessagePayload::Body,
         ?cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         ?completed_at: Time?,
@@ -182,6 +188,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        autoresponse_type: String,
         body: Telnyx::MessagingInboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         completed_at: Time?,

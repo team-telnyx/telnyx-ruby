@@ -110,6 +110,8 @@ module Telnyx
       end
 
       module Compute
+        module Funcs
+        end
       end
 
       module Conferences
@@ -173,6 +175,9 @@ module Telnyx
       end
 
       module FqdnConnections
+      end
+
+      module Funcs
       end
 
       module InsightGroups

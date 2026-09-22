@@ -45,7 +45,8 @@ module Telnyx
         #   `duration`, and `segments` in `verbose_json` mode.
         #   `openai/whisper-large-v3-turbo` returns `text` only. The `deepgram/*` models
         #   return `text` and, depending on `model_config`, may include `words` with
-        #   per-word timestamps and speaker labels.
+        #   per-word timestamps and speaker labels. The Parakeet models
+        #   (`nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`) return `text` only.
         #
         #   @param text [String] The transcribed text for the audio file.
         #

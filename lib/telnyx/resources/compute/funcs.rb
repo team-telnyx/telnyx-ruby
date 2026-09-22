@@ -4,6 +4,9 @@ module Telnyx
   module Resources
     class Compute
       class Funcs
+        # @return [Telnyx::Resources::Compute::Funcs::Export]
+        attr_reader :export
+
         # Returns logs oldest first. `type=runtime` (default) returns function
         # stdout/stderr. `type=invocations` returns one platform-generated record per HTTP
         # request served.
@@ -134,6 +137,7 @@ module Telnyx
         # @param client [Telnyx::Client]
         def initialize(client:)
           @client = client
+          @export = Telnyx::Resources::Compute::Funcs::Export.new(client: client)
         end
       end
     end

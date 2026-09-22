@@ -18,6 +18,8 @@ module Telnyx
         # `deepgram/nova-3` covers ~49 languages plus `multi` and `deepgram/nova-2` covers
         # ~33, while the `-medical` variants are tuned for clinical vocabulary and accept
         # English only (`en` and its regional variants, e.g. `en-US`, `en-GB`).
+        # `nvidia/parakeet-v3` is multilingual with automatic language detection;
+        # `omi-health/omi-med-stt-v1` is a medical model, English only.
         sig { returns(Telnyx::AI::AudioTranscribeParams::Model::OrSymbol) }
         attr_accessor :model
 
@@ -49,6 +51,8 @@ module Telnyx
         # the base language is supported; an unsupported language returns a 400. For
         # `openai/whisper-large-v3-turbo`, supports multiple languages.
         # `distil-whisper/distil-large-v2` does not support language parameter.
+        # `nvidia/parakeet-v3` detects the language automatically;
+        # `omi-health/omi-med-stt-v1` is English only.
         sig { returns(T.nilable(String)) }
         attr_reader :language
 
@@ -126,6 +130,8 @@ module Telnyx
           # `deepgram/nova-3` covers ~49 languages plus `multi` and `deepgram/nova-2` covers
           # ~33, while the `-medical` variants are tuned for clinical vocabulary and accept
           # English only (`en` and its regional variants, e.g. `en-US`, `en-GB`).
+          # `nvidia/parakeet-v3` is multilingual with automatic language detection;
+          # `omi-health/omi-med-stt-v1` is a medical model, English only.
           model:,
           # The audio file object to transcribe, in one of these formats: flac, mp3, mp4,
           # mpeg, mpga, m4a, ogg, wav, or webm. File uploads are limited to 100 MB. Cannot
@@ -145,6 +151,8 @@ module Telnyx
           # the base language is supported; an unsupported language returns a 400. For
           # `openai/whisper-large-v3-turbo`, supports multiple languages.
           # `distil-whisper/distil-large-v2` does not support language parameter.
+          # `nvidia/parakeet-v3` detects the language automatically;
+          # `omi-health/omi-med-stt-v1` is English only.
           language: nil,
           # Additional model-specific configuration parameters. Only allowed with the
           # `deepgram/*` models. Can include Deepgram-specific options such as
@@ -188,6 +196,8 @@ module Telnyx
         # `deepgram/nova-3` covers ~49 languages plus `multi` and `deepgram/nova-2` covers
         # ~33, while the `-medical` variants are tuned for clinical vocabulary and accept
         # English only (`en` and its regional variants, e.g. `en-US`, `en-GB`).
+        # `nvidia/parakeet-v3` is multilingual with automatic language detection;
+        # `omi-health/omi-med-stt-v1` is a medical model, English only.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -225,6 +235,16 @@ module Telnyx
           DEEPGRAM_NOVA_3_MEDICAL =
             T.let(
               :"deepgram/nova-3-medical",
+              Telnyx::AI::AudioTranscribeParams::Model::TaggedSymbol
+            )
+          NVIDIA_PARAKEET_V3 =
+            T.let(
+              :"nvidia/parakeet-v3",
+              Telnyx::AI::AudioTranscribeParams::Model::TaggedSymbol
+            )
+          OMI_HEALTH_OMI_MED_STT_V1 =
+            T.let(
+              :"omi-health/omi-med-stt-v1",
               Telnyx::AI::AudioTranscribeParams::Model::TaggedSymbol
             )
 

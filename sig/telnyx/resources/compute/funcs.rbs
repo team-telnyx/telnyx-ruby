@@ -2,6 +2,8 @@ module Telnyx
   module Resources
     class Compute
       class Funcs
+        attr_reader export: Telnyx::Resources::Compute::Funcs::Export
+
         def retrieve_logs: (
           String id,
           ?end_time: Time,

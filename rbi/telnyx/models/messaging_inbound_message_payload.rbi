@@ -18,6 +18,14 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
+      # Automatic response type triggered by an inbound opt-in, opt-out, or help
+      # keyword. Examples include START, STOP, and HELP.
+      sig { returns(T.nilable(String)) }
+      attr_reader :autoresponse_type
+
+      sig { params(autoresponse_type: String).void }
+      attr_writer :autoresponse_type
+
       # Message body for RCS and WhatsApp. RCS messages contain text, user_file,
       # location, or suggestion_response. For WhatsApp edits and revocations, inspect
       # type and the corresponding edit or revoke object.
@@ -266,6 +274,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          autoresponse_type: String,
           body: Telnyx::MessagingInboundMessagePayload::Body::OrHash,
           cc: T::Array[Telnyx::MessagingInboundMessagePayload::Cc::OrHash],
           completed_at: T.nilable(Time),
@@ -305,6 +314,9 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
+        # Automatic response type triggered by an inbound opt-in, opt-out, or help
+        # keyword. Examples include START, STOP, and HELP.
+        autoresponse_type: nil,
         # Message body for RCS and WhatsApp. RCS messages contain text, user_file,
         # location, or suggestion_response. For WhatsApp edits and revocations, inspect
         # type and the corresponding edit or revoke object.
@@ -373,6 +385,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            autoresponse_type: String,
             body: Telnyx::MessagingInboundMessagePayload::Body,
             cc: T::Array[Telnyx::MessagingInboundMessagePayload::Cc],
             completed_at: T.nilable(Time),

@@ -9,6 +9,13 @@ module Telnyx
       #   @return [String, nil]
       optional :id, String
 
+      # @!attribute autoresponse_type
+      #   Automatic response type triggered by an inbound opt-in, opt-out, or help
+      #   keyword. Examples include START, STOP, and HELP.
+      #
+      #   @return [String, nil]
+      optional :autoresponse_type, String
+
       # @!attribute body
       #   Message body for RCS and WhatsApp. RCS messages contain text, user_file,
       #   location, or suggestion_response. For WhatsApp edits and revocations, inspect
@@ -182,11 +189,13 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, body: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, autoresponse_type: nil, body: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingInboundMessagePayload} for more details.
       #
       #   @param id [String] Identifies the type of resource.
+      #
+      #   @param autoresponse_type [String] Automatic response type triggered by an inbound opt-in, opt-out, or help keyword
       #
       #   @param body [Telnyx::Models::MessagingInboundMessagePayload::Body] Message body for RCS and WhatsApp. RCS messages contain text, user_file, locatio
       #
