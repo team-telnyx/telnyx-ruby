@@ -3,6 +3,7 @@ module Telnyx
     type messaging_inbound_message_payload =
       {
         id: String,
+        autoresponse_type: String,
         body: Telnyx::MessagingInboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         completed_at: Time?,
@@ -37,6 +38,10 @@ module Telnyx
       attr_reader id: String?
 
       def id=: (String) -> String
+
+      attr_reader autoresponse_type: String?
+
+      def autoresponse_type=: (String) -> String
 
       attr_reader body: Telnyx::MessagingInboundMessagePayload::Body?
 
@@ -150,6 +155,7 @@ module Telnyx
 
       def initialize: (
         ?id: String,
+        ?autoresponse_type: String,
         ?body: Telnyx::MessagingInboundMessagePayload::Body,
         ?cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         ?completed_at: Time?,
@@ -182,6 +188,7 @@ module Telnyx
 
       def to_hash: -> {
         id: String,
+        autoresponse_type: String,
         body: Telnyx::MessagingInboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingInboundMessagePayload::Cc],
         completed_at: Time?,
@@ -218,9 +225,13 @@ module Telnyx
           edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
           foreign_id: String,
           from: String,
+          location: Telnyx::MessagingInboundMessagePayload::Body::Location,
           revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+          suggestion_response: Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse,
+          text: Telnyx::Models::MessagingInboundMessagePayload::Body::text,
           timestamp: String,
-          type: String
+          type: String,
+          user_file: Telnyx::MessagingInboundMessagePayload::Body::UserFile
         }
 
       class Body < Telnyx::Internal::Type::BaseModel
@@ -242,11 +253,29 @@ module Telnyx
 
         def from=: (String) -> String
 
+        attr_reader location: Telnyx::MessagingInboundMessagePayload::Body::Location?
+
+        def location=: (
+          Telnyx::MessagingInboundMessagePayload::Body::Location
+        ) -> Telnyx::MessagingInboundMessagePayload::Body::Location
+
         attr_reader revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke?
 
         def revoke=: (
           Telnyx::MessagingInboundMessagePayload::Body::Revoke
         ) -> Telnyx::MessagingInboundMessagePayload::Body::Revoke
+
+        attr_reader suggestion_response: Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse?
+
+        def suggestion_response=: (
+          Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse
+        ) -> Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse
+
+        attr_reader text: Telnyx::Models::MessagingInboundMessagePayload::Body::text?
+
+        def text=: (
+          Telnyx::Models::MessagingInboundMessagePayload::Body::text
+        ) -> Telnyx::Models::MessagingInboundMessagePayload::Body::text
 
         attr_reader timestamp: String?
 
@@ -256,14 +285,24 @@ module Telnyx
 
         def type=: (String) -> String
 
+        attr_reader user_file: Telnyx::MessagingInboundMessagePayload::Body::UserFile?
+
+        def user_file=: (
+          Telnyx::MessagingInboundMessagePayload::Body::UserFile
+        ) -> Telnyx::MessagingInboundMessagePayload::Body::UserFile
+
         def initialize: (
           ?id: String,
           ?edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
           ?foreign_id: String,
           ?from: String,
+          ?location: Telnyx::MessagingInboundMessagePayload::Body::Location,
           ?revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+          ?suggestion_response: Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse,
+          ?text: Telnyx::Models::MessagingInboundMessagePayload::Body::text,
           ?timestamp: String,
-          ?type: String
+          ?type: String,
+          ?user_file: Telnyx::MessagingInboundMessagePayload::Body::UserFile
         ) -> void
 
         def to_hash: -> {
@@ -271,9 +310,13 @@ module Telnyx
           edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
           foreign_id: String,
           from: String,
+          location: Telnyx::MessagingInboundMessagePayload::Body::Location,
           revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+          suggestion_response: Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse,
+          text: Telnyx::Models::MessagingInboundMessagePayload::Body::text,
           timestamp: String,
-          type: String
+          type: String,
+          user_file: Telnyx::MessagingInboundMessagePayload::Body::UserFile
         }
 
         type edit =
@@ -295,6 +338,22 @@ module Telnyx
           }
         end
 
+        type location = { latitude: Float, longitude: Float }
+
+        class Location < Telnyx::Internal::Type::BaseModel
+          attr_reader latitude: Float?
+
+          def latitude=: (Float) -> Float
+
+          attr_reader longitude: Float?
+
+          def longitude=: (Float) -> Float
+
+          def initialize: (?latitude: Float, ?longitude: Float) -> void
+
+          def to_hash: -> { latitude: Float, longitude: Float }
+        end
+
         type revoke = { original_message_id: String }
 
         class Revoke < Telnyx::Internal::Type::BaseModel
@@ -303,6 +362,153 @@ module Telnyx
           def initialize: (original_message_id: String) -> void
 
           def to_hash: -> { original_message_id: String }
+        end
+
+        type suggestion_response = { postback_data: String, text: String }
+
+        class SuggestionResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader postback_data: String?
+
+          def postback_data=: (String) -> String
+
+          attr_reader text: String?
+
+          def text=: (String) -> String
+
+          def initialize: (?postback_data: String, ?text: String) -> void
+
+          def to_hash: -> { postback_data: String, text: String }
+        end
+
+        type text =
+          String | Telnyx::MessagingInboundMessagePayload::Body::Text::Body
+
+        module Text
+          extend Telnyx::Internal::Type::Union
+
+          type body = { body: String }
+
+          class Body < Telnyx::Internal::Type::BaseModel
+            attr_reader body: String?
+
+            def body=: (String) -> String
+
+            def initialize: (?body: String) -> void
+
+            def to_hash: -> { body: String }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::Body::text]
+        end
+
+        type user_file =
+          {
+            payload: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload,
+            thumbnail: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail
+          }
+
+        class UserFile < Telnyx::Internal::Type::BaseModel
+          attr_reader payload: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload?
+
+          def payload=: (
+            Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload
+          ) -> Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload
+
+          attr_reader thumbnail: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail?
+
+          def thumbnail=: (
+            Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail
+          ) -> Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail
+
+          def initialize: (
+            ?payload: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload,
+            ?thumbnail: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail
+          ) -> void
+
+          def to_hash: -> {
+            payload: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload,
+            thumbnail: Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail
+          }
+
+          type payload =
+            {
+              file_name: String,
+              file_size_bytes: Integer,
+              file_uri: String,
+              mime_type: String
+            }
+
+          class Payload < Telnyx::Internal::Type::BaseModel
+            attr_reader file_name: String?
+
+            def file_name=: (String) -> String
+
+            attr_reader file_size_bytes: Integer?
+
+            def file_size_bytes=: (Integer) -> Integer
+
+            attr_reader file_uri: String?
+
+            def file_uri=: (String) -> String
+
+            attr_reader mime_type: String?
+
+            def mime_type=: (String) -> String
+
+            def initialize: (
+              ?file_name: String,
+              ?file_size_bytes: Integer,
+              ?file_uri: String,
+              ?mime_type: String
+            ) -> void
+
+            def to_hash: -> {
+              file_name: String,
+              file_size_bytes: Integer,
+              file_uri: String,
+              mime_type: String
+            }
+          end
+
+          type thumbnail =
+            {
+              file_name: String,
+              file_size_bytes: Integer,
+              file_uri: String,
+              mime_type: String
+            }
+
+          class Thumbnail < Telnyx::Internal::Type::BaseModel
+            attr_reader file_name: String?
+
+            def file_name=: (String) -> String
+
+            attr_reader file_size_bytes: Integer?
+
+            def file_size_bytes=: (Integer) -> Integer
+
+            attr_reader file_uri: String?
+
+            def file_uri=: (String) -> String
+
+            attr_reader mime_type: String?
+
+            def mime_type=: (String) -> String
+
+            def initialize: (
+              ?file_name: String,
+              ?file_size_bytes: Integer,
+              ?file_uri: String,
+              ?mime_type: String
+            ) -> void
+
+            def to_hash: -> {
+              file_name: String,
+              file_size_bytes: Integer,
+              file_uri: String,
+              mime_type: String
+            }
+          end
         end
       end
 
@@ -517,7 +723,13 @@ module Telnyx
         }
 
         type line_type =
-          :Wireline | :Wireless | :VoWiFi | :VoIP | :"Pre-Paid Wireless" | :""
+          :Wireline
+          | :Wireless
+          | :VoWiFi
+          | :VoIP
+          | :"Pre-Paid Wireless"
+          | :""
+          | :long_code
 
         module LineType
           extend Telnyx::Internal::Type::Enum
@@ -528,17 +740,19 @@ module Telnyx
           VO_IP: :VoIP
           PRE_PAID_WIRELESS: :"Pre-Paid Wireless"
           EMPTY: :""
+          LONG_CODE: :long_code
 
           def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::From::line_type]
         end
 
-        type status = :received | :delivered
+        type status = :received | :delivered | :webhook_delivered
 
         module Status
           extend Telnyx::Internal::Type::Enum
 
           RECEIVED: :received
           DELIVERED: :delivered
+          WEBHOOK_DELIVERED: :webhook_delivered
 
           def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::From::status]
         end
@@ -603,6 +817,8 @@ module Telnyx
 
         type union_member0 =
           {
+            agent_id: String,
+            agent_name: String,
             carrier: String,
             line_type: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type,
             phone_number: String,
@@ -610,6 +826,14 @@ module Telnyx
           }
 
         class UnionMember0 < Telnyx::Internal::Type::BaseModel
+          attr_reader agent_id: String?
+
+          def agent_id=: (String) -> String
+
+          attr_reader agent_name: String?
+
+          def agent_name=: (String) -> String
+
           attr_reader carrier: String?
 
           def carrier=: (String) -> String
@@ -631,6 +855,8 @@ module Telnyx
           ) -> Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::status
 
           def initialize: (
+            ?agent_id: String,
+            ?agent_name: String,
             ?carrier: String,
             ?line_type: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type,
             ?phone_number: String,
@@ -638,6 +864,8 @@ module Telnyx
           ) -> void
 
           def to_hash: -> {
+            agent_id: String,
+            agent_name: String,
             carrier: String,
             line_type: Telnyx::Models::MessagingInboundMessagePayload::To::UnionMember0::line_type,
             phone_number: String,
@@ -691,7 +919,7 @@ module Telnyx
         UnionMember0Array: Telnyx::Internal::Type::Converter
       end
 
-      type type_ = :SMS | :MMS | :WHATSAPP
+      type type_ = :SMS | :MMS | :WHATSAPP | :RCS
 
       module Type
         extend Telnyx::Internal::Type::Enum
@@ -699,6 +927,7 @@ module Telnyx
         SMS: :SMS
         MMS: :MMS
         WHATSAPP: :WHATSAPP
+        RCS: :RCS
 
         def self?.values: -> ::Array[Telnyx::Models::MessagingInboundMessagePayload::type_]
       end

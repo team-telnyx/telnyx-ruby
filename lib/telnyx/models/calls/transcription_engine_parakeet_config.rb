@@ -54,6 +54,7 @@ module Telnyx
           extend Telnyx::Internal::Type::Enum
 
           NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
+          OMI_HEALTH_OMI_MED_STT_V1 = :"omi-health/omi-med-stt-v1"
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -17,7 +17,8 @@ module Telnyx
         # hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For
         # `soniox/stt-rt-v4`, `auto` omits the language hint and lets Soniox auto-detect;
         # ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language. For
-        # `assemblyai/universal-streaming`, `auto` (or unset) enables native multilingual
+        # `assemblyai/universal-3-5-pro` (and its legacy alias
+        # `assemblyai/universal-streaming`), `auto` (or unset) enables native multilingual
         # code-switching; ISO 639-1 codes (`en`, `es`, `de`, `fr`, `pt`, `it`, `tr`, `nl`,
         # `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`, `he`, `ja`, `zh`) bias the session to
         # that language. For `humain/realtime`, supported values are `ar`, `en`,
@@ -42,12 +43,16 @@ module Telnyx
         # - `deepgram/nova-3` and `deepgram/nova-2` for live streaming transcription.
         # - `speechmatics/standard` and `speechmatics/enhanced` for live streaming
         #   transcription.
-        # - `assemblyai/universal-streaming` for live streaming transcription.
+        # - `assemblyai/universal-3-5-pro` for live streaming transcription. The legacy
+        #   alias `assemblyai/universal-streaming` is still accepted and resolves to the
+        #   same model.
         # - `xai/grok-stt` for live streaming transcription.
         # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #   automatic language detection.
         # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #   detection.
+        # - `omi-health/omi-med-stt-v1` for English-only medical transcription
+        #   (Parakeet-based).
         # - `humain/realtime` for live streaming transcription with native Arabic and
         #   Arabic/English code-switching support.
         # - `reson8/turns` for live streaming turn-based transcription of 10 European
@@ -93,7 +98,8 @@ module Telnyx
           # hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For
           # `soniox/stt-rt-v4`, `auto` omits the language hint and lets Soniox auto-detect;
           # ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language. For
-          # `assemblyai/universal-streaming`, `auto` (or unset) enables native multilingual
+          # `assemblyai/universal-3-5-pro` (and its legacy alias
+          # `assemblyai/universal-streaming`), `auto` (or unset) enables native multilingual
           # code-switching; ISO 639-1 codes (`en`, `es`, `de`, `fr`, `pt`, `it`, `tr`, `nl`,
           # `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`, `he`, `ja`, `zh`) bias the session to
           # that language. For `humain/realtime`, supported values are `ar`, `en`,
@@ -113,12 +119,16 @@ module Telnyx
           # - `deepgram/nova-3` and `deepgram/nova-2` for live streaming transcription.
           # - `speechmatics/standard` and `speechmatics/enhanced` for live streaming
           #   transcription.
-          # - `assemblyai/universal-streaming` for live streaming transcription.
+          # - `assemblyai/universal-3-5-pro` for live streaming transcription. The legacy
+          #   alias `assemblyai/universal-streaming` is still accepted and resolves to the
+          #   same model.
           # - `xai/grok-stt` for live streaming transcription.
           # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
           #   automatic language detection.
           # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
           #   detection.
+          # - `omi-health/omi-med-stt-v1` for English-only medical transcription
+          #   (Parakeet-based).
           # - `humain/realtime` for live streaming transcription with native Arabic and
           #   Arabic/English code-switching support.
           # - `reson8/turns` for live streaming turn-based transcription of 10 European
@@ -153,12 +163,16 @@ module Telnyx
         # - `deepgram/nova-3` and `deepgram/nova-2` for live streaming transcription.
         # - `speechmatics/standard` and `speechmatics/enhanced` for live streaming
         #   transcription.
-        # - `assemblyai/universal-streaming` for live streaming transcription.
+        # - `assemblyai/universal-3-5-pro` for live streaming transcription. The legacy
+        #   alias `assemblyai/universal-streaming` is still accepted and resolves to the
+        #   same model.
         # - `xai/grok-stt` for live streaming transcription.
         # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #   automatic language detection.
         # - `nvidia/parakeet-v3` for multilingual transcription with automatic language
         #   detection.
+        # - `omi-health/omi-med-stt-v1` for English-only medical transcription
+        #   (Parakeet-based).
         # - `humain/realtime` for live streaming transcription with native Arabic and
         #   Arabic/English code-switching support.
         # - `reson8/turns` for live streaming turn-based transcription of 10 European
@@ -210,6 +224,11 @@ module Telnyx
               :"speechmatics/enhanced",
               Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
             )
+          ASSEMBLYAI_UNIVERSAL_3_5_PRO =
+            T.let(
+              :"assemblyai/universal-3-5-pro",
+              Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
+            )
           ASSEMBLYAI_UNIVERSAL_STREAMING =
             T.let(
               :"assemblyai/universal-streaming",
@@ -228,6 +247,11 @@ module Telnyx
           NVIDIA_PARAKEET_V3 =
             T.let(
               :"nvidia/parakeet-v3",
+              Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
+            )
+          OMI_HEALTH_OMI_MED_STT_V1 =
+            T.let(
+              :"omi-health/omi-med-stt-v1",
               Telnyx::Calls::TranscriptionConfig::Model::TaggedSymbol
             )
           HUMAIN_REALTIME =

@@ -1,0 +1,141 @@
+module Telnyx
+  module Models
+    module AI
+      module Typesafe
+        type v1_systemone_response =
+          {
+            answers: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer],
+            model: String,
+            usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
+          }
+
+        class V1SystemoneResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor answers: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer]
+
+          attr_accessor usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
+
+          attr_accessor model: String
+
+          def initialize: (
+            answers: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer],
+            model: String,
+            usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
+          ) -> void
+
+          def to_hash: -> {
+            answers: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer],
+            model: String,
+            usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
+          }
+
+          type answer =
+            Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Choice
+            | Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Noul
+            | Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Score
+
+          module Answer
+            extend Telnyx::Internal::Type::Union
+
+            type choice =
+              {
+                choice: String,
+                confidence: Float,
+                probabilities: ::Hash[Symbol, Float],
+                type: :choice
+              }
+
+            class Choice < Telnyx::Internal::Type::BaseModel
+              attr_accessor choice: String
+
+              attr_accessor confidence: Float
+
+              attr_accessor probabilities: ::Hash[Symbol, Float]
+
+              attr_accessor type: :choice
+
+              def initialize: (
+                choice: String,
+                confidence: Float,
+                probabilities: ::Hash[Symbol, Float],
+                ?type: :choice
+              ) -> void
+
+              def to_hash: -> {
+                choice: String,
+                confidence: Float,
+                probabilities: ::Hash[Symbol, Float],
+                type: :choice
+              }
+            end
+
+            type noul = { noul: Float, type: :noul }
+
+            class Noul < Telnyx::Internal::Type::BaseModel
+              attr_accessor noul: Float
+
+              attr_accessor type: :noul
+
+              def initialize: (noul: Float, ?type: :noul) -> void
+
+              def to_hash: -> { noul: Float, type: :noul }
+            end
+
+            type score =
+              {
+                confidence: Float,
+                legend: ::Hash[Symbol, String],
+                probabilities: ::Hash[Symbol, Float],
+                score: Float,
+                type: :score
+              }
+
+            class Score < Telnyx::Internal::Type::BaseModel
+              attr_accessor confidence: Float
+
+              attr_accessor legend: ::Hash[Symbol, String]
+
+              attr_accessor probabilities: ::Hash[Symbol, Float]
+
+              attr_accessor score: Float
+
+              attr_accessor type: :score
+
+              def initialize: (
+                confidence: Float,
+                legend: ::Hash[Symbol, String],
+                probabilities: ::Hash[Symbol, Float],
+                score: Float,
+                ?type: :score
+              ) -> void
+
+              def to_hash: -> {
+                confidence: Float,
+                legend: ::Hash[Symbol, String],
+                probabilities: ::Hash[Symbol, Float],
+                score: Float,
+                type: :score
+              }
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer]
+          end
+
+          type usage = { input_tokens: Integer, output_tokens: Integer }
+
+          class Usage < Telnyx::Internal::Type::BaseModel
+            attr_accessor input_tokens: Integer
+
+            attr_accessor output_tokens: Integer
+
+            def initialize: (
+              input_tokens: Integer,
+              output_tokens: Integer
+            ) -> void
+
+            def to_hash: -> { input_tokens: Integer, output_tokens: Integer }
+          end
+        end
+      end
+    end
+  end
+end

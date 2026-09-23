@@ -17,7 +17,7 @@ module Telnyx
       #
       # @param page_size [Integer]
       #
-      # @param sort [Array<String>] Specifies the sort order for results. <br/>Example: sort=-created_at
+      # @param sort [Array<String>] Specifies the sort order for results. <br/>Example: sort=-created_at <br/>The va
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

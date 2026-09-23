@@ -64,6 +64,9 @@ module Telnyx
 
         module OpenAI
         end
+
+        module Typesafe
+        end
       end
 
       module Anthropic
@@ -110,6 +113,8 @@ module Telnyx
       end
 
       module Compute
+        module Funcs
+        end
       end
 
       module Conferences
@@ -173,6 +178,9 @@ module Telnyx
       end
 
       module FqdnConnections
+      end
+
+      module Funcs
       end
 
       module InsightGroups
@@ -383,6 +391,9 @@ module Telnyx
       end
 
       module Transcriptions
+      end
+
+      module Typesafe
       end
 
       module UacConnections

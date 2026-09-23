@@ -159,7 +159,7 @@ module Telnyx
             # Dials a new participant into the specified conference and returns the created
             # participant resource.
             #
-            # @overload participants(conference_sid, account_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
+            # @overload participants(conference_sid, account_sid:, amd_status_callback: nil, amd_status_callback_method: nil, application_sid: nil, beep: nil, caller_id: nil, call_sid_to_coach: nil, cancel_playback_on_detect_message_end: nil, cancel_playback_on_machine_detection: nil, coaching: nil, conference_record: nil, conference_recording_status_callback: nil, conference_recording_status_callback_event: nil, conference_recording_status_callback_method: nil, conference_recording_timeout: nil, conference_status_callback: nil, conference_status_callback_event: nil, conference_status_callback_method: nil, conference_trim: nil, custom_headers: nil, early_media: nil, end_conference_on_exit: nil, from: nil, label: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, max_participants: nil, muted: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_track: nil, sip_auth_password: nil, sip_auth_username: nil, start_conference_on_enter: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, time_limit: nil, timeout_seconds: nil, to: nil, trim: nil, wait_url: nil, request_options: {})
             #
             # @param conference_sid [String] Path param: The ConferenceSid that uniquely identifies a conference.
             #
@@ -213,7 +213,21 @@ module Telnyx
             #
             # @param machine_detection [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetection] Body param: Whether to detect if a human or an answering machine picked up the c
             #
+            # @param machine_detection_beep_max_frequency [Integer] Body param: Highest frequency, in Hz, that a tone can reach and still be treated
+            #
+            # @param machine_detection_beep_min_frequency [Integer] Body param: Lowest frequency, in Hz, that a tone must reach to be treated as a b
+            #
+            # @param machine_detection_beep_min_tone_duration [Integer] Body param: Shortest tone, in milliseconds, that can be treated as a beep. Raisi
+            #
             # @param machine_detection_beep_profile [Symbol, Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::MachineDetectionBeepProfile] Body param: Selects which detectors must validate a beep. `both` requires the am
+            #
+            # @param machine_detection_beep_spectral_confirmation [Boolean] Body param: When enabled, a candidate beep must pass an additional spectral chec
+            #
+            # @param machine_detection_beep_spectral_min_purity [Float] Body param: Minimum spectral purity, from 0 to 1, for a tone to be treated as a
+            #
+            # @param machine_detection_beep_spectral_reject_fax_cng [Boolean] Body param: When enabled, the fax CNG tone is rejected rather than reported as a
+            #
+            # @param machine_detection_beep_spectral_window [Integer] Body param: Length of the spectral confirmation window, in milliseconds. Only us
             #
             # @param machine_detection_silence_timeout [Integer] Body param: If initial silence duration is greater than this value, consider it
             #

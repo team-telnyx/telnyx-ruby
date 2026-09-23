@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    module Texml
+      type call_create_params =
+        {
+          connection_id: String,
+          from: String,
+          to: String,
+          method_: Telnyx::Models::Texml::CallCreateParams::method_,
+          texml: String,
+          url: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class CallCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor connection_id: String
+
+        attr_accessor from: String
+
+        attr_accessor to: String
+
+        attr_reader method_: Telnyx::Models::Texml::CallCreateParams::method_?
+
+        def method_=: (
+          Telnyx::Models::Texml::CallCreateParams::method_
+        ) -> Telnyx::Models::Texml::CallCreateParams::method_
+
+        attr_reader texml: String?
+
+        def texml=: (String) -> String
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (
+          connection_id: String,
+          from: String,
+          to: String,
+          ?method_: Telnyx::Models::Texml::CallCreateParams::method_,
+          ?texml: String,
+          ?url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          connection_id: String,
+          from: String,
+          to: String,
+          method_: Telnyx::Models::Texml::CallCreateParams::method_,
+          texml: String,
+          url: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type method_ = :GET | :POST
+
+        module Method
+          extend Telnyx::Internal::Type::Enum
+
+          GET: :GET
+          POST: :POST
+
+          def self?.values: -> ::Array[Telnyx::Models::Texml::CallCreateParams::method_]
+        end
+      end
+    end
+  end
+end

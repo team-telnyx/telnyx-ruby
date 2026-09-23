@@ -31,7 +31,14 @@ module Telnyx
               from: String,
               label: String,
               machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
+              machine_detection_beep_max_frequency: Integer,
+              machine_detection_beep_min_frequency: Integer,
+              machine_detection_beep_min_tone_duration: Integer,
               machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection_beep_profile,
+              machine_detection_beep_spectral_confirmation: bool,
+              machine_detection_beep_spectral_min_purity: Float,
+              machine_detection_beep_spectral_reject_fax_cng: bool,
+              machine_detection_beep_spectral_window: Integer,
               machine_detection_silence_timeout: Integer,
               machine_detection_speech_end_threshold: Integer,
               machine_detection_speech_threshold: Integer,
@@ -179,11 +186,39 @@ module Telnyx
               Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection
             ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection
 
+            attr_reader machine_detection_beep_max_frequency: Integer?
+
+            def machine_detection_beep_max_frequency=: (Integer) -> Integer
+
+            attr_reader machine_detection_beep_min_frequency: Integer?
+
+            def machine_detection_beep_min_frequency=: (Integer) -> Integer
+
+            attr_reader machine_detection_beep_min_tone_duration: Integer?
+
+            def machine_detection_beep_min_tone_duration=: (Integer) -> Integer
+
             attr_reader machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection_beep_profile?
 
             def machine_detection_beep_profile=: (
               Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection_beep_profile
             ) -> Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection_beep_profile
+
+            attr_reader machine_detection_beep_spectral_confirmation: bool?
+
+            def machine_detection_beep_spectral_confirmation=: (bool) -> bool
+
+            attr_reader machine_detection_beep_spectral_min_purity: Float?
+
+            def machine_detection_beep_spectral_min_purity=: (Float) -> Float
+
+            attr_reader machine_detection_beep_spectral_reject_fax_cng: bool?
+
+            def machine_detection_beep_spectral_reject_fax_cng=: (bool) -> bool
+
+            attr_reader machine_detection_beep_spectral_window: Integer?
+
+            def machine_detection_beep_spectral_window=: (Integer) -> Integer
 
             attr_reader machine_detection_silence_timeout: Integer?
 
@@ -318,7 +353,14 @@ module Telnyx
               ?from: String,
               ?label: String,
               ?machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
+              ?machine_detection_beep_max_frequency: Integer,
+              ?machine_detection_beep_min_frequency: Integer,
+              ?machine_detection_beep_min_tone_duration: Integer,
               ?machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection_beep_profile,
+              ?machine_detection_beep_spectral_confirmation: bool,
+              ?machine_detection_beep_spectral_min_purity: Float,
+              ?machine_detection_beep_spectral_reject_fax_cng: bool,
+              ?machine_detection_beep_spectral_window: Integer,
               ?machine_detection_silence_timeout: Integer,
               ?machine_detection_speech_end_threshold: Integer,
               ?machine_detection_speech_threshold: Integer,
@@ -373,7 +415,14 @@ module Telnyx
               from: String,
               label: String,
               machine_detection: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection,
+              machine_detection_beep_max_frequency: Integer,
+              machine_detection_beep_min_frequency: Integer,
+              machine_detection_beep_min_tone_duration: Integer,
               machine_detection_beep_profile: Telnyx::Models::Texml::Accounts::Conferences::ParticipantParticipantsParams::machine_detection_beep_profile,
+              machine_detection_beep_spectral_confirmation: bool,
+              machine_detection_beep_spectral_min_purity: Float,
+              machine_detection_beep_spectral_reject_fax_cng: bool,
+              machine_detection_beep_spectral_window: Integer,
               machine_detection_silence_timeout: Integer,
               machine_detection_speech_end_threshold: Integer,
               machine_detection_speech_threshold: Integer,

@@ -222,10 +222,10 @@ module Telnyx
 
         # Configuration for post-conversation processing. When enabled, the assistant
         # receives one additional LLM turn after the conversation ends, allowing it to
-        # execute tool calls such as logging to a CRM or sending a summary. The assistant
-        # can execute multiple parallel or sequential tools during this phase.
-        # Telephony-control tools (e.g. hangup, transfer) are unavailable
-        # post-conversation. Beta feature.
+        # execute final tool calls such as sending a summary or updating a record via
+        # webhook or function tools. Integration and MCP server tools are not available
+        # post-conversation; call-control tools (e.g. hangup, transfer) are also
+        # unavailable. Beta feature.
         sig { returns(T.nilable(Telnyx::AI::PostConversationSettings)) }
         attr_reader :post_conversation_settings
 
@@ -268,9 +268,12 @@ module Telnyx
         end
         attr_writer :telephony_settings
 
-        # Deprecated for new integrations. Inline tool definitions available to the
-        # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
-        # endpoints.
+        # The assistant's tools. Responses merge the assistant's shared Tools Library
+        # tools into this array alongside inline tools, each flagged `shared: true`;
+        # inline tools carry `shared: false`. On update, a sent `tools` array fully
+        # replaces the inline tools only — shared tools stay attached unless `tool_ids`
+        # changes. Each tool type except `function`, `webhook`, and `client_side_tool`
+        # allows at most one instance per assistant across both sources.
         sig do
           returns(T.nilable(T::Array[Telnyx::AI::AssistantTool::Variants]))
         end
@@ -281,11 +284,12 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
+                  Telnyx::AI::AssistantTool::Function::OrHash,
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                   Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
-                  Telnyx::AI::HangupTool::OrHash,
+                  Telnyx::AI::AssistantTool::Hangup::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
@@ -378,11 +382,12 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
+                  Telnyx::AI::AssistantTool::Function::OrHash,
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                   Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
-                  Telnyx::AI::HangupTool::OrHash,
+                  Telnyx::AI::AssistantTool::Hangup::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
@@ -480,10 +485,10 @@ module Telnyx
           observability_settings: nil,
           # Configuration for post-conversation processing. When enabled, the assistant
           # receives one additional LLM turn after the conversation ends, allowing it to
-          # execute tool calls such as logging to a CRM or sending a summary. The assistant
-          # can execute multiple parallel or sequential tools during this phase.
-          # Telephony-control tools (e.g. hangup, transfer) are unavailable
-          # post-conversation. Beta feature.
+          # execute final tool calls such as sending a summary or updating a record via
+          # webhook or function tools. Integration and MCP server tools are not available
+          # post-conversation; call-control tools (e.g. hangup, transfer) are also
+          # unavailable. Beta feature.
           post_conversation_settings: nil,
           privacy_settings: nil,
           # IDs of missions related to this assistant.
@@ -492,9 +497,12 @@ module Telnyx
           # tag endpoints.
           tags: nil,
           telephony_settings: nil,
-          # Deprecated for new integrations. Inline tool definitions available to the
-          # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
-          # endpoints.
+          # The assistant's tools. Responses merge the assistant's shared Tools Library
+          # tools into this array alongside inline tools, each flagged `shared: true`;
+          # inline tools carry `shared: false`. On update, a sent `tools` array fully
+          # replaces the inline tools only — shared tools stay attached unless `tool_ids`
+          # changes. Each tool type except `function`, `webhook`, and `client_side_tool`
+          # allows at most one instance per assistant across both sources.
           tools: nil,
           transcription: nil,
           # Timestamp when this assistant version was created.

@@ -80,4 +80,20 @@ class Telnyx::Test::Resources::ConnectionsTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_retrieve_count
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.connections.retrieve_count
+
+    assert_pattern do
+      response => Telnyx::Models::ConnectionRetrieveCountResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::ConnectionRetrieveCountResponse::Data
+      }
+    end
+  end
 end

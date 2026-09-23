@@ -32,15 +32,18 @@ module Telnyx
         optional :fallback_destination, String
 
         # @!attribute noise_suppression
-        #   The noise suppression engine to use. Use 'disabled' to turn off noise
-        #   suppression.
+        #   The noise suppression engine to use. 'aicoustics' is STT-optimized and
+        #   recommended for AI assistants (configure through noise_suppression_config). Use
+        #   'disabled' to turn off noise suppression.
         #
         #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppression, nil]
         optional :noise_suppression, enum: -> { Telnyx::AI::TelephonySettings::NoiseSuppression }
 
         # @!attribute noise_suppression_config
-        #   Configuration for noise suppression. Only applicable when noise_suppression is
-        #   'deepfilternet'.
+        #   Configuration for noise suppression. Applicable fields depend on the engine:
+        #   'attenuation_limit' and 'mode' only when noise_suppression is 'deepfilternet';
+        #   'family', 'size' and 'enhancement_level' only when noise_suppression is
+        #   'aicoustics'.
         #
         #   @return [Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig, nil]
         optional :noise_suppression_config, -> { Telnyx::AI::TelephonySettings::NoiseSuppressionConfig }
@@ -119,9 +122,9 @@ module Telnyx
         #
         #   @param fallback_destination [String] Destination number or SIP URI to transfer the caller to when the AI conversation
         #
-        #   @param noise_suppression [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppression] The noise suppression engine to use. Use 'disabled' to turn off noise suppressio
+        #   @param noise_suppression [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppression] The noise suppression engine to use. 'aicoustics' is STT-optimized and recommend
         #
-        #   @param noise_suppression_config [Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig] Configuration for noise suppression. Only applicable when noise_suppression is '
+        #   @param noise_suppression_config [Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig] Configuration for noise suppression. Applicable fields depend on the engine: 'at
         #
         #   @param recording_settings [Telnyx::Models::AI::TelephonySettings::RecordingSettings] Configuration for call recording format and channel settings.
         #
@@ -137,13 +140,15 @@ module Telnyx
         #
         #   @param voicemail_detection [Telnyx::Models::AI::TelephonySettings::VoicemailDetection] Configuration for voicemail detection (AMD - Answering Machine Detection) on out
 
-        # The noise suppression engine to use. Use 'disabled' to turn off noise
-        # suppression.
+        # The noise suppression engine to use. 'aicoustics' is STT-optimized and
+        # recommended for AI assistants (configure through noise_suppression_config). Use
+        # 'disabled' to turn off noise suppression.
         #
         # @see Telnyx::Models::AI::TelephonySettings#noise_suppression
         module NoiseSuppression
           extend Telnyx::Internal::Type::Enum
 
+          AICOUSTICS = :aicoustics
           KRISP = :krisp
           DEEPFILTERNET = :deepfilternet
           DISABLED = :disabled
@@ -155,32 +160,97 @@ module Telnyx
         # @see Telnyx::Models::AI::TelephonySettings#noise_suppression_config
         class NoiseSuppressionConfig < Telnyx::Internal::Type::BaseModel
           # @!attribute attenuation_limit
-          #   Attenuation limit for noise suppression. Range: 0-100.
+          #   Attenuation limit for noise suppression. Range: 0-100. Only applicable when
+          #   noise_suppression is 'deepfilternet'.
           #
           #   @return [Integer, nil]
           optional :attenuation_limit, Integer
 
+          # @!attribute enhancement_level
+          #   AiCoustics enhancement intensity. Range: 0-1. Only applicable when
+          #   noise_suppression is 'aicoustics'.
+          #
+          #   @return [Float, nil]
+          optional :enhancement_level, Float
+
+          # @!attribute family
+          #   AiCoustics model family optimized for Voice AI and STT. Only applicable when
+          #   noise_suppression is 'aicoustics'.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::Family, nil]
+          optional :family, enum: -> { Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family }
+
           # @!attribute mode
-          #   Mode for noise suppression configuration.
+          #   Mode for noise suppression configuration. Only applicable when noise_suppression
+          #   is 'deepfilternet'.
           #
           #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::Mode, nil]
           optional :mode, enum: -> { Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Mode }
 
-          # @!method initialize(attenuation_limit: nil, mode: nil)
-          #   Configuration for noise suppression. Only applicable when noise_suppression is
-          #   'deepfilternet'.
+          # @!attribute size
+          #   AiCoustics model size. 'vf' tracks the latest model release; 'vf_2_0_l' is
+          #   pinned to version 2.0 for consistent, predictable behavior. Only applicable when
+          #   noise_suppression is 'aicoustics'.
           #
-          #   @param attenuation_limit [Integer] Attenuation limit for noise suppression. Range: 0-100.
-          #
-          #   @param mode [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::Mode] Mode for noise suppression configuration.
+          #   @return [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::Size, nil]
+          optional :size, enum: -> { Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size }
 
-          # Mode for noise suppression configuration.
+          # @!method initialize(attenuation_limit: nil, enhancement_level: nil, family: nil, mode: nil, size: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig} for more
+          #   details.
+          #
+          #   Configuration for noise suppression. Applicable fields depend on the engine:
+          #   'attenuation_limit' and 'mode' only when noise_suppression is 'deepfilternet';
+          #   'family', 'size' and 'enhancement_level' only when noise_suppression is
+          #   'aicoustics'.
+          #
+          #   @param attenuation_limit [Integer] Attenuation limit for noise suppression. Range: 0-100. Only applicable when nois
+          #
+          #   @param enhancement_level [Float] AiCoustics enhancement intensity. Range: 0-1. Only applicable when noise_suppres
+          #
+          #   @param family [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::Family] AiCoustics model family optimized for Voice AI and STT. Only applicable when noi
+          #
+          #   @param mode [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::Mode] Mode for noise suppression configuration. Only applicable when noise_suppression
+          #
+          #   @param size [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::Size] AiCoustics model size. 'vf' tracks the latest model release; 'vf_2_0_l' is pinne
+
+          # AiCoustics model family optimized for Voice AI and STT. Only applicable when
+          # noise_suppression is 'aicoustics'.
+          #
+          # @see Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig#family
+          module Family
+            extend Telnyx::Internal::Type::Enum
+
+            QUAIL = :quail
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Mode for noise suppression configuration. Only applicable when noise_suppression
+          # is 'deepfilternet'.
           #
           # @see Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig#mode
           module Mode
             extend Telnyx::Internal::Type::Enum
 
             ADVANCED = :advanced
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # AiCoustics model size. 'vf' tracks the latest model release; 'vf_2_0_l' is
+          # pinned to version 2.0 for consistent, predictable behavior. Only applicable when
+          # noise_suppression is 'aicoustics'.
+          #
+          # @see Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig#size
+          module Size
+            extend Telnyx::Internal::Type::Enum
+
+            VF = :vf
+            VF_2_0_L = :vf_2_0_l
 
             # @!method self.values
             #   @return [Array<Symbol>]

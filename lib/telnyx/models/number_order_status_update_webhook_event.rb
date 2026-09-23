@@ -28,8 +28,8 @@ module Telnyx
         # @!attribute event_type
         #   The type of event being sent
         #
-        #   @return [String]
-        required :event_type, String
+        #   @return [Symbol, Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::EventType]
+        required :event_type, enum: -> { Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::EventType }
 
         # @!attribute occurred_at
         #   ISO 8601 timestamp of when the event occurred
@@ -56,13 +56,25 @@ module Telnyx
         #
         #   @param id [String] Unique identifier for the event
         #
-        #   @param event_type [String] The type of event being sent
+        #   @param event_type [Symbol, Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::EventType] The type of event being sent
         #
         #   @param occurred_at [Time] ISO 8601 timestamp of when the event occurred
         #
         #   @param payload [Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data::Payload] Number order data delivered in a webhook. Server-generated fields are valid in t
         #
         #   @param record_type [String] Type of record
+
+        # The type of event being sent
+        #
+        # @see Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data#event_type
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          NUMBER_ORDER_COMPLETE = :"number_order.complete"
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Telnyx::Models::NumberOrderStatusUpdateWebhookEvent::Data#payload
         class Payload < Telnyx::Internal::Type::BaseModel

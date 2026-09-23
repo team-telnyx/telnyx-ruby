@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    type bot_signup_create_params =
+      {
+        bot_challenge_answer: String,
+        bot_challenge_nonce: String,
+        privacy_policy_url: String,
+        terms_and_conditions_url: String,
+        terms_of_service: Telnyx::Models::BotSignupCreateParams::terms_of_service,
+        email: String,
+        terms_and_conditions_eu_url: String,
+        terms_of_service_eu: Telnyx::Models::BotSignupCreateParams::terms_of_service_eu
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class BotSignupCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor bot_challenge_answer: String
+
+      attr_accessor bot_challenge_nonce: String
+
+      attr_accessor privacy_policy_url: String
+
+      attr_accessor terms_and_conditions_url: String
+
+      attr_accessor terms_of_service: Telnyx::Models::BotSignupCreateParams::terms_of_service
+
+      attr_reader email: String?
+
+      def email=: (String) -> String
+
+      attr_reader terms_and_conditions_eu_url: String?
+
+      def terms_and_conditions_eu_url=: (String) -> String
+
+      attr_reader terms_of_service_eu: Telnyx::Models::BotSignupCreateParams::terms_of_service_eu?
+
+      def terms_of_service_eu=: (
+        Telnyx::Models::BotSignupCreateParams::terms_of_service_eu
+      ) -> Telnyx::Models::BotSignupCreateParams::terms_of_service_eu
+
+      def initialize: (
+        bot_challenge_answer: String,
+        bot_challenge_nonce: String,
+        privacy_policy_url: String,
+        terms_and_conditions_url: String,
+        terms_of_service: Telnyx::Models::BotSignupCreateParams::terms_of_service,
+        ?email: String,
+        ?terms_and_conditions_eu_url: String,
+        ?terms_of_service_eu: Telnyx::Models::BotSignupCreateParams::terms_of_service_eu,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        bot_challenge_answer: String,
+        bot_challenge_nonce: String,
+        privacy_policy_url: String,
+        terms_and_conditions_url: String,
+        terms_of_service: Telnyx::Models::BotSignupCreateParams::terms_of_service,
+        email: String,
+        terms_and_conditions_eu_url: String,
+        terms_of_service_eu: Telnyx::Models::BotSignupCreateParams::terms_of_service_eu,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type terms_of_service = true
+
+      module TermsOfService
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Telnyx::Models::BotSignupCreateParams::terms_of_service]
+      end
+
+      type terms_of_service_eu = true
+
+      module TermsOfServiceEu
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[Telnyx::Models::BotSignupCreateParams::terms_of_service_eu]
+      end
+    end
+  end
+end

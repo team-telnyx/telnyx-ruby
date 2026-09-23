@@ -2,11 +2,12 @@ module Telnyx
   module Models
     module AI
       type assistant_tool =
-        Telnyx::AI::InferenceEmbeddingWebhookToolParams
+        Telnyx::AI::AssistantTool::Function
+        | Telnyx::AI::InferenceEmbeddingWebhookToolParams
         | Telnyx::AI::AssistantTool::ClientSideTool
         | Telnyx::AI::RetrievalTool
         | Telnyx::AI::AssistantTool::Handoff
-        | Telnyx::AI::HangupTool
+        | Telnyx::AI::AssistantTool::Hangup
         | Telnyx::AI::AssistantTool::Transfer
         | Telnyx::AI::AssistantTool::Invite
         | Telnyx::AI::AssistantTool::Refer
@@ -19,10 +20,40 @@ module Telnyx
       module AssistantTool
         extend Telnyx::Internal::Type::Union
 
+        type function =
+          {
+            function: Telnyx::AI::OpenAI::FunctionDefinition,
+            type: :function,
+            shared: bool
+          }
+
+        class Function < Telnyx::Internal::Type::BaseModel
+          attr_accessor function: Telnyx::AI::OpenAI::FunctionDefinition
+
+          attr_accessor type: :function
+
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
+          def initialize: (
+            function: Telnyx::AI::OpenAI::FunctionDefinition,
+            ?shared: bool,
+            ?type: :function
+          ) -> void
+
+          def to_hash: -> {
+            function: Telnyx::AI::OpenAI::FunctionDefinition,
+            type: :function,
+            shared: bool
+          }
+        end
+
         type client_side_tool =
           {
             client_side_tool: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
-            type: :client_side_tool
+            type: :client_side_tool,
+            shared: bool
           }
 
         class ClientSideTool < Telnyx::Internal::Type::BaseModel
@@ -30,14 +61,20 @@ module Telnyx
 
           attr_accessor type: :client_side_tool
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             client_side_tool: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
+            ?shared: bool,
             ?type: :client_side_tool
           ) -> void
 
           def to_hash: -> {
             client_side_tool: Telnyx::AI::AssistantTool::ClientSideTool::ClientSideTool,
-            type: :client_side_tool
+            type: :client_side_tool,
+            shared: bool
           }
 
           type client_side_tool =
@@ -116,7 +153,8 @@ module Telnyx
         type handoff =
           {
             handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
-            type: :handoff
+            type: :handoff,
+            shared: bool
           }
 
         class Handoff < Telnyx::Internal::Type::BaseModel
@@ -124,14 +162,20 @@ module Telnyx
 
           attr_accessor type: :handoff
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
+            ?shared: bool,
             ?type: :handoff
           ) -> void
 
           def to_hash: -> {
             handoff: Telnyx::AI::AssistantTool::Handoff::Handoff,
-            type: :handoff
+            type: :handoff,
+            shared: bool
           }
 
           type handoff =
@@ -184,10 +228,36 @@ module Telnyx
           end
         end
 
+        type hangup =
+          { hangup: Telnyx::AI::HangupToolParams, type: :hangup, shared: bool }
+
+        class Hangup < Telnyx::Internal::Type::BaseModel
+          attr_accessor hangup: Telnyx::AI::HangupToolParams
+
+          attr_accessor type: :hangup
+
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
+          def initialize: (
+            hangup: Telnyx::AI::HangupToolParams,
+            ?shared: bool,
+            ?type: :hangup
+          ) -> void
+
+          def to_hash: -> {
+            hangup: Telnyx::AI::HangupToolParams,
+            type: :hangup,
+            shared: bool
+          }
+        end
+
         type transfer =
           {
             transfer: Telnyx::AI::AssistantTool::Transfer::Transfer,
-            type: :transfer
+            type: :transfer,
+            shared: bool
           }
 
         class Transfer < Telnyx::Internal::Type::BaseModel
@@ -195,14 +265,20 @@ module Telnyx
 
           attr_accessor type: :transfer
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             transfer: Telnyx::AI::AssistantTool::Transfer::Transfer,
+            ?shared: bool,
             ?type: :transfer
           ) -> void
 
           def to_hash: -> {
             transfer: Telnyx::AI::AssistantTool::Transfer::Transfer,
-            type: :transfer
+            type: :transfer,
+            shared: bool
           }
 
           type transfer =
@@ -590,21 +666,31 @@ module Telnyx
         end
 
         type invite =
-          { invite: Telnyx::AI::AssistantTool::Invite::Invite, type: :invite }
+          {
+            invite: Telnyx::AI::AssistantTool::Invite::Invite,
+            type: :invite,
+            shared: bool
+          }
 
         class Invite < Telnyx::Internal::Type::BaseModel
           attr_accessor invite: Telnyx::AI::AssistantTool::Invite::Invite
 
           attr_accessor type: :invite
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             invite: Telnyx::AI::AssistantTool::Invite::Invite,
+            ?shared: bool,
             ?type: :invite
           ) -> void
 
           def to_hash: -> {
             invite: Telnyx::AI::AssistantTool::Invite::Invite,
-            type: :invite
+            type: :invite,
+            shared: bool
           }
 
           type invite =
@@ -763,21 +849,31 @@ module Telnyx
         end
 
         type refer =
-          { refer: Telnyx::AI::AssistantTool::Refer::Refer, type: :refer }
+          {
+            refer: Telnyx::AI::AssistantTool::Refer::Refer,
+            type: :refer,
+            shared: bool
+          }
 
         class Refer < Telnyx::Internal::Type::BaseModel
           attr_accessor refer: Telnyx::AI::AssistantTool::Refer::Refer
 
           attr_accessor type: :refer
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             refer: Telnyx::AI::AssistantTool::Refer::Refer,
+            ?shared: bool,
             ?type: :refer
           ) -> void
 
           def to_hash: -> {
             refer: Telnyx::AI::AssistantTool::Refer::Refer,
-            type: :refer
+            type: :refer,
+            shared: bool
           }
 
           type refer =
@@ -907,25 +1003,36 @@ module Telnyx
           end
         end
 
-        type send_dtmf = { send_dtmf: ::Hash[Symbol, top], type: :send_dtmf }
+        type send_dtmf =
+          { send_dtmf: ::Hash[Symbol, top], type: :send_dtmf, shared: bool }
 
         class SendDtmf < Telnyx::Internal::Type::BaseModel
           attr_accessor send_dtmf: ::Hash[Symbol, top]
 
           attr_accessor type: :send_dtmf
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             send_dtmf: ::Hash[Symbol, top],
+            ?shared: bool,
             ?type: :send_dtmf
           ) -> void
 
-          def to_hash: -> { send_dtmf: ::Hash[Symbol, top], type: :send_dtmf }
+          def to_hash: -> {
+            send_dtmf: ::Hash[Symbol, top],
+            type: :send_dtmf,
+            shared: bool
+          }
         end
 
         type send_message =
           {
             send_message: Telnyx::AI::AssistantTool::SendMessage::SendMessage,
-            type: :send_message
+            type: :send_message,
+            shared: bool
           }
 
         class SendMessage < Telnyx::Internal::Type::BaseModel
@@ -933,14 +1040,20 @@ module Telnyx
 
           attr_accessor type: :send_message
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             send_message: Telnyx::AI::AssistantTool::SendMessage::SendMessage,
+            ?shared: bool,
             ?type: :send_message
           ) -> void
 
           def to_hash: -> {
             send_message: Telnyx::AI::AssistantTool::SendMessage::SendMessage,
-            type: :send_message
+            type: :send_message,
+            shared: bool
           }
 
           type send_message = { message_template: String? }
@@ -957,7 +1070,8 @@ module Telnyx
         type skip_turn =
           {
             skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
-            type: :skip_turn
+            type: :skip_turn,
+            shared: bool
           }
 
         class SkipTurn < Telnyx::Internal::Type::BaseModel
@@ -965,14 +1079,20 @@ module Telnyx
 
           attr_accessor type: :skip_turn
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
+            ?shared: bool,
             ?type: :skip_turn
           ) -> void
 
           def to_hash: -> {
             skip_turn: Telnyx::AI::AssistantTool::SkipTurn::SkipTurn,
-            type: :skip_turn
+            type: :skip_turn,
+            shared: bool
           }
 
           type skip_turn = { description: String }
@@ -988,22 +1108,35 @@ module Telnyx
           end
         end
 
-        type pay = { pay: Telnyx::AI::PayToolParams, type: :pay }
+        type pay = { pay: Telnyx::AI::PayToolParams, type: :pay, shared: bool }
 
         class Pay < Telnyx::Internal::Type::BaseModel
           attr_accessor pay: Telnyx::AI::PayToolParams
 
           attr_accessor type: :pay
 
-          def initialize: (pay: Telnyx::AI::PayToolParams, ?type: :pay) -> void
+          attr_reader shared: bool?
 
-          def to_hash: -> { pay: Telnyx::AI::PayToolParams, type: :pay }
+          def shared=: (bool) -> bool
+
+          def initialize: (
+            pay: Telnyx::AI::PayToolParams,
+            ?shared: bool,
+            ?type: :pay
+          ) -> void
+
+          def to_hash: -> {
+            pay: Telnyx::AI::PayToolParams,
+            type: :pay,
+            shared: bool
+          }
         end
 
         type update_dynamic_variables =
           {
             type: :update_dynamic_variables,
-            update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams
+            update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+            shared: bool
           }
 
         class UpdateDynamicVariables < Telnyx::Internal::Type::BaseModel
@@ -1011,14 +1144,20 @@ module Telnyx
 
           attr_accessor update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams
 
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
           def initialize: (
             update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+            ?shared: bool,
             ?type: :update_dynamic_variables
           ) -> void
 
           def to_hash: -> {
             type: :update_dynamic_variables,
-            update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams
+            update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+            shared: bool
           }
         end
 

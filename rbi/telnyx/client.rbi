@@ -733,6 +733,41 @@ module Telnyx
     sig { returns(Telnyx::Resources::Compute) }
     attr_reader :compute
 
+    # Noise suppression engines that can be selected when configuring noise
+    # suppression on voice connections.
+    sig { returns(Telnyx::Resources::NoiseSuppressionEngines) }
+    attr_reader :noise_suppression_engines
+
+    # Agentic (bot) signup for Telnyx accounts. An AI agent solves a reverse-CAPTCHA
+    # challenge designed to be easy for LLMs and hard for humans, registers an
+    # account, and signs in by consuming a magic link emailed to the account owner.
+    # All endpoints are public and unauthenticated; signup endpoints are additionally
+    # gated by the freemium feature flags and per-country availability.
+    sig { returns(Telnyx::Resources::BotChallenge) }
+    attr_reader :bot_challenge
+
+    # Agentic (bot) signup for Telnyx accounts. An AI agent solves a reverse-CAPTCHA
+    # challenge designed to be easy for LLMs and hard for humans, registers an
+    # account, and signs in by consuming a magic link emailed to the account owner.
+    # All endpoints are public and unauthenticated; signup endpoints are additionally
+    # gated by the freemium feature flags and per-country availability.
+    sig { returns(Telnyx::Resources::BotSessions) }
+    attr_reader :bot_sessions
+
+    # Agentic (bot) signup for Telnyx accounts. An AI agent solves a reverse-CAPTCHA
+    # challenge designed to be easy for LLMs and hard for humans, registers an
+    # account, and signs in by consuming a magic link emailed to the account owner.
+    # All endpoints are public and unauthenticated; signup endpoints are additionally
+    # gated by the freemium feature flags and per-country availability.
+    sig { returns(Telnyx::Resources::BotSignup) }
+    attr_reader :bot_signup
+
+    # Machine payment (MPP) account-credit operations. Fund your Telnyx account
+    # programmatically from a machine or agent using the Machine Payment Protocol, an
+    # HTTP-402 flow settled via Stripe or Tempo.
+    sig { returns(Telnyx::Resources::MachinePayments) }
+    attr_reader :machine_payments
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

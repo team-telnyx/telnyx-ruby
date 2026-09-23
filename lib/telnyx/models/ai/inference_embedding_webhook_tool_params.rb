@@ -14,9 +14,29 @@ module Telnyx
         #   @return [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook]
         required :webhook, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook }
 
-        # @!method initialize(type:, webhook:)
+        response_only do
+          # @!attribute shared
+          #   Whether this tool comes from the shared Tools Library. Responses merge shared
+          #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          #   Read-only: set by the server, not accepted in requests. When updating an
+          #   assistant, omit `shared: true` tools from the request `tools` array and manage
+          #   them through `tool_ids` instead — re-sending their definitions creates an inline
+          #   duplicate (rejected with error code 10015 when the type allows only one instance
+          #   per assistant).
+          #
+          #   @return [Boolean, nil]
+          optional :shared, Telnyx::Internal::Type::Boolean
+        end
+
+        # @!method initialize(type:, webhook:, shared: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams} for more details.
+        #
         #   @param type [Symbol, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Type]
+        #
         #   @param webhook [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook]
+        #
+        #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
 
         # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams#type
         module Type

@@ -9,6 +9,12 @@ module Telnyx
       #   @return [String, nil]
       optional :id, String
 
+      # @!attribute body
+      #   RCS webhook message body. Text messages use the text property.
+      #
+      #   @return [Telnyx::Models::MessagingOutboundMessagePayload::Body, nil]
+      optional :body, -> { Telnyx::MessagingOutboundMessagePayload::Body }
+
       # @!attribute cc
       #
       #   @return [Array<Telnyx::Models::MessagingOutboundMessagePayload::Cc>, nil]
@@ -190,11 +196,13 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, wait_seconds: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, body: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, wait_seconds: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingOutboundMessagePayload} for more details.
       #
       #   @param id [String] Identifies the type of resource.
+      #
+      #   @param body [Telnyx::Models::MessagingOutboundMessagePayload::Body] RCS webhook message body. Text messages use the text property.
       #
       #   @param cc [Array<Telnyx::Models::MessagingOutboundMessagePayload::Cc>]
       #
@@ -253,6 +261,20 @@ module Telnyx
       #   @param webhook_failover_url [String, nil] The failover URL where webhooks related to this message will be sent if sending
       #
       #   @param webhook_url [String, nil] The URL where webhooks related to this message will be sent.
+
+      # @see Telnyx::Models::MessagingOutboundMessagePayload#body
+      class Body < Telnyx::Internal::Type::BaseModel
+        # @!attribute text
+        #   RCS text message.
+        #
+        #   @return [String, nil]
+        optional :text, String
+
+        # @!method initialize(text: nil)
+        #   RCS webhook message body. Text messages use the text property.
+        #
+        #   @param text [String] RCS text message.
+      end
 
       class Cc < Telnyx::Internal::Type::BaseModel
         # @!attribute carrier
@@ -415,6 +437,18 @@ module Telnyx
 
       # @see Telnyx::Models::MessagingOutboundMessagePayload#from
       class From < Telnyx::Internal::Type::BaseModel
+        # @!attribute agent_id
+        #   RCS agent identifier.
+        #
+        #   @return [String, nil]
+        optional :agent_id, String
+
+        # @!attribute agent_name
+        #   RCS agent name.
+        #
+        #   @return [String, nil]
+        optional :agent_name, String
+
         # @!attribute carrier
         #   The carrier of the receiver.
         #
@@ -434,9 +468,13 @@ module Telnyx
         #   @return [String, nil]
         optional :phone_number, String
 
-        # @!method initialize(carrier: nil, line_type: nil, phone_number: nil)
+        # @!method initialize(agent_id: nil, agent_name: nil, carrier: nil, line_type: nil, phone_number: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MessagingOutboundMessagePayload::From} for more details.
+        #
+        #   @param agent_id [String] RCS agent identifier.
+        #
+        #   @param agent_name [String] RCS agent name.
         #
         #   @param carrier [String] The carrier of the receiver.
         #
@@ -574,6 +612,7 @@ module Telnyx
           DELIVERY_UNCONFIRMED = :delivery_unconfirmed
           DELIVERED = :delivered
           DELIVERY_FAILED = :delivery_failed
+          READ = :read
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -588,6 +627,7 @@ module Telnyx
 
         SMS = :SMS
         MMS = :MMS
+        RCS = :RCS
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -317,8 +317,8 @@ module Telnyx
             end
 
           # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
-          # For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-          # size: 5MB.
+          # For best quality, provide up to 60 seconds of clear, uninterrupted speech.
+          # Maximum size: 5MB.
           sig { returns(Telnyx::Internal::FileInput) }
           attr_accessor :audio_file
 
@@ -386,8 +386,8 @@ module Telnyx
           end
           def self.new(
             # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
-            # For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-            # size: 5MB.
+            # For best quality, provide up to 60 seconds of clear, uninterrupted speech.
+            # Maximum size: 5MB.
             audio_file:,
             # Gender of the voice clone.
             gender:,

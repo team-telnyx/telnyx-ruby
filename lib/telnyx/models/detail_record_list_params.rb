@@ -10,6 +10,12 @@ module Telnyx
       # @!attribute filter
       #   Filter records on a given record attribute and value. <br/>Example:
       #   filter[status]=delivered. <br/>Required: filter[record_type] must be specified.
+      #   <br/>The valid filter fields depend on the record_type: filtering by a field
+      #   that does not exist for the selected record_type is rejected with a 400 error.
+      #   Call-control and sip-trunking records use started_at, finished_at and
+      #   answered_at (they have no created_at); messaging records use created_at. To list
+      #   the fields available for a record_type, use the /v2/detail_records/options
+      #   endpoint.
       #
       #   @return [Telnyx::Models::DetailRecordListParams::Filter, nil]
       optional :filter, -> { Telnyx::DetailRecordListParams::Filter }
@@ -25,7 +31,12 @@ module Telnyx
       optional :page_size, Integer
 
       # @!attribute sort
-      #   Specifies the sort order for results. <br/>Example: sort=-created_at
+      #   Specifies the sort order for results. <br/>Example: sort=-created_at <br/>The
+      #   valid sort fields depend on the record_type: sort by a field that does not exist
+      #   for the selected record_type is rejected with a 400 error. Call-control and
+      #   sip-trunking records use started_at, finished_at and answered_at (they have no
+      #   created_at); messaging records use created_at. To list the fields available for
+      #   a record_type, use the /v2/detail_records/options endpoint.
       #
       #   @return [Array<String>, nil]
       optional :sort, Telnyx::Internal::Type::ArrayOf[String]
@@ -40,7 +51,7 @@ module Telnyx
       #
       #   @param page_size [Integer]
       #
-      #   @param sort [Array<String>] Specifies the sort order for results. <br/>Example: sort=-created_at
+      #   @param sort [Array<String>] Specifies the sort order for results. <br/>Example: sort=-created_at <br/>The va
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -64,6 +75,12 @@ module Telnyx
         #
         #   Filter records on a given record attribute and value. <br/>Example:
         #   filter[status]=delivered. <br/>Required: filter[record_type] must be specified.
+        #   <br/>The valid filter fields depend on the record_type: filtering by a field
+        #   that does not exist for the selected record_type is rejected with a 400 error.
+        #   Call-control and sip-trunking records use started_at, finished_at and
+        #   answered_at (they have no created_at); messaging records use created_at. To list
+        #   the fields available for a record_type, use the /v2/detail_records/options
+        #   endpoint.
         #
         #   @param record_type [Symbol, Telnyx::Models::DetailRecordListParams::Filter::RecordType] Filter by the given record type.
         #

@@ -1,0 +1,115 @@
+module Telnyx
+  module Models
+    module Compute
+      class FuncLogExportConfigResponse = Funcs::FuncLogExportConfigResponse
+
+      module Funcs
+        type func_log_export_config_response =
+          { data: Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data }
+
+        class FuncLogExportConfigResponse < Telnyx::Internal::Type::BaseModel
+          attr_reader data: Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data?
+
+          def data=: (
+            Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data
+          ) -> Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data
+
+          def initialize: (
+            ?data: Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data
+          }
+
+          type data =
+            {
+              id: String,
+              created_at: Time,
+              enabled: bool,
+              endpoint: String,
+              func_id: String,
+              invocation_export_enabled: bool,
+              record_type: Telnyx::Models::Compute::Funcs::FuncLogExportConfigResponse::Data::record_type,
+              runtime_export_enabled: bool,
+              updated_at: Time
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader created_at: Time?
+
+            def created_at=: (Time) -> Time
+
+            attr_reader enabled: bool?
+
+            def enabled=: (bool) -> bool
+
+            attr_reader endpoint: String?
+
+            def endpoint=: (String) -> String
+
+            attr_reader func_id: String?
+
+            def func_id=: (String) -> String
+
+            attr_reader invocation_export_enabled: bool?
+
+            def invocation_export_enabled=: (bool) -> bool
+
+            attr_reader record_type: Telnyx::Models::Compute::Funcs::FuncLogExportConfigResponse::Data::record_type?
+
+            def record_type=: (
+              Telnyx::Models::Compute::Funcs::FuncLogExportConfigResponse::Data::record_type
+            ) -> Telnyx::Models::Compute::Funcs::FuncLogExportConfigResponse::Data::record_type
+
+            attr_reader runtime_export_enabled: bool?
+
+            def runtime_export_enabled=: (bool) -> bool
+
+            attr_reader updated_at: Time?
+
+            def updated_at=: (Time) -> Time
+
+            def initialize: (
+              ?id: String,
+              ?created_at: Time,
+              ?enabled: bool,
+              ?endpoint: String,
+              ?func_id: String,
+              ?invocation_export_enabled: bool,
+              ?record_type: Telnyx::Models::Compute::Funcs::FuncLogExportConfigResponse::Data::record_type,
+              ?runtime_export_enabled: bool,
+              ?updated_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              created_at: Time,
+              enabled: bool,
+              endpoint: String,
+              func_id: String,
+              invocation_export_enabled: bool,
+              record_type: Telnyx::Models::Compute::Funcs::FuncLogExportConfigResponse::Data::record_type,
+              runtime_export_enabled: bool,
+              updated_at: Time
+            }
+
+            type record_type = :compute_func_log_export_config
+
+            module RecordType
+              extend Telnyx::Internal::Type::Enum
+
+              COMPUTE_FUNC_LOG_EXPORT_CONFIG: :compute_func_log_export_config
+
+              def self?.values: -> ::Array[Telnyx::Models::Compute::Funcs::FuncLogExportConfigResponse::Data::record_type]
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -465,55 +465,24 @@ module Telnyx
 
           type function =
             {
-              function: Telnyx::AI::ChatCompletionRequest::Tool::Function::Function,
+              function: Telnyx::AI::OpenAI::FunctionDefinition,
               type: :function
             }
 
           class Function < Telnyx::Internal::Type::BaseModel
-            attr_accessor function: Telnyx::AI::ChatCompletionRequest::Tool::Function::Function
+            attr_accessor function: Telnyx::AI::OpenAI::FunctionDefinition
 
             attr_accessor type: :function
 
             def initialize: (
-              function: Telnyx::AI::ChatCompletionRequest::Tool::Function::Function,
+              function: Telnyx::AI::OpenAI::FunctionDefinition,
               ?type: :function
             ) -> void
 
             def to_hash: -> {
-              function: Telnyx::AI::ChatCompletionRequest::Tool::Function::Function,
+              function: Telnyx::AI::OpenAI::FunctionDefinition,
               type: :function
             }
-
-            type function =
-              {
-                name: String,
-                description: String,
-                parameters: ::Hash[Symbol, top]
-              }
-
-            class Function < Telnyx::Internal::Type::BaseModel
-              attr_accessor name: String
-
-              attr_reader description: String?
-
-              def description=: (String) -> String
-
-              attr_reader parameters: ::Hash[Symbol, top]?
-
-              def parameters=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-              def initialize: (
-                name: String,
-                ?description: String,
-                ?parameters: ::Hash[Symbol, top]
-              ) -> void
-
-              def to_hash: -> {
-                name: String,
-                description: String,
-                parameters: ::Hash[Symbol, top]
-              }
-            end
           end
 
           type retrieval =

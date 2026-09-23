@@ -52,13 +52,14 @@ module Telnyx
         record_type: Telnyx::Models::OutboundMessage::record_type
       }
 
-      type event_type = :"message.sent" | :"message.finalized"
+      type event_type = :"message.sent" | :"message.finalized" | :"message.read"
 
       module EventType
         extend Telnyx::Internal::Type::Enum
 
         MESSAGE_SENT: :"message.sent"
         MESSAGE_FINALIZED: :"message.finalized"
+        MESSAGE_READ: :"message.read"
 
         def self?.values: -> ::Array[Telnyx::Models::OutboundMessage::event_type]
       end

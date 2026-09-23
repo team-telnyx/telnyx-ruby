@@ -15,6 +15,13 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
+      # RCS webhook message body. Text messages use the text property.
+      sig { returns(T.nilable(Telnyx::OutboundMessagePayload::Body)) }
+      attr_reader :body
+
+      sig { params(body: Telnyx::OutboundMessagePayload::Body::OrHash).void }
+      attr_writer :body
+
       sig { returns(T.nilable(T::Array[Telnyx::OutboundMessagePayload::Cc])) }
       attr_reader :cc
 
@@ -74,10 +81,12 @@ module Telnyx
 
       # These errors may point at addressees when referring to unsuccessful/unconfirmed
       # delivery statuses.
-      sig { returns(T.nilable(T::Array[Telnyx::MessagingError])) }
+      sig { returns(T.nilable(T::Array[Telnyx::MessagingError0b38e7044b])) }
       attr_reader :errors
 
-      sig { params(errors: T::Array[Telnyx::MessagingError::OrHash]).void }
+      sig do
+        params(errors: T::Array[Telnyx::MessagingError0b38e7044b::OrHash]).void
+      end
       attr_writer :errors
 
       sig { returns(T.nilable(Telnyx::OutboundMessagePayload::From)) }
@@ -238,6 +247,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          body: Telnyx::OutboundMessagePayload::Body::OrHash,
           cc: T::Array[Telnyx::OutboundMessagePayload::Cc::OrHash],
           completed_at: T.nilable(Time),
           cost: T.nilable(Telnyx::OutboundMessagePayload::Cost::OrHash),
@@ -245,7 +255,7 @@ module Telnyx
             T.nilable(Telnyx::OutboundMessagePayload::CostBreakdown::OrHash),
           direction: Telnyx::OutboundMessagePayload::Direction::OrSymbol,
           encoding: String,
-          errors: T::Array[Telnyx::MessagingError::OrHash],
+          errors: T::Array[Telnyx::MessagingError0b38e7044b::OrHash],
           from: Telnyx::OutboundMessagePayload::From::OrHash,
           media: T::Array[Telnyx::OutboundMessagePayload::Media::OrHash],
           messaging_profile_id: String,
@@ -273,6 +283,8 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
+        # RCS webhook message body. Text messages use the text property.
+        body: nil,
         cc: nil,
         # ISO 8601 formatted date indicating when the message was finalized.
         completed_at: nil,
@@ -345,6 +357,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            body: Telnyx::OutboundMessagePayload::Body,
             cc: T::Array[Telnyx::OutboundMessagePayload::Cc],
             completed_at: T.nilable(Time),
             cost: T.nilable(Telnyx::OutboundMessagePayload::Cost),
@@ -352,7 +365,7 @@ module Telnyx
               T.nilable(Telnyx::OutboundMessagePayload::CostBreakdown),
             direction: Telnyx::OutboundMessagePayload::Direction::TaggedSymbol,
             encoding: String,
-            errors: T::Array[Telnyx::MessagingError],
+            errors: T::Array[Telnyx::MessagingError0b38e7044b],
             from: Telnyx::OutboundMessagePayload::From,
             media: T::Array[Telnyx::OutboundMessagePayload::Media],
             messaging_profile_id: String,
@@ -380,6 +393,35 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class Body < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::OutboundMessagePayload::Body,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # RCS text message.
+        sig { returns(T.nilable(String)) }
+        attr_reader :text
+
+        sig { params(text: String).void }
+        attr_writer :text
+
+        # RCS webhook message body. Text messages use the text property.
+        sig { params(text: String).returns(T.attached_class) }
+        def self.new(
+          # RCS text message.
+          text: nil
+        )
+        end
+
+        sig { override.returns({ text: String }) }
+        def to_hash
+        end
       end
 
       class Cc < Telnyx::Internal::Type::BaseModel
@@ -787,6 +829,20 @@ module Telnyx
             )
           end
 
+        # RCS agent identifier.
+        sig { returns(T.nilable(String)) }
+        attr_reader :agent_id
+
+        sig { params(agent_id: String).void }
+        attr_writer :agent_id
+
+        # RCS agent name.
+        sig { returns(T.nilable(String)) }
+        attr_reader :agent_name
+
+        sig { params(agent_name: String).void }
+        attr_writer :agent_name
+
         # The carrier of the receiver.
         sig { returns(T.nilable(String)) }
         attr_reader :carrier
@@ -821,12 +877,18 @@ module Telnyx
 
         sig do
           params(
+            agent_id: String,
+            agent_name: String,
             carrier: String,
             line_type: Telnyx::OutboundMessagePayload::From::LineType::OrSymbol,
             phone_number: String
           ).returns(T.attached_class)
         end
         def self.new(
+          # RCS agent identifier.
+          agent_id: nil,
+          # RCS agent name.
+          agent_name: nil,
           # The carrier of the receiver.
           carrier: nil,
           # The line-type of the receiver.
@@ -840,6 +902,8 @@ module Telnyx
         sig do
           override.returns(
             {
+              agent_id: String,
+              agent_name: String,
               carrier: String,
               line_type:
                 Telnyx::OutboundMessagePayload::From::LineType::TaggedSymbol,
@@ -1178,6 +1242,11 @@ module Telnyx
               :delivery_failed,
               Telnyx::OutboundMessagePayload::To::Status::TaggedSymbol
             )
+          READ =
+            T.let(
+              :read,
+              Telnyx::OutboundMessagePayload::To::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -1199,6 +1268,7 @@ module Telnyx
 
         SMS = T.let(:SMS, Telnyx::OutboundMessagePayload::Type::TaggedSymbol)
         MMS = T.let(:MMS, Telnyx::OutboundMessagePayload::Type::TaggedSymbol)
+        RCS = T.let(:RCS, Telnyx::OutboundMessagePayload::Type::TaggedSymbol)
 
         sig do
           override.returns(

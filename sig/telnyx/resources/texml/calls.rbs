@@ -1,0 +1,19 @@
+module Telnyx
+  module Resources
+    class Texml
+      class Calls
+        def create: (
+          String connection_id,
+          from: String,
+          to: String,
+          ?method_: Telnyx::Models::Texml::CallCreateParams::method_,
+          ?texml: String,
+          ?url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Texml::CallCreateResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

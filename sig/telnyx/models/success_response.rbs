@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type success_response = { message: String, success: bool }
+
+    class SuccessResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor message: String
+
+      attr_accessor success: bool
+
+      def initialize: (message: String, success: bool) -> void
+
+      def to_hash: -> { message: String, success: bool }
+    end
+  end
+end

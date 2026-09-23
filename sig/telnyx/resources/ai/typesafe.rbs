@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class AI
+      class Typesafe
+        attr_reader v1: Telnyx::Resources::AI::Typesafe::V1
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

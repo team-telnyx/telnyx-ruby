@@ -6,7 +6,7 @@ module Telnyx
           text: String,
           duration: Float,
           segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment],
-          words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
+          words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
         }
 
       class AudioTranscribeResponse < Telnyx::Internal::Type::BaseModel
@@ -22,27 +22,35 @@ module Telnyx
           ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
         ) -> ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment]
 
-        attr_reader words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]?
+        attr_reader words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]?
 
         def words=: (
-          ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
-        ) -> ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
+          ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
+        ) -> ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
 
         def initialize: (
           text: String,
           ?duration: Float,
           ?segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment],
-          ?words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
+          ?words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
         ) -> void
 
         def to_hash: -> {
           text: String,
           duration: Float,
           segments: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Segment],
-          words: ::Array[Telnyx::Models::AI::AudioTranscribeResponse::Word]
+          words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
         }
 
-        type segment = { id: Float, end_: Float, start: Float, text: String }
+        type segment =
+          {
+            id: Float,
+            end_: Float,
+            start: Float,
+            text: String,
+            speakers: ::Array[Integer],
+            words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
+          }
 
         class Segment < Telnyx::Internal::Type::BaseModel
           attr_accessor id: Float
@@ -53,54 +61,32 @@ module Telnyx
 
           attr_accessor text: String
 
+          attr_reader speakers: ::Array[Integer]?
+
+          def speakers=: (::Array[Integer]) -> ::Array[Integer]
+
+          attr_reader words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]?
+
+          def words=: (
+            ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
+          ) -> ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
+
           def initialize: (
             id: Float,
             end_: Float,
             start: Float,
-            text: String
-          ) -> void
-
-          def to_hash: -> { id: Float, end_: Float, start: Float, text: String }
-        end
-
-        type word =
-          {
-            end_: Float,
-            start: Float,
-            word: String,
-            confidence: Float,
-            speaker: Integer
-          }
-
-        class Word < Telnyx::Internal::Type::BaseModel
-          attr_accessor end_: Float
-
-          attr_accessor start: Float
-
-          attr_accessor word: String
-
-          attr_reader confidence: Float?
-
-          def confidence=: (Float) -> Float
-
-          attr_reader speaker: Integer?
-
-          def speaker=: (Integer) -> Integer
-
-          def initialize: (
-            end_: Float,
-            start: Float,
-            word: String,
-            ?confidence: Float,
-            ?speaker: Integer
+            text: String,
+            ?speakers: ::Array[Integer],
+            ?words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
           ) -> void
 
           def to_hash: -> {
+            id: Float,
             end_: Float,
             start: Float,
-            word: String,
-            confidence: Float,
-            speaker: Integer
+            text: String,
+            speakers: ::Array[Integer],
+            words: ::Array[Telnyx::AI::AudioTranscriptionResponseWord]
           }
         end
       end

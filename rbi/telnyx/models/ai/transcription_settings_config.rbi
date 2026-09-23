@@ -43,9 +43,9 @@ module Telnyx
         sig { params(enable_endpoint_detection: T::Boolean).void }
         attr_writer :enable_endpoint_detection
 
-        # Available only for assemblyai/universal-streaming. Confidence level required to
-        # trigger an end of turn. Higher values require more certainty before ending a
-        # turn.
+        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        # assemblyai/universal-streaming). Confidence level required to trigger an end of
+        # turn. Higher values require more certainty before ending a turn.
         sig { returns(T.nilable(Float)) }
         attr_reader :end_of_turn_confidence_threshold
 
@@ -107,17 +107,18 @@ module Telnyx
         sig { params(max_endpoint_delay_ms: Integer).void }
         attr_writer :max_endpoint_delay_ms
 
-        # Available only for assemblyai/universal-streaming. Maximum duration of silence
-        # in milliseconds before forcing an end of turn.
+        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        # assemblyai/universal-streaming). Maximum duration of silence in milliseconds
+        # before forcing an end of turn.
         sig { returns(T.nilable(Integer)) }
         attr_reader :max_turn_silence
 
         sig { params(max_turn_silence: Integer).void }
         attr_writer :max_turn_silence
 
-        # Available only for assemblyai/universal-streaming. Minimum duration of silence
-        # in milliseconds before a turn can end. Must be less than or equal to
-        # max_turn_silence.
+        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        # assemblyai/universal-streaming). Minimum duration of silence in milliseconds
+        # before a turn can end. Must be less than or equal to max_turn_silence.
         sig { returns(T.nilable(Integer)) }
         attr_reader :min_turn_silence
 
@@ -171,9 +172,9 @@ module Telnyx
           # emits end-of-utterance events at the cadence configured by
           # `max_endpoint_delay_ms`.
           enable_endpoint_detection: nil,
-          # Available only for assemblyai/universal-streaming. Confidence level required to
-          # trigger an end of turn. Higher values require more certainty before ending a
-          # turn.
+          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+          # assemblyai/universal-streaming). Confidence level required to trigger an end of
+          # turn. Higher values require more certainty before ending a turn.
           end_of_turn_confidence_threshold: nil,
           # Available only for deepgram/flux. Confidence required to trigger an end of turn.
           # Higher values = more reliable turn detection but slightly increased latency.
@@ -200,12 +201,13 @@ module Telnyx
           # milliseconds) before Soniox emits an end-of-utterance event. Only honored when
           # `enable_endpoint_detection` is true.
           max_endpoint_delay_ms: nil,
-          # Available only for assemblyai/universal-streaming. Maximum duration of silence
-          # in milliseconds before forcing an end of turn.
+          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+          # assemblyai/universal-streaming). Maximum duration of silence in milliseconds
+          # before forcing an end of turn.
           max_turn_silence: nil,
-          # Available only for assemblyai/universal-streaming. Minimum duration of silence
-          # in milliseconds before a turn can end. Must be less than or equal to
-          # max_turn_silence.
+          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+          # assemblyai/universal-streaming). Minimum duration of silence in milliseconds
+          # before a turn can end. Must be less than or equal to max_turn_silence.
           min_turn_silence: nil,
           numerals: nil,
           smart_format: nil

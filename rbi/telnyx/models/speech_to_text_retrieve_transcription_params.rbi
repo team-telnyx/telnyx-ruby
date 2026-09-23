@@ -408,6 +408,11 @@ module Telnyx
             :"nvidia/parakeet-v3",
             Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
           )
+        OMI_HEALTH_OMI_MED_STT_V1 =
+          T.let(
+            :"omi-health/omi-med-stt-v1",
+            Telnyx::SpeechToTextRetrieveTranscriptionParams::Model::TaggedSymbol
+          )
         HUMAIN_REALTIME =
           T.let(
             :"humain/realtime",

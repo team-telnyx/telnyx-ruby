@@ -39,8 +39,9 @@ module Telnyx
         sig { params(fallback_destination: String).void }
         attr_writer :fallback_destination
 
-        # The noise suppression engine to use. Use 'disabled' to turn off noise
-        # suppression.
+        # The noise suppression engine to use. 'aicoustics' is STT-optimized and
+        # recommended for AI assistants (configure through noise_suppression_config). Use
+        # 'disabled' to turn off noise suppression.
         sig do
           returns(
             T.nilable(Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol)
@@ -56,8 +57,10 @@ module Telnyx
         end
         attr_writer :noise_suppression
 
-        # Configuration for noise suppression. Only applicable when noise_suppression is
-        # 'deepfilternet'.
+        # Configuration for noise suppression. Applicable fields depend on the engine:
+        # 'attenuation_limit' and 'mode' only when noise_suppression is 'deepfilternet';
+        # 'family', 'size' and 'enhancement_level' only when noise_suppression is
+        # 'aicoustics'.
         sig do
           returns(
             T.nilable(Telnyx::AI::TelephonySettings::NoiseSuppressionConfig)
@@ -194,11 +197,14 @@ module Telnyx
           # detected), and it does not fire when the assistant already transferred or
           # bridged the call.
           fallback_destination: nil,
-          # The noise suppression engine to use. Use 'disabled' to turn off noise
-          # suppression.
+          # The noise suppression engine to use. 'aicoustics' is STT-optimized and
+          # recommended for AI assistants (configure through noise_suppression_config). Use
+          # 'disabled' to turn off noise suppression.
           noise_suppression: nil,
-          # Configuration for noise suppression. Only applicable when noise_suppression is
-          # 'deepfilternet'.
+          # Configuration for noise suppression. Applicable fields depend on the engine:
+          # 'attenuation_limit' and 'mode' only when noise_suppression is 'deepfilternet';
+          # 'family', 'size' and 'enhancement_level' only when noise_suppression is
+          # 'aicoustics'.
           noise_suppression_config: nil,
           # Configuration for call recording format and channel settings.
           recording_settings: nil,
@@ -264,8 +270,9 @@ module Telnyx
         def to_hash
         end
 
-        # The noise suppression engine to use. Use 'disabled' to turn off noise
-        # suppression.
+        # The noise suppression engine to use. 'aicoustics' is STT-optimized and
+        # recommended for AI assistants (configure through noise_suppression_config). Use
+        # 'disabled' to turn off noise suppression.
         module NoiseSuppression
           extend Telnyx::Internal::Type::Enum
 
@@ -275,6 +282,11 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          AICOUSTICS =
+            T.let(
+              :aicoustics,
+              Telnyx::AI::TelephonySettings::NoiseSuppression::TaggedSymbol
+            )
           KRISP =
             T.let(
               :krisp,
@@ -311,14 +323,43 @@ module Telnyx
               )
             end
 
-          # Attenuation limit for noise suppression. Range: 0-100.
+          # Attenuation limit for noise suppression. Range: 0-100. Only applicable when
+          # noise_suppression is 'deepfilternet'.
           sig { returns(T.nilable(Integer)) }
           attr_reader :attenuation_limit
 
           sig { params(attenuation_limit: Integer).void }
           attr_writer :attenuation_limit
 
-          # Mode for noise suppression configuration.
+          # AiCoustics enhancement intensity. Range: 0-1. Only applicable when
+          # noise_suppression is 'aicoustics'.
+          sig { returns(T.nilable(Float)) }
+          attr_reader :enhancement_level
+
+          sig { params(enhancement_level: Float).void }
+          attr_writer :enhancement_level
+
+          # AiCoustics model family optimized for Voice AI and STT. Only applicable when
+          # noise_suppression is 'aicoustics'.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family::OrSymbol
+              )
+            )
+          end
+          attr_reader :family
+
+          sig do
+            params(
+              family:
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family::OrSymbol
+            ).void
+          end
+          attr_writer :family
+
+          # Mode for noise suppression configuration. Only applicable when noise_suppression
+          # is 'deepfilternet'.
           sig do
             returns(
               T.nilable(
@@ -336,20 +377,59 @@ module Telnyx
           end
           attr_writer :mode
 
-          # Configuration for noise suppression. Only applicable when noise_suppression is
-          # 'deepfilternet'.
+          # AiCoustics model size. 'vf' tracks the latest model release; 'vf_2_0_l' is
+          # pinned to version 2.0 for consistent, predictable behavior. Only applicable when
+          # noise_suppression is 'aicoustics'.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size::OrSymbol
+              )
+            )
+          end
+          attr_reader :size
+
+          sig do
+            params(
+              size:
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size::OrSymbol
+            ).void
+          end
+          attr_writer :size
+
+          # Configuration for noise suppression. Applicable fields depend on the engine:
+          # 'attenuation_limit' and 'mode' only when noise_suppression is 'deepfilternet';
+          # 'family', 'size' and 'enhancement_level' only when noise_suppression is
+          # 'aicoustics'.
           sig do
             params(
               attenuation_limit: Integer,
+              enhancement_level: Float,
+              family:
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family::OrSymbol,
               mode:
-                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Mode::OrSymbol
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Mode::OrSymbol,
+              size:
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
-            # Attenuation limit for noise suppression. Range: 0-100.
+            # Attenuation limit for noise suppression. Range: 0-100. Only applicable when
+            # noise_suppression is 'deepfilternet'.
             attenuation_limit: nil,
-            # Mode for noise suppression configuration.
-            mode: nil
+            # AiCoustics enhancement intensity. Range: 0-1. Only applicable when
+            # noise_suppression is 'aicoustics'.
+            enhancement_level: nil,
+            # AiCoustics model family optimized for Voice AI and STT. Only applicable when
+            # noise_suppression is 'aicoustics'.
+            family: nil,
+            # Mode for noise suppression configuration. Only applicable when noise_suppression
+            # is 'deepfilternet'.
+            mode: nil,
+            # AiCoustics model size. 'vf' tracks the latest model release; 'vf_2_0_l' is
+            # pinned to version 2.0 for consistent, predictable behavior. Only applicable when
+            # noise_suppression is 'aicoustics'.
+            size: nil
           )
           end
 
@@ -357,15 +437,52 @@ module Telnyx
             override.returns(
               {
                 attenuation_limit: Integer,
+                enhancement_level: Float,
+                family:
+                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family::OrSymbol,
                 mode:
-                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Mode::OrSymbol
+                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Mode::OrSymbol,
+                size:
+                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size::OrSymbol
               }
             )
           end
           def to_hash
           end
 
-          # Mode for noise suppression configuration.
+          # AiCoustics model family optimized for Voice AI and STT. Only applicable when
+          # noise_suppression is 'aicoustics'.
+          module Family
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            QUAIL =
+              T.let(
+                :quail,
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Family::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Mode for noise suppression configuration. Only applicable when noise_suppression
+          # is 'deepfilternet'.
           module Mode
             extend Telnyx::Internal::Type::Enum
 
@@ -388,6 +505,43 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Mode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # AiCoustics model size. 'vf' tracks the latest model release; 'vf_2_0_l' is
+          # pinned to version 2.0 for consistent, predictable behavior. Only applicable when
+          # noise_suppression is 'aicoustics'.
+          module Size
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            VF =
+              T.let(
+                :vf,
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size::TaggedSymbol
+              )
+            VF_2_0_L =
+              T.let(
+                :vf_2_0_l,
+                Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::TelephonySettings::NoiseSuppressionConfig::Size::TaggedSymbol
                 ]
               )
             end

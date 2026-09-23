@@ -19,9 +19,9 @@ module Telnyx
         #
         # @param file_url [String] Link to audio file in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg
         #
-        # @param language [String] The language of the audio to be transcribed. For `deepgram/nova-3`, only English
+        # @param language [String] The language of the audio to be transcribed. `deepgram/nova-3` supports ~49 lang
         #
-        # @param model_config [Hash{Symbol=>Object}] Additional model-specific configuration parameters. Only allowed with `deepgram/
+        # @param model_config [Hash{Symbol=>Object}] Additional model-specific configuration parameters. Only allowed with the `deepg
         #
         # @param response_format [Symbol, Telnyx::Models::AI::AudioTranscribeParams::ResponseFormat] The format of the transcript output. Use `verbose_json` to take advantage of tim
         #

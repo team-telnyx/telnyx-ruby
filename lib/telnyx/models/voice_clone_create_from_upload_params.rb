@@ -160,8 +160,8 @@ module Telnyx
         class TelnyxUltraClone < Telnyx::Internal::Type::BaseModel
           # @!attribute audio_file
           #   Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
-          #   For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-          #   size: 5MB.
+          #   For best quality, provide up to 60 seconds of clear, uninterrupted speech.
+          #   Maximum size: 5MB.
           #
           #   @return [Pathname, StringIO, IO, String, Telnyx::FilePart]
           required :audio_file, Telnyx::Internal::Type::FileInput
