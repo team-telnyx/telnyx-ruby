@@ -4,6 +4,7 @@ module Telnyx
       def create: (
         name: String,
         network_id: String,
+        ?address_mode: Telnyx::Models::PrivateWirelessGatewayCreateParams::address_mode,
         ?region_code: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::PrivateWirelessGatewayCreateResponse
@@ -22,7 +23,7 @@ module Telnyx
         ?page_number: Integer,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::PrivateWirelessGateway]
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::WirelessPrivateWirelessGateway]
 
       def delete: (
         String id,

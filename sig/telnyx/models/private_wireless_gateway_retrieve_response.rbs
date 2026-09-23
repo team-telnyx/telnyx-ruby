@@ -1,18 +1,18 @@
 module Telnyx
   module Models
     type private_wireless_gateway_retrieve_response =
-      { data: Telnyx::PrivateWirelessGateway }
+      { data: Telnyx::WirelessPrivateWirelessGateway }
 
     class PrivateWirelessGatewayRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_reader data: Telnyx::PrivateWirelessGateway?
+      attr_reader data: Telnyx::WirelessPrivateWirelessGateway?
 
       def data=: (
-        Telnyx::PrivateWirelessGateway
-      ) -> Telnyx::PrivateWirelessGateway
+        Telnyx::WirelessPrivateWirelessGateway
+      ) -> Telnyx::WirelessPrivateWirelessGateway
 
-      def initialize: (?data: Telnyx::PrivateWirelessGateway) -> void
+      def initialize: (?data: Telnyx::WirelessPrivateWirelessGateway) -> void
 
-      def to_hash: -> { data: Telnyx::PrivateWirelessGateway }
+      def to_hash: -> { data: Telnyx::WirelessPrivateWirelessGateway }
     end
   end
 end

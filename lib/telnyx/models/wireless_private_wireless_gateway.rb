@@ -2,7 +2,17 @@
 
 module Telnyx
   module Models
-    class PrivateWirelessGateway < Telnyx::Internal::Type::BaseModel
+    # @see Telnyx::Resources::PrivateWirelessGateways#list
+    class WirelessPrivateWirelessGateway < Telnyx::Internal::Type::BaseModel
+      # @!attribute address_mode
+      #   The address mode of the private wireless gateway. With static, each SIM card
+      #   gets a fixed IP address from the gateway's IP range that is preserved across
+      #   sessions. With dynamic, IP addresses are assigned by the network at attach time
+      #   and may change between sessions.
+      #
+      #   @return [Symbol, Telnyx::Models::WirelessPrivateWirelessGateway::AddressMode, nil]
+      optional :address_mode, enum: -> { Telnyx::WirelessPrivateWirelessGateway::AddressMode }
+
       # @!attribute assigned_resources
       #   A list of the resources that have been assigned to the Private Wireless Gateway.
       #
@@ -64,11 +74,13 @@ module Telnyx
         optional :updated_at, String
       end
 
-      # @!method initialize(id: nil, assigned_resources: nil, created_at: nil, ip_range: nil, name: nil, network_id: nil, record_type: nil, region_code: nil, status: nil, updated_at: nil)
+      # @!method initialize(id: nil, address_mode: nil, assigned_resources: nil, created_at: nil, ip_range: nil, name: nil, network_id: nil, record_type: nil, region_code: nil, status: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Telnyx::Models::PrivateWirelessGateway} for more details.
+      #   {Telnyx::Models::WirelessPrivateWirelessGateway} for more details.
       #
       #   @param id [String] Identifies the resource.
+      #
+      #   @param address_mode [Symbol, Telnyx::Models::WirelessPrivateWirelessGateway::AddressMode] The address mode of the private wireless gateway. With static, each SIM card get
       #
       #   @param assigned_resources [Array<Telnyx::Models::PwgAssignedResourcesSummary>] A list of the resources that have been assigned to the Private Wireless Gateway.
       #
@@ -87,6 +99,22 @@ module Telnyx
       #   @param status [Telnyx::Models::PrivateWirelessGatewayStatus] The current status or failure details of the Private Wireless Gateway.
       #
       #   @param updated_at [String] ISO 8601 formatted date-time indicating when the resource was updated.
+
+      # The address mode of the private wireless gateway. With static, each SIM card
+      # gets a fixed IP address from the gateway's IP range that is preserved across
+      # sessions. With dynamic, IP addresses are assigned by the network at attach time
+      # and may change between sessions.
+      #
+      # @see Telnyx::Models::WirelessPrivateWirelessGateway#address_mode
+      module AddressMode
+        extend Telnyx::Internal::Type::Enum
+
+        STATIC = :static
+        DYNAMIC = :dynamic
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
     end
   end
 end

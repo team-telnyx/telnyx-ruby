@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::PrivateWirelessGatewaysTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::PrivateWirelessGateway | nil
+        data: Telnyx::WirelessPrivateWirelessGateway | nil
       }
     end
   end
@@ -34,7 +34,7 @@ class Telnyx::Test::Resources::PrivateWirelessGatewaysTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::PrivateWirelessGateway | nil
+        data: Telnyx::WirelessPrivateWirelessGateway | nil
       }
     end
   end
@@ -52,12 +52,13 @@ class Telnyx::Test::Resources::PrivateWirelessGatewaysTest < Telnyx::Test::Resou
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::PrivateWirelessGateway
+      row => Telnyx::WirelessPrivateWirelessGateway
     end
 
     assert_pattern do
       row => {
         id: String | nil,
+        address_mode: Telnyx::WirelessPrivateWirelessGateway::AddressMode | nil,
         assigned_resources: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PwgAssignedResourcesSummary]) | nil,
         created_at: String | nil,
         ip_range: String | nil,
@@ -82,7 +83,7 @@ class Telnyx::Test::Resources::PrivateWirelessGatewaysTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::PrivateWirelessGateway | nil
+        data: Telnyx::WirelessPrivateWirelessGateway | nil
       }
     end
   end

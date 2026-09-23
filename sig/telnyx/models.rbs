@@ -2193,6 +2193,8 @@ module Telnyx
 
   class WirelessError = Telnyx::Models::WirelessError
 
+  class WirelessPrivateWirelessGateway = Telnyx::Models::WirelessPrivateWirelessGateway
+
   class WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 
   class WirelessWirelessBlocklist = Telnyx::Models::WirelessWirelessBlocklist

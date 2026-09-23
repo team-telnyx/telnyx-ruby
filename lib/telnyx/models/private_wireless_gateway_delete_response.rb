@@ -6,11 +6,11 @@ module Telnyx
     class PrivateWirelessGatewayDeleteResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::PrivateWirelessGateway, nil]
-      optional :data, -> { Telnyx::PrivateWirelessGateway }
+      #   @return [Telnyx::Models::WirelessPrivateWirelessGateway, nil]
+      optional :data, -> { Telnyx::WirelessPrivateWirelessGateway }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::PrivateWirelessGateway]
+      #   @param data [Telnyx::Models::WirelessPrivateWirelessGateway]
     end
   end
 end

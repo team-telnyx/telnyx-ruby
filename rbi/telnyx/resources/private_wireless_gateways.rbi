@@ -11,6 +11,8 @@ module Telnyx
         params(
           name: String,
           network_id: String,
+          address_mode:
+            Telnyx::PrivateWirelessGatewayCreateParams::AddressMode::OrSymbol,
           region_code: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::PrivateWirelessGatewayCreateResponse)
@@ -20,6 +22,12 @@ module Telnyx
         name:,
         # The identification of the related network resource.
         network_id:,
+        # Determines how IP addresses are assigned to SIM cards using this gateway. With
+        # static, each SIM card gets a fixed IP address from the gateway's IP range that
+        # is preserved across sessions. With dynamic, an IP address is assigned by the
+        # network at attach time and may change between sessions. If omitted, the gateway
+        # is created with the default address mode, dynamic.
+        address_mode: nil,
         # The code of the region where the private wireless gateway will be assigned. A
         # list of available regions can be found at the regions endpoint
         region_code: nil,
@@ -54,7 +62,7 @@ module Telnyx
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(
           Telnyx::Internal::DefaultFlatPagination[
-            Telnyx::PrivateWirelessGateway
+            Telnyx::WirelessPrivateWirelessGateway
           ]
         )
       end
