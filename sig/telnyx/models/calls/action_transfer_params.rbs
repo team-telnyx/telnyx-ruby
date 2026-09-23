@@ -371,6 +371,13 @@ module Telnyx
           {
             after_greeting_silence_millis: Integer,
             beep_detection_profile: Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile,
+            beep_max_frequency_hz: Integer,
+            beep_min_frequency_hz: Integer,
+            beep_min_tone_duration_millis: Integer,
+            beep_spectral_confirmation: bool,
+            beep_spectral_min_purity: Float,
+            beep_spectral_reject_fax_cng: bool,
+            beep_spectral_window_millis: Integer,
             between_words_silence_millis: Integer,
             greeting_duration_millis: Integer,
             greeting_silence_duration_millis: Integer,
@@ -392,6 +399,34 @@ module Telnyx
           def beep_detection_profile=: (
             Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile
           ) -> Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile
+
+          attr_reader beep_max_frequency_hz: Integer?
+
+          def beep_max_frequency_hz=: (Integer) -> Integer
+
+          attr_reader beep_min_frequency_hz: Integer?
+
+          def beep_min_frequency_hz=: (Integer) -> Integer
+
+          attr_reader beep_min_tone_duration_millis: Integer?
+
+          def beep_min_tone_duration_millis=: (Integer) -> Integer
+
+          attr_reader beep_spectral_confirmation: bool?
+
+          def beep_spectral_confirmation=: (bool) -> bool
+
+          attr_reader beep_spectral_min_purity: Float?
+
+          def beep_spectral_min_purity=: (Float) -> Float
+
+          attr_reader beep_spectral_reject_fax_cng: bool?
+
+          def beep_spectral_reject_fax_cng=: (bool) -> bool
+
+          attr_reader beep_spectral_window_millis: Integer?
+
+          def beep_spectral_window_millis=: (Integer) -> Integer
 
           attr_reader between_words_silence_millis: Integer?
 
@@ -432,6 +467,13 @@ module Telnyx
           def initialize: (
             ?after_greeting_silence_millis: Integer,
             ?beep_detection_profile: Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile,
+            ?beep_max_frequency_hz: Integer,
+            ?beep_min_frequency_hz: Integer,
+            ?beep_min_tone_duration_millis: Integer,
+            ?beep_spectral_confirmation: bool,
+            ?beep_spectral_min_purity: Float,
+            ?beep_spectral_reject_fax_cng: bool,
+            ?beep_spectral_window_millis: Integer,
             ?between_words_silence_millis: Integer,
             ?greeting_duration_millis: Integer,
             ?greeting_silence_duration_millis: Integer,
@@ -446,6 +488,13 @@ module Telnyx
           def to_hash: -> {
             after_greeting_silence_millis: Integer,
             beep_detection_profile: Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::beep_detection_profile,
+            beep_max_frequency_hz: Integer,
+            beep_min_frequency_hz: Integer,
+            beep_min_tone_duration_millis: Integer,
+            beep_spectral_confirmation: bool,
+            beep_spectral_min_purity: Float,
+            beep_spectral_reject_fax_cng: bool,
+            beep_spectral_window_millis: Integer,
             between_words_silence_millis: Integer,
             greeting_duration_millis: Integer,
             greeting_silence_duration_millis: Integer,

@@ -728,6 +728,59 @@ module Telnyx
         optional :beep_detection_profile,
                  enum: -> { Telnyx::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile }
 
+        # @!attribute beep_max_frequency_hz
+        #   Highest frequency, in Hz, that a tone can reach and still be treated as a beep.
+        #   Only used when beep detection is active.
+        #
+        #   @return [Integer, nil]
+        optional :beep_max_frequency_hz, Integer
+
+        # @!attribute beep_min_frequency_hz
+        #   Lowest frequency, in Hz, that a tone must reach to be treated as a beep. Raising
+        #   it above 480 excludes North American ringback (440 + 480 Hz), which can
+        #   otherwise be reported as a beep when the `freq_only` profile is in use. Only
+        #   used when beep detection is active.
+        #
+        #   @return [Integer, nil]
+        optional :beep_min_frequency_hz, Integer
+
+        # @!attribute beep_min_tone_duration_millis
+        #   Shortest tone, in milliseconds, that can be treated as a beep. Raising it
+        #   rejects brief tones such as call-progress blips. Only used when beep detection
+        #   is active.
+        #
+        #   @return [Integer, nil]
+        optional :beep_min_tone_duration_millis, Integer
+
+        # @!attribute beep_spectral_confirmation
+        #   When enabled, a candidate beep must pass an additional spectral check before it
+        #   is reported. Only used when beep detection is active.
+        #
+        #   @return [Boolean, nil]
+        optional :beep_spectral_confirmation, Telnyx::Internal::Type::Boolean
+
+        # @!attribute beep_spectral_min_purity
+        #   Minimum spectral purity, from 0 to 1, for a tone to be treated as a beep.
+        #   Raising it rejects mixed tones such as ringback, which combines two frequencies.
+        #   Only used when beep detection is active.
+        #
+        #   @return [Float, nil]
+        optional :beep_spectral_min_purity, Float
+
+        # @!attribute beep_spectral_reject_fax_cng
+        #   When enabled, the fax CNG tone is rejected rather than reported as a beep. Only
+        #   used when beep detection is active.
+        #
+        #   @return [Boolean, nil]
+        optional :beep_spectral_reject_fax_cng, Telnyx::Internal::Type::Boolean
+
+        # @!attribute beep_spectral_window_millis
+        #   Length of the spectral confirmation window, in milliseconds. Only used when beep
+        #   detection is active.
+        #
+        #   @return [Integer, nil]
+        optional :beep_spectral_window_millis, Integer
+
         # @!attribute between_words_silence_millis
         #   Maximum threshold for silence between words.
         #
@@ -785,7 +838,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :total_analysis_time_millis, Integer
 
-        # @!method initialize(after_greeting_silence_millis: nil, beep_detection_profile: nil, between_words_silence_millis: nil, greeting_duration_millis: nil, greeting_silence_duration_millis: nil, greeting_total_analysis_time_millis: nil, initial_silence_millis: nil, maximum_number_of_words: nil, maximum_word_length_millis: nil, silence_threshold: nil, total_analysis_time_millis: nil)
+        # @!method initialize(after_greeting_silence_millis: nil, beep_detection_profile: nil, beep_max_frequency_hz: nil, beep_min_frequency_hz: nil, beep_min_tone_duration_millis: nil, beep_spectral_confirmation: nil, beep_spectral_min_purity: nil, beep_spectral_reject_fax_cng: nil, beep_spectral_window_millis: nil, between_words_silence_millis: nil, greeting_duration_millis: nil, greeting_silence_duration_millis: nil, greeting_total_analysis_time_millis: nil, initial_silence_millis: nil, maximum_number_of_words: nil, maximum_word_length_millis: nil, silence_threshold: nil, total_analysis_time_millis: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig} for more
         #   details.
@@ -798,6 +851,20 @@ module Telnyx
         #   @param after_greeting_silence_millis [Integer] Silence duration threshold after a greeting message or voice for it be considere
         #
         #   @param beep_detection_profile [Symbol, Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig::BeepDetectionProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
+        #
+        #   @param beep_max_frequency_hz [Integer] Highest frequency, in Hz, that a tone can reach and still be treated as a beep.
+        #
+        #   @param beep_min_frequency_hz [Integer] Lowest frequency, in Hz, that a tone must reach to be treated as a beep. Raising
+        #
+        #   @param beep_min_tone_duration_millis [Integer] Shortest tone, in milliseconds, that can be treated as a beep. Raising it reject
+        #
+        #   @param beep_spectral_confirmation [Boolean] When enabled, a candidate beep must pass an additional spectral check before it
+        #
+        #   @param beep_spectral_min_purity [Float] Minimum spectral purity, from 0 to 1, for a tone to be treated as a beep. Raisin
+        #
+        #   @param beep_spectral_reject_fax_cng [Boolean] When enabled, the fax CNG tone is rejected rather than reported as a beep. Only
+        #
+        #   @param beep_spectral_window_millis [Integer] Length of the spectral confirmation window, in milliseconds. Only used when beep
         #
         #   @param between_words_silence_millis [Integer] Maximum threshold for silence between words.
         #

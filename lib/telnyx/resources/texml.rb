@@ -31,7 +31,7 @@ module Telnyx
       # Recording, AMD, transcription, and deepfake detection callbacks are only sent
       # when those features are enabled.
       #
-      # @overload initiate_ai_call(connection_id, ai_assistant_id:, from:, to:, ai_assistant_dynamic_variables: nil, ai_assistant_version: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, conversation_callback: nil, conversation_callback_method: nil, conversation_callbacks: nil, custom_headers: nil, detection_mode: nil, machine_detection: nil, machine_detection_beep_profile: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, passports: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, status_callbacks: nil, time_limit: nil, timeout_seconds: nil, trim: nil, request_options: {})
+      # @overload initiate_ai_call(connection_id, ai_assistant_id:, from:, to:, ai_assistant_dynamic_variables: nil, ai_assistant_version: nil, async_amd: nil, async_amd_status_callback: nil, async_amd_status_callback_method: nil, caller_id: nil, conversation_callback: nil, conversation_callback_method: nil, conversation_callbacks: nil, custom_headers: nil, detection_mode: nil, machine_detection: nil, machine_detection_beep_max_frequency: nil, machine_detection_beep_min_frequency: nil, machine_detection_beep_min_tone_duration: nil, machine_detection_beep_profile: nil, machine_detection_beep_spectral_confirmation: nil, machine_detection_beep_spectral_min_purity: nil, machine_detection_beep_spectral_reject_fax_cng: nil, machine_detection_beep_spectral_window: nil, machine_detection_prompt_end_timeout: nil, machine_detection_silence_timeout: nil, machine_detection_speech_end_threshold: nil, machine_detection_speech_threshold: nil, machine_detection_timeout: nil, passports: nil, preferred_codecs: nil, record: nil, recording_channels: nil, recording_status_callback: nil, recording_status_callback_event: nil, recording_status_callback_method: nil, recording_timeout: nil, recording_track: nil, send_recording_url: nil, sip_auth_password: nil, sip_auth_username: nil, sip_region: nil, status_callback: nil, status_callback_event: nil, status_callback_method: nil, status_callbacks: nil, time_limit: nil, timeout_seconds: nil, trim: nil, request_options: {})
       #
       # @param connection_id [String] The ID of the TeXML connection to use for the call.
       #
@@ -65,7 +65,21 @@ module Telnyx
       #
       # @param machine_detection [Symbol, Telnyx::Models::TexmlInitiateAICallParams::MachineDetection] Enables Answering Machine Detection.
       #
+      # @param machine_detection_beep_max_frequency [Integer] Highest frequency, in Hz, that a tone can reach and still be treated as a beep.
+      #
+      # @param machine_detection_beep_min_frequency [Integer] Lowest frequency, in Hz, that a tone must reach to be treated as a beep. Raising
+      #
+      # @param machine_detection_beep_min_tone_duration [Integer] Shortest tone, in milliseconds, that can be treated as a beep. Raising it reject
+      #
       # @param machine_detection_beep_profile [Symbol, Telnyx::Models::TexmlInitiateAICallParams::MachineDetectionBeepProfile] Selects which detectors must validate a beep. `both` requires the amplitude and
+      #
+      # @param machine_detection_beep_spectral_confirmation [Boolean] When enabled, a candidate beep must pass an additional spectral check before it
+      #
+      # @param machine_detection_beep_spectral_min_purity [Float] Minimum spectral purity, from 0 to 1, for a tone to be treated as a beep. Raisin
+      #
+      # @param machine_detection_beep_spectral_reject_fax_cng [Boolean] When enabled, the fax CNG tone is rejected rather than reported as a beep. Only
+      #
+      # @param machine_detection_beep_spectral_window [Integer] Length of the spectral confirmation window, in milliseconds. Only used when Mach
       #
       # @param machine_detection_prompt_end_timeout [Integer] Silence duration threshold after a call screening prompt before ending prompt de
       #
