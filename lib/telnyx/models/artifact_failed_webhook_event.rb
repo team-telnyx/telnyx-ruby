@@ -81,6 +81,10 @@ module Telnyx
 
           SUMMARY = :summary
           ACTION_ITEMS = :action_items
+          DECISIONS = :decisions
+          TOPICS = :topics
+          OPEN_QUESTIONS = :open_questions
+          CUSTOM = :custom
 
           # @!method self.values
           #   @return [Array<Symbol>]

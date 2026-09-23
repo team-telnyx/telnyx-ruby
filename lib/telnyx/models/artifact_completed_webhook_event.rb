@@ -64,6 +64,13 @@ module Telnyx
         #   @return [Telnyx::Models::ArtifactCompletedWebhookEvent::Data::ModelProvenance]
         required :model_provenance, -> { Telnyx::ArtifactCompletedWebhookEvent::Data::ModelProvenance }
 
+        # @!attribute prompt
+        #   The prompt that produced this artifact, or null for a named type. Non-null only
+        #   when `type` is `custom`; the five named types always return `null`.
+        #
+        #   @return [String, nil]
+        required :prompt, String, nil?: true
+
         # @!attribute session_id
         #   The meeting session this event belongs to.
         #
@@ -76,7 +83,10 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::ArtifactCompletedWebhookEvent::Data::Type]
         required :type, enum: -> { Telnyx::ArtifactCompletedWebhookEvent::Data::Type }
 
-        # @!method initialize(artifact_id:, content:, model_provenance:, session_id:, type:)
+        # @!method initialize(artifact_id:, content:, model_provenance:, prompt:, session_id:, type:)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::ArtifactCompletedWebhookEvent::Data} for more details.
+        #
         #   Completed artifact, including its generated content.
         #
         #   @param artifact_id [String] Id of the completed artifact.
@@ -84,6 +94,8 @@ module Telnyx
         #   @param content [Telnyx::Models::ArtifactCompletedWebhookEvent::Data::Content] Generated artifact content.
         #
         #   @param model_provenance [Telnyx::Models::ArtifactCompletedWebhookEvent::Data::ModelProvenance] Model that generated the artifact.
+        #
+        #   @param prompt [String, nil] The prompt that produced this artifact, or null for a named type. Non-null only
         #
         #   @param session_id [String] The meeting session this event belongs to.
         #
@@ -130,6 +142,10 @@ module Telnyx
 
           SUMMARY = :summary
           ACTION_ITEMS = :action_items
+          DECISIONS = :decisions
+          TOPICS = :topics
+          OPEN_QUESTIONS = :open_questions
+          CUSTOM = :custom
 
           # @!method self.values
           #   @return [Array<Symbol>]

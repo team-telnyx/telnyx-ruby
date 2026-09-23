@@ -114,6 +114,11 @@ module Telnyx
         end
         attr_writer :model_provenance
 
+        # The prompt that produced this artifact, or null for a named type. Non-null only
+        # when `type` is `custom`; the five named types always return `null`.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :prompt
+
         # The meeting session this event belongs to.
         sig { returns(String) }
         attr_accessor :session_id
@@ -134,6 +139,7 @@ module Telnyx
               Telnyx::ArtifactCompletedWebhookEvent::Data::Content::OrHash,
             model_provenance:
               Telnyx::ArtifactCompletedWebhookEvent::Data::ModelProvenance::OrHash,
+            prompt: T.nilable(String),
             session_id: String,
             type: Telnyx::ArtifactCompletedWebhookEvent::Data::Type::OrSymbol
           ).returns(T.attached_class)
@@ -145,6 +151,9 @@ module Telnyx
           content:,
           # Model that generated the artifact.
           model_provenance:,
+          # The prompt that produced this artifact, or null for a named type. Non-null only
+          # when `type` is `custom`; the five named types always return `null`.
+          prompt:,
           # The meeting session this event belongs to.
           session_id:,
           # Type of the completed artifact.
@@ -159,6 +168,7 @@ module Telnyx
               content: Telnyx::ArtifactCompletedWebhookEvent::Data::Content,
               model_provenance:
                 Telnyx::ArtifactCompletedWebhookEvent::Data::ModelProvenance,
+              prompt: T.nilable(String),
               session_id: String,
               type:
                 Telnyx::ArtifactCompletedWebhookEvent::Data::Type::TaggedSymbol
@@ -239,6 +249,26 @@ module Telnyx
           ACTION_ITEMS =
             T.let(
               :action_items,
+              Telnyx::ArtifactCompletedWebhookEvent::Data::Type::TaggedSymbol
+            )
+          DECISIONS =
+            T.let(
+              :decisions,
+              Telnyx::ArtifactCompletedWebhookEvent::Data::Type::TaggedSymbol
+            )
+          TOPICS =
+            T.let(
+              :topics,
+              Telnyx::ArtifactCompletedWebhookEvent::Data::Type::TaggedSymbol
+            )
+          OPEN_QUESTIONS =
+            T.let(
+              :open_questions,
+              Telnyx::ArtifactCompletedWebhookEvent::Data::Type::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
               Telnyx::ArtifactCompletedWebhookEvent::Data::Type::TaggedSymbol
             )
 

@@ -134,7 +134,9 @@ module Telnyx
       type assistant =
         {
           id: String,
-          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
+          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate,
+          dynamic_variables: ::Hash[Symbol, String]?,
+          leave_on_end: bool
         }
 
       class Assistant < Telnyx::Internal::Type::BaseModel
@@ -142,23 +144,31 @@ module Telnyx
 
         attr_accessor audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
 
+        attr_accessor dynamic_variables: ::Hash[Symbol, String]?
+
+        attr_accessor leave_on_end: bool
+
         def initialize: (
           id: String,
-          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
+          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate,
+          dynamic_variables: ::Hash[Symbol, String]?,
+          leave_on_end: bool
         ) -> void
 
         def to_hash: -> {
           id: String,
-          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
+          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate,
+          dynamic_variables: ::Hash[Symbol, String]?,
+          leave_on_end: bool
         }
 
-        type audio_gate = :none | :half_duplex
+        type audio_gate = :half_duplex | :full_duplex
 
         module AudioGate
           extend Telnyx::Internal::Type::Enum
 
-          NONE: :none
           HALF_DUPLEX: :half_duplex
+          FULL_DUPLEX: :full_duplex
 
           def self?.values: -> ::Array[Telnyx::Models::MeetingSession::Assistant::audio_gate]
         end
@@ -205,6 +215,7 @@ module Telnyx
       type config =
         {
           barge_in: bool,
+          chat_on_enter: String?,
           speak_on_enter: String?,
           summarize_on_end: bool,
           voice: String?
@@ -212,6 +223,8 @@ module Telnyx
 
       class Config < Telnyx::Internal::Type::BaseModel
         attr_accessor barge_in: bool
+
+        attr_accessor chat_on_enter: String?
 
         attr_accessor speak_on_enter: String?
 
@@ -221,6 +234,7 @@ module Telnyx
 
         def initialize: (
           barge_in: bool,
+          chat_on_enter: String?,
           speak_on_enter: String?,
           summarize_on_end: bool,
           voice: String?
@@ -228,6 +242,7 @@ module Telnyx
 
         def to_hash: -> {
           barge_in: bool,
+          chat_on_enter: String?,
           speak_on_enter: String?,
           summarize_on_end: bool,
           voice: String?

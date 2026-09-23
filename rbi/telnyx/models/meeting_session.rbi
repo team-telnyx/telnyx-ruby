@@ -263,24 +263,40 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :id
 
-        # Audio gating strategy for the assistant call leg.
+        # Audio gating strategy in force for the assistant call leg.
         sig do
           returns(Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol)
         end
         attr_accessor :audio_gate
 
+        # The dynamic variables in force for this session, or null when none were
+        # supplied.
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_accessor :dynamic_variables
+
+        # Whether the bot leaves when the Assistant's conversation ends or fails.
+        sig { returns(T::Boolean) }
+        attr_accessor :leave_on_end
+
         # Assistant configuration if an assistant is attached, otherwise null.
         sig do
           params(
             id: String,
-            audio_gate: Telnyx::MeetingSession::Assistant::AudioGate::OrSymbol
+            audio_gate: Telnyx::MeetingSession::Assistant::AudioGate::OrSymbol,
+            dynamic_variables: T.nilable(T::Hash[Symbol, String]),
+            leave_on_end: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
           # Identifier of the assistant.
           id:,
-          # Audio gating strategy for the assistant call leg.
-          audio_gate:
+          # Audio gating strategy in force for the assistant call leg.
+          audio_gate:,
+          # The dynamic variables in force for this session, or null when none were
+          # supplied.
+          dynamic_variables:,
+          # Whether the bot leaves when the Assistant's conversation ends or fails.
+          leave_on_end:
         )
         end
 
@@ -289,14 +305,16 @@ module Telnyx
             {
               id: String,
               audio_gate:
-                Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol
+                Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol,
+              dynamic_variables: T.nilable(T::Hash[Symbol, String]),
+              leave_on_end: T::Boolean
             }
           )
         end
         def to_hash
         end
 
-        # Audio gating strategy for the assistant call leg.
+        # Audio gating strategy in force for the assistant call leg.
         module AudioGate
           extend Telnyx::Internal::Type::Enum
 
@@ -306,14 +324,14 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          NONE =
-            T.let(
-              :none,
-              Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol
-            )
           HALF_DUPLEX =
             T.let(
               :half_duplex,
+              Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol
+            )
+          FULL_DUPLEX =
+            T.let(
+              :full_duplex,
               Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol
             )
 
@@ -430,6 +448,10 @@ module Telnyx
         sig { returns(T::Boolean) }
         attr_accessor :barge_in
 
+        # The message posted to chat on join, or null when unset.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :chat_on_enter
+
         # Text spoken on meeting entry, or null if not set.
         sig { returns(T.nilable(String)) }
         attr_accessor :speak_on_enter
@@ -445,6 +467,7 @@ module Telnyx
         sig do
           params(
             barge_in: T::Boolean,
+            chat_on_enter: T.nilable(String),
             speak_on_enter: T.nilable(String),
             summarize_on_end: T::Boolean,
             voice: T.nilable(String)
@@ -455,6 +478,8 @@ module Telnyx
           # current bot audio; it does not bypass admission or initiate speech. Assistant
           # sessions reject `barge_in: true`.
           barge_in:,
+          # The message posted to chat on join, or null when unset.
+          chat_on_enter:,
           # Text spoken on meeting entry, or null if not set.
           speak_on_enter:,
           # Whether a summary artifact is generated on session end.
@@ -468,6 +493,7 @@ module Telnyx
           override.returns(
             {
               barge_in: T::Boolean,
+              chat_on_enter: T.nilable(String),
               speak_on_enter: T.nilable(String),
               summarize_on_end: T::Boolean,
               voice: T.nilable(String)

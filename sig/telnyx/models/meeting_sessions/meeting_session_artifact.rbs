@@ -10,6 +10,7 @@ module Telnyx
           created_at: Time,
           failure_reason: String?,
           model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?,
+          prompt: String?,
           session_id: String,
           status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status,
           type: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_,
@@ -27,6 +28,8 @@ module Telnyx
 
         attr_accessor model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?
 
+        attr_accessor prompt: String?
+
         attr_accessor session_id: String
 
         attr_accessor status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status
@@ -41,6 +44,7 @@ module Telnyx
           created_at: Time,
           failure_reason: String?,
           model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?,
+          prompt: String?,
           session_id: String,
           status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status,
           type: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_,
@@ -53,6 +57,7 @@ module Telnyx
           created_at: Time,
           failure_reason: String?,
           model_provenance: Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance?,
+          prompt: String?,
           session_id: String,
           status: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status,
           type: Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_,
@@ -93,13 +98,23 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::MeetingSessions::MeetingSessionArtifact::status]
         end
 
-        type type_ = :summary | :action_items
+        type type_ =
+          :summary
+          | :action_items
+          | :decisions
+          | :topics
+          | :open_questions
+          | :custom
 
         module Type
           extend Telnyx::Internal::Type::Enum
 
           SUMMARY: :summary
           ACTION_ITEMS: :action_items
+          DECISIONS: :decisions
+          TOPICS: :topics
+          OPEN_QUESTIONS: :open_questions
+          CUSTOM: :custom
 
           def self?.values: -> ::Array[Telnyx::Models::MeetingSessions::MeetingSessionArtifact::type_]
         end
