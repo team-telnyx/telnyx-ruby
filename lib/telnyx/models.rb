@@ -157,6 +157,14 @@ module Telnyx
 
   BookAppointmentToolParams = Telnyx::Models::BookAppointmentToolParams
 
+  BotChallengeCreateParams = Telnyx::Models::BotChallengeCreateParams
+
+  BotSessionListParams = Telnyx::Models::BotSessionListParams
+
+  BotSignupCreateParams = Telnyx::Models::BotSignupCreateParams
+
+  BotSignupResendMagicLinkParams = Telnyx::Models::BotSignupResendMagicLinkParams
+
   BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
 
   BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
@@ -476,6 +484,8 @@ module Telnyx
   ConnectionNoiseSuppression = Telnyx::Models::ConnectionNoiseSuppression
 
   ConnectionNoiseSuppressionDetails = Telnyx::Models::ConnectionNoiseSuppressionDetails
+
+  ConnectionRetrieveCountParams = Telnyx::Models::ConnectionRetrieveCountParams
 
   ConnectionRetrieveParams = Telnyx::Models::ConnectionRetrieveParams
 
@@ -1024,6 +1034,8 @@ module Telnyx
 
   ListRetrieveByZoneParams = Telnyx::Models::ListRetrieveByZoneParams
 
+  MachinePaymentAccountCreditParams = Telnyx::Models::MachinePaymentAccountCreditParams
+
   ManagedAccount = Telnyx::Models::ManagedAccount
 
   ManagedAccountBalance = Telnyx::Models::ManagedAccountBalance
@@ -1151,6 +1163,8 @@ module Telnyx
 
   MessagingHostedNumberUpdateParams = Telnyx::Models::MessagingHostedNumberUpdateParams
 
+  MessagingInboundMessage = Telnyx::Models::MessagingInboundMessage
+
   MessagingInboundMessagePayload = Telnyx::Models::MessagingInboundMessagePayload
 
   MessagingMessagingProfile = Telnyx::Models::MessagingMessagingProfile
@@ -1267,6 +1281,8 @@ module Telnyx
   Networks = Telnyx::Models::Networks
 
   NetworkUpdateParams = Telnyx::Models::NetworkUpdateParams
+
+  NoiseSuppressionEngineListParams = Telnyx::Models::NoiseSuppressionEngineListParams
 
   NotificationChannel = Telnyx::Models::NotificationChannel
 
@@ -1885,6 +1901,8 @@ module Telnyx
   SubNumberOrderUpdateParams = Telnyx::Models::SubNumberOrderUpdateParams
 
   SubNumberOrderUpdateRequirementGroupParams = Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
+
+  SuccessResponse = Telnyx::Models::SuccessResponse
 
   SuppressedRecipient = Telnyx::Models::SuppressedRecipient
 

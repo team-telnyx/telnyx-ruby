@@ -159,6 +159,7 @@ module Telnyx
         SPEECHMATICS_STANDARD = :"speechmatics/standard"
         SONIOX_STT_RT_V4 = :"soniox/stt-rt-v4"
         NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
+        OMI_HEALTH_OMI_MED_STT_V1 = :"omi-health/omi-med-stt-v1"
         HUMAIN_REALTIME = :"humain/realtime"
         RESON8_TURNS = :"reson8/turns"
         COHERE_AR_STT = :"cohere/ar-stt"

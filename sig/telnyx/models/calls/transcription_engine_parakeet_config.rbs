@@ -47,12 +47,14 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_engine]
         end
 
-        type transcription_model = :"nvidia/parakeet-v3"
+        type transcription_model =
+          :"nvidia/parakeet-v3" | :"omi-health/omi-med-stt-v1"
 
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
           NVIDIA_PARAKEET_V3: :"nvidia/parakeet-v3"
+          OMI_HEALTH_OMI_MED_STT_V1: :"omi-health/omi-med-stt-v1"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineParakeetConfig::transcription_model]
         end

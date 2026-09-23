@@ -132,6 +132,15 @@ module Telnyx
 
   BookAppointmentToolParams = Telnyx::Models::BookAppointmentToolParams
 
+  BotChallengeCreateParams = Telnyx::Models::BotChallengeCreateParams
+
+  BotSessionListParams = Telnyx::Models::BotSessionListParams
+
+  BotSignupCreateParams = Telnyx::Models::BotSignupCreateParams
+
+  BotSignupResendMagicLinkParams =
+    Telnyx::Models::BotSignupResendMagicLinkParams
+
   BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
 
   BulkMessagingSettingsUpdatePhoneNumbers =
@@ -499,6 +508,8 @@ module Telnyx
 
   ConnectionNoiseSuppressionDetails =
     Telnyx::Models::ConnectionNoiseSuppressionDetails
+
+  ConnectionRetrieveCountParams = Telnyx::Models::ConnectionRetrieveCountParams
 
   ConnectionRetrieveParams = Telnyx::Models::ConnectionRetrieveParams
 
@@ -1112,6 +1123,9 @@ module Telnyx
 
   ListRetrieveByZoneParams = Telnyx::Models::ListRetrieveByZoneParams
 
+  MachinePaymentAccountCreditParams =
+    Telnyx::Models::MachinePaymentAccountCreditParams
+
   ManagedAccount = Telnyx::Models::ManagedAccount
 
   ManagedAccountBalance = Telnyx::Models::ManagedAccountBalance
@@ -1253,6 +1267,8 @@ module Telnyx
   MessagingHostedNumberUpdateParams =
     Telnyx::Models::MessagingHostedNumberUpdateParams
 
+  MessagingInboundMessage = Telnyx::Models::MessagingInboundMessage
+
   MessagingInboundMessagePayload =
     Telnyx::Models::MessagingInboundMessagePayload
 
@@ -1390,6 +1406,9 @@ module Telnyx
   Networks = Telnyx::Models::Networks
 
   NetworkUpdateParams = Telnyx::Models::NetworkUpdateParams
+
+  NoiseSuppressionEngineListParams =
+    Telnyx::Models::NoiseSuppressionEngineListParams
 
   NotificationChannel = Telnyx::Models::NotificationChannel
 
@@ -2077,6 +2096,8 @@ module Telnyx
 
   SubNumberOrderUpdateRequirementGroupParams =
     Telnyx::Models::SubNumberOrderUpdateRequirementGroupParams
+
+  SuccessResponse = Telnyx::Models::SuccessResponse
 
   SuppressedRecipient = Telnyx::Models::SuppressedRecipient
 

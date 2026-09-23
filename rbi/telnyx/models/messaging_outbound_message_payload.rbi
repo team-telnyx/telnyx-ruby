@@ -18,6 +18,15 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
+      # RCS webhook message body. Text messages use the text property.
+      sig { returns(T.nilable(Telnyx::MessagingOutboundMessagePayload::Body)) }
+      attr_reader :body
+
+      sig do
+        params(body: Telnyx::MessagingOutboundMessagePayload::Body::OrHash).void
+      end
+      attr_writer :body
+
       sig do
         returns(
           T.nilable(T::Array[Telnyx::MessagingOutboundMessagePayload::Cc])
@@ -69,7 +78,7 @@ module Telnyx
       sig do
         returns(
           T.nilable(
-            Telnyx::MessagingOutboundMessagePayload::Direction::TaggedSymbol
+            Telnyx::MessagingOutboundMessagePayload::Direction::OrSymbol
           )
         )
       end
@@ -162,7 +171,7 @@ module Telnyx
       sig do
         returns(
           T.nilable(
-            Telnyx::MessagingOutboundMessagePayload::RecordType::TaggedSymbol
+            Telnyx::MessagingOutboundMessagePayload::RecordType::OrSymbol
           )
         )
       end
@@ -242,7 +251,7 @@ module Telnyx
       # The type of message.
       sig do
         returns(
-          T.nilable(Telnyx::MessagingOutboundMessagePayload::Type::TaggedSymbol)
+          T.nilable(Telnyx::MessagingOutboundMessagePayload::Type::OrSymbol)
         )
       end
       attr_reader :type
@@ -278,6 +287,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          body: Telnyx::MessagingOutboundMessagePayload::Body::OrHash,
           cc: T::Array[Telnyx::MessagingOutboundMessagePayload::Cc::OrHash],
           completed_at: T.nilable(Time),
           cost:
@@ -319,6 +329,8 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
+        # RCS webhook message body. Text messages use the text property.
+        body: nil,
         cc: nil,
         # ISO 8601 formatted date indicating when the message was finalized.
         completed_at: nil,
@@ -391,13 +403,14 @@ module Telnyx
         override.returns(
           {
             id: String,
+            body: Telnyx::MessagingOutboundMessagePayload::Body,
             cc: T::Array[Telnyx::MessagingOutboundMessagePayload::Cc],
             completed_at: T.nilable(Time),
             cost: T.nilable(Telnyx::MessagingOutboundMessagePayload::Cost),
             cost_breakdown:
               T.nilable(Telnyx::MessagingOutboundMessagePayload::CostBreakdown),
             direction:
-              Telnyx::MessagingOutboundMessagePayload::Direction::TaggedSymbol,
+              Telnyx::MessagingOutboundMessagePayload::Direction::OrSymbol,
             encoding: String,
             errors: T::Array[Telnyx::MessagingError0b38e7044b],
             from: Telnyx::MessagingOutboundMessagePayload::From,
@@ -408,7 +421,7 @@ module Telnyx
             parts: Integer,
             received_at: Time,
             record_type:
-              Telnyx::MessagingOutboundMessagePayload::RecordType::TaggedSymbol,
+              Telnyx::MessagingOutboundMessagePayload::RecordType::OrSymbol,
             sent_at: T.nilable(Time),
             smart_encoding_applied: T::Boolean,
             subject: T.nilable(String),
@@ -418,7 +431,7 @@ module Telnyx
             tcr_campaign_registered: T.nilable(String),
             text: String,
             to: T::Array[Telnyx::MessagingOutboundMessagePayload::To],
-            type: Telnyx::MessagingOutboundMessagePayload::Type::TaggedSymbol,
+            type: Telnyx::MessagingOutboundMessagePayload::Type::OrSymbol,
             valid_until: T.nilable(Time),
             wait_seconds: T.nilable(Float),
             webhook_failover_url: T.nilable(String),
@@ -427,6 +440,35 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      class Body < Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Telnyx::MessagingOutboundMessagePayload::Body,
+              Telnyx::Internal::AnyHash
+            )
+          end
+
+        # RCS text message.
+        sig { returns(T.nilable(String)) }
+        attr_reader :text
+
+        sig { params(text: String).void }
+        attr_writer :text
+
+        # RCS webhook message body. Text messages use the text property.
+        sig { params(text: String).returns(T.attached_class) }
+        def self.new(
+          # RCS text message.
+          text: nil
+        )
+        end
+
+        sig { override.returns({ text: String }) }
+        def to_hash
+        end
       end
 
       class Cc < Telnyx::Internal::Type::BaseModel
@@ -449,7 +491,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::MessagingOutboundMessagePayload::Cc::LineType::TaggedSymbol
+              Telnyx::MessagingOutboundMessagePayload::Cc::LineType::OrSymbol
             )
           )
         end
@@ -473,7 +515,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::MessagingOutboundMessagePayload::Cc::Status::TaggedSymbol
+              Telnyx::MessagingOutboundMessagePayload::Cc::Status::OrSymbol
             )
           )
         end
@@ -513,10 +555,10 @@ module Telnyx
             {
               carrier: String,
               line_type:
-                Telnyx::MessagingOutboundMessagePayload::Cc::LineType::TaggedSymbol,
+                Telnyx::MessagingOutboundMessagePayload::Cc::LineType::OrSymbol,
               phone_number: String,
               status:
-                Telnyx::MessagingOutboundMessagePayload::Cc::Status::TaggedSymbol
+                Telnyx::MessagingOutboundMessagePayload::Cc::Status::OrSymbol
             }
           )
         end
@@ -857,6 +899,20 @@ module Telnyx
             )
           end
 
+        # RCS agent identifier.
+        sig { returns(T.nilable(String)) }
+        attr_reader :agent_id
+
+        sig { params(agent_id: String).void }
+        attr_writer :agent_id
+
+        # RCS agent name.
+        sig { returns(T.nilable(String)) }
+        attr_reader :agent_name
+
+        sig { params(agent_name: String).void }
+        attr_writer :agent_name
+
         # The carrier of the receiver.
         sig { returns(T.nilable(String)) }
         attr_reader :carrier
@@ -868,7 +924,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::MessagingOutboundMessagePayload::From::LineType::TaggedSymbol
+              Telnyx::MessagingOutboundMessagePayload::From::LineType::OrSymbol
             )
           )
         end
@@ -892,6 +948,8 @@ module Telnyx
 
         sig do
           params(
+            agent_id: String,
+            agent_name: String,
             carrier: String,
             line_type:
               Telnyx::MessagingOutboundMessagePayload::From::LineType::OrSymbol,
@@ -899,6 +957,10 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # RCS agent identifier.
+          agent_id: nil,
+          # RCS agent name.
+          agent_name: nil,
           # The carrier of the receiver.
           carrier: nil,
           # The line-type of the receiver.
@@ -912,9 +974,11 @@ module Telnyx
         sig do
           override.returns(
             {
+              agent_id: String,
+              agent_name: String,
               carrier: String,
               line_type:
-                Telnyx::MessagingOutboundMessagePayload::From::LineType::TaggedSymbol,
+                Telnyx::MessagingOutboundMessagePayload::From::LineType::OrSymbol,
               phone_number: String
             }
           )
@@ -1087,7 +1151,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::MessagingOutboundMessagePayload::To::LineType::TaggedSymbol
+              Telnyx::MessagingOutboundMessagePayload::To::LineType::OrSymbol
             )
           )
         end
@@ -1112,7 +1176,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::MessagingOutboundMessagePayload::To::Status::TaggedSymbol
+              Telnyx::MessagingOutboundMessagePayload::To::Status::OrSymbol
             )
           )
         end
@@ -1153,10 +1217,10 @@ module Telnyx
             {
               carrier: String,
               line_type:
-                Telnyx::MessagingOutboundMessagePayload::To::LineType::TaggedSymbol,
+                Telnyx::MessagingOutboundMessagePayload::To::LineType::OrSymbol,
               phone_number: String,
               status:
-                Telnyx::MessagingOutboundMessagePayload::To::Status::TaggedSymbol
+                Telnyx::MessagingOutboundMessagePayload::To::Status::OrSymbol
             }
           )
         end
@@ -1268,6 +1332,11 @@ module Telnyx
               :delivery_failed,
               Telnyx::MessagingOutboundMessagePayload::To::Status::TaggedSymbol
             )
+          READ =
+            T.let(
+              :read,
+              Telnyx::MessagingOutboundMessagePayload::To::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -1299,6 +1368,11 @@ module Telnyx
         MMS =
           T.let(
             :MMS,
+            Telnyx::MessagingOutboundMessagePayload::Type::TaggedSymbol
+          )
+        RCS =
+          T.let(
+            :RCS,
             Telnyx::MessagingOutboundMessagePayload::Type::TaggedSymbol
           )
 

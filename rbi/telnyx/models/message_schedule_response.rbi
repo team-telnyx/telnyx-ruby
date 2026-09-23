@@ -11,23 +11,21 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::MessagingOutboundMessagePayload)) }
+      sig { returns(T.nilable(Telnyx::OutboundMessagePayload)) }
       attr_reader :data
 
-      sig { params(data: Telnyx::MessagingOutboundMessagePayload::OrHash).void }
+      sig { params(data: Telnyx::OutboundMessagePayload::OrHash).void }
       attr_writer :data
 
       sig do
-        params(data: Telnyx::MessagingOutboundMessagePayload::OrHash).returns(
+        params(data: Telnyx::OutboundMessagePayload::OrHash).returns(
           T.attached_class
         )
       end
       def self.new(data: nil)
       end
 
-      sig do
-        override.returns({ data: Telnyx::MessagingOutboundMessagePayload })
-      end
+      sig { override.returns({ data: Telnyx::OutboundMessagePayload }) }
       def to_hash
       end
     end

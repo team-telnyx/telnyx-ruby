@@ -11,6 +11,8 @@ module Telnyx
 
         discriminator :type
 
+        variant :function, -> { Telnyx::AI::AssistantTool::Function }
+
         variant :webhook, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams }
 
         variant :client_side_tool, -> { Telnyx::AI::AssistantTool::ClientSideTool }
@@ -20,7 +22,7 @@ module Telnyx
         # The handoff tool allows the assistant to hand off control of the conversation to another AI assistant. By default, this will happen transparently to the end user.
         variant :handoff, -> { Telnyx::AI::AssistantTool::Handoff }
 
-        variant :hangup, -> { Telnyx::AI::HangupTool }
+        variant :hangup, -> { Telnyx::AI::AssistantTool::Hangup }
 
         variant :transfer, -> { Telnyx::AI::AssistantTool::Transfer }
 
@@ -41,6 +43,42 @@ module Telnyx
         # The update_dynamic_variables tool lets the assistant write values into the conversation's dynamic-variables context during the call. Updated variables are available to later `{{variable}}` interpolation (prompts, speak nodes, message templates) and to flow edge conditions. Declare each variable the assistant is allowed to set under `updatable_variables`.
         variant :update_dynamic_variables, -> { Telnyx::AI::AssistantTool::UpdateDynamicVariables }
 
+        class Function < Telnyx::Internal::Type::BaseModel
+          # @!attribute function
+          #
+          #   @return [Telnyx::Models::AI::OpenAI::FunctionDefinition]
+          required :function, -> { Telnyx::AI::OpenAI::FunctionDefinition }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, :function]
+          required :type, const: :function
+
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(function:, shared: nil, type: :function)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Function} for more details.
+          #
+          #   @param function [Telnyx::Models::AI::OpenAI::FunctionDefinition]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
+          #   @param type [Symbol, :function]
+        end
+
         class ClientSideTool < Telnyx::Internal::Type::BaseModel
           # @!attribute client_side_tool
           #
@@ -52,8 +90,28 @@ module Telnyx
           #   @return [Symbol, :client_side_tool]
           required :type, const: :client_side_tool
 
-          # @!method initialize(client_side_tool:, type: :client_side_tool)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(client_side_tool:, shared: nil, type: :client_side_tool)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::ClientSideTool} for more details.
+          #
           #   @param client_side_tool [Telnyx::Models::AI::AssistantTool::ClientSideTool::ClientSideTool]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :client_side_tool]
 
           # @see Telnyx::Models::AI::AssistantTool::ClientSideTool#client_side_tool
@@ -143,12 +201,32 @@ module Telnyx
           #   @return [Symbol, :handoff]
           required :type, const: :handoff
 
-          # @!method initialize(handoff:, type: :handoff)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(handoff:, shared: nil, type: :handoff)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Handoff} for more details.
+          #
           #   The handoff tool allows the assistant to hand off control of the conversation to
           #   another AI assistant. By default, this will happen transparently to the end
           #   user.
           #
           #   @param handoff [Telnyx::Models::AI::AssistantTool::Handoff::Handoff]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :handoff]
 
           # @see Telnyx::Models::AI::AssistantTool::Handoff#handoff
@@ -214,6 +292,42 @@ module Telnyx
           end
         end
 
+        class Hangup < Telnyx::Internal::Type::BaseModel
+          # @!attribute hangup
+          #
+          #   @return [Telnyx::Models::AI::HangupToolParams]
+          required :hangup, -> { Telnyx::AI::HangupToolParams }
+
+          # @!attribute type
+          #
+          #   @return [Symbol, :hangup]
+          required :type, const: :hangup
+
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(hangup:, shared: nil, type: :hangup)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Hangup} for more details.
+          #
+          #   @param hangup [Telnyx::Models::AI::HangupToolParams]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
+          #   @param type [Symbol, :hangup]
+        end
+
         class Transfer < Telnyx::Internal::Type::BaseModel
           # @!attribute transfer
           #
@@ -225,8 +339,28 @@ module Telnyx
           #   @return [Symbol, :transfer]
           required :type, const: :transfer
 
-          # @!method initialize(transfer:, type: :transfer)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(transfer:, shared: nil, type: :transfer)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Transfer} for more details.
+          #
           #   @param transfer [Telnyx::Models::AI::AssistantTool::Transfer::Transfer]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :transfer]
 
           # @see Telnyx::Models::AI::AssistantTool::Transfer#transfer
@@ -733,8 +867,28 @@ module Telnyx
           #   @return [Symbol, :invite]
           required :type, const: :invite
 
-          # @!method initialize(invite:, type: :invite)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(invite:, shared: nil, type: :invite)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Invite} for more details.
+          #
           #   @param invite [Telnyx::Models::AI::AssistantTool::Invite::Invite]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :invite]
 
           # @see Telnyx::Models::AI::AssistantTool::Invite#invite
@@ -936,8 +1090,28 @@ module Telnyx
           #   @return [Symbol, :refer]
           required :type, const: :refer
 
-          # @!method initialize(refer:, type: :refer)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(refer:, shared: nil, type: :refer)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Refer} for more details.
+          #
           #   @param refer [Telnyx::Models::AI::AssistantTool::Refer::Refer]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :refer]
 
           # @see Telnyx::Models::AI::AssistantTool::Refer#refer
@@ -1082,8 +1256,28 @@ module Telnyx
           #   @return [Symbol, :send_dtmf]
           required :type, const: :send_dtmf
 
-          # @!method initialize(send_dtmf:, type: :send_dtmf)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(send_dtmf:, shared: nil, type: :send_dtmf)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::SendDtmf} for more details.
+          #
           #   @param send_dtmf [Hash{Symbol=>Object}]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :send_dtmf]
         end
 
@@ -1098,13 +1292,33 @@ module Telnyx
           #   @return [Symbol, :send_message]
           required :type, const: :send_message
 
-          # @!method initialize(send_message:, type: :send_message)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(send_message:, shared: nil, type: :send_message)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::SendMessage} for more details.
+          #
           #   The send_message tool allows the assistant to send SMS or MMS messages to the
           #   end user. The 'to' and 'from' addresses are automatically determined from the
           #   conversation context, and the message text is generated by the assistant unless
           #   a message_template is provided for runtime variable substitution.
           #
           #   @param send_message [Telnyx::Models::AI::AssistantTool::SendMessage::SendMessage]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :send_message]
 
           # @see Telnyx::Models::AI::AssistantTool::SendMessage#send_message
@@ -1138,8 +1352,28 @@ module Telnyx
           #   @return [Symbol, :skip_turn]
           required :type, const: :skip_turn
 
-          # @!method initialize(skip_turn:, type: :skip_turn)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(skip_turn:, shared: nil, type: :skip_turn)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::SkipTurn} for more details.
+          #
           #   @param skip_turn [Telnyx::Models::AI::AssistantTool::SkipTurn::SkipTurn]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :skip_turn]
 
           # @see Telnyx::Models::AI::AssistantTool::SkipTurn#skip_turn
@@ -1166,13 +1400,33 @@ module Telnyx
           #   @return [Symbol, :pay]
           required :type, const: :pay
 
-          # @!method initialize(pay:, type: :pay)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(pay:, shared: nil, type: :pay)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Pay} for more details.
+          #
           #   (BETA) The pay tool allows the assistant to collect card payments from the
           #   caller via DTMF during the conversation. Recording is automatically paused while
           #   the pay tool is active and resumes when the payment flow completes. The
           #   connector_name must reference a pay connector configured in the Telnyx API.
           #
           #   @param pay [Telnyx::Models::AI::PayToolParams]
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :pay]
         end
 
@@ -1188,7 +1442,24 @@ module Telnyx
           #   @return [Telnyx::Models::AI::UpdateDynamicVariablesToolParams]
           required :update_dynamic_variables, -> { Telnyx::AI::UpdateDynamicVariablesToolParams }
 
-          # @!method initialize(update_dynamic_variables:, type: :update_dynamic_variables)
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(update_dynamic_variables:, shared: nil, type: :update_dynamic_variables)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables} for more details.
+          #
           #   The update_dynamic_variables tool lets the assistant write values into the
           #   conversation's dynamic-variables context during the call. Updated variables are
           #   available to later `{{variable}}` interpolation (prompts, speak nodes, message
@@ -1197,11 +1468,13 @@ module Telnyx
           #
           #   @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
           #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
           #   @param type [Symbol, :update_dynamic_variables]
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables)]
+        #   @return [Array(Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables)]
       end
     end
   end

@@ -18,8 +18,17 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
-      # WhatsApp message body. For message edits and revocations, inspect `type` and the
-      # corresponding `edit` or `revoke` object.
+      # Automatic response type triggered by an inbound opt-in, opt-out, or help
+      # keyword. Examples include START, STOP, and HELP.
+      sig { returns(T.nilable(String)) }
+      attr_reader :autoresponse_type
+
+      sig { params(autoresponse_type: String).void }
+      attr_writer :autoresponse_type
+
+      # Message body for RCS and WhatsApp. RCS messages contain text, user_file,
+      # location, or suggestion_response. For WhatsApp edits and revocations, inspect
+      # type and the corresponding edit or revoke object.
       sig { returns(T.nilable(Telnyx::MessagingInboundMessagePayload::Body)) }
       attr_reader :body
 
@@ -221,8 +230,9 @@ module Telnyx
       sig { params(text: String).void }
       attr_writer :text
 
-      # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
-      # webhooks use one E.164 phone number.
+      # Receiving address. SMS, MMS and RCS webhooks use an array of recipients. RCS
+      # recipients are identified by agent_id and agent_name. WhatsApp webhooks use one
+      # E.164 phone number.
       sig do
         returns(T.nilable(Telnyx::MessagingInboundMessagePayload::To::Variants))
       end
@@ -264,6 +274,7 @@ module Telnyx
       sig do
         params(
           id: String,
+          autoresponse_type: String,
           body: Telnyx::MessagingInboundMessagePayload::Body::OrHash,
           cc: T::Array[Telnyx::MessagingInboundMessagePayload::Cc::OrHash],
           completed_at: T.nilable(Time),
@@ -303,8 +314,12 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
-        # WhatsApp message body. For message edits and revocations, inspect `type` and the
-        # corresponding `edit` or `revoke` object.
+        # Automatic response type triggered by an inbound opt-in, opt-out, or help
+        # keyword. Examples include START, STOP, and HELP.
+        autoresponse_type: nil,
+        # Message body for RCS and WhatsApp. RCS messages contain text, user_file,
+        # location, or suggestion_response. For WhatsApp edits and revocations, inspect
+        # type and the corresponding edit or revoke object.
         body: nil,
         cc: nil,
         # Not used for inbound messages.
@@ -350,8 +365,9 @@ module Telnyx
         #
         # **Required for SMS**
         text: nil,
-        # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
-        # webhooks use one E.164 phone number.
+        # Receiving address. SMS, MMS and RCS webhooks use an array of recipients. RCS
+        # recipients are identified by agent_id and agent_name. WhatsApp webhooks use one
+        # E.164 phone number.
         to: nil,
         # The messaging channel used for the message.
         type: nil,
@@ -369,6 +385,7 @@ module Telnyx
         override.returns(
           {
             id: String,
+            autoresponse_type: String,
             body: Telnyx::MessagingInboundMessagePayload::Body,
             cc: T::Array[Telnyx::MessagingInboundMessagePayload::Cc],
             completed_at: T.nilable(Time),
@@ -449,6 +466,22 @@ module Telnyx
         sig { params(from: String).void }
         attr_writer :from
 
+        # Location shared in an RCS message.
+        sig do
+          returns(
+            T.nilable(Telnyx::MessagingInboundMessagePayload::Body::Location)
+          )
+        end
+        attr_reader :location
+
+        sig do
+          params(
+            location:
+              Telnyx::MessagingInboundMessagePayload::Body::Location::OrHash
+          ).void
+        end
+        attr_writer :location
+
         # Details for a revoked WhatsApp message.
         sig do
           returns(
@@ -463,6 +496,45 @@ module Telnyx
           ).void
         end
         attr_writer :revoke
+
+        # Selected RCS suggestion.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse
+            )
+          )
+        end
+        attr_reader :suggestion_response
+
+        sig do
+          params(
+            suggestion_response:
+              Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse::OrHash
+          ).void
+        end
+        attr_writer :suggestion_response
+
+        # RCS text string or WhatsApp text object.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::MessagingInboundMessagePayload::Body::Text::Variants
+            )
+          )
+        end
+        attr_reader :text
+
+        sig do
+          params(
+            text:
+              T.any(
+                String,
+                Telnyx::MessagingInboundMessagePayload::Body::Text::Body::OrHash
+              )
+          ).void
+        end
+        attr_writer :text
 
         # Unix timestamp supplied by Meta.
         sig { returns(T.nilable(String)) }
@@ -479,18 +551,46 @@ module Telnyx
         sig { params(type: String).void }
         attr_writer :type
 
-        # WhatsApp message body. For message edits and revocations, inspect `type` and the
-        # corresponding `edit` or `revoke` object.
+        # RCS file attachment and optional thumbnail.
+        sig do
+          returns(
+            T.nilable(Telnyx::MessagingInboundMessagePayload::Body::UserFile)
+          )
+        end
+        attr_reader :user_file
+
+        sig do
+          params(
+            user_file:
+              Telnyx::MessagingInboundMessagePayload::Body::UserFile::OrHash
+          ).void
+        end
+        attr_writer :user_file
+
+        # Message body for RCS and WhatsApp. RCS messages contain text, user_file,
+        # location, or suggestion_response. For WhatsApp edits and revocations, inspect
+        # type and the corresponding edit or revoke object.
         sig do
           params(
             id: String,
             edit: Telnyx::MessagingInboundMessagePayload::Body::Edit::OrHash,
             foreign_id: String,
             from: String,
+            location:
+              Telnyx::MessagingInboundMessagePayload::Body::Location::OrHash,
             revoke:
               Telnyx::MessagingInboundMessagePayload::Body::Revoke::OrHash,
+            suggestion_response:
+              Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse::OrHash,
+            text:
+              T.any(
+                String,
+                Telnyx::MessagingInboundMessagePayload::Body::Text::Body::OrHash
+              ),
             timestamp: String,
-            type: String
+            type: String,
+            user_file:
+              Telnyx::MessagingInboundMessagePayload::Body::UserFile::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -502,13 +602,21 @@ module Telnyx
           foreign_id: nil,
           # WhatsApp sender in E.164 format.
           from: nil,
+          # Location shared in an RCS message.
+          location: nil,
           # Details for a revoked WhatsApp message.
           revoke: nil,
+          # Selected RCS suggestion.
+          suggestion_response: nil,
+          # RCS text string or WhatsApp text object.
+          text: nil,
           # Unix timestamp supplied by Meta.
           timestamp: nil,
           # WhatsApp message body type. Edit and revoke events use `edit` and `revoke`,
           # respectively.
-          type: nil
+          type: nil,
+          # RCS file attachment and optional thumbnail.
+          user_file: nil
         )
         end
 
@@ -519,9 +627,15 @@ module Telnyx
               edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
               foreign_id: String,
               from: String,
+              location: Telnyx::MessagingInboundMessagePayload::Body::Location,
               revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
+              suggestion_response:
+                Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse,
+              text:
+                Telnyx::MessagingInboundMessagePayload::Body::Text::Variants,
               timestamp: String,
-              type: String
+              type: String,
+              user_file: Telnyx::MessagingInboundMessagePayload::Body::UserFile
             }
           )
         end
@@ -574,6 +688,39 @@ module Telnyx
           end
         end
 
+        class Location < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::MessagingInboundMessagePayload::Body::Location,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T.nilable(Float)) }
+          attr_reader :latitude
+
+          sig { params(latitude: Float).void }
+          attr_writer :latitude
+
+          sig { returns(T.nilable(Float)) }
+          attr_reader :longitude
+
+          sig { params(longitude: Float).void }
+          attr_writer :longitude
+
+          # Location shared in an RCS message.
+          sig do
+            params(latitude: Float, longitude: Float).returns(T.attached_class)
+          end
+          def self.new(latitude: nil, longitude: nil)
+          end
+
+          sig { override.returns({ latitude: Float, longitude: Float }) }
+          def to_hash
+          end
+        end
+
         class Revoke < Telnyx::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
@@ -599,6 +746,283 @@ module Telnyx
 
           sig { override.returns({ original_message_id: String }) }
           def to_hash
+          end
+        end
+
+        class SuggestionResponse < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::MessagingInboundMessagePayload::Body::SuggestionResponse,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :postback_data
+
+          sig { params(postback_data: String).void }
+          attr_writer :postback_data
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :text
+
+          sig { params(text: String).void }
+          attr_writer :text
+
+          # Selected RCS suggestion.
+          sig do
+            params(postback_data: String, text: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(postback_data: nil, text: nil)
+          end
+
+          sig { override.returns({ postback_data: String, text: String }) }
+          def to_hash
+          end
+        end
+
+        # RCS text string or WhatsApp text object.
+        module Text
+          extend Telnyx::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                String,
+                Telnyx::MessagingInboundMessagePayload::Body::Text::Body
+              )
+            end
+
+          class Body < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::MessagingInboundMessagePayload::Body::Text::Body,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :body
+
+            sig { params(body: String).void }
+            attr_writer :body
+
+            sig { params(body: String).returns(T.attached_class) }
+            def self.new(body: nil)
+            end
+
+            sig { override.returns({ body: String }) }
+            def to_hash
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::MessagingInboundMessagePayload::Body::Text::Variants
+              ]
+            )
+          end
+          def self.variants
+          end
+        end
+
+        class UserFile < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::MessagingInboundMessagePayload::Body::UserFile,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload
+              )
+            )
+          end
+          attr_reader :payload
+
+          sig do
+            params(
+              payload:
+                Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload::OrHash
+            ).void
+          end
+          attr_writer :payload
+
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail
+              )
+            )
+          end
+          attr_reader :thumbnail
+
+          sig do
+            params(
+              thumbnail:
+                Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail::OrHash
+            ).void
+          end
+          attr_writer :thumbnail
+
+          # RCS file attachment and optional thumbnail.
+          sig do
+            params(
+              payload:
+                Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload::OrHash,
+              thumbnail:
+                Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(payload: nil, thumbnail: nil)
+          end
+
+          sig do
+            override.returns(
+              {
+                payload:
+                  Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload,
+                thumbnail:
+                  Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Payload < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::MessagingInboundMessagePayload::Body::UserFile::Payload,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :file_name
+
+            sig { params(file_name: String).void }
+            attr_writer :file_name
+
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :file_size_bytes
+
+            sig { params(file_size_bytes: Integer).void }
+            attr_writer :file_size_bytes
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :file_uri
+
+            sig { params(file_uri: String).void }
+            attr_writer :file_uri
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :mime_type
+
+            sig { params(mime_type: String).void }
+            attr_writer :mime_type
+
+            sig do
+              params(
+                file_name: String,
+                file_size_bytes: Integer,
+                file_uri: String,
+                mime_type: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              file_name: nil,
+              file_size_bytes: nil,
+              file_uri: nil,
+              mime_type: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  file_name: String,
+                  file_size_bytes: Integer,
+                  file_uri: String,
+                  mime_type: String
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          class Thumbnail < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::MessagingInboundMessagePayload::Body::UserFile::Thumbnail,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :file_name
+
+            sig { params(file_name: String).void }
+            attr_writer :file_name
+
+            sig { returns(T.nilable(Integer)) }
+            attr_reader :file_size_bytes
+
+            sig { params(file_size_bytes: Integer).void }
+            attr_writer :file_size_bytes
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :file_uri
+
+            sig { params(file_uri: String).void }
+            attr_writer :file_uri
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :mime_type
+
+            sig { params(mime_type: String).void }
+            attr_writer :mime_type
+
+            sig do
+              params(
+                file_name: String,
+                file_size_bytes: Integer,
+                file_uri: String,
+                mime_type: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              file_name: nil,
+              file_size_bytes: nil,
+              file_uri: nil,
+              mime_type: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  file_name: String,
+                  file_size_bytes: Integer,
+                  file_uri: String,
+                  mime_type: String
+                }
+              )
+            end
+            def to_hash
+            end
           end
         end
       end
@@ -1160,6 +1584,11 @@ module Telnyx
               :"",
               Telnyx::MessagingInboundMessagePayload::From::LineType::TaggedSymbol
             )
+          LONG_CODE =
+            T.let(
+              :long_code,
+              Telnyx::MessagingInboundMessagePayload::From::LineType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -1192,6 +1621,11 @@ module Telnyx
           DELIVERED =
             T.let(
               :delivered,
+              Telnyx::MessagingInboundMessagePayload::From::Status::TaggedSymbol
+            )
+          WEBHOOK_DELIVERED =
+            T.let(
+              :webhook_delivered,
               Telnyx::MessagingInboundMessagePayload::From::Status::TaggedSymbol
             )
 
@@ -1305,8 +1739,9 @@ module Telnyx
         end
       end
 
-      # Receiving address. SMS and MMS webhooks use an array of recipients. WhatsApp
-      # webhooks use one E.164 phone number.
+      # Receiving address. SMS, MMS and RCS webhooks use an array of recipients. RCS
+      # recipients are identified by agent_id and agent_name. WhatsApp webhooks use one
+      # E.164 phone number.
       module To
         extend Telnyx::Internal::Type::Union
 
@@ -1328,6 +1763,20 @@ module Telnyx
                 Telnyx::Internal::AnyHash
               )
             end
+
+          # RCS agent identifier.
+          sig { returns(T.nilable(String)) }
+          attr_reader :agent_id
+
+          sig { params(agent_id: String).void }
+          attr_writer :agent_id
+
+          # RCS agent name.
+          sig { returns(T.nilable(String)) }
+          attr_reader :agent_name
+
+          sig { params(agent_name: String).void }
+          attr_writer :agent_name
 
           # The carrier of the receiver.
           sig { returns(T.nilable(String)) }
@@ -1380,6 +1829,8 @@ module Telnyx
 
           sig do
             params(
+              agent_id: String,
+              agent_name: String,
               carrier: String,
               line_type:
                 Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::OrSymbol,
@@ -1389,6 +1840,10 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            # RCS agent identifier.
+            agent_id: nil,
+            # RCS agent name.
+            agent_name: nil,
             # The carrier of the receiver.
             carrier: nil,
             # The line-type of the receiver.
@@ -1402,6 +1857,8 @@ module Telnyx
           sig do
             override.returns(
               {
+                agent_id: String,
+                agent_name: String,
                 carrier: String,
                 line_type:
                   Telnyx::MessagingInboundMessagePayload::To::UnionMember0::LineType::TaggedSymbol,
@@ -1574,6 +2031,11 @@ module Telnyx
         WHATSAPP =
           T.let(
             :WHATSAPP,
+            Telnyx::MessagingInboundMessagePayload::Type::TaggedSymbol
+          )
+        RCS =
+          T.let(
+            :RCS,
             Telnyx::MessagingInboundMessagePayload::Type::TaggedSymbol
           )
 

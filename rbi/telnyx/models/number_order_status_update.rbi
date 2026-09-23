@@ -54,7 +54,9 @@ module Telnyx
         attr_accessor :id
 
         # The type of event being sent
-        sig { returns(String) }
+        sig do
+          returns(Telnyx::NumberOrderStatusUpdate::Data::EventType::OrSymbol)
+        end
         attr_accessor :event_type
 
         # ISO 8601 timestamp of when the event occurred
@@ -76,7 +78,8 @@ module Telnyx
         sig do
           params(
             id: String,
-            event_type: String,
+            event_type:
+              Telnyx::NumberOrderStatusUpdate::Data::EventType::OrSymbol,
             occurred_at: Time,
             payload: Telnyx::NumberOrderWithPhoneNumbers::OrHash,
             record_type: String
@@ -99,7 +102,8 @@ module Telnyx
           override.returns(
             {
               id: String,
-              event_type: String,
+              event_type:
+                Telnyx::NumberOrderStatusUpdate::Data::EventType::OrSymbol,
               occurred_at: Time,
               payload: Telnyx::NumberOrderWithPhoneNumbers,
               record_type: String
@@ -107,6 +111,33 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        # The type of event being sent
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::NumberOrderStatusUpdate::Data::EventType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          NUMBER_ORDER_COMPLETE =
+            T.let(
+              :"number_order.complete",
+              Telnyx::NumberOrderStatusUpdate::Data::EventType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::NumberOrderStatusUpdate::Data::EventType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 

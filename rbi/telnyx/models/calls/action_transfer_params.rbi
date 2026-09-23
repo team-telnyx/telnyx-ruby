@@ -109,11 +109,12 @@ module Telnyx
         end
         attr_writer :custom_headers
 
-        # The number the inbound call being transferred was originally received on, in
-        # +E164 format. Supplying it lets an unverified non-Telnyx `from` be used as the
-        # caller id, provided that number is still on an active inbound call to this
-        # `diversion` number for your account. The `diversion` number itself must be one
-        # you own or have verified.
+        # The `to` number of an active inbound call, in +E164 format. Telnyx checks
+        # whether there is currently an active inbound call where `to` matches this
+        # `diversion` value and `from` matches the `from` number supplied for this
+        # request. If such a call exists, the `from` number is treated as verified (since
+        # it is already on an active inbound call to you) and can be used as the caller id
+        # for this outbound call.
         sig { returns(T.nilable(String)) }
         attr_reader :diversion
 
@@ -646,11 +647,12 @@ module Telnyx
           command_id: nil,
           # Custom headers to be added to the SIP INVITE.
           custom_headers: nil,
-          # The number the inbound call being transferred was originally received on, in
-          # +E164 format. Supplying it lets an unverified non-Telnyx `from` be used as the
-          # caller id, provided that number is still on an active inbound call to this
-          # `diversion` number for your account. The `diversion` number itself must be one
-          # you own or have verified.
+          # The `to` number of an active inbound call, in +E164 format. Telnyx checks
+          # whether there is currently an active inbound call where `to` matches this
+          # `diversion` value and `from` matches the `from` number supplied for this
+          # request. If such a call exists, the `from` number is treated as verified (since
+          # it is already on an active inbound call to you) and can be used as the caller id
+          # for this outbound call.
           diversion: nil,
           # If set to false, early media will not be passed to the originating leg.
           early_media: nil,
@@ -947,6 +949,66 @@ module Telnyx
           end
           attr_writer :beep_detection_profile
 
+          # Highest frequency, in Hz, that a tone can reach and still be treated as a beep.
+          # Only used when beep detection is active.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :beep_max_frequency_hz
+
+          sig { params(beep_max_frequency_hz: Integer).void }
+          attr_writer :beep_max_frequency_hz
+
+          # Lowest frequency, in Hz, that a tone must reach to be treated as a beep. Raising
+          # it above 480 excludes North American ringback (440 + 480 Hz), which can
+          # otherwise be reported as a beep when the `freq_only` profile is in use. Only
+          # used when beep detection is active.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :beep_min_frequency_hz
+
+          sig { params(beep_min_frequency_hz: Integer).void }
+          attr_writer :beep_min_frequency_hz
+
+          # Shortest tone, in milliseconds, that can be treated as a beep. Raising it
+          # rejects brief tones such as call-progress blips. Only used when beep detection
+          # is active.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :beep_min_tone_duration_millis
+
+          sig { params(beep_min_tone_duration_millis: Integer).void }
+          attr_writer :beep_min_tone_duration_millis
+
+          # When enabled, a candidate beep must pass an additional spectral check before it
+          # is reported. Only used when beep detection is active.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :beep_spectral_confirmation
+
+          sig { params(beep_spectral_confirmation: T::Boolean).void }
+          attr_writer :beep_spectral_confirmation
+
+          # Minimum spectral purity, from 0 to 1, for a tone to be treated as a beep.
+          # Raising it rejects mixed tones such as ringback, which combines two frequencies.
+          # Only used when beep detection is active.
+          sig { returns(T.nilable(Float)) }
+          attr_reader :beep_spectral_min_purity
+
+          sig { params(beep_spectral_min_purity: Float).void }
+          attr_writer :beep_spectral_min_purity
+
+          # When enabled, the fax CNG tone is rejected rather than reported as a beep. Only
+          # used when beep detection is active.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :beep_spectral_reject_fax_cng
+
+          sig { params(beep_spectral_reject_fax_cng: T::Boolean).void }
+          attr_writer :beep_spectral_reject_fax_cng
+
+          # Length of the spectral confirmation window, in milliseconds. Only used when beep
+          # detection is active.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :beep_spectral_window_millis
+
+          sig { params(beep_spectral_window_millis: Integer).void }
+          attr_writer :beep_spectral_window_millis
+
           # Maximum threshold for silence between words.
           sig { returns(T.nilable(Integer)) }
           attr_reader :between_words_silence_millis
@@ -1022,6 +1084,13 @@ module Telnyx
               after_greeting_silence_millis: Integer,
               beep_detection_profile:
                 Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::OrSymbol,
+              beep_max_frequency_hz: Integer,
+              beep_min_frequency_hz: Integer,
+              beep_min_tone_duration_millis: Integer,
+              beep_spectral_confirmation: T::Boolean,
+              beep_spectral_min_purity: Float,
+              beep_spectral_reject_fax_cng: T::Boolean,
+              beep_spectral_window_millis: Integer,
               between_words_silence_millis: Integer,
               greeting_duration_millis: Integer,
               greeting_silence_duration_millis: Integer,
@@ -1041,6 +1110,31 @@ module Telnyx
             # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
             # beeps whose volume is too unsteady for the default profile.
             beep_detection_profile: nil,
+            # Highest frequency, in Hz, that a tone can reach and still be treated as a beep.
+            # Only used when beep detection is active.
+            beep_max_frequency_hz: nil,
+            # Lowest frequency, in Hz, that a tone must reach to be treated as a beep. Raising
+            # it above 480 excludes North American ringback (440 + 480 Hz), which can
+            # otherwise be reported as a beep when the `freq_only` profile is in use. Only
+            # used when beep detection is active.
+            beep_min_frequency_hz: nil,
+            # Shortest tone, in milliseconds, that can be treated as a beep. Raising it
+            # rejects brief tones such as call-progress blips. Only used when beep detection
+            # is active.
+            beep_min_tone_duration_millis: nil,
+            # When enabled, a candidate beep must pass an additional spectral check before it
+            # is reported. Only used when beep detection is active.
+            beep_spectral_confirmation: nil,
+            # Minimum spectral purity, from 0 to 1, for a tone to be treated as a beep.
+            # Raising it rejects mixed tones such as ringback, which combines two frequencies.
+            # Only used when beep detection is active.
+            beep_spectral_min_purity: nil,
+            # When enabled, the fax CNG tone is rejected rather than reported as a beep. Only
+            # used when beep detection is active.
+            beep_spectral_reject_fax_cng: nil,
+            # Length of the spectral confirmation window, in milliseconds. Only used when beep
+            # detection is active.
+            beep_spectral_window_millis: nil,
             # Maximum threshold for silence between words.
             between_words_silence_millis: nil,
             # Maximum threshold of a human greeting. If greeting longer than this value,
@@ -1071,6 +1165,13 @@ module Telnyx
                 after_greeting_silence_millis: Integer,
                 beep_detection_profile:
                   Telnyx::Calls::ActionTransferParams::AnsweringMachineDetectionConfig::BeepDetectionProfile::OrSymbol,
+                beep_max_frequency_hz: Integer,
+                beep_min_frequency_hz: Integer,
+                beep_min_tone_duration_millis: Integer,
+                beep_spectral_confirmation: T::Boolean,
+                beep_spectral_min_purity: Float,
+                beep_spectral_reject_fax_cng: T::Boolean,
+                beep_spectral_window_millis: Integer,
                 between_words_silence_millis: Integer,
                 greeting_duration_millis: Integer,
                 greeting_silence_duration_millis: Integer,

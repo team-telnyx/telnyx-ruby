@@ -138,6 +138,11 @@ module Telnyx
               :"nvidia/parakeet-v3",
               Telnyx::Calls::TranscriptionEngineParakeetConfig::TranscriptionModel::TaggedSymbol
             )
+          OMI_HEALTH_OMI_MED_STT_V1 =
+            T.let(
+              :"omi-health/omi-med-stt-v1",
+              Telnyx::Calls::TranscriptionEngineParakeetConfig::TranscriptionModel::TaggedSymbol
+            )
 
           sig do
             override.returns(

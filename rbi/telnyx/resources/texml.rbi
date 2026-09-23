@@ -5,6 +5,10 @@ module Telnyx
     # TeXML REST Commands
     class Texml
       # TeXML REST Commands
+      sig { returns(Telnyx::Resources::Texml::Calls) }
+      attr_reader :calls
+
+      # TeXML REST Commands
       sig { returns(Telnyx::Resources::Texml::Accounts) }
       attr_reader :accounts
 
@@ -46,8 +50,15 @@ module Telnyx
             Telnyx::TexmlInitiateAICallParams::DetectionMode::OrSymbol,
           machine_detection:
             Telnyx::TexmlInitiateAICallParams::MachineDetection::OrSymbol,
+          machine_detection_beep_max_frequency: Integer,
+          machine_detection_beep_min_frequency: Integer,
+          machine_detection_beep_min_tone_duration: Integer,
           machine_detection_beep_profile:
             Telnyx::TexmlInitiateAICallParams::MachineDetectionBeepProfile::OrSymbol,
+          machine_detection_beep_spectral_confirmation: T::Boolean,
+          machine_detection_beep_spectral_min_purity: Float,
+          machine_detection_beep_spectral_reject_fax_cng: T::Boolean,
+          machine_detection_beep_spectral_window: Integer,
           machine_detection_prompt_end_timeout: Integer,
           machine_detection_silence_timeout: Integer,
           machine_detection_speech_end_threshold: Integer,
@@ -124,11 +135,36 @@ module Telnyx
         detection_mode: nil,
         # Enables Answering Machine Detection.
         machine_detection: nil,
+        # Highest frequency, in Hz, that a tone can reach and still be treated as a beep.
+        # Only used when MachineDetection is enabled.
+        machine_detection_beep_max_frequency: nil,
+        # Lowest frequency, in Hz, that a tone must reach to be treated as a beep. Raising
+        # it above 480 excludes North American ringback (440 + 480 Hz), which can
+        # otherwise be reported as a beep when the `freq_only` profile is in use. Only
+        # used when MachineDetection is enabled.
+        machine_detection_beep_min_frequency: nil,
+        # Shortest tone, in milliseconds, that can be treated as a beep. Raising it
+        # rejects brief tones such as call-progress blips. Only used when MachineDetection
+        # is enabled.
+        machine_detection_beep_min_tone_duration: nil,
         # Selects which detectors must validate a beep. `both` requires the amplitude and
         # frequency detectors to agree. `freq_only` uses the frequency detector alone, for
         # beeps whose volume is too unsteady for the default profile. Only used when
         # MachineDetection is enabled.
         machine_detection_beep_profile: nil,
+        # When enabled, a candidate beep must pass an additional spectral check before it
+        # is reported. Only used when MachineDetection is enabled.
+        machine_detection_beep_spectral_confirmation: nil,
+        # Minimum spectral purity, from 0 to 1, for a tone to be treated as a beep.
+        # Raising it rejects mixed tones such as ringback, which combines two frequencies.
+        # Only used when MachineDetection is enabled.
+        machine_detection_beep_spectral_min_purity: nil,
+        # When enabled, the fax CNG tone is rejected rather than reported as a beep. Only
+        # used when MachineDetection is enabled.
+        machine_detection_beep_spectral_reject_fax_cng: nil,
+        # Length of the spectral confirmation window, in milliseconds. Only used when
+        # MachineDetection is enabled.
+        machine_detection_beep_spectral_window: nil,
         # Silence duration threshold after a call screening prompt before ending prompt
         # detection, in milliseconds. Used when `DetectionMode` is `PremiumCallScreening`.
         machine_detection_prompt_end_timeout: nil,

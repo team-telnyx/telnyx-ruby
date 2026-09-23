@@ -8,24 +8,24 @@ module Telnyx
       # @example
       #   # `assistant_tool` is a `Telnyx::AI::AssistantTool`
       #   case assistant_tool
+      #   when Telnyx::AI::AssistantTool::Function
+      #     puts(assistant_tool.function)
       #   when Telnyx::AI::InferenceEmbeddingWebhookToolParams
       #     puts(assistant_tool.type)
       #   when Telnyx::AI::AssistantTool::ClientSideTool
       #     puts(assistant_tool.client_side_tool)
-      #   when Telnyx::AI::RetrievalTool
-      #     puts(assistant_tool.retrieval)
       #   else
       #     puts(assistant_tool)
       #   end
       #
       # @example
       #   case assistant_tool
-      #   in {type: :webhook, webhook: webhook}
+      #   in {type: :function, function: function, shared: shared}
+      #     puts(function)
+      #   in {type: :webhook, webhook: webhook, shared: shared}
       #     puts(webhook)
-      #   in {type: :client_side_tool, client_side_tool: client_side_tool}
+      #   in {type: :client_side_tool, client_side_tool: client_side_tool, shared: shared}
       #     puts(client_side_tool)
-      #   in {type: :retrieval, retrieval: retrieval}
-      #     puts(retrieval)
       #   else
       #     puts(assistant_tool)
       #   end

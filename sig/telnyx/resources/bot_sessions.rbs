@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class BotSessions
+      def list: (
+        email: String,
+        portal_redirect_token: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BotSessionListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

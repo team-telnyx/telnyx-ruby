@@ -1,0 +1,50 @@
+module Telnyx
+  module Models
+    module Compute
+      module Funcs
+        type export_create_params =
+          {
+            id: String,
+            endpoint: String,
+            headers: ::Hash[Symbol, String],
+            invocation_export_enabled: bool,
+            runtime_export_enabled: bool
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class ExportCreateParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor id: String
+
+          attr_accessor endpoint: String
+
+          attr_accessor headers: ::Hash[Symbol, String]
+
+          attr_accessor invocation_export_enabled: bool
+
+          attr_accessor runtime_export_enabled: bool
+
+          def initialize: (
+            id: String,
+            endpoint: String,
+            headers: ::Hash[Symbol, String],
+            invocation_export_enabled: bool,
+            runtime_export_enabled: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            endpoint: String,
+            headers: ::Hash[Symbol, String],
+            invocation_export_enabled: bool,
+            runtime_export_enabled: bool,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

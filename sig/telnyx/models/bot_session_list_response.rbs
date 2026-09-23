@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type bot_session_list_response =
+      { data: Telnyx::Models::BotSessionListResponse::Data }
+
+    class BotSessionListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::BotSessionListResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::BotSessionListResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::BotSessionListResponse::Data }
+
+      type data = { :api_v2_token => String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor api_v2_token: String
+
+        def initialize: (api_v2_token: String) -> void
+
+        def to_hash: -> { :api_v2_token => String }
+      end
+    end
+  end
+end

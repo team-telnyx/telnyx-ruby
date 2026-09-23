@@ -1,0 +1,12 @@
+module Telnyx
+  module Resources
+    class MachinePayments
+      def account_credit: (
+        amount_usd: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MachinePaymentAccountCreditResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

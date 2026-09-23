@@ -4,7 +4,8 @@ module Telnyx
       type retrieval_tool =
         {
           retrieval: Telnyx::AI::BucketIDs,
-          type: Telnyx::Models::AI::RetrievalTool::type_
+          type: Telnyx::Models::AI::RetrievalTool::type_,
+          shared: bool
         }
 
       class RetrievalTool < Telnyx::Internal::Type::BaseModel
@@ -12,14 +13,20 @@ module Telnyx
 
         attr_accessor type: Telnyx::Models::AI::RetrievalTool::type_
 
+        attr_reader shared: bool?
+
+        def shared=: (bool) -> bool
+
         def initialize: (
           retrieval: Telnyx::AI::BucketIDs,
-          type: Telnyx::Models::AI::RetrievalTool::type_
+          type: Telnyx::Models::AI::RetrievalTool::type_,
+          ?shared: bool
         ) -> void
 
         def to_hash: -> {
           retrieval: Telnyx::AI::BucketIDs,
-          type: Telnyx::Models::AI::RetrievalTool::type_
+          type: Telnyx::Models::AI::RetrievalTool::type_,
+          shared: bool
         }
 
         type type_ = :retrieval

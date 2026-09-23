@@ -571,8 +571,8 @@ module Telnyx
           class Function < Telnyx::Internal::Type::BaseModel
             # @!attribute function
             #
-            #   @return [Telnyx::Models::AI::ChatCompletionRequest::Tool::Function::Function]
-            required :function, -> { Telnyx::AI::ChatCompletionRequest::Tool::Function::Function }
+            #   @return [Telnyx::Models::AI::OpenAI::FunctionDefinition]
+            required :function, -> { Telnyx::AI::OpenAI::FunctionDefinition }
 
             # @!attribute type
             #
@@ -580,31 +580,8 @@ module Telnyx
             required :type, const: :function
 
             # @!method initialize(function:, type: :function)
-            #   @param function [Telnyx::Models::AI::ChatCompletionRequest::Tool::Function::Function]
+            #   @param function [Telnyx::Models::AI::OpenAI::FunctionDefinition]
             #   @param type [Symbol, :function]
-
-            # @see Telnyx::Models::AI::ChatCompletionRequest::Tool::Function#function
-            class Function < Telnyx::Internal::Type::BaseModel
-              # @!attribute name
-              #
-              #   @return [String]
-              required :name, String
-
-              # @!attribute description
-              #
-              #   @return [String, nil]
-              optional :description, String
-
-              # @!attribute parameters
-              #
-              #   @return [Hash{Symbol=>Object}, nil]
-              optional :parameters, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
-
-              # @!method initialize(name:, description: nil, parameters: nil)
-              #   @param name [String]
-              #   @param description [String]
-              #   @param parameters [Hash{Symbol=>Object}]
-            end
           end
 
           class Retrieval < Telnyx::Internal::Type::BaseModel

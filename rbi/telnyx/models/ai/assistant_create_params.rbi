@@ -224,10 +224,10 @@ module Telnyx
 
         # Configuration for post-conversation processing. When enabled, the assistant
         # receives one additional LLM turn after the conversation ends, allowing it to
-        # execute tool calls such as logging to a CRM or sending a summary. The assistant
-        # can execute multiple parallel or sequential tools during this phase.
-        # Telephony-control tools (e.g. hangup, transfer) are unavailable
-        # post-conversation. Beta feature.
+        # execute final tool calls such as sending a summary or updating a record via
+        # webhook or function tools. Integration and MCP server tools are not available
+        # post-conversation; call-control tools (e.g. hangup, transfer) are also
+        # unavailable. Beta feature.
         sig { returns(T.nilable(Telnyx::AI::PostConversationSettingsReq)) }
         attr_reader :post_conversation_settings
 
@@ -279,11 +279,12 @@ module Telnyx
             T.nilable(
               T::Array[
                 T.any(
+                  Telnyx::AI::AssistantTool::Function,
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams,
                   Telnyx::AI::AssistantTool::ClientSideTool,
                   Telnyx::AI::RetrievalTool,
                   Telnyx::AI::AssistantTool::Handoff,
-                  Telnyx::AI::HangupTool,
+                  Telnyx::AI::AssistantTool::Hangup,
                   Telnyx::AI::AssistantTool::Transfer,
                   Telnyx::AI::AssistantTool::Invite,
                   Telnyx::AI::AssistantTool::Refer,
@@ -304,11 +305,12 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
+                  Telnyx::AI::AssistantTool::Function::OrHash,
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                   Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
-                  Telnyx::AI::HangupTool::OrHash,
+                  Telnyx::AI::AssistantTool::Hangup::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
@@ -382,11 +384,12 @@ module Telnyx
             tools:
               T::Array[
                 T.any(
+                  Telnyx::AI::AssistantTool::Function::OrHash,
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                   Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                   Telnyx::AI::RetrievalTool::OrHash,
                   Telnyx::AI::AssistantTool::Handoff::OrHash,
-                  Telnyx::AI::HangupTool::OrHash,
+                  Telnyx::AI::AssistantTool::Hangup::OrHash,
                   Telnyx::AI::AssistantTool::Transfer::OrHash,
                   Telnyx::AI::AssistantTool::Invite::OrHash,
                   Telnyx::AI::AssistantTool::Refer::OrHash,
@@ -484,10 +487,10 @@ module Telnyx
           observability_settings: nil,
           # Configuration for post-conversation processing. When enabled, the assistant
           # receives one additional LLM turn after the conversation ends, allowing it to
-          # execute tool calls such as logging to a CRM or sending a summary. The assistant
-          # can execute multiple parallel or sequential tools during this phase.
-          # Telephony-control tools (e.g. hangup, transfer) are unavailable
-          # post-conversation. Beta feature.
+          # execute final tool calls such as sending a summary or updating a record via
+          # webhook or function tools. Integration and MCP server tools are not available
+          # post-conversation; call-control tools (e.g. hangup, transfer) are also
+          # unavailable. Beta feature.
           post_conversation_settings: nil,
           privacy_settings: nil,
           # Tags associated with the assistant. Tags can also be managed with the assistant
@@ -543,11 +546,12 @@ module Telnyx
               tools:
                 T::Array[
                   T.any(
+                    Telnyx::AI::AssistantTool::Function,
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams,
                     Telnyx::AI::AssistantTool::ClientSideTool,
                     Telnyx::AI::RetrievalTool,
                     Telnyx::AI::AssistantTool::Handoff,
-                    Telnyx::AI::HangupTool,
+                    Telnyx::AI::AssistantTool::Hangup,
                     Telnyx::AI::AssistantTool::Transfer,
                     Telnyx::AI::AssistantTool::Invite,
                     Telnyx::AI::AssistantTool::Refer,

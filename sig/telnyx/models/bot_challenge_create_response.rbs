@@ -1,0 +1,72 @@
+module Telnyx
+  module Models
+    type bot_challenge_create_response =
+      { data: Telnyx::Models::BotChallengeCreateResponse::Data }
+
+    class BotChallengeCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::BotChallengeCreateResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::BotChallengeCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::BotChallengeCreateResponse::Data }
+
+      type data =
+        {
+          challenge_type: Telnyx::Models::BotChallengeCreateResponse::Data::challenge_type,
+          nonce: String,
+          privacy_policy_url: String,
+          problem: String,
+          terms_and_conditions_url: String,
+          precision: Integer
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor challenge_type: Telnyx::Models::BotChallengeCreateResponse::Data::challenge_type
+
+        attr_accessor nonce: String
+
+        attr_accessor privacy_policy_url: String
+
+        attr_accessor problem: String
+
+        attr_accessor terms_and_conditions_url: String
+
+        attr_reader precision: Integer?
+
+        def precision=: (Integer) -> Integer
+
+        def initialize: (
+          challenge_type: Telnyx::Models::BotChallengeCreateResponse::Data::challenge_type,
+          nonce: String,
+          privacy_policy_url: String,
+          problem: String,
+          terms_and_conditions_url: String,
+          ?precision: Integer
+        ) -> void
+
+        def to_hash: -> {
+          challenge_type: Telnyx::Models::BotChallengeCreateResponse::Data::challenge_type,
+          nonce: String,
+          privacy_policy_url: String,
+          problem: String,
+          terms_and_conditions_url: String,
+          precision: Integer
+        }
+
+        type challenge_type = :math | :string | :binary
+
+        module ChallengeType
+          extend Telnyx::Internal::Type::Enum
+
+          MATH: :math
+          STRING: :string
+          BINARY: :binary
+
+          def self?.values: -> ::Array[Telnyx::Models::BotChallengeCreateResponse::Data::challenge_type]
+        end
+      end
+    end
+  end
+end

@@ -238,10 +238,10 @@ module Telnyx
 
           # Configuration for post-conversation processing. When enabled, the assistant
           # receives one additional LLM turn after the conversation ends, allowing it to
-          # execute tool calls such as logging to a CRM or sending a summary. The assistant
-          # can execute multiple parallel or sequential tools during this phase.
-          # Telephony-control tools (e.g. hangup, transfer) are unavailable
-          # post-conversation. Beta feature.
+          # execute final tool calls such as sending a summary or updating a record via
+          # webhook or function tools. Integration and MCP server tools are not available
+          # post-conversation; call-control tools (e.g. hangup, transfer) are also
+          # unavailable. Beta feature.
           sig { returns(T.nilable(Telnyx::AI::PostConversationSettingsReq)) }
           attr_reader :post_conversation_settings
 
@@ -280,7 +280,11 @@ module Telnyx
           attr_writer :telephony_settings
 
           # IDs of shared tools to attach to the assistant. New integrations should prefer
-          # `tool_ids` over inline `tools`.
+          # `tool_ids` over inline `tools`. On update, a sent `tool_ids` array fully
+          # replaces the assistant's attached shared tools; omit the field to leave them
+          # unchanged. Single-instance tool types are counted across inline `tools` and
+          # `tool_ids` combined, so attaching a shared tool of such a type when an instance
+          # already exists returns HTTP 400 with error code 10015.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :tool_ids
 
@@ -289,17 +293,25 @@ module Telnyx
 
           # Deprecated for new integrations. Inline tool definitions available to the
           # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
-          # endpoints.
+          # endpoints. On update, a sent `tools` array fully replaces the assistant's inline
+          # tools; omit the field to leave the inline tools unchanged. Each tool type except
+          # `function`, `webhook`, and `client_side_tool` allows at most one instance per
+          # assistant, counted across inline `tools` and shared `tool_ids` combined —
+          # sending a duplicate of such a type returns HTTP 400 with error code 10015.
+          # Responses merge shared tools into `tools` with `shared: true`; when updating,
+          # omit those tools from the `tools` array and manage them through `tool_ids`
+          # instead.
           sig do
             returns(
               T.nilable(
                 T::Array[
                   T.any(
+                    Telnyx::AI::AssistantTool::Function,
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams,
                     Telnyx::AI::AssistantTool::ClientSideTool,
                     Telnyx::AI::RetrievalTool,
                     Telnyx::AI::AssistantTool::Handoff,
-                    Telnyx::AI::HangupTool,
+                    Telnyx::AI::AssistantTool::Hangup,
                     Telnyx::AI::AssistantTool::Transfer,
                     Telnyx::AI::AssistantTool::Invite,
                     Telnyx::AI::AssistantTool::Refer,
@@ -320,11 +332,12 @@ module Telnyx
               tools:
                 T::Array[
                   T.any(
+                    Telnyx::AI::AssistantTool::Function::OrHash,
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                     Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                     Telnyx::AI::RetrievalTool::OrHash,
                     Telnyx::AI::AssistantTool::Handoff::OrHash,
-                    Telnyx::AI::HangupTool::OrHash,
+                    Telnyx::AI::AssistantTool::Hangup::OrHash,
                     Telnyx::AI::AssistantTool::Transfer::OrHash,
                     Telnyx::AI::AssistantTool::Invite::OrHash,
                     Telnyx::AI::AssistantTool::Refer::OrHash,
@@ -403,11 +416,12 @@ module Telnyx
               tools:
                 T::Array[
                   T.any(
+                    Telnyx::AI::AssistantTool::Function::OrHash,
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams::OrHash,
                     Telnyx::AI::AssistantTool::ClientSideTool::OrHash,
                     Telnyx::AI::RetrievalTool::OrHash,
                     Telnyx::AI::AssistantTool::Handoff::OrHash,
-                    Telnyx::AI::HangupTool::OrHash,
+                    Telnyx::AI::AssistantTool::Hangup::OrHash,
                     Telnyx::AI::AssistantTool::Transfer::OrHash,
                     Telnyx::AI::AssistantTool::Invite::OrHash,
                     Telnyx::AI::AssistantTool::Refer::OrHash,
@@ -505,10 +519,10 @@ module Telnyx
             observability_settings: nil,
             # Configuration for post-conversation processing. When enabled, the assistant
             # receives one additional LLM turn after the conversation ends, allowing it to
-            # execute tool calls such as logging to a CRM or sending a summary. The assistant
-            # can execute multiple parallel or sequential tools during this phase.
-            # Telephony-control tools (e.g. hangup, transfer) are unavailable
-            # post-conversation. Beta feature.
+            # execute final tool calls such as sending a summary or updating a record via
+            # webhook or function tools. Integration and MCP server tools are not available
+            # post-conversation; call-control tools (e.g. hangup, transfer) are also
+            # unavailable. Beta feature.
             post_conversation_settings: nil,
             privacy_settings: nil,
             # Tags associated with the assistant. Tags can also be managed with the assistant
@@ -516,11 +530,22 @@ module Telnyx
             tags: nil,
             telephony_settings: nil,
             # IDs of shared tools to attach to the assistant. New integrations should prefer
-            # `tool_ids` over inline `tools`.
+            # `tool_ids` over inline `tools`. On update, a sent `tool_ids` array fully
+            # replaces the assistant's attached shared tools; omit the field to leave them
+            # unchanged. Single-instance tool types are counted across inline `tools` and
+            # `tool_ids` combined, so attaching a shared tool of such a type when an instance
+            # already exists returns HTTP 400 with error code 10015.
             tool_ids: nil,
             # Deprecated for new integrations. Inline tool definitions available to the
             # assistant. Prefer `tool_ids` to attach shared tools created with the AI Tools
-            # endpoints.
+            # endpoints. On update, a sent `tools` array fully replaces the assistant's inline
+            # tools; omit the field to leave the inline tools unchanged. Each tool type except
+            # `function`, `webhook`, and `client_side_tool` allows at most one instance per
+            # assistant, counted across inline `tools` and shared `tool_ids` combined —
+            # sending a duplicate of such a type returns HTTP 400 with error code 10015.
+            # Responses merge shared tools into `tools` with `shared: true`; when updating,
+            # omit those tools from the `tools` array and manage them through `tool_ids`
+            # instead.
             tools: nil,
             transcription: nil,
             # Human-readable name for the assistant version.
@@ -565,11 +590,12 @@ module Telnyx
                 tools:
                   T::Array[
                     T.any(
+                      Telnyx::AI::AssistantTool::Function,
                       Telnyx::AI::InferenceEmbeddingWebhookToolParams,
                       Telnyx::AI::AssistantTool::ClientSideTool,
                       Telnyx::AI::RetrievalTool,
                       Telnyx::AI::AssistantTool::Handoff,
-                      Telnyx::AI::HangupTool,
+                      Telnyx::AI::AssistantTool::Hangup,
                       Telnyx::AI::AssistantTool::Transfer,
                       Telnyx::AI::AssistantTool::Invite,
                       Telnyx::AI::AssistantTool::Refer,

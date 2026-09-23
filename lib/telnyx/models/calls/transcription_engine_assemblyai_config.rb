@@ -19,7 +19,8 @@ module Telnyx
                  enum: -> { Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::TranscriptionEngine }
 
         # @!attribute transcription_model
-        #   The model to use for transcription.
+        #   The model to use for transcription. `assemblyai/universal-streaming` is a legacy
+        #   alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
         #
         #   @return [Symbol, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::TranscriptionModel, nil]
         optional :transcription_model,
@@ -33,7 +34,7 @@ module Telnyx
         #
         #   @param transcription_engine [Symbol, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::TranscriptionEngine] Engine identifier for AssemblyAI transcription service
         #
-        #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::TranscriptionModel] The model to use for transcription.
+        #   @param transcription_model [Symbol, Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::TranscriptionModel] The model to use for transcription. `assemblyai/universal-streaming` is a legacy
 
         # Engine identifier for AssemblyAI transcription service
         #
@@ -47,12 +48,14 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # The model to use for transcription.
+        # The model to use for transcription. `assemblyai/universal-streaming` is a legacy
+        # alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
         #
         # @see Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig#transcription_model
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
+          ASSEMBLYAI_UNIVERSAL_3_5_PRO = :"assemblyai/universal-3-5-pro"
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
 
           # @!method self.values

@@ -17,8 +17,7 @@ module Telnyx
       def to_hash: -> { data: Telnyx::Models::MessageRetrieveResponse::data }
 
       type data =
-        Telnyx::MessagingOutboundMessagePayload
-        | Telnyx::MessagingInboundMessagePayload
+        Telnyx::OutboundMessagePayload | Telnyx::MessagingInboundMessagePayload
 
       module Data
         extend Telnyx::Internal::Type::Union

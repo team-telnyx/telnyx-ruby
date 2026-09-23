@@ -65,7 +65,11 @@ module Telnyx
         attr_accessor :id
 
         # The type of event being sent
-        sig { returns(String) }
+        sig do
+          returns(
+            Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::EventType::TaggedSymbol
+          )
+        end
         attr_accessor :event_type
 
         # ISO 8601 timestamp of when the event occurred
@@ -94,7 +98,8 @@ module Telnyx
         sig do
           params(
             id: String,
-            event_type: String,
+            event_type:
+              Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::EventType::OrSymbol,
             occurred_at: Time,
             payload:
               Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload::OrHash,
@@ -120,7 +125,8 @@ module Telnyx
           override.returns(
             {
               id: String,
-              event_type: String,
+              event_type:
+                Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::EventType::TaggedSymbol,
               occurred_at: Time,
               payload:
                 Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::Payload,
@@ -129,6 +135,36 @@ module Telnyx
           )
         end
         def to_hash
+        end
+
+        # The type of event being sent
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::EventType
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          NUMBER_ORDER_COMPLETE =
+            T.let(
+              :"number_order.complete",
+              Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::EventType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::NumberOrderStatusUpdateWebhookEvent::Data::EventType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Payload < Telnyx::Internal::Type::BaseModel

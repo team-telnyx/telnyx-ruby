@@ -21,6 +21,10 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::ConnectionListActiveCallsResponse]
 
+      def retrieve_count: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ConnectionRetrieveCountResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

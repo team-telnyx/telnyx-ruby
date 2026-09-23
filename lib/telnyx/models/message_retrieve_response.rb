@@ -6,11 +6,11 @@ module Telnyx
     class MessageRetrieveResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::MessagingOutboundMessagePayload, Telnyx::Models::MessagingInboundMessagePayload, nil]
+      #   @return [Telnyx::Models::OutboundMessagePayload, Telnyx::Models::MessagingInboundMessagePayload, nil]
       optional :data, union: -> { Telnyx::Models::MessageRetrieveResponse::Data }
 
       # @!method initialize(data: nil)
-      #   @param data [Telnyx::Models::MessagingOutboundMessagePayload, Telnyx::Models::MessagingInboundMessagePayload]
+      #   @param data [Telnyx::Models::OutboundMessagePayload, Telnyx::Models::MessagingInboundMessagePayload]
 
       # @see Telnyx::Models::MessageRetrieveResponse#data
       module Data
@@ -18,12 +18,12 @@ module Telnyx
 
         discriminator :direction
 
-        variant :outbound, -> { Telnyx::MessagingOutboundMessagePayload }
+        variant :outbound, -> { Telnyx::OutboundMessagePayload }
 
         variant :inbound, -> { Telnyx::MessagingInboundMessagePayload }
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::MessagingOutboundMessagePayload, Telnyx::Models::MessagingInboundMessagePayload)]
+        #   @return [Array(Telnyx::Models::OutboundMessagePayload, Telnyx::Models::MessagingInboundMessagePayload)]
       end
     end
   end

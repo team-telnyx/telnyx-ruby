@@ -1,0 +1,164 @@
+module Telnyx
+  module Models
+    type machine_payment_account_credit_response =
+      { data: Telnyx::Models::MachinePaymentAccountCreditResponse::Data }
+
+    class MachinePaymentAccountCreditResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::MachinePaymentAccountCreditResponse::Data?
+
+      def data=: (
+        Telnyx::Models::MachinePaymentAccountCreditResponse::Data
+      ) -> Telnyx::Models::MachinePaymentAccountCreditResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::MachinePaymentAccountCreditResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::MachinePaymentAccountCreditResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          account_id: String,
+          amount: String,
+          currency: String,
+          payment_source: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_source,
+          record_type: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::record_type,
+          created: bool,
+          created_at: Time,
+          mpp_resource: String?,
+          payment_intent_id: String?,
+          payment_method: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_method?,
+          provider: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::provider?,
+          receipt_reference: String?,
+          status: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::status?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor account_id: String
+
+        attr_accessor amount: String
+
+        attr_accessor currency: String
+
+        attr_accessor payment_source: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_source
+
+        attr_accessor record_type: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::record_type
+
+        attr_reader created: bool?
+
+        def created=: (bool) -> bool
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_accessor mpp_resource: String?
+
+        attr_accessor payment_intent_id: String?
+
+        attr_accessor payment_method: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_method?
+
+        attr_accessor provider: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::provider?
+
+        attr_accessor receipt_reference: String?
+
+        attr_accessor status: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::status?
+
+        def initialize: (
+          id: String,
+          account_id: String,
+          amount: String,
+          currency: String,
+          payment_source: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_source,
+          record_type: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::record_type,
+          ?created: bool,
+          ?created_at: Time,
+          ?mpp_resource: String?,
+          ?payment_intent_id: String?,
+          ?payment_method: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_method?,
+          ?provider: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::provider?,
+          ?receipt_reference: String?,
+          ?status: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::status?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          account_id: String,
+          amount: String,
+          currency: String,
+          payment_source: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_source,
+          record_type: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::record_type,
+          created: bool,
+          created_at: Time,
+          mpp_resource: String?,
+          payment_intent_id: String?,
+          payment_method: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_method?,
+          provider: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::provider?,
+          receipt_reference: String?,
+          status: Telnyx::Models::MachinePaymentAccountCreditResponse::Data::status?
+        }
+
+        type payment_source = :machine_payment
+
+        module PaymentSource
+          extend Telnyx::Internal::Type::Enum
+
+          MACHINE_PAYMENT: :machine_payment
+
+          def self?.values: -> ::Array[Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_source]
+        end
+
+        type record_type = :machine_payment_account_credit
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          MACHINE_PAYMENT_ACCOUNT_CREDIT: :machine_payment_account_credit
+
+          def self?.values: -> ::Array[Telnyx::Models::MachinePaymentAccountCreditResponse::Data::record_type]
+        end
+
+        type payment_method = :stripe_spt | :tempo_usdc
+
+        module PaymentMethod
+          extend Telnyx::Internal::Type::Enum
+
+          STRIPE_SPT: :stripe_spt
+          TEMPO_USDC: :tempo_usdc
+
+          def self?.values: -> ::Array[Telnyx::Models::MachinePaymentAccountCreditResponse::Data::payment_method]
+        end
+
+        type provider = :stripe | :tempo
+
+        module Provider
+          extend Telnyx::Internal::Type::Enum
+
+          STRIPE: :stripe
+          TEMPO: :tempo
+
+          def self?.values: -> ::Array[Telnyx::Models::MachinePaymentAccountCreditResponse::Data::provider]
+        end
+
+        type status = :new | :processing | :settled | :expired | :invalid
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          NEW: :new
+          PROCESSING: :processing
+          SETTLED: :settled
+          EXPIRED: :expired
+          INVALID: :invalid
+
+          def self?.values: -> ::Array[Telnyx::Models::MachinePaymentAccountCreditResponse::Data::status]
+        end
+      end
+    end
+  end
+end

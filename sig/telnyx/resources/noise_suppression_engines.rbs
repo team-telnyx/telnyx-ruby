@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class NoiseSuppressionEngines
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NoiseSuppressionEngineListResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

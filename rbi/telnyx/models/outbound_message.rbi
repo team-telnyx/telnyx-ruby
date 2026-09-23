@@ -104,6 +104,11 @@ module Telnyx
             :"message.finalized",
             Telnyx::OutboundMessage::EventType::TaggedSymbol
           )
+        MESSAGE_READ =
+          T.let(
+            :"message.read",
+            Telnyx::OutboundMessage::EventType::TaggedSymbol
+          )
 
         sig do
           override.returns(

@@ -104,11 +104,13 @@ module Telnyx
           voicemail_detection: Telnyx::AI::TelephonySettings::VoicemailDetection
         }
 
-        type noise_suppression = :krisp | :deepfilternet | :disabled
+        type noise_suppression =
+          :aicoustics | :krisp | :deepfilternet | :disabled
 
         module NoiseSuppression
           extend Telnyx::Internal::Type::Enum
 
+          AICOUSTICS: :aicoustics
           KRISP: :krisp
           DEEPFILTERNET: :deepfilternet
           DISABLED: :disabled
@@ -119,7 +121,10 @@ module Telnyx
         type noise_suppression_config =
           {
             attenuation_limit: Integer,
-            mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+            enhancement_level: Float,
+            family: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::family,
+            mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode,
+            size: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::size
           }
 
         class NoiseSuppressionConfig < Telnyx::Internal::Type::BaseModel
@@ -127,21 +132,53 @@ module Telnyx
 
           def attenuation_limit=: (Integer) -> Integer
 
+          attr_reader enhancement_level: Float?
+
+          def enhancement_level=: (Float) -> Float
+
+          attr_reader family: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::family?
+
+          def family=: (
+            Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::family
+          ) -> Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::family
+
           attr_reader mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode?
 
           def mode=: (
             Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
           ) -> Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
 
+          attr_reader size: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::size?
+
+          def size=: (
+            Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::size
+          ) -> Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::size
+
           def initialize: (
             ?attenuation_limit: Integer,
-            ?mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+            ?enhancement_level: Float,
+            ?family: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::family,
+            ?mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode,
+            ?size: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::size
           ) -> void
 
           def to_hash: -> {
             attenuation_limit: Integer,
-            mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode
+            enhancement_level: Float,
+            family: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::family,
+            mode: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode,
+            size: Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::size
           }
+
+          type family = :quail
+
+          module Family
+            extend Telnyx::Internal::Type::Enum
+
+            QUAIL: :quail
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::family]
+          end
 
           type mode = :advanced
 
@@ -151,6 +188,17 @@ module Telnyx
             ADVANCED: :advanced
 
             def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::mode]
+          end
+
+          type size = :vf | :vf_2_0_l
+
+          module Size
+            extend Telnyx::Internal::Type::Enum
+
+            VF: :vf
+            VF_2_0_L: :vf_2_0_l
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::TelephonySettings::NoiseSuppressionConfig::size]
           end
         end
 

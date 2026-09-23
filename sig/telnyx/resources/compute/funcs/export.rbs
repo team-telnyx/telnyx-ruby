@@ -1,0 +1,30 @@
+module Telnyx
+  module Resources
+    class Compute
+      class Funcs
+        class Export
+          def create: (
+            String id,
+            endpoint: String,
+            headers: ::Hash[Symbol, String],
+            invocation_export_enabled: bool,
+            runtime_export_enabled: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Compute::Funcs::FuncLogExportConfigResponse
+
+          def list: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Compute::Funcs::FuncLogExportConfigResponse
+
+          def delete_all: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

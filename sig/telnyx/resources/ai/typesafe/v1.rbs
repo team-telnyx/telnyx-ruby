@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class AI
+      class Typesafe
+        class V1
+          def systemone: (
+            questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
+            state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Typesafe::V1SystemoneResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

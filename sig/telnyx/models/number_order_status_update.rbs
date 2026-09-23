@@ -24,7 +24,7 @@ module Telnyx
       type data =
         {
           id: String,
-          event_type: String,
+          event_type: Telnyx::Models::NumberOrderStatusUpdate::Data::event_type,
           occurred_at: Time,
           payload: Telnyx::NumberOrderWithPhoneNumbers,
           record_type: String
@@ -33,7 +33,7 @@ module Telnyx
       class Data < Telnyx::Internal::Type::BaseModel
         attr_accessor id: String
 
-        attr_accessor event_type: String
+        attr_accessor event_type: Telnyx::Models::NumberOrderStatusUpdate::Data::event_type
 
         attr_accessor occurred_at: Time
 
@@ -43,7 +43,7 @@ module Telnyx
 
         def initialize: (
           id: String,
-          event_type: String,
+          event_type: Telnyx::Models::NumberOrderStatusUpdate::Data::event_type,
           occurred_at: Time,
           payload: Telnyx::NumberOrderWithPhoneNumbers,
           record_type: String
@@ -51,11 +51,21 @@ module Telnyx
 
         def to_hash: -> {
           id: String,
-          event_type: String,
+          event_type: Telnyx::Models::NumberOrderStatusUpdate::Data::event_type,
           occurred_at: Time,
           payload: Telnyx::NumberOrderWithPhoneNumbers,
           record_type: String
         }
+
+        type event_type = :"number_order.complete"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          NUMBER_ORDER_COMPLETE: :"number_order.complete"
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberOrderStatusUpdate::Data::event_type]
+        end
       end
 
       type meta = { attempt: Integer, delivered_to: String }

@@ -74,7 +74,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingOutboundMessagePayload]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::OutboundMessagePayload]) | nil
       }
     end
   end
@@ -90,7 +90,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingOutboundMessagePayload | nil
+        data: Telnyx::OutboundMessagePayload | nil
       }
     end
   end
@@ -106,7 +106,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingOutboundMessagePayload | nil
+        data: Telnyx::OutboundMessagePayload | nil
       }
     end
   end
@@ -122,7 +122,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingOutboundMessagePayload | nil
+        data: Telnyx::OutboundMessagePayload | nil
       }
     end
   end
@@ -138,7 +138,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingOutboundMessagePayload | nil
+        data: Telnyx::OutboundMessagePayload | nil
       }
     end
   end
@@ -158,7 +158,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingOutboundMessagePayload | nil
+        data: Telnyx::OutboundMessagePayload | nil
       }
     end
   end
@@ -174,7 +174,7 @@ class Telnyx::Test::Resources::MessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => {
-        data: Telnyx::MessagingOutboundMessagePayload | nil
+        data: Telnyx::OutboundMessagePayload | nil
       }
     end
   end

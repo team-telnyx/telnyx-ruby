@@ -47,11 +47,13 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_engine]
         end
 
-        type transcription_model = :"assemblyai/universal-streaming"
+        type transcription_model =
+          :"assemblyai/universal-3-5-pro" | :"assemblyai/universal-streaming"
 
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
+          ASSEMBLYAI_UNIVERSAL_3_5_PRO: :"assemblyai/universal-3-5-pro"
           ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineAssemblyaiConfig::transcription_model]
