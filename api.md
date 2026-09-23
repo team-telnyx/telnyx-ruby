@@ -3179,3 +3179,9 @@ Methods:
 
 - <code title="post /v2/bot_signup">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">create</a>(\*\*params)</code>
 - <code title="post /v2/bot_signup/resend_magic_link">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">resend_magic_link</a>(\*\*params)</code>
+
+# MachinePayments
+
+Methods:
+
+- <code title="post /machine-payments/account-credit">client.machine_payments.<a href="./lib/telnyx/resources/machine_payments.rb">account_credit</a>(\*\*params)</code>

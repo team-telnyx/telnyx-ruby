@@ -762,6 +762,12 @@ module Telnyx
     sig { returns(Telnyx::Resources::BotSignup) }
     attr_reader :bot_signup
 
+    # Machine payment (MPP) account-credit operations. Fund your Telnyx account
+    # programmatically from a machine or agent using the Machine Payment Protocol, an
+    # HTTP-402 flow settled via Stripe or Tempo.
+    sig { returns(Telnyx::Resources::MachinePayments) }
+    attr_reader :machine_payments
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

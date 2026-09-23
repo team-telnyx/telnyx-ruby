@@ -987,6 +987,8 @@ module Telnyx
 
   class ListRetrieveByZoneParams = Telnyx::Models::ListRetrieveByZoneParams
 
+  class MachinePaymentAccountCreditParams = Telnyx::Models::MachinePaymentAccountCreditParams
+
   class ManagedAccount = Telnyx::Models::ManagedAccount
 
   class ManagedAccountBalance = Telnyx::Models::ManagedAccountBalance

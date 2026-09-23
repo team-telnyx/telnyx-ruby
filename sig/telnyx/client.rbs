@@ -390,6 +390,8 @@ module Telnyx
 
     attr_reader bot_signup: Telnyx::Resources::BotSignup
 
+    attr_reader machine_payments: Telnyx::Resources::MachinePayments
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

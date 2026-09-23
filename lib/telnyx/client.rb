@@ -767,6 +767,12 @@ module Telnyx
     # @return [Telnyx::Resources::BotSignup]
     attr_reader :bot_signup
 
+    # Machine payment (MPP) account-credit operations. Fund your Telnyx account
+    # programmatically from a machine or agent using the Machine Payment Protocol, an
+    # HTTP-402 flow settled via Stripe or Tempo.
+    # @return [Telnyx::Resources::MachinePayments]
+    attr_reader :machine_payments
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1063,6 +1069,7 @@ module Telnyx
       @bot_challenge = Telnyx::Resources::BotChallenge.new(client: self)
       @bot_sessions = Telnyx::Resources::BotSessions.new(client: self)
       @bot_signup = Telnyx::Resources::BotSignup.new(client: self)
+      @machine_payments = Telnyx::Resources::MachinePayments.new(client: self)
     end
   end
 end
