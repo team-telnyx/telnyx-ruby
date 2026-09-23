@@ -201,6 +201,16 @@ module Telnyx
               :cancelled,
               Telnyx::EmailMessages::RecipientListParams::Status::TaggedSymbol
             )
+          INJECTION_TIMEOUT =
+            T.let(
+              :injection_timeout,
+              Telnyx::EmailMessages::RecipientListParams::Status::TaggedSymbol
+            )
+          EXPIRED =
+            T.let(
+              :expired,
+              Telnyx::EmailMessages::RecipientListParams::Status::TaggedSymbol
+            )
 
           sig do
             override.returns(

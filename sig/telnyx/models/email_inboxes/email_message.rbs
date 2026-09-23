@@ -8,12 +8,14 @@ module Telnyx
           bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           created_at: Time,
-          events: ::Array[Telnyx::MessageEvent],
+          events: ::Array[Telnyx::EmailInboxes::EmailMessage::Event],
           from: Telnyx::EmailInboxes::EmailAddress,
+          metadata: ::Hash[Symbol, top],
           record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type,
           reply_to: String?,
           status: Telnyx::Models::EmailInboxes::EmailMessage::status,
           subject: String,
+          tags: ::Array[String],
           template_id: String?,
           template_variables: ::Hash[Symbol, top],
           to: ::Array[Telnyx::EmailInboxes::EmailAddress],
@@ -35,9 +37,11 @@ module Telnyx
 
         attr_accessor created_at: Time
 
-        attr_accessor events: ::Array[Telnyx::MessageEvent]
+        attr_accessor events: ::Array[Telnyx::EmailInboxes::EmailMessage::Event]
 
         attr_accessor from: Telnyx::EmailInboxes::EmailAddress
+
+        attr_accessor metadata: ::Hash[Symbol, top]
 
         attr_accessor record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type
 
@@ -46,6 +50,8 @@ module Telnyx
         attr_accessor status: Telnyx::Models::EmailInboxes::EmailMessage::status
 
         attr_accessor subject: String
+
+        attr_accessor tags: ::Array[String]
 
         attr_accessor template_id: String?
 
@@ -83,12 +89,14 @@ module Telnyx
           bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           created_at: Time,
-          events: ::Array[Telnyx::MessageEvent],
+          events: ::Array[Telnyx::EmailInboxes::EmailMessage::Event],
           from: Telnyx::EmailInboxes::EmailAddress,
+          metadata: ::Hash[Symbol, top],
           record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type,
           reply_to: String?,
           status: Telnyx::Models::EmailInboxes::EmailMessage::status,
           subject: String,
+          tags: ::Array[String],
           template_id: String?,
           template_variables: ::Hash[Symbol, top],
           to: ::Array[Telnyx::EmailInboxes::EmailAddress],
@@ -105,12 +113,14 @@ module Telnyx
           bcc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
           created_at: Time,
-          events: ::Array[Telnyx::MessageEvent],
+          events: ::Array[Telnyx::EmailInboxes::EmailMessage::Event],
           from: Telnyx::EmailInboxes::EmailAddress,
+          metadata: ::Hash[Symbol, top],
           record_type: Telnyx::Models::EmailInboxes::EmailMessage::record_type,
           reply_to: String?,
           status: Telnyx::Models::EmailInboxes::EmailMessage::status,
           subject: String,
+          tags: ::Array[String],
           template_id: String?,
           template_variables: ::Hash[Symbol, top],
           to: ::Array[Telnyx::EmailInboxes::EmailAddress],
@@ -165,6 +175,35 @@ module Telnyx
             :sha256 => String?,
             size_bytes: Integer?,
             url: String?
+          }
+        end
+
+        type event =
+          {
+            occurred_at: Time,
+            type: Telnyx::Models::email_event_type,
+            payload: ::Hash[Symbol, top]
+          }
+
+        class Event < Telnyx::Internal::Type::BaseModel
+          attr_accessor occurred_at: Time
+
+          attr_accessor type: Telnyx::Models::email_event_type
+
+          attr_reader payload: ::Hash[Symbol, top]?
+
+          def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          def initialize: (
+            occurred_at: Time,
+            type: Telnyx::Models::email_event_type,
+            ?payload: ::Hash[Symbol, top]
+          ) -> void
+
+          def to_hash: -> {
+            occurred_at: Time,
+            type: Telnyx::Models::email_event_type,
+            payload: ::Hash[Symbol, top]
           }
         end
 

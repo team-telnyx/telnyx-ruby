@@ -3,16 +3,16 @@
 module Telnyx
   module Models
     # @see Telnyx::Resources::EmailMessages#retrieve
-    class EmailMessageRetrieveResponse < Telnyx::Internal::Type::BaseModel
+    class EmailMessageDetailResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [Telnyx::Models::EmailMessageRetrieveResponse::Data]
-      required :data, -> { Telnyx::Models::EmailMessageRetrieveResponse::Data }
+      #   @return [Telnyx::Models::EmailMessageDetailResponse::Data]
+      required :data, -> { Telnyx::EmailMessageDetailResponse::Data }
 
       # @!method initialize(data:)
-      #   @param data [Telnyx::Models::EmailMessageRetrieveResponse::Data]
+      #   @param data [Telnyx::Models::EmailMessageDetailResponse::Data]
 
-      # @see Telnyx::Models::EmailMessageRetrieveResponse#data
+      # @see Telnyx::Models::EmailMessageDetailResponse#data
       class Data < Telnyx::Models::EmailInboxes::EmailMessage
         # @!attribute html_body
         #   HTML body submitted for the message.

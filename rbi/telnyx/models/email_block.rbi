@@ -40,6 +40,10 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :domain_id
 
+      # Optional expiration time. An active row stops matching send-time suppression
+      # checks as soon as `expires_at <= now()`. A maintenance worker later transitions
+      # the row to `status: expired` and appends an `expired` audit event (normally
+      # within 15 minutes).
       sig { returns(T.nilable(Time)) }
       attr_accessor :expires_at
 
@@ -85,6 +89,10 @@ module Telnyx
         updated_at:,
         # `null` ⇒ account scope. Stored on the row; exposed here.
         domain_id: nil,
+        # Optional expiration time. An active row stops matching send-time suppression
+        # checks as soon as `expires_at <= now()`. A maintenance worker later transitions
+        # the row to `status: expired` and appends an `expired` audit event (normally
+        # within 15 minutes).
         expires_at: nil,
         # `null` ⇒ not address-scope. (schema: from_address)
         from: nil,

@@ -134,6 +134,8 @@ module Telnyx
           FAILED = :failed
           GW_REJECT = :gw_reject
           CANCELLED = :cancelled
+          INJECTION_TIMEOUT = :injection_timeout
+          EXPIRED = :expired
 
           # @!method self.values
           #   @return [Array<Symbol>]

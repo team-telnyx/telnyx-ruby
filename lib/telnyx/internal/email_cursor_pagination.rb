@@ -10,8 +10,8 @@ module Telnyx
     #   end
     #
     # @example
-    #   email_cursor_pagination.auto_paging_each do |email_event|
-    #     puts(email_event)
+    #   email_cursor_pagination.auto_paging_each do |email_inbox|
+    #     puts(email_inbox)
     #   end
     class EmailCursorPagination
       include Telnyx::Internal::Type::BasePage

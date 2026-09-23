@@ -2,43 +2,76 @@ module Telnyx
   module Models
     type update_email_template_request =
       {
+        autoescape: bool,
         html_body: String?,
         name: String,
+        strict_variables: bool,
         subject: String?,
         text_body: String?,
+        variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
         variables: ::Array[String]
       }
 
     class UpdateEmailTemplateRequest < Telnyx::Internal::Type::BaseModel
+      attr_reader autoescape: bool?
+
+      def autoescape=: (bool) -> bool
+
       attr_accessor html_body: String?
 
       attr_reader name: String?
 
       def name=: (String) -> String
 
+      attr_reader strict_variables: bool?
+
+      def strict_variables=: (bool) -> bool
+
       attr_accessor subject: String?
 
       attr_accessor text_body: String?
+
+      attr_accessor variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?
 
       attr_reader variables: ::Array[String]?
 
       def variables=: (::Array[String]) -> ::Array[String]
 
       def initialize: (
+        ?autoescape: bool,
         ?html_body: String?,
         ?name: String,
+        ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
         ?variables: ::Array[String]
       ) -> void
 
       def to_hash: -> {
+        autoescape: bool,
         html_body: String?,
         name: String,
+        strict_variables: bool,
         subject: String?,
         text_body: String?,
+        variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
         variables: ::Array[String]
       }
+
+      type variable_schema = { required: bool, default: String }
+
+      class VariableSchema < Telnyx::Internal::Type::BaseModel
+        attr_accessor required: bool
+
+        attr_reader default: String?
+
+        def default=: (String) -> String
+
+        def initialize: (required: bool, ?default: String) -> void
+
+        def to_hash: -> { required: bool, default: String }
+      end
     end
   end
 end

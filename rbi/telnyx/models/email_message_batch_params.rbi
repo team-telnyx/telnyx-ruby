@@ -17,8 +17,13 @@ module Telnyx
       sig { returns(T::Array[Telnyx::EmailMessageBatchParams::Message]) }
       attr_accessor :messages
 
-      # Applies sandbox mode to all messages in the batch. Overrides any per-message
-      # sandbox_mode in the messages array.
+      # Applies sandbox mode to all messages in the batch and overrides any per-message
+      # `sandbox_mode` value — each message's effective `sandbox_mode` is exactly this
+      # envelope value. Reserved recipients at `test.telnyx.com` produce the
+      # deterministic event chains documented on CreateEmailRequest.sandbox_mode; no
+      # batch item is injected into the MTA or outbound Kafka path. Sandbox batch items
+      # are non-billable, consume no daily-send-limit quota, and feed no
+      # delivery-reputation signals.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :sandbox_mode
 
@@ -44,8 +49,13 @@ module Telnyx
         # message is validated and sent independently; per-message failures do not affect
         # other messages in the batch.
         messages:,
-        # Applies sandbox mode to all messages in the batch. Overrides any per-message
-        # sandbox_mode in the messages array.
+        # Applies sandbox mode to all messages in the batch and overrides any per-message
+        # `sandbox_mode` value — each message's effective `sandbox_mode` is exactly this
+        # envelope value. Reserved recipients at `test.telnyx.com` produce the
+        # deterministic event chains documented on CreateEmailRequest.sandbox_mode; no
+        # batch item is injected into the MTA or outbound Kafka path. Sandbox batch items
+        # are non-billable, consume no daily-send-limit quota, and feed no
+        # delivery-reputation signals.
         sandbox_mode: nil,
         idempotency_key: nil,
         request_options: {}
@@ -170,7 +180,9 @@ module Telnyx
         sig { params(inline_css: T::Boolean).void }
         attr_writer :inline_css
 
-        # Custom metadata. Write-only; not returned in responses.
+        # Custom metadata key/value pairs. Stored on the message, returned on message
+        # responses, and propagated to Email Detail Records. Usable in `filter[metadata]`
+        # when listing messages.
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :metadata
 
@@ -191,16 +203,22 @@ module Telnyx
         end
         attr_writer :reply_to
 
+        # Per-message sandbox flag. The batch-level `sandbox_mode` envelope value is
+        # authoritative: it overwrites every message's `sandbox_mode` before processing,
+        # including the `false` default when the envelope omits the field. A per-item
+        # `sandbox_mode: true` inside a non-sandbox batch is therefore a real send. Set
+        # the envelope field to run any batch item in sandbox mode.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :sandbox_mode
 
         sig { params(sandbox_mode: T::Boolean).void }
         attr_writer :sandbox_mode
 
-        # Future ISO 8601 time to schedule sending. Invalid or past timestamps are
-        # silently ignored and the email is sent immediately. The legacy alias `send_at`
-        # is still accepted for backward compatibility; when both are provided,
-        # `scheduled_at` wins.
+        # Future ISO 8601 delivery time. Invalid or non-future timestamps are rejected.
+        # Single sends return HTTP 422; in batch sends the invalid item is reported in the
+        # 207 per-item errors while other items continue. `send_at` remains a deprecated
+        # request alias. A non-null `scheduled_at` takes precedence over `send_at`; when
+        # `scheduled_at` is omitted or null, `send_at` is used.
         sig { returns(T.nilable(Time)) }
         attr_accessor :scheduled_at
 
@@ -220,8 +238,9 @@ module Telnyx
         sig { params(subject: String).void }
         attr_writer :subject
 
-        # Tags for categorization and reporting. Stored on the message and propagated to
-        # Email Detail Records. Not returned in API responses.
+        # Tags for categorization and filtering. Stored on the message, returned on
+        # message responses, and propagated to Email Detail Records. Usable in
+        # `filter[tags]` when listing messages.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :tags
 
@@ -236,7 +255,10 @@ module Telnyx
 
         # Variables for Liquid template rendering. Non-object values may cause a 422
         # validation error on message creation, but are silently treated as an empty
-        # object for template rendering.
+        # object for template rendering. When the template enables `strict_variables`, a
+        # missing required variable fails the request with 422 (single send) or a per-item
+        # `unprocessable_entity` error (batch) naming the variable; no message is
+        # persisted for the failed item.
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :template_variables
 
@@ -322,16 +344,24 @@ module Telnyx
           # be overridden. Requires the `email:override` API scope.
           ignore_suppression: nil,
           inline_css: nil,
-          # Custom metadata. Write-only; not returned in responses.
+          # Custom metadata key/value pairs. Stored on the message, returned on message
+          # responses, and propagated to Email Detail Records. Usable in `filter[metadata]`
+          # when listing messages.
           metadata: nil,
           # Reply-to address. If provided as an object with a name, only the email is
           # stored; the name is ignored.
           reply_to: nil,
+          # Per-message sandbox flag. The batch-level `sandbox_mode` envelope value is
+          # authoritative: it overwrites every message's `sandbox_mode` before processing,
+          # including the `false` default when the envelope omits the field. A per-item
+          # `sandbox_mode: true` inside a non-sandbox batch is therefore a real send. Set
+          # the envelope field to run any batch item in sandbox mode.
           sandbox_mode: nil,
-          # Future ISO 8601 time to schedule sending. Invalid or past timestamps are
-          # silently ignored and the email is sent immediately. The legacy alias `send_at`
-          # is still accepted for backward compatibility; when both are provided,
-          # `scheduled_at` wins.
+          # Future ISO 8601 delivery time. Invalid or non-future timestamps are rejected.
+          # Single sends return HTTP 422; in batch sends the invalid item is reported in the
+          # 207 per-item errors while other items continue. `send_at` remains a deprecated
+          # request alias. A non-null `scheduled_at` takes precedence over `send_at`; when
+          # `scheduled_at` is omitted or null, `send_at` is used.
           scheduled_at: nil,
           # Deprecated alias for `scheduled_at`.
           send_at: nil,
@@ -339,13 +369,17 @@ module Telnyx
           # subject is rendered; if the template has no subject or renders empty, the
           # request returns 400.
           subject: nil,
-          # Tags for categorization and reporting. Stored on the message and propagated to
-          # Email Detail Records. Not returned in API responses.
+          # Tags for categorization and filtering. Stored on the message, returned on
+          # message responses, and propagated to Email Detail Records. Usable in
+          # `filter[tags]` when listing messages.
           tags: nil,
           template_id: nil,
           # Variables for Liquid template rendering. Non-object values may cause a 422
           # validation error on message creation, but are silently treated as an empty
-          # object for template rendering.
+          # object for template rendering. When the template enables `strict_variables`, a
+          # missing required variable fails the request with 422 (single send) or a per-item
+          # `unprocessable_entity` error (batch) naming the variable; no message is
+          # persisted for the failed item.
           template_variables: nil,
           # Plain text email body. Returned only by `GET /email_messages/{id}`; omitted from
           # create and list responses.

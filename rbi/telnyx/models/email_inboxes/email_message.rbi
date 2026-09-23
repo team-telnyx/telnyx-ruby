@@ -26,7 +26,7 @@ module Telnyx
         sig { returns(Time) }
         attr_accessor :created_at
 
-        sig { returns(T::Array[Telnyx::MessageEvent]) }
+        sig { returns(T::Array[Telnyx::EmailInboxes::EmailMessage::Event]) }
         attr_accessor :events
 
         sig { returns(Telnyx::EmailInboxes::EmailAddress) }
@@ -34,6 +34,10 @@ module Telnyx
 
         sig { params(from: Telnyx::EmailInboxes::EmailAddress::OrHash).void }
         attr_writer :from
+
+        # Customer-supplied metadata stored with the message.
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        attr_accessor :metadata
 
         sig do
           returns(Telnyx::EmailInboxes::EmailMessage::RecordType::TaggedSymbol)
@@ -53,6 +57,10 @@ module Telnyx
 
         sig { returns(String) }
         attr_accessor :subject
+
+        # Customer-supplied tags stored with the message.
+        sig { returns(T::Array[String]) }
+        attr_accessor :tags
 
         sig { returns(T.nilable(String)) }
         attr_accessor :template_id
@@ -115,13 +123,15 @@ module Telnyx
             bcc: T::Array[Telnyx::EmailInboxes::EmailAddress::OrHash],
             cc: T::Array[Telnyx::EmailInboxes::EmailAddress::OrHash],
             created_at: Time,
-            events: T::Array[Telnyx::MessageEvent::OrHash],
+            events: T::Array[Telnyx::EmailInboxes::EmailMessage::Event::OrHash],
             from: Telnyx::EmailInboxes::EmailAddress::OrHash,
+            metadata: T::Hash[Symbol, T.anything],
             record_type:
               Telnyx::EmailInboxes::EmailMessage::RecordType::OrSymbol,
             reply_to: T.nilable(String),
             status: Telnyx::EmailInboxes::EmailMessage::Status::OrSymbol,
             subject: String,
+            tags: T::Array[String],
             template_id: T.nilable(String),
             template_variables: T::Hash[Symbol, T.anything],
             to: T::Array[Telnyx::EmailInboxes::EmailAddress::OrHash],
@@ -140,6 +150,8 @@ module Telnyx
           created_at:,
           events:,
           from:,
+          # Customer-supplied metadata stored with the message.
+          metadata:,
           record_type:,
           reply_to:,
           # Current status of an email message. Lifecycle statuses (queued, scheduled, etc.)
@@ -147,6 +159,8 @@ module Telnyx
           # delivery event consumers.
           status:,
           subject:,
+          # Customer-supplied tags stored with the message.
+          tags:,
           template_id:,
           template_variables:,
           to:,
@@ -179,13 +193,15 @@ module Telnyx
               bcc: T::Array[Telnyx::EmailInboxes::EmailAddress],
               cc: T::Array[Telnyx::EmailInboxes::EmailAddress],
               created_at: Time,
-              events: T::Array[Telnyx::MessageEvent],
+              events: T::Array[Telnyx::EmailInboxes::EmailMessage::Event],
               from: Telnyx::EmailInboxes::EmailAddress,
+              metadata: T::Hash[Symbol, T.anything],
               record_type:
                 Telnyx::EmailInboxes::EmailMessage::RecordType::TaggedSymbol,
               reply_to: T.nilable(String),
               status: Telnyx::EmailInboxes::EmailMessage::Status::TaggedSymbol,
               subject: String,
+              tags: T::Array[String],
               template_id: T.nilable(String),
               template_variables: T::Hash[Symbol, T.anything],
               to: T::Array[Telnyx::EmailInboxes::EmailAddress],
@@ -275,6 +291,68 @@ module Telnyx
                 sha256: T.nilable(String),
                 size_bytes: T.nilable(Integer),
                 url: T.nilable(String)
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class Event < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::EmailInboxes::EmailMessage::Event,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Time) }
+          attr_accessor :occurred_at
+
+          # Bare stored event names returned by message history. In addition to the normal
+          # send and delivery lifecycle, polling can expose suppression, scan, and
+          # quarantine lifecycle rows. Sharp canonical names gw_reject, injection_timeout,
+          # and expired distinguish gateway rejection, ambiguous injection timeout, and MTA
+          # expiration. The failed and bounced names remain valid for system/admin failures
+          # and hard bounces respectively. Existing stored rows retain their original names.
+          sig { returns(Telnyx::EmailEventType::TaggedSymbol) }
+          attr_accessor :type
+
+          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          attr_reader :payload
+
+          sig { params(payload: T::Hash[Symbol, T.anything]).void }
+          attr_writer :payload
+
+          # An event embedded in a message response. The dedicated per-message events
+          # endpoint additionally returns event_type and canonical_event_type.
+          sig do
+            params(
+              occurred_at: Time,
+              type: Telnyx::EmailEventType::OrSymbol,
+              payload: T::Hash[Symbol, T.anything]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            occurred_at:,
+            # Bare stored event names returned by message history. In addition to the normal
+            # send and delivery lifecycle, polling can expose suppression, scan, and
+            # quarantine lifecycle rows. Sharp canonical names gw_reject, injection_timeout,
+            # and expired distinguish gateway rejection, ambiguous injection timeout, and MTA
+            # expiration. The failed and bounced names remain valid for system/admin failures
+            # and hard bounces respectively. Existing stored rows retain their original names.
+            type:,
+            payload: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                occurred_at: Time,
+                type: Telnyx::EmailEventType::TaggedSymbol,
+                payload: T::Hash[Symbol, T.anything]
               }
             )
           end

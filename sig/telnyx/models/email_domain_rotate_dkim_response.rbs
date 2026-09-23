@@ -1,0 +1,195 @@
+module Telnyx
+  module Models
+    type email_domain_rotate_dkim_response =
+      { data: Telnyx::Models::EmailDomainRotateDkimResponse::Data }
+
+    class EmailDomainRotateDkimResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::EmailDomainRotateDkimResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::EmailDomainRotateDkimResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::EmailDomainRotateDkimResponse::Data
+      }
+
+      type data =
+        {
+          dkim: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim,
+          dns_records: ::Array[Telnyx::DNSRecord],
+          domain: String,
+          domain_id: String,
+          old_selector_retained: bool,
+          previous_dkim_key: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey?,
+          record_type: Telnyx::Models::EmailDomainRotateDkimResponse::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor dkim: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim
+
+        attr_accessor dns_records: ::Array[Telnyx::DNSRecord]
+
+        attr_accessor domain: String
+
+        attr_accessor domain_id: String
+
+        attr_accessor old_selector_retained: bool
+
+        attr_accessor previous_dkim_key: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey?
+
+        attr_accessor record_type: Telnyx::Models::EmailDomainRotateDkimResponse::Data::record_type
+
+        def initialize: (
+          dkim: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim,
+          dns_records: ::Array[Telnyx::DNSRecord],
+          domain: String,
+          domain_id: String,
+          old_selector_retained: bool,
+          previous_dkim_key: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey?,
+          record_type: Telnyx::Models::EmailDomainRotateDkimResponse::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          dkim: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim,
+          dns_records: ::Array[Telnyx::DNSRecord],
+          domain: String,
+          domain_id: String,
+          old_selector_retained: bool,
+          previous_dkim_key: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey?,
+          record_type: Telnyx::Models::EmailDomainRotateDkimResponse::Data::record_type
+        }
+
+        type dkim =
+          {
+            id: String,
+            algorithm: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::algorithm,
+            key_length: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::key_length,
+            selector: String,
+            status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::status,
+            version: Integer,
+            activated_at: Time?
+          }
+
+        class Dkim < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor algorithm: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::algorithm
+
+          attr_accessor key_length: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::key_length
+
+          attr_accessor selector: String
+
+          attr_accessor status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::status
+
+          attr_accessor version: Integer
+
+          attr_accessor activated_at: Time?
+
+          def initialize: (
+            id: String,
+            algorithm: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::algorithm,
+            key_length: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::key_length,
+            selector: String,
+            status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::status,
+            version: Integer,
+            ?activated_at: Time?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            algorithm: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::algorithm,
+            key_length: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::key_length,
+            selector: String,
+            status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::status,
+            version: Integer,
+            activated_at: Time?
+          }
+
+          type algorithm = :"rsa-sha256"
+
+          module Algorithm
+            extend Telnyx::Internal::Type::Enum
+
+            RSA_SHA256: :"rsa-sha256"
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::algorithm]
+          end
+
+          type key_length = 2048
+
+          module KeyLength
+            extend Telnyx::Internal::Type::Enum
+
+            KEY_LENGTH_2048: 2048
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::key_length]
+          end
+
+          type status = :active
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            ACTIVE: :active
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailDomainRotateDkimResponse::Data::Dkim::status]
+          end
+        end
+
+        type previous_dkim_key =
+          {
+            id: String,
+            selector: String,
+            status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey::status,
+            version: Integer
+          }
+
+        class PreviousDkimKey < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor selector: String
+
+          attr_accessor status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey::status
+
+          attr_accessor version: Integer
+
+          def initialize: (
+            id: String,
+            selector: String,
+            status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey::status,
+            version: Integer
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            selector: String,
+            status: Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey::status,
+            version: Integer
+          }
+
+          type status = :retiring | :revoked
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            RETIRING: :retiring
+            REVOKED: :revoked
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailDomainRotateDkimResponse::Data::PreviousDkimKey::status]
+          end
+        end
+
+        type record_type = :email_domain_dkim_rotation
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EMAIL_DOMAIN_DKIM_ROTATION: :email_domain_dkim_rotation
+
+          def self?.values: -> ::Array[Telnyx::Models::EmailDomainRotateDkimResponse::Data::record_type]
+        end
+      end
+    end
+  end
+end

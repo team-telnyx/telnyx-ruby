@@ -2918,6 +2918,7 @@ Methods:
 - <code title="delete /email_domains/{id}">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">delete</a>(\*\*params)</code>
 - <code title="get /email_domains/{domain_id}/dns_records">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">retrieve_dns_records</a>(\*\*params)</code>
 - <code title="get /email_domains/{id}/health">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">retrieve_health</a>(\*\*params)</code>
+- <code title="post /email_domains/{domain_id}/rotate_dkim">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">rotate_dkim</a>(\*\*params)</code>
 - <code title="post /email_domains/{domain_id}/verify">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">verify</a>(\*\*params)</code>
 
 ## Webhooks
@@ -3016,6 +3017,7 @@ Methods:
 - <code title="delete /email_messages">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">delete_all</a>(\*\*params)</code>
 - <code title="delete /email_messages/{email_id}/schedule">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">delete_schedule</a>(\*\*params)</code>
 - <code title="get /email_messages/{email_id}/events">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">retrieve_events</a>(\*\*params)</code>
+- <code title="patch /email_messages/{email_id}/schedule">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">update_schedule</a>(\*\*params)</code>
 
 ## Recipients
 

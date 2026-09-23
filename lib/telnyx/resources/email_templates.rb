@@ -9,15 +9,21 @@ module Telnyx
       #
       # Creates a Liquid email template. Variables are auto-extracted when omitted.
       #
-      # @overload create(name:, html_body: nil, subject: nil, text_body: nil, variables: nil, idempotency_key: nil, request_options: {})
+      # @overload create(name:, autoescape: nil, html_body: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, idempotency_key: nil, request_options: {})
       #
       # @param name [String] Body param: Letters, numbers, spaces, hyphens, and underscores only.
       #
+      # @param autoescape [Boolean] Body param: Per-template HTML autoescaping setting. Defaults to `false` for back
+      #
       # @param html_body [String, nil] Body param: Liquid template HTML body.
+      #
+      # @param strict_variables [Boolean] Body param: Per-template strict variable-validation setting. Defaults to `false`
       #
       # @param subject [String, nil] Body param: Liquid template subject.
       #
       # @param text_body [String, nil] Body param: Liquid template text body.
+      #
+      # @param variable_schema [Hash{Symbol=>Telnyx::Models::EmailTemplateCreateParams::VariableSchema}, nil] Body param: Structured variable requirements. Required variables cannot define d
       #
       # @param variables [Array<String>] Body param: Template variables. Auto-extracted from subject/body fields when abs
       #
@@ -62,20 +68,29 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::EmailTemplateUpdateParams} for more details.
+      #
       # Updates one or more fields of the specified email template and returns the
       # updated template.
       #
-      # @overload update(id, html_body: nil, name: nil, subject: nil, text_body: nil, variables: nil, request_options: {})
+      # @overload update(id, autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, request_options: {})
       #
       # @param id [String] Email template UUID.
+      #
+      # @param autoescape [Boolean] Per-template HTML autoescaping setting.
       #
       # @param html_body [String, nil] Liquid template HTML body.
       #
       # @param name [String]
       #
+      # @param strict_variables [Boolean] Per-template strict variable-validation setting.
+      #
       # @param subject [String, nil] Liquid template subject.
       #
       # @param text_body [String, nil] Liquid template text body.
+      #
+      # @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
       # @param variables [Array<String>]
       #
@@ -151,6 +166,12 @@ module Telnyx
       # Renders a template using the provided Liquid variables. Missing
       # `template_variables` defaults to `{}`.
       #
+      # When the template has `strict_variables` enabled and a required variable (per
+      # `variable_schema`) is missing, returns 422 naming the variable. When the
+      # template has `autoescape` enabled, the rendered `html_body` expression output is
+      # HTML-escaped at the output boundary; `subject` and `text_body` are not
+      # autoescaped.
+      #
       # @overload render(id, template_variables: nil, request_options: {})
       #
       # @param id [String] Email template UUID.
@@ -173,20 +194,29 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::EmailTemplateReplaceParams} for more details.
+      #
       # Replaces template fields. Behaves identically to PATCH; provided for
       # compatibility with Phoenix resource routes.
       #
-      # @overload replace(id, html_body: nil, name: nil, subject: nil, text_body: nil, variables: nil, request_options: {})
+      # @overload replace(id, autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, request_options: {})
       #
       # @param id [String] Email template UUID.
+      #
+      # @param autoescape [Boolean] Per-template HTML autoescaping setting.
       #
       # @param html_body [String, nil] Liquid template HTML body.
       #
       # @param name [String]
       #
+      # @param strict_variables [Boolean] Per-template strict variable-validation setting.
+      #
       # @param subject [String, nil] Liquid template subject.
       #
       # @param text_body [String, nil] Liquid template text body.
+      #
+      # @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
       # @param variables [Array<String>]
       #
