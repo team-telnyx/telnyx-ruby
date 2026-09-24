@@ -37,6 +37,26 @@ module Telnyx
           end
           attr_accessor :state
 
+          # Public model alias. telnyx/decision-flash offers the lowest cost and latency;
+          # telnyx/decision-pro supports decisions that require long context, including
+          # inputs beyond Jev’s 32k per-decision limit. Applies to every question in the
+          # request. Other values are rejected.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::AI::Typesafe::V1SystemoneParams::Model::OrSymbol
+              )
+            )
+          end
+          attr_reader :model
+
+          sig do
+            params(
+              model: Telnyx::AI::Typesafe::V1SystemoneParams::Model::OrSymbol
+            ).void
+          end
+          attr_writer :model
+
           sig do
             params(
               questions:
@@ -49,6 +69,7 @@ module Telnyx
                   )
                 ],
               state: Telnyx::AI::Typesafe::V1SystemoneParams::State::Variants,
+              model: Telnyx::AI::Typesafe::V1SystemoneParams::Model::OrSymbol,
               request_options: Telnyx::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
@@ -57,6 +78,11 @@ module Telnyx
             questions:,
             # Shared context evaluated by every question.
             state:,
+            # Public model alias. telnyx/decision-flash offers the lowest cost and latency;
+            # telnyx/decision-pro supports decisions that require long context, including
+            # inputs beyond Jev’s 32k per-decision limit. Applies to every question in the
+            # request. Other values are rejected.
+            model: nil,
             request_options: {}
           )
           end
@@ -74,6 +100,7 @@ module Telnyx
                     )
                   ],
                 state: Telnyx::AI::Typesafe::V1SystemoneParams::State::Variants,
+                model: Telnyx::AI::Typesafe::V1SystemoneParams::Model::OrSymbol,
                 request_options: Telnyx::RequestOptions
               }
             )
@@ -496,6 +523,41 @@ module Telnyx
                 ],
                 Telnyx::Internal::Type::Converter
               )
+          end
+
+          # Public model alias. telnyx/decision-flash offers the lowest cost and latency;
+          # telnyx/decision-pro supports decisions that require long context, including
+          # inputs beyond Jev’s 32k per-decision limit. Applies to every question in the
+          # request. Other values are rejected.
+          module Model
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Telnyx::AI::Typesafe::V1SystemoneParams::Model)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            TELNYX_DECISION_FLASH =
+              T.let(
+                :"telnyx/decision-flash",
+                Telnyx::AI::Typesafe::V1SystemoneParams::Model::TaggedSymbol
+              )
+            TELNYX_DECISION_PRO =
+              T.let(
+                :"telnyx/decision-pro",
+                Telnyx::AI::Typesafe::V1SystemoneParams::Model::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::AI::Typesafe::V1SystemoneParams::Model::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

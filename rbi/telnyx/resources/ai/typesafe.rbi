@@ -5,7 +5,7 @@ module Telnyx
     class AI
       class Typesafe
         # Beta API for evaluating shared context with typed questions and structured
-        # answers. Telnyx manages model selection.
+        # answers using Flash or Pro.
         sig { returns(Telnyx::Resources::AI::Typesafe::V1) }
         attr_reader :v1
 

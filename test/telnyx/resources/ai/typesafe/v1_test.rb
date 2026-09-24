@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::AI::Typesafe::V1Test < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         answers: ^(Telnyx::Internal::Type::HashOf[union: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer]),
-        model: String,
+        model: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model,
         usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
       }
     end
