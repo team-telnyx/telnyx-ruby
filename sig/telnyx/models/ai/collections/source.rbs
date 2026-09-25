@@ -5,56 +5,37 @@ module Telnyx
         type source =
           {
             id: String,
-            bucket_id: String,
-            collection_id: String,
-            record_type: String,
-            source_type: Telnyx::Models::AI::Collections::source_type,
-            status: String
+            memory_count: Integer,
+            session_id: String?,
+            created_at: String?,
+            updated_at: String?
           }
 
         class Source < Telnyx::Internal::Type::BaseModel
-          attr_reader id: String?
+          attr_accessor id: String
 
-          def id=: (String) -> String
+          attr_accessor memory_count: Integer
 
-          attr_reader bucket_id: String?
+          attr_accessor session_id: String?
 
-          def bucket_id=: (String) -> String
+          attr_accessor created_at: String?
 
-          attr_reader collection_id: String?
-
-          def collection_id=: (String) -> String
-
-          attr_reader record_type: String?
-
-          def record_type=: (String) -> String
-
-          attr_reader source_type: Telnyx::Models::AI::Collections::source_type?
-
-          def source_type=: (
-            Telnyx::Models::AI::Collections::source_type
-          ) -> Telnyx::Models::AI::Collections::source_type
-
-          attr_reader status: String?
-
-          def status=: (String) -> String
+          attr_accessor updated_at: String?
 
           def initialize: (
-            ?id: String,
-            ?bucket_id: String,
-            ?collection_id: String,
-            ?record_type: String,
-            ?source_type: Telnyx::Models::AI::Collections::source_type,
-            ?status: String
+            id: String,
+            memory_count: Integer,
+            session_id: String?,
+            ?created_at: String?,
+            ?updated_at: String?
           ) -> void
 
           def to_hash: -> {
             id: String,
-            bucket_id: String,
-            collection_id: String,
-            record_type: String,
-            source_type: Telnyx::Models::AI::Collections::source_type,
-            status: String
+            memory_count: Integer,
+            session_id: String?,
+            created_at: String?,
+            updated_at: String?
           }
         end
       end

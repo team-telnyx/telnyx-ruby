@@ -32,6 +32,16 @@ module Telnyx
         end
         attr_writer :webhook
 
+        # The maximum number of milliseconds to wait for the webhook to respond before the
+        # tool call is aborted. Set this at the tool level, as a sibling of `type` — a
+        # `timeout_ms` nested inside the `webhook` object is stored but not applied, and
+        # the tool runs at this default instead. Applies when `webhook.async` is false.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :timeout_ms
+
+        sig { params(timeout_ms: Integer).void }
+        attr_writer :timeout_ms
+
         # Whether this tool comes from the shared Tools Library. Responses merge shared
         # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
         # Read-only: set by the server, not accepted in requests. When updating an
@@ -51,7 +61,8 @@ module Telnyx
               Telnyx::AI::InferenceEmbeddingWebhookToolParams::Type::OrSymbol,
             webhook:
               Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::OrHash,
-            shared: T::Boolean
+            shared: T::Boolean,
+            timeout_ms: Integer
           ).returns(T.attached_class)
         end
         def self.new(
@@ -64,7 +75,12 @@ module Telnyx
           # them through `tool_ids` instead — re-sending their definitions creates an inline
           # duplicate (rejected with error code 10015 when the type allows only one instance
           # per assistant).
-          shared: nil
+          shared: nil,
+          # The maximum number of milliseconds to wait for the webhook to respond before the
+          # tool call is aborted. Set this at the tool level, as a sibling of `type` — a
+          # `timeout_ms` nested inside the `webhook` object is stored but not applied, and
+          # the tool runs at this default instead. Applies when `webhook.async` is false.
+          timeout_ms: nil
         )
         end
 
@@ -74,7 +90,8 @@ module Telnyx
               type:
                 Telnyx::AI::InferenceEmbeddingWebhookToolParams::Type::OrSymbol,
               webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
-              shared: T::Boolean
+              shared: T::Boolean,
+              timeout_ms: Integer
             }
           )
         end
@@ -339,14 +356,6 @@ module Telnyx
           end
           attr_writer :store_fields_as_variables
 
-          # The maximum number of milliseconds to wait for the webhook to respond. Only
-          # applicable when async is false.
-          sig { returns(T.nilable(Integer)) }
-          attr_reader :timeout_ms
-
-          sig { params(timeout_ms: Integer).void }
-          attr_writer :timeout_ms
-
           sig do
             params(
               description: String,
@@ -378,8 +387,7 @@ module Telnyx
               store_fields_as_variables:
                 T::Array[
                   Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable::OrHash
-                ],
-              timeout_ms: Integer
+                ]
             ).returns(T.attached_class)
           end
           def self.new(
@@ -446,10 +454,7 @@ module Telnyx
             # A list of mappings that extract values from the webhook response and store them
             # as dynamic variables. Each mapping specifies a dynamic variable name and a
             # dot-notation path to the value in the response body.
-            store_fields_as_variables: nil,
-            # The maximum number of milliseconds to wait for the webhook to respond. Only
-            # applicable when async is false.
-            timeout_ms: nil
+            store_fields_as_variables: nil
           )
           end
 
@@ -485,8 +490,7 @@ module Telnyx
                 store_fields_as_variables:
                   T::Array[
                     Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable
-                  ],
-                timeout_ms: Integer
+                  ]
               }
             )
           end

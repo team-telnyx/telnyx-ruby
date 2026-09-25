@@ -52,12 +52,17 @@ module Telnyx
         sig { params(slug: String).void }
         attr_writer :slug
 
-        sig { returns(T.nilable(T::Array[Telnyx::AI::Collections::Source])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Telnyx::AI::Collections::CollectionsSource])
+          )
+        end
         attr_reader :sources
 
         sig do
           params(
-            sources: T::Array[Telnyx::AI::Collections::Source::OrHash]
+            sources:
+              T::Array[Telnyx::AI::Collections::CollectionsSource::OrHash]
           ).void
         end
         attr_writer :sources
@@ -88,7 +93,8 @@ module Telnyx
             record_type: String,
             settings: Telnyx::AI::Collections::RetrievalSettingsWrapper::OrHash,
             slug: String,
-            sources: T::Array[Telnyx::AI::Collections::Source::OrHash],
+            sources:
+              T::Array[Telnyx::AI::Collections::CollectionsSource::OrHash],
             status: String,
             updated_at: Time,
             uuid: String
@@ -118,7 +124,7 @@ module Telnyx
               record_type: String,
               settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
               slug: String,
-              sources: T::Array[Telnyx::AI::Collections::Source],
+              sources: T::Array[Telnyx::AI::Collections::CollectionsSource],
               status: String,
               updated_at: Time,
               uuid: String

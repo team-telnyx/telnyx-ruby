@@ -1,0 +1,59 @@
+module Telnyx
+  module Resources
+    class AI
+      class Memory
+        class Namespaces
+          class Profiles
+            attr_reader memories: Telnyx::Resources::AI::Memory::Namespaces::Profiles::Memories
+
+            attr_reader sources: Telnyx::Resources::AI::Memory::Namespaces::Profiles::Sources
+
+            def list: (
+              String namespace,
+              ?page_number: Integer,
+              ?page_size: Integer,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Memory::Namespaces::ProfileListResponse]
+
+            def delete: (
+              String profile_id,
+              namespace: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Memory::Namespaces::ProfileDeleteResponse
+
+            def ingest: (
+              String profile_id,
+              namespace: String,
+              body: Telnyx::Models::AI::Memory::Namespaces::ProfileIngestParams::body,
+              ?session_id: String?,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Memory::Namespaces::ProfileIngestResponse
+
+            def recall: (
+              String profile_id,
+              namespace: String,
+              query: String,
+              ?top_k: Integer?,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Memory::Namespaces::ProfileRecallResponse
+
+            def remember: (
+              String profile_id,
+              namespace: String,
+              text: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Memory::Namespaces::ProfileRememberResponse
+
+            def retrieve_summary: (
+              String profile_id,
+              namespace: String,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Memory::Namespaces::ProfileRetrieveSummaryResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

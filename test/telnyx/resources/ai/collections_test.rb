@@ -75,7 +75,7 @@ class Telnyx::Test::Resources::AI::CollectionsTest < Telnyx::Test::ResourceTest
         record_type: String | nil,
         settings: Telnyx::AI::Collections::RetrievalSettingsWrapper | nil,
         slug: String | nil,
-        sources: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::Source]) | nil,
+        sources: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::CollectionsSource]) | nil,
         status: String | nil,
         updated_at: Time | nil,
         uuid: String | nil

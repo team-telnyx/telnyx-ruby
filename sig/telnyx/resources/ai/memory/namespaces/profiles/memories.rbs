@@ -1,0 +1,32 @@
+module Telnyx
+  module Resources
+    class AI
+      class Memory
+        class Namespaces
+          class Profiles
+            class Memories
+              def retrieve: (
+                String memory_id,
+                namespace: String,
+                profile_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Memory::Namespaces::Profiles::MemoryRetrieveResponse
+
+              def list: (
+                String profile_id,
+                namespace: String,
+                ?page_number: Integer,
+                ?page_size: Integer,
+                ?session_id: String?,
+                ?source_id: String?,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::AI::Memory::Namespaces::Profiles::MemoryListResponse]
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

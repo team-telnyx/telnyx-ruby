@@ -4,7 +4,8 @@ module Telnyx
       type webhook_tool =
         {
           type: Telnyx::Models::AI::WebhookTool::type_,
-          webhook: Telnyx::AI::WebhookTool::Webhook
+          webhook: Telnyx::AI::WebhookTool::Webhook,
+          timeout_ms: Integer
         }
 
       class WebhookTool < Telnyx::Internal::Type::BaseModel
@@ -12,14 +13,20 @@ module Telnyx
 
         attr_accessor webhook: Telnyx::AI::WebhookTool::Webhook
 
+        attr_reader timeout_ms: Integer?
+
+        def timeout_ms=: (Integer) -> Integer
+
         def initialize: (
           type: Telnyx::Models::AI::WebhookTool::type_,
-          webhook: Telnyx::AI::WebhookTool::Webhook
+          webhook: Telnyx::AI::WebhookTool::Webhook,
+          ?timeout_ms: Integer
         ) -> void
 
         def to_hash: -> {
           type: Telnyx::Models::AI::WebhookTool::type_,
-          webhook: Telnyx::AI::WebhookTool::Webhook
+          webhook: Telnyx::AI::WebhookTool::Webhook,
+          timeout_ms: Integer
         }
 
         type type_ = :webhook

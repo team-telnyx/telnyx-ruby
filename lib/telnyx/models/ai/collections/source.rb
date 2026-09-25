@@ -6,55 +6,51 @@ module Telnyx
       module Collections
         class Source < Telnyx::Internal::Type::BaseModel
           # @!attribute id
+          #   Identifies one source within its profile: an ingested session, or one remembered
+          #   fact. Returned by `ingest` and `remember` when the write is accepted.
+          #   Re-ingesting a session keeps its source id.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute memory_count
+          #   Memories extracted from this source. A memory derived from several sources is
+          #   not counted here.
+          #
+          #   @return [Integer]
+          required :memory_count, Integer
+
+          # @!attribute session_id
+          #   The session this source was ingested as. Null for a remembered fact.
           #
           #   @return [String, nil]
-          optional :id, String
+          required :session_id, String, nil?: true
 
-          # @!attribute bucket_id
-          #   The Telnyx Storage bucket name. Present only for `bucket` sources.
+          # @!attribute created_at
+          #   When the source was first stored.
           #
           #   @return [String, nil]
-          optional :bucket_id, String
+          optional :created_at, String, nil?: true
 
-          # @!attribute collection_id
+          # @!attribute updated_at
+          #   When the source was last written; re-ingesting moves it.
           #
           #   @return [String, nil]
-          optional :collection_id, String
+          optional :updated_at, String, nil?: true
 
-          # @!attribute record_type
-          #   Identifies the record type. Always `ai_collection_source`.
-          #
-          #   @return [String, nil]
-          optional :record_type, String
-
-          # @!attribute source_type
-          #   The type of Telnyx data attached as a source. `bucket` requires an additional
-          #   `bucket_id`. Only `voice` is searchable today; `meeting_bot`, `message`, and
-          #   `bucket` attach but are not yet searchable (Coming soon).
-          #
-          #   @return [Symbol, Telnyx::Models::AI::Collections::SourceType, nil]
-          optional :source_type, enum: -> { Telnyx::AI::Collections::SourceType }
-
-          # @!attribute status
-          #
-          #   @return [String, nil]
-          optional :status, String
-
-          # @!method initialize(id: nil, bucket_id: nil, collection_id: nil, record_type: nil, source_type: nil, status: nil)
+          # @!method initialize(id:, memory_count:, session_id:, created_at: nil, updated_at: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Collections::Source} for more details.
           #
-          #   @param id [String]
+          #   @param id [String] Identifies one source within its profile: an ingested session, or one remembered
           #
-          #   @param bucket_id [String] The Telnyx Storage bucket name. Present only for `bucket` sources.
+          #   @param memory_count [Integer] Memories extracted from this source. A memory derived from several sources is no
           #
-          #   @param collection_id [String]
+          #   @param session_id [String, nil] The session this source was ingested as. Null for a remembered fact.
           #
-          #   @param record_type [String] Identifies the record type. Always `ai_collection_source`.
+          #   @param created_at [String, nil] When the source was first stored.
           #
-          #   @param source_type [Symbol, Telnyx::Models::AI::Collections::SourceType] The type of Telnyx data attached as a source. `bucket` requires an additional `b
-          #
-          #   @param status [String]
+          #   @param updated_at [String, nil] When the source was last written; re-ingesting moves it.
         end
       end
     end

@@ -10,77 +10,52 @@ module Telnyx
               T.any(Telnyx::AI::Collections::Source, Telnyx::Internal::AnyHash)
             end
 
+          # Identifies one source within its profile: an ingested session, or one remembered
+          # fact. Returned by `ingest` and `remember` when the write is accepted.
+          # Re-ingesting a session keeps its source id.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # Memories extracted from this source. A memory derived from several sources is
+          # not counted here.
+          sig { returns(Integer) }
+          attr_accessor :memory_count
+
+          # The session this source was ingested as. Null for a remembered fact.
           sig { returns(T.nilable(String)) }
-          attr_reader :id
+          attr_accessor :session_id
 
-          sig { params(id: String).void }
-          attr_writer :id
-
-          # The Telnyx Storage bucket name. Present only for `bucket` sources.
+          # When the source was first stored.
           sig { returns(T.nilable(String)) }
-          attr_reader :bucket_id
+          attr_accessor :created_at
 
-          sig { params(bucket_id: String).void }
-          attr_writer :bucket_id
-
+          # When the source was last written; re-ingesting moves it.
           sig { returns(T.nilable(String)) }
-          attr_reader :collection_id
-
-          sig { params(collection_id: String).void }
-          attr_writer :collection_id
-
-          # Identifies the record type. Always `ai_collection_source`.
-          sig { returns(T.nilable(String)) }
-          attr_reader :record_type
-
-          sig { params(record_type: String).void }
-          attr_writer :record_type
-
-          # The type of Telnyx data attached as a source. `bucket` requires an additional
-          # `bucket_id`. Only `voice` is searchable today; `meeting_bot`, `message`, and
-          # `bucket` attach but are not yet searchable (Coming soon).
-          sig do
-            returns(
-              T.nilable(Telnyx::AI::Collections::SourceType::TaggedSymbol)
-            )
-          end
-          attr_reader :source_type
-
-          sig do
-            params(
-              source_type: Telnyx::AI::Collections::SourceType::OrSymbol
-            ).void
-          end
-          attr_writer :source_type
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :status
-
-          sig { params(status: String).void }
-          attr_writer :status
+          attr_accessor :updated_at
 
           sig do
             params(
               id: String,
-              bucket_id: String,
-              collection_id: String,
-              record_type: String,
-              source_type: Telnyx::AI::Collections::SourceType::OrSymbol,
-              status: String
+              memory_count: Integer,
+              session_id: T.nilable(String),
+              created_at: T.nilable(String),
+              updated_at: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
-            id: nil,
-            # The Telnyx Storage bucket name. Present only for `bucket` sources.
-            bucket_id: nil,
-            collection_id: nil,
-            # Identifies the record type. Always `ai_collection_source`.
-            record_type: nil,
-            # The type of Telnyx data attached as a source. `bucket` requires an additional
-            # `bucket_id`. Only `voice` is searchable today; `meeting_bot`, `message`, and
-            # `bucket` attach but are not yet searchable (Coming soon).
-            source_type: nil,
-            status: nil
+            # Identifies one source within its profile: an ingested session, or one remembered
+            # fact. Returned by `ingest` and `remember` when the write is accepted.
+            # Re-ingesting a session keeps its source id.
+            id:,
+            # Memories extracted from this source. A memory derived from several sources is
+            # not counted here.
+            memory_count:,
+            # The session this source was ingested as. Null for a remembered fact.
+            session_id:,
+            # When the source was first stored.
+            created_at: nil,
+            # When the source was last written; re-ingesting moves it.
+            updated_at: nil
           )
           end
 
@@ -88,11 +63,10 @@ module Telnyx
             override.returns(
               {
                 id: String,
-                bucket_id: String,
-                collection_id: String,
-                record_type: String,
-                source_type: Telnyx::AI::Collections::SourceType::TaggedSymbol,
-                status: String
+                memory_count: Integer,
+                session_id: T.nilable(String),
+                created_at: T.nilable(String),
+                updated_at: T.nilable(String)
               }
             )
           end

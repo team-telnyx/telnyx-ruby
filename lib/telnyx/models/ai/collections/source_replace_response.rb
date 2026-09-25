@@ -8,8 +8,8 @@ module Telnyx
         class SourceReplaceResponse < Telnyx::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Array<Telnyx::Models::AI::Collections::Source>, nil]
-          optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::Source] }
+          #   @return [Array<Telnyx::Models::AI::Collections::CollectionsSource>, nil]
+          optional :data, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::CollectionsSource] }
 
           # @!attribute meta
           #   Reports which source IDs were added, retained, and removed by a replace
@@ -22,7 +22,7 @@ module Telnyx
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::Collections::SourceReplaceResponse} for more details.
           #
-          #   @param data [Array<Telnyx::Models::AI::Collections::Source>]
+          #   @param data [Array<Telnyx::Models::AI::Collections::CollectionsSource>]
           #
           #   @param meta [Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta] Reports which source IDs were added, retained, and removed by a replace operatio
 

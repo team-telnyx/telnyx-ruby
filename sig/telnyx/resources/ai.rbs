@@ -33,6 +33,8 @@ module Telnyx
 
       attr_reader typesafe: Telnyx::Resources::AI::Typesafe
 
+      attr_reader memory: Telnyx::Resources::AI::Memory
+
       def retrieve_conversation_histories: (
         q: String,
         ?filter_ingested_at_gte: Time,
