@@ -8,9 +8,18 @@ module Telnyx
       sig do
         params(
           name: String,
+          autoescape: T::Boolean,
           html_body: T.nilable(String),
+          strict_variables: T::Boolean,
           subject: T.nilable(String),
           text_body: T.nilable(String),
+          variable_schema:
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Telnyx::EmailTemplateCreateParams::VariableSchema::OrHash
+              ]
+            ),
           variables: T::Array[String],
           idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
@@ -19,12 +28,36 @@ module Telnyx
       def create(
         # Body param: Letters, numbers, spaces, hyphens, and underscores only.
         name:,
+        # Body param: Per-template HTML autoescaping setting. Defaults to `false` for
+        # backward compatibility. When `true`, the rendered `html_body` HTML-escapes each
+        # Liquid expression's output at the output boundary (after its filters run, before
+        # concatenation with literal template markup). Input values are never mutated and
+        # `subject`/`text_body` are never autoescaped. The boundary escape is idempotent:
+        # HTML entities already present in the output (e.g. from an explicit `escape`
+        # filter) are preserved, so an explicit `escape`/`escape_once` is never
+        # double-escaped, and markup introduced by any later filter in the chain is still
+        # escaped.
+        autoescape: nil,
         # Body param: Liquid template HTML body.
         html_body: nil,
+        # Body param: Per-template strict variable-validation setting. Defaults to `false`
+        # for backward compatibility. When `true`, a send or render that is missing a
+        # variable marked `required: true` in `variable_schema` fails with 422 naming the
+        # variable. Missing optional variables never fail; their schema `default` (when
+        # set) is applied to the render.
+        strict_variables: nil,
         # Body param: Liquid template subject.
         subject: nil,
         # Body param: Liquid template text body.
         text_body: nil,
+        # Body param: Structured variable requirements. Required variables cannot define
+        # defaults; invalid combinations return 422. This is independent of the legacy
+        # `variables` array. On render with `strict_variables` enabled: `required`
+        # variables must be supplied as non-empty values — absent, `null`, empty string,
+        # empty object `{}`, and empty array `[]` all fail with 422 naming the variable,
+        # while present values such as `false` and `0` pass (they are present, not empty).
+        # Optional variables fall back to their `default` when absent.
+        variable_schema: nil,
         # Body param: Template variables. Auto-extracted from subject/body fields when
         # absent.
         variables: nil,
@@ -61,10 +94,19 @@ module Telnyx
       sig do
         params(
           id: String,
+          autoescape: T::Boolean,
           html_body: T.nilable(String),
           name: String,
+          strict_variables: T::Boolean,
           subject: T.nilable(String),
           text_body: T.nilable(String),
+          variable_schema:
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Telnyx::UpdateEmailTemplateRequest::VariableSchema::OrHash
+              ]
+            ),
           variables: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::EmailTemplateResponse)
@@ -72,13 +114,20 @@ module Telnyx
       def update(
         # Email template UUID.
         id,
+        # Per-template HTML autoescaping setting.
+        autoescape: nil,
         # Liquid template HTML body.
         html_body: nil,
         name: nil,
+        # Per-template strict variable-validation setting.
+        strict_variables: nil,
         # Liquid template subject.
         subject: nil,
         # Liquid template text body.
         text_body: nil,
+        # Structured variable requirements. Required variables cannot define defaults;
+        # invalid combinations return 422. Set to `null` to clear the schema.
+        variable_schema: nil,
         variables: nil,
         request_options: {}
       )
@@ -118,6 +167,12 @@ module Telnyx
 
       # Renders a template using the provided Liquid variables. Missing
       # `template_variables` defaults to `{}`.
+      #
+      # When the template has `strict_variables` enabled and a required variable (per
+      # `variable_schema`) is missing, returns 422 naming the variable. When the
+      # template has `autoescape` enabled, the rendered `html_body` expression output is
+      # HTML-escaped at the output boundary; `subject` and `text_body` are not
+      # autoescaped.
       sig do
         params(
           id: String,
@@ -140,10 +195,19 @@ module Telnyx
       sig do
         params(
           id: String,
+          autoescape: T::Boolean,
           html_body: T.nilable(String),
           name: String,
+          strict_variables: T::Boolean,
           subject: T.nilable(String),
           text_body: T.nilable(String),
+          variable_schema:
+            T.nilable(
+              T::Hash[
+                Symbol,
+                Telnyx::UpdateEmailTemplateRequest::VariableSchema::OrHash
+              ]
+            ),
           variables: T::Array[String],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::EmailTemplateResponse)
@@ -151,13 +215,20 @@ module Telnyx
       def replace(
         # Email template UUID.
         id,
+        # Per-template HTML autoescaping setting.
+        autoescape: nil,
         # Liquid template HTML body.
         html_body: nil,
         name: nil,
+        # Per-template strict variable-validation setting.
+        strict_variables: nil,
         # Liquid template subject.
         subject: nil,
         # Liquid template text body.
         text_body: nil,
+        # Structured variable requirements. Required variables cannot define defaults;
+        # invalid combinations return 422. Set to `null` to clear the schema.
+        variable_schema: nil,
         variables: nil,
         request_options: {}
       )

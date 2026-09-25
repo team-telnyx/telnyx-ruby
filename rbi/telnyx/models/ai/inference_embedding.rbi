@@ -334,10 +334,14 @@ module Telnyx
         sig { params(version_name: String).void }
         attr_writer :version_name
 
-        sig { returns(T.nilable(Telnyx::AI::VoiceSettings)) }
+        sig { returns(T.nilable(Telnyx::AI::InferenceEmbeddingVoiceSettings)) }
         attr_reader :voice_settings
 
-        sig { params(voice_settings: Telnyx::AI::VoiceSettings::OrHash).void }
+        sig do
+          params(
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash
+          ).void
+        end
         attr_writer :voice_settings
 
         # Configuration settings for the assistant's web widget.
@@ -402,7 +406,7 @@ module Telnyx
             version_created_at: Time,
             version_id: String,
             version_name: String,
-            voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash
           ).returns(T.attached_class)
         end
@@ -556,7 +560,7 @@ module Telnyx
               version_created_at: Time,
               version_id: String,
               version_name: String,
-              voice_settings: Telnyx::AI::VoiceSettings,
+              voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
               widget_settings: Telnyx::AI::WidgetSettings
             }
           )

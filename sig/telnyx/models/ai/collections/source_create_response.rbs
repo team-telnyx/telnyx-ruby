@@ -2,18 +2,21 @@ module Telnyx
   module Models
     module AI
       module Collections
-        type source_create_response = { data: Telnyx::AI::Collections::Source }
+        type source_create_response =
+          { data: Telnyx::AI::Collections::CollectionsSource }
 
         class SourceCreateResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: Telnyx::AI::Collections::Source?
+          attr_reader data: Telnyx::AI::Collections::CollectionsSource?
 
           def data=: (
-            Telnyx::AI::Collections::Source
-          ) -> Telnyx::AI::Collections::Source
+            Telnyx::AI::Collections::CollectionsSource
+          ) -> Telnyx::AI::Collections::CollectionsSource
 
-          def initialize: (?data: Telnyx::AI::Collections::Source) -> void
+          def initialize: (
+            ?data: Telnyx::AI::Collections::CollectionsSource
+          ) -> void
 
-          def to_hash: -> { data: Telnyx::AI::Collections::Source }
+          def to_hash: -> { data: Telnyx::AI::Collections::CollectionsSource }
         end
       end
     end

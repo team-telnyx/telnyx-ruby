@@ -124,7 +124,9 @@ module Telnyx
       sig { params(inline_css: T::Boolean).void }
       attr_writer :inline_css
 
-      # Custom metadata. Write-only; not returned in responses.
+      # Custom metadata key/value pairs. Stored on the message, returned on message
+      # responses, and propagated to Email Detail Records. Usable in `filter[metadata]`
+      # when listing messages.
       sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
       attr_reader :metadata
 
@@ -156,16 +158,42 @@ module Telnyx
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :reply_to_all
 
+      # Validates and accepts the message without injecting it into the MTA or outbound
+      # Kafka path. Nothing is delivered: sandbox records are non-billable, consume no
+      # daily-send-limit quota, and feed no delivery-reputation signals.
+      #
+      # The reserved sandbox test-recipient domain is `test.telnyx.com`. In sandbox
+      # mode, these addresses produce deterministic recipient-scoped lifecycle events:
+      #
+      # - `delivered@test.telnyx.com`: queued -> sending -> sent -> delivered
+      # - `hard-bounce@test.telnyx.com`: queued -> sending -> sent -> bounced
+      #   (permanent)
+      # - `soft-bounce@test.telnyx.com`: queued -> sending -> sent -> bounced
+      #   (transient)
+      # - `complaint@test.telnyx.com`: queued -> sending -> sent -> complained
+      # - `suppressed@test.telnyx.com`: queued -> suppressed
+      # - `invalid@test.telnyx.com`: queued -> sending -> failed (invalid recipient)
+      # - `dkim-fail@test.telnyx.com`: queued -> sending -> failed (DKIM unavailable)
+      # - `rate-limit@test.telnyx.com`: queued -> sending -> failed (rate limit
+      #   exceeded)
+      #
+      # Matching is case-insensitive for both the local part and the domain and requires
+      # the exact domain `test.telnyx.com` — subdomains and other domains do not match.
+      # Mixed sandbox sends simulate only reserved test recipients; other recipients
+      # retain ordinary sandbox behavior (accepted, no delivery attempted). Hard-bounce
+      # and complaint outcomes also use the normal automatic-suppression pipeline.
+      # Non-sandbox sends to these addresses use the normal delivery path.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :sandbox_mode
 
       sig { params(sandbox_mode: T::Boolean).void }
       attr_writer :sandbox_mode
 
-      # Future ISO 8601 time to schedule sending. Invalid or past timestamps are
-      # silently ignored and the email is sent immediately. The legacy alias `send_at`
-      # is still accepted for backward compatibility; when both are provided,
-      # `scheduled_at` wins.
+      # Future ISO 8601 delivery time. Invalid or non-future timestamps are rejected.
+      # Single sends return HTTP 422; in batch sends the invalid item is reported in the
+      # 207 per-item errors while other items continue. `send_at` remains a deprecated
+      # request alias. A non-null `scheduled_at` takes precedence over `send_at`; when
+      # `scheduled_at` is omitted or null, `send_at` is used.
       sig { returns(T.nilable(Time)) }
       attr_accessor :scheduled_at
 
@@ -185,8 +213,9 @@ module Telnyx
       sig { params(subject: String).void }
       attr_writer :subject
 
-      # Tags for categorization and reporting. Stored on the message and propagated to
-      # Email Detail Records. Not returned in API responses.
+      # Tags for categorization and filtering. Stored on the message, returned on
+      # message responses, and propagated to Email Detail Records. Usable in
+      # `filter[tags]` when listing messages.
       sig { returns(T.nilable(T::Array[String])) }
       attr_reader :tags
 
@@ -201,7 +230,10 @@ module Telnyx
 
       # Variables for Liquid template rendering. Non-object values may cause a 422
       # validation error on message creation, but are silently treated as an empty
-      # object for template rendering.
+      # object for template rendering. When the template enables `strict_variables`, a
+      # missing required variable fails the request with 422 (single send) or a per-item
+      # `unprocessable_entity` error (batch) naming the variable; no message is
+      # persisted for the failed item.
       sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
       attr_reader :template_variables
 
@@ -306,7 +338,9 @@ module Telnyx
         # Cannot be combined with `forward_of_message_id` (422).
         in_reply_to_message_id: nil,
         inline_css: nil,
-        # Custom metadata. Write-only; not returned in responses.
+        # Custom metadata key/value pairs. Stored on the message, returned on message
+        # responses, and propagated to Email Detail Records. Usable in `filter[metadata]`
+        # when listing messages.
         metadata: nil,
         # Reply-to address. If provided as an object with a name, only the email is
         # stored; the name is ignored.
@@ -320,11 +354,37 @@ module Telnyx
         #
         # Only meaningful alongside `in_reply_to_message_id`.
         reply_to_all: nil,
+        # Validates and accepts the message without injecting it into the MTA or outbound
+        # Kafka path. Nothing is delivered: sandbox records are non-billable, consume no
+        # daily-send-limit quota, and feed no delivery-reputation signals.
+        #
+        # The reserved sandbox test-recipient domain is `test.telnyx.com`. In sandbox
+        # mode, these addresses produce deterministic recipient-scoped lifecycle events:
+        #
+        # - `delivered@test.telnyx.com`: queued -> sending -> sent -> delivered
+        # - `hard-bounce@test.telnyx.com`: queued -> sending -> sent -> bounced
+        #   (permanent)
+        # - `soft-bounce@test.telnyx.com`: queued -> sending -> sent -> bounced
+        #   (transient)
+        # - `complaint@test.telnyx.com`: queued -> sending -> sent -> complained
+        # - `suppressed@test.telnyx.com`: queued -> suppressed
+        # - `invalid@test.telnyx.com`: queued -> sending -> failed (invalid recipient)
+        # - `dkim-fail@test.telnyx.com`: queued -> sending -> failed (DKIM unavailable)
+        # - `rate-limit@test.telnyx.com`: queued -> sending -> failed (rate limit
+        #   exceeded)
+        #
+        # Matching is case-insensitive for both the local part and the domain and requires
+        # the exact domain `test.telnyx.com` — subdomains and other domains do not match.
+        # Mixed sandbox sends simulate only reserved test recipients; other recipients
+        # retain ordinary sandbox behavior (accepted, no delivery attempted). Hard-bounce
+        # and complaint outcomes also use the normal automatic-suppression pipeline.
+        # Non-sandbox sends to these addresses use the normal delivery path.
         sandbox_mode: nil,
-        # Future ISO 8601 time to schedule sending. Invalid or past timestamps are
-        # silently ignored and the email is sent immediately. The legacy alias `send_at`
-        # is still accepted for backward compatibility; when both are provided,
-        # `scheduled_at` wins.
+        # Future ISO 8601 delivery time. Invalid or non-future timestamps are rejected.
+        # Single sends return HTTP 422; in batch sends the invalid item is reported in the
+        # 207 per-item errors while other items continue. `send_at` remains a deprecated
+        # request alias. A non-null `scheduled_at` takes precedence over `send_at`; when
+        # `scheduled_at` is omitted or null, `send_at` is used.
         scheduled_at: nil,
         # Deprecated alias for `scheduled_at`.
         send_at: nil,
@@ -332,13 +392,17 @@ module Telnyx
         # subject is rendered; if the template has no subject or renders empty, the
         # request returns 400.
         subject: nil,
-        # Tags for categorization and reporting. Stored on the message and propagated to
-        # Email Detail Records. Not returned in API responses.
+        # Tags for categorization and filtering. Stored on the message, returned on
+        # message responses, and propagated to Email Detail Records. Usable in
+        # `filter[tags]` when listing messages.
         tags: nil,
         template_id: nil,
         # Variables for Liquid template rendering. Non-object values may cause a 422
         # validation error on message creation, but are silently treated as an empty
-        # object for template rendering.
+        # object for template rendering. When the template enables `strict_variables`, a
+        # missing required variable fails the request with 422 (single send) or a per-item
+        # `unprocessable_entity` error (batch) naming the variable; no message is
+        # persisted for the failed item.
         template_variables: nil,
         # Plain text email body. Returned only by `GET /email_messages/{id}`; omitted from
         # create and list responses.

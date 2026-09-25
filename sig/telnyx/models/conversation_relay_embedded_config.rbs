@@ -173,6 +173,7 @@ module Telnyx
         | Telnyx::ResembleVoiceSettings
         | Telnyx::InworldVoiceSettings
         | Telnyx::XaiVoiceSettings
+        | Telnyx::Calls::SonioxVoiceSettings
 
       module VoiceSettings
         extend Telnyx::Internal::Type::Union

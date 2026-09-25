@@ -4,16 +4,16 @@ module Telnyx
       module Collections
         type source_replace_response =
           {
-            data: ::Array[Telnyx::AI::Collections::Source],
+            data: ::Array[Telnyx::AI::Collections::CollectionsSource],
             meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
           }
 
         class SourceReplaceResponse < Telnyx::Internal::Type::BaseModel
-          attr_reader data: ::Array[Telnyx::AI::Collections::Source]?
+          attr_reader data: ::Array[Telnyx::AI::Collections::CollectionsSource]?
 
           def data=: (
-            ::Array[Telnyx::AI::Collections::Source]
-          ) -> ::Array[Telnyx::AI::Collections::Source]
+            ::Array[Telnyx::AI::Collections::CollectionsSource]
+          ) -> ::Array[Telnyx::AI::Collections::CollectionsSource]
 
           attr_reader meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta?
 
@@ -22,12 +22,12 @@ module Telnyx
           ) -> Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
 
           def initialize: (
-            ?data: ::Array[Telnyx::AI::Collections::Source],
+            ?data: ::Array[Telnyx::AI::Collections::CollectionsSource],
             ?meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
           ) -> void
 
           def to_hash: -> {
-            data: ::Array[Telnyx::AI::Collections::Source],
+            data: ::Array[Telnyx::AI::Collections::CollectionsSource],
             meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta
           }
 

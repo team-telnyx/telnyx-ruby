@@ -22,12 +22,11 @@ module Telnyx
 
           response_only do
             # @!attribute model
-            #   Opaque Telnyx-controlled identifier retained for TypeSafe SDK response
-            #   compatibility. It is not a selectable model name or a guarantee of a particular
-            #   underlying model.
+            #   Public model alias used to evaluate the request. Returns telnyx/decision-flash
+            #   when model was omitted. The underlying model is managed by Telnyx.
             #
-            #   @return [String]
-            required :model, String
+            #   @return [Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model]
+            required :model, enum: -> { Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model }
           end
 
           # @!method initialize(answers:, model:, usage:)
@@ -39,7 +38,7 @@ module Telnyx
           #
           #   @param answers [Hash{Symbol=>Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Choice, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Noul, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Score}] Answers keyed by exactly the question IDs in the request. Each answer type match
           #
-          #   @param model [String] Opaque Telnyx-controlled identifier retained for TypeSafe SDK response compatibi
+          #   @param model [Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model] Public model alias used to evaluate the request. Returns telnyx/decision-flash w
           #
           #   @param usage [Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage] Token usage for the completed evaluation.
 
@@ -188,6 +187,20 @@ module Telnyx
 
             # @!method self.variants
             #   @return [Array(Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Choice, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Noul, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Score)]
+          end
+
+          # Public model alias used to evaluate the request. Returns telnyx/decision-flash
+          # when model was omitted. The underlying model is managed by Telnyx.
+          #
+          # @see Telnyx::Models::AI::Typesafe::V1SystemoneResponse#model
+          module Model
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX_DECISION_FLASH = :"telnyx/decision-flash"
+            TELNYX_DECISION_PRO = :"telnyx/decision-pro"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Telnyx::Models::AI::Typesafe::V1SystemoneResponse#usage

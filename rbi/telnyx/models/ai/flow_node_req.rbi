@@ -120,10 +120,14 @@ module Telnyx
 
         # Per-node voice override. Only fields set here override the assistant-level voice
         # settings; unset fields cascade.
-        sig { returns(T.nilable(Telnyx::AI::VoiceSettings)) }
+        sig { returns(T.nilable(Telnyx::AI::InferenceEmbeddingVoiceSettings)) }
         attr_reader :voice_settings
 
-        sig { params(voice_settings: Telnyx::AI::VoiceSettings::OrHash).void }
+        sig do
+          params(
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash
+          ).void
+        end
         attr_writer :voice_settings
 
         # One step in a conversation flow, as supplied by API clients.
@@ -145,7 +149,7 @@ module Telnyx
             tools_mode: Telnyx::AI::FlowNodeReq::ToolsMode::OrSymbol,
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             type: Telnyx::AI::FlowNodeReq::Type::OrSymbol,
-            voice_settings: Telnyx::AI::VoiceSettings::OrHash
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -213,7 +217,7 @@ module Telnyx
               tools_mode: Telnyx::AI::FlowNodeReq::ToolsMode::OrSymbol,
               transcription: Telnyx::AI::TranscriptionSettings,
               type: Telnyx::AI::FlowNodeReq::Type::OrSymbol,
-              voice_settings: Telnyx::AI::VoiceSettings
+              voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings
             }
           )
         end

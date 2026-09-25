@@ -18,23 +18,34 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :id
 
-        # Type of artifact to generate from the session.
+        # One of two shapes: a named type on its own, or `custom` with the prompt it
+        # answers.
         sig do
-          returns(Telnyx::MeetingSessions::ArtifactCreateParams::Type::OrSymbol)
+          returns(
+            T.any(
+              Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact,
+              Telnyx::MeetingSessions::ArtifactCreateParams::Body::CustomArtifact
+            )
+          )
         end
-        attr_accessor :type
+        attr_accessor :body
 
         sig do
           params(
             id: String,
-            type: Telnyx::MeetingSessions::ArtifactCreateParams::Type::OrSymbol,
+            body:
+              T.any(
+                Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::OrHash,
+                Telnyx::MeetingSessions::ArtifactCreateParams::Body::CustomArtifact::OrHash
+              ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
           id:,
-          # Type of artifact to generate from the session.
-          type:,
+          # One of two shapes: a named type on its own, or `custom` with the prompt it
+          # answers.
+          body:,
           request_options: {}
         )
         end
@@ -43,8 +54,11 @@ module Telnyx
           override.returns(
             {
               id: String,
-              type:
-                Telnyx::MeetingSessions::ArtifactCreateParams::Type::OrSymbol,
+              body:
+                T.any(
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact,
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::CustomArtifact
+                ),
               request_options: Telnyx::RequestOptions
             }
           )
@@ -52,35 +66,158 @@ module Telnyx
         def to_hash
         end
 
-        # Type of artifact to generate from the session.
-        module Type
-          extend Telnyx::Internal::Type::Enum
+        # One of two shapes: a named type on its own, or `custom` with the prompt it
+        # answers.
+        module Body
+          extend Telnyx::Internal::Type::Union
 
-          TaggedSymbol =
+          Variants =
             T.type_alias do
-              T.all(Symbol, Telnyx::MeetingSessions::ArtifactCreateParams::Type)
+              T.any(
+                Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact,
+                Telnyx::MeetingSessions::ArtifactCreateParams::Body::CustomArtifact
+              )
             end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          SUMMARY =
-            T.let(
-              :summary,
-              Telnyx::MeetingSessions::ArtifactCreateParams::Type::TaggedSymbol
+          class NamedArtifact < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # What to generate from the transcript. `custom` is answered from a `prompt` you
+            # supply; the five named types need none.
+            sig do
+              returns(
+                Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::OrSymbol
+              )
+            end
+            attr_accessor :type
+
+            sig do
+              params(
+                type:
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # What to generate from the transcript. `custom` is answered from a `prompt` you
+              # supply; the five named types need none.
+              type:
             )
-          ACTION_ITEMS =
-            T.let(
-              :action_items,
-              Telnyx::MeetingSessions::ArtifactCreateParams::Type::TaggedSymbol
+            end
+
+            sig do
+              override.returns(
+                {
+                  type:
+                    Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # What to generate from the transcript. `custom` is answered from a `prompt` you
+            # supply; the five named types need none.
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SUMMARY =
+                T.let(
+                  :summary,
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::TaggedSymbol
+                )
+              ACTION_ITEMS =
+                T.let(
+                  :action_items,
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::TaggedSymbol
+                )
+              DECISIONS =
+                T.let(
+                  :decisions,
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::TaggedSymbol
+                )
+              TOPICS =
+                T.let(
+                  :topics,
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::TaggedSymbol
+                )
+              OPEN_QUESTIONS =
+                T.let(
+                  :open_questions,
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class CustomArtifact < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::MeetingSessions::ArtifactCreateParams::Body::CustomArtifact,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # An open-ended request answered from the transcript. Required when `type` is
+            # `custom`, and rejected with 400 on any named type. Trimmed before storage and
+            # echoed back in artifact responses and the `artifact.completed` webhook.
+            sig { returns(String) }
+            attr_accessor :prompt
+
+            # Answered from the `prompt` below rather than a fixed question.
+            sig { returns(Symbol) }
+            attr_accessor :type
+
+            sig do
+              params(prompt: String, type: Symbol).returns(T.attached_class)
+            end
+            def self.new(
+              # An open-ended request answered from the transcript. Required when `type` is
+              # `custom`, and rejected with 400 on any named type. Trimmed before storage and
+              # echoed back in artifact responses and the `artifact.completed` webhook.
+              prompt:,
+              # Answered from the `prompt` below rather than a fixed question.
+              type: :custom
             )
+            end
+
+            sig { override.returns({ prompt: String, type: Symbol }) }
+            def to_hash
+            end
+          end
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::MeetingSessions::ArtifactCreateParams::Type::TaggedSymbol
+                Telnyx::MeetingSessions::ArtifactCreateParams::Body::Variants
               ]
             )
           end
-          def self.values
+          def self.variants
           end
         end
       end

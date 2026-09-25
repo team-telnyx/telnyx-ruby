@@ -4,7 +4,7 @@ module Telnyx
       type artifact_create_params =
         {
           id: String,
-          type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::type_
+          body: Telnyx::Models::MeetingSessions::ArtifactCreateParams::body
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -14,29 +14,72 @@ module Telnyx
 
         attr_accessor id: String
 
-        attr_accessor type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::type_
+        attr_accessor body: Telnyx::Models::MeetingSessions::ArtifactCreateParams::body
 
         def initialize: (
           id: String,
-          type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::type_,
+          body: Telnyx::Models::MeetingSessions::ArtifactCreateParams::body,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           id: String,
-          type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::type_,
+          body: Telnyx::Models::MeetingSessions::ArtifactCreateParams::body,
           request_options: Telnyx::RequestOptions
         }
 
-        type type_ = :summary | :action_items
+        type body =
+          Telnyx::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact
+          | Telnyx::MeetingSessions::ArtifactCreateParams::Body::CustomArtifact
 
-        module Type
-          extend Telnyx::Internal::Type::Enum
+        module Body
+          extend Telnyx::Internal::Type::Union
 
-          SUMMARY: :summary
-          ACTION_ITEMS: :action_items
+          type named_artifact =
+            {
+              type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::type_
+            }
 
-          def self?.values: -> ::Array[Telnyx::Models::MeetingSessions::ArtifactCreateParams::type_]
+          class NamedArtifact < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::type_
+
+            def initialize: (
+              type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::type_
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::type_
+            }
+
+            type type_ =
+              :summary | :action_items | :decisions | :topics | :open_questions
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              SUMMARY: :summary
+              ACTION_ITEMS: :action_items
+              DECISIONS: :decisions
+              TOPICS: :topics
+              OPEN_QUESTIONS: :open_questions
+
+              def self?.values: -> ::Array[Telnyx::Models::MeetingSessions::ArtifactCreateParams::Body::NamedArtifact::type_]
+            end
+          end
+
+          type custom_artifact = { prompt: String, type: :custom }
+
+          class CustomArtifact < Telnyx::Internal::Type::BaseModel
+            attr_accessor prompt: String
+
+            attr_accessor type: :custom
+
+            def initialize: (prompt: String, ?type: :custom) -> void
+
+            def to_hash: -> { prompt: String, type: :custom }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::MeetingSessions::ArtifactCreateParams::body]
         end
       end
     end

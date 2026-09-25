@@ -31,6 +31,13 @@ module Telnyx
                  -> { Telnyx::MeetingSessions::MeetingSessionArtifact::ModelProvenance },
                  nil?: true
 
+        # @!attribute prompt
+        #   The prompt that produced this artifact, or null for a named type. Non-null only
+        #   when `type` is `custom`; the five named types always return `null`.
+        #
+        #   @return [String, nil]
+        required :prompt, String, nil?: true
+
         # @!attribute session_id
         #
         #   @return [String]
@@ -51,15 +58,28 @@ module Telnyx
         #   @return [Time]
         required :updated_at, Time
 
-        # @!method initialize(id:, content:, created_at:, failure_reason:, model_provenance:, session_id:, status:, type:, updated_at:)
+        # @!method initialize(id:, content:, created_at:, failure_reason:, model_provenance:, prompt:, session_id:, status:, type:, updated_at:)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::MeetingSessions::MeetingSessionArtifact} for more details.
+        #
         #   @param id [String]
+        #
         #   @param content [Telnyx::Models::MeetingSessions::MeetingSessionArtifact::Content, nil]
+        #
         #   @param created_at [Time]
+        #
         #   @param failure_reason [String, nil]
+        #
         #   @param model_provenance [Telnyx::Models::MeetingSessions::MeetingSessionArtifact::ModelProvenance, nil]
+        #
+        #   @param prompt [String, nil] The prompt that produced this artifact, or null for a named type. Non-null only
+        #
         #   @param session_id [String]
+        #
         #   @param status [Symbol, Telnyx::Models::MeetingSessions::MeetingSessionArtifact::Status]
+        #
         #   @param type [Symbol, Telnyx::Models::MeetingSessions::MeetingSessionArtifact::Type]
+        #
         #   @param updated_at [Time]
 
         # @see Telnyx::Models::MeetingSessions::MeetingSessionArtifact#content
@@ -108,6 +128,10 @@ module Telnyx
 
           SUMMARY = :summary
           ACTION_ITEMS = :action_items
+          DECISIONS = :decisions
+          TOPICS = :topics
+          OPEN_QUESTIONS = :open_questions
+          CUSTOM = :custom
 
           # @!method self.values
           #   @return [Array<Symbol>]

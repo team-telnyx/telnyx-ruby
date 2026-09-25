@@ -143,6 +143,26 @@ module Telnyx
               :action_items,
               Telnyx::ArtifactFailedWebhookEvent::Data::Type::TaggedSymbol
             )
+          DECISIONS =
+            T.let(
+              :decisions,
+              Telnyx::ArtifactFailedWebhookEvent::Data::Type::TaggedSymbol
+            )
+          TOPICS =
+            T.let(
+              :topics,
+              Telnyx::ArtifactFailedWebhookEvent::Data::Type::TaggedSymbol
+            )
+          OPEN_QUESTIONS =
+            T.let(
+              :open_questions,
+              Telnyx::ArtifactFailedWebhookEvent::Data::Type::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Telnyx::ArtifactFailedWebhookEvent::Data::Type::TaggedSymbol
+            )
 
           sig do
             override.returns(

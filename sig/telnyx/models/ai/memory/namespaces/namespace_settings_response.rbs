@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        class NamespaceSettingsResponse = Namespaces::NamespaceSettingsResponse
+
+        module Namespaces
+          type namespace_settings_response =
+            {
+              data: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data
+            }
+
+          class NamespaceSettingsResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data
+
+            def initialize: (
+              data: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data
+            ) -> void
+
+            def to_hash: -> {
+              data: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data
+            }
+
+            type data =
+              {
+                summary: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data::Summary
+              }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_reader summary: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data::Summary?
+
+              def summary=: (
+                Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data::Summary
+              ) -> Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data::Summary
+
+              def initialize: (
+                ?summary: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data::Summary
+              ) -> void
+
+              def to_hash: -> {
+                summary: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data::Summary
+              }
+
+              type summary = { instructions: String? }
+
+              class Summary < Telnyx::Internal::Type::BaseModel
+                attr_accessor instructions: String?
+
+                def initialize: (?instructions: String?) -> void
+
+                def to_hash: -> { instructions: String? }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

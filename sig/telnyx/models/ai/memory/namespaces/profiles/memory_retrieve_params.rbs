@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          module Profiles
+            type memory_retrieve_params =
+              { namespace: String, profile_id: String, memory_id: String }
+              & Telnyx::Internal::Type::request_parameters
+
+            class MemoryRetrieveParams < Telnyx::Internal::Type::BaseModel
+              extend Telnyx::Internal::Type::RequestParameters::Converter
+              include Telnyx::Internal::Type::RequestParameters
+
+              attr_accessor namespace: String
+
+              attr_accessor profile_id: String
+
+              attr_accessor memory_id: String
+
+              def initialize: (
+                namespace: String,
+                profile_id: String,
+                memory_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> void
+
+              def to_hash: -> {
+                namespace: String,
+                profile_id: String,
+                memory_id: String,
+                request_options: Telnyx::RequestOptions
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

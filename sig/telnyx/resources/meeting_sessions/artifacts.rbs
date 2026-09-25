@@ -4,7 +4,7 @@ module Telnyx
       class Artifacts
         def create: (
           String id,
-          type: Telnyx::Models::MeetingSessions::ArtifactCreateParams::type_,
+          body: Telnyx::Models::MeetingSessions::ArtifactCreateParams::body,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::MeetingSessions::MeetingSessionArtifactResponse
 

@@ -1,18 +1,14 @@
 module Telnyx
   module Models
-    type email_message_retrieve_response =
-      { data: Telnyx::Models::EmailMessageRetrieveResponse::Data }
+    type email_message_detail_response =
+      { data: Telnyx::EmailMessageDetailResponse::Data }
 
-    class EmailMessageRetrieveResponse < Telnyx::Internal::Type::BaseModel
-      attr_accessor data: Telnyx::Models::EmailMessageRetrieveResponse::Data
+    class EmailMessageDetailResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::EmailMessageDetailResponse::Data
 
-      def initialize: (
-        data: Telnyx::Models::EmailMessageRetrieveResponse::Data
-      ) -> void
+      def initialize: (data: Telnyx::EmailMessageDetailResponse::Data) -> void
 
-      def to_hash: -> {
-        data: Telnyx::Models::EmailMessageRetrieveResponse::Data
-      }
+      def to_hash: -> { data: Telnyx::EmailMessageDetailResponse::Data }
 
       type data = { html_body: String?, text_body: String? }
 

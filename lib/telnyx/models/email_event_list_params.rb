@@ -19,6 +19,17 @@ module Telnyx
       #   parameters (e.g. event_type=delivered&event_type=bounced). Unknown values return
       #   no matches.
       #
+      #   Dual-name compatibility: values are accepted bare or `email.`-prefixed. A legacy
+      #   value keeps matching the rows it matched pre-rename — no widening: `failed` also
+      #   matches the rows that now store the canonical names of the outcomes it covered
+      #   (`gw_reject`, `injection_timeout`, `expired`); `bounced` matches stored
+      #   `bounced` rows only (recipient-scoped Expirations stored `failed` pre-rename and
+      #   never matched `bounced`, so `expired` is deliberately not a `bounced`
+      #   expansion). A canonical value matches its own rows plus legacy rows whose
+      #   recorded payload evidence proves that outcome (`expired` also surfaces legacy
+      #   `bounced` rows with `bounce_category: transient`). The additive
+      #   `canonical_event_type` field in each response row names the canonical outcome.
+      #
       #   @return [String, Array<String>, nil]
       optional :event_type, union: -> { Telnyx::EmailEventListParams::EventType }
 
@@ -28,18 +39,19 @@ module Telnyx
       #   @return [Time, nil]
       optional :from, Time
 
-      # @!attribute page_cursor
-      #   Opaque URL-safe Base64 cursor returned by a previous list response.
-      #
-      #   @return [String, nil]
-      optional :page_cursor, String
-
       # @!attribute page_size
       #   Number of results to return. Defaults to 25; maximum is 100. Invalid values are
       #   clamped to the valid range.
       #
       #   @return [Integer, nil]
       optional :page_size, Integer
+
+      # @!attribute page_cursor
+      #   Opaque URL-safe Base64 cursor returned by a previous event list response. The
+      #   legacy `page[after]` and flat `page_cursor` forms are also accepted.
+      #
+      #   @return [String, nil]
+      optional :page_cursor, String
 
       # @!attribute to
       #   Inclusive ISO 8601 end timestamp. When `from` is provided without `to`, defaults
@@ -48,19 +60,19 @@ module Telnyx
       #   @return [Time, nil]
       optional :to, Time
 
-      # @!method initialize(email_id: nil, event_type: nil, from: nil, page_cursor: nil, page_size: nil, to: nil, request_options: {})
+      # @!method initialize(email_id: nil, event_type: nil, from: nil, page_size: nil, page_cursor: nil, to: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::EmailEventListParams} for more details.
       #
       #   @param email_id [String] Filter events for a specific email message UUID. Invalid UUID values are silentl
       #
-      #   @param event_type [String, Array<String>] Comma-separated list of event types to include. Also accepts repeated query para
+      #   @param event_type [String, Array<String>] Comma-separated list of event types to include. Also accepts repeated
       #
       #   @param from [Time] Inclusive ISO 8601 start timestamp. Defaults to 30 days ago when omitted.
       #
-      #   @param page_cursor [String] Opaque URL-safe Base64 cursor returned by a previous list response.
-      #
       #   @param page_size [Integer] Number of results to return. Defaults to 25; maximum is 100. Invalid values are
+      #
+      #   @param page_cursor [String] Opaque URL-safe Base64 cursor returned by a previous event list response. The le
       #
       #   @param to [Time] Inclusive ISO 8601 end timestamp. When `from` is provided without `to`, defaults
       #
@@ -69,6 +81,17 @@ module Telnyx
       # Comma-separated list of event types to include. Also accepts repeated query
       # parameters (e.g. event_type=delivered&event_type=bounced). Unknown values return
       # no matches.
+      #
+      # Dual-name compatibility: values are accepted bare or `email.`-prefixed. A legacy
+      # value keeps matching the rows it matched pre-rename — no widening: `failed` also
+      # matches the rows that now store the canonical names of the outcomes it covered
+      # (`gw_reject`, `injection_timeout`, `expired`); `bounced` matches stored
+      # `bounced` rows only (recipient-scoped Expirations stored `failed` pre-rename and
+      # never matched `bounced`, so `expired` is deliberately not a `bounced`
+      # expansion). A canonical value matches its own rows plus legacy rows whose
+      # recorded payload evidence proves that outcome (`expired` also surfaces legacy
+      # `bounced` rows with `bounce_category: transient`). The additive
+      # `canonical_event_type` field in each response row names the canonical outcome.
       module EventType
         extend Telnyx::Internal::Type::Union
 

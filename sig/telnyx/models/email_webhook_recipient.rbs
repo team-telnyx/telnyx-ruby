@@ -1,0 +1,46 @@
+module Telnyx
+  module Models
+    type email_webhook_recipient =
+      {
+        email: String,
+        kind: Telnyx::Models::EmailWebhookRecipient::kind,
+        name: String?
+      }
+
+    class EmailWebhookRecipient < Telnyx::Internal::Type::BaseModel
+      attr_accessor email: String
+
+      attr_reader kind: Telnyx::Models::EmailWebhookRecipient::kind?
+
+      def kind=: (
+        Telnyx::Models::EmailWebhookRecipient::kind
+      ) -> Telnyx::Models::EmailWebhookRecipient::kind
+
+      attr_accessor name: String?
+
+      def initialize: (
+        email: String,
+        ?kind: Telnyx::Models::EmailWebhookRecipient::kind,
+        ?name: String?
+      ) -> void
+
+      def to_hash: -> {
+        email: String,
+        kind: Telnyx::Models::EmailWebhookRecipient::kind,
+        name: String?
+      }
+
+      type kind = :to | :cc | :bcc
+
+      module Kind
+        extend Telnyx::Internal::Type::Enum
+
+        TO: :to
+        CC: :cc
+        BCC: :bcc
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailWebhookRecipient::kind]
+      end
+    end
+  end
+end

@@ -105,8 +105,8 @@ module Telnyx
         # @!attribute voice_settings
         #   Per-node voice override (response form).
         #
-        #   @return [Telnyx::Models::AI::VoiceSettings, nil]
-        optional :voice_settings, -> { Telnyx::AI::VoiceSettings }
+        #   @return [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings, nil]
+        optional :voice_settings, -> { Telnyx::AI::InferenceEmbeddingVoiceSettings }
 
         # @!method initialize(id:, instructions:, external_llm: nil, instructions_mode: nil, llm_api_key_ref: nil, model: nil, name: nil, position: nil, shared_tool_ids: nil, tools: nil, tools_mode: nil, transcription: nil, type: nil, voice_settings: nil)
         #   Some parameter documentations has been truncated, see
@@ -140,7 +140,7 @@ module Telnyx
         #
         #   @param type [Symbol, Telnyx::Models::AI::FlowNode::Type] Node kind discriminator. `prompt` is an LLM-driven step.
         #
-        #   @param voice_settings [Telnyx::Models::AI::VoiceSettings] Per-node voice override (response form).
+        #   @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings] Per-node voice override (response form).
 
         # How `instructions` combine with the assistant-level instructions. `replace`
         # (default): the node's instructions are used alone. `append`: the node's

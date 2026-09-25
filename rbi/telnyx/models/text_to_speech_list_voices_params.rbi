@@ -111,6 +111,11 @@ module Telnyx
             :humain,
             Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
           )
+        SONIOX =
+          T.let(
+            :soniox,
+            Telnyx::TextToSpeechListVoicesParams::Provider::TaggedSymbol
+          )
 
         sig do
           override.returns(

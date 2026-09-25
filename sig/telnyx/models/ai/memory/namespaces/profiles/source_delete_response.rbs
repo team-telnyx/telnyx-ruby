@@ -1,0 +1,55 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          module Profiles
+            type source_delete_response =
+              {
+                data: Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceDeleteResponse::Data
+              }
+
+            class SourceDeleteResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor data: Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceDeleteResponse::Data
+
+              def initialize: (
+                data: Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceDeleteResponse::Data
+              ) -> void
+
+              def to_hash: -> {
+                data: Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceDeleteResponse::Data
+              }
+
+              type data =
+                {
+                  memories_deleted: Integer,
+                  profile_id: String,
+                  source_id: String
+                }
+
+              class Data < Telnyx::Internal::Type::BaseModel
+                attr_accessor memories_deleted: Integer
+
+                attr_accessor profile_id: String
+
+                attr_accessor source_id: String
+
+                def initialize: (
+                  memories_deleted: Integer,
+                  profile_id: String,
+                  source_id: String
+                ) -> void
+
+                def to_hash: -> {
+                  memories_deleted: Integer,
+                  profile_id: String,
+                  source_id: String
+                }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

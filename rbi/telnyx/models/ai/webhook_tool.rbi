@@ -18,20 +18,40 @@ module Telnyx
         sig { params(webhook: Telnyx::AI::WebhookTool::Webhook::OrHash).void }
         attr_writer :webhook
 
+        # The maximum number of milliseconds to wait for the webhook to respond before the
+        # tool call is aborted. Set this at the tool level, as a sibling of `type` — a
+        # `timeout_ms` nested inside the `webhook` object is not applied, and the tool
+        # runs at this default instead.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :timeout_ms
+
+        sig { params(timeout_ms: Integer).void }
+        attr_writer :timeout_ms
+
         sig do
           params(
             type: Telnyx::AI::WebhookTool::Type::OrSymbol,
-            webhook: Telnyx::AI::WebhookTool::Webhook::OrHash
+            webhook: Telnyx::AI::WebhookTool::Webhook::OrHash,
+            timeout_ms: Integer
           ).returns(T.attached_class)
         end
-        def self.new(type:, webhook:)
+        def self.new(
+          type:,
+          webhook:,
+          # The maximum number of milliseconds to wait for the webhook to respond before the
+          # tool call is aborted. Set this at the tool level, as a sibling of `type` — a
+          # `timeout_ms` nested inside the `webhook` object is not applied, and the tool
+          # runs at this default instead.
+          timeout_ms: nil
+        )
         end
 
         sig do
           override.returns(
             {
               type: Telnyx::AI::WebhookTool::Type::OrSymbol,
-              webhook: Telnyx::AI::WebhookTool::Webhook
+              webhook: Telnyx::AI::WebhookTool::Webhook,
+              timeout_ms: Integer
             }
           )
         end

@@ -6,15 +6,15 @@ module Telnyx
           {
             account_sid: String,
             end_time: String,
-            end_time_gt: String,
             end_time_lt: String,
+            end_time_gt: String,
             from: String,
             page: Integer,
             page_size: Integer,
             page_token: String,
             start_time: String,
-            start_time_gt: String,
             start_time_lt: String,
+            start_time_gt: String,
             status: Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams::status,
             to: String
           }
@@ -30,13 +30,13 @@ module Telnyx
 
           def end_time=: (String) -> String
 
-          attr_reader end_time_gt: String?
-
-          def end_time_gt=: (String) -> String
-
           attr_reader end_time_lt: String?
 
           def end_time_lt=: (String) -> String
+
+          attr_reader end_time_gt: String?
+
+          def end_time_gt=: (String) -> String
 
           attr_reader from: String?
 
@@ -58,13 +58,13 @@ module Telnyx
 
           def start_time=: (String) -> String
 
-          attr_reader start_time_gt: String?
-
-          def start_time_gt=: (String) -> String
-
           attr_reader start_time_lt: String?
 
           def start_time_lt=: (String) -> String
+
+          attr_reader start_time_gt: String?
+
+          def start_time_gt=: (String) -> String
 
           attr_reader status: Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams::status?
 
@@ -79,15 +79,15 @@ module Telnyx
           def initialize: (
             account_sid: String,
             ?end_time: String,
-            ?end_time_gt: String,
             ?end_time_lt: String,
+            ?end_time_gt: String,
             ?from: String,
             ?page: Integer,
             ?page_size: Integer,
             ?page_token: String,
             ?start_time: String,
-            ?start_time_gt: String,
             ?start_time_lt: String,
+            ?start_time_gt: String,
             ?status: Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams::status,
             ?to: String,
             ?request_options: Telnyx::request_opts
@@ -96,15 +96,15 @@ module Telnyx
           def to_hash: -> {
             account_sid: String,
             end_time: String,
-            end_time_gt: String,
             end_time_lt: String,
+            end_time_gt: String,
             from: String,
             page: Integer,
             page_size: Integer,
             page_token: String,
             start_time: String,
-            start_time_gt: String,
             start_time_lt: String,
+            start_time_gt: String,
             status: Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams::status,
             to: String,
             request_options: Telnyx::RequestOptions

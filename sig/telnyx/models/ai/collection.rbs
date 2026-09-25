@@ -9,7 +9,7 @@ module Telnyx
           record_type: String,
           settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
           slug: String,
-          sources: ::Array[Telnyx::AI::Collections::Source],
+          sources: ::Array[Telnyx::AI::Collections::CollectionsSource],
           status: String,
           updated_at: Time,
           uuid: String
@@ -42,11 +42,11 @@ module Telnyx
 
         def slug=: (String) -> String
 
-        attr_reader sources: ::Array[Telnyx::AI::Collections::Source]?
+        attr_reader sources: ::Array[Telnyx::AI::Collections::CollectionsSource]?
 
         def sources=: (
-          ::Array[Telnyx::AI::Collections::Source]
-        ) -> ::Array[Telnyx::AI::Collections::Source]
+          ::Array[Telnyx::AI::Collections::CollectionsSource]
+        ) -> ::Array[Telnyx::AI::Collections::CollectionsSource]
 
         attr_reader status: String?
 
@@ -67,7 +67,7 @@ module Telnyx
           ?record_type: String,
           ?settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
           ?slug: String,
-          ?sources: ::Array[Telnyx::AI::Collections::Source],
+          ?sources: ::Array[Telnyx::AI::Collections::CollectionsSource],
           ?status: String,
           ?updated_at: Time,
           ?uuid: String
@@ -80,7 +80,7 @@ module Telnyx
           record_type: String,
           settings: Telnyx::AI::Collections::RetrievalSettingsWrapper,
           slug: String,
-          sources: ::Array[Telnyx::AI::Collections::Source],
+          sources: ::Array[Telnyx::AI::Collections::CollectionsSource],
           status: String,
           updated_at: Time,
           uuid: String

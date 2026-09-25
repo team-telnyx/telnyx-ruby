@@ -101,10 +101,10 @@ module Telnyx
         AZURE = :azure
         ELEVENLABS = :elevenlabs
         MINIMAX = :minimax
-        MURFAI = :murfai
         RESEMBLE = :resemble
         XAI = :xai
         HUMAIN = :humain
+        SONIOX = :soniox
 
         # @!method self.values
         #   @return [Array<Symbol>]

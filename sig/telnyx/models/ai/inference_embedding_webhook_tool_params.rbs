@@ -5,13 +5,18 @@ module Telnyx
         {
           type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
           webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
-          shared: bool
+          shared: bool,
+          timeout_ms: Integer
         }
 
       class InferenceEmbeddingWebhookToolParams < Telnyx::Internal::Type::BaseModel
         attr_accessor type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_
 
         attr_accessor webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook
+
+        attr_reader timeout_ms: Integer?
+
+        def timeout_ms=: (Integer) -> Integer
 
         attr_reader shared: bool?
 
@@ -20,13 +25,15 @@ module Telnyx
         def initialize: (
           type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
           webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
-          ?shared: bool
+          ?shared: bool,
+          ?timeout_ms: Integer
         ) -> void
 
         def to_hash: -> {
           type: Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::type_,
           webhook: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook,
-          shared: bool
+          shared: bool,
+          timeout_ms: Integer
         }
 
         type type_ = :webhook
@@ -54,8 +61,7 @@ module Telnyx
             preset_body_fields: ::Hash[Symbol, top],
             preset_query_params: ::Hash[Symbol, top],
             query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
-            store_fields_as_variables: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable],
-            timeout_ms: Integer
+            store_fields_as_variables: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable]
           }
 
         class Webhook < Telnyx::Internal::Type::BaseModel
@@ -123,10 +129,6 @@ module Telnyx
             ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable]
           ) -> ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable]
 
-          attr_reader timeout_ms: Integer?
-
-          def timeout_ms=: (Integer) -> Integer
-
           def initialize: (
             description: String,
             name: String,
@@ -141,8 +143,7 @@ module Telnyx
             ?preset_body_fields: ::Hash[Symbol, top],
             ?preset_query_params: ::Hash[Symbol, top],
             ?query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
-            ?store_fields_as_variables: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable],
-            ?timeout_ms: Integer
+            ?store_fields_as_variables: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable]
           ) -> void
 
           def to_hash: -> {
@@ -159,8 +160,7 @@ module Telnyx
             preset_body_fields: ::Hash[Symbol, top],
             preset_query_params: ::Hash[Symbol, top],
             query_parameters: Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters,
-            store_fields_as_variables: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable],
-            timeout_ms: Integer
+            store_fields_as_variables: ::Array[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable]
           }
 
           type body_parameters =

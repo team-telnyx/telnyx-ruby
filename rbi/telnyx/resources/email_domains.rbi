@@ -167,6 +167,28 @@ module Telnyx
       )
       end
 
+      # Generates a new DKIM key for the domain, activates it, and retires the previous
+      # key. The response includes the updated DKIM DNS records the customer must
+      # publish. Selectors are fixed, so rotation replaces the TXT value at the existing
+      # `<selector>._domainkey.<domain>` host rather than adding a second record —
+      # `old_selector_retained` is false and the new TXT value must be published
+      # promptly, since signing switches to the new key immediately and the old TXT
+      # value will no longer match. The previous key is retired to a `retiring` state
+      # (retained, not revoked) so it can be revoked after the DNS propagation grace
+      # period.
+      sig do
+        params(
+          domain_id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::EmailDomainRotateDkimResponse)
+      end
+      def rotate_dkim(
+        # Email domain UUID
+        domain_id,
+        request_options: {}
+      )
+      end
+
       # Checks the published DNS records against the records required for the email
       # domain and returns the latest verification results.
       sig do

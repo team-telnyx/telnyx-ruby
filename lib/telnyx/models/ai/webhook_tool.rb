@@ -14,9 +14,24 @@ module Telnyx
         #   @return [Telnyx::Models::AI::WebhookTool::Webhook]
         required :webhook, -> { Telnyx::AI::WebhookTool::Webhook }
 
-        # @!method initialize(type:, webhook:)
+        # @!attribute timeout_ms
+        #   The maximum number of milliseconds to wait for the webhook to respond before the
+        #   tool call is aborted. Set this at the tool level, as a sibling of `type` — a
+        #   `timeout_ms` nested inside the `webhook` object is not applied, and the tool
+        #   runs at this default instead.
+        #
+        #   @return [Integer, nil]
+        optional :timeout_ms, Integer
+
+        # @!method initialize(type:, webhook:, timeout_ms: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::AI::WebhookTool} for more details.
+        #
         #   @param type [Symbol, Telnyx::Models::AI::WebhookTool::Type]
+        #
         #   @param webhook [Telnyx::Models::AI::WebhookTool::Webhook]
+        #
+        #   @param timeout_ms [Integer] The maximum number of milliseconds to wait for the webhook to respond before the
 
         # @see Telnyx::Models::AI::WebhookTool#type
         module Type

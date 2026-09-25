@@ -13,17 +13,23 @@ module Telnyx
               )
             end
 
-          sig { returns(T.nilable(T::Array[Telnyx::AI::Collections::Source])) }
+          sig do
+            returns(
+              T.nilable(T::Array[Telnyx::AI::Collections::CollectionsSource])
+            )
+          end
           attr_reader :data
 
           sig do
-            params(data: T::Array[Telnyx::AI::Collections::Source::OrHash]).void
+            params(
+              data: T::Array[Telnyx::AI::Collections::CollectionsSource::OrHash]
+            ).void
           end
           attr_writer :data
 
           sig do
             params(
-              data: T::Array[Telnyx::AI::Collections::Source::OrHash]
+              data: T::Array[Telnyx::AI::Collections::CollectionsSource::OrHash]
             ).returns(T.attached_class)
           end
           def self.new(data: nil)
@@ -31,7 +37,7 @@ module Telnyx
 
           sig do
             override.returns(
-              { data: T::Array[Telnyx::AI::Collections::Source] }
+              { data: T::Array[Telnyx::AI::Collections::CollectionsSource] }
             )
           end
           def to_hash

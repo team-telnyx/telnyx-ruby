@@ -3,18 +3,23 @@ module Telnyx
     type email_template =
       {
         id: String,
+        autoescape: bool,
         created_at: Time,
         html_body: String?,
         name: String,
         record_type: Telnyx::Models::EmailTemplate::record_type,
+        strict_variables: bool,
         subject: String?,
         text_body: String?,
         updated_at: Time,
+        variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?,
         variables: ::Array[String]
       }
 
     class EmailTemplate < Telnyx::Internal::Type::BaseModel
       attr_accessor id: String
+
+      attr_accessor autoescape: bool
 
       attr_accessor created_at: Time
 
@@ -24,35 +29,45 @@ module Telnyx
 
       attr_accessor record_type: Telnyx::Models::EmailTemplate::record_type
 
+      attr_accessor strict_variables: bool
+
       attr_accessor subject: String?
 
       attr_accessor text_body: String?
 
       attr_accessor updated_at: Time
 
+      attr_accessor variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?
+
       attr_accessor variables: ::Array[String]
 
       def initialize: (
         id: String,
+        autoescape: bool,
         created_at: Time,
         html_body: String?,
         name: String,
         record_type: Telnyx::Models::EmailTemplate::record_type,
+        strict_variables: bool,
         subject: String?,
         text_body: String?,
         updated_at: Time,
+        variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?,
         variables: ::Array[String]
       ) -> void
 
       def to_hash: -> {
         id: String,
+        autoescape: bool,
         created_at: Time,
         html_body: String?,
         name: String,
         record_type: Telnyx::Models::EmailTemplate::record_type,
+        strict_variables: bool,
         subject: String?,
         text_body: String?,
         updated_at: Time,
+        variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?,
         variables: ::Array[String]
       }
 
@@ -64,6 +79,20 @@ module Telnyx
         EMAIL_TEMPLATE: :email_template
 
         def self?.values: -> ::Array[Telnyx::Models::EmailTemplate::record_type]
+      end
+
+      type variable_schema = { required: bool, default: String }
+
+      class VariableSchema < Telnyx::Internal::Type::BaseModel
+        attr_accessor required: bool
+
+        attr_reader default: String?
+
+        def default=: (String) -> String
+
+        def initialize: (required: bool, ?default: String) -> void
+
+        def to_hash: -> { required: bool, default: String }
       end
     end
   end

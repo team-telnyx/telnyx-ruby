@@ -78,11 +78,21 @@ module Telnyx
       end
       attr_writer :inbound_call_screening
 
-      # Identifies the messaging profile associated with the phone number.
+      # Identifies the messaging campaign associated with the phone number's messaging
+      # profile. If the messaging profile details could not be retrieved, this value is
+      # the string `UNAVAILABLE`.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :messaging_campaign_id
+
+      # Identifies the messaging profile associated with the phone number. If the
+      # messaging profile details could not be retrieved, this value is the string
+      # `UNAVAILABLE`.
       sig { returns(T.nilable(String)) }
       attr_accessor :messaging_profile_id
 
-      # The name of the messaging profile associated with the phone number.
+      # The name of the messaging profile associated with the phone number. If the
+      # messaging profile details could not be retrieved, this value is the string
+      # `UNAVAILABLE`.
       sig { returns(T.nilable(String)) }
       attr_accessor :messaging_profile_name
 
@@ -239,6 +249,7 @@ module Telnyx
           hd_voice_enabled: T::Boolean,
           inbound_call_screening:
             Telnyx::NumbersPhoneNumberDetailed::InboundCallScreening::OrSymbol,
+          messaging_campaign_id: T.nilable(String),
           messaging_profile_id: T.nilable(String),
           messaging_profile_name: T.nilable(String),
           source_type:
@@ -316,9 +327,17 @@ module Telnyx
         # fraudulent calls. It can be set to disabled, reject_calls, or flag_calls. This
         # feature has an additional per-number monthly cost associated with it.
         inbound_call_screening: nil,
-        # Identifies the messaging profile associated with the phone number.
+        # Identifies the messaging campaign associated with the phone number's messaging
+        # profile. If the messaging profile details could not be retrieved, this value is
+        # the string `UNAVAILABLE`.
+        messaging_campaign_id: nil,
+        # Identifies the messaging profile associated with the phone number. If the
+        # messaging profile details could not be retrieved, this value is the string
+        # `UNAVAILABLE`.
         messaging_profile_id: nil,
-        # The name of the messaging profile associated with the phone number.
+        # The name of the messaging profile associated with the phone number. If the
+        # messaging profile details could not be retrieved, this value is the string
+        # `UNAVAILABLE`.
         messaging_profile_name: nil,
         # Indicates if the phone number was purchased or ported in. For some numbers this
         # information may not be available.
@@ -361,6 +380,7 @@ module Telnyx
             hd_voice_enabled: T::Boolean,
             inbound_call_screening:
               Telnyx::NumbersPhoneNumberDetailed::InboundCallScreening::TaggedSymbol,
+            messaging_campaign_id: T.nilable(String),
             messaging_profile_id: T.nilable(String),
             messaging_profile_name: T.nilable(String),
             source_type:

@@ -2,12 +2,18 @@ module Telnyx
   module Models
     type message_event =
       {
+        canonical_event_type: String,
+        event_type: String,
         occurred_at: Time,
         type: Telnyx::Models::email_event_type,
         payload: ::Hash[Symbol, top]
       }
 
     class MessageEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor canonical_event_type: String
+
+      attr_accessor event_type: String
+
       attr_accessor occurred_at: Time
 
       attr_accessor type: Telnyx::Models::email_event_type
@@ -17,12 +23,16 @@ module Telnyx
       def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
       def initialize: (
+        canonical_event_type: String,
+        event_type: String,
         occurred_at: Time,
         type: Telnyx::Models::email_event_type,
         ?payload: ::Hash[Symbol, top]
       ) -> void
 
       def to_hash: -> {
+        canonical_event_type: String,
+        event_type: String,
         occurred_at: Time,
         type: Telnyx::Models::email_event_type,
         payload: ::Hash[Symbol, top]

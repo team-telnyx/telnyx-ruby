@@ -27,6 +27,7 @@ module Telnyx
         emergency_status: Telnyx::Models::NumbersPhoneNumberDetailed::emergency_status,
         hd_voice_enabled: bool,
         inbound_call_screening: Telnyx::Models::NumbersPhoneNumberDetailed::inbound_call_screening,
+        messaging_campaign_id: String?,
         messaging_profile_id: String?,
         messaging_profile_name: String?,
         source_type: Telnyx::Models::NumbersPhoneNumberDetailed::source_type?,
@@ -58,6 +59,8 @@ module Telnyx
       def inbound_call_screening=: (
         Telnyx::Models::NumbersPhoneNumberDetailed::inbound_call_screening
       ) -> Telnyx::Models::NumbersPhoneNumberDetailed::inbound_call_screening
+
+      attr_accessor messaging_campaign_id: String?
 
       attr_accessor messaging_profile_id: String?
 
@@ -145,6 +148,7 @@ module Telnyx
         ?emergency_status: Telnyx::Models::NumbersPhoneNumberDetailed::emergency_status,
         ?hd_voice_enabled: bool,
         ?inbound_call_screening: Telnyx::Models::NumbersPhoneNumberDetailed::inbound_call_screening,
+        ?messaging_campaign_id: String?,
         ?messaging_profile_id: String?,
         ?messaging_profile_name: String?,
         ?source_type: Telnyx::Models::NumbersPhoneNumberDetailed::source_type?,
@@ -178,6 +182,7 @@ module Telnyx
         emergency_status: Telnyx::Models::NumbersPhoneNumberDetailed::emergency_status,
         hd_voice_enabled: bool,
         inbound_call_screening: Telnyx::Models::NumbersPhoneNumberDetailed::inbound_call_screening,
+        messaging_campaign_id: String?,
         messaging_profile_id: String?,
         messaging_profile_name: String?,
         source_type: Telnyx::Models::NumbersPhoneNumberDetailed::source_type?,

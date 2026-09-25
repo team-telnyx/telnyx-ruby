@@ -492,6 +492,16 @@ module Telnyx
                 #   @return [String]
                 required :to, String
 
+                # @!attribute extension
+                #   DTMF digits to send automatically after the transfer destination answers. Useful
+                #   for reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once
+                #   the called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause),
+                #   `W` (1s pause), `*`, `#`. Maximum 64 characters. When omitted, no automatic DTMF
+                #   is sent.
+                #
+                #   @return [String, nil]
+                optional :extension, String
+
                 # @!attribute message
                 #   The warm transfer message to deliver to this specific target. When set, it takes
                 #   precedence over the message the assistant composes from
@@ -506,16 +516,36 @@ module Telnyx
                 #   @return [String, nil]
                 optional :name, String
 
-                # @!method initialize(to:, message: nil, name: nil)
+                # @!attribute sip_auth_password
+                #   SIP Authentication password used for SIP challenges. Applies when `to` is a SIP
+                #   URI.
+                #
+                #   @return [String, nil]
+                optional :sip_auth_password, String
+
+                # @!attribute sip_auth_username
+                #   SIP Authentication username used for SIP challenges. Applies when `to` is a SIP
+                #   URI.
+                #
+                #   @return [String, nil]
+                optional :sip_auth_username, String
+
+                # @!method initialize(to:, extension: nil, message: nil, name: nil, sip_auth_password: nil, sip_auth_username: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList}
                 #   for more details.
                 #
                 #   @param to [String] The destination number or SIP URI of the call.
                 #
+                #   @param extension [String] DTMF digits to send automatically after the transfer destination answers. Useful
+                #
                 #   @param message [String] The warm transfer message to deliver to this specific target. When set, it takes
                 #
                 #   @param name [String] The name of the target.
+                #
+                #   @param sip_auth_password [String] SIP Authentication password used for SIP challenges. Applies when `to` is a SIP
+                #
+                #   @param sip_auth_username [String] SIP Authentication username used for SIP challenges. Applies when `to` is a SIP
               end
 
               # @!method self.variants

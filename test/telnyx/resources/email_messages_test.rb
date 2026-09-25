@@ -26,12 +26,12 @@ class Telnyx::Test::Resources::EmailMessagesTest < Telnyx::Test::ResourceTest
     response = @telnyx.email_messages.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Telnyx::Models::EmailMessageRetrieveResponse
+      response => Telnyx::EmailMessageDetailResponse
     end
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::EmailMessageRetrieveResponse::Data
+        data: Telnyx::EmailMessageDetailResponse::Data
       }
     end
   end
@@ -59,12 +59,14 @@ class Telnyx::Test::Resources::EmailMessagesTest < Telnyx::Test::ResourceTest
         bcc: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailAddress]),
         cc: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailAddress]),
         created_at: Time,
-        events: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::MessageEvent]),
+        events: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailMessage::Event]),
         from: Telnyx::EmailInboxes::EmailAddress,
+        metadata: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]),
         record_type: Telnyx::EmailInboxes::EmailMessage::RecordType,
         reply_to: String | nil,
         status: Telnyx::EmailInboxes::EmailMessage::Status,
         subject: String,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]),
         template_id: String | nil,
         template_variables: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]),
         to: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailAddress]),
@@ -156,9 +158,31 @@ class Telnyx::Test::Resources::EmailMessagesTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       row => {
+        canonical_event_type: String,
+        event_type: String,
         occurred_at: Time,
         type: Telnyx::EmailEventType,
         payload: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil
+      }
+    end
+  end
+
+  def test_update_schedule_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.email_messages.update_schedule(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        scheduled_at: "2099-08-07T14:30:00Z"
+      )
+
+    assert_pattern do
+      response => Telnyx::EmailMessageDetailResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::EmailMessageDetailResponse::Data
       }
     end
   end

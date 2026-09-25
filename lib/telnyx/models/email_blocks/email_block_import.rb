@@ -49,7 +49,9 @@ module Telnyx
         optional :created_count, Integer
 
         # @!attribute error_count
-        #   Only when `status == completed`.
+        #   Rows that passed CSV parsing but failed suppression creation. This is the
+        #   creation-failure subset of `skipped_count`; parser-rejected rows equal
+        #   `skipped_count - error_count`. Only when `status == completed`.
         #
         #   @return [Integer, nil]
         optional :error_count, Integer
@@ -91,6 +93,9 @@ module Telnyx
         optional :skipped_count, Integer
 
         # @!method initialize(id:, created_at:, record_type:, status:, total:, updated_at:, completed_at: nil, created_count: nil, error_count: nil, errors: nil, existing_count: nil, failure_reason: nil, processed_rows: nil, provider: nil, skipped_count: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::EmailBlocks::EmailBlockImport} for more details.
+        #
         #   Import job. Schema fields hidden: `account_id`, `csv_content`, `block_ttl_days`.
         #   Nullable fields use the omit-nullable pattern.
         #
@@ -110,7 +115,7 @@ module Telnyx
         #
         #   @param created_count [Integer] Only when `status == completed`.
         #
-        #   @param error_count [Integer] Only when `status == completed`.
+        #   @param error_count [Integer] Rows that passed CSV parsing but failed suppression creation.
         #
         #   @param errors [Hash{Symbol=>String}] `{row_number: reason}`; only rendered when non-empty.
         #

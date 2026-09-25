@@ -1,0 +1,308 @@
+module Telnyx
+  module Models
+    module AI
+      type inference_embedding_voice_settings =
+        {
+          voice: String,
+          api_key_ref: String,
+          background_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::background_audio,
+          expressive_mode: bool,
+          language_boost: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::language_boost?,
+          similarity_boost: Float,
+          speed: Float,
+          style: Float,
+          temperature: Float,
+          use_speaker_boost: bool,
+          voice_speed: Float
+        }
+
+      class InferenceEmbeddingVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_accessor voice: String
+
+        attr_reader api_key_ref: String?
+
+        def api_key_ref=: (String) -> String
+
+        attr_reader background_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::background_audio?
+
+        def background_audio=: (
+          Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::background_audio
+        ) -> Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::background_audio
+
+        attr_reader expressive_mode: bool?
+
+        def expressive_mode=: (bool) -> bool
+
+        attr_accessor language_boost: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::language_boost?
+
+        attr_reader similarity_boost: Float?
+
+        def similarity_boost=: (Float) -> Float
+
+        attr_reader speed: Float?
+
+        def speed=: (Float) -> Float
+
+        attr_reader style: Float?
+
+        def style=: (Float) -> Float
+
+        attr_reader temperature: Float?
+
+        def temperature=: (Float) -> Float
+
+        attr_reader use_speaker_boost: bool?
+
+        def use_speaker_boost=: (bool) -> bool
+
+        attr_reader voice_speed: Float?
+
+        def voice_speed=: (Float) -> Float
+
+        def initialize: (
+          voice: String,
+          ?api_key_ref: String,
+          ?background_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::background_audio,
+          ?expressive_mode: bool,
+          ?language_boost: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::language_boost?,
+          ?similarity_boost: Float,
+          ?speed: Float,
+          ?style: Float,
+          ?temperature: Float,
+          ?use_speaker_boost: bool,
+          ?voice_speed: Float
+        ) -> void
+
+        def to_hash: -> {
+          voice: String,
+          api_key_ref: String,
+          background_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::background_audio,
+          expressive_mode: bool,
+          language_boost: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::language_boost?,
+          similarity_boost: Float,
+          speed: Float,
+          style: Float,
+          temperature: Float,
+          use_speaker_boost: bool,
+          voice_speed: Float
+        }
+
+        type background_audio =
+          Telnyx::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0
+          | Telnyx::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember1
+          | Telnyx::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember2
+
+        module BackgroundAudio
+          extend Telnyx::Internal::Type::Union
+
+          type union_member0 =
+            {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::value,
+              volume: Float
+            }
+
+          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::type_
+
+            attr_accessor value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::value
+
+            attr_reader volume: Float?
+
+            def volume=: (Float) -> Float
+
+            def initialize: (
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::value,
+              ?volume: Float
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::value,
+              volume: Float
+            }
+
+            type type_ = :predefined_media
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              PREDEFINED_MEDIA: :predefined_media
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::type_]
+            end
+
+            type value = :silence | :office
+
+            module Value
+              extend Telnyx::Internal::Type::Enum
+
+              SILENCE: :silence
+              OFFICE: :office
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0::value]
+            end
+          end
+
+          type union_member1 =
+            {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember1::type_,
+              value: String
+            }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember1::type_
+
+            attr_accessor value: String
+
+            def initialize: (
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember1::type_,
+              value: String
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember1::type_,
+              value: String
+            }
+
+            type type_ = :media_url
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              MEDIA_URL: :media_url
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember1::type_]
+            end
+          end
+
+          type union_member2 =
+            {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember2::type_,
+              value: String
+            }
+
+          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember2::type_
+
+            attr_accessor value: String
+
+            def initialize: (
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember2::type_,
+              value: String
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember2::type_,
+              value: String
+            }
+
+            type type_ = :media_name
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              MEDIA_NAME: :media_name
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember2::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::background_audio]
+        end
+
+        type language_boost =
+          :auto
+          | :Chinese
+          | :"Chinese,Yue"
+          | :English
+          | :Arabic
+          | :Russian
+          | :Spanish
+          | :French
+          | :Portuguese
+          | :German
+          | :Turkish
+          | :Dutch
+          | :Ukrainian
+          | :Vietnamese
+          | :Indonesian
+          | :Japanese
+          | :Italian
+          | :Korean
+          | :Thai
+          | :Polish
+          | :Romanian
+          | :Greek
+          | :Czech
+          | :Finnish
+          | :Hindi
+          | :Bulgarian
+          | :Danish
+          | :Hebrew
+          | :Malay
+          | :Persian
+          | :Slovak
+          | :Swedish
+          | :Croatian
+          | :Filipino
+          | :Hungarian
+          | :Norwegian
+          | :Slovenian
+          | :Catalan
+          | :Nynorsk
+          | :Tamil
+          | :Afrikaans
+
+        module LanguageBoost
+          extend Telnyx::Internal::Type::Enum
+
+          AUTO: :auto
+          CHINESE: :Chinese
+          CHINESE_YUE: :"Chinese,Yue"
+          ENGLISH: :English
+          ARABIC: :Arabic
+          RUSSIAN: :Russian
+          SPANISH: :Spanish
+          FRENCH: :French
+          PORTUGUESE: :Portuguese
+          GERMAN: :German
+          TURKISH: :Turkish
+          DUTCH: :Dutch
+          UKRAINIAN: :Ukrainian
+          VIETNAMESE: :Vietnamese
+          INDONESIAN: :Indonesian
+          JAPANESE: :Japanese
+          ITALIAN: :Italian
+          KOREAN: :Korean
+          THAI: :Thai
+          POLISH: :Polish
+          ROMANIAN: :Romanian
+          GREEK: :Greek
+          CZECH: :Czech
+          FINNISH: :Finnish
+          HINDI: :Hindi
+          BULGARIAN: :Bulgarian
+          DANISH: :Danish
+          HEBREW: :Hebrew
+          MALAY: :Malay
+          PERSIAN: :Persian
+          SLOVAK: :Slovak
+          SWEDISH: :Swedish
+          CROATIAN: :Croatian
+          FILIPINO: :Filipino
+          HUNGARIAN: :Hungarian
+          NORWEGIAN: :Norwegian
+          SLOVENIAN: :Slovenian
+          CATALAN: :Catalan
+          NYNORSK: :Nynorsk
+          TAMIL: :Tamil
+          AFRIKAANS: :Afrikaans
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::language_boost]
+        end
+      end
+    end
+  end
+end

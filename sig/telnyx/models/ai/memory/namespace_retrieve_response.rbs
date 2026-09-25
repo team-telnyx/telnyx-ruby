@@ -1,0 +1,69 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        type namespace_retrieve_response =
+          { data: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data }
+
+        class NamespaceRetrieveResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data
+
+          def initialize: (
+            data: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data
+          }
+
+          type data =
+            {
+              operation_id: String,
+              status: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data::status,
+              completed_at: String?,
+              created_at: String?
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor operation_id: String
+
+            attr_accessor status: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data::status
+
+            attr_accessor completed_at: String?
+
+            attr_accessor created_at: String?
+
+            def initialize: (
+              operation_id: String,
+              status: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data::status,
+              ?completed_at: String?,
+              ?created_at: String?
+            ) -> void
+
+            def to_hash: -> {
+              operation_id: String,
+              status: Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data::status,
+              completed_at: String?,
+              created_at: String?
+            }
+
+            type status =
+              :pending | :processing | :completed | :failed | :cancelled
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              PENDING: :pending
+              PROCESSING: :processing
+              COMPLETED: :completed
+              FAILED: :failed
+              CANCELLED: :cancelled
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::Memory::NamespaceRetrieveResponse::Data::status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

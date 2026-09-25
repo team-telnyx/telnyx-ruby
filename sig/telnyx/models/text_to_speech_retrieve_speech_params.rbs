@@ -88,10 +88,10 @@ module Telnyx
         | :azure
         | :elevenlabs
         | :minimax
-        | :murfai
         | :resemble
         | :xai
         | :humain
+        | :soniox
 
       module Provider
         extend Telnyx::Internal::Type::Enum
@@ -101,10 +101,10 @@ module Telnyx
         AZURE: :azure
         ELEVENLABS: :elevenlabs
         MINIMAX: :minimax
-        MURFAI: :murfai
         RESEMBLE: :resemble
         XAI: :xai
         HUMAIN: :humain
+        SONIOX: :soniox
 
         def self?.values: -> ::Array[Telnyx::Models::TextToSpeechRetrieveSpeechParams::provider]
       end

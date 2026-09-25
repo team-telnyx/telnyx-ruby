@@ -11,11 +11,13 @@ module Telnyx
       # created network. This operation may take several minutes so you can check the
       # Private Wireless Gateway status at the section Get a Private Wireless Gateway.
       #
-      # @overload create(name:, network_id:, region_code: nil, request_options: {})
+      # @overload create(name:, network_id:, address_mode: nil, region_code: nil, request_options: {})
       #
       # @param name [String] The private wireless gateway name.
       #
       # @param network_id [String] The identification of the related network resource.
+      #
+      # @param address_mode [Symbol, Telnyx::Models::PrivateWirelessGatewayCreateParams::AddressMode] Determines how IP addresses are assigned to SIM cards using this gateway. With s
       #
       # @param region_code [String] The code of the region where the private wireless gateway will be assigned. A li
       #
@@ -75,7 +77,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PrivateWirelessGateway>]
+      # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::WirelessPrivateWirelessGateway>]
       #
       # @see Telnyx::Models::PrivateWirelessGatewayListParams
       def list(params = {})
@@ -94,7 +96,7 @@ module Telnyx
             page_size: "page[size]"
           ),
           page: Telnyx::Internal::DefaultFlatPagination,
-          model: Telnyx::PrivateWirelessGateway,
+          model: Telnyx::WirelessPrivateWirelessGateway,
           options: options
         )
       end

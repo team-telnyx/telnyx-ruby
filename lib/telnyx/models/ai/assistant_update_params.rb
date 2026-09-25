@@ -245,8 +245,8 @@ module Telnyx
 
         # @!attribute voice_settings
         #
-        #   @return [Telnyx::Models::AI::VoiceSettings, nil]
-        optional :voice_settings, -> { Telnyx::AI::VoiceSettings }
+        #   @return [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings, nil]
+        optional :voice_settings, -> { Telnyx::AI::InferenceEmbeddingVoiceSettings }
 
         # @!attribute widget_settings
         #   Configuration settings for the assistant's web widget.
@@ -318,7 +318,7 @@ module Telnyx
         #
         #   @param version_name [String] Human-readable name for the assistant version.
         #
-        #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        #   @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings]
         #
         #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #

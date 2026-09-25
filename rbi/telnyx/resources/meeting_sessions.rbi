@@ -34,6 +34,7 @@ module Telnyx
               Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageBase64Source::OrHash,
               Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageURLSource::OrHash
             ),
+          chat_on_enter: String,
           idempotency_key: String,
           join_at: Time,
           metadata: T::Hash[Symbol, T.anything],
@@ -47,10 +48,10 @@ module Telnyx
       def create(
         # The meeting URL the bot should join.
         meeting_url:,
-        # Request options for attaching a voice assistant to the session. Routing fields
-        # (`call_control_connection_id`, `from`, and `loopback_sip_uri`) are used only to
-        # establish the assistant call leg and are omitted from response objects.
-        # `audio_gate` is returned with `id` in the assistant response object.
+        # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
+        # Meeting service connects it to the meeting directly. The Call Control
+        # connection, caller ID and loopback SIP URI previously required here have been
+        # removed and are now rejected as unknown fields.
         assistant: nil,
         # Request options for attaching a bring-your-own-key avatar to the session.
         avatar: nil,
@@ -67,6 +68,12 @@ module Telnyx
         # recordings. An effective Avatar or Assistant webpage output takes precedence, so
         # this input is ignored and a URL source is not fetched.
         camera_image: nil,
+        # A message the bot posts to the meeting's chat as soon as it becomes active —
+        # typically a recording disclosure. Delivered at most once. Independent of
+        # `speak_on_enter`: both may be set, and the chat message posts first because it
+        # does not wait for text-to-speech or avatar startup. Rejected with 422
+        # `unsupported_capability` on platforms without meeting chat.
+        chat_on_enter: nil,
         # Client-supplied idempotency key to safely retry creation requests without
         # duplicating sessions. Lookup is scoped to the authenticated account and compares
         # the key only; the request payload is not fingerprinted or compared.
@@ -77,7 +84,10 @@ module Telnyx
         # Arbitrary key-value metadata attached to the session. The serialized JSON
         # representation must not exceed 16384 characters at runtime.
         metadata: nil,
-        # Text the bot speaks when it enters the meeting.
+        # Text the bot speaks when it enters the meeting. **Not spoken when an `assistant`
+        # is attached**: the value is accepted and echoed back on the session, but the
+        # assistant owns the voice and the line is never delivered, with no event
+        # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
         speak_on_enter: nil,
         # If true, generate a summary artifact when the session ends.
         summarize_on_end: nil,
@@ -161,8 +171,6 @@ module Telnyx
       )
       end
 
-      # **Not yet available in production** — this route is not currently routed on
-      # api.telnyx.com and returns a generic 404; it is documented ahead of rollout.
       # Irreversibly requests deletion of provider-hosted aggregate recording media
       # under the provider contract. The operation retains the Telnyx-local Meeting
       # session, transcript segments, events, artifacts, and usage records. It is

@@ -647,6 +647,8 @@ module Telnyx
 
   class EmailDomainRetrieveParams = Telnyx::Models::EmailDomainRetrieveParams
 
+  class EmailDomainRotateDkimParams = Telnyx::Models::EmailDomainRotateDkimParams
+
   module EmailDomains = Telnyx::Models::EmailDomains
 
   module EmailDomainStatus = Telnyx::Models::EmailDomainStatus
@@ -689,6 +691,8 @@ module Telnyx
 
   class EmailMessageDeleteScheduleParams = Telnyx::Models::EmailMessageDeleteScheduleParams
 
+  class EmailMessageDetailResponse = Telnyx::Models::EmailMessageDetailResponse
+
   class EmailMessageListParams = Telnyx::Models::EmailMessageListParams
 
   class EmailMessageRetrieveEventsParams = Telnyx::Models::EmailMessageRetrieveEventsParams
@@ -696,6 +700,8 @@ module Telnyx
   class EmailMessageRetrieveParams = Telnyx::Models::EmailMessageRetrieveParams
 
   module EmailMessages = Telnyx::Models::EmailMessages
+
+  class EmailMessageUpdateScheduleParams = Telnyx::Models::EmailMessageUpdateScheduleParams
 
   class EmailTemplate = Telnyx::Models::EmailTemplate
 
@@ -738,6 +744,8 @@ module Telnyx
   class EmailValidationCreateParams = Telnyx::Models::EmailValidationCreateParams
 
   module EmailValidations = Telnyx::Models::EmailValidations
+
+  class EmailWebhookRecipient = Telnyx::Models::EmailWebhookRecipient
 
   module EncryptedMedia = Telnyx::Models::EncryptedMedia
 
@@ -2192,6 +2200,8 @@ module Telnyx
   class WirelessBlocklistValueListParams = Telnyx::Models::WirelessBlocklistValueListParams
 
   class WirelessError = Telnyx::Models::WirelessError
+
+  class WirelessPrivateWirelessGateway = Telnyx::Models::WirelessPrivateWirelessGateway
 
   class WirelessRetrieveRegionsParams = Telnyx::Models::WirelessRetrieveRegionsParams
 

@@ -17,7 +17,7 @@ module Telnyx
       # parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`,
-      # `resemble`, `xai`, `humain`.
+      # `resemble`, `xai`, `humain`, `soniox`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
@@ -38,6 +38,7 @@ module Telnyx
             ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::OrSymbol,
           resemble:
             ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble::OrHash,
+          soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::OrHash,
           telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx::OrHash,
           text: String,
           text_type:
@@ -72,6 +73,9 @@ module Telnyx
         provider: nil,
         # Resemble AI provider-specific parameters.
         resemble: nil,
+        # Soniox provider-specific parameters. Every voice speaks all supported languages;
+        # set `language` to the language of the text.
+        soniox: nil,
         # Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
         # `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
         # or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
@@ -123,8 +127,8 @@ module Telnyx
       # `Authorization: Bearer <API_KEY>` header. Send JSON frames with text to
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
-      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `resemble`,
-      # `elevenlabs`, `xai`, `humain`.
+      # Supported providers: `aws`, `telnyx`, `azure`, `minimax`, `resemble`,
+      # `elevenlabs`, `xai`, `humain`, `soniox`.
       #
       # **Connection flow:**
       #

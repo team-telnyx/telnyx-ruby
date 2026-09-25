@@ -148,6 +148,20 @@ module Telnyx
       end
       attr_writer :resemble
 
+      # Soniox provider-specific parameters. Every voice speaks all supported languages;
+      # set `language` to the language of the text.
+      sig do
+        returns(T.nilable(::Telnyx::TextToSpeechGenerateSpeechParams::Soniox))
+      end
+      attr_reader :soniox
+
+      sig do
+        params(
+          soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::OrHash
+        ).void
+      end
+      attr_writer :soniox
+
       # Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
       # `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
       # or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
@@ -238,6 +252,7 @@ module Telnyx
             ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::OrSymbol,
           resemble:
             ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble::OrHash,
+          soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::OrHash,
           telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx::OrHash,
           text: String,
           text_type:
@@ -272,6 +287,9 @@ module Telnyx
         provider: nil,
         # Resemble AI provider-specific parameters.
         resemble: nil,
+        # Soniox provider-specific parameters. Every voice speaks all supported languages;
+        # set `language` to the language of the text.
+        soniox: nil,
         # Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
         # `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
         # or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
@@ -312,6 +330,7 @@ module Telnyx
             provider:
               ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::OrSymbol,
             resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
+            soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox,
             telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
             text: String,
             text_type:
@@ -961,6 +980,11 @@ module Telnyx
             :humain,
             ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::TaggedSymbol
           )
+        SONIOX =
+          T.let(
+            :soniox,
+            ::Telnyx::TextToSpeechGenerateSpeechParams::Provider::TaggedSymbol
+          )
 
         sig do
           override.returns(
@@ -1045,6 +1069,285 @@ module Telnyx
         end
       end
 
+      class Soniox < ::Telnyx::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox,
+              ::Telnyx::Internal::AnyHash
+            )
+          end
+
+        # Soniox voice name from the
+        # [voices listing](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices),
+        # for example `Emma`.
+        sig { returns(String) }
+        attr_accessor :voice_id
+
+        # Audio output format.
+        sig do
+          returns(
+            T.nilable(
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::OrSymbol
+            )
+          )
+        end
+        attr_reader :audio_format
+
+        sig do
+          params(
+            audio_format:
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::OrSymbol
+          ).void
+        end
+        attr_writer :audio_format
+
+        # Two-letter ISO 639-1 code of the text.
+        sig { returns(T.nilable(String)) }
+        attr_reader :language
+
+        sig { params(language: String).void }
+        attr_writer :language
+
+        # Soniox model.
+        sig do
+          returns(
+            T.nilable(
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID::OrSymbol
+            )
+          )
+        end
+        attr_reader :model_id
+
+        sig do
+          params(
+            model_id:
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID::OrSymbol
+          ).void
+        end
+        attr_writer :model_id
+
+        # Shortens the pauses between words.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :reduce_silence
+
+        sig { params(reduce_silence: T::Boolean).void }
+        attr_writer :reduce_silence
+
+        # Audio sample rate in Hz. `pcm_mulaw` and `pcm_alaw` accept 8000 only; `mp3` does
+        # not accept 8000. Defaults to 24000, or 8000 for `pcm_mulaw` and `pcm_alaw`.
+        sig do
+          returns(
+            T.nilable(
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::OrInteger
+            )
+          )
+        end
+        attr_reader :sample_rate
+
+        sig do
+          params(
+            sample_rate:
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::OrInteger
+          ).void
+        end
+        attr_writer :sample_rate
+
+        # Speaking rate. 1.0 is normal speed.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :speed
+
+        sig { params(speed: Float).void }
+        attr_writer :speed
+
+        # Soniox provider-specific parameters. Every voice speaks all supported languages;
+        # set `language` to the language of the text.
+        sig do
+          params(
+            voice_id: String,
+            audio_format:
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::OrSymbol,
+            language: String,
+            model_id:
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID::OrSymbol,
+            reduce_silence: T::Boolean,
+            sample_rate:
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::OrInteger,
+            speed: Float
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Soniox voice name from the
+          # [voices listing](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices),
+          # for example `Emma`.
+          voice_id:,
+          # Audio output format.
+          audio_format: nil,
+          # Two-letter ISO 639-1 code of the text.
+          language: nil,
+          # Soniox model.
+          model_id: nil,
+          # Shortens the pauses between words.
+          reduce_silence: nil,
+          # Audio sample rate in Hz. `pcm_mulaw` and `pcm_alaw` accept 8000 only; `mp3` does
+          # not accept 8000. Defaults to 24000, or 8000 for `pcm_mulaw` and `pcm_alaw`.
+          sample_rate: nil,
+          # Speaking rate. 1.0 is normal speed.
+          speed: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              voice_id: String,
+              audio_format:
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::OrSymbol,
+              language: String,
+              model_id:
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID::OrSymbol,
+              reduce_silence: T::Boolean,
+              sample_rate:
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::OrInteger,
+              speed: Float
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # Audio output format.
+        module AudioFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          MP3 =
+            T.let(
+              :mp3,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::TaggedSymbol
+            )
+          WAV =
+            T.let(
+              :wav,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::TaggedSymbol
+            )
+          PCM_S16LE =
+            T.let(
+              :pcm_s16le,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::TaggedSymbol
+            )
+          PCM_MULAW =
+            T.let(
+              :pcm_mulaw,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::TaggedSymbol
+            )
+          PCM_ALAW =
+            T.let(
+              :pcm_alaw,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Soniox model.
+        module ModelID
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          TTS_RT_V2 =
+            T.let(
+              :"tts-rt-v2",
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Audio sample rate in Hz. `pcm_mulaw` and `pcm_alaw` accept 8000 only; `mp3` does
+        # not accept 8000. Defaults to 24000, or 8000 for `pcm_mulaw` and `pcm_alaw`.
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          TaggedInteger =
+            T.type_alias do
+              T.all(
+                Integer,
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate
+              )
+            end
+          OrInteger = T.type_alias { Integer }
+
+          SAMPLE_RATE_8000 =
+            T.let(
+              8000,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_16000 =
+            T.let(
+              16_000,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_24000 =
+            T.let(
+              24_000,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_44100 =
+            T.let(
+              44_100,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::TaggedInteger
+            )
+          SAMPLE_RATE_48000 =
+            T.let(
+              48_000,
+              ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::TaggedInteger
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate::TaggedInteger
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+
       class Telnyx < ::Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
@@ -1095,7 +1398,10 @@ module Telnyx
         sig { params(voice_speed: Float).void }
         attr_writer :voice_speed
 
-        # Volume level for the Ultra model. Range: 0.0 to 2.0.
+        # Volume level for the Ultra model. Telnyx `Ultra` voices accept values from 0.5
+        # to 2.0 — requests outside that range are rejected by the synthesis engine.
+        # `KokoroTTS`, `Qwen3TTS`, `Bayan`, and `Sukhan` voices accept the field but do
+        # not apply it.
         sig { returns(T.nilable(Float)) }
         attr_reader :volume
 
@@ -1127,7 +1433,10 @@ module Telnyx
           # Voice speed multiplier. Applies to all models except `Bayan` and `Sukhan`, which
           # don't support it. Range: 0.5 to 2.0.
           voice_speed: nil,
-          # Volume level for the Ultra model. Range: 0.0 to 2.0.
+          # Volume level for the Ultra model. Telnyx `Ultra` voices accept values from 0.5
+          # to 2.0 — requests outside that range are rejected by the synthesis engine.
+          # `KokoroTTS`, `Qwen3TTS`, `Bayan`, and `Sukhan` voices accept the field but do
+          # not apply it.
           volume: nil
         )
         end

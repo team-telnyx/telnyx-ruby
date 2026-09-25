@@ -59,6 +59,10 @@ module Telnyx
       optional :domain_id, String, nil?: true
 
       # @!attribute expires_at
+      #   Optional expiration time. An active row stops matching send-time suppression
+      #   checks as soon as `expires_at <= now()`. A maintenance worker later transitions
+      #   the row to `status: expired` and appends an `expired` audit event (normally
+      #   within 15 minutes).
       #
       #   @return [Time, nil]
       optional :expires_at, Time, nil?: true
@@ -76,6 +80,9 @@ module Telnyx
       optional :group_id, String, nil?: true
 
       # @!method initialize(id:, created_at:, reason:, record_type:, scope:, source:, status:, to:, updated_at:, domain_id: nil, expires_at: nil, from: nil, group_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::EmailBlock} for more details.
+      #
       #   Suppression record. Schema fields hidden by the view: `account_id`,
       #   `bounce_category`, `dsn_code`, `meta`.
       #
@@ -99,7 +106,7 @@ module Telnyx
       #
       #   @param domain_id [String, nil] `null` ⇒ account scope. Stored on the row; exposed here.
       #
-      #   @param expires_at [Time, nil]
+      #   @param expires_at [Time, nil] Optional expiration time. An active row stops matching
       #
       #   @param from [String, nil] `null` ⇒ not address-scope. (schema: from_address)
       #

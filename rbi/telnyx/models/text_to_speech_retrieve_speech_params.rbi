@@ -228,11 +228,6 @@ module Telnyx
             :minimax,
             Telnyx::TextToSpeechRetrieveSpeechParams::Provider::TaggedSymbol
           )
-        MURFAI =
-          T.let(
-            :murfai,
-            Telnyx::TextToSpeechRetrieveSpeechParams::Provider::TaggedSymbol
-          )
         RESEMBLE =
           T.let(
             :resemble,
@@ -246,6 +241,11 @@ module Telnyx
         HUMAIN =
           T.let(
             :humain,
+            Telnyx::TextToSpeechRetrieveSpeechParams::Provider::TaggedSymbol
+          )
+        SONIOX =
+          T.let(
+            :soniox,
             Telnyx::TextToSpeechRetrieveSpeechParams::Provider::TaggedSymbol
           )
 

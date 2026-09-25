@@ -36,9 +36,11 @@ module Telnyx
       def retrieve: (
         String id,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EmailMessageRetrieveResponse
+      ) -> Telnyx::EmailMessageDetailResponse
 
       def list: (
+        ?filter_metadata: String,
+        ?filter_tags: String,
         ?page_cursor: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
@@ -69,6 +71,12 @@ module Telnyx
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Internal::EmailCursorPagination[Telnyx::MessageEvent]
+
+      def update_schedule: (
+        String email_id,
+        scheduled_at: Time,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::EmailMessageDetailResponse
 
       def initialize: (client: Telnyx::Client) -> void
     end

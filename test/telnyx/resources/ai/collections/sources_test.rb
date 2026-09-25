@@ -15,7 +15,7 @@ class Telnyx::Test::Resources::AI::Collections::SourcesTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Collections::Source | nil
+        data: Telnyx::AI::Collections::CollectionsSource | nil
       }
     end
   end
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::AI::Collections::SourcesTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::Source]) | nil
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::CollectionsSource]) | nil
       }
     end
   end
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::AI::Collections::SourcesTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::Source]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::CollectionsSource]) | nil,
         meta: Telnyx::Models::AI::Collections::SourceReplaceResponse::Meta | nil
       }
     end

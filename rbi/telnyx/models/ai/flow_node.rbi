@@ -156,10 +156,14 @@ module Telnyx
         attr_writer :type
 
         # Per-node voice override (response form).
-        sig { returns(T.nilable(Telnyx::AI::VoiceSettings)) }
+        sig { returns(T.nilable(Telnyx::AI::InferenceEmbeddingVoiceSettings)) }
         attr_reader :voice_settings
 
-        sig { params(voice_settings: Telnyx::AI::VoiceSettings::OrHash).void }
+        sig do
+          params(
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash
+          ).void
+        end
         attr_writer :voice_settings
 
         # One step in a conversation flow, as returned by the API.
@@ -198,7 +202,7 @@ module Telnyx
             tools_mode: Telnyx::AI::FlowNode::ToolsMode::OrSymbol,
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             type: Telnyx::AI::FlowNode::Type::OrSymbol,
-            voice_settings: Telnyx::AI::VoiceSettings::OrHash
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -269,7 +273,7 @@ module Telnyx
               tools_mode: Telnyx::AI::FlowNode::ToolsMode::TaggedSymbol,
               transcription: Telnyx::AI::TranscriptionSettings,
               type: Telnyx::AI::FlowNode::Type::TaggedSymbol,
-              voice_settings: Telnyx::AI::VoiceSettings
+              voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings
             }
           )
         end

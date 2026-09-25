@@ -54,7 +54,9 @@ module Telnyx
         sig { params(created_count: Integer).void }
         attr_writer :created_count
 
-        # Only when `status == completed`.
+        # Rows that passed CSV parsing but failed suppression creation. This is the
+        # creation-failure subset of `skipped_count`; parser-rejected rows equal
+        # `skipped_count - error_count`. Only when `status == completed`.
         sig { returns(T.nilable(Integer)) }
         attr_reader :error_count
 
@@ -148,7 +150,9 @@ module Telnyx
           completed_at: nil,
           # Only when `status == completed`.
           created_count: nil,
-          # Only when `status == completed`.
+          # Rows that passed CSV parsing but failed suppression creation. This is the
+          # creation-failure subset of `skipped_count`; parser-rejected rows equal
+          # `skipped_count - error_count`. Only when `status == completed`.
           error_count: nil,
           # `{row_number: reason}`; only rendered when non-empty.
           errors: nil,

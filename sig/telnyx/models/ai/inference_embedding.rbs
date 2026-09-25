@@ -36,7 +36,7 @@ module Telnyx
           version_created_at: Time,
           version_id: String,
           version_name: String,
-          voice_settings: Telnyx::AI::VoiceSettings,
+          voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
           widget_settings: Telnyx::AI::WidgetSettings
         }
 
@@ -195,11 +195,11 @@ module Telnyx
 
         def version_name=: (String) -> String
 
-        attr_reader voice_settings: Telnyx::AI::VoiceSettings?
+        attr_reader voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings?
 
         def voice_settings=: (
-          Telnyx::AI::VoiceSettings
-        ) -> Telnyx::AI::VoiceSettings
+          Telnyx::AI::InferenceEmbeddingVoiceSettings
+        ) -> Telnyx::AI::InferenceEmbeddingVoiceSettings
 
         attr_reader widget_settings: Telnyx::AI::WidgetSettings?
 
@@ -241,7 +241,7 @@ module Telnyx
           ?version_created_at: Time,
           ?version_id: String,
           ?version_name: String,
-          ?voice_settings: Telnyx::AI::VoiceSettings,
+          ?voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
           ?widget_settings: Telnyx::AI::WidgetSettings
         ) -> void
 
@@ -279,7 +279,7 @@ module Telnyx
           version_created_at: Time,
           version_id: String,
           version_name: String,
-          voice_settings: Telnyx::AI::VoiceSettings,
+          voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
           widget_settings: Telnyx::AI::WidgetSettings
         }
       end

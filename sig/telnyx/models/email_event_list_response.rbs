@@ -2,95 +2,271 @@ module Telnyx
   module Models
     type email_event_list_response =
       {
-        id: String,
-        email_id: String,
-        occurred_at: Time,
-        record_type: Telnyx::Models::EmailEventListResponse::record_type,
-        type: Telnyx::Models::email_event_type,
-        email: Telnyx::Models::EmailEventListResponse::Email,
-        payload: ::Hash[Symbol, top]
+        data: ::Array[Telnyx::Models::EmailEventListResponse::Data],
+        meta: Telnyx::Models::EmailEventListResponse::Meta
       }
 
     class EmailEventListResponse < Telnyx::Internal::Type::BaseModel
-      attr_accessor id: String
+      attr_accessor data: ::Array[Telnyx::Models::EmailEventListResponse::Data]
 
-      attr_accessor email_id: String
-
-      attr_accessor occurred_at: Time
-
-      attr_accessor record_type: Telnyx::Models::EmailEventListResponse::record_type
-
-      attr_accessor type: Telnyx::Models::email_event_type
-
-      attr_reader email: Telnyx::Models::EmailEventListResponse::Email?
-
-      def email=: (
-        Telnyx::Models::EmailEventListResponse::Email
-      ) -> Telnyx::Models::EmailEventListResponse::Email
-
-      attr_reader payload: ::Hash[Symbol, top]?
-
-      def payload=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+      attr_accessor meta: Telnyx::Models::EmailEventListResponse::Meta
 
       def initialize: (
-        id: String,
-        email_id: String,
-        occurred_at: Time,
-        record_type: Telnyx::Models::EmailEventListResponse::record_type,
-        type: Telnyx::Models::email_event_type,
-        ?email: Telnyx::Models::EmailEventListResponse::Email,
-        ?payload: ::Hash[Symbol, top]
+        data: ::Array[Telnyx::Models::EmailEventListResponse::Data],
+        meta: Telnyx::Models::EmailEventListResponse::Meta
       ) -> void
 
       def to_hash: -> {
-        id: String,
-        email_id: String,
-        occurred_at: Time,
-        record_type: Telnyx::Models::EmailEventListResponse::record_type,
-        type: Telnyx::Models::email_event_type,
-        email: Telnyx::Models::EmailEventListResponse::Email,
-        payload: ::Hash[Symbol, top]
+        data: ::Array[Telnyx::Models::EmailEventListResponse::Data],
+        meta: Telnyx::Models::EmailEventListResponse::Meta
       }
 
-      type record_type = :email_event
-
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
-
-        EMAIL_EVENT: :email_event
-
-        def self?.values: -> ::Array[Telnyx::Models::EmailEventListResponse::record_type]
-      end
-
-      type email =
+      type data =
         {
-          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
-          from: Telnyx::EmailInboxes::EmailAddress,
-          subject: String,
-          to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+          id: String,
+          canonical_event_type: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::Models::EmailEventListResponse::Data::Payload,
+          recipient_id: String
         }
 
-      class Email < Telnyx::Internal::Type::BaseModel
-        attr_accessor cc: ::Array[Telnyx::EmailInboxes::EmailAddress]
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
 
-        attr_accessor from: Telnyx::EmailInboxes::EmailAddress
+        attr_accessor canonical_event_type: String
 
-        attr_accessor subject: String
+        attr_accessor event_type: String
 
-        attr_accessor to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::Models::EmailEventListResponse::Data::Payload
+
+        attr_reader recipient_id: String?
+
+        def recipient_id=: (String) -> String
 
         def initialize: (
-          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
-          from: Telnyx::EmailInboxes::EmailAddress,
-          subject: String,
-          to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+          id: String,
+          canonical_event_type: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::Models::EmailEventListResponse::Data::Payload,
+          ?recipient_id: String
         ) -> void
 
         def to_hash: -> {
-          cc: ::Array[Telnyx::EmailInboxes::EmailAddress],
-          from: Telnyx::EmailInboxes::EmailAddress,
-          subject: String,
-          to: ::Array[Telnyx::EmailInboxes::EmailAddress]
+          id: String,
+          canonical_event_type: String,
+          event_type: String,
+          occurred_at: Time,
+          payload: Telnyx::Models::EmailEventListResponse::Data::Payload,
+          recipient_id: String
+        }
+
+        type payload =
+          {
+            id: String,
+            occurred_at: Time,
+            status: Telnyx::Models::EmailEventListResponse::Data::Payload::status,
+            bcc: Telnyx::Models::EmailEventListResponse::Data::Payload::bcc,
+            cc: Telnyx::Models::EmailEventListResponse::Data::Payload::cc,
+            from: Telnyx::Models::EmailEventListResponse::Data::Payload::From,
+            recipient_id: String,
+            subject: String,
+            to: Telnyx::Models::EmailEventListResponse::Data::Payload::to
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor occurred_at: Time
+
+          attr_accessor status: Telnyx::Models::EmailEventListResponse::Data::Payload::status
+
+          attr_reader bcc: Telnyx::Models::EmailEventListResponse::Data::Payload::bcc?
+
+          def bcc=: (
+            Telnyx::Models::EmailEventListResponse::Data::Payload::bcc
+          ) -> Telnyx::Models::EmailEventListResponse::Data::Payload::bcc
+
+          attr_reader cc: Telnyx::Models::EmailEventListResponse::Data::Payload::cc?
+
+          def cc=: (
+            Telnyx::Models::EmailEventListResponse::Data::Payload::cc
+          ) -> Telnyx::Models::EmailEventListResponse::Data::Payload::cc
+
+          attr_reader from: Telnyx::Models::EmailEventListResponse::Data::Payload::From?
+
+          def from=: (
+            Telnyx::Models::EmailEventListResponse::Data::Payload::From
+          ) -> Telnyx::Models::EmailEventListResponse::Data::Payload::From
+
+          attr_reader recipient_id: String?
+
+          def recipient_id=: (String) -> String
+
+          attr_reader subject: String?
+
+          def subject=: (String) -> String
+
+          attr_reader to: Telnyx::Models::EmailEventListResponse::Data::Payload::to?
+
+          def to=: (
+            Telnyx::Models::EmailEventListResponse::Data::Payload::to
+          ) -> Telnyx::Models::EmailEventListResponse::Data::Payload::to
+
+          def initialize: (
+            id: String,
+            occurred_at: Time,
+            status: Telnyx::Models::EmailEventListResponse::Data::Payload::status,
+            ?bcc: Telnyx::Models::EmailEventListResponse::Data::Payload::bcc,
+            ?cc: Telnyx::Models::EmailEventListResponse::Data::Payload::cc,
+            ?from: Telnyx::Models::EmailEventListResponse::Data::Payload::From,
+            ?recipient_id: String,
+            ?subject: String,
+            ?to: Telnyx::Models::EmailEventListResponse::Data::Payload::to
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            occurred_at: Time,
+            status: Telnyx::Models::EmailEventListResponse::Data::Payload::status,
+            bcc: Telnyx::Models::EmailEventListResponse::Data::Payload::bcc,
+            cc: Telnyx::Models::EmailEventListResponse::Data::Payload::cc,
+            from: Telnyx::Models::EmailEventListResponse::Data::Payload::From,
+            recipient_id: String,
+            subject: String,
+            to: Telnyx::Models::EmailEventListResponse::Data::Payload::to
+          }
+
+          type status =
+            :queued
+            | :deferred
+            | :scheduled
+            | :cancelled
+            | :sandbox
+            | :sending
+            | :sent
+            | :failed
+            | :delivered
+            | :bounced
+            | :complained
+            | :suppressed
+            | :rejected
+            | :opened
+            | :clicked
+            | :unsubscribed
+            | :daily_limit_exceeded
+            | :scan_deferred
+            | :quarantined
+            | :quarantine_released
+            | :quarantine_release_dispatched
+            | :quarantine_rejected
+            | :quarantine_expired
+            | :gw_reject
+            | :injection_timeout
+            | :expired
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            QUEUED: :queued
+            DEFERRED: :deferred
+            SCHEDULED: :scheduled
+            CANCELLED: :cancelled
+            SANDBOX: :sandbox
+            SENDING: :sending
+            SENT: :sent
+            FAILED: :failed
+            DELIVERED: :delivered
+            BOUNCED: :bounced
+            COMPLAINED: :complained
+            SUPPRESSED: :suppressed
+            REJECTED: :rejected
+            OPENED: :opened
+            CLICKED: :clicked
+            UNSUBSCRIBED: :unsubscribed
+            DAILY_LIMIT_EXCEEDED: :daily_limit_exceeded
+            SCAN_DEFERRED: :scan_deferred
+            QUARANTINED: :quarantined
+            QUARANTINE_RELEASED: :quarantine_released
+            QUARANTINE_RELEASE_DISPATCHED: :quarantine_release_dispatched
+            QUARANTINE_REJECTED: :quarantine_rejected
+            QUARANTINE_EXPIRED: :quarantine_expired
+            GW_REJECT: :gw_reject
+            INJECTION_TIMEOUT: :injection_timeout
+            EXPIRED: :expired
+
+            def self?.values: -> ::Array[Telnyx::Models::EmailEventListResponse::Data::Payload::status]
+          end
+
+          type bcc = Telnyx::EmailWebhookRecipient | :redacted
+
+          module Bcc
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::EmailEventListResponse::Data::Payload::bcc]
+
+            REDACTED: :redacted
+          end
+
+          type cc = Telnyx::EmailWebhookRecipient | String
+
+          module Cc
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::EmailEventListResponse::Data::Payload::cc]
+          end
+
+          type from = { email: String, name: String? }
+
+          class From < Telnyx::Internal::Type::BaseModel
+            attr_accessor email: String
+
+            attr_accessor name: String?
+
+            def initialize: (email: String, name: String?) -> void
+
+            def to_hash: -> { email: String, name: String? }
+          end
+
+          type to = Telnyx::EmailWebhookRecipient | String
+
+          module To
+            extend Telnyx::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Telnyx::Models::EmailEventListResponse::Data::Payload::to]
+          end
+        end
+      end
+
+      type meta =
+        {
+          page_size: Integer,
+          time_range: Telnyx::TimeRange,
+          page_cursor: String
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_size: Integer
+
+        attr_accessor time_range: Telnyx::TimeRange
+
+        attr_reader page_cursor: String?
+
+        def page_cursor=: (String) -> String
+
+        def initialize: (
+          page_size: Integer,
+          time_range: Telnyx::TimeRange,
+          ?page_cursor: String
+        ) -> void
+
+        def to_hash: -> {
+          page_size: Integer,
+          time_range: Telnyx::TimeRange,
+          page_cursor: String
         }
       end
     end
