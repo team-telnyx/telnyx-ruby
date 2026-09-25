@@ -26,19 +26,19 @@ module Telnyx
           sig { params(end_time: String).void }
           attr_writer :end_time
 
-          # Filters calls by their end date (after). Expected format is YYYY-MM-DD
-          sig { returns(T.nilable(String)) }
-          attr_reader :end_time_gt
-
-          sig { params(end_time_gt: String).void }
-          attr_writer :end_time_gt
-
           # Filters calls by their end date (before). Expected format is YYYY-MM-DD
           sig { returns(T.nilable(String)) }
           attr_reader :end_time_lt
 
           sig { params(end_time_lt: String).void }
           attr_writer :end_time_lt
+
+          # Filters calls by their end date (after). Expected format is YYYY-MM-DD
+          sig { returns(T.nilable(String)) }
+          attr_reader :end_time_gt
+
+          sig { params(end_time_gt: String).void }
+          attr_writer :end_time_gt
 
           # Filters calls by the from number.
           sig { returns(T.nilable(String)) }
@@ -76,19 +76,19 @@ module Telnyx
           sig { params(start_time: String).void }
           attr_writer :start_time
 
-          # Filters calls by their start date (after). Expected format is YYYY-MM-DD
-          sig { returns(T.nilable(String)) }
-          attr_reader :start_time_gt
-
-          sig { params(start_time_gt: String).void }
-          attr_writer :start_time_gt
-
           # Filters calls by their start date (before). Expected format is YYYY-MM-DD
           sig { returns(T.nilable(String)) }
           attr_reader :start_time_lt
 
           sig { params(start_time_lt: String).void }
           attr_writer :start_time_lt
+
+          # Filters calls by their start date (after). Expected format is YYYY-MM-DD
+          sig { returns(T.nilable(String)) }
+          attr_reader :start_time_gt
+
+          sig { params(start_time_gt: String).void }
+          attr_writer :start_time_gt
 
           # Filters calls by status.
           sig do
@@ -119,15 +119,15 @@ module Telnyx
             params(
               account_sid: String,
               end_time: String,
-              end_time_gt: String,
               end_time_lt: String,
+              end_time_gt: String,
               from: String,
               page: Integer,
               page_size: Integer,
               page_token: String,
               start_time: String,
-              start_time_gt: String,
               start_time_lt: String,
+              start_time_gt: String,
               status:
                 Telnyx::Texml::Accounts::CallRetrieveCallsParams::Status::OrSymbol,
               to: String,
@@ -138,10 +138,10 @@ module Telnyx
             account_sid:,
             # Filters calls by their end date. Expected format is YYYY-MM-DD
             end_time: nil,
-            # Filters calls by their end date (after). Expected format is YYYY-MM-DD
-            end_time_gt: nil,
             # Filters calls by their end date (before). Expected format is YYYY-MM-DD
             end_time_lt: nil,
+            # Filters calls by their end date (after). Expected format is YYYY-MM-DD
+            end_time_gt: nil,
             # Filters calls by the from number.
             from: nil,
             # The number of the page to be displayed, zero-indexed, should be used in
@@ -153,10 +153,10 @@ module Telnyx
             page_token: nil,
             # Filters calls by their start date. Expected format is YYYY-MM-DD.
             start_time: nil,
-            # Filters calls by their start date (after). Expected format is YYYY-MM-DD
-            start_time_gt: nil,
             # Filters calls by their start date (before). Expected format is YYYY-MM-DD
             start_time_lt: nil,
+            # Filters calls by their start date (after). Expected format is YYYY-MM-DD
+            start_time_gt: nil,
             # Filters calls by status.
             status: nil,
             # Filters calls by the to number.
@@ -170,15 +170,15 @@ module Telnyx
               {
                 account_sid: String,
                 end_time: String,
-                end_time_gt: String,
                 end_time_lt: String,
+                end_time_gt: String,
                 from: String,
                 page: Integer,
                 page_size: Integer,
                 page_token: String,
                 start_time: String,
-                start_time_gt: String,
                 start_time_lt: String,
+                start_time_gt: String,
                 status:
                   Telnyx::Texml::Accounts::CallRetrieveCallsParams::Status::OrSymbol,
                 to: String,

@@ -20,17 +20,17 @@ module Telnyx
           #   @return [String, nil]
           optional :end_time, String
 
-          # @!attribute end_time_gt
-          #   Filters calls by their end date (after). Expected format is YYYY-MM-DD
-          #
-          #   @return [String, nil]
-          optional :end_time_gt, String
-
           # @!attribute end_time_lt
           #   Filters calls by their end date (before). Expected format is YYYY-MM-DD
           #
           #   @return [String, nil]
           optional :end_time_lt, String
+
+          # @!attribute end_time_gt
+          #   Filters calls by their end date (after). Expected format is YYYY-MM-DD
+          #
+          #   @return [String, nil]
+          optional :end_time_gt, String
 
           # @!attribute from
           #   Filters calls by the from number.
@@ -63,17 +63,17 @@ module Telnyx
           #   @return [String, nil]
           optional :start_time, String
 
-          # @!attribute start_time_gt
-          #   Filters calls by their start date (after). Expected format is YYYY-MM-DD
-          #
-          #   @return [String, nil]
-          optional :start_time_gt, String
-
           # @!attribute start_time_lt
           #   Filters calls by their start date (before). Expected format is YYYY-MM-DD
           #
           #   @return [String, nil]
           optional :start_time_lt, String
+
+          # @!attribute start_time_gt
+          #   Filters calls by their start date (after). Expected format is YYYY-MM-DD
+          #
+          #   @return [String, nil]
+          optional :start_time_gt, String
 
           # @!attribute status
           #   Filters calls by status.
@@ -87,7 +87,7 @@ module Telnyx
           #   @return [String, nil]
           optional :to, String
 
-          # @!method initialize(account_sid:, end_time: nil, end_time_gt: nil, end_time_lt: nil, from: nil, page: nil, page_size: nil, page_token: nil, start_time: nil, start_time_gt: nil, start_time_lt: nil, status: nil, to: nil, request_options: {})
+          # @!method initialize(account_sid:, end_time: nil, end_time_lt: nil, end_time_gt: nil, from: nil, page: nil, page_size: nil, page_token: nil, start_time: nil, start_time_lt: nil, start_time_gt: nil, status: nil, to: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams} for more details.
           #
@@ -95,9 +95,9 @@ module Telnyx
           #
           #   @param end_time [String] Filters calls by their end date. Expected format is YYYY-MM-DD
           #
-          #   @param end_time_gt [String] Filters calls by their end date (after). Expected format is YYYY-MM-DD
-          #
           #   @param end_time_lt [String] Filters calls by their end date (before). Expected format is YYYY-MM-DD
+          #
+          #   @param end_time_gt [String] Filters calls by their end date (after). Expected format is YYYY-MM-DD
           #
           #   @param from [String] Filters calls by the from number.
           #
@@ -109,9 +109,9 @@ module Telnyx
           #
           #   @param start_time [String] Filters calls by their start date. Expected format is YYYY-MM-DD.
           #
-          #   @param start_time_gt [String] Filters calls by their start date (after). Expected format is YYYY-MM-DD
-          #
           #   @param start_time_lt [String] Filters calls by their start date (before). Expected format is YYYY-MM-DD
+          #
+          #   @param start_time_gt [String] Filters calls by their start date (after). Expected format is YYYY-MM-DD
           #
           #   @param status [Symbol, Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams::Status] Filters calls by status.
           #

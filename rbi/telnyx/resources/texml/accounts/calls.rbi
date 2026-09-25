@@ -118,15 +118,15 @@ module Telnyx
             params(
               account_sid: String,
               end_time: String,
-              end_time_gt: String,
               end_time_lt: String,
+              end_time_gt: String,
               from: String,
               page: Integer,
               page_size: Integer,
               page_token: String,
               start_time: String,
-              start_time_gt: String,
               start_time_lt: String,
+              start_time_gt: String,
               status:
                 Telnyx::Texml::Accounts::CallRetrieveCallsParams::Status::OrSymbol,
               to: String,
@@ -140,10 +140,10 @@ module Telnyx
             account_sid,
             # Filters calls by their end date. Expected format is YYYY-MM-DD
             end_time: nil,
-            # Filters calls by their end date (after). Expected format is YYYY-MM-DD
-            end_time_gt: nil,
             # Filters calls by their end date (before). Expected format is YYYY-MM-DD
             end_time_lt: nil,
+            # Filters calls by their end date (after). Expected format is YYYY-MM-DD
+            end_time_gt: nil,
             # Filters calls by the from number.
             from: nil,
             # The number of the page to be displayed, zero-indexed, should be used in
@@ -155,10 +155,10 @@ module Telnyx
             page_token: nil,
             # Filters calls by their start date. Expected format is YYYY-MM-DD.
             start_time: nil,
-            # Filters calls by their start date (after). Expected format is YYYY-MM-DD
-            start_time_gt: nil,
             # Filters calls by their start date (before). Expected format is YYYY-MM-DD
             start_time_lt: nil,
+            # Filters calls by their start date (after). Expected format is YYYY-MM-DD
+            start_time_gt: nil,
             # Filters calls by status.
             status: nil,
             # Filters calls by the to number.

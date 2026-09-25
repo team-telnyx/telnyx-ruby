@@ -130,15 +130,15 @@ module Telnyx
           # Returns multiple call resouces for an account. This endpoint is eventually
           # consistent.
           #
-          # @overload retrieve_calls(account_sid, end_time: nil, end_time_gt: nil, end_time_lt: nil, from: nil, page: nil, page_size: nil, page_token: nil, start_time: nil, start_time_gt: nil, start_time_lt: nil, status: nil, to: nil, request_options: {})
+          # @overload retrieve_calls(account_sid, end_time: nil, end_time_lt: nil, end_time_gt: nil, from: nil, page: nil, page_size: nil, page_token: nil, start_time: nil, start_time_lt: nil, start_time_gt: nil, status: nil, to: nil, request_options: {})
           #
           # @param account_sid [String] The id of the account the resource belongs to.
           #
           # @param end_time [String] Filters calls by their end date. Expected format is YYYY-MM-DD
           #
-          # @param end_time_gt [String] Filters calls by their end date (after). Expected format is YYYY-MM-DD
-          #
           # @param end_time_lt [String] Filters calls by their end date (before). Expected format is YYYY-MM-DD
+          #
+          # @param end_time_gt [String] Filters calls by their end date (after). Expected format is YYYY-MM-DD
           #
           # @param from [String] Filters calls by the from number.
           #
@@ -150,9 +150,9 @@ module Telnyx
           #
           # @param start_time [String] Filters calls by their start date. Expected format is YYYY-MM-DD.
           #
-          # @param start_time_gt [String] Filters calls by their start date (after). Expected format is YYYY-MM-DD
-          #
           # @param start_time_lt [String] Filters calls by their start date (before). Expected format is YYYY-MM-DD
+          #
+          # @param start_time_gt [String] Filters calls by their start date (after). Expected format is YYYY-MM-DD
           #
           # @param status [Symbol, Telnyx::Models::Texml::Accounts::CallRetrieveCallsParams::Status] Filters calls by status.
           #
@@ -171,15 +171,15 @@ module Telnyx
               path: ["texml/Accounts/%1$s/Calls", account_sid],
               query: query.transform_keys(
                 end_time: "EndTime",
-                end_time_gt: "EndTime_gt",
-                end_time_lt: "EndTime_lt",
+                end_time_lt: "EndTime<",
+                end_time_gt: "EndTime>",
                 from: "From",
                 page: "Page",
                 page_size: "PageSize",
                 page_token: "PageToken",
                 start_time: "StartTime",
-                start_time_gt: "StartTime_gt",
-                start_time_lt: "StartTime_lt",
+                start_time_lt: "StartTime<",
+                start_time_gt: "StartTime>",
                 status: "Status",
                 to: "To"
               ),
