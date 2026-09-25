@@ -105,7 +105,7 @@ module Telnyx
           #
           # @param version_name [String] Body param: Human-readable name for the assistant version.
           #
-          # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
+          # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings] Body param
           #
           # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
           #

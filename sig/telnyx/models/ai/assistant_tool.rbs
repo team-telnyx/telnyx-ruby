@@ -362,10 +362,22 @@ module Telnyx
             module Targets
               extend Telnyx::Internal::Type::Union
 
-              type targets_list = { to: String, message: String, name: String }
+              type targets_list =
+                {
+                  to: String,
+                  extension: String,
+                  message: String,
+                  name: String,
+                  sip_auth_password: String,
+                  sip_auth_username: String
+                }
 
               class TargetsList < Telnyx::Internal::Type::BaseModel
                 attr_accessor to: String
+
+                attr_reader extension: String?
+
+                def extension=: (String) -> String
 
                 attr_reader message: String?
 
@@ -375,13 +387,31 @@ module Telnyx
 
                 def name=: (String) -> String
 
+                attr_reader sip_auth_password: String?
+
+                def sip_auth_password=: (String) -> String
+
+                attr_reader sip_auth_username: String?
+
+                def sip_auth_username=: (String) -> String
+
                 def initialize: (
                   to: String,
+                  ?extension: String,
                   ?message: String,
-                  ?name: String
+                  ?name: String,
+                  ?sip_auth_password: String,
+                  ?sip_auth_username: String
                 ) -> void
 
-                def to_hash: -> { to: String, message: String, name: String }
+                def to_hash: -> {
+                  to: String,
+                  extension: String,
+                  message: String,
+                  name: String,
+                  sip_auth_password: String,
+                  sip_auth_username: String
+                }
               end
 
               def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets]

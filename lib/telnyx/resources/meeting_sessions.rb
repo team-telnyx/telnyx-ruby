@@ -26,11 +26,11 @@ module Telnyx
       # before bot creation; neither the source URL nor image bytes are persisted,
       # returned, or logged. Treat signed URLs as credentials.
       #
-      # @overload create(meeting_url:, assistant: nil, avatar: nil, barge_in: nil, bot_name: nil, camera_image: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
+      # @overload create(meeting_url:, assistant: nil, avatar: nil, barge_in: nil, bot_name: nil, camera_image: nil, chat_on_enter: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
       #
       # @param meeting_url [String] The meeting URL the bot should join.
       #
-      # @param assistant [Telnyx::Models::MeetingSessionCreateParams::Assistant] Request options for attaching a voice assistant to the session. Routing fields (
+      # @param assistant [Telnyx::Models::MeetingSessionCreateParams::Assistant] Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the Meet
       #
       # @param avatar [Telnyx::Models::MeetingSessionCreateParams::Avatar] Request options for attaching a bring-your-own-key avatar to the session.
       #
@@ -40,13 +40,16 @@ module Telnyx
       #
       # @param camera_image [Telnyx::Models::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageBase64Source, Telnyx::Models::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageURLSource] Write-only static camera-tile image for this session, not a native account or pa
       #
+      # @param chat_on_enter [String] A message the bot posts to the meeting's chat as soon as it becomes active — typ
+      #
       # @param idempotency_key [String] Client-supplied idempotency key to safely retry creation requests without duplic
       #
       # @param join_at [Time] ISO-8601 timestamp in the future at which the bot should join. If omitted, the b
       #
       # @param metadata [Hash{Symbol=>Object}] Arbitrary key-value metadata attached to the session. The serialized JSON repres
       #
-      # @param speak_on_enter [String] Text the bot speaks when it enters the meeting.
+      # @param speak_on_enter [String] Text the bot speaks when it enters the meeting. \*\*Not spoken when an
+      # `assistant`
       #
       # @param summarize_on_end [Boolean] If true, generate a summary artifact when the session ends.
       #
@@ -165,8 +168,6 @@ module Telnyx
         )
       end
 
-      # **Not yet available in production** — this route is not currently routed on
-      # api.telnyx.com and returns a generic 404; it is documented ahead of rollout.
       # Irreversibly requests deletion of provider-hosted aggregate recording media
       # under the provider contract. The operation retains the Telnyx-local Meeting
       # session, transcript segments, events, artifacts, and usage records. It is

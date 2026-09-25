@@ -1,0 +1,65 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          module Profiles
+            type memory_retrieve_response =
+              {
+                data: Telnyx::Models::AI::Memory::Namespaces::Profiles::MemoryRetrieveResponse::Data
+              }
+
+            class MemoryRetrieveResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor data: Telnyx::Models::AI::Memory::Namespaces::Profiles::MemoryRetrieveResponse::Data
+
+              def initialize: (
+                data: Telnyx::Models::AI::Memory::Namespaces::Profiles::MemoryRetrieveResponse::Data
+              ) -> void
+
+              def to_hash: -> {
+                data: Telnyx::Models::AI::Memory::Namespaces::Profiles::MemoryRetrieveResponse::Data
+              }
+
+              type data =
+                {
+                  id: String,
+                  derived_from: ::Array[String]?,
+                  source_id: String?,
+                  text: String,
+                  recorded_at: String?
+                }
+
+              class Data < Telnyx::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor derived_from: ::Array[String]?
+
+                attr_accessor source_id: String?
+
+                attr_accessor text: String
+
+                attr_accessor recorded_at: String?
+
+                def initialize: (
+                  id: String,
+                  derived_from: ::Array[String]?,
+                  source_id: String?,
+                  text: String,
+                  ?recorded_at: String?
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  derived_from: ::Array[String]?,
+                  source_id: String?,
+                  text: String,
+                  recorded_at: String?
+                }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

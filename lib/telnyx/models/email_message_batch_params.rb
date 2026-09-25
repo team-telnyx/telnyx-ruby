@@ -16,8 +16,13 @@ module Telnyx
       required :messages, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::EmailMessageBatchParams::Message] }
 
       # @!attribute sandbox_mode
-      #   Applies sandbox mode to all messages in the batch. Overrides any per-message
-      #   sandbox_mode in the messages array.
+      #   Applies sandbox mode to all messages in the batch and overrides any per-message
+      #   `sandbox_mode` value — each message's effective `sandbox_mode` is exactly this
+      #   envelope value. Reserved recipients at `test.telnyx.com` produce the
+      #   deterministic event chains documented on CreateEmailRequest.sandbox_mode; no
+      #   batch item is injected into the MTA or outbound Kafka path. Sandbox batch items
+      #   are non-billable, consume no daily-send-limit quota, and feed no
+      #   delivery-reputation signals.
       #
       #   @return [Boolean, nil]
       optional :sandbox_mode, Telnyx::Internal::Type::Boolean
@@ -33,7 +38,7 @@ module Telnyx
       #
       #   @param messages [Array<Telnyx::Models::EmailMessageBatchParams::Message>] Array of email messages to send. Up to 1,000 messages per batch request. Each me
       #
-      #   @param sandbox_mode [Boolean] Applies sandbox mode to all messages in the batch. Overrides any per-message san
+      #   @param sandbox_mode [Boolean] Applies sandbox mode to all messages in the batch and overrides any per-message
       #
       #   @param idempotency_key [String]
       #
@@ -105,7 +110,9 @@ module Telnyx
         optional :inline_css, Telnyx::Internal::Type::Boolean
 
         # @!attribute metadata
-        #   Custom metadata. Write-only; not returned in responses.
+        #   Custom metadata key/value pairs. Stored on the message, returned on message
+        #   responses, and propagated to Email Detail Records. Usable in `filter[metadata]`
+        #   when listing messages.
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
@@ -118,15 +125,21 @@ module Telnyx
         optional :reply_to, union: -> { Telnyx::EmailAddressInput }
 
         # @!attribute sandbox_mode
+        #   Per-message sandbox flag. The batch-level `sandbox_mode` envelope value is
+        #   authoritative: it overwrites every message's `sandbox_mode` before processing,
+        #   including the `false` default when the envelope omits the field. A per-item
+        #   `sandbox_mode: true` inside a non-sandbox batch is therefore a real send. Set
+        #   the envelope field to run any batch item in sandbox mode.
         #
         #   @return [Boolean, nil]
         optional :sandbox_mode, Telnyx::Internal::Type::Boolean
 
         # @!attribute scheduled_at
-        #   Future ISO 8601 time to schedule sending. Invalid or past timestamps are
-        #   silently ignored and the email is sent immediately. The legacy alias `send_at`
-        #   is still accepted for backward compatibility; when both are provided,
-        #   `scheduled_at` wins.
+        #   Future ISO 8601 delivery time. Invalid or non-future timestamps are rejected.
+        #   Single sends return HTTP 422; in batch sends the invalid item is reported in the
+        #   207 per-item errors while other items continue. `send_at` remains a deprecated
+        #   request alias. A non-null `scheduled_at` takes precedence over `send_at`; when
+        #   `scheduled_at` is omitted or null, `send_at` is used.
         #
         #   @return [Time, nil]
         optional :scheduled_at, Time, nil?: true
@@ -148,8 +161,9 @@ module Telnyx
         optional :subject, String
 
         # @!attribute tags
-        #   Tags for categorization and reporting. Stored on the message and propagated to
-        #   Email Detail Records. Not returned in API responses.
+        #   Tags for categorization and filtering. Stored on the message, returned on
+        #   message responses, and propagated to Email Detail Records. Usable in
+        #   `filter[tags]` when listing messages.
         #
         #   @return [Array<String>, nil]
         optional :tags, Telnyx::Internal::Type::ArrayOf[String]
@@ -162,7 +176,10 @@ module Telnyx
         # @!attribute template_variables
         #   Variables for Liquid template rendering. Non-object values may cause a 422
         #   validation error on message creation, but are silently treated as an empty
-        #   object for template rendering.
+        #   object for template rendering. When the template enables `strict_variables`, a
+        #   missing required variable fails the request with 422 (single send) or a per-item
+        #   `unprocessable_entity` error (batch) naming the variable; no message is
+        #   persisted for the failed item.
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :template_variables, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
@@ -215,19 +232,19 @@ module Telnyx
         #
         #   @param inline_css [Boolean]
         #
-        #   @param metadata [Hash{Symbol=>Object}] Custom metadata. Write-only; not returned in responses.
+        #   @param metadata [Hash{Symbol=>Object}] Custom metadata key/value pairs. Stored on the message, returned on message resp
         #
         #   @param reply_to [String, Telnyx::Models::EmailInboxes::EmailAddress] Reply-to address. If provided as an object with a name, only the email is stored
         #
-        #   @param sandbox_mode [Boolean]
+        #   @param sandbox_mode [Boolean] Per-message sandbox flag. The batch-level `sandbox_mode` envelope value is autho
         #
-        #   @param scheduled_at [Time, nil] Future ISO 8601 time to schedule sending. Invalid or past timestamps
+        #   @param scheduled_at [Time, nil] Future ISO 8601 delivery time. Invalid or non-future timestamps are rejected. Si
         #
         #   @param send_at [Time] Deprecated alias for `scheduled_at`.
         #
         #   @param subject [String] Required unless `template_id` is supplied. When using a template, the template's
         #
-        #   @param tags [Array<String>] Tags for categorization and reporting. Stored on the message and propagated to E
+        #   @param tags [Array<String>] Tags for categorization and filtering. Stored on the message, returned on messag
         #
         #   @param template_id [String]
         #

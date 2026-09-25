@@ -15,10 +15,10 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :meeting_url
 
-      # Request options for attaching a voice assistant to the session. Routing fields
-      # (`call_control_connection_id`, `from`, and `loopback_sip_uri`) are used only to
-      # establish the assistant call leg and are omitted from response objects.
-      # `audio_gate` is returned with `id` in the assistant response object.
+      # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
+      # Meeting service connects it to the meeting directly. The Call Control
+      # connection, caller ID and loopback SIP URI previously required here have been
+      # removed and are now rejected as unknown fields.
       sig { returns(T.nilable(Telnyx::MeetingSessionCreateParams::Assistant)) }
       attr_reader :assistant
 
@@ -83,6 +83,17 @@ module Telnyx
       end
       attr_writer :camera_image
 
+      # A message the bot posts to the meeting's chat as soon as it becomes active —
+      # typically a recording disclosure. Delivered at most once. Independent of
+      # `speak_on_enter`: both may be set, and the chat message posts first because it
+      # does not wait for text-to-speech or avatar startup. Rejected with 422
+      # `unsupported_capability` on platforms without meeting chat.
+      sig { returns(T.nilable(String)) }
+      attr_reader :chat_on_enter
+
+      sig { params(chat_on_enter: String).void }
+      attr_writer :chat_on_enter
+
       # Client-supplied idempotency key to safely retry creation requests without
       # duplicating sessions. Lookup is scoped to the authenticated account and compares
       # the key only; the request payload is not fingerprinted or compared.
@@ -108,7 +119,10 @@ module Telnyx
       sig { params(metadata: T::Hash[Symbol, T.anything]).void }
       attr_writer :metadata
 
-      # Text the bot speaks when it enters the meeting.
+      # Text the bot speaks when it enters the meeting. **Not spoken when an `assistant`
+      # is attached**: the value is accepted and echoed back on the session, but the
+      # assistant owns the voice and the line is never delivered, with no event
+      # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
       sig { returns(T.nilable(String)) }
       attr_reader :speak_on_enter
 
@@ -152,6 +166,7 @@ module Telnyx
               Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageBase64Source::OrHash,
               Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageURLSource::OrHash
             ),
+          chat_on_enter: String,
           idempotency_key: String,
           join_at: Time,
           metadata: T::Hash[Symbol, T.anything],
@@ -165,10 +180,10 @@ module Telnyx
       def self.new(
         # The meeting URL the bot should join.
         meeting_url:,
-        # Request options for attaching a voice assistant to the session. Routing fields
-        # (`call_control_connection_id`, `from`, and `loopback_sip_uri`) are used only to
-        # establish the assistant call leg and are omitted from response objects.
-        # `audio_gate` is returned with `id` in the assistant response object.
+        # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
+        # Meeting service connects it to the meeting directly. The Call Control
+        # connection, caller ID and loopback SIP URI previously required here have been
+        # removed and are now rejected as unknown fields.
         assistant: nil,
         # Request options for attaching a bring-your-own-key avatar to the session.
         avatar: nil,
@@ -185,6 +200,12 @@ module Telnyx
         # recordings. An effective Avatar or Assistant webpage output takes precedence, so
         # this input is ignored and a URL source is not fetched.
         camera_image: nil,
+        # A message the bot posts to the meeting's chat as soon as it becomes active —
+        # typically a recording disclosure. Delivered at most once. Independent of
+        # `speak_on_enter`: both may be set, and the chat message posts first because it
+        # does not wait for text-to-speech or avatar startup. Rejected with 422
+        # `unsupported_capability` on platforms without meeting chat.
+        chat_on_enter: nil,
         # Client-supplied idempotency key to safely retry creation requests without
         # duplicating sessions. Lookup is scoped to the authenticated account and compares
         # the key only; the request payload is not fingerprinted or compared.
@@ -195,7 +216,10 @@ module Telnyx
         # Arbitrary key-value metadata attached to the session. The serialized JSON
         # representation must not exceed 16384 characters at runtime.
         metadata: nil,
-        # Text the bot speaks when it enters the meeting.
+        # Text the bot speaks when it enters the meeting. **Not spoken when an `assistant`
+        # is attached**: the value is accepted and echoed back on the session, but the
+        # assistant owns the voice and the line is never delivered, with no event
+        # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
         speak_on_enter: nil,
         # If true, generate a summary artifact when the session ends.
         summarize_on_end: nil,
@@ -224,6 +248,7 @@ module Telnyx
                 Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageBase64Source,
                 Telnyx::MeetingSessionCreateParams::CameraImage::MeetingSessionCameraImageURLSource
               ),
+            chat_on_enter: String,
             idempotency_key: String,
             join_at: Time,
             metadata: T::Hash[Symbol, T.anything],
@@ -251,19 +276,12 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :id
 
-        # Call control connection used to bridge the assistant into the meeting audio.
-        sig { returns(String) }
-        attr_accessor :call_control_connection_id
-
-        # E.164 calling number used as the originating party for the assistant call leg.
-        sig { returns(String) }
-        attr_accessor :from
-
-        # SIP URI to which the assistant media loopback is established.
-        sig { returns(String) }
-        attr_accessor :loopback_sip_uri
-
-        # Audio gating strategy for the assistant call leg.
+        # Audio gating strategy for the assistant call leg. `half_duplex` (default) sends
+        # the assistant a single mixed meeting stream and mutes it while the assistant
+        # speaks, so the assistant cannot hear itself and cannot be interrupted.
+        # `full_duplex` sends a separate stream per participant, which allows barge-in and
+        # removes self-hearing, and COSTS SIGNIFICANTLY MORE: per-participant streams
+        # multiply the per-minute cost by the number of participants.
         sig do
           returns(
             T.nilable(
@@ -281,31 +299,73 @@ module Telnyx
         end
         attr_writer :audio_gate
 
-        # Request options for attaching a voice assistant to the session. Routing fields
-        # (`call_control_connection_id`, `from`, and `loopback_sip_uri`) are used only to
-        # establish the assistant call leg and are omitted from response objects.
-        # `audio_gate` is returned with `id` in the assistant response object.
+        # Per-conversation values for the
+        # [dynamic variables](/docs/inference/ai-assistants/dynamic-variables) used in the
+        # Assistant's instructions, greeting, or tools. Delivered before the Assistant's
+        # first utterance, so they resolve for the opening line as well as the rest of the
+        # conversation. At most 63 entries; keys 1-128 characters; values must be strings.
+        # The map is budgeted in aggregate at 1,047,552 bytes (1023 KiB) rather than
+        # capped per value. `streaming_audio`, `ai_assistant_streaming_audio` and
+        # `meeting_session_id` are reserved and rejected with `400 invalid_request` --
+        # they toggle provider infrastructure or are set by the service rather than fill a
+        # prompt template.
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_reader :dynamic_variables
+
+        sig { params(dynamic_variables: T::Hash[Symbol, String]).void }
+        attr_writer :dynamic_variables
+
+        # Leave the meeting when the Assistant's conversation reaches a terminal state --
+        # `ended` **or** `failed`. Off by default, which leaves the bot in the meeting
+        # after the Assistant stops. Fires once: a second terminal transition does not
+        # leave twice, and a leave the provider refuses is logged without changing how the
+        # session settles.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :leave_on_end
+
+        sig { params(leave_on_end: T::Boolean).void }
+        attr_writer :leave_on_end
+
+        # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
+        # Meeting service connects it to the meeting directly. The Call Control
+        # connection, caller ID and loopback SIP URI previously required here have been
+        # removed and are now rejected as unknown fields.
         sig do
           params(
             id: String,
-            call_control_connection_id: String,
-            from: String,
-            loopback_sip_uri: String,
             audio_gate:
-              Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::OrSymbol
+              Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::OrSymbol,
+            dynamic_variables: T::Hash[Symbol, String],
+            leave_on_end: T::Boolean
           ).returns(T.attached_class)
         end
         def self.new(
           # Identifier of the assistant to attach.
           id:,
-          # Call control connection used to bridge the assistant into the meeting audio.
-          call_control_connection_id:,
-          # E.164 calling number used as the originating party for the assistant call leg.
-          from:,
-          # SIP URI to which the assistant media loopback is established.
-          loopback_sip_uri:,
-          # Audio gating strategy for the assistant call leg.
-          audio_gate: nil
+          # Audio gating strategy for the assistant call leg. `half_duplex` (default) sends
+          # the assistant a single mixed meeting stream and mutes it while the assistant
+          # speaks, so the assistant cannot hear itself and cannot be interrupted.
+          # `full_duplex` sends a separate stream per participant, which allows barge-in and
+          # removes self-hearing, and COSTS SIGNIFICANTLY MORE: per-participant streams
+          # multiply the per-minute cost by the number of participants.
+          audio_gate: nil,
+          # Per-conversation values for the
+          # [dynamic variables](/docs/inference/ai-assistants/dynamic-variables) used in the
+          # Assistant's instructions, greeting, or tools. Delivered before the Assistant's
+          # first utterance, so they resolve for the opening line as well as the rest of the
+          # conversation. At most 63 entries; keys 1-128 characters; values must be strings.
+          # The map is budgeted in aggregate at 1,047,552 bytes (1023 KiB) rather than
+          # capped per value. `streaming_audio`, `ai_assistant_streaming_audio` and
+          # `meeting_session_id` are reserved and rejected with `400 invalid_request` --
+          # they toggle provider infrastructure or are set by the service rather than fill a
+          # prompt template.
+          dynamic_variables: nil,
+          # Leave the meeting when the Assistant's conversation reaches a terminal state --
+          # `ended` **or** `failed`. Off by default, which leaves the bot in the meeting
+          # after the Assistant stops. Fires once: a second terminal transition does not
+          # leave twice, and a leave the provider refuses is logged without changing how the
+          # session settles.
+          leave_on_end: nil
         )
         end
 
@@ -313,18 +373,22 @@ module Telnyx
           override.returns(
             {
               id: String,
-              call_control_connection_id: String,
-              from: String,
-              loopback_sip_uri: String,
               audio_gate:
-                Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::OrSymbol
+                Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::OrSymbol,
+              dynamic_variables: T::Hash[Symbol, String],
+              leave_on_end: T::Boolean
             }
           )
         end
         def to_hash
         end
 
-        # Audio gating strategy for the assistant call leg.
+        # Audio gating strategy for the assistant call leg. `half_duplex` (default) sends
+        # the assistant a single mixed meeting stream and mutes it while the assistant
+        # speaks, so the assistant cannot hear itself and cannot be interrupted.
+        # `full_duplex` sends a separate stream per participant, which allows barge-in and
+        # removes self-hearing, and COSTS SIGNIFICANTLY MORE: per-participant streams
+        # multiply the per-minute cost by the number of participants.
         module AudioGate
           extend Telnyx::Internal::Type::Enum
 
@@ -337,14 +401,14 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          NONE =
-            T.let(
-              :none,
-              Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::TaggedSymbol
-            )
           HALF_DUPLEX =
             T.let(
               :half_duplex,
+              Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::TaggedSymbol
+            )
+          FULL_DUPLEX =
+            T.let(
+              :full_duplex,
               Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::TaggedSymbol
             )
 

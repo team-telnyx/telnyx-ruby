@@ -538,6 +538,47 @@ Methods:
 
 - <code title="post /ai/typesafe/v1/systemone">client.ai.typesafe.v1.<a href="./lib/telnyx/resources/ai/typesafe/v1.rb">systemone</a>(\*\*params)</code>
 
+## Memory
+
+### Namespaces
+
+Methods:
+
+- <code title="get /ai/memory/namespaces/{namespace}/operations/{operation_id}">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">retrieve</a>(\*\*params)</code>
+
+#### Profiles
+
+Methods:
+
+- <code title="get /ai/memory/namespaces/{namespace}/profiles">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">list</a>(\*\*params)</code>
+- <code title="delete /ai/memory/namespaces/{namespace}/profiles/{profile_id}">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">delete</a>(\*\*params)</code>
+- <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/ingest">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">ingest</a>(\*\*params)</code>
+- <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/recall">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">recall</a>(\*\*params)</code>
+- <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/remember">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">remember</a>(\*\*params)</code>
+- <code title="get /ai/memory/namespaces/{namespace}/profiles/{profile_id}/summary">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">retrieve_summary</a>(\*\*params)</code>
+
+##### Memories
+
+Methods:
+
+- <code title="get /ai/memory/namespaces/{namespace}/profiles/{profile_id}/memories/{memory_id}">client.ai.memory.namespaces.profiles.memories.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles/memories.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /ai/memory/namespaces/{namespace}/profiles/{profile_id}/memories">client.ai.memory.namespaces.profiles.memories.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles/memories.rb">list</a>(\*\*params)</code>
+
+##### Sources
+
+Methods:
+
+- <code title="get /ai/memory/namespaces/{namespace}/profiles/{profile_id}/sources/{source_id}">client.ai.memory.namespaces.profiles.sources.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles/sources.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /ai/memory/namespaces/{namespace}/profiles/{profile_id}/sources">client.ai.memory.namespaces.profiles.sources.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles/sources.rb">list</a>(\*\*params)</code>
+- <code title="delete /ai/memory/namespaces/{namespace}/profiles/{profile_id}/sources/{source_id}">client.ai.memory.namespaces.profiles.sources.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles/sources.rb">delete</a>(\*\*params)</code>
+
+#### Settings
+
+Methods:
+
+- <code title="get /ai/memory/namespaces/{namespace}/settings">client.ai.memory.namespaces.settings.<a href="./lib/telnyx/resources/ai/memory/namespaces/settings.rb">list</a>(\*\*params)</code>
+- <code title="patch /ai/memory/namespaces/{namespace}/settings">client.ai.memory.namespaces.settings.<a href="./lib/telnyx/resources/ai/memory/namespaces/settings.rb">patch_all</a>(\*\*params)</code>
+
 # AuditEvents
 
 Methods:
@@ -2918,6 +2959,7 @@ Methods:
 - <code title="delete /email_domains/{id}">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">delete</a>(\*\*params)</code>
 - <code title="get /email_domains/{domain_id}/dns_records">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">retrieve_dns_records</a>(\*\*params)</code>
 - <code title="get /email_domains/{id}/health">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">retrieve_health</a>(\*\*params)</code>
+- <code title="post /email_domains/{domain_id}/rotate_dkim">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">rotate_dkim</a>(\*\*params)</code>
 - <code title="post /email_domains/{domain_id}/verify">client.email_domains.<a href="./lib/telnyx/resources/email_domains.rb">verify</a>(\*\*params)</code>
 
 ## Webhooks
@@ -3016,6 +3058,7 @@ Methods:
 - <code title="delete /email_messages">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">delete_all</a>(\*\*params)</code>
 - <code title="delete /email_messages/{email_id}/schedule">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">delete_schedule</a>(\*\*params)</code>
 - <code title="get /email_messages/{email_id}/events">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">retrieve_events</a>(\*\*params)</code>
+- <code title="patch /email_messages/{email_id}/schedule">client.email_messages.<a href="./lib/telnyx/resources/email_messages.rb">update_schedule</a>(\*\*params)</code>
 
 ## Recipients
 

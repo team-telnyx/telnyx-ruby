@@ -41,7 +41,7 @@ module Telnyx
             ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
             ?transcription: Telnyx::AI::TranscriptionSettings,
             ?version_name: String,
-            ?voice_settings: Telnyx::AI::VoiceSettings,
+            ?voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
             ?widget_settings: Telnyx::AI::WidgetSettings,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::AI::InferenceEmbedding

@@ -217,26 +217,46 @@ module Telnyx
         required :id, String
 
         # @!attribute audio_gate
-        #   Audio gating strategy for the assistant call leg.
+        #   Audio gating strategy in force for the assistant call leg.
         #
         #   @return [Symbol, Telnyx::Models::MeetingSession::Assistant::AudioGate]
         required :audio_gate, enum: -> { Telnyx::MeetingSession::Assistant::AudioGate }
 
-        # @!method initialize(id:, audio_gate:)
+        # @!attribute dynamic_variables
+        #   The dynamic variables in force for this session, or null when none were
+        #   supplied.
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        required :dynamic_variables, Telnyx::Internal::Type::HashOf[String], nil?: true
+
+        # @!attribute leave_on_end
+        #   Whether the bot leaves when the Assistant's conversation ends or fails.
+        #
+        #   @return [Boolean]
+        required :leave_on_end, Telnyx::Internal::Type::Boolean
+
+        # @!method initialize(id:, audio_gate:, dynamic_variables:, leave_on_end:)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::MeetingSession::Assistant} for more details.
+        #
         #   Assistant configuration if an assistant is attached, otherwise null.
         #
         #   @param id [String] Identifier of the assistant.
         #
-        #   @param audio_gate [Symbol, Telnyx::Models::MeetingSession::Assistant::AudioGate] Audio gating strategy for the assistant call leg.
+        #   @param audio_gate [Symbol, Telnyx::Models::MeetingSession::Assistant::AudioGate] Audio gating strategy in force for the assistant call leg.
+        #
+        #   @param dynamic_variables [Hash{Symbol=>String}, nil] The dynamic variables in force for this session, or null when none were supplied
+        #
+        #   @param leave_on_end [Boolean] Whether the bot leaves when the Assistant's conversation ends or fails.
 
-        # Audio gating strategy for the assistant call leg.
+        # Audio gating strategy in force for the assistant call leg.
         #
         # @see Telnyx::Models::MeetingSession::Assistant#audio_gate
         module AudioGate
           extend Telnyx::Internal::Type::Enum
 
-          NONE = :none
           HALF_DUPLEX = :half_duplex
+          FULL_DUPLEX = :full_duplex
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -305,6 +325,12 @@ module Telnyx
         #   @return [Boolean]
         required :barge_in, Telnyx::Internal::Type::Boolean
 
+        # @!attribute chat_on_enter
+        #   The message posted to chat on join, or null when unset.
+        #
+        #   @return [String, nil]
+        required :chat_on_enter, String, nil?: true
+
         # @!attribute speak_on_enter
         #   Text spoken on meeting entry, or null if not set.
         #
@@ -323,11 +349,13 @@ module Telnyx
         #   @return [String, nil]
         required :voice, String, nil?: true
 
-        # @!method initialize(barge_in:, speak_on_enter:, summarize_on_end:, voice:)
+        # @!method initialize(barge_in:, chat_on_enter:, speak_on_enter:, summarize_on_end:, voice:)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MeetingSession::Config} for more details.
         #
         #   @param barge_in [Boolean] When enabled, a human participant `speech_on` event interrupts and stops the cur
+        #
+        #   @param chat_on_enter [String, nil] The message posted to chat on join, or null when unset.
         #
         #   @param speak_on_enter [String, nil] Text spoken on meeting entry, or null if not set.
         #

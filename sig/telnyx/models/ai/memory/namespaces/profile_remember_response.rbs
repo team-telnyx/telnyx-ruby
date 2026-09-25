@@ -1,0 +1,49 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          type profile_remember_response =
+            {
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfileRememberResponse::Data
+            }
+
+          class ProfileRememberResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: Telnyx::Models::AI::Memory::Namespaces::ProfileRememberResponse::Data
+
+            def initialize: (
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfileRememberResponse::Data
+            ) -> void
+
+            def to_hash: -> {
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfileRememberResponse::Data
+            }
+
+            type data =
+              { operation_id: String, profile_id: String, source_id: String }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_accessor operation_id: String
+
+              attr_accessor profile_id: String
+
+              attr_accessor source_id: String
+
+              def initialize: (
+                operation_id: String,
+                profile_id: String,
+                source_id: String
+              ) -> void
+
+              def to_hash: -> {
+                operation_id: String,
+                profile_id: String,
+                source_id: String
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

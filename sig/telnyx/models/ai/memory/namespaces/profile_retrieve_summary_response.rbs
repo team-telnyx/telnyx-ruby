@@ -1,0 +1,58 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          type profile_retrieve_summary_response =
+            {
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfileRetrieveSummaryResponse::Data
+            }
+
+          class ProfileRetrieveSummaryResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: Telnyx::Models::AI::Memory::Namespaces::ProfileRetrieveSummaryResponse::Data
+
+            def initialize: (
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfileRetrieveSummaryResponse::Data
+            ) -> void
+
+            def to_hash: -> {
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfileRetrieveSummaryResponse::Data
+            }
+
+            type data =
+              {
+                is_stale: bool,
+                profile_id: String,
+                generated_at: String?,
+                text: String?
+              }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_accessor is_stale: bool
+
+              attr_accessor profile_id: String
+
+              attr_accessor generated_at: String?
+
+              attr_accessor text: String?
+
+              def initialize: (
+                is_stale: bool,
+                profile_id: String,
+                ?generated_at: String?,
+                ?text: String?
+              ) -> void
+
+              def to_hash: -> {
+                is_stale: bool,
+                profile_id: String,
+                generated_at: String?,
+                text: String?
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

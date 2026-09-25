@@ -1,0 +1,53 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          type profile_recall_response =
+            {
+              data: ::Array[Telnyx::Models::AI::Memory::Namespaces::ProfileRecallResponse::Data]
+            }
+
+          class ProfileRecallResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: ::Array[Telnyx::Models::AI::Memory::Namespaces::ProfileRecallResponse::Data]
+
+            def initialize: (
+              data: ::Array[Telnyx::Models::AI::Memory::Namespaces::ProfileRecallResponse::Data]
+            ) -> void
+
+            def to_hash: -> {
+              data: ::Array[Telnyx::Models::AI::Memory::Namespaces::ProfileRecallResponse::Data]
+            }
+
+            type data =
+              { id: String, text: String, recorded_at: String?, score: Float? }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor text: String
+
+              attr_accessor recorded_at: String?
+
+              attr_accessor score: Float?
+
+              def initialize: (
+                id: String,
+                text: String,
+                ?recorded_at: String?,
+                ?score: Float?
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                text: String,
+                recorded_at: String?,
+                score: Float?
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

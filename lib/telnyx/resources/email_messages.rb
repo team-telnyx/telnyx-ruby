@@ -50,21 +50,21 @@ module Telnyx
       #
       # @param inline_css [Boolean] Body param
       #
-      # @param metadata [Hash{Symbol=>Object}] Body param: Custom metadata. Write-only; not returned in responses.
+      # @param metadata [Hash{Symbol=>Object}] Body param: Custom metadata key/value pairs. Stored on the message, returned on
       #
       # @param reply_to [String, Telnyx::Models::EmailInboxes::EmailAddress] Body param: Reply-to address. If provided as an object with a name, only the ema
       #
       # @param reply_to_all [Boolean, nil] Body param: Indicates a reply-all intent. In Phase 1 (wire-only) this does not
       #
-      # @param sandbox_mode [Boolean] Body param
+      # @param sandbox_mode [Boolean] Body param: Validates and accepts the message without injecting it into the MTA
       #
-      # @param scheduled_at [Time, nil] Body param: Future ISO 8601 time to schedule sending. Invalid or past timestamps
+      # @param scheduled_at [Time, nil] Body param: Future ISO 8601 delivery time. Invalid or non-future timestamps are
       #
       # @param send_at [Time] Body param: Deprecated alias for `scheduled_at`.
       #
       # @param subject [String] Body param: Required unless `template_id` is supplied. When using a template, th
       #
-      # @param tags [Array<String>] Body param: Tags for categorization and reporting. Stored on the message and pro
+      # @param tags [Array<String>] Body param: Tags for categorization and filtering. Stored on the message, return
       #
       # @param template_id [String] Body param
       #
@@ -103,14 +103,14 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailMessageRetrieveResponse]
+      # @return [Telnyx::Models::EmailMessageDetailResponse]
       #
       # @see Telnyx::Models::EmailMessageRetrieveParams
       def retrieve(id, params = {})
         @client.request(
           method: :get,
           path: ["email_messages/%1$s", id],
-          model: Telnyx::Models::EmailMessageRetrieveResponse,
+          model: Telnyx::EmailMessageDetailResponse,
           options: params[:request_options]
         )
       end
@@ -118,11 +118,15 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::EmailMessageListParams} for more details.
       #
-      # Lists messages sorted newest first by `created_at desc, id desc`. No filters
-      # other than cursor pagination are implemented. The legacy `/v2/emails` GET route
-      # is a backward-compatible alias for this operation.
+      # Lists messages sorted newest first by `created_at desc, id desc`. Tags and
+      # metadata filters compose with cursor pagination. The legacy `/v2/emails` GET
+      # route is a backward-compatible alias for this operation.
       #
-      # @overload list(page_cursor: nil, page_size: nil, request_options: {})
+      # @overload list(filter_metadata: nil, filter_tags: nil, page_cursor: nil, page_size: nil, request_options: {})
+      #
+      # @param filter_metadata [String] Metadata containment filter, supplied as a JSON object or comma-separated `key=v
+      #
+      # @param filter_tags [String] Comma-separated tags. Each segment is trimmed, and messages having at least one
       #
       # @param page_cursor [String] Opaque URL-safe Base64 cursor returned by a previous list response.
       #
@@ -139,7 +143,7 @@ module Telnyx
         @client.request(
           method: :get,
           path: "email_messages",
-          query: query,
+          query: query.transform_keys(filter_metadata: "filter[metadata]", filter_tags: "filter[tags]"),
           page: Telnyx::Internal::EmailCursorPagination,
           model: Telnyx::EmailInboxes::EmailMessage,
           options: options
@@ -176,13 +180,16 @@ module Telnyx
       # checks run first and can reject the whole batch before message creation. After
       # those checks pass, each message is validated and sent independently; item-level
       # failures do not affect other messages, and the processed batch returns 207
-      # Multi-Status.
+      # Multi-Status. Per-message failures include validation errors; when a template
+      # has `strict_variables` enabled, a missing required variable produces a per-item
+      # `unprocessable_entity` error naming that variable while the other messages
+      # continue.
       #
       # @overload batch(messages:, sandbox_mode: nil, idempotency_key: nil, request_options: {})
       #
       # @param messages [Array<Telnyx::Models::EmailMessageBatchParams::Message>] Body param: Array of email messages to send. Up to 1,000 messages per batch requ
       #
-      # @param sandbox_mode [Boolean] Body param: Applies sandbox mode to all messages in the batch. Overrides any per
+      # @param sandbox_mode [Boolean] Body param: Applies sandbox mode to all messages in the batch and overrides any
       #
       # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
       #
@@ -262,6 +269,15 @@ module Telnyx
       # `occurred_at asc, id asc`. The legacy `/v2/emails/{id}/events` GET route is a
       # backward-compatible alias.
       #
+      # For compatibility, each event carries the legacy customer-visible `event_type`
+      # (`email.`-prefixed), the additive `canonical_event_type` (`email.`-prefixed),
+      # and the deprecated `type` duplicate — whose value keeps the exact legacy format:
+      # the bare stored event name, never `email.`-prefixed. Gateway rejections render
+      # `email.failed` + canonical `email.gw_reject`; MTA expirations render
+      # `email.bounced` + canonical `email.expired`; every unchanged outcome carries
+      # identical `event_type` and `canonical_event_type` values (and `type` keeps the
+      # stored name).
+      #
       # @overload retrieve_events(email_id, page_cursor: nil, page_size: nil, request_options: {})
       #
       # @param email_id [String] Email message UUID.
@@ -284,6 +300,34 @@ module Telnyx
           query: query,
           page: Telnyx::Internal::EmailCursorPagination,
           model: Telnyx::MessageEvent,
+          options: options
+        )
+      end
+
+      # Moves an existing scheduled email to a new future send time. Only the delivery
+      # time (`scheduled_at`) changes; the message ID, content, recipients, tags, and
+      # metadata remain unchanged. Returns `409 Conflict` if the message is no longer
+      # scheduled or its scheduled-send worker has already started processing it. This
+      # route emits no dedicated `rescheduled` event.
+      #
+      # @overload update_schedule(email_id, scheduled_at:, request_options: {})
+      #
+      # @param email_id [String] Email message UUID.
+      #
+      # @param scheduled_at [Time] New ISO 8601 delivery time. Must be strictly in the future.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::EmailMessageDetailResponse]
+      #
+      # @see Telnyx::Models::EmailMessageUpdateScheduleParams
+      def update_schedule(email_id, params)
+        parsed, options = Telnyx::EmailMessageUpdateScheduleParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["email_messages/%1$s/schedule", email_id],
+          body: parsed,
+          model: Telnyx::EmailMessageDetailResponse,
           options: options
         )
       end

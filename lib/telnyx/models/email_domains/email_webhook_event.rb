@@ -3,9 +3,11 @@
 module Telnyx
   module Models
     module EmailDomains
-      # Event types a webhook may subscribe to. The union of email._ events (published
-      # by email-api) and email_domain._ lifecycle events (published by this service).
-      # An event not listed here can never be subscribed to and is silently dropped.
+      # Event types accepted by domain webhook subscriptions. Allowlists match the
+      # legacy event_type, not canonical_event_type. Of the 22 accepted types,
+      # email.sending is stored but intentionally not published. Cancellation,
+      # daily-limit failures, and system failures publish after commit when a matching
+      # domain webhook is configured.
       module EmailWebhookEvent
         extend Telnyx::Internal::Type::Enum
 
@@ -23,11 +25,14 @@ module Telnyx
         EMAIL_CLICKED = :"email.clicked"
         EMAIL_UNSUBSCRIBED = :"email.unsubscribed"
         EMAIL_RECEIVED = :"email.received"
+        EMAIL_CANCELLED = :"email.cancelled"
+        EMAIL_DAILY_LIMIT_EXCEEDED = :"email.daily_limit_exceeded"
         EMAIL_DOMAIN_CREATED = :"email_domain.created"
         EMAIL_DOMAIN_VERIFIED = :"email_domain.verified"
         EMAIL_DOMAIN_DEGRADED = :"email_domain.degraded"
         EMAIL_DOMAIN_SUSPENDED = :"email_domain.suspended"
         EMAIL_DOMAIN_DELETED = :"email_domain.deleted"
+        EMAIL_DOMAIN_DKIM_ROTATED = :"email_domain.dkim_rotated"
 
         # @!method self.values
         #   @return [Array<Symbol>]

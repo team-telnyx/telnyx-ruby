@@ -2,37 +2,30 @@
 
 module Telnyx
   module Models
-    class EmailMessageRetrieveResponse < Telnyx::Internal::Type::BaseModel
+    class EmailMessageDetailResponse < Telnyx::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
-          T.any(
-            Telnyx::Models::EmailMessageRetrieveResponse,
-            Telnyx::Internal::AnyHash
-          )
+          T.any(Telnyx::EmailMessageDetailResponse, Telnyx::Internal::AnyHash)
         end
 
-      sig { returns(Telnyx::Models::EmailMessageRetrieveResponse::Data) }
+      sig { returns(Telnyx::EmailMessageDetailResponse::Data) }
       attr_reader :data
 
       sig do
-        params(
-          data: Telnyx::Models::EmailMessageRetrieveResponse::Data::OrHash
-        ).void
+        params(data: Telnyx::EmailMessageDetailResponse::Data::OrHash).void
       end
       attr_writer :data
 
       sig do
-        params(
-          data: Telnyx::Models::EmailMessageRetrieveResponse::Data::OrHash
-        ).returns(T.attached_class)
+        params(data: Telnyx::EmailMessageDetailResponse::Data::OrHash).returns(
+          T.attached_class
+        )
       end
       def self.new(data:)
       end
 
       sig do
-        override.returns(
-          { data: Telnyx::Models::EmailMessageRetrieveResponse::Data }
-        )
+        override.returns({ data: Telnyx::EmailMessageDetailResponse::Data })
       end
       def to_hash
       end
@@ -41,7 +34,7 @@ module Telnyx
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::EmailMessageRetrieveResponse::Data,
+              Telnyx::EmailMessageDetailResponse::Data,
               Telnyx::Internal::AnyHash
             )
           end

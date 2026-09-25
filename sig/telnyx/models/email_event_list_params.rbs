@@ -5,8 +5,8 @@ module Telnyx
         email_id: String,
         event_type: Telnyx::Models::EmailEventListParams::event_type,
         from: Time,
-        page_cursor: String,
         page_size: Integer,
+        page_cursor: String,
         to: Time
       }
       & Telnyx::Internal::Type::request_parameters
@@ -29,13 +29,13 @@ module Telnyx
 
       def from=: (Time) -> Time
 
-      attr_reader page_cursor: String?
-
-      def page_cursor=: (String) -> String
-
       attr_reader page_size: Integer?
 
       def page_size=: (Integer) -> Integer
+
+      attr_reader page_cursor: String?
+
+      def page_cursor=: (String) -> String
 
       attr_reader to: Time?
 
@@ -45,8 +45,8 @@ module Telnyx
         ?email_id: String,
         ?event_type: Telnyx::Models::EmailEventListParams::event_type,
         ?from: Time,
-        ?page_cursor: String,
         ?page_size: Integer,
+        ?page_cursor: String,
         ?to: Time,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -55,8 +55,8 @@ module Telnyx
         email_id: String,
         event_type: Telnyx::Models::EmailEventListParams::event_type,
         from: Time,
-        page_cursor: String,
         page_size: Integer,
+        page_cursor: String,
         to: Time,
         request_options: Telnyx::RequestOptions
       }

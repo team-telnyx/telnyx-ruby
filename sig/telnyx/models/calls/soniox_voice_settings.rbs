@@ -1,0 +1,46 @@
+module Telnyx
+  module Models
+    module Calls
+      type soniox_voice_settings =
+        {
+          type: Telnyx::Models::Calls::SonioxVoiceSettings::type_,
+          reduce_silence: bool,
+          speed: Float
+        }
+
+      class SonioxVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::Calls::SonioxVoiceSettings::type_
+
+        attr_reader reduce_silence: bool?
+
+        def reduce_silence=: (bool) -> bool
+
+        attr_reader speed: Float?
+
+        def speed=: (Float) -> Float
+
+        def initialize: (
+          type: Telnyx::Models::Calls::SonioxVoiceSettings::type_,
+          ?reduce_silence: bool,
+          ?speed: Float
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::Calls::SonioxVoiceSettings::type_,
+          reduce_silence: bool,
+          speed: Float
+        }
+
+        type type_ = :soniox
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          SONIOX: :soniox
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::SonioxVoiceSettings::type_]
+        end
+      end
+    end
+  end
+end

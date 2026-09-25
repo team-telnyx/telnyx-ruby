@@ -22,10 +22,24 @@ module Telnyx
           #   @return [String, Hash{Symbol=>Object}, Array<Object>]
           required :state, union: -> { Telnyx::AI::Typesafe::V1SystemoneParams::State }
 
-          # @!method initialize(questions:, state:, request_options: {})
+          # @!attribute model
+          #   Public model alias. telnyx/decision-flash offers the lowest cost and latency;
+          #   telnyx/decision-pro supports decisions that require long context, including
+          #   inputs beyond Jev’s 32k per-decision limit. Applies to every question in the
+          #   request. Other values are rejected.
+          #
+          #   @return [Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::Model, nil]
+          optional :model, enum: -> { Telnyx::AI::Typesafe::V1SystemoneParams::Model }
+
+          # @!method initialize(questions:, state:, model: nil, request_options: {})
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::Typesafe::V1SystemoneParams} for more details.
+          #
           #   @param questions [Hash{Symbol=>Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Choice, Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Noul, Telnyx::Models::AI::Typesafe::V1SystemoneParams::Question::Score}] Between 1 and 64 named questions. Each key identifies the corresponding answer.
           #
           #   @param state [String, Hash{Symbol=>Object}, Array<Object>] Shared context evaluated by every question.
+          #
+          #   @param model [Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::Model] Public model alias. telnyx/decision-flash offers the lowest cost and latency; te
           #
           #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -260,6 +274,20 @@ module Telnyx
 
             # @type [Telnyx::Internal::Type::Converter]
             UnionMember2Array = Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+          end
+
+          # Public model alias. telnyx/decision-flash offers the lowest cost and latency;
+          # telnyx/decision-pro supports decisions that require long context, including
+          # inputs beyond Jev’s 32k per-decision limit. Applies to every question in the
+          # request. Other values are rejected.
+          module Model
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX_DECISION_FLASH = :"telnyx/decision-flash"
+            TELNYX_DECISION_PRO = :"telnyx/decision-pro"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

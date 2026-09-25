@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          module Profiles
+            type memory_list_response =
+              {
+                id: String,
+                source_id: String?,
+                text: String,
+                recorded_at: String?
+              }
+
+            class MemoryListResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor source_id: String?
+
+              attr_accessor text: String
+
+              attr_accessor recorded_at: String?
+
+              def initialize: (
+                id: String,
+                source_id: String?,
+                text: String,
+                ?recorded_at: String?
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                source_id: String?,
+                text: String,
+                recorded_at: String?
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

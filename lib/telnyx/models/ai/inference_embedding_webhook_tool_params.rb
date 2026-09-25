@@ -14,6 +14,15 @@ module Telnyx
         #   @return [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook]
         required :webhook, -> { Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook }
 
+        # @!attribute timeout_ms
+        #   The maximum number of milliseconds to wait for the webhook to respond before the
+        #   tool call is aborted. Set this at the tool level, as a sibling of `type` — a
+        #   `timeout_ms` nested inside the `webhook` object is stored but not applied, and
+        #   the tool runs at this default instead. Applies when `webhook.async` is false.
+        #
+        #   @return [Integer, nil]
+        optional :timeout_ms, Integer
+
         response_only do
           # @!attribute shared
           #   Whether this tool comes from the shared Tools Library. Responses merge shared
@@ -28,7 +37,7 @@ module Telnyx
           optional :shared, Telnyx::Internal::Type::Boolean
         end
 
-        # @!method initialize(type:, webhook:, shared: nil)
+        # @!method initialize(type:, webhook:, shared: nil, timeout_ms: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams} for more details.
         #
@@ -37,6 +46,8 @@ module Telnyx
         #   @param webhook [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook]
         #
         #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+        #
+        #   @param timeout_ms [Integer] The maximum number of milliseconds to wait for the webhook to respond before the
 
         # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams#type
         module Type
@@ -176,14 +187,7 @@ module Telnyx
           optional :store_fields_as_variables,
                    -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable] }
 
-          # @!attribute timeout_ms
-          #   The maximum number of milliseconds to wait for the webhook to respond. Only
-          #   applicable when async is false.
-          #
-          #   @return [Integer, nil]
-          optional :timeout_ms, Integer
-
-          # @!method initialize(description:, name:, url:, async: nil, async_timeout_ms: nil, body_parameters: nil, headers: nil, messages: nil, http_method: nil, path_parameters: nil, preset_body_fields: nil, preset_query_params: nil, query_parameters: nil, store_fields_as_variables: nil, timeout_ms: nil)
+          # @!method initialize(description:, name:, url:, async: nil, async_timeout_ms: nil, body_parameters: nil, headers: nil, messages: nil, http_method: nil, path_parameters: nil, preset_body_fields: nil, preset_query_params: nil, query_parameters: nil, store_fields_as_variables: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook} for more
           #   details.
@@ -215,8 +219,6 @@ module Telnyx
           #   @param query_parameters [Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::QueryParameters] The query parameters the webhook tool accepts, described as a JSON Schema object
           #
           #   @param store_fields_as_variables [Array<Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook::StoreFieldsAsVariable>] A list of mappings that extract values from the webhook response and store them
-          #
-          #   @param timeout_ms [Integer] The maximum number of milliseconds to wait for the webhook to respond. Only appl
 
           # @see Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams::Webhook#body_parameters
           class BodyParameters < Telnyx::Internal::Type::BaseModel

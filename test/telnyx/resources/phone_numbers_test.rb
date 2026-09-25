@@ -78,6 +78,7 @@ class Telnyx::Test::Resources::PhoneNumbersTest < Telnyx::Test::ResourceTest
         emergency_status: Telnyx::NumbersPhoneNumberDetailed::EmergencyStatus | nil,
         hd_voice_enabled: Telnyx::Internal::Type::Boolean | nil,
         inbound_call_screening: Telnyx::NumbersPhoneNumberDetailed::InboundCallScreening | nil,
+        messaging_campaign_id: String | nil,
         messaging_profile_id: String | nil,
         messaging_profile_name: String | nil,
         source_type: Telnyx::NumbersPhoneNumberDetailed::SourceType | nil,

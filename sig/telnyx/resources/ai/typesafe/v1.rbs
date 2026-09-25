@@ -6,6 +6,7 @@ module Telnyx
           def systemone: (
             questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
             state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state,
+            ?model: Telnyx::Models::AI::Typesafe::V1SystemoneParams::model,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::AI::Typesafe::V1SystemoneResponse
 

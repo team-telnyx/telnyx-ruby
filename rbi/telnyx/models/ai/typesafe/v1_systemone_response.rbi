@@ -39,10 +39,13 @@ module Telnyx
           end
           attr_writer :usage
 
-          # Opaque Telnyx-controlled identifier retained for TypeSafe SDK response
-          # compatibility. It is not a selectable model name or a guarantee of a particular
-          # underlying model.
-          sig { returns(String) }
+          # Public model alias used to evaluate the request. Returns telnyx/decision-flash
+          # when model was omitted. The underlying model is managed by Telnyx.
+          sig do
+            returns(
+              Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model::TaggedSymbol
+            )
+          end
           attr_accessor :model
 
           # A complete synchronous evaluation. Answers are returned directly without a data
@@ -58,7 +61,8 @@ module Telnyx
                     Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Score::OrHash
                   )
                 ],
-              model: String,
+              model:
+                Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model::OrSymbol,
               usage:
                 Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage::OrHash
             ).returns(T.attached_class)
@@ -67,9 +71,8 @@ module Telnyx
             # Answers keyed by exactly the question IDs in the request. Each answer type
             # matches its question.
             answers:,
-            # Opaque Telnyx-controlled identifier retained for TypeSafe SDK response
-            # compatibility. It is not a selectable model name or a guarantee of a particular
-            # underlying model.
+            # Public model alias used to evaluate the request. Returns telnyx/decision-flash
+            # when model was omitted. The underlying model is managed by Telnyx.
             model:,
             # Token usage for the completed evaluation.
             usage:
@@ -84,7 +87,8 @@ module Telnyx
                     Symbol,
                     Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Answer::Variants
                   ],
-                model: String,
+                model:
+                  Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model::TaggedSymbol,
                 usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
               }
             )
@@ -297,6 +301,42 @@ module Telnyx
               )
             end
             def self.variants
+            end
+          end
+
+          # Public model alias used to evaluate the request. Returns telnyx/decision-flash
+          # when model was omitted. The underlying model is managed by Telnyx.
+          module Model
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            TELNYX_DECISION_FLASH =
+              T.let(
+                :"telnyx/decision-flash",
+                Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model::TaggedSymbol
+              )
+            TELNYX_DECISION_PRO =
+              T.let(
+                :"telnyx/decision-pro",
+                Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Model::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
 

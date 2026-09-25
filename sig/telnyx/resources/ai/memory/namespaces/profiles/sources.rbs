@@ -1,0 +1,38 @@
+module Telnyx
+  module Resources
+    class AI
+      class Memory
+        class Namespaces
+          class Profiles
+            class Sources
+              def retrieve: (
+                String source_id,
+                namespace: String,
+                profile_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse
+
+              def list: (
+                String profile_id,
+                namespace: String,
+                ?page_number: Integer,
+                ?page_size: Integer,
+                ?session_id: String?,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Collections::Source]
+
+              def delete: (
+                String source_id,
+                namespace: String,
+                profile_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceDeleteResponse
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

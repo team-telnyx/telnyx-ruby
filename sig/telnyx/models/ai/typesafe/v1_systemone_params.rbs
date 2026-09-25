@@ -5,7 +5,8 @@ module Telnyx
         type v1_systemone_params =
           {
             questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
-            state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state
+            state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state,
+            model: Telnyx::Models::AI::Typesafe::V1SystemoneParams::model
           }
           & Telnyx::Internal::Type::request_parameters
 
@@ -17,15 +18,23 @@ module Telnyx
 
           attr_accessor state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state
 
+          attr_reader model: Telnyx::Models::AI::Typesafe::V1SystemoneParams::model?
+
+          def model=: (
+            Telnyx::Models::AI::Typesafe::V1SystemoneParams::model
+          ) -> Telnyx::Models::AI::Typesafe::V1SystemoneParams::model
+
           def initialize: (
             questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
             state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state,
+            ?model: Telnyx::Models::AI::Typesafe::V1SystemoneParams::model,
             ?request_options: Telnyx::request_opts
           ) -> void
 
           def to_hash: -> {
             questions: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneParams::question],
             state: Telnyx::Models::AI::Typesafe::V1SystemoneParams::state,
+            model: Telnyx::Models::AI::Typesafe::V1SystemoneParams::model,
             request_options: Telnyx::RequestOptions
           }
 
@@ -187,6 +196,17 @@ module Telnyx
             UnionMember1Map: Telnyx::Internal::Type::Converter
 
             UnionMember2Array: Telnyx::Internal::Type::Converter
+          end
+
+          type model = :"telnyx/decision-flash" | :"telnyx/decision-pro"
+
+          module Model
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX_DECISION_FLASH: :"telnyx/decision-flash"
+            TELNYX_DECISION_PRO: :"telnyx/decision-pro"
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneParams::model]
           end
         end
       end

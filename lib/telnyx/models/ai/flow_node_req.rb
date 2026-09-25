@@ -98,8 +98,8 @@ module Telnyx
         #   Per-node voice override. Only fields set here override the assistant-level voice
         #   settings; unset fields cascade.
         #
-        #   @return [Telnyx::Models::AI::VoiceSettings, nil]
-        optional :voice_settings, -> { Telnyx::AI::VoiceSettings }
+        #   @return [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings, nil]
+        optional :voice_settings, -> { Telnyx::AI::InferenceEmbeddingVoiceSettings }
 
         # @!method initialize(id:, instructions:, external_llm: nil, instructions_mode: nil, llm_api_key_ref: nil, model: nil, name: nil, position: nil, shared_tool_ids: nil, tools_mode: nil, transcription: nil, type: nil, voice_settings: nil)
         #   Some parameter documentations has been truncated, see
@@ -134,7 +134,7 @@ module Telnyx
         #
         #   @param type [Symbol, Telnyx::Models::AI::FlowNodeReq::Type] Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a s
         #
-        #   @param voice_settings [Telnyx::Models::AI::VoiceSettings] Per-node voice override. Only fields set here override the assistant-level voice
+        #   @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings] Per-node voice override. Only fields set here override the assistant-level voice
 
         # How `instructions` combine with the assistant-level instructions. `replace`
         # (default): the node's instructions are used alone. `append`: the node's

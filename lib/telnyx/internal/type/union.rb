@@ -22,7 +22,7 @@ module Telnyx
       #   case assistant_tool
       #   in {type: :function, function: function, shared: shared}
       #     puts(function)
-      #   in {type: :webhook, webhook: webhook, shared: shared}
+      #   in {type: :webhook, webhook: webhook, shared: shared, timeout_ms: timeout_ms}
       #     puts(webhook)
       #   in {type: :client_side_tool, client_side_tool: client_side_tool, shared: shared}
       #     puts(client_side_tool)

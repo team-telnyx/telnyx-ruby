@@ -138,6 +138,22 @@ class Telnyx::Test::Resources::EmailDomainsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_rotate_dkim
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.email_domains.rotate_dkim("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+
+    assert_pattern do
+      response => Telnyx::Models::EmailDomainRotateDkimResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::EmailDomainRotateDkimResponse::Data
+      }
+    end
+  end
+
   def test_verify
     skip("Mock server tests are disabled")
 

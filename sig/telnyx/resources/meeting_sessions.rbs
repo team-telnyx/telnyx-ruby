@@ -12,6 +12,7 @@ module Telnyx
         ?barge_in: bool,
         ?bot_name: String,
         ?camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
+        ?chat_on_enter: String,
         ?idempotency_key: String,
         ?join_at: Time,
         ?metadata: ::Hash[Symbol, top],

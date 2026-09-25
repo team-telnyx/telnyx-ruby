@@ -950,6 +950,17 @@ module Telnyx
                 sig { returns(String) }
                 attr_accessor :to
 
+                # DTMF digits to send automatically after the transfer destination answers. Useful
+                # for reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once
+                # the called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause),
+                # `W` (1s pause), `*`, `#`. Maximum 64 characters. When omitted, no automatic DTMF
+                # is sent.
+                sig { returns(T.nilable(String)) }
+                attr_reader :extension
+
+                sig { params(extension: String).void }
+                attr_writer :extension
+
                 # The warm transfer message to deliver to this specific target. When set, it takes
                 # precedence over the message the assistant composes from
                 # `warm_transfer_instructions`.
@@ -966,26 +977,66 @@ module Telnyx
                 sig { params(name: String).void }
                 attr_writer :name
 
+                # SIP Authentication password used for SIP challenges. Applies when `to` is a SIP
+                # URI.
+                sig { returns(T.nilable(String)) }
+                attr_reader :sip_auth_password
+
+                sig { params(sip_auth_password: String).void }
+                attr_writer :sip_auth_password
+
+                # SIP Authentication username used for SIP challenges. Applies when `to` is a SIP
+                # URI.
+                sig { returns(T.nilable(String)) }
+                attr_reader :sip_auth_username
+
+                sig { params(sip_auth_username: String).void }
+                attr_writer :sip_auth_username
+
                 sig do
-                  params(to: String, message: String, name: String).returns(
-                    T.attached_class
-                  )
+                  params(
+                    to: String,
+                    extension: String,
+                    message: String,
+                    name: String,
+                    sip_auth_password: String,
+                    sip_auth_username: String
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   # The destination number or SIP URI of the call.
                   to:,
+                  # DTMF digits to send automatically after the transfer destination answers. Useful
+                  # for reaching an extension behind an IVR (e.g. `"200"` to dial extension 200 once
+                  # the called party picks up). Allowed characters: `0-9`, `A-D`, `w` (0.5s pause),
+                  # `W` (1s pause), `*`, `#`. Maximum 64 characters. When omitted, no automatic DTMF
+                  # is sent.
+                  extension: nil,
                   # The warm transfer message to deliver to this specific target. When set, it takes
                   # precedence over the message the assistant composes from
                   # `warm_transfer_instructions`.
                   message: nil,
                   # The name of the target.
-                  name: nil
+                  name: nil,
+                  # SIP Authentication password used for SIP challenges. Applies when `to` is a SIP
+                  # URI.
+                  sip_auth_password: nil,
+                  # SIP Authentication username used for SIP challenges. Applies when `to` is a SIP
+                  # URI.
+                  sip_auth_username: nil
                 )
                 end
 
                 sig do
                   override.returns(
-                    { to: String, message: String, name: String }
+                    {
+                      to: String,
+                      extension: String,
+                      message: String,
+                      name: String,
+                      sip_auth_password: String,
+                      sip_auth_username: String
+                    }
                   )
                 end
                 def to_hash

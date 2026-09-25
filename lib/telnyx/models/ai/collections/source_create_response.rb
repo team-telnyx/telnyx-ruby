@@ -8,13 +8,13 @@ module Telnyx
         class SourceCreateResponse < Telnyx::Internal::Type::BaseModel
           # @!attribute data
           #
-          #   @return [Telnyx::Models::AI::Collections::Source, nil]
-          optional :data, -> { Telnyx::AI::Collections::Source }
+          #   @return [Telnyx::Models::AI::Collections::CollectionsSource, nil]
+          optional :data, -> { Telnyx::AI::Collections::CollectionsSource }
 
           # @!method initialize(data: nil)
           #   Envelope containing a single collection source.
           #
-          #   @param data [Telnyx::Models::AI::Collections::Source]
+          #   @param data [Telnyx::Models::AI::Collections::CollectionsSource]
         end
       end
     end

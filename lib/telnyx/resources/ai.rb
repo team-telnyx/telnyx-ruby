@@ -58,6 +58,9 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Typesafe]
       attr_reader :typesafe
 
+      # @return [Telnyx::Resources::AI::Memory]
+      attr_reader :memory
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AIRetrieveConversationHistoriesParams} for more details.
       #
@@ -232,6 +235,7 @@ module Telnyx
         @anthropic = Telnyx::Resources::AI::Anthropic.new(client: client)
         @knowledge = Telnyx::Resources::AI::Knowledge.new(client: client)
         @typesafe = Telnyx::Resources::AI::Typesafe.new(client: client)
+        @memory = Telnyx::Resources::AI::Memory.new(client: client)
       end
     end
   end

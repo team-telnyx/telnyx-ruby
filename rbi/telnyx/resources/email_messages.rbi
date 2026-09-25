@@ -102,7 +102,9 @@ module Telnyx
         in_reply_to_message_id: nil,
         # Body param
         inline_css: nil,
-        # Body param: Custom metadata. Write-only; not returned in responses.
+        # Body param: Custom metadata key/value pairs. Stored on the message, returned on
+        # message responses, and propagated to Email Detail Records. Usable in
+        # `filter[metadata]` when listing messages.
         metadata: nil,
         # Body param: Reply-to address. If provided as an object with a name, only the
         # email is stored; the name is ignored.
@@ -116,12 +118,37 @@ module Telnyx
         #
         # Only meaningful alongside `in_reply_to_message_id`.
         reply_to_all: nil,
-        # Body param
+        # Body param: Validates and accepts the message without injecting it into the MTA
+        # or outbound Kafka path. Nothing is delivered: sandbox records are non-billable,
+        # consume no daily-send-limit quota, and feed no delivery-reputation signals.
+        #
+        # The reserved sandbox test-recipient domain is `test.telnyx.com`. In sandbox
+        # mode, these addresses produce deterministic recipient-scoped lifecycle events:
+        #
+        # - `delivered@test.telnyx.com`: queued -> sending -> sent -> delivered
+        # - `hard-bounce@test.telnyx.com`: queued -> sending -> sent -> bounced
+        #   (permanent)
+        # - `soft-bounce@test.telnyx.com`: queued -> sending -> sent -> bounced
+        #   (transient)
+        # - `complaint@test.telnyx.com`: queued -> sending -> sent -> complained
+        # - `suppressed@test.telnyx.com`: queued -> suppressed
+        # - `invalid@test.telnyx.com`: queued -> sending -> failed (invalid recipient)
+        # - `dkim-fail@test.telnyx.com`: queued -> sending -> failed (DKIM unavailable)
+        # - `rate-limit@test.telnyx.com`: queued -> sending -> failed (rate limit
+        #   exceeded)
+        #
+        # Matching is case-insensitive for both the local part and the domain and requires
+        # the exact domain `test.telnyx.com` — subdomains and other domains do not match.
+        # Mixed sandbox sends simulate only reserved test recipients; other recipients
+        # retain ordinary sandbox behavior (accepted, no delivery attempted). Hard-bounce
+        # and complaint outcomes also use the normal automatic-suppression pipeline.
+        # Non-sandbox sends to these addresses use the normal delivery path.
         sandbox_mode: nil,
-        # Body param: Future ISO 8601 time to schedule sending. Invalid or past timestamps
-        # are silently ignored and the email is sent immediately. The legacy alias
-        # `send_at` is still accepted for backward compatibility; when both are provided,
-        # `scheduled_at` wins.
+        # Body param: Future ISO 8601 delivery time. Invalid or non-future timestamps are
+        # rejected. Single sends return HTTP 422; in batch sends the invalid item is
+        # reported in the 207 per-item errors while other items continue. `send_at`
+        # remains a deprecated request alias. A non-null `scheduled_at` takes precedence
+        # over `send_at`; when `scheduled_at` is omitted or null, `send_at` is used.
         scheduled_at: nil,
         # Body param: Deprecated alias for `scheduled_at`.
         send_at: nil,
@@ -129,14 +156,18 @@ module Telnyx
         # the template's subject is rendered; if the template has no subject or renders
         # empty, the request returns 400.
         subject: nil,
-        # Body param: Tags for categorization and reporting. Stored on the message and
-        # propagated to Email Detail Records. Not returned in API responses.
+        # Body param: Tags for categorization and filtering. Stored on the message,
+        # returned on message responses, and propagated to Email Detail Records. Usable in
+        # `filter[tags]` when listing messages.
         tags: nil,
         # Body param
         template_id: nil,
         # Body param: Variables for Liquid template rendering. Non-object values may cause
         # a 422 validation error on message creation, but are silently treated as an empty
-        # object for template rendering.
+        # object for template rendering. When the template enables `strict_variables`, a
+        # missing required variable fails the request with 422 (single send) or a per-item
+        # `unprocessable_entity` error (batch) naming the variable; no message is
+        # persisted for the failed item.
         template_variables: nil,
         # Body param: Plain text email body. Returned only by `GET /email_messages/{id}`;
         # omitted from create and list responses.
@@ -163,7 +194,7 @@ module Telnyx
         params(
           id: String,
           request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::EmailMessageRetrieveResponse)
+        ).returns(Telnyx::EmailMessageDetailResponse)
       end
       def retrieve(
         # Email message UUID.
@@ -172,11 +203,13 @@ module Telnyx
       )
       end
 
-      # Lists messages sorted newest first by `created_at desc, id desc`. No filters
-      # other than cursor pagination are implemented. The legacy `/v2/emails` GET route
-      # is a backward-compatible alias for this operation.
+      # Lists messages sorted newest first by `created_at desc, id desc`. Tags and
+      # metadata filters compose with cursor pagination. The legacy `/v2/emails` GET
+      # route is a backward-compatible alias for this operation.
       sig do
         params(
+          filter_metadata: String,
+          filter_tags: String,
           page_cursor: String,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
@@ -187,6 +220,19 @@ module Telnyx
         )
       end
       def list(
+        # Metadata containment filter, supplied as a JSON object or comma-separated
+        # `key=value` pairs. All supplied key/value pairs must be contained in the message
+        # metadata. An empty value or empty JSON object omits the filter. Malformed
+        # values, valid non-object JSON, pairs without `=`, empty keys, and
+        # non-string/nested query shapes return HTTP 400.
+        filter_metadata: nil,
+        # Comma-separated tags. Each segment is trimmed, and messages having at least one
+        # supplied tag are returned; matching is exact and case-sensitive after trimming.
+        # Because commas delimit values and surrounding whitespace is removed, this filter
+        # cannot represent stored tags containing literal commas or leading/trailing
+        # whitespace. An empty value omits the filter. Empty segments and
+        # non-string/nested query shapes return HTTP 400.
+        filter_tags: nil,
         # Opaque URL-safe Base64 cursor returned by a previous list response.
         page_cursor: nil,
         # Number of results to return. Defaults to 25; maximum is 100. Invalid values are
@@ -214,7 +260,10 @@ module Telnyx
       # checks run first and can reject the whole batch before message creation. After
       # those checks pass, each message is validated and sent independently; item-level
       # failures do not affect other messages, and the processed batch returns 207
-      # Multi-Status.
+      # Multi-Status. Per-message failures include validation errors; when a template
+      # has `strict_variables` enabled, a missing required variable produces a per-item
+      # `unprocessable_entity` error naming that variable while the other messages
+      # continue.
       sig do
         params(
           messages: T::Array[Telnyx::EmailMessageBatchParams::Message::OrHash],
@@ -228,8 +277,13 @@ module Telnyx
         # request. Each message is validated and sent independently; per-message failures
         # do not affect other messages in the batch.
         messages:,
-        # Body param: Applies sandbox mode to all messages in the batch. Overrides any
-        # per-message sandbox_mode in the messages array.
+        # Body param: Applies sandbox mode to all messages in the batch and overrides any
+        # per-message `sandbox_mode` value — each message's effective `sandbox_mode` is
+        # exactly this envelope value. Reserved recipients at `test.telnyx.com` produce
+        # the deterministic event chains documented on CreateEmailRequest.sandbox_mode; no
+        # batch item is injected into the MTA or outbound Kafka path. Sandbox batch items
+        # are non-billable, consume no daily-send-limit quota, and feed no
+        # delivery-reputation signals.
         sandbox_mode: nil,
         # Header param: Optional opaque, unquoted key for safely retrying the same logical
         # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
@@ -280,6 +334,15 @@ module Telnyx
       # Lists events for a single message sorted oldest first by
       # `occurred_at asc, id asc`. The legacy `/v2/emails/{id}/events` GET route is a
       # backward-compatible alias.
+      #
+      # For compatibility, each event carries the legacy customer-visible `event_type`
+      # (`email.`-prefixed), the additive `canonical_event_type` (`email.`-prefixed),
+      # and the deprecated `type` duplicate — whose value keeps the exact legacy format:
+      # the bare stored event name, never `email.`-prefixed. Gateway rejections render
+      # `email.failed` + canonical `email.gw_reject`; MTA expirations render
+      # `email.bounced` + canonical `email.expired`; every unchanged outcome carries
+      # identical `event_type` and `canonical_event_type` values (and `type` keeps the
+      # stored name).
       sig do
         params(
           email_id: String,
@@ -296,6 +359,27 @@ module Telnyx
         # Number of results to return. Defaults to 25; maximum is 100. Invalid values are
         # clamped to the valid range.
         page_size: nil,
+        request_options: {}
+      )
+      end
+
+      # Moves an existing scheduled email to a new future send time. Only the delivery
+      # time (`scheduled_at`) changes; the message ID, content, recipients, tags, and
+      # metadata remain unchanged. Returns `409 Conflict` if the message is no longer
+      # scheduled or its scheduled-send worker has already started processing it. This
+      # route emits no dedicated `rescheduled` event.
+      sig do
+        params(
+          email_id: String,
+          scheduled_at: Time,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::EmailMessageDetailResponse)
+      end
+      def update_schedule(
+        # Email message UUID.
+        email_id,
+        # New ISO 8601 delivery time. Must be strictly in the future.
+        scheduled_at:,
         request_options: {}
       )
       end

@@ -62,14 +62,26 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::NumbersPhoneNumberDetailed::InboundCallScreening, nil]
       optional :inbound_call_screening, enum: -> { Telnyx::NumbersPhoneNumberDetailed::InboundCallScreening }
 
+      # @!attribute messaging_campaign_id
+      #   Identifies the messaging campaign associated with the phone number's messaging
+      #   profile. If the messaging profile details could not be retrieved, this value is
+      #   the string `UNAVAILABLE`.
+      #
+      #   @return [String, nil]
+      optional :messaging_campaign_id, String, nil?: true
+
       # @!attribute messaging_profile_id
-      #   Identifies the messaging profile associated with the phone number.
+      #   Identifies the messaging profile associated with the phone number. If the
+      #   messaging profile details could not be retrieved, this value is the string
+      #   `UNAVAILABLE`.
       #
       #   @return [String, nil]
       optional :messaging_profile_id, String, nil?: true
 
       # @!attribute messaging_profile_name
-      #   The name of the messaging profile associated with the phone number.
+      #   The name of the messaging profile associated with the phone number. If the
+      #   messaging profile details could not be retrieved, this value is the string
+      #   `UNAVAILABLE`.
       #
       #   @return [String, nil]
       optional :messaging_profile_name, String, nil?: true
@@ -205,7 +217,7 @@ module Telnyx
         optional :updated_at, String
       end
 
-      # @!method initialize(id:, country_iso_alpha2:, created_at:, deletion_lock_enabled:, external_pin:, phone_number:, phone_number_type:, purchased_at:, record_type:, status:, tags:, activated_at: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, customer_reference: nil, emergency_address_id: nil, emergency_enabled: nil, emergency_status: nil, hd_voice_enabled: nil, inbound_call_screening: nil, messaging_profile_id: nil, messaging_profile_name: nil, source_type: nil, t38_fax_gateway_enabled: nil, updated_at: nil)
+      # @!method initialize(id:, country_iso_alpha2:, created_at:, deletion_lock_enabled:, external_pin:, phone_number:, phone_number_type:, purchased_at:, record_type:, status:, tags:, activated_at: nil, billing_group_id: nil, call_forwarding_enabled: nil, call_recording_enabled: nil, caller_id_name_enabled: nil, cnam_listing_enabled: nil, connection_id: nil, connection_name: nil, customer_reference: nil, emergency_address_id: nil, emergency_enabled: nil, emergency_status: nil, hd_voice_enabled: nil, inbound_call_screening: nil, messaging_campaign_id: nil, messaging_profile_id: nil, messaging_profile_name: nil, source_type: nil, t38_fax_gateway_enabled: nil, updated_at: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::NumbersPhoneNumberDetailed} for more details.
       #
@@ -259,9 +271,11 @@ module Telnyx
       #
       #   @param inbound_call_screening [Symbol, Telnyx::Models::NumbersPhoneNumberDetailed::InboundCallScreening] The inbound_call_screening setting is a phone number configuration option variab
       #
-      #   @param messaging_profile_id [String, nil] Identifies the messaging profile associated with the phone number.
+      #   @param messaging_campaign_id [String, nil] Identifies the messaging campaign associated with the phone number's messaging p
       #
-      #   @param messaging_profile_name [String, nil] The name of the messaging profile associated with the phone number.
+      #   @param messaging_profile_id [String, nil] Identifies the messaging profile associated with the phone number. If the messag
+      #
+      #   @param messaging_profile_name [String, nil] The name of the messaging profile associated with the phone number. If the messa
       #
       #   @param source_type [Symbol, Telnyx::Models::NumbersPhoneNumberDetailed::SourceType, nil] Indicates if the phone number was purchased or ported in. For some numbers this
       #

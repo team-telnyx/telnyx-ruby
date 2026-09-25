@@ -38,8 +38,8 @@ module Telnyx
 
         # @!attribute sources
         #
-        #   @return [Array<Telnyx::Models::AI::Collections::Source>, nil]
-        optional :sources, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::Source] }
+        #   @return [Array<Telnyx::Models::AI::Collections::CollectionsSource>, nil]
+        optional :sources, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::Collections::CollectionsSource] }
 
         # @!attribute status
         #
@@ -69,7 +69,7 @@ module Telnyx
         #
         #   @param slug [String]
         #
-        #   @param sources [Array<Telnyx::Models::AI::Collections::Source>]
+        #   @param sources [Array<Telnyx::Models::AI::Collections::CollectionsSource>]
         #
         #   @param status [String]
         #

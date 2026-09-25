@@ -5,11 +5,11 @@ module Telnyx
         ?email_id: String,
         ?event_type: Telnyx::Models::EmailEventListParams::event_type,
         ?from: Time,
-        ?page_cursor: String,
         ?page_size: Integer,
+        ?page_cursor: String,
         ?to: Time,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Internal::EmailCursorPagination[Telnyx::Models::EmailEventListResponse]
+      ) -> Telnyx::Models::EmailEventListResponse
 
       def retrieve_stats: (
         ?from: Time,

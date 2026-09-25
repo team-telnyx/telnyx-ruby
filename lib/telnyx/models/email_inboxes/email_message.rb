@@ -32,13 +32,19 @@ module Telnyx
 
         # @!attribute events
         #
-        #   @return [Array<Telnyx::Models::MessageEvent>]
-        required :events, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessageEvent] }
+        #   @return [Array<Telnyx::Models::EmailInboxes::EmailMessage::Event>]
+        required :events, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::EmailInboxes::EmailMessage::Event] }
 
         # @!attribute from
         #
         #   @return [Telnyx::Models::EmailInboxes::EmailAddress]
         required :from, -> { Telnyx::EmailInboxes::EmailAddress }
+
+        # @!attribute metadata
+        #   Customer-supplied metadata stored with the message.
+        #
+        #   @return [Hash{Symbol=>Object}]
+        required :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!attribute record_type
         #
@@ -62,6 +68,12 @@ module Telnyx
         #
         #   @return [String]
         required :subject, String
+
+        # @!attribute tags
+        #   Customer-supplied tags stored with the message.
+        #
+        #   @return [Array<String>]
+        required :tags, Telnyx::Internal::Type::ArrayOf[String]
 
         # @!attribute template_id
         #
@@ -115,7 +127,7 @@ module Telnyx
         #   @return [Array<Telnyx::Models::SuppressedRecipient>, nil]
         optional :suppressed, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::SuppressedRecipient] }
 
-        # @!method initialize(id:, attachments:, bcc:, cc:, created_at:, events:, from:, record_type:, reply_to:, status:, subject:, template_id:, template_variables:, to:, inline_css: nil, recipient_statuses: nil, sandbox: nil, scheduled_at: nil, suppressed: nil)
+        # @!method initialize(id:, attachments:, bcc:, cc:, created_at:, events:, from:, metadata:, record_type:, reply_to:, status:, subject:, tags:, template_id:, template_variables:, to:, inline_css: nil, recipient_statuses: nil, sandbox: nil, scheduled_at: nil, suppressed: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::EmailInboxes::EmailMessage} for more details.
         #
@@ -129,9 +141,11 @@ module Telnyx
         #
         #   @param created_at [Time]
         #
-        #   @param events [Array<Telnyx::Models::MessageEvent>]
+        #   @param events [Array<Telnyx::Models::EmailInboxes::EmailMessage::Event>]
         #
         #   @param from [Telnyx::Models::EmailInboxes::EmailAddress]
+        #
+        #   @param metadata [Hash{Symbol=>Object}] Customer-supplied metadata stored with the message.
         #
         #   @param record_type [Symbol, Telnyx::Models::EmailInboxes::EmailMessage::RecordType]
         #
@@ -140,6 +154,8 @@ module Telnyx
         #   @param status [Symbol, Telnyx::Models::EmailInboxes::EmailMessage::Status] Current status of an email message. Lifecycle statuses (queued, scheduled, etc.)
         #
         #   @param subject [String]
+        #
+        #   @param tags [Array<String>] Customer-supplied tags stored with the message.
         #
         #   @param template_id [String, nil]
         #
@@ -218,6 +234,42 @@ module Telnyx
           #   @param size_bytes [Integer, nil] Attachment size in bytes.
           #
           #   @param url [String, nil] Telnyx-hosted public URL for the attachment content.
+        end
+
+        class Event < Telnyx::Internal::Type::BaseModel
+          # @!attribute occurred_at
+          #
+          #   @return [Time]
+          required :occurred_at, Time
+
+          # @!attribute type
+          #   Bare stored event names returned by message history. In addition to the normal
+          #   send and delivery lifecycle, polling can expose suppression, scan, and
+          #   quarantine lifecycle rows. Sharp canonical names gw_reject, injection_timeout,
+          #   and expired distinguish gateway rejection, ambiguous injection timeout, and MTA
+          #   expiration. The failed and bounced names remain valid for system/admin failures
+          #   and hard bounces respectively. Existing stored rows retain their original names.
+          #
+          #   @return [Symbol, Telnyx::Models::EmailEventType]
+          required :type, enum: -> { Telnyx::EmailEventType }
+
+          # @!attribute payload
+          #
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :payload, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+
+          # @!method initialize(occurred_at:, type:, payload: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::EmailInboxes::EmailMessage::Event} for more details.
+          #
+          #   An event embedded in a message response. The dedicated per-message events
+          #   endpoint additionally returns event_type and canonical_event_type.
+          #
+          #   @param occurred_at [Time]
+          #
+          #   @param type [Symbol, Telnyx::Models::EmailEventType] Bare stored event names returned by message history. In addition to the normal s
+          #
+          #   @param payload [Hash{Symbol=>Object}]
         end
 
         # @see Telnyx::Models::EmailInboxes::EmailMessage#record_type

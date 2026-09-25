@@ -13,22 +13,30 @@ module Telnyx
               )
             end
 
-          sig { returns(T.nilable(Telnyx::AI::Collections::Source)) }
+          sig { returns(T.nilable(Telnyx::AI::Collections::CollectionsSource)) }
           attr_reader :data
 
-          sig { params(data: Telnyx::AI::Collections::Source::OrHash).void }
+          sig do
+            params(
+              data: Telnyx::AI::Collections::CollectionsSource::OrHash
+            ).void
+          end
           attr_writer :data
 
           # Envelope containing a single collection source.
           sig do
-            params(data: Telnyx::AI::Collections::Source::OrHash).returns(
-              T.attached_class
-            )
+            params(
+              data: Telnyx::AI::Collections::CollectionsSource::OrHash
+            ).returns(T.attached_class)
           end
           def self.new(data: nil)
           end
 
-          sig { override.returns({ data: Telnyx::AI::Collections::Source }) }
+          sig do
+            override.returns(
+              { data: Telnyx::AI::Collections::CollectionsSource }
+            )
+          end
           def to_hash
           end
         end

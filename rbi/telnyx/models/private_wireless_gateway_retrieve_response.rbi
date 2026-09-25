@@ -11,21 +11,21 @@ module Telnyx
           )
         end
 
-      sig { returns(T.nilable(Telnyx::PrivateWirelessGateway)) }
+      sig { returns(T.nilable(Telnyx::WirelessPrivateWirelessGateway)) }
       attr_reader :data
 
-      sig { params(data: Telnyx::PrivateWirelessGateway::OrHash).void }
+      sig { params(data: Telnyx::WirelessPrivateWirelessGateway::OrHash).void }
       attr_writer :data
 
       sig do
-        params(data: Telnyx::PrivateWirelessGateway::OrHash).returns(
+        params(data: Telnyx::WirelessPrivateWirelessGateway::OrHash).returns(
           T.attached_class
         )
       end
       def self.new(data: nil)
       end
 
-      sig { override.returns({ data: Telnyx::PrivateWirelessGateway }) }
+      sig { override.returns({ data: Telnyx::WirelessPrivateWirelessGateway }) }
       def to_hash
       end
     end

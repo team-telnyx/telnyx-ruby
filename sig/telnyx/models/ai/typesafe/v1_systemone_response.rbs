@@ -5,7 +5,7 @@ module Telnyx
         type v1_systemone_response =
           {
             answers: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer],
-            model: String,
+            model: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::model,
             usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
           }
 
@@ -14,17 +14,17 @@ module Telnyx
 
           attr_accessor usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
 
-          attr_accessor model: String
+          attr_accessor model: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::model
 
           def initialize: (
             answers: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer],
-            model: String,
+            model: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::model,
             usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
           ) -> void
 
           def to_hash: -> {
             answers: ::Hash[Symbol, Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer],
-            model: String,
+            model: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::model,
             usage: Telnyx::Models::AI::Typesafe::V1SystemoneResponse::Usage
           }
 
@@ -118,6 +118,17 @@ module Telnyx
             end
 
             def self?.variants: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneResponse::answer]
+          end
+
+          type model = :"telnyx/decision-flash" | :"telnyx/decision-pro"
+
+          module Model
+            extend Telnyx::Internal::Type::Enum
+
+            TELNYX_DECISION_FLASH: :"telnyx/decision-flash"
+            TELNYX_DECISION_PRO: :"telnyx/decision-pro"
+
+            def self?.values: -> ::Array[Telnyx::Models::AI::Typesafe::V1SystemoneResponse::model]
           end
 
           type usage = { input_tokens: Integer, output_tokens: Integer }

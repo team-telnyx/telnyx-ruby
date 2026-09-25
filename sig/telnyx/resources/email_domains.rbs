@@ -55,6 +55,11 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::EmailDomainRetrieveHealthResponse
 
+      def rotate_dkim: (
+        String domain_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::EmailDomainRotateDkimResponse
+
       def verify: (
         String domain_id,
         ?request_options: Telnyx::request_opts

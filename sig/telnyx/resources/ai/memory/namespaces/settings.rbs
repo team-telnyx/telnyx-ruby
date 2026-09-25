@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class AI
+      class Memory
+        class Namespaces
+          class Settings
+            def list: (
+              String namespace,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse
+
+            def patch_all: (
+              String namespace,
+              ?summary: Telnyx::AI::Memory::Namespaces::SettingPatchAllParams::Summary?,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

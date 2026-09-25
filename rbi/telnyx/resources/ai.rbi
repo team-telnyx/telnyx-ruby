@@ -58,6 +58,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Typesafe) }
       attr_reader :typesafe
 
+      sig { returns(Telnyx::Resources::AI::Memory) }
+      attr_reader :memory
+
       # Performs semantic vector search across conversation history records.
       #
       # **How it works:**

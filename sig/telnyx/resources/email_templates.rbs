@@ -3,9 +3,12 @@ module Telnyx
     class EmailTemplates
       def create: (
         name: String,
+        ?autoescape: bool,
         ?html_body: String?,
+        ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::EmailTemplateCreateParams::VariableSchema]?,
         ?variables: ::Array[String],
         ?idempotency_key: String,
         ?request_options: Telnyx::request_opts
@@ -18,10 +21,13 @@ module Telnyx
 
       def update: (
         String id,
+        ?autoescape: bool,
         ?html_body: String?,
         ?name: String,
+        ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
         ?variables: ::Array[String],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::EmailTemplateResponse
@@ -42,10 +48,13 @@ module Telnyx
 
       def replace: (
         String id,
+        ?autoescape: bool,
         ?html_body: String?,
         ?name: String,
+        ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
         ?variables: ::Array[String],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::EmailTemplateResponse

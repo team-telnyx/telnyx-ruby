@@ -57,6 +57,13 @@ module Telnyx
         module Knowledge
         end
 
+        module Memory
+          module Namespaces
+            module Profiles
+            end
+          end
+        end
+
         module Missions
           module Runs
           end
@@ -211,6 +218,13 @@ module Telnyx
       module MeetingSessions
       end
 
+      module Memory
+        module Namespaces
+          module Profiles
+          end
+        end
+      end
+
       module Messages
       end
 
@@ -250,6 +264,11 @@ module Telnyx
       end
 
       module MobilePhoneNumbers
+      end
+
+      module Namespaces
+        module Profiles
+        end
       end
 
       module Networks
@@ -293,6 +312,9 @@ module Telnyx
       end
 
       module Profile
+      end
+
+      module Profiles
       end
 
       module Queues

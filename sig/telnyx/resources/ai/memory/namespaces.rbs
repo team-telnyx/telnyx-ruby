@@ -1,0 +1,21 @@
+module Telnyx
+  module Resources
+    class AI
+      class Memory
+        class Namespaces
+          attr_reader profiles: Telnyx::Resources::AI::Memory::Namespaces::Profiles
+
+          attr_reader settings: Telnyx::Resources::AI::Memory::Namespaces::Settings
+
+          def retrieve: (
+            String operation_id,
+            namespace: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Memory::NamespaceRetrieveResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end
