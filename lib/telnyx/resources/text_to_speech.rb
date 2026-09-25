@@ -113,7 +113,7 @@ module Telnyx
       # `Authorization: Bearer <API_KEY>` header. Send JSON frames with text to
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
-      # Supported providers: `aws`, `telnyx`, `azure`, `murfai`, `minimax`, `resemble`,
+      # Supported providers: `aws`, `telnyx`, `azure`, `minimax`, `resemble`,
       # `elevenlabs`, `xai`, `humain`.
       #
       # **Connection flow:**

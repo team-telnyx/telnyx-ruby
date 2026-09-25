@@ -228,11 +228,6 @@ module Telnyx
             :minimax,
             Telnyx::TextToSpeechRetrieveSpeechParams::Provider::TaggedSymbol
           )
-        MURFAI =
-          T.let(
-            :murfai,
-            Telnyx::TextToSpeechRetrieveSpeechParams::Provider::TaggedSymbol
-          )
         RESEMBLE =
           T.let(
             :resemble,

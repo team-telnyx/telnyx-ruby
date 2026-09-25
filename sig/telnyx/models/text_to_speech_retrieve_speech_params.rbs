@@ -88,7 +88,6 @@ module Telnyx
         | :azure
         | :elevenlabs
         | :minimax
-        | :murfai
         | :resemble
         | :xai
         | :humain
@@ -101,7 +100,6 @@ module Telnyx
         AZURE: :azure
         ELEVENLABS: :elevenlabs
         MINIMAX: :minimax
-        MURFAI: :murfai
         RESEMBLE: :resemble
         XAI: :xai
         HUMAIN: :humain

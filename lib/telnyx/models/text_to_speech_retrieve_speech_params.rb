@@ -101,7 +101,6 @@ module Telnyx
         AZURE = :azure
         ELEVENLABS = :elevenlabs
         MINIMAX = :minimax
-        MURFAI = :murfai
         RESEMBLE = :resemble
         XAI = :xai
         HUMAIN = :humain
