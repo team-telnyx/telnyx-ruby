@@ -104,6 +104,7 @@ module Telnyx
         RESEMBLE = :resemble
         XAI = :xai
         HUMAIN = :humain
+        SONIOX = :soniox
 
         # @!method self.values
         #   @return [Array<Symbol>]

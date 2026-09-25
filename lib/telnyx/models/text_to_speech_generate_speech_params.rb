@@ -70,6 +70,13 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Resemble, nil]
       optional :resemble, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble }
 
+      # @!attribute soniox
+      #   Soniox provider-specific parameters. Every voice speaks all supported languages;
+      #   set `language` to the language of the text.
+      #
+      #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox, nil]
+      optional :soniox, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox }
+
       # @!attribute telnyx
       #   Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
       #   `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
@@ -115,7 +122,7 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Xai, nil]
       optional :xai, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Xai }
 
-      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, soniox: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {::Telnyx::Models::TextToSpeechGenerateSpeechParams} for more details.
       #
@@ -138,6 +145,8 @@ module Telnyx
       #   @param provider [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Provider] TTS provider. Required unless `voice` is provided.
       #
       #   @param resemble [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Resemble] Resemble AI provider-specific parameters.
+      #
+      #   @param soniox [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox] Soniox provider-specific parameters. Every voice speaks all supported languages;
       #
       #   @param telnyx [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx] Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`, `
       #
@@ -431,6 +440,7 @@ module Telnyx
         RESEMBLE = :resemble
         XAI = :xai
         HUMAIN = :humain
+        SONIOX = :soniox
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -471,6 +481,119 @@ module Telnyx
         #   @param precision [String] Synthesis precision.
         #
         #   @param sample_rate [String] Audio sample rate.
+      end
+
+      class Soniox < ::Telnyx::Internal::Type::BaseModel
+        # @!attribute voice_id
+        #   Soniox voice name from the
+        #   [voices listing](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices),
+        #   for example `Emma`.
+        #
+        #   @return [String]
+        required :voice_id, String
+
+        # @!attribute audio_format
+        #   Audio output format.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat, nil]
+        optional :audio_format, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat }
+
+        # @!attribute language
+        #   Two-letter ISO 639-1 code of the text.
+        #
+        #   @return [String, nil]
+        optional :language, String
+
+        # @!attribute model_id
+        #   Soniox model.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::ModelID, nil]
+        optional :model_id, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::ModelID }
+
+        # @!attribute reduce_silence
+        #   Shortens the pauses between words.
+        #
+        #   @return [Boolean, nil]
+        optional :reduce_silence, ::Telnyx::Internal::Type::Boolean
+
+        # @!attribute sample_rate
+        #   Audio sample rate in Hz. `pcm_mulaw` and `pcm_alaw` accept 8000 only; `mp3` does
+        #   not accept 8000. Defaults to 24000, or 8000 for `pcm_mulaw` and `pcm_alaw`.
+        #
+        #   @return [Integer, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::SampleRate, nil]
+        optional :sample_rate, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox::SampleRate }
+
+        # @!attribute speed
+        #   Speaking rate. 1.0 is normal speed.
+        #
+        #   @return [Float, nil]
+        optional :speed, Float
+
+        # @!method initialize(voice_id:, audio_format: nil, language: nil, model_id: nil, reduce_silence: nil, sample_rate: nil, speed: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox} for more details.
+        #
+        #   Soniox provider-specific parameters. Every voice speaks all supported languages;
+        #   set `language` to the language of the text.
+        #
+        #   @param voice_id [String] Soniox voice name from the [voices listing](https://developers.telnyx.com/api-re
+        #
+        #   @param audio_format [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::AudioFormat] Audio output format.
+        #
+        #   @param language [String] Two-letter ISO 639-1 code of the text.
+        #
+        #   @param model_id [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::ModelID] Soniox model.
+        #
+        #   @param reduce_silence [Boolean] Shortens the pauses between words.
+        #
+        #   @param sample_rate [Integer, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::SampleRate] Audio sample rate in Hz. `pcm_mulaw` and `pcm_alaw` accept 8000 only; `mp3` does
+        #
+        #   @param speed [Float] Speaking rate. 1.0 is normal speed.
+
+        # Audio output format.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox#audio_format
+        module AudioFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          MP3 = :mp3
+          WAV = :wav
+          PCM_S16LE = :pcm_s16le
+          PCM_MULAW = :pcm_mulaw
+          PCM_ALAW = :pcm_alaw
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Soniox model.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox#model_id
+        module ModelID
+          extend ::Telnyx::Internal::Type::Enum
+
+          TTS_RT_V2 = :"tts-rt-v2"
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Audio sample rate in Hz. `pcm_mulaw` and `pcm_alaw` accept 8000 only; `mp3` does
+        # not accept 8000. Defaults to 24000, or 8000 for `pcm_mulaw` and `pcm_alaw`.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox#sample_rate
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          SAMPLE_RATE_8000 = 8000
+          SAMPLE_RATE_16000 = 16_000
+          SAMPLE_RATE_24000 = 24_000
+          SAMPLE_RATE_44100 = 44_100
+          SAMPLE_RATE_48000 = 48_000
+
+          # @!method self.values
+          #   @return [Array<Integer>]
+        end
       end
 
       class Telnyx < ::Telnyx::Internal::Type::BaseModel

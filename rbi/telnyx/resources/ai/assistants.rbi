@@ -84,7 +84,7 @@ module Telnyx
                 )
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
-            voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
             idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
@@ -298,7 +298,7 @@ module Telnyx
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             version_name: String,
-            voice_settings: Telnyx::AI::VoiceSettings::OrHash,
+            voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)

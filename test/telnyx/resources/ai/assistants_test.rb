@@ -47,7 +47,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_created_at: Time | nil,
         version_id: String | nil,
         version_name: String | nil,
-        voice_settings: Telnyx::AI::VoiceSettings | nil,
+        voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end
@@ -97,7 +97,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_created_at: Time | nil,
         version_id: String | nil,
         version_name: String | nil,
-        voice_settings: Telnyx::AI::VoiceSettings | nil,
+        voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end
@@ -147,7 +147,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_created_at: Time | nil,
         version_id: String | nil,
         version_name: String | nil,
-        voice_settings: Telnyx::AI::VoiceSettings | nil,
+        voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end
@@ -252,7 +252,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_created_at: Time | nil,
         version_id: String | nil,
         version_name: String | nil,
-        voice_settings: Telnyx::AI::VoiceSettings | nil,
+        voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end

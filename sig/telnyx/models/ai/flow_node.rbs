@@ -16,7 +16,7 @@ module Telnyx
           tools_mode: Telnyx::Models::AI::FlowNode::tools_mode,
           transcription: Telnyx::AI::TranscriptionSettings,
           type: Telnyx::Models::AI::FlowNode::type_,
-          voice_settings: Telnyx::AI::VoiceSettings
+          voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings
         }
 
       class FlowNode < Telnyx::Internal::Type::BaseModel
@@ -78,11 +78,11 @@ module Telnyx
           Telnyx::Models::AI::FlowNode::type_
         ) -> Telnyx::Models::AI::FlowNode::type_
 
-        attr_reader voice_settings: Telnyx::AI::VoiceSettings?
+        attr_reader voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings?
 
         def voice_settings=: (
-          Telnyx::AI::VoiceSettings
-        ) -> Telnyx::AI::VoiceSettings
+          Telnyx::AI::InferenceEmbeddingVoiceSettings
+        ) -> Telnyx::AI::InferenceEmbeddingVoiceSettings
 
         def initialize: (
           id: String,
@@ -98,7 +98,7 @@ module Telnyx
           ?tools_mode: Telnyx::Models::AI::FlowNode::tools_mode,
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?type: Telnyx::Models::AI::FlowNode::type_,
-          ?voice_settings: Telnyx::AI::VoiceSettings
+          ?voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings
         ) -> void
 
         def to_hash: -> {
@@ -115,7 +115,7 @@ module Telnyx
           tools_mode: Telnyx::Models::AI::FlowNode::tools_mode,
           transcription: Telnyx::AI::TranscriptionSettings,
           type: Telnyx::Models::AI::FlowNode::type_,
-          voice_settings: Telnyx::AI::VoiceSettings
+          voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings
         }
 
         type instructions_mode = :replace | :append

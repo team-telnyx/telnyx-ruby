@@ -95,7 +95,7 @@ module Telnyx
         #
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
         #
-        # @param voice_settings [Telnyx::Models::AI::VoiceSettings] Body param
+        # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings] Body param
         #
         # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
         #
@@ -219,7 +219,7 @@ module Telnyx
         #
         # @param version_name [String] Human-readable name for the assistant version.
         #
-        # @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+        # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings]
         #
         # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #

@@ -20,13 +20,13 @@ module Telnyx
       # parameters.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `elevenlabs`, `minimax`,
-      # `resemble`, `xai`, `humain`.
+      # `resemble`, `xai`, `humain`, `soniox`.
       #
       # The Telnyx `Ultra` model supports 44 languages with emotion control, speed
       # adjustment, and volume control. Use the `telnyx` provider-specific parameters to
       # configure these features.
       #
-      # @overload generate_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @overload generate_speech(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, soniox: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #
       # @param aws [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Aws] AWS Polly provider-specific parameters.
       #
@@ -47,6 +47,8 @@ module Telnyx
       # @param provider [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Provider] TTS provider. Required unless `voice` is provided.
       #
       # @param resemble [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Resemble] Resemble AI provider-specific parameters.
+      #
+      # @param soniox [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox] Soniox provider-specific parameters. Every voice speaks all supported languages;
       #
       # @param telnyx [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx] Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`, `
       #
@@ -114,7 +116,7 @@ module Telnyx
       # synthesize; receive JSON frames containing base64-encoded audio chunks.
       #
       # Supported providers: `aws`, `telnyx`, `azure`, `minimax`, `resemble`,
-      # `elevenlabs`, `xai`, `humain`.
+      # `elevenlabs`, `xai`, `humain`, `soniox`.
       #
       # **Connection flow:**
       #

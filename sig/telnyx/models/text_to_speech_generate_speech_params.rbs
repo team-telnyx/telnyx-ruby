@@ -12,6 +12,7 @@ module Telnyx
         output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
         provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
         resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
+        soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox,
         telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         text: String,
         text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,
@@ -81,6 +82,12 @@ module Telnyx
         ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble
       ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble
 
+      attr_reader soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox?
+
+      def soniox=: (
+        ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox
+      ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox
+
       attr_reader telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx?
 
       def telnyx=: (
@@ -122,6 +129,7 @@ module Telnyx
         ?output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
         ?provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
         ?resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
+        ?soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox,
         ?telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         ?text: String,
         ?text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,
@@ -142,6 +150,7 @@ module Telnyx
         output_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::output_type,
         provider: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider,
         resemble: ::Telnyx::TextToSpeechGenerateSpeechParams::Resemble,
+        soniox: ::Telnyx::TextToSpeechGenerateSpeechParams::Soniox,
         telnyx: ::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx,
         text: String,
         text_type: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::text_type,
@@ -437,6 +446,7 @@ module Telnyx
         | :resemble
         | :xai
         | :humain
+        | :soniox
 
       module Provider
         extend ::Telnyx::Internal::Type::Enum
@@ -449,6 +459,7 @@ module Telnyx
         RESEMBLE: :resemble
         XAI: :xai
         HUMAIN: :humain
+        SONIOX: :soniox
 
         def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider]
       end
@@ -491,6 +502,109 @@ module Telnyx
           precision: String,
           sample_rate: String
         }
+      end
+
+      type soniox =
+        {
+          voice_id: String,
+          audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::audio_format,
+          language: String,
+          model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::model_id,
+          reduce_silence: bool,
+          sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::sample_rate,
+          speed: Float
+        }
+
+      class Soniox < ::Telnyx::Internal::Type::BaseModel
+        attr_accessor voice_id: String
+
+        attr_reader audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::audio_format?
+
+        def audio_format=: (
+          ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::audio_format
+        ) -> ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::audio_format
+
+        attr_reader language: String?
+
+        def language=: (String) -> String
+
+        attr_reader model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::model_id?
+
+        def model_id=: (
+          ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::model_id
+        ) -> ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::model_id
+
+        attr_reader reduce_silence: bool?
+
+        def reduce_silence=: (bool) -> bool
+
+        attr_reader sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::sample_rate?
+
+        def sample_rate=: (
+          ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::sample_rate
+        ) -> ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::sample_rate
+
+        attr_reader speed: Float?
+
+        def speed=: (Float) -> Float
+
+        def initialize: (
+          voice_id: String,
+          ?audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::audio_format,
+          ?language: String,
+          ?model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::model_id,
+          ?reduce_silence: bool,
+          ?sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::sample_rate,
+          ?speed: Float
+        ) -> void
+
+        def to_hash: -> {
+          voice_id: String,
+          audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::audio_format,
+          language: String,
+          model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::model_id,
+          reduce_silence: bool,
+          sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::sample_rate,
+          speed: Float
+        }
+
+        type audio_format = :mp3 | :wav | :pcm_s16le | :pcm_mulaw | :pcm_alaw
+
+        module AudioFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          MP3: :mp3
+          WAV: :wav
+          PCM_S16LE: :pcm_s16le
+          PCM_MULAW: :pcm_mulaw
+          PCM_ALAW: :pcm_alaw
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::audio_format]
+        end
+
+        type model_id = :"tts-rt-v2"
+
+        module ModelID
+          extend ::Telnyx::Internal::Type::Enum
+
+          TTS_RT_V2: :"tts-rt-v2"
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::model_id]
+        end
+
+        type sample_rate = 8000 | 16000 | 24000 | 44100 | 48000
+
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          SAMPLE_RATE_8000: 8000
+          SAMPLE_RATE_16000: 16000
+          SAMPLE_RATE_24000: 24000
+          SAMPLE_RATE_44100: 44100
+          SAMPLE_RATE_48000: 48000
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Soniox::sample_rate]
+        end
       end
 
       type telnyx =

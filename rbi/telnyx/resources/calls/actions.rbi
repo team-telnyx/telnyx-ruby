@@ -467,7 +467,8 @@ module Telnyx
                 Telnyx::Calls::AwsVoiceSettings::OrHash,
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::XaiVoiceSettings::OrHash,
+                Telnyx::Calls::SonioxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingAIResponse)
@@ -547,6 +548,12 @@ module Telnyx
           # - **Fish Audio:** Use `FishAudio.<ModelId>.<VoiceId>` (e.g.,
           #   `FishAudio.s2.1-pro.<reference_id>`). Supported models: `s2.1-pro`, `s2-pro`,
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
+          # - **Soniox:** Use `Soniox.<ModelId>.<VoiceId>` (e.g., `Soniox.tts-rt-v2.Emma`).
+          #   Supported model: `tts-rt-v2`. Browse the catalog via the
+          #   [Voices API](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices).
+          #   Every voice speaks all supported languages; set `language` to the two-letter
+          #   ISO 639-1 code of the text, for example `it`. SSML is not supported. Use
+          #   `voice_settings` to configure `speed` (0.7 to 1.3) and `reduce_silence`.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
           # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
@@ -686,7 +693,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::XaiVoiceSettings::OrHash,
+                Telnyx::Calls::SonioxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -740,6 +748,12 @@ module Telnyx
           # - **Fish Audio:** Use `FishAudio.<ModelId>.<VoiceId>` (e.g.,
           #   `FishAudio.s2.1-pro.<reference_id>`). Supported models: `s2.1-pro`, `s2-pro`,
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
+          # - **Soniox:** Use `Soniox.<ModelId>.<VoiceId>` (e.g., `Soniox.tts-rt-v2.Emma`).
+          #   Supported model: `tts-rt-v2`. Browse the catalog via the
+          #   [Voices API](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices).
+          #   Every voice speaks all supported languages; set `language` to the two-letter
+          #   ISO 639-1 code of the text, for example `it`. SSML is not supported. Use
+          #   `voice_settings` to configure `speed` (0.7 to 1.3) and `reduce_silence`.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
           # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
@@ -1208,7 +1222,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::XaiVoiceSettings::OrHash,
+                Telnyx::Calls::SonioxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1262,6 +1277,12 @@ module Telnyx
           # - **Fish Audio:** Use `FishAudio.<ModelId>.<VoiceId>` (e.g.,
           #   `FishAudio.s2.1-pro.<reference_id>`). Supported models: `s2.1-pro`, `s2-pro`,
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
+          # - **Soniox:** Use `Soniox.<ModelId>.<VoiceId>` (e.g., `Soniox.tts-rt-v2.Emma`).
+          #   Supported model: `tts-rt-v2`. Browse the catalog via the
+          #   [Voices API](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices).
+          #   Every voice speaks all supported languages; set `language` to the two-letter
+          #   ISO 639-1 code of the text, for example `it`. SSML is not supported. Use
+          #   `voice_settings` to configure `speed` (0.7 to 1.3) and `reduce_silence`.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
           # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:
@@ -1423,7 +1444,8 @@ module Telnyx
                 Telnyx::AzureVoiceSettings::OrHash,
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash
+                Telnyx::XaiVoiceSettings::OrHash,
+                Telnyx::Calls::SonioxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartConversationRelayResponse)
@@ -1526,6 +1548,12 @@ module Telnyx
           # - **Fish Audio:** Use `FishAudio.<ModelId>.<VoiceId>` (e.g.,
           #   `FishAudio.s2.1-pro.<reference_id>`). Supported models: `s2.1-pro`, `s2-pro`,
           #   `s1`. `VoiceId` is a Fish Voice-Library reference ID.
+          # - **Soniox:** Use `Soniox.<ModelId>.<VoiceId>` (e.g., `Soniox.tts-rt-v2.Emma`).
+          #   Supported model: `tts-rt-v2`. Browse the catalog via the
+          #   [Voices API](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices).
+          #   Every voice speaks all supported languages; set `language` to the two-letter
+          #   ISO 639-1 code of the text, for example `it`. SSML is not supported. Use
+          #   `voice_settings` to configure `speed` (0.7 to 1.3) and `reduce_silence`.
           # - **xAI:** Use `xAI.<VoiceId>` (e.g., `xAI.eve`). Available voices: `eve`,
           #   `ara`, `rex`, `sal`, `leo`.
           # - **Humain:** Use `Humain.<VoiceId>` (e.g., `Humain.sara-ar`). Available voices:

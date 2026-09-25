@@ -91,6 +91,7 @@ module Telnyx
         | :resemble
         | :xai
         | :humain
+        | :soniox
 
       module Provider
         extend Telnyx::Internal::Type::Enum
@@ -103,6 +104,7 @@ module Telnyx
         RESEMBLE: :resemble
         XAI: :xai
         HUMAIN: :humain
+        SONIOX: :soniox
 
         def self?.values: -> ::Array[Telnyx::Models::TextToSpeechRetrieveSpeechParams::provider]
       end
