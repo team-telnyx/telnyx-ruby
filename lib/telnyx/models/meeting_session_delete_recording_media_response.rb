@@ -28,20 +28,20 @@ module Telnyx
 
         # @!attribute provider
         #
-        #   @return [Symbol, :recall]
-        required :provider, const: :recall
+        #   @return [Symbol, :telnyx]
+        required :provider, const: :telnyx
 
         # @!attribute scope
         #
         #   @return [Symbol, :provider_recording_media]
         required :scope, const: :provider_recording_media
 
-        # @!method initialize(deletion_status:, meeting_session_id:, provider: :recall, scope: :provider_recording_media)
+        # @!method initialize(deletion_status:, meeting_session_id:, provider: :telnyx, scope: :provider_recording_media)
         #   @param deletion_status [Symbol, Telnyx::Models::MeetingSessionDeleteRecordingMediaResponse::Data::DeletionStatus]
         #
         #   @param meeting_session_id [String] The account-scoped Meeting Session identifier.
         #
-        #   @param provider [Symbol, :recall]
+        #   @param provider [Symbol, :telnyx]
         #
         #   @param scope [Symbol, :provider_recording_media]
 

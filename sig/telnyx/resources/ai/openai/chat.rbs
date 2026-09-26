@@ -12,7 +12,7 @@ module Telnyx
             ?frequency_penalty: Float,
             ?length_penalty: Float,
             ?logprobs: bool,
-            ?max_tokens: Integer,
+            ?max_tokens: Integer?,
             ?min_p: Float,
             ?mode: Telnyx::Models::AI::ChatCompletionRequest::mode,
             ?model: String,
