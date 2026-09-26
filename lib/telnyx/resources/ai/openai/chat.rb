@@ -31,7 +31,7 @@ module Telnyx
           #
           # @param logprobs [Boolean] Whether to return log probabilities of the output tokens or not. If true, return
           #
-          # @param max_tokens [Integer] Maximum number of completion tokens the model should generate.
+          # @param max_tokens [Integer, nil] Maximum number of completion (output) tokens the model may generate per request.
           #
           # @param min_p [Float] This is an alternative to `top_p` that [many prefer](https://github.com/huggingf
           #

@@ -14,7 +14,10 @@ module Telnyx
         required :call_control_id, String
 
         # @!attribute cause
-        #   Cause for call rejection.
+        #   Cause for call rejection. The cause sets the SIP response the caller receives:
+        #   `USER_BUSY` sends 486 User Busy, `CALL_REJECTED` sends 603 Decline, `NOT_FOUND`
+        #   sends 404 Not Found, and `TEMPORARILY_UNAVAILABLE` sends 480 Temporarily
+        #   Unavailable.
         #
         #   @return [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause]
         required :cause, enum: -> { Telnyx::Calls::ActionRejectParams::Cause }
@@ -39,7 +42,7 @@ module Telnyx
         #
         #   @param call_control_id [String]
         #
-        #   @param cause [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause] Cause for call rejection.
+        #   @param cause [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause] Cause for call rejection. The cause sets the SIP response the caller receives: `
         #
         #   @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
@@ -47,11 +50,16 @@ module Telnyx
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-        # Cause for call rejection.
+        # Cause for call rejection. The cause sets the SIP response the caller receives:
+        # `USER_BUSY` sends 486 User Busy, `CALL_REJECTED` sends 603 Decline, `NOT_FOUND`
+        # sends 404 Not Found, and `TEMPORARILY_UNAVAILABLE` sends 480 Temporarily
+        # Unavailable.
         module Cause
           extend Telnyx::Internal::Type::Enum
 
           CALL_REJECTED = :CALL_REJECTED
+          NOT_FOUND = :NOT_FOUND
+          TEMPORARILY_UNAVAILABLE = :TEMPORARILY_UNAVAILABLE
           USER_BUSY = :USER_BUSY
 
           # @!method self.values

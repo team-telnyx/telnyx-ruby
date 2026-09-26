@@ -42,12 +42,15 @@ module Telnyx
           request_options: Telnyx::RequestOptions
         }
 
-        type cause = :CALL_REJECTED | :USER_BUSY
+        type cause =
+          :CALL_REJECTED | :NOT_FOUND | :TEMPORARILY_UNAVAILABLE | :USER_BUSY
 
         module Cause
           extend Telnyx::Internal::Type::Enum
 
           CALL_REJECTED: :CALL_REJECTED
+          NOT_FOUND: :NOT_FOUND
+          TEMPORARILY_UNAVAILABLE: :TEMPORARILY_UNAVAILABLE
           USER_BUSY: :USER_BUSY
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionRejectParams::cause]

@@ -778,7 +778,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param cause [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause] Cause for call rejection.
+        # @param cause [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause] Cause for call rejection. The cause sets the SIP response the caller receives: `
         #
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
