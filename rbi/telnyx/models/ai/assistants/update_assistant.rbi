@@ -49,6 +49,23 @@ module Telnyx
           end
           attr_writer :conversation_flow
 
+          # Splits the conversation between a frontend model that talks to the caller and a
+          # backend model that does the work. On the GPT-Live route the frontend model
+          # cannot call tools at all — when it needs something done it raises a delegation
+          # and waits. On the chat completion route the frontend keeps a single `delegate`
+          # tool that returns immediately, so the conversation carries on while the backend
+          # works. Either way the backend's answer is spoken as commentary or kept as silent
+          # context, depending on `speak_results`. Beta feature.
+          sig { returns(T.nilable(Telnyx::AI::DelegationSettings)) }
+          attr_reader :delegation_settings
+
+          sig do
+            params(
+              delegation_settings: Telnyx::AI::DelegationSettings::OrHash
+            ).void
+          end
+          attr_writer :delegation_settings
+
           sig { returns(T.nilable(String)) }
           attr_reader :description
 
@@ -382,6 +399,21 @@ module Telnyx
           end
           attr_writer :voice_settings
 
+          # Streams conversation and telephony events to a WebSocket server you host, and
+          # accepts messages injected back into the conversation. Telnyx opens the
+          # connection as a client, once per conversation. Delivery is best effort
+          # throughout: while the connection is down events are dropped rather than queued,
+          # and no socket failure is ever allowed to affect the call. Beta feature.
+          sig { returns(T.nilable(Telnyx::AI::WebsocketSettings)) }
+          attr_reader :websocket_settings
+
+          sig do
+            params(
+              websocket_settings: Telnyx::AI::WebsocketSettings::OrHash
+            ).void
+          end
+          attr_writer :websocket_settings
+
           # Configuration settings for the assistant's web widget.
           sig { returns(T.nilable(Telnyx::AI::WidgetSettings)) }
           attr_reader :widget_settings
@@ -395,6 +427,7 @@ module Telnyx
             params(
               a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
               conversation_flow: Telnyx::AI::ConversationFlowReq::OrHash,
+              delegation_settings: Telnyx::AI::DelegationSettings::OrHash,
               description: String,
               dynamic_variables: T::Hash[Symbol, T.anything],
               dynamic_variables_webhook_timeout_ms: Integer,
@@ -443,6 +476,7 @@ module Telnyx
               version_name: String,
               voice_settings:
                 Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash,
+              websocket_settings: Telnyx::AI::WebsocketSettings::OrHash,
               widget_settings: Telnyx::AI::WidgetSettings::OrHash
             ).returns(T.attached_class)
           end
@@ -463,6 +497,14 @@ module Telnyx
             # unique node/edge IDs, that `start_node_id` references a real node, and that
             # every edge's endpoints reference real nodes.
             conversation_flow: nil,
+            # Splits the conversation between a frontend model that talks to the caller and a
+            # backend model that does the work. On the GPT-Live route the frontend model
+            # cannot call tools at all — when it needs something done it raises a delegation
+            # and waits. On the chat completion route the frontend keeps a single `delegate`
+            # tool that returns immediately, so the conversation carries on while the backend
+            # works. Either way the backend's answer is spoken as commentary or kept as silent
+            # context, depending on `speak_results`. Beta feature.
+            delegation_settings: nil,
             description: nil,
             # Map of dynamic variables and their default values
             dynamic_variables: nil,
@@ -559,6 +601,12 @@ module Telnyx
             # Human-readable name for the assistant version.
             version_name: nil,
             voice_settings: nil,
+            # Streams conversation and telephony events to a WebSocket server you host, and
+            # accepts messages injected back into the conversation. Telnyx opens the
+            # connection as a client, once per conversation. Delivery is best effort
+            # throughout: while the connection is down events are dropped rather than queued,
+            # and no socket failure is ever allowed to affect the call. Beta feature.
+            websocket_settings: nil,
             # Configuration settings for the assistant's web widget.
             widget_settings: nil
           )
@@ -569,6 +617,7 @@ module Telnyx
               {
                 a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent],
                 conversation_flow: Telnyx::AI::ConversationFlowReq,
+                delegation_settings: Telnyx::AI::DelegationSettings,
                 description: String,
                 dynamic_variables: T::Hash[Symbol, T.anything],
                 dynamic_variables_webhook_timeout_ms: Integer,
@@ -617,6 +666,7 @@ module Telnyx
                 transcription: Telnyx::AI::TranscriptionSettings,
                 version_name: String,
                 voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
+                websocket_settings: Telnyx::AI::WebsocketSettings,
                 widget_settings: Telnyx::AI::WidgetSettings
               }
             )

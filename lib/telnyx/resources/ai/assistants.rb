@@ -39,7 +39,7 @@ module Telnyx
         # Creates a new AI assistant from the provided configuration, including its model,
         # instructions, and attached tools, and returns the created assistant.
         #
-        # @overload create(instructions:, name:, a2a_agents: nil, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, idempotency_key: nil, request_options: {})
+        # @overload create(instructions:, name:, a2a_agents: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil, idempotency_key: nil, request_options: {})
         #
         # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
         #
@@ -48,6 +48,8 @@ module Telnyx
         # @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] Body param: A2A agents this assistant can delegate to. Tools are not stored here
         #
         # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Body param: Conversation flow as supplied by API clients (create / update).
+        #
+        # @param delegation_settings [Telnyx::Models::AI::DelegationSettings] Body param: Splits the conversation between a frontend model that talks to the c
         #
         # @param description [String] Body param
         #
@@ -96,6 +98,8 @@ module Telnyx
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
         #
         # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings] Body param
+        #
+        # @param websocket_settings [Telnyx::Models::AI::WebsocketSettings] Body param: Streams conversation and telephony events to a WebSocket server you
         #
         # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
         #
@@ -157,13 +161,15 @@ module Telnyx
         # assistant. The request can also control how the change is promoted across
         # assistant versions.
         #
-        # @overload update(assistant_id, a2a_agents: nil, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload update(assistant_id, a2a_agents: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String] Unique identifier of the assistant.
         #
         # @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
         # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Conversation flow as supplied by API clients (create / update).
+        #
+        # @param delegation_settings [Telnyx::Models::AI::DelegationSettings] Splits the conversation between a frontend model that talks to the caller and a
         #
         # @param description [String]
         #
@@ -220,6 +226,8 @@ module Telnyx
         # @param version_name [String] Human-readable name for the assistant version.
         #
         # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings]
+        #
+        # @param websocket_settings [Telnyx::Models::AI::WebsocketSettings] Streams conversation and telephony events to a WebSocket server you host, and ac
         #
         # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #
