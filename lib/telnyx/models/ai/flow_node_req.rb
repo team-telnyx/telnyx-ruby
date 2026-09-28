@@ -89,7 +89,8 @@ module Telnyx
 
         # @!attribute type
         #   Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        #   standalone tool execution (see `ToolNodeReq`).
+        #   standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        #   `SpeakNodeReq`).
         #
         #   @return [Symbol, Telnyx::Models::AI::FlowNodeReq::Type, nil]
         optional :type, enum: -> { Telnyx::AI::FlowNodeReq::Type }
@@ -167,7 +168,8 @@ module Telnyx
         end
 
         # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        # standalone tool execution (see `ToolNodeReq`).
+        # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        # `SpeakNodeReq`).
         #
         # @see Telnyx::Models::AI::FlowNodeReq#type
         module Type
