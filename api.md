@@ -3228,3 +3228,12 @@ Methods:
 Methods:
 
 - <code title="post /machine-payments/account-credit">client.machine_payments.<a href="./lib/telnyx/resources/machine_payments.rb">account_credit</a>(\*\*params)</code>
+
+# SpendLimits
+
+Methods:
+
+- <code title="post /spend_limits">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">create</a>(\*\*params)</code>
+- <code title="patch /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">update</a>(\*\*params)</code>
+- <code title="get /spend_limits">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">list</a>()</code>
+- <code title="delete /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">delete</a>(\*\*params)</code>

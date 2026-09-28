@@ -1813,6 +1813,20 @@ module Telnyx
 
   class SpeechToTextRetrieveTranscriptionParams = Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
 
+  class SpendLimit = Telnyx::Models::SpendLimit
+
+  class SpendLimitCreateParams = Telnyx::Models::SpendLimitCreateParams
+
+  class SpendLimitDeleteParams = Telnyx::Models::SpendLimitDeleteParams
+
+  class SpendLimitListParams = Telnyx::Models::SpendLimitListParams
+
+  module SpendLimitPeriod = Telnyx::Models::SpendLimitPeriod
+
+  class SpendLimitResponse = Telnyx::Models::SpendLimitResponse
+
+  class SpendLimitUpdateParams = Telnyx::Models::SpendLimitUpdateParams
+
   module Storage = Telnyx::Models::Storage
 
   class StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams

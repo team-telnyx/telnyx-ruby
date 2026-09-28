@@ -1869,6 +1869,20 @@ module Telnyx
 
   SpeechToTextRetrieveTranscriptionParams = Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
 
+  SpendLimit = Telnyx::Models::SpendLimit
+
+  SpendLimitCreateParams = Telnyx::Models::SpendLimitCreateParams
+
+  SpendLimitDeleteParams = Telnyx::Models::SpendLimitDeleteParams
+
+  SpendLimitListParams = Telnyx::Models::SpendLimitListParams
+
+  SpendLimitPeriod = Telnyx::Models::SpendLimitPeriod
+
+  SpendLimitResponse = Telnyx::Models::SpendLimitResponse
+
+  SpendLimitUpdateParams = Telnyx::Models::SpendLimitUpdateParams
+
   Storage = Telnyx::Models::Storage
 
   StorageListMigrationSourceCoverageParams = Telnyx::Models::StorageListMigrationSourceCoverageParams

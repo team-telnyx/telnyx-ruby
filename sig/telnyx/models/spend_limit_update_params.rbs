@@ -1,0 +1,127 @@
+module Telnyx
+  module Models
+    type spend_limit_update_params =
+      {
+        product: String,
+        body: Telnyx::Models::SpendLimitUpdateParams::body,
+        period: Telnyx::Models::spend_limit_period
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SpendLimitUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor product: String
+
+      attr_accessor body: Telnyx::Models::SpendLimitUpdateParams::body
+
+      attr_reader period: Telnyx::Models::spend_limit_period?
+
+      def period=: (
+        Telnyx::Models::spend_limit_period
+      ) -> Telnyx::Models::spend_limit_period
+
+      def initialize: (
+        product: String,
+        body: Telnyx::Models::SpendLimitUpdateParams::body,
+        ?period: Telnyx::Models::spend_limit_period,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        product: String,
+        body: Telnyx::Models::SpendLimitUpdateParams::body,
+        period: Telnyx::Models::spend_limit_period,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type body =
+        Telnyx::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount
+        | Telnyx::SpendLimitUpdateParams::Body::UpdateSpendLimitUnlimited
+
+      module Body
+        extend Telnyx::Internal::Type::Union
+
+        type update_spend_limit_with_amount =
+          {
+            amount: Float,
+            reason: String,
+            unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::unlimited
+          }
+
+        class UpdateSpendLimitWithAmount < Telnyx::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          attr_reader unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::unlimited?
+
+          def unlimited=: (
+            Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::unlimited
+          ) -> Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::unlimited
+
+          def initialize: (
+            amount: Float,
+            ?reason: String,
+            ?unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::unlimited
+          ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            reason: String,
+            unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::unlimited
+          }
+
+          type unlimited = false
+
+          module Unlimited
+            extend Telnyx::Internal::Type::Enum
+
+            FALSE: false
+
+            def self?.values: -> ::Array[Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::unlimited]
+          end
+        end
+
+        type update_spend_limit_unlimited =
+          {
+            unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitUnlimited::unlimited,
+            reason: String
+          }
+
+        class UpdateSpendLimitUnlimited < Telnyx::Internal::Type::BaseModel
+          attr_accessor unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitUnlimited::unlimited
+
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          def initialize: (
+            unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitUnlimited::unlimited,
+            ?reason: String
+          ) -> void
+
+          def to_hash: -> {
+            unlimited: Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitUnlimited::unlimited,
+            reason: String
+          }
+
+          type unlimited = true
+
+          module Unlimited
+            extend Telnyx::Internal::Type::Enum
+
+            TRUE: true
+
+            def self?.values: -> ::Array[Telnyx::Models::SpendLimitUpdateParams::Body::UpdateSpendLimitUnlimited::unlimited]
+          end
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::SpendLimitUpdateParams::body]
+      end
+    end
+  end
+end
