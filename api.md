@@ -544,7 +544,10 @@ Methods:
 
 Methods:
 
+- <code title="post /ai/memory/namespaces">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">create</a>(\*\*params)</code>
 - <code title="get /ai/memory/namespaces/{namespace}/operations/{operation_id}">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /ai/memory/namespaces">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">list</a>()</code>
+- <code title="delete /ai/memory/namespaces/{namespace}">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">delete</a>(\*\*params)</code>
 
 #### Profiles
 
