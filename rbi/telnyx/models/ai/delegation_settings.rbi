@@ -65,8 +65,9 @@ module Telnyx
         attr_writer :mode
 
         # The backend model that answers delegations. Must be a model available for AI
-        # Assistants. Leave unset to use the platform default backend model. Only applies
-        # when `mode` is `telnyx`.
+        # Assistants. When enabling `telnyx` delegation, explicitly set this field or
+        # `external_llm.model`; a configuration without either backend model is rejected.
+        # Only applies when `mode` is `telnyx`.
         sig { returns(T.nilable(String)) }
         attr_reader :model
 
@@ -128,8 +129,9 @@ module Telnyx
           # up right now. Defaults to `telnyx`.
           mode: nil,
           # The backend model that answers delegations. Must be a model available for AI
-          # Assistants. Leave unset to use the platform default backend model. Only applies
-          # when `mode` is `telnyx`.
+          # Assistants. When enabling `telnyx` delegation, explicitly set this field or
+          # `external_llm.model`; a configuration without either backend model is rejected.
+          # Only applies when `mode` is `telnyx`.
           model: nil,
           # Whether the backend's answer is spoken to the caller. When `true` the result is
           # appended as commentary and paraphrased aloud; when `false` it is kept as silent

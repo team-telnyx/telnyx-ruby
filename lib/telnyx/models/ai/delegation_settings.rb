@@ -52,8 +52,9 @@ module Telnyx
 
         # @!attribute model
         #   The backend model that answers delegations. Must be a model available for AI
-        #   Assistants. Leave unset to use the platform default backend model. Only applies
-        #   when `mode` is `telnyx`.
+        #   Assistants. When enabling `telnyx` delegation, explicitly set this field or
+        #   `external_llm.model`; a configuration without either backend model is rejected.
+        #   Only applies when `mode` is `telnyx`.
         #
         #   @return [String, nil]
         optional :model, String
