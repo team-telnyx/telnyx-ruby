@@ -65,18 +65,21 @@ module Telnyx
             )
           end
 
+        # The latest published version of these terms.
         sig { returns(T.nilable(String)) }
         attr_reader :current_version
 
         sig { params(current_version: String).void }
         attr_writer :current_version
 
+        # A short summary of the product these terms cover.
         sig { returns(T.nilable(String)) }
         attr_reader :description
 
         sig { params(description: String).void }
         attr_writer :description
 
+        # The date this version took effect.
         sig { returns(T.nilable(Date)) }
         attr_reader :effective_date
 
@@ -98,6 +101,7 @@ module Telnyx
         end
         attr_writer :product_type
 
+        # A link to the full terms text.
         sig { returns(T.nilable(String)) }
         attr_reader :terms_url
 
@@ -114,11 +118,15 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # The latest published version of these terms.
           current_version: nil,
+          # A short summary of the product these terms cover.
           description: nil,
+          # The date this version took effect.
           effective_date: nil,
           # Telnyx product the Terms of Service apply to.
           product_type: nil,
+          # A link to the full terms text.
           terms_url: nil
         )
         end

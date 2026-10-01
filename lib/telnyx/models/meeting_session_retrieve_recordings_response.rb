@@ -15,8 +15,7 @@ module Telnyx
 
       class Data < Telnyx::Internal::Type::BaseModel
         # @!attribute expires_at
-        #   Expiry timestamp when supplied by the provider, or null. The current adapter
-        #   returns null.
+        #   Expiry timestamp when available, or null. Currently returns null.
         #
         #   @return [String, nil]
         required :expires_at, String, nil?: true
@@ -38,7 +37,7 @@ module Telnyx
         #   {Telnyx::Models::MeetingSessionRetrieveRecordingsResponse::Data} for more
         #   details.
         #
-        #   @param expires_at [String, nil] Expiry timestamp when supplied by the provider, or null. The current adapter ret
+        #   @param expires_at [String, nil] Expiry timestamp when available, or null. Currently returns null.
         #
         #   @param type [String]
         #

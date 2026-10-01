@@ -1,0 +1,42 @@
+module Telnyx
+  module Models
+    type dir_delete_response = { data: Telnyx::Models::DirDeleteResponse::Data }
+
+    class DirDeleteResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::DirDeleteResponse::Data
+
+      def initialize: (data: Telnyx::Models::DirDeleteResponse::Data) -> void
+
+      def to_hash: -> { data: Telnyx::Models::DirDeleteResponse::Data }
+
+      type data =
+        { id: String, status: Telnyx::Models::DirDeleteResponse::Data::status }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor status: Telnyx::Models::DirDeleteResponse::Data::status
+
+        def initialize: (
+          id: String,
+          status: Telnyx::Models::DirDeleteResponse::Data::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          status: Telnyx::Models::DirDeleteResponse::Data::status
+        }
+
+        type status = :delete_requested
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          DELETE_REQUESTED: :delete_requested
+
+          def self?.values: -> ::Array[Telnyx::Models::DirDeleteResponse::Data::status]
+        end
+      end
+    end
+  end
+end

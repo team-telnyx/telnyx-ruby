@@ -20,7 +20,7 @@ module Telnyx
               frequency_penalty: Float,
               length_penalty: Float,
               logprobs: T::Boolean,
-              max_tokens: Integer,
+              max_tokens: T.nilable(Integer),
               min_p: Float,
               mode: Telnyx::AI::ChatCompletionRequest::Mode::OrSymbol,
               model: String,
@@ -82,7 +82,12 @@ module Telnyx
             # returns the log probabilities of each output token returned in the `content` of
             # `message`.
             logprobs: nil,
-            # Maximum number of completion tokens the model should generate.
+            # Maximum number of completion (output) tokens the model may generate per request.
+            # Defaults to 8192 when omitted or `null`. Set a higher value to allow longer
+            # completions. The model's `max_completion_tokens` metadata (see
+            # `GET /ai/models`), when set, caps both the default and any larger explicit
+            # value. Reasoning models consume this budget across reasoning and answer tokens
+            # combined.
             max_tokens: nil,
             # This is an alternative to `top_p` that
             # [many prefer](https://github.com/huggingface/transformers/issues/27670). Must be

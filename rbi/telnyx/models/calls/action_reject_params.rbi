@@ -15,7 +15,10 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :call_control_id
 
-        # Cause for call rejection.
+        # Cause for call rejection. The cause sets the SIP response the caller receives:
+        # `USER_BUSY` sends 486 User Busy, `CALL_REJECTED` sends 603 Decline, `NOT_FOUND`
+        # sends 404 Not Found, and `TEMPORARILY_UNAVAILABLE` sends 480 Temporarily
+        # Unavailable.
         sig { returns(Telnyx::Calls::ActionRejectParams::Cause::OrSymbol) }
         attr_accessor :cause
 
@@ -46,7 +49,10 @@ module Telnyx
         end
         def self.new(
           call_control_id:,
-          # Cause for call rejection.
+          # Cause for call rejection. The cause sets the SIP response the caller receives:
+          # `USER_BUSY` sends 486 User Busy, `CALL_REJECTED` sends 603 Decline, `NOT_FOUND`
+          # sends 404 Not Found, and `TEMPORARILY_UNAVAILABLE` sends 480 Temporarily
+          # Unavailable.
           cause:,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
@@ -72,7 +78,10 @@ module Telnyx
         def to_hash
         end
 
-        # Cause for call rejection.
+        # Cause for call rejection. The cause sets the SIP response the caller receives:
+        # `USER_BUSY` sends 486 User Busy, `CALL_REJECTED` sends 603 Decline, `NOT_FOUND`
+        # sends 404 Not Found, and `TEMPORARILY_UNAVAILABLE` sends 480 Temporarily
+        # Unavailable.
         module Cause
           extend Telnyx::Internal::Type::Enum
 
@@ -85,6 +94,16 @@ module Telnyx
           CALL_REJECTED =
             T.let(
               :CALL_REJECTED,
+              Telnyx::Calls::ActionRejectParams::Cause::TaggedSymbol
+            )
+          NOT_FOUND =
+            T.let(
+              :NOT_FOUND,
+              Telnyx::Calls::ActionRejectParams::Cause::TaggedSymbol
+            )
+          TEMPORARILY_UNAVAILABLE =
+            T.let(
+              :TEMPORARILY_UNAVAILABLE,
               Telnyx::Calls::ActionRejectParams::Cause::TaggedSymbol
             )
           USER_BUSY =

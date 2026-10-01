@@ -55,6 +55,7 @@ class Telnyx::Test::Resources::Enterprises::DirTest < Telnyx::Test::ResourceTest
         certify_ip_ownership: Telnyx::Internal::Type::Boolean | nil,
         certify_no_shaft_content: Telnyx::Internal::Type::Boolean | nil,
         created_at: Time | nil,
+        delete_requested_at: Time | nil,
         display_name: String | nil,
         documents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Document]) | nil,
         enterprise_id: String | nil,
@@ -66,7 +67,8 @@ class Telnyx::Test::Resources::Enterprises::DirTest < Telnyx::Test::ResourceTest
         status: Telnyx::DirStatus | nil,
         submitted_at: Time | nil,
         updated_at: Time | nil,
-        verified_at: Time | nil
+        verified_at: Time | nil,
+        webhook_url: String | nil
       }
     end
   end

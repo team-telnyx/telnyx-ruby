@@ -141,6 +141,8 @@ module Telnyx
   BotSignupResendMagicLinkParams =
     Telnyx::Models::BotSignupResendMagicLinkParams
 
+  BpoAuthorizationInput = Telnyx::Models::BpoAuthorizationInput
+
   BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
 
   BulkMessagingSettingsUpdatePhoneNumbers =
@@ -621,6 +623,8 @@ module Telnyx
 
   DirAPI = Telnyx::Models::DirAPI
 
+  DirBpoLoaParams = Telnyx::Models::DirBpoLoaParams
+
   DirDeleteParams = Telnyx::Models::DirDeleteParams
 
   DirList = Telnyx::Models::DirList
@@ -633,6 +637,9 @@ module Telnyx
   DirListParams = Telnyx::Models::DirListParams
 
   DirNewLoaParams = Telnyx::Models::DirNewLoaParams
+
+  DirRetrieveBpoAuthorizationsParams =
+    Telnyx::Models::DirRetrieveBpoAuthorizationsParams
 
   DirRetrieveParams = Telnyx::Models::DirRetrieveParams
 
@@ -1968,6 +1975,8 @@ module Telnyx
 
   ShortCodeUpdateParams = Telnyx::Models::ShortCodeUpdateParams
 
+  SignaturePayload = Telnyx::Models::SignaturePayload
+
   SimCard = Telnyx::Models::SimCard
 
   SimCardActionsSummary = Telnyx::Models::SimCardActionsSummary
@@ -2057,6 +2066,20 @@ module Telnyx
 
   SpeechToTextRetrieveTranscriptionParams =
     Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
+
+  SpendLimit = Telnyx::Models::SpendLimit
+
+  SpendLimitCreateParams = Telnyx::Models::SpendLimitCreateParams
+
+  SpendLimitDeleteParams = Telnyx::Models::SpendLimitDeleteParams
+
+  SpendLimitListParams = Telnyx::Models::SpendLimitListParams
+
+  SpendLimitPeriod = Telnyx::Models::SpendLimitPeriod
+
+  SpendLimitResponse = Telnyx::Models::SpendLimitResponse
+
+  SpendLimitUpdateParams = Telnyx::Models::SpendLimitUpdateParams
 
   Storage = Telnyx::Models::Storage
 

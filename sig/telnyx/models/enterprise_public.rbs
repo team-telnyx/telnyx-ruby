@@ -5,6 +5,8 @@ module Telnyx
         id: String,
         billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
+        bpo_verification_rejection_reason: String?,
+        bpo_verification_status: Telnyx::Models::EnterprisePublic::bpo_verification_status?,
         branded_calling_enabled: bool,
         corporate_registration_number: String?,
         country_code: String,
@@ -24,7 +26,7 @@ module Telnyx
         organization_type: String,
         primary_business_domain_sic_code: String?,
         professional_license_number: String?,
-        role_type: String,
+        role_type: Telnyx::Models::EnterprisePublic::role_type,
         updated_at: Time,
         website: String
       }
@@ -37,6 +39,10 @@ module Telnyx
       attr_reader billing_contact: Telnyx::BillingContact?
 
       def billing_contact=: (Telnyx::BillingContact) -> Telnyx::BillingContact
+
+      attr_accessor bpo_verification_rejection_reason: String?
+
+      attr_accessor bpo_verification_status: Telnyx::Models::EnterprisePublic::bpo_verification_status?
 
       attr_reader branded_calling_enabled: bool?
 
@@ -106,9 +112,11 @@ module Telnyx
 
       attr_accessor professional_license_number: String?
 
-      attr_reader role_type: String?
+      attr_reader role_type: Telnyx::Models::EnterprisePublic::role_type?
 
-      def role_type=: (String) -> String
+      def role_type=: (
+        Telnyx::Models::EnterprisePublic::role_type
+      ) -> Telnyx::Models::EnterprisePublic::role_type
 
       attr_reader website: String?
 
@@ -130,6 +138,8 @@ module Telnyx
         ?id: String,
         ?billing_address: Telnyx::PhysicalAddress,
         ?billing_contact: Telnyx::BillingContact,
+        ?bpo_verification_rejection_reason: String?,
+        ?bpo_verification_status: Telnyx::Models::EnterprisePublic::bpo_verification_status?,
         ?branded_calling_enabled: bool,
         ?corporate_registration_number: String?,
         ?country_code: String,
@@ -149,7 +159,7 @@ module Telnyx
         ?organization_type: String,
         ?primary_business_domain_sic_code: String?,
         ?professional_license_number: String?,
-        ?role_type: String,
+        ?role_type: Telnyx::Models::EnterprisePublic::role_type,
         ?updated_at: Time,
         ?website: String
       ) -> void
@@ -158,6 +168,8 @@ module Telnyx
         id: String,
         billing_address: Telnyx::PhysicalAddress,
         billing_contact: Telnyx::BillingContact,
+        bpo_verification_rejection_reason: String?,
+        bpo_verification_status: Telnyx::Models::EnterprisePublic::bpo_verification_status?,
         branded_calling_enabled: bool,
         corporate_registration_number: String?,
         country_code: String,
@@ -177,10 +189,33 @@ module Telnyx
         organization_type: String,
         primary_business_domain_sic_code: String?,
         professional_license_number: String?,
-        role_type: String,
+        role_type: Telnyx::Models::EnterprisePublic::role_type,
         updated_at: Time,
         website: String
       }
+
+      type bpo_verification_status = :pending | :approved | :rejected
+
+      module BpoVerificationStatus
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        APPROVED: :approved
+        REJECTED: :rejected
+
+        def self?.values: -> ::Array[Telnyx::Models::EnterprisePublic::bpo_verification_status]
+      end
+
+      type role_type = :enterprise | :bpo
+
+      module RoleType
+        extend Telnyx::Internal::Type::Enum
+
+        ENTERPRISE: :enterprise
+        BPO: :bpo
+
+        def self?.values: -> ::Array[Telnyx::Models::EnterprisePublic::role_type]
+      end
     end
   end
 end

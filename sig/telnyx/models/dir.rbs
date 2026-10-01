@@ -10,6 +10,7 @@ module Telnyx
         certify_ip_ownership: bool,
         certify_no_shaft_content: bool,
         created_at: Time,
+        delete_requested_at: Time?,
         display_name: String,
         documents: ::Array[Telnyx::Document]?,
         enterprise_id: String,
@@ -21,7 +22,8 @@ module Telnyx
         status: Telnyx::Models::dir_status,
         submitted_at: Time?,
         updated_at: Time,
-        verified_at: Time?
+        verified_at: Time?,
+        webhook_url: String?
       }
 
     class DirAPI < Telnyx::Internal::Type::BaseModel
@@ -69,6 +71,8 @@ module Telnyx
 
       def status=: (Telnyx::Models::dir_status) -> Telnyx::Models::dir_status
 
+      attr_accessor webhook_url: String?
+
       attr_reader id: String?
 
       def id=: (String) -> String
@@ -76,6 +80,8 @@ module Telnyx
       attr_reader created_at: Time?
 
       def created_at=: (Time) -> Time
+
+      attr_accessor delete_requested_at: Time?
 
       attr_accessor expiring_at: Time?
 
@@ -98,6 +104,7 @@ module Telnyx
         ?certify_ip_ownership: bool,
         ?certify_no_shaft_content: bool,
         ?created_at: Time,
+        ?delete_requested_at: Time?,
         ?display_name: String,
         ?documents: ::Array[Telnyx::Document]?,
         ?enterprise_id: String,
@@ -109,7 +116,8 @@ module Telnyx
         ?status: Telnyx::Models::dir_status,
         ?submitted_at: Time?,
         ?updated_at: Time,
-        ?verified_at: Time?
+        ?verified_at: Time?,
+        ?webhook_url: String?
       ) -> void
 
       def to_hash: -> {
@@ -121,6 +129,7 @@ module Telnyx
         certify_ip_ownership: bool,
         certify_no_shaft_content: bool,
         created_at: Time,
+        delete_requested_at: Time?,
         display_name: String,
         documents: ::Array[Telnyx::Document]?,
         enterprise_id: String,
@@ -132,7 +141,8 @@ module Telnyx
         status: Telnyx::Models::dir_status,
         submitted_at: Time?,
         updated_at: Time,
-        verified_at: Time?
+        verified_at: Time?,
+        webhook_url: String?
       }
 
       type call_reason = { created_at: Time, reason: String }

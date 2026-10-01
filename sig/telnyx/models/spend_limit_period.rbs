@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type spend_limit_period = :daily | :monthly
+
+    module SpendLimitPeriod
+      extend Telnyx::Internal::Type::Enum
+
+      DAILY: :daily
+      MONTHLY: :monthly
+
+      def self?.values: -> ::Array[Telnyx::Models::spend_limit_period]
+    end
+  end
+end

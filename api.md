@@ -172,6 +172,7 @@ Methods:
 - <code title="get /ai/assistants/{assistant_id}/texml">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">get_texml</a>(\*\*params)</code>
 - <code title="post /ai/assistants/import">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">imports</a>(\*\*params)</code>
 - <code title="post /ai/assistants/{assistant_id}/chat/sms">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">send_sms</a>(\*\*params)</code>
+- <code title="post /ai/assistants/{assistant_id}/chat/whatsapp">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">whatsapp</a>(\*\*params)</code>
 
 ### Tests
 
@@ -544,7 +545,10 @@ Methods:
 
 Methods:
 
+- <code title="post /ai/memory/namespaces">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">create</a>(\*\*params)</code>
 - <code title="get /ai/memory/namespaces/{namespace}/operations/{operation_id}">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /ai/memory/namespaces">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">list</a>()</code>
+- <code title="delete /ai/memory/namespaces/{namespace}">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">delete</a>(\*\*params)</code>
 
 #### Profiles
 
@@ -2795,6 +2799,13 @@ Methods:
 - <code title="post /enterprises/{enterprise_id}/dir">client.enterprises.dir.<a href="./lib/telnyx/resources/enterprises/dir.rb">create</a>(\*\*params)</code>
 - <code title="get /enterprises/{enterprise_id}/dir">client.enterprises.dir.<a href="./lib/telnyx/resources/enterprises/dir.rb">list</a>(\*\*params)</code>
 
+## VerifyEmail
+
+Methods:
+
+- <code title="post /enterprises/{enterprise_id}/verify_email">client.enterprises.verify_email.<a href="./lib/telnyx/resources/enterprises/verify_email.rb">create</a>(\*\*params)</code>
+- <code title="post /enterprises/{enterprise_id}/verify_email/confirm">client.enterprises.verify_email.<a href="./lib/telnyx/resources/enterprises/verify_email.rb">confirm</a>(\*\*params)</code>
+
 # Reputation
 
 ## Numbers
@@ -2879,9 +2890,11 @@ Methods:
 - <code title="patch /dir/{dir_id}">client.dir.<a href="./lib/telnyx/resources/dir.rb">update</a>(\*\*params)</code>
 - <code title="get /dir">client.dir.<a href="./lib/telnyx/resources/dir.rb">list</a>(\*\*params)</code>
 - <code title="delete /dir/{dir_id}">client.dir.<a href="./lib/telnyx/resources/dir.rb">delete</a>(\*\*params)</code>
+- <code title="post /dir/{dir_id}/bpo_loa">client.dir.<a href="./lib/telnyx/resources/dir.rb">bpo_loa</a>(\*\*params)</code>
 - <code title="get /dir/document_types">client.dir.<a href="./lib/telnyx/resources/dir.rb">list_document_types</a>()</code>
 - <code title="get /dir/{dir_id}/infringement_claims">client.dir.<a href="./lib/telnyx/resources/dir.rb">list_infringement_claims</a>(\*\*params)</code>
 - <code title="post /dir/{dir_id}/loa">client.dir.<a href="./lib/telnyx/resources/dir.rb">new_loa</a>(\*\*params)</code>
+- <code title="get /dir/{dir_id}/bpo_authorizations">client.dir.<a href="./lib/telnyx/resources/dir.rb">retrieve_bpo_authorizations</a>(\*\*params)</code>
 - <code title="post /dir/{dir_id}/submit">client.dir.<a href="./lib/telnyx/resources/dir.rb">submit</a>(\*\*params)</code>
 - <code title="put /dir/{dir_id}/infringement_update">client.dir.<a href="./lib/telnyx/resources/dir.rb">update_infringement</a>(\*\*params)</code>
 
@@ -3228,3 +3241,12 @@ Methods:
 Methods:
 
 - <code title="post /machine-payments/account-credit">client.machine_payments.<a href="./lib/telnyx/resources/machine_payments.rb">account_credit</a>(\*\*params)</code>
+
+# SpendLimits
+
+Methods:
+
+- <code title="post /spend_limits">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">create</a>(\*\*params)</code>
+- <code title="patch /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">update</a>(\*\*params)</code>
+- <code title="get /spend_limits">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">list</a>()</code>
+- <code title="delete /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">delete</a>(\*\*params)</code>

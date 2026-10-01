@@ -39,7 +39,7 @@ module Telnyx
         # Creates a new AI assistant from the provided configuration, including its model,
         # instructions, and attached tools, and returns the created assistant.
         #
-        # @overload create(instructions:, name:, a2a_agents: nil, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, widget_settings: nil, idempotency_key: nil, request_options: {})
+        # @overload create(instructions:, name:, a2a_agents: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil, idempotency_key: nil, request_options: {})
         #
         # @param instructions [String] Body param: System instructions for the assistant. These may be templated with [
         #
@@ -48,6 +48,8 @@ module Telnyx
         # @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] Body param: A2A agents this assistant can delegate to. Tools are not stored here
         #
         # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Body param: Conversation flow as supplied by API clients (create / update).
+        #
+        # @param delegation_settings [Telnyx::Models::AI::DelegationSettings] Body param: Splits the conversation between a frontend model that talks to the c
         #
         # @param description [String] Body param
         #
@@ -96,6 +98,8 @@ module Telnyx
         # @param transcription [Telnyx::Models::AI::TranscriptionSettings] Body param
         #
         # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings] Body param
+        #
+        # @param websocket_settings [Telnyx::Models::AI::WebsocketSettings] Body param: Streams conversation and telephony events to a WebSocket server you
         #
         # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
         #
@@ -157,13 +161,15 @@ module Telnyx
         # assistant. The request can also control how the change is promoted across
         # assistant versions.
         #
-        # @overload update(assistant_id, a2a_agents: nil, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+        # @overload update(assistant_id, a2a_agents: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil, request_options: {})
         #
         # @param assistant_id [String] Unique identifier of the assistant.
         #
         # @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
         # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Conversation flow as supplied by API clients (create / update).
+        #
+        # @param delegation_settings [Telnyx::Models::AI::DelegationSettings] Splits the conversation between a frontend model that talks to the caller and a
         #
         # @param description [String]
         #
@@ -220,6 +226,8 @@ module Telnyx
         # @param version_name [String] Human-readable name for the assistant version.
         #
         # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings]
+        #
+        # @param websocket_settings [Telnyx::Models::AI::WebsocketSettings] Streams conversation and telephony events to a WebSocket server you host, and ac
         #
         # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
         #
@@ -444,6 +452,57 @@ module Telnyx
             headers: parsed.slice(*header_params.keys).transform_keys(header_params),
             body: parsed.except(*header_params.keys),
             model: Telnyx::Models::AI::AssistantSendSMSResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::AssistantWhatsappParams} for more details.
+        #
+        # Start a WhatsApp conversation with a customer from the business side. This
+        # endpoint:
+        #
+        # 1. Validates that `from` is a WhatsApp number on your account whose messaging
+        #    profile has this assistant configured
+        # 2. Creates a new `whatsapp_chat` conversation with the provided metadata
+        # 3. Asks the assistant to pick one of its approved WhatsApp templates and fill
+        #    its variables from `content`
+        # 4. Sends the template from `from` to `to`
+        # 5. Returns the conversation ID and the message ID
+        #
+        # When the customer replies, the reply is routed to the same conversation and the
+        # assistant answers within the 24-hour customer service window. The assistant
+        # needs a `whatsapp_template` tool with at least one approved template, data
+        # retention enabled and PII redaction disabled.
+        #
+        # @overload whatsapp(assistant_id, content:, from:, to:, conversation_metadata: nil, idempotency_key: nil, request_options: {})
+        #
+        # @param assistant_id [String] Path param: Unique identifier of the assistant. Must be the assistant configured
+        #
+        # @param content [String] Body param: Instruction for the assistant, including the values for the template
+        #
+        # @param from [String] Body param: WhatsApp number on your account to send from, in E.164 format. Its m
+        #
+        # @param to [String] Body param: Customer to message, as an E.164 phone number or a WhatsApp business
+        #
+        # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Body param: Metadata stored on the conversation. Keys starting with `telnyx_` an
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::AI::AssistantWhatsappResponse]
+        #
+        # @see Telnyx::Models::AI::AssistantWhatsappParams
+        def whatsapp(assistant_id, params)
+          parsed, options = Telnyx::AI::AssistantWhatsappParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
+          @client.request(
+            method: :post,
+            path: ["ai/assistants/%1$s/chat/whatsapp", assistant_id],
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
+            model: Telnyx::Models::AI::AssistantWhatsappResponse,
             options: options
           )
         end

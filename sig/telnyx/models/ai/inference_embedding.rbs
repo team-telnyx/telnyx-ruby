@@ -10,6 +10,7 @@ module Telnyx
           name: String,
           :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
           conversation_flow: Telnyx::AI::ConversationFlow,
+          delegation_settings: Telnyx::AI::DelegationSettings,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_timeout_ms: Integer,
@@ -37,6 +38,7 @@ module Telnyx
           version_id: String,
           version_name: String,
           voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
+          websocket_settings: Telnyx::AI::WebsocketSettings,
           widget_settings: Telnyx::AI::WidgetSettings
         }
 
@@ -62,6 +64,12 @@ module Telnyx
         def conversation_flow=: (
           Telnyx::AI::ConversationFlow
         ) -> Telnyx::AI::ConversationFlow
+
+        attr_reader delegation_settings: Telnyx::AI::DelegationSettings?
+
+        def delegation_settings=: (
+          Telnyx::AI::DelegationSettings
+        ) -> Telnyx::AI::DelegationSettings
 
         attr_reader description: String?
 
@@ -201,6 +209,12 @@ module Telnyx
           Telnyx::AI::InferenceEmbeddingVoiceSettings
         ) -> Telnyx::AI::InferenceEmbeddingVoiceSettings
 
+        attr_reader websocket_settings: Telnyx::AI::WebsocketSettings?
+
+        def websocket_settings=: (
+          Telnyx::AI::WebsocketSettings
+        ) -> Telnyx::AI::WebsocketSettings
+
         attr_reader widget_settings: Telnyx::AI::WidgetSettings?
 
         def widget_settings=: (
@@ -215,6 +229,7 @@ module Telnyx
           name: String,
           ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
           ?conversation_flow: Telnyx::AI::ConversationFlow,
+          ?delegation_settings: Telnyx::AI::DelegationSettings,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_timeout_ms: Integer,
@@ -242,6 +257,7 @@ module Telnyx
           ?version_id: String,
           ?version_name: String,
           ?voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
+          ?websocket_settings: Telnyx::AI::WebsocketSettings,
           ?widget_settings: Telnyx::AI::WidgetSettings
         ) -> void
 
@@ -253,6 +269,7 @@ module Telnyx
           name: String,
           :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
           conversation_flow: Telnyx::AI::ConversationFlow,
+          delegation_settings: Telnyx::AI::DelegationSettings,
           description: String,
           dynamic_variables: ::Hash[Symbol, top],
           dynamic_variables_webhook_timeout_ms: Integer,
@@ -280,6 +297,7 @@ module Telnyx
           version_id: String,
           version_name: String,
           voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
+          websocket_settings: Telnyx::AI::WebsocketSettings,
           widget_settings: Telnyx::AI::WidgetSettings
         }
       end

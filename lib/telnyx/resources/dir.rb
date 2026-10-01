@@ -56,20 +56,25 @@ module Telnyx
       # Edit a DIR. DIRs in `draft`, `rejected`, `unsuccessful`, or `suspended` can be
       # edited freely: PATCH is a pure edit, `status` is never changed, and you re-vet
       # by calling `POST /v2/dir/{dir_id}/submit` explicitly. A `verified` DIR can also
-      # be edited in place: a PATCH that changes any value returns the DIR to `draft`
-      # and branded delivery stops until you re-submit and the DIR is approved again,
-      # while a PATCH that changes nothing (an empty body or values identical to the
-      # current ones) leaves the DIR `verified`, so idempotent retries are safe. DIRs in
-      # any other status (`submitted`, `in_review`, `expired`, `infringement_claimed`,
+      # be edited in place: a PATCH that changes any value returns the DIR to `draft`;
+      # the currently approved identity keeps displaying, and the edited content goes
+      # live only after you re-submit and the DIR is approved again. A PATCH that
+      # changes nothing (an empty body or values identical to the current ones) leaves
+      # the DIR `verified`, so idempotent retries are safe. Changing only
+      # `bpo_authorizations` or `webhook_url` is the exception: the DIR stays
+      # `verified`. Each BPO authorization is reviewed on its own instead. DIRs in any
+      # other status (`submitted`, `in_review`, `expired`, `infringement_claimed`,
       # `permanently_rejected`) cannot be edited.
       #
-      # @overload update(dir_id, authorizer_email: nil, authorizer_name: nil, call_reasons: nil, certify_brand_is_accurate: nil, certify_ip_ownership: nil, certify_no_shaft_content: nil, display_name: nil, documents: nil, logo_url: nil, reselling: nil, request_options: {})
+      # @overload update(dir_id, authorizer_email: nil, authorizer_name: nil, bpo_authorizations: nil, call_reasons: nil, certify_brand_is_accurate: nil, certify_ip_ownership: nil, certify_no_shaft_content: nil, display_name: nil, documents: nil, logo_url: nil, reselling: nil, webhook_url: nil, request_options: {})
       #
       # @param dir_id [String] The DIR id. Lowercase UUID.
       #
       # @param authorizer_email [String] Contact email of the authorizer. Telnyx may send verification or infringement no
       #
       # @param authorizer_name [String] Name of the person at your enterprise authorizing this DIR. Must be a real indiv
+      #
+      # @param bpo_authorizations [Array<Telnyx::Models::BpoAuthorizationInput>] Optional. Replace this DIR's authorized BPO (Business Process Outsourcer) accoun
       #
       # @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
       #
@@ -86,6 +91,8 @@ module Telnyx
       # @param logo_url [String] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #
       # @param reselling [Boolean] Set to true if your organization places calls on behalf of other enterprises (BP
+      #
+      # @param webhook_url [String, nil] Optional `https://` URL that receives webhook notifications when this DIR's comp
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -162,9 +169,13 @@ module Telnyx
         )
       end
 
-      # Delete a DIR. Failure modes: `400` if a child phone number is in a non-deletable
-      # status, `409` if the DIR has an unresolved infringement claim, `404` if the DIR
-      # is not yours.
+      # Request deletion of a DIR. This does not remove the DIR on this call: it records
+      # the request, moves the DIR to `delete_requested`, and Telnyx completes the
+      # removal (de-registration and cleanup) shortly after. A verified DIR keeps
+      # serving its branded identity, and keeps billing, until the removal is executed.
+      # Failure modes: `400` if a child phone number is still attached or the DIR is
+      # `in_review` (wait for the review to finish), `409` if the DIR has an unresolved
+      # infringement claim, `404` if the DIR is not yours.
       #
       # @overload delete(dir_id, request_options: {})
       #
@@ -172,15 +183,56 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [nil]
+      # @return [Telnyx::Models::DirDeleteResponse]
       #
       # @see Telnyx::Models::DirDeleteParams
       def delete(dir_id, params = {})
         @client.request(
           method: :delete,
           path: ["dir/%1$s", dir_id],
-          model: NilClass,
+          model: Telnyx::Models::DirDeleteResponse,
           options: params[:request_options]
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DirBpoLoaParams} for more details.
+      #
+      # The Letter of Authorization in which a Brand Owner authorizes an approved BPO
+      # (Business Process Outsourcer) to place branded calls that display this DIR on
+      # the owner's behalf. Both parties are read from the caller's account: the Brand
+      # Owner is the enterprise that owns the DIR, and the BPO is `bpo_enterprise_id`.
+      # No business identity is accepted in the body.
+      #
+      # When `signature` is omitted the PDF is returned unsigned so the Brand Owner can
+      # sign it externally and the BPO can upload it via the Documents API. When
+      # `signature` is present the PDF embeds the supplied image, printed name, and
+      # signed-at date.
+      #
+      # Returns `application/pdf`.
+      #
+      # @overload bpo_loa(dir_id, bpo_enterprise_id:, signature: nil, request_options: {})
+      #
+      # @param dir_id [String] The DIR id.
+      #
+      # @param bpo_enterprise_id [String] The approved BPO enterprise the Brand Owner is authorizing. Must be a BPO accoun
+      #
+      # @param signature [Telnyx::Models::SignaturePayload] Optional. When provided the rendered PDF embeds the signature image, printed nam
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [StringIO]
+      #
+      # @see Telnyx::Models::DirBpoLoaParams
+      def bpo_loa(dir_id, params)
+        parsed, options = Telnyx::DirBpoLoaParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["dir/%1$s/bpo_loa", dir_id],
+          headers: {"accept" => "application/pdf"},
+          body: parsed,
+          model: StringIO,
+          options: options
         )
       end
 
@@ -263,7 +315,7 @@ module Telnyx
       #
       # @param agent [Telnyx::Models::Enterprises::Reputation::AgentInput] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
       #
-      # @param signature [Telnyx::Models::DirNewLoaParams::Signature] Optional. When provided the rendered PDF embeds the signature image, printed nam
+      # @param signature [Telnyx::Models::SignaturePayload] Optional. When provided the rendered PDF embeds the signature image, printed nam
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -278,6 +330,47 @@ module Telnyx
           headers: {"accept" => "application/pdf"},
           body: parsed,
           model: StringIO,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::DirRetrieveBpoAuthorizationsParams} for more details.
+      #
+      # List the BPO (Business Process Outsourcer) accounts a Brand Owner has authorized
+      # on this DIR, together with the review state of each authorization.
+      #
+      # Authorizations are supplied as the `bpo_authorizations` array when creating or
+      # updating a DIR, and each one is reviewed on its own. Only an `approved`
+      # authorization adds that BPO to this DIR's authorized callers in the branded
+      # calling registry; `pending` and `rejected` authorizations do not. Each entry
+      # includes the `loa_document_id` you submitted: because `bpo_authorizations`
+      # replaces the whole list on every DIR update, send each entry you want to keep
+      # back with its `loa_document_id` unchanged, and it keeps its review state. A
+      # rejected entry carries a `rejection_reason`. Returns an empty list when the DIR
+      # has authorized no BPOs.
+      #
+      # @overload retrieve_bpo_authorizations(dir_id, page_number: nil, page_size: nil, request_options: {})
+      #
+      # @param dir_id [String] The DIR id. Lowercase UUID.
+      #
+      # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
+      #
+      # @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::DirRetrieveBpoAuthorizationsResponse]
+      #
+      # @see Telnyx::Models::DirRetrieveBpoAuthorizationsParams
+      def retrieve_bpo_authorizations(dir_id, params = {})
+        parsed, options = Telnyx::DirRetrieveBpoAuthorizationsParams.dump_request(params)
+        query = Telnyx::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: ["dir/%1$s/bpo_authorizations", dir_id],
+          query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+          model: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse,
           options: options
         )
       end
@@ -328,7 +421,7 @@ module Telnyx
       #
       # @param certify_ip_ownership [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyIPOwnership] Must be `true`.
       #
-      # @param certify_no_infringement [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyNoInfringement] Must be `true`.
+      # @param certify_no_infringement [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyNoInfringement] Check to certify that the brand no longer infringes anyone else's trademark or i
       #
       # @param certify_no_shaft_content [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyNoShaftContent] Must be `true`.
       #
@@ -336,7 +429,7 @@ module Telnyx
       #
       # @param call_reasons [Array<String>, nil]
       #
-      # @param display_name [String, nil]
+      # @param display_name [String, nil] The business name shown to call recipients, 1 to 35 characters, no emoji, not bl
       #
       # @param documents [Array<Telnyx::Models::Document>, nil] Append-only supporting documents to attach while resolving the claim (e.g. autho
       #
