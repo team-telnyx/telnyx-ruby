@@ -1,0 +1,82 @@
+module Telnyx
+  module Models
+    class EnterpriseEmailVerificationStatusWrapped = Enterprises::EnterpriseEmailVerificationStatusWrapped
+
+    module Enterprises
+      type enterprise_email_verification_status_wrapped =
+        {
+          data: Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data
+        }
+
+      class EnterpriseEmailVerificationStatusWrapped < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data
+
+        def initialize: (
+          data: Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data
+        }
+
+        type data =
+          {
+            email_verified: bool,
+            record_type: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::record_type,
+            status: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::status,
+            expires_at: Time?,
+            sends_remaining_today: Integer?
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor email_verified: bool
+
+          attr_accessor status: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::status
+
+          attr_accessor record_type: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::record_type
+
+          attr_accessor expires_at: Time?
+
+          attr_accessor sends_remaining_today: Integer?
+
+          def initialize: (
+            email_verified: bool,
+            record_type: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::record_type,
+            status: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::status,
+            ?expires_at: Time?,
+            ?sends_remaining_today: Integer?
+          ) -> void
+
+          def to_hash: -> {
+            email_verified: bool,
+            record_type: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::record_type,
+            status: Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::status,
+            expires_at: Time?,
+            sends_remaining_today: Integer?
+          }
+
+          type record_type = :email_verification
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            EMAIL_VERIFICATION: :email_verification
+
+            def self?.values: -> ::Array[Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::record_type]
+          end
+
+          type status = :sent | :verified
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            SENT: :sent
+            VERIFIED: :verified
+
+            def self?.values: -> ::Array[Telnyx::Models::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data::status]
+          end
+        end
+      end
+    end
+  end
+end

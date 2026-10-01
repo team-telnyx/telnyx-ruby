@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type signature_payload = { :image_base64 => String, signer_name: String? }
+
+    class SignaturePayload < Telnyx::Internal::Type::BaseModel
+      attr_accessor image_base64: String
+
+      attr_accessor signer_name: String?
+
+      def initialize: (image_base64: String, ?signer_name: String?) -> void
+
+      def to_hash: -> { :image_base64 => String, signer_name: String? }
+    end
+  end
+end

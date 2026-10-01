@@ -1,0 +1,208 @@
+module Telnyx
+  module Models
+    type spend_limit =
+      {
+        block: Telnyx::SpendLimit::Block?,
+        blocked: bool,
+        effective_limit_usd: String?,
+        limit: Telnyx::SpendLimit::Limit?,
+        period: Telnyx::Models::spend_limit_period,
+        period_end: Date,
+        period_start: Date,
+        product: String,
+        product_name: String,
+        record_type: String,
+        spend_error: String?,
+        spend_usd: String?,
+        evaluation: Telnyx::SpendLimit::Evaluation
+      }
+
+    class SpendLimit < Telnyx::Internal::Type::BaseModel
+      attr_accessor block: Telnyx::SpendLimit::Block?
+
+      attr_accessor blocked: bool
+
+      attr_accessor effective_limit_usd: String?
+
+      attr_accessor limit: Telnyx::SpendLimit::Limit?
+
+      attr_accessor period: Telnyx::Models::spend_limit_period
+
+      attr_accessor period_end: Date
+
+      attr_accessor period_start: Date
+
+      attr_accessor product: String
+
+      attr_accessor product_name: String
+
+      attr_accessor record_type: String
+
+      attr_accessor spend_error: String?
+
+      attr_accessor spend_usd: String?
+
+      attr_reader evaluation: Telnyx::SpendLimit::Evaluation?
+
+      def evaluation=: (
+        Telnyx::SpendLimit::Evaluation
+      ) -> Telnyx::SpendLimit::Evaluation
+
+      def initialize: (
+        block: Telnyx::SpendLimit::Block?,
+        blocked: bool,
+        effective_limit_usd: String?,
+        limit: Telnyx::SpendLimit::Limit?,
+        period: Telnyx::Models::spend_limit_period,
+        period_end: Date,
+        period_start: Date,
+        product: String,
+        product_name: String,
+        record_type: String,
+        spend_error: String?,
+        spend_usd: String?,
+        ?evaluation: Telnyx::SpendLimit::Evaluation
+      ) -> void
+
+      def to_hash: -> {
+        block: Telnyx::SpendLimit::Block?,
+        blocked: bool,
+        effective_limit_usd: String?,
+        limit: Telnyx::SpendLimit::Limit?,
+        period: Telnyx::Models::spend_limit_period,
+        period_end: Date,
+        period_start: Date,
+        product: String,
+        product_name: String,
+        record_type: String,
+        spend_error: String?,
+        spend_usd: String?,
+        evaluation: Telnyx::SpendLimit::Evaluation
+      }
+
+      type block =
+        {
+          blocked_until: Date,
+          detected_at: Time,
+          limit_usd: String,
+          spend_usd: String
+        }
+
+      class Block < Telnyx::Internal::Type::BaseModel
+        attr_accessor blocked_until: Date
+
+        attr_accessor detected_at: Time
+
+        attr_accessor limit_usd: String
+
+        attr_accessor spend_usd: String
+
+        def initialize: (
+          blocked_until: Date,
+          detected_at: Time,
+          limit_usd: String,
+          spend_usd: String
+        ) -> void
+
+        def to_hash: -> {
+          blocked_until: Date,
+          detected_at: Time,
+          limit_usd: String,
+          spend_usd: String
+        }
+      end
+
+      type limit =
+        {
+          amount: String?,
+          origin: Telnyx::Models::SpendLimit::Limit::origin,
+          unlimited: bool,
+          updated_at: Time
+        }
+
+      class Limit < Telnyx::Internal::Type::BaseModel
+        attr_accessor amount: String?
+
+        attr_accessor origin: Telnyx::Models::SpendLimit::Limit::origin
+
+        attr_accessor unlimited: bool
+
+        attr_accessor updated_at: Time
+
+        def initialize: (
+          amount: String?,
+          origin: Telnyx::Models::SpendLimit::Limit::origin,
+          unlimited: bool,
+          updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          amount: String?,
+          origin: Telnyx::Models::SpendLimit::Limit::origin,
+          unlimited: bool,
+          updated_at: Time
+        }
+
+        type origin = :self_service | :operator
+
+        module Origin
+          extend Telnyx::Internal::Type::Enum
+
+          SELF_SERVICE: :self_service
+          OPERATOR: :operator
+
+          def self?.values: -> ::Array[Telnyx::Models::SpendLimit::Limit::origin]
+        end
+      end
+
+      type evaluation =
+        {
+          blocked_now: bool,
+          evaluation_deferred: bool,
+          released: bool,
+          spend_usd: String?,
+          still_blocked_other_period: bool,
+          still_over_limit: bool,
+          note: String
+        }
+
+      class Evaluation < Telnyx::Internal::Type::BaseModel
+        attr_accessor blocked_now: bool
+
+        attr_accessor evaluation_deferred: bool
+
+        attr_accessor released: bool
+
+        attr_accessor spend_usd: String?
+
+        attr_accessor still_blocked_other_period: bool
+
+        attr_accessor still_over_limit: bool
+
+        attr_reader note: String?
+
+        def note=: (String) -> String
+
+        def initialize: (
+          blocked_now: bool,
+          evaluation_deferred: bool,
+          released: bool,
+          spend_usd: String?,
+          still_blocked_other_period: bool,
+          still_over_limit: bool,
+          ?note: String
+        ) -> void
+
+        def to_hash: -> {
+          blocked_now: bool,
+          evaluation_deferred: bool,
+          released: bool,
+          spend_usd: String?,
+          still_blocked_other_period: bool,
+          still_over_limit: bool,
+          note: String
+        }
+      end
+    end
+  end
+end

@@ -53,8 +53,7 @@ module Telnyx
             )
           end
 
-        # Expiry timestamp when supplied by the provider, or null. The current adapter
-        # returns null.
+        # Expiry timestamp when available, or null. Currently returns null.
         sig { returns(T.nilable(String)) }
         attr_accessor :expires_at
 
@@ -74,8 +73,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Expiry timestamp when supplied by the provider, or null. The current adapter
-          # returns null.
+          # Expiry timestamp when available, or null. Currently returns null.
           expires_at:,
           type:,
           # Current provider download URL. The API does not guarantee URL lifetime or

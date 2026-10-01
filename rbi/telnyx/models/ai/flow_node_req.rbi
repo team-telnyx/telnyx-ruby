@@ -111,7 +111,8 @@ module Telnyx
         attr_writer :transcription
 
         # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        # standalone tool execution (see `ToolNodeReq`).
+        # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        # `SpeakNodeReq`).
         sig { returns(T.nilable(Telnyx::AI::FlowNodeReq::Type::OrSymbol)) }
         attr_reader :type
 
@@ -193,7 +194,8 @@ module Telnyx
           # from the assistant-level transcription.
           transcription: nil,
           # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-          # standalone tool execution (see `ToolNodeReq`).
+          # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+          # `SpeakNodeReq`).
           type: nil,
           # Per-node voice override. Only fields set here override the assistant-level voice
           # settings; unset fields cascade.
@@ -281,7 +283,8 @@ module Telnyx
         end
 
         # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        # standalone tool execution (see `ToolNodeReq`).
+        # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        # `SpeakNodeReq`).
         module Type
           extend Telnyx::Internal::Type::Enum
 

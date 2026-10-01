@@ -56,6 +56,18 @@ module Telnyx
         #   @return [Telnyx::Models::AI::ConversationFlow, nil]
         optional :conversation_flow, -> { Telnyx::AI::ConversationFlow }
 
+        # @!attribute delegation_settings
+        #   Splits the conversation between a frontend model that talks to the caller and a
+        #   backend model that does the work. On the GPT-Live route the frontend model
+        #   cannot call tools at all — when it needs something done it raises a delegation
+        #   and waits. On the chat completion route the frontend keeps a single `delegate`
+        #   tool that returns immediately, so the conversation carries on while the backend
+        #   works. Either way the backend's answer is spoken as commentary or kept as silent
+        #   context, depending on `speak_results`. Beta feature.
+        #
+        #   @return [Telnyx::Models::AI::DelegationSettings, nil]
+        optional :delegation_settings, -> { Telnyx::AI::DelegationSettings }
+
         # @!attribute description
         #
         #   @return [String, nil]
@@ -247,13 +259,23 @@ module Telnyx
         #   @return [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings, nil]
         optional :voice_settings, -> { Telnyx::AI::InferenceEmbeddingVoiceSettings }
 
+        # @!attribute websocket_settings
+        #   Streams conversation and telephony events to a WebSocket server you host, and
+        #   accepts messages injected back into the conversation. Telnyx opens the
+        #   connection as a client, once per conversation. Delivery is best effort
+        #   throughout: while the connection is down events are dropped rather than queued,
+        #   and no socket failure is ever allowed to affect the call. Beta feature.
+        #
+        #   @return [Telnyx::Models::AI::WebsocketSettings, nil]
+        optional :websocket_settings, -> { Telnyx::AI::WebsocketSettings }
+
         # @!attribute widget_settings
         #   Configuration settings for the assistant's web widget.
         #
         #   @return [Telnyx::Models::AI::WidgetSettings, nil]
         optional :widget_settings, -> { Telnyx::AI::WidgetSettings }
 
-        # @!method initialize(id:, created_at:, instructions:, model:, name:, a2a_agents: nil, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, import_metadata: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, related_mission_ids: nil, tags: nil, telephony_settings: nil, tools: nil, transcription: nil, version_created_at: nil, version_id: nil, version_name: nil, voice_settings: nil, widget_settings: nil)
+        # @!method initialize(id:, created_at:, instructions:, model:, name:, a2a_agents: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, import_metadata: nil, insight_settings: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, related_mission_ids: nil, tags: nil, telephony_settings: nil, tools: nil, transcription: nil, version_created_at: nil, version_id: nil, version_name: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbedding} for more details.
         #
@@ -270,6 +292,8 @@ module Telnyx
         #   @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
         #   @param conversation_flow [Telnyx::Models::AI::ConversationFlow] Conversation flow as returned by the API.
+        #
+        #   @param delegation_settings [Telnyx::Models::AI::DelegationSettings] Splits the conversation between a frontend model that talks to the caller and a
         #
         #   @param description [String]
         #
@@ -324,6 +348,8 @@ module Telnyx
         #   @param version_name [String] Human-readable name for the assistant version.
         #
         #   @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings]
+        #
+        #   @param websocket_settings [Telnyx::Models::AI::WebsocketSettings] Streams conversation and telephony events to a WebSocket server you host, and ac
         #
         #   @param widget_settings [Telnyx::Models::AI::WidgetSettings] Configuration settings for the assistant's web widget.
       end
