@@ -456,6 +456,57 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::AssistantWhatsappParams} for more details.
+        #
+        # Start a WhatsApp conversation with a customer from the business side. This
+        # endpoint:
+        #
+        # 1. Validates that `from` is a WhatsApp number on your account whose messaging
+        #    profile has this assistant configured
+        # 2. Creates a new `whatsapp_chat` conversation with the provided metadata
+        # 3. Asks the assistant to pick one of its approved WhatsApp templates and fill
+        #    its variables from `content`
+        # 4. Sends the template from `from` to `to`
+        # 5. Returns the conversation ID and the message ID
+        #
+        # When the customer replies, the reply is routed to the same conversation and the
+        # assistant answers within the 24-hour customer service window. The assistant
+        # needs a `whatsapp_template` tool with at least one approved template, data
+        # retention enabled and PII redaction disabled.
+        #
+        # @overload whatsapp(assistant_id, content:, from:, to:, conversation_metadata: nil, idempotency_key: nil, request_options: {})
+        #
+        # @param assistant_id [String] Path param: Unique identifier of the assistant. Must be the assistant configured
+        #
+        # @param content [String] Body param: Instruction for the assistant, including the values for the template
+        #
+        # @param from [String] Body param: WhatsApp number on your account to send from, in E.164 format. Its m
+        #
+        # @param to [String] Body param: Customer to message, as an E.164 phone number or a WhatsApp business
+        #
+        # @param conversation_metadata [Hash{Symbol=>String, Integer, Boolean}] Body param: Metadata stored on the conversation. Keys starting with `telnyx_` an
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::AI::AssistantWhatsappResponse]
+        #
+        # @see Telnyx::Models::AI::AssistantWhatsappParams
+        def whatsapp(assistant_id, params)
+          parsed, options = Telnyx::AI::AssistantWhatsappParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
+          @client.request(
+            method: :post,
+            path: ["ai/assistants/%1$s/chat/whatsapp", assistant_id],
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
+            model: Telnyx::Models::AI::AssistantWhatsappResponse,
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [Telnyx::Client]

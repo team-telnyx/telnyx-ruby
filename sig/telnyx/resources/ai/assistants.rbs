@@ -147,6 +147,16 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::AssistantSendSMSResponse
 
+        def whatsapp: (
+          String assistant_id,
+          content: String,
+          from: String,
+          to: String,
+          ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantWhatsappParams::conversation_metadata],
+          ?idempotency_key: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantWhatsappResponse
+
         def initialize: (client: Telnyx::Client) -> void
       end
     end

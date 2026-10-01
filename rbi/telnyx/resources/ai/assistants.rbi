@@ -645,6 +645,65 @@ module Telnyx
         )
         end
 
+        # Start a WhatsApp conversation with a customer from the business side. This
+        # endpoint:
+        #
+        # 1. Validates that `from` is a WhatsApp number on your account whose messaging
+        #    profile has this assistant configured
+        # 2. Creates a new `whatsapp_chat` conversation with the provided metadata
+        # 3. Asks the assistant to pick one of its approved WhatsApp templates and fill
+        #    its variables from `content`
+        # 4. Sends the template from `from` to `to`
+        # 5. Returns the conversation ID and the message ID
+        #
+        # When the customer replies, the reply is routed to the same conversation and the
+        # assistant answers within the 24-hour customer service window. The assistant
+        # needs a `whatsapp_template` tool with at least one approved template, data
+        # retention enabled and PII redaction disabled.
+        sig do
+          params(
+            assistant_id: String,
+            content: String,
+            from: String,
+            to: String,
+            conversation_metadata:
+              T::Hash[
+                Symbol,
+                Telnyx::AI::AssistantWhatsappParams::ConversationMetadata::Variants
+              ],
+            idempotency_key: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::AI::AssistantWhatsappResponse)
+        end
+        def whatsapp(
+          # Path param: Unique identifier of the assistant. Must be the assistant configured
+          # on the messaging profile of the `from` number.
+          assistant_id,
+          # Body param: Instruction for the assistant, including the values for the template
+          # variables, e.g. `Send the login verification code 482913 to the customer.`
+          content:,
+          # Body param: WhatsApp number on your account to send from, in E.164 format. Its
+          # messaging profile must have this assistant configured.
+          from:,
+          # Body param: Customer to message, as an E.164 phone number or a WhatsApp
+          # business-scoped user ID (BSUID).
+          to:,
+          # Body param: Metadata stored on the conversation. Keys starting with `telnyx_`
+          # and the `assistant_id` key are reserved.
+          conversation_metadata: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
+          request_options: {}
+        )
+        end
+
         # @api private
         sig { params(client: Telnyx::Client).returns(T.attached_class) }
         def self.new(client:)

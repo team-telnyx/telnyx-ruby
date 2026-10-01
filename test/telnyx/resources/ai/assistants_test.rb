@@ -307,4 +307,27 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
       }
     end
   end
+
+  def test_whatsapp_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.ai.assistants.whatsapp(
+        "assistant_id",
+        content: "Send the login verification code 482913 to the customer.",
+        from: "+13125550001",
+        to: "+13125550002"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::AI::AssistantWhatsappResponse
+    end
+
+    assert_pattern do
+      response => {
+        conversation_id: String,
+        message_id: String
+      }
+    end
+  end
 end

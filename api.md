@@ -172,6 +172,7 @@ Methods:
 - <code title="get /ai/assistants/{assistant_id}/texml">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">get_texml</a>(\*\*params)</code>
 - <code title="post /ai/assistants/import">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">imports</a>(\*\*params)</code>
 - <code title="post /ai/assistants/{assistant_id}/chat/sms">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">send_sms</a>(\*\*params)</code>
+- <code title="post /ai/assistants/{assistant_id}/chat/whatsapp">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">whatsapp</a>(\*\*params)</code>
 
 ### Tests
 
