@@ -44,11 +44,11 @@ module Telnyx
         # {Telnyx::Models::Dir::PhoneNumberAddParams} for more details.
         #
         # Register phone numbers under a DIR. The enterprise is resolved server-side from
-        # the DIR id. Same body, failure modes, and batch semantics whichever path form
-        # you use.
+        # the DIR id.
         #
-        # **Pricing:** This is a billable action. See https://telnyx.com/pricing/numbers
-        # for current pricing.
+        # **Pricing:** Adding phone numbers is free. Branded Calling fees are charged per
+        # DIR and per branded call. See https://telnyx.com/pricing/branded-calling for
+        # current pricing.
         #
         # @overload add(dir_id, documents:, phone_numbers:, request_options: {})
         #
