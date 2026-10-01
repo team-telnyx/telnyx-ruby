@@ -74,6 +74,9 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Dir::PhoneNumberRemoveParams} for more details.
+        #
         # Deregister phone numbers from a DIR. The enterprise is resolved server-side from
         # the DIR id. Returns a partial-success envelope.
         #
@@ -81,7 +84,7 @@ module Telnyx
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
-        # @param phone_numbers [Array<String>]
+        # @param phone_numbers [Array<String>] The phone numbers to remove from this brand, in E.164 format, up to 100 per requ
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

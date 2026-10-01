@@ -19,6 +19,7 @@ module Telnyx
       required :document_type, enum: -> { Telnyx::Document::DocumentType }
 
       # @!attribute description
+      #   An optional note describing this document, for example what it proves.
       #
       #   @return [String, nil]
       optional :description, String
@@ -31,7 +32,7 @@ module Telnyx
       #
       #   @param document_type [Symbol, Telnyx::Models::Document::DocumentType] Type of supporting document. Pick the closest match to what the file actually co
       #
-      #   @param description [String]
+      #   @param description [String] An optional note describing this document, for example what it proves.
 
       # Type of supporting document. Pick the closest match to what the file actually
       # contains; `other` triggers manual vetting and may slow approval. The matching

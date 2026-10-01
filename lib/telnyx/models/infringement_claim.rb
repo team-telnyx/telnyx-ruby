@@ -208,6 +208,10 @@ module Telnyx
         #   - `infringement_claimed` - a trademark/impersonation claim is open against this
         #     DIR.
         #   - `permanently_rejected` - terminal; cannot be resubmitted.
+        #   - `delete_requested` - you have requested deletion; the DIR still exists and
+        #     Telnyx is completing the removal (de-registration and cleanup). A verified DIR
+        #     keeps serving its branded identity, and keeps billing, until the removal
+        #     finishes.
         #
         #   @return [Symbol, Telnyx::Models::DirStatus, nil]
         optional :status, enum: -> { Telnyx::DirStatus }

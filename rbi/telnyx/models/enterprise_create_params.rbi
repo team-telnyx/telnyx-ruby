@@ -27,6 +27,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :country_code
 
+      # The trade name your business operates under if it is different from your legal
+      # name, also called a Doing Business As (DBA) name. Leave blank if you only use
+      # your legal name.
       sig { returns(String) }
       attr_accessor :doing_business_as
 
@@ -34,14 +37,18 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :fein
 
-      # Industry classification.
+      # The industry your business operates in. Choose the closest match from the list;
+      # if your value is not accepted, pick the nearest category.
       sig { returns(Telnyx::EnterpriseCreateParams::Industry::OrSymbol) }
       attr_accessor :industry
 
+      # The state, province, or country where your business was legally incorporated,
+      # for example Delaware.
       sig { returns(String) }
       attr_accessor :jurisdiction_of_incorporation
 
-      # Legal name of the enterprise.
+      # Your business's full registered legal name, exactly as it appears on your
+      # incorporation or tax documents, 3 to 64 characters.
       sig { returns(String) }
       attr_accessor :legal_name
 
@@ -96,35 +103,50 @@ module Telnyx
       end
       attr_accessor :organization_type
 
+      # Your business's public website address, including https://. Leave blank if your
+      # business has no website.
       sig { returns(String) }
       attr_accessor :website
 
-      # Optional corporate-registration / company-number identifier.
+      # The official number your company received when it was legally registered or
+      # incorporated (for example from your state or national business registry). It is
+      # on your certificate of incorporation.
       sig { returns(T.nilable(String)) }
       attr_accessor :corporate_registration_number
 
-      # Optional free-form string the caller can attach for their own bookkeeping.
-      # Telnyx does not interpret it.
+      # Your own label for this account. Enter any reference that helps you find it in
+      # your records. Telnyx does not use it during vetting.
       sig { returns(T.nilable(String)) }
       attr_reader :customer_reference
 
       sig { params(customer_reference: String).void }
       attr_writer :customer_reference
 
-      # Optional D-U-N-S Number.
+      # Your optional 9-digit D-U-N-S Number issued by Dun & Bradstreet, a unique
+      # identifier for your business. Leave blank if you do not have one.
       sig { returns(T.nilable(String)) }
       attr_accessor :dun_bradstreet_number
 
-      # Optional SIC code for the primary line of business.
+      # The 4-digit Standard Industrial Classification code for your main line of
+      # business, which tells us what industry you operate in. Look it up in the SIC
+      # code directory if you are unsure.
       sig { returns(T.nilable(String)) }
       attr_accessor :primary_business_domain_sic_code
 
-      # Optional professional-license number for regulated industries.
+      # If your business operates under a professional license (for example legal,
+      # medical, or financial services), enter the license number issued by the
+      # licensing authority. Leave blank if it does not apply.
       sig { returns(T.nilable(String)) }
       attr_accessor :professional_license_number
 
-      # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
-      # Process Outsourcer placing calls on behalf of one or more enterprises.
+      # `enterprise` for an organization registering its own DIRs (the default, and the
+      # right choice when the calls display your own brand). `bpo` for a Business
+      # Process Outsourcer: a call center that places calls on behalf of other
+      # enterprises and displays their brand. A `bpo` enterprise describes the call
+      # center itself and cannot own a DIR. Each client the call center calls for gets
+      # its own `enterprise` in the same account, with the client's DIR under it; that
+      # DIR is then linked to the `bpo` enterprise through `bpo_authorizations`. Fixed
+      # at creation.
       sig do
         returns(T.nilable(Telnyx::EnterpriseCreateParams::RoleType::OrSymbol))
       end
@@ -170,13 +192,20 @@ module Telnyx
         billing_contact:,
         # ISO 3166-1 alpha-2 country code. Currently `US` and `CA` are supported.
         country_code:,
+        # The trade name your business operates under if it is different from your legal
+        # name, also called a Doing Business As (DBA) name. Leave blank if you only use
+        # your legal name.
         doing_business_as:,
         # US Federal Employer Identification Number (`NN-NNNNNNN`) or Canadian equivalent.
         fein:,
-        # Industry classification.
+        # The industry your business operates in. Choose the closest match from the list;
+        # if your value is not accepted, pick the nearest category.
         industry:,
+        # The state, province, or country where your business was legally incorporated,
+        # for example Delaware.
         jurisdiction_of_incorporation:,
-        # Legal name of the enterprise.
+        # Your business's full registered legal name, exactly as it appears on your
+        # incorporation or tax documents, 3 to 64 characters.
         legal_name:,
         # Approximate headcount range. Used for vetting heuristics; pick the bucket that
         # contains your current employee count.
@@ -201,20 +230,35 @@ module Telnyx
         # - `non_profit` - registered 501(c)(3)/equivalent (incl. educational
         #   institutions, charities, religious organisations).
         organization_type:,
+        # Your business's public website address, including https://. Leave blank if your
+        # business has no website.
         website:,
-        # Optional corporate-registration / company-number identifier.
+        # The official number your company received when it was legally registered or
+        # incorporated (for example from your state or national business registry). It is
+        # on your certificate of incorporation.
         corporate_registration_number: nil,
-        # Optional free-form string the caller can attach for their own bookkeeping.
-        # Telnyx does not interpret it.
+        # Your own label for this account. Enter any reference that helps you find it in
+        # your records. Telnyx does not use it during vetting.
         customer_reference: nil,
-        # Optional D-U-N-S Number.
+        # Your optional 9-digit D-U-N-S Number issued by Dun & Bradstreet, a unique
+        # identifier for your business. Leave blank if you do not have one.
         dun_bradstreet_number: nil,
-        # Optional SIC code for the primary line of business.
+        # The 4-digit Standard Industrial Classification code for your main line of
+        # business, which tells us what industry you operate in. Look it up in the SIC
+        # code directory if you are unsure.
         primary_business_domain_sic_code: nil,
-        # Optional professional-license number for regulated industries.
+        # If your business operates under a professional license (for example legal,
+        # medical, or financial services), enter the license number issued by the
+        # licensing authority. Leave blank if it does not apply.
         professional_license_number: nil,
-        # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
-        # Process Outsourcer placing calls on behalf of one or more enterprises.
+        # `enterprise` for an organization registering its own DIRs (the default, and the
+        # right choice when the calls display your own brand). `bpo` for a Business
+        # Process Outsourcer: a call center that places calls on behalf of other
+        # enterprises and displays their brand. A `bpo` enterprise describes the call
+        # center itself and cannot own a DIR. Each client the call center calls for gets
+        # its own `enterprise` in the same account, with the client's DIR under it; that
+        # DIR is then linked to the `bpo` enterprise through `bpo_authorizations`. Fixed
+        # at creation.
         role_type: nil,
         request_options: {}
       )
@@ -253,7 +297,8 @@ module Telnyx
       def to_hash
       end
 
-      # Industry classification.
+      # The industry your business operates in. Choose the closest match from the list;
+      # if your value is not accepted, pick the nearest category.
       module Industry
         extend Telnyx::Internal::Type::Enum
 
@@ -614,8 +659,14 @@ module Telnyx
         end
       end
 
-      # `enterprise` for an organization registering its own DIRs; `bpo` for a Business
-      # Process Outsourcer placing calls on behalf of one or more enterprises.
+      # `enterprise` for an organization registering its own DIRs (the default, and the
+      # right choice when the calls display your own brand). `bpo` for a Business
+      # Process Outsourcer: a call center that places calls on behalf of other
+      # enterprises and displays their brand. A `bpo` enterprise describes the call
+      # center itself and cannot own a DIR. Each client the call center calls for gets
+      # its own `enterprise` in the same account, with the client's DIR under it; that
+      # DIR is then linked to the `bpo` enterprise through `bpo_authorizations`. Fixed
+      # at creation.
       module RoleType
         extend Telnyx::Internal::Type::Enum
 

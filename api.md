@@ -2798,6 +2798,13 @@ Methods:
 - <code title="post /enterprises/{enterprise_id}/dir">client.enterprises.dir.<a href="./lib/telnyx/resources/enterprises/dir.rb">create</a>(\*\*params)</code>
 - <code title="get /enterprises/{enterprise_id}/dir">client.enterprises.dir.<a href="./lib/telnyx/resources/enterprises/dir.rb">list</a>(\*\*params)</code>
 
+## VerifyEmail
+
+Methods:
+
+- <code title="post /enterprises/{enterprise_id}/verify_email">client.enterprises.verify_email.<a href="./lib/telnyx/resources/enterprises/verify_email.rb">create</a>(\*\*params)</code>
+- <code title="post /enterprises/{enterprise_id}/verify_email/confirm">client.enterprises.verify_email.<a href="./lib/telnyx/resources/enterprises/verify_email.rb">confirm</a>(\*\*params)</code>
+
 # Reputation
 
 ## Numbers
@@ -2882,9 +2889,11 @@ Methods:
 - <code title="patch /dir/{dir_id}">client.dir.<a href="./lib/telnyx/resources/dir.rb">update</a>(\*\*params)</code>
 - <code title="get /dir">client.dir.<a href="./lib/telnyx/resources/dir.rb">list</a>(\*\*params)</code>
 - <code title="delete /dir/{dir_id}">client.dir.<a href="./lib/telnyx/resources/dir.rb">delete</a>(\*\*params)</code>
+- <code title="post /dir/{dir_id}/bpo_loa">client.dir.<a href="./lib/telnyx/resources/dir.rb">bpo_loa</a>(\*\*params)</code>
 - <code title="get /dir/document_types">client.dir.<a href="./lib/telnyx/resources/dir.rb">list_document_types</a>()</code>
 - <code title="get /dir/{dir_id}/infringement_claims">client.dir.<a href="./lib/telnyx/resources/dir.rb">list_infringement_claims</a>(\*\*params)</code>
 - <code title="post /dir/{dir_id}/loa">client.dir.<a href="./lib/telnyx/resources/dir.rb">new_loa</a>(\*\*params)</code>
+- <code title="get /dir/{dir_id}/bpo_authorizations">client.dir.<a href="./lib/telnyx/resources/dir.rb">retrieve_bpo_authorizations</a>(\*\*params)</code>
 - <code title="post /dir/{dir_id}/submit">client.dir.<a href="./lib/telnyx/resources/dir.rb">submit</a>(\*\*params)</code>
 - <code title="put /dir/{dir_id}/infringement_update">client.dir.<a href="./lib/telnyx/resources/dir.rb">update_infringement</a>(\*\*params)</code>
 

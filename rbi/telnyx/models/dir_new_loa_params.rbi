@@ -32,10 +32,10 @@ module Telnyx
       # Optional. When provided the rendered PDF embeds the signature image, printed
       # name, and signed-at date. When absent the PDF is returned unsigned so the
       # customer can sign externally and upload it via the Documents API.
-      sig { returns(T.nilable(Telnyx::DirNewLoaParams::Signature)) }
+      sig { returns(T.nilable(Telnyx::SignaturePayload)) }
       attr_reader :signature
 
-      sig { params(signature: Telnyx::DirNewLoaParams::Signature::OrHash).void }
+      sig { params(signature: Telnyx::SignaturePayload::OrHash).void }
       attr_writer :signature
 
       sig do
@@ -43,7 +43,7 @@ module Telnyx
           dir_id: String,
           phone_numbers: T::Array[String],
           agent: Telnyx::Enterprises::Reputation::AgentInput::OrHash,
-          signature: Telnyx::DirNewLoaParams::Signature::OrHash,
+          signature: Telnyx::SignaturePayload::OrHash,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -69,53 +69,12 @@ module Telnyx
             dir_id: String,
             phone_numbers: T::Array[String],
             agent: Telnyx::Enterprises::Reputation::AgentInput,
-            signature: Telnyx::DirNewLoaParams::Signature,
+            signature: Telnyx::SignaturePayload,
             request_options: Telnyx::RequestOptions
           }
         )
       end
       def to_hash
-      end
-
-      class Signature < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Telnyx::DirNewLoaParams::Signature, Telnyx::Internal::AnyHash)
-          end
-
-        # PNG image, base64-encoded.
-        sig { returns(String) }
-        attr_accessor :image_base64
-
-        # Optional. When absent the rendered PDF falls back to the enterprise contact's
-        # legal name.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :signer_name
-
-        # Optional. When provided the rendered PDF embeds the signature image, printed
-        # name, and signed-at date. When absent the PDF is returned unsigned so the
-        # customer can sign externally and upload it via the Documents API.
-        sig do
-          params(image_base64: String, signer_name: T.nilable(String)).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # PNG image, base64-encoded.
-          image_base64:,
-          # Optional. When absent the rendered PDF falls back to the enterprise contact's
-          # legal name.
-          signer_name: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            { image_base64: String, signer_name: T.nilable(String) }
-          )
-        end
-        def to_hash
-        end
       end
     end
   end

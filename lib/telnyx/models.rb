@@ -165,6 +165,8 @@ module Telnyx
 
   BotSignupResendMagicLinkParams = Telnyx::Models::BotSignupResendMagicLinkParams
 
+  BpoAuthorizationInput = Telnyx::Models::BpoAuthorizationInput
+
   BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
 
   BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
@@ -578,6 +580,8 @@ module Telnyx
 
   DirAPI = Telnyx::Models::DirAPI
 
+  DirBpoLoaParams = Telnyx::Models::DirBpoLoaParams
+
   DirDeleteParams = Telnyx::Models::DirDeleteParams
 
   DirList = Telnyx::Models::DirList
@@ -589,6 +593,8 @@ module Telnyx
   DirListParams = Telnyx::Models::DirListParams
 
   DirNewLoaParams = Telnyx::Models::DirNewLoaParams
+
+  DirRetrieveBpoAuthorizationsParams = Telnyx::Models::DirRetrieveBpoAuthorizationsParams
 
   DirRetrieveParams = Telnyx::Models::DirRetrieveParams
 
@@ -1788,6 +1794,8 @@ module Telnyx
   ShortCodeRetrieveParams = Telnyx::Models::ShortCodeRetrieveParams
 
   ShortCodeUpdateParams = Telnyx::Models::ShortCodeUpdateParams
+
+  SignaturePayload = Telnyx::Models::SignaturePayload
 
   SimCard = Telnyx::Models::SimCard
 

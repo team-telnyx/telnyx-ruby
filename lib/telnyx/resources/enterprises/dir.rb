@@ -35,7 +35,7 @@ module Telnyx
         #   `POST /enterprises/{id}/branded_calling`).
         # - `404` - enterprise does not exist or does not belong to your account.
         #
-        # @overload create(enterprise_id, authorizer_email:, authorizer_name:, call_reasons:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, documents: nil, logo_url: nil, reselling: nil, request_options: {})
+        # @overload create(enterprise_id, authorizer_email:, authorizer_name:, call_reasons:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, bpo_authorizations: nil, documents: nil, logo_url: nil, reselling: nil, webhook_url: nil, request_options: {})
         #
         # @param enterprise_id [String] The enterprise id. Lowercase UUID.
         #
@@ -45,7 +45,7 @@ module Telnyx
         #
         # @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
         #
-        # @param certify_brand_is_accurate [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyBrandIsAccurate] Must be `true`.
+        # @param certify_brand_is_accurate [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyBrandIsAccurate] Certification that the DIR information is accurate. Must be `true` for the DIR t
         #
         # @param certify_ip_ownership [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyIPOwnership] Must be `true`. Confirms ownership of any logos/trademarks shown.
         #
@@ -53,11 +53,15 @@ module Telnyx
         #
         # @param display_name [String] Name shown to call recipients. No emoji; not whitespace-only.
         #
+        # @param bpo_authorizations [Array<Telnyx::Models::BpoAuthorizationInput>] Optional. Approved BPO (Business Process Outsourcer) accounts on your organizati
+        #
         # @param documents [Array<Telnyx::Models::Document>] Supporting documents. Each `document_id` may appear at most once on a DIR.
         #
         # @param logo_url [String] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
         #
         # @param reselling [Boolean] Set to true if your organization places calls on behalf of other enterprises (BP
+        #
+        # @param webhook_url [String, nil] Optional `https://` URL that receives webhook notifications when this DIR's comp
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
