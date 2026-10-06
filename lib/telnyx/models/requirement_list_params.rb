@@ -108,7 +108,10 @@ module Telnyx
           extend Telnyx::Internal::Type::Enum
 
           LOCAL = :local
+          MOBILE = :mobile
+          MULTIPURPOSE = :multipurpose
           NATIONAL = :national
+          SHARED_COST = :shared_cost
           TOLL_FREE = :toll_free
 
           # @!method self.values

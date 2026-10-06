@@ -171,6 +171,7 @@ Methods:
 - <code title="post /ai/assistants/{assistant_id}/clone">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">clone\_</a>(\*\*params)</code>
 - <code title="get /ai/assistants/{assistant_id}/texml">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">get_texml</a>(\*\*params)</code>
 - <code title="post /ai/assistants/import">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">imports</a>(\*\*params)</code>
+- <code title="post /ai/assistants/{assistant_id}/restore">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">restore</a>(\*\*params)</code>
 - <code title="post /ai/assistants/{assistant_id}/chat/sms">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">send_sms</a>(\*\*params)</code>
 - <code title="post /ai/assistants/{assistant_id}/chat/whatsapp">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">whatsapp</a>(\*\*params)</code>
 
@@ -254,6 +255,13 @@ Methods:
 Methods:
 
 - <code title="post /ai/assistants/{assistant_id}/instructions/enhance">client.ai.assistants.instructions.<a href="./lib/telnyx/resources/ai/assistants/instructions.rb">enhance</a>(\*\*params)</code>
+
+### Deleted
+
+Methods:
+
+- <code title="get /ai/assistants/deleted">client.ai.assistants.deleted.<a href="./lib/telnyx/resources/ai/assistants/deleted.rb">list</a>(\*\*params)</code>
+- <code title="get /ai/assistants/{assistant_id}/deleted">client.ai.assistants.deleted.<a href="./lib/telnyx/resources/ai/assistants/deleted.rb">get</a>(\*\*params)</code>
 
 ## Audio
 
@@ -2682,6 +2690,13 @@ Methods:
 - <code title="get /v2/whatsapp/phone_numbers/{phone_number}/conversational_components">client.whatsapp.phone_numbers.conversational_components.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/conversational_components.rb">list</a>(\*\*params)</code>
 - <code title="patch /v2/whatsapp/phone_numbers/{phone_number}/conversational_components">client.whatsapp.phone_numbers.conversational_components.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/conversational_components.rb">patch_all</a>(\*\*params)</code>
 
+### CallingRouting
+
+Methods:
+
+- <code title="get /whatsapp/phone_numbers/{id}/calling_routing">client.whatsapp.phone_numbers.calling_routing.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/calling_routing.rb">list</a>(\*\*params)</code>
+- <code title="patch /whatsapp/phone_numbers/{id}/calling_routing">client.whatsapp.phone_numbers.calling_routing.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/calling_routing.rb">patch_all</a>(\*\*params)</code>
+
 ## UserData
 
 Methods:
@@ -3250,3 +3265,11 @@ Methods:
 - <code title="patch /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">update</a>(\*\*params)</code>
 - <code title="get /spend_limits">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">list</a>()</code>
 - <code title="delete /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">delete</a>(\*\*params)</code>
+
+# LlmTokenGateway
+
+## Usage
+
+Methods:
+
+- <code title="get /llm_token_gateway/usage/summary">client.llm_token_gateway.usage.<a href="./lib/telnyx/resources/llm_token_gateway/usage.rb">retrieve_summary</a>(\*\*params)</code>

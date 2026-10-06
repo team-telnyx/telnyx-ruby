@@ -370,8 +370,15 @@ module Telnyx
           T.let(:local, Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol)
         MOBILE =
           T.let(:mobile, Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol)
+        MULTIPURPOSE =
+          T.let(
+            :multipurpose,
+            Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol
+          )
         NATIONAL =
           T.let(:national, Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol)
+        OTHER =
+          T.let(:other, Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol)
         SHARED_COST =
           T.let(
             :shared_cost,

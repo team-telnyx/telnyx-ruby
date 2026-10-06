@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class PhoneNumbers
+        class CallingRouting
+          def list: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::CallingRoutingListResponse
+
+          def patch_all: (
+            String id,
+            connection_id: Telnyx::Models::Whatsapp::PhoneNumbers::CallingRoutingPatchAllParams::connection_id?,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Whatsapp::PhoneNumbers::CallingRoutingPatchAllResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

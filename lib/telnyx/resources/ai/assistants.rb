@@ -33,6 +33,10 @@ module Telnyx
         # @return [Telnyx::Resources::AI::Assistants::Instructions]
         attr_reader :instructions
 
+        # Configure AI assistant specifications
+        # @return [Telnyx::Resources::AI::Assistants::Deleted]
+        attr_reader :deleted
+
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::AssistantCreateParams} for more details.
         #
@@ -265,11 +269,30 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::AssistantDeleteParams} for more details.
+        #
         # Delete an AI Assistant by `assistant_id`.
         #
-        # @overload delete(assistant_id, request_options: {})
+        # By default this performs a soft delete: the assistant moves to the Recently
+        # Deleted list and stays restorable for 30 days, after which it is permanently
+        # deleted automatically. The assistant's versions and TeXML application are
+        # preserved during the retention window.
+        #
+        # Pass `hard_delete=true` to skip the retention window and permanently delete the
+        # assistant immediately. A hard delete erases the assistant and all of its
+        # versions, and deletes its TeXML application unless phone numbers are still
+        # assigned to it. It does not delete conversations, recordings, shared tools the
+        # assistant referenced, or knowledge-base embeddings.
+        #
+        # Deletion fails with `400` if other assistants reference this one through a
+        # handoff tool or a conversation-flow edge — remove those references first.
+        #
+        # @overload delete(assistant_id, hard_delete: nil, request_options: {})
         #
         # @param assistant_id [String] Unique identifier of the assistant.
+        #
+        # @param hard_delete [Boolean] Permanently delete the assistant immediately instead of soft-deleting it to the
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -277,11 +300,14 @@ module Telnyx
         #
         # @see Telnyx::Models::AI::AssistantDeleteParams
         def delete(assistant_id, params = {})
+          parsed, options = Telnyx::AI::AssistantDeleteParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :delete,
             path: ["ai/assistants/%1$s", assistant_id],
+            query: query,
             model: Telnyx::Models::AI::AssistantDeleteResponse,
-            options: params[:request_options]
+            options: options
           )
         end
 
@@ -407,6 +433,30 @@ module Telnyx
           )
         end
 
+        # Restore a soft-deleted assistant from the Recently Deleted list.
+        #
+        # The assistant becomes fully active again with its versions and TeXML application
+        # as they were at deletion time. Restoring does not re-enable numbers or
+        # connections that were released separately after the deletion.
+        #
+        # @overload restore(assistant_id, request_options: {})
+        #
+        # @param assistant_id [String] Unique identifier of the assistant.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::AI::InferenceEmbedding]
+        #
+        # @see Telnyx::Models::AI::AssistantRestoreParams
+        def restore(assistant_id, params = {})
+          @client.request(
+            method: :post,
+            path: ["ai/assistants/%1$s/restore", assistant_id],
+            model: Telnyx::AI::InferenceEmbedding,
+            options: params[:request_options]
+          )
+        end
+
         # Some parameter documentations has been truncated, see
         # {Telnyx::Models::AI::AssistantSendSMSParams} for more details.
         #
@@ -519,6 +569,7 @@ module Telnyx
           @versions = Telnyx::Resources::AI::Assistants::Versions.new(client: client)
           @tags = Telnyx::Resources::AI::Assistants::Tags.new(client: client)
           @instructions = Telnyx::Resources::AI::Assistants::Instructions.new(client: client)
+          @deleted = Telnyx::Resources::AI::Assistants::Deleted.new(client: client)
         end
       end
     end

@@ -33,6 +33,10 @@ module Telnyx
         sig { returns(Telnyx::Resources::AI::Assistants::Instructions) }
         attr_reader :instructions
 
+        # Configure AI assistant specifications
+        sig { returns(Telnyx::Resources::AI::Assistants::Deleted) }
+        attr_reader :deleted
+
         # Creates a new AI assistant from the provided configuration, including its model,
         # instructions, and attached tools, and returns the created assistant.
         sig do
@@ -469,15 +473,33 @@ module Telnyx
         end
 
         # Delete an AI Assistant by `assistant_id`.
+        #
+        # By default this performs a soft delete: the assistant moves to the Recently
+        # Deleted list and stays restorable for 30 days, after which it is permanently
+        # deleted automatically. The assistant's versions and TeXML application are
+        # preserved during the retention window.
+        #
+        # Pass `hard_delete=true` to skip the retention window and permanently delete the
+        # assistant immediately. A hard delete erases the assistant and all of its
+        # versions, and deletes its TeXML application unless phone numbers are still
+        # assigned to it. It does not delete conversations, recordings, shared tools the
+        # assistant referenced, or knowledge-base embeddings.
+        #
+        # Deletion fails with `400` if other assistants reference this one through a
+        # handoff tool or a conversation-flow edge — remove those references first.
         sig do
           params(
             assistant_id: String,
+            hard_delete: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::AssistantDeleteResponse)
         end
         def delete(
           # Unique identifier of the assistant.
           assistant_id,
+          # Permanently delete the assistant immediately instead of soft-deleting it to the
+          # Recently Deleted list, where it stays restorable for 30 days.
+          hard_delete: nil,
           request_options: {}
         )
         end
@@ -588,6 +610,24 @@ module Telnyx
           # different request returns 422. Only successful responses are replayed, for up to
           # 24 hours. Do not include sensitive data in the key.
           idempotency_key: nil,
+          request_options: {}
+        )
+        end
+
+        # Restore a soft-deleted assistant from the Recently Deleted list.
+        #
+        # The assistant becomes fully active again with its versions and TeXML application
+        # as they were at deletion time. Restoring does not re-enable numbers or
+        # connections that were released separately after the deletion.
+        sig do
+          params(
+            assistant_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::AI::InferenceEmbedding)
+        end
+        def restore(
+          # Unique identifier of the assistant.
+          assistant_id,
           request_options: {}
         )
         end

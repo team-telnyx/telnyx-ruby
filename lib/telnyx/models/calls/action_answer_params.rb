@@ -14,9 +14,11 @@ module Telnyx
         required :call_control_id, String
 
         # @!attribute assistant
-        #   AI Assistant configuration. All fields except `id` are optional — the
-        #   assistant's stored configuration will be used as fallback for any omitted
-        #   fields.
+        #   AI Assistant configuration and per-call overrides. All fields except `id` are
+        #   optional. Omitted assistant fields use the stored configuration. Supplied
+        #   `voice_settings` and `transcription` objects replace their stored objects rather
+        #   than merging individual settings; include every setting you want to retain.
+        #   `dynamic_variables` are merged, with request values taking precedence.
         #
         #   @return [Telnyx::Models::CallAssistantRequest, nil]
         optional :assistant, -> { Telnyx::CallAssistantRequest }
@@ -192,7 +194,9 @@ module Telnyx
         optional :stream_url, String
 
         # @!attribute transcription
-        #   Enable transcription upon call answer. The default value is false.
+        #   Enable standalone call transcription upon call answer. The default value is
+        #   false. Configure this feature with `transcription_config`. To configure speech
+        #   recognition for an AI assistant, use `assistant.transcription` instead.
         #
         #   @return [Boolean, nil]
         optional :transcription, Telnyx::Internal::Type::Boolean
@@ -245,7 +249,7 @@ module Telnyx
         #
         #   @param call_control_id [String]
         #
-        #   @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+        #   @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
         #
         #   @param billing_group_id [String] Use this field to set the Billing Group ID for the call. Must be a valid and exi
         #
@@ -296,7 +300,7 @@ module Telnyx
         #
         #   @param stream_url [String] The destination WebSocket address where the stream is going to be delivered.
         #
-        #   @param transcription [Boolean] Enable transcription upon call answer. The default value is false.
+        #   @param transcription [Boolean] Enable standalone call transcription upon call answer. The default value is fals
         #
         #   @param transcription_config [Telnyx::Models::Calls::TranscriptionStartRequest]
         #

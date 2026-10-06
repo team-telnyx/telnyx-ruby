@@ -16,6 +16,8 @@ module Telnyx
 
         attr_reader instructions: Telnyx::Resources::AI::Assistants::Instructions
 
+        attr_reader deleted: Telnyx::Resources::AI::Assistants::Deleted
+
         def create: (
           instructions: String,
           name: String,
@@ -105,6 +107,7 @@ module Telnyx
 
         def delete: (
           String assistant_id,
+          ?hard_delete: bool,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::AssistantDeleteResponse
 
@@ -135,6 +138,11 @@ module Telnyx
           ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::AssistantsList
+
+        def restore: (
+          String assistant_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::InferenceEmbedding
 
         def send_sms: (
           String assistant_id,

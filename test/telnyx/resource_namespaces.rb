@@ -212,6 +212,9 @@ module Telnyx
         end
       end
 
+      module LlmTokenGateway
+      end
+
       module ManagedAccounts
       end
 

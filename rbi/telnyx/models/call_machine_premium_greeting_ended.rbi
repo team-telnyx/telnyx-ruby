@@ -193,7 +193,9 @@ module Telnyx
         sig { params(from: String).void }
         attr_writer :from
 
-        # Premium Answering Machine Greeting Ended result.
+        # Premium Answering Machine Greeting Ended result. `prompt_ended` is only sent
+        # when `answering_machine_detection` is `premium_ios_call_screening_detection` and
+        # the iOS call-screening prompt ends without a beep.
         sig do
           returns(
             T.nilable(
@@ -246,7 +248,9 @@ module Telnyx
           connection_id: nil,
           # Number or SIP URI placing the call.
           from: nil,
-          # Premium Answering Machine Greeting Ended result.
+          # Premium Answering Machine Greeting Ended result. `prompt_ended` is only sent
+          # when `answering_machine_detection` is `premium_ios_call_screening_detection` and
+          # the iOS call-screening prompt ends without a beep.
           result: nil,
           # Destination number or SIP URI of the call.
           to: nil
@@ -271,7 +275,9 @@ module Telnyx
         def to_hash
         end
 
-        # Premium Answering Machine Greeting Ended result.
+        # Premium Answering Machine Greeting Ended result. `prompt_ended` is only sent
+        # when `answering_machine_detection` is `premium_ios_call_screening_detection` and
+        # the iOS call-screening prompt ends without a beep.
         module Result
           extend Telnyx::Internal::Type::Enum
 
@@ -292,6 +298,11 @@ module Telnyx
           NO_BEEP_DETECTED =
             T.let(
               :no_beep_detected,
+              Telnyx::CallMachinePremiumGreetingEnded::Payload::Result::TaggedSymbol
+            )
+          PROMPT_ENDED =
+            T.let(
+              :prompt_ended,
               Telnyx::CallMachinePremiumGreetingEnded::Payload::Result::TaggedSymbol
             )
 

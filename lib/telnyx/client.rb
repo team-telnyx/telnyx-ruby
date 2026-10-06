@@ -802,6 +802,9 @@ module Telnyx
     # @return [Telnyx::Resources::SpendLimits]
     attr_reader :spend_limits
 
+    # @return [Telnyx::Resources::LlmTokenGateway]
+    attr_reader :llm_token_gateway
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1100,6 +1103,7 @@ module Telnyx
       @bot_signup = Telnyx::Resources::BotSignup.new(client: self)
       @machine_payments = Telnyx::Resources::MachinePayments.new(client: self)
       @spend_limits = Telnyx::Resources::SpendLimits.new(client: self)
+      @llm_token_gateway = Telnyx::Resources::LlmTokenGateway.new(client: self)
     end
   end
 end

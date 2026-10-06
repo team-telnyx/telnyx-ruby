@@ -181,6 +181,8 @@ module Telnyx
 
   class CallControlRetrievalTool = Telnyx::Models::CallControlRetrievalTool
 
+  class CallConversationCreatedWebhookEvent = Telnyx::Models::CallConversationCreatedWebhookEvent
+
   class CallConversationEnded = Telnyx::Models::CallConversationEnded
 
   class CallConversationEndedWebhookEvent = Telnyx::Models::CallConversationEndedWebhookEvent
@@ -241,9 +243,13 @@ module Telnyx
 
   class CallMachineGreetingEndedWebhookEvent = Telnyx::Models::CallMachineGreetingEndedWebhookEvent
 
+  class CallMachinePremiumCallScreeningDetectedWebhookEvent = Telnyx::Models::CallMachinePremiumCallScreeningDetectedWebhookEvent
+
   class CallMachinePremiumDetectionEnded = Telnyx::Models::CallMachinePremiumDetectionEnded
 
   class CallMachinePremiumDetectionEndedWebhookEvent = Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent
+
+  class CallMachinePremiumDetectionStartedWebhookEvent = Telnyx::Models::CallMachinePremiumDetectionStartedWebhookEvent
 
   class CallMachinePremiumGreetingEnded = Telnyx::Models::CallMachinePremiumGreetingEnded
 
@@ -1000,6 +1006,8 @@ module Telnyx
   class ListRetrieveAllParams = Telnyx::Models::ListRetrieveAllParams
 
   class ListRetrieveByZoneParams = Telnyx::Models::ListRetrieveByZoneParams
+
+  module LlmTokenGateway = Telnyx::Models::LlmTokenGateway
 
   class MachinePaymentAccountCreditParams = Telnyx::Models::MachinePaymentAccountCreditParams
 

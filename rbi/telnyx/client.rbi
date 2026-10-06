@@ -797,6 +797,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::SpendLimits) }
     attr_reader :spend_limits
 
+    sig { returns(Telnyx::Resources::LlmTokenGateway) }
+    attr_reader :llm_token_gateway
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

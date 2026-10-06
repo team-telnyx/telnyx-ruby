@@ -23,6 +23,9 @@ module Telnyx
       #   `answering_machine_detection=premium` was requested
       # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
       #   was requested and a beep was detected
+      # - `call.machine.premium.call_screening.detected` if
+      #   `answering_machine_detection=premium_ios_call_screening_detection` was
+      #   requested and an Apple Call Screening tone was detected
       # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
       # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
       #   error occurred
@@ -150,16 +153,28 @@ module Telnyx
         # `greeting_end` or `detect_words` is used and a `machine` is detected, you will
         # receive another `call.machine.greeting.ended` webhook when the answering machine
         # greeting ends with a beep or silence. If `detect_beep` is used, you will only
-        # receive `call.machine.greeting.ended` if a beep is detected.
+        # receive `call.machine.greeting.ended` if a beep is detected. If
+        # `answering_machine_detection` is set to `premium_ios_call_screening_detection`,
+        # Premium AMD runs with iOS Call Screening support: after an initial `machine`
+        # result, Telnyx listens for the iOS call-screening prompt to end or for an Apple
+        # Call Screening tone, sends `call.machine.premium.greeting.ended` with
+        # `result=prompt_ended` or `call.machine.premium.call_screening.detected` with
+        # `result=screening` respectively. When the Apple Call Screening tone is detected,
+        # Premium AMD is restarted on the screened call and a
+        # `call.machine.premium.detection.ended` webhook with the post-screening
+        # classification follows.
         answering_machine_detection: nil,
         # Optional configuration parameters to modify 'answering_machine_detection'
         # performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
         # parameters are applicable when `premium` is selected as
-        # answering_machine_detection.
+        # answering_machine_detection. `prompt_end_timeout_millis` is additionally
+        # applicable when `premium_ios_call_screening_detection` is selected.
         answering_machine_detection_config: nil,
-        # AI Assistant configuration. All fields except `id` are optional — the
-        # assistant's stored configuration will be used as fallback for any omitted
-        # fields.
+        # AI Assistant configuration and per-call overrides. All fields except `id` are
+        # optional. Omitted assistant fields use the stored configuration. Supplied
+        # `voice_settings` and `transcription` objects replace their stored objects rather
+        # than merging individual settings; include every setting you want to retain.
+        # `dynamic_variables` are merged, with request values taking precedence.
         assistant: nil,
         # The URL of a file to be played back to the callee when the call is answered. The
         # URL can point to either a WAV or MP3 file. media_name and audio_url cannot be

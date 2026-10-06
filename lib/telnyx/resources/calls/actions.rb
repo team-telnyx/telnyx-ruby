@@ -44,9 +44,33 @@ module Telnyx
         # Answer an incoming call. You must issue this command before executing subsequent
         # commands on an incoming call.
         #
+        # To answer with an AI assistant, include `assistant.id` and any per-call
+        # overrides in the `assistant` object. Telnyx attempts to warm up the assistant
+        # before answering the call, then starts the assistant automatically when the call
+        # is answered. Do not also send `ai_assistant_start` for this flow. The HTTP
+        # success response can arrive before the call is answered; use the `call.answered`
+        # webhook to track the answer. If warm-up fails, Telnyx falls back to starting the
+        # assistant after answering.
+        #
+        # When `assistant.id` is supplied, obtain the conversation ID from
+        # `data.payload.conversation_id` in the
+        # [call.conversation.created](/api-reference/callbacks/call-conversation-created)
+        # webhook and correlate it using `data.payload.call_control_id`. The `answer` HTTP
+        # response does not include `conversation_id`. The created event is emitted during
+        # assistant startup and does not indicate that the assistant is ready to speak.
+        #
+        # Set the assistant voice with `assistant.voice_settings.voice` and speech-to-text
+        # settings with `assistant.transcription`. You can reuse one stored assistant with
+        # different per-call settings. Warm-up prepares assistant configuration and
+        # dependencies; it does not wait for the greeting audio to be ready or guarantee
+        # zero silence after answer. A plain `answer` followed by `ai_assistant_start`
+        # performs assistant startup after the call has already been answered.
+        #
         # **Expected Webhooks:**
         #
         # - `call.answered`
+        # - `call.conversation.created` when the requested assistant conversation is
+        #   created
         # - `call.hold` and `call.unhold` if the call is held/unheld
         # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
         # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
@@ -61,7 +85,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
         #
         # @param billing_group_id [String] Use this field to set the Billing Group ID for the call. Must be a valid and exi
         #
@@ -112,7 +136,7 @@ module Telnyx
         #
         # @param stream_url [String] The destination WebSocket address where the stream is going to be delivered.
         #
-        # @param transcription [Boolean] Enable transcription upon call answer. The default value is false.
+        # @param transcription [Boolean] Enable standalone call transcription upon call answer. The default value is fals
         #
         # @param transcription_config [Telnyx::Models::Calls::TranscriptionStartRequest]
         #
@@ -314,6 +338,8 @@ module Telnyx
         #
         # **Expected Webhooks:**
         #
+        # - [`call.conversation.created`](/api-reference/callbacks/call-conversation-created)
+        #   includes `conversation_id` during startup
         # - `call.ai_gather.ended`
         # - `call.conversation.ended`
         # - `call.ai_gather.partial_results` (if `send_partial_results` is set to `true`)
@@ -972,6 +998,8 @@ module Telnyx
         #
         # **Expected Webhooks:**
         #
+        # - [`call.conversation.created`](/api-reference/callbacks/call-conversation-created)
+        #   includes `conversation_id` during startup
         # - `call.conversation.ended`
         # - `call.conversation_insights.generated`
         #
@@ -979,7 +1007,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
         #
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
@@ -1817,6 +1845,9 @@ module Telnyx
         #   `answering_machine_detection=premium` was requested
         # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
         #   was requested and a beep was detected
+        # - `call.machine.premium.call_screening.detected` if
+        #   `answering_machine_detection=premium_ios_call_screening_detection` was
+        #   requested and an Apple Call Screening tone was detected
         #
         # @overload transfer(call_control_id, to:, answering_machine_detection: nil, answering_machine_detection_config: nil, audio_url: nil, client_state: nil, command_id: nil, custom_headers: nil, diversion: nil, early_media: nil, from: nil, from_display_name: nil, media_encryption: nil, media_name: nil, mute_dtmf: nil, park_after_unbridge: nil, preferred_codecs: nil, privacy: nil, record: nil, record_channels: nil, record_custom_file_name: nil, record_format: nil, record_max_length: nil, record_timeout_secs: nil, record_track: nil, record_trim: nil, route_to_mobile: nil, send_digits_on_answer: nil, sip_auth_password: nil, sip_auth_username: nil, sip_headers: nil, sip_region: nil, sip_transport_protocol: nil, sound_modifications: nil, target_leg_client_state: nil, time_limit_secs: nil, timeout_secs: nil, webhook_retries_policies: nil, webhook_url: nil, webhook_url_method: nil, webhook_urls: nil, webhook_urls_method: nil, request_options: {})
         #

@@ -34,7 +34,16 @@ module Telnyx
         #   'greeting_end' or 'detect_words' is used and a 'machine' is detected, you will
         #   receive another 'call.machine.greeting.ended' webhook when the answering machine
         #   greeting ends with a beep or silence. If `detect_beep` is used, you will only
-        #   receive 'call.machine.greeting.ended' if a beep is detected.
+        #   receive 'call.machine.greeting.ended' if a beep is detected. If
+        #   `answering_machine_detection` is set to `premium_ios_call_screening_detection`,
+        #   Premium AMD runs with iOS Call Screening support: after an initial `machine`
+        #   result, Telnyx listens for the iOS call-screening prompt to end or for an Apple
+        #   Call Screening tone, sends `call.machine.premium.greeting.ended` with
+        #   `result=prompt_ended` or `call.machine.premium.call_screening.detected` with
+        #   `result=screening` respectively. When the Apple Call Screening tone is detected,
+        #   Premium AMD is restarted on the screened call and a
+        #   `call.machine.premium.detection.ended` webhook with the post-screening
+        #   classification follows.
         #
         #   @return [Symbol, Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetection, nil]
         optional :answering_machine_detection,
@@ -44,7 +53,8 @@ module Telnyx
         #   Optional configuration parameters to modify 'answering_machine_detection'
         #   performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
         #   parameters are applicable when `premium` is selected as
-        #   answering_machine_detection.
+        #   answering_machine_detection. `prompt_end_timeout_millis` is additionally
+        #   applicable when `premium_ios_call_screening_detection` is selected.
         #
         #   @return [Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig, nil]
         optional :answering_machine_detection_config,
@@ -443,11 +453,21 @@ module Telnyx
         # 'greeting_end' or 'detect_words' is used and a 'machine' is detected, you will
         # receive another 'call.machine.greeting.ended' webhook when the answering machine
         # greeting ends with a beep or silence. If `detect_beep` is used, you will only
-        # receive 'call.machine.greeting.ended' if a beep is detected.
+        # receive 'call.machine.greeting.ended' if a beep is detected. If
+        # `answering_machine_detection` is set to `premium_ios_call_screening_detection`,
+        # Premium AMD runs with iOS Call Screening support: after an initial `machine`
+        # result, Telnyx listens for the iOS call-screening prompt to end or for an Apple
+        # Call Screening tone, sends `call.machine.premium.greeting.ended` with
+        # `result=prompt_ended` or `call.machine.premium.call_screening.detected` with
+        # `result=screening` respectively. When the Apple Call Screening tone is detected,
+        # Premium AMD is restarted on the screened call and a
+        # `call.machine.premium.detection.ended` webhook with the post-screening
+        # classification follows.
         module AnsweringMachineDetection
           extend Telnyx::Internal::Type::Enum
 
           PREMIUM = :premium
+          PREMIUM_IOS_CALL_SCREENING_DETECTION = :premium_ios_call_screening_detection
           DETECT = :detect
           DETECT_BEEP = :detect_beep
           DETECT_WORDS = :detect_words
@@ -573,6 +593,15 @@ module Telnyx
           #   @return [Integer, nil]
           optional :maximum_word_length_millis, Integer
 
+          # @!attribute prompt_end_timeout_millis
+          #   Maximum time Telnyx waits, in milliseconds, for the iOS call-screening prompt to
+          #   end after Premium AMD initially detects a `machine`. Used when
+          #   `answering_machine_detection` is `premium_ios_call_screening_detection`.
+          #   Defaults to 5000 milliseconds.
+          #
+          #   @return [Integer, nil]
+          optional :prompt_end_timeout_millis, Integer
+
           # @!attribute silence_threshold
           #   Minimum noise threshold for any analysis.
           #
@@ -585,7 +614,7 @@ module Telnyx
           #   @return [Integer, nil]
           optional :total_analysis_time_millis, Integer
 
-          # @!method initialize(after_greeting_silence_millis: nil, beep_detection_profile: nil, beep_max_frequency_hz: nil, beep_min_frequency_hz: nil, beep_min_tone_duration_millis: nil, beep_spectral_confirmation: nil, beep_spectral_min_purity: nil, beep_spectral_reject_fax_cng: nil, beep_spectral_window_millis: nil, between_words_silence_millis: nil, greeting_duration_millis: nil, greeting_silence_duration_millis: nil, greeting_total_analysis_time_millis: nil, initial_silence_millis: nil, maximum_number_of_words: nil, maximum_word_length_millis: nil, silence_threshold: nil, total_analysis_time_millis: nil)
+          # @!method initialize(after_greeting_silence_millis: nil, beep_detection_profile: nil, beep_max_frequency_hz: nil, beep_min_frequency_hz: nil, beep_min_tone_duration_millis: nil, beep_spectral_confirmation: nil, beep_spectral_min_purity: nil, beep_spectral_reject_fax_cng: nil, beep_spectral_window_millis: nil, between_words_silence_millis: nil, greeting_duration_millis: nil, greeting_silence_duration_millis: nil, greeting_total_analysis_time_millis: nil, initial_silence_millis: nil, maximum_number_of_words: nil, maximum_word_length_millis: nil, prompt_end_timeout_millis: nil, silence_threshold: nil, total_analysis_time_millis: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Calls::ActionTransferParams::AnsweringMachineDetectionConfig}
           #   for more details.
@@ -593,7 +622,8 @@ module Telnyx
           #   Optional configuration parameters to modify 'answering_machine_detection'
           #   performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
           #   parameters are applicable when `premium` is selected as
-          #   answering_machine_detection.
+          #   answering_machine_detection. `prompt_end_timeout_millis` is additionally
+          #   applicable when `premium_ios_call_screening_detection` is selected.
           #
           #   @param after_greeting_silence_millis [Integer] Silence duration threshold after a greeting message or voice for it be considere
           #
@@ -626,6 +656,8 @@ module Telnyx
           #   @param maximum_number_of_words [Integer] If number of detected words is greater than this value, consder it a machine.
           #
           #   @param maximum_word_length_millis [Integer] If a single word lasts longer than this threshold, consider it a machine.
+          #
+          #   @param prompt_end_timeout_millis [Integer] Maximum time Telnyx waits, in milliseconds, for the iOS call-screening prompt to
           #
           #   @param silence_threshold [Integer] Minimum noise threshold for any analysis.
           #

@@ -26,6 +26,9 @@ module Telnyx
       #   `answering_machine_detection=premium` was requested
       # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
       #   was requested and a beep was detected
+      # - `call.machine.premium.call_screening.detected` if
+      #   `answering_machine_detection=premium_ios_call_screening_detection` was
+      #   requested and an Apple Call Screening tone was detected
       # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
       # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
       #   error occurred
@@ -47,7 +50,7 @@ module Telnyx
       #
       # @param answering_machine_detection_config [Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig] Optional configuration parameters to modify 'answering_machine_detection' perfor
       #
-      # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+      # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
       #
       # @param audio_url [String] The URL of a file to be played back to the callee when the call is answered. The
       #
