@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module PhoneNumbers
+        type calling_routing_list_response =
+          { data: Telnyx::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData }
+
+        class CallingRoutingListResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData
+
+          def initialize: (
+            data: Telnyx::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData
+          }
+        end
+      end
+    end
+  end
+end

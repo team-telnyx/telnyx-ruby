@@ -33,6 +33,10 @@ module Telnyx
         sig { returns(Telnyx::Resources::AI::Assistants::Instructions) }
         attr_reader :instructions
 
+        # Configure AI assistant specifications
+        sig { returns(Telnyx::Resources::AI::Assistants::Deleted) }
+        attr_reader :deleted
+
         # Creates a new AI assistant from the provided configuration, including its model,
         # instructions, and attached tools, and returns the created assistant.
         sig do
@@ -41,6 +45,7 @@ module Telnyx
             name: String,
             a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
             conversation_flow: Telnyx::AI::ConversationFlowReq::OrHash,
+            delegation_settings: Telnyx::AI::DelegationSettings::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_timeout_ms: Integer,
@@ -85,6 +90,7 @@ module Telnyx
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash,
+            websocket_settings: Telnyx::AI::WebsocketSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
             idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
@@ -111,6 +117,14 @@ module Telnyx
           # unique node/edge IDs, that `start_node_id` references a real node, and that
           # every edge's endpoints reference real nodes.
           conversation_flow: nil,
+          # Body param: Splits the conversation between a frontend model that talks to the
+          # caller and a backend model that does the work. On the GPT-Live route the
+          # frontend model cannot call tools at all — when it needs something done it raises
+          # a delegation and waits. On the chat completion route the frontend keeps a single
+          # `delegate` tool that returns immediately, so the conversation carries on while
+          # the backend works. Either way the backend's answer is spoken as commentary or
+          # kept as silent context, depending on `speak_results`. Beta feature.
+          delegation_settings: nil,
           # Body param
           description: nil,
           # Body param: Map of dynamic variables and their default values
@@ -202,6 +216,12 @@ module Telnyx
           transcription: nil,
           # Body param
           voice_settings: nil,
+          # Body param: Streams conversation and telephony events to a WebSocket server you
+          # host, and accepts messages injected back into the conversation. Telnyx opens the
+          # connection as a client, once per conversation. Delivery is best effort
+          # throughout: while the connection is down events are dropped rather than queued,
+          # and no socket failure is ever allowed to affect the call. Beta feature.
+          websocket_settings: nil,
           # Body param: Configuration settings for the assistant's web widget.
           widget_settings: nil,
           # Header param: Optional opaque, unquoted key for safely retrying the same logical
@@ -251,6 +271,7 @@ module Telnyx
             assistant_id: String,
             a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
             conversation_flow: Telnyx::AI::ConversationFlowReq::OrHash,
+            delegation_settings: Telnyx::AI::DelegationSettings::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_timeout_ms: Integer,
@@ -299,6 +320,7 @@ module Telnyx
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             version_name: String,
             voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash,
+            websocket_settings: Telnyx::AI::WebsocketSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::InferenceEmbedding)
@@ -322,6 +344,14 @@ module Telnyx
           # unique node/edge IDs, that `start_node_id` references a real node, and that
           # every edge's endpoints reference real nodes.
           conversation_flow: nil,
+          # Splits the conversation between a frontend model that talks to the caller and a
+          # backend model that does the work. On the GPT-Live route the frontend model
+          # cannot call tools at all — when it needs something done it raises a delegation
+          # and waits. On the chat completion route the frontend keeps a single `delegate`
+          # tool that returns immediately, so the conversation carries on while the backend
+          # works. Either way the backend's answer is spoken as commentary or kept as silent
+          # context, depending on `speak_results`. Beta feature.
+          delegation_settings: nil,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
@@ -421,6 +451,12 @@ module Telnyx
           # Human-readable name for the assistant version.
           version_name: nil,
           voice_settings: nil,
+          # Streams conversation and telephony events to a WebSocket server you host, and
+          # accepts messages injected back into the conversation. Telnyx opens the
+          # connection as a client, once per conversation. Delivery is best effort
+          # throughout: while the connection is down events are dropped rather than queued,
+          # and no socket failure is ever allowed to affect the call. Beta feature.
+          websocket_settings: nil,
           # Configuration settings for the assistant's web widget.
           widget_settings: nil,
           request_options: {}
@@ -437,15 +473,33 @@ module Telnyx
         end
 
         # Delete an AI Assistant by `assistant_id`.
+        #
+        # By default this performs a soft delete: the assistant moves to the Recently
+        # Deleted list and stays restorable for 30 days, after which it is permanently
+        # deleted automatically. The assistant's versions and TeXML application are
+        # preserved during the retention window.
+        #
+        # Pass `hard_delete=true` to skip the retention window and permanently delete the
+        # assistant immediately. A hard delete erases the assistant and all of its
+        # versions, and deletes its TeXML application unless phone numbers are still
+        # assigned to it. It does not delete conversations, recordings, shared tools the
+        # assistant referenced, or knowledge-base embeddings.
+        #
+        # Deletion fails with `400` if other assistants reference this one through a
+        # handoff tool or a conversation-flow edge — remove those references first.
         sig do
           params(
             assistant_id: String,
+            hard_delete: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::AI::AssistantDeleteResponse)
         end
         def delete(
           # Unique identifier of the assistant.
           assistant_id,
+          # Permanently delete the assistant immediately instead of soft-deleting it to the
+          # Recently Deleted list, where it stays restorable for 30 days.
+          hard_delete: nil,
           request_options: {}
         )
         end
@@ -560,6 +614,24 @@ module Telnyx
         )
         end
 
+        # Restore a soft-deleted assistant from the Recently Deleted list.
+        #
+        # The assistant becomes fully active again with its versions and TeXML application
+        # as they were at deletion time. Restoring does not re-enable numbers or
+        # connections that were released separately after the deletion.
+        sig do
+          params(
+            assistant_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::AI::InferenceEmbedding)
+        end
+        def restore(
+          # Unique identifier of the assistant.
+          assistant_id,
+          request_options: {}
+        )
+        end
+
         # Send an SMS message for an assistant. This endpoint:
         #
         # 1. Validates the assistant exists and has messaging profile configured
@@ -600,6 +672,65 @@ module Telnyx
           should_create_conversation: nil,
           # Body param
           text: nil,
+          # Header param: Optional opaque, unquoted key for safely retrying the same logical
+          # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+          # Generate a unique UUID v4 for each operation and reuse it only when retrying
+          # that operation with the same request. Invalid headers—including duplicate,
+          # empty, malformed, or overlong values—return 400 with error code 10015. A request
+          # already in progress with the same key returns 409; reusing the key with a
+          # different request returns 422. Only successful responses are replayed, for up to
+          # 24 hours. Do not include sensitive data in the key.
+          idempotency_key: nil,
+          request_options: {}
+        )
+        end
+
+        # Start a WhatsApp conversation with a customer from the business side. This
+        # endpoint:
+        #
+        # 1. Validates that `from` is a WhatsApp number on your account whose messaging
+        #    profile has this assistant configured
+        # 2. Creates a new `whatsapp_chat` conversation with the provided metadata
+        # 3. Asks the assistant to pick one of its approved WhatsApp templates and fill
+        #    its variables from `content`
+        # 4. Sends the template from `from` to `to`
+        # 5. Returns the conversation ID and the message ID
+        #
+        # When the customer replies, the reply is routed to the same conversation and the
+        # assistant answers within the 24-hour customer service window. The assistant
+        # needs a `whatsapp_template` tool with at least one approved template, data
+        # retention enabled and PII redaction disabled.
+        sig do
+          params(
+            assistant_id: String,
+            content: String,
+            from: String,
+            to: String,
+            conversation_metadata:
+              T::Hash[
+                Symbol,
+                Telnyx::AI::AssistantWhatsappParams::ConversationMetadata::Variants
+              ],
+            idempotency_key: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Models::AI::AssistantWhatsappResponse)
+        end
+        def whatsapp(
+          # Path param: Unique identifier of the assistant. Must be the assistant configured
+          # on the messaging profile of the `from` number.
+          assistant_id,
+          # Body param: Instruction for the assistant, including the values for the template
+          # variables, e.g. `Send the login verification code 482913 to the customer.`
+          content:,
+          # Body param: WhatsApp number on your account to send from, in E.164 format. Its
+          # messaging profile must have this assistant configured.
+          from:,
+          # Body param: Customer to message, as an E.164 phone number or a WhatsApp
+          # business-scoped user ID (BSUID).
+          to:,
+          # Body param: Metadata stored on the conversation. Keys starting with `telnyx_`
+          # and the `assistant_id` key are reserved.
+          conversation_metadata: nil,
           # Header param: Optional opaque, unquoted key for safely retrying the same logical
           # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
           # Generate a unique UUID v4 for each operation and reuse it only when retrying

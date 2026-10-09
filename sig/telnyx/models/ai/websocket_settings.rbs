@@ -1,0 +1,29 @@
+module Telnyx
+  module Models
+    module AI
+      type websocket_settings = { auth_ref: String, enabled: bool, url: String }
+
+      class WebsocketSettings < Telnyx::Internal::Type::BaseModel
+        attr_reader auth_ref: String?
+
+        def auth_ref=: (String) -> String
+
+        attr_reader enabled: bool?
+
+        def enabled=: (bool) -> bool
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (
+          ?auth_ref: String,
+          ?enabled: bool,
+          ?url: String
+        ) -> void
+
+        def to_hash: -> { auth_ref: String, enabled: bool, url: String }
+      end
+    end
+  end
+end

@@ -43,7 +43,7 @@ module Telnyx
           # Updates the configuration of a specific assistant version. Can not update main
           # version
           #
-          # @overload update(version_id, assistant_id:, a2a_agents: nil, conversation_flow: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, widget_settings: nil, request_options: {})
+          # @overload update(version_id, assistant_id:, a2a_agents: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil, request_options: {})
           #
           # @param version_id [String] Path param: Unique identifier of the version.
           #
@@ -52,6 +52,8 @@ module Telnyx
           # @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] Body param: A2A agents this assistant can delegate to. Tools are not stored here
           #
           # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Body param: Conversation flow as supplied by API clients (create / update).
+          #
+          # @param delegation_settings [Telnyx::Models::AI::DelegationSettings] Body param: Splits the conversation between a frontend model that talks to the c
           #
           # @param description [String] Body param
           #
@@ -106,6 +108,8 @@ module Telnyx
           # @param version_name [String] Body param: Human-readable name for the assistant version.
           #
           # @param voice_settings [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings] Body param
+          #
+          # @param websocket_settings [Telnyx::Models::AI::WebsocketSettings] Body param: Streams conversation and telephony events to a WebSocket server you
           #
           # @param widget_settings [Telnyx::Models::AI::WidgetSettings] Body param: Configuration settings for the assistant's web widget.
           #

@@ -47,7 +47,7 @@ module Telnyx
       #
       # @param answering_machine_detection_config [Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig] Optional configuration parameters to modify 'answering_machine_detection' perfor
       #
-      # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+      # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
       #
       # @param audio_url [String] The URL of a file to be played back to the callee when the call is answered. The
       #

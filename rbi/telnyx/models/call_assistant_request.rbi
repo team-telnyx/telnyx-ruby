@@ -169,15 +169,32 @@ module Telnyx
       end
       attr_writer :tools
 
+      # Per-call speech-to-text configuration for the assistant. If omitted, the stored
+      # assistant transcription configuration is used. If supplied, this object replaces
+      # the stored transcription settings. This is separate from the top-level
+      # `transcription` boolean on answer and dial commands.
+      sig { returns(T.nilable(Telnyx::Calls::TranscriptionConfig)) }
+      attr_reader :transcription
+
+      sig do
+        params(transcription: Telnyx::Calls::TranscriptionConfig::OrHash).void
+      end
+      attr_writer :transcription
+
+      # Per-call voice configuration. Set the voice identifier in
+      # `voice_settings.voice`, not in `assistant.voice`. If supplied, this object
+      # replaces the stored voice settings.
       sig { returns(T.nilable(Telnyx::AI::VoiceSettings)) }
       attr_reader :voice_settings
 
       sig { params(voice_settings: Telnyx::AI::VoiceSettings::OrHash).void }
       attr_writer :voice_settings
 
-      # AI Assistant configuration. All fields except `id` are optional — the
-      # assistant's stored configuration will be used as fallback for any omitted
-      # fields.
+      # AI Assistant configuration and per-call overrides. All fields except `id` are
+      # optional. Omitted assistant fields use the stored configuration. Supplied
+      # `voice_settings` and `transcription` objects replace their stored objects rather
+      # than merging individual settings; include every setting you want to retain.
+      # `dynamic_variables` are merged, with request values taking precedence.
       sig do
         params(
           id: String,
@@ -207,6 +224,7 @@ module Telnyx
                 Telnyx::CallControlRetrievalTool::OrHash
               )
             ],
+          transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
           voice_settings: Telnyx::AI::VoiceSettings::OrHash
         ).returns(T.attached_class)
       end
@@ -256,6 +274,14 @@ module Telnyx
         # Inline tool definitions available to the assistant (webhook, retrieval,
         # transfer, hangup, etc.). Overrides the assistant's stored tools if provided.
         tools: nil,
+        # Per-call speech-to-text configuration for the assistant. If omitted, the stored
+        # assistant transcription configuration is used. If supplied, this object replaces
+        # the stored transcription settings. This is separate from the top-level
+        # `transcription` boolean on answer and dial commands.
+        transcription: nil,
+        # Per-call voice configuration. Set the voice identifier in
+        # `voice_settings.voice`, not in `assistant.voice`. If supplied, this object
+        # replaces the stored voice settings.
         voice_settings: nil
       )
       end
@@ -290,6 +316,7 @@ module Telnyx
                   Telnyx::CallControlRetrievalTool
                 )
               ],
+            transcription: Telnyx::Calls::TranscriptionConfig,
             voice_settings: Telnyx::AI::VoiceSettings
           }
         )

@@ -16,11 +16,14 @@ module Telnyx
 
         attr_reader instructions: Telnyx::Resources::AI::Assistants::Instructions
 
+        attr_reader deleted: Telnyx::Resources::AI::Assistants::Deleted
+
         def create: (
           instructions: String,
           name: String,
           ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
           ?conversation_flow: Telnyx::AI::ConversationFlowReq,
+          ?delegation_settings: Telnyx::AI::DelegationSettings,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_timeout_ms: Integer,
@@ -45,6 +48,7 @@ module Telnyx
           ?tools: ::Array[Telnyx::Models::AI::assistant_tool],
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
+          ?websocket_settings: Telnyx::AI::WebsocketSettings,
           ?widget_settings: Telnyx::AI::WidgetSettings,
           ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
@@ -63,6 +67,7 @@ module Telnyx
           String assistant_id,
           ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
           ?conversation_flow: Telnyx::AI::ConversationFlowReq,
+          ?delegation_settings: Telnyx::AI::DelegationSettings,
           ?description: String,
           ?dynamic_variables: ::Hash[Symbol, top],
           ?dynamic_variables_webhook_timeout_ms: Integer,
@@ -91,6 +96,7 @@ module Telnyx
           ?transcription: Telnyx::AI::TranscriptionSettings,
           ?version_name: String,
           ?voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
+          ?websocket_settings: Telnyx::AI::WebsocketSettings,
           ?widget_settings: Telnyx::AI::WidgetSettings,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::InferenceEmbedding
@@ -101,6 +107,7 @@ module Telnyx
 
         def delete: (
           String assistant_id,
+          ?hard_delete: bool,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::AssistantDeleteResponse
 
@@ -132,6 +139,11 @@ module Telnyx
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AI::AssistantsList
 
+        def restore: (
+          String assistant_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::InferenceEmbedding
+
         def send_sms: (
           String assistant_id,
           from: String,
@@ -142,6 +154,16 @@ module Telnyx
           ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::AI::AssistantSendSMSResponse
+
+        def whatsapp: (
+          String assistant_id,
+          content: String,
+          from: String,
+          to: String,
+          ?conversation_metadata: ::Hash[Symbol, Telnyx::Models::AI::AssistantWhatsappParams::conversation_metadata],
+          ?idempotency_key: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AI::AssistantWhatsappResponse
 
         def initialize: (client: Telnyx::Client) -> void
       end

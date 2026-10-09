@@ -100,7 +100,7 @@ class Telnyx::Test::Resources::AI::ToolsTest < Telnyx::Test::ResourceTest
     response = @telnyx.ai.tools.delete("tool_id")
 
     assert_pattern do
-      response => Telnyx::Internal::Type::Unknown
+      response => nil
     end
   end
 end

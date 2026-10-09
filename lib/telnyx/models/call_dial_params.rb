@@ -70,9 +70,11 @@ module Telnyx
                -> { Telnyx::CallDialParams::AnsweringMachineDetectionConfig }
 
       # @!attribute assistant
-      #   AI Assistant configuration. All fields except `id` are optional — the
-      #   assistant's stored configuration will be used as fallback for any omitted
-      #   fields.
+      #   AI Assistant configuration and per-call overrides. All fields except `id` are
+      #   optional. Omitted assistant fields use the stored configuration. Supplied
+      #   `voice_settings` and `transcription` objects replace their stored objects rather
+      #   than merging individual settings; include every setting you want to retain.
+      #   `dynamic_variables` are merged, with request values taking precedence.
       #
       #   @return [Telnyx::Models::CallAssistantRequest, nil]
       optional :assistant, -> { Telnyx::CallAssistantRequest }
@@ -532,7 +534,7 @@ module Telnyx
       #
       #   @param answering_machine_detection_config [Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig] Optional configuration parameters to modify 'answering_machine_detection' perfor
       #
-      #   @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+      #   @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
       #
       #   @param audio_url [String] The URL of a file to be played back to the callee when the call is answered. The
       #

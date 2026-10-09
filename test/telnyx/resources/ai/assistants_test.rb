@@ -21,6 +21,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         name: String,
         a2a_agents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent]) | nil,
         conversation_flow: Telnyx::AI::ConversationFlow | nil,
+        delegation_settings: Telnyx::AI::DelegationSettings | nil,
         description: String | nil,
         dynamic_variables: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         dynamic_variables_webhook_timeout_ms: Integer | nil,
@@ -48,6 +49,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_id: String | nil,
         version_name: String | nil,
         voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
+        websocket_settings: Telnyx::AI::WebsocketSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end
@@ -71,6 +73,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         name: String,
         a2a_agents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent]) | nil,
         conversation_flow: Telnyx::AI::ConversationFlow | nil,
+        delegation_settings: Telnyx::AI::DelegationSettings | nil,
         description: String | nil,
         dynamic_variables: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         dynamic_variables_webhook_timeout_ms: Integer | nil,
@@ -98,6 +101,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_id: String | nil,
         version_name: String | nil,
         voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
+        websocket_settings: Telnyx::AI::WebsocketSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end
@@ -121,6 +125,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         name: String,
         a2a_agents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent]) | nil,
         conversation_flow: Telnyx::AI::ConversationFlow | nil,
+        delegation_settings: Telnyx::AI::DelegationSettings | nil,
         description: String | nil,
         dynamic_variables: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         dynamic_variables_webhook_timeout_ms: Integer | nil,
@@ -148,6 +153,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_id: String | nil,
         version_name: String | nil,
         voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
+        websocket_settings: Telnyx::AI::WebsocketSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end
@@ -226,6 +232,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         name: String,
         a2a_agents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent]) | nil,
         conversation_flow: Telnyx::AI::ConversationFlow | nil,
+        delegation_settings: Telnyx::AI::DelegationSettings | nil,
         description: String | nil,
         dynamic_variables: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
         dynamic_variables_webhook_timeout_ms: Integer | nil,
@@ -253,6 +260,7 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
         version_id: String | nil,
         version_name: String | nil,
         voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
+        websocket_settings: Telnyx::AI::WebsocketSettings | nil,
         widget_settings: Telnyx::AI::WidgetSettings | nil
       }
     end
@@ -284,6 +292,58 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
     end
   end
 
+  def test_restore
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.ai.assistants.restore("assistant_id")
+
+    assert_pattern do
+      response => Telnyx::AI::InferenceEmbedding
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        instructions: String,
+        model: String,
+        name: String,
+        a2a_agents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent]) | nil,
+        conversation_flow: Telnyx::AI::ConversationFlow | nil,
+        delegation_settings: Telnyx::AI::DelegationSettings | nil,
+        description: String | nil,
+        dynamic_variables: ^(Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]) | nil,
+        dynamic_variables_webhook_timeout_ms: Integer | nil,
+        dynamic_variables_webhook_url: String | nil,
+        enabled_features: ^(Telnyx::Internal::Type::ArrayOf[enum: Telnyx::AI::EnabledFeatures]) | nil,
+        external_llm: Telnyx::AI::ExternalLlm | nil,
+        fallback_config: Telnyx::AI::FallbackConfig | nil,
+        greeting: String | nil,
+        import_metadata: Telnyx::AI::ImportMetadata | nil,
+        insight_settings: Telnyx::AI::InsightSettings | nil,
+        integrations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantIntegration]) | nil,
+        interruption_settings: Telnyx::AI::InferenceEmbeddingInterruptionSettings | nil,
+        llm_api_key_ref: String | nil,
+        mcp_servers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantMcpServer]) | nil,
+        messaging_settings: Telnyx::AI::MessagingSettings | nil,
+        observability_settings: Telnyx::AI::Observability | nil,
+        post_conversation_settings: Telnyx::AI::PostConversationSettings | nil,
+        privacy_settings: Telnyx::AI::PrivacySettings | nil,
+        related_mission_ids: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        tags: ^(Telnyx::Internal::Type::ArrayOf[String]) | nil,
+        telephony_settings: Telnyx::AI::TelephonySettings | nil,
+        tools: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool]) | nil,
+        transcription: Telnyx::AI::TranscriptionSettings | nil,
+        version_created_at: Time | nil,
+        version_id: String | nil,
+        version_name: String | nil,
+        voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings | nil,
+        websocket_settings: Telnyx::AI::WebsocketSettings | nil,
+        widget_settings: Telnyx::AI::WidgetSettings | nil
+      }
+    end
+  end
+
   def test_send_sms_required_params
     skip("Mock server tests are disabled")
 
@@ -296,6 +356,29 @@ class Telnyx::Test::Resources::AI::AssistantsTest < Telnyx::Test::ResourceTest
     assert_pattern do
       response => {
         conversation_id: String | nil
+      }
+    end
+  end
+
+  def test_whatsapp_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.ai.assistants.whatsapp(
+        "assistant_id",
+        content: "Send the login verification code 482913 to the customer.",
+        from: "+13125550001",
+        to: "+13125550002"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::AI::AssistantWhatsappResponse
+    end
+
+    assert_pattern do
+      response => {
+        conversation_id: String,
+        message_id: String
       }
     end
   end

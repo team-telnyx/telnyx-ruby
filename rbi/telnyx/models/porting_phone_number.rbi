@@ -206,9 +206,19 @@ module Telnyx
             :mobile,
             Telnyx::PortingPhoneNumber::PhoneNumberType::TaggedSymbol
           )
+        MULTIPURPOSE =
+          T.let(
+            :multipurpose,
+            Telnyx::PortingPhoneNumber::PhoneNumberType::TaggedSymbol
+          )
         NATIONAL =
           T.let(
             :national,
+            Telnyx::PortingPhoneNumber::PhoneNumberType::TaggedSymbol
+          )
+        OTHER =
+          T.let(
+            :other,
             Telnyx::PortingPhoneNumber::PhoneNumberType::TaggedSymbol
           )
         SHARED_COST =

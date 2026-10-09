@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        type namespace_list_response =
+          { data: ::Array[Telnyx::AI::Memory::Namespace] }
+
+        class NamespaceListResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: ::Array[Telnyx::AI::Memory::Namespace]
+
+          def initialize: (data: ::Array[Telnyx::AI::Memory::Namespace]) -> void
+
+          def to_hash: -> { data: ::Array[Telnyx::AI::Memory::Namespace] }
+        end
+      end
+    end
+  end
+end

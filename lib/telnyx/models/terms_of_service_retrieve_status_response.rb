@@ -45,6 +45,7 @@ module Telnyx
         required :product_type, enum: -> { Telnyx::TermsOfService::TosProductType }
 
         # @!attribute agreed_at
+        #   When you accepted the terms, or null if you have not.
         #
         #   @return [Time, nil]
         optional :agreed_at, Time, nil?: true
@@ -71,7 +72,7 @@ module Telnyx
         #
         #   @param product_type [Symbol, Telnyx::Models::TermsOfService::TosProductType] Telnyx product the Terms of Service apply to.
         #
-        #   @param agreed_at [Time, nil]
+        #   @param agreed_at [Time, nil] When you accepted the terms, or null if you have not.
         #
         #   @param agreed_version [String, nil] Version the user previously agreed to (may be older than `current_terms_version`
       end

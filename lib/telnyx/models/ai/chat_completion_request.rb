@@ -63,10 +63,15 @@ module Telnyx
         optional :logprobs, Telnyx::Internal::Type::Boolean
 
         # @!attribute max_tokens
-        #   Maximum number of completion tokens the model should generate.
+        #   Maximum number of completion (output) tokens the model may generate per request.
+        #   Defaults to 8192 when omitted or `null`. Set a higher value to allow longer
+        #   completions. The model's `max_completion_tokens` metadata (see
+        #   `GET /ai/models`), when set, caps both the default and any larger explicit
+        #   value. Reasoning models consume this budget across reasoning and answer tokens
+        #   combined.
         #
         #   @return [Integer, nil]
-        optional :max_tokens, Integer
+        optional :max_tokens, Integer, nil?: true
 
         # @!attribute min_p
         #   This is an alternative to `top_p` that
@@ -228,7 +233,7 @@ module Telnyx
         #
         #   @param logprobs [Boolean] Whether to return log probabilities of the output tokens or not. If true, return
         #
-        #   @param max_tokens [Integer] Maximum number of completion tokens the model should generate.
+        #   @param max_tokens [Integer, nil] Maximum number of completion (output) tokens the model may generate per request.
         #
         #   @param min_p [Float] This is an alternative to `top_p` that [many prefer](https://github.com/huggingf
         #
