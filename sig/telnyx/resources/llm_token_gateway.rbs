@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class LlmTokenGateway
+      attr_reader usage: Telnyx::Resources::LlmTokenGateway::Usage
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

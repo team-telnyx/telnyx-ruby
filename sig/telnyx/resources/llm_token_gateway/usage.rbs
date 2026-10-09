@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class LlmTokenGateway
+      class Usage
+        def retrieve_summary: (
+          end_date: Date,
+          start_date: Date,
+          token_group_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

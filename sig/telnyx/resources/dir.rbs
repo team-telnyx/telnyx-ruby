@@ -20,6 +20,7 @@ module Telnyx
         String dir_id,
         ?authorizer_email: String,
         ?authorizer_name: String,
+        ?bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput],
         ?call_reasons: ::Array[String],
         ?certify_brand_is_accurate: bool,
         ?certify_ip_ownership: bool,
@@ -28,6 +29,7 @@ module Telnyx
         ?documents: ::Array[Telnyx::Document],
         ?logo_url: String,
         ?reselling: bool,
+        ?webhook_url: String?,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::DirWrapped
 
@@ -44,7 +46,17 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::DirAPI]
 
-      def delete: (String dir_id, ?request_options: Telnyx::request_opts) -> nil
+      def delete: (
+        String dir_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DirDeleteResponse
+
+      def bpo_loa: (
+        String dir_id,
+        bpo_enterprise_id: String,
+        ?signature: Telnyx::SignaturePayload,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
 
       def list_document_types: (
         ?request_options: Telnyx::request_opts
@@ -61,9 +73,16 @@ module Telnyx
         String dir_id,
         phone_numbers: ::Array[String],
         ?agent: Telnyx::Enterprises::Reputation::AgentInput,
-        ?signature: Telnyx::DirNewLoaParams::Signature,
+        ?signature: Telnyx::SignaturePayload,
         ?request_options: Telnyx::request_opts
       ) -> StringIO
+
+      def retrieve_bpo_authorizations: (
+        String dir_id,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::DirRetrieveBpoAuthorizationsResponse
 
       def submit: (
         String dir_id,

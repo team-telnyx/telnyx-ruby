@@ -47,6 +47,21 @@ module Telnyx
         # Answer an incoming call. You must issue this command before executing subsequent
         # commands on an incoming call.
         #
+        # To answer with an AI assistant, include `assistant.id` and any per-call
+        # overrides in the `assistant` object. Telnyx attempts to warm up the assistant
+        # before answering the call, then starts the assistant automatically when the call
+        # is answered. Do not also send `ai_assistant_start` for this flow. The HTTP
+        # success response can arrive before the call is answered; use the `call.answered`
+        # webhook to track the answer. If warm-up fails, Telnyx falls back to starting the
+        # assistant after answering.
+        #
+        # Set the assistant voice with `assistant.voice_settings.voice` and speech-to-text
+        # settings with `assistant.transcription`. You can reuse one stored assistant with
+        # different per-call settings. Warm-up prepares assistant configuration and
+        # dependencies; it does not wait for the greeting audio to be ready or guarantee
+        # zero silence after answer. A plain `answer` followed by `ai_assistant_start`
+        # performs assistant startup after the call has already been answered.
+        #
         # **Expected Webhooks:**
         #
         # - `call.answered`
@@ -118,9 +133,11 @@ module Telnyx
         def answer(
           # Unique identifier and token for controlling the call
           call_control_id,
-          # AI Assistant configuration. All fields except `id` are optional — the
-          # assistant's stored configuration will be used as fallback for any omitted
-          # fields.
+          # AI Assistant configuration and per-call overrides. All fields except `id` are
+          # optional. Omitted assistant fields use the stored configuration. Supplied
+          # `voice_settings` and `transcription` objects replace their stored objects rather
+          # than merging individual settings; include every setting you want to retain.
+          # `dynamic_variables` are merged, with request values taking precedence.
           assistant: nil,
           # Use this field to set the Billing Group ID for the call. Must be a valid and
           # existing Billing Group ID.
@@ -196,7 +213,9 @@ module Telnyx
           stream_track: nil,
           # The destination WebSocket address where the stream is going to be delivered.
           stream_url: nil,
-          # Enable transcription upon call answer. The default value is false.
+          # Enable standalone call transcription upon call answer. The default value is
+          # false. Configure this feature with `transcription_config`. To configure speech
+          # recognition for an AI assistant, use `assistant.transcription` instead.
           transcription: nil,
           transcription_config: nil,
           # A map of event types to retry policies. Each retry policy contains an array of
@@ -1081,7 +1100,10 @@ module Telnyx
         def reject(
           # Unique identifier and token for controlling the call
           call_control_id,
-          # Cause for call rejection.
+          # Cause for call rejection. The cause sets the SIP response the caller receives:
+          # `USER_BUSY` sends 486 User Busy, `CALL_REJECTED` sends 603 Decline, `NOT_FOUND`
+          # sends 404 Not Found, and `TEMPORARILY_UNAVAILABLE` sends 480 Temporarily
+          # Unavailable.
           cause:,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.
@@ -1358,9 +1380,11 @@ module Telnyx
         def start_ai_assistant(
           # Unique identifier and token for controlling the call
           call_control_id,
-          # AI Assistant configuration. All fields except `id` are optional — the
-          # assistant's stored configuration will be used as fallback for any omitted
-          # fields.
+          # AI Assistant configuration and per-call overrides. All fields except `id` are
+          # optional. Omitted assistant fields use the stored configuration. Supplied
+          # `voice_settings` and `transcription` objects replace their stored objects rather
+          # than merging individual settings; include every setting you want to retain.
+          # `dynamic_variables` are merged, with request values taking precedence.
           assistant: nil,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.

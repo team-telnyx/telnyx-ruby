@@ -37,7 +37,8 @@ module Telnyx
           sig do
             params(
               enterprise_id: String,
-              agent: Telnyx::Enterprises::Reputation::AgentInput::OrHash,
+              agent:
+                Telnyx::Enterprises::Reputation::LoaRenderParams::Agent::OrHash,
               signature:
                 Telnyx::Enterprises::Reputation::LoaRenderParams::Signature::OrHash,
               request_options: Telnyx::RequestOptions::OrHash

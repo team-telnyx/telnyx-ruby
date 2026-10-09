@@ -44,6 +44,21 @@ module Telnyx
         # Answer an incoming call. You must issue this command before executing subsequent
         # commands on an incoming call.
         #
+        # To answer with an AI assistant, include `assistant.id` and any per-call
+        # overrides in the `assistant` object. Telnyx attempts to warm up the assistant
+        # before answering the call, then starts the assistant automatically when the call
+        # is answered. Do not also send `ai_assistant_start` for this flow. The HTTP
+        # success response can arrive before the call is answered; use the `call.answered`
+        # webhook to track the answer. If warm-up fails, Telnyx falls back to starting the
+        # assistant after answering.
+        #
+        # Set the assistant voice with `assistant.voice_settings.voice` and speech-to-text
+        # settings with `assistant.transcription`. You can reuse one stored assistant with
+        # different per-call settings. Warm-up prepares assistant configuration and
+        # dependencies; it does not wait for the greeting audio to be ready or guarantee
+        # zero silence after answer. A plain `answer` followed by `ai_assistant_start`
+        # performs assistant startup after the call has already been answered.
+        #
         # **Expected Webhooks:**
         #
         # - `call.answered`
@@ -61,7 +76,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
         #
         # @param billing_group_id [String] Use this field to set the Billing Group ID for the call. Must be a valid and exi
         #
@@ -112,7 +127,7 @@ module Telnyx
         #
         # @param stream_url [String] The destination WebSocket address where the stream is going to be delivered.
         #
-        # @param transcription [Boolean] Enable transcription upon call answer. The default value is false.
+        # @param transcription [Boolean] Enable standalone call transcription upon call answer. The default value is fals
         #
         # @param transcription_config [Telnyx::Models::Calls::TranscriptionStartRequest]
         #
@@ -778,7 +793,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param cause [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause] Cause for call rejection.
+        # @param cause [Symbol, Telnyx::Models::Calls::ActionRejectParams::Cause] Cause for call rejection. The cause sets the SIP response the caller receives: `
         #
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #
@@ -979,7 +994,7 @@ module Telnyx
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
-        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+        # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
         #
         # @param client_state [String] Use this field to add state to every subsequent webhook. It must be a valid Base
         #

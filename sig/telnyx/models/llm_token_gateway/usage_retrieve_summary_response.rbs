@@ -1,0 +1,465 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type usage_retrieve_summary_response =
+        {
+          data: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data,
+          meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Meta
+        }
+
+      class UsageRetrieveSummaryResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data
+
+        attr_accessor meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Meta
+
+        def initialize: (
+          data: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data,
+          meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Meta
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data,
+          meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Meta
+        }
+
+        type data =
+          {
+            by_day: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByDay],
+            by_model: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByModel],
+            guardrails: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails,
+            totals: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Totals
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor by_day: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByDay]
+
+          attr_accessor by_model: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByModel]
+
+          attr_accessor guardrails: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails
+
+          attr_accessor totals: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Totals
+
+          def initialize: (
+            by_day: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByDay],
+            by_model: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByModel],
+            guardrails: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails,
+            totals: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Totals
+          ) -> void
+
+          def to_hash: -> {
+            by_day: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByDay],
+            by_model: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::ByModel],
+            guardrails: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails,
+            totals: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Totals
+          }
+
+          type by_day =
+            {
+              cache_hits: Integer,
+              date: Date,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            }
+
+          class ByDay < Telnyx::Internal::Type::BaseModel
+            attr_accessor cache_hits: Integer
+
+            attr_accessor date: Date
+
+            attr_accessor failed_requests: Integer
+
+            attr_accessor input_tokens: Integer
+
+            attr_accessor output_tokens: Integer
+
+            attr_accessor partial_requests: Integer
+
+            attr_accessor requests: Integer
+
+            attr_accessor reserved_spend: Float
+
+            attr_accessor spend: Float
+
+            attr_accessor succeeded_requests: Integer
+
+            attr_accessor unknown_requests: Integer
+
+            def initialize: (
+              cache_hits: Integer,
+              date: Date,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            ) -> void
+
+            def to_hash: -> {
+              cache_hits: Integer,
+              date: Date,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            }
+          end
+
+          type by_model =
+            {
+              cache_hits: Integer,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              model: String,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            }
+
+          class ByModel < Telnyx::Internal::Type::BaseModel
+            attr_accessor cache_hits: Integer
+
+            attr_accessor failed_requests: Integer
+
+            attr_accessor input_tokens: Integer
+
+            attr_accessor model: String
+
+            attr_accessor output_tokens: Integer
+
+            attr_accessor partial_requests: Integer
+
+            attr_accessor requests: Integer
+
+            attr_accessor reserved_spend: Float
+
+            attr_accessor spend: Float
+
+            attr_accessor succeeded_requests: Integer
+
+            attr_accessor unknown_requests: Integer
+
+            def initialize: (
+              cache_hits: Integer,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              model: String,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            ) -> void
+
+            def to_hash: -> {
+              cache_hits: Integer,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              model: String,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            }
+          end
+
+          type guardrails =
+            {
+              blocked_events: Integer,
+              flagged_events: Integer,
+              recent_events: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent]
+            }
+
+          class Guardrails < Telnyx::Internal::Type::BaseModel
+            attr_accessor blocked_events: Integer
+
+            attr_accessor flagged_events: Integer
+
+            attr_accessor recent_events: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent]
+
+            def initialize: (
+              blocked_events: Integer,
+              flagged_events: Integer,
+              recent_events: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent]
+            ) -> void
+
+            def to_hash: -> {
+              blocked_events: Integer,
+              flagged_events: Integer,
+              recent_events: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent]
+            }
+
+            type recent_event =
+              {
+                id: String,
+                created_at: Time,
+                end_user_id: String?,
+                evaluation_input_tokens: Integer?,
+                evaluation_output_tokens: Integer?,
+                findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding],
+                model: String,
+                outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome,
+                record_type: :guardrail_event,
+                request_id: String,
+                stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::stage,
+                token_group_id: String,
+                token_key_id: String,
+                token_user_id: String?
+              }
+
+            class RecentEvent < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor created_at: Time
+
+              attr_accessor end_user_id: String?
+
+              attr_accessor evaluation_input_tokens: Integer?
+
+              attr_accessor evaluation_output_tokens: Integer?
+
+              attr_accessor findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding]
+
+              attr_accessor model: String
+
+              attr_accessor outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome
+
+              attr_accessor record_type: :guardrail_event
+
+              attr_accessor request_id: String
+
+              attr_accessor stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::stage
+
+              attr_accessor token_group_id: String
+
+              attr_accessor token_key_id: String
+
+              attr_accessor token_user_id: String?
+
+              def initialize: (
+                id: String,
+                created_at: Time,
+                end_user_id: String?,
+                evaluation_input_tokens: Integer?,
+                evaluation_output_tokens: Integer?,
+                findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding],
+                model: String,
+                outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome,
+                request_id: String,
+                stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::stage,
+                token_group_id: String,
+                token_key_id: String,
+                token_user_id: String?,
+                ?record_type: :guardrail_event
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                created_at: Time,
+                end_user_id: String?,
+                evaluation_input_tokens: Integer?,
+                evaluation_output_tokens: Integer?,
+                findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding],
+                model: String,
+                outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome,
+                record_type: :guardrail_event,
+                request_id: String,
+                stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::stage,
+                token_group_id: String,
+                token_key_id: String,
+                token_user_id: String?
+              }
+
+              type finding =
+                {
+                  action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action,
+                  code: String,
+                  count: Integer,
+                  detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
+                }
+
+              class Finding < Telnyx::Internal::Type::BaseModel
+                attr_accessor action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action
+
+                attr_accessor code: String
+
+                attr_accessor count: Integer
+
+                attr_accessor detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
+
+                def initialize: (
+                  action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action,
+                  code: String,
+                  count: Integer,
+                  detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
+                ) -> void
+
+                def to_hash: -> {
+                  action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action,
+                  code: String,
+                  count: Integer,
+                  detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
+                }
+
+                type action = :flag | :block
+
+                module Action
+                  extend Telnyx::Internal::Type::Enum
+
+                  FLAG: :flag
+                  BLOCK: :block
+
+                  def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action]
+                end
+
+                type detector = :secrets | :dlp | :safety
+
+                module Detector
+                  extend Telnyx::Internal::Type::Enum
+
+                  SECRETS: :secrets
+                  DLP: :dlp
+                  SAFETY: :safety
+
+                  def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector]
+                end
+              end
+
+              type outcome = :evaluated | :flagged | :blocked | :unevaluated
+
+              module Outcome
+                extend Telnyx::Internal::Type::Enum
+
+                EVALUATED: :evaluated
+                FLAGGED: :flagged
+                BLOCKED: :blocked
+                UNEVALUATED: :unevaluated
+
+                def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome]
+              end
+
+              type stage = :prompt | :response
+
+              module Stage
+                extend Telnyx::Internal::Type::Enum
+
+                PROMPT: :prompt
+                RESPONSE: :response
+
+                def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::stage]
+              end
+            end
+          end
+
+          type totals =
+            {
+              cache_hits: Integer,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            }
+
+          class Totals < Telnyx::Internal::Type::BaseModel
+            attr_accessor cache_hits: Integer
+
+            attr_accessor failed_requests: Integer
+
+            attr_accessor input_tokens: Integer
+
+            attr_accessor output_tokens: Integer
+
+            attr_accessor partial_requests: Integer
+
+            attr_accessor requests: Integer
+
+            attr_accessor reserved_spend: Float
+
+            attr_accessor spend: Float
+
+            attr_accessor succeeded_requests: Integer
+
+            attr_accessor unknown_requests: Integer
+
+            def initialize: (
+              cache_hits: Integer,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            ) -> void
+
+            def to_hash: -> {
+              cache_hits: Integer,
+              failed_requests: Integer,
+              input_tokens: Integer,
+              output_tokens: Integer,
+              partial_requests: Integer,
+              requests: Integer,
+              reserved_spend: Float,
+              spend: Float,
+              succeeded_requests: Integer,
+              unknown_requests: Integer
+            }
+          end
+        end
+
+        type meta = { end_date: Date, start_date: Date, token_group_id: String }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_accessor end_date: Date
+
+          attr_accessor start_date: Date
+
+          attr_accessor token_group_id: String
+
+          def initialize: (
+            end_date: Date,
+            start_date: Date,
+            token_group_id: String
+          ) -> void
+
+          def to_hash: -> {
+            end_date: Date,
+            start_date: Date,
+            token_group_id: String
+          }
+        end
+      end
+    end
+  end
+end

@@ -75,8 +75,9 @@ module Telnyx
       sig { params(is_vision_supported: T::Boolean).void }
       attr_writer :is_vision_supported
 
-      # Maximum number of completion (output) tokens the model will generate per
-      # request. `null` if unconstrained beyond `context_length`.
+      # Maximum completion (output) tokens the model may generate per request. This
+      # value caps the Chat Completions `max_tokens` default and any larger explicit
+      # value on that model. `null` if unconstrained beyond `context_length`.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :max_completion_tokens
 
@@ -211,8 +212,9 @@ module Telnyx
         # Whether the model accepts image inputs in chat completions (multimodal vision
         # support).
         is_vision_supported: nil,
-        # Maximum number of completion (output) tokens the model will generate per
-        # request. `null` if unconstrained beyond `context_length`.
+        # Maximum completion (output) tokens the model may generate per request. This
+        # value caps the Chat Completions `max_tokens` default and any larger explicit
+        # value on that model. `null` if unconstrained beyond `context_length`.
         max_completion_tokens: nil,
         # Object type. Always `model`.
         object: nil,

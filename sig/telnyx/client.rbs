@@ -392,6 +392,10 @@ module Telnyx
 
     attr_reader machine_payments: Telnyx::Resources::MachinePayments
 
+    attr_reader spend_limits: Telnyx::Resources::SpendLimits
+
+    attr_reader llm_token_gateway: Telnyx::Resources::LlmTokenGateway
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

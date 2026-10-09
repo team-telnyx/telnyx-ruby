@@ -11,7 +11,7 @@ module Telnyx
 
           def render: (
             String enterprise_id,
-            ?agent: Telnyx::Enterprises::Reputation::AgentInput,
+            ?agent: Telnyx::Enterprises::Reputation::LoaRenderParams::Agent,
             ?signature: Telnyx::Enterprises::Reputation::LoaRenderParams::Signature,
             ?request_options: Telnyx::request_opts
           ) -> StringIO

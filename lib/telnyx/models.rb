@@ -165,6 +165,8 @@ module Telnyx
 
   BotSignupResendMagicLinkParams = Telnyx::Models::BotSignupResendMagicLinkParams
 
+  BpoAuthorizationInput = Telnyx::Models::BpoAuthorizationInput
+
   BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
 
   BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
@@ -578,6 +580,8 @@ module Telnyx
 
   DirAPI = Telnyx::Models::DirAPI
 
+  DirBpoLoaParams = Telnyx::Models::DirBpoLoaParams
+
   DirDeleteParams = Telnyx::Models::DirDeleteParams
 
   DirList = Telnyx::Models::DirList
@@ -589,6 +593,8 @@ module Telnyx
   DirListParams = Telnyx::Models::DirListParams
 
   DirNewLoaParams = Telnyx::Models::DirNewLoaParams
+
+  DirRetrieveBpoAuthorizationsParams = Telnyx::Models::DirRetrieveBpoAuthorizationsParams
 
   DirRetrieveParams = Telnyx::Models::DirRetrieveParams
 
@@ -1041,6 +1047,8 @@ module Telnyx
   ListRetrieveAllParams = Telnyx::Models::ListRetrieveAllParams
 
   ListRetrieveByZoneParams = Telnyx::Models::ListRetrieveByZoneParams
+
+  LlmTokenGateway = Telnyx::Models::LlmTokenGateway
 
   MachinePaymentAccountCreditParams = Telnyx::Models::MachinePaymentAccountCreditParams
 
@@ -1789,6 +1797,8 @@ module Telnyx
 
   ShortCodeUpdateParams = Telnyx::Models::ShortCodeUpdateParams
 
+  SignaturePayload = Telnyx::Models::SignaturePayload
+
   SimCard = Telnyx::Models::SimCard
 
   SimCardActionsSummary = Telnyx::Models::SimCardActionsSummary
@@ -1868,6 +1878,20 @@ module Telnyx
   SpeechToTextListProvidersParams = Telnyx::Models::SpeechToTextListProvidersParams
 
   SpeechToTextRetrieveTranscriptionParams = Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
+
+  SpendLimit = Telnyx::Models::SpendLimit
+
+  SpendLimitCreateParams = Telnyx::Models::SpendLimitCreateParams
+
+  SpendLimitDeleteParams = Telnyx::Models::SpendLimitDeleteParams
+
+  SpendLimitListParams = Telnyx::Models::SpendLimitListParams
+
+  SpendLimitPeriod = Telnyx::Models::SpendLimitPeriod
+
+  SpendLimitResponse = Telnyx::Models::SpendLimitResponse
+
+  SpendLimitUpdateParams = Telnyx::Models::SpendLimitUpdateParams
 
   Storage = Telnyx::Models::Storage
 

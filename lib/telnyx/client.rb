@@ -773,6 +773,38 @@ module Telnyx
     # @return [Telnyx::Resources::MachinePayments]
     attr_reader :machine_payments
 
+    # Daily and monthly spend limits per product. A limit applies to the organization
+    # of the authenticated user, or to the user's own account when they belong to no
+    # organization; every user of the organization sees and changes the same limits.
+    #
+    # - **Periods.** `daily` covers the current UTC day and `monthly` the current UTC
+    #   calendar month. The two limits are independent: you can set either, both or
+    #   neither.
+    # - **Blocking.** When spend in a period goes above the limit (strictly greater),
+    #   the product is blocked until the period ends: 00:00 UTC the next day for
+    #   `daily`, 00:00 UTC on the 1st of the next month for `monthly`. A block appears
+    #   within about 2 minutes (daily) or 10 minutes (monthly) of the spend being
+    #   recorded.
+    # - **Changes apply immediately.** Creating, updating or deleting a limit checks
+    #   the period's spend in the same request: raising the limit above the spend, or
+    #   removing it, lifts that period's block, and lowering it below the spend blocks
+    #   the product at once. The `evaluation` object in the response says what
+    #   happened.
+    # - **Supported products.** Today only `inference` supports spend limits. A
+    #   blocked account gets HTTP 403 with the error title
+    #   `Inference spend limit reached` (code `10039`) on new billable chat
+    #   completions, Responses, Anthropic Messages and classification requests;
+    #   requests already running finish normally. Take the list of products from the
+    #   list operation.
+    # - **Limits set by Telnyx.** Telnyx support can also set a limit on your account.
+    #   It is listed with `origin: operator` and you can update or delete it like your
+    #   own.
+    # @return [Telnyx::Resources::SpendLimits]
+    attr_reader :spend_limits
+
+    # @return [Telnyx::Resources::LlmTokenGateway]
+    attr_reader :llm_token_gateway
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1070,6 +1102,8 @@ module Telnyx
       @bot_sessions = Telnyx::Resources::BotSessions.new(client: self)
       @bot_signup = Telnyx::Resources::BotSignup.new(client: self)
       @machine_payments = Telnyx::Resources::MachinePayments.new(client: self)
+      @spend_limits = Telnyx::Resources::SpendLimits.new(client: self)
+      @llm_token_gateway = Telnyx::Resources::LlmTokenGateway.new(client: self)
     end
   end
 end

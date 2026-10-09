@@ -86,9 +86,11 @@ module Telnyx
       end
       attr_writer :answering_machine_detection_config
 
-      # AI Assistant configuration. All fields except `id` are optional — the
-      # assistant's stored configuration will be used as fallback for any omitted
-      # fields.
+      # AI Assistant configuration and per-call overrides. All fields except `id` are
+      # optional. Omitted assistant fields use the stored configuration. Supplied
+      # `voice_settings` and `transcription` objects replace their stored objects rather
+      # than merging individual settings; include every setting you want to retain.
+      # `dynamic_variables` are merged, with request values taking precedence.
       sig { returns(T.nilable(Telnyx::CallAssistantRequest)) }
       attr_reader :assistant
 
@@ -829,9 +831,11 @@ module Telnyx
         # parameters are applicable when `premium` is selected as
         # answering_machine_detection.
         answering_machine_detection_config: nil,
-        # AI Assistant configuration. All fields except `id` are optional — the
-        # assistant's stored configuration will be used as fallback for any omitted
-        # fields.
+        # AI Assistant configuration and per-call overrides. All fields except `id` are
+        # optional. Omitted assistant fields use the stored configuration. Supplied
+        # `voice_settings` and `transcription` objects replace their stored objects rather
+        # than merging individual settings; include every setting you want to retain.
+        # `dynamic_variables` are merged, with request values taking precedence.
         assistant: nil,
         # The URL of a file to be played back to the callee when the call is answered. The
         # URL can point to either a WAV or MP3 file. media_name and audio_url cannot be

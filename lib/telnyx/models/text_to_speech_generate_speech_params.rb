@@ -617,8 +617,10 @@ module Telnyx
         optional :sampling_rate, Integer
 
         # @!attribute voice_speed
-        #   Voice speed multiplier. Applies to all models except `Bayan` and `Sukhan`, which
-        #   don't support it. Range: 0.5 to 2.0.
+        #   Voice speed multiplier. Telnyx `Ultra` voices accept values from 0.6 to 1.5 —
+        #   requests outside that range are rejected by the synthesis engine. `KokoroTTS`
+        #   and `Qwen3TTS` accept the field but do not apply it. `Bayan` and `Sukhan` don't
+        #   support it.
         #
         #   @return [Float, nil]
         optional :voice_speed, Float
@@ -647,7 +649,7 @@ module Telnyx
         #
         #   @param sampling_rate [Integer] Audio sampling rate in Hz.
         #
-        #   @param voice_speed [Float] Voice speed multiplier. Applies to all models except `Bayan` and `Sukhan`, which
+        #   @param voice_speed [Float] Voice speed multiplier. Telnyx `Ultra` voices accept values from 0.6 to 1.5 — re
         #
         #   @param volume [Float] Volume level for the Ultra model. Telnyx `Ultra` voices accept values from 0.5 t
 

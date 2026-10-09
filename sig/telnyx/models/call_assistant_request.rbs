@@ -15,6 +15,7 @@ module Telnyx
         observability_settings: ::Hash[Symbol, top],
         openai_api_key_ref: String,
         tools: ::Array[Telnyx::Models::CallAssistantRequest::tool],
+        transcription: Telnyx::Calls::TranscriptionConfig,
         voice_settings: Telnyx::AI::VoiceSettings
       }
 
@@ -79,6 +80,12 @@ module Telnyx
         ::Array[Telnyx::Models::CallAssistantRequest::tool]
       ) -> ::Array[Telnyx::Models::CallAssistantRequest::tool]
 
+      attr_reader transcription: Telnyx::Calls::TranscriptionConfig?
+
+      def transcription=: (
+        Telnyx::Calls::TranscriptionConfig
+      ) -> Telnyx::Calls::TranscriptionConfig
+
       attr_reader voice_settings: Telnyx::AI::VoiceSettings?
 
       def voice_settings=: (
@@ -99,6 +106,7 @@ module Telnyx
         ?observability_settings: ::Hash[Symbol, top],
         ?openai_api_key_ref: String,
         ?tools: ::Array[Telnyx::Models::CallAssistantRequest::tool],
+        ?transcription: Telnyx::Calls::TranscriptionConfig,
         ?voice_settings: Telnyx::AI::VoiceSettings
       ) -> void
 
@@ -116,6 +124,7 @@ module Telnyx
         observability_settings: ::Hash[Symbol, top],
         openai_api_key_ref: String,
         tools: ::Array[Telnyx::Models::CallAssistantRequest::tool],
+        transcription: Telnyx::Calls::TranscriptionConfig,
         voice_settings: Telnyx::AI::VoiceSettings
       }
 
