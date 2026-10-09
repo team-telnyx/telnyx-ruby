@@ -26,9 +26,6 @@ module Telnyx
       #   `answering_machine_detection=premium` was requested
       # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
       #   was requested and a beep was detected
-      # - `call.machine.premium.call_screening.detected` if
-      #   `answering_machine_detection=premium_ios_call_screening_detection` was
-      #   requested and an Apple Call Screening tone was detected
       # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
       # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
       #   error occurred

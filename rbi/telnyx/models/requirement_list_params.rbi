@@ -235,24 +235,9 @@ module Telnyx
               :local,
               Telnyx::RequirementListParams::Filter::PhoneNumberType::TaggedSymbol
             )
-          MOBILE =
-            T.let(
-              :mobile,
-              Telnyx::RequirementListParams::Filter::PhoneNumberType::TaggedSymbol
-            )
-          MULTIPURPOSE =
-            T.let(
-              :multipurpose,
-              Telnyx::RequirementListParams::Filter::PhoneNumberType::TaggedSymbol
-            )
           NATIONAL =
             T.let(
               :national,
-              Telnyx::RequirementListParams::Filter::PhoneNumberType::TaggedSymbol
-            )
-          SHARED_COST =
-            T.let(
-              :shared_cost,
               Telnyx::RequirementListParams::Filter::PhoneNumberType::TaggedSymbol
             )
           TOLL_FREE =

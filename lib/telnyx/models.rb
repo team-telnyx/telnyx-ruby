@@ -222,8 +222,6 @@ module Telnyx
 
   CallControlRetrievalTool = Telnyx::Models::CallControlRetrievalTool
 
-  CallConversationCreatedWebhookEvent = Telnyx::Models::CallConversationCreatedWebhookEvent
-
   CallConversationEnded = Telnyx::Models::CallConversationEnded
 
   CallConversationEndedWebhookEvent = Telnyx::Models::CallConversationEndedWebhookEvent
@@ -285,16 +283,10 @@ module Telnyx
 
   CallMachineGreetingEndedWebhookEvent = Telnyx::Models::CallMachineGreetingEndedWebhookEvent
 
-  CallMachinePremiumCallScreeningDetectedWebhookEvent =
-    Telnyx::Models::CallMachinePremiumCallScreeningDetectedWebhookEvent
-
   CallMachinePremiumDetectionEnded = Telnyx::Models::CallMachinePremiumDetectionEnded
 
   CallMachinePremiumDetectionEndedWebhookEvent =
     Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent
-
-  CallMachinePremiumDetectionStartedWebhookEvent =
-    Telnyx::Models::CallMachinePremiumDetectionStartedWebhookEvent
 
   CallMachinePremiumGreetingEnded = Telnyx::Models::CallMachinePremiumGreetingEnded
 

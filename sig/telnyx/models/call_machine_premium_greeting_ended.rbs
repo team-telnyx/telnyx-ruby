@@ -131,14 +131,13 @@ module Telnyx
           to: String
         }
 
-        type result = :beep_detected | :no_beep_detected | :prompt_ended
+        type result = :beep_detected | :no_beep_detected
 
         module Result
           extend Telnyx::Internal::Type::Enum
 
           BEEP_DETECTED: :beep_detected
           NO_BEEP_DETECTED: :no_beep_detected
-          PROMPT_ENDED: :prompt_ended
 
           def self?.values: -> ::Array[Telnyx::Models::CallMachinePremiumGreetingEnded::Payload::result]
         end

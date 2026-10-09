@@ -96,9 +96,7 @@ module Telnyx
         optional :from, String
 
         # @!attribute result
-        #   Premium Answering Machine Greeting Ended result. `prompt_ended` is only sent
-        #   when `answering_machine_detection` is `premium_ios_call_screening_detection` and
-        #   the iOS call-screening prompt ends without a beep.
+        #   Premium Answering Machine Greeting Ended result.
         #
         #   @return [Symbol, Telnyx::Models::CallMachinePremiumGreetingEnded::Payload::Result, nil]
         optional :result, enum: -> { Telnyx::CallMachinePremiumGreetingEnded::Payload::Result }
@@ -125,13 +123,11 @@ module Telnyx
         #
         #   @param from [String] Number or SIP URI placing the call.
         #
-        #   @param result [Symbol, Telnyx::Models::CallMachinePremiumGreetingEnded::Payload::Result] Premium Answering Machine Greeting Ended result. `prompt_ended` is only sent whe
+        #   @param result [Symbol, Telnyx::Models::CallMachinePremiumGreetingEnded::Payload::Result] Premium Answering Machine Greeting Ended result.
         #
         #   @param to [String] Destination number or SIP URI of the call.
 
-        # Premium Answering Machine Greeting Ended result. `prompt_ended` is only sent
-        # when `answering_machine_detection` is `premium_ios_call_screening_detection` and
-        # the iOS call-screening prompt ends without a beep.
+        # Premium Answering Machine Greeting Ended result.
         #
         # @see Telnyx::Models::CallMachinePremiumGreetingEnded::Payload#result
         module Result
@@ -139,7 +135,6 @@ module Telnyx
 
           BEEP_DETECTED = :beep_detected
           NO_BEEP_DETECTED = :no_beep_detected
-          PROMPT_ENDED = :prompt_ended
 
           # @!method self.values
           #   @return [Array<Symbol>]

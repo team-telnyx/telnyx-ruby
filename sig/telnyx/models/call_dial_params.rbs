@@ -540,7 +540,6 @@ module Telnyx
 
       type answering_machine_detection =
         :premium
-        | :premium_ios_call_screening_detection
         | :detect
         | :detect_beep
         | :detect_words
@@ -551,7 +550,6 @@ module Telnyx
         extend Telnyx::Internal::Type::Enum
 
         PREMIUM: :premium
-        PREMIUM_IOS_CALL_SCREENING_DETECTION: :premium_ios_call_screening_detection
         DETECT: :detect
         DETECT_BEEP: :detect_beep
         DETECT_WORDS: :detect_words
@@ -579,7 +577,6 @@ module Telnyx
           initial_silence_millis: Integer,
           maximum_number_of_words: Integer,
           maximum_word_length_millis: Integer,
-          prompt_end_timeout_millis: Integer,
           silence_threshold: Integer,
           total_analysis_time_millis: Integer
         }
@@ -651,10 +648,6 @@ module Telnyx
 
         def maximum_word_length_millis=: (Integer) -> Integer
 
-        attr_reader prompt_end_timeout_millis: Integer?
-
-        def prompt_end_timeout_millis=: (Integer) -> Integer
-
         attr_reader silence_threshold: Integer?
 
         def silence_threshold=: (Integer) -> Integer
@@ -680,7 +673,6 @@ module Telnyx
           ?initial_silence_millis: Integer,
           ?maximum_number_of_words: Integer,
           ?maximum_word_length_millis: Integer,
-          ?prompt_end_timeout_millis: Integer,
           ?silence_threshold: Integer,
           ?total_analysis_time_millis: Integer
         ) -> void
@@ -702,7 +694,6 @@ module Telnyx
           initial_silence_millis: Integer,
           maximum_number_of_words: Integer,
           maximum_word_length_millis: Integer,
-          prompt_end_timeout_millis: Integer,
           silence_threshold: Integer,
           total_analysis_time_millis: Integer
         }
