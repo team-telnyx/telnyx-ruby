@@ -101,7 +101,11 @@ module Telnyx
         attr_writer :tools_mode
 
         # Per-node transcription override (model/language/region). Unset fields cascade
-        # from the assistant-level transcription.
+        # from the assistant-level transcription. A node that sets `model`,
+        # `fallback_models`, or `challenger` doesn't inherit the assistant's
+        # `fallback_models` or `challenger`; it uses only the ones it sets. Otherwise it
+        # inherits them, and they must fit the model and language the node runs; a change
+        # they no longer fit is rejected.
         sig { returns(T.nilable(Telnyx::AI::TranscriptionSettings)) }
         attr_reader :transcription
 
@@ -191,7 +195,11 @@ module Telnyx
           # added to the assistant's tools. Ignored when `shared_tool_ids` is null.
           tools_mode: nil,
           # Per-node transcription override (model/language/region). Unset fields cascade
-          # from the assistant-level transcription.
+          # from the assistant-level transcription. A node that sets `model`,
+          # `fallback_models`, or `challenger` doesn't inherit the assistant's
+          # `fallback_models` or `challenger`; it uses only the ones it sets. Otherwise it
+          # inherits them, and they must fit the model and language the node runs; a change
+          # they no longer fit is rejected.
           transcription: nil,
           # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
           # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
