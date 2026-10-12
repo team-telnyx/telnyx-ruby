@@ -8,11 +8,13 @@ module Telnyx
           check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           created_at: Time,
           enterprise_id: String,
+          external_verification_status: Telnyx::Models::Enterprises::Reputation::external_verification_status?,
           loa_document_id: String?,
           loa_status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status,
           rejection_reasons: ::Array[String]?,
           status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::status,
-          updated_at: Time
+          updated_at: Time,
+          webhook_url: String?
         }
 
       class EnterpriseReputationPublic < Telnyx::Internal::Type::BaseModel
@@ -25,6 +27,8 @@ module Telnyx
         attr_reader enterprise_id: String?
 
         def enterprise_id=: (String) -> String
+
+        attr_accessor external_verification_status: Telnyx::Models::Enterprises::Reputation::external_verification_status?
 
         attr_accessor loa_document_id: String?
 
@@ -42,6 +46,8 @@ module Telnyx
           Telnyx::Models::Enterprises::EnterpriseReputationPublic::status
         ) -> Telnyx::Models::Enterprises::EnterpriseReputationPublic::status
 
+        attr_accessor webhook_url: String?
+
         attr_reader created_at: Time?
 
         def created_at=: (Time) -> Time
@@ -54,22 +60,26 @@ module Telnyx
           ?check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           ?created_at: Time,
           ?enterprise_id: String,
+          ?external_verification_status: Telnyx::Models::Enterprises::Reputation::external_verification_status?,
           ?loa_document_id: String?,
           ?loa_status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status,
           ?rejection_reasons: ::Array[String]?,
           ?status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::status,
-          ?updated_at: Time
+          ?updated_at: Time,
+          ?webhook_url: String?
         ) -> void
 
         def to_hash: -> {
           check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
           created_at: Time,
           enterprise_id: String,
+          external_verification_status: Telnyx::Models::Enterprises::Reputation::external_verification_status?,
           loa_document_id: String?,
           loa_status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::loa_status,
           rejection_reasons: ::Array[String]?,
           status: Telnyx::Models::Enterprises::EnterpriseReputationPublic::status,
-          updated_at: Time
+          updated_at: Time,
+          webhook_url: String?
         }
 
         type loa_status = :pending | :approved | :rejected

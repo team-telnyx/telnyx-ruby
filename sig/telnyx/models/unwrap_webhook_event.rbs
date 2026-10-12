@@ -69,6 +69,9 @@ module Telnyx
       | Telnyx::HostedNumberOrderEventWebhookEvent
       | Telnyx::InboundMessageWebhookEvent
       | Telnyx::NumberOrderStatusUpdateWebhookEvent
+      | Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent
+      | Telnyx::NumberReputationNumberFlaggedWebhookEvent
+      | Telnyx::NumberReputationNumberRemovedWebhookEvent
       | Telnyx::RecordingAvailableWebhookEvent
       | Telnyx::ReplacedLinkClickWebhookEvent
       | Telnyx::SessionStatusChangedWebhookEvent

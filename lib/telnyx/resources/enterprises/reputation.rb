@@ -17,6 +17,10 @@ module Telnyx
         # @return [Telnyx::Resources::Enterprises::Reputation::Remediation]
         attr_reader :remediation
 
+        # Phone-number reputation monitoring (spam-score lookup and tracking).
+        # @return [Telnyx::Resources::Enterprises::Reputation::ExternalVerification]
+        attr_reader :external_verification
+
         # Phone Number Reputation tracks how your outbound caller-IDs are perceived (spam
         # risk, engagement, etc.) across the call-screening ecosystem. This endpoint reads
         # the enterprise-level settings: whether the product is enabled, the refresh
@@ -141,6 +145,36 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Enterprises::ReputationUpdateWebhookParams} for more details.
+        #
+        # Set the HTTPS URL that receives number-ownership events for this enterprise:
+        # `number_reputation.number.flagged`, `number_reputation.number.removed` and
+        # `number_reputation.external_verification.status_changed`. Send
+        # `webhook_url: null` to stop receiving them.
+        #
+        # @overload update_webhook(enterprise_id, webhook_url:, request_options: {})
+        #
+        # @param enterprise_id [String] The enterprise id. Lowercase UUID.
+        #
+        # @param webhook_url [String, nil] HTTPS URL on a publicly routable host. Send `null` to stop receiving number-owne
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Models::Enterprises::EnterpriseReputationPublicWrapped]
+        #
+        # @see Telnyx::Models::Enterprises::ReputationUpdateWebhookParams
+        def update_webhook(enterprise_id, params)
+          parsed, options = Telnyx::Enterprises::ReputationUpdateWebhookParams.dump_request(params)
+          @client.request(
+            method: :patch,
+            path: ["enterprises/%1$s/reputation/webhook", enterprise_id],
+            body: parsed,
+            model: Telnyx::Enterprises::EnterpriseReputationPublicWrapped,
+            options: options
+          )
+        end
+
         # @api private
         #
         # @param client [Telnyx::Client]
@@ -149,6 +183,8 @@ module Telnyx
           @numbers = Telnyx::Resources::Enterprises::Reputation::Numbers.new(client: client)
           @loa = Telnyx::Resources::Enterprises::Reputation::Loa.new(client: client)
           @remediation = Telnyx::Resources::Enterprises::Reputation::Remediation.new(client: client)
+          @external_verification =
+            Telnyx::Resources::Enterprises::Reputation::ExternalVerification.new(client: client)
         end
       end
     end

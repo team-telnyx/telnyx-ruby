@@ -50,8 +50,9 @@ module Telnyx
           sig { returns(T.nilable(String)) }
           attr_accessor :contact_email
 
-          # Per-category buckets. Populated once results are available. Null while the
-          # request is still pending.
+          # Per-category buckets of phone numbers, populated once results are available.
+          # Empty lists are kept (not omitted) so consumers can iterate without
+          # null-checking each key.
           sig do
             returns(
               T.nilable(
@@ -118,8 +119,9 @@ module Telnyx
             status:,
             updated_at:,
             contact_email: nil,
-            # Per-category buckets. Populated once results are available. Null while the
-            # request is still pending.
+            # Per-category buckets of phone numbers, populated once results are available.
+            # Empty lists are kept (not omitted) so consumers can iterate without
+            # null-checking each key.
             results: nil,
             tier1_completed_at: nil,
             tier2_completed_at: nil,

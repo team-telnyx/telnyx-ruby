@@ -2781,6 +2781,7 @@ Methods:
 - <code title="delete /enterprises/{enterprise_id}/reputation">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">disable</a>(\*\*params)</code>
 - <code title="post /enterprises/{enterprise_id}/reputation">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">enable</a>(\*\*params)</code>
 - <code title="patch /enterprises/{enterprise_id}/reputation/frequency">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">update_frequency</a>(\*\*params)</code>
+- <code title="patch /enterprises/{enterprise_id}/reputation/webhook">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">update_webhook</a>(\*\*params)</code>
 
 ### Numbers
 
@@ -2790,7 +2791,9 @@ Methods:
 - <code title="get /enterprises/{enterprise_id}/reputation/numbers">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">list</a>(\*\*params)</code>
 - <code title="post /enterprises/{enterprise_id}/reputation/numbers">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">associate</a>(\*\*params)</code>
 - <code title="delete /enterprises/{enterprise_id}/reputation/numbers/{phone_number}">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">disassociate</a>(\*\*params)</code>
+- <code title="post /enterprises/{enterprise_id}/reputation/numbers/{phone_number}/ownership_confirm">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">ownership_confirm</a>(\*\*params)</code>
 - <code title="post /enterprises/{enterprise_id}/reputation/numbers/refresh">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">refresh</a>(\*\*params)</code>
+- <code title="get /enterprises/{enterprise_id}/reputation/numbers/{phone_number}/ownership">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">retrieve_ownership</a>(\*\*params)</code>
 
 ### Loa
 
@@ -2806,6 +2809,13 @@ Methods:
 - <code title="post /enterprises/{enterprise_id}/reputation/remediation">client.enterprises.reputation.remediation.<a href="./lib/telnyx/resources/enterprises/reputation/remediation.rb">create</a>(\*\*params)</code>
 - <code title="get /enterprises/{enterprise_id}/reputation/remediation/{remediation_id}">client.enterprises.reputation.remediation.<a href="./lib/telnyx/resources/enterprises/reputation/remediation.rb">retrieve</a>(\*\*params)</code>
 - <code title="get /enterprises/{enterprise_id}/reputation/remediation">client.enterprises.reputation.remediation.<a href="./lib/telnyx/resources/enterprises/reputation/remediation.rb">list</a>(\*\*params)</code>
+
+### ExternalVerification
+
+Methods:
+
+- <code title="post /enterprises/{enterprise_id}/reputation/external_verification">client.enterprises.reputation.external_verification.<a href="./lib/telnyx/resources/enterprises/reputation/external_verification.rb">create</a>(\*\*params)</code>
+- <code title="get /enterprises/{enterprise_id}/reputation/external_verification">client.enterprises.reputation.external_verification.<a href="./lib/telnyx/resources/enterprises/reputation/external_verification.rb">list</a>(\*\*params)</code>
 
 ## Dir
 

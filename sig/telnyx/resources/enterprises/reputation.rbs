@@ -8,6 +8,8 @@ module Telnyx
 
         attr_reader remediation: Telnyx::Resources::Enterprises::Reputation::Remediation
 
+        attr_reader external_verification: Telnyx::Resources::Enterprises::Reputation::ExternalVerification
+
         def retrieve: (
           String enterprise_id,
           ?request_options: Telnyx::request_opts
@@ -28,6 +30,12 @@ module Telnyx
         def update_frequency: (
           String enterprise_id,
           check_frequency: Telnyx::Models::Enterprises::reputation_check_frequency,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Enterprises::EnterpriseReputationPublicWrapped
+
+        def update_webhook: (
+          String enterprise_id,
+          webhook_url: String?,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Enterprises::EnterpriseReputationPublicWrapped
 

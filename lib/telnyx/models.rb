@@ -1378,6 +1378,13 @@ module Telnyx
 
   NumberPoolSettings = Telnyx::Models::NumberPoolSettings
 
+  NumberReputationExternalVerificationStatusChangedWebhookEvent =
+    Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent
+
+  NumberReputationNumberFlaggedWebhookEvent = Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent
+
+  NumberReputationNumberRemovedWebhookEvent = Telnyx::Models::NumberReputationNumberRemovedWebhookEvent
+
   NumberReputationPaginationMeta = Telnyx::Models::NumberReputationPaginationMeta
 
   NumberReservation = Telnyx::Models::NumberReservation

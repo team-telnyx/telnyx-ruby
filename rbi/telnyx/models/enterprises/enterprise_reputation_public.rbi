@@ -39,6 +39,17 @@ module Telnyx
         sig { params(enterprise_id: String).void }
         attr_writer :enterprise_id
 
+        # Review state of the ownership proof that allows adding phone numbers hosted with
+        # another provider.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::Enterprises::Reputation::ExternalVerificationStatus::TaggedSymbol
+            )
+          )
+        end
+        attr_accessor :external_verification_status
+
         # Id of the signed LOA document.
         sig { returns(T.nilable(String)) }
         attr_accessor :loa_document_id
@@ -84,6 +95,10 @@ module Telnyx
         end
         attr_writer :status
 
+        # HTTPS URL that receives number-ownership webhook events for this enterprise.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :webhook_url
+
         sig { returns(T.nilable(Time)) }
         attr_reader :created_at
 
@@ -102,13 +117,18 @@ module Telnyx
               Telnyx::Enterprises::ReputationCheckFrequency::OrSymbol,
             created_at: Time,
             enterprise_id: String,
+            external_verification_status:
+              T.nilable(
+                Telnyx::Enterprises::Reputation::ExternalVerificationStatus::OrSymbol
+              ),
             loa_document_id: T.nilable(String),
             loa_status:
               Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::OrSymbol,
             rejection_reasons: T.nilable(T::Array[String]),
             status:
               Telnyx::Enterprises::EnterpriseReputationPublic::Status::OrSymbol,
-            updated_at: Time
+            updated_at: Time,
+            webhook_url: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -117,6 +137,9 @@ module Telnyx
           check_frequency: nil,
           created_at: nil,
           enterprise_id: nil,
+          # Review state of the ownership proof that allows adding phone numbers hosted with
+          # another provider.
+          external_verification_status: nil,
           # Id of the signed LOA document.
           loa_document_id: nil,
           # Customer-facing Letter-of-Authorization verification state. `approved` is
@@ -126,7 +149,9 @@ module Telnyx
           rejection_reasons: nil,
           # Lifecycle status of the enterprise's Phone Number Reputation activation.
           status: nil,
-          updated_at: nil
+          updated_at: nil,
+          # HTTPS URL that receives number-ownership webhook events for this enterprise.
+          webhook_url: nil
         )
         end
 
@@ -137,13 +162,18 @@ module Telnyx
                 Telnyx::Enterprises::ReputationCheckFrequency::TaggedSymbol,
               created_at: Time,
               enterprise_id: String,
+              external_verification_status:
+                T.nilable(
+                  Telnyx::Enterprises::Reputation::ExternalVerificationStatus::TaggedSymbol
+                ),
               loa_document_id: T.nilable(String),
               loa_status:
                 Telnyx::Enterprises::EnterpriseReputationPublic::LoaStatus::TaggedSymbol,
               rejection_reasons: T.nilable(T::Array[String]),
               status:
                 Telnyx::Enterprises::EnterpriseReputationPublic::Status::TaggedSymbol,
-              updated_at: Time
+              updated_at: Time,
+              webhook_url: T.nilable(String)
             }
           )
         end

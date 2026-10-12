@@ -17,6 +17,14 @@ module Telnyx
         sig { returns(Telnyx::Resources::Enterprises::Reputation::Remediation) }
         attr_reader :remediation
 
+        # Phone-number reputation monitoring (spam-score lookup and tracking).
+        sig do
+          returns(
+            Telnyx::Resources::Enterprises::Reputation::ExternalVerification
+          )
+        end
+        attr_reader :external_verification
+
         # Phone Number Reputation tracks how your outbound caller-IDs are perceived (spam
         # risk, engagement, etc.) across the call-screening ecosystem. This endpoint reads
         # the enterprise-level settings: whether the product is enabled, the refresh
@@ -112,6 +120,27 @@ module Telnyx
           # How often Telnyx refreshes the stored reputation data for this enterprise's
           # registered numbers.
           check_frequency:,
+          request_options: {}
+        )
+        end
+
+        # Set the HTTPS URL that receives number-ownership events for this enterprise:
+        # `number_reputation.number.flagged`, `number_reputation.number.removed` and
+        # `number_reputation.external_verification.status_changed`. Send
+        # `webhook_url: null` to stop receiving them.
+        sig do
+          params(
+            enterprise_id: String,
+            webhook_url: T.nilable(String),
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(Telnyx::Enterprises::EnterpriseReputationPublicWrapped)
+        end
+        def update_webhook(
+          # The enterprise id. Lowercase UUID.
+          enterprise_id,
+          # HTTPS URL on a publicly routable host. Send `null` to stop receiving
+          # number-ownership events.
+          webhook_url:,
           request_options: {}
         )
         end

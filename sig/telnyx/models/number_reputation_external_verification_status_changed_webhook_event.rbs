@@ -1,0 +1,153 @@
+module Telnyx
+  module Models
+    type number_reputation_external_verification_status_changed_webhook_event =
+      {
+        data: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Meta
+      }
+
+    class NumberReputationExternalVerificationStatusChangedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data
+
+      attr_accessor meta: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Meta
+
+      def initialize: (
+        data: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::event_type
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload
+
+        attr_accessor record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::record_type
+
+        def initialize: (
+          id: String,
+          event_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::record_type
+        }
+
+        type event_type =
+          :"number_reputation.external_verification.status_changed"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          NUMBER_REPUTATION_EXTERNAL_VERIFICATION_STATUS_CHANGED: :"number_reputation.external_verification.status_changed"
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            enterprise_id: String,
+            record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::record_type,
+            reviewed_at: Time,
+            status: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::status,
+            rejection_reason: String?
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor enterprise_id: String
+
+          attr_accessor record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::record_type
+
+          attr_accessor reviewed_at: Time
+
+          attr_accessor status: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::status
+
+          attr_accessor rejection_reason: String?
+
+          def initialize: (
+            enterprise_id: String,
+            record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::record_type,
+            reviewed_at: Time,
+            status: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::status,
+            ?rejection_reason: String?
+          ) -> void
+
+          def to_hash: -> {
+            enterprise_id: String,
+            record_type: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::record_type,
+            reviewed_at: Time,
+            status: Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::status,
+            rejection_reason: String?
+          }
+
+          type record_type = :reputation_external_verification
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            REPUTATION_EXTERNAL_VERIFICATION: :reputation_external_verification
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::record_type]
+          end
+
+          type status = :approved | :rejected
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            APPROVED: :approved
+            REJECTED: :rejected
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::Payload::status]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent::Data::record_type]
+        end
+      end
+
+      type meta = { attempt: Integer, delivered_to: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor attempt: Integer
+
+        attr_accessor delivered_to: String
+
+        def initialize: (attempt: Integer, delivered_to: String) -> void
+
+        def to_hash: -> { attempt: Integer, delivered_to: String }
+      end
+    end
+  end
+end

@@ -1323,6 +1323,12 @@ module Telnyx
 
   class NumberPoolSettings = Telnyx::Models::NumberPoolSettings
 
+  class NumberReputationExternalVerificationStatusChangedWebhookEvent = Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent
+
+  class NumberReputationNumberFlaggedWebhookEvent = Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent
+
+  class NumberReputationNumberRemovedWebhookEvent = Telnyx::Models::NumberReputationNumberRemovedWebhookEvent
+
   class NumberReputationPaginationMeta = Telnyx::Models::NumberReputationPaginationMeta
 
   class NumberReservation = Telnyx::Models::NumberReservation

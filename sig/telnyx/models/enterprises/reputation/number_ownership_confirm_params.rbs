@@ -1,0 +1,47 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type number_ownership_confirm_params =
+          {
+            enterprise_id: String,
+            phone_number: String,
+            still_own: bool,
+            evidence_document_id: String
+          }
+          & Telnyx::Internal::Type::request_parameters
+
+        class NumberOwnershipConfirmParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor enterprise_id: String
+
+          attr_accessor phone_number: String
+
+          attr_accessor still_own: bool
+
+          attr_reader evidence_document_id: String?
+
+          def evidence_document_id=: (String) -> String
+
+          def initialize: (
+            enterprise_id: String,
+            phone_number: String,
+            still_own: bool,
+            ?evidence_document_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            enterprise_id: String,
+            phone_number: String,
+            still_own: bool,
+            evidence_document_id: String,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

@@ -14,6 +14,14 @@ module Telnyx
           #   @return [String]
           required :enterprise_id, String
 
+          # @!attribute filter_ownership_status
+          #   Only numbers with this ownership status. `removed` lists the numbers that were
+          #   removed, each with its `removal_reason` and `removed_at`; removed numbers are
+          #   not returned otherwise.
+          #
+          #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationOwnershipStatus, nil]
+          optional :filter_ownership_status, enum: -> { Telnyx::Enterprises::Reputation::ReputationOwnershipStatus }
+
           # @!attribute filter_phone_number_contains
           #   Partial match on phone number. Must contain at least 5 digits.
           #
@@ -25,6 +33,12 @@ module Telnyx
           #
           #   @return [String, nil]
           optional :filter_phone_number_eq, String
+
+          # @!attribute filter_source
+          #   Only numbers with this source.
+          #
+          #   @return [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationNumberSource, nil]
+          optional :filter_source, enum: -> { Telnyx::Enterprises::Reputation::ReputationNumberSource }
 
           # @!attribute page_number
           #   1-based page number. Out-of-range values return an empty page with correct meta.
@@ -38,15 +52,19 @@ module Telnyx
           #   @return [Integer, nil]
           optional :page_size, Integer
 
-          # @!method initialize(enterprise_id:, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, request_options: {})
+          # @!method initialize(enterprise_id:, filter_ownership_status: nil, filter_phone_number_contains: nil, filter_phone_number_eq: nil, filter_source: nil, page_number: nil, page_size: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::Enterprises::Reputation::NumberListParams} for more details.
           #
           #   @param enterprise_id [String]
           #
+          #   @param filter_ownership_status [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationOwnershipStatus] Only numbers with this ownership status. `removed` lists the numbers that were r
+          #
           #   @param filter_phone_number_contains [String] Partial match on phone number. Must contain at least 5 digits.
           #
           #   @param filter_phone_number_eq [String] Exact phone-number match (E.164).
+          #
+          #   @param filter_source [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationNumberSource] Only numbers with this source.
           #
           #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
           #
