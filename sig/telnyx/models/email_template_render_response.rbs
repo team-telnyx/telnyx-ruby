@@ -14,12 +14,16 @@ module Telnyx
         data: Telnyx::Models::EmailTemplateRenderResponse::Data
       }
 
-      type data = {  }
+      type data = { subject: String? }
 
-      class Data < Telnyx::Models::EmailTemplate
-        def initialize: -> void
+      class Data < Telnyx::Models::EmailTemplateCommon
+        def subject: -> String?
 
-        def to_hash: -> {  }
+        def subject=: (String? _) -> String?
+
+        def initialize: (subject: String?) -> void
+
+        def to_hash: -> { subject: String? }
       end
     end
   end

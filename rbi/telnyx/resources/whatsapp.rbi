@@ -19,6 +19,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::Whatsapp::UserData) }
       attr_reader :user_data
 
+      sig { returns(Telnyx::Resources::Whatsapp::Signup) }
+      attr_reader :signup
+
       # @api private
       sig { params(client: Telnyx::Client).returns(T.attached_class) }
       def self.new(client:)

@@ -9,7 +9,8 @@ module Telnyx
         subject: String?,
         text_body: String?,
         variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
-        variables: ::Array[String]
+        variables: ::Array[String]?,
+        variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
       }
 
     class UpdateEmailTemplateRequest < Telnyx::Internal::Type::BaseModel
@@ -33,9 +34,13 @@ module Telnyx
 
       attr_accessor variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?
 
-      attr_reader variables: ::Array[String]?
+      attr_accessor variables: ::Array[String]?
 
-      def variables=: (::Array[String]) -> ::Array[String]
+      attr_reader variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode?
+
+      def variables_mode=: (
+        Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
+      ) -> Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
 
       def initialize: (
         ?autoescape: bool,
@@ -45,7 +50,8 @@ module Telnyx
         ?subject: String?,
         ?text_body: String?,
         ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
-        ?variables: ::Array[String]
+        ?variables: ::Array[String]?,
+        ?variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
       ) -> void
 
       def to_hash: -> {
@@ -56,7 +62,8 @@ module Telnyx
         subject: String?,
         text_body: String?,
         variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
-        variables: ::Array[String]
+        variables: ::Array[String]?,
+        variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
       }
 
       type variable_schema = { required: bool, default: String }
@@ -71,6 +78,17 @@ module Telnyx
         def initialize: (required: bool, ?default: String) -> void
 
         def to_hash: -> { required: bool, default: String }
+      end
+
+      type variables_mode = :automatic | :explicit
+
+      module VariablesMode
+        extend Telnyx::Internal::Type::Enum
+
+        AUTOMATIC: :automatic
+        EXPLICIT: :explicit
+
+        def self?.values: -> ::Array[Telnyx::Models::UpdateEmailTemplateRequest::variables_mode]
       end
     end
   end

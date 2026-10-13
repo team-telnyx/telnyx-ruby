@@ -181,6 +181,8 @@ module Telnyx
 
   class CallControlRetrievalTool = Telnyx::Models::CallControlRetrievalTool
 
+  class CallConversationCreatedWebhookEvent = Telnyx::Models::CallConversationCreatedWebhookEvent
+
   class CallConversationEnded = Telnyx::Models::CallConversationEnded
 
   class CallConversationEndedWebhookEvent = Telnyx::Models::CallConversationEndedWebhookEvent
@@ -188,6 +190,8 @@ module Telnyx
   class CallConversationInsightsGenerated = Telnyx::Models::CallConversationInsightsGenerated
 
   class CallConversationInsightsGeneratedWebhookEvent = Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent
+
+  class CallConversationStartFailedWebhookEvent = Telnyx::Models::CallConversationStartFailedWebhookEvent
 
   class CallCostWebhookEvent = Telnyx::Models::CallCostWebhookEvent
 
@@ -241,9 +245,13 @@ module Telnyx
 
   class CallMachineGreetingEndedWebhookEvent = Telnyx::Models::CallMachineGreetingEndedWebhookEvent
 
+  class CallMachinePremiumCallScreeningDetectedWebhookEvent = Telnyx::Models::CallMachinePremiumCallScreeningDetectedWebhookEvent
+
   class CallMachinePremiumDetectionEnded = Telnyx::Models::CallMachinePremiumDetectionEnded
 
   class CallMachinePremiumDetectionEndedWebhookEvent = Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent
+
+  class CallMachinePremiumDetectionStartedWebhookEvent = Telnyx::Models::CallMachinePremiumDetectionStartedWebhookEvent
 
   class CallMachinePremiumGreetingEnded = Telnyx::Models::CallMachinePremiumGreetingEnded
 
@@ -710,6 +718,8 @@ module Telnyx
   class EmailMessageUpdateScheduleParams = Telnyx::Models::EmailMessageUpdateScheduleParams
 
   class EmailTemplate = Telnyx::Models::EmailTemplate
+
+  class EmailTemplateCommon = Telnyx::Models::EmailTemplateCommon
 
   class EmailTemplateCreateParams = Telnyx::Models::EmailTemplateCreateParams
 
@@ -2184,6 +2194,8 @@ module Telnyx
   class WhatsappReaction = Telnyx::Models::WhatsappReaction
 
   class WhatsappTemplateData = Telnyx::Models::WhatsappTemplateData
+
+  class WhatsappWabaAddedWebhookEvent = Telnyx::Models::WhatsappWabaAddedWebhookEvent
 
   class WireguardInterface = Telnyx::Models::WireguardInterface
 

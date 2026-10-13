@@ -109,7 +109,7 @@ module Telnyx
         # can filter on any field in the metadata JSON object. For example, to filter by a
         # custom field `metadata->custom_field`, use `metadata->custom_field=eq.value`.
         #
-        # @overload list(id: nil, created_at: nil, last_message_at: nil, limit: nil, metadata_assistant_id: nil, metadata_call_control_id: nil, metadata_telnyx_agent_target: nil, metadata_telnyx_conversation_channel: nil, metadata_telnyx_end_user_target: nil, name: nil, or_: nil, order: nil, request_options: {})
+        # @overload list(id: nil, created_at: nil, last_message_at: nil, limit: nil, metadata_assistant_id: nil, metadata_assistant_version_id: nil, metadata_call_control_id: nil, metadata_telnyx_agent_target: nil, metadata_telnyx_conversation_channel: nil, metadata_telnyx_end_user_target: nil, name: nil, or_: nil, order: nil, request_options: {})
         #
         # @param id [String] Filter by conversation ID (e.g. id=eq.123)
         #
@@ -120,6 +120,8 @@ module Telnyx
         # @param limit [Integer] Limit the number of returned conversations (e.g., `limit=10`)
         #
         # @param metadata_assistant_id [String] Filter by assistant ID (e.g., `metadata->assistant_id=eq.assistant-123`)
+        #
+        # @param metadata_assistant_version_id [String] Filter by assistant version ID (e.g., `metadata->assistant_version_id=eq.2025081
         #
         # @param metadata_call_control_id [String] Filter by call control ID (e.g., `metadata->call_control_id=eq.v3:123`)
         #
@@ -148,6 +150,7 @@ module Telnyx
             path: "ai/conversations",
             query: query.transform_keys(
               metadata_assistant_id: "metadata->assistant_id",
+              metadata_assistant_version_id: "metadata->assistant_version_id",
               metadata_call_control_id: "metadata->call_control_id",
               metadata_telnyx_agent_target: "metadata->telnyx_agent_target",
               metadata_telnyx_conversation_channel: "metadata->telnyx_conversation_channel",

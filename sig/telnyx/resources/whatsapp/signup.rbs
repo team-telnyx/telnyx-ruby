@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class Signup
+        def list: (
+          ?filter_created_at_gte: Time,
+          ?filter_created_at_lte: Time,
+          ?filter_customer_id: String,
+          ?filter_waba_id: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::SignupListResponse]
+
+        def retrieve_status: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::SignupRetrieveStatusResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

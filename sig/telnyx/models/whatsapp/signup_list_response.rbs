@@ -1,0 +1,139 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type signup_list_response =
+        {
+          created_at: Time,
+          customer_id: String,
+          errors: ::Array[String],
+          record_type: Telnyx::Models::Whatsapp::SignupListResponse::record_type,
+          session_id: String,
+          state: Telnyx::Models::Whatsapp::SignupListResponse::state,
+          status: Telnyx::Models::Whatsapp::SignupListResponse::status,
+          updated_at: Time,
+          user_id: String,
+          waba_id: String
+        }
+
+      class SignupListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader customer_id: String?
+
+        def customer_id=: (String) -> String
+
+        attr_reader errors: ::Array[String]?
+
+        def errors=: (::Array[String]) -> ::Array[String]
+
+        attr_reader record_type: Telnyx::Models::Whatsapp::SignupListResponse::record_type?
+
+        def record_type=: (
+          Telnyx::Models::Whatsapp::SignupListResponse::record_type
+        ) -> Telnyx::Models::Whatsapp::SignupListResponse::record_type
+
+        attr_reader session_id: String?
+
+        def session_id=: (String) -> String
+
+        attr_reader state: Telnyx::Models::Whatsapp::SignupListResponse::state?
+
+        def state=: (
+          Telnyx::Models::Whatsapp::SignupListResponse::state
+        ) -> Telnyx::Models::Whatsapp::SignupListResponse::state
+
+        attr_reader status: Telnyx::Models::Whatsapp::SignupListResponse::status?
+
+        def status=: (
+          Telnyx::Models::Whatsapp::SignupListResponse::status
+        ) -> Telnyx::Models::Whatsapp::SignupListResponse::status
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader user_id: String?
+
+        def user_id=: (String) -> String
+
+        attr_reader waba_id: String?
+
+        def waba_id=: (String) -> String
+
+        def initialize: (
+          ?created_at: Time,
+          ?customer_id: String,
+          ?errors: ::Array[String],
+          ?record_type: Telnyx::Models::Whatsapp::SignupListResponse::record_type,
+          ?session_id: String,
+          ?state: Telnyx::Models::Whatsapp::SignupListResponse::state,
+          ?status: Telnyx::Models::Whatsapp::SignupListResponse::status,
+          ?updated_at: Time,
+          ?user_id: String,
+          ?waba_id: String
+        ) -> void
+
+        def to_hash: -> {
+          created_at: Time,
+          customer_id: String,
+          errors: ::Array[String],
+          record_type: Telnyx::Models::Whatsapp::SignupListResponse::record_type,
+          session_id: String,
+          state: Telnyx::Models::Whatsapp::SignupListResponse::state,
+          status: Telnyx::Models::Whatsapp::SignupListResponse::status,
+          updated_at: Time,
+          user_id: String,
+          waba_id: String
+        }
+
+        type record_type = :whatsapp_session_id
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          WHATSAPP_SESSION_ID: :whatsapp_session_id
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::SignupListResponse::record_type]
+        end
+
+        type state =
+          :SUBSCRIBE_WEBHOOKS
+          | :ASSIGNED_USERS
+          | :SHARE_CREDIT_LINE
+          | :REGISTER_PHONE_NUMBER
+          | :ADD_WABA_TO_DB
+          | :ADD_PHONE_NUMBERS_TO_DB
+          | :COMPLETE
+
+        module State
+          extend Telnyx::Internal::Type::Enum
+
+          SUBSCRIBE_WEBHOOKS: :SUBSCRIBE_WEBHOOKS
+          ASSIGNED_USERS: :ASSIGNED_USERS
+          SHARE_CREDIT_LINE: :SHARE_CREDIT_LINE
+          REGISTER_PHONE_NUMBER: :REGISTER_PHONE_NUMBER
+          ADD_WABA_TO_DB: :ADD_WABA_TO_DB
+          ADD_PHONE_NUMBERS_TO_DB: :ADD_PHONE_NUMBERS_TO_DB
+          COMPLETE: :COMPLETE
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::SignupListResponse::state]
+        end
+
+        type status = :INCOMPLETE | :PENDING | :SUCCESS | :FAILURE
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          INCOMPLETE: :INCOMPLETE
+          PENDING: :PENDING
+          SUCCESS: :SUCCESS
+          FAILURE: :FAILURE
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::SignupListResponse::status]
+        end
+      end
+    end
+  end
+end

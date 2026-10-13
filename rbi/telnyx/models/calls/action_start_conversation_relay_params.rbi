@@ -229,12 +229,22 @@ module Telnyx
         # Engine-specific transcription settings for Conversation Relay. This accepts the
         # same provider-specific options used by the Call Transcription Start command,
         # such as `transcription_model`, without requiring the engine discriminator to be
-        # repeated inside this object.
-        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        # repeated inside this object. With Deepgram Flux (`deepgram/flux`),
+        # `interim_results`, `eot_threshold` and `eager_eot_threshold` control the interim
+        # prompts and the `eagerEndOfTurn` and `turnResumed` frames sent to your WebSocket
+        # server.
+        sig do
+          returns(
+            T.nilable(Telnyx::Calls::ConversationRelayTranscriptionEngineConfig)
+          )
+        end
         attr_reader :transcription_engine_config
 
         sig do
-          params(transcription_engine_config: T::Hash[Symbol, T.anything]).void
+          params(
+            transcription_engine_config:
+              Telnyx::Calls::ConversationRelayTranscriptionEngineConfig::OrHash
+          ).void
         end
         attr_writer :transcription_engine_config
 
@@ -264,10 +274,10 @@ module Telnyx
         #   the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
         #   [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
         #   for compatibility.
-        # - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
-        #   Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
-        #   Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
-        #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
+        # - **Azure:** Use `Azure.<VoiceId>` (e.g., `Azure.en-CA-ClaraNeural`,
+        #   `Azure.en-CA-LiamNeural`, `Azure.en-US-BrianMultilingualNeural`,
+        #   `Azure.en-US-Ava:DragonHDLatestNeural`). For a complete list of voices, go to
+        #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).
         # - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
         #   `ElevenLabs.BaseModel.John`). The `ModelId` part is optional. To use
         #   ElevenLabs, you must provide your ElevenLabs API key as an integration secret
@@ -365,7 +375,8 @@ module Telnyx
             transcription: T::Hash[Symbol, T.anything],
             transcription_engine:
               Telnyx::Calls::ActionStartConversationRelayParams::TranscriptionEngine::OrSymbol,
-            transcription_engine_config: T::Hash[Symbol, T.anything],
+            transcription_engine_config:
+              Telnyx::Calls::ConversationRelayTranscriptionEngineConfig::OrHash,
             tts_provider: String,
             url: String,
             voice: String,
@@ -445,7 +456,10 @@ module Telnyx
           # Engine-specific transcription settings for Conversation Relay. This accepts the
           # same provider-specific options used by the Call Transcription Start command,
           # such as `transcription_model`, without requiring the engine discriminator to be
-          # repeated inside this object.
+          # repeated inside this object. With Deepgram Flux (`deepgram/flux`),
+          # `interim_results`, `eot_threshold` and `eager_eot_threshold` control the interim
+          # prompts and the `eagerEndOfTurn` and `turnResumed` frames sent to your WebSocket
+          # server.
           transcription_engine_config: nil,
           # Text-to-speech provider. If omitted, Telnyx derives it from `voice` or
           # `provider`.
@@ -463,10 +477,10 @@ module Telnyx
           #   the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
           #   [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
           #   for compatibility.
-          # - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
-          #   Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
-          #   Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
-          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
+          # - **Azure:** Use `Azure.<VoiceId>` (e.g., `Azure.en-CA-ClaraNeural`,
+          #   `Azure.en-CA-LiamNeural`, `Azure.en-US-BrianMultilingualNeural`,
+          #   `Azure.en-US-Ava:DragonHDLatestNeural`). For a complete list of voices, go to
+          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).
           # - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
           #   `ElevenLabs.BaseModel.John`). The `ModelId` part is optional. To use
           #   ElevenLabs, you must provide your ElevenLabs API key as an integration secret
@@ -528,7 +542,8 @@ module Telnyx
               transcription: T::Hash[Symbol, T.anything],
               transcription_engine:
                 Telnyx::Calls::ActionStartConversationRelayParams::TranscriptionEngine::OrSymbol,
-              transcription_engine_config: T::Hash[Symbol, T.anything],
+              transcription_engine_config:
+                Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
               tts_provider: String,
               url: String,
               voice: String,

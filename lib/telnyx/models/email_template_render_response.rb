@@ -6,8 +6,8 @@ module Telnyx
     class EmailTemplateRenderResponse < Telnyx::Internal::Type::BaseModel
       # @!attribute data
       #   Template object with `subject`, `html_body`, and `text_body` replaced by their
-      #   Liquid-rendered values. All other template fields (id, name, variables, etc.)
-      #   remain unchanged.
+      #   Liquid-rendered values. Rendered content is not limited by the stored
+      #   template-field lengths. All other template fields remain unchanged.
       #
       #   @return [Telnyx::Models::EmailTemplateRenderResponse::Data]
       required :data, -> { Telnyx::Models::EmailTemplateRenderResponse::Data }
@@ -19,11 +19,18 @@ module Telnyx
       #   @param data [Telnyx::Models::EmailTemplateRenderResponse::Data] Template object with `subject`, `html_body`, and `text_body` replaced by their L
 
       # @see Telnyx::Models::EmailTemplateRenderResponse#data
-      class Data < Telnyx::Models::EmailTemplate
-        # @!method initialize
+      class Data < Telnyx::Models::EmailTemplateCommon
+        # @!attribute subject
+        #
+        #   @return [String, nil]
+        required :subject, String, nil?: true
+
+        # @!method initialize(subject:)
         #   Template object with `subject`, `html_body`, and `text_body` replaced by their
-        #   Liquid-rendered values. All other template fields (id, name, variables, etc.)
-        #   remain unchanged.
+        #   Liquid-rendered values. Rendered content is not limited by the stored
+        #   template-field lengths. All other template fields remain unchanged.
+        #
+        #   @param subject [String, nil]
       end
     end
   end

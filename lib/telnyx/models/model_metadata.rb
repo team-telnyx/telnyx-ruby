@@ -93,9 +93,14 @@ module Telnyx
       optional :is_vision_supported, Telnyx::Internal::Type::Boolean
 
       # @!attribute max_completion_tokens
-      #   Maximum completion (output) tokens the model may generate per request. This
-      #   value caps the Chat Completions `max_tokens` default and any larger explicit
-      #   value on that model. `null` if unconstrained beyond `context_length`.
+      #   Model-specific completion-token ceiling. For Chat Completions, this value clamps
+      #   explicit output limits and the 8192 default when that default applies. Models
+      #   excluded from the default leave an omitted or null output limit unset for the
+      #   serving engine, even when this metadata declares a ceiling; see
+      #   `ChatCompletionRequest.max_tokens` for the hosted default and exclusion lists.
+      #   This field does not report the effective default. `null` means no separate
+      #   completion ceiling is declared; input and output together must still fit
+      #   `context_length`.
       #
       #   @return [Integer, nil]
       optional :max_completion_tokens, Integer, nil?: true
@@ -187,7 +192,7 @@ module Telnyx
       #
       #   @param is_vision_supported [Boolean] Whether the model accepts image inputs in chat completions (multimodal vision su
       #
-      #   @param max_completion_tokens [Integer, nil] Maximum completion (output) tokens the model may generate per request. This valu
+      #   @param max_completion_tokens [Integer, nil] Model-specific completion-token ceiling. For Chat Completions, this value clamps
       #
       #   @param object [String] Object type. Always `model`.
       #

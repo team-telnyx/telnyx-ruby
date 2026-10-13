@@ -9,7 +9,7 @@ module Telnyx
       #
       # Creates a Liquid email template. Variables are auto-extracted when omitted.
       #
-      # @overload create(name:, autoescape: nil, html_body: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, idempotency_key: nil, request_options: {})
+      # @overload create(name:, autoescape: nil, html_body: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, variables_mode: nil, idempotency_key: nil, request_options: {})
       #
       # @param name [String] Body param: Letters, numbers, spaces, hyphens, and underscores only.
       #
@@ -25,7 +25,9 @@ module Telnyx
       #
       # @param variable_schema [Hash{Symbol=>Telnyx::Models::EmailTemplateCreateParams::VariableSchema}, nil] Body param: Structured variable requirements. Required variables cannot define d
       #
-      # @param variables [Array<String>] Body param: Template variables. Auto-extracted from subject/body fields when abs
+      # @param variables [Array<String>, nil] Body param: Persisted variable names. In `automatic` mode a non-null array is re
+      #
+      # @param variables_mode [Symbol, Telnyx::Models::EmailTemplateCreateParams::VariablesMode] Body param: Controls how `variables` is maintained. If both fields are omitted (
       #
       # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
       #
@@ -74,7 +76,7 @@ module Telnyx
       # Updates one or more fields of the specified email template and returns the
       # updated template.
       #
-      # @overload update(id, autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, request_options: {})
+      # @overload update(id, autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, variables_mode: nil, request_options: {})
       #
       # @param id [String] Email template UUID.
       #
@@ -92,7 +94,9 @@ module Telnyx
       #
       # @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
-      # @param variables [Array<String>]
+      # @param variables [Array<String>, nil] Persisted variable names. In `automatic` mode a non-null array is rejected; in `
+      #
+      # @param variables_mode [Symbol, Telnyx::Models::UpdateEmailTemplateRequest::VariablesMode] Controls how `variables` is maintained. Setting `automatic` re-extracts immediat
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -113,9 +117,21 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::EmailTemplateListParams} for more details.
       #
-      # Lists templates sorted newest first by `created_at desc, id desc`.
+      # Lists templates sorted newest first by `created_at desc, id desc`. Optional
+      # filters match a case-insensitive literal name/subject query, stored body
+      # presence, and the `strict_variables` and `autoescape` settings. Filters
+      # intersect, remain scoped to the authenticated account, and apply before cursor
+      # pagination. Invalid filter names or values return 400.
       #
-      # @overload list(page_cursor: nil, page_size: nil, request_options: {})
+      # @overload list(filter_autoescape: nil, filter_content_type: nil, filter_query: nil, filter_strict_variables: nil, page_cursor: nil, page_size: nil, request_options: {})
+      #
+      # @param filter_autoescape [Symbol, Telnyx::Models::EmailTemplateListParams::FilterAutoescape] Exact match on the template's `autoescape` option. Only the exact query strings
+      #
+      # @param filter_content_type [Symbol, Telnyx::Models::EmailTemplateListParams::FilterContentType] Matches templates by stored body presence. `html_and_text` requires both an HTML
+      #
+      # @param filter_query [String] Case-insensitive literal substring match over the template `name` or stored `sub
+      #
+      # @param filter_strict_variables [Symbol, Telnyx::Models::EmailTemplateListParams::FilterStrictVariables] Exact match on the template's `strict_variables` option. Only the exact query st
       #
       # @param page_cursor [String] Opaque URL-safe Base64 cursor returned by a previous list response.
       #
@@ -132,7 +148,12 @@ module Telnyx
         @client.request(
           method: :get,
           path: "email_templates",
-          query: query,
+          query: query.transform_keys(
+            filter_autoescape: "filter[autoescape]",
+            filter_content_type: "filter[content_type]",
+            filter_query: "filter[query]",
+            filter_strict_variables: "filter[strict_variables]"
+          ),
           page: Telnyx::Internal::EmailCursorPagination,
           model: Telnyx::EmailTemplate,
           options: options
@@ -200,7 +221,7 @@ module Telnyx
       # Replaces template fields. Behaves identically to PATCH; provided for
       # compatibility with Phoenix resource routes.
       #
-      # @overload replace(id, autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, request_options: {})
+      # @overload replace(id, autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, variables_mode: nil, request_options: {})
       #
       # @param id [String] Email template UUID.
       #
@@ -218,7 +239,9 @@ module Telnyx
       #
       # @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
-      # @param variables [Array<String>]
+      # @param variables [Array<String>, nil] Persisted variable names. In `automatic` mode a non-null array is rejected; in `
+      #
+      # @param variables_mode [Symbol, Telnyx::Models::UpdateEmailTemplateRequest::VariablesMode] Controls how `variables` is maintained. Setting `automatic` re-extracts immediat
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

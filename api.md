@@ -2704,6 +2704,13 @@ Methods:
 - <code title="get /v2/whatsapp/user_data">client.whatsapp.user_data.<a href="./lib/telnyx/resources/whatsapp/user_data.rb">retrieve</a>()</code>
 - <code title="patch /v2/whatsapp/user_data">client.whatsapp.user_data.<a href="./lib/telnyx/resources/whatsapp/user_data.rb">update</a>(\*\*params)</code>
 
+## Signup
+
+Methods:
+
+- <code title="get /whatsapp/signup">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">list</a>(\*\*params)</code>
+- <code title="get /whatsapp/signup/{id}/status">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">retrieve_status</a>(\*\*params)</code>
+
 # WhatsappMessageTemplates
 
 Methods:
@@ -3282,4 +3289,32 @@ Methods:
 
 Methods:
 
+- <code title="get /llm_token_gateway/usage/export">client.llm_token_gateway.usage.<a href="./lib/telnyx/resources/llm_token_gateway/usage.rb">retrieve_export</a>(\*\*params)</code>
 - <code title="get /llm_token_gateway/usage/summary">client.llm_token_gateway.usage.<a href="./lib/telnyx/resources/llm_token_gateway/usage.rb">retrieve_summary</a>(\*\*params)</code>
+
+## Spend
+
+Methods:
+
+- <code title="get /llm_token_gateway/spend/events">client.llm_token_gateway.spend.<a href="./lib/telnyx/resources/llm_token_gateway/spend.rb">retrieve_events</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/spend/summary">client.llm_token_gateway.spend.<a href="./lib/telnyx/resources/llm_token_gateway/spend.rb">retrieve_summary</a>(\*\*params)</code>
+
+## TokenGroups
+
+Methods:
+
+- <code title="post /llm_token_gateway/token_groups">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">create</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_groups/{id}">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /llm_token_gateway/token_groups/{id}">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">update</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_groups">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">list</a>(\*\*params)</code>
+- <code title="delete /llm_token_gateway/token_groups/{id}">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">delete</a>(\*\*params)</code>
+
+## TokenKeys
+
+Methods:
+
+- <code title="post /llm_token_gateway/token_keys">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">create</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">update</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_keys">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">list</a>(\*\*params)</code>
+- <code title="delete /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">delete</a>(\*\*params)</code>

@@ -208,6 +208,9 @@ module Telnyx
 
   CallControlRetrievalTool = Telnyx::Models::CallControlRetrievalTool
 
+  CallConversationCreatedWebhookEvent =
+    Telnyx::Models::CallConversationCreatedWebhookEvent
+
   CallConversationEnded = Telnyx::Models::CallConversationEnded
 
   CallConversationEndedWebhookEvent =
@@ -218,6 +221,9 @@ module Telnyx
 
   CallConversationInsightsGeneratedWebhookEvent =
     Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent
+
+  CallConversationStartFailedWebhookEvent =
+    Telnyx::Models::CallConversationStartFailedWebhookEvent
 
   CallCostWebhookEvent = Telnyx::Models::CallCostWebhookEvent
 
@@ -275,11 +281,17 @@ module Telnyx
   CallMachineGreetingEndedWebhookEvent =
     Telnyx::Models::CallMachineGreetingEndedWebhookEvent
 
+  CallMachinePremiumCallScreeningDetectedWebhookEvent =
+    Telnyx::Models::CallMachinePremiumCallScreeningDetectedWebhookEvent
+
   CallMachinePremiumDetectionEnded =
     Telnyx::Models::CallMachinePremiumDetectionEnded
 
   CallMachinePremiumDetectionEndedWebhookEvent =
     Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent
+
+  CallMachinePremiumDetectionStartedWebhookEvent =
+    Telnyx::Models::CallMachinePremiumDetectionStartedWebhookEvent
 
   CallMachinePremiumGreetingEnded =
     Telnyx::Models::CallMachinePremiumGreetingEnded
@@ -818,6 +830,8 @@ module Telnyx
     Telnyx::Models::EmailMessageUpdateScheduleParams
 
   EmailTemplate = Telnyx::Models::EmailTemplate
+
+  EmailTemplateCommon = Telnyx::Models::EmailTemplateCommon
 
   EmailTemplateCreateParams = Telnyx::Models::EmailTemplateCreateParams
 
@@ -2480,6 +2494,8 @@ module Telnyx
   WhatsappReaction = Telnyx::Models::WhatsappReaction
 
   WhatsappTemplateData = Telnyx::Models::WhatsappTemplateData
+
+  WhatsappWabaAddedWebhookEvent = Telnyx::Models::WhatsappWabaAddedWebhookEvent
 
   WireguardInterface = Telnyx::Models::WireguardInterface
 

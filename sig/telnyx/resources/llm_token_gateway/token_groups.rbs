@@ -1,0 +1,66 @@
+module Telnyx
+  module Resources
+    class LlmTokenGateway
+      class TokenGroups
+        def create: (
+          allowed_models: ::Array[String],
+          name: String,
+          idempotency_key: String,
+          ?blocked: bool,
+          ?budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          ?cache_ttl: Integer?,
+          ?fallbacks: ::Hash[Symbol, ::Array[String]]?,
+          ?guardrails: Telnyx::LlmTokenGateway::TokenGroupCreateParams::Guardrails?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?provider_key_ids: ::Array[String],
+          ?retries: Telnyx::LlmTokenGateway::TokenGroupCreateParams::Retries?,
+          ?rpm_limit: Integer?,
+          ?tpm_limit: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::LlmTokenGateway::TokenGroupResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::LlmTokenGateway::TokenGroupResponse
+
+        def update: (
+          String id,
+          idempotency_key: String,
+          if_match: String,
+          ?allowed_models: ::Array[String],
+          ?blocked: bool,
+          ?budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          ?cache_ttl: Integer?,
+          ?fallbacks: ::Hash[Symbol, ::Array[String]]?,
+          ?guardrails: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?name: String,
+          ?provider_key_ids: ::Array[String],
+          ?retries: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Retries?,
+          ?rpm_limit: Integer?,
+          ?tpm_limit: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::LlmTokenGateway::TokenGroupResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?page_snapshot: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::LlmTokenGateway::TokenGroup]
+
+        def delete: (
+          String id,
+          idempotency_key: String,
+          if_match: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

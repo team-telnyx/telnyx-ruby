@@ -20,8 +20,9 @@ module Telnyx
       required :phone_numbers, Telnyx::Internal::Type::ArrayOf[String]
 
       # @!attribute agent
-      #   Third-party reseller / partner managing the enterprise's phone numbers. Omit
-      #   when the enterprise works directly with Telnyx.
+      #   Third-party reseller / partner managing the enterprise's phone numbers on its
+      #   behalf, such as a call center (BPO) acting for a client. Omit when the
+      #   enterprise manages its own numbers.
       #
       #   @return [Telnyx::Models::Enterprises::Reputation::AgentInput, nil]
       optional :agent, -> { Telnyx::Enterprises::Reputation::AgentInput }
@@ -42,7 +43,7 @@ module Telnyx
       #
       #   @param phone_numbers [Array<String>] Telephone numbers to authorize on the DIR, in `+E164` format (`+` followed by 10
       #
-      #   @param agent [Telnyx::Models::Enterprises::Reputation::AgentInput] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
+      #   @param agent [Telnyx::Models::Enterprises::Reputation::AgentInput] Third-party reseller / partner managing the enterprise's phone numbers on its be
       #
       #   @param signature [Telnyx::Models::SignaturePayload] Optional. When provided the rendered PDF embeds the signature image, printed nam
       #

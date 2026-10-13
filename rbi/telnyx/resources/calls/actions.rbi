@@ -55,6 +55,13 @@ module Telnyx
         # webhook to track the answer. If warm-up fails, Telnyx falls back to starting the
         # assistant after answering.
         #
+        # When `assistant.id` is supplied, obtain the conversation ID from
+        # `data.payload.conversation_id` in the
+        # [call.conversation.created](/api-reference/callbacks/call-conversation-created)
+        # webhook and correlate it using `data.payload.call_control_id`. The `answer` HTTP
+        # response does not include `conversation_id`. The created event is emitted during
+        # assistant startup and does not indicate that the assistant is ready to speak.
+        #
         # Set the assistant voice with `assistant.voice_settings.voice` and speech-to-text
         # settings with `assistant.transcription`. You can reuse one stored assistant with
         # different per-call settings. Warm-up prepares assistant configuration and
@@ -65,6 +72,8 @@ module Telnyx
         # **Expected Webhooks:**
         #
         # - `call.answered`
+        # - `call.conversation.created` when the requested assistant conversation is
+        #   created
         # - `call.hold` and `call.unhold` if the call is held/unheld
         # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
         # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
@@ -454,6 +463,8 @@ module Telnyx
         #
         # **Expected Webhooks:**
         #
+        # - [`call.conversation.created`](/api-reference/callbacks/call-conversation-created)
+        #   includes `conversation_id` during startup
         # - `call.ai_gather.ended`
         # - `call.conversation.ended`
         # - `call.ai_gather.partial_results` (if `send_partial_results` is set to `true`)
@@ -549,10 +560,10 @@ module Telnyx
           #   the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
           #   [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
           #   for compatibility.
-          # - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
-          #   Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
-          #   Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
-          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
+          # - **Azure:** Use `Azure.<VoiceId>` (e.g., `Azure.en-CA-ClaraNeural`,
+          #   `Azure.en-CA-LiamNeural`, `Azure.en-US-BrianMultilingualNeural`,
+          #   `Azure.en-US-Ava:DragonHDLatestNeural`). For a complete list of voices, go to
+          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).
           # - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
           #   `ElevenLabs.BaseModel.John`). The `ModelId` part is optional. To use
           #   ElevenLabs, you must provide your ElevenLabs API key as an integration secret
@@ -969,10 +980,12 @@ module Telnyx
             language: String,
             max_attempts: Integer,
             metadata: T::Hash[Symbol, T.anything],
+            min_postal_code_length: Integer,
             parameters: T::Hash[Symbol, T.anything],
             payment_method:
               Telnyx::Calls::ActionPayParams::PaymentMethod::OrSymbol,
             payment_token: String,
+            postal_code: Telnyx::Calls::ActionPayParams::PostalCode::Variants,
             prompts: Telnyx::Calls::ActionPayParams::Prompts::OrHash,
             service_level: String,
             timeout_millis: Integer,
@@ -1008,12 +1021,27 @@ module Telnyx
           max_attempts: nil,
           # Metadata forwarded to the Pay connector.
           metadata: nil,
+          # Minimum number of digits the caller must enter when collecting a credit-card
+          # billing postal code. Applies only when `postal_code` is `true` or `"true"` and
+          # no `payment_token` is supplied. The default is 1. The maximum number of digits
+          # collected is the greater of 10 and this value. This does not validate the length
+          # of a postal code supplied directly in `postal_code`.
+          min_postal_code_length: nil,
           # Additional parameters forwarded to the Pay connector.
           parameters: nil,
           # Payment method to collect.
           payment_method: nil,
           # Existing payment token. When supplied, payment-detail collection is skipped.
           payment_token: nil,
+          # Controls billing postal code collection for credit-card payments when no
+          # `payment_token` is supplied. Set to `true` or the string `"true"` (the default)
+          # to prompt the caller for a postal code. Set to `false` or the string `"false"`
+          # to skip the postal code prompt without supplying a postal code to the payment
+          # connector. Supply any other non-empty string, such as `"90210"`, to use that
+          # postal code without prompting. Empty or whitespace-only strings are rejected.
+          # This option does not affect ACH debit payments or payments using an existing
+          # token.
+          postal_code: nil,
           # Custom text-to-speech prompts keyed by payment collection step.
           prompts: nil,
           # Speech synthesis service level used for payment prompts. Pay defaults to
@@ -1350,6 +1378,8 @@ module Telnyx
         #
         # **Expected Webhooks:**
         #
+        # - [`call.conversation.created`](/api-reference/callbacks/call-conversation-created)
+        #   includes `conversation_id` during startup
         # - `call.conversation.ended`
         # - `call.conversation_insights.generated`
         sig do
@@ -1455,7 +1485,8 @@ module Telnyx
             transcription: T::Hash[Symbol, T.anything],
             transcription_engine:
               Telnyx::Calls::ActionStartConversationRelayParams::TranscriptionEngine::OrSymbol,
-            transcription_engine_config: T::Hash[Symbol, T.anything],
+            transcription_engine_config:
+              Telnyx::Calls::ConversationRelayTranscriptionEngineConfig::OrHash,
             tts_provider: String,
             url: String,
             voice: String,
@@ -1536,7 +1567,10 @@ module Telnyx
           # Engine-specific transcription settings for Conversation Relay. This accepts the
           # same provider-specific options used by the Call Transcription Start command,
           # such as `transcription_model`, without requiring the engine discriminator to be
-          # repeated inside this object.
+          # repeated inside this object. With Deepgram Flux (`deepgram/flux`),
+          # `interim_results`, `eot_threshold` and `eager_eot_threshold` control the interim
+          # prompts and the `eagerEndOfTurn` and `turnResumed` frames sent to your WebSocket
+          # server.
           transcription_engine_config: nil,
           # Text-to-speech provider. If omitted, Telnyx derives it from `voice` or
           # `provider`.
@@ -1554,10 +1588,10 @@ module Telnyx
           #   the `VoiceId` (e.g., `AWS.Polly.Joanna-Neural`). Check the
           #   [available voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html)
           #   for compatibility.
-          # - **Azure:** Use `Azure.<VoiceId>. (e.g. Azure.en-CA-ClaraNeural,
-          #   Azure.en-CA-LiamNeural, Azure.en-US-BrianMultilingualNeural,
-          #   Azure.en-US-Ava:DragonHDLatestNeural. For a complete list of voices, go to
-          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).)
+          # - **Azure:** Use `Azure.<VoiceId>` (e.g., `Azure.en-CA-ClaraNeural`,
+          #   `Azure.en-CA-LiamNeural`, `Azure.en-US-BrianMultilingualNeural`,
+          #   `Azure.en-US-Ava:DragonHDLatestNeural`). For a complete list of voices, go to
+          #   [Azure Voice Gallery](https://speech.microsoft.com/portal/voicegallery).
           # - **ElevenLabs:** Use `ElevenLabs.<ModelId>.<VoiceId>` (e.g.,
           #   `ElevenLabs.BaseModel.John`). The `ModelId` part is optional. To use
           #   ElevenLabs, you must provide your ElevenLabs API key as an integration secret
@@ -2326,6 +2360,9 @@ module Telnyx
         #   `answering_machine_detection=premium` was requested
         # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
         #   was requested and a beep was detected
+        # - `call.machine.premium.call_screening.detected` if
+        #   `answering_machine_detection=premium_ios_call_screening_detection` was
+        #   requested and an Apple Call Screening tone was detected
         sig do
           params(
             call_control_id: String,
@@ -2407,12 +2444,22 @@ module Telnyx
           # 'greeting_end' or 'detect_words' is used and a 'machine' is detected, you will
           # receive another 'call.machine.greeting.ended' webhook when the answering machine
           # greeting ends with a beep or silence. If `detect_beep` is used, you will only
-          # receive 'call.machine.greeting.ended' if a beep is detected.
+          # receive 'call.machine.greeting.ended' if a beep is detected. If
+          # `answering_machine_detection` is set to `premium_ios_call_screening_detection`,
+          # Premium AMD runs with iOS Call Screening support: after an initial `machine`
+          # result, Telnyx listens for the iOS call-screening prompt to end or for an Apple
+          # Call Screening tone, sends `call.machine.premium.greeting.ended` with
+          # `result=prompt_ended` or `call.machine.premium.call_screening.detected` with
+          # `result=screening` respectively. When the Apple Call Screening tone is detected,
+          # Premium AMD is restarted on the screened call and a
+          # `call.machine.premium.detection.ended` webhook with the post-screening
+          # classification follows.
           answering_machine_detection: nil,
           # Optional configuration parameters to modify 'answering_machine_detection'
           # performance. Only `total_analysis_time_millis` and `greeting_duration_millis`
           # parameters are applicable when `premium` is selected as
-          # answering_machine_detection.
+          # answering_machine_detection. `prompt_end_timeout_millis` is additionally
+          # applicable when `premium_ios_call_screening_detection` is selected.
           answering_machine_detection_config: nil,
           # The URL of a file to be played back when the transfer destination answers before
           # bridging the call. The URL can point to either a WAV or MP3 file. media_name and

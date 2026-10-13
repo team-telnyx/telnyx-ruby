@@ -45,12 +45,22 @@ module Telnyx
       # Engine-specific transcription settings for Conversation Relay. This accepts the
       # same provider-specific options used by the Call Transcription Start command,
       # such as `transcription_model`, without requiring the engine discriminator to be
-      # repeated inside this object.
-      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+      # repeated inside this object. With Deepgram Flux (`deepgram/flux`),
+      # `interim_results`, `eot_threshold` and `eager_eot_threshold` control the interim
+      # prompts and the `eagerEndOfTurn` and `turnResumed` frames sent to your WebSocket
+      # server.
+      sig do
+        returns(
+          T.nilable(Telnyx::Calls::ConversationRelayTranscriptionEngineConfig)
+        )
+      end
       attr_reader :transcription_engine_config
 
       sig do
-        params(transcription_engine_config: T::Hash[Symbol, T.anything]).void
+        params(
+          transcription_engine_config:
+            Telnyx::Calls::ConversationRelayTranscriptionEngineConfig::OrHash
+        ).void
       end
       attr_writer :transcription_engine_config
 
@@ -122,7 +132,8 @@ module Telnyx
           speech_model: String,
           transcription_engine:
             Telnyx::ConversationRelayLanguage::TranscriptionEngine::OrSymbol,
-          transcription_engine_config: T::Hash[Symbol, T.anything],
+          transcription_engine_config:
+            Telnyx::Calls::ConversationRelayTranscriptionEngineConfig::OrHash,
           transcription_provider: String,
           tts_provider: String,
           voice: String,
@@ -155,7 +166,10 @@ module Telnyx
         # Engine-specific transcription settings for Conversation Relay. This accepts the
         # same provider-specific options used by the Call Transcription Start command,
         # such as `transcription_model`, without requiring the engine discriminator to be
-        # repeated inside this object.
+        # repeated inside this object. With Deepgram Flux (`deepgram/flux`),
+        # `interim_results`, `eot_threshold` and `eager_eot_threshold` control the interim
+        # prompts and the `eagerEndOfTurn` and `turnResumed` frames sent to your WebSocket
+        # server.
         transcription_engine_config: nil,
         # Conversation Relay transcription provider name. Prefer `transcription_engine`
         # when configuring speech-to-text.
@@ -177,7 +191,8 @@ module Telnyx
             speech_model: String,
             transcription_engine:
               Telnyx::ConversationRelayLanguage::TranscriptionEngine::OrSymbol,
-            transcription_engine_config: T::Hash[Symbol, T.anything],
+            transcription_engine_config:
+              Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
             transcription_provider: String,
             tts_provider: String,
             voice: String,

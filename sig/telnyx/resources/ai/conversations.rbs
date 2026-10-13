@@ -34,6 +34,7 @@ module Telnyx
           ?last_message_at: String,
           ?limit: Integer,
           ?metadata_assistant_id: String,
+          ?metadata_assistant_version_id: String,
           ?metadata_call_control_id: String,
           ?metadata_telnyx_agent_target: String,
           ?metadata_telnyx_conversation_channel: String,

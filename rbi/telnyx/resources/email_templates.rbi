@@ -20,7 +20,9 @@ module Telnyx
                 Telnyx::EmailTemplateCreateParams::VariableSchema::OrHash
               ]
             ),
-          variables: T::Array[String],
+          variables: T.nilable(T::Array[String]),
+          variables_mode:
+            Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol,
           idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::EmailTemplateResponse)
@@ -58,9 +60,17 @@ module Telnyx
         # while present values such as `false` and `0` pass (they are present, not empty).
         # Optional variables fall back to their `default` when absent.
         variable_schema: nil,
-        # Body param: Template variables. Auto-extracted from subject/body fields when
-        # absent.
+        # Body param: Persisted variable names. In `automatic` mode a non-null array is
+        # rejected; in `explicit` mode this is the exact manual array and each item is
+        # limited to 255 Unicode code points.
         variables: nil,
+        # Body param: Controls how `variables` is maintained. If both fields are omitted
+        # (or `variables` is null), the template uses `automatic` mode and extracts
+        # variable names from the effective subject, HTML body, and text body. A non-null
+        # `variables` array with no mode selects `explicit`. `automatic` rejects a
+        # simultaneous non-null array; `explicit` requires a non-null array, including
+        # valid `[]`, and preserves its exact order, duplicates, and string contents.
+        variables_mode: nil,
         # Header param: Optional opaque, unquoted key for safely retrying the same logical
         # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
         # Generate a unique UUID v4 for each operation and reuse it only when retrying
@@ -107,7 +117,9 @@ module Telnyx
                 Telnyx::UpdateEmailTemplateRequest::VariableSchema::OrHash
               ]
             ),
-          variables: T::Array[String],
+          variables: T.nilable(T::Array[String]),
+          variables_mode:
+            Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::EmailTemplateResponse)
       end
@@ -128,14 +140,35 @@ module Telnyx
         # Structured variable requirements. Required variables cannot define defaults;
         # invalid combinations return 422. Set to `null` to clear the schema.
         variable_schema: nil,
+        # Persisted variable names. In `automatic` mode a non-null array is rejected; in
+        # `explicit` mode this is the exact manual array and each item is limited to 255
+        # Unicode code points.
         variables: nil,
+        # Controls how `variables` is maintained. Setting `automatic` re-extracts
+        # immediately from the effective subject, HTML body, and text body and rejects a
+        # simultaneous non-null array. Setting `explicit` requires the exact non-null
+        # array, including valid `[]`. With the mode omitted, a non-null array selects
+        # explicit mode, null selects automatic mode, and omitting both fields preserves
+        # the current mode. Source-content changes re-extract only in automatic mode.
+        variables_mode: nil,
         request_options: {}
       )
       end
 
-      # Lists templates sorted newest first by `created_at desc, id desc`.
+      # Lists templates sorted newest first by `created_at desc, id desc`. Optional
+      # filters match a case-insensitive literal name/subject query, stored body
+      # presence, and the `strict_variables` and `autoescape` settings. Filters
+      # intersect, remain scoped to the authenticated account, and apply before cursor
+      # pagination. Invalid filter names or values return 400.
       sig do
         params(
+          filter_autoescape:
+            Telnyx::EmailTemplateListParams::FilterAutoescape::OrSymbol,
+          filter_content_type:
+            Telnyx::EmailTemplateListParams::FilterContentType::OrSymbol,
+          filter_query: String,
+          filter_strict_variables:
+            Telnyx::EmailTemplateListParams::FilterStrictVariables::OrSymbol,
           page_cursor: String,
           page_size: Integer,
           request_options: Telnyx::RequestOptions::OrHash
@@ -144,6 +177,23 @@ module Telnyx
         )
       end
       def list(
+        # Exact match on the template's `autoescape` option. Only the exact query strings
+        # `true` and `false` are accepted; other values, including blank, return 400.
+        filter_autoescape: nil,
+        # Matches templates by stored body presence. `html_and_text` requires both an HTML
+        # and text body; `html_only` requires HTML and no text body; `text_only` requires
+        # text and no HTML body; `no_body` requires neither. `null` and exactly `""` count
+        # as absent; whitespace-only strings count as content. An empty or unsupported
+        # value returns a 400 response.
+        filter_content_type: nil,
+        # Case-insensitive literal substring match over the template `name` or stored
+        # `subject` only; bodies are never searched. `%`, `_`, and `\` are literal
+        # characters with no wildcard meaning. A blank value is treated as omitted.
+        filter_query: nil,
+        # Exact match on the template's `strict_variables` option. Only the exact query
+        # strings `true` and `false` are accepted; other values, including blank,
+        # return 400.
+        filter_strict_variables: nil,
         # Opaque URL-safe Base64 cursor returned by a previous list response.
         page_cursor: nil,
         # Number of results to return. Defaults to 25; maximum is 100. Invalid values are
@@ -208,7 +258,9 @@ module Telnyx
                 Telnyx::UpdateEmailTemplateRequest::VariableSchema::OrHash
               ]
             ),
-          variables: T::Array[String],
+          variables: T.nilable(T::Array[String]),
+          variables_mode:
+            Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::EmailTemplateResponse)
       end
@@ -229,7 +281,17 @@ module Telnyx
         # Structured variable requirements. Required variables cannot define defaults;
         # invalid combinations return 422. Set to `null` to clear the schema.
         variable_schema: nil,
+        # Persisted variable names. In `automatic` mode a non-null array is rejected; in
+        # `explicit` mode this is the exact manual array and each item is limited to 255
+        # Unicode code points.
         variables: nil,
+        # Controls how `variables` is maintained. Setting `automatic` re-extracts
+        # immediately from the effective subject, HTML body, and text body and rejects a
+        # simultaneous non-null array. Setting `explicit` requires the exact non-null
+        # array, including valid `[]`. With the mode omitted, a non-null array selects
+        # explicit mode, null selects automatic mode, and omitting both fields preserves
+        # the current mode. Source-content changes re-extract only in automatic mode.
+        variables_mode: nil,
         request_options: {}
       )
       end

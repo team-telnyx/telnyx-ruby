@@ -67,8 +67,9 @@ module Telnyx
           sig { returns(T.nilable(String)) }
           attr_accessor :extended_address
 
-          # Third-party reseller / partner managing the enterprise's phone numbers. Omit
-          # when the enterprise works directly with Telnyx.
+          # Third-party reseller / partner managing the enterprise's phone numbers on its
+          # behalf, such as a call center (BPO) acting for a client. Omit when the
+          # enterprise manages its own numbers.
           sig do
             params(
               administrative_area: String,

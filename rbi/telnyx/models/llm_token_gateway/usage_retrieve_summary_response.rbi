@@ -75,7 +75,6 @@ module Telnyx
               )
             end
 
-          # One row per UTC day, including zero-activity days.
           sig do
             returns(
               T::Array[
@@ -85,7 +84,6 @@ module Telnyx
           end
           attr_accessor :by_day
 
-          # One row per model, ordered by request count descending then model name.
           sig do
             returns(
               T::Array[
@@ -95,8 +93,6 @@ module Telnyx
           end
           attr_accessor :by_model
 
-          # Complete guardrail event counts and bounded recent findings for the same group
-          # and range.
           sig do
             returns(
               Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails
@@ -112,7 +108,6 @@ module Telnyx
           end
           attr_writer :guardrails
 
-          # Metrics for all matching requests.
           sig do
             returns(
               Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Totals
@@ -144,17 +139,7 @@ module Telnyx
                 Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Totals::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(
-            # One row per UTC day, including zero-activity days.
-            by_day:,
-            # One row per model, ordered by request count descending then model name.
-            by_model:,
-            # Complete guardrail event counts and bounded recent findings for the same group
-            # and range.
-            guardrails:,
-            # Metrics for all matching requests.
-            totals:
-          )
+          def self.new(by_day:, by_model:, guardrails:, totals:)
           end
 
           sig do
@@ -187,47 +172,40 @@ module Telnyx
                 )
               end
 
-            # Requests served from the gateway cache.
             sig { returns(Integer) }
             attr_accessor :cache_hits
 
-            # UTC day.
             sig { returns(Date) }
             attr_accessor :date
 
-            # Requests classified as failed.
             sig { returns(Integer) }
             attr_accessor :failed_requests
 
-            # Independently known input tokens across attempts, including corrected usage.
             sig { returns(Integer) }
             attr_accessor :input_tokens
 
-            # Independently known output tokens across attempts, including corrected usage.
             sig { returns(Integer) }
             attr_accessor :output_tokens
 
-            # Requests classified as partial after streaming began.
             sig { returns(Integer) }
             attr_accessor :partial_requests
 
-            # Number of matching requests.
             sig { returns(Integer) }
             attr_accessor :requests
 
-            # Unresolved budget reservations in USD.
+            # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+            # never binary float accounting.
             sig { returns(Float) }
             attr_accessor :reserved_spend
 
-            # Sum of known reference/enforcement cost in USD.
+            # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+            # never binary float accounting.
             sig { returns(Float) }
             attr_accessor :spend
 
-            # Requests classified as succeeded.
             sig { returns(Integer) }
             attr_accessor :succeeded_requests
 
-            # Requests whose cost remains unresolved; unknown cost is excluded from spend.
             sig { returns(Integer) }
             attr_accessor :unknown_requests
 
@@ -247,27 +225,20 @@ module Telnyx
               ).returns(T.attached_class)
             end
             def self.new(
-              # Requests served from the gateway cache.
               cache_hits:,
-              # UTC day.
               date:,
-              # Requests classified as failed.
               failed_requests:,
-              # Independently known input tokens across attempts, including corrected usage.
               input_tokens:,
-              # Independently known output tokens across attempts, including corrected usage.
               output_tokens:,
-              # Requests classified as partial after streaming began.
               partial_requests:,
-              # Number of matching requests.
               requests:,
-              # Unresolved budget reservations in USD.
+              # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+              # never binary float accounting.
               reserved_spend:,
-              # Sum of known reference/enforcement cost in USD.
+              # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+              # never binary float accounting.
               spend:,
-              # Requests classified as succeeded.
               succeeded_requests:,
-              # Requests whose cost remains unresolved; unknown cost is excluded from spend.
               unknown_requests:
             )
             end
@@ -302,47 +273,40 @@ module Telnyx
                 )
               end
 
-            # Requests served from the gateway cache.
             sig { returns(Integer) }
             attr_accessor :cache_hits
 
-            # Requests classified as failed.
             sig { returns(Integer) }
             attr_accessor :failed_requests
 
-            # Independently known input tokens across attempts, including corrected usage.
             sig { returns(Integer) }
             attr_accessor :input_tokens
 
-            # Model identifier.
             sig { returns(String) }
             attr_accessor :model
 
-            # Independently known output tokens across attempts, including corrected usage.
             sig { returns(Integer) }
             attr_accessor :output_tokens
 
-            # Requests classified as partial after streaming began.
             sig { returns(Integer) }
             attr_accessor :partial_requests
 
-            # Number of matching requests.
             sig { returns(Integer) }
             attr_accessor :requests
 
-            # Unresolved budget reservations in USD.
+            # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+            # never binary float accounting.
             sig { returns(Float) }
             attr_accessor :reserved_spend
 
-            # Sum of known reference/enforcement cost in USD.
+            # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+            # never binary float accounting.
             sig { returns(Float) }
             attr_accessor :spend
 
-            # Requests classified as succeeded.
             sig { returns(Integer) }
             attr_accessor :succeeded_requests
 
-            # Requests whose cost remains unresolved; unknown cost is excluded from spend.
             sig { returns(Integer) }
             attr_accessor :unknown_requests
 
@@ -362,27 +326,20 @@ module Telnyx
               ).returns(T.attached_class)
             end
             def self.new(
-              # Requests served from the gateway cache.
               cache_hits:,
-              # Requests classified as failed.
               failed_requests:,
-              # Independently known input tokens across attempts, including corrected usage.
               input_tokens:,
-              # Model identifier.
               model:,
-              # Independently known output tokens across attempts, including corrected usage.
               output_tokens:,
-              # Requests classified as partial after streaming began.
               partial_requests:,
-              # Number of matching requests.
               requests:,
-              # Unresolved budget reservations in USD.
+              # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+              # never binary float accounting.
               reserved_spend:,
-              # Sum of known reference/enforcement cost in USD.
+              # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+              # never binary float accounting.
               spend:,
-              # Requests classified as succeeded.
               succeeded_requests:,
-              # Requests whose cost remains unresolved; unknown cost is excluded from spend.
               unknown_requests:
             )
             end
@@ -417,16 +374,12 @@ module Telnyx
                 )
               end
 
-            # Total blocked guardrail events, not distinct requests.
             sig { returns(Integer) }
             attr_accessor :blocked_events
 
-            # Total flagged guardrail events, not distinct requests.
             sig { returns(Integer) }
             attr_accessor :flagged_events
 
-            # Up to 20 newest privacy-safe guardrail events, ordered by creation time
-            # descending and event ID.
             sig do
               returns(
                 T::Array[
@@ -436,8 +389,6 @@ module Telnyx
             end
             attr_accessor :recent_events
 
-            # Complete guardrail event counts and bounded recent findings for the same group
-            # and range.
             sig do
               params(
                 blocked_events: Integer,
@@ -448,15 +399,7 @@ module Telnyx
                   ]
               ).returns(T.attached_class)
             end
-            def self.new(
-              # Total blocked guardrail events, not distinct requests.
-              blocked_events:,
-              # Total flagged guardrail events, not distinct requests.
-              flagged_events:,
-              # Up to 20 newest privacy-safe guardrail events, ordered by creation time
-              # descending and event ID.
-              recent_events:
-            )
+            def self.new(blocked_events:, flagged_events:, recent_events:)
             end
 
             sig do
@@ -499,15 +442,27 @@ module Telnyx
               attr_accessor :evaluation_output_tokens
 
               sig do
-                returns(
-                  T::Array[
-                    Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding
-                  ]
-                )
+                returns(T::Array[Telnyx::LlmTokenGateway::GuardrailFinding])
               end
               attr_accessor :findings
 
-              # Model identifier.
+              # Customer request tags from the x-ltg-metadata header: up to 5 entries. Keys are
+              # case-sensitive; keys starting with ltg*, telnyx*, litellm* or cf* (any case) are
+              # reserved. Values are strings (1-256 characters, no control or format
+              # characters), integers within +/-9007199254740991, or booleans; floats, null,
+              # objects and arrays are rejected. Values that look like credentials are rejected.
+              # Tags are attribution only: never forwarded upstream, never part of the response
+              # cache key, never used for budgets or routing. An untagged request reports {}.
+              sig do
+                returns(
+                  T::Hash[
+                    Symbol,
+                    Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Metadata::Variants
+                  ]
+                )
+              end
+              attr_accessor :metadata
+
               sig { returns(String) }
               attr_accessor :model
 
@@ -548,8 +503,11 @@ module Telnyx
                   evaluation_input_tokens: T.nilable(Integer),
                   evaluation_output_tokens: T.nilable(Integer),
                   findings:
-                    T::Array[
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::OrHash
+                    T::Array[Telnyx::LlmTokenGateway::GuardrailFinding::OrHash],
+                  metadata:
+                    T::Hash[
+                      Symbol,
+                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Metadata::Variants
                     ],
                   model: String,
                   outcome:
@@ -570,7 +528,14 @@ module Telnyx
                 evaluation_input_tokens:,
                 evaluation_output_tokens:,
                 findings:,
-                # Model identifier.
+                # Customer request tags from the x-ltg-metadata header: up to 5 entries. Keys are
+                # case-sensitive; keys starting with ltg*, telnyx*, litellm* or cf* (any case) are
+                # reserved. Values are strings (1-256 characters, no control or format
+                # characters), integers within +/-9007199254740991, or booleans; floats, null,
+                # objects and arrays are rejected. Values that look like credentials are rejected.
+                # Tags are attribution only: never forwarded upstream, never part of the response
+                # cache key, never used for budgets or routing. An untagged request reports {}.
+                metadata:,
                 model:,
                 outcome:,
                 request_id:,
@@ -591,8 +556,11 @@ module Telnyx
                     evaluation_input_tokens: T.nilable(Integer),
                     evaluation_output_tokens: T.nilable(Integer),
                     findings:
-                      T::Array[
-                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding
+                      T::Array[Telnyx::LlmTokenGateway::GuardrailFinding],
+                    metadata:
+                      T::Hash[
+                        Symbol,
+                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Metadata::Variants
                       ],
                     model: String,
                     outcome:
@@ -610,134 +578,19 @@ module Telnyx
               def to_hash
               end
 
-              class Finding < Telnyx::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding,
-                      Telnyx::Internal::AnyHash
-                    )
-                  end
+              module Metadata
+                extend Telnyx::Internal::Type::Union
 
-                sig do
-                  returns(
-                    Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Action::TaggedSymbol
-                  )
-                end
-                attr_accessor :action
-
-                sig { returns(String) }
-                attr_accessor :code
-
-                sig { returns(Integer) }
-                attr_accessor :count
-
-                sig do
-                  returns(
-                    Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector::TaggedSymbol
-                  )
-                end
-                attr_accessor :detector
-
-                sig do
-                  params(
-                    action:
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Action::OrSymbol,
-                    code: String,
-                    count: Integer,
-                    detector:
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector::OrSymbol
-                  ).returns(T.attached_class)
-                end
-                def self.new(action:, code:, count:, detector:)
-                end
+                Variants = T.type_alias { T.any(String, Integer, T::Boolean) }
 
                 sig do
                   override.returns(
-                    {
-                      action:
-                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Action::TaggedSymbol,
-                      code: String,
-                      count: Integer,
-                      detector:
-                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector::TaggedSymbol
-                    }
+                    T::Array[
+                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Metadata::Variants
+                    ]
                   )
                 end
-                def to_hash
-                end
-
-                module Action
-                  extend Telnyx::Internal::Type::Enum
-
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(
-                        Symbol,
-                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Action
-                      )
-                    end
-                  OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                  FLAG =
-                    T.let(
-                      :flag,
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Action::TaggedSymbol
-                    )
-                  BLOCK =
-                    T.let(
-                      :block,
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Action::TaggedSymbol
-                    )
-
-                  sig do
-                    override.returns(
-                      T::Array[
-                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Action::TaggedSymbol
-                      ]
-                    )
-                  end
-                  def self.values
-                  end
-                end
-
-                module Detector
-                  extend Telnyx::Internal::Type::Enum
-
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(
-                        Symbol,
-                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector
-                      )
-                    end
-                  OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                  SECRETS =
-                    T.let(
-                      :secrets,
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector::TaggedSymbol
-                    )
-                  DLP =
-                    T.let(
-                      :dlp,
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector::TaggedSymbol
-                    )
-                  SAFETY =
-                    T.let(
-                      :safety,
-                      Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector::TaggedSymbol
-                    )
-
-                  sig do
-                    override.returns(
-                      T::Array[
-                        Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::Detector::TaggedSymbol
-                      ]
-                    )
-                  end
-                  def self.values
-                  end
+                def self.variants
                 end
               end
 
@@ -830,47 +683,40 @@ module Telnyx
                 )
               end
 
-            # Requests served from the gateway cache.
             sig { returns(Integer) }
             attr_accessor :cache_hits
 
-            # Requests classified as failed.
             sig { returns(Integer) }
             attr_accessor :failed_requests
 
-            # Independently known input tokens across attempts, including corrected usage.
             sig { returns(Integer) }
             attr_accessor :input_tokens
 
-            # Independently known output tokens across attempts, including corrected usage.
             sig { returns(Integer) }
             attr_accessor :output_tokens
 
-            # Requests classified as partial after streaming began.
             sig { returns(Integer) }
             attr_accessor :partial_requests
 
-            # Number of matching requests.
             sig { returns(Integer) }
             attr_accessor :requests
 
-            # Unresolved budget reservations in USD.
+            # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+            # never binary float accounting.
             sig { returns(Float) }
             attr_accessor :reserved_spend
 
-            # Sum of known reference/enforcement cost in USD.
+            # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+            # never binary float accounting.
             sig { returns(Float) }
             attr_accessor :spend
 
-            # Requests classified as succeeded.
             sig { returns(Integer) }
             attr_accessor :succeeded_requests
 
-            # Requests whose cost remains unresolved; unknown cost is excluded from spend.
             sig { returns(Integer) }
             attr_accessor :unknown_requests
 
-            # Metrics for all matching requests.
             sig do
               params(
                 cache_hits: Integer,
@@ -886,25 +732,19 @@ module Telnyx
               ).returns(T.attached_class)
             end
             def self.new(
-              # Requests served from the gateway cache.
               cache_hits:,
-              # Requests classified as failed.
               failed_requests:,
-              # Independently known input tokens across attempts, including corrected usage.
               input_tokens:,
-              # Independently known output tokens across attempts, including corrected usage.
               output_tokens:,
-              # Requests classified as partial after streaming began.
               partial_requests:,
-              # Number of matching requests.
               requests:,
-              # Unresolved budget reservations in USD.
+              # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+              # never binary float accounting.
               reserved_spend:,
-              # Sum of known reference/enforcement cost in USD.
+              # USD, decimal precision at most 6 places; parse exactly to integer micro-USD,
+              # never binary float accounting.
               spend:,
-              # Requests classified as succeeded.
               succeeded_requests:,
-              # Requests whose cost remains unresolved; unknown cost is excluded from spend.
               unknown_requests:
             )
             end
@@ -942,6 +782,10 @@ module Telnyx
           sig { returns(Date) }
           attr_accessor :end_date
 
+          # The metadata[<key>] filters applied to every section; {} when unfiltered.
+          sig { returns(T::Hash[Symbol, String]) }
+          attr_accessor :metadata
+
           sig { returns(Date) }
           attr_accessor :start_date
 
@@ -951,16 +795,28 @@ module Telnyx
           sig do
             params(
               end_date: Date,
+              metadata: T::Hash[Symbol, String],
               start_date: Date,
               token_group_id: String
             ).returns(T.attached_class)
           end
-          def self.new(end_date:, start_date:, token_group_id:)
+          def self.new(
+            end_date:,
+            # The metadata[<key>] filters applied to every section; {} when unfiltered.
+            metadata:,
+            start_date:,
+            token_group_id:
+          )
           end
 
           sig do
             override.returns(
-              { end_date: Date, start_date: Date, token_group_id: String }
+              {
+                end_date: Date,
+                metadata: T::Hash[Symbol, String],
+                start_date: Date,
+                token_group_id: String
+              }
             )
           end
           def to_hash

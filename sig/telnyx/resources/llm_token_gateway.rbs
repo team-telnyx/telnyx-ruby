@@ -3,6 +3,12 @@ module Telnyx
     class LlmTokenGateway
       attr_reader usage: Telnyx::Resources::LlmTokenGateway::Usage
 
+      attr_reader spend: Telnyx::Resources::LlmTokenGateway::Spend
+
+      attr_reader token_groups: Telnyx::Resources::LlmTokenGateway::TokenGroups
+
+      attr_reader token_keys: Telnyx::Resources::LlmTokenGateway::TokenKeys
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

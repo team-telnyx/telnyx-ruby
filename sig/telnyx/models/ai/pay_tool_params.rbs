@@ -4,13 +4,19 @@ module Telnyx
       type pay_tool_params =
         {
           connector_name: String,
+          connector_parameters: ::Hash[Symbol, top],
           currency: String,
           description: String?,
-          payment_method: String
+          payment_method: String,
+          valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
         }
 
       class PayToolParams < Telnyx::Internal::Type::BaseModel
         attr_accessor connector_name: String
+
+        attr_reader connector_parameters: ::Hash[Symbol, top]?
+
+        def connector_parameters=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         attr_reader currency: String?
 
@@ -22,19 +28,56 @@ module Telnyx
 
         def payment_method=: (String) -> String
 
+        attr_reader valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]?
+
+        def valid_card_types=: (
+          ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
+        ) -> ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
+
         def initialize: (
           connector_name: String,
+          ?connector_parameters: ::Hash[Symbol, top],
           ?currency: String,
           ?description: String?,
-          ?payment_method: String
+          ?payment_method: String,
+          ?valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
         ) -> void
 
         def to_hash: -> {
           connector_name: String,
+          connector_parameters: ::Hash[Symbol, top],
           currency: String,
           description: String?,
-          payment_method: String
+          payment_method: String,
+          valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
         }
+
+        type valid_card_type =
+          :visa
+          | :mastercard
+          | :amex
+          | :maestro
+          | :discover
+          | :optima
+          | :jcb
+          | :"diners-club"
+          | :enroute
+
+        module ValidCardType
+          extend Telnyx::Internal::Type::Enum
+
+          VISA: :visa
+          MASTERCARD: :mastercard
+          AMEX: :amex
+          MAESTRO: :maestro
+          DISCOVER: :discover
+          OPTIMA: :optima
+          JCB: :jcb
+          DINERS_CLUB: :"diners-club"
+          ENROUTE: :enroute
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
+        end
       end
     end
   end

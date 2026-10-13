@@ -1,0 +1,64 @@
+module Telnyx
+  module Resources
+    class LlmTokenGateway
+      class TokenKeys
+        def create: (
+          name: String,
+          token_group_id: String,
+          idempotency_key: String,
+          ?allowed_models: ::Array[String]?,
+          ?blocked: bool,
+          ?budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          ?expires_at: Time?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?required_end_user_id: bool,
+          ?rpm_limit: Integer?,
+          ?token_user_id: String?,
+          ?tpm_limit: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::LlmTokenGateway::TokenKeyResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::LlmTokenGateway::TokenKeyResponse
+
+        def update: (
+          String id,
+          idempotency_key: String,
+          if_match: String,
+          ?allowed_models: ::Array[String]?,
+          ?blocked: bool,
+          ?budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          ?expires_at: Time?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?name: String,
+          ?required_end_user_id: bool,
+          ?rpm_limit: Integer?,
+          ?tpm_limit: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::LlmTokenGateway::TokenKeyResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?page_snapshot: String,
+          ?token_group_id: String,
+          ?token_user_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::LlmTokenGateway::TokenKey]
+
+        def delete: (
+          String id,
+          idempotency_key: String,
+          if_match: String,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

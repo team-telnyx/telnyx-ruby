@@ -48,11 +48,25 @@ module Telnyx
                nil?: true
 
       # @!attribute variables
+      #   Persisted variable names. In `automatic` mode a non-null array is rejected; in
+      #   `explicit` mode this is the exact manual array and each item is limited to 255
+      #   Unicode code points.
       #
       #   @return [Array<String>, nil]
-      optional :variables, Telnyx::Internal::Type::ArrayOf[String]
+      optional :variables, Telnyx::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!method initialize(autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil)
+      # @!attribute variables_mode
+      #   Controls how `variables` is maintained. Setting `automatic` re-extracts
+      #   immediately from the effective subject, HTML body, and text body and rejects a
+      #   simultaneous non-null array. Setting `explicit` requires the exact non-null
+      #   array, including valid `[]`. With the mode omitted, a non-null array selects
+      #   explicit mode, null selects automatic mode, and omitting both fields preserves
+      #   the current mode. Source-content changes re-extract only in automatic mode.
+      #
+      #   @return [Symbol, Telnyx::Models::UpdateEmailTemplateRequest::VariablesMode, nil]
+      optional :variables_mode, enum: -> { Telnyx::UpdateEmailTemplateRequest::VariablesMode }
+
+      # @!method initialize(autoescape: nil, html_body: nil, name: nil, strict_variables: nil, subject: nil, text_body: nil, variable_schema: nil, variables: nil, variables_mode: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::UpdateEmailTemplateRequest} for more details.
       #
@@ -70,7 +84,9 @@ module Telnyx
       #
       #   @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
-      #   @param variables [Array<String>]
+      #   @param variables [Array<String>, nil] Persisted variable names. In `automatic` mode a non-null array is rejected; in `
+      #
+      #   @param variables_mode [Symbol, Telnyx::Models::UpdateEmailTemplateRequest::VariablesMode] Controls how `variables` is maintained. Setting `automatic` re-extracts immediat
 
       class VariableSchema < Telnyx::Internal::Type::BaseModel
         # @!attribute required
@@ -93,6 +109,24 @@ module Telnyx
         #   @param required [Boolean] Whether the variable must be supplied when strict variable validation is enabled
         #
         #   @param default [String] Default value for an optional variable. Rejected when `required` is `true`.
+      end
+
+      # Controls how `variables` is maintained. Setting `automatic` re-extracts
+      # immediately from the effective subject, HTML body, and text body and rejects a
+      # simultaneous non-null array. Setting `explicit` requires the exact non-null
+      # array, including valid `[]`. With the mode omitted, a non-null array selects
+      # explicit mode, null selects automatic mode, and omitting both fields preserves
+      # the current mode. Source-content changes re-extract only in automatic mode.
+      #
+      # @see Telnyx::Models::UpdateEmailTemplateRequest#variables_mode
+      module VariablesMode
+        extend Telnyx::Internal::Type::Enum
+
+        AUTOMATIC = :automatic
+        EXPLICIT = :explicit
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -74,6 +74,16 @@ module Telnyx
         #   @return [Hash{Symbol=>Object}, nil]
         optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
+        # @!attribute min_postal_code_length
+        #   Minimum number of digits the caller must enter when collecting a credit-card
+        #   billing postal code. Applies only when `postal_code` is `true` or `"true"` and
+        #   no `payment_token` is supplied. The default is 1. The maximum number of digits
+        #   collected is the greater of 10 and this value. This does not validate the length
+        #   of a postal code supplied directly in `postal_code`.
+        #
+        #   @return [Integer, nil]
+        optional :min_postal_code_length, Integer
+
         # @!attribute parameters
         #   Additional parameters forwarded to the Pay connector.
         #
@@ -91,6 +101,19 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :payment_token, String
+
+        # @!attribute postal_code
+        #   Controls billing postal code collection for credit-card payments when no
+        #   `payment_token` is supplied. Set to `true` or the string `"true"` (the default)
+        #   to prompt the caller for a postal code. Set to `false` or the string `"false"`
+        #   to skip the postal code prompt without supplying a postal code to the payment
+        #   connector. Supply any other non-empty string, such as `"90210"`, to use that
+        #   postal code without prompting. Empty or whitespace-only strings are rejected.
+        #   This option does not affect ACH debit payments or payments using an existing
+        #   token.
+        #
+        #   @return [String, Boolean, nil]
+        optional :postal_code, union: -> { Telnyx::Calls::ActionPayParams::PostalCode }
 
         # @!attribute prompts
         #   Custom text-to-speech prompts keyed by payment collection step.
@@ -136,7 +159,7 @@ module Telnyx
         #   @return [String, nil]
         optional :voice, String
 
-        # @!method initialize(call_control_id:, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, parameters: nil, payment_method: nil, payment_token: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, valid_card_types: nil, voice: nil, request_options: {})
+        # @!method initialize(call_control_id:, amount: nil, client_state: nil, command_id: nil, connector_name: nil, currency: nil, description: nil, inter_digit_timeout_millis: nil, language: nil, max_attempts: nil, metadata: nil, min_postal_code_length: nil, parameters: nil, payment_method: nil, payment_token: nil, postal_code: nil, prompts: nil, service_level: nil, timeout_millis: nil, transaction_type: nil, valid_card_types: nil, voice: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionPayParams} for more details.
         #
@@ -162,11 +185,15 @@ module Telnyx
         #
         #   @param metadata [Hash{Symbol=>Object}] Metadata forwarded to the Pay connector.
         #
+        #   @param min_postal_code_length [Integer] Minimum number of digits the caller must enter when collecting a credit-card bil
+        #
         #   @param parameters [Hash{Symbol=>Object}] Additional parameters forwarded to the Pay connector.
         #
         #   @param payment_method [Symbol, Telnyx::Models::Calls::ActionPayParams::PaymentMethod] Payment method to collect.
         #
         #   @param payment_token [String] Existing payment token. When supplied, payment-detail collection is skipped.
+        #
+        #   @param postal_code [String, Boolean] Controls billing postal code collection for credit-card payments when no `paymen
         #
         #   @param prompts [Telnyx::Models::Calls::ActionPayParams::Prompts] Custom text-to-speech prompts keyed by payment collection step.
         #
@@ -202,6 +229,25 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # Controls billing postal code collection for credit-card payments when no
+        # `payment_token` is supplied. Set to `true` or the string `"true"` (the default)
+        # to prompt the caller for a postal code. Set to `false` or the string `"false"`
+        # to skip the postal code prompt without supplying a postal code to the payment
+        # connector. Supply any other non-empty string, such as `"90210"`, to use that
+        # postal code without prompting. Empty or whitespace-only strings are rejected.
+        # This option does not affect ACH debit payments or payments using an existing
+        # token.
+        module PostalCode
+          extend Telnyx::Internal::Type::Union
+
+          variant String
+
+          variant Telnyx::Internal::Type::Boolean
+
+          # @!method self.variants
+          #   @return [Array(String, Boolean)]
         end
 
         class Prompts < Telnyx::Internal::Type::BaseModel

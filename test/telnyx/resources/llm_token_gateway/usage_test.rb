@@ -3,6 +3,23 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::LlmTokenGateway::UsageTest < Telnyx::Test::ResourceTest
+  def test_retrieve_export
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.llm_token_gateway.usage.retrieve_export
+
+    assert_pattern do
+      response => Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[union: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data]),
+        meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Meta
+      }
+    end
+  end
+
   def test_retrieve_summary_required_params
     skip("Mock server tests are disabled")
 

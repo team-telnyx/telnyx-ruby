@@ -69,12 +69,32 @@ module Telnyx
       end
       attr_accessor :variable_schema
 
-      # Template variables. Auto-extracted from subject/body fields when absent.
+      # Persisted variable names. In `automatic` mode a non-null array is rejected; in
+      # `explicit` mode this is the exact manual array and each item is limited to 255
+      # Unicode code points.
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :variables
+      attr_accessor :variables
 
-      sig { params(variables: T::Array[String]).void }
-      attr_writer :variables
+      # Controls how `variables` is maintained. If both fields are omitted (or
+      # `variables` is null), the template uses `automatic` mode and extracts variable
+      # names from the effective subject, HTML body, and text body. A non-null
+      # `variables` array with no mode selects `explicit`. `automatic` rejects a
+      # simultaneous non-null array; `explicit` requires a non-null array, including
+      # valid `[]`, and preserves its exact order, duplicates, and string contents.
+      sig do
+        returns(
+          T.nilable(Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol)
+        )
+      end
+      attr_reader :variables_mode
+
+      sig do
+        params(
+          variables_mode:
+            Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol
+        ).void
+      end
+      attr_writer :variables_mode
 
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
@@ -97,7 +117,9 @@ module Telnyx
                 Telnyx::EmailTemplateCreateParams::VariableSchema::OrHash
               ]
             ),
-          variables: T::Array[String],
+          variables: T.nilable(T::Array[String]),
+          variables_mode:
+            Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol,
           idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -135,8 +157,17 @@ module Telnyx
         # such as `false` and `0` pass (they are present, not empty). Optional variables
         # fall back to their `default` when absent.
         variable_schema: nil,
-        # Template variables. Auto-extracted from subject/body fields when absent.
+        # Persisted variable names. In `automatic` mode a non-null array is rejected; in
+        # `explicit` mode this is the exact manual array and each item is limited to 255
+        # Unicode code points.
         variables: nil,
+        # Controls how `variables` is maintained. If both fields are omitted (or
+        # `variables` is null), the template uses `automatic` mode and extracts variable
+        # names from the effective subject, HTML body, and text body. A non-null
+        # `variables` array with no mode selects `explicit`. `automatic` rejects a
+        # simultaneous non-null array; `explicit` requires a non-null array, including
+        # valid `[]`, and preserves its exact order, duplicates, and string contents.
+        variables_mode: nil,
         idempotency_key: nil,
         request_options: {}
       )
@@ -158,7 +189,9 @@ module Telnyx
                   Telnyx::EmailTemplateCreateParams::VariableSchema
                 ]
               ),
-            variables: T::Array[String],
+            variables: T.nilable(T::Array[String]),
+            variables_mode:
+              Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol,
             idempotency_key: String,
             request_options: Telnyx::RequestOptions
           }
@@ -204,6 +237,43 @@ module Telnyx
 
         sig { override.returns({ required: T::Boolean, default: String }) }
         def to_hash
+        end
+      end
+
+      # Controls how `variables` is maintained. If both fields are omitted (or
+      # `variables` is null), the template uses `automatic` mode and extracts variable
+      # names from the effective subject, HTML body, and text body. A non-null
+      # `variables` array with no mode selects `explicit`. `automatic` rejects a
+      # simultaneous non-null array; `explicit` requires a non-null array, including
+      # valid `[]`, and preserves its exact order, duplicates, and string contents.
+      module VariablesMode
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::EmailTemplateCreateParams::VariablesMode)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        AUTOMATIC =
+          T.let(
+            :automatic,
+            Telnyx::EmailTemplateCreateParams::VariablesMode::TaggedSymbol
+          )
+        EXPLICIT =
+          T.let(
+            :explicit,
+            Telnyx::EmailTemplateCreateParams::VariablesMode::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::EmailTemplateCreateParams::VariablesMode::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
     end

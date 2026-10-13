@@ -121,6 +121,22 @@ module Telnyx
         sig { params(temperature: Float).void }
         attr_writer :temperature
 
+        # Optional sound played to the caller while the assistant runs a tool (for example
+        # a webhook or MCP tool). It replaces the background audio until the tool
+        # responds, then the background audio resumes. Defaults to null, which plays no
+        # sound; send `null` on update to clear it. Not played in conference calls.
+        sig do
+          returns(
+            T.nilable(
+              T.any(
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0,
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1
+              )
+            )
+          )
+        end
+        attr_accessor :tool_call_audio
+
         # Amplifies similarity to the original speaker voice. Increases computational load
         # and latency slightly. Only applicable when using ElevenLabs.
         sig { returns(T.nilable(T::Boolean)) }
@@ -158,6 +174,13 @@ module Telnyx
             speed: Float,
             style: Float,
             temperature: Float,
+            tool_call_audio:
+              T.nilable(
+                T.any(
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::OrHash,
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::OrHash
+                )
+              ),
             use_speaker_boost: T::Boolean,
             voice_speed: Float
           ).returns(T.attached_class)
@@ -208,6 +231,11 @@ module Telnyx
           # Lower values create a broader emotional range; higher values produce more
           # consistent, monotonous output. Only applicable when using ElevenLabs.
           temperature: nil,
+          # Optional sound played to the caller while the assistant runs a tool (for example
+          # a webhook or MCP tool). It replaces the background audio until the tool
+          # responds, then the background audio resumes. Defaults to null, which plays no
+          # sound; send `null` on update to clear it. Not played in conference calls.
+          tool_call_audio: nil,
           # Amplifies similarity to the original speaker voice. Increases computational load
           # and latency slightly. Only applicable when using ElevenLabs.
           use_speaker_boost: nil,
@@ -239,6 +267,13 @@ module Telnyx
               speed: Float,
               style: Float,
               temperature: Float,
+              tool_call_audio:
+                T.nilable(
+                  T.any(
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0,
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1
+                  )
+                ),
               use_speaker_boost: T::Boolean,
               voice_speed: Float
             }
@@ -797,6 +832,239 @@ module Telnyx
             )
           end
           def self.values
+          end
+        end
+
+        # Optional sound played to the caller while the assistant runs a tool (for example
+        # a webhook or MCP tool). It replaces the background audio until the tool
+        # responds, then the background audio resumes. Defaults to null, which plays no
+        # sound; send `null` on update to clear it. Not played in conference calls.
+        module ToolCallAudio
+          extend Telnyx::Internal::Type::Union
+
+          Variants =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0,
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1
+              )
+            end
+
+          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Select from predefined media options.
+            sig do
+              returns(
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type::OrSymbol
+              )
+            end
+            attr_accessor :type
+
+            # The predefined media to use. `typing` plays a keyboard typing sound.
+            sig do
+              returns(
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value::OrSymbol
+              )
+            end
+            attr_accessor :value
+
+            # Volume level for the predefined media. Supports values from 0.0 to 1.0 in 0.1
+            # increments. `0.0` plays no sound.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :volume
+
+            sig { params(volume: Float).void }
+            attr_writer :volume
+
+            sig do
+              params(
+                type:
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type::OrSymbol,
+                value:
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value::OrSymbol,
+                volume: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Select from predefined media options.
+              type:,
+              # The predefined media to use. `typing` plays a keyboard typing sound.
+              value:,
+              # Volume level for the predefined media. Supports values from 0.0 to 1.0 in 0.1
+              # increments. `0.0` plays no sound.
+              volume: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  type:
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type::OrSymbol,
+                  value:
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value::OrSymbol,
+                  volume: Float
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Select from predefined media options.
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              PREDEFINED_MEDIA =
+                T.let(
+                  :predefined_media,
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # The predefined media to use. `typing` plays a keyboard typing sound.
+            module Value
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              TYPING =
+                T.let(
+                  :typing,
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Provide a direct URL to an MP3 file. The audio loops while the tool runs.
+            sig do
+              returns(
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type::OrSymbol
+              )
+            end
+            attr_accessor :type
+
+            # HTTPS URL to an MP3 file.
+            sig { returns(String) }
+            attr_accessor :value
+
+            sig do
+              params(
+                type:
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type::OrSymbol,
+                value: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Provide a direct URL to an MP3 file. The audio loops while the tool runs.
+              type:,
+              # HTTPS URL to an MP3 file.
+              value:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  type:
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type::OrSymbol,
+                  value: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Provide a direct URL to an MP3 file. The audio loops while the tool runs.
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              MEDIA_URL =
+                T.let(
+                  :media_url,
+                  Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::Variants
+              ]
+            )
+          end
+          def self.variants
           end
         end
       end

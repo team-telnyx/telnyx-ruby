@@ -15,8 +15,10 @@ module Telnyx
             Telnyx::ArtifactFailedWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
             Telnyx::CallBridgedWebhookEvent,
+            Telnyx::CallConversationCreatedWebhookEvent,
             Telnyx::CallConversationEndedWebhookEvent,
             Telnyx::CallConversationInsightsGeneratedWebhookEvent,
+            Telnyx::CallConversationStartFailedWebhookEvent,
             Telnyx::CallCostWebhookEvent,
             Telnyx::CallDeepfakeDetectionErrorWebhookEvent,
             Telnyx::CallDeepfakeDetectionResultWebhookEvent,
@@ -31,7 +33,9 @@ module Telnyx
             Telnyx::CallLeftQueueWebhookEvent,
             Telnyx::CallMachineDetectionEndedWebhookEvent,
             Telnyx::CallMachineGreetingEndedWebhookEvent,
+            Telnyx::CallMachinePremiumCallScreeningDetectedWebhookEvent,
             Telnyx::CallMachinePremiumDetectionEndedWebhookEvent,
+            Telnyx::CallMachinePremiumDetectionStartedWebhookEvent,
             Telnyx::CallMachinePremiumGreetingEndedWebhookEvent,
             Telnyx::CallPaymentCompletedWebhookEvent,
             Telnyx::CallPaymentProgressWebhookEvent,
@@ -85,7 +89,8 @@ module Telnyx
             Telnyx::TranscriptCompletedWebhookEvent,
             Telnyx::TranscriptionWebhookEvent,
             Telnyx::WhatsappAccountUpdate,
-            Telnyx::WhatsappMessageEcho
+            Telnyx::WhatsappMessageEcho,
+            Telnyx::WhatsappWabaAddedWebhookEvent
           )
         end
 

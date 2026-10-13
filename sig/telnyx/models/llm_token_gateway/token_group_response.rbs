@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type token_group_response = { data: Telnyx::LlmTokenGateway::TokenGroup }
+
+      class TokenGroupResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::LlmTokenGateway::TokenGroup
+
+        def initialize: (data: Telnyx::LlmTokenGateway::TokenGroup) -> void
+
+        def to_hash: -> { data: Telnyx::LlmTokenGateway::TokenGroup }
+      end
+    end
+  end
+end

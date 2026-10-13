@@ -220,7 +220,8 @@ module Telnyx
                 end_user_id: String?,
                 evaluation_input_tokens: Integer?,
                 evaluation_output_tokens: Integer?,
-                findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding],
+                findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding],
+                metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::metadata],
                 model: String,
                 outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome,
                 record_type: :guardrail_event,
@@ -242,7 +243,9 @@ module Telnyx
 
               attr_accessor evaluation_output_tokens: Integer?
 
-              attr_accessor findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding]
+              attr_accessor findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding]
+
+              attr_accessor metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::metadata]
 
               attr_accessor model: String
 
@@ -266,7 +269,8 @@ module Telnyx
                 end_user_id: String?,
                 evaluation_input_tokens: Integer?,
                 evaluation_output_tokens: Integer?,
-                findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding],
+                findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding],
+                metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::metadata],
                 model: String,
                 outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome,
                 request_id: String,
@@ -283,7 +287,8 @@ module Telnyx
                 end_user_id: String?,
                 evaluation_input_tokens: Integer?,
                 evaluation_output_tokens: Integer?,
-                findings: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding],
+                findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding],
+                metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::metadata],
                 model: String,
                 outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::outcome,
                 record_type: :guardrail_event,
@@ -294,59 +299,12 @@ module Telnyx
                 token_user_id: String?
               }
 
-              type finding =
-                {
-                  action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action,
-                  code: String,
-                  count: Integer,
-                  detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
-                }
+              type metadata = String | Integer | bool
 
-              class Finding < Telnyx::Internal::Type::BaseModel
-                attr_accessor action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action
+              module Metadata
+                extend Telnyx::Internal::Type::Union
 
-                attr_accessor code: String
-
-                attr_accessor count: Integer
-
-                attr_accessor detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
-
-                def initialize: (
-                  action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action,
-                  code: String,
-                  count: Integer,
-                  detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
-                ) -> void
-
-                def to_hash: -> {
-                  action: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action,
-                  code: String,
-                  count: Integer,
-                  detector: Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector
-                }
-
-                type action = :flag | :block
-
-                module Action
-                  extend Telnyx::Internal::Type::Enum
-
-                  FLAG: :flag
-                  BLOCK: :block
-
-                  def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::action]
-                end
-
-                type detector = :secrets | :dlp | :safety
-
-                module Detector
-                  extend Telnyx::Internal::Type::Enum
-
-                  SECRETS: :secrets
-                  DLP: :dlp
-                  SAFETY: :safety
-
-                  def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::Finding::detector]
-                end
+                def self?.variants: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse::Data::Guardrails::RecentEvent::metadata]
               end
 
               type outcome = :evaluated | :flagged | :blocked | :unevaluated
@@ -438,10 +396,18 @@ module Telnyx
           end
         end
 
-        type meta = { end_date: Date, start_date: Date, token_group_id: String }
+        type meta =
+          {
+            end_date: Date,
+            metadata: ::Hash[Symbol, String],
+            start_date: Date,
+            token_group_id: String
+          }
 
         class Meta < Telnyx::Internal::Type::BaseModel
           attr_accessor end_date: Date
+
+          attr_accessor metadata: ::Hash[Symbol, String]
 
           attr_accessor start_date: Date
 
@@ -449,12 +415,14 @@ module Telnyx
 
           def initialize: (
             end_date: Date,
+            metadata: ::Hash[Symbol, String],
             start_date: Date,
             token_group_id: String
           ) -> void
 
           def to_hash: -> {
             end_date: Date,
+            metadata: ::Hash[Symbol, String],
             start_date: Date,
             token_group_id: String
           }

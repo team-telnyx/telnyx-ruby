@@ -9,32 +9,41 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute end_date
-        #   Exclusive UTC date in YYYY-MM-DD format. Must follow start_date by 1 to 31 days.
         #
         #   @return [Date]
         required :end_date, Date
 
         # @!attribute start_date
-        #   Inclusive UTC date in YYYY-MM-DD format. Must precede end_date by 1 to 31 days.
         #
         #   @return [Date]
         required :start_date, Date
 
         # @!attribute token_group_id
-        #   ID of a token group owned by the authenticated account.
         #
         #   @return [String]
         required :token_group_id, String
 
-        # @!method initialize(end_date:, start_date:, token_group_id:, request_options: {})
+        # @!attribute metadata
+        #   Request tag filters as metadata[<key>]=<value>, at most 5, combined with AND. A
+        #   value matches the tag's text form exactly (booleans as true/false, integers in
+        #   decimal), so metadata[flag]=true matches both boolean true and the string
+        #   "true". Keys are case-sensitive; reserved-prefix keys are rejected. Unindexed:
+        #   bounded by the account, the date range and the report timeout.
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :metadata, Telnyx::Internal::Type::HashOf[String]
+
+        # @!method initialize(end_date:, start_date:, token_group_id:, metadata: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryParams} for more details.
         #
-        #   @param end_date [Date] Exclusive UTC date in YYYY-MM-DD format. Must follow start_date by 1 to 31 days.
+        #   @param end_date [Date]
         #
-        #   @param start_date [Date] Inclusive UTC date in YYYY-MM-DD format. Must precede end_date by 1 to 31 days.
+        #   @param start_date [Date]
         #
-        #   @param token_group_id [String] ID of a token group owned by the authenticated account.
+        #   @param token_group_id [String]
+        #
+        #   @param metadata [Hash{Symbol=>String}] Request tag filters as metadata[<key>]=<value>, at most 5, combined with AND. A
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
