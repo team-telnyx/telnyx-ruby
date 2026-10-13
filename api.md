@@ -565,6 +565,7 @@ Methods:
 - <code title="get /ai/memory/namespaces/{namespace}/profiles">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">list</a>(\*\*params)</code>
 - <code title="delete /ai/memory/namespaces/{namespace}/profiles/{profile_id}">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">delete</a>(\*\*params)</code>
 - <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/ingest">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">ingest</a>(\*\*params)</code>
+- <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/summary/preview">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">preview</a>(\*\*params)</code>
 - <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/recall">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">recall</a>(\*\*params)</code>
 - <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/remember">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">remember</a>(\*\*params)</code>
 - <code title="get /ai/memory/namespaces/{namespace}/profiles/{profile_id}/summary">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">retrieve_summary</a>(\*\*params)</code>
