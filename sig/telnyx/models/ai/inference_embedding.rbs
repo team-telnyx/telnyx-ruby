@@ -9,6 +9,7 @@ module Telnyx
           model: String,
           name: String,
           :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
+          avatar_settings: Telnyx::AI::TelnyxAvatarSettings?,
           conversation_flow: Telnyx::AI::ConversationFlow,
           delegation_settings: Telnyx::AI::DelegationSettings,
           description: String,
@@ -58,6 +59,8 @@ module Telnyx
         def a2a_agents=: (
           ::Array[Telnyx::AI::AssistantA2AAgent]
         ) -> ::Array[Telnyx::AI::AssistantA2AAgent]
+
+        attr_accessor avatar_settings: Telnyx::AI::TelnyxAvatarSettings?
 
         attr_reader conversation_flow: Telnyx::AI::ConversationFlow?
 
@@ -228,6 +231,7 @@ module Telnyx
           model: String,
           name: String,
           ?a2a_agents: ::Array[Telnyx::AI::AssistantA2AAgent],
+          ?avatar_settings: Telnyx::AI::TelnyxAvatarSettings?,
           ?conversation_flow: Telnyx::AI::ConversationFlow,
           ?delegation_settings: Telnyx::AI::DelegationSettings,
           ?description: String,
@@ -268,6 +272,7 @@ module Telnyx
           model: String,
           name: String,
           :a2a_agents => ::Array[Telnyx::AI::AssistantA2AAgent],
+          avatar_settings: Telnyx::AI::TelnyxAvatarSettings?,
           conversation_flow: Telnyx::AI::ConversationFlow,
           delegation_settings: Telnyx::AI::DelegationSettings,
           description: String,

@@ -805,6 +805,10 @@ module Telnyx
     # @return [Telnyx::Resources::LlmTokenGateway]
     attr_reader :llm_token_gateway
 
+    # UAC connection operations
+    # @return [Telnyx::Resources::SipRegistrationStatus]
+    attr_reader :sip_registration_status
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1104,6 +1108,7 @@ module Telnyx
       @machine_payments = Telnyx::Resources::MachinePayments.new(client: self)
       @spend_limits = Telnyx::Resources::SpendLimits.new(client: self)
       @llm_token_gateway = Telnyx::Resources::LlmTokenGateway.new(client: self)
+      @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
     end
   end
 end

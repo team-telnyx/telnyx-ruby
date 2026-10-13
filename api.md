@@ -3318,3 +3318,9 @@ Methods:
 - <code title="patch /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">update</a>(\*\*params)</code>
 - <code title="get /llm_token_gateway/token_keys">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">list</a>(\*\*params)</code>
 - <code title="delete /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">delete</a>(\*\*params)</code>
+
+# SipRegistrationStatus
+
+Methods:
+
+- <code title="get /sip_registration_status">client.sip_registration_status.<a href="./lib/telnyx/resources/sip_registration_status.rb">list</a>(\*\*params)</code>

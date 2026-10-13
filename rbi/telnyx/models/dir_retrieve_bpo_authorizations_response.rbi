@@ -81,10 +81,12 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :loa_document_id
 
-        # Review state of this authorization. `pending` on create or when the Letter of
-        # Authorization is re-uploaded; an admin moves it to `approved` or `rejected`.
-        # Only an `approved` authorization adds the BPO to this DIR's authorized callers
-        # in the branded calling registry.
+        # Review state of this authorization. `pending` when the authorization is first
+        # added, or when you send a different `loa_document_id` for this BPO in
+        # `bpo_authorizations` (uploading a document alone changes nothing). Approving the
+        # DIR approves its pending authorizations; an admin can also approve or reject one
+        # on its own. Only an `approved` authorization adds the BPO to this DIR's
+        # authorized callers in the branded calling registry.
         sig do
           returns(
             Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::Status::TaggedSymbol
@@ -125,10 +127,12 @@ module Telnyx
           loa_document_id:,
           # Always `bpo_authorization`.
           record_type:,
-          # Review state of this authorization. `pending` on create or when the Letter of
-          # Authorization is re-uploaded; an admin moves it to `approved` or `rejected`.
-          # Only an `approved` authorization adds the BPO to this DIR's authorized callers
-          # in the branded calling registry.
+          # Review state of this authorization. `pending` when the authorization is first
+          # added, or when you send a different `loa_document_id` for this BPO in
+          # `bpo_authorizations` (uploading a document alone changes nothing). Approving the
+          # DIR approves its pending authorizations; an admin can also approve or reject one
+          # on its own. Only an `approved` authorization adds the BPO to this DIR's
+          # authorized callers in the branded calling registry.
           status:,
           # Why the authorization was rejected. `null` unless `status` is `rejected`.
           rejection_reason: nil
@@ -181,10 +185,12 @@ module Telnyx
           end
         end
 
-        # Review state of this authorization. `pending` on create or when the Letter of
-        # Authorization is re-uploaded; an admin moves it to `approved` or `rejected`.
-        # Only an `approved` authorization adds the BPO to this DIR's authorized callers
-        # in the branded calling registry.
+        # Review state of this authorization. `pending` when the authorization is first
+        # added, or when you send a different `loa_document_id` for this BPO in
+        # `bpo_authorizations` (uploading a document alone changes nothing). Approving the
+        # DIR approves its pending authorizations; an admin can also approve or reject one
+        # on its own. Only an `approved` authorization adds the BPO to this DIR's
+        # authorized callers in the branded calling registry.
         module Status
           extend Telnyx::Internal::Type::Enum
 

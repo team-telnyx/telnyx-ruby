@@ -10,7 +10,8 @@ module Telnyx
 
         # @!attribute filter
         #   Consolidated filter parameter (deepObject style). Originally: filter[type],
-        #   filter[phone_number], filter[phone_number][], filter[status][]
+        #   filter[phone_number], filter[phone_number][], filter[status][],
+        #   filter[customer_reference]
         #
         #   @return [Telnyx::Models::PhoneNumbers::JobListParams::Filter, nil]
         optional :filter, -> { Telnyx::PhoneNumbers::JobListParams::Filter }
@@ -47,6 +48,17 @@ module Telnyx
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
         class Filter < Telnyx::Internal::Type::BaseModel
+          # @!attribute customer_reference
+          #   Returns jobs whose creation-time customer reference exactly matches the supplied
+          #   value, not the current reference on a phone number. Only jobs within the lookup
+          #   window (90 days by default) are returned. Supply a single non-blank string of up
+          #   to 250 characters, without null characters, using
+          #   `filter[customer_reference]=yourcustomerrefhere`. An invalid filter value
+          #   returns HTTP 422.
+          #
+          #   @return [String, nil]
+          optional :customer_reference, String
+
           # @!attribute phone_number
           #   Returns jobs that targeted any of the supplied account-owned phone numbers.
           #   Values beginning with `+` must contain 1 to 20 digits after the plus sign. The
@@ -71,12 +83,15 @@ module Telnyx
           #   @return [Symbol, Telnyx::Models::PhoneNumbers::JobListParams::Filter::Type, nil]
           optional :type, enum: -> { Telnyx::PhoneNumbers::JobListParams::Filter::Type }
 
-          # @!method initialize(phone_number: nil, status: nil, type: nil)
+          # @!method initialize(customer_reference: nil, phone_number: nil, status: nil, type: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::PhoneNumbers::JobListParams::Filter} for more details.
           #
           #   Consolidated filter parameter (deepObject style). Originally: filter[type],
-          #   filter[phone_number], filter[phone_number][], filter[status][]
+          #   filter[phone_number], filter[phone_number][], filter[status][],
+          #   filter[customer_reference]
+          #
+          #   @param customer_reference [String] Returns jobs whose creation-time customer reference exactly matches the supplied
           #
           #   @param phone_number [String, Array<String>] Returns jobs that targeted any of the supplied account-owned phone numbers. Valu
           #

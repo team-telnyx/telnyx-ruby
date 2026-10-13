@@ -29,19 +29,11 @@ module Telnyx
         sig { params(page_size: Integer).void }
         attr_writer :page_size
 
-        # Filter by phone-number status.
-        sig { returns(T.nilable(Telnyx::Dir::DirPhoneNumberStatus::OrSymbol)) }
-        attr_reader :status
-
-        sig { params(status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol).void }
-        attr_writer :status
-
         sig do
           params(
             dir_id: String,
             page_number: Integer,
             page_size: Integer,
-            status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -51,8 +43,6 @@ module Telnyx
           page_number: nil,
           # Items per page. Maximum 250; values above are clamped to 250.
           page_size: nil,
-          # Filter by phone-number status.
-          status: nil,
           request_options: {}
         )
         end
@@ -63,7 +53,6 @@ module Telnyx
               dir_id: String,
               page_number: Integer,
               page_size: Integer,
-              status: Telnyx::Dir::DirPhoneNumberStatus::OrSymbol,
               request_options: Telnyx::RequestOptions
             }
           )

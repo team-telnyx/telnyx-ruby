@@ -800,6 +800,10 @@ module Telnyx
     sig { returns(Telnyx::Resources::LlmTokenGateway) }
     attr_reader :llm_token_gateway
 
+    # UAC connection operations
+    sig { returns(Telnyx::Resources::SipRegistrationStatus) }
+    attr_reader :sip_registration_status
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

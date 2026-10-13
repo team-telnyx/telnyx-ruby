@@ -383,7 +383,7 @@ module Telnyx
       #
       # Returns `400` from `submitted`/`in_review`/`permanently_rejected`. Returns `400`
       # if the DIR's business and financial references have not been submitted. Returns
-      # `409` if the DIR has an unresolved infringement claim.
+      # `400` if the DIR has an unresolved infringement claim.
       #
       # @overload submit(dir_id, request_options: {})
       #

@@ -27,6 +27,13 @@ module Telnyx
         #   @return [Array<Telnyx::Models::AI::AssistantA2AAgent>, nil]
         optional :a2a_agents, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent] }
 
+        # @!attribute avatar_settings
+        #   **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
+        #   catalog supports six avatars and office, studio, or reception backgrounds.
+        #
+        #   @return [Telnyx::Models::AI::AvatarSettingsRequest, nil]
+        optional :avatar_settings, -> { Telnyx::AI::AvatarSettingsRequest }, nil?: true
+
         # @!attribute conversation_flow
         #   Conversation flow as supplied by API clients (create / update).
         #
@@ -276,13 +283,15 @@ module Telnyx
         #   @return [Telnyx::Models::AI::WidgetSettings, nil]
         optional :widget_settings, -> { Telnyx::AI::WidgetSettings }
 
-        # @!method initialize(assistant_id:, a2a_agents: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil, request_options: {})
+        # @!method initialize(assistant_id:, a2a_agents: nil, avatar_settings: nil, conversation_flow: nil, delegation_settings: nil, description: nil, dynamic_variables: nil, dynamic_variables_webhook_timeout_ms: nil, dynamic_variables_webhook_url: nil, enabled_features: nil, external_llm: nil, fallback_config: nil, greeting: nil, insight_settings: nil, instructions: nil, integrations: nil, interruption_settings: nil, llm_api_key_ref: nil, mcp_servers: nil, messaging_settings: nil, model: nil, name: nil, observability_settings: nil, post_conversation_settings: nil, privacy_settings: nil, promote_to_main: nil, tags: nil, telephony_settings: nil, tool_ids: nil, tools: nil, transcription: nil, version_name: nil, voice_settings: nil, websocket_settings: nil, widget_settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::AssistantUpdateParams} for more details.
         #
         #   @param assistant_id [String]
         #
         #   @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
+        #
+        #   @param avatar_settings [Telnyx::Models::AI::AvatarSettingsRequest, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. The launch c
         #
         #   @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Conversation flow as supplied by API clients (create / update).
         #

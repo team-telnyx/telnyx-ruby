@@ -396,6 +396,8 @@ module Telnyx
 
     attr_reader llm_token_gateway: Telnyx::Resources::LlmTokenGateway
 
+    attr_reader sip_registration_status: Telnyx::Resources::SipRegistrationStatus
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

@@ -38,6 +38,19 @@ module Telnyx
         end
         attr_writer :a2a_agents
 
+        # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
+        # catalog supports six avatars and office, studio, or reception backgrounds.
+        sig { returns(T.nilable(Telnyx::AI::AvatarSettingsRequest)) }
+        attr_reader :avatar_settings
+
+        sig do
+          params(
+            avatar_settings:
+              T.nilable(Telnyx::AI::AvatarSettingsRequest::OrHash)
+          ).void
+        end
+        attr_writer :avatar_settings
+
         # Conversation flow as supplied by API clients (create / update).
         #
         # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
@@ -391,6 +404,8 @@ module Telnyx
             instructions: String,
             name: String,
             a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
+            avatar_settings:
+              T.nilable(Telnyx::AI::AvatarSettingsRequest::OrHash),
             conversation_flow: Telnyx::AI::ConversationFlowReq::OrHash,
             delegation_settings: Telnyx::AI::DelegationSettings::OrHash,
             description: String,
@@ -457,6 +472,9 @@ module Telnyx
           # fetches combined. An agent whose card cannot be fetched costs the assistant that
           # capability for the conversation; it does not fail the call.
           a2a_agents: nil,
+          # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
+          # catalog supports six avatars and office, studio, or reception backgrounds.
+          avatar_settings: nil,
           # Conversation flow as supplied by API clients (create / update).
           #
           # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
@@ -569,6 +587,7 @@ module Telnyx
               instructions: String,
               name: String,
               a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent],
+              avatar_settings: T.nilable(Telnyx::AI::AvatarSettingsRequest),
               conversation_flow: Telnyx::AI::ConversationFlowReq,
               delegation_settings: Telnyx::AI::DelegationSettings,
               description: String,

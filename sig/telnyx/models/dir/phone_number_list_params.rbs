@@ -2,12 +2,7 @@ module Telnyx
   module Models
     module Dir
       type phone_number_list_params =
-        {
-          dir_id: String,
-          page_number: Integer,
-          page_size: Integer,
-          status: Telnyx::Models::Dir::dir_phone_number_status
-        }
+        { dir_id: String, page_number: Integer, page_size: Integer }
         & Telnyx::Internal::Type::request_parameters
 
       class PhoneNumberListParams < Telnyx::Internal::Type::BaseModel
@@ -24,17 +19,10 @@ module Telnyx
 
         def page_size=: (Integer) -> Integer
 
-        attr_reader status: Telnyx::Models::Dir::dir_phone_number_status?
-
-        def status=: (
-          Telnyx::Models::Dir::dir_phone_number_status
-        ) -> Telnyx::Models::Dir::dir_phone_number_status
-
         def initialize: (
           dir_id: String,
           ?page_number: Integer,
           ?page_size: Integer,
-          ?status: Telnyx::Models::Dir::dir_phone_number_status,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -42,7 +30,6 @@ module Telnyx
           dir_id: String,
           page_number: Integer,
           page_size: Integer,
-          status: Telnyx::Models::Dir::dir_phone_number_status,
           request_options: Telnyx::RequestOptions
         }
       end

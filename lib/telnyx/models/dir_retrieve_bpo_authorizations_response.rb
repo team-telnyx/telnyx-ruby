@@ -45,10 +45,12 @@ module Telnyx
         required :loa_document_id, String
 
         # @!attribute status
-        #   Review state of this authorization. `pending` on create or when the Letter of
-        #   Authorization is re-uploaded; an admin moves it to `approved` or `rejected`.
-        #   Only an `approved` authorization adds the BPO to this DIR's authorized callers
-        #   in the branded calling registry.
+        #   Review state of this authorization. `pending` when the authorization is first
+        #   added, or when you send a different `loa_document_id` for this BPO in
+        #   `bpo_authorizations` (uploading a document alone changes nothing). Approving the
+        #   DIR approves its pending authorizations; an admin can also approve or reject one
+        #   on its own. Only an `approved` authorization adds the BPO to this DIR's
+        #   authorized callers in the branded calling registry.
         #
         #   @return [Symbol, Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::Status]
         required :status, enum: -> { Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::Status }
@@ -79,7 +81,7 @@ module Telnyx
         #
         #   @param record_type [Symbol, Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::RecordType] Always `bpo_authorization`.
         #
-        #   @param status [Symbol, Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::Status] Review state of this authorization. `pending` on create or when the Letter of Au
+        #   @param status [Symbol, Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::Status] Review state of this authorization. `pending` when the authorization is first ad
         #
         #   @param rejection_reason [String, nil] Why the authorization was rejected. `null` unless `status` is `rejected`.
 
@@ -95,10 +97,12 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # Review state of this authorization. `pending` on create or when the Letter of
-        # Authorization is re-uploaded; an admin moves it to `approved` or `rejected`.
-        # Only an `approved` authorization adds the BPO to this DIR's authorized callers
-        # in the branded calling registry.
+        # Review state of this authorization. `pending` when the authorization is first
+        # added, or when you send a different `loa_document_id` for this BPO in
+        # `bpo_authorizations` (uploading a document alone changes nothing). Approving the
+        # DIR approves its pending authorizations; an admin can also approve or reject one
+        # on its own. Only an `approved` authorization adds the BPO to this DIR's
+        # authorized callers in the branded calling registry.
         #
         # @see Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data#status
         module Status

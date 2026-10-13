@@ -16,7 +16,8 @@ module Telnyx
           end
 
         # Consolidated filter parameter (deepObject style). Originally: filter[type],
-        # filter[phone_number], filter[phone_number][], filter[status][]
+        # filter[phone_number], filter[phone_number][], filter[status][],
+        # filter[customer_reference]
         sig { returns(T.nilable(Telnyx::PhoneNumbers::JobListParams::Filter)) }
         attr_reader :filter
 
@@ -64,7 +65,8 @@ module Telnyx
         end
         def self.new(
           # Consolidated filter parameter (deepObject style). Originally: filter[type],
-          # filter[phone_number], filter[phone_number][], filter[status][]
+          # filter[phone_number], filter[phone_number][], filter[status][],
+          # filter[customer_reference]
           filter: nil,
           page_number: nil,
           page_size: nil,
@@ -97,6 +99,18 @@ module Telnyx
                 Telnyx::Internal::AnyHash
               )
             end
+
+          # Returns jobs whose creation-time customer reference exactly matches the supplied
+          # value, not the current reference on a phone number. Only jobs within the lookup
+          # window (90 days by default) are returned. Supply a single non-blank string of up
+          # to 250 characters, without null characters, using
+          # `filter[customer_reference]=yourcustomerrefhere`. An invalid filter value
+          # returns HTTP 422.
+          sig { returns(T.nilable(String)) }
+          attr_reader :customer_reference
+
+          sig { params(customer_reference: String).void }
+          attr_writer :customer_reference
 
           # Returns jobs that targeted any of the supplied account-owned phone numbers.
           # Values beginning with `+` must contain 1 to 20 digits after the plus sign. The
@@ -161,9 +175,11 @@ module Telnyx
           attr_writer :type
 
           # Consolidated filter parameter (deepObject style). Originally: filter[type],
-          # filter[phone_number], filter[phone_number][], filter[status][]
+          # filter[phone_number], filter[phone_number][], filter[status][],
+          # filter[customer_reference]
           sig do
             params(
+              customer_reference: String,
               phone_number:
                 Telnyx::PhoneNumbers::JobListParams::Filter::PhoneNumber::Variants,
               status:
@@ -174,6 +190,13 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
+            # Returns jobs whose creation-time customer reference exactly matches the supplied
+            # value, not the current reference on a phone number. Only jobs within the lookup
+            # window (90 days by default) are returned. Supply a single non-blank string of up
+            # to 250 characters, without null characters, using
+            # `filter[customer_reference]=yourcustomerrefhere`. An invalid filter value
+            # returns HTTP 422.
+            customer_reference: nil,
             # Returns jobs that targeted any of the supplied account-owned phone numbers.
             # Values beginning with `+` must contain 1 to 20 digits after the plus sign. The
             # 10-value limit is enforced before duplicate values are removed. Unmatched or
@@ -191,6 +214,7 @@ module Telnyx
           sig do
             override.returns(
               {
+                customer_reference: String,
                 phone_number:
                   Telnyx::PhoneNumbers::JobListParams::Filter::PhoneNumber::Variants,
                 status:

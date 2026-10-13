@@ -12,15 +12,13 @@ module Telnyx
         # List the phone numbers registered under a DIR. The enterprise is resolved
         # server-side from the DIR id.
         #
-        # @overload list(dir_id, page_number: nil, page_size: nil, status: nil, request_options: {})
+        # @overload list(dir_id, page_number: nil, page_size: nil, request_options: {})
         #
         # @param dir_id [String] The DIR id. Lowercase UUID.
         #
         # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
         # @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
-        #
-        # @param status [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus] Filter by phone-number status.
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

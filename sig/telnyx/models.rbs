@@ -1833,6 +1833,8 @@ module Telnyx
 
   class SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
 
+  class SipRegistrationStatusListParams = Telnyx::Models::SipRegistrationStatusListParams
+
   class SoundModifications = Telnyx::Models::SoundModifications
 
   class SpeechToTextListProvidersParams = Telnyx::Models::SpeechToTextListProvidersParams

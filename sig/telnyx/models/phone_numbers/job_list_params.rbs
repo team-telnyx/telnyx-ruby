@@ -52,12 +52,17 @@ module Telnyx
 
         type filter =
           {
+            customer_reference: String,
             phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number,
             status: ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status],
             type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
           }
 
         class Filter < Telnyx::Internal::Type::BaseModel
+          attr_reader customer_reference: String?
+
+          def customer_reference=: (String) -> String
+
           attr_reader phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number?
 
           def phone_number=: (
@@ -77,12 +82,14 @@ module Telnyx
           ) -> Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
 
           def initialize: (
+            ?customer_reference: String,
             ?phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number,
             ?status: ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status],
             ?type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
           ) -> void
 
           def to_hash: -> {
+            customer_reference: String,
             phone_number: Telnyx::Models::PhoneNumbers::JobListParams::Filter::phone_number,
             status: ::Array[Telnyx::Models::PhoneNumbers::JobListParams::Filter::status],
             type: Telnyx::Models::PhoneNumbers::JobListParams::Filter::type_
