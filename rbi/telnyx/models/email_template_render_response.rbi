@@ -12,8 +12,8 @@ module Telnyx
         end
 
       # Template object with `subject`, `html_body`, and `text_body` replaced by their
-      # Liquid-rendered values. All other template fields (id, name, variables, etc.)
-      # remain unchanged.
+      # Liquid-rendered values. Rendered content is not limited by the stored
+      # template-field lengths. All other template fields remain unchanged.
       sig { returns(Telnyx::Models::EmailTemplateRenderResponse::Data) }
       attr_reader :data
 
@@ -31,8 +31,8 @@ module Telnyx
       end
       def self.new(
         # Template object with `subject`, `html_body`, and `text_body` replaced by their
-        # Liquid-rendered values. All other template fields (id, name, variables, etc.)
-        # remain unchanged.
+        # Liquid-rendered values. Rendered content is not limited by the stored
+        # template-field lengths. All other template fields remain unchanged.
         data:
       )
       end
@@ -45,7 +45,7 @@ module Telnyx
       def to_hash
       end
 
-      class Data < Telnyx::Models::EmailTemplate
+      class Data < Telnyx::Models::EmailTemplateCommon
         OrHash =
           T.type_alias do
             T.any(
@@ -54,14 +54,17 @@ module Telnyx
             )
           end
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :subject
+
         # Template object with `subject`, `html_body`, and `text_body` replaced by their
-        # Liquid-rendered values. All other template fields (id, name, variables, etc.)
-        # remain unchanged.
-        sig { returns(T.attached_class) }
-        def self.new
+        # Liquid-rendered values. Rendered content is not limited by the stored
+        # template-field lengths. All other template fields remain unchanged.
+        sig { params(subject: T.nilable(String)).returns(T.attached_class) }
+        def self.new(subject:)
         end
 
-        sig { override.returns({}) }
+        sig { override.returns({ subject: T.nilable(String) }) }
         def to_hash
         end
       end

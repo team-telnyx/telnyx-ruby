@@ -4,7 +4,6 @@ module Telnyx
   module Resources
     class AI
       class Memory
-        # Whether a write has finished.
         # @return [Telnyx::Resources::AI::Memory::Namespaces]
         attr_reader :namespaces
 

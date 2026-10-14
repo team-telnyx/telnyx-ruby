@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module ReputationNumberSource = Reputation::ReputationNumberSource
+
+      module Reputation
+        type reputation_number_source = :telnyx | :external
+
+        module ReputationNumberSource
+          extend Telnyx::Internal::Type::Enum
+
+          TELNYX: :telnyx
+          EXTERNAL: :external
+
+          def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::reputation_number_source]
+        end
+      end
+    end
+  end
+end

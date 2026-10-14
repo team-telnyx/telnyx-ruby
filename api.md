@@ -171,7 +171,9 @@ Methods:
 - <code title="post /ai/assistants/{assistant_id}/clone">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">clone\_</a>(\*\*params)</code>
 - <code title="get /ai/assistants/{assistant_id}/texml">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">get_texml</a>(\*\*params)</code>
 - <code title="post /ai/assistants/import">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">imports</a>(\*\*params)</code>
+- <code title="post /ai/assistants/{assistant_id}/restore">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">restore</a>(\*\*params)</code>
 - <code title="post /ai/assistants/{assistant_id}/chat/sms">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">send_sms</a>(\*\*params)</code>
+- <code title="post /ai/assistants/{assistant_id}/chat/whatsapp">client.ai.assistants.<a href="./lib/telnyx/resources/ai/assistants.rb">whatsapp</a>(\*\*params)</code>
 
 ### Tests
 
@@ -253,6 +255,13 @@ Methods:
 Methods:
 
 - <code title="post /ai/assistants/{assistant_id}/instructions/enhance">client.ai.assistants.instructions.<a href="./lib/telnyx/resources/ai/assistants/instructions.rb">enhance</a>(\*\*params)</code>
+
+### Deleted
+
+Methods:
+
+- <code title="get /ai/assistants/deleted">client.ai.assistants.deleted.<a href="./lib/telnyx/resources/ai/assistants/deleted.rb">list</a>(\*\*params)</code>
+- <code title="get /ai/assistants/{assistant_id}/deleted">client.ai.assistants.deleted.<a href="./lib/telnyx/resources/ai/assistants/deleted.rb">get</a>(\*\*params)</code>
 
 ## Audio
 
@@ -544,7 +553,10 @@ Methods:
 
 Methods:
 
+- <code title="post /ai/memory/namespaces">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">create</a>(\*\*params)</code>
 - <code title="get /ai/memory/namespaces/{namespace}/operations/{operation_id}">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /ai/memory/namespaces">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">list</a>()</code>
+- <code title="delete /ai/memory/namespaces/{namespace}">client.ai.memory.namespaces.<a href="./lib/telnyx/resources/ai/memory/namespaces.rb">delete</a>(\*\*params)</code>
 
 #### Profiles
 
@@ -553,6 +565,7 @@ Methods:
 - <code title="get /ai/memory/namespaces/{namespace}/profiles">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">list</a>(\*\*params)</code>
 - <code title="delete /ai/memory/namespaces/{namespace}/profiles/{profile_id}">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">delete</a>(\*\*params)</code>
 - <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/ingest">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">ingest</a>(\*\*params)</code>
+- <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/summary/preview">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">preview</a>(\*\*params)</code>
 - <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/recall">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">recall</a>(\*\*params)</code>
 - <code title="post /ai/memory/namespaces/{namespace}/profiles/{profile_id}/remember">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">remember</a>(\*\*params)</code>
 - <code title="get /ai/memory/namespaces/{namespace}/profiles/{profile_id}/summary">client.ai.memory.namespaces.profiles.<a href="./lib/telnyx/resources/ai/memory/namespaces/profiles.rb">retrieve_summary</a>(\*\*params)</code>
@@ -2678,12 +2691,26 @@ Methods:
 - <code title="get /v2/whatsapp/phone_numbers/{phone_number}/conversational_components">client.whatsapp.phone_numbers.conversational_components.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/conversational_components.rb">list</a>(\*\*params)</code>
 - <code title="patch /v2/whatsapp/phone_numbers/{phone_number}/conversational_components">client.whatsapp.phone_numbers.conversational_components.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/conversational_components.rb">patch_all</a>(\*\*params)</code>
 
+### CallingRouting
+
+Methods:
+
+- <code title="get /whatsapp/phone_numbers/{id}/calling_routing">client.whatsapp.phone_numbers.calling_routing.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/calling_routing.rb">list</a>(\*\*params)</code>
+- <code title="patch /whatsapp/phone_numbers/{id}/calling_routing">client.whatsapp.phone_numbers.calling_routing.<a href="./lib/telnyx/resources/whatsapp/phone_numbers/calling_routing.rb">patch_all</a>(\*\*params)</code>
+
 ## UserData
 
 Methods:
 
 - <code title="get /v2/whatsapp/user_data">client.whatsapp.user_data.<a href="./lib/telnyx/resources/whatsapp/user_data.rb">retrieve</a>()</code>
 - <code title="patch /v2/whatsapp/user_data">client.whatsapp.user_data.<a href="./lib/telnyx/resources/whatsapp/user_data.rb">update</a>(\*\*params)</code>
+
+## Signup
+
+Methods:
+
+- <code title="get /whatsapp/signup">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">list</a>(\*\*params)</code>
+- <code title="get /whatsapp/signup/{id}/status">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">retrieve_status</a>(\*\*params)</code>
 
 # WhatsappMessageTemplates
 
@@ -2762,6 +2789,7 @@ Methods:
 - <code title="delete /enterprises/{enterprise_id}/reputation">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">disable</a>(\*\*params)</code>
 - <code title="post /enterprises/{enterprise_id}/reputation">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">enable</a>(\*\*params)</code>
 - <code title="patch /enterprises/{enterprise_id}/reputation/frequency">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">update_frequency</a>(\*\*params)</code>
+- <code title="patch /enterprises/{enterprise_id}/reputation/webhook">client.enterprises.reputation.<a href="./lib/telnyx/resources/enterprises/reputation.rb">update_webhook</a>(\*\*params)</code>
 
 ### Numbers
 
@@ -2771,7 +2799,9 @@ Methods:
 - <code title="get /enterprises/{enterprise_id}/reputation/numbers">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">list</a>(\*\*params)</code>
 - <code title="post /enterprises/{enterprise_id}/reputation/numbers">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">associate</a>(\*\*params)</code>
 - <code title="delete /enterprises/{enterprise_id}/reputation/numbers/{phone_number}">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">disassociate</a>(\*\*params)</code>
+- <code title="post /enterprises/{enterprise_id}/reputation/numbers/{phone_number}/ownership_confirm">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">ownership_confirm</a>(\*\*params)</code>
 - <code title="post /enterprises/{enterprise_id}/reputation/numbers/refresh">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">refresh</a>(\*\*params)</code>
+- <code title="get /enterprises/{enterprise_id}/reputation/numbers/{phone_number}/ownership">client.enterprises.reputation.numbers.<a href="./lib/telnyx/resources/enterprises/reputation/numbers.rb">retrieve_ownership</a>(\*\*params)</code>
 
 ### Loa
 
@@ -2788,12 +2818,26 @@ Methods:
 - <code title="get /enterprises/{enterprise_id}/reputation/remediation/{remediation_id}">client.enterprises.reputation.remediation.<a href="./lib/telnyx/resources/enterprises/reputation/remediation.rb">retrieve</a>(\*\*params)</code>
 - <code title="get /enterprises/{enterprise_id}/reputation/remediation">client.enterprises.reputation.remediation.<a href="./lib/telnyx/resources/enterprises/reputation/remediation.rb">list</a>(\*\*params)</code>
 
+### ExternalVerification
+
+Methods:
+
+- <code title="post /enterprises/{enterprise_id}/reputation/external_verification">client.enterprises.reputation.external_verification.<a href="./lib/telnyx/resources/enterprises/reputation/external_verification.rb">create</a>(\*\*params)</code>
+- <code title="get /enterprises/{enterprise_id}/reputation/external_verification">client.enterprises.reputation.external_verification.<a href="./lib/telnyx/resources/enterprises/reputation/external_verification.rb">list</a>(\*\*params)</code>
+
 ## Dir
 
 Methods:
 
 - <code title="post /enterprises/{enterprise_id}/dir">client.enterprises.dir.<a href="./lib/telnyx/resources/enterprises/dir.rb">create</a>(\*\*params)</code>
 - <code title="get /enterprises/{enterprise_id}/dir">client.enterprises.dir.<a href="./lib/telnyx/resources/enterprises/dir.rb">list</a>(\*\*params)</code>
+
+## VerifyEmail
+
+Methods:
+
+- <code title="post /enterprises/{enterprise_id}/verify_email">client.enterprises.verify_email.<a href="./lib/telnyx/resources/enterprises/verify_email.rb">create</a>(\*\*params)</code>
+- <code title="post /enterprises/{enterprise_id}/verify_email/confirm">client.enterprises.verify_email.<a href="./lib/telnyx/resources/enterprises/verify_email.rb">confirm</a>(\*\*params)</code>
 
 # Reputation
 
@@ -2879,9 +2923,11 @@ Methods:
 - <code title="patch /dir/{dir_id}">client.dir.<a href="./lib/telnyx/resources/dir.rb">update</a>(\*\*params)</code>
 - <code title="get /dir">client.dir.<a href="./lib/telnyx/resources/dir.rb">list</a>(\*\*params)</code>
 - <code title="delete /dir/{dir_id}">client.dir.<a href="./lib/telnyx/resources/dir.rb">delete</a>(\*\*params)</code>
+- <code title="post /dir/{dir_id}/bpo_loa">client.dir.<a href="./lib/telnyx/resources/dir.rb">bpo_loa</a>(\*\*params)</code>
 - <code title="get /dir/document_types">client.dir.<a href="./lib/telnyx/resources/dir.rb">list_document_types</a>()</code>
 - <code title="get /dir/{dir_id}/infringement_claims">client.dir.<a href="./lib/telnyx/resources/dir.rb">list_infringement_claims</a>(\*\*params)</code>
 - <code title="post /dir/{dir_id}/loa">client.dir.<a href="./lib/telnyx/resources/dir.rb">new_loa</a>(\*\*params)</code>
+- <code title="get /dir/{dir_id}/bpo_authorizations">client.dir.<a href="./lib/telnyx/resources/dir.rb">retrieve_bpo_authorizations</a>(\*\*params)</code>
 - <code title="post /dir/{dir_id}/submit">client.dir.<a href="./lib/telnyx/resources/dir.rb">submit</a>(\*\*params)</code>
 - <code title="put /dir/{dir_id}/infringement_update">client.dir.<a href="./lib/telnyx/resources/dir.rb">update_infringement</a>(\*\*params)</code>
 
@@ -3228,3 +3274,54 @@ Methods:
 Methods:
 
 - <code title="post /machine-payments/account-credit">client.machine_payments.<a href="./lib/telnyx/resources/machine_payments.rb">account_credit</a>(\*\*params)</code>
+
+# SpendLimits
+
+Methods:
+
+- <code title="post /spend_limits">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">create</a>(\*\*params)</code>
+- <code title="patch /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">update</a>(\*\*params)</code>
+- <code title="get /spend_limits">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">list</a>()</code>
+- <code title="delete /spend_limits/{product}">client.spend_limits.<a href="./lib/telnyx/resources/spend_limits.rb">delete</a>(\*\*params)</code>
+
+# LlmTokenGateway
+
+## Usage
+
+Methods:
+
+- <code title="get /llm_token_gateway/usage/export">client.llm_token_gateway.usage.<a href="./lib/telnyx/resources/llm_token_gateway/usage.rb">retrieve_export</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/usage/summary">client.llm_token_gateway.usage.<a href="./lib/telnyx/resources/llm_token_gateway/usage.rb">retrieve_summary</a>(\*\*params)</code>
+
+## Spend
+
+Methods:
+
+- <code title="get /llm_token_gateway/spend/events">client.llm_token_gateway.spend.<a href="./lib/telnyx/resources/llm_token_gateway/spend.rb">retrieve_events</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/spend/summary">client.llm_token_gateway.spend.<a href="./lib/telnyx/resources/llm_token_gateway/spend.rb">retrieve_summary</a>(\*\*params)</code>
+
+## TokenGroups
+
+Methods:
+
+- <code title="post /llm_token_gateway/token_groups">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">create</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_groups/{id}">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /llm_token_gateway/token_groups/{id}">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">update</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_groups">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">list</a>(\*\*params)</code>
+- <code title="delete /llm_token_gateway/token_groups/{id}">client.llm_token_gateway.token_groups.<a href="./lib/telnyx/resources/llm_token_gateway/token_groups.rb">delete</a>(\*\*params)</code>
+
+## TokenKeys
+
+Methods:
+
+- <code title="post /llm_token_gateway/token_keys">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">create</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">update</a>(\*\*params)</code>
+- <code title="get /llm_token_gateway/token_keys">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">list</a>(\*\*params)</code>
+- <code title="delete /llm_token_gateway/token_keys/{id}">client.llm_token_gateway.token_keys.<a href="./lib/telnyx/resources/llm_token_gateway/token_keys.rb">delete</a>(\*\*params)</code>
+
+# SipRegistrationStatus
+
+Methods:
+
+- <code title="get /sip_registration_status">client.sip_registration_status.<a href="./lib/telnyx/resources/sip_registration_status.rb">list</a>(\*\*params)</code>

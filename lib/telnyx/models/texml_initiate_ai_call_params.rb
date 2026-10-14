@@ -13,7 +13,9 @@ module Telnyx
       required :connection_id, String
 
       # @!attribute ai_assistant_id
-      #   The ID of the AI assistant to use for the call.
+      #   The ID of the AI assistant to use for the call. Telnyx attempts to warm up this
+      #   assistant before the call is placed and starts it automatically when the called
+      #   party answers.
       #
       #   @return [String]
       required :ai_assistant_id, String, api_name: :AIAssistantId
@@ -385,7 +387,7 @@ module Telnyx
       #
       #   @param connection_id [String]
       #
-      #   @param ai_assistant_id [String] The ID of the AI assistant to use for the call.
+      #   @param ai_assistant_id [String] The ID of the AI assistant to use for the call. Telnyx attempts to warm up this
       #
       #   @param from [String] The phone number of the party initiating the call. Phone numbers are formatted w
       #

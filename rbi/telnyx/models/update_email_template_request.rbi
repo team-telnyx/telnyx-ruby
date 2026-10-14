@@ -51,11 +51,32 @@ module Telnyx
       end
       attr_accessor :variable_schema
 
+      # Persisted variable names. In `automatic` mode a non-null array is rejected; in
+      # `explicit` mode this is the exact manual array and each item is limited to 255
+      # Unicode code points.
       sig { returns(T.nilable(T::Array[String])) }
-      attr_reader :variables
+      attr_accessor :variables
 
-      sig { params(variables: T::Array[String]).void }
-      attr_writer :variables
+      # Controls how `variables` is maintained. Setting `automatic` re-extracts
+      # immediately from the effective subject, HTML body, and text body and rejects a
+      # simultaneous non-null array. Setting `explicit` requires the exact non-null
+      # array, including valid `[]`. With the mode omitted, a non-null array selects
+      # explicit mode, null selects automatic mode, and omitting both fields preserves
+      # the current mode. Source-content changes re-extract only in automatic mode.
+      sig do
+        returns(
+          T.nilable(Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol)
+        )
+      end
+      attr_reader :variables_mode
+
+      sig do
+        params(
+          variables_mode:
+            Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol
+        ).void
+      end
+      attr_writer :variables_mode
 
       sig do
         params(
@@ -72,7 +93,9 @@ module Telnyx
                 Telnyx::UpdateEmailTemplateRequest::VariableSchema::OrHash
               ]
             ),
-          variables: T::Array[String]
+          variables: T.nilable(T::Array[String]),
+          variables_mode:
+            Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -90,7 +113,17 @@ module Telnyx
         # Structured variable requirements. Required variables cannot define defaults;
         # invalid combinations return 422. Set to `null` to clear the schema.
         variable_schema: nil,
-        variables: nil
+        # Persisted variable names. In `automatic` mode a non-null array is rejected; in
+        # `explicit` mode this is the exact manual array and each item is limited to 255
+        # Unicode code points.
+        variables: nil,
+        # Controls how `variables` is maintained. Setting `automatic` re-extracts
+        # immediately from the effective subject, HTML body, and text body and rejects a
+        # simultaneous non-null array. Setting `explicit` requires the exact non-null
+        # array, including valid `[]`. With the mode omitted, a non-null array selects
+        # explicit mode, null selects automatic mode, and omitting both fields preserves
+        # the current mode. Source-content changes re-extract only in automatic mode.
+        variables_mode: nil
       )
       end
 
@@ -110,7 +143,9 @@ module Telnyx
                   Telnyx::UpdateEmailTemplateRequest::VariableSchema
                 ]
               ),
-            variables: T::Array[String]
+            variables: T.nilable(T::Array[String]),
+            variables_mode:
+              Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol
           }
         )
       end
@@ -154,6 +189,43 @@ module Telnyx
 
         sig { override.returns({ required: T::Boolean, default: String }) }
         def to_hash
+        end
+      end
+
+      # Controls how `variables` is maintained. Setting `automatic` re-extracts
+      # immediately from the effective subject, HTML body, and text body and rejects a
+      # simultaneous non-null array. Setting `explicit` requires the exact non-null
+      # array, including valid `[]`. With the mode omitted, a non-null array selects
+      # explicit mode, null selects automatic mode, and omitting both fields preserves
+      # the current mode. Source-content changes re-extract only in automatic mode.
+      module VariablesMode
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::UpdateEmailTemplateRequest::VariablesMode)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        AUTOMATIC =
+          T.let(
+            :automatic,
+            Telnyx::UpdateEmailTemplateRequest::VariablesMode::TaggedSymbol
+          )
+        EXPLICIT =
+          T.let(
+            :explicit,
+            Telnyx::UpdateEmailTemplateRequest::VariablesMode::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::UpdateEmailTemplateRequest::VariablesMode::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
     end

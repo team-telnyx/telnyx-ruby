@@ -9,6 +9,18 @@ module Telnyx
             T.any(Telnyx::AI::TelephonySettings, Telnyx::Internal::AnyHash)
           end
 
+        # When enabled, the `messages` array of the `call.conversation.ended` webhook
+        # contains the full conversation history in order: user and assistant turns,
+        # assistant tool calls (`tool_calls`), tool results (`role: tool` with
+        # `tool_call_id`), and informational `system` and `developer` entries. The
+        # assistant's instructions are never included. When disabled, `messages` contains
+        # only user and assistant text turns.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :conversation_ended_full_history
+
+        sig { params(conversation_ended_full_history: T::Boolean).void }
+        attr_writer :conversation_ended_full_history
+
         # Default Texml App used for voice calls with your assistant. This will be created
         # automatically on assistant creation.
         sig { returns(T.nilable(String)) }
@@ -163,6 +175,7 @@ module Telnyx
 
         sig do
           params(
+            conversation_ended_full_history: T::Boolean,
             default_texml_app_id: String,
             disable_dtmf: T::Boolean,
             fallback_destination: String,
@@ -182,6 +195,13 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # When enabled, the `messages` array of the `call.conversation.ended` webhook
+          # contains the full conversation history in order: user and assistant turns,
+          # assistant tool calls (`tool_calls`), tool results (`role: tool` with
+          # `tool_call_id`), and informational `system` and `developer` entries. The
+          # assistant's instructions are never included. When disabled, `messages` contains
+          # only user and assistant text turns.
+          conversation_ended_full_history: nil,
           # Default Texml App used for voice calls with your assistant. This will be created
           # automatically on assistant creation.
           default_texml_app_id: nil,
@@ -248,6 +268,7 @@ module Telnyx
         sig do
           override.returns(
             {
+              conversation_ended_full_history: T::Boolean,
               default_texml_app_id: String,
               disable_dtmf: T::Boolean,
               fallback_destination: String,

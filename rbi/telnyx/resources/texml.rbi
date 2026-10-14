@@ -12,8 +12,10 @@ module Telnyx
       sig { returns(Telnyx::Resources::Texml::Accounts) }
       attr_reader :accounts
 
-      # Initiate an outbound AI call with warm-up support. Validates parameters, builds
-      # an internal TeXML with an AI Assistant configuration, encodes instructions into
+      # Initiate an outbound AI call with warm-up support: Telnyx attempts to warm up
+      # the assistant identified by `AIAssistantId` before placing the call and starts
+      # it automatically when the called party answers. Validates parameters, builds an
+      # internal TeXML with an AI Assistant configuration, encodes instructions into
       # client state, and calls the dial API. The Twiml, Texml, and Url parameters are
       # not allowed and will result in a 422 error.
       #
@@ -94,7 +96,9 @@ module Telnyx
       def initiate_ai_call(
         # The ID of the TeXML connection to use for the call.
         connection_id,
-        # The ID of the AI assistant to use for the call.
+        # The ID of the AI assistant to use for the call. Telnyx attempts to warm up this
+        # assistant before the call is placed and starts it automatically when the called
+        # party answers.
         ai_assistant_id:,
         # The phone number of the party initiating the call. Phone numbers are formatted
         # with a `+` and country code.

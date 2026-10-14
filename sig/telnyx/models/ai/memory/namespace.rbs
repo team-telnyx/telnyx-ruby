@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        type namespace = { id: String, name: String }
+
+        class Namespace < Telnyx::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor name: String
+
+          def initialize: (id: String, name: String) -> void
+
+          def to_hash: -> { id: String, name: String }
+        end
+      end
+    end
+  end
+end

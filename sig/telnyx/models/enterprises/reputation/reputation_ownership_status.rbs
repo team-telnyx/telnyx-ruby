@@ -1,0 +1,23 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module ReputationOwnershipStatus = Reputation::ReputationOwnershipStatus
+
+      module Reputation
+        type reputation_ownership_status =
+          :verified | :flagged | :pending_confirmation | :removed
+
+        module ReputationOwnershipStatus
+          extend Telnyx::Internal::Type::Enum
+
+          VERIFIED: :verified
+          FLAGGED: :flagged
+          PENDING_CONFIRMATION: :pending_confirmation
+          REMOVED: :removed
+
+          def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::reputation_ownership_status]
+        end
+      end
+    end
+  end
+end

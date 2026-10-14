@@ -5,7 +5,7 @@ module Telnyx
         dir_id: String,
         phone_numbers: ::Array[String],
         agent: Telnyx::Enterprises::Reputation::AgentInput,
-        signature: Telnyx::DirNewLoaParams::Signature
+        signature: Telnyx::SignaturePayload
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -23,17 +23,15 @@ module Telnyx
         Telnyx::Enterprises::Reputation::AgentInput
       ) -> Telnyx::Enterprises::Reputation::AgentInput
 
-      attr_reader signature: Telnyx::DirNewLoaParams::Signature?
+      attr_reader signature: Telnyx::SignaturePayload?
 
-      def signature=: (
-        Telnyx::DirNewLoaParams::Signature
-      ) -> Telnyx::DirNewLoaParams::Signature
+      def signature=: (Telnyx::SignaturePayload) -> Telnyx::SignaturePayload
 
       def initialize: (
         dir_id: String,
         phone_numbers: ::Array[String],
         ?agent: Telnyx::Enterprises::Reputation::AgentInput,
-        ?signature: Telnyx::DirNewLoaParams::Signature,
+        ?signature: Telnyx::SignaturePayload,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -41,21 +39,9 @@ module Telnyx
         dir_id: String,
         phone_numbers: ::Array[String],
         agent: Telnyx::Enterprises::Reputation::AgentInput,
-        signature: Telnyx::DirNewLoaParams::Signature,
+        signature: Telnyx::SignaturePayload,
         request_options: Telnyx::RequestOptions
       }
-
-      type signature = { :image_base64 => String, signer_name: String? }
-
-      class Signature < Telnyx::Internal::Type::BaseModel
-        attr_accessor image_base64: String
-
-        attr_accessor signer_name: String?
-
-        def initialize: (image_base64: String, ?signer_name: String?) -> void
-
-        def to_hash: -> { :image_base64 => String, signer_name: String? }
-      end
     end
   end
 end

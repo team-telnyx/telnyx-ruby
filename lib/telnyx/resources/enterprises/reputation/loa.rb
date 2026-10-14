@@ -50,7 +50,7 @@ module Telnyx
           #
           # @param enterprise_id [String] The enterprise id. Lowercase UUID.
           #
-          # @param agent [Telnyx::Models::Enterprises::Reputation::AgentInput] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
+          # @param agent [Telnyx::Models::Enterprises::Reputation::LoaRenderParams::Agent] Third-party reseller / partner managing the enterprise's phone numbers. Omit whe
           #
           # @param signature [Telnyx::Models::Enterprises::Reputation::LoaRenderParams::Signature] Optional signature embedded in the rendered PDF. When omitted the PDF is returne
           #

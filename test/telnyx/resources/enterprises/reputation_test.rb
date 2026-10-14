@@ -68,4 +68,24 @@ class Telnyx::Test::Resources::Enterprises::ReputationTest < Telnyx::Test::Resou
       }
     end
   end
+
+  def test_update_webhook_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.enterprises.reputation.update_webhook(
+        "4a6192a4-573d-446d-b3ce-aff9117272a6",
+        webhook_url: "https://example.com/webhooks/telnyx"
+      )
+
+    assert_pattern do
+      response => Telnyx::Enterprises::EnterpriseReputationPublicWrapped
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Enterprises::EnterpriseReputationPublic
+      }
+    end
+  end
 end

@@ -57,8 +57,9 @@ module Telnyx
           optional :contact_email, String, nil?: true
 
           # @!attribute results
-          #   Per-category buckets. Populated once results are available. Null while the
-          #   request is still pending.
+          #   Per-category buckets of phone numbers, populated once results are available.
+          #   Empty lists are kept (not omitted) so consumers can iterate without
+          #   null-checking each key.
           #
           #   @return [Telnyx::Models::Enterprises::Reputation::RemediationPerNumberResults, nil]
           optional :results, -> { Telnyx::Enterprises::Reputation::RemediationPerNumberResults }, nil?: true
@@ -102,7 +103,7 @@ module Telnyx
           #
           #   @param contact_email [String, nil]
           #
-          #   @param results [Telnyx::Models::Enterprises::Reputation::RemediationPerNumberResults, nil] Per-category buckets. Populated once results are available. Null while the reque
+          #   @param results [Telnyx::Models::Enterprises::Reputation::RemediationPerNumberResults, nil] Per-category buckets of phone numbers, populated once results are available. Emp
           #
           #   @param tier1_completed_at [Time, nil]
           #

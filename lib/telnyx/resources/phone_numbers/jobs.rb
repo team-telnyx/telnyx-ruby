@@ -30,9 +30,10 @@ module Telnyx
         # {Telnyx::Models::PhoneNumbers::JobListParams} for more details.
         #
         # Returns background jobs that operate on phone numbers. Filter by job type,
-        # target phone numbers, or job status, and sort by creation time. Multiple
-        # phone-number or status values use OR semantics within that filter; different
-        # filter categories use AND semantics. Results include pagination metadata.
+        # target phone numbers, job status, or creation-time customer reference, and sort
+        # by creation time. Multiple phone-number or status values use OR semantics within
+        # that filter; different filter categories use AND semantics. Results include
+        # pagination metadata.
         #
         # @overload list(filter: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
         #

@@ -141,6 +141,8 @@ module Telnyx
   BotSignupResendMagicLinkParams =
     Telnyx::Models::BotSignupResendMagicLinkParams
 
+  BpoAuthorizationInput = Telnyx::Models::BpoAuthorizationInput
+
   BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
 
   BulkMessagingSettingsUpdatePhoneNumbers =
@@ -206,6 +208,9 @@ module Telnyx
 
   CallControlRetrievalTool = Telnyx::Models::CallControlRetrievalTool
 
+  CallConversationCreatedWebhookEvent =
+    Telnyx::Models::CallConversationCreatedWebhookEvent
+
   CallConversationEnded = Telnyx::Models::CallConversationEnded
 
   CallConversationEndedWebhookEvent =
@@ -216,6 +221,9 @@ module Telnyx
 
   CallConversationInsightsGeneratedWebhookEvent =
     Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent
+
+  CallConversationStartFailedWebhookEvent =
+    Telnyx::Models::CallConversationStartFailedWebhookEvent
 
   CallCostWebhookEvent = Telnyx::Models::CallCostWebhookEvent
 
@@ -273,11 +281,17 @@ module Telnyx
   CallMachineGreetingEndedWebhookEvent =
     Telnyx::Models::CallMachineGreetingEndedWebhookEvent
 
+  CallMachinePremiumCallScreeningDetectedWebhookEvent =
+    Telnyx::Models::CallMachinePremiumCallScreeningDetectedWebhookEvent
+
   CallMachinePremiumDetectionEnded =
     Telnyx::Models::CallMachinePremiumDetectionEnded
 
   CallMachinePremiumDetectionEndedWebhookEvent =
     Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent
+
+  CallMachinePremiumDetectionStartedWebhookEvent =
+    Telnyx::Models::CallMachinePremiumDetectionStartedWebhookEvent
 
   CallMachinePremiumGreetingEnded =
     Telnyx::Models::CallMachinePremiumGreetingEnded
@@ -621,6 +635,8 @@ module Telnyx
 
   DirAPI = Telnyx::Models::DirAPI
 
+  DirBpoLoaParams = Telnyx::Models::DirBpoLoaParams
+
   DirDeleteParams = Telnyx::Models::DirDeleteParams
 
   DirList = Telnyx::Models::DirList
@@ -633,6 +649,9 @@ module Telnyx
   DirListParams = Telnyx::Models::DirListParams
 
   DirNewLoaParams = Telnyx::Models::DirNewLoaParams
+
+  DirRetrieveBpoAuthorizationsParams =
+    Telnyx::Models::DirRetrieveBpoAuthorizationsParams
 
   DirRetrieveParams = Telnyx::Models::DirRetrieveParams
 
@@ -811,6 +830,8 @@ module Telnyx
     Telnyx::Models::EmailMessageUpdateScheduleParams
 
   EmailTemplate = Telnyx::Models::EmailTemplate
+
+  EmailTemplateCommon = Telnyx::Models::EmailTemplateCommon
 
   EmailTemplateCreateParams = Telnyx::Models::EmailTemplateCreateParams
 
@@ -1131,6 +1152,8 @@ module Telnyx
   ListRetrieveAllParams = Telnyx::Models::ListRetrieveAllParams
 
   ListRetrieveByZoneParams = Telnyx::Models::ListRetrieveByZoneParams
+
+  LlmTokenGateway = Telnyx::Models::LlmTokenGateway
 
   MachinePaymentAccountCreditParams =
     Telnyx::Models::MachinePaymentAccountCreditParams
@@ -1512,6 +1535,15 @@ module Telnyx
   NumberOrderWithPhoneNumbers = Telnyx::Models::NumberOrderWithPhoneNumbers
 
   NumberPoolSettings = Telnyx::Models::NumberPoolSettings
+
+  NumberReputationExternalVerificationStatusChangedWebhookEvent =
+    Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent
+
+  NumberReputationNumberFlaggedWebhookEvent =
+    Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent
+
+  NumberReputationNumberRemovedWebhookEvent =
+    Telnyx::Models::NumberReputationNumberRemovedWebhookEvent
 
   NumberReputationPaginationMeta =
     Telnyx::Models::NumberReputationPaginationMeta
@@ -1968,6 +2000,8 @@ module Telnyx
 
   ShortCodeUpdateParams = Telnyx::Models::ShortCodeUpdateParams
 
+  SignaturePayload = Telnyx::Models::SignaturePayload
+
   SimCard = Telnyx::Models::SimCard
 
   SimCardActionsSummary = Telnyx::Models::SimCardActionsSummary
@@ -2050,6 +2084,9 @@ module Telnyx
 
   SiprecConnectorUpdateParams = Telnyx::Models::SiprecConnectorUpdateParams
 
+  SipRegistrationStatusListParams =
+    Telnyx::Models::SipRegistrationStatusListParams
+
   SoundModifications = Telnyx::Models::SoundModifications
 
   SpeechToTextListProvidersParams =
@@ -2057,6 +2094,20 @@ module Telnyx
 
   SpeechToTextRetrieveTranscriptionParams =
     Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
+
+  SpendLimit = Telnyx::Models::SpendLimit
+
+  SpendLimitCreateParams = Telnyx::Models::SpendLimitCreateParams
+
+  SpendLimitDeleteParams = Telnyx::Models::SpendLimitDeleteParams
+
+  SpendLimitListParams = Telnyx::Models::SpendLimitListParams
+
+  SpendLimitPeriod = Telnyx::Models::SpendLimitPeriod
+
+  SpendLimitResponse = Telnyx::Models::SpendLimitResponse
+
+  SpendLimitUpdateParams = Telnyx::Models::SpendLimitUpdateParams
 
   Storage = Telnyx::Models::Storage
 
@@ -2446,6 +2497,8 @@ module Telnyx
   WhatsappReaction = Telnyx::Models::WhatsappReaction
 
   WhatsappTemplateData = Telnyx::Models::WhatsappTemplateData
+
+  WhatsappWabaAddedWebhookEvent = Telnyx::Models::WhatsappWabaAddedWebhookEvent
 
   WireguardInterface = Telnyx::Models::WireguardInterface
 

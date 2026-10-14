@@ -14,9 +14,11 @@ module Telnyx
           language: String,
           max_attempts: Integer,
           metadata: ::Hash[Symbol, top],
+          min_postal_code_length: Integer,
           parameters: ::Hash[Symbol, top],
           payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method,
           payment_token: String,
+          postal_code: Telnyx::Models::Calls::ActionPayParams::postal_code,
           prompts: Telnyx::Calls::ActionPayParams::Prompts,
           service_level: String,
           timeout_millis: Integer,
@@ -74,6 +76,10 @@ module Telnyx
 
         def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
+        attr_reader min_postal_code_length: Integer?
+
+        def min_postal_code_length=: (Integer) -> Integer
+
         attr_reader parameters: ::Hash[Symbol, top]?
 
         def parameters=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -87,6 +93,12 @@ module Telnyx
         attr_reader payment_token: String?
 
         def payment_token=: (String) -> String
+
+        attr_reader postal_code: Telnyx::Models::Calls::ActionPayParams::postal_code?
+
+        def postal_code=: (
+          Telnyx::Models::Calls::ActionPayParams::postal_code
+        ) -> Telnyx::Models::Calls::ActionPayParams::postal_code
 
         attr_reader prompts: Telnyx::Calls::ActionPayParams::Prompts?
 
@@ -130,9 +142,11 @@ module Telnyx
           ?language: String,
           ?max_attempts: Integer,
           ?metadata: ::Hash[Symbol, top],
+          ?min_postal_code_length: Integer,
           ?parameters: ::Hash[Symbol, top],
           ?payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method,
           ?payment_token: String,
+          ?postal_code: Telnyx::Models::Calls::ActionPayParams::postal_code,
           ?prompts: Telnyx::Calls::ActionPayParams::Prompts,
           ?service_level: String,
           ?timeout_millis: Integer,
@@ -154,9 +168,11 @@ module Telnyx
           language: String,
           max_attempts: Integer,
           metadata: ::Hash[Symbol, top],
+          min_postal_code_length: Integer,
           parameters: ::Hash[Symbol, top],
           payment_method: Telnyx::Models::Calls::ActionPayParams::payment_method,
           payment_token: String,
+          postal_code: Telnyx::Models::Calls::ActionPayParams::postal_code,
           prompts: Telnyx::Calls::ActionPayParams::Prompts,
           service_level: String,
           timeout_millis: Integer,
@@ -186,6 +202,14 @@ module Telnyx
           ACH_DEBIT: :"ach-debit"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::ActionPayParams::payment_method]
+        end
+
+        type postal_code = String | bool
+
+        module PostalCode
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::Calls::ActionPayParams::postal_code]
         end
 
         type prompts =

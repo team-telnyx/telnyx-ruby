@@ -1,0 +1,139 @@
+module Telnyx
+  module Models
+    type spend_limit_create_params =
+      { body: Telnyx::Models::SpendLimitCreateParams::body }
+      & Telnyx::Internal::Type::request_parameters
+
+    class SpendLimitCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor body: Telnyx::Models::SpendLimitCreateParams::body
+
+      def initialize: (
+        body: Telnyx::Models::SpendLimitCreateParams::body,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        body: Telnyx::Models::SpendLimitCreateParams::body,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type body =
+        Telnyx::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount
+        | Telnyx::SpendLimitCreateParams::Body::CreateSpendLimitUnlimited
+
+      module Body
+        extend Telnyx::Internal::Type::Union
+
+        type create_spend_limit_with_amount =
+          {
+            amount: Float,
+            product: String,
+            period: Telnyx::Models::spend_limit_period,
+            reason: String,
+            unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited
+          }
+
+        class CreateSpendLimitWithAmount < Telnyx::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor product: String
+
+          attr_reader period: Telnyx::Models::spend_limit_period?
+
+          def period=: (
+            Telnyx::Models::spend_limit_period
+          ) -> Telnyx::Models::spend_limit_period
+
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          attr_reader unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited?
+
+          def unlimited=: (
+            Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited
+          ) -> Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited
+
+          def initialize: (
+            amount: Float,
+            product: String,
+            ?period: Telnyx::Models::spend_limit_period,
+            ?reason: String,
+            ?unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited
+          ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            product: String,
+            period: Telnyx::Models::spend_limit_period,
+            reason: String,
+            unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited
+          }
+
+          type unlimited = false
+
+          module Unlimited
+            extend Telnyx::Internal::Type::Enum
+
+            FALSE: false
+
+            def self?.values: -> ::Array[Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited]
+          end
+        end
+
+        type create_spend_limit_unlimited =
+          {
+            product: String,
+            unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitUnlimited::unlimited,
+            period: Telnyx::Models::spend_limit_period,
+            reason: String
+          }
+
+        class CreateSpendLimitUnlimited < Telnyx::Internal::Type::BaseModel
+          attr_accessor product: String
+
+          attr_accessor unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitUnlimited::unlimited
+
+          attr_reader period: Telnyx::Models::spend_limit_period?
+
+          def period=: (
+            Telnyx::Models::spend_limit_period
+          ) -> Telnyx::Models::spend_limit_period
+
+          attr_reader reason: String?
+
+          def reason=: (String) -> String
+
+          def initialize: (
+            product: String,
+            unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitUnlimited::unlimited,
+            ?period: Telnyx::Models::spend_limit_period,
+            ?reason: String
+          ) -> void
+
+          def to_hash: -> {
+            product: String,
+            unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitUnlimited::unlimited,
+            period: Telnyx::Models::spend_limit_period,
+            reason: String
+          }
+
+          type unlimited = true
+
+          module Unlimited
+            extend Telnyx::Internal::Type::Enum
+
+            TRUE: true
+
+            def self?.values: -> ::Array[Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitUnlimited::unlimited]
+          end
+        end
+
+        def self?.variants: -> ::Array[Telnyx::Models::SpendLimitCreateParams::body]
+      end
+    end
+  end
+end

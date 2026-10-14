@@ -229,6 +229,27 @@ module Telnyx
         sig { params(llm_model: String).void }
         attr_writer :llm_model
 
+        # The conversation transcript, in order. By default it contains only `user` and
+        # `assistant` text turns. When the assistant's
+        # `telephony_settings.conversation_ended_full_history` is `true`, it contains the
+        # full conversation history, including assistant tool calls, tool results, and
+        # `system` and `developer` entries. Redacted when data retention is disabled for
+        # the account.
+        sig do
+          returns(
+            T.nilable(T::Array[Telnyx::CallConversationEnded::Payload::Message])
+          )
+        end
+        attr_reader :messages
+
+        sig do
+          params(
+            messages:
+              T::Array[Telnyx::CallConversationEnded::Payload::Message::OrHash]
+          ).void
+        end
+        attr_writer :messages
+
         # Reason the conversation ended. For Conversation Relay, `customer_disconnect`
         # indicates that the customer WebSocket disconnected.
         sig { returns(T.nilable(String)) }
@@ -283,6 +304,8 @@ module Telnyx
             duration_sec: Integer,
             from: String,
             llm_model: String,
+            messages:
+              T::Array[Telnyx::CallConversationEnded::Payload::Message::OrHash],
             reason: T.nilable(String),
             stt_model: String,
             to: String,
@@ -314,6 +337,13 @@ module Telnyx
           from: nil,
           # The large language model used during the conversation.
           llm_model: nil,
+          # The conversation transcript, in order. By default it contains only `user` and
+          # `assistant` text turns. When the assistant's
+          # `telephony_settings.conversation_ended_full_history` is `true`, it contains the
+          # full conversation history, including assistant tool calls, tool results, and
+          # `system` and `developer` entries. Redacted when data retention is disabled for
+          # the account.
+          messages: nil,
           # Reason the conversation ended. For Conversation Relay, `customer_disconnect`
           # indicates that the customer WebSocket disconnected.
           reason: nil,
@@ -345,6 +375,8 @@ module Telnyx
               duration_sec: Integer,
               from: String,
               llm_model: String,
+              messages:
+                T::Array[Telnyx::CallConversationEnded::Payload::Message],
               reason: T.nilable(String),
               stt_model: String,
               to: String,
@@ -389,6 +421,347 @@ module Telnyx
             )
           end
           def self.values
+          end
+        end
+
+        class Message < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::CallConversationEnded::Payload::Message,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # The text of the message. For a tool result, the tool output. May be absent on an
+          # assistant message that only contains `tool_calls`.
+          sig { returns(T.nilable(String)) }
+          attr_reader :content
+
+          sig { params(content: String).void }
+          attr_writer :content
+
+          # The author of the message. `tool`, `system`, and `developer` only appear when
+          # `conversation_ended_full_history` is enabled. `system` and `developer` entries
+          # are informational (for example idle check-ins, voicemail prompts,
+          # participant-left notices, or messages added through the API); their wording is
+          # not a stable contract.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :role
+
+          sig do
+            params(
+              role:
+                Telnyx::CallConversationEnded::Payload::Message::Role::OrSymbol
+            ).void
+          end
+          attr_writer :role
+
+          # ISO 8601 datetime of when the message was added to the conversation.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :timestamp
+
+          sig { params(timestamp: Time).void }
+          attr_writer :timestamp
+
+          # The `id` of the tool call this message answers. Only present on `tool` messages
+          # when `conversation_ended_full_history` is enabled.
+          sig { returns(T.nilable(String)) }
+          attr_reader :tool_call_id
+
+          sig { params(tool_call_id: String).void }
+          attr_writer :tool_call_id
+
+          # Tools the assistant called in this turn. Only present on `assistant` messages
+          # when `conversation_ended_full_history` is enabled.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall
+                ]
+              )
+            )
+          end
+          attr_reader :tool_calls
+
+          sig do
+            params(
+              tool_calls:
+                T::Array[
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::OrHash
+                ]
+            ).void
+          end
+          attr_writer :tool_calls
+
+          sig do
+            params(
+              content: String,
+              role:
+                Telnyx::CallConversationEnded::Payload::Message::Role::OrSymbol,
+              timestamp: Time,
+              tool_call_id: String,
+              tool_calls:
+                T::Array[
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::OrHash
+                ]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The text of the message. For a tool result, the tool output. May be absent on an
+            # assistant message that only contains `tool_calls`.
+            content: nil,
+            # The author of the message. `tool`, `system`, and `developer` only appear when
+            # `conversation_ended_full_history` is enabled. `system` and `developer` entries
+            # are informational (for example idle check-ins, voicemail prompts,
+            # participant-left notices, or messages added through the API); their wording is
+            # not a stable contract.
+            role: nil,
+            # ISO 8601 datetime of when the message was added to the conversation.
+            timestamp: nil,
+            # The `id` of the tool call this message answers. Only present on `tool` messages
+            # when `conversation_ended_full_history` is enabled.
+            tool_call_id: nil,
+            # Tools the assistant called in this turn. Only present on `assistant` messages
+            # when `conversation_ended_full_history` is enabled.
+            tool_calls: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                content: String,
+                role:
+                  Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol,
+                timestamp: Time,
+                tool_call_id: String,
+                tool_calls:
+                  T::Array[
+                    Telnyx::CallConversationEnded::Payload::Message::ToolCall
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The author of the message. `tool`, `system`, and `developer` only appear when
+          # `conversation_ended_full_history` is enabled. `system` and `developer` entries
+          # are informational (for example idle check-ins, voicemail prompts,
+          # participant-left notices, or messages added through the API); their wording is
+          # not a stable contract.
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::CallConversationEnded::Payload::Message::Role
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            USER =
+              T.let(
+                :user,
+                Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol
+              )
+            ASSISTANT =
+              T.let(
+                :assistant,
+                Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol
+              )
+            TOOL =
+              T.let(
+                :tool,
+                Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol
+              )
+            SYSTEM =
+              T.let(
+                :system,
+                Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol
+              )
+            DEVELOPER =
+              T.let(
+                :developer,
+                Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::CallConversationEnded::Payload::Message::Role::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class ToolCall < Telnyx::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall,
+                  Telnyx::Internal::AnyHash
+                )
+              end
+
+            # Identifier of the tool call, referenced by the matching tool result's
+            # `tool_call_id`.
+            sig { returns(T.nilable(String)) }
+            attr_reader :id
+
+            sig { params(id: String).void }
+            attr_writer :id
+
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function
+                )
+              )
+            end
+            attr_reader :function
+
+            sig do
+              params(
+                function:
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function::OrHash
+              ).void
+            end
+            attr_writer :function
+
+            # The type of tool call.
+            sig do
+              returns(
+                T.nilable(
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::Type::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :type
+
+            sig do
+              params(
+                type:
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::Type::OrSymbol
+              ).void
+            end
+            attr_writer :type
+
+            sig do
+              params(
+                id: String,
+                function:
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function::OrHash,
+                type:
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::Type::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Identifier of the tool call, referenced by the matching tool result's
+              # `tool_call_id`.
+              id: nil,
+              function: nil,
+              # The type of tool call.
+              type: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  function:
+                    Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function,
+                  type:
+                    Telnyx::CallConversationEnded::Payload::Message::ToolCall::Type::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Function < Telnyx::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function,
+                    Telnyx::Internal::AnyHash
+                  )
+                end
+
+              # The arguments passed to the tool, as a JSON-encoded string.
+              sig { returns(T.nilable(String)) }
+              attr_reader :arguments
+
+              sig { params(arguments: String).void }
+              attr_writer :arguments
+
+              # The name of the tool that was called.
+              sig { returns(T.nilable(String)) }
+              attr_reader :name
+
+              sig { params(name: String).void }
+              attr_writer :name
+
+              sig do
+                params(arguments: String, name: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # The arguments passed to the tool, as a JSON-encoded string.
+                arguments: nil,
+                # The name of the tool that was called.
+                name: nil
+              )
+              end
+
+              sig { override.returns({ arguments: String, name: String }) }
+              def to_hash
+              end
+            end
+
+            # The type of tool call.
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Telnyx::CallConversationEnded::Payload::Message::ToolCall::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              FUNCTION =
+                T.let(
+                  :function,
+                  Telnyx::CallConversationEnded::Payload::Message::ToolCall::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Telnyx::CallConversationEnded::Payload::Message::ToolCall::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
         end
       end

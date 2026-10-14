@@ -84,19 +84,19 @@ module Telnyx
         #
         # @param ref_type [Symbol, Telnyx::Models::Dir::ReferenceUpdateParams::RefType] Path param: Reference type to address.
         #
-        # @param email [String] Body param: Reference contact email address.
+        # @param email [String] Body param: The reference's email address. We email them scheduling and dial-in
         #
-        # @param full_name [String] Body param: Full name of the reference contact.
+        # @param full_name [String] Body param: The full name of the person we should contact as your reference.
         #
-        # @param job_title [String, nil] Body param: Job title of the reference contact.
+        # @param job_title [String, nil] Body param: The reference contact's job title, for example CFO or Owner.
         #
-        # @param organization [String, nil] Body param: Organization the reference contact belongs to.
+        # @param organization [String, nil] Body param: The name of the organization the reference contact works for.
         #
-        # @param phone_e164 [String] Body param: Reference phone number in E.164 format.
+        # @param phone_e164 [String] Body param: The reference's phone number in E.164 format, for example +141555501
         #
         # @param relationship_to_registrant [String, nil] Body param: How the reference contact is related to the registering business.
         #
-        # @param timezone [String] Body param: IANA timezone id for the reference.
+        # @param timezone [String] Body param: The reference's IANA time zone, for example America/New_York. We onl
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

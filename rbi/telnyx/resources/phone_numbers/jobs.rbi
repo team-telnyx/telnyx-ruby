@@ -21,9 +21,10 @@ module Telnyx
         end
 
         # Returns background jobs that operate on phone numbers. Filter by job type,
-        # target phone numbers, or job status, and sort by creation time. Multiple
-        # phone-number or status values use OR semantics within that filter; different
-        # filter categories use AND semantics. Results include pagination metadata.
+        # target phone numbers, job status, or creation-time customer reference, and sort
+        # by creation time. Multiple phone-number or status values use OR semantics within
+        # that filter; different filter categories use AND semantics. Results include
+        # pagination metadata.
         sig do
           params(
             filter: Telnyx::PhoneNumbers::JobListParams::Filter::OrHash,
@@ -39,7 +40,8 @@ module Telnyx
         end
         def list(
           # Consolidated filter parameter (deepObject style). Originally: filter[type],
-          # filter[phone_number], filter[phone_number][], filter[status][]
+          # filter[phone_number], filter[phone_number][], filter[status][],
+          # filter[customer_reference]
           filter: nil,
           page_number: nil,
           page_size: nil,

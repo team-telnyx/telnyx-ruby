@@ -18,9 +18,7 @@ module Telnyx
         attr_accessor :model
 
         # Authentication method used when connecting to the external LLM endpoint.
-        sig do
-          returns(T.nilable(Telnyx::AI::AuthenticationMethod::TaggedSymbol))
-        end
+        sig { returns(T.nilable(Telnyx::AI::AuthenticationMethod::OrSymbol)) }
         attr_reader :authentication_method
 
         sig do
@@ -106,8 +104,7 @@ module Telnyx
             {
               base_url: String,
               model: String,
-              authentication_method:
-                Telnyx::AI::AuthenticationMethod::TaggedSymbol,
+              authentication_method: Telnyx::AI::AuthenticationMethod::OrSymbol,
               certificate_ref: String,
               forward_metadata: T::Boolean,
               llm_api_key_ref: String,

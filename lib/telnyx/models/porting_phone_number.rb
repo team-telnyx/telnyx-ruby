@@ -92,7 +92,9 @@ module Telnyx
         LANDLINE = :landline
         LOCAL = :local
         MOBILE = :mobile
+        MULTIPURPOSE = :multipurpose
         NATIONAL = :national
+        OTHER = :other
         SHARED_COST = :shared_cost
         TOLL_FREE = :toll_free
 

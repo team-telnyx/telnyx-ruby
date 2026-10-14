@@ -11,6 +11,7 @@ module Telnyx
       | :expired
       | :infringement_claimed
       | :permanently_rejected
+      | :delete_requested
 
     module DirStatus
       extend Telnyx::Internal::Type::Enum
@@ -25,6 +26,7 @@ module Telnyx
       EXPIRED: :expired
       INFRINGEMENT_CLAIMED: :infringement_claimed
       PERMANENTLY_REJECTED: :permanently_rejected
+      DELETE_REQUESTED: :delete_requested
 
       def self?.values: -> ::Array[Telnyx::Models::dir_status]
     end

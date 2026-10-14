@@ -61,6 +61,7 @@ class Telnyx::Test::Resources::DirTest < Telnyx::Test::ResourceTest
         certify_ip_ownership: Telnyx::Internal::Type::Boolean | nil,
         certify_no_shaft_content: Telnyx::Internal::Type::Boolean | nil,
         created_at: Time | nil,
+        delete_requested_at: Time | nil,
         display_name: String | nil,
         documents: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Document]) | nil,
         enterprise_id: String | nil,
@@ -72,7 +73,8 @@ class Telnyx::Test::Resources::DirTest < Telnyx::Test::ResourceTest
         status: Telnyx::DirStatus | nil,
         submitted_at: Time | nil,
         updated_at: Time | nil,
-        verified_at: Time | nil
+        verified_at: Time | nil,
+        webhook_url: String | nil
       }
     end
   end
@@ -83,7 +85,27 @@ class Telnyx::Test::Resources::DirTest < Telnyx::Test::ResourceTest
     response = @telnyx.dir.delete("16635d38-75a6-4481-82e8-69af60e05011")
 
     assert_pattern do
-      response => nil
+      response => Telnyx::Models::DirDeleteResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::DirDeleteResponse::Data
+      }
+    end
+  end
+
+  def test_bpo_loa_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.dir.bpo_loa(
+        "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        bpo_enterprise_id: "4a6192a4-573d-446d-b3ce-aff9117272a6"
+      )
+
+    assert_pattern do
+      response => StringIO
     end
   end
 
@@ -150,6 +172,23 @@ class Telnyx::Test::Resources::DirTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       response => StringIO
+    end
+  end
+
+  def test_retrieve_bpo_authorizations
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.dir.retrieve_bpo_authorizations("16635d38-75a6-4481-82e8-69af60e05011")
+
+    assert_pattern do
+      response => Telnyx::Models::DirRetrieveBpoAuthorizationsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data]),
+        meta: Telnyx::BrandedCallingPaginationMeta
+      }
     end
   end
 

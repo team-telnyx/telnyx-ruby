@@ -6,7 +6,7 @@ module Telnyx
       class ConversationFlowReq < Telnyx::Internal::Type::BaseModel
         # @!attribute nodes
         #   All nodes in the flow. Must contain `start_node_id`. Each node is a prompt node
-        #   (`type: prompt`) or a tool node (`type: tool`).
+        #   (`type: prompt`), a tool node (`type: tool`), or a speak node (`type: speak`).
         #
         #   @return [Array<Telnyx::Models::AI::FlowNodeReq, Telnyx::Models::AI::ToolNodeReq, Telnyx::Models::AI::SpeakNodeReq>]
         required :nodes, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::ConversationFlowReq::Node] }
@@ -59,7 +59,10 @@ module Telnyx
           # Unlike a prompt node, a tool node has no instructions or model — it
           # isn't an LLM turn. Reaching it deterministically runs one shared tool
           # (arguments filled from matching dynamic variables by name), then routes
-          # on the result via outgoing `tool_result` edges.
+          # via outgoing `llm` / `expression` edges, with exactly one `default`
+          # fallback edge required when the node has any outgoing edges (the
+          # tool's outcome is readable as `telnyx_last_tool_status_code` in
+          # `expression` conditions).
           variant :tool, -> { Telnyx::AI::ToolNodeReq }
 
           # A standalone scripted-message step in a flow, as supplied by clients.

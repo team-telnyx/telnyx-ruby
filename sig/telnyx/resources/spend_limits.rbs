@@ -1,0 +1,30 @@
+module Telnyx
+  module Resources
+    class SpendLimits
+      def create: (
+        body: Telnyx::Models::SpendLimitCreateParams::body,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::SpendLimitResponse
+
+      def update: (
+        String product,
+        body: Telnyx::Models::SpendLimitUpdateParams::body,
+        ?period: Telnyx::Models::spend_limit_period,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::SpendLimitResponse
+
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::SpendLimitListResponse
+
+      def delete: (
+        String product,
+        ?period: Telnyx::Models::spend_limit_period,
+        ?reason: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::SpendLimitResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

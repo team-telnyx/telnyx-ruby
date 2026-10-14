@@ -18,6 +18,23 @@ module Telnyx
       sig { params(filter_legal_name_contains: String).void }
       attr_writer :filter_legal_name_contains
 
+      # Only return enterprises of this type: `bpo` for call-center (BPO) enterprises,
+      # `enterprise` for normal enterprises. Omit to return both.
+      sig do
+        returns(
+          T.nilable(Telnyx::EnterpriseListParams::FilterRoleType::OrSymbol)
+        )
+      end
+      attr_reader :filter_role_type
+
+      sig do
+        params(
+          filter_role_type:
+            Telnyx::EnterpriseListParams::FilterRoleType::OrSymbol
+        ).void
+      end
+      attr_writer :filter_role_type
+
       # Filter by legal name (partial match).
       sig { returns(T.nilable(String)) }
       attr_reader :legal_name
@@ -42,6 +59,8 @@ module Telnyx
       sig do
         params(
           filter_legal_name_contains: String,
+          filter_role_type:
+            Telnyx::EnterpriseListParams::FilterRoleType::OrSymbol,
           legal_name: String,
           page_number: Integer,
           page_size: Integer,
@@ -51,6 +70,9 @@ module Telnyx
       def self.new(
         # Case-insensitive partial match on legal name.
         filter_legal_name_contains: nil,
+        # Only return enterprises of this type: `bpo` for call-center (BPO) enterprises,
+        # `enterprise` for normal enterprises. Omit to return both.
+        filter_role_type: nil,
         # Filter by legal name (partial match).
         legal_name: nil,
         # 1-based page number. Out-of-range values return an empty page with correct meta.
@@ -65,6 +87,8 @@ module Telnyx
         override.returns(
           {
             filter_legal_name_contains: String,
+            filter_role_type:
+              Telnyx::EnterpriseListParams::FilterRoleType::OrSymbol,
             legal_name: String,
             page_number: Integer,
             page_size: Integer,
@@ -73,6 +97,37 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Only return enterprises of this type: `bpo` for call-center (BPO) enterprises,
+      # `enterprise` for normal enterprises. Omit to return both.
+      module FilterRoleType
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::EnterpriseListParams::FilterRoleType)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ENTERPRISE =
+          T.let(
+            :enterprise,
+            Telnyx::EnterpriseListParams::FilterRoleType::TaggedSymbol
+          )
+        BPO =
+          T.let(
+            :bpo,
+            Telnyx::EnterpriseListParams::FilterRoleType::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::EnterpriseListParams::FilterRoleType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

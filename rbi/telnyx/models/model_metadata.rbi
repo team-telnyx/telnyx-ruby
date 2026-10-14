@@ -75,8 +75,14 @@ module Telnyx
       sig { params(is_vision_supported: T::Boolean).void }
       attr_writer :is_vision_supported
 
-      # Maximum number of completion (output) tokens the model will generate per
-      # request. `null` if unconstrained beyond `context_length`.
+      # Model-specific completion-token ceiling. For Chat Completions, this value clamps
+      # explicit output limits and the 8192 default when that default applies. Models
+      # excluded from the default leave an omitted or null output limit unset for the
+      # serving engine, even when this metadata declares a ceiling; see
+      # `ChatCompletionRequest.max_tokens` for the hosted default and exclusion lists.
+      # This field does not report the effective default. `null` means no separate
+      # completion ceiling is declared; input and output together must still fit
+      # `context_length`.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :max_completion_tokens
 
@@ -211,8 +217,14 @@ module Telnyx
         # Whether the model accepts image inputs in chat completions (multimodal vision
         # support).
         is_vision_supported: nil,
-        # Maximum number of completion (output) tokens the model will generate per
-        # request. `null` if unconstrained beyond `context_length`.
+        # Model-specific completion-token ceiling. For Chat Completions, this value clamps
+        # explicit output limits and the 8192 default when that default applies. Models
+        # excluded from the default leave an omitted or null output limit unset for the
+        # serving engine, even when this metadata declares a ceiling; see
+        # `ChatCompletionRequest.max_tokens` for the hosted default and exclusion lists.
+        # This field does not report the effective default. `null` means no separate
+        # completion ceiling is declared; input and output together must still fit
+        # `context_length`.
         max_completion_tokens: nil,
         # Object type. Always `model`.
         object: nil,

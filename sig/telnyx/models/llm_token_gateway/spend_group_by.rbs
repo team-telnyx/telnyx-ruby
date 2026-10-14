@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type spend_group_by =
+        :token_group | :token_user | :token_key | :end_user | String
+
+      module SpendGroupBy
+        extend Telnyx::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Telnyx::Models::LlmTokenGateway::spend_group_by]
+
+        TOKEN_GROUP: :token_group
+        TOKEN_USER: :token_user
+        TOKEN_KEY: :token_key
+        END_USER: :end_user
+      end
+    end
+  end
+end

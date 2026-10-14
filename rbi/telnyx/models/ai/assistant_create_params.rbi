@@ -38,6 +38,19 @@ module Telnyx
         end
         attr_writer :a2a_agents
 
+        # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
+        # catalog supports six avatars and office, studio, or reception backgrounds.
+        sig { returns(T.nilable(Telnyx::AI::AvatarSettingsRequest)) }
+        attr_reader :avatar_settings
+
+        sig do
+          params(
+            avatar_settings:
+              T.nilable(Telnyx::AI::AvatarSettingsRequest::OrHash)
+          ).void
+        end
+        attr_writer :avatar_settings
+
         # Conversation flow as supplied by API clients (create / update).
         #
         # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
@@ -52,6 +65,23 @@ module Telnyx
           ).void
         end
         attr_writer :conversation_flow
+
+        # Splits the conversation between a frontend model that talks to the caller and a
+        # backend model that does the work. On the GPT-Live route the frontend model
+        # cannot call tools at all — when it needs something done it raises a delegation
+        # and waits. On the chat completion route the frontend keeps a single `delegate`
+        # tool that returns immediately, so the conversation carries on while the backend
+        # works. Either way the backend's answer is spoken as commentary or kept as silent
+        # context, depending on `speak_results`. Beta feature.
+        sig { returns(T.nilable(Telnyx::AI::DelegationSettings)) }
+        attr_reader :delegation_settings
+
+        sig do
+          params(
+            delegation_settings: Telnyx::AI::DelegationSettings::OrHash
+          ).void
+        end
+        attr_writer :delegation_settings
 
         sig { returns(T.nilable(String)) }
         attr_reader :description
@@ -343,6 +373,19 @@ module Telnyx
         end
         attr_writer :voice_settings
 
+        # Streams conversation and telephony events to a WebSocket server you host, and
+        # accepts messages injected back into the conversation. Telnyx opens the
+        # connection as a client, once per conversation. Delivery is best effort
+        # throughout: while the connection is down events are dropped rather than queued,
+        # and no socket failure is ever allowed to affect the call. Beta feature.
+        sig { returns(T.nilable(Telnyx::AI::WebsocketSettings)) }
+        attr_reader :websocket_settings
+
+        sig do
+          params(websocket_settings: Telnyx::AI::WebsocketSettings::OrHash).void
+        end
+        attr_writer :websocket_settings
+
         # Configuration settings for the assistant's web widget.
         sig { returns(T.nilable(Telnyx::AI::WidgetSettings)) }
         attr_reader :widget_settings
@@ -361,7 +404,10 @@ module Telnyx
             instructions: String,
             name: String,
             a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent::OrHash],
+            avatar_settings:
+              T.nilable(Telnyx::AI::AvatarSettingsRequest::OrHash),
             conversation_flow: Telnyx::AI::ConversationFlowReq::OrHash,
+            delegation_settings: Telnyx::AI::DelegationSettings::OrHash,
             description: String,
             dynamic_variables: T::Hash[Symbol, T.anything],
             dynamic_variables_webhook_timeout_ms: Integer,
@@ -406,6 +452,7 @@ module Telnyx
               ],
             transcription: Telnyx::AI::TranscriptionSettings::OrHash,
             voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings::OrHash,
+            websocket_settings: Telnyx::AI::WebsocketSettings::OrHash,
             widget_settings: Telnyx::AI::WidgetSettings::OrHash,
             idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
@@ -425,12 +472,23 @@ module Telnyx
           # fetches combined. An agent whose card cannot be fetched costs the assistant that
           # capability for the conversation; it does not fail the call.
           a2a_agents: nil,
+          # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
+          # catalog supports six avatars and office, studio, or reception backgrounds.
+          avatar_settings: nil,
           # Conversation flow as supplied by API clients (create / update).
           #
           # A directed graph of `FlowNodeReq` connected by `FlowEdge`s. Validation enforces
           # unique node/edge IDs, that `start_node_id` references a real node, and that
           # every edge's endpoints reference real nodes.
           conversation_flow: nil,
+          # Splits the conversation between a frontend model that talks to the caller and a
+          # backend model that does the work. On the GPT-Live route the frontend model
+          # cannot call tools at all — when it needs something done it raises a delegation
+          # and waits. On the chat completion route the frontend keeps a single `delegate`
+          # tool that returns immediately, so the conversation carries on while the backend
+          # works. Either way the backend's answer is spoken as commentary or kept as silent
+          # context, depending on `speak_results`. Beta feature.
+          delegation_settings: nil,
           description: nil,
           # Map of dynamic variables and their default values
           dynamic_variables: nil,
@@ -510,6 +568,12 @@ module Telnyx
           tools: nil,
           transcription: nil,
           voice_settings: nil,
+          # Streams conversation and telephony events to a WebSocket server you host, and
+          # accepts messages injected back into the conversation. Telnyx opens the
+          # connection as a client, once per conversation. Delivery is best effort
+          # throughout: while the connection is down events are dropped rather than queued,
+          # and no socket failure is ever allowed to affect the call. Beta feature.
+          websocket_settings: nil,
           # Configuration settings for the assistant's web widget.
           widget_settings: nil,
           idempotency_key: nil,
@@ -523,7 +587,9 @@ module Telnyx
               instructions: String,
               name: String,
               a2a_agents: T::Array[Telnyx::AI::AssistantA2AAgent],
+              avatar_settings: T.nilable(Telnyx::AI::AvatarSettingsRequest),
               conversation_flow: Telnyx::AI::ConversationFlowReq,
+              delegation_settings: Telnyx::AI::DelegationSettings,
               description: String,
               dynamic_variables: T::Hash[Symbol, T.anything],
               dynamic_variables_webhook_timeout_ms: Integer,
@@ -568,6 +634,7 @@ module Telnyx
                 ],
               transcription: Telnyx::AI::TranscriptionSettings,
               voice_settings: Telnyx::AI::InferenceEmbeddingVoiceSettings,
+              websocket_settings: Telnyx::AI::WebsocketSettings,
               widget_settings: Telnyx::AI::WidgetSettings,
               idempotency_key: String,
               request_options: Telnyx::RequestOptions

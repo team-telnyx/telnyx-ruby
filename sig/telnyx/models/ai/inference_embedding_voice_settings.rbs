@@ -12,6 +12,7 @@ module Telnyx
           speed: Float,
           style: Float,
           temperature: Float,
+          tool_call_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::tool_call_audio?,
           use_speaker_boost: bool,
           voice_speed: Float
         }
@@ -51,6 +52,8 @@ module Telnyx
 
         def temperature=: (Float) -> Float
 
+        attr_accessor tool_call_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::tool_call_audio?
+
         attr_reader use_speaker_boost: bool?
 
         def use_speaker_boost=: (bool) -> bool
@@ -69,6 +72,7 @@ module Telnyx
           ?speed: Float,
           ?style: Float,
           ?temperature: Float,
+          ?tool_call_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::tool_call_audio?,
           ?use_speaker_boost: bool,
           ?voice_speed: Float
         ) -> void
@@ -83,6 +87,7 @@ module Telnyx
           speed: Float,
           style: Float,
           temperature: Float,
+          tool_call_audio: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::tool_call_audio?,
           use_speaker_boost: bool,
           voice_speed: Float
         }
@@ -301,6 +306,97 @@ module Telnyx
           AFRIKAANS: :Afrikaans
 
           def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::language_boost]
+        end
+
+        type tool_call_audio =
+          Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0
+          | Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1
+
+        module ToolCallAudio
+          extend Telnyx::Internal::Type::Union
+
+          type union_member0 =
+            {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::value,
+              volume: Float
+            }
+
+          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::type_
+
+            attr_accessor value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::value
+
+            attr_reader volume: Float?
+
+            def volume=: (Float) -> Float
+
+            def initialize: (
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::value,
+              ?volume: Float
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::type_,
+              value: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::value,
+              volume: Float
+            }
+
+            type type_ = :predefined_media
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              PREDEFINED_MEDIA: :predefined_media
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::type_]
+            end
+
+            type value = :typing
+
+            module Value
+              extend Telnyx::Internal::Type::Enum
+
+              TYPING: :typing
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::value]
+            end
+          end
+
+          type union_member1 =
+            {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::type_,
+              value: String
+            }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            attr_accessor type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::type_
+
+            attr_accessor value: String
+
+            def initialize: (
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::type_,
+              value: String
+            ) -> void
+
+            def to_hash: -> {
+              type: Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::type_,
+              value: String
+            }
+
+            type type_ = :media_url
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              MEDIA_URL: :media_url
+
+              def self?.values: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::type_]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::tool_call_audio]
         end
       end
     end

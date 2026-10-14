@@ -33,8 +33,12 @@ module Telnyx
         sig do
           params(
             filter_enterprise_id: String,
+            filter_ownership_status:
+              Telnyx::Enterprises::Reputation::ReputationOwnershipStatus::OrSymbol,
             filter_phone_number_contains: String,
             filter_phone_number_eq: String,
+            filter_source:
+              Telnyx::Enterprises::Reputation::ReputationNumberSource::OrSymbol,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions::OrHash
@@ -47,10 +51,16 @@ module Telnyx
         def list(
           # Filter by enterprise ID.
           filter_enterprise_id: nil,
+          # Only numbers with this ownership status. `removed` lists the numbers that were
+          # removed, each with its `removal_reason` and `removed_at`; removed numbers are
+          # not returned otherwise.
+          filter_ownership_status: nil,
           # Partial match on phone number. Must contain at least 5 digits.
           filter_phone_number_contains: nil,
           # Exact phone-number match (E.164).
           filter_phone_number_eq: nil,
+          # Only numbers with this source.
+          filter_source: nil,
           # 1-based page number. Out-of-range values return an empty page with correct meta.
           page_number: nil,
           # Items per page. Maximum 250; values above are clamped to 250.

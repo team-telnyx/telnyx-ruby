@@ -23,6 +23,12 @@ module Telnyx
         end
         attr_reader :conversational_components
 
+        # Manage Whatsapp phone numbers
+        sig do
+          returns(Telnyx::Resources::Whatsapp::PhoneNumbers::CallingRouting)
+        end
+        attr_reader :calling_routing
+
         # Returns WhatsApp phone numbers linked to the authenticated Telnyx account.
         sig do
           params(

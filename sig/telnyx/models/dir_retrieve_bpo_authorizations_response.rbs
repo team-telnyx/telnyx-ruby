@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    type dir_retrieve_bpo_authorizations_response =
+      {
+        data: ::Array[Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      }
+
+    class DirRetrieveBpoAuthorizationsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data]
+
+      attr_accessor meta: Telnyx::BrandedCallingPaginationMeta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data],
+        meta: Telnyx::BrandedCallingPaginationMeta
+      }
+
+      type data =
+        {
+          bpo_enterprise_id: String,
+          loa_document_id: String,
+          record_type: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::record_type,
+          status: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::status,
+          rejection_reason: String?
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor bpo_enterprise_id: String
+
+        attr_accessor loa_document_id: String
+
+        attr_accessor status: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::status
+
+        attr_accessor rejection_reason: String?
+
+        attr_accessor record_type: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::record_type
+
+        def initialize: (
+          bpo_enterprise_id: String,
+          loa_document_id: String,
+          record_type: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::record_type,
+          status: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::status,
+          ?rejection_reason: String?
+        ) -> void
+
+        def to_hash: -> {
+          bpo_enterprise_id: String,
+          loa_document_id: String,
+          record_type: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::record_type,
+          status: Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::status,
+          rejection_reason: String?
+        }
+
+        type record_type = :bpo_authorization
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          BPO_AUTHORIZATION: :bpo_authorization
+
+          def self?.values: -> ::Array[Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::record_type]
+        end
+
+        type status = :pending | :approved | :rejected
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          APPROVED: :approved
+          REJECTED: :rejected
+
+          def self?.values: -> ::Array[Telnyx::Models::DirRetrieveBpoAuthorizationsResponse::Data::status]
+        end
+      end
+    end
+  end
+end

@@ -1,99 +1,15 @@
 module Telnyx
   module Models
-    type email_template =
-      {
-        id: String,
-        autoescape: bool,
-        created_at: Time,
-        html_body: String?,
-        name: String,
-        record_type: Telnyx::Models::EmailTemplate::record_type,
-        strict_variables: bool,
-        subject: String?,
-        text_body: String?,
-        updated_at: Time,
-        variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?,
-        variables: ::Array[String]
-      }
+    type email_template = { subject: String? }
 
-    class EmailTemplate < Telnyx::Internal::Type::BaseModel
-      attr_accessor id: String
+    class EmailTemplate < Telnyx::Models::EmailTemplateCommon
+      def subject: -> String?
 
-      attr_accessor autoescape: bool
+      def subject=: (String? _) -> String?
 
-      attr_accessor created_at: Time
+      def initialize: (subject: String?) -> void
 
-      attr_accessor html_body: String?
-
-      attr_accessor name: String
-
-      attr_accessor record_type: Telnyx::Models::EmailTemplate::record_type
-
-      attr_accessor strict_variables: bool
-
-      attr_accessor subject: String?
-
-      attr_accessor text_body: String?
-
-      attr_accessor updated_at: Time
-
-      attr_accessor variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?
-
-      attr_accessor variables: ::Array[String]
-
-      def initialize: (
-        id: String,
-        autoescape: bool,
-        created_at: Time,
-        html_body: String?,
-        name: String,
-        record_type: Telnyx::Models::EmailTemplate::record_type,
-        strict_variables: bool,
-        subject: String?,
-        text_body: String?,
-        updated_at: Time,
-        variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?,
-        variables: ::Array[String]
-      ) -> void
-
-      def to_hash: -> {
-        id: String,
-        autoescape: bool,
-        created_at: Time,
-        html_body: String?,
-        name: String,
-        record_type: Telnyx::Models::EmailTemplate::record_type,
-        strict_variables: bool,
-        subject: String?,
-        text_body: String?,
-        updated_at: Time,
-        variable_schema: ::Hash[Symbol, Telnyx::EmailTemplate::VariableSchema]?,
-        variables: ::Array[String]
-      }
-
-      type record_type = :email_template
-
-      module RecordType
-        extend Telnyx::Internal::Type::Enum
-
-        EMAIL_TEMPLATE: :email_template
-
-        def self?.values: -> ::Array[Telnyx::Models::EmailTemplate::record_type]
-      end
-
-      type variable_schema = { required: bool, default: String }
-
-      class VariableSchema < Telnyx::Internal::Type::BaseModel
-        attr_accessor required: bool
-
-        attr_reader default: String?
-
-        def default=: (String) -> String
-
-        def initialize: (required: bool, ?default: String) -> void
-
-        def to_hash: -> { required: bool, default: String }
-      end
+      def to_hash: -> { subject: String? }
     end
   end
 end

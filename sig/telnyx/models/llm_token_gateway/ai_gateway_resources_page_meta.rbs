@@ -1,0 +1,37 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type ai_gateway_resources_page_meta =
+        {
+          has_more: bool,
+          page_number: Integer,
+          page_size: Integer,
+          snapshot: String
+        }
+
+      class AIGatewayResourcesPageMeta < Telnyx::Internal::Type::BaseModel
+        attr_accessor has_more: bool
+
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor snapshot: String
+
+        def initialize: (
+          has_more: bool,
+          page_number: Integer,
+          page_size: Integer,
+          snapshot: String
+        ) -> void
+
+        def to_hash: -> {
+          has_more: bool,
+          page_number: Integer,
+          page_size: Integer,
+          snapshot: String
+        }
+      end
+    end
+  end
+end

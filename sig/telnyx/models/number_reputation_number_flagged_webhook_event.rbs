@@ -1,0 +1,172 @@
+module Telnyx
+  module Models
+    type number_reputation_number_flagged_webhook_event =
+      {
+        data: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Meta
+      }
+
+    class NumberReputationNumberFlaggedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data
+
+      attr_accessor meta: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Meta
+
+      def initialize: (
+        data: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::event_type
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data::Payload
+
+        attr_accessor record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::record_type
+
+        def initialize: (
+          id: String,
+          event_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationNumberFlaggedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"number_reputation.number.flagged"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          NUMBER_REPUTATION_NUMBER_FLAGGED: :"number_reputation.number.flagged"
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            confirm_by: Time,
+            enterprise_id: String,
+            flag_reason: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::flag_reason,
+            ownership_status: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::ownership_status,
+            phone_number: String,
+            record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::record_type,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor confirm_by: Time
+
+          attr_accessor enterprise_id: String
+
+          attr_accessor flag_reason: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::flag_reason
+
+          attr_accessor ownership_status: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::ownership_status
+
+          attr_accessor phone_number: String
+
+          attr_accessor record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::record_type
+
+          attr_accessor source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+
+          def initialize: (
+            confirm_by: Time,
+            enterprise_id: String,
+            flag_reason: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::flag_reason,
+            ownership_status: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::ownership_status,
+            phone_number: String,
+            record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::record_type,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          ) -> void
+
+          def to_hash: -> {
+            confirm_by: Time,
+            enterprise_id: String,
+            flag_reason: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::flag_reason,
+            ownership_status: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::ownership_status,
+            phone_number: String,
+            record_type: Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::record_type,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          }
+
+          type flag_reason = :carrier_changed | :reverification_due
+
+          module FlagReason
+            extend Telnyx::Internal::Type::Enum
+
+            CARRIER_CHANGED: :carrier_changed
+            REVERIFICATION_DUE: :reverification_due
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::flag_reason]
+          end
+
+          type ownership_status = :pending_confirmation
+
+          module OwnershipStatus
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING_CONFIRMATION: :pending_confirmation
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::ownership_status]
+          end
+
+          type record_type = :reputation_phone_number
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            REPUTATION_PHONE_NUMBER: :reputation_phone_number
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::Payload::record_type]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent::Data::record_type]
+        end
+      end
+
+      type meta = { attempt: Integer, delivered_to: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor attempt: Integer
+
+        attr_accessor delivered_to: String
+
+        def initialize: (attempt: Integer, delivered_to: String) -> void
+
+        def to_hash: -> { attempt: Integer, delivered_to: String }
+      end
+    end
+  end
+end

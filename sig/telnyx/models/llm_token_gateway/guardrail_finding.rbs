@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type guardrail_finding =
+        {
+          action: Telnyx::Models::LlmTokenGateway::GuardrailFinding::action,
+          code: String,
+          count: Integer,
+          detector: Telnyx::Models::LlmTokenGateway::GuardrailFinding::detector
+        }
+
+      class GuardrailFinding < Telnyx::Internal::Type::BaseModel
+        attr_accessor action: Telnyx::Models::LlmTokenGateway::GuardrailFinding::action
+
+        attr_accessor code: String
+
+        attr_accessor count: Integer
+
+        attr_accessor detector: Telnyx::Models::LlmTokenGateway::GuardrailFinding::detector
+
+        def initialize: (
+          action: Telnyx::Models::LlmTokenGateway::GuardrailFinding::action,
+          code: String,
+          count: Integer,
+          detector: Telnyx::Models::LlmTokenGateway::GuardrailFinding::detector
+        ) -> void
+
+        def to_hash: -> {
+          action: Telnyx::Models::LlmTokenGateway::GuardrailFinding::action,
+          code: String,
+          count: Integer,
+          detector: Telnyx::Models::LlmTokenGateway::GuardrailFinding::detector
+        }
+
+        type action = :flag | :block
+
+        module Action
+          extend Telnyx::Internal::Type::Enum
+
+          FLAG: :flag
+          BLOCK: :block
+
+          def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::GuardrailFinding::action]
+        end
+
+        type detector = :secrets | :dlp | :safety
+
+        module Detector
+          extend Telnyx::Internal::Type::Enum
+
+          SECRETS: :secrets
+          DLP: :dlp
+          SAFETY: :safety
+
+          def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::GuardrailFinding::detector]
+        end
+      end
+    end
+  end
+end

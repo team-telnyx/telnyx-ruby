@@ -8,6 +8,8 @@ module Telnyx
 
         attr_reader conversational_components: Telnyx::Resources::Whatsapp::PhoneNumbers::ConversationalComponents
 
+        attr_reader calling_routing: Telnyx::Resources::Whatsapp::PhoneNumbers::CallingRouting
+
         def list: (
           ?page_number: Integer,
           ?page_size: Integer,

@@ -26,6 +26,17 @@ module Telnyx
       #   @return [String, nil]
       optional :authorizer_name, String
 
+      # @!attribute bpo_authorizations
+      #   Optional. Replace this DIR's authorized BPO (Business Process Outsourcer)
+      #   accounts with these, each with its signed Letter of Authorization. The supplied
+      #   list replaces the current one: a BPO left out has its authorization removed, and
+      #   a new BPO (or a changed Letter of Authorization) is created `pending` admin
+      #   review. Send an empty list to clear all authorizations; omit the field to leave
+      #   them unchanged. Editing this list does not re-vet the DIR. Maximum 10.
+      #
+      #   @return [Array<Telnyx::Models::BpoAuthorizationInput>, nil]
+      optional :bpo_authorizations, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::BpoAuthorizationInput] }
+
       # @!attribute call_reasons
       #   1–10 reasons your business calls customers. Validate phrasing against
       #   `POST /call_reasons/validate`.
@@ -82,7 +93,15 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :reselling, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(dir_id:, authorizer_email: nil, authorizer_name: nil, call_reasons: nil, certify_brand_is_accurate: nil, certify_ip_ownership: nil, certify_no_shaft_content: nil, display_name: nil, documents: nil, logo_url: nil, reselling: nil, request_options: {})
+      # @!attribute webhook_url
+      #   Optional `https://` URL that receives webhook notifications when this DIR's
+      #   compliance review completes. Send `null` to clear. Changing only this field on a
+      #   `verified` DIR does not re-vet it. Maximum 2048 characters.
+      #
+      #   @return [String, nil]
+      optional :webhook_url, String, nil?: true
+
+      # @!method initialize(dir_id:, authorizer_email: nil, authorizer_name: nil, bpo_authorizations: nil, call_reasons: nil, certify_brand_is_accurate: nil, certify_ip_ownership: nil, certify_no_shaft_content: nil, display_name: nil, documents: nil, logo_url: nil, reselling: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::DirUpdateParams} for more details.
       #
@@ -91,6 +110,8 @@ module Telnyx
       #   @param authorizer_email [String] Contact email of the authorizer. Telnyx may send verification or infringement no
       #
       #   @param authorizer_name [String] Name of the person at your enterprise authorizing this DIR. Must be a real indiv
+      #
+      #   @param bpo_authorizations [Array<Telnyx::Models::BpoAuthorizationInput>] Optional. Replace this DIR's authorized BPO (Business Process Outsourcer) accoun
       #
       #   @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
       #
@@ -107,6 +128,8 @@ module Telnyx
       #   @param logo_url [String] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
       #
       #   @param reselling [Boolean] Set to true if your organization places calls on behalf of other enterprises (BP
+      #
+      #   @param webhook_url [String, nil] Optional `https://` URL that receives webhook notifications when this DIR's comp
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

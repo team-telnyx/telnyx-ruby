@@ -10,7 +10,7 @@ module Telnyx
           end
 
         # All nodes in the flow. Must contain `start_node_id`. Each node is a prompt node
-        # (`type: prompt`) or a tool node (`type: tool`).
+        # (`type: prompt`), a tool node (`type: tool`), or a speak node (`type: speak`).
         sig do
           returns(
             T::Array[
@@ -56,7 +56,7 @@ module Telnyx
         end
         def self.new(
           # All nodes in the flow. Must contain `start_node_id`. Each node is a prompt node
-          # (`type: prompt`) or a tool node (`type: tool`).
+          # (`type: prompt`), a tool node (`type: tool`), or a speak node (`type: speak`).
           nodes:,
           # ID of the node where the conversation begins.
           start_node_id:,

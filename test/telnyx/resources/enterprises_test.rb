@@ -111,6 +111,8 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
         id: String | nil,
         billing_address: Telnyx::PhysicalAddress | nil,
         billing_contact: Telnyx::BillingContact | nil,
+        bpo_verification_rejection_reason: String | nil,
+        bpo_verification_status: Telnyx::EnterprisePublic::BpoVerificationStatus | nil,
         branded_calling_enabled: Telnyx::Internal::Type::Boolean | nil,
         corporate_registration_number: String | nil,
         country_code: String | nil,
@@ -130,7 +132,7 @@ class Telnyx::Test::Resources::EnterprisesTest < Telnyx::Test::ResourceTest
         organization_type: String | nil,
         primary_business_domain_sic_code: String | nil,
         professional_license_number: String | nil,
-        role_type: String | nil,
+        role_type: Telnyx::EnterprisePublic::RoleType | nil,
         updated_at: Time | nil,
         website: String | nil
       }

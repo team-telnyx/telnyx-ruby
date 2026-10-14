@@ -38,10 +38,16 @@ class Telnyx::Test::Resources::Reputation::NumbersTest < Telnyx::Test::ResourceT
     assert_pattern do
       row => {
         id: String | nil,
+        confirm_by: Time | nil,
         created_at: Time | nil,
         enterprise_id: String | nil,
+        flag_reason: String | nil,
+        ownership_status: Telnyx::Enterprises::Reputation::ReputationOwnershipStatus | nil,
         phone_number: String | nil,
+        removal_reason: Telnyx::Enterprises::Reputation::ReputationPhoneNumber::RemovalReason | nil,
+        removed_at: Time | nil,
         reputation_data: Telnyx::ReputationData | nil,
+        source: Telnyx::Enterprises::Reputation::ReputationNumberSource | nil,
         updated_at: Time | nil
       }
     end

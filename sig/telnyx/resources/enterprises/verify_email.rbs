@@ -1,0 +1,20 @@
+module Telnyx
+  module Resources
+    class Enterprises
+      class VerifyEmail
+        def create: (
+          String enterprise_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped
+
+        def confirm: (
+          String enterprise_id,
+          code: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

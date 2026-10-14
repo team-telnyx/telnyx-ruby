@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        module Namespaces
+          type profile_preview_response =
+            {
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse::Data
+            }
+
+          class ProfilePreviewResponse < Telnyx::Internal::Type::BaseModel
+            attr_accessor data: Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse::Data
+
+            def initialize: (
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse::Data
+            ) -> void
+
+            def to_hash: -> {
+              data: Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse::Data
+            }
+
+            type data = { profile_id: String, text: String? }
+
+            class Data < Telnyx::Internal::Type::BaseModel
+              attr_accessor profile_id: String
+
+              attr_accessor text: String?
+
+              def initialize: (profile_id: String, text: String?) -> void
+
+              def to_hash: -> { profile_id: String, text: String? }
+            end
+          end
+        end
+      end
+    end
+  end
+end

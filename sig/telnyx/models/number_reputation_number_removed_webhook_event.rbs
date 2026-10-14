@@ -1,0 +1,178 @@
+module Telnyx
+  module Models
+    type number_reputation_number_removed_webhook_event =
+      {
+        data: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationNumberRemovedWebhookEvent::Meta
+      }
+
+    class NumberReputationNumberRemovedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data
+
+      attr_accessor meta: Telnyx::NumberReputationNumberRemovedWebhookEvent::Meta
+
+      def initialize: (
+        data: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationNumberRemovedWebhookEvent::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data,
+        meta: Telnyx::NumberReputationNumberRemovedWebhookEvent::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::event_type
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data::Payload
+
+        attr_accessor record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::record_type
+
+        def initialize: (
+          id: String,
+          event_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::NumberReputationNumberRemovedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"number_reputation.number.removed"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          NUMBER_REPUTATION_NUMBER_REMOVED: :"number_reputation.number.removed"
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            enterprise_id: String,
+            ownership_status: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::ownership_status,
+            phone_number: String,
+            record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::record_type,
+            removal_reason: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::removal_reason,
+            removed_at: Time,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor enterprise_id: String
+
+          attr_accessor ownership_status: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::ownership_status
+
+          attr_accessor phone_number: String
+
+          attr_accessor record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::record_type
+
+          attr_accessor removal_reason: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::removal_reason
+
+          attr_accessor removed_at: Time
+
+          attr_accessor source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+
+          def initialize: (
+            enterprise_id: String,
+            ownership_status: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::ownership_status,
+            phone_number: String,
+            record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::record_type,
+            removal_reason: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::removal_reason,
+            removed_at: Time,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          ) -> void
+
+          def to_hash: -> {
+            enterprise_id: String,
+            ownership_status: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::ownership_status,
+            phone_number: String,
+            record_type: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::record_type,
+            removal_reason: Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::removal_reason,
+            removed_at: Time,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          }
+
+          type ownership_status = :removed
+
+          module OwnershipStatus
+            extend Telnyx::Internal::Type::Enum
+
+            REMOVED: :removed
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::ownership_status]
+          end
+
+          type record_type = :reputation_phone_number
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            REPUTATION_PHONE_NUMBER: :reputation_phone_number
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::record_type]
+          end
+
+          type removal_reason =
+            :ported_away
+            | :unconfirmed_ownership
+            | :reassigned
+            | :customer_reported
+
+          module RemovalReason
+            extend Telnyx::Internal::Type::Enum
+
+            PORTED_AWAY: :ported_away
+            UNCONFIRMED_OWNERSHIP: :unconfirmed_ownership
+            REASSIGNED: :reassigned
+            CUSTOMER_REPORTED: :customer_reported
+
+            def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::Payload::removal_reason]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::NumberReputationNumberRemovedWebhookEvent::Data::record_type]
+        end
+      end
+
+      type meta = { attempt: Integer, delivered_to: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor attempt: Integer
+
+        attr_accessor delivered_to: String
+
+        def initialize: (attempt: Integer, delivered_to: String) -> void
+
+        def to_hash: -> { attempt: Integer, delivered_to: String }
+      end
+    end
+  end
+end

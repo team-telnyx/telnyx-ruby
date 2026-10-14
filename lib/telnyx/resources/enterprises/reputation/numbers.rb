@@ -50,13 +50,17 @@ module Telnyx
           # enterprise. The response includes the latest reputation snapshot per number
           # where one has been collected.
           #
-          # @overload list(enterprise_id, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, request_options: {})
+          # @overload list(enterprise_id, filter_ownership_status: nil, filter_phone_number_contains: nil, filter_phone_number_eq: nil, filter_source: nil, page_number: nil, page_size: nil, request_options: {})
           #
           # @param enterprise_id [String] The enterprise id. Lowercase UUID.
+          #
+          # @param filter_ownership_status [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationOwnershipStatus] Only numbers with this ownership status. `removed` lists the numbers that were r
           #
           # @param filter_phone_number_contains [String] Partial match on phone number. Must contain at least 5 digits.
           #
           # @param filter_phone_number_eq [String] Exact phone-number match (E.164).
+          #
+          # @param filter_source [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationNumberSource] Only numbers with this source.
           #
           # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
           #
@@ -74,8 +78,10 @@ module Telnyx
               method: :get,
               path: ["enterprises/%1$s/reputation/numbers", enterprise_id],
               query: query.transform_keys(
+                filter_ownership_status: "filter[ownership_status]",
                 filter_phone_number_contains: "filter[phone_number][contains]",
                 filter_phone_number_eq: "filter[phone_number][eq]",
+                filter_source: "filter[source]",
                 page_number: "page[number]",
                 page_size: "page[size]"
               ),
@@ -86,14 +92,23 @@ module Telnyx
           end
 
           # Add up to 100 phone numbers to reputation monitoring on this enterprise. Each
-          # must be in E.164 format (`+1NPANXXXXXX` for US/CA) and belong to your Telnyx
-          # phone-number inventory.
+          # must be in E.164 format (`+1NPANXXXXXX` for US/CA). A number in your Telnyx
+          # phone-number inventory is accepted as `source: telnyx`; a number that is not is
+          # treated as hosted with another provider and must meet the requirements below.
           #
           # **Prerequisite**: reputation must already be enabled on this enterprise (see
           # `POST .../reputation`).
           #
           # **Pricing:** This is a billable action. See https://telnyx.com/pricing/numbers
           # for current pricing.
+          #
+          # A phone number that is not in your Telnyx inventory is treated as a number
+          # hosted with another provider (`source: external`). It must be a US local number,
+          # and the enterprise's ownership proof must be approved first
+          # (`POST /enterprises/{enterprise_id}/reputation/external_verification`);
+          # otherwise the request fails with a 400 whose `detail` contains
+          # `external_verification_required`. Ownership of such numbers is checked every
+          # day.
           #
           # @overload associate(enterprise_id, phone_numbers:, request_options: {})
           #
@@ -150,6 +165,55 @@ module Telnyx
           end
 
           # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Enterprises::Reputation::NumberOwnershipConfirmParams} for more
+          # details.
+          #
+          # Answer an ownership question about a phone number hosted with another provider.
+          #
+          # Send `still_own: true` to confirm you still own a number whose
+          # `ownership_status` is `pending_confirmation` or `flagged`; its status returns to
+          # `verified` and, after a carrier change, the new carrier becomes the one on
+          # record.
+          #
+          # Send `still_own: false` to report that you no longer own the number. It is
+          # removed from Number Reputation immediately, whatever its current status, and the
+          # response shows it with `ownership_status: removed`.
+          #
+          # @overload ownership_confirm(phone_number, enterprise_id:, still_own:, evidence_document_id: nil, request_options: {})
+          #
+          # @param phone_number [String] Path param: Phone number in E.164 format (`+1NPANXXXXXX` for US/CA). The leading
+          #
+          # @param enterprise_id [String] Path param: The enterprise id. Lowercase UUID.
+          #
+          # @param still_own [Boolean] Body param: `true` confirms you still own the number. `false` reports that you n
+          #
+          # @param evidence_document_id [String] Body param: Optional id of an uploaded document supporting the confirmation.
+          #
+          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumberWithReputation]
+          #
+          # @see Telnyx::Models::Enterprises::Reputation::NumberOwnershipConfirmParams
+          def ownership_confirm(phone_number, params)
+            parsed, options = Telnyx::Enterprises::Reputation::NumberOwnershipConfirmParams.dump_request(params)
+            enterprise_id =
+              parsed.delete(:enterprise_id) do
+                raise ArgumentError.new("missing required path argument #{_1}")
+              end
+            @client.request(
+              method: :post,
+              path: [
+                "enterprises/%1$s/reputation/numbers/%2$s/ownership_confirm",
+                enterprise_id,
+                phone_number
+              ],
+              body: parsed,
+              model: Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation,
+              options: options
+            )
+          end
+
+          # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Enterprises::Reputation::NumberRefreshParams} for more details.
           #
           # Immediately refresh the stored reputation data for the listed numbers. This is
@@ -178,6 +242,38 @@ module Telnyx
               path: ["enterprises/%1$s/reputation/numbers/refresh", enterprise_id],
               body: parsed,
               model: Telnyx::Models::Enterprises::Reputation::NumberRefreshResponse,
+              options: options
+            )
+          end
+
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipParams} for
+          # more details.
+          #
+          # Get the ownership status of a phone number, when it was last checked, the
+          # carrier recorded as its baseline, and the history of ownership events.
+          #
+          # @overload retrieve_ownership(phone_number, enterprise_id:, request_options: {})
+          #
+          # @param phone_number [String] Phone number in E.164 format (`+1NPANXXXXXX` for US/CA). The leading `+` MUST be
+          #
+          # @param enterprise_id [String] The enterprise id. Lowercase UUID.
+          #
+          # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+          #
+          # @return [Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse]
+          #
+          # @see Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipParams
+          def retrieve_ownership(phone_number, params)
+            parsed, options = Telnyx::Enterprises::Reputation::NumberRetrieveOwnershipParams.dump_request(params)
+            enterprise_id =
+              parsed.delete(:enterprise_id) do
+                raise ArgumentError.new("missing required path argument #{_1}")
+              end
+            @client.request(
+              method: :get,
+              path: ["enterprises/%1$s/reputation/numbers/%2$s/ownership", enterprise_id, phone_number],
+              model: Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse,
               options: options
             )
           end

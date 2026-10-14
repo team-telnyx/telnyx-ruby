@@ -3,6 +3,7 @@ module Telnyx
     module AI
       type telephony_settings =
         {
+          conversation_ended_full_history: bool,
           default_texml_app_id: String,
           disable_dtmf: bool,
           fallback_destination: String,
@@ -18,6 +19,10 @@ module Telnyx
         }
 
       class TelephonySettings < Telnyx::Internal::Type::BaseModel
+        attr_reader conversation_ended_full_history: bool?
+
+        def conversation_ended_full_history=: (bool) -> bool
+
         attr_reader default_texml_app_id: String?
 
         def default_texml_app_id=: (String) -> String
@@ -75,6 +80,7 @@ module Telnyx
         ) -> Telnyx::AI::TelephonySettings::VoicemailDetection
 
         def initialize: (
+          ?conversation_ended_full_history: bool,
           ?default_texml_app_id: String,
           ?disable_dtmf: bool,
           ?fallback_destination: String,
@@ -90,6 +96,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
+          conversation_ended_full_history: bool,
           default_texml_app_id: String,
           disable_dtmf: bool,
           fallback_destination: String,

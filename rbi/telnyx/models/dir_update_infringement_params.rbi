@@ -30,7 +30,8 @@ module Telnyx
       end
       attr_accessor :certify_ip_ownership
 
-      # Must be `true`.
+      # Check to certify that the brand no longer infringes anyone else's trademark or
+      # intellectual property.
       sig do
         returns(
           Telnyx::DirUpdateInfringementParams::CertifyNoInfringement::OrBoolean
@@ -53,6 +54,8 @@ module Telnyx
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :call_reasons
 
+      # The business name shown to call recipients, 1 to 35 characters, no emoji, not
+      # blank.
       sig { returns(T.nilable(String)) }
       attr_accessor :display_name
 
@@ -90,13 +93,16 @@ module Telnyx
         certify_brand_is_accurate:,
         # Must be `true`.
         certify_ip_ownership:,
-        # Must be `true`.
+        # Check to certify that the brand no longer infringes anyone else's trademark or
+        # intellectual property.
         certify_no_infringement:,
         # Must be `true`.
         certify_no_shaft_content:,
         # Explanation of how the infringement concern was addressed.
         infringement_resolution_notes:,
         call_reasons: nil,
+        # The business name shown to call recipients, 1 to 35 characters, no emoji, not
+        # blank.
         display_name: nil,
         # Append-only supporting documents to attach while resolving the claim (e.g.
         # authorization or licensing proof).
@@ -191,7 +197,8 @@ module Telnyx
         end
       end
 
-      # Must be `true`.
+      # Check to certify that the brand no longer infringes anyone else's trademark or
+      # intellectual property.
       module CertifyNoInfringement
         extend Telnyx::Internal::Type::Enum
 

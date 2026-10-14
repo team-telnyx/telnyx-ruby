@@ -1,0 +1,29 @@
+module Telnyx
+  module Models
+    module AI
+      class DeletedAssistant = Assistants::DeletedAssistant
+
+      module Assistants
+        type deleted_assistant =
+          { deleted_at: Time, permanently_deleted_at: Time }
+
+        class DeletedAssistant < Telnyx::Models::AI::InferenceEmbedding
+          def deleted_at: -> Time
+
+          def deleted_at=: (Time _) -> Time
+
+          def permanently_deleted_at: -> Time
+
+          def permanently_deleted_at=: (Time _) -> Time
+
+          def initialize: (
+            deleted_at: Time,
+            permanently_deleted_at: Time
+          ) -> void
+
+          def to_hash: -> { deleted_at: Time, permanently_deleted_at: Time }
+        end
+      end
+    end
+  end
+end

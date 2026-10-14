@@ -17,6 +17,7 @@ module Telnyx
       sig { returns(Telnyx::Document::DocumentType::OrSymbol) }
       attr_accessor :document_type
 
+      # An optional note describing this document, for example what it proves.
       sig { returns(T.nilable(String)) }
       attr_reader :description
 
@@ -38,6 +39,7 @@ module Telnyx
         # contains; `other` triggers manual vetting and may slow approval. The matching
         # short_name reference list is at `GET /v2/dir/document_types`.
         document_type:,
+        # An optional note describing this document, for example what it proves.
         description: nil
       )
       end

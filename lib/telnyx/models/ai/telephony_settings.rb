@@ -4,6 +4,17 @@ module Telnyx
   module Models
     module AI
       class TelephonySettings < Telnyx::Internal::Type::BaseModel
+        # @!attribute conversation_ended_full_history
+        #   When enabled, the `messages` array of the `call.conversation.ended` webhook
+        #   contains the full conversation history in order: user and assistant turns,
+        #   assistant tool calls (`tool_calls`), tool results (`role: tool` with
+        #   `tool_call_id`), and informational `system` and `developer` entries. The
+        #   assistant's instructions are never included. When disabled, `messages` contains
+        #   only user and assistant text turns.
+        #
+        #   @return [Boolean, nil]
+        optional :conversation_ended_full_history, Telnyx::Internal::Type::Boolean
+
         # @!attribute default_texml_app_id
         #   Default Texml App used for voice calls with your assistant. This will be created
         #   automatically on assistant creation.
@@ -112,9 +123,11 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
 
-        # @!method initialize(default_texml_app_id: nil, disable_dtmf: nil, fallback_destination: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, send_message_history_updates: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
+        # @!method initialize(conversation_ended_full_history: nil, default_texml_app_id: nil, disable_dtmf: nil, fallback_destination: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, send_message_history_updates: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelephonySettings} for more details.
+        #
+        #   @param conversation_ended_full_history [Boolean] When enabled, the `messages` array of the `call.conversation.ended` webhook cont
         #
         #   @param default_texml_app_id [String] Default Texml App used for voice calls with your assistant. This will be created
         #

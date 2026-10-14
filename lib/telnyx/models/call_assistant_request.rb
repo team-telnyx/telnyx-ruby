@@ -104,18 +104,32 @@ module Telnyx
       #   @return [Array<Telnyx::Models::BookAppointmentTool, Telnyx::Models::CheckAvailabilityTool, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::CallControlRetrievalTool>, nil]
       optional :tools, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::CallAssistantRequest::Tool] }
 
+      # @!attribute transcription
+      #   Per-call speech-to-text configuration for the assistant. If omitted, the stored
+      #   assistant transcription configuration is used. If supplied, this object replaces
+      #   the stored transcription settings. This is separate from the top-level
+      #   `transcription` boolean on answer and dial commands.
+      #
+      #   @return [Telnyx::Models::Calls::TranscriptionConfig, nil]
+      optional :transcription, -> { Telnyx::Calls::TranscriptionConfig }
+
       # @!attribute voice_settings
+      #   Per-call voice configuration. Set the voice identifier in
+      #   `voice_settings.voice`, not in `assistant.voice`. If supplied, this object
+      #   replaces the stored voice settings.
       #
       #   @return [Telnyx::Models::AI::VoiceSettings, nil]
       optional :voice_settings, -> { Telnyx::AI::VoiceSettings }
 
-      # @!method initialize(id:, dynamic_variables: nil, external_llm: nil, fallback_config: nil, greeting: nil, instructions: nil, llm_api_key_ref: nil, mcp_servers: nil, model: nil, name: nil, observability_settings: nil, openai_api_key_ref: nil, tools: nil, voice_settings: nil)
+      # @!method initialize(id:, dynamic_variables: nil, external_llm: nil, fallback_config: nil, greeting: nil, instructions: nil, llm_api_key_ref: nil, mcp_servers: nil, model: nil, name: nil, observability_settings: nil, openai_api_key_ref: nil, tools: nil, transcription: nil, voice_settings: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::CallAssistantRequest} for more details.
       #
-      #   AI Assistant configuration. All fields except `id` are optional — the
-      #   assistant's stored configuration will be used as fallback for any omitted
-      #   fields.
+      #   AI Assistant configuration and per-call overrides. All fields except `id` are
+      #   optional. Omitted assistant fields use the stored configuration. Supplied
+      #   `voice_settings` and `transcription` objects replace their stored objects rather
+      #   than merging individual settings; include every setting you want to retain.
+      #   `dynamic_variables` are merged, with request values taking precedence.
       #
       #   @param id [String] The identifier of the AI assistant to use.
       #
@@ -143,7 +157,9 @@ module Telnyx
       #
       #   @param tools [Array<Telnyx::Models::BookAppointmentTool, Telnyx::Models::CheckAvailabilityTool, Telnyx::Models::AI::WebhookTool, Telnyx::Models::AI::HangupTool, Telnyx::Models::AI::TransferTool, Telnyx::Models::CallControlRetrievalTool>] Inline tool definitions available to the assistant (webhook, retrieval, transfer
       #
-      #   @param voice_settings [Telnyx::Models::AI::VoiceSettings]
+      #   @param transcription [Telnyx::Models::Calls::TranscriptionConfig] Per-call speech-to-text configuration for the assistant. If omitted, the stored
+      #
+      #   @param voice_settings [Telnyx::Models::AI::VoiceSettings] Per-call voice configuration. Set the voice identifier in `voice_settings.voice`
 
       module DynamicVariable
         extend Telnyx::Internal::Type::Union

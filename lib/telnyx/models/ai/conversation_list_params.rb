@@ -38,6 +38,16 @@ module Telnyx
         #   @return [String, nil]
         optional :metadata_assistant_id, String
 
+        # @!attribute metadata_assistant_version_id
+        #   Filter by assistant version ID (e.g.,
+        #   `metadata->assistant_version_id=eq.20250812T114318034399`). The version that
+        #   handled the conversation is stored in metadata when the conversation starts;
+        #   conversations created before this field was tracked, or that never resolved a
+        #   version, have no `assistant_version_id` and do not match this filter.
+        #
+        #   @return [String, nil]
+        optional :metadata_assistant_version_id, String
+
         # @!attribute metadata_call_control_id
         #   Filter by call control ID (e.g., `metadata->call_control_id=eq.v3:123`)
         #
@@ -85,7 +95,7 @@ module Telnyx
         #   @return [String, nil]
         optional :order, String
 
-        # @!method initialize(id: nil, created_at: nil, last_message_at: nil, limit: nil, metadata_assistant_id: nil, metadata_call_control_id: nil, metadata_telnyx_agent_target: nil, metadata_telnyx_conversation_channel: nil, metadata_telnyx_end_user_target: nil, name: nil, or_: nil, order: nil, request_options: {})
+        # @!method initialize(id: nil, created_at: nil, last_message_at: nil, limit: nil, metadata_assistant_id: nil, metadata_assistant_version_id: nil, metadata_call_control_id: nil, metadata_telnyx_agent_target: nil, metadata_telnyx_conversation_channel: nil, metadata_telnyx_end_user_target: nil, name: nil, or_: nil, order: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::ConversationListParams} for more details.
         #
@@ -98,6 +108,8 @@ module Telnyx
         #   @param limit [Integer] Limit the number of returned conversations (e.g., `limit=10`)
         #
         #   @param metadata_assistant_id [String] Filter by assistant ID (e.g., `metadata->assistant_id=eq.assistant-123`)
+        #
+        #   @param metadata_assistant_version_id [String] Filter by assistant version ID (e.g., `metadata->assistant_version_id=eq.2025081
         #
         #   @param metadata_call_control_id [String] Filter by call control ID (e.g., `metadata->call_control_id=eq.v3:123`)
         #

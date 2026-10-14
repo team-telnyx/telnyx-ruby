@@ -26,7 +26,8 @@ module Telnyx
       required :certify_ip_ownership, enum: -> { Telnyx::DirUpdateInfringementParams::CertifyIPOwnership }
 
       # @!attribute certify_no_infringement
-      #   Must be `true`.
+      #   Check to certify that the brand no longer infringes anyone else's trademark or
+      #   intellectual property.
       #
       #   @return [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyNoInfringement]
       required :certify_no_infringement, enum: -> { Telnyx::DirUpdateInfringementParams::CertifyNoInfringement }
@@ -50,6 +51,8 @@ module Telnyx
       optional :call_reasons, Telnyx::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute display_name
+      #   The business name shown to call recipients, 1 to 35 characters, no emoji, not
+      #   blank.
       #
       #   @return [String, nil]
       optional :display_name, String, nil?: true
@@ -77,7 +80,7 @@ module Telnyx
       #
       #   @param certify_ip_ownership [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyIPOwnership] Must be `true`.
       #
-      #   @param certify_no_infringement [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyNoInfringement] Must be `true`.
+      #   @param certify_no_infringement [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyNoInfringement] Check to certify that the brand no longer infringes anyone else's trademark or i
       #
       #   @param certify_no_shaft_content [Boolean, Telnyx::Models::DirUpdateInfringementParams::CertifyNoShaftContent] Must be `true`.
       #
@@ -85,7 +88,7 @@ module Telnyx
       #
       #   @param call_reasons [Array<String>, nil]
       #
-      #   @param display_name [String, nil]
+      #   @param display_name [String, nil] The business name shown to call recipients, 1 to 35 characters, no emoji, not bl
       #
       #   @param documents [Array<Telnyx::Models::Document>, nil] Append-only supporting documents to attach while resolving the claim (e.g. autho
       #
@@ -113,7 +116,8 @@ module Telnyx
         #   @return [Array<Boolean>]
       end
 
-      # Must be `true`.
+      # Check to certify that the brand no longer infringes anyone else's trademark or
+      # intellectual property.
       module CertifyNoInfringement
         extend Telnyx::Internal::Type::Enum
 

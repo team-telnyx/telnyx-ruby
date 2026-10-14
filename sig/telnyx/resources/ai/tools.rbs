@@ -50,7 +50,7 @@ module Telnyx
         def delete: (
           String tool_id,
           ?request_options: Telnyx::request_opts
-        ) -> top
+        ) -> nil
 
         def initialize: (client: Telnyx::Client) -> void
       end
