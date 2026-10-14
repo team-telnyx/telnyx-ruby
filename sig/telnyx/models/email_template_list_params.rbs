@@ -1,12 +1,41 @@
 module Telnyx
   module Models
     type email_template_list_params =
-      { page_cursor: String, page_size: Integer }
+      {
+        filter_autoescape: Telnyx::Models::EmailTemplateListParams::filter_autoescape,
+        filter_content_type: Telnyx::Models::EmailTemplateListParams::filter_content_type,
+        filter_query: String,
+        filter_strict_variables: Telnyx::Models::EmailTemplateListParams::filter_strict_variables,
+        page_cursor: String,
+        page_size: Integer
+      }
       & Telnyx::Internal::Type::request_parameters
 
     class EmailTemplateListParams < Telnyx::Internal::Type::BaseModel
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader filter_autoescape: Telnyx::Models::EmailTemplateListParams::filter_autoescape?
+
+      def filter_autoescape=: (
+        Telnyx::Models::EmailTemplateListParams::filter_autoescape
+      ) -> Telnyx::Models::EmailTemplateListParams::filter_autoescape
+
+      attr_reader filter_content_type: Telnyx::Models::EmailTemplateListParams::filter_content_type?
+
+      def filter_content_type=: (
+        Telnyx::Models::EmailTemplateListParams::filter_content_type
+      ) -> Telnyx::Models::EmailTemplateListParams::filter_content_type
+
+      attr_reader filter_query: String?
+
+      def filter_query=: (String) -> String
+
+      attr_reader filter_strict_variables: Telnyx::Models::EmailTemplateListParams::filter_strict_variables?
+
+      def filter_strict_variables=: (
+        Telnyx::Models::EmailTemplateListParams::filter_strict_variables
+      ) -> Telnyx::Models::EmailTemplateListParams::filter_strict_variables
 
       attr_reader page_cursor: String?
 
@@ -17,16 +46,60 @@ module Telnyx
       def page_size=: (Integer) -> Integer
 
       def initialize: (
+        ?filter_autoescape: Telnyx::Models::EmailTemplateListParams::filter_autoescape,
+        ?filter_content_type: Telnyx::Models::EmailTemplateListParams::filter_content_type,
+        ?filter_query: String,
+        ?filter_strict_variables: Telnyx::Models::EmailTemplateListParams::filter_strict_variables,
         ?page_cursor: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
       ) -> void
 
       def to_hash: -> {
+        filter_autoescape: Telnyx::Models::EmailTemplateListParams::filter_autoescape,
+        filter_content_type: Telnyx::Models::EmailTemplateListParams::filter_content_type,
+        filter_query: String,
+        filter_strict_variables: Telnyx::Models::EmailTemplateListParams::filter_strict_variables,
         page_cursor: String,
         page_size: Integer,
         request_options: Telnyx::RequestOptions
       }
+
+      type filter_autoescape = :true | :false
+
+      module FilterAutoescape
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: :true
+        FALSE: :false
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailTemplateListParams::filter_autoescape]
+      end
+
+      type filter_content_type =
+        :html_and_text | :html_only | :text_only | :no_body
+
+      module FilterContentType
+        extend Telnyx::Internal::Type::Enum
+
+        HTML_AND_TEXT: :html_and_text
+        HTML_ONLY: :html_only
+        TEXT_ONLY: :text_only
+        NO_BODY: :no_body
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailTemplateListParams::filter_content_type]
+      end
+
+      type filter_strict_variables = :true | :false
+
+      module FilterStrictVariables
+        extend Telnyx::Internal::Type::Enum
+
+        TRUE: :true
+        FALSE: :false
+
+        def self?.values: -> ::Array[Telnyx::Models::EmailTemplateListParams::filter_strict_variables]
+      end
     end
   end
 end

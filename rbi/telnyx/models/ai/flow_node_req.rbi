@@ -101,7 +101,11 @@ module Telnyx
         attr_writer :tools_mode
 
         # Per-node transcription override (model/language/region). Unset fields cascade
-        # from the assistant-level transcription.
+        # from the assistant-level transcription. A node that sets `model`,
+        # `fallback_models`, or `challenger` doesn't inherit the assistant's
+        # `fallback_models` or `challenger`; it uses only the ones it sets. Otherwise it
+        # inherits them, and they must fit the model and language the node runs; a change
+        # they no longer fit is rejected.
         sig { returns(T.nilable(Telnyx::AI::TranscriptionSettings)) }
         attr_reader :transcription
 
@@ -111,7 +115,8 @@ module Telnyx
         attr_writer :transcription
 
         # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        # standalone tool execution (see `ToolNodeReq`).
+        # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        # `SpeakNodeReq`).
         sig { returns(T.nilable(Telnyx::AI::FlowNodeReq::Type::OrSymbol)) }
         attr_reader :type
 
@@ -190,10 +195,15 @@ module Telnyx
           # added to the assistant's tools. Ignored when `shared_tool_ids` is null.
           tools_mode: nil,
           # Per-node transcription override (model/language/region). Unset fields cascade
-          # from the assistant-level transcription.
+          # from the assistant-level transcription. A node that sets `model`,
+          # `fallback_models`, or `challenger` doesn't inherit the assistant's
+          # `fallback_models` or `challenger`; it uses only the ones it sets. Otherwise it
+          # inherits them, and they must fit the model and language the node runs; a change
+          # they no longer fit is rejected.
           transcription: nil,
           # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-          # standalone tool execution (see `ToolNodeReq`).
+          # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+          # `SpeakNodeReq`).
           type: nil,
           # Per-node voice override. Only fields set here override the assistant-level voice
           # settings; unset fields cascade.
@@ -281,7 +291,8 @@ module Telnyx
         end
 
         # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        # standalone tool execution (see `ToolNodeReq`).
+        # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        # `SpeakNodeReq`).
         module Type
           extend Telnyx::Internal::Type::Enum
 

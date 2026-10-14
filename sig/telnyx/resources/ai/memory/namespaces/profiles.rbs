@@ -29,6 +29,13 @@ module Telnyx
               ?request_options: Telnyx::request_opts
             ) -> Telnyx::Models::AI::Memory::Namespaces::ProfileIngestResponse
 
+            def preview: (
+              String profile_id,
+              namespace: String,
+              ?instructions: String?,
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse
+
             def recall: (
               String profile_id,
               namespace: String,

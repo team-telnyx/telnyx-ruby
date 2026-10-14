@@ -12,6 +12,7 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :administrative_area
 
+      # The city of your registered business address.
       sig { returns(String) }
       attr_accessor :city
 
@@ -19,12 +20,17 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :country
 
+      # The postal or ZIP code of your registered business address.
       sig { returns(String) }
       attr_accessor :postal_code
 
+      # The street address of your registered business, including the building number
+      # and street name.
       sig { returns(String) }
       attr_accessor :street_address
 
+      # An optional second address line, such as a suite, unit, or floor. Leave blank if
+      # it does not apply.
       sig { returns(T.nilable(String)) }
       attr_accessor :extended_address
 
@@ -41,11 +47,17 @@ module Telnyx
       def self.new(
         # State or province code (e.g. `IL`, `ON`).
         administrative_area:,
+        # The city of your registered business address.
         city:,
         # ISO 3166-1 alpha-2 code (currently `US` or `CA`).
         country:,
+        # The postal or ZIP code of your registered business address.
         postal_code:,
+        # The street address of your registered business, including the building number
+        # and street name.
         street_address:,
+        # An optional second address line, such as a suite, unit, or floor. Leave blank if
+        # it does not apply.
         extended_address: nil
       )
       end

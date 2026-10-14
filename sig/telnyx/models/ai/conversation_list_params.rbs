@@ -8,6 +8,7 @@ module Telnyx
           last_message_at: String,
           limit: Integer,
           metadata_assistant_id: String,
+          metadata_assistant_version_id: String,
           metadata_call_control_id: String,
           metadata_telnyx_agent_target: String,
           metadata_telnyx_conversation_channel: String,
@@ -41,6 +42,10 @@ module Telnyx
         attr_reader metadata_assistant_id: String?
 
         def metadata_assistant_id=: (String) -> String
+
+        attr_reader metadata_assistant_version_id: String?
+
+        def metadata_assistant_version_id=: (String) -> String
 
         attr_reader metadata_call_control_id: String?
 
@@ -76,6 +81,7 @@ module Telnyx
           ?last_message_at: String,
           ?limit: Integer,
           ?metadata_assistant_id: String,
+          ?metadata_assistant_version_id: String,
           ?metadata_call_control_id: String,
           ?metadata_telnyx_agent_target: String,
           ?metadata_telnyx_conversation_channel: String,
@@ -92,6 +98,7 @@ module Telnyx
           last_message_at: String,
           limit: Integer,
           metadata_assistant_id: String,
+          metadata_assistant_version_id: String,
           metadata_call_control_id: String,
           metadata_telnyx_agent_target: String,
           metadata_telnyx_conversation_channel: String,

@@ -3,6 +3,7 @@ module Telnyx
     type enterprise_list_params =
       {
         filter_legal_name_contains: String,
+        filter_role_type: Telnyx::Models::EnterpriseListParams::filter_role_type,
         legal_name: String,
         page_number: Integer,
         page_size: Integer
@@ -16,6 +17,12 @@ module Telnyx
       attr_reader filter_legal_name_contains: String?
 
       def filter_legal_name_contains=: (String) -> String
+
+      attr_reader filter_role_type: Telnyx::Models::EnterpriseListParams::filter_role_type?
+
+      def filter_role_type=: (
+        Telnyx::Models::EnterpriseListParams::filter_role_type
+      ) -> Telnyx::Models::EnterpriseListParams::filter_role_type
 
       attr_reader legal_name: String?
 
@@ -31,6 +38,7 @@ module Telnyx
 
       def initialize: (
         ?filter_legal_name_contains: String,
+        ?filter_role_type: Telnyx::Models::EnterpriseListParams::filter_role_type,
         ?legal_name: String,
         ?page_number: Integer,
         ?page_size: Integer,
@@ -39,11 +47,23 @@ module Telnyx
 
       def to_hash: -> {
         filter_legal_name_contains: String,
+        filter_role_type: Telnyx::Models::EnterpriseListParams::filter_role_type,
         legal_name: String,
         page_number: Integer,
         page_size: Integer,
         request_options: Telnyx::RequestOptions
       }
+
+      type filter_role_type = :enterprise | :bpo
+
+      module FilterRoleType
+        extend Telnyx::Internal::Type::Enum
+
+        ENTERPRISE: :enterprise
+        BPO: :bpo
+
+        def self?.values: -> ::Array[Telnyx::Models::EnterpriseListParams::filter_role_type]
+      end
     end
   end
 end

@@ -21,29 +21,31 @@ module Telnyx
         sig { returns(Integer) }
         attr_accessor :slot
 
-        # Reference contact email address.
+        # The reference's email address. We email them scheduling and dial-in instructions
+        # before we call, so use an address they check.
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
         sig { params(email: String).void }
         attr_writer :email
 
-        # Full name of the reference contact.
+        # The full name of the person we should contact as your reference.
         sig { returns(T.nilable(String)) }
         attr_reader :full_name
 
         sig { params(full_name: String).void }
         attr_writer :full_name
 
-        # Job title of the reference contact.
+        # The reference contact's job title, for example CFO or Owner.
         sig { returns(T.nilable(String)) }
         attr_accessor :job_title
 
-        # Organization the reference contact belongs to.
+        # The name of the organization the reference contact works for.
         sig { returns(T.nilable(String)) }
         attr_accessor :organization
 
-        # Reference phone number in E.164 format.
+        # The reference's phone number in E.164 format, for example +14155550123. We call
+        # this number during their local business hours.
         sig { returns(T.nilable(String)) }
         attr_reader :phone_e164
 
@@ -54,7 +56,8 @@ module Telnyx
         sig { returns(T.nilable(String)) }
         attr_accessor :relationship_to_registrant
 
-        # IANA timezone id for the reference.
+        # The reference's IANA time zone, for example America/New_York. We only call
+        # during their local 8am to 9pm hours, which is why we need it.
         sig { returns(T.nilable(String)) }
         attr_reader :timezone
 
@@ -80,19 +83,22 @@ module Telnyx
           dir_id:,
           ref_type:,
           slot:,
-          # Reference contact email address.
+          # The reference's email address. We email them scheduling and dial-in instructions
+          # before we call, so use an address they check.
           email: nil,
-          # Full name of the reference contact.
+          # The full name of the person we should contact as your reference.
           full_name: nil,
-          # Job title of the reference contact.
+          # The reference contact's job title, for example CFO or Owner.
           job_title: nil,
-          # Organization the reference contact belongs to.
+          # The name of the organization the reference contact works for.
           organization: nil,
-          # Reference phone number in E.164 format.
+          # The reference's phone number in E.164 format, for example +14155550123. We call
+          # this number during their local business hours.
           phone_e164: nil,
           # How the reference contact is related to the registering business.
           relationship_to_registrant: nil,
-          # IANA timezone id for the reference.
+          # The reference's IANA time zone, for example America/New_York. We only call
+          # during their local 8am to 9pm hours, which is why we need it.
           timezone: nil,
           request_options: {}
         )

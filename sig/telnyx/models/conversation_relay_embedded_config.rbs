@@ -14,7 +14,7 @@ module Telnyx
         provider: String,
         structured_provider: ::Hash[Symbol, top],
         transcription_engine: Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine,
-        transcription_engine_config: ::Hash[Symbol, top],
+        transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
         tts_provider: String,
         voice: String,
         voice_settings: Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings
@@ -77,11 +77,11 @@ module Telnyx
         Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine
       ) -> Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine
 
-      attr_reader transcription_engine_config: ::Hash[Symbol, top]?
+      attr_reader transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig?
 
       def transcription_engine_config=: (
-        ::Hash[Symbol, top]
-      ) -> ::Hash[Symbol, top]
+        Telnyx::Calls::ConversationRelayTranscriptionEngineConfig
+      ) -> Telnyx::Calls::ConversationRelayTranscriptionEngineConfig
 
       attr_reader tts_provider: String?
 
@@ -110,7 +110,7 @@ module Telnyx
         ?provider: String,
         ?structured_provider: ::Hash[Symbol, top],
         ?transcription_engine: Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine,
-        ?transcription_engine_config: ::Hash[Symbol, top],
+        ?transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
         ?tts_provider: String,
         ?voice: String,
         ?voice_settings: Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings
@@ -129,7 +129,7 @@ module Telnyx
         provider: String,
         structured_provider: ::Hash[Symbol, top],
         transcription_engine: Telnyx::Models::ConversationRelayEmbeddedConfig::transcription_engine,
-        transcription_engine_config: ::Hash[Symbol, top],
+        transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
         tts_provider: String,
         voice: String,
         voice_settings: Telnyx::Models::ConversationRelayEmbeddedConfig::voice_settings

@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module AI
+      type assistant_whatsapp_response =
+        { conversation_id: String, message_id: String }
+
+      class AssistantWhatsappResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor conversation_id: String
+
+        attr_accessor message_id: String
+
+        def initialize: (conversation_id: String, message_id: String) -> void
+
+        def to_hash: -> { conversation_id: String, message_id: String }
+      end
+    end
+  end
+end

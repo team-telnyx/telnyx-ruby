@@ -18,9 +18,11 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :call_control_id
 
-        # AI Assistant configuration. All fields except `id` are optional — the
-        # assistant's stored configuration will be used as fallback for any omitted
-        # fields.
+        # AI Assistant configuration and per-call overrides. All fields except `id` are
+        # optional. Omitted assistant fields use the stored configuration. Supplied
+        # `voice_settings` and `transcription` objects replace their stored objects rather
+        # than merging individual settings; include every setting you want to retain.
+        # `dynamic_variables` are merged, with request values taking precedence.
         sig { returns(T.nilable(Telnyx::CallAssistantRequest)) }
         attr_reader :assistant
 
@@ -163,9 +165,11 @@ module Telnyx
         end
         def self.new(
           call_control_id:,
-          # AI Assistant configuration. All fields except `id` are optional — the
-          # assistant's stored configuration will be used as fallback for any omitted
-          # fields.
+          # AI Assistant configuration and per-call overrides. All fields except `id` are
+          # optional. Omitted assistant fields use the stored configuration. Supplied
+          # `voice_settings` and `transcription` objects replace their stored objects rather
+          # than merging individual settings; include every setting you want to retain.
+          # `dynamic_variables` are merged, with request values taking precedence.
           assistant: nil,
           # Use this field to add state to every subsequent webhook. It must be a valid
           # Base-64 encoded string.

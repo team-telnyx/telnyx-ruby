@@ -7,23 +7,49 @@ module Telnyx
         type reputation_phone_number =
           {
             id: String,
+            confirm_by: Time?,
             created_at: Time,
             enterprise_id: String,
+            flag_reason: String?,
+            ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
             phone_number: String,
+            removal_reason: Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumber::removal_reason?,
+            removed_at: Time?,
             reputation_data: Telnyx::ReputationData?,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source,
             updated_at: Time
           }
 
         class ReputationPhoneNumber < Telnyx::Internal::Type::BaseModel
+          attr_accessor confirm_by: Time?
+
           attr_reader enterprise_id: String?
 
           def enterprise_id=: (String) -> String
+
+          attr_accessor flag_reason: String?
+
+          attr_reader ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status?
+
+          def ownership_status=: (
+            Telnyx::Models::Enterprises::Reputation::reputation_ownership_status
+          ) -> Telnyx::Models::Enterprises::Reputation::reputation_ownership_status
 
           attr_reader phone_number: String?
 
           def phone_number=: (String) -> String
 
+          attr_accessor removal_reason: Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumber::removal_reason?
+
+          attr_accessor removed_at: Time?
+
           attr_accessor reputation_data: Telnyx::ReputationData?
+
+          attr_reader source: Telnyx::Models::Enterprises::Reputation::reputation_number_source?
+
+          def source=: (
+            Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          ) -> Telnyx::Models::Enterprises::Reputation::reputation_number_source
 
           attr_reader id: String?
 
@@ -39,21 +65,52 @@ module Telnyx
 
           def initialize: (
             ?id: String,
+            ?confirm_by: Time?,
             ?created_at: Time,
             ?enterprise_id: String,
+            ?flag_reason: String?,
+            ?ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
             ?phone_number: String,
+            ?removal_reason: Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumber::removal_reason?,
+            ?removed_at: Time?,
             ?reputation_data: Telnyx::ReputationData?,
+            ?source: Telnyx::Models::Enterprises::Reputation::reputation_number_source,
             ?updated_at: Time
           ) -> void
 
           def to_hash: -> {
             id: String,
+            confirm_by: Time?,
             created_at: Time,
             enterprise_id: String,
+            flag_reason: String?,
+            ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
             phone_number: String,
+            removal_reason: Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumber::removal_reason?,
+            removed_at: Time?,
             reputation_data: Telnyx::ReputationData?,
+            source: Telnyx::Models::Enterprises::Reputation::reputation_number_source,
             updated_at: Time
           }
+
+          type removal_reason =
+            :ported_away
+            | :unconfirmed_ownership
+            | :reassigned
+            | :customer_reported
+            | :customer_removed
+
+          module RemovalReason
+            extend Telnyx::Internal::Type::Enum
+
+            PORTED_AWAY: :ported_away
+            UNCONFIRMED_OWNERSHIP: :unconfirmed_ownership
+            REASSIGNED: :reassigned
+            CUSTOMER_REPORTED: :customer_reported
+            CUSTOMER_REMOVED: :customer_removed
+
+            def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::ReputationPhoneNumber::removal_reason]
+          end
         end
       end
     end

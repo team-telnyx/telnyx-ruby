@@ -9,6 +9,8 @@ module Telnyx
 
       attr_reader user_data: Telnyx::Resources::Whatsapp::UserData
 
+      attr_reader signup: Telnyx::Resources::Whatsapp::Signup
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

@@ -12,8 +12,10 @@ module Telnyx
 
           def list: (
             String enterprise_id,
+            ?filter_ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
             ?filter_phone_number_contains: String,
             ?filter_phone_number_eq: String,
+            ?filter_source: Telnyx::Models::Enterprises::Reputation::reputation_number_source,
             ?page_number: Integer,
             ?page_size: Integer,
             ?request_options: Telnyx::request_opts
@@ -31,11 +33,25 @@ module Telnyx
             ?request_options: Telnyx::request_opts
           ) -> nil
 
+          def ownership_confirm: (
+            String phone_number,
+            enterprise_id: String,
+            still_own: bool,
+            ?evidence_document_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
+
           def refresh: (
             String enterprise_id,
             phone_numbers: ::Array[String],
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::Enterprises::Reputation::NumberRefreshResponse
+
+          def retrieve_ownership: (
+            String phone_number,
+            enterprise_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse
 
           def initialize: (client: Telnyx::Client) -> void
         end

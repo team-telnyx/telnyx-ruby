@@ -1,0 +1,140 @@
+module Telnyx
+  module Models
+    type whatsapp_waba_added_webhook_event =
+      { data: Telnyx::WhatsappWabaAddedWebhookEvent::Data }
+
+    class WhatsappWabaAddedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::WhatsappWabaAddedWebhookEvent::Data
+
+      def initialize: (
+        data: Telnyx::WhatsappWabaAddedWebhookEvent::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::WhatsappWabaAddedWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappWabaAddedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor event_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::event_type
+
+        attr_accessor occurred_at: Time
+
+        attr_accessor payload: Telnyx::WhatsappWabaAddedWebhookEvent::Data::Payload
+
+        attr_accessor record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::record_type
+
+        def initialize: (
+          id: String,
+          event_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappWabaAddedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::WhatsappWabaAddedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"whatsapp.waba_added"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          WHATSAPP_WABA_ADDED: :"whatsapp.waba_added"
+
+          def self?.values: -> ::Array[Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            event_id: String,
+            record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::record_type,
+            status: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::status,
+            waba_id: String,
+            errors: ::Array[String],
+            phone_numbers: ::Array[String]
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_accessor event_id: String
+
+          attr_accessor record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::record_type
+
+          attr_accessor status: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::status
+
+          attr_accessor waba_id: String
+
+          attr_reader errors: ::Array[String]?
+
+          def errors=: (::Array[String]) -> ::Array[String]
+
+          attr_reader phone_numbers: ::Array[String]?
+
+          def phone_numbers=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            event_id: String,
+            record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::record_type,
+            status: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::status,
+            waba_id: String,
+            ?errors: ::Array[String],
+            ?phone_numbers: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            event_id: String,
+            record_type: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::record_type,
+            status: Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::status,
+            waba_id: String,
+            errors: ::Array[String],
+            phone_numbers: ::Array[String]
+          }
+
+          type record_type = :waba_account_added
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            WABA_ACCOUNT_ADDED: :waba_account_added
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::record_type]
+          end
+
+          type status = :SUCCESS | :FAILURE
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            SUCCESS: :SUCCESS
+            FAILURE: :FAILURE
+
+            def self?.values: -> ::Array[Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::Payload::status]
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::WhatsappWabaAddedWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

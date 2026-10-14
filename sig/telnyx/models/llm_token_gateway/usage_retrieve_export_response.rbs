@@ -1,0 +1,463 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type usage_retrieve_export_response =
+        {
+          data: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::data],
+          meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Meta
+        }
+
+      class UsageRetrieveExportResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::data]
+
+        attr_accessor meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Meta
+
+        def initialize: (
+          data: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::data],
+          meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Meta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::data],
+          meta: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Meta
+        }
+
+        type data =
+          Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest
+          | Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation
+
+        module Data
+          extend Telnyx::Internal::Type::Union
+
+          type inference_request =
+            {
+              id: String,
+              attempts: Integer,
+              biller: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::biller,
+              cache_hit: bool,
+              configuration_version: Integer,
+              cost: String?,
+              end_user_id: String?,
+              input_tokens: Integer?,
+              metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::metadata],
+              model: String,
+              output_tokens: Integer?,
+              protocol: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::protocol,
+              provider: String,
+              provider_key_id: String?,
+              provider_model: String,
+              rate_version: String,
+              request_id: String,
+              revision: Integer,
+              route_mode: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::route_mode,
+              schema_version: Float,
+              status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::status,
+              stream: bool,
+              supersedes: String?,
+              timings: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::Timings,
+              token_group_id: String,
+              token_key_id: String,
+              token_user_id: String?,
+              type: :"inference.request",
+              usage_source: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_source?,
+              usage_status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_status
+            }
+
+          class InferenceRequest < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor attempts: Integer
+
+            attr_accessor biller: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::biller
+
+            attr_accessor cache_hit: bool
+
+            attr_accessor configuration_version: Integer
+
+            attr_accessor cost: String?
+
+            attr_accessor end_user_id: String?
+
+            attr_accessor input_tokens: Integer?
+
+            attr_accessor metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::metadata]
+
+            attr_accessor model: String
+
+            attr_accessor output_tokens: Integer?
+
+            attr_accessor protocol: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::protocol
+
+            attr_accessor provider: String
+
+            attr_accessor provider_key_id: String?
+
+            attr_accessor provider_model: String
+
+            attr_accessor rate_version: String
+
+            attr_accessor request_id: String
+
+            attr_accessor revision: Integer
+
+            attr_accessor route_mode: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::route_mode
+
+            attr_accessor schema_version: Float
+
+            attr_accessor status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::status
+
+            attr_accessor stream: bool
+
+            attr_accessor supersedes: String?
+
+            attr_accessor timings: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::Timings
+
+            attr_accessor token_group_id: String
+
+            attr_accessor token_key_id: String
+
+            attr_accessor token_user_id: String?
+
+            attr_accessor type: :"inference.request"
+
+            attr_accessor usage_source: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_source?
+
+            attr_accessor usage_status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_status
+
+            def initialize: (
+              id: String,
+              attempts: Integer,
+              biller: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::biller,
+              cache_hit: bool,
+              configuration_version: Integer,
+              cost: String?,
+              end_user_id: String?,
+              input_tokens: Integer?,
+              metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::metadata],
+              model: String,
+              output_tokens: Integer?,
+              protocol: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::protocol,
+              provider: String,
+              provider_key_id: String?,
+              provider_model: String,
+              rate_version: String,
+              request_id: String,
+              revision: Integer,
+              route_mode: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::route_mode,
+              status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::status,
+              stream: bool,
+              supersedes: String?,
+              timings: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::Timings,
+              token_group_id: String,
+              token_key_id: String,
+              token_user_id: String?,
+              usage_source: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_source?,
+              usage_status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_status,
+              ?schema_version: Float,
+              ?type: :"inference.request"
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              attempts: Integer,
+              biller: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::biller,
+              cache_hit: bool,
+              configuration_version: Integer,
+              cost: String?,
+              end_user_id: String?,
+              input_tokens: Integer?,
+              metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::metadata],
+              model: String,
+              output_tokens: Integer?,
+              protocol: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::protocol,
+              provider: String,
+              provider_key_id: String?,
+              provider_model: String,
+              rate_version: String,
+              request_id: String,
+              revision: Integer,
+              route_mode: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::route_mode,
+              schema_version: Float,
+              status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::status,
+              stream: bool,
+              supersedes: String?,
+              timings: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::Timings,
+              token_group_id: String,
+              token_key_id: String,
+              token_user_id: String?,
+              type: :"inference.request",
+              usage_source: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_source?,
+              usage_status: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_status
+            }
+
+            type biller = :telnyx | :provider | :none
+
+            module Biller
+              extend Telnyx::Internal::Type::Enum
+
+              TELNYX: :telnyx
+              PROVIDER: :provider
+              NONE: :none
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::biller]
+            end
+
+            type metadata = String | Integer | bool
+
+            module Metadata
+              extend Telnyx::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::metadata]
+            end
+
+            type protocol = :openai | :anthropic
+
+            module Protocol
+              extend Telnyx::Internal::Type::Enum
+
+              OPENAI: :openai
+              ANTHROPIC: :anthropic
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::protocol]
+            end
+
+            type route_mode = :managed | :byok | :cache
+
+            module RouteMode
+              extend Telnyx::Internal::Type::Enum
+
+              MANAGED: :managed
+              BYOK: :byok
+              CACHE: :cache
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::route_mode]
+            end
+
+            type status = :succeeded | :failed | :partial | :unknown
+
+            module Status
+              extend Telnyx::Internal::Type::Enum
+
+              SUCCEEDED: :succeeded
+              FAILED: :failed
+              PARTIAL: :partial
+              UNKNOWN: :unknown
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::status]
+            end
+
+            type timings =
+              {
+                admitted_at: Time,
+                completed_at: Time?,
+                first_attempt_at: Time?,
+                gateway_duration_ms: Integer?,
+                settled_at: Time
+              }
+
+            class Timings < Telnyx::Internal::Type::BaseModel
+              attr_accessor admitted_at: Time
+
+              attr_accessor completed_at: Time?
+
+              attr_accessor first_attempt_at: Time?
+
+              attr_accessor gateway_duration_ms: Integer?
+
+              attr_accessor settled_at: Time
+
+              def initialize: (
+                admitted_at: Time,
+                completed_at: Time?,
+                first_attempt_at: Time?,
+                gateway_duration_ms: Integer?,
+                settled_at: Time
+              ) -> void
+
+              def to_hash: -> {
+                admitted_at: Time,
+                completed_at: Time?,
+                first_attempt_at: Time?,
+                gateway_duration_ms: Integer?,
+                settled_at: Time
+              }
+            end
+
+            type usage_source = :provider | :gateway_tokenizer | :operator
+
+            module UsageSource
+              extend Telnyx::Internal::Type::Enum
+
+              PROVIDER: :provider
+              GATEWAY_TOKENIZER: :gateway_tokenizer
+              OPERATOR: :operator
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_source]
+            end
+
+            type usage_status = :known | :unknown | :reconciled
+
+            module UsageStatus
+              extend Telnyx::Internal::Type::Enum
+
+              KNOWN: :known
+              UNKNOWN: :unknown
+              RECONCILED: :reconciled
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::InferenceRequest::usage_status]
+            end
+          end
+
+          type guardrail_evaluation =
+            {
+              id: String,
+              created_at: Time,
+              end_user_id: String?,
+              evaluation_input_tokens: Integer?,
+              evaluation_output_tokens: Integer?,
+              findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding],
+              metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::metadata],
+              model: String,
+              outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::outcome,
+              request_id: String,
+              schema_version: Float,
+              stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::stage,
+              token_group_id: String,
+              token_key_id: String,
+              token_user_id: String?,
+              type: :"guardrail.evaluation"
+            }
+
+          class GuardrailEvaluation < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor created_at: Time
+
+            attr_accessor end_user_id: String?
+
+            attr_accessor evaluation_input_tokens: Integer?
+
+            attr_accessor evaluation_output_tokens: Integer?
+
+            attr_accessor findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding]
+
+            attr_accessor metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::metadata]
+
+            attr_accessor model: String
+
+            attr_accessor outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::outcome
+
+            attr_accessor request_id: String
+
+            attr_accessor schema_version: Float
+
+            attr_accessor stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::stage
+
+            attr_accessor token_group_id: String
+
+            attr_accessor token_key_id: String
+
+            attr_accessor token_user_id: String?
+
+            attr_accessor type: :"guardrail.evaluation"
+
+            def initialize: (
+              id: String,
+              created_at: Time,
+              end_user_id: String?,
+              evaluation_input_tokens: Integer?,
+              evaluation_output_tokens: Integer?,
+              findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding],
+              metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::metadata],
+              model: String,
+              outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::outcome,
+              request_id: String,
+              stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::stage,
+              token_group_id: String,
+              token_key_id: String,
+              token_user_id: String?,
+              ?schema_version: Float,
+              ?type: :"guardrail.evaluation"
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              created_at: Time,
+              end_user_id: String?,
+              evaluation_input_tokens: Integer?,
+              evaluation_output_tokens: Integer?,
+              findings: ::Array[Telnyx::LlmTokenGateway::GuardrailFinding],
+              metadata: ::Hash[Symbol, Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::metadata],
+              model: String,
+              outcome: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::outcome,
+              request_id: String,
+              schema_version: Float,
+              stage: Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::stage,
+              token_group_id: String,
+              token_key_id: String,
+              token_user_id: String?,
+              type: :"guardrail.evaluation"
+            }
+
+            type metadata = String | Integer | bool
+
+            module Metadata
+              extend Telnyx::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::metadata]
+            end
+
+            type outcome = :evaluated | :flagged | :blocked | :unevaluated
+
+            module Outcome
+              extend Telnyx::Internal::Type::Enum
+
+              EVALUATED: :evaluated
+              FLAGGED: :flagged
+              BLOCKED: :blocked
+              UNEVALUATED: :unevaluated
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::outcome]
+            end
+
+            type stage = :prompt | :response
+
+            module Stage
+              extend Telnyx::Internal::Type::Enum
+
+              PROMPT: :prompt
+              RESPONSE: :response
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::Data::GuardrailEvaluation::stage]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse::data]
+        end
+
+        type meta =
+          { has_more: bool, horizon_lag_seconds: Integer, next_cursor: String }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_accessor has_more: bool
+
+          attr_accessor horizon_lag_seconds: Integer
+
+          attr_accessor next_cursor: String
+
+          def initialize: (
+            has_more: bool,
+            horizon_lag_seconds: Integer,
+            next_cursor: String
+          ) -> void
+
+          def to_hash: -> {
+            has_more: bool,
+            horizon_lag_seconds: Integer,
+            next_cursor: String
+          }
+        end
+      end
+    end
+  end
+end

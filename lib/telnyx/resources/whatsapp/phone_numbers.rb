@@ -17,6 +17,10 @@ module Telnyx
         # @return [Telnyx::Resources::Whatsapp::PhoneNumbers::ConversationalComponents]
         attr_reader :conversational_components
 
+        # Manage Whatsapp phone numbers
+        # @return [Telnyx::Resources::Whatsapp::PhoneNumbers::CallingRouting]
+        attr_reader :calling_routing
+
         # Returns WhatsApp phone numbers linked to the authenticated Telnyx account.
         #
         # @overload list(page_number: nil, page_size: nil, request_options: {})
@@ -190,6 +194,7 @@ module Telnyx
           @profile = Telnyx::Resources::Whatsapp::PhoneNumbers::Profile.new(client: client)
           @conversational_components =
             Telnyx::Resources::Whatsapp::PhoneNumbers::ConversationalComponents.new(client: client)
+          @calling_routing = Telnyx::Resources::Whatsapp::PhoneNumbers::CallingRouting.new(client: client)
         end
       end
     end

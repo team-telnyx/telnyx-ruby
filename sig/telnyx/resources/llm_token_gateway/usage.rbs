@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class LlmTokenGateway
+      class Usage
+        def retrieve_export: (
+          ?cursor: String,
+          ?limit: Integer,
+          ?start_time: Time,
+          ?types: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::LlmTokenGateway::UsageRetrieveExportResponse
+
+        def retrieve_summary: (
+          end_date: Date,
+          start_date: Date,
+          token_group_id: String,
+          ?metadata: ::Hash[Symbol, String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::LlmTokenGateway::UsageRetrieveSummaryResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

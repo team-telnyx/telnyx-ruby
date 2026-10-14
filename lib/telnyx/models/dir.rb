@@ -83,9 +83,20 @@ module Telnyx
       #   - `infringement_claimed` - a trademark/impersonation claim is open against this
       #     DIR.
       #   - `permanently_rejected` - terminal; cannot be resubmitted.
+      #   - `delete_requested` - you have requested deletion; the DIR still exists and
+      #     Telnyx is completing the removal (de-registration and cleanup). A verified DIR
+      #     keeps serving its branded identity, and keeps billing, until the removal
+      #     finishes.
       #
       #   @return [Symbol, Telnyx::Models::DirStatus, nil]
       optional :status, enum: -> { Telnyx::DirStatus }
+
+      # @!attribute webhook_url
+      #   `https://` URL that receives webhook notifications for this DIR's
+      #   compliance-review outcomes. `null` when not subscribed.
+      #
+      #   @return [String, nil]
+      optional :webhook_url, String, nil?: true
 
       response_only do
         # @!attribute id
@@ -97,6 +108,13 @@ module Telnyx
         #
         #   @return [Time, nil]
         optional :created_at, Time
+
+        # @!attribute delete_requested_at
+        #   When deletion was requested. Set once the DIR enters `delete_requested`; `null`
+        #   otherwise.
+        #
+        #   @return [Time, nil]
+        optional :delete_requested_at, Time, nil?: true
 
         # @!attribute expiring_at
         #
@@ -124,7 +142,7 @@ module Telnyx
         optional :verified_at, Time, nil?: true
       end
 
-      # @!method initialize(id: nil, authorizer_email: nil, authorizer_name: nil, call_reasons: nil, certify_brand_is_accurate: nil, certify_ip_ownership: nil, certify_no_shaft_content: nil, created_at: nil, display_name: nil, documents: nil, enterprise_id: nil, expiring_at: nil, logo_url: nil, rejected_at: nil, rejection_reasons: nil, reselling: nil, status: nil, submitted_at: nil, updated_at: nil, verified_at: nil)
+      # @!method initialize(id: nil, authorizer_email: nil, authorizer_name: nil, call_reasons: nil, certify_brand_is_accurate: nil, certify_ip_ownership: nil, certify_no_shaft_content: nil, created_at: nil, delete_requested_at: nil, display_name: nil, documents: nil, enterprise_id: nil, expiring_at: nil, logo_url: nil, rejected_at: nil, rejection_reasons: nil, reselling: nil, status: nil, submitted_at: nil, updated_at: nil, verified_at: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see {Telnyx::Models::DirAPI}
       #   for more details.
       #
@@ -143,6 +161,8 @@ module Telnyx
       #   @param certify_no_shaft_content [Boolean]
       #
       #   @param created_at [Time]
+      #
+      #   @param delete_requested_at [Time, nil] When deletion was requested. Set once the DIR enters `delete_requested`; `null`
       #
       #   @param display_name [String]
       #
@@ -167,6 +187,8 @@ module Telnyx
       #   @param updated_at [Time]
       #
       #   @param verified_at [Time, nil]
+      #
+      #   @param webhook_url [String, nil] `https://` URL that receives webhook notifications for this DIR's compliance-rev
 
       class CallReason < Telnyx::Internal::Type::BaseModel
         # @!attribute reason

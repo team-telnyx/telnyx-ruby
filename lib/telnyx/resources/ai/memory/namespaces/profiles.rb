@@ -123,6 +123,47 @@ module Telnyx
               )
             end
 
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewParams} for more details.
+            #
+            # Try a candidate note on one profile and see how that profile's summary would
+            # read under it, without saving the note and without touching the stored summary.
+            # Composes the same source query the apply path
+            # (`PATCH /ai/memory/namespaces/{namespace}/settings`) would use, so a preview
+            # cannot drift from what saving the note would produce. Reads the candidate alone
+            # -- the namespace's current instructions and the profile's stored summary are
+            # neither read nor replaced. Bounded at 120 seconds: the summary is generated on
+            # the spot rather than read from a stored one. Nothing about the request is
+            # stored.
+            #
+            # @overload preview(profile_id, namespace:, instructions: nil, request_options: {})
+            #
+            # @param profile_id [String] Path param: The profile: your identifier for the user, caller or agent this memo
+            #
+            # @param namespace [String] Path param: The namespace. `default` exists for every organization.
+            #
+            # @param instructions [String, nil] Body param: The candidate note to try. `null`, empty, or whitespace-only preview
+            #
+            # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+            #
+            # @return [Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse]
+            #
+            # @see Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewParams
+            def preview(profile_id, params)
+              parsed, options = Telnyx::AI::Memory::Namespaces::ProfilePreviewParams.dump_request(params)
+              namespace =
+                parsed.delete(:namespace) do
+                  raise ArgumentError.new("missing required path argument #{_1}")
+                end
+              @client.request(
+                method: :post,
+                path: ["ai/memory/namespaces/%1$s/profiles/%2$s/summary/preview", namespace, profile_id],
+                body: parsed,
+                model: Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse,
+                options: options
+              )
+            end
+
             # Ranked memories for a question. Matching runs over the profile's memories and
             # returns them in rank order with a relevance `score`; the score is null where the
             # deployment's reranker is a passthrough, in which case order is the only signal.

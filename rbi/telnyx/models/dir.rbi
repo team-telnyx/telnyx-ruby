@@ -80,11 +80,20 @@ module Telnyx
       # - `infringement_claimed` - a trademark/impersonation claim is open against this
       #   DIR.
       # - `permanently_rejected` - terminal; cannot be resubmitted.
+      # - `delete_requested` - you have requested deletion; the DIR still exists and
+      #   Telnyx is completing the removal (de-registration and cleanup). A verified DIR
+      #   keeps serving its branded identity, and keeps billing, until the removal
+      #   finishes.
       sig { returns(T.nilable(Telnyx::DirStatus::TaggedSymbol)) }
       attr_reader :status
 
       sig { params(status: Telnyx::DirStatus::OrSymbol).void }
       attr_writer :status
+
+      # `https://` URL that receives webhook notifications for this DIR's
+      # compliance-review outcomes. `null` when not subscribed.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :webhook_url
 
       sig { returns(T.nilable(String)) }
       attr_reader :id
@@ -97,6 +106,11 @@ module Telnyx
 
       sig { params(created_at: Time).void }
       attr_writer :created_at
+
+      # When deletion was requested. Set once the DIR enters `delete_requested`; `null`
+      # otherwise.
+      sig { returns(T.nilable(Time)) }
+      attr_accessor :delete_requested_at
 
       sig { returns(T.nilable(Time)) }
       attr_accessor :expiring_at
@@ -126,6 +140,7 @@ module Telnyx
           certify_ip_ownership: T::Boolean,
           certify_no_shaft_content: T::Boolean,
           created_at: Time,
+          delete_requested_at: T.nilable(Time),
           display_name: String,
           documents: T.nilable(T::Array[Telnyx::Document::OrHash]),
           enterprise_id: String,
@@ -138,7 +153,8 @@ module Telnyx
           status: Telnyx::DirStatus::OrSymbol,
           submitted_at: T.nilable(Time),
           updated_at: Time,
-          verified_at: T.nilable(Time)
+          verified_at: T.nilable(Time),
+          webhook_url: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -150,6 +166,9 @@ module Telnyx
         certify_ip_ownership: nil,
         certify_no_shaft_content: nil,
         created_at: nil,
+        # When deletion was requested. Set once the DIR enters `delete_requested`; `null`
+        # otherwise.
+        delete_requested_at: nil,
         display_name: nil,
         documents: nil,
         enterprise_id: nil,
@@ -174,10 +193,17 @@ module Telnyx
         # - `infringement_claimed` - a trademark/impersonation claim is open against this
         #   DIR.
         # - `permanently_rejected` - terminal; cannot be resubmitted.
+        # - `delete_requested` - you have requested deletion; the DIR still exists and
+        #   Telnyx is completing the removal (de-registration and cleanup). A verified DIR
+        #   keeps serving its branded identity, and keeps billing, until the removal
+        #   finishes.
         status: nil,
         submitted_at: nil,
         updated_at: nil,
-        verified_at: nil
+        verified_at: nil,
+        # `https://` URL that receives webhook notifications for this DIR's
+        # compliance-review outcomes. `null` when not subscribed.
+        webhook_url: nil
       )
       end
 
@@ -192,6 +218,7 @@ module Telnyx
             certify_ip_ownership: T::Boolean,
             certify_no_shaft_content: T::Boolean,
             created_at: Time,
+            delete_requested_at: T.nilable(Time),
             display_name: String,
             documents: T.nilable(T::Array[Telnyx::Document]),
             enterprise_id: String,
@@ -204,7 +231,8 @@ module Telnyx
             status: Telnyx::DirStatus::TaggedSymbol,
             submitted_at: T.nilable(Time),
             updated_at: Time,
-            verified_at: T.nilable(Time)
+            verified_at: T.nilable(Time),
+            webhook_url: T.nilable(String)
           }
         )
       end

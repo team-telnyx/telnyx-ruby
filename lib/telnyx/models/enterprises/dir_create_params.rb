@@ -35,7 +35,8 @@ module Telnyx
         required :call_reasons, Telnyx::Internal::Type::ArrayOf[String]
 
         # @!attribute certify_brand_is_accurate
-        #   Must be `true`.
+        #   Certification that the DIR information is accurate. Must be `true` for the DIR
+        #   to be submitted for vetting.
         #
         #   @return [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyBrandIsAccurate]
         required :certify_brand_is_accurate,
@@ -61,6 +62,17 @@ module Telnyx
         #   @return [String]
         required :display_name, String
 
+        # @!attribute bpo_authorizations
+        #   Optional. Approved BPO (Business Process Outsourcer) accounts on your
+        #   organization authorized to place branded calls for this DIR, each with the
+        #   signed Letter of Authorization the Brand Owner granted it. Each authorization
+        #   starts `pending` and takes effect only after an admin reviews its Letter of
+        #   Authorization. Omit or send an empty list to authorize no BPO on this DIR.
+        #   Maximum 10.
+        #
+        #   @return [Array<Telnyx::Models::BpoAuthorizationInput>, nil]
+        optional :bpo_authorizations, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::BpoAuthorizationInput] }
+
         # @!attribute documents
         #   Supporting documents. Each `document_id` may appear at most once on a DIR.
         #
@@ -80,7 +92,15 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :reselling, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(enterprise_id:, authorizer_email:, authorizer_name:, call_reasons:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, documents: nil, logo_url: nil, reselling: nil, request_options: {})
+        # @!attribute webhook_url
+        #   Optional `https://` URL that receives webhook notifications when this DIR's
+        #   compliance review completes (rejection outcomes include structured rejection
+        #   reasons). Maximum 2048 characters.
+        #
+        #   @return [String, nil]
+        optional :webhook_url, String, nil?: true
+
+        # @!method initialize(enterprise_id:, authorizer_email:, authorizer_name:, call_reasons:, certify_brand_is_accurate:, certify_ip_ownership:, certify_no_shaft_content:, display_name:, bpo_authorizations: nil, documents: nil, logo_url: nil, reselling: nil, webhook_url: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Enterprises::DirCreateParams} for more details.
         #
@@ -92,7 +112,7 @@ module Telnyx
         #
         #   @param call_reasons [Array<String>] 1–10 reasons your business calls customers. Validate phrasing against `POST /cal
         #
-        #   @param certify_brand_is_accurate [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyBrandIsAccurate] Must be `true`.
+        #   @param certify_brand_is_accurate [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyBrandIsAccurate] Certification that the DIR information is accurate. Must be `true` for the DIR t
         #
         #   @param certify_ip_ownership [Boolean, Telnyx::Models::Enterprises::DirCreateParams::CertifyIPOwnership] Must be `true`. Confirms ownership of any logos/trademarks shown.
         #
@@ -100,15 +120,20 @@ module Telnyx
         #
         #   @param display_name [String] Name shown to call recipients. No emoji; not whitespace-only.
         #
+        #   @param bpo_authorizations [Array<Telnyx::Models::BpoAuthorizationInput>] Optional. Approved BPO (Business Process Outsourcer) accounts on your organizati
+        #
         #   @param documents [Array<Telnyx::Models::Document>] Supporting documents. Each `document_id` may appear at most once on a DIR.
         #
         #   @param logo_url [String] Publicly accessible HTTPS URL (max 128 chars) to a 256x256 BMP logo (max 1 MB).
         #
         #   @param reselling [Boolean] Set to true if your organization places calls on behalf of other enterprises (BP
         #
+        #   @param webhook_url [String, nil] Optional `https://` URL that receives webhook notifications when this DIR's comp
+        #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
-        # Must be `true`.
+        # Certification that the DIR information is accurate. Must be `true` for the DIR
+        # to be submitted for vetting.
         module CertifyBrandIsAccurate
           extend Telnyx::Internal::Type::Enum
 

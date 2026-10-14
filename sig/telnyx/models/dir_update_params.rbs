@@ -5,6 +5,7 @@ module Telnyx
         dir_id: String,
         authorizer_email: String,
         authorizer_name: String,
+        bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput],
         call_reasons: ::Array[String],
         certify_brand_is_accurate: bool,
         certify_ip_ownership: bool,
@@ -12,7 +13,8 @@ module Telnyx
         display_name: String,
         documents: ::Array[Telnyx::Document],
         logo_url: String,
-        reselling: bool
+        reselling: bool,
+        webhook_url: String?
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -29,6 +31,12 @@ module Telnyx
       attr_reader authorizer_name: String?
 
       def authorizer_name=: (String) -> String
+
+      attr_reader bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput]?
+
+      def bpo_authorizations=: (
+        ::Array[Telnyx::BpoAuthorizationInput]
+      ) -> ::Array[Telnyx::BpoAuthorizationInput]
 
       attr_reader call_reasons: ::Array[String]?
 
@@ -62,10 +70,13 @@ module Telnyx
 
       def reselling=: (bool) -> bool
 
+      attr_accessor webhook_url: String?
+
       def initialize: (
         dir_id: String,
         ?authorizer_email: String,
         ?authorizer_name: String,
+        ?bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput],
         ?call_reasons: ::Array[String],
         ?certify_brand_is_accurate: bool,
         ?certify_ip_ownership: bool,
@@ -74,6 +85,7 @@ module Telnyx
         ?documents: ::Array[Telnyx::Document],
         ?logo_url: String,
         ?reselling: bool,
+        ?webhook_url: String?,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -81,6 +93,7 @@ module Telnyx
         dir_id: String,
         authorizer_email: String,
         authorizer_name: String,
+        bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput],
         call_reasons: ::Array[String],
         certify_brand_is_accurate: bool,
         certify_ip_ownership: bool,
@@ -89,6 +102,7 @@ module Telnyx
         documents: ::Array[Telnyx::Document],
         logo_url: String,
         reselling: bool,
+        webhook_url: String?,
         request_options: Telnyx::RequestOptions
       }
     end

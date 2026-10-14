@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      module PhoneNumbers
+        type whatsapp_calling_routing_data =
+          {
+            connection_id: String?,
+            phone_number: String,
+            record_type: Telnyx::Models::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData::record_type
+          }
+
+        class WhatsappCallingRoutingData < Telnyx::Internal::Type::BaseModel
+          attr_accessor connection_id: String?
+
+          attr_accessor phone_number: String
+
+          attr_accessor record_type: Telnyx::Models::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData::record_type
+
+          def initialize: (
+            connection_id: String?,
+            phone_number: String,
+            record_type: Telnyx::Models::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData::record_type
+          ) -> void
+
+          def to_hash: -> {
+            connection_id: String?,
+            phone_number: String,
+            record_type: Telnyx::Models::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData::record_type
+          }
+
+          type record_type = :whatsapp_calling_routing
+
+          module RecordType
+            extend Telnyx::Internal::Type::Enum
+
+            WHATSAPP_CALLING_ROUTING: :whatsapp_calling_routing
+
+            def self?.values: -> ::Array[Telnyx::Models::Whatsapp::PhoneNumbers::WhatsappCallingRoutingData::record_type]
+          end
+        end
+      end
+    end
+  end
+end

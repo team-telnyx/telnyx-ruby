@@ -18,6 +18,8 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :dir_id
 
+        # The phone numbers to remove from this brand, in E.164 format, up to 100 per
+        # request. They must currently be attached to this brand.
         sig { returns(T::Array[String]) }
         attr_accessor :phone_numbers
 
@@ -28,7 +30,13 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(dir_id:, phone_numbers:, request_options: {})
+        def self.new(
+          dir_id:,
+          # The phone numbers to remove from this brand, in E.164 format, up to 100 per
+          # request. They must currently be attached to this brand.
+          phone_numbers:,
+          request_options: {}
+        )
         end
 
         sig do

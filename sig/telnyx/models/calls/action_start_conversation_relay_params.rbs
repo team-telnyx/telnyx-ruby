@@ -22,7 +22,7 @@ module Telnyx
           structured_provider: ::Hash[Symbol, top],
           transcription: ::Hash[Symbol, top],
           transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::transcription_engine,
-          transcription_engine_config: ::Hash[Symbol, top],
+          transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
           tts_provider: String,
           url: String,
           voice: String,
@@ -122,11 +122,11 @@ module Telnyx
           Telnyx::Models::Calls::ActionStartConversationRelayParams::transcription_engine
         ) -> Telnyx::Models::Calls::ActionStartConversationRelayParams::transcription_engine
 
-        attr_reader transcription_engine_config: ::Hash[Symbol, top]?
+        attr_reader transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig?
 
         def transcription_engine_config=: (
-          ::Hash[Symbol, top]
-        ) -> ::Hash[Symbol, top]
+          Telnyx::Calls::ConversationRelayTranscriptionEngineConfig
+        ) -> Telnyx::Calls::ConversationRelayTranscriptionEngineConfig
 
         attr_reader tts_provider: String?
 
@@ -166,7 +166,7 @@ module Telnyx
           ?structured_provider: ::Hash[Symbol, top],
           ?transcription: ::Hash[Symbol, top],
           ?transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::transcription_engine,
-          ?transcription_engine_config: ::Hash[Symbol, top],
+          ?transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
           ?tts_provider: String,
           ?url: String,
           ?voice: String,
@@ -194,7 +194,7 @@ module Telnyx
           structured_provider: ::Hash[Symbol, top],
           transcription: ::Hash[Symbol, top],
           transcription_engine: Telnyx::Models::Calls::ActionStartConversationRelayParams::transcription_engine,
-          transcription_engine_config: ::Hash[Symbol, top],
+          transcription_engine_config: Telnyx::Calls::ConversationRelayTranscriptionEngineConfig,
           tts_provider: String,
           url: String,
           voice: String,

@@ -64,6 +64,22 @@ class Telnyx::Test::Resources::AI::Memory::Namespaces::ProfilesTest < Telnyx::Te
     end
   end
 
+  def test_preview_required_params
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.ai.memory.namespaces.profiles.preview("profile_id", namespace: "namespace")
+
+    assert_pattern do
+      response => Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::AI::Memory::Namespaces::ProfilePreviewResponse::Data
+      }
+    end
+  end
+
   def test_recall_required_params
     skip("Mock server tests are disabled")
 

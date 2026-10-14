@@ -27,24 +27,28 @@ module Telnyx
         end
         attr_writer :product_type
 
+        # The version of the terms you accepted.
         sig { returns(T.nilable(String)) }
         attr_reader :terms_version
 
         sig { params(terms_version: String).void }
         attr_writer :terms_version
 
+        # The unique identifier of this recorded agreement.
         sig { returns(T.nilable(String)) }
         attr_reader :id
 
         sig { params(id: String).void }
         attr_writer :id
 
+        # When you accepted this version of the terms.
         sig { returns(T.nilable(Time)) }
         attr_reader :agreed_at
 
         sig { params(agreed_at: Time).void }
         attr_writer :agreed_at
 
+        # When this agreement record was created.
         sig { returns(T.nilable(Time)) }
         attr_reader :created_at
 
@@ -72,11 +76,15 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
+          # The unique identifier of this recorded agreement.
           id: nil,
+          # When you accepted this version of the terms.
           agreed_at: nil,
+          # When this agreement record was created.
           created_at: nil,
           # Telnyx product the Terms of Service apply to.
           product_type: nil,
+          # The version of the terms you accepted.
           terms_version: nil,
           # Convenience alias of `terms_version`. Both keys are present on every response.
           version: nil

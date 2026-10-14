@@ -1,0 +1,340 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type token_group_update_params =
+        {
+          id: String,
+          idempotency_key: String,
+          if_match: String,
+          allowed_models: ::Array[String],
+          blocked: bool,
+          budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          cache_ttl: Integer?,
+          fallbacks: ::Hash[Symbol, ::Array[String]]?,
+          guardrails: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          name: String,
+          provider_key_ids: ::Array[String],
+          retries: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Retries?,
+          rpm_limit: Integer?,
+          tpm_limit: Integer?
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class TokenGroupUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_accessor idempotency_key: String
+
+        attr_accessor if_match: String
+
+        attr_reader allowed_models: ::Array[String]?
+
+        def allowed_models=: (::Array[String]) -> ::Array[String]
+
+        attr_reader blocked: bool?
+
+        def blocked=: (bool) -> bool
+
+        attr_accessor budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?
+
+        attr_accessor cache_ttl: Integer?
+
+        attr_accessor fallbacks: ::Hash[Symbol, ::Array[String]]?
+
+        attr_accessor guardrails: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails?
+
+        attr_accessor max_budget: Float?
+
+        attr_accessor max_parallel_requests: Integer?
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader provider_key_ids: ::Array[String]?
+
+        def provider_key_ids=: (::Array[String]) -> ::Array[String]
+
+        attr_accessor retries: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Retries?
+
+        attr_accessor rpm_limit: Integer?
+
+        attr_accessor tpm_limit: Integer?
+
+        def initialize: (
+          id: String,
+          idempotency_key: String,
+          if_match: String,
+          ?allowed_models: ::Array[String],
+          ?blocked: bool,
+          ?budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          ?cache_ttl: Integer?,
+          ?fallbacks: ::Hash[Symbol, ::Array[String]]?,
+          ?guardrails: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?name: String,
+          ?provider_key_ids: ::Array[String],
+          ?retries: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Retries?,
+          ?rpm_limit: Integer?,
+          ?tpm_limit: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          idempotency_key: String,
+          if_match: String,
+          allowed_models: ::Array[String],
+          blocked: bool,
+          budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          cache_ttl: Integer?,
+          fallbacks: ::Hash[Symbol, ::Array[String]]?,
+          guardrails: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          name: String,
+          provider_key_ids: ::Array[String],
+          retries: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Retries?,
+          rpm_limit: Integer?,
+          tpm_limit: Integer?,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type guardrails =
+          {
+            dlp: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp,
+            secrets: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets,
+            streaming: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::streaming
+          }
+
+        class Guardrails < Telnyx::Internal::Type::BaseModel
+          attr_reader dlp: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp?
+
+          def dlp=: (
+            Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp
+          ) -> Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp
+
+          attr_reader secrets: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets?
+
+          def secrets=: (
+            Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets
+          ) -> Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets
+
+          attr_reader streaming: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::streaming?
+
+          def streaming=: (
+            Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::streaming
+          ) -> Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::streaming
+
+          def initialize: (
+            ?dlp: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp,
+            ?secrets: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets,
+            ?streaming: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::streaming
+          ) -> void
+
+          def to_hash: -> {
+            dlp: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp,
+            secrets: Telnyx::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets,
+            streaming: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::streaming
+          }
+
+          type dlp =
+            {
+              profiles: ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::profile],
+              prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::prompt,
+              response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::response
+            }
+
+          class Dlp < Telnyx::Internal::Type::BaseModel
+            attr_reader profiles: ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::profile]?
+
+            def profiles=: (
+              ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::profile]
+            ) -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::profile]
+
+            attr_reader prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::prompt?
+
+            def prompt=: (
+              Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::prompt
+            ) -> Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::prompt
+
+            attr_reader response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::response?
+
+            def response=: (
+              Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::response
+            ) -> Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::response
+
+            def initialize: (
+              ?profiles: ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::profile],
+              ?prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::prompt,
+              ?response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::response
+            ) -> void
+
+            def to_hash: -> {
+              profiles: ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::profile],
+              prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::prompt,
+              response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::response
+            }
+
+            type profile = :financial | :government_id | :contact
+
+            module Profile
+              extend Telnyx::Internal::Type::Enum
+
+              FINANCIAL: :financial
+              GOVERNMENT_ID: :government_id
+              CONTACT: :contact
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::profile]
+            end
+
+            type prompt = :ignore | :flag | :block
+
+            module Prompt
+              extend Telnyx::Internal::Type::Enum
+
+              IGNORE: :ignore
+              FLAG: :flag
+              BLOCK: :block
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::prompt]
+            end
+
+            type response = :ignore | :flag | :block
+
+            module Response
+              extend Telnyx::Internal::Type::Enum
+
+              IGNORE: :ignore
+              FLAG: :flag
+              BLOCK: :block
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Dlp::response]
+            end
+          end
+
+          type secrets =
+            {
+              prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::prompt,
+              response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::response
+            }
+
+          class Secrets < Telnyx::Internal::Type::BaseModel
+            attr_reader prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::prompt?
+
+            def prompt=: (
+              Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::prompt
+            ) -> Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::prompt
+
+            attr_reader response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::response?
+
+            def response=: (
+              Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::response
+            ) -> Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::response
+
+            def initialize: (
+              ?prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::prompt,
+              ?response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::response
+            ) -> void
+
+            def to_hash: -> {
+              prompt: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::prompt,
+              response: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::response
+            }
+
+            type prompt = :ignore | :flag | :block
+
+            module Prompt
+              extend Telnyx::Internal::Type::Enum
+
+              IGNORE: :ignore
+              FLAG: :flag
+              BLOCK: :block
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::prompt]
+            end
+
+            type response = :ignore | :flag | :block
+
+            module Response
+              extend Telnyx::Internal::Type::Enum
+
+              IGNORE: :ignore
+              FLAG: :flag
+              BLOCK: :block
+
+              def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::Secrets::response]
+            end
+          end
+
+          type streaming = :buffered | :passthrough
+
+          module Streaming
+            extend Telnyx::Internal::Type::Enum
+
+            BUFFERED: :buffered
+            PASSTHROUGH: :passthrough
+
+            def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Guardrails::streaming]
+          end
+        end
+
+        type retries =
+          {
+            max_attempts: Integer,
+            backoff: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Retries::backoff,
+            request_timeout_ms: Integer?,
+            retry_delay_ms: Integer
+          }
+
+        class Retries < Telnyx::Internal::Type::BaseModel
+          attr_accessor max_attempts: Integer
+
+          attr_reader backoff: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Retries::backoff?
+
+          def backoff=: (
+            Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Retries::backoff
+          ) -> Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Retries::backoff
+
+          attr_accessor request_timeout_ms: Integer?
+
+          attr_reader retry_delay_ms: Integer?
+
+          def retry_delay_ms=: (Integer) -> Integer
+
+          def initialize: (
+            max_attempts: Integer,
+            ?backoff: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Retries::backoff,
+            ?request_timeout_ms: Integer?,
+            ?retry_delay_ms: Integer
+          ) -> void
+
+          def to_hash: -> {
+            max_attempts: Integer,
+            backoff: Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Retries::backoff,
+            request_timeout_ms: Integer?,
+            retry_delay_ms: Integer
+          }
+
+          type backoff = :constant | :linear | :exponential
+
+          module Backoff
+            extend Telnyx::Internal::Type::Enum
+
+            CONSTANT: :constant
+            LINEAR: :linear
+            EXPONENTIAL: :exponential
+
+            def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenGroupUpdateParams::Retries::backoff]
+          end
+        end
+      end
+    end
+  end
+end

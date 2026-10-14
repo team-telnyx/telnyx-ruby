@@ -73,6 +73,7 @@ module Telnyx
         sig { returns(Telnyx::TermsOfService::TosProductType::TaggedSymbol) }
         attr_accessor :product_type
 
+        # When you accepted the terms, or null if you have not.
         sig { returns(T.nilable(Time)) }
         attr_accessor :agreed_at
 
@@ -103,6 +104,7 @@ module Telnyx
           has_agreed:,
           # Telnyx product the Terms of Service apply to.
           product_type:,
+          # When you accepted the terms, or null if you have not.
           agreed_at: nil,
           # Version the user previously agreed to (may be older than
           # `current_terms_version`). `null` if the user has never agreed.

@@ -11,9 +11,11 @@ module Telnyx
           certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership,
           certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
           display_name: String,
+          bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput],
           documents: ::Array[Telnyx::Document],
           logo_url: String,
-          reselling: bool
+          reselling: bool,
+          webhook_url: String?
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -37,6 +39,12 @@ module Telnyx
 
         attr_accessor display_name: String
 
+        attr_reader bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput]?
+
+        def bpo_authorizations=: (
+          ::Array[Telnyx::BpoAuthorizationInput]
+        ) -> ::Array[Telnyx::BpoAuthorizationInput]
+
         attr_reader documents: ::Array[Telnyx::Document]?
 
         def documents=: (::Array[Telnyx::Document]) -> ::Array[Telnyx::Document]
@@ -49,6 +57,8 @@ module Telnyx
 
         def reselling=: (bool) -> bool
 
+        attr_accessor webhook_url: String?
+
         def initialize: (
           enterprise_id: String,
           authorizer_email: String,
@@ -58,9 +68,11 @@ module Telnyx
           certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership,
           certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
           display_name: String,
+          ?bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput],
           ?documents: ::Array[Telnyx::Document],
           ?logo_url: String,
           ?reselling: bool,
+          ?webhook_url: String?,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -73,9 +85,11 @@ module Telnyx
           certify_ip_ownership: Telnyx::Models::Enterprises::DirCreateParams::certify_ip_ownership,
           certify_no_shaft_content: Telnyx::Models::Enterprises::DirCreateParams::certify_no_shaft_content,
           display_name: String,
+          bpo_authorizations: ::Array[Telnyx::BpoAuthorizationInput],
           documents: ::Array[Telnyx::Document],
           logo_url: String,
           reselling: bool,
+          webhook_url: String?,
           request_options: Telnyx::RequestOptions
         }
 

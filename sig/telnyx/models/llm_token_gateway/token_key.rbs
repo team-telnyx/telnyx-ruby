@@ -1,0 +1,147 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type token_key =
+        {
+          id: String,
+          allowed_models: ::Array[String]?,
+          blocked: bool,
+          budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          budget_started_at: Time?,
+          created_at: Time,
+          expires_at: Time?,
+          max_budget: Float?,
+          name: String,
+          record_type: :token_key,
+          required_end_user_id: bool,
+          reserved_spend: Float,
+          resets_at: Time?,
+          rpm_limit: Integer?,
+          spend: Float,
+          token_group_id: String,
+          token_user_id: String?,
+          tpm_limit: Integer?,
+          updated_at: Time,
+          version: Integer,
+          max_parallel_requests: Integer?,
+          provisioning: Telnyx::Models::LlmTokenGateway::TokenKey::provisioning
+        }
+
+      class TokenKey < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor allowed_models: ::Array[String]?
+
+        attr_accessor blocked: bool
+
+        attr_accessor budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?
+
+        attr_accessor budget_started_at: Time?
+
+        attr_accessor created_at: Time
+
+        attr_accessor expires_at: Time?
+
+        attr_accessor max_budget: Float?
+
+        attr_accessor name: String
+
+        attr_accessor record_type: :token_key
+
+        attr_accessor required_end_user_id: bool
+
+        attr_accessor reserved_spend: Float
+
+        attr_accessor resets_at: Time?
+
+        attr_accessor rpm_limit: Integer?
+
+        attr_accessor spend: Float
+
+        attr_accessor token_group_id: String
+
+        attr_accessor token_user_id: String?
+
+        attr_accessor tpm_limit: Integer?
+
+        attr_accessor updated_at: Time
+
+        attr_accessor version: Integer
+
+        attr_accessor max_parallel_requests: Integer?
+
+        attr_reader provisioning: Telnyx::Models::LlmTokenGateway::TokenKey::provisioning?
+
+        def provisioning=: (
+          Telnyx::Models::LlmTokenGateway::TokenKey::provisioning
+        ) -> Telnyx::Models::LlmTokenGateway::TokenKey::provisioning
+
+        def initialize: (
+          id: String,
+          allowed_models: ::Array[String]?,
+          blocked: bool,
+          budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          budget_started_at: Time?,
+          created_at: Time,
+          expires_at: Time?,
+          max_budget: Float?,
+          name: String,
+          required_end_user_id: bool,
+          reserved_spend: Float,
+          resets_at: Time?,
+          rpm_limit: Integer?,
+          spend: Float,
+          token_group_id: String,
+          token_user_id: String?,
+          tpm_limit: Integer?,
+          updated_at: Time,
+          version: Integer,
+          ?max_parallel_requests: Integer?,
+          ?provisioning: Telnyx::Models::LlmTokenGateway::TokenKey::provisioning,
+          ?record_type: :token_key
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          allowed_models: ::Array[String]?,
+          blocked: bool,
+          budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          budget_started_at: Time?,
+          created_at: Time,
+          expires_at: Time?,
+          max_budget: Float?,
+          name: String,
+          record_type: :token_key,
+          required_end_user_id: bool,
+          reserved_spend: Float,
+          resets_at: Time?,
+          rpm_limit: Integer?,
+          spend: Float,
+          token_group_id: String,
+          token_user_id: String?,
+          tpm_limit: Integer?,
+          updated_at: Time,
+          version: Integer,
+          max_parallel_requests: Integer?,
+          provisioning: Telnyx::Models::LlmTokenGateway::TokenKey::provisioning
+        }
+
+        type provisioning =
+          :ready | :pending | :unavailable | :inactive | :unsupported | :unknown
+
+        module Provisioning
+          extend Telnyx::Internal::Type::Enum
+
+          READY: :ready
+          PENDING: :pending
+          UNAVAILABLE: :unavailable
+          INACTIVE: :inactive
+          UNSUPPORTED: :unsupported
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::TokenKey::provisioning]
+        end
+      end
+    end
+  end
+end

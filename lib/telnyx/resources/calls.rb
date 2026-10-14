@@ -14,10 +14,18 @@ module Telnyx
       # include a `call_leg_id` which can be used to correlate the command with
       # subsequent webhooks.
       #
+      # To place the call with an AI assistant from the start, include `assistant.id`
+      # and any per-call overrides in the `assistant` object; Telnyx attempts to warm up
+      # the assistant before placing the call and starts it automatically when the
+      # called party answers.
+      #
       # **Expected Webhooks:**
       #
       # - `call.initiated`
       # - `call.answered` or `call.hangup`
+      # - `call.conversation.created` when the requested assistant conversation is
+      #   created, or `call.conversation.start_failed` when it could not be started
+      #   after the called party answered
       # - `call.hold` and `call.unhold` if the call is held/unheld
       # - `call.machine.detection.ended` if `answering_machine_detection` was requested
       # - `call.machine.greeting.ended` if `answering_machine_detection` was requested
@@ -26,6 +34,9 @@ module Telnyx
       #   `answering_machine_detection=premium` was requested
       # - `call.machine.premium.greeting.ended` if `answering_machine_detection=premium`
       #   was requested and a beep was detected
+      # - `call.machine.premium.call_screening.detected` if
+      #   `answering_machine_detection=premium_ios_call_screening_detection` was
+      #   requested and an Apple Call Screening tone was detected
       # - `call.deepfake_detection.result` if `deepfake_detection` was enabled
       # - `call.deepfake_detection.error` if `deepfake_detection` was enabled and an
       #   error occurred
@@ -47,7 +58,7 @@ module Telnyx
       #
       # @param answering_machine_detection_config [Telnyx::Models::CallDialParams::AnsweringMachineDetectionConfig] Optional configuration parameters to modify 'answering_machine_detection' perfor
       #
-      # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration. All fields except `id` are optional — the assistant'
+      # @param assistant [Telnyx::Models::CallAssistantRequest] AI Assistant configuration and per-call overrides. All fields except `id` are op
       #
       # @param audio_url [String] The URL of a file to be played back to the callee when the call is answered. The
       #

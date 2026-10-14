@@ -66,23 +66,6 @@ class Telnyx::Test::Resources::EmailTemplatesTest < Telnyx::Test::ResourceTest
     assert_pattern do
       row => Telnyx::EmailTemplate
     end
-
-    assert_pattern do
-      row => {
-        id: String,
-        autoescape: Telnyx::Internal::Type::Boolean,
-        created_at: Time,
-        html_body: String | nil,
-        name: String,
-        record_type: Telnyx::EmailTemplate::RecordType,
-        strict_variables: Telnyx::Internal::Type::Boolean,
-        subject: String | nil,
-        text_body: String | nil,
-        updated_at: Time,
-        variable_schema: ^(Telnyx::Internal::Type::HashOf[Telnyx::EmailTemplate::VariableSchema]) | nil,
-        variables: ^(Telnyx::Internal::Type::ArrayOf[String])
-      }
-    end
   end
 
   def test_delete

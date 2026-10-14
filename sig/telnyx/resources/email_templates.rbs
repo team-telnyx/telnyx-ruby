@@ -9,7 +9,8 @@ module Telnyx
         ?subject: String?,
         ?text_body: String?,
         ?variable_schema: ::Hash[Symbol, Telnyx::EmailTemplateCreateParams::VariableSchema]?,
-        ?variables: ::Array[String],
+        ?variables: ::Array[String]?,
+        ?variables_mode: Telnyx::Models::EmailTemplateCreateParams::variables_mode,
         ?idempotency_key: String,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::EmailTemplateResponse
@@ -28,11 +29,16 @@ module Telnyx
         ?subject: String?,
         ?text_body: String?,
         ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
-        ?variables: ::Array[String],
+        ?variables: ::Array[String]?,
+        ?variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::EmailTemplateResponse
 
       def list: (
+        ?filter_autoescape: Telnyx::Models::EmailTemplateListParams::filter_autoescape,
+        ?filter_content_type: Telnyx::Models::EmailTemplateListParams::filter_content_type,
+        ?filter_query: String,
+        ?filter_strict_variables: Telnyx::Models::EmailTemplateListParams::filter_strict_variables,
         ?page_cursor: String,
         ?page_size: Integer,
         ?request_options: Telnyx::request_opts
@@ -55,7 +61,8 @@ module Telnyx
         ?subject: String?,
         ?text_body: String?,
         ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
-        ?variables: ::Array[String],
+        ?variables: ::Array[String]?,
+        ?variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::EmailTemplateResponse
 

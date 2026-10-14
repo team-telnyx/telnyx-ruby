@@ -7,11 +7,25 @@ module Telnyx
 
           attr_reader settings: Telnyx::Resources::AI::Memory::Namespaces::Settings
 
+          def create: (
+            name: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Memory::NamespaceCreateResponse
+
           def retrieve: (
             String operation_id,
             namespace: String,
             ?request_options: Telnyx::request_opts
           ) -> Telnyx::Models::AI::Memory::NamespaceRetrieveResponse
+
+          def list: (
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::AI::Memory::NamespaceListResponse
+
+          def delete: (
+            String namespace,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
 
           def initialize: (client: Telnyx::Client) -> void
         end

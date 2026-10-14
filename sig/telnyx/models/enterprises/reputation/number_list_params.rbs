@@ -5,8 +5,10 @@ module Telnyx
         type number_list_params =
           {
             enterprise_id: String,
+            filter_ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
             filter_phone_number_contains: String,
             filter_phone_number_eq: String,
+            filter_source: Telnyx::Models::Enterprises::Reputation::reputation_number_source,
             page_number: Integer,
             page_size: Integer
           }
@@ -18,6 +20,12 @@ module Telnyx
 
           attr_accessor enterprise_id: String
 
+          attr_reader filter_ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status?
+
+          def filter_ownership_status=: (
+            Telnyx::Models::Enterprises::Reputation::reputation_ownership_status
+          ) -> Telnyx::Models::Enterprises::Reputation::reputation_ownership_status
+
           attr_reader filter_phone_number_contains: String?
 
           def filter_phone_number_contains=: (String) -> String
@@ -25,6 +33,12 @@ module Telnyx
           attr_reader filter_phone_number_eq: String?
 
           def filter_phone_number_eq=: (String) -> String
+
+          attr_reader filter_source: Telnyx::Models::Enterprises::Reputation::reputation_number_source?
+
+          def filter_source=: (
+            Telnyx::Models::Enterprises::Reputation::reputation_number_source
+          ) -> Telnyx::Models::Enterprises::Reputation::reputation_number_source
 
           attr_reader page_number: Integer?
 
@@ -36,8 +50,10 @@ module Telnyx
 
           def initialize: (
             enterprise_id: String,
+            ?filter_ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
             ?filter_phone_number_contains: String,
             ?filter_phone_number_eq: String,
+            ?filter_source: Telnyx::Models::Enterprises::Reputation::reputation_number_source,
             ?page_number: Integer,
             ?page_size: Integer,
             ?request_options: Telnyx::request_opts
@@ -45,8 +61,10 @@ module Telnyx
 
           def to_hash: -> {
             enterprise_id: String,
+            filter_ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
             filter_phone_number_contains: String,
             filter_phone_number_eq: String,
+            filter_source: Telnyx::Models::Enterprises::Reputation::reputation_number_source,
             page_number: Integer,
             page_size: Integer,
             request_options: Telnyx::RequestOptions

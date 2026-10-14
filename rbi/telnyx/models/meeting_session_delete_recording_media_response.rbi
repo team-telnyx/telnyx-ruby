@@ -85,7 +85,7 @@ module Telnyx
           deletion_status:,
           # The account-scoped Meeting Session identifier.
           meeting_session_id:,
-          provider: :recall,
+          provider: :telnyx,
           scope: :provider_recording_media
         )
         end

@@ -87,6 +87,17 @@ module Telnyx
         #   @return [Float, nil]
         optional :temperature, Float
 
+        # @!attribute tool_call_audio
+        #   Optional sound played to the caller while the assistant runs a tool (for example
+        #   a webhook or MCP tool). It replaces the background audio until the tool
+        #   responds, then the background audio resumes. Defaults to null, which plays no
+        #   sound; send `null` on update to clear it. Not played in conference calls.
+        #
+        #   @return [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1, nil]
+        optional :tool_call_audio,
+                 union: -> { Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio },
+                 nil?: true
+
         # @!attribute use_speaker_boost
         #   Amplifies similarity to the original speaker voice. Increases computational load
         #   and latency slightly. Only applicable when using ElevenLabs.
@@ -95,14 +106,15 @@ module Telnyx
         optional :use_speaker_boost, Telnyx::Internal::Type::Boolean
 
         # @!attribute voice_speed
-        #   The speed of the voice in the range [0.25, 2.0]. 1.0 is deafult speed. Larger
-        #   numbers make the voice faster, smaller numbers make it slower. This is only
-        #   applicable for Telnyx Natural voices and Soniox voices (0.7 to 1.3 for Soniox).
+        #   The speed of the voice in the range [0.6, 1.5]. 1.0 is the default speed. Larger
+        #   numbers make the voice faster, smaller numbers make it slower. Applies to Telnyx
+        #   `Ultra` voices; values outside this range are rejected by the synthesis engine.
+        #   Soniox voices support a speed range of 0.7 to 1.3.
         #
         #   @return [Float, nil]
         optional :voice_speed, Float
 
-        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, expressive_mode: nil, language_boost: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, use_speaker_boost: nil, voice_speed: nil)
+        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, expressive_mode: nil, language_boost: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, tool_call_audio: nil, use_speaker_boost: nil, voice_speed: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbeddingVoiceSettings} for more details.
         #
@@ -124,9 +136,11 @@ module Telnyx
         #
         #   @param temperature [Float] Determines how stable the voice is and the randomness between each generation. L
         #
+        #   @param tool_call_audio [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1, nil] Optional sound played to the caller while the assistant runs a tool (for example
+        #
         #   @param use_speaker_boost [Boolean] Amplifies similarity to the original speaker voice. Increases computational load
         #
-        #   @param voice_speed [Float] The speed of the voice in the range [0.25, 2.0]. 1.0 is deafult speed. Larger nu
+        #   @param voice_speed [Float] The speed of the voice in the range [0.6, 1.5]. 1.0 is the default speed. Larger
 
         # Optional background audio to play on the call. Use a predefined media bed, or
         # supply a looped MP3 URL. If a media URL is chosen in the portal, customers can
@@ -327,6 +341,113 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # Optional sound played to the caller while the assistant runs a tool (for example
+        # a webhook or MCP tool). It replaces the background audio until the tool
+        # responds, then the background audio resumes. Defaults to null, which plays no
+        # sound; send `null` on update to clear it. Not played in conference calls.
+        #
+        # @see Telnyx::Models::AI::InferenceEmbeddingVoiceSettings#tool_call_audio
+        module ToolCallAudio
+          extend Telnyx::Internal::Type::Union
+
+          variant -> { Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0 }
+
+          variant -> { Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1 }
+
+          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Select from predefined media options.
+            #
+            #   @return [Symbol, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type]
+            required :type,
+                     enum: -> { Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type }
+
+            # @!attribute value
+            #   The predefined media to use. `typing` plays a keyboard typing sound.
+            #
+            #   @return [Symbol, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value]
+            required :value,
+                     enum: -> { Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value }
+
+            # @!attribute volume
+            #   Volume level for the predefined media. Supports values from 0.0 to 1.0 in 0.1
+            #   increments. `0.0` plays no sound.
+            #
+            #   @return [Float, nil]
+            optional :volume, Float
+
+            # @!method initialize(type:, value:, volume: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0}
+            #   for more details.
+            #
+            #   @param type [Symbol, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Type] Select from predefined media options.
+            #
+            #   @param value [Symbol, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0::Value] The predefined media to use. `typing` plays a keyboard typing sound.
+            #
+            #   @param volume [Float] Volume level for the predefined media. Supports values from 0.0 to 1.0 in 0.1 in
+
+            # Select from predefined media options.
+            #
+            # @see Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0#type
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              PREDEFINED_MEDIA = :predefined_media
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The predefined media to use. `typing` plays a keyboard typing sound.
+            #
+            # @see Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0#value
+            module Value
+              extend Telnyx::Internal::Type::Enum
+
+              TYPING = :typing
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            # @!attribute type
+            #   Provide a direct URL to an MP3 file. The audio loops while the tool runs.
+            #
+            #   @return [Symbol, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type]
+            required :type,
+                     enum: -> { Telnyx::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type }
+
+            # @!attribute value
+            #   HTTPS URL to an MP3 file.
+            #
+            #   @return [String]
+            required :value, String
+
+            # @!method initialize(type:, value:)
+            #   @param type [Symbol, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1::Type] Provide a direct URL to an MP3 file. The audio loops while the tool runs.
+            #
+            #   @param value [String] HTTPS URL to an MP3 file.
+
+            # Provide a direct URL to an MP3 file. The audio loops while the tool runs.
+            #
+            # @see Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1#type
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              MEDIA_URL = :media_url
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # @!method self.variants
+          #   @return [Array(Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember0, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::ToolCallAudio::UnionMember1)]
         end
       end
     end

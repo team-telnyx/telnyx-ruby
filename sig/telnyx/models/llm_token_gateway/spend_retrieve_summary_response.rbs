@@ -1,0 +1,153 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type spend_retrieve_summary_response =
+        {
+          data: ::Array[Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Data],
+          meta: Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Meta
+        }
+
+      class SpendRetrieveSummaryResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Data]
+
+        attr_accessor meta: Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Meta
+
+        def initialize: (
+          data: ::Array[Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Data],
+          meta: Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Meta
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Data],
+          meta: Telnyx::Models::LlmTokenGateway::SpendRetrieveSummaryResponse::Meta
+        }
+
+        type data =
+          {
+            dimension_id: String?,
+            input_tokens: Integer,
+            name: String?,
+            output_tokens: Integer,
+            requests: Integer,
+            reserved_spend: Float,
+            spend: Float,
+            unknown_requests: Integer,
+            end_user_id: String?,
+            metadata_key: String,
+            token_group_id: String?,
+            token_key_id: String?,
+            token_user_id: String?
+          }
+
+        class Data < Telnyx::Internal::Type::BaseModel
+          attr_accessor dimension_id: String?
+
+          attr_accessor input_tokens: Integer
+
+          attr_accessor name: String?
+
+          attr_accessor output_tokens: Integer
+
+          attr_accessor requests: Integer
+
+          attr_accessor reserved_spend: Float
+
+          attr_accessor spend: Float
+
+          attr_accessor unknown_requests: Integer
+
+          attr_accessor end_user_id: String?
+
+          attr_reader metadata_key: String?
+
+          def metadata_key=: (String) -> String
+
+          attr_accessor token_group_id: String?
+
+          attr_accessor token_key_id: String?
+
+          attr_accessor token_user_id: String?
+
+          def initialize: (
+            dimension_id: String?,
+            input_tokens: Integer,
+            name: String?,
+            output_tokens: Integer,
+            requests: Integer,
+            reserved_spend: Float,
+            spend: Float,
+            unknown_requests: Integer,
+            ?end_user_id: String?,
+            ?metadata_key: String,
+            ?token_group_id: String?,
+            ?token_key_id: String?,
+            ?token_user_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            dimension_id: String?,
+            input_tokens: Integer,
+            name: String?,
+            output_tokens: Integer,
+            requests: Integer,
+            reserved_spend: Float,
+            spend: Float,
+            unknown_requests: Integer,
+            end_user_id: String?,
+            metadata_key: String,
+            token_group_id: String?,
+            token_key_id: String?,
+            token_user_id: String?
+          }
+        end
+
+        type meta =
+          {
+            end_date: Date,
+            group_by: Telnyx::Models::LlmTokenGateway::spend_group_by,
+            has_more: bool,
+            page_number: Integer,
+            page_size: Integer,
+            snapshot: String,
+            start_date: Date
+          }
+
+        class Meta < Telnyx::Internal::Type::BaseModel
+          attr_accessor end_date: Date
+
+          attr_accessor group_by: Telnyx::Models::LlmTokenGateway::spend_group_by
+
+          attr_accessor has_more: bool
+
+          attr_accessor page_number: Integer
+
+          attr_accessor page_size: Integer
+
+          attr_accessor snapshot: String
+
+          attr_accessor start_date: Date
+
+          def initialize: (
+            end_date: Date,
+            group_by: Telnyx::Models::LlmTokenGateway::spend_group_by,
+            has_more: bool,
+            page_number: Integer,
+            page_size: Integer,
+            snapshot: String,
+            start_date: Date
+          ) -> void
+
+          def to_hash: -> {
+            end_date: Date,
+            group_by: Telnyx::Models::LlmTokenGateway::spend_group_by,
+            has_more: bool,
+            page_number: Integer,
+            page_size: Integer,
+            snapshot: String,
+            start_date: Date
+          }
+        end
+      end
+    end
+  end
+end

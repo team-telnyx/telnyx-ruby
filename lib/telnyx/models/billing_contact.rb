@@ -4,34 +4,44 @@ module Telnyx
   module Models
     class BillingContact < Telnyx::Internal::Type::BaseModel
       # @!attribute email
+      #   The email address of the person Telnyx should contact about billing for this
+      #   account.
       #
       #   @return [String]
       required :email, String
 
       # @!attribute first_name
+      #   The first name of the person Telnyx should contact about billing for this
+      #   account.
       #
       #   @return [String]
       required :first_name, String
 
       # @!attribute last_name
+      #   The last name of the person Telnyx should contact about billing for this
+      #   account.
       #
       #   @return [String]
       required :last_name, String
 
       # @!attribute phone_number
-      #   E.164 format with leading `+`.
+      #   The phone number of the billing contact, in E.164 format, for example
+      #   +12125551234.
       #
       #   @return [String]
       required :phone_number, String
 
       # @!method initialize(email:, first_name:, last_name:, phone_number:)
-      #   @param email [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::BillingContact} for more details.
       #
-      #   @param first_name [String]
+      #   @param email [String] The email address of the person Telnyx should contact about billing for this acc
       #
-      #   @param last_name [String]
+      #   @param first_name [String] The first name of the person Telnyx should contact about billing for this accoun
       #
-      #   @param phone_number [String] E.164 format with leading `+`.
+      #   @param last_name [String] The last name of the person Telnyx should contact about billing for this account
+      #
+      #   @param phone_number [String] The phone number of the billing contact, in E.164 format, for example +121255512
     end
   end
 end

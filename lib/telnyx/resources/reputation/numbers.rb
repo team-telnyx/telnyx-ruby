@@ -41,13 +41,17 @@ module Telnyx
         # that returns numbers across every enterprise you own. Useful when you don't want
         # to look up the enterprise id first.
         #
-        # @overload list(filter_enterprise_id: nil, filter_phone_number_contains: nil, filter_phone_number_eq: nil, page_number: nil, page_size: nil, request_options: {})
+        # @overload list(filter_enterprise_id: nil, filter_ownership_status: nil, filter_phone_number_contains: nil, filter_phone_number_eq: nil, filter_source: nil, page_number: nil, page_size: nil, request_options: {})
         #
         # @param filter_enterprise_id [String] Filter by enterprise ID.
+        #
+        # @param filter_ownership_status [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationOwnershipStatus] Only numbers with this ownership status. `removed` lists the numbers that were r
         #
         # @param filter_phone_number_contains [String] Partial match on phone number. Must contain at least 5 digits.
         #
         # @param filter_phone_number_eq [String] Exact phone-number match (E.164).
+        #
+        # @param filter_source [Symbol, Telnyx::Models::Enterprises::Reputation::ReputationNumberSource] Only numbers with this source.
         #
         # @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
@@ -66,8 +70,10 @@ module Telnyx
             path: "reputation/numbers",
             query: query.transform_keys(
               filter_enterprise_id: "filter[enterprise_id]",
+              filter_ownership_status: "filter[ownership_status]",
               filter_phone_number_contains: "filter[phone_number][contains]",
               filter_phone_number_eq: "filter[phone_number][eq]",
+              filter_source: "filter[source]",
               page_number: "page[number]",
               page_size: "page[size]"
             ),

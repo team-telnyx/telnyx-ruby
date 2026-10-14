@@ -5,6 +5,7 @@ module Telnyx
         {
           id: String,
           shared_tool_id: String,
+          message: String,
           name: String,
           position: Telnyx::AI::NodePosition,
           type: Telnyx::Models::AI::ToolNodeReq::type_
@@ -14,6 +15,10 @@ module Telnyx
         attr_accessor id: String
 
         attr_accessor shared_tool_id: String
+
+        attr_reader message: String?
+
+        def message=: (String) -> String
 
         attr_reader name: String?
 
@@ -32,6 +37,7 @@ module Telnyx
         def initialize: (
           id: String,
           shared_tool_id: String,
+          ?message: String,
           ?name: String,
           ?position: Telnyx::AI::NodePosition,
           ?type: Telnyx::Models::AI::ToolNodeReq::type_
@@ -40,6 +46,7 @@ module Telnyx
         def to_hash: -> {
           id: String,
           shared_tool_id: String,
+          message: String,
           name: String,
           position: Telnyx::AI::NodePosition,
           type: Telnyx::Models::AI::ToolNodeReq::type_

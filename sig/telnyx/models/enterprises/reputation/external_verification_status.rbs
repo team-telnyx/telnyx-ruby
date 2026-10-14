@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type external_verification_status = :pending | :approved | :rejected
+
+        module ExternalVerificationStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          APPROVED: :approved
+          REJECTED: :rejected
+
+          def self?.values: -> ::Array[Telnyx::Models::Enterprises::Reputation::external_verification_status]
+        end
+      end
+    end
+  end
+end

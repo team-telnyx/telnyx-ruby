@@ -19,9 +19,13 @@ module Telnyx
 
       variant -> { Telnyx::CallBridgedWebhookEvent }
 
+      variant -> { Telnyx::CallConversationCreatedWebhookEvent }
+
       variant -> { Telnyx::CallConversationEndedWebhookEvent }
 
       variant -> { Telnyx::CallConversationInsightsGeneratedWebhookEvent }
+
+      variant -> { Telnyx::CallConversationStartFailedWebhookEvent }
 
       variant -> { Telnyx::CallCostWebhookEvent }
 
@@ -51,7 +55,11 @@ module Telnyx
 
       variant -> { Telnyx::CallMachineGreetingEndedWebhookEvent }
 
+      variant -> { Telnyx::CallMachinePremiumCallScreeningDetectedWebhookEvent }
+
       variant -> { Telnyx::CallMachinePremiumDetectionEndedWebhookEvent }
+
+      variant -> { Telnyx::CallMachinePremiumDetectionStartedWebhookEvent }
 
       variant -> { Telnyx::CallMachinePremiumGreetingEndedWebhookEvent }
 
@@ -141,6 +149,12 @@ module Telnyx
 
       variant -> { Telnyx::NumberOrderStatusUpdateWebhookEvent }
 
+      variant -> { Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent }
+
+      variant -> { Telnyx::NumberReputationNumberFlaggedWebhookEvent }
+
+      variant -> { Telnyx::NumberReputationNumberRemovedWebhookEvent }
+
       variant -> { Telnyx::RecordingAvailableWebhookEvent }
 
       variant -> { Telnyx::ReplacedLinkClickWebhookEvent }
@@ -155,8 +169,10 @@ module Telnyx
 
       variant -> { Telnyx::WhatsappMessageEcho }
 
+      variant -> { Telnyx::WhatsappWabaAddedWebhookEvent }
+
       # @!method self.variants
-      #   @return [Array(Telnyx::Models::CallAIGatherEndedWebhookEvent, Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent, Telnyx::Models::CallAIGatherPartialResultsWebhookEvent, Telnyx::Models::ArtifactCompletedWebhookEvent, Telnyx::Models::ArtifactFailedWebhookEvent, Telnyx::Models::CallAnsweredWebhookEvent, Telnyx::Models::CallBridgedWebhookEvent, Telnyx::Models::CallConversationEndedWebhookEvent, Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent, Telnyx::Models::CallCostWebhookEvent, Telnyx::Models::CallDeepfakeDetectionErrorWebhookEvent, Telnyx::Models::CallDeepfakeDetectionResultWebhookEvent, Telnyx::Models::CallDtmfReceivedWebhookEvent, Telnyx::Models::CallEnqueuedWebhookEvent, Telnyx::Models::CallForkStartedWebhookEvent, Telnyx::Models::CallForkStoppedWebhookEvent, Telnyx::Models::CallGatherEndedWebhookEvent, Telnyx::Models::CallHangupWebhookEvent, Telnyx::Models::CallHoldWebhookEvent, Telnyx::Models::CallInitiatedWebhookEvent, Telnyx::Models::CallLeftQueueWebhookEvent, Telnyx::Models::CallMachineDetectionEndedWebhookEvent, Telnyx::Models::CallMachineGreetingEndedWebhookEvent, Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent, Telnyx::Models::CallMachinePremiumGreetingEndedWebhookEvent, Telnyx::Models::CallPaymentCompletedWebhookEvent, Telnyx::Models::CallPaymentProgressWebhookEvent, Telnyx::Models::CallPlaybackEndedWebhookEvent, Telnyx::Models::CallPlaybackStartedWebhookEvent, Telnyx::Models::CallRecordingErrorWebhookEvent, Telnyx::Models::CallRecordingSavedWebhookEvent, Telnyx::Models::CallRecordingTranscriptionSavedWebhookEvent, Telnyx::Models::CallReferCompletedWebhookEvent, Telnyx::Models::CallReferFailedWebhookEvent, Telnyx::Models::CallReferStartedWebhookEvent, Telnyx::Models::CallSiprecFailedWebhookEvent, Telnyx::Models::CallSiprecStartedWebhookEvent, Telnyx::Models::CallSiprecStoppedWebhookEvent, Telnyx::Models::CallSpeakEndedWebhookEvent, Telnyx::Models::CallSpeakStartedWebhookEvent, Telnyx::Models::CallStreamingFailedWebhookEvent, Telnyx::Models::CallStreamingStartedWebhookEvent, Telnyx::Models::CallStreamingStoppedWebhookEvent, Telnyx::Models::CallUnholdWebhookEvent, Telnyx::Models::CampaignStatusUpdate, Telnyx::Models::ConferenceCreatedWebhookEvent, Telnyx::Models::ConferenceEndedWebhookEvent, Telnyx::Models::ConferenceFloorChanged, Telnyx::Models::ConferenceParticipantJoinedWebhookEvent, Telnyx::Models::ConferenceParticipantLeftWebhookEvent, Telnyx::Models::ConferenceParticipantPlaybackEndedWebhookEvent, Telnyx::Models::ConferenceParticipantPlaybackStartedWebhookEvent, Telnyx::Models::ConferenceParticipantSpeakEndedWebhookEvent, Telnyx::Models::ConferenceParticipantSpeakStartedWebhookEvent, Telnyx::Models::ConferencePlaybackEndedWebhookEvent, Telnyx::Models::ConferencePlaybackStartedWebhookEvent, Telnyx::Models::ConferenceRecordingSavedWebhookEvent, Telnyx::Models::ConferenceSpeakEndedWebhookEvent, Telnyx::Models::ConferenceSpeakStartedWebhookEvent, Telnyx::Models::DeliveryUpdateWebhookEvent, Telnyx::Models::FaxDelivered, Telnyx::Models::FaxFailed, Telnyx::Models::FaxMediaProcessed, Telnyx::Models::FaxQueued, Telnyx::Models::FaxSendingStarted, Telnyx::Models::HostedNumberOrderEventWebhookEvent, Telnyx::Models::InboundMessageWebhookEvent, Telnyx::Models::NumberOrderStatusUpdateWebhookEvent, Telnyx::Models::RecordingAvailableWebhookEvent, Telnyx::Models::ReplacedLinkClickWebhookEvent, Telnyx::Models::SessionStatusChangedWebhookEvent, Telnyx::Models::TranscriptCompletedWebhookEvent, Telnyx::Models::TranscriptionWebhookEvent, Telnyx::Models::WhatsappAccountUpdate, Telnyx::Models::WhatsappMessageEcho)]
+      #   @return [Array(Telnyx::Models::CallAIGatherEndedWebhookEvent, Telnyx::Models::CallAIGatherMessageHistoryUpdatedWebhookEvent, Telnyx::Models::CallAIGatherPartialResultsWebhookEvent, Telnyx::Models::ArtifactCompletedWebhookEvent, Telnyx::Models::ArtifactFailedWebhookEvent, Telnyx::Models::CallAnsweredWebhookEvent, Telnyx::Models::CallBridgedWebhookEvent, Telnyx::Models::CallConversationCreatedWebhookEvent, Telnyx::Models::CallConversationEndedWebhookEvent, Telnyx::Models::CallConversationInsightsGeneratedWebhookEvent, Telnyx::Models::CallConversationStartFailedWebhookEvent, Telnyx::Models::CallCostWebhookEvent, Telnyx::Models::CallDeepfakeDetectionErrorWebhookEvent, Telnyx::Models::CallDeepfakeDetectionResultWebhookEvent, Telnyx::Models::CallDtmfReceivedWebhookEvent, Telnyx::Models::CallEnqueuedWebhookEvent, Telnyx::Models::CallForkStartedWebhookEvent, Telnyx::Models::CallForkStoppedWebhookEvent, Telnyx::Models::CallGatherEndedWebhookEvent, Telnyx::Models::CallHangupWebhookEvent, Telnyx::Models::CallHoldWebhookEvent, Telnyx::Models::CallInitiatedWebhookEvent, Telnyx::Models::CallLeftQueueWebhookEvent, Telnyx::Models::CallMachineDetectionEndedWebhookEvent, Telnyx::Models::CallMachineGreetingEndedWebhookEvent, Telnyx::Models::CallMachinePremiumCallScreeningDetectedWebhookEvent, Telnyx::Models::CallMachinePremiumDetectionEndedWebhookEvent, Telnyx::Models::CallMachinePremiumDetectionStartedWebhookEvent, Telnyx::Models::CallMachinePremiumGreetingEndedWebhookEvent, Telnyx::Models::CallPaymentCompletedWebhookEvent, Telnyx::Models::CallPaymentProgressWebhookEvent, Telnyx::Models::CallPlaybackEndedWebhookEvent, Telnyx::Models::CallPlaybackStartedWebhookEvent, Telnyx::Models::CallRecordingErrorWebhookEvent, Telnyx::Models::CallRecordingSavedWebhookEvent, Telnyx::Models::CallRecordingTranscriptionSavedWebhookEvent, Telnyx::Models::CallReferCompletedWebhookEvent, Telnyx::Models::CallReferFailedWebhookEvent, Telnyx::Models::CallReferStartedWebhookEvent, Telnyx::Models::CallSiprecFailedWebhookEvent, Telnyx::Models::CallSiprecStartedWebhookEvent, Telnyx::Models::CallSiprecStoppedWebhookEvent, Telnyx::Models::CallSpeakEndedWebhookEvent, Telnyx::Models::CallSpeakStartedWebhookEvent, Telnyx::Models::CallStreamingFailedWebhookEvent, Telnyx::Models::CallStreamingStartedWebhookEvent, Telnyx::Models::CallStreamingStoppedWebhookEvent, Telnyx::Models::CallUnholdWebhookEvent, Telnyx::Models::CampaignStatusUpdate, Telnyx::Models::ConferenceCreatedWebhookEvent, Telnyx::Models::ConferenceEndedWebhookEvent, Telnyx::Models::ConferenceFloorChanged, Telnyx::Models::ConferenceParticipantJoinedWebhookEvent, Telnyx::Models::ConferenceParticipantLeftWebhookEvent, Telnyx::Models::ConferenceParticipantPlaybackEndedWebhookEvent, Telnyx::Models::ConferenceParticipantPlaybackStartedWebhookEvent, Telnyx::Models::ConferenceParticipantSpeakEndedWebhookEvent, Telnyx::Models::ConferenceParticipantSpeakStartedWebhookEvent, Telnyx::Models::ConferencePlaybackEndedWebhookEvent, Telnyx::Models::ConferencePlaybackStartedWebhookEvent, Telnyx::Models::ConferenceRecordingSavedWebhookEvent, Telnyx::Models::ConferenceSpeakEndedWebhookEvent, Telnyx::Models::ConferenceSpeakStartedWebhookEvent, Telnyx::Models::DeliveryUpdateWebhookEvent, Telnyx::Models::FaxDelivered, Telnyx::Models::FaxFailed, Telnyx::Models::FaxMediaProcessed, Telnyx::Models::FaxQueued, Telnyx::Models::FaxSendingStarted, Telnyx::Models::HostedNumberOrderEventWebhookEvent, Telnyx::Models::InboundMessageWebhookEvent, Telnyx::Models::NumberOrderStatusUpdateWebhookEvent, Telnyx::Models::NumberReputationExternalVerificationStatusChangedWebhookEvent, Telnyx::Models::NumberReputationNumberFlaggedWebhookEvent, Telnyx::Models::NumberReputationNumberRemovedWebhookEvent, Telnyx::Models::RecordingAvailableWebhookEvent, Telnyx::Models::ReplacedLinkClickWebhookEvent, Telnyx::Models::SessionStatusChangedWebhookEvent, Telnyx::Models::TranscriptCompletedWebhookEvent, Telnyx::Models::TranscriptionWebhookEvent, Telnyx::Models::WhatsappAccountUpdate, Telnyx::Models::WhatsappMessageEcho, Telnyx::Models::WhatsappWabaAddedWebhookEvent)]
     end
   end
 end

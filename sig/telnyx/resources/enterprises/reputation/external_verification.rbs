@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class Enterprises
+      class Reputation
+        class ExternalVerification
+          def create: (
+            String enterprise_id,
+            document_ids: ::Array[String],
+            ?phone_numbers: ::Array[String],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Enterprises::Reputation::ExternalVerificationWrapped
+
+          def list: (
+            String enterprise_id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Enterprises::Reputation::ExternalVerificationWrapped
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

@@ -15,12 +15,25 @@ module Telnyx
 
         # ID of the single shared (org-level) tool this node executes. When the flow
         # reaches this node the tool runs as a deliberate step (no LLM turn); its outgoing
-        # `tool_result` edges then route on the outcome. Arguments are filled from the
-        # conversation's dynamic variables by name — a dynamic variable whose name matches
-        # one of the tool's parameters supplies that argument. Cross-validated against the
-        # org's shared tools on write.
+        # `llm` / `expression` edges route the flow on the tool's outcome. Arguments are
+        # filled from the conversation's dynamic variables by name — a dynamic variable
+        # whose name matches one of the tool's parameters supplies that argument.
+        # Cross-validated against the org's shared tools on write.
         sig { returns(String) }
         attr_accessor :shared_tool_id
+
+        # Optional message delivered to the user verbatim immediately before the tool
+        # executes — an announcement such as 'One moment while I look that up.' No LLM
+        # turn and no customer turn: the message is spoken/sent, then the tool runs, in
+        # the same deterministic step. `{{variable}}` placeholders are interpolated from
+        # the conversation's dynamic variables (unresolved → empty string); the tool's own
+        # result is not yet available when the message is rendered. Omit for a silent tool
+        # step.
+        sig { returns(T.nilable(String)) }
+        attr_reader :message
+
+        sig { params(message: String).void }
+        attr_writer :message
 
         # Optional human-readable label, displayed in authoring UIs.
         sig { returns(T.nilable(String)) }
@@ -83,6 +96,7 @@ module Telnyx
           params(
             id: String,
             shared_tool_id: String,
+            message: String,
             name: String,
             position: Telnyx::AI::NodePosition::OrHash,
             tool:
@@ -112,11 +126,19 @@ module Telnyx
           id:,
           # ID of the single shared (org-level) tool this node executes. When the flow
           # reaches this node the tool runs as a deliberate step (no LLM turn); its outgoing
-          # `tool_result` edges then route on the outcome. Arguments are filled from the
-          # conversation's dynamic variables by name — a dynamic variable whose name matches
-          # one of the tool's parameters supplies that argument. Cross-validated against the
-          # org's shared tools on write.
+          # `llm` / `expression` edges route the flow on the tool's outcome. Arguments are
+          # filled from the conversation's dynamic variables by name — a dynamic variable
+          # whose name matches one of the tool's parameters supplies that argument.
+          # Cross-validated against the org's shared tools on write.
           shared_tool_id:,
+          # Optional message delivered to the user verbatim immediately before the tool
+          # executes — an announcement such as 'One moment while I look that up.' No LLM
+          # turn and no customer turn: the message is spoken/sent, then the tool runs, in
+          # the same deterministic step. `{{variable}}` placeholders are interpolated from
+          # the conversation's dynamic variables (unresolved → empty string); the tool's own
+          # result is not yet available when the message is rendered. Omit for a silent tool
+          # step.
+          message: nil,
           # Optional human-readable label, displayed in authoring UIs.
           name: nil,
           # Optional canvas coordinates used by authoring UIs to lay out the graph. Ignored
@@ -137,6 +159,7 @@ module Telnyx
             {
               id: String,
               shared_tool_id: String,
+              message: String,
               name: String,
               position: Telnyx::AI::NodePosition,
               tool: T::Array[Telnyx::AI::AssistantTool::Variants],

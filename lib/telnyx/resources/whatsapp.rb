@@ -19,6 +19,9 @@ module Telnyx
       # @return [Telnyx::Resources::Whatsapp::UserData]
       attr_reader :user_data
 
+      # @return [Telnyx::Resources::Whatsapp::Signup]
+      attr_reader :signup
+
       # @api private
       #
       # @param client [Telnyx::Client]
@@ -28,6 +31,7 @@ module Telnyx
         @templates = Telnyx::Resources::Whatsapp::Templates.new(client: client)
         @phone_numbers = Telnyx::Resources::Whatsapp::PhoneNumbers.new(client: client)
         @user_data = Telnyx::Resources::Whatsapp::UserData.new(client: client)
+        @signup = Telnyx::Resources::Whatsapp::Signup.new(client: client)
       end
     end
   end

@@ -30,10 +30,13 @@ module Telnyx
       #   Engine-specific transcription settings for Conversation Relay. This accepts the
       #   same provider-specific options used by the Call Transcription Start command,
       #   such as `transcription_model`, without requiring the engine discriminator to be
-      #   repeated inside this object.
+      #   repeated inside this object. With Deepgram Flux (`deepgram/flux`),
+      #   `interim_results`, `eot_threshold` and `eager_eot_threshold` control the interim
+      #   prompts and the `eagerEndOfTurn` and `turnResumed` frames sent to your WebSocket
+      #   server.
       #
-      #   @return [Hash{Symbol=>Object}, nil]
-      optional :transcription_engine_config, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+      #   @return [Telnyx::Models::Calls::ConversationRelayTranscriptionEngineConfig, nil]
+      optional :transcription_engine_config, -> { Telnyx::Calls::ConversationRelayTranscriptionEngineConfig }
 
       # @!attribute transcription_provider
       #   Conversation Relay transcription provider name. Prefer `transcription_engine`
@@ -73,7 +76,7 @@ module Telnyx
       #
       #   @param transcription_engine [Symbol, Telnyx::Models::ConversationRelayLanguage::TranscriptionEngine] Engine to use for speech recognition. Legacy values `A` - `Google`, `B` - `Telny
       #
-      #   @param transcription_engine_config [Hash{Symbol=>Object}] Engine-specific transcription settings for Conversation Relay. This accepts the
+      #   @param transcription_engine_config [Telnyx::Models::Calls::ConversationRelayTranscriptionEngineConfig] Engine-specific transcription settings for Conversation Relay. This accepts the
       #
       #   @param transcription_provider [String] Conversation Relay transcription provider name. Prefer `transcription_engine` wh
       #

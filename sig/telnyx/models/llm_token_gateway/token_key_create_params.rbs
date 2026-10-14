@@ -1,0 +1,92 @@
+module Telnyx
+  module Models
+    module LlmTokenGateway
+      type token_key_create_params =
+        {
+          name: String,
+          token_group_id: String,
+          idempotency_key: String,
+          allowed_models: ::Array[String]?,
+          blocked: bool,
+          budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          expires_at: Time?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          required_end_user_id: bool,
+          rpm_limit: Integer?,
+          token_user_id: String?,
+          tpm_limit: Integer?
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class TokenKeyCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor name: String
+
+        attr_accessor token_group_id: String
+
+        attr_accessor idempotency_key: String
+
+        attr_accessor allowed_models: ::Array[String]?
+
+        attr_reader blocked: bool?
+
+        def blocked=: (bool) -> bool
+
+        attr_accessor budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?
+
+        attr_accessor expires_at: Time?
+
+        attr_accessor max_budget: Float?
+
+        attr_accessor max_parallel_requests: Integer?
+
+        attr_reader required_end_user_id: bool?
+
+        def required_end_user_id=: (bool) -> bool
+
+        attr_accessor rpm_limit: Integer?
+
+        attr_accessor token_user_id: String?
+
+        attr_accessor tpm_limit: Integer?
+
+        def initialize: (
+          name: String,
+          token_group_id: String,
+          idempotency_key: String,
+          ?allowed_models: ::Array[String]?,
+          ?blocked: bool,
+          ?budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          ?expires_at: Time?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?required_end_user_id: bool,
+          ?rpm_limit: Integer?,
+          ?token_user_id: String?,
+          ?tpm_limit: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          name: String,
+          token_group_id: String,
+          idempotency_key: String,
+          allowed_models: ::Array[String]?,
+          blocked: bool,
+          budget_duration: Telnyx::Models::LlmTokenGateway::budget_duration?,
+          expires_at: Time?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          required_end_user_id: bool,
+          rpm_limit: Integer?,
+          token_user_id: String?,
+          tpm_limit: Integer?,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

@@ -42,10 +42,16 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
     assert_pattern do
       row => {
         id: String | nil,
+        confirm_by: Time | nil,
         created_at: Time | nil,
         enterprise_id: String | nil,
+        flag_reason: String | nil,
+        ownership_status: Telnyx::Enterprises::Reputation::ReputationOwnershipStatus | nil,
         phone_number: String | nil,
+        removal_reason: Telnyx::Enterprises::Reputation::ReputationPhoneNumber::RemovalReason | nil,
+        removed_at: Time | nil,
         reputation_data: Telnyx::ReputationData | nil,
+        source: Telnyx::Enterprises::Reputation::ReputationNumberSource | nil,
         updated_at: Time | nil
       }
     end
@@ -86,6 +92,27 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
     end
   end
 
+  def test_ownership_confirm_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.enterprises.reputation.numbers.ownership_confirm(
+        "+19493253498",
+        enterprise_id: "4a6192a4-573d-446d-b3ce-aff9117272a6",
+        still_own: true
+      )
+
+    assert_pattern do
+      response => Telnyx::Enterprises::Reputation::ReputationPhoneNumberWithReputation
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Enterprises::Reputation::ReputationPhoneNumber
+      }
+    end
+  end
+
   def test_refresh_required_params
     skip("Mock server tests are disabled")
 
@@ -102,6 +129,26 @@ class Telnyx::Test::Resources::Enterprises::Reputation::NumbersTest < Telnyx::Te
     assert_pattern do
       response => {
         data: Telnyx::Models::Enterprises::Reputation::NumberRefreshResponse::Data
+      }
+    end
+  end
+
+  def test_retrieve_ownership_required_params
+    skip("Mock server tests are disabled")
+
+    response =
+      @telnyx.enterprises.reputation.numbers.retrieve_ownership(
+        "+19493253498",
+        enterprise_id: "4a6192a4-573d-446d-b3ce-aff9117272a6"
+      )
+
+    assert_pattern do
+      response => Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data
       }
     end
   end

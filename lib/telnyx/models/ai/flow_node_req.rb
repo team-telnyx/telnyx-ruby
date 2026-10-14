@@ -82,14 +82,19 @@ module Telnyx
 
         # @!attribute transcription
         #   Per-node transcription override (model/language/region). Unset fields cascade
-        #   from the assistant-level transcription.
+        #   from the assistant-level transcription. A node that sets `model`,
+        #   `fallback_models`, or `challenger` doesn't inherit the assistant's
+        #   `fallback_models` or `challenger`; it uses only the ones it sets. Otherwise it
+        #   inherits them, and they must fit the model and language the node runs; a change
+        #   they no longer fit is rejected.
         #
         #   @return [Telnyx::Models::AI::TranscriptionSettings, nil]
         optional :transcription, -> { Telnyx::AI::TranscriptionSettings }
 
         # @!attribute type
         #   Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        #   standalone tool execution (see `ToolNodeReq`).
+        #   standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        #   `SpeakNodeReq`).
         #
         #   @return [Symbol, Telnyx::Models::AI::FlowNodeReq::Type, nil]
         optional :type, enum: -> { Telnyx::AI::FlowNodeReq::Type }
@@ -167,7 +172,8 @@ module Telnyx
         end
 
         # Node kind discriminator. `prompt` (default) is an LLM-driven step; `tool` is a
-        # standalone tool execution (see `ToolNodeReq`).
+        # standalone tool execution and `speak` a scripted message (see `ToolNodeReq` /
+        # `SpeakNodeReq`).
         #
         # @see Telnyx::Models::AI::FlowNodeReq#type
         module Type

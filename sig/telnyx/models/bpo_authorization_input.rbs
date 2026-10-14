@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type bpo_authorization_input =
+      { bpo_enterprise_id: String, loa_document_id: String }
+
+    class BpoAuthorizationInput < Telnyx::Internal::Type::BaseModel
+      attr_accessor bpo_enterprise_id: String
+
+      attr_accessor loa_document_id: String
+
+      def initialize: (
+        bpo_enterprise_id: String,
+        loa_document_id: String
+      ) -> void
+
+      def to_hash: -> { bpo_enterprise_id: String, loa_document_id: String }
+    end
+  end
+end

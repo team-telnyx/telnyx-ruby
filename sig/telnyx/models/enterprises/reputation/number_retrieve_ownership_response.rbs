@@ -1,0 +1,122 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type number_retrieve_ownership_response =
+          {
+            data: Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data
+          }
+
+        class NumberRetrieveOwnershipResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data
+
+          def initialize: (
+            data: Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data
+          }
+
+          type data =
+            {
+              baseline_carrier: String?,
+              baseline_recorded_at: Time?,
+              confirm_by: Time?,
+              flag_reason: String?,
+              history: ::Array[Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data::History],
+              last_checked_at: Time?,
+              ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
+              phone_number: String,
+              source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_accessor baseline_carrier: String?
+
+            attr_accessor baseline_recorded_at: Time?
+
+            attr_accessor confirm_by: Time?
+
+            attr_accessor flag_reason: String?
+
+            attr_reader history: ::Array[Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data::History]?
+
+            def history=: (
+              ::Array[Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data::History]
+            ) -> ::Array[Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data::History]
+
+            attr_accessor last_checked_at: Time?
+
+            attr_reader ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status?
+
+            def ownership_status=: (
+              Telnyx::Models::Enterprises::Reputation::reputation_ownership_status
+            ) -> Telnyx::Models::Enterprises::Reputation::reputation_ownership_status
+
+            attr_reader phone_number: String?
+
+            def phone_number=: (String) -> String
+
+            attr_reader source: Telnyx::Models::Enterprises::Reputation::reputation_number_source?
+
+            def source=: (
+              Telnyx::Models::Enterprises::Reputation::reputation_number_source
+            ) -> Telnyx::Models::Enterprises::Reputation::reputation_number_source
+
+            def initialize: (
+              ?baseline_carrier: String?,
+              ?baseline_recorded_at: Time?,
+              ?confirm_by: Time?,
+              ?flag_reason: String?,
+              ?history: ::Array[Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data::History],
+              ?last_checked_at: Time?,
+              ?ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
+              ?phone_number: String,
+              ?source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+            ) -> void
+
+            def to_hash: -> {
+              baseline_carrier: String?,
+              baseline_recorded_at: Time?,
+              confirm_by: Time?,
+              flag_reason: String?,
+              history: ::Array[Telnyx::Models::Enterprises::Reputation::NumberRetrieveOwnershipResponse::Data::History],
+              last_checked_at: Time?,
+              ownership_status: Telnyx::Models::Enterprises::Reputation::reputation_ownership_status,
+              phone_number: String,
+              source: Telnyx::Models::Enterprises::Reputation::reputation_number_source
+            }
+
+            type history =
+              { event_type: String, occurred_at: Time, outcome: String? }
+
+            class History < Telnyx::Internal::Type::BaseModel
+              attr_reader event_type: String?
+
+              def event_type=: (String) -> String
+
+              attr_reader occurred_at: Time?
+
+              def occurred_at=: (Time) -> Time
+
+              attr_accessor outcome: String?
+
+              def initialize: (
+                ?event_type: String,
+                ?occurred_at: Time,
+                ?outcome: String?
+              ) -> void
+
+              def to_hash: -> {
+                event_type: String,
+                occurred_at: Time,
+                outcome: String?
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

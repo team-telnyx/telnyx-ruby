@@ -16,6 +16,10 @@ module Telnyx
     # - `infringement_claimed` - a trademark/impersonation claim is open against this
     #   DIR.
     # - `permanently_rejected` - terminal; cannot be resubmitted.
+    # - `delete_requested` - you have requested deletion; the DIR still exists and
+    #   Telnyx is completing the removal (de-registration and cleanup). A verified DIR
+    #   keeps serving its branded identity, and keeps billing, until the removal
+    #   finishes.
     module DirStatus
       extend Telnyx::Internal::Type::Enum
 
@@ -34,6 +38,8 @@ module Telnyx
         T.let(:infringement_claimed, Telnyx::DirStatus::TaggedSymbol)
       PERMANENTLY_REJECTED =
         T.let(:permanently_rejected, Telnyx::DirStatus::TaggedSymbol)
+      DELETE_REQUESTED =
+        T.let(:delete_requested, Telnyx::DirStatus::TaggedSymbol)
 
       sig { override.returns(T::Array[Telnyx::DirStatus::TaggedSymbol]) }
       def self.values

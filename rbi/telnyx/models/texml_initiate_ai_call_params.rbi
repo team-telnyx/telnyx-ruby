@@ -14,7 +14,9 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :connection_id
 
-      # The ID of the AI assistant to use for the call.
+      # The ID of the AI assistant to use for the call. Telnyx attempts to warm up this
+      # assistant before the call is placed and starts it automatically when the called
+      # party answers.
       sig { returns(String) }
       attr_accessor :ai_assistant_id
 
@@ -576,7 +578,9 @@ module Telnyx
       end
       def self.new(
         connection_id:,
-        # The ID of the AI assistant to use for the call.
+        # The ID of the AI assistant to use for the call. Telnyx attempts to warm up this
+        # assistant before the call is placed and starts it automatically when the called
+        # party answers.
         ai_assistant_id:,
         # The phone number of the party initiating the call. Phone numbers are formatted
         # with a `+` and country code.

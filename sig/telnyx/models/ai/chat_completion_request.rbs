@@ -11,7 +11,7 @@ module Telnyx
           frequency_penalty: Float,
           length_penalty: Float,
           logprobs: bool,
-          max_tokens: Integer,
+          max_tokens: Integer?,
           min_p: Float,
           mode: Telnyx::Models::AI::ChatCompletionRequest::mode,
           model: String,
@@ -63,9 +63,7 @@ module Telnyx
 
         def logprobs=: (bool) -> bool
 
-        attr_reader max_tokens: Integer?
-
-        def max_tokens=: (Integer) -> Integer
+        attr_accessor max_tokens: Integer?
 
         attr_reader min_p: Float?
 
@@ -162,7 +160,7 @@ module Telnyx
           ?frequency_penalty: Float,
           ?length_penalty: Float,
           ?logprobs: bool,
-          ?max_tokens: Integer,
+          ?max_tokens: Integer?,
           ?min_p: Float,
           ?mode: Telnyx::Models::AI::ChatCompletionRequest::mode,
           ?model: String,
@@ -192,7 +190,7 @@ module Telnyx
           frequency_penalty: Float,
           length_penalty: Float,
           logprobs: bool,
-          max_tokens: Integer,
+          max_tokens: Integer?,
           min_p: Float,
           mode: Telnyx::Models::AI::ChatCompletionRequest::mode,
           model: String,

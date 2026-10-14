@@ -25,13 +25,7 @@ module Telnyx
         #   @return [Integer, nil]
         optional :page_size, Integer
 
-        # @!attribute status
-        #   Filter by phone-number status.
-        #
-        #   @return [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus, nil]
-        optional :status, enum: -> { Telnyx::Dir::DirPhoneNumberStatus }
-
-        # @!method initialize(dir_id:, page_number: nil, page_size: nil, status: nil, request_options: {})
+        # @!method initialize(dir_id:, page_number: nil, page_size: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Dir::PhoneNumberListParams} for more details.
         #
@@ -40,8 +34,6 @@ module Telnyx
         #   @param page_number [Integer] 1-based page number. Out-of-range values return an empty page with correct meta.
         #
         #   @param page_size [Integer] Items per page. Maximum 250; values above are clamped to 250.
-        #
-        #   @param status [Symbol, Telnyx::Models::Dir::DirPhoneNumberStatus] Filter by phone-number status.
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end
