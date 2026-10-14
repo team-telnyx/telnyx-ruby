@@ -76,6 +76,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
                   Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Vision::OrHash,
                   Telnyx::AI::AssistantTool::Pay::OrHash,
                   Telnyx::AI::AssistantTool::UpdateDynamicVariables::OrHash
                 )
@@ -114,6 +115,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
                   Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Vision::OrHash,
                   Telnyx::AI::AssistantTool::Pay::OrHash,
                   Telnyx::AI::AssistantTool::UpdateDynamicVariables::OrHash
                 )

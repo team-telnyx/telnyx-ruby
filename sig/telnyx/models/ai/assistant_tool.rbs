@@ -14,6 +14,7 @@ module Telnyx
         | Telnyx::AI::AssistantTool::SendDtmf
         | Telnyx::AI::AssistantTool::SendMessage
         | Telnyx::AI::AssistantTool::SkipTurn
+        | Telnyx::AI::AssistantTool::Vision
         | Telnyx::AI::AssistantTool::Pay
         | Telnyx::AI::AssistantTool::UpdateDynamicVariables
 
@@ -657,7 +658,8 @@ module Telnyx
             type warm_transfer_acceptance =
               {
                 enabled: bool,
-                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
+                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode,
+                require_acceptance: bool
               }
 
             class WarmTransferAcceptance < Telnyx::Internal::Type::BaseModel
@@ -671,14 +673,20 @@ module Telnyx
                 Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
               ) -> Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
 
+              attr_reader require_acceptance: bool?
+
+              def require_acceptance=: (bool) -> bool
+
               def initialize: (
                 ?enabled: bool,
-                ?end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
+                ?end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode,
+                ?require_acceptance: bool
               ) -> void
 
               def to_hash: -> {
                 enabled: bool,
-                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
+                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode,
+                require_acceptance: bool
               }
 
               type end_user_target_context_mode = :private | :shared
@@ -1136,6 +1144,35 @@ module Telnyx
 
             def to_hash: -> { description: String }
           end
+        end
+
+        type vision =
+          { type: :vision, shared: bool, vision: Telnyx::AI::VisionToolParams }
+
+        class Vision < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: :vision
+
+          attr_reader vision: Telnyx::AI::VisionToolParams?
+
+          def vision=: (
+            Telnyx::AI::VisionToolParams
+          ) -> Telnyx::AI::VisionToolParams
+
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
+          def initialize: (
+            ?shared: bool,
+            ?vision: Telnyx::AI::VisionToolParams,
+            ?type: :vision
+          ) -> void
+
+          def to_hash: -> {
+            type: :vision,
+            shared: bool,
+            vision: Telnyx::AI::VisionToolParams
+          }
         end
 
         type pay = { pay: Telnyx::AI::PayToolParams, type: :pay, shared: bool }

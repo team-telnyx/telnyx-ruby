@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module AI
+      type avatar_list_params =
+        {
+          filter_avatar_type: Telnyx::Models::AI::avatar_type,
+          filter_id: Telnyx::Models::AI::avatar_id,
+          filter_name: String,
+          page_number: Integer,
+          page_size: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AvatarListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter_avatar_type: Telnyx::Models::AI::avatar_type?
+
+        def filter_avatar_type=: (
+          Telnyx::Models::AI::avatar_type
+        ) -> Telnyx::Models::AI::avatar_type
+
+        attr_reader filter_id: Telnyx::Models::AI::avatar_id?
+
+        def filter_id=: (
+          Telnyx::Models::AI::avatar_id
+        ) -> Telnyx::Models::AI::avatar_id
+
+        attr_reader filter_name: String?
+
+        def filter_name=: (String) -> String
+
+        attr_reader page_number: Integer?
+
+        def page_number=: (Integer) -> Integer
+
+        attr_reader page_size: Integer?
+
+        def page_size=: (Integer) -> Integer
+
+        def initialize: (
+          ?filter_avatar_type: Telnyx::Models::AI::avatar_type,
+          ?filter_id: Telnyx::Models::AI::avatar_id,
+          ?filter_name: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter_avatar_type: Telnyx::Models::AI::avatar_type,
+          filter_id: Telnyx::Models::AI::avatar_id,
+          filter_name: String,
+          page_number: Integer,
+          page_size: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

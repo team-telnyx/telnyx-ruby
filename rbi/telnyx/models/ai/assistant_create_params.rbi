@@ -38,8 +38,9 @@ module Telnyx
         end
         attr_writer :a2a_agents
 
-        # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-        # catalog supports six avatars and office, studio, or reception backgrounds.
+        # **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
+        # the six stock avatars or an organization-owned custom avatar returned by the
+        # Avatars API. Supported backgrounds are office, studio, and reception.
         sig { returns(T.nilable(Telnyx::AI::AvatarSettingsRequest)) }
         attr_reader :avatar_settings
 
@@ -321,6 +322,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::SendDtmf,
                   Telnyx::AI::AssistantTool::SendMessage,
                   Telnyx::AI::AssistantTool::SkipTurn,
+                  Telnyx::AI::AssistantTool::Vision,
                   Telnyx::AI::AssistantTool::Pay,
                   Telnyx::AI::AssistantTool::UpdateDynamicVariables
                 )
@@ -347,6 +349,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
                   Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Vision::OrHash,
                   Telnyx::AI::AssistantTool::Pay::OrHash,
                   Telnyx::AI::AssistantTool::UpdateDynamicVariables::OrHash
                 )
@@ -446,6 +449,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
                   Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Vision::OrHash,
                   Telnyx::AI::AssistantTool::Pay::OrHash,
                   Telnyx::AI::AssistantTool::UpdateDynamicVariables::OrHash
                 )
@@ -472,8 +476,9 @@ module Telnyx
           # fetches combined. An agent whose card cannot be fetched costs the assistant that
           # capability for the conversation; it does not fail the call.
           a2a_agents: nil,
-          # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-          # catalog supports six avatars and office, studio, or reception backgrounds.
+          # **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
+          # the six stock avatars or an organization-owned custom avatar returned by the
+          # Avatars API. Supported backgrounds are office, studio, and reception.
           avatar_settings: nil,
           # Conversation flow as supplied by API clients (create / update).
           #
@@ -628,6 +633,7 @@ module Telnyx
                     Telnyx::AI::AssistantTool::SendDtmf,
                     Telnyx::AI::AssistantTool::SendMessage,
                     Telnyx::AI::AssistantTool::SkipTurn,
+                    Telnyx::AI::AssistantTool::Vision,
                     Telnyx::AI::AssistantTool::Pay,
                     Telnyx::AI::AssistantTool::UpdateDynamicVariables
                   )

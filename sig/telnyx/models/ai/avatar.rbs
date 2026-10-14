@@ -1,0 +1,110 @@
+module Telnyx
+  module Models
+    module AI
+      type avatar =
+        {
+          id: Telnyx::Models::AI::avatar_id,
+          avatar_type: Telnyx::Models::AI::avatar_type,
+          hosted: true,
+          image_url: String,
+          name: String,
+          provider: :telnyx,
+          content_type: Telnyx::Models::AI::Avatar::content_type,
+          created_at: Time,
+          height_px: Integer,
+          image_url_expires_at: Time,
+          size_bytes: Integer,
+          updated_at: Time,
+          width_px: Integer
+        }
+
+      class Avatar < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: Telnyx::Models::AI::avatar_id
+
+        attr_accessor avatar_type: Telnyx::Models::AI::avatar_type
+
+        attr_accessor hosted: true
+
+        attr_accessor image_url: String
+
+        attr_accessor name: String
+
+        attr_accessor provider: :telnyx
+
+        attr_reader content_type: Telnyx::Models::AI::Avatar::content_type?
+
+        def content_type=: (
+          Telnyx::Models::AI::Avatar::content_type
+        ) -> Telnyx::Models::AI::Avatar::content_type
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader height_px: Integer?
+
+        def height_px=: (Integer) -> Integer
+
+        attr_reader image_url_expires_at: Time?
+
+        def image_url_expires_at=: (Time) -> Time
+
+        attr_reader size_bytes: Integer?
+
+        def size_bytes=: (Integer) -> Integer
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader width_px: Integer?
+
+        def width_px=: (Integer) -> Integer
+
+        def initialize: (
+          id: Telnyx::Models::AI::avatar_id,
+          avatar_type: Telnyx::Models::AI::avatar_type,
+          image_url: String,
+          name: String,
+          ?content_type: Telnyx::Models::AI::Avatar::content_type,
+          ?created_at: Time,
+          ?height_px: Integer,
+          ?image_url_expires_at: Time,
+          ?size_bytes: Integer,
+          ?updated_at: Time,
+          ?width_px: Integer,
+          ?hosted: true,
+          ?provider: :telnyx
+        ) -> void
+
+        def to_hash: -> {
+          id: Telnyx::Models::AI::avatar_id,
+          avatar_type: Telnyx::Models::AI::avatar_type,
+          hosted: true,
+          image_url: String,
+          name: String,
+          provider: :telnyx,
+          content_type: Telnyx::Models::AI::Avatar::content_type,
+          created_at: Time,
+          height_px: Integer,
+          image_url_expires_at: Time,
+          size_bytes: Integer,
+          updated_at: Time,
+          width_px: Integer
+        }
+
+        type content_type = :"image/jpeg" | :"image/png" | :"image/webp"
+
+        module ContentType
+          extend Telnyx::Internal::Type::Enum
+
+          IMAGE_JPEG: :"image/jpeg"
+          IMAGE_PNG: :"image/png"
+          IMAGE_WEBP: :"image/webp"
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::Avatar::content_type]
+        end
+      end
+    end
+  end
+end

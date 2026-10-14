@@ -51,8 +51,9 @@ module Telnyx
         optional :a2a_agents, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent] }
 
         # @!attribute avatar_settings
-        #   **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-        #   catalog supports six avatars and office, studio, or reception backgrounds.
+        #   **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
+        #   the six stock avatars or an organization-owned custom avatar returned by the
+        #   Avatars API. Supported backgrounds are office, studio, and reception.
         #
         #   @return [Telnyx::Models::AI::TelnyxAvatarSettings, nil]
         optional :avatar_settings, -> { Telnyx::AI::TelnyxAvatarSettings }, nil?: true
@@ -234,7 +235,7 @@ module Telnyx
         #   changes. Each tool type except `function`, `webhook`, and `client_side_tool`
         #   allows at most one instance per assistant across both sources.
         #
-        #   @return [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>, nil]
+        #   @return [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Vision, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>, nil]
         optional :tools, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool] }
 
         # @!attribute transcription
@@ -298,7 +299,7 @@ module Telnyx
         #
         #   @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
-        #   @param avatar_settings [Telnyx::Models::AI::TelnyxAvatarSettings, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. The launch c
+        #   @param avatar_settings [Telnyx::Models::AI::TelnyxAvatarSettings, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of t
         #
         #   @param conversation_flow [Telnyx::Models::AI::ConversationFlow] Conversation flow as returned by the API.
         #
@@ -346,7 +347,7 @@ module Telnyx
         #
         #   @param telephony_settings [Telnyx::Models::AI::TelephonySettings]
         #
-        #   @param tools [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] The assistant's tools. Responses merge the assistant's shared Tools Library tool
+        #   @param tools [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Vision, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] The assistant's tools. Responses merge the assistant's shared Tools Library tool
         #
         #   @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #

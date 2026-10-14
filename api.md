@@ -592,6 +592,15 @@ Methods:
 - <code title="get /ai/memory/namespaces/{namespace}/settings">client.ai.memory.namespaces.settings.<a href="./lib/telnyx/resources/ai/memory/namespaces/settings.rb">list</a>(\*\*params)</code>
 - <code title="patch /ai/memory/namespaces/{namespace}/settings">client.ai.memory.namespaces.settings.<a href="./lib/telnyx/resources/ai/memory/namespaces/settings.rb">patch_all</a>(\*\*params)</code>
 
+## Avatars
+
+Methods:
+
+- <code title="post /ai/avatars">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">create</a>(\*\*params)</code>
+- <code title="get /ai/avatars/{avatar_id}">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /ai/avatars/{avatar_id}">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">update</a>(\*\*params)</code>
+- <code title="get /ai/avatars">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">list</a>(\*\*params)</code>
+
 # AuditEvents
 
 Methods:

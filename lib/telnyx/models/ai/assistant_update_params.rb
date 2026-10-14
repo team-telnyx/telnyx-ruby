@@ -28,8 +28,9 @@ module Telnyx
         optional :a2a_agents, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent] }
 
         # @!attribute avatar_settings
-        #   **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-        #   catalog supports six avatars and office, studio, or reception backgrounds.
+        #   **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
+        #   the six stock avatars or an organization-owned custom avatar returned by the
+        #   Avatars API. Supported backgrounds are office, studio, and reception.
         #
         #   @return [Telnyx::Models::AI::AvatarSettingsRequest, nil]
         optional :avatar_settings, -> { Telnyx::AI::AvatarSettingsRequest }, nil?: true
@@ -248,7 +249,7 @@ module Telnyx
         #   omit those tools from the `tools` array and manage them through `tool_ids`
         #   instead.
         #
-        #   @return [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>, nil]
+        #   @return [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Vision, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>, nil]
         optional :tools, -> { Telnyx::Internal::Type::ArrayOf[union: Telnyx::AI::AssistantTool] }
 
         # @!attribute transcription
@@ -291,7 +292,7 @@ module Telnyx
         #
         #   @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
-        #   @param avatar_settings [Telnyx::Models::AI::AvatarSettingsRequest, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. The launch c
+        #   @param avatar_settings [Telnyx::Models::AI::AvatarSettingsRequest, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of t
         #
         #   @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Conversation flow as supplied by API clients (create / update).
         #
@@ -345,7 +346,7 @@ module Telnyx
         #
         #   @param tool_ids [Array<String>] IDs of shared tools to attach to the assistant. New integrations should prefer `
         #
-        #   @param tools [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] Deprecated for new integrations. Inline tool definitions available to the assist
+        #   @param tools [Array<Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Vision, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables>] Deprecated for new integrations. Inline tool definitions available to the assist
         #
         #   @param transcription [Telnyx::Models::AI::TranscriptionSettings]
         #

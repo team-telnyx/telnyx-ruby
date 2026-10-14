@@ -37,6 +37,9 @@ module Telnyx
 
         variant :skip_turn, -> { Telnyx::AI::AssistantTool::SkipTurn }
 
+        # (BETA) Lets the assistant look at recent image frames the client sent into the conversation (for example webcam or screen-share frames). Frames are sent with `conversation.item.create` and `item.buffer: true`; they never trigger a response on their own. The assistant decides when to look and which frames it needs. Requires a model that supports image input.
+        variant :vision, -> { Telnyx::AI::AssistantTool::Vision }
+
         # (BETA) The pay tool allows the assistant to collect card payments from the caller via DTMF during the conversation. Recording is automatically paused while the pay tool is active and resumes when the payment flow completes. The connector_name must reference a pay connector configured in the Telnyx API.
         variant :pay, -> { Telnyx::AI::AssistantTool::Pay }
 
@@ -845,7 +848,22 @@ module Telnyx
               optional :end_user_target_context_mode,
                        enum: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode }
 
-              # @!method initialize(enabled: nil, end_user_target_context_mode: nil)
+              # @!attribute require_acceptance
+              #   Fail closed when the acceptance consult cannot run. Off by default: if the
+              #   consult cannot be set up for any reason — including where acceptance is
+              #   unavailable at all (`gather_using_ai`, Conversation Relay or web calls, a
+              #   conference, or additional invited participants) — the transfer degrades to a
+              #   plain warm transfer (the warm transfer message is played to the destination as
+              #   audio and the calls are bridged anyway). Set to true to treat those paths as a
+              #   decline instead: the destination is disconnected without being asked, the
+              #   assistant returns to the caller, and no bridge happens without an acceptance.
+              #   Only consult-setup failures are affected; the destination must still explicitly
+              #   accept on every consult that does run.
+              #
+              #   @return [Boolean, nil]
+              optional :require_acceptance, Telnyx::Internal::Type::Boolean
+
+              # @!method initialize(enabled: nil, end_user_target_context_mode: nil, require_acceptance: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance}
               #   for more details.
@@ -865,6 +883,8 @@ module Telnyx
               #   @param enabled [Boolean] Whether the destination must accept the transfer before the calls are bridged.
               #
               #   @param end_user_target_context_mode [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode] Controls whether the private exchange between the assistant and the transfer des
+              #
+              #   @param require_acceptance [Boolean] Fail closed when the acceptance consult cannot run. Off by default: if the consu
 
               # Controls whether the private exchange between the assistant and the transfer
               # destination is kept out of the conversation. With `private` (default) the
@@ -1419,6 +1439,48 @@ module Telnyx
           end
         end
 
+        class Vision < Telnyx::Internal::Type::BaseModel
+          # @!attribute type
+          #
+          #   @return [Symbol, :vision]
+          required :type, const: :vision
+
+          # @!attribute vision
+          #
+          #   @return [Telnyx::Models::AI::VisionToolParams, nil]
+          optional :vision, -> { Telnyx::AI::VisionToolParams }
+
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(shared: nil, vision: nil, type: :vision)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Vision} for more details.
+          #
+          #   (BETA) Lets the assistant look at recent image frames the client sent into the
+          #   conversation (for example webcam or screen-share frames). Frames are sent with
+          #   `conversation.item.create` and `item.buffer: true`; they never trigger a
+          #   response on their own. The assistant decides when to look and which frames it
+          #   needs. Requires a model that supports image input.
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
+          #   @param vision [Telnyx::Models::AI::VisionToolParams]
+          #
+          #   @param type [Symbol, :vision]
+        end
+
         class Pay < Telnyx::Internal::Type::BaseModel
           # @!attribute pay
           #
@@ -1504,7 +1566,7 @@ module Telnyx
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables)]
+        #   @return [Array(Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Vision, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables)]
       end
     end
   end

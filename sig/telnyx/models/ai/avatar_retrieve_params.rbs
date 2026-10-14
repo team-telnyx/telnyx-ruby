@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    module AI
+      type avatar_retrieve_params =
+        { avatar_id: Telnyx::Models::AI::avatar_id }
+        & Telnyx::Internal::Type::request_parameters
+
+      class AvatarRetrieveParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor avatar_id: Telnyx::Models::AI::avatar_id
+
+        def initialize: (
+          avatar_id: Telnyx::Models::AI::avatar_id,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          avatar_id: Telnyx::Models::AI::avatar_id,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

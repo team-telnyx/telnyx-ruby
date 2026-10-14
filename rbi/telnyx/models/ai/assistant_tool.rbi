@@ -24,6 +24,7 @@ module Telnyx
               Telnyx::AI::AssistantTool::SendDtmf,
               Telnyx::AI::AssistantTool::SendMessage,
               Telnyx::AI::AssistantTool::SkipTurn,
+              Telnyx::AI::AssistantTool::Vision,
               Telnyx::AI::AssistantTool::Pay,
               Telnyx::AI::AssistantTool::UpdateDynamicVariables
             )
@@ -1659,6 +1660,22 @@ module Telnyx
               end
               attr_writer :end_user_target_context_mode
 
+              # Fail closed when the acceptance consult cannot run. Off by default: if the
+              # consult cannot be set up for any reason — including where acceptance is
+              # unavailable at all (`gather_using_ai`, Conversation Relay or web calls, a
+              # conference, or additional invited participants) — the transfer degrades to a
+              # plain warm transfer (the warm transfer message is played to the destination as
+              # audio and the calls are bridged anyway). Set to true to treat those paths as a
+              # decline instead: the destination is disconnected without being asked, the
+              # assistant returns to the caller, and no bridge happens without an acceptance.
+              # Only consult-setup failures are affected; the destination must still explicitly
+              # accept on every consult that does run.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :require_acceptance
+
+              sig { params(require_acceptance: T::Boolean).void }
+              attr_writer :require_acceptance
+
               # Requires the transfer destination to accept the call before the caller is
               # bridged. When enabled, the assistant speaks privately with the destination after
               # they answer — delivering the warm transfer message and asking whether they take
@@ -1674,7 +1691,8 @@ module Telnyx
                 params(
                   enabled: T::Boolean,
                   end_user_target_context_mode:
-                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol
+                    Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol,
+                  require_acceptance: T::Boolean
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1685,7 +1703,18 @@ module Telnyx
                 # exchange never reaches the conversation history, AI conversations, webhooks or
                 # insights, and the transfer tool result is rewritten with the outcome only. With
                 # `shared` the exchange stays in the conversation like any other messages.
-                end_user_target_context_mode: nil
+                end_user_target_context_mode: nil,
+                # Fail closed when the acceptance consult cannot run. Off by default: if the
+                # consult cannot be set up for any reason — including where acceptance is
+                # unavailable at all (`gather_using_ai`, Conversation Relay or web calls, a
+                # conference, or additional invited participants) — the transfer degrades to a
+                # plain warm transfer (the warm transfer message is played to the destination as
+                # audio and the calls are bridged anyway). Set to true to treat those paths as a
+                # decline instead: the destination is disconnected without being asked, the
+                # assistant returns to the caller, and no bridge happens without an acceptance.
+                # Only consult-setup failures are affected; the destination must still explicitly
+                # accept on every consult that does run.
+                require_acceptance: nil
               )
               end
 
@@ -1694,7 +1723,8 @@ module Telnyx
                   {
                     enabled: T::Boolean,
                     end_user_target_context_mode:
-                      Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol
+                      Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode::OrSymbol,
+                    require_acceptance: T::Boolean
                   }
                 )
               end
@@ -2895,6 +2925,76 @@ module Telnyx
             sig { override.returns({ description: String }) }
             def to_hash
             end
+          end
+        end
+
+        class Vision < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::AI::AssistantTool::Vision,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Symbol) }
+          attr_accessor :type
+
+          sig { returns(T.nilable(Telnyx::AI::VisionToolParams)) }
+          attr_reader :vision
+
+          sig { params(vision: Telnyx::AI::VisionToolParams::OrHash).void }
+          attr_writer :vision
+
+          # Whether this tool comes from the shared Tools Library. Responses merge shared
+          # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+          # Read-only: set by the server, not accepted in requests. When updating an
+          # assistant, omit `shared: true` tools from the request `tools` array and manage
+          # them through `tool_ids` instead — re-sending their definitions creates an inline
+          # duplicate (rejected with error code 10015 when the type allows only one instance
+          # per assistant).
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :shared
+
+          sig { params(shared: T::Boolean).void }
+          attr_writer :shared
+
+          # (BETA) Lets the assistant look at recent image frames the client sent into the
+          # conversation (for example webcam or screen-share frames). Frames are sent with
+          # `conversation.item.create` and `item.buffer: true`; they never trigger a
+          # response on their own. The assistant decides when to look and which frames it
+          # needs. Requires a model that supports image input.
+          sig do
+            params(
+              shared: T::Boolean,
+              vision: Telnyx::AI::VisionToolParams::OrHash,
+              type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Whether this tool comes from the shared Tools Library. Responses merge shared
+            # tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            # Read-only: set by the server, not accepted in requests. When updating an
+            # assistant, omit `shared: true` tools from the request `tools` array and manage
+            # them through `tool_ids` instead — re-sending their definitions creates an inline
+            # duplicate (rejected with error code 10015 when the type allows only one instance
+            # per assistant).
+            shared: nil,
+            vision: nil,
+            type: :vision
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                type: Symbol,
+                shared: T::Boolean,
+                vision: Telnyx::AI::VisionToolParams
+              }
+            )
+          end
+          def to_hash
           end
         end
 
