@@ -82,6 +82,7 @@ module Telnyx
           duration_sec: Integer,
           from: String,
           llm_model: String,
+          messages: ::Array[Telnyx::CallConversationEnded::Payload::Message],
           reason: String?,
           stt_model: String,
           to: String,
@@ -137,6 +138,12 @@ module Telnyx
 
         def llm_model=: (String) -> String
 
+        attr_reader messages: ::Array[Telnyx::CallConversationEnded::Payload::Message]?
+
+        def messages=: (
+          ::Array[Telnyx::CallConversationEnded::Payload::Message]
+        ) -> ::Array[Telnyx::CallConversationEnded::Payload::Message]
+
         attr_accessor reason: String?
 
         attr_reader stt_model: String?
@@ -171,6 +178,7 @@ module Telnyx
           ?duration_sec: Integer,
           ?from: String,
           ?llm_model: String,
+          ?messages: ::Array[Telnyx::CallConversationEnded::Payload::Message],
           ?reason: String?,
           ?stt_model: String,
           ?to: String,
@@ -191,6 +199,7 @@ module Telnyx
           duration_sec: Integer,
           from: String,
           llm_model: String,
+          messages: ::Array[Telnyx::CallConversationEnded::Payload::Message],
           reason: String?,
           stt_model: String,
           to: String,
@@ -208,6 +217,134 @@ module Telnyx
           SIP: :sip
 
           def self?.values: -> ::Array[Telnyx::Models::CallConversationEnded::Payload::calling_party_type]
+        end
+
+        type message =
+          {
+            content: String,
+            role: Telnyx::Models::CallConversationEnded::Payload::Message::role,
+            timestamp: Time,
+            tool_call_id: String,
+            tool_calls: ::Array[Telnyx::CallConversationEnded::Payload::Message::ToolCall]
+          }
+
+        class Message < Telnyx::Internal::Type::BaseModel
+          attr_reader content: String?
+
+          def content=: (String) -> String
+
+          attr_reader role: Telnyx::Models::CallConversationEnded::Payload::Message::role?
+
+          def role=: (
+            Telnyx::Models::CallConversationEnded::Payload::Message::role
+          ) -> Telnyx::Models::CallConversationEnded::Payload::Message::role
+
+          attr_reader timestamp: Time?
+
+          def timestamp=: (Time) -> Time
+
+          attr_reader tool_call_id: String?
+
+          def tool_call_id=: (String) -> String
+
+          attr_reader tool_calls: ::Array[Telnyx::CallConversationEnded::Payload::Message::ToolCall]?
+
+          def tool_calls=: (
+            ::Array[Telnyx::CallConversationEnded::Payload::Message::ToolCall]
+          ) -> ::Array[Telnyx::CallConversationEnded::Payload::Message::ToolCall]
+
+          def initialize: (
+            ?content: String,
+            ?role: Telnyx::Models::CallConversationEnded::Payload::Message::role,
+            ?timestamp: Time,
+            ?tool_call_id: String,
+            ?tool_calls: ::Array[Telnyx::CallConversationEnded::Payload::Message::ToolCall]
+          ) -> void
+
+          def to_hash: -> {
+            content: String,
+            role: Telnyx::Models::CallConversationEnded::Payload::Message::role,
+            timestamp: Time,
+            tool_call_id: String,
+            tool_calls: ::Array[Telnyx::CallConversationEnded::Payload::Message::ToolCall]
+          }
+
+          type role = :user | :assistant | :tool | :system | :developer
+
+          module Role
+            extend Telnyx::Internal::Type::Enum
+
+            USER: :user
+            ASSISTANT: :assistant
+            TOOL: :tool
+            SYSTEM: :system
+            DEVELOPER: :developer
+
+            def self?.values: -> ::Array[Telnyx::Models::CallConversationEnded::Payload::Message::role]
+          end
+
+          type tool_call =
+            {
+              id: String,
+              function: Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function,
+              type: Telnyx::Models::CallConversationEnded::Payload::Message::ToolCall::type_
+            }
+
+          class ToolCall < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader function: Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function?
+
+            def function=: (
+              Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function
+            ) -> Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function
+
+            attr_reader type: Telnyx::Models::CallConversationEnded::Payload::Message::ToolCall::type_?
+
+            def type=: (
+              Telnyx::Models::CallConversationEnded::Payload::Message::ToolCall::type_
+            ) -> Telnyx::Models::CallConversationEnded::Payload::Message::ToolCall::type_
+
+            def initialize: (
+              ?id: String,
+              ?function: Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function,
+              ?type: Telnyx::Models::CallConversationEnded::Payload::Message::ToolCall::type_
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              function: Telnyx::CallConversationEnded::Payload::Message::ToolCall::Function,
+              type: Telnyx::Models::CallConversationEnded::Payload::Message::ToolCall::type_
+            }
+
+            type function = { arguments: String, name: String }
+
+            class Function < Telnyx::Internal::Type::BaseModel
+              attr_reader arguments: String?
+
+              def arguments=: (String) -> String
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              def initialize: (?arguments: String, ?name: String) -> void
+
+              def to_hash: -> { arguments: String, name: String }
+            end
+
+            type type_ = :function
+
+            module Type
+              extend Telnyx::Internal::Type::Enum
+
+              FUNCTION: :function
+
+              def self?.values: -> ::Array[Telnyx::Models::CallConversationEnded::Payload::Message::ToolCall::type_]
+            end
+          end
         end
       end
 
