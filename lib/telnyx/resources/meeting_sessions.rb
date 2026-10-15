@@ -18,21 +18,24 @@ module Telnyx
       # request body, replay lookup is scoped to the authenticated account and compares
       # only the key; the request payload is not fingerprinted or compared. If a session
       # with that key already exists for the account, the existing session is replayed
-      # (200); otherwise a new session is created (201). Supports bring-your-own-key
-      # (BYOK) configuration. The session may enter asynchronous states (e.g. joining,
-      # waiting_for_admission) before becoming active. Optional `camera_image` input is
-      # write-only and applies only when no Avatar or Assistant webpage output takes
-      # precedence. An ignored URL is not fetched. An effective URL source is resolved
-      # before bot creation; neither the source URL nor image bytes are persisted,
-      # returned, or logged. Treat signed URLs as credentials.
+      # (200); otherwise a new session is created (201). The session may enter
+      # asynchronous states (e.g. joining, waiting_for_admission) before becoming
+      # active. Optional `camera_image` input is write-only and applies only when no
+      # avatar or Assistant webpage output takes precedence. An ignored URL is not
+      # fetched. An effective URL source is resolved before bot creation; neither the
+      # source URL nor image bytes are persisted, returned, or logged. Treat signed URLs
+      # as credentials. With `assistant.avatar: true`, the assistant is read before the
+      # bot is created: an assistant without a Telnyx avatar configured is rejected with
+      # 400 `invalid_request` (message prefix `assistant_avatar_not_configured:`), an
+      # unknown assistant with 400 `invalid_request` (prefix `assistant_not_found:`),
+      # and a failed lookup with 503 `assistant_lookup_unavailable`; no bot is created
+      # in any of these cases.
       #
-      # @overload create(meeting_url:, assistant: nil, avatar: nil, barge_in: nil, bot_name: nil, camera_image: nil, chat_on_enter: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
+      # @overload create(meeting_url:, assistant: nil, barge_in: nil, bot_name: nil, camera_image: nil, chat_on_enter: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
       #
       # @param meeting_url [String] The meeting URL the bot should join.
       #
       # @param assistant [Telnyx::Models::MeetingSessionCreateParams::Assistant] Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the Meet
-      #
-      # @param avatar [Telnyx::Models::MeetingSessionCreateParams::Avatar] Request options for attaching a bring-your-own-key avatar to the session.
       #
       # @param barge_in [Boolean] When enabled, a human participant `speech_on` event interrupts and stops the cur
       #
