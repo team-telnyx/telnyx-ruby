@@ -83,7 +83,6 @@ module Telnyx
             Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent,
             Telnyx::NumberReputationNumberFlaggedWebhookEvent,
             Telnyx::NumberReputationNumberRemovedWebhookEvent,
-            Telnyx::RecordingAvailableWebhookEvent,
             Telnyx::ReplacedLinkClickWebhookEvent,
             Telnyx::SessionStatusChangedWebhookEvent,
             Telnyx::TranscriptCompletedWebhookEvent,

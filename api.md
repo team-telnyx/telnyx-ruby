@@ -3206,7 +3206,6 @@ Methods:
 - <code title="delete /meeting_sessions/{id}">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete</a>(\*\*params)</code>
 - <code title="delete /meeting_sessions/{id}/recording_media">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete_recording_media</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/events">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_events</a>(\*\*params)</code>
-- <code title="get /meeting_sessions/{id}/recordings">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_recordings</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/transcript">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_transcript</a>(\*\*params)</code>
 
 ## Actions

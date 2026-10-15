@@ -178,8 +178,8 @@ module Telnyx
       # The operation retains the Telnyx-local Meeting session, transcript segments,
       # events, artifacts, and usage records. It is separate from
       # `DELETE /meeting_sessions/{id}`, which stops or cancels participation without
-      # deleting the persisted session. A missing/foreign session returns 404; provider
-      # deletion failures return 502.
+      # deleting the persisted session. A missing/foreign session returns 404; a
+      # deletion request whose outcome is unknown returns 502.
       sig do
         params(
           id: String,
@@ -212,20 +212,6 @@ module Telnyx
         after: nil,
         # Maximum number of results to return per page.
         limit: nil,
-        request_options: {}
-      )
-      end
-
-      # Returns recordings for a meeting session.
-      sig do
-        params(
-          id: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MeetingSessionRetrieveRecordingsResponse)
-      end
-      def retrieve_recordings(
-        # Unique identifier for the meeting session.
-        id,
         request_options: {}
       )
       end

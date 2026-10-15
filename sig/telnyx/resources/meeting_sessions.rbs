@@ -56,11 +56,6 @@ module Telnyx
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MeetingSessionRetrieveEventsResponse
 
-      def retrieve_recordings: (
-        String id,
-        ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::MeetingSessionRetrieveRecordingsResponse
-
       def retrieve_transcript: (
         String id,
         ?after: Integer,

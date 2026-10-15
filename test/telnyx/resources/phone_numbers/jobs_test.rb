@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::PhoneNumbers::PhoneNumbersJob | nil
+        data: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob | nil
       }
     end
   end
@@ -32,7 +32,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::PhoneNumbers::PhoneNumbersJob
+      row => Telnyx::PhoneNumbers::NumbersPhoneNumbersJob
     end
 
     assert_pattern do
@@ -40,13 +40,14 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
         id: String | nil,
         created_at: String | nil,
         etc: Time | nil,
-        failed_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::FailedOperation]) | nil,
-        pending_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation]) | nil,
+        failed_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::FailedOperation]) | nil,
+        parameters: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::Parameters | nil,
+        pending_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::PendingOperation]) | nil,
         phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbersJobPhoneNumber]) | nil,
         record_type: String | nil,
-        status: Telnyx::PhoneNumbers::PhoneNumbersJob::Status | nil,
-        successful_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation]) | nil,
-        type: Telnyx::PhoneNumbers::PhoneNumbersJob::Type | nil,
+        status: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::Status | nil,
+        successful_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::SuccessfulOperation]) | nil,
+        type: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::Type | nil,
         updated_at: String | nil
       }
     end
@@ -64,7 +65,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::PhoneNumbers::PhoneNumbersJob | nil
+        data: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob | nil
       }
     end
   end
@@ -81,7 +82,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::PhoneNumbers::PhoneNumbersJob | nil
+        data: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob | nil
       }
     end
   end
@@ -101,7 +102,7 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
 
     assert_pattern do
       response => {
-        data: Telnyx::PhoneNumbers::PhoneNumbersJob | nil
+        data: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob | nil
       }
     end
   end
