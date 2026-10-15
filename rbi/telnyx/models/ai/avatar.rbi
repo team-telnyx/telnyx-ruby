@@ -7,10 +7,12 @@ module Telnyx
         OrHash =
           T.type_alias { T.any(Telnyx::AI::Avatar, Telnyx::Internal::AnyHash) }
 
-        # Stable identifier of a Telnyx stock avatar or an organization-owned custom
-        # avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-        # prefix.
-        sig { returns(Telnyx::AI::AvatarID::Variants) }
+        # Stable identifier returned by the Avatars API. Discover available stock IDs with
+        # GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+        # list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+        # authenticated organization. The service validates that the selected avatar is
+        # available.
+        sig { returns(String) }
         attr_accessor :id
 
         # Whether the avatar is provided by Telnyx or was uploaded by the authenticated
@@ -88,9 +90,19 @@ module Telnyx
         sig { params(width_px: Integer).void }
         attr_writer :width_px
 
+        # Optional recommended Telnyx text-to-speech voice for this avatar. An omitted
+        # field or empty string means no recommendation is available. Custom avatars have
+        # no suggested voice. It is informational and selecting the avatar does not
+        # automatically change the AI Assistant's configured voice.
+        sig { returns(T.nilable(String)) }
+        attr_reader :suggested_voice_id
+
+        sig { params(suggested_voice_id: String).void }
+        attr_writer :suggested_voice_id
+
         sig do
           params(
-            id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+            id: String,
             avatar_type: Telnyx::AI::AvatarType::OrSymbol,
             image_url: String,
             name: String,
@@ -99,6 +111,7 @@ module Telnyx
             height_px: Integer,
             image_url_expires_at: Time,
             size_bytes: Integer,
+            suggested_voice_id: String,
             updated_at: Time,
             width_px: Integer,
             hosted: T::Boolean,
@@ -106,9 +119,11 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # Stable identifier of a Telnyx stock avatar or an organization-owned custom
-          # avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-          # prefix.
+          # Stable identifier returned by the Avatars API. Discover available stock IDs with
+          # GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+          # list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+          # authenticated organization. The service validates that the selected avatar is
+          # available.
           id:,
           # Whether the avatar is provided by Telnyx or was uploaded by the authenticated
           # organization.
@@ -128,6 +143,11 @@ module Telnyx
           image_url_expires_at: nil,
           # Size of a custom avatar image in bytes.
           size_bytes: nil,
+          # Optional recommended Telnyx text-to-speech voice for this avatar. An omitted
+          # field or empty string means no recommendation is available. Custom avatars have
+          # no suggested voice. It is informational and selecting the avatar does not
+          # automatically change the AI Assistant's configured voice.
+          suggested_voice_id: nil,
           # Time when the custom avatar was last updated.
           updated_at: nil,
           # Decoded width of a custom avatar image.
@@ -142,7 +162,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              id: Telnyx::AI::AvatarID::Variants,
+              id: String,
               avatar_type: Telnyx::AI::AvatarType::TaggedSymbol,
               hosted: T::Boolean,
               image_url: String,
@@ -153,6 +173,7 @@ module Telnyx
               height_px: Integer,
               image_url_expires_at: Time,
               size_bytes: Integer,
+              suggested_voice_id: String,
               updated_at: Time,
               width_px: Integer
             }

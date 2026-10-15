@@ -10,7 +10,7 @@ module Telnyx
           end
 
         # The Telnyx stock avatar or organization-owned custom avatar to render.
-        sig { returns(Telnyx::AI::AvatarID::Variants) }
+        sig { returns(String) }
         attr_accessor :avatar_id
 
         # The background to render.
@@ -28,12 +28,14 @@ module Telnyx
         sig { returns(Symbol) }
         attr_accessor :provider
 
-        # **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
-        # the six stock avatars or an organization-owned custom avatar returned by the
-        # Avatars API. Supported backgrounds are office, studio, and reception.
+        # **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+        # avatar or an organization-owned custom avatar returned by the Avatars API.
+        # Discover the available stock catalog with GET /v2/ai/avatars and
+        # filter[avatar_type]=stock; follow meta.total_pages to load every page. Supported
+        # backgrounds are office, studio, and reception.
         sig do
           params(
-            avatar_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+            avatar_id: String,
             background_id:
               Telnyx::AI::TelnyxAvatarSettings::BackgroundID::OrSymbol,
             model: Telnyx::AI::TelnyxAvatarSettings::Model::OrSymbol,
@@ -56,7 +58,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              avatar_id: Telnyx::AI::AvatarID::Variants,
+              avatar_id: String,
               background_id:
                 Telnyx::AI::TelnyxAvatarSettings::BackgroundID::TaggedSymbol,
               model: Telnyx::AI::TelnyxAvatarSettings::Model::TaggedSymbol,

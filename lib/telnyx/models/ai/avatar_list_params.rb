@@ -17,8 +17,8 @@ module Telnyx
         # @!attribute filter_id
         #   Return the avatar with this exact ID.
         #
-        #   @return [Symbol, String, Telnyx::Models::AI::AvatarID, nil]
-        optional :filter_id, union: -> { Telnyx::AI::AvatarID }
+        #   @return [String, nil]
+        optional :filter_id, String
 
         # @!attribute filter_name
         #   Return avatars whose names contain this value, using case-insensitive matching.
@@ -41,7 +41,7 @@ module Telnyx
         # @!method initialize(filter_avatar_type: nil, filter_id: nil, filter_name: nil, page_number: nil, page_size: nil, request_options: {})
         #   @param filter_avatar_type [Symbol, Telnyx::Models::AI::AvatarType] Return only stock or custom avatars.
         #
-        #   @param filter_id [Symbol, String, Telnyx::Models::AI::AvatarID] Return the avatar with this exact ID.
+        #   @param filter_id [String] Return the avatar with this exact ID.
         #
         #   @param filter_name [String] Return avatars whose names contain this value, using case-insensitive matching.
         #

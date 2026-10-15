@@ -6,12 +6,14 @@ module Telnyx
       # @see Telnyx::Resources::AI::Avatars#list
       class Avatar < Telnyx::Internal::Type::BaseModel
         # @!attribute id
-        #   Stable identifier of a Telnyx stock avatar or an organization-owned custom
-        #   avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-        #   prefix.
+        #   Stable identifier returned by the Avatars API. Discover available stock IDs with
+        #   GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+        #   list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+        #   authenticated organization. The service validates that the selected avatar is
+        #   available.
         #
-        #   @return [Symbol, String, Telnyx::Models::AI::AvatarID]
-        required :id, union: -> { Telnyx::AI::AvatarID }
+        #   @return [String]
+        required :id, String
 
         # @!attribute avatar_type
         #   Whether the avatar is provided by Telnyx or was uploaded by the authenticated
@@ -87,11 +89,22 @@ module Telnyx
         #   @return [Integer, nil]
         optional :width_px, Integer
 
-        # @!method initialize(id:, avatar_type:, image_url:, name:, content_type: nil, created_at: nil, height_px: nil, image_url_expires_at: nil, size_bytes: nil, updated_at: nil, width_px: nil, hosted: true, provider: :telnyx)
+        response_only do
+          # @!attribute suggested_voice_id
+          #   Optional recommended Telnyx text-to-speech voice for this avatar. An omitted
+          #   field or empty string means no recommendation is available. Custom avatars have
+          #   no suggested voice. It is informational and selecting the avatar does not
+          #   automatically change the AI Assistant's configured voice.
+          #
+          #   @return [String, nil]
+          optional :suggested_voice_id, String
+        end
+
+        # @!method initialize(id:, avatar_type:, image_url:, name:, content_type: nil, created_at: nil, height_px: nil, image_url_expires_at: nil, size_bytes: nil, suggested_voice_id: nil, updated_at: nil, width_px: nil, hosted: true, provider: :telnyx)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::Avatar} for more details.
         #
-        #   @param id [Symbol, String, Telnyx::Models::AI::AvatarID] Stable identifier of a Telnyx stock avatar or an organization-owned custom avata
+        #   @param id [String] Stable identifier returned by the Avatars API. Discover available stock IDs with
         #
         #   @param avatar_type [Symbol, Telnyx::Models::AI::AvatarType] Whether the avatar is provided by Telnyx or was uploaded by the authenticated or
         #
@@ -108,6 +121,8 @@ module Telnyx
         #   @param image_url_expires_at [Time] Expiration time of `image_url`. Omitted when the URL does not expire.
         #
         #   @param size_bytes [Integer] Size of a custom avatar image in bytes.
+        #
+        #   @param suggested_voice_id [String] Optional recommended Telnyx text-to-speech voice for this avatar. An omitted fie
         #
         #   @param updated_at [Time] Time when the custom avatar was last updated.
         #

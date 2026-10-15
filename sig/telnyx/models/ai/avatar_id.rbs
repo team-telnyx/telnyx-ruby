@@ -1,21 +1,7 @@
 module Telnyx
   module Models
     module AI
-      type avatar_id =
-        :elena | :ben | :jordan | :lin | :avery | :raphael | String
-
-      module AvatarID
-        extend Telnyx::Internal::Type::Union
-
-        def self?.variants: -> ::Array[Telnyx::Models::AI::avatar_id]
-
-        ELENA: :elena
-        BEN: :ben
-        JORDAN: :jordan
-        LIN: :lin
-        AVERY: :avery
-        RAPHAEL: :raphael
-      end
+      class AvatarID = String
     end
   end
 end

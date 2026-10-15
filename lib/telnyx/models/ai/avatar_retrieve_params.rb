@@ -9,18 +9,20 @@ module Telnyx
         include Telnyx::Internal::Type::RequestParameters
 
         # @!attribute avatar_id
-        #   Stable identifier of a Telnyx stock avatar or an organization-owned custom
-        #   avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-        #   prefix.
+        #   Stable identifier returned by the Avatars API. Discover available stock IDs with
+        #   GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+        #   list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+        #   authenticated organization. The service validates that the selected avatar is
+        #   available.
         #
-        #   @return [Symbol, String, Telnyx::Models::AI::AvatarID]
-        required :avatar_id, union: -> { Telnyx::AI::AvatarID }
+        #   @return [String]
+        required :avatar_id, String
 
         # @!method initialize(avatar_id:, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::AvatarRetrieveParams} for more details.
         #
-        #   @param avatar_id [Symbol, String, Telnyx::Models::AI::AvatarID] Stable identifier of a Telnyx stock avatar or an organization-owned custom avata
+        #   @param avatar_id [String] Stable identifier returned by the Avatars API. Discover available stock IDs with
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

@@ -54,7 +54,7 @@ module Telnyx
         #
         # @overload retrieve(avatar_id, request_options: {})
         #
-        # @param avatar_id [Symbol, String, Telnyx::Models::AI::AvatarID] Stable identifier of a Telnyx stock avatar or an organization-owned custom avata
+        # @param avatar_id [String] Stable identifier returned by the Avatars API. Discover available stock IDs with
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -79,7 +79,7 @@ module Telnyx
         #
         # @overload update(avatar_id, name:, request_options: {})
         #
-        # @param avatar_id [Symbol, String, Telnyx::Models::AI::AvatarID] Stable identifier of a Telnyx stock avatar or an organization-owned custom avata
+        # @param avatar_id [String] Stable identifier returned by the Avatars API. Discover available stock IDs with
         #
         # @param name [String] New customer-facing name of the custom avatar.
         #
@@ -103,13 +103,15 @@ module Telnyx
         # available to the authenticated organization. Custom avatars owned by other
         # organizations are never returned. The `image_url` value is suitable for
         # displaying a thumbnail and may be refreshed by listing or retrieving the avatar
-        # again.
+        # again. `suggested_voice_id` recommends a compatible Telnyx voice for stock
+        # avatars and is an empty string for custom avatars; it does not change an AI
+        # Assistant's voice automatically.
         #
         # @overload list(filter_avatar_type: nil, filter_id: nil, filter_name: nil, page_number: nil, page_size: nil, request_options: {})
         #
         # @param filter_avatar_type [Symbol, Telnyx::Models::AI::AvatarType] Return only stock or custom avatars.
         #
-        # @param filter_id [Symbol, String, Telnyx::Models::AI::AvatarID] Return the avatar with this exact ID.
+        # @param filter_id [String] Return the avatar with this exact ID.
         #
         # @param filter_name [String] Return avatars whose names contain this value, using case-insensitive matching.
         #

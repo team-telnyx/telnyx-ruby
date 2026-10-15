@@ -7,8 +7,8 @@ module Telnyx
         # @!attribute avatar_id
         #   The Telnyx stock avatar or organization-owned custom avatar to render.
         #
-        #   @return [Symbol, String, Telnyx::Models::AI::AvatarID]
-        required :avatar_id, union: -> { Telnyx::AI::AvatarID }
+        #   @return [String]
+        required :avatar_id, String
 
         # @!attribute background_id
         #   The background to render.
@@ -33,11 +33,13 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelnyxAvatarSettings} for more details.
         #
-        #   **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
-        #   the six stock avatars or an organization-owned custom avatar returned by the
-        #   Avatars API. Supported backgrounds are office, studio, and reception.
+        #   **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+        #   avatar or an organization-owned custom avatar returned by the Avatars API.
+        #   Discover the available stock catalog with GET /v2/ai/avatars and
+        #   filter[avatar_type]=stock; follow meta.total_pages to load every page. Supported
+        #   backgrounds are office, studio, and reception.
         #
-        #   @param avatar_id [Symbol, String, Telnyx::Models::AI::AvatarID] The Telnyx stock avatar or organization-owned custom avatar to render.
+        #   @param avatar_id [String] The Telnyx stock avatar or organization-owned custom avatar to render.
         #
         #   @param background_id [Symbol, Telnyx::Models::AI::TelnyxAvatarSettings::BackgroundID] The background to render.
         #

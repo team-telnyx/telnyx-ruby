@@ -22,7 +22,7 @@ class Telnyx::Test::Resources::AI::AvatarsTest < Telnyx::Test::ResourceTest
   def test_retrieve
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.avatars.retrieve(:elena)
+    response = @telnyx.ai.avatars.retrieve("avatar_0123456789abcdef0123456789abcdef")
 
     assert_pattern do
       response => Telnyx::AI::AvatarResponse
@@ -38,7 +38,7 @@ class Telnyx::Test::Resources::AI::AvatarsTest < Telnyx::Test::ResourceTest
   def test_update_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.ai.avatars.update(:elena, name: "Updated portrait")
+    response = @telnyx.ai.avatars.update("avatar_0123456789abcdef0123456789abcdef", name: "Updated portrait")
 
     assert_pattern do
       response => Telnyx::AI::AvatarResponse
@@ -69,7 +69,7 @@ class Telnyx::Test::Resources::AI::AvatarsTest < Telnyx::Test::ResourceTest
 
     assert_pattern do
       row => {
-        id: Telnyx::AI::AvatarID,
+        id: String,
         avatar_type: Telnyx::AI::AvatarType,
         hosted: true | false,
         image_url: String,
@@ -80,6 +80,7 @@ class Telnyx::Test::Resources::AI::AvatarsTest < Telnyx::Test::ResourceTest
         height_px: Integer | nil,
         image_url_expires_at: Time | nil,
         size_bytes: Integer | nil,
+        suggested_voice_id: String | nil,
         updated_at: Time | nil,
         width_px: Integer | nil
       }

@@ -3,7 +3,7 @@ module Telnyx
     module AI
       type avatar =
         {
-          id: Telnyx::Models::AI::avatar_id,
+          id: String,
           avatar_type: Telnyx::Models::AI::avatar_type,
           hosted: true,
           image_url: String,
@@ -14,12 +14,13 @@ module Telnyx
           height_px: Integer,
           image_url_expires_at: Time,
           size_bytes: Integer,
+          suggested_voice_id: String,
           updated_at: Time,
           width_px: Integer
         }
 
       class Avatar < Telnyx::Internal::Type::BaseModel
-        attr_accessor id: Telnyx::Models::AI::avatar_id
+        attr_accessor id: String
 
         attr_accessor avatar_type: Telnyx::Models::AI::avatar_type
 
@@ -61,8 +62,12 @@ module Telnyx
 
         def width_px=: (Integer) -> Integer
 
+        attr_reader suggested_voice_id: String?
+
+        def suggested_voice_id=: (String) -> String
+
         def initialize: (
-          id: Telnyx::Models::AI::avatar_id,
+          id: String,
           avatar_type: Telnyx::Models::AI::avatar_type,
           image_url: String,
           name: String,
@@ -71,6 +76,7 @@ module Telnyx
           ?height_px: Integer,
           ?image_url_expires_at: Time,
           ?size_bytes: Integer,
+          ?suggested_voice_id: String,
           ?updated_at: Time,
           ?width_px: Integer,
           ?hosted: true,
@@ -78,7 +84,7 @@ module Telnyx
         ) -> void
 
         def to_hash: -> {
-          id: Telnyx::Models::AI::avatar_id,
+          id: String,
           avatar_type: Telnyx::Models::AI::avatar_type,
           hosted: true,
           image_url: String,
@@ -89,6 +95,7 @@ module Telnyx
           height_px: Integer,
           image_url_expires_at: Time,
           size_bytes: Integer,
+          suggested_voice_id: String,
           updated_at: Time,
           width_px: Integer
         }

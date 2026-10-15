@@ -4,7 +4,7 @@ module Telnyx
       type avatar_list_params =
         {
           filter_avatar_type: Telnyx::Models::AI::avatar_type,
-          filter_id: Telnyx::Models::AI::avatar_id,
+          filter_id: String,
           filter_name: String,
           page_number: Integer,
           page_size: Integer
@@ -21,11 +21,9 @@ module Telnyx
           Telnyx::Models::AI::avatar_type
         ) -> Telnyx::Models::AI::avatar_type
 
-        attr_reader filter_id: Telnyx::Models::AI::avatar_id?
+        attr_reader filter_id: String?
 
-        def filter_id=: (
-          Telnyx::Models::AI::avatar_id
-        ) -> Telnyx::Models::AI::avatar_id
+        def filter_id=: (String) -> String
 
         attr_reader filter_name: String?
 
@@ -41,7 +39,7 @@ module Telnyx
 
         def initialize: (
           ?filter_avatar_type: Telnyx::Models::AI::avatar_type,
-          ?filter_id: Telnyx::Models::AI::avatar_id,
+          ?filter_id: String,
           ?filter_name: String,
           ?page_number: Integer,
           ?page_size: Integer,
@@ -50,7 +48,7 @@ module Telnyx
 
         def to_hash: -> {
           filter_avatar_type: Telnyx::Models::AI::avatar_type,
-          filter_id: Telnyx::Models::AI::avatar_id,
+          filter_id: String,
           filter_name: String,
           page_number: Integer,
           page_size: Integer,

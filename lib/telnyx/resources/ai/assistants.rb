@@ -173,7 +173,7 @@ module Telnyx
         #
         # @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
-        # @param avatar_settings [Telnyx::Models::AI::AvatarSettingsRequest, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of t
+        # @param avatar_settings [Telnyx::Models::AI::AvatarSettingsRequest, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
         #
         # @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Conversation flow as supplied by API clients (create / update).
         #

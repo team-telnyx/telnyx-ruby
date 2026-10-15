@@ -28,9 +28,11 @@ module Telnyx
         optional :a2a_agents, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AssistantA2AAgent] }
 
         # @!attribute avatar_settings
-        #   **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
-        #   the six stock avatars or an organization-owned custom avatar returned by the
-        #   Avatars API. Supported backgrounds are office, studio, and reception.
+        #   **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+        #   avatar or an organization-owned custom avatar returned by the Avatars API.
+        #   Discover the available stock catalog with GET /v2/ai/avatars and
+        #   filter[avatar_type]=stock; follow meta.total_pages to load every page. Supported
+        #   backgrounds are office, studio, and reception.
         #
         #   @return [Telnyx::Models::AI::AvatarSettingsRequest, nil]
         optional :avatar_settings, -> { Telnyx::AI::AvatarSettingsRequest }, nil?: true
@@ -292,7 +294,7 @@ module Telnyx
         #
         #   @param a2a_agents [Array<Telnyx::Models::AI::AssistantA2AAgent>] A2A agents this assistant can delegate to. Tools are not stored here: at the sta
         #
-        #   @param avatar_settings [Telnyx::Models::AI::AvatarSettingsRequest, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of t
+        #   @param avatar_settings [Telnyx::Models::AI::AvatarSettingsRequest, nil] **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
         #
         #   @param conversation_flow [Telnyx::Models::AI::ConversationFlowReq] Conversation flow as supplied by API clients (create / update).
         #

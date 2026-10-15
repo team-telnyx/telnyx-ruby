@@ -12,22 +12,26 @@ module Telnyx
             T.any(Telnyx::AI::AvatarRetrieveParams, Telnyx::Internal::AnyHash)
           end
 
-        # Stable identifier of a Telnyx stock avatar or an organization-owned custom
-        # avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-        # prefix.
-        sig { returns(T.any(Telnyx::AI::AvatarID::OrSymbol, String)) }
+        # Stable identifier returned by the Avatars API. Discover available stock IDs with
+        # GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+        # list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+        # authenticated organization. The service validates that the selected avatar is
+        # available.
+        sig { returns(String) }
         attr_accessor :avatar_id
 
         sig do
           params(
-            avatar_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+            avatar_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
-          # Stable identifier of a Telnyx stock avatar or an organization-owned custom
-          # avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-          # prefix.
+          # Stable identifier returned by the Avatars API. Discover available stock IDs with
+          # GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+          # list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+          # authenticated organization. The service validates that the selected avatar is
+          # available.
           avatar_id:,
           request_options: {}
         )
@@ -35,10 +39,7 @@ module Telnyx
 
         sig do
           override.returns(
-            {
-              avatar_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
-              request_options: Telnyx::RequestOptions
-            }
+            { avatar_id: String, request_options: Telnyx::RequestOptions }
           )
         end
         def to_hash

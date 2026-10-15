@@ -22,14 +22,10 @@ module Telnyx
         attr_writer :filter_avatar_type
 
         # Return the avatar with this exact ID.
-        sig do
-          returns(T.nilable(T.any(Telnyx::AI::AvatarID::OrSymbol, String)))
-        end
+        sig { returns(T.nilable(String)) }
         attr_reader :filter_id
 
-        sig do
-          params(filter_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String)).void
-        end
+        sig { params(filter_id: String).void }
         attr_writer :filter_id
 
         # Return avatars whose names contain this value, using case-insensitive matching.
@@ -56,7 +52,7 @@ module Telnyx
         sig do
           params(
             filter_avatar_type: Telnyx::AI::AvatarType::OrSymbol,
-            filter_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+            filter_id: String,
             filter_name: String,
             page_number: Integer,
             page_size: Integer,
@@ -82,7 +78,7 @@ module Telnyx
           override.returns(
             {
               filter_avatar_type: Telnyx::AI::AvatarType::OrSymbol,
-              filter_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+              filter_id: String,
               filter_name: String,
               page_number: Integer,
               page_size: Integer,

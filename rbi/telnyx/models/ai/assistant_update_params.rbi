@@ -34,9 +34,11 @@ module Telnyx
         end
         attr_writer :a2a_agents
 
-        # **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
-        # the six stock avatars or an organization-owned custom avatar returned by the
-        # Avatars API. Supported backgrounds are office, studio, and reception.
+        # **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+        # avatar or an organization-owned custom avatar returned by the Avatars API.
+        # Discover the available stock catalog with GET /v2/ai/avatars and
+        # filter[avatar_type]=stock; follow meta.total_pages to load every page. Supported
+        # backgrounds are office, studio, and reception.
         sig { returns(T.nilable(Telnyx::AI::AvatarSettingsRequest)) }
         attr_reader :avatar_settings
 
@@ -506,9 +508,11 @@ module Telnyx
           # capability for the conversation; it does not fail the call. Omit this field to
           # leave the assistant's agents unchanged; send an empty array to remove them all.
           a2a_agents: nil,
-          # **Beta:** Configuration for the Telnyx open-source avatar provider. Use one of
-          # the six stock avatars or an organization-owned custom avatar returned by the
-          # Avatars API. Supported backgrounds are office, studio, and reception.
+          # **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+          # avatar or an organization-owned custom avatar returned by the Avatars API.
+          # Discover the available stock catalog with GET /v2/ai/avatars and
+          # filter[avatar_type]=stock; follow meta.total_pages to load every page. Supported
+          # backgrounds are office, studio, and reception.
           avatar_settings: nil,
           # Conversation flow as supplied by API clients (create / update).
           #

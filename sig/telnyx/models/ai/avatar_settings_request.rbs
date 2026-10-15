@@ -3,14 +3,14 @@ module Telnyx
     module AI
       type avatar_settings_request =
         {
-          avatar_id: Telnyx::Models::AI::avatar_id,
+          avatar_id: String,
           background_id: Telnyx::Models::AI::AvatarSettingsRequest::background_id,
           model: Telnyx::Models::AI::AvatarSettingsRequest::model,
           provider: :telnyx
         }
 
       class AvatarSettingsRequest < Telnyx::Internal::Type::BaseModel
-        attr_accessor avatar_id: Telnyx::Models::AI::avatar_id
+        attr_accessor avatar_id: String
 
         attr_accessor background_id: Telnyx::Models::AI::AvatarSettingsRequest::background_id
 
@@ -19,14 +19,14 @@ module Telnyx
         attr_accessor provider: :telnyx
 
         def initialize: (
-          avatar_id: Telnyx::Models::AI::avatar_id,
+          avatar_id: String,
           background_id: Telnyx::Models::AI::AvatarSettingsRequest::background_id,
           model: Telnyx::Models::AI::AvatarSettingsRequest::model,
           ?provider: :telnyx
         ) -> void
 
         def to_hash: -> {
-          avatar_id: Telnyx::Models::AI::avatar_id,
+          avatar_id: String,
           background_id: Telnyx::Models::AI::AvatarSettingsRequest::background_id,
           model: Telnyx::Models::AI::AvatarSettingsRequest::model,
           provider: :telnyx

@@ -42,14 +42,16 @@ module Telnyx
         # not found.
         sig do
           params(
-            avatar_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+            avatar_id: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::AvatarResponse)
         end
         def retrieve(
-          # Stable identifier of a Telnyx stock avatar or an organization-owned custom
-          # avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-          # prefix.
+          # Stable identifier returned by the Avatars API. Discover available stock IDs with
+          # GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+          # list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+          # authenticated organization. The service validates that the selected avatar is
+          # available.
           avatar_id,
           request_options: {}
         )
@@ -60,15 +62,17 @@ module Telnyx
         # new custom avatar so existing references keep their original content.
         sig do
           params(
-            avatar_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+            avatar_id: String,
             name: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::AvatarResponse)
         end
         def update(
-          # Stable identifier of a Telnyx stock avatar or an organization-owned custom
-          # avatar. Custom avatar IDs are returned by the Avatars API and use the `avatar_`
-          # prefix.
+          # Stable identifier returned by the Avatars API. Discover available stock IDs with
+          # GET /v2/ai/avatars and filter[avatar_type]=stock rather than maintaining a fixed
+          # list. Custom avatar IDs use the `avatar_` prefix and must belong to the
+          # authenticated organization. The service validates that the selected avatar is
+          # available.
           avatar_id,
           # New customer-facing name of the custom avatar.
           name:,
@@ -80,11 +84,13 @@ module Telnyx
         # available to the authenticated organization. Custom avatars owned by other
         # organizations are never returned. The `image_url` value is suitable for
         # displaying a thumbnail and may be refreshed by listing or retrieving the avatar
-        # again.
+        # again. `suggested_voice_id` recommends a compatible Telnyx voice for stock
+        # avatars and is an empty string for custom avatars; it does not change an AI
+        # Assistant's voice automatically.
         sig do
           params(
             filter_avatar_type: Telnyx::AI::AvatarType::OrSymbol,
-            filter_id: T.any(Telnyx::AI::AvatarID::OrSymbol, String),
+            filter_id: String,
             filter_name: String,
             page_number: Integer,
             page_size: Integer,
