@@ -192,6 +192,8 @@ module Telnyx
 
   CallAIGatherPartialResultsWebhookEvent = Telnyx::Models::CallAIGatherPartialResultsWebhookEvent
 
+  CallAnalyzedWebhookEvent = Telnyx::Models::CallAnalyzedWebhookEvent
+
   CallAnswered = Telnyx::Models::CallAnswered
 
   CallAnsweredWebhookEvent = Telnyx::Models::CallAnsweredWebhookEvent

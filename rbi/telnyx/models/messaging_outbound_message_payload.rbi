@@ -18,7 +18,8 @@ module Telnyx
       sig { params(id: String).void }
       attr_writer :id
 
-      # RCS webhook message body. Text messages use the text property.
+      # Message body for RCS and WhatsApp. RCS text messages use the text property.
+      # WhatsApp messages contain the `whatsapp_message` object from the send request.
       sig { returns(T.nilable(Telnyx::MessagingOutboundMessagePayload::Body)) }
       attr_reader :body
 
@@ -225,6 +226,21 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :tcr_campaign_registered
 
+      # Telnyx ID of the WhatsApp template used by the message, when known.
+      sig { returns(T.nilable(String)) }
+      attr_reader :template_id
+
+      sig { params(template_id: String).void }
+      attr_writer :template_id
+
+      # Name of the WhatsApp template used by the message. Present for WhatsApp template
+      # messages.
+      sig { returns(T.nilable(String)) }
+      attr_reader :template_name
+
+      sig { params(template_name: String).void }
+      attr_writer :template_name
+
       # Message body (i.e., content) as a non-empty string.
       #
       # **Required for SMS**
@@ -317,6 +333,8 @@ module Telnyx
           tcr_campaign_billable: T::Boolean,
           tcr_campaign_id: T.nilable(String),
           tcr_campaign_registered: T.nilable(String),
+          template_id: String,
+          template_name: String,
           text: String,
           to: T::Array[Telnyx::MessagingOutboundMessagePayload::To::OrHash],
           type: Telnyx::MessagingOutboundMessagePayload::Type::OrSymbol,
@@ -329,7 +347,8 @@ module Telnyx
       def self.new(
         # Identifies the type of resource.
         id: nil,
-        # RCS webhook message body. Text messages use the text property.
+        # Message body for RCS and WhatsApp. RCS text messages use the text property.
+        # WhatsApp messages contain the `whatsapp_message` object from the send request.
         body: nil,
         cc: nil,
         # ISO 8601 formatted date indicating when the message was finalized.
@@ -376,6 +395,11 @@ module Telnyx
         tcr_campaign_id: nil,
         # The registration status of the TCR campaign.
         tcr_campaign_registered: nil,
+        # Telnyx ID of the WhatsApp template used by the message, when known.
+        template_id: nil,
+        # Name of the WhatsApp template used by the message. Present for WhatsApp template
+        # messages.
+        template_name: nil,
         # Message body (i.e., content) as a non-empty string.
         #
         # **Required for SMS**
@@ -429,6 +453,8 @@ module Telnyx
             tcr_campaign_billable: T::Boolean,
             tcr_campaign_id: T.nilable(String),
             tcr_campaign_registered: T.nilable(String),
+            template_id: String,
+            template_name: String,
             text: String,
             to: T::Array[Telnyx::MessagingOutboundMessagePayload::To],
             type: Telnyx::MessagingOutboundMessagePayload::Type::OrSymbol,
@@ -458,7 +484,8 @@ module Telnyx
         sig { params(text: String).void }
         attr_writer :text
 
-        # RCS webhook message body. Text messages use the text property.
+        # Message body for RCS and WhatsApp. RCS text messages use the text property.
+        # WhatsApp messages contain the `whatsapp_message` object from the send request.
         sig { params(text: String).returns(T.attached_class) }
         def self.new(
           # RCS text message.
@@ -1373,6 +1400,11 @@ module Telnyx
         RCS =
           T.let(
             :RCS,
+            Telnyx::MessagingOutboundMessagePayload::Type::TaggedSymbol
+          )
+        WHATSAPP =
+          T.let(
+            :WHATSAPP,
             Telnyx::MessagingOutboundMessagePayload::Type::TaggedSymbol
           )
 

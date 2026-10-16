@@ -32,7 +32,9 @@ module Telnyx
       sig { params(header: Telnyx::WhatsappInteractive::Header::OrHash).void }
       attr_writer :header
 
-      sig { returns(T.nilable(Telnyx::WhatsappInteractive::Type::OrSymbol)) }
+      sig do
+        returns(T.nilable(Telnyx::WhatsappInteractive::Type::TaggedSymbol))
+      end
       attr_reader :type
 
       sig { params(type: Telnyx::WhatsappInteractive::Type::OrSymbol).void }
@@ -57,7 +59,7 @@ module Telnyx
             body: Telnyx::WhatsappInteractive::Body,
             footer: Telnyx::WhatsappInteractive::Footer,
             header: Telnyx::WhatsappInteractive::Header,
-            type: Telnyx::WhatsappInteractive::Type::OrSymbol
+            type: Telnyx::WhatsappInteractive::Type::TaggedSymbol
           }
         )
       end
@@ -231,7 +233,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::WhatsappInteractive::Action::Button::Type::OrSymbol
+                Telnyx::WhatsappInteractive::Action::Button::Type::TaggedSymbol
               )
             )
           end
@@ -258,7 +260,7 @@ module Telnyx
               {
                 reply: Telnyx::WhatsappInteractive::Action::Button::Reply,
                 type:
-                  Telnyx::WhatsappInteractive::Action::Button::Type::OrSymbol
+                  Telnyx::WhatsappInteractive::Action::Button::Type::TaggedSymbol
               }
             )
           end
@@ -388,7 +390,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::WhatsappInteractive::Action::Card::Type::OrSymbol
+                Telnyx::WhatsappInteractive::Action::Card::Type::TaggedSymbol
               )
             )
           end
@@ -427,7 +429,8 @@ module Telnyx
                 body: Telnyx::WhatsappInteractive::Action::Card::Body,
                 card_index: Integer,
                 header: Telnyx::WhatsappInteractive::Action::Card::Header,
-                type: Telnyx::WhatsappInteractive::Action::Card::Type::OrSymbol
+                type:
+                  Telnyx::WhatsappInteractive::Action::Card::Type::TaggedSymbol
               }
             )
           end
@@ -525,7 +528,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::WhatsappInteractive::Action::Card::Header::Type::OrSymbol
+                  Telnyx::WhatsappInteractive::Action::Card::Header::Type::TaggedSymbol
                 )
               )
             end
@@ -561,7 +564,7 @@ module Telnyx
                 {
                   image: Telnyx::WhatsappMedia,
                   type:
-                    Telnyx::WhatsappInteractive::Action::Card::Header::Type::OrSymbol,
+                    Telnyx::WhatsappInteractive::Action::Card::Header::Type::TaggedSymbol,
                   video: Telnyx::WhatsappMedia
                 }
               )

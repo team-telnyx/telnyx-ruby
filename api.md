@@ -2721,6 +2721,14 @@ Methods:
 - <code title="get /whatsapp/signup">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">list</a>(\*\*params)</code>
 - <code title="get /whatsapp/signup/{id}/status">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">retrieve_status</a>(\*\*params)</code>
 
+## HostedSignups
+
+Methods:
+
+- <code title="post /whatsapp/hosted_signups">client.whatsapp.hosted_signups.<a href="./lib/telnyx/resources/whatsapp/hosted_signups.rb">create</a>(\*\*params)</code>
+- <code title="get /whatsapp/hosted_signups/{id}">client.whatsapp.hosted_signups.<a href="./lib/telnyx/resources/whatsapp/hosted_signups.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /whatsapp/hosted_signups">client.whatsapp.hosted_signups.<a href="./lib/telnyx/resources/whatsapp/hosted_signups.rb">list</a>(\*\*params)</code>
+
 # WhatsappMessageTemplates
 
 Methods:

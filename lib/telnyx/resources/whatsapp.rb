@@ -22,6 +22,9 @@ module Telnyx
       # @return [Telnyx::Resources::Whatsapp::Signup]
       attr_reader :signup
 
+      # @return [Telnyx::Resources::Whatsapp::HostedSignups]
+      attr_reader :hosted_signups
+
       # @api private
       #
       # @param client [Telnyx::Client]
@@ -32,6 +35,7 @@ module Telnyx
         @phone_numbers = Telnyx::Resources::Whatsapp::PhoneNumbers.new(client: client)
         @user_data = Telnyx::Resources::Whatsapp::UserData.new(client: client)
         @signup = Telnyx::Resources::Whatsapp::Signup.new(client: client)
+        @hosted_signups = Telnyx::Resources::Whatsapp::HostedSignups.new(client: client)
       end
     end
   end

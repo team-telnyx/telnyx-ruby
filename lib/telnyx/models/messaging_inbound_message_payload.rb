@@ -274,10 +274,19 @@ module Telnyx
         optional :foreign_id, String
 
         # @!attribute from
-        #   WhatsApp sender in E.164 format.
+        #   WhatsApp sender in E.164 format. Empty when the user hides their phone number;
+        #   `from_user_id` then identifies the sender.
         #
         #   @return [String, nil]
         optional :from, String
+
+        # @!attribute from_user_id
+        #   Business-scoped user ID (BSUID) of the WhatsApp sender when Meta provides one,
+        #   for example `US.13491208655302741918`. When `from` is empty, pass this value as
+        #   `to` to reply.
+        #
+        #   @return [String, nil]
+        optional :from_user_id, String
 
         # @!attribute location
         #   Location shared in an RCS message.
@@ -322,7 +331,7 @@ module Telnyx
         #   @return [Telnyx::Models::MessagingInboundMessagePayload::Body::UserFile, nil]
         optional :user_file, -> { Telnyx::MessagingInboundMessagePayload::Body::UserFile }
 
-        # @!method initialize(id: nil, edit: nil, foreign_id: nil, from: nil, location: nil, revoke: nil, suggestion_response: nil, text: nil, timestamp: nil, type: nil, user_file: nil)
+        # @!method initialize(id: nil, edit: nil, foreign_id: nil, from: nil, from_user_id: nil, location: nil, revoke: nil, suggestion_response: nil, text: nil, timestamp: nil, type: nil, user_file: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MessagingInboundMessagePayload::Body} for more details.
         #
@@ -336,7 +345,9 @@ module Telnyx
         #
         #   @param foreign_id [String] Meta WhatsApp message identifier for this webhook event.
         #
-        #   @param from [String] WhatsApp sender in E.164 format.
+        #   @param from [String] WhatsApp sender in E.164 format. Empty when the user hides their phone number; `
+        #
+        #   @param from_user_id [String] Business-scoped user ID (BSUID) of the WhatsApp sender when Meta provides one, f
         #
         #   @param location [Telnyx::Models::MessagingInboundMessagePayload::Body::Location] Location shared in an RCS message.
         #

@@ -1,0 +1,27 @@
+module Telnyx
+  module Resources
+    class Whatsapp
+      class HostedSignups
+        def create: (
+          app_id: String,
+          ?expires_at: Time,
+          ?signup_type: Telnyx::Models::Whatsapp::HostedSignupCreateParams::signup_type,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::HostedSignupCreateResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Whatsapp::HostedSignupRetrieveResponse
+
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::HostedSignupListResponse]
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

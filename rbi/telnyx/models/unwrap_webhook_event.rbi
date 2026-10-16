@@ -13,6 +13,7 @@ module Telnyx
             Telnyx::CallAIGatherPartialResultsWebhookEvent,
             Telnyx::ArtifactCompletedWebhookEvent,
             Telnyx::ArtifactFailedWebhookEvent,
+            Telnyx::CallAnalyzedWebhookEvent,
             Telnyx::CallAnsweredWebhookEvent,
             Telnyx::CallBridgedWebhookEvent,
             Telnyx::CallConversationCreatedWebhookEvent,
