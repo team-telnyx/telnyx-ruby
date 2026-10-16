@@ -25,13 +25,26 @@ module Telnyx
         #   @return [Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::Filter, nil]
         optional :filter, -> { Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter }
 
-        # @!method initialize(csv_format: nil, filter: nil, request_options: {})
+        # @!attribute include_managed_accounts
+        #   When true, the CSV includes phone numbers from all managed accounts in addition
+        #   to the requesting account's own numbers. Only applies to V2 format; ignored for
+        #   V1. The export appends `user_id` and `email` columns identifying the account
+        #   that owns each number. When a filter is provided, it applies to the combined set
+        #   of numbers. Requires access to managed accounts; requests without that access
+        #   are rejected.
+        #
+        #   @return [Boolean, nil]
+        optional :include_managed_accounts, Telnyx::Internal::Type::Boolean
+
+        # @!method initialize(csv_format: nil, filter: nil, include_managed_accounts: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams} for more details.
         #
         #   @param csv_format [Symbol, Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::CsvFormat] Which format to use when generating the CSV file. The default for backwards comp
         #
         #   @param filter [Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[has_bundle]
+        #
+        #   @param include_managed_accounts [Boolean] When true, the CSV includes phone numbers from all managed accounts in addition
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

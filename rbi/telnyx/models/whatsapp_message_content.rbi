@@ -80,7 +80,9 @@ module Telnyx
       sig { params(text: Telnyx::WhatsappMessageContent::Text::OrHash).void }
       attr_writer :text
 
-      sig { returns(T.nilable(Telnyx::WhatsappMessageContent::Type::OrSymbol)) }
+      sig do
+        returns(T.nilable(Telnyx::WhatsappMessageContent::Type::TaggedSymbol))
+      end
       attr_reader :type
 
       sig { params(type: Telnyx::WhatsappMessageContent::Type::OrSymbol).void }
@@ -144,7 +146,7 @@ module Telnyx
             sticker: Telnyx::WhatsappMedia,
             template: Telnyx::WhatsappMessageContent::Template,
             text: Telnyx::WhatsappMessageContent::Text,
-            type: Telnyx::WhatsappMessageContent::Type::OrSymbol,
+            type: Telnyx::WhatsappMessageContent::Type::TaggedSymbol,
             video: Telnyx::WhatsappMedia
           }
         )
@@ -290,7 +292,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::WhatsappMessageContent::Template::Component::SubType::OrSymbol
+                Telnyx::WhatsappMessageContent::Template::Component::SubType::TaggedSymbol
               )
             )
           end
@@ -307,7 +309,7 @@ module Telnyx
           sig do
             returns(
               T.nilable(
-                Telnyx::WhatsappMessageContent::Template::Component::Type::OrSymbol
+                Telnyx::WhatsappMessageContent::Template::Component::Type::TaggedSymbol
               )
             )
           end
@@ -352,9 +354,9 @@ module Telnyx
                     Telnyx::WhatsappMessageContent::Template::Component::Parameter
                   ],
                 sub_type:
-                  Telnyx::WhatsappMessageContent::Template::Component::SubType::OrSymbol,
+                  Telnyx::WhatsappMessageContent::Template::Component::SubType::TaggedSymbol,
                 type:
-                  Telnyx::WhatsappMessageContent::Template::Component::Type::OrSymbol
+                  Telnyx::WhatsappMessageContent::Template::Component::Type::TaggedSymbol
               }
             )
           end
@@ -379,7 +381,7 @@ module Telnyx
             sig do
               returns(
                 T.nilable(
-                  Telnyx::WhatsappMessageContent::Template::Component::Parameter::Type::OrSymbol
+                  Telnyx::WhatsappMessageContent::Template::Component::Parameter::Type::TaggedSymbol
                 )
               )
             end
@@ -408,7 +410,7 @@ module Telnyx
                 {
                   text: String,
                   type:
-                    Telnyx::WhatsappMessageContent::Template::Component::Parameter::Type::OrSymbol
+                    Telnyx::WhatsappMessageContent::Template::Component::Parameter::Type::TaggedSymbol
                 }
               )
             end

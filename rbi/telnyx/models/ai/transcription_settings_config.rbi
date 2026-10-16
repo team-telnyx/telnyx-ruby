@@ -43,9 +43,8 @@ module Telnyx
         sig { params(enable_endpoint_detection: T::Boolean).void }
         attr_writer :enable_endpoint_detection
 
-        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-        # assemblyai/universal-streaming). Confidence level required to trigger an end of
-        # turn. Higher values require more certainty before ending a turn.
+        # Deprecated and ignored. Accepted for backwards compatibility. AssemblyAI turn
+        # detection is configured with min_turn_silence and max_turn_silence.
         sig { returns(T.nilable(Float)) }
         attr_reader :end_of_turn_confidence_threshold
 
@@ -76,10 +75,13 @@ module Telnyx
         sig { params(interim_results: T::Boolean).void }
         attr_writer :interim_results
 
-        # Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
-        # key terms to boost for recognition during transcription. Helps improve accuracy
-        # for domain-specific terminology, proper nouns, or uncommon words. This field may
-        # be templated with
+        # A comma-separated list of key terms to boost for recognition during
+        # transcription, used by Deepgram, Reson8, Speechmatics Linden 1 and AssemblyAI
+        # models. Helps improve accuracy for domain-specific terminology, proper nouns, or
+        # uncommon words. At most 1000 characters in total. For
+        # assemblyai/universal-3-5-pro (and its legacy alias
+        # assemblyai/universal-streaming), also at most 100 terms of up to 50 characters
+        # each. This field may be templated with
         # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
         # using mustache syntax (e.g. `Telnyx,{{customer_name}},VoIP`). Variables are
         # resolved at call time before the value is sent to the speech-to-text engine.
@@ -131,6 +133,16 @@ module Telnyx
         sig { params(numerals: T::Boolean).void }
         attr_writer :numerals
 
+        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        # assemblyai/universal-streaming). Context about the conversation (domain, names,
+        # terms) to improve transcription; describe the content, do not give instructions.
+        # Leave empty unless needed. At most 1750 characters.
+        sig { returns(T.nilable(String)) }
+        attr_reader :prompt
+
+        sig { params(prompt: String).void }
+        attr_writer :prompt
+
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :smart_format
 
@@ -152,6 +164,7 @@ module Telnyx
             max_turn_silence: Integer,
             min_turn_silence: Integer,
             numerals: T::Boolean,
+            prompt: String,
             smart_format: T::Boolean
           ).returns(T.attached_class)
         end
@@ -172,9 +185,8 @@ module Telnyx
           # emits end-of-utterance events at the cadence configured by
           # `max_endpoint_delay_ms`.
           enable_endpoint_detection: nil,
-          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-          # assemblyai/universal-streaming). Confidence level required to trigger an end of
-          # turn. Higher values require more certainty before ending a turn.
+          # Deprecated and ignored. Accepted for backwards compatibility. AssemblyAI turn
+          # detection is configured with min_turn_silence and max_turn_silence.
           end_of_turn_confidence_threshold: nil,
           # Available only for deepgram/flux. Confidence required to trigger an end of turn.
           # Higher values = more reliable turn detection but slightly increased latency.
@@ -185,10 +197,13 @@ module Telnyx
           # Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox
           # streams interim (non-final) results in addition to finalized transcripts.
           interim_results: nil,
-          # Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
-          # key terms to boost for recognition during transcription. Helps improve accuracy
-          # for domain-specific terminology, proper nouns, or uncommon words. This field may
-          # be templated with
+          # A comma-separated list of key terms to boost for recognition during
+          # transcription, used by Deepgram, Reson8, Speechmatics Linden 1 and AssemblyAI
+          # models. Helps improve accuracy for domain-specific terminology, proper nouns, or
+          # uncommon words. At most 1000 characters in total. For
+          # assemblyai/universal-3-5-pro (and its legacy alias
+          # assemblyai/universal-streaming), also at most 100 terms of up to 50 characters
+          # each. This field may be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           # using mustache syntax (e.g. `Telnyx,{{customer_name}},VoIP`). Variables are
           # resolved at call time before the value is sent to the speech-to-text engine.
@@ -210,6 +225,11 @@ module Telnyx
           # before a turn can end. Must be less than or equal to max_turn_silence.
           min_turn_silence: nil,
           numerals: nil,
+          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
+          # assemblyai/universal-streaming). Context about the conversation (domain, names,
+          # terms) to improve transcription; describe the content, do not give instructions.
+          # Leave empty unless needed. At most 1750 characters.
+          prompt: nil,
           smart_format: nil
         )
         end
@@ -230,6 +250,7 @@ module Telnyx
               max_turn_silence: Integer,
               min_turn_silence: Integer,
               numerals: T::Boolean,
+              prompt: String,
               smart_format: T::Boolean
             }
           )

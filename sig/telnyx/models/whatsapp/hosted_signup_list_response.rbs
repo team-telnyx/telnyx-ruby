@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    module Whatsapp
+      type hosted_signup_list_response =
+        {
+          id: String,
+          app_id: String,
+          created_at: Time,
+          expires_at: Time,
+          jwt: String,
+          record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type,
+          solution_id: String,
+          url: String
+        }
+
+      class HostedSignupListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader app_id: String?
+
+        def app_id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_reader expires_at: Time?
+
+        def expires_at=: (Time) -> Time
+
+        attr_reader jwt: String?
+
+        def jwt=: (String) -> String
+
+        attr_reader record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type?
+
+        def record_type=: (
+          Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type
+        ) -> Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type
+
+        attr_reader solution_id: String?
+
+        def solution_id=: (String) -> String
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?app_id: String,
+          ?created_at: Time,
+          ?expires_at: Time,
+          ?jwt: String,
+          ?record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type,
+          ?solution_id: String,
+          ?url: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          app_id: String,
+          created_at: Time,
+          expires_at: Time,
+          jwt: String,
+          record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type,
+          solution_id: String,
+          url: String
+        }
+
+        type record_type = :whatsapp_jwt
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          WHATSAPP_JWT: :whatsapp_jwt
+
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type]
+        end
+      end
+    end
+  end
+end

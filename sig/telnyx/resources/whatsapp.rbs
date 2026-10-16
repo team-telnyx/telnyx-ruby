@@ -11,6 +11,8 @@ module Telnyx
 
       attr_reader signup: Telnyx::Resources::Whatsapp::Signup
 
+      attr_reader hosted_signups: Telnyx::Resources::Whatsapp::HostedSignups
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

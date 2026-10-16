@@ -1,0 +1,35 @@
+module Telnyx
+  module Resources
+    class AI
+      class Avatars
+        def create: (
+          image_file: Telnyx::Internal::file_input,
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::AvatarResponse
+
+        def retrieve: (
+          String avatar_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::AvatarResponse
+
+        def update: (
+          String avatar_id,
+          name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AI::AvatarResponse
+
+        def list: (
+          ?filter_avatar_type: Telnyx::Models::AI::avatar_type,
+          ?filter_id: String,
+          ?filter_name: String,
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AI::Avatar]
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -12,22 +12,28 @@ module Telnyx
             )
           end
 
-        sig { returns(T.nilable(Telnyx::PhoneNumbers::PhoneNumbersJob)) }
+        sig { returns(T.nilable(Telnyx::PhoneNumbers::NumbersPhoneNumbersJob)) }
         attr_reader :data
 
-        sig { params(data: Telnyx::PhoneNumbers::PhoneNumbersJob::OrHash).void }
+        sig do
+          params(
+            data: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::OrHash
+          ).void
+        end
         attr_writer :data
 
         sig do
-          params(data: Telnyx::PhoneNumbers::PhoneNumbersJob::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            data: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(data: nil)
         end
 
         sig do
-          override.returns({ data: Telnyx::PhoneNumbers::PhoneNumbersJob })
+          override.returns(
+            { data: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob }
+          )
         end
         def to_hash
         end

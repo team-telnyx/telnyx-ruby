@@ -5,6 +5,7 @@ module Telnyx
         def create: (
           ?csv_format: Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::csv_format,
           ?filter: Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter,
+          ?include_managed_accounts: bool,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::PhoneNumbers::CsvDownloadCreateResponse
 

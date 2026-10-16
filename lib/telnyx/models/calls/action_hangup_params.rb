@@ -33,7 +33,20 @@ module Telnyx
         #   @return [Array<Telnyx::Models::CustomSipHeader>, nil]
         optional :custom_headers, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CustomSipHeader] }
 
-        # @!method initialize(call_control_id:, client_state: nil, command_id: nil, custom_headers: nil, request_options: {})
+        # @!attribute reason
+        #   Text for the SIP `Reason` header (RFC 3326) sent when cancelling an unanswered
+        #   outbound leg. The SIP CANCEL carries `Reason: SIP;cause=200;text="<reason>"`;
+        #   phones such as Poly and Yealink use it to suppress the missed-call entry for a
+        #   call answered elsewhere. Has no effect on an answered leg or an inbound leg. A
+        #   hangup sent before the leg's `call.initiated` webhook still hangs up the leg,
+        #   but without the `Reason` header. Must not contain `"`, `\`, control characters,
+        #   or characters outside the Basic Multilingual Plane (such as emoji); invalid
+        #   values are rejected with a 422.
+        #
+        #   @return [String, nil]
+        optional :reason, String
+
+        # @!method initialize(call_control_id:, client_state: nil, command_id: nil, custom_headers: nil, reason: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionHangupParams} for more details.
         #
@@ -44,6 +57,8 @@ module Telnyx
         #   @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         #   @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP BYE message.
+        #
+        #   @param reason [String] Text for the SIP `Reason` header (RFC 3326) sent when cancelling an unanswered o
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
       end

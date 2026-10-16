@@ -15,18 +15,22 @@ module Telnyx
       # request body, replay lookup is scoped to the authenticated account and compares
       # only the key; the request payload is not fingerprinted or compared. If a session
       # with that key already exists for the account, the existing session is replayed
-      # (200); otherwise a new session is created (201). Supports bring-your-own-key
-      # (BYOK) configuration. The session may enter asynchronous states (e.g. joining,
-      # waiting_for_admission) before becoming active. Optional `camera_image` input is
-      # write-only and applies only when no Avatar or Assistant webpage output takes
-      # precedence. An ignored URL is not fetched. An effective URL source is resolved
-      # before bot creation; neither the source URL nor image bytes are persisted,
-      # returned, or logged. Treat signed URLs as credentials.
+      # (200); otherwise a new session is created (201). The session may enter
+      # asynchronous states (e.g. joining, waiting_for_admission) before becoming
+      # active. Optional `camera_image` input is write-only and applies only when no
+      # avatar or Assistant webpage output takes precedence. An ignored URL is not
+      # fetched. An effective URL source is resolved before bot creation; neither the
+      # source URL nor image bytes are persisted, returned, or logged. Treat signed URLs
+      # as credentials. With `assistant.avatar: true`, the assistant is read before the
+      # bot is created: an assistant without a Telnyx avatar configured is rejected with
+      # 400 `invalid_request` (message prefix `assistant_avatar_not_configured:`), an
+      # unknown assistant with 400 `invalid_request` (prefix `assistant_not_found:`),
+      # and a failed lookup with 503 `assistant_lookup_unavailable`; no bot is created
+      # in any of these cases.
       sig do
         params(
           meeting_url: String,
           assistant: Telnyx::MeetingSessionCreateParams::Assistant::OrHash,
-          avatar: Telnyx::MeetingSessionCreateParams::Avatar::OrHash,
           barge_in: T::Boolean,
           bot_name: String,
           camera_image:
@@ -53,8 +57,6 @@ module Telnyx
         # connection, caller ID and loopback SIP URI previously required here have been
         # removed and are now rejected as unknown fields.
         assistant: nil,
-        # Request options for attaching a bring-your-own-key avatar to the session.
-        avatar: nil,
         # When enabled, a human participant `speech_on` event interrupts and stops the
         # current bot audio; it does not bypass admission or initiate speech. Assistant
         # sessions reject `barge_in: true`.
@@ -88,6 +90,7 @@ module Telnyx
         # is attached**: the value is accepted and echoed back on the session, but the
         # assistant owns the voice and the line is never delivered, with no event
         # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
+        # Rejected with 400 `invalid_request` when `assistant.avatar` is `true`.
         speak_on_enter: nil,
         # If true, generate a summary artifact when the session ends.
         summarize_on_end: nil,
@@ -175,8 +178,8 @@ module Telnyx
       # The operation retains the Telnyx-local Meeting session, transcript segments,
       # events, artifacts, and usage records. It is separate from
       # `DELETE /meeting_sessions/{id}`, which stops or cancels participation without
-      # deleting the persisted session. A missing/foreign session returns 404; provider
-      # deletion failures return 502.
+      # deleting the persisted session. A missing/foreign session returns 404; a
+      # deletion request whose outcome is unknown returns 502.
       sig do
         params(
           id: String,
@@ -209,20 +212,6 @@ module Telnyx
         after: nil,
         # Maximum number of results to return per page.
         limit: nil,
-        request_options: {}
-      )
-      end
-
-      # Returns recordings for a meeting session.
-      sig do
-        params(
-          id: String,
-          request_options: Telnyx::RequestOptions::OrHash
-        ).returns(Telnyx::Models::MeetingSessionRetrieveRecordingsResponse)
-      end
-      def retrieve_recordings(
-        # Unique identifier for the meeting session.
-        id,
         request_options: {}
       )
       end

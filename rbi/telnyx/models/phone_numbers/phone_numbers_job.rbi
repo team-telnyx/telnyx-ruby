@@ -94,9 +94,7 @@ module Telnyx
         # Indicates the completion status of the background update.
         sig do
           returns(
-            T.nilable(
-              Telnyx::PhoneNumbers::PhoneNumbersJob::Status::TaggedSymbol
-            )
+            T.nilable(Telnyx::PhoneNumbers::PhoneNumbersJob::Status::OrSymbol)
           )
         end
         attr_reader :status
@@ -132,7 +130,7 @@ module Telnyx
         # Identifies the type of the background job.
         sig do
           returns(
-            T.nilable(Telnyx::PhoneNumbers::PhoneNumbersJob::Type::TaggedSymbol)
+            T.nilable(Telnyx::PhoneNumbers::PhoneNumbersJob::Type::OrSymbol)
           )
         end
         attr_reader :type
@@ -214,13 +212,12 @@ module Telnyx
                 ],
               phone_numbers: T::Array[Telnyx::PhoneNumbersJobPhoneNumber],
               record_type: String,
-              status:
-                Telnyx::PhoneNumbers::PhoneNumbersJob::Status::TaggedSymbol,
+              status: Telnyx::PhoneNumbers::PhoneNumbersJob::Status::OrSymbol,
               successful_operations:
                 T::Array[
                   Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation
                 ],
-              type: Telnyx::PhoneNumbers::PhoneNumbersJob::Type::TaggedSymbol,
+              type: Telnyx::PhoneNumbers::PhoneNumbersJob::Type::OrSymbol,
               updated_at: String
             }
           )

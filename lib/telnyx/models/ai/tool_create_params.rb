@@ -59,6 +59,11 @@ module Telnyx
         #   @return [Telnyx::Models::AI::UpdateDynamicVariablesToolParams, nil]
         optional :update_dynamic_variables, -> { Telnyx::AI::UpdateDynamicVariablesToolParams }
 
+        # @!attribute vision
+        #
+        #   @return [Telnyx::Models::AI::VisionToolParams, nil]
+        optional :vision, -> { Telnyx::AI::VisionToolParams }
+
         # @!attribute webhook
         #
         #   @return [Hash{Symbol=>Object}, nil]
@@ -69,7 +74,7 @@ module Telnyx
         #   @return [String, nil]
         optional :idempotency_key, String
 
-        # @!method initialize(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, idempotency_key: nil, request_options: {})
+        # @!method initialize(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, vision: nil, webhook: nil, idempotency_key: nil, request_options: {})
         #   @param display_name [String]
         #
         #   @param type [String]
@@ -89,6 +94,8 @@ module Telnyx
         #   @param timeout_ms [Integer]
         #
         #   @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
+        #
+        #   @param vision [Telnyx::Models::AI::VisionToolParams]
         #
         #   @param webhook [Hash{Symbol=>Object}]
         #

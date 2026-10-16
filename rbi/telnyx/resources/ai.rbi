@@ -61,6 +61,10 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Memory) }
       attr_reader :memory
 
+      # Create and manage real-time AI avatars
+      sig { returns(Telnyx::Resources::AI::Avatars) }
+      attr_reader :avatars
+
       # Performs semantic vector search across conversation history records.
       #
       # **How it works:**

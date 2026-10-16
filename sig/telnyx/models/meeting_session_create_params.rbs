@@ -4,7 +4,6 @@ module Telnyx
       {
         meeting_url: String,
         assistant: Telnyx::MeetingSessionCreateParams::Assistant,
-        avatar: Telnyx::MeetingSessionCreateParams::Avatar,
         barge_in: bool,
         bot_name: String,
         camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
@@ -30,12 +29,6 @@ module Telnyx
       def assistant=: (
         Telnyx::MeetingSessionCreateParams::Assistant
       ) -> Telnyx::MeetingSessionCreateParams::Assistant
-
-      attr_reader avatar: Telnyx::MeetingSessionCreateParams::Avatar?
-
-      def avatar=: (
-        Telnyx::MeetingSessionCreateParams::Avatar
-      ) -> Telnyx::MeetingSessionCreateParams::Avatar
 
       attr_reader barge_in: bool?
 
@@ -86,7 +79,6 @@ module Telnyx
       def initialize: (
         meeting_url: String,
         ?assistant: Telnyx::MeetingSessionCreateParams::Assistant,
-        ?avatar: Telnyx::MeetingSessionCreateParams::Avatar,
         ?barge_in: bool,
         ?bot_name: String,
         ?camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
@@ -104,7 +96,6 @@ module Telnyx
       def to_hash: -> {
         meeting_url: String,
         assistant: Telnyx::MeetingSessionCreateParams::Assistant,
-        avatar: Telnyx::MeetingSessionCreateParams::Avatar,
         barge_in: bool,
         bot_name: String,
         camera_image: Telnyx::Models::MeetingSessionCreateParams::camera_image,
@@ -123,6 +114,7 @@ module Telnyx
         {
           id: String,
           audio_gate: Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate,
+          avatar: bool,
           dynamic_variables: ::Hash[Symbol, String],
           leave_on_end: bool
         }
@@ -135,6 +127,10 @@ module Telnyx
         def audio_gate=: (
           Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate
         ) -> Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate
+
+        attr_reader avatar: bool?
+
+        def avatar=: (bool) -> bool
 
         attr_reader dynamic_variables: ::Hash[Symbol, String]?
 
@@ -149,6 +145,7 @@ module Telnyx
         def initialize: (
           id: String,
           ?audio_gate: Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate,
+          ?avatar: bool,
           ?dynamic_variables: ::Hash[Symbol, String],
           ?leave_on_end: bool
         ) -> void
@@ -156,6 +153,7 @@ module Telnyx
         def to_hash: -> {
           id: String,
           audio_gate: Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate,
+          avatar: bool,
           dynamic_variables: ::Hash[Symbol, String],
           leave_on_end: bool
         }
@@ -170,24 +168,6 @@ module Telnyx
 
           def self?.values: -> ::Array[Telnyx::Models::MeetingSessionCreateParams::Assistant::audio_gate]
         end
-      end
-
-      type avatar = { api_key: String, avatar_id: String, provider: :anam }
-
-      class Avatar < Telnyx::Internal::Type::BaseModel
-        attr_accessor avatar_id: String
-
-        attr_accessor provider: :anam
-
-        attr_accessor api_key: String
-
-        def initialize: (
-          api_key: String,
-          avatar_id: String,
-          ?provider: :anam
-        ) -> void
-
-        def to_hash: -> { api_key: String, avatar_id: String, provider: :anam }
       end
 
       type camera_image =

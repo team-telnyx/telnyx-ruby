@@ -10,7 +10,7 @@ module Telnyx
         #
         # Create a new custom AI tool that can be attached to AI assistants.
         #
-        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, webhook: nil, idempotency_key: nil, request_options: {})
+        # @overload create(display_name:, type:, client_side_tool: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, update_dynamic_variables: nil, vision: nil, webhook: nil, idempotency_key: nil, request_options: {})
         #
         # @param display_name [String] Body param
         #
@@ -31,6 +31,8 @@ module Telnyx
         # @param timeout_ms [Integer] Body param
         #
         # @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Body param: Configuration for an update_dynamic_variables tool.
+        #
+        # @param vision [Telnyx::Models::AI::VisionToolParams] Body param
         #
         # @param webhook [Hash{Symbol=>Object}] Body param
         #
@@ -76,7 +78,7 @@ module Telnyx
 
         # Update the configuration of an existing AI tool.
         #
-        # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, update_dynamic_variables: nil, webhook: nil, request_options: {})
+        # @overload update(tool_id, client_side_tool: nil, display_name: nil, function: nil, handoff: nil, invite: nil, pay: nil, retrieval: nil, timeout_ms: nil, type: nil, update_dynamic_variables: nil, vision: nil, webhook: nil, request_options: {})
         #
         # @param tool_id [String] Unique identifier of the tool.
         #
@@ -99,6 +101,8 @@ module Telnyx
         # @param type [String]
         #
         # @param update_dynamic_variables [Telnyx::Models::AI::UpdateDynamicVariablesToolParams] Configuration for an update_dynamic_variables tool.
+        #
+        # @param vision [Telnyx::Models::AI::VisionToolParams]
         #
         # @param webhook [Hash{Symbol=>Object}]
         #

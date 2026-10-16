@@ -13,6 +13,7 @@ module Telnyx
               Telnyx::PhoneNumbers::CsvDownloadCreateParams::CsvFormat::OrSymbol,
             filter:
               Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter::OrHash,
+            include_managed_accounts: T::Boolean,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::PhoneNumbers::CsvDownloadCreateResponse)
         end
@@ -26,6 +27,13 @@ module Telnyx
           # filter[voice.usage_payment_method], filter[billing_group_id],
           # filter[emergency_address_id], filter[customer_reference]
           filter: nil,
+          # When true, the CSV includes phone numbers from all managed accounts in addition
+          # to the requesting account's own numbers. Only applies to V2 format; ignored for
+          # V1. The export appends `user_id` and `email` columns identifying the account
+          # that owns each number. When a filter is provided, it applies to the combined set
+          # of numbers. Requires access to managed accounts; requests without that access
+          # are rejected.
+          include_managed_accounts: nil,
           request_options: {}
         )
         end

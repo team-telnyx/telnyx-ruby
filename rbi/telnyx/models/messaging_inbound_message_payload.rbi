@@ -459,12 +459,22 @@ module Telnyx
         sig { params(foreign_id: String).void }
         attr_writer :foreign_id
 
-        # WhatsApp sender in E.164 format.
+        # WhatsApp sender in E.164 format. Empty when the user hides their phone number;
+        # `from_user_id` then identifies the sender.
         sig { returns(T.nilable(String)) }
         attr_reader :from
 
         sig { params(from: String).void }
         attr_writer :from
+
+        # Business-scoped user ID (BSUID) of the WhatsApp sender when Meta provides one,
+        # for example `US.13491208655302741918`. When `from` is empty, pass this value as
+        # `to` to reply.
+        sig { returns(T.nilable(String)) }
+        attr_reader :from_user_id
+
+        sig { params(from_user_id: String).void }
+        attr_writer :from_user_id
 
         # Location shared in an RCS message.
         sig do
@@ -576,6 +586,7 @@ module Telnyx
             edit: Telnyx::MessagingInboundMessagePayload::Body::Edit::OrHash,
             foreign_id: String,
             from: String,
+            from_user_id: String,
             location:
               Telnyx::MessagingInboundMessagePayload::Body::Location::OrHash,
             revoke:
@@ -600,8 +611,13 @@ module Telnyx
           edit: nil,
           # Meta WhatsApp message identifier for this webhook event.
           foreign_id: nil,
-          # WhatsApp sender in E.164 format.
+          # WhatsApp sender in E.164 format. Empty when the user hides their phone number;
+          # `from_user_id` then identifies the sender.
           from: nil,
+          # Business-scoped user ID (BSUID) of the WhatsApp sender when Meta provides one,
+          # for example `US.13491208655302741918`. When `from` is empty, pass this value as
+          # `to` to reply.
+          from_user_id: nil,
           # Location shared in an RCS message.
           location: nil,
           # Details for a revoked WhatsApp message.
@@ -627,6 +643,7 @@ module Telnyx
               edit: Telnyx::MessagingInboundMessagePayload::Body::Edit,
               foreign_id: String,
               from: String,
+              from_user_id: String,
               location: Telnyx::MessagingInboundMessagePayload::Body::Location,
               revoke: Telnyx::MessagingInboundMessagePayload::Body::Revoke,
               suggestion_response:

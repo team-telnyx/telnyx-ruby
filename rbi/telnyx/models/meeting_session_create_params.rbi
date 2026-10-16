@@ -29,15 +29,6 @@ module Telnyx
       end
       attr_writer :assistant
 
-      # Request options for attaching a bring-your-own-key avatar to the session.
-      sig { returns(T.nilable(Telnyx::MeetingSessionCreateParams::Avatar)) }
-      attr_reader :avatar
-
-      sig do
-        params(avatar: Telnyx::MeetingSessionCreateParams::Avatar::OrHash).void
-      end
-      attr_writer :avatar
-
       # When enabled, a human participant `speech_on` event interrupts and stops the
       # current bot audio; it does not bypass admission or initiate speech. Assistant
       # sessions reject `barge_in: true`.
@@ -123,6 +114,7 @@ module Telnyx
       # is attached**: the value is accepted and echoed back on the session, but the
       # assistant owns the voice and the line is never delivered, with no event
       # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
+      # Rejected with 400 `invalid_request` when `assistant.avatar` is `true`.
       sig { returns(T.nilable(String)) }
       attr_reader :speak_on_enter
 
@@ -158,7 +150,6 @@ module Telnyx
         params(
           meeting_url: String,
           assistant: Telnyx::MeetingSessionCreateParams::Assistant::OrHash,
-          avatar: Telnyx::MeetingSessionCreateParams::Avatar::OrHash,
           barge_in: T::Boolean,
           bot_name: String,
           camera_image:
@@ -185,8 +176,6 @@ module Telnyx
         # connection, caller ID and loopback SIP URI previously required here have been
         # removed and are now rejected as unknown fields.
         assistant: nil,
-        # Request options for attaching a bring-your-own-key avatar to the session.
-        avatar: nil,
         # When enabled, a human participant `speech_on` event interrupts and stops the
         # current bot audio; it does not bypass admission or initiate speech. Assistant
         # sessions reject `barge_in: true`.
@@ -220,6 +209,7 @@ module Telnyx
         # is attached**: the value is accepted and echoed back on the session, but the
         # assistant owns the voice and the line is never delivered, with no event
         # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
+        # Rejected with 400 `invalid_request` when `assistant.avatar` is `true`.
         speak_on_enter: nil,
         # If true, generate a summary artifact when the session ends.
         summarize_on_end: nil,
@@ -240,7 +230,6 @@ module Telnyx
           {
             meeting_url: String,
             assistant: Telnyx::MeetingSessionCreateParams::Assistant,
-            avatar: Telnyx::MeetingSessionCreateParams::Avatar,
             barge_in: T::Boolean,
             bot_name: String,
             camera_image:
@@ -299,6 +288,22 @@ module Telnyx
         end
         attr_writer :audio_gate
 
+        # Beta. Show the avatar configured on the assistant (its `avatar_settings`; see
+        # [AI Assistant avatars](/docs/inference/ai-assistants/avatars)) as the bot's
+        # camera, lip-synced to the assistant's own speech. The request carries no avatar
+        # ID or key: the assistant is read at creation and the request is rejected with
+        # 400 `invalid_request` if it has no Telnyx avatar configured. Supported on Google
+        # Meet, Zoom, Microsoft Teams and Webex; other platforms return 422
+        # `unsupported_capability`. REST-only. Not echoed back on `assistant`; the
+        # session's top-level `avatar` and `avatar_state` fields report it instead. If the
+        # avatar fails, the session continues voice-only and `avatar_state` becomes
+        # `degraded`.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :avatar
+
+        sig { params(avatar: T::Boolean).void }
+        attr_writer :avatar
+
         # Per-conversation values for the
         # [dynamic variables](/docs/inference/ai-assistants/dynamic-variables) used in the
         # Assistant's instructions, greeting, or tools. Delivered before the Assistant's
@@ -335,6 +340,7 @@ module Telnyx
             id: String,
             audio_gate:
               Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::OrSymbol,
+            avatar: T::Boolean,
             dynamic_variables: T::Hash[Symbol, String],
             leave_on_end: T::Boolean
           ).returns(T.attached_class)
@@ -349,6 +355,17 @@ module Telnyx
           # removes self-hearing, and COSTS SIGNIFICANTLY MORE: per-participant streams
           # multiply the per-minute cost by the number of participants.
           audio_gate: nil,
+          # Beta. Show the avatar configured on the assistant (its `avatar_settings`; see
+          # [AI Assistant avatars](/docs/inference/ai-assistants/avatars)) as the bot's
+          # camera, lip-synced to the assistant's own speech. The request carries no avatar
+          # ID or key: the assistant is read at creation and the request is rejected with
+          # 400 `invalid_request` if it has no Telnyx avatar configured. Supported on Google
+          # Meet, Zoom, Microsoft Teams and Webex; other platforms return 422
+          # `unsupported_capability`. REST-only. Not echoed back on `assistant`; the
+          # session's top-level `avatar` and `avatar_state` fields report it instead. If the
+          # avatar fails, the session continues voice-only and `avatar_state` becomes
+          # `degraded`.
+          avatar: nil,
           # Per-conversation values for the
           # [dynamic variables](/docs/inference/ai-assistants/dynamic-variables) used in the
           # Assistant's instructions, greeting, or tools. Delivered before the Assistant's
@@ -375,6 +392,7 @@ module Telnyx
               id: String,
               audio_gate:
                 Telnyx::MeetingSessionCreateParams::Assistant::AudioGate::OrSymbol,
+              avatar: T::Boolean,
               dynamic_variables: T::Hash[Symbol, String],
               leave_on_end: T::Boolean
             }
@@ -421,54 +439,6 @@ module Telnyx
           end
           def self.values
           end
-        end
-      end
-
-      class Avatar < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::MeetingSessionCreateParams::Avatar,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Identifier of the avatar to use.
-        sig { returns(String) }
-        attr_accessor :avatar_id
-
-        # Avatar provider identifier. Currently only "anam" is supported.
-        sig { returns(Symbol) }
-        attr_accessor :provider
-
-        # Bring-your-own-key API key for the avatar provider. The key is never stored or
-        # returned by the API.
-        sig { returns(String) }
-        attr_accessor :api_key
-
-        # Request options for attaching a bring-your-own-key avatar to the session.
-        sig do
-          params(api_key: String, avatar_id: String, provider: Symbol).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # Bring-your-own-key API key for the avatar provider. The key is never stored or
-          # returned by the API.
-          api_key:,
-          # Identifier of the avatar to use.
-          avatar_id:,
-          # Avatar provider identifier. Currently only "anam" is supported.
-          provider: :anam
-        )
-        end
-
-        sig do
-          override.returns(
-            { api_key: String, avatar_id: String, provider: Symbol }
-          )
-        end
-        def to_hash
         end
       end
 

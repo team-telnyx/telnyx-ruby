@@ -61,6 +61,10 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Memory]
       attr_reader :memory
 
+      # Create and manage real-time AI avatars
+      # @return [Telnyx::Resources::AI::Avatars]
+      attr_reader :avatars
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AIRetrieveConversationHistoriesParams} for more details.
       #
@@ -236,6 +240,7 @@ module Telnyx
         @knowledge = Telnyx::Resources::AI::Knowledge.new(client: client)
         @typesafe = Telnyx::Resources::AI::Typesafe.new(client: client)
         @memory = Telnyx::Resources::AI::Memory.new(client: client)
+        @avatars = Telnyx::Resources::AI::Avatars.new(client: client)
       end
     end
   end

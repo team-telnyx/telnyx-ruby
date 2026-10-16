@@ -13,6 +13,7 @@ module Telnyx
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
           update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+          vision: Telnyx::AI::VisionToolParams,
           webhook: ::Hash[Symbol, top],
           idempotency_key: String
         }
@@ -60,6 +61,12 @@ module Telnyx
           Telnyx::AI::UpdateDynamicVariablesToolParams
         ) -> Telnyx::AI::UpdateDynamicVariablesToolParams
 
+        attr_reader vision: Telnyx::AI::VisionToolParams?
+
+        def vision=: (
+          Telnyx::AI::VisionToolParams
+        ) -> Telnyx::AI::VisionToolParams
+
         attr_reader webhook: ::Hash[Symbol, top]?
 
         def webhook=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -79,6 +86,7 @@ module Telnyx
           ?retrieval: ::Hash[Symbol, top],
           ?timeout_ms: Integer,
           ?update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+          ?vision: Telnyx::AI::VisionToolParams,
           ?webhook: ::Hash[Symbol, top],
           ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
@@ -95,6 +103,7 @@ module Telnyx
           retrieval: ::Hash[Symbol, top],
           timeout_ms: Integer,
           update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+          vision: Telnyx::AI::VisionToolParams,
           webhook: ::Hash[Symbol, top],
           idempotency_key: String,
           request_options: Telnyx::RequestOptions

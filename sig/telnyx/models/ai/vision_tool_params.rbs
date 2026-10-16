@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module AI
+      type vision_tool_params = { max_frame_age_secs: Integer }
+
+      class VisionToolParams < Telnyx::Internal::Type::BaseModel
+        attr_reader max_frame_age_secs: Integer?
+
+        def max_frame_age_secs=: (Integer) -> Integer
+
+        def initialize: (?max_frame_age_secs: Integer) -> void
+
+        def to_hash: -> { max_frame_age_secs: Integer }
+      end
+    end
+  end
+end

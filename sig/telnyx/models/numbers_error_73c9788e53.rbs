@@ -1,0 +1,82 @@
+module Telnyx
+  module Models
+    type numbers_error73c9788e53 =
+      {
+        code: String,
+        detail: String,
+        meta: Telnyx::NumbersError73c9788e53::Meta,
+        source: Telnyx::NumbersError73c9788e53::Source,
+        title: String
+      }
+
+    class NumbersError73c9788e53 < Telnyx::Internal::Type::BaseModel
+      attr_reader code: String?
+
+      def code=: (String) -> String
+
+      attr_reader detail: String?
+
+      def detail=: (String) -> String
+
+      attr_reader meta: Telnyx::NumbersError73c9788e53::Meta?
+
+      def meta=: (
+        Telnyx::NumbersError73c9788e53::Meta
+      ) -> Telnyx::NumbersError73c9788e53::Meta
+
+      attr_reader source: Telnyx::NumbersError73c9788e53::Source?
+
+      def source=: (
+        Telnyx::NumbersError73c9788e53::Source
+      ) -> Telnyx::NumbersError73c9788e53::Source
+
+      attr_reader title: String?
+
+      def title=: (String) -> String
+
+      def initialize: (
+        ?code: String,
+        ?detail: String,
+        ?meta: Telnyx::NumbersError73c9788e53::Meta,
+        ?source: Telnyx::NumbersError73c9788e53::Source,
+        ?title: String
+      ) -> void
+
+      def to_hash: -> {
+        code: String,
+        detail: String,
+        meta: Telnyx::NumbersError73c9788e53::Meta,
+        source: Telnyx::NumbersError73c9788e53::Source,
+        title: String
+      }
+
+      type meta = { url: String }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (?url: String) -> void
+
+        def to_hash: -> { url: String }
+      end
+
+      type source = { parameter: String, pointer: String }
+
+      class Source < Telnyx::Internal::Type::BaseModel
+        attr_reader parameter: String?
+
+        def parameter=: (String) -> String
+
+        attr_reader pointer: String?
+
+        def pointer=: (String) -> String
+
+        def initialize: (?parameter: String, ?pointer: String) -> void
+
+        def to_hash: -> { parameter: String, pointer: String }
+      end
+    end
+  end
+end
