@@ -592,6 +592,15 @@ Methods:
 - <code title="get /ai/memory/namespaces/{namespace}/settings">client.ai.memory.namespaces.settings.<a href="./lib/telnyx/resources/ai/memory/namespaces/settings.rb">list</a>(\*\*params)</code>
 - <code title="patch /ai/memory/namespaces/{namespace}/settings">client.ai.memory.namespaces.settings.<a href="./lib/telnyx/resources/ai/memory/namespaces/settings.rb">patch_all</a>(\*\*params)</code>
 
+## Avatars
+
+Methods:
+
+- <code title="post /ai/avatars">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">create</a>(\*\*params)</code>
+- <code title="get /ai/avatars/{avatar_id}">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /ai/avatars/{avatar_id}">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">update</a>(\*\*params)</code>
+- <code title="get /ai/avatars">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">list</a>(\*\*params)</code>
+
 # AuditEvents
 
 Methods:
@@ -2712,6 +2721,14 @@ Methods:
 - <code title="get /whatsapp/signup">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">list</a>(\*\*params)</code>
 - <code title="get /whatsapp/signup/{id}/status">client.whatsapp.signup.<a href="./lib/telnyx/resources/whatsapp/signup.rb">retrieve_status</a>(\*\*params)</code>
 
+## HostedSignups
+
+Methods:
+
+- <code title="post /whatsapp/hosted_signups">client.whatsapp.hosted_signups.<a href="./lib/telnyx/resources/whatsapp/hosted_signups.rb">create</a>(\*\*params)</code>
+- <code title="get /whatsapp/hosted_signups/{id}">client.whatsapp.hosted_signups.<a href="./lib/telnyx/resources/whatsapp/hosted_signups.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /whatsapp/hosted_signups">client.whatsapp.hosted_signups.<a href="./lib/telnyx/resources/whatsapp/hosted_signups.rb">list</a>(\*\*params)</code>
+
 # WhatsappMessageTemplates
 
 Methods:
@@ -3197,7 +3214,6 @@ Methods:
 - <code title="delete /meeting_sessions/{id}">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete</a>(\*\*params)</code>
 - <code title="delete /meeting_sessions/{id}/recording_media">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete_recording_media</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/events">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_events</a>(\*\*params)</code>
-- <code title="get /meeting_sessions/{id}/recordings">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_recordings</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/transcript">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_transcript</a>(\*\*params)</code>
 
 ## Actions

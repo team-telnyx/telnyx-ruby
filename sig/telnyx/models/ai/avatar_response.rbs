@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module AI
+      type avatar_response = { data: Telnyx::AI::Avatar }
+
+      class AvatarResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::AI::Avatar
+
+        def initialize: (data: Telnyx::AI::Avatar) -> void
+
+        def to_hash: -> { data: Telnyx::AI::Avatar }
+      end
+    end
+  end
+end

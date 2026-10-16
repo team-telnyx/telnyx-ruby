@@ -18,21 +18,24 @@ module Telnyx
       # request body, replay lookup is scoped to the authenticated account and compares
       # only the key; the request payload is not fingerprinted or compared. If a session
       # with that key already exists for the account, the existing session is replayed
-      # (200); otherwise a new session is created (201). Supports bring-your-own-key
-      # (BYOK) configuration. The session may enter asynchronous states (e.g. joining,
-      # waiting_for_admission) before becoming active. Optional `camera_image` input is
-      # write-only and applies only when no Avatar or Assistant webpage output takes
-      # precedence. An ignored URL is not fetched. An effective URL source is resolved
-      # before bot creation; neither the source URL nor image bytes are persisted,
-      # returned, or logged. Treat signed URLs as credentials.
+      # (200); otherwise a new session is created (201). The session may enter
+      # asynchronous states (e.g. joining, waiting_for_admission) before becoming
+      # active. Optional `camera_image` input is write-only and applies only when no
+      # avatar or Assistant webpage output takes precedence. An ignored URL is not
+      # fetched. An effective URL source is resolved before bot creation; neither the
+      # source URL nor image bytes are persisted, returned, or logged. Treat signed URLs
+      # as credentials. With `assistant.avatar: true`, the assistant is read before the
+      # bot is created: an assistant without a Telnyx avatar configured is rejected with
+      # 400 `invalid_request` (message prefix `assistant_avatar_not_configured:`), an
+      # unknown assistant with 400 `invalid_request` (prefix `assistant_not_found:`),
+      # and a failed lookup with 503 `assistant_lookup_unavailable`; no bot is created
+      # in any of these cases.
       #
-      # @overload create(meeting_url:, assistant: nil, avatar: nil, barge_in: nil, bot_name: nil, camera_image: nil, chat_on_enter: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
+      # @overload create(meeting_url:, assistant: nil, barge_in: nil, bot_name: nil, camera_image: nil, chat_on_enter: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
       #
       # @param meeting_url [String] The meeting URL the bot should join.
       #
       # @param assistant [Telnyx::Models::MeetingSessionCreateParams::Assistant] Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the Meet
-      #
-      # @param avatar [Telnyx::Models::MeetingSessionCreateParams::Avatar] Request options for attaching a bring-your-own-key avatar to the session.
       #
       # @param barge_in [Boolean] When enabled, a human participant `speech_on` event interrupts and stops the cur
       #
@@ -172,8 +175,8 @@ module Telnyx
       # The operation retains the Telnyx-local Meeting session, transcript segments,
       # events, artifacts, and usage records. It is separate from
       # `DELETE /meeting_sessions/{id}`, which stops or cancels participation without
-      # deleting the persisted session. A missing/foreign session returns 404; provider
-      # deletion failures return 502.
+      # deleting the persisted session. A missing/foreign session returns 404; a
+      # deletion request whose outcome is unknown returns 502.
       #
       # @overload delete_recording_media(id, request_options: {})
       #
@@ -220,26 +223,6 @@ module Telnyx
           query: query,
           model: Telnyx::Models::MeetingSessionRetrieveEventsResponse,
           options: options
-        )
-      end
-
-      # Returns recordings for a meeting session.
-      #
-      # @overload retrieve_recordings(id, request_options: {})
-      #
-      # @param id [String] Unique identifier for the meeting session.
-      #
-      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Telnyx::Models::MeetingSessionRetrieveRecordingsResponse]
-      #
-      # @see Telnyx::Models::MeetingSessionRetrieveRecordingsParams
-      def retrieve_recordings(id, params = {})
-        @client.request(
-          method: :get,
-          path: ["meeting_sessions/%1$s/recordings", id],
-          model: Telnyx::Models::MeetingSessionRetrieveRecordingsResponse,
-          options: params[:request_options]
         )
       end
 

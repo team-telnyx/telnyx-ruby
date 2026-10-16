@@ -444,7 +444,8 @@ module Telnyx
         params(
           from: String,
           to: String,
-          whatsapp_message: Telnyx::WhatsappMessageContent::OrHash,
+          whatsapp_message:
+            Telnyx::MessageWhatsappParams::WhatsappMessage::OrHash,
           messaging_profile_id: String,
           type: Telnyx::MessageWhatsappParams::Type::OrSymbol,
           webhook_url: String,
@@ -454,7 +455,9 @@ module Telnyx
       def whatsapp(
         # Phone number in +E.164 format associated with Whatsapp account
         from:,
-        # Phone number in +E.164 format
+        # Recipient phone number in +E.164 format, or the business-scoped user ID (BSUID)
+        # of a WhatsApp user who hides their phone number, for example
+        # `US.13491208655302741918`. Authentication templates cannot be sent to a BSUID.
         to:,
         whatsapp_message:,
         # Messaging profile ID - required if the 'from' number is not SMS-enabled

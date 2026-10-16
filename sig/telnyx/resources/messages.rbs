@@ -122,7 +122,7 @@ module Telnyx
       def whatsapp: (
         from: String,
         to: String,
-        whatsapp_message: Telnyx::WhatsappMessageContent,
+        whatsapp_message: Telnyx::MessageWhatsappParams::WhatsappMessage,
         ?messaging_profile_id: String,
         ?type: Telnyx::Models::MessageWhatsappParams::type_,
         ?webhook_url: String,

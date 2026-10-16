@@ -34,7 +34,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::PhoneNumbers::PhoneNumbersJob
+              Telnyx::PhoneNumbers::NumbersPhoneNumbersJob
             ]
           )
         end

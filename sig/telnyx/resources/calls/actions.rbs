@@ -163,6 +163,7 @@ module Telnyx
           ?client_state: String,
           ?command_id: String,
           ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?reason: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Calls::ActionHangupResponse
 

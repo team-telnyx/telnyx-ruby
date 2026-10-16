@@ -126,9 +126,16 @@ module Telnyx
         attr_writer :supports_unauthenticated_web_calls
 
         # Maximum duration in seconds for the AI assistant to participate on the call.
-        # When this limit is reached the assistant will be stopped. This limit does not
-        # apply to portions of a call without an active assistant (for instance, a call
-        # transferred to a human representative).
+        # When this limit is reached the assistant will be stopped. Stopping the assistant
+        # does not itself hang up the call, and what happens next depends on how the
+        # assistant is running. On Call Control (ai_assistant_start) the call leg stays
+        # connected and continues to be billed until it is hung up (for example with the
+        # Hangup call command) or until the call ends for another reason. On TeXML, the
+        # assistant's `<Connect><AIAssistant>` instruction ends; in the default TeXML
+        # setup for assistants no instructions follow it, so the call is hung up. Your
+        # application receives a call.conversation.ended webhook when the assistant stops.
+        # This limit does not apply to portions of a call without an active assistant (for
+        # instance, a call transferred to a human representative).
         sig { returns(T.nilable(Integer)) }
         attr_reader :time_limit_secs
 
@@ -145,9 +152,16 @@ module Telnyx
         attr_writer :user_idle_reply_secs
 
         # Maximum duration in seconds of end user silence on the call. When this limit is
-        # reached the assistant will be stopped. This limit does not apply to portions of
-        # a call without an active assistant (for instance, a call transferred to a human
-        # representative).
+        # reached the assistant will be stopped. Stopping the assistant does not itself
+        # hang up the call, and what happens next depends on how the assistant is running.
+        # On Call Control (ai_assistant_start) the call leg stays connected and continues
+        # to be billed until it is hung up (for example with the Hangup call command) or
+        # until the call ends for another reason. On TeXML, the assistant's
+        # `<Connect><AIAssistant>` instruction ends; in the default TeXML setup for
+        # assistants no instructions follow it, so the call is hung up. Your application
+        # receives a call.conversation.ended webhook when the assistant stops. This limit
+        # does not apply to portions of a call without an active assistant (for instance,
+        # a call transferred to a human representative).
         sig { returns(T.nilable(Integer)) }
         attr_reader :user_idle_timeout_secs
 
@@ -242,18 +256,32 @@ module Telnyx
           # work with assistants that have telephony enabled.
           supports_unauthenticated_web_calls: nil,
           # Maximum duration in seconds for the AI assistant to participate on the call.
-          # When this limit is reached the assistant will be stopped. This limit does not
-          # apply to portions of a call without an active assistant (for instance, a call
-          # transferred to a human representative).
+          # When this limit is reached the assistant will be stopped. Stopping the assistant
+          # does not itself hang up the call, and what happens next depends on how the
+          # assistant is running. On Call Control (ai_assistant_start) the call leg stays
+          # connected and continues to be billed until it is hung up (for example with the
+          # Hangup call command) or until the call ends for another reason. On TeXML, the
+          # assistant's `<Connect><AIAssistant>` instruction ends; in the default TeXML
+          # setup for assistants no instructions follow it, so the call is hung up. Your
+          # application receives a call.conversation.ended webhook when the assistant stops.
+          # This limit does not apply to portions of a call without an active assistant (for
+          # instance, a call transferred to a human representative).
           time_limit_secs: nil,
           # Duration in seconds of end user silence before the assistant checks in on the
           # user. When this limit is reached the assistant will prompt the user to respond.
           # This is distinct from user_idle_timeout_secs which stops the assistant entirely.
           user_idle_reply_secs: nil,
           # Maximum duration in seconds of end user silence on the call. When this limit is
-          # reached the assistant will be stopped. This limit does not apply to portions of
-          # a call without an active assistant (for instance, a call transferred to a human
-          # representative).
+          # reached the assistant will be stopped. Stopping the assistant does not itself
+          # hang up the call, and what happens next depends on how the assistant is running.
+          # On Call Control (ai_assistant_start) the call leg stays connected and continues
+          # to be billed until it is hung up (for example with the Hangup call command) or
+          # until the call ends for another reason. On TeXML, the assistant's
+          # `<Connect><AIAssistant>` instruction ends; in the default TeXML setup for
+          # assistants no instructions follow it, so the call is hung up. Your application
+          # receives a call.conversation.ended webhook when the assistant stops. This limit
+          # does not apply to portions of a call without an active assistant (for instance,
+          # a call transferred to a human representative).
           user_idle_timeout_secs: nil,
           # Configuration for voicemail detection (AMD - Answering Machine Detection) on
           # outgoing calls. These settings only apply if AMD is enabled on the Dial command.

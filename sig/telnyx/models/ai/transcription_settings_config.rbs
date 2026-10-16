@@ -16,6 +16,7 @@ module Telnyx
           max_turn_silence: Integer,
           min_turn_silence: Integer,
           numerals: bool,
+          prompt: String,
           smart_format: bool
         }
 
@@ -72,6 +73,10 @@ module Telnyx
 
         def numerals=: (bool) -> bool
 
+        attr_reader prompt: String?
+
+        def prompt=: (String) -> String
+
         attr_reader smart_format: bool?
 
         def smart_format=: (bool) -> bool
@@ -90,6 +95,7 @@ module Telnyx
           ?max_turn_silence: Integer,
           ?min_turn_silence: Integer,
           ?numerals: bool,
+          ?prompt: String,
           ?smart_format: bool
         ) -> void
 
@@ -107,6 +113,7 @@ module Telnyx
           max_turn_silence: Integer,
           min_turn_silence: Integer,
           numerals: bool,
+          prompt: String,
           smart_format: bool
         }
       end

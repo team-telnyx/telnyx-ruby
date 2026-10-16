@@ -19,6 +19,7 @@ module Telnyx
             timeout_ms: Integer,
             update_dynamic_variables:
               Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
+            vision: Telnyx::AI::VisionToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
@@ -45,6 +46,8 @@ module Telnyx
           timeout_ms: nil,
           # Body param: Configuration for an update_dynamic_variables tool.
           update_dynamic_variables: nil,
+          # Body param
+          vision: nil,
           # Body param
           webhook: nil,
           # Header param: Optional opaque, unquoted key for safely retrying the same logical
@@ -89,6 +92,7 @@ module Telnyx
             type: String,
             update_dynamic_variables:
               Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
+            vision: Telnyx::AI::VisionToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AI::SharedToolResponse)
@@ -107,6 +111,7 @@ module Telnyx
           type: nil,
           # Configuration for an update_dynamic_variables tool.
           update_dynamic_variables: nil,
+          vision: nil,
           webhook: nil,
           request_options: {}
         )

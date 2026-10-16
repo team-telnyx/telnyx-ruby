@@ -65,16 +65,12 @@ module Telnyx
         required :status, String
 
         # @!attribute status_detail
-        #   Additional detail about the status (for example `timeout_exceeded_everyone_left`
-        #   or `cancelled`), or null.
+        #   Additional detail about the status (for example `cancelled`), or null.
         #
         #   @return [String, nil]
         required :status_detail, String, nil?: true
 
         # @!method initialize(recording:, session_id:, status:, status_detail:)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::SessionStatusChangedWebhookEvent::Data} for more details.
-        #
         #   Status transition details.
         #
         #   @param recording [Boolean] Whether the session is recording at this lifecycle edge.
@@ -83,7 +79,7 @@ module Telnyx
         #
         #   @param status [String] The new session status.
         #
-        #   @param status_detail [String, nil] Additional detail about the status (for example `timeout_exceeded_everyone_left`
+        #   @param status_detail [String, nil] Additional detail about the status (for example `cancelled`), or null.
       end
 
       # Event type.

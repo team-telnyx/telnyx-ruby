@@ -187,16 +187,36 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::MeetingSession::assistant_state]
       end
 
-      type avatar = { avatar_id: String, provider: :anam }
+      type avatar =
+        {
+          avatar_id: String,
+          background_id: String,
+          model: String,
+          provider: :telnyx
+        }
 
       class Avatar < Telnyx::Internal::Type::BaseModel
         attr_accessor avatar_id: String
 
-        attr_accessor provider: :anam
+        attr_accessor background_id: String
 
-        def initialize: (avatar_id: String, ?provider: :anam) -> void
+        attr_accessor model: String
 
-        def to_hash: -> { avatar_id: String, provider: :anam }
+        attr_accessor provider: :telnyx
+
+        def initialize: (
+          avatar_id: String,
+          background_id: String,
+          model: String,
+          ?provider: :telnyx
+        ) -> void
+
+        def to_hash: -> {
+          avatar_id: String,
+          background_id: String,
+          model: String,
+          provider: :telnyx
+        }
       end
 
       type avatar_state = :starting | :connected | :degraded | :disconnected

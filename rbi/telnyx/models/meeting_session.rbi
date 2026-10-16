@@ -37,7 +37,8 @@ module Telnyx
       sig { returns(T.nilable(Time)) }
       attr_accessor :assistant_state_changed_at
 
-      # Avatar configuration if an avatar is attached, otherwise null.
+      # The assistant's avatar, captured from its `avatar_settings` when the session was
+      # created. For display only; later changes to the assistant do not update it.
       sig { returns(T.nilable(Telnyx::MeetingSession::Avatar)) }
       attr_reader :avatar
 
@@ -46,7 +47,10 @@ module Telnyx
       end
       attr_writer :avatar
 
-      # Current state of the avatar connection, or null if no avatar is attached.
+      # Current state of the avatar, or null if the session has no avatar. `starting`
+      # until the avatar's video is playing, then `connected`; `degraded` when the
+      # session has fallen back to voice-only (the `avatar.degraded` event carries the
+      # reason); `disconnected` when the avatar has ended.
       sig do
         returns(T.nilable(Telnyx::MeetingSession::AvatarState::TaggedSymbol))
       end
@@ -172,9 +176,13 @@ module Telnyx
         assistant_state:,
         # Timestamp of the last assistant state change, or null.
         assistant_state_changed_at:,
-        # Avatar configuration if an avatar is attached, otherwise null.
+        # The assistant's avatar, captured from its `avatar_settings` when the session was
+        # created. For display only; later changes to the assistant do not update it.
         avatar:,
-        # Current state of the avatar connection, or null if no avatar is attached.
+        # Current state of the avatar, or null if the session has no avatar. `starting`
+        # until the avatar's video is playing, then `connected`; `degraded` when the
+        # session has fallen back to voice-only (the `avatar.degraded` event carries the
+        # reason); `disconnected` when the avatar has ended.
         avatar_state:,
         # Timestamp of the last avatar state change, or null.
         avatar_state_changed_at:,
@@ -386,28 +394,58 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :avatar_id
 
+        # Identifier of the avatar's background.
+        sig { returns(String) }
+        attr_accessor :background_id
+
+        # Avatar rendering model, for example `foxtrot-1`.
+        sig { returns(String) }
+        attr_accessor :model
+
         # Avatar provider identifier.
         sig { returns(Symbol) }
         attr_accessor :provider
 
-        # Avatar configuration if an avatar is attached, otherwise null.
+        # The assistant's avatar, captured from its `avatar_settings` when the session was
+        # created. For display only; later changes to the assistant do not update it.
         sig do
-          params(avatar_id: String, provider: Symbol).returns(T.attached_class)
+          params(
+            avatar_id: String,
+            background_id: String,
+            model: String,
+            provider: Symbol
+          ).returns(T.attached_class)
         end
         def self.new(
           # Identifier of the avatar.
           avatar_id:,
+          # Identifier of the avatar's background.
+          background_id:,
+          # Avatar rendering model, for example `foxtrot-1`.
+          model:,
           # Avatar provider identifier.
-          provider: :anam
+          provider: :telnyx
         )
         end
 
-        sig { override.returns({ avatar_id: String, provider: Symbol }) }
+        sig do
+          override.returns(
+            {
+              avatar_id: String,
+              background_id: String,
+              model: String,
+              provider: Symbol
+            }
+          )
+        end
         def to_hash
         end
       end
 
-      # Current state of the avatar connection, or null if no avatar is attached.
+      # Current state of the avatar, or null if the session has no avatar. `starting`
+      # until the avatar's video is playing, then `connected`; `degraded` when the
+      # session has fallen back to voice-only (the `avatar.degraded` event carries the
+      # reason); `disconnected` when the avatar has ended.
       module AvatarState
         extend Telnyx::Internal::Type::Enum
 

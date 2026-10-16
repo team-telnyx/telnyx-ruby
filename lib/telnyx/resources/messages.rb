@@ -389,6 +389,9 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::MessageWhatsappParams} for more details.
+      #
       # Sends a WhatsApp message using a Telnyx WhatsApp-enabled number. The message
       # body, interactive elements, media, location, and reaction content are specified
       # in the `whatsapp_message` field. Delivery progress and final disposition are
@@ -398,9 +401,9 @@ module Telnyx
       #
       # @param from [String] Phone number in +E.164 format associated with Whatsapp account
       #
-      # @param to [String] Phone number in +E.164 format
+      # @param to [String] Recipient phone number in +E.164 format, or the business-scoped user ID (BSUID)
       #
-      # @param whatsapp_message [Telnyx::Models::WhatsappMessageContent]
+      # @param whatsapp_message [Telnyx::Models::MessageWhatsappParams::WhatsappMessage]
       #
       # @param messaging_profile_id [String] Messaging profile ID - required if the 'from' number is not SMS-enabled
       #

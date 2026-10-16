@@ -10,7 +10,8 @@ module Telnyx
       optional :id, String
 
       # @!attribute body
-      #   RCS webhook message body. Text messages use the text property.
+      #   Message body for RCS and WhatsApp. RCS text messages use the text property.
+      #   WhatsApp messages contain the `whatsapp_message` object from the send request.
       #
       #   @return [Telnyx::Models::MessagingOutboundMessagePayload::Body, nil]
       optional :body, -> { Telnyx::MessagingOutboundMessagePayload::Body }
@@ -148,6 +149,19 @@ module Telnyx
       #   @return [String, nil]
       optional :tcr_campaign_registered, String, nil?: true
 
+      # @!attribute template_id
+      #   Telnyx ID of the WhatsApp template used by the message, when known.
+      #
+      #   @return [String, nil]
+      optional :template_id, String
+
+      # @!attribute template_name
+      #   Name of the WhatsApp template used by the message. Present for WhatsApp template
+      #   messages.
+      #
+      #   @return [String, nil]
+      optional :template_name, String
+
       # @!attribute text
       #   Message body (i.e., content) as a non-empty string.
       #
@@ -196,13 +210,13 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, body: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, text: nil, to: nil, type: nil, valid_until: nil, wait_seconds: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, body: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, template_id: nil, template_name: nil, text: nil, to: nil, type: nil, valid_until: nil, wait_seconds: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingOutboundMessagePayload} for more details.
       #
       #   @param id [String] Identifies the type of resource.
       #
-      #   @param body [Telnyx::Models::MessagingOutboundMessagePayload::Body] RCS webhook message body. Text messages use the text property.
+      #   @param body [Telnyx::Models::MessagingOutboundMessagePayload::Body] Message body for RCS and WhatsApp. RCS text messages use the text property. What
       #
       #   @param cc [Array<Telnyx::Models::MessagingOutboundMessagePayload::Cc>]
       #
@@ -248,6 +262,10 @@ module Telnyx
       #
       #   @param tcr_campaign_registered [String, nil] The registration status of the TCR campaign.
       #
+      #   @param template_id [String] Telnyx ID of the WhatsApp template used by the message, when known.
+      #
+      #   @param template_name [String] Name of the WhatsApp template used by the message. Present for WhatsApp template
+      #
       #   @param text [String] Message body (i.e., content) as a non-empty string.
       #
       #   @param to [Array<Telnyx::Models::MessagingOutboundMessagePayload::To>]
@@ -271,7 +289,8 @@ module Telnyx
         optional :text, String
 
         # @!method initialize(text: nil)
-        #   RCS webhook message body. Text messages use the text property.
+        #   Message body for RCS and WhatsApp. RCS text messages use the text property.
+        #   WhatsApp messages contain the `whatsapp_message` object from the send request.
         #
         #   @param text [String] RCS text message.
       end
@@ -628,6 +647,7 @@ module Telnyx
         SMS = :SMS
         MMS = :MMS
         RCS = :RCS
+        WHATSAPP = :WHATSAPP
 
         # @!method self.values
         #   @return [Array<Symbol>]
