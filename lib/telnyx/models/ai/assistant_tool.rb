@@ -383,6 +383,15 @@ module Telnyx
             #   @return [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String]
             required :targets, union: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::Targets }
 
+            # @!attribute bridge_beep
+            #   Plays a short beep once the transfer completes and the calls are bridged, so the
+            #   transfer destination knows the caller is now on the line. The warm transfer
+            #   message plays before the bridge; this marks the moment the caller actually
+            #   joins. Works with and without `warm_transfer_acceptance`.
+            #
+            #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep, nil]
+            optional :bridge_beep, -> { Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep }
+
             # @!attribute custom_headers
             #   Custom headers to be added to the SIP INVITE for the transfer command.
             #
@@ -452,13 +461,15 @@ module Telnyx
             #   @return [String, nil]
             optional :warm_transfer_instructions, String
 
-            # @!method initialize(from:, targets:, custom_headers: nil, description: nil, diversion: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_acceptance: nil, warm_transfer_instructions: nil)
+            # @!method initialize(from:, targets:, bridge_beep: nil, custom_headers: nil, description: nil, diversion: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_acceptance: nil, warm_transfer_instructions: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer} for more details.
             #
             #   @param from [String] Number or SIP URI placing the call.
             #
             #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String] The different possible targets of the transfer. The assistant will be able to ch
+            #
+            #   @param bridge_beep [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep] Plays a short beep once the transfer completes and the calls are bridged, so the
             #
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
             #
@@ -559,6 +570,50 @@ module Telnyx
                 Telnyx::Internal::Type::ArrayOf[-> {
                   Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList
                 }]
+            end
+
+            # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer#bridge_beep
+            class BridgeBeep < Telnyx::Internal::Type::BaseModel
+              # @!attribute enabled
+              #   Whether to play the beep when the calls are bridged.
+              #
+              #   @return [Boolean, nil]
+              optional :enabled, Telnyx::Internal::Type::Boolean
+
+              # @!attribute target_legs
+              #   Who hears the beep. `self` plays it to the transfer destination only; `both`
+              #   plays it to the destination and the original caller.
+              #
+              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::TargetLegs, nil]
+              optional :target_legs, enum: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep::TargetLegs }
+
+              # @!method initialize(enabled: nil, target_legs: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep} for more
+              #   details.
+              #
+              #   Plays a short beep once the transfer completes and the calls are bridged, so the
+              #   transfer destination knows the caller is now on the line. The warm transfer
+              #   message plays before the bridge; this marks the moment the caller actually
+              #   joins. Works with and without `warm_transfer_acceptance`.
+              #
+              #   @param enabled [Boolean] Whether to play the beep when the calls are bridged.
+              #
+              #   @param target_legs [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::TargetLegs] Who hears the beep. `self` plays it to the transfer destination only; `both` pla
+
+              # Who hears the beep. `self` plays it to the transfer destination only; `both`
+              # plays it to the destination and the original caller.
+              #
+              # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep#target_legs
+              module TargetLegs
+                extend Telnyx::Internal::Type::Enum
+
+                SELF = :self
+                BOTH = :both
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class CustomHeader < Telnyx::Internal::Type::BaseModel
@@ -863,7 +918,20 @@ module Telnyx
               #   @return [Boolean, nil]
               optional :require_acceptance, Telnyx::Internal::Type::Boolean
 
-              # @!method initialize(enabled: nil, end_user_target_context_mode: nil, require_acceptance: nil)
+              # @!attribute timeout_secs
+              #   How long, in seconds, the destination has to accept the transfer, counted from
+              #   when the private consult starts (right after the destination answers, or after
+              #   `warm_message_delay_ms`). The caller keeps hearing ringback the whole time. If
+              #   no acceptance arrives in time, the destination is hung up and the assistant
+              #   returns to the caller (the transfer fails as a timeout). Raise it for
+              #   destinations that answer before a human is on the line, such as a call-center
+              #   queue/ACD or an IVR playing hold audio; keep it as short as practical, since the
+              #   caller waits on ringback until it expires.
+              #
+              #   @return [Integer, nil]
+              optional :timeout_secs, Integer
+
+              # @!method initialize(enabled: nil, end_user_target_context_mode: nil, require_acceptance: nil, timeout_secs: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance}
               #   for more details.
@@ -885,6 +953,8 @@ module Telnyx
               #   @param end_user_target_context_mode [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode] Controls whether the private exchange between the assistant and the transfer des
               #
               #   @param require_acceptance [Boolean] Fail closed when the acceptance consult cannot run. Off by default: if the consu
+              #
+              #   @param timeout_secs [Integer] How long, in seconds, the destination has to accept the transfer, counted from w
 
               # Controls whether the private exchange between the assistant and the transfer
               # destination is kept out of the conversation. With `private` (default) the
