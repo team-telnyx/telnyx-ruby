@@ -75,6 +75,7 @@ class Telnyx::Test::Resources::FqdnConnectionsTest < Telnyx::Test::ResourceTest
         adjust_dtmf_timestamp: Telnyx::Internal::Type::Boolean | nil,
         anchorsite_override: Telnyx::AnchorsiteOverride | nil,
         android_push_credential_id: String | nil,
+        bridge_generate_comfort_noise_on_cn: Telnyx::Internal::Type::Boolean | nil,
         call_cost_enabled: Telnyx::Internal::Type::Boolean | nil,
         call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
         conversation_persistence: Telnyx::Internal::Type::Boolean | nil,

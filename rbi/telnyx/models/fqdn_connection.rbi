@@ -48,6 +48,19 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :android_push_credential_id
 
+      # Stores the connection preference for generating silent RTP toward the opposite
+      # call leg when comfort-noise packets (CN, payload type 13) are received during
+      # hold. Defaults to false and returns the saved value. Only JSON true and false
+      # are accepted; null and non-boolean values are rejected. This preference is
+      # independent of default_on_hold_comfort_noise_enabled and does not modify that
+      # setting. This API provisions the preference; call-processing behavior is
+      # implemented separately.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :bridge_generate_comfort_noise_on_cn
+
+      sig { params(bridge_generate_comfort_noise_on_cn: T::Boolean).void }
+      attr_writer :bridge_generate_comfort_noise_on_cn
+
       # Indicates whether call cost calculation is enabled.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :call_cost_enabled
@@ -326,6 +339,7 @@ module Telnyx
           adjust_dtmf_timestamp: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
+          bridge_generate_comfort_noise_on_cn: T::Boolean,
           call_cost_enabled: T::Boolean,
           call_cost_in_webhooks: T::Boolean,
           conversation_persistence: T::Boolean,
@@ -379,6 +393,14 @@ module Telnyx
         anchorsite_override: nil,
         # The uuid of the push credential for Android
         android_push_credential_id: nil,
+        # Stores the connection preference for generating silent RTP toward the opposite
+        # call leg when comfort-noise packets (CN, payload type 13) are received during
+        # hold. Defaults to false and returns the saved value. Only JSON true and false
+        # are accepted; null and non-boolean values are rejected. This preference is
+        # independent of default_on_hold_comfort_noise_enabled and does not modify that
+        # setting. This API provisions the preference; call-processing behavior is
+        # implemented separately.
+        bridge_generate_comfort_noise_on_cn: nil,
         # Indicates whether call cost calculation is enabled.
         call_cost_enabled: nil,
         # Specifies if call cost webhooks should be sent for this connection.
@@ -483,6 +505,7 @@ module Telnyx
             adjust_dtmf_timestamp: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::TaggedSymbol,
             android_push_credential_id: T.nilable(String),
+            bridge_generate_comfort_noise_on_cn: T::Boolean,
             call_cost_enabled: T::Boolean,
             call_cost_in_webhooks: T::Boolean,
             conversation_persistence: T::Boolean,

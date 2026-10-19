@@ -32,7 +32,8 @@ module Telnyx
           provider: :telnyx
         }
 
-        type background_id = :office | :studio | :reception
+        type background_id =
+          :office | :studio | :reception | :illustrated_workspace
 
         module BackgroundID
           extend Telnyx::Internal::Type::Enum
@@ -40,6 +41,7 @@ module Telnyx
           OFFICE: :office
           STUDIO: :studio
           RECEPTION: :reception
+          ILLUSTRATED_WORKSPACE: :illustrated_workspace
 
           def self?.values: -> ::Array[Telnyx::Models::AI::TelnyxAvatarSettings::background_id]
         end

@@ -16,7 +16,7 @@ module Telnyx
       # Telnyx. Use UAC when your PBX doesn’t support outbound SIP registration or you
       # need Telnyx to maintain the registration.
       #
-      # @overload create(connection_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, external_uac_settings: nil, inbound: nil, internal_uac_settings: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload create(connection_name:, active: nil, anchorsite_override: nil, android_push_credential_id: nil, bridge_generate_comfort_noise_on_cn: nil, call_cost_in_webhooks: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, external_uac_settings: nil, inbound: nil, internal_uac_settings: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param connection_name [String] A user-assigned name to help manage the connection.
       #
@@ -25,6 +25,8 @@ module Telnyx
       # @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
       #
       # @param android_push_credential_id [String, nil] The uuid of the push credential for Android
+      #
+      # @param bridge_generate_comfort_noise_on_cn [Boolean] Stores the connection preference for generating silent RTP toward the opposite c
       #
       # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
@@ -113,7 +115,7 @@ module Telnyx
       #
       # Updates settings of an existing UAC connection.
       #
-      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, external_uac_settings: nil, inbound: nil, internal_uac_settings: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, bridge_generate_comfort_noise_on_cn: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, external_uac_settings: nil, inbound: nil, internal_uac_settings: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param id [String] Identifies the resource.
       #
@@ -122,6 +124,8 @@ module Telnyx
       # @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
       #
       # @param android_push_credential_id [String, nil] The uuid of the push credential for Android
+      #
+      # @param bridge_generate_comfort_noise_on_cn [Boolean] Stores the connection preference for generating silent RTP toward the opposite c
       #
       # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #

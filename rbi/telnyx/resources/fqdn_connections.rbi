@@ -16,6 +16,7 @@ module Telnyx
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
+          bridge_generate_comfort_noise_on_cn: T::Boolean,
           call_cost_in_webhooks: T::Boolean,
           default_on_hold_comfort_noise_enabled: T::Boolean,
           dtmf_type: Telnyx::DtmfType::OrSymbol,
@@ -51,6 +52,14 @@ module Telnyx
         anchorsite_override: nil,
         # The uuid of the push credential for Android
         android_push_credential_id: nil,
+        # Stores the connection preference for generating silent RTP toward the opposite
+        # call leg when comfort-noise packets (CN, payload type 13) are received during
+        # hold. Optional; defaults to false when omitted on creation. Only JSON true and
+        # false are accepted; null and non-boolean values are rejected. This preference is
+        # independent of default_on_hold_comfort_noise_enabled and does not modify that
+        # setting. This API provisions the preference; call-processing behavior is
+        # implemented separately.
+        bridge_generate_comfort_noise_on_cn: nil,
         # Specifies if call cost webhooks should be sent for this connection.
         call_cost_in_webhooks: nil,
         # When enabled, Telnyx will generate comfort noise when you place the call on
@@ -134,6 +143,7 @@ module Telnyx
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
+          bridge_generate_comfort_noise_on_cn: T::Boolean,
           call_cost_in_webhooks: T::Boolean,
           connection_name: String,
           conversation_persistence: T::Boolean,
@@ -170,6 +180,14 @@ module Telnyx
         anchorsite_override: nil,
         # The uuid of the push credential for Android
         android_push_credential_id: nil,
+        # Stores the connection preference for generating silent RTP toward the opposite
+        # call leg when comfort-noise packets (CN, payload type 13) are received during
+        # hold. Optional; omitting this field preserves the saved value. Only JSON true
+        # and false are accepted; null and non-boolean values are rejected. This
+        # preference is independent of default_on_hold_comfort_noise_enabled and does not
+        # modify that setting. This API provisions the preference; call-processing
+        # behavior is implemented separately.
+        bridge_generate_comfort_noise_on_cn: nil,
         # Specifies if call cost webhooks should be sent for this connection.
         call_cost_in_webhooks: nil,
         # A user-assigned name to help manage the connection.

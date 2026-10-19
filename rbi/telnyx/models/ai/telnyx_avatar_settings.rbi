@@ -31,8 +31,7 @@ module Telnyx
         # **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
         # avatar or an organization-owned custom avatar returned by the Avatars API.
         # Discover the available stock catalog with GET /v2/ai/avatars and
-        # filter[avatar_type]=stock; follow meta.total_pages to load every page. Supported
-        # backgrounds are office, studio, and reception.
+        # filter[avatar_type]=stock; follow meta.total_pages to load every page.
         sig do
           params(
             avatar_id: String,
@@ -92,6 +91,11 @@ module Telnyx
           RECEPTION =
             T.let(
               :reception,
+              Telnyx::AI::TelnyxAvatarSettings::BackgroundID::TaggedSymbol
+            )
+          ILLUSTRATED_WORKSPACE =
+            T.let(
+              :illustrated_workspace,
               Telnyx::AI::TelnyxAvatarSettings::BackgroundID::TaggedSymbol
             )
 

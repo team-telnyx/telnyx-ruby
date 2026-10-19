@@ -74,6 +74,7 @@ class Telnyx::Test::Resources::UacConnectionsTest < Telnyx::Test::ResourceTest
         anchorsite_override: Telnyx::AnchorsiteOverride | nil,
         android_push_credential_id: String | nil,
         authentication: Telnyx::UacConnection::Authentication | nil,
+        bridge_generate_comfort_noise_on_cn: Telnyx::Internal::Type::Boolean | nil,
         call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
         connection_name: String | nil,
         created_at: String | nil,
