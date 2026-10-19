@@ -109,6 +109,7 @@ module Telnyx
         type phone_number_type =
           :landline
           | :local
+          | :localcommercial
           | :mobile
           | :multipurpose
           | :national
@@ -121,6 +122,7 @@ module Telnyx
 
           LANDLINE: :landline
           LOCAL: :local
+          LOCALCOMMERCIAL: :localcommercial
           MOBILE: :mobile
           MULTIPURPOSE: :multipurpose
           NATIONAL: :national

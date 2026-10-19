@@ -278,6 +278,11 @@ module Telnyx
               :local,
               Telnyx::PortingOrders::PortingPhoneNumberBlock::PhoneNumberType::TaggedSymbol
             )
+          LOCALCOMMERCIAL =
+            T.let(
+              :localcommercial,
+              Telnyx::PortingOrders::PortingPhoneNumberBlock::PhoneNumberType::TaggedSymbol
+            )
           MOBILE =
             T.let(
               :mobile,
