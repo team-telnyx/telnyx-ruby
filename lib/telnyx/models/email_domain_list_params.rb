@@ -110,6 +110,8 @@ module Telnyx
         CREATED_AT_DESC = :"-created_at"
         DOMAIN = :domain
         MINUS_DOMAIN = :"-domain"
+        UPDATED_AT = :updated_at
+        UPDATED_AT_DESC = :"-updated_at"
 
         # @!method self.values
         #   @return [Array<Symbol>]

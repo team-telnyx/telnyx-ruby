@@ -32,6 +32,7 @@ module Telnyx
         :letter_of_authorization
         | :business_registration
         | :articles_of_incorporation
+        | :certificate_of_good_standing
         | :tax_document
         | :ein_letter
         | :trademark_registration
@@ -41,6 +42,8 @@ module Telnyx
         | :government_id
         | :utility_bill
         | :bank_statement
+        | :business_credit_report
+        | :bank_reference_letter
         | :other
 
       module DocumentType
@@ -49,6 +52,7 @@ module Telnyx
         LETTER_OF_AUTHORIZATION: :letter_of_authorization
         BUSINESS_REGISTRATION: :business_registration
         ARTICLES_OF_INCORPORATION: :articles_of_incorporation
+        CERTIFICATE_OF_GOOD_STANDING: :certificate_of_good_standing
         TAX_DOCUMENT: :tax_document
         EIN_LETTER: :ein_letter
         TRADEMARK_REGISTRATION: :trademark_registration
@@ -58,6 +62,8 @@ module Telnyx
         GOVERNMENT_ID: :government_id
         UTILITY_BILL: :utility_bill
         BANK_STATEMENT: :bank_statement
+        BUSINESS_CREDIT_REPORT: :business_credit_report
+        BANK_REFERENCE_LETTER: :bank_reference_letter
         OTHER: :other
 
         def self?.values: -> ::Array[Telnyx::Models::Document::document_type]

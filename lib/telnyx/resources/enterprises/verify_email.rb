@@ -4,7 +4,7 @@ module Telnyx
   module Resources
     class Enterprises
       # Verify ownership of a DIR's authorizer email. A short code is emailed and
-      # confirmed; the email must be verified before references can be submitted.
+      # confirmed.
       class VerifyEmail
         # Email a 6-digit code to the enterprise account's contact email to confirm
         # ownership of that address.

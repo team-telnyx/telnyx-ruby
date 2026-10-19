@@ -100,7 +100,13 @@ module Telnyx
         request_options: Telnyx::RequestOptions
       }
 
-      type sort = :created_at | :"-created_at" | :domain | :"-domain"
+      type sort =
+        :created_at
+        | :"-created_at"
+        | :domain
+        | :"-domain"
+        | :updated_at
+        | :"-updated_at"
 
       module Sort
         extend Telnyx::Internal::Type::Enum
@@ -109,6 +115,8 @@ module Telnyx
         CREATED_AT_DESC: :"-created_at"
         DOMAIN: :domain
         MINUS_DOMAIN: :"-domain"
+        UPDATED_AT: :updated_at
+        UPDATED_AT_DESC: :"-updated_at"
 
         def self?.values: -> ::Array[Telnyx::Models::EmailDomainListParams::sort]
       end

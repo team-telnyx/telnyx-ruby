@@ -14,7 +14,7 @@ module Telnyx
       attr_reader :dir
 
       # Verify ownership of a DIR's authorizer email. A short code is emailed and
-      # confirmed; the email must be verified before references can be submitted.
+      # confirmed.
       sig { returns(Telnyx::Resources::Enterprises::VerifyEmail) }
       attr_reader :verify_email
 

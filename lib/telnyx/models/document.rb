@@ -45,6 +45,7 @@ module Telnyx
         LETTER_OF_AUTHORIZATION = :letter_of_authorization
         BUSINESS_REGISTRATION = :business_registration
         ARTICLES_OF_INCORPORATION = :articles_of_incorporation
+        CERTIFICATE_OF_GOOD_STANDING = :certificate_of_good_standing
         TAX_DOCUMENT = :tax_document
         EIN_LETTER = :ein_letter
         TRADEMARK_REGISTRATION = :trademark_registration
@@ -54,6 +55,8 @@ module Telnyx
         GOVERNMENT_ID = :government_id
         UTILITY_BILL = :utility_bill
         BANK_STATEMENT = :bank_statement
+        BUSINESS_CREDIT_REPORT = :business_credit_report
+        BANK_REFERENCE_LETTER = :bank_reference_letter
         OTHER = :other
 
         # @!method self.values
