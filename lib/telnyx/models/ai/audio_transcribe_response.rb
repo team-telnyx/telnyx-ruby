@@ -81,9 +81,19 @@ module Telnyx
           #   @return [String]
           required :text, String
 
+          # @!attribute channel
+          #   Zero-indexed audio channel of this segment. Returned by the `deepgram/*` models
+          #   when `multichannel` is enabled via `model_config` and the file has more than one
+          #   channel. Segments from all channels are merged in one list ordered by start
+          #   time.
+          #
+          #   @return [Integer, nil]
+          optional :channel, Integer
+
           # @!attribute speakers
           #   Speaker indices heard in this segment. Returned by the `deepgram/*` models when
-          #   `diarize` is enabled via `model_config`.
+          #   `diarize` is enabled via `model_config`. With `multichannel`, speakers are
+          #   numbered per channel from 0, so identify a speaker by (`channel`, speaker).
           #
           #   @return [Array<Integer>, nil]
           optional :speakers, Telnyx::Internal::Type::ArrayOf[Integer]
@@ -95,7 +105,7 @@ module Telnyx
           #   @return [Array<Telnyx::Models::AI::AudioTranscriptionResponseWord>, nil]
           optional :words, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AudioTranscriptionResponseWord] }
 
-          # @!method initialize(id:, end_:, start:, text:, speakers: nil, words: nil)
+          # @!method initialize(id:, end_:, start:, text:, channel: nil, speakers: nil, words: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::AudioTranscribeResponse::Segment} for more details.
           #
@@ -106,6 +116,8 @@ module Telnyx
           #   @param start [Float] Start time of the segment in seconds.
           #
           #   @param text [String] Text content of the segment.
+          #
+          #   @param channel [Integer] Zero-indexed audio channel of this segment. Returned by the `deepgram/*` models
           #
           #   @param speakers [Array<Integer>] Speaker indices heard in this segment. Returned by the `deepgram/*` models when
           #

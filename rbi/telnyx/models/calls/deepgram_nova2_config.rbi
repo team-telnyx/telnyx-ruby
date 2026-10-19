@@ -24,8 +24,9 @@ module Telnyx
         attr_accessor :transcription_model
 
         # Nova-2 keyword biasing without intensifiers. Up to 100 terms to bias recognition
-        # toward. For weighted biasing, use `keywords_boosting` instead. Nova-2-only; use
-        # `keyterms` on Nova-3.
+        # toward. For weighted biasing, use `keywords_boosting` instead. Supported on
+        # Nova-2 models only (`deepgram/nova-2`, `deepgram/nova-2-medical`,
+        # `deepgram/nova-2-phonecall`); use `keyterms` on Nova-3 and Flux.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :hints
 
@@ -101,8 +102,9 @@ module Telnyx
           transcription_engine:,
           transcription_model:,
           # Nova-2 keyword biasing without intensifiers. Up to 100 terms to bias recognition
-          # toward. For weighted biasing, use `keywords_boosting` instead. Nova-2-only; use
-          # `keyterms` on Nova-3.
+          # toward. For weighted biasing, use `keywords_boosting` instead. Supported on
+          # Nova-2 models only (`deepgram/nova-2`, `deepgram/nova-2-medical`,
+          # `deepgram/nova-2-phonecall`); use `keyterms` on Nova-3 and Flux.
           hints: nil,
           # Whether to send also interim results. If set to false, only final results will
           # be sent.

@@ -140,8 +140,19 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :text
 
+          # Zero-indexed audio channel of this segment. Returned by the `deepgram/*` models
+          # when `multichannel` is enabled via `model_config` and the file has more than one
+          # channel. Segments from all channels are merged in one list ordered by start
+          # time.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :channel
+
+          sig { params(channel: Integer).void }
+          attr_writer :channel
+
           # Speaker indices heard in this segment. Returned by the `deepgram/*` models when
-          # `diarize` is enabled via `model_config`.
+          # `diarize` is enabled via `model_config`. With `multichannel`, speakers are
+          # numbered per channel from 0, so identify a speaker by (`channel`, speaker).
           sig { returns(T.nilable(T::Array[Integer])) }
           attr_reader :speakers
 
@@ -171,6 +182,7 @@ module Telnyx
               end_: Float,
               start: Float,
               text: String,
+              channel: Integer,
               speakers: T::Array[Integer],
               words:
                 T::Array[Telnyx::AI::AudioTranscriptionResponseWord::OrHash]
@@ -185,8 +197,14 @@ module Telnyx
             start:,
             # Text content of the segment.
             text:,
+            # Zero-indexed audio channel of this segment. Returned by the `deepgram/*` models
+            # when `multichannel` is enabled via `model_config` and the file has more than one
+            # channel. Segments from all channels are merged in one list ordered by start
+            # time.
+            channel: nil,
             # Speaker indices heard in this segment. Returned by the `deepgram/*` models when
-            # `diarize` is enabled via `model_config`.
+            # `diarize` is enabled via `model_config`. With `multichannel`, speakers are
+            # numbered per channel from 0, so identify a speaker by (`channel`, speaker).
             speakers: nil,
             # Word-level timing detail for this segment. Returned by the `deepgram/*` models
             # when word-level output is enabled via `model_config`.
@@ -201,6 +219,7 @@ module Telnyx
                 end_: Float,
                 start: Float,
                 text: String,
+                channel: Integer,
                 speakers: T::Array[Integer],
                 words: T::Array[Telnyx::AI::AudioTranscriptionResponseWord]
               }

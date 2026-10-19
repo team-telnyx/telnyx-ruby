@@ -16,8 +16,9 @@ module Telnyx
 
         # @!attribute hints
         #   Nova-2 keyword biasing without intensifiers. Up to 100 terms to bias recognition
-        #   toward. For weighted biasing, use `keywords_boosting` instead. Nova-2-only; use
-        #   `keyterms` on Nova-3.
+        #   toward. For weighted biasing, use `keywords_boosting` instead. Supported on
+        #   Nova-2 models only (`deepgram/nova-2`, `deepgram/nova-2-medical`,
+        #   `deepgram/nova-2-phonecall`); use `keyterms` on Nova-3 and Flux.
         #
         #   @return [Array<String>, nil]
         optional :hints, Telnyx::Internal::Type::ArrayOf[String]
