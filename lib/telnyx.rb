@@ -38,6 +38,7 @@ require "telnyx/list_object"
 require "telnyx/api_resource"
 require "telnyx/singleton_api_resource"
 require "telnyx/webhook"
+require "telnyx/access_token"
 
 require "telnyx/address"
 require "telnyx/alphanumeric_sender_id"
