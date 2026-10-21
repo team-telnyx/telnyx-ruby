@@ -155,6 +155,7 @@ module Telnyx
 
         QWEN3_TTS = :Qwen3TTS
         ULTRA = :Ultra
+        BAYAN = :Bayan
         SPEECH_2_8_TURBO = :"speech-2.8-turbo"
 
         # @!method self.values

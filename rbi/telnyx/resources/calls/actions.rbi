@@ -724,8 +724,7 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash,
-                Telnyx::Calls::CommunityVoiceSettings::OrHash
+                Telnyx::Calls::SonioxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionGatherUsingSpeakResponse)
@@ -791,13 +790,6 @@ module Telnyx
           #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
           #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
           #   `ModelId` segment.
-          # - **Community engines:** Use `<EngineName>.<VoiceId>` (e.g., `acme.alpha`),
-          #   where `EngineName` is the lowercase name of a community text-to-speech engine
-          #   and `VoiceId` is one of the voices it lists. You must provide your key for the
-          #   engine as an integration identifier secret in
-          #   `"voice_settings": {"api_key_ref": "<secret_identifier>"}`; any other key in
-          #   `voice_settings` is a setting of the engine. See the
-          #   [Community TTS engines guide](/docs/voice/tts/community-engines).
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -840,8 +832,7 @@ module Telnyx
           timeout_millis: nil,
           # A list of all digits accepted as valid.
           valid_digits: nil,
-          # The settings associated with the voice selected. For a community engine voice,
-          # `api_key_ref` plus the engine's own settings.
+          # The settings associated with the voice selected
           voice_settings: nil,
           request_options: {}
         )
@@ -1292,8 +1283,7 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash,
-                Telnyx::Calls::CommunityVoiceSettings::OrHash
+                Telnyx::Calls::SonioxVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionSpeakResponse)
@@ -1359,13 +1349,6 @@ module Telnyx
           #   `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
           #   `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
           #   `ModelId` segment.
-          # - **Community engines:** Use `<EngineName>.<VoiceId>` (e.g., `acme.alpha`),
-          #   where `EngineName` is the lowercase name of a community text-to-speech engine
-          #   and `VoiceId` is one of the voices it lists. You must provide your key for the
-          #   engine as an integration identifier secret in
-          #   `"voice_settings": {"api_key_ref": "<secret_identifier>"}`; any other key in
-          #   `voice_settings` is a setting of the engine. See the
-          #   [Community TTS engines guide](/docs/voice/tts/community-engines).
           #
           # For service_level basic, you may define the gender of the speaker (male or
           # female).
@@ -1395,8 +1378,7 @@ module Telnyx
           stop: nil,
           # Specifies which legs of the call should receive the spoken audio.
           target_legs: nil,
-          # The settings associated with the voice selected. For a community engine voice,
-          # `api_key_ref` plus the engine's own settings.
+          # The settings associated with the voice selected
           voice_settings: nil,
           request_options: {}
         )
@@ -1432,20 +1414,6 @@ module Telnyx
               T::Array[Telnyx::Calls::AIAssistantJoinParticipant::OrHash],
             send_message_history_updates: T::Boolean,
             transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
-            voice: String,
-            voice_settings:
-              T.any(
-                Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
-                Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::MinimaxVoiceSettings::OrHash,
-                Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::InworldVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash,
-                Telnyx::Calls::CommunityVoiceSettings::OrHash
-              ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::Models::Calls::ActionStartAIAssistantResponse)
         end
@@ -1485,17 +1453,6 @@ module Telnyx
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
           # ignore this field.
           transcription: nil,
-          # The voice the assistant speaks with on this call, in place of the assistant's
-          # own voice. Use the same formats as the `voice` of the
-          # [speak](/api-reference/call-commands/speak-text) command. A community engine
-          # voice is `<EngineName>.<VoiceId>` (e.g., `acme.alpha`) and needs
-          # `voice_settings.api_key_ref`; see the
-          # [Community TTS engines guide](/docs/voice/tts/community-engines). Without
-          # `voice`, the assistant's own voice is used.
-          voice: nil,
-          # The settings of `voice`. A community engine voice requires `api_key_ref`; the
-          # other keys are the engine's own settings.
-          voice_settings: nil,
           request_options: {}
         )
         end

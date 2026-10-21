@@ -76,13 +76,6 @@ module Telnyx
         #     `sara-en`, `abdulaziz-en`, `sara-ar`, `abdulaziz-ar`, `nourah-ar`,
         #     `abdullah-ar`. Native Arabic (Saudi dialect) and English voices only — no
         #     `ModelId` segment.
-        #   - **Community engines:** Use `<EngineName>.<VoiceId>` (e.g., `acme.alpha`),
-        #     where `EngineName` is the lowercase name of a community text-to-speech engine
-        #     and `VoiceId` is one of the voices it lists. You must provide your key for the
-        #     engine as an integration identifier secret in
-        #     `"voice_settings": {"api_key_ref": "<secret_identifier>"}`; any other key in
-        #     `voice_settings` is a setting of the engine. See the
-        #     [Community TTS engines guide](/docs/voice/tts/community-engines).
         #
         #   For service_level basic, you may define the gender of the speaker (male or
         #   female).
@@ -181,10 +174,9 @@ module Telnyx
         optional :valid_digits, String
 
         # @!attribute voice_settings
-        #   The settings associated with the voice selected. For a community engine voice,
-        #   `api_key_ref` plus the engine's own settings.
+        #   The settings associated with the voice selected
         #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::CommunityVoiceSettings, nil]
+        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, nil]
         optional :voice_settings, union: -> { Telnyx::Calls::ActionGatherUsingSpeakParams::VoiceSettings }
 
         # @!method initialize(call_control_id:, payload:, voice:, client_state: nil, command_id: nil, inter_digit_timeout_millis: nil, invalid_payload: nil, language: nil, maximum_digits: nil, maximum_tries: nil, minimum_digits: nil, payload_type: nil, service_level: nil, terminating_digit: nil, timeout_millis: nil, valid_digits: nil, voice_settings: nil, request_options: {})
@@ -224,7 +216,7 @@ module Telnyx
         #
         #   @param valid_digits [String] A list of all digits accepted as valid.
         #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::CommunityVoiceSettings] The settings associated with the voice selected. For a community engine voice, `
+        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings] The settings associated with the voice selected
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -291,34 +283,32 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # The settings associated with the voice selected. For a community engine voice,
-        # `api_key_ref` plus the engine's own settings.
+        # The settings associated with the voice selected
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
 
-          variant -> { Telnyx::Calls::ElevenLabsVoiceSettings }
+          discriminator :type
 
-          variant -> { Telnyx::Calls::TelnyxVoiceSettings }
+          variant :elevenlabs, -> { Telnyx::Calls::ElevenLabsVoiceSettings }
 
-          variant -> { Telnyx::Calls::AwsVoiceSettings }
+          variant :telnyx, -> { Telnyx::Calls::TelnyxVoiceSettings }
 
-          variant -> { Telnyx::MinimaxVoiceSettings }
+          variant :aws, -> { Telnyx::Calls::AwsVoiceSettings }
 
-          variant -> { Telnyx::AzureVoiceSettings }
+          variant :minimax, -> { Telnyx::MinimaxVoiceSettings }
 
-          variant -> { Telnyx::ResembleVoiceSettings }
+          variant :azure, -> { Telnyx::AzureVoiceSettings }
 
-          variant -> { Telnyx::InworldVoiceSettings }
+          variant :resemble, -> { Telnyx::ResembleVoiceSettings }
 
-          variant -> { Telnyx::XaiVoiceSettings }
+          variant :inworld, -> { Telnyx::InworldVoiceSettings }
 
-          variant -> { Telnyx::Calls::SonioxVoiceSettings }
+          variant :xai, -> { Telnyx::XaiVoiceSettings }
 
-          # Settings for a community text-to-speech engine voice (`<EngineName>.<VoiceId>`). `api_key_ref` is required. Every other key is a setting the engine declares in its `voice_settings_schema`, and is passed to the engine as sent. See the [Community TTS engines guide](/docs/voice/tts/community-engines).
-          variant -> { Telnyx::Calls::CommunityVoiceSettings }
+          variant :soniox, -> { Telnyx::Calls::SonioxVoiceSettings }
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::CommunityVoiceSettings)]
+          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings)]
         end
       end
     end

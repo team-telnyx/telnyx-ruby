@@ -363,18 +363,6 @@ module Telnyx
 
   class CommentRetrieveParams = Telnyx::Models::CommentRetrieveParams
 
-  module CommunityTtsAudioFormat = Telnyx::Models::CommunityTtsAudioFormat
-
-  class CommunityTtsEngine = Telnyx::Models::CommunityTtsEngine
-
-  class CommunityTtsEngineCapabilities = Telnyx::Models::CommunityTtsEngineCapabilities
-
-  class CommunityTtsEngineListMeta = Telnyx::Models::CommunityTtsEngineListMeta
-
-  module CommunityTtsEngineStatus = Telnyx::Models::CommunityTtsEngineStatus
-
-  module CommunityTtsEngineVisibility = Telnyx::Models::CommunityTtsEngineVisibility
-
   module Compute = Telnyx::Models::Compute
 
   class Conference = Telnyx::Models::Conference
@@ -1985,26 +1973,6 @@ module Telnyx
 
   module TransportProtocol = Telnyx::Models::TransportProtocol
 
-  class TtsIntegrationCreateParams = Telnyx::Models::TtsIntegrationCreateParams
-
-  class TtsIntegrationDeleteParams = Telnyx::Models::TtsIntegrationDeleteParams
-
-  class TtsIntegrationListParams = Telnyx::Models::TtsIntegrationListParams
-
-  class TtsIntegrationReplaceParams = Telnyx::Models::TtsIntegrationReplaceParams
-
-  class TtsIntegrationRetrieveConformanceRunsParams = Telnyx::Models::TtsIntegrationRetrieveConformanceRunsParams
-
-  class TtsIntegrationRetrieveDiscoverableParams = Telnyx::Models::TtsIntegrationRetrieveDiscoverableParams
-
-  class TtsIntegrationRetrieveParams = Telnyx::Models::TtsIntegrationRetrieveParams
-
-  class TtsIntegrationRetrieveVoicesParams = Telnyx::Models::TtsIntegrationRetrieveVoicesParams
-
-  module TtsIntegrations = Telnyx::Models::TtsIntegrations
-
-  class TtsIntegrationUpdateParams = Telnyx::Models::TtsIntegrationUpdateParams
-
   class UacConnection = Telnyx::Models::UacConnection
 
   class UacConnectionCreateParams = Telnyx::Models::UacConnectionCreateParams
@@ -2036,8 +2004,6 @@ module Telnyx
   class UnsubscribeGroupResponse = Telnyx::Models::UnsubscribeGroupResponse
 
   module UnwrapWebhookEvent = Telnyx::Models::UnwrapWebhookEvent
-
-  class UpdateCommunityTtsEngineRequest = Telnyx::Models::UpdateCommunityTtsEngineRequest
 
   class UpdateEmailTemplateRequest = Telnyx::Models::UpdateEmailTemplateRequest
 

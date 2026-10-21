@@ -138,60 +138,6 @@ module Telnyx
         end
         attr_writer :transcription
 
-        # The voice the assistant speaks with on this call, in place of the assistant's
-        # own voice. Use the same formats as the `voice` of the
-        # [speak](/api-reference/call-commands/speak-text) command. A community engine
-        # voice is `<EngineName>.<VoiceId>` (e.g., `acme.alpha`) and needs
-        # `voice_settings.api_key_ref`; see the
-        # [Community TTS engines guide](/docs/voice/tts/community-engines). Without
-        # `voice`, the assistant's own voice is used.
-        sig { returns(T.nilable(String)) }
-        attr_reader :voice
-
-        sig { params(voice: String).void }
-        attr_writer :voice
-
-        # The settings of `voice`. A community engine voice requires `api_key_ref`; the
-        # other keys are the engine's own settings.
-        sig do
-          returns(
-            T.nilable(
-              T.any(
-                Telnyx::Calls::ElevenLabsVoiceSettings,
-                Telnyx::Calls::TelnyxVoiceSettings,
-                Telnyx::Calls::AwsVoiceSettings,
-                Telnyx::MinimaxVoiceSettings,
-                Telnyx::AzureVoiceSettings,
-                Telnyx::ResembleVoiceSettings,
-                Telnyx::InworldVoiceSettings,
-                Telnyx::XaiVoiceSettings,
-                Telnyx::Calls::SonioxVoiceSettings,
-                Telnyx::Calls::CommunityVoiceSettings
-              )
-            )
-          )
-        end
-        attr_reader :voice_settings
-
-        sig do
-          params(
-            voice_settings:
-              T.any(
-                Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
-                Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::MinimaxVoiceSettings::OrHash,
-                Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::InworldVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash,
-                Telnyx::Calls::CommunityVoiceSettings::OrHash
-              )
-          ).void
-        end
-        attr_writer :voice_settings
-
         sig do
           params(
             call_control_id: String,
@@ -214,20 +160,6 @@ module Telnyx
               T::Array[Telnyx::Calls::AIAssistantJoinParticipant::OrHash],
             send_message_history_updates: T::Boolean,
             transcription: Telnyx::Calls::TranscriptionConfig::OrHash,
-            voice: String,
-            voice_settings:
-              T.any(
-                Telnyx::Calls::ElevenLabsVoiceSettings::OrHash,
-                Telnyx::Calls::TelnyxVoiceSettings::OrHash,
-                Telnyx::Calls::AwsVoiceSettings::OrHash,
-                Telnyx::MinimaxVoiceSettings::OrHash,
-                Telnyx::AzureVoiceSettings::OrHash,
-                Telnyx::ResembleVoiceSettings::OrHash,
-                Telnyx::InworldVoiceSettings::OrHash,
-                Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash,
-                Telnyx::Calls::CommunityVoiceSettings::OrHash
-              ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -266,17 +198,6 @@ module Telnyx
           # using a model with native audio support (e.g. `fixie-ai/ultravox-v0_4`) will
           # ignore this field.
           transcription: nil,
-          # The voice the assistant speaks with on this call, in place of the assistant's
-          # own voice. Use the same formats as the `voice` of the
-          # [speak](/api-reference/call-commands/speak-text) command. A community engine
-          # voice is `<EngineName>.<VoiceId>` (e.g., `acme.alpha`) and needs
-          # `voice_settings.api_key_ref`; see the
-          # [Community TTS engines guide](/docs/voice/tts/community-engines). Without
-          # `voice`, the assistant's own voice is used.
-          voice: nil,
-          # The settings of `voice`. A community engine voice requires `api_key_ref`; the
-          # other keys are the engine's own settings.
-          voice_settings: nil,
           request_options: {}
         )
         end
@@ -303,20 +224,6 @@ module Telnyx
               participants: T::Array[Telnyx::Calls::AIAssistantJoinParticipant],
               send_message_history_updates: T::Boolean,
               transcription: Telnyx::Calls::TranscriptionConfig,
-              voice: String,
-              voice_settings:
-                T.any(
-                  Telnyx::Calls::ElevenLabsVoiceSettings,
-                  Telnyx::Calls::TelnyxVoiceSettings,
-                  Telnyx::Calls::AwsVoiceSettings,
-                  Telnyx::MinimaxVoiceSettings,
-                  Telnyx::AzureVoiceSettings,
-                  Telnyx::ResembleVoiceSettings,
-                  Telnyx::InworldVoiceSettings,
-                  Telnyx::XaiVoiceSettings,
-                  Telnyx::Calls::SonioxVoiceSettings,
-                  Telnyx::Calls::CommunityVoiceSettings
-                ),
               request_options: Telnyx::RequestOptions
             }
           )
@@ -343,38 +250,6 @@ module Telnyx
             override.returns(
               T::Array[
                 Telnyx::Calls::ActionStartAIAssistantParams::MessageHistory::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
-        end
-
-        # The settings of `voice`. A community engine voice requires `api_key_ref`; the
-        # other keys are the engine's own settings.
-        module VoiceSettings
-          extend Telnyx::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                Telnyx::Calls::ElevenLabsVoiceSettings,
-                Telnyx::Calls::TelnyxVoiceSettings,
-                Telnyx::Calls::AwsVoiceSettings,
-                Telnyx::MinimaxVoiceSettings,
-                Telnyx::AzureVoiceSettings,
-                Telnyx::ResembleVoiceSettings,
-                Telnyx::InworldVoiceSettings,
-                Telnyx::XaiVoiceSettings,
-                Telnyx::Calls::SonioxVoiceSettings,
-                Telnyx::Calls::CommunityVoiceSettings
-              )
-            end
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings::Variants
               ]
             )
           end

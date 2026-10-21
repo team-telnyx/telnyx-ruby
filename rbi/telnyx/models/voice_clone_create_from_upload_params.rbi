@@ -15,12 +15,13 @@ module Telnyx
         end
 
       # Multipart form data for creating a voice clone from a direct audio upload.
-      # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
+      # Maximum file size: 20MB.
       sig do
         returns(
           T.any(
             Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone,
             Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone,
+            Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone,
             Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone
           )
         )
@@ -33,6 +34,7 @@ module Telnyx
             T.any(
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
@@ -40,7 +42,7 @@ module Telnyx
       end
       def self.new(
         # Multipart form data for creating a voice clone from a direct audio upload.
-        # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
+        # Maximum file size: 20MB.
         voice_clone_upload_request:,
         request_options: {}
       )
@@ -53,6 +55,7 @@ module Telnyx
               T.any(
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone,
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone,
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone
               ),
             request_options: Telnyx::RequestOptions
@@ -63,7 +66,7 @@ module Telnyx
       end
 
       # Multipart form data for creating a voice clone from a direct audio upload.
-      # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
+      # Maximum file size: 20MB.
       module VoiceCloneUploadRequest
         extend Telnyx::Internal::Type::Union
 
@@ -72,6 +75,7 @@ module Telnyx
             T.any(
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone
             )
           end
@@ -87,7 +91,7 @@ module Telnyx
 
           # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
           # For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-          # size: 5MB.
+          # size: 20MB.
           sig { returns(Telnyx::Internal::FileInput) }
           attr_accessor :audio_file
 
@@ -160,7 +164,7 @@ module Telnyx
           def self.new(
             # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
             # For best quality, provide 5–10 seconds of clear, uninterrupted speech. Maximum
-            # size: 5MB.
+            # size: 20MB.
             audio_file:,
             # Gender of the voice clone.
             gender:,
@@ -318,7 +322,7 @@ module Telnyx
 
           # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
           # For best quality, provide up to 60 seconds of clear, uninterrupted speech.
-          # Maximum size: 5MB.
+          # Maximum size: 20MB.
           sig { returns(Telnyx::Internal::FileInput) }
           attr_accessor :audio_file
 
@@ -330,7 +334,7 @@ module Telnyx
           end
           attr_accessor :gender
 
-          # ISO 639-1 language code from the Ultra language set (40 languages).
+          # ISO 639-1 language code from the Ultra language set (42 languages).
           sig { returns(String) }
           attr_accessor :language
 
@@ -387,11 +391,11 @@ module Telnyx
           def self.new(
             # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
             # For best quality, provide up to 60 seconds of clear, uninterrupted speech.
-            # Maximum size: 5MB.
+            # Maximum size: 20MB.
             audio_file:,
             # Gender of the voice clone.
             gender:,
-            # ISO 639-1 language code from the Ultra language set (40 languages).
+            # ISO 639-1 language code from the Ultra language set (42 languages).
             language:,
             # TTS model identifier. Must be `Ultra`.
             model_id:,
@@ -524,6 +528,301 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone::Provider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class TelnyxBayanClone < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
+          # Converted to 24 kHz mono WAV and trimmed to the first 10 seconds. For best
+          # quality, provide about 10 seconds of clean, single-speaker speech. Maximum size:
+          # 20MB.
+          sig { returns(Telnyx::Internal::FileInput) }
+          attr_accessor :audio_file
+
+          # Gender of the voice clone.
+          sig do
+            returns(
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender::OrSymbol
+            )
+          end
+          attr_accessor :gender
+
+          # TTS model identifier. Must be `Bayan`.
+          sig do
+            returns(
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::ModelID::OrSymbol
+            )
+          end
+          attr_accessor :model_id
+
+          # Name for the voice clone.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # Exact transcript of the reference audio. Required for Bayan: a missing, empty,
+          # or whitespace-only value returns `422` with `source.pointer` `/ref_text`. An
+          # inaccurate transcript can make synthesis with the clone truncated or garbled.
+          # Record a known script of about 10 seconds and pass it verbatim.
+          sig { returns(String) }
+          attr_accessor :ref_text
+
+          # Optional custom label describing the voice style.
+          sig { returns(T.nilable(String)) }
+          attr_reader :label
+
+          sig { params(label: String).void }
+          attr_writer :label
+
+          # Language of the reference audio: `ar` (Arabic) or `en` (English). Defaults to
+          # `ar`. Other values return `422`.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language::OrSymbol
+              )
+            )
+          end
+          attr_reader :language
+
+          sig do
+            params(
+              language:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language::OrSymbol
+            ).void
+          end
+          attr_writer :language
+
+          # Voice synthesis provider. Defaults to `telnyx`.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::OrSymbol
+              )
+            )
+          end
+          attr_reader :provider
+
+          sig do
+            params(
+              provider:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::OrSymbol
+            ).void
+          end
+          attr_writer :provider
+
+          # Upload-based voice clone using the Telnyx Bayan model (Arabic and English). The
+          # clone is `active` on creation. Use it as voice `Telnyx.Bayan.<clone_id>`.
+          sig do
+            params(
+              audio_file: Telnyx::Internal::FileInput,
+              gender:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender::OrSymbol,
+              model_id:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::ModelID::OrSymbol,
+              name: String,
+              ref_text: String,
+              label: String,
+              language:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language::OrSymbol,
+              provider:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
+            # Converted to 24 kHz mono WAV and trimmed to the first 10 seconds. For best
+            # quality, provide about 10 seconds of clean, single-speaker speech. Maximum size:
+            # 20MB.
+            audio_file:,
+            # Gender of the voice clone.
+            gender:,
+            # TTS model identifier. Must be `Bayan`.
+            model_id:,
+            # Name for the voice clone.
+            name:,
+            # Exact transcript of the reference audio. Required for Bayan: a missing, empty,
+            # or whitespace-only value returns `422` with `source.pointer` `/ref_text`. An
+            # inaccurate transcript can make synthesis with the clone truncated or garbled.
+            # Record a known script of about 10 seconds and pass it verbatim.
+            ref_text:,
+            # Optional custom label describing the voice style.
+            label: nil,
+            # Language of the reference audio: `ar` (Arabic) or `en` (English). Defaults to
+            # `ar`. Other values return `422`.
+            language: nil,
+            # Voice synthesis provider. Defaults to `telnyx`.
+            provider: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                audio_file: Telnyx::Internal::FileInput,
+                gender:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender::OrSymbol,
+                model_id:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::ModelID::OrSymbol,
+                name: String,
+                ref_text: String,
+                label: String,
+                language:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language::OrSymbol,
+                provider:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Gender of the voice clone.
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            MALE =
+              T.let(
+                :male,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender::TaggedSymbol
+              )
+            FEMALE =
+              T.let(
+                :female,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender::TaggedSymbol
+              )
+            NEUTRAL =
+              T.let(
+                :neutral,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Gender::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # TTS model identifier. Must be `Bayan`.
+          module ModelID
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::ModelID
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            BAYAN =
+              T.let(
+                :Bayan,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::ModelID::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::ModelID::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Language of the reference audio: `ar` (Arabic) or `en` (English). Defaults to
+          # `ar`. Other values return `422`.
+          module Language
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            AR =
+              T.let(
+                :ar,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language::TaggedSymbol
+              )
+            EN =
+              T.let(
+                :en,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Language::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Voice synthesis provider. Defaults to `telnyx`.
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            TELNYX =
+              T.let(
+                :telnyx,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::TaggedSymbol
+              )
+            TELNYX_2 =
+              T.let(
+                :Telnyx,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::TaggedSymbol
                 ]
               )
             end

@@ -83,26 +83,7 @@ module Telnyx
         #   @return [Telnyx::Models::Calls::TranscriptionConfig, nil]
         optional :transcription, -> { Telnyx::Calls::TranscriptionConfig }
 
-        # @!attribute voice
-        #   The voice the assistant speaks with on this call, in place of the assistant's
-        #   own voice. Use the same formats as the `voice` of the
-        #   [speak](/api-reference/call-commands/speak-text) command. A community engine
-        #   voice is `<EngineName>.<VoiceId>` (e.g., `acme.alpha`) and needs
-        #   `voice_settings.api_key_ref`; see the
-        #   [Community TTS engines guide](/docs/voice/tts/community-engines). Without
-        #   `voice`, the assistant's own voice is used.
-        #
-        #   @return [String, nil]
-        optional :voice, String
-
-        # @!attribute voice_settings
-        #   The settings of `voice`. A community engine voice requires `api_key_ref`; the
-        #   other keys are the engine's own settings.
-        #
-        #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::CommunityVoiceSettings, nil]
-        optional :voice_settings, union: -> { Telnyx::Calls::ActionStartAIAssistantParams::VoiceSettings }
-
-        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, voice: nil, voice_settings: nil, request_options: {})
+        # @!method initialize(call_control_id:, assistant: nil, client_state: nil, command_id: nil, greeting: nil, interruption_settings: nil, message_history: nil, participants: nil, send_message_history_updates: nil, transcription: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::Calls::ActionStartAIAssistantParams} for more details.
         #
@@ -125,10 +106,6 @@ module Telnyx
         #   @param send_message_history_updates [Boolean] When `true`, a `call.ai_gather.message_history_updated` webhook carrying the ful
         #
         #   @param transcription [Telnyx::Models::Calls::TranscriptionConfig] The settings associated with speech to text for the voice assistant. This is onl
-        #
-        #   @param voice [String] The voice the assistant speaks with on this call, in place of the assistant's ow
-        #
-        #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::CommunityVoiceSettings] The settings of `voice`. A community engine voice requires `api_key_ref`; the ot
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -154,36 +131,6 @@ module Telnyx
 
           # @!method self.variants
           #   @return [Array(Telnyx::Models::Calls::UserMessage, Telnyx::Models::Calls::AssistantMessage, Telnyx::Models::Calls::ToolMessage, Telnyx::Models::Calls::SystemMessage, Telnyx::Models::Calls::DeveloperMessage)]
-        end
-
-        # The settings of `voice`. A community engine voice requires `api_key_ref`; the
-        # other keys are the engine's own settings.
-        module VoiceSettings
-          extend Telnyx::Internal::Type::Union
-
-          variant -> { Telnyx::Calls::ElevenLabsVoiceSettings }
-
-          variant -> { Telnyx::Calls::TelnyxVoiceSettings }
-
-          variant -> { Telnyx::Calls::AwsVoiceSettings }
-
-          variant -> { Telnyx::MinimaxVoiceSettings }
-
-          variant -> { Telnyx::AzureVoiceSettings }
-
-          variant -> { Telnyx::ResembleVoiceSettings }
-
-          variant -> { Telnyx::InworldVoiceSettings }
-
-          variant -> { Telnyx::XaiVoiceSettings }
-
-          variant -> { Telnyx::Calls::SonioxVoiceSettings }
-
-          # Settings for a community text-to-speech engine voice (`<EngineName>.<VoiceId>`). `api_key_ref` is required. Every other key is a setting the engine declares in its `voice_settings_schema`, and is passed to the engine as sent. See the [Community TTS engines guide](/docs/voice/tts/community-engines).
-          variant -> { Telnyx::Calls::CommunityVoiceSettings }
-
-          # @!method self.variants
-          #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::CommunityVoiceSettings)]
         end
       end
     end

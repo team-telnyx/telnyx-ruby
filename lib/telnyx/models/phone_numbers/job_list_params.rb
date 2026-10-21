@@ -49,12 +49,15 @@ module Telnyx
 
         class Filter < Telnyx::Internal::Type::BaseModel
           # @!attribute customer_reference
-          #   Returns jobs whose creation-time customer reference exactly matches the supplied
-          #   value, not the current reference on a phone number. Only jobs within the lookup
-          #   window (90 days by default) are returned. Supply a single non-blank string of up
-          #   to 250 characters, without null characters, using
-          #   `filter[customer_reference]=yourcustomerrefhere`. An invalid filter value
-          #   returns HTTP 422.
+          #   Exact, case-sensitive match for the customer reference supplied when the job was
+          #   created. Only jobs created within the last 90 days are returned, including for
+          #   accounts otherwise exempt from job retention limits. Searches the stored job
+          #   reference, not the current reference on a phone number. Multiple jobs may share
+          #   a reference. Combines with the other filters and account ownership. Supply a
+          #   single non-blank string of up to 250 characters, without null characters, using
+          #   `filter[customer_reference]=yourcustomerrefhere`. Whitespace is preserved; blank
+          #   strings, arrays, and objects return HTTP 422. An invalid filter value returns
+          #   HTTP 422. The literal string `null` is matched as text.
           #
           #   @return [String, nil]
           optional :customer_reference, String
@@ -91,7 +94,7 @@ module Telnyx
           #   filter[phone_number], filter[phone_number][], filter[status][],
           #   filter[customer_reference]
           #
-          #   @param customer_reference [String] Returns jobs whose creation-time customer reference exactly matches the supplied
+          #   @param customer_reference [String] Exact, case-sensitive match for the customer reference supplied when the job was
           #
           #   @param phone_number [String, Array<String>] Returns jobs that targeted any of the supplied account-owned phone numbers. Valu
           #

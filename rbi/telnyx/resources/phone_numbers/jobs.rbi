@@ -104,7 +104,12 @@ module Telnyx
           billing_group_id: nil,
           # Body param: Identifies the connection associated with the phone number.
           connection_id: nil,
-          # Body param: A customer reference string for customer look ups.
+          # Body param: Sets the customer reference on the selected phone numbers and
+          # retains the supplied value on the job. Recover the job without its ID using GET
+          # /phone_numbers/jobs with filter[customer_reference] within 90 days of job
+          # creation. This body field updates the numbers; the separate
+          # filter[customer_reference] query parameter selects numbers by their current
+          # reference.
           customer_reference: nil,
           # Body param: Indicates whether to enable or disable the deletion lock on each
           # phone number. When enabled, this prevents the phone number from being deleted

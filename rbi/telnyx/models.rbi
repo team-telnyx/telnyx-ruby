@@ -417,19 +417,6 @@ module Telnyx
 
   CommentRetrieveParams = Telnyx::Models::CommentRetrieveParams
 
-  CommunityTtsAudioFormat = Telnyx::Models::CommunityTtsAudioFormat
-
-  CommunityTtsEngine = Telnyx::Models::CommunityTtsEngine
-
-  CommunityTtsEngineCapabilities =
-    Telnyx::Models::CommunityTtsEngineCapabilities
-
-  CommunityTtsEngineListMeta = Telnyx::Models::CommunityTtsEngineListMeta
-
-  CommunityTtsEngineStatus = Telnyx::Models::CommunityTtsEngineStatus
-
-  CommunityTtsEngineVisibility = Telnyx::Models::CommunityTtsEngineVisibility
-
   Compute = Telnyx::Models::Compute
 
   Conference = Telnyx::Models::Conference
@@ -2263,29 +2250,6 @@ module Telnyx
 
   TransportProtocol = Telnyx::Models::TransportProtocol
 
-  TtsIntegrationCreateParams = Telnyx::Models::TtsIntegrationCreateParams
-
-  TtsIntegrationDeleteParams = Telnyx::Models::TtsIntegrationDeleteParams
-
-  TtsIntegrationListParams = Telnyx::Models::TtsIntegrationListParams
-
-  TtsIntegrationReplaceParams = Telnyx::Models::TtsIntegrationReplaceParams
-
-  TtsIntegrationRetrieveConformanceRunsParams =
-    Telnyx::Models::TtsIntegrationRetrieveConformanceRunsParams
-
-  TtsIntegrationRetrieveDiscoverableParams =
-    Telnyx::Models::TtsIntegrationRetrieveDiscoverableParams
-
-  TtsIntegrationRetrieveParams = Telnyx::Models::TtsIntegrationRetrieveParams
-
-  TtsIntegrationRetrieveVoicesParams =
-    Telnyx::Models::TtsIntegrationRetrieveVoicesParams
-
-  TtsIntegrations = Telnyx::Models::TtsIntegrations
-
-  TtsIntegrationUpdateParams = Telnyx::Models::TtsIntegrationUpdateParams
-
   UacConnection = Telnyx::Models::UacConnection
 
   UacConnectionCreateParams = Telnyx::Models::UacConnectionCreateParams
@@ -2317,9 +2281,6 @@ module Telnyx
   UnsubscribeGroupResponse = Telnyx::Models::UnsubscribeGroupResponse
 
   UnwrapWebhookEvent = Telnyx::Models::UnwrapWebhookEvent
-
-  UpdateCommunityTtsEngineRequest =
-    Telnyx::Models::UpdateCommunityTtsEngineRequest
 
   UpdateEmailTemplateRequest = Telnyx::Models::UpdateEmailTemplateRequest
 

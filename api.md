@@ -3347,27 +3347,3 @@ Methods:
 Methods:
 
 - <code title="get /dial_metrics">client.dial_metrics.<a href="./lib/telnyx/resources/dial_metrics.rb">list</a>(\*\*params)</code>
-
-# TtsIntegrations
-
-Methods:
-
-- <code title="post /tts_integrations">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">create</a>(\*\*params)</code>
-- <code title="get /tts_integrations/{id}">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">retrieve</a>(\*\*params)</code>
-- <code title="patch /tts_integrations/{id}">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">update</a>(\*\*params)</code>
-- <code title="get /tts_integrations">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">list</a>(\*\*params)</code>
-- <code title="delete /tts_integrations/{id}">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">delete</a>(\*\*params)</code>
-- <code title="put /tts_integrations/{id}">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">replace</a>(\*\*params)</code>
-- <code title="get /tts_integrations/{id}/conformance_runs">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">retrieve_conformance_runs</a>(\*\*params)</code>
-- <code title="get /tts_integrations/discoverable">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">retrieve_discoverable</a>(\*\*params)</code>
-- <code title="get /tts_integrations/{id}/voices">client.tts_integrations.<a href="./lib/telnyx/resources/tts_integrations.rb">retrieve_voices</a>(\*\*params)</code>
-
-## Actions
-
-Methods:
-
-- <code title="post /tts_integrations/{id}/actions/disable">client.tts_integrations.actions.<a href="./lib/telnyx/resources/tts_integrations/actions.rb">disable</a>(\*\*params)</code>
-- <code title="post /tts_integrations/{id}/actions/enable">client.tts_integrations.actions.<a href="./lib/telnyx/resources/tts_integrations/actions.rb">enable</a>(\*\*params)</code>
-- <code title="post /tts_integrations/{id}/actions/refresh_voices">client.tts_integrations.actions.<a href="./lib/telnyx/resources/tts_integrations/actions.rb">refresh_voices</a>(\*\*params)</code>
-- <code title="post /tts_integrations/{id}/actions/request_review">client.tts_integrations.actions.<a href="./lib/telnyx/resources/tts_integrations/actions.rb">request_review</a>(\*\*params)</code>
-- <code title="post /tts_integrations/{id}/actions/test_connection">client.tts_integrations.actions.<a href="./lib/telnyx/resources/tts_integrations/actions.rb">test_connection</a>(\*\*params)</code>
