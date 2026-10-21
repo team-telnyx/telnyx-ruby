@@ -1,0 +1,82 @@
+module Telnyx
+  module Models
+    type dial_metric_list_params =
+      {
+        end_time: Time,
+        granularity: Telnyx::Models::DialMetricListParams::granularity,
+        start_time: Time,
+        page_after: String,
+        page_limit: Integer,
+        sort: Telnyx::Models::DialMetricListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class DialMetricListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor end_time: Time
+
+      attr_accessor granularity: Telnyx::Models::DialMetricListParams::granularity
+
+      attr_accessor start_time: Time
+
+      attr_reader page_after: String?
+
+      def page_after=: (String) -> String
+
+      attr_reader page_limit: Integer?
+
+      def page_limit=: (Integer) -> Integer
+
+      attr_reader sort: Telnyx::Models::DialMetricListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::DialMetricListParams::sort
+      ) -> Telnyx::Models::DialMetricListParams::sort
+
+      def initialize: (
+        end_time: Time,
+        granularity: Telnyx::Models::DialMetricListParams::granularity,
+        start_time: Time,
+        ?page_after: String,
+        ?page_limit: Integer,
+        ?sort: Telnyx::Models::DialMetricListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        end_time: Time,
+        granularity: Telnyx::Models::DialMetricListParams::granularity,
+        start_time: Time,
+        page_after: String,
+        page_limit: Integer,
+        sort: Telnyx::Models::DialMetricListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type granularity = :second | :minute | :hour
+
+      module Granularity
+        extend Telnyx::Internal::Type::Enum
+
+        SECOND: :second
+        MINUTE: :minute
+        HOUR: :hour
+
+        def self?.values: -> ::Array[Telnyx::Models::DialMetricListParams::granularity]
+      end
+
+      type sort = :"-start_time" | :start_time
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        MINUS_START_TIME: :"-start_time"
+        START_TIME: :start_time
+
+        def self?.values: -> ::Array[Telnyx::Models::DialMetricListParams::sort]
+      end
+    end
+  end
+end

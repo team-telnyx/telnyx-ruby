@@ -44,7 +44,12 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(from:, to:, whatsapp_message:, messaging_profile_id: nil, type: nil, webhook_url: nil, request_options: {})
+      # @!attribute idempotency_key
+      #
+      #   @return [String, nil]
+      optional :idempotency_key, String
+
+      # @!method initialize(from:, to:, whatsapp_message:, messaging_profile_id: nil, type: nil, webhook_url: nil, idempotency_key: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessageWhatsappParams} for more details.
       #
@@ -59,6 +64,8 @@ module Telnyx
       #   @param type [Symbol, Telnyx::Models::MessageWhatsappParams::Type] Message type - must be set to "WHATSAPP"
       #
       #   @param webhook_url [String] The URL where webhooks related to this message will be sent.
+      #
+      #   @param idempotency_key [String]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

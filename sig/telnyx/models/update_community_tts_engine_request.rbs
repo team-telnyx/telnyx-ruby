@@ -1,0 +1,83 @@
+module Telnyx
+  module Models
+    type update_community_tts_engine_request =
+      {
+        capabilities: Telnyx::CommunityTtsEngineCapabilities,
+        connect_timeout_ms: Integer,
+        contact_email: String?,
+        data_retention_policy_url: String?,
+        documentation_url: String?,
+        supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+        visibility: Telnyx::Models::community_tts_engine_visibility,
+        voices_api_key_ref: String?,
+        voices_url: String,
+        websocket_url: String
+      }
+
+    class UpdateCommunityTtsEngineRequest < Telnyx::Internal::Type::BaseModel
+      attr_reader capabilities: Telnyx::CommunityTtsEngineCapabilities?
+
+      def capabilities=: (
+        Telnyx::CommunityTtsEngineCapabilities
+      ) -> Telnyx::CommunityTtsEngineCapabilities
+
+      attr_reader connect_timeout_ms: Integer?
+
+      def connect_timeout_ms=: (Integer) -> Integer
+
+      attr_accessor contact_email: String?
+
+      attr_accessor data_retention_policy_url: String?
+
+      attr_accessor documentation_url: String?
+
+      attr_reader supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format]?
+
+      def supported_audio_formats=: (
+        ::Array[Telnyx::Models::community_tts_audio_format]
+      ) -> ::Array[Telnyx::Models::community_tts_audio_format]
+
+      attr_reader visibility: Telnyx::Models::community_tts_engine_visibility?
+
+      def visibility=: (
+        Telnyx::Models::community_tts_engine_visibility
+      ) -> Telnyx::Models::community_tts_engine_visibility
+
+      attr_accessor voices_api_key_ref: String?
+
+      attr_reader voices_url: String?
+
+      def voices_url=: (String) -> String
+
+      attr_reader websocket_url: String?
+
+      def websocket_url=: (String) -> String
+
+      def initialize: (
+        ?capabilities: Telnyx::CommunityTtsEngineCapabilities,
+        ?connect_timeout_ms: Integer,
+        ?contact_email: String?,
+        ?data_retention_policy_url: String?,
+        ?documentation_url: String?,
+        ?supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+        ?visibility: Telnyx::Models::community_tts_engine_visibility,
+        ?voices_api_key_ref: String?,
+        ?voices_url: String,
+        ?websocket_url: String
+      ) -> void
+
+      def to_hash: -> {
+        capabilities: Telnyx::CommunityTtsEngineCapabilities,
+        connect_timeout_ms: Integer,
+        contact_email: String?,
+        data_retention_policy_url: String?,
+        documentation_url: String?,
+        supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+        visibility: Telnyx::Models::community_tts_engine_visibility,
+        voices_api_key_ref: String?,
+        voices_url: String,
+        websocket_url: String
+      }
+    end
+  end
+end

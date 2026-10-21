@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    type tts_integration_list_params =
+      {
+        page: Telnyx::TtsIntegrationListParams::Page,
+        status: Telnyx::Models::community_tts_engine_status,
+        visibility: Telnyx::Models::community_tts_engine_visibility
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class TtsIntegrationListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_reader page: Telnyx::TtsIntegrationListParams::Page?
+
+      def page=: (
+        Telnyx::TtsIntegrationListParams::Page
+      ) -> Telnyx::TtsIntegrationListParams::Page
+
+      attr_reader status: Telnyx::Models::community_tts_engine_status?
+
+      def status=: (
+        Telnyx::Models::community_tts_engine_status
+      ) -> Telnyx::Models::community_tts_engine_status
+
+      attr_reader visibility: Telnyx::Models::community_tts_engine_visibility?
+
+      def visibility=: (
+        Telnyx::Models::community_tts_engine_visibility
+      ) -> Telnyx::Models::community_tts_engine_visibility
+
+      def initialize: (
+        ?page: Telnyx::TtsIntegrationListParams::Page,
+        ?status: Telnyx::Models::community_tts_engine_status,
+        ?visibility: Telnyx::Models::community_tts_engine_visibility,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        page: Telnyx::TtsIntegrationListParams::Page,
+        status: Telnyx::Models::community_tts_engine_status,
+        visibility: Telnyx::Models::community_tts_engine_visibility,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type page = { number: Integer, size: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader number: Integer?
+
+        def number=: (Integer) -> Integer
+
+        attr_reader size: Integer?
+
+        def size=: (Integer) -> Integer
+
+        def initialize: (?number: Integer, ?size: Integer) -> void
+
+        def to_hash: -> { number: Integer, size: Integer }
+      end
+    end
+  end
+end

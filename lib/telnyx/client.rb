@@ -809,6 +809,17 @@ module Telnyx
     # @return [Telnyx::Resources::SipRegistrationStatus]
     attr_reader :sip_registration_status
 
+    # Call information
+    # @return [Telnyx::Resources::DialMetrics]
+    attr_reader :dial_metrics
+
+    # Register and manage text-to-speech (TTS) engines you publish, and find the
+    # public engines other organizations published, so an AI Assistant, TeXML or Call
+    # Control can speak with one of their voices, using your own key for it, instead
+    # of a Telnyx-integrated vendor.
+    # @return [Telnyx::Resources::TtsIntegrations]
+    attr_reader :tts_integrations
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1109,6 +1120,8 @@ module Telnyx
       @spend_limits = Telnyx::Resources::SpendLimits.new(client: self)
       @llm_token_gateway = Telnyx::Resources::LlmTokenGateway.new(client: self)
       @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
+      @dial_metrics = Telnyx::Resources::DialMetrics.new(client: self)
+      @tts_integrations = Telnyx::Resources::TtsIntegrations.new(client: self)
     end
   end
 end

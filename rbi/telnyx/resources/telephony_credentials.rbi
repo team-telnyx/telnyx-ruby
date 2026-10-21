@@ -106,12 +106,18 @@ module Telnyx
       sig do
         params(
           id: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(String)
       end
       def create_token(
         # Identifies the resource.
         id,
+        # Unique key for safely retrying the same logical request. Generate a UUID v4 for
+        # each operation and reuse it only when retrying that operation with the same
+        # request body. Valid characters: A-Z, a-z, 0-9, -, and \_. Length: 1-255
+        # characters. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end

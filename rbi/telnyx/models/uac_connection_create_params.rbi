@@ -82,8 +82,8 @@ module Telnyx
       sig { params(encode_contact_header_enabled: T::Boolean).void }
       attr_writer :encode_contact_header_enabled
 
-      # Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-      # TLS.
+      # Enable use of SRTP for encryption. Can only be set when the SIP signaling
+      # transport protocol is TLS.
       sig { returns(T.nilable(Telnyx::EncryptedMedia::OrSymbol)) }
       attr_accessor :encrypted_media
 
@@ -329,8 +329,8 @@ module Telnyx
         # Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG
         # scenarios.
         encode_contact_header_enabled: nil,
-        # Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-        # TLS.
+        # Enable use of SRTP for encryption. Can only be set when the SIP signaling
+        # transport protocol is TLS.
         encrypted_media: nil,
         # External SIP peer settings used by Telnyx when registering to your PBX and
         # routing outbound calls.

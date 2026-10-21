@@ -7,7 +7,8 @@ module Telnyx
         whatsapp_message: Telnyx::MessageWhatsappParams::WhatsappMessage,
         messaging_profile_id: String,
         type: Telnyx::Models::MessageWhatsappParams::type_,
-        webhook_url: String
+        webhook_url: String,
+        idempotency_key: String
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -35,6 +36,10 @@ module Telnyx
 
       def webhook_url=: (String) -> String
 
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> String
+
       def initialize: (
         from: String,
         to: String,
@@ -42,6 +47,7 @@ module Telnyx
         ?messaging_profile_id: String,
         ?type: Telnyx::Models::MessageWhatsappParams::type_,
         ?webhook_url: String,
+        ?idempotency_key: String,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -52,6 +58,7 @@ module Telnyx
         messaging_profile_id: String,
         type: Telnyx::Models::MessageWhatsappParams::type_,
         webhook_url: String,
+        idempotency_key: String,
         request_options: Telnyx::RequestOptions
       }
 

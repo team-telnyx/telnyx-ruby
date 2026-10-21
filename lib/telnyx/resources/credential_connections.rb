@@ -38,7 +38,7 @@ module Telnyx
       #
       # @param encode_contact_header_enabled [Boolean] Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG scen
       #
-      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
+      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Can only be set when the SIP signaling transp
       #
       # @param inbound [Telnyx::Models::CredentialInbound]
       #
@@ -133,7 +133,7 @@ module Telnyx
       #
       # @param encode_contact_header_enabled [Boolean] Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG scen
       #
-      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
+      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Can only be set when the SIP signaling transp
       #
       # @param inbound [Telnyx::Models::CredentialInbound]
       #

@@ -12,8 +12,14 @@ module Telnyx
       #   @return [String]
       required :id, String
 
-      # @!method initialize(id:, request_options: {})
+      # @!attribute idempotency_key
+      #
+      #   @return [String, nil]
+      optional :idempotency_key, String
+
+      # @!method initialize(id:, idempotency_key: nil, request_options: {})
       #   @param id [String]
+      #   @param idempotency_key [String]
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end
   end

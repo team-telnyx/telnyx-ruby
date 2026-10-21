@@ -141,55 +141,65 @@ module Telnyx
           use_profile_webhooks: T::Boolean,
           webhook_failover_url: String,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessageSendResponse)
       end
       def send_(
-        # Receiving address (+E.164 formatted phone number or short code).
+        # Body param: Receiving address (+E.164 formatted phone number or short code).
         to:,
-        # Automatically detect if an SMS message is unusually long and exceeds a
-        # recommended limit of message parts.
+        # Body param: Automatically detect if an SMS message is unusually long and exceeds
+        # a recommended limit of message parts.
         auto_detect: nil,
-        # Encoding to use for the message. `auto` (default) uses smart encoding to
-        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
-        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
-        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
-        # messaging profile's `smart_encoding` setting.
+        # Body param: Encoding to use for the message. `auto` (default) uses smart
+        # encoding to automatically select the most efficient encoding. `gsm7` forces
+        # GSM-7 encoding (returns 400 if message contains characters that cannot be
+        # encoded). `ucs2` forces UCS-2 encoding and disables smart encoding. When set,
+        # this overrides the messaging profile's `smart_encoding` setting.
         encoding: nil,
-        # Sending address (+E.164 formatted phone number, alphanumeric sender ID, or short
-        # code).
+        # Body param: Sending address (+E.164 formatted phone number, alphanumeric sender
+        # ID, or short code).
         #
         # **Required if sending with a phone number, short code, or alphanumeric sender
         # ID.**
         from: nil,
-        # A list of media URLs. The total media size must be less than 1 MB.
+        # Body param: A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**
         media_urls: nil,
-        # Unique identifier for a messaging profile.
+        # Body param: Unique identifier for a messaging profile.
         #
         # **Required if sending via number pool or with an alphanumeric sender ID.**
         messaging_profile_id: nil,
-        # ISO 8601 formatted date indicating when to send the message - accurate up till a
-        # minute.
+        # Body param: ISO 8601 formatted date indicating when to send the message -
+        # accurate up till a minute.
         send_at: nil,
-        # Subject of multimedia message
+        # Body param: Subject of multimedia message
         subject: nil,
-        # Message body (i.e., content) as a non-empty string.
+        # Body param: Message body (i.e., content) as a non-empty string.
         #
         # **Required for SMS**
         text: nil,
-        # The protocol for sending the message, either SMS or MMS.
+        # Body param: The protocol for sending the message, either SMS or MMS.
         type: nil,
-        # If the profile this number is associated with has webhooks, use them for
-        # delivery notifications. If webhooks are also specified on the message itself,
-        # they will be attempted first, then those on the profile.
+        # Body param: If the profile this number is associated with has webhooks, use them
+        # for delivery notifications. If webhooks are also specified on the message
+        # itself, they will be attempted first, then those on the profile.
         use_profile_webhooks: nil,
-        # The failover URL where webhooks related to this message will be sent if sending
-        # to the primary URL fails.
+        # Body param: The failover URL where webhooks related to this message will be sent
+        # if sending to the primary URL fails.
         webhook_failover_url: nil,
-        # The URL where webhooks related to this message will be sent.
+        # Body param: The URL where webhooks related to this message will be sent.
         webhook_url: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -206,29 +216,39 @@ module Telnyx
           use_profile_webhooks: T::Boolean,
           webhook_failover_url: String,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessageSendGroupMmsResponse)
       end
       def send_group_mms(
-        # Phone number, in +E.164 format, used to send the message.
+        # Body param: Phone number, in +E.164 format, used to send the message.
         from:,
-        # A list of destinations. No more than 8 destinations are allowed.
+        # Body param: A list of destinations. No more than 8 destinations are allowed.
         to:,
-        # A list of media URLs. The total media size must be less than 1 MB.
+        # Body param: A list of media URLs. The total media size must be less than 1 MB.
         media_urls: nil,
-        # Subject of multimedia message
+        # Body param: Subject of multimedia message
         subject: nil,
-        # Message body (i.e., content) as a non-empty string.
+        # Body param: Message body (i.e., content) as a non-empty string.
         text: nil,
-        # If the profile this number is associated with has webhooks, use them for
-        # delivery notifications. If webhooks are also specified on the message itself,
-        # they will be attempted first, then those on the profile.
+        # Body param: If the profile this number is associated with has webhooks, use them
+        # for delivery notifications. If webhooks are also specified on the message
+        # itself, they will be attempted first, then those on the profile.
         use_profile_webhooks: nil,
-        # The failover URL where webhooks related to this message will be sent if sending
-        # to the primary URL fails.
+        # Body param: The failover URL where webhooks related to this message will be sent
+        # if sending to the primary URL fails.
         webhook_failover_url: nil,
-        # The URL where webhooks related to this message will be sent.
+        # Body param: The URL where webhooks related to this message will be sent.
         webhook_url: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -248,44 +268,54 @@ module Telnyx
           use_profile_webhooks: T::Boolean,
           webhook_failover_url: String,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessageSendLongCodeResponse)
       end
       def send_long_code(
-        # Phone number, in +E.164 format, used to send the message.
+        # Body param: Phone number, in +E.164 format, used to send the message.
         from:,
-        # Receiving address (+E.164 formatted phone number or short code).
+        # Body param: Receiving address (+E.164 formatted phone number or short code).
         to:,
-        # Automatically detect if an SMS message is unusually long and exceeds a
-        # recommended limit of message parts.
+        # Body param: Automatically detect if an SMS message is unusually long and exceeds
+        # a recommended limit of message parts.
         auto_detect: nil,
-        # Encoding to use for the message. `auto` (default) uses smart encoding to
-        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
-        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
-        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
-        # messaging profile's `smart_encoding` setting.
+        # Body param: Encoding to use for the message. `auto` (default) uses smart
+        # encoding to automatically select the most efficient encoding. `gsm7` forces
+        # GSM-7 encoding (returns 400 if message contains characters that cannot be
+        # encoded). `ucs2` forces UCS-2 encoding and disables smart encoding. When set,
+        # this overrides the messaging profile's `smart_encoding` setting.
         encoding: nil,
-        # A list of media URLs. The total media size must be less than 1 MB.
+        # Body param: A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**
         media_urls: nil,
-        # Subject of multimedia message
+        # Body param: Subject of multimedia message
         subject: nil,
-        # Message body (i.e., content) as a non-empty string.
+        # Body param: Message body (i.e., content) as a non-empty string.
         #
         # **Required for SMS**
         text: nil,
-        # The protocol for sending the message, either SMS or MMS.
+        # Body param: The protocol for sending the message, either SMS or MMS.
         type: nil,
-        # If the profile this number is associated with has webhooks, use them for
-        # delivery notifications. If webhooks are also specified on the message itself,
-        # they will be attempted first, then those on the profile.
+        # Body param: If the profile this number is associated with has webhooks, use them
+        # for delivery notifications. If webhooks are also specified on the message
+        # itself, they will be attempted first, then those on the profile.
         use_profile_webhooks: nil,
-        # The failover URL where webhooks related to this message will be sent if sending
-        # to the primary URL fails.
+        # Body param: The failover URL where webhooks related to this message will be sent
+        # if sending to the primary URL fails.
         webhook_failover_url: nil,
-        # The URL where webhooks related to this message will be sent.
+        # Body param: The URL where webhooks related to this message will be sent.
         webhook_url: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -305,44 +335,54 @@ module Telnyx
           use_profile_webhooks: T::Boolean,
           webhook_failover_url: String,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessageSendNumberPoolResponse)
       end
       def send_number_pool(
-        # Unique identifier for a messaging profile.
+        # Body param: Unique identifier for a messaging profile.
         messaging_profile_id:,
-        # Receiving address (+E.164 formatted phone number or short code).
+        # Body param: Receiving address (+E.164 formatted phone number or short code).
         to:,
-        # Automatically detect if an SMS message is unusually long and exceeds a
-        # recommended limit of message parts.
+        # Body param: Automatically detect if an SMS message is unusually long and exceeds
+        # a recommended limit of message parts.
         auto_detect: nil,
-        # Encoding to use for the message. `auto` (default) uses smart encoding to
-        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
-        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
-        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
-        # messaging profile's `smart_encoding` setting.
+        # Body param: Encoding to use for the message. `auto` (default) uses smart
+        # encoding to automatically select the most efficient encoding. `gsm7` forces
+        # GSM-7 encoding (returns 400 if message contains characters that cannot be
+        # encoded). `ucs2` forces UCS-2 encoding and disables smart encoding. When set,
+        # this overrides the messaging profile's `smart_encoding` setting.
         encoding: nil,
-        # A list of media URLs. The total media size must be less than 1 MB.
+        # Body param: A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**
         media_urls: nil,
-        # Subject of multimedia message
+        # Body param: Subject of multimedia message
         subject: nil,
-        # Message body (i.e., content) as a non-empty string.
+        # Body param: Message body (i.e., content) as a non-empty string.
         #
         # **Required for SMS**
         text: nil,
-        # The protocol for sending the message, either SMS or MMS.
+        # Body param: The protocol for sending the message, either SMS or MMS.
         type: nil,
-        # If the profile this number is associated with has webhooks, use them for
-        # delivery notifications. If webhooks are also specified on the message itself,
-        # they will be attempted first, then those on the profile.
+        # Body param: If the profile this number is associated with has webhooks, use them
+        # for delivery notifications. If webhooks are also specified on the message
+        # itself, they will be attempted first, then those on the profile.
         use_profile_webhooks: nil,
-        # The failover URL where webhooks related to this message will be sent if sending
-        # to the primary URL fails.
+        # Body param: The failover URL where webhooks related to this message will be sent
+        # if sending to the primary URL fails.
         webhook_failover_url: nil,
-        # The URL where webhooks related to this message will be sent.
+        # Body param: The URL where webhooks related to this message will be sent.
         webhook_url: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -362,44 +402,54 @@ module Telnyx
           use_profile_webhooks: T::Boolean,
           webhook_failover_url: String,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessageSendShortCodeResponse)
       end
       def send_short_code(
-        # Phone number, in +E.164 format, used to send the message.
+        # Body param: Phone number, in +E.164 format, used to send the message.
         from:,
-        # Receiving address (+E.164 formatted phone number or short code).
+        # Body param: Receiving address (+E.164 formatted phone number or short code).
         to:,
-        # Automatically detect if an SMS message is unusually long and exceeds a
-        # recommended limit of message parts.
+        # Body param: Automatically detect if an SMS message is unusually long and exceeds
+        # a recommended limit of message parts.
         auto_detect: nil,
-        # Encoding to use for the message. `auto` (default) uses smart encoding to
-        # automatically select the most efficient encoding. `gsm7` forces GSM-7 encoding
-        # (returns 400 if message contains characters that cannot be encoded). `ucs2`
-        # forces UCS-2 encoding and disables smart encoding. When set, this overrides the
-        # messaging profile's `smart_encoding` setting.
+        # Body param: Encoding to use for the message. `auto` (default) uses smart
+        # encoding to automatically select the most efficient encoding. `gsm7` forces
+        # GSM-7 encoding (returns 400 if message contains characters that cannot be
+        # encoded). `ucs2` forces UCS-2 encoding and disables smart encoding. When set,
+        # this overrides the messaging profile's `smart_encoding` setting.
         encoding: nil,
-        # A list of media URLs. The total media size must be less than 1 MB.
+        # Body param: A list of media URLs. The total media size must be less than 1 MB.
         #
         # **Required for MMS**
         media_urls: nil,
-        # Subject of multimedia message
+        # Body param: Subject of multimedia message
         subject: nil,
-        # Message body (i.e., content) as a non-empty string.
+        # Body param: Message body (i.e., content) as a non-empty string.
         #
         # **Required for SMS**
         text: nil,
-        # The protocol for sending the message, either SMS or MMS.
+        # Body param: The protocol for sending the message, either SMS or MMS.
         type: nil,
-        # If the profile this number is associated with has webhooks, use them for
-        # delivery notifications. If webhooks are also specified on the message itself,
-        # they will be attempted first, then those on the profile.
+        # Body param: If the profile this number is associated with has webhooks, use them
+        # for delivery notifications. If webhooks are also specified on the message
+        # itself, they will be attempted first, then those on the profile.
         use_profile_webhooks: nil,
-        # The failover URL where webhooks related to this message will be sent if sending
-        # to the primary URL fails.
+        # Body param: The failover URL where webhooks related to this message will be sent
+        # if sending to the primary URL fails.
         webhook_failover_url: nil,
-        # The URL where webhooks related to this message will be sent.
+        # Body param: The URL where webhooks related to this message will be sent.
         webhook_url: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -414,24 +464,34 @@ module Telnyx
           use_profile_webhooks: T::Boolean,
           webhook_failover_url: T.nilable(String),
           webhook_url: T.nilable(String),
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessageSendWithAlphanumericSenderResponse)
       end
       def send_with_alphanumeric_sender(
-        # A valid alphanumeric sender ID on the user's account.
+        # Body param: A valid alphanumeric sender ID on the user's account.
         from:,
-        # The messaging profile ID to use.
+        # Body param: The messaging profile ID to use.
         messaging_profile_id:,
-        # The message body.
+        # Body param: The message body.
         text:,
-        # Receiving address (+E.164 formatted phone number).
+        # Body param: Receiving address (+E.164 formatted phone number).
         to:,
-        # If true, use the messaging profile's webhook settings.
+        # Body param: If true, use the messaging profile's webhook settings.
         use_profile_webhooks: nil,
-        # Failover callback URL for delivery status updates.
+        # Body param: Failover callback URL for delivery status updates.
         webhook_failover_url: nil,
-        # Callback URL for delivery status updates.
+        # Body param: Callback URL for delivery status updates.
         webhook_url: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -449,23 +509,35 @@ module Telnyx
           messaging_profile_id: String,
           type: Telnyx::MessageWhatsappParams::Type::OrSymbol,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::MessageWhatsappResponse)
       end
       def whatsapp(
-        # Phone number in +E.164 format associated with Whatsapp account
+        # Body param: Phone number in +E.164 format associated with Whatsapp account
         from:,
-        # Recipient phone number in +E.164 format, or the business-scoped user ID (BSUID)
-        # of a WhatsApp user who hides their phone number, for example
+        # Body param: Recipient phone number in +E.164 format, or the business-scoped user
+        # ID (BSUID) of a WhatsApp user who hides their phone number, for example
         # `US.13491208655302741918`. Authentication templates cannot be sent to a BSUID.
         to:,
+        # Body param
         whatsapp_message:,
-        # Messaging profile ID - required if the 'from' number is not SMS-enabled
+        # Body param: Messaging profile ID - required if the 'from' number is not
+        # SMS-enabled
         messaging_profile_id: nil,
-        # Message type - must be set to "WHATSAPP"
+        # Body param: Message type - must be set to "WHATSAPP"
         type: nil,
-        # The URL where webhooks related to this message will be sent.
+        # Body param: The URL where webhooks related to this message will be sent.
         webhook_url: nil,
+        # Header param: Optional opaque, unquoted key for safely retrying the same logical
+        # request. Keys must contain 1 to 255 letters, numbers, hyphens, or underscores.
+        # Generate a unique UUID v4 for each operation and reuse it only when retrying
+        # that operation with the same request. Invalid headers—including duplicate,
+        # empty, malformed, or overlong values—return 400 with error code 10015. A request
+        # already in progress with the same key returns 409; reusing the key with a
+        # different request returns 422. Only successful responses are replayed, for up to
+        # 24 hours. Do not include sensitive data in the key.
+        idempotency_key: nil,
         request_options: {}
       )
       end

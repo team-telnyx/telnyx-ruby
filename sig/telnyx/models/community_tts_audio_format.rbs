@@ -1,0 +1,19 @@
+module Telnyx
+  module Models
+    type community_tts_audio_format =
+      :mp3 | :linear16 | :wav | :mulaw | :alaw | :ogg_vorbis
+
+    module CommunityTtsAudioFormat
+      extend Telnyx::Internal::Type::Enum
+
+      MP3: :mp3
+      LINEAR16: :linear16
+      WAV: :wav
+      MULAW: :mulaw
+      ALAW: :alaw
+      OGG_VORBIS: :ogg_vorbis
+
+      def self?.values: -> ::Array[Telnyx::Models::community_tts_audio_format]
+    end
+  end
+end

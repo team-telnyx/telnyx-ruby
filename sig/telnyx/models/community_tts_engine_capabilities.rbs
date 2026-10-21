@@ -1,0 +1,46 @@
+module Telnyx
+  module Models
+    type community_tts_engine_capabilities =
+      {
+        streamed_audio: bool,
+        flush_support: bool,
+        force_interrupt_support: bool,
+        ssml_support: bool,
+        voice_settings_schema: ::Hash[Symbol, top]?
+      }
+
+    class CommunityTtsEngineCapabilities < Telnyx::Internal::Type::BaseModel
+      attr_accessor streamed_audio: bool
+
+      attr_reader flush_support: bool?
+
+      def flush_support=: (bool) -> bool
+
+      attr_reader force_interrupt_support: bool?
+
+      def force_interrupt_support=: (bool) -> bool
+
+      attr_reader ssml_support: bool?
+
+      def ssml_support=: (bool) -> bool
+
+      attr_accessor voice_settings_schema: ::Hash[Symbol, top]?
+
+      def initialize: (
+        streamed_audio: bool,
+        ?flush_support: bool,
+        ?force_interrupt_support: bool,
+        ?ssml_support: bool,
+        ?voice_settings_schema: ::Hash[Symbol, top]?
+      ) -> void
+
+      def to_hash: -> {
+        streamed_audio: bool,
+        flush_support: bool,
+        force_interrupt_support: bool,
+        ssml_support: bool,
+        voice_settings_schema: ::Hash[Symbol, top]?
+      }
+    end
+  end
+end

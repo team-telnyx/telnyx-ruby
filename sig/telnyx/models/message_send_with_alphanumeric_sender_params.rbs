@@ -8,7 +8,8 @@ module Telnyx
         to: String,
         use_profile_webhooks: bool,
         webhook_failover_url: String?,
-        webhook_url: String?
+        webhook_url: String?,
+        idempotency_key: String
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -32,6 +33,10 @@ module Telnyx
 
       attr_accessor webhook_url: String?
 
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> String
+
       def initialize: (
         from: String,
         messaging_profile_id: String,
@@ -40,6 +45,7 @@ module Telnyx
         ?use_profile_webhooks: bool,
         ?webhook_failover_url: String?,
         ?webhook_url: String?,
+        ?idempotency_key: String,
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -51,6 +57,7 @@ module Telnyx
         use_profile_webhooks: bool,
         webhook_failover_url: String?,
         webhook_url: String?,
+        idempotency_key: String,
         request_options: Telnyx::RequestOptions
       }
     end

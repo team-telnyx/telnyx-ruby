@@ -1,0 +1,36 @@
+module Telnyx
+  module Resources
+    class TtsIntegrations
+      class Actions
+        def disable: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::CommunityTtsEngine
+
+        def enable: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::CommunityTtsEngine
+
+        def refresh_voices: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::CommunityTtsEngine
+
+        def request_review: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::CommunityTtsEngine
+
+        def test_connection: (
+          String id,
+          api_key_ref: String,
+          ?voice_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::TtsIntegrations::CommunityTtsConformanceRun
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,113 @@
+module Telnyx
+  module Models
+    type tts_integration_retrieve_discoverable_response =
+      {
+        data: ::Array[Telnyx::Models::TtsIntegrationRetrieveDiscoverableResponse::Data],
+        meta: Telnyx::CommunityTtsEngineListMeta
+      }
+
+    class TtsIntegrationRetrieveDiscoverableResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::TtsIntegrationRetrieveDiscoverableResponse::Data]
+
+      attr_accessor meta: Telnyx::CommunityTtsEngineListMeta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::TtsIntegrationRetrieveDiscoverableResponse::Data],
+        meta: Telnyx::CommunityTtsEngineListMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::TtsIntegrationRetrieveDiscoverableResponse::Data],
+        meta: Telnyx::CommunityTtsEngineListMeta
+      }
+
+      type data =
+        {
+          id: String,
+          name: String,
+          status: Telnyx::Models::community_tts_engine_status,
+          visibility: Telnyx::Models::community_tts_engine_visibility,
+          capabilities: Telnyx::CommunityTtsEngineCapabilities,
+          connect_timeout_ms: Integer,
+          created_at: Time,
+          data_retention_policy_url: String?,
+          documentation_url: String?,
+          supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+          voices_count: Integer,
+          websocket_url: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor name: String
+
+        attr_accessor status: Telnyx::Models::community_tts_engine_status
+
+        attr_accessor visibility: Telnyx::Models::community_tts_engine_visibility
+
+        attr_reader capabilities: Telnyx::CommunityTtsEngineCapabilities?
+
+        def capabilities=: (
+          Telnyx::CommunityTtsEngineCapabilities
+        ) -> Telnyx::CommunityTtsEngineCapabilities
+
+        attr_reader connect_timeout_ms: Integer?
+
+        def connect_timeout_ms=: (Integer) -> Integer
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_accessor data_retention_policy_url: String?
+
+        attr_accessor documentation_url: String?
+
+        attr_reader supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format]?
+
+        def supported_audio_formats=: (
+          ::Array[Telnyx::Models::community_tts_audio_format]
+        ) -> ::Array[Telnyx::Models::community_tts_audio_format]
+
+        attr_reader voices_count: Integer?
+
+        def voices_count=: (Integer) -> Integer
+
+        attr_reader websocket_url: String?
+
+        def websocket_url=: (String) -> String
+
+        def initialize: (
+          id: String,
+          name: String,
+          status: Telnyx::Models::community_tts_engine_status,
+          visibility: Telnyx::Models::community_tts_engine_visibility,
+          ?capabilities: Telnyx::CommunityTtsEngineCapabilities,
+          ?connect_timeout_ms: Integer,
+          ?created_at: Time,
+          ?data_retention_policy_url: String?,
+          ?documentation_url: String?,
+          ?supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+          ?voices_count: Integer,
+          ?websocket_url: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          name: String,
+          status: Telnyx::Models::community_tts_engine_status,
+          visibility: Telnyx::Models::community_tts_engine_visibility,
+          capabilities: Telnyx::CommunityTtsEngineCapabilities,
+          connect_timeout_ms: Integer,
+          created_at: Time,
+          data_retention_policy_url: String?,
+          documentation_url: String?,
+          supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+          voices_count: Integer,
+          websocket_url: String
+        }
+      end
+    end
+  end
+end

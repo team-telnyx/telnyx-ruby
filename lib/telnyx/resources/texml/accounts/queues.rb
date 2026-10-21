@@ -6,12 +6,15 @@ module Telnyx
       class Accounts
         # TeXML REST Commands
         class Queues
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::QueueCreateParams} for more details.
+          #
           # Creates a new queue resource for the account with the provided settings and
           # returns it.
           #
           # @overload create(account_sid, friendly_name: nil, max_size: nil, request_options: {})
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param friendly_name [String] A human readable name for the queue.
           #
@@ -34,13 +37,16 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::QueueRetrieveParams} for more details.
+          #
           # Returns a single queue resource for the account by its QueueSid.
           #
           # @overload retrieve(queue_sid, account_sid:, request_options: {})
           #
           # @param queue_sid [String] The QueueSid that identifies the call queue.
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -61,13 +67,16 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::QueueUpdateParams} for more details.
+          #
           # Updates the specified queue resource's settings and returns the updated queue.
           #
           # @overload update(queue_sid, account_sid:, max_size: nil, request_options: {})
           #
           # @param queue_sid [String] Path param: The QueueSid that identifies the call queue.
           #
-          # @param account_sid [String] Path param: The id of the account the resource belongs to.
+          # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
           #
           # @param max_size [Integer] Body param: The maximum size of the queue.
           #
@@ -100,7 +109,7 @@ module Telnyx
           #
           # @overload list(account_sid, date_created: nil, date_updated: nil, page: nil, page_size: nil, page_token: nil, request_options: {})
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param date_created [String] Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also ac
           #
@@ -136,13 +145,16 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::QueueDeleteParams} for more details.
+          #
           # Permanently deletes the specified queue resource from the account.
           #
           # @overload delete(queue_sid, account_sid:, request_options: {})
           #
           # @param queue_sid [String] The QueueSid that identifies the call queue.
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

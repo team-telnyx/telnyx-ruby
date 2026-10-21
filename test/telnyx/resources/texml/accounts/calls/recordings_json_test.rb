@@ -7,7 +7,10 @@ class Telnyx::Test::Resources::Texml::Accounts::Calls::RecordingsJsonTest < Teln
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.texml.accounts.calls.recordings_json.recordings_json("call_sid", account_sid: "account_sid")
+      @telnyx.texml.accounts.calls.recordings_json.recordings_json(
+        "call_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
+      )
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::Calls::TexmlCreateCallRecordingResponseBody
@@ -40,7 +43,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Calls::RecordingsJsonTest < Teln
     response =
       @telnyx.texml.accounts.calls.recordings_json.retrieve_recordings_json(
         "call_sid",
-        account_sid: "account_sid"
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
       )
 
     assert_pattern do

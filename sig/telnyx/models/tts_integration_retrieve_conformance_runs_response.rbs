@@ -1,0 +1,25 @@
+module Telnyx
+  module Models
+    type tts_integration_retrieve_conformance_runs_response =
+      {
+        data: ::Array[Telnyx::TtsIntegrations::CommunityTtsConformanceRun],
+        meta: Telnyx::CommunityTtsEngineListMeta
+      }
+
+    class TtsIntegrationRetrieveConformanceRunsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::TtsIntegrations::CommunityTtsConformanceRun]
+
+      attr_accessor meta: Telnyx::CommunityTtsEngineListMeta
+
+      def initialize: (
+        data: ::Array[Telnyx::TtsIntegrations::CommunityTtsConformanceRun],
+        meta: Telnyx::CommunityTtsEngineListMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::TtsIntegrations::CommunityTtsConformanceRun],
+        meta: Telnyx::CommunityTtsEngineListMeta
+      }
+    end
+  end
+end

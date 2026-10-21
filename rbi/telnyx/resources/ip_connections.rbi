@@ -68,8 +68,8 @@ module Telnyx
         # Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG
         # scenarios.
         encode_contact_header_enabled: nil,
-        # Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-        # TLS.
+        # Enable use of SRTP for encryption. Can only be set when the SIP signaling
+        # transport protocol is TLS.
         encrypted_media: nil,
         inbound: nil,
         # The uuid of the push credential for Ios
@@ -200,8 +200,8 @@ module Telnyx
         # Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG
         # scenarios.
         encode_contact_header_enabled: nil,
-        # Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-        # TLS.
+        # Enable use of SRTP for encryption. Can only be set when the SIP signaling
+        # transport protocol is TLS.
         encrypted_media: nil,
         inbound: nil,
         # The uuid of the push credential for Ios

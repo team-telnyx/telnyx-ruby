@@ -1,0 +1,86 @@
+module Telnyx
+  module Resources
+    class TtsIntegrations
+      attr_reader actions: Telnyx::Resources::TtsIntegrations::Actions
+
+      def create: (
+        capabilities: Telnyx::CommunityTtsEngineCapabilities,
+        name: String,
+        supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+        voices_url: String,
+        websocket_url: String,
+        ?connect_timeout_ms: Integer,
+        ?contact_email: String?,
+        ?data_retention_policy_url: String?,
+        ?documentation_url: String?,
+        ?visibility: Telnyx::Models::community_tts_engine_visibility,
+        ?voices_api_key_ref: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CommunityTtsEngine
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CommunityTtsEngine
+
+      def update: (
+        String id,
+        ?capabilities: Telnyx::CommunityTtsEngineCapabilities,
+        ?connect_timeout_ms: Integer,
+        ?contact_email: String?,
+        ?data_retention_policy_url: String?,
+        ?documentation_url: String?,
+        ?supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+        ?visibility: Telnyx::Models::community_tts_engine_visibility,
+        ?voices_api_key_ref: String?,
+        ?voices_url: String,
+        ?websocket_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CommunityTtsEngine
+
+      def list: (
+        ?page: Telnyx::TtsIntegrationListParams::Page,
+        ?status: Telnyx::Models::community_tts_engine_status,
+        ?visibility: Telnyx::Models::community_tts_engine_visibility,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TtsIntegrationListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def replace: (
+        String id,
+        ?capabilities: Telnyx::CommunityTtsEngineCapabilities,
+        ?connect_timeout_ms: Integer,
+        ?contact_email: String?,
+        ?data_retention_policy_url: String?,
+        ?documentation_url: String?,
+        ?supported_audio_formats: ::Array[Telnyx::Models::community_tts_audio_format],
+        ?visibility: Telnyx::Models::community_tts_engine_visibility,
+        ?voices_api_key_ref: String?,
+        ?voices_url: String,
+        ?websocket_url: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CommunityTtsEngine
+
+      def retrieve_conformance_runs: (
+        String id,
+        ?page: Telnyx::TtsIntegrationRetrieveConformanceRunsParams::Page,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TtsIntegrationRetrieveConformanceRunsResponse
+
+      def retrieve_discoverable: (
+        ?page: Telnyx::TtsIntegrationRetrieveDiscoverableParams::Page,
+        ?status: Telnyx::Models::community_tts_engine_status,
+        ?visibility: Telnyx::Models::community_tts_engine_visibility,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TtsIntegrationRetrieveDiscoverableResponse
+
+      def retrieve_voices: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TtsIntegrationRetrieveVoicesResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -22,6 +22,9 @@ module Telnyx
           # @return [Telnyx::Resources::Texml::Accounts::Calls::Streams]
           attr_reader :streams
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::CallRetrieveParams} for more details.
+          #
           # Returns an individual call identified by its CallSid. This endpoint is
           # eventually consistent.
           #
@@ -29,7 +32,7 @@ module Telnyx
           #
           # @param call_sid [String] The CallSid that identifies the call to update.
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -60,7 +63,7 @@ module Telnyx
           #
           # @param call_sid [String] Path param: The CallSid that identifies the call to update.
           #
-          # @param account_sid [String] Path param: The id of the account the resource belongs to.
+          # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
           #
           # @param fallback_method [Symbol, Telnyx::Models::Texml::Accounts::UpdateCall::FallbackMethod] Body param: HTTP request type used for `FallbackUrl`.
           #
@@ -99,12 +102,15 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::CallCallsParams} for more details.
+          #
           # Initiate an outbound TeXML call. Telnyx will request TeXML from the XML Request
-          # URL configured for the connection in the Mission Control Portal.
+          # URL configured for the TeXML Application in the Mission Control Portal.
           #
           # @overload calls(account_sid, body:, request_options: {})
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param body [Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithURL, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::WithTeXml, Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault]
           #
@@ -132,7 +138,7 @@ module Telnyx
           #
           # @overload retrieve_calls(account_sid, end_time: nil, end_time_lt: nil, end_time_gt: nil, from: nil, page: nil, page_size: nil, page_token: nil, start_time: nil, start_time_lt: nil, start_time_gt: nil, status: nil, to: nil, request_options: {})
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param end_time [String] Filters calls by their end date. Expected format is YYYY-MM-DD
           #
@@ -198,7 +204,7 @@ module Telnyx
           #
           # @param call_sid [String] Path param: The CallSid that identifies the call to update.
           #
-          # @param account_sid [String] Path param: The id of the account the resource belongs to.
+          # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
           #
           # @param connector_name [String] Body param: The name of the connector to use for the SIPREC session.
           #
@@ -248,7 +254,7 @@ module Telnyx
           #
           # @param call_sid [String] Path param: The CallSid that identifies the call to update.
           #
-          # @param account_sid [String] Path param: The id of the account the resource belongs to.
+          # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
           #
           # @param bidirectional_codec [Symbol, Telnyx::Models::Texml::Accounts::CallStreamsJsonParams::BidirectionalCodec] Body param: Indicates codec for bidirectional streaming RTP payloads. Used only
           #

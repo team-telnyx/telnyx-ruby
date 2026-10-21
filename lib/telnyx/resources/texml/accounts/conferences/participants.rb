@@ -7,6 +7,10 @@ module Telnyx
         class Conferences
           # TeXML REST Commands
           class Participants
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveParams} for
+            # more details.
+            #
             # Returns a single conference participant resource by call SID or participant
             # label.
             #
@@ -14,7 +18,7 @@ module Telnyx
             #
             # @param call_sid_or_participant_label [String] CallSid or Label of the Participant to update.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param conference_sid [String] The ConferenceSid that uniquely identifies a conference.
             #
@@ -57,7 +61,7 @@ module Telnyx
             #
             # @param call_sid_or_participant_label [String] Path param: CallSid or Label of the Participant to update.
             #
-            # @param account_sid [String] Path param: The id of the account the resource belongs to.
+            # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
             #
             # @param conference_sid [String] Path param: The ConferenceSid that uniquely identifies a conference.
             #
@@ -113,6 +117,10 @@ module Telnyx
               )
             end
 
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Conferences::ParticipantDeleteParams} for more
+            # details.
+            #
             # Removes the specified participant from the conference, ending their leg of the
             # call.
             #
@@ -120,7 +128,7 @@ module Telnyx
             #
             # @param call_sid_or_participant_label [String] CallSid or Label of the Participant to update.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param conference_sid [String] The ConferenceSid that uniquely identifies a conference.
             #
@@ -163,7 +171,7 @@ module Telnyx
             #
             # @param conference_sid [String] Path param: The ConferenceSid that uniquely identifies a conference.
             #
-            # @param account_sid [String] Path param: The id of the account the resource belongs to.
+            # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
             #
             # @param amd_status_callback [String] Body param: The URL the result of answering machine detection will be sent to.
             #
@@ -299,13 +307,17 @@ module Telnyx
               )
             end
 
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Conferences::ParticipantRetrieveParticipantsParams}
+            # for more details.
+            #
             # Returns the list of participants currently in the specified conference.
             #
             # @overload retrieve_participants(conference_sid, account_sid:, request_options: {})
             #
             # @param conference_sid [String] The ConferenceSid that uniquely identifies a conference.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #

@@ -104,7 +104,12 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(to:, auto_detect: nil, encoding: nil, from: nil, media_urls: nil, messaging_profile_id: nil, send_at: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!attribute idempotency_key
+      #
+      #   @return [String, nil]
+      optional :idempotency_key, String
+
+      # @!method initialize(to:, auto_detect: nil, encoding: nil, from: nil, media_urls: nil, messaging_profile_id: nil, send_at: nil, subject: nil, text: nil, type: nil, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, idempotency_key: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessageSendParams} for more details.
       #
@@ -133,6 +138,8 @@ module Telnyx
       #   @param webhook_failover_url [String] The failover URL where webhooks related to this message will be sent if sending
       #
       #   @param webhook_url [String] The URL where webhooks related to this message will be sent.
+      #
+      #   @param idempotency_key [String]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

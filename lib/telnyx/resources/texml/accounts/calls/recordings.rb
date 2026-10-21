@@ -7,13 +7,17 @@ module Telnyx
         class Calls
           # TeXML REST Commands
           class Recordings
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Calls::RecordingRecordingSidJsonParams} for
+            # more details.
+            #
             # Updates recording resource for particular call.
             #
             # @overload recording_sid_json(recording_sid, account_sid:, call_sid:, status: nil, request_options: {})
             #
             # @param recording_sid [String] Path param: Uniquely identifies the recording by id.
             #
-            # @param account_sid [String] Path param: The id of the account the resource belongs to.
+            # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
             #
             # @param call_sid [String] Path param: The CallSid that identifies the call to update.
             #

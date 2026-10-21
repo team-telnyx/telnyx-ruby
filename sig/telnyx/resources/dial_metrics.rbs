@@ -1,0 +1,17 @@
+module Telnyx
+  module Resources
+    class DialMetrics
+      def list: (
+        end_time: Time,
+        granularity: Telnyx::Models::DialMetricListParams::granularity,
+        start_time: Time,
+        ?page_after: String,
+        ?page_limit: Integer,
+        ?sort: Telnyx::Models::DialMetricListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::CloudfsCursorPagination[Telnyx::Models::DialMetricListResponse]
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end
