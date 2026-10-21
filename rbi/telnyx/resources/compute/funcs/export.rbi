@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Compute
       class Funcs
+        # Manage Edge Compute functions
         class Export
           # Configures the external OTLP endpoint a function's runtime and/or invocation
           # logs are pushed to as they happen. This operation is a **full replace, not a

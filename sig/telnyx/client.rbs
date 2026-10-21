@@ -402,6 +402,8 @@ module Telnyx
 
     attr_reader tts_integrations: Telnyx::Resources::TtsIntegrations
 
+    attr_reader tailscale_subnet_routers: Telnyx::Resources::TailscaleSubnetRouters
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

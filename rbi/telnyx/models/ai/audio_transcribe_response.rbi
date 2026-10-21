@@ -71,6 +71,9 @@ module Telnyx
         # return `text` and, depending on `model_config`, may include `words` with
         # per-word timestamps and speaker labels. The Parakeet models
         # (`nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`) return `text` only.
+        # `reson8/prerecorded` returns `text` and, in `verbose_json` mode, `duration` and
+        # `segments` with `words`; with `diarize`, one segment per speaker turn with
+        # speaker labels.
         sig do
           params(
             text: String,
@@ -150,9 +153,10 @@ module Telnyx
           sig { params(channel: Integer).void }
           attr_writer :channel
 
-          # Speaker indices heard in this segment. Returned by the `deepgram/*` models when
-          # `diarize` is enabled via `model_config`. With `multichannel`, speakers are
-          # numbered per channel from 0, so identify a speaker by (`channel`, speaker).
+          # Speaker indices heard in this segment. Returned by the `deepgram/*` models and
+          # `reson8/prerecorded` when `diarize` is enabled via `model_config`. With
+          # `multichannel`, speakers are numbered per channel from 0, so identify a speaker
+          # by (`channel`, speaker).
           sig { returns(T.nilable(T::Array[Integer])) }
           attr_reader :speakers
 
@@ -160,7 +164,8 @@ module Telnyx
           attr_writer :speakers
 
           # Word-level timing detail for this segment. Returned by the `deepgram/*` models
-          # when word-level output is enabled via `model_config`.
+          # when word-level output is enabled via `model_config`, and by
+          # `reson8/prerecorded`.
           sig do
             returns(
               T.nilable(T::Array[Telnyx::AI::AudioTranscriptionResponseWord])
@@ -202,12 +207,14 @@ module Telnyx
             # channel. Segments from all channels are merged in one list ordered by start
             # time.
             channel: nil,
-            # Speaker indices heard in this segment. Returned by the `deepgram/*` models when
-            # `diarize` is enabled via `model_config`. With `multichannel`, speakers are
-            # numbered per channel from 0, so identify a speaker by (`channel`, speaker).
+            # Speaker indices heard in this segment. Returned by the `deepgram/*` models and
+            # `reson8/prerecorded` when `diarize` is enabled via `model_config`. With
+            # `multichannel`, speakers are numbered per channel from 0, so identify a speaker
+            # by (`channel`, speaker).
             speakers: nil,
             # Word-level timing detail for this segment. Returned by the `deepgram/*` models
-            # when word-level output is enabled via `model_config`.
+            # when word-level output is enabled via `model_config`, and by
+            # `reson8/prerecorded`.
             words: nil
           )
           end

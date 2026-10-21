@@ -123,12 +123,23 @@ module Telnyx
         #   @return [String, nil]
         optional :prompt, String
 
+        # @!attribute remove_disfluencies
+        #   Available only for speechmatics/linden-1. When true, filler words such as "um"
+        #   and "uh" are removed from the transcript. Disfluency removal is supported only
+        #   for `ar`, `cmn`, `da`, `de`, `el`, `en`, `es`, `fr`, `he`, `hi`, `hu`, `it`,
+        #   `ja`, `nl`, `pl`, `pt`, and `ru`, determined by the base language (so `en-US`,
+        #   `en-GB`, `en-AU`, `cmn-Hans`, and `cmn-Hant` are supported); for other
+        #   languages, filler words remain in the transcript.
+        #
+        #   @return [Boolean, nil]
+        optional :remove_disfluencies, Telnyx::Internal::Type::Boolean
+
         # @!attribute smart_format
         #
         #   @return [Boolean, nil]
         optional :smart_format, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(context: nil, eager_eot_threshold: nil, enable_endpoint_detection: nil, end_of_turn_confidence_threshold: nil, eot_threshold: nil, eot_timeout_ms: nil, interim_results: nil, keyterm: nil, language_hints: nil, max_endpoint_delay_ms: nil, max_turn_silence: nil, min_turn_silence: nil, numerals: nil, prompt: nil, smart_format: nil)
+        # @!method initialize(context: nil, eager_eot_threshold: nil, enable_endpoint_detection: nil, end_of_turn_confidence_threshold: nil, eot_threshold: nil, eot_timeout_ms: nil, interim_results: nil, keyterm: nil, language_hints: nil, max_endpoint_delay_ms: nil, max_turn_silence: nil, min_turn_silence: nil, numerals: nil, prompt: nil, remove_disfluencies: nil, smart_format: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TranscriptionSettingsConfig} for more details.
         #
@@ -159,6 +170,8 @@ module Telnyx
         #   @param numerals [Boolean]
         #
         #   @param prompt [String] Available only for assemblyai/universal-3-5-pro (and its legacy alias assemblyai
+        #
+        #   @param remove_disfluencies [Boolean] Available only for speechmatics/linden-1. When true, filler words such as "um" a
         #
         #   @param smart_format [Boolean]
       end

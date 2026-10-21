@@ -3243,10 +3243,15 @@ Methods:
 
 # Compute
 
+Methods:
+
+- <code title="get /compute/actors/{id}">client.compute.<a href="./lib/telnyx/resources/compute.rb">retrieve</a>(\*\*params)</code>
+
 ## Funcs
 
 Methods:
 
+- <code title="get /compute/funcs">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">list</a>(\*\*params)</code>
 - <code title="get /compute/funcs/{id}/logs">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_logs</a>(\*\*params)</code>
 - <code title="get /compute/funcs/{id}/metric_aggregates">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_metric_aggregates</a>(\*\*params)</code>
 - <code title="get /compute/funcs/{id}/revisions">client.compute.funcs.<a href="./lib/telnyx/resources/compute/funcs.rb">retrieve_revisions</a>(\*\*params)</code>
@@ -3347,3 +3352,13 @@ Methods:
 Methods:
 
 - <code title="get /dial_metrics">client.dial_metrics.<a href="./lib/telnyx/resources/dial_metrics.rb">list</a>(\*\*params)</code>
+
+# TailscaleSubnetRouters
+
+Methods:
+
+- <code title="post /tailscale_subnet_routers">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">create</a>(\*\*params)</code>
+- <code title="get /tailscale_subnet_routers/{id}">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /tailscale_subnet_routers/{id}">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">update</a>(\*\*params)</code>
+- <code title="get /tailscale_subnet_routers">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">list</a>(\*\*params)</code>
+- <code title="delete /tailscale_subnet_routers/{id}">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">delete</a>(\*\*params)</code>

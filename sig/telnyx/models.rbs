@@ -365,6 +365,8 @@ module Telnyx
 
   module Compute = Telnyx::Models::Compute
 
+  class ComputeRetrieveParams = Telnyx::Models::ComputeRetrieveParams
+
   class Conference = Telnyx::Models::Conference
 
   class ConferenceCreated = Telnyx::Models::ConferenceCreated
@@ -1900,6 +1902,18 @@ module Telnyx
   class SuccessResponse = Telnyx::Models::SuccessResponse
 
   class SuppressedRecipient = Telnyx::Models::SuppressedRecipient
+
+  class TailscaleSubnetRouter = Telnyx::Models::TailscaleSubnetRouter
+
+  class TailscaleSubnetRouterCreateParams = Telnyx::Models::TailscaleSubnetRouterCreateParams
+
+  class TailscaleSubnetRouterDeleteParams = Telnyx::Models::TailscaleSubnetRouterDeleteParams
+
+  class TailscaleSubnetRouterListParams = Telnyx::Models::TailscaleSubnetRouterListParams
+
+  class TailscaleSubnetRouterRetrieveParams = Telnyx::Models::TailscaleSubnetRouterRetrieveParams
+
+  class TailscaleSubnetRouterUpdateParams = Telnyx::Models::TailscaleSubnetRouterUpdateParams
 
   class TelephonyCredential = Telnyx::Models::TelephonyCredential
 

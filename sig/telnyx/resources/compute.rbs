@@ -3,6 +3,11 @@ module Telnyx
     class Compute
       attr_reader funcs: Telnyx::Resources::Compute::Funcs
 
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::ComputeRetrieveResponse
+
       def initialize: (client: Telnyx::Client) -> void
     end
   end

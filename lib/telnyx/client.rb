@@ -735,6 +735,7 @@ module Telnyx
     # @return [Telnyx::Resources::ExternalRequirements]
     attr_reader :external_requirements
 
+    # Inspect Stateful Actor types
     # @return [Telnyx::Resources::Compute]
     attr_reader :compute
 
@@ -815,6 +816,10 @@ module Telnyx
 
     # @return [Telnyx::Resources::TtsIntegrations]
     attr_reader :tts_integrations
+
+    # Tailscale Subnet Router operations
+    # @return [Telnyx::Resources::TailscaleSubnetRouters]
+    attr_reader :tailscale_subnet_routers
 
     # @api private
     #
@@ -1118,6 +1123,7 @@ module Telnyx
       @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
       @dial_metrics = Telnyx::Resources::DialMetrics.new(client: self)
       @tts_integrations = Telnyx::Resources::TtsIntegrations.new(client: self)
+      @tailscale_subnet_routers = Telnyx::Resources::TailscaleSubnetRouters.new(client: self)
     end
   end
 end

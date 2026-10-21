@@ -55,7 +55,7 @@ module Telnyx
         attr_writer :speaker_confidence
 
         # Word-level timing detail. Only present when using a `deepgram/*` model with
-        # `model_config` options that enable word timestamps.
+        # `model_config` options that enable word timestamps, or `reson8/prerecorded`.
         sig do
           params(
             end_: Float,

@@ -4,13 +4,16 @@ module Telnyx
   module Resources
     # Look up phone number data
     class NumberLookup
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::NumberLookupRetrieveParams} for more details.
+      #
       # Returns information about the provided phone number.
       #
       # @overload retrieve(phone_number, type: nil, request_options: {})
       #
       # @param phone_number [String] The phone number to be looked up
       #
-      # @param type [Symbol, Telnyx::Models::NumberLookupRetrieveParams::Type] Specifies the type of number lookup to be performed
+      # @param type [Symbol, Telnyx::Models::NumberLookupRetrieveParams::Type] Specifies the type of number lookup to be performed. May be supplied more than o
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

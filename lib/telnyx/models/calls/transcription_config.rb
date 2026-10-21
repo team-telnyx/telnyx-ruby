@@ -25,7 +25,11 @@ module Telnyx
         #   detection, and the language codes `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`,
         #   `pt`, `es`, and `sv` to fix the transcription language. For `cohere/ar-stt`,
         #   supported values are `ar` and `en`; unlike other models, this model does not
-        #   auto-detect and defaults to `ar` when `language` is omitted.
+        #   auto-detect and defaults to `ar` when `language` is omitted. For
+        #   `speechmatics/linden-1`, there is no auto-detect; set a code from Speechmatics'
+        #   Realtime language list (see `SpeechmaticsTranscriptionLanguage`); unset defaults
+        #   to `en`, while an explicit `auto`, `auto_beta`, or `multi` is rejected (unlike
+        #   `speechmatics/standard`, which defaults to `en`).
         #
         #   @return [String, nil]
         optional :language, String
@@ -38,6 +42,9 @@ module Telnyx
         #   - `deepgram/nova-3` and `deepgram/nova-2` for live streaming transcription.
         #   - `speechmatics/standard` and `speechmatics/enhanced` for live streaming
         #     transcription.
+        #   - `speechmatics/linden-1` (preview, vendor-hosted) for live streaming
+        #     transcription; no auto-detect, so set `language` from Speechmatics' Realtime
+        #     language list (defaults to `en`).
         #   - `assemblyai/universal-3-5-pro` for live streaming transcription. The legacy
         #     alias `assemblyai/universal-streaming` is still accepted and resolves to the
         #     same model.
@@ -84,6 +91,9 @@ module Telnyx
         # - `deepgram/nova-3` and `deepgram/nova-2` for live streaming transcription.
         # - `speechmatics/standard` and `speechmatics/enhanced` for live streaming
         #   transcription.
+        # - `speechmatics/linden-1` (preview, vendor-hosted) for live streaming
+        #   transcription; no auto-detect, so set `language` from Speechmatics' Realtime
+        #   language list (defaults to `en`).
         # - `assemblyai/universal-3-5-pro` for live streaming transcription. The legacy
         #   alias `assemblyai/universal-streaming` is still accepted and resolves to the
         #   same model.
@@ -117,6 +127,7 @@ module Telnyx
           DEEPGRAM_NOVA_2 = :"deepgram/nova-2"
           SPEECHMATICS_STANDARD = :"speechmatics/standard"
           SPEECHMATICS_ENHANCED = :"speechmatics/enhanced"
+          SPEECHMATICS_LINDEN_1 = :"speechmatics/linden-1"
           ASSEMBLYAI_UNIVERSAL_3_5_PRO = :"assemblyai/universal-3-5-pro"
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"

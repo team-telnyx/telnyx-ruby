@@ -1,0 +1,41 @@
+module Telnyx
+  module Resources
+    class TailscaleSubnetRouters
+      def create: (
+        advertised_routes: ::Array[String],
+        auth_key: String,
+        name: String,
+        network_id: String,
+        region_code: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TailscaleSubnetRouterCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TailscaleSubnetRouterRetrieveResponse
+
+      def update: (
+        String id,
+        ?advertised_routes: ::Array[String],
+        ?auth_key: String,
+        ?name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TailscaleSubnetRouterUpdateResponse
+
+      def list: (
+        ?filter: Telnyx::TailscaleSubnetRouterListParams::Filter,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::TailscaleSubnetRouter]
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TailscaleSubnetRouterDeleteResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

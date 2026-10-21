@@ -17,6 +17,7 @@ module Telnyx
           min_turn_silence: Integer,
           numerals: bool,
           prompt: String,
+          remove_disfluencies: bool,
           smart_format: bool
         }
 
@@ -77,6 +78,10 @@ module Telnyx
 
         def prompt=: (String) -> String
 
+        attr_reader remove_disfluencies: bool?
+
+        def remove_disfluencies=: (bool) -> bool
+
         attr_reader smart_format: bool?
 
         def smart_format=: (bool) -> bool
@@ -96,6 +101,7 @@ module Telnyx
           ?min_turn_silence: Integer,
           ?numerals: bool,
           ?prompt: String,
+          ?remove_disfluencies: bool,
           ?smart_format: bool
         ) -> void
 
@@ -114,6 +120,7 @@ module Telnyx
           min_turn_silence: Integer,
           numerals: bool,
           prompt: String,
+          remove_disfluencies: bool,
           smart_format: bool
         }
       end

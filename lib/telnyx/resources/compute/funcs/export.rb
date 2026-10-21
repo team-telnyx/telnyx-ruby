@@ -4,6 +4,7 @@ module Telnyx
   module Resources
     class Compute
       class Funcs
+        # Manage Edge Compute functions
         class Export
           # Some parameter documentations has been truncated, see
           # {Telnyx::Models::Compute::Funcs::ExportCreateParams} for more details.
