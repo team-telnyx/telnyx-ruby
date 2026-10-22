@@ -36,7 +36,7 @@ jobs:
     needs: classify-production-ci
     timeout-minutes: 10
     name: lint (rubocop)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: needs.classify-production-ci.outputs.run_full == 'true'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -63,7 +63,7 @@ jobs:
     needs: classify-production-ci
     timeout-minutes: 60
     name: lint (steep)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: needs.classify-production-ci.outputs.run_full == 'true'
     permissions:
       actions: write
@@ -105,7 +105,7 @@ jobs:
     needs: classify-production-ci
     timeout-minutes: 20
     name: lint (sorbet)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: needs.classify-production-ci.outputs.run_full == 'true'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -122,7 +122,7 @@ jobs:
     needs: classify-production-ci
     timeout-minutes: 10
     name: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: needs.classify-production-ci.outputs.run_full == 'true'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2

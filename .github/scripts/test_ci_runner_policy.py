@@ -17,6 +17,20 @@ class CiRunnerPolicyTest(unittest.TestCase):
     def setUp(self) -> None:
         self.workflow = WORKFLOW.read_text()
 
+    def test_ruby_jobs_use_supported_hosted_image(self) -> None:
+        # Inspect actual job blocks, including the conditional fork-safe path.
+        import re
+
+        jobs = re.split(r"(?m)^  ([\w-]+):\n", self.workflow.split("jobs:\n", 1)[1])
+        ruby_jobs = 0
+        for index in range(1, len(jobs), 2):
+            name, body = jobs[index:index + 2]
+            if "uses: ruby/setup-ruby@" in body:
+                ruby_jobs += 1
+                with self.subTest(job=name):
+                    self.assertRegex(body, r"(?m)^    runs-on: ubuntu-24\.04$")
+        self.assertEqual(ruby_jobs, 4)
+
     def test_production_steep_has_one_pr_facing_check_and_no_skipped_worker_rows(self) -> None:
         self.assertNotIn("  lint-steep-shards:\n", self.workflow)
         self.assertNotIn("  lint-steep-worker:\n", self.workflow)
@@ -29,7 +43,7 @@ class CiRunnerPolicyTest(unittest.TestCase):
     def test_aggregator_preserves_required_check_name_and_fails_closed(self) -> None:
         steep = job_block(self.workflow, "lint-steep", "lint-sorbet")
         self.assertIn("name: lint (steep)", steep)
-        self.assertIn("runs-on: ubuntu-latest", steep)
+        self.assertIn("runs-on: ubuntu-24.04", steep)
         self.assertIn("needs: classify-production-ci", steep)
         self.assertIn("if: needs.classify-production-ci.outputs.run_full == 'true'", steep)
         self.assertNotIn("lint-steep-staging", steep)
