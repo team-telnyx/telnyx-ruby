@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::Texml::AccountsTest < Telnyx::Test::ResourceTest
   def test_retrieve_recordings_json
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.retrieve_recordings_json("account_sid")
+    response = @telnyx.texml.accounts.retrieve_recordings_json("f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::Calls::TexmlGetCallRecordingsResponseBody
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Texml::AccountsTest < Telnyx::Test::ResourceTest
   def test_retrieve_transcriptions_json
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.retrieve_transcriptions_json("account_sid")
+    response = @telnyx.texml.accounts.retrieve_transcriptions_json("f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonResponse

@@ -418,6 +418,9 @@ module Telnyx
       module Transcriptions
       end
 
+      module TtsIntegrations
+      end
+
       module Typesafe
       end
 

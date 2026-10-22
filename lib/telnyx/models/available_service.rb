@@ -7,6 +7,7 @@ module Telnyx
 
       CLOUD_VPN = :cloud_vpn
       PRIVATE_WIRELESS_GATEWAY = :private_wireless_gateway
+      TAILSCALE_SUBNET_ROUTER = :tailscale_subnet_router
       VIRTUAL_CROSS_CONNECT = :virtual_cross_connect
 
       # @!method self.values

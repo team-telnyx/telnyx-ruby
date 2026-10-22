@@ -1,0 +1,192 @@
+module Telnyx
+  module Models
+    module Compute
+      type func_list_response =
+        {
+          id: String,
+          bindings: ::Array[Telnyx::Models::Compute::FuncListResponse::Binding],
+          created_at: String,
+          invoke_url: String,
+          message: String,
+          name: String,
+          record_type: String,
+          status: String,
+          status_detail: String,
+          updated_at: String
+        }
+
+      class FuncListResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader bindings: ::Array[Telnyx::Models::Compute::FuncListResponse::Binding]?
+
+        def bindings=: (
+          ::Array[Telnyx::Models::Compute::FuncListResponse::Binding]
+        ) -> ::Array[Telnyx::Models::Compute::FuncListResponse::Binding]
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader invoke_url: String?
+
+        def invoke_url=: (String) -> String
+
+        attr_reader message: String?
+
+        def message=: (String) -> String
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader status_detail: String?
+
+        def status_detail=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?bindings: ::Array[Telnyx::Models::Compute::FuncListResponse::Binding],
+          ?created_at: String,
+          ?invoke_url: String,
+          ?message: String,
+          ?name: String,
+          ?record_type: String,
+          ?status: String,
+          ?status_detail: String,
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          bindings: ::Array[Telnyx::Models::Compute::FuncListResponse::Binding],
+          created_at: String,
+          invoke_url: String,
+          message: String,
+          name: String,
+          record_type: String,
+          status: String,
+          status_detail: String,
+          updated_at: String
+        }
+
+        type binding_ =
+          {
+            actor_type: String,
+            binding_id: String,
+            binding_type: String,
+            bucket_id: String,
+            created_at: String,
+            env_name: String,
+            func_id: String,
+            kv_id: String,
+            record_type: String,
+            secret_name: String,
+            sqldb_id: String,
+            status: String,
+            updated_at: String
+          }
+
+        class Binding < Telnyx::Internal::Type::BaseModel
+          attr_reader actor_type: String?
+
+          def actor_type=: (String) -> String
+
+          attr_reader binding_id: String?
+
+          def binding_id=: (String) -> String
+
+          attr_reader binding_type: String?
+
+          def binding_type=: (String) -> String
+
+          attr_reader bucket_id: String?
+
+          def bucket_id=: (String) -> String
+
+          attr_reader created_at: String?
+
+          def created_at=: (String) -> String
+
+          attr_reader env_name: String?
+
+          def env_name=: (String) -> String
+
+          attr_reader func_id: String?
+
+          def func_id=: (String) -> String
+
+          attr_reader kv_id: String?
+
+          def kv_id=: (String) -> String
+
+          attr_reader record_type: String?
+
+          def record_type=: (String) -> String
+
+          attr_reader secret_name: String?
+
+          def secret_name=: (String) -> String
+
+          attr_reader sqldb_id: String?
+
+          def sqldb_id=: (String) -> String
+
+          attr_reader status: String?
+
+          def status=: (String) -> String
+
+          attr_reader updated_at: String?
+
+          def updated_at=: (String) -> String
+
+          def initialize: (
+            ?actor_type: String,
+            ?binding_id: String,
+            ?binding_type: String,
+            ?bucket_id: String,
+            ?created_at: String,
+            ?env_name: String,
+            ?func_id: String,
+            ?kv_id: String,
+            ?record_type: String,
+            ?secret_name: String,
+            ?sqldb_id: String,
+            ?status: String,
+            ?updated_at: String
+          ) -> void
+
+          def to_hash: -> {
+            actor_type: String,
+            binding_id: String,
+            binding_type: String,
+            bucket_id: String,
+            created_at: String,
+            env_name: String,
+            func_id: String,
+            kv_id: String,
+            record_type: String,
+            secret_name: String,
+            sqldb_id: String,
+            status: String,
+            updated_at: String
+          }
+        end
+      end
+    end
+  end
+end

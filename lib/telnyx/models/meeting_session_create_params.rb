@@ -22,12 +22,6 @@ module Telnyx
       #   @return [Telnyx::Models::MeetingSessionCreateParams::Assistant, nil]
       optional :assistant, -> { Telnyx::MeetingSessionCreateParams::Assistant }
 
-      # @!attribute avatar
-      #   Request options for attaching a bring-your-own-key avatar to the session.
-      #
-      #   @return [Telnyx::Models::MeetingSessionCreateParams::Avatar, nil]
-      optional :avatar, -> { Telnyx::MeetingSessionCreateParams::Avatar }
-
       # @!attribute barge_in
       #   When enabled, a human participant `speech_on` event interrupts and stops the
       #   current bot audio; it does not bypass admission or initiate speech. Assistant
@@ -90,6 +84,7 @@ module Telnyx
       #   is attached**: the value is accepted and echoed back on the session, but the
       #   assistant owns the voice and the line is never delivered, with no event
       #   reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
+      #   Rejected with 400 `invalid_request` when `assistant.avatar` is `true`.
       #
       #   @return [String, nil]
       optional :speak_on_enter, String
@@ -116,15 +111,13 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String
 
-      # @!method initialize(meeting_url:, assistant: nil, avatar: nil, barge_in: nil, bot_name: nil, camera_image: nil, chat_on_enter: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(meeting_url:, assistant: nil, barge_in: nil, bot_name: nil, camera_image: nil, chat_on_enter: nil, idempotency_key: nil, join_at: nil, metadata: nil, speak_on_enter: nil, summarize_on_end: nil, voice: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MeetingSessionCreateParams} for more details.
       #
       #   @param meeting_url [String] The meeting URL the bot should join.
       #
       #   @param assistant [Telnyx::Models::MeetingSessionCreateParams::Assistant] Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the Meet
-      #
-      #   @param avatar [Telnyx::Models::MeetingSessionCreateParams::Avatar] Request options for attaching a bring-your-own-key avatar to the session.
       #
       #   @param barge_in [Boolean] When enabled, a human participant `speech_on` event interrupts and stops the cur
       #
@@ -169,6 +162,21 @@ module Telnyx
         #   @return [Symbol, Telnyx::Models::MeetingSessionCreateParams::Assistant::AudioGate, nil]
         optional :audio_gate, enum: -> { Telnyx::MeetingSessionCreateParams::Assistant::AudioGate }
 
+        # @!attribute avatar
+        #   Beta. Show the avatar configured on the assistant (its `avatar_settings`; see
+        #   [AI Assistant avatars](/docs/inference/ai-assistants/avatars)) as the bot's
+        #   camera, lip-synced to the assistant's own speech. The request carries no avatar
+        #   ID or key: the assistant is read at creation and the request is rejected with
+        #   400 `invalid_request` if it has no Telnyx avatar configured. Supported on Google
+        #   Meet, Zoom, Microsoft Teams and Webex; other platforms return 422
+        #   `unsupported_capability`. REST-only. Not echoed back on `assistant`; the
+        #   session's top-level `avatar` and `avatar_state` fields report it instead. If the
+        #   avatar fails, the session continues voice-only and `avatar_state` becomes
+        #   `degraded`.
+        #
+        #   @return [Boolean, nil]
+        optional :avatar, Telnyx::Internal::Type::Boolean
+
         # @!attribute dynamic_variables
         #   Per-conversation values for the
         #   [dynamic variables](/docs/inference/ai-assistants/dynamic-variables) used in the
@@ -194,7 +202,7 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :leave_on_end, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(id:, audio_gate: nil, dynamic_variables: nil, leave_on_end: nil)
+        # @!method initialize(id:, audio_gate: nil, avatar: nil, dynamic_variables: nil, leave_on_end: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MeetingSessionCreateParams::Assistant} for more details.
         #
@@ -206,6 +214,8 @@ module Telnyx
         #   @param id [String] Identifier of the assistant to attach.
         #
         #   @param audio_gate [Symbol, Telnyx::Models::MeetingSessionCreateParams::Assistant::AudioGate] Audio gating strategy for the assistant call leg. `half_duplex` (default) sends
+        #
+        #   @param avatar [Boolean] Beta. Show the avatar configured on the assistant (its `avatar_settings`; see [A
         #
         #   @param dynamic_variables [Hash{Symbol=>String}] Per-conversation values for the [dynamic variables](/docs/inference/ai-assistant
         #
@@ -228,41 +238,6 @@ module Telnyx
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      class Avatar < Telnyx::Internal::Type::BaseModel
-        # @!attribute avatar_id
-        #   Identifier of the avatar to use.
-        #
-        #   @return [String]
-        required :avatar_id, String
-
-        # @!attribute provider
-        #   Avatar provider identifier. Currently only "anam" is supported.
-        #
-        #   @return [Symbol, :anam]
-        required :provider, const: :anam
-
-        request_only do
-          # @!attribute api_key
-          #   Bring-your-own-key API key for the avatar provider. The key is never stored or
-          #   returned by the API.
-          #
-          #   @return [String]
-          required :api_key, String
-        end
-
-        # @!method initialize(api_key:, avatar_id:, provider: :anam)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::MeetingSessionCreateParams::Avatar} for more details.
-        #
-        #   Request options for attaching a bring-your-own-key avatar to the session.
-        #
-        #   @param api_key [String] Bring-your-own-key API key for the avatar provider. The key is never stored or r
-        #
-        #   @param avatar_id [String] Identifier of the avatar to use.
-        #
-        #   @param provider [Symbol, :anam] Avatar provider identifier. Currently only "anam" is supported.
       end
 
       # Write-only static camera-tile image for this session, not a native account or

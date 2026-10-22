@@ -53,7 +53,7 @@ module Telnyx
         #   {Telnyx::Models::AI::AudioTranscriptionResponseWord} for more details.
         #
         #   Word-level timing detail. Only present when using a `deepgram/*` model with
-        #   `model_config` options that enable word timestamps.
+        #   `model_config` options that enable word timestamps, or `reson8/prerecorded`.
         #
         #   @param end_ [Float] End time of the word in seconds.
         #

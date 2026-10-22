@@ -2,10 +2,324 @@ module Telnyx
   module Models
     module Calls
       type transcription_engine_deepgram_config =
-        Telnyx::Calls::DeepgramNova2Config | Telnyx::Calls::DeepgramNova3Config
+        Telnyx::Calls::DeepgramNova2Config
+        | Telnyx::Calls::DeepgramNova3Config
+        | Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Medical
+        | Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux
+        | Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti
+        | Telnyx::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig
 
       module TranscriptionEngineDeepgramConfig
         extend Telnyx::Internal::Type::Union
+
+        type deepgram_nova2_specialty_config =
+          {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_engine,
+            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_model,
+            hints: ::Array[String],
+            interim_results: bool,
+            keywords_boosting: ::Hash[Symbol, Float],
+            language: Telnyx::Models::Calls::deepgram_english_transcription_language,
+            smart_format: bool,
+            utterance_end_ms: Integer
+          }
+
+        class DeepgramNova2SpecialtyConfig < Telnyx::Internal::Type::BaseModel
+          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_engine
+
+          attr_accessor transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_model
+
+          attr_reader hints: ::Array[String]?
+
+          def hints=: (::Array[String]) -> ::Array[String]
+
+          attr_reader interim_results: bool?
+
+          def interim_results=: (bool) -> bool
+
+          attr_reader keywords_boosting: ::Hash[Symbol, Float]?
+
+          def keywords_boosting=: (
+            ::Hash[Symbol, Float]
+          ) -> ::Hash[Symbol, Float]
+
+          attr_reader language: Telnyx::Models::Calls::deepgram_english_transcription_language?
+
+          def language=: (
+            Telnyx::Models::Calls::deepgram_english_transcription_language
+          ) -> Telnyx::Models::Calls::deepgram_english_transcription_language
+
+          attr_reader smart_format: bool?
+
+          def smart_format=: (bool) -> bool
+
+          attr_reader utterance_end_ms: Integer?
+
+          def utterance_end_ms=: (Integer) -> Integer
+
+          def initialize: (
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_engine,
+            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_model,
+            ?hints: ::Array[String],
+            ?interim_results: bool,
+            ?keywords_boosting: ::Hash[Symbol, Float],
+            ?language: Telnyx::Models::Calls::deepgram_english_transcription_language,
+            ?smart_format: bool,
+            ?utterance_end_ms: Integer
+          ) -> void
+
+          def to_hash: -> {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_engine,
+            transcription_model: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_model,
+            hints: ::Array[String],
+            interim_results: bool,
+            keywords_boosting: ::Hash[Symbol, Float],
+            language: Telnyx::Models::Calls::deepgram_english_transcription_language,
+            smart_format: bool,
+            utterance_end_ms: Integer
+          }
+
+          type transcription_engine = :Deepgram
+
+          module TranscriptionEngine
+            extend Telnyx::Internal::Type::Enum
+
+            DEEPGRAM: :Deepgram
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_engine]
+          end
+
+          type transcription_model =
+            :"deepgram/nova-2-medical" | :"deepgram/nova-2-phonecall"
+
+          module TranscriptionModel
+            extend Telnyx::Internal::Type::Enum
+
+            DEEPGRAM_NOVA_2_MEDICAL: :"deepgram/nova-2-medical"
+            DEEPGRAM_NOVA_2_PHONECALL: :"deepgram/nova-2-phonecall"
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova2SpecialtyConfig::transcription_model]
+          end
+        end
+
+        type deepgram_nova3_medical =
+          {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Medical::transcription_engine,
+            transcription_model: :"deepgram/nova-3-medical",
+            interim_results: bool,
+            keyterms: ::Array[String],
+            keywords_boosting: ::Hash[Symbol, Float],
+            language: Telnyx::Models::Calls::deepgram_english_transcription_language,
+            smart_format: bool,
+            utterance_end_ms: Integer
+          }
+
+        class DeepgramNova3Medical < Telnyx::Internal::Type::BaseModel
+          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Medical::transcription_engine
+
+          attr_accessor transcription_model: :"deepgram/nova-3-medical"
+
+          attr_reader interim_results: bool?
+
+          def interim_results=: (bool) -> bool
+
+          attr_reader keyterms: ::Array[String]?
+
+          def keyterms=: (::Array[String]) -> ::Array[String]
+
+          attr_reader keywords_boosting: ::Hash[Symbol, Float]?
+
+          def keywords_boosting=: (
+            ::Hash[Symbol, Float]
+          ) -> ::Hash[Symbol, Float]
+
+          attr_reader language: Telnyx::Models::Calls::deepgram_english_transcription_language?
+
+          def language=: (
+            Telnyx::Models::Calls::deepgram_english_transcription_language
+          ) -> Telnyx::Models::Calls::deepgram_english_transcription_language
+
+          attr_reader smart_format: bool?
+
+          def smart_format=: (bool) -> bool
+
+          attr_reader utterance_end_ms: Integer?
+
+          def utterance_end_ms=: (Integer) -> Integer
+
+          def initialize: (
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Medical::transcription_engine,
+            ?interim_results: bool,
+            ?keyterms: ::Array[String],
+            ?keywords_boosting: ::Hash[Symbol, Float],
+            ?language: Telnyx::Models::Calls::deepgram_english_transcription_language,
+            ?smart_format: bool,
+            ?utterance_end_ms: Integer,
+            ?transcription_model: :"deepgram/nova-3-medical"
+          ) -> void
+
+          def to_hash: -> {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Medical::transcription_engine,
+            transcription_model: :"deepgram/nova-3-medical",
+            interim_results: bool,
+            keyterms: ::Array[String],
+            keywords_boosting: ::Hash[Symbol, Float],
+            language: Telnyx::Models::Calls::deepgram_english_transcription_language,
+            smart_format: bool,
+            utterance_end_ms: Integer
+          }
+
+          type transcription_engine = :Deepgram
+
+          module TranscriptionEngine
+            extend Telnyx::Internal::Type::Enum
+
+            DEEPGRAM: :Deepgram
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramNova3Medical::transcription_engine]
+          end
+        end
+
+        type deepgram_flux =
+          {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::transcription_engine,
+            transcription_model: :"deepgram/flux",
+            interim_results: bool,
+            keyterms: ::Array[String],
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::language
+          }
+
+        class DeepgramFlux < Telnyx::Internal::Type::BaseModel
+          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::transcription_engine
+
+          attr_accessor transcription_model: :"deepgram/flux"
+
+          attr_reader interim_results: bool?
+
+          def interim_results=: (bool) -> bool
+
+          attr_reader keyterms: ::Array[String]?
+
+          def keyterms=: (::Array[String]) -> ::Array[String]
+
+          attr_reader language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::language?
+
+          def language=: (
+            Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::language
+          ) -> Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::language
+
+          def initialize: (
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::transcription_engine,
+            ?interim_results: bool,
+            ?keyterms: ::Array[String],
+            ?language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::language,
+            ?transcription_model: :"deepgram/flux"
+          ) -> void
+
+          def to_hash: -> {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::transcription_engine,
+            transcription_model: :"deepgram/flux",
+            interim_results: bool,
+            keyterms: ::Array[String],
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::language
+          }
+
+          type transcription_engine = :Deepgram
+
+          module TranscriptionEngine
+            extend Telnyx::Internal::Type::Enum
+
+            DEEPGRAM: :Deepgram
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::transcription_engine]
+          end
+
+          type language = :en
+
+          module Language
+            extend Telnyx::Internal::Type::Enum
+
+            EN: :en
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFlux::language]
+          end
+        end
+
+        type deepgram_flux_multi =
+          {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::transcription_engine,
+            transcription_model: :"deepgram/flux-multi",
+            interim_results: bool,
+            keyterms: ::Array[String],
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::language
+          }
+
+        class DeepgramFluxMulti < Telnyx::Internal::Type::BaseModel
+          attr_accessor transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::transcription_engine
+
+          attr_accessor transcription_model: :"deepgram/flux-multi"
+
+          attr_reader interim_results: bool?
+
+          def interim_results=: (bool) -> bool
+
+          attr_reader keyterms: ::Array[String]?
+
+          def keyterms=: (::Array[String]) -> ::Array[String]
+
+          attr_reader language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::language?
+
+          def language=: (
+            Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::language
+          ) -> Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::language
+
+          def initialize: (
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::transcription_engine,
+            ?interim_results: bool,
+            ?keyterms: ::Array[String],
+            ?language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::language,
+            ?transcription_model: :"deepgram/flux-multi"
+          ) -> void
+
+          def to_hash: -> {
+            transcription_engine: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::transcription_engine,
+            transcription_model: :"deepgram/flux-multi",
+            interim_results: bool,
+            keyterms: ::Array[String],
+            language: Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::language
+          }
+
+          type transcription_engine = :Deepgram
+
+          module TranscriptionEngine
+            extend Telnyx::Internal::Type::Enum
+
+            DEEPGRAM: :Deepgram
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::transcription_engine]
+          end
+
+          type language =
+            :en | :es | :fr | :de | :hi | :ru | :pt | :ja | :it | :nl | :auto
+
+          module Language
+            extend Telnyx::Internal::Type::Enum
+
+            EN: :en
+            ES: :es
+            FR: :fr
+            DE: :de
+            HI: :hi
+            RU: :ru
+            PT: :pt
+            JA: :ja
+            IT: :it
+            NL: :nl
+            AUTO: :auto
+
+            def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineDeepgramConfig::DeepgramFluxMulti::language]
+          end
+        end
 
         def self?.variants: -> ::Array[Telnyx::Models::Calls::transcription_engine_deepgram_config]
       end

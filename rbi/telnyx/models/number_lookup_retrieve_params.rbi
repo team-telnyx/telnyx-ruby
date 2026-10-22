@@ -14,7 +14,10 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :phone_number
 
-      # Specifies the type of number lookup to be performed
+      # Specifies the type of number lookup to be performed. May be supplied more than
+      # once to request several data sources in a single call (for example,
+      # `?type=carrier&type=enhanced-caller-name`). Each requested type populates the
+      # corresponding object in the response.
       sig do
         returns(T.nilable(Telnyx::NumberLookupRetrieveParams::Type::OrSymbol))
       end
@@ -34,7 +37,10 @@ module Telnyx
       end
       def self.new(
         phone_number:,
-        # Specifies the type of number lookup to be performed
+        # Specifies the type of number lookup to be performed. May be supplied more than
+        # once to request several data sources in a single call (for example,
+        # `?type=carrier&type=enhanced-caller-name`). Each requested type populates the
+        # corresponding object in the response.
         type: nil,
         request_options: {}
       )
@@ -52,7 +58,10 @@ module Telnyx
       def to_hash
       end
 
-      # Specifies the type of number lookup to be performed
+      # Specifies the type of number lookup to be performed. May be supplied more than
+      # once to request several data sources in a single call (for example,
+      # `?type=carrier&type=enhanced-caller-name`). Each requested type populates the
+      # corresponding object in the response.
       module Type
         extend Telnyx::Internal::Type::Enum
 
@@ -70,6 +79,16 @@ module Telnyx
         CALLER_NAME =
           T.let(
             :"caller-name",
+            Telnyx::NumberLookupRetrieveParams::Type::TaggedSymbol
+          )
+        CALLER_IDENTITY =
+          T.let(
+            :"caller-identity",
+            Telnyx::NumberLookupRetrieveParams::Type::TaggedSymbol
+          )
+        ENHANCED_CALLER_NAME =
+          T.let(
+            :"enhanced-caller-name",
             Telnyx::NumberLookupRetrieveParams::Type::TaggedSymbol
           )
 

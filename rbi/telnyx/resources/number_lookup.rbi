@@ -15,7 +15,10 @@ module Telnyx
       def retrieve(
         # The phone number to be looked up
         phone_number,
-        # Specifies the type of number lookup to be performed
+        # Specifies the type of number lookup to be performed. May be supplied more than
+        # once to request several data sources in a single call (for example,
+        # `?type=carrier&type=enhanced-caller-name`). Each requested type populates the
+        # corresponding object in the response.
         type: nil,
         request_options: {}
       )

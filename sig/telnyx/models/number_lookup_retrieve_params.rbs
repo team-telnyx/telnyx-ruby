@@ -31,13 +31,16 @@ module Telnyx
         request_options: Telnyx::RequestOptions
       }
 
-      type type_ = :carrier | :"caller-name"
+      type type_ =
+        :carrier | :"caller-name" | :"caller-identity" | :"enhanced-caller-name"
 
       module Type
         extend Telnyx::Internal::Type::Enum
 
         CARRIER: :carrier
         CALLER_NAME: :"caller-name"
+        CALLER_IDENTITY: :"caller-identity"
+        ENHANCED_CALLER_NAME: :"enhanced-caller-name"
 
         def self?.values: -> ::Array[Telnyx::Models::NumberLookupRetrieveParams::type_]
       end

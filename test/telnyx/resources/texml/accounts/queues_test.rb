@@ -6,7 +6,7 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
   def test_create
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.queues.create("account_sid")
+    response = @telnyx.texml.accounts.queues.create("f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::QueueResource
@@ -30,7 +30,8 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
   def test_retrieve_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.queues.retrieve("queue_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.queues.retrieve("queue_sid", account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::QueueResource
@@ -54,7 +55,8 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
   def test_update_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.queues.update("queue_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.queues.update("queue_sid", account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::QueueResource
@@ -78,7 +80,7 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
   def test_list
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.queues.list("account_sid")
+    response = @telnyx.texml.accounts.queues.list("f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Internal::DefaultPaginationForQueues
@@ -109,7 +111,8 @@ class Telnyx::Test::Resources::Texml::Accounts::QueuesTest < Telnyx::Test::Resou
   def test_delete_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.queues.delete("queue_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.queues.delete("queue_sid", account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => nil

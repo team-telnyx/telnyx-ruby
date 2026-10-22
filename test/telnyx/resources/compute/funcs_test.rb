@@ -3,6 +3,38 @@
 require_relative "../../test_helper"
 
 class Telnyx::Test::Resources::Compute::FuncsTest < Telnyx::Test::ResourceTest
+  def test_list
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.compute.funcs.list
+
+    assert_pattern do
+      response => Telnyx::Internal::DefaultFlatPagination
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Telnyx::Models::Compute::FuncListResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String | nil,
+        bindings: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Compute::FuncListResponse::Binding]) | nil,
+        created_at: String | nil,
+        invoke_url: String | nil,
+        message: String | nil,
+        name: String | nil,
+        record_type: String | nil,
+        status: String | nil,
+        status_detail: String | nil,
+        updated_at: String | nil
+      }
+    end
+  end
+
   def test_retrieve_logs
     skip("Mock server tests are disabled")
 

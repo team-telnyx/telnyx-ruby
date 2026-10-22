@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Recordings::JsonTest < Telnyx::T
     response =
       @telnyx.texml.accounts.recordings.json.delete_recording_sid_json(
         "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
-        account_sid: "account_sid"
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
       )
 
     assert_pattern do
@@ -23,7 +23,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Recordings::JsonTest < Telnyx::T
     response =
       @telnyx.texml.accounts.recordings.json.retrieve_recording_sid_json(
         "6a09cdc3-8948-47f0-aa62-74ac943d6c58",
-        account_sid: "account_sid"
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
       )
 
     assert_pattern do

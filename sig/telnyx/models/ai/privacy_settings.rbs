@@ -2,7 +2,11 @@ module Telnyx
   module Models
     module AI
       type privacy_settings =
-        { data_retention: bool, in_transit_data_locality: bool }
+        {
+          data_retention: bool,
+          in_transit_data_locality: bool,
+          pii_redaction: Telnyx::Models::AI::PrivacySettings::pii_redaction
+        }
 
       class PrivacySettings < Telnyx::Internal::Type::BaseModel
         attr_reader data_retention: bool?
@@ -13,12 +17,34 @@ module Telnyx
 
         def in_transit_data_locality=: (bool) -> bool
 
+        attr_reader pii_redaction: Telnyx::Models::AI::PrivacySettings::pii_redaction?
+
+        def pii_redaction=: (
+          Telnyx::Models::AI::PrivacySettings::pii_redaction
+        ) -> Telnyx::Models::AI::PrivacySettings::pii_redaction
+
         def initialize: (
           ?data_retention: bool,
-          ?in_transit_data_locality: bool
+          ?in_transit_data_locality: bool,
+          ?pii_redaction: Telnyx::Models::AI::PrivacySettings::pii_redaction
         ) -> void
 
-        def to_hash: -> { data_retention: bool, in_transit_data_locality: bool }
+        def to_hash: -> {
+          data_retention: bool,
+          in_transit_data_locality: bool,
+          pii_redaction: Telnyx::Models::AI::PrivacySettings::pii_redaction
+        }
+
+        type pii_redaction = :disabled | :redact
+
+        module PiiRedaction
+          extend Telnyx::Internal::Type::Enum
+
+          DISABLED: :disabled
+          REDACT: :redact
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::PrivacySettings::pii_redaction]
+        end
       end
     end
   end

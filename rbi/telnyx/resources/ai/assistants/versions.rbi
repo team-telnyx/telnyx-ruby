@@ -77,6 +77,7 @@ module Telnyx
                     Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                     Telnyx::AI::AssistantTool::SendMessage::OrHash,
                     Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                    Telnyx::AI::AssistantTool::Vision::OrHash,
                     Telnyx::AI::AssistantTool::Pay::OrHash,
                     Telnyx::AI::AssistantTool::UpdateDynamicVariables::OrHash
                   )
@@ -107,8 +108,9 @@ module Telnyx
             # all.
             a2a_agents: nil,
             # Body param: **Beta:** Configuration for the Telnyx open-source avatar provider.
-            # The launch catalog supports six avatars and office, studio, or reception
-            # backgrounds.
+            # Use a stock avatar or an organization-owned custom avatar returned by the
+            # Avatars API. Discover the available stock catalog with GET /v2/ai/avatars and
+            # filter[avatar_type]=stock; follow meta.total_pages to load every page.
             avatar_settings: nil,
             # Body param: Conversation flow as supplied by API clients (create / update).
             #
@@ -246,7 +248,10 @@ module Telnyx
           end
 
           # Retrieves all versions of a specific assistant with complete configuration and
-          # metadata
+          # metadata. An assistant keeps at most 10 versions, including the main version.
+          # When an update takes it past that limit, the oldest versions are permanently
+          # deleted. The main version and any version referenced by a traffic distribution
+          # rule are never deleted this way.
           sig do
             params(
               assistant_id: String,

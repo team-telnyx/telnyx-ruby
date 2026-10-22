@@ -41,7 +41,12 @@ module Telnyx
         optional :connection_id, String
 
         # @!attribute customer_reference
-        #   A customer reference string for customer look ups.
+        #   Sets the customer reference on the selected phone numbers and retains the
+        #   supplied value on the job. Recover the job without its ID using GET
+        #   /phone_numbers/jobs with filter[customer_reference] within 90 days of job
+        #   creation. This body field updates the numbers; the separate
+        #   filter[customer_reference] query parameter selects numbers by their current
+        #   reference.
         #
         #   @return [String, nil]
         optional :customer_reference, String
@@ -94,7 +99,7 @@ module Telnyx
         #
         #   @param connection_id [String] Identifies the connection associated with the phone number.
         #
-        #   @param customer_reference [String] A customer reference string for customer look ups.
+        #   @param customer_reference [String] Sets the customer reference on the selected phone numbers and retains the suppli
         #
         #   @param deletion_lock_enabled [Boolean] Indicates whether to enable or disable the deletion lock on each phone number. W
         #

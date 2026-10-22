@@ -81,6 +81,12 @@ module Telnyx
         end
         attr_writer :update_dynamic_variables
 
+        sig { returns(T.nilable(Telnyx::AI::VisionToolParams)) }
+        attr_reader :vision
+
+        sig { params(vision: Telnyx::AI::VisionToolParams::OrHash).void }
+        attr_writer :vision
+
         sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :webhook
 
@@ -101,6 +107,7 @@ module Telnyx
             type: String,
             update_dynamic_variables:
               Telnyx::AI::UpdateDynamicVariablesToolParams::OrHash,
+            vision: Telnyx::AI::VisionToolParams::OrHash,
             webhook: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -118,6 +125,7 @@ module Telnyx
           type: nil,
           # Configuration for an update_dynamic_variables tool.
           update_dynamic_variables: nil,
+          vision: nil,
           webhook: nil,
           request_options: {}
         )
@@ -138,6 +146,7 @@ module Telnyx
               type: String,
               update_dynamic_variables:
                 Telnyx::AI::UpdateDynamicVariablesToolParams,
+              vision: Telnyx::AI::VisionToolParams,
               webhook: T::Hash[Symbol, T.anything],
               request_options: Telnyx::RequestOptions
             }

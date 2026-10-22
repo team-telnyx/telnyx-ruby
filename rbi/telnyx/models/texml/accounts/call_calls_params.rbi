@@ -87,7 +87,12 @@ module Telnyx
               sig { returns(String) }
               attr_accessor :url
 
-              # The ID of the TeXML Application.
+              # The ID of the TeXML Application that will handle the call, for example
+              # `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+              # compatibility, but the value is the numeric ID of one of your TeXML Applications
+              # (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+              # `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+              # the XML Request URL configured on this application.
               sig { returns(T.nilable(String)) }
               attr_reader :application_sid
 
@@ -776,7 +781,12 @@ module Telnyx
               def self.new(
                 # The URL from which Telnyx will retrieve the TeXML call instructions.
                 url:,
-                # The ID of the TeXML Application.
+                # The ID of the TeXML Application that will handle the call, for example
+                # `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+                # compatibility, but the value is the numeric ID of one of your TeXML Applications
+                # (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+                # `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+                # the XML Request URL configured on this application.
                 application_sid: nil,
                 # Select whether to perform answering machine detection in the background. By
                 # default execution is blocked until Answering Machine Detection is completed.
@@ -1636,7 +1646,12 @@ module Telnyx
               sig { returns(String) }
               attr_accessor :texml
 
-              # The ID of the TeXML Application.
+              # The ID of the TeXML Application that will handle the call, for example
+              # `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+              # compatibility, but the value is the numeric ID of one of your TeXML Applications
+              # (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+              # `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+              # the XML Request URL configured on this application.
               sig { returns(T.nilable(String)) }
               attr_reader :application_sid
 
@@ -2326,7 +2341,12 @@ module Telnyx
                 # TeXML to be used as instructions for the call. If provided, the call will
                 # execute these instructions instead of fetching from the Url.
                 texml:,
-                # The ID of the TeXML Application.
+                # The ID of the TeXML Application that will handle the call, for example
+                # `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+                # compatibility, but the value is the numeric ID of one of your TeXML Applications
+                # (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+                # `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+                # the XML Request URL configured on this application.
                 application_sid: nil,
                 # Select whether to perform answering machine detection in the background. By
                 # default execution is blocked until Answering Machine Detection is completed.
@@ -3181,7 +3201,12 @@ module Telnyx
                   )
                 end
 
-              # The ID of the TeXML Application.
+              # The ID of the TeXML Application that will handle the call, for example
+              # `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+              # compatibility, but the value is the numeric ID of one of your TeXML Applications
+              # (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+              # `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+              # the XML Request URL configured on this application.
               sig { returns(T.nilable(String)) }
               attr_reader :application_sid
 
@@ -3871,7 +3896,12 @@ module Telnyx
                 ).returns(T.attached_class)
               end
               def self.new(
-                # The ID of the TeXML Application.
+                # The ID of the TeXML Application that will handle the call, for example
+                # `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+                # compatibility, but the value is the numeric ID of one of your TeXML Applications
+                # (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+                # `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+                # the XML Request URL configured on this application.
                 application_sid: nil,
                 # Select whether to perform answering machine detection in the background. By
                 # default execution is blocked until Answering Machine Detection is completed.

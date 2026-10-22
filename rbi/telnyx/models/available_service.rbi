@@ -11,6 +11,8 @@ module Telnyx
       CLOUD_VPN = T.let(:cloud_vpn, Telnyx::AvailableService::TaggedSymbol)
       PRIVATE_WIRELESS_GATEWAY =
         T.let(:private_wireless_gateway, Telnyx::AvailableService::TaggedSymbol)
+      TAILSCALE_SUBNET_ROUTER =
+        T.let(:tailscale_subnet_router, Telnyx::AvailableService::TaggedSymbol)
       VIRTUAL_CROSS_CONNECT =
         T.let(:virtual_cross_connect, Telnyx::AvailableService::TaggedSymbol)
 

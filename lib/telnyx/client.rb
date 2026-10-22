@@ -735,6 +735,7 @@ module Telnyx
     # @return [Telnyx::Resources::ExternalRequirements]
     attr_reader :external_requirements
 
+    # Inspect Stateful Actor types
     # @return [Telnyx::Resources::Compute]
     attr_reader :compute
 
@@ -808,6 +809,17 @@ module Telnyx
     # UAC connection operations
     # @return [Telnyx::Resources::SipRegistrationStatus]
     attr_reader :sip_registration_status
+
+    # Call information
+    # @return [Telnyx::Resources::DialMetrics]
+    attr_reader :dial_metrics
+
+    # @return [Telnyx::Resources::TtsIntegrations]
+    attr_reader :tts_integrations
+
+    # Tailscale Subnet Router operations
+    # @return [Telnyx::Resources::TailscaleSubnetRouters]
+    attr_reader :tailscale_subnet_routers
 
     # @api private
     #
@@ -1109,6 +1121,9 @@ module Telnyx
       @spend_limits = Telnyx::Resources::SpendLimits.new(client: self)
       @llm_token_gateway = Telnyx::Resources::LlmTokenGateway.new(client: self)
       @sip_registration_status = Telnyx::Resources::SipRegistrationStatus.new(client: self)
+      @dial_metrics = Telnyx::Resources::DialMetrics.new(client: self)
+      @tts_integrations = Telnyx::Resources::TtsIntegrations.new(client: self)
+      @tailscale_subnet_routers = Telnyx::Resources::TailscaleSubnetRouters.new(client: self)
     end
   end
 end

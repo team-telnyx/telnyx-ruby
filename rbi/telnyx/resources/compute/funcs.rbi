@@ -3,9 +3,35 @@
 module Telnyx
   module Resources
     class Compute
+      # Manage Edge Compute functions
       class Funcs
+        # Manage Edge Compute functions
         sig { returns(Telnyx::Resources::Compute::Funcs::Export) }
         attr_reader :export
+
+        # List functions for the authenticated organization. Each function includes its
+        # persisted function-scoped bindings. Actor bindings expose actor_type and
+        # env_name, allowing clients to identify every function attached to a Stateful
+        # Actor type.
+        sig do
+          params(
+            page_number: Integer,
+            page_size: Integer,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).returns(
+            Telnyx::Internal::DefaultFlatPagination[
+              Telnyx::Models::Compute::FuncListResponse
+            ]
+          )
+        end
+        def list(
+          # Page number
+          page_number: nil,
+          # Page size (maximum 250)
+          page_size: nil,
+          request_options: {}
+        )
+        end
 
         # Returns logs oldest first. `type=runtime` (default) returns function
         # stdout/stderr. `type=invocations` returns one platform-generated record per HTTP

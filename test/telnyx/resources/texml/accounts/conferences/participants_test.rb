@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
     response =
       @telnyx.texml.accounts.conferences.participants.retrieve(
         "call_sid_or_participant_label",
-        account_sid: "account_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9",
         conference_sid: "conference_sid"
       )
 
@@ -44,7 +44,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
     response =
       @telnyx.texml.accounts.conferences.participants.update(
         "call_sid_or_participant_label",
-        account_sid: "account_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9",
         conference_sid: "conference_sid"
       )
 
@@ -79,7 +79,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
     response =
       @telnyx.texml.accounts.conferences.participants.delete(
         "call_sid_or_participant_label",
-        account_sid: "account_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9",
         conference_sid: "conference_sid"
       )
 
@@ -94,7 +94,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
     response =
       @telnyx.texml.accounts.conferences.participants.participants(
         "conference_sid",
-        account_sid: "account_sid"
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
       )
 
     assert_pattern do
@@ -123,7 +123,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Conferences::ParticipantsTest < 
     response =
       @telnyx.texml.accounts.conferences.participants.retrieve_participants(
         "conference_sid",
-        account_sid: "account_sid"
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
       )
 
     assert_pattern do

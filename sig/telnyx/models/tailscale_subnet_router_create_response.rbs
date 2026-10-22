@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type tailscale_subnet_router_create_response =
+      { data: Telnyx::TailscaleSubnetRouter }
+
+    class TailscaleSubnetRouterCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::TailscaleSubnetRouter?
+
+      def data=: (
+        Telnyx::TailscaleSubnetRouter
+      ) -> Telnyx::TailscaleSubnetRouter
+
+      def initialize: (?data: Telnyx::TailscaleSubnetRouter) -> void
+
+      def to_hash: -> { data: Telnyx::TailscaleSubnetRouter }
+    end
+  end
+end

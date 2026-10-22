@@ -47,7 +47,7 @@ module Telnyx
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumbers::PhoneNumbersJob>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::PhoneNumbers::NumbersPhoneNumbersJob>]
         #
         # @see Telnyx::Models::PhoneNumbers::JobListParams
         def list(params = {})
@@ -58,7 +58,7 @@ module Telnyx
             path: "phone_numbers/jobs",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::PhoneNumbers::PhoneNumbersJob,
+            model: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob,
             options: options
           )
         end
@@ -108,7 +108,7 @@ module Telnyx
         #
         # @param connection_id [String] Body param: Identifies the connection associated with the phone number.
         #
-        # @param customer_reference [String] Body param: A customer reference string for customer look ups.
+        # @param customer_reference [String] Body param: Sets the customer reference on the selected phone numbers and retain
         #
         # @param deletion_lock_enabled [Boolean] Body param: Indicates whether to enable or disable the deletion lock on each pho
         #

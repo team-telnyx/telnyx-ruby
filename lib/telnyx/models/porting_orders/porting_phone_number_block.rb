@@ -139,6 +139,7 @@ module Telnyx
 
           LANDLINE = :landline
           LOCAL = :local
+          LOCALCOMMERCIAL = :localcommercial
           MOBILE = :mobile
           MULTIPURPOSE = :multipurpose
           NATIONAL = :national

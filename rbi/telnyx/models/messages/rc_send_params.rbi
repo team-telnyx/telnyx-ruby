@@ -68,6 +68,12 @@ module Telnyx
         sig { params(webhook_url: String).void }
         attr_writer :webhook_url
 
+        sig { returns(T.nilable(String)) }
+        attr_reader :idempotency_key
+
+        sig { params(idempotency_key: String).void }
+        attr_writer :idempotency_key
+
         sig do
           params(
             agent_id: String,
@@ -78,6 +84,7 @@ module Telnyx
             sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback::OrHash,
             type: Telnyx::Messages::RcSendParams::Type::OrSymbol,
             webhook_url: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -95,6 +102,7 @@ module Telnyx
           type: nil,
           # The URL where webhooks related to this message will be sent.
           webhook_url: nil,
+          idempotency_key: nil,
           request_options: {}
         )
         end
@@ -110,6 +118,7 @@ module Telnyx
               sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
               type: Telnyx::Messages::RcSendParams::Type::OrSymbol,
               webhook_url: String,
+              idempotency_key: String,
               request_options: Telnyx::RequestOptions
             }
           )

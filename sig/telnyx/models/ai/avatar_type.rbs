@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      type avatar_type = :stock | :custom
+
+      module AvatarType
+        extend Telnyx::Internal::Type::Enum
+
+        STOCK: :stock
+        CUSTOM: :custom
+
+        def self?.values: -> ::Array[Telnyx::Models::AI::avatar_type]
+      end
+    end
+  end
+end

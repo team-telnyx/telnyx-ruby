@@ -6,6 +6,7 @@ module Telnyx
       | Telnyx::CallAIGatherPartialResultsWebhookEvent
       | Telnyx::ArtifactCompletedWebhookEvent
       | Telnyx::ArtifactFailedWebhookEvent
+      | Telnyx::CallAnalyzedWebhookEvent
       | Telnyx::CallAnsweredWebhookEvent
       | Telnyx::CallBridgedWebhookEvent
       | Telnyx::CallConversationCreatedWebhookEvent
@@ -76,7 +77,6 @@ module Telnyx
       | Telnyx::NumberReputationExternalVerificationStatusChangedWebhookEvent
       | Telnyx::NumberReputationNumberFlaggedWebhookEvent
       | Telnyx::NumberReputationNumberRemovedWebhookEvent
-      | Telnyx::RecordingAvailableWebhookEvent
       | Telnyx::ReplacedLinkClickWebhookEvent
       | Telnyx::SessionStatusChangedWebhookEvent
       | Telnyx::TranscriptCompletedWebhookEvent

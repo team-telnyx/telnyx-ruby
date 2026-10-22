@@ -17,6 +17,8 @@ module Telnyx
         #   English only (`en` and its regional variants, e.g. `en-US`, `en-GB`).
         #   `nvidia/parakeet-v3` is multilingual with automatic language detection;
         #   `omi-health/omi-med-stt-v1` is a medical model, English only.
+        #   `reson8/prerecorded` covers 10 languages, returns word timestamps, and labels
+        #   speakers via `model_config`.
         #
         #   @return [Symbol, Telnyx::Models::AI::AudioTranscribeParams::Model]
         required :model, enum: -> { Telnyx::AI::AudioTranscribeParams::Model }
@@ -49,17 +51,25 @@ module Telnyx
         #   `openai/whisper-large-v3-turbo`, supports multiple languages.
         #   `distil-whisper/distil-large-v2` does not support language parameter.
         #   `nvidia/parakeet-v3` detects the language automatically;
-        #   `omi-health/omi-med-stt-v1` is English only.
+        #   `omi-health/omi-med-stt-v1` is English only. `reson8/prerecorded` accepts `nl`,
+        #   `en`, `fr`, `fy`, `de`, `it`, `pl`, `pt`, `es` and `sv` (regional variants are
+        #   transcribed as the base language) and detects the language when it is omitted.
         #
         #   @return [String, nil]
         optional :language, String
 
         # @!attribute model_config
         #   Additional model-specific configuration parameters. Only allowed with the
-        #   `deepgram/*` models. Can include Deepgram-specific options such as
-        #   `smart_format`, `punctuate`, `diarize`, `utterance`, `numerals`, and `language`.
-        #   If `language` is provided both as a top-level parameter and in `model_config`,
-        #   the top-level parameter takes precedence.
+        #   `deepgram/*` models and `reson8/prerecorded`. Sent as a JSON string in multipart
+        #   requests; for the `deepgram/*` models it is passed through to Deepgram as query
+        #   parameters, while `reson8/prerecorded` accepts only `diarize` (speaker labels)
+        #   and `max_speakers` (1 to 8). Any other model with `model_config` returns 400.
+        #   Can include Deepgram-specific options such as `smart_format`, `punctuate`,
+        #   `diarize` (speaker labels), `multichannel` (transcribe each channel
+        #   independently; billed duration is file duration multiplied by the number of
+        #   channels), `utterances`, `numerals`, and `language`. If `language` is provided
+        #   both as a top-level parameter and in `model_config`, the top-level parameter
+        #   takes precedence.
         #
         #   @return [Hash{Symbol=>Object}, nil]
         optional :model_config, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
@@ -109,6 +119,8 @@ module Telnyx
         # English only (`en` and its regional variants, e.g. `en-US`, `en-GB`).
         # `nvidia/parakeet-v3` is multilingual with automatic language detection;
         # `omi-health/omi-med-stt-v1` is a medical model, English only.
+        # `reson8/prerecorded` covers 10 languages, returns word timestamps, and labels
+        # speakers via `model_config`.
         module Model
           extend Telnyx::Internal::Type::Enum
 
@@ -120,6 +132,7 @@ module Telnyx
           DEEPGRAM_NOVA_3_MEDICAL = :"deepgram/nova-3-medical"
           NVIDIA_PARAKEET_V3 = :"nvidia/parakeet-v3"
           OMI_HEALTH_OMI_MED_STT_V1 = :"omi-health/omi-med-stt-v1"
+          RESON8_PRERECORDED = :"reson8/prerecorded"
 
           # @!method self.values
           #   @return [Array<Symbol>]

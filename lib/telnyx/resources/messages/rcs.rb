@@ -33,26 +33,31 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Messages::RcSendParams} for more details.
+        #
         # Queues an outbound RCS message through the selected RCS agent. Check recipient
         # capabilities before sending features that require RCS support.
         #
-        # @overload send_(agent_id:, agent_message:, messaging_profile_id:, to:, mms_fallback: nil, sms_fallback: nil, type: nil, webhook_url: nil, request_options: {})
+        # @overload send_(agent_id:, agent_message:, messaging_profile_id:, to:, mms_fallback: nil, sms_fallback: nil, type: nil, webhook_url: nil, idempotency_key: nil, request_options: {})
         #
-        # @param agent_id [String] RCS Agent ID
+        # @param agent_id [String] Body param: RCS Agent ID
         #
-        # @param agent_message [Telnyx::Models::RcsAgentMessage]
+        # @param agent_message [Telnyx::Models::RcsAgentMessage] Body param
         #
-        # @param messaging_profile_id [String] A valid messaging profile ID
+        # @param messaging_profile_id [String] Body param: A valid messaging profile ID
         #
-        # @param to [String] Phone number in +E.164 format
+        # @param to [String] Body param: Phone number in +E.164 format
         #
-        # @param mms_fallback [Telnyx::Models::Messages::RcSendParams::MmsFallback]
+        # @param mms_fallback [Telnyx::Models::Messages::RcSendParams::MmsFallback] Body param
         #
-        # @param sms_fallback [Telnyx::Models::Messages::RcSendParams::SMSFallback]
+        # @param sms_fallback [Telnyx::Models::Messages::RcSendParams::SMSFallback] Body param
         #
-        # @param type [Symbol, Telnyx::Models::Messages::RcSendParams::Type] Message type - must be set to "RCS"
+        # @param type [Symbol, Telnyx::Models::Messages::RcSendParams::Type] Body param: Message type - must be set to "RCS"
         #
-        # @param webhook_url [String] The URL where webhooks related to this message will be sent.
+        # @param webhook_url [String] Body param: The URL where webhooks related to this message will be sent.
+        #
+        # @param idempotency_key [String] Header param: Optional opaque, unquoted key for safely retrying the same logical
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -61,10 +66,12 @@ module Telnyx
         # @see Telnyx::Models::Messages::RcSendParams
         def send_(params)
           parsed, options = Telnyx::Messages::RcSendParams.dump_request(params)
+          header_params = {idempotency_key: "idempotency-key"}
           @client.request(
             method: :post,
             path: "messages/rcs",
-            body: parsed,
+            headers: parsed.slice(*header_params.keys).transform_keys(header_params),
+            body: parsed.except(*header_params.keys),
             model: Telnyx::Models::Messages::RcSendResponse,
             options: options
           )

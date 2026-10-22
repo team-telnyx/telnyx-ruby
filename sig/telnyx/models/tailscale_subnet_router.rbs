@@ -1,0 +1,117 @@
+module Telnyx
+  module Models
+    type tailscale_subnet_router =
+      {
+        id: String,
+        advertised_routes: ::Array[String],
+        created_at: Time,
+        customer_address: String,
+        device_id: String?,
+        name: String,
+        network_id: String,
+        record_type: String,
+        region_code: String,
+        status: Telnyx::Models::TailscaleSubnetRouter::status,
+        tailnet_name: String?,
+        tailscale_ips: ::Array[String],
+        updated_at: Time
+      }
+
+    class TailscaleSubnetRouter < Telnyx::Internal::Type::BaseModel
+      attr_reader advertised_routes: ::Array[String]?
+
+      def advertised_routes=: (::Array[String]) -> ::Array[String]
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader network_id: String?
+
+      def network_id=: (String) -> String
+
+      attr_reader region_code: String?
+
+      def region_code=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader customer_address: String?
+
+      def customer_address=: (String) -> String
+
+      attr_accessor device_id: String?
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader status: Telnyx::Models::TailscaleSubnetRouter::status?
+
+      def status=: (
+        Telnyx::Models::TailscaleSubnetRouter::status
+      ) -> Telnyx::Models::TailscaleSubnetRouter::status
+
+      attr_accessor tailnet_name: String?
+
+      attr_reader tailscale_ips: ::Array[String]?
+
+      def tailscale_ips=: (::Array[String]) -> ::Array[String]
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        ?id: String,
+        ?advertised_routes: ::Array[String],
+        ?created_at: Time,
+        ?customer_address: String,
+        ?device_id: String?,
+        ?name: String,
+        ?network_id: String,
+        ?record_type: String,
+        ?region_code: String,
+        ?status: Telnyx::Models::TailscaleSubnetRouter::status,
+        ?tailnet_name: String?,
+        ?tailscale_ips: ::Array[String],
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        advertised_routes: ::Array[String],
+        created_at: Time,
+        customer_address: String,
+        device_id: String?,
+        name: String,
+        network_id: String,
+        record_type: String,
+        region_code: String,
+        status: Telnyx::Models::TailscaleSubnetRouter::status,
+        tailnet_name: String?,
+        tailscale_ips: ::Array[String],
+        updated_at: Time
+      }
+
+      type status = :provisioning | :provisioned | :failed | :deleting
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PROVISIONING: :provisioning
+        PROVISIONED: :provisioned
+        FAILED: :failed
+        DELETING: :deleting
+
+        def self?.values: -> ::Array[Telnyx::Models::TailscaleSubnetRouter::status]
+      end
+    end
+  end
+end

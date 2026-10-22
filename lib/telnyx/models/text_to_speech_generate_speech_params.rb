@@ -80,7 +80,10 @@ module Telnyx
       # @!attribute telnyx
       #   Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
       #   `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
-      #   or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
+      #   or `emotion`. `Bayan` accepts `voice_speed` from 0.5 to 2.0; `Sukhan` doesn't
+      #   support it. `Bayan` synthesizes at a native 16 kHz: `sampling_rate` `8000`,
+      #   `22050`, or `24000` is resampled, needs `response_format: pcm`, and isn't
+      #   available with `output_type: audio_id`. `Sukhan`'s `response_format` is
       #   restricted to `mp3` or `pcm` (no `wav`).
       #
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx, nil]
@@ -611,16 +614,19 @@ module Telnyx
         optional :response_format, String
 
         # @!attribute sampling_rate
-        #   Audio sampling rate in Hz.
+        #   Audio sampling rate in Hz. `Bayan` ignores the default and synthesizes at its
+        #   native 16 kHz unless `8000`, `22050`, or `24000` is set explicitly with
+        #   `response_format: pcm`. Resampled rates aren't available with
+        #   `output_type: audio_id`.
         #
         #   @return [Integer, nil]
         optional :sampling_rate, Integer
 
         # @!attribute voice_speed
         #   Voice speed multiplier. Telnyx `Ultra` voices accept values from 0.6 to 1.5 —
-        #   requests outside that range are rejected by the synthesis engine. `KokoroTTS`
-        #   and `Qwen3TTS` accept the field but do not apply it. `Bayan` and `Sukhan` don't
-        #   support it.
+        #   requests outside that range are rejected by the synthesis engine. `Bayan`
+        #   accepts values from 0.5 to 2.0. `KokoroTTS` and `Qwen3TTS` accept the field but
+        #   do not apply it. `Sukhan` doesn't support it.
         #
         #   @return [Float, nil]
         optional :voice_speed, Float
@@ -640,14 +646,17 @@ module Telnyx
         #
         #   Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
         #   `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
-        #   or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
+        #   or `emotion`. `Bayan` accepts `voice_speed` from 0.5 to 2.0; `Sukhan` doesn't
+        #   support it. `Bayan` synthesizes at a native 16 kHz: `sampling_rate` `8000`,
+        #   `22050`, or `24000` is resampled, needs `response_format: pcm`, and isn't
+        #   available with `output_type: audio_id`. `Sukhan`'s `response_format` is
         #   restricted to `mp3` or `pcm` (no `wav`).
         #
         #   @param emotion [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Telnyx::Emotion] Emotion control for the Ultra model. Adjusts the emotional tone of the synthesiz
         #
         #   @param response_format [String] Audio response format.
         #
-        #   @param sampling_rate [Integer] Audio sampling rate in Hz.
+        #   @param sampling_rate [Integer] Audio sampling rate in Hz. `Bayan` ignores the default and synthesizes at its na
         #
         #   @param voice_speed [Float] Voice speed multiplier. Telnyx `Ultra` voices accept values from 0.6 to 1.5 — re
         #

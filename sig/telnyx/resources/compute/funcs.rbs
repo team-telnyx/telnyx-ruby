@@ -4,6 +4,12 @@ module Telnyx
       class Funcs
         attr_reader export: Telnyx::Resources::Compute::Funcs::Export
 
+        def list: (
+          ?page_number: Integer,
+          ?page_size: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Compute::FuncListResponse]
+
         def retrieve_logs: (
           String id,
           ?end_time: Time,

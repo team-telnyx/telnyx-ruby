@@ -64,6 +64,12 @@ module Telnyx
       sig { params(webhook_url: String).void }
       attr_writer :webhook_url
 
+      sig { returns(T.nilable(String)) }
+      attr_reader :idempotency_key
+
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
+
       sig do
         params(
           from: String,
@@ -74,6 +80,7 @@ module Telnyx
           use_profile_webhooks: T::Boolean,
           webhook_failover_url: String,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -97,6 +104,7 @@ module Telnyx
         webhook_failover_url: nil,
         # The URL where webhooks related to this message will be sent.
         webhook_url: nil,
+        idempotency_key: nil,
         request_options: {}
       )
       end
@@ -112,6 +120,7 @@ module Telnyx
             use_profile_webhooks: T::Boolean,
             webhook_failover_url: String,
             webhook_url: String,
+            idempotency_key: String,
             request_options: Telnyx::RequestOptions
           }
         )

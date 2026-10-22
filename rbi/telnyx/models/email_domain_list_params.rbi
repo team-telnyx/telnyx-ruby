@@ -173,6 +173,13 @@ module Telnyx
           T.let(:domain, Telnyx::EmailDomainListParams::Sort::TaggedSymbol)
         MINUS_DOMAIN =
           T.let(:"-domain", Telnyx::EmailDomainListParams::Sort::TaggedSymbol)
+        UPDATED_AT =
+          T.let(:updated_at, Telnyx::EmailDomainListParams::Sort::TaggedSymbol)
+        UPDATED_AT_DESC =
+          T.let(
+            :"-updated_at",
+            Telnyx::EmailDomainListParams::Sort::TaggedSymbol
+          )
 
         sig do
           override.returns(

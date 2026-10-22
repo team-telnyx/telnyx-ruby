@@ -9,7 +9,7 @@ class Telnyx::Test::Resources::Texml::Accounts::Calls::SiprecTest < Telnyx::Test
     response =
       @telnyx.texml.accounts.calls.siprec.siprec_sid_json(
         "siprec_sid",
-        account_sid: "account_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9",
         call_sid: "call_sid"
       )
 

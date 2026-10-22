@@ -35,6 +35,18 @@ module Telnyx
       # services that require a physical address such as emergency calling and
       # regulatory compliance.
       #
+      # By default, the new record is validated for emergency use at creation time. If
+      # the address fails validation, no record is created and the request is rejected
+      # with a 422 response; the `errors` array includes a suggested value for each
+      # offending field when one is available.
+      #
+      # Set `validate_address` to `false` to skip validation at creation, for example
+      # when the address was already validated with the Validate an address action. The
+      # record is then created without emergency validation: if it is not valid it will
+      # not be able to be used for emergency services (such as a phone number's
+      # emergency address), and because address records cannot be updated, a new record
+      # has to be created to correct it.
+      #
       # @overload create(business_name:, country_code:, first_name:, last_name:, locality:, street_address:, address_book: nil, administrative_area: nil, borough: nil, customer_reference: nil, extended_address: nil, neighborhood: nil, phone_number: nil, postal_code: nil, validate_address: nil, request_options: {})
       #
       # @param business_name [String] The business name associated with the address. An address must have either a fir

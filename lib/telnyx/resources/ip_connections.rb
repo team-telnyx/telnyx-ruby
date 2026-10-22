@@ -10,13 +10,15 @@ module Telnyx
       # Creates a new IP-based SIP connection, which authenticates traffic by source IP
       # address.
       #
-      # @overload create(active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload create(active: nil, anchorsite_override: nil, android_push_credential_id: nil, bridge_generate_comfort_noise_on_cn: nil, call_cost_in_webhooks: nil, connection_name: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param active [Boolean] Defaults to true
       #
       # @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
       #
       # @param android_push_credential_id [String, nil] The uuid of the push credential for Android
+      #
+      # @param bridge_generate_comfort_noise_on_cn [Boolean] Stores the connection preference for generating silent RTP toward the opposite c
       #
       # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
@@ -28,7 +30,7 @@ module Telnyx
       #
       # @param encode_contact_header_enabled [Boolean] Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG scen
       #
-      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
+      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Can only be set when the SIP signaling transp
       #
       # @param inbound [Telnyx::Models::IPConnectionCreateParams::Inbound]
       #
@@ -99,7 +101,7 @@ module Telnyx
       #
       # Updates settings of an existing IP connection.
       #
-      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, call_cost_in_webhooks: nil, connection_name: nil, conversation_persistence: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
+      # @overload update(id, active: nil, anchorsite_override: nil, android_push_credential_id: nil, bridge_generate_comfort_noise_on_cn: nil, call_cost_in_webhooks: nil, connection_name: nil, conversation_persistence: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, inbound: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, rtcp_settings: nil, tags: nil, transport_protocol: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil, request_options: {})
       #
       # @param id [String] Identifies the type of resource.
       #
@@ -108,6 +110,8 @@ module Telnyx
       # @param anchorsite_override [Symbol, Telnyx::Models::AnchorsiteOverride] `Latency` directs Telnyx to route media through the site with the lowest round-t
       #
       # @param android_push_credential_id [String, nil] The uuid of the push credential for Android
+      #
+      # @param bridge_generate_comfort_noise_on_cn [Boolean] Stores the connection preference for generating silent RTP toward the opposite c
       #
       # @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
@@ -121,7 +125,7 @@ module Telnyx
       #
       # @param encode_contact_header_enabled [Boolean] Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG scen
       #
-      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
+      # @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Can only be set when the SIP signaling transp
       #
       # @param inbound [Telnyx::Models::InboundIP]
       #

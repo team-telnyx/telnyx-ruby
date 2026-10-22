@@ -47,6 +47,9 @@ module Telnyx
         #   return `text` and, depending on `model_config`, may include `words` with
         #   per-word timestamps and speaker labels. The Parakeet models
         #   (`nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`) return `text` only.
+        #   `reson8/prerecorded` returns `text` and, in `verbose_json` mode, `duration` and
+        #   `segments` with `words`; with `diarize`, one segment per speaker turn with
+        #   speaker labels.
         #
         #   @param text [String] The transcribed text for the audio file.
         #
@@ -81,21 +84,33 @@ module Telnyx
           #   @return [String]
           required :text, String
 
+          # @!attribute channel
+          #   Zero-indexed audio channel of this segment. Returned by the `deepgram/*` models
+          #   when `multichannel` is enabled via `model_config` and the file has more than one
+          #   channel. Segments from all channels are merged in one list ordered by start
+          #   time.
+          #
+          #   @return [Integer, nil]
+          optional :channel, Integer
+
           # @!attribute speakers
-          #   Speaker indices heard in this segment. Returned by the `deepgram/*` models when
-          #   `diarize` is enabled via `model_config`.
+          #   Speaker indices heard in this segment. Returned by the `deepgram/*` models and
+          #   `reson8/prerecorded` when `diarize` is enabled via `model_config`. With
+          #   `multichannel`, speakers are numbered per channel from 0, so identify a speaker
+          #   by (`channel`, speaker).
           #
           #   @return [Array<Integer>, nil]
           optional :speakers, Telnyx::Internal::Type::ArrayOf[Integer]
 
           # @!attribute words
           #   Word-level timing detail for this segment. Returned by the `deepgram/*` models
-          #   when word-level output is enabled via `model_config`.
+          #   when word-level output is enabled via `model_config`, and by
+          #   `reson8/prerecorded`.
           #
           #   @return [Array<Telnyx::Models::AI::AudioTranscriptionResponseWord>, nil]
           optional :words, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::AI::AudioTranscriptionResponseWord] }
 
-          # @!method initialize(id:, end_:, start:, text:, speakers: nil, words: nil)
+          # @!method initialize(id:, end_:, start:, text:, channel: nil, speakers: nil, words: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::AI::AudioTranscribeResponse::Segment} for more details.
           #
@@ -107,7 +122,9 @@ module Telnyx
           #
           #   @param text [String] Text content of the segment.
           #
-          #   @param speakers [Array<Integer>] Speaker indices heard in this segment. Returned by the `deepgram/*` models when
+          #   @param channel [Integer] Zero-indexed audio channel of this segment. Returned by the `deepgram/*` models
+          #
+          #   @param speakers [Array<Integer>] Speaker indices heard in this segment. Returned by the `deepgram/*` models and `
           #
           #   @param words [Array<Telnyx::Models::AI::AudioTranscriptionResponseWord>] Word-level timing detail for this segment. Returned by the `deepgram/*` models w
         end

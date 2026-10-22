@@ -7,6 +7,7 @@ module Telnyx
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,
         authentication: Telnyx::Models::UacConnection::authentication,
+        bridge_generate_comfort_noise_on_cn: bool,
         call_cost_in_webhooks: bool,
         connection_name: String,
         created_at: String,
@@ -63,6 +64,10 @@ module Telnyx
       def authentication=: (
         Telnyx::Models::UacConnection::authentication
       ) -> Telnyx::Models::UacConnection::authentication
+
+      attr_reader bridge_generate_comfort_noise_on_cn: bool?
+
+      def bridge_generate_comfort_noise_on_cn=: (bool) -> bool
 
       attr_reader call_cost_in_webhooks: bool?
 
@@ -204,6 +209,7 @@ module Telnyx
         ?anchorsite_override: Telnyx::Models::anchorsite_override,
         ?android_push_credential_id: String?,
         ?authentication: Telnyx::Models::UacConnection::authentication,
+        ?bridge_generate_comfort_noise_on_cn: bool,
         ?call_cost_in_webhooks: bool,
         ?connection_name: String,
         ?created_at: String,
@@ -244,6 +250,7 @@ module Telnyx
         anchorsite_override: Telnyx::Models::anchorsite_override,
         android_push_credential_id: String?,
         authentication: Telnyx::Models::UacConnection::authentication,
+        bridge_generate_comfort_noise_on_cn: bool,
         call_cost_in_webhooks: bool,
         connection_name: String,
         created_at: String,

@@ -10,7 +10,8 @@ module Telnyx
           mms_fallback: Telnyx::Messages::RcSendParams::MmsFallback,
           sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
           type: Telnyx::Models::Messages::RcSendParams::type_,
-          webhook_url: String
+          webhook_url: String,
+          idempotency_key: String
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -48,6 +49,10 @@ module Telnyx
 
         def webhook_url=: (String) -> String
 
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
         def initialize: (
           agent_id: String,
           agent_message: Telnyx::RcsAgentMessage,
@@ -57,6 +62,7 @@ module Telnyx
           ?sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
           ?type: Telnyx::Models::Messages::RcSendParams::type_,
           ?webhook_url: String,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -69,6 +75,7 @@ module Telnyx
           sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
           type: Telnyx::Models::Messages::RcSendParams::type_,
           webhook_url: String,
+          idempotency_key: String,
           request_options: Telnyx::RequestOptions
         }
 

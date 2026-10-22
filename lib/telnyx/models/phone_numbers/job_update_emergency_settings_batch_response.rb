@@ -7,11 +7,11 @@ module Telnyx
       class JobUpdateEmergencySettingsBatchResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Telnyx::Models::PhoneNumbers::PhoneNumbersJob, nil]
-        optional :data, -> { Telnyx::PhoneNumbers::PhoneNumbersJob }
+        #   @return [Telnyx::Models::PhoneNumbers::NumbersPhoneNumbersJob, nil]
+        optional :data, -> { Telnyx::PhoneNumbers::NumbersPhoneNumbersJob }
 
         # @!method initialize(data: nil)
-        #   @param data [Telnyx::Models::PhoneNumbers::PhoneNumbersJob]
+        #   @param data [Telnyx::Models::PhoneNumbers::NumbersPhoneNumbersJob]
       end
     end
   end
