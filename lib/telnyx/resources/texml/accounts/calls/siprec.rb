@@ -17,7 +17,7 @@ module Telnyx
             #
             # @param siprec_sid [String] Path param: The SiprecSid that uniquely identifies the Sip Recording.
             #
-            # @param account_sid [String] Path param: The id of the account the resource belongs to.
+            # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
             #
             # @param call_sid [String] Path param: The CallSid that identifies the call to update.
             #

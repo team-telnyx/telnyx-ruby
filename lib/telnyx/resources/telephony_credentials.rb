@@ -135,11 +135,16 @@ module Telnyx
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Telnyx::Models::TelephonyCredentialCreateTokenParams} for more details.
+      #
       # Create an Access Token (JWT) for the credential.
       #
-      # @overload create_token(id, request_options: {})
+      # @overload create_token(id, idempotency_key: nil, request_options: {})
       #
       # @param id [String] Identifies the resource.
+      #
+      # @param idempotency_key [String] Unique key for safely retrying the same logical request. Generate a UUID v4 for
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -147,12 +152,13 @@ module Telnyx
       #
       # @see Telnyx::Models::TelephonyCredentialCreateTokenParams
       def create_token(id, params = {})
+        parsed, options = Telnyx::TelephonyCredentialCreateTokenParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["telephony_credentials/%1$s/token", id],
-          headers: {"accept" => "text/plain"},
+          headers: {"accept" => "text/plain", **parsed}.transform_keys(idempotency_key: "idempotency-key"),
           model: String,
-          options: params[:request_options]
+          options: options
         )
       end
 

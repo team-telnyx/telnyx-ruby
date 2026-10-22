@@ -17,7 +17,7 @@ module Telnyx
             #
             # @param call_sid [String] Path param: The CallSid that identifies the call to update.
             #
-            # @param account_sid [String] Path param: The id of the account the resource belongs to.
+            # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
             #
             # @param play_beep [Boolean] Body param: Whether to play a beep when recording is started.
             #
@@ -54,13 +54,17 @@ module Telnyx
               )
             end
 
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Calls::RecordingsJsonRetrieveRecordingsJsonParams}
+            # for more details.
+            #
             # Returns recordings for a call identified by call_sid.
             #
             # @overload retrieve_recordings_json(call_sid, account_sid:, request_options: {})
             #
             # @param call_sid [String] The CallSid that identifies the call to update.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #

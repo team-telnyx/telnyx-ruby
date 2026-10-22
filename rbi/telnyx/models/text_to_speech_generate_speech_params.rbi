@@ -164,7 +164,10 @@ module Telnyx
 
       # Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
       # `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
-      # or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
+      # or `emotion`. `Bayan` accepts `voice_speed` from 0.5 to 2.0; `Sukhan` doesn't
+      # support it. `Bayan` synthesizes at a native 16 kHz: `sampling_rate` `8000`,
+      # `22050`, or `24000` is resampled, needs `response_format: pcm`, and isn't
+      # available with `output_type: audio_id`. `Sukhan`'s `response_format` is
       # restricted to `mp3` or `pcm` (no `wav`).
       sig do
         returns(T.nilable(::Telnyx::TextToSpeechGenerateSpeechParams::Telnyx))
@@ -292,7 +295,10 @@ module Telnyx
         soniox: nil,
         # Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
         # `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
-        # or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
+        # or `emotion`. `Bayan` accepts `voice_speed` from 0.5 to 2.0; `Sukhan` doesn't
+        # support it. `Bayan` synthesizes at a native 16 kHz: `sampling_rate` `8000`,
+        # `22050`, or `24000` is resampled, needs `response_format: pcm`, and isn't
+        # available with `output_type: audio_id`. `Sukhan`'s `response_format` is
         # restricted to `mp3` or `pcm` (no `wav`).
         telnyx: nil,
         # The text to convert to speech.
@@ -1383,7 +1389,10 @@ module Telnyx
         sig { params(response_format: String).void }
         attr_writer :response_format
 
-        # Audio sampling rate in Hz.
+        # Audio sampling rate in Hz. `Bayan` ignores the default and synthesizes at its
+        # native 16 kHz unless `8000`, `22050`, or `24000` is set explicitly with
+        # `response_format: pcm`. Resampled rates aren't available with
+        # `output_type: audio_id`.
         sig { returns(T.nilable(Integer)) }
         attr_reader :sampling_rate
 
@@ -1391,9 +1400,9 @@ module Telnyx
         attr_writer :sampling_rate
 
         # Voice speed multiplier. Telnyx `Ultra` voices accept values from 0.6 to 1.5 —
-        # requests outside that range are rejected by the synthesis engine. `KokoroTTS`
-        # and `Qwen3TTS` accept the field but do not apply it. `Bayan` and `Sukhan` don't
-        # support it.
+        # requests outside that range are rejected by the synthesis engine. `Bayan`
+        # accepts values from 0.5 to 2.0. `KokoroTTS` and `Qwen3TTS` accept the field but
+        # do not apply it. `Sukhan` doesn't support it.
         sig { returns(T.nilable(Float)) }
         attr_reader :voice_speed
 
@@ -1412,7 +1421,10 @@ module Telnyx
 
         # Telnyx provider-specific parameters. For the `Ultra` model, use `voice_speed`,
         # `volume`, and `emotion`. `Bayan` and `Sukhan` don't use `temperature`, `volume`,
-        # or `emotion`, and don't support `voice_speed`. `Sukhan`'s `response_format` is
+        # or `emotion`. `Bayan` accepts `voice_speed` from 0.5 to 2.0; `Sukhan` doesn't
+        # support it. `Bayan` synthesizes at a native 16 kHz: `sampling_rate` `8000`,
+        # `22050`, or `24000` is resampled, needs `response_format: pcm`, and isn't
+        # available with `output_type: audio_id`. `Sukhan`'s `response_format` is
         # restricted to `mp3` or `pcm` (no `wav`).
         sig do
           params(
@@ -1430,12 +1442,15 @@ module Telnyx
           emotion: nil,
           # Audio response format.
           response_format: nil,
-          # Audio sampling rate in Hz.
+          # Audio sampling rate in Hz. `Bayan` ignores the default and synthesizes at its
+          # native 16 kHz unless `8000`, `22050`, or `24000` is set explicitly with
+          # `response_format: pcm`. Resampled rates aren't available with
+          # `output_type: audio_id`.
           sampling_rate: nil,
           # Voice speed multiplier. Telnyx `Ultra` voices accept values from 0.6 to 1.5 —
-          # requests outside that range are rejected by the synthesis engine. `KokoroTTS`
-          # and `Qwen3TTS` accept the field but do not apply it. `Bayan` and `Sukhan` don't
-          # support it.
+          # requests outside that range are rejected by the synthesis engine. `Bayan`
+          # accepts values from 0.5 to 2.0. `KokoroTTS` and `Qwen3TTS` accept the field but
+          # do not apply it. `Sukhan` doesn't support it.
           voice_speed: nil,
           # Volume level for the Ultra model. Telnyx `Ultra` voices accept values from 0.5
           # to 2.0 — requests outside that range are rejected by the synthesis engine.

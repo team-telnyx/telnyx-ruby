@@ -36,7 +36,12 @@ module Telnyx
           def retrieve(
             # The CallSid that identifies the call to update.
             call_sid,
-            # The id of the account the resource belongs to.
+            # The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             request_options: {}
           )
@@ -64,7 +69,12 @@ module Telnyx
           def update(
             # Path param: The CallSid that identifies the call to update.
             call_sid,
-            # Path param: The id of the account the resource belongs to.
+            # Path param: The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             # Body param: HTTP request type used for `FallbackUrl`.
             fallback_method: nil,
@@ -91,7 +101,7 @@ module Telnyx
           end
 
           # Initiate an outbound TeXML call. Telnyx will request TeXML from the XML Request
-          # URL configured for the connection in the Mission Control Portal.
+          # URL configured for the TeXML Application in the Mission Control Portal.
           sig do
             params(
               account_sid: String,
@@ -105,7 +115,12 @@ module Telnyx
             ).returns(Telnyx::Models::Texml::Accounts::CallCallsResponse)
           end
           def calls(
-            # The id of the account the resource belongs to.
+            # The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid,
             body:,
             request_options: {}
@@ -136,7 +151,12 @@ module Telnyx
             )
           end
           def retrieve_calls(
-            # The id of the account the resource belongs to.
+            # The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid,
             # Filters calls by their end date. Expected format is YYYY-MM-DD
             end_time: nil,
@@ -193,7 +213,12 @@ module Telnyx
           def siprec_json(
             # Path param: The CallSid that identifies the call to update.
             call_sid,
-            # Path param: The id of the account the resource belongs to.
+            # Path param: The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             # Body param: The name of the connector to use for the SIPREC session.
             connector_name: nil,
@@ -247,7 +272,12 @@ module Telnyx
           def streams_json(
             # Path param: The CallSid that identifies the call to update.
             call_sid,
-            # Path param: The id of the account the resource belongs to.
+            # Path param: The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             # Body param: Indicates codec for bidirectional streaming RTP payloads. Used only
             # with stream_bidirectional_mode=rtp. Case sensitive.

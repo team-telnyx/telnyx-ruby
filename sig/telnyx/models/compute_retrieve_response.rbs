@@ -1,0 +1,213 @@
+module Telnyx
+  module Models
+    type compute_retrieve_response =
+      { data: Telnyx::Models::ComputeRetrieveResponse::Data }
+
+    class ComputeRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::ComputeRetrieveResponse::Data?
+
+      def data=: (
+        Telnyx::Models::ComputeRetrieveResponse::Data
+      ) -> Telnyx::Models::ComputeRetrieveResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::ComputeRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> { data: Telnyx::Models::ComputeRetrieveResponse::Data }
+
+      type data =
+        {
+          id: String,
+          created_at: String,
+          owner_function_id: String,
+          placement: Telnyx::Models::ComputeRetrieveResponse::Data::Placement,
+          record_type: String,
+          status: String,
+          type: String,
+          updated_at: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: String?
+
+        def created_at=: (String) -> String
+
+        attr_reader owner_function_id: String?
+
+        def owner_function_id=: (String) -> String
+
+        attr_reader placement: Telnyx::Models::ComputeRetrieveResponse::Data::Placement?
+
+        def placement=: (
+          Telnyx::Models::ComputeRetrieveResponse::Data::Placement
+        ) -> Telnyx::Models::ComputeRetrieveResponse::Data::Placement
+
+        attr_reader record_type: String?
+
+        def record_type=: (String) -> String
+
+        attr_reader status: String?
+
+        def status=: (String) -> String
+
+        attr_reader type: String?
+
+        def type=: (String) -> String
+
+        attr_reader updated_at: String?
+
+        def updated_at=: (String) -> String
+
+        def initialize: (
+          ?id: String,
+          ?created_at: String,
+          ?owner_function_id: String,
+          ?placement: Telnyx::Models::ComputeRetrieveResponse::Data::Placement,
+          ?record_type: String,
+          ?status: String,
+          ?type: String,
+          ?updated_at: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: String,
+          owner_function_id: String,
+          placement: Telnyx::Models::ComputeRetrieveResponse::Data::Placement,
+          record_type: String,
+          status: String,
+          type: String,
+          updated_at: String
+        }
+
+        type placement =
+          {
+            cluster_results: ::Array[Telnyx::Models::ComputeRetrieveResponse::Data::Placement::ClusterResult],
+            clusters: ::Array[String],
+            excluded_clusters: ::Array[String],
+            observed_at: String,
+            partial: bool,
+            policy: Telnyx::Models::ComputeRetrieveResponse::Data::Placement::policy,
+            unchecked_clusters: ::Array[String]
+          }
+
+        class Placement < Telnyx::Internal::Type::BaseModel
+          attr_reader cluster_results: ::Array[Telnyx::Models::ComputeRetrieveResponse::Data::Placement::ClusterResult]?
+
+          def cluster_results=: (
+            ::Array[Telnyx::Models::ComputeRetrieveResponse::Data::Placement::ClusterResult]
+          ) -> ::Array[Telnyx::Models::ComputeRetrieveResponse::Data::Placement::ClusterResult]
+
+          attr_reader clusters: ::Array[String]?
+
+          def clusters=: (::Array[String]) -> ::Array[String]
+
+          attr_reader excluded_clusters: ::Array[String]?
+
+          def excluded_clusters=: (::Array[String]) -> ::Array[String]
+
+          attr_reader observed_at: String?
+
+          def observed_at=: (String) -> String
+
+          attr_reader partial: bool?
+
+          def partial=: (bool) -> bool
+
+          attr_reader policy: Telnyx::Models::ComputeRetrieveResponse::Data::Placement::policy?
+
+          def policy=: (
+            Telnyx::Models::ComputeRetrieveResponse::Data::Placement::policy
+          ) -> Telnyx::Models::ComputeRetrieveResponse::Data::Placement::policy
+
+          attr_reader unchecked_clusters: ::Array[String]?
+
+          def unchecked_clusters=: (::Array[String]) -> ::Array[String]
+
+          def initialize: (
+            ?cluster_results: ::Array[Telnyx::Models::ComputeRetrieveResponse::Data::Placement::ClusterResult],
+            ?clusters: ::Array[String],
+            ?excluded_clusters: ::Array[String],
+            ?observed_at: String,
+            ?partial: bool,
+            ?policy: Telnyx::Models::ComputeRetrieveResponse::Data::Placement::policy,
+            ?unchecked_clusters: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            cluster_results: ::Array[Telnyx::Models::ComputeRetrieveResponse::Data::Placement::ClusterResult],
+            clusters: ::Array[String],
+            excluded_clusters: ::Array[String],
+            observed_at: String,
+            partial: bool,
+            policy: Telnyx::Models::ComputeRetrieveResponse::Data::Placement::policy,
+            unchecked_clusters: ::Array[String]
+          }
+
+          type cluster_result =
+            {
+              cluster_id: String,
+              error: String,
+              error_code: String,
+              status: String,
+              success: bool
+            }
+
+          class ClusterResult < Telnyx::Internal::Type::BaseModel
+            attr_reader cluster_id: String?
+
+            def cluster_id=: (String) -> String
+
+            attr_reader error: String?
+
+            def error=: (String) -> String
+
+            attr_reader error_code: String?
+
+            def error_code=: (String) -> String
+
+            attr_reader status: String?
+
+            def status=: (String) -> String
+
+            attr_reader success: bool?
+
+            def success=: (bool) -> bool
+
+            def initialize: (
+              ?cluster_id: String,
+              ?error: String,
+              ?error_code: String,
+              ?status: String,
+              ?success: bool
+            ) -> void
+
+            def to_hash: -> {
+              cluster_id: String,
+              error: String,
+              error_code: String,
+              status: String,
+              success: bool
+            }
+          end
+
+          type policy = :everywhere | :single_site
+
+          module Policy
+            extend Telnyx::Internal::Type::Enum
+
+            EVERYWHERE: :everywhere
+            SINGLE_SITE: :single_site
+
+            def self?.values: -> ::Array[Telnyx::Models::ComputeRetrieveResponse::Data::Placement::policy]
+          end
+        end
+      end
+    end
+  end
+end

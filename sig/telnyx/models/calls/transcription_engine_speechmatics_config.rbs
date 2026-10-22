@@ -64,6 +64,56 @@ module Telnyx
           | :tl
           | :"es-bilingual-en"
           | :cmn_en_ms_ta
+          | :ar
+          | :be
+          | :bg
+          | :bn
+          | :ca
+          | :cmn
+          | :cs
+          | :da
+          | :de
+          | :el
+          | :eo
+          | :es
+          | :et
+          | :fa
+          | :fi
+          | :fr
+          | :he
+          | :hi
+          | :hr
+          | :hu
+          | :ia
+          | :id
+          | :it
+          | :ja
+          | :ko
+          | :lt
+          | :lv
+          | :mr
+          | :ms
+          | :nl
+          | :no
+          | :pl
+          | :pt
+          | :ro
+          | :ru
+          | :sk
+          | :sl
+          | :sv
+          | :ta
+          | :th
+          | :tr
+          | :uk
+          | :ur
+          | :vi
+          | :yue
+          | :"en-US"
+          | :"en-GB"
+          | :"en-AU"
+          | :"cmn-Hans"
+          | :"cmn-Hant"
 
         module Language
           extend Telnyx::Internal::Type::Enum
@@ -85,6 +135,56 @@ module Telnyx
           TL: :tl
           ES_BILINGUAL_EN: :"es-bilingual-en"
           CMN_EN_MS_TA: :cmn_en_ms_ta
+          AR: :ar
+          BE: :be
+          BG: :bg
+          BN: :bn
+          CA: :ca
+          CMN: :cmn
+          CS: :cs
+          DA: :da
+          DE: :de
+          EL: :el
+          EO: :eo
+          ES: :es
+          ET: :et
+          FA: :fa
+          FI: :fi
+          FR: :fr
+          HE: :he
+          HI: :hi
+          HR: :hr
+          HU: :hu
+          IA: :ia
+          ID: :id
+          IT: :it
+          JA: :ja
+          KO: :ko
+          LT: :lt
+          LV: :lv
+          MR: :mr
+          MS: :ms
+          NL: :nl
+          NO: :no
+          PL: :pl
+          PT: :pt
+          RO: :ro
+          RU: :ru
+          SK: :sk
+          SL: :sl
+          SV: :sv
+          TA: :ta
+          TH: :th
+          TR: :tr
+          UK: :uk
+          UR: :ur
+          VI: :vi
+          YUE: :yue
+          EN_US: :"en-US"
+          EN_GB: :"en-GB"
+          EN_AU: :"en-AU"
+          CMN_HANS: :"cmn-Hans"
+          CMN_HANT: :"cmn-Hant"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig::language]
         end
@@ -99,12 +199,14 @@ module Telnyx
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig::transcription_engine]
         end
 
-        type transcription_model = :"speechmatics/standard"
+        type transcription_model =
+          :"speechmatics/standard" | :"speechmatics/linden-1"
 
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
           SPEECHMATICS_STANDARD: :"speechmatics/standard"
+          SPEECHMATICS_LINDEN_1: :"speechmatics/linden-1"
 
           def self?.values: -> ::Array[Telnyx::Models::Calls::TranscriptionEngineSpeechmaticsConfig::transcription_model]
         end

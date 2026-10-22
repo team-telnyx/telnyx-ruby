@@ -730,6 +730,7 @@ module Telnyx
     sig { returns(Telnyx::Resources::ExternalRequirements) }
     attr_reader :external_requirements
 
+    # Inspect Stateful Actor types
     sig { returns(Telnyx::Resources::Compute) }
     attr_reader :compute
 
@@ -803,6 +804,17 @@ module Telnyx
     # UAC connection operations
     sig { returns(Telnyx::Resources::SipRegistrationStatus) }
     attr_reader :sip_registration_status
+
+    # Call information
+    sig { returns(Telnyx::Resources::DialMetrics) }
+    attr_reader :dial_metrics
+
+    sig { returns(Telnyx::Resources::TtsIntegrations) }
+    attr_reader :tts_integrations
+
+    # Tailscale Subnet Router operations
+    sig { returns(Telnyx::Resources::TailscaleSubnetRouters) }
+    attr_reader :tailscale_subnet_routers
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

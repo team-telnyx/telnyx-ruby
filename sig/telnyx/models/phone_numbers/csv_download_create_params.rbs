@@ -4,7 +4,8 @@ module Telnyx
       type csv_download_create_params =
         {
           csv_format: Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::csv_format,
-          filter: Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter
+          filter: Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter,
+          include_managed_accounts: bool
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -24,15 +25,21 @@ module Telnyx
           Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter
         ) -> Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter
 
+        attr_reader include_managed_accounts: bool?
+
+        def include_managed_accounts=: (bool) -> bool
+
         def initialize: (
           ?csv_format: Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::csv_format,
           ?filter: Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter,
+          ?include_managed_accounts: bool,
           ?request_options: Telnyx::request_opts
         ) -> void
 
         def to_hash: -> {
           csv_format: Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::csv_format,
           filter: Telnyx::PhoneNumbers::CsvDownloadCreateParams::Filter,
+          include_managed_accounts: bool,
           request_options: Telnyx::RequestOptions
         }
 

@@ -99,8 +99,7 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :status
 
-        # Additional detail about the status (for example `timeout_exceeded_everyone_left`
-        # or `cancelled`), or null.
+        # Additional detail about the status (for example `cancelled`), or null.
         sig { returns(T.nilable(String)) }
         attr_accessor :status_detail
 
@@ -120,8 +119,7 @@ module Telnyx
           session_id:,
           # The new session status.
           status:,
-          # Additional detail about the status (for example `timeout_exceeded_everyone_left`
-          # or `cancelled`), or null.
+          # Additional detail about the status (for example `cancelled`), or null.
           status_detail:
         )
         end

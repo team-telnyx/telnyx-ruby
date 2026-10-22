@@ -34,8 +34,8 @@ module Telnyx
       optional :channel_limit, Integer
 
       # @!attribute encrypted_media
-      #   Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-      #   TLS.
+      #   Enable use of SRTP for encryption. Can only be set when the SIP signaling
+      #   transport protocol is TLS.
       #
       #   @return [Symbol, Telnyx::Models::EncryptedMedia, nil]
       optional :encrypted_media, enum: -> { Telnyx::EncryptedMedia }, nil?: true
@@ -117,7 +117,7 @@ module Telnyx
       #
       #   @param channel_limit [Integer] When set, this will limit the total number of inbound calls to phone numbers ass
       #
-      #   @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
+      #   @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Can only be set when the SIP signaling transp
       #
       #   @param generate_ringback_tone [Boolean] Generate ringback tone through 183 session progress message with early media.
       #

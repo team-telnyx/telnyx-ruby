@@ -3,9 +3,40 @@
 module Telnyx
   module Resources
     class Compute
+      # Manage Edge Compute functions
       class Funcs
+        # Manage Edge Compute functions
         # @return [Telnyx::Resources::Compute::Funcs::Export]
         attr_reader :export
+
+        # List functions for the authenticated organization. Each function includes its
+        # persisted function-scoped bindings. Actor bindings expose actor_type and
+        # env_name, allowing clients to identify every function attached to a Stateful
+        # Actor type.
+        #
+        # @overload list(page_number: nil, page_size: nil, request_options: {})
+        #
+        # @param page_number [Integer] Page number
+        #
+        # @param page_size [Integer] Page size (maximum 250)
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Compute::FuncListResponse>]
+        #
+        # @see Telnyx::Models::Compute::FuncListParams
+        def list(params = {})
+          parsed, options = Telnyx::Compute::FuncListParams.dump_request(params)
+          query = Telnyx::Internal::Util.encode_query_params(parsed)
+          @client.request(
+            method: :get,
+            path: "compute/funcs",
+            query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
+            page: Telnyx::Internal::DefaultFlatPagination,
+            model: Telnyx::Models::Compute::FuncListResponse,
+            options: options
+          )
+        end
 
         # Returns logs oldest first. `type=runtime` (default) returns function
         # stdout/stderr. `type=invocations` returns one platform-generated record per HTTP

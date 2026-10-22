@@ -11,11 +11,13 @@ module Telnyx
         # filters. The `csv_format` parameter selects the output format, and the response
         # contains the resulting download record.
         #
-        # @overload create(csv_format: nil, filter: nil, request_options: {})
+        # @overload create(csv_format: nil, filter: nil, include_managed_accounts: nil, request_options: {})
         #
         # @param csv_format [Symbol, Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::CsvFormat] Which format to use when generating the CSV file. The default for backwards comp
         #
         # @param filter [Telnyx::Models::PhoneNumbers::CsvDownloadCreateParams::Filter] Consolidated filter parameter (deepObject style). Originally: filter[has_bundle]
+        #
+        # @param include_managed_accounts [Boolean] When true, the CSV includes phone numbers from all managed accounts in addition
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

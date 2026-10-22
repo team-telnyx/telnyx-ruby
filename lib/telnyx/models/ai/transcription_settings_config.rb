@@ -33,9 +33,10 @@ module Telnyx
         optional :enable_endpoint_detection, Telnyx::Internal::Type::Boolean
 
         # @!attribute end_of_turn_confidence_threshold
-        #   Available only for assemblyai/universal-3-5-pro (and its legacy alias
-        #   assemblyai/universal-streaming). Confidence level required to trigger an end of
-        #   turn. Higher values require more certainty before ending a turn.
+        #   @deprecated
+        #
+        #   Deprecated and ignored. Accepted for backwards compatibility. AssemblyAI turn
+        #   detection is configured with min_turn_silence and max_turn_silence.
         #
         #   @return [Float, nil]
         optional :end_of_turn_confidence_threshold, Float
@@ -62,10 +63,13 @@ module Telnyx
         optional :interim_results, Telnyx::Internal::Type::Boolean
 
         # @!attribute keyterm
-        #   Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
-        #   key terms to boost for recognition during transcription. Helps improve accuracy
-        #   for domain-specific terminology, proper nouns, or uncommon words. This field may
-        #   be templated with
+        #   A comma-separated list of key terms to boost for recognition during
+        #   transcription, used by Deepgram, Reson8, Speechmatics Linden 1 and AssemblyAI
+        #   models. Helps improve accuracy for domain-specific terminology, proper nouns, or
+        #   uncommon words. At most 1000 characters in total. For
+        #   assemblyai/universal-3-5-pro (and its legacy alias
+        #   assemblyai/universal-streaming), also at most 100 terms of up to 50 characters
+        #   each. This field may be templated with
         #   [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
         #   using mustache syntax (e.g. `Telnyx,{{customer_name}},VoIP`). Variables are
         #   resolved at call time before the value is sent to the speech-to-text engine.
@@ -110,12 +114,32 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :numerals, Telnyx::Internal::Type::Boolean
 
+        # @!attribute prompt
+        #   Available only for assemblyai/universal-3-5-pro (and its legacy alias
+        #   assemblyai/universal-streaming). Context about the conversation (domain, names,
+        #   terms) to improve transcription; describe the content, do not give instructions.
+        #   Leave empty unless needed. At most 1750 characters.
+        #
+        #   @return [String, nil]
+        optional :prompt, String
+
+        # @!attribute remove_disfluencies
+        #   Available only for speechmatics/linden-1. When true, filler words such as "um"
+        #   and "uh" are removed from the transcript. Disfluency removal is supported only
+        #   for `ar`, `cmn`, `da`, `de`, `el`, `en`, `es`, `fr`, `he`, `hi`, `hu`, `it`,
+        #   `ja`, `nl`, `pl`, `pt`, and `ru`, determined by the base language (so `en-US`,
+        #   `en-GB`, `en-AU`, `cmn-Hans`, and `cmn-Hant` are supported); for other
+        #   languages, filler words remain in the transcript.
+        #
+        #   @return [Boolean, nil]
+        optional :remove_disfluencies, Telnyx::Internal::Type::Boolean
+
         # @!attribute smart_format
         #
         #   @return [Boolean, nil]
         optional :smart_format, Telnyx::Internal::Type::Boolean
 
-        # @!method initialize(context: nil, eager_eot_threshold: nil, enable_endpoint_detection: nil, end_of_turn_confidence_threshold: nil, eot_threshold: nil, eot_timeout_ms: nil, interim_results: nil, keyterm: nil, language_hints: nil, max_endpoint_delay_ms: nil, max_turn_silence: nil, min_turn_silence: nil, numerals: nil, smart_format: nil)
+        # @!method initialize(context: nil, eager_eot_threshold: nil, enable_endpoint_detection: nil, end_of_turn_confidence_threshold: nil, eot_threshold: nil, eot_timeout_ms: nil, interim_results: nil, keyterm: nil, language_hints: nil, max_endpoint_delay_ms: nil, max_turn_silence: nil, min_turn_silence: nil, numerals: nil, prompt: nil, remove_disfluencies: nil, smart_format: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TranscriptionSettingsConfig} for more details.
         #
@@ -125,7 +149,7 @@ module Telnyx
         #
         #   @param enable_endpoint_detection [Boolean] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox emit
         #
-        #   @param end_of_turn_confidence_threshold [Float] Available only for assemblyai/universal-3-5-pro (and its legacy alias assemblyai
+        #   @param end_of_turn_confidence_threshold [Float] Deprecated and ignored. Accepted for backwards compatibility. AssemblyAI turn de
         #
         #   @param eot_threshold [Float] Available only for deepgram/flux. Confidence required to trigger an end of turn.
         #
@@ -133,7 +157,7 @@ module Telnyx
         #
         #   @param interim_results [Boolean] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. When true, Soniox stre
         #
-        #   @param keyterm [String] Available only for deepgram/nova-3 and deepgram/flux. A comma-separated list of
+        #   @param keyterm [String] A comma-separated list of key terms to boost for recognition during transcriptio
         #
         #   @param language_hints [Array<String>] Available only for soniox/stt-rt-v4 and soniox/stt-rt-v5. A list of ISO 639-1 la
         #
@@ -144,6 +168,10 @@ module Telnyx
         #   @param min_turn_silence [Integer] Available only for assemblyai/universal-3-5-pro (and its legacy alias assemblyai
         #
         #   @param numerals [Boolean]
+        #
+        #   @param prompt [String] Available only for assemblyai/universal-3-5-pro (and its legacy alias assemblyai
+        #
+        #   @param remove_disfluencies [Boolean] Available only for speechmatics/linden-1. When true, filler words such as "um" a
         #
         #   @param smart_format [Boolean]
       end

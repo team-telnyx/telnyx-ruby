@@ -49,8 +49,10 @@ module Telnyx
         end
         attr_writer :a2a_agents
 
-        # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-        # catalog supports six avatars and office, studio, or reception backgrounds.
+        # **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+        # avatar or an organization-owned custom avatar returned by the Avatars API.
+        # Discover the available stock catalog with GET /v2/ai/avatars and
+        # filter[avatar_type]=stock; follow meta.total_pages to load every page.
         sig { returns(T.nilable(Telnyx::AI::TelnyxAvatarSettings)) }
         attr_reader :avatar_settings
 
@@ -325,6 +327,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
                   Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Vision::OrHash,
                   Telnyx::AI::AssistantTool::Pay::OrHash,
                   Telnyx::AI::AssistantTool::UpdateDynamicVariables::OrHash
                 )
@@ -443,6 +446,7 @@ module Telnyx
                   Telnyx::AI::AssistantTool::SendDtmf::OrHash,
                   Telnyx::AI::AssistantTool::SendMessage::OrHash,
                   Telnyx::AI::AssistantTool::SkipTurn::OrHash,
+                  Telnyx::AI::AssistantTool::Vision::OrHash,
                   Telnyx::AI::AssistantTool::Pay::OrHash,
                   Telnyx::AI::AssistantTool::UpdateDynamicVariables::OrHash
                 )
@@ -478,8 +482,10 @@ module Telnyx
           # fetches combined. An agent whose card cannot be fetched costs the assistant that
           # capability for the conversation; it does not fail the call.
           a2a_agents: nil,
-          # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-          # catalog supports six avatars and office, studio, or reception backgrounds.
+          # **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+          # avatar or an organization-owned custom avatar returned by the Avatars API.
+          # Discover the available stock catalog with GET /v2/ai/avatars and
+          # filter[avatar_type]=stock; follow meta.total_pages to load every page.
           avatar_settings: nil,
           # Conversation flow as returned by the API.
           conversation_flow: nil,

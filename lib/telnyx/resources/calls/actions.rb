@@ -539,7 +539,7 @@ module Telnyx
         # - `call.hangup`
         # - `call.recording.saved`
         #
-        # @overload hangup(call_control_id, client_state: nil, command_id: nil, custom_headers: nil, request_options: {})
+        # @overload hangup(call_control_id, client_state: nil, command_id: nil, custom_headers: nil, reason: nil, request_options: {})
         #
         # @param call_control_id [String] Unique identifier and token for controlling the call
         #
@@ -548,6 +548,8 @@ module Telnyx
         # @param command_id [String] Use this field to avoid duplicate commands. Telnyx will ignore any command with
         #
         # @param custom_headers [Array<Telnyx::Models::CustomSipHeader>] Custom headers to be added to the SIP BYE message.
+        #
+        # @param reason [String] Text for the SIP `Reason` header (RFC 3326) sent when cancelling an unanswered o
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

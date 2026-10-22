@@ -73,6 +73,7 @@ class Telnyx::Test::Resources::IPConnectionsTest < Telnyx::Test::ResourceTest
         active: Telnyx::Internal::Type::Boolean | nil,
         anchorsite_override: Telnyx::AnchorsiteOverride | nil,
         android_push_credential_id: String | nil,
+        bridge_generate_comfort_noise_on_cn: Telnyx::Internal::Type::Boolean | nil,
         call_cost_in_webhooks: Telnyx::Internal::Type::Boolean | nil,
         connection_name: String | nil,
         conversation_persistence: Telnyx::Internal::Type::Boolean | nil,

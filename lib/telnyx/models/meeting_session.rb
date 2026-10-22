@@ -34,13 +34,17 @@ module Telnyx
       required :assistant_state_changed_at, Time, nil?: true
 
       # @!attribute avatar
-      #   Avatar configuration if an avatar is attached, otherwise null.
+      #   The assistant's avatar, captured from its `avatar_settings` when the session was
+      #   created. For display only; later changes to the assistant do not update it.
       #
       #   @return [Telnyx::Models::MeetingSession::Avatar, nil]
       required :avatar, -> { Telnyx::MeetingSession::Avatar }, nil?: true
 
       # @!attribute avatar_state
-      #   Current state of the avatar connection, or null if no avatar is attached.
+      #   Current state of the avatar, or null if the session has no avatar. `starting`
+      #   until the avatar's video is playing, then `connected`; `degraded` when the
+      #   session has fallen back to voice-only (the `avatar.degraded` event carries the
+      #   reason); `disconnected` when the avatar has ended.
       #
       #   @return [Symbol, Telnyx::Models::MeetingSession::AvatarState, nil]
       required :avatar_state, enum: -> { Telnyx::MeetingSession::AvatarState }, nil?: true
@@ -170,9 +174,9 @@ module Telnyx
       #
       #   @param assistant_state_changed_at [Time, nil] Timestamp of the last assistant state change, or null.
       #
-      #   @param avatar [Telnyx::Models::MeetingSession::Avatar, nil] Avatar configuration if an avatar is attached, otherwise null.
+      #   @param avatar [Telnyx::Models::MeetingSession::Avatar, nil] The assistant's avatar, captured from its `avatar_settings` when the session was
       #
-      #   @param avatar_state [Symbol, Telnyx::Models::MeetingSession::AvatarState, nil] Current state of the avatar connection, or null if no avatar is attached.
+      #   @param avatar_state [Symbol, Telnyx::Models::MeetingSession::AvatarState, nil] Current state of the avatar, or null if the session has no avatar. `starting` un
       #
       #   @param avatar_state_changed_at [Time, nil] Timestamp of the last avatar state change, or null.
       #
@@ -286,21 +290,41 @@ module Telnyx
         #   @return [String]
         required :avatar_id, String
 
+        # @!attribute background_id
+        #   Identifier of the avatar's background.
+        #
+        #   @return [String]
+        required :background_id, String
+
+        # @!attribute model
+        #   Avatar rendering model, for example `foxtrot-1`.
+        #
+        #   @return [String]
+        required :model, String
+
         # @!attribute provider
         #   Avatar provider identifier.
         #
-        #   @return [Symbol, :anam]
-        required :provider, const: :anam
+        #   @return [Symbol, :telnyx]
+        required :provider, const: :telnyx
 
-        # @!method initialize(avatar_id:, provider: :anam)
-        #   Avatar configuration if an avatar is attached, otherwise null.
+        # @!method initialize(avatar_id:, background_id:, model:, provider: :telnyx)
+        #   The assistant's avatar, captured from its `avatar_settings` when the session was
+        #   created. For display only; later changes to the assistant do not update it.
         #
         #   @param avatar_id [String] Identifier of the avatar.
         #
-        #   @param provider [Symbol, :anam] Avatar provider identifier.
+        #   @param background_id [String] Identifier of the avatar's background.
+        #
+        #   @param model [String] Avatar rendering model, for example `foxtrot-1`.
+        #
+        #   @param provider [Symbol, :telnyx] Avatar provider identifier.
       end
 
-      # Current state of the avatar connection, or null if no avatar is attached.
+      # Current state of the avatar, or null if the session has no avatar. `starting`
+      # until the avatar's video is playing, then `connected`; `degraded` when the
+      # session has fallen back to voice-only (the `avatar.degraded` event carries the
+      # reason); `disconnected` when the avatar has ended.
       #
       # @see Telnyx::Models::MeetingSession#avatar_state
       module AvatarState

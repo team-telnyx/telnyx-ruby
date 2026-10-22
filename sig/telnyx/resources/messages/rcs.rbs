@@ -18,6 +18,7 @@ module Telnyx
           ?sms_fallback: Telnyx::Messages::RcSendParams::SMSFallback,
           ?type: Telnyx::Models::Messages::RcSendParams::type_,
           ?webhook_url: String,
+          ?idempotency_key: String,
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::Models::Messages::RcSendResponse
 

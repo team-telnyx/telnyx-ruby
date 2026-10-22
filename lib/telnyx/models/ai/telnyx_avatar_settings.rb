@@ -5,10 +5,10 @@ module Telnyx
     module AI
       class TelnyxAvatarSettings < Telnyx::Internal::Type::BaseModel
         # @!attribute avatar_id
-        #   The Telnyx avatar to render.
+        #   The Telnyx stock avatar or organization-owned custom avatar to render.
         #
-        #   @return [Symbol, Telnyx::Models::AI::TelnyxAvatarSettings::AvatarID]
-        required :avatar_id, enum: -> { Telnyx::AI::TelnyxAvatarSettings::AvatarID }
+        #   @return [String]
+        required :avatar_id, String
 
         # @!attribute background_id
         #   The background to render.
@@ -33,33 +33,18 @@ module Telnyx
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelnyxAvatarSettings} for more details.
         #
-        #   **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-        #   catalog supports six avatars and office, studio, or reception backgrounds.
+        #   **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+        #   avatar or an organization-owned custom avatar returned by the Avatars API.
+        #   Discover the available stock catalog with GET /v2/ai/avatars and
+        #   filter[avatar_type]=stock; follow meta.total_pages to load every page.
         #
-        #   @param avatar_id [Symbol, Telnyx::Models::AI::TelnyxAvatarSettings::AvatarID] The Telnyx avatar to render.
+        #   @param avatar_id [String] The Telnyx stock avatar or organization-owned custom avatar to render.
         #
         #   @param background_id [Symbol, Telnyx::Models::AI::TelnyxAvatarSettings::BackgroundID] The background to render.
         #
         #   @param model [Symbol, Telnyx::Models::AI::TelnyxAvatarSettings::Model] Required avatar model identifier, separate from `avatar_id`. The supported value
         #
         #   @param provider [Symbol, :telnyx] Selects the Telnyx open-source avatar provider.
-
-        # The Telnyx avatar to render.
-        #
-        # @see Telnyx::Models::AI::TelnyxAvatarSettings#avatar_id
-        module AvatarID
-          extend Telnyx::Internal::Type::Enum
-
-          ELENA = :elena
-          BEN = :ben
-          JORDAN = :jordan
-          LIN = :lin
-          AVERY = :avery
-          RAPHAEL = :raphael
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
 
         # The background to render.
         #
@@ -70,6 +55,7 @@ module Telnyx
           OFFICE = :office
           STUDIO = :studio
           RECEPTION = :reception
+          ILLUSTRATED_WORKSPACE = :illustrated_workspace
 
           # @!method self.values
           #   @return [Array<Symbol>]

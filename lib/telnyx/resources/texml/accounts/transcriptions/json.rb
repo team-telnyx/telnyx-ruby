@@ -7,13 +7,17 @@ module Telnyx
         class Transcriptions
           # TeXML REST Commands
           class Json
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Transcriptions::JsonDeleteRecordingTranscriptionSidJsonParams}
+            # for more details.
+            #
             # Permanently deletes a recording transcription.
             #
             # @overload delete_recording_transcription_sid_json(recording_transcription_sid, account_sid:, request_options: {})
             #
             # @param recording_transcription_sid [String] Uniquely identifies the recording transcription by id.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -41,13 +45,17 @@ module Telnyx
               )
             end
 
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Transcriptions::JsonRetrieveRecordingTranscriptionSidJsonParams}
+            # for more details.
+            #
             # Returns the recording transcription resource identified by its ID.
             #
             # @overload retrieve_recording_transcription_sid_json(recording_transcription_sid, account_sid:, request_options: {})
             #
             # @param recording_transcription_sid [String] Uniquely identifies the recording transcription by id.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #

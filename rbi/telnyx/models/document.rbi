@@ -81,6 +81,11 @@ module Telnyx
             :articles_of_incorporation,
             Telnyx::Document::DocumentType::TaggedSymbol
           )
+        CERTIFICATE_OF_GOOD_STANDING =
+          T.let(
+            :certificate_of_good_standing,
+            Telnyx::Document::DocumentType::TaggedSymbol
+          )
         TAX_DOCUMENT =
           T.let(:tax_document, Telnyx::Document::DocumentType::TaggedSymbol)
         EIN_LETTER =
@@ -108,6 +113,16 @@ module Telnyx
           T.let(:utility_bill, Telnyx::Document::DocumentType::TaggedSymbol)
         BANK_STATEMENT =
           T.let(:bank_statement, Telnyx::Document::DocumentType::TaggedSymbol)
+        BUSINESS_CREDIT_REPORT =
+          T.let(
+            :business_credit_report,
+            Telnyx::Document::DocumentType::TaggedSymbol
+          )
+        BANK_REFERENCE_LETTER =
+          T.let(
+            :bank_reference_letter,
+            Telnyx::Document::DocumentType::TaggedSymbol
+          )
         OTHER = T.let(:other, Telnyx::Document::DocumentType::TaggedSymbol)
 
         sig do

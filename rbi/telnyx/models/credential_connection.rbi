@@ -37,6 +37,19 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :android_push_credential_id
 
+      # Stores the connection preference for generating silent RTP toward the opposite
+      # call leg when comfort-noise packets (CN, payload type 13) are received during
+      # hold. Defaults to false and returns the saved value. Only JSON true and false
+      # are accepted; null and non-boolean values are rejected. This preference is
+      # independent of default_on_hold_comfort_noise_enabled and does not modify that
+      # setting. This API provisions the preference; call-processing behavior is
+      # implemented separately.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :bridge_generate_comfort_noise_on_cn
+
+      sig { params(bridge_generate_comfort_noise_on_cn: T::Boolean).void }
+      attr_writer :bridge_generate_comfort_noise_on_cn
+
       # Specifies if call cost webhooks should be sent for this connection.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :call_cost_in_webhooks
@@ -91,8 +104,8 @@ module Telnyx
       sig { params(encode_contact_header_enabled: T::Boolean).void }
       attr_writer :encode_contact_header_enabled
 
-      # Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-      # TLS.
+      # Enable use of SRTP for encryption. Can only be set when the SIP signaling
+      # transport protocol is TLS.
       sig { returns(T.nilable(Telnyx::EncryptedMedia::TaggedSymbol)) }
       attr_accessor :encrypted_media
 
@@ -273,6 +286,7 @@ module Telnyx
           active: T::Boolean,
           anchorsite_override: Telnyx::AnchorsiteOverride::OrSymbol,
           android_push_credential_id: T.nilable(String),
+          bridge_generate_comfort_noise_on_cn: T::Boolean,
           call_cost_in_webhooks: T::Boolean,
           connection_name: String,
           conversation_persistence: T::Boolean,
@@ -315,6 +329,14 @@ module Telnyx
         anchorsite_override: nil,
         # The uuid of the push credential for Android
         android_push_credential_id: nil,
+        # Stores the connection preference for generating silent RTP toward the opposite
+        # call leg when comfort-noise packets (CN, payload type 13) are received during
+        # hold. Defaults to false and returns the saved value. Only JSON true and false
+        # are accepted; null and non-boolean values are rejected. This preference is
+        # independent of default_on_hold_comfort_noise_enabled and does not modify that
+        # setting. This API provisions the preference; call-processing behavior is
+        # implemented separately.
+        bridge_generate_comfort_noise_on_cn: nil,
         # Specifies if call cost webhooks should be sent for this connection.
         call_cost_in_webhooks: nil,
         connection_name: nil,
@@ -334,8 +356,8 @@ module Telnyx
         # Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG
         # scenarios.
         encode_contact_header_enabled: nil,
-        # Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-        # TLS.
+        # Enable use of SRTP for encryption. Can only be set when the SIP signaling
+        # transport protocol is TLS.
         encrypted_media: nil,
         inbound: nil,
         # The uuid of the push credential for Ios
@@ -404,6 +426,7 @@ module Telnyx
             active: T::Boolean,
             anchorsite_override: Telnyx::AnchorsiteOverride::TaggedSymbol,
             android_push_credential_id: T.nilable(String),
+            bridge_generate_comfort_noise_on_cn: T::Boolean,
             call_cost_in_webhooks: T::Boolean,
             connection_name: String,
             conversation_persistence: T::Boolean,

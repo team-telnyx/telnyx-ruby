@@ -1,0 +1,147 @@
+module Telnyx
+  module Models
+    type dial_metric_list_response =
+      {
+        average_dps: Float,
+        dials: Telnyx::Models::DialMetricListResponse::Dials,
+        dps_limit: Integer?,
+        end_time: Time,
+        peak_dps: Float,
+        record_type: Telnyx::Models::DialMetricListResponse::record_type,
+        region: String,
+        start_time: Time
+      }
+
+    class DialMetricListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader average_dps: Float?
+
+      def average_dps=: (Float) -> Float
+
+      attr_reader dials: Telnyx::Models::DialMetricListResponse::Dials?
+
+      def dials=: (
+        Telnyx::Models::DialMetricListResponse::Dials
+      ) -> Telnyx::Models::DialMetricListResponse::Dials
+
+      attr_accessor dps_limit: Integer?
+
+      attr_reader end_time: Time?
+
+      def end_time=: (Time) -> Time
+
+      attr_reader peak_dps: Float?
+
+      def peak_dps=: (Float) -> Float
+
+      attr_reader record_type: Telnyx::Models::DialMetricListResponse::record_type?
+
+      def record_type=: (
+        Telnyx::Models::DialMetricListResponse::record_type
+      ) -> Telnyx::Models::DialMetricListResponse::record_type
+
+      attr_reader region: String?
+
+      def region=: (String) -> String
+
+      attr_reader start_time: Time?
+
+      def start_time=: (Time) -> Time
+
+      def initialize: (
+        ?average_dps: Float,
+        ?dials: Telnyx::Models::DialMetricListResponse::Dials,
+        ?dps_limit: Integer?,
+        ?end_time: Time,
+        ?peak_dps: Float,
+        ?record_type: Telnyx::Models::DialMetricListResponse::record_type,
+        ?region: String,
+        ?start_time: Time
+      ) -> void
+
+      def to_hash: -> {
+        average_dps: Float,
+        dials: Telnyx::Models::DialMetricListResponse::Dials,
+        dps_limit: Integer?,
+        end_time: Time,
+        peak_dps: Float,
+        record_type: Telnyx::Models::DialMetricListResponse::record_type,
+        region: String,
+        start_time: Time
+      }
+
+      type dials =
+        {
+          accepted: Integer,
+          rejected: Telnyx::Models::DialMetricListResponse::Dials::Rejected,
+          total: Integer
+        }
+
+      class Dials < Telnyx::Internal::Type::BaseModel
+        attr_reader accepted: Integer?
+
+        def accepted=: (Integer) -> Integer
+
+        attr_reader rejected: Telnyx::Models::DialMetricListResponse::Dials::Rejected?
+
+        def rejected=: (
+          Telnyx::Models::DialMetricListResponse::Dials::Rejected
+        ) -> Telnyx::Models::DialMetricListResponse::Dials::Rejected
+
+        attr_reader total: Integer?
+
+        def total=: (Integer) -> Integer
+
+        def initialize: (
+          ?accepted: Integer,
+          ?rejected: Telnyx::Models::DialMetricListResponse::Dials::Rejected,
+          ?total: Integer
+        ) -> void
+
+        def to_hash: -> {
+          accepted: Integer,
+          rejected: Telnyx::Models::DialMetricListResponse::Dials::Rejected,
+          total: Integer
+        }
+
+        type rejected =
+          { daily_limit: Integer, dps_limit: Integer, hourly_limit: Integer }
+
+        class Rejected < Telnyx::Internal::Type::BaseModel
+          attr_reader daily_limit: Integer?
+
+          def daily_limit=: (Integer) -> Integer
+
+          attr_reader dps_limit: Integer?
+
+          def dps_limit=: (Integer) -> Integer
+
+          attr_reader hourly_limit: Integer?
+
+          def hourly_limit=: (Integer) -> Integer
+
+          def initialize: (
+            ?daily_limit: Integer,
+            ?dps_limit: Integer,
+            ?hourly_limit: Integer
+          ) -> void
+
+          def to_hash: -> {
+            daily_limit: Integer,
+            dps_limit: Integer,
+            hourly_limit: Integer
+          }
+        end
+      end
+
+      type record_type = :dial_metric
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        DIAL_METRIC: :dial_metric
+
+        def self?.values: -> ::Array[Telnyx::Models::DialMetricListResponse::record_type]
+      end
+    end
+  end
+end

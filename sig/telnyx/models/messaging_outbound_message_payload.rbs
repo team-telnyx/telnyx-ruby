@@ -26,6 +26,8 @@ module Telnyx
         tcr_campaign_billable: bool,
         tcr_campaign_id: String?,
         tcr_campaign_registered: String?,
+        template_id: String,
+        template_name: String,
         text: String,
         to: ::Array[Telnyx::MessagingOutboundMessagePayload::To],
         type: Telnyx::Models::MessagingOutboundMessagePayload::type_,
@@ -132,6 +134,14 @@ module Telnyx
 
       attr_accessor tcr_campaign_registered: String?
 
+      attr_reader template_id: String?
+
+      def template_id=: (String) -> String
+
+      attr_reader template_name: String?
+
+      def template_name=: (String) -> String
+
       attr_reader text: String?
 
       def text=: (String) -> String
@@ -181,6 +191,8 @@ module Telnyx
         ?tcr_campaign_billable: bool,
         ?tcr_campaign_id: String?,
         ?tcr_campaign_registered: String?,
+        ?template_id: String,
+        ?template_name: String,
         ?text: String,
         ?to: ::Array[Telnyx::MessagingOutboundMessagePayload::To],
         ?type: Telnyx::Models::MessagingOutboundMessagePayload::type_,
@@ -215,6 +227,8 @@ module Telnyx
         tcr_campaign_billable: bool,
         tcr_campaign_id: String?,
         tcr_campaign_registered: String?,
+        template_id: String,
+        template_name: String,
         text: String,
         to: ::Array[Telnyx::MessagingOutboundMessagePayload::To],
         type: Telnyx::Models::MessagingOutboundMessagePayload::type_,
@@ -603,7 +617,7 @@ module Telnyx
         end
       end
 
-      type type_ = :SMS | :MMS | :RCS
+      type type_ = :SMS | :MMS | :RCS | :WHATSAPP
 
       module Type
         extend Telnyx::Internal::Type::Enum
@@ -611,6 +625,7 @@ module Telnyx
         SMS: :SMS
         MMS: :MMS
         RCS: :RCS
+        WHATSAPP: :WHATSAPP
 
         def self?.values: -> ::Array[Telnyx::Models::MessagingOutboundMessagePayload::type_]
       end

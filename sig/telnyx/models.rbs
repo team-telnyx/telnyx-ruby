@@ -151,6 +151,8 @@ module Telnyx
 
   class CallAIGatherPartialResultsWebhookEvent = Telnyx::Models::CallAIGatherPartialResultsWebhookEvent
 
+  class CallAnalyzedWebhookEvent = Telnyx::Models::CallAnalyzedWebhookEvent
+
   class CallAnswered = Telnyx::Models::CallAnswered
 
   class CallAnsweredWebhookEvent = Telnyx::Models::CallAnsweredWebhookEvent
@@ -363,6 +365,8 @@ module Telnyx
 
   module Compute = Telnyx::Models::Compute
 
+  class ComputeRetrieveParams = Telnyx::Models::ComputeRetrieveParams
+
   class Conference = Telnyx::Models::Conference
 
   class ConferenceCreated = Telnyx::Models::ConferenceCreated
@@ -524,6 +528,8 @@ module Telnyx
   class DeliveryUpdateWebhookEvent = Telnyx::Models::DeliveryUpdateWebhookEvent
 
   class DetailRecordListParams = Telnyx::Models::DetailRecordListParams
+
+  class DialMetricListParams = Telnyx::Models::DialMetricListParams
 
   class DialogflowConfig = Telnyx::Models::DialogflowConfig
 
@@ -1063,8 +1069,6 @@ module Telnyx
 
   class MeetingSessionRetrieveParams = Telnyx::Models::MeetingSessionRetrieveParams
 
-  class MeetingSessionRetrieveRecordingsParams = Telnyx::Models::MeetingSessionRetrieveRecordingsParams
-
   class MeetingSessionRetrieveTranscriptParams = Telnyx::Models::MeetingSessionRetrieveTranscriptParams
 
   module MeetingSessions = Telnyx::Models::MeetingSessions
@@ -1351,6 +1355,8 @@ module Telnyx
 
   module NumberReservations = Telnyx::Models::NumberReservations
 
+  class NumbersError73c9788e53 = Telnyx::Models::NumbersError73c9788e53
+
   class NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
 
   class NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
@@ -1620,8 +1626,6 @@ module Telnyx
   class RcsToItem = Telnyx::Models::RcsToItem
 
   class Record = Telnyx::Models::Record
-
-  class RecordingAvailableWebhookEvent = Telnyx::Models::RecordingAvailableWebhookEvent
 
   class RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
@@ -1898,6 +1902,18 @@ module Telnyx
   class SuccessResponse = Telnyx::Models::SuccessResponse
 
   class SuppressedRecipient = Telnyx::Models::SuppressedRecipient
+
+  class TailscaleSubnetRouter = Telnyx::Models::TailscaleSubnetRouter
+
+  class TailscaleSubnetRouterCreateParams = Telnyx::Models::TailscaleSubnetRouterCreateParams
+
+  class TailscaleSubnetRouterDeleteParams = Telnyx::Models::TailscaleSubnetRouterDeleteParams
+
+  class TailscaleSubnetRouterListParams = Telnyx::Models::TailscaleSubnetRouterListParams
+
+  class TailscaleSubnetRouterRetrieveParams = Telnyx::Models::TailscaleSubnetRouterRetrieveParams
+
+  class TailscaleSubnetRouterUpdateParams = Telnyx::Models::TailscaleSubnetRouterUpdateParams
 
   class TelephonyCredential = Telnyx::Models::TelephonyCredential
 

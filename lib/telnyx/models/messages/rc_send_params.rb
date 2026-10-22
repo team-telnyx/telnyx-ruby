@@ -53,7 +53,12 @@ module Telnyx
         #   @return [String, nil]
         optional :webhook_url, String
 
-        # @!method initialize(agent_id:, agent_message:, messaging_profile_id:, to:, mms_fallback: nil, sms_fallback: nil, type: nil, webhook_url: nil, request_options: {})
+        # @!attribute idempotency_key
+        #
+        #   @return [String, nil]
+        optional :idempotency_key, String
+
+        # @!method initialize(agent_id:, agent_message:, messaging_profile_id:, to:, mms_fallback: nil, sms_fallback: nil, type: nil, webhook_url: nil, idempotency_key: nil, request_options: {})
         #   @param agent_id [String] RCS Agent ID
         #
         #   @param agent_message [Telnyx::Models::RcsAgentMessage]
@@ -69,6 +74,8 @@ module Telnyx
         #   @param type [Symbol, Telnyx::Models::Messages::RcSendParams::Type] Message type - must be set to "RCS"
         #
         #   @param webhook_url [String] The URL where webhooks related to this message will be sent.
+        #
+        #   @param idempotency_key [String]
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

@@ -6,7 +6,8 @@ module Telnyx
           call_control_id: String,
           client_state: String,
           command_id: String,
-          custom_headers: ::Array[Telnyx::CustomSipHeader]
+          custom_headers: ::Array[Telnyx::CustomSipHeader],
+          reason: String
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -30,11 +31,16 @@ module Telnyx
           ::Array[Telnyx::CustomSipHeader]
         ) -> ::Array[Telnyx::CustomSipHeader]
 
+        attr_reader reason: String?
+
+        def reason=: (String) -> String
+
         def initialize: (
           call_control_id: String,
           ?client_state: String,
           ?command_id: String,
           ?custom_headers: ::Array[Telnyx::CustomSipHeader],
+          ?reason: String,
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -43,6 +49,7 @@ module Telnyx
           client_state: String,
           command_id: String,
           custom_headers: ::Array[Telnyx::CustomSipHeader],
+          reason: String,
           request_options: Telnyx::RequestOptions
         }
       end

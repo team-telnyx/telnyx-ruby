@@ -36,6 +36,18 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::UacConnection::Authentication, nil]
       optional :authentication, enum: -> { Telnyx::UacConnection::Authentication }
 
+      # @!attribute bridge_generate_comfort_noise_on_cn
+      #   Stores the connection preference for generating silent RTP toward the opposite
+      #   call leg when comfort-noise packets (CN, payload type 13) are received during
+      #   hold. Defaults to false and returns the saved value. Only JSON true and false
+      #   are accepted; null and non-boolean values are rejected. This preference is
+      #   independent of default_on_hold_comfort_noise_enabled and does not modify that
+      #   setting. This API provisions the preference; call-processing behavior is
+      #   implemented separately.
+      #
+      #   @return [Boolean, nil]
+      optional :bridge_generate_comfort_noise_on_cn, Telnyx::Internal::Type::Boolean
+
       # @!attribute call_cost_in_webhooks
       #   Specifies if call cost webhooks should be sent for this connection.
       #
@@ -76,8 +88,8 @@ module Telnyx
       optional :encode_contact_header_enabled, Telnyx::Internal::Type::Boolean
 
       # @!attribute encrypted_media
-      #   Enable use of SRTP for encryption. Cannot be set if the transport_portocol is
-      #   TLS.
+      #   Enable use of SRTP for encryption. Can only be set when the SIP signaling
+      #   transport protocol is TLS.
       #
       #   @return [Symbol, Telnyx::Models::EncryptedMedia, nil]
       optional :encrypted_media, enum: -> { Telnyx::EncryptedMedia }, nil?: true
@@ -255,7 +267,7 @@ module Telnyx
       #   @return [Integer, nil]
       optional :webhook_timeout_secs, Integer, nil?: true
 
-      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, android_push_credential_id: nil, authentication: nil, call_cost_in_webhooks: nil, connection_name: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, external_uac_settings: nil, fqdn: nil, fqdn_outbound_authentication: nil, fqdns: nil, inbound: nil, internal_uac_settings: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, registration_status: nil, registration_status_updated_at: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
+      # @!method initialize(id: nil, active: nil, anchorsite_override: nil, android_push_credential_id: nil, authentication: nil, bridge_generate_comfort_noise_on_cn: nil, call_cost_in_webhooks: nil, connection_name: nil, created_at: nil, default_on_hold_comfort_noise_enabled: nil, dtmf_type: nil, encode_contact_header_enabled: nil, encrypted_media: nil, external_uac_settings: nil, fqdn: nil, fqdn_outbound_authentication: nil, fqdns: nil, inbound: nil, internal_uac_settings: nil, ios_push_credential_id: nil, jitter_buffer: nil, noise_suppression: nil, noise_suppression_details: nil, onnet_t38_passthrough_enabled: nil, outbound: nil, password: nil, record_type: nil, registration_status: nil, registration_status_updated_at: nil, rtcp_settings: nil, sip_uri_calling_preference: nil, tags: nil, updated_at: nil, user_name: nil, webhook_api_version: nil, webhook_event_failover_url: nil, webhook_event_url: nil, webhook_timeout_secs: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::UacConnection} for more details.
       #
@@ -274,6 +286,8 @@ module Telnyx
       #
       #   @param authentication [Symbol, Telnyx::Models::UacConnection::Authentication] The authentication strategy used by this connection.
       #
+      #   @param bridge_generate_comfort_noise_on_cn [Boolean] Stores the connection preference for generating silent RTP toward the opposite c
+      #
       #   @param call_cost_in_webhooks [Boolean] Specifies if call cost webhooks should be sent for this connection.
       #
       #   @param connection_name [String]
@@ -286,7 +300,7 @@ module Telnyx
       #
       #   @param encode_contact_header_enabled [Boolean] Encode the SIP contact header sent by Telnyx to avoid issues for NAT or ALG scen
       #
-      #   @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Cannot be set if the transport_portocol is TL
+      #   @param encrypted_media [Symbol, Telnyx::Models::EncryptedMedia, nil] Enable use of SRTP for encryption. Can only be set when the SIP signaling transp
       #
       #   @param external_uac_settings [Telnyx::Models::UacExternalSettings] External SIP peer settings used by Telnyx when registering to your PBX and routi
       #

@@ -14,6 +14,13 @@ module Telnyx
 
       # @see Telnyx::Models::NumberLookupRetrieveResponse#data
       class Data < Telnyx::Internal::Type::BaseModel
+        # @!attribute caller_identity
+        #   Identity information for the phone number's owner, including name and postal
+        #   address. Populated when `type=caller-identity` is requested.
+        #
+        #   @return [Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity, nil]
+        optional :caller_identity, -> { Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity }
+
         # @!attribute caller_name
         #
         #   @return [Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName, nil]
@@ -30,6 +37,14 @@ module Telnyx
         #   @return [String, nil]
         optional :country_code, String
 
+        # @!attribute enhanced_caller_name
+        #   Enhanced caller name for the phone number's owner. Populated when
+        #   `type=enhanced-caller-name` is requested.
+        #
+        #   @return [Telnyx::Models::NumberLookupRetrieveResponse::Data::EnhancedCallerName, nil]
+        optional :enhanced_caller_name,
+                 -> { Telnyx::Models::NumberLookupRetrieveResponse::Data::EnhancedCallerName }
+
         # @!attribute fraud
         #   Unused
         #
@@ -42,6 +57,15 @@ module Telnyx
         #
         #   @return [String, nil]
         optional :national_format, String
+
+        # @!attribute nnid_override
+        #   Network number ID (NNID) override for the phone number, when one applies
+        #   (available only to accounts enabled for NNID); otherwise null.
+        #
+        #   @return [Telnyx::Models::NumberLookupRetrieveResponse::Data::NnidOverride, nil]
+        optional :nnid_override,
+                 -> { Telnyx::Models::NumberLookupRetrieveResponse::Data::NnidOverride },
+                 nil?: true
 
         # @!attribute phone_number
         #   E164-formatted phone number
@@ -60,9 +84,17 @@ module Telnyx
         #   @return [String, nil]
         optional :record_type, String
 
-        # @!method initialize(caller_name: nil, carrier: nil, country_code: nil, fraud: nil, national_format: nil, phone_number: nil, portability: nil, record_type: nil)
+        # @!attribute valid_number
+        #   Indicates whether the phone number is valid.
+        #
+        #   @return [Boolean, nil]
+        optional :valid_number, Telnyx::Internal::Type::Boolean
+
+        # @!method initialize(caller_identity: nil, caller_name: nil, carrier: nil, country_code: nil, enhanced_caller_name: nil, fraud: nil, national_format: nil, nnid_override: nil, phone_number: nil, portability: nil, record_type: nil, valid_number: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::NumberLookupRetrieveResponse::Data} for more details.
+        #
+        #   @param caller_identity [Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity] Identity information for the phone number's owner, including name and postal add
         #
         #   @param caller_name [Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerName]
         #
@@ -70,15 +102,131 @@ module Telnyx
         #
         #   @param country_code [String] Region code that matches the specific country calling code
         #
+        #   @param enhanced_caller_name [Telnyx::Models::NumberLookupRetrieveResponse::Data::EnhancedCallerName] Enhanced caller name for the phone number's owner. Populated when `type=enhanced
+        #
         #   @param fraud [String, nil] Unused
         #
         #   @param national_format [String] Hyphen-separated national number, preceded by the national destination code (NDC
+        #
+        #   @param nnid_override [Telnyx::Models::NumberLookupRetrieveResponse::Data::NnidOverride, nil] Network number ID (NNID) override for the phone number, when one applies (availa
         #
         #   @param phone_number [String] E164-formatted phone number
         #
         #   @param portability [Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability]
         #
         #   @param record_type [String] Identifies the type of record
+        #
+        #   @param valid_number [Boolean] Indicates whether the phone number is valid.
+
+        # @see Telnyx::Models::NumberLookupRetrieveResponse::Data#caller_identity
+        class CallerIdentity < Telnyx::Internal::Type::BaseModel
+          # @!attribute address
+          #   Postal address associated with the phone number's owner.
+          #
+          #   @return [Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity::Address, nil]
+          optional :address, -> { Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity::Address }
+
+          # @!attribute confidence_score
+          #   How strongly the phone number is linked to the returned name, on a scale of 50
+          #   to 90 (higher means more supporting signals). Reflects signal strength, not
+          #   probability: 70 indicates stronger, more consistent evidence than 60, not a 70%
+          #   chance of being correct. As a guide, 70+ is high confidence, 60 moderate, and 50
+          #   limited. Below 50 no name is returned, so scores under 50 are never present.
+          #
+          #   @return [Float, nil]
+          optional :confidence_score, Float, nil?: true
+
+          # @!attribute error_code
+          #   A lookup-specific error code if the identity could not be resolved; otherwise
+          #   null.
+          #
+          #   @return [String, nil]
+          optional :error_code, String, nil?: true
+
+          # @!attribute name
+          #   The name associated with the phone number.
+          #
+          #   @return [String, nil]
+          optional :name, String, nil?: true
+
+          # @!method initialize(address: nil, confidence_score: nil, error_code: nil, name: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity} for more
+          #   details.
+          #
+          #   Identity information for the phone number's owner, including name and postal
+          #   address. Populated when `type=caller-identity` is requested.
+          #
+          #   @param address [Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity::Address] Postal address associated with the phone number's owner.
+          #
+          #   @param confidence_score [Float, nil] How strongly the phone number is linked to the returned name, on a scale of 50 t
+          #
+          #   @param error_code [String, nil] A lookup-specific error code if the identity could not be resolved; otherwise nu
+          #
+          #   @param name [String, nil] The name associated with the phone number.
+
+          # @see Telnyx::Models::NumberLookupRetrieveResponse::Data::CallerIdentity#address
+          class Address < Telnyx::Internal::Type::BaseModel
+            # @!attribute city
+            #   City.
+            #
+            #   @return [String, nil]
+            optional :city, String, nil?: true
+
+            # @!attribute country_code
+            #   Two-letter ISO 3166-1 country code.
+            #
+            #   @return [String, nil]
+            optional :country_code, String, nil?: true
+
+            # @!attribute postal_code
+            #   Postal or ZIP code.
+            #
+            #   @return [String, nil]
+            optional :postal_code, String, nil?: true
+
+            # @!attribute state_code
+            #   Two-letter state or province code.
+            #
+            #   @return [String, nil]
+            optional :state_code, String, nil?: true
+
+            # @!attribute street_line_1
+            #   First line of the street address.
+            #
+            #   @return [String, nil]
+            optional :street_line_1, String, nil?: true
+
+            # @!attribute street_line_2
+            #   Second line of the street address, if any.
+            #
+            #   @return [String, nil]
+            optional :street_line_2, String, nil?: true
+
+            # @!attribute zip4
+            #   ZIP+4 extension, if available.
+            #
+            #   @return [String, nil]
+            optional :zip4, String, nil?: true
+
+            # @!method initialize(city: nil, country_code: nil, postal_code: nil, state_code: nil, street_line_1: nil, street_line_2: nil, zip4: nil)
+            #   Postal address associated with the phone number's owner.
+            #
+            #   @param city [String, nil] City.
+            #
+            #   @param country_code [String, nil] Two-letter ISO 3166-1 country code.
+            #
+            #   @param postal_code [String, nil] Postal or ZIP code.
+            #
+            #   @param state_code [String, nil] Two-letter state or province code.
+            #
+            #   @param street_line_1 [String, nil] First line of the street address.
+            #
+            #   @param street_line_2 [String, nil] Second line of the street address, if any.
+            #
+            #   @param zip4 [String, nil] ZIP+4 extension, if available.
+          end
+        end
 
         # @see Telnyx::Models::NumberLookupRetrieveResponse::Data#caller_name
         class CallerName < Telnyx::Internal::Type::BaseModel
@@ -188,6 +336,65 @@ module Telnyx
           end
         end
 
+        # @see Telnyx::Models::NumberLookupRetrieveResponse::Data#enhanced_caller_name
+        class EnhancedCallerName < Telnyx::Internal::Type::BaseModel
+          # @!attribute caller_name
+          #   The name associated with the phone number.
+          #
+          #   @return [String, nil]
+          optional :caller_name, String, nil?: true
+
+          # @!attribute error_code
+          #   A lookup-specific error code if the enhanced caller name could not be resolved;
+          #   otherwise null.
+          #
+          #   @return [String, nil]
+          optional :error_code, String, nil?: true
+
+          # @!method initialize(caller_name: nil, error_code: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::NumberLookupRetrieveResponse::Data::EnhancedCallerName} for
+          #   more details.
+          #
+          #   Enhanced caller name for the phone number's owner. Populated when
+          #   `type=enhanced-caller-name` is requested.
+          #
+          #   @param caller_name [String, nil] The name associated with the phone number.
+          #
+          #   @param error_code [String, nil] A lookup-specific error code if the enhanced caller name could not be resolved;
+        end
+
+        # @see Telnyx::Models::NumberLookupRetrieveResponse::Data#nnid_override
+        class NnidOverride < Telnyx::Internal::Type::BaseModel
+          # @!attribute name
+          #   Name associated with the NNID.
+          #
+          #   @return [String, nil]
+          optional :name, String
+
+          # @!attribute nnid
+          #   The network number ID.
+          #
+          #   @return [String, nil]
+          optional :nnid, String
+
+          # @!attribute type
+          #   The NNID type.
+          #
+          #   @return [String, nil]
+          optional :type, String
+
+          # @!method initialize(name: nil, nnid: nil, type: nil)
+          #   Network number ID (NNID) override for the phone number, when one applies
+          #   (available only to accounts enabled for NNID); otherwise null.
+          #
+          #   @param name [String] Name associated with the NNID.
+          #
+          #   @param nnid [String] The network number ID.
+          #
+          #   @param type [String] The NNID type.
+        end
+
         # @see Telnyx::Models::NumberLookupRetrieveResponse::Data#portability
         class Portability < Telnyx::Internal::Type::BaseModel
           # @!attribute altspid
@@ -217,10 +424,12 @@ module Telnyx
           optional :city, String
 
           # @!attribute line_type
-          #   Type of number
+          #   The line type of the phone number. Uses the same value set as carrier.type; see
+          #   the API reference for the full list.
           #
-          #   @return [String, nil]
-          optional :line_type, String
+          #   @return [Symbol, Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::LineType, nil]
+          optional :line_type,
+                   enum: -> { Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::LineType }
 
           # @!attribute lrn
           #   Local Routing Number, if assigned to the requested phone number
@@ -284,7 +493,7 @@ module Telnyx
           #
           #   @param city [String] City name extracted from the locality in the Local Exchange Routing Guide (LERG)
           #
-          #   @param line_type [String] Type of number
+          #   @param line_type [Symbol, Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability::LineType] The line type of the phone number. Uses the same value set as carrier.type; see
           #
           #   @param lrn [String] Local Routing Number, if assigned to the requested phone number
           #
@@ -301,6 +510,30 @@ module Telnyx
           #   @param spid_carrier_type [String] Service provider type
           #
           #   @param state [String]
+
+          # The line type of the phone number. Uses the same value set as carrier.type; see
+          # the API reference for the full list.
+          #
+          # @see Telnyx::Models::NumberLookupRetrieveResponse::Data::Portability#line_type
+          module LineType
+            extend Telnyx::Internal::Type::Enum
+
+            FIXED_LINE = :"fixed line"
+            MOBILE = :mobile
+            VOIP = :voip
+            FIXED_LINE_OR_MOBILE = :"fixed line or mobile"
+            TOLL_FREE = :"toll free"
+            PREMIUM_RATE = :"premium rate"
+            SHARED_COST = :"shared cost"
+            PERSONAL_NUMBER = :"personal number"
+            PAGER = :pager
+            UAN = :uan
+            VOICEMAIL = :voicemail
+            UNKNOWN = :unknown
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
 
           # Indicates whether or not the requested phone number has been ported
           #

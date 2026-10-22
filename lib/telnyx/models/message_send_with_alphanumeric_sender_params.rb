@@ -49,7 +49,12 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(from:, messaging_profile_id:, text:, to:, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!attribute idempotency_key
+      #
+      #   @return [String, nil]
+      optional :idempotency_key, String
+
+      # @!method initialize(from:, messaging_profile_id:, text:, to:, use_profile_webhooks: nil, webhook_failover_url: nil, webhook_url: nil, idempotency_key: nil, request_options: {})
       #   @param from [String] A valid alphanumeric sender ID on the user's account.
       #
       #   @param messaging_profile_id [String] The messaging profile ID to use.
@@ -63,6 +68,8 @@ module Telnyx
       #   @param webhook_failover_url [String, nil] Failover callback URL for delivery status updates.
       #
       #   @param webhook_url [String, nil] Callback URL for delivery status updates.
+      #
+      #   @param idempotency_key [String]
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
     end

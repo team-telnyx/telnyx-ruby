@@ -18,6 +18,13 @@ module Telnyx
       sig { params(description: String).void }
       attr_writer :description
 
+      # A human-readable explanation of the error.
+      sig { returns(T.nilable(String)) }
+      attr_reader :detail
+
+      sig { params(detail: String).void }
+      attr_writer :detail
+
       sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
       attr_reader :meta
 
@@ -35,11 +42,20 @@ module Telnyx
           code: String,
           title: String,
           description: String,
+          detail: String,
           meta: T::Hash[Symbol, T.anything],
           source: Telnyx::APIError::Source::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(code:, title:, description: nil, meta: nil, source: nil)
+      def self.new(
+        code:,
+        title:,
+        description: nil,
+        # A human-readable explanation of the error.
+        detail: nil,
+        meta: nil,
+        source: nil
+      )
       end
 
       sig do
@@ -48,6 +64,7 @@ module Telnyx
             code: String,
             title: String,
             description: String,
+            detail: String,
             meta: T::Hash[Symbol, T.anything],
             source: Telnyx::APIError::Source
           }

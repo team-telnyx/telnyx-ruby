@@ -7,13 +7,17 @@ module Telnyx
         class Recordings
           # TeXML REST Commands
           class Json
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Recordings::JsonDeleteRecordingSidJsonParams}
+            # for more details.
+            #
             # Deletes recording resource identified by recording id.
             #
             # @overload delete_recording_sid_json(recording_sid, account_sid:, request_options: {})
             #
             # @param recording_sid [String] Uniquely identifies the recording by id.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -35,13 +39,17 @@ module Telnyx
               )
             end
 
+            # Some parameter documentations has been truncated, see
+            # {Telnyx::Models::Texml::Accounts::Recordings::JsonRetrieveRecordingSidJsonParams}
+            # for more details.
+            #
             # Returns recording resource identified by recording id.
             #
             # @overload retrieve_recording_sid_json(recording_sid, account_sid:, request_options: {})
             #
             # @param recording_sid [String] Uniquely identifies the recording by id.
             #
-            # @param account_sid [String] The id of the account the resource belongs to.
+            # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
             #
             # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
             #

@@ -116,22 +116,6 @@ class Telnyx::Test::Resources::MeetingSessionsTest < Telnyx::Test::ResourceTest
     end
   end
 
-  def test_retrieve_recordings
-    skip("Mock server tests are disabled")
-
-    response = @telnyx.meeting_sessions.retrieve_recordings("mtgsess_a1b2c3d4-e5f6-7890-abcd-ef1234567890")
-
-    assert_pattern do
-      response => Telnyx::Models::MeetingSessionRetrieveRecordingsResponse
-    end
-
-    assert_pattern do
-      response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::MeetingSessionRetrieveRecordingsResponse::Data])
-      }
-    end
-  end
-
   def test_retrieve_transcript
     skip("Mock server tests are disabled")
 

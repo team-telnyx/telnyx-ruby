@@ -25,7 +25,12 @@ module Telnyx
           def retrieve(
             # The ConferenceSid that uniquely identifies a conference.
             conference_sid,
-            # The id of the account the resource belongs to.
+            # The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             request_options: {}
           )
@@ -47,7 +52,12 @@ module Telnyx
           def update(
             # Path param: The ConferenceSid that uniquely identifies a conference.
             conference_sid,
-            # Path param: The id of the account the resource belongs to.
+            # Path param: The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             # Body param: The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
             announce_method: nil,
@@ -81,7 +91,12 @@ module Telnyx
             )
           end
           def retrieve_conferences(
-            # The id of the account the resource belongs to.
+            # The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid,
             # Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also
             # accepts inequality operators, e.g. DateCreated>=2023-05-22.
@@ -117,7 +132,12 @@ module Telnyx
           def retrieve_recordings(
             # The ConferenceSid that uniquely identifies a conference.
             conference_sid,
-            # The id of the account the resource belongs to.
+            # The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             request_options: {}
           )
@@ -136,7 +156,12 @@ module Telnyx
           def retrieve_recordings_json(
             # The ConferenceSid that uniquely identifies a conference.
             conference_sid,
-            # The id of the account the resource belongs to.
+            # The UUID of the Telnyx account that owns the resource, for example
+            # `f5586561-8ff0-4291-a51b-c7dfe4139ff9`. The `account_sid` path segment is kept
+            # for Twilio API compatibility, but the value is a Telnyx account UUID, not a
+            # Twilio `AC...` SID. It must match the account that owns the API key used to
+            # authenticate the request, otherwise the endpoint returns `404`. The same value
+            # is sent as `AccountSid` in TeXML webhooks.
             account_sid:,
             request_options: {}
           )

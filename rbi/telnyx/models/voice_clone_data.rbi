@@ -215,6 +215,7 @@ module Telnyx
         QWEN3_TTS =
           T.let(:Qwen3TTS, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
         ULTRA = T.let(:Ultra, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
+        BAYAN = T.let(:Bayan, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
         SPEECH_2_8_TURBO =
           T.let(
             :"speech-2.8-turbo",

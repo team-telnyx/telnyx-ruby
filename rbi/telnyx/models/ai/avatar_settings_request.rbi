@@ -9,8 +9,8 @@ module Telnyx
             T.any(Telnyx::AI::AvatarSettingsRequest, Telnyx::Internal::AnyHash)
           end
 
-        # The Telnyx avatar to render.
-        sig { returns(Telnyx::AI::AvatarSettingsRequest::AvatarID::OrSymbol) }
+        # The Telnyx stock avatar or organization-owned custom avatar to render.
+        sig { returns(String) }
         attr_accessor :avatar_id
 
         # The background to render.
@@ -28,11 +28,13 @@ module Telnyx
         sig { returns(Symbol) }
         attr_accessor :provider
 
-        # **Beta:** Configuration for the Telnyx open-source avatar provider. The launch
-        # catalog supports six avatars and office, studio, or reception backgrounds.
+        # **Beta:** Configuration for the Telnyx open-source avatar provider. Use a stock
+        # avatar or an organization-owned custom avatar returned by the Avatars API.
+        # Discover the available stock catalog with GET /v2/ai/avatars and
+        # filter[avatar_type]=stock; follow meta.total_pages to load every page.
         sig do
           params(
-            avatar_id: Telnyx::AI::AvatarSettingsRequest::AvatarID::OrSymbol,
+            avatar_id: String,
             background_id:
               Telnyx::AI::AvatarSettingsRequest::BackgroundID::OrSymbol,
             model: Telnyx::AI::AvatarSettingsRequest::Model::OrSymbol,
@@ -40,7 +42,7 @@ module Telnyx
           ).returns(T.attached_class)
         end
         def self.new(
-          # The Telnyx avatar to render.
+          # The Telnyx stock avatar or organization-owned custom avatar to render.
           avatar_id:,
           # The background to render.
           background_id:,
@@ -55,7 +57,7 @@ module Telnyx
         sig do
           override.returns(
             {
-              avatar_id: Telnyx::AI::AvatarSettingsRequest::AvatarID::OrSymbol,
+              avatar_id: String,
               background_id:
                 Telnyx::AI::AvatarSettingsRequest::BackgroundID::OrSymbol,
               model: Telnyx::AI::AvatarSettingsRequest::Model::OrSymbol,
@@ -64,58 +66,6 @@ module Telnyx
           )
         end
         def to_hash
-        end
-
-        # The Telnyx avatar to render.
-        module AvatarID
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::AI::AvatarSettingsRequest::AvatarID)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ELENA =
-            T.let(
-              :elena,
-              Telnyx::AI::AvatarSettingsRequest::AvatarID::TaggedSymbol
-            )
-          BEN =
-            T.let(
-              :ben,
-              Telnyx::AI::AvatarSettingsRequest::AvatarID::TaggedSymbol
-            )
-          JORDAN =
-            T.let(
-              :jordan,
-              Telnyx::AI::AvatarSettingsRequest::AvatarID::TaggedSymbol
-            )
-          LIN =
-            T.let(
-              :lin,
-              Telnyx::AI::AvatarSettingsRequest::AvatarID::TaggedSymbol
-            )
-          AVERY =
-            T.let(
-              :avery,
-              Telnyx::AI::AvatarSettingsRequest::AvatarID::TaggedSymbol
-            )
-          RAPHAEL =
-            T.let(
-              :raphael,
-              Telnyx::AI::AvatarSettingsRequest::AvatarID::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::AI::AvatarSettingsRequest::AvatarID::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
 
         # The background to render.
@@ -141,6 +91,11 @@ module Telnyx
           RECEPTION =
             T.let(
               :reception,
+              Telnyx::AI::AvatarSettingsRequest::BackgroundID::TaggedSymbol
+            )
+          ILLUSTRATED_WORKSPACE =
+            T.let(
+              :illustrated_workspace,
               Telnyx::AI::AvatarSettingsRequest::BackgroundID::TaggedSymbol
             )
 

@@ -10,13 +10,16 @@ module Telnyx
           # @return [Telnyx::Resources::Texml::Accounts::Conferences::Participants]
           attr_reader :participants
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::ConferenceRetrieveParams} for more details.
+          #
           # Returns a single conference resource for the account by its ConferenceSid.
           #
           # @overload retrieve(conference_sid, account_sid:, request_options: {})
           #
           # @param conference_sid [String] The ConferenceSid that uniquely identifies a conference.
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -47,7 +50,7 @@ module Telnyx
           #
           # @param conference_sid [String] Path param: The ConferenceSid that uniquely identifies a conference.
           #
-          # @param account_sid [String] Path param: The id of the account the resource belongs to.
+          # @param account_sid [String] Path param: The UUID of the Telnyx account that owns the resource, for example `
           #
           # @param announce_method [Symbol, Telnyx::Models::Texml::Accounts::ConferenceUpdateParams::AnnounceMethod] Body param: The HTTP method used to call the `AnnounceUrl`. Defaults to `POST`.
           #
@@ -85,7 +88,7 @@ module Telnyx
           #
           # @overload retrieve_conferences(account_sid, date_created: nil, date_updated: nil, friendly_name: nil, page: nil, page_size: nil, page_token: nil, status: nil, request_options: {})
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param date_created [String] Filters conferences by the creation date. Expected format is YYYY-MM-DD. Also ac
           #
@@ -126,13 +129,17 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsParams} for more
+          # details.
+          #
           # Returns the list of recordings made for the specified conference.
           #
           # @overload retrieve_recordings(conference_sid, account_sid:, request_options: {})
           #
           # @param conference_sid [String] The ConferenceSid that uniquely identifies a conference.
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -153,13 +160,17 @@ module Telnyx
             )
           end
 
+          # Some parameter documentations has been truncated, see
+          # {Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsJsonParams} for
+          # more details.
+          #
           # Returns recordings for a conference identified by conference_sid.
           #
           # @overload retrieve_recordings_json(conference_sid, account_sid:, request_options: {})
           #
           # @param conference_sid [String] The ConferenceSid that uniquely identifies a conference.
           #
-          # @param account_sid [String] The id of the account the resource belongs to.
+          # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
           #
           # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
           #

@@ -368,6 +368,11 @@ module Telnyx
           T.let(:landline, Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol)
         LOCAL =
           T.let(:local, Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol)
+        LOCALCOMMERCIAL =
+          T.let(
+            :localcommercial,
+            Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol
+          )
         MOBILE =
           T.let(:mobile, Telnyx::PortingOrder::PhoneNumberType::TaggedSymbol)
         MULTIPURPOSE =

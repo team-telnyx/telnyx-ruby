@@ -43,7 +43,12 @@ module Telnyx
               required :url, String, api_name: :Url
 
               # @!attribute application_sid
-              #   The ID of the TeXML Application.
+              #   The ID of the TeXML Application that will handle the call, for example
+              #   `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+              #   compatibility, but the value is the numeric ID of one of your TeXML Applications
+              #   (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+              #   `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+              #   the XML Request URL configured on this application.
               #
               #   @return [String, nil]
               optional :application_sid, String, api_name: :ApplicationSid
@@ -483,7 +488,7 @@ module Telnyx
               #
               #   @param url [String] The URL from which Telnyx will retrieve the TeXML call instructions.
               #
-              #   @param application_sid [String] The ID of the TeXML Application.
+              #   @param application_sid [String] The ID of the TeXML Application that will handle the call, for example `12933842
               #
               #   @param async_amd [Boolean] Select whether to perform answering machine detection in the background. By defa
               #
@@ -833,7 +838,12 @@ module Telnyx
               required :texml, String, api_name: :Texml
 
               # @!attribute application_sid
-              #   The ID of the TeXML Application.
+              #   The ID of the TeXML Application that will handle the call, for example
+              #   `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+              #   compatibility, but the value is the numeric ID of one of your TeXML Applications
+              #   (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+              #   `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+              #   the XML Request URL configured on this application.
               #
               #   @return [String, nil]
               optional :application_sid, String, api_name: :ApplicationSid
@@ -1279,7 +1289,7 @@ module Telnyx
               #
               #   @param texml [String] TeXML to be used as instructions for the call. If provided, the call will execut
               #
-              #   @param application_sid [String] The ID of the TeXML Application.
+              #   @param application_sid [String] The ID of the TeXML Application that will handle the call, for example `12933842
               #
               #   @param async_amd [Boolean] Select whether to perform answering machine detection in the background. By defa
               #
@@ -1622,7 +1632,12 @@ module Telnyx
 
             class ApplicationDefault < Telnyx::Internal::Type::BaseModel
               # @!attribute application_sid
-              #   The ID of the TeXML Application.
+              #   The ID of the TeXML Application that will handle the call, for example
+              #   `1293384261075731499`. The `ApplicationSid` name is kept for Twilio API
+              #   compatibility, but the value is the numeric ID of one of your TeXML Applications
+              #   (see the TeXML Applications API or the Mission Control Portal), not a Twilio
+              #   `AP...` SID. If `Url` and `Texml` are omitted, Telnyx fetches instructions from
+              #   the XML Request URL configured on this application.
               #
               #   @return [String, nil]
               optional :application_sid, String, api_name: :ApplicationSid
@@ -2079,7 +2094,7 @@ module Telnyx
               #   {Telnyx::Models::Texml::Accounts::CallCallsParams::Body::ApplicationDefault} for
               #   more details.
               #
-              #   @param application_sid [String] The ID of the TeXML Application.
+              #   @param application_sid [String] The ID of the TeXML Application that will handle the call, for example `12933842
               #
               #   @param async_amd [Boolean] Select whether to perform answering machine detection in the background. By defa
               #

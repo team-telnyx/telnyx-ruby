@@ -172,6 +172,8 @@ module Telnyx
   CallAIGatherPartialResultsWebhookEvent =
     Telnyx::Models::CallAIGatherPartialResultsWebhookEvent
 
+  CallAnalyzedWebhookEvent = Telnyx::Models::CallAnalyzedWebhookEvent
+
   CallAnswered = Telnyx::Models::CallAnswered
 
   CallAnsweredWebhookEvent = Telnyx::Models::CallAnsweredWebhookEvent
@@ -417,6 +419,8 @@ module Telnyx
 
   Compute = Telnyx::Models::Compute
 
+  ComputeRetrieveParams = Telnyx::Models::ComputeRetrieveParams
+
   Conference = Telnyx::Models::Conference
 
   ConferenceCreated = Telnyx::Models::ConferenceCreated
@@ -614,6 +618,8 @@ module Telnyx
   DeliveryUpdateWebhookEvent = Telnyx::Models::DeliveryUpdateWebhookEvent
 
   DetailRecordListParams = Telnyx::Models::DetailRecordListParams
+
+  DialMetricListParams = Telnyx::Models::DialMetricListParams
 
   DialogflowConfig = Telnyx::Models::DialogflowConfig
 
@@ -1210,9 +1216,6 @@ module Telnyx
 
   MeetingSessionRetrieveParams = Telnyx::Models::MeetingSessionRetrieveParams
 
-  MeetingSessionRetrieveRecordingsParams =
-    Telnyx::Models::MeetingSessionRetrieveRecordingsParams
-
   MeetingSessionRetrieveTranscriptParams =
     Telnyx::Models::MeetingSessionRetrieveTranscriptParams
 
@@ -1559,6 +1562,8 @@ module Telnyx
 
   NumberReservations = Telnyx::Models::NumberReservations
 
+  NumbersError73c9788e53 = Telnyx::Models::NumbersError73c9788e53
+
   NumbersFeatureCreateParams = Telnyx::Models::NumbersFeatureCreateParams
 
   NumbersPhoneNumberDetailed = Telnyx::Models::NumbersPhoneNumberDetailed
@@ -1854,9 +1859,6 @@ module Telnyx
   RcsToItem = Telnyx::Models::RcsToItem
 
   Record = Telnyx::Models::Record
-
-  RecordingAvailableWebhookEvent =
-    Telnyx::Models::RecordingAvailableWebhookEvent
 
   RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
@@ -2160,6 +2162,23 @@ module Telnyx
   SuccessResponse = Telnyx::Models::SuccessResponse
 
   SuppressedRecipient = Telnyx::Models::SuppressedRecipient
+
+  TailscaleSubnetRouter = Telnyx::Models::TailscaleSubnetRouter
+
+  TailscaleSubnetRouterCreateParams =
+    Telnyx::Models::TailscaleSubnetRouterCreateParams
+
+  TailscaleSubnetRouterDeleteParams =
+    Telnyx::Models::TailscaleSubnetRouterDeleteParams
+
+  TailscaleSubnetRouterListParams =
+    Telnyx::Models::TailscaleSubnetRouterListParams
+
+  TailscaleSubnetRouterRetrieveParams =
+    Telnyx::Models::TailscaleSubnetRouterRetrieveParams
+
+  TailscaleSubnetRouterUpdateParams =
+    Telnyx::Models::TailscaleSubnetRouterUpdateParams
 
   TelephonyCredential = Telnyx::Models::TelephonyCredential
 

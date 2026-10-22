@@ -14,6 +14,7 @@ module Telnyx
           timeout_ms: Integer,
           type: String,
           update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+          vision: Telnyx::AI::VisionToolParams,
           webhook: ::Hash[Symbol, top]
         }
         & Telnyx::Internal::Type::request_parameters
@@ -66,6 +67,12 @@ module Telnyx
           Telnyx::AI::UpdateDynamicVariablesToolParams
         ) -> Telnyx::AI::UpdateDynamicVariablesToolParams
 
+        attr_reader vision: Telnyx::AI::VisionToolParams?
+
+        def vision=: (
+          Telnyx::AI::VisionToolParams
+        ) -> Telnyx::AI::VisionToolParams
+
         attr_reader webhook: ::Hash[Symbol, top]?
 
         def webhook=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
@@ -82,6 +89,7 @@ module Telnyx
           ?timeout_ms: Integer,
           ?type: String,
           ?update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+          ?vision: Telnyx::AI::VisionToolParams,
           ?webhook: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> void
@@ -98,6 +106,7 @@ module Telnyx
           timeout_ms: Integer,
           type: String,
           update_dynamic_variables: Telnyx::AI::UpdateDynamicVariablesToolParams,
+          vision: Telnyx::AI::VisionToolParams,
           webhook: ::Hash[Symbol, top],
           request_options: Telnyx::RequestOptions
         }

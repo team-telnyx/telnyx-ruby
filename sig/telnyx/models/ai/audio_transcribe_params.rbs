@@ -80,6 +80,7 @@ module Telnyx
           | :"deepgram/nova-3-medical"
           | :"nvidia/parakeet-v3"
           | :"omi-health/omi-med-stt-v1"
+          | :"reson8/prerecorded"
 
         module Model
           extend Telnyx::Internal::Type::Enum
@@ -92,6 +93,7 @@ module Telnyx
           DEEPGRAM_NOVA_3_MEDICAL: :"deepgram/nova-3-medical"
           NVIDIA_PARAKEET_V3: :"nvidia/parakeet-v3"
           OMI_HEALTH_OMI_MED_STT_V1: :"omi-health/omi-med-stt-v1"
+          RESON8_PRERECORDED: :"reson8/prerecorded"
 
           def self?.values: -> ::Array[Telnyx::Models::AI::AudioTranscribeParams::model]
         end

@@ -30,7 +30,7 @@ module Telnyx
         #
         # @overload retrieve_recordings_json(account_sid, date_created: nil, page: nil, page_size: nil, request_options: {})
         #
-        # @param account_sid [String] The id of the account the resource belongs to.
+        # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
         #
         # @param date_created [Time] Filters recording by the creation date. Expected format is ISO8601 date or date-
         #
@@ -55,11 +55,15 @@ module Telnyx
           )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::Texml::AccountRetrieveTranscriptionsJsonParams} for more
+        # details.
+        #
         # Returns multiple recording transcription resources for an account.
         #
         # @overload retrieve_transcriptions_json(account_sid, page_size: nil, page_token: nil, request_options: {})
         #
-        # @param account_sid [String] The id of the account the resource belongs to.
+        # @param account_sid [String] The UUID of the Telnyx account that owns the resource, for example `f5586561-8ff
         #
         # @param page_size [Integer] The number of records to be displayed on a page
         #

@@ -88,16 +88,19 @@ module Telnyx
       end
 
       # Creates a new voice clone by uploading an audio file directly. Supported
-      # formats: WAV, MP3, FLAC, OGG, M4A. For best results, provide 5–60 seconds of
-      # clear speech (Ultra accepts up to 60 seconds; Qwen3TTS auto-trims to 10 seconds;
-      # Minimax accepts up to 5 minutes). Maximum file size: 5MB for Telnyx, 20MB for
-      # Minimax.
+      # formats: WAV, MP3, FLAC, OGG, M4A. Maximum file size: 20MB. Reference audio is
+      # trimmed per model: Qwen3TTS and Bayan use the first 10 seconds, Ultra uses up to
+      # 60 seconds, and Minimax accepts 10 seconds to 5 minutes. Ultra clones return
+      # `202` with status `pending`; all other models return `201` with status `active`.
+      # Bayan clones require `ref_text` (the exact transcript of the reference audio)
+      # and support `ar` (default) and `en` only.
       sig do
         params(
           voice_clone_upload_request:
             T.any(
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
@@ -105,7 +108,7 @@ module Telnyx
       end
       def create_from_upload(
         # Multipart form data for creating a voice clone from a direct audio upload.
-        # Maximum file size: 5MB for Telnyx, 20MB for Minimax.
+        # Maximum file size: 20MB.
         voice_clone_upload_request:,
         request_options: {}
       )

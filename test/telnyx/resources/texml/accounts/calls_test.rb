@@ -6,7 +6,8 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   def test_retrieve_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.calls.retrieve("call_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.calls.retrieve("call_sid", account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::CallResource
@@ -39,7 +40,8 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   def test_update_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.calls.update("call_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.calls.update("call_sid", account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::CallResource
@@ -73,7 +75,10 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.texml.accounts.calls.calls("account_sid", body: {Url: "https://www.example.com/texml.xml"})
+      @telnyx.texml.accounts.calls.calls(
+        "f5586561-8ff0-4291-a51b-c7dfe4139ff9",
+        body: {Url: "https://www.example.com/texml.xml"}
+      )
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::CallCallsResponse
@@ -91,7 +96,7 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   def test_retrieve_calls
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.calls.retrieve_calls("account_sid")
+    response = @telnyx.texml.accounts.calls.retrieve_calls("f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::CallRetrieveCallsResponse
@@ -114,7 +119,11 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   def test_siprec_json_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.calls.siprec_json("call_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.calls.siprec_json(
+        "call_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
+      )
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::CallSiprecJsonResponse
@@ -139,7 +148,11 @@ class Telnyx::Test::Resources::Texml::Accounts::CallsTest < Telnyx::Test::Resour
   def test_streams_json_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.calls.streams_json("call_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.calls.streams_json(
+        "call_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
+      )
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::CallStreamsJsonResponse

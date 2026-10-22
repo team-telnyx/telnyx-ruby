@@ -1,0 +1,405 @@
+module Telnyx
+  module Models
+    type call_analyzed_webhook_event =
+      { data: Telnyx::CallAnalyzedWebhookEvent::Data }
+
+    class CallAnalyzedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::CallAnalyzedWebhookEvent::Data?
+
+      def data=: (
+        Telnyx::CallAnalyzedWebhookEvent::Data
+      ) -> Telnyx::CallAnalyzedWebhookEvent::Data
+
+      def initialize: (?data: Telnyx::CallAnalyzedWebhookEvent::Data) -> void
+
+      def to_hash: -> { data: Telnyx::CallAnalyzedWebhookEvent::Data }
+
+      type data =
+        {
+          id: String,
+          event_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAnalyzedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::record_type
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader event_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::event_type?
+
+        def event_type=: (
+          Telnyx::Models::CallAnalyzedWebhookEvent::Data::event_type
+        ) -> Telnyx::Models::CallAnalyzedWebhookEvent::Data::event_type
+
+        attr_reader occurred_at: Time?
+
+        def occurred_at=: (Time) -> Time
+
+        attr_reader payload: Telnyx::CallAnalyzedWebhookEvent::Data::Payload?
+
+        def payload=: (
+          Telnyx::CallAnalyzedWebhookEvent::Data::Payload
+        ) -> Telnyx::CallAnalyzedWebhookEvent::Data::Payload
+
+        attr_reader record_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::record_type?
+
+        def record_type=: (
+          Telnyx::Models::CallAnalyzedWebhookEvent::Data::record_type
+        ) -> Telnyx::Models::CallAnalyzedWebhookEvent::Data::record_type
+
+        def initialize: (
+          ?id: String,
+          ?event_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::event_type,
+          ?occurred_at: Time,
+          ?payload: Telnyx::CallAnalyzedWebhookEvent::Data::Payload,
+          ?record_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::record_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          event_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::event_type,
+          occurred_at: Time,
+          payload: Telnyx::CallAnalyzedWebhookEvent::Data::Payload,
+          record_type: Telnyx::Models::CallAnalyzedWebhookEvent::Data::record_type
+        }
+
+        type event_type = :"call.analyzed"
+
+        module EventType
+          extend Telnyx::Internal::Type::Enum
+
+          CALL_ANALYZED: :"call.analyzed"
+
+          def self?.values: -> ::Array[Telnyx::Models::CallAnalyzedWebhookEvent::Data::event_type]
+        end
+
+        type payload =
+          {
+            assistant_id: String,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            conversation_id: String,
+            conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight]?,
+            cost: Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::cost,
+            duration_sec: Integer,
+            from: String,
+            llm_model: String,
+            reason: String?,
+            recordings: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording]?,
+            stt_model: String,
+            to: String,
+            tts_model_id: String,
+            tts_provider: String,
+            tts_voice_id: String
+          }
+
+        class Payload < Telnyx::Internal::Type::BaseModel
+          attr_reader assistant_id: String?
+
+          def assistant_id=: (String) -> String
+
+          attr_reader call_control_id: String?
+
+          def call_control_id=: (String) -> String
+
+          attr_reader call_leg_id: String?
+
+          def call_leg_id=: (String) -> String
+
+          attr_reader call_session_id: String?
+
+          def call_session_id=: (String) -> String
+
+          attr_reader client_state: String?
+
+          def client_state=: (String) -> String
+
+          attr_reader connection_id: String?
+
+          def connection_id=: (String) -> String
+
+          attr_reader conversation_id: String?
+
+          def conversation_id=: (String) -> String
+
+          attr_accessor conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight]?
+
+          attr_reader cost: Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::cost?
+
+          def cost=: (
+            Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::cost
+          ) -> Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::cost
+
+          attr_reader duration_sec: Integer?
+
+          def duration_sec=: (Integer) -> Integer
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader llm_model: String?
+
+          def llm_model=: (String) -> String
+
+          attr_accessor reason: String?
+
+          attr_accessor recordings: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording]?
+
+          attr_reader stt_model: String?
+
+          def stt_model=: (String) -> String
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          attr_reader tts_model_id: String?
+
+          def tts_model_id=: (String) -> String
+
+          attr_reader tts_provider: String?
+
+          def tts_provider=: (String) -> String
+
+          attr_reader tts_voice_id: String?
+
+          def tts_voice_id=: (String) -> String
+
+          def initialize: (
+            ?assistant_id: String,
+            ?call_control_id: String,
+            ?call_leg_id: String,
+            ?call_session_id: String,
+            ?client_state: String,
+            ?connection_id: String,
+            ?conversation_id: String,
+            ?conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight]?,
+            ?cost: Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::cost,
+            ?duration_sec: Integer,
+            ?from: String,
+            ?llm_model: String,
+            ?reason: String?,
+            ?recordings: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording]?,
+            ?stt_model: String,
+            ?to: String,
+            ?tts_model_id: String,
+            ?tts_provider: String,
+            ?tts_voice_id: String
+          ) -> void
+
+          def to_hash: -> {
+            assistant_id: String,
+            call_control_id: String,
+            call_leg_id: String,
+            call_session_id: String,
+            client_state: String,
+            connection_id: String,
+            conversation_id: String,
+            conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight]?,
+            cost: Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::cost,
+            duration_sec: Integer,
+            from: String,
+            llm_model: String,
+            reason: String?,
+            recordings: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording]?,
+            stt_model: String,
+            to: String,
+            tts_model_id: String,
+            tts_provider: String,
+            tts_voice_id: String
+          }
+
+          type conversation_insight =
+            {
+              conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight::ConversationInsight]?,
+              status: String
+            }
+
+          class ConversationInsight < Telnyx::Internal::Type::BaseModel
+            attr_accessor conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight::ConversationInsight]?
+
+            attr_reader status: String?
+
+            def status=: (String) -> String
+
+            def initialize: (
+              ?conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight::ConversationInsight]?,
+              ?status: String
+            ) -> void
+
+            def to_hash: -> {
+              conversation_insights: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight::ConversationInsight]?,
+              status: String
+            }
+
+            type conversation_insight = { insight_id: String, result: String }
+
+            class ConversationInsight < Telnyx::Internal::Type::BaseModel
+              attr_reader insight_id: String?
+
+              def insight_id=: (String) -> String
+
+              attr_reader result: String?
+
+              def result=: (String) -> String
+
+              def initialize: (?insight_id: String, ?result: String) -> void
+
+              def to_hash: -> { insight_id: String, result: String }
+            end
+          end
+
+          type cost =
+            Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0
+            | String
+
+          module Cost
+            extend Telnyx::Internal::Type::Union
+
+            type union_member0 =
+              {
+                breakdown: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown],
+                currency: String,
+                total: String
+              }
+
+            class UnionMember0 < Telnyx::Internal::Type::BaseModel
+              attr_reader breakdown: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown]?
+
+              def breakdown=: (
+                ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown]
+              ) -> ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown]
+
+              attr_reader currency: String?
+
+              def currency=: (String) -> String
+
+              attr_reader total: String?
+
+              def total=: (String) -> String
+
+              def initialize: (
+                ?breakdown: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown],
+                ?currency: String,
+                ?total: String
+              ) -> void
+
+              def to_hash: -> {
+                breakdown: ::Array[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown],
+                currency: String,
+                total: String
+              }
+
+              type breakdown = { cost: String, product: String }
+
+              class Breakdown < Telnyx::Internal::Type::BaseModel
+                attr_reader cost: String?
+
+                def cost=: (String) -> String
+
+                attr_reader product: String?
+
+                def product=: (String) -> String
+
+                def initialize: (?cost: String, ?product: String) -> void
+
+                def to_hash: -> { cost: String, product: String }
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::cost]
+          end
+
+          type recording =
+            {
+              id: String,
+              channels: String,
+              download_urls: Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording::DownloadURLs,
+              end_time: Time,
+              format_: String,
+              start_time: Time
+            }
+
+          class Recording < Telnyx::Internal::Type::BaseModel
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader channels: String?
+
+            def channels=: (String) -> String
+
+            attr_reader download_urls: Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording::DownloadURLs?
+
+            def download_urls=: (
+              Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording::DownloadURLs
+            ) -> Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording::DownloadURLs
+
+            attr_reader end_time: Time?
+
+            def end_time=: (Time) -> Time
+
+            attr_reader format_: String?
+
+            def format_=: (String) -> String
+
+            attr_reader start_time: Time?
+
+            def start_time=: (Time) -> Time
+
+            def initialize: (
+              ?id: String,
+              ?channels: String,
+              ?download_urls: Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording::DownloadURLs,
+              ?end_time: Time,
+              ?format_: String,
+              ?start_time: Time
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              channels: String,
+              download_urls: Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Recording::DownloadURLs,
+              end_time: Time,
+              format_: String,
+              start_time: Time
+            }
+
+            type download_urls = { :mp3 => String, wav: String }
+
+            class DownloadURLs < Telnyx::Internal::Type::BaseModel
+              attr_reader mp3: String?
+
+              def mp3=: (String) -> String
+
+              attr_reader wav: String?
+
+              def wav=: (String) -> String
+
+              def initialize: (?mp3: String, ?wav: String) -> void
+
+              def to_hash: -> { :mp3 => String, wav: String }
+            end
+          end
+        end
+
+        type record_type = :event
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          EVENT: :event
+
+          def self?.values: -> ::Array[Telnyx::Models::CallAnalyzedWebhookEvent::Data::record_type]
+        end
+      end
+    end
+  end
+end

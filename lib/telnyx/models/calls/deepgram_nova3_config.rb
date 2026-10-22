@@ -22,8 +22,10 @@ module Telnyx
         optional :interim_results, Telnyx::Internal::Type::Boolean
 
         # @!attribute keyterms
-        #   Nova-3 keyterm prompting. Up to 100 domain-specific terms or brand names to bias
-        #   recognition toward. Nova-3-only; use `hints` on Nova-2.
+        #   Keyterm prompting. Up to 100 domain-specific terms or brand names to bias
+        #   recognition toward. Supported on Nova-3 and Flux models (`deepgram/nova-3`,
+        #   `deepgram/nova-3-medical`, `deepgram/flux`, `deepgram/flux-multi`); use `hints`
+        #   on Nova-2.
         #
         #   @return [Array<String>, nil]
         optional :keyterms, Telnyx::Internal::Type::ArrayOf[String]
@@ -69,7 +71,7 @@ module Telnyx
         #
         #   @param interim_results [Boolean] Whether to send also interim results. If set to false, only final results will b
         #
-        #   @param keyterms [Array<String>] Nova-3 keyterm prompting. Up to 100 domain-specific terms or brand names to bias
+        #   @param keyterms [Array<String>] Keyterm prompting. Up to 100 domain-specific terms or brand names to bias recogn
         #
         #   @param keywords_boosting [Hash{Symbol=>Float}] Keywords and their respective intensifiers (boosting values) to improve transcri
         #

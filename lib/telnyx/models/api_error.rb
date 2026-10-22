@@ -18,6 +18,12 @@ module Telnyx
       #   @return [String, nil]
       optional :description, String
 
+      # @!attribute detail
+      #   A human-readable explanation of the error.
+      #
+      #   @return [String, nil]
+      optional :detail, String
+
       # @!attribute meta
       #
       #   @return [Hash{Symbol=>Object}, nil]
@@ -28,11 +34,17 @@ module Telnyx
       #   @return [Telnyx::Models::APIError::Source, nil]
       optional :source, -> { Telnyx::APIError::Source }
 
-      # @!method initialize(code:, title:, description: nil, meta: nil, source: nil)
+      # @!method initialize(code:, title:, description: nil, detail: nil, meta: nil, source: nil)
       #   @param code [String]
+      #
       #   @param title [String]
+      #
       #   @param description [String]
+      #
+      #   @param detail [String] A human-readable explanation of the error.
+      #
       #   @param meta [Hash{Symbol=>Object}]
+      #
       #   @param source [Telnyx::Models::APIError::Source]
 
       # @see Telnyx::Models::APIError#source

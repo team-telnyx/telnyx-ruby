@@ -37,6 +37,9 @@ module Telnyx
 
         variant :skip_turn, -> { Telnyx::AI::AssistantTool::SkipTurn }
 
+        # (BETA) Lets the assistant look at recent image frames the client sent into the conversation (for example webcam or screen-share frames). Frames are sent with `conversation.item.create` and `item.buffer: true`; they never trigger a response on their own. The assistant decides when to look and which frames it needs. Requires a model that supports image input.
+        variant :vision, -> { Telnyx::AI::AssistantTool::Vision }
+
         # (BETA) The pay tool allows the assistant to collect card payments from the caller via DTMF during the conversation. Recording is automatically paused while the pay tool is active and resumes when the payment flow completes. The connector_name must reference a pay connector configured in the Telnyx API.
         variant :pay, -> { Telnyx::AI::AssistantTool::Pay }
 
@@ -380,6 +383,15 @@ module Telnyx
             #   @return [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String]
             required :targets, union: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::Targets }
 
+            # @!attribute bridge_beep
+            #   Plays a short beep once the transfer completes and the calls are bridged, so the
+            #   transfer destination knows the caller is now on the line. The warm transfer
+            #   message plays before the bridge; this marks the moment the caller actually
+            #   joins. Works with and without `warm_transfer_acceptance`.
+            #
+            #   @return [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep, nil]
+            optional :bridge_beep, -> { Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep }
+
             # @!attribute custom_headers
             #   Custom headers to be added to the SIP INVITE for the transfer command.
             #
@@ -449,13 +461,15 @@ module Telnyx
             #   @return [String, nil]
             optional :warm_transfer_instructions, String
 
-            # @!method initialize(from:, targets:, custom_headers: nil, description: nil, diversion: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_acceptance: nil, warm_transfer_instructions: nil)
+            # @!method initialize(from:, targets:, bridge_beep: nil, custom_headers: nil, description: nil, diversion: nil, voicemail_detection: nil, warm_message_delay_ms: nil, warm_transfer_acceptance: nil, warm_transfer_instructions: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer} for more details.
             #
             #   @param from [String] Number or SIP URI placing the call.
             #
             #   @param targets [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList>, String] The different possible targets of the transfer. The assistant will be able to ch
+            #
+            #   @param bridge_beep [Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep] Plays a short beep once the transfer completes and the calls are bridged, so the
             #
             #   @param custom_headers [Array<Telnyx::Models::AI::AssistantTool::Transfer::Transfer::CustomHeader>] Custom headers to be added to the SIP INVITE for the transfer command.
             #
@@ -556,6 +570,50 @@ module Telnyx
                 Telnyx::Internal::Type::ArrayOf[-> {
                   Telnyx::AI::AssistantTool::Transfer::Transfer::Targets::TargetsList
                 }]
+            end
+
+            # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer#bridge_beep
+            class BridgeBeep < Telnyx::Internal::Type::BaseModel
+              # @!attribute enabled
+              #   Whether to play the beep when the calls are bridged.
+              #
+              #   @return [Boolean, nil]
+              optional :enabled, Telnyx::Internal::Type::Boolean
+
+              # @!attribute target_legs
+              #   Who hears the beep. `self` plays it to the transfer destination only; `both`
+              #   plays it to the destination and the original caller.
+              #
+              #   @return [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::TargetLegs, nil]
+              optional :target_legs, enum: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep::TargetLegs }
+
+              # @!method initialize(enabled: nil, target_legs: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep} for more
+              #   details.
+              #
+              #   Plays a short beep once the transfer completes and the calls are bridged, so the
+              #   transfer destination knows the caller is now on the line. The warm transfer
+              #   message plays before the bridge; this marks the moment the caller actually
+              #   joins. Works with and without `warm_transfer_acceptance`.
+              #
+              #   @param enabled [Boolean] Whether to play the beep when the calls are bridged.
+              #
+              #   @param target_legs [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::TargetLegs] Who hears the beep. `self` plays it to the transfer destination only; `both` pla
+
+              # Who hears the beep. `self` plays it to the transfer destination only; `both`
+              # plays it to the destination and the original caller.
+              #
+              # @see Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep#target_legs
+              module TargetLegs
+                extend Telnyx::Internal::Type::Enum
+
+                SELF = :self
+                BOTH = :both
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             class CustomHeader < Telnyx::Internal::Type::BaseModel
@@ -845,7 +903,35 @@ module Telnyx
               optional :end_user_target_context_mode,
                        enum: -> { Telnyx::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode }
 
-              # @!method initialize(enabled: nil, end_user_target_context_mode: nil)
+              # @!attribute require_acceptance
+              #   Fail closed when the acceptance consult cannot run. Off by default: if the
+              #   consult cannot be set up for any reason — including where acceptance is
+              #   unavailable at all (`gather_using_ai`, Conversation Relay or web calls, a
+              #   conference, or additional invited participants) — the transfer degrades to a
+              #   plain warm transfer (the warm transfer message is played to the destination as
+              #   audio and the calls are bridged anyway). Set to true to treat those paths as a
+              #   decline instead: the destination is disconnected without being asked, the
+              #   assistant returns to the caller, and no bridge happens without an acceptance.
+              #   Only consult-setup failures are affected; the destination must still explicitly
+              #   accept on every consult that does run.
+              #
+              #   @return [Boolean, nil]
+              optional :require_acceptance, Telnyx::Internal::Type::Boolean
+
+              # @!attribute timeout_secs
+              #   How long, in seconds, the destination has to accept the transfer, counted from
+              #   when the private consult starts (right after the destination answers, or after
+              #   `warm_message_delay_ms`). The caller keeps hearing ringback the whole time. If
+              #   no acceptance arrives in time, the destination is hung up and the assistant
+              #   returns to the caller (the transfer fails as a timeout). Raise it for
+              #   destinations that answer before a human is on the line, such as a call-center
+              #   queue/ACD or an IVR playing hold audio; keep it as short as practical, since the
+              #   caller waits on ringback until it expires.
+              #
+              #   @return [Integer, nil]
+              optional :timeout_secs, Integer
+
+              # @!method initialize(enabled: nil, end_user_target_context_mode: nil, require_acceptance: nil, timeout_secs: nil)
               #   Some parameter documentations has been truncated, see
               #   {Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance}
               #   for more details.
@@ -865,6 +951,10 @@ module Telnyx
               #   @param enabled [Boolean] Whether the destination must accept the transfer before the calls are bridged.
               #
               #   @param end_user_target_context_mode [Symbol, Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::EndUserTargetContextMode] Controls whether the private exchange between the assistant and the transfer des
+              #
+              #   @param require_acceptance [Boolean] Fail closed when the acceptance consult cannot run. Off by default: if the consu
+              #
+              #   @param timeout_secs [Integer] How long, in seconds, the destination has to accept the transfer, counted from w
 
               # Controls whether the private exchange between the assistant and the transfer
               # destination is kept out of the conversation. With `private` (default) the
@@ -1419,6 +1509,48 @@ module Telnyx
           end
         end
 
+        class Vision < Telnyx::Internal::Type::BaseModel
+          # @!attribute type
+          #
+          #   @return [Symbol, :vision]
+          required :type, const: :vision
+
+          # @!attribute vision
+          #
+          #   @return [Telnyx::Models::AI::VisionToolParams, nil]
+          optional :vision, -> { Telnyx::AI::VisionToolParams }
+
+          response_only do
+            # @!attribute shared
+            #   Whether this tool comes from the shared Tools Library. Responses merge shared
+            #   tools into `tools` with `shared: true`; inline tools carry `shared: false`.
+            #   Read-only: set by the server, not accepted in requests. When updating an
+            #   assistant, omit `shared: true` tools from the request `tools` array and manage
+            #   them through `tool_ids` instead — re-sending their definitions creates an inline
+            #   duplicate (rejected with error code 10015 when the type allows only one instance
+            #   per assistant).
+            #
+            #   @return [Boolean, nil]
+            optional :shared, Telnyx::Internal::Type::Boolean
+          end
+
+          # @!method initialize(shared: nil, vision: nil, type: :vision)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::AI::AssistantTool::Vision} for more details.
+          #
+          #   (BETA) Lets the assistant look at recent image frames the client sent into the
+          #   conversation (for example webcam or screen-share frames). Frames are sent with
+          #   `conversation.item.create` and `item.buffer: true`; they never trigger a
+          #   response on their own. The assistant decides when to look and which frames it
+          #   needs. Requires a model that supports image input.
+          #
+          #   @param shared [Boolean] Whether this tool comes from the shared Tools Library. Responses merge shared to
+          #
+          #   @param vision [Telnyx::Models::AI::VisionToolParams]
+          #
+          #   @param type [Symbol, :vision]
+        end
+
         class Pay < Telnyx::Internal::Type::BaseModel
           # @!attribute pay
           #
@@ -1504,7 +1636,7 @@ module Telnyx
         end
 
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables)]
+        #   @return [Array(Telnyx::Models::AI::AssistantTool::Function, Telnyx::Models::AI::InferenceEmbeddingWebhookToolParams, Telnyx::Models::AI::AssistantTool::ClientSideTool, Telnyx::Models::AI::RetrievalTool, Telnyx::Models::AI::AssistantTool::Handoff, Telnyx::Models::AI::AssistantTool::Hangup, Telnyx::Models::AI::AssistantTool::Transfer, Telnyx::Models::AI::AssistantTool::Invite, Telnyx::Models::AI::AssistantTool::Refer, Telnyx::Models::AI::AssistantTool::SendDtmf, Telnyx::Models::AI::AssistantTool::SendMessage, Telnyx::Models::AI::AssistantTool::SkipTurn, Telnyx::Models::AI::AssistantTool::Vision, Telnyx::Models::AI::AssistantTool::Pay, Telnyx::Models::AI::AssistantTool::UpdateDynamicVariables)]
       end
     end
   end

@@ -6,7 +6,11 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
   def test_retrieve_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.conferences.retrieve("conference_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.conferences.retrieve(
+        "conference_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
+      )
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::ConferenceResource
@@ -33,7 +37,11 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
   def test_update_required_params
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.conferences.update("conference_sid", account_sid: "account_sid")
+    response =
+      @telnyx.texml.accounts.conferences.update(
+        "conference_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
+      )
 
     assert_pattern do
       response => Telnyx::Texml::Accounts::ConferenceResource
@@ -60,7 +68,8 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
   def test_retrieve_conferences
     skip("Mock server tests are disabled")
 
-    response = @telnyx.texml.accounts.conferences.retrieve_conferences("account_sid")
+    response =
+      @telnyx.texml.accounts.conferences.retrieve_conferences("f5586561-8ff0-4291-a51b-c7dfe4139ff9")
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::ConferenceRetrieveConferencesResponse
@@ -84,7 +93,10 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
     skip("Mock server tests are disabled")
 
     response =
-      @telnyx.texml.accounts.conferences.retrieve_recordings("conference_sid", account_sid: "account_sid")
+      @telnyx.texml.accounts.conferences.retrieve_recordings(
+        "conference_sid",
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
+      )
 
     assert_pattern do
       response => Telnyx::Models::Texml::Accounts::ConferenceRetrieveRecordingsResponse
@@ -111,7 +123,7 @@ class Telnyx::Test::Resources::Texml::Accounts::ConferencesTest < Telnyx::Test::
     response =
       @telnyx.texml.accounts.conferences.retrieve_recordings_json(
         "conference_sid",
-        account_sid: "account_sid"
+        account_sid: "f5586561-8ff0-4291-a51b-c7dfe4139ff9"
       )
 
     assert_pattern do

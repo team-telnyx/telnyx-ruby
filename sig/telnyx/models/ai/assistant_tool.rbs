@@ -14,6 +14,7 @@ module Telnyx
         | Telnyx::AI::AssistantTool::SendDtmf
         | Telnyx::AI::AssistantTool::SendMessage
         | Telnyx::AI::AssistantTool::SkipTurn
+        | Telnyx::AI::AssistantTool::Vision
         | Telnyx::AI::AssistantTool::Pay
         | Telnyx::AI::AssistantTool::UpdateDynamicVariables
 
@@ -285,6 +286,7 @@ module Telnyx
             {
               from: String,
               targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets,
+              bridge_beep: Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep,
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               description: String,
               diversion: String,
@@ -298,6 +300,12 @@ module Telnyx
             attr_accessor from: String
 
             attr_accessor targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets
+
+            attr_reader bridge_beep: Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep?
+
+            def bridge_beep=: (
+              Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep
+            ) -> Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep
 
             attr_reader custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader]?
 
@@ -334,6 +342,7 @@ module Telnyx
             def initialize: (
               from: String,
               targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets,
+              ?bridge_beep: Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep,
               ?custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               ?description: String,
               ?diversion: String,
@@ -346,6 +355,7 @@ module Telnyx
             def to_hash: -> {
               from: String,
               targets: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets,
+              bridge_beep: Telnyx::AI::AssistantTool::Transfer::Transfer::BridgeBeep,
               custom_headers: ::Array[Telnyx::AI::AssistantTool::Transfer::Transfer::CustomHeader],
               description: String,
               diversion: String,
@@ -417,6 +427,45 @@ module Telnyx
               def self?.variants: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::targets]
 
               TargetsListArray: Telnyx::Internal::Type::Converter
+            end
+
+            type bridge_beep =
+              {
+                enabled: bool,
+                target_legs: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::target_legs
+              }
+
+            class BridgeBeep < Telnyx::Internal::Type::BaseModel
+              attr_reader enabled: bool?
+
+              def enabled=: (bool) -> bool
+
+              attr_reader target_legs: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::target_legs?
+
+              def target_legs=: (
+                Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::target_legs
+              ) -> Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::target_legs
+
+              def initialize: (
+                ?enabled: bool,
+                ?target_legs: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::target_legs
+              ) -> void
+
+              def to_hash: -> {
+                enabled: bool,
+                target_legs: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::target_legs
+              }
+
+              type target_legs = :self | :both
+
+              module TargetLegs
+                extend Telnyx::Internal::Type::Enum
+
+                SELF: :self
+                BOTH: :both
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::AssistantTool::Transfer::Transfer::BridgeBeep::target_legs]
+              end
             end
 
             type custom_header = { name: String, value: String }
@@ -657,7 +706,9 @@ module Telnyx
             type warm_transfer_acceptance =
               {
                 enabled: bool,
-                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
+                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode,
+                require_acceptance: bool,
+                timeout_secs: Integer
               }
 
             class WarmTransferAcceptance < Telnyx::Internal::Type::BaseModel
@@ -671,14 +722,26 @@ module Telnyx
                 Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
               ) -> Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
 
+              attr_reader require_acceptance: bool?
+
+              def require_acceptance=: (bool) -> bool
+
+              attr_reader timeout_secs: Integer?
+
+              def timeout_secs=: (Integer) -> Integer
+
               def initialize: (
                 ?enabled: bool,
-                ?end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
+                ?end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode,
+                ?require_acceptance: bool,
+                ?timeout_secs: Integer
               ) -> void
 
               def to_hash: -> {
                 enabled: bool,
-                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode
+                end_user_target_context_mode: Telnyx::Models::AI::AssistantTool::Transfer::Transfer::WarmTransferAcceptance::end_user_target_context_mode,
+                require_acceptance: bool,
+                timeout_secs: Integer
               }
 
               type end_user_target_context_mode = :private | :shared
@@ -1136,6 +1199,35 @@ module Telnyx
 
             def to_hash: -> { description: String }
           end
+        end
+
+        type vision =
+          { type: :vision, shared: bool, vision: Telnyx::AI::VisionToolParams }
+
+        class Vision < Telnyx::Internal::Type::BaseModel
+          attr_accessor type: :vision
+
+          attr_reader vision: Telnyx::AI::VisionToolParams?
+
+          def vision=: (
+            Telnyx::AI::VisionToolParams
+          ) -> Telnyx::AI::VisionToolParams
+
+          attr_reader shared: bool?
+
+          def shared=: (bool) -> bool
+
+          def initialize: (
+            ?shared: bool,
+            ?vision: Telnyx::AI::VisionToolParams,
+            ?type: :vision
+          ) -> void
+
+          def to_hash: -> {
+            type: :vision,
+            shared: bool,
+            vision: Telnyx::AI::VisionToolParams
+          }
         end
 
         type pay = { pay: Telnyx::AI::PayToolParams, type: :pay, shared: bool }
