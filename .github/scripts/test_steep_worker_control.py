@@ -10,6 +10,20 @@ class SteepWorkerControlTest(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.workflow = WORKFLOW.read_text()
 
+    def test_ruby_jobs_use_supported_hosted_image(self) -> None:
+        # Inspect actual job blocks, including the conditional fork-safe path.
+        import re
+
+        jobs = re.split(r"(?m)^  ([\w-]+):\n", self.workflow.split("jobs:\n", 1)[1])
+        ruby_jobs = 0
+        for index in range(1, len(jobs), 2):
+            name, body = jobs[index:index + 2]
+            if "uses: ruby/setup-ruby@" in body:
+                ruby_jobs += 1
+                with self.subTest(job=name):
+                    self.assertRegex(body, r"(?m)^    runs-on: ubuntu-24\.04$")
+        self.assertEqual(ruby_jobs, 1)
+
     def test_control_workflow_has_no_normal_sdk_ci_or_privileged_execution(self) -> None:
         self.assertIn("name: Steep Worker Control", self.workflow)
         self.assertIn("workflow_dispatch:", self.workflow)
