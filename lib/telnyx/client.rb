@@ -27,6 +27,9 @@ module Telnyx
     # @return [String, nil]
     attr_reader :client_secret
 
+    # @return [Telnyx::Resources::BrowserSessions]
+    attr_reader :browser_sessions
+
     # @return [Telnyx::Resources::Legacy]
     attr_reader :legacy
 
@@ -929,6 +932,7 @@ module Telnyx
         headers: headers
       )
 
+      @browser_sessions = Telnyx::Resources::BrowserSessions.new(client: self)
       @legacy = Telnyx::Resources::Legacy.new(client: self)
       @oauth = Telnyx::Resources::OAuth.new(client: self)
       @oauth_clients = Telnyx::Resources::OAuthClients.new(client: self)

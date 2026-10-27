@@ -22,6 +22,9 @@ module Telnyx
     sig { returns(T.nilable(String)) }
     attr_reader :client_secret
 
+    sig { returns(Telnyx::Resources::BrowserSessions) }
+    attr_reader :browser_sessions
+
     sig { returns(Telnyx::Resources::Legacy) }
     attr_reader :legacy
 

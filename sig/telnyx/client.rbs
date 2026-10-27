@@ -16,6 +16,8 @@ module Telnyx
 
     attr_reader client_secret: String?
 
+    attr_reader browser_sessions: Telnyx::Resources::BrowserSessions
+
     attr_reader legacy: Telnyx::Resources::Legacy
 
     attr_reader oauth: Telnyx::Resources::OAuth
