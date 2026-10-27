@@ -31,6 +31,12 @@ class CiRunnerPolicyTest(unittest.TestCase):
                     self.assertRegex(body, r"(?m)^    runs-on: ubuntu-24\.04$")
         self.assertEqual(ruby_jobs, 4)
 
+    def test_publish_uses_the_supported_hosted_ruby_image(self) -> None:
+        publish = WORKFLOW.with_name("publish-gem.yml").read_text()
+        self.assertRegex(publish, r"(?m)^    runs-on: ubuntu-24\.04$")
+        self.assertIn("ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f", publish)
+        self.assertNotIn("ruby-version:", publish)  # Keep the project's .ruby-version.
+
     def test_production_steep_has_one_pr_facing_check_and_no_skipped_worker_rows(self) -> None:
         self.assertNotIn("  lint-steep-shards:\n", self.workflow)
         self.assertNotIn("  lint-steep-worker:\n", self.workflow)
