@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type browser_session_create_response = { data: Telnyx::Session }
+
+    class BrowserSessionCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Session?
+
+      def data=: (Telnyx::Session) -> Telnyx::Session
+
+      def initialize: (?data: Telnyx::Session) -> void
+
+      def to_hash: -> { data: Telnyx::Session }
+    end
+  end
+end

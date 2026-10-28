@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    module Tunnels
+      type action_rotate_token_response = { data: Telnyx::TunnelWithToken }
+
+      class ActionRotateTokenResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::TunnelWithToken?
+
+        def data=: (Telnyx::TunnelWithToken) -> Telnyx::TunnelWithToken
+
+        def initialize: (?data: Telnyx::TunnelWithToken) -> void
+
+        def to_hash: -> { data: Telnyx::TunnelWithToken }
+      end
+    end
+  end
+end

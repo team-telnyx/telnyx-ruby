@@ -83,6 +83,13 @@ module Telnyx
           sig { returns(String) }
           attr_accessor :product
 
+          # Optional. Identifier of one API key as recorded on usage, never the key's
+          # secret: the limit then applies to that key only. Absent or `null` sets the total
+          # limit. A blank value, or one with control characters, is refused; it never means
+          # the total limit. An API key limit always has an `amount`.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :credential_id
+
           # `daily` is the current UTC day; `monthly` is the current UTC calendar month.
           sig { returns(T.nilable(Telnyx::SpendLimitPeriod::OrSymbol)) }
           attr_reader :period
@@ -120,6 +127,7 @@ module Telnyx
             params(
               amount: Float,
               product: String,
+              credential_id: T.nilable(String),
               period: Telnyx::SpendLimitPeriod::OrSymbol,
               reason: String,
               unlimited:
@@ -131,6 +139,11 @@ module Telnyx
             amount:,
             # Product to limit, as returned in `product` by the list operation.
             product:,
+            # Optional. Identifier of one API key as recorded on usage, never the key's
+            # secret: the limit then applies to that key only. Absent or `null` sets the total
+            # limit. A blank value, or one with control characters, is refused; it never means
+            # the total limit. An API key limit always has an `amount`.
+            credential_id: nil,
             # `daily` is the current UTC day; `monthly` is the current UTC calendar month.
             period: nil,
             # Why the limit is set or changed, kept for audit.
@@ -145,6 +158,7 @@ module Telnyx
               {
                 amount: Float,
                 product: String,
+                credential_id: T.nilable(String),
                 period: Telnyx::SpendLimitPeriod::OrSymbol,
                 reason: String,
                 unlimited:
@@ -221,7 +235,7 @@ module Telnyx
           sig { params(reason: String).void }
           attr_writer :reason
 
-          # Explicitly no cap.
+          # Explicitly no cap. Not available for API key limits.
           sig do
             params(
               product: String,

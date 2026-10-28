@@ -22,6 +22,9 @@ module Telnyx
     sig { returns(T.nilable(String)) }
     attr_reader :client_secret
 
+    sig { returns(Telnyx::Resources::BrowserSessions) }
+    attr_reader :browser_sessions
+
     sig { returns(Telnyx::Resources::Legacy) }
     attr_reader :legacy
 
@@ -792,6 +795,13 @@ module Telnyx
     #   completions, Responses, Anthropic Messages and classification requests;
     #   requests already running finish normally. Take the list of products from the
     #   list operation.
+    # - **API key limits.** For `inference`, a limit can also apply to one API key,
+    #   named by `credential_id`: the key's identifier as recorded on usage, never its
+    #   secret. When the key's spend goes above its own limit, only that key is
+    #   blocked, with the error title `API key spend limit reached` (code `10039`);
+    #   the account's other keys keep working. The API key limits of a period cannot
+    #   add up to more than the total limit when the total has an amount. Only
+    #   language-model requests authenticated with an API key count toward its limit.
     # - **Limits set by Telnyx.** Telnyx support can also set a limit on your account.
     #   It is listed with `origin: operator` and you can update or delete it like your
     #   own.
@@ -815,6 +825,26 @@ module Telnyx
     # Tailscale Subnet Router operations
     sig { returns(Telnyx::Resources::TailscaleSubnetRouters) }
     attr_reader :tailscale_subnet_routers
+
+    # Download screenshots and other artifacts.
+    sig { returns(Telnyx::Resources::ArtifactDownloads) }
+    attr_reader :artifact_downloads
+
+    sig { returns(Telnyx::Resources::Email) }
+    attr_reader :email
+
+    # Routes on a Network that send a CIDR to a next hop, such as a tunnel.
+    sig { returns(Telnyx::Resources::NetworkRoutes) }
+    attr_reader :network_routes
+
+    # Generic payment connector configuration.
+    sig { returns(Telnyx::Resources::PayConnectors) }
+    attr_reader :pay_connectors
+
+    # Tunnels connect a Network to hosts behind a tunnel process within the user's
+    # network.
+    sig { returns(Telnyx::Resources::Tunnels) }
+    attr_reader :tunnels
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

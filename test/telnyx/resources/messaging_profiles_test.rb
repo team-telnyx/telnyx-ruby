@@ -78,6 +78,7 @@ class Telnyx::Test::Resources::MessagingProfilesTest < Telnyx::Test::ResourceTes
         enabled: Telnyx::Internal::Type::Boolean | nil,
         features: Telnyx::MessagingProfileFeatures | nil,
         health_webhook_url: String | nil,
+        mm7_metadata: Telnyx::Mm7Metadata | nil,
         mms_fall_back_to_sms: Telnyx::Internal::Type::Boolean | nil,
         mms_transcoding: Telnyx::Internal::Type::Boolean | nil,
         mobile_only: Telnyx::Internal::Type::Boolean | nil,

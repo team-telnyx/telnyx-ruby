@@ -1,0 +1,144 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_scenario_agent_params =
+              {
+                scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::scenarios,
+                user_message: String,
+                agent_id: Integer?,
+                agent_resolution_response: String,
+                apply_changes: bool,
+                context: ::Array[Telnyx::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::Context]?,
+                knowledge_base: ::Array[Integer],
+                num_scenarios: Integer,
+                pending_tool_calls: ::Array[::Hash[Symbol, top]]?,
+                scenarios_needing_agent: ::Array[Integer],
+                session_id: Integer?,
+                updated_scenarios: ::Array[::Hash[Symbol, top]]
+              }
+              & Telnyx::Internal::Type::request_parameters
+
+            class ScenarioScenarioAgentParams < Telnyx::Internal::Type::BaseModel
+              extend Telnyx::Internal::Type::RequestParameters::Converter
+              include Telnyx::Internal::Type::RequestParameters
+
+              attr_accessor scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::scenarios
+
+              attr_accessor user_message: String
+
+              attr_accessor agent_id: Integer?
+
+              attr_reader agent_resolution_response: String?
+
+              def agent_resolution_response=: (String) -> String
+
+              attr_reader apply_changes: bool?
+
+              def apply_changes=: (bool) -> bool
+
+              attr_accessor context: ::Array[Telnyx::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::Context]?
+
+              attr_reader knowledge_base: ::Array[Integer]?
+
+              def knowledge_base=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_reader num_scenarios: Integer?
+
+              def num_scenarios=: (Integer) -> Integer
+
+              attr_accessor pending_tool_calls: ::Array[::Hash[Symbol, top]]?
+
+              attr_reader scenarios_needing_agent: ::Array[Integer]?
+
+              def scenarios_needing_agent=: (
+                ::Array[Integer]
+              ) -> ::Array[Integer]
+
+              attr_accessor session_id: Integer?
+
+              attr_reader updated_scenarios: ::Array[::Hash[Symbol, top]]?
+
+              def updated_scenarios=: (
+                ::Array[::Hash[Symbol, top]]
+              ) -> ::Array[::Hash[Symbol, top]]
+
+              def initialize: (
+                scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::scenarios,
+                user_message: String,
+                ?agent_id: Integer?,
+                ?agent_resolution_response: String,
+                ?apply_changes: bool,
+                ?context: ::Array[Telnyx::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::Context]?,
+                ?knowledge_base: ::Array[Integer],
+                ?num_scenarios: Integer,
+                ?pending_tool_calls: ::Array[::Hash[Symbol, top]]?,
+                ?scenarios_needing_agent: ::Array[Integer],
+                ?session_id: Integer?,
+                ?updated_scenarios: ::Array[::Hash[Symbol, top]],
+                ?request_options: Telnyx::request_opts
+              ) -> void
+
+              def to_hash: -> {
+                scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::scenarios,
+                user_message: String,
+                agent_id: Integer?,
+                agent_resolution_response: String,
+                apply_changes: bool,
+                context: ::Array[Telnyx::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::Context]?,
+                knowledge_base: ::Array[Integer],
+                num_scenarios: Integer,
+                pending_tool_calls: ::Array[::Hash[Symbol, top]]?,
+                scenarios_needing_agent: ::Array[Integer],
+                session_id: Integer?,
+                updated_scenarios: ::Array[::Hash[Symbol, top]],
+                request_options: Telnyx::RequestOptions
+              }
+
+              type scenarios = ::Array[top] | String
+
+              module Scenarios
+                extend Telnyx::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::scenarios]
+
+                UnionMember0Array: Telnyx::Internal::Type::Converter
+              end
+
+              type context =
+                { content: String, role: String, timestamp: String }
+
+              class Context < Telnyx::Internal::Type::BaseModel
+                attr_reader content: String?
+
+                def content=: (String) -> String
+
+                attr_reader role: String?
+
+                def role=: (String) -> String
+
+                attr_reader timestamp: String?
+
+                def timestamp=: (String) -> String
+
+                def initialize: (
+                  ?content: String,
+                  ?role: String,
+                  ?timestamp: String
+                ) -> void
+
+                def to_hash: -> {
+                  content: String,
+                  role: String,
+                  timestamp: String
+                }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

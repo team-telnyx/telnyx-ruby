@@ -27,6 +27,7 @@ module Telnyx
         | Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone
         | Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone
         | Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone
+        | Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone
 
       module VoiceCloneUploadRequest
         extend Telnyx::Internal::Type::Union
@@ -401,6 +402,153 @@ module Telnyx
             SPEECH_2_8_TURBO: :"speech-2.8-turbo"
 
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::model_id]
+          end
+        end
+
+        type resemble_clone =
+          {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::gender,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::model_id,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::provider,
+            label: String,
+            language: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::language
+          }
+
+        class ResembleClone < Telnyx::Internal::Type::BaseModel
+          attr_accessor audio_file: Telnyx::Internal::file_input
+
+          attr_accessor gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::gender
+
+          attr_accessor model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::model_id
+
+          attr_accessor name: String
+
+          attr_accessor provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::provider
+
+          attr_reader label: String?
+
+          def label=: (String) -> String
+
+          attr_reader language: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::language?
+
+          def language=: (
+            Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::language
+          ) -> Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::language
+
+          def initialize: (
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::gender,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::model_id,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::provider,
+            ?label: String,
+            ?language: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::language
+          ) -> void
+
+          def to_hash: -> {
+            audio_file: Telnyx::Internal::file_input,
+            gender: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::gender,
+            model_id: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::model_id,
+            name: String,
+            provider: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::provider,
+            label: String,
+            language: Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::language
+          }
+
+          type gender = :male | :female | :neutral
+
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            MALE: :male
+            FEMALE: :female
+            NEUTRAL: :neutral
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::gender]
+          end
+
+          type model_id = :Pro | :Turbo | :Urdu
+
+          module ModelID
+            extend Telnyx::Internal::Type::Enum
+
+            PRO: :Pro
+            TURBO: :Turbo
+            URDU: :Urdu
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::model_id]
+          end
+
+          type provider = :resemble | :Resemble
+
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            RESEMBLE: :resemble
+            RESEMBLE_2: :Resemble
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::provider]
+          end
+
+          type language =
+            :ar
+            | :da
+            | :de
+            | :el
+            | :en
+            | :"en-US"
+            | :es
+            | :fi
+            | :"fr-fr"
+            | :he
+            | :hi
+            | :it
+            | :ja
+            | :ko
+            | :ms
+            | :nl
+            | :no
+            | :pl
+            | :pt
+            | :ru
+            | :sv
+            | :sw
+            | :tr
+            | :ur
+            | :zh
+
+          module Language
+            extend Telnyx::Internal::Type::Enum
+
+            AR: :ar
+            DA: :da
+            DE: :de
+            EL: :el
+            EN: :en
+            EN_US: :"en-US"
+            ES: :es
+            FI: :fi
+            FR_FR: :"fr-fr"
+            HE: :he
+            HI: :hi
+            IT: :it
+            JA: :ja
+            KO: :ko
+            MS: :ms
+            NL: :nl
+            NO: :no
+            PL: :pl
+            PT: :pt
+            RU: :ru
+            SV: :sv
+            SW: :sw
+            TR: :tr
+            UR: :ur
+            ZH: :zh
+
+            def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::language]
           end
         end
 

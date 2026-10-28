@@ -65,6 +65,8 @@ module Telnyx
 
   class ArtifactCompletedWebhookEvent = Telnyx::Models::ArtifactCompletedWebhookEvent
 
+  class ArtifactDownloadRetrieveParams = Telnyx::Models::ArtifactDownloadRetrieveParams
+
   class ArtifactFailedWebhookEvent = Telnyx::Models::ArtifactFailedWebhookEvent
 
   class AttachmentRequest = Telnyx::Models::AttachmentRequest
@@ -128,6 +130,18 @@ module Telnyx
   class BpoAuthorizationInput = Telnyx::Models::BpoAuthorizationInput
 
   class BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
+
+  class BrowserSessionCreateParams = Telnyx::Models::BrowserSessionCreateParams
+
+  class BrowserSessionDeleteParams = Telnyx::Models::BrowserSessionDeleteParams
+
+  class BrowserSessionListParams = Telnyx::Models::BrowserSessionListParams
+
+  class BrowserSessionRetrieveArtifactParams = Telnyx::Models::BrowserSessionRetrieveArtifactParams
+
+  class BrowserSessionRetrieveParams = Telnyx::Models::BrowserSessionRetrieveParams
+
+  module BrowserSessions = Telnyx::Models::BrowserSessions
 
   class BulkMessagingSettingsUpdatePhoneNumbers = Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
 
@@ -629,6 +643,8 @@ module Telnyx
 
   class DynamicEmergencyEndpointRetrieveParams = Telnyx::Models::DynamicEmergencyEndpointRetrieveParams
 
+  module Email = Telnyx::Models::Email
+
   module EmailAddressInput = Telnyx::Models::EmailAddressInput
 
   class EmailBlock = Telnyx::Models::EmailBlock
@@ -876,6 +892,8 @@ module Telnyx
   class GcbChannelZone = Telnyx::Models::GcbChannelZone
 
   class GcsConfigurationData = Telnyx::Models::GcsConfigurationData
+
+  module GenericPayConnectorConfig = Telnyx::Models::GenericPayConnectorConfig
 
   class GlobalIP = Telnyx::Models::GlobalIP
 
@@ -1195,6 +1213,8 @@ module Telnyx
 
   class MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
 
+  class Mm7Metadata = Telnyx::Models::Mm7Metadata
+
   class MobileNetworkOperatorListParams = Telnyx::Models::MobileNetworkOperatorListParams
 
   class MobilePhoneNumber = Telnyx::Models::MobilePhoneNumber
@@ -1233,6 +1253,8 @@ module Telnyx
 
   class MonthDetail = Telnyx::Models::MonthDetail
 
+  class NetappsCursorPaginationMeta = Telnyx::Models::NetappsCursorPaginationMeta
+
   class NetappsLocation = Telnyx::Models::NetappsLocation
 
   class NetappsLocation17904fcfbc = Telnyx::Models::NetappsLocation17904fcfbc
@@ -1254,6 +1276,16 @@ module Telnyx
   class NetworkListParams = Telnyx::Models::NetworkListParams
 
   class NetworkRetrieveParams = Telnyx::Models::NetworkRetrieveParams
+
+  class NetworkRoute = Telnyx::Models::NetworkRoute
+
+  class NetworkRouteCreateParams = Telnyx::Models::NetworkRouteCreateParams
+
+  class NetworkRouteDeleteParams = Telnyx::Models::NetworkRouteDeleteParams
+
+  class NetworkRouteListParams = Telnyx::Models::NetworkRouteListParams
+
+  class NetworkRouteRetrieveParams = Telnyx::Models::NetworkRouteRetrieveParams
 
   module Networks = Telnyx::Models::Networks
 
@@ -1438,6 +1470,20 @@ module Telnyx
   class PaginationMetaCloudflareIPListSync = Telnyx::Models::PaginationMetaCloudflareIPListSync
 
   class PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
+
+  class PayConnector = Telnyx::Models::PayConnector
+
+  class PayConnectorCreateParams = Telnyx::Models::PayConnectorCreateParams
+
+  class PayConnectorDeleteParams = Telnyx::Models::PayConnectorDeleteParams
+
+  class PayConnectorListParams = Telnyx::Models::PayConnectorListParams
+
+  class PayConnectorResponse = Telnyx::Models::PayConnectorResponse
+
+  class PayConnectorRetrieveParams = Telnyx::Models::PayConnectorRetrieveParams
+
+  class PayConnectorUpdateParams = Telnyx::Models::PayConnectorUpdateParams
 
   module Payment = Telnyx::Models::Payment
 
@@ -1743,6 +1789,8 @@ module Telnyx
 
   module ServicePlan = Telnyx::Models::ServicePlan
 
+  class Session = Telnyx::Models::Session
+
   module SessionAnalysis = Telnyx::Models::SessionAnalysis
 
   class SessionAnalysisRetrieveParams = Telnyx::Models::SessionAnalysisRetrieveParams
@@ -1846,6 +1894,8 @@ module Telnyx
   class SpeechToTextRetrieveTranscriptionParams = Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
 
   class SpendLimit = Telnyx::Models::SpendLimit
+
+  class SpendLimitBlock = Telnyx::Models::SpendLimitBlock
 
   class SpendLimitCreateParams = Telnyx::Models::SpendLimitCreateParams
 
@@ -1986,6 +2036,20 @@ module Telnyx
   class TranscriptionWebhookEvent = Telnyx::Models::TranscriptionWebhookEvent
 
   module TransportProtocol = Telnyx::Models::TransportProtocol
+
+  class Tunnel = Telnyx::Models::Tunnel
+
+  class TunnelCreateParams = Telnyx::Models::TunnelCreateParams
+
+  class TunnelDeleteParams = Telnyx::Models::TunnelDeleteParams
+
+  class TunnelListParams = Telnyx::Models::TunnelListParams
+
+  class TunnelRetrieveParams = Telnyx::Models::TunnelRetrieveParams
+
+  module Tunnels = Telnyx::Models::Tunnels
+
+  class TunnelWithToken = Telnyx::Models::TunnelWithToken
 
   class UacConnection = Telnyx::Models::UacConnection
 

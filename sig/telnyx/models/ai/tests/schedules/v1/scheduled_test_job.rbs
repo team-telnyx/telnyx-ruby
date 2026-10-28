@@ -1,0 +1,188 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module Schedules
+          module V1
+            type scheduled_test_job =
+              {
+                id: Integer,
+                agent: Integer,
+                created_at: Time,
+                crontab_expression: String,
+                is_active: bool,
+                name: String,
+                updated_at: Time,
+                execution_mode: String,
+                frequency: Integer,
+                notify_on: Telnyx::Models::AI::Tests::Schedules::V1::ScheduledTestJob::notify_on,
+                personalities: ::Array[Integer],
+                personality: Integer?,
+                run_as_text: bool,
+                scenario_ids: ::Array[Integer],
+                scenarios_data: ::Array[Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob::ScenariosData],
+                tags: ::Array[String],
+                timezone: String
+              }
+
+            class ScheduledTestJob < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: Integer
+
+              attr_accessor agent: Integer
+
+              attr_accessor created_at: Time
+
+              attr_accessor crontab_expression: String
+
+              attr_accessor is_active: bool
+
+              attr_accessor name: String
+
+              attr_accessor updated_at: Time
+
+              attr_reader execution_mode: String?
+
+              def execution_mode=: (String) -> String
+
+              attr_reader frequency: Integer?
+
+              def frequency=: (Integer) -> Integer
+
+              attr_reader notify_on: Telnyx::Models::AI::Tests::Schedules::V1::ScheduledTestJob::notify_on?
+
+              def notify_on=: (
+                Telnyx::Models::AI::Tests::Schedules::V1::ScheduledTestJob::notify_on
+              ) -> Telnyx::Models::AI::Tests::Schedules::V1::ScheduledTestJob::notify_on
+
+              attr_reader personalities: ::Array[Integer]?
+
+              def personalities=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_accessor personality: Integer?
+
+              attr_reader run_as_text: bool?
+
+              def run_as_text=: (bool) -> bool
+
+              attr_reader scenario_ids: ::Array[Integer]?
+
+              def scenario_ids=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_reader scenarios_data: ::Array[Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob::ScenariosData]?
+
+              def scenarios_data=: (
+                ::Array[Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob::ScenariosData]
+              ) -> ::Array[Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob::ScenariosData]
+
+              attr_reader tags: ::Array[String]?
+
+              def tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader timezone: String?
+
+              def timezone=: (String) -> String
+
+              def initialize: (
+                id: Integer,
+                agent: Integer,
+                created_at: Time,
+                crontab_expression: String,
+                is_active: bool,
+                name: String,
+                updated_at: Time,
+                ?execution_mode: String,
+                ?frequency: Integer,
+                ?notify_on: Telnyx::Models::AI::Tests::Schedules::V1::ScheduledTestJob::notify_on,
+                ?personalities: ::Array[Integer],
+                ?personality: Integer?,
+                ?run_as_text: bool,
+                ?scenario_ids: ::Array[Integer],
+                ?scenarios_data: ::Array[Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob::ScenariosData],
+                ?tags: ::Array[String],
+                ?timezone: String
+              ) -> void
+
+              def to_hash: -> {
+                id: Integer,
+                agent: Integer,
+                created_at: Time,
+                crontab_expression: String,
+                is_active: bool,
+                name: String,
+                updated_at: Time,
+                execution_mode: String,
+                frequency: Integer,
+                notify_on: Telnyx::Models::AI::Tests::Schedules::V1::ScheduledTestJob::notify_on,
+                personalities: ::Array[Integer],
+                personality: Integer?,
+                run_as_text: bool,
+                scenario_ids: ::Array[Integer],
+                scenarios_data: ::Array[Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob::ScenariosData],
+                tags: ::Array[String],
+                timezone: String
+              }
+
+              type notify_on = :never | :success | :failure | :both
+
+              module NotifyOn
+                extend Telnyx::Internal::Type::Enum
+
+                NEVER: :never
+                SUCCESS: :success
+                FAILURE: :failure
+                BOTH: :both
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::Tests::Schedules::V1::ScheduledTestJob::notify_on]
+              end
+
+              type scenarios_data =
+                {
+                  id: Integer,
+                  agent: Integer,
+                  name: String,
+                  personality: Integer?,
+                  personality_name: String
+                }
+
+              class ScenariosData < Telnyx::Internal::Type::BaseModel
+                attr_reader id: Integer?
+
+                def id=: (Integer) -> Integer
+
+                attr_reader agent: Integer?
+
+                def agent=: (Integer) -> Integer
+
+                attr_reader name: String?
+
+                def name=: (String) -> String
+
+                attr_accessor personality: Integer?
+
+                attr_reader personality_name: String?
+
+                def personality_name=: (String) -> String
+
+                def initialize: (
+                  ?id: Integer,
+                  ?agent: Integer,
+                  ?name: String,
+                  ?personality: Integer?,
+                  ?personality_name: String
+                ) -> void
+
+                def to_hash: -> {
+                  id: Integer,
+                  agent: Integer,
+                  name: String,
+                  personality: Integer?,
+                  personality_name: String
+                }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

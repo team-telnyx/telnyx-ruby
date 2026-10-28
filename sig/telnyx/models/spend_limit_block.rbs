@@ -1,0 +1,35 @@
+module Telnyx
+  module Models
+    type spend_limit_block =
+      {
+        blocked_until: Date,
+        detected_at: Time,
+        limit_usd: String,
+        spend_usd: String
+      }
+
+    class SpendLimitBlock < Telnyx::Internal::Type::BaseModel
+      attr_accessor blocked_until: Date
+
+      attr_accessor detected_at: Time
+
+      attr_accessor limit_usd: String
+
+      attr_accessor spend_usd: String
+
+      def initialize: (
+        blocked_until: Date,
+        detected_at: Time,
+        limit_usd: String,
+        spend_usd: String
+      ) -> void
+
+      def to_hash: -> {
+        blocked_until: Date,
+        detected_at: Time,
+        limit_usd: String,
+        spend_usd: String
+      }
+    end
+  end
+end

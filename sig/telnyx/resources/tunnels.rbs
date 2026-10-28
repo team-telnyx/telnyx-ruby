@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class Tunnels
+      attr_reader actions: Telnyx::Resources::Tunnels::Actions
+
+      def create: (
+        name: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TunnelCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TunnelRetrieveResponse
+
+      def list: (
+        ?filter: Telnyx::TunnelListParams::Filter,
+        ?page: Telnyx::TunnelListParams::Page,
+        ?sort: Telnyx::Models::TunnelListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::TunnelListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

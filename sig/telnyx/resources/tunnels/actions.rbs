@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class Tunnels
+      class Actions
+        def rotate_token: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Tunnels::ActionRotateTokenResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

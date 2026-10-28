@@ -67,6 +67,12 @@ module Telnyx
       #   @return [String, nil]
       optional :health_webhook_url, String, nil?: true
 
+      # @!attribute mm7_metadata
+      #   MM7 settings for inbound messages
+      #
+      #   @return [Telnyx::Models::Mm7Metadata, nil]
+      optional :mm7_metadata, -> { Telnyx::Mm7Metadata }, nil?: true
+
       # @!attribute mms_fall_back_to_sms
       #   enables SMS fallback for MMS messages.
       #
@@ -141,7 +147,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(name:, whitelisted_destinations:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, features: nil, health_webhook_url: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, resource_group_id: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
+      # @!method initialize(name:, whitelisted_destinations:, ai_assistant_id: nil, alpha_sender: nil, daily_spend_limit: nil, daily_spend_limit_enabled: nil, enabled: nil, features: nil, health_webhook_url: nil, mm7_metadata: nil, mms_fall_back_to_sms: nil, mms_transcoding: nil, mobile_only: nil, number_pool_settings: nil, resource_group_id: nil, smart_encoding: nil, url_shortener_settings: nil, webhook_api_version: nil, webhook_failover_url: nil, webhook_url: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfileCreateParams} for more details.
       #
@@ -162,6 +168,8 @@ module Telnyx
       #   @param features [Telnyx::Models::MessagingProfileFeatures, nil] Telnyx product features the messaging customer can enable on the messaging profi
       #
       #   @param health_webhook_url [String, nil] A URL to receive health check webhooks for numbers in this profile.
+      #
+      #   @param mm7_metadata [Telnyx::Models::Mm7Metadata, nil] MM7 settings for inbound messages
       #
       #   @param mms_fall_back_to_sms [Boolean] enables SMS fallback for MMS messages.
       #

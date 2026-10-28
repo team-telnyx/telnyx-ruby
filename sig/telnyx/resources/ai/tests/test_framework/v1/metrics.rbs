@@ -1,0 +1,84 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        class TestFramework
+          class V1
+            class Metrics
+              def create: (
+                name: String,
+                ?add_to_new_agents: bool?,
+                ?agents: ::Array[Integer],
+                ?assistant_id: String,
+                ?audio_enabled: bool,
+                ?description: String,
+                ?display_order: Integer,
+                ?enum_values: ::Array[String],
+                ?eval_type: String,
+                ?observability_enabled: bool,
+                ?prompt: String,
+                ?sampling_enabled: bool,
+                ?simulation_enabled: bool,
+                ?type: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::AITestMetric
+
+              def retrieve: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::AITestMetric
+
+              def update: (
+                Integer id,
+                ?add_to_new_agents: bool?,
+                ?agents: ::Array[Integer],
+                ?audio_enabled: bool,
+                ?description: String,
+                ?display_order: Integer,
+                ?enum_values: ::Array[String],
+                ?eval_type: String,
+                ?name: String,
+                ?observability_enabled: bool,
+                ?prompt: String,
+                ?sampling_enabled: bool,
+                ?simulation_enabled: bool,
+                ?type: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::AITestMetric
+
+              def list: (
+                ?agent_id: Integer,
+                ?assistant_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::metric_list_response
+
+              def delete: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> top
+
+              def bulk_create: (
+                body: ::Array[Telnyx::AI::Tests::TestFramework::V1::CreateAITestMetricRequest],
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::metric_bulk_create_response
+
+              def generate_metrics: (
+                agent_id: Integer,
+                num_metrics: Integer,
+                ?scenarios: ::Array[Integer],
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::ScenarioGenerationResponse
+
+              def retrieve_generate_metrics_progress: (
+                progress_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

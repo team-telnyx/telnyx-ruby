@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module Email
+      type ip_pool_list_response = { data: ::Array[Telnyx::Email::IPPool] }
+
+      class IPPoolListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Email::IPPool]
+
+        def initialize: (data: ::Array[Telnyx::Email::IPPool]) -> void
+
+        def to_hash: -> { data: ::Array[Telnyx::Email::IPPool] }
+      end
+    end
+  end
+end

@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    type network_route_list_response =
+      {
+        data: ::Array[Telnyx::NetworkRoute],
+        meta: Telnyx::NetappsCursorPaginationMeta
+      }
+
+    class NetworkRouteListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::NetworkRoute]?
+
+      def data=: (
+        ::Array[Telnyx::NetworkRoute]
+      ) -> ::Array[Telnyx::NetworkRoute]
+
+      attr_reader meta: Telnyx::NetappsCursorPaginationMeta?
+
+      def meta=: (
+        Telnyx::NetappsCursorPaginationMeta
+      ) -> Telnyx::NetappsCursorPaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::NetworkRoute],
+        ?meta: Telnyx::NetappsCursorPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::NetworkRoute],
+        meta: Telnyx::NetappsCursorPaginationMeta
+      }
+    end
+  end
+end

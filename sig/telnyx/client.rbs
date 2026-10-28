@@ -16,6 +16,8 @@ module Telnyx
 
     attr_reader client_secret: String?
 
+    attr_reader browser_sessions: Telnyx::Resources::BrowserSessions
+
     attr_reader legacy: Telnyx::Resources::Legacy
 
     attr_reader oauth: Telnyx::Resources::OAuth
@@ -403,6 +405,16 @@ module Telnyx
     attr_reader tts_integrations: Telnyx::Resources::TtsIntegrations
 
     attr_reader tailscale_subnet_routers: Telnyx::Resources::TailscaleSubnetRouters
+
+    attr_reader artifact_downloads: Telnyx::Resources::ArtifactDownloads
+
+    attr_reader email: Telnyx::Resources::Email
+
+    attr_reader network_routes: Telnyx::Resources::NetworkRoutes
+
+    attr_reader pay_connectors: Telnyx::Resources::PayConnectors
+
+    attr_reader tunnels: Telnyx::Resources::Tunnels
 
     private def auth_headers: -> ::Hash[String, String]
 

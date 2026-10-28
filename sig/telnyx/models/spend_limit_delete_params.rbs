@@ -3,6 +3,7 @@ module Telnyx
     type spend_limit_delete_params =
       {
         product: String,
+        credential_id: String,
         period: Telnyx::Models::spend_limit_period,
         reason: String
       }
@@ -13,6 +14,10 @@ module Telnyx
       include Telnyx::Internal::Type::RequestParameters
 
       attr_accessor product: String
+
+      attr_reader credential_id: String?
+
+      def credential_id=: (String) -> String
 
       attr_reader period: Telnyx::Models::spend_limit_period?
 
@@ -26,6 +31,7 @@ module Telnyx
 
       def initialize: (
         product: String,
+        ?credential_id: String,
         ?period: Telnyx::Models::spend_limit_period,
         ?reason: String,
         ?request_options: Telnyx::request_opts
@@ -33,6 +39,7 @@ module Telnyx
 
       def to_hash: -> {
         product: String,
+        credential_id: String,
         period: Telnyx::Models::spend_limit_period,
         reason: String,
         request_options: Telnyx::RequestOptions

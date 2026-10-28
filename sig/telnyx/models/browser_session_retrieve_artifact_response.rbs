@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    type browser_session_retrieve_artifact_response =
+      { data: Telnyx::Models::BrowserSessionRetrieveArtifactResponse::Data }
+
+    class BrowserSessionRetrieveArtifactResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Models::BrowserSessionRetrieveArtifactResponse::Data?
+
+      def data=: (
+        Telnyx::Models::BrowserSessionRetrieveArtifactResponse::Data
+      ) -> Telnyx::Models::BrowserSessionRetrieveArtifactResponse::Data
+
+      def initialize: (
+        ?data: Telnyx::Models::BrowserSessionRetrieveArtifactResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::BrowserSessionRetrieveArtifactResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          action_id: String,
+          checksum: String,
+          content_type: String,
+          created_at: Time,
+          download_url: String,
+          expires_at: Time,
+          session_id: String,
+          size_bytes: Integer,
+          type: String
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor action_id: String
+
+        attr_accessor checksum: String
+
+        attr_accessor content_type: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor download_url: String
+
+        attr_accessor expires_at: Time
+
+        attr_accessor session_id: String
+
+        attr_accessor size_bytes: Integer
+
+        attr_accessor type: String
+
+        def initialize: (
+          id: String,
+          action_id: String,
+          checksum: String,
+          content_type: String,
+          created_at: Time,
+          download_url: String,
+          expires_at: Time,
+          session_id: String,
+          size_bytes: Integer,
+          type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          action_id: String,
+          checksum: String,
+          content_type: String,
+          created_at: Time,
+          download_url: String,
+          expires_at: Time,
+          session_id: String,
+          size_bytes: Integer,
+          type: String
+        }
+      end
+    end
+  end
+end

@@ -22,7 +22,8 @@ module Telnyx
             Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone,
             Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone,
             Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone,
-            Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone
+            Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone,
+            Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone
           )
         )
       end
@@ -35,7 +36,8 @@ module Telnyx
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::OrHash
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -56,7 +58,8 @@ module Telnyx
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone,
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone,
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone,
-                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone
               ),
             request_options: Telnyx::RequestOptions
           }
@@ -76,7 +79,8 @@ module Telnyx
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone,
-              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone
             )
           end
 
@@ -1054,6 +1058,409 @@ module Telnyx
               override.returns(
                 T::Array[
                   Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::ModelID::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class ResembleClone < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
+          # Converted to WAV and trimmed to the first 10 seconds. For best quality, provide
+          # about 10 seconds of clean, single-speaker speech. Maximum size: 20MB.
+          sig { returns(Telnyx::Internal::FileInput) }
+          attr_accessor :audio_file
+
+          # Gender of the voice clone.
+          sig do
+            returns(
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender::OrSymbol
+            )
+          end
+          attr_accessor :gender
+
+          # Resemble model: `Pro`, `Turbo` (English only), or `Urdu`. A clone works only
+          # with this model.
+          sig do
+            returns(
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID::OrSymbol
+            )
+          end
+          attr_accessor :model_id
+
+          # Name for the voice clone.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # Voice synthesis provider. Must be `resemble`.
+          sig do
+            returns(
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::OrSymbol
+            )
+          end
+          attr_accessor :provider
+
+          # Optional custom label describing the voice style.
+          sig { returns(T.nilable(String)) }
+          attr_reader :label
+
+          sig { params(label: String).void }
+          attr_writer :label
+
+          # Language of the reference audio, matched case-insensitively. Pro: required, one
+          # of `ar`, `da`, `de`, `el`, `en-US`, `es`, `fi`, `fr-fr`, `he`, `hi`, `it`, `ja`,
+          # `ko`, `ms`, `nl`, `no`, `pl`, `pt`, `ru`, `sv`, `sw`, `tr`, `zh`. Turbo: `en` or
+          # `en-US` (default `en-US`). Urdu: `ur` (default). Other values return `422`.
+          sig do
+            returns(
+              T.nilable(
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::OrSymbol
+              )
+            )
+          end
+          attr_reader :language
+
+          sig do
+            params(
+              language:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::OrSymbol
+            ).void
+          end
+          attr_writer :language
+
+          # Upload-based voice clone using the Resemble provider. The clone is `active` on
+          # creation. Use it as voice `Resemble.<model_id>.<clone_id>`.
+          sig do
+            params(
+              audio_file: Telnyx::Internal::FileInput,
+              gender:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender::OrSymbol,
+              model_id:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID::OrSymbol,
+              name: String,
+              provider:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::OrSymbol,
+              label: String,
+              language:
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
+            # Converted to WAV and trimmed to the first 10 seconds. For best quality, provide
+            # about 10 seconds of clean, single-speaker speech. Maximum size: 20MB.
+            audio_file:,
+            # Gender of the voice clone.
+            gender:,
+            # Resemble model: `Pro`, `Turbo` (English only), or `Urdu`. A clone works only
+            # with this model.
+            model_id:,
+            # Name for the voice clone.
+            name:,
+            # Voice synthesis provider. Must be `resemble`.
+            provider:,
+            # Optional custom label describing the voice style.
+            label: nil,
+            # Language of the reference audio, matched case-insensitively. Pro: required, one
+            # of `ar`, `da`, `de`, `el`, `en-US`, `es`, `fi`, `fr-fr`, `he`, `hi`, `it`, `ja`,
+            # `ko`, `ms`, `nl`, `no`, `pl`, `pt`, `ru`, `sv`, `sw`, `tr`, `zh`. Turbo: `en` or
+            # `en-US` (default `en-US`). Urdu: `ur` (default). Other values return `422`.
+            language: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                audio_file: Telnyx::Internal::FileInput,
+                gender:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender::OrSymbol,
+                model_id:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID::OrSymbol,
+                name: String,
+                provider:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::OrSymbol,
+                label: String,
+                language:
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Gender of the voice clone.
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            MALE =
+              T.let(
+                :male,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender::TaggedSymbol
+              )
+            FEMALE =
+              T.let(
+                :female,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender::TaggedSymbol
+              )
+            NEUTRAL =
+              T.let(
+                :neutral,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Resemble model: `Pro`, `Turbo` (English only), or `Urdu`. A clone works only
+          # with this model.
+          module ModelID
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRO =
+              T.let(
+                :Pro,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID::TaggedSymbol
+              )
+            TURBO =
+              T.let(
+                :Turbo,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID::TaggedSymbol
+              )
+            URDU =
+              T.let(
+                :Urdu,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Voice synthesis provider. Must be `resemble`.
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            RESEMBLE =
+              T.let(
+                :resemble,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::TaggedSymbol
+              )
+            RESEMBLE_2 =
+              T.let(
+                :Resemble,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Language of the reference audio, matched case-insensitively. Pro: required, one
+          # of `ar`, `da`, `de`, `el`, `en-US`, `es`, `fi`, `fr-fr`, `he`, `hi`, `it`, `ja`,
+          # `ko`, `ms`, `nl`, `no`, `pl`, `pt`, `ru`, `sv`, `sw`, `tr`, `zh`. Turbo: `en` or
+          # `en-US` (default `en-US`). Urdu: `ur` (default). Other values return `422`.
+          module Language
+            extend Telnyx::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            AR =
+              T.let(
+                :ar,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            DA =
+              T.let(
+                :da,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            DE =
+              T.let(
+                :de,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            EL =
+              T.let(
+                :el,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            EN =
+              T.let(
+                :en,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            EN_US =
+              T.let(
+                :"en-US",
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            ES =
+              T.let(
+                :es,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            FI =
+              T.let(
+                :fi,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            FR_FR =
+              T.let(
+                :"fr-fr",
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            HE =
+              T.let(
+                :he,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            HI =
+              T.let(
+                :hi,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            IT =
+              T.let(
+                :it,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            JA =
+              T.let(
+                :ja,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            KO =
+              T.let(
+                :ko,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            MS =
+              T.let(
+                :ms,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            NL =
+              T.let(
+                :nl,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            NO =
+              T.let(
+                :no,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            PL =
+              T.let(
+                :pl,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            PT =
+              T.let(
+                :pt,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            RU =
+              T.let(
+                :ru,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            SV =
+              T.let(
+                :sv,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            SW =
+              T.let(
+                :sw,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            TR =
+              T.let(
+                :tr,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            UR =
+              T.let(
+                :ur,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+            ZH =
+              T.let(
+                :zh,
+                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language::TaggedSymbol
                 ]
               )
             end

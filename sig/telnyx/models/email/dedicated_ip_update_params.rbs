@@ -1,0 +1,84 @@
+module Telnyx
+  module Models
+    module Email
+      type dedicated_ip_update_params =
+        {
+          id: String,
+          drain: bool,
+          force: bool,
+          pool_id: String,
+          warmup: Telnyx::Email::DedicatedIPUpdateParams::Warmup,
+          warmup_paused: bool,
+          weight: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class DedicatedIPUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_reader drain: bool?
+
+        def drain=: (bool) -> bool
+
+        attr_reader force: bool?
+
+        def force=: (bool) -> bool
+
+        attr_reader pool_id: String?
+
+        def pool_id=: (String) -> String
+
+        attr_reader warmup: Telnyx::Email::DedicatedIPUpdateParams::Warmup?
+
+        def warmup=: (
+          Telnyx::Email::DedicatedIPUpdateParams::Warmup
+        ) -> Telnyx::Email::DedicatedIPUpdateParams::Warmup
+
+        attr_reader warmup_paused: bool?
+
+        def warmup_paused=: (bool) -> bool
+
+        attr_reader weight: Integer?
+
+        def weight=: (Integer) -> Integer
+
+        def initialize: (
+          id: String,
+          ?drain: bool,
+          ?force: bool,
+          ?pool_id: String,
+          ?warmup: Telnyx::Email::DedicatedIPUpdateParams::Warmup,
+          ?warmup_paused: bool,
+          ?weight: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          drain: bool,
+          force: bool,
+          pool_id: String,
+          warmup: Telnyx::Email::DedicatedIPUpdateParams::Warmup,
+          warmup_paused: bool,
+          weight: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type warmup = { paused: bool }
+
+        class Warmup < Telnyx::Internal::Type::BaseModel
+          attr_reader paused: bool?
+
+          def paused=: (bool) -> bool
+
+          def initialize: (?paused: bool) -> void
+
+          def to_hash: -> { paused: bool }
+        end
+      end
+    end
+  end
+end

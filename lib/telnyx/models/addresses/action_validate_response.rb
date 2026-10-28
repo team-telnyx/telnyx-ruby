@@ -16,7 +16,6 @@ module Telnyx
         # @see Telnyx::Models::Addresses::ActionValidateResponse#data
         class Data < Telnyx::Internal::Type::BaseModel
           # @!attribute result
-          #   Indicates whether an address is valid or invalid.
           #
           #   @return [Symbol, Telnyx::Models::Addresses::ActionValidateResponse::Data::Result]
           required :result, enum: -> { Telnyx::Models::Addresses::ActionValidateResponse::Data::Result }
@@ -39,7 +38,7 @@ module Telnyx
           optional :record_type, String
 
           # @!method initialize(result:, suggested:, errors: nil, record_type: nil)
-          #   @param result [Symbol, Telnyx::Models::Addresses::ActionValidateResponse::Data::Result] Indicates whether an address is valid or invalid.
+          #   @param result [Symbol, Telnyx::Models::Addresses::ActionValidateResponse::Data::Result]
           #
           #   @param suggested [Telnyx::Models::Addresses::ActionValidateResponse::Data::Suggested] Provides normalized address when available.
           #
@@ -47,14 +46,11 @@ module Telnyx
           #
           #   @param record_type [String] Identifies the type of the resource.
 
-          # Indicates whether an address is valid or invalid.
-          #
           # @see Telnyx::Models::Addresses::ActionValidateResponse::Data#result
           module Result
             extend Telnyx::Internal::Type::Enum
 
             VALID = :valid
-            INVALID = :invalid
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -69,6 +65,13 @@ module Telnyx
             #   @return [String, nil]
             optional :administrative_area, String
 
+            # @!attribute borough
+            #   The borough of the address. This field is not used for addresses in the US but
+            #   is used for some international addresses.
+            #
+            #   @return [String, nil]
+            optional :borough, String
+
             # @!attribute country_code
             #   The two-character (ISO 3166-1 alpha-2) country code of the address.
             #
@@ -82,12 +85,31 @@ module Telnyx
             #   @return [String, nil]
             optional :extended_address, String
 
+            # @!attribute latitude
+            #   Latitude of the suggested address, when available.
+            #
+            #   @return [Float, nil]
+            optional :latitude, Float, nil?: true
+
             # @!attribute locality
             #   The locality of the address. For US addresses, this corresponds to the city of
             #   the address.
             #
             #   @return [String, nil]
             optional :locality, String
+
+            # @!attribute longitude
+            #   Longitude of the suggested address, when available.
+            #
+            #   @return [Float, nil]
+            optional :longitude, Float, nil?: true
+
+            # @!attribute neighborhood
+            #   The neighborhood of the address. This field is not used for addresses in the US
+            #   but is used for some international addresses.
+            #
+            #   @return [String, nil]
+            optional :neighborhood, String
 
             # @!attribute postal_code
             #   The postal code of the address.
@@ -101,7 +123,7 @@ module Telnyx
             #   @return [String, nil]
             optional :street_address, String
 
-            # @!method initialize(administrative_area: nil, country_code: nil, extended_address: nil, locality: nil, postal_code: nil, street_address: nil)
+            # @!method initialize(administrative_area: nil, borough: nil, country_code: nil, extended_address: nil, latitude: nil, locality: nil, longitude: nil, neighborhood: nil, postal_code: nil, street_address: nil)
             #   Some parameter documentations has been truncated, see
             #   {Telnyx::Models::Addresses::ActionValidateResponse::Data::Suggested} for more
             #   details.
@@ -110,11 +132,19 @@ module Telnyx
             #
             #   @param administrative_area [String] The locality of the address. For US addresses, this corresponds to the state of
             #
+            #   @param borough [String] The borough of the address. This field is not used for addresses in the US but i
+            #
             #   @param country_code [String] The two-character (ISO 3166-1 alpha-2) country code of the address.
             #
             #   @param extended_address [String] Additional street address information about the address such as, but not limited
             #
+            #   @param latitude [Float, nil] Latitude of the suggested address, when available.
+            #
             #   @param locality [String] The locality of the address. For US addresses, this corresponds to the city of t
+            #
+            #   @param longitude [Float, nil] Longitude of the suggested address, when available.
+            #
+            #   @param neighborhood [String] The neighborhood of the address. This field is not used for addresses in the US
             #
             #   @param postal_code [String] The postal code of the address.
             #

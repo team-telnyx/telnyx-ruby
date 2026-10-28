@@ -124,7 +124,14 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::gender]
       end
 
-      type model_id = :Qwen3TTS | :Ultra | :Bayan | :"speech-2.8-turbo"
+      type model_id =
+        :Qwen3TTS
+        | :Ultra
+        | :Bayan
+        | :"speech-2.8-turbo"
+        | :Pro
+        | :Turbo
+        | :Urdu
 
       module ModelID
         extend Telnyx::Internal::Type::Enum
@@ -133,6 +140,9 @@ module Telnyx
         ULTRA: :Ultra
         BAYAN: :Bayan
         SPEECH_2_8_TURBO: :"speech-2.8-turbo"
+        PRO: :Pro
+        TURBO: :Turbo
+        URDU: :Urdu
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::model_id]
       end

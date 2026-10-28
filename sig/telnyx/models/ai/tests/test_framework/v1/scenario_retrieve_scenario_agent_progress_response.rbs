@@ -1,0 +1,174 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_retrieve_scenario_agent_progress_response =
+              {
+                error: String?,
+                mode: String,
+                progress_id: String,
+                result: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result?,
+                session_id: Integer?,
+                status: String
+              }
+
+            class ScenarioRetrieveScenarioAgentProgressResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor error: String?
+
+              attr_reader mode: String?
+
+              def mode=: (String) -> String
+
+              attr_reader progress_id: String?
+
+              def progress_id=: (String) -> String
+
+              attr_accessor result: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result?
+
+              attr_accessor session_id: Integer?
+
+              attr_reader status: String?
+
+              def status=: (String) -> String
+
+              def initialize: (
+                ?error: String?,
+                ?mode: String,
+                ?progress_id: String,
+                ?result: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result?,
+                ?session_id: Integer?,
+                ?status: String
+              ) -> void
+
+              def to_hash: -> {
+                error: String?,
+                mode: String,
+                progress_id: String,
+                result: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result?,
+                session_id: Integer?,
+                status: String
+              }
+
+              type result =
+                {
+                  cancelled: bool,
+                  clarification_questions: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ClarificationQuestion],
+                  conversation_history: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ConversationHistory],
+                  message: String,
+                  needs_clarification: bool,
+                  session_id: Integer,
+                  success: bool,
+                  updated_scenarios: ::Array[::Hash[Symbol, top]]
+                }
+
+              class Result < Telnyx::Internal::Type::BaseModel
+                attr_reader cancelled: bool?
+
+                def cancelled=: (bool) -> bool
+
+                attr_reader clarification_questions: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ClarificationQuestion]?
+
+                def clarification_questions=: (
+                  ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ClarificationQuestion]
+                ) -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ClarificationQuestion]
+
+                attr_reader conversation_history: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ConversationHistory]?
+
+                def conversation_history=: (
+                  ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ConversationHistory]
+                ) -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ConversationHistory]
+
+                attr_reader message: String?
+
+                def message=: (String) -> String
+
+                attr_reader needs_clarification: bool?
+
+                def needs_clarification=: (bool) -> bool
+
+                attr_reader session_id: Integer?
+
+                def session_id=: (Integer) -> Integer
+
+                attr_reader success: bool?
+
+                def success=: (bool) -> bool
+
+                attr_reader updated_scenarios: ::Array[::Hash[Symbol, top]]?
+
+                def updated_scenarios=: (
+                  ::Array[::Hash[Symbol, top]]
+                ) -> ::Array[::Hash[Symbol, top]]
+
+                def initialize: (
+                  ?cancelled: bool,
+                  ?clarification_questions: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ClarificationQuestion],
+                  ?conversation_history: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ConversationHistory],
+                  ?message: String,
+                  ?needs_clarification: bool,
+                  ?session_id: Integer,
+                  ?success: bool,
+                  ?updated_scenarios: ::Array[::Hash[Symbol, top]]
+                ) -> void
+
+                def to_hash: -> {
+                  cancelled: bool,
+                  clarification_questions: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ClarificationQuestion],
+                  conversation_history: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse::Result::ConversationHistory],
+                  message: String,
+                  needs_clarification: bool,
+                  session_id: Integer,
+                  success: bool,
+                  updated_scenarios: ::Array[::Hash[Symbol, top]]
+                }
+
+                type clarification_question = { question: String }
+
+                class ClarificationQuestion < Telnyx::Internal::Type::BaseModel
+                  attr_reader question: String?
+
+                  def question=: (String) -> String
+
+                  def initialize: (?question: String) -> void
+
+                  def to_hash: -> { question: String }
+                end
+
+                type conversation_history =
+                  { content: String, role: String, timestamp: String }
+
+                class ConversationHistory < Telnyx::Internal::Type::BaseModel
+                  attr_reader content: String?
+
+                  def content=: (String) -> String
+
+                  attr_reader role: String?
+
+                  def role=: (String) -> String
+
+                  attr_reader timestamp: String?
+
+                  def timestamp=: (String) -> String
+
+                  def initialize: (
+                    ?content: String,
+                    ?role: String,
+                    ?timestamp: String
+                  ) -> void
+
+                  def to_hash: -> {
+                    content: String,
+                    role: String,
+                    timestamp: String
+                  }
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

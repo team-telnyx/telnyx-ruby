@@ -1,0 +1,299 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type ai_test_metric =
+              {
+                id: Integer,
+                eval_type: String,
+                name: String,
+                type: String,
+                add_to_new_agents: bool?,
+                agent: Integer?,
+                agent_names: ::Array[String],
+                agents: ::Array[Integer],
+                alert_filters: ::Hash[Symbol, top]?,
+                alert_type: String,
+                audio_enabled: bool,
+                configuration: ::Hash[Symbol, top]?,
+                description: String,
+                display_order: Integer,
+                enum_values: ::Array[String],
+                evaluation_trigger: String,
+                evaluation_trigger_custom_code: String,
+                evaluation_trigger_prompt: String,
+                ewma_alpha: Float,
+                function_name: String?,
+                kb_file_ids: ::Array[Integer],
+                knowledge_base_files: ::Array[String],
+                metric_cost: Float,
+                observability_enabled: bool,
+                overall_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::overall_score,
+                priority_assignment_prompt: String,
+                project: Integer?,
+                prompt: String,
+                sample_rate: Float?,
+                sampling_enabled: bool,
+                significant_change_alert_direction: String,
+                significant_change_alert_status: String,
+                simulation_enabled: bool,
+                slug: String?,
+                std_multiplier: Float,
+                total_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::total_score,
+                trigger_type: String,
+                user_defined: bool,
+                uses_llm_judge: bool,
+                window_size: Integer
+              }
+
+            class AITestMetric < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: Integer
+
+              attr_accessor eval_type: String
+
+              attr_accessor name: String
+
+              attr_accessor type: String
+
+              attr_accessor add_to_new_agents: bool?
+
+              attr_accessor agent: Integer?
+
+              attr_reader agent_names: ::Array[String]?
+
+              def agent_names=: (::Array[String]) -> ::Array[String]
+
+              attr_reader agents: ::Array[Integer]?
+
+              def agents=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_accessor alert_filters: ::Hash[Symbol, top]?
+
+              attr_reader alert_type: String?
+
+              def alert_type=: (String) -> String
+
+              attr_reader audio_enabled: bool?
+
+              def audio_enabled=: (bool) -> bool
+
+              attr_accessor configuration: ::Hash[Symbol, top]?
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader display_order: Integer?
+
+              def display_order=: (Integer) -> Integer
+
+              attr_reader enum_values: ::Array[String]?
+
+              def enum_values=: (::Array[String]) -> ::Array[String]
+
+              attr_reader evaluation_trigger: String?
+
+              def evaluation_trigger=: (String) -> String
+
+              attr_reader evaluation_trigger_custom_code: String?
+
+              def evaluation_trigger_custom_code=: (String) -> String
+
+              attr_reader evaluation_trigger_prompt: String?
+
+              def evaluation_trigger_prompt=: (String) -> String
+
+              attr_reader ewma_alpha: Float?
+
+              def ewma_alpha=: (Float) -> Float
+
+              attr_accessor function_name: String?
+
+              attr_reader kb_file_ids: ::Array[Integer]?
+
+              def kb_file_ids=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_reader knowledge_base_files: ::Array[String]?
+
+              def knowledge_base_files=: (::Array[String]) -> ::Array[String]
+
+              attr_reader metric_cost: Float?
+
+              def metric_cost=: (Float) -> Float
+
+              attr_reader observability_enabled: bool?
+
+              def observability_enabled=: (bool) -> bool
+
+              attr_reader overall_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::overall_score?
+
+              def overall_score=: (
+                Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::overall_score
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::overall_score
+
+              attr_reader priority_assignment_prompt: String?
+
+              def priority_assignment_prompt=: (String) -> String
+
+              attr_accessor project: Integer?
+
+              attr_reader prompt: String?
+
+              def prompt=: (String) -> String
+
+              attr_accessor sample_rate: Float?
+
+              attr_reader sampling_enabled: bool?
+
+              def sampling_enabled=: (bool) -> bool
+
+              attr_reader significant_change_alert_direction: String?
+
+              def significant_change_alert_direction=: (String) -> String
+
+              attr_reader significant_change_alert_status: String?
+
+              def significant_change_alert_status=: (String) -> String
+
+              attr_reader simulation_enabled: bool?
+
+              def simulation_enabled=: (bool) -> bool
+
+              attr_accessor slug: String?
+
+              attr_reader std_multiplier: Float?
+
+              def std_multiplier=: (Float) -> Float
+
+              attr_reader total_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::total_score?
+
+              def total_score=: (
+                Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::total_score
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::total_score
+
+              attr_reader trigger_type: String?
+
+              def trigger_type=: (String) -> String
+
+              attr_reader user_defined: bool?
+
+              def user_defined=: (bool) -> bool
+
+              attr_reader uses_llm_judge: bool?
+
+              def uses_llm_judge=: (bool) -> bool
+
+              attr_reader window_size: Integer?
+
+              def window_size=: (Integer) -> Integer
+
+              def initialize: (
+                id: Integer,
+                eval_type: String,
+                name: String,
+                type: String,
+                ?add_to_new_agents: bool?,
+                ?agent: Integer?,
+                ?agent_names: ::Array[String],
+                ?agents: ::Array[Integer],
+                ?alert_filters: ::Hash[Symbol, top]?,
+                ?alert_type: String,
+                ?audio_enabled: bool,
+                ?configuration: ::Hash[Symbol, top]?,
+                ?description: String,
+                ?display_order: Integer,
+                ?enum_values: ::Array[String],
+                ?evaluation_trigger: String,
+                ?evaluation_trigger_custom_code: String,
+                ?evaluation_trigger_prompt: String,
+                ?ewma_alpha: Float,
+                ?function_name: String?,
+                ?kb_file_ids: ::Array[Integer],
+                ?knowledge_base_files: ::Array[String],
+                ?metric_cost: Float,
+                ?observability_enabled: bool,
+                ?overall_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::overall_score,
+                ?priority_assignment_prompt: String,
+                ?project: Integer?,
+                ?prompt: String,
+                ?sample_rate: Float?,
+                ?sampling_enabled: bool,
+                ?significant_change_alert_direction: String,
+                ?significant_change_alert_status: String,
+                ?simulation_enabled: bool,
+                ?slug: String?,
+                ?std_multiplier: Float,
+                ?total_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::total_score,
+                ?trigger_type: String,
+                ?user_defined: bool,
+                ?uses_llm_judge: bool,
+                ?window_size: Integer
+              ) -> void
+
+              def to_hash: -> {
+                id: Integer,
+                eval_type: String,
+                name: String,
+                type: String,
+                add_to_new_agents: bool?,
+                agent: Integer?,
+                agent_names: ::Array[String],
+                agents: ::Array[Integer],
+                alert_filters: ::Hash[Symbol, top]?,
+                alert_type: String,
+                audio_enabled: bool,
+                configuration: ::Hash[Symbol, top]?,
+                description: String,
+                display_order: Integer,
+                enum_values: ::Array[String],
+                evaluation_trigger: String,
+                evaluation_trigger_custom_code: String,
+                evaluation_trigger_prompt: String,
+                ewma_alpha: Float,
+                function_name: String?,
+                kb_file_ids: ::Array[Integer],
+                knowledge_base_files: ::Array[String],
+                metric_cost: Float,
+                observability_enabled: bool,
+                overall_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::overall_score,
+                priority_assignment_prompt: String,
+                project: Integer?,
+                prompt: String,
+                sample_rate: Float?,
+                sampling_enabled: bool,
+                significant_change_alert_direction: String,
+                significant_change_alert_status: String,
+                simulation_enabled: bool,
+                slug: String?,
+                std_multiplier: Float,
+                total_score: Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::total_score,
+                trigger_type: String,
+                user_defined: bool,
+                uses_llm_judge: bool,
+                window_size: Integer
+              }
+
+              type overall_score = Float | String
+
+              module OverallScore
+                extend Telnyx::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::overall_score]
+              end
+
+              type total_score = Float | String
+
+              module TotalScore
+                extend Telnyx::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::AITestMetric::total_score]
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,49 @@
+module Telnyx
+  module Resources
+    class Email
+      class DedicatedIPs
+        attr_reader actions: Telnyx::Resources::Email::DedicatedIPs::Actions
+
+        def create: (
+          idempotency_key: String,
+          ?ip_version: Telnyx::Models::Email::DedicatedIPCreateParams::ip_version,
+          ?region: Telnyx::Models::Email::DedicatedIPCreateParams::region,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Email::DedicatedIPShowResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Email::DedicatedIPShowResponse
+
+        def update: (
+          String id,
+          ?drain: bool,
+          ?force: bool,
+          ?pool_id: String,
+          ?warmup: Telnyx::Email::DedicatedIPUpdateParams::Warmup,
+          ?warmup_paused: bool,
+          ?weight: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Email::DedicatedIPShowResponse
+
+        def list: (
+          ?filter_pool_id: String,
+          ?filter_region: String,
+          ?filter_status: Telnyx::Models::Email::DedicatedIPListParams::filter_status,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Email::DedicatedIPListResponse
+
+        def delete: (
+          String id,
+          ?body_drain: bool,
+          ?body_force: bool,
+          ?body_reason: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Email::DedicatedIPShowResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

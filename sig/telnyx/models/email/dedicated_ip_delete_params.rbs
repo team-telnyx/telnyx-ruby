@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    module Email
+      type dedicated_ip_delete_params =
+        {
+          id: String,
+          query_drain: bool,
+          query_force: bool,
+          query_reason: String,
+          body_drain: bool,
+          body_force: bool,
+          body_reason: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class DedicatedIPDeleteParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_reader query_drain: bool?
+
+        def query_drain=: (bool) -> bool
+
+        attr_reader query_force: bool?
+
+        def query_force=: (bool) -> bool
+
+        attr_reader query_reason: String?
+
+        def query_reason=: (String) -> String
+
+        attr_reader body_drain: bool?
+
+        def body_drain=: (bool) -> bool
+
+        attr_reader body_force: bool?
+
+        def body_force=: (bool) -> bool
+
+        attr_reader body_reason: String?
+
+        def body_reason=: (String) -> String
+
+        def initialize: (
+          id: String,
+          ?query_drain: bool,
+          ?query_force: bool,
+          ?query_reason: String,
+          ?body_drain: bool,
+          ?body_force: bool,
+          ?body_reason: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          query_drain: bool,
+          query_force: bool,
+          query_reason: String,
+          body_drain: bool,
+          body_force: bool,
+          body_reason: String,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

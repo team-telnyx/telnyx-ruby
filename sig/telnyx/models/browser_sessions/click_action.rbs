@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    module BrowserSessions
+      type click_action =
+        {
+          observation_id: String,
+          ref: String,
+          type: :click,
+          idempotency_key: String,
+          include_observation: bool,
+          timeout_ms: Integer,
+          wait: Telnyx::Models::BrowserSessions::ClickAction::wait
+        }
+
+      class ClickAction < Telnyx::Internal::Type::BaseModel
+        attr_accessor observation_id: String
+
+        attr_accessor ref: String
+
+        attr_accessor type: :click
+
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
+        attr_reader include_observation: bool?
+
+        def include_observation=: (bool) -> bool
+
+        attr_reader timeout_ms: Integer?
+
+        def timeout_ms=: (Integer) -> Integer
+
+        attr_reader wait: Telnyx::Models::BrowserSessions::ClickAction::wait?
+
+        def wait=: (
+          Telnyx::Models::BrowserSessions::ClickAction::wait
+        ) -> Telnyx::Models::BrowserSessions::ClickAction::wait
+
+        def initialize: (
+          observation_id: String,
+          ref: String,
+          ?idempotency_key: String,
+          ?include_observation: bool,
+          ?timeout_ms: Integer,
+          ?wait: Telnyx::Models::BrowserSessions::ClickAction::wait,
+          ?type: :click
+        ) -> void
+
+        def to_hash: -> {
+          observation_id: String,
+          ref: String,
+          type: :click,
+          idempotency_key: String,
+          include_observation: bool,
+          timeout_ms: Integer,
+          wait: Telnyx::Models::BrowserSessions::ClickAction::wait
+        }
+
+        type wait = :no_wait | :dom_stable | :url_change
+
+        module Wait
+          extend Telnyx::Internal::Type::Enum
+
+          NO_WAIT: :no_wait
+          DOM_STABLE: :dom_stable
+          URL_CHANGE: :url_change
+
+          def self?.values: -> ::Array[Telnyx::Models::BrowserSessions::ClickAction::wait]
+        end
+      end
+    end
+  end
+end

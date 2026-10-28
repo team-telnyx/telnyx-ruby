@@ -1,0 +1,68 @@
+module Telnyx
+  module Models
+    type network_route_create_params =
+      {
+        cidr: String,
+        network_id: String,
+        next_hop: Telnyx::NetworkRouteCreateParams::NextHop
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NetworkRouteCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor cidr: String
+
+      attr_accessor network_id: String
+
+      attr_accessor next_hop: Telnyx::NetworkRouteCreateParams::NextHop
+
+      def initialize: (
+        cidr: String,
+        network_id: String,
+        next_hop: Telnyx::NetworkRouteCreateParams::NextHop,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        cidr: String,
+        network_id: String,
+        next_hop: Telnyx::NetworkRouteCreateParams::NextHop,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type next_hop =
+        {
+          id: String,
+          type: Telnyx::Models::NetworkRouteCreateParams::NextHop::type_
+        }
+
+      class NextHop < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor type: Telnyx::Models::NetworkRouteCreateParams::NextHop::type_
+
+        def initialize: (
+          id: String,
+          type: Telnyx::Models::NetworkRouteCreateParams::NextHop::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          type: Telnyx::Models::NetworkRouteCreateParams::NextHop::type_
+        }
+
+        type type_ = :tunnel
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TUNNEL: :tunnel
+
+          def self?.values: -> ::Array[Telnyx::Models::NetworkRouteCreateParams::NextHop::type_]
+        end
+      end
+    end
+  end
+end

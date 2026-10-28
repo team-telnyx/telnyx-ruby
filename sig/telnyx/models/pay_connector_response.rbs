@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type pay_connector_response = { data: Telnyx::PayConnector }
+
+    class PayConnectorResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::PayConnector?
+
+      def data=: (Telnyx::PayConnector) -> Telnyx::PayConnector
+
+      def initialize: (?data: Telnyx::PayConnector) -> void
+
+      def to_hash: -> { data: Telnyx::PayConnector }
+    end
+  end
+end

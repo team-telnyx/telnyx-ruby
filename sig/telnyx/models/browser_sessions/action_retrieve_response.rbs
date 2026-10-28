@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module BrowserSessions
+      type action_retrieve_response =
+        { data: Telnyx::BrowserSessions::ActionResponse }
+
+      class ActionRetrieveResponse < Telnyx::Internal::Type::BaseModel
+        attr_reader data: Telnyx::BrowserSessions::ActionResponse?
+
+        def data=: (
+          Telnyx::BrowserSessions::ActionResponse
+        ) -> Telnyx::BrowserSessions::ActionResponse
+
+        def initialize: (?data: Telnyx::BrowserSessions::ActionResponse) -> void
+
+        def to_hash: -> { data: Telnyx::BrowserSessions::ActionResponse }
+      end
+    end
+  end
+end

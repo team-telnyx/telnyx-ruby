@@ -1,0 +1,14 @@
+module Telnyx
+  module Resources
+    class ArtifactDownloads
+      def retrieve: (
+        String artifact_id,
+        expires: String,
+        sig_: String,
+        ?request_options: Telnyx::request_opts
+      ) -> StringIO
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

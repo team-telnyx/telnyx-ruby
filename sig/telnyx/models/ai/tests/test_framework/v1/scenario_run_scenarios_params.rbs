@@ -1,0 +1,138 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_run_scenarios_params =
+              {
+                agent_id: Integer,
+                agent_number: String,
+                assistant_id: String,
+                concurrency_limit: Integer,
+                frequency: Integer,
+                mode: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode,
+                name: String,
+                outbound_phone_number: String,
+                personality_ids: ::Array[Integer],
+                scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios,
+                tags: ::Array[String],
+                test_profile_ids: ::Array[Integer]
+              }
+              & Telnyx::Internal::Type::request_parameters
+
+            class ScenarioRunScenariosParams < Telnyx::Internal::Type::BaseModel
+              extend Telnyx::Internal::Type::RequestParameters::Converter
+              include Telnyx::Internal::Type::RequestParameters
+
+              attr_reader agent_id: Integer?
+
+              def agent_id=: (Integer) -> Integer
+
+              attr_reader agent_number: String?
+
+              def agent_number=: (String) -> String
+
+              attr_reader assistant_id: String?
+
+              def assistant_id=: (String) -> String
+
+              attr_reader concurrency_limit: Integer?
+
+              def concurrency_limit=: (Integer) -> Integer
+
+              attr_reader frequency: Integer?
+
+              def frequency=: (Integer) -> Integer
+
+              attr_reader mode: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode?
+
+              def mode=: (
+                Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              attr_reader outbound_phone_number: String?
+
+              def outbound_phone_number=: (String) -> String
+
+              attr_reader personality_ids: ::Array[Integer]?
+
+              def personality_ids=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_reader scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios?
+
+              def scenarios=: (
+                Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios
+
+              attr_reader tags: ::Array[String]?
+
+              def tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader test_profile_ids: ::Array[Integer]?
+
+              def test_profile_ids=: (::Array[Integer]) -> ::Array[Integer]
+
+              def initialize: (
+                ?agent_id: Integer,
+                ?agent_number: String,
+                ?assistant_id: String,
+                ?concurrency_limit: Integer,
+                ?frequency: Integer,
+                ?mode: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode,
+                ?name: String,
+                ?outbound_phone_number: String,
+                ?personality_ids: ::Array[Integer],
+                ?scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios,
+                ?tags: ::Array[String],
+                ?test_profile_ids: ::Array[Integer],
+                ?request_options: Telnyx::request_opts
+              ) -> void
+
+              def to_hash: -> {
+                agent_id: Integer,
+                agent_number: String,
+                assistant_id: String,
+                concurrency_limit: Integer,
+                frequency: Integer,
+                mode: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode,
+                name: String,
+                outbound_phone_number: String,
+                personality_ids: ::Array[Integer],
+                scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios,
+                tags: ::Array[String],
+                test_profile_ids: ::Array[Integer],
+                request_options: Telnyx::RequestOptions
+              }
+
+              type mode = :same_number | :different_numbers
+
+              module Mode
+                extend Telnyx::Internal::Type::Enum
+
+                SAME_NUMBER: :same_number
+                DIFFERENT_NUMBERS: :different_numbers
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode]
+              end
+
+              type scenarios = ::Array[top] | String
+
+              module Scenarios
+                extend Telnyx::Internal::Type::Union
+
+                def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios]
+
+                UnionMember0Array: Telnyx::Internal::Type::Converter
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

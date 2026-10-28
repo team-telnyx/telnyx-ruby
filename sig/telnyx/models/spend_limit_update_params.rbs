@@ -4,6 +4,7 @@ module Telnyx
       {
         product: String,
         body: Telnyx::Models::SpendLimitUpdateParams::body,
+        credential_id: String,
         period: Telnyx::Models::spend_limit_period
       }
       & Telnyx::Internal::Type::request_parameters
@@ -16,6 +17,10 @@ module Telnyx
 
       attr_accessor body: Telnyx::Models::SpendLimitUpdateParams::body
 
+      attr_reader credential_id: String?
+
+      def credential_id=: (String) -> String
+
       attr_reader period: Telnyx::Models::spend_limit_period?
 
       def period=: (
@@ -25,6 +30,7 @@ module Telnyx
       def initialize: (
         product: String,
         body: Telnyx::Models::SpendLimitUpdateParams::body,
+        ?credential_id: String,
         ?period: Telnyx::Models::spend_limit_period,
         ?request_options: Telnyx::request_opts
       ) -> void
@@ -32,6 +38,7 @@ module Telnyx
       def to_hash: -> {
         product: String,
         body: Telnyx::Models::SpendLimitUpdateParams::body,
+        credential_id: String,
         period: Telnyx::Models::spend_limit_period,
         request_options: Telnyx::RequestOptions
       }

@@ -27,6 +27,9 @@ module Telnyx
     # @return [String, nil]
     attr_reader :client_secret
 
+    # @return [Telnyx::Resources::BrowserSessions]
+    attr_reader :browser_sessions
+
     # @return [Telnyx::Resources::Legacy]
     attr_reader :legacy
 
@@ -797,6 +800,13 @@ module Telnyx
     #   completions, Responses, Anthropic Messages and classification requests;
     #   requests already running finish normally. Take the list of products from the
     #   list operation.
+    # - **API key limits.** For `inference`, a limit can also apply to one API key,
+    #   named by `credential_id`: the key's identifier as recorded on usage, never its
+    #   secret. When the key's spend goes above its own limit, only that key is
+    #   blocked, with the error title `API key spend limit reached` (code `10039`);
+    #   the account's other keys keep working. The API key limits of a period cannot
+    #   add up to more than the total limit when the total has an amount. Only
+    #   language-model requests authenticated with an API key count toward its limit.
     # - **Limits set by Telnyx.** Telnyx support can also set a limit on your account.
     #   It is listed with `origin: operator` and you can update or delete it like your
     #   own.
@@ -820,6 +830,26 @@ module Telnyx
     # Tailscale Subnet Router operations
     # @return [Telnyx::Resources::TailscaleSubnetRouters]
     attr_reader :tailscale_subnet_routers
+
+    # Download screenshots and other artifacts.
+    # @return [Telnyx::Resources::ArtifactDownloads]
+    attr_reader :artifact_downloads
+
+    # @return [Telnyx::Resources::Email]
+    attr_reader :email
+
+    # Routes on a Network that send a CIDR to a next hop, such as a tunnel.
+    # @return [Telnyx::Resources::NetworkRoutes]
+    attr_reader :network_routes
+
+    # Generic payment connector configuration.
+    # @return [Telnyx::Resources::PayConnectors]
+    attr_reader :pay_connectors
+
+    # Tunnels connect a Network to hosts behind a tunnel process within the user's
+    # network.
+    # @return [Telnyx::Resources::Tunnels]
+    attr_reader :tunnels
 
     # @api private
     #
@@ -929,6 +959,7 @@ module Telnyx
         headers: headers
       )
 
+      @browser_sessions = Telnyx::Resources::BrowserSessions.new(client: self)
       @legacy = Telnyx::Resources::Legacy.new(client: self)
       @oauth = Telnyx::Resources::OAuth.new(client: self)
       @oauth_clients = Telnyx::Resources::OAuthClients.new(client: self)
@@ -1124,6 +1155,11 @@ module Telnyx
       @dial_metrics = Telnyx::Resources::DialMetrics.new(client: self)
       @tts_integrations = Telnyx::Resources::TtsIntegrations.new(client: self)
       @tailscale_subnet_routers = Telnyx::Resources::TailscaleSubnetRouters.new(client: self)
+      @artifact_downloads = Telnyx::Resources::ArtifactDownloads.new(client: self)
+      @email = Telnyx::Resources::Email.new(client: self)
+      @network_routes = Telnyx::Resources::NetworkRoutes.new(client: self)
+      @pay_connectors = Telnyx::Resources::PayConnectors.new(client: self)
+      @tunnels = Telnyx::Resources::Tunnels.new(client: self)
     end
   end
 end

@@ -1,0 +1,24 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_run_scenarios_response =
+              { id: Integer, status: String }
+
+            class ScenarioRunScenariosResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: Integer
+
+              attr_accessor status: String
+
+              def initialize: (id: Integer, status: String) -> void
+
+              def to_hash: -> { id: Integer, status: String }
+            end
+          end
+        end
+      end
+    end
+  end
+end

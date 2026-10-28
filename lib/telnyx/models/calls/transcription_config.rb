@@ -13,23 +13,25 @@ module Telnyx
         #   hints `en`, `es`, `fr`, `de`, `hi`, `ru`, `pt`, `ja`, `it`, and `nl`. For
         #   `soniox/stt-rt-v4`, `auto` omits the language hint and lets Soniox auto-detect;
         #   ISO 639-1 codes (e.g. `en`, `es`) bias detection toward that language. For
-        #   `assemblyai/universal-3-5-pro` (and its legacy alias
-        #   `assemblyai/universal-streaming`), `auto` (or unset) enables native multilingual
-        #   code-switching; ISO 639-1 codes (`en`, `es`, `de`, `fr`, `pt`, `it`, `tr`, `nl`,
-        #   `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`, `he`, `ja`, `zh`) bias the session to
-        #   that language. For `humain/realtime`, supported values are `ar`, `en`,
-        #   `codeswitch` (Arabic/English code-switching), and `auto` (resolves server-side
-        #   to code-switching). Unlike other models, `humain/realtime` does not fall back to
-        #   `auto` when `language` is omitted — omitting it applies `en` instead. For
-        #   `reson8/turns`, supported values are `auto` (or unset) for automatic language
-        #   detection, and the language codes `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`,
-        #   `pt`, `es`, and `sv` to fix the transcription language. For `cohere/ar-stt`,
-        #   supported values are `ar` and `en`; unlike other models, this model does not
-        #   auto-detect and defaults to `ar` when `language` is omitted. For
-        #   `speechmatics/linden-1`, there is no auto-detect; set a code from Speechmatics'
-        #   Realtime language list (see `SpeechmaticsTranscriptionLanguage`); unset defaults
-        #   to `en`, while an explicit `auto`, `auto_beta`, or `multi` is rejected (unlike
-        #   `speechmatics/standard`, which defaults to `en`).
+        #   `assemblyai/universal-3-6-pro` (and its legacy aliases
+        #   `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`), `auto` (or
+        #   unset) enables native multilingual code-switching; language codes (`en`, `es`,
+        #   `de`, `fr`, `pt`, `it`, `tr`, `nl`, `sv`, `no`, `da`, `fi`, `hi`, `vi`, `ar`,
+        #   `he`, `ja`, `zh`, `ur`, `ru`, `ko`, `ca`, `gl`, `ro`, `et`, `fa`, `yue`, `af`,
+        #   `mr`, `zu`, `xh`, `nn`) bias the session to that language. For
+        #   `humain/realtime`, supported values are `ar`, `en`, `codeswitch` (Arabic/English
+        #   code-switching), and `auto` (resolves server-side to code-switching). Unlike
+        #   other models, `humain/realtime` does not fall back to `auto` when `language` is
+        #   omitted — omitting it applies `en` instead. For `reson8/turns`, supported values
+        #   are `auto` (or unset) for automatic language detection, and the language codes
+        #   `nl`, `en`, `fr`, `fy`, `de`, `it`, `pl`, `pt`, `es`, and `sv` to fix the
+        #   transcription language. For `cohere/ar-stt`, supported values are `ar` and `en`;
+        #   unlike other models, this model does not auto-detect and defaults to `ar` when
+        #   `language` is omitted. For `speechmatics/linden-1`, there is no auto-detect; set
+        #   a code from Speechmatics' Realtime language list (see
+        #   `SpeechmaticsTranscriptionLanguage`); unset defaults to `en`, while an explicit
+        #   `auto`, `auto_beta`, or `multi` is rejected (unlike `speechmatics/standard`,
+        #   which defaults to `en`).
         #
         #   @return [String, nil]
         optional :language, String
@@ -45,9 +47,10 @@ module Telnyx
         #   - `speechmatics/linden-1` (preview, vendor-hosted) for live streaming
         #     transcription; no auto-detect, so set `language` from Speechmatics' Realtime
         #     language list (defaults to `en`).
-        #   - `assemblyai/universal-3-5-pro` for live streaming transcription. The legacy
-        #     alias `assemblyai/universal-streaming` is still accepted and resolves to the
-        #     same model.
+        #   - `assemblyai/universal-3-6-pro` (AssemblyAI Universal-3.6 Pro) for live
+        #     streaming transcription. The legacy aliases `assemblyai/universal-3-5-pro` and
+        #     `assemblyai/universal-streaming` are still accepted and run the same
+        #     Universal-3.6 Pro model.
         #   - `xai/grok-stt` for live streaming transcription.
         #   - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #     automatic language detection.
@@ -94,9 +97,10 @@ module Telnyx
         # - `speechmatics/linden-1` (preview, vendor-hosted) for live streaming
         #   transcription; no auto-detect, so set `language` from Speechmatics' Realtime
         #   language list (defaults to `en`).
-        # - `assemblyai/universal-3-5-pro` for live streaming transcription. The legacy
-        #   alias `assemblyai/universal-streaming` is still accepted and resolves to the
-        #   same model.
+        # - `assemblyai/universal-3-6-pro` (AssemblyAI Universal-3.6 Pro) for live
+        #   streaming transcription. The legacy aliases `assemblyai/universal-3-5-pro` and
+        #   `assemblyai/universal-streaming` are still accepted and run the same
+        #   Universal-3.6 Pro model.
         # - `xai/grok-stt` for live streaming transcription.
         # - `soniox/stt-rt-v4` for live streaming multilingual transcription with
         #   automatic language detection.
@@ -128,6 +132,7 @@ module Telnyx
           SPEECHMATICS_STANDARD = :"speechmatics/standard"
           SPEECHMATICS_ENHANCED = :"speechmatics/enhanced"
           SPEECHMATICS_LINDEN_1 = :"speechmatics/linden-1"
+          ASSEMBLYAI_UNIVERSAL_3_6_PRO = :"assemblyai/universal-3-6-pro"
           ASSEMBLYAI_UNIVERSAL_3_5_PRO = :"assemblyai/universal-3-5-pro"
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"

@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module Schedules
+          module V1
+            type cron_job_retrieve_cron_jobs_response =
+              ::Array[Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob]
+
+            CronJobRetrieveCronJobsResponse: Telnyx::Internal::Type::Converter
+          end
+        end
+      end
+    end
+  end
+end

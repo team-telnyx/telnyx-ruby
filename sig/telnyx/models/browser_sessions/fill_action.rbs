@@ -1,0 +1,51 @@
+module Telnyx
+  module Models
+    module BrowserSessions
+      type fill_action =
+        {
+          observation_id: String,
+          ref: String,
+          type: :fill,
+          value: String,
+          idempotency_key: String,
+          include_observation: bool
+        }
+
+      class FillAction < Telnyx::Internal::Type::BaseModel
+        attr_accessor observation_id: String
+
+        attr_accessor ref: String
+
+        attr_accessor type: :fill
+
+        attr_accessor value: String
+
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
+        attr_reader include_observation: bool?
+
+        def include_observation=: (bool) -> bool
+
+        def initialize: (
+          observation_id: String,
+          ref: String,
+          value: String,
+          ?idempotency_key: String,
+          ?include_observation: bool,
+          ?type: :fill
+        ) -> void
+
+        def to_hash: -> {
+          observation_id: String,
+          ref: String,
+          type: :fill,
+          value: String,
+          idempotency_key: String,
+          include_observation: bool
+        }
+      end
+    end
+  end
+end

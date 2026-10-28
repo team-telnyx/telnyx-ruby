@@ -48,11 +48,14 @@ module Telnyx
         end
 
         type transcription_model =
-          :"assemblyai/universal-3-5-pro" | :"assemblyai/universal-streaming"
+          :"assemblyai/universal-3-6-pro"
+          | :"assemblyai/universal-3-5-pro"
+          | :"assemblyai/universal-streaming"
 
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
+          ASSEMBLYAI_UNIVERSAL_3_6_PRO: :"assemblyai/universal-3-6-pro"
           ASSEMBLYAI_UNIVERSAL_3_5_PRO: :"assemblyai/universal-3-5-pro"
           ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
 

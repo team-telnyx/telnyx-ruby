@@ -7,6 +7,12 @@ module Telnyx
       extend Telnyx::Internal::Type::RequestParameters::Converter
       include Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute filter_model_id
+      #   Filter by TTS model. Case-insensitive.
+      #
+      #   @return [Symbol, Telnyx::Models::VoiceCloneListParams::FilterModelID, nil]
+      optional :filter_model_id, enum: -> { Telnyx::VoiceCloneListParams::FilterModelID }
+
       # @!attribute filter_name
       #   Case-insensitive substring filter on the name field.
       #
@@ -37,7 +43,9 @@ module Telnyx
       #   @return [Symbol, Telnyx::Models::VoiceCloneListParams::Sort, nil]
       optional :sort, enum: -> { Telnyx::VoiceCloneListParams::Sort }
 
-      # @!method initialize(filter_name: nil, filter_provider: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @!method initialize(filter_model_id: nil, filter_name: nil, filter_provider: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      #   @param filter_model_id [Symbol, Telnyx::Models::VoiceCloneListParams::FilterModelID] Filter by TTS model. Case-insensitive.
+      #
       #   @param filter_name [String] Case-insensitive substring filter on the name field.
       #
       #   @param filter_provider [Symbol, Telnyx::Models::VoiceCloneListParams::FilterProvider] Filter by voice synthesis provider. Case-insensitive.
@@ -49,6 +57,22 @@ module Telnyx
       #   @param sort [Symbol, Telnyx::Models::VoiceCloneListParams::Sort] Sort order. Prefix with `-` for descending. Defaults to `-created_at`.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+      # Filter by TTS model. Case-insensitive.
+      module FilterModelID
+        extend Telnyx::Internal::Type::Enum
+
+        QWEN3_TTS = :Qwen3TTS
+        ULTRA = :Ultra
+        BAYAN = :Bayan
+        SPEECH_2_8_TURBO = :"speech-2.8-turbo"
+        PRO = :Pro
+        TURBO = :Turbo
+        URDU = :Urdu
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # Filter by voice synthesis provider. Case-insensitive.
       module FilterProvider

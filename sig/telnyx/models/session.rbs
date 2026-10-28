@@ -1,0 +1,108 @@
+module Telnyx
+  module Models
+    type session =
+      {
+        id: String,
+        closed_at: Time?,
+        created_at: Time,
+        expires_at: Time?,
+        failure_reason: String?,
+        last_activity_at: Time?,
+        limits: Telnyx::Session::Limits,
+        metadata: top,
+        policy: Telnyx::Session::Policy,
+        ready_at: Time?,
+        status: Telnyx::Models::Session::status
+      }
+
+    class Session < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor closed_at: Time?
+
+      attr_accessor created_at: Time
+
+      attr_accessor expires_at: Time?
+
+      attr_accessor failure_reason: String?
+
+      attr_accessor last_activity_at: Time?
+
+      attr_accessor limits: Telnyx::Session::Limits
+
+      attr_accessor metadata: top
+
+      attr_accessor policy: Telnyx::Session::Policy
+
+      attr_accessor ready_at: Time?
+
+      attr_accessor status: Telnyx::Models::Session::status
+
+      def initialize: (
+        id: String,
+        closed_at: Time?,
+        created_at: Time,
+        expires_at: Time?,
+        failure_reason: String?,
+        last_activity_at: Time?,
+        limits: Telnyx::Session::Limits,
+        metadata: top,
+        policy: Telnyx::Session::Policy,
+        ready_at: Time?,
+        status: Telnyx::Models::Session::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        closed_at: Time?,
+        created_at: Time,
+        expires_at: Time?,
+        failure_reason: String?,
+        last_activity_at: Time?,
+        limits: Telnyx::Session::Limits,
+        metadata: top,
+        policy: Telnyx::Session::Policy,
+        ready_at: Time?,
+        status: Telnyx::Models::Session::status
+      }
+
+      type limits = { idle_timeout_s: Integer, lifetime_s: Integer }
+
+      class Limits < Telnyx::Internal::Type::BaseModel
+        attr_accessor idle_timeout_s: Integer
+
+        attr_accessor lifetime_s: Integer
+
+        def initialize: (idle_timeout_s: Integer, lifetime_s: Integer) -> void
+
+        def to_hash: -> { idle_timeout_s: Integer, lifetime_s: Integer }
+      end
+
+      type policy = { allowed_domains: ::Array[String] }
+
+      class Policy < Telnyx::Internal::Type::BaseModel
+        attr_accessor allowed_domains: ::Array[String]
+
+        def initialize: (allowed_domains: ::Array[String]) -> void
+
+        def to_hash: -> { allowed_domains: ::Array[String] }
+      end
+
+      type status =
+        :provisioning | :ready | :closing | :closed | :failed | :expired
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PROVISIONING: :provisioning
+        READY: :ready
+        CLOSING: :closing
+        CLOSED: :closed
+        FAILED: :failed
+        EXPIRED: :expired
+
+        def self?.values: -> ::Array[Telnyx::Models::Session::status]
+      end
+    end
+  end
+end

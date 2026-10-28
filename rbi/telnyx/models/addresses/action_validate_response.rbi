@@ -53,7 +53,6 @@ module Telnyx
               )
             end
 
-          # Indicates whether an address is valid or invalid.
           sig do
             returns(
               Telnyx::Models::Addresses::ActionValidateResponse::Data::Result::TaggedSymbol
@@ -101,7 +100,6 @@ module Telnyx
             ).returns(T.attached_class)
           end
           def self.new(
-            # Indicates whether an address is valid or invalid.
             result:,
             # Provides normalized address when available.
             suggested:,
@@ -126,7 +124,6 @@ module Telnyx
           def to_hash
           end
 
-          # Indicates whether an address is valid or invalid.
           module Result
             extend Telnyx::Internal::Type::Enum
 
@@ -142,11 +139,6 @@ module Telnyx
             VALID =
               T.let(
                 :valid,
-                Telnyx::Models::Addresses::ActionValidateResponse::Data::Result::TaggedSymbol
-              )
-            INVALID =
-              T.let(
-                :invalid,
                 Telnyx::Models::Addresses::ActionValidateResponse::Data::Result::TaggedSymbol
               )
 
@@ -178,6 +170,14 @@ module Telnyx
             sig { params(administrative_area: String).void }
             attr_writer :administrative_area
 
+            # The borough of the address. This field is not used for addresses in the US but
+            # is used for some international addresses.
+            sig { returns(T.nilable(String)) }
+            attr_reader :borough
+
+            sig { params(borough: String).void }
+            attr_writer :borough
+
             # The two-character (ISO 3166-1 alpha-2) country code of the address.
             sig { returns(T.nilable(String)) }
             attr_reader :country_code
@@ -193,6 +193,10 @@ module Telnyx
             sig { params(extended_address: String).void }
             attr_writer :extended_address
 
+            # Latitude of the suggested address, when available.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :latitude
+
             # The locality of the address. For US addresses, this corresponds to the city of
             # the address.
             sig { returns(T.nilable(String)) }
@@ -200,6 +204,18 @@ module Telnyx
 
             sig { params(locality: String).void }
             attr_writer :locality
+
+            # Longitude of the suggested address, when available.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :longitude
+
+            # The neighborhood of the address. This field is not used for addresses in the US
+            # but is used for some international addresses.
+            sig { returns(T.nilable(String)) }
+            attr_reader :neighborhood
+
+            sig { params(neighborhood: String).void }
+            attr_writer :neighborhood
 
             # The postal code of the address.
             sig { returns(T.nilable(String)) }
@@ -219,9 +235,13 @@ module Telnyx
             sig do
               params(
                 administrative_area: String,
+                borough: String,
                 country_code: String,
                 extended_address: String,
+                latitude: T.nilable(Float),
                 locality: String,
+                longitude: T.nilable(Float),
+                neighborhood: String,
                 postal_code: String,
                 street_address: String
               ).returns(T.attached_class)
@@ -230,14 +250,24 @@ module Telnyx
               # The locality of the address. For US addresses, this corresponds to the state of
               # the address.
               administrative_area: nil,
+              # The borough of the address. This field is not used for addresses in the US but
+              # is used for some international addresses.
+              borough: nil,
               # The two-character (ISO 3166-1 alpha-2) country code of the address.
               country_code: nil,
               # Additional street address information about the address such as, but not limited
               # to, unit number or apartment number.
               extended_address: nil,
+              # Latitude of the suggested address, when available.
+              latitude: nil,
               # The locality of the address. For US addresses, this corresponds to the city of
               # the address.
               locality: nil,
+              # Longitude of the suggested address, when available.
+              longitude: nil,
+              # The neighborhood of the address. This field is not used for addresses in the US
+              # but is used for some international addresses.
+              neighborhood: nil,
               # The postal code of the address.
               postal_code: nil,
               # The primary street address information about the address.
@@ -249,9 +279,13 @@ module Telnyx
               override.returns(
                 {
                   administrative_area: String,
+                  borough: String,
                   country_code: String,
                   extended_address: String,
+                  latitude: T.nilable(Float),
                   locality: String,
+                  longitude: T.nilable(Float),
+                  neighborhood: String,
                   postal_code: String,
                   street_address: String
                 }

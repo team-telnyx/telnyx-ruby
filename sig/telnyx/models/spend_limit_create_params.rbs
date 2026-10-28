@@ -31,6 +31,7 @@ module Telnyx
           {
             amount: Float,
             product: String,
+            credential_id: String?,
             period: Telnyx::Models::spend_limit_period,
             reason: String,
             unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited
@@ -40,6 +41,8 @@ module Telnyx
           attr_accessor amount: Float
 
           attr_accessor product: String
+
+          attr_accessor credential_id: String?
 
           attr_reader period: Telnyx::Models::spend_limit_period?
 
@@ -60,6 +63,7 @@ module Telnyx
           def initialize: (
             amount: Float,
             product: String,
+            ?credential_id: String?,
             ?period: Telnyx::Models::spend_limit_period,
             ?reason: String,
             ?unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited
@@ -68,6 +72,7 @@ module Telnyx
           def to_hash: -> {
             amount: Float,
             product: String,
+            credential_id: String?,
             period: Telnyx::Models::spend_limit_period,
             reason: String,
             unlimited: Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::unlimited

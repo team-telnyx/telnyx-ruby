@@ -1,0 +1,33 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module Schedules
+          module V1
+            type cron_job_retrieve_cron_jobs_params =
+              { agent_id: Integer } & Telnyx::Internal::Type::request_parameters
+
+            class CronJobRetrieveCronJobsParams < Telnyx::Internal::Type::BaseModel
+              extend Telnyx::Internal::Type::RequestParameters::Converter
+              include Telnyx::Internal::Type::RequestParameters
+
+              attr_reader agent_id: Integer?
+
+              def agent_id=: (Integer) -> Integer
+
+              def initialize: (
+                ?agent_id: Integer,
+                ?request_options: Telnyx::request_opts
+              ) -> void
+
+              def to_hash: -> {
+                agent_id: Integer,
+                request_options: Telnyx::RequestOptions
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

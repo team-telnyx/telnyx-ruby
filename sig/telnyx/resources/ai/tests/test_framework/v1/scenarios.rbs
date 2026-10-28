@@ -1,0 +1,133 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        class TestFramework
+          class V1
+            class Scenarios
+              def create: (
+                name: String,
+                personality: Integer,
+                ?agent: Integer?,
+                ?expected_outcome_prompt: String,
+                ?first_message: String,
+                ?folder_path: String?,
+                ?instructions: String,
+                ?metrics: ::Array[Integer],
+                ?tags: ::Array[String],
+                ?test_profile: Integer,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail
+
+              def retrieve: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail
+
+              def update: (
+                Integer id,
+                ?agent: Integer?,
+                ?expected_outcome_prompt: String,
+                ?first_message: String,
+                ?folder_path: String?,
+                ?inbound_phone_number: Integer,
+                ?instructions: String,
+                ?max_duration: Integer?,
+                ?metrics: ::Array[Integer],
+                ?name: String,
+                ?personality: Integer,
+                ?phone_number: Integer,
+                ?scenario_language: String,
+                ?tags: ::Array[String],
+                ?test_profile: Integer,
+                ?tool_ids: ::Array[String],
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail
+
+              def list: (
+                ?agent_id: Integer,
+                ?assistant_id: String,
+                ?page: Integer,
+                ?page_size: Integer,
+                ?tags: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioListResponse
+
+              def delete: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> top
+
+              def generate_bg: (
+                num_scenarios: Integer,
+                ?agent_id: Integer,
+                ?extra_instructions: String,
+                ?first_message: String,
+                ?folder_path: String?,
+                ?generate_expected_outcomes: bool,
+                ?inbound_phone_number: Integer?,
+                ?personalities: ::Array[Integer],
+                ?scenario_type: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioGenerateBgParams::scenario_type,
+                ?tags: ::Array[String],
+                ?test_profile: Integer,
+                ?tool_ids: ::Array[String],
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::ScenarioGenerationResponse
+
+              def retrieve_export_scenarios: (
+                export_type: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveExportScenariosParams::export_type,
+                scenario_ids: String,
+                ?agent_id: Integer,
+                ?request_options: Telnyx::request_opts
+              ) -> StringIO
+
+              def retrieve_generate_progress: (
+                progress_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveGenerateProgressResponse
+
+              def retrieve_scenario_agent_progress: (
+                progress_id: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRetrieveScenarioAgentProgressResponse
+
+              def run_scenarios: (
+                ?agent_id: Integer,
+                ?agent_number: String,
+                ?assistant_id: String,
+                ?concurrency_limit: Integer,
+                ?frequency: Integer,
+                ?mode: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::mode,
+                ?name: String,
+                ?outbound_phone_number: String,
+                ?personality_ids: ::Array[Integer],
+                ?scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosParams::scenarios,
+                ?tags: ::Array[String],
+                ?test_profile_ids: ::Array[Integer],
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioRunScenariosResponse
+
+              def scenario_agent: (
+                scenarios: Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::scenarios,
+                user_message: String,
+                ?agent_id: Integer?,
+                ?agent_resolution_response: String,
+                ?apply_changes: bool,
+                ?context: ::Array[Telnyx::AI::Tests::TestFramework::V1::ScenarioScenarioAgentParams::Context]?,
+                ?knowledge_base: ::Array[Integer],
+                ?num_scenarios: Integer,
+                ?pending_tool_calls: ::Array[::Hash[Symbol, top]]?,
+                ?scenarios_needing_agent: ::Array[Integer],
+                ?session_id: Integer?,
+                ?updated_scenarios: ::Array[::Hash[Symbol, top]],
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ScenarioScenarioAgentResponse
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

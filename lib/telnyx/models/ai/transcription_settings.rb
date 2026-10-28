@@ -74,9 +74,10 @@ module Telnyx
         #     auto-detect; set `language` from Speechmatics' Realtime language list
         #     (defaults to `en`).
         #   - `azure/fast` is a multilingual Azure transcription model.
-        #   - `assemblyai/universal-3-5-pro` is a multilingual streaming model with
-        #     configurable turn detection. The legacy alias `assemblyai/universal-streaming`
-        #     is still accepted and resolves to the same model.
+        #   - `assemblyai/universal-3-6-pro` (AssemblyAI Universal-3.6 Pro) is a
+        #     multilingual streaming model with configurable turn detection. The legacy
+        #     aliases `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`
+        #     are still accepted and run the same model.
         #   - `xai/grok-stt` is a multilingual Grok STT model.
         #   - `soniox/stt-rt-v4` and `soniox/stt-rt-v5` are multilingual streaming models
         #     with automatic language detection, configurable endpointing, term biasing
@@ -130,11 +131,11 @@ module Telnyx
           # @!attribute model
           #   The language booster's model. It must be the same kind of model as
           #   `transcription.model`: both streaming (`deepgram/flux`, `deepgram/nova-3`,
-          #   `deepgram/nova-2`, `assemblyai/universal-3-5-pro` or its legacy alias
-          #   `assemblyai/universal-streaming`, `xai/grok-stt`, `soniox/stt-rt-v4`,
-          #   `soniox/stt-rt-v5`, `humain/realtime`, `reson8/turns`) or both non-streaming
-          #   (`azure/fast`, `nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`,
-          #   `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
+          #   `deepgram/nova-2`, `assemblyai/universal-3-6-pro` or its legacy aliases
+          #   `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`,
+          #   `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`,
+          #   `reson8/turns`) or both non-streaming (`azure/fast`, `nvidia/parakeet-v3`,
+          #   `omi-health/omi-med-stt-v1`, `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
           #   `openai/whisper-large-v3-turbo`, `telnyx/basira`). It can be the same model as
           #   `transcription.model` on a different `language`.
           #
@@ -200,11 +201,11 @@ module Telnyx
 
           # The language booster's model. It must be the same kind of model as
           # `transcription.model`: both streaming (`deepgram/flux`, `deepgram/nova-3`,
-          # `deepgram/nova-2`, `assemblyai/universal-3-5-pro` or its legacy alias
-          # `assemblyai/universal-streaming`, `xai/grok-stt`, `soniox/stt-rt-v4`,
-          # `soniox/stt-rt-v5`, `humain/realtime`, `reson8/turns`) or both non-streaming
-          # (`azure/fast`, `nvidia/parakeet-v3`, `omi-health/omi-med-stt-v1`,
-          # `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
+          # `deepgram/nova-2`, `assemblyai/universal-3-6-pro` or its legacy aliases
+          # `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`,
+          # `xai/grok-stt`, `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`,
+          # `reson8/turns`) or both non-streaming (`azure/fast`, `nvidia/parakeet-v3`,
+          # `omi-health/omi-med-stt-v1`, `cohere/ar-stt`, `distil-whisper/distil-large-v2`,
           # `openai/whisper-large-v3-turbo`, `telnyx/basira`). It can be the same model as
           # `transcription.model` on a different `language`.
           #
@@ -216,6 +217,7 @@ module Telnyx
             DEEPGRAM_NOVA_3 = :"deepgram/nova-3"
             DEEPGRAM_NOVA_2 = :"deepgram/nova-2"
             AZURE_FAST = :"azure/fast"
+            ASSEMBLYAI_UNIVERSAL_3_6_PRO = :"assemblyai/universal-3-6-pro"
             ASSEMBLYAI_UNIVERSAL_3_5_PRO = :"assemblyai/universal-3-5-pro"
             ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
             XAI_GROK_STT = :"xai/grok-stt"
@@ -270,9 +272,10 @@ module Telnyx
           # @!attribute model
           #   The fallback model. It must be a streaming model other than
           #   `transcription.model` and the other fallbacks: `deepgram/flux`,
-          #   `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-5-pro` (or its
-          #   legacy alias `assemblyai/universal-streaming`), `xai/grok-stt`,
-          #   `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
+          #   `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-6-pro` (or its
+          #   legacy aliases `assemblyai/universal-3-5-pro` and
+          #   `assemblyai/universal-streaming`), `xai/grok-stt`, `soniox/stt-rt-v4`,
+          #   `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
           #
           #   @return [Symbol, Telnyx::Models::AI::TranscriptionSettings::FallbackModel::Model]
           required :model, enum: -> { Telnyx::AI::TranscriptionSettings::FallbackModel::Model }
@@ -310,9 +313,10 @@ module Telnyx
 
           # The fallback model. It must be a streaming model other than
           # `transcription.model` and the other fallbacks: `deepgram/flux`,
-          # `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-5-pro` (or its
-          # legacy alias `assemblyai/universal-streaming`), `xai/grok-stt`,
-          # `soniox/stt-rt-v4`, `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
+          # `deepgram/nova-3`, `deepgram/nova-2`, `assemblyai/universal-3-6-pro` (or its
+          # legacy aliases `assemblyai/universal-3-5-pro` and
+          # `assemblyai/universal-streaming`), `xai/grok-stt`, `soniox/stt-rt-v4`,
+          # `soniox/stt-rt-v5`, `humain/realtime`, or `reson8/turns`.
           #
           # @see Telnyx::Models::AI::TranscriptionSettings::FallbackModel#model
           module Model
@@ -321,6 +325,7 @@ module Telnyx
             DEEPGRAM_FLUX = :"deepgram/flux"
             DEEPGRAM_NOVA_3 = :"deepgram/nova-3"
             DEEPGRAM_NOVA_2 = :"deepgram/nova-2"
+            ASSEMBLYAI_UNIVERSAL_3_6_PRO = :"assemblyai/universal-3-6-pro"
             ASSEMBLYAI_UNIVERSAL_3_5_PRO = :"assemblyai/universal-3-5-pro"
             ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
             XAI_GROK_STT = :"xai/grok-stt"
@@ -347,9 +352,10 @@ module Telnyx
         #   auto-detect; set `language` from Speechmatics' Realtime language list
         #   (defaults to `en`).
         # - `azure/fast` is a multilingual Azure transcription model.
-        # - `assemblyai/universal-3-5-pro` is a multilingual streaming model with
-        #   configurable turn detection. The legacy alias `assemblyai/universal-streaming`
-        #   is still accepted and resolves to the same model.
+        # - `assemblyai/universal-3-6-pro` (AssemblyAI Universal-3.6 Pro) is a
+        #   multilingual streaming model with configurable turn detection. The legacy
+        #   aliases `assemblyai/universal-3-5-pro` and `assemblyai/universal-streaming`
+        #   are still accepted and run the same model.
         # - `xai/grok-stt` is a multilingual Grok STT model.
         # - `soniox/stt-rt-v4` and `soniox/stt-rt-v5` are multilingual streaming models
         #   with automatic language detection, configurable endpointing, term biasing
@@ -375,6 +381,7 @@ module Telnyx
           SPEECHMATICS_STANDARD = :"speechmatics/standard"
           SPEECHMATICS_LINDEN_1 = :"speechmatics/linden-1"
           AZURE_FAST = :"azure/fast"
+          ASSEMBLYAI_UNIVERSAL_3_6_PRO = :"assemblyai/universal-3-6-pro"
           ASSEMBLYAI_UNIVERSAL_3_5_PRO = :"assemblyai/universal-3-5-pro"
           ASSEMBLYAI_UNIVERSAL_STREAMING = :"assemblyai/universal-streaming"
           XAI_GROK_STT = :"xai/grok-stt"
