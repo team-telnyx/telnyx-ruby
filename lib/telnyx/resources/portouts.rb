@@ -43,7 +43,8 @@ module Telnyx
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::PortoutListParams} for more details.
       #
-      # Returns the portout requests according to filters
+      # Returns the portout requests according to filters. Carrier Port Out API
+      # available. Please contact porting@telnyx.com.
       #
       # @overload list(filter: nil, page_number: nil, page_size: nil, request_options: {})
       #

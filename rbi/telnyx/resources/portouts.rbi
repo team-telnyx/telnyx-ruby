@@ -34,7 +34,8 @@ module Telnyx
       )
       end
 
-      # Returns the portout requests according to filters
+      # Returns the portout requests according to filters. Carrier Port Out API
+      # available. Please contact porting@telnyx.com.
       sig do
         params(
           filter: Telnyx::PortoutListParams::Filter::OrHash,
