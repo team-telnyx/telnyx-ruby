@@ -11,7 +11,7 @@ module Telnyx
       #   Multipart form data for creating a voice clone from a direct audio upload.
       #   Maximum file size: 20MB.
       #
-      #   @return [Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone]
+      #   @return [Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone]
       required :voice_clone_upload_request,
                union: -> { Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest }
 
@@ -19,7 +19,7 @@ module Telnyx
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::VoiceCloneCreateFromUploadParams} for more details.
       #
-      #   @param voice_clone_upload_request [Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone] Multipart form data for creating a voice clone from a direct audio upload. Maxim
+      #   @param voice_clone_upload_request [Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone] Multipart form data for creating a voice clone from a direct audio upload. Maxim
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
@@ -39,6 +39,9 @@ module Telnyx
 
         # Upload-based voice clone using the Minimax provider.
         variant -> { Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone }
+
+        # Upload-based voice clone using the Resemble provider. The clone is `active` on creation. Use it as voice `Resemble.<model_id>.<clone_id>`.
+        variant -> { Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone }
 
         class TelnyxQwen3TtsClone < Telnyx::Internal::Type::BaseModel
           # @!attribute audio_file
@@ -535,8 +538,165 @@ module Telnyx
           end
         end
 
+        class ResembleClone < Telnyx::Internal::Type::BaseModel
+          # @!attribute audio_file
+          #   Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
+          #   Converted to WAV and trimmed to the first 10 seconds. For best quality, provide
+          #   about 10 seconds of clean, single-speaker speech. Maximum size: 20MB.
+          #
+          #   @return [Pathname, StringIO, IO, String, Telnyx::FilePart]
+          required :audio_file, Telnyx::Internal::Type::FileInput
+
+          # @!attribute gender
+          #   Gender of the voice clone.
+          #
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender]
+          required :gender,
+                   enum: -> { Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender }
+
+          # @!attribute model_id
+          #   Resemble model: `Pro`, `Turbo` (English only), or `Urdu`. A clone works only
+          #   with this model.
+          #
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID]
+          required :model_id,
+                   enum: -> { Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID }
+
+          # @!attribute name
+          #   Name for the voice clone.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!attribute provider
+          #   Voice synthesis provider. Must be `resemble`.
+          #
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider]
+          required :provider,
+                   enum: -> { Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider }
+
+          # @!attribute label
+          #   Optional custom label describing the voice style.
+          #
+          #   @return [String, nil]
+          optional :label, String
+
+          # @!attribute language
+          #   Language of the reference audio, matched case-insensitively. Pro: required, one
+          #   of `ar`, `da`, `de`, `el`, `en-US`, `es`, `fi`, `fr-fr`, `he`, `hi`, `it`, `ja`,
+          #   `ko`, `ms`, `nl`, `no`, `pl`, `pt`, `ru`, `sv`, `sw`, `tr`, `zh`. Turbo: `en` or
+          #   `en-US` (default `en-US`). Urdu: `ur` (default). Other values return `422`.
+          #
+          #   @return [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language, nil]
+          optional :language,
+                   enum: -> { Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language }
+
+          # @!method initialize(audio_file:, gender:, model_id:, name:, provider:, label: nil, language: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone}
+          #   for more details.
+          #
+          #   Upload-based voice clone using the Resemble provider. The clone is `active` on
+          #   creation. Use it as voice `Resemble.<model_id>.<clone_id>`.
+          #
+          #   @param audio_file [Pathname, StringIO, IO, String, Telnyx::FilePart] Audio file to clone the voice from. Supported formats: WAV, MP3, FLAC, OGG, M4A.
+          #
+          #   @param gender [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Gender] Gender of the voice clone.
+          #
+          #   @param model_id [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::ModelID] Resemble model: `Pro`, `Turbo` (English only), or `Urdu`. A clone works only wit
+          #
+          #   @param name [String] Name for the voice clone.
+          #
+          #   @param provider [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider] Voice synthesis provider. Must be `resemble`.
+          #
+          #   @param label [String] Optional custom label describing the voice style.
+          #
+          #   @param language [Symbol, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Language] Language of the reference audio, matched case-insensitively. Pro: required, one
+
+          # Gender of the voice clone.
+          #
+          # @see Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone#gender
+          module Gender
+            extend Telnyx::Internal::Type::Enum
+
+            MALE = :male
+            FEMALE = :female
+            NEUTRAL = :neutral
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Resemble model: `Pro`, `Turbo` (English only), or `Urdu`. A clone works only
+          # with this model.
+          #
+          # @see Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone#model_id
+          module ModelID
+            extend Telnyx::Internal::Type::Enum
+
+            PRO = :Pro
+            TURBO = :Turbo
+            URDU = :Urdu
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Voice synthesis provider. Must be `resemble`.
+          #
+          # @see Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone#provider
+          module Provider
+            extend Telnyx::Internal::Type::Enum
+
+            RESEMBLE = :resemble
+            RESEMBLE_2 = :Resemble
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Language of the reference audio, matched case-insensitively. Pro: required, one
+          # of `ar`, `da`, `de`, `el`, `en-US`, `es`, `fi`, `fr-fr`, `he`, `hi`, `it`, `ja`,
+          # `ko`, `ms`, `nl`, `no`, `pl`, `pt`, `ru`, `sv`, `sw`, `tr`, `zh`. Turbo: `en` or
+          # `en-US` (default `en-US`). Urdu: `ur` (default). Other values return `422`.
+          #
+          # @see Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone#language
+          module Language
+            extend Telnyx::Internal::Type::Enum
+
+            AR = :ar
+            DA = :da
+            DE = :de
+            EL = :el
+            EN = :en
+            EN_US = :"en-US"
+            ES = :es
+            FI = :fi
+            FR_FR = :"fr-fr"
+            HE = :he
+            HI = :hi
+            IT = :it
+            JA = :ja
+            KO = :ko
+            MS = :ms
+            NL = :nl
+            NO = :no
+            PL = :pl
+            PT = :pt
+            RU = :ru
+            SV = :sv
+            SW = :sw
+            TR = :tr
+            UR = :ur
+            ZH = :zh
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone)]
+        #   @return [Array(Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone)]
       end
     end
   end

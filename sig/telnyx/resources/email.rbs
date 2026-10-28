@@ -1,0 +1,11 @@
+module Telnyx
+  module Resources
+    class Email
+      attr_reader dedicated_ips: Telnyx::Resources::Email::DedicatedIPs
+
+      attr_reader ip_pools: Telnyx::Resources::Email::IPPools
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

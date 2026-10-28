@@ -58,6 +58,13 @@ module Telnyx
       end
       attr_writer :features
 
+      # MM7 settings for inbound messages
+      sig { returns(T.nilable(Telnyx::Mm7Metadata)) }
+      attr_reader :mm7_metadata
+
+      sig { params(mm7_metadata: T.nilable(Telnyx::Mm7Metadata::OrHash)).void }
+      attr_writer :mm7_metadata
+
       # enables SMS fallback for MMS messages.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :mms_fall_back_to_sms
@@ -202,6 +209,7 @@ module Telnyx
           daily_spend_limit_enabled: T::Boolean,
           enabled: T::Boolean,
           features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash),
+          mm7_metadata: T.nilable(Telnyx::Mm7Metadata::OrHash),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
@@ -239,6 +247,8 @@ module Telnyx
         # profile. Keys map to individual feature flags; unknown keys are accepted and
         # preserved for forward compatibility with rolling deployments.
         features: nil,
+        # MM7 settings for inbound messages
+        mm7_metadata: nil,
         # enables SMS fallback for MMS messages.
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.
@@ -304,6 +314,7 @@ module Telnyx
             daily_spend_limit_enabled: T::Boolean,
             enabled: T::Boolean,
             features: T.nilable(Telnyx::MessagingProfileFeatures),
+            mm7_metadata: T.nilable(Telnyx::Mm7Metadata),
             mms_fall_back_to_sms: T::Boolean,
             mms_transcoding: T::Boolean,
             mobile_only: T::Boolean,

@@ -1,0 +1,44 @@
+module Telnyx
+  module Models
+    module Email
+      module IPPools
+        type ip_delete_params =
+          { id: String, ip_id: String, drain: bool, force: bool }
+          & Telnyx::Internal::Type::request_parameters
+
+        class IPDeleteParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor id: String
+
+          attr_accessor ip_id: String
+
+          attr_reader drain: bool?
+
+          def drain=: (bool) -> bool
+
+          attr_reader force: bool?
+
+          def force=: (bool) -> bool
+
+          def initialize: (
+            id: String,
+            ip_id: String,
+            ?drain: bool,
+            ?force: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            ip_id: String,
+            drain: bool,
+            force: bool,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

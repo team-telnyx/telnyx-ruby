@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type metric_bulk_create_response =
+              ::Array[Telnyx::AI::Tests::TestFramework::V1::AITestMetric]
+
+            MetricBulkCreateResponse: Telnyx::Internal::Type::Converter
+          end
+        end
+      end
+    end
+  end
+end

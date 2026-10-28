@@ -1,0 +1,61 @@
+module Telnyx
+  module Models
+    module Email
+      type dedicated_ip_list_params =
+        {
+          filter_pool_id: String,
+          filter_region: String,
+          filter_status: Telnyx::Models::Email::DedicatedIPListParams::filter_status
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class DedicatedIPListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_reader filter_pool_id: String?
+
+        def filter_pool_id=: (String) -> String
+
+        attr_reader filter_region: String?
+
+        def filter_region=: (String) -> String
+
+        attr_reader filter_status: Telnyx::Models::Email::DedicatedIPListParams::filter_status?
+
+        def filter_status=: (
+          Telnyx::Models::Email::DedicatedIPListParams::filter_status
+        ) -> Telnyx::Models::Email::DedicatedIPListParams::filter_status
+
+        def initialize: (
+          ?filter_pool_id: String,
+          ?filter_region: String,
+          ?filter_status: Telnyx::Models::Email::DedicatedIPListParams::filter_status,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          filter_pool_id: String,
+          filter_region: String,
+          filter_status: Telnyx::Models::Email::DedicatedIPListParams::filter_status,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type filter_status =
+          :provisioning | :warming_up | :active | :suspended | :released
+
+        module FilterStatus
+          extend Telnyx::Internal::Type::Enum
+
+          PROVISIONING: :provisioning
+          WARMING_UP: :warming_up
+          ACTIVE: :active
+          SUSPENDED: :suspended
+          RELEASED: :released
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIPListParams::filter_status]
+        end
+      end
+    end
+  end
+end

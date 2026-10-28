@@ -1,0 +1,174 @@
+module Telnyx
+  module Models
+    type network_route_list_params =
+      {
+        filter: Telnyx::NetworkRouteListParams::Filter,
+        page: Telnyx::NetworkRouteListParams::Page,
+        sort: Telnyx::Models::NetworkRouteListParams::sort
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class NetworkRouteListParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor filter: Telnyx::NetworkRouteListParams::Filter
+
+      attr_reader page: Telnyx::NetworkRouteListParams::Page?
+
+      def page=: (
+        Telnyx::NetworkRouteListParams::Page
+      ) -> Telnyx::NetworkRouteListParams::Page
+
+      attr_reader sort: Telnyx::Models::NetworkRouteListParams::sort?
+
+      def sort=: (
+        Telnyx::Models::NetworkRouteListParams::sort
+      ) -> Telnyx::Models::NetworkRouteListParams::sort
+
+      def initialize: (
+        filter: Telnyx::NetworkRouteListParams::Filter,
+        ?page: Telnyx::NetworkRouteListParams::Page,
+        ?sort: Telnyx::Models::NetworkRouteListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        filter: Telnyx::NetworkRouteListParams::Filter,
+        page: Telnyx::NetworkRouteListParams::Page,
+        sort: Telnyx::Models::NetworkRouteListParams::sort,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type filter =
+        {
+          network_id: String,
+          cidr: String,
+          next_hop_type: Telnyx::Models::NetworkRouteListParams::Filter::next_hop_type,
+          origin: Telnyx::Models::NetworkRouteListParams::Filter::origin,
+          status: Telnyx::Models::NetworkRouteListParams::Filter::status
+        }
+
+      class Filter < Telnyx::Internal::Type::BaseModel
+        attr_accessor network_id: String
+
+        attr_reader cidr: String?
+
+        def cidr=: (String) -> String
+
+        attr_reader next_hop_type: Telnyx::Models::NetworkRouteListParams::Filter::next_hop_type?
+
+        def next_hop_type=: (
+          Telnyx::Models::NetworkRouteListParams::Filter::next_hop_type
+        ) -> Telnyx::Models::NetworkRouteListParams::Filter::next_hop_type
+
+        attr_reader origin: Telnyx::Models::NetworkRouteListParams::Filter::origin?
+
+        def origin=: (
+          Telnyx::Models::NetworkRouteListParams::Filter::origin
+        ) -> Telnyx::Models::NetworkRouteListParams::Filter::origin
+
+        attr_reader status: Telnyx::Models::NetworkRouteListParams::Filter::status?
+
+        def status=: (
+          Telnyx::Models::NetworkRouteListParams::Filter::status
+        ) -> Telnyx::Models::NetworkRouteListParams::Filter::status
+
+        def initialize: (
+          network_id: String,
+          ?cidr: String,
+          ?next_hop_type: Telnyx::Models::NetworkRouteListParams::Filter::next_hop_type,
+          ?origin: Telnyx::Models::NetworkRouteListParams::Filter::origin,
+          ?status: Telnyx::Models::NetworkRouteListParams::Filter::status
+        ) -> void
+
+        def to_hash: -> {
+          network_id: String,
+          cidr: String,
+          next_hop_type: Telnyx::Models::NetworkRouteListParams::Filter::next_hop_type,
+          origin: Telnyx::Models::NetworkRouteListParams::Filter::origin,
+          status: Telnyx::Models::NetworkRouteListParams::Filter::status
+        }
+
+        type next_hop_type =
+          :tunnel
+          | :wireguard_peer
+          | :wireguard_interface
+          | :private_wireless_gateway
+          | :virtual_cross_connect
+          | :ipsec_tunnel
+          | :public_internet_gateway
+
+        module NextHopType
+          extend Telnyx::Internal::Type::Enum
+
+          TUNNEL: :tunnel
+          WIREGUARD_PEER: :wireguard_peer
+          WIREGUARD_INTERFACE: :wireguard_interface
+          PRIVATE_WIRELESS_GATEWAY: :private_wireless_gateway
+          VIRTUAL_CROSS_CONNECT: :virtual_cross_connect
+          IPSEC_TUNNEL: :ipsec_tunnel
+          PUBLIC_INTERNET_GATEWAY: :public_internet_gateway
+
+          def self?.values: -> ::Array[Telnyx::Models::NetworkRouteListParams::Filter::next_hop_type]
+        end
+
+        type origin = :static | :attachment
+
+        module Origin
+          extend Telnyx::Internal::Type::Enum
+
+          STATIC: :static
+          ATTACHMENT: :attachment
+
+          def self?.values: -> ::Array[Telnyx::Models::NetworkRouteListParams::Filter::origin]
+        end
+
+        type status = :pending | :active | :inactive | :failed
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          ACTIVE: :active
+          INACTIVE: :inactive
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Telnyx::Models::NetworkRouteListParams::Filter::status]
+        end
+      end
+
+      type page = { after: String, limit: Integer }
+
+      class Page < Telnyx::Internal::Type::BaseModel
+        attr_reader after: String?
+
+        def after=: (String) -> String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        def initialize: (?after: String, ?limit: Integer) -> void
+
+        def to_hash: -> { after: String, limit: Integer }
+      end
+
+      type sort =
+        :cidr | :"-cidr" | :status | :"-status" | :created_at | :"-created_at"
+
+      module Sort
+        extend Telnyx::Internal::Type::Enum
+
+        CIDR: :cidr
+        MINUS_CIDR: :"-cidr"
+        STATUS: :status
+        STATUS_DESC: :"-status"
+        CREATED_AT: :created_at
+        CREATED_AT_DESC: :"-created_at"
+
+        def self?.values: -> ::Array[Telnyx::Models::NetworkRouteListParams::sort]
+      end
+    end
+  end
+end

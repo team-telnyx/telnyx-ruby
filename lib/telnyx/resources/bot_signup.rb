@@ -51,7 +51,7 @@ module Telnyx
         parsed, options = Telnyx::BotSignupCreateParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "v2/bot_signup",
+          path: "bot_signup",
           body: parsed,
           model: Telnyx::SuccessResponse,
           options: options
@@ -79,7 +79,7 @@ module Telnyx
         parsed, options = Telnyx::BotSignupResendMagicLinkParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "v2/bot_signup/resend_magic_link",
+          path: "bot_signup/resend_magic_link",
           body: parsed,
           model: Telnyx::SuccessResponse,
           options: options

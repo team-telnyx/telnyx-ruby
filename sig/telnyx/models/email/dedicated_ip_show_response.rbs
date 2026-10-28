@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    module Email
+      type dedicated_ip_show_response = { data: Telnyx::Email::DedicatedIP }
+
+      class DedicatedIPShowResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::Email::DedicatedIP
+
+        def initialize: (data: Telnyx::Email::DedicatedIP) -> void
+
+        def to_hash: -> { data: Telnyx::Email::DedicatedIP }
+      end
+    end
+  end
+end

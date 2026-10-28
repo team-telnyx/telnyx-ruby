@@ -1,0 +1,38 @@
+module Telnyx
+  module Resources
+    class BrowserSessions
+      attr_reader actions: Telnyx::Resources::BrowserSessions::Actions
+
+      def create: (
+        policy: Telnyx::BrowserSessionCreateParams::Policy,
+        ?idempotency_key: String,
+        ?limits: Telnyx::BrowserSessionCreateParams::Limits,
+        ?metadata: top,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BrowserSessionCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BrowserSessionRetrieveResponse
+
+      def list: (
+        ?status: Telnyx::Models::BrowserSessionListParams::status,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BrowserSessionListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BrowserSessionDeleteResponse
+
+      def retrieve_artifact: (
+        String artifact_id,
+        id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::BrowserSessionRetrieveArtifactResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,63 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        class Schedules
+          class V1
+            class CronJobs
+              def retrieve: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob
+
+              def update: (
+                Integer id,
+                ?agent: Integer?,
+                ?crontab_expression: String,
+                ?execution_mode: String,
+                ?frequency: Integer,
+                ?is_active: bool,
+                ?name: String,
+                ?notify_on: Telnyx::Models::AI::Tests::Schedules::V1::CronJobUpdateParams::notify_on,
+                ?personalities: ::Array[Integer],
+                ?run_as_text: bool,
+                ?scenarios: ::Array[Integer],
+                ?tags: ::Array[String],
+                ?timezone: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob
+
+              def delete: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> top
+
+              def cron_jobs: (
+                crontab_expression: String,
+                ?agent: Integer,
+                ?execution_mode: String,
+                ?frequency: Integer,
+                ?is_active: bool,
+                ?name: String,
+                ?notify_on: Telnyx::Models::AI::Tests::Schedules::V1::CronJobCronJobsParams::notify_on,
+                ?personalities: ::Array[Integer],
+                ?run_as_text: bool,
+                ?scenarios: ::Array[Integer],
+                ?tags: ::Array[String],
+                ?timezone: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::Schedules::V1::ScheduledTestJob
+
+              def retrieve_cron_jobs: (
+                ?agent_id: Integer,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::Schedules::V1::cron_job_retrieve_cron_jobs_response
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

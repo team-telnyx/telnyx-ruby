@@ -1012,13 +1012,6 @@ module Telnyx
             )
           end
 
-        # Custom Resemble API key.
-        sig { returns(T.nilable(String)) }
-        attr_reader :api_key
-
-        sig { params(api_key: String).void }
-        attr_writer :api_key
-
         # Audio output format.
         sig { returns(T.nilable(String)) }
         attr_reader :file_format
@@ -1043,15 +1036,12 @@ module Telnyx
         # Resemble AI provider-specific parameters.
         sig do
           params(
-            api_key: String,
             file_format: String,
             precision: String,
             sample_rate: String
           ).returns(T.attached_class)
         end
         def self.new(
-          # Custom Resemble API key.
-          api_key: nil,
           # Audio output format.
           file_format: nil,
           # Synthesis precision.
@@ -1063,12 +1053,7 @@ module Telnyx
 
         sig do
           override.returns(
-            {
-              api_key: String,
-              file_format: String,
-              precision: String,
-              sample_rate: String
-            }
+            { file_format: String, precision: String, sample_rate: String }
           )
         end
         def to_hash

@@ -35,7 +35,7 @@ module Telnyx
         parsed, options = Telnyx::BotChallengeCreateParams.dump_request(params)
         @client.request(
           method: :post,
-          path: "v2/bot_challenge",
+          path: "bot_challenge",
           body: parsed,
           model: Telnyx::Models::BotChallengeCreateResponse,
           options: options

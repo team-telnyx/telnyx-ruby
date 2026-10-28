@@ -54,13 +54,12 @@ module Telnyx
             record_type: String
           }
 
-          type result = :valid | :invalid
+          type result = :valid
 
           module Result
             extend Telnyx::Internal::Type::Enum
 
             VALID: :valid
-            INVALID: :invalid
 
             def self?.values: -> ::Array[Telnyx::Models::Addresses::ActionValidateResponse::Data::result]
           end
@@ -68,9 +67,13 @@ module Telnyx
           type suggested =
             {
               administrative_area: String,
+              borough: String,
               country_code: String,
               extended_address: String,
+              latitude: Float?,
               locality: String,
+              longitude: Float?,
+              neighborhood: String,
               postal_code: String,
               street_address: String
             }
@@ -80,6 +83,10 @@ module Telnyx
 
             def administrative_area=: (String) -> String
 
+            attr_reader borough: String?
+
+            def borough=: (String) -> String
+
             attr_reader country_code: String?
 
             def country_code=: (String) -> String
@@ -88,9 +95,17 @@ module Telnyx
 
             def extended_address=: (String) -> String
 
+            attr_accessor latitude: Float?
+
             attr_reader locality: String?
 
             def locality=: (String) -> String
+
+            attr_accessor longitude: Float?
+
+            attr_reader neighborhood: String?
+
+            def neighborhood=: (String) -> String
 
             attr_reader postal_code: String?
 
@@ -102,18 +117,26 @@ module Telnyx
 
             def initialize: (
               ?administrative_area: String,
+              ?borough: String,
               ?country_code: String,
               ?extended_address: String,
+              ?latitude: Float?,
               ?locality: String,
+              ?longitude: Float?,
+              ?neighborhood: String,
               ?postal_code: String,
               ?street_address: String
             ) -> void
 
             def to_hash: -> {
               administrative_area: String,
+              borough: String,
               country_code: String,
               extended_address: String,
+              latitude: Float?,
               locality: String,
+              longitude: Float?,
+              neighborhood: String,
               postal_code: String,
               street_address: String
             }

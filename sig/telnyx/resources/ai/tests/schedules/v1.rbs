@@ -1,0 +1,15 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        class Schedules
+          class V1
+            attr_reader cron_jobs: Telnyx::Resources::AI::Tests::Schedules::V1::CronJobs
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

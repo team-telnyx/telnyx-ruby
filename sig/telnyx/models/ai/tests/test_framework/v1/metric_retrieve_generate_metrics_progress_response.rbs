@@ -1,0 +1,108 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type metric_retrieve_generate_metrics_progress_response =
+              {
+                agent_id: Integer,
+                current_step: String,
+                error: String?,
+                metrics: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::Metric],
+                status: Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::status
+              }
+
+            class MetricRetrieveGenerateMetricsProgressResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor agent_id: Integer
+
+              attr_accessor current_step: String
+
+              attr_accessor error: String?
+
+              attr_accessor metrics: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::Metric]
+
+              attr_accessor status: Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::status
+
+              def initialize: (
+                agent_id: Integer,
+                current_step: String,
+                error: String?,
+                metrics: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::Metric],
+                status: Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::status
+              ) -> void
+
+              def to_hash: -> {
+                agent_id: Integer,
+                current_step: String,
+                error: String?,
+                metrics: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::Metric],
+                status: Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::status
+              }
+
+              type metric =
+                {
+                  agent: Integer,
+                  description: String,
+                  eval_type: String,
+                  name: String,
+                  scenarios: ::Array[Integer]
+                }
+
+              class Metric < Telnyx::Internal::Type::BaseModel
+                attr_reader agent: Integer?
+
+                def agent=: (Integer) -> Integer
+
+                attr_reader description: String?
+
+                def description=: (String) -> String
+
+                attr_reader eval_type: String?
+
+                def eval_type=: (String) -> String
+
+                attr_reader name: String?
+
+                def name=: (String) -> String
+
+                attr_reader scenarios: ::Array[Integer]?
+
+                def scenarios=: (::Array[Integer]) -> ::Array[Integer]
+
+                def initialize: (
+                  ?agent: Integer,
+                  ?description: String,
+                  ?eval_type: String,
+                  ?name: String,
+                  ?scenarios: ::Array[Integer]
+                ) -> void
+
+                def to_hash: -> {
+                  agent: Integer,
+                  description: String,
+                  eval_type: String,
+                  name: String,
+                  scenarios: ::Array[Integer]
+                }
+              end
+
+              type status = :queued | :processing | :completed | :failed
+
+              module Status
+                extend Telnyx::Internal::Type::Enum
+
+                QUEUED: :queued
+                PROCESSING: :processing
+                COMPLETED: :completed
+                FAILED: :failed
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::MetricRetrieveGenerateMetricsProgressResponse::status]
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

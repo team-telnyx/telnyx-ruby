@@ -39,7 +39,7 @@ module Telnyx
         query = Telnyx::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
-          path: "v2/bot_sessions",
+          path: "bot_sessions",
           query: query,
           model: Telnyx::Models::BotSessionListResponse,
           options: options

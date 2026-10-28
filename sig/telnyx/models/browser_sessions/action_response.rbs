@@ -1,0 +1,239 @@
+module Telnyx
+  module Models
+    module BrowserSessions
+      type action_response =
+        {
+          id: String,
+          completed_at: Time?,
+          created_at: Time,
+          error: Telnyx::BrowserSessions::ActionResponse::Error?,
+          request: top,
+          result: Telnyx::BrowserSessions::ActionResponse::Result?,
+          seq: Integer,
+          session_id: String,
+          started_at: Time?,
+          status: Telnyx::Models::BrowserSessions::ActionResponse::status,
+          type: String
+        }
+
+      class ActionResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor completed_at: Time?
+
+        attr_accessor created_at: Time
+
+        attr_accessor error: Telnyx::BrowserSessions::ActionResponse::Error?
+
+        attr_accessor request: top
+
+        attr_accessor result: Telnyx::BrowserSessions::ActionResponse::Result?
+
+        attr_accessor seq: Integer
+
+        attr_accessor session_id: String
+
+        attr_accessor started_at: Time?
+
+        attr_accessor status: Telnyx::Models::BrowserSessions::ActionResponse::status
+
+        attr_accessor type: String
+
+        def initialize: (
+          id: String,
+          completed_at: Time?,
+          created_at: Time,
+          error: Telnyx::BrowserSessions::ActionResponse::Error?,
+          request: top,
+          result: Telnyx::BrowserSessions::ActionResponse::Result?,
+          seq: Integer,
+          session_id: String,
+          started_at: Time?,
+          status: Telnyx::Models::BrowserSessions::ActionResponse::status,
+          type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          completed_at: Time?,
+          created_at: Time,
+          error: Telnyx::BrowserSessions::ActionResponse::Error?,
+          request: top,
+          result: Telnyx::BrowserSessions::ActionResponse::Result?,
+          seq: Integer,
+          session_id: String,
+          started_at: Time?,
+          status: Telnyx::Models::BrowserSessions::ActionResponse::status,
+          type: String
+        }
+
+        type error = { code: String, retryable: bool }
+
+        class Error < Telnyx::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor retryable: bool
+
+          def initialize: (code: String, retryable: bool) -> void
+
+          def to_hash: -> { code: String, retryable: bool }
+        end
+
+        type result =
+          {
+            artifact: Telnyx::BrowserSessions::ActionResponse::Result::Artifact,
+            observation: Telnyx::BrowserSessions::ActionResponse::Result::Observation,
+            results: ::Array[top],
+            title: String,
+            url: String
+          }
+
+        class Result < Telnyx::Internal::Type::BaseModel
+          attr_reader artifact: Telnyx::BrowserSessions::ActionResponse::Result::Artifact?
+
+          def artifact=: (
+            Telnyx::BrowserSessions::ActionResponse::Result::Artifact
+          ) -> Telnyx::BrowserSessions::ActionResponse::Result::Artifact
+
+          attr_reader observation: Telnyx::BrowserSessions::ActionResponse::Result::Observation?
+
+          def observation=: (
+            Telnyx::BrowserSessions::ActionResponse::Result::Observation
+          ) -> Telnyx::BrowserSessions::ActionResponse::Result::Observation
+
+          attr_reader results: ::Array[top]?
+
+          def results=: (::Array[top]) -> ::Array[top]
+
+          attr_reader title: String?
+
+          def title=: (String) -> String
+
+          attr_reader url: String?
+
+          def url=: (String) -> String
+
+          def initialize: (
+            ?artifact: Telnyx::BrowserSessions::ActionResponse::Result::Artifact,
+            ?observation: Telnyx::BrowserSessions::ActionResponse::Result::Observation,
+            ?results: ::Array[top],
+            ?title: String,
+            ?url: String
+          ) -> void
+
+          def to_hash: -> {
+            artifact: Telnyx::BrowserSessions::ActionResponse::Result::Artifact,
+            observation: Telnyx::BrowserSessions::ActionResponse::Result::Observation,
+            results: ::Array[top],
+            title: String,
+            url: String
+          }
+
+          type artifact =
+            { artifact_id: String, content_type: String, size_bytes: Integer }
+
+          class Artifact < Telnyx::Internal::Type::BaseModel
+            attr_reader artifact_id: String?
+
+            def artifact_id=: (String) -> String
+
+            attr_reader content_type: String?
+
+            def content_type=: (String) -> String
+
+            attr_reader size_bytes: Integer?
+
+            def size_bytes=: (Integer) -> Integer
+
+            def initialize: (
+              ?artifact_id: String,
+              ?content_type: String,
+              ?size_bytes: Integer
+            ) -> void
+
+            def to_hash: -> {
+              artifact_id: String,
+              content_type: String,
+              size_bytes: Integer
+            }
+          end
+
+          type observation =
+            {
+              observation_id: String,
+              ref_count: Integer,
+              refs: top,
+              title: String,
+              tree: String,
+              truncated: bool,
+              url: String
+            }
+
+          class Observation < Telnyx::Internal::Type::BaseModel
+            attr_reader observation_id: String?
+
+            def observation_id=: (String) -> String
+
+            attr_reader ref_count: Integer?
+
+            def ref_count=: (Integer) -> Integer
+
+            attr_reader refs: top?
+
+            def refs=: (top) -> top
+
+            attr_reader title: String?
+
+            def title=: (String) -> String
+
+            attr_reader tree: String?
+
+            def tree=: (String) -> String
+
+            attr_reader truncated: bool?
+
+            def truncated=: (bool) -> bool
+
+            attr_reader url: String?
+
+            def url=: (String) -> String
+
+            def initialize: (
+              ?observation_id: String,
+              ?ref_count: Integer,
+              ?refs: top,
+              ?title: String,
+              ?tree: String,
+              ?truncated: bool,
+              ?url: String
+            ) -> void
+
+            def to_hash: -> {
+              observation_id: String,
+              ref_count: Integer,
+              refs: top,
+              title: String,
+              tree: String,
+              truncated: bool,
+              url: String
+            }
+          end
+        end
+
+        type status = :queued | :running | :succeeded | :failed | :unknown
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          QUEUED: :queued
+          RUNNING: :running
+          SUCCEEDED: :succeeded
+          FAILED: :failed
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[Telnyx::Models::BrowserSessions::ActionResponse::status]
+        end
+      end
+    end
+  end
+end

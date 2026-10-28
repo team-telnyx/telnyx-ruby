@@ -14,7 +14,7 @@ module Telnyx
         #
         # @overload create(app_id:, expires_at: nil, signup_type: nil, request_options: {})
         #
-        # @param app_id [String] Meta App ID linked to the Telnyx account. The app must be enabled.
+        # @param app_id [String] Meta App ID linked to the Telnyx account or its manager account. The app must be
         #
         # @param expires_at [Time] When the onboarding URL expires, in RFC 3339 format. Must be in the future and a
         #

@@ -1,0 +1,51 @@
+module Telnyx
+  module Resources
+    class PayConnectors
+      def create: (
+        config: Telnyx::Models::generic_pay_connector_config,
+        name: String,
+        ?mode: Telnyx::Models::PayConnectorCreateParams::mode,
+        ?type: Telnyx::Models::PayConnectorCreateParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::PayConnectorResponse
+
+      def retrieve: (
+        String name,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::PayConnectorResponse
+
+      def update: (
+        String name,
+        ?config: Telnyx::Models::generic_pay_connector_config,
+        ?mode: Telnyx::Models::PayConnectorUpdateParams::mode,
+        ?type: Telnyx::Models::PayConnectorUpdateParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::PayConnectorResponse
+
+      def list: (
+        ?filter_created_at_eq: String,
+        ?filter_created_at_gt: String,
+        ?filter_created_at_gte: String,
+        ?filter_created_at_lt: String,
+        ?filter_created_at_lte: String,
+        ?filter_mode: String,
+        ?filter_name: String,
+        ?filter_type: String,
+        ?filter_updated_at_eq: String,
+        ?filter_updated_at_gt: String,
+        ?filter_updated_at_gte: String,
+        ?filter_updated_at_lt: String,
+        ?filter_updated_at_lte: String,
+        ?page_after: String,
+        ?page_before: String,
+        ?page_size: Integer,
+        ?sort: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::EmailBracketCursorPagination[Telnyx::PayConnector]
+
+      def delete: (String name, ?request_options: Telnyx::request_opts) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

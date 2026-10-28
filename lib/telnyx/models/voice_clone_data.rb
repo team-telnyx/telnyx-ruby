@@ -30,7 +30,8 @@ module Telnyx
       optional :label, String, nil?: true
 
       # @!attribute language
-      #   ISO 639-1 language code of the voice clone.
+      #   Language code of the voice clone (ISO 639-1, or the Resemble catalogue code such
+      #   as `en-US`).
       #
       #   @return [String, nil]
       optional :language, String, nil?: true
@@ -111,7 +112,7 @@ module Telnyx
       #
       #   @param label [String, nil] Voice style description. If not explicitly set on upload, falls back to the sour
       #
-      #   @param language [String, nil] ISO 639-1 language code of the voice clone.
+      #   @param language [String, nil] Language code of the voice clone (ISO 639-1, or the Resemble catalogue code such
       #
       #   @param model_id [Symbol, Telnyx::Models::VoiceCloneData::ModelID] TTS model identifier for the voice clone.
       #
@@ -157,6 +158,9 @@ module Telnyx
         ULTRA = :Ultra
         BAYAN = :Bayan
         SPEECH_2_8_TURBO = :"speech-2.8-turbo"
+        PRO = :Pro
+        TURBO = :Turbo
+        URDU = :Urdu
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -12,6 +12,14 @@ module Telnyx
       #   @return [String]
       required :product, String
 
+      # @!attribute credential_id
+      #   Identifier of one API key as recorded on usage, never the key's secret,
+      #   percent-encoded: the request is then about that key's limit. Absent means the
+      #   total limit; present but blank is refused.
+      #
+      #   @return [String, nil]
+      optional :credential_id, String
+
       # @!attribute period
       #   Limit period. Defaults to `daily`; send it explicitly.
       #
@@ -24,8 +32,13 @@ module Telnyx
       #   @return [String, nil]
       optional :reason, String
 
-      # @!method initialize(product:, period: nil, reason: nil, request_options: {})
+      # @!method initialize(product:, credential_id: nil, period: nil, reason: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::SpendLimitDeleteParams} for more details.
+      #
       #   @param product [String]
+      #
+      #   @param credential_id [String] Identifier of one API key as recorded on usage, never the key's secret, percent-
       #
       #   @param period [Symbol, Telnyx::Models::SpendLimitPeriod] Limit period. Defaults to `daily`; send it explicitly.
       #

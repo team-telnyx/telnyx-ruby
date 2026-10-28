@@ -1,0 +1,13 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        attr_reader schedules: Telnyx::Resources::AI::Tests::Schedules
+
+        attr_reader test_framework: Telnyx::Resources::AI::Tests::TestFramework
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

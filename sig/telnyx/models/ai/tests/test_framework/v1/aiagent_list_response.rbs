@@ -1,0 +1,43 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type aiagent_list_response =
+              {
+                count: Integer,
+                next_: String?,
+                previous: String?,
+                results: ::Array[Telnyx::AI::Tests::TestFramework::V1::TestAgent]
+              }
+
+            class AiagentListResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor count: Integer
+
+              attr_accessor next_: String?
+
+              attr_accessor previous: String?
+
+              attr_accessor results: ::Array[Telnyx::AI::Tests::TestFramework::V1::TestAgent]
+
+              def initialize: (
+                count: Integer,
+                next_: String?,
+                previous: String?,
+                results: ::Array[Telnyx::AI::Tests::TestFramework::V1::TestAgent]
+              ) -> void
+
+              def to_hash: -> {
+                count: Integer,
+                next_: String?,
+                previous: String?,
+                results: ::Array[Telnyx::AI::Tests::TestFramework::V1::TestAgent]
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

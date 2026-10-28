@@ -15,6 +15,7 @@ module Telnyx
       ) -> Telnyx::VoiceCloneResponse
 
       def list: (
+        ?filter_model_id: Telnyx::Models::VoiceCloneListParams::filter_model_id,
         ?filter_name: String,
         ?filter_provider: Telnyx::Models::VoiceCloneListParams::filter_provider,
         ?page_number: Integer,

@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type tunnel_with_token = { tunnel_token: String }
+
+    class TunnelWithToken < Telnyx::Models::Tunnel
+      def tunnel_token: -> String?
+
+      def tunnel_token=: (String _) -> String
+
+      def initialize: (?tunnel_token: String) -> void
+
+      def to_hash: -> { tunnel_token: String }
+    end
+  end
+end

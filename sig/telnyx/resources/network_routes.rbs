@@ -1,0 +1,28 @@
+module Telnyx
+  module Resources
+    class NetworkRoutes
+      def create: (
+        cidr: String,
+        network_id: String,
+        next_hop: Telnyx::NetworkRouteCreateParams::NextHop,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkRouteCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkRouteRetrieveResponse
+
+      def list: (
+        filter: Telnyx::NetworkRouteListParams::Filter,
+        ?page: Telnyx::NetworkRouteListParams::Page,
+        ?sort: Telnyx::Models::NetworkRouteListParams::sort,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::NetworkRouteListResponse
+
+      def delete: (String id, ?request_options: Telnyx::request_opts) -> nil
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

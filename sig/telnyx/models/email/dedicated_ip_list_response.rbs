@@ -1,0 +1,16 @@
+module Telnyx
+  module Models
+    module Email
+      type dedicated_ip_list_response =
+        { data: ::Array[Telnyx::Email::DedicatedIP] }
+
+      class DedicatedIPListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::Email::DedicatedIP]
+
+        def initialize: (data: ::Array[Telnyx::Email::DedicatedIP]) -> void
+
+        def to_hash: -> { data: ::Array[Telnyx::Email::DedicatedIP] }
+      end
+    end
+  end
+end

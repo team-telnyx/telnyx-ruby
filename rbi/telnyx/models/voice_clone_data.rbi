@@ -31,7 +31,8 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :label
 
-      # ISO 639-1 language code of the voice clone.
+      # Language code of the voice clone (ISO 639-1, or the Resemble catalogue code such
+      # as `en-US`).
       sig { returns(T.nilable(String)) }
       attr_accessor :language
 
@@ -132,7 +133,8 @@ module Telnyx
         # Voice style description. If not explicitly set on upload, falls back to the
         # source design's prompt text.
         label: nil,
-        # ISO 639-1 language code of the voice clone.
+        # Language code of the voice clone (ISO 639-1, or the Resemble catalogue code such
+        # as `en-US`).
         language: nil,
         # TTS model identifier for the voice clone.
         model_id: nil,
@@ -221,6 +223,9 @@ module Telnyx
             :"speech-2.8-turbo",
             Telnyx::VoiceCloneData::ModelID::TaggedSymbol
           )
+        PRO = T.let(:Pro, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
+        TURBO = T.let(:Turbo, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
+        URDU = T.let(:Urdu, Telnyx::VoiceCloneData::ModelID::TaggedSymbol)
 
         sig do
           override.returns(

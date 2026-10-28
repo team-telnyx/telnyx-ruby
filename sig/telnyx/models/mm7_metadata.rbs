@@ -1,0 +1,26 @@
+module Telnyx
+  module Models
+    type mm7_metadata =
+      { :mm7_failover_webhook_url => String, :mm7_webhook_url => String }
+
+    class Mm7Metadata < Telnyx::Internal::Type::BaseModel
+      attr_reader mm7_failover_webhook_url: String?
+
+      def mm7_failover_webhook_url=: (String) -> String
+
+      attr_reader mm7_webhook_url: String?
+
+      def mm7_webhook_url=: (String) -> String
+
+      def initialize: (
+        ?mm7_failover_webhook_url: String,
+        ?mm7_webhook_url: String
+      ) -> void
+
+      def to_hash: -> {
+        :mm7_failover_webhook_url => String,
+        :mm7_webhook_url => String
+      }
+    end
+  end
+end

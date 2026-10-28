@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module Email
+      module IPPools
+        type ip_create_response =
+          { data: Telnyx::Models::Email::IPPools::IPCreateResponse::Data }
+
+        class IPCreateResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::Models::Email::IPPools::IPCreateResponse::Data
+
+          def initialize: (
+            data: Telnyx::Models::Email::IPPools::IPCreateResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::Models::Email::IPPools::IPCreateResponse::Data
+          }
+
+          type data =
+            {
+              created_at: Time,
+              dedicated_ip_id: String,
+              pool_id: String,
+              weight: Integer
+            }
+
+          class Data < Telnyx::Internal::Type::BaseModel
+            attr_reader created_at: Time?
+
+            def created_at=: (Time) -> Time
+
+            attr_reader dedicated_ip_id: String?
+
+            def dedicated_ip_id=: (String) -> String
+
+            attr_reader pool_id: String?
+
+            def pool_id=: (String) -> String
+
+            attr_reader weight: Integer?
+
+            def weight=: (Integer) -> Integer
+
+            def initialize: (
+              ?created_at: Time,
+              ?dedicated_ip_id: String,
+              ?pool_id: String,
+              ?weight: Integer
+            ) -> void
+
+            def to_hash: -> {
+              created_at: Time,
+              dedicated_ip_id: String,
+              pool_id: String,
+              weight: Integer
+            }
+          end
+        end
+      end
+    end
+  end
+end

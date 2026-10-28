@@ -65,6 +65,9 @@ module Telnyx
       # @return [Telnyx::Resources::AI::Avatars]
       attr_reader :avatars
 
+      # @return [Telnyx::Resources::AI::Tests]
+      attr_reader :tests
+
       # Some parameter documentations has been truncated, see
       # {Telnyx::Models::AIRetrieveConversationHistoriesParams} for more details.
       #
@@ -241,6 +244,7 @@ module Telnyx
         @typesafe = Telnyx::Resources::AI::Typesafe.new(client: client)
         @memory = Telnyx::Resources::AI::Memory.new(client: client)
         @avatars = Telnyx::Resources::AI::Avatars.new(client: client)
+        @tests = Telnyx::Resources::AI::Tests.new(client: client)
       end
     end
   end

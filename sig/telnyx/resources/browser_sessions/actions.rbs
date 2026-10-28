@@ -1,0 +1,22 @@
+module Telnyx
+  module Resources
+    class BrowserSessions
+      class Actions
+        def create: (
+          String id,
+          body: Telnyx::Models::BrowserSessions::ActionCreateParams::body,
+          ?wait_seconds: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BrowserSessions::ActionCreateResponse
+
+        def retrieve: (
+          String action_id,
+          id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::BrowserSessions::ActionRetrieveResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

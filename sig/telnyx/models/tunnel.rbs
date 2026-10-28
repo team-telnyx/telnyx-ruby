@@ -1,0 +1,120 @@
+module Telnyx
+  module Models
+    type tunnel =
+      {
+        id: String,
+        connection_count: Integer,
+        connections: ::Array[Telnyx::Tunnel::Connection],
+        created_at: Time,
+        name: String,
+        record_type: String,
+        status: Telnyx::Models::Tunnel::status
+      }
+
+    class Tunnel < Telnyx::Internal::Type::BaseModel
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader connection_count: Integer?
+
+      def connection_count=: (Integer) -> Integer
+
+      attr_reader connections: ::Array[Telnyx::Tunnel::Connection]?
+
+      def connections=: (
+        ::Array[Telnyx::Tunnel::Connection]
+      ) -> ::Array[Telnyx::Tunnel::Connection]
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader status: Telnyx::Models::Tunnel::status?
+
+      def status=: (
+        Telnyx::Models::Tunnel::status
+      ) -> Telnyx::Models::Tunnel::status
+
+      def initialize: (
+        ?id: String,
+        ?connection_count: Integer,
+        ?connections: ::Array[Telnyx::Tunnel::Connection],
+        ?created_at: Time,
+        ?name: String,
+        ?record_type: String,
+        ?status: Telnyx::Models::Tunnel::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        connection_count: Integer,
+        connections: ::Array[Telnyx::Tunnel::Connection],
+        created_at: Time,
+        name: String,
+        record_type: String,
+        status: Telnyx::Models::Tunnel::status
+      }
+
+      type connection =
+        {
+          connected_at: Time,
+          hostname: String,
+          region_code: String,
+          version: String
+        }
+
+      class Connection < Telnyx::Internal::Type::BaseModel
+        attr_reader connected_at: Time?
+
+        def connected_at=: (Time) -> Time
+
+        attr_reader hostname: String?
+
+        def hostname=: (String) -> String
+
+        attr_reader region_code: String?
+
+        def region_code=: (String) -> String
+
+        attr_reader version: String?
+
+        def version=: (String) -> String
+
+        def initialize: (
+          ?connected_at: Time,
+          ?hostname: String,
+          ?region_code: String,
+          ?version: String
+        ) -> void
+
+        def to_hash: -> {
+          connected_at: Time,
+          hostname: String,
+          region_code: String,
+          version: String
+        }
+      end
+
+      type status = :inactive | :healthy | :degraded
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        INACTIVE: :inactive
+        HEALTHY: :healthy
+        DEGRADED: :degraded
+
+        def self?.values: -> ::Array[Telnyx::Models::Tunnel::status]
+      end
+    end
+  end
+end

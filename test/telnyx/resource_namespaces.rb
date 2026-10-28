@@ -72,6 +72,18 @@ module Telnyx
         module OpenAI
         end
 
+        module Tests
+          module Schedules
+            module V1
+            end
+          end
+
+          module TestFramework
+            module V1
+            end
+          end
+        end
+
         module Typesafe
         end
       end
@@ -90,6 +102,9 @@ module Telnyx
       end
 
       module Brand
+      end
+
+      module BrowserSessions
       end
 
       module Buckets
@@ -138,7 +153,18 @@ module Telnyx
       module CreditAccount
       end
 
+      module DedicatedIPs
+      end
+
       module Dir
+      end
+
+      module Email
+        module DedicatedIPs
+        end
+
+        module IPPools
+        end
       end
 
       module EmailBlocks
@@ -194,6 +220,9 @@ module Telnyx
       end
 
       module Integrations
+      end
+
+      module IPPools
       end
 
       module Knowledge
@@ -353,6 +382,11 @@ module Telnyx
       module Runs
       end
 
+      module Schedules
+        module V1
+        end
+      end
+
       module SessionAnalysis
       end
 
@@ -388,7 +422,22 @@ module Telnyx
       module TermsOfService
       end
 
+      module TestFramework
+        module V1
+        end
+      end
+
       module Tests
+        module Schedules
+          module V1
+          end
+        end
+
+        module TestFramework
+          module V1
+          end
+        end
+
         module TestSuites
         end
       end
@@ -421,6 +470,9 @@ module Telnyx
       module TtsIntegrations
       end
 
+      module Tunnels
+      end
+
       module Typesafe
       end
 
@@ -431,6 +483,9 @@ module Telnyx
       end
 
       module Users
+      end
+
+      module V1
       end
 
       module Verification

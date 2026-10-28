@@ -1,0 +1,72 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        class TestFramework
+          class V1
+            class Aiagents
+              def create: (
+                agent_name: String,
+                assistant_id: String,
+                ?auto_fetch_calls_enabled: bool,
+                ?auto_sync_prompt_enabled: bool,
+                ?auto_update_dropoff_nodes: bool,
+                ?auto_update_topic_nodes: bool,
+                ?contact_number: String,
+                ?description: String,
+                ?inbound: bool,
+                ?language: String,
+                ?llm_max_tokens: Integer,
+                ?llm_model: String,
+                ?llm_system_prompt: String,
+                ?llm_temperature: Float,
+                ?outbound_auto_call: bool,
+                ?sip_endpoint: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::TestAgent
+
+              def retrieve: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::TestAgent
+
+              def update: (
+                Integer id,
+                ?agent_name: String,
+                ?assistant_id: String,
+                ?auto_fetch_calls_enabled: bool,
+                ?auto_sync_prompt_enabled: bool,
+                ?auto_update_dropoff_nodes: bool,
+                ?auto_update_topic_nodes: bool,
+                ?contact_number: String,
+                ?description: String,
+                ?inbound: bool,
+                ?language: String,
+                ?llm_max_tokens: Integer,
+                ?llm_model: String,
+                ?llm_system_prompt: String,
+                ?llm_temperature: Float,
+                ?outbound_auto_call: bool,
+                ?sip_endpoint: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::TestAgent
+
+              def list: (
+                ?page: Integer,
+                ?page_size: Integer,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::AiagentListResponse
+
+              def delete: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> top
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

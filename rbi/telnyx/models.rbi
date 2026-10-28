@@ -73,6 +73,9 @@ module Telnyx
 
   ArtifactCompletedWebhookEvent = Telnyx::Models::ArtifactCompletedWebhookEvent
 
+  ArtifactDownloadRetrieveParams =
+    Telnyx::Models::ArtifactDownloadRetrieveParams
+
   ArtifactFailedWebhookEvent = Telnyx::Models::ArtifactFailedWebhookEvent
 
   AttachmentRequest = Telnyx::Models::AttachmentRequest
@@ -144,6 +147,19 @@ module Telnyx
   BpoAuthorizationInput = Telnyx::Models::BpoAuthorizationInput
 
   BrandedCallingPaginationMeta = Telnyx::Models::BrandedCallingPaginationMeta
+
+  BrowserSessionCreateParams = Telnyx::Models::BrowserSessionCreateParams
+
+  BrowserSessionDeleteParams = Telnyx::Models::BrowserSessionDeleteParams
+
+  BrowserSessionListParams = Telnyx::Models::BrowserSessionListParams
+
+  BrowserSessionRetrieveArtifactParams =
+    Telnyx::Models::BrowserSessionRetrieveArtifactParams
+
+  BrowserSessionRetrieveParams = Telnyx::Models::BrowserSessionRetrieveParams
+
+  BrowserSessions = Telnyx::Models::BrowserSessions
 
   BulkMessagingSettingsUpdatePhoneNumbers =
     Telnyx::Models::BulkMessagingSettingsUpdatePhoneNumbers
@@ -734,6 +750,8 @@ module Telnyx
   DynamicEmergencyEndpointRetrieveParams =
     Telnyx::Models::DynamicEmergencyEndpointRetrieveParams
 
+  Email = Telnyx::Models::Email
+
   EmailAddressInput = Telnyx::Models::EmailAddressInput
 
   EmailBlock = Telnyx::Models::EmailBlock
@@ -1000,6 +1018,8 @@ module Telnyx
   GcbChannelZone = Telnyx::Models::GcbChannelZone
 
   GcsConfigurationData = Telnyx::Models::GcsConfigurationData
+
+  GenericPayConnectorConfig = Telnyx::Models::GenericPayConnectorConfig
 
   GlobalIP = Telnyx::Models::GlobalIP
 
@@ -1367,6 +1387,8 @@ module Telnyx
 
   MinimaxVoiceSettings = Telnyx::Models::MinimaxVoiceSettings
 
+  Mm7Metadata = Telnyx::Models::Mm7Metadata
+
   MobileNetworkOperatorListParams =
     Telnyx::Models::MobileNetworkOperatorListParams
 
@@ -1416,6 +1438,8 @@ module Telnyx
 
   MonthDetail = Telnyx::Models::MonthDetail
 
+  NetappsCursorPaginationMeta = Telnyx::Models::NetappsCursorPaginationMeta
+
   NetappsLocation = Telnyx::Models::NetappsLocation
 
   NetappsLocation17904fcfbc = Telnyx::Models::NetappsLocation17904fcfbc
@@ -1437,6 +1461,16 @@ module Telnyx
   NetworkListParams = Telnyx::Models::NetworkListParams
 
   NetworkRetrieveParams = Telnyx::Models::NetworkRetrieveParams
+
+  NetworkRoute = Telnyx::Models::NetworkRoute
+
+  NetworkRouteCreateParams = Telnyx::Models::NetworkRouteCreateParams
+
+  NetworkRouteDeleteParams = Telnyx::Models::NetworkRouteDeleteParams
+
+  NetworkRouteListParams = Telnyx::Models::NetworkRouteListParams
+
+  NetworkRouteRetrieveParams = Telnyx::Models::NetworkRouteRetrieveParams
 
   Networks = Telnyx::Models::Networks
 
@@ -1651,6 +1685,20 @@ module Telnyx
     Telnyx::Models::PaginationMetaCloudflareIPListSync
 
   PaginationMetaOAuth = Telnyx::Models::PaginationMetaOAuth
+
+  PayConnector = Telnyx::Models::PayConnector
+
+  PayConnectorCreateParams = Telnyx::Models::PayConnectorCreateParams
+
+  PayConnectorDeleteParams = Telnyx::Models::PayConnectorDeleteParams
+
+  PayConnectorListParams = Telnyx::Models::PayConnectorListParams
+
+  PayConnectorResponse = Telnyx::Models::PayConnectorResponse
+
+  PayConnectorRetrieveParams = Telnyx::Models::PayConnectorRetrieveParams
+
+  PayConnectorUpdateParams = Telnyx::Models::PayConnectorUpdateParams
 
   Payment = Telnyx::Models::Payment
 
@@ -1982,6 +2030,8 @@ module Telnyx
 
   ServicePlan = Telnyx::Models::ServicePlan
 
+  Session = Telnyx::Models::Session
+
   SessionAnalysis = Telnyx::Models::SessionAnalysis
 
   SessionAnalysisRetrieveParams = Telnyx::Models::SessionAnalysisRetrieveParams
@@ -2098,6 +2148,8 @@ module Telnyx
     Telnyx::Models::SpeechToTextRetrieveTranscriptionParams
 
   SpendLimit = Telnyx::Models::SpendLimit
+
+  SpendLimitBlock = Telnyx::Models::SpendLimitBlock
 
   SpendLimitCreateParams = Telnyx::Models::SpendLimitCreateParams
 
@@ -2268,6 +2320,20 @@ module Telnyx
   TranscriptionWebhookEvent = Telnyx::Models::TranscriptionWebhookEvent
 
   TransportProtocol = Telnyx::Models::TransportProtocol
+
+  Tunnel = Telnyx::Models::Tunnel
+
+  TunnelCreateParams = Telnyx::Models::TunnelCreateParams
+
+  TunnelDeleteParams = Telnyx::Models::TunnelDeleteParams
+
+  TunnelListParams = Telnyx::Models::TunnelListParams
+
+  TunnelRetrieveParams = Telnyx::Models::TunnelRetrieveParams
+
+  Tunnels = Telnyx::Models::Tunnels
+
+  TunnelWithToken = Telnyx::Models::TunnelWithToken
 
   UacConnection = Telnyx::Models::UacConnection
 

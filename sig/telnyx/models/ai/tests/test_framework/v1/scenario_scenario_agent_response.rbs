@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_scenario_agent_response =
+              { progress_id: String, session_id: Integer? }
+
+            class ScenarioScenarioAgentResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor progress_id: String
+
+              attr_accessor session_id: Integer?
+
+              def initialize: (
+                progress_id: String,
+                ?session_id: Integer?
+              ) -> void
+
+              def to_hash: -> { progress_id: String, session_id: Integer? }
+            end
+          end
+        end
+      end
+    end
+  end
+end

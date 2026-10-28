@@ -465,18 +465,9 @@ module Telnyx
       end
 
       type resemble =
-        {
-          api_key: String,
-          file_format: String,
-          precision: String,
-          sample_rate: String
-        }
+        { file_format: String, precision: String, sample_rate: String }
 
       class Resemble < ::Telnyx::Internal::Type::BaseModel
-        attr_reader api_key: String?
-
-        def api_key=: (String) -> String
-
         attr_reader file_format: String?
 
         def file_format=: (String) -> String
@@ -490,14 +481,12 @@ module Telnyx
         def sample_rate=: (String) -> String
 
         def initialize: (
-          ?api_key: String,
           ?file_format: String,
           ?precision: String,
           ?sample_rate: String
         ) -> void
 
         def to_hash: -> {
-          api_key: String,
           file_format: String,
           precision: String,
           sample_rate: String

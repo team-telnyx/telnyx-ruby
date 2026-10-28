@@ -1,0 +1,172 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type test_agent =
+              {
+                id: Integer,
+                agent_name: String,
+                assistant_id: String,
+                created_at: Time,
+                updated_at: Time,
+                auto_update_dropoff_nodes: bool,
+                auto_update_topic_nodes: bool,
+                chat_assistant_id: String,
+                contact_number: String,
+                description: String,
+                enabled_personalities: ::Array[Integer],
+                hallucination_metric_kb_files: ::Array[Integer],
+                inbound: bool,
+                knowledge_base_files: ::Array[top],
+                language: String,
+                llm_max_tokens: Integer,
+                llm_model: String,
+                llm_system_prompt: String,
+                llm_temperature: Float,
+                outbound_auto_call: bool,
+                outbound_numbers: ::Array[top]?,
+                sip_auth: ::Hash[Symbol, String]?,
+                sip_endpoint: String
+              }
+
+            class TestAgent < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: Integer
+
+              attr_accessor agent_name: String
+
+              attr_accessor assistant_id: String
+
+              attr_accessor created_at: Time
+
+              attr_accessor updated_at: Time
+
+              attr_reader auto_update_dropoff_nodes: bool?
+
+              def auto_update_dropoff_nodes=: (bool) -> bool
+
+              attr_reader auto_update_topic_nodes: bool?
+
+              def auto_update_topic_nodes=: (bool) -> bool
+
+              attr_reader chat_assistant_id: String?
+
+              def chat_assistant_id=: (String) -> String
+
+              attr_reader contact_number: String?
+
+              def contact_number=: (String) -> String
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader enabled_personalities: ::Array[Integer]?
+
+              def enabled_personalities=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_reader hallucination_metric_kb_files: ::Array[Integer]?
+
+              def hallucination_metric_kb_files=: (
+                ::Array[Integer]
+              ) -> ::Array[Integer]
+
+              attr_reader inbound: bool?
+
+              def inbound=: (bool) -> bool
+
+              attr_reader knowledge_base_files: ::Array[top]?
+
+              def knowledge_base_files=: (::Array[top]) -> ::Array[top]
+
+              attr_reader language: String?
+
+              def language=: (String) -> String
+
+              attr_reader llm_max_tokens: Integer?
+
+              def llm_max_tokens=: (Integer) -> Integer
+
+              attr_reader llm_model: String?
+
+              def llm_model=: (String) -> String
+
+              attr_reader llm_system_prompt: String?
+
+              def llm_system_prompt=: (String) -> String
+
+              attr_reader llm_temperature: Float?
+
+              def llm_temperature=: (Float) -> Float
+
+              attr_reader outbound_auto_call: bool?
+
+              def outbound_auto_call=: (bool) -> bool
+
+              attr_accessor outbound_numbers: ::Array[top]?
+
+              attr_accessor sip_auth: ::Hash[Symbol, String]?
+
+              attr_reader sip_endpoint: String?
+
+              def sip_endpoint=: (String) -> String
+
+              def initialize: (
+                id: Integer,
+                agent_name: String,
+                assistant_id: String,
+                created_at: Time,
+                updated_at: Time,
+                ?auto_update_dropoff_nodes: bool,
+                ?auto_update_topic_nodes: bool,
+                ?chat_assistant_id: String,
+                ?contact_number: String,
+                ?description: String,
+                ?enabled_personalities: ::Array[Integer],
+                ?hallucination_metric_kb_files: ::Array[Integer],
+                ?inbound: bool,
+                ?knowledge_base_files: ::Array[top],
+                ?language: String,
+                ?llm_max_tokens: Integer,
+                ?llm_model: String,
+                ?llm_system_prompt: String,
+                ?llm_temperature: Float,
+                ?outbound_auto_call: bool,
+                ?outbound_numbers: ::Array[top]?,
+                ?sip_auth: ::Hash[Symbol, String]?,
+                ?sip_endpoint: String
+              ) -> void
+
+              def to_hash: -> {
+                id: Integer,
+                agent_name: String,
+                assistant_id: String,
+                created_at: Time,
+                updated_at: Time,
+                auto_update_dropoff_nodes: bool,
+                auto_update_topic_nodes: bool,
+                chat_assistant_id: String,
+                contact_number: String,
+                description: String,
+                enabled_personalities: ::Array[Integer],
+                hallucination_metric_kb_files: ::Array[Integer],
+                inbound: bool,
+                knowledge_base_files: ::Array[top],
+                language: String,
+                llm_max_tokens: Integer,
+                llm_model: String,
+                llm_system_prompt: String,
+                llm_temperature: Float,
+                outbound_auto_call: bool,
+                outbound_numbers: ::Array[top]?,
+                sip_auth: ::Hash[Symbol, String]?,
+                sip_endpoint: String
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

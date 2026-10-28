@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    module Email
+      type ip_pool =
+        {
+          id: String,
+          created_at: Time,
+          domain_id: String?,
+          ips: ::Array[Telnyx::Email::IPPool::IP],
+          is_default: bool,
+          name: String,
+          record_type: Telnyx::Models::Email::IPPool::record_type,
+          updated_at: Time
+        }
+
+      class IPPool < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_accessor domain_id: String?
+
+        attr_reader ips: ::Array[Telnyx::Email::IPPool::IP]?
+
+        def ips=: (
+          ::Array[Telnyx::Email::IPPool::IP]
+        ) -> ::Array[Telnyx::Email::IPPool::IP]
+
+        attr_reader is_default: bool?
+
+        def is_default=: (bool) -> bool
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader record_type: Telnyx::Models::Email::IPPool::record_type?
+
+        def record_type=: (
+          Telnyx::Models::Email::IPPool::record_type
+        ) -> Telnyx::Models::Email::IPPool::record_type
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        def initialize: (
+          ?id: String,
+          ?created_at: Time,
+          ?domain_id: String?,
+          ?ips: ::Array[Telnyx::Email::IPPool::IP],
+          ?is_default: bool,
+          ?name: String,
+          ?record_type: Telnyx::Models::Email::IPPool::record_type,
+          ?updated_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          domain_id: String?,
+          ips: ::Array[Telnyx::Email::IPPool::IP],
+          is_default: bool,
+          name: String,
+          record_type: Telnyx::Models::Email::IPPool::record_type,
+          updated_at: Time
+        }
+
+        type ip = { weight: Integer }
+
+        class IP < Telnyx::Models::Email::DedicatedIP
+          def weight: -> Integer?
+
+          def weight=: (Integer _) -> Integer
+
+          def initialize: (?weight: Integer) -> void
+
+          def to_hash: -> { weight: Integer }
+        end
+
+        type record_type = :ip_pool
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          IP_POOL: :ip_pool
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::IPPool::record_type]
+        end
+      end
+    end
+  end
+end

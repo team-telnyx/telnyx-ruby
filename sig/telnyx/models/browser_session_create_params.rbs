@@ -1,0 +1,75 @@
+module Telnyx
+  module Models
+    type browser_session_create_params =
+      {
+        policy: Telnyx::BrowserSessionCreateParams::Policy,
+        idempotency_key: String,
+        limits: Telnyx::BrowserSessionCreateParams::Limits,
+        metadata: top
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class BrowserSessionCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor policy: Telnyx::BrowserSessionCreateParams::Policy
+
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> String
+
+      attr_reader limits: Telnyx::BrowserSessionCreateParams::Limits?
+
+      def limits=: (
+        Telnyx::BrowserSessionCreateParams::Limits
+      ) -> Telnyx::BrowserSessionCreateParams::Limits
+
+      attr_reader metadata: top?
+
+      def metadata=: (top) -> top
+
+      def initialize: (
+        policy: Telnyx::BrowserSessionCreateParams::Policy,
+        ?idempotency_key: String,
+        ?limits: Telnyx::BrowserSessionCreateParams::Limits,
+        ?metadata: top,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        policy: Telnyx::BrowserSessionCreateParams::Policy,
+        idempotency_key: String,
+        limits: Telnyx::BrowserSessionCreateParams::Limits,
+        metadata: top,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type policy = { allowed_domains: ::Array[String] }
+
+      class Policy < Telnyx::Internal::Type::BaseModel
+        attr_accessor allowed_domains: ::Array[String]
+
+        def initialize: (allowed_domains: ::Array[String]) -> void
+
+        def to_hash: -> { allowed_domains: ::Array[String] }
+      end
+
+      type limits = { idle_timeout_s: Integer, lifetime_s: Integer }
+
+      class Limits < Telnyx::Internal::Type::BaseModel
+        attr_reader idle_timeout_s: Integer?
+
+        def idle_timeout_s=: (Integer) -> Integer
+
+        attr_reader lifetime_s: Integer?
+
+        def lifetime_s=: (Integer) -> Integer
+
+        def initialize: (?idle_timeout_s: Integer, ?lifetime_s: Integer) -> void
+
+        def to_hash: -> { idle_timeout_s: Integer, lifetime_s: Integer }
+      end
+    end
+  end
+end

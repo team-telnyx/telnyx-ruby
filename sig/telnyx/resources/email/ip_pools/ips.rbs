@@ -1,0 +1,26 @@
+module Telnyx
+  module Resources
+    class Email
+      class IPPools
+        class IPs
+          def create: (
+            String id,
+            dedicated_ip_id: String,
+            ?weight: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Models::Email::IPPools::IPCreateResponse
+
+          def delete: (
+            String ip_id,
+            id: String,
+            ?drain: bool,
+            ?force: bool,
+            ?request_options: Telnyx::request_opts
+          ) -> nil
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end
