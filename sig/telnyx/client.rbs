@@ -402,8 +402,6 @@ module Telnyx
 
     attr_reader dial_metrics: Telnyx::Resources::DialMetrics
 
-    attr_reader tts_integrations: Telnyx::Resources::TtsIntegrations
-
     attr_reader tailscale_subnet_routers: Telnyx::Resources::TailscaleSubnetRouters
 
     attr_reader artifact_downloads: Telnyx::Resources::ArtifactDownloads
