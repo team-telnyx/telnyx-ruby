@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency("faraday", ">= 2.5.0")
   s.add_dependency("faraday-multipart", "~> 1.0.4")
   s.add_dependency("faraday-net_http_persistent", "~> 2.1.0")
+  s.add_dependency("faraday-retry", "~> 2.0")
   s.add_dependency("net-http-persistent", ">= 3.0", "< 5.0")
   s.add_dependency("ed25519", "~> 1")
 
