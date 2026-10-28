@@ -69,6 +69,13 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :health_webhook_url
 
+      # MM7 settings for inbound messages
+      sig { returns(T.nilable(Telnyx::Mm7Metadata)) }
+      attr_reader :mm7_metadata
+
+      sig { params(mm7_metadata: T.nilable(Telnyx::Mm7Metadata::OrHash)).void }
+      attr_writer :mm7_metadata
+
       # enables SMS fallback for MMS messages.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :mms_fall_back_to_sms
@@ -175,6 +182,7 @@ module Telnyx
           enabled: T::Boolean,
           features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash),
           health_webhook_url: T.nilable(String),
+          mm7_metadata: T.nilable(Telnyx::Mm7Metadata::OrHash),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
@@ -215,6 +223,8 @@ module Telnyx
         features: nil,
         # A URL to receive health check webhooks for numbers in this profile.
         health_webhook_url: nil,
+        # MM7 settings for inbound messages
+        mm7_metadata: nil,
         # enables SMS fallback for MMS messages.
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.
@@ -265,6 +275,7 @@ module Telnyx
             enabled: T::Boolean,
             features: T.nilable(Telnyx::MessagingProfileFeatures),
             health_webhook_url: T.nilable(String),
+            mm7_metadata: T.nilable(Telnyx::Mm7Metadata),
             mms_fall_back_to_sms: T::Boolean,
             mms_transcoding: T::Boolean,
             mobile_only: T::Boolean,

@@ -1,0 +1,144 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          type v1_retrieve_personalities_response_item =
+            {
+              id: Integer,
+              end_call_enabled: bool,
+              language: String,
+              name: String,
+              prompt: String,
+              accent: String,
+              background_noise: String?,
+              background_sound_volume: Float?,
+              effective_voice_volume: Float?,
+              forked_from: Integer?,
+              generation_config: top?,
+              interruption_level: String?,
+              message_plan: top?,
+              network_simulation: top?,
+              organization: Integer?,
+              project: Integer?,
+              speed: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed?,
+              start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?,
+              stop_speaking_plan: top?,
+              voice_volume: Float?
+            }
+
+          class V1RetrievePersonalitiesResponseItem < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: Integer
+
+            attr_accessor end_call_enabled: bool
+
+            attr_accessor language: String
+
+            attr_accessor name: String
+
+            attr_accessor prompt: String
+
+            attr_reader accent: String?
+
+            def accent=: (String) -> String
+
+            attr_accessor background_noise: String?
+
+            attr_accessor background_sound_volume: Float?
+
+            attr_accessor effective_voice_volume: Float?
+
+            attr_accessor forked_from: Integer?
+
+            attr_accessor generation_config: top?
+
+            attr_accessor interruption_level: String?
+
+            attr_accessor message_plan: top?
+
+            attr_accessor network_simulation: top?
+
+            attr_accessor organization: Integer?
+
+            attr_accessor project: Integer?
+
+            attr_accessor speed: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed?
+
+            attr_accessor start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?
+
+            attr_accessor stop_speaking_plan: top?
+
+            attr_accessor voice_volume: Float?
+
+            def initialize: (
+              id: Integer,
+              end_call_enabled: bool,
+              language: String,
+              name: String,
+              prompt: String,
+              ?accent: String,
+              ?background_noise: String?,
+              ?background_sound_volume: Float?,
+              ?effective_voice_volume: Float?,
+              ?forked_from: Integer?,
+              ?generation_config: top?,
+              ?interruption_level: String?,
+              ?message_plan: top?,
+              ?network_simulation: top?,
+              ?organization: Integer?,
+              ?project: Integer?,
+              ?speed: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed?,
+              ?start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?,
+              ?stop_speaking_plan: top?,
+              ?voice_volume: Float?
+            ) -> void
+
+            def to_hash: -> {
+              id: Integer,
+              end_call_enabled: bool,
+              language: String,
+              name: String,
+              prompt: String,
+              accent: String,
+              background_noise: String?,
+              background_sound_volume: Float?,
+              effective_voice_volume: Float?,
+              forked_from: Integer?,
+              generation_config: top?,
+              interruption_level: String?,
+              message_plan: top?,
+              network_simulation: top?,
+              organization: Integer?,
+              project: Integer?,
+              speed: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed?,
+              start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?,
+              stop_speaking_plan: top?,
+              voice_volume: Float?
+            }
+
+            type speed = Float | String
+
+            module Speed
+              extend Telnyx::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed]
+            end
+
+            type start_speaking_plan = Float | top
+
+            module StartSpeakingPlan
+              extend Telnyx::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan]
+            end
+          end
+
+          type v1_retrieve_personalities_response =
+            ::Array[Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem]
+
+          V1RetrievePersonalitiesResponse: Telnyx::Internal::Type::Converter
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,70 @@
+module Telnyx
+  module Models
+    type pay_connector_create_params =
+      {
+        config: Telnyx::Models::generic_pay_connector_config,
+        name: String,
+        mode: Telnyx::Models::PayConnectorCreateParams::mode,
+        type: Telnyx::Models::PayConnectorCreateParams::type_
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PayConnectorCreateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor config: Telnyx::Models::generic_pay_connector_config
+
+      attr_accessor name: String
+
+      attr_reader mode: Telnyx::Models::PayConnectorCreateParams::mode?
+
+      def mode=: (
+        Telnyx::Models::PayConnectorCreateParams::mode
+      ) -> Telnyx::Models::PayConnectorCreateParams::mode
+
+      attr_reader type: Telnyx::Models::PayConnectorCreateParams::type_?
+
+      def type=: (
+        Telnyx::Models::PayConnectorCreateParams::type_
+      ) -> Telnyx::Models::PayConnectorCreateParams::type_
+
+      def initialize: (
+        config: Telnyx::Models::generic_pay_connector_config,
+        name: String,
+        ?mode: Telnyx::Models::PayConnectorCreateParams::mode,
+        ?type: Telnyx::Models::PayConnectorCreateParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        config: Telnyx::Models::generic_pay_connector_config,
+        name: String,
+        mode: Telnyx::Models::PayConnectorCreateParams::mode,
+        type: Telnyx::Models::PayConnectorCreateParams::type_,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type mode = :test | :live
+
+      module Mode
+        extend Telnyx::Internal::Type::Enum
+
+        TEST: :test
+        LIVE: :live
+
+        def self?.values: -> ::Array[Telnyx::Models::PayConnectorCreateParams::mode]
+      end
+
+      type type_ = :generic
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        GENERIC: :generic
+
+        def self?.values: -> ::Array[Telnyx::Models::PayConnectorCreateParams::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,111 @@
+module Telnyx
+  module Models
+    module BrowserSessions
+      type action_create_params =
+        {
+          id: String,
+          body: Telnyx::Models::BrowserSessions::ActionCreateParams::body,
+          wait_seconds: Integer
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class ActionCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_accessor body: Telnyx::Models::BrowserSessions::ActionCreateParams::body
+
+        attr_reader wait_seconds: Integer?
+
+        def wait_seconds=: (Integer) -> Integer
+
+        def initialize: (
+          id: String,
+          body: Telnyx::Models::BrowserSessions::ActionCreateParams::body,
+          ?wait_seconds: Integer,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          body: Telnyx::Models::BrowserSessions::ActionCreateParams::body,
+          wait_seconds: Integer,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type body =
+          Telnyx::BrowserSessions::NavigateAction
+          | Telnyx::BrowserSessions::ObserveAction
+          | Telnyx::BrowserSessions::ClickAction
+          | Telnyx::BrowserSessions::FillAction
+          | Telnyx::BrowserSessions::SelectAction
+          | Telnyx::BrowserSessions::PressAction
+          | Telnyx::BrowserSessions::ScrollAction
+          | Telnyx::BrowserSessions::ScreenshotAction
+          | Telnyx::BrowserSessions::WaitForAction
+          | Telnyx::BrowserSessions::ActionCreateParams::Body::BatchAction
+
+        module Body
+          extend Telnyx::Internal::Type::Union
+
+          type batch_action =
+            {
+              actions: ::Array[Telnyx::Models::BrowserSessions::ActionCreateParams::Body::BatchAction::action],
+              type: :batch,
+              idempotency_key: String,
+              include_observation: bool
+            }
+
+          class BatchAction < Telnyx::Internal::Type::BaseModel
+            attr_accessor actions: ::Array[Telnyx::Models::BrowserSessions::ActionCreateParams::Body::BatchAction::action]
+
+            attr_accessor type: :batch
+
+            attr_reader idempotency_key: String?
+
+            def idempotency_key=: (String) -> String
+
+            attr_reader include_observation: bool?
+
+            def include_observation=: (bool) -> bool
+
+            def initialize: (
+              actions: ::Array[Telnyx::Models::BrowserSessions::ActionCreateParams::Body::BatchAction::action],
+              ?idempotency_key: String,
+              ?include_observation: bool,
+              ?type: :batch
+            ) -> void
+
+            def to_hash: -> {
+              actions: ::Array[Telnyx::Models::BrowserSessions::ActionCreateParams::Body::BatchAction::action],
+              type: :batch,
+              idempotency_key: String,
+              include_observation: bool
+            }
+
+            type action =
+              Telnyx::BrowserSessions::NavigateAction
+              | Telnyx::BrowserSessions::ObserveAction
+              | Telnyx::BrowserSessions::ClickAction
+              | Telnyx::BrowserSessions::FillAction
+              | Telnyx::BrowserSessions::SelectAction
+              | Telnyx::BrowserSessions::PressAction
+              | Telnyx::BrowserSessions::ScrollAction
+              | Telnyx::BrowserSessions::ScreenshotAction
+              | Telnyx::BrowserSessions::WaitForAction
+
+            module Action
+              extend Telnyx::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Telnyx::Models::BrowserSessions::ActionCreateParams::Body::BatchAction::action]
+            end
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::BrowserSessions::ActionCreateParams::body]
+        end
+      end
+    end
+  end
+end

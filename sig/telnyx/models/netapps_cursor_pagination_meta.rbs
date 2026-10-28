@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    type netapps_cursor_pagination_meta =
+      {
+        cursors: Telnyx::NetappsCursorPaginationMeta::Cursors,
+        next_: String,
+        previous: String
+      }
+
+    class NetappsCursorPaginationMeta < Telnyx::Internal::Type::BaseModel
+      attr_reader cursors: Telnyx::NetappsCursorPaginationMeta::Cursors?
+
+      def cursors=: (
+        Telnyx::NetappsCursorPaginationMeta::Cursors
+      ) -> Telnyx::NetappsCursorPaginationMeta::Cursors
+
+      attr_reader next_: String?
+
+      def next_=: (String) -> String
+
+      attr_reader previous: String?
+
+      def previous=: (String) -> String
+
+      def initialize: (
+        ?cursors: Telnyx::NetappsCursorPaginationMeta::Cursors,
+        ?next_: String,
+        ?previous: String
+      ) -> void
+
+      def to_hash: -> {
+        cursors: Telnyx::NetappsCursorPaginationMeta::Cursors,
+        next_: String,
+        previous: String
+      }
+
+      type cursors = { after: String, before: String }
+
+      class Cursors < Telnyx::Internal::Type::BaseModel
+        attr_reader after: String?
+
+        def after=: (String) -> String
+
+        attr_reader before: String?
+
+        def before=: (String) -> String
+
+        def initialize: (?after: String, ?before: String) -> void
+
+        def to_hash: -> { after: String, before: String }
+      end
+    end
+  end
+end

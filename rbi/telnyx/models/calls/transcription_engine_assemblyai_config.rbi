@@ -38,8 +38,10 @@ module Telnyx
         end
         attr_writer :transcription_engine
 
-        # The model to use for transcription. `assemblyai/universal-streaming` is a legacy
-        # alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
+        # The model to use for transcription. `assemblyai/universal-3-6-pro` is the
+        # AssemblyAI Universal-3.6 Pro model. `assemblyai/universal-3-5-pro` (the default)
+        # and `assemblyai/universal-streaming` are legacy aliases that run the same
+        # Universal-3.6 Pro model.
         sig do
           returns(
             T.nilable(
@@ -72,8 +74,10 @@ module Telnyx
           interim_results: nil,
           # Engine identifier for AssemblyAI transcription service
           transcription_engine: nil,
-          # The model to use for transcription. `assemblyai/universal-streaming` is a legacy
-          # alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
+          # The model to use for transcription. `assemblyai/universal-3-6-pro` is the
+          # AssemblyAI Universal-3.6 Pro model. `assemblyai/universal-3-5-pro` (the default)
+          # and `assemblyai/universal-streaming` are legacy aliases that run the same
+          # Universal-3.6 Pro model.
           transcription_model: nil
         )
         end
@@ -122,8 +126,10 @@ module Telnyx
           end
         end
 
-        # The model to use for transcription. `assemblyai/universal-streaming` is a legacy
-        # alias of `assemblyai/universal-3-5-pro` and resolves to the same model.
+        # The model to use for transcription. `assemblyai/universal-3-6-pro` is the
+        # AssemblyAI Universal-3.6 Pro model. `assemblyai/universal-3-5-pro` (the default)
+        # and `assemblyai/universal-streaming` are legacy aliases that run the same
+        # Universal-3.6 Pro model.
         module TranscriptionModel
           extend Telnyx::Internal::Type::Enum
 
@@ -136,6 +142,11 @@ module Telnyx
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          ASSEMBLYAI_UNIVERSAL_3_6_PRO =
+            T.let(
+              :"assemblyai/universal-3-6-pro",
+              Telnyx::Calls::TranscriptionEngineAssemblyaiConfig::TranscriptionModel::TaggedSymbol
+            )
           ASSEMBLYAI_UNIVERSAL_3_5_PRO =
             T.let(
               :"assemblyai/universal-3-5-pro",

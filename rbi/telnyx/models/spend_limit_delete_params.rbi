@@ -14,6 +14,15 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :product
 
+      # Identifier of one API key as recorded on usage, never the key's secret,
+      # percent-encoded: the request is then about that key's limit. Absent means the
+      # total limit; present but blank is refused.
+      sig { returns(T.nilable(String)) }
+      attr_reader :credential_id
+
+      sig { params(credential_id: String).void }
+      attr_writer :credential_id
+
       # Limit period. Defaults to `daily`; send it explicitly.
       sig { returns(T.nilable(Telnyx::SpendLimitPeriod::OrSymbol)) }
       attr_reader :period
@@ -31,6 +40,7 @@ module Telnyx
       sig do
         params(
           product: String,
+          credential_id: String,
           period: Telnyx::SpendLimitPeriod::OrSymbol,
           reason: String,
           request_options: Telnyx::RequestOptions::OrHash
@@ -38,6 +48,10 @@ module Telnyx
       end
       def self.new(
         product:,
+        # Identifier of one API key as recorded on usage, never the key's secret,
+        # percent-encoded: the request is then about that key's limit. Absent means the
+        # total limit; present but blank is refused.
+        credential_id: nil,
         # Limit period. Defaults to `daily`; send it explicitly.
         period: nil,
         # Why the limit is removed, kept for audit. At most 500 characters.
@@ -50,6 +64,7 @@ module Telnyx
         override.returns(
           {
             product: String,
+            credential_id: String,
             period: Telnyx::SpendLimitPeriod::OrSymbol,
             reason: String,
             request_options: Telnyx::RequestOptions

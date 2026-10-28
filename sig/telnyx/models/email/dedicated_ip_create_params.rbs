@@ -1,0 +1,66 @@
+module Telnyx
+  module Models
+    module Email
+      type dedicated_ip_create_params =
+        {
+          idempotency_key: String,
+          ip_version: Telnyx::Models::Email::DedicatedIPCreateParams::ip_version,
+          region: Telnyx::Models::Email::DedicatedIPCreateParams::region
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class DedicatedIPCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor idempotency_key: String
+
+        attr_reader ip_version: Telnyx::Models::Email::DedicatedIPCreateParams::ip_version?
+
+        def ip_version=: (
+          Telnyx::Models::Email::DedicatedIPCreateParams::ip_version
+        ) -> Telnyx::Models::Email::DedicatedIPCreateParams::ip_version
+
+        attr_reader region: Telnyx::Models::Email::DedicatedIPCreateParams::region?
+
+        def region=: (
+          Telnyx::Models::Email::DedicatedIPCreateParams::region
+        ) -> Telnyx::Models::Email::DedicatedIPCreateParams::region
+
+        def initialize: (
+          idempotency_key: String,
+          ?ip_version: Telnyx::Models::Email::DedicatedIPCreateParams::ip_version,
+          ?region: Telnyx::Models::Email::DedicatedIPCreateParams::region,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          idempotency_key: String,
+          ip_version: Telnyx::Models::Email::DedicatedIPCreateParams::ip_version,
+          region: Telnyx::Models::Email::DedicatedIPCreateParams::region,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type ip_version = :ipv4
+
+        module IPVersion
+          extend Telnyx::Internal::Type::Enum
+
+          IPV4: :ipv4
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIPCreateParams::ip_version]
+        end
+
+        type region = :"ewr-nj1"
+
+        module Region
+          extend Telnyx::Internal::Type::Enum
+
+          EWR_NJ1: :"ewr-nj1"
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIPCreateParams::region]
+        end
+      end
+    end
+  end
+end

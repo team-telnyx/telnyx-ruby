@@ -1,0 +1,42 @@
+module Telnyx
+  module Resources
+    class Email
+      class IPPools
+        attr_reader ips: Telnyx::Resources::Email::IPPools::IPs
+
+        def create: (
+          name: String,
+          ?domain_id: String,
+          ?is_default: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Email::IPPoolShowResponse
+
+        def retrieve: (
+          String id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Email::IPPoolShowResponse
+
+        def update: (
+          String id,
+          ?domain_id: String?,
+          ?is_default: bool,
+          ?name: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Email::IPPoolShowResponse
+
+        def list: (
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::Email::IPPoolListResponse
+
+        def delete: (
+          String id,
+          ?drain: bool,
+          ?force: bool,
+          ?request_options: Telnyx::request_opts
+        ) -> nil
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

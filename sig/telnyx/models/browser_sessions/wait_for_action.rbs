@@ -1,0 +1,113 @@
+module Telnyx
+  module Models
+    module BrowserSessions
+      type wait_for_action =
+        {
+          condition: Telnyx::Models::BrowserSessions::WaitForAction::condition,
+          type: :wait_for,
+          idempotency_key: String,
+          include_observation: bool,
+          timeout_ms: Integer
+        }
+
+      class WaitForAction < Telnyx::Internal::Type::BaseModel
+        attr_accessor condition: Telnyx::Models::BrowserSessions::WaitForAction::condition
+
+        attr_accessor type: :wait_for
+
+        attr_reader idempotency_key: String?
+
+        def idempotency_key=: (String) -> String
+
+        attr_reader include_observation: bool?
+
+        def include_observation=: (bool) -> bool
+
+        attr_reader timeout_ms: Integer?
+
+        def timeout_ms=: (Integer) -> Integer
+
+        def initialize: (
+          condition: Telnyx::Models::BrowserSessions::WaitForAction::condition,
+          ?idempotency_key: String,
+          ?include_observation: bool,
+          ?timeout_ms: Integer,
+          ?type: :wait_for
+        ) -> void
+
+        def to_hash: -> {
+          condition: Telnyx::Models::BrowserSessions::WaitForAction::condition,
+          type: :wait_for,
+          idempotency_key: String,
+          include_observation: bool,
+          timeout_ms: Integer
+        }
+
+        type condition =
+          Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember0
+          | Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember1
+          | Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember2
+          | Telnyx::BrowserSessions::WaitForAction::Condition::Kind
+
+        module Condition
+          extend Telnyx::Internal::Type::Union
+
+          type union_member0 = { kind: :url_pattern, pattern: String }
+
+          class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            attr_accessor kind: :url_pattern
+
+            attr_accessor pattern: String
+
+            def initialize: (pattern: String, ?kind: :url_pattern) -> void
+
+            def to_hash: -> { kind: :url_pattern, pattern: String }
+          end
+
+          type union_member1 =
+            { kind: :ref, observation_id: String, ref: String }
+
+          class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            attr_accessor kind: :ref
+
+            attr_accessor observation_id: String
+
+            attr_accessor ref: String
+
+            def initialize: (
+              observation_id: String,
+              ref: String,
+              ?kind: :ref
+            ) -> void
+
+            def to_hash: -> { kind: :ref, observation_id: String, ref: String }
+          end
+
+          type union_member2 = { kind: :text, text: String }
+
+          class UnionMember2 < Telnyx::Internal::Type::BaseModel
+            attr_accessor kind: :text
+
+            attr_accessor text: String
+
+            def initialize: (text: String, ?kind: :text) -> void
+
+            def to_hash: -> { kind: :text, text: String }
+          end
+
+          type kind = { kind: :dom_stable }
+
+          class Kind < Telnyx::Internal::Type::BaseModel
+            attr_accessor kind: :dom_stable
+
+            def initialize: (?kind: :dom_stable) -> void
+
+            def to_hash: -> { kind: :dom_stable }
+          end
+
+          def self?.variants: -> ::Array[Telnyx::Models::BrowserSessions::WaitForAction::condition]
+        end
+      end
+    end
+  end
+end

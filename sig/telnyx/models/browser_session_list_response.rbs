@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type browser_session_list_response = { data: ::Array[Telnyx::Session] }
+
+    class BrowserSessionListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Session]?
+
+      def data=: (::Array[Telnyx::Session]) -> ::Array[Telnyx::Session]
+
+      def initialize: (?data: ::Array[Telnyx::Session]) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::Session] }
+    end
+  end
+end

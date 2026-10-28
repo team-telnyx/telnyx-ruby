@@ -1,0 +1,31 @@
+module Telnyx
+  module Resources
+    class Email
+      class DedicatedIPs
+        class Actions
+          def complete_warmup: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Email::DedicatedIPShowResponse
+
+          def pause_warmup: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Email::DedicatedIPShowResponse
+
+          def resume_warmup: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Email::DedicatedIPShowResponse
+
+          def start_warmup: (
+            String id,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::Email::DedicatedIPShowResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

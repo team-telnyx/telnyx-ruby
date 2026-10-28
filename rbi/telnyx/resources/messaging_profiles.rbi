@@ -23,6 +23,7 @@ module Telnyx
           enabled: T::Boolean,
           features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash),
           health_webhook_url: T.nilable(String),
+          mm7_metadata: T.nilable(Telnyx::Mm7Metadata::OrHash),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
@@ -63,6 +64,8 @@ module Telnyx
         features: nil,
         # A URL to receive health check webhooks for numbers in this profile.
         health_webhook_url: nil,
+        # MM7 settings for inbound messages
+        mm7_metadata: nil,
         # enables SMS fallback for MMS messages.
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.
@@ -127,6 +130,7 @@ module Telnyx
           daily_spend_limit_enabled: T::Boolean,
           enabled: T::Boolean,
           features: T.nilable(Telnyx::MessagingProfileFeatures::OrHash),
+          mm7_metadata: T.nilable(Telnyx::Mm7Metadata::OrHash),
           mms_fall_back_to_sms: T::Boolean,
           mms_transcoding: T::Boolean,
           mobile_only: T::Boolean,
@@ -165,6 +169,8 @@ module Telnyx
         # profile. Keys map to individual feature flags; unknown keys are accepted and
         # preserved for forward compatibility with rolling deployments.
         features: nil,
+        # MM7 settings for inbound messages
+        mm7_metadata: nil,
         # enables SMS fallback for MMS messages.
         mms_fall_back_to_sms: nil,
         # enables automated resizing of MMS media.

@@ -1,0 +1,117 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type create_ai_test_metric_request =
+              {
+                name: String,
+                add_to_new_agents: bool?,
+                agents: ::Array[Integer],
+                assistant_id: String,
+                audio_enabled: bool,
+                description: String,
+                display_order: Integer,
+                enum_values: ::Array[String],
+                eval_type: String,
+                observability_enabled: bool,
+                prompt: String,
+                sampling_enabled: bool,
+                simulation_enabled: bool,
+                type: String
+              }
+
+            class CreateAITestMetricRequest < Telnyx::Internal::Type::BaseModel
+              attr_accessor name: String
+
+              attr_accessor add_to_new_agents: bool?
+
+              attr_reader agents: ::Array[Integer]?
+
+              def agents=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_reader assistant_id: String?
+
+              def assistant_id=: (String) -> String
+
+              attr_reader audio_enabled: bool?
+
+              def audio_enabled=: (bool) -> bool
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader display_order: Integer?
+
+              def display_order=: (Integer) -> Integer
+
+              attr_reader enum_values: ::Array[String]?
+
+              def enum_values=: (::Array[String]) -> ::Array[String]
+
+              attr_reader eval_type: String?
+
+              def eval_type=: (String) -> String
+
+              attr_reader observability_enabled: bool?
+
+              def observability_enabled=: (bool) -> bool
+
+              attr_reader prompt: String?
+
+              def prompt=: (String) -> String
+
+              attr_reader sampling_enabled: bool?
+
+              def sampling_enabled=: (bool) -> bool
+
+              attr_reader simulation_enabled: bool?
+
+              def simulation_enabled=: (bool) -> bool
+
+              attr_reader type: String?
+
+              def type=: (String) -> String
+
+              def initialize: (
+                name: String,
+                ?add_to_new_agents: bool?,
+                ?agents: ::Array[Integer],
+                ?assistant_id: String,
+                ?audio_enabled: bool,
+                ?description: String,
+                ?display_order: Integer,
+                ?enum_values: ::Array[String],
+                ?eval_type: String,
+                ?observability_enabled: bool,
+                ?prompt: String,
+                ?sampling_enabled: bool,
+                ?simulation_enabled: bool,
+                ?type: String
+              ) -> void
+
+              def to_hash: -> {
+                name: String,
+                add_to_new_agents: bool?,
+                agents: ::Array[Integer],
+                assistant_id: String,
+                audio_enabled: bool,
+                description: String,
+                display_order: Integer,
+                enum_values: ::Array[String],
+                eval_type: String,
+                observability_enabled: bool,
+                prompt: String,
+                sampling_enabled: bool,
+                simulation_enabled: bool,
+                type: String
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

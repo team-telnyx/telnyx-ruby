@@ -1,0 +1,91 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_create_params =
+              {
+                name: String,
+                personality: Integer,
+                agent: Integer?,
+                expected_outcome_prompt: String,
+                first_message: String,
+                folder_path: String?,
+                instructions: String,
+                metrics: ::Array[Integer],
+                tags: ::Array[String],
+                test_profile: Integer
+              }
+              & Telnyx::Internal::Type::request_parameters
+
+            class ScenarioCreateParams < Telnyx::Internal::Type::BaseModel
+              extend Telnyx::Internal::Type::RequestParameters::Converter
+              include Telnyx::Internal::Type::RequestParameters
+
+              attr_accessor name: String
+
+              attr_accessor personality: Integer
+
+              attr_accessor agent: Integer?
+
+              attr_reader expected_outcome_prompt: String?
+
+              def expected_outcome_prompt=: (String) -> String
+
+              attr_reader first_message: String?
+
+              def first_message=: (String) -> String
+
+              attr_accessor folder_path: String?
+
+              attr_reader instructions: String?
+
+              def instructions=: (String) -> String
+
+              attr_reader metrics: ::Array[Integer]?
+
+              def metrics=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_reader tags: ::Array[String]?
+
+              def tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader test_profile: Integer?
+
+              def test_profile=: (Integer) -> Integer
+
+              def initialize: (
+                name: String,
+                personality: Integer,
+                ?agent: Integer?,
+                ?expected_outcome_prompt: String,
+                ?first_message: String,
+                ?folder_path: String?,
+                ?instructions: String,
+                ?metrics: ::Array[Integer],
+                ?tags: ::Array[String],
+                ?test_profile: Integer,
+                ?request_options: Telnyx::request_opts
+              ) -> void
+
+              def to_hash: -> {
+                name: String,
+                personality: Integer,
+                agent: Integer?,
+                expected_outcome_prompt: String,
+                first_message: String,
+                folder_path: String?,
+                instructions: String,
+                metrics: ::Array[Integer],
+                tags: ::Array[String],
+                test_profile: Integer,
+                request_options: Telnyx::RequestOptions
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

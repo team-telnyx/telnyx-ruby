@@ -1,0 +1,315 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type result_list_response =
+              {
+                next_: String?,
+                previous: String?,
+                results: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result],
+                count: Integer
+              }
+
+            class ResultListResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor next_: String?
+
+              attr_accessor previous: String?
+
+              attr_accessor results: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result]
+
+              attr_reader count: Integer?
+
+              def count=: (Integer) -> Integer
+
+              def initialize: (
+                next_: String?,
+                previous: String?,
+                results: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result],
+                ?count: Integer
+              ) -> void
+
+              def to_hash: -> {
+                next_: String?,
+                previous: String?,
+                results: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result],
+                count: Integer
+              }
+
+              type result =
+                {
+                  id: Integer,
+                  agent: Integer,
+                  created_at: Time,
+                  name: String,
+                  status: String,
+                  updated_at: Time,
+                  agent_inbound: bool,
+                  agent_name: String,
+                  completed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::completed_runs_count,
+                  failed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::failed_runs_count,
+                  is_cronjob: bool,
+                  met_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::met_expected_outcome_count,
+                  run_as_text: bool,
+                  run_type: String?,
+                  runs: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Run]?,
+                  scenarios: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Scenario]?,
+                  success_rate: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_rate,
+                  success_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_runs_count,
+                  total_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_expected_outcome_count,
+                  total_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_runs_count
+                }
+
+              class Result < Telnyx::Internal::Type::BaseModel
+                attr_accessor id: Integer
+
+                attr_accessor agent: Integer
+
+                attr_accessor created_at: Time
+
+                attr_accessor name: String
+
+                attr_accessor status: String
+
+                attr_accessor updated_at: Time
+
+                attr_reader agent_inbound: bool?
+
+                def agent_inbound=: (bool) -> bool
+
+                attr_reader agent_name: String?
+
+                def agent_name=: (String) -> String
+
+                attr_reader completed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::completed_runs_count?
+
+                def completed_runs_count=: (
+                  Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::completed_runs_count
+                ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::completed_runs_count
+
+                attr_reader failed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::failed_runs_count?
+
+                def failed_runs_count=: (
+                  Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::failed_runs_count
+                ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::failed_runs_count
+
+                attr_reader is_cronjob: bool?
+
+                def is_cronjob=: (bool) -> bool
+
+                attr_reader met_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::met_expected_outcome_count?
+
+                def met_expected_outcome_count=: (
+                  Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::met_expected_outcome_count
+                ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::met_expected_outcome_count
+
+                attr_reader run_as_text: bool?
+
+                def run_as_text=: (bool) -> bool
+
+                attr_accessor run_type: String?
+
+                attr_accessor runs: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Run]?
+
+                attr_accessor scenarios: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Scenario]?
+
+                attr_reader success_rate: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_rate?
+
+                def success_rate=: (
+                  Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_rate
+                ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_rate
+
+                attr_reader success_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_runs_count?
+
+                def success_runs_count=: (
+                  Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_runs_count
+                ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_runs_count
+
+                attr_reader total_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_expected_outcome_count?
+
+                def total_expected_outcome_count=: (
+                  Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_expected_outcome_count
+                ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_expected_outcome_count
+
+                attr_reader total_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_runs_count?
+
+                def total_runs_count=: (
+                  Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_runs_count
+                ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_runs_count
+
+                def initialize: (
+                  id: Integer,
+                  agent: Integer,
+                  created_at: Time,
+                  name: String,
+                  status: String,
+                  updated_at: Time,
+                  ?agent_inbound: bool,
+                  ?agent_name: String,
+                  ?completed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::completed_runs_count,
+                  ?failed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::failed_runs_count,
+                  ?is_cronjob: bool,
+                  ?met_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::met_expected_outcome_count,
+                  ?run_as_text: bool,
+                  ?run_type: String?,
+                  ?runs: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Run]?,
+                  ?scenarios: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Scenario]?,
+                  ?success_rate: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_rate,
+                  ?success_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_runs_count,
+                  ?total_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_expected_outcome_count,
+                  ?total_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_runs_count
+                ) -> void
+
+                def to_hash: -> {
+                  id: Integer,
+                  agent: Integer,
+                  created_at: Time,
+                  name: String,
+                  status: String,
+                  updated_at: Time,
+                  agent_inbound: bool,
+                  agent_name: String,
+                  completed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::completed_runs_count,
+                  failed_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::failed_runs_count,
+                  is_cronjob: bool,
+                  met_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::met_expected_outcome_count,
+                  run_as_text: bool,
+                  run_type: String?,
+                  runs: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Run]?,
+                  scenarios: ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::Scenario]?,
+                  success_rate: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_rate,
+                  success_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_runs_count,
+                  total_expected_outcome_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_expected_outcome_count,
+                  total_runs_count: Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_runs_count
+                }
+
+                type completed_runs_count = Integer | String
+
+                module CompletedRunsCount
+                  extend Telnyx::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::completed_runs_count]
+                end
+
+                type failed_runs_count = Integer | String
+
+                module FailedRunsCount
+                  extend Telnyx::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::failed_runs_count]
+                end
+
+                type met_expected_outcome_count = Integer | String
+
+                module MetExpectedOutcomeCount
+                  extend Telnyx::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::met_expected_outcome_count]
+                end
+
+                type run =
+                  {
+                    id: Integer,
+                    inbound_number: String?,
+                    number: String?,
+                    scenario: Integer,
+                    scenario_name: String,
+                    status: String
+                  }
+
+                class Run < Telnyx::Internal::Type::BaseModel
+                  attr_reader id: Integer?
+
+                  def id=: (Integer) -> Integer
+
+                  attr_accessor inbound_number: String?
+
+                  attr_accessor number: String?
+
+                  attr_reader scenario: Integer?
+
+                  def scenario=: (Integer) -> Integer
+
+                  attr_reader scenario_name: String?
+
+                  def scenario_name=: (String) -> String
+
+                  attr_reader status: String?
+
+                  def status=: (String) -> String
+
+                  def initialize: (
+                    ?id: Integer,
+                    ?inbound_number: String?,
+                    ?number: String?,
+                    ?scenario: Integer,
+                    ?scenario_name: String,
+                    ?status: String
+                  ) -> void
+
+                  def to_hash: -> {
+                    id: Integer,
+                    inbound_number: String?,
+                    number: String?,
+                    scenario: Integer,
+                    scenario_name: String,
+                    status: String
+                  }
+                end
+
+                type scenario = { id: Integer, name: String }
+
+                class Scenario < Telnyx::Internal::Type::BaseModel
+                  attr_reader id: Integer?
+
+                  def id=: (Integer) -> Integer
+
+                  attr_reader name: String?
+
+                  def name=: (String) -> String
+
+                  def initialize: (?id: Integer, ?name: String) -> void
+
+                  def to_hash: -> { id: Integer, name: String }
+                end
+
+                type success_rate = Float | String
+
+                module SuccessRate
+                  extend Telnyx::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_rate]
+                end
+
+                type success_runs_count = Integer | String
+
+                module SuccessRunsCount
+                  extend Telnyx::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::success_runs_count]
+                end
+
+                type total_expected_outcome_count = Integer | String
+
+                module TotalExpectedOutcomeCount
+                  extend Telnyx::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_expected_outcome_count]
+                end
+
+                type total_runs_count = Integer | String
+
+                module TotalRunsCount
+                  extend Telnyx::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse::Result::total_runs_count]
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

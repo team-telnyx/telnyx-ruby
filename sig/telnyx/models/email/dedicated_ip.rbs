@@ -1,0 +1,445 @@
+module Telnyx
+  module Models
+    module Email
+      type dedicated_ip =
+        {
+          id: String,
+          billing: Telnyx::Email::DedicatedIP::Billing,
+          created_at: Time,
+          dns_confirmed_at: Time?,
+          ip_address: String,
+          ip_version: Telnyx::Models::Email::DedicatedIP::ip_version,
+          pool_id: String?,
+          provisioning: Telnyx::Email::DedicatedIP::Provisioning,
+          provisioning_status: Telnyx::Models::Email::DedicatedIP::provisioning_status,
+          ptr_hostname: String?,
+          quarantine_until: Time?,
+          record_type: Telnyx::Models::Email::DedicatedIP::record_type,
+          region: String,
+          released_at: Time?,
+          status: Telnyx::Models::Email::DedicatedIP::status,
+          suspension_reason: String?,
+          updated_at: Time,
+          warmup: Telnyx::Email::DedicatedIP::Warmup
+        }
+
+      class DedicatedIP < Telnyx::Internal::Type::BaseModel
+        attr_reader id: String?
+
+        def id=: (String) -> String
+
+        attr_reader billing: Telnyx::Email::DedicatedIP::Billing?
+
+        def billing=: (
+          Telnyx::Email::DedicatedIP::Billing
+        ) -> Telnyx::Email::DedicatedIP::Billing
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
+
+        attr_accessor dns_confirmed_at: Time?
+
+        attr_reader ip_address: String?
+
+        def ip_address=: (String) -> String
+
+        attr_reader ip_version: Telnyx::Models::Email::DedicatedIP::ip_version?
+
+        def ip_version=: (
+          Telnyx::Models::Email::DedicatedIP::ip_version
+        ) -> Telnyx::Models::Email::DedicatedIP::ip_version
+
+        attr_accessor pool_id: String?
+
+        attr_reader provisioning: Telnyx::Email::DedicatedIP::Provisioning?
+
+        def provisioning=: (
+          Telnyx::Email::DedicatedIP::Provisioning
+        ) -> Telnyx::Email::DedicatedIP::Provisioning
+
+        attr_reader provisioning_status: Telnyx::Models::Email::DedicatedIP::provisioning_status?
+
+        def provisioning_status=: (
+          Telnyx::Models::Email::DedicatedIP::provisioning_status
+        ) -> Telnyx::Models::Email::DedicatedIP::provisioning_status
+
+        attr_accessor ptr_hostname: String?
+
+        attr_accessor quarantine_until: Time?
+
+        attr_reader record_type: Telnyx::Models::Email::DedicatedIP::record_type?
+
+        def record_type=: (
+          Telnyx::Models::Email::DedicatedIP::record_type
+        ) -> Telnyx::Models::Email::DedicatedIP::record_type
+
+        attr_reader region: String?
+
+        def region=: (String) -> String
+
+        attr_accessor released_at: Time?
+
+        attr_reader status: Telnyx::Models::Email::DedicatedIP::status?
+
+        def status=: (
+          Telnyx::Models::Email::DedicatedIP::status
+        ) -> Telnyx::Models::Email::DedicatedIP::status
+
+        attr_accessor suspension_reason: String?
+
+        attr_reader updated_at: Time?
+
+        def updated_at=: (Time) -> Time
+
+        attr_reader warmup: Telnyx::Email::DedicatedIP::Warmup?
+
+        def warmup=: (
+          Telnyx::Email::DedicatedIP::Warmup
+        ) -> Telnyx::Email::DedicatedIP::Warmup
+
+        def initialize: (
+          ?id: String,
+          ?billing: Telnyx::Email::DedicatedIP::Billing,
+          ?created_at: Time,
+          ?dns_confirmed_at: Time?,
+          ?ip_address: String,
+          ?ip_version: Telnyx::Models::Email::DedicatedIP::ip_version,
+          ?pool_id: String?,
+          ?provisioning: Telnyx::Email::DedicatedIP::Provisioning,
+          ?provisioning_status: Telnyx::Models::Email::DedicatedIP::provisioning_status,
+          ?ptr_hostname: String?,
+          ?quarantine_until: Time?,
+          ?record_type: Telnyx::Models::Email::DedicatedIP::record_type,
+          ?region: String,
+          ?released_at: Time?,
+          ?status: Telnyx::Models::Email::DedicatedIP::status,
+          ?suspension_reason: String?,
+          ?updated_at: Time,
+          ?warmup: Telnyx::Email::DedicatedIP::Warmup
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          billing: Telnyx::Email::DedicatedIP::Billing,
+          created_at: Time,
+          dns_confirmed_at: Time?,
+          ip_address: String,
+          ip_version: Telnyx::Models::Email::DedicatedIP::ip_version,
+          pool_id: String?,
+          provisioning: Telnyx::Email::DedicatedIP::Provisioning,
+          provisioning_status: Telnyx::Models::Email::DedicatedIP::provisioning_status,
+          ptr_hostname: String?,
+          quarantine_until: Time?,
+          record_type: Telnyx::Models::Email::DedicatedIP::record_type,
+          region: String,
+          released_at: Time?,
+          status: Telnyx::Models::Email::DedicatedIP::status,
+          suspension_reason: String?,
+          updated_at: Time,
+          warmup: Telnyx::Email::DedicatedIP::Warmup
+        }
+
+        type billing =
+          {
+            charged: bool,
+            status: Telnyx::Models::Email::DedicatedIP::Billing::status
+          }
+
+        class Billing < Telnyx::Internal::Type::BaseModel
+          attr_reader charged: bool?
+
+          def charged=: (bool) -> bool
+
+          attr_reader status: Telnyx::Models::Email::DedicatedIP::Billing::status?
+
+          def status=: (
+            Telnyx::Models::Email::DedicatedIP::Billing::status
+          ) -> Telnyx::Models::Email::DedicatedIP::Billing::status
+
+          def initialize: (
+            ?charged: bool,
+            ?status: Telnyx::Models::Email::DedicatedIP::Billing::status
+          ) -> void
+
+          def to_hash: -> {
+            charged: bool,
+            status: Telnyx::Models::Email::DedicatedIP::Billing::status
+          }
+
+          type status =
+            :not_started
+            | :pending
+            | :in_progress
+            | :active
+            | :stopping
+            | :stopped
+            | :stop_failed
+            | :failed
+
+          module Status
+            extend Telnyx::Internal::Type::Enum
+
+            NOT_STARTED: :not_started
+            PENDING: :pending
+            IN_PROGRESS: :in_progress
+            ACTIVE: :active
+            STOPPING: :stopping
+            STOPPED: :stopped
+            STOP_FAILED: :stop_failed
+            FAILED: :failed
+
+            def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIP::Billing::status]
+          end
+        end
+
+        type ip_version = :ipv4 | :ipv6
+
+        module IPVersion
+          extend Telnyx::Internal::Type::Enum
+
+          IPV4: :ipv4
+          IPV6: :ipv6
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIP::ip_version]
+        end
+
+        type provisioning =
+          {
+            checklist: Telnyx::Email::DedicatedIP::Provisioning::Checklist,
+            dns_status: Telnyx::Models::Email::DedicatedIP::Provisioning::dns_status,
+            ptr_request_pr_url: String?,
+            ptr_request_state: Telnyx::Models::Email::DedicatedIP::Provisioning::ptr_request_state?
+          }
+
+        class Provisioning < Telnyx::Internal::Type::BaseModel
+          attr_reader checklist: Telnyx::Email::DedicatedIP::Provisioning::Checklist?
+
+          def checklist=: (
+            Telnyx::Email::DedicatedIP::Provisioning::Checklist
+          ) -> Telnyx::Email::DedicatedIP::Provisioning::Checklist
+
+          attr_reader dns_status: Telnyx::Models::Email::DedicatedIP::Provisioning::dns_status?
+
+          def dns_status=: (
+            Telnyx::Models::Email::DedicatedIP::Provisioning::dns_status
+          ) -> Telnyx::Models::Email::DedicatedIP::Provisioning::dns_status
+
+          attr_accessor ptr_request_pr_url: String?
+
+          attr_accessor ptr_request_state: Telnyx::Models::Email::DedicatedIP::Provisioning::ptr_request_state?
+
+          def initialize: (
+            ?checklist: Telnyx::Email::DedicatedIP::Provisioning::Checklist,
+            ?dns_status: Telnyx::Models::Email::DedicatedIP::Provisioning::dns_status,
+            ?ptr_request_pr_url: String?,
+            ?ptr_request_state: Telnyx::Models::Email::DedicatedIP::Provisioning::ptr_request_state?
+          ) -> void
+
+          def to_hash: -> {
+            checklist: Telnyx::Email::DedicatedIP::Provisioning::Checklist,
+            dns_status: Telnyx::Models::Email::DedicatedIP::Provisioning::dns_status,
+            ptr_request_pr_url: String?,
+            ptr_request_state: Telnyx::Models::Email::DedicatedIP::Provisioning::ptr_request_state?
+          }
+
+          type checklist =
+            {
+              forward_confirmed: bool,
+              ptr_authored: bool,
+              ptr_merged: bool,
+              ptr_requested: bool
+            }
+
+          class Checklist < Telnyx::Internal::Type::BaseModel
+            attr_reader forward_confirmed: bool?
+
+            def forward_confirmed=: (bool) -> bool
+
+            attr_reader ptr_authored: bool?
+
+            def ptr_authored=: (bool) -> bool
+
+            attr_reader ptr_merged: bool?
+
+            def ptr_merged=: (bool) -> bool
+
+            attr_reader ptr_requested: bool?
+
+            def ptr_requested=: (bool) -> bool
+
+            def initialize: (
+              ?forward_confirmed: bool,
+              ?ptr_authored: bool,
+              ?ptr_merged: bool,
+              ?ptr_requested: bool
+            ) -> void
+
+            def to_hash: -> {
+              forward_confirmed: bool,
+              ptr_authored: bool,
+              ptr_merged: bool,
+              ptr_requested: bool
+            }
+          end
+
+          type dns_status =
+            :not_applicable
+            | :pending_ptr
+            | :pending_dns
+            | :dns_confirmed
+            | :dns_lost
+
+          module DNSStatus
+            extend Telnyx::Internal::Type::Enum
+
+            NOT_APPLICABLE: :not_applicable
+            PENDING_PTR: :pending_ptr
+            PENDING_DNS: :pending_dns
+            DNS_CONFIRMED: :dns_confirmed
+            DNS_LOST: :dns_lost
+
+            def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIP::Provisioning::dns_status]
+          end
+
+          type ptr_request_state =
+            :pending | :pr_open | :merged | :confirmed | :failed | :abandoned
+
+          module PtrRequestState
+            extend Telnyx::Internal::Type::Enum
+
+            PENDING: :pending
+            PR_OPEN: :pr_open
+            MERGED: :merged
+            CONFIRMED: :confirmed
+            FAILED: :failed
+            ABANDONED: :abandoned
+
+            def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIP::Provisioning::ptr_request_state]
+          end
+        end
+
+        type provisioning_status =
+          :not_applicable
+          | :pending_ptr
+          | :pending_dns
+          | :dns_confirmed
+          | :dns_lost
+
+        module ProvisioningStatus
+          extend Telnyx::Internal::Type::Enum
+
+          NOT_APPLICABLE: :not_applicable
+          PENDING_PTR: :pending_ptr
+          PENDING_DNS: :pending_dns
+          DNS_CONFIRMED: :dns_confirmed
+          DNS_LOST: :dns_lost
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIP::provisioning_status]
+        end
+
+        type record_type = :dedicated_ip
+
+        module RecordType
+          extend Telnyx::Internal::Type::Enum
+
+          DEDICATED_IP: :dedicated_ip
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIP::record_type]
+        end
+
+        type status =
+          :provisioning | :warming_up | :active | :suspended | :released
+
+        module Status
+          extend Telnyx::Internal::Type::Enum
+
+          PROVISIONING: :provisioning
+          WARMING_UP: :warming_up
+          ACTIVE: :active
+          SUSPENDED: :suspended
+          RELEASED: :released
+
+          def self?.values: -> ::Array[Telnyx::Models::Email::DedicatedIP::status]
+        end
+
+        type warmup =
+          {
+            daily_cap: Integer?,
+            paused: bool,
+            paused_at: Time?,
+            progress: Integer,
+            started_at: Time?,
+            today: Telnyx::Email::DedicatedIP::Warmup::Today?
+          }
+
+        class Warmup < Telnyx::Internal::Type::BaseModel
+          attr_accessor daily_cap: Integer?
+
+          attr_reader paused: bool?
+
+          def paused=: (bool) -> bool
+
+          attr_accessor paused_at: Time?
+
+          attr_reader progress: Integer?
+
+          def progress=: (Integer) -> Integer
+
+          attr_accessor started_at: Time?
+
+          attr_accessor today: Telnyx::Email::DedicatedIP::Warmup::Today?
+
+          def initialize: (
+            ?daily_cap: Integer?,
+            ?paused: bool,
+            ?paused_at: Time?,
+            ?progress: Integer,
+            ?started_at: Time?,
+            ?today: Telnyx::Email::DedicatedIP::Warmup::Today?
+          ) -> void
+
+          def to_hash: -> {
+            daily_cap: Integer?,
+            paused: bool,
+            paused_at: Time?,
+            progress: Integer,
+            started_at: Time?,
+            today: Telnyx::Email::DedicatedIP::Warmup::Today?
+          }
+
+          type today =
+            { cap: Integer?, day: Date, granted: Integer, remaining: Integer? }
+
+          class Today < Telnyx::Internal::Type::BaseModel
+            attr_accessor cap: Integer?
+
+            attr_reader day: Date?
+
+            def day=: (Date) -> Date
+
+            attr_reader granted: Integer?
+
+            def granted=: (Integer) -> Integer
+
+            attr_accessor remaining: Integer?
+
+            def initialize: (
+              ?cap: Integer?,
+              ?day: Date,
+              ?granted: Integer,
+              ?remaining: Integer?
+            ) -> void
+
+            def to_hash: -> {
+              cap: Integer?,
+              day: Date,
+              granted: Integer,
+              remaining: Integer?
+            }
+          end
+        end
+      end
+    end
+  end
+end

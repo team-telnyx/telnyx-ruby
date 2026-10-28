@@ -406,6 +406,16 @@ module Telnyx
 
     attr_reader tailscale_subnet_routers: Telnyx::Resources::TailscaleSubnetRouters
 
+    attr_reader artifact_downloads: Telnyx::Resources::ArtifactDownloads
+
+    attr_reader email: Telnyx::Resources::Email
+
+    attr_reader network_routes: Telnyx::Resources::NetworkRoutes
+
+    attr_reader pay_connectors: Telnyx::Resources::PayConnectors
+
+    attr_reader tunnels: Telnyx::Resources::Tunnels
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

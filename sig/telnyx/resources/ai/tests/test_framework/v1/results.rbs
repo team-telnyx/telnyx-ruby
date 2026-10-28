@@ -1,0 +1,39 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        class TestFramework
+          class V1
+            class Results
+              def retrieve: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::TestRunResult
+
+              def list: (
+                ?agent_id: Integer,
+                ?page: Integer,
+                ?page_size: Integer,
+                ?scenarios: String,
+                ?search: String,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::Models::AI::Tests::TestFramework::V1::ResultListResponse
+
+              def delete: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> top
+
+              def rerun: (
+                Integer id,
+                ?request_options: Telnyx::request_opts
+              ) -> Telnyx::AI::Tests::TestFramework::V1::TestRunResult
+
+              def initialize: (client: Telnyx::Client) -> void
+            end
+          end
+        end
+      end
+    end
+  end
+end

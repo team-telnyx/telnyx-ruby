@@ -1,0 +1,25 @@
+module Telnyx
+  module Resources
+    class AI
+      class Tests
+        class TestFramework
+          class V1
+            attr_reader aiagents: Telnyx::Resources::AI::Tests::TestFramework::V1::Aiagents
+
+            attr_reader metrics: Telnyx::Resources::AI::Tests::TestFramework::V1::Metrics
+
+            attr_reader results: Telnyx::Resources::AI::Tests::TestFramework::V1::Results
+
+            attr_reader scenarios: Telnyx::Resources::AI::Tests::TestFramework::V1::Scenarios
+
+            def retrieve_personalities: (
+              ?request_options: Telnyx::request_opts
+            ) -> Telnyx::Models::AI::Tests::TestFramework::v1_retrieve_personalities_response
+
+            def initialize: (client: Telnyx::Client) -> void
+          end
+        end
+      end
+    end
+  end
+end

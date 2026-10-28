@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type tunnel_retrieve_response = { data: Telnyx::Tunnel }
+
+    class TunnelRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::Tunnel?
+
+      def data=: (Telnyx::Tunnel) -> Telnyx::Tunnel
+
+      def initialize: (?data: Telnyx::Tunnel) -> void
+
+      def to_hash: -> { data: Telnyx::Tunnel }
+    end
+  end
+end

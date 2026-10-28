@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    type tunnel_list_response =
+      {
+        data: ::Array[Telnyx::Tunnel],
+        meta: Telnyx::NetappsCursorPaginationMeta
+      }
+
+    class TunnelListResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: ::Array[Telnyx::Tunnel]?
+
+      def data=: (::Array[Telnyx::Tunnel]) -> ::Array[Telnyx::Tunnel]
+
+      attr_reader meta: Telnyx::NetappsCursorPaginationMeta?
+
+      def meta=: (
+        Telnyx::NetappsCursorPaginationMeta
+      ) -> Telnyx::NetappsCursorPaginationMeta
+
+      def initialize: (
+        ?data: ::Array[Telnyx::Tunnel],
+        ?meta: Telnyx::NetappsCursorPaginationMeta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Tunnel],
+        meta: Telnyx::NetappsCursorPaginationMeta
+      }
+    end
+  end
+end

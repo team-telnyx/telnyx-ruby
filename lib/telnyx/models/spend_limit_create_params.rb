@@ -25,7 +25,7 @@ module Telnyx
         # A limit in USD.
         variant -> { Telnyx::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount }
 
-        # Explicitly no cap.
+        # Explicitly no cap. Not available for API key limits.
         variant -> { Telnyx::SpendLimitCreateParams::Body::CreateSpendLimitUnlimited }
 
         class CreateSpendLimitWithAmount < Telnyx::Internal::Type::BaseModel
@@ -40,6 +40,15 @@ module Telnyx
           #
           #   @return [String]
           required :product, String
+
+          # @!attribute credential_id
+          #   Optional. Identifier of one API key as recorded on usage, never the key's
+          #   secret: the limit then applies to that key only. Absent or `null` sets the total
+          #   limit. A blank value, or one with control characters, is refused; it never means
+          #   the total limit. An API key limit always has an `amount`.
+          #
+          #   @return [String, nil]
+          optional :credential_id, String, nil?: true
 
           # @!attribute period
           #   `daily` is the current UTC day; `monthly` is the current UTC calendar month.
@@ -60,12 +69,18 @@ module Telnyx
           optional :unlimited,
                    enum: -> { Telnyx::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount::Unlimited }
 
-          # @!method initialize(amount:, product:, period: nil, reason: nil, unlimited: nil)
+          # @!method initialize(amount:, product:, credential_id: nil, period: nil, reason: nil, unlimited: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Telnyx::Models::SpendLimitCreateParams::Body::CreateSpendLimitWithAmount} for
+          #   more details.
+          #
           #   A limit in USD.
           #
           #   @param amount [Float] Limit in USD. `0` blocks at the first cent of spend.
           #
           #   @param product [String] Product to limit, as returned in `product` by the list operation.
+          #
+          #   @param credential_id [String, nil] Optional. Identifier of one API key as recorded on usage, never the key's secret
           #
           #   @param period [Symbol, Telnyx::Models::SpendLimitPeriod] `daily` is the current UTC day; `monthly` is the current UTC calendar month.
           #
@@ -113,7 +128,7 @@ module Telnyx
           optional :reason, String
 
           # @!method initialize(product:, unlimited:, period: nil, reason: nil)
-          #   Explicitly no cap.
+          #   Explicitly no cap. Not available for API key limits.
           #
           #   @param product [String] Product to limit, as returned in `product` by the list operation.
           #

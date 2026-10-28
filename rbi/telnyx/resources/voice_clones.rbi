@@ -50,6 +50,8 @@ module Telnyx
       # Returns a paginated list of voice clones belonging to the authenticated account.
       sig do
         params(
+          filter_model_id:
+            Telnyx::VoiceCloneListParams::FilterModelID::OrSymbol,
           filter_name: String,
           filter_provider:
             Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol,
@@ -62,6 +64,8 @@ module Telnyx
         )
       end
       def list(
+        # Filter by TTS model. Case-insensitive.
+        filter_model_id: nil,
         # Case-insensitive substring filter on the name field.
         filter_name: nil,
         # Filter by voice synthesis provider. Case-insensitive.
@@ -89,11 +93,12 @@ module Telnyx
 
       # Creates a new voice clone by uploading an audio file directly. Supported
       # formats: WAV, MP3, FLAC, OGG, M4A. Maximum file size: 20MB. Reference audio is
-      # trimmed per model: Qwen3TTS and Bayan use the first 10 seconds, Ultra uses up to
-      # 60 seconds, and Minimax accepts 10 seconds to 5 minutes. Ultra clones return
-      # `202` with status `pending`; all other models return `201` with status `active`.
-      # Bayan clones require `ref_text` (the exact transcript of the reference audio)
-      # and support `ar` (default) and `en` only.
+      # trimmed per model: Qwen3TTS, Bayan, and Resemble use the first 10 seconds, Ultra
+      # uses up to 60 seconds, and Minimax accepts 10 seconds to 5 minutes. Ultra clones
+      # return `202` with status `pending`; all other models return `201` with status
+      # `active`. Bayan clones require `ref_text` (the exact transcript of the reference
+      # audio) and support `ar` (default) and `en` only. Resemble clones
+      # (`provider: resemble`) take `model_id` `Pro`, `Turbo`, or `Urdu`.
       sig do
         params(
           voice_clone_upload_request:
@@ -101,7 +106,8 @@ module Telnyx
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone::OrHash,
               Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::OrHash,
-              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::OrHash
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone::OrHash,
+              Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::OrHash
             ),
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::VoiceCloneResponse)

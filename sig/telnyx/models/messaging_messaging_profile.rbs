@@ -11,6 +11,7 @@ module Telnyx
         enabled: bool,
         features: Telnyx::MessagingProfileFeatures?,
         health_webhook_url: String?,
+        :mm7_metadata => Telnyx::Mm7Metadata?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,
@@ -51,6 +52,8 @@ module Telnyx
       attr_accessor features: Telnyx::MessagingProfileFeatures?
 
       attr_accessor health_webhook_url: String?
+
+      attr_accessor mm7_metadata: Telnyx::Mm7Metadata?
 
       attr_reader mms_fall_back_to_sms: bool?
 
@@ -136,6 +139,7 @@ module Telnyx
         ?enabled: bool,
         ?features: Telnyx::MessagingProfileFeatures?,
         ?health_webhook_url: String?,
+        ?mm7_metadata: Telnyx::Mm7Metadata?,
         ?mms_fall_back_to_sms: bool,
         ?mms_transcoding: bool,
         ?mobile_only: bool,
@@ -166,6 +170,7 @@ module Telnyx
         enabled: bool,
         features: Telnyx::MessagingProfileFeatures?,
         health_webhook_url: String?,
+        :mm7_metadata => Telnyx::Mm7Metadata?,
         mms_fall_back_to_sms: bool,
         mms_transcoding: bool,
         mobile_only: bool,

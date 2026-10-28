@@ -1,0 +1,31 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type aiagent_retrieve_params =
+              { id: Integer } & Telnyx::Internal::Type::request_parameters
+
+            class AiagentRetrieveParams < Telnyx::Internal::Type::BaseModel
+              extend Telnyx::Internal::Type::RequestParameters::Converter
+              include Telnyx::Internal::Type::RequestParameters
+
+              attr_accessor id: Integer
+
+              def initialize: (
+                id: Integer,
+                ?request_options: Telnyx::request_opts
+              ) -> void
+
+              def to_hash: -> {
+                id: Integer,
+                request_options: Telnyx::RequestOptions
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

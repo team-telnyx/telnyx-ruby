@@ -1,0 +1,21 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_generation_response = { progress_id: String }
+
+            class ScenarioGenerationResponse < Telnyx::Internal::Type::BaseModel
+              attr_accessor progress_id: String
+
+              def initialize: (progress_id: String) -> void
+
+              def to_hash: -> { progress_id: String }
+            end
+          end
+        end
+      end
+    end
+  end
+end

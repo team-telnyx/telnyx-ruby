@@ -1,0 +1,146 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type aiagent_update_params =
+              {
+                id: Integer,
+                agent_name: String,
+                assistant_id: String,
+                auto_fetch_calls_enabled: bool,
+                auto_sync_prompt_enabled: bool,
+                auto_update_dropoff_nodes: bool,
+                auto_update_topic_nodes: bool,
+                contact_number: String,
+                description: String,
+                inbound: bool,
+                language: String,
+                llm_max_tokens: Integer,
+                llm_model: String,
+                llm_system_prompt: String,
+                llm_temperature: Float,
+                outbound_auto_call: bool,
+                sip_endpoint: String
+              }
+              & Telnyx::Internal::Type::request_parameters
+
+            class AiagentUpdateParams < Telnyx::Internal::Type::BaseModel
+              extend Telnyx::Internal::Type::RequestParameters::Converter
+              include Telnyx::Internal::Type::RequestParameters
+
+              attr_accessor id: Integer
+
+              attr_reader agent_name: String?
+
+              def agent_name=: (String) -> String
+
+              attr_reader assistant_id: String?
+
+              def assistant_id=: (String) -> String
+
+              attr_reader auto_fetch_calls_enabled: bool?
+
+              def auto_fetch_calls_enabled=: (bool) -> bool
+
+              attr_reader auto_sync_prompt_enabled: bool?
+
+              def auto_sync_prompt_enabled=: (bool) -> bool
+
+              attr_reader auto_update_dropoff_nodes: bool?
+
+              def auto_update_dropoff_nodes=: (bool) -> bool
+
+              attr_reader auto_update_topic_nodes: bool?
+
+              def auto_update_topic_nodes=: (bool) -> bool
+
+              attr_reader contact_number: String?
+
+              def contact_number=: (String) -> String
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader inbound: bool?
+
+              def inbound=: (bool) -> bool
+
+              attr_reader language: String?
+
+              def language=: (String) -> String
+
+              attr_reader llm_max_tokens: Integer?
+
+              def llm_max_tokens=: (Integer) -> Integer
+
+              attr_reader llm_model: String?
+
+              def llm_model=: (String) -> String
+
+              attr_reader llm_system_prompt: String?
+
+              def llm_system_prompt=: (String) -> String
+
+              attr_reader llm_temperature: Float?
+
+              def llm_temperature=: (Float) -> Float
+
+              attr_reader outbound_auto_call: bool?
+
+              def outbound_auto_call=: (bool) -> bool
+
+              attr_reader sip_endpoint: String?
+
+              def sip_endpoint=: (String) -> String
+
+              def initialize: (
+                id: Integer,
+                ?agent_name: String,
+                ?assistant_id: String,
+                ?auto_fetch_calls_enabled: bool,
+                ?auto_sync_prompt_enabled: bool,
+                ?auto_update_dropoff_nodes: bool,
+                ?auto_update_topic_nodes: bool,
+                ?contact_number: String,
+                ?description: String,
+                ?inbound: bool,
+                ?language: String,
+                ?llm_max_tokens: Integer,
+                ?llm_model: String,
+                ?llm_system_prompt: String,
+                ?llm_temperature: Float,
+                ?outbound_auto_call: bool,
+                ?sip_endpoint: String,
+                ?request_options: Telnyx::request_opts
+              ) -> void
+
+              def to_hash: -> {
+                id: Integer,
+                agent_name: String,
+                assistant_id: String,
+                auto_fetch_calls_enabled: bool,
+                auto_sync_prompt_enabled: bool,
+                auto_update_dropoff_nodes: bool,
+                auto_update_topic_nodes: bool,
+                contact_number: String,
+                description: String,
+                inbound: bool,
+                language: String,
+                llm_max_tokens: Integer,
+                llm_model: String,
+                llm_system_prompt: String,
+                llm_temperature: Float,
+                outbound_auto_call: bool,
+                sip_endpoint: String,
+                request_options: Telnyx::RequestOptions
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

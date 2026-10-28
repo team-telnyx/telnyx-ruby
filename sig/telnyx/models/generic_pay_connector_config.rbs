@@ -1,0 +1,172 @@
+module Telnyx
+  module Models
+    type generic_pay_connector_config =
+      Telnyx::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault
+      | Telnyx::GenericPayConnectorConfig::BearerAuthentication
+      | Telnyx::GenericPayConnectorConfig::NoProcessorAuthentication
+
+    module GenericPayConnectorConfig
+      extend Telnyx::Internal::Type::Union
+
+      type basic_authentication_also_the_validation_default =
+        {
+          password: String,
+          username: String,
+          token: top,
+          auth_type: Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type,
+          endpoint_url: String,
+          timeout: Integer?
+        }
+
+      class BasicAuthenticationAlsoTheValidationDefault < Telnyx::Internal::Type::BaseModel
+        attr_accessor password: String
+
+        attr_accessor username: String
+
+        attr_reader auth_type: Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type?
+
+        def auth_type=: (
+          Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type
+        ) -> Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type
+
+        attr_reader endpoint_url: String?
+
+        def endpoint_url=: (String) -> String
+
+        attr_accessor timeout: Integer?
+
+        attr_reader token: top?
+
+        def token=: (top) -> top
+
+        def initialize: (
+          password: String,
+          username: String,
+          ?token: top,
+          ?auth_type: Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type,
+          ?endpoint_url: String,
+          ?timeout: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          password: String,
+          username: String,
+          token: top,
+          auth_type: Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type,
+          endpoint_url: String,
+          timeout: Integer?
+        }
+
+        type auth_type = :basic
+
+        module AuthType
+          extend Telnyx::Internal::Type::Enum
+
+          BASIC: :basic
+
+          def self?.values: -> ::Array[Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type]
+        end
+      end
+
+      type bearer_authentication =
+        {
+          token: String,
+          auth_type: :bearer,
+          endpoint_url: String,
+          password: top,
+          timeout: Integer?,
+          username: top
+        }
+
+      class BearerAuthentication < Telnyx::Internal::Type::BaseModel
+        attr_accessor token: String
+
+        attr_accessor auth_type: :bearer
+
+        attr_reader endpoint_url: String?
+
+        def endpoint_url=: (String) -> String
+
+        attr_accessor timeout: Integer?
+
+        attr_reader username: top?
+
+        def username=: (top) -> top
+
+        attr_reader password: top?
+
+        def password=: (top) -> top
+
+        def initialize: (
+          token: String,
+          ?endpoint_url: String,
+          ?password: top,
+          ?timeout: Integer?,
+          ?username: top,
+          ?auth_type: :bearer
+        ) -> void
+
+        def to_hash: -> {
+          token: String,
+          auth_type: :bearer,
+          endpoint_url: String,
+          password: top,
+          timeout: Integer?,
+          username: top
+        }
+      end
+
+      type no_processor_authentication =
+        {
+          auth_type: :none,
+          token: top,
+          endpoint_url: String,
+          password: top,
+          timeout: Integer?,
+          username: top
+        }
+
+      class NoProcessorAuthentication < Telnyx::Internal::Type::BaseModel
+        attr_accessor auth_type: :none
+
+        attr_reader endpoint_url: String?
+
+        def endpoint_url=: (String) -> String
+
+        attr_accessor timeout: Integer?
+
+        attr_reader username: top?
+
+        def username=: (top) -> top
+
+        attr_reader token: top?
+
+        def token=: (top) -> top
+
+        attr_reader password: top?
+
+        def password=: (top) -> top
+
+        def initialize: (
+          ?token: top,
+          ?endpoint_url: String,
+          ?password: top,
+          ?timeout: Integer?,
+          ?username: top,
+          ?auth_type: :none
+        ) -> void
+
+        def to_hash: -> {
+          auth_type: :none,
+          token: top,
+          endpoint_url: String,
+          password: top,
+          timeout: Integer?,
+          username: top
+        }
+      end
+
+      def self?.variants: -> ::Array[Telnyx::Models::generic_pay_connector_config]
+    end
+  end
+end

@@ -9,6 +9,7 @@ module Telnyx
       def update: (
         String product,
         body: Telnyx::Models::SpendLimitUpdateParams::body,
+        ?credential_id: String,
         ?period: Telnyx::Models::spend_limit_period,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::SpendLimitResponse
@@ -19,6 +20,7 @@ module Telnyx
 
       def delete: (
         String product,
+        ?credential_id: String,
         ?period: Telnyx::Models::spend_limit_period,
         ?reason: String,
         ?request_options: Telnyx::request_opts

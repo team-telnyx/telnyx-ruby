@@ -1,0 +1,143 @@
+module Telnyx
+  module Models
+    type network_route =
+      {
+        id: String,
+        cidr: String,
+        created_at: Time,
+        network_id: String,
+        next_hop: Telnyx::NetworkRoute::NextHop,
+        origin: Telnyx::Models::NetworkRoute::origin,
+        record_type: String,
+        status: Telnyx::Models::NetworkRoute::status
+      }
+
+    class NetworkRoute < Telnyx::Internal::Type::BaseModel
+      attr_reader cidr: String?
+
+      def cidr=: (String) -> String
+
+      attr_reader network_id: String?
+
+      def network_id=: (String) -> String
+
+      attr_reader next_hop: Telnyx::NetworkRoute::NextHop?
+
+      def next_hop=: (
+        Telnyx::NetworkRoute::NextHop
+      ) -> Telnyx::NetworkRoute::NextHop
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader origin: Telnyx::Models::NetworkRoute::origin?
+
+      def origin=: (
+        Telnyx::Models::NetworkRoute::origin
+      ) -> Telnyx::Models::NetworkRoute::origin
+
+      attr_reader record_type: String?
+
+      def record_type=: (String) -> String
+
+      attr_reader status: Telnyx::Models::NetworkRoute::status?
+
+      def status=: (
+        Telnyx::Models::NetworkRoute::status
+      ) -> Telnyx::Models::NetworkRoute::status
+
+      def initialize: (
+        ?id: String,
+        ?cidr: String,
+        ?created_at: Time,
+        ?network_id: String,
+        ?next_hop: Telnyx::NetworkRoute::NextHop,
+        ?origin: Telnyx::Models::NetworkRoute::origin,
+        ?record_type: String,
+        ?status: Telnyx::Models::NetworkRoute::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        cidr: String,
+        created_at: Time,
+        network_id: String,
+        next_hop: Telnyx::NetworkRoute::NextHop,
+        origin: Telnyx::Models::NetworkRoute::origin,
+        record_type: String,
+        status: Telnyx::Models::NetworkRoute::status
+      }
+
+      type next_hop =
+        { id: String, type: Telnyx::Models::NetworkRoute::NextHop::type_ }
+
+      class NextHop < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor type: Telnyx::Models::NetworkRoute::NextHop::type_
+
+        def initialize: (
+          id: String,
+          type: Telnyx::Models::NetworkRoute::NextHop::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          type: Telnyx::Models::NetworkRoute::NextHop::type_
+        }
+
+        type type_ =
+          :tunnel
+          | :wireguard_peer
+          | :wireguard_interface
+          | :private_wireless_gateway
+          | :virtual_cross_connect
+          | :ipsec_tunnel
+          | :public_internet_gateway
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          TUNNEL: :tunnel
+          WIREGUARD_PEER: :wireguard_peer
+          WIREGUARD_INTERFACE: :wireguard_interface
+          PRIVATE_WIRELESS_GATEWAY: :private_wireless_gateway
+          VIRTUAL_CROSS_CONNECT: :virtual_cross_connect
+          IPSEC_TUNNEL: :ipsec_tunnel
+          PUBLIC_INTERNET_GATEWAY: :public_internet_gateway
+
+          def self?.values: -> ::Array[Telnyx::Models::NetworkRoute::NextHop::type_]
+        end
+      end
+
+      type origin = :static | :attachment
+
+      module Origin
+        extend Telnyx::Internal::Type::Enum
+
+        STATIC: :static
+        ATTACHMENT: :attachment
+
+        def self?.values: -> ::Array[Telnyx::Models::NetworkRoute::origin]
+      end
+
+      type status = :pending | :active | :inactive | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        ACTIVE: :active
+        INACTIVE: :inactive
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::NetworkRoute::status]
+      end
+    end
+  end
+end

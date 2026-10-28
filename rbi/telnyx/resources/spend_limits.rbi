@@ -25,6 +25,13 @@ module Telnyx
     #   completions, Responses, Anthropic Messages and classification requests;
     #   requests already running finish normally. Take the list of products from the
     #   list operation.
+    # - **API key limits.** For `inference`, a limit can also apply to one API key,
+    #   named by `credential_id`: the key's identifier as recorded on usage, never its
+    #   secret. When the key's spend goes above its own limit, only that key is
+    #   blocked, with the error title `API key spend limit reached` (code `10039`);
+    #   the account's other keys keep working. The API key limits of a period cannot
+    #   add up to more than the total limit when the total has an amount. Only
+    #   language-model requests authenticated with an API key count toward its limit.
     # - **Limits set by Telnyx.** Telnyx support can also set a limit on your account.
     #   It is listed with `origin: operator` and you can update or delete it like your
     #   own.
@@ -33,7 +40,9 @@ module Telnyx
       # `amount` and `unlimited: true`. The period's spend is checked at once: if it is
       # already above the new limit, the product is blocked immediately
       # (`evaluation.blocked_now`). Returns 409 when a limit already exists for the
-      # product and period; update it instead.
+      # product and period; update it instead. With `credential_id`, the limit applies
+      # to that API key only: it needs an `amount`, and the period's API key limits
+      # cannot add up to more than the total limit when the total has an amount.
       sig do
         params(
           body:
@@ -56,6 +65,9 @@ module Telnyx
       # once: raising the limit above the spend lifts the period's block
       # (`evaluation.released`), and lowering it below the spend blocks the product
       # (`evaluation.blocked_now`). Returns 404 when no limit is set; create it instead.
+      # With the `credential_id` query parameter, the request changes that API key's
+      # limit; it needs an `amount`, and it can be at most the period's total limit.
+      # Lowering the total limit below the period's highest API key limit is refused.
       sig do
         params(
           product: String,
@@ -64,6 +76,7 @@ module Telnyx
               Telnyx::SpendLimitUpdateParams::Body::UpdateSpendLimitWithAmount::OrHash,
               Telnyx::SpendLimitUpdateParams::Body::UpdateSpendLimitUnlimited::OrHash
             ),
+          credential_id: String,
           period: Telnyx::SpendLimitPeriod::OrSymbol,
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::SpendLimitResponse)
@@ -74,6 +87,10 @@ module Telnyx
         product,
         # Body param: Send exactly one of `amount` and `unlimited: true`.
         body:,
+        # Query param: Identifier of one API key as recorded on usage, never the key's
+        # secret, percent-encoded: the request is then about that key's limit. Absent
+        # means the total limit; present but blank is refused.
+        credential_id: nil,
         # Query param: Limit period. Defaults to `daily`; send it explicitly.
         period: nil,
         request_options: {}
@@ -84,7 +101,9 @@ module Telnyx
       # the spend so far in the period and whether the product is blocked. An entry
       # without a limit is still listed (`limit: null`). When the spend cannot be read,
       # the entry is returned with `spend_usd: null` and `spend_error` set. The list is
-      # not paginated.
+      # not paginated. Each entry also lists the API key limits of its product and
+      # period in `credential_limits`, with each key's spend and block. Each API key
+      # limit can be at most the total limit; together they may add up to more than it.
       sig do
         params(request_options: Telnyx::RequestOptions::OrHash).returns(
           Telnyx::Models::SpendLimitListResponse
@@ -97,10 +116,15 @@ module Telnyx
       # default limit, the product becomes unlimited for the period and the period's
       # block is lifted (`evaluation.released`). The response carries `limit: null` and
       # the `effective_limit_usd` that applies after the removal. Returns 404 when no
-      # limit is set.
+      # limit is set. With the `credential_id` query parameter, the request removes that
+      # API key's limit for the period and lifts the key's block in that period at once.
+      # A block under the key's limit in the other period stays
+      # (`evaluation.still_blocked_other_period`). Removing the total limit leaves the
+      # API key limits in place.
       sig do
         params(
           product: String,
+          credential_id: String,
           period: Telnyx::SpendLimitPeriod::OrSymbol,
           reason: String,
           request_options: Telnyx::RequestOptions::OrHash
@@ -109,6 +133,10 @@ module Telnyx
       def delete(
         # Product the limit applies to, as returned in `product` by the list operation.
         product,
+        # Identifier of one API key as recorded on usage, never the key's secret,
+        # percent-encoded: the request is then about that key's limit. Absent means the
+        # total limit; present but blank is refused.
+        credential_id: nil,
         # Limit period. Defaults to `daily`; send it explicitly.
         period: nil,
         # Why the limit is removed, kept for audit. At most 500 characters.

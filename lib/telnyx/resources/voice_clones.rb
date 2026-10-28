@@ -58,7 +58,9 @@ module Telnyx
 
       # Returns a paginated list of voice clones belonging to the authenticated account.
       #
-      # @overload list(filter_name: nil, filter_provider: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      # @overload list(filter_model_id: nil, filter_name: nil, filter_provider: nil, page_number: nil, page_size: nil, sort: nil, request_options: {})
+      #
+      # @param filter_model_id [Symbol, Telnyx::Models::VoiceCloneListParams::FilterModelID] Filter by TTS model. Case-insensitive.
       #
       # @param filter_name [String] Case-insensitive substring filter on the name field.
       #
@@ -82,6 +84,7 @@ module Telnyx
           method: :get,
           path: "voice_clones",
           query: query.transform_keys(
+            filter_model_id: "filter[model_id]",
             filter_name: "filter[name]",
             filter_provider: "filter[provider]",
             page_number: "page[number]",
@@ -118,15 +121,16 @@ module Telnyx
       #
       # Creates a new voice clone by uploading an audio file directly. Supported
       # formats: WAV, MP3, FLAC, OGG, M4A. Maximum file size: 20MB. Reference audio is
-      # trimmed per model: Qwen3TTS and Bayan use the first 10 seconds, Ultra uses up to
-      # 60 seconds, and Minimax accepts 10 seconds to 5 minutes. Ultra clones return
-      # `202` with status `pending`; all other models return `201` with status `active`.
-      # Bayan clones require `ref_text` (the exact transcript of the reference audio)
-      # and support `ar` (default) and `en` only.
+      # trimmed per model: Qwen3TTS, Bayan, and Resemble use the first 10 seconds, Ultra
+      # uses up to 60 seconds, and Minimax accepts 10 seconds to 5 minutes. Ultra clones
+      # return `202` with status `pending`; all other models return `201` with status
+      # `active`. Bayan clones require `ref_text` (the exact transcript of the reference
+      # audio) and support `ar` (default) and `en` only. Resemble clones
+      # (`provider: resemble`) take `model_id` `Pro`, `Turbo`, or `Urdu`.
       #
       # @overload create_from_upload(voice_clone_upload_request:, request_options: {})
       #
-      # @param voice_clone_upload_request [Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone] Multipart form data for creating a voice clone from a direct audio upload. Maxim
+      # @param voice_clone_upload_request [Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxQwen3TtsClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxUltraClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::MinimaxClone, Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone] Multipart form data for creating a voice clone from a direct audio upload. Maxim
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

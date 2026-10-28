@@ -79,9 +79,9 @@ module Telnyx
         # transcription, used by Deepgram, Reson8, Speechmatics Linden 1 and AssemblyAI
         # models. Helps improve accuracy for domain-specific terminology, proper nouns, or
         # uncommon words. At most 1000 characters in total. For
-        # assemblyai/universal-3-5-pro (and its legacy alias
-        # assemblyai/universal-streaming), also at most 100 terms of up to 50 characters
-        # each. This field may be templated with
+        # assemblyai/universal-3-6-pro (and its legacy aliases
+        # assemblyai/universal-3-5-pro and assemblyai/universal-streaming), also at most
+        # 100 terms of up to 50 characters each. This field may be templated with
         # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
         # using mustache syntax (e.g. `Telnyx,{{customer_name}},VoIP`). Variables are
         # resolved at call time before the value is sent to the speech-to-text engine.
@@ -109,18 +109,19 @@ module Telnyx
         sig { params(max_endpoint_delay_ms: Integer).void }
         attr_writer :max_endpoint_delay_ms
 
-        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-        # assemblyai/universal-streaming). Maximum duration of silence in milliseconds
-        # before forcing an end of turn.
+        # Available only for assemblyai/universal-3-6-pro (and its legacy aliases
+        # assemblyai/universal-3-5-pro and assemblyai/universal-streaming). Maximum
+        # duration of silence in milliseconds before forcing an end of turn.
         sig { returns(T.nilable(Integer)) }
         attr_reader :max_turn_silence
 
         sig { params(max_turn_silence: Integer).void }
         attr_writer :max_turn_silence
 
-        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-        # assemblyai/universal-streaming). Minimum duration of silence in milliseconds
-        # before a turn can end. Must be less than or equal to max_turn_silence.
+        # Available only for assemblyai/universal-3-6-pro (and its legacy aliases
+        # assemblyai/universal-3-5-pro and assemblyai/universal-streaming). Minimum
+        # duration of silence in milliseconds before a turn can end. Must be less than or
+        # equal to max_turn_silence.
         sig { returns(T.nilable(Integer)) }
         attr_reader :min_turn_silence
 
@@ -133,10 +134,11 @@ module Telnyx
         sig { params(numerals: T::Boolean).void }
         attr_writer :numerals
 
-        # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-        # assemblyai/universal-streaming). Context about the conversation (domain, names,
-        # terms) to improve transcription; describe the content, do not give instructions.
-        # Leave empty unless needed. At most 1750 characters.
+        # Available only for assemblyai/universal-3-6-pro (and its legacy aliases
+        # assemblyai/universal-3-5-pro and assemblyai/universal-streaming). Context about
+        # the conversation (domain, names, terms) to improve transcription; describe the
+        # content, do not give instructions. Leave empty unless needed. At most 1750
+        # characters.
         sig { returns(T.nilable(String)) }
         attr_reader :prompt
 
@@ -214,9 +216,9 @@ module Telnyx
           # transcription, used by Deepgram, Reson8, Speechmatics Linden 1 and AssemblyAI
           # models. Helps improve accuracy for domain-specific terminology, proper nouns, or
           # uncommon words. At most 1000 characters in total. For
-          # assemblyai/universal-3-5-pro (and its legacy alias
-          # assemblyai/universal-streaming), also at most 100 terms of up to 50 characters
-          # each. This field may be templated with
+          # assemblyai/universal-3-6-pro (and its legacy aliases
+          # assemblyai/universal-3-5-pro and assemblyai/universal-streaming), also at most
+          # 100 terms of up to 50 characters each. This field may be templated with
           # [dynamic variables](https://developers.telnyx.com/docs/inference/ai-assistants/dynamic-variables)
           # using mustache syntax (e.g. `Telnyx,{{customer_name}},VoIP`). Variables are
           # resolved at call time before the value is sent to the speech-to-text engine.
@@ -229,19 +231,21 @@ module Telnyx
           # milliseconds) before Soniox emits an end-of-utterance event. Only honored when
           # `enable_endpoint_detection` is true.
           max_endpoint_delay_ms: nil,
-          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-          # assemblyai/universal-streaming). Maximum duration of silence in milliseconds
-          # before forcing an end of turn.
+          # Available only for assemblyai/universal-3-6-pro (and its legacy aliases
+          # assemblyai/universal-3-5-pro and assemblyai/universal-streaming). Maximum
+          # duration of silence in milliseconds before forcing an end of turn.
           max_turn_silence: nil,
-          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-          # assemblyai/universal-streaming). Minimum duration of silence in milliseconds
-          # before a turn can end. Must be less than or equal to max_turn_silence.
+          # Available only for assemblyai/universal-3-6-pro (and its legacy aliases
+          # assemblyai/universal-3-5-pro and assemblyai/universal-streaming). Minimum
+          # duration of silence in milliseconds before a turn can end. Must be less than or
+          # equal to max_turn_silence.
           min_turn_silence: nil,
           numerals: nil,
-          # Available only for assemblyai/universal-3-5-pro (and its legacy alias
-          # assemblyai/universal-streaming). Context about the conversation (domain, names,
-          # terms) to improve transcription; describe the content, do not give instructions.
-          # Leave empty unless needed. At most 1750 characters.
+          # Available only for assemblyai/universal-3-6-pro (and its legacy aliases
+          # assemblyai/universal-3-5-pro and assemblyai/universal-streaming). Context about
+          # the conversation (domain, names, terms) to improve transcription; describe the
+          # content, do not give instructions. Leave empty unless needed. At most 1750
+          # characters.
           prompt: nil,
           # Available only for speechmatics/linden-1. When true, filler words such as "um"
           # and "uh" are removed from the transcript. Disfluency removal is supported only

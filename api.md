@@ -1,3 +1,20 @@
+# BrowserSessions
+
+Methods:
+
+- <code title="post /browser_sessions">client.browser_sessions.<a href="./lib/telnyx/resources/browser_sessions.rb">create</a>(\*\*params)</code>
+- <code title="get /browser_sessions/{id}">client.browser_sessions.<a href="./lib/telnyx/resources/browser_sessions.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /browser_sessions">client.browser_sessions.<a href="./lib/telnyx/resources/browser_sessions.rb">list</a>(\*\*params)</code>
+- <code title="delete /browser_sessions/{id}">client.browser_sessions.<a href="./lib/telnyx/resources/browser_sessions.rb">delete</a>(\*\*params)</code>
+- <code title="get /browser_sessions/{id}/artifacts/{artifactId}">client.browser_sessions.<a href="./lib/telnyx/resources/browser_sessions.rb">retrieve_artifact</a>(\*\*params)</code>
+
+## Actions
+
+Methods:
+
+- <code title="post /browser_sessions/{id}/actions">client.browser_sessions.actions.<a href="./lib/telnyx/resources/browser_sessions/actions.rb">create</a>(\*\*params)</code>
+- <code title="get /browser_sessions/{id}/actions/{actionId}">client.browser_sessions.actions.<a href="./lib/telnyx/resources/browser_sessions/actions.rb">retrieve</a>(\*\*params)</code>
+
 # Legacy
 
 ## Reporting
@@ -600,6 +617,78 @@ Methods:
 - <code title="get /ai/avatars/{avatar_id}">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">retrieve</a>(\*\*params)</code>
 - <code title="patch /ai/avatars/{avatar_id}">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">update</a>(\*\*params)</code>
 - <code title="get /ai/avatars">client.ai.avatars.<a href="./lib/telnyx/resources/ai/avatars.rb">list</a>(\*\*params)</code>
+
+## Tests
+
+### Schedules
+
+#### V1
+
+##### CronJobs
+
+Methods:
+
+- <code title="get /ai/tests/schedules/v1/cron-jobs/{id}">client.ai.tests.schedules.v1.cron_jobs.<a href="./lib/telnyx/resources/ai/tests/schedules/v1/cron_jobs.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /ai/tests/schedules/v1/cron-jobs/{id}">client.ai.tests.schedules.v1.cron_jobs.<a href="./lib/telnyx/resources/ai/tests/schedules/v1/cron_jobs.rb">update</a>(\*\*params)</code>
+- <code title="delete /ai/tests/schedules/v1/cron-jobs/{id}">client.ai.tests.schedules.v1.cron_jobs.<a href="./lib/telnyx/resources/ai/tests/schedules/v1/cron_jobs.rb">delete</a>(\*\*params)</code>
+- <code title="post /ai/tests/schedules/v1/cron-jobs">client.ai.tests.schedules.v1.cron_jobs.<a href="./lib/telnyx/resources/ai/tests/schedules/v1/cron_jobs.rb">cron_jobs</a>(\*\*params)</code>
+- <code title="get /ai/tests/schedules/v1/cron-jobs">client.ai.tests.schedules.v1.cron_jobs.<a href="./lib/telnyx/resources/ai/tests/schedules/v1/cron_jobs.rb">retrieve_cron_jobs</a>(\*\*params)</code>
+
+### TestFramework
+
+#### V1
+
+Methods:
+
+- <code title="get /ai/tests/test_framework/v1/personalities">client.ai.tests.test_framework.v1.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1.rb">retrieve_personalities</a>()</code>
+
+##### Aiagents
+
+Methods:
+
+- <code title="post /ai/tests/test_framework/v1/aiagents">client.ai.tests.test_framework.v1.aiagents.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/aiagents.rb">create</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/aiagents/{id}">client.ai.tests.test_framework.v1.aiagents.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/aiagents.rb">retrieve</a>(\*\*params)</code>
+- <code title="put /ai/tests/test_framework/v1/aiagents/{id}">client.ai.tests.test_framework.v1.aiagents.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/aiagents.rb">update</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/aiagents">client.ai.tests.test_framework.v1.aiagents.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/aiagents.rb">list</a>(\*\*params)</code>
+- <code title="delete /ai/tests/test_framework/v1/aiagents/{id}">client.ai.tests.test_framework.v1.aiagents.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/aiagents.rb">delete</a>(\*\*params)</code>
+
+##### Metrics
+
+Methods:
+
+- <code title="post /ai/tests/test_framework/v1/metrics">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">create</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/metrics/{id}">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /ai/tests/test_framework/v1/metrics/{id}">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">update</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/metrics">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">list</a>(\*\*params)</code>
+- <code title="delete /ai/tests/test_framework/v1/metrics/{id}">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">delete</a>(\*\*params)</code>
+- <code title="post /ai/tests/test_framework/v1/metrics/bulk_create">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">bulk_create</a>(\*\*params)</code>
+- <code title="post /ai/tests/test_framework/v1/metrics/generate_metrics">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">generate_metrics</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/metrics/generate_metrics_progress">client.ai.tests.test_framework.v1.metrics.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/metrics.rb">retrieve_generate_metrics_progress</a>(\*\*params)</code>
+
+##### Results
+
+Methods:
+
+- <code title="get /ai/tests/test_framework/v1/results/{id}">client.ai.tests.test_framework.v1.results.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/results.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/results">client.ai.tests.test_framework.v1.results.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/results.rb">list</a>(\*\*params)</code>
+- <code title="delete /ai/tests/test_framework/v1/results/{id}">client.ai.tests.test_framework.v1.results.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/results.rb">delete</a>(\*\*params)</code>
+- <code title="post /ai/tests/test_framework/v1/results/{id}/rerun">client.ai.tests.test_framework.v1.results.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/results.rb">rerun</a>(\*\*params)</code>
+
+##### Scenarios
+
+Methods:
+
+- <code title="post /ai/tests/test_framework/v1/scenarios">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">create</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/scenarios/{id}">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /ai/tests/test_framework/v1/scenarios/{id}">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">update</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/scenarios">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">list</a>(\*\*params)</code>
+- <code title="delete /ai/tests/test_framework/v1/scenarios/{id}">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">delete</a>(\*\*params)</code>
+- <code title="post /ai/tests/test_framework/v1/scenarios/generate-bg">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">generate_bg</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/scenarios/export_scenarios">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">retrieve_export_scenarios</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/scenarios/generate-progress">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">retrieve_generate_progress</a>(\*\*params)</code>
+- <code title="get /ai/tests/test_framework/v1/scenarios/scenario-agent-progress">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">retrieve_scenario_agent_progress</a>(\*\*params)</code>
+- <code title="post /ai/tests/test_framework/v1/scenarios/run_scenarios">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">run_scenarios</a>(\*\*params)</code>
+- <code title="post /ai/tests/test_framework/v1/scenarios/scenario-agent">client.ai.tests.test_framework.v1.scenarios.<a href="./lib/telnyx/resources/ai/tests/test_framework/v1/scenarios.rb">scenario_agent</a>(\*\*params)</code>
 
 # AuditEvents
 
@@ -3275,20 +3364,20 @@ Methods:
 
 Methods:
 
-- <code title="post /v2/bot_challenge">client.bot_challenge.<a href="./lib/telnyx/resources/bot_challenge.rb">create</a>(\*\*params)</code>
+- <code title="post /bot_challenge">client.bot_challenge.<a href="./lib/telnyx/resources/bot_challenge.rb">create</a>(\*\*params)</code>
 
 # BotSessions
 
 Methods:
 
-- <code title="get /v2/bot_sessions">client.bot_sessions.<a href="./lib/telnyx/resources/bot_sessions.rb">list</a>(\*\*params)</code>
+- <code title="get /bot_sessions">client.bot_sessions.<a href="./lib/telnyx/resources/bot_sessions.rb">list</a>(\*\*params)</code>
 
 # BotSignup
 
 Methods:
 
-- <code title="post /v2/bot_signup">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">create</a>(\*\*params)</code>
-- <code title="post /v2/bot_signup/resend_magic_link">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">resend_magic_link</a>(\*\*params)</code>
+- <code title="post /bot_signup">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">create</a>(\*\*params)</code>
+- <code title="post /bot_signup/resend_magic_link">client.bot_signup.<a href="./lib/telnyx/resources/bot_signup.rb">resend_magic_link</a>(\*\*params)</code>
 
 # MachinePayments
 
@@ -3362,3 +3451,81 @@ Methods:
 - <code title="patch /tailscale_subnet_routers/{id}">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">update</a>(\*\*params)</code>
 - <code title="get /tailscale_subnet_routers">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">list</a>(\*\*params)</code>
 - <code title="delete /tailscale_subnet_routers/{id}">client.tailscale_subnet_routers.<a href="./lib/telnyx/resources/tailscale_subnet_routers.rb">delete</a>(\*\*params)</code>
+
+# ArtifactDownloads
+
+Methods:
+
+- <code title="get /artifact_downloads/{artifactId}">client.artifact_downloads.<a href="./lib/telnyx/resources/artifact_downloads.rb">retrieve</a>(\*\*params)</code>
+
+# Email
+
+## DedicatedIPs
+
+Methods:
+
+- <code title="post /email/dedicated_ips">client.email.dedicated_ips.<a href="./lib/telnyx/resources/email/dedicated_ips.rb">create</a>(\*\*params)</code>
+- <code title="get /email/dedicated_ips/{id}">client.email.dedicated_ips.<a href="./lib/telnyx/resources/email/dedicated_ips.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /email/dedicated_ips/{id}">client.email.dedicated_ips.<a href="./lib/telnyx/resources/email/dedicated_ips.rb">update</a>(\*\*params)</code>
+- <code title="get /email/dedicated_ips">client.email.dedicated_ips.<a href="./lib/telnyx/resources/email/dedicated_ips.rb">list</a>(\*\*params)</code>
+- <code title="delete /email/dedicated_ips/{id}">client.email.dedicated_ips.<a href="./lib/telnyx/resources/email/dedicated_ips.rb">delete</a>(\*\*params)</code>
+
+### Actions
+
+Methods:
+
+- <code title="post /email/dedicated_ips/{id}/actions/complete_warmup">client.email.dedicated_ips.actions.<a href="./lib/telnyx/resources/email/dedicated_ips/actions.rb">complete_warmup</a>(\*\*params)</code>
+- <code title="post /email/dedicated_ips/{id}/actions/pause_warmup">client.email.dedicated_ips.actions.<a href="./lib/telnyx/resources/email/dedicated_ips/actions.rb">pause_warmup</a>(\*\*params)</code>
+- <code title="post /email/dedicated_ips/{id}/actions/resume_warmup">client.email.dedicated_ips.actions.<a href="./lib/telnyx/resources/email/dedicated_ips/actions.rb">resume_warmup</a>(\*\*params)</code>
+- <code title="post /email/dedicated_ips/{id}/actions/start_warmup">client.email.dedicated_ips.actions.<a href="./lib/telnyx/resources/email/dedicated_ips/actions.rb">start_warmup</a>(\*\*params)</code>
+
+## IPPools
+
+Methods:
+
+- <code title="post /email/ip_pools">client.email.ip_pools.<a href="./lib/telnyx/resources/email/ip_pools.rb">create</a>(\*\*params)</code>
+- <code title="get /email/ip_pools/{id}">client.email.ip_pools.<a href="./lib/telnyx/resources/email/ip_pools.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /email/ip_pools/{id}">client.email.ip_pools.<a href="./lib/telnyx/resources/email/ip_pools.rb">update</a>(\*\*params)</code>
+- <code title="get /email/ip_pools">client.email.ip_pools.<a href="./lib/telnyx/resources/email/ip_pools.rb">list</a>()</code>
+- <code title="delete /email/ip_pools/{id}">client.email.ip_pools.<a href="./lib/telnyx/resources/email/ip_pools.rb">delete</a>(\*\*params)</code>
+
+### IPs
+
+Methods:
+
+- <code title="post /email/ip_pools/{id}/ips">client.email.ip_pools.ips.<a href="./lib/telnyx/resources/email/ip_pools/ips.rb">create</a>(\*\*params)</code>
+- <code title="delete /email/ip_pools/{id}/ips/{ip_id}">client.email.ip_pools.ips.<a href="./lib/telnyx/resources/email/ip_pools/ips.rb">delete</a>(\*\*params)</code>
+
+# NetworkRoutes
+
+Methods:
+
+- <code title="post /network_routes">client.network_routes.<a href="./lib/telnyx/resources/network_routes.rb">create</a>(\*\*params)</code>
+- <code title="get /network_routes/{id}">client.network_routes.<a href="./lib/telnyx/resources/network_routes.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /network_routes">client.network_routes.<a href="./lib/telnyx/resources/network_routes.rb">list</a>(\*\*params)</code>
+- <code title="delete /network_routes/{id}">client.network_routes.<a href="./lib/telnyx/resources/network_routes.rb">delete</a>(\*\*params)</code>
+
+# PayConnectors
+
+Methods:
+
+- <code title="post /pay_connectors">client.pay_connectors.<a href="./lib/telnyx/resources/pay_connectors.rb">create</a>(\*\*params)</code>
+- <code title="get /pay_connectors/{name}">client.pay_connectors.<a href="./lib/telnyx/resources/pay_connectors.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /pay_connectors/{name}">client.pay_connectors.<a href="./lib/telnyx/resources/pay_connectors.rb">update</a>(\*\*params)</code>
+- <code title="get /pay_connectors">client.pay_connectors.<a href="./lib/telnyx/resources/pay_connectors.rb">list</a>(\*\*params)</code>
+- <code title="delete /pay_connectors/{name}">client.pay_connectors.<a href="./lib/telnyx/resources/pay_connectors.rb">delete</a>(\*\*params)</code>
+
+# Tunnels
+
+Methods:
+
+- <code title="post /tunnels">client.tunnels.<a href="./lib/telnyx/resources/tunnels.rb">create</a>(\*\*params)</code>
+- <code title="get /tunnels/{id}">client.tunnels.<a href="./lib/telnyx/resources/tunnels.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /tunnels">client.tunnels.<a href="./lib/telnyx/resources/tunnels.rb">list</a>(\*\*params)</code>
+- <code title="delete /tunnels/{id}">client.tunnels.<a href="./lib/telnyx/resources/tunnels.rb">delete</a>(\*\*params)</code>
+
+## Actions
+
+Methods:
+
+- <code title="post /tunnels/{id}/actions/rotate_token">client.tunnels.actions.<a href="./lib/telnyx/resources/tunnels/actions.rb">rotate_token</a>(\*\*params)</code>

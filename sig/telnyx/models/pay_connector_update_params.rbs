@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    type pay_connector_update_params =
+      {
+        name: String,
+        config: Telnyx::Models::generic_pay_connector_config,
+        mode: Telnyx::Models::PayConnectorUpdateParams::mode,
+        type: Telnyx::Models::PayConnectorUpdateParams::type_
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class PayConnectorUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_reader config: Telnyx::Models::generic_pay_connector_config?
+
+      def config=: (
+        Telnyx::Models::generic_pay_connector_config
+      ) -> Telnyx::Models::generic_pay_connector_config
+
+      attr_reader mode: Telnyx::Models::PayConnectorUpdateParams::mode?
+
+      def mode=: (
+        Telnyx::Models::PayConnectorUpdateParams::mode
+      ) -> Telnyx::Models::PayConnectorUpdateParams::mode
+
+      attr_reader type: Telnyx::Models::PayConnectorUpdateParams::type_?
+
+      def type=: (
+        Telnyx::Models::PayConnectorUpdateParams::type_
+      ) -> Telnyx::Models::PayConnectorUpdateParams::type_
+
+      def initialize: (
+        name: String,
+        ?config: Telnyx::Models::generic_pay_connector_config,
+        ?mode: Telnyx::Models::PayConnectorUpdateParams::mode,
+        ?type: Telnyx::Models::PayConnectorUpdateParams::type_,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        config: Telnyx::Models::generic_pay_connector_config,
+        mode: Telnyx::Models::PayConnectorUpdateParams::mode,
+        type: Telnyx::Models::PayConnectorUpdateParams::type_,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type mode = :test | :live
+
+      module Mode
+        extend Telnyx::Internal::Type::Enum
+
+        TEST: :test
+        LIVE: :live
+
+        def self?.values: -> ::Array[Telnyx::Models::PayConnectorUpdateParams::mode]
+      end
+
+      type type_ = :generic
+
+      module Type
+        extend Telnyx::Internal::Type::Enum
+
+        GENERIC: :generic
+
+        def self?.values: -> ::Array[Telnyx::Models::PayConnectorUpdateParams::type_]
+      end
+    end
+  end
+end

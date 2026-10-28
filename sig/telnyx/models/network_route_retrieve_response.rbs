@@ -1,0 +1,15 @@
+module Telnyx
+  module Models
+    type network_route_retrieve_response = { data: Telnyx::NetworkRoute }
+
+    class NetworkRouteRetrieveResponse < Telnyx::Internal::Type::BaseModel
+      attr_reader data: Telnyx::NetworkRoute?
+
+      def data=: (Telnyx::NetworkRoute) -> Telnyx::NetworkRoute
+
+      def initialize: (?data: Telnyx::NetworkRoute) -> void
+
+      def to_hash: -> { data: Telnyx::NetworkRoute }
+    end
+  end
+end

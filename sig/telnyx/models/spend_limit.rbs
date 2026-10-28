@@ -2,7 +2,7 @@ module Telnyx
   module Models
     type spend_limit =
       {
-        block: Telnyx::SpendLimit::Block?,
+        block: Telnyx::SpendLimitBlock?,
         blocked: bool,
         effective_limit_usd: String?,
         limit: Telnyx::SpendLimit::Limit?,
@@ -14,11 +14,13 @@ module Telnyx
         record_type: String,
         spend_error: String?,
         spend_usd: String?,
+        credential_id: String?,
+        credential_limits: ::Array[Telnyx::SpendLimit::CredentialLimit],
         evaluation: Telnyx::SpendLimit::Evaluation
       }
 
     class SpendLimit < Telnyx::Internal::Type::BaseModel
-      attr_accessor block: Telnyx::SpendLimit::Block?
+      attr_accessor block: Telnyx::SpendLimitBlock?
 
       attr_accessor blocked: bool
 
@@ -42,6 +44,14 @@ module Telnyx
 
       attr_accessor spend_usd: String?
 
+      attr_accessor credential_id: String?
+
+      attr_reader credential_limits: ::Array[Telnyx::SpendLimit::CredentialLimit]?
+
+      def credential_limits=: (
+        ::Array[Telnyx::SpendLimit::CredentialLimit]
+      ) -> ::Array[Telnyx::SpendLimit::CredentialLimit]
+
       attr_reader evaluation: Telnyx::SpendLimit::Evaluation?
 
       def evaluation=: (
@@ -49,7 +59,7 @@ module Telnyx
       ) -> Telnyx::SpendLimit::Evaluation
 
       def initialize: (
-        block: Telnyx::SpendLimit::Block?,
+        block: Telnyx::SpendLimitBlock?,
         blocked: bool,
         effective_limit_usd: String?,
         limit: Telnyx::SpendLimit::Limit?,
@@ -61,11 +71,13 @@ module Telnyx
         record_type: String,
         spend_error: String?,
         spend_usd: String?,
+        ?credential_id: String?,
+        ?credential_limits: ::Array[Telnyx::SpendLimit::CredentialLimit],
         ?evaluation: Telnyx::SpendLimit::Evaluation
       ) -> void
 
       def to_hash: -> {
-        block: Telnyx::SpendLimit::Block?,
+        block: Telnyx::SpendLimitBlock?,
         blocked: bool,
         effective_limit_usd: String?,
         limit: Telnyx::SpendLimit::Limit?,
@@ -77,40 +89,10 @@ module Telnyx
         record_type: String,
         spend_error: String?,
         spend_usd: String?,
+        credential_id: String?,
+        credential_limits: ::Array[Telnyx::SpendLimit::CredentialLimit],
         evaluation: Telnyx::SpendLimit::Evaluation
       }
-
-      type block =
-        {
-          blocked_until: Date,
-          detected_at: Time,
-          limit_usd: String,
-          spend_usd: String
-        }
-
-      class Block < Telnyx::Internal::Type::BaseModel
-        attr_accessor blocked_until: Date
-
-        attr_accessor detected_at: Time
-
-        attr_accessor limit_usd: String
-
-        attr_accessor spend_usd: String
-
-        def initialize: (
-          blocked_until: Date,
-          detected_at: Time,
-          limit_usd: String,
-          spend_usd: String
-        ) -> void
-
-        def to_hash: -> {
-          blocked_until: Date,
-          detected_at: Time,
-          limit_usd: String,
-          spend_usd: String
-        }
-      end
 
       type limit =
         {
@@ -155,6 +137,93 @@ module Telnyx
         end
       end
 
+      type credential_limit =
+        {
+          block: Telnyx::SpendLimitBlock?,
+          blocked: bool,
+          credential_id: String,
+          limit: Telnyx::SpendLimit::CredentialLimit::Limit?,
+          spend_error: String?,
+          spend_usd: String?,
+          exceeds_total: bool
+        }
+
+      class CredentialLimit < Telnyx::Internal::Type::BaseModel
+        attr_accessor block: Telnyx::SpendLimitBlock?
+
+        attr_accessor blocked: bool
+
+        attr_accessor credential_id: String
+
+        attr_accessor limit: Telnyx::SpendLimit::CredentialLimit::Limit?
+
+        attr_accessor spend_error: String?
+
+        attr_accessor spend_usd: String?
+
+        attr_reader exceeds_total: bool?
+
+        def exceeds_total=: (bool) -> bool
+
+        def initialize: (
+          block: Telnyx::SpendLimitBlock?,
+          blocked: bool,
+          credential_id: String,
+          limit: Telnyx::SpendLimit::CredentialLimit::Limit?,
+          spend_error: String?,
+          spend_usd: String?,
+          ?exceeds_total: bool
+        ) -> void
+
+        def to_hash: -> {
+          block: Telnyx::SpendLimitBlock?,
+          blocked: bool,
+          credential_id: String,
+          limit: Telnyx::SpendLimit::CredentialLimit::Limit?,
+          spend_error: String?,
+          spend_usd: String?,
+          exceeds_total: bool
+        }
+
+        type limit =
+          {
+            amount: String,
+            origin: Telnyx::Models::SpendLimit::CredentialLimit::Limit::origin,
+            updated_at: Time
+          }
+
+        class Limit < Telnyx::Internal::Type::BaseModel
+          attr_accessor amount: String
+
+          attr_accessor origin: Telnyx::Models::SpendLimit::CredentialLimit::Limit::origin
+
+          attr_accessor updated_at: Time
+
+          def initialize: (
+            amount: String,
+            origin: Telnyx::Models::SpendLimit::CredentialLimit::Limit::origin,
+            updated_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            amount: String,
+            origin: Telnyx::Models::SpendLimit::CredentialLimit::Limit::origin,
+            updated_at: Time
+          }
+
+          type origin = :self_service | :operator
+
+          module Origin
+            extend Telnyx::Internal::Type::Enum
+
+            SELF_SERVICE: :self_service
+            OPERATOR: :operator
+
+            def self?.values: -> ::Array[Telnyx::Models::SpendLimit::CredentialLimit::Limit::origin]
+          end
+        end
+      end
+
       type evaluation =
         {
           blocked_now: bool,
@@ -163,6 +232,7 @@ module Telnyx
           spend_usd: String?,
           still_blocked_other_period: bool,
           still_over_limit: bool,
+          account_blocked: bool,
           note: String
         }
 
@@ -179,6 +249,10 @@ module Telnyx
 
         attr_accessor still_over_limit: bool
 
+        attr_reader account_blocked: bool?
+
+        def account_blocked=: (bool) -> bool
+
         attr_reader note: String?
 
         def note=: (String) -> String
@@ -190,6 +264,7 @@ module Telnyx
           spend_usd: String?,
           still_blocked_other_period: bool,
           still_over_limit: bool,
+          ?account_blocked: bool,
           ?note: String
         ) -> void
 
@@ -200,6 +275,7 @@ module Telnyx
           spend_usd: String?,
           still_blocked_other_period: bool,
           still_over_limit: bool,
+          account_blocked: bool,
           note: String
         }
       end

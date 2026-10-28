@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module Email
+      module IPPools
+        type ip_create_params =
+          { id: String, dedicated_ip_id: String, weight: Integer }
+          & Telnyx::Internal::Type::request_parameters
+
+        class IPCreateParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor id: String
+
+          attr_accessor dedicated_ip_id: String
+
+          attr_reader weight: Integer?
+
+          def weight=: (Integer) -> Integer
+
+          def initialize: (
+            id: String,
+            dedicated_ip_id: String,
+            ?weight: Integer,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            dedicated_ip_id: String,
+            weight: Integer,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

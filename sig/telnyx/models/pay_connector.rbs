@@ -1,0 +1,166 @@
+module Telnyx
+  module Models
+    type pay_connector =
+      {
+        id: String,
+        config: Telnyx::PayConnector::Config,
+        created_at: Time,
+        mode: Telnyx::Models::PayConnector::mode,
+        name: String,
+        organization_id: String,
+        record_type: Telnyx::Models::PayConnector::record_type,
+        type: String,
+        updated_at: Time,
+        user_id: String
+      }
+
+    class PayConnector < Telnyx::Internal::Type::BaseModel
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader config: Telnyx::PayConnector::Config?
+
+      def config=: (
+        Telnyx::PayConnector::Config
+      ) -> Telnyx::PayConnector::Config
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader mode: Telnyx::Models::PayConnector::mode?
+
+      def mode=: (
+        Telnyx::Models::PayConnector::mode
+      ) -> Telnyx::Models::PayConnector::mode
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      attr_reader organization_id: String?
+
+      def organization_id=: (String) -> String
+
+      attr_reader record_type: Telnyx::Models::PayConnector::record_type?
+
+      def record_type=: (
+        Telnyx::Models::PayConnector::record_type
+      ) -> Telnyx::Models::PayConnector::record_type
+
+      attr_reader type: String?
+
+      def type=: (String) -> String
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      def initialize: (
+        ?id: String,
+        ?config: Telnyx::PayConnector::Config,
+        ?created_at: Time,
+        ?mode: Telnyx::Models::PayConnector::mode,
+        ?name: String,
+        ?organization_id: String,
+        ?record_type: Telnyx::Models::PayConnector::record_type,
+        ?type: String,
+        ?updated_at: Time,
+        ?user_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        config: Telnyx::PayConnector::Config,
+        created_at: Time,
+        mode: Telnyx::Models::PayConnector::mode,
+        name: String,
+        organization_id: String,
+        record_type: Telnyx::Models::PayConnector::record_type,
+        type: String,
+        updated_at: Time,
+        user_id: String
+      }
+
+      type config =
+        {
+          auth_type: Telnyx::Models::PayConnector::Config::auth_type,
+          endpoint_url: String,
+          timeout: Integer,
+          username: top
+        }
+
+      class Config < Telnyx::Internal::Type::BaseModel
+        attr_reader auth_type: Telnyx::Models::PayConnector::Config::auth_type?
+
+        def auth_type=: (
+          Telnyx::Models::PayConnector::Config::auth_type
+        ) -> Telnyx::Models::PayConnector::Config::auth_type
+
+        attr_reader endpoint_url: String?
+
+        def endpoint_url=: (String) -> String
+
+        attr_reader timeout: Integer?
+
+        def timeout=: (Integer) -> Integer
+
+        attr_reader username: top?
+
+        def username=: (top) -> top
+
+        def initialize: (
+          ?auth_type: Telnyx::Models::PayConnector::Config::auth_type,
+          ?endpoint_url: String,
+          ?timeout: Integer,
+          ?username: top
+        ) -> void
+
+        def to_hash: -> {
+          auth_type: Telnyx::Models::PayConnector::Config::auth_type,
+          endpoint_url: String,
+          timeout: Integer,
+          username: top
+        }
+
+        type auth_type = :none | :basic | :bearer
+
+        module AuthType
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+          BASIC: :basic
+          BEARER: :bearer
+
+          def self?.values: -> ::Array[Telnyx::Models::PayConnector::Config::auth_type]
+        end
+      end
+
+      type mode = :test | :live
+
+      module Mode
+        extend Telnyx::Internal::Type::Enum
+
+        TEST: :test
+        LIVE: :live
+
+        def self?.values: -> ::Array[Telnyx::Models::PayConnector::mode]
+      end
+
+      type record_type = :pay_connector
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        PAY_CONNECTOR: :pay_connector
+
+        def self?.values: -> ::Array[Telnyx::Models::PayConnector::record_type]
+      end
+    end
+  end
+end

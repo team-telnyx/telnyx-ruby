@@ -1,0 +1,53 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type scenario_retrieve_generate_progress_response =
+              {
+                completed_scenarios: Integer,
+                failed_scenarios: Integer,
+                scenarios_list: ::Array[::Hash[Symbol, top]],
+                total_scenarios: Integer
+              }
+
+            class ScenarioRetrieveGenerateProgressResponse < Telnyx::Internal::Type::BaseModel
+              attr_reader completed_scenarios: Integer?
+
+              def completed_scenarios=: (Integer) -> Integer
+
+              attr_reader failed_scenarios: Integer?
+
+              def failed_scenarios=: (Integer) -> Integer
+
+              attr_reader scenarios_list: ::Array[::Hash[Symbol, top]]?
+
+              def scenarios_list=: (
+                ::Array[::Hash[Symbol, top]]
+              ) -> ::Array[::Hash[Symbol, top]]
+
+              attr_reader total_scenarios: Integer?
+
+              def total_scenarios=: (Integer) -> Integer
+
+              def initialize: (
+                ?completed_scenarios: Integer,
+                ?failed_scenarios: Integer,
+                ?scenarios_list: ::Array[::Hash[Symbol, top]],
+                ?total_scenarios: Integer
+              ) -> void
+
+              def to_hash: -> {
+                completed_scenarios: Integer,
+                failed_scenarios: Integer,
+                scenarios_list: ::Array[::Hash[Symbol, top]],
+                total_scenarios: Integer
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -450,12 +450,6 @@ module Telnyx
       end
 
       class Resemble < ::Telnyx::Internal::Type::BaseModel
-        # @!attribute api_key
-        #   Custom Resemble API key.
-        #
-        #   @return [String, nil]
-        optional :api_key, String
-
         # @!attribute file_format
         #   Audio output format.
         #
@@ -474,10 +468,8 @@ module Telnyx
         #   @return [String, nil]
         optional :sample_rate, String
 
-        # @!method initialize(api_key: nil, file_format: nil, precision: nil, sample_rate: nil)
+        # @!method initialize(file_format: nil, precision: nil, sample_rate: nil)
         #   Resemble AI provider-specific parameters.
-        #
-        #   @param api_key [String] Custom Resemble API key.
         #
         #   @param file_format [String] Audio output format.
         #

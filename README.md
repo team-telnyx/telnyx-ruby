@@ -280,25 +280,25 @@ telnyx.calls.dial(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :ALL
-puts(Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType::ALL)
+# :provisioning
+puts(Telnyx::BrowserSessionListParams::Status::PROVISIONING)
 
-# Revealed type: `T.all(Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType, Symbol)`
-T.reveal_type(Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType::ALL)
+# Revealed type: `T.all(Telnyx::BrowserSessionListParams::Status, Symbol)`
+T.reveal_type(Telnyx::BrowserSessionListParams::Status::PROVISIONING)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-telnyx.legacy.reporting.usage_reports.number_lookup.create(
-  aggregation_type: Telnyx::Legacy::Reporting::UsageReports::NumberLookupCreateParams::AggregationType::ALL,
+telnyx.browser_sessions.list(
+  status: Telnyx::BrowserSessionListParams::Status::PROVISIONING,
   # …
 )
 
 # Literal values are also permissible:
-telnyx.legacy.reporting.usage_reports.number_lookup.create(
-  aggregation_type: :ALL,
+telnyx.browser_sessions.list(
+  status: :provisioning,
   # …
 )
 ```

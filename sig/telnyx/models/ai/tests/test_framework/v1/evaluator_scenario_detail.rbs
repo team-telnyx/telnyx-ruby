@@ -1,0 +1,295 @@
+module Telnyx
+  module Models
+    module AI
+      module Tests
+        module TestFramework
+          module V1
+            type evaluator_scenario_detail =
+              {
+                id: Integer,
+                agent: Integer?,
+                name: String,
+                dynamic_variable_values: ::Hash[Symbol, String]?,
+                expected_outcome_prompt: String,
+                first_message: String,
+                folder_path: String?,
+                inbound_phone_number: Integer?,
+                inbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::InboundPhoneNumberData?,
+                information_fields: ::Hash[Symbol, String]?,
+                instructions: String,
+                is_predefined: bool,
+                max_duration: Integer?,
+                metric_names: ::Array[String],
+                metrics: ::Array[Integer],
+                outbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::OutboundPhoneNumberData?,
+                personality: Integer?,
+                personality_name: String,
+                phone_number: String,
+                project: Integer?,
+                runs: ::Array[Integer],
+                scenario_language: String?,
+                scenario_type: String,
+                simulation_description: String,
+                suite_type: String,
+                tags: ::Array[String],
+                test_profile: Integer?,
+                test_profile_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::TestProfileData?,
+                tool_ids: ::Array[String]
+              }
+
+            class EvaluatorScenarioDetail < Telnyx::Internal::Type::BaseModel
+              attr_accessor id: Integer
+
+              attr_accessor agent: Integer?
+
+              attr_accessor name: String
+
+              attr_accessor dynamic_variable_values: ::Hash[Symbol, String]?
+
+              attr_reader expected_outcome_prompt: String?
+
+              def expected_outcome_prompt=: (String) -> String
+
+              attr_reader first_message: String?
+
+              def first_message=: (String) -> String
+
+              attr_accessor folder_path: String?
+
+              attr_accessor inbound_phone_number: Integer?
+
+              attr_accessor inbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::InboundPhoneNumberData?
+
+              attr_accessor information_fields: ::Hash[Symbol, String]?
+
+              attr_reader instructions: String?
+
+              def instructions=: (String) -> String
+
+              attr_reader is_predefined: bool?
+
+              def is_predefined=: (bool) -> bool
+
+              attr_accessor max_duration: Integer?
+
+              attr_reader metric_names: ::Array[String]?
+
+              def metric_names=: (::Array[String]) -> ::Array[String]
+
+              attr_reader metrics: ::Array[Integer]?
+
+              def metrics=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_accessor outbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::OutboundPhoneNumberData?
+
+              attr_accessor personality: Integer?
+
+              attr_reader personality_name: String?
+
+              def personality_name=: (String) -> String
+
+              attr_reader phone_number: String?
+
+              def phone_number=: (String) -> String
+
+              attr_accessor project: Integer?
+
+              attr_reader runs: ::Array[Integer]?
+
+              def runs=: (::Array[Integer]) -> ::Array[Integer]
+
+              attr_accessor scenario_language: String?
+
+              attr_reader scenario_type: String?
+
+              def scenario_type=: (String) -> String
+
+              attr_reader simulation_description: String?
+
+              def simulation_description=: (String) -> String
+
+              attr_reader suite_type: String?
+
+              def suite_type=: (String) -> String
+
+              attr_reader tags: ::Array[String]?
+
+              def tags=: (::Array[String]) -> ::Array[String]
+
+              attr_accessor test_profile: Integer?
+
+              attr_accessor test_profile_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::TestProfileData?
+
+              attr_reader tool_ids: ::Array[String]?
+
+              def tool_ids=: (::Array[String]) -> ::Array[String]
+
+              def initialize: (
+                id: Integer,
+                agent: Integer?,
+                name: String,
+                ?dynamic_variable_values: ::Hash[Symbol, String]?,
+                ?expected_outcome_prompt: String,
+                ?first_message: String,
+                ?folder_path: String?,
+                ?inbound_phone_number: Integer?,
+                ?inbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::InboundPhoneNumberData?,
+                ?information_fields: ::Hash[Symbol, String]?,
+                ?instructions: String,
+                ?is_predefined: bool,
+                ?max_duration: Integer?,
+                ?metric_names: ::Array[String],
+                ?metrics: ::Array[Integer],
+                ?outbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::OutboundPhoneNumberData?,
+                ?personality: Integer?,
+                ?personality_name: String,
+                ?phone_number: String,
+                ?project: Integer?,
+                ?runs: ::Array[Integer],
+                ?scenario_language: String?,
+                ?scenario_type: String,
+                ?simulation_description: String,
+                ?suite_type: String,
+                ?tags: ::Array[String],
+                ?test_profile: Integer?,
+                ?test_profile_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::TestProfileData?,
+                ?tool_ids: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                id: Integer,
+                agent: Integer?,
+                name: String,
+                dynamic_variable_values: ::Hash[Symbol, String]?,
+                expected_outcome_prompt: String,
+                first_message: String,
+                folder_path: String?,
+                inbound_phone_number: Integer?,
+                inbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::InboundPhoneNumberData?,
+                information_fields: ::Hash[Symbol, String]?,
+                instructions: String,
+                is_predefined: bool,
+                max_duration: Integer?,
+                metric_names: ::Array[String],
+                metrics: ::Array[Integer],
+                outbound_phone_number_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::OutboundPhoneNumberData?,
+                personality: Integer?,
+                personality_name: String,
+                phone_number: String,
+                project: Integer?,
+                runs: ::Array[Integer],
+                scenario_language: String?,
+                scenario_type: String,
+                simulation_description: String,
+                suite_type: String,
+                tags: ::Array[String],
+                test_profile: Integer?,
+                test_profile_data: Telnyx::AI::Tests::TestFramework::V1::EvaluatorScenarioDetail::TestProfileData?,
+                tool_ids: ::Array[String]
+              }
+
+              type inbound_phone_number_data =
+                { id: Integer, number: String, phone_number_id: String }
+
+              class InboundPhoneNumberData < Telnyx::Internal::Type::BaseModel
+                attr_reader id: Integer?
+
+                def id=: (Integer) -> Integer
+
+                attr_reader number: String?
+
+                def number=: (String) -> String
+
+                attr_reader phone_number_id: String?
+
+                def phone_number_id=: (String) -> String
+
+                def initialize: (
+                  ?id: Integer,
+                  ?number: String,
+                  ?phone_number_id: String
+                ) -> void
+
+                def to_hash: -> {
+                  id: Integer,
+                  number: String,
+                  phone_number_id: String
+                }
+              end
+
+              type outbound_phone_number_data =
+                { id: Integer, number: String, phone_number_id: String }
+
+              class OutboundPhoneNumberData < Telnyx::Internal::Type::BaseModel
+                attr_reader id: Integer?
+
+                def id=: (Integer) -> Integer
+
+                attr_reader number: String?
+
+                def number=: (String) -> String
+
+                attr_reader phone_number_id: String?
+
+                def phone_number_id=: (String) -> String
+
+                def initialize: (
+                  ?id: Integer,
+                  ?number: String,
+                  ?phone_number_id: String
+                ) -> void
+
+                def to_hash: -> {
+                  id: Integer,
+                  number: String,
+                  phone_number_id: String
+                }
+              end
+
+              type test_profile_data =
+                {
+                  id: Integer,
+                  agent: Integer?,
+                  information: ::Hash[Symbol, String]?,
+                  name: String,
+                  project: Integer?
+                }
+
+              class TestProfileData < Telnyx::Internal::Type::BaseModel
+                attr_reader id: Integer?
+
+                def id=: (Integer) -> Integer
+
+                attr_accessor agent: Integer?
+
+                attr_accessor information: ::Hash[Symbol, String]?
+
+                attr_reader name: String?
+
+                def name=: (String) -> String
+
+                attr_accessor project: Integer?
+
+                def initialize: (
+                  ?id: Integer,
+                  ?agent: Integer?,
+                  ?information: ::Hash[Symbol, String]?,
+                  ?name: String,
+                  ?project: Integer?
+                ) -> void
+
+                def to_hash: -> {
+                  id: Integer,
+                  agent: Integer?,
+                  information: ::Hash[Symbol, String]?,
+                  name: String,
+                  project: Integer?
+                }
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

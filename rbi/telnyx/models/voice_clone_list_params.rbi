@@ -11,6 +11,21 @@ module Telnyx
           T.any(Telnyx::VoiceCloneListParams, Telnyx::Internal::AnyHash)
         end
 
+      # Filter by TTS model. Case-insensitive.
+      sig do
+        returns(
+          T.nilable(Telnyx::VoiceCloneListParams::FilterModelID::OrSymbol)
+        )
+      end
+      attr_reader :filter_model_id
+
+      sig do
+        params(
+          filter_model_id: Telnyx::VoiceCloneListParams::FilterModelID::OrSymbol
+        ).void
+      end
+      attr_writer :filter_model_id
+
       # Case-insensitive substring filter on the name field.
       sig { returns(T.nilable(String)) }
       attr_reader :filter_name
@@ -57,6 +72,8 @@ module Telnyx
 
       sig do
         params(
+          filter_model_id:
+            Telnyx::VoiceCloneListParams::FilterModelID::OrSymbol,
           filter_name: String,
           filter_provider:
             Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol,
@@ -67,6 +84,8 @@ module Telnyx
         ).returns(T.attached_class)
       end
       def self.new(
+        # Filter by TTS model. Case-insensitive.
+        filter_model_id: nil,
         # Case-insensitive substring filter on the name field.
         filter_name: nil,
         # Filter by voice synthesis provider. Case-insensitive.
@@ -84,6 +103,8 @@ module Telnyx
       sig do
         override.returns(
           {
+            filter_model_id:
+              Telnyx::VoiceCloneListParams::FilterModelID::OrSymbol,
             filter_name: String,
             filter_provider:
               Telnyx::VoiceCloneListParams::FilterProvider::OrSymbol,
@@ -95,6 +116,58 @@ module Telnyx
         )
       end
       def to_hash
+      end
+
+      # Filter by TTS model. Case-insensitive.
+      module FilterModelID
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::VoiceCloneListParams::FilterModelID)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        QWEN3_TTS =
+          T.let(
+            :Qwen3TTS,
+            Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol
+          )
+        ULTRA =
+          T.let(
+            :Ultra,
+            Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol
+          )
+        BAYAN =
+          T.let(
+            :Bayan,
+            Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol
+          )
+        SPEECH_2_8_TURBO =
+          T.let(
+            :"speech-2.8-turbo",
+            Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol
+          )
+        PRO =
+          T.let(:Pro, Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol)
+        TURBO =
+          T.let(
+            :Turbo,
+            Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol
+          )
+        URDU =
+          T.let(
+            :Urdu,
+            Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Telnyx::VoiceCloneListParams::FilterModelID::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # Filter by voice synthesis provider. Case-insensitive.

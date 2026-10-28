@@ -65,6 +65,9 @@ module Telnyx
       sig { returns(Telnyx::Resources::AI::Avatars) }
       attr_reader :avatars
 
+      sig { returns(Telnyx::Resources::AI::Tests) }
+      attr_reader :tests
+
       # Performs semantic vector search across conversation history records.
       #
       # **How it works:**
