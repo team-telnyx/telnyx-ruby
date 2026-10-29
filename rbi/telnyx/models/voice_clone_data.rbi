@@ -247,6 +247,8 @@ module Telnyx
         TELNYX = T.let(:telnyx, Telnyx::VoiceCloneData::Provider::TaggedSymbol)
         MINIMAX =
           T.let(:minimax, Telnyx::VoiceCloneData::Provider::TaggedSymbol)
+        RESEMBLE =
+          T.let(:resemble, Telnyx::VoiceCloneData::Provider::TaggedSymbol)
 
         sig do
           override.returns(

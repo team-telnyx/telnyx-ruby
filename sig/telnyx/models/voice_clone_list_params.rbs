@@ -88,13 +88,14 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListParams::filter_model_id]
       end
 
-      type filter_provider = :telnyx | :minimax
+      type filter_provider = :telnyx | :minimax | :resemble
 
       module FilterProvider
         extend Telnyx::Internal::Type::Enum
 
         TELNYX: :telnyx
         MINIMAX: :minimax
+        RESEMBLE: :resemble
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneListParams::filter_provider]
       end

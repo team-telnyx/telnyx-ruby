@@ -80,6 +80,7 @@ module Telnyx
 
         TELNYX = :telnyx
         MINIMAX = :minimax
+        RESEMBLE = :resemble
 
         # @!method self.values
         #   @return [Array<Symbol>]
