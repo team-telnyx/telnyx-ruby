@@ -7,7 +7,7 @@ module Telnyx
         policy: Telnyx::BrowserSessionCreateParams::Policy,
         ?idempotency_key: String,
         ?limits: Telnyx::BrowserSessionCreateParams::Limits,
-        ?metadata: top,
+        ?metadata: ::Hash[Symbol, top],
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::BrowserSessionCreateResponse
 

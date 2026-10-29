@@ -15,15 +15,15 @@ module Telnyx
               background_sound_volume: Float?,
               effective_voice_volume: Float?,
               forked_from: Integer?,
-              generation_config: top?,
+              generation_config: ::Hash[Symbol, top]?,
               interruption_level: String?,
-              message_plan: top?,
-              network_simulation: top?,
+              message_plan: ::Hash[Symbol, top]?,
+              network_simulation: ::Hash[Symbol, top]?,
               organization: Integer?,
               project: Integer?,
               speed: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed?,
               start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?,
-              stop_speaking_plan: top?,
+              stop_speaking_plan: ::Hash[Symbol, top]?,
               voice_volume: Float?
             }
 
@@ -50,13 +50,13 @@ module Telnyx
 
             attr_accessor forked_from: Integer?
 
-            attr_accessor generation_config: top?
+            attr_accessor generation_config: ::Hash[Symbol, top]?
 
             attr_accessor interruption_level: String?
 
-            attr_accessor message_plan: top?
+            attr_accessor message_plan: ::Hash[Symbol, top]?
 
-            attr_accessor network_simulation: top?
+            attr_accessor network_simulation: ::Hash[Symbol, top]?
 
             attr_accessor organization: Integer?
 
@@ -66,7 +66,7 @@ module Telnyx
 
             attr_accessor start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?
 
-            attr_accessor stop_speaking_plan: top?
+            attr_accessor stop_speaking_plan: ::Hash[Symbol, top]?
 
             attr_accessor voice_volume: Float?
 
@@ -81,15 +81,15 @@ module Telnyx
               ?background_sound_volume: Float?,
               ?effective_voice_volume: Float?,
               ?forked_from: Integer?,
-              ?generation_config: top?,
+              ?generation_config: ::Hash[Symbol, top]?,
               ?interruption_level: String?,
-              ?message_plan: top?,
-              ?network_simulation: top?,
+              ?message_plan: ::Hash[Symbol, top]?,
+              ?network_simulation: ::Hash[Symbol, top]?,
               ?organization: Integer?,
               ?project: Integer?,
               ?speed: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed?,
               ?start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?,
-              ?stop_speaking_plan: top?,
+              ?stop_speaking_plan: ::Hash[Symbol, top]?,
               ?voice_volume: Float?
             ) -> void
 
@@ -104,15 +104,15 @@ module Telnyx
               background_sound_volume: Float?,
               effective_voice_volume: Float?,
               forked_from: Integer?,
-              generation_config: top?,
+              generation_config: ::Hash[Symbol, top]?,
               interruption_level: String?,
-              message_plan: top?,
-              network_simulation: top?,
+              message_plan: ::Hash[Symbol, top]?,
+              network_simulation: ::Hash[Symbol, top]?,
               organization: Integer?,
               project: Integer?,
               speed: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed?,
               start_speaking_plan: Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan?,
-              stop_speaking_plan: top?,
+              stop_speaking_plan: ::Hash[Symbol, top]?,
               voice_volume: Float?
             }
 
@@ -124,12 +124,14 @@ module Telnyx
               def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::speed]
             end
 
-            type start_speaking_plan = Float | top
+            type start_speaking_plan = Float | ::Hash[Symbol, top]
 
             module StartSpeakingPlan
               extend Telnyx::Internal::Type::Union
 
               def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan]
+
+              UnionMember1Map: Telnyx::Internal::Type::Converter
             end
           end
 

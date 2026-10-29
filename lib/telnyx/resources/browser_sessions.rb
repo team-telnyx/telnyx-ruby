@@ -22,7 +22,7 @@ module Telnyx
       #
       # @param limits [Telnyx::Models::BrowserSessionCreateParams::Limits]
       #
-      # @param metadata [Object] Arbitrary key-value metadata.
+      # @param metadata [Hash{Symbol=>Object}] Arbitrary key-value metadata.
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #

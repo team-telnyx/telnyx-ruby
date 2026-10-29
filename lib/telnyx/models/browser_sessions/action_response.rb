@@ -35,8 +35,8 @@ module Telnyx
         #   Normalized request metadata; defaults may be materialized and fill values are
         #   redacted as {redacted: true, length: number}, including inside batch actions.
         #
-        #   @return [Object]
-        required :request, Telnyx::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}]
+        required :request, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!attribute result
         #
@@ -84,7 +84,7 @@ module Telnyx
         #
         #   @param error [Telnyx::Models::BrowserSessions::ActionResponse::Error, nil] Null unless an execution failure is recorded. Action failures (policy_denied, st
         #
-        #   @param request [Object] Normalized request metadata; defaults may be materialized and fill values are re
+        #   @param request [Hash{Symbol=>Object}] Normalized request metadata; defaults may be materialized and fill values are re
         #
         #   @param result [Telnyx::Models::BrowserSessions::ActionResponse::Result, nil]
         #
@@ -142,8 +142,9 @@ module Telnyx
           # @!attribute results
           #   Present only for batch actions.
           #
-          #   @return [Array<Object>, nil]
-          optional :results, Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+          #   @return [Array<Hash{Symbol=>Object}>, nil]
+          optional :results,
+                   Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]]
 
           # @!attribute title
           #
@@ -163,7 +164,7 @@ module Telnyx
           #
           #   @param observation [Telnyx::Models::BrowserSessions::ActionResponse::Result::Observation] Full tree and refs are delivered only in the original successful POST response w
           #
-          #   @param results [Array<Object>] Present only for batch actions.
+          #   @param results [Array<Hash{Symbol=>Object}>] Present only for batch actions.
           #
           #   @param title [String]
           #
@@ -208,8 +209,8 @@ module Telnyx
 
             # @!attribute refs
             #
-            #   @return [Object, nil]
-            optional :refs, Telnyx::Internal::Type::Unknown
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :refs, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
             # @!attribute title
             #
@@ -245,7 +246,7 @@ module Telnyx
             #
             #   @param ref_count [Integer] Number of refs in the original observation, present on stored observation metada
             #
-            #   @param refs [Object]
+            #   @param refs [Hash{Symbol=>Object}]
             #
             #   @param title [String]
             #
