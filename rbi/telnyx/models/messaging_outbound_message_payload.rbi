@@ -42,6 +42,12 @@ module Telnyx
       end
       attr_writer :cc
 
+      # Identifies the next chunk when server-side SMS chunking
+      # (`auto_chunk_long_messages` on the messaging profile) split this message. Always
+      # present; null on non-chunked messages and on the final chunk.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :child_message_id
+
       # ISO 8601 formatted date indicating when the message was finalized.
       sig { returns(T.nilable(Time)) }
       attr_accessor :completed_at
@@ -153,6 +159,13 @@ module Telnyx
 
       sig { params(organization_id: String).void }
       attr_writer :organization_id
+
+      # Identifies the original request's message when server-side SMS chunking
+      # (`auto_chunk_long_messages` on the messaging profile) split it into chunks. The
+      # first chunk's ID is the original request's message ID. Always present; null when
+      # this message is not part of a chunked send.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :parent_message_id
 
       # Number of parts into which the message's body must be split.
       sig { returns(T.nilable(Integer)) }
@@ -305,6 +318,7 @@ module Telnyx
           id: String,
           body: Telnyx::MessagingOutboundMessagePayload::Body::OrHash,
           cc: T::Array[Telnyx::MessagingOutboundMessagePayload::Cc::OrHash],
+          child_message_id: T.nilable(String),
           completed_at: T.nilable(Time),
           cost:
             T.nilable(Telnyx::MessagingOutboundMessagePayload::Cost::OrHash),
@@ -322,6 +336,7 @@ module Telnyx
           messaging_profile_id: String,
           num_chars: Integer,
           organization_id: String,
+          parent_message_id: T.nilable(String),
           parts: Integer,
           received_at: Time,
           record_type:
@@ -351,6 +366,10 @@ module Telnyx
         # WhatsApp messages contain the `whatsapp_message` object from the send request.
         body: nil,
         cc: nil,
+        # Identifies the next chunk when server-side SMS chunking
+        # (`auto_chunk_long_messages` on the messaging profile) split this message. Always
+        # present; null on non-chunked messages and on the final chunk.
+        child_message_id: nil,
         # ISO 8601 formatted date indicating when the message was finalized.
         completed_at: nil,
         cost: nil,
@@ -372,6 +391,11 @@ module Telnyx
         num_chars: nil,
         # The id of the organization the messaging profile belongs to.
         organization_id: nil,
+        # Identifies the original request's message when server-side SMS chunking
+        # (`auto_chunk_long_messages` on the messaging profile) split it into chunks. The
+        # first chunk's ID is the original request's message ID. Always present; null when
+        # this message is not part of a chunked send.
+        parent_message_id: nil,
         # Number of parts into which the message's body must be split.
         parts: nil,
         # ISO 8601 formatted date indicating when the message request was received.
@@ -429,6 +453,7 @@ module Telnyx
             id: String,
             body: Telnyx::MessagingOutboundMessagePayload::Body,
             cc: T::Array[Telnyx::MessagingOutboundMessagePayload::Cc],
+            child_message_id: T.nilable(String),
             completed_at: T.nilable(Time),
             cost: T.nilable(Telnyx::MessagingOutboundMessagePayload::Cost),
             cost_breakdown:
@@ -442,6 +467,7 @@ module Telnyx
             messaging_profile_id: String,
             num_chars: Integer,
             organization_id: String,
+            parent_message_id: T.nilable(String),
             parts: Integer,
             received_at: Time,
             record_type:

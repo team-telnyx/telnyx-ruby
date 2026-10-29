@@ -5,6 +5,7 @@ module Telnyx
         id: String,
         body: Telnyx::MessagingOutboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingOutboundMessagePayload::Cc],
+        child_message_id: String?,
         completed_at: Time?,
         cost: Telnyx::MessagingOutboundMessagePayload::Cost?,
         cost_breakdown: Telnyx::MessagingOutboundMessagePayload::CostBreakdown?,
@@ -16,6 +17,7 @@ module Telnyx
         messaging_profile_id: String,
         num_chars: Integer,
         organization_id: String,
+        parent_message_id: String?,
         parts: Integer,
         received_at: Time,
         record_type: Telnyx::Models::MessagingOutboundMessagePayload::record_type,
@@ -53,6 +55,8 @@ module Telnyx
       def cc=: (
         ::Array[Telnyx::MessagingOutboundMessagePayload::Cc]
       ) -> ::Array[Telnyx::MessagingOutboundMessagePayload::Cc]
+
+      attr_accessor child_message_id: String?
 
       attr_accessor completed_at: Time?
 
@@ -99,6 +103,8 @@ module Telnyx
       attr_reader organization_id: String?
 
       def organization_id=: (String) -> String
+
+      attr_accessor parent_message_id: String?
 
       attr_reader parts: Integer?
 
@@ -170,6 +176,7 @@ module Telnyx
         ?id: String,
         ?body: Telnyx::MessagingOutboundMessagePayload::Body,
         ?cc: ::Array[Telnyx::MessagingOutboundMessagePayload::Cc],
+        ?child_message_id: String?,
         ?completed_at: Time?,
         ?cost: Telnyx::MessagingOutboundMessagePayload::Cost?,
         ?cost_breakdown: Telnyx::MessagingOutboundMessagePayload::CostBreakdown?,
@@ -181,6 +188,7 @@ module Telnyx
         ?messaging_profile_id: String,
         ?num_chars: Integer,
         ?organization_id: String,
+        ?parent_message_id: String?,
         ?parts: Integer,
         ?received_at: Time,
         ?record_type: Telnyx::Models::MessagingOutboundMessagePayload::record_type,
@@ -206,6 +214,7 @@ module Telnyx
         id: String,
         body: Telnyx::MessagingOutboundMessagePayload::Body,
         cc: ::Array[Telnyx::MessagingOutboundMessagePayload::Cc],
+        child_message_id: String?,
         completed_at: Time?,
         cost: Telnyx::MessagingOutboundMessagePayload::Cost?,
         cost_breakdown: Telnyx::MessagingOutboundMessagePayload::CostBreakdown?,
@@ -217,6 +226,7 @@ module Telnyx
         messaging_profile_id: String,
         num_chars: Integer,
         organization_id: String,
+        parent_message_id: String?,
         parts: Integer,
         received_at: Time,
         record_type: Telnyx::Models::MessagingOutboundMessagePayload::record_type,

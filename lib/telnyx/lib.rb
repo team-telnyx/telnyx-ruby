@@ -14,3 +14,5 @@
 require_relative "lib/webhook_verification_error"
 require_relative "lib/webhook_verification"
 require_relative "lib/websocket"
+require_relative "lib/access_token"
+require_relative "lib/telephony_credentials"
