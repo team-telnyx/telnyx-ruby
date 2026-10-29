@@ -1,15 +1,26 @@
 module Telnyx
   module Models
-    type messaging_profile_features = { ai_opt_out_detection_enabled: bool }
+    type messaging_profile_features =
+      { ai_opt_out_detection_enabled: bool, auto_chunk_long_messages: bool }
 
     class MessagingProfileFeatures < Telnyx::Internal::Type::BaseModel
       attr_reader ai_opt_out_detection_enabled: bool?
 
       def ai_opt_out_detection_enabled=: (bool) -> bool
 
-      def initialize: (?ai_opt_out_detection_enabled: bool) -> void
+      attr_reader auto_chunk_long_messages: bool?
 
-      def to_hash: -> { ai_opt_out_detection_enabled: bool }
+      def auto_chunk_long_messages=: (bool) -> bool
+
+      def initialize: (
+        ?ai_opt_out_detection_enabled: bool,
+        ?auto_chunk_long_messages: bool
+      ) -> void
+
+      def to_hash: -> {
+        ai_opt_out_detection_enabled: bool,
+        auto_chunk_long_messages: bool
+      }
     end
   end
 end

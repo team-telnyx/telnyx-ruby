@@ -819,9 +819,6 @@ module Telnyx
     sig { returns(Telnyx::Resources::DialMetrics) }
     attr_reader :dial_metrics
 
-    sig { returns(Telnyx::Resources::TtsIntegrations) }
-    attr_reader :tts_integrations
-
     # Tailscale Subnet Router operations
     sig { returns(Telnyx::Resources::TailscaleSubnetRouters) }
     attr_reader :tailscale_subnet_routers

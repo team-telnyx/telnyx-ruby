@@ -65,7 +65,7 @@ module Telnyx
         # @param page_size [Integer]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Whatsapp::HostedSignupListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Whatsapp::WhatsappHostedSignup>]
         #
         # @see Telnyx::Models::Whatsapp::HostedSignupListParams
         def list(params = {})
@@ -76,7 +76,7 @@ module Telnyx
             path: "whatsapp/hosted_signups",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Whatsapp::HostedSignupListResponse,
+            model: Telnyx::Whatsapp::WhatsappHostedSignup,
             options: options
           )
         end

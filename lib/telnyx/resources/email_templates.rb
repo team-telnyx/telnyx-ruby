@@ -23,7 +23,7 @@ module Telnyx
       #
       # @param text_body [String, nil] Body param: Liquid template text body.
       #
-      # @param variable_schema [Hash{Symbol=>Telnyx::Models::EmailTemplateCreateParams::VariableSchema}, nil] Body param: Structured variable requirements. Required variables cannot define d
+      # @param variable_schema [Hash{Symbol=>Telnyx::Models::VariableSchemaEntry}, nil] Body param: Structured variable requirements. Required variables cannot define d
       #
       # @param variables [Array<String>, nil] Body param: Persisted variable names. In `automatic` mode a non-null array is re
       #
@@ -92,7 +92,7 @@ module Telnyx
       #
       # @param text_body [String, nil] Liquid template text body.
       #
-      # @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
+      # @param variable_schema [Hash{Symbol=>Telnyx::Models::VariableSchemaEntry}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
       # @param variables [Array<String>, nil] Persisted variable names. In `automatic` mode a non-null array is rejected; in `
       #
@@ -237,7 +237,7 @@ module Telnyx
       #
       # @param text_body [String, nil] Liquid template text body.
       #
-      # @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
+      # @param variable_schema [Hash{Symbol=>Telnyx::Models::VariableSchemaEntry}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
       # @param variables [Array<String>, nil] Persisted variable names. In `automatic` mode a non-null array is rejected; in `
       #

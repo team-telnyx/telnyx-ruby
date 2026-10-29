@@ -1,19 +1,21 @@
 module Telnyx
   module Models
+    class WhatsappHostedSignup = Whatsapp::WhatsappHostedSignup
+
     module Whatsapp
-      type hosted_signup_list_response =
+      type whatsapp_hosted_signup =
         {
           id: String,
           app_id: String,
           created_at: Time,
           expires_at: Time,
           jwt: String,
-          record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type,
+          record_type: Telnyx::Models::Whatsapp::WhatsappHostedSignup::record_type,
           solution_id: String,
           url: String
         }
 
-      class HostedSignupListResponse < Telnyx::Internal::Type::BaseModel
+      class WhatsappHostedSignup < Telnyx::Internal::Type::BaseModel
         attr_reader id: String?
 
         def id=: (String) -> String
@@ -34,11 +36,11 @@ module Telnyx
 
         def jwt=: (String) -> String
 
-        attr_reader record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type?
+        attr_reader record_type: Telnyx::Models::Whatsapp::WhatsappHostedSignup::record_type?
 
         def record_type=: (
-          Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type
-        ) -> Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type
+          Telnyx::Models::Whatsapp::WhatsappHostedSignup::record_type
+        ) -> Telnyx::Models::Whatsapp::WhatsappHostedSignup::record_type
 
         attr_reader solution_id: String?
 
@@ -54,7 +56,7 @@ module Telnyx
           ?created_at: Time,
           ?expires_at: Time,
           ?jwt: String,
-          ?record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type,
+          ?record_type: Telnyx::Models::Whatsapp::WhatsappHostedSignup::record_type,
           ?solution_id: String,
           ?url: String
         ) -> void
@@ -65,7 +67,7 @@ module Telnyx
           created_at: Time,
           expires_at: Time,
           jwt: String,
-          record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type,
+          record_type: Telnyx::Models::Whatsapp::WhatsappHostedSignup::record_type,
           solution_id: String,
           url: String
         }
@@ -77,7 +79,7 @@ module Telnyx
 
           WHATSAPP_JWT: :whatsapp_jwt
 
-          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::HostedSignupListResponse::record_type]
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappHostedSignup::record_type]
         end
       end
     end

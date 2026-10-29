@@ -12,6 +12,7 @@ module Telnyx
         parameters: Integer,
         tier: Telnyx::Models::ModelMetadata::tier,
         base_model: String?,
+        beta: bool,
         description: String?,
         is_fine_tunable: bool,
         is_vision_supported: bool,
@@ -45,6 +46,10 @@ module Telnyx
       attr_accessor tier: Telnyx::Models::ModelMetadata::tier
 
       attr_accessor base_model: String?
+
+      attr_reader beta: bool?
+
+      def beta=: (bool) -> bool
 
       attr_accessor description: String?
 
@@ -97,6 +102,7 @@ module Telnyx
         parameters: Integer,
         tier: Telnyx::Models::ModelMetadata::tier,
         ?base_model: String?,
+        ?beta: bool,
         ?description: String?,
         ?is_fine_tunable: bool,
         ?is_vision_supported: bool,
@@ -121,6 +127,7 @@ module Telnyx
         parameters: Integer,
         tier: Telnyx::Models::ModelMetadata::tier,
         base_model: String?,
+        beta: bool,
         description: String?,
         is_fine_tunable: bool,
         is_vision_supported: bool,

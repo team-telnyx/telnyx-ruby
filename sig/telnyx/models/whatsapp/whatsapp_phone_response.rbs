@@ -1,10 +1,12 @@
 module Telnyx
   module Models
+    class WhatsappPhoneResponse = Whatsapp::WhatsappPhoneResponse
+
     module Whatsapp
-      type phone_number_list_response =
+      type whatsapp_phone_response =
         {
           calling_enabled: bool,
-          coexistence_state: Telnyx::Models::Whatsapp::PhoneNumberListResponse::coexistence_state?,
+          coexistence_state: Telnyx::Models::Whatsapp::WhatsappPhoneResponse::coexistence_state?,
           created_at: Time,
           display_name: String,
           enabled: bool,
@@ -15,17 +17,17 @@ module Telnyx
           record_type: String,
           status: String,
           sync_deadline: Time?,
-          sync_progress: Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress?,
+          sync_progress: Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress?,
           user_id: String,
           waba_id: String
         }
 
-      class PhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
+      class WhatsappPhoneResponse < Telnyx::Internal::Type::BaseModel
         attr_reader calling_enabled: bool?
 
         def calling_enabled=: (bool) -> bool
 
-        attr_accessor coexistence_state: Telnyx::Models::Whatsapp::PhoneNumberListResponse::coexistence_state?
+        attr_accessor coexistence_state: Telnyx::Models::Whatsapp::WhatsappPhoneResponse::coexistence_state?
 
         attr_reader created_at: Time?
 
@@ -65,7 +67,7 @@ module Telnyx
 
         attr_accessor sync_deadline: Time?
 
-        attr_accessor sync_progress: Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress?
+        attr_accessor sync_progress: Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress?
 
         attr_reader user_id: String?
 
@@ -77,7 +79,7 @@ module Telnyx
 
         def initialize: (
           ?calling_enabled: bool,
-          ?coexistence_state: Telnyx::Models::Whatsapp::PhoneNumberListResponse::coexistence_state?,
+          ?coexistence_state: Telnyx::Models::Whatsapp::WhatsappPhoneResponse::coexistence_state?,
           ?created_at: Time,
           ?display_name: String,
           ?enabled: bool,
@@ -88,14 +90,14 @@ module Telnyx
           ?record_type: String,
           ?status: String,
           ?sync_deadline: Time?,
-          ?sync_progress: Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress?,
+          ?sync_progress: Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress?,
           ?user_id: String,
           ?waba_id: String
         ) -> void
 
         def to_hash: -> {
           calling_enabled: bool,
-          coexistence_state: Telnyx::Models::Whatsapp::PhoneNumberListResponse::coexistence_state?,
+          coexistence_state: Telnyx::Models::Whatsapp::WhatsappPhoneResponse::coexistence_state?,
           created_at: Time,
           display_name: String,
           enabled: bool,
@@ -106,7 +108,7 @@ module Telnyx
           record_type: String,
           status: String,
           sync_deadline: Time?,
-          sync_progress: Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress?,
+          sync_progress: Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress?,
           user_id: String,
           waba_id: String
         }
@@ -135,7 +137,7 @@ module Telnyx
           OFFBOARDED: :offboarded
           DISCONNECTED: :disconnected
 
-          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::PhoneNumberListResponse::coexistence_state]
+          def self?.values: -> ::Array[Telnyx::Models::Whatsapp::WhatsappPhoneResponse::coexistence_state]
         end
 
         type sync_progress =

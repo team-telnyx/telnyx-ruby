@@ -21,7 +21,7 @@ class Telnyx::Test::Resources::Compute::Funcs::ExportTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data | nil
+        data: Telnyx::Compute::Funcs::FuncLogExportConfig | nil
       }
     end
   end
@@ -37,7 +37,7 @@ class Telnyx::Test::Resources::Compute::Funcs::ExportTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Compute::Funcs::FuncLogExportConfigResponse::Data | nil
+        data: Telnyx::Compute::Funcs::FuncLogExportConfig | nil
       }
     end
   end

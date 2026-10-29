@@ -16,13 +16,13 @@ class Telnyx::Test::Resources::Whatsapp::BusinessAccounts::PhoneNumbersTest < Te
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse
+      row => Telnyx::Whatsapp::WhatsappPhoneResponse
     end
 
     assert_pattern do
       row => {
         calling_enabled: Telnyx::Internal::Type::Boolean | nil,
-        coexistence_state: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::CoexistenceState | nil,
+        coexistence_state: Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState | nil,
         created_at: Time | nil,
         display_name: String | nil,
         enabled: Telnyx::Internal::Type::Boolean | nil,
@@ -33,7 +33,7 @@ class Telnyx::Test::Resources::Whatsapp::BusinessAccounts::PhoneNumbersTest < Te
         record_type: String | nil,
         status: String | nil,
         sync_deadline: Time | nil,
-        sync_progress: Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse::SyncProgress | nil,
+        sync_progress: Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress | nil,
         user_id: String | nil,
         waba_id: String | nil
       }

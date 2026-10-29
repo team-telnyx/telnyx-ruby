@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module AI
+      module Memory
+        class NamespaceSettings = Namespaces::NamespaceSettings
+
+        module Namespaces
+          type namespace_settings =
+            { summary: Telnyx::AI::Memory::Namespaces::SummarySettings }
+
+          class NamespaceSettings < Telnyx::Internal::Type::BaseModel
+            attr_reader summary: Telnyx::AI::Memory::Namespaces::SummarySettings?
+
+            def summary=: (
+              Telnyx::AI::Memory::Namespaces::SummarySettings
+            ) -> Telnyx::AI::Memory::Namespaces::SummarySettings
+
+            def initialize: (
+              ?summary: Telnyx::AI::Memory::Namespaces::SummarySettings
+            ) -> void
+
+            def to_hash: -> {
+              summary: Telnyx::AI::Memory::Namespaces::SummarySettings
+            }
+          end
+        end
+      end
+    end
+  end
+end

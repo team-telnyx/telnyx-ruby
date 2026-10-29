@@ -2,12 +2,14 @@
 
 module Telnyx
   module Models
+    WhatsappPhoneResponse = Whatsapp::WhatsappPhoneResponse
+
     module Whatsapp
-      class PhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
+      class WhatsappPhoneResponse < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse,
+              Telnyx::Whatsapp::WhatsappPhoneResponse,
               Telnyx::Internal::AnyHash
             )
           end
@@ -23,7 +25,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           )
         end
@@ -97,9 +99,7 @@ module Telnyx
         # number is synchronizing.
         sig do
           returns(
-            T.nilable(
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress
-            )
+            T.nilable(Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress)
           )
         end
         attr_reader :sync_progress
@@ -108,7 +108,7 @@ module Telnyx
           params(
             sync_progress:
               T.nilable(
-                Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress::OrHash
+                Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress::OrHash
               )
           ).void
         end
@@ -133,7 +133,7 @@ module Telnyx
             calling_enabled: T::Boolean,
             coexistence_state:
               T.nilable(
-                Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::OrSymbol
+                Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::OrSymbol
               ),
             created_at: Time,
             display_name: String,
@@ -147,7 +147,7 @@ module Telnyx
             sync_deadline: T.nilable(Time),
             sync_progress:
               T.nilable(
-                Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress::OrHash
+                Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress::OrHash
               ),
             user_id: String,
             waba_id: String
@@ -191,7 +191,7 @@ module Telnyx
               calling_enabled: T::Boolean,
               coexistence_state:
                 T.nilable(
-                  Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+                  Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
                 ),
               created_at: Time,
               display_name: String,
@@ -205,7 +205,7 @@ module Telnyx
               sync_deadline: T.nilable(Time),
               sync_progress:
                 T.nilable(
-                  Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress
+                  Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress
                 ),
               user_id: String,
               waba_id: String
@@ -224,7 +224,7 @@ module Telnyx
             T.type_alias do
               T.all(
                 Symbol,
-                Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState
+                Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -232,53 +232,53 @@ module Telnyx
           PENDING_ONBOARDING =
             T.let(
               :pending_onboarding,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           SYNC_PENDING =
             T.let(
               :sync_pending,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           SYNCING =
             T.let(
               :syncing,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           SYNC_COMPLETE =
             T.let(
               :sync_complete,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           ACTIVE =
             T.let(
               :active,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           HISTORY_DECLINED =
             T.let(
               :history_declined,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           SYNC_DEADLINE_EXPIRED =
             T.let(
               :sync_deadline_expired,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           OFFBOARDED =
             T.let(
               :offboarded,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
           DISCONNECTED =
             T.let(
               :disconnected,
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState::TaggedSymbol
+                Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState::TaggedSymbol
               ]
             )
           end
@@ -290,7 +290,7 @@ module Telnyx
           OrHash =
             T.type_alias do
               T.any(
-                Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress,
+                Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress,
                 Telnyx::Internal::AnyHash
               )
             end

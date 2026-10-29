@@ -60,13 +60,7 @@ module Telnyx
       # and empty array `[]` all fail with 422 naming the variable, while present values
       # such as `false` and `0` pass (they are present, not empty). Optional variables
       # fall back to their `default` when absent.
-      sig do
-        returns(
-          T.nilable(
-            T::Hash[Symbol, Telnyx::EmailTemplateCreateParams::VariableSchema]
-          )
-        )
-      end
+      sig { returns(T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry])) }
       attr_accessor :variable_schema
 
       # Persisted variable names. In `automatic` mode a non-null array is rejected; in
@@ -111,12 +105,7 @@ module Telnyx
           subject: T.nilable(String),
           text_body: T.nilable(String),
           variable_schema:
-            T.nilable(
-              T::Hash[
-                Symbol,
-                Telnyx::EmailTemplateCreateParams::VariableSchema::OrHash
-              ]
-            ),
+            T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry::OrHash]),
           variables: T.nilable(T::Array[String]),
           variables_mode:
             Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol,
@@ -183,12 +172,7 @@ module Telnyx
             subject: T.nilable(String),
             text_body: T.nilable(String),
             variable_schema:
-              T.nilable(
-                T::Hash[
-                  Symbol,
-                  Telnyx::EmailTemplateCreateParams::VariableSchema
-                ]
-              ),
+              T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry]),
             variables: T.nilable(T::Array[String]),
             variables_mode:
               Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol,
@@ -198,46 +182,6 @@ module Telnyx
         )
       end
       def to_hash
-      end
-
-      class VariableSchema < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::EmailTemplateCreateParams::VariableSchema,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Whether the variable must be supplied when strict variable validation is
-        # enabled.
-        sig { returns(T::Boolean) }
-        attr_accessor :required
-
-        # Default value for an optional variable. Rejected when `required` is `true`.
-        sig { returns(T.nilable(String)) }
-        attr_reader :default
-
-        sig { params(default: String).void }
-        attr_writer :default
-
-        sig do
-          params(required: T::Boolean, default: String).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # Whether the variable must be supplied when strict variable validation is
-          # enabled.
-          required:,
-          # Default value for an optional variable. Rejected when `required` is `true`.
-          default: nil
-        )
-        end
-
-        sig { override.returns({ required: T::Boolean, default: String }) }
-        def to_hash
-        end
       end
 
       # Controls how `variables` is maintained. If both fields are omitted (or

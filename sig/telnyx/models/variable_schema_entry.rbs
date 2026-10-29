@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    type variable_schema_entry = { required: bool, default: String }
+
+    class VariableSchemaEntry < Telnyx::Internal::Type::BaseModel
+      attr_accessor required: bool
+
+      attr_reader default: String?
+
+      def default=: (String) -> String
+
+      def initialize: (required: bool, ?default: String) -> void
+
+      def to_hash: -> { required: bool, default: String }
+    end
+  end
+end

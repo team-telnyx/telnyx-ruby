@@ -14,7 +14,7 @@ module Telnyx
           ?page_number: Integer,
           ?page_size: Integer,
           ?request_options: Telnyx::request_opts
-        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::PhoneNumberListResponse]
+        ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Whatsapp::WhatsappPhoneResponse]
 
         def delete: (
           String phone_number,

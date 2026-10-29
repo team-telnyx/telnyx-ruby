@@ -42,11 +42,11 @@ class Telnyx::Test::Resources::PhoneNumbers::JobsTest < Telnyx::Test::ResourceTe
         etc: Time | nil,
         failed_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::FailedOperation]) | nil,
         parameters: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::Parameters | nil,
-        pending_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::PendingOperation]) | nil,
+        pending_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJobPendingOperation]) | nil,
         phone_numbers: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbersJobPhoneNumber]) | nil,
         record_type: String | nil,
         status: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::Status | nil,
-        successful_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::SuccessfulOperation]) | nil,
+        successful_operations: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJobSuccessfulOperation]) | nil,
         type: Telnyx::PhoneNumbers::NumbersPhoneNumbersJob::Type | nil,
         updated_at: String | nil
       }

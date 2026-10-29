@@ -55,6 +55,14 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :base_model
 
+      # Whether the model is in beta. New Telnyx-hosted models launch with `beta: true`;
+      # the label is removed once the model is established.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :beta
+
+      sig { params(beta: T::Boolean).void }
+      attr_writer :beta
+
       # Short, human-readable summary of what the model is best suited for.
       sig { returns(T.nilable(String)) }
       attr_accessor :description
@@ -166,6 +174,7 @@ module Telnyx
           parameters: Integer,
           tier: Telnyx::ModelMetadata::Tier::OrSymbol,
           base_model: T.nilable(String),
+          beta: T::Boolean,
           description: T.nilable(String),
           is_fine_tunable: T::Boolean,
           is_vision_supported: T::Boolean,
@@ -209,6 +218,9 @@ module Telnyx
         # Base model the fine-tuned model was trained from. Only set for fine-tuned
         # models.
         base_model: nil,
+        # Whether the model is in beta. New Telnyx-hosted models launch with `beta: true`;
+        # the label is removed once the model is established.
+        beta: nil,
         # Short, human-readable summary of what the model is best suited for.
         description: nil,
         # Whether the model can be used as a base for a fine-tuning job via
@@ -265,6 +277,7 @@ module Telnyx
             parameters: Integer,
             tier: Telnyx::ModelMetadata::Tier::TaggedSymbol,
             base_model: T.nilable(String),
+            beta: T::Boolean,
             description: T.nilable(String),
             is_fine_tunable: T::Boolean,
             is_vision_supported: T::Boolean,

@@ -14,12 +14,7 @@ module Telnyx
           subject: T.nilable(String),
           text_body: T.nilable(String),
           variable_schema:
-            T.nilable(
-              T::Hash[
-                Symbol,
-                Telnyx::EmailTemplateCreateParams::VariableSchema::OrHash
-              ]
-            ),
+            T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry::OrHash]),
           variables: T.nilable(T::Array[String]),
           variables_mode:
             Telnyx::EmailTemplateCreateParams::VariablesMode::OrSymbol,
@@ -111,12 +106,7 @@ module Telnyx
           subject: T.nilable(String),
           text_body: T.nilable(String),
           variable_schema:
-            T.nilable(
-              T::Hash[
-                Symbol,
-                Telnyx::UpdateEmailTemplateRequest::VariableSchema::OrHash
-              ]
-            ),
+            T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry::OrHash]),
           variables: T.nilable(T::Array[String]),
           variables_mode:
             Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol,
@@ -252,12 +242,7 @@ module Telnyx
           subject: T.nilable(String),
           text_body: T.nilable(String),
           variable_schema:
-            T.nilable(
-              T::Hash[
-                Symbol,
-                Telnyx::UpdateEmailTemplateRequest::VariableSchema::OrHash
-              ]
-            ),
+            T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry::OrHash]),
           variables: T.nilable(T::Array[String]),
           variables_mode:
             Telnyx::UpdateEmailTemplateRequest::VariablesMode::OrSymbol,

@@ -16,13 +16,13 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Whatsapp::PhoneNumberListResponse
+      row => Telnyx::Whatsapp::WhatsappPhoneResponse
     end
 
     assert_pattern do
       row => {
         calling_enabled: Telnyx::Internal::Type::Boolean | nil,
-        coexistence_state: Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState | nil,
+        coexistence_state: Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState | nil,
         created_at: Time | nil,
         display_name: String | nil,
         enabled: Telnyx::Internal::Type::Boolean | nil,
@@ -33,7 +33,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
         record_type: String | nil,
         status: String | nil,
         sync_deadline: Time | nil,
-        sync_progress: Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress | nil,
+        sync_progress: Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress | nil,
         user_id: String | nil,
         waba_id: String | nil
       }
@@ -61,7 +61,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Models::Whatsapp::PhoneNumberGetResponse::Data]) | nil,
+        data: ^(Telnyx::Internal::Type::ArrayOf[Telnyx::Whatsapp::WhatsappPhoneResponse]) | nil,
         meta: Telnyx::MessagingPaginationMeta | nil
       }
     end
@@ -108,7 +108,7 @@ class Telnyx::Test::Resources::Whatsapp::PhoneNumbersTest < Telnyx::Test::Resour
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::PhoneNumberRetrievePhoneNumberResponse::Data
+        data: Telnyx::Whatsapp::WhatsappPhoneResponse
       }
     end
   end
