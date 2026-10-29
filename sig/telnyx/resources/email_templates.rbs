@@ -8,7 +8,7 @@ module Telnyx
         ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
-        ?variable_schema: ::Hash[Symbol, Telnyx::EmailTemplateCreateParams::VariableSchema]?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::VariableSchemaEntry]?,
         ?variables: ::Array[String]?,
         ?variables_mode: Telnyx::Models::EmailTemplateCreateParams::variables_mode,
         ?idempotency_key: String,
@@ -28,7 +28,7 @@ module Telnyx
         ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
-        ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::VariableSchemaEntry]?,
         ?variables: ::Array[String]?,
         ?variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode,
         ?request_options: Telnyx::request_opts
@@ -60,7 +60,7 @@ module Telnyx
         ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
-        ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::VariableSchemaEntry]?,
         ?variables: ::Array[String]?,
         ?variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode,
         ?request_options: Telnyx::request_opts

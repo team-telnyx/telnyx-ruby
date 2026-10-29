@@ -42,9 +42,11 @@ module Telnyx
       #   Structured variable requirements. Required variables cannot define defaults;
       #   invalid combinations return 422. Set to `null` to clear the schema.
       #
-      #   @return [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil]
+      #   @return [Hash{Symbol=>Telnyx::Models::VariableSchemaEntry}, nil]
       optional :variable_schema,
-               -> { Telnyx::Internal::Type::HashOf[Telnyx::UpdateEmailTemplateRequest::VariableSchema] },
+               -> {
+                 Telnyx::Internal::Type::HashOf[Telnyx::VariableSchemaEntry]
+               },
                nil?: true
 
       # @!attribute variables
@@ -82,34 +84,11 @@ module Telnyx
       #
       #   @param text_body [String, nil] Liquid template text body.
       #
-      #   @param variable_schema [Hash{Symbol=>Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema}, nil] Structured variable requirements. Required variables cannot define defaults; inv
+      #   @param variable_schema [Hash{Symbol=>Telnyx::Models::VariableSchemaEntry}, nil] Structured variable requirements. Required variables cannot define defaults; inv
       #
       #   @param variables [Array<String>, nil] Persisted variable names. In `automatic` mode a non-null array is rejected; in `
       #
       #   @param variables_mode [Symbol, Telnyx::Models::UpdateEmailTemplateRequest::VariablesMode] Controls how `variables` is maintained. Setting `automatic` re-extracts immediat
-
-      class VariableSchema < Telnyx::Internal::Type::BaseModel
-        # @!attribute required
-        #   Whether the variable must be supplied when strict variable validation is
-        #   enabled.
-        #
-        #   @return [Boolean]
-        required :required, Telnyx::Internal::Type::Boolean
-
-        # @!attribute default
-        #   Default value for an optional variable. Rejected when `required` is `true`.
-        #
-        #   @return [String, nil]
-        optional :default, String
-
-        # @!method initialize(required:, default: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::UpdateEmailTemplateRequest::VariableSchema} for more details.
-        #
-        #   @param required [Boolean] Whether the variable must be supplied when strict variable validation is enabled
-        #
-        #   @param default [String] Default value for an optional variable. Rejected when `required` is `true`.
-      end
 
       # Controls how `variables` is maintained. Setting `automatic` re-extracts
       # immediately from the effective subject, HTML body, and text body and rejects a

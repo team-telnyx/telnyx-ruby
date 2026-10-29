@@ -37,9 +37,9 @@ module Telnyx
 
           # @!attribute pending_operations
           #
-          #   @return [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::PendingOperation>, nil]
+          #   @return [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJobPendingOperation>, nil]
           optional :pending_operations,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::PendingOperation] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJobPendingOperation] }
 
           # @!attribute record_type
           #   Identifies the type of the resource.
@@ -55,9 +55,9 @@ module Telnyx
 
           # @!attribute successful_operations
           #
-          #   @return [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation>, nil]
+          #   @return [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJobSuccessfulOperation>, nil]
           optional :successful_operations,
-                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation] }
+                   -> { Telnyx::Internal::Type::ArrayOf[Telnyx::PhoneNumbers::PhoneNumbersJobSuccessfulOperation] }
 
           # @!attribute type
           #   Identifies the type of the background job.
@@ -84,7 +84,7 @@ module Telnyx
         #
         #   @param failed_operations [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::FailedOperation>]
         #
-        #   @param pending_operations [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::PendingOperation>]
+        #   @param pending_operations [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJobPendingOperation>]
         #
         #   @param phone_numbers [Array<Telnyx::Models::PhoneNumbersJobPhoneNumber>]
         #
@@ -92,7 +92,7 @@ module Telnyx
         #
         #   @param status [Symbol, Telnyx::Models::PhoneNumbers::PhoneNumbersJob::Status] Indicates the completion status of the background update.
         #
-        #   @param successful_operations [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJob::SuccessfulOperation>]
+        #   @param successful_operations [Array<Telnyx::Models::PhoneNumbers::PhoneNumbersJobSuccessfulOperation>]
         #
         #   @param type [Symbol, Telnyx::Models::PhoneNumbers::PhoneNumbersJob::Type] Identifies the type of the background job.
         #
@@ -124,29 +124,6 @@ module Telnyx
           #   @param phone_number [String] The phone number in e164 format.
         end
 
-        class PendingOperation < Telnyx::Internal::Type::BaseModel
-          # @!attribute id
-          #   The phone number's ID
-          #
-          #   @return [String, nil]
-          optional :id, String
-
-          # @!attribute phone_number
-          #   The phone number in e164 format.
-          #
-          #   @return [String, nil]
-          optional :phone_number, String
-
-          # @!method initialize(id: nil, phone_number: nil)
-          #   The phone numbers pending confirmation on update results. Entries in this list
-          #   are transient, and will be moved to either successful_operations or
-          #   failed_operations once the processing is done.
-          #
-          #   @param id [String] The phone number's ID
-          #
-          #   @param phone_number [String] The phone number in e164 format.
-        end
-
         # Indicates the completion status of the background update.
         #
         # @see Telnyx::Models::PhoneNumbers::PhoneNumbersJob#status
@@ -161,27 +138,6 @@ module Telnyx
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        class SuccessfulOperation < Telnyx::Internal::Type::BaseModel
-          # @!attribute id
-          #   The phone number's ID
-          #
-          #   @return [String, nil]
-          optional :id, String
-
-          # @!attribute phone_number
-          #   The phone number in e164 format.
-          #
-          #   @return [String, nil]
-          optional :phone_number, String
-
-          # @!method initialize(id: nil, phone_number: nil)
-          #   The phone numbers successfully updated.
-          #
-          #   @param id [String] The phone number's ID
-          #
-          #   @param phone_number [String] The phone number in e164 format.
         end
 
         # Identifies the type of the background job.

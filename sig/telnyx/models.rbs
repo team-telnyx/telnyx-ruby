@@ -2111,6 +2111,8 @@ module Telnyx
 
   class UserTagListParams = Telnyx::Models::UserTagListParams
 
+  class VariableSchemaEntry = Telnyx::Models::VariableSchemaEntry
+
   class Verification = Telnyx::Models::Verification
 
   class VerificationRetrieveParams = Telnyx::Models::VerificationRetrieveParams

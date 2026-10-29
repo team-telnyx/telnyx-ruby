@@ -8,7 +8,7 @@ module Telnyx
         strict_variables: bool,
         subject: String?,
         text_body: String?,
-        variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
+        variable_schema: ::Hash[Symbol, Telnyx::VariableSchemaEntry]?,
         variables: ::Array[String]?,
         variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
       }
@@ -32,7 +32,7 @@ module Telnyx
 
       attr_accessor text_body: String?
 
-      attr_accessor variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?
+      attr_accessor variable_schema: ::Hash[Symbol, Telnyx::VariableSchemaEntry]?
 
       attr_accessor variables: ::Array[String]?
 
@@ -49,7 +49,7 @@ module Telnyx
         ?strict_variables: bool,
         ?subject: String?,
         ?text_body: String?,
-        ?variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
+        ?variable_schema: ::Hash[Symbol, Telnyx::VariableSchemaEntry]?,
         ?variables: ::Array[String]?,
         ?variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
       ) -> void
@@ -61,24 +61,10 @@ module Telnyx
         strict_variables: bool,
         subject: String?,
         text_body: String?,
-        variable_schema: ::Hash[Symbol, Telnyx::UpdateEmailTemplateRequest::VariableSchema]?,
+        variable_schema: ::Hash[Symbol, Telnyx::VariableSchemaEntry]?,
         variables: ::Array[String]?,
         variables_mode: Telnyx::Models::UpdateEmailTemplateRequest::variables_mode
       }
-
-      type variable_schema = { required: bool, default: String }
-
-      class VariableSchema < Telnyx::Internal::Type::BaseModel
-        attr_accessor required: bool
-
-        attr_reader default: String?
-
-        def default=: (String) -> String
-
-        def initialize: (required: bool, ?default: String) -> void
-
-        def to_hash: -> { required: bool, default: String }
-      end
 
       type variables_mode = :automatic | :explicit
 

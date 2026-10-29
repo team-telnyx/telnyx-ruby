@@ -58,9 +58,11 @@ module Telnyx
       #   Structured variable requirements, or `null` when the template uses only the
       #   legacy `variables` array.
       #
-      #   @return [Hash{Symbol=>Telnyx::Models::EmailTemplateCommon::VariableSchema}, nil]
+      #   @return [Hash{Symbol=>Telnyx::Models::VariableSchemaEntry}, nil]
       required :variable_schema,
-               -> { Telnyx::Internal::Type::HashOf[Telnyx::EmailTemplateCommon::VariableSchema] },
+               -> {
+                 Telnyx::Internal::Type::HashOf[Telnyx::VariableSchemaEntry]
+               },
                nil?: true
 
       # @!attribute variables
@@ -100,7 +102,7 @@ module Telnyx
       #
       #   @param updated_at [Time]
       #
-      #   @param variable_schema [Hash{Symbol=>Telnyx::Models::EmailTemplateCommon::VariableSchema}, nil] Structured variable requirements, or `null` when the template uses only the lega
+      #   @param variable_schema [Hash{Symbol=>Telnyx::Models::VariableSchemaEntry}, nil] Structured variable requirements, or `null` when the template uses only the lega
       #
       #   @param variables [Array<String>] Persisted variable names. In `explicit` mode this array preserves the exact prov
       #
@@ -114,29 +116,6 @@ module Telnyx
 
         # @!method self.values
         #   @return [Array<Symbol>]
-      end
-
-      class VariableSchema < Telnyx::Internal::Type::BaseModel
-        # @!attribute required
-        #   Whether the variable must be supplied when strict variable validation is
-        #   enabled.
-        #
-        #   @return [Boolean]
-        required :required, Telnyx::Internal::Type::Boolean
-
-        # @!attribute default
-        #   Default value for an optional variable. Rejected when `required` is `true`.
-        #
-        #   @return [String, nil]
-        optional :default, String
-
-        # @!method initialize(required:, default: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::EmailTemplateCommon::VariableSchema} for more details.
-        #
-        #   @param required [Boolean] Whether the variable must be supplied when strict variable validation is enabled
-        #
-        #   @param default [String] Default value for an optional variable. Rejected when `required` is `true`.
       end
 
       # `automatic` when variable names are derived from template content; `explicit`

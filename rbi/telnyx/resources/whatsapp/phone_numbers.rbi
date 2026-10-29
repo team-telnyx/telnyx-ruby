@@ -37,7 +37,7 @@ module Telnyx
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(
             Telnyx::Internal::DefaultFlatPagination[
-              Telnyx::Models::Whatsapp::PhoneNumberListResponse
+              Telnyx::Whatsapp::WhatsappPhoneResponse
             ]
           )
         end

@@ -1,0 +1,98 @@
+module Telnyx
+  module Models
+    module AI
+      type transcription_challenger =
+        {
+          model: Telnyx::Models::AI::TranscriptionChallenger::model,
+          language: String?,
+          rule: Telnyx::Models::AI::TranscriptionChallenger::rule,
+          settings: Telnyx::AI::TranscriptionSettingsConfig?
+        }
+
+      class TranscriptionChallenger < Telnyx::Internal::Type::BaseModel
+        attr_accessor model: Telnyx::Models::AI::TranscriptionChallenger::model
+
+        attr_accessor language: String?
+
+        attr_reader rule: Telnyx::Models::AI::TranscriptionChallenger::rule?
+
+        def rule=: (
+          Telnyx::Models::AI::TranscriptionChallenger::rule
+        ) -> Telnyx::Models::AI::TranscriptionChallenger::rule
+
+        attr_accessor settings: Telnyx::AI::TranscriptionSettingsConfig?
+
+        def initialize: (
+          model: Telnyx::Models::AI::TranscriptionChallenger::model,
+          ?language: String?,
+          ?rule: Telnyx::Models::AI::TranscriptionChallenger::rule,
+          ?settings: Telnyx::AI::TranscriptionSettingsConfig?
+        ) -> void
+
+        def to_hash: -> {
+          model: Telnyx::Models::AI::TranscriptionChallenger::model,
+          language: String?,
+          rule: Telnyx::Models::AI::TranscriptionChallenger::rule,
+          settings: Telnyx::AI::TranscriptionSettingsConfig?
+        }
+
+        type model =
+          :"deepgram/flux"
+          | :"deepgram/nova-3"
+          | :"deepgram/nova-2"
+          | :"azure/fast"
+          | :"assemblyai/universal-3-6-pro"
+          | :"assemblyai/universal-3-5-pro"
+          | :"assemblyai/universal-streaming"
+          | :"xai/grok-stt"
+          | :"soniox/stt-rt-v4"
+          | :"soniox/stt-rt-v5"
+          | :"nvidia/parakeet-v3"
+          | :"omi-health/omi-med-stt-v1"
+          | :"humain/realtime"
+          | :"reson8/turns"
+          | :"cohere/ar-stt"
+          | :"telnyx/basira"
+          | :"distil-whisper/distil-large-v2"
+          | :"openai/whisper-large-v3-turbo"
+
+        module Model
+          extend Telnyx::Internal::Type::Enum
+
+          DEEPGRAM_FLUX: :"deepgram/flux"
+          DEEPGRAM_NOVA_3: :"deepgram/nova-3"
+          DEEPGRAM_NOVA_2: :"deepgram/nova-2"
+          AZURE_FAST: :"azure/fast"
+          ASSEMBLYAI_UNIVERSAL_3_6_PRO: :"assemblyai/universal-3-6-pro"
+          ASSEMBLYAI_UNIVERSAL_3_5_PRO: :"assemblyai/universal-3-5-pro"
+          ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
+          XAI_GROK_STT: :"xai/grok-stt"
+          SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
+          SONIOX_STT_RT_V5: :"soniox/stt-rt-v5"
+          NVIDIA_PARAKEET_V3: :"nvidia/parakeet-v3"
+          OMI_HEALTH_OMI_MED_STT_V1: :"omi-health/omi-med-stt-v1"
+          HUMAIN_REALTIME: :"humain/realtime"
+          RESON8_TURNS: :"reson8/turns"
+          COHERE_AR_STT: :"cohere/ar-stt"
+          TELNYX_BASIRA: :"telnyx/basira"
+          DISTIL_WHISPER_DISTIL_LARGE_V2: :"distil-whisper/distil-large-v2"
+          OPENAI_WHISPER_LARGE_V3_TURBO: :"openai/whisper-large-v3-turbo"
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::TranscriptionChallenger::model]
+        end
+
+        type rule = :best_turn | :best_engine | :merge_words
+
+        module Rule
+          extend Telnyx::Internal::Type::Enum
+
+          BEST_TURN: :best_turn
+          BEST_ENGINE: :best_engine
+          MERGE_WORDS: :merge_words
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::TranscriptionChallenger::rule]
+        end
+      end
+    end
+  end
+end

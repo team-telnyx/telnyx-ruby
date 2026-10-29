@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module Whatsapp
       # @see Telnyx::Resources::Whatsapp::PhoneNumbers#list
-      class PhoneNumberListResponse < Telnyx::Internal::Type::BaseModel
+      class WhatsappPhoneResponse < Telnyx::Internal::Type::BaseModel
         # @!attribute calling_enabled
         #
         #   @return [Boolean, nil]
@@ -14,9 +14,9 @@ module Telnyx
         #   Current lifecycle state for a coexistence number. This is null for a standard
         #   Cloud API number.
         #
-        #   @return [Symbol, Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState, nil]
+        #   @return [Symbol, Telnyx::Models::Whatsapp::WhatsappPhoneResponse::CoexistenceState, nil]
         optional :coexistence_state,
-                 enum: -> { Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState },
+                 enum: -> { Telnyx::Whatsapp::WhatsappPhoneResponse::CoexistenceState },
                  nil?: true
 
         # @!attribute created_at
@@ -80,10 +80,8 @@ module Telnyx
         #   Synchronization progress. This object is returned only while a coexistence
         #   number is synchronizing.
         #
-        #   @return [Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress, nil]
-        optional :sync_progress,
-                 -> { Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress },
-                 nil?: true
+        #   @return [Telnyx::Models::Whatsapp::WhatsappPhoneResponse::SyncProgress, nil]
+        optional :sync_progress, -> { Telnyx::Whatsapp::WhatsappPhoneResponse::SyncProgress }, nil?: true
 
         # @!attribute user_id
         #   User ID
@@ -99,11 +97,11 @@ module Telnyx
 
         # @!method initialize(calling_enabled: nil, coexistence_state: nil, created_at: nil, display_name: nil, enabled: nil, is_on_biz_app: nil, phone_number: nil, phone_number_id: nil, quality_rating: nil, record_type: nil, status: nil, sync_deadline: nil, sync_progress: nil, user_id: nil, waba_id: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::Whatsapp::PhoneNumberListResponse} for more details.
+        #   {Telnyx::Models::Whatsapp::WhatsappPhoneResponse} for more details.
         #
         #   @param calling_enabled [Boolean]
         #
-        #   @param coexistence_state [Symbol, Telnyx::Models::Whatsapp::PhoneNumberListResponse::CoexistenceState, nil] Current lifecycle state for a coexistence number. This is null for a standard Cl
+        #   @param coexistence_state [Symbol, Telnyx::Models::Whatsapp::WhatsappPhoneResponse::CoexistenceState, nil] Current lifecycle state for a coexistence number. This is null for a standard Cl
         #
         #   @param created_at [Time]
         #
@@ -125,7 +123,7 @@ module Telnyx
         #
         #   @param sync_deadline [Time, nil] Deadline for initiating the current coexistence synchronization cycle. This is n
         #
-        #   @param sync_progress [Telnyx::Models::Whatsapp::PhoneNumberListResponse::SyncProgress, nil] Synchronization progress. This object is returned only while a coexistence numbe
+        #   @param sync_progress [Telnyx::Models::Whatsapp::WhatsappPhoneResponse::SyncProgress, nil] Synchronization progress. This object is returned only while a coexistence numbe
         #
         #   @param user_id [String] User ID
         #
@@ -134,7 +132,7 @@ module Telnyx
         # Current lifecycle state for a coexistence number. This is null for a standard
         # Cloud API number.
         #
-        # @see Telnyx::Models::Whatsapp::PhoneNumberListResponse#coexistence_state
+        # @see Telnyx::Models::Whatsapp::WhatsappPhoneResponse#coexistence_state
         module CoexistenceState
           extend Telnyx::Internal::Type::Enum
 
@@ -152,7 +150,7 @@ module Telnyx
           #   @return [Array<Symbol>]
         end
 
-        # @see Telnyx::Models::Whatsapp::PhoneNumberListResponse#sync_progress
+        # @see Telnyx::Models::Whatsapp::WhatsappPhoneResponse#sync_progress
         class SyncProgress < Telnyx::Internal::Type::BaseModel
           # @!attribute contacts_status
           #
@@ -191,5 +189,7 @@ module Telnyx
         end
       end
     end
+
+    WhatsappPhoneResponse = Whatsapp::WhatsappPhoneResponse
   end
 end

@@ -1,0 +1,63 @@
+module Telnyx
+  module Models
+    module AI
+      type transcription_fallback_model =
+        {
+          model: Telnyx::Models::AI::TranscriptionFallbackModel::model,
+          language: String?,
+          settings: Telnyx::AI::TranscriptionSettingsConfig?
+        }
+
+      class TranscriptionFallbackModel < Telnyx::Internal::Type::BaseModel
+        attr_accessor model: Telnyx::Models::AI::TranscriptionFallbackModel::model
+
+        attr_accessor language: String?
+
+        attr_accessor settings: Telnyx::AI::TranscriptionSettingsConfig?
+
+        def initialize: (
+          model: Telnyx::Models::AI::TranscriptionFallbackModel::model,
+          ?language: String?,
+          ?settings: Telnyx::AI::TranscriptionSettingsConfig?
+        ) -> void
+
+        def to_hash: -> {
+          model: Telnyx::Models::AI::TranscriptionFallbackModel::model,
+          language: String?,
+          settings: Telnyx::AI::TranscriptionSettingsConfig?
+        }
+
+        type model =
+          :"deepgram/flux"
+          | :"deepgram/nova-3"
+          | :"deepgram/nova-2"
+          | :"assemblyai/universal-3-6-pro"
+          | :"assemblyai/universal-3-5-pro"
+          | :"assemblyai/universal-streaming"
+          | :"xai/grok-stt"
+          | :"soniox/stt-rt-v4"
+          | :"soniox/stt-rt-v5"
+          | :"humain/realtime"
+          | :"reson8/turns"
+
+        module Model
+          extend Telnyx::Internal::Type::Enum
+
+          DEEPGRAM_FLUX: :"deepgram/flux"
+          DEEPGRAM_NOVA_3: :"deepgram/nova-3"
+          DEEPGRAM_NOVA_2: :"deepgram/nova-2"
+          ASSEMBLYAI_UNIVERSAL_3_6_PRO: :"assemblyai/universal-3-6-pro"
+          ASSEMBLYAI_UNIVERSAL_3_5_PRO: :"assemblyai/universal-3-5-pro"
+          ASSEMBLYAI_UNIVERSAL_STREAMING: :"assemblyai/universal-streaming"
+          XAI_GROK_STT: :"xai/grok-stt"
+          SONIOX_STT_RT_V4: :"soniox/stt-rt-v4"
+          SONIOX_STT_RT_V5: :"soniox/stt-rt-v5"
+          HUMAIN_REALTIME: :"humain/realtime"
+          RESON8_TURNS: :"reson8/turns"
+
+          def self?.values: -> ::Array[Telnyx::Models::AI::TranscriptionFallbackModel::model]
+        end
+      end
+    end
+  end
+end

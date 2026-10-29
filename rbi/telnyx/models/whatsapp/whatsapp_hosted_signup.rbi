@@ -2,12 +2,14 @@
 
 module Telnyx
   module Models
+    WhatsappHostedSignup = Whatsapp::WhatsappHostedSignup
+
     module Whatsapp
-      class HostedSignupListResponse < Telnyx::Internal::Type::BaseModel
+      class WhatsappHostedSignup < Telnyx::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Telnyx::Models::Whatsapp::HostedSignupListResponse,
+              Telnyx::Whatsapp::WhatsappHostedSignup,
               Telnyx::Internal::AnyHash
             )
           end
@@ -49,7 +51,7 @@ module Telnyx
         sig do
           returns(
             T.nilable(
-              Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappHostedSignup::RecordType::TaggedSymbol
             )
           )
         end
@@ -58,7 +60,7 @@ module Telnyx
         sig do
           params(
             record_type:
-              Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType::OrSymbol
+              Telnyx::Whatsapp::WhatsappHostedSignup::RecordType::OrSymbol
           ).void
         end
         attr_writer :record_type
@@ -86,7 +88,7 @@ module Telnyx
             expires_at: Time,
             jwt: String,
             record_type:
-              Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType::OrSymbol,
+              Telnyx::Whatsapp::WhatsappHostedSignup::RecordType::OrSymbol,
             solution_id: String,
             url: String
           ).returns(T.attached_class)
@@ -119,7 +121,7 @@ module Telnyx
               expires_at: Time,
               jwt: String,
               record_type:
-                Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType::TaggedSymbol,
+                Telnyx::Whatsapp::WhatsappHostedSignup::RecordType::TaggedSymbol,
               solution_id: String,
               url: String
             }
@@ -133,23 +135,20 @@ module Telnyx
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType
-              )
+              T.all(Symbol, Telnyx::Whatsapp::WhatsappHostedSignup::RecordType)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           WHATSAPP_JWT =
             T.let(
               :whatsapp_jwt,
-              Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType::TaggedSymbol
+              Telnyx::Whatsapp::WhatsappHostedSignup::RecordType::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType::TaggedSymbol
+                Telnyx::Whatsapp::WhatsappHostedSignup::RecordType::TaggedSymbol
               ]
             )
           end

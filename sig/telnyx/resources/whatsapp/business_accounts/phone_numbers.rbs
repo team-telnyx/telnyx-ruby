@@ -8,7 +8,7 @@ module Telnyx
             ?page_number: Integer,
             ?page_size: Integer,
             ?request_options: Telnyx::request_opts
-          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Models::Whatsapp::BusinessAccounts::PhoneNumberListResponse]
+          ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::Whatsapp::WhatsappPhoneResponse]
 
           def initialize_verification: (
             String id,

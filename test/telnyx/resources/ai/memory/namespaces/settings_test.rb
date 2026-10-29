@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::AI::Memory::Namespaces::SettingsTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data
+        data: Telnyx::AI::Memory::Namespaces::NamespaceSettings
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::AI::Memory::Namespaces::SettingsTest < Telnyx::Te
 
     assert_pattern do
       response => {
-        data: Telnyx::AI::Memory::Namespaces::NamespaceSettingsResponse::Data
+        data: Telnyx::AI::Memory::Namespaces::NamespaceSettings
       }
     end
   end
