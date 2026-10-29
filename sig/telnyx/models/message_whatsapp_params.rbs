@@ -881,20 +881,24 @@ module Telnyx
                 def self?.values: -> ::Array[Telnyx::Models::MessageWhatsappParams::WhatsappMessage::Interactive::Action::Parameters::flow_action]
               end
 
-              type flow_action_payload = { data: top, screen: String }
+              type flow_action_payload =
+                { data: ::Hash[Symbol, top], screen: String }
 
               class FlowActionPayload < Telnyx::Internal::Type::BaseModel
-                attr_reader data: top?
+                attr_reader data: ::Hash[Symbol, top]?
 
-                def data=: (top) -> top
+                def data=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
                 attr_reader screen: String?
 
                 def screen=: (String) -> String
 
-                def initialize: (?data: top, ?screen: String) -> void
+                def initialize: (
+                  ?data: ::Hash[Symbol, top],
+                  ?screen: String
+                ) -> void
 
-                def to_hash: -> { data: top, screen: String }
+                def to_hash: -> { data: ::Hash[Symbol, top], screen: String }
               end
 
               type mode = :draft | :published
@@ -1222,23 +1226,29 @@ module Telnyx
                 type: Telnyx::Models::MessageWhatsappParams::WhatsappMessage::Template::Component::Parameter::type_
               }
 
-              type action = { flow_action_data: top, flow_token: String }
+              type action =
+                { flow_action_data: ::Hash[Symbol, top], flow_token: String }
 
               class Action < Telnyx::Internal::Type::BaseModel
-                attr_reader flow_action_data: top?
+                attr_reader flow_action_data: ::Hash[Symbol, top]?
 
-                def flow_action_data=: (top) -> top
+                def flow_action_data=: (
+                  ::Hash[Symbol, top]
+                ) -> ::Hash[Symbol, top]
 
                 attr_reader flow_token: String?
 
                 def flow_token=: (String) -> String
 
                 def initialize: (
-                  ?flow_action_data: top,
+                  ?flow_action_data: ::Hash[Symbol, top],
                   ?flow_token: String
                 ) -> void
 
-                def to_hash: -> { flow_action_data: top, flow_token: String }
+                def to_hash: -> {
+                  flow_action_data: ::Hash[Symbol, top],
+                  flow_token: String
+                }
               end
 
               type type_ =

@@ -6,7 +6,7 @@ module Telnyx
       class WaitForAction < Telnyx::Internal::Type::BaseModel
         # @!attribute condition
         #
-        #   @return [Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember0, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember1, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember2, Telnyx::Models::BrowserSessions::WaitForAction::Condition::Kind]
+        #   @return [Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember0, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember1, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember2, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember3]
         required :condition, union: -> { Telnyx::BrowserSessions::WaitForAction::Condition }
 
         # @!attribute type
@@ -32,7 +32,7 @@ module Telnyx
         # @!method initialize(condition:, idempotency_key: nil, include_observation: nil, timeout_ms: nil, type: :wait_for)
         #   Wait for a condition before continuing.
         #
-        #   @param condition [Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember0, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember1, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember2, Telnyx::Models::BrowserSessions::WaitForAction::Condition::Kind]
+        #   @param condition [Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember0, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember1, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember2, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember3]
         #   @param idempotency_key [String]
         #   @param include_observation [Boolean]
         #   @param timeout_ms [Integer]
@@ -48,7 +48,7 @@ module Telnyx
 
           variant -> { Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember2 }
 
-          variant -> { Telnyx::BrowserSessions::WaitForAction::Condition::Kind }
+          variant -> { Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember3 }
 
           class UnionMember0 < Telnyx::Internal::Type::BaseModel
             # @!attribute kind
@@ -104,7 +104,7 @@ module Telnyx
             #   @param kind [Symbol, :text]
           end
 
-          class Kind < Telnyx::Internal::Type::BaseModel
+          class UnionMember3 < Telnyx::Internal::Type::BaseModel
             # @!attribute kind
             #
             #   @return [Symbol, :dom_stable]
@@ -115,7 +115,7 @@ module Telnyx
           end
 
           # @!method self.variants
-          #   @return [Array(Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember0, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember1, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember2, Telnyx::Models::BrowserSessions::WaitForAction::Condition::Kind)]
+          #   @return [Array(Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember0, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember1, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember2, Telnyx::Models::BrowserSessions::WaitForAction::Condition::UnionMember3)]
         end
       end
     end

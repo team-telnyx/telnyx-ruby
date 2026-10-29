@@ -12,11 +12,11 @@ module Telnyx
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BUDGET_DURATION_1D =
+        BUDGET_DURATION_1_D =
           T.let(:"1d", Telnyx::LlmTokenGateway::BudgetDuration::TaggedSymbol)
-        BUDGET_DURATION_7D =
+        BUDGET_DURATION_7_D =
           T.let(:"7d", Telnyx::LlmTokenGateway::BudgetDuration::TaggedSymbol)
-        BUDGET_DURATION_30D =
+        BUDGET_DURATION_30_D =
           T.let(:"30d", Telnyx::LlmTokenGateway::BudgetDuration::TaggedSymbol)
 
         sig do

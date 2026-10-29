@@ -1,0 +1,28 @@
+module Telnyx
+  module Models
+    type token_material =
+      { kid: String, signing_secret: String, tel_token: String }
+
+    class TokenMaterial < Telnyx::Internal::Type::BaseModel
+      attr_reader kid: String?
+
+      def kid=: (String) -> String
+
+      attr_reader signing_secret: String?
+
+      def signing_secret=: (String) -> String
+
+      attr_reader tel_token: String?
+
+      def tel_token=: (String) -> String
+
+      def initialize: (
+        ?kid: String,
+        ?signing_secret: String,
+        ?tel_token: String
+      ) -> void
+
+      def to_hash: -> { kid: String, signing_secret: String, tel_token: String }
+    end
+  end
+end

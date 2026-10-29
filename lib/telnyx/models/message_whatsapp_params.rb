@@ -765,8 +765,8 @@ module Telnyx
                 # @!attribute data
                 #   input data for the first screen. Must be a non-empty object when provided
                 #
-                #   @return [Object, nil]
-                optional :data, Telnyx::Internal::Type::Unknown
+                #   @return [Hash{Symbol=>Object}, nil]
+                optional :data, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
                 # @!attribute screen
                 #   ID of the first screen to show
@@ -778,7 +778,7 @@ module Telnyx
                 #   optional initial screen and data. When omitted, the flow opens on its first
                 #   entry screen. Must be omitted when flow_action is data_exchange
                 #
-                #   @param data [Object] input data for the first screen. Must be a non-empty object when provided
+                #   @param data [Hash{Symbol=>Object}] input data for the first screen. Must be a non-empty object when provided
                 #
                 #   @param screen [String] ID of the first screen to show
               end
@@ -1079,8 +1079,8 @@ module Telnyx
                 # @!attribute flow_action_data
                 #   input data for the first screen of the flow
                 #
-                #   @return [Object, nil]
-                optional :flow_action_data, Telnyx::Internal::Type::Unknown
+                #   @return [Hash{Symbol=>Object}, nil]
+                optional :flow_action_data, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
                 # @!attribute flow_token
                 #   business-generated identifier for the flow session. Returned in the flow
@@ -1096,7 +1096,7 @@ module Telnyx
                 #
                 #   Flow button parameters. Used with type action on a flow button component
                 #
-                #   @param flow_action_data [Object] input data for the first screen of the flow
+                #   @param flow_action_data [Hash{Symbol=>Object}] input data for the first screen of the flow
                 #
                 #   @param flow_token [String] business-generated identifier for the flow session. Returned in the flow respons
               end

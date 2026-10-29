@@ -28,7 +28,7 @@ module Telnyx
       required :occurred_at, Time
 
       # @!attribute type
-      #   @deprecated
+      #   @deprecated Use event_type instead.
       #
       #   Bare stored event names returned by message history. In addition to the normal
       #   send and delivery lifecycle, polling can expose suppression, scan, and

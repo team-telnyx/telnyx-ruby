@@ -2261,6 +2261,7 @@ Methods:
 - <code title="get /telephony_credentials">client.telephony_credentials.<a href="./lib/telnyx/resources/telephony_credentials.rb">list</a>(\*\*params)</code>
 - <code title="delete /telephony_credentials/{id}">client.telephony_credentials.<a href="./lib/telnyx/resources/telephony_credentials.rb">delete</a>(\*\*params)</code>
 - <code title="post /telephony_credentials/{id}/token">client.telephony_credentials.<a href="./lib/telnyx/resources/telephony_credentials.rb">create_token</a>(\*\*params)</code>
+- <code title="get /telephony_credentials/{id}/token_material">client.telephony_credentials.<a href="./lib/telnyx/resources/telephony_credentials.rb">retrieve_token_material</a>(\*\*params)</code>
 
 # Texml
 
