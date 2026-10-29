@@ -4,7 +4,7 @@ module Telnyx
   module Models
     module Whatsapp
       # @see Telnyx::Resources::Whatsapp::HostedSignups#list
-      class HostedSignupListResponse < Telnyx::Internal::Type::BaseModel
+      class WhatsappHostedSignup < Telnyx::Internal::Type::BaseModel
         # @!attribute id
         #   Hosted signup ID
         #
@@ -36,8 +36,8 @@ module Telnyx
 
         # @!attribute record_type
         #
-        #   @return [Symbol, Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType, nil]
-        optional :record_type, enum: -> { Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType }
+        #   @return [Symbol, Telnyx::Models::Whatsapp::WhatsappHostedSignup::RecordType, nil]
+        optional :record_type, enum: -> { Telnyx::Whatsapp::WhatsappHostedSignup::RecordType }
 
         # @!attribute solution_id
         #   Meta Partner Solution ID linked to the app. Returned only when creating a hosted
@@ -54,7 +54,7 @@ module Telnyx
 
         # @!method initialize(id: nil, app_id: nil, created_at: nil, expires_at: nil, jwt: nil, record_type: nil, solution_id: nil, url: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::Whatsapp::HostedSignupListResponse} for more details.
+        #   {Telnyx::Models::Whatsapp::WhatsappHostedSignup} for more details.
         #
         #   @param id [String] Hosted signup ID
         #
@@ -66,13 +66,13 @@ module Telnyx
         #
         #   @param jwt [String] Signed token embedded in `url`
         #
-        #   @param record_type [Symbol, Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType]
+        #   @param record_type [Symbol, Telnyx::Models::Whatsapp::WhatsappHostedSignup::RecordType]
         #
         #   @param solution_id [String] Meta Partner Solution ID linked to the app. Returned only when creating a hosted
         #
         #   @param url [String] Hosted onboarding URL to share with the end customer
 
-        # @see Telnyx::Models::Whatsapp::HostedSignupListResponse#record_type
+        # @see Telnyx::Models::Whatsapp::WhatsappHostedSignup#record_type
         module RecordType
           extend Telnyx::Internal::Type::Enum
 
@@ -83,5 +83,7 @@ module Telnyx
         end
       end
     end
+
+    WhatsappHostedSignup = Whatsapp::WhatsappHostedSignup
   end
 end

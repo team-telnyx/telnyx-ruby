@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.174.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.173.0...v5.174.0) (2026-10-29)
+
+
+### Features
+
+* promote from staging 458522c ([15f8625](https://github.com/team-telnyx/telnyx-ruby/commit/15f86251ff7ccfc9ec222355907441ddc10b1b07))
+
 ## [5.173.0](https://github.com/team-telnyx/telnyx-ruby/compare/v5.172.0...v5.173.0) (2026-10-28)
 
 

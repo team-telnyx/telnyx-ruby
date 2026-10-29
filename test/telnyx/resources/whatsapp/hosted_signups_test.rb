@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Whatsapp::HostedSignupsTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::HostedSignupCreateResponse::Data | nil
+        data: Telnyx::Whatsapp::WhatsappHostedSignup | nil
       }
     end
   end
@@ -30,7 +30,7 @@ class Telnyx::Test::Resources::Whatsapp::HostedSignupsTest < Telnyx::Test::Resou
 
     assert_pattern do
       response => {
-        data: Telnyx::Models::Whatsapp::HostedSignupRetrieveResponse::Data | nil
+        data: Telnyx::Whatsapp::WhatsappHostedSignup | nil
       }
     end
   end
@@ -48,7 +48,7 @@ class Telnyx::Test::Resources::Whatsapp::HostedSignupsTest < Telnyx::Test::Resou
     return if row.nil?
 
     assert_pattern do
-      row => Telnyx::Models::Whatsapp::HostedSignupListResponse
+      row => Telnyx::Whatsapp::WhatsappHostedSignup
     end
 
     assert_pattern do
@@ -58,7 +58,7 @@ class Telnyx::Test::Resources::Whatsapp::HostedSignupsTest < Telnyx::Test::Resou
         created_at: Time | nil,
         expires_at: Time | nil,
         jwt: String | nil,
-        record_type: Telnyx::Models::Whatsapp::HostedSignupListResponse::RecordType | nil,
+        record_type: Telnyx::Whatsapp::WhatsappHostedSignup::RecordType | nil,
         solution_id: String | nil,
         url: String | nil
       }

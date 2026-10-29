@@ -12,7 +12,20 @@ module Telnyx
       #   @return [Boolean, nil]
       optional :ai_opt_out_detection_enabled, Telnyx::Internal::Type::Boolean
 
-      # @!method initialize(ai_opt_out_detection_enabled: nil)
+      # @!attribute auto_chunk_long_messages
+      #   Enables server-side chunking of outbound SMS. When enabled, an outbound message
+      #   that exceeds the maximum number of segments allowed for its destination (10
+      #   segments by default; some aggregators accept up to 25) is automatically split
+      #   into multiple child messages, each within the segment limit, and sent
+      #   sequentially in order. Splitting is encoding-aware: GSM-7 bodies split at
+      #   153-character boundaries and UCS-2 bodies at 134-byte (67-character) boundaries.
+      #   When disabled (the default), messages exceeding the segment limit are rejected
+      #   with an error.
+      #
+      #   @return [Boolean, nil]
+      optional :auto_chunk_long_messages, Telnyx::Internal::Type::Boolean
+
+      # @!method initialize(ai_opt_out_detection_enabled: nil, auto_chunk_long_messages: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingProfileFeatures} for more details.
       #
@@ -21,6 +34,8 @@ module Telnyx
       #   preserved for forward compatibility with rolling deployments.
       #
       #   @param ai_opt_out_detection_enabled [Boolean] Enables AI detection of inbound opt-out messages that do not follow the standard
+      #
+      #   @param auto_chunk_long_messages [Boolean] Enables server-side chunking of outbound SMS. When enabled, an outbound message
     end
   end
 end

@@ -72,6 +72,13 @@ module Telnyx
       #   @return [String, nil]
       optional :base_model, String, nil?: true
 
+      # @!attribute beta
+      #   Whether the model is in beta. New Telnyx-hosted models launch with `beta: true`;
+      #   the label is removed once the model is established.
+      #
+      #   @return [Boolean, nil]
+      optional :beta, Telnyx::Internal::Type::Boolean
+
       # @!attribute description
       #   Short, human-readable summary of what the model is best suited for.
       #
@@ -156,7 +163,7 @@ module Telnyx
       #   @return [String, nil]
       optional :task, String
 
-      # @!method initialize(id:, context_length:, created:, languages:, license:, organization:, owned_by:, parameters:, tier:, base_model: nil, description: nil, is_fine_tunable: nil, is_vision_supported: nil, max_completion_tokens: nil, object: nil, parameters_str: nil, pricing: nil, recommended_for_assistants: nil, regions: nil, service_tiers: nil, task: nil)
+      # @!method initialize(id:, context_length:, created:, languages:, license:, organization:, owned_by:, parameters:, tier:, base_model: nil, beta: nil, description: nil, is_fine_tunable: nil, is_vision_supported: nil, max_completion_tokens: nil, object: nil, parameters_str: nil, pricing: nil, recommended_for_assistants: nil, regions: nil, service_tiers: nil, task: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::ModelMetadata} for more details.
       #
@@ -185,6 +192,8 @@ module Telnyx
       #   @param tier [Symbol, Telnyx::Models::ModelMetadata::Tier] Billing tier the model belongs to. Used together with `pricing` to determine cos
       #
       #   @param base_model [String, nil] Base model the fine-tuned model was trained from. Only set for fine-tuned models
+      #
+      #   @param beta [Boolean] Whether the model is in beta. New Telnyx-hosted models launch with `beta: true`;
       #
       #   @param description [String, nil] Short, human-readable summary of what the model is best suited for.
       #

@@ -43,13 +43,7 @@ module Telnyx
 
       # Structured variable requirements, or `null` when the template uses only the
       # legacy `variables` array.
-      sig do
-        returns(
-          T.nilable(
-            T::Hash[Symbol, Telnyx::EmailTemplateCommon::VariableSchema]
-          )
-        )
-      end
+      sig { returns(T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry])) }
       attr_accessor :variable_schema
 
       # Persisted variable names. In `explicit` mode this array preserves the exact
@@ -75,12 +69,7 @@ module Telnyx
           text_body: T.nilable(String),
           updated_at: Time,
           variable_schema:
-            T.nilable(
-              T::Hash[
-                Symbol,
-                Telnyx::EmailTemplateCommon::VariableSchema::OrHash
-              ]
-            ),
+            T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry::OrHash]),
           variables: T::Array[String],
           variables_mode: Telnyx::EmailTemplateCommon::VariablesMode::OrSymbol
         ).returns(T.attached_class)
@@ -127,9 +116,7 @@ module Telnyx
             text_body: T.nilable(String),
             updated_at: Time,
             variable_schema:
-              T.nilable(
-                T::Hash[Symbol, Telnyx::EmailTemplateCommon::VariableSchema]
-              ),
+              T.nilable(T::Hash[Symbol, Telnyx::VariableSchemaEntry]),
             variables: T::Array[String],
             variables_mode:
               Telnyx::EmailTemplateCommon::VariablesMode::TaggedSymbol
@@ -160,46 +147,6 @@ module Telnyx
           )
         end
         def self.values
-        end
-      end
-
-      class VariableSchema < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Telnyx::EmailTemplateCommon::VariableSchema,
-              Telnyx::Internal::AnyHash
-            )
-          end
-
-        # Whether the variable must be supplied when strict variable validation is
-        # enabled.
-        sig { returns(T::Boolean) }
-        attr_accessor :required
-
-        # Default value for an optional variable. Rejected when `required` is `true`.
-        sig { returns(T.nilable(String)) }
-        attr_reader :default
-
-        sig { params(default: String).void }
-        attr_writer :default
-
-        sig do
-          params(required: T::Boolean, default: String).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # Whether the variable must be supplied when strict variable validation is
-          # enabled.
-          required:,
-          # Default value for an optional variable. Rejected when `required` is `true`.
-          default: nil
-        )
-        end
-
-        sig { override.returns({ required: T::Boolean, default: String }) }
-        def to_hash
         end
       end
 

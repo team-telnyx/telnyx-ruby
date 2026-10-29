@@ -21,6 +21,14 @@ module Telnyx
       #   @return [Array<Telnyx::Models::MessagingOutboundMessagePayload::Cc>, nil]
       optional :cc, -> { Telnyx::Internal::Type::ArrayOf[Telnyx::MessagingOutboundMessagePayload::Cc] }
 
+      # @!attribute child_message_id
+      #   Identifies the next chunk when server-side SMS chunking
+      #   (`auto_chunk_long_messages` on the messaging profile) split this message. Always
+      #   present; null on non-chunked messages and on the final chunk.
+      #
+      #   @return [String, nil]
+      optional :child_message_id, String, nil?: true
+
       # @!attribute completed_at
       #   ISO 8601 formatted date indicating when the message was finalized.
       #
@@ -85,6 +93,15 @@ module Telnyx
       #
       #   @return [String, nil]
       optional :organization_id, String
+
+      # @!attribute parent_message_id
+      #   Identifies the original request's message when server-side SMS chunking
+      #   (`auto_chunk_long_messages` on the messaging profile) split it into chunks. The
+      #   first chunk's ID is the original request's message ID. Always present; null when
+      #   this message is not part of a chunked send.
+      #
+      #   @return [String, nil]
+      optional :parent_message_id, String, nil?: true
 
       # @!attribute parts
       #   Number of parts into which the message's body must be split.
@@ -210,7 +227,7 @@ module Telnyx
       #   @return [String, nil]
       optional :webhook_url, String, nil?: true
 
-      # @!method initialize(id: nil, body: nil, cc: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, template_id: nil, template_name: nil, text: nil, to: nil, type: nil, valid_until: nil, wait_seconds: nil, webhook_failover_url: nil, webhook_url: nil)
+      # @!method initialize(id: nil, body: nil, cc: nil, child_message_id: nil, completed_at: nil, cost: nil, cost_breakdown: nil, direction: nil, encoding: nil, errors: nil, from: nil, media: nil, messaging_profile_id: nil, num_chars: nil, organization_id: nil, parent_message_id: nil, parts: nil, received_at: nil, record_type: nil, sent_at: nil, smart_encoding_applied: nil, subject: nil, tags: nil, tcr_campaign_billable: nil, tcr_campaign_id: nil, tcr_campaign_registered: nil, template_id: nil, template_name: nil, text: nil, to: nil, type: nil, valid_until: nil, wait_seconds: nil, webhook_failover_url: nil, webhook_url: nil)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MessagingOutboundMessagePayload} for more details.
       #
@@ -219,6 +236,8 @@ module Telnyx
       #   @param body [Telnyx::Models::MessagingOutboundMessagePayload::Body] Message body for RCS and WhatsApp. RCS text messages use the text property. What
       #
       #   @param cc [Array<Telnyx::Models::MessagingOutboundMessagePayload::Cc>]
+      #
+      #   @param child_message_id [String, nil] Identifies the next chunk when server-side SMS chunking (`auto_chunk_long_messag
       #
       #   @param completed_at [Time, nil] ISO 8601 formatted date indicating when the message was finalized.
       #
@@ -241,6 +260,8 @@ module Telnyx
       #   @param num_chars [Integer] The number of characters in the message text
       #
       #   @param organization_id [String] The id of the organization the messaging profile belongs to.
+      #
+      #   @param parent_message_id [String, nil] Identifies the original request's message when server-side SMS chunking (`auto_c
       #
       #   @param parts [Integer] Number of parts into which the message's body must be split.
       #

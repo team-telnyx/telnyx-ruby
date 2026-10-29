@@ -29,7 +29,7 @@ module Telnyx
         # @param page_size [Integer]
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Whatsapp::PhoneNumberListResponse>]
+        # @return [Telnyx::Internal::DefaultFlatPagination<Telnyx::Models::Whatsapp::WhatsappPhoneResponse>]
         #
         # @see Telnyx::Models::Whatsapp::PhoneNumberListParams
         def list(params = {})
@@ -40,7 +40,7 @@ module Telnyx
             path: "v2/whatsapp/phone_numbers",
             query: query.transform_keys(page_number: "page[number]", page_size: "page[size]"),
             page: Telnyx::Internal::DefaultFlatPagination,
-            model: Telnyx::Models::Whatsapp::PhoneNumberListResponse,
+            model: Telnyx::Whatsapp::WhatsappPhoneResponse,
             options: options
           )
         end
