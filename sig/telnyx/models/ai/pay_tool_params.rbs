@@ -7,7 +7,13 @@ module Telnyx
           connector_parameters: ::Hash[Symbol, top],
           currency: String,
           description: String?,
+          inter_digit_timeout_millis: Integer,
+          max_attempts: Integer,
+          min_postal_code_length: Integer,
           payment_method: String,
+          postal_code: Telnyx::Models::AI::PayToolParams::postal_code,
+          prompts: Telnyx::AI::PayToolParams::Prompts,
+          timeout_millis: Integer,
           valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
         }
 
@@ -24,9 +30,37 @@ module Telnyx
 
         attr_accessor description: String?
 
+        attr_reader inter_digit_timeout_millis: Integer?
+
+        def inter_digit_timeout_millis=: (Integer) -> Integer
+
+        attr_reader max_attempts: Integer?
+
+        def max_attempts=: (Integer) -> Integer
+
+        attr_reader min_postal_code_length: Integer?
+
+        def min_postal_code_length=: (Integer) -> Integer
+
         attr_reader payment_method: String?
 
         def payment_method=: (String) -> String
+
+        attr_reader postal_code: Telnyx::Models::AI::PayToolParams::postal_code?
+
+        def postal_code=: (
+          Telnyx::Models::AI::PayToolParams::postal_code
+        ) -> Telnyx::Models::AI::PayToolParams::postal_code
+
+        attr_reader prompts: Telnyx::AI::PayToolParams::Prompts?
+
+        def prompts=: (
+          Telnyx::AI::PayToolParams::Prompts
+        ) -> Telnyx::AI::PayToolParams::Prompts
+
+        attr_reader timeout_millis: Integer?
+
+        def timeout_millis=: (Integer) -> Integer
 
         attr_reader valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]?
 
@@ -39,7 +73,13 @@ module Telnyx
           ?connector_parameters: ::Hash[Symbol, top],
           ?currency: String,
           ?description: String?,
+          ?inter_digit_timeout_millis: Integer,
+          ?max_attempts: Integer,
+          ?min_postal_code_length: Integer,
           ?payment_method: String,
+          ?postal_code: Telnyx::Models::AI::PayToolParams::postal_code,
+          ?prompts: Telnyx::AI::PayToolParams::Prompts,
+          ?timeout_millis: Integer,
           ?valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
         ) -> void
 
@@ -48,9 +88,737 @@ module Telnyx
           connector_parameters: ::Hash[Symbol, top],
           currency: String,
           description: String?,
+          inter_digit_timeout_millis: Integer,
+          max_attempts: Integer,
+          min_postal_code_length: Integer,
           payment_method: String,
+          postal_code: Telnyx::Models::AI::PayToolParams::postal_code,
+          prompts: Telnyx::AI::PayToolParams::Prompts,
+          timeout_millis: Integer,
           valid_card_types: ::Array[Telnyx::Models::AI::PayToolParams::valid_card_type]
         }
+
+        type postal_code = String | bool
+
+        module PostalCode
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AI::PayToolParams::postal_code]
+        end
+
+        type prompts =
+          {
+            bank_account_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_account_number,
+            bank_routing_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_routing_number,
+            expiration_date: Telnyx::Models::AI::PayToolParams::Prompts::expiration_date,
+            payment_card_number: Telnyx::Models::AI::PayToolParams::Prompts::payment_card_number,
+            postal_code: Telnyx::Models::AI::PayToolParams::Prompts::postal_code,
+            security_code: Telnyx::Models::AI::PayToolParams::Prompts::security_code
+          }
+
+        class Prompts < Telnyx::Internal::Type::BaseModel
+          attr_reader bank_account_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_account_number?
+
+          def bank_account_number=: (
+            Telnyx::Models::AI::PayToolParams::Prompts::bank_account_number
+          ) -> Telnyx::Models::AI::PayToolParams::Prompts::bank_account_number
+
+          attr_reader bank_routing_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_routing_number?
+
+          def bank_routing_number=: (
+            Telnyx::Models::AI::PayToolParams::Prompts::bank_routing_number
+          ) -> Telnyx::Models::AI::PayToolParams::Prompts::bank_routing_number
+
+          attr_reader expiration_date: Telnyx::Models::AI::PayToolParams::Prompts::expiration_date?
+
+          def expiration_date=: (
+            Telnyx::Models::AI::PayToolParams::Prompts::expiration_date
+          ) -> Telnyx::Models::AI::PayToolParams::Prompts::expiration_date
+
+          attr_reader payment_card_number: Telnyx::Models::AI::PayToolParams::Prompts::payment_card_number?
+
+          def payment_card_number=: (
+            Telnyx::Models::AI::PayToolParams::Prompts::payment_card_number
+          ) -> Telnyx::Models::AI::PayToolParams::Prompts::payment_card_number
+
+          attr_reader postal_code: Telnyx::Models::AI::PayToolParams::Prompts::postal_code?
+
+          def postal_code=: (
+            Telnyx::Models::AI::PayToolParams::Prompts::postal_code
+          ) -> Telnyx::Models::AI::PayToolParams::Prompts::postal_code
+
+          attr_reader security_code: Telnyx::Models::AI::PayToolParams::Prompts::security_code?
+
+          def security_code=: (
+            Telnyx::Models::AI::PayToolParams::Prompts::security_code
+          ) -> Telnyx::Models::AI::PayToolParams::Prompts::security_code
+
+          def initialize: (
+            ?bank_account_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_account_number,
+            ?bank_routing_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_routing_number,
+            ?expiration_date: Telnyx::Models::AI::PayToolParams::Prompts::expiration_date,
+            ?payment_card_number: Telnyx::Models::AI::PayToolParams::Prompts::payment_card_number,
+            ?postal_code: Telnyx::Models::AI::PayToolParams::Prompts::postal_code,
+            ?security_code: Telnyx::Models::AI::PayToolParams::Prompts::security_code
+          ) -> void
+
+          def to_hash: -> {
+            bank_account_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_account_number,
+            bank_routing_number: Telnyx::Models::AI::PayToolParams::Prompts::bank_routing_number,
+            expiration_date: Telnyx::Models::AI::PayToolParams::Prompts::expiration_date,
+            payment_card_number: Telnyx::Models::AI::PayToolParams::Prompts::payment_card_number,
+            postal_code: Telnyx::Models::AI::PayToolParams::Prompts::postal_code,
+            security_code: Telnyx::Models::AI::PayToolParams::Prompts::security_code
+          }
+
+          type bank_account_number =
+            String
+            | ::Array[Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1]
+
+          module BankAccountNumber
+            extend Telnyx::Internal::Type::Union
+
+            type union_member1 =
+              {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::error_type
+              }
+
+            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+              attr_accessor text: String
+
+              attr_reader attempt: String?
+
+              def attempt=: (String) -> String
+
+              attr_reader card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::card_type?
+
+              def card_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::card_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::card_type
+
+              attr_reader error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::error_type?
+
+              def error_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::error_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::error_type
+
+              def initialize: (
+                text: String,
+                ?attempt: String,
+                ?card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::card_type,
+                ?error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::error_type
+              ) -> void
+
+              def to_hash: -> {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::error_type
+              }
+
+              type card_type =
+                :visa
+                | :mastercard
+                | :amex
+                | :optima
+                | :discover
+                | :"diners-club"
+                | :jcb
+                | :maestro
+                | :enroute
+
+              module CardType
+                extend Telnyx::Internal::Type::Enum
+
+                VISA: :visa
+                MASTERCARD: :mastercard
+                AMEX: :amex
+                OPTIMA: :optima
+                DISCOVER: :discover
+                DINERS_CLUB: :"diners-club"
+                JCB: :jcb
+                MAESTRO: :maestro
+                ENROUTE: :enroute
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::card_type]
+              end
+
+              type error_type =
+                :timeout
+                | :"invalid-card-number"
+                | :"invalid-card-type"
+                | :"invalid-date"
+                | :"invalid-security-code"
+                | :"invalid-postal-code"
+                | :"invalid-bank-routing-number"
+                | :"invalid-bank-account-number"
+                | :"input-matching-failed"
+
+              module ErrorType
+                extend Telnyx::Internal::Type::Enum
+
+                TIMEOUT: :timeout
+                INVALID_CARD_NUMBER: :"invalid-card-number"
+                INVALID_CARD_TYPE: :"invalid-card-type"
+                INVALID_DATE: :"invalid-date"
+                INVALID_SECURITY_CODE: :"invalid-security-code"
+                INVALID_POSTAL_CODE: :"invalid-postal-code"
+                INVALID_BANK_ROUTING_NUMBER: :"invalid-bank-routing-number"
+                INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
+                INPUT_MATCHING_FAILED: :"input-matching-failed"
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::error_type]
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::bank_account_number]
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+
+          type bank_routing_number =
+            String
+            | ::Array[Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1]
+
+          module BankRoutingNumber
+            extend Telnyx::Internal::Type::Union
+
+            type union_member1 =
+              {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::error_type
+              }
+
+            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+              attr_accessor text: String
+
+              attr_reader attempt: String?
+
+              def attempt=: (String) -> String
+
+              attr_reader card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::card_type?
+
+              def card_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::card_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::card_type
+
+              attr_reader error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::error_type?
+
+              def error_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::error_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::error_type
+
+              def initialize: (
+                text: String,
+                ?attempt: String,
+                ?card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::card_type,
+                ?error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::error_type
+              ) -> void
+
+              def to_hash: -> {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::error_type
+              }
+
+              type card_type =
+                :visa
+                | :mastercard
+                | :amex
+                | :optima
+                | :discover
+                | :"diners-club"
+                | :jcb
+                | :maestro
+                | :enroute
+
+              module CardType
+                extend Telnyx::Internal::Type::Enum
+
+                VISA: :visa
+                MASTERCARD: :mastercard
+                AMEX: :amex
+                OPTIMA: :optima
+                DISCOVER: :discover
+                DINERS_CLUB: :"diners-club"
+                JCB: :jcb
+                MAESTRO: :maestro
+                ENROUTE: :enroute
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::card_type]
+              end
+
+              type error_type =
+                :timeout
+                | :"invalid-card-number"
+                | :"invalid-card-type"
+                | :"invalid-date"
+                | :"invalid-security-code"
+                | :"invalid-postal-code"
+                | :"invalid-bank-routing-number"
+                | :"invalid-bank-account-number"
+                | :"input-matching-failed"
+
+              module ErrorType
+                extend Telnyx::Internal::Type::Enum
+
+                TIMEOUT: :timeout
+                INVALID_CARD_NUMBER: :"invalid-card-number"
+                INVALID_CARD_TYPE: :"invalid-card-type"
+                INVALID_DATE: :"invalid-date"
+                INVALID_SECURITY_CODE: :"invalid-security-code"
+                INVALID_POSTAL_CODE: :"invalid-postal-code"
+                INVALID_BANK_ROUTING_NUMBER: :"invalid-bank-routing-number"
+                INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
+                INPUT_MATCHING_FAILED: :"input-matching-failed"
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::error_type]
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::bank_routing_number]
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+
+          type expiration_date =
+            String
+            | ::Array[Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1]
+
+          module ExpirationDate
+            extend Telnyx::Internal::Type::Union
+
+            type union_member1 =
+              {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::error_type
+              }
+
+            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+              attr_accessor text: String
+
+              attr_reader attempt: String?
+
+              def attempt=: (String) -> String
+
+              attr_reader card_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::card_type?
+
+              def card_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::card_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::card_type
+
+              attr_reader error_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::error_type?
+
+              def error_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::error_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::error_type
+
+              def initialize: (
+                text: String,
+                ?attempt: String,
+                ?card_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::card_type,
+                ?error_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::error_type
+              ) -> void
+
+              def to_hash: -> {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::error_type
+              }
+
+              type card_type =
+                :visa
+                | :mastercard
+                | :amex
+                | :optima
+                | :discover
+                | :"diners-club"
+                | :jcb
+                | :maestro
+                | :enroute
+
+              module CardType
+                extend Telnyx::Internal::Type::Enum
+
+                VISA: :visa
+                MASTERCARD: :mastercard
+                AMEX: :amex
+                OPTIMA: :optima
+                DISCOVER: :discover
+                DINERS_CLUB: :"diners-club"
+                JCB: :jcb
+                MAESTRO: :maestro
+                ENROUTE: :enroute
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::card_type]
+              end
+
+              type error_type =
+                :timeout
+                | :"invalid-card-number"
+                | :"invalid-card-type"
+                | :"invalid-date"
+                | :"invalid-security-code"
+                | :"invalid-postal-code"
+                | :"invalid-bank-routing-number"
+                | :"invalid-bank-account-number"
+                | :"input-matching-failed"
+
+              module ErrorType
+                extend Telnyx::Internal::Type::Enum
+
+                TIMEOUT: :timeout
+                INVALID_CARD_NUMBER: :"invalid-card-number"
+                INVALID_CARD_TYPE: :"invalid-card-type"
+                INVALID_DATE: :"invalid-date"
+                INVALID_SECURITY_CODE: :"invalid-security-code"
+                INVALID_POSTAL_CODE: :"invalid-postal-code"
+                INVALID_BANK_ROUTING_NUMBER: :"invalid-bank-routing-number"
+                INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
+                INPUT_MATCHING_FAILED: :"input-matching-failed"
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::error_type]
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::expiration_date]
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+
+          type payment_card_number =
+            String
+            | ::Array[Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1]
+
+          module PaymentCardNumber
+            extend Telnyx::Internal::Type::Union
+
+            type union_member1 =
+              {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::error_type
+              }
+
+            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+              attr_accessor text: String
+
+              attr_reader attempt: String?
+
+              def attempt=: (String) -> String
+
+              attr_reader card_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::card_type?
+
+              def card_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::card_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::card_type
+
+              attr_reader error_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::error_type?
+
+              def error_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::error_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::error_type
+
+              def initialize: (
+                text: String,
+                ?attempt: String,
+                ?card_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::card_type,
+                ?error_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::error_type
+              ) -> void
+
+              def to_hash: -> {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::error_type
+              }
+
+              type card_type =
+                :visa
+                | :mastercard
+                | :amex
+                | :optima
+                | :discover
+                | :"diners-club"
+                | :jcb
+                | :maestro
+                | :enroute
+
+              module CardType
+                extend Telnyx::Internal::Type::Enum
+
+                VISA: :visa
+                MASTERCARD: :mastercard
+                AMEX: :amex
+                OPTIMA: :optima
+                DISCOVER: :discover
+                DINERS_CLUB: :"diners-club"
+                JCB: :jcb
+                MAESTRO: :maestro
+                ENROUTE: :enroute
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::card_type]
+              end
+
+              type error_type =
+                :timeout
+                | :"invalid-card-number"
+                | :"invalid-card-type"
+                | :"invalid-date"
+                | :"invalid-security-code"
+                | :"invalid-postal-code"
+                | :"invalid-bank-routing-number"
+                | :"invalid-bank-account-number"
+                | :"input-matching-failed"
+
+              module ErrorType
+                extend Telnyx::Internal::Type::Enum
+
+                TIMEOUT: :timeout
+                INVALID_CARD_NUMBER: :"invalid-card-number"
+                INVALID_CARD_TYPE: :"invalid-card-type"
+                INVALID_DATE: :"invalid-date"
+                INVALID_SECURITY_CODE: :"invalid-security-code"
+                INVALID_POSTAL_CODE: :"invalid-postal-code"
+                INVALID_BANK_ROUTING_NUMBER: :"invalid-bank-routing-number"
+                INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
+                INPUT_MATCHING_FAILED: :"input-matching-failed"
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::error_type]
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::payment_card_number]
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+
+          type postal_code =
+            String
+            | ::Array[Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1]
+
+          module PostalCode
+            extend Telnyx::Internal::Type::Union
+
+            type union_member1 =
+              {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::error_type
+              }
+
+            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+              attr_accessor text: String
+
+              attr_reader attempt: String?
+
+              def attempt=: (String) -> String
+
+              attr_reader card_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::card_type?
+
+              def card_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::card_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::card_type
+
+              attr_reader error_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::error_type?
+
+              def error_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::error_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::error_type
+
+              def initialize: (
+                text: String,
+                ?attempt: String,
+                ?card_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::card_type,
+                ?error_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::error_type
+              ) -> void
+
+              def to_hash: -> {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::error_type
+              }
+
+              type card_type =
+                :visa
+                | :mastercard
+                | :amex
+                | :optima
+                | :discover
+                | :"diners-club"
+                | :jcb
+                | :maestro
+                | :enroute
+
+              module CardType
+                extend Telnyx::Internal::Type::Enum
+
+                VISA: :visa
+                MASTERCARD: :mastercard
+                AMEX: :amex
+                OPTIMA: :optima
+                DISCOVER: :discover
+                DINERS_CLUB: :"diners-club"
+                JCB: :jcb
+                MAESTRO: :maestro
+                ENROUTE: :enroute
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::card_type]
+              end
+
+              type error_type =
+                :timeout
+                | :"invalid-card-number"
+                | :"invalid-card-type"
+                | :"invalid-date"
+                | :"invalid-security-code"
+                | :"invalid-postal-code"
+                | :"invalid-bank-routing-number"
+                | :"invalid-bank-account-number"
+                | :"input-matching-failed"
+
+              module ErrorType
+                extend Telnyx::Internal::Type::Enum
+
+                TIMEOUT: :timeout
+                INVALID_CARD_NUMBER: :"invalid-card-number"
+                INVALID_CARD_TYPE: :"invalid-card-type"
+                INVALID_DATE: :"invalid-date"
+                INVALID_SECURITY_CODE: :"invalid-security-code"
+                INVALID_POSTAL_CODE: :"invalid-postal-code"
+                INVALID_BANK_ROUTING_NUMBER: :"invalid-bank-routing-number"
+                INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
+                INPUT_MATCHING_FAILED: :"input-matching-failed"
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::error_type]
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::postal_code]
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+
+          type security_code =
+            String
+            | ::Array[Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1]
+
+          module SecurityCode
+            extend Telnyx::Internal::Type::Union
+
+            type union_member1 =
+              {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::error_type
+              }
+
+            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+              attr_accessor text: String
+
+              attr_reader attempt: String?
+
+              def attempt=: (String) -> String
+
+              attr_reader card_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::card_type?
+
+              def card_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::card_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::card_type
+
+              attr_reader error_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::error_type?
+
+              def error_type=: (
+                Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::error_type
+              ) -> Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::error_type
+
+              def initialize: (
+                text: String,
+                ?attempt: String,
+                ?card_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::card_type,
+                ?error_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::error_type
+              ) -> void
+
+              def to_hash: -> {
+                text: String,
+                attempt: String,
+                card_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::card_type,
+                error_type: Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::error_type
+              }
+
+              type card_type =
+                :visa
+                | :mastercard
+                | :amex
+                | :optima
+                | :discover
+                | :"diners-club"
+                | :jcb
+                | :maestro
+                | :enroute
+
+              module CardType
+                extend Telnyx::Internal::Type::Enum
+
+                VISA: :visa
+                MASTERCARD: :mastercard
+                AMEX: :amex
+                OPTIMA: :optima
+                DISCOVER: :discover
+                DINERS_CLUB: :"diners-club"
+                JCB: :jcb
+                MAESTRO: :maestro
+                ENROUTE: :enroute
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::card_type]
+              end
+
+              type error_type =
+                :timeout
+                | :"invalid-card-number"
+                | :"invalid-card-type"
+                | :"invalid-date"
+                | :"invalid-security-code"
+                | :"invalid-postal-code"
+                | :"invalid-bank-routing-number"
+                | :"invalid-bank-account-number"
+                | :"input-matching-failed"
+
+              module ErrorType
+                extend Telnyx::Internal::Type::Enum
+
+                TIMEOUT: :timeout
+                INVALID_CARD_NUMBER: :"invalid-card-number"
+                INVALID_CARD_TYPE: :"invalid-card-type"
+                INVALID_DATE: :"invalid-date"
+                INVALID_SECURITY_CODE: :"invalid-security-code"
+                INVALID_POSTAL_CODE: :"invalid-postal-code"
+                INVALID_BANK_ROUTING_NUMBER: :"invalid-bank-routing-number"
+                INVALID_BANK_ACCOUNT_NUMBER: :"invalid-bank-account-number"
+                INPUT_MATCHING_FAILED: :"input-matching-failed"
+
+                def self?.values: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::error_type]
+              end
+            end
+
+            def self?.variants: -> ::Array[Telnyx::Models::AI::PayToolParams::Prompts::security_code]
+
+            UnionMember1Array: Telnyx::Internal::Type::Converter
+          end
+        end
 
         type valid_card_type =
           :visa

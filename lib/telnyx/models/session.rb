@@ -40,8 +40,8 @@ module Telnyx
 
       # @!attribute metadata
       #
-      #   @return [Object]
-      required :metadata, Telnyx::Internal::Type::Unknown
+      #   @return [Hash{Symbol=>Object}]
+      required :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
       # @!attribute policy
       #
@@ -66,7 +66,7 @@ module Telnyx
       #   @param failure_reason [String, nil]
       #   @param last_activity_at [Time, nil]
       #   @param limits [Telnyx::Models::Session::Limits]
-      #   @param metadata [Object]
+      #   @param metadata [Hash{Symbol=>Object}]
       #   @param policy [Telnyx::Models::Session::Policy]
       #   @param ready_at [Time, nil]
       #   @param status [Symbol, Telnyx::Models::Session::Status]

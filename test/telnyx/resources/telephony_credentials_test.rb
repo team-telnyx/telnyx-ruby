@@ -78,6 +78,7 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
         resource_id: String | nil,
         sip_password: String | nil,
         sip_username: String | nil,
+        token_material: Telnyx::TokenMaterial | nil,
         updated_at: String | nil,
         user_id: String | nil
       }
@@ -107,6 +108,22 @@ class Telnyx::Test::Resources::TelephonyCredentialsTest < Telnyx::Test::Resource
 
     assert_pattern do
       response => String
+    end
+  end
+
+  def test_retrieve_token_material
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.telephony_credentials.retrieve_token_material("id")
+
+    assert_pattern do
+      response => Telnyx::Models::TelephonyCredentialRetrieveTokenMaterialResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: Telnyx::TokenMaterial | nil
+      }
     end
   end
 end

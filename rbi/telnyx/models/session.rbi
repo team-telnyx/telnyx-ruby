@@ -30,7 +30,7 @@ module Telnyx
       sig { params(limits: Telnyx::Session::Limits::OrHash).void }
       attr_writer :limits
 
-      sig { returns(T.anything) }
+      sig { returns(T::Hash[Symbol, T.anything]) }
       attr_accessor :metadata
 
       sig { returns(Telnyx::Session::Policy) }
@@ -54,7 +54,7 @@ module Telnyx
           failure_reason: T.nilable(String),
           last_activity_at: T.nilable(Time),
           limits: Telnyx::Session::Limits::OrHash,
-          metadata: T.anything,
+          metadata: T::Hash[Symbol, T.anything],
           policy: Telnyx::Session::Policy::OrHash,
           ready_at: T.nilable(Time),
           status: Telnyx::Session::Status::OrSymbol
@@ -85,7 +85,7 @@ module Telnyx
             failure_reason: T.nilable(String),
             last_activity_at: T.nilable(Time),
             limits: Telnyx::Session::Limits,
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             policy: Telnyx::Session::Policy,
             ready_at: T.nilable(Time),
             status: Telnyx::Session::Status::TaggedSymbol

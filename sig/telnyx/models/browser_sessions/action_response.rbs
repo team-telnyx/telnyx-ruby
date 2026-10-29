@@ -7,7 +7,7 @@ module Telnyx
           completed_at: Time?,
           created_at: Time,
           error: Telnyx::BrowserSessions::ActionResponse::Error?,
-          request: top,
+          request: ::Hash[Symbol, top],
           result: Telnyx::BrowserSessions::ActionResponse::Result?,
           seq: Integer,
           session_id: String,
@@ -25,7 +25,7 @@ module Telnyx
 
         attr_accessor error: Telnyx::BrowserSessions::ActionResponse::Error?
 
-        attr_accessor request: top
+        attr_accessor request: ::Hash[Symbol, top]
 
         attr_accessor result: Telnyx::BrowserSessions::ActionResponse::Result?
 
@@ -44,7 +44,7 @@ module Telnyx
           completed_at: Time?,
           created_at: Time,
           error: Telnyx::BrowserSessions::ActionResponse::Error?,
-          request: top,
+          request: ::Hash[Symbol, top],
           result: Telnyx::BrowserSessions::ActionResponse::Result?,
           seq: Integer,
           session_id: String,
@@ -58,7 +58,7 @@ module Telnyx
           completed_at: Time?,
           created_at: Time,
           error: Telnyx::BrowserSessions::ActionResponse::Error?,
-          request: top,
+          request: ::Hash[Symbol, top],
           result: Telnyx::BrowserSessions::ActionResponse::Result?,
           seq: Integer,
           session_id: String,
@@ -83,7 +83,7 @@ module Telnyx
           {
             artifact: Telnyx::BrowserSessions::ActionResponse::Result::Artifact,
             observation: Telnyx::BrowserSessions::ActionResponse::Result::Observation,
-            results: ::Array[top],
+            results: ::Array[::Hash[Symbol, top]],
             title: String,
             url: String
           }
@@ -101,9 +101,11 @@ module Telnyx
             Telnyx::BrowserSessions::ActionResponse::Result::Observation
           ) -> Telnyx::BrowserSessions::ActionResponse::Result::Observation
 
-          attr_reader results: ::Array[top]?
+          attr_reader results: ::Array[::Hash[Symbol, top]]?
 
-          def results=: (::Array[top]) -> ::Array[top]
+          def results=: (
+            ::Array[::Hash[Symbol, top]]
+          ) -> ::Array[::Hash[Symbol, top]]
 
           attr_reader title: String?
 
@@ -116,7 +118,7 @@ module Telnyx
           def initialize: (
             ?artifact: Telnyx::BrowserSessions::ActionResponse::Result::Artifact,
             ?observation: Telnyx::BrowserSessions::ActionResponse::Result::Observation,
-            ?results: ::Array[top],
+            ?results: ::Array[::Hash[Symbol, top]],
             ?title: String,
             ?url: String
           ) -> void
@@ -124,7 +126,7 @@ module Telnyx
           def to_hash: -> {
             artifact: Telnyx::BrowserSessions::ActionResponse::Result::Artifact,
             observation: Telnyx::BrowserSessions::ActionResponse::Result::Observation,
-            results: ::Array[top],
+            results: ::Array[::Hash[Symbol, top]],
             title: String,
             url: String
           }
@@ -162,7 +164,7 @@ module Telnyx
             {
               observation_id: String,
               ref_count: Integer,
-              refs: top,
+              refs: ::Hash[Symbol, top],
               title: String,
               tree: String,
               truncated: bool,
@@ -178,9 +180,9 @@ module Telnyx
 
             def ref_count=: (Integer) -> Integer
 
-            attr_reader refs: top?
+            attr_reader refs: ::Hash[Symbol, top]?
 
-            def refs=: (top) -> top
+            def refs=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
             attr_reader title: String?
 
@@ -201,7 +203,7 @@ module Telnyx
             def initialize: (
               ?observation_id: String,
               ?ref_count: Integer,
-              ?refs: top,
+              ?refs: ::Hash[Symbol, top],
               ?title: String,
               ?tree: String,
               ?truncated: bool,
@@ -211,7 +213,7 @@ module Telnyx
             def to_hash: -> {
               observation_id: String,
               ref_count: Integer,
-              refs: top,
+              refs: ::Hash[Symbol, top],
               title: String,
               tree: String,
               truncated: bool,

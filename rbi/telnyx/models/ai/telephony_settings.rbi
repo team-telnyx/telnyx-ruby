@@ -51,6 +51,14 @@ module Telnyx
         sig { params(fallback_destination: String).void }
         attr_writer :fallback_destination
 
+        # Milliseconds to wait after an inbound call is answered before the assistant
+        # starts and speaks its greeting. Increase it if the beginning of the greeting is
+        # cut off on some connections (for example, WebRTC calls). When unset (`null`),
+        # the platform default of 250 ms is used. Set to `0` to start without a delay.
+        # Maximum 2000.
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :greeting_delay_ms
+
         # The noise suppression engine to use. 'aicoustics' is STT-optimized and
         # recommended for AI assistants (configure through noise_suppression_config). Use
         # 'disabled' to turn off noise suppression.
@@ -193,6 +201,7 @@ module Telnyx
             default_texml_app_id: String,
             disable_dtmf: T::Boolean,
             fallback_destination: String,
+            greeting_delay_ms: T.nilable(Integer),
             noise_suppression:
               Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
             noise_suppression_config:
@@ -231,6 +240,12 @@ module Telnyx
           # detected), and it does not fire when the assistant already transferred or
           # bridged the call.
           fallback_destination: nil,
+          # Milliseconds to wait after an inbound call is answered before the assistant
+          # starts and speaks its greeting. Increase it if the beginning of the greeting is
+          # cut off on some connections (for example, WebRTC calls). When unset (`null`),
+          # the platform default of 250 ms is used. Set to `0` to start without a delay.
+          # Maximum 2000.
+          greeting_delay_ms: nil,
           # The noise suppression engine to use. 'aicoustics' is STT-optimized and
           # recommended for AI assistants (configure through noise_suppression_config). Use
           # 'disabled' to turn off noise suppression.
@@ -300,6 +315,7 @@ module Telnyx
               default_texml_app_id: String,
               disable_dtmf: T::Boolean,
               fallback_destination: String,
+              greeting_delay_ms: T.nilable(Integer),
               noise_suppression:
                 Telnyx::AI::TelephonySettings::NoiseSuppression::OrSymbol,
               noise_suppression_config:

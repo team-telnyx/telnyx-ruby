@@ -62,8 +62,10 @@ module Telnyx
 
             # @!attribute generation_config
             #
-            #   @return [Object, nil]
-            optional :generation_config, Telnyx::Internal::Type::Unknown, nil?: true
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :generation_config,
+                     Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+                     nil?: true
 
             # @!attribute interruption_level
             #   How aggressively the personality interrupts the assistant.
@@ -74,13 +76,17 @@ module Telnyx
             # @!attribute message_plan
             #   Idle-timeout plan for messages during a call.
             #
-            #   @return [Object, nil]
-            optional :message_plan, Telnyx::Internal::Type::Unknown, nil?: true
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :message_plan,
+                     Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+                     nil?: true
 
             # @!attribute network_simulation
             #
-            #   @return [Object, nil]
-            optional :network_simulation, Telnyx::Internal::Type::Unknown, nil?: true
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :network_simulation,
+                     Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+                     nil?: true
 
             # @!attribute organization
             #
@@ -101,15 +107,17 @@ module Telnyx
 
             # @!attribute start_speaking_plan
             #
-            #   @return [Float, Object, nil]
+            #   @return [Float, Hash{Symbol=>Object}, nil]
             optional :start_speaking_plan,
                      union: -> { Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::StartSpeakingPlan },
                      nil?: true
 
             # @!attribute stop_speaking_plan
             #
-            #   @return [Object, nil]
-            optional :stop_speaking_plan, Telnyx::Internal::Type::Unknown, nil?: true
+            #   @return [Hash{Symbol=>Object}, nil]
+            optional :stop_speaking_plan,
+                     Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown],
+                     nil?: true
 
             # @!attribute voice_volume
             #
@@ -137,13 +145,13 @@ module Telnyx
             #
             #   @param forked_from [Integer, nil] ID of the personality this one was forked from.
             #
-            #   @param generation_config [Object, nil]
+            #   @param generation_config [Hash{Symbol=>Object}, nil]
             #
             #   @param interruption_level [String, nil] How aggressively the personality interrupts the assistant.
             #
-            #   @param message_plan [Object, nil] Idle-timeout plan for messages during a call.
+            #   @param message_plan [Hash{Symbol=>Object}, nil] Idle-timeout plan for messages during a call.
             #
-            #   @param network_simulation [Object, nil]
+            #   @param network_simulation [Hash{Symbol=>Object}, nil]
             #
             #   @param organization [Integer, nil]
             #
@@ -151,9 +159,9 @@ module Telnyx
             #
             #   @param speed [Float, String, nil]
             #
-            #   @param start_speaking_plan [Float, Object, nil]
+            #   @param start_speaking_plan [Float, Hash{Symbol=>Object}, nil]
             #
-            #   @param stop_speaking_plan [Object, nil]
+            #   @param stop_speaking_plan [Hash{Symbol=>Object}, nil]
             #
             #   @param voice_volume [Float, nil]
 
@@ -175,10 +183,13 @@ module Telnyx
 
               variant Float
 
-              variant Telnyx::Internal::Type::Unknown
+              variant -> { Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::StartSpeakingPlan::UnionMember1Map }
 
               # @!method self.variants
-              #   @return [Array(Float, Object)]
+              #   @return [Array(Float, Hash{Symbol=>Object})]
+
+              # @type [Telnyx::Internal::Type::Converter]
+              UnionMember1Map = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
             end
           end
 

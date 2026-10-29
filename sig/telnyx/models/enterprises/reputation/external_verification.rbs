@@ -1,0 +1,64 @@
+module Telnyx
+  module Models
+    module Enterprises
+      module Reputation
+        type reputation_external_verification =
+          {
+            document_ids: ::Array[String],
+            enterprise_id: String,
+            phone_numbers: ::Array[String],
+            rejection_reason: String?,
+            reviewed_at: Time?,
+            status: Telnyx::Models::Enterprises::Reputation::external_verification_status,
+            submitted_at: Time?
+          }
+
+        class ReputationExternalVerification < Telnyx::Internal::Type::BaseModel
+          attr_reader document_ids: ::Array[String]?
+
+          def document_ids=: (::Array[String]) -> ::Array[String]
+
+          attr_reader enterprise_id: String?
+
+          def enterprise_id=: (String) -> String
+
+          attr_reader phone_numbers: ::Array[String]?
+
+          def phone_numbers=: (::Array[String]) -> ::Array[String]
+
+          attr_accessor rejection_reason: String?
+
+          attr_reader status: Telnyx::Models::Enterprises::Reputation::external_verification_status?
+
+          def status=: (
+            Telnyx::Models::Enterprises::Reputation::external_verification_status
+          ) -> Telnyx::Models::Enterprises::Reputation::external_verification_status
+
+          attr_accessor reviewed_at: Time?
+
+          attr_accessor submitted_at: Time?
+
+          def initialize: (
+            ?document_ids: ::Array[String],
+            ?enterprise_id: String,
+            ?phone_numbers: ::Array[String],
+            ?rejection_reason: String?,
+            ?reviewed_at: Time?,
+            ?status: Telnyx::Models::Enterprises::Reputation::external_verification_status,
+            ?submitted_at: Time?
+          ) -> void
+
+          def to_hash: -> {
+            document_ids: ::Array[String],
+            enterprise_id: String,
+            phone_numbers: ::Array[String],
+            rejection_reason: String?,
+            reviewed_at: Time?,
+            status: Telnyx::Models::Enterprises::Reputation::external_verification_status,
+            submitted_at: Time?
+          }
+        end
+      end
+    end
+  end
+end

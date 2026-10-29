@@ -28,8 +28,8 @@ module Telnyx
       # @!attribute metadata
       #   Arbitrary key-value metadata.
       #
-      #   @return [Object, nil]
-      optional :metadata, Telnyx::Internal::Type::Unknown
+      #   @return [Hash{Symbol=>Object}, nil]
+      optional :metadata, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
       # @!method initialize(policy:, idempotency_key: nil, limits: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -41,7 +41,7 @@ module Telnyx
       #
       #   @param limits [Telnyx::Models::BrowserSessionCreateParams::Limits]
       #
-      #   @param metadata [Object] Arbitrary key-value metadata.
+      #   @param metadata [Hash{Symbol=>Object}] Arbitrary key-value metadata.
       #
       #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 
