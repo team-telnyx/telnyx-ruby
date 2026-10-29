@@ -51,7 +51,7 @@ module Telnyx
             sig { returns(T.nilable(Integer)) }
             attr_accessor :forked_from
 
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_accessor :generation_config
 
             # How aggressively the personality interrupts the assistant.
@@ -59,10 +59,10 @@ module Telnyx
             attr_accessor :interruption_level
 
             # Idle-timeout plan for messages during a call.
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_accessor :message_plan
 
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_accessor :network_simulation
 
             sig { returns(T.nilable(Integer)) }
@@ -89,7 +89,7 @@ module Telnyx
             end
             attr_accessor :start_speaking_plan
 
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_accessor :stop_speaking_plan
 
             sig { returns(T.nilable(Float)) }
@@ -107,10 +107,10 @@ module Telnyx
                 background_sound_volume: T.nilable(Float),
                 effective_voice_volume: T.nilable(Float),
                 forked_from: T.nilable(Integer),
-                generation_config: T.nilable(T.anything),
+                generation_config: T.nilable(T::Hash[Symbol, T.anything]),
                 interruption_level: T.nilable(String),
-                message_plan: T.nilable(T.anything),
-                network_simulation: T.nilable(T.anything),
+                message_plan: T.nilable(T::Hash[Symbol, T.anything]),
+                network_simulation: T.nilable(T::Hash[Symbol, T.anything]),
                 organization: T.nilable(Integer),
                 project: T.nilable(Integer),
                 speed:
@@ -121,7 +121,7 @@ module Telnyx
                   T.nilable(
                     Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::StartSpeakingPlan::Variants
                   ),
-                stop_speaking_plan: T.nilable(T.anything),
+                stop_speaking_plan: T.nilable(T::Hash[Symbol, T.anything]),
                 voice_volume: T.nilable(Float)
               ).returns(T.attached_class)
             end
@@ -168,10 +168,10 @@ module Telnyx
                   background_sound_volume: T.nilable(Float),
                   effective_voice_volume: T.nilable(Float),
                   forked_from: T.nilable(Integer),
-                  generation_config: T.nilable(T.anything),
+                  generation_config: T.nilable(T::Hash[Symbol, T.anything]),
                   interruption_level: T.nilable(String),
-                  message_plan: T.nilable(T.anything),
-                  network_simulation: T.nilable(T.anything),
+                  message_plan: T.nilable(T::Hash[Symbol, T.anything]),
+                  network_simulation: T.nilable(T::Hash[Symbol, T.anything]),
                   organization: T.nilable(Integer),
                   project: T.nilable(Integer),
                   speed:
@@ -182,7 +182,7 @@ module Telnyx
                     T.nilable(
                       Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::StartSpeakingPlan::Variants
                     ),
-                  stop_speaking_plan: T.nilable(T.anything),
+                  stop_speaking_plan: T.nilable(T::Hash[Symbol, T.anything]),
                   voice_volume: T.nilable(Float)
                 }
               )
@@ -209,7 +209,8 @@ module Telnyx
             module StartSpeakingPlan
               extend Telnyx::Internal::Type::Union
 
-              Variants = T.type_alias { T.any(Float, T.anything) }
+              Variants =
+                T.type_alias { T.any(Float, T::Hash[Symbol, T.anything]) }
 
               sig do
                 override.returns(
@@ -220,6 +221,14 @@ module Telnyx
               end
               def self.variants
               end
+
+              UnionMember1Map =
+                T.let(
+                  Telnyx::Internal::Type::HashOf[
+                    Telnyx::Internal::Type::Unknown
+                  ],
+                  Telnyx::Internal::Type::Converter
+                )
             end
           end
 

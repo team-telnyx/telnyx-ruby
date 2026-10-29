@@ -52,8 +52,8 @@ module Telnyx
           #   Nonblank string required for bearer authentication. Write-only; omitted from
           #   responses. Re-send when replacing a bearer-auth config.
           #
-          #   @return [Object, nil]
-          optional :token, Telnyx::Internal::Type::Unknown
+          #   @return [String, nil]
+          optional :token, String
         end
 
         # @!method initialize(password:, username:, token: nil, auth_type: nil, endpoint_url: nil, timeout: nil)
@@ -65,7 +65,7 @@ module Telnyx
         #
         #   @param username [String] Basic username.
         #
-        #   @param token [Object] Nonblank string required for bearer authentication. Write-only; omitted from res
+        #   @param token [String] Nonblank string required for bearer authentication. Write-only; omitted from res
         #
         #   @param auth_type [Symbol, Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::AuthType]
         #
@@ -114,16 +114,16 @@ module Telnyx
         #   Nonblank string required for basic authentication. Returned in connector
         #   responses.
         #
-        #   @return [Object, nil]
-        optional :username, Telnyx::Internal::Type::Unknown
+        #   @return [String, nil]
+        optional :username, String
 
         request_only do
           # @!attribute password
           #   Nonblank string required for basic authentication. Write-only; omitted from
           #   responses. Re-send when replacing a basic-auth config.
           #
-          #   @return [Object, nil]
-          optional :password, Telnyx::Internal::Type::Unknown
+          #   @return [String, nil]
+          optional :password, String
         end
 
         # @!method initialize(token:, endpoint_url: nil, password: nil, timeout: nil, username: nil, auth_type: :bearer)
@@ -135,11 +135,11 @@ module Telnyx
         #
         #   @param endpoint_url [String] HTTP or HTTPS processor URL with a host. Use HTTPS to protect payment data in tr
         #
-        #   @param password [Object] Nonblank string required for basic authentication. Write-only; omitted from resp
+        #   @param password [String] Nonblank string required for basic authentication. Write-only; omitted from resp
         #
         #   @param timeout [Integer, nil] Processor HTTP timeout in milliseconds. Omitted or null uses 10000; null is remo
         #
-        #   @param username [Object] Nonblank string required for basic authentication. Returned in connector respons
+        #   @param username [String] Nonblank string required for basic authentication. Returned in connector respons
         #
         #   @param auth_type [Symbol, :bearer]
       end
@@ -168,23 +168,23 @@ module Telnyx
         #   Nonblank string required for basic authentication. Returned in connector
         #   responses.
         #
-        #   @return [Object, nil]
-        optional :username, Telnyx::Internal::Type::Unknown
+        #   @return [String, nil]
+        optional :username, String
 
         request_only do
           # @!attribute token
           #   Nonblank string required for bearer authentication. Write-only; omitted from
           #   responses. Re-send when replacing a bearer-auth config.
           #
-          #   @return [Object, nil]
-          optional :token, Telnyx::Internal::Type::Unknown
+          #   @return [String, nil]
+          optional :token, String
 
           # @!attribute password
           #   Nonblank string required for basic authentication. Write-only; omitted from
           #   responses. Re-send when replacing a basic-auth config.
           #
-          #   @return [Object, nil]
-          optional :password, Telnyx::Internal::Type::Unknown
+          #   @return [String, nil]
+          optional :password, String
         end
 
         # @!method initialize(token: nil, endpoint_url: nil, password: nil, timeout: nil, username: nil, auth_type: :none)
@@ -192,15 +192,15 @@ module Telnyx
         #   {Telnyx::Models::GenericPayConnectorConfig::NoProcessorAuthentication} for more
         #   details.
         #
-        #   @param token [Object] Nonblank string required for bearer authentication. Write-only; omitted from res
+        #   @param token [String] Nonblank string required for bearer authentication. Write-only; omitted from res
         #
         #   @param endpoint_url [String] HTTP or HTTPS processor URL with a host. Use HTTPS to protect payment data in tr
         #
-        #   @param password [Object] Nonblank string required for basic authentication. Write-only; omitted from resp
+        #   @param password [String] Nonblank string required for basic authentication. Write-only; omitted from resp
         #
         #   @param timeout [Integer, nil] Processor HTTP timeout in milliseconds. Omitted or null uses 10000; null is remo
         #
-        #   @param username [Object] Nonblank string required for basic authentication. Returned in connector respons
+        #   @param username [String] Nonblank string required for basic authentication. Returned in connector respons
         #
         #   @param auth_type [Symbol, :none]
       end

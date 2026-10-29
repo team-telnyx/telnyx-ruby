@@ -122,8 +122,8 @@ module Telnyx
         #   Stored username, when supplied. Required to be a nonblank string for basic
         #   authentication.
         #
-        #   @return [Object, nil]
-        optional :username, Telnyx::Internal::Type::Unknown
+        #   @return [String, nil]
+        optional :username, String
 
         # @!method initialize(auth_type: nil, endpoint_url: nil, timeout: nil, username: nil)
         #   Some parameter documentations has been truncated, see
@@ -138,7 +138,7 @@ module Telnyx
         #
         #   @param timeout [Integer] Stored processor HTTP timeout in milliseconds. Omitted when no timeout was confi
         #
-        #   @param username [Object] Stored username, when supplied. Required to be a nonblank string for basic authe
+        #   @param username [String] Stored username, when supplied. Required to be a nonblank string for basic authe
 
         # Stored processor authentication selection. Omitted if it was not explicitly
         # configured.

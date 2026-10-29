@@ -162,6 +162,29 @@ module Telnyx
         )
       end
 
+      # Returns the material a server needs to mint login tokens for the credential
+      # locally, with no request per token: `kid`, `tel_token` and `signing_secret`. The
+      # same material is in the response of `POST /telephony_credentials`. Treat it like
+      # the SIP password.
+      #
+      # @overload retrieve_token_material(id, request_options: {})
+      #
+      # @param id [String] Identifies the resource.
+      #
+      # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Telnyx::Models::TelephonyCredentialRetrieveTokenMaterialResponse]
+      #
+      # @see Telnyx::Models::TelephonyCredentialRetrieveTokenMaterialParams
+      def retrieve_token_material(id, params = {})
+        @client.request(
+          method: :get,
+          path: ["telephony_credentials/%1$s/token_material", id],
+          model: Telnyx::Models::TelephonyCredentialRetrieveTokenMaterialResponse,
+          options: params[:request_options]
+        )
+      end
+
       # @api private
       #
       # @param client [Telnyx::Client]

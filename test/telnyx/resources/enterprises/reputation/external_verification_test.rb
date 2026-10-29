@@ -18,7 +18,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::ExternalVerificationTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::Reputation::ExternalVerificationWrapped::Data
+        data: Telnyx::Enterprises::Reputation::ReputationExternalVerification
       }
     end
   end
@@ -35,7 +35,7 @@ class Telnyx::Test::Resources::Enterprises::Reputation::ExternalVerificationTest
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::Reputation::ExternalVerificationWrapped::Data
+        data: Telnyx::Enterprises::Reputation::ReputationExternalVerification
       }
     end
   end

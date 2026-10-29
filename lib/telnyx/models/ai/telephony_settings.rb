@@ -42,6 +42,16 @@ module Telnyx
         #   @return [String, nil]
         optional :fallback_destination, String
 
+        # @!attribute greeting_delay_ms
+        #   Milliseconds to wait after an inbound call is answered before the assistant
+        #   starts and speaks its greeting. Increase it if the beginning of the greeting is
+        #   cut off on some connections (for example, WebRTC calls). When unset (`null`),
+        #   the platform default of 250 ms is used. Set to `0` to start without a delay.
+        #   Maximum 2000.
+        #
+        #   @return [Integer, nil]
+        optional :greeting_delay_ms, Integer, nil?: true
+
         # @!attribute noise_suppression
         #   The noise suppression engine to use. 'aicoustics' is STT-optimized and
         #   recommended for AI assistants (configure through noise_suppression_config). Use
@@ -137,7 +147,7 @@ module Telnyx
         #   @return [Telnyx::Models::AI::TelephonySettings::VoicemailDetection, nil]
         optional :voicemail_detection, -> { Telnyx::AI::TelephonySettings::VoicemailDetection }
 
-        # @!method initialize(conversation_ended_full_history: nil, default_texml_app_id: nil, disable_dtmf: nil, fallback_destination: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, send_message_history_updates: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
+        # @!method initialize(conversation_ended_full_history: nil, default_texml_app_id: nil, disable_dtmf: nil, fallback_destination: nil, greeting_delay_ms: nil, noise_suppression: nil, noise_suppression_config: nil, recording_settings: nil, send_message_history_updates: nil, supports_unauthenticated_web_calls: nil, time_limit_secs: nil, user_idle_reply_secs: nil, user_idle_timeout_secs: nil, voicemail_detection: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::TelephonySettings} for more details.
         #
@@ -148,6 +158,8 @@ module Telnyx
         #   @param disable_dtmf [Boolean] Disable inbound DTMF for the entire call. Must be set to true if a 'pay' tool is
         #
         #   @param fallback_destination [String] Destination number or SIP URI to transfer the caller to when the AI conversation
+        #
+        #   @param greeting_delay_ms [Integer, nil] Milliseconds to wait after an inbound call is answered before the assistant star
         #
         #   @param noise_suppression [Symbol, Telnyx::Models::AI::TelephonySettings::NoiseSuppression] The noise suppression engine to use. 'aicoustics' is STT-optimized and recommend
         #

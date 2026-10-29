@@ -14,7 +14,7 @@ class Telnyx::Test::Resources::Enterprises::VerifyEmailTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data
+        data: Telnyx::Enterprises::EnterpriseEmailVerificationStatus
       }
     end
   end
@@ -31,7 +31,7 @@ class Telnyx::Test::Resources::Enterprises::VerifyEmailTest < Telnyx::Test::Reso
 
     assert_pattern do
       response => {
-        data: Telnyx::Enterprises::EnterpriseEmailVerificationStatusWrapped::Data
+        data: Telnyx::Enterprises::EnterpriseEmailVerificationStatus
       }
     end
   end

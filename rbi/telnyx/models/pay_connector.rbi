@@ -183,10 +183,10 @@ module Telnyx
 
         # Stored username, when supplied. Required to be a nonblank string for basic
         # authentication.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(String)) }
         attr_reader :username
 
-        sig { params(username: T.anything).void }
+        sig { params(username: String).void }
         attr_writer :username
 
         # Redacted stored configuration. Generic connector fields are shown here. Unknown
@@ -196,7 +196,7 @@ module Telnyx
             auth_type: Telnyx::PayConnector::Config::AuthType::OrSymbol,
             endpoint_url: String,
             timeout: Integer,
-            username: T.anything
+            username: String
           ).returns(T.attached_class)
         end
         def self.new(
@@ -221,7 +221,7 @@ module Telnyx
               auth_type: Telnyx::PayConnector::Config::AuthType::TaggedSymbol,
               endpoint_url: String,
               timeout: Integer,
-              username: T.anything
+              username: String
             }
           )
         end

@@ -2037,6 +2037,9 @@ module Telnyx
 
   TelephonyCredentialRetrieveParams = Telnyx::Models::TelephonyCredentialRetrieveParams
 
+  TelephonyCredentialRetrieveTokenMaterialParams =
+    Telnyx::Models::TelephonyCredentialRetrieveTokenMaterialParams
+
   TelephonyCredentialUpdateParams = Telnyx::Models::TelephonyCredentialUpdateParams
 
   TermsOfService = Telnyx::Models::TermsOfService
@@ -2070,6 +2073,8 @@ module Telnyx
   TextToSpeechRetrieveSpeechParams = Telnyx::Models::TextToSpeechRetrieveSpeechParams
 
   TimeRange = Telnyx::Models::TimeRange
+
+  TokenMaterial = Telnyx::Models::TokenMaterial
 
   TrackingSettings = Telnyx::Models::TrackingSettings
 

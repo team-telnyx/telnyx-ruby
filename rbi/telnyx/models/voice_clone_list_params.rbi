@@ -190,6 +190,11 @@ module Telnyx
             :minimax,
             Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
           )
+        RESEMBLE =
+          T.let(
+            :resemble,
+            Telnyx::VoiceCloneListParams::FilterProvider::TaggedSymbol
+          )
 
         sig do
           override.returns(
