@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Build telnyx.gemspec and push the result to rubygems.org.
+# When run from a GitHub release, refuse to publish unless the release tag is
+# exactly "v<Telnyx::VERSION>", so a mistagged release cannot ship the wrong version.
+
+set -Eeuo pipefail
+
+cd -- "$(dirname -- "$0")/.."
+
+version=$(ruby -Ilib -e 'require "telnyx/version"; print Telnyx::VERSION')
+
+if [ -n "${RELEASE_TAG:-}" ] && [ "$RELEASE_TAG" != "v$version" ]; then
+  echo "release tag '$RELEASE_TAG' does not match lib/telnyx/version.rb ('v$version')" >&2
+  exit 1
+fi
+
+find . -maxdepth 1 -type f -name "*.gem" -delete
+gem build telnyx.gemspec
+gem push "telnyx-$version.gem"

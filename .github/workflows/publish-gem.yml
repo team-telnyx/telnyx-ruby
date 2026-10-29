@@ -1,0 +1,39 @@
+# Publishes the gem to rubygems.org when a GitHub release is published on the
+# legacy-3.x line (pre-releases included). It can also be run manually to
+# re-publish in case it failed:
+# https://www.github.com/team-telnyx/telnyx-ruby/actions/workflows/publish-gem.yml
+#
+# Same shape as publish-gem.yml on master: RubyGems trusted publishing (OIDC),
+# no API-key secret. The release tag must equal "v#{Telnyx::VERSION}".
+name: Publish Gem
+on:
+  workflow_dispatch:
+
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: publish
+    # Match master: the pinned setup-ruby does not support ubuntu-latest's 26.04 image.
+    runs-on: ubuntu-24.04
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
+        with:
+          ruby-version: "3.2"
+          bundler-cache: false
+
+      - name: Configure RubyGems Credentials
+        uses: rubygems/configure-rubygems-credentials@6861877652452567c1a007a50badad3d316fc9ba
+
+      - name: Publish to RubyGems.org
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          bash ./bin/publish-gem
