@@ -80,9 +80,10 @@ module Telnyx
     context "local token minting" do
       should "mint from the create response without another request" do
         stub_request(:post, "#{PROXY_BASE_URL}/v2/telephony_credentials")
+          .with(query: { include: "token_material" }, body: { connection_id: "1234567890" })
           .to_return(body: JSON.generate(data: CREDENTIAL.merge(token_material: MATERIAL)))
 
-        credential = TelephonyCredential.create(connection_id: "1234567890")
+        credential = TelephonyCredential.create(connection_id: "1234567890", include: "token_material")
         jwt = credential.to_jwt(ttl: 600)
 
         claims = AccessToken.decode(jwt, signing_secret: MATERIAL[:signing_secret])
@@ -91,6 +92,20 @@ module Telnyx
         assert_equal MATERIAL[:tel_token], claims["tel_token"]
         assert_equal claims["iat"] + 600, claims["exp"]
         assert_not_requested :get, "#{URL}/token_material"
+      end
+
+      should "create without include sends no query and fetches the material on first to_jwt" do
+        stub_request(:post, "#{PROXY_BASE_URL}/v2/telephony_credentials")
+          .with(body: { connection_id: "1234567890" })
+          .to_return(body: JSON.generate(data: CREDENTIAL))
+        stub_request(:get, "#{URL}/token_material").to_return(body: JSON.generate(data: MATERIAL))
+
+        credential = TelephonyCredential.create(connection_id: "1234567890")
+        assert_nil credential[:token_material]
+
+        credential.to_jwt(ttl: 60)
+        assert_requested :post, "#{PROXY_BASE_URL}/v2/telephony_credentials", times: 1
+        assert_requested :get, "#{URL}/token_material", times: 1
       end
 
       should "fetch token_material once for a retrieved credential" do

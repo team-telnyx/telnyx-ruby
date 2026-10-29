@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "cgi"
+
 module Telnyx
   class TelephonyCredential < APIResource
     extend Telnyx::APIOperations::List
@@ -16,6 +18,21 @@ module Telnyx
                                     instance_methods: { create: action }
     end
 
+    # `include: "token_material"` asks the API to return, with the credential,
+    # the material `to_jwt` signs with. It is as sensitive as the SIP password,
+    # so the API only returns it when asked. Sent as a query parameter; every
+    # other key is the request body as usual.
+    #
+    #   credential = Telnyx::TelephonyCredential.create(connection_id: "123", include: "token_material")
+    #   credential.to_jwt
+    def self.create(params = {}, opts = {})
+      params = params.dup
+      include = params.delete(:include) || params.delete("include")
+      url = resource_url
+      url = "#{url}?include=#{CGI.escape(Array(include).join(','))}" if include && !Array(include).empty?
+      super(params, opts.merge(resource_url: url))
+    end
+
     # Manually create JSON response object from JWT when calling token
     def create_token(params = {}, opts = {})
       url = "#{resource_url}/token"
@@ -28,10 +45,15 @@ module Telnyx
     # SDK as `login_token`.
     #
     # The signing material (`kid`, `tel_token`, `signing_secret`) is read from
-    # `token_material`, present on objects that came from `create`; an object
-    # from `retrieve` or `list` fetches it once (see `fetch_token_material`).
-    # Pass `token_material:` to mint from values stored earlier, with no
-    # request at all.
+    # `token_material`, present on objects that came from
+    # `create(..., include: "token_material")`; any other object fetches it
+    # once (see `fetch_token_material`). Pass `token_material:` to mint from
+    # values stored earlier, with no request at all.
+    #
+    # To mint later without any request, store these with the user the
+    # credential belongs to: `id`, `user_id`, `sip_username`, `expires_at` and
+    # `token_material`. The token carries all of them. Keep them server side,
+    # like the SIP password.
     #
     # `ttl` is the token lifetime in seconds, 1..86400, default one hour.
     def to_jwt(ttl: AccessToken::DEFAULT_TTL, token_material: nil, opts: {})
