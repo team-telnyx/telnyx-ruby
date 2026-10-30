@@ -1,0 +1,114 @@
+# Cuts the GitHub release for the legacy-3.x line when a version bump lands.
+#
+# Every push to legacy-3.x reads Telnyx::VERSION. When the tag "v#{VERSION}"
+# does not exist yet, the workflow tags that commit, creates the GitHub
+# release with the matching CHANGELOG.md section as notes, and dispatches
+# publish-gem.yml on the new tag. Pushes that do not bump the version are a
+# no-op, so merging docs or fixes without a release is still fine.
+#
+# publish-gem.yml is dispatched explicitly because a release created with the
+# workflow's own GITHUB_TOKEN does not emit a `release` event to other
+# workflows. RubyGems trusted publishing is bound to publish-gem.yml, so the
+# publish step stays in that file; this one never touches RubyGems.
+#
+# Re-run by hand (for example after a failed dispatch) from:
+# https://www.github.com/team-telnyx/telnyx-ruby/actions/workflows/release-legacy.yml
+name: Release legacy-3.x
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - legacy-3.x
+
+concurrency:
+  group: release-legacy-3.x
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: release
+    # Match publish-gem.yml: the pinned setup-ruby does not support ubuntu-latest's 26.04 image.
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
+        with:
+          ruby-version: "3.2"
+          bundler-cache: false
+
+      - name: Read Telnyx::VERSION
+        id: version
+        run: |
+          version=$(ruby -Ilib -e 'require "telnyx/version"; print Telnyx::VERSION')
+          if ! [[ "$version" =~ ^3\.[0-9]+\.[0-9]+(\.[0-9A-Za-z.]+)?$ ]]; then
+            echo "lib/telnyx/version.rb does not hold a 3.x version: '$version'" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+          if [[ "$version" == *pre* ]]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check whether the tag already exists
+        id: tag
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null; then
+            echo "$TAG already exists; nothing to release."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extract release notes from CHANGELOG.md
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          notes="$RUNNER_TEMP/release-notes.md"
+          # The section for this version: from its "## <version>" heading up to the next "## " heading.
+          awk -v version="$VERSION" '
+            /^## / { printing = ($2 == version) ; next }
+            printing { print }
+          ' CHANGELOG.md | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' > "$notes"
+          if ! [ -s "$notes" ]; then
+            echo "CHANGELOG.md has no section for $VERSION; using a one-line note." >&2
+            printf 'Release %s of the telnyx gem (legacy 3.x line).\n' "$TAG" > "$notes"
+          fi
+          echo "Release notes for $TAG:"
+          cat "$notes"
+
+      - name: Create the GitHub release
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          PRERELEASE: ${{ steps.version.outputs.prerelease }}
+        run: |
+          args=(--target "$GITHUB_SHA" --title "$TAG" --notes-file "$RUNNER_TEMP/release-notes.md")
+          if [ "$PRERELEASE" = "true" ]; then
+            args+=(--prerelease)
+          fi
+          gh release create "$TAG" "${args[@]}"
+
+      - name: Publish the gem
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          # A GITHUB_TOKEN-created release does not trigger publish-gem.yml's
+          # `release` event, so dispatch it on the tag we just created.
+          gh workflow run publish-gem.yml --ref "$TAG"
+          echo "Dispatched publish-gem.yml on $TAG."
