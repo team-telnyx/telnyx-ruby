@@ -67,6 +67,28 @@ Telnyx::MessagingProfile.retrieve("123")
 ```
 
 
+### WebRTC login tokens
+
+A WebRTC client logs in with a token for a telephony credential. Instead of asking the API for one per login (`create_token`), mint it on your server from the credential's `token_material`:
+
+```ruby
+# Once, when the user is set up: create the credential and ask for the signing material.
+credential = Telnyx::TelephonyCredential.create(connection_id: "1234567890", include: "token_material")
+
+# Store these with the user; the token is built from them. Keep them server side, like the SIP password.
+record = {
+  credential_id: credential.id, user_id: credential.user_id, identity: credential.sip_username,
+  expires_at: credential.expires_at, token_material: credential.token_material.to_h,
+}
+
+# On every login, with no request to Telnyx:
+login_token = credential.to_jwt(ttl: 3600)
+# or later, from the stored values:
+login_token = Telnyx::AccessToken.new(**record, ttl: 3600).to_jwt
+```
+
+Hand the token to the WebRTC SDK as `login_token`. `ttl` is 1..86400 seconds, default one hour. A credential retrieved or listed, or created without `include`, fetches its material once with `fetch_token_material`.
+
 ### Iterating over a resource
 
 API resources are paginated and the library comes with a handful of methods to
