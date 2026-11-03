@@ -414,16 +414,16 @@ module Telnyx
                 T.any(
                   String,
                   T::Array[
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList
                   ]
                 )
               end
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1,
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -446,7 +446,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::OrSymbol
                   )
                 )
               end
@@ -455,7 +455,7 @@ module Telnyx
               sig do
                 params(
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::OrSymbol
                 ).void
               end
               attr_writer :card_type
@@ -464,7 +464,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::OrSymbol
                   )
                 )
               end
@@ -473,7 +473,7 @@ module Telnyx
               sig do
                 params(
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::OrSymbol
                 ).void
               end
               attr_writer :error_type
@@ -485,9 +485,9 @@ module Telnyx
                   text: String,
                   attempt: String,
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::OrSymbol,
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::OrSymbol,
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -511,9 +511,9 @@ module Telnyx
                     text: String,
                     attempt: String,
                     card_type:
-                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::OrSymbol,
+                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::OrSymbol,
                     error_type:
-                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::OrSymbol
+                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::OrSymbol
                   }
                 )
               end
@@ -528,7 +528,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType
+                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -536,53 +536,53 @@ module Telnyx
                 VISA =
                   T.let(
                     :visa,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MASTERCARD =
                   T.let(
                     :mastercard,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 AMEX =
                   T.let(
                     :amex,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 OPTIMA =
                   T.let(
                     :optima,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DISCOVER =
                   T.let(
                     :discover,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DINERS_CLUB =
                   T.let(
                     :"diners-club",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 JCB =
                   T.let(
                     :jcb,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MAESTRO =
                   T.let(
                     :maestro,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 ENROUTE =
                   T.let(
                     :enroute,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType::TaggedSymbol
                     ]
                   )
                 end
@@ -598,7 +598,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType
+                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -606,53 +606,53 @@ module Telnyx
                 TIMEOUT =
                   T.let(
                     :timeout,
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_NUMBER =
                   T.let(
                     :"invalid-card-number",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_TYPE =
                   T.let(
                     :"invalid-card-type",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_DATE =
                   T.let(
                     :"invalid-date",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_SECURITY_CODE =
                   T.let(
                     :"invalid-security-code",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_POSTAL_CODE =
                   T.let(
                     :"invalid-postal-code",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ROUTING_NUMBER =
                   T.let(
                     :"invalid-bank-routing-number",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ACCOUNT_NUMBER =
                   T.let(
                     :"invalid-bank-account-number",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INPUT_MATCHING_FAILED =
                   T.let(
                     :"input-matching-failed",
-                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType::TaggedSymbol
                     ]
                   )
                 end
@@ -671,10 +671,10 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Array =
+            PayToolPromptListArray =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
-                  Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1
+                  Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList
                 ],
                 Telnyx::Internal::Type::Converter
               )
@@ -689,16 +689,16 @@ module Telnyx
                 T.any(
                   String,
                   T::Array[
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList
                   ]
                 )
               end
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1,
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -721,7 +721,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::OrSymbol
                   )
                 )
               end
@@ -730,7 +730,7 @@ module Telnyx
               sig do
                 params(
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::OrSymbol
                 ).void
               end
               attr_writer :card_type
@@ -739,7 +739,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::OrSymbol
                   )
                 )
               end
@@ -748,7 +748,7 @@ module Telnyx
               sig do
                 params(
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::OrSymbol
                 ).void
               end
               attr_writer :error_type
@@ -760,9 +760,9 @@ module Telnyx
                   text: String,
                   attempt: String,
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::OrSymbol,
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::OrSymbol,
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -786,9 +786,9 @@ module Telnyx
                     text: String,
                     attempt: String,
                     card_type:
-                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::OrSymbol,
+                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::OrSymbol,
                     error_type:
-                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::OrSymbol
+                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::OrSymbol
                   }
                 )
               end
@@ -803,7 +803,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType
+                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -811,53 +811,53 @@ module Telnyx
                 VISA =
                   T.let(
                     :visa,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MASTERCARD =
                   T.let(
                     :mastercard,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 AMEX =
                   T.let(
                     :amex,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 OPTIMA =
                   T.let(
                     :optima,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DISCOVER =
                   T.let(
                     :discover,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DINERS_CLUB =
                   T.let(
                     :"diners-club",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 JCB =
                   T.let(
                     :jcb,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MAESTRO =
                   T.let(
                     :maestro,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 ENROUTE =
                   T.let(
                     :enroute,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType::TaggedSymbol
                     ]
                   )
                 end
@@ -873,7 +873,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType
+                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -881,53 +881,53 @@ module Telnyx
                 TIMEOUT =
                   T.let(
                     :timeout,
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_NUMBER =
                   T.let(
                     :"invalid-card-number",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_TYPE =
                   T.let(
                     :"invalid-card-type",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_DATE =
                   T.let(
                     :"invalid-date",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_SECURITY_CODE =
                   T.let(
                     :"invalid-security-code",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_POSTAL_CODE =
                   T.let(
                     :"invalid-postal-code",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ROUTING_NUMBER =
                   T.let(
                     :"invalid-bank-routing-number",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ACCOUNT_NUMBER =
                   T.let(
                     :"invalid-bank-account-number",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INPUT_MATCHING_FAILED =
                   T.let(
                     :"input-matching-failed",
-                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType::TaggedSymbol
                     ]
                   )
                 end
@@ -946,10 +946,10 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Array =
+            PayToolPromptListArray =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
-                  Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1
+                  Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList
                 ],
                 Telnyx::Internal::Type::Converter
               )
@@ -964,16 +964,16 @@ module Telnyx
                 T.any(
                   String,
                   T::Array[
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList
                   ]
                 )
               end
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1,
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -996,7 +996,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::OrSymbol
                   )
                 )
               end
@@ -1005,7 +1005,7 @@ module Telnyx
               sig do
                 params(
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::OrSymbol
                 ).void
               end
               attr_writer :card_type
@@ -1014,7 +1014,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::OrSymbol
                   )
                 )
               end
@@ -1023,7 +1023,7 @@ module Telnyx
               sig do
                 params(
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::OrSymbol
                 ).void
               end
               attr_writer :error_type
@@ -1035,9 +1035,9 @@ module Telnyx
                   text: String,
                   attempt: String,
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::OrSymbol,
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::OrSymbol,
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1061,9 +1061,9 @@ module Telnyx
                     text: String,
                     attempt: String,
                     card_type:
-                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::OrSymbol,
+                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::OrSymbol,
                     error_type:
-                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::OrSymbol
+                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::OrSymbol
                   }
                 )
               end
@@ -1078,7 +1078,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType
+                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1086,53 +1086,53 @@ module Telnyx
                 VISA =
                   T.let(
                     :visa,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MASTERCARD =
                   T.let(
                     :mastercard,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 AMEX =
                   T.let(
                     :amex,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 OPTIMA =
                   T.let(
                     :optima,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DISCOVER =
                   T.let(
                     :discover,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DINERS_CLUB =
                   T.let(
                     :"diners-club",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 JCB =
                   T.let(
                     :jcb,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MAESTRO =
                   T.let(
                     :maestro,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
                 ENROUTE =
                   T.let(
                     :enroute,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType::TaggedSymbol
                     ]
                   )
                 end
@@ -1148,7 +1148,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType
+                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1156,53 +1156,53 @@ module Telnyx
                 TIMEOUT =
                   T.let(
                     :timeout,
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_NUMBER =
                   T.let(
                     :"invalid-card-number",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_TYPE =
                   T.let(
                     :"invalid-card-type",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_DATE =
                   T.let(
                     :"invalid-date",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_SECURITY_CODE =
                   T.let(
                     :"invalid-security-code",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_POSTAL_CODE =
                   T.let(
                     :"invalid-postal-code",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ROUTING_NUMBER =
                   T.let(
                     :"invalid-bank-routing-number",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ACCOUNT_NUMBER =
                   T.let(
                     :"invalid-bank-account-number",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INPUT_MATCHING_FAILED =
                   T.let(
                     :"input-matching-failed",
-                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType::TaggedSymbol
                     ]
                   )
                 end
@@ -1221,10 +1221,10 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Array =
+            PayToolPromptListArray =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
-                  Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1
+                  Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList
                 ],
                 Telnyx::Internal::Type::Converter
               )
@@ -1239,16 +1239,16 @@ module Telnyx
                 T.any(
                   String,
                   T::Array[
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList
                   ]
                 )
               end
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1,
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -1271,7 +1271,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::OrSymbol
                   )
                 )
               end
@@ -1280,7 +1280,7 @@ module Telnyx
               sig do
                 params(
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::OrSymbol
                 ).void
               end
               attr_writer :card_type
@@ -1289,7 +1289,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::OrSymbol
                   )
                 )
               end
@@ -1298,7 +1298,7 @@ module Telnyx
               sig do
                 params(
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::OrSymbol
                 ).void
               end
               attr_writer :error_type
@@ -1310,9 +1310,9 @@ module Telnyx
                   text: String,
                   attempt: String,
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::OrSymbol,
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::OrSymbol,
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1336,9 +1336,9 @@ module Telnyx
                     text: String,
                     attempt: String,
                     card_type:
-                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::OrSymbol,
+                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::OrSymbol,
                     error_type:
-                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::OrSymbol
+                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::OrSymbol
                   }
                 )
               end
@@ -1353,7 +1353,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType
+                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1361,53 +1361,53 @@ module Telnyx
                 VISA =
                   T.let(
                     :visa,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MASTERCARD =
                   T.let(
                     :mastercard,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 AMEX =
                   T.let(
                     :amex,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 OPTIMA =
                   T.let(
                     :optima,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DISCOVER =
                   T.let(
                     :discover,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DINERS_CLUB =
                   T.let(
                     :"diners-club",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 JCB =
                   T.let(
                     :jcb,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MAESTRO =
                   T.let(
                     :maestro,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
                 ENROUTE =
                   T.let(
                     :enroute,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType::TaggedSymbol
                     ]
                   )
                 end
@@ -1423,7 +1423,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType
+                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1431,53 +1431,53 @@ module Telnyx
                 TIMEOUT =
                   T.let(
                     :timeout,
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_NUMBER =
                   T.let(
                     :"invalid-card-number",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_TYPE =
                   T.let(
                     :"invalid-card-type",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_DATE =
                   T.let(
                     :"invalid-date",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_SECURITY_CODE =
                   T.let(
                     :"invalid-security-code",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_POSTAL_CODE =
                   T.let(
                     :"invalid-postal-code",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ROUTING_NUMBER =
                   T.let(
                     :"invalid-bank-routing-number",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ACCOUNT_NUMBER =
                   T.let(
                     :"invalid-bank-account-number",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INPUT_MATCHING_FAILED =
                   T.let(
                     :"input-matching-failed",
-                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType::TaggedSymbol
                     ]
                   )
                 end
@@ -1496,10 +1496,10 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Array =
+            PayToolPromptListArray =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
-                  Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1
+                  Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList
                 ],
                 Telnyx::Internal::Type::Converter
               )
@@ -1514,16 +1514,16 @@ module Telnyx
                 T.any(
                   String,
                   T::Array[
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList
                   ]
                 )
               end
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1,
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -1546,7 +1546,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::OrSymbol
                   )
                 )
               end
@@ -1555,7 +1555,7 @@ module Telnyx
               sig do
                 params(
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::OrSymbol
                 ).void
               end
               attr_writer :card_type
@@ -1564,7 +1564,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::OrSymbol
                   )
                 )
               end
@@ -1573,7 +1573,7 @@ module Telnyx
               sig do
                 params(
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::OrSymbol
                 ).void
               end
               attr_writer :error_type
@@ -1585,9 +1585,9 @@ module Telnyx
                   text: String,
                   attempt: String,
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::OrSymbol,
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::OrSymbol,
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1611,9 +1611,9 @@ module Telnyx
                     text: String,
                     attempt: String,
                     card_type:
-                      Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::OrSymbol,
+                      Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::OrSymbol,
                     error_type:
-                      Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::OrSymbol
+                      Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::OrSymbol
                   }
                 )
               end
@@ -1628,7 +1628,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType
+                      Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1636,53 +1636,53 @@ module Telnyx
                 VISA =
                   T.let(
                     :visa,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MASTERCARD =
                   T.let(
                     :mastercard,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 AMEX =
                   T.let(
                     :amex,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 OPTIMA =
                   T.let(
                     :optima,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DISCOVER =
                   T.let(
                     :discover,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DINERS_CLUB =
                   T.let(
                     :"diners-club",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 JCB =
                   T.let(
                     :jcb,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MAESTRO =
                   T.let(
                     :maestro,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 ENROUTE =
                   T.let(
                     :enroute,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType::TaggedSymbol
                     ]
                   )
                 end
@@ -1698,7 +1698,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType
+                      Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1706,53 +1706,53 @@ module Telnyx
                 TIMEOUT =
                   T.let(
                     :timeout,
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_NUMBER =
                   T.let(
                     :"invalid-card-number",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_TYPE =
                   T.let(
                     :"invalid-card-type",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_DATE =
                   T.let(
                     :"invalid-date",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_SECURITY_CODE =
                   T.let(
                     :"invalid-security-code",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_POSTAL_CODE =
                   T.let(
                     :"invalid-postal-code",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ROUTING_NUMBER =
                   T.let(
                     :"invalid-bank-routing-number",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ACCOUNT_NUMBER =
                   T.let(
                     :"invalid-bank-account-number",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INPUT_MATCHING_FAILED =
                   T.let(
                     :"input-matching-failed",
-                    Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType::TaggedSymbol
                     ]
                   )
                 end
@@ -1771,10 +1771,10 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Array =
+            PayToolPromptListArray =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
-                  Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1
+                  Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList
                 ],
                 Telnyx::Internal::Type::Converter
               )
@@ -1789,16 +1789,16 @@ module Telnyx
                 T.any(
                   String,
                   T::Array[
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList
                   ]
                 )
               end
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1,
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -1821,7 +1821,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::OrSymbol
                   )
                 )
               end
@@ -1830,7 +1830,7 @@ module Telnyx
               sig do
                 params(
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::OrSymbol
                 ).void
               end
               attr_writer :card_type
@@ -1839,7 +1839,7 @@ module Telnyx
               sig do
                 returns(
                   T.nilable(
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::OrSymbol
                   )
                 )
               end
@@ -1848,7 +1848,7 @@ module Telnyx
               sig do
                 params(
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::OrSymbol
                 ).void
               end
               attr_writer :error_type
@@ -1860,9 +1860,9 @@ module Telnyx
                   text: String,
                   attempt: String,
                   card_type:
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::OrSymbol,
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::OrSymbol,
                   error_type:
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::OrSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1886,9 +1886,9 @@ module Telnyx
                     text: String,
                     attempt: String,
                     card_type:
-                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::OrSymbol,
+                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::OrSymbol,
                     error_type:
-                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::OrSymbol
+                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::OrSymbol
                   }
                 )
               end
@@ -1903,7 +1903,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType
+                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1911,53 +1911,53 @@ module Telnyx
                 VISA =
                   T.let(
                     :visa,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MASTERCARD =
                   T.let(
                     :mastercard,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 AMEX =
                   T.let(
                     :amex,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 OPTIMA =
                   T.let(
                     :optima,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DISCOVER =
                   T.let(
                     :discover,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 DINERS_CLUB =
                   T.let(
                     :"diners-club",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 JCB =
                   T.let(
                     :jcb,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 MAESTRO =
                   T.let(
                     :maestro,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
                 ENROUTE =
                   T.let(
                     :enroute,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType::TaggedSymbol
                     ]
                   )
                 end
@@ -1973,7 +1973,7 @@ module Telnyx
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType
+                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1981,53 +1981,53 @@ module Telnyx
                 TIMEOUT =
                   T.let(
                     :timeout,
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_NUMBER =
                   T.let(
                     :"invalid-card-number",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_CARD_TYPE =
                   T.let(
                     :"invalid-card-type",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_DATE =
                   T.let(
                     :"invalid-date",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_SECURITY_CODE =
                   T.let(
                     :"invalid-security-code",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_POSTAL_CODE =
                   T.let(
                     :"invalid-postal-code",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ROUTING_NUMBER =
                   T.let(
                     :"invalid-bank-routing-number",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INVALID_BANK_ACCOUNT_NUMBER =
                   T.let(
                     :"invalid-bank-account-number",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
                 INPUT_MATCHING_FAILED =
                   T.let(
                     :"input-matching-failed",
-                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                    Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType::TaggedSymbol
+                      Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType::TaggedSymbol
                     ]
                   )
                 end
@@ -2046,10 +2046,10 @@ module Telnyx
             def self.variants
             end
 
-            UnionMember1Array =
+            PayToolPromptListArray =
               T.let(
                 Telnyx::Internal::Type::ArrayOf[
-                  Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1
+                  Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList
                 ],
                 Telnyx::Internal::Type::Converter
               )

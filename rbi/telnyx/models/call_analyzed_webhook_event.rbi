@@ -256,7 +256,7 @@ module Telnyx
             params(
               cost:
                 T.any(
-                  Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::OrHash,
+                  Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::OrHash,
                   String
                 )
             ).void
@@ -353,7 +353,7 @@ module Telnyx
                 ),
               cost:
                 T.any(
-                  Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::OrHash,
+                  Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::OrHash,
                   String
                 ),
               duration_sec: Integer,
@@ -580,16 +580,16 @@ module Telnyx
             Variants =
               T.type_alias do
                 T.any(
-                  Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0,
+                  Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown,
                   String
                 )
               end
 
-            class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            class CallCostBreakdown < Telnyx::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0,
+                    Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown,
                     Telnyx::Internal::AnyHash
                   )
                 end
@@ -599,7 +599,7 @@ module Telnyx
                 returns(
                   T.nilable(
                     T::Array[
-                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown
+                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown
                     ]
                   )
                 )
@@ -610,7 +610,7 @@ module Telnyx
                 params(
                   breakdown:
                     T::Array[
-                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown::OrHash
+                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown::OrHash
                     ]
                 ).void
               end
@@ -630,17 +630,12 @@ module Telnyx
               sig { params(total: String).void }
               attr_writer :total
 
-              # The session's cost breakdown from Session Analysis, covering every product
-              # billed on the call: the AI Voice Assistant engine minutes
-              # (`ai-voice-assistant`), LLM inference tokens (`inference`), and call-control,
-              # SIP trunking, and recording lines. If cost data could not be retrieved after
-              # retries, this field carries the placeholder string `No cost data available.`
-              # instead of an object.
+              # The itemized cost of the call.
               sig do
                 params(
                   breakdown:
                     T::Array[
-                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown::OrHash
+                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown::OrHash
                     ],
                   currency: String,
                   total: String
@@ -661,7 +656,7 @@ module Telnyx
                   {
                     breakdown:
                       T::Array[
-                        Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown
+                        Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown
                       ],
                     currency: String,
                     total: String
@@ -675,7 +670,7 @@ module Telnyx
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown,
+                      Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown,
                       Telnyx::Internal::AnyHash
                     )
                   end

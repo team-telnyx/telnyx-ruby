@@ -344,6 +344,13 @@ module Telnyx
           #   @return [String, nil]
           optional :caller_name, String, nil?: true
 
+          # @!attribute entity_type
+          #   The entity type of the phone number's owner, from the enhanced caller name data
+          #   source — `Person` or `Business`. Null when not available.
+          #
+          #   @return [String, nil]
+          optional :entity_type, String, nil?: true
+
           # @!attribute error_code
           #   A lookup-specific error code if the enhanced caller name could not be resolved;
           #   otherwise null.
@@ -351,7 +358,7 @@ module Telnyx
           #   @return [String, nil]
           optional :error_code, String, nil?: true
 
-          # @!method initialize(caller_name: nil, error_code: nil)
+          # @!method initialize(caller_name: nil, entity_type: nil, error_code: nil)
           #   Some parameter documentations has been truncated, see
           #   {Telnyx::Models::NumberLookupRetrieveResponse::Data::EnhancedCallerName} for
           #   more details.
@@ -360,6 +367,8 @@ module Telnyx
           #   `type=enhanced-caller-name` is requested.
           #
           #   @param caller_name [String, nil] The name associated with the phone number.
+          #
+          #   @param entity_type [String, nil] The entity type of the phone number's owner, from the enhanced caller name data
           #
           #   @param error_code [String, nil] A lookup-specific error code if the enhanced caller name could not be resolved;
         end

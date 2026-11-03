@@ -704,6 +704,11 @@ module Telnyx
           sig { returns(T.nilable(String)) }
           attr_accessor :caller_name
 
+          # The entity type of the phone number's owner, from the enhanced caller name data
+          # source — `Person` or `Business`. Null when not available.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :entity_type
+
           # A lookup-specific error code if the enhanced caller name could not be resolved;
           # otherwise null.
           sig { returns(T.nilable(String)) }
@@ -714,12 +719,16 @@ module Telnyx
           sig do
             params(
               caller_name: T.nilable(String),
+              entity_type: T.nilable(String),
               error_code: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
             # The name associated with the phone number.
             caller_name: nil,
+            # The entity type of the phone number's owner, from the enhanced caller name data
+            # source — `Person` or `Business`. Null when not available.
+            entity_type: nil,
             # A lookup-specific error code if the enhanced caller name could not be resolved;
             # otherwise null.
             error_code: nil
@@ -728,7 +737,11 @@ module Telnyx
 
           sig do
             override.returns(
-              { caller_name: T.nilable(String), error_code: T.nilable(String) }
+              {
+                caller_name: T.nilable(String),
+                entity_type: T.nilable(String),
+                error_code: T.nilable(String)
+              }
             )
           end
           def to_hash

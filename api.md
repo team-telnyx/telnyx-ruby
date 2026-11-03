@@ -334,6 +334,7 @@ Methods:
 - <code title="get /ai/conversations">client.ai.conversations.<a href="./lib/telnyx/resources/ai/conversations.rb">list</a>(\*\*params)</code>
 - <code title="delete /ai/conversations/{conversation_id}">client.ai.conversations.<a href="./lib/telnyx/resources/ai/conversations.rb">delete</a>(\*\*params)</code>
 - <code title="post /ai/conversations/{conversation_id}/message">client.ai.conversations.<a href="./lib/telnyx/resources/ai/conversations.rb">add_message</a>(\*\*params)</code>
+- <code title="delete /ai/conversations/{conversation_id}/conversations-insights/{insight_id}">client.ai.conversations.<a href="./lib/telnyx/resources/ai/conversations.rb">delete_delete</a>(\*\*params)</code>
 - <code title="get /ai/conversations/{conversation_id}/conversations-insights">client.ai.conversations.<a href="./lib/telnyx/resources/ai/conversations.rb">retrieve_conversations_insights</a>(\*\*params)</code>
 
 ### InsightGroups

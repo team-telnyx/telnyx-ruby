@@ -54,12 +54,12 @@ module Telnyx
 
                 def self?.variants: -> ::Array[Telnyx::Models::AI::Memory::Namespaces::ProfileIngestParams::Body::union_member1]
 
-                UnionMember0Array: Telnyx::Internal::Type::Converter
+                IngestPayloadValueArray: Telnyx::Internal::Type::Converter
               end
 
               def self?.variants: -> ::Array[Telnyx::Models::AI::Memory::Namespaces::ProfileIngestParams::body]
 
-              UnionMember0Map: Telnyx::Internal::Type::Converter
+              IngestPayloadObjectMap: Telnyx::Internal::Type::Converter
             end
           end
         end

@@ -150,7 +150,7 @@ module Telnyx
           # @!attribute bank_account_number
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList>, nil]
           optional :bank_account_number,
                    union: -> { Telnyx::AI::PayToolParams::Prompts::BankAccountNumber },
                    api_name: :"bank-account-number"
@@ -158,7 +158,7 @@ module Telnyx
           # @!attribute bank_routing_number
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList>, nil]
           optional :bank_routing_number,
                    union: -> { Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber },
                    api_name: :"bank-routing-number"
@@ -166,7 +166,7 @@ module Telnyx
           # @!attribute expiration_date
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList>, nil]
           optional :expiration_date,
                    union: -> { Telnyx::AI::PayToolParams::Prompts::ExpirationDate },
                    api_name: :"expiration-date"
@@ -174,7 +174,7 @@ module Telnyx
           # @!attribute payment_card_number
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList>, nil]
           optional :payment_card_number,
                    union: -> { Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber },
                    api_name: :"payment-card-number"
@@ -182,7 +182,7 @@ module Telnyx
           # @!attribute postal_code
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList>, nil]
           optional :postal_code,
                    union: -> { Telnyx::AI::PayToolParams::Prompts::PostalCode },
                    api_name: :"postal-code"
@@ -190,7 +190,7 @@ module Telnyx
           # @!attribute security_code
           #   A default prompt string or an ordered list of qualified prompts.
           #
-          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1>, nil]
+          #   @return [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList>, nil]
           optional :security_code,
                    union: -> { Telnyx::AI::PayToolParams::Prompts::SecurityCode },
                    api_name: :"security-code"
@@ -199,17 +199,17 @@ module Telnyx
           #   Custom text-to-speech prompts keyed by payment collection step. The AI assistant
           #   merges its own card-number prompt into this map, matching on the same step keys.
           #
-          #   @param bank_account_number [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param bank_account_number [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param bank_routing_number [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param bank_routing_number [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param expiration_date [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param expiration_date [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param payment_card_number [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param payment_card_number [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param postal_code [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param postal_code [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList>] A default prompt string or an ordered list of qualified prompts.
           #
-          #   @param security_code [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1>] A default prompt string or an ordered list of qualified prompts.
+          #   @param security_code [String, Array<Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList>] A default prompt string or an ordered list of qualified prompts.
 
           # A default prompt string or an ordered list of qualified prompts.
           #
@@ -219,9 +219,9 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1Array }
+            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptListArray }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               # @!attribute text
               #   Text spoken for the payment collection step.
               #
@@ -240,20 +240,20 @@ module Telnyx
               # @!attribute card_type
               #   Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType, nil]
               optional :card_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType }
 
               # @!attribute error_type
               #   Step error for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType, nil]
               optional :error_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType }
 
               # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1}
+              #   {Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList}
               #   for more details.
               #
               #   A text-to-speech prompt with optional matching qualifiers, mirroring the Voice
@@ -263,13 +263,13 @@ module Telnyx
               #
               #   @param attempt [String] Space-separated 1-based attempt numbers (1-9 followed by digits only, e.g. `"2 3
               #
-              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
+              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1::ErrorType] Step error for which this prompt applies.
+              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList::ErrorType] Step error for which this prompt applies.
 
               # Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1#card_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList#card_type
               module CardType
                 extend Telnyx::Internal::Type::Enum
 
@@ -289,7 +289,7 @@ module Telnyx
 
               # Step error for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1#error_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList#error_type
               module ErrorType
                 extend Telnyx::Internal::Type::Enum
 
@@ -309,12 +309,12 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1>)]
+            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember1Array =
+            PayToolPromptListArray =
               Telnyx::Internal::Type::ArrayOf[-> {
-                Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::UnionMember1
+                Telnyx::AI::PayToolParams::Prompts::BankAccountNumber::PayToolPromptList
               }]
           end
 
@@ -326,9 +326,9 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1Array }
+            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptListArray }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               # @!attribute text
               #   Text spoken for the payment collection step.
               #
@@ -347,20 +347,20 @@ module Telnyx
               # @!attribute card_type
               #   Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType, nil]
               optional :card_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType }
 
               # @!attribute error_type
               #   Step error for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType, nil]
               optional :error_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType }
 
               # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1}
+              #   {Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList}
               #   for more details.
               #
               #   A text-to-speech prompt with optional matching qualifiers, mirroring the Voice
@@ -370,13 +370,13 @@ module Telnyx
               #
               #   @param attempt [String] Space-separated 1-based attempt numbers (1-9 followed by digits only, e.g. `"2 3
               #
-              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
+              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1::ErrorType] Step error for which this prompt applies.
+              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList::ErrorType] Step error for which this prompt applies.
 
               # Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1#card_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList#card_type
               module CardType
                 extend Telnyx::Internal::Type::Enum
 
@@ -396,7 +396,7 @@ module Telnyx
 
               # Step error for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1#error_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList#error_type
               module ErrorType
                 extend Telnyx::Internal::Type::Enum
 
@@ -416,12 +416,12 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1>)]
+            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember1Array =
+            PayToolPromptListArray =
               Telnyx::Internal::Type::ArrayOf[-> {
-                Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::UnionMember1
+                Telnyx::AI::PayToolParams::Prompts::BankRoutingNumber::PayToolPromptList
               }]
           end
 
@@ -433,9 +433,9 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1Array }
+            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptListArray }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               # @!attribute text
               #   Text spoken for the payment collection step.
               #
@@ -454,21 +454,21 @@ module Telnyx
               # @!attribute card_type
               #   Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType, nil]
               optional :card_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType }
 
               # @!attribute error_type
               #   Step error for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType, nil]
               optional :error_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType }
 
               # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1} for
-              #   more details.
+              #   {Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList}
+              #   for more details.
               #
               #   A text-to-speech prompt with optional matching qualifiers, mirroring the Voice
               #   API PayPrompt schema.
@@ -477,13 +477,13 @@ module Telnyx
               #
               #   @param attempt [String] Space-separated 1-based attempt numbers (1-9 followed by digits only, e.g. `"2 3
               #
-              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
+              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1::ErrorType] Step error for which this prompt applies.
+              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList::ErrorType] Step error for which this prompt applies.
 
               # Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1#card_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList#card_type
               module CardType
                 extend Telnyx::Internal::Type::Enum
 
@@ -503,7 +503,7 @@ module Telnyx
 
               # Step error for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1#error_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList#error_type
               module ErrorType
                 extend Telnyx::Internal::Type::Enum
 
@@ -523,12 +523,12 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1>)]
+            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember1Array =
+            PayToolPromptListArray =
               Telnyx::Internal::Type::ArrayOf[-> {
-                Telnyx::AI::PayToolParams::Prompts::ExpirationDate::UnionMember1
+                Telnyx::AI::PayToolParams::Prompts::ExpirationDate::PayToolPromptList
               }]
           end
 
@@ -540,9 +540,9 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1Array }
+            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptListArray }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               # @!attribute text
               #   Text spoken for the payment collection step.
               #
@@ -561,20 +561,20 @@ module Telnyx
               # @!attribute card_type
               #   Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType, nil]
               optional :card_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType }
 
               # @!attribute error_type
               #   Step error for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType, nil]
               optional :error_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType }
 
               # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1}
+              #   {Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList}
               #   for more details.
               #
               #   A text-to-speech prompt with optional matching qualifiers, mirroring the Voice
@@ -584,13 +584,13 @@ module Telnyx
               #
               #   @param attempt [String] Space-separated 1-based attempt numbers (1-9 followed by digits only, e.g. `"2 3
               #
-              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
+              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1::ErrorType] Step error for which this prompt applies.
+              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList::ErrorType] Step error for which this prompt applies.
 
               # Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1#card_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList#card_type
               module CardType
                 extend Telnyx::Internal::Type::Enum
 
@@ -610,7 +610,7 @@ module Telnyx
 
               # Step error for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1#error_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList#error_type
               module ErrorType
                 extend Telnyx::Internal::Type::Enum
 
@@ -630,12 +630,12 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1>)]
+            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember1Array =
+            PayToolPromptListArray =
               Telnyx::Internal::Type::ArrayOf[-> {
-                Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::UnionMember1
+                Telnyx::AI::PayToolParams::Prompts::PaymentCardNumber::PayToolPromptList
               }]
           end
 
@@ -647,9 +647,9 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1Array }
+            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptListArray }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               # @!attribute text
               #   Text spoken for the payment collection step.
               #
@@ -668,19 +668,21 @@ module Telnyx
               # @!attribute card_type
               #   Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType, nil]
-              optional :card_type, enum: -> { Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType }
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType, nil]
+              optional :card_type,
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType }
 
               # @!attribute error_type
               #   Step error for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType, nil]
-              optional :error_type, enum: -> { Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType }
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType, nil]
+              optional :error_type,
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType }
 
               # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1} for more
-              #   details.
+              #   {Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList} for
+              #   more details.
               #
               #   A text-to-speech prompt with optional matching qualifiers, mirroring the Voice
               #   API PayPrompt schema.
@@ -689,13 +691,13 @@ module Telnyx
               #
               #   @param attempt [String] Space-separated 1-based attempt numbers (1-9 followed by digits only, e.g. `"2 3
               #
-              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
+              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1::ErrorType] Step error for which this prompt applies.
+              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList::ErrorType] Step error for which this prompt applies.
 
               # Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1#card_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList#card_type
               module CardType
                 extend Telnyx::Internal::Type::Enum
 
@@ -715,7 +717,7 @@ module Telnyx
 
               # Step error for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1#error_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList#error_type
               module ErrorType
                 extend Telnyx::Internal::Type::Enum
 
@@ -735,12 +737,12 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::UnionMember1>)]
+            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember1Array =
+            PayToolPromptListArray =
               Telnyx::Internal::Type::ArrayOf[-> {
-                Telnyx::AI::PayToolParams::Prompts::PostalCode::UnionMember1
+                Telnyx::AI::PayToolParams::Prompts::PostalCode::PayToolPromptList
               }]
           end
 
@@ -752,9 +754,9 @@ module Telnyx
 
             variant String
 
-            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1Array }
+            variant -> { Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptListArray }
 
-            class UnionMember1 < Telnyx::Internal::Type::BaseModel
+            class PayToolPromptList < Telnyx::Internal::Type::BaseModel
               # @!attribute text
               #   Text spoken for the payment collection step.
               #
@@ -773,20 +775,21 @@ module Telnyx
               # @!attribute card_type
               #   Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType, nil]
-              optional :card_type, enum: -> { Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType }
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType, nil]
+              optional :card_type,
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType }
 
               # @!attribute error_type
               #   Step error for which this prompt applies.
               #
-              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType, nil]
+              #   @return [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType, nil]
               optional :error_type,
-                       enum: -> { Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType }
+                       enum: -> { Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType }
 
               # @!method initialize(text:, attempt: nil, card_type: nil, error_type: nil)
               #   Some parameter documentations has been truncated, see
-              #   {Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1} for
-              #   more details.
+              #   {Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList}
+              #   for more details.
               #
               #   A text-to-speech prompt with optional matching qualifiers, mirroring the Voice
               #   API PayPrompt schema.
@@ -795,13 +798,13 @@ module Telnyx
               #
               #   @param attempt [String] Space-separated 1-based attempt numbers (1-9 followed by digits only, e.g. `"2 3
               #
-              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
+              #   @param card_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::CardType] Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1::ErrorType] Step error for which this prompt applies.
+              #   @param error_type [Symbol, Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList::ErrorType] Step error for which this prompt applies.
 
               # Lowercase, case-sensitive detected card type for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1#card_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList#card_type
               module CardType
                 extend Telnyx::Internal::Type::Enum
 
@@ -821,7 +824,7 @@ module Telnyx
 
               # Step error for which this prompt applies.
               #
-              # @see Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1#error_type
+              # @see Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList#error_type
               module ErrorType
                 extend Telnyx::Internal::Type::Enum
 
@@ -841,12 +844,12 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::UnionMember1>)]
+            #   @return [Array(String, Array<Telnyx::Models::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList>)]
 
             # @type [Telnyx::Internal::Type::Converter]
-            UnionMember1Array =
+            PayToolPromptListArray =
               Telnyx::Internal::Type::ArrayOf[-> {
-                Telnyx::AI::PayToolParams::Prompts::SecurityCode::UnionMember1
+                Telnyx::AI::PayToolParams::Prompts::SecurityCode::PayToolPromptList
               }]
           end
         end

@@ -7,6 +7,7 @@ module Telnyx
           model: String,
           authentication_method: Telnyx::Models::AI::authentication_method,
           certificate_ref: String,
+          extra_headers: ::Hash[Symbol, String]?,
           forward_metadata: bool,
           llm_api_key_ref: String,
           token_retrieval_url: String
@@ -27,6 +28,8 @@ module Telnyx
 
         def certificate_ref=: (String) -> String
 
+        attr_accessor extra_headers: ::Hash[Symbol, String]?
+
         attr_reader forward_metadata: bool?
 
         def forward_metadata=: (bool) -> bool
@@ -44,6 +47,7 @@ module Telnyx
           model: String,
           ?authentication_method: Telnyx::Models::AI::authentication_method,
           ?certificate_ref: String,
+          ?extra_headers: ::Hash[Symbol, String]?,
           ?forward_metadata: bool,
           ?llm_api_key_ref: String,
           ?token_retrieval_url: String
@@ -54,6 +58,7 @@ module Telnyx
           model: String,
           authentication_method: Telnyx::Models::AI::authentication_method,
           certificate_ref: String,
+          extra_headers: ::Hash[Symbol, String]?,
           forward_metadata: bool,
           llm_api_key_ref: String,
           token_retrieval_url: String

@@ -162,7 +162,11 @@ module Telnyx
           )
         end
 
-        # Delete a specific conversation by its ID.
+        # Delete a specific conversation by its ID. Permanently deletes the conversation
+        # and its associated data: the conversation's messages, its insight generation
+        # results, any conversation memories, and its webhook request logs. Recordings are
+        # not deleted — recordings are managed separately through the /v2/recordings
+        # endpoints. This action cannot be undone.
         #
         # @overload delete(conversation_id, request_options: {})
         #
@@ -223,6 +227,40 @@ module Telnyx
             path: ["ai/conversations/%1$s/message", conversation_id],
             headers: parsed.slice(*header_params.keys).transform_keys(header_params),
             body: parsed.except(*header_params.keys),
+            model: NilClass,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::AI::ConversationDeleteDeleteParams} for more details.
+        #
+        # Delete one insight generation request for a conversation. Generation results are
+        # stored per conversation and per insight template; deleting a request permanently
+        # removes the stored result but does not stop insight generation from running
+        # again. To remove every insight result for the conversation, delete the
+        # conversation itself. A successful delete returns an empty response.
+        #
+        # @overload delete_delete(insight_id, conversation_id:, request_options: {})
+        #
+        # @param insight_id [String] Unique identifier of the insight generation request to delete, as returned as `d
+        #
+        # @param conversation_id [String] Unique identifier of the conversation.
+        #
+        # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [nil]
+        #
+        # @see Telnyx::Models::AI::ConversationDeleteDeleteParams
+        def delete_delete(insight_id, params)
+          parsed, options = Telnyx::AI::ConversationDeleteDeleteParams.dump_request(params)
+          conversation_id =
+            parsed.delete(:conversation_id) do
+              raise ArgumentError.new("missing required path argument #{_1}")
+            end
+          @client.request(
+            method: :delete,
+            path: ["ai/conversations/%1$s/conversations-insights/%2$s", conversation_id, insight_id],
             model: NilClass,
             options: options
           )
