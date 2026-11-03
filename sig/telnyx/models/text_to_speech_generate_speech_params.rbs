@@ -2,6 +2,7 @@ module Telnyx
   module Models
     type text_to_speech_generate_speech_params =
       {
+        assemblyai: ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai,
         aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws,
         azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         disable_cache: bool,
@@ -25,6 +26,12 @@ module Telnyx
     class TextToSpeechGenerateSpeechParams < ::Telnyx::Internal::Type::BaseModel
       extend ::Telnyx::Internal::Type::RequestParameters::Converter
       include ::Telnyx::Internal::Type::RequestParameters
+
+      attr_reader assemblyai: ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai?
+
+      def assemblyai=: (
+        ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai
+      ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai
 
       attr_reader aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws?
 
@@ -119,6 +126,7 @@ module Telnyx
       ) -> ::Telnyx::TextToSpeechGenerateSpeechParams::Xai
 
       def initialize: (
+        ?assemblyai: ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai,
         ?aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws,
         ?azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         ?disable_cache: bool,
@@ -140,6 +148,7 @@ module Telnyx
       ) -> void
 
       def to_hash: -> {
+        assemblyai: ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai,
         aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws,
         azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         disable_cache: bool,
@@ -159,6 +168,113 @@ module Telnyx
         xai: ::Telnyx::TextToSpeechGenerateSpeechParams::Xai,
         request_options: ::Telnyx::RequestOptions
       }
+
+      type assemblyai =
+        {
+          voice_id: String,
+          audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::audio_format,
+          language: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::language,
+          model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::model_id,
+          sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::sample_rate
+        }
+
+      class Assemblyai < ::Telnyx::Internal::Type::BaseModel
+        attr_accessor voice_id: String
+
+        attr_reader audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::audio_format?
+
+        def audio_format=: (
+          ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::audio_format
+        ) -> ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::audio_format
+
+        attr_reader language: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::language?
+
+        def language=: (
+          ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::language
+        ) -> ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::language
+
+        attr_reader model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::model_id?
+
+        def model_id=: (
+          ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::model_id
+        ) -> ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::model_id
+
+        attr_reader sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::sample_rate?
+
+        def sample_rate=: (
+          ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::sample_rate
+        ) -> ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::sample_rate
+
+        def initialize: (
+          voice_id: String,
+          ?audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::audio_format,
+          ?language: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::language,
+          ?model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::model_id,
+          ?sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::sample_rate
+        ) -> void
+
+        def to_hash: -> {
+          voice_id: String,
+          audio_format: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::audio_format,
+          language: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::language,
+          model_id: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::model_id,
+          sample_rate: ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::sample_rate
+        }
+
+        type audio_format = :mp3 | :wav | :pcm_s16le | :pcm_mulaw | :pcm_alaw
+
+        module AudioFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          MP3: :mp3
+          WAV: :wav
+          PCM_S16LE: :pcm_s16le
+          PCM_MULAW: :pcm_mulaw
+          PCM_ALAW: :pcm_alaw
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::audio_format]
+        end
+
+        type language = :en | :es | :de | :fr | :it | :pt
+
+        module Language
+          extend ::Telnyx::Internal::Type::Enum
+
+          EN: :en
+          ES: :es
+          DE: :de
+          FR: :fr
+          IT: :it
+          PT: :pt
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::language]
+        end
+
+        type model_id = :"assemblyai-tts-1"
+
+        module ModelID
+          extend ::Telnyx::Internal::Type::Enum
+
+          ASSEMBLYAI_TTS_1: :"assemblyai-tts-1"
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::model_id]
+        end
+
+        type sample_rate = 8000 | 16000 | 22050 | 24000 | 44100 | 48000
+
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          SAMPLE_RATE_8000: 8000
+          SAMPLE_RATE_16000: 16000
+          SAMPLE_RATE_22050: 22050
+          SAMPLE_RATE_24000: 24000
+          SAMPLE_RATE_44100: 44100
+          SAMPLE_RATE_48000: 48000
+
+          def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::sample_rate]
+        end
+      end
 
       type aws =
         {
@@ -447,6 +563,7 @@ module Telnyx
         | :xai
         | :humain
         | :soniox
+        | :assemblyai
 
       module Provider
         extend ::Telnyx::Internal::Type::Enum
@@ -460,6 +577,7 @@ module Telnyx
         XAI: :xai
         HUMAIN: :humain
         SONIOX: :soniox
+        ASSEMBLYAI: :assemblyai
 
         def self?.values: -> ::Array[::Telnyx::Models::TextToSpeechGenerateSpeechParams::provider]
       end

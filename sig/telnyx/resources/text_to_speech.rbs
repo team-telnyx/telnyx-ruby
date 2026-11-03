@@ -2,6 +2,7 @@ module Telnyx
   module Resources
     class TextToSpeech
       def generate_speech: (
+        ?assemblyai: ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai,
         ?aws: ::Telnyx::TextToSpeechGenerateSpeechParams::Aws,
         ?azure: ::Telnyx::TextToSpeechGenerateSpeechParams::Azure,
         ?disable_cache: bool,

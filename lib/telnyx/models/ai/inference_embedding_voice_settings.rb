@@ -47,6 +47,15 @@ module Telnyx
         #   @return [Boolean, nil]
         optional :expressive_mode, Telnyx::Internal::Type::Boolean
 
+        # @!attribute language
+        #   Two-letter ISO 639-1 code of the language the voice speaks, for example `es`.
+        #   Only applicable to Soniox and AssemblyAI voices, which speak every language of
+        #   their model. AssemblyAI accepts `en`, `es`, `de`, `fr`, `it`, and `pt`. When
+        #   unset, the voice speaks English.
+        #
+        #   @return [String, nil]
+        optional :language, String, nil?: true
+
         # @!attribute language_boost
         #   Enhances recognition for specific languages and dialects during MiniMax TTS
         #   synthesis. Default is null (no boost). Set to 'auto' for automatic language
@@ -114,7 +123,7 @@ module Telnyx
         #   @return [Float, nil]
         optional :voice_speed, Float
 
-        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, expressive_mode: nil, language_boost: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, tool_call_audio: nil, use_speaker_boost: nil, voice_speed: nil)
+        # @!method initialize(voice:, api_key_ref: nil, background_audio: nil, expressive_mode: nil, language: nil, language_boost: nil, similarity_boost: nil, speed: nil, style: nil, temperature: nil, tool_call_audio: nil, use_speaker_boost: nil, voice_speed: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::AI::InferenceEmbeddingVoiceSettings} for more details.
         #
@@ -125,6 +134,8 @@ module Telnyx
         #   @param background_audio [Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember0, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember1, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::BackgroundAudio::UnionMember2] Optional background audio to play on the call. Use a predefined media bed, or su
         #
         #   @param expressive_mode [Boolean] Enables emotionally expressive speech using SSML emotion tags. When enabled, the
+        #
+        #   @param language [String, nil] Two-letter ISO 639-1 code of the language the voice speaks, for example `es`. On
         #
         #   @param language_boost [Symbol, Telnyx::Models::AI::InferenceEmbeddingVoiceSettings::LanguageBoost, nil] Enhances recognition for specific languages and dialects during MiniMax TTS synt
         #

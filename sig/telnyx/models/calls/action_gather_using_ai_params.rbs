@@ -183,6 +183,7 @@ module Telnyx
           | Telnyx::ResembleVoiceSettings
           | Telnyx::XaiVoiceSettings
           | Telnyx::Calls::SonioxVoiceSettings
+          | Telnyx::Calls::AssemblyAIVoiceSettings
 
         module VoiceSettings
           extend Telnyx::Internal::Type::Union
