@@ -2111,6 +2111,12 @@ module Telnyx
 
   class UserAddressRetrieveParams = Telnyx::Models::UserAddressRetrieveParams
 
+  class UserProfileAPI = Telnyx::Models::UserProfileAPI
+
+  class UserProfileListParams = Telnyx::Models::UserProfileListParams
+
+  class UserProfilePatchAllParams = Telnyx::Models::UserProfilePatchAllParams
+
   class UserRequirement = Telnyx::Models::UserRequirement
 
   class UserTagListParams = Telnyx::Models::UserTagListParams

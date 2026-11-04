@@ -848,6 +848,10 @@ module Telnyx
     # @return [Telnyx::Resources::Tunnels]
     attr_reader :tunnels
 
+    # Read and update the authenticated user's profile and data locality.
+    # @return [Telnyx::Resources::UserProfile]
+    attr_reader :user_profile
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1156,6 +1160,7 @@ module Telnyx
       @network_routes = Telnyx::Resources::NetworkRoutes.new(client: self)
       @pay_connectors = Telnyx::Resources::PayConnectors.new(client: self)
       @tunnels = Telnyx::Resources::Tunnels.new(client: self)
+      @user_profile = Telnyx::Resources::UserProfile.new(client: self)
     end
   end
 end

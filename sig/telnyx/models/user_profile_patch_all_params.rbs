@@ -1,0 +1,302 @@
+module Telnyx
+  module Models
+    type user_profile_patch_all_params =
+      {
+        :address_1 => String?,
+        :address_2 => String?,
+        business_name: String?,
+        city: String?,
+        company_size: String,
+        country: String?,
+        data_locality: Telnyx::Models::UserProfilePatchAllParams::data_locality,
+        default_managed_account_allow_custom_pricing: bool,
+        default_managed_account_inherit_emergency_terms_of_service: bool,
+        default_managed_account_rollup_billing: bool,
+        default_notify_manager_account: bool,
+        default_numbers_external_pin: String,
+        first_name: String?,
+        got_free_number_at_signup: bool,
+        last_name: String?,
+        low_balance_notification_frequency: Telnyx::Models::UserProfilePatchAllParams::low_balance_notification_frequency?,
+        low_balance_threshold_amount: Float?,
+        notify_on_invoice_available: bool,
+        notify_on_invoice_payment: bool,
+        npac_user: bool,
+        onboarding_build_method: ::Array[String],
+        onboarding_industries: ::Array[String],
+        onboarding_monthly_budget: ::Array[String],
+        onboarding_product_interest: ::Array[String],
+        onboarding_project_types: ::Array[String],
+        onboarding_reasons_for_consideration: ::Array[String],
+        onboarding_referrer: ::Array[String],
+        onboarding_use_cases_other: ::Array[String],
+        phone_number: String?,
+        port_out_pin_validation: bool,
+        primary_use_case: String,
+        role: String,
+        state: String?,
+        ui_theme: Telnyx::Models::UserProfilePatchAllParams::ui_theme,
+        use_cases: ::Array[String],
+        user_subscription_opt_in: bool,
+        zip: String?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class UserProfilePatchAllParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor address_1: String?
+
+      attr_accessor address_2: String?
+
+      attr_accessor business_name: String?
+
+      attr_accessor city: String?
+
+      attr_reader company_size: String?
+
+      def company_size=: (String) -> String
+
+      attr_accessor country: String?
+
+      attr_reader data_locality: Telnyx::Models::UserProfilePatchAllParams::data_locality?
+
+      def data_locality=: (
+        Telnyx::Models::UserProfilePatchAllParams::data_locality
+      ) -> Telnyx::Models::UserProfilePatchAllParams::data_locality
+
+      attr_reader default_managed_account_allow_custom_pricing: bool?
+
+      def default_managed_account_allow_custom_pricing=: (bool) -> bool
+
+      attr_reader default_managed_account_inherit_emergency_terms_of_service: bool?
+
+      def default_managed_account_inherit_emergency_terms_of_service=: (
+        bool
+      ) -> bool
+
+      attr_reader default_managed_account_rollup_billing: bool?
+
+      def default_managed_account_rollup_billing=: (bool) -> bool
+
+      attr_reader default_notify_manager_account: bool?
+
+      def default_notify_manager_account=: (bool) -> bool
+
+      attr_reader default_numbers_external_pin: String?
+
+      def default_numbers_external_pin=: (String) -> String
+
+      attr_accessor first_name: String?
+
+      attr_reader got_free_number_at_signup: bool?
+
+      def got_free_number_at_signup=: (bool) -> bool
+
+      attr_accessor last_name: String?
+
+      attr_accessor low_balance_notification_frequency: Telnyx::Models::UserProfilePatchAllParams::low_balance_notification_frequency?
+
+      attr_accessor low_balance_threshold_amount: Float?
+
+      attr_reader notify_on_invoice_available: bool?
+
+      def notify_on_invoice_available=: (bool) -> bool
+
+      attr_reader notify_on_invoice_payment: bool?
+
+      def notify_on_invoice_payment=: (bool) -> bool
+
+      attr_reader npac_user: bool?
+
+      def npac_user=: (bool) -> bool
+
+      attr_reader onboarding_build_method: ::Array[String]?
+
+      def onboarding_build_method=: (::Array[String]) -> ::Array[String]
+
+      attr_reader onboarding_industries: ::Array[String]?
+
+      def onboarding_industries=: (::Array[String]) -> ::Array[String]
+
+      attr_reader onboarding_monthly_budget: ::Array[String]?
+
+      def onboarding_monthly_budget=: (::Array[String]) -> ::Array[String]
+
+      attr_reader onboarding_product_interest: ::Array[String]?
+
+      def onboarding_product_interest=: (::Array[String]) -> ::Array[String]
+
+      attr_reader onboarding_project_types: ::Array[String]?
+
+      def onboarding_project_types=: (::Array[String]) -> ::Array[String]
+
+      attr_reader onboarding_reasons_for_consideration: ::Array[String]?
+
+      def onboarding_reasons_for_consideration=: (
+        ::Array[String]
+      ) -> ::Array[String]
+
+      attr_reader onboarding_referrer: ::Array[String]?
+
+      def onboarding_referrer=: (::Array[String]) -> ::Array[String]
+
+      attr_reader onboarding_use_cases_other: ::Array[String]?
+
+      def onboarding_use_cases_other=: (::Array[String]) -> ::Array[String]
+
+      attr_accessor phone_number: String?
+
+      attr_reader port_out_pin_validation: bool?
+
+      def port_out_pin_validation=: (bool) -> bool
+
+      attr_reader primary_use_case: String?
+
+      def primary_use_case=: (String) -> String
+
+      attr_reader role: String?
+
+      def role=: (String) -> String
+
+      attr_accessor state: String?
+
+      attr_reader ui_theme: Telnyx::Models::UserProfilePatchAllParams::ui_theme?
+
+      def ui_theme=: (
+        Telnyx::Models::UserProfilePatchAllParams::ui_theme
+      ) -> Telnyx::Models::UserProfilePatchAllParams::ui_theme
+
+      attr_reader use_cases: ::Array[String]?
+
+      def use_cases=: (::Array[String]) -> ::Array[String]
+
+      attr_reader user_subscription_opt_in: bool?
+
+      def user_subscription_opt_in=: (bool) -> bool
+
+      attr_accessor zip: String?
+
+      def initialize: (
+        ?address_1: String?,
+        ?address_2: String?,
+        ?business_name: String?,
+        ?city: String?,
+        ?company_size: String,
+        ?country: String?,
+        ?data_locality: Telnyx::Models::UserProfilePatchAllParams::data_locality,
+        ?default_managed_account_allow_custom_pricing: bool,
+        ?default_managed_account_inherit_emergency_terms_of_service: bool,
+        ?default_managed_account_rollup_billing: bool,
+        ?default_notify_manager_account: bool,
+        ?default_numbers_external_pin: String,
+        ?first_name: String?,
+        ?got_free_number_at_signup: bool,
+        ?last_name: String?,
+        ?low_balance_notification_frequency: Telnyx::Models::UserProfilePatchAllParams::low_balance_notification_frequency?,
+        ?low_balance_threshold_amount: Float?,
+        ?notify_on_invoice_available: bool,
+        ?notify_on_invoice_payment: bool,
+        ?npac_user: bool,
+        ?onboarding_build_method: ::Array[String],
+        ?onboarding_industries: ::Array[String],
+        ?onboarding_monthly_budget: ::Array[String],
+        ?onboarding_product_interest: ::Array[String],
+        ?onboarding_project_types: ::Array[String],
+        ?onboarding_reasons_for_consideration: ::Array[String],
+        ?onboarding_referrer: ::Array[String],
+        ?onboarding_use_cases_other: ::Array[String],
+        ?phone_number: String?,
+        ?port_out_pin_validation: bool,
+        ?primary_use_case: String,
+        ?role: String,
+        ?state: String?,
+        ?ui_theme: Telnyx::Models::UserProfilePatchAllParams::ui_theme,
+        ?use_cases: ::Array[String],
+        ?user_subscription_opt_in: bool,
+        ?zip: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        :address_1 => String?,
+        :address_2 => String?,
+        business_name: String?,
+        city: String?,
+        company_size: String,
+        country: String?,
+        data_locality: Telnyx::Models::UserProfilePatchAllParams::data_locality,
+        default_managed_account_allow_custom_pricing: bool,
+        default_managed_account_inherit_emergency_terms_of_service: bool,
+        default_managed_account_rollup_billing: bool,
+        default_notify_manager_account: bool,
+        default_numbers_external_pin: String,
+        first_name: String?,
+        got_free_number_at_signup: bool,
+        last_name: String?,
+        low_balance_notification_frequency: Telnyx::Models::UserProfilePatchAllParams::low_balance_notification_frequency?,
+        low_balance_threshold_amount: Float?,
+        notify_on_invoice_available: bool,
+        notify_on_invoice_payment: bool,
+        npac_user: bool,
+        onboarding_build_method: ::Array[String],
+        onboarding_industries: ::Array[String],
+        onboarding_monthly_budget: ::Array[String],
+        onboarding_product_interest: ::Array[String],
+        onboarding_project_types: ::Array[String],
+        onboarding_reasons_for_consideration: ::Array[String],
+        onboarding_referrer: ::Array[String],
+        onboarding_use_cases_other: ::Array[String],
+        phone_number: String?,
+        port_out_pin_validation: bool,
+        primary_use_case: String,
+        role: String,
+        state: String?,
+        ui_theme: Telnyx::Models::UserProfilePatchAllParams::ui_theme,
+        use_cases: ::Array[String],
+        user_subscription_opt_in: bool,
+        zip: String?,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type data_locality = :USA | :DEU | :AUS | :UAE | :CAN
+
+      module DataLocality
+        extend Telnyx::Internal::Type::Enum
+
+        USA: :USA
+        DEU: :DEU
+        AUS: :AUS
+        UAE: :UAE
+        CAN: :CAN
+
+        def self?.values: -> ::Array[Telnyx::Models::UserProfilePatchAllParams::data_locality]
+      end
+
+      type low_balance_notification_frequency = 2 | 4 | 12 | 24
+
+      module LowBalanceNotificationFrequency
+        extend Telnyx::Internal::Type::Enum
+
+        LOW_BALANCE_NOTIFICATION_FREQUENCY_2: 2
+        LOW_BALANCE_NOTIFICATION_FREQUENCY_4: 4
+        LOW_BALANCE_NOTIFICATION_FREQUENCY_12: 12
+        LOW_BALANCE_NOTIFICATION_FREQUENCY_24: 24
+
+        def self?.values: -> ::Array[Telnyx::Models::UserProfilePatchAllParams::low_balance_notification_frequency]
+      end
+
+      type ui_theme = 0 | 1
+
+      module UiTheme
+        extend Telnyx::Internal::Type::Enum
+
+        UI_THEME_0: 0
+        UI_THEME_1: 1
+
+        def self?.values: -> ::Array[Telnyx::Models::UserProfilePatchAllParams::ui_theme]
+      end
+    end
+  end
+end

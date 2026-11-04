@@ -3531,3 +3531,10 @@ Methods:
 Methods:
 
 - <code title="post /tunnels/{id}/actions/rotate_token">client.tunnels.actions.<a href="./lib/telnyx/resources/tunnels/actions.rb">rotate_token</a>(\*\*params)</code>
+
+# UserProfile
+
+Methods:
+
+- <code title="get /user_profile">client.user_profile.<a href="./lib/telnyx/resources/user_profile.rb">list</a>()</code>
+- <code title="patch /user_profile">client.user_profile.<a href="./lib/telnyx/resources/user_profile.rb">patch_all</a>(\*\*params)</code>
