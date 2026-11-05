@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      type team_list_response =
+        { data: ::Array[Telnyx::AgentGateways::AgentGatewayTeam] }
+
+      class TeamListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::AgentGateways::AgentGatewayTeam]
+
+        def initialize: (
+          data: ::Array[Telnyx::AgentGateways::AgentGatewayTeam]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::AgentGateways::AgentGatewayTeam]
+        }
+      end
+    end
+  end
+end

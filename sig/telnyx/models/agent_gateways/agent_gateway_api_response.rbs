@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    class AgentGatewayAPIResponse = AgentGateways::AgentGatewayAPIResponse
+
+    module AgentGateways
+      type agent_gateway_api_response =
+        { data: Telnyx::AgentGateways::AgentGatewayAPI }
+
+      class AgentGatewayAPIResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::AgentGateways::AgentGatewayAPI
+
+        def initialize: (data: Telnyx::AgentGateways::AgentGatewayAPI) -> void
+
+        def to_hash: -> { data: Telnyx::AgentGateways::AgentGatewayAPI }
+      end
+    end
+  end
+end

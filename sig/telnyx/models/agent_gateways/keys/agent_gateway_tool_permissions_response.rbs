@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      module Keys
+        type agent_gateway_tool_permissions_response =
+          { data: Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions }
+
+        class AgentGatewayToolPermissionsResponse < Telnyx::Internal::Type::BaseModel
+          attr_accessor data: Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions
+
+          def initialize: (
+            data: Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions
+          ) -> void
+
+          def to_hash: -> {
+            data: Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions
+          }
+        end
+      end
+    end
+  end
+end

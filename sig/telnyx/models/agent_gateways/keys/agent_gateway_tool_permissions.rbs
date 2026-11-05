@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      module Keys
+        type agent_gateway_tool_permissions =
+          {
+            servers: ::Array[Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions::Server]
+          }
+
+        class AgentGatewayToolPermissions < Telnyx::Internal::Type::BaseModel
+          attr_accessor servers: ::Array[Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions::Server]
+
+          def initialize: (
+            servers: ::Array[Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions::Server]
+          ) -> void
+
+          def to_hash: -> {
+            servers: ::Array[Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions::Server]
+          }
+
+          type server = { id: String, tools: ::Array[String] }
+
+          class Server < Telnyx::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_reader tools: ::Array[String]?
+
+            def tools=: (::Array[String]) -> ::Array[String]
+
+            def initialize: (id: String, ?tools: ::Array[String]) -> void
+
+            def to_hash: -> { id: String, tools: ::Array[String] }
+          end
+        end
+      end
+    end
+  end
+end

@@ -131,7 +131,7 @@ module Telnyx
 
               def self?.variants: -> ::Array[Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::start_speaking_plan]
 
-              UnionMember1Map: Telnyx::Internal::Type::Converter
+              StartSpeakingPlanObjectMap: Telnyx::Internal::Type::Converter
             end
           end
 

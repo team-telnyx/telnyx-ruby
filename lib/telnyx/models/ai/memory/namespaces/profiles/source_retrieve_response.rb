@@ -85,14 +85,14 @@ module Telnyx
                 module Content
                   extend Telnyx::Internal::Type::Union
 
-                  variant -> { Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse::Data::Content::UnionMember0Map }
+                  variant -> { Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse::Data::Content::SourceContentObjectMap }
 
                   variant union: -> { Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse::Data::Content::UnionMember1 }
 
                   module UnionMember1
                     extend Telnyx::Internal::Type::Union
 
-                    variant -> { Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse::Data::Content::UnionMember1::UnionMember0Array }
+                    variant -> { Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse::Data::Content::UnionMember1::SourceContentValueArray }
 
                     variant String
 
@@ -104,14 +104,14 @@ module Telnyx
                     #   @return [Array(Array<Object>, String, Float, Boolean)]
 
                     # @type [Telnyx::Internal::Type::Converter]
-                    UnionMember0Array = Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+                    SourceContentValueArray = Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
                   end
 
                   # @!method self.variants
                   #   @return [Array(Hash{Symbol=>Object}, Array<Object>, String, Float, Boolean)]
 
                   # @type [Telnyx::Internal::Type::Converter]
-                  UnionMember0Map = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+                  SourceContentObjectMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
                 end
               end
             end

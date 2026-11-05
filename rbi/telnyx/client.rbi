@@ -847,6 +847,9 @@ module Telnyx
     sig { returns(Telnyx::Resources::UserProfile) }
     attr_reader :user_profile
 
+    sig { returns(Telnyx::Resources::AgentGateways) }
+    attr_reader :agent_gateways
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

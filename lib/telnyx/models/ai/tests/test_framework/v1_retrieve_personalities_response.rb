@@ -183,13 +183,13 @@ module Telnyx
 
               variant Float
 
-              variant -> { Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::StartSpeakingPlan::UnionMember1Map }
+              variant -> { Telnyx::Models::AI::Tests::TestFramework::V1RetrievePersonalitiesResponseItem::StartSpeakingPlan::StartSpeakingPlanObjectMap }
 
               # @!method self.variants
               #   @return [Array(Float, Hash{Symbol=>Object})]
 
               # @type [Telnyx::Internal::Type::Converter]
-              UnionMember1Map = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+              StartSpeakingPlanObjectMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
             end
           end
 

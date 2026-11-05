@@ -1,0 +1,40 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class Guardrails
+        def create: (
+          String instance_id,
+          modes: ::Array[Telnyx::Models::AgentGateways::GuardrailCreateParams::mode],
+          name: String,
+          type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
+          ?always_on: bool,
+          ?settings: top,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayGuardrailResponse
+
+        def update: (
+          String guardrail_id,
+          instance_id: String,
+          ?always_on: bool,
+          ?modes: ::Array[Telnyx::Models::AgentGateways::GuardrailUpdateParams::mode],
+          ?name: String,
+          ?settings: top,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayGuardrailResponse
+
+        def list: (
+          String instance_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::GuardrailListResponse
+
+        def delete: (
+          String guardrail_id,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayGuardrailResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

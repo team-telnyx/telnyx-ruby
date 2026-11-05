@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    type agent_gateway =
+      {
+        id: String,
+        created_at: Time,
+        engine: :litellm,
+        engine_version: String,
+        gateway_url: String?,
+        name: String?,
+        network_id: String?,
+        status: Telnyx::Models::AgentGateway::status,
+        wireguard_interface_id: String?
+      }
+
+    class AgentGateway < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor engine: :litellm
+
+      attr_accessor engine_version: String
+
+      attr_accessor gateway_url: String?
+
+      attr_accessor name: String?
+
+      attr_accessor network_id: String?
+
+      attr_accessor status: Telnyx::Models::AgentGateway::status
+
+      attr_accessor wireguard_interface_id: String?
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        engine_version: String,
+        gateway_url: String?,
+        name: String?,
+        network_id: String?,
+        status: Telnyx::Models::AgentGateway::status,
+        wireguard_interface_id: String?,
+        ?engine: :litellm
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        engine: :litellm,
+        engine_version: String,
+        gateway_url: String?,
+        name: String?,
+        network_id: String?,
+        status: Telnyx::Models::AgentGateway::status,
+        wireguard_interface_id: String?
+      }
+
+      type status = :pending | :provisioning | :ready | :failed | :deleting
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        PROVISIONING: :provisioning
+        READY: :ready
+        FAILED: :failed
+        DELETING: :deleting
+
+        def self?.values: -> ::Array[Telnyx::Models::AgentGateway::status]
+      end
+    end
+  end
+end

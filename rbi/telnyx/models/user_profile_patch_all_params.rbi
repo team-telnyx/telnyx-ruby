@@ -522,22 +522,22 @@ module Telnyx
           end
         OrInteger = T.type_alias { Integer }
 
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_2 =
+        FREQUENCY_2 =
           T.let(
             2,
             Telnyx::UserProfilePatchAllParams::LowBalanceNotificationFrequency::TaggedInteger
           )
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_4 =
+        FREQUENCY_4 =
           T.let(
             4,
             Telnyx::UserProfilePatchAllParams::LowBalanceNotificationFrequency::TaggedInteger
           )
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_12 =
+        FREQUENCY_12 =
           T.let(
             12,
             Telnyx::UserProfilePatchAllParams::LowBalanceNotificationFrequency::TaggedInteger
           )
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_24 =
+        FREQUENCY_24 =
           T.let(
             24,
             Telnyx::UserProfilePatchAllParams::LowBalanceNotificationFrequency::TaggedInteger
@@ -564,9 +564,9 @@ module Telnyx
           end
         OrInteger = T.type_alias { Integer }
 
-        UI_THEME_0 =
+        DARK =
           T.let(0, Telnyx::UserProfilePatchAllParams::UiTheme::TaggedInteger)
-        UI_THEME_1 =
+        LIGHT =
           T.let(1, Telnyx::UserProfilePatchAllParams::UiTheme::TaggedInteger)
 
         sig do

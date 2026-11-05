@@ -416,6 +416,8 @@ module Telnyx
 
     attr_reader user_profile: Telnyx::Resources::UserProfile
 
+    attr_reader agent_gateways: Telnyx::Resources::AgentGateways
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

@@ -3538,3 +3538,91 @@ Methods:
 
 - <code title="get /user_profile">client.user_profile.<a href="./lib/telnyx/resources/user_profile.rb">list</a>()</code>
 - <code title="patch /user_profile">client.user_profile.<a href="./lib/telnyx/resources/user_profile.rb">patch_all</a>(\*\*params)</code>
+
+# AgentGateways
+
+Methods:
+
+- <code title="post /agent_gateways">client.agent_gateways.<a href="./lib/telnyx/resources/agent_gateways.rb">create</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}">client.agent_gateways.<a href="./lib/telnyx/resources/agent_gateways.rb">retrieve</a>(\*\*params)</code>
+- <code title="get /agent_gateways">client.agent_gateways.<a href="./lib/telnyx/resources/agent_gateways.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}">client.agent_gateways.<a href="./lib/telnyx/resources/agent_gateways.rb">delete</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/models">client.agent_gateways.<a href="./lib/telnyx/resources/agent_gateways.rb">retrieve_models</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/spend_logs">client.agent_gateways.<a href="./lib/telnyx/resources/agent_gateways.rb">retrieve_spend_logs</a>(\*\*params)</code>
+
+## APIs
+
+Methods:
+
+- <code title="post /agent_gateways/{instance_id}/apis">client.agent_gateways.apis.<a href="./lib/telnyx/resources/agent_gateways/apis.rb">create</a>(\*\*params)</code>
+- <code title="patch /agent_gateways/{instance_id}/apis/{api_id}">client.agent_gateways.apis.<a href="./lib/telnyx/resources/agent_gateways/apis.rb">update</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/apis">client.agent_gateways.apis.<a href="./lib/telnyx/resources/agent_gateways/apis.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}/apis/{api_id}">client.agent_gateways.apis.<a href="./lib/telnyx/resources/agent_gateways/apis.rb">delete</a>(\*\*params)</code>
+
+## Guardrails
+
+Methods:
+
+- <code title="post /agent_gateways/{instance_id}/guardrails">client.agent_gateways.guardrails.<a href="./lib/telnyx/resources/agent_gateways/guardrails.rb">create</a>(\*\*params)</code>
+- <code title="patch /agent_gateways/{instance_id}/guardrails/{guardrail_id}">client.agent_gateways.guardrails.<a href="./lib/telnyx/resources/agent_gateways/guardrails.rb">update</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/guardrails">client.agent_gateways.guardrails.<a href="./lib/telnyx/resources/agent_gateways/guardrails.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}/guardrails/{guardrail_id}">client.agent_gateways.guardrails.<a href="./lib/telnyx/resources/agent_gateways/guardrails.rb">delete</a>(\*\*params)</code>
+
+## Keys
+
+Methods:
+
+- <code title="post /agent_gateways/{instance_id}/keys">client.agent_gateways.keys.<a href="./lib/telnyx/resources/agent_gateways/keys.rb">create</a>(\*\*params)</code>
+- <code title="patch /agent_gateways/{instance_id}/keys/{key_id}">client.agent_gateways.keys.<a href="./lib/telnyx/resources/agent_gateways/keys.rb">update</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/keys">client.agent_gateways.keys.<a href="./lib/telnyx/resources/agent_gateways/keys.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}/keys/{key_id}">client.agent_gateways.keys.<a href="./lib/telnyx/resources/agent_gateways/keys.rb">delete</a>(\*\*params)</code>
+
+### ToolPermissions
+
+Methods:
+
+- <code title="put /agent_gateways/{instance_id}/keys/{key_id}/tool_permissions">client.agent_gateways.keys.tool_permissions.<a href="./lib/telnyx/resources/agent_gateways/keys/tool_permissions.rb">create</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/keys/{key_id}/tool_permissions">client.agent_gateways.keys.tool_permissions.<a href="./lib/telnyx/resources/agent_gateways/keys/tool_permissions.rb">list</a>(\*\*params)</code>
+
+## McpServers
+
+Methods:
+
+- <code title="post /agent_gateways/{instance_id}/mcp_servers">client.agent_gateways.mcp_servers.<a href="./lib/telnyx/resources/agent_gateways/mcp_servers.rb">create</a>(\*\*params)</code>
+- <code title="patch /agent_gateways/{instance_id}/mcp_servers/{server_id}">client.agent_gateways.mcp_servers.<a href="./lib/telnyx/resources/agent_gateways/mcp_servers.rb">update</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/mcp_servers">client.agent_gateways.mcp_servers.<a href="./lib/telnyx/resources/agent_gateways/mcp_servers.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}/mcp_servers/{server_id}">client.agent_gateways.mcp_servers.<a href="./lib/telnyx/resources/agent_gateways/mcp_servers.rb">delete</a>(\*\*params)</code>
+
+## Policies
+
+Methods:
+
+- <code title="post /agent_gateways/{instance_id}/policies">client.agent_gateways.policies.<a href="./lib/telnyx/resources/agent_gateways/policies.rb">create</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/policies/{name}">client.agent_gateways.policies.<a href="./lib/telnyx/resources/agent_gateways/policies.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /agent_gateways/{instance_id}/policies/{name}">client.agent_gateways.policies.<a href="./lib/telnyx/resources/agent_gateways/policies.rb">update</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/policies">client.agent_gateways.policies.<a href="./lib/telnyx/resources/agent_gateways/policies.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}/policies/{name}">client.agent_gateways.policies.<a href="./lib/telnyx/resources/agent_gateways/policies.rb">delete</a>(\*\*params)</code>
+
+## PolicyAttachments
+
+Methods:
+
+- <code title="post /agent_gateways/{instance_id}/policy_attachments">client.agent_gateways.policy_attachments.<a href="./lib/telnyx/resources/agent_gateways/policy_attachments.rb">create</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/policy_attachments">client.agent_gateways.policy_attachments.<a href="./lib/telnyx/resources/agent_gateways/policy_attachments.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}/policy_attachments/{attachment_id}">client.agent_gateways.policy_attachments.<a href="./lib/telnyx/resources/agent_gateways/policy_attachments.rb">delete</a>(\*\*params)</code>
+
+## Teams
+
+Methods:
+
+- <code title="post /agent_gateways/{instance_id}/teams">client.agent_gateways.teams.<a href="./lib/telnyx/resources/agent_gateways/teams.rb">create</a>(\*\*params)</code>
+- <code title="patch /agent_gateways/{instance_id}/teams/{team_id}">client.agent_gateways.teams.<a href="./lib/telnyx/resources/agent_gateways/teams.rb">update</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/teams">client.agent_gateways.teams.<a href="./lib/telnyx/resources/agent_gateways/teams.rb">list</a>(\*\*params)</code>
+- <code title="delete /agent_gateways/{instance_id}/teams/{team_id}">client.agent_gateways.teams.<a href="./lib/telnyx/resources/agent_gateways/teams.rb">delete</a>(\*\*params)</code>
+
+### ToolPermissions
+
+Methods:
+
+- <code title="put /agent_gateways/{instance_id}/teams/{team_id}/tool_permissions">client.agent_gateways.teams.tool_permissions.<a href="./lib/telnyx/resources/agent_gateways/teams/tool_permissions.rb">create</a>(\*\*params)</code>
+- <code title="get /agent_gateways/{instance_id}/teams/{team_id}/tool_permissions">client.agent_gateways.teams.tool_permissions.<a href="./lib/telnyx/resources/agent_gateways/teams/tool_permissions.rb">list</a>(\*\*params)</code>

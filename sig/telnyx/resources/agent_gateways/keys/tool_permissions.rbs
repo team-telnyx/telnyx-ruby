@@ -1,0 +1,24 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class Keys
+        class ToolPermissions
+          def create: (
+            String key_id,
+            instance_id: String,
+            servers: ::Array[Telnyx::AgentGateways::Keys::AgentGatewayToolPermissions::Server],
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AgentGateways::Keys::AgentGatewayToolPermissionsResponse
+
+          def list: (
+            String key_id,
+            instance_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> Telnyx::AgentGateways::Keys::AgentGatewayToolPermissionsResponse
+
+          def initialize: (client: Telnyx::Client) -> void
+        end
+      end
+    end
+  end
+end

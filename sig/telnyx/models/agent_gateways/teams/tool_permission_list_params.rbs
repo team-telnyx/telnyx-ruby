@@ -1,0 +1,32 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      module Teams
+        type tool_permission_list_params =
+          { instance_id: String, team_id: String }
+          & Telnyx::Internal::Type::request_parameters
+
+        class ToolPermissionListParams < Telnyx::Internal::Type::BaseModel
+          extend Telnyx::Internal::Type::RequestParameters::Converter
+          include Telnyx::Internal::Type::RequestParameters
+
+          attr_accessor instance_id: String
+
+          attr_accessor team_id: String
+
+          def initialize: (
+            instance_id: String,
+            team_id: String,
+            ?request_options: Telnyx::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            instance_id: String,
+            team_id: String,
+            request_options: Telnyx::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

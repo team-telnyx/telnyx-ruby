@@ -1,0 +1,85 @@
+module Telnyx
+  module Models
+    class AgentGatewayMcpServer = AgentGateways::AgentGatewayMcpServer
+
+    module AgentGateways
+      type agent_gateway_mcp_server =
+        {
+          id: String,
+          auth: Telnyx::AgentGateways::AgentGatewayShownAuth,
+          created_at: Time?,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          transport: Telnyx::Models::AgentGateways::AgentGatewayMcpServer::transport,
+          updated_at: Time?,
+          url: String
+        }
+
+      class AgentGatewayMcpServer < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor auth: Telnyx::AgentGateways::AgentGatewayShownAuth
+
+        attr_accessor created_at: Time?
+
+        attr_accessor forwarded_headers: ::Array[String]
+
+        attr_accessor name: String
+
+        attr_accessor open_to_every_key: bool
+
+        attr_accessor static_headers: ::Hash[Symbol, String]
+
+        attr_accessor tools: ::Array[String]
+
+        attr_accessor transport: Telnyx::Models::AgentGateways::AgentGatewayMcpServer::transport
+
+        attr_accessor updated_at: Time?
+
+        attr_accessor url: String
+
+        def initialize: (
+          id: String,
+          auth: Telnyx::AgentGateways::AgentGatewayShownAuth,
+          created_at: Time?,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          transport: Telnyx::Models::AgentGateways::AgentGatewayMcpServer::transport,
+          updated_at: Time?,
+          url: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          auth: Telnyx::AgentGateways::AgentGatewayShownAuth,
+          created_at: Time?,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          transport: Telnyx::Models::AgentGateways::AgentGatewayMcpServer::transport,
+          updated_at: Time?,
+          url: String
+        }
+
+        type transport = :http | :sse
+
+        module Transport
+          extend Telnyx::Internal::Type::Enum
+
+          HTTP: :http
+          SSE: :sse
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayMcpServer::transport]
+        end
+      end
+    end
+  end
+end

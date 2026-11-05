@@ -1,0 +1,131 @@
+module Telnyx
+  module Models
+    class AgentGatewayPolicyPipeline = AgentGateways::AgentGatewayPolicyPipeline
+
+    module AgentGateways
+      type agent_gateway_policy_pipeline =
+        {
+          hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook,
+          steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyPipeline::Step]
+        }
+
+      class AgentGatewayPolicyPipeline < Telnyx::Internal::Type::BaseModel
+        attr_accessor hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook
+
+        attr_accessor steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyPipeline::Step]
+
+        def initialize: (
+          hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook,
+          steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyPipeline::Step]
+        ) -> void
+
+        def to_hash: -> {
+          hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook,
+          steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyPipeline::Step]
+        }
+
+        type hook = :before_request | :after_request
+
+        module Hook
+          extend Telnyx::Internal::Type::Enum
+
+          BEFORE_REQUEST: :before_request
+          AFTER_REQUEST: :after_request
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook]
+        end
+
+        type step =
+          {
+            guardrail: String,
+            message: String?,
+            on_error: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_error?,
+            on_fail: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_fail,
+            on_pass: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_pass,
+            pass_data: bool
+          }
+
+        class Step < Telnyx::Internal::Type::BaseModel
+          attr_accessor guardrail: String
+
+          attr_accessor message: String?
+
+          attr_accessor on_error: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_error?
+
+          attr_reader on_fail: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_fail?
+
+          def on_fail=: (
+            Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_fail
+          ) -> Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_fail
+
+          attr_reader on_pass: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_pass?
+
+          def on_pass=: (
+            Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_pass
+          ) -> Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_pass
+
+          attr_reader pass_data: bool?
+
+          def pass_data=: (bool) -> bool
+
+          def initialize: (
+            guardrail: String,
+            ?message: String?,
+            ?on_error: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_error?,
+            ?on_fail: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_fail,
+            ?on_pass: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_pass,
+            ?pass_data: bool
+          ) -> void
+
+          def to_hash: -> {
+            guardrail: String,
+            message: String?,
+            on_error: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_error?,
+            on_fail: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_fail,
+            on_pass: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_pass,
+            pass_data: bool
+          }
+
+          type on_error = :next | :allow | :block | :respond
+
+          module OnError
+            extend Telnyx::Internal::Type::Enum
+
+            NEXT: :next
+            ALLOW: :allow
+            BLOCK: :block
+            RESPOND: :respond
+
+            def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_error]
+          end
+
+          type on_fail = :next | :allow | :block | :respond
+
+          module OnFail
+            extend Telnyx::Internal::Type::Enum
+
+            NEXT: :next
+            ALLOW: :allow
+            BLOCK: :block
+            RESPOND: :respond
+
+            def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_fail]
+          end
+
+          type on_pass = :next | :allow | :block | :respond
+
+          module OnPass
+            extend Telnyx::Internal::Type::Enum
+
+            NEXT: :next
+            ALLOW: :allow
+            BLOCK: :block
+            RESPOND: :respond
+
+            def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::Step::on_pass]
+          end
+        end
+      end
+    end
+  end
+end

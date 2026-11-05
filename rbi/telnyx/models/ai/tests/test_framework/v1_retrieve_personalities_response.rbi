@@ -222,7 +222,7 @@ module Telnyx
               def self.variants
               end
 
-              UnionMember1Map =
+              StartSpeakingPlanObjectMap =
                 T.let(
                   Telnyx::Internal::Type::HashOf[
                     Telnyx::Internal::Type::Unknown

@@ -852,6 +852,9 @@ module Telnyx
     # @return [Telnyx::Resources::UserProfile]
     attr_reader :user_profile
 
+    # @return [Telnyx::Resources::AgentGateways]
+    attr_reader :agent_gateways
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1161,6 +1164,7 @@ module Telnyx
       @pay_connectors = Telnyx::Resources::PayConnectors.new(client: self)
       @tunnels = Telnyx::Resources::Tunnels.new(client: self)
       @user_profile = Telnyx::Resources::UserProfile.new(client: self)
+      @agent_gateways = Telnyx::Resources::AgentGateways.new(client: self)
     end
   end
 end

@@ -43,6 +43,24 @@ module Telnyx
 
   class AdvancedOrderUpdateRequirementGroupParams = Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams
 
+  class AgentGateway = Telnyx::Models::AgentGateway
+
+  class AgentGatewayCreateParams = Telnyx::Models::AgentGatewayCreateParams
+
+  class AgentGatewayDeleteParams = Telnyx::Models::AgentGatewayDeleteParams
+
+  class AgentGatewayListParams = Telnyx::Models::AgentGatewayListParams
+
+  class AgentGatewayResponse = Telnyx::Models::AgentGatewayResponse
+
+  class AgentGatewayRetrieveModelsParams = Telnyx::Models::AgentGatewayRetrieveModelsParams
+
+  class AgentGatewayRetrieveParams = Telnyx::Models::AgentGatewayRetrieveParams
+
+  class AgentGatewayRetrieveSpendLogsParams = Telnyx::Models::AgentGatewayRetrieveSpendLogsParams
+
+  module AgentGateways = Telnyx::Models::AgentGateways
+
   module AI = Telnyx::Models::AI
 
   class AIRetrieveConversationHistoriesParams = Telnyx::Models::AIRetrieveConversationHistoriesParams

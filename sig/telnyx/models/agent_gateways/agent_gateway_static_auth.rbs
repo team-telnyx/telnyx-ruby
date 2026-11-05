@@ -1,0 +1,48 @@
+module Telnyx
+  module Models
+    class AgentGatewayStaticAuth = AgentGateways::AgentGatewayStaticAuth
+
+    module AgentGateways
+      type agent_gateway_static_auth =
+        {
+          type: Telnyx::Models::AgentGateways::AgentGatewayStaticAuth::type_,
+          value: String,
+          header: String?
+        }
+
+      class AgentGatewayStaticAuth < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::AgentGateways::AgentGatewayStaticAuth::type_
+
+        attr_accessor header: String?
+
+        attr_accessor value: String
+
+        def initialize: (
+          type: Telnyx::Models::AgentGateways::AgentGatewayStaticAuth::type_,
+          value: String,
+          ?header: String?
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::AgentGateways::AgentGatewayStaticAuth::type_,
+          value: String,
+          header: String?
+        }
+
+        type type_ = :api_key | :bearer_token | :basic | :token | :authorization
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          API_KEY: :api_key
+          BEARER_TOKEN: :bearer_token
+          BASIC: :basic
+          TOKEN: :token
+          AUTHORIZATION: :authorization
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayStaticAuth::type_]
+        end
+      end
+    end
+  end
+end

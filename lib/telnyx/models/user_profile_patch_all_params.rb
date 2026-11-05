@@ -341,10 +341,10 @@ module Telnyx
       module LowBalanceNotificationFrequency
         extend Telnyx::Internal::Type::Enum
 
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_2 = 2
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_4 = 4
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_12 = 12
-        LOW_BALANCE_NOTIFICATION_FREQUENCY_24 = 24
+        FREQUENCY_2 = 2
+        FREQUENCY_4 = 4
+        FREQUENCY_12 = 12
+        FREQUENCY_24 = 24
 
         # @!method self.values
         #   @return [Array<Integer>]
@@ -354,8 +354,8 @@ module Telnyx
       module UiTheme
         extend Telnyx::Internal::Type::Enum
 
-        UI_THEME_0 = 0
-        UI_THEME_1 = 1
+        DARK = 0
+        LIGHT = 1
 
         # @!method self.values
         #   @return [Array<Integer>]
