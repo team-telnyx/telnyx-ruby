@@ -189,6 +189,7 @@ require_relative "telnyx/models/agent_gateways/agent_gateway_policy_attachment_r
 require_relative "telnyx/models/agent_gateways/agent_gateway_policy_guardrails"
 require_relative "telnyx/models/agent_gateways/agent_gateway_policy_pipeline"
 require_relative "telnyx/models/agent_gateways/agent_gateway_policy_response"
+require_relative "telnyx/models/agent_gateways/agent_gateway_policy_step"
 require_relative "telnyx/models/agent_gateways/agent_gateway_shown_auth"
 require_relative "telnyx/models/agent_gateways/agent_gateway_static_auth"
 require_relative "telnyx/models/agent_gateways/agent_gateway_team"
