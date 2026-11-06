@@ -77,8 +77,9 @@ module Telnyx
 
         # Two-letter ISO 639-1 code of the language the voice speaks, for example `es`.
         # Only applicable to Soniox and AssemblyAI voices, which speak every language of
-        # their model. AssemblyAI accepts `en`, `es`, `de`, `fr`, `it`, and `pt`. When
-        # unset, the voice speaks English.
+        # their model. AssemblyAI accepts `en`, `es`, `de`, `fr`, `it`, and `pt`, as a
+        # literal code: a dynamic variable is rejected. When unset, the voice speaks
+        # English.
         sig { returns(T.nilable(String)) }
         attr_accessor :language
 
@@ -223,8 +224,9 @@ module Telnyx
           expressive_mode: nil,
           # Two-letter ISO 639-1 code of the language the voice speaks, for example `es`.
           # Only applicable to Soniox and AssemblyAI voices, which speak every language of
-          # their model. AssemblyAI accepts `en`, `es`, `de`, `fr`, `it`, and `pt`. When
-          # unset, the voice speaks English.
+          # their model. AssemblyAI accepts `en`, `es`, `de`, `fr`, `it`, and `pt`, as a
+          # literal code: a dynamic variable is rejected. When unset, the voice speaks
+          # English.
           language: nil,
           # Enhances recognition for specific languages and dialects during MiniMax TTS
           # synthesis. Default is null (no boost). Set to 'auto' for automatic language
