@@ -127,6 +127,9 @@ module Telnyx
       module ByPhoneNumber
       end
 
+      module CalendarConnections
+      end
+
       module Calls
       end
 
@@ -256,6 +259,9 @@ module Telnyx
       end
 
       module ManagedAccounts
+      end
+
+      module MeetingBot
       end
 
       module MeetingSessions

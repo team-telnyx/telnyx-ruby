@@ -18,7 +18,7 @@ module Telnyx
             name: String,
             type: Telnyx::AgentGateways::GuardrailCreateParams::Type::OrSymbol,
             always_on: T::Boolean,
-            settings: T.anything,
+            settings: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AgentGateways::AgentGatewayGuardrailResponse)
         end
@@ -66,7 +66,7 @@ module Telnyx
                 Telnyx::AgentGateways::GuardrailUpdateParams::Mode::OrSymbol
               ],
             name: String,
-            settings: T.anything,
+            settings: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(Telnyx::AgentGateways::AgentGatewayGuardrailResponse)
         end

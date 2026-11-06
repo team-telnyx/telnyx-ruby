@@ -4,7 +4,7 @@ module Telnyx
       {
         id: String,
         account_id: String,
-        assistant: Telnyx::MeetingSession::Assistant?,
+        assistant: Telnyx::MeetingSessionAssistant?,
         assistant_state: Telnyx::Models::MeetingSession::assistant_state?,
         assistant_state_changed_at: Time?,
         avatar: Telnyx::MeetingSession::Avatar?,
@@ -20,12 +20,14 @@ module Telnyx
         meeting_url: String,
         metadata: ::Hash[Symbol, top],
         platform: Telnyx::Models::MeetingSession::platform,
-        provider: String,
+        provider: :telnyx,
         recording: bool,
         status: Telnyx::Models::MeetingSession::status,
         status_detail: String?,
         updated_at: Time,
-        webhook_url: String?
+        webhook_url: String?,
+        recording_export: Telnyx::MeetingSessionRecordingExport?,
+        remote_state_observed_at: Time
       }
 
     class MeetingSession < Telnyx::Internal::Type::BaseModel
@@ -33,7 +35,7 @@ module Telnyx
 
       attr_accessor account_id: String
 
-      attr_accessor assistant: Telnyx::MeetingSession::Assistant?
+      attr_accessor assistant: Telnyx::MeetingSessionAssistant?
 
       attr_accessor assistant_state: Telnyx::Models::MeetingSession::assistant_state?
 
@@ -65,7 +67,7 @@ module Telnyx
 
       attr_accessor platform: Telnyx::Models::MeetingSession::platform
 
-      attr_accessor provider: String
+      attr_accessor provider: :telnyx
 
       attr_accessor recording: bool
 
@@ -77,10 +79,16 @@ module Telnyx
 
       attr_accessor webhook_url: String?
 
+      attr_accessor recording_export: Telnyx::MeetingSessionRecordingExport?
+
+      attr_reader remote_state_observed_at: Time?
+
+      def remote_state_observed_at=: (Time) -> Time
+
       def initialize: (
         id: String,
         account_id: String,
-        assistant: Telnyx::MeetingSession::Assistant?,
+        assistant: Telnyx::MeetingSessionAssistant?,
         assistant_state: Telnyx::Models::MeetingSession::assistant_state?,
         assistant_state_changed_at: Time?,
         avatar: Telnyx::MeetingSession::Avatar?,
@@ -96,18 +104,20 @@ module Telnyx
         meeting_url: String,
         metadata: ::Hash[Symbol, top],
         platform: Telnyx::Models::MeetingSession::platform,
-        provider: String,
         recording: bool,
         status: Telnyx::Models::MeetingSession::status,
         status_detail: String?,
         updated_at: Time,
-        webhook_url: String?
+        webhook_url: String?,
+        ?recording_export: Telnyx::MeetingSessionRecordingExport?,
+        ?remote_state_observed_at: Time,
+        ?provider: :telnyx
       ) -> void
 
       def to_hash: -> {
         id: String,
         account_id: String,
-        assistant: Telnyx::MeetingSession::Assistant?,
+        assistant: Telnyx::MeetingSessionAssistant?,
         assistant_state: Telnyx::Models::MeetingSession::assistant_state?,
         assistant_state_changed_at: Time?,
         avatar: Telnyx::MeetingSession::Avatar?,
@@ -123,56 +133,15 @@ module Telnyx
         meeting_url: String,
         metadata: ::Hash[Symbol, top],
         platform: Telnyx::Models::MeetingSession::platform,
-        provider: String,
+        provider: :telnyx,
         recording: bool,
         status: Telnyx::Models::MeetingSession::status,
         status_detail: String?,
         updated_at: Time,
-        webhook_url: String?
+        webhook_url: String?,
+        recording_export: Telnyx::MeetingSessionRecordingExport?,
+        remote_state_observed_at: Time
       }
-
-      type assistant =
-        {
-          id: String,
-          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate,
-          dynamic_variables: ::Hash[Symbol, String]?,
-          leave_on_end: bool
-        }
-
-      class Assistant < Telnyx::Internal::Type::BaseModel
-        attr_accessor id: String
-
-        attr_accessor audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate
-
-        attr_accessor dynamic_variables: ::Hash[Symbol, String]?
-
-        attr_accessor leave_on_end: bool
-
-        def initialize: (
-          id: String,
-          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate,
-          dynamic_variables: ::Hash[Symbol, String]?,
-          leave_on_end: bool
-        ) -> void
-
-        def to_hash: -> {
-          id: String,
-          audio_gate: Telnyx::Models::MeetingSession::Assistant::audio_gate,
-          dynamic_variables: ::Hash[Symbol, String]?,
-          leave_on_end: bool
-        }
-
-        type audio_gate = :half_duplex | :full_duplex
-
-        module AudioGate
-          extend Telnyx::Internal::Type::Enum
-
-          HALF_DUPLEX: :half_duplex
-          FULL_DUPLEX: :full_duplex
-
-          def self?.values: -> ::Array[Telnyx::Models::MeetingSession::Assistant::audio_gate]
-        end
-      end
 
       type assistant_state = :starting | :connected | :failed | :ended
 
@@ -236,9 +205,13 @@ module Telnyx
         {
           barge_in: bool,
           chat_on_enter: String?,
+          deepfake_detection: Telnyx::MeetingSession::Config::DeepfakeDetection,
           speak_on_enter: String?,
           summarize_on_end: bool,
-          voice: String?
+          voice: String?,
+          leave_policy: Telnyx::MeetingSessionLeavePolicy,
+          recording: bool,
+          recording_view: Telnyx::Models::MeetingSession::Config::recording_view
         }
 
       class Config < Telnyx::Internal::Type::BaseModel
@@ -246,27 +219,76 @@ module Telnyx
 
         attr_accessor chat_on_enter: String?
 
+        attr_accessor deepfake_detection: Telnyx::MeetingSession::Config::DeepfakeDetection
+
         attr_accessor speak_on_enter: String?
 
         attr_accessor summarize_on_end: bool
 
         attr_accessor voice: String?
 
+        attr_reader leave_policy: Telnyx::MeetingSessionLeavePolicy?
+
+        def leave_policy=: (
+          Telnyx::MeetingSessionLeavePolicy
+        ) -> Telnyx::MeetingSessionLeavePolicy
+
+        attr_reader recording: bool?
+
+        def recording=: (bool) -> bool
+
+        attr_reader recording_view: Telnyx::Models::MeetingSession::Config::recording_view?
+
+        def recording_view=: (
+          Telnyx::Models::MeetingSession::Config::recording_view
+        ) -> Telnyx::Models::MeetingSession::Config::recording_view
+
         def initialize: (
           barge_in: bool,
           chat_on_enter: String?,
+          deepfake_detection: Telnyx::MeetingSession::Config::DeepfakeDetection,
           speak_on_enter: String?,
           summarize_on_end: bool,
-          voice: String?
+          voice: String?,
+          ?leave_policy: Telnyx::MeetingSessionLeavePolicy,
+          ?recording: bool,
+          ?recording_view: Telnyx::Models::MeetingSession::Config::recording_view
         ) -> void
 
         def to_hash: -> {
           barge_in: bool,
           chat_on_enter: String?,
+          deepfake_detection: Telnyx::MeetingSession::Config::DeepfakeDetection,
           speak_on_enter: String?,
           summarize_on_end: bool,
-          voice: String?
+          voice: String?,
+          leave_policy: Telnyx::MeetingSessionLeavePolicy,
+          recording: bool,
+          recording_view: Telnyx::Models::MeetingSession::Config::recording_view
         }
+
+        type deepfake_detection = { audio: bool, video: bool }
+
+        class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+          attr_accessor audio: bool
+
+          attr_accessor video: bool
+
+          def initialize: (audio: bool, video: bool) -> void
+
+          def to_hash: -> { audio: bool, video: bool }
+        end
+
+        type recording_view = :gallery_view | :speaker_view_no_sidebar
+
+        module RecordingView
+          extend Telnyx::Internal::Type::Enum
+
+          GALLERY_VIEW: :gallery_view
+          SPEAKER_VIEW_NO_SIDEBAR: :speaker_view_no_sidebar
+
+          def self?.values: -> ::Array[Telnyx::Models::MeetingSession::Config::recording_view]
+        end
       end
 
       type platform = :zoom | :google_meet | :teams | :webex | :unknown

@@ -14,7 +14,11 @@ module Telnyx
         ?chat_on_enter: String,
         ?idempotency_key: String,
         ?join_at: Time,
+        ?leave_policy: Telnyx::MeetingSessionLeavePolicy,
         ?metadata: ::Hash[Symbol, top],
+        ?recording: bool,
+        ?recording_export: Telnyx::MeetingSessionRecordingDestination,
+        ?recording_view: Telnyx::Models::MeetingSessionCreateParams::recording_view,
         ?speak_on_enter: String,
         ?summarize_on_end: bool,
         ?voice: String,
@@ -55,6 +59,11 @@ module Telnyx
         ?limit: Integer,
         ?request_options: Telnyx::request_opts
       ) -> Telnyx::Models::MeetingSessionRetrieveEventsResponse
+
+      def retrieve_recordings: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::MeetingSessionRetrieveRecordingsResponse
 
       def retrieve_transcript: (
         String id,

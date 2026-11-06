@@ -1,0 +1,16 @@
+module Telnyx
+  module Resources
+    class MeetingBot
+      class Calendar
+        def retrieve_oauth_callback: (
+          ?code: String,
+          ?error: String,
+          ?state: String,
+          ?request_options: Telnyx::request_opts
+        ) -> String
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

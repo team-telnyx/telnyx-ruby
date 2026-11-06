@@ -3305,6 +3305,7 @@ Methods:
 - <code title="delete /meeting_sessions/{id}">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete</a>(\*\*params)</code>
 - <code title="delete /meeting_sessions/{id}/recording_media">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">delete_recording_media</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/events">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_events</a>(\*\*params)</code>
+- <code title="get /meeting_sessions/{id}/recordings">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_recordings</a>(\*\*params)</code>
 - <code title="get /meeting_sessions/{id}/transcript">client.meeting_sessions.<a href="./lib/telnyx/resources/meeting_sessions.rb">retrieve_transcript</a>(\*\*params)</code>
 
 ## Actions
@@ -3626,3 +3627,28 @@ Methods:
 
 - <code title="put /agent_gateways/{instance_id}/teams/{team_id}/tool_permissions">client.agent_gateways.teams.tool_permissions.<a href="./lib/telnyx/resources/agent_gateways/teams/tool_permissions.rb">create</a>(\*\*params)</code>
 - <code title="get /agent_gateways/{instance_id}/teams/{team_id}/tool_permissions">client.agent_gateways.teams.tool_permissions.<a href="./lib/telnyx/resources/agent_gateways/teams/tool_permissions.rb">list</a>(\*\*params)</code>
+
+# CalendarConnections
+
+Methods:
+
+- <code title="post /calendar_connections">client.calendar_connections.<a href="./lib/telnyx/resources/calendar_connections.rb">create</a>(\*\*params)</code>
+- <code title="get /calendar_connections/{id}">client.calendar_connections.<a href="./lib/telnyx/resources/calendar_connections.rb">retrieve</a>(\*\*params)</code>
+- <code title="patch /calendar_connections/{id}">client.calendar_connections.<a href="./lib/telnyx/resources/calendar_connections.rb">update</a>(\*\*params)</code>
+- <code title="get /calendar_connections">client.calendar_connections.<a href="./lib/telnyx/resources/calendar_connections.rb">list</a>()</code>
+- <code title="delete /calendar_connections/{id}">client.calendar_connections.<a href="./lib/telnyx/resources/calendar_connections.rb">delete</a>(\*\*params)</code>
+
+## Meetings
+
+Methods:
+
+- <code title="patch /calendar_connections/{id}/meetings/{meeting_id}">client.calendar_connections.meetings.<a href="./lib/telnyx/resources/calendar_connections/meetings.rb">update</a>(\*\*params)</code>
+- <code title="get /calendar_connections/{id}/meetings">client.calendar_connections.meetings.<a href="./lib/telnyx/resources/calendar_connections/meetings.rb">list</a>(\*\*params)</code>
+
+# MeetingBot
+
+## Calendar
+
+Methods:
+
+- <code title="get /meeting_bot/calendar/oauth_callback">client.meeting_bot.calendar.<a href="./lib/telnyx/resources/meeting_bot/calendar.rb">retrieve_oauth_callback</a>(\*\*params)</code>

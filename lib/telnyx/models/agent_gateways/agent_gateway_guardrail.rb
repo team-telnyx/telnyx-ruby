@@ -50,8 +50,8 @@ module Telnyx
         #   `endpoint`, `severity` (0 to 7). Provider secrets are write-only. Responses
         #   leave the secrets out.
         #
-        #   @return [Object]
-        required :settings, Telnyx::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}]
+        required :settings, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!attribute type
         #
@@ -77,7 +77,7 @@ module Telnyx
         #
         #   @param name [String] What a request names in its `guardrails` field.
         #
-        #   @param settings [Object] The type's settings. `content_filter`: `patterns` (prebuilt patterns by name, su
+        #   @param settings [Hash{Symbol=>Object}] The type's settings. `content_filter`: `patterns` (prebuilt patterns by name, su
         #
         #   @param type [Symbol, Telnyx::Models::AgentGateways::AgentGatewayGuardrail::Type]
         #

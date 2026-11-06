@@ -53,7 +53,7 @@ module Telnyx
         # `secret_access_key`, or `role_name`. `azure_content_safety`: `api_key`,
         # `endpoint`, `severity` (0 to 7). Provider secrets are write-only. Responses
         # leave the secrets out.
-        sig { returns(T.anything) }
+        sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :settings
 
         sig do
@@ -76,7 +76,7 @@ module Telnyx
                 Telnyx::AgentGateways::AgentGatewayGuardrail::Mode::OrSymbol
               ],
             name: String,
-            settings: T.anything,
+            settings: T::Hash[Symbol, T.anything],
             type: Telnyx::AgentGateways::AgentGatewayGuardrail::Type::OrSymbol,
             updated_at: T.nilable(Time)
           ).returns(T.attached_class)
@@ -122,7 +122,7 @@ module Telnyx
                   Telnyx::AgentGateways::AgentGatewayGuardrail::Mode::TaggedSymbol
                 ],
               name: String,
-              settings: T.anything,
+              settings: T::Hash[Symbol, T.anything],
               type:
                 Telnyx::AgentGateways::AgentGatewayGuardrail::Type::TaggedSymbol,
               updated_at: T.nilable(Time)

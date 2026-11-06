@@ -15,10 +15,8 @@ module Telnyx
       sig { returns(String) }
       attr_accessor :meeting_url
 
-      # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
-      # Meeting service connects it to the meeting directly. The Call Control
-      # connection, caller ID and loopback SIP URI previously required here have been
-      # removed and are now rejected as unknown fields.
+      # Attach a Telnyx AI Assistant owned by the authenticated account. Supply its ID
+      # and optional conversation settings. Unknown fields are rejected.
       sig { returns(T.nilable(Telnyx::MeetingSessionCreateParams::Assistant)) }
       attr_reader :assistant
 
@@ -45,12 +43,13 @@ module Telnyx
       sig { params(bot_name: String).void }
       attr_writer :bot_name
 
-      # Write-only static camera-tile image for this session, not a native account or
+      # Not supported for Google Meet and Teams joins (422 unsupported_capability).
+      # Write-only static camera-tile image for this session, not an account or
       # participant profile photo. Supply exactly one JPEG source. When effective, the
       # image is used as the bot's static camera/video output; presentation varies by
       # meeting platform and recording configuration and is not guaranteed in
-      # recordings. An effective Avatar or Assistant webpage output takes precedence, so
-      # this input is ignored and a URL source is not fetched.
+      # recordings. An attached assistant or avatar takes precedence, so this input is
+      # ignored and a URL source is not fetched.
       sig do
         returns(
           T.nilable(
@@ -78,29 +77,44 @@ module Telnyx
       # typically a recording disclosure. Delivered at most once. Independent of
       # `speak_on_enter`: both may be set, and the chat message posts first because it
       # does not wait for text-to-speech or avatar startup. Rejected with 422
-      # `unsupported_capability` on platforms without meeting chat.
+      # `unsupported_capability` on platforms without meeting chat. For Google Meet and
+      # Teams, text must be nonblank, at most 4096 UTF-8 bytes, with no control
+      # characters except tabs and line breaks. Counts toward the 1000-chat-request
+      # session limit.
       sig { returns(T.nilable(String)) }
       attr_reader :chat_on_enter
 
       sig { params(chat_on_enter: String).void }
       attr_writer :chat_on_enter
 
-      # Client-supplied idempotency key to safely retry creation requests without
-      # duplicating sessions. Lookup is scoped to the authenticated account and compares
-      # the key only; the request payload is not fingerprinted or compared.
+      # Use a unique key per intended join and reuse the same key and request on
+      # retries. Reusing a key with a different join configuration or meeting URL can
+      # return 409 invalid_state. Always retry with the original request.
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
 
       sig { params(idempotency_key: String).void }
       attr_writer :idempotency_key
 
-      # ISO-8601 timestamp in the future at which the bot should join. If omitted, the
-      # bot joins immediately.
+      # Future ISO-8601 join timestamp including timezone. Google Meet and Teams accept
+      # dates at most three years ahead. Omit for an immediate join. Assistant sessions
+      # created through this endpoint must join immediately.
       sig { returns(T.nilable(Time)) }
       attr_reader :join_at
 
       sig { params(join_at: Time).void }
       attr_writer :join_at
+
+      # Automatic departure settings for Google Meet and Teams. Omitted fields use the
+      # default behavior. Set at creation; cannot be changed later. Zoom ignores this
+      # policy.
+      sig { returns(T.nilable(Telnyx::MeetingSessionLeavePolicy)) }
+      attr_reader :leave_policy
+
+      sig do
+        params(leave_policy: Telnyx::MeetingSessionLeavePolicy::OrHash).void
+      end
+      attr_writer :leave_policy
 
       # Arbitrary key-value metadata attached to the session. The serialized JSON
       # representation must not exceed 16384 characters at runtime.
@@ -110,11 +124,50 @@ module Telnyx
       sig { params(metadata: T::Hash[Symbol, T.anything]).void }
       attr_writer :metadata
 
-      # Text the bot speaks when it enters the meeting. **Not spoken when an `assistant`
-      # is attached**: the value is accepted and echoed back on the session, but the
-      # assistant owns the voice and the line is never delivered, with no event
-      # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
-      # Rejected with 400 `invalid_request` when `assistant.avatar` is `true`.
+      # Google Meet and Teams only. Defaults to true when recording_export is supplied
+      # and false otherwise. True requires recording_export.bucket; false cannot be
+      # combined with recording_export. Fixed at creation, with no pause/resume action.
+      # Zoom rejects recording, recording_view, and recording_export with 422
+      # unsupported_capability; omit these fields for Zoom.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :recording
+
+      sig { params(recording: T::Boolean).void }
+      attr_writer :recording
+
+      # Customer-owned Telnyx Storage destination for recording exports. Uses the
+      # authenticated organization and user; do not supply credentials, region,
+      # organization ID or object key.
+      sig { returns(T.nilable(Telnyx::MeetingSessionRecordingDestination)) }
+      attr_reader :recording_export
+
+      sig do
+        params(
+          recording_export: Telnyx::MeetingSessionRecordingDestination::OrHash
+        ).void
+      end
+      attr_writer :recording_export
+
+      # Recording layout for Google Meet and Teams. Defaults to speaker_view. Accepted
+      # at creation only; does not enable recording by itself.
+      sig do
+        returns(
+          T.nilable(Telnyx::MeetingSessionCreateParams::RecordingView::OrSymbol)
+        )
+      end
+      attr_reader :recording_view
+
+      sig do
+        params(
+          recording_view:
+            Telnyx::MeetingSessionCreateParams::RecordingView::OrSymbol
+        ).void
+      end
+      attr_writer :recording_view
+
+      # Text the bot speaks after joining. Available for sessions without a digital
+      # avatar. With an AI Assistant, the greeting waits until the assistant is
+      # connected. Rejected with 400 invalid_request when assistant.avatar is true.
       sig { returns(T.nilable(String)) }
       attr_reader :speak_on_enter
 
@@ -130,7 +183,8 @@ module Telnyx
 
       # Session-default voice identifier used for `speak_on_enter` and ordinary speak
       # actions. A voice supplied on an individual speak action overrides this default
-      # for that utterance.
+      # for that utterance. With an assistant attached, its conversational voice remains
+      # configured on the assistant.
       sig { returns(T.nilable(String)) }
       attr_reader :voice
 
@@ -160,7 +214,12 @@ module Telnyx
           chat_on_enter: String,
           idempotency_key: String,
           join_at: Time,
+          leave_policy: Telnyx::MeetingSessionLeavePolicy::OrHash,
           metadata: T::Hash[Symbol, T.anything],
+          recording: T::Boolean,
+          recording_export: Telnyx::MeetingSessionRecordingDestination::OrHash,
+          recording_view:
+            Telnyx::MeetingSessionCreateParams::RecordingView::OrSymbol,
           speak_on_enter: String,
           summarize_on_end: T::Boolean,
           voice: String,
@@ -171,10 +230,8 @@ module Telnyx
       def self.new(
         # The meeting URL the bot should join.
         meeting_url:,
-        # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
-        # Meeting service connects it to the meeting directly. The Call Control
-        # connection, caller ID and loopback SIP URI previously required here have been
-        # removed and are now rejected as unknown fields.
+        # Attach a Telnyx AI Assistant owned by the authenticated account. Supply its ID
+        # and optional conversation settings. Unknown fields are rejected.
         assistant: nil,
         # When enabled, a human participant `speech_on` event interrupts and stops the
         # current bot audio; it does not bypass admission or initiate speech. Assistant
@@ -182,40 +239,61 @@ module Telnyx
         barge_in: nil,
         # Display name for the bot in the meeting. Defaults to "Meeting Bot".
         bot_name: nil,
-        # Write-only static camera-tile image for this session, not a native account or
+        # Not supported for Google Meet and Teams joins (422 unsupported_capability).
+        # Write-only static camera-tile image for this session, not an account or
         # participant profile photo. Supply exactly one JPEG source. When effective, the
         # image is used as the bot's static camera/video output; presentation varies by
         # meeting platform and recording configuration and is not guaranteed in
-        # recordings. An effective Avatar or Assistant webpage output takes precedence, so
-        # this input is ignored and a URL source is not fetched.
+        # recordings. An attached assistant or avatar takes precedence, so this input is
+        # ignored and a URL source is not fetched.
         camera_image: nil,
         # A message the bot posts to the meeting's chat as soon as it becomes active —
         # typically a recording disclosure. Delivered at most once. Independent of
         # `speak_on_enter`: both may be set, and the chat message posts first because it
         # does not wait for text-to-speech or avatar startup. Rejected with 422
-        # `unsupported_capability` on platforms without meeting chat.
+        # `unsupported_capability` on platforms without meeting chat. For Google Meet and
+        # Teams, text must be nonblank, at most 4096 UTF-8 bytes, with no control
+        # characters except tabs and line breaks. Counts toward the 1000-chat-request
+        # session limit.
         chat_on_enter: nil,
-        # Client-supplied idempotency key to safely retry creation requests without
-        # duplicating sessions. Lookup is scoped to the authenticated account and compares
-        # the key only; the request payload is not fingerprinted or compared.
+        # Use a unique key per intended join and reuse the same key and request on
+        # retries. Reusing a key with a different join configuration or meeting URL can
+        # return 409 invalid_state. Always retry with the original request.
         idempotency_key: nil,
-        # ISO-8601 timestamp in the future at which the bot should join. If omitted, the
-        # bot joins immediately.
+        # Future ISO-8601 join timestamp including timezone. Google Meet and Teams accept
+        # dates at most three years ahead. Omit for an immediate join. Assistant sessions
+        # created through this endpoint must join immediately.
         join_at: nil,
+        # Automatic departure settings for Google Meet and Teams. Omitted fields use the
+        # default behavior. Set at creation; cannot be changed later. Zoom ignores this
+        # policy.
+        leave_policy: nil,
         # Arbitrary key-value metadata attached to the session. The serialized JSON
         # representation must not exceed 16384 characters at runtime.
         metadata: nil,
-        # Text the bot speaks when it enters the meeting. **Not spoken when an `assistant`
-        # is attached**: the value is accepted and echoed back on the session, but the
-        # assistant owns the voice and the line is never delivered, with no event
-        # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
-        # Rejected with 400 `invalid_request` when `assistant.avatar` is `true`.
+        # Google Meet and Teams only. Defaults to true when recording_export is supplied
+        # and false otherwise. True requires recording_export.bucket; false cannot be
+        # combined with recording_export. Fixed at creation, with no pause/resume action.
+        # Zoom rejects recording, recording_view, and recording_export with 422
+        # unsupported_capability; omit these fields for Zoom.
+        recording: nil,
+        # Customer-owned Telnyx Storage destination for recording exports. Uses the
+        # authenticated organization and user; do not supply credentials, region,
+        # organization ID or object key.
+        recording_export: nil,
+        # Recording layout for Google Meet and Teams. Defaults to speaker_view. Accepted
+        # at creation only; does not enable recording by itself.
+        recording_view: nil,
+        # Text the bot speaks after joining. Available for sessions without a digital
+        # avatar. With an AI Assistant, the greeting waits until the assistant is
+        # connected. Rejected with 400 invalid_request when assistant.avatar is true.
         speak_on_enter: nil,
         # If true, generate a summary artifact when the session ends.
         summarize_on_end: nil,
         # Session-default voice identifier used for `speak_on_enter` and ordinary speak
         # actions. A voice supplied on an individual speak action overrides this default
-        # for that utterance.
+        # for that utterance. With an assistant attached, its conversational voice remains
+        # configured on the assistant.
         voice: nil,
         # HTTPS endpoint to receive session lifecycle callbacks. Static validation
         # requires HTTPS, rejects embedded credentials and blocked hosts, and enforces
@@ -240,7 +318,12 @@ module Telnyx
             chat_on_enter: String,
             idempotency_key: String,
             join_at: Time,
+            leave_policy: Telnyx::MeetingSessionLeavePolicy,
             metadata: T::Hash[Symbol, T.anything],
+            recording: T::Boolean,
+            recording_export: Telnyx::MeetingSessionRecordingDestination,
+            recording_view:
+              Telnyx::MeetingSessionCreateParams::RecordingView::OrSymbol,
             speak_on_enter: String,
             summarize_on_end: T::Boolean,
             voice: String,
@@ -265,12 +348,9 @@ module Telnyx
         sig { returns(String) }
         attr_accessor :id
 
-        # Audio gating strategy for the assistant call leg. `half_duplex` (default) sends
-        # the assistant a single mixed meeting stream and mutes it while the assistant
-        # speaks, so the assistant cannot hear itself and cannot be interrupted.
-        # `full_duplex` sends a separate stream per participant, which allows barge-in and
-        # removes self-hearing, and COSTS SIGNIFICANTLY MORE: per-participant streams
-        # multiply the per-minute cost by the number of participants.
+        # Use half_duplex (default) to pause listening while the assistant speaks, or
+        # full_duplex to allow participants to interrupt. Full-duplex pricing depends on
+        # participant audio usage; see the Meeting pricing guide.
         sig do
           returns(
             T.nilable(
@@ -292,12 +372,11 @@ module Telnyx
         # [AI Assistant avatars](/docs/inference/ai-assistants/avatars)) as the bot's
         # camera, lip-synced to the assistant's own speech. The request carries no avatar
         # ID or key: the assistant is read at creation and the request is rejected with
-        # 400 `invalid_request` if it has no Telnyx avatar configured. Supported on Google
-        # Meet, Zoom, Microsoft Teams and Webex; other platforms return 422
-        # `unsupported_capability`. REST-only. Not echoed back on `assistant`; the
-        # session's top-level `avatar` and `avatar_state` fields report it instead. If the
-        # avatar fails, the session continues voice-only and `avatar_state` becomes
-        # `degraded`.
+        # 400 `invalid_request` if it has no Telnyx avatar configured. Available for
+        # Google Meet, Zoom, and Teams sessions. REST-only. Not echoed back on
+        # `assistant`; the session's top-level `avatar` and `avatar_state` fields report
+        # it instead. If the avatar fails, the session continues voice-only and
+        # `avatar_state` becomes `degraded`.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :avatar
 
@@ -311,30 +390,23 @@ module Telnyx
         # conversation. At most 63 entries; keys 1-128 characters; values must be strings.
         # The map is budgeted in aggregate at 1,047,552 bytes (1023 KiB) rather than
         # capped per value. `streaming_audio`, `ai_assistant_streaming_audio` and
-        # `meeting_session_id` are reserved and rejected with `400 invalid_request` --
-        # they toggle provider infrastructure or are set by the service rather than fill a
-        # prompt template.
+        # `meeting_session_id` are reserved and rejected with `400 invalid_request`.
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :dynamic_variables
 
         sig { params(dynamic_variables: T::Hash[Symbol, String]).void }
         attr_writer :dynamic_variables
 
-        # Leave the meeting when the Assistant's conversation reaches a terminal state --
-        # `ended` **or** `failed`. Off by default, which leaves the bot in the meeting
-        # after the Assistant stops. Fires once: a second terminal transition does not
-        # leave twice, and a leave the provider refuses is logged without changing how the
-        # session settles.
+        # Leave when the assistant conversation ends or fails. Defaults to false. Other
+        # leave-policy rules and explicit leave requests still apply.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :leave_on_end
 
         sig { params(leave_on_end: T::Boolean).void }
         attr_writer :leave_on_end
 
-        # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
-        # Meeting service connects it to the meeting directly. The Call Control
-        # connection, caller ID and loopback SIP URI previously required here have been
-        # removed and are now rejected as unknown fields.
+        # Attach a Telnyx AI Assistant owned by the authenticated account. Supply its ID
+        # and optional conversation settings. Unknown fields are rejected.
         sig do
           params(
             id: String,
@@ -348,23 +420,19 @@ module Telnyx
         def self.new(
           # Identifier of the assistant to attach.
           id:,
-          # Audio gating strategy for the assistant call leg. `half_duplex` (default) sends
-          # the assistant a single mixed meeting stream and mutes it while the assistant
-          # speaks, so the assistant cannot hear itself and cannot be interrupted.
-          # `full_duplex` sends a separate stream per participant, which allows barge-in and
-          # removes self-hearing, and COSTS SIGNIFICANTLY MORE: per-participant streams
-          # multiply the per-minute cost by the number of participants.
+          # Use half_duplex (default) to pause listening while the assistant speaks, or
+          # full_duplex to allow participants to interrupt. Full-duplex pricing depends on
+          # participant audio usage; see the Meeting pricing guide.
           audio_gate: nil,
           # Beta. Show the avatar configured on the assistant (its `avatar_settings`; see
           # [AI Assistant avatars](/docs/inference/ai-assistants/avatars)) as the bot's
           # camera, lip-synced to the assistant's own speech. The request carries no avatar
           # ID or key: the assistant is read at creation and the request is rejected with
-          # 400 `invalid_request` if it has no Telnyx avatar configured. Supported on Google
-          # Meet, Zoom, Microsoft Teams and Webex; other platforms return 422
-          # `unsupported_capability`. REST-only. Not echoed back on `assistant`; the
-          # session's top-level `avatar` and `avatar_state` fields report it instead. If the
-          # avatar fails, the session continues voice-only and `avatar_state` becomes
-          # `degraded`.
+          # 400 `invalid_request` if it has no Telnyx avatar configured. Available for
+          # Google Meet, Zoom, and Teams sessions. REST-only. Not echoed back on
+          # `assistant`; the session's top-level `avatar` and `avatar_state` fields report
+          # it instead. If the avatar fails, the session continues voice-only and
+          # `avatar_state` becomes `degraded`.
           avatar: nil,
           # Per-conversation values for the
           # [dynamic variables](/docs/inference/ai-assistants/dynamic-variables) used in the
@@ -373,15 +441,10 @@ module Telnyx
           # conversation. At most 63 entries; keys 1-128 characters; values must be strings.
           # The map is budgeted in aggregate at 1,047,552 bytes (1023 KiB) rather than
           # capped per value. `streaming_audio`, `ai_assistant_streaming_audio` and
-          # `meeting_session_id` are reserved and rejected with `400 invalid_request` --
-          # they toggle provider infrastructure or are set by the service rather than fill a
-          # prompt template.
+          # `meeting_session_id` are reserved and rejected with `400 invalid_request`.
           dynamic_variables: nil,
-          # Leave the meeting when the Assistant's conversation reaches a terminal state --
-          # `ended` **or** `failed`. Off by default, which leaves the bot in the meeting
-          # after the Assistant stops. Fires once: a second terminal transition does not
-          # leave twice, and a leave the provider refuses is logged without changing how the
-          # session settles.
+          # Leave when the assistant conversation ends or fails. Defaults to false. Other
+          # leave-policy rules and explicit leave requests still apply.
           leave_on_end: nil
         )
         end
@@ -401,12 +464,9 @@ module Telnyx
         def to_hash
         end
 
-        # Audio gating strategy for the assistant call leg. `half_duplex` (default) sends
-        # the assistant a single mixed meeting stream and mutes it while the assistant
-        # speaks, so the assistant cannot hear itself and cannot be interrupted.
-        # `full_duplex` sends a separate stream per participant, which allows barge-in and
-        # removes self-hearing, and COSTS SIGNIFICANTLY MORE: per-participant streams
-        # multiply the per-minute cost by the number of participants.
+        # Use half_duplex (default) to pause listening while the assistant speaks, or
+        # full_duplex to allow participants to interrupt. Full-duplex pricing depends on
+        # participant audio usage; see the Meeting pricing guide.
         module AudioGate
           extend Telnyx::Internal::Type::Enum
 
@@ -442,12 +502,13 @@ module Telnyx
         end
       end
 
-      # Write-only static camera-tile image for this session, not a native account or
+      # Not supported for Google Meet and Teams joins (422 unsupported_capability).
+      # Write-only static camera-tile image for this session, not an account or
       # participant profile photo. Supply exactly one JPEG source. When effective, the
       # image is used as the bot's static camera/video output; presentation varies by
       # meeting platform and recording configuration and is not guaranteed in
-      # recordings. An effective Avatar or Assistant webpage output takes precedence, so
-      # this input is ignored and a URL source is not fetched.
+      # recordings. An attached assistant or avatar takes precedence, so this input is
+      # ignored and a URL source is not fetched.
       module CameraImage
         extend Telnyx::Internal::Type::Union
 
@@ -472,7 +533,7 @@ module Telnyx
           # and the URL-safe alphabet are rejected. The encoded value is limited to
           # 1,835,008 characters and the decoded JPEG to 1,363,148 bytes. The JPEG is
           # limited to 4,096 pixels per dimension, 4 megapixels, and 128 MB of decoder
-          # memory. The image bytes are not persisted, returned, or logged.
+          # memory. The image bytes are not returned in the session response.
           sig { returns(String) }
           attr_accessor :base64_data
 
@@ -490,7 +551,7 @@ module Telnyx
             # and the URL-safe alphabet are rejected. The encoded value is limited to
             # 1,835,008 characters and the decoded JPEG to 1,363,148 bytes. The JPEG is
             # limited to 4,096 pixels per dimension, 4 megapixels, and 128 MB of decoder
-            # memory. The image bytes are not persisted, returned, or logged.
+            # memory. The image bytes are not returned in the session response.
             base64_data:,
             # Only JPEG images are accepted.
             format_: :jpeg
@@ -521,8 +582,8 @@ module Telnyx
           # Fetching is limited to public network destinations, a five-second timeout, no
           # redirects, a 2xx image/jpeg response with identity or no content encoding, and a
           # 1,363,148-byte limit enforced against both declared and streamed content. The
-          # service resolves the URL before bot creation and does not persist, return, or
-          # log the URL or image bytes.
+          # service resolves the URL before bot creation and does not return the URL or
+          # image bytes in the session response.
           sig { returns(String) }
           attr_accessor :url
 
@@ -534,8 +595,8 @@ module Telnyx
             # Fetching is limited to public network destinations, a five-second timeout, no
             # redirects, a 2xx image/jpeg response with identity or no content encoding, and a
             # 1,363,148-byte limit enforced against both declared and streamed content. The
-            # service resolves the URL before bot creation and does not persist, return, or
-            # log the URL or image bytes.
+            # service resolves the URL before bot creation and does not return the URL or
+            # image bytes in the session response.
             url:,
             # Only JPEG images are accepted.
             format_: :jpeg
@@ -553,6 +614,44 @@ module Telnyx
           )
         end
         def self.variants
+        end
+      end
+
+      # Recording layout for Google Meet and Teams. Defaults to speaker_view. Accepted
+      # at creation only; does not enable recording by itself.
+      module RecordingView
+        extend Telnyx::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Telnyx::MeetingSessionCreateParams::RecordingView)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SPEAKER_VIEW =
+          T.let(
+            :speaker_view,
+            Telnyx::MeetingSessionCreateParams::RecordingView::TaggedSymbol
+          )
+        GALLERY_VIEW =
+          T.let(
+            :gallery_view,
+            Telnyx::MeetingSessionCreateParams::RecordingView::TaggedSymbol
+          )
+        SPEAKER_VIEW_NO_SIDEBAR =
+          T.let(
+            :speaker_view_no_sidebar,
+            Telnyx::MeetingSessionCreateParams::RecordingView::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Telnyx::MeetingSessionCreateParams::RecordingView::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
     end

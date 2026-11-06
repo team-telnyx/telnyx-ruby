@@ -171,6 +171,22 @@ module Telnyx
 
   module BundlePricing = Telnyx::Models::BundlePricing
 
+  class CalendarConnection = Telnyx::Models::CalendarConnection
+
+  class CalendarConnectionCreateParams = Telnyx::Models::CalendarConnectionCreateParams
+
+  class CalendarConnectionDeleteParams = Telnyx::Models::CalendarConnectionDeleteParams
+
+  class CalendarConnectionListParams = Telnyx::Models::CalendarConnectionListParams
+
+  class CalendarConnectionResponse = Telnyx::Models::CalendarConnectionResponse
+
+  class CalendarConnectionRetrieveParams = Telnyx::Models::CalendarConnectionRetrieveParams
+
+  module CalendarConnections = Telnyx::Models::CalendarConnections
+
+  class CalendarConnectionUpdateParams = Telnyx::Models::CalendarConnectionUpdateParams
+
   class CallAIGatherEnded = Telnyx::Models::CallAIGatherEnded
 
   class CallAIGatherEndedWebhookEvent = Telnyx::Models::CallAIGatherEndedWebhookEvent
@@ -1089,7 +1105,11 @@ module Telnyx
 
   class MediaUploadParams = Telnyx::Models::MediaUploadParams
 
+  module MeetingBot = Telnyx::Models::MeetingBot
+
   class MeetingSession = Telnyx::Models::MeetingSession
+
+  class MeetingSessionAssistant = Telnyx::Models::MeetingSessionAssistant
 
   class MeetingSessionCreateParams = Telnyx::Models::MeetingSessionCreateParams
 
@@ -1097,13 +1117,21 @@ module Telnyx
 
   class MeetingSessionDeleteRecordingMediaParams = Telnyx::Models::MeetingSessionDeleteRecordingMediaParams
 
+  class MeetingSessionLeavePolicy = Telnyx::Models::MeetingSessionLeavePolicy
+
   class MeetingSessionListParams = Telnyx::Models::MeetingSessionListParams
+
+  class MeetingSessionRecordingDestination = Telnyx::Models::MeetingSessionRecordingDestination
+
+  class MeetingSessionRecordingExport = Telnyx::Models::MeetingSessionRecordingExport
 
   class MeetingSessionResponse = Telnyx::Models::MeetingSessionResponse
 
   class MeetingSessionRetrieveEventsParams = Telnyx::Models::MeetingSessionRetrieveEventsParams
 
   class MeetingSessionRetrieveParams = Telnyx::Models::MeetingSessionRetrieveParams
+
+  class MeetingSessionRetrieveRecordingsParams = Telnyx::Models::MeetingSessionRetrieveRecordingsParams
 
   class MeetingSessionRetrieveTranscriptParams = Telnyx::Models::MeetingSessionRetrieveTranscriptParams
 
@@ -1692,6 +1720,10 @@ module Telnyx
   class Record = Telnyx::Models::Record
 
   class RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
+
+  class RecordingExportedWebhookEvent = Telnyx::Models::RecordingExportedWebhookEvent
+
+  class RecordingExportFailedWebhookEvent = Telnyx::Models::RecordingExportFailedWebhookEvent
 
   class RecordingListParams = Telnyx::Models::RecordingListParams
 

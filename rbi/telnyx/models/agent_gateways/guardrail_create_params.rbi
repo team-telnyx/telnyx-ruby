@@ -60,10 +60,10 @@ module Telnyx
         # `guardrail_id`, `version`, `region`, and `access_key_id` with
         # `secret_access_key`, or `role_name`. `azure_content_safety`: `api_key`,
         # `endpoint`, `severity` (0 to 7). Provider secrets are write-only.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
         attr_reader :settings
 
-        sig { params(settings: T.anything).void }
+        sig { params(settings: T::Hash[Symbol, T.anything]).void }
         attr_writer :settings
 
         sig do
@@ -76,7 +76,7 @@ module Telnyx
             name: String,
             type: Telnyx::AgentGateways::GuardrailCreateParams::Type::OrSymbol,
             always_on: T::Boolean,
-            settings: T.anything,
+            settings: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -122,7 +122,7 @@ module Telnyx
               type:
                 Telnyx::AgentGateways::GuardrailCreateParams::Type::OrSymbol,
               always_on: T::Boolean,
-              settings: T.anything,
+              settings: T::Hash[Symbol, T.anything],
               request_options: Telnyx::RequestOptions
             }
           )

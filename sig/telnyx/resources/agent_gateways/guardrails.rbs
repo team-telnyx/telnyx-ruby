@@ -8,7 +8,7 @@ module Telnyx
           name: String,
           type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
           ?always_on: bool,
-          ?settings: top,
+          ?settings: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AgentGateways::AgentGatewayGuardrailResponse
 
@@ -18,7 +18,7 @@ module Telnyx
           ?always_on: bool,
           ?modes: ::Array[Telnyx::Models::AgentGateways::GuardrailUpdateParams::mode],
           ?name: String,
-          ?settings: top,
+          ?settings: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> Telnyx::AgentGateways::AgentGatewayGuardrailResponse
 

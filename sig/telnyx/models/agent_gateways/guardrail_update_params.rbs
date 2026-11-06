@@ -8,7 +8,7 @@ module Telnyx
           always_on: bool,
           modes: ::Array[Telnyx::Models::AgentGateways::GuardrailUpdateParams::mode],
           name: String,
-          settings: top
+          settings: ::Hash[Symbol, top]
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -34,9 +34,9 @@ module Telnyx
 
         def name=: (String) -> String
 
-        attr_reader settings: top?
+        attr_reader settings: ::Hash[Symbol, top]?
 
-        def settings=: (top) -> top
+        def settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         def initialize: (
           instance_id: String,
@@ -44,7 +44,7 @@ module Telnyx
           ?always_on: bool,
           ?modes: ::Array[Telnyx::Models::AgentGateways::GuardrailUpdateParams::mode],
           ?name: String,
-          ?settings: top,
+          ?settings: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -54,7 +54,7 @@ module Telnyx
           always_on: bool,
           modes: ::Array[Telnyx::Models::AgentGateways::GuardrailUpdateParams::mode],
           name: String,
-          settings: top,
+          settings: ::Hash[Symbol, top],
           request_options: Telnyx::RequestOptions
         }
 

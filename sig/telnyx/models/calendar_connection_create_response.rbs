@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    type calendar_connection_create_response =
+      { data: Telnyx::Models::CalendarConnectionCreateResponse::Data }
+
+    class CalendarConnectionCreateResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::Models::CalendarConnectionCreateResponse::Data
+
+      def initialize: (
+        data: Telnyx::Models::CalendarConnectionCreateResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: Telnyx::Models::CalendarConnectionCreateResponse::Data
+      }
+
+      type data =
+        {
+          oauth_url: String,
+          platform: Telnyx::Models::CalendarConnectionCreateResponse::Data::platform,
+          status: :pending_oauth
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor oauth_url: String
+
+        attr_accessor platform: Telnyx::Models::CalendarConnectionCreateResponse::Data::platform
+
+        attr_accessor status: :pending_oauth
+
+        def initialize: (
+          oauth_url: String,
+          platform: Telnyx::Models::CalendarConnectionCreateResponse::Data::platform,
+          ?status: :pending_oauth
+        ) -> void
+
+        def to_hash: -> {
+          oauth_url: String,
+          platform: Telnyx::Models::CalendarConnectionCreateResponse::Data::platform,
+          status: :pending_oauth
+        }
+
+        type platform = :google_calendar | :microsoft_outlook
+
+        module Platform
+          extend Telnyx::Internal::Type::Enum
+
+          GOOGLE_CALENDAR: :google_calendar
+          MICROSOFT_OUTLOOK: :microsoft_outlook
+
+          def self?.values: -> ::Array[Telnyx::Models::CalendarConnectionCreateResponse::Data::platform]
+        end
+      end
+    end
+  end
+end

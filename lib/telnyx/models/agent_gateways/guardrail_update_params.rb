@@ -53,8 +53,8 @@ module Telnyx
         #   `secret_access_key`, or `role_name`. `azure_content_safety`: `api_key`,
         #   `endpoint`, `severity` (0 to 7). Provider secrets are write-only.
         #
-        #   @return [Object, nil]
-        optional :settings, Telnyx::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :settings, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!method initialize(instance_id:, guardrail_id:, always_on: nil, modes: nil, name: nil, settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -70,7 +70,7 @@ module Telnyx
         #
         #   @param name [String] A name, unique on the instance. A request names it in its `guardrails` field.
         #
-        #   @param settings [Object] The type's settings. `content_filter`: `patterns` (prebuilt patterns by name, su
+        #   @param settings [Hash{Symbol=>Object}] The type's settings. `content_filter`: `patterns` (prebuilt patterns by name, su
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

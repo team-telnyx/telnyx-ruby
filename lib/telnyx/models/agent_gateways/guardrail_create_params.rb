@@ -55,8 +55,8 @@ module Telnyx
         #   `secret_access_key`, or `role_name`. `azure_content_safety`: `api_key`,
         #   `endpoint`, `severity` (0 to 7). Provider secrets are write-only.
         #
-        #   @return [Object, nil]
-        optional :settings, Telnyx::Internal::Type::Unknown
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :settings, Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
 
         # @!method initialize(instance_id:, modes:, name:, type:, always_on: nil, settings: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -72,7 +72,7 @@ module Telnyx
         #
         #   @param always_on [Boolean] `true` runs the guardrail on every request, and a request cannot turn it off. `f
         #
-        #   @param settings [Object] The type's settings. `content_filter`: `patterns` (prebuilt patterns by `name`,
+        #   @param settings [Hash{Symbol=>Object}] The type's settings. `content_filter`: `patterns` (prebuilt patterns by `name`,
         #
         #   @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}]
 

@@ -24,7 +24,7 @@ module Telnyx
         #
         # @param always_on [Boolean] `true` runs the guardrail on every request, and a request cannot turn it off. `f
         #
-        # @param settings [Object] The type's settings. `content_filter`: `patterns` (prebuilt patterns by `name`,
+        # @param settings [Hash{Symbol=>Object}] The type's settings. `content_filter`: `patterns` (prebuilt patterns by `name`,
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -61,7 +61,7 @@ module Telnyx
         #
         # @param name [String] Body param: A name, unique on the instance. A request names it in its `guardrail
         #
-        # @param settings [Object] Body param: The type's settings. `content_filter`: `patterns` (prebuilt patterns
+        # @param settings [Hash{Symbol=>Object}] Body param: The type's settings. `content_filter`: `patterns` (prebuilt patterns
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #

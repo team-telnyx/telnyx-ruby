@@ -8,9 +8,9 @@ module Telnyx
           T.any(Telnyx::MeetingSessionResponse, Telnyx::Internal::AnyHash)
         end
 
-      # Represents a meeting session. All serializer fields are present and required;
-      # nullable fields use null when absent. No actor, provider-bot, idempotency,
-      # routing, key, or internal fields are exposed.
+      # Represents a meeting session. Core serializer fields are required;
+      # platform-specific fields are optional. Nullable fields use null when absent. No
+      # actor, provider-bot, idempotency, routing, key, or internal fields are exposed.
       sig { returns(Telnyx::MeetingSession) }
       attr_reader :data
 
@@ -21,9 +21,9 @@ module Telnyx
         params(data: Telnyx::MeetingSession::OrHash).returns(T.attached_class)
       end
       def self.new(
-        # Represents a meeting session. All serializer fields are present and required;
-        # nullable fields use null when absent. No actor, provider-bot, idempotency,
-        # routing, key, or internal fields are exposed.
+        # Represents a meeting session. Core serializer fields are required;
+        # platform-specific fields are optional. Nullable fields use null when absent. No
+        # actor, provider-bot, idempotency, routing, key, or internal fields are exposed.
         data:
       )
       end

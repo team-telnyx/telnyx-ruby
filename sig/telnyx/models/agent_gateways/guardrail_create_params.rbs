@@ -8,7 +8,7 @@ module Telnyx
           name: String,
           type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
           always_on: bool,
-          settings: top
+          settings: ::Hash[Symbol, top]
         }
         & Telnyx::Internal::Type::request_parameters
 
@@ -28,9 +28,9 @@ module Telnyx
 
         def always_on=: (bool) -> bool
 
-        attr_reader settings: top?
+        attr_reader settings: ::Hash[Symbol, top]?
 
-        def settings=: (top) -> top
+        def settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         def initialize: (
           instance_id: String,
@@ -38,7 +38,7 @@ module Telnyx
           name: String,
           type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
           ?always_on: bool,
-          ?settings: top,
+          ?settings: ::Hash[Symbol, top],
           ?request_options: Telnyx::request_opts
         ) -> void
 
@@ -48,7 +48,7 @@ module Telnyx
           name: String,
           type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
           always_on: bool,
-          settings: top,
+          settings: ::Hash[Symbol, top],
           request_options: Telnyx::RequestOptions
         }
 

@@ -418,6 +418,10 @@ module Telnyx
 
     attr_reader agent_gateways: Telnyx::Resources::AgentGateways
 
+    attr_reader calendar_connections: Telnyx::Resources::CalendarConnections
+
+    attr_reader meeting_bot: Telnyx::Resources::MeetingBot
+
     private def auth_headers: -> ::Hash[String, String]
 
     private def bearer_auth: -> ::Hash[String, String]

@@ -10,7 +10,7 @@ module Telnyx
           created_at: Time?,
           modes: ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode],
           name: String,
-          settings: top,
+          settings: ::Hash[Symbol, top],
           type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_,
           updated_at: Time?
         }
@@ -26,7 +26,7 @@ module Telnyx
 
         attr_accessor name: String
 
-        attr_accessor settings: top
+        attr_accessor settings: ::Hash[Symbol, top]
 
         attr_accessor type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_
 
@@ -38,7 +38,7 @@ module Telnyx
           created_at: Time?,
           modes: ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode],
           name: String,
-          settings: top,
+          settings: ::Hash[Symbol, top],
           type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_,
           updated_at: Time?
         ) -> void
@@ -49,7 +49,7 @@ module Telnyx
           created_at: Time?,
           modes: ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode],
           name: String,
-          settings: top,
+          settings: ::Hash[Symbol, top],
           type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_,
           updated_at: Time?
         }
