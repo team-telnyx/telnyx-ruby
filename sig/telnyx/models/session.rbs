@@ -9,7 +9,7 @@ module Telnyx
         failure_reason: String?,
         last_activity_at: Time?,
         limits: Telnyx::Session::Limits,
-        metadata: top,
+        metadata: ::Hash[Symbol, top],
         policy: Telnyx::Session::Policy,
         ready_at: Time?,
         status: Telnyx::Models::Session::status
@@ -30,7 +30,7 @@ module Telnyx
 
       attr_accessor limits: Telnyx::Session::Limits
 
-      attr_accessor metadata: top
+      attr_accessor metadata: ::Hash[Symbol, top]
 
       attr_accessor policy: Telnyx::Session::Policy
 
@@ -46,7 +46,7 @@ module Telnyx
         failure_reason: String?,
         last_activity_at: Time?,
         limits: Telnyx::Session::Limits,
-        metadata: top,
+        metadata: ::Hash[Symbol, top],
         policy: Telnyx::Session::Policy,
         ready_at: Time?,
         status: Telnyx::Models::Session::status
@@ -60,7 +60,7 @@ module Telnyx
         failure_reason: String?,
         last_activity_at: Time?,
         limits: Telnyx::Session::Limits,
-        metadata: top,
+        metadata: ::Hash[Symbol, top],
         policy: Telnyx::Session::Policy,
         ready_at: Time?,
         status: Telnyx::Models::Session::status

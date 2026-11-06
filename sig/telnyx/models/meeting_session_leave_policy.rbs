@@ -1,0 +1,60 @@
+module Telnyx
+  module Models
+    type meeting_session_leave_policy =
+      {
+        alone_seconds: Integer,
+        bot_name_keywords: ::Array[String]?,
+        host_wait_seconds: Integer,
+        lobby_wait_seconds: Integer,
+        max_duration_seconds: Integer?,
+        silence_grace_seconds: Integer,
+        silence_seconds: Integer
+      }
+
+    class MeetingSessionLeavePolicy < Telnyx::Internal::Type::BaseModel
+      attr_reader alone_seconds: Integer?
+
+      def alone_seconds=: (Integer) -> Integer
+
+      attr_accessor bot_name_keywords: ::Array[String]?
+
+      attr_reader host_wait_seconds: Integer?
+
+      def host_wait_seconds=: (Integer) -> Integer
+
+      attr_reader lobby_wait_seconds: Integer?
+
+      def lobby_wait_seconds=: (Integer) -> Integer
+
+      attr_accessor max_duration_seconds: Integer?
+
+      attr_reader silence_grace_seconds: Integer?
+
+      def silence_grace_seconds=: (Integer) -> Integer
+
+      attr_reader silence_seconds: Integer?
+
+      def silence_seconds=: (Integer) -> Integer
+
+      def initialize: (
+        ?alone_seconds: Integer,
+        ?bot_name_keywords: ::Array[String]?,
+        ?host_wait_seconds: Integer,
+        ?lobby_wait_seconds: Integer,
+        ?max_duration_seconds: Integer?,
+        ?silence_grace_seconds: Integer,
+        ?silence_seconds: Integer
+      ) -> void
+
+      def to_hash: -> {
+        alone_seconds: Integer,
+        bot_name_keywords: ::Array[String]?,
+        host_wait_seconds: Integer,
+        lobby_wait_seconds: Integer,
+        max_duration_seconds: Integer?,
+        silence_grace_seconds: Integer,
+        silence_seconds: Integer
+      }
+    end
+  end
+end

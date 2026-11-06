@@ -1,0 +1,117 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      type mcp_server_update_params =
+        {
+          instance_id: String,
+          server_id: String,
+          auth: Telnyx::Models::AgentGateways::McpServerUpdateParams::auth,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          transport: Telnyx::Models::AgentGateways::McpServerUpdateParams::transport,
+          url: String
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class McpServerUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor instance_id: String
+
+        attr_accessor server_id: String
+
+        attr_reader auth: Telnyx::Models::AgentGateways::McpServerUpdateParams::auth?
+
+        def auth=: (
+          Telnyx::Models::AgentGateways::McpServerUpdateParams::auth
+        ) -> Telnyx::Models::AgentGateways::McpServerUpdateParams::auth
+
+        attr_reader forwarded_headers: ::Array[String]?
+
+        def forwarded_headers=: (::Array[String]) -> ::Array[String]
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_reader open_to_every_key: bool?
+
+        def open_to_every_key=: (bool) -> bool
+
+        attr_reader static_headers: ::Hash[Symbol, String]?
+
+        def static_headers=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+        attr_reader tools: ::Array[String]?
+
+        def tools=: (::Array[String]) -> ::Array[String]
+
+        attr_reader transport: Telnyx::Models::AgentGateways::McpServerUpdateParams::transport?
+
+        def transport=: (
+          Telnyx::Models::AgentGateways::McpServerUpdateParams::transport
+        ) -> Telnyx::Models::AgentGateways::McpServerUpdateParams::transport
+
+        attr_reader url: String?
+
+        def url=: (String) -> String
+
+        def initialize: (
+          instance_id: String,
+          server_id: String,
+          ?auth: Telnyx::Models::AgentGateways::McpServerUpdateParams::auth,
+          ?forwarded_headers: ::Array[String],
+          ?name: String,
+          ?open_to_every_key: bool,
+          ?static_headers: ::Hash[Symbol, String],
+          ?tools: ::Array[String],
+          ?transport: Telnyx::Models::AgentGateways::McpServerUpdateParams::transport,
+          ?url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          instance_id: String,
+          server_id: String,
+          auth: Telnyx::Models::AgentGateways::McpServerUpdateParams::auth,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          transport: Telnyx::Models::AgentGateways::McpServerUpdateParams::transport,
+          url: String,
+          request_options: Telnyx::RequestOptions
+        }
+
+        type auth =
+          Telnyx::AgentGateways::AgentGatewayNoAuth
+          | Telnyx::AgentGateways::AgentGatewayStaticAuth
+          | Telnyx::AgentGateways::AgentGatewayOAuthClientCredentials
+          | Telnyx::AgentGateways::AgentGatewayPassthroughAuth
+          | Telnyx::AgentGateways::AgentGatewayAwsSigV4Auth
+
+        module Auth
+          extend Telnyx::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Telnyx::Models::AgentGateways::McpServerUpdateParams::auth]
+        end
+
+        type transport = :http | :sse
+
+        module Transport
+          extend Telnyx::Internal::Type::Enum
+
+          HTTP: :http
+          SSE: :sse
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::McpServerUpdateParams::transport]
+        end
+      end
+    end
+  end
+end

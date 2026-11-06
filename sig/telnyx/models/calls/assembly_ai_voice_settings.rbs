@@ -1,0 +1,30 @@
+module Telnyx
+  module Models
+    module Calls
+      type assembly_ai_voice_settings =
+        { type: Telnyx::Models::Calls::AssemblyAIVoiceSettings::type_ }
+
+      class AssemblyAIVoiceSettings < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: Telnyx::Models::Calls::AssemblyAIVoiceSettings::type_
+
+        def initialize: (
+          type: Telnyx::Models::Calls::AssemblyAIVoiceSettings::type_
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::Calls::AssemblyAIVoiceSettings::type_
+        }
+
+        type type_ = :assemblyai
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          ASSEMBLYAI: :assemblyai
+
+          def self?.values: -> ::Array[Telnyx::Models::Calls::AssemblyAIVoiceSettings::type_]
+        end
+      end
+    end
+  end
+end

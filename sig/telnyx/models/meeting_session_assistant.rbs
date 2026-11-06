@@ -1,0 +1,46 @@
+module Telnyx
+  module Models
+    type meeting_session_assistant =
+      {
+        id: String,
+        audio_gate: Telnyx::Models::MeetingSessionAssistant::audio_gate,
+        leave_on_end: bool,
+        dynamic_variables: ::Hash[Symbol, String]?
+      }
+
+    class MeetingSessionAssistant < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor audio_gate: Telnyx::Models::MeetingSessionAssistant::audio_gate
+
+      attr_accessor leave_on_end: bool
+
+      attr_accessor dynamic_variables: ::Hash[Symbol, String]?
+
+      def initialize: (
+        id: String,
+        audio_gate: Telnyx::Models::MeetingSessionAssistant::audio_gate,
+        leave_on_end: bool,
+        ?dynamic_variables: ::Hash[Symbol, String]?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        audio_gate: Telnyx::Models::MeetingSessionAssistant::audio_gate,
+        leave_on_end: bool,
+        dynamic_variables: ::Hash[Symbol, String]?
+      }
+
+      type audio_gate = :half_duplex | :full_duplex
+
+      module AudioGate
+        extend Telnyx::Internal::Type::Enum
+
+        HALF_DUPLEX: :half_duplex
+        FULL_DUPLEX: :full_duplex
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSessionAssistant::audio_gate]
+      end
+    end
+  end
+end

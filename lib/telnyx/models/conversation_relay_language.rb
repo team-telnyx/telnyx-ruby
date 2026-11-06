@@ -61,7 +61,7 @@ module Telnyx
       # @!attribute voice_settings
       #   The settings associated with the voice selected
       #
-      #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, nil]
+      #   @return [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::AssemblyAIVoiceSettings, nil]
       optional :voice_settings, union: -> { Telnyx::ConversationRelayLanguage::VoiceSettings }
 
       # @!method initialize(language:, speech_model: nil, transcription_engine: nil, transcription_engine_config: nil, transcription_provider: nil, tts_provider: nil, voice: nil, voice_settings: nil)
@@ -84,7 +84,7 @@ module Telnyx
       #
       #   @param voice [String] Voice identifier for this language.
       #
-      #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings] The settings associated with the voice selected
+      #   @param voice_settings [Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::AssemblyAIVoiceSettings] The settings associated with the voice selected
 
       # Engine to use for speech recognition. Legacy values `A` - `Google`, `B` -
       # `Telnyx` are supported for backward compatibility. When provided in a
@@ -136,8 +136,10 @@ module Telnyx
 
         variant :soniox, -> { Telnyx::Calls::SonioxVoiceSettings }
 
+        variant :assemblyai, -> { Telnyx::Calls::AssemblyAIVoiceSettings }
+
         # @!method self.variants
-        #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings)]
+        #   @return [Array(Telnyx::Models::Calls::ElevenLabsVoiceSettings, Telnyx::Models::Calls::TelnyxVoiceSettings, Telnyx::Models::Calls::AwsVoiceSettings, Telnyx::Models::MinimaxVoiceSettings, Telnyx::Models::AzureVoiceSettings, Telnyx::Models::ResembleVoiceSettings, Telnyx::Models::InworldVoiceSettings, Telnyx::Models::XaiVoiceSettings, Telnyx::Models::Calls::SonioxVoiceSettings, Telnyx::Models::Calls::AssemblyAIVoiceSettings)]
       end
     end
   end

@@ -23,6 +23,14 @@ module Telnyx
       module Addresses
       end
 
+      module AgentGateways
+        module Keys
+        end
+
+        module Teams
+        end
+      end
+
       module Agents
       end
 
@@ -117,6 +125,9 @@ module Telnyx
       end
 
       module ByPhoneNumber
+      end
+
+      module CalendarConnections
       end
 
       module Calls
@@ -225,6 +236,9 @@ module Telnyx
       module IPPools
       end
 
+      module Keys
+      end
+
       module Knowledge
       end
 
@@ -245,6 +259,9 @@ module Telnyx
       end
 
       module ManagedAccounts
+      end
+
+      module MeetingBot
       end
 
       module MeetingSessions
@@ -417,6 +434,9 @@ module Telnyx
 
         module Sqldbs
         end
+      end
+
+      module Teams
       end
 
       module TermsOfService

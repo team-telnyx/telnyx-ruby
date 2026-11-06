@@ -148,7 +148,11 @@ module Telnyx
         )
         end
 
-        # Delete a specific conversation by its ID.
+        # Delete a specific conversation by its ID. Permanently deletes the conversation
+        # and its associated data: the conversation's messages, its insight generation
+        # results, any conversation memories, and its webhook request logs. Recordings are
+        # not deleted — recordings are managed separately through the /v2/recordings
+        # endpoints. This action cannot be undone.
         sig do
           params(
             conversation_id: String,
@@ -212,6 +216,30 @@ module Telnyx
           # different request returns 422. Only successful responses are replayed, for up to
           # 24 hours. Do not include sensitive data in the key.
           idempotency_key: nil,
+          request_options: {}
+        )
+        end
+
+        # Delete one insight generation request for a conversation. Generation results are
+        # stored per conversation and per insight template; deleting a request permanently
+        # removes the stored result but does not stop insight generation from running
+        # again. To remove every insight result for the conversation, delete the
+        # conversation itself. A successful delete returns an empty response.
+        sig do
+          params(
+            insight_id: String,
+            conversation_id: String,
+            request_options: Telnyx::RequestOptions::OrHash
+          ).void
+        end
+        def delete_delete(
+          # Unique identifier of the insight generation request to delete, as returned as
+          # `data.id` by the insight generation and insights-list operations. Note that the
+          # nested `conversation_insights[].insight_id` field returned in the insights-list
+          # response is the insight template ID, not the ID accepted here.
+          insight_id,
+          # Unique identifier of the conversation.
+          conversation_id:,
           request_options: {}
         )
         end

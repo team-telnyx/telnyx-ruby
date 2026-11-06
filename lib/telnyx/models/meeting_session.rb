@@ -18,8 +18,8 @@ module Telnyx
       # @!attribute assistant
       #   Assistant configuration if an assistant is attached, otherwise null.
       #
-      #   @return [Telnyx::Models::MeetingSession::Assistant, nil]
-      required :assistant, -> { Telnyx::MeetingSession::Assistant }, nil?: true
+      #   @return [Telnyx::Models::MeetingSessionAssistant, nil]
+      required :assistant, -> { Telnyx::MeetingSessionAssistant }, nil?: true
 
       # @!attribute assistant_state
       #   Current state of the assistant, or null if no assistant is attached.
@@ -79,7 +79,14 @@ module Telnyx
       required :ended_at, Time, nil?: true
 
       # @!attribute failure_reason
-      #   Human-readable failure reason if the session failed, or null.
+      #   A machine-readable lifecycle reason, or null. Values include left_on_request,
+      #   meeting_ended, everyone_left, no_one_joined, silence_timeout,
+      #   max_duration_reached, admission_timeout, admission_denied, removed_from_meeting,
+      #   recording_permission_denied, meeting_not_found, meeting_not_started,
+      #   meeting_access_denied, meeting_full, cancelled, cancelled_calendar_disconnected,
+      #   cancelled_calendar_event_deleted, cancelled_calendar_superseded,
+      #   cancelled_policy, internal_error, and other. Treat this vocabulary as
+      #   extensible.
       #
       #   @return [String, nil]
       required :failure_reason, String, nil?: true
@@ -116,10 +123,10 @@ module Telnyx
       required :platform, enum: -> { Telnyx::MeetingSession::Platform }
 
       # @!attribute provider
-      #   Provider handling the meeting session.
+      #   Always telnyx.
       #
-      #   @return [String]
-      required :provider, String
+      #   @return [Symbol, :telnyx]
+      required :provider, const: :telnyx
 
       # @!attribute recording
       #   Whether the session is being recorded.
@@ -139,7 +146,14 @@ module Telnyx
       required :status, enum: -> { Telnyx::MeetingSession::Status }
 
       # @!attribute status_detail
-      #   Additional human-readable detail about the status, or null.
+      #   A machine-readable lifecycle reason, or null. Values include left_on_request,
+      #   meeting_ended, everyone_left, no_one_joined, silence_timeout,
+      #   max_duration_reached, admission_timeout, admission_denied, removed_from_meeting,
+      #   recording_permission_denied, meeting_not_found, meeting_not_started,
+      #   meeting_access_denied, meeting_full, cancelled, cancelled_calendar_disconnected,
+      #   cancelled_calendar_event_deleted, cancelled_calendar_superseded,
+      #   cancelled_policy, internal_error, and other. Treat this vocabulary as
+      #   extensible.
       #
       #   @return [String, nil]
       required :status_detail, String, nil?: true
@@ -156,19 +170,34 @@ module Telnyx
       #   @return [String, nil]
       required :webhook_url, String, nil?: true
 
-      # @!method initialize(id:, account_id:, assistant:, assistant_state:, assistant_state_changed_at:, avatar:, avatar_state:, avatar_state_changed_at:, bot_name:, config:, created_at:, ended_at:, failure_reason:, join_at:, joined_at:, meeting_url:, metadata:, platform:, provider:, recording:, status:, status_detail:, updated_at:, webhook_url:)
+      # @!attribute recording_export
+      #   Customer Storage recording reference. Pending is not downloadable; exported
+      #   means upload was verified; failed is terminal. Download with ordinary Storage
+      #   authorization. No presigned URL is returned.
+      #
+      #   @return [Telnyx::Models::MeetingSessionRecordingExport, nil]
+      optional :recording_export, -> { Telnyx::MeetingSessionRecordingExport }, nil?: true
+
+      # @!attribute remote_state_observed_at
+      #   Optional observation time on session list items. Retrieve the individual session
+      #   when current state is required.
+      #
+      #   @return [Time, nil]
+      optional :remote_state_observed_at, Time
+
+      # @!method initialize(id:, account_id:, assistant:, assistant_state:, assistant_state_changed_at:, avatar:, avatar_state:, avatar_state_changed_at:, bot_name:, config:, created_at:, ended_at:, failure_reason:, join_at:, joined_at:, meeting_url:, metadata:, platform:, recording:, status:, status_detail:, updated_at:, webhook_url:, recording_export: nil, remote_state_observed_at: nil, provider: :telnyx)
       #   Some parameter documentations has been truncated, see
       #   {Telnyx::Models::MeetingSession} for more details.
       #
-      #   Represents a meeting session. All serializer fields are present and required;
-      #   nullable fields use null when absent. No actor, provider-bot, idempotency,
-      #   routing, key, or internal fields are exposed.
+      #   Represents a meeting session. Core serializer fields are required;
+      #   platform-specific fields are optional. Nullable fields use null when absent. No
+      #   actor, provider-bot, idempotency, routing, key, or internal fields are exposed.
       #
       #   @param id [String] Unique identifier for the meeting session.
       #
       #   @param account_id [String] Identifier of the owning account.
       #
-      #   @param assistant [Telnyx::Models::MeetingSession::Assistant, nil] Assistant configuration if an assistant is attached, otherwise null.
+      #   @param assistant [Telnyx::Models::MeetingSessionAssistant, nil] Assistant configuration if an assistant is attached, otherwise null.
       #
       #   @param assistant_state [Symbol, Telnyx::Models::MeetingSession::AssistantState, nil] Current state of the assistant, or null if no assistant is attached.
       #
@@ -188,7 +217,7 @@ module Telnyx
       #
       #   @param ended_at [Time, nil] Timestamp when the session ended, or null if ongoing.
       #
-      #   @param failure_reason [String, nil] Human-readable failure reason if the session failed, or null.
+      #   @param failure_reason [String, nil] A machine-readable lifecycle reason, or null. Values include left_on_request, me
       #
       #   @param join_at [Time, nil] Scheduled join time, or null for immediate join.
       #
@@ -200,72 +229,21 @@ module Telnyx
       #
       #   @param platform [Symbol, Telnyx::Models::MeetingSession::Platform] Detected meeting platform.
       #
-      #   @param provider [String] Provider handling the meeting session.
-      #
       #   @param recording [Boolean] Whether the session is being recorded.
       #
       #   @param status [Symbol, Telnyx::Models::MeetingSession::Status] Lifecycle status. `waiting_for_admission` means the bot reached the meeting lobb
       #
-      #   @param status_detail [String, nil] Additional human-readable detail about the status, or null.
+      #   @param status_detail [String, nil] A machine-readable lifecycle reason, or null. Values include left_on_request, me
       #
       #   @param updated_at [Time] Timestamp of the last update to the session.
       #
       #   @param webhook_url [String, nil] Webhook endpoint for session lifecycle callbacks, or null if not configured.
-
-      # @see Telnyx::Models::MeetingSession#assistant
-      class Assistant < Telnyx::Internal::Type::BaseModel
-        # @!attribute id
-        #   Identifier of the assistant.
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute audio_gate
-        #   Audio gating strategy in force for the assistant call leg.
-        #
-        #   @return [Symbol, Telnyx::Models::MeetingSession::Assistant::AudioGate]
-        required :audio_gate, enum: -> { Telnyx::MeetingSession::Assistant::AudioGate }
-
-        # @!attribute dynamic_variables
-        #   The dynamic variables in force for this session, or null when none were
-        #   supplied.
-        #
-        #   @return [Hash{Symbol=>String}, nil]
-        required :dynamic_variables, Telnyx::Internal::Type::HashOf[String], nil?: true
-
-        # @!attribute leave_on_end
-        #   Whether the bot leaves when the Assistant's conversation ends or fails.
-        #
-        #   @return [Boolean]
-        required :leave_on_end, Telnyx::Internal::Type::Boolean
-
-        # @!method initialize(id:, audio_gate:, dynamic_variables:, leave_on_end:)
-        #   Some parameter documentations has been truncated, see
-        #   {Telnyx::Models::MeetingSession::Assistant} for more details.
-        #
-        #   Assistant configuration if an assistant is attached, otherwise null.
-        #
-        #   @param id [String] Identifier of the assistant.
-        #
-        #   @param audio_gate [Symbol, Telnyx::Models::MeetingSession::Assistant::AudioGate] Audio gating strategy in force for the assistant call leg.
-        #
-        #   @param dynamic_variables [Hash{Symbol=>String}, nil] The dynamic variables in force for this session, or null when none were supplied
-        #
-        #   @param leave_on_end [Boolean] Whether the bot leaves when the Assistant's conversation ends or fails.
-
-        # Audio gating strategy in force for the assistant call leg.
-        #
-        # @see Telnyx::Models::MeetingSession::Assistant#audio_gate
-        module AudioGate
-          extend Telnyx::Internal::Type::Enum
-
-          HALF_DUPLEX = :half_duplex
-          FULL_DUPLEX = :full_duplex
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
-      end
+      #
+      #   @param recording_export [Telnyx::Models::MeetingSessionRecordingExport, nil] Customer Storage recording reference. Pending is not downloadable; exported mean
+      #
+      #   @param remote_state_observed_at [Time] Optional observation time on session list items. Retrieve the individual session
+      #
+      #   @param provider [Symbol, :telnyx] Always telnyx.
 
       # Current state of the assistant, or null if no assistant is attached.
       #
@@ -355,6 +333,12 @@ module Telnyx
         #   @return [String, nil]
         required :chat_on_enter, String, nil?: true
 
+        # @!attribute deepfake_detection
+        #   Detection settings. Enabling audio or video detection is currently unsupported.
+        #
+        #   @return [Telnyx::Models::MeetingSession::Config::DeepfakeDetection]
+        required :deepfake_detection, -> { Telnyx::MeetingSession::Config::DeepfakeDetection }
+
         # @!attribute speak_on_enter
         #   Text spoken on meeting entry, or null if not set.
         #
@@ -373,7 +357,28 @@ module Telnyx
         #   @return [String, nil]
         required :voice, String, nil?: true
 
-        # @!method initialize(barge_in:, chat_on_enter:, speak_on_enter:, summarize_on_end:, voice:)
+        # @!attribute leave_policy
+        #   Automatic departure settings for Google Meet and Teams. Omitted fields use the
+        #   default behavior. Set at creation; cannot be changed later. Zoom ignores this
+        #   policy.
+        #
+        #   @return [Telnyx::Models::MeetingSessionLeavePolicy, nil]
+        optional :leave_policy, -> { Telnyx::MeetingSessionLeavePolicy }
+
+        # @!attribute recording
+        #   Recording intent set at creation for Google Meet and Teams. Distinct from the
+        #   top-level recording field, which reports current activity.
+        #
+        #   @return [Boolean, nil]
+        optional :recording, Telnyx::Internal::Type::Boolean
+
+        # @!attribute recording_view
+        #   Non-default recording layout. Omitted for the default speaker_view layout.
+        #
+        #   @return [Symbol, Telnyx::Models::MeetingSession::Config::RecordingView, nil]
+        optional :recording_view, enum: -> { Telnyx::MeetingSession::Config::RecordingView }
+
+        # @!method initialize(barge_in:, chat_on_enter:, deepfake_detection:, speak_on_enter:, summarize_on_end:, voice:, leave_policy: nil, recording: nil, recording_view: nil)
         #   Some parameter documentations has been truncated, see
         #   {Telnyx::Models::MeetingSession::Config} for more details.
         #
@@ -381,11 +386,51 @@ module Telnyx
         #
         #   @param chat_on_enter [String, nil] The message posted to chat on join, or null when unset.
         #
+        #   @param deepfake_detection [Telnyx::Models::MeetingSession::Config::DeepfakeDetection] Detection settings. Enabling audio or video detection is currently unsupported.
+        #
         #   @param speak_on_enter [String, nil] Text spoken on meeting entry, or null if not set.
         #
         #   @param summarize_on_end [Boolean] Whether a summary artifact is generated on session end.
         #
         #   @param voice [String, nil] Configured voice identifier, or null if not set.
+        #
+        #   @param leave_policy [Telnyx::Models::MeetingSessionLeavePolicy] Automatic departure settings for Google Meet and Teams. Omitted fields use the d
+        #
+        #   @param recording [Boolean] Recording intent set at creation for Google Meet and Teams. Distinct from the to
+        #
+        #   @param recording_view [Symbol, Telnyx::Models::MeetingSession::Config::RecordingView] Non-default recording layout. Omitted for the default speaker_view layout.
+
+        # @see Telnyx::Models::MeetingSession::Config#deepfake_detection
+        class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+          # @!attribute audio
+          #
+          #   @return [Boolean]
+          required :audio, Telnyx::Internal::Type::Boolean
+
+          # @!attribute video
+          #
+          #   @return [Boolean]
+          required :video, Telnyx::Internal::Type::Boolean
+
+          # @!method initialize(audio:, video:)
+          #   Detection settings. Enabling audio or video detection is currently unsupported.
+          #
+          #   @param audio [Boolean]
+          #   @param video [Boolean]
+        end
+
+        # Non-default recording layout. Omitted for the default speaker_view layout.
+        #
+        # @see Telnyx::Models::MeetingSession::Config#recording_view
+        module RecordingView
+          extend Telnyx::Internal::Type::Enum
+
+          GALLERY_VIEW = :gallery_view
+          SPEAKER_VIEW_NO_SIDEBAR = :speaker_view_no_sidebar
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       # Detected meeting platform.

@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      type mcp_server_list_response =
+        { data: ::Array[Telnyx::AgentGateways::AgentGatewayMcpServer] }
+
+      class McpServerListResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Telnyx::AgentGateways::AgentGatewayMcpServer]
+
+        def initialize: (
+          data: ::Array[Telnyx::AgentGateways::AgentGatewayMcpServer]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Telnyx::AgentGateways::AgentGatewayMcpServer]
+        }
+      end
+    end
+  end
+end

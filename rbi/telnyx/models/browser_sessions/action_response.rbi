@@ -43,7 +43,7 @@ module Telnyx
 
         # Normalized request metadata; defaults may be materialized and fill values are
         # redacted as {redacted: true, length: number}, including inside batch actions.
-        sig { returns(T.anything) }
+        sig { returns(T::Hash[Symbol, T.anything]) }
         attr_accessor :request
 
         sig do
@@ -87,7 +87,7 @@ module Telnyx
             created_at: Time,
             error:
               T.nilable(Telnyx::BrowserSessions::ActionResponse::Error::OrHash),
-            request: T.anything,
+            request: T::Hash[Symbol, T.anything],
             result:
               T.nilable(
                 Telnyx::BrowserSessions::ActionResponse::Result::OrHash
@@ -134,7 +134,7 @@ module Telnyx
               completed_at: T.nilable(Time),
               created_at: Time,
               error: T.nilable(Telnyx::BrowserSessions::ActionResponse::Error),
-              request: T.anything,
+              request: T::Hash[Symbol, T.anything],
               result:
                 T.nilable(Telnyx::BrowserSessions::ActionResponse::Result),
               seq: Integer,
@@ -232,10 +232,10 @@ module Telnyx
           attr_writer :observation
 
           # Present only for batch actions.
-          sig { returns(T.nilable(T::Array[T.anything])) }
+          sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
           attr_reader :results
 
-          sig { params(results: T::Array[T.anything]).void }
+          sig { params(results: T::Array[T::Hash[Symbol, T.anything]]).void }
           attr_writer :results
 
           sig { returns(T.nilable(String)) }
@@ -256,7 +256,7 @@ module Telnyx
                 Telnyx::BrowserSessions::ActionResponse::Result::Artifact::OrHash,
               observation:
                 Telnyx::BrowserSessions::ActionResponse::Result::Observation::OrHash,
-              results: T::Array[T.anything],
+              results: T::Array[T::Hash[Symbol, T.anything]],
               title: String,
               url: String
             ).returns(T.attached_class)
@@ -282,7 +282,7 @@ module Telnyx
                   Telnyx::BrowserSessions::ActionResponse::Result::Artifact,
                 observation:
                   Telnyx::BrowserSessions::ActionResponse::Result::Observation,
-                results: T::Array[T.anything],
+                results: T::Array[T::Hash[Symbol, T.anything]],
                 title: String,
                 url: String
               }
@@ -364,10 +364,10 @@ module Telnyx
             sig { params(ref_count: Integer).void }
             attr_writer :ref_count
 
-            sig { returns(T.nilable(T.anything)) }
+            sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
             attr_reader :refs
 
-            sig { params(refs: T.anything).void }
+            sig { params(refs: T::Hash[Symbol, T.anything]).void }
             attr_writer :refs
 
             sig { returns(T.nilable(String)) }
@@ -402,7 +402,7 @@ module Telnyx
               params(
                 observation_id: String,
                 ref_count: Integer,
-                refs: T.anything,
+                refs: T::Hash[Symbol, T.anything],
                 title: String,
                 tree: String,
                 truncated: T::Boolean,
@@ -427,7 +427,7 @@ module Telnyx
                 {
                   observation_id: String,
                   ref_count: Integer,
-                  refs: T.anything,
+                  refs: T::Hash[Symbol, T.anything],
                   title: String,
                   tree: String,
                   truncated: T::Boolean,

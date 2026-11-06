@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    class AgentGatewayPassthroughAuth = AgentGateways::AgentGatewayPassthroughAuth
+
+    module AgentGateways
+      type agent_gateway_passthrough_auth =
+        {
+          type: Telnyx::Models::AgentGateways::AgentGatewayPassthroughAuth::type_
+        }
+
+      class AgentGatewayPassthroughAuth < Telnyx::Internal::Type::BaseModel
+        attr_reader type: Telnyx::Models::AgentGateways::AgentGatewayPassthroughAuth::type_?
+
+        def type=: (
+          Telnyx::Models::AgentGateways::AgentGatewayPassthroughAuth::type_
+        ) -> Telnyx::Models::AgentGateways::AgentGatewayPassthroughAuth::type_
+
+        def initialize: (
+          ?type: Telnyx::Models::AgentGateways::AgentGatewayPassthroughAuth::type_
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::AgentGateways::AgentGatewayPassthroughAuth::type_
+        }
+
+        type type_ = :passthrough
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          PASSTHROUGH: :passthrough
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayPassthroughAuth::type_]
+        end
+      end
+    end
+  end
+end

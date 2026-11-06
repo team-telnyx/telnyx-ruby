@@ -5,7 +5,7 @@ module Telnyx
         policy: Telnyx::BrowserSessionCreateParams::Policy,
         idempotency_key: String,
         limits: Telnyx::BrowserSessionCreateParams::Limits,
-        metadata: top
+        metadata: ::Hash[Symbol, top]
       }
       & Telnyx::Internal::Type::request_parameters
 
@@ -25,15 +25,15 @@ module Telnyx
         Telnyx::BrowserSessionCreateParams::Limits
       ) -> Telnyx::BrowserSessionCreateParams::Limits
 
-      attr_reader metadata: top?
+      attr_reader metadata: ::Hash[Symbol, top]?
 
-      def metadata=: (top) -> top
+      def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
       def initialize: (
         policy: Telnyx::BrowserSessionCreateParams::Policy,
         ?idempotency_key: String,
         ?limits: Telnyx::BrowserSessionCreateParams::Limits,
-        ?metadata: top,
+        ?metadata: ::Hash[Symbol, top],
         ?request_options: Telnyx::request_opts
       ) -> void
 
@@ -41,7 +41,7 @@ module Telnyx
         policy: Telnyx::BrowserSessionCreateParams::Policy,
         idempotency_key: String,
         limits: Telnyx::BrowserSessionCreateParams::Limits,
-        metadata: top,
+        metadata: ::Hash[Symbol, top],
         request_options: Telnyx::RequestOptions
       }
 

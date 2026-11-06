@@ -1,0 +1,52 @@
+module Telnyx
+  module Resources
+    class UserProfile
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::UserProfileListResponse
+
+      def patch_all: (
+        ?address_1: String?,
+        ?address_2: String?,
+        ?business_name: String?,
+        ?city: String?,
+        ?company_size: String,
+        ?country: String?,
+        ?data_locality: Telnyx::Models::UserProfilePatchAllParams::data_locality,
+        ?default_managed_account_allow_custom_pricing: bool,
+        ?default_managed_account_inherit_emergency_terms_of_service: bool,
+        ?default_managed_account_rollup_billing: bool,
+        ?default_notify_manager_account: bool,
+        ?default_numbers_external_pin: String,
+        ?first_name: String?,
+        ?got_free_number_at_signup: bool,
+        ?last_name: String?,
+        ?low_balance_notification_frequency: Telnyx::Models::UserProfilePatchAllParams::low_balance_notification_frequency?,
+        ?low_balance_threshold_amount: Float?,
+        ?notify_on_invoice_available: bool,
+        ?notify_on_invoice_payment: bool,
+        ?npac_user: bool,
+        ?onboarding_build_method: ::Array[String],
+        ?onboarding_industries: ::Array[String],
+        ?onboarding_monthly_budget: ::Array[String],
+        ?onboarding_product_interest: ::Array[String],
+        ?onboarding_project_types: ::Array[String],
+        ?onboarding_reasons_for_consideration: ::Array[String],
+        ?onboarding_referrer: ::Array[String],
+        ?onboarding_use_cases_other: ::Array[String],
+        ?phone_number: String?,
+        ?port_out_pin_validation: bool,
+        ?primary_use_case: String,
+        ?role: String,
+        ?state: String?,
+        ?ui_theme: Telnyx::Models::UserProfilePatchAllParams::ui_theme,
+        ?use_cases: ::Array[String],
+        ?user_subscription_opt_in: bool,
+        ?zip: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::UserProfilePatchAllResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

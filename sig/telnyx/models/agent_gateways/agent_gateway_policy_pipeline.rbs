@@ -1,0 +1,40 @@
+module Telnyx
+  module Models
+    class AgentGatewayPolicyPipeline = AgentGateways::AgentGatewayPolicyPipeline
+
+    module AgentGateways
+      type agent_gateway_policy_pipeline =
+        {
+          hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook,
+          steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyStep]
+        }
+
+      class AgentGatewayPolicyPipeline < Telnyx::Internal::Type::BaseModel
+        attr_accessor hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook
+
+        attr_accessor steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyStep]
+
+        def initialize: (
+          hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook,
+          steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyStep]
+        ) -> void
+
+        def to_hash: -> {
+          hook: Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook,
+          steps: ::Array[Telnyx::AgentGateways::AgentGatewayPolicyStep]
+        }
+
+        type hook = :before_request | :after_request
+
+        module Hook
+          extend Telnyx::Internal::Type::Enum
+
+          BEFORE_REQUEST: :before_request
+          AFTER_REQUEST: :after_request
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayPolicyPipeline::hook]
+        end
+      end
+    end
+  end
+end

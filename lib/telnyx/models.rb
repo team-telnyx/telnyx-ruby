@@ -83,6 +83,24 @@ module Telnyx
 
   AdvancedOrderUpdateRequirementGroupParams = Telnyx::Models::AdvancedOrderUpdateRequirementGroupParams
 
+  AgentGateway = Telnyx::Models::AgentGateway
+
+  AgentGatewayCreateParams = Telnyx::Models::AgentGatewayCreateParams
+
+  AgentGatewayDeleteParams = Telnyx::Models::AgentGatewayDeleteParams
+
+  AgentGatewayListParams = Telnyx::Models::AgentGatewayListParams
+
+  AgentGatewayResponse = Telnyx::Models::AgentGatewayResponse
+
+  AgentGatewayRetrieveModelsParams = Telnyx::Models::AgentGatewayRetrieveModelsParams
+
+  AgentGatewayRetrieveParams = Telnyx::Models::AgentGatewayRetrieveParams
+
+  AgentGatewayRetrieveSpendLogsParams = Telnyx::Models::AgentGatewayRetrieveSpendLogsParams
+
+  AgentGateways = Telnyx::Models::AgentGateways
+
   AI = Telnyx::Models::AI
 
   AIRetrieveConversationHistoriesParams = Telnyx::Models::AIRetrieveConversationHistoriesParams
@@ -192,6 +210,22 @@ module Telnyx
   BulkSimCardActionRetrieveParams = Telnyx::Models::BulkSimCardActionRetrieveParams
 
   BundlePricing = Telnyx::Models::BundlePricing
+
+  CalendarConnection = Telnyx::Models::CalendarConnection
+
+  CalendarConnectionCreateParams = Telnyx::Models::CalendarConnectionCreateParams
+
+  CalendarConnectionDeleteParams = Telnyx::Models::CalendarConnectionDeleteParams
+
+  CalendarConnectionListParams = Telnyx::Models::CalendarConnectionListParams
+
+  CalendarConnectionResponse = Telnyx::Models::CalendarConnectionResponse
+
+  CalendarConnectionRetrieveParams = Telnyx::Models::CalendarConnectionRetrieveParams
+
+  CalendarConnections = Telnyx::Models::CalendarConnections
+
+  CalendarConnectionUpdateParams = Telnyx::Models::CalendarConnectionUpdateParams
 
   CallAIGatherEnded = Telnyx::Models::CallAIGatherEnded
 
@@ -1122,7 +1156,11 @@ module Telnyx
 
   MediaUploadParams = Telnyx::Models::MediaUploadParams
 
+  MeetingBot = Telnyx::Models::MeetingBot
+
   MeetingSession = Telnyx::Models::MeetingSession
+
+  MeetingSessionAssistant = Telnyx::Models::MeetingSessionAssistant
 
   MeetingSessionCreateParams = Telnyx::Models::MeetingSessionCreateParams
 
@@ -1130,13 +1168,21 @@ module Telnyx
 
   MeetingSessionDeleteRecordingMediaParams = Telnyx::Models::MeetingSessionDeleteRecordingMediaParams
 
+  MeetingSessionLeavePolicy = Telnyx::Models::MeetingSessionLeavePolicy
+
   MeetingSessionListParams = Telnyx::Models::MeetingSessionListParams
+
+  MeetingSessionRecordingDestination = Telnyx::Models::MeetingSessionRecordingDestination
+
+  MeetingSessionRecordingExport = Telnyx::Models::MeetingSessionRecordingExport
 
   MeetingSessionResponse = Telnyx::Models::MeetingSessionResponse
 
   MeetingSessionRetrieveEventsParams = Telnyx::Models::MeetingSessionRetrieveEventsParams
 
   MeetingSessionRetrieveParams = Telnyx::Models::MeetingSessionRetrieveParams
+
+  MeetingSessionRetrieveRecordingsParams = Telnyx::Models::MeetingSessionRetrieveRecordingsParams
 
   MeetingSessionRetrieveTranscriptParams = Telnyx::Models::MeetingSessionRetrieveTranscriptParams
 
@@ -1734,6 +1780,10 @@ module Telnyx
 
   RecordingDeleteParams = Telnyx::Models::RecordingDeleteParams
 
+  RecordingExportedWebhookEvent = Telnyx::Models::RecordingExportedWebhookEvent
+
+  RecordingExportFailedWebhookEvent = Telnyx::Models::RecordingExportFailedWebhookEvent
+
   RecordingListParams = Telnyx::Models::RecordingListParams
 
   RecordingResponse = Telnyx::Models::RecordingResponse
@@ -2037,6 +2087,9 @@ module Telnyx
 
   TelephonyCredentialRetrieveParams = Telnyx::Models::TelephonyCredentialRetrieveParams
 
+  TelephonyCredentialRetrieveTokenMaterialParams =
+    Telnyx::Models::TelephonyCredentialRetrieveTokenMaterialParams
+
   TelephonyCredentialUpdateParams = Telnyx::Models::TelephonyCredentialUpdateParams
 
   TermsOfService = Telnyx::Models::TermsOfService
@@ -2070,6 +2123,8 @@ module Telnyx
   TextToSpeechRetrieveSpeechParams = Telnyx::Models::TextToSpeechRetrieveSpeechParams
 
   TimeRange = Telnyx::Models::TimeRange
+
+  TokenMaterial = Telnyx::Models::TokenMaterial
 
   TrackingSettings = Telnyx::Models::TrackingSettings
 
@@ -2166,6 +2221,12 @@ module Telnyx
   UserAddressListParams = Telnyx::Models::UserAddressListParams
 
   UserAddressRetrieveParams = Telnyx::Models::UserAddressRetrieveParams
+
+  UserProfileAPI = Telnyx::Models::UserProfileAPI
+
+  UserProfileListParams = Telnyx::Models::UserProfileListParams
+
+  UserProfilePatchAllParams = Telnyx::Models::UserProfilePatchAllParams
 
   UserRequirement = Telnyx::Models::UserRequirement
 

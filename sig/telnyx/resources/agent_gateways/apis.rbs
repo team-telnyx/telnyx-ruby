@@ -1,0 +1,47 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class APIs
+        def create: (
+          String instance_id,
+          name: String,
+          spec_url: String,
+          ?auth: Telnyx::Models::AgentGateways::APICreateParams::auth,
+          ?base_url: String?,
+          ?forwarded_headers: ::Array[String],
+          ?open_to_every_key: bool,
+          ?static_headers: ::Hash[Symbol, String],
+          ?tools: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayAPIResponse
+
+        def update: (
+          String api_id,
+          instance_id: String,
+          ?auth: Telnyx::Models::AgentGateways::APIUpdateParams::auth,
+          ?base_url: String?,
+          ?forwarded_headers: ::Array[String],
+          ?name: String,
+          ?open_to_every_key: bool,
+          ?spec_url: String,
+          ?static_headers: ::Hash[Symbol, String],
+          ?tools: ::Array[String],
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayAPIResponse
+
+        def list: (
+          String instance_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::APIListResponse
+
+        def delete: (
+          String api_id,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayAPIResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    type meeting_session_recording_destination =
+      { bucket: String, prefix: String }
+
+    class MeetingSessionRecordingDestination < Telnyx::Internal::Type::BaseModel
+      attr_accessor bucket: String
+
+      attr_reader prefix: String?
+
+      def prefix=: (String) -> String
+
+      def initialize: (bucket: String, ?prefix: String) -> void
+
+      def to_hash: -> { bucket: String, prefix: String }
+    end
+  end
+end

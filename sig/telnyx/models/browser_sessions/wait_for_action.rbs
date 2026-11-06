@@ -47,7 +47,7 @@ module Telnyx
           Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember0
           | Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember1
           | Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember2
-          | Telnyx::BrowserSessions::WaitForAction::Condition::Kind
+          | Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember3
 
         module Condition
           extend Telnyx::Internal::Type::Union
@@ -95,9 +95,9 @@ module Telnyx
             def to_hash: -> { kind: :text, text: String }
           end
 
-          type kind = { kind: :dom_stable }
+          type union_member3 = { kind: :dom_stable }
 
-          class Kind < Telnyx::Internal::Type::BaseModel
+          class UnionMember3 < Telnyx::Internal::Type::BaseModel
             attr_accessor kind: :dom_stable
 
             def initialize: (?kind: :dom_stable) -> void

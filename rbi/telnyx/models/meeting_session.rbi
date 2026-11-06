@@ -17,12 +17,12 @@ module Telnyx
       attr_accessor :account_id
 
       # Assistant configuration if an assistant is attached, otherwise null.
-      sig { returns(T.nilable(Telnyx::MeetingSession::Assistant)) }
+      sig { returns(T.nilable(Telnyx::MeetingSessionAssistant)) }
       attr_reader :assistant
 
       sig do
         params(
-          assistant: T.nilable(Telnyx::MeetingSession::Assistant::OrHash)
+          assistant: T.nilable(Telnyx::MeetingSessionAssistant::OrHash)
         ).void
       end
       attr_writer :assistant
@@ -78,7 +78,14 @@ module Telnyx
       sig { returns(T.nilable(Time)) }
       attr_accessor :ended_at
 
-      # Human-readable failure reason if the session failed, or null.
+      # A machine-readable lifecycle reason, or null. Values include left_on_request,
+      # meeting_ended, everyone_left, no_one_joined, silence_timeout,
+      # max_duration_reached, admission_timeout, admission_denied, removed_from_meeting,
+      # recording_permission_denied, meeting_not_found, meeting_not_started,
+      # meeting_access_denied, meeting_full, cancelled, cancelled_calendar_disconnected,
+      # cancelled_calendar_event_deleted, cancelled_calendar_superseded,
+      # cancelled_policy, internal_error, and other. Treat this vocabulary as
+      # extensible.
       sig { returns(T.nilable(String)) }
       attr_accessor :failure_reason
 
@@ -103,8 +110,8 @@ module Telnyx
       sig { returns(Telnyx::MeetingSession::Platform::TaggedSymbol) }
       attr_accessor :platform
 
-      # Provider handling the meeting session.
-      sig { returns(String) }
+      # Always telnyx.
+      sig { returns(Symbol) }
       attr_accessor :provider
 
       # Whether the session is being recorded.
@@ -120,7 +127,14 @@ module Telnyx
       sig { returns(Telnyx::MeetingSession::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # Additional human-readable detail about the status, or null.
+      # A machine-readable lifecycle reason, or null. Values include left_on_request,
+      # meeting_ended, everyone_left, no_one_joined, silence_timeout,
+      # max_duration_reached, admission_timeout, admission_denied, removed_from_meeting,
+      # recording_permission_denied, meeting_not_found, meeting_not_started,
+      # meeting_access_denied, meeting_full, cancelled, cancelled_calendar_disconnected,
+      # cancelled_calendar_event_deleted, cancelled_calendar_superseded,
+      # cancelled_policy, internal_error, and other. Treat this vocabulary as
+      # extensible.
       sig { returns(T.nilable(String)) }
       attr_accessor :status_detail
 
@@ -132,14 +146,36 @@ module Telnyx
       sig { returns(T.nilable(String)) }
       attr_accessor :webhook_url
 
-      # Represents a meeting session. All serializer fields are present and required;
-      # nullable fields use null when absent. No actor, provider-bot, idempotency,
-      # routing, key, or internal fields are exposed.
+      # Customer Storage recording reference. Pending is not downloadable; exported
+      # means upload was verified; failed is terminal. Download with ordinary Storage
+      # authorization. No presigned URL is returned.
+      sig { returns(T.nilable(Telnyx::MeetingSessionRecordingExport)) }
+      attr_reader :recording_export
+
+      sig do
+        params(
+          recording_export:
+            T.nilable(Telnyx::MeetingSessionRecordingExport::OrHash)
+        ).void
+      end
+      attr_writer :recording_export
+
+      # Optional observation time on session list items. Retrieve the individual session
+      # when current state is required.
+      sig { returns(T.nilable(Time)) }
+      attr_reader :remote_state_observed_at
+
+      sig { params(remote_state_observed_at: Time).void }
+      attr_writer :remote_state_observed_at
+
+      # Represents a meeting session. Core serializer fields are required;
+      # platform-specific fields are optional. Nullable fields use null when absent. No
+      # actor, provider-bot, idempotency, routing, key, or internal fields are exposed.
       sig do
         params(
           id: String,
           account_id: String,
-          assistant: T.nilable(Telnyx::MeetingSession::Assistant::OrHash),
+          assistant: T.nilable(Telnyx::MeetingSessionAssistant::OrHash),
           assistant_state:
             T.nilable(Telnyx::MeetingSession::AssistantState::OrSymbol),
           assistant_state_changed_at: T.nilable(Time),
@@ -157,12 +193,15 @@ module Telnyx
           meeting_url: String,
           metadata: T::Hash[Symbol, T.anything],
           platform: Telnyx::MeetingSession::Platform::OrSymbol,
-          provider: String,
           recording: T::Boolean,
           status: Telnyx::MeetingSession::Status::OrSymbol,
           status_detail: T.nilable(String),
           updated_at: Time,
-          webhook_url: T.nilable(String)
+          webhook_url: T.nilable(String),
+          recording_export:
+            T.nilable(Telnyx::MeetingSessionRecordingExport::OrHash),
+          remote_state_observed_at: Time,
+          provider: Symbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -193,7 +232,14 @@ module Telnyx
         created_at:,
         # Timestamp when the session ended, or null if ongoing.
         ended_at:,
-        # Human-readable failure reason if the session failed, or null.
+        # A machine-readable lifecycle reason, or null. Values include left_on_request,
+        # meeting_ended, everyone_left, no_one_joined, silence_timeout,
+        # max_duration_reached, admission_timeout, admission_denied, removed_from_meeting,
+        # recording_permission_denied, meeting_not_found, meeting_not_started,
+        # meeting_access_denied, meeting_full, cancelled, cancelled_calendar_disconnected,
+        # cancelled_calendar_event_deleted, cancelled_calendar_superseded,
+        # cancelled_policy, internal_error, and other. Treat this vocabulary as
+        # extensible.
         failure_reason:,
         # Scheduled join time, or null for immediate join.
         join_at:,
@@ -206,8 +252,6 @@ module Telnyx
         metadata:,
         # Detected meeting platform.
         platform:,
-        # Provider handling the meeting session.
-        provider:,
         # Whether the session is being recorded.
         recording:,
         # Lifecycle status. `waiting_for_admission` means the bot reached the meeting
@@ -217,12 +261,28 @@ module Telnyx
         # `admission_denied` is reserved for an explicit provider denial, while
         # cancellation or another termination can end a never-admitted session as `ended`.
         status:,
-        # Additional human-readable detail about the status, or null.
+        # A machine-readable lifecycle reason, or null. Values include left_on_request,
+        # meeting_ended, everyone_left, no_one_joined, silence_timeout,
+        # max_duration_reached, admission_timeout, admission_denied, removed_from_meeting,
+        # recording_permission_denied, meeting_not_found, meeting_not_started,
+        # meeting_access_denied, meeting_full, cancelled, cancelled_calendar_disconnected,
+        # cancelled_calendar_event_deleted, cancelled_calendar_superseded,
+        # cancelled_policy, internal_error, and other. Treat this vocabulary as
+        # extensible.
         status_detail:,
         # Timestamp of the last update to the session.
         updated_at:,
         # Webhook endpoint for session lifecycle callbacks, or null if not configured.
-        webhook_url:
+        webhook_url:,
+        # Customer Storage recording reference. Pending is not downloadable; exported
+        # means upload was verified; failed is terminal. Download with ordinary Storage
+        # authorization. No presigned URL is returned.
+        recording_export: nil,
+        # Optional observation time on session list items. Retrieve the individual session
+        # when current state is required.
+        remote_state_observed_at: nil,
+        # Always telnyx.
+        provider: :telnyx
       )
       end
 
@@ -231,7 +291,7 @@ module Telnyx
           {
             id: String,
             account_id: String,
-            assistant: T.nilable(Telnyx::MeetingSession::Assistant),
+            assistant: T.nilable(Telnyx::MeetingSessionAssistant),
             assistant_state:
               T.nilable(Telnyx::MeetingSession::AssistantState::TaggedSymbol),
             assistant_state_changed_at: T.nilable(Time),
@@ -249,110 +309,18 @@ module Telnyx
             meeting_url: String,
             metadata: T::Hash[Symbol, T.anything],
             platform: Telnyx::MeetingSession::Platform::TaggedSymbol,
-            provider: String,
+            provider: Symbol,
             recording: T::Boolean,
             status: Telnyx::MeetingSession::Status::TaggedSymbol,
             status_detail: T.nilable(String),
             updated_at: Time,
-            webhook_url: T.nilable(String)
+            webhook_url: T.nilable(String),
+            recording_export: T.nilable(Telnyx::MeetingSessionRecordingExport),
+            remote_state_observed_at: Time
           }
         )
       end
       def to_hash
-      end
-
-      class Assistant < Telnyx::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Telnyx::MeetingSession::Assistant, Telnyx::Internal::AnyHash)
-          end
-
-        # Identifier of the assistant.
-        sig { returns(String) }
-        attr_accessor :id
-
-        # Audio gating strategy in force for the assistant call leg.
-        sig do
-          returns(Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol)
-        end
-        attr_accessor :audio_gate
-
-        # The dynamic variables in force for this session, or null when none were
-        # supplied.
-        sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_accessor :dynamic_variables
-
-        # Whether the bot leaves when the Assistant's conversation ends or fails.
-        sig { returns(T::Boolean) }
-        attr_accessor :leave_on_end
-
-        # Assistant configuration if an assistant is attached, otherwise null.
-        sig do
-          params(
-            id: String,
-            audio_gate: Telnyx::MeetingSession::Assistant::AudioGate::OrSymbol,
-            dynamic_variables: T.nilable(T::Hash[Symbol, String]),
-            leave_on_end: T::Boolean
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Identifier of the assistant.
-          id:,
-          # Audio gating strategy in force for the assistant call leg.
-          audio_gate:,
-          # The dynamic variables in force for this session, or null when none were
-          # supplied.
-          dynamic_variables:,
-          # Whether the bot leaves when the Assistant's conversation ends or fails.
-          leave_on_end:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              id: String,
-              audio_gate:
-                Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol,
-              dynamic_variables: T.nilable(T::Hash[Symbol, String]),
-              leave_on_end: T::Boolean
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # Audio gating strategy in force for the assistant call leg.
-        module AudioGate
-          extend Telnyx::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Telnyx::MeetingSession::Assistant::AudioGate)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          HALF_DUPLEX =
-            T.let(
-              :half_duplex,
-              Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol
-            )
-          FULL_DUPLEX =
-            T.let(
-              :full_duplex,
-              Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                Telnyx::MeetingSession::Assistant::AudioGate::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
       end
 
       # Current state of the assistant, or null if no assistant is attached.
@@ -490,6 +458,18 @@ module Telnyx
         sig { returns(T.nilable(String)) }
         attr_accessor :chat_on_enter
 
+        # Detection settings. Enabling audio or video detection is currently unsupported.
+        sig { returns(Telnyx::MeetingSession::Config::DeepfakeDetection) }
+        attr_reader :deepfake_detection
+
+        sig do
+          params(
+            deepfake_detection:
+              Telnyx::MeetingSession::Config::DeepfakeDetection::OrHash
+          ).void
+        end
+        attr_writer :deepfake_detection
+
         # Text spoken on meeting entry, or null if not set.
         sig { returns(T.nilable(String)) }
         attr_accessor :speak_on_enter
@@ -502,13 +482,56 @@ module Telnyx
         sig { returns(T.nilable(String)) }
         attr_accessor :voice
 
+        # Automatic departure settings for Google Meet and Teams. Omitted fields use the
+        # default behavior. Set at creation; cannot be changed later. Zoom ignores this
+        # policy.
+        sig { returns(T.nilable(Telnyx::MeetingSessionLeavePolicy)) }
+        attr_reader :leave_policy
+
+        sig do
+          params(leave_policy: Telnyx::MeetingSessionLeavePolicy::OrHash).void
+        end
+        attr_writer :leave_policy
+
+        # Recording intent set at creation for Google Meet and Teams. Distinct from the
+        # top-level recording field, which reports current activity.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :recording
+
+        sig { params(recording: T::Boolean).void }
+        attr_writer :recording
+
+        # Non-default recording layout. Omitted for the default speaker_view layout.
+        sig do
+          returns(
+            T.nilable(
+              Telnyx::MeetingSession::Config::RecordingView::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :recording_view
+
+        sig do
+          params(
+            recording_view:
+              Telnyx::MeetingSession::Config::RecordingView::OrSymbol
+          ).void
+        end
+        attr_writer :recording_view
+
         sig do
           params(
             barge_in: T::Boolean,
             chat_on_enter: T.nilable(String),
+            deepfake_detection:
+              Telnyx::MeetingSession::Config::DeepfakeDetection::OrHash,
             speak_on_enter: T.nilable(String),
             summarize_on_end: T::Boolean,
-            voice: T.nilable(String)
+            voice: T.nilable(String),
+            leave_policy: Telnyx::MeetingSessionLeavePolicy::OrHash,
+            recording: T::Boolean,
+            recording_view:
+              Telnyx::MeetingSession::Config::RecordingView::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -518,12 +541,23 @@ module Telnyx
           barge_in:,
           # The message posted to chat on join, or null when unset.
           chat_on_enter:,
+          # Detection settings. Enabling audio or video detection is currently unsupported.
+          deepfake_detection:,
           # Text spoken on meeting entry, or null if not set.
           speak_on_enter:,
           # Whether a summary artifact is generated on session end.
           summarize_on_end:,
           # Configured voice identifier, or null if not set.
-          voice:
+          voice:,
+          # Automatic departure settings for Google Meet and Teams. Omitted fields use the
+          # default behavior. Set at creation; cannot be changed later. Zoom ignores this
+          # policy.
+          leave_policy: nil,
+          # Recording intent set at creation for Google Meet and Teams. Distinct from the
+          # top-level recording field, which reports current activity.
+          recording: nil,
+          # Non-default recording layout. Omitted for the default speaker_view layout.
+          recording_view: nil
         )
         end
 
@@ -532,13 +566,80 @@ module Telnyx
             {
               barge_in: T::Boolean,
               chat_on_enter: T.nilable(String),
+              deepfake_detection:
+                Telnyx::MeetingSession::Config::DeepfakeDetection,
               speak_on_enter: T.nilable(String),
               summarize_on_end: T::Boolean,
-              voice: T.nilable(String)
+              voice: T.nilable(String),
+              leave_policy: Telnyx::MeetingSessionLeavePolicy,
+              recording: T::Boolean,
+              recording_view:
+                Telnyx::MeetingSession::Config::RecordingView::TaggedSymbol
             }
           )
         end
         def to_hash
+        end
+
+        class DeepfakeDetection < Telnyx::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Telnyx::MeetingSession::Config::DeepfakeDetection,
+                Telnyx::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T::Boolean) }
+          attr_accessor :audio
+
+          sig { returns(T::Boolean) }
+          attr_accessor :video
+
+          # Detection settings. Enabling audio or video detection is currently unsupported.
+          sig do
+            params(audio: T::Boolean, video: T::Boolean).returns(
+              T.attached_class
+            )
+          end
+          def self.new(audio:, video:)
+          end
+
+          sig { override.returns({ audio: T::Boolean, video: T::Boolean }) }
+          def to_hash
+          end
+        end
+
+        # Non-default recording layout. Omitted for the default speaker_view layout.
+        module RecordingView
+          extend Telnyx::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Telnyx::MeetingSession::Config::RecordingView)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          GALLERY_VIEW =
+            T.let(
+              :gallery_view,
+              Telnyx::MeetingSession::Config::RecordingView::TaggedSymbol
+            )
+          SPEAKER_VIEW_NO_SIDEBAR =
+            T.let(
+              :speaker_view_no_sidebar,
+              Telnyx::MeetingSession::Config::RecordingView::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Telnyx::MeetingSession::Config::RecordingView::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 

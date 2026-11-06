@@ -114,7 +114,7 @@ module Telnyx
                 def self.variants
                 end
 
-                UnionMember0Array =
+                IngestPayloadValueArray =
                   T.let(
                     Telnyx::Internal::Type::ArrayOf[
                       Telnyx::Internal::Type::Unknown
@@ -133,7 +133,7 @@ module Telnyx
               def self.variants
               end
 
-              UnionMember0Map =
+              IngestPayloadObjectMap =
                 T.let(
                   Telnyx::Internal::Type::HashOf[
                     Telnyx::Internal::Type::Unknown

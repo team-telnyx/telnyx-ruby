@@ -78,9 +78,14 @@ module Telnyx
         sig { returns(T.nilable(Float)) }
         attr_accessor :relative_ts
 
+        # Monotonic transcript append cursor. This is separate from the event-history
+        # cursor and does not establish conversational turn order.
         sig { returns(Integer) }
         attr_accessor :seq
 
+        # Recorded participant or bot label, or null when unavailable. Labels are
+        # attribution, not verified identity. Segments from concurrent speakers can
+        # finalize in a different order from the conversation.
         sig { returns(T.nilable(String)) }
         attr_accessor :speaker_label
 
@@ -101,7 +106,12 @@ module Telnyx
           confidence:,
           occurred_at:,
           relative_ts:,
+          # Monotonic transcript append cursor. This is separate from the event-history
+          # cursor and does not establish conversational turn order.
           seq:,
+          # Recorded participant or bot label, or null when unavailable. Labels are
+          # attribution, not verified identity. Segments from concurrent speakers can
+          # finalize in a different order from the conversation.
           speaker_label:,
           text:
         )

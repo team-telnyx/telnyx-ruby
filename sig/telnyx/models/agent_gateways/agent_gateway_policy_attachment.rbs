@@ -1,0 +1,54 @@
+module Telnyx
+  module Models
+    class AgentGatewayPolicyAttachment = AgentGateways::AgentGatewayPolicyAttachment
+
+    module AgentGateways
+      type agent_gateway_policy_attachment =
+        {
+          id: String,
+          created_at: Time?,
+          default: bool,
+          models: ::Array[String],
+          policy: String,
+          priority: Integer?,
+          updated_at: Time?
+        }
+
+      class AgentGatewayPolicyAttachment < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time?
+
+        attr_accessor default: bool
+
+        attr_accessor models: ::Array[String]
+
+        attr_accessor policy: String
+
+        attr_accessor priority: Integer?
+
+        attr_accessor updated_at: Time?
+
+        def initialize: (
+          id: String,
+          created_at: Time?,
+          default: bool,
+          models: ::Array[String],
+          policy: String,
+          priority: Integer?,
+          updated_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time?,
+          default: bool,
+          models: ::Array[String],
+          policy: String,
+          priority: Integer?,
+          updated_at: Time?
+        }
+      end
+    end
+  end
+end

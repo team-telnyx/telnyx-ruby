@@ -843,6 +843,20 @@ module Telnyx
     sig { returns(Telnyx::Resources::Tunnels) }
     attr_reader :tunnels
 
+    # Read and update the authenticated user's profile and data locality.
+    sig { returns(Telnyx::Resources::UserProfile) }
+    attr_reader :user_profile
+
+    sig { returns(Telnyx::Resources::AgentGateways) }
+    attr_reader :agent_gateways
+
+    # Connect calendars and manage automatic meeting joins.
+    sig { returns(Telnyx::Resources::CalendarConnections) }
+    attr_reader :calendar_connections
+
+    sig { returns(Telnyx::Resources::MeetingBot) }
+    attr_reader :meeting_bot
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

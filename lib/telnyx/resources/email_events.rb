@@ -39,7 +39,7 @@ module Telnyx
       #
       # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Telnyx::Models::EmailEventListResponse]
+      # @return [Telnyx::Internal::EmailEventsCursorPagination<Telnyx::Models::EmailEventListResponse>]
       #
       # @see Telnyx::Models::EmailEventListParams
       def list(params = {})
@@ -49,6 +49,7 @@ module Telnyx
           method: :get,
           path: "email_events",
           query: query.transform_keys(page_cursor: "page[cursor]"),
+          page: Telnyx::Internal::EmailEventsCursorPagination,
           model: Telnyx::Models::EmailEventListResponse,
           options: options
         )

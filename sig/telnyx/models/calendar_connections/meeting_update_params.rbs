@@ -1,0 +1,34 @@
+module Telnyx
+  module Models
+    module CalendarConnections
+      type meeting_update_params =
+        { id: String, meeting_id: String, bot_will_join: bool? }
+        & Telnyx::Internal::Type::request_parameters
+
+      class MeetingUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_accessor meeting_id: String
+
+        attr_accessor bot_will_join: bool?
+
+        def initialize: (
+          id: String,
+          meeting_id: String,
+          bot_will_join: bool?,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          meeting_id: String,
+          bot_will_join: bool?,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

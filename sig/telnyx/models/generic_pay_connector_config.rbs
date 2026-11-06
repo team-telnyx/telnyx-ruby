@@ -12,7 +12,7 @@ module Telnyx
         {
           password: String,
           username: String,
-          token: top,
+          token: String,
           auth_type: Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type,
           endpoint_url: String,
           timeout: Integer?
@@ -35,14 +35,14 @@ module Telnyx
 
         attr_accessor timeout: Integer?
 
-        attr_reader token: top?
+        attr_reader token: String?
 
-        def token=: (top) -> top
+        def token=: (String) -> String
 
         def initialize: (
           password: String,
           username: String,
-          ?token: top,
+          ?token: String,
           ?auth_type: Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type,
           ?endpoint_url: String,
           ?timeout: Integer?
@@ -51,7 +51,7 @@ module Telnyx
         def to_hash: -> {
           password: String,
           username: String,
-          token: top,
+          token: String,
           auth_type: Telnyx::Models::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::auth_type,
           endpoint_url: String,
           timeout: Integer?
@@ -73,9 +73,9 @@ module Telnyx
           token: String,
           auth_type: :bearer,
           endpoint_url: String,
-          password: top,
+          password: String,
           timeout: Integer?,
-          username: top
+          username: String
         }
 
       class BearerAuthentication < Telnyx::Internal::Type::BaseModel
@@ -89,20 +89,20 @@ module Telnyx
 
         attr_accessor timeout: Integer?
 
-        attr_reader username: top?
+        attr_reader username: String?
 
-        def username=: (top) -> top
+        def username=: (String) -> String
 
-        attr_reader password: top?
+        attr_reader password: String?
 
-        def password=: (top) -> top
+        def password=: (String) -> String
 
         def initialize: (
           token: String,
           ?endpoint_url: String,
-          ?password: top,
+          ?password: String,
           ?timeout: Integer?,
-          ?username: top,
+          ?username: String,
           ?auth_type: :bearer
         ) -> void
 
@@ -110,20 +110,20 @@ module Telnyx
           token: String,
           auth_type: :bearer,
           endpoint_url: String,
-          password: top,
+          password: String,
           timeout: Integer?,
-          username: top
+          username: String
         }
       end
 
       type no_processor_authentication =
         {
           auth_type: :none,
-          token: top,
+          token: String,
           endpoint_url: String,
-          password: top,
+          password: String,
           timeout: Integer?,
-          username: top
+          username: String
         }
 
       class NoProcessorAuthentication < Telnyx::Internal::Type::BaseModel
@@ -135,34 +135,34 @@ module Telnyx
 
         attr_accessor timeout: Integer?
 
-        attr_reader username: top?
+        attr_reader username: String?
 
-        def username=: (top) -> top
+        def username=: (String) -> String
 
-        attr_reader token: top?
+        attr_reader token: String?
 
-        def token=: (top) -> top
+        def token=: (String) -> String
 
-        attr_reader password: top?
+        attr_reader password: String?
 
-        def password=: (top) -> top
+        def password=: (String) -> String
 
         def initialize: (
-          ?token: top,
+          ?token: String,
           ?endpoint_url: String,
-          ?password: top,
+          ?password: String,
           ?timeout: Integer?,
-          ?username: top,
+          ?username: String,
           ?auth_type: :none
         ) -> void
 
         def to_hash: -> {
           auth_type: :none,
-          token: top,
+          token: String,
           endpoint_url: String,
-          password: top,
+          password: String,
           timeout: Integer?,
-          username: top
+          username: String
         }
       end
 

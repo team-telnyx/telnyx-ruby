@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    type meeting_session_recording_export =
+      {
+        bucket: String,
+        bytes: Integer?,
+        exported_at: Time?,
+        key: String,
+        region: String,
+        status: Telnyx::Models::MeetingSessionRecordingExport::status,
+        type: :video
+      }
+
+    class MeetingSessionRecordingExport < Telnyx::Internal::Type::BaseModel
+      attr_accessor bucket: String
+
+      attr_accessor bytes: Integer?
+
+      attr_accessor exported_at: Time?
+
+      attr_accessor key: String
+
+      attr_accessor region: String
+
+      attr_accessor status: Telnyx::Models::MeetingSessionRecordingExport::status
+
+      attr_accessor type: :video
+
+      def initialize: (
+        bucket: String,
+        bytes: Integer?,
+        exported_at: Time?,
+        key: String,
+        region: String,
+        status: Telnyx::Models::MeetingSessionRecordingExport::status,
+        ?type: :video
+      ) -> void
+
+      def to_hash: -> {
+        bucket: String,
+        bytes: Integer?,
+        exported_at: Time?,
+        key: String,
+        region: String,
+        status: Telnyx::Models::MeetingSessionRecordingExport::status,
+        type: :video
+      }
+
+      type status = :pending | :exported | :failed
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        PENDING: :pending
+        EXPORTED: :exported
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSessionRecordingExport::status]
+      end
+    end
+  end
+end

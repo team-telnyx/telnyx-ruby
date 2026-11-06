@@ -411,7 +411,6 @@ module Telnyx
             extend Telnyx::Internal::Type::Enum
 
             TELNYX = :telnyx
-            TELNYX_2 = :Telnyx
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -649,7 +648,6 @@ module Telnyx
             extend Telnyx::Internal::Type::Enum
 
             RESEMBLE = :resemble
-            RESEMBLE_2 = :Resemble
 
             # @!method self.values
             #   @return [Array<Symbol>]

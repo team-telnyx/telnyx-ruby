@@ -37,10 +37,10 @@ module Telnyx
       attr_writer :limits
 
       # Arbitrary key-value metadata.
-      sig { returns(T.nilable(T.anything)) }
+      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
       attr_reader :metadata
 
-      sig { params(metadata: T.anything).void }
+      sig { params(metadata: T::Hash[Symbol, T.anything]).void }
       attr_writer :metadata
 
       sig do
@@ -48,7 +48,7 @@ module Telnyx
           policy: Telnyx::BrowserSessionCreateParams::Policy::OrHash,
           idempotency_key: String,
           limits: Telnyx::BrowserSessionCreateParams::Limits::OrHash,
-          metadata: T.anything,
+          metadata: T::Hash[Symbol, T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -71,7 +71,7 @@ module Telnyx
             policy: Telnyx::BrowserSessionCreateParams::Policy,
             idempotency_key: String,
             limits: Telnyx::BrowserSessionCreateParams::Limits,
-            metadata: T.anything,
+            metadata: T::Hash[Symbol, T.anything],
             request_options: Telnyx::RequestOptions
           }
         )

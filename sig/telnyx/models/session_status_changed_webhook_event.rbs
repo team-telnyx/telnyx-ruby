@@ -41,7 +41,8 @@ module Telnyx
           recording: bool,
           session_id: String,
           status: String,
-          status_detail: String?
+          status_detail: String?,
+          previous_status: Telnyx::Models::SessionStatusChangedWebhookEvent::Data::previous_status
         }
 
       class Data < Telnyx::Internal::Type::BaseModel
@@ -53,19 +54,52 @@ module Telnyx
 
         attr_accessor status_detail: String?
 
+        attr_reader previous_status: Telnyx::Models::SessionStatusChangedWebhookEvent::Data::previous_status?
+
+        def previous_status=: (
+          Telnyx::Models::SessionStatusChangedWebhookEvent::Data::previous_status
+        ) -> Telnyx::Models::SessionStatusChangedWebhookEvent::Data::previous_status
+
         def initialize: (
           recording: bool,
           session_id: String,
           status: String,
-          status_detail: String?
+          status_detail: String?,
+          ?previous_status: Telnyx::Models::SessionStatusChangedWebhookEvent::Data::previous_status
         ) -> void
 
         def to_hash: -> {
           recording: bool,
           session_id: String,
           status: String,
-          status_detail: String?
+          status_detail: String?,
+          previous_status: Telnyx::Models::SessionStatusChangedWebhookEvent::Data::previous_status
         }
+
+        type previous_status =
+          :scheduled
+          | :joining
+          | :waiting_for_admission
+          | :active
+          | :leaving
+          | :ended
+          | :failed
+          | :admission_denied
+
+        module PreviousStatus
+          extend Telnyx::Internal::Type::Enum
+
+          SCHEDULED: :scheduled
+          JOINING: :joining
+          WAITING_FOR_ADMISSION: :waiting_for_admission
+          ACTIVE: :active
+          LEAVING: :leaving
+          ENDED: :ended
+          FAILED: :failed
+          ADMISSION_DENIED: :admission_denied
+
+          def self?.values: -> ::Array[Telnyx::Models::SessionStatusChangedWebhookEvent::Data::previous_status]
+        end
       end
 
       type event = :"session.status_changed"

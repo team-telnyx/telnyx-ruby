@@ -229,7 +229,8 @@ module Telnyx
               Telnyx::ResembleVoiceSettings,
               Telnyx::InworldVoiceSettings,
               Telnyx::XaiVoiceSettings,
-              Telnyx::Calls::SonioxVoiceSettings
+              Telnyx::Calls::SonioxVoiceSettings,
+              Telnyx::Calls::AssemblyAIVoiceSettings
             )
           )
         )
@@ -248,7 +249,8 @@ module Telnyx
               Telnyx::ResembleVoiceSettings::OrHash,
               Telnyx::InworldVoiceSettings::OrHash,
               Telnyx::XaiVoiceSettings::OrHash,
-              Telnyx::Calls::SonioxVoiceSettings::OrHash
+              Telnyx::Calls::SonioxVoiceSettings::OrHash,
+              Telnyx::Calls::AssemblyAIVoiceSettings::OrHash
             )
         ).void
       end
@@ -292,7 +294,8 @@ module Telnyx
               Telnyx::ResembleVoiceSettings::OrHash,
               Telnyx::InworldVoiceSettings::OrHash,
               Telnyx::XaiVoiceSettings::OrHash,
-              Telnyx::Calls::SonioxVoiceSettings::OrHash
+              Telnyx::Calls::SonioxVoiceSettings::OrHash,
+              Telnyx::Calls::AssemblyAIVoiceSettings::OrHash
             )
         ).returns(T.attached_class)
       end
@@ -422,7 +425,8 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings,
                 Telnyx::InworldVoiceSettings,
                 Telnyx::XaiVoiceSettings,
-                Telnyx::Calls::SonioxVoiceSettings
+                Telnyx::Calls::SonioxVoiceSettings,
+                Telnyx::Calls::AssemblyAIVoiceSettings
               )
           }
         )
@@ -523,7 +527,8 @@ module Telnyx
               Telnyx::ResembleVoiceSettings,
               Telnyx::InworldVoiceSettings,
               Telnyx::XaiVoiceSettings,
-              Telnyx::Calls::SonioxVoiceSettings
+              Telnyx::Calls::SonioxVoiceSettings,
+              Telnyx::Calls::AssemblyAIVoiceSettings
             )
           end
 
