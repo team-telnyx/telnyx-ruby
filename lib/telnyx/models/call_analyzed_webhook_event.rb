@@ -130,7 +130,7 @@ module Telnyx
           #   retries, this field carries the placeholder string `No cost data available.`
           #   instead of an object.
           #
-          #   @return [Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0, String, nil]
+          #   @return [Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown, String, nil]
           optional :cost, union: -> { Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost }
 
           # @!attribute duration_sec
@@ -218,7 +218,7 @@ module Telnyx
           #
           #   @param conversation_insights [Array<Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::ConversationInsight>, nil] The conversation's generated insights, when insight generation was enabled for t
           #
-          #   @param cost [Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0, String] The session's cost breakdown from Session Analysis, covering every product bille
+          #   @param cost [Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown, String] The session's cost breakdown from Session Analysis, covering every product bille
           #
           #   @param duration_sec [Integer] Duration of the conversation in seconds.
           #
@@ -293,19 +293,19 @@ module Telnyx
           module Cost
             extend Telnyx::Internal::Type::Union
 
-            # The session's cost breakdown from Session Analysis, covering every product billed on the call: the AI Voice Assistant engine minutes (`ai-voice-assistant`), LLM inference tokens (`inference`), and call-control, SIP trunking, and recording lines. If cost data could not be retrieved after retries, this field carries the placeholder string `No cost data available.` instead of an object.
-            variant -> { Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0 }
+            # The itemized cost of the call.
+            variant -> { Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown }
 
-            # The session's cost breakdown from Session Analysis, covering every product billed on the call: the AI Voice Assistant engine minutes (`ai-voice-assistant`), LLM inference tokens (`inference`), and call-control, SIP trunking, and recording lines. If cost data could not be retrieved after retries, this field carries the placeholder string `No cost data available.` instead of an object.
+            # The placeholder string `No cost data available.`, returned when cost data could not be retrieved after retries.
             variant String
 
-            class UnionMember0 < Telnyx::Internal::Type::BaseModel
+            class CallCostBreakdown < Telnyx::Internal::Type::BaseModel
               # @!attribute breakdown
               #   Cost lines grouped by product.
               #
-              #   @return [Array<Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown>, nil]
+              #   @return [Array<Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown>, nil]
               optional :breakdown,
-                       -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown] }
+                       -> { Telnyx::Internal::Type::ArrayOf[Telnyx::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown] }
 
               # @!attribute currency
               #   The currency of the cost amounts.
@@ -320,14 +320,9 @@ module Telnyx
               optional :total, String
 
               # @!method initialize(breakdown: nil, currency: nil, total: nil)
-              #   The session's cost breakdown from Session Analysis, covering every product
-              #   billed on the call: the AI Voice Assistant engine minutes
-              #   (`ai-voice-assistant`), LLM inference tokens (`inference`), and call-control,
-              #   SIP trunking, and recording lines. If cost data could not be retrieved after
-              #   retries, this field carries the placeholder string `No cost data available.`
-              #   instead of an object.
+              #   The itemized cost of the call.
               #
-              #   @param breakdown [Array<Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown>] Cost lines grouped by product.
+              #   @param breakdown [Array<Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown>] Cost lines grouped by product.
               #
               #   @param currency [String] The currency of the cost amounts.
               #
@@ -350,7 +345,7 @@ module Telnyx
 
                 # @!method initialize(cost: nil, product: nil)
                 #   Some parameter documentations has been truncated, see
-                #   {Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0::Breakdown}
+                #   {Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown::Breakdown}
                 #   for more details.
                 #
                 #   @param cost [String] Total cost for this product across the call, in the currency given by `cost.curr
@@ -360,7 +355,7 @@ module Telnyx
             end
 
             # @!method self.variants
-            #   @return [Array(Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::UnionMember0, String)]
+            #   @return [Array(Telnyx::Models::CallAnalyzedWebhookEvent::Data::Payload::Cost::CallCostBreakdown, String)]
           end
 
           class Recording < Telnyx::Internal::Type::BaseModel

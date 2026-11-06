@@ -1,0 +1,47 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class McpServers
+        def create: (
+          String instance_id,
+          name: String,
+          url: String,
+          ?auth: Telnyx::Models::AgentGateways::McpServerCreateParams::auth,
+          ?forwarded_headers: ::Array[String],
+          ?open_to_every_key: bool,
+          ?static_headers: ::Hash[Symbol, String],
+          ?tools: ::Array[String],
+          ?transport: Telnyx::Models::AgentGateways::McpServerCreateParams::transport,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayMcpServerResponse
+
+        def update: (
+          String server_id,
+          instance_id: String,
+          ?auth: Telnyx::Models::AgentGateways::McpServerUpdateParams::auth,
+          ?forwarded_headers: ::Array[String],
+          ?name: String,
+          ?open_to_every_key: bool,
+          ?static_headers: ::Hash[Symbol, String],
+          ?tools: ::Array[String],
+          ?transport: Telnyx::Models::AgentGateways::McpServerUpdateParams::transport,
+          ?url: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayMcpServerResponse
+
+        def list: (
+          String instance_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::McpServerListResponse
+
+        def delete: (
+          String server_id,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayMcpServerResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

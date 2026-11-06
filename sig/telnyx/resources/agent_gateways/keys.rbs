@@ -1,0 +1,53 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class Keys
+        attr_reader tool_permissions: Telnyx::Resources::AgentGateways::Keys::ToolPermissions
+
+        def create: (
+          String instance_id,
+          ?budget_resets_every: String?,
+          ?expires_in: String?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?models: ::Array[String]?,
+          ?name: String?,
+          ?requests_per_minute: Integer?,
+          ?team_id: String?,
+          ?tokens_per_minute: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::KeyCreateResponse
+
+        def update: (
+          String key_id,
+          instance_id: String,
+          ?blocked: bool,
+          ?budget_resets_every: String?,
+          ?expires_in: String?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?models: ::Array[String],
+          ?name: String,
+          ?requests_per_minute: Integer?,
+          ?team_id: String?,
+          ?tokens_per_minute: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayKeyResponse
+
+        def list: (
+          String instance_id,
+          ?team_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::KeyListResponse
+
+        def delete: (
+          String key_id,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayKeyResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

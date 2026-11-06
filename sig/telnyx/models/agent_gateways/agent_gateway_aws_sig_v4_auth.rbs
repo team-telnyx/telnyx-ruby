@@ -1,0 +1,56 @@
+module Telnyx
+  module Models
+    class AgentGatewayAwsSigV4Auth = AgentGateways::AgentGatewayAwsSigV4Auth
+
+    module AgentGateways
+      type agent_gateway_aws_sig_v4_auth =
+        {
+          region: String,
+          type: :aws_sigv4,
+          access_key_id: String?,
+          role_name: String?,
+          secret_access_key: String?,
+          service: String,
+          session_token: String?
+        }
+
+      class AgentGatewayAwsSigV4Auth < Telnyx::Internal::Type::BaseModel
+        attr_accessor region: String
+
+        attr_accessor type: :aws_sigv4
+
+        attr_accessor role_name: String?
+
+        attr_reader service: String?
+
+        def service=: (String) -> String
+
+        attr_accessor access_key_id: String?
+
+        attr_accessor secret_access_key: String?
+
+        attr_accessor session_token: String?
+
+        def initialize: (
+          region: String,
+          ?access_key_id: String?,
+          ?role_name: String?,
+          ?secret_access_key: String?,
+          ?service: String,
+          ?session_token: String?,
+          ?type: :aws_sigv4
+        ) -> void
+
+        def to_hash: -> {
+          region: String,
+          type: :aws_sigv4,
+          access_key_id: String?,
+          role_name: String?,
+          secret_access_key: String?,
+          service: String,
+          session_token: String?
+        }
+      end
+    end
+  end
+end

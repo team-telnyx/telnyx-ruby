@@ -306,16 +306,26 @@ module Telnyx
         end
 
         type enhanced_caller_name =
-          { caller_name: String?, error_code: String? }
+          { caller_name: String?, entity_type: String?, error_code: String? }
 
         class EnhancedCallerName < Telnyx::Internal::Type::BaseModel
           attr_accessor caller_name: String?
 
+          attr_accessor entity_type: String?
+
           attr_accessor error_code: String?
 
-          def initialize: (?caller_name: String?, ?error_code: String?) -> void
+          def initialize: (
+            ?caller_name: String?,
+            ?entity_type: String?,
+            ?error_code: String?
+          ) -> void
 
-          def to_hash: -> { caller_name: String?, error_code: String? }
+          def to_hash: -> {
+            caller_name: String?,
+            entity_type: String?,
+            error_code: String?
+          }
         end
 
         type nnid_override = { name: String, nnid: String, type: String }

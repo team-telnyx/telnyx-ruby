@@ -70,6 +70,14 @@ module Telnyx
       sig { params(sip_username: String).void }
       attr_writer :sip_username
 
+      # Returned when the credential is created. See
+      # `GET /telephony_credentials/{id}/token_material` to fetch it again.
+      sig { returns(T.nilable(Telnyx::TokenMaterial)) }
+      attr_reader :token_material
+
+      sig { params(token_material: Telnyx::TokenMaterial::OrHash).void }
+      attr_writer :token_material
+
       # ISO-8601 formatted date indicating when the resource was updated.
       sig { returns(T.nilable(String)) }
       attr_reader :updated_at
@@ -95,6 +103,7 @@ module Telnyx
           resource_id: String,
           sip_password: String,
           sip_username: String,
+          token_material: Telnyx::TokenMaterial::OrHash,
           updated_at: String,
           user_id: String
         ).returns(T.attached_class)
@@ -117,6 +126,9 @@ module Telnyx
         sip_password: nil,
         # The randomly generated SIP username for the credential.
         sip_username: nil,
+        # Returned when the credential is created. See
+        # `GET /telephony_credentials/{id}/token_material` to fetch it again.
+        token_material: nil,
         # ISO-8601 formatted date indicating when the resource was updated.
         updated_at: nil,
         # Identifies the user this credential is associated with.
@@ -136,6 +148,7 @@ module Telnyx
             resource_id: String,
             sip_password: String,
             sip_username: String,
+            token_material: Telnyx::TokenMaterial,
             updated_at: String,
             user_id: String
           }

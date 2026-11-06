@@ -304,13 +304,12 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::language]
           end
 
-          type provider = :telnyx | :Telnyx
+          type provider = :telnyx
 
           module Provider
             extend Telnyx::Internal::Type::Enum
 
             TELNYX: :telnyx
-            TELNYX_2: :Telnyx
 
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::provider]
           end
@@ -481,13 +480,12 @@ module Telnyx
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::model_id]
           end
 
-          type provider = :resemble | :Resemble
+          type provider = :resemble
 
           module Provider
             extend Telnyx::Internal::Type::Enum
 
             RESEMBLE: :resemble
-            RESEMBLE_2: :Resemble
 
             def self?.values: -> ::Array[Telnyx::Models::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::provider]
           end

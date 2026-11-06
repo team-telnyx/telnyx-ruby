@@ -43,6 +43,7 @@ module Telnyx
         | :xai
         | :humain
         | :soniox
+        | :assemblyai
 
       module Provider
         extend Telnyx::Internal::Type::Enum
@@ -56,6 +57,7 @@ module Telnyx
         XAI: :xai
         HUMAIN: :humain
         SONIOX: :soniox
+        ASSEMBLYAI: :assemblyai
 
         def self?.values: -> ::Array[Telnyx::Models::TextToSpeechListVoicesParams::provider]
       end

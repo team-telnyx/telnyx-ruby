@@ -1,0 +1,121 @@
+module Telnyx
+  module Models
+    type recording_export_failed_webhook_event =
+      {
+        id: String,
+        data: Telnyx::RecordingExportFailedWebhookEvent::Data,
+        event: Telnyx::Models::RecordingExportFailedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+    class RecordingExportFailedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor data: Telnyx::RecordingExportFailedWebhookEvent::Data
+
+      attr_accessor event: Telnyx::Models::RecordingExportFailedWebhookEvent::event
+
+      attr_accessor occurred_at: Time
+
+      attr_accessor version: String
+
+      def initialize: (
+        id: String,
+        data: Telnyx::RecordingExportFailedWebhookEvent::Data,
+        event: Telnyx::Models::RecordingExportFailedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        data: Telnyx::RecordingExportFailedWebhookEvent::Data,
+        event: Telnyx::Models::RecordingExportFailedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+      type data =
+        {
+          bucket: String,
+          key: String,
+          reason: Telnyx::Models::RecordingExportFailedWebhookEvent::Data::reason,
+          region: String,
+          session_id: String,
+          type: :video
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor bucket: String
+
+        attr_accessor key: String
+
+        attr_accessor reason: Telnyx::Models::RecordingExportFailedWebhookEvent::Data::reason
+
+        attr_accessor region: String
+
+        attr_accessor session_id: String
+
+        attr_accessor type: :video
+
+        def initialize: (
+          bucket: String,
+          key: String,
+          reason: Telnyx::Models::RecordingExportFailedWebhookEvent::Data::reason,
+          region: String,
+          session_id: String,
+          ?type: :video
+        ) -> void
+
+        def to_hash: -> {
+          bucket: String,
+          key: String,
+          reason: Telnyx::Models::RecordingExportFailedWebhookEvent::Data::reason,
+          region: String,
+          session_id: String,
+          type: :video
+        }
+
+        type reason =
+          :invalid_target
+          | :invalid_media
+          | :source_changed
+          | :source_unavailable
+          | :too_large
+          | :storage_unavailable
+          | :object_conflict
+          | :verification_failed
+          | :worker_lost
+          | :internal_error
+
+        module Reason
+          extend Telnyx::Internal::Type::Enum
+
+          INVALID_TARGET: :invalid_target
+          INVALID_MEDIA: :invalid_media
+          SOURCE_CHANGED: :source_changed
+          SOURCE_UNAVAILABLE: :source_unavailable
+          TOO_LARGE: :too_large
+          STORAGE_UNAVAILABLE: :storage_unavailable
+          OBJECT_CONFLICT: :object_conflict
+          VERIFICATION_FAILED: :verification_failed
+          WORKER_LOST: :worker_lost
+          INTERNAL_ERROR: :internal_error
+
+          def self?.values: -> ::Array[Telnyx::Models::RecordingExportFailedWebhookEvent::Data::reason]
+        end
+      end
+
+      type event = :"recording.export_failed"
+
+      module Event
+        extend Telnyx::Internal::Type::Enum
+
+        RECORDING_EXPORT_FAILED: :"recording.export_failed"
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingExportFailedWebhookEvent::event]
+      end
+    end
+  end
+end

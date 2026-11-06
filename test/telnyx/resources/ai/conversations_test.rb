@@ -91,6 +91,16 @@ class Telnyx::Test::Resources::AI::ConversationsTest < Telnyx::Test::ResourceTes
     end
   end
 
+  def test_delete_delete_required_params
+    skip("Mock server tests are disabled")
+
+    response = @telnyx.ai.conversations.delete_delete("insight_id", conversation_id: "conversation_id")
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_retrieve_conversations_insights
     skip("Mock server tests are disabled")
 

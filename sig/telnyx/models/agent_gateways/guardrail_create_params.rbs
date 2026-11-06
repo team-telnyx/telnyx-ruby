@@ -1,0 +1,105 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      type guardrail_create_params =
+        {
+          instance_id: String,
+          modes: ::Array[Telnyx::Models::AgentGateways::GuardrailCreateParams::mode],
+          name: String,
+          type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
+          always_on: bool,
+          settings: ::Hash[Symbol, top]
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class GuardrailCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor instance_id: String
+
+        attr_accessor modes: ::Array[Telnyx::Models::AgentGateways::GuardrailCreateParams::mode]
+
+        attr_accessor name: String
+
+        attr_accessor type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_
+
+        attr_reader always_on: bool?
+
+        def always_on=: (bool) -> bool
+
+        attr_reader settings: ::Hash[Symbol, top]?
+
+        def settings=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+        def initialize: (
+          instance_id: String,
+          modes: ::Array[Telnyx::Models::AgentGateways::GuardrailCreateParams::mode],
+          name: String,
+          type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
+          ?always_on: bool,
+          ?settings: ::Hash[Symbol, top],
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          instance_id: String,
+          modes: ::Array[Telnyx::Models::AgentGateways::GuardrailCreateParams::mode],
+          name: String,
+          type: Telnyx::Models::AgentGateways::GuardrailCreateParams::type_,
+          always_on: bool,
+          settings: ::Hash[Symbol, top],
+          request_options: Telnyx::RequestOptions
+        }
+
+        type mode =
+          :before_request
+          | :during_request
+          | :after_request
+          | :logging_only
+          | :before_tool_request
+          | :during_tool_request
+          | :after_tool_request
+
+        module Mode
+          extend Telnyx::Internal::Type::Enum
+
+          BEFORE_REQUEST: :before_request
+          DURING_REQUEST: :during_request
+          AFTER_REQUEST: :after_request
+          LOGGING_ONLY: :logging_only
+          BEFORE_TOOL_REQUEST: :before_tool_request
+          DURING_TOOL_REQUEST: :during_tool_request
+          AFTER_TOOL_REQUEST: :after_tool_request
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::GuardrailCreateParams::mode]
+        end
+
+        type type_ =
+          :content_filter
+          | :tool_permission
+          | :model_judge
+          | :custom_code
+          | :lakera
+          | :presidio
+          | :bedrock
+          | :azure_content_safety
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          CONTENT_FILTER: :content_filter
+          TOOL_PERMISSION: :tool_permission
+          MODEL_JUDGE: :model_judge
+          CUSTOM_CODE: :custom_code
+          LAKERA: :lakera
+          PRESIDIO: :presidio
+          BEDROCK: :bedrock
+          AZURE_CONTENT_SAFETY: :azure_content_safety
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::GuardrailCreateParams::type_]
+        end
+      end
+    end
+  end
+end

@@ -57,6 +57,13 @@ module Telnyx
       #   @return [String, nil]
       optional :sip_username, String
 
+      # @!attribute token_material
+      #   Returned when the credential is created. See
+      #   `GET /telephony_credentials/{id}/token_material` to fetch it again.
+      #
+      #   @return [Telnyx::Models::TokenMaterial, nil]
+      optional :token_material, -> { Telnyx::TokenMaterial }
+
       # @!attribute updated_at
       #   ISO-8601 formatted date indicating when the resource was updated.
       #
@@ -69,7 +76,10 @@ module Telnyx
       #   @return [String, nil]
       optional :user_id, String
 
-      # @!method initialize(id: nil, created_at: nil, expired: nil, expires_at: nil, name: nil, record_type: nil, resource_id: nil, sip_password: nil, sip_username: nil, updated_at: nil, user_id: nil)
+      # @!method initialize(id: nil, created_at: nil, expired: nil, expires_at: nil, name: nil, record_type: nil, resource_id: nil, sip_password: nil, sip_username: nil, token_material: nil, updated_at: nil, user_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Telnyx::Models::TelephonyCredential} for more details.
+      #
       #   @param id [String] Identifies the resource.
       #
       #   @param created_at [String] ISO-8601 formatted date indicating when the resource was created.
@@ -87,6 +97,8 @@ module Telnyx
       #   @param sip_password [String] The randomly generated SIP password for the credential.
       #
       #   @param sip_username [String] The randomly generated SIP username for the credential.
+      #
+      #   @param token_material [Telnyx::Models::TokenMaterial] Returned when the credential is created. See `GET /telephony_credentials/{id}/to
       #
       #   @param updated_at [String] ISO-8601 formatted date indicating when the resource was updated.
       #

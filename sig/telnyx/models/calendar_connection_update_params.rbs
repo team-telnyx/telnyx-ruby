@@ -1,0 +1,141 @@
+module Telnyx
+  module Models
+    type calendar_connection_update_params =
+      {
+        id: String,
+        auto_join_policy: Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy,
+        bot_name: String?,
+        default_assistant: Telnyx::CalendarConnectionUpdateParams::DefaultAssistant?,
+        default_barge_in: bool?,
+        default_recording: bool?,
+        default_recording_export: Telnyx::MeetingSessionRecordingDestination?,
+        default_summarize_on_end: bool?,
+        default_voice: String?,
+        default_webhook_url: String?
+      }
+      & Telnyx::Internal::Type::request_parameters
+
+    class CalendarConnectionUpdateParams < Telnyx::Internal::Type::BaseModel
+      extend Telnyx::Internal::Type::RequestParameters::Converter
+      include Telnyx::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      attr_reader auto_join_policy: Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy?
+
+      def auto_join_policy=: (
+        Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy
+      ) -> Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy
+
+      attr_accessor bot_name: String?
+
+      attr_accessor default_assistant: Telnyx::CalendarConnectionUpdateParams::DefaultAssistant?
+
+      attr_accessor default_barge_in: bool?
+
+      attr_accessor default_recording: bool?
+
+      attr_accessor default_recording_export: Telnyx::MeetingSessionRecordingDestination?
+
+      attr_accessor default_summarize_on_end: bool?
+
+      attr_accessor default_voice: String?
+
+      attr_accessor default_webhook_url: String?
+
+      def initialize: (
+        id: String,
+        ?auto_join_policy: Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy,
+        ?bot_name: String?,
+        ?default_assistant: Telnyx::CalendarConnectionUpdateParams::DefaultAssistant?,
+        ?default_barge_in: bool?,
+        ?default_recording: bool?,
+        ?default_recording_export: Telnyx::MeetingSessionRecordingDestination?,
+        ?default_summarize_on_end: bool?,
+        ?default_voice: String?,
+        ?default_webhook_url: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        auto_join_policy: Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy,
+        bot_name: String?,
+        default_assistant: Telnyx::CalendarConnectionUpdateParams::DefaultAssistant?,
+        default_barge_in: bool?,
+        default_recording: bool?,
+        default_recording_export: Telnyx::MeetingSessionRecordingDestination?,
+        default_summarize_on_end: bool?,
+        default_voice: String?,
+        default_webhook_url: String?,
+        request_options: Telnyx::RequestOptions
+      }
+
+      type auto_join_policy =
+        :all_meetings | :external_organizer_excluded | :per_meeting
+
+      module AutoJoinPolicy
+        extend Telnyx::Internal::Type::Enum
+
+        ALL_MEETINGS: :all_meetings
+        EXTERNAL_ORGANIZER_EXCLUDED: :external_organizer_excluded
+        PER_MEETING: :per_meeting
+
+        def self?.values: -> ::Array[Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy]
+      end
+
+      type default_assistant =
+        {
+          id: String,
+          audio_gate: Telnyx::Models::CalendarConnectionUpdateParams::DefaultAssistant::audio_gate,
+          dynamic_variables: ::Hash[Symbol, String],
+          leave_on_end: bool
+        }
+
+      class DefaultAssistant < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_reader audio_gate: Telnyx::Models::CalendarConnectionUpdateParams::DefaultAssistant::audio_gate?
+
+        def audio_gate=: (
+          Telnyx::Models::CalendarConnectionUpdateParams::DefaultAssistant::audio_gate
+        ) -> Telnyx::Models::CalendarConnectionUpdateParams::DefaultAssistant::audio_gate
+
+        attr_reader dynamic_variables: ::Hash[Symbol, String]?
+
+        def dynamic_variables=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
+        attr_reader leave_on_end: bool?
+
+        def leave_on_end=: (bool) -> bool
+
+        def initialize: (
+          id: String,
+          ?audio_gate: Telnyx::Models::CalendarConnectionUpdateParams::DefaultAssistant::audio_gate,
+          ?dynamic_variables: ::Hash[Symbol, String],
+          ?leave_on_end: bool
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          audio_gate: Telnyx::Models::CalendarConnectionUpdateParams::DefaultAssistant::audio_gate,
+          dynamic_variables: ::Hash[Symbol, String],
+          leave_on_end: bool
+        }
+
+        type audio_gate = :half_duplex | :full_duplex
+
+        module AudioGate
+          extend Telnyx::Internal::Type::Enum
+
+          HALF_DUPLEX: :half_duplex
+          FULL_DUPLEX: :full_duplex
+
+          def self?.values: -> ::Array[Telnyx::Models::CalendarConnectionUpdateParams::DefaultAssistant::audio_gate]
+        end
+      end
+    end
+  end
+end

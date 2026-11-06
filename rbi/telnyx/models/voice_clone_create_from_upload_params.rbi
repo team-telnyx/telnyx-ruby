@@ -817,11 +817,6 @@ module Telnyx
                 :telnyx,
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::TaggedSymbol
               )
-            TELNYX_2 =
-              T.let(
-                :Telnyx,
-                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::TelnyxBayanClone::Provider::TaggedSymbol
-              )
 
             sig do
               override.returns(
@@ -1296,11 +1291,6 @@ module Telnyx
             RESEMBLE =
               T.let(
                 :resemble,
-                Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::TaggedSymbol
-              )
-            RESEMBLE_2 =
-              T.let(
-                :Resemble,
                 Telnyx::VoiceCloneCreateFromUploadParams::VoiceCloneUploadRequest::ResembleClone::Provider::TaggedSymbol
               )
 

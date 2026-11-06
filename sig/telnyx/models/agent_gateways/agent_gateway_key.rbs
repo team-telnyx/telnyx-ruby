@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    class AgentGatewayKey = AgentGateways::AgentGatewayKey
+
+    module AgentGateways
+      type agent_gateway_key =
+        {
+          id: String,
+          blocked: bool,
+          budget_resets_at: Time?,
+          budget_resets_every: String?,
+          created_at: Time?,
+          expires_at: Time?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          models: ::Array[String],
+          name: String?,
+          requests_per_minute: Integer?,
+          spend: Float,
+          team_id: String?,
+          tokens_per_minute: Integer?
+        }
+
+      class AgentGatewayKey < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor blocked: bool
+
+        attr_accessor budget_resets_at: Time?
+
+        attr_accessor budget_resets_every: String?
+
+        attr_accessor created_at: Time?
+
+        attr_accessor expires_at: Time?
+
+        attr_accessor max_budget: Float?
+
+        attr_accessor max_parallel_requests: Integer?
+
+        attr_accessor models: ::Array[String]
+
+        attr_accessor name: String?
+
+        attr_accessor requests_per_minute: Integer?
+
+        attr_accessor spend: Float
+
+        attr_accessor team_id: String?
+
+        attr_accessor tokens_per_minute: Integer?
+
+        def initialize: (
+          id: String,
+          blocked: bool,
+          budget_resets_at: Time?,
+          budget_resets_every: String?,
+          created_at: Time?,
+          expires_at: Time?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          models: ::Array[String],
+          name: String?,
+          requests_per_minute: Integer?,
+          spend: Float,
+          team_id: String?,
+          tokens_per_minute: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          blocked: bool,
+          budget_resets_at: Time?,
+          budget_resets_every: String?,
+          created_at: Time?,
+          expires_at: Time?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          models: ::Array[String],
+          name: String?,
+          requests_per_minute: Integer?,
+          spend: Float,
+          team_id: String?,
+          tokens_per_minute: Integer?
+        }
+      end
+    end
+  end
+end

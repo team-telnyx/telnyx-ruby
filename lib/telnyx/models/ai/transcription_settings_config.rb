@@ -33,7 +33,8 @@ module Telnyx
         optional :enable_endpoint_detection, Telnyx::Internal::Type::Boolean
 
         # @!attribute end_of_turn_confidence_threshold
-        #   @deprecated
+        #   @deprecated Ignored. Configure AssemblyAI turn detection with min_turn_silence and
+        #   max_turn_silence instead.
         #
         #   Deprecated and ignored. Accepted for backwards compatibility. AssemblyAI turn
         #   detection is configured with min_turn_silence and max_turn_silence.

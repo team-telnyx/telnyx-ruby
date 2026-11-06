@@ -1,0 +1,39 @@
+module Telnyx
+  module Models
+    type meeting_session_retrieve_recordings_response =
+      {
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveRecordingsResponse::Data],
+        recording_export: Telnyx::MeetingSessionRecordingExport?
+      }
+
+    class MeetingSessionRetrieveRecordingsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::MeetingSessionRetrieveRecordingsResponse::Data]
+
+      attr_accessor recording_export: Telnyx::MeetingSessionRecordingExport?
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveRecordingsResponse::Data],
+        ?recording_export: Telnyx::MeetingSessionRecordingExport?
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::MeetingSessionRetrieveRecordingsResponse::Data],
+        recording_export: Telnyx::MeetingSessionRecordingExport?
+      }
+
+      type data = { expires_at: Time?, type: String, url: String }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor expires_at: Time?
+
+        attr_accessor type: String
+
+        attr_accessor url: String
+
+        def initialize: (expires_at: Time?, type: String, url: String) -> void
+
+        def to_hash: -> { expires_at: Time?, type: String, url: String }
+      end
+    end
+  end
+end

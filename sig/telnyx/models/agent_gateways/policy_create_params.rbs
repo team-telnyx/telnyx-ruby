@@ -1,0 +1,62 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      type policy_create_params =
+        {
+          instance_id: String,
+          name: String,
+          base: String?,
+          description: String?,
+          guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          model: String?,
+          pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class PolicyCreateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor instance_id: String
+
+        attr_accessor name: String
+
+        attr_accessor base: String?
+
+        attr_accessor description: String?
+
+        attr_reader guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails?
+
+        def guardrails=: (
+          Telnyx::AgentGateways::AgentGatewayPolicyGuardrails
+        ) -> Telnyx::AgentGateways::AgentGatewayPolicyGuardrails
+
+        attr_accessor model: String?
+
+        attr_accessor pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?
+
+        def initialize: (
+          instance_id: String,
+          name: String,
+          ?base: String?,
+          ?description: String?,
+          ?guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          ?model: String?,
+          ?pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          instance_id: String,
+          name: String,
+          base: String?,
+          description: String?,
+          guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          model: String?,
+          pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

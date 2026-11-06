@@ -1,0 +1,139 @@
+module Telnyx
+  module Models
+    type agent_gateway_retrieve_spend_logs_response =
+      {
+        data: ::Array[Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Data],
+        meta: Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Meta
+      }
+
+    class AgentGatewayRetrieveSpendLogsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Data]
+
+      attr_accessor meta: Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Meta
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Data],
+        meta: Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Meta
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Data],
+        meta: Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse::Meta
+      }
+
+      type data =
+        {
+          id: String,
+          completion_tokens: Integer,
+          duration_ms: Integer?,
+          ended_at: Time?,
+          key_id: String?,
+          model: String?,
+          operation: String,
+          prompt_tokens: Integer,
+          spend: Float,
+          started_at: Time,
+          status: String?,
+          team_id: String?,
+          total_tokens: Integer
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor completion_tokens: Integer
+
+        attr_accessor duration_ms: Integer?
+
+        attr_accessor ended_at: Time?
+
+        attr_accessor key_id: String?
+
+        attr_accessor model: String?
+
+        attr_accessor operation: String
+
+        attr_accessor prompt_tokens: Integer
+
+        attr_accessor spend: Float
+
+        attr_accessor started_at: Time
+
+        attr_accessor status: String?
+
+        attr_accessor team_id: String?
+
+        attr_accessor total_tokens: Integer
+
+        def initialize: (
+          id: String,
+          completion_tokens: Integer,
+          duration_ms: Integer?,
+          ended_at: Time?,
+          key_id: String?,
+          model: String?,
+          operation: String,
+          prompt_tokens: Integer,
+          spend: Float,
+          started_at: Time,
+          status: String?,
+          team_id: String?,
+          total_tokens: Integer
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          completion_tokens: Integer,
+          duration_ms: Integer?,
+          ended_at: Time?,
+          key_id: String?,
+          model: String?,
+          operation: String,
+          prompt_tokens: Integer,
+          spend: Float,
+          started_at: Time,
+          status: String?,
+          team_id: String?,
+          total_tokens: Integer
+        }
+      end
+
+      type meta =
+        {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer,
+          total_results_capped: bool
+        }
+
+      class Meta < Telnyx::Internal::Type::BaseModel
+        attr_accessor page_number: Integer
+
+        attr_accessor page_size: Integer
+
+        attr_accessor total_pages: Integer
+
+        attr_accessor total_results: Integer
+
+        attr_accessor total_results_capped: bool
+
+        def initialize: (
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer,
+          total_results_capped: bool
+        ) -> void
+
+        def to_hash: -> {
+          page_number: Integer,
+          page_size: Integer,
+          total_pages: Integer,
+          total_results: Integer,
+          total_results_capped: bool
+        }
+      end
+    end
+  end
+end

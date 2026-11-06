@@ -1,0 +1,89 @@
+module Telnyx
+  module Models
+    module AgentGateways
+      type key_update_params =
+        {
+          instance_id: String,
+          key_id: String,
+          blocked: bool,
+          budget_resets_every: String?,
+          expires_in: String?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          models: ::Array[String],
+          name: String,
+          requests_per_minute: Integer?,
+          team_id: String?,
+          tokens_per_minute: Integer?
+        }
+        & Telnyx::Internal::Type::request_parameters
+
+      class KeyUpdateParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor instance_id: String
+
+        attr_accessor key_id: String
+
+        attr_reader blocked: bool?
+
+        def blocked=: (bool) -> bool
+
+        attr_accessor budget_resets_every: String?
+
+        attr_accessor expires_in: String?
+
+        attr_accessor max_budget: Float?
+
+        attr_accessor max_parallel_requests: Integer?
+
+        attr_reader models: ::Array[String]?
+
+        def models=: (::Array[String]) -> ::Array[String]
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
+
+        attr_accessor requests_per_minute: Integer?
+
+        attr_accessor team_id: String?
+
+        attr_accessor tokens_per_minute: Integer?
+
+        def initialize: (
+          instance_id: String,
+          key_id: String,
+          ?blocked: bool,
+          ?budget_resets_every: String?,
+          ?expires_in: String?,
+          ?max_budget: Float?,
+          ?max_parallel_requests: Integer?,
+          ?models: ::Array[String],
+          ?name: String,
+          ?requests_per_minute: Integer?,
+          ?team_id: String?,
+          ?tokens_per_minute: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          instance_id: String,
+          key_id: String,
+          blocked: bool,
+          budget_resets_every: String?,
+          expires_in: String?,
+          max_budget: Float?,
+          max_parallel_requests: Integer?,
+          models: ::Array[String],
+          name: String,
+          requests_per_minute: Integer?,
+          team_id: String?,
+          tokens_per_minute: Integer?,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

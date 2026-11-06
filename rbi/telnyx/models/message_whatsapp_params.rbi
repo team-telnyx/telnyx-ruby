@@ -1855,10 +1855,10 @@ module Telnyx
                   end
 
                 # input data for the first screen. Must be a non-empty object when provided
-                sig { returns(T.nilable(T.anything)) }
+                sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
                 attr_reader :data
 
-                sig { params(data: T.anything).void }
+                sig { params(data: T::Hash[Symbol, T.anything]).void }
                 attr_writer :data
 
                 # ID of the first screen to show
@@ -1871,9 +1871,10 @@ module Telnyx
                 # optional initial screen and data. When omitted, the flow opens on its first
                 # entry screen. Must be omitted when flow_action is data_exchange
                 sig do
-                  params(data: T.anything, screen: String).returns(
-                    T.attached_class
-                  )
+                  params(
+                    data: T::Hash[Symbol, T.anything],
+                    screen: String
+                  ).returns(T.attached_class)
                 end
                 def self.new(
                   # input data for the first screen. Must be a non-empty object when provided
@@ -1883,7 +1884,11 @@ module Telnyx
                 )
                 end
 
-                sig { override.returns({ data: T.anything, screen: String }) }
+                sig do
+                  override.returns(
+                    { data: T::Hash[Symbol, T.anything], screen: String }
+                  )
+                end
                 def to_hash
                 end
               end
@@ -2662,10 +2667,12 @@ module Telnyx
                   end
 
                 # input data for the first screen of the flow
-                sig { returns(T.nilable(T.anything)) }
+                sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
                 attr_reader :flow_action_data
 
-                sig { params(flow_action_data: T.anything).void }
+                sig do
+                  params(flow_action_data: T::Hash[Symbol, T.anything]).void
+                end
                 attr_writer :flow_action_data
 
                 # business-generated identifier for the flow session. Returned in the flow
@@ -2679,7 +2686,7 @@ module Telnyx
                 # Flow button parameters. Used with type action on a flow button component
                 sig do
                   params(
-                    flow_action_data: T.anything,
+                    flow_action_data: T::Hash[Symbol, T.anything],
                     flow_token: String
                   ).returns(T.attached_class)
                 end
@@ -2694,7 +2701,10 @@ module Telnyx
 
                 sig do
                   override.returns(
-                    { flow_action_data: T.anything, flow_token: String }
+                    {
+                      flow_action_data: T::Hash[Symbol, T.anything],
+                      flow_token: String
+                    }
                   )
                 end
                 def to_hash

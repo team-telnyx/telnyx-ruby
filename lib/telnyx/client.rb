@@ -848,6 +848,20 @@ module Telnyx
     # @return [Telnyx::Resources::Tunnels]
     attr_reader :tunnels
 
+    # Read and update the authenticated user's profile and data locality.
+    # @return [Telnyx::Resources::UserProfile]
+    attr_reader :user_profile
+
+    # @return [Telnyx::Resources::AgentGateways]
+    attr_reader :agent_gateways
+
+    # Connect calendars and manage automatic meeting joins.
+    # @return [Telnyx::Resources::CalendarConnections]
+    attr_reader :calendar_connections
+
+    # @return [Telnyx::Resources::MeetingBot]
+    attr_reader :meeting_bot
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -1156,6 +1170,10 @@ module Telnyx
       @network_routes = Telnyx::Resources::NetworkRoutes.new(client: self)
       @pay_connectors = Telnyx::Resources::PayConnectors.new(client: self)
       @tunnels = Telnyx::Resources::Tunnels.new(client: self)
+      @user_profile = Telnyx::Resources::UserProfile.new(client: self)
+      @agent_gateways = Telnyx::Resources::AgentGateways.new(client: self)
+      @calendar_connections = Telnyx::Resources::CalendarConnections.new(client: self)
+      @meeting_bot = Telnyx::Resources::MeetingBot.new(client: self)
     end
   end
 end

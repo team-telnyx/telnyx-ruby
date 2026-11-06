@@ -1,0 +1,23 @@
+module Telnyx
+  module Resources
+    class CalendarConnections
+      class Meetings
+        def update: (
+          String meeting_id,
+          id: String,
+          bot_will_join: bool?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::CalendarConnections::MeetingUpdateResponse
+
+        def list: (
+          String id,
+          ?from: Time,
+          ?to: Time,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::CalendarConnections::MeetingListResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,59 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      attr_reader apis: Telnyx::Resources::AgentGateways::APIs
+
+      attr_reader guardrails: Telnyx::Resources::AgentGateways::Guardrails
+
+      attr_reader keys: Telnyx::Resources::AgentGateways::Keys
+
+      attr_reader mcp_servers: Telnyx::Resources::AgentGateways::McpServers
+
+      attr_reader policies: Telnyx::Resources::AgentGateways::Policies
+
+      attr_reader policy_attachments: Telnyx::Resources::AgentGateways::PolicyAttachments
+
+      attr_reader teams: Telnyx::Resources::AgentGateways::Teams
+
+      def create: (
+        wireguard_interface_id: String,
+        ?name: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AgentGatewayResponse
+
+      def retrieve: (
+        String instance_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AgentGatewayResponse
+
+      def list: (
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Internal::DefaultFlatPagination[Telnyx::AgentGateway]
+
+      def delete: (
+        String instance_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::AgentGatewayResponse
+
+      def retrieve_models: (
+        String instance_id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AgentGatewayRetrieveModelsResponse
+
+      def retrieve_spend_logs: (
+        String instance_id,
+        ?end_: Time,
+        ?key_id: String,
+        ?page_number: Integer,
+        ?page_size: Integer,
+        ?start: Time,
+        ?team_id: String,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::AgentGatewayRetrieveSpendLogsResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

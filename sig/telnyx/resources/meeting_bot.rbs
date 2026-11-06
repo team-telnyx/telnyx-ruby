@@ -1,0 +1,9 @@
+module Telnyx
+  module Resources
+    class MeetingBot
+      attr_reader calendar: Telnyx::Resources::MeetingBot::Calendar
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end
