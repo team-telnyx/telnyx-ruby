@@ -66,17 +66,17 @@ module Telnyx
 
         # Nonblank string required for bearer authentication. Write-only; omitted from
         # responses. Re-send when replacing a bearer-auth config.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(String)) }
         attr_reader :token
 
-        sig { params(token: T.anything).void }
+        sig { params(token: String).void }
         attr_writer :token
 
         sig do
           params(
             password: String,
             username: String,
-            token: T.anything,
+            token: String,
             auth_type:
               Telnyx::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::AuthType::OrSymbol,
             endpoint_url: String,
@@ -106,7 +106,7 @@ module Telnyx
             {
               password: String,
               username: String,
-              token: T.anything,
+              token: String,
               auth_type:
                 Telnyx::GenericPayConnectorConfig::BasicAuthenticationAlsoTheValidationDefault::AuthType::OrSymbol,
               endpoint_url: String,
@@ -178,27 +178,27 @@ module Telnyx
 
         # Nonblank string required for basic authentication. Returned in connector
         # responses.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(String)) }
         attr_reader :username
 
-        sig { params(username: T.anything).void }
+        sig { params(username: String).void }
         attr_writer :username
 
         # Nonblank string required for basic authentication. Write-only; omitted from
         # responses. Re-send when replacing a basic-auth config.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(String)) }
         attr_reader :password
 
-        sig { params(password: T.anything).void }
+        sig { params(password: String).void }
         attr_writer :password
 
         sig do
           params(
             token: String,
             endpoint_url: String,
-            password: T.anything,
+            password: String,
             timeout: T.nilable(Integer),
-            username: T.anything,
+            username: String,
             auth_type: Symbol
           ).returns(T.attached_class)
         end
@@ -227,9 +227,9 @@ module Telnyx
               token: String,
               auth_type: Symbol,
               endpoint_url: String,
-              password: T.anything,
+              password: String,
               timeout: T.nilable(Integer),
-              username: T.anything
+              username: String
             }
           )
         end
@@ -264,35 +264,35 @@ module Telnyx
 
         # Nonblank string required for basic authentication. Returned in connector
         # responses.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(String)) }
         attr_reader :username
 
-        sig { params(username: T.anything).void }
+        sig { params(username: String).void }
         attr_writer :username
 
         # Nonblank string required for bearer authentication. Write-only; omitted from
         # responses. Re-send when replacing a bearer-auth config.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(String)) }
         attr_reader :token
 
-        sig { params(token: T.anything).void }
+        sig { params(token: String).void }
         attr_writer :token
 
         # Nonblank string required for basic authentication. Write-only; omitted from
         # responses. Re-send when replacing a basic-auth config.
-        sig { returns(T.nilable(T.anything)) }
+        sig { returns(T.nilable(String)) }
         attr_reader :password
 
-        sig { params(password: T.anything).void }
+        sig { params(password: String).void }
         attr_writer :password
 
         sig do
           params(
-            token: T.anything,
+            token: String,
             endpoint_url: String,
-            password: T.anything,
+            password: String,
             timeout: T.nilable(Integer),
-            username: T.anything,
+            username: String,
             auth_type: Symbol
           ).returns(T.attached_class)
         end
@@ -320,11 +320,11 @@ module Telnyx
           override.returns(
             {
               auth_type: Symbol,
-              token: T.anything,
+              token: String,
               endpoint_url: String,
-              password: T.anything,
+              password: String,
               timeout: T.nilable(Integer),
-              username: T.anything
+              username: String
             }
           )
         end

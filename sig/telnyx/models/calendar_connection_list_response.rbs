@@ -1,0 +1,14 @@
+module Telnyx
+  module Models
+    type calendar_connection_list_response =
+      { data: ::Array[Telnyx::CalendarConnection] }
+
+    class CalendarConnectionListResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::CalendarConnection]
+
+      def initialize: (data: ::Array[Telnyx::CalendarConnection]) -> void
+
+      def to_hash: -> { data: ::Array[Telnyx::CalendarConnection] }
+    end
+  end
+end

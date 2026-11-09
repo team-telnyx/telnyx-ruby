@@ -15,7 +15,7 @@ module Telnyx
           policy: Telnyx::BrowserSessionCreateParams::Policy::OrHash,
           idempotency_key: String,
           limits: Telnyx::BrowserSessionCreateParams::Limits::OrHash,
-          metadata: T.anything,
+          metadata: T::Hash[Symbol, T.anything],
           request_options: Telnyx::RequestOptions::OrHash
         ).returns(Telnyx::Models::BrowserSessionCreateResponse)
       end

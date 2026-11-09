@@ -1,0 +1,36 @@
+module Telnyx
+  module Models
+    class AgentGatewayNoAuth = AgentGateways::AgentGatewayNoAuth
+
+    module AgentGateways
+      type agent_gateway_no_auth =
+        { type: Telnyx::Models::AgentGateways::AgentGatewayNoAuth::type_ }
+
+      class AgentGatewayNoAuth < Telnyx::Internal::Type::BaseModel
+        attr_reader type: Telnyx::Models::AgentGateways::AgentGatewayNoAuth::type_?
+
+        def type=: (
+          Telnyx::Models::AgentGateways::AgentGatewayNoAuth::type_
+        ) -> Telnyx::Models::AgentGateways::AgentGatewayNoAuth::type_
+
+        def initialize: (
+          ?type: Telnyx::Models::AgentGateways::AgentGatewayNoAuth::type_
+        ) -> void
+
+        def to_hash: -> {
+          type: Telnyx::Models::AgentGateways::AgentGatewayNoAuth::type_
+        }
+
+        type type_ = :none
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          NONE: :none
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayNoAuth::type_]
+        end
+      end
+    end
+  end
+end

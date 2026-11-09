@@ -1,0 +1,17 @@
+module Telnyx
+  module Models
+    class AgentGatewayShownAuth = AgentGateways::AgentGatewayShownAuth
+
+    module AgentGateways
+      type agent_gateway_shown_auth = { type: String }
+
+      class AgentGatewayShownAuth < Telnyx::Internal::Type::BaseModel
+        attr_accessor type: String
+
+        def initialize: (type: String) -> void
+
+        def to_hash: -> { type: String }
+      end
+    end
+  end
+end

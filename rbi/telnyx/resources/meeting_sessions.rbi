@@ -11,19 +11,18 @@ module Telnyx
       sig { returns(Telnyx::Resources::MeetingSessions::Artifacts) }
       attr_reader :artifacts
 
-      # Creates a new meeting session. When an idempotency_key is supplied in the
-      # request body, replay lookup is scoped to the authenticated account and compares
-      # only the key; the request payload is not fingerprinted or compared. If a session
-      # with that key already exists for the account, the existing session is replayed
-      # (200); otherwise a new session is created (201). The session may enter
-      # asynchronous states (e.g. joining, waiting_for_admission) before becoming
-      # active. Optional `camera_image` input is write-only and applies only when no
-      # avatar or Assistant webpage output takes precedence. An ignored URL is not
-      # fetched. An effective URL source is resolved before bot creation; neither the
-      # source URL nor image bytes are persisted, returned, or logged. Treat signed URLs
-      # as credentials. With `assistant.avatar: true`, the assistant is read before the
-      # bot is created: an assistant without a Telnyx avatar configured is rejected with
-      # 400 `invalid_request` (message prefix `assistant_avatar_not_configured:`), an
+      # Creates a meeting session and returns 201, or 200 for a replay. Use a unique
+      # `idempotency_key` per intended join and reuse the same key and request on
+      # retries. Reusing a key with a different join configuration or meeting URL can
+      # return 409 invalid_state. Always retry with the original request. The session
+      # can pass through joining and waiting_for_admission before active. Optional
+      # `camera_image` input is write-only and applies when no assistant avatar takes
+      # precedence. An ignored URL is not fetched. An effective URL source is resolved
+      # before bot creation; the source URL and image bytes are not returned in the
+      # session response. Treat signed URLs as credentials. With
+      # `assistant.avatar: true`, the assistant is read before the bot is created: an
+      # assistant without a Telnyx avatar configured is rejected with 400
+      # `invalid_request` (message prefix `assistant_avatar_not_configured:`), an
       # unknown assistant with 400 `invalid_request` (prefix `assistant_not_found:`),
       # and a failed lookup with 503 `assistant_lookup_unavailable`; no bot is created
       # in any of these cases.
@@ -41,7 +40,12 @@ module Telnyx
           chat_on_enter: String,
           idempotency_key: String,
           join_at: Time,
+          leave_policy: Telnyx::MeetingSessionLeavePolicy::OrHash,
           metadata: T::Hash[Symbol, T.anything],
+          recording: T::Boolean,
+          recording_export: Telnyx::MeetingSessionRecordingDestination::OrHash,
+          recording_view:
+            Telnyx::MeetingSessionCreateParams::RecordingView::OrSymbol,
           speak_on_enter: String,
           summarize_on_end: T::Boolean,
           voice: String,
@@ -52,10 +56,8 @@ module Telnyx
       def create(
         # The meeting URL the bot should join.
         meeting_url:,
-        # Attach a Telnyx AI Assistant to the session. Supply the Assistant's ID; the
-        # Meeting service connects it to the meeting directly. The Call Control
-        # connection, caller ID and loopback SIP URI previously required here have been
-        # removed and are now rejected as unknown fields.
+        # Attach a Telnyx AI Assistant owned by the authenticated account. Supply its ID
+        # and optional conversation settings. Unknown fields are rejected.
         assistant: nil,
         # When enabled, a human participant `speech_on` event interrupts and stops the
         # current bot audio; it does not bypass admission or initiate speech. Assistant
@@ -63,40 +65,61 @@ module Telnyx
         barge_in: nil,
         # Display name for the bot in the meeting. Defaults to "Meeting Bot".
         bot_name: nil,
-        # Write-only static camera-tile image for this session, not a native account or
+        # Not supported for Google Meet and Teams joins (422 unsupported_capability).
+        # Write-only static camera-tile image for this session, not an account or
         # participant profile photo. Supply exactly one JPEG source. When effective, the
         # image is used as the bot's static camera/video output; presentation varies by
         # meeting platform and recording configuration and is not guaranteed in
-        # recordings. An effective Avatar or Assistant webpage output takes precedence, so
-        # this input is ignored and a URL source is not fetched.
+        # recordings. An attached assistant or avatar takes precedence, so this input is
+        # ignored and a URL source is not fetched.
         camera_image: nil,
         # A message the bot posts to the meeting's chat as soon as it becomes active —
         # typically a recording disclosure. Delivered at most once. Independent of
         # `speak_on_enter`: both may be set, and the chat message posts first because it
         # does not wait for text-to-speech or avatar startup. Rejected with 422
-        # `unsupported_capability` on platforms without meeting chat.
+        # `unsupported_capability` on platforms without meeting chat. For Google Meet and
+        # Teams, text must be nonblank, at most 4096 UTF-8 bytes, with no control
+        # characters except tabs and line breaks. Counts toward the 1000-chat-request
+        # session limit.
         chat_on_enter: nil,
-        # Client-supplied idempotency key to safely retry creation requests without
-        # duplicating sessions. Lookup is scoped to the authenticated account and compares
-        # the key only; the request payload is not fingerprinted or compared.
+        # Use a unique key per intended join and reuse the same key and request on
+        # retries. Reusing a key with a different join configuration or meeting URL can
+        # return 409 invalid_state. Always retry with the original request.
         idempotency_key: nil,
-        # ISO-8601 timestamp in the future at which the bot should join. If omitted, the
-        # bot joins immediately.
+        # Future ISO-8601 join timestamp including timezone. Google Meet and Teams accept
+        # dates at most three years ahead. Omit for an immediate join. Assistant sessions
+        # created through this endpoint must join immediately.
         join_at: nil,
+        # Automatic departure settings for Google Meet and Teams. Omitted fields use the
+        # default behavior. Set at creation; cannot be changed later. Zoom ignores this
+        # policy.
+        leave_policy: nil,
         # Arbitrary key-value metadata attached to the session. The serialized JSON
         # representation must not exceed 16384 characters at runtime.
         metadata: nil,
-        # Text the bot speaks when it enters the meeting. **Not spoken when an `assistant`
-        # is attached**: the value is accepted and echoed back on the session, but the
-        # assistant owns the voice and the line is never delivered, with no event
-        # reporting the omission. Use `chat_on_enter` to announce an assistant-backed bot.
-        # Rejected with 400 `invalid_request` when `assistant.avatar` is `true`.
+        # Google Meet and Teams only. Defaults to true when recording_export is supplied
+        # and false otherwise. True requires recording_export.bucket; false cannot be
+        # combined with recording_export. Fixed at creation, with no pause/resume action.
+        # Zoom rejects recording, recording_view, and recording_export with 422
+        # unsupported_capability; omit these fields for Zoom.
+        recording: nil,
+        # Customer-owned Telnyx Storage destination for recording exports. Uses the
+        # authenticated organization and user; do not supply credentials, region,
+        # organization ID or object key.
+        recording_export: nil,
+        # Recording layout for Google Meet and Teams. Defaults to speaker_view. Accepted
+        # at creation only; does not enable recording by itself.
+        recording_view: nil,
+        # Text the bot speaks after joining. Available for sessions without a digital
+        # avatar. With an AI Assistant, the greeting waits until the assistant is
+        # connected. Rejected with 400 invalid_request when assistant.avatar is true.
         speak_on_enter: nil,
         # If true, generate a summary artifact when the session ends.
         summarize_on_end: nil,
         # Session-default voice identifier used for `speak_on_enter` and ordinary speak
         # actions. A voice supplied on an individual speak action overrides this default
-        # for that utterance.
+        # for that utterance. With an assistant attached, its conversational voice remains
+        # configured on the assistant.
         voice: nil,
         # HTTPS endpoint to receive session lifecycle callbacks. Static validation
         # requires HTTPS, rejects embedded credentials and blocked hosts, and enforces
@@ -124,7 +147,10 @@ module Telnyx
       # Updates mutable properties of a meeting session. Only sessions in the scheduled
       # state can be updated; any other state returns 409 with the invalid_state error
       # code. All request fields are optional, and an empty object is a valid no-op
-      # update.
+      # update. Calendar-controlled Google Meet and Teams sessions return 409
+      # calendar_managed; change the event instead. A conflicting pending edit returns
+      # 409 edit_in_progress. On a timeout or 503, read the session and retry the same
+      # changes.
       sig do
         params(
           id: String,
@@ -144,7 +170,9 @@ module Telnyx
       )
       end
 
-      # Returns a list of meeting sessions, optionally filtered by status.
+      # Returns a list of meeting sessions, optionally filtered by status. List items
+      # omit assistant.dynamic_variables and recording_export. Some items include
+      # remote_state_observed_at; retrieve the individual session for current state.
       sig do
         params(
           status: Telnyx::MeetingSessionListParams::Status::OrSymbol,
@@ -160,7 +188,9 @@ module Telnyx
 
       # Stops a meeting session without deleting its persisted record. Scheduled bots
       # are cancelled, while bots that are joining or active are asked to leave. The
-      # persisted meeting session record remains available.
+      # persisted meeting session record remains available. A successful response can
+      # report leaving while departure is pending. Poll until ended, failed, or
+      # admission_denied. Exported Storage objects are unaffected.
       sig do
         params(
           id: String,
@@ -179,7 +209,10 @@ module Telnyx
       # events, artifacts, and usage records. It is separate from
       # `DELETE /meeting_sessions/{id}`, which stops or cancels participation without
       # deleting the persisted session. A missing/foreign session returns 404; a
-      # deletion request whose outcome is unknown returns 502.
+      # deletion request whose outcome is unknown returns 502. Customer Storage exports
+      # do not support this operation (422 unsupported_capability); delete the exported
+      # object through Storage instead. Stopping a session does not delete an exported
+      # object.
       sig do
         params(
           id: String,
@@ -216,10 +249,33 @@ module Telnyx
       )
       end
 
-      # Returns transcript segments ordered by ascending `seq`. Default `limit` is 100
-      # and maximum is 1,000. Continue with `after=meta.next_after`. A long-poll timeout
-      # returns 200 with empty `data` and `meta.next_after: null`; retain the cursor
-      # supplied to that request because null is not a replacement cursor.
+      # Retrieve recording export status. Customer Storage exports include
+      # recording_export with the bucket, region, key and pending/exported/failed
+      # status, or null when no reference is available. The data array is empty for
+      # these exports. Download or share the object using the Storage API once its
+      # status is exported. Zoom recordings and existing Google Meet or Teams recordings
+      # held by the Meeting service continue returning temporary download links in data
+      # through this same endpoint and session ID. Those recordings do not require
+      # Storage setup or migration. Refresh this endpoint when a link expires. Select
+      # the download method from the returned fields, not the platform alone.
+      sig do
+        params(
+          id: String,
+          request_options: Telnyx::RequestOptions::OrHash
+        ).returns(Telnyx::Models::MeetingSessionRetrieveRecordingsResponse)
+      end
+      def retrieve_recordings(
+        # Unique identifier for the meeting session.
+        id,
+        request_options: {}
+      )
+      end
+
+      # Returns transcript segments ordered by ascending seq. Default limit is 100,
+      # maximum 1000. Continue with after=meta.next_after. On an empty page,
+      # meta.next_after preserves a positive supplied after cursor, or is null when no
+      # positive cursor was supplied. wait_seconds holds an empty read for up to 25
+      # seconds; a timeout still returns 200.
       sig do
         params(
           id: String,

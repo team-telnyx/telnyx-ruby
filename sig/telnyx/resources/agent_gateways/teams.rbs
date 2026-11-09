@@ -1,0 +1,46 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class Teams
+        attr_reader tool_permissions: Telnyx::Resources::AgentGateways::Teams::ToolPermissions
+
+        def create: (
+          String instance_id,
+          name: String,
+          ?budget_resets_every: String?,
+          ?max_budget: Float?,
+          ?models: ::Array[String]?,
+          ?requests_per_minute: Integer?,
+          ?tokens_per_minute: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayTeamResponse
+
+        def update: (
+          String team_id,
+          instance_id: String,
+          ?blocked: bool,
+          ?budget_resets_every: String?,
+          ?max_budget: Float?,
+          ?models: ::Array[String],
+          ?name: String,
+          ?requests_per_minute: Integer?,
+          ?tokens_per_minute: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayTeamResponse
+
+        def list: (
+          String instance_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::TeamListResponse
+
+        def delete: (
+          String team_id,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayTeamResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

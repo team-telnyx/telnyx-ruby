@@ -9,7 +9,7 @@ module Telnyx
         ?page_cursor: String,
         ?to: Time,
         ?request_options: Telnyx::request_opts
-      ) -> Telnyx::Models::EmailEventListResponse
+      ) -> Telnyx::Internal::EmailEventsCursorPagination[Telnyx::Models::EmailEventListResponse]
 
       def retrieve_stats: (
         ?from: Time,

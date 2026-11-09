@@ -18,7 +18,7 @@ module Telnyx
               Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember0,
               Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember1,
               Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember2,
-              Telnyx::BrowserSessions::WaitForAction::Condition::Kind
+              Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember3
             )
           )
         end
@@ -53,7 +53,7 @@ module Telnyx
                 Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember0::OrHash,
                 Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember1::OrHash,
                 Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember2::OrHash,
-                Telnyx::BrowserSessions::WaitForAction::Condition::Kind::OrHash
+                Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember3::OrHash
               ),
             idempotency_key: String,
             include_observation: T::Boolean,
@@ -78,7 +78,7 @@ module Telnyx
                   Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember0,
                   Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember1,
                   Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember2,
-                  Telnyx::BrowserSessions::WaitForAction::Condition::Kind
+                  Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember3
                 ),
               type: Symbol,
               idempotency_key: String,
@@ -99,7 +99,7 @@ module Telnyx
                 Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember0,
                 Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember1,
                 Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember2,
-                Telnyx::BrowserSessions::WaitForAction::Condition::Kind
+                Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember3
               )
             end
 
@@ -188,11 +188,11 @@ module Telnyx
             end
           end
 
-          class Kind < Telnyx::Internal::Type::BaseModel
+          class UnionMember3 < Telnyx::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Telnyx::BrowserSessions::WaitForAction::Condition::Kind,
+                  Telnyx::BrowserSessions::WaitForAction::Condition::UnionMember3,
                   Telnyx::Internal::AnyHash
                 )
               end

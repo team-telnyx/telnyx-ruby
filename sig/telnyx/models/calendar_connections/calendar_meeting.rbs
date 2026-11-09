@@ -1,0 +1,168 @@
+module Telnyx
+  module Models
+    module CalendarConnections
+      type calendar_meeting =
+        {
+          id: String,
+          attendees: ::Array[Telnyx::CalendarConnections::CalendarMeeting::Attendee],
+          bot_will_join: bool,
+          bot_will_join_override: bool?,
+          decision: Telnyx::Models::CalendarConnections::CalendarMeeting::decision,
+          end_time: Time?,
+          is_external_organizer: bool?,
+          organizer: Telnyx::CalendarConnections::CalendarMeeting::Organizer?,
+          platform: Telnyx::Models::CalendarConnections::CalendarMeeting::platform,
+          session_id: String?,
+          start_time: Time
+        }
+
+      class CalendarMeeting < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor attendees: ::Array[Telnyx::CalendarConnections::CalendarMeeting::Attendee]
+
+        attr_accessor bot_will_join: bool
+
+        attr_accessor bot_will_join_override: bool?
+
+        attr_accessor decision: Telnyx::Models::CalendarConnections::CalendarMeeting::decision
+
+        attr_accessor end_time: Time?
+
+        attr_accessor is_external_organizer: bool?
+
+        attr_accessor organizer: Telnyx::CalendarConnections::CalendarMeeting::Organizer?
+
+        attr_accessor platform: Telnyx::Models::CalendarConnections::CalendarMeeting::platform
+
+        attr_accessor session_id: String?
+
+        attr_accessor start_time: Time
+
+        def initialize: (
+          id: String,
+          attendees: ::Array[Telnyx::CalendarConnections::CalendarMeeting::Attendee],
+          bot_will_join: bool,
+          bot_will_join_override: bool?,
+          decision: Telnyx::Models::CalendarConnections::CalendarMeeting::decision,
+          end_time: Time?,
+          is_external_organizer: bool?,
+          organizer: Telnyx::CalendarConnections::CalendarMeeting::Organizer?,
+          platform: Telnyx::Models::CalendarConnections::CalendarMeeting::platform,
+          session_id: String?,
+          start_time: Time
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          attendees: ::Array[Telnyx::CalendarConnections::CalendarMeeting::Attendee],
+          bot_will_join: bool,
+          bot_will_join_override: bool?,
+          decision: Telnyx::Models::CalendarConnections::CalendarMeeting::decision,
+          end_time: Time?,
+          is_external_organizer: bool?,
+          organizer: Telnyx::CalendarConnections::CalendarMeeting::Organizer?,
+          platform: Telnyx::Models::CalendarConnections::CalendarMeeting::platform,
+          session_id: String?,
+          start_time: Time
+        }
+
+        type attendee =
+          {
+            display_name: String?,
+            email: String?,
+            optional: bool?,
+            response_status: String?,
+            self_: bool?
+          }
+
+        class Attendee < Telnyx::Internal::Type::BaseModel
+          attr_accessor display_name: String?
+
+          attr_accessor email: String?
+
+          attr_accessor optional: bool?
+
+          attr_accessor response_status: String?
+
+          attr_accessor self_: bool?
+
+          def initialize: (
+            display_name: String?,
+            email: String?,
+            optional: bool?,
+            response_status: String?,
+            self_: bool?
+          ) -> void
+
+          def to_hash: -> {
+            display_name: String?,
+            email: String?,
+            optional: bool?,
+            response_status: String?,
+            self_: bool?
+          }
+        end
+
+        type decision =
+          :pending
+          | :scheduled
+          | :skipped_policy
+          | :skipped_no_url
+          | :skipped_duplicate
+          | :skipped_unsupported
+          | :cancelled
+
+        module Decision
+          extend Telnyx::Internal::Type::Enum
+
+          PENDING: :pending
+          SCHEDULED: :scheduled
+          SKIPPED_POLICY: :skipped_policy
+          SKIPPED_NO_URL: :skipped_no_url
+          SKIPPED_DUPLICATE: :skipped_duplicate
+          SKIPPED_UNSUPPORTED: :skipped_unsupported
+          CANCELLED: :cancelled
+
+          def self?.values: -> ::Array[Telnyx::Models::CalendarConnections::CalendarMeeting::decision]
+        end
+
+        type organizer = { display_name: String?, email: String?, self_: bool? }
+
+        class Organizer < Telnyx::Internal::Type::BaseModel
+          attr_accessor display_name: String?
+
+          attr_accessor email: String?
+
+          attr_accessor self_: bool?
+
+          def initialize: (
+            display_name: String?,
+            email: String?,
+            self_: bool?
+          ) -> void
+
+          def to_hash: -> {
+            display_name: String?,
+            email: String?,
+            self_: bool?
+          }
+        end
+
+        type platform = :zoom | :google_meet | :teams | :webex | :unknown
+
+        module Platform
+          extend Telnyx::Internal::Type::Enum
+
+          ZOOM: :zoom
+          GOOGLE_MEET: :google_meet
+          TEAMS: :teams
+          WEBEX: :webex
+          UNKNOWN: :unknown
+
+          def self?.values: -> ::Array[Telnyx::Models::CalendarConnections::CalendarMeeting::platform]
+        end
+      end
+    end
+  end
+end

@@ -92,7 +92,7 @@ module Telnyx
           auth_type: Telnyx::Models::PayConnector::Config::auth_type,
           endpoint_url: String,
           timeout: Integer,
-          username: top
+          username: String
         }
 
       class Config < Telnyx::Internal::Type::BaseModel
@@ -110,22 +110,22 @@ module Telnyx
 
         def timeout=: (Integer) -> Integer
 
-        attr_reader username: top?
+        attr_reader username: String?
 
-        def username=: (top) -> top
+        def username=: (String) -> String
 
         def initialize: (
           ?auth_type: Telnyx::Models::PayConnector::Config::auth_type,
           ?endpoint_url: String,
           ?timeout: Integer,
-          ?username: top
+          ?username: String
         ) -> void
 
         def to_hash: -> {
           auth_type: Telnyx::Models::PayConnector::Config::auth_type,
           endpoint_url: String,
           timeout: Integer,
-          username: top
+          username: String
         }
 
         type auth_type = :none | :basic | :bearer

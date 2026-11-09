@@ -36,11 +36,16 @@ module Telnyx
         required :relative_ts, Float, nil?: true
 
         # @!attribute seq
+        #   Monotonic transcript append cursor. This is separate from the event-history
+        #   cursor and does not establish conversational turn order.
         #
         #   @return [Integer]
         required :seq, Integer
 
         # @!attribute speaker_label
+        #   Recorded participant or bot label, or null when unavailable. Labels are
+        #   attribution, not verified identity. Segments from concurrent speakers can
+        #   finalize in a different order from the conversation.
         #
         #   @return [String, nil]
         required :speaker_label, String, nil?: true
@@ -51,11 +56,20 @@ module Telnyx
         required :text, String
 
         # @!method initialize(confidence:, occurred_at:, relative_ts:, seq:, speaker_label:, text:)
+        #   Some parameter documentations has been truncated, see
+        #   {Telnyx::Models::MeetingSessionRetrieveTranscriptResponse::Data} for more
+        #   details.
+        #
         #   @param confidence [Float, nil]
+        #
         #   @param occurred_at [Time]
+        #
         #   @param relative_ts [Float, nil]
-        #   @param seq [Integer]
-        #   @param speaker_label [String, nil]
+        #
+        #   @param seq [Integer] Monotonic transcript append cursor. This is separate from the event-history curs
+        #
+        #   @param speaker_label [String, nil] Recorded participant or bot label, or null when unavailable. Labels are attribut
+        #
         #   @param text [String]
       end
 

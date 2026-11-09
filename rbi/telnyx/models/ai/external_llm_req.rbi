@@ -36,6 +36,21 @@ module Telnyx
         sig { params(certificate_ref: String).void }
         attr_writer :certificate_ref
 
+        # Custom HTTP headers Telnyx sets on every request to the external LLM endpoint,
+        # in addition to the authentication header. Keys are header names, values are
+        # static strings. At most 32 headers. Reserved names are rejected:
+        # accept-encoding, authorization, connection, content-encoding, content-length,
+        # content-type, cookie, expect, host, keep-alive, proxy-authenticate,
+        # proxy-authorization, proxy-connection, set-cookie, te, trailer,
+        # transfer-encoding, upgrade, x-host-rewrite, x-request-id, x-trace-id, and any
+        # x-telnyx-_ or x-stainless-_ header; '\_' counts as '-' when names are compared.
+        # Names must be valid HTTP header names (RFC 7230 token, at most 128 characters)
+        # and must not repeat (case-insensitive). Values must be printable ASCII, at most
+        # 4096 characters, with no leading or trailing whitespace. Values are stored as
+        # plain text and returned when the assistant is retrieved.
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_accessor :extra_headers
+
         # When `true`, Telnyx forwards the assistant's dynamic variables to the external
         # LLM endpoint as a top-level `extra_metadata` object on the chat completion
         # request body. Defaults to `false`. Example payload sent to the external
@@ -69,6 +84,7 @@ module Telnyx
             model: String,
             authentication_method: Telnyx::AI::AuthenticationMethod::OrSymbol,
             certificate_ref: String,
+            extra_headers: T.nilable(T::Hash[Symbol, String]),
             forward_metadata: T::Boolean,
             llm_api_key_ref: String,
             token_retrieval_url: String
@@ -84,6 +100,19 @@ module Telnyx
           # Integration secret identifier for the client certificate used with certificate
           # authentication.
           certificate_ref: nil,
+          # Custom HTTP headers Telnyx sets on every request to the external LLM endpoint,
+          # in addition to the authentication header. Keys are header names, values are
+          # static strings. At most 32 headers. Reserved names are rejected:
+          # accept-encoding, authorization, connection, content-encoding, content-length,
+          # content-type, cookie, expect, host, keep-alive, proxy-authenticate,
+          # proxy-authorization, proxy-connection, set-cookie, te, trailer,
+          # transfer-encoding, upgrade, x-host-rewrite, x-request-id, x-trace-id, and any
+          # x-telnyx-_ or x-stainless-_ header; '\_' counts as '-' when names are compared.
+          # Names must be valid HTTP header names (RFC 7230 token, at most 128 characters)
+          # and must not repeat (case-insensitive). Values must be printable ASCII, at most
+          # 4096 characters, with no leading or trailing whitespace. Values are stored as
+          # plain text and returned when the assistant is retrieved.
+          extra_headers: nil,
           # When `true`, Telnyx forwards the assistant's dynamic variables to the external
           # LLM endpoint as a top-level `extra_metadata` object on the chat completion
           # request body. Defaults to `false`. Example payload sent to the external
@@ -106,6 +135,7 @@ module Telnyx
               model: String,
               authentication_method: Telnyx::AI::AuthenticationMethod::OrSymbol,
               certificate_ref: String,
+              extra_headers: T.nilable(T::Hash[Symbol, String]),
               forward_metadata: T::Boolean,
               llm_api_key_ref: String,
               token_retrieval_url: String

@@ -10,7 +10,11 @@ module Telnyx
         chat_on_enter: String,
         idempotency_key: String,
         join_at: Time,
+        leave_policy: Telnyx::MeetingSessionLeavePolicy,
         metadata: ::Hash[Symbol, top],
+        recording: bool,
+        recording_export: Telnyx::MeetingSessionRecordingDestination,
+        recording_view: Telnyx::Models::MeetingSessionCreateParams::recording_view,
         speak_on_enter: String,
         summarize_on_end: bool,
         voice: String,
@@ -56,9 +60,31 @@ module Telnyx
 
       def join_at=: (Time) -> Time
 
+      attr_reader leave_policy: Telnyx::MeetingSessionLeavePolicy?
+
+      def leave_policy=: (
+        Telnyx::MeetingSessionLeavePolicy
+      ) -> Telnyx::MeetingSessionLeavePolicy
+
       attr_reader metadata: ::Hash[Symbol, top]?
 
       def metadata=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+      attr_reader recording: bool?
+
+      def recording=: (bool) -> bool
+
+      attr_reader recording_export: Telnyx::MeetingSessionRecordingDestination?
+
+      def recording_export=: (
+        Telnyx::MeetingSessionRecordingDestination
+      ) -> Telnyx::MeetingSessionRecordingDestination
+
+      attr_reader recording_view: Telnyx::Models::MeetingSessionCreateParams::recording_view?
+
+      def recording_view=: (
+        Telnyx::Models::MeetingSessionCreateParams::recording_view
+      ) -> Telnyx::Models::MeetingSessionCreateParams::recording_view
 
       attr_reader speak_on_enter: String?
 
@@ -85,7 +111,11 @@ module Telnyx
         ?chat_on_enter: String,
         ?idempotency_key: String,
         ?join_at: Time,
+        ?leave_policy: Telnyx::MeetingSessionLeavePolicy,
         ?metadata: ::Hash[Symbol, top],
+        ?recording: bool,
+        ?recording_export: Telnyx::MeetingSessionRecordingDestination,
+        ?recording_view: Telnyx::Models::MeetingSessionCreateParams::recording_view,
         ?speak_on_enter: String,
         ?summarize_on_end: bool,
         ?voice: String,
@@ -102,7 +132,11 @@ module Telnyx
         chat_on_enter: String,
         idempotency_key: String,
         join_at: Time,
+        leave_policy: Telnyx::MeetingSessionLeavePolicy,
         metadata: ::Hash[Symbol, top],
+        recording: bool,
+        recording_export: Telnyx::MeetingSessionRecordingDestination,
+        recording_view: Telnyx::Models::MeetingSessionCreateParams::recording_view,
         speak_on_enter: String,
         summarize_on_end: bool,
         voice: String,
@@ -204,6 +238,19 @@ module Telnyx
         end
 
         def self?.variants: -> ::Array[Telnyx::Models::MeetingSessionCreateParams::camera_image]
+      end
+
+      type recording_view =
+        :speaker_view | :gallery_view | :speaker_view_no_sidebar
+
+      module RecordingView
+        extend Telnyx::Internal::Type::Enum
+
+        SPEAKER_VIEW: :speaker_view
+        GALLERY_VIEW: :gallery_view
+        SPEAKER_VIEW_NO_SIDEBAR: :speaker_view_no_sidebar
+
+        def self?.values: -> ::Array[Telnyx::Models::MeetingSessionCreateParams::recording_view]
       end
     end
   end

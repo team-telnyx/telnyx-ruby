@@ -1,0 +1,59 @@
+module Telnyx
+  module Models
+    class AgentGatewayPolicy = AgentGateways::AgentGatewayPolicy
+
+    module AgentGateways
+      type agent_gateway_policy =
+        {
+          base: String?,
+          created_at: Time?,
+          description: String?,
+          guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          model: String?,
+          name: String,
+          pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?,
+          updated_at: Time?
+        }
+
+      class AgentGatewayPolicy < Telnyx::Internal::Type::BaseModel
+        attr_accessor base: String?
+
+        attr_accessor created_at: Time?
+
+        attr_accessor description: String?
+
+        attr_accessor guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails
+
+        attr_accessor model: String?
+
+        attr_accessor name: String
+
+        attr_accessor pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?
+
+        attr_accessor updated_at: Time?
+
+        def initialize: (
+          base: String?,
+          created_at: Time?,
+          description: String?,
+          guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          model: String?,
+          name: String,
+          pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?,
+          updated_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          base: String?,
+          created_at: Time?,
+          description: String?,
+          guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          model: String?,
+          name: String,
+          pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?,
+          updated_at: Time?
+        }
+      end
+    end
+  end
+end

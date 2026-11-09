@@ -1,0 +1,42 @@
+module Telnyx
+  module Resources
+    class CalendarConnections
+      attr_reader meetings: Telnyx::Resources::CalendarConnections::Meetings
+
+      def create: (
+        platform: Telnyx::Models::CalendarConnectionCreateParams::platform,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CalendarConnectionCreateResponse
+
+      def retrieve: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CalendarConnectionResponse
+
+      def update: (
+        String id,
+        ?auto_join_policy: Telnyx::Models::CalendarConnectionUpdateParams::auto_join_policy,
+        ?bot_name: String?,
+        ?default_assistant: Telnyx::CalendarConnectionUpdateParams::DefaultAssistant?,
+        ?default_barge_in: bool?,
+        ?default_recording: bool?,
+        ?default_recording_export: Telnyx::MeetingSessionRecordingDestination?,
+        ?default_summarize_on_end: bool?,
+        ?default_voice: String?,
+        ?default_webhook_url: String?,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CalendarConnectionUpdateResponse
+
+      def list: (
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::Models::CalendarConnectionListResponse
+
+      def delete: (
+        String id,
+        ?request_options: Telnyx::request_opts
+      ) -> Telnyx::CalendarConnectionResponse
+
+      def initialize: (client: Telnyx::Client) -> void
+    end
+  end
+end

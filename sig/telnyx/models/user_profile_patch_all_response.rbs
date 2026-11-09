@@ -1,0 +1,13 @@
+module Telnyx
+  module Models
+    type user_profile_patch_all_response = { data: Telnyx::UserProfileAPI }
+
+    class UserProfilePatchAllResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: Telnyx::UserProfileAPI
+
+      def initialize: (data: Telnyx::UserProfileAPI) -> void
+
+      def to_hash: -> { data: Telnyx::UserProfileAPI }
+    end
+  end
+end

@@ -58,14 +58,14 @@ module Telnyx
             module Body
               extend Telnyx::Internal::Type::Union
 
-              variant -> { Telnyx::Models::AI::Memory::Namespaces::ProfileIngestParams::Body::UnionMember0Map }
+              variant -> { Telnyx::Models::AI::Memory::Namespaces::ProfileIngestParams::Body::IngestPayloadObjectMap }
 
               variant union: -> { Telnyx::AI::Memory::Namespaces::ProfileIngestParams::Body::UnionMember1 }
 
               module UnionMember1
                 extend Telnyx::Internal::Type::Union
 
-                variant -> { Telnyx::Models::AI::Memory::Namespaces::ProfileIngestParams::Body::UnionMember1::UnionMember0Array }
+                variant -> { Telnyx::Models::AI::Memory::Namespaces::ProfileIngestParams::Body::UnionMember1::IngestPayloadValueArray }
 
                 variant String
 
@@ -77,14 +77,14 @@ module Telnyx
                 #   @return [Array(Array<Object>, String, Float, Boolean)]
 
                 # @type [Telnyx::Internal::Type::Converter]
-                UnionMember0Array = Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
+                IngestPayloadValueArray = Telnyx::Internal::Type::ArrayOf[Telnyx::Internal::Type::Unknown]
               end
 
               # @!method self.variants
               #   @return [Array(Hash{Symbol=>Object}, Array<Object>, String, Float, Boolean)]
 
               # @type [Telnyx::Internal::Type::Converter]
-              UnionMember0Map = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
+              IngestPayloadObjectMap = Telnyx::Internal::Type::HashOf[Telnyx::Internal::Type::Unknown]
             end
           end
         end

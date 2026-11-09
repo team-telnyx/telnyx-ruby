@@ -147,13 +147,14 @@ module Telnyx
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::model_id]
       end
 
-      type provider = :telnyx | :minimax
+      type provider = :telnyx | :minimax | :resemble
 
       module Provider
         extend Telnyx::Internal::Type::Enum
 
         TELNYX: :telnyx
         MINIMAX: :minimax
+        RESEMBLE: :resemble
 
         def self?.values: -> ::Array[Telnyx::Models::VoiceCloneData::provider]
       end

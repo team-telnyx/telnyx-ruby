@@ -1,0 +1,29 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class PolicyAttachments
+        def create: (
+          String instance_id,
+          policy: String,
+          ?default: bool,
+          ?models: ::Array[String],
+          ?priority: Integer?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayPolicyAttachmentResponse
+
+        def list: (
+          String instance_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::PolicyAttachmentListResponse
+
+        def delete: (
+          String attachment_id,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayPolicyAttachmentResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

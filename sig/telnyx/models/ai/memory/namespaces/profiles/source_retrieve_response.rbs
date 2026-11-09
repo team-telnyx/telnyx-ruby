@@ -75,12 +75,12 @@ module Telnyx
 
                     def self?.variants: -> ::Array[Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse::Data::Content::union_member1]
 
-                    UnionMember0Array: Telnyx::Internal::Type::Converter
+                    SourceContentValueArray: Telnyx::Internal::Type::Converter
                   end
 
                   def self?.variants: -> ::Array[Telnyx::Models::AI::Memory::Namespaces::Profiles::SourceRetrieveResponse::Data::content]
 
-                  UnionMember0Map: Telnyx::Internal::Type::Converter
+                  SourceContentObjectMap: Telnyx::Internal::Type::Converter
                 end
               end
             end

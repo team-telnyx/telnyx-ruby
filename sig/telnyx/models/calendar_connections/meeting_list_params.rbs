@@ -1,0 +1,38 @@
+module Telnyx
+  module Models
+    module CalendarConnections
+      type meeting_list_params =
+        { id: String, from: Time, to: Time }
+        & Telnyx::Internal::Type::request_parameters
+
+      class MeetingListParams < Telnyx::Internal::Type::BaseModel
+        extend Telnyx::Internal::Type::RequestParameters::Converter
+        include Telnyx::Internal::Type::RequestParameters
+
+        attr_accessor id: String
+
+        attr_reader from: Time?
+
+        def from=: (Time) -> Time
+
+        attr_reader to: Time?
+
+        def to=: (Time) -> Time
+
+        def initialize: (
+          id: String,
+          ?from: Time,
+          ?to: Time,
+          ?request_options: Telnyx::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          from: Time,
+          to: Time,
+          request_options: Telnyx::RequestOptions
+        }
+      end
+    end
+  end
+end

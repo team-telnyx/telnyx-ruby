@@ -1,0 +1,107 @@
+module Telnyx
+  module Models
+    class AgentGatewayGuardrail = AgentGateways::AgentGatewayGuardrail
+
+    module AgentGateways
+      type agent_gateway_guardrail =
+        {
+          id: String,
+          always_on: bool,
+          created_at: Time?,
+          modes: ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode],
+          name: String,
+          settings: ::Hash[Symbol, top],
+          type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_,
+          updated_at: Time?
+        }
+
+      class AgentGatewayGuardrail < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor always_on: bool
+
+        attr_accessor created_at: Time?
+
+        attr_accessor modes: ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode]
+
+        attr_accessor name: String
+
+        attr_accessor settings: ::Hash[Symbol, top]
+
+        attr_accessor type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_
+
+        attr_accessor updated_at: Time?
+
+        def initialize: (
+          id: String,
+          always_on: bool,
+          created_at: Time?,
+          modes: ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode],
+          name: String,
+          settings: ::Hash[Symbol, top],
+          type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_,
+          updated_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          always_on: bool,
+          created_at: Time?,
+          modes: ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode],
+          name: String,
+          settings: ::Hash[Symbol, top],
+          type: Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_,
+          updated_at: Time?
+        }
+
+        type mode =
+          :before_request
+          | :during_request
+          | :after_request
+          | :logging_only
+          | :before_tool_request
+          | :during_tool_request
+          | :after_tool_request
+
+        module Mode
+          extend Telnyx::Internal::Type::Enum
+
+          BEFORE_REQUEST: :before_request
+          DURING_REQUEST: :during_request
+          AFTER_REQUEST: :after_request
+          LOGGING_ONLY: :logging_only
+          BEFORE_TOOL_REQUEST: :before_tool_request
+          DURING_TOOL_REQUEST: :during_tool_request
+          AFTER_TOOL_REQUEST: :after_tool_request
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::mode]
+        end
+
+        type type_ =
+          :content_filter
+          | :tool_permission
+          | :model_judge
+          | :custom_code
+          | :lakera
+          | :presidio
+          | :bedrock
+          | :azure_content_safety
+
+        module Type
+          extend Telnyx::Internal::Type::Enum
+
+          CONTENT_FILTER: :content_filter
+          TOOL_PERMISSION: :tool_permission
+          MODEL_JUDGE: :model_judge
+          CUSTOM_CODE: :custom_code
+          LAKERA: :lakera
+          PRESIDIO: :presidio
+          BEDROCK: :bedrock
+          AZURE_CONTENT_SAFETY: :azure_content_safety
+
+          def self?.values: -> ::Array[Telnyx::Models::AgentGateways::AgentGatewayGuardrail::type_]
+        end
+      end
+    end
+  end
+end

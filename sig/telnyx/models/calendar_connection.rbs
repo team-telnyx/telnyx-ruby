@@ -1,0 +1,131 @@
+module Telnyx
+  module Models
+    type calendar_connection =
+      {
+        id: String,
+        auto_join_policy: Telnyx::Models::CalendarConnection::auto_join_policy,
+        bot_name: String?,
+        created_at: Time,
+        default_assistant: Telnyx::MeetingSessionAssistant?,
+        default_barge_in: bool?,
+        default_recording: bool?,
+        default_recording_export: Telnyx::MeetingSessionRecordingDestination?,
+        default_summarize_on_end: bool?,
+        default_voice: String?,
+        default_webhook_url: String?,
+        platform: Telnyx::Models::CalendarConnection::platform,
+        platform_email: String?,
+        status: Telnyx::Models::CalendarConnection::status,
+        status_detail: String?,
+        updated_at: Time
+      }
+
+    class CalendarConnection < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor auto_join_policy: Telnyx::Models::CalendarConnection::auto_join_policy
+
+      attr_accessor bot_name: String?
+
+      attr_accessor created_at: Time
+
+      attr_accessor default_assistant: Telnyx::MeetingSessionAssistant?
+
+      attr_accessor default_barge_in: bool?
+
+      attr_accessor default_recording: bool?
+
+      attr_accessor default_recording_export: Telnyx::MeetingSessionRecordingDestination?
+
+      attr_accessor default_summarize_on_end: bool?
+
+      attr_accessor default_voice: String?
+
+      attr_accessor default_webhook_url: String?
+
+      attr_accessor platform: Telnyx::Models::CalendarConnection::platform
+
+      attr_accessor platform_email: String?
+
+      attr_accessor status: Telnyx::Models::CalendarConnection::status
+
+      attr_accessor status_detail: String?
+
+      attr_accessor updated_at: Time
+
+      def initialize: (
+        id: String,
+        auto_join_policy: Telnyx::Models::CalendarConnection::auto_join_policy,
+        bot_name: String?,
+        created_at: Time,
+        default_assistant: Telnyx::MeetingSessionAssistant?,
+        default_barge_in: bool?,
+        default_recording: bool?,
+        default_recording_export: Telnyx::MeetingSessionRecordingDestination?,
+        default_summarize_on_end: bool?,
+        default_voice: String?,
+        default_webhook_url: String?,
+        platform: Telnyx::Models::CalendarConnection::platform,
+        platform_email: String?,
+        status: Telnyx::Models::CalendarConnection::status,
+        status_detail: String?,
+        updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        auto_join_policy: Telnyx::Models::CalendarConnection::auto_join_policy,
+        bot_name: String?,
+        created_at: Time,
+        default_assistant: Telnyx::MeetingSessionAssistant?,
+        default_barge_in: bool?,
+        default_recording: bool?,
+        default_recording_export: Telnyx::MeetingSessionRecordingDestination?,
+        default_summarize_on_end: bool?,
+        default_voice: String?,
+        default_webhook_url: String?,
+        platform: Telnyx::Models::CalendarConnection::platform,
+        platform_email: String?,
+        status: Telnyx::Models::CalendarConnection::status,
+        status_detail: String?,
+        updated_at: Time
+      }
+
+      type auto_join_policy =
+        :all_meetings | :external_organizer_excluded | :per_meeting
+
+      module AutoJoinPolicy
+        extend Telnyx::Internal::Type::Enum
+
+        ALL_MEETINGS: :all_meetings
+        EXTERNAL_ORGANIZER_EXCLUDED: :external_organizer_excluded
+        PER_MEETING: :per_meeting
+
+        def self?.values: -> ::Array[Telnyx::Models::CalendarConnection::auto_join_policy]
+      end
+
+      type platform = :google_calendar | :microsoft_outlook
+
+      module Platform
+        extend Telnyx::Internal::Type::Enum
+
+        GOOGLE_CALENDAR: :google_calendar
+        MICROSOFT_OUTLOOK: :microsoft_outlook
+
+        def self?.values: -> ::Array[Telnyx::Models::CalendarConnection::platform]
+      end
+
+      type status = :connected | :disconnected | :error
+
+      module Status
+        extend Telnyx::Internal::Type::Enum
+
+        CONNECTED: :connected
+        DISCONNECTED: :disconnected
+        ERROR: :error
+
+        def self?.values: -> ::Array[Telnyx::Models::CalendarConnection::status]
+      end
+    end
+  end
+end

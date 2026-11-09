@@ -1,0 +1,18 @@
+module Telnyx
+  module Models
+    module CalendarConnections
+      type meeting_update_response =
+        { data: Telnyx::CalendarConnections::CalendarMeeting }
+
+      class MeetingUpdateResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::CalendarConnections::CalendarMeeting
+
+        def initialize: (
+          data: Telnyx::CalendarConnections::CalendarMeeting
+        ) -> void
+
+        def to_hash: -> { data: Telnyx::CalendarConnections::CalendarMeeting }
+      end
+    end
+  end
+end

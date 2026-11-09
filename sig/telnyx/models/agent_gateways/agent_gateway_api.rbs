@@ -1,0 +1,74 @@
+module Telnyx
+  module Models
+    class AgentGatewayAPI = AgentGateways::AgentGatewayAPI
+
+    module AgentGateways
+      type agent_gateway_api =
+        {
+          id: String,
+          auth: Telnyx::AgentGateways::AgentGatewayShownAuth,
+          base_url: String?,
+          created_at: Time?,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          spec_url: String,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          updated_at: Time?
+        }
+
+      class AgentGatewayAPI < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor auth: Telnyx::AgentGateways::AgentGatewayShownAuth
+
+        attr_accessor base_url: String?
+
+        attr_accessor created_at: Time?
+
+        attr_accessor forwarded_headers: ::Array[String]
+
+        attr_accessor name: String
+
+        attr_accessor open_to_every_key: bool
+
+        attr_accessor spec_url: String
+
+        attr_accessor static_headers: ::Hash[Symbol, String]
+
+        attr_accessor tools: ::Array[String]
+
+        attr_accessor updated_at: Time?
+
+        def initialize: (
+          id: String,
+          auth: Telnyx::AgentGateways::AgentGatewayShownAuth,
+          base_url: String?,
+          created_at: Time?,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          spec_url: String,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          updated_at: Time?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          auth: Telnyx::AgentGateways::AgentGatewayShownAuth,
+          base_url: String?,
+          created_at: Time?,
+          forwarded_headers: ::Array[String],
+          name: String,
+          open_to_every_key: bool,
+          spec_url: String,
+          static_headers: ::Hash[Symbol, String],
+          tools: ::Array[String],
+          updated_at: Time?
+        }
+      end
+    end
+  end
+end

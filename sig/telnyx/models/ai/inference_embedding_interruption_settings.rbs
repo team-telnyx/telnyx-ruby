@@ -6,7 +6,7 @@ module Telnyx
           disable_greeting_interruption: bool,
           enable: bool,
           interrupt_prediction_threshold: Float?,
-          start_speaking_plan: Telnyx::AI::StartSpeakingPlan
+          start_speaking_plan: Telnyx::AI::StartSpeakingPlan?
         }
 
       class InferenceEmbeddingInterruptionSettings < Telnyx::Internal::Type::BaseModel
@@ -20,24 +20,20 @@ module Telnyx
 
         attr_accessor interrupt_prediction_threshold: Float?
 
-        attr_reader start_speaking_plan: Telnyx::AI::StartSpeakingPlan?
-
-        def start_speaking_plan=: (
-          Telnyx::AI::StartSpeakingPlan
-        ) -> Telnyx::AI::StartSpeakingPlan
+        attr_accessor start_speaking_plan: Telnyx::AI::StartSpeakingPlan?
 
         def initialize: (
           ?disable_greeting_interruption: bool,
           ?enable: bool,
           ?interrupt_prediction_threshold: Float?,
-          ?start_speaking_plan: Telnyx::AI::StartSpeakingPlan
+          ?start_speaking_plan: Telnyx::AI::StartSpeakingPlan?
         ) -> void
 
         def to_hash: -> {
           disable_greeting_interruption: bool,
           enable: bool,
           interrupt_prediction_threshold: Float?,
-          start_speaking_plan: Telnyx::AI::StartSpeakingPlan
+          start_speaking_plan: Telnyx::AI::StartSpeakingPlan?
         }
       end
     end

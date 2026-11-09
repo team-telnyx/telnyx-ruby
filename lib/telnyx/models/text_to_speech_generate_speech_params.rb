@@ -7,6 +7,13 @@ module Telnyx
       extend ::Telnyx::Internal::Type::RequestParameters::Converter
       include ::Telnyx::Internal::Type::RequestParameters
 
+      # @!attribute assemblyai
+      #   AssemblyAI provider-specific parameters. Every voice speaks all six supported
+      #   languages; set `language` to the language of the text.
+      #
+      #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai, nil]
+      optional :assemblyai, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai }
+
       # @!attribute aws
       #   AWS Polly provider-specific parameters.
       #
@@ -125,9 +132,11 @@ module Telnyx
       #   @return [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Xai, nil]
       optional :xai, -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Xai }
 
-      # @!method initialize(aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, soniox: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
+      # @!method initialize(assemblyai: nil, aws: nil, azure: nil, disable_cache: nil, elevenlabs: nil, humain: nil, language: nil, minimax: nil, output_type: nil, provider: nil, resemble: nil, soniox: nil, telnyx: nil, text: nil, text_type: nil, voice: nil, voice_settings: nil, xai: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {::Telnyx::Models::TextToSpeechGenerateSpeechParams} for more details.
+      #
+      #   @param assemblyai [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai] AssemblyAI provider-specific parameters. Every voice speaks all six supported la
       #
       #   @param aws [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Aws] AWS Polly provider-specific parameters.
       #
@@ -164,6 +173,122 @@ module Telnyx
       #   @param xai [::Telnyx::Models::TextToSpeechGenerateSpeechParams::Xai] xAI provider-specific parameters.
       #
       #   @param request_options [::Telnyx::RequestOptions, Hash{Symbol=>Object}]
+
+      class Assemblyai < ::Telnyx::Internal::Type::BaseModel
+        # @!attribute voice_id
+        #   AssemblyAI voice from the
+        #   [voices listing](https://developers.telnyx.com/api-reference/text-to-speech-commands/list-available-voices),
+        #   for example `aai-jane`.
+        #
+        #   @return [String]
+        required :voice_id, String
+
+        # @!attribute audio_format
+        #   Audio output format.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat, nil]
+        optional :audio_format, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat }
+
+        # @!attribute language
+        #   Two-letter ISO 639-1 code of the text. AssemblyAI does not detect the language.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::Language, nil]
+        optional :language, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::Language }
+
+        # @!attribute model_id
+        #   AssemblyAI model.
+        #
+        #   @return [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID, nil]
+        optional :model_id, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID }
+
+        # @!attribute sample_rate
+        #   Audio sample rate in Hz. Defaults to 24000, or 8000 for `pcm_mulaw` and
+        #   `pcm_alaw`.
+        #
+        #   @return [Integer, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate, nil]
+        optional :sample_rate, enum: -> { ::Telnyx::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate }
+
+        # @!method initialize(voice_id:, audio_format: nil, language: nil, model_id: nil, sample_rate: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai} for more
+        #   details.
+        #
+        #   AssemblyAI provider-specific parameters. Every voice speaks all six supported
+        #   languages; set `language` to the language of the text.
+        #
+        #   @param voice_id [String] AssemblyAI voice from the [voices listing](https://developers.telnyx.com/api-ref
+        #
+        #   @param audio_format [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::AudioFormat] Audio output format.
+        #
+        #   @param language [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::Language] Two-letter ISO 639-1 code of the text. AssemblyAI does not detect the language.
+        #
+        #   @param model_id [Symbol, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::ModelID] AssemblyAI model.
+        #
+        #   @param sample_rate [Integer, ::Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai::SampleRate] Audio sample rate in Hz. Defaults to 24000, or 8000 for `pcm_mulaw` and `pcm_ala
+
+        # Audio output format.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai#audio_format
+        module AudioFormat
+          extend ::Telnyx::Internal::Type::Enum
+
+          MP3 = :mp3
+          WAV = :wav
+          PCM_S16LE = :pcm_s16le
+          PCM_MULAW = :pcm_mulaw
+          PCM_ALAW = :pcm_alaw
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Two-letter ISO 639-1 code of the text. AssemblyAI does not detect the language.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai#language
+        module Language
+          extend ::Telnyx::Internal::Type::Enum
+
+          EN = :en
+          ES = :es
+          DE = :de
+          FR = :fr
+          IT = :it
+          PT = :pt
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # AssemblyAI model.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai#model_id
+        module ModelID
+          extend ::Telnyx::Internal::Type::Enum
+
+          ASSEMBLYAI_TTS_1 = :"assemblyai-tts-1"
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Audio sample rate in Hz. Defaults to 24000, or 8000 for `pcm_mulaw` and
+        # `pcm_alaw`.
+        #
+        # @see Telnyx::Models::TextToSpeechGenerateSpeechParams::Assemblyai#sample_rate
+        module SampleRate
+          extend ::Telnyx::Internal::Type::Enum
+
+          SAMPLE_RATE_8000 = 8000
+          SAMPLE_RATE_16000 = 16_000
+          SAMPLE_RATE_22050 = 22_050
+          SAMPLE_RATE_24000 = 24_000
+          SAMPLE_RATE_44100 = 44_100
+          SAMPLE_RATE_48000 = 48_000
+
+          # @!method self.values
+          #   @return [Array<Integer>]
+        end
+      end
 
       class Aws < ::Telnyx::Internal::Type::BaseModel
         # @!attribute language_code
@@ -444,6 +569,7 @@ module Telnyx
         XAI = :xai
         HUMAIN = :humain
         SONIOX = :soniox
+        ASSEMBLYAI = :assemblyai
 
         # @!method self.values
         #   @return [Array<Symbol>]

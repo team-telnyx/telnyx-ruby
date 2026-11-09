@@ -1,0 +1,22 @@
+module Telnyx
+  module Models
+    class AgentGatewayPolicyAttachmentResponse = AgentGateways::AgentGatewayPolicyAttachmentResponse
+
+    module AgentGateways
+      type agent_gateway_policy_attachment_response =
+        { data: Telnyx::AgentGateways::AgentGatewayPolicyAttachment }
+
+      class AgentGatewayPolicyAttachmentResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::AgentGateways::AgentGatewayPolicyAttachment
+
+        def initialize: (
+          data: Telnyx::AgentGateways::AgentGatewayPolicyAttachment
+        ) -> void
+
+        def to_hash: -> {
+          data: Telnyx::AgentGateways::AgentGatewayPolicyAttachment
+        }
+      end
+    end
+  end
+end

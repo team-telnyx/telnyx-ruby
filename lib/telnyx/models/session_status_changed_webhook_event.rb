@@ -70,7 +70,13 @@ module Telnyx
         #   @return [String, nil]
         required :status_detail, String, nil?: true
 
-        # @!method initialize(recording:, session_id:, status:, status_detail:)
+        # @!attribute previous_status
+        #   Previous lifecycle status, when supplied.
+        #
+        #   @return [Symbol, Telnyx::Models::SessionStatusChangedWebhookEvent::Data::PreviousStatus, nil]
+        optional :previous_status, enum: -> { Telnyx::SessionStatusChangedWebhookEvent::Data::PreviousStatus }
+
+        # @!method initialize(recording:, session_id:, status:, status_detail:, previous_status: nil)
         #   Status transition details.
         #
         #   @param recording [Boolean] Whether the session is recording at this lifecycle edge.
@@ -80,6 +86,27 @@ module Telnyx
         #   @param status [String] The new session status.
         #
         #   @param status_detail [String, nil] Additional detail about the status (for example `cancelled`), or null.
+        #
+        #   @param previous_status [Symbol, Telnyx::Models::SessionStatusChangedWebhookEvent::Data::PreviousStatus] Previous lifecycle status, when supplied.
+
+        # Previous lifecycle status, when supplied.
+        #
+        # @see Telnyx::Models::SessionStatusChangedWebhookEvent::Data#previous_status
+        module PreviousStatus
+          extend Telnyx::Internal::Type::Enum
+
+          SCHEDULED = :scheduled
+          JOINING = :joining
+          WAITING_FOR_ADMISSION = :waiting_for_admission
+          ACTIVE = :active
+          LEAVING = :leaving
+          ENDED = :ended
+          FAILED = :failed
+          ADMISSION_DENIED = :admission_denied
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
 
       # Event type.

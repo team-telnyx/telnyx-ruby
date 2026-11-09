@@ -6,9 +6,9 @@ module Telnyx
       module BudgetDuration
         extend Telnyx::Internal::Type::Enum
 
-        BUDGET_DURATION_1D: :"1d"
-        BUDGET_DURATION_7D: :"7d"
-        BUDGET_DURATION_30D: :"30d"
+        BUDGET_DURATION_1_D: :"1d"
+        BUDGET_DURATION_7_D: :"7d"
+        BUDGET_DURATION_30_D: :"30d"
 
         def self?.values: -> ::Array[Telnyx::Models::LlmTokenGateway::budget_duration]
       end

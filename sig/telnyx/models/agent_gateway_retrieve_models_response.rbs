@@ -1,0 +1,94 @@
+module Telnyx
+  module Models
+    type agent_gateway_retrieve_models_response =
+      {
+        data: ::Array[Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data]
+      }
+
+    class AgentGatewayRetrieveModelsResponse < Telnyx::Internal::Type::BaseModel
+      attr_accessor data: ::Array[Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data]
+
+      def initialize: (
+        data: ::Array[Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data]
+      ) -> void
+
+      def to_hash: -> {
+        data: ::Array[Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data]
+      }
+
+      type data =
+        {
+          id: String,
+          model: String,
+          name: String,
+          priced_at: Time?,
+          pricing: Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data::Pricing
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor model: String
+
+        attr_accessor name: String
+
+        attr_accessor priced_at: Time?
+
+        attr_accessor pricing: Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data::Pricing
+
+        def initialize: (
+          id: String,
+          model: String,
+          name: String,
+          priced_at: Time?,
+          pricing: Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data::Pricing
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          model: String,
+          name: String,
+          priced_at: Time?,
+          pricing: Telnyx::Models::AgentGatewayRetrieveModelsResponse::Data::Pricing
+        }
+
+        type pricing =
+          {
+            cached_input: Float?,
+            currency: String,
+            input: Float,
+            output: Float,
+            unit: String
+          }
+
+        class Pricing < Telnyx::Internal::Type::BaseModel
+          attr_accessor cached_input: Float?
+
+          attr_accessor currency: String
+
+          attr_accessor input: Float
+
+          attr_accessor output: Float
+
+          attr_accessor unit: String
+
+          def initialize: (
+            cached_input: Float?,
+            currency: String,
+            input: Float,
+            output: Float,
+            unit: String
+          ) -> void
+
+          def to_hash: -> {
+            cached_input: Float?,
+            currency: String,
+            input: Float,
+            output: Float,
+            unit: String
+          }
+        end
+      end
+    end
+  end
+end

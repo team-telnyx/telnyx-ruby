@@ -1,0 +1,7 @@
+module Telnyx
+  module Models
+    module MeetingBot
+      class CalendarRetrieveOAuthCallbackResponse = String
+    end
+  end
+end

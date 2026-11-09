@@ -1,0 +1,147 @@
+module Telnyx
+  module Models
+    type user_profile_api =
+      {
+        id: Integer,
+        :address_1 => String?,
+        :address_2 => String?,
+        business_name: String?,
+        city: String?,
+        country: String?,
+        data_locality: Telnyx::Models::UserProfileAPI::data_locality?,
+        data_locality_migration_status: Telnyx::Models::UserProfileAPI::data_locality_migration_status?,
+        data_locality_updated_at: Time?,
+        first_name: String?,
+        last_name: String?,
+        phone_number: String?,
+        record_type: Telnyx::Models::UserProfileAPI::record_type,
+        state: String?,
+        updated_at: Time,
+        user_id: String,
+        zip: String?
+      }
+
+    class UserProfileAPI < Telnyx::Internal::Type::BaseModel
+      attr_reader id: Integer?
+
+      def id=: (Integer) -> Integer
+
+      attr_accessor address_1: String?
+
+      attr_accessor address_2: String?
+
+      attr_accessor business_name: String?
+
+      attr_accessor city: String?
+
+      attr_accessor country: String?
+
+      attr_accessor data_locality: Telnyx::Models::UserProfileAPI::data_locality?
+
+      attr_accessor data_locality_migration_status: Telnyx::Models::UserProfileAPI::data_locality_migration_status?
+
+      attr_accessor data_locality_updated_at: Time?
+
+      attr_accessor first_name: String?
+
+      attr_accessor last_name: String?
+
+      attr_accessor phone_number: String?
+
+      attr_reader record_type: Telnyx::Models::UserProfileAPI::record_type?
+
+      def record_type=: (
+        Telnyx::Models::UserProfileAPI::record_type
+      ) -> Telnyx::Models::UserProfileAPI::record_type
+
+      attr_accessor state: String?
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      attr_reader user_id: String?
+
+      def user_id=: (String) -> String
+
+      attr_accessor zip: String?
+
+      def initialize: (
+        ?id: Integer,
+        ?address_1: String?,
+        ?address_2: String?,
+        ?business_name: String?,
+        ?city: String?,
+        ?country: String?,
+        ?data_locality: Telnyx::Models::UserProfileAPI::data_locality?,
+        ?data_locality_migration_status: Telnyx::Models::UserProfileAPI::data_locality_migration_status?,
+        ?data_locality_updated_at: Time?,
+        ?first_name: String?,
+        ?last_name: String?,
+        ?phone_number: String?,
+        ?record_type: Telnyx::Models::UserProfileAPI::record_type,
+        ?state: String?,
+        ?updated_at: Time,
+        ?user_id: String,
+        ?zip: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: Integer,
+        :address_1 => String?,
+        :address_2 => String?,
+        business_name: String?,
+        city: String?,
+        country: String?,
+        data_locality: Telnyx::Models::UserProfileAPI::data_locality?,
+        data_locality_migration_status: Telnyx::Models::UserProfileAPI::data_locality_migration_status?,
+        data_locality_updated_at: Time?,
+        first_name: String?,
+        last_name: String?,
+        phone_number: String?,
+        record_type: Telnyx::Models::UserProfileAPI::record_type,
+        state: String?,
+        updated_at: Time,
+        user_id: String,
+        zip: String?
+      }
+
+      type data_locality = :USA | :DEU | :AUS | :UAE | :CAN
+
+      module DataLocality
+        extend Telnyx::Internal::Type::Enum
+
+        USA: :USA
+        DEU: :DEU
+        AUS: :AUS
+        UAE: :UAE
+        CAN: :CAN
+
+        def self?.values: -> ::Array[Telnyx::Models::UserProfileAPI::data_locality]
+      end
+
+      type data_locality_migration_status =
+        :not_started | :in_progress | :finished
+
+      module DataLocalityMigrationStatus
+        extend Telnyx::Internal::Type::Enum
+
+        NOT_STARTED: :not_started
+        IN_PROGRESS: :in_progress
+        FINISHED: :finished
+
+        def self?.values: -> ::Array[Telnyx::Models::UserProfileAPI::data_locality_migration_status]
+      end
+
+      type record_type = :user_profile
+
+      module RecordType
+        extend Telnyx::Internal::Type::Enum
+
+        USER_PROFILE: :user_profile
+
+        def self?.values: -> ::Array[Telnyx::Models::UserProfileAPI::record_type]
+      end
+    end
+  end
+end

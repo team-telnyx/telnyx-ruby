@@ -1,0 +1,97 @@
+module Telnyx
+  module Models
+    type recording_exported_webhook_event =
+      {
+        id: String,
+        data: Telnyx::RecordingExportedWebhookEvent::Data,
+        event: Telnyx::Models::RecordingExportedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+    class RecordingExportedWebhookEvent < Telnyx::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor data: Telnyx::RecordingExportedWebhookEvent::Data
+
+      attr_accessor event: Telnyx::Models::RecordingExportedWebhookEvent::event
+
+      attr_accessor occurred_at: Time
+
+      attr_accessor version: String
+
+      def initialize: (
+        id: String,
+        data: Telnyx::RecordingExportedWebhookEvent::Data,
+        event: Telnyx::Models::RecordingExportedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        data: Telnyx::RecordingExportedWebhookEvent::Data,
+        event: Telnyx::Models::RecordingExportedWebhookEvent::event,
+        occurred_at: Time,
+        version: String
+      }
+
+      type data =
+        {
+          bucket: String,
+          bytes: Integer,
+          key: String,
+          region: String,
+          session_id: String,
+          :sha256 => String,
+          type: :video
+        }
+
+      class Data < Telnyx::Internal::Type::BaseModel
+        attr_accessor bucket: String
+
+        attr_accessor bytes: Integer
+
+        attr_accessor key: String
+
+        attr_accessor region: String
+
+        attr_accessor session_id: String
+
+        attr_accessor sha256: String
+
+        attr_accessor type: :video
+
+        def initialize: (
+          bucket: String,
+          bytes: Integer,
+          key: String,
+          region: String,
+          session_id: String,
+          sha256: String,
+          ?type: :video
+        ) -> void
+
+        def to_hash: -> {
+          bucket: String,
+          bytes: Integer,
+          key: String,
+          region: String,
+          session_id: String,
+          :sha256 => String,
+          type: :video
+        }
+      end
+
+      type event = :"recording.exported"
+
+      module Event
+        extend Telnyx::Internal::Type::Enum
+
+        RECORDING_EXPORTED: :"recording.exported"
+
+        def self?.values: -> ::Array[Telnyx::Models::RecordingExportedWebhookEvent::event]
+      end
+    end
+  end
+end

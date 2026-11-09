@@ -1,0 +1,27 @@
+module Telnyx
+  module Models
+    class AgentGatewayPolicyGuardrails = AgentGateways::AgentGatewayPolicyGuardrails
+
+    module AgentGateways
+      type agent_gateway_policy_guardrails =
+        { add: ::Array[String], remove: ::Array[String] }
+
+      class AgentGatewayPolicyGuardrails < Telnyx::Internal::Type::BaseModel
+        attr_reader add: ::Array[String]?
+
+        def add=: (::Array[String]) -> ::Array[String]
+
+        attr_reader remove: ::Array[String]?
+
+        def remove=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          ?add: ::Array[String],
+          ?remove: ::Array[String]
+        ) -> void
+
+        def to_hash: -> { add: ::Array[String], remove: ::Array[String] }
+      end
+    end
+  end
+end

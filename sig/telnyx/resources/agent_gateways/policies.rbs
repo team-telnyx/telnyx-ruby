@@ -1,0 +1,48 @@
+module Telnyx
+  module Resources
+    class AgentGateways
+      class Policies
+        def create: (
+          String instance_id,
+          name: String,
+          ?base: String?,
+          ?description: String?,
+          ?guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          ?model: String?,
+          ?pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayPolicyResponse
+
+        def retrieve: (
+          String name,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayPolicyResponse
+
+        def update: (
+          String name,
+          instance_id: String,
+          ?base: String?,
+          ?description: String?,
+          ?guardrails: Telnyx::AgentGateways::AgentGatewayPolicyGuardrails,
+          ?model: String?,
+          ?pipeline: Telnyx::AgentGateways::AgentGatewayPolicyPipeline?,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayPolicyResponse
+
+        def list: (
+          String instance_id,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::Models::AgentGateways::PolicyListResponse
+
+        def delete: (
+          String name,
+          instance_id: String,
+          ?request_options: Telnyx::request_opts
+        ) -> Telnyx::AgentGateways::AgentGatewayPolicyResponse
+
+        def initialize: (client: Telnyx::Client) -> void
+      end
+    end
+  end
+end

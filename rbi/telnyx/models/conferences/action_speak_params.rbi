@@ -164,7 +164,8 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings,
                 Telnyx::InworldVoiceSettings,
                 Telnyx::XaiVoiceSettings,
-                Telnyx::Calls::SonioxVoiceSettings
+                Telnyx::Calls::SonioxVoiceSettings,
+                Telnyx::Calls::AssemblyAIVoiceSettings
               )
             )
           )
@@ -183,7 +184,8 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash
+                Telnyx::Calls::SonioxVoiceSettings::OrHash,
+                Telnyx::Calls::AssemblyAIVoiceSettings::OrHash
               )
           ).void
         end
@@ -211,7 +213,8 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings::OrHash,
                 Telnyx::InworldVoiceSettings::OrHash,
                 Telnyx::XaiVoiceSettings::OrHash,
-                Telnyx::Calls::SonioxVoiceSettings::OrHash
+                Telnyx::Calls::SonioxVoiceSettings::OrHash,
+                Telnyx::Calls::AssemblyAIVoiceSettings::OrHash
               ),
             request_options: Telnyx::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -326,7 +329,8 @@ module Telnyx
                   Telnyx::ResembleVoiceSettings,
                   Telnyx::InworldVoiceSettings,
                   Telnyx::XaiVoiceSettings,
-                  Telnyx::Calls::SonioxVoiceSettings
+                  Telnyx::Calls::SonioxVoiceSettings,
+                  Telnyx::Calls::AssemblyAIVoiceSettings
                 ),
               request_options: Telnyx::RequestOptions
             }
@@ -551,7 +555,8 @@ module Telnyx
                 Telnyx::ResembleVoiceSettings,
                 Telnyx::InworldVoiceSettings,
                 Telnyx::XaiVoiceSettings,
-                Telnyx::Calls::SonioxVoiceSettings
+                Telnyx::Calls::SonioxVoiceSettings,
+                Telnyx::Calls::AssemblyAIVoiceSettings
               )
             end
 

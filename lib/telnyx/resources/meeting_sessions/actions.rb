@@ -5,13 +5,22 @@ module Telnyx
     class MeetingSessions
       # Send real-time speech and chat actions to an active meeting session.
       class Actions
-        # Sends a chat message into a meeting session.
+        # Some parameter documentations has been truncated, see
+        # {Telnyx::Models::MeetingSessions::ActionSendChatParams} for more details.
+        #
+        # Send chat as the bot in an active meeting. Returns 202 with data.accepted=true.
+        # Google Meet and Teams confirm sending before success; 502 chat_not_sent means
+        # not sent, while chat_delivery_unknown means delivery may have occurred. Inspect
+        # chat and chat.sent events before retrying an uncertain send. Each request is a
+        # new message and is not idempotent. Google Meet and Teams allow at most 1000 chat
+        # requests per session, including an entrance message; exceeding this returns 409
+        # invalid_state.
         #
         # @overload send_chat(id, text:, request_options: {})
         #
         # @param id [String] Unique identifier for the meeting session.
         #
-        # @param text [String] Chat message text to send in the meeting.
+        # @param text [String] Message text, 1–4000 characters. On Google Meet and Teams, also at most 4096 UTF
         #
         # @param request_options [Telnyx::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -33,15 +42,13 @@ module Telnyx
         # {Telnyx::Models::MeetingSessions::ActionSpeakParams} for more details.
         #
         # Sends audio / text-to-speech into a meeting session. With a Telnyx AI Assistant
-        # attached, the bot is a webpage-output bot: the speak audio routes through the
-        # assistant's output page rather than the bot mic and plays once the assistant is
-        # connected -- it is not refused. If that page cannot be reached, delivery fails
-        # with the 502 below, which may arrive without an error envelope, so branch on the
-        # status code before parsing a body. The assistant is designed to own the
-        # conversation, so prefer letting it speak or use `send_chat`. With a digital
-        # avatar (`assistant.avatar: true`), speak is refused with 409 `invalid_state`
-        # (message prefix `avatar_requires_assistant_speech:`): the avatar renders only
-        # the assistant's own speech.
+        # attached, wait for the assistant to connect before requesting speech. If audio
+        # delivery fails, the response can be 502, which may arrive without an error
+        # envelope, so branch on the status code before parsing a body. The assistant is
+        # designed to own the conversation, so prefer letting it speak or use `send_chat`.
+        # With a digital avatar (`assistant.avatar: true`), speak is refused with 409
+        # `invalid_state` (message prefix `avatar_requires_assistant_speech:`): the avatar
+        # renders only the assistant's own speech.
         #
         # @overload speak(id, text:, interrupt: nil, voice: nil, request_options: {})
         #

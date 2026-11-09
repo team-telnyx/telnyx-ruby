@@ -1,0 +1,20 @@
+module Telnyx
+  module Models
+    class AgentGatewayGuardrailResponse = AgentGateways::AgentGatewayGuardrailResponse
+
+    module AgentGateways
+      type agent_gateway_guardrail_response =
+        { data: Telnyx::AgentGateways::AgentGatewayGuardrail }
+
+      class AgentGatewayGuardrailResponse < Telnyx::Internal::Type::BaseModel
+        attr_accessor data: Telnyx::AgentGateways::AgentGatewayGuardrail
+
+        def initialize: (
+          data: Telnyx::AgentGateways::AgentGatewayGuardrail
+        ) -> void
+
+        def to_hash: -> { data: Telnyx::AgentGateways::AgentGatewayGuardrail }
+      end
+    end
+  end
+end
